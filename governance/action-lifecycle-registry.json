@@ -1,0 +1,30 @@
+{
+  "registry_version": 1,
+  "registry_id": "reference-action-lifecycle-v0-development",
+  "status": "development-scaffold",
+  "not_frozen": true,
+  "environment_id": "reference-colony-v2",
+  "action_space_version": 1,
+  "note": "Development lifecycle parameters for W0-A' in the reference environment. These are NOT ZekNova values and are NOT frozen. This is a separate registry; leaf-registry.json and reference-heuristic-v1 are untouched.",
+  "resource_cost_timing": "per_execution_quantum",
+  "resource_cost_realization": "v2-native",
+  "resource_cost_note": "Declared per_execution_quantum and realized by the certified V2 per-tick consumption during the execution quantum. W0-A' deducts NO additional resources: doing so would alter certified environment dynamics and invalidate the native mask witnesses. A separate on_start/on_completion cost model is a ZekNova-side decision, not a reference-environment one.",
+  "target_model": "synthetic-reference-target-v1",
+  "target_model_status": "development-scaffold",
+  "target_freshness_rule": "isFresh = currentQuantum < freshUntilQuantumExclusive; at equality the target is stale",
+  "declared_interrupts": ["stabilize"],
+  "actions": [
+    { "index": 0,  "key": "gather_food",      "executionQuanta": 1, "cooldownQuanta": 0, "commitmentQuanta": 0, "requiresFreshTarget": false, "interrupt": false },
+    { "index": 1,  "key": "gather_energy",    "executionQuanta": 1, "cooldownQuanta": 0, "commitmentQuanta": 0, "requiresFreshTarget": false, "interrupt": false },
+    { "index": 2,  "key": "gather_materials", "executionQuanta": 1, "cooldownQuanta": 0, "commitmentQuanta": 0, "requiresFreshTarget": false, "interrupt": false },
+    { "index": 3,  "key": "trade",            "executionQuanta": 1, "cooldownQuanta": 1, "commitmentQuanta": 0, "requiresFreshTarget": false, "interrupt": false },
+    { "index": 4,  "key": "build_defense",    "executionQuanta": 2, "cooldownQuanta": 2, "commitmentQuanta": 3, "requiresFreshTarget": false, "interrupt": false },
+    { "index": 5,  "key": "build_housing",    "executionQuanta": 2, "cooldownQuanta": 2, "commitmentQuanta": 3, "requiresFreshTarget": false, "interrupt": false },
+    { "index": 6,  "key": "build_infra",      "executionQuanta": 2, "cooldownQuanta": 2, "commitmentQuanta": 3, "requiresFreshTarget": false, "interrupt": false },
+    { "index": 7,  "key": "recruit",          "executionQuanta": 1, "cooldownQuanta": 1, "commitmentQuanta": 0, "requiresFreshTarget": false, "interrupt": false },
+    { "index": 8,  "key": "defend",           "executionQuanta": 1, "cooldownQuanta": 1, "commitmentQuanta": 0, "requiresFreshTarget": false, "interrupt": false },
+    { "index": 9,  "key": "diplomacy_talks",  "executionQuanta": 1, "cooldownQuanta": 4, "commitmentQuanta": 0, "requiresFreshTarget": false, "interrupt": false },
+    { "index": 10, "key": "explore",          "executionQuanta": 2, "cooldownQuanta": 3, "commitmentQuanta": 0, "requiresFreshTarget": true,  "interrupt": false },
+    { "index": 11, "key": "stabilize",        "executionQuanta": 1, "cooldownQuanta": 0, "commitmentQuanta": 0, "requiresFreshTarget": false, "interrupt": true }
+  ]
+}

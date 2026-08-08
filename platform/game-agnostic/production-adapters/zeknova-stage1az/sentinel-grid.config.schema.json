@@ -1,0 +1,35 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "type": "object",
+  "properties": {
+    "observationSize": {
+      "type": "integer",
+      "const": 592,
+      "default": 592
+    },
+    "actionCount": {
+      "type": "integer",
+      "const": 6,
+      "default": 6
+    },
+    "maxTick": {
+      "type": "integer",
+      "minimum": 32,
+      "maximum": 100000,
+      "default": 2048
+    },
+    "stochasticAmplitude": {
+      "type": "number",
+      "minimum": 0,
+      "maximum": 0.25,
+      "default": 0.015
+    },
+    "paritySimulations": {
+      "type": "integer",
+      "minimum": 32,
+      "maximum": 4096,
+      "default": 320
+    }
+  },
+  "additionalProperties": false
+}

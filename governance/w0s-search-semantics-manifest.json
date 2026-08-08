@@ -1,0 +1,61 @@
+{
+  "manifest_schema_version": 2,
+  "doctrine_id": "guardrails",
+  "doctrine_version": 2,
+  "doctrine_hash": "ab414c5b5dcb9d167f5dc46bcc0b718e7e1564cb0334d6b4103683f3f06a3326",
+
+  "artifact": "w0s-reference-search-semantics",
+  "status": "provisional — NOT frozen until cross-machine reproduction passes",
+  "environment_id": "reference-colony-v2",
+  "adapter": "public_html/azl/azl-ref-adapter-v3.js",
+  "base_adapter": "azl-ref-adapter-v2.js",
+  "additive": true,
+
+  "search_context_schema_version": 1,
+  "search_context_fields": ["schemaVersion","environmentId","factionId","rootStance","objectiveProfileId",
+    "leafVersion","stanceModelVersion","stanceModelStatus","syntheticThreshold","controlQuantumTicks",
+    "horizonQuanta","seed"],
+
+  "time_advance_semantics": "fixed-quantum-v1",
+  "fixed_quantum_v1_rule": [
+    "Every NONTERMINAL transition advances exactly one full control quantum.",
+    "A valid environment terminal MAY end the final transition early; the remaining quantum is not padded.",
+    "No transitions occur after a terminal state.",
+    "Search comparability is therefore defined over nonterminal transitions."
+  ],
+  "backup_semantics": "undiscounted-finite-horizon",
+  "discounting": "none",
+  "discounting_change_policy": "introducing discounting creates a new leaf/search version (GUARDRAILS-v2 6.1)",
+
+  "stance_semantics": "root-frozen-replan-boundary-v1",
+  "replan_boundary_rule": [
+    "rootStance is immutable for the lifetime of one search.",
+    "A predicted stance crossing marks the node requiresReplan and stops expansion.",
+    "The node is valued with the current search's unchanged leaf and objective.",
+    "No next-stance actions are exposed. No transition bonus is applied."
+  ],
+
+  "terminal_semantics_version": 1,
+  "terminal_predicates": ["objective-complete","protected-object-destroyed","faction-eliminated",
+    "environment-terminal","deadline-incomplete","horizon","replan-boundary"],
+  "terminal_predicates_excluded": ["irreversibly-failed"],
+
+  "leaf_version": "reference-heuristic-v1",
+  "leaf_hash": "58e9f555e2674dbff026810972a4672a170319dafa873075ebcdb45f4d08f54c",
+
+  "stance_model_version": "synthetic-reference-stance-v1",
+  "stance_model_status": "development-scaffold",
+  "stance_model_disposition": "Boundary statistics under this scaffold are mechanism-conformance data only. They are never used for promotion or tuning, and the threshold is never adjusted to produce a desired statistic.",
+
+  "development_defaults": { "control_quantum_ticks": 30, "horizon_quanta": 40, "synthetic_threshold": 0.72, "seed": 18427 },
+  "development_defaults_note": "Development values. NOT frozen production values; the final quantum and horizon are selected in W0-A'/W1B.",
+
+  "fixed_fixture": {
+    "canonical": "{\"controlQuantumTicks\":30,\"environmentId\":\"reference-colony-v2\",\"factionId\":\"reference-faction\",\"horizonQuanta\":40,\"leafVersion\":\"reference-heuristic-v1\",\"objectiveProfileId\":\"reference-defensive-v0\",\"rootStance\":\"defensive\",\"schemaVersion\":1,\"seed\":18427,\"stanceModelStatus\":\"development-scaffold\",\"stanceModelVersion\":\"synthetic-reference-stance-v1\",\"syntheticThreshold\":0.72}",
+    "context_hash_fnv1a64x2": "cfaaee1012eff198",
+    "context_hash_sha256": "516fb5096e3cea6cf0d336a8ea2beed60c3243e0e4c417067ab61f579d9af700"
+  },
+
+  "transition_budget_formula": "simulations * horizon_quanta",
+  "reproduction": { "platforms_passed": ["linux-x64 node v22.22.2"], "platforms_required": ["macOS (pending)"] }
+}

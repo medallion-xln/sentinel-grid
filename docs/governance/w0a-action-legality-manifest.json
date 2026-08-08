@@ -1,0 +1,69 @@
+{
+  "artifact_id": "sentinel-w0a-reference-v1",
+  "artifact_type": "reference-action-legality-substrate",
+  "status": "frozen",
+
+  "environment_id": "reference-colony-v2",
+
+  "inherits": {
+    "w0s_portability_digest": "a54149dcce84cbc415c927a389947156a4ef467fe076a7892888301b90a12f7c",
+    "w0s_manifest_sha256": "035b8649de9fed9df1390bf4e4892ded04bd94dc88d23cc4b26587d59b6e9abd",
+    "doctrine_sha256": "ab414c5b5dcb9d167f5dc46bcc0b718e7e1564cb0334d6b4103683f3f06a3326"
+  },
+
+  "implementation": {
+    "adapter": "public_html/azl/azl-ref-adapter-v4.js",
+    "lifecycle_registry": "docs/governance/action-lifecycle-registry.json",
+    "test_suite": "sgrid-lab/tests/w0a-action-legality.test.js",
+    "portability_report": "sgrid-lab/tests/w0a-portability-report.js"
+  },
+
+  "lifecycle_registry": {
+    "id": "reference-action-lifecycle-v0-development",
+    "classification": "frozen-reference-development-scaffold",
+    "production_zeknova_semantics": false
+  },
+
+  "semantics": {
+    "state_model": "composite-environment-plus-lifecycle-v1",
+    "clone_model": "deep-clone-isolated-branches-v1",
+    "mask_model": "fixed-action-indexed-bitset-v1",
+    "mask_recomputed_per_node": true,
+
+    "precedence": [
+      "terminal_or_replan_boundary",
+      "cooldown",
+      "execution",
+      "commitment",
+      "declared_interrupt"
+    ],
+
+    "cooldown_overrides_commitment": true,
+    "commitment_resurrects_masked_actions": false,
+    "declared_interrupt_escape_required": true,
+
+    "target_freshness_model": "synthetic-reference-target-v1",
+    "target_freshness_rule": "currentQuantum < freshUntilQuantumExclusive",
+
+    "all_zero_mask_allowed_only_at_terminal_or_replan_boundary": true
+  },
+
+  "mobility_gate_measurement": {
+    "mobility_recomputed_each_tick": true,
+    "gate_threshold": 0.2,
+    "quantum_boundary_samples": 444,
+    "minimum_observed_mobility": 0.6513,
+    "native_gate_flips_observed": 0,
+    "classification": "live-condition-not-reached-under-tested-reference-dynamics"
+  },
+
+  "verification": {
+    "w0a_test_count": 118,
+    "w0a_portability_digest": "880ff1b5770d60cdd96a47d65cb571d99169315244f5a8d7357f5e9be0b8b7fd",
+    "portability_digest_non_circular": true,
+    "platforms_passed": [
+      "linux node v22.22.2",
+      "darwin node v22.22.2"
+    ]
+  }
+}

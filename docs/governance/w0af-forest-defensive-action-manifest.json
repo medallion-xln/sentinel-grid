@@ -1,0 +1,87 @@
+{
+  "artifact_id": "sentinel-w0af-forest-defensive-actions-v1",
+  "artifact_type": "forest-defensive-action-registry-and-planning-projection",
+  "status": "frozen",
+  "environment_id": "zeknova-forest-ao-plus-sentinel-contract",
+  "phase": "W0-AF",
+  "inherits": {
+    "w0o6_manifest_sha256": "c473c6915bf14056a265d3bf1ad11c63bfbf78a1f1c9e284576e35b2bdb8d7d9",
+    "w0o6_sentinel_portability_digest": "819682ce38c43b385ff9166337398e3380cf6b16fdd78e1a40a251af04fc9f56",
+    "w0o6_zeknova_portability_digest": "7e18b18fcab3e45ee0d605f3e6264d5d6403b2c6134af7c93fae044d2135f231",
+    "faction_observation_contract_sha256": "997ff7c2d69bfd35a1c36bc52705f3f07a4d1d70cc733a76276dac37f097322d"
+  },
+  "registry": {
+    "id": "zeknova-forest-defensive-actions-v1-development",
+    "path": "docs/governance/forest-defensive-action-registry.json",
+    "classification": "development-real-action-contract-no-live-authority",
+    "sha256": "1b027724341f0f601ba09458e7ddc20e849bc5b0cb8806a4bfdf953a1a46d7cb"
+  },
+  "implementation": {
+    "shared_contract": {
+      "path": "public_html/azl/zeknova-forest-defensive-action-contract-v1.js",
+      "sha256": "7e0b4eb52498a6f1d782ba89eb9234c5e4e023fa7dba5d71327d94011f4b0488"
+    },
+    "sentinel_test": {
+      "path": "sgrid-lab/tests/w0af-forest-defensive-action-contract.frozen.test.js",
+      "sha256": "030fc9625b051f666d6fad0a28c6813cf2f6e16a4f5dd0f354c29cd5a89f14d9"
+    },
+    "sentinel_install_check": {
+      "path": "sgrid-lab/tests/check-w0af-install.js",
+      "sha256": "c55547b4e0feb5a2e7853b5208a2df22369fd58afdc03faf4f8c526b5dd85dbd"
+    },
+    "sentinel_portability_report": {
+      "path": "sgrid-lab/tests/w0af-portability-report.js",
+      "sha256": "03e9480e732007be63a4ec19606f56426ee19b32b61bbf1b3ebe6f682ab9198a"
+    },
+    "zeknova_live_artifacts": {
+      "forest_adapter_sha256": "71d8824b3672f0bc0231ec37bf5feeab9ca6a43ca09fd80eb6dfd79d440d4b4c",
+      "forest_wrapper_sha256": "58a639e22e9fd8d59c885b973f182709bc970185c4fe00ff150f15039d774b8c",
+      "integration_sha256": "1d8f94d68235c3e65de26a6d5dc4f14d4817315dcb3f2c81a2c8e054bb7f509a",
+      "contract_test_sha256": "6df5cd649a240d0043308b657662bd5da406e65781a0dd7a7e3b8ff165438fe6",
+      "integration_test_sha256": "46f6e60510c2ebd1b4d4c1a9fafd579b28ebf0a205f6777e2235b0c1927d935e",
+      "portability_report_sha256": "cf54cd7a08e8953ad7974e0371c738d418a4e7187b369197b5793e7740c088e7",
+      "main_sha256": "13aa0e8cbd71a13ddaee7a2886f10ea126a0a56c947bde3839cb76bb4b127591",
+      "check_source_sha256": "4335ac9c6be22f7671c41f5bc403c2faf7555f515961da60c631d3adbf54b606",
+      "package_sha256": "6abae09e904f15a6316b93c8273d2befae2668b145815073a5f5c4d0e3642d5c"
+    },
+    "sentinel_portability_baseline": {
+      "path": "sgrid-lab/tests/w0af-forest-defensive-action-contract.test.js",
+      "sha256": "d1e1622ba9aff989bf930290be84f2b54442b9ac261c10b336b3485a00c5a691"
+    }
+  },
+  "action_model": {
+    "root_stance": "defensive",
+    "action_space_id": "zeknova-forest-defensive-action-space-v1",
+    "action_count": 13,
+    "safe_fallback": "hold_settlement_perimeter",
+    "authority": "read-only-planning-no-action-execution",
+    "live_transition_parity_claim": false,
+    "production_competence_claim": false
+  },
+  "verification": {
+    "sentinel_linux_portability_digest": "624f2c5c7872fb90caa66a2de1ad57d8c9c7b0dd274d66e22c08b6ad769ddc3b",
+    "zeknova_linux_portability_digest": "538d42bb67793853b0a7e220d66de9daeebdbbef6a1d60104e0fe3530d686255",
+    "portability_digest_non_circular": true,
+    "platforms_passed": [
+      "linux-node-v22",
+      "darwin-node-v22"
+    ],
+    "freeze_gate": "closed: identical Linux and Darwin portability digests reproduced; W0-P remains a separate parity gate",
+    "sentinel_darwin_portability_digest": "624f2c5c7872fb90caa66a2de1ad57d8c9c7b0dd274d66e22c08b6ad769ddc3b",
+    "zeknova_darwin_portability_digest": "538d42bb67793853b0a7e220d66de9daeebdbbef6a1d60104e0fe3530d686255"
+  },
+  "semantics": {
+    "validated_w0o3_observation_required": true,
+    "private_and_fresh_observation_targets_only": true,
+    "root_stance_is_defensive": true,
+    "safe_fallback_is_hold_settlement_perimeter": true,
+    "thirteen_forest_defensive_actions": true,
+    "cooldown_commitment_and_capacity_gates_are_deterministic": true,
+    "terminal_and_replan_mask_every_action": true,
+    "hidden_other_faction_state_cannot_change_candidates": true,
+    "outcome_projections_are_read_only": true,
+    "authoritative_live_transition_parity_not_claimed": true,
+    "action_execution_dispatch_commit_apply_are_out_of_scope": true,
+    "incumbent_scripted_ai_remains_authoritative": true
+  }
+}

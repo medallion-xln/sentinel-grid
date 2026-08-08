@@ -1,0 +1,2663 @@
+{
+  "pass": true,
+  "evidenceReportCount": 12,
+  "adapterCount": 12,
+  "checkCount": 150,
+  "failedCheckCount": 0,
+  "deterministicEvidenceHash": "d0afc2bca0f10d6bcbc62902dbf86a46255a0a9aea16ffca2885114f8d465668",
+  "executionReportHash": "38a3d72e74ae6bce0dde82605278ece70f0e6827a1dbf27d9e6d10442ee6cbf1",
+  "deterministicEvidence": {
+    "evidenceVersion": 7,
+    "contractVersion": 1,
+    "kernelVersion": "0.9.0",
+    "kernelScope": "game-agnostic",
+    "authority": "R0",
+    "pass": true,
+    "evidenceReportCount": 12,
+    "checkCount": 150,
+    "failedCheckCount": 0,
+    "reports": [
+      {
+        "evidenceVersion": 7,
+        "adapter": {
+          "contractVersion": 1,
+          "gameId": "reference-grid-rescue",
+          "adapterId": "reference-grid-rescue-adapter",
+          "adapterVersion": "1.1.0",
+          "deterministic": true,
+          "observationSchemas": [
+            {
+              "schemaId": "reference-grid-rescue/observation",
+              "schemaVersion": 1,
+              "variableSize": true
+            }
+          ],
+          "capabilities": {
+            "imperfectInformation": true,
+            "stochasticTransitions": true,
+            "simultaneousActions": false,
+            "variableObservationSize": true
+          },
+          "authority": {
+            "tier": "R0",
+            "executionInterface": false
+          },
+          "metadata": {
+            "purpose": "second structurally different Adapter SDK proof",
+            "packageMode": "external-production-adapter",
+            "configuredMaxTurns": 5,
+            "snapshotIngestion": true
+          }
+        },
+        "certification": {
+          "configSchemaSha256": "edaaf2d87c8437b61622e13c8f43159158854a208b62f58a2cb3d283accd485e",
+          "configurationHash": "06af666f477f8910a914542c67005bb9a5889f04a36069b4d0d2575e7add97b2",
+          "entrySha256": "9b5766eb01ab0d26a4b503154a2d353b93ba66db81b66a4566ff2aca3e743c62",
+          "lockHash": "89a2a752faa4c7a4ed2189beca873ada2c98a76e2736331921c13d47dc3c4634",
+          "packageName": "@sentinel-grid-adapters/reference-grid-rescue",
+          "packageSha256": "22d0a12a14964d22eeefb3b3129ba3f6558be030d0ebae7a9fdad290f2d3a3e1",
+          "packageVersion": "1.1.0",
+          "profileName": "imperfect-information-r0",
+          "profileVersion": 4,
+          "snapshotFormatsHash": "7931cca0cf579973acb06df8ea14d376de0472c36832f33e99b2f97e0e93a203"
+        },
+        "pass": true,
+        "checks": [
+          {
+            "configSchemaSha256": "edaaf2d87c8437b61622e13c8f43159158854a208b62f58a2cb3d283accd485e",
+            "configurationHash": "06af666f477f8910a914542c67005bb9a5889f04a36069b4d0d2575e7add97b2",
+            "entrySha256": "9b5766eb01ab0d26a4b503154a2d353b93ba66db81b66a4566ff2aca3e743c62",
+            "lockHash": "89a2a752faa4c7a4ed2189beca873ada2c98a76e2736331921c13d47dc3c4634",
+            "name": "production-package-lock",
+            "packageName": "@sentinel-grid-adapters/reference-grid-rescue",
+            "packageSha256": "22d0a12a14964d22eeefb3b3129ba3f6558be030d0ebae7a9fdad290f2d3a3e1",
+            "packageVersion": "1.1.0",
+            "pass": true
+          },
+          {
+            "name": "certification-profile",
+            "pass": true,
+            "profileName": "imperfect-information-r0",
+            "profileVersion": 4,
+            "requiredAuthority": "R0",
+            "requiredCapabilities": {
+              "imperfectInformation": true
+            },
+            "requiresSnapshotIngestion": true
+          },
+          {
+            "formatCount": 1,
+            "importerMethods": [
+              "importSnapshot"
+            ],
+            "name": "snapshot-ingestion-contract",
+            "pass": true
+          },
+          {
+            "formats": [
+              {
+                "formatId": "reference-grid-rescue/state-json",
+                "formatVersion": 1,
+                "importerMethod": "importSnapshot",
+                "schemaSha256": "e0c86f1af64bcfd1a5b4c1fe19dc7d8b8ee3d0622ad8da052f90fda78ddacbb8"
+              }
+            ],
+            "name": "snapshot-format-lock",
+            "pass": true,
+            "snapshotFormatsHash": "7931cca0cf579973acb06df8ea14d376de0472c36832f33e99b2f97e0e93a203"
+          },
+          {
+            "adapterId": "reference-grid-rescue-adapter",
+            "gameId": "reference-grid-rescue",
+            "name": "adapter-contract",
+            "pass": true
+          },
+          {
+            "name": "no-execution-surface",
+            "pass": true,
+            "prohibitedMemberCount": 0
+          },
+          {
+            "canDispatch": false,
+            "name": "r0-default-denial",
+            "pass": true,
+            "tier": "R0"
+          },
+          {
+            "name": "deterministic-initial-state",
+            "pass": true,
+            "stateHash": "effeee9ae688463745d2fb96210a71ea8a91423535843fbe9d6b3e224c0f3f65"
+          },
+          {
+            "cloneHash": "effeee9ae688463745d2fb96210a71ea8a91423535843fbe9d6b3e224c0f3f65",
+            "name": "clone-content-fidelity",
+            "pass": true
+          },
+          {
+            "name": "terminal-determinism",
+            "pass": true,
+            "terminal": false
+          },
+          {
+            "featureCount": 6,
+            "name": "deterministic-observation",
+            "pass": true,
+            "schemaId": "reference-grid-rescue/observation",
+            "schemaVersion": 1
+          },
+          {
+            "actionCount": 3,
+            "actionKeys": [
+              "[\"reference.grid-rescue/scan\",\"controller\",null,{\"energyCost\":1}]",
+              "[\"reference.grid-rescue/assist\",\"controller\",{\"id\":\"north\",\"kind\":\"site\"},{\"energyCost\":2}]",
+              "[\"reference.grid-rescue/rest\",\"controller\",null,{\"energyGain\":2}]"
+            ],
+            "name": "deterministic-legal-actions",
+            "pass": true
+          },
+          {
+            "name": "deterministic-outcome",
+            "pass": true,
+            "scalar": 0,
+            "vectorKeys": [
+              "remainingEnergy",
+              "rescuedRisk",
+              "rescuedSites"
+            ]
+          },
+          {
+            "name": "deterministic-seeded-transition",
+            "pass": true,
+            "terminal": false,
+            "transitionHash": "8fc3eb6717be4e6b624c79fd97fe38b2890dd0f339aca4b13ee3690bda2c4d4f"
+          },
+          {
+            "name": "transition-outcome-contract",
+            "pass": true,
+            "scalar": 0
+          },
+          {
+            "name": "deterministic-prime-recommendation",
+            "pass": true,
+            "recommendationHash": "e9bb89d2e5b7007dc5f0a1797248c3032f1139183cfe54e4446d69bdc82d1035",
+            "selectedActionKey": "[\"reference.grid-rescue/assist\",\"controller\",{\"id\":\"north\",\"kind\":\"site\"},{\"energyCost\":2}]"
+          },
+          {
+            "name": "prime-legality-and-visit-accounting",
+            "pass": true,
+            "rankedActionCount": 3,
+            "visits": 128
+          },
+          {
+            "canDispatch": false,
+            "canMutateLiveWorld": false,
+            "name": "recommendation-r0-boundary",
+            "pass": true,
+            "tier": "R0"
+          },
+          {
+            "name": "recommendation-replay",
+            "pass": true,
+            "replayHash": "e9bb89d2e5b7007dc5f0a1797248c3032f1139183cfe54e4446d69bdc82d1035"
+          }
+        ],
+        "deterministicEvidenceHash": "f1d7bf25fac2d4925fd998b594259a932d74fa4f32c8af5582bbf39fcfa8cf89"
+      },
+      {
+        "evidenceVersion": 7,
+        "adapter": {
+          "contractVersion": 1,
+          "gameId": "reference-production-arena",
+          "adapterId": "reference-production-arena-adapter",
+          "adapterVersion": "1.0.0",
+          "deterministic": true,
+          "observationSchemas": [
+            {
+              "schemaId": "reference-production-arena/observation",
+              "schemaVersion": 1,
+              "variableSize": true
+            }
+          ],
+          "capabilities": {
+            "imperfectInformation": true,
+            "stochasticTransitions": true,
+            "simultaneousActions": true,
+            "variableObservationSize": true
+          },
+          "authority": {
+            "tier": "R0",
+            "executionInterface": false
+          },
+          "metadata": {
+            "purpose": "production-scale conformance expansion fixture",
+            "packageMode": "external-production-adapter",
+            "snapshotIngestion": true,
+            "observationSize": 2048,
+            "legalActionCount": 96,
+            "actorCount": 4
+          }
+        },
+        "certification": {
+          "configSchemaSha256": "1a7cd25d281cdc488bf7ce12f46788ba4f9a86440e7031245ed8e79493e8e185",
+          "configurationHash": "8b9ae66ed1aae05797e56ea8e496db21be9f553aac642d8785c314918d183880",
+          "entrySha256": "844c973d2db36e13a943579b1de0478156201127c5be11468b767c9a520a68a3",
+          "lockHash": "89a2a752faa4c7a4ed2189beca873ada2c98a76e2736331921c13d47dc3c4634",
+          "packageName": "@sentinel-grid-adapters/reference-production-arena",
+          "packageSha256": "92310d710e7a17723fadec997f98656ba33c653eb02a150469ba5049ae936bc6",
+          "packageVersion": "1.0.0",
+          "profileName": "production-scale-r0",
+          "profileVersion": 4,
+          "snapshotFormatsHash": "9a8ff08840db83c9426dfd0d032cfad3821af9e8598465ff7376924bd569725e"
+        },
+        "pass": true,
+        "checks": [
+          {
+            "configSchemaSha256": "1a7cd25d281cdc488bf7ce12f46788ba4f9a86440e7031245ed8e79493e8e185",
+            "configurationHash": "8b9ae66ed1aae05797e56ea8e496db21be9f553aac642d8785c314918d183880",
+            "entrySha256": "844c973d2db36e13a943579b1de0478156201127c5be11468b767c9a520a68a3",
+            "lockHash": "89a2a752faa4c7a4ed2189beca873ada2c98a76e2736331921c13d47dc3c4634",
+            "name": "production-package-lock",
+            "packageName": "@sentinel-grid-adapters/reference-production-arena",
+            "packageSha256": "92310d710e7a17723fadec997f98656ba33c653eb02a150469ba5049ae936bc6",
+            "packageVersion": "1.0.0",
+            "pass": true
+          },
+          {
+            "name": "certification-profile",
+            "pass": true,
+            "profileName": "production-scale-r0",
+            "profileVersion": 4,
+            "requiredAuthority": "R0",
+            "requiredCapabilities": {
+              "imperfectInformation": true,
+              "simultaneousActions": true,
+              "stochasticTransitions": true,
+              "variableObservationSize": true
+            },
+            "requiresSnapshotIngestion": true
+          },
+          {
+            "formatCount": 1,
+            "importerMethods": [
+              "importSnapshot"
+            ],
+            "name": "snapshot-ingestion-contract",
+            "pass": true
+          },
+          {
+            "formats": [
+              {
+                "formatId": "reference-production-arena/state-json",
+                "formatVersion": 1,
+                "importerMethod": "importSnapshot",
+                "schemaSha256": "76941ea7664fa16828ea59676a562bcd4df3d68db9097a3b0bc1d68315a28c6e"
+              }
+            ],
+            "name": "snapshot-format-lock",
+            "pass": true,
+            "snapshotFormatsHash": "9a8ff08840db83c9426dfd0d032cfad3821af9e8598465ff7376924bd569725e"
+          },
+          {
+            "adapterId": "reference-production-arena-adapter",
+            "gameId": "reference-production-arena",
+            "name": "adapter-contract",
+            "pass": true
+          },
+          {
+            "name": "no-execution-surface",
+            "pass": true,
+            "prohibitedMemberCount": 0
+          },
+          {
+            "canDispatch": false,
+            "name": "r0-default-denial",
+            "pass": true,
+            "tier": "R0"
+          },
+          {
+            "name": "deterministic-initial-state",
+            "pass": true,
+            "stateHash": "95449544c55c495777b04e90f1146806cc9a3568ccccee6d4fa2f6237846c160"
+          },
+          {
+            "cloneHash": "95449544c55c495777b04e90f1146806cc9a3568ccccee6d4fa2f6237846c160",
+            "name": "clone-content-fidelity",
+            "pass": true
+          },
+          {
+            "name": "terminal-determinism",
+            "pass": true,
+            "terminal": false
+          },
+          {
+            "featureCount": 2048,
+            "name": "deterministic-observation",
+            "pass": true,
+            "schemaId": "reference-production-arena/observation",
+            "schemaVersion": 1
+          },
+          {
+            "actionCount": 96,
+            "actionKeys": [
+              "[\"reference.production-arena/joint-plan@0\",\"joint:alpha\",{\"id\":\"sector-0\",\"kind\":\"sector\"},{\"jointActions\":[{\"actorId\":\"alpha-0\",\"maneuver\":0},{\"actorId\":\"alpha-1\",\"maneuver\":1}],\"magnitude\":1,\"phase\":0}]",
+              "[\"reference.production-arena/joint-plan@1\",\"joint:alpha\",{\"id\":\"sector-1\",\"kind\":\"sector\"},{\"jointActions\":[{\"actorId\":\"alpha-0\",\"maneuver\":1},{\"actorId\":\"alpha-1\",\"maneuver\":2}],\"magnitude\":2,\"phase\":0}]",
+              "[\"reference.production-arena/joint-plan@2\",\"joint:alpha\",{\"id\":\"sector-2\",\"kind\":\"sector\"},{\"jointActions\":[{\"actorId\":\"alpha-0\",\"maneuver\":2},{\"actorId\":\"alpha-1\",\"maneuver\":3}],\"magnitude\":3,\"phase\":0}]",
+              "[\"reference.production-arena/joint-plan@3\",\"joint:alpha\",{\"id\":\"sector-3\",\"kind\":\"sector\"},{\"jointActions\":[{\"actorId\":\"alpha-0\",\"maneuver\":3},{\"actorId\":\"alpha-1\",\"maneuver\":4}],\"magnitude\":4,\"phase\":0}]",
+              "[\"reference.production-arena/joint-plan@4\",\"joint:alpha\",{\"id\":\"sector-4\",\"kind\":\"sector\"},{\"jointActions\":[{\"actorId\":\"alpha-0\",\"maneuver\":4},{\"actorId\":\"alpha-1\",\"maneuver\":5}],\"magnitude\":5,\"phase\":0}]",
+              "[\"reference.production-arena/joint-plan@5\",\"joint:alpha\",{\"id\":\"sector-5\",\"kind\":\"sector\"},{\"jointActions\":[{\"actorId\":\"alpha-0\",\"maneuver\":5},{\"actorId\":\"alpha-1\",\"maneuver\":6}],\"magnitude\":6,\"phase\":0}]",
+              "[\"reference.production-arena/joint-plan@6\",\"joint:alpha\",{\"id\":\"sector-6\",\"kind\":\"sector\"},{\"jointActions\":[{\"actorId\":\"alpha-0\",\"maneuver\":6},{\"actorId\":\"alpha-1\",\"maneuver\":7}],\"magnitude\":7,\"phase\":0}]",
+              "[\"reference.production-arena/joint-plan@7\",\"joint:alpha\",{\"id\":\"sector-7\",\"kind\":\"sector\"},{\"jointActions\":[{\"actorId\":\"alpha-0\",\"maneuver\":7},{\"actorId\":\"alpha-1\",\"maneuver\":0}],\"magnitude\":8,\"phase\":0}]",
+              "[\"reference.production-arena/joint-plan@8\",\"joint:alpha\",{\"id\":\"sector-8\",\"kind\":\"sector\"},{\"jointActions\":[{\"actorId\":\"alpha-0\",\"maneuver\":0},{\"actorId\":\"alpha-1\",\"maneuver\":1}],\"magnitude\":9,\"phase\":0}]",
+              "[\"reference.production-arena/joint-plan@9\",\"joint:alpha\",{\"id\":\"sector-9\",\"kind\":\"sector\"},{\"jointActions\":[{\"actorId\":\"alpha-0\",\"maneuver\":1},{\"actorId\":\"alpha-1\",\"maneuver\":2}],\"magnitude\":10,\"phase\":0}]",
+              "[\"reference.production-arena/joint-plan@10\",\"joint:alpha\",{\"id\":\"sector-10\",\"kind\":\"sector\"},{\"jointActions\":[{\"actorId\":\"alpha-0\",\"maneuver\":2},{\"actorId\":\"alpha-1\",\"maneuver\":3}],\"magnitude\":11,\"phase\":0}]",
+              "[\"reference.production-arena/joint-plan@11\",\"joint:alpha\",{\"id\":\"sector-11\",\"kind\":\"sector\"},{\"jointActions\":[{\"actorId\":\"alpha-0\",\"maneuver\":3},{\"actorId\":\"alpha-1\",\"maneuver\":4}],\"magnitude\":1,\"phase\":0}]",
+              "[\"reference.production-arena/joint-plan@12\",\"joint:alpha\",{\"id\":\"sector-12\",\"kind\":\"sector\"},{\"jointActions\":[{\"actorId\":\"alpha-0\",\"maneuver\":4},{\"actorId\":\"alpha-1\",\"maneuver\":5}],\"magnitude\":2,\"phase\":0}]",
+              "[\"reference.production-arena/joint-plan@13\",\"joint:alpha\",{\"id\":\"sector-13\",\"kind\":\"sector\"},{\"jointActions\":[{\"actorId\":\"alpha-0\",\"maneuver\":5},{\"actorId\":\"alpha-1\",\"maneuver\":6}],\"magnitude\":3,\"phase\":0}]",
+              "[\"reference.production-arena/joint-plan@14\",\"joint:alpha\",{\"id\":\"sector-14\",\"kind\":\"sector\"},{\"jointActions\":[{\"actorId\":\"alpha-0\",\"maneuver\":6},{\"actorId\":\"alpha-1\",\"maneuver\":7}],\"magnitude\":4,\"phase\":0}]",
+              "[\"reference.production-arena/joint-plan@15\",\"joint:alpha\",{\"id\":\"sector-15\",\"kind\":\"sector\"},{\"jointActions\":[{\"actorId\":\"alpha-0\",\"maneuver\":7},{\"actorId\":\"alpha-1\",\"maneuver\":0}],\"magnitude\":5,\"phase\":0}]",
+              "[\"reference.production-arena/joint-plan@16\",\"joint:alpha\",{\"id\":\"sector-16\",\"kind\":\"sector\"},{\"jointActions\":[{\"actorId\":\"alpha-0\",\"maneuver\":0},{\"actorId\":\"alpha-1\",\"maneuver\":1}],\"magnitude\":6,\"phase\":0}]",
+              "[\"reference.production-arena/joint-plan@17\",\"joint:alpha\",{\"id\":\"sector-17\",\"kind\":\"sector\"},{\"jointActions\":[{\"actorId\":\"alpha-0\",\"maneuver\":1},{\"actorId\":\"alpha-1\",\"maneuver\":2}],\"magnitude\":7,\"phase\":0}]",
+              "[\"reference.production-arena/joint-plan@18\",\"joint:alpha\",{\"id\":\"sector-18\",\"kind\":\"sector\"},{\"jointActions\":[{\"actorId\":\"alpha-0\",\"maneuver\":2},{\"actorId\":\"alpha-1\",\"maneuver\":3}],\"magnitude\":8,\"phase\":0}]",
+              "[\"reference.production-arena/joint-plan@19\",\"joint:alpha\",{\"id\":\"sector-19\",\"kind\":\"sector\"},{\"jointActions\":[{\"actorId\":\"alpha-0\",\"maneuver\":3},{\"actorId\":\"alpha-1\",\"maneuver\":4}],\"magnitude\":9,\"phase\":0}]",
+              "[\"reference.production-arena/joint-plan@20\",\"joint:alpha\",{\"id\":\"sector-20\",\"kind\":\"sector\"},{\"jointActions\":[{\"actorId\":\"alpha-0\",\"maneuver\":4},{\"actorId\":\"alpha-1\",\"maneuver\":5}],\"magnitude\":10,\"phase\":0}]",
+              "[\"reference.production-arena/joint-plan@21\",\"joint:alpha\",{\"id\":\"sector-21\",\"kind\":\"sector\"},{\"jointActions\":[{\"actorId\":\"alpha-0\",\"maneuver\":5},{\"actorId\":\"alpha-1\",\"maneuver\":6}],\"magnitude\":11,\"phase\":0}]",
+              "[\"reference.production-arena/joint-plan@22\",\"joint:alpha\",{\"id\":\"sector-22\",\"kind\":\"sector\"},{\"jointActions\":[{\"actorId\":\"alpha-0\",\"maneuver\":6},{\"actorId\":\"alpha-1\",\"maneuver\":7}],\"magnitude\":1,\"phase\":0}]",
+              "[\"reference.production-arena/joint-plan@23\",\"joint:alpha\",{\"id\":\"sector-23\",\"kind\":\"sector\"},{\"jointActions\":[{\"actorId\":\"alpha-0\",\"maneuver\":7},{\"actorId\":\"alpha-1\",\"maneuver\":0}],\"magnitude\":2,\"phase\":0}]",
+              "[\"reference.production-arena/joint-plan@24\",\"joint:alpha\",{\"id\":\"sector-24\",\"kind\":\"sector\"},{\"jointActions\":[{\"actorId\":\"alpha-0\",\"maneuver\":0},{\"actorId\":\"alpha-1\",\"maneuver\":1}],\"magnitude\":3,\"phase\":0}]",
+              "[\"reference.production-arena/joint-plan@25\",\"joint:alpha\",{\"id\":\"sector-25\",\"kind\":\"sector\"},{\"jointActions\":[{\"actorId\":\"alpha-0\",\"maneuver\":1},{\"actorId\":\"alpha-1\",\"maneuver\":2}],\"magnitude\":4,\"phase\":0}]",
+              "[\"reference.production-arena/joint-plan@26\",\"joint:alpha\",{\"id\":\"sector-26\",\"kind\":\"sector\"},{\"jointActions\":[{\"actorId\":\"alpha-0\",\"maneuver\":2},{\"actorId\":\"alpha-1\",\"maneuver\":3}],\"magnitude\":5,\"phase\":0}]",
+              "[\"reference.production-arena/joint-plan@27\",\"joint:alpha\",{\"id\":\"sector-27\",\"kind\":\"sector\"},{\"jointActions\":[{\"actorId\":\"alpha-0\",\"maneuver\":3},{\"actorId\":\"alpha-1\",\"maneuver\":4}],\"magnitude\":6,\"phase\":0}]",
+              "[\"reference.production-arena/joint-plan@28\",\"joint:alpha\",{\"id\":\"sector-28\",\"kind\":\"sector\"},{\"jointActions\":[{\"actorId\":\"alpha-0\",\"maneuver\":4},{\"actorId\":\"alpha-1\",\"maneuver\":5}],\"magnitude\":7,\"phase\":0}]",
+              "[\"reference.production-arena/joint-plan@29\",\"joint:alpha\",{\"id\":\"sector-29\",\"kind\":\"sector\"},{\"jointActions\":[{\"actorId\":\"alpha-0\",\"maneuver\":5},{\"actorId\":\"alpha-1\",\"maneuver\":6}],\"magnitude\":8,\"phase\":0}]",
+              "[\"reference.production-arena/joint-plan@30\",\"joint:alpha\",{\"id\":\"sector-30\",\"kind\":\"sector\"},{\"jointActions\":[{\"actorId\":\"alpha-0\",\"maneuver\":6},{\"actorId\":\"alpha-1\",\"maneuver\":7}],\"magnitude\":9,\"phase\":0}]",
+              "[\"reference.production-arena/joint-plan@31\",\"joint:alpha\",{\"id\":\"sector-31\",\"kind\":\"sector\"},{\"jointActions\":[{\"actorId\":\"alpha-0\",\"maneuver\":7},{\"actorId\":\"alpha-1\",\"maneuver\":0}],\"magnitude\":10,\"phase\":0}]",
+              "[\"reference.production-arena/joint-plan@32\",\"joint:alpha\",{\"id\":\"sector-32\",\"kind\":\"sector\"},{\"jointActions\":[{\"actorId\":\"alpha-0\",\"maneuver\":0},{\"actorId\":\"alpha-1\",\"maneuver\":1}],\"magnitude\":11,\"phase\":0}]",
+              "[\"reference.production-arena/joint-plan@33\",\"joint:alpha\",{\"id\":\"sector-33\",\"kind\":\"sector\"},{\"jointActions\":[{\"actorId\":\"alpha-0\",\"maneuver\":1},{\"actorId\":\"alpha-1\",\"maneuver\":2}],\"magnitude\":1,\"phase\":0}]",
+              "[\"reference.production-arena/joint-plan@34\",\"joint:alpha\",{\"id\":\"sector-34\",\"kind\":\"sector\"},{\"jointActions\":[{\"actorId\":\"alpha-0\",\"maneuver\":2},{\"actorId\":\"alpha-1\",\"maneuver\":3}],\"magnitude\":2,\"phase\":0}]",
+              "[\"reference.production-arena/joint-plan@35\",\"joint:alpha\",{\"id\":\"sector-35\",\"kind\":\"sector\"},{\"jointActions\":[{\"actorId\":\"alpha-0\",\"maneuver\":3},{\"actorId\":\"alpha-1\",\"maneuver\":4}],\"magnitude\":3,\"phase\":0}]",
+              "[\"reference.production-arena/joint-plan@36\",\"joint:alpha\",{\"id\":\"sector-36\",\"kind\":\"sector\"},{\"jointActions\":[{\"actorId\":\"alpha-0\",\"maneuver\":4},{\"actorId\":\"alpha-1\",\"maneuver\":5}],\"magnitude\":4,\"phase\":0}]",
+              "[\"reference.production-arena/joint-plan@37\",\"joint:alpha\",{\"id\":\"sector-37\",\"kind\":\"sector\"},{\"jointActions\":[{\"actorId\":\"alpha-0\",\"maneuver\":5},{\"actorId\":\"alpha-1\",\"maneuver\":6}],\"magnitude\":5,\"phase\":0}]",
+              "[\"reference.production-arena/joint-plan@38\",\"joint:alpha\",{\"id\":\"sector-38\",\"kind\":\"sector\"},{\"jointActions\":[{\"actorId\":\"alpha-0\",\"maneuver\":6},{\"actorId\":\"alpha-1\",\"maneuver\":7}],\"magnitude\":6,\"phase\":0}]",
+              "[\"reference.production-arena/joint-plan@39\",\"joint:alpha\",{\"id\":\"sector-39\",\"kind\":\"sector\"},{\"jointActions\":[{\"actorId\":\"alpha-0\",\"maneuver\":7},{\"actorId\":\"alpha-1\",\"maneuver\":0}],\"magnitude\":7,\"phase\":0}]",
+              "[\"reference.production-arena/joint-plan@40\",\"joint:alpha\",{\"id\":\"sector-40\",\"kind\":\"sector\"},{\"jointActions\":[{\"actorId\":\"alpha-0\",\"maneuver\":0},{\"actorId\":\"alpha-1\",\"maneuver\":1}],\"magnitude\":8,\"phase\":0}]",
+              "[\"reference.production-arena/joint-plan@41\",\"joint:alpha\",{\"id\":\"sector-41\",\"kind\":\"sector\"},{\"jointActions\":[{\"actorId\":\"alpha-0\",\"maneuver\":1},{\"actorId\":\"alpha-1\",\"maneuver\":2}],\"magnitude\":9,\"phase\":0}]",
+              "[\"reference.production-arena/joint-plan@42\",\"joint:alpha\",{\"id\":\"sector-42\",\"kind\":\"sector\"},{\"jointActions\":[{\"actorId\":\"alpha-0\",\"maneuver\":2},{\"actorId\":\"alpha-1\",\"maneuver\":3}],\"magnitude\":10,\"phase\":0}]",
+              "[\"reference.production-arena/joint-plan@43\",\"joint:alpha\",{\"id\":\"sector-43\",\"kind\":\"sector\"},{\"jointActions\":[{\"actorId\":\"alpha-0\",\"maneuver\":3},{\"actorId\":\"alpha-1\",\"maneuver\":4}],\"magnitude\":11,\"phase\":0}]",
+              "[\"reference.production-arena/joint-plan@44\",\"joint:alpha\",{\"id\":\"sector-44\",\"kind\":\"sector\"},{\"jointActions\":[{\"actorId\":\"alpha-0\",\"maneuver\":4},{\"actorId\":\"alpha-1\",\"maneuver\":5}],\"magnitude\":1,\"phase\":0}]",
+              "[\"reference.production-arena/joint-plan@45\",\"joint:alpha\",{\"id\":\"sector-45\",\"kind\":\"sector\"},{\"jointActions\":[{\"actorId\":\"alpha-0\",\"maneuver\":5},{\"actorId\":\"alpha-1\",\"maneuver\":6}],\"magnitude\":2,\"phase\":0}]",
+              "[\"reference.production-arena/joint-plan@46\",\"joint:alpha\",{\"id\":\"sector-46\",\"kind\":\"sector\"},{\"jointActions\":[{\"actorId\":\"alpha-0\",\"maneuver\":6},{\"actorId\":\"alpha-1\",\"maneuver\":7}],\"magnitude\":3,\"phase\":0}]",
+              "[\"reference.production-arena/joint-plan@47\",\"joint:alpha\",{\"id\":\"sector-47\",\"kind\":\"sector\"},{\"jointActions\":[{\"actorId\":\"alpha-0\",\"maneuver\":7},{\"actorId\":\"alpha-1\",\"maneuver\":0}],\"magnitude\":4,\"phase\":0}]",
+              "[\"reference.production-arena/joint-plan@48\",\"joint:alpha\",{\"id\":\"sector-48\",\"kind\":\"sector\"},{\"jointActions\":[{\"actorId\":\"alpha-0\",\"maneuver\":0},{\"actorId\":\"alpha-1\",\"maneuver\":1}],\"magnitude\":5,\"phase\":0}]",
+              "[\"reference.production-arena/joint-plan@49\",\"joint:alpha\",{\"id\":\"sector-49\",\"kind\":\"sector\"},{\"jointActions\":[{\"actorId\":\"alpha-0\",\"maneuver\":1},{\"actorId\":\"alpha-1\",\"maneuver\":2}],\"magnitude\":6,\"phase\":0}]",
+              "[\"reference.production-arena/joint-plan@50\",\"joint:alpha\",{\"id\":\"sector-50\",\"kind\":\"sector\"},{\"jointActions\":[{\"actorId\":\"alpha-0\",\"maneuver\":2},{\"actorId\":\"alpha-1\",\"maneuver\":3}],\"magnitude\":7,\"phase\":0}]",
+              "[\"reference.production-arena/joint-plan@51\",\"joint:alpha\",{\"id\":\"sector-51\",\"kind\":\"sector\"},{\"jointActions\":[{\"actorId\":\"alpha-0\",\"maneuver\":3},{\"actorId\":\"alpha-1\",\"maneuver\":4}],\"magnitude\":8,\"phase\":0}]",
+              "[\"reference.production-arena/joint-plan@52\",\"joint:alpha\",{\"id\":\"sector-52\",\"kind\":\"sector\"},{\"jointActions\":[{\"actorId\":\"alpha-0\",\"maneuver\":4},{\"actorId\":\"alpha-1\",\"maneuver\":5}],\"magnitude\":9,\"phase\":0}]",
+              "[\"reference.production-arena/joint-plan@53\",\"joint:alpha\",{\"id\":\"sector-53\",\"kind\":\"sector\"},{\"jointActions\":[{\"actorId\":\"alpha-0\",\"maneuver\":5},{\"actorId\":\"alpha-1\",\"maneuver\":6}],\"magnitude\":10,\"phase\":0}]",
+              "[\"reference.production-arena/joint-plan@54\",\"joint:alpha\",{\"id\":\"sector-54\",\"kind\":\"sector\"},{\"jointActions\":[{\"actorId\":\"alpha-0\",\"maneuver\":6},{\"actorId\":\"alpha-1\",\"maneuver\":7}],\"magnitude\":11,\"phase\":0}]",
+              "[\"reference.production-arena/joint-plan@55\",\"joint:alpha\",{\"id\":\"sector-55\",\"kind\":\"sector\"},{\"jointActions\":[{\"actorId\":\"alpha-0\",\"maneuver\":7},{\"actorId\":\"alpha-1\",\"maneuver\":0}],\"magnitude\":1,\"phase\":0}]",
+              "[\"reference.production-arena/joint-plan@56\",\"joint:alpha\",{\"id\":\"sector-56\",\"kind\":\"sector\"},{\"jointActions\":[{\"actorId\":\"alpha-0\",\"maneuver\":0},{\"actorId\":\"alpha-1\",\"maneuver\":1}],\"magnitude\":2,\"phase\":0}]",
+              "[\"reference.production-arena/joint-plan@57\",\"joint:alpha\",{\"id\":\"sector-57\",\"kind\":\"sector\"},{\"jointActions\":[{\"actorId\":\"alpha-0\",\"maneuver\":1},{\"actorId\":\"alpha-1\",\"maneuver\":2}],\"magnitude\":3,\"phase\":0}]",
+              "[\"reference.production-arena/joint-plan@58\",\"joint:alpha\",{\"id\":\"sector-58\",\"kind\":\"sector\"},{\"jointActions\":[{\"actorId\":\"alpha-0\",\"maneuver\":2},{\"actorId\":\"alpha-1\",\"maneuver\":3}],\"magnitude\":4,\"phase\":0}]",
+              "[\"reference.production-arena/joint-plan@59\",\"joint:alpha\",{\"id\":\"sector-59\",\"kind\":\"sector\"},{\"jointActions\":[{\"actorId\":\"alpha-0\",\"maneuver\":3},{\"actorId\":\"alpha-1\",\"maneuver\":4}],\"magnitude\":5,\"phase\":0}]",
+              "[\"reference.production-arena/joint-plan@60\",\"joint:alpha\",{\"id\":\"sector-60\",\"kind\":\"sector\"},{\"jointActions\":[{\"actorId\":\"alpha-0\",\"maneuver\":4},{\"actorId\":\"alpha-1\",\"maneuver\":5}],\"magnitude\":6,\"phase\":0}]",
+              "[\"reference.production-arena/joint-plan@61\",\"joint:alpha\",{\"id\":\"sector-61\",\"kind\":\"sector\"},{\"jointActions\":[{\"actorId\":\"alpha-0\",\"maneuver\":5},{\"actorId\":\"alpha-1\",\"maneuver\":6}],\"magnitude\":7,\"phase\":0}]",
+              "[\"reference.production-arena/joint-plan@62\",\"joint:alpha\",{\"id\":\"sector-62\",\"kind\":\"sector\"},{\"jointActions\":[{\"actorId\":\"alpha-0\",\"maneuver\":6},{\"actorId\":\"alpha-1\",\"maneuver\":7}],\"magnitude\":8,\"phase\":0}]",
+              "[\"reference.production-arena/joint-plan@63\",\"joint:alpha\",{\"id\":\"sector-63\",\"kind\":\"sector\"},{\"jointActions\":[{\"actorId\":\"alpha-0\",\"maneuver\":7},{\"actorId\":\"alpha-1\",\"maneuver\":0}],\"magnitude\":9,\"phase\":0}]",
+              "[\"reference.production-arena/joint-plan@64\",\"joint:alpha\",{\"id\":\"sector-0\",\"kind\":\"sector\"},{\"jointActions\":[{\"actorId\":\"alpha-0\",\"maneuver\":0},{\"actorId\":\"alpha-1\",\"maneuver\":1}],\"magnitude\":10,\"phase\":0}]",
+              "[\"reference.production-arena/joint-plan@65\",\"joint:alpha\",{\"id\":\"sector-1\",\"kind\":\"sector\"},{\"jointActions\":[{\"actorId\":\"alpha-0\",\"maneuver\":1},{\"actorId\":\"alpha-1\",\"maneuver\":2}],\"magnitude\":11,\"phase\":0}]",
+              "[\"reference.production-arena/joint-plan@66\",\"joint:alpha\",{\"id\":\"sector-2\",\"kind\":\"sector\"},{\"jointActions\":[{\"actorId\":\"alpha-0\",\"maneuver\":2},{\"actorId\":\"alpha-1\",\"maneuver\":3}],\"magnitude\":1,\"phase\":0}]",
+              "[\"reference.production-arena/joint-plan@67\",\"joint:alpha\",{\"id\":\"sector-3\",\"kind\":\"sector\"},{\"jointActions\":[{\"actorId\":\"alpha-0\",\"maneuver\":3},{\"actorId\":\"alpha-1\",\"maneuver\":4}],\"magnitude\":2,\"phase\":0}]",
+              "[\"reference.production-arena/joint-plan@68\",\"joint:alpha\",{\"id\":\"sector-4\",\"kind\":\"sector\"},{\"jointActions\":[{\"actorId\":\"alpha-0\",\"maneuver\":4},{\"actorId\":\"alpha-1\",\"maneuver\":5}],\"magnitude\":3,\"phase\":0}]",
+              "[\"reference.production-arena/joint-plan@69\",\"joint:alpha\",{\"id\":\"sector-5\",\"kind\":\"sector\"},{\"jointActions\":[{\"actorId\":\"alpha-0\",\"maneuver\":5},{\"actorId\":\"alpha-1\",\"maneuver\":6}],\"magnitude\":4,\"phase\":0}]",
+              "[\"reference.production-arena/joint-plan@70\",\"joint:alpha\",{\"id\":\"sector-6\",\"kind\":\"sector\"},{\"jointActions\":[{\"actorId\":\"alpha-0\",\"maneuver\":6},{\"actorId\":\"alpha-1\",\"maneuver\":7}],\"magnitude\":5,\"phase\":0}]",
+              "[\"reference.production-arena/joint-plan@71\",\"joint:alpha\",{\"id\":\"sector-7\",\"kind\":\"sector\"},{\"jointActions\":[{\"actorId\":\"alpha-0\",\"maneuver\":7},{\"actorId\":\"alpha-1\",\"maneuver\":0}],\"magnitude\":6,\"phase\":0}]",
+              "[\"reference.production-arena/joint-plan@72\",\"joint:alpha\",{\"id\":\"sector-8\",\"kind\":\"sector\"},{\"jointActions\":[{\"actorId\":\"alpha-0\",\"maneuver\":0},{\"actorId\":\"alpha-1\",\"maneuver\":1}],\"magnitude\":7,\"phase\":0}]",
+              "[\"reference.production-arena/joint-plan@73\",\"joint:alpha\",{\"id\":\"sector-9\",\"kind\":\"sector\"},{\"jointActions\":[{\"actorId\":\"alpha-0\",\"maneuver\":1},{\"actorId\":\"alpha-1\",\"maneuver\":2}],\"magnitude\":8,\"phase\":0}]",
+              "[\"reference.production-arena/joint-plan@74\",\"joint:alpha\",{\"id\":\"sector-10\",\"kind\":\"sector\"},{\"jointActions\":[{\"actorId\":\"alpha-0\",\"maneuver\":2},{\"actorId\":\"alpha-1\",\"maneuver\":3}],\"magnitude\":9,\"phase\":0}]",
+              "[\"reference.production-arena/joint-plan@75\",\"joint:alpha\",{\"id\":\"sector-11\",\"kind\":\"sector\"},{\"jointActions\":[{\"actorId\":\"alpha-0\",\"maneuver\":3},{\"actorId\":\"alpha-1\",\"maneuver\":4}],\"magnitude\":10,\"phase\":0}]",
+              "[\"reference.production-arena/joint-plan@76\",\"joint:alpha\",{\"id\":\"sector-12\",\"kind\":\"sector\"},{\"jointActions\":[{\"actorId\":\"alpha-0\",\"maneuver\":4},{\"actorId\":\"alpha-1\",\"maneuver\":5}],\"magnitude\":11,\"phase\":0}]",
+              "[\"reference.production-arena/joint-plan@77\",\"joint:alpha\",{\"id\":\"sector-13\",\"kind\":\"sector\"},{\"jointActions\":[{\"actorId\":\"alpha-0\",\"maneuver\":5},{\"actorId\":\"alpha-1\",\"maneuver\":6}],\"magnitude\":1,\"phase\":0}]",
+              "[\"reference.production-arena/joint-plan@78\",\"joint:alpha\",{\"id\":\"sector-14\",\"kind\":\"sector\"},{\"jointActions\":[{\"actorId\":\"alpha-0\",\"maneuver\":6},{\"actorId\":\"alpha-1\",\"maneuver\":7}],\"magnitude\":2,\"phase\":0}]",
+              "[\"reference.production-arena/joint-plan@79\",\"joint:alpha\",{\"id\":\"sector-15\",\"kind\":\"sector\"},{\"jointActions\":[{\"actorId\":\"alpha-0\",\"maneuver\":7},{\"actorId\":\"alpha-1\",\"maneuver\":0}],\"magnitude\":3,\"phase\":0}]",
+              "[\"reference.production-arena/joint-plan@80\",\"joint:alpha\",{\"id\":\"sector-16\",\"kind\":\"sector\"},{\"jointActions\":[{\"actorId\":\"alpha-0\",\"maneuver\":0},{\"actorId\":\"alpha-1\",\"maneuver\":1}],\"magnitude\":4,\"phase\":0}]",
+              "[\"reference.production-arena/joint-plan@81\",\"joint:alpha\",{\"id\":\"sector-17\",\"kind\":\"sector\"},{\"jointActions\":[{\"actorId\":\"alpha-0\",\"maneuver\":1},{\"actorId\":\"alpha-1\",\"maneuver\":2}],\"magnitude\":5,\"phase\":0}]",
+              "[\"reference.production-arena/joint-plan@82\",\"joint:alpha\",{\"id\":\"sector-18\",\"kind\":\"sector\"},{\"jointActions\":[{\"actorId\":\"alpha-0\",\"maneuver\":2},{\"actorId\":\"alpha-1\",\"maneuver\":3}],\"magnitude\":6,\"phase\":0}]",
+              "[\"reference.production-arena/joint-plan@83\",\"joint:alpha\",{\"id\":\"sector-19\",\"kind\":\"sector\"},{\"jointActions\":[{\"actorId\":\"alpha-0\",\"maneuver\":3},{\"actorId\":\"alpha-1\",\"maneuver\":4}],\"magnitude\":7,\"phase\":0}]",
+              "[\"reference.production-arena/joint-plan@84\",\"joint:alpha\",{\"id\":\"sector-20\",\"kind\":\"sector\"},{\"jointActions\":[{\"actorId\":\"alpha-0\",\"maneuver\":4},{\"actorId\":\"alpha-1\",\"maneuver\":5}],\"magnitude\":8,\"phase\":0}]",
+              "[\"reference.production-arena/joint-plan@85\",\"joint:alpha\",{\"id\":\"sector-21\",\"kind\":\"sector\"},{\"jointActions\":[{\"actorId\":\"alpha-0\",\"maneuver\":5},{\"actorId\":\"alpha-1\",\"maneuver\":6}],\"magnitude\":9,\"phase\":0}]",
+              "[\"reference.production-arena/joint-plan@86\",\"joint:alpha\",{\"id\":\"sector-22\",\"kind\":\"sector\"},{\"jointActions\":[{\"actorId\":\"alpha-0\",\"maneuver\":6},{\"actorId\":\"alpha-1\",\"maneuver\":7}],\"magnitude\":10,\"phase\":0}]",
+              "[\"reference.production-arena/joint-plan@87\",\"joint:alpha\",{\"id\":\"sector-23\",\"kind\":\"sector\"},{\"jointActions\":[{\"actorId\":\"alpha-0\",\"maneuver\":7},{\"actorId\":\"alpha-1\",\"maneuver\":0}],\"magnitude\":11,\"phase\":0}]",
+              "[\"reference.production-arena/joint-plan@88\",\"joint:alpha\",{\"id\":\"sector-24\",\"kind\":\"sector\"},{\"jointActions\":[{\"actorId\":\"alpha-0\",\"maneuver\":0},{\"actorId\":\"alpha-1\",\"maneuver\":1}],\"magnitude\":1,\"phase\":0}]",
+              "[\"reference.production-arena/joint-plan@89\",\"joint:alpha\",{\"id\":\"sector-25\",\"kind\":\"sector\"},{\"jointActions\":[{\"actorId\":\"alpha-0\",\"maneuver\":1},{\"actorId\":\"alpha-1\",\"maneuver\":2}],\"magnitude\":2,\"phase\":0}]",
+              "[\"reference.production-arena/joint-plan@90\",\"joint:alpha\",{\"id\":\"sector-26\",\"kind\":\"sector\"},{\"jointActions\":[{\"actorId\":\"alpha-0\",\"maneuver\":2},{\"actorId\":\"alpha-1\",\"maneuver\":3}],\"magnitude\":3,\"phase\":0}]",
+              "[\"reference.production-arena/joint-plan@91\",\"joint:alpha\",{\"id\":\"sector-27\",\"kind\":\"sector\"},{\"jointActions\":[{\"actorId\":\"alpha-0\",\"maneuver\":3},{\"actorId\":\"alpha-1\",\"maneuver\":4}],\"magnitude\":4,\"phase\":0}]",
+              "[\"reference.production-arena/joint-plan@92\",\"joint:alpha\",{\"id\":\"sector-28\",\"kind\":\"sector\"},{\"jointActions\":[{\"actorId\":\"alpha-0\",\"maneuver\":4},{\"actorId\":\"alpha-1\",\"maneuver\":5}],\"magnitude\":5,\"phase\":0}]",
+              "[\"reference.production-arena/joint-plan@93\",\"joint:alpha\",{\"id\":\"sector-29\",\"kind\":\"sector\"},{\"jointActions\":[{\"actorId\":\"alpha-0\",\"maneuver\":5},{\"actorId\":\"alpha-1\",\"maneuver\":6}],\"magnitude\":6,\"phase\":0}]",
+              "[\"reference.production-arena/joint-plan@94\",\"joint:alpha\",{\"id\":\"sector-30\",\"kind\":\"sector\"},{\"jointActions\":[{\"actorId\":\"alpha-0\",\"maneuver\":6},{\"actorId\":\"alpha-1\",\"maneuver\":7}],\"magnitude\":7,\"phase\":0}]",
+              "[\"reference.production-arena/joint-plan@95\",\"joint:alpha\",{\"id\":\"sector-31\",\"kind\":\"sector\"},{\"jointActions\":[{\"actorId\":\"alpha-0\",\"maneuver\":7},{\"actorId\":\"alpha-1\",\"maneuver\":0}],\"magnitude\":8,\"phase\":0}]"
+            ],
+            "name": "deterministic-legal-actions",
+            "pass": true
+          },
+          {
+            "name": "deterministic-outcome",
+            "pass": true,
+            "scalar": 0,
+            "vectorKeys": [
+              "opponentScore",
+              "ownScore",
+              "tick"
+            ]
+          },
+          {
+            "name": "deterministic-seeded-transition",
+            "pass": true,
+            "terminal": false,
+            "transitionHash": "253d268dc713ceb964079f2fa2a8e8590fc538c8a0dd3895eba6cf988c6b521e"
+          },
+          {
+            "name": "transition-outcome-contract",
+            "pass": true,
+            "scalar": -0.6857897248189883
+          },
+          {
+            "name": "deterministic-prime-recommendation",
+            "pass": true,
+            "recommendationHash": "6bce36a97f87c8c3da89182bb6a7a0e6f8b480483eaec3772759915621ef1bc5",
+            "selectedActionKey": "[\"reference.production-arena/joint-plan@86\",\"joint:alpha\",{\"id\":\"sector-22\",\"kind\":\"sector\"},{\"jointActions\":[{\"actorId\":\"alpha-0\",\"maneuver\":6},{\"actorId\":\"alpha-1\",\"maneuver\":7}],\"magnitude\":10,\"phase\":0}]"
+          },
+          {
+            "name": "prime-legality-and-visit-accounting",
+            "pass": true,
+            "rankedActionCount": 96,
+            "visits": 160
+          },
+          {
+            "canDispatch": false,
+            "canMutateLiveWorld": false,
+            "name": "recommendation-r0-boundary",
+            "pass": true,
+            "tier": "R0"
+          },
+          {
+            "name": "recommendation-replay",
+            "pass": true,
+            "replayHash": "6bce36a97f87c8c3da89182bb6a7a0e6f8b480483eaec3772759915621ef1bc5"
+          }
+        ],
+        "deterministicEvidenceHash": "6bfd9ca36d9281b35c8dd087d8b06a427f7cf3dde68529b44c070d9bb0b919f8"
+      },
+      {
+        "evidenceVersion": 7,
+        "adapter": {
+          "contractVersion": 1,
+          "gameId": "reference-token-race",
+          "adapterId": "reference-token-race-adapter",
+          "adapterVersion": "1.1.0",
+          "deterministic": true,
+          "observationSchemas": [
+            {
+              "schemaId": "reference-token-race/observation",
+              "schemaVersion": 1,
+              "variableSize": true
+            }
+          ],
+          "capabilities": {
+            "imperfectInformation": false,
+            "stochasticTransitions": false,
+            "simultaneousActions": false,
+            "variableObservationSize": true
+          },
+          "authority": {
+            "tier": "R0",
+            "executionInterface": false
+          },
+          "metadata": {
+            "purpose": "universal-kernel conformance reference game",
+            "packageMode": "external-production-adapter",
+            "purposeLabel": "production package discovery proof",
+            "snapshotIngestion": true
+          }
+        },
+        "certification": {
+          "configSchemaSha256": "ec629e6eaaa37b6e8d59622323966ff32e98891ff24aac87b4774d06a5fa6da1",
+          "configurationHash": "29fb846a7dee75a11a3b4cd83cad86dcdc4de4de2398bf1cafd4e23253bdbd66",
+          "entrySha256": "7e81f39b52a585631854df8b3d1a09a295db8fcde77e6d195df1cb6a629f4d46",
+          "lockHash": "89a2a752faa4c7a4ed2189beca873ada2c98a76e2736331921c13d47dc3c4634",
+          "packageName": "@sentinel-grid-adapters/reference-token-race",
+          "packageSha256": "0a473d7cb1fab7c56e6b2cbfcefd0928497e539accd4856a1620d91821f4cf82",
+          "packageVersion": "1.1.0",
+          "profileName": "production-r0",
+          "profileVersion": 4,
+          "snapshotFormatsHash": "315f193c3308b059d7487ba569e357fb2924317721f39bf45d38d69176e8811e"
+        },
+        "pass": true,
+        "checks": [
+          {
+            "configSchemaSha256": "ec629e6eaaa37b6e8d59622323966ff32e98891ff24aac87b4774d06a5fa6da1",
+            "configurationHash": "29fb846a7dee75a11a3b4cd83cad86dcdc4de4de2398bf1cafd4e23253bdbd66",
+            "entrySha256": "7e81f39b52a585631854df8b3d1a09a295db8fcde77e6d195df1cb6a629f4d46",
+            "lockHash": "89a2a752faa4c7a4ed2189beca873ada2c98a76e2736331921c13d47dc3c4634",
+            "name": "production-package-lock",
+            "packageName": "@sentinel-grid-adapters/reference-token-race",
+            "packageSha256": "0a473d7cb1fab7c56e6b2cbfcefd0928497e539accd4856a1620d91821f4cf82",
+            "packageVersion": "1.1.0",
+            "pass": true
+          },
+          {
+            "name": "certification-profile",
+            "pass": true,
+            "profileName": "production-r0",
+            "profileVersion": 4,
+            "requiredAuthority": "R0",
+            "requiredCapabilities": {},
+            "requiresSnapshotIngestion": true
+          },
+          {
+            "formatCount": 1,
+            "importerMethods": [
+              "importSnapshot"
+            ],
+            "name": "snapshot-ingestion-contract",
+            "pass": true
+          },
+          {
+            "formats": [
+              {
+                "formatId": "reference-token-race/state-json",
+                "formatVersion": 1,
+                "importerMethod": "importSnapshot",
+                "schemaSha256": "3e73dd311777c2c29c47d132a5b68b103915feb9562a5ce1870720458113ff96"
+              }
+            ],
+            "name": "snapshot-format-lock",
+            "pass": true,
+            "snapshotFormatsHash": "315f193c3308b059d7487ba569e357fb2924317721f39bf45d38d69176e8811e"
+          },
+          {
+            "adapterId": "reference-token-race-adapter",
+            "gameId": "reference-token-race",
+            "name": "adapter-contract",
+            "pass": true
+          },
+          {
+            "name": "no-execution-surface",
+            "pass": true,
+            "prohibitedMemberCount": 0
+          },
+          {
+            "canDispatch": false,
+            "name": "r0-default-denial",
+            "pass": true,
+            "tier": "R0"
+          },
+          {
+            "name": "deterministic-initial-state",
+            "pass": true,
+            "stateHash": "f9c62eb764772025a3efa42faaeb4656b651e438a97a8ec6f3558b98af17f176"
+          },
+          {
+            "cloneHash": "f9c62eb764772025a3efa42faaeb4656b651e438a97a8ec6f3558b98af17f176",
+            "name": "clone-content-fidelity",
+            "pass": true
+          },
+          {
+            "name": "terminal-determinism",
+            "pass": true,
+            "terminal": false
+          },
+          {
+            "featureCount": 5,
+            "name": "deterministic-observation",
+            "pass": true,
+            "schemaId": "reference-token-race/observation",
+            "schemaVersion": 1
+          },
+          {
+            "actionCount": 2,
+            "actionKeys": [
+              "[\"reference.token-race/take@1\",\"player-1\",null,{\"amount\":1}]",
+              "[\"reference.token-race/take@2\",\"player-1\",null,{\"amount\":2}]"
+            ],
+            "name": "deterministic-legal-actions",
+            "pass": true
+          },
+          {
+            "name": "deterministic-outcome",
+            "pass": true,
+            "scalar": 0,
+            "vectorKeys": [
+              "opponentScore",
+              "ownScore",
+              "scoreDifference"
+            ]
+          },
+          {
+            "name": "deterministic-seeded-transition",
+            "pass": true,
+            "terminal": false,
+            "transitionHash": "93daa96a13f39a9d29fb9dfbe2b615244396eb857022387ce83f48f2d313d98a"
+          },
+          {
+            "name": "transition-outcome-contract",
+            "pass": true,
+            "scalar": 0.1
+          },
+          {
+            "name": "deterministic-prime-recommendation",
+            "pass": true,
+            "recommendationHash": "f7b3a6a4a77668364a76a146cbebed371831b32d20c18adf376043e7bd8dc799",
+            "selectedActionKey": "[\"reference.token-race/take@2\",\"player-1\",null,{\"amount\":2}]"
+          },
+          {
+            "name": "prime-legality-and-visit-accounting",
+            "pass": true,
+            "rankedActionCount": 2,
+            "visits": 128
+          },
+          {
+            "canDispatch": false,
+            "canMutateLiveWorld": false,
+            "name": "recommendation-r0-boundary",
+            "pass": true,
+            "tier": "R0"
+          },
+          {
+            "name": "recommendation-replay",
+            "pass": true,
+            "replayHash": "f7b3a6a4a77668364a76a146cbebed371831b32d20c18adf376043e7bd8dc799"
+          }
+        ],
+        "deterministicEvidenceHash": "d74005920201bc9a2d07ecc3f9aed95ab25f801a9f09a5091f233016f38daff8"
+      },
+      {
+        "evidenceVersion": 7,
+        "adapter": {
+          "contractVersion": 1,
+          "gameId": "zeknova",
+          "adapterId": "zeknova-stage1az-shadow-adapter",
+          "adapterVersion": "1.0.0",
+          "deterministic": true,
+          "observationSchemas": [
+            {
+              "schemaId": "zeknova/stage1az-faction-observation-592",
+              "schemaVersion": 1,
+              "variableSize": false
+            }
+          ],
+          "capabilities": {
+            "imperfectInformation": true,
+            "stochasticTransitions": true,
+            "simultaneousActions": false,
+            "variableObservationSize": false
+          },
+          "authority": {
+            "tier": "R0",
+            "executionInterface": false
+          },
+          "metadata": {
+            "packageMode": "external-production-adapter",
+            "sourceLineage": "Stage 1A-Z",
+            "engineIdentity": "sentinel-prime-root-puct-v1-development",
+            "observationFeatureCount": 592,
+            "legalActionCount": 6,
+            "actionCatalog": [
+              "stabilize",
+              "scout_region",
+              "intercept_contact",
+              "fortify_known_route",
+              "repair_known_structure",
+              "share_intelligence"
+            ],
+            "canonicalTargetSlots": true,
+            "factionPrivateKnowledge": true,
+            "snapshotIngestion": true,
+            "behavioralParity": "frozen-corpus-certified"
+          }
+        },
+        "certification": {
+          "configSchemaSha256": "f1682e6a10396adc3ecb08ec7007c984e7835041d34eb30b11cbe38e658dbaf3",
+          "configurationHash": "679725ac5f7bbbd9440cab81be6e82a9b7b067aefaef20cd16eed3b1b2b9cdb9",
+          "entrySha256": "a6967d039d6cd5cb395b5544d2e0e9cee83ad92cb7a7482c12cd24c8f1f7a7fd",
+          "lockHash": "89a2a752faa4c7a4ed2189beca873ada2c98a76e2736331921c13d47dc3c4634",
+          "packageName": "@sentinel-grid-adapters/zeknova-stage1az-shadow",
+          "packageSha256": "f59be4ddfa56f57df65066c6a87ddd26ca11578dc6f8db30fc8bda0fdbfec2fe",
+          "packageVersion": "1.0.0",
+          "profileName": "zeknova-parity-r0",
+          "profileVersion": 4,
+          "snapshotFormatsHash": "882446c247c46e8858d2584351472119177a269863456aeb9f8df2416db1c38f"
+        },
+        "pass": true,
+        "checks": [
+          {
+            "configSchemaSha256": "f1682e6a10396adc3ecb08ec7007c984e7835041d34eb30b11cbe38e658dbaf3",
+            "configurationHash": "679725ac5f7bbbd9440cab81be6e82a9b7b067aefaef20cd16eed3b1b2b9cdb9",
+            "entrySha256": "a6967d039d6cd5cb395b5544d2e0e9cee83ad92cb7a7482c12cd24c8f1f7a7fd",
+            "lockHash": "89a2a752faa4c7a4ed2189beca873ada2c98a76e2736331921c13d47dc3c4634",
+            "name": "production-package-lock",
+            "packageName": "@sentinel-grid-adapters/zeknova-stage1az-shadow",
+            "packageSha256": "f59be4ddfa56f57df65066c6a87ddd26ca11578dc6f8db30fc8bda0fdbfec2fe",
+            "packageVersion": "1.0.0",
+            "pass": true
+          },
+          {
+            "name": "certification-profile",
+            "pass": true,
+            "profileName": "zeknova-parity-r0",
+            "profileVersion": 4,
+            "requiredAuthority": "R0",
+            "requiredCapabilities": {
+              "imperfectInformation": true,
+              "simultaneousActions": false,
+              "stochasticTransitions": true,
+              "variableObservationSize": false
+            },
+            "requiresSnapshotIngestion": true
+          },
+          {
+            "formatCount": 1,
+            "importerMethods": [
+              "importSnapshot"
+            ],
+            "name": "snapshot-ingestion-contract",
+            "pass": true
+          },
+          {
+            "formats": [
+              {
+                "formatId": "zeknova/stage1az-faction-state-json",
+                "formatVersion": 1,
+                "importerMethod": "importSnapshot",
+                "schemaSha256": "7fcddf75a3659933cb060d390d84b05d0a17a11a74bfa4a10cbdfcb23009e129"
+              }
+            ],
+            "name": "snapshot-format-lock",
+            "pass": true,
+            "snapshotFormatsHash": "882446c247c46e8858d2584351472119177a269863456aeb9f8df2416db1c38f"
+          },
+          {
+            "adapterId": "zeknova-stage1az-shadow-adapter",
+            "gameId": "zeknova",
+            "name": "adapter-contract",
+            "pass": true
+          },
+          {
+            "name": "no-execution-surface",
+            "pass": true,
+            "prohibitedMemberCount": 0
+          },
+          {
+            "canDispatch": false,
+            "name": "r0-default-denial",
+            "pass": true,
+            "tier": "R0"
+          },
+          {
+            "name": "deterministic-initial-state",
+            "pass": true,
+            "stateHash": "f454b7f1cd7b89d413e543b9301748fc06fdd80d6db500b55aa47e121d294d8b"
+          },
+          {
+            "cloneHash": "f454b7f1cd7b89d413e543b9301748fc06fdd80d6db500b55aa47e121d294d8b",
+            "name": "clone-content-fidelity",
+            "pass": true
+          },
+          {
+            "name": "terminal-determinism",
+            "pass": true,
+            "terminal": false
+          },
+          {
+            "featureCount": 592,
+            "name": "deterministic-observation",
+            "pass": true,
+            "schemaId": "zeknova/stage1az-faction-observation-592",
+            "schemaVersion": 1
+          },
+          {
+            "actionCount": 6,
+            "actionKeys": [
+              "[\"zeknova.stage1az/stabilize\",\"forest\",{\"id\":\"forest:settlement:0\",\"kind\":\"settlement\",\"known\":true,\"slot\":0},{\"legacyActionIndex\":0,\"targetSlot\":0}]",
+              "[\"zeknova.stage1az/scout_region\",\"forest\",{\"id\":\"forest:region:1\",\"kind\":\"region\",\"known\":true,\"slot\":1},{\"legacyActionIndex\":1,\"targetSlot\":1}]",
+              "[\"zeknova.stage1az/intercept_contact\",\"forest\",{\"id\":\"forest:contact:2\",\"kind\":\"contact\",\"known\":true,\"slot\":2},{\"legacyActionIndex\":2,\"targetSlot\":2}]",
+              "[\"zeknova.stage1az/fortify_known_route\",\"forest\",{\"id\":\"forest:route:3\",\"kind\":\"route\",\"known\":true,\"slot\":3},{\"legacyActionIndex\":3,\"targetSlot\":3}]",
+              "[\"zeknova.stage1az/repair_known_structure\",\"forest\",{\"id\":\"forest:structure:4\",\"kind\":\"structure\",\"known\":true,\"slot\":4},{\"legacyActionIndex\":4,\"targetSlot\":4}]",
+              "[\"zeknova.stage1az/share_intelligence\",\"forest\",{\"id\":\"forest:faction:5\",\"kind\":\"faction\",\"known\":true,\"slot\":5},{\"legacyActionIndex\":5,\"targetSlot\":5}]"
+            ],
+            "name": "deterministic-legal-actions",
+            "pass": true
+          },
+          {
+            "name": "deterministic-outcome",
+            "pass": true,
+            "scalar": 0.5592,
+            "vectorKeys": [
+              "infrastructure",
+              "intelligence",
+              "resources",
+              "routeIntegrity",
+              "stability",
+              "threat"
+            ]
+          },
+          {
+            "name": "deterministic-seeded-transition",
+            "pass": true,
+            "terminal": false,
+            "transitionHash": "cdeebda0cb10fba3c9a66572bb8410a3a0262505e8b0301185ca2932e96bd400"
+          },
+          {
+            "name": "transition-outcome-contract",
+            "pass": true,
+            "scalar": 0.5692176
+          },
+          {
+            "name": "deterministic-prime-recommendation",
+            "pass": true,
+            "recommendationHash": "76e66971ac2440d8f62ae176356a3b1868354512c6b12881e4757e2031fdf638",
+            "selectedActionKey": "[\"zeknova.stage1az/stabilize\",\"forest\",{\"id\":\"forest:settlement:0\",\"kind\":\"settlement\",\"known\":true,\"slot\":0},{\"legacyActionIndex\":0,\"targetSlot\":0}]"
+          },
+          {
+            "name": "prime-legality-and-visit-accounting",
+            "pass": true,
+            "rankedActionCount": 6,
+            "visits": 320
+          },
+          {
+            "canDispatch": false,
+            "canMutateLiveWorld": false,
+            "name": "recommendation-r0-boundary",
+            "pass": true,
+            "tier": "R0"
+          },
+          {
+            "name": "recommendation-replay",
+            "pass": true,
+            "replayHash": "76e66971ac2440d8f62ae176356a3b1868354512c6b12881e4757e2031fdf638"
+          }
+        ],
+        "deterministicEvidenceHash": "276490fef2255bd6e5e8184e05903b5f7c2842cf58a94f806adf2eee14781635"
+      },
+      {
+        "evidenceVersion": 7,
+        "adapter": {
+          "contractVersion": 1,
+          "gameId": "reference-token-race",
+          "adapterId": "reference-token-race-adapter",
+          "adapterVersion": "1.1.0",
+          "deterministic": true,
+          "observationSchemas": [
+            {
+              "schemaId": "reference-token-race/observation",
+              "schemaVersion": 1,
+              "variableSize": true
+            }
+          ],
+          "capabilities": {
+            "imperfectInformation": false,
+            "stochasticTransitions": false,
+            "simultaneousActions": false,
+            "variableObservationSize": true
+          },
+          "authority": {
+            "tier": "R0",
+            "executionInterface": false
+          },
+          "metadata": {
+            "purpose": "universal-kernel conformance reference game",
+            "packageMode": "external-production-adapter",
+            "purposeLabel": "production package discovery proof",
+            "snapshotIngestion": true
+          }
+        },
+        "certification": {
+          "adapterLockHash": "89a2a752faa4c7a4ed2189beca873ada2c98a76e2736331921c13d47dc3c4634",
+          "envelopeHash": "2ae53c4d29244dbca9e69c44f4432cc3a56f5bdcbfed34b78b2f36933f3a04d8",
+          "evidenceKind": "production-snapshot-ingestion",
+          "identity": "reference-token-race:reference-token-race-adapter",
+          "importedStateHash": "4ff76ffc78e7eefacdf670de21780841f9ab0efa954207e7788f103d5f99f817",
+          "payloadHash": "4ff76ffc78e7eefacdf670de21780841f9ab0efa954207e7788f103d5f99f817",
+          "snapshotId": "token-race-certification-midgame-1",
+          "snapshotSchemaSha256": "3e73dd311777c2c29c47d132a5b68b103915feb9562a5ce1870720458113ff96"
+        },
+        "pass": true,
+        "checks": [
+          {
+            "envelopeHash": "2ae53c4d29244dbca9e69c44f4432cc3a56f5bdcbfed34b78b2f36933f3a04d8",
+            "name": "snapshot-envelope-contract",
+            "pass": true
+          },
+          {
+            "name": "snapshot-schema-validation",
+            "pass": true,
+            "snapshotSchemaSha256": "3e73dd311777c2c29c47d132a5b68b103915feb9562a5ce1870720458113ff96"
+          },
+          {
+            "adapterLockHash": "89a2a752faa4c7a4ed2189beca873ada2c98a76e2736331921c13d47dc3c4634",
+            "name": "snapshot-package-lock",
+            "packageSha256": "0a473d7cb1fab7c56e6b2cbfcefd0928497e539accd4856a1620d91821f4cf82",
+            "pass": true
+          },
+          {
+            "importedStateHash": "4ff76ffc78e7eefacdf670de21780841f9ab0efa954207e7788f103d5f99f817",
+            "name": "snapshot-imported-state",
+            "pass": true
+          },
+          {
+            "name": "snapshot-observer-contracts",
+            "observers": [
+              {
+                "featureCount": 7,
+                "legalActionCount": 3,
+                "legalActionsHash": "0422b53e85e3cb3b27c9a008edf6477c3c8302cba8c623c734cd0aea7e1adb16",
+                "observationHash": "17a39461d04bd0ecf2c62e0c8ed729d015457a0117c9bce7181485d0333ce126",
+                "observerId": "player-1",
+                "outcomeHash": "5a31424cab8674c9ddaea6522a7ca26eb6da58c9f0236a287fb1b263ab335070"
+              }
+            ],
+            "pass": true
+          },
+          {
+            "canDispatch": false,
+            "canMutateLiveWorld": false,
+            "name": "snapshot-r0-boundary",
+            "pass": true,
+            "tier": "R0"
+          },
+          {
+            "name": "snapshot-prime-recommendation",
+            "pass": true,
+            "recommendationHash": "658ec1d9e88a22969039ea8d89bc99e83902eba551013fdabb0ac41908205171",
+            "selectedActionKey": "[\"reference.token-race/take@bonus\",\"player-1\",{\"id\":\"bonus-1\",\"kind\":\"shared-bonus\"},{\"amount\":3}]"
+          }
+        ],
+        "deterministicEvidenceHash": "5a952192bef5b3bc27cf1d38f9d89db4691e1428a19f826e8b7868322c1d3111"
+      },
+      {
+        "evidenceVersion": 7,
+        "adapter": {
+          "contractVersion": 1,
+          "gameId": "reference-grid-rescue",
+          "adapterId": "reference-grid-rescue-adapter",
+          "adapterVersion": "1.1.0",
+          "deterministic": true,
+          "observationSchemas": [
+            {
+              "schemaId": "reference-grid-rescue/observation",
+              "schemaVersion": 1,
+              "variableSize": true
+            }
+          ],
+          "capabilities": {
+            "imperfectInformation": true,
+            "stochasticTransitions": true,
+            "simultaneousActions": false,
+            "variableObservationSize": true
+          },
+          "authority": {
+            "tier": "R0",
+            "executionInterface": false
+          },
+          "metadata": {
+            "purpose": "second structurally different Adapter SDK proof",
+            "packageMode": "external-production-adapter",
+            "configuredMaxTurns": 5,
+            "snapshotIngestion": true
+          }
+        },
+        "certification": {
+          "adapterLockHash": "89a2a752faa4c7a4ed2189beca873ada2c98a76e2736331921c13d47dc3c4634",
+          "envelopeHash": "36a8741249e7ee436d9e0748ec03b082ed195461b1c87cfe3337efbcc4802b11",
+          "evidenceKind": "production-snapshot-ingestion",
+          "identity": "reference-grid-rescue:reference-grid-rescue-adapter",
+          "importedStateHash": "5030e32df1f732020dc9a66bba60c79b86375b541100d1f87dd8e77537f04890",
+          "payloadHash": "5030e32df1f732020dc9a66bba60c79b86375b541100d1f87dd8e77537f04890",
+          "snapshotId": "grid-rescue-certification-midgame-1",
+          "snapshotSchemaSha256": "e0c86f1af64bcfd1a5b4c1fe19dc7d8b8ee3d0622ad8da052f90fda78ddacbb8"
+        },
+        "pass": true,
+        "checks": [
+          {
+            "envelopeHash": "36a8741249e7ee436d9e0748ec03b082ed195461b1c87cfe3337efbcc4802b11",
+            "name": "snapshot-envelope-contract",
+            "pass": true
+          },
+          {
+            "name": "snapshot-schema-validation",
+            "pass": true,
+            "snapshotSchemaSha256": "e0c86f1af64bcfd1a5b4c1fe19dc7d8b8ee3d0622ad8da052f90fda78ddacbb8"
+          },
+          {
+            "adapterLockHash": "89a2a752faa4c7a4ed2189beca873ada2c98a76e2736331921c13d47dc3c4634",
+            "name": "snapshot-package-lock",
+            "packageSha256": "22d0a12a14964d22eeefb3b3129ba3f6558be030d0ebae7a9fdad290f2d3a3e1",
+            "pass": true
+          },
+          {
+            "importedStateHash": "5030e32df1f732020dc9a66bba60c79b86375b541100d1f87dd8e77537f04890",
+            "name": "snapshot-imported-state",
+            "pass": true
+          },
+          {
+            "name": "snapshot-observer-contracts",
+            "observers": [
+              {
+                "featureCount": 8,
+                "legalActionCount": 4,
+                "legalActionsHash": "849bae09b78963ae22641bc2fd48d67b4ffb181334607b1258a3232cbfbdfba6",
+                "observationHash": "3db3c01c13c93537b808922c205d1241ef9eff07affc69826ed7729acf3967ad",
+                "observerId": "controller",
+                "outcomeHash": "bfc0797dcde66c0cb05018092c923f4cc58157f4b9adb2155836e401dcdd8ee6"
+              }
+            ],
+            "pass": true
+          },
+          {
+            "canDispatch": false,
+            "canMutateLiveWorld": false,
+            "name": "snapshot-r0-boundary",
+            "pass": true,
+            "tier": "R0"
+          },
+          {
+            "name": "snapshot-prime-recommendation",
+            "pass": true,
+            "recommendationHash": "20f49bb07ca958a82030ef784e800013b7f1361e29412491172fcddd6b67fe4d",
+            "selectedActionKey": "[\"reference.grid-rescue/assist\",\"controller\",{\"id\":\"north\",\"kind\":\"site\"},{\"energyCost\":2}]"
+          }
+        ],
+        "deterministicEvidenceHash": "e647de869c3dcf49dc5cd53fe4651a0fcf5e47121bcdaa538f4c9469a558c206"
+      },
+      {
+        "evidenceVersion": 7,
+        "adapter": {
+          "contractVersion": 1,
+          "gameId": "reference-production-arena",
+          "adapterId": "reference-production-arena-adapter",
+          "adapterVersion": "1.0.0",
+          "deterministic": true,
+          "observationSchemas": [
+            {
+              "schemaId": "reference-production-arena/observation",
+              "schemaVersion": 1,
+              "variableSize": true
+            }
+          ],
+          "capabilities": {
+            "imperfectInformation": true,
+            "stochasticTransitions": true,
+            "simultaneousActions": true,
+            "variableObservationSize": true
+          },
+          "authority": {
+            "tier": "R0",
+            "executionInterface": false
+          },
+          "metadata": {
+            "purpose": "production-scale conformance expansion fixture",
+            "packageMode": "external-production-adapter",
+            "snapshotIngestion": true,
+            "observationSize": 2048,
+            "legalActionCount": 96,
+            "actorCount": 4
+          }
+        },
+        "certification": {
+          "adapterLockHash": "89a2a752faa4c7a4ed2189beca873ada2c98a76e2736331921c13d47dc3c4634",
+          "envelopeHash": "48f01935a742908d2add591881e73134a2e988dcd43b4b50f4d341065a37ca51",
+          "evidenceKind": "production-snapshot-ingestion",
+          "identity": "reference-production-arena:reference-production-arena-adapter",
+          "importedStateHash": "c64d482953cca7d518811c342316f22537e3cee0b1f5eded976ea66de9c24e4a",
+          "payloadHash": "c64d482953cca7d518811c342316f22537e3cee0b1f5eded976ea66de9c24e4a",
+          "snapshotId": "production-arena-certification-midgame-1",
+          "snapshotSchemaSha256": "76941ea7664fa16828ea59676a562bcd4df3d68db9097a3b0bc1d68315a28c6e"
+        },
+        "pass": true,
+        "checks": [
+          {
+            "envelopeHash": "48f01935a742908d2add591881e73134a2e988dcd43b4b50f4d341065a37ca51",
+            "name": "snapshot-envelope-contract",
+            "pass": true
+          },
+          {
+            "name": "snapshot-schema-validation",
+            "pass": true,
+            "snapshotSchemaSha256": "76941ea7664fa16828ea59676a562bcd4df3d68db9097a3b0bc1d68315a28c6e"
+          },
+          {
+            "adapterLockHash": "89a2a752faa4c7a4ed2189beca873ada2c98a76e2736331921c13d47dc3c4634",
+            "name": "snapshot-package-lock",
+            "packageSha256": "92310d710e7a17723fadec997f98656ba33c653eb02a150469ba5049ae936bc6",
+            "pass": true
+          },
+          {
+            "importedStateHash": "c64d482953cca7d518811c342316f22537e3cee0b1f5eded976ea66de9c24e4a",
+            "name": "snapshot-imported-state",
+            "pass": true
+          },
+          {
+            "name": "snapshot-observer-contracts",
+            "observers": [
+              {
+                "featureCount": 2048,
+                "legalActionCount": 96,
+                "legalActionsHash": "a0c96803ed0613462b1dc5dc5115ae683ce66c2b0809b9a4008e8c3376ea5ba9",
+                "observationHash": "629cd8e5b90def229dfb8f0e76eb77c3032ce1804722cde7c5ba6b751ec9ce46",
+                "observerId": "alpha-0",
+                "outcomeHash": "875e4ac7130240417431db9d22e5242a6ec0b559514274cdd37081d287637785"
+              },
+              {
+                "featureCount": 2048,
+                "legalActionCount": 96,
+                "legalActionsHash": "a0c96803ed0613462b1dc5dc5115ae683ce66c2b0809b9a4008e8c3376ea5ba9",
+                "observationHash": "7c41e994be7c2a97d6f4583759833d820c70a167e63624ab4d48212519883b68",
+                "observerId": "alpha-1",
+                "outcomeHash": "875e4ac7130240417431db9d22e5242a6ec0b559514274cdd37081d287637785"
+              },
+              {
+                "featureCount": 2048,
+                "legalActionCount": 96,
+                "legalActionsHash": "9827608d8103e376c0ed0e3b8b32734a00102bbc13f77c11b4d5942a3cbfc570",
+                "observationHash": "ec1df5530119749c472610835b29a5361f03b53ffa08805728385d5a6c32212b",
+                "observerId": "beta-0",
+                "outcomeHash": "7401984b6e910b1a87da84197bde02b33482bf92994d5bdf88b4ba0e6a9f6b66"
+              },
+              {
+                "featureCount": 2048,
+                "legalActionCount": 96,
+                "legalActionsHash": "9827608d8103e376c0ed0e3b8b32734a00102bbc13f77c11b4d5942a3cbfc570",
+                "observationHash": "7c6915cb50d0cf52ba3dbface3440d95f6750523f375e12d6c21caf352c45a01",
+                "observerId": "beta-1",
+                "outcomeHash": "7401984b6e910b1a87da84197bde02b33482bf92994d5bdf88b4ba0e6a9f6b66"
+              }
+            ],
+            "pass": true
+          },
+          {
+            "canDispatch": false,
+            "canMutateLiveWorld": false,
+            "name": "snapshot-r0-boundary",
+            "pass": true,
+            "tier": "R0"
+          },
+          {
+            "name": "snapshot-prime-recommendation",
+            "pass": true,
+            "recommendationHash": "5495acc5e9a31f9c83ca9e870a8ea4c09c76cc1ad7597d4f63b1bd9e77c5de21",
+            "selectedActionKey": "[\"reference.production-arena/joint-plan@93\",\"joint:alpha\",{\"id\":\"sector-29\",\"kind\":\"sector\"},{\"jointActions\":[{\"actorId\":\"alpha-0\",\"maneuver\":5},{\"actorId\":\"alpha-1\",\"maneuver\":6}],\"magnitude\":6,\"phase\":0}]"
+          }
+        ],
+        "deterministicEvidenceHash": "b7fee52c165dcb2ce876d027a0cd40419b532dcbf64ec6eb0940b03d2aebf4d3"
+      },
+      {
+        "evidenceVersion": 7,
+        "adapter": {
+          "contractVersion": 1,
+          "gameId": "zeknova",
+          "adapterId": "zeknova-stage1az-shadow-adapter",
+          "adapterVersion": "1.0.0",
+          "deterministic": true,
+          "observationSchemas": [
+            {
+              "schemaId": "zeknova/stage1az-faction-observation-592",
+              "schemaVersion": 1,
+              "variableSize": false
+            }
+          ],
+          "capabilities": {
+            "imperfectInformation": true,
+            "stochasticTransitions": true,
+            "simultaneousActions": false,
+            "variableObservationSize": false
+          },
+          "authority": {
+            "tier": "R0",
+            "executionInterface": false
+          },
+          "metadata": {
+            "packageMode": "external-production-adapter",
+            "sourceLineage": "Stage 1A-Z",
+            "engineIdentity": "sentinel-prime-root-puct-v1-development",
+            "observationFeatureCount": 592,
+            "legalActionCount": 6,
+            "actionCatalog": [
+              "stabilize",
+              "scout_region",
+              "intercept_contact",
+              "fortify_known_route",
+              "repair_known_structure",
+              "share_intelligence"
+            ],
+            "canonicalTargetSlots": true,
+            "factionPrivateKnowledge": true,
+            "snapshotIngestion": true,
+            "behavioralParity": "frozen-corpus-certified"
+          }
+        },
+        "certification": {
+          "adapterLockHash": "89a2a752faa4c7a4ed2189beca873ada2c98a76e2736331921c13d47dc3c4634",
+          "envelopeHash": "0203f36a63d31eb48ad06dfa47b227f6777fef6188bf3d436cd43d44a313612d",
+          "evidenceKind": "production-snapshot-ingestion",
+          "identity": "zeknova:zeknova-stage1az-shadow-adapter",
+          "importedStateHash": "c4a9fe224a9486594685f945771a7dfd945300b4be314a914b01e7b957b204b8",
+          "payloadHash": "c4a9fe224a9486594685f945771a7dfd945300b4be314a914b01e7b957b204b8",
+          "snapshotId": "zeknova-stage1az-parity-01",
+          "snapshotSchemaSha256": "7fcddf75a3659933cb060d390d84b05d0a17a11a74bfa4a10cbdfcb23009e129"
+        },
+        "pass": true,
+        "checks": [
+          {
+            "envelopeHash": "0203f36a63d31eb48ad06dfa47b227f6777fef6188bf3d436cd43d44a313612d",
+            "name": "snapshot-envelope-contract",
+            "pass": true
+          },
+          {
+            "name": "snapshot-schema-validation",
+            "pass": true,
+            "snapshotSchemaSha256": "7fcddf75a3659933cb060d390d84b05d0a17a11a74bfa4a10cbdfcb23009e129"
+          },
+          {
+            "adapterLockHash": "89a2a752faa4c7a4ed2189beca873ada2c98a76e2736331921c13d47dc3c4634",
+            "name": "snapshot-package-lock",
+            "packageSha256": "f59be4ddfa56f57df65066c6a87ddd26ca11578dc6f8db30fc8bda0fdbfec2fe",
+            "pass": true
+          },
+          {
+            "importedStateHash": "c4a9fe224a9486594685f945771a7dfd945300b4be314a914b01e7b957b204b8",
+            "name": "snapshot-imported-state",
+            "pass": true
+          },
+          {
+            "name": "snapshot-observer-contracts",
+            "observers": [
+              {
+                "featureCount": 592,
+                "legalActionCount": 6,
+                "legalActionsHash": "7685f5226d7c627f05be2b87b4945bd3cb2adeef0bf8f5f010164b0b23b180fa",
+                "observationHash": "77891cc8e3229065188cb9ed6750f6c3e8494f02da5d08052386ae691448be5d",
+                "observerId": "forest",
+                "outcomeHash": "eb8de918ccdf987259adedae869afa9f30514088c282d635cfc0018784369c00"
+              },
+              {
+                "featureCount": 592,
+                "legalActionCount": 3,
+                "legalActionsHash": "7ce3478be154559991895eb376a3656a787cf4f83f1d533a685e33b31b5075fd",
+                "observationHash": "a4aebf7f3e5c708b015039ae09bf65be0cbc2fa80cfb400fa372bf7843f812f4",
+                "observerId": "desert",
+                "outcomeHash": "40aea4953e86e8526becaa53d66b6e1c00e963a3a102c920bc2861150a858e4d"
+              }
+            ],
+            "pass": true
+          },
+          {
+            "canDispatch": false,
+            "canMutateLiveWorld": false,
+            "name": "snapshot-r0-boundary",
+            "pass": true,
+            "tier": "R0"
+          },
+          {
+            "name": "snapshot-prime-recommendation",
+            "pass": true,
+            "recommendationHash": "eede1b9ca4e3a2e7e715f6a0a17aa424511b2d58c760034f5d640a437b722251",
+            "selectedActionKey": "[\"zeknova.stage1az/stabilize\",\"forest\",{\"id\":\"forest:settlement:0\",\"kind\":\"settlement\",\"known\":true,\"slot\":0},{\"legacyActionIndex\":0,\"targetSlot\":0}]"
+          }
+        ],
+        "deterministicEvidenceHash": "c1ae9d7d676db6614e45f8a496bc8ae793bfc1d1428276bcc6188dd6caa2843a"
+      },
+      {
+        "evidenceVersion": 7,
+        "adapter": {
+          "contractVersion": 1,
+          "gameId": "reference-production-arena",
+          "adapterId": "reference-production-arena-adapter",
+          "adapterVersion": "1.0.0",
+          "deterministic": true,
+          "observationSchemas": [
+            {
+              "schemaId": "reference-production-arena/observation",
+              "schemaVersion": 1,
+              "variableSize": true
+            }
+          ],
+          "capabilities": {
+            "imperfectInformation": true,
+            "stochasticTransitions": true,
+            "simultaneousActions": true,
+            "variableObservationSize": true
+          },
+          "authority": {
+            "tier": "R0",
+            "executionInterface": false
+          },
+          "metadata": {
+            "purpose": "production-scale conformance expansion fixture",
+            "packageMode": "external-production-adapter",
+            "snapshotIngestion": true,
+            "observationSize": 2048,
+            "legalActionCount": 96,
+            "actorCount": 4
+          }
+        },
+        "certification": {
+          "adapterLockHash": "89a2a752faa4c7a4ed2189beca873ada2c98a76e2736331921c13d47dc3c4634",
+          "configurationHash": "8b9ae66ed1aae05797e56ea8e496db21be9f553aac642d8785c314918d183880",
+          "evidenceKind": "production-conformance-expansion",
+          "identity": "reference-production-arena:reference-production-arena-adapter",
+          "packageSha256": "92310d710e7a17723fadec997f98656ba33c653eb02a150469ba5049ae936bc6",
+          "profileVersion": 1
+        },
+        "pass": true,
+        "checks": [
+          {
+            "name": "production-scale-profile",
+            "pass": true,
+            "profileName": "production-scale-r0",
+            "profileVersion": 4
+          },
+          {
+            "minimumFeatureCount": 2048,
+            "name": "large-variable-observation-surface",
+            "observerCount": 4,
+            "pass": true
+          },
+          {
+            "minimumLegalActionCount": 96,
+            "name": "large-legal-action-surface",
+            "pass": true
+          },
+          {
+            "distinctObservationHashCount": 4,
+            "name": "multi-observer-private-information",
+            "observerCount": 4,
+            "pass": true
+          },
+          {
+            "decisionActorCount": 2,
+            "name": "multi-actor-simultaneous-action-bundles",
+            "pass": true,
+            "simultaneousBundleCount": 384
+          },
+          {
+            "name": "deterministic-stress-recommendations",
+            "pass": true,
+            "recommendationHash": "b96231c9975b787637d11eba9b7df9c305a0ce9935e1c43ffd6dec9424d8eb60",
+            "repeatCount": 3
+          },
+          {
+            "finalStateHash": "854060c5d993d6cbd384d502b5ef66dfb7e4123d2ee5708e1a6013c457ebbbd8",
+            "name": "long-transition-determinism",
+            "pass": true,
+            "transitionSteps": 128
+          },
+          {
+            "name": "high-volume-snapshot-ingestion",
+            "pass": true,
+            "recordCount": 13,
+            "snapshotCount": 12
+          },
+          {
+            "failureCount": 2,
+            "name": "malformed-snapshot-failure-isolation",
+            "pass": true,
+            "successCount": 1
+          },
+          {
+            "accepted": 4,
+            "maxRecords": 4,
+            "name": "snapshot-quota-enforcement",
+            "pass": true,
+            "rejected": 1
+          },
+          {
+            "after": 13,
+            "before": 14,
+            "name": "snapshot-lifecycle-release",
+            "pass": true
+          },
+          {
+            "ceilingsMs": {
+              "batchIngestion": 5000,
+              "legalActions": 1000,
+              "observe": 1000,
+              "recommendation": 5000
+            },
+            "name": "performance-ceilings",
+            "pass": true
+          },
+          {
+            "canDispatch": false,
+            "canMutateLiveWorld": false,
+            "name": "source-state-and-authority-boundary",
+            "pass": true,
+            "sourceStateHash": "c64d482953cca7d518811c342316f22537e3cee0b1f5eded976ea66de9c24e4a",
+            "tier": "R0"
+          }
+        ],
+        "deterministicEvidenceHash": "a8c2f5949f4fa70bfde5397e626cb55b2e97979a4e7debb2e0f247ec15d60811"
+      },
+      {
+        "evidenceVersion": 7,
+        "adapter": {
+          "contractVersion": 1,
+          "gameId": "zeknova",
+          "adapterId": "zeknova-stage1az-shadow-adapter",
+          "adapterVersion": "1.0.0",
+          "deterministic": true,
+          "observationSchemas": [
+            {
+              "schemaId": "zeknova/stage1az-faction-observation-592",
+              "schemaVersion": 1,
+              "variableSize": false
+            }
+          ],
+          "capabilities": {
+            "imperfectInformation": true,
+            "stochasticTransitions": true,
+            "simultaneousActions": false,
+            "variableObservationSize": false
+          },
+          "authority": {
+            "tier": "R0",
+            "executionInterface": false
+          },
+          "metadata": {
+            "packageMode": "external-production-adapter",
+            "sourceLineage": "Stage 1A-Z",
+            "engineIdentity": "sentinel-prime-root-puct-v1-development",
+            "observationFeatureCount": 592,
+            "legalActionCount": 6,
+            "actionCatalog": [
+              "stabilize",
+              "scout_region",
+              "intercept_contact",
+              "fortify_known_route",
+              "repair_known_structure",
+              "share_intelligence"
+            ],
+            "canonicalTargetSlots": true,
+            "factionPrivateKnowledge": true,
+            "snapshotIngestion": true,
+            "behavioralParity": "frozen-corpus-certified"
+          }
+        },
+        "certification": {
+          "actionCount": 6,
+          "authority": "R0",
+          "baselineHash": "ceeae0ec743ead62a156a69e07b0a5c780329bc2cfa2c6087c71bad8d9714aa1",
+          "evidenceKind": "zeknova-stage1az-behavioral-parity",
+          "fixtureCount": 6,
+          "legacyEngineIdentity": "sentinel-prime-root-puct-v1-development",
+          "observationFeatureCount": 592,
+          "parityVersion": 1,
+          "sourceLineage": "Stage 1A-Z"
+        },
+        "pass": true,
+        "checks": [
+          {
+            "actionCount": 6,
+            "adapterVersion": "1.0.0",
+            "engineIdentity": "sentinel-prime-root-puct-v1-development",
+            "name": "zeknova-production-manifest",
+            "observationFeatureCount": 592,
+            "pass": true
+          },
+          {
+            "baselineHash": "ceeae0ec743ead62a156a69e07b0a5c780329bc2cfa2c6087c71bad8d9714aa1",
+            "fixtureCount": 6,
+            "name": "frozen-parity-baseline-integrity",
+            "pass": true
+          },
+          {
+            "distinctLegalMasks": 6,
+            "distinctSelectedActions": 3,
+            "fixtureCount": 6,
+            "name": "fixture-corpus-completeness",
+            "pass": true
+          },
+          {
+            "featureCount": 592,
+            "fixtureCount": 6,
+            "name": "exact-592-feature-parity",
+            "observationHashes": [
+              "fac76b33160ac437a012ddb5ffaa7781de05e4327bef4b7c0a1455b4e6c46efb",
+              "d52966ffe0a8865d77eae5dc511e328062b1113990f3f433565282db0e74aaa9",
+              "8bf50816e54ce261094d9942c1670809ce78d0b21ed968e180fc89f20f75a4da",
+              "a8176609767aac0018b36c47fcb47938166467f080418089a298f67cc703dc21",
+              "2ec220f9324fb78da10b8934273b8e679fd08a7de0b257844ac218f79045db1d",
+              "403e99df2a4c0a1ffc9bca6069892dca43c450d6b3d09875ad27c15be5caa001"
+            ],
+            "pass": true
+          },
+          {
+            "actionCatalog": [
+              "stabilize",
+              "scout_region",
+              "intercept_contact",
+              "fortify_known_route",
+              "repair_known_structure",
+              "share_intelligence"
+            ],
+            "legalMaskHashes": [
+              "c18126723e74d9b67f28c511ccfdb9f1572ac367ba4e7a70d60c4378ae87b870",
+              "776c72edc0f21890edcac24726fb0b6aab9ebe3f49c828ecda728866fa89872a",
+              "7aecf95b70439c1821f012040d821f2c35ac9bb2d1d26dbf3bf0504258ad58ae",
+              "c541e6f64b36fecb496ef0febb9adf87da23069fa1506de7e83cabfce9a1b173",
+              "1387628a81941056f7bd959066bc2fabf7b95300cb7469435d10eccd4a703b24",
+              "b44471e708f35b3ab8b54e1e434e495de696b539bd711a8fbf5379766296232c"
+            ],
+            "name": "six-action-mask-parity",
+            "pass": true
+          },
+          {
+            "name": "canonical-target-slot-parity",
+            "pass": true,
+            "targetSlotHashes": [
+              "e23e646be738b6f8c8ea15dc27624d2b5fd9ffccb86538f2189b33c45d2b7c59",
+              "e23e646be738b6f8c8ea15dc27624d2b5fd9ffccb86538f2189b33c45d2b7c59",
+              "e23e646be738b6f8c8ea15dc27624d2b5fd9ffccb86538f2189b33c45d2b7c59",
+              "e23e646be738b6f8c8ea15dc27624d2b5fd9ffccb86538f2189b33c45d2b7c59",
+              "e23e646be738b6f8c8ea15dc27624d2b5fd9ffccb86538f2189b33c45d2b7c59",
+              "e23e646be738b6f8c8ea15dc27624d2b5fd9ffccb86538f2189b33c45d2b7c59"
+            ]
+          },
+          {
+            "legalActionCounts": [
+              6,
+              4,
+              4,
+              4,
+              4,
+              3
+            ],
+            "name": "opaque-action-descriptor-parity",
+            "pass": true
+          },
+          {
+            "name": "detached-transition-parity",
+            "pass": true,
+            "transitionCounts": [
+              6,
+              4,
+              4,
+              4,
+              4,
+              3
+            ]
+          },
+          {
+            "name": "outcome-scalarization-parity",
+            "pass": true,
+            "scalarization": "stage1az-shadow-v1"
+          },
+          {
+            "name": "prime-ranking-and-selection-parity",
+            "pass": true,
+            "rankingHashes": [
+              "aaa6963fa2bf2e863828a62c2659c3ad90808dd82afc0fd92cd4d5385a74b50d",
+              "b1d31efc4f8171dced9415ba142a4e596f9a87a98f28248f0bea47021e52a3cd",
+              "f59a5f0249f5fa38705338bd493b0f340e0e9be82755eaafc89d7835115395b0",
+              "e5376e4d1469e8b7652a5c97aab98f4f97a76e58618c216187539fb803f8e83a",
+              "d0dae0d603b28330b7c381107ae2c7c91c77b958b4da50a2b6f2c811ffdaf94b",
+              "cbcb7f447e0d85572435fe4228fc07ad1cf42a4ebd0604340ffc4d97b7272730"
+            ],
+            "selectedActionKeys": [
+              "[\"zeknova.stage1az/stabilize\",\"forest\",{\"id\":\"forest:settlement:0\",\"kind\":\"settlement\",\"known\":true,\"slot\":0},{\"legacyActionIndex\":0,\"targetSlot\":0}]",
+              "[\"zeknova.stage1az/stabilize\",\"forest\",{\"id\":\"forest:settlement:0\",\"kind\":\"settlement\",\"known\":true,\"slot\":0},{\"legacyActionIndex\":0,\"targetSlot\":0}]",
+              "[\"zeknova.stage1az/stabilize\",\"forest\",{\"id\":\"forest:settlement:0\",\"kind\":\"settlement\",\"known\":true,\"slot\":0},{\"legacyActionIndex\":0,\"targetSlot\":0}]",
+              "[\"zeknova.stage1az/intercept_contact\",\"forest\",{\"id\":\"forest:contact:2\",\"kind\":\"contact\",\"known\":true,\"slot\":2},{\"legacyActionIndex\":2,\"targetSlot\":2}]",
+              "[\"zeknova.stage1az/stabilize\",\"forest\",{\"id\":\"forest:settlement:0\",\"kind\":\"settlement\",\"known\":true,\"slot\":0},{\"legacyActionIndex\":0,\"targetSlot\":0}]",
+              "[\"zeknova.stage1az/fortify_known_route\",\"forest\",{\"id\":\"forest:route:3\",\"kind\":\"route\",\"known\":true,\"slot\":3},{\"legacyActionIndex\":3,\"targetSlot\":3}]"
+            ]
+          },
+          {
+            "fixtureCount": 6,
+            "name": "faction-private-information-boundary",
+            "observerMode": "faction-private",
+            "pass": true
+          },
+          {
+            "name": "source-state-clone-isolation",
+            "pass": true,
+            "sourceStateHashes": [
+              "c4a9fe224a9486594685f945771a7dfd945300b4be314a914b01e7b957b204b8",
+              "d031a25ebb31a15882070ac61c94382a3934f56aa6ceb7b3c2c59d71a08c87cc",
+              "97c8b7f4f3b5a1c864f556d196f157e955618edbe6a84d76cecca2e335186c7c",
+              "7378787b0733b3fb489795de92f260be797a42a23ff6ff463e51b0114799b7e4",
+              "07bdc8799837146ab326795ca81aa4f43fc8250fb0c15faa7ffb918991728ef3",
+              "bc518c67244a5fd833a40fbd1bc3596bf8494b62d40dcc054afdc7646dedde24"
+            ]
+          },
+          {
+            "canDispatch": false,
+            "canMutateLiveWorld": false,
+            "name": "r0-no-execution-boundary",
+            "pass": true,
+            "scriptedNpcExecutorPreserved": true,
+            "tier": "R0"
+          }
+        ],
+        "deterministicEvidenceHash": "227c65e31a8a5e7529854cab4feee81a1bcaf8817def44e77fb726c4661d042d"
+      },
+      {
+        "evidenceVersion": 7,
+        "adapter": {
+          "contractVersion": 1,
+          "gameId": "zeknova",
+          "adapterId": "zeknova-stage1az-shadow-adapter",
+          "adapterVersion": "1.0.0",
+          "deterministic": true,
+          "observationSchemas": [
+            {
+              "schemaId": "zeknova/stage1az-faction-observation-592",
+              "schemaVersion": 1,
+              "variableSize": false
+            }
+          ],
+          "capabilities": {
+            "imperfectInformation": true,
+            "stochasticTransitions": true,
+            "simultaneousActions": false,
+            "variableObservationSize": false
+          },
+          "authority": {
+            "tier": "R0",
+            "executionInterface": false
+          },
+          "metadata": {
+            "packageMode": "external-production-adapter",
+            "sourceLineage": "Stage 1A-Z",
+            "engineIdentity": "sentinel-prime-root-puct-v1-development",
+            "observationFeatureCount": 592,
+            "legalActionCount": 6,
+            "actionCatalog": [
+              "stabilize",
+              "scout_region",
+              "intercept_contact",
+              "fortify_known_route",
+              "repair_known_structure",
+              "share_intelligence"
+            ],
+            "canonicalTargetSlots": true,
+            "factionPrivateKnowledge": true,
+            "snapshotIngestion": true,
+            "behavioralParity": "frozen-corpus-certified"
+          }
+        },
+        "certification": {
+          "authority": "R0",
+          "evidenceKind": "zeknova-real-state-shadow-framework",
+          "frameworkVersion": 1,
+          "liveEvidenceStatus": "pending-live-fixture-capture",
+          "productionPromotionEligible": false,
+          "replayCaptureCount": 6
+        },
+        "pass": true,
+        "checks": [
+          {
+            "evaluatedCaptureCount": 6,
+            "name": "live-capture-contract",
+            "pass": true
+          },
+          {
+            "name": "real-state-parity-evaluator",
+            "pass": true,
+            "passingCaptureCount": 6
+          },
+          {
+            "name": "shadow-record-self-hashing",
+            "pass": true,
+            "recordCount": 6
+          },
+          {
+            "name": "shadow-summary-determinism",
+            "pass": true,
+            "recordsHash": "a7be362c08a21827650a1ba0cd27eb1b4f62d2b9b977b3430f89000f3a845c2c"
+          },
+          {
+            "name": "sustained-shadow-self-test-profile",
+            "pass": true,
+            "selfTestCheckCount": 23
+          },
+          {
+            "name": "production-gate-fails-closed-on-replay-corpus",
+            "pass": true,
+            "productionStatus": "shadow-evidence-insufficient"
+          },
+          {
+            "name": "production-thresholds-are-explicit",
+            "pass": true,
+            "thresholdHash": "d67caf70afdaaff9380c1d6e4890147e8c7101d852ac4f53d050bf578ca5fa33"
+          },
+          {
+            "name": "no-live-promotion-from-framework-evidence",
+            "pass": true,
+            "promotionEligible": false
+          },
+          {
+            "canDispatch": false,
+            "canMutateLiveWorld": false,
+            "name": "r0-shadow-boundary",
+            "pass": true,
+            "tier": "R0"
+          }
+        ],
+        "deterministicEvidenceHash": "5c0a9c309f66eb0e583c1d928b365dbc28e8f50de80b7d9c32a57d39dd8e3f33"
+      },
+      {
+        "evidenceVersion": 7,
+        "adapter": {
+          "contractVersion": 1,
+          "gameId": "zeknova",
+          "adapterId": "zeknova-stage1az-shadow-adapter",
+          "adapterVersion": "1.0.0",
+          "deterministic": true,
+          "observationSchemas": [
+            {
+              "schemaId": "zeknova/stage1az-faction-observation-592",
+              "schemaVersion": 1,
+              "variableSize": false
+            }
+          ],
+          "capabilities": {
+            "imperfectInformation": true,
+            "stochasticTransitions": true,
+            "simultaneousActions": false,
+            "variableObservationSize": false
+          },
+          "authority": {
+            "tier": "R0",
+            "executionInterface": false
+          },
+          "metadata": {
+            "packageMode": "external-production-adapter",
+            "sourceLineage": "Stage 1A-Z",
+            "engineIdentity": "sentinel-prime-root-puct-v1-development",
+            "observationFeatureCount": 592,
+            "legalActionCount": 6,
+            "actionCatalog": [
+              "stabilize",
+              "scout_region",
+              "intercept_contact",
+              "fortify_known_route",
+              "repair_known_structure",
+              "share_intelligence"
+            ],
+            "canonicalTargetSlots": true,
+            "factionPrivateKnowledge": true,
+            "snapshotIngestion": true,
+            "behavioralParity": "frozen-corpus-certified"
+          }
+        },
+        "certification": {
+          "authenticLiveRecordCount": 0,
+          "authority": "R0",
+          "authorityPromotionEligible": false,
+          "controlledShadowEvaluationEligible": false,
+          "evidenceKind": "zeknova-stage2f-sustained-shadow-controlled-evaluation-framework",
+          "frameworkVersion": 1,
+          "replayRecordCount": 6
+        },
+        "pass": true,
+        "checks": [
+          {
+            "manifestCount": 2,
+            "name": "session-manifest-self-hashing",
+            "pass": true
+          },
+          {
+            "name": "session-sequence-chain-validation",
+            "pass": true,
+            "sessionCount": 2
+          },
+          {
+            "name": "replay-records-quarantined-from-production",
+            "pass": true,
+            "quarantinedRecordCount": 6
+          },
+          {
+            "name": "production-campaign-fails-closed-without-authentic-captures",
+            "pass": true,
+            "status": "pending-authentic-live-captures"
+          },
+          {
+            "name": "candidate-evaluation-record-self-hashing",
+            "pass": true,
+            "recordCount": 6
+          },
+          {
+            "name": "candidate-safety-contract",
+            "pass": true,
+            "passingRecordCount": 6
+          },
+          {
+            "name": "candidate-gate-requires-certified-live-campaign",
+            "pass": true,
+            "status": "live-campaign-not-certified"
+          },
+          {
+            "name": "controlled-decision-remains-blocked",
+            "pass": true,
+            "status": "blocked-live-campaign-not-certified"
+          },
+          {
+            "authorityPromotionEligible": false,
+            "name": "authority-promotion-is-never-implied",
+            "pass": true
+          },
+          {
+            "decisionHash": "a2dec6792de140630942b4a0f6226a9ecd50d2aa11d6ab77278d53dc9377fa09",
+            "name": "decision-packet-self-hashing",
+            "pass": true
+          },
+          {
+            "canDispatch": false,
+            "canMutateLiveWorld": false,
+            "name": "r0-stage2f-boundary",
+            "pass": true,
+            "tier": "R0"
+          }
+        ],
+        "deterministicEvidenceHash": "04e75ce04724f81f93bec4d410e114e292f4fdb57dba979e65d195a3a36c1e96"
+      }
+    ],
+    "deterministicEvidenceHash": "d0afc2bca0f10d6bcbc62902dbf86a46255a0a9aea16ffca2885114f8d465668"
+  },
+  "executionDiagnostics": {
+    "diagnosticsVersion": 1,
+    "deterministicEvidenceHash": "d0afc2bca0f10d6bcbc62902dbf86a46255a0a9aea16ffca2885114f8d465668",
+    "generatedAt": "2026-07-28T22:39:44.995Z",
+    "runtime": {
+      "node": "v22.16.0",
+      "platform": "linux",
+      "arch": "x64",
+      "hostname": "cb0c705410ab",
+      "pid": 1429
+    },
+    "adapterReports": [
+      {
+        "gameId": "reference-grid-rescue",
+        "adapterId": "reference-grid-rescue-adapter",
+        "pass": true,
+        "totalDurationMs": 31.732,
+        "checkDurations": [
+          {
+            "name": "production-package-lock",
+            "durationMs": null
+          },
+          {
+            "name": "certification-profile",
+            "durationMs": null
+          },
+          {
+            "name": "snapshot-ingestion-contract",
+            "durationMs": null
+          },
+          {
+            "name": "snapshot-format-lock",
+            "durationMs": null
+          },
+          {
+            "name": "adapter-contract",
+            "durationMs": 0.071
+          },
+          {
+            "name": "no-execution-surface",
+            "durationMs": 0.031
+          },
+          {
+            "name": "r0-default-denial",
+            "durationMs": 0.057
+          },
+          {
+            "name": "deterministic-initial-state",
+            "durationMs": 0.178
+          },
+          {
+            "name": "clone-content-fidelity",
+            "durationMs": 0.177
+          },
+          {
+            "name": "terminal-determinism",
+            "durationMs": 0.046
+          },
+          {
+            "name": "deterministic-observation",
+            "durationMs": 0.27
+          },
+          {
+            "name": "deterministic-legal-actions",
+            "durationMs": 0.314
+          },
+          {
+            "name": "deterministic-outcome",
+            "durationMs": 0.181
+          },
+          {
+            "name": "deterministic-seeded-transition",
+            "durationMs": 0.475
+          },
+          {
+            "name": "transition-outcome-contract",
+            "durationMs": 0.039
+          },
+          {
+            "name": "deterministic-prime-recommendation",
+            "durationMs": 21.659
+          },
+          {
+            "name": "prime-legality-and-visit-accounting",
+            "durationMs": 0.096
+          },
+          {
+            "name": "recommendation-r0-boundary",
+            "durationMs": 0.016
+          },
+          {
+            "name": "recommendation-replay",
+            "durationMs": 8.122
+          }
+        ]
+      },
+      {
+        "gameId": "reference-production-arena",
+        "adapterId": "reference-production-arena-adapter",
+        "pass": true,
+        "totalDurationMs": 322.763,
+        "checkDurations": [
+          {
+            "name": "production-package-lock",
+            "durationMs": null
+          },
+          {
+            "name": "certification-profile",
+            "durationMs": null
+          },
+          {
+            "name": "snapshot-ingestion-contract",
+            "durationMs": null
+          },
+          {
+            "name": "snapshot-format-lock",
+            "durationMs": null
+          },
+          {
+            "name": "adapter-contract",
+            "durationMs": 0.049
+          },
+          {
+            "name": "no-execution-surface",
+            "durationMs": 0.014
+          },
+          {
+            "name": "r0-default-denial",
+            "durationMs": 0.052
+          },
+          {
+            "name": "deterministic-initial-state",
+            "durationMs": 0.227
+          },
+          {
+            "name": "clone-content-fidelity",
+            "durationMs": 0.041
+          },
+          {
+            "name": "terminal-determinism",
+            "durationMs": 0.009
+          },
+          {
+            "name": "deterministic-observation",
+            "durationMs": 1.414
+          },
+          {
+            "name": "deterministic-legal-actions",
+            "durationMs": 5.537
+          },
+          {
+            "name": "deterministic-outcome",
+            "durationMs": 0.215
+          },
+          {
+            "name": "deterministic-seeded-transition",
+            "durationMs": 0.421
+          },
+          {
+            "name": "transition-outcome-contract",
+            "durationMs": 0.033
+          },
+          {
+            "name": "deterministic-prime-recommendation",
+            "durationMs": 215.206
+          },
+          {
+            "name": "prime-legality-and-visit-accounting",
+            "durationMs": 0.512
+          },
+          {
+            "name": "recommendation-r0-boundary",
+            "durationMs": 0.004
+          },
+          {
+            "name": "recommendation-replay",
+            "durationMs": 99.029
+          }
+        ]
+      },
+      {
+        "gameId": "reference-token-race",
+        "adapterId": "reference-token-race-adapter",
+        "pass": true,
+        "totalDurationMs": 15.033,
+        "checkDurations": [
+          {
+            "name": "production-package-lock",
+            "durationMs": null
+          },
+          {
+            "name": "certification-profile",
+            "durationMs": null
+          },
+          {
+            "name": "snapshot-ingestion-contract",
+            "durationMs": null
+          },
+          {
+            "name": "snapshot-format-lock",
+            "durationMs": null
+          },
+          {
+            "name": "adapter-contract",
+            "durationMs": 0.068
+          },
+          {
+            "name": "no-execution-surface",
+            "durationMs": 0.009
+          },
+          {
+            "name": "r0-default-denial",
+            "durationMs": 0.014
+          },
+          {
+            "name": "deterministic-initial-state",
+            "durationMs": 0.136
+          },
+          {
+            "name": "clone-content-fidelity",
+            "durationMs": 0.032
+          },
+          {
+            "name": "terminal-determinism",
+            "durationMs": 0.021
+          },
+          {
+            "name": "deterministic-observation",
+            "durationMs": 0.117
+          },
+          {
+            "name": "deterministic-legal-actions",
+            "durationMs": 0.242
+          },
+          {
+            "name": "deterministic-outcome",
+            "durationMs": 0.112
+          },
+          {
+            "name": "deterministic-seeded-transition",
+            "durationMs": 0.164
+          },
+          {
+            "name": "transition-outcome-contract",
+            "durationMs": 0.008
+          },
+          {
+            "name": "deterministic-prime-recommendation",
+            "durationMs": 9.783
+          },
+          {
+            "name": "prime-legality-and-visit-accounting",
+            "durationMs": 0.012
+          },
+          {
+            "name": "recommendation-r0-boundary",
+            "durationMs": 0.002
+          },
+          {
+            "name": "recommendation-replay",
+            "durationMs": 4.313
+          }
+        ]
+      },
+      {
+        "gameId": "zeknova",
+        "adapterId": "zeknova-stage1az-shadow-adapter",
+        "pass": true,
+        "totalDurationMs": 368.196,
+        "checkDurations": [
+          {
+            "name": "production-package-lock",
+            "durationMs": null
+          },
+          {
+            "name": "certification-profile",
+            "durationMs": null
+          },
+          {
+            "name": "snapshot-ingestion-contract",
+            "durationMs": null
+          },
+          {
+            "name": "snapshot-format-lock",
+            "durationMs": null
+          },
+          {
+            "name": "adapter-contract",
+            "durationMs": 0.052
+          },
+          {
+            "name": "no-execution-surface",
+            "durationMs": 0.009
+          },
+          {
+            "name": "r0-default-denial",
+            "durationMs": 0.008
+          },
+          {
+            "name": "deterministic-initial-state",
+            "durationMs": 1.425
+          },
+          {
+            "name": "clone-content-fidelity",
+            "durationMs": 0.335
+          },
+          {
+            "name": "terminal-determinism",
+            "durationMs": 0.017
+          },
+          {
+            "name": "deterministic-observation",
+            "durationMs": 0.493
+          },
+          {
+            "name": "deterministic-legal-actions",
+            "durationMs": 0.514
+          },
+          {
+            "name": "deterministic-outcome",
+            "durationMs": 0.361
+          },
+          {
+            "name": "deterministic-seeded-transition",
+            "durationMs": 1.344
+          },
+          {
+            "name": "transition-outcome-contract",
+            "durationMs": 0.018
+          },
+          {
+            "name": "deterministic-prime-recommendation",
+            "durationMs": 245.855
+          },
+          {
+            "name": "prime-legality-and-visit-accounting",
+            "durationMs": 0.037
+          },
+          {
+            "name": "recommendation-r0-boundary",
+            "durationMs": 0.003
+          },
+          {
+            "name": "recommendation-replay",
+            "durationMs": 117.725
+          }
+        ]
+      },
+      {
+        "gameId": "reference-token-race",
+        "adapterId": "reference-token-race-adapter",
+        "pass": true,
+        "totalDurationMs": 0,
+        "checkDurations": [
+          {
+            "name": "snapshot-envelope-contract",
+            "durationMs": null
+          },
+          {
+            "name": "snapshot-schema-validation",
+            "durationMs": null
+          },
+          {
+            "name": "snapshot-package-lock",
+            "durationMs": null
+          },
+          {
+            "name": "snapshot-imported-state",
+            "durationMs": null
+          },
+          {
+            "name": "snapshot-observer-contracts",
+            "durationMs": null
+          },
+          {
+            "name": "snapshot-r0-boundary",
+            "durationMs": null
+          },
+          {
+            "name": "snapshot-prime-recommendation",
+            "durationMs": null
+          }
+        ]
+      },
+      {
+        "gameId": "reference-grid-rescue",
+        "adapterId": "reference-grid-rescue-adapter",
+        "pass": true,
+        "totalDurationMs": 0,
+        "checkDurations": [
+          {
+            "name": "snapshot-envelope-contract",
+            "durationMs": null
+          },
+          {
+            "name": "snapshot-schema-validation",
+            "durationMs": null
+          },
+          {
+            "name": "snapshot-package-lock",
+            "durationMs": null
+          },
+          {
+            "name": "snapshot-imported-state",
+            "durationMs": null
+          },
+          {
+            "name": "snapshot-observer-contracts",
+            "durationMs": null
+          },
+          {
+            "name": "snapshot-r0-boundary",
+            "durationMs": null
+          },
+          {
+            "name": "snapshot-prime-recommendation",
+            "durationMs": null
+          }
+        ]
+      },
+      {
+        "gameId": "reference-production-arena",
+        "adapterId": "reference-production-arena-adapter",
+        "pass": true,
+        "totalDurationMs": 0,
+        "checkDurations": [
+          {
+            "name": "snapshot-envelope-contract",
+            "durationMs": null
+          },
+          {
+            "name": "snapshot-schema-validation",
+            "durationMs": null
+          },
+          {
+            "name": "snapshot-package-lock",
+            "durationMs": null
+          },
+          {
+            "name": "snapshot-imported-state",
+            "durationMs": null
+          },
+          {
+            "name": "snapshot-observer-contracts",
+            "durationMs": null
+          },
+          {
+            "name": "snapshot-r0-boundary",
+            "durationMs": null
+          },
+          {
+            "name": "snapshot-prime-recommendation",
+            "durationMs": null
+          }
+        ]
+      },
+      {
+        "gameId": "zeknova",
+        "adapterId": "zeknova-stage1az-shadow-adapter",
+        "pass": true,
+        "totalDurationMs": 0,
+        "checkDurations": [
+          {
+            "name": "snapshot-envelope-contract",
+            "durationMs": null
+          },
+          {
+            "name": "snapshot-schema-validation",
+            "durationMs": null
+          },
+          {
+            "name": "snapshot-package-lock",
+            "durationMs": null
+          },
+          {
+            "name": "snapshot-imported-state",
+            "durationMs": null
+          },
+          {
+            "name": "snapshot-observer-contracts",
+            "durationMs": null
+          },
+          {
+            "name": "snapshot-r0-boundary",
+            "durationMs": null
+          },
+          {
+            "name": "snapshot-prime-recommendation",
+            "durationMs": null
+          }
+        ]
+      },
+      {
+        "gameId": "reference-production-arena",
+        "adapterId": "reference-production-arena-adapter",
+        "pass": true,
+        "totalDurationMs": 289.331,
+        "checkDurations": [
+          {
+            "name": "production-scale-profile",
+            "durationMs": 0.026
+          },
+          {
+            "name": "large-variable-observation-surface",
+            "durationMs": 0.621
+          },
+          {
+            "name": "large-legal-action-surface",
+            "durationMs": 2.034
+          },
+          {
+            "name": "multi-observer-private-information",
+            "durationMs": 1.516
+          },
+          {
+            "name": "multi-actor-simultaneous-action-bundles",
+            "durationMs": 0.124
+          },
+          {
+            "name": "deterministic-stress-recommendations",
+            "durationMs": 170.325
+          },
+          {
+            "name": "long-transition-determinism",
+            "durationMs": 9.886
+          },
+          {
+            "name": "high-volume-snapshot-ingestion",
+            "durationMs": 69.236
+          },
+          {
+            "name": "malformed-snapshot-failure-isolation",
+            "durationMs": 6.01
+          },
+          {
+            "name": "snapshot-quota-enforcement",
+            "durationMs": 29.101
+          },
+          {
+            "name": "snapshot-lifecycle-release",
+            "durationMs": 0.205
+          },
+          {
+            "name": "performance-ceilings",
+            "durationMs": 0.187
+          },
+          {
+            "name": "source-state-and-authority-boundary",
+            "durationMs": 0.06
+          }
+        ]
+      },
+      {
+        "gameId": "zeknova",
+        "adapterId": "zeknova-stage1az-shadow-adapter",
+        "pass": true,
+        "totalDurationMs": 0.546,
+        "checkDurations": [
+          {
+            "name": "zeknova-production-manifest",
+            "durationMs": 0.045
+          },
+          {
+            "name": "frozen-parity-baseline-integrity",
+            "durationMs": 0.226
+          },
+          {
+            "name": "fixture-corpus-completeness",
+            "durationMs": 0.151
+          },
+          {
+            "name": "exact-592-feature-parity",
+            "durationMs": 0.018
+          },
+          {
+            "name": "six-action-mask-parity",
+            "durationMs": 0.016
+          },
+          {
+            "name": "canonical-target-slot-parity",
+            "durationMs": 0.012
+          },
+          {
+            "name": "opaque-action-descriptor-parity",
+            "durationMs": 0.011
+          },
+          {
+            "name": "detached-transition-parity",
+            "durationMs": 0.01
+          },
+          {
+            "name": "outcome-scalarization-parity",
+            "durationMs": 0.006
+          },
+          {
+            "name": "prime-ranking-and-selection-parity",
+            "durationMs": 0.023
+          },
+          {
+            "name": "faction-private-information-boundary",
+            "durationMs": 0.009
+          },
+          {
+            "name": "source-state-clone-isolation",
+            "durationMs": 0.011
+          },
+          {
+            "name": "r0-no-execution-boundary",
+            "durationMs": 0.008
+          }
+        ]
+      },
+      {
+        "gameId": "zeknova",
+        "adapterId": "zeknova-stage1az-shadow-adapter",
+        "pass": true,
+        "totalDurationMs": 0,
+        "checkDurations": [
+          {
+            "name": "live-capture-contract",
+            "durationMs": null
+          },
+          {
+            "name": "real-state-parity-evaluator",
+            "durationMs": null
+          },
+          {
+            "name": "shadow-record-self-hashing",
+            "durationMs": null
+          },
+          {
+            "name": "shadow-summary-determinism",
+            "durationMs": null
+          },
+          {
+            "name": "sustained-shadow-self-test-profile",
+            "durationMs": null
+          },
+          {
+            "name": "production-gate-fails-closed-on-replay-corpus",
+            "durationMs": null
+          },
+          {
+            "name": "production-thresholds-are-explicit",
+            "durationMs": null
+          },
+          {
+            "name": "no-live-promotion-from-framework-evidence",
+            "durationMs": null
+          },
+          {
+            "name": "r0-shadow-boundary",
+            "durationMs": null
+          }
+        ]
+      },
+      {
+        "gameId": "zeknova",
+        "adapterId": "zeknova-stage1az-shadow-adapter",
+        "pass": true,
+        "totalDurationMs": 0,
+        "checkDurations": [
+          {
+            "name": "session-manifest-self-hashing",
+            "durationMs": null
+          },
+          {
+            "name": "session-sequence-chain-validation",
+            "durationMs": null
+          },
+          {
+            "name": "replay-records-quarantined-from-production",
+            "durationMs": null
+          },
+          {
+            "name": "production-campaign-fails-closed-without-authentic-captures",
+            "durationMs": null
+          },
+          {
+            "name": "candidate-evaluation-record-self-hashing",
+            "durationMs": null
+          },
+          {
+            "name": "candidate-safety-contract",
+            "durationMs": null
+          },
+          {
+            "name": "candidate-gate-requires-certified-live-campaign",
+            "durationMs": null
+          },
+          {
+            "name": "controlled-decision-remains-blocked",
+            "durationMs": null
+          },
+          {
+            "name": "authority-promotion-is-never-implied",
+            "durationMs": null
+          },
+          {
+            "name": "decision-packet-self-hashing",
+            "durationMs": null
+          },
+          {
+            "name": "r0-stage2f-boundary",
+            "durationMs": null
+          }
+        ]
+      }
+    ],
+    "executionReportHash": "38a3d72e74ae6bce0dde82605278ece70f0e6827a1dbf27d9e6d10442ee6cbf1"
+  },
+  "stage": "Stage 2F-Z",
+  "kernelVersion": "0.9.0",
+  "adapterLockHash": "89a2a752faa4c7a4ed2189beca873ada2c98a76e2736331921c13d47dc3c4634",
+  "registeredAdapterCount": 4,
+  "registrations": [
+    {
+      "identity": "reference-grid-rescue:reference-grid-rescue-adapter",
+      "gameId": "reference-grid-rescue",
+      "adapterId": "reference-grid-rescue-adapter",
+      "adapterVersion": "1.1.0",
+      "packageName": "@sentinel-grid-adapters/reference-grid-rescue",
+      "packageVersion": "1.1.0",
+      "certificationProfile": "imperfect-information-r0",
+      "configurationHash": "06af666f477f8910a914542c67005bb9a5889f04a36069b4d0d2575e7add97b2",
+      "snapshotFormatCount": 1,
+      "snapshotFormatsHash": "7931cca0cf579973acb06df8ea14d376de0472c36832f33e99b2f97e0e93a203"
+    },
+    {
+      "identity": "reference-production-arena:reference-production-arena-adapter",
+      "gameId": "reference-production-arena",
+      "adapterId": "reference-production-arena-adapter",
+      "adapterVersion": "1.0.0",
+      "packageName": "@sentinel-grid-adapters/reference-production-arena",
+      "packageVersion": "1.0.0",
+      "certificationProfile": "production-scale-r0",
+      "configurationHash": "8b9ae66ed1aae05797e56ea8e496db21be9f553aac642d8785c314918d183880",
+      "snapshotFormatCount": 1,
+      "snapshotFormatsHash": "9a8ff08840db83c9426dfd0d032cfad3821af9e8598465ff7376924bd569725e"
+    },
+    {
+      "identity": "reference-token-race:reference-token-race-adapter",
+      "gameId": "reference-token-race",
+      "adapterId": "reference-token-race-adapter",
+      "adapterVersion": "1.1.0",
+      "packageName": "@sentinel-grid-adapters/reference-token-race",
+      "packageVersion": "1.1.0",
+      "certificationProfile": "production-r0",
+      "configurationHash": "29fb846a7dee75a11a3b4cd83cad86dcdc4de4de2398bf1cafd4e23253bdbd66",
+      "snapshotFormatCount": 1,
+      "snapshotFormatsHash": "315f193c3308b059d7487ba569e357fb2924317721f39bf45d38d69176e8811e"
+    },
+    {
+      "identity": "zeknova:zeknova-stage1az-shadow-adapter",
+      "gameId": "zeknova",
+      "adapterId": "zeknova-stage1az-shadow-adapter",
+      "adapterVersion": "1.0.0",
+      "packageName": "@sentinel-grid-adapters/zeknova-stage1az-shadow",
+      "packageVersion": "1.0.0",
+      "certificationProfile": "zeknova-parity-r0",
+      "configurationHash": "679725ac5f7bbbd9440cab81be6e82a9b7b067aefaef20cd16eed3b1b2b9cdb9",
+      "snapshotFormatCount": 1,
+      "snapshotFormatsHash": "882446c247c46e8858d2584351472119177a269863456aeb9f8df2416db1c38f"
+    }
+  ],
+  "snapshotCount": 4,
+  "snapshotHandles": [
+    "snapshot:45c3ff42ffcb5945536b08eb34004305509eba22f3c1dc53ec507e4a1932a46e",
+    "snapshot:924e9507dfde6330c47973d18d5da284aeae738b1397cd0f46fd20dd688be413",
+    "snapshot:5ec30209f47460cd8add38821a43fd4e3fd0a17e16dea52337e6e1b7ae21e618",
+    "snapshot:c7cf82a5da51c3d51e10ca5d213347c5d7c884fdc7b5eb958dc59bd99f0ddedb"
+  ],
+  "snapshotEvidenceHash": "11418b072c69cf11a28e372b2eb15f0d2360efb594c9522dfc3c39c7fa9a5bce",
+  "productionConformanceEvidenceHash": "6b9da872809709f262fbeb1139d4907e302891a1a89ef56b6571c825ed32b0d8",
+  "productionConformanceCheckCount": 13,
+  "zeknovaParityEvidenceHash": "5bc3ebf1dc50e98f134cb86d8c23ece0292fc08a6570bd068b11f66ca671cf86",
+  "zeknovaParityCheckCount": 13,
+  "zeknovaParityFixtureCount": 6,
+  "zeknovaParityBaselineHash": "ceeae0ec743ead62a156a69e07b0a5c780329bc2cfa2c6087c71bad8d9714aa1",
+  "zeknovaProductionAdapterRegistered": true,
+  "zeknovaShadowFrameworkEvidenceHash": "279055ebecd515e459c799c98728b85cf9afa53d4c38e57d07cebc5c89b2fae8",
+  "zeknovaShadowFrameworkCheckCount": 9,
+  "zeknovaShadowReplayCaptureCount": 6,
+  "stage2fFrameworkEvidenceHash": "9c6281f3ba744927ff2191e0a7b186ab08b187b7fb0e6ec7e565c21f19a4a7e6",
+  "stage2fFrameworkCheckCount": 11,
+  "authenticLiveRecordCount": 0,
+  "sustainedShadowCampaignCertified": false,
+  "controlledShadowEvaluationEligible": false,
+  "authorityPromotionEligible": false,
+  "controlledDecisionStatus": "blocked-live-campaign-not-certified",
+  "liveRepositoryParityStatus": "pending-authentic-live-captures",
+  "productionShadowPromotionEligible": false,
+  "authority": "R0",
+  "canDispatch": false,
+  "canMutateLiveWorld": false,
+  "scriptedNpcExecutorPreserved": true,
+  "humanAuthorizationRequired": true
+}

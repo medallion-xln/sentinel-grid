@@ -1,0 +1,624 @@
+{
+  "pass": true,
+  "identity": "zeknova:zeknova-stage1az-shadow-adapter",
+  "replayRecordCount": 6,
+  "authenticLiveRecordCount": 0,
+  "checkCount": 11,
+  "deterministicEvidenceHash": "9c6281f3ba744927ff2191e0a7b186ab08b187b7fb0e6ec7e565c21f19a4a7e6",
+  "controlledDecisionStatus": "blocked-live-campaign-not-certified",
+  "controlledShadowEvaluationEligible": false,
+  "authorityPromotionEligible": false,
+  "report": {
+    "pass": true,
+    "adapter": {
+      "contractVersion": 1,
+      "gameId": "zeknova",
+      "adapterId": "zeknova-stage1az-shadow-adapter",
+      "adapterVersion": "1.0.0",
+      "deterministic": true,
+      "observationSchemas": [
+        {
+          "schemaId": "zeknova/stage1az-faction-observation-592",
+          "schemaVersion": 1,
+          "variableSize": false
+        }
+      ],
+      "capabilities": {
+        "imperfectInformation": true,
+        "stochasticTransitions": true,
+        "simultaneousActions": false,
+        "variableObservationSize": false
+      },
+      "authority": {
+        "tier": "R0",
+        "executionInterface": false
+      },
+      "metadata": {
+        "packageMode": "external-production-adapter",
+        "sourceLineage": "Stage 1A-Z",
+        "engineIdentity": "sentinel-prime-root-puct-v1-development",
+        "observationFeatureCount": 592,
+        "legalActionCount": 6,
+        "actionCatalog": [
+          "stabilize",
+          "scout_region",
+          "intercept_contact",
+          "fortify_known_route",
+          "repair_known_structure",
+          "share_intelligence"
+        ],
+        "canonicalTargetSlots": true,
+        "factionPrivateKnowledge": true,
+        "snapshotIngestion": true,
+        "behavioralParity": "frozen-corpus-certified"
+      }
+    },
+    "certification": {
+      "evidenceKind": "zeknova-stage2f-sustained-shadow-controlled-evaluation-framework",
+      "frameworkVersion": 1,
+      "replayRecordCount": 6,
+      "authenticLiveRecordCount": 0,
+      "controlledShadowEvaluationEligible": false,
+      "authorityPromotionEligible": false,
+      "authority": "R0"
+    },
+    "checks": [
+      {
+        "name": "session-manifest-self-hashing",
+        "pass": true,
+        "manifestCount": 2
+      },
+      {
+        "name": "session-sequence-chain-validation",
+        "pass": true,
+        "sessionCount": 2
+      },
+      {
+        "name": "replay-records-quarantined-from-production",
+        "pass": true,
+        "quarantinedRecordCount": 6
+      },
+      {
+        "name": "production-campaign-fails-closed-without-authentic-captures",
+        "pass": true,
+        "status": "pending-authentic-live-captures"
+      },
+      {
+        "name": "candidate-evaluation-record-self-hashing",
+        "pass": true,
+        "recordCount": 6
+      },
+      {
+        "name": "candidate-safety-contract",
+        "pass": true,
+        "passingRecordCount": 6
+      },
+      {
+        "name": "candidate-gate-requires-certified-live-campaign",
+        "pass": true,
+        "status": "live-campaign-not-certified"
+      },
+      {
+        "name": "controlled-decision-remains-blocked",
+        "pass": true,
+        "status": "blocked-live-campaign-not-certified"
+      },
+      {
+        "name": "authority-promotion-is-never-implied",
+        "pass": true,
+        "authorityPromotionEligible": false
+      },
+      {
+        "name": "decision-packet-self-hashing",
+        "pass": true,
+        "decisionHash": "a2dec6792de140630942b4a0f6226a9ecd50d2aa11d6ab77278d53dc9377fa09"
+      },
+      {
+        "name": "r0-stage2f-boundary",
+        "pass": true,
+        "tier": "R0",
+        "canDispatch": false,
+        "canMutateLiveWorld": false
+      }
+    ],
+    "productionCampaign": {
+      "pass": false,
+      "status": "pending-authentic-live-captures",
+      "certification": {
+        "campaignCertificationVersion": 1,
+        "profileName": "stage2f-production-live-r0",
+        "authenticRecordCount": 0,
+        "quarantinedRecordCount": 6,
+        "sessionManifestCount": 2,
+        "holdoutRecordCount": 0,
+        "recordsHash": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+        "sessionManifestsHash": "bf4e6994d42a4a3c72aa8bdad0e50f72c2f48dd0fc69e1d2507f1ea57c11ac28",
+        "thresholdHash": "8f353858983ef33fa92722a25281cd1f30de059b228c3ab42d686ce0e6a73988",
+        "promotionEligible": false,
+        "authority": "R0",
+        "campaignHash": "88234ef9d2387f0761a7bf1fa8fb96fe062d2cc0039361a84ecef08fcb524d97"
+      },
+      "checks": [
+        {
+          "name": "authentic-live-runtime-provenance",
+          "pass": false,
+          "authenticRecordCount": 0,
+          "quarantinedRecordCount": 6
+        },
+        {
+          "name": "minimum-authentic-records",
+          "pass": false,
+          "actual": 0,
+          "operator": ">=",
+          "expected": 1000
+        },
+        {
+          "name": "minimum-manifested-sessions",
+          "pass": false,
+          "actual": 2,
+          "operator": ">=",
+          "expected": 5
+        },
+        {
+          "name": "minimum-deterministic-holdout-records",
+          "pass": false,
+          "actual": 0,
+          "operator": ">=",
+          "expected": 200
+        },
+        {
+          "name": "duplicate-capture-id-limit",
+          "pass": true,
+          "actual": 0,
+          "operator": "<=",
+          "expected": 0
+        },
+        {
+          "name": "duplicate-fixture-hash-limit",
+          "pass": true,
+          "actual": 0,
+          "operator": "<=",
+          "expected": 0
+        },
+        {
+          "name": "session-sequence-gap-limit",
+          "pass": true,
+          "actual": 0,
+          "operator": "<=",
+          "expected": 0
+        },
+        {
+          "name": "session-chain-break-limit",
+          "pass": true,
+          "actual": 0,
+          "operator": "<=",
+          "expected": 0
+        },
+        {
+          "name": "stage2e-sustained-shadow-gate",
+          "pass": false,
+          "baseStatus": "pending-live-fixture-capture",
+          "baseCheckCount": 23
+        },
+        {
+          "name": "r0-campaign-boundary",
+          "pass": true,
+          "tier": "R0",
+          "canDispatch": false,
+          "canMutateLiveWorld": false
+        }
+      ],
+      "baseCertification": {
+        "pass": false,
+        "status": "pending-live-fixture-capture",
+        "adapter": {
+          "contractVersion": 1,
+          "gameId": "zeknova",
+          "adapterId": "zeknova-stage1az-shadow-adapter",
+          "adapterVersion": "1.0.0",
+          "deterministic": true,
+          "observationSchemas": [
+            {
+              "schemaId": "zeknova/stage1az-faction-observation-592",
+              "schemaVersion": 1,
+              "variableSize": false
+            }
+          ],
+          "capabilities": {
+            "imperfectInformation": true,
+            "stochasticTransitions": true,
+            "simultaneousActions": false,
+            "variableObservationSize": false
+          },
+          "authority": {
+            "tier": "R0",
+            "executionInterface": false
+          },
+          "metadata": {
+            "packageMode": "external-production-adapter",
+            "sourceLineage": "Stage 1A-Z",
+            "engineIdentity": "sentinel-prime-root-puct-v1-development",
+            "observationFeatureCount": 592,
+            "legalActionCount": 6,
+            "actionCatalog": [
+              "stabilize",
+              "scout_region",
+              "intercept_contact",
+              "fortify_known_route",
+              "repair_known_structure",
+              "share_intelligence"
+            ],
+            "canonicalTargetSlots": true,
+            "factionPrivateKnowledge": true,
+            "snapshotIngestion": true,
+            "behavioralParity": "frozen-corpus-certified"
+          }
+        },
+        "certification": {
+          "evidenceKind": "zeknova-real-state-sustained-shadow",
+          "certificationVersion": 1,
+          "profileName": "stage2f-production-live-r0",
+          "thresholdHash": "8f353858983ef33fa92722a25281cd1f30de059b228c3ab42d686ce0e6a73988",
+          "recordsHash": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+          "promotionEligible": false,
+          "authority": "R0"
+        },
+        "checks": [
+          {
+            "name": "shadow-record-integrity",
+            "pass": true,
+            "failedRecordCount": 0,
+            "recordsHash": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+          },
+          {
+            "name": "minimum-shadow-records",
+            "pass": false,
+            "actual": 0,
+            "operator": ">=",
+            "expected": 1000
+          },
+          {
+            "name": "minimum-distinct-source-states",
+            "pass": false,
+            "actual": 0,
+            "operator": ">=",
+            "expected": 250
+          },
+          {
+            "name": "minimum-shadow-sessions",
+            "pass": false,
+            "actual": 0,
+            "operator": ">=",
+            "expected": 5
+          },
+          {
+            "name": "faction-coverage",
+            "pass": false,
+            "actual": 0,
+            "operator": ">=",
+            "expected": 4
+          },
+          {
+            "name": "biome-coverage",
+            "pass": false,
+            "actual": 0,
+            "operator": ">=",
+            "expected": 4
+          },
+          {
+            "name": "mission-coverage",
+            "pass": false,
+            "actual": 0,
+            "operator": ">=",
+            "expected": 12
+          },
+          {
+            "name": "mission-phase-coverage",
+            "pass": false,
+            "actual": 0,
+            "operator": ">=",
+            "expected": 3
+          },
+          {
+            "name": "tension-band-coverage",
+            "pass": false,
+            "actual": 0,
+            "operator": ">=",
+            "expected": 3
+          },
+          {
+            "name": "infrastructure-band-coverage",
+            "pass": false,
+            "actual": 0,
+            "operator": ">=",
+            "expected": 3
+          },
+          {
+            "name": "legal-mask-coverage",
+            "pass": false,
+            "actual": 0,
+            "operator": ">=",
+            "expected": 6
+          },
+          {
+            "name": "selected-action-diversity",
+            "pass": false,
+            "actual": 0,
+            "operator": ">=",
+            "expected": 3
+          },
+          {
+            "name": "minimum-total-simulations",
+            "pass": false,
+            "actual": 0,
+            "operator": ">=",
+            "expected": 320000
+          },
+          {
+            "name": "selected-action-agreement",
+            "pass": false,
+            "actual": 0,
+            "operator": ">=",
+            "expected": 1
+          },
+          {
+            "name": "ranking-agreement",
+            "pass": false,
+            "actual": 0,
+            "operator": ">=",
+            "expected": 1
+          },
+          {
+            "name": "observation-agreement",
+            "pass": false,
+            "actual": 0,
+            "operator": ">=",
+            "expected": 1
+          },
+          {
+            "name": "legal-mask-agreement",
+            "pass": false,
+            "actual": 0,
+            "operator": ">=",
+            "expected": 1
+          },
+          {
+            "name": "target-slot-agreement",
+            "pass": false,
+            "actual": 0,
+            "operator": ">=",
+            "expected": 1
+          },
+          {
+            "name": "transition-agreement",
+            "pass": false,
+            "actual": 0,
+            "operator": ">=",
+            "expected": 1
+          },
+          {
+            "name": "illegal-recommendation-limit",
+            "pass": true,
+            "actual": 0,
+            "operator": "<=",
+            "expected": 0
+          },
+          {
+            "name": "source-mutation-limit",
+            "pass": true,
+            "actual": 0,
+            "operator": "<=",
+            "expected": 0
+          },
+          {
+            "name": "authority-violation-limit",
+            "pass": true,
+            "actual": 0,
+            "operator": "<=",
+            "expected": 0
+          },
+          {
+            "name": "r0-promotion-boundary",
+            "pass": true,
+            "tier": "R0",
+            "canDispatch": false,
+            "canMutateLiveWorld": false,
+            "scriptedNpcExecutorPreserved": true
+          }
+        ],
+        "summary": {
+          "recordCount": 0,
+          "distinctSourceStateCount": 0,
+          "sessionIds": [],
+          "factions": [],
+          "biomes": [],
+          "missions": [],
+          "missionPhases": [],
+          "tensionBands": [],
+          "infrastructureBands": [],
+          "distinctLegalMaskCount": 0,
+          "distinctSelectedActionCount": 0,
+          "totalSimulations": 0,
+          "selectedActionAgreementRate": 0,
+          "rankingAgreementRate": 0,
+          "observationAgreementRate": 0,
+          "legalMaskAgreementRate": 0,
+          "targetSlotAgreementRate": 0,
+          "transitionAgreementRate": 0,
+          "illegalRecommendationCount": 0,
+          "sourceMutationCount": 0,
+          "authorityViolationCount": 0,
+          "failedRecordCount": 0,
+          "recordsHash": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+        }
+      },
+      "quarantined": [
+        {
+          "recordHash": "3539122eacc25c6dd6c44a21e4f1e1473a6c5dd0fcd8fe2d750bb3d46d61290e",
+          "reason": "non-authentic-or-incomplete-live-provenance"
+        },
+        {
+          "recordHash": "1cf48df7de9a96b52b0a7333a82f14bbfe5a5dd4d3a94cfeb5ca293bdbd92bd9",
+          "reason": "non-authentic-or-incomplete-live-provenance"
+        },
+        {
+          "recordHash": "effdb9cf20216c6e2b3e7e03500b8ebfe662543f3524c937dfcefcdcdc5ea7dc",
+          "reason": "non-authentic-or-incomplete-live-provenance"
+        },
+        {
+          "recordHash": "4a70145d933d66ac2f91c91f6bc210dbb6db376e4c7c22ae6640d8b63e48dada",
+          "reason": "non-authentic-or-incomplete-live-provenance"
+        },
+        {
+          "recordHash": "a49a474a6a3e4d9cfafc65661d8ddfcac21e1d853bf75717aa2f7fb98193f151",
+          "reason": "non-authentic-or-incomplete-live-provenance"
+        },
+        {
+          "recordHash": "ba596c69ccd0e0ad8f47111dbefffc0e596ad567e7684d5216178ca65967e876",
+          "reason": "non-authentic-or-incomplete-live-provenance"
+        }
+      ],
+      "holdoutRecordHashes": []
+    },
+    "candidate": {
+      "pass": false,
+      "status": "live-campaign-not-certified",
+      "controlledEvaluationEligible": false,
+      "authorityPromotionEligible": false,
+      "humanReviewRequired": true,
+      "checks": [
+        {
+          "name": "certified-live-campaign-required",
+          "pass": false,
+          "campaignStatus": "pending-authentic-live-captures"
+        },
+        {
+          "name": "minimum-candidate-records",
+          "pass": false,
+          "actual": 6,
+          "operator": ">=",
+          "expected": 250
+        },
+        {
+          "name": "minimum-candidate-distinct-states",
+          "pass": false,
+          "actual": 6,
+          "operator": ">=",
+          "expected": 100
+        },
+        {
+          "name": "minimum-candidate-sessions",
+          "pass": false,
+          "actual": 2,
+          "operator": ">=",
+          "expected": 3
+        },
+        {
+          "name": "minimum-candidate-holdout-records",
+          "pass": false,
+          "actual": 0,
+          "operator": ">=",
+          "expected": 50
+        },
+        {
+          "name": "candidate-illegal-selected-action-limit",
+          "pass": true,
+          "actual": 0,
+          "operator": "<=",
+          "expected": 0
+        },
+        {
+          "name": "candidate-illegal-ranking-action-limit",
+          "pass": true,
+          "actual": 0,
+          "operator": "<=",
+          "expected": 0
+        },
+        {
+          "name": "candidate-source-mutation-limit",
+          "pass": true,
+          "actual": 0,
+          "operator": "<=",
+          "expected": 0
+        },
+        {
+          "name": "candidate-authority-violation-limit",
+          "pass": true,
+          "actual": 0,
+          "operator": "<=",
+          "expected": 0
+        },
+        {
+          "name": "candidate-invalid-record-limit",
+          "pass": true,
+          "actual": 0,
+          "operator": "<=",
+          "expected": 0
+        },
+        {
+          "name": "candidate-p95-latency-ceiling",
+          "pass": true,
+          "actual": 25,
+          "operator": "<=",
+          "expected": 500
+        },
+        {
+          "name": "candidate-p95-latency-ratio",
+          "pass": true,
+          "actual": 1,
+          "operator": "<=",
+          "expected": 1.5
+        },
+        {
+          "name": "candidate-median-latency-ratio",
+          "pass": true,
+          "actual": 1,
+          "operator": "<=",
+          "expected": 1.25
+        },
+        {
+          "name": "r0-controlled-evaluation-boundary",
+          "pass": true,
+          "tier": "R0",
+          "canDispatch": false,
+          "canMutateLiveWorld": false
+        }
+      ],
+      "summary": {
+        "candidateRecordCount": 6,
+        "distinctStateCount": 6,
+        "sessionCount": 2,
+        "holdoutRecordCount": 0,
+        "selectedActionAgreementRate": 1,
+        "rankingAgreementRate": 0,
+        "p95LatencyMs": 25,
+        "medianLatencyMs": 22,
+        "p95LatencyRatio": 1,
+        "medianLatencyRatio": 1,
+        "recordsHash": "9a3546d3dcf983e0b841b1e9e139b8dd7753aa31cbf834182d3d33b716bdebc0"
+      },
+      "authority": {
+        "tier": "R0",
+        "canDispatch": false,
+        "canMutateLiveWorld": false
+      }
+    },
+    "decision": {
+      "decisionVersion": 1,
+      "stage": "Stage 2F-Z",
+      "status": "blocked-live-campaign-not-certified",
+      "campaignHash": "88234ef9d2387f0761a7bf1fa8fb96fe062d2cc0039361a84ecef08fcb524d97",
+      "candidateRecordsHash": "9a3546d3dcf983e0b841b1e9e139b8dd7753aa31cbf834182d3d33b716bdebc0",
+      "controlledShadowEvaluationEligible": false,
+      "authorityPromotionEligible": false,
+      "humanAuthorizationRequired": true,
+      "scriptedNpcExecutorPreserved": true,
+      "authority": {
+        "tier": "R0",
+        "canDispatch": false,
+        "canMutateLiveWorld": false
+      },
+      "decisionHash": "a2dec6792de140630942b4a0f6226a9ecd50d2aa11d6ab77278d53dc9377fa09"
+    }
+  }
+}

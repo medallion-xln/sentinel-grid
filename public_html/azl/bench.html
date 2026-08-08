@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>AZL Bench + Diagnostics</title>
+<style>
+  body { background:#07070B; color:#e8e8ef; font-family:'JetBrains Mono',monospace; font-size:13px; padding:16px; }
+  h1 { color:#F9C94C; font-size:16px; } button { background:#9b7df0; color:#07070B; border:0; padding:8px 14px; border-radius:6px; font-weight:700; cursor:pointer; margin-right:8px; }
+  pre { background:#0f0f16; border:1px solid #23233a; padding:12px; border-radius:8px; white-space:pre-wrap; }
+  .ok { color:#10D994; } .bad { color:#ff6b6b; }
+</style>
+</head>
+<body>
+<h1>AZL Bench + Diagnostics</h1>
+<p>Runs in-browser sanity checks and performance benchmarks against the reference adapter. Numbers here are the authoritative browser measurements (Node numbers in tests/ are indicative only).</p>
+<button id="run">Run benchmarks</button>
+<button id="worker">Test workers</button>
+<button id="bootstrap">Publish bootstrap weights</button>
+<pre id="out">Ready.</pre>
+<script>window.AZL_BASE = window.AZL_BASE || '/azl';</script>
+<script src="azl-config.js?v=1"></script>
+<script src="azl-util.js?v=1"></script>
+<script src="azl-state.js?v=1"></script>
+<script src="azl-nn.js?v=1"></script>
+<script src="azl-scout.js?v=1"></script>
+<script src="azl-strategist.js?v=1"></script>
+<script src="azl-oracle.js?v=1"></script>
+<script src="azl-relational.js?v=1"></script>
+<script src="azl-mcts.js?v=1"></script>
+<script src="azl-router.js?v=1"></script>
+<script src="azl-weights.js?v=1"></script>
+<script src="azl-replay.js?v=1"></script>
+<script src="azl-federated.js?v=1"></script>
+<script src="azl-governor.js?v=1"></script>
+<script src="azl-eval.js?v=1"></script>
+<script src="azl-advisor.js?v=1"></script>
+<script src="azl-ref-adapter.js?v=1"></script>
+<script>
+(function(){
+  'use strict';
+  var out = document.getElementById('out');
+  function log(s, cls){ var d=document.createElement('div'); if(cls)d.className=cls; d.textContent=s; out.appendChild(d); }
+  function clear(){ out.textContent=''; }
+  function bench(name, fn, iters, warm){
+    for (var i=0;i<warm;i++) fn();
+    var t0=performance.now();
+    for (var j=0;j<iters;j++) fn();
+    var us=(performance.now()-t0)*1000/iters;
+    log(name+': '+us.toFixed(1)+' us/op ('+iters+' iters)');
+    return us;
+  }
+  document.getElementById('run').onclick = function(){
+    clear();
+    try {
+      var AZL=window.AZL, ad=AZL.ReferenceAdapter, codec=new AZL.Codec(ad);
+      var scout=AZL.makeScout(codec), strat=AZL.makeStrategist(codec);
+      var s=ad.sim.init(11), enc=codec.encode(s,true);
+      var enr=codec.enrich(enc.base,null,null,null).slice();
+      log('device: cores='+(navigator.hardwareConcurrency||'?')+' mem='+(navigator.deviceMemory||'?')+'GB ua='+navigator.userAgent.slice(0,60));
+      bench('codec.encode', function(){ codec.encode(s,false); }, 20000, 2000);
+      bench('scout.forward', function(){ scout.forward(enr, enc.mask); }, 20000, 3000);
+      bench('strategist.forward', function(){ strat.forward(enr, enc.mask); }, 3000, 500);
+      var evalFn=function(st){ var e=codec.encode(st,false); codec.enrich(e.base,null,null,null,enr); var o=scout.forward(enr,e.mask); return {policy:o.policy,value:o.values.now,mask:e.mask,hash:e.hash,tick:e.tick}; };
+      evalFn.probe=function(st){ var e=codec.encode(st,false); return {hash:e.hash,tick:e.tick}; };
+      var m=new AZL.MCTS({adapter:ad,codec:codec,evalFn:evalFn,rng:new AZL.Util.RNG(3)});
+      m.search(s,{sims:200,ms:10000},'advise'); m.reset();
+      var t0=performance.now(); var r=m.search(s,{sims:800,ms:10000},'advise');
+      var ms=performance.now()-t0;
+      log('MCTS: '+r.diag.sims+' sims in '+ms.toFixed(1)+'ms = '+(r.diag.sims/(ms/1000)).toFixed(0)+' sims/sec, depth '+r.diag.maxDepth+', nodes '+r.diag.nodes);
+      log('decision P50-ish per-move latency at mid budget ('+AZL.CONFIG.MCTS.simBudget.mid+' sims): ~'+(AZL.CONFIG.MCTS.simBudget.mid/(r.diag.sims/ms)).toFixed(1)+'ms');
+      var wb=AZL.Weights.encode(scout.exportWeights(),'f16',AZL.Fed.archVersion(scout));
+      log('AZLW scout f16 payload: '+(wb.length/1024).toFixed(1)+' KB');
+      log('All benchmarks completed.','ok');
+    } catch(e){ log('BENCH ERROR: '+e.message,'bad'); }
+  };
+  document.getElementById('worker').onclick = function(){
+    clear(); log('Starting advisor (workers + IDB + server sync)...');
+    AZL.Advisor.init({ adapter: AZL.ReferenceAdapter, adapterUrl: 'azl-ref-adapter.js',
+      onRecommendation: function(d){ log('recommendation: action='+AZL.ReferenceAdapter.actions[d.actionIdx].key+' level='+d.level+' value='+d.rootValue.toFixed(3)); } })
+    .then(function(adv){
+      window._adv = adv;
+      log('advisor ready. level='+adv.level+' versions='+JSON.stringify(adv.diag.versions).slice(0,140),'ok');
+      adv.startSession({scenario:'bench'});
+      var live = AZL.ReferenceAdapter.sim.init(99);
+      AZL.ReferenceAdapter.captureSearchState = function(){ return AZL.ReferenceAdapter.sim.clone(live); };
+      adv.observe();
+      return adv.decide().then(function(d){
+        log('decision in '+ (d.totalMs||0).toFixed(1) +'ms, action='+d.actionIdx+' weights='+JSON.stringify(d.weights));
+        adv.recordPlayerAction(d.actionIdx);
+        adv.endSession(0.4);
+        log('tuple logged + session finalized. diagnostics: '+JSON.stringify(adv.getDiagnostics()).slice(0,300),'ok');
+      });
+    }).catch(function(e){ log('WORKER TEST ERROR: '+e.message,'bad'); });
+  };
+  document.getElementById('bootstrap').onclick = function(){
+    clear(); log('Distilling Scout from heuristic and publishing bootstrap weights (v1)...');
+    var AZL=window.AZL, ad=AZL.ReferenceAdapter, codec=new AZL.Codec(ad);
+    var scout=AZL.makeScout(codec), strat=AZL.makeStrategist(codec);
+    AZL.distillScout(scout, codec, ad, {rounds: 40, batch: 48});
+    new AZL.Replay.Store().open().then(function(store){
+      return AZL.Fed.getClientId(store).then(function(cid){
+        function pub(model, net){
+          return AZL.Fed.uploadUpdate(store, { clientId: cid, model: model, baseVersion: 0, delta: net.snapshotParams(), norm: AZL.Util.l2norm(net.params), sampleCount: 1, completeness: 1, bootstrap: true, force: true, archVersion: AZL.Fed.archVersion(net), csrf: window.MEDALLION_CSRF||null });
+        }
+        return pub('scout', scout).then(function(r){ log('scout: '+JSON.stringify(r)); return pub('strategist', strat); })
+          .then(function(r2){ log('strategist: '+JSON.stringify(r2)); log('Bootstrap published (server promotes v1 to production).','ok'); });
+      });
+    }).catch(function(e){ log('BOOTSTRAP ERROR: '+e.message,'bad'); });
+  };
+})();
+</script>
+</body>
+</html>

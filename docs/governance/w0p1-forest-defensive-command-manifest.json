@@ -1,0 +1,90 @@
+{
+  "artifact_id": "sentinel-w0p1-forest-defensive-command-v1",
+  "artifact_type": "canonical-live-forest-defensive-command-interface",
+  "status": "frozen",
+  "environment_id": "zeknova-forest-ao-live-command-runtime-plus-sentinel-contract",
+  "phase": "W0-P.1",
+  "inherits": {
+    "w0p_manifest_sha256": "456f99f34ba6e81a49e0f66be6b647d9d64e95dd714d73602ea4c01862735419",
+    "w0p_sentinel_portability_digest": "1042e7a88b52f08989669d26530181b2d3e46e7524d88436d379a76fef0f1cee",
+    "w0p_zeknova_portability_digest": "40a720feacff418143afb5e99c8fd64ebe1141300eb0d38c70b6de08e1818d49",
+    "forest_defensive_action_contract_sha256": "7e0b4eb52498a6f1d782ba89eb9234c5e4e023fa7dba5d71327d94011f4b0488"
+  },
+  "registry": {
+    "id": "zeknova-forest-defensive-commands-v1-development",
+    "path": "docs/governance/forest-defensive-command-registry.json",
+    "classification": "development-incumbent-only-live-command-runtime",
+    "sha256": "e3137eb4e5aa1c8a80cd19898d20e9dc40e9fc76771446ff3a7fb4a013cc4e88"
+  },
+  "implementation": {
+    "shared_contract": {
+      "path": "public_html/azl/zeknova-forest-defensive-command-contract-v1.js",
+      "sha256": "83f5699a14f1ce37d1b37e4e14f2deb2af3d7a293f6bc6735de8cff3cb8cfc62"
+    },
+    "sentinel_test": {
+      "path": "sgrid-lab/tests/w0p1-forest-defensive-command-contract.frozen.test.js",
+      "sha256": "06505f4337c7fe5fed71f1b1ef24f8d9ce3599b99776d8dc49811b5a87e00bf6"
+    },
+    "sentinel_portability_report": {
+      "path": "sgrid-lab/tests/w0p1-portability-report.js",
+      "sha256": "6de54c21f26077bfb4ba48cbacbe4c00bc716f0d433d1e28316c2d34680c25e5"
+    },
+    "zeknova_live_artifacts": {
+      "adapter_sha256": "4e36013a2b78426fb86268a2f0924e5b1d8e75514f4eaad7d844a18cae493859",
+      "wrapper_sha256": "fc0ba24f3460818ec776be104ac95cbbc261fdaa33dcd0eb12b4a6a9b3a72f8e",
+      "integration_sha256": "0e2aaa86fff30d66a518b8e72f2770f16e557fc74a3e9e10cf6f76db00c60e89",
+      "contract_test_sha256": "11ffe12eff26da587f4803ee81f3e8cdaf0e67280c1e89c8857577b3d1c6ac52",
+      "integration_test_sha256": "a8836a982bb27e28c020c4b5ecb767418aff9ab96978d561e07b718b45036d98",
+      "portability_report_sha256": "08a3110abca9ab88296b671fe77f02bde5317c62be5b038320b858882f2c3161",
+      "main_sha256": "500200938025022173b87a539b6ec937653edffbba69271bef164dcefbfea0dd",
+      "check_source_sha256": "414346324ce85d6d16f7a25e90ed6f92bebfcc497bfef3260db528243210e755",
+      "package_sha256": "c6f77f09183d0a9124e09d663dd7fb254694b05fa7a89d46b4ac35a4617e7f61"
+    },
+    "sentinel_portability_baseline": {
+      "path": "sgrid-lab/tests/w0p1-forest-defensive-command-contract.test.js",
+      "sha256": "42704497ccb99ae0a1e6ccba0638b39a572b4e2a031ae16aa3393f8ba58e6706"
+    },
+    "sentinel_install_check": {
+      "path": "sgrid-lab/tests/check-w0p1-install.js",
+      "sha256": "798970bbec6b1af31f69bb918e02ce7094ef69f33c31864ac88a37f962399020"
+    }
+  },
+  "command_model": {
+    "command_space_id": "zeknova-forest-defensive-command-space-v1",
+    "supported_actions": [
+      "patrol_known_route",
+      "intercept_hostile_contact",
+      "withdraw_exposed_patrol"
+    ],
+    "required_authority": "incumbent-scripted-ai",
+    "sentinel_prime_authority": false,
+    "public_adapter": "read-only",
+    "cost_timing": "acceptance-exactly-once",
+    "full_w0p_outcome_parity_claim": false,
+    "production_competence_claim": false
+  },
+  "verification": {
+    "sentinel_linux_portability_digest": "30dc953c3b6c6c7ab36319ef86203fa092dd296eb88b012e70c4b8b90ede50c1",
+    "zeknova_linux_portability_digest": "0e44740cd2a06875909962bbfd3d846c80ec2938f3b152a4cbd4ab0f5138d0ec",
+    "portability_digest_non_circular": true,
+    "platforms_passed": [
+      "linux-node-v22",
+      "darwin-node-v22"
+    ],
+    "freeze_gate": "closed: identical Linux and Darwin portability digests reproduced; W0-P.2 remains a separate full-action binding gate",
+    "sentinel_darwin_portability_digest": "30dc953c3b6c6c7ab36319ef86203fa092dd296eb88b012e70c4b8b90ede50c1",
+    "zeknova_darwin_portability_digest": "0e44740cd2a06875909962bbfd3d846c80ec2938f3b152a4cbd4ab0f5138d0ec"
+  },
+  "semantics": {
+    "canonical_w0af_target_required": true,
+    "live_patrol_identity_required": true,
+    "eligibility_rechecked_at_acceptance": true,
+    "readiness_and_patrol_costs_applied_once": true,
+    "execution_and_cooldown_quanta_are_deterministic": true,
+    "failure_and_completion_signals_are_explicit": true,
+    "withdraw_can_interrupt_active_incumbent_patrol": true,
+    "intercept_does_not_apply_combat_damage": true,
+    "prime_and_router_authority_rejected": true,
+    "remaining_ten_actions_out_of_scope": true
+  }
+}

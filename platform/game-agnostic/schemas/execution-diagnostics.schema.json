@@ -1,0 +1,23 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://sentinel-grid.local/schemas/execution-diagnostics.schema.json",
+  "title": "Sentinel Grid Execution Diagnostics",
+  "type": "object",
+  "required": [
+    "diagnosticsVersion",
+    "deterministicEvidenceHash",
+    "generatedAt",
+    "runtime",
+    "adapterReports",
+    "executionReportHash"
+  ],
+  "properties": {
+    "diagnosticsVersion": { "const": 1 },
+    "deterministicEvidenceHash": { "type": "string", "pattern": "^[a-f0-9]{64}$" },
+    "generatedAt": { "type": "string", "format": "date-time" },
+    "runtime": { "type": "object" },
+    "adapterReports": { "type": "array" },
+    "executionReportHash": { "type": "string", "pattern": "^[a-f0-9]{64}$" }
+  },
+  "additionalProperties": false
+}

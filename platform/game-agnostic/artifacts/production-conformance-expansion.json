@@ -1,0 +1,148 @@
+{
+  "pass": true,
+  "identity": "reference-production-arena:reference-production-arena-adapter",
+  "checkCount": 13,
+  "deterministicEvidenceHash": "6b9da872809709f262fbeb1139d4907e302891a1a89ef56b6571c825ed32b0d8",
+  "report": {
+    "pass": true,
+    "adapter": {
+      "contractVersion": 1,
+      "gameId": "reference-production-arena",
+      "adapterId": "reference-production-arena-adapter",
+      "adapterVersion": "1.0.0",
+      "deterministic": true,
+      "observationSchemas": [
+        {
+          "schemaId": "reference-production-arena/observation",
+          "schemaVersion": 1,
+          "variableSize": true
+        }
+      ],
+      "capabilities": {
+        "imperfectInformation": true,
+        "stochasticTransitions": true,
+        "simultaneousActions": true,
+        "variableObservationSize": true
+      },
+      "authority": {
+        "tier": "R0",
+        "executionInterface": false
+      },
+      "metadata": {
+        "purpose": "production-scale conformance expansion fixture",
+        "packageMode": "external-production-adapter",
+        "snapshotIngestion": true,
+        "observationSize": 2048,
+        "legalActionCount": 96,
+        "actorCount": 4
+      }
+    },
+    "certification": {
+      "evidenceKind": "production-conformance-expansion",
+      "identity": "reference-production-arena:reference-production-arena-adapter",
+      "profileVersion": 1,
+      "packageSha256": "92310d710e7a17723fadec997f98656ba33c653eb02a150469ba5049ae936bc6",
+      "adapterLockHash": "89a2a752faa4c7a4ed2189beca873ada2c98a76e2736331921c13d47dc3c4634",
+      "configurationHash": "8b9ae66ed1aae05797e56ea8e496db21be9f553aac642d8785c314918d183880"
+    },
+    "checks": [
+      {
+        "name": "production-scale-profile",
+        "pass": true,
+        "durationMs": 0.026,
+        "profileName": "production-scale-r0",
+        "profileVersion": 4
+      },
+      {
+        "name": "large-variable-observation-surface",
+        "pass": true,
+        "durationMs": 0.621,
+        "observerCount": 4,
+        "minimumFeatureCount": 2048
+      },
+      {
+        "name": "large-legal-action-surface",
+        "pass": true,
+        "durationMs": 2.034,
+        "minimumLegalActionCount": 96
+      },
+      {
+        "name": "multi-observer-private-information",
+        "pass": true,
+        "durationMs": 1.516,
+        "observerCount": 4,
+        "distinctObservationHashCount": 4
+      },
+      {
+        "name": "multi-actor-simultaneous-action-bundles",
+        "pass": true,
+        "durationMs": 0.124,
+        "decisionActorCount": 2,
+        "simultaneousBundleCount": 384
+      },
+      {
+        "name": "deterministic-stress-recommendations",
+        "pass": true,
+        "durationMs": 170.325,
+        "repeatCount": 3,
+        "recommendationHash": "b96231c9975b787637d11eba9b7df9c305a0ce9935e1c43ffd6dec9424d8eb60"
+      },
+      {
+        "name": "long-transition-determinism",
+        "pass": true,
+        "durationMs": 9.886,
+        "transitionSteps": 128,
+        "finalStateHash": "854060c5d993d6cbd384d502b5ef66dfb7e4123d2ee5708e1a6013c457ebbbd8"
+      },
+      {
+        "name": "high-volume-snapshot-ingestion",
+        "pass": true,
+        "durationMs": 69.236,
+        "snapshotCount": 12,
+        "recordCount": 13
+      },
+      {
+        "name": "malformed-snapshot-failure-isolation",
+        "pass": true,
+        "durationMs": 6.01,
+        "successCount": 1,
+        "failureCount": 2
+      },
+      {
+        "name": "snapshot-quota-enforcement",
+        "pass": true,
+        "durationMs": 29.101,
+        "accepted": 4,
+        "rejected": 1,
+        "maxRecords": 4
+      },
+      {
+        "name": "snapshot-lifecycle-release",
+        "pass": true,
+        "durationMs": 0.205,
+        "before": 14,
+        "after": 13
+      },
+      {
+        "name": "performance-ceilings",
+        "pass": true,
+        "durationMs": 0.187,
+        "ceilingsMs": {
+          "observe": 1000,
+          "legalActions": 1000,
+          "recommendation": 5000,
+          "batchIngestion": 5000
+        }
+      },
+      {
+        "name": "source-state-and-authority-boundary",
+        "pass": true,
+        "durationMs": 0.06,
+        "sourceStateHash": "c64d482953cca7d518811c342316f22537e3cee0b1f5eded976ea66de9c24e4a",
+        "tier": "R0",
+        "canDispatch": false,
+        "canMutateLiveWorld": false
+      }
+    ]
+  }
+}

@@ -1,0 +1,25 @@
+{
+  "name": "@sentinel-grid-adapters/zeknova-stage1az-shadow",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "sentinelGrid": {
+    "adapter": {
+      "entry": "./index.js",
+      "factoryExport": "createAdapter",
+      "configSchema": "./sentinel-grid.config.schema.json",
+      "gameId": "zeknova",
+      "adapterId": "zeknova-stage1az-shadow-adapter",
+      "adapterVersion": "1.0.0",
+      "certificationProfile": "zeknova-parity-r0",
+      "snapshotFormats": [
+        {
+          "formatId": "zeknova/stage1az-faction-state-json",
+          "formatVersion": 1,
+          "schema": "./sentinel-grid.snapshot.schema.json",
+          "importerMethod": "importSnapshot"
+        }
+      ]
+    }
+  }
+}

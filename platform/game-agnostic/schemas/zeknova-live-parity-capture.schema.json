@@ -1,0 +1,88 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "ZekNova Live Parity Capture",
+  "type": "object",
+  "required": [
+    "captureVersion",
+    "captureId",
+    "context",
+    "envelope",
+    "legacyEvidence"
+  ],
+  "additionalProperties": false,
+  "properties": {
+    "captureVersion": {
+      "const": 1
+    },
+    "captureId": {
+      "type": "string",
+      "minLength": 1
+    },
+    "capturedAt": {
+      "type": "string"
+    },
+    "source": {
+      "type": "object",
+      "additionalProperties": true
+    },
+    "context": {
+      "type": "object",
+      "required": [
+        "sessionId",
+        "sequence",
+        "factionId",
+        "biomeId",
+        "missionId",
+        "missionPhase",
+        "tensionBand",
+        "infrastructureBand",
+        "tick"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "sessionId": {
+          "type": "string",
+          "minLength": 1
+        },
+        "sequence": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "factionId": {
+          "type": "string",
+          "minLength": 1
+        },
+        "biomeId": {
+          "type": "string",
+          "minLength": 1
+        },
+        "missionId": {
+          "type": "string",
+          "minLength": 1
+        },
+        "missionPhase": {
+          "type": "string",
+          "minLength": 1
+        },
+        "tensionBand": {
+          "type": "string",
+          "minLength": 1
+        },
+        "infrastructureBand": {
+          "type": "string",
+          "minLength": 1
+        },
+        "tick": {
+          "type": "integer",
+          "minimum": 0
+        }
+      }
+    },
+    "envelope": {
+      "type": "object"
+    },
+    "legacyEvidence": {
+      "type": "object"
+    }
+  }
+}

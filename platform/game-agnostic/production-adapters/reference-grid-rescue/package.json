@@ -1,0 +1,25 @@
+{
+  "name": "@sentinel-grid-adapters/reference-grid-rescue",
+  "version": "1.1.0",
+  "private": true,
+  "type": "module",
+  "sentinelGrid": {
+    "adapter": {
+      "entry": "./index.js",
+      "factoryExport": "createAdapter",
+      "configSchema": "./sentinel-grid.config.schema.json",
+      "gameId": "reference-grid-rescue",
+      "adapterId": "reference-grid-rescue-adapter",
+      "adapterVersion": "1.1.0",
+      "certificationProfile": "imperfect-information-r0",
+      "snapshotFormats": [
+        {
+          "formatId": "reference-grid-rescue/state-json",
+          "formatVersion": 1,
+          "schema": "./sentinel-grid.snapshot.schema.json",
+          "importerMethod": "importSnapshot"
+        }
+      ]
+    }
+  }
+}

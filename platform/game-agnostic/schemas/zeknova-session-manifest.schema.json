@@ -1,0 +1,15 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "ZekNova Stage 2F-Z Session Manifest",
+  "type": "object",
+  "required": ["manifestVersion", "sessionId", "environmentId", "repositoryHead", "runtimeBuildHash", "collectorId", "startedAt", "endedAt", "recordCount", "entries", "entriesHash", "authority", "manifestHash"],
+  "additionalProperties": true,
+  "properties": {
+    "manifestVersion": { "const": 1 },
+    "sessionId": { "type": "string", "minLength": 1 },
+    "repositoryHead": { "type": "string", "pattern": "^[a-f0-9]{40}([a-f0-9]{24})?$" },
+    "runtimeBuildHash": { "type": "string", "pattern": "^[a-f0-9]{64}$" },
+    "recordCount": { "type": "integer", "minimum": 1 },
+    "manifestHash": { "type": "string", "pattern": "^[a-f0-9]{64}$" }
+  }
+}

@@ -1,0 +1,19 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "sentinel-grid/recommendation-packet/v1",
+  "type": "object",
+  "required": ["contractVersion", "recommendationVersion", "kernelVersion", "engineId", "adapter", "input", "search", "ranking", "selected", "authority", "replay", "recommendationHash"],
+  "properties": {
+    "contractVersion": { "const": 1 },
+    "recommendationVersion": { "const": 1 },
+    "recommendationHash": { "type": "string", "pattern": "^[a-f0-9]{64}$" },
+    "authority": {
+      "type": "object",
+      "properties": {
+        "tier": { "const": "R0" },
+        "canDispatch": { "const": false },
+        "canMutateLiveWorld": { "const": false }
+      }
+    }
+  }
+}

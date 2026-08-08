@@ -1,0 +1,97 @@
+{
+  "artifact_id": "sentinel-w0o3-faction-observation-v1",
+  "artifact_type": "canonical-faction-private-prime-observation-packet",
+  "status": "frozen",
+  "environment_id": "zeknova-live-plus-sentinel-contract",
+  "phase": "W0-O.3",
+  "inherits": {
+    "w0o2_manifest_sha256": "39f3eec4e91b938063d5868d64723b77cb6c2a61ad5906ab0430f12bcf1d001f",
+    "w0o2_sentinel_portability_digest": "30213dcaf16447c75bd305d0b913e5fdc99f130f9ea1327735b93289b10a438e",
+    "w0o2_zeknova_portability_digest": "257bd9c06818b9425506717e01107f61c725c2aa6a85cb6aaa0590f153a2f7d4",
+    "w0a_portability_digest": "880ff1b5770d60cdd96a47d65cb571d99169315244f5a8d7357f5e9be0b8b7fd",
+    "identity_contract_sha256": "b92f7cc21e1def95014c5b8ee1ff4f2d3f0fb45e1d9e5b2988768336fce1e9c1",
+    "perception_event_contract_sha256": "7e4d5dffa70b5cda4992ec0c81eda088b842828813fd56cd64c244c704345c8c",
+    "knowledge_ledger_contract_sha256": "a31264f97bf306cf505cac9cd71437baa36fe63d80e2cc7f8042fcfdef7d5381"
+  },
+  "registry": {
+    "id": "zeknova-faction-observation-v1-development",
+    "path": "docs/governance/faction-observation-registry.json",
+    "classification": "development-contract-not-production-prime-observation-authority",
+    "sha256": "b68aab983106d18984b4f3bd6e63471c38d1653fe6819067f9e6d9164fbe20d3"
+  },
+  "implementation": {
+    "shared_contract": {
+      "path": "public_html/azl/zeknova-faction-observation-contract-v1.js",
+      "sha256": "997ff7c2d69bfd35a1c36bc52705f3f07a4d1d70cc733a76276dac37f097322d"
+    },
+    "sentinel_test": {
+      "path": "sgrid-lab/tests/w0o3-faction-observation-contract.test.js",
+      "sha256": "d9742b5221be25fcffd5983eba35fab97c277dd30e34e568ca6d64d1be296111"
+    },
+    "sentinel_portability_report": {
+      "path": "sgrid-lab/tests/w0o3-portability-report.js",
+      "sha256": "aec124eae7fa8c8e07e1f4dd83969afd527122dd2695e7455ff346b5d15a3f46"
+    },
+    "zeknova_live_artifacts": {
+      "observation_adapter_sha256": "0c88aa8e6b6b8b27c217963fb72e08108779465f75a6aae3fafbe2be19b13d2c",
+      "observation_wrapper_sha256": "8004ed082fbe02de36ac336016dd8ead114155574498e076eb634ae0b3cd07db",
+      "integration_sha256": "40f0cedf21cb8e368b18aec3f275963122c75382cc9230071ec2b7d5434d1626",
+      "contract_test_sha256": "75ab625303509dbd35809d6f1dec7067d8b12344e50a8f98a3c04607b2b5bb03",
+      "integration_test_sha256": "b58e9f9cb8a3429690df71dabe6d0c74aa63078cf639250ecabbdee0033b5c09",
+      "portability_report_sha256": "cca60943292e88758b8402facd5059918b0667f8c54b12e0c380f301763eec2c",
+      "main_sha256": "5718fb87725ba512b98d98d1560c26d16776973cbdd2ec5b2c414db85226566d",
+      "check_source_sha256": "bc49e83ae328ca78e7ab6993944b39886f8e5f38a665f9c9bcbc941fedd8a5ec",
+      "package_sha256": "0462606c3d4de892f833a4d6c83a84e0a6569920ede9193767ec4952fedb75c7"
+    },
+    "sentinel_portability_baseline_test": {
+      "path": "sgrid-lab/tests/w0o3-faction-observation-contract.portability-v1.js",
+      "sha256": "ff54319542ba984aa2375585944b8e7a8d87f73198233908d16f66abe2b4a775",
+      "purpose": "Preserves the exact provisional test hash bound into the W0-O.3 evidence before the frozen-manifest assertions were added."
+    }
+  },
+  "feature_layout": {
+    "id": "zeknova-prime-observation-layout-v1",
+    "feature_count": 592,
+    "header_width": 16,
+    "slot_width": 16,
+    "total_slots": 36,
+    "topic_slot_capacities": {
+      "unit_contact": 8,
+      "combat_alert": 4,
+      "structure_status": 8,
+      "resource_location": 8,
+      "route_status": 4,
+      "infrastructure_status": 4
+    }
+  },
+  "semantics": {
+    "input_is_validated_w0o2_ledger_only": true,
+    "authoritative_world_reads_are_forbidden": true,
+    "other_faction_private_records_are_excluded": true,
+    "stale_records_are_excluded": true,
+    "event_ids_and_global_event_sequences_are_excluded": true,
+    "explicit_integer_quantum_is_required": true,
+    "fixed_capacity_selection_is_deterministic": true,
+    "overflow_is_explicitly_counted": true,
+    "feature_vector_is_fixed_width_finite_and_bounded": true,
+    "observation_id_binds_canonical_packet_body": true,
+    "identical_faction_knowledge_produces_identical_packet": true,
+    "hidden_other_faction_changes_do_not_change_packet": true,
+    "snapshots_are_clone_isolated": true,
+    "action_legality_changes_are_out_of_scope": true,
+    "prime_authority_is_out_of_scope": true
+  },
+  "verification": {
+    "sentinel_linux_portability_digest": "3a82fb354298d05fe98dd3ee4775288cef121a9bccce1fcee0255b40c9475f25",
+    "zeknova_linux_portability_digest": "48cfd918fbcbb5b21a97f964e78dfeefacb155e71357bc774202ec34f534ec6f",
+    "portability_digest_non_circular": true,
+    "platforms_passed": [
+      "linux-node-v22",
+      "darwin-node-v22.22.2"
+    ],
+    "freeze_gate": "closed: Linux and Darwin digests reproduced exactly for Sentinel and ZekNova",
+    "sentinel_darwin_portability_digest": "3a82fb354298d05fe98dd3ee4775288cef121a9bccce1fcee0255b40c9475f25",
+    "zeknova_darwin_portability_digest": "48cfd918fbcbb5b21a97f964e78dfeefacb155e71357bc774202ec34f534ec6f",
+    "portability_baseline_test_is_archived": true
+  }
+}

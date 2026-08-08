@@ -1,0 +1,64 @@
+{
+ "frozenAt": "2026-07-20T19:24:23.522Z",
+ "provenance": {
+  "envId": "reference-colony",
+  "envVersion": 1,
+  "actions": 12,
+  "stateSchemaV": 1,
+  "runtime": "node v22.22.2 (container; NOT browser)",
+  "moduleHashes": {
+   "azl-config.js": "bb6dd3c7c4741c3b",
+   "azl-util.js": "44a2dc74ef301dde",
+   "azl-state.js": "66a48d1efd64c310",
+   "azl-nn.js": "37b26f47939698f2",
+   "azl-scout.js": "ae2771a6aef44da8",
+   "azl-strategist.js": "e6305a4cb78b8b55",
+   "azl-oracle.js": "9304ac433301d6d5",
+   "azl-relational.js": "cfea5f27c7bec599",
+   "azl-mcts.js": "95a6bbb84ba89cf4",
+   "azl-router.js": "f614b061c00917d1",
+   "azl-weights.js": "1ce04a68d7e76a5f",
+   "azl-replay.js": "a4ef7cacea3a72ee",
+   "azl-eval.js": "460d590c2b473a75",
+   "azl-ref-adapter.js": "9859614cda843e58"
+  },
+  "weights": {
+   "vanguard": "280a24e8050a94a7",
+   "horizon": "3634a56cc1811994"
+  }
+ },
+ "search": {
+  "cPuct": 1.6,
+  "fpu": 0.1,
+  "maxNodes": 20000,
+  "dirichletAlpha": 0.6,
+  "dirichletEps": 0.25,
+  "simBudget": {
+   "low": 120,
+   "mid": 320,
+   "high": 800
+  },
+  "msBudget": {
+   "low": 25,
+   "mid": 60,
+   "high": 140
+  },
+  "temperatureAdvise": 0,
+  "temperatureSelfPlay": 1,
+  "reuseTree": true
+ },
+ "arbiterBounds": {
+  "searchMin": 0.5,
+  "strategistMax": 0.35,
+  "scoutRootMax": 0.2,
+  "relationalAdjMax": 0.15,
+  "oracleValueAdjMax": 0.1,
+  "staleHalfLifeMs": {
+   "oracle": 4000,
+   "relational": 6000
+  },
+  "fusionTemperature": 1,
+  "epsilon": 0.000001
+ },
+ "heuristic": "adapter-built-in v1"
+}

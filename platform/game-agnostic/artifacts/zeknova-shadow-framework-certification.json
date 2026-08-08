@@ -1,0 +1,652 @@
+{
+  "pass": true,
+  "identity": "zeknova:zeknova-stage1az-shadow-adapter",
+  "replayCaptureCount": 6,
+  "checkCount": 9,
+  "deterministicEvidenceHash": "279055ebecd515e459c799c98728b85cf9afa53d4c38e57d07cebc5c89b2fae8",
+  "liveEvidenceStatus": "pending-live-fixture-capture",
+  "productionPromotionEligible": false,
+  "report": {
+    "pass": true,
+    "adapter": {
+      "contractVersion": 1,
+      "gameId": "zeknova",
+      "adapterId": "zeknova-stage1az-shadow-adapter",
+      "adapterVersion": "1.0.0",
+      "deterministic": true,
+      "observationSchemas": [
+        {
+          "schemaId": "zeknova/stage1az-faction-observation-592",
+          "schemaVersion": 1,
+          "variableSize": false
+        }
+      ],
+      "capabilities": {
+        "imperfectInformation": true,
+        "stochasticTransitions": true,
+        "simultaneousActions": false,
+        "variableObservationSize": false
+      },
+      "authority": {
+        "tier": "R0",
+        "executionInterface": false
+      },
+      "metadata": {
+        "packageMode": "external-production-adapter",
+        "sourceLineage": "Stage 1A-Z",
+        "engineIdentity": "sentinel-prime-root-puct-v1-development",
+        "observationFeatureCount": 592,
+        "legalActionCount": 6,
+        "actionCatalog": [
+          "stabilize",
+          "scout_region",
+          "intercept_contact",
+          "fortify_known_route",
+          "repair_known_structure",
+          "share_intelligence"
+        ],
+        "canonicalTargetSlots": true,
+        "factionPrivateKnowledge": true,
+        "snapshotIngestion": true,
+        "behavioralParity": "frozen-corpus-certified"
+      }
+    },
+    "certification": {
+      "evidenceKind": "zeknova-real-state-shadow-framework",
+      "frameworkVersion": 1,
+      "replayCaptureCount": 6,
+      "productionPromotionEligible": false,
+      "liveEvidenceStatus": "pending-live-fixture-capture",
+      "authority": "R0"
+    },
+    "checks": [
+      {
+        "name": "live-capture-contract",
+        "pass": true,
+        "evaluatedCaptureCount": 6
+      },
+      {
+        "name": "real-state-parity-evaluator",
+        "pass": true,
+        "passingCaptureCount": 6
+      },
+      {
+        "name": "shadow-record-self-hashing",
+        "pass": true,
+        "recordCount": 6
+      },
+      {
+        "name": "shadow-summary-determinism",
+        "pass": true,
+        "recordsHash": "a7be362c08a21827650a1ba0cd27eb1b4f62d2b9b977b3430f89000f3a845c2c"
+      },
+      {
+        "name": "sustained-shadow-self-test-profile",
+        "pass": true,
+        "selfTestCheckCount": 23
+      },
+      {
+        "name": "production-gate-fails-closed-on-replay-corpus",
+        "pass": true,
+        "productionStatus": "shadow-evidence-insufficient"
+      },
+      {
+        "name": "production-thresholds-are-explicit",
+        "pass": true,
+        "thresholdHash": "d67caf70afdaaff9380c1d6e4890147e8c7101d852ac4f53d050bf578ca5fa33"
+      },
+      {
+        "name": "no-live-promotion-from-framework-evidence",
+        "pass": true,
+        "promotionEligible": false
+      },
+      {
+        "name": "r0-shadow-boundary",
+        "pass": true,
+        "tier": "R0",
+        "canDispatch": false,
+        "canMutateLiveWorld": false
+      }
+    ],
+    "selfTest": {
+      "pass": true,
+      "status": "sustained-shadow-certified",
+      "adapter": {
+        "contractVersion": 1,
+        "gameId": "zeknova",
+        "adapterId": "zeknova-stage1az-shadow-adapter",
+        "adapterVersion": "1.0.0",
+        "deterministic": true,
+        "observationSchemas": [
+          {
+            "schemaId": "zeknova/stage1az-faction-observation-592",
+            "schemaVersion": 1,
+            "variableSize": false
+          }
+        ],
+        "capabilities": {
+          "imperfectInformation": true,
+          "stochasticTransitions": true,
+          "simultaneousActions": false,
+          "variableObservationSize": false
+        },
+        "authority": {
+          "tier": "R0",
+          "executionInterface": false
+        },
+        "metadata": {
+          "packageMode": "external-production-adapter",
+          "sourceLineage": "Stage 1A-Z",
+          "engineIdentity": "sentinel-prime-root-puct-v1-development",
+          "observationFeatureCount": 592,
+          "legalActionCount": 6,
+          "actionCatalog": [
+            "stabilize",
+            "scout_region",
+            "intercept_contact",
+            "fortify_known_route",
+            "repair_known_structure",
+            "share_intelligence"
+          ],
+          "canonicalTargetSlots": true,
+          "factionPrivateKnowledge": true,
+          "snapshotIngestion": true,
+          "behavioralParity": "frozen-corpus-certified"
+        }
+      },
+      "certification": {
+        "evidenceKind": "zeknova-real-state-sustained-shadow",
+        "certificationVersion": 1,
+        "profileName": "framework-replay-self-test-r0",
+        "thresholdHash": "255b03c697771e8de28b78c499f1be260e1c817d519c8126d90109f7d9acd685",
+        "recordsHash": "a7be362c08a21827650a1ba0cd27eb1b4f62d2b9b977b3430f89000f3a845c2c",
+        "promotionEligible": true,
+        "authority": "R0"
+      },
+      "checks": [
+        {
+          "name": "shadow-record-integrity",
+          "pass": true,
+          "failedRecordCount": 0,
+          "recordsHash": "a7be362c08a21827650a1ba0cd27eb1b4f62d2b9b977b3430f89000f3a845c2c"
+        },
+        {
+          "name": "minimum-shadow-records",
+          "pass": true,
+          "actual": 6,
+          "operator": ">=",
+          "expected": 6
+        },
+        {
+          "name": "minimum-distinct-source-states",
+          "pass": true,
+          "actual": 6,
+          "operator": ">=",
+          "expected": 6
+        },
+        {
+          "name": "minimum-shadow-sessions",
+          "pass": true,
+          "actual": 2,
+          "operator": ">=",
+          "expected": 2
+        },
+        {
+          "name": "faction-coverage",
+          "pass": true,
+          "actual": 1,
+          "operator": ">=",
+          "expected": 1
+        },
+        {
+          "name": "biome-coverage",
+          "pass": true,
+          "actual": 1,
+          "operator": ">=",
+          "expected": 1
+        },
+        {
+          "name": "mission-coverage",
+          "pass": true,
+          "actual": 6,
+          "operator": ">=",
+          "expected": 6
+        },
+        {
+          "name": "mission-phase-coverage",
+          "pass": true,
+          "actual": 3,
+          "operator": ">=",
+          "expected": 3
+        },
+        {
+          "name": "tension-band-coverage",
+          "pass": true,
+          "actual": 3,
+          "operator": ">=",
+          "expected": 3
+        },
+        {
+          "name": "infrastructure-band-coverage",
+          "pass": true,
+          "actual": 3,
+          "operator": ">=",
+          "expected": 3
+        },
+        {
+          "name": "legal-mask-coverage",
+          "pass": true,
+          "actual": 6,
+          "operator": ">=",
+          "expected": 6
+        },
+        {
+          "name": "selected-action-diversity",
+          "pass": true,
+          "actual": 3,
+          "operator": ">=",
+          "expected": 3
+        },
+        {
+          "name": "minimum-total-simulations",
+          "pass": true,
+          "actual": 1920,
+          "operator": ">=",
+          "expected": 1920
+        },
+        {
+          "name": "selected-action-agreement",
+          "pass": true,
+          "actual": 1,
+          "operator": ">=",
+          "expected": 1
+        },
+        {
+          "name": "ranking-agreement",
+          "pass": true,
+          "actual": 1,
+          "operator": ">=",
+          "expected": 1
+        },
+        {
+          "name": "observation-agreement",
+          "pass": true,
+          "actual": 1,
+          "operator": ">=",
+          "expected": 1
+        },
+        {
+          "name": "legal-mask-agreement",
+          "pass": true,
+          "actual": 1,
+          "operator": ">=",
+          "expected": 1
+        },
+        {
+          "name": "target-slot-agreement",
+          "pass": true,
+          "actual": 1,
+          "operator": ">=",
+          "expected": 1
+        },
+        {
+          "name": "transition-agreement",
+          "pass": true,
+          "actual": 1,
+          "operator": ">=",
+          "expected": 1
+        },
+        {
+          "name": "illegal-recommendation-limit",
+          "pass": true,
+          "actual": 0,
+          "operator": "<=",
+          "expected": 0
+        },
+        {
+          "name": "source-mutation-limit",
+          "pass": true,
+          "actual": 0,
+          "operator": "<=",
+          "expected": 0
+        },
+        {
+          "name": "authority-violation-limit",
+          "pass": true,
+          "actual": 0,
+          "operator": "<=",
+          "expected": 0
+        },
+        {
+          "name": "r0-promotion-boundary",
+          "pass": true,
+          "tier": "R0",
+          "canDispatch": false,
+          "canMutateLiveWorld": false,
+          "scriptedNpcExecutorPreserved": true
+        }
+      ],
+      "summary": {
+        "recordCount": 6,
+        "distinctSourceStateCount": 6,
+        "sessionIds": [
+          "framework-session-a",
+          "framework-session-b"
+        ],
+        "factions": [
+          "forest"
+        ],
+        "biomes": [
+          "forest"
+        ],
+        "missions": [
+          "mission-1",
+          "mission-2",
+          "mission-3",
+          "mission-4",
+          "mission-5",
+          "mission-6"
+        ],
+        "missionPhases": [
+          "late",
+          "midgame",
+          "opening"
+        ],
+        "tensionBands": [
+          "high",
+          "low",
+          "medium"
+        ],
+        "infrastructureBands": [
+          "developing",
+          "established",
+          "fragile"
+        ],
+        "distinctLegalMaskCount": 6,
+        "distinctSelectedActionCount": 3,
+        "totalSimulations": 1920,
+        "selectedActionAgreementRate": 1,
+        "rankingAgreementRate": 1,
+        "observationAgreementRate": 1,
+        "legalMaskAgreementRate": 1,
+        "targetSlotAgreementRate": 1,
+        "transitionAgreementRate": 1,
+        "illegalRecommendationCount": 0,
+        "sourceMutationCount": 0,
+        "authorityViolationCount": 0,
+        "failedRecordCount": 0,
+        "recordsHash": "a7be362c08a21827650a1ba0cd27eb1b4f62d2b9b977b3430f89000f3a845c2c"
+      }
+    },
+    "productionGate": {
+      "pass": false,
+      "status": "shadow-evidence-insufficient",
+      "adapter": {
+        "contractVersion": 1,
+        "gameId": "zeknova",
+        "adapterId": "zeknova-stage1az-shadow-adapter",
+        "adapterVersion": "1.0.0",
+        "deterministic": true,
+        "observationSchemas": [
+          {
+            "schemaId": "zeknova/stage1az-faction-observation-592",
+            "schemaVersion": 1,
+            "variableSize": false
+          }
+        ],
+        "capabilities": {
+          "imperfectInformation": true,
+          "stochasticTransitions": true,
+          "simultaneousActions": false,
+          "variableObservationSize": false
+        },
+        "authority": {
+          "tier": "R0",
+          "executionInterface": false
+        },
+        "metadata": {
+          "packageMode": "external-production-adapter",
+          "sourceLineage": "Stage 1A-Z",
+          "engineIdentity": "sentinel-prime-root-puct-v1-development",
+          "observationFeatureCount": 592,
+          "legalActionCount": 6,
+          "actionCatalog": [
+            "stabilize",
+            "scout_region",
+            "intercept_contact",
+            "fortify_known_route",
+            "repair_known_structure",
+            "share_intelligence"
+          ],
+          "canonicalTargetSlots": true,
+          "factionPrivateKnowledge": true,
+          "snapshotIngestion": true,
+          "behavioralParity": "frozen-corpus-certified"
+        }
+      },
+      "certification": {
+        "evidenceKind": "zeknova-real-state-sustained-shadow",
+        "certificationVersion": 1,
+        "profileName": "production-live-r0",
+        "thresholdHash": "d67caf70afdaaff9380c1d6e4890147e8c7101d852ac4f53d050bf578ca5fa33",
+        "recordsHash": "a7be362c08a21827650a1ba0cd27eb1b4f62d2b9b977b3430f89000f3a845c2c",
+        "promotionEligible": false,
+        "authority": "R0"
+      },
+      "checks": [
+        {
+          "name": "shadow-record-integrity",
+          "pass": true,
+          "failedRecordCount": 0,
+          "recordsHash": "a7be362c08a21827650a1ba0cd27eb1b4f62d2b9b977b3430f89000f3a845c2c"
+        },
+        {
+          "name": "minimum-shadow-records",
+          "pass": false,
+          "actual": 6,
+          "operator": ">=",
+          "expected": 1000
+        },
+        {
+          "name": "minimum-distinct-source-states",
+          "pass": false,
+          "actual": 6,
+          "operator": ">=",
+          "expected": 250
+        },
+        {
+          "name": "minimum-shadow-sessions",
+          "pass": false,
+          "actual": 2,
+          "operator": ">=",
+          "expected": 5
+        },
+        {
+          "name": "faction-coverage",
+          "pass": false,
+          "actual": 1,
+          "operator": ">=",
+          "expected": 4
+        },
+        {
+          "name": "biome-coverage",
+          "pass": false,
+          "actual": 1,
+          "operator": ">=",
+          "expected": 4
+        },
+        {
+          "name": "mission-coverage",
+          "pass": false,
+          "actual": 6,
+          "operator": ">=",
+          "expected": 12
+        },
+        {
+          "name": "mission-phase-coverage",
+          "pass": true,
+          "actual": 3,
+          "operator": ">=",
+          "expected": 3
+        },
+        {
+          "name": "tension-band-coverage",
+          "pass": true,
+          "actual": 3,
+          "operator": ">=",
+          "expected": 3
+        },
+        {
+          "name": "infrastructure-band-coverage",
+          "pass": true,
+          "actual": 3,
+          "operator": ">=",
+          "expected": 3
+        },
+        {
+          "name": "legal-mask-coverage",
+          "pass": true,
+          "actual": 6,
+          "operator": ">=",
+          "expected": 6
+        },
+        {
+          "name": "selected-action-diversity",
+          "pass": true,
+          "actual": 3,
+          "operator": ">=",
+          "expected": 3
+        },
+        {
+          "name": "minimum-total-simulations",
+          "pass": false,
+          "actual": 1920,
+          "operator": ">=",
+          "expected": 320000
+        },
+        {
+          "name": "selected-action-agreement",
+          "pass": true,
+          "actual": 1,
+          "operator": ">=",
+          "expected": 1
+        },
+        {
+          "name": "ranking-agreement",
+          "pass": true,
+          "actual": 1,
+          "operator": ">=",
+          "expected": 1
+        },
+        {
+          "name": "observation-agreement",
+          "pass": true,
+          "actual": 1,
+          "operator": ">=",
+          "expected": 1
+        },
+        {
+          "name": "legal-mask-agreement",
+          "pass": true,
+          "actual": 1,
+          "operator": ">=",
+          "expected": 1
+        },
+        {
+          "name": "target-slot-agreement",
+          "pass": true,
+          "actual": 1,
+          "operator": ">=",
+          "expected": 1
+        },
+        {
+          "name": "transition-agreement",
+          "pass": true,
+          "actual": 1,
+          "operator": ">=",
+          "expected": 1
+        },
+        {
+          "name": "illegal-recommendation-limit",
+          "pass": true,
+          "actual": 0,
+          "operator": "<=",
+          "expected": 0
+        },
+        {
+          "name": "source-mutation-limit",
+          "pass": true,
+          "actual": 0,
+          "operator": "<=",
+          "expected": 0
+        },
+        {
+          "name": "authority-violation-limit",
+          "pass": true,
+          "actual": 0,
+          "operator": "<=",
+          "expected": 0
+        },
+        {
+          "name": "r0-promotion-boundary",
+          "pass": true,
+          "tier": "R0",
+          "canDispatch": false,
+          "canMutateLiveWorld": false,
+          "scriptedNpcExecutorPreserved": true
+        }
+      ],
+      "summary": {
+        "recordCount": 6,
+        "distinctSourceStateCount": 6,
+        "sessionIds": [
+          "framework-session-a",
+          "framework-session-b"
+        ],
+        "factions": [
+          "forest"
+        ],
+        "biomes": [
+          "forest"
+        ],
+        "missions": [
+          "mission-1",
+          "mission-2",
+          "mission-3",
+          "mission-4",
+          "mission-5",
+          "mission-6"
+        ],
+        "missionPhases": [
+          "late",
+          "midgame",
+          "opening"
+        ],
+        "tensionBands": [
+          "high",
+          "low",
+          "medium"
+        ],
+        "infrastructureBands": [
+          "developing",
+          "established",
+          "fragile"
+        ],
+        "distinctLegalMaskCount": 6,
+        "distinctSelectedActionCount": 3,
+        "totalSimulations": 1920,
+        "selectedActionAgreementRate": 1,
+        "rankingAgreementRate": 1,
+        "observationAgreementRate": 1,
+        "legalMaskAgreementRate": 1,
+        "targetSlotAgreementRate": 1,
+        "transitionAgreementRate": 1,
+        "illegalRecommendationCount": 0,
+        "sourceMutationCount": 0,
+        "authorityViolationCount": 0,
+        "failedRecordCount": 0,
+        "recordsHash": "a7be362c08a21827650a1ba0cd27eb1b4f62d2b9b977b3430f89000f3a845c2c"
+      }
+    }
+  }
+}

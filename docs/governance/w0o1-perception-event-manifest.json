@@ -1,0 +1,72 @@
+{
+  "artifact_id": "sentinel-w0o1-perception-events-v1",
+  "artifact_type": "grounded-faction-perception-event-contract",
+  "status": "frozen",
+  "environment_id": "zeknova-live-plus-sentinel-contract",
+  "phase": "W0-O.1",
+  "inherits": {
+    "w0o0_manifest_sha256": "ce8a132467e0c52fe808b0acf46b9b50f98cc2ed4edba9afcec80663b28d772f",
+    "w0o0_sentinel_portability_digest": "5d6e4872e1dab3f7e3062f1b9cf118a329252823ece3c6357ce794058ce0eb34",
+    "w0o0_zeknova_portability_digest": "0b424ff21f1def34f3a156e1c02396e47872e753e9fe3ca27714ae1814b617a9",
+    "w0a_portability_digest": "880ff1b5770d60cdd96a47d65cb571d99169315244f5a8d7357f5e9be0b8b7fd",
+    "identity_contract_sha256": "b92f7cc21e1def95014c5b8ee1ff4f2d3f0fb45e1d9e5b2988768336fce1e9c1"
+  },
+  "registry": {
+    "id": "zeknova-perception-events-v1-development",
+    "path": "docs/governance/perception-event-registry.json",
+    "classification": "development-contract-not-production-perception-authority",
+    "sha256": "8639f09dd500e1944086e3fd27408f7b1906054bb3d46afe85542e986efb4d6e"
+  },
+  "implementation": {
+    "shared_contract": {
+      "path": "public_html/azl/zeknova-perception-event-contract-v1.js",
+      "sha256": "7e4d5dffa70b5cda4992ec0c81eda088b842828813fd56cd64c244c704345c8c"
+    },
+    "sentinel_test": {
+      "path": "sgrid-lab/tests/w0o1-perception-event-contract.test.js",
+      "sha256": "37930cda9a07b6b2e635bce635e6f61afb33ebcc675001eef191c1fa6ddace16"
+    },
+    "sentinel_portability_report": {
+      "path": "sgrid-lab/tests/w0o1-portability-report.js",
+      "sha256": "1b2e4f6afeb483d4afacfc469ebc298aa00c47348293c20f0bea543b1321e3d6"
+    },
+    "zeknova_live_artifacts": {
+      "event_adapter_sha256": "67f72a6feb4bbe89ce559c8be5dfcf308e7e37e318c3f7f53b74edfd35ea41aa",
+      "event_wrapper_sha256": "be676c0932c245ce18feb57fee1ed89cccd414b9e46d6830a9a68b1b6ca82327",
+      "integration_sha256": "138f5a28ce9e247d415bb59960207ecedf96917e47eb595af0a17fe9c9e2ef86",
+      "contract_test_sha256": "c3dd547be4d0e1a66e697dddb454b87e31cbf61b178aec425cd41fe8f29aa7da",
+      "integration_test_sha256": "69debf7315fc15bad9b6d2a4d16a2d9ff69a643a4531d519f1bf16e35d9f7623",
+      "portability_report_sha256": "a1dc3da9d4c26d58f0300ed13090e2012631fef3c547b7b18d85aad42b7cf450",
+      "main_sha256": "cd4d7897160b578f10711bea63670cf04fe81dd2737f0940e341fa7ead6ed275",
+      "package_sha256": "a97b02c79b392bd612ada9d8f50ebfd4b67d3acdf0a032289fea5d784c1f2297"
+    }
+  },
+  "semantics": {
+    "events_are_world_bound": true,
+    "event_sequence_is_monotonic_and_contiguous": true,
+    "event_id_is_bound_to_canonical_event_body": true,
+    "wall_clock_fields_are_forbidden": true,
+    "source_entity_must_be_active_and_owned_by_source_faction": true,
+    "non_share_events_require_observer_equal_source_faction": true,
+    "subject_must_exist_in_active_or_retired_identity_history": true,
+    "payload_fields_are_exactly_type_scoped": true,
+    "positions_are_integer_world_cells": true,
+    "automatic_omniscient_enumeration_is_forbidden": true,
+    "intelligence_sharing_is_explicit": true,
+    "shared_intelligence_preserves_original_event_and_observation_time": true,
+    "nested_intelligence_sharing_is_forbidden": true,
+    "knowledge_ledger_is_out_of_scope": true
+  },
+  "verification": {
+    "sentinel_linux_portability_digest": "994bf675d0a8bf8ff1215d9f93192d086b3d73016f3f045990298c7a35d1687e",
+    "zeknova_linux_portability_digest": "beb988777fcfdeb7c6519832628382916de5f15433ada7b373283dcd4a8945e6",
+    "portability_digest_non_circular": true,
+    "platforms_passed": [
+      "linux-node-v22",
+      "darwin-node-v22.22.2"
+    ],
+    "freeze_gate": "closed: Linux and Darwin digests reproduced exactly for Sentinel and ZekNova",
+    "sentinel_darwin_portability_digest": "994bf675d0a8bf8ff1215d9f93192d086b3d73016f3f045990298c7a35d1687e",
+    "zeknova_darwin_portability_digest": "beb988777fcfdeb7c6519832628382916de5f15433ada7b373283dcd4a8945e6"
+  }
+}

@@ -1,0 +1,13 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "sentinel-grid/action-descriptor/v1",
+  "type": "object",
+  "required": ["actionId", "actorId", "target", "parameters"],
+  "properties": {
+    "actionId": { "type": "string", "minLength": 1, "maxLength": 256 },
+    "actorId": { "type": ["string", "null"] },
+    "target": {},
+    "parameters": { "type": "object" },
+    "metadata": { "type": "object" }
+  }
+}

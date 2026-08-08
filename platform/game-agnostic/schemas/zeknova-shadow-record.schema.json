@@ -1,0 +1,53 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "ZekNova Sustained Shadow Record",
+  "type": "object",
+  "required": [
+    "shadowRecordVersion",
+    "captureId",
+    "fixtureHash",
+    "context",
+    "sourceStateHash",
+    "observerId",
+    "simulations",
+    "selectedActionKey",
+    "legacySelectedActionKey",
+    "agreement",
+    "pass",
+    "authority",
+    "recordHash"
+  ],
+  "additionalProperties": true,
+  "properties": {
+    "shadowRecordVersion": {
+      "const": 1
+    },
+    "captureId": {
+      "type": "string",
+      "minLength": 1
+    },
+    "fixtureHash": {
+      "type": "string",
+      "pattern": "^[a-f0-9]{64}$"
+    },
+    "sourceStateHash": {
+      "type": "string",
+      "pattern": "^[a-f0-9]{64}$"
+    },
+    "observerId": {
+      "type": "string",
+      "minLength": 1
+    },
+    "simulations": {
+      "type": "integer",
+      "minimum": 1
+    },
+    "pass": {
+      "type": "boolean"
+    },
+    "recordHash": {
+      "type": "string",
+      "pattern": "^[a-f0-9]{64}$"
+    }
+  }
+}

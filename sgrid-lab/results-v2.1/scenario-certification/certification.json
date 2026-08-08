@@ -1,0 +1,252 @@
+{
+ "results": {
+  "stable-baseline": {
+   "scenario": "stable-baseline",
+   "tier": "certification",
+   "seeds": 30,
+   "deterministic": true,
+   "failureWitness": {
+    "controller": "SPAM-recruit",
+    "failedObjective": 27,
+    "collapses": 0,
+    "instrumentErrors": 0,
+    "pass": true
+   },
+   "successWitness": {
+    "controller": "GUARDIAN",
+    "type": "scripted",
+    "completionRate": 0.833,
+    "meanCompleteTick": 1200,
+    "illegalAttempts": 0,
+    "shortcutViolations": 0,
+    "pass": true
+   },
+   "behavioralWitness": {
+    "ablatedCategories": [
+     "gather"
+    ],
+    "fullCompletionRate": 0.833,
+    "ablatedCompletionRate": 0,
+    "meanProgressReduction": 0.886,
+    "pass": true
+   },
+   "certified": true,
+   "status": "PASS"
+  },
+  "scarcity": {
+   "scenario": "scarcity",
+   "tier": "certification",
+   "seeds": 30,
+   "deterministic": true,
+   "failureWitness": {
+    "controller": "STAB",
+    "failedObjective": 30,
+    "collapses": 30,
+    "instrumentErrors": 0,
+    "pass": true
+   },
+   "successWitness": {
+    "controller": "HARVESTER",
+    "type": "scripted",
+    "completionRate": 1,
+    "meanCompleteTick": 19,
+    "illegalAttempts": 0,
+    "shortcutViolations": 0,
+    "pass": true
+   },
+   "behavioralWitness": {
+    "ablatedCategories": [
+     "gather",
+     "trade"
+    ],
+    "fullCompletionRate": 1,
+    "ablatedCompletionRate": 0,
+    "meanProgressReduction": 1,
+    "pass": true
+   },
+   "certified": true,
+   "status": "PASS"
+  },
+  "escalating-threat": {
+   "scenario": "escalating-threat",
+   "tier": "certification",
+   "seeds": 30,
+   "deterministic": true,
+   "failureWitness": {
+    "controller": "C0",
+    "failedObjective": 30,
+    "collapses": 0,
+    "instrumentErrors": 0,
+    "pass": true
+   },
+   "successWitness": {
+    "controller": "SENTINEL-SCRIPT",
+    "type": "scripted",
+    "completionRate": 1,
+    "meanCompleteTick": 1200,
+    "illegalAttempts": 0,
+    "shortcutViolations": 0,
+    "pass": true
+   },
+   "behavioralWitness": {
+    "ablatedCategories": [
+     "defense",
+     "diplomacy"
+    ],
+    "fullCompletionRate": 1,
+    "ablatedCompletionRate": 0,
+    "meanProgressReduction": 1,
+    "pass": true
+   },
+   "certified": true,
+   "status": "PASS"
+  },
+  "recovery": {
+   "scenario": "recovery",
+   "tier": "certification",
+   "seeds": 30,
+   "deterministic": true,
+   "failureWitness": {
+    "controller": "STAB",
+    "failedObjective": 30,
+    "collapses": 30,
+    "instrumentErrors": 0,
+    "pass": true
+   },
+   "successWitness": {
+    "controller": "MEDIC",
+    "type": "scripted",
+    "completionRate": 1,
+    "meanCompleteTick": 20,
+    "illegalAttempts": 0,
+    "shortcutViolations": 0,
+    "pass": true
+   },
+   "behavioralWitness": {
+    "ablatedCategories": [
+     "defense",
+     "recruit"
+    ],
+    "fullCompletionRate": 1,
+    "ablatedCompletionRate": 0,
+    "meanProgressReduction": 1,
+    "pass": true
+   },
+   "certified": true,
+   "status": "PASS"
+  },
+  "infrastructure-dependency": {
+   "scenario": "infrastructure-dependency",
+   "certified": false,
+   "status": "BLOCKED_UNREPRESENTABLE",
+   "missingMechanics": [
+    "no dependency read by simulation dynamics (link/access are written, never read)",
+    "no breakable route or per-entity failure state",
+    "no repair/reroute/replace action",
+    "entities() dependency graph is an analytical view constructed for the relational encoder"
+   ],
+   "whyProxyInvalid": "raising the scalar `infra` neither breaks nor restores any dependency; certifying it would test counter accumulation, the exact exploit this framework exists to reject",
+   "downstreamConsequence": "Nexus cannot receive a meaningful deterministic dependency-scenario evaluation in reference environment v2; Nexus evaluation is deferred to ZekNova binding or a separately authorized env v3",
+   "codeEvidence": [
+    "75: for (var i = 0; i < s.regions.length; i++) { var r = s.regions[i]; c.regions.push({ res: r.res, threat: r.threat, access: r.access, dev: r.dev, hostiles: r.hostiles, link: r.link }); }",
+    "111: var r = s.regions[1 + rng.int(3)]; r.access = Math.min(1, r.access + 0.15); r.link = r.access > 0.6 ? 1 : r.link;",
+    "167: var e = [{ id: 'colony', type: 'core', x: 0, y: 0, threat: U.clamp((s.threat - s.defense) / 60, 0, 1), hostile: false, critical: true, deps: ['r0'] }];",
+    "170: e.push({ id: 'r' + r, type: 'region', x: r * 6, y: 0, threat: U.clamp(reg.threat / 60, 0, 1), hostile: false, critical: r === 0, deps: r > 0 && reg.link ? ['r' + (r - 1)] : [] });",
+    "171: if (reg.hostiles > 0) e.push({ id: 'h' + r, type: 'hostile', x: r * 6 + 2, y: 3, threat: U.clamp(reg.hostiles / 6, 0, 1), hostile: true, critical: false, deps: [] });"
+   ]
+  },
+  "deadline": {
+   "scenario": "deadline",
+   "tier": "certification",
+   "seeds": 30,
+   "deterministic": true,
+   "failureWitness": {
+    "controller": "C0",
+    "failedObjective": 30,
+    "collapses": 0,
+    "instrumentErrors": 0,
+    "pass": true
+   },
+   "successWitness": {
+    "controller": "FOREMAN",
+    "type": "scripted",
+    "completionRate": 1,
+    "meanCompleteTick": 18,
+    "illegalAttempts": 0,
+    "shortcutViolations": 0,
+    "pass": true
+   },
+   "behavioralWitness": {
+    "ablatedCategories": [
+     "defense",
+     "housing"
+    ],
+    "fullCompletionRate": 1,
+    "ablatedCompletionRate": 0,
+    "meanProgressReduction": 1,
+    "pass": true
+   },
+   "certified": true,
+   "status": "PASS"
+  }
+ },
+ "tier": "certification",
+ "generatedAt": "2026-07-21T21:58:00.567Z",
+ "manifest": {
+  "environment_id": "reference-colony",
+  "environment_version": 2,
+  "adapter_extension": "additive-v1",
+  "scenario_schema_version": "1",
+  "scenario_versions": {
+   "stable-baseline": "1",
+   "scarcity": "1",
+   "escalating-threat": "1",
+   "recovery": "2",
+   "infrastructure-dependency": "1",
+   "deadline": "1"
+  },
+  "objective_progress_version": "1",
+  "witness_controller_versions": {
+   "GUARDIAN": "2",
+   "HARVESTER": "1",
+   "SENTINEL-SCRIPT": "1",
+   "MEDIC": "3",
+   "FOREMAN": "1",
+   "C0": "env",
+   "RANDOM": "1",
+   "STAB": "1",
+   "SPAM-recruit": "1",
+   "FX-EXPLORER": "1",
+   "FX-NONDET": "1",
+   "FX-THROW": "1"
+  },
+  "behavioral_threshold": {
+   "fullWitnessMinimumCompletionRate": 0.8,
+   "ablatedMaximumCompletionRate": 0.2,
+   "minimumProgressDifference": 0.25,
+   "minimumPairedSeeds": 30,
+   "revisionVersion": 0
+  },
+  "seed_bank": "per-scenario base + i*9973 (nested smoke⊂dev⊂cert)",
+  "rng": "xorshift32 (lab-snapshotable twin; 1000-step sequence-verified against AZL.Util.RNG)",
+  "action_space_version": 1,
+  "state_schema_version": 1,
+  "moduleHashes": {
+   "azl-config.js": "bb6dd3c7c4741c3b",
+   "azl-util.js": "44a2dc74ef301dde",
+   "azl-state.js": "66a48d1efd64c310",
+   "azl-nn.js": "37b26f47939698f2",
+   "azl-scout.js": "ae2771a6aef44da8",
+   "azl-strategist.js": "e6305a4cb78b8b55",
+   "azl-oracle.js": "9304ac433301d6d5",
+   "azl-relational.js": "cfea5f27c7bec599",
+   "azl-mcts.js": "95a6bbb84ba89cf4",
+   "azl-router.js": "f614b061c00917d1",
+   "azl-weights.js": "1ce04a68d7e76a5f",
+   "azl-federated.js": "961ee99d95725aa8",
+   "azl-eval.js": "460d590c2b473a75",
+   "azl-ref-adapter-v2.js": "0c8968eae1db78cf"
+  },
+  "timestamp": "2026-07-21T21:58:00.572Z"
+ }
+}

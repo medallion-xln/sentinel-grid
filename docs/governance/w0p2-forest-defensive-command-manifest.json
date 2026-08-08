@@ -1,0 +1,81 @@
+{
+  "artifact_id": "sentinel-w0p2-forest-defensive-command-v2",
+  "artifact_type": "complete-canonical-live-forest-defensive-command-interface",
+  "status": "frozen",
+  "environment_id": "zeknova-forest-ao-live-command-runtime-plus-sentinel-contract",
+  "phase": "W0-P.2",
+  "inherits": {
+    "w0p1_manifest_sha256": "57cd45530e8984f36e5e99916350b6973fe257276182d1f7677799458e9cb1a7",
+    "w0p1_sentinel_portability_digest": "30dc953c3b6c6c7ab36319ef86203fa092dd296eb88b012e70c4b8b90ede50c1",
+    "w0p1_zeknova_portability_digest": "0e44740cd2a06875909962bbfd3d846c80ec2938f3b152a4cbd4ab0f5138d0ec",
+    "forest_defensive_action_contract_sha256": "7e0b4eb52498a6f1d782ba89eb9234c5e4e023fa7dba5d71327d94011f4b0488"
+  },
+  "registry": {
+    "id": "zeknova-forest-defensive-commands-v2-development",
+    "path": "docs/governance/forest-defensive-command-registry-v2.json",
+    "classification": "development-incumbent-only-live-command-runtime",
+    "sha256": "2f41b22fb79f23b6f966fac44aae4685829e4fd9a0c2711fef7e602780d5d7c7"
+  },
+  "implementation": {
+    "shared_contract": {
+      "path": "public_html/azl/zeknova-forest-defensive-command-contract-v2.js",
+      "sha256": "5cfec8bb0c7de88061910085fb8f53a81bfd8e6b818f9c57ccb9ed43d55789f4"
+    },
+    "sentinel_test": {
+      "path": "sgrid-lab/tests/w0p2-forest-defensive-command-contract.test.js",
+      "sha256": "a90babec0ffa3b41cd620aa70ee3168341f8b42bc9450d59c20dc50a480eafa0"
+    },
+    "sentinel_portability_report": {
+      "path": "sgrid-lab/tests/w0p2-portability-report.js",
+      "sha256": "efec5a8755663a0a4b5bf3bc3ebe0570cb1c0ded2ea47738305539df8b957db6"
+    },
+    "zeknova_live_artifacts": {
+      "adapter_sha256": "17d0b5261fd749afea9eefebb2e5f6ac7ce71882851cf1424baf1d16db4f3859",
+      "wrapper_sha256": "5b6c6a79fc86710b0a8e08deaa73cd062d2899d1169e4e51d76f84b5cb1a0fb6",
+      "integration_sha256": "a7831f4b9d7776b6c823bbf80855b696f82a8077ee81fba245c43d3e2f93f49f",
+      "contract_test_sha256": "ae00c1298a3f67e99164a0a454a776fd82bc39eafe924576640d415e71db5d35",
+      "integration_test_sha256": "2cf707596255025c53721e3fc7c7bad2b7350dd2eb1c088df74a76d7bec103a4",
+      "portability_report_sha256": "f0e9fa2eed4bca9fb8850589c0d2eea8efc3c7034ae70d21c966c2ad77a4e102",
+      "main_sha256": "84e40aa96d78277493f9b9192065b052582d94f9dabab855ec9a1a4ffb18ecd4",
+      "check_source_sha256": "881c0472281c196203646c71da46178fa1ef8edd7a72b492acbfe4c45be720f6",
+      "package_sha256": "0a3bc0a2ae732b9a0546540ae1bef0269cb7ae9c1598b670eaa0249601dfee76"
+    }
+  },
+  "command_model": {
+    "command_space_id": "zeknova-forest-defensive-command-space-v2",
+    "supported_action_count": 13,
+    "newly_bound_action_count": 10,
+    "required_authority": "incumbent-scripted-ai",
+    "sentinel_prime_authority": false,
+    "public_adapter": "read-only",
+    "cost_timing": "acceptance-exactly-once",
+    "full_command_lifecycle_binding": true,
+    "production_competence_claim": false
+  },
+  "verification": {
+    "sentinel_linux_portability_digest": "ec577db285975bab76a3349aeb90b986000a9e1a2012550053359ff79378769d",
+    "zeknova_linux_portability_digest": "6beace24991fe086ef7a543249e51185e8dd787dc1f40c4923a01bb33db70ab1",
+    "portability_digest_non_circular": true,
+    "platforms_passed": [
+      "linux-node-v22",
+      "darwin-node-v22"
+    ],
+    "freeze_gate": "satisfied-identical-linux-darwin-digests; Sentinel action authority remains denied",
+    "sentinel_darwin_portability_digest": "ec577db285975bab76a3349aeb90b986000a9e1a2012550053359ff79378769d",
+    "zeknova_darwin_portability_digest": "6beace24991fe086ef7a543249e51185e8dd787dc1f40c4923a01bb33db70ab1"
+  },
+  "semantics": {
+    "canonical_w0af_target_required": true,
+    "targetless_actions_require_null_target": true,
+    "live_patrol_and_repair_crew_identities_required_when_declared": true,
+    "eligibility_rechecked_at_acceptance": true,
+    "readiness_materials_and_slot_costs_applied_once": true,
+    "execution_and_cooldown_quanta_are_deterministic": true,
+    "failure_completion_and_interrupt_signals_are_explicit": true,
+    "withdraw_can_interrupt_any_active_patrol_command": true,
+    "intercept_does_not_apply_combat_damage": true,
+    "direct_intelligence_share_uses_grounded_source_event": true,
+    "defensive_channel_uses_incumbent_relations_surface": true,
+    "prime_and_router_authority_rejected": true
+  }
+}

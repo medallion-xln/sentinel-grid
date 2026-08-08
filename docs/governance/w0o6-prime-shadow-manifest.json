@@ -1,0 +1,92 @@
+{
+  "artifact_id": "sentinel-w0o6-prime-shadow-v1",
+  "artifact_type": "prime-shadow-observation-legality-recommendation",
+  "status": "frozen",
+  "environment_id": "zeknova-live-plus-sentinel-contract",
+  "phase": "W0-O.6",
+  "inherits": {
+    "w0o5_manifest_sha256": "ff16b8fa3caecd45b0d8d936677962b240ebe48ec776193c01092643320672b6",
+    "w0o5_sentinel_portability_digest": "7a414c8626be112669cbe8643b633ef02ea59f5d8cf4f450893980e0b52076b8",
+    "w0o5_zeknova_portability_digest": "3885d73f0284f88396df4b6bd941b49d77296147cadeefb2e0f316ebf21d7c8f",
+    "identity_contract_sha256": "b92f7cc21e1def95014c5b8ee1ff4f2d3f0fb45e1d9e5b2988768336fce1e9c1",
+    "perception_event_contract_sha256": "7e4d5dffa70b5cda4992ec0c81eda088b842828813fd56cd64c244c704345c8c",
+    "knowledge_ledger_contract_sha256": "a31264f97bf306cf505cac9cd71437baa36fe63d80e2cc7f8042fcfdef7d5381",
+    "faction_observation_contract_sha256": "997ff7c2d69bfd35a1c36bc52705f3f07a4d1d70cc733a76276dac37f097322d",
+    "observation_legality_contract_sha256": "e4514ffe2c335bad81e6433ff26ea197ac148cd83e2b2c9fd86db66a624203f3"
+  },
+  "registry": {
+    "id": "zeknova-prime-shadow-v1-development",
+    "path": "docs/governance/prime-shadow-registry.json",
+    "classification": "development-shadow-contract-no-action-authority",
+    "sha256": "ff8c843e804ff728b85ff2cf8d20f2a0b2620307df29fa3bbd1699c2e03dea06"
+  },
+  "implementation": {
+    "shared_contract": {
+      "path": "public_html/azl/zeknova-prime-shadow-contract-v1.js",
+      "sha256": "d8938f0f02a450a79a5326708a378eae6c31dbc1d839b30bd424853d5f897866"
+    },
+    "sentinel_test": {
+      "path": "sgrid-lab/tests/w0o6-prime-shadow-contract.test.js",
+      "sha256": "a3a8d5d7222f8f776be82fa6dde9eecd22996eb8de0421f2d9d8c13221ec377e"
+    },
+    "sentinel_portability_report": {
+      "path": "sgrid-lab/tests/w0o6-portability-report.js",
+      "sha256": "e8ba4097ecaff1a1332ceb6765491d90cae42cde6691087cc173afd7f8395b47"
+    },
+    "zeknova_live_artifacts": {
+      "shadow_adapter_sha256": "a9199d73a5db3c67dfc37d645e8c91146e55c96231d70616e356bba9718849e8",
+      "shadow_wrapper_sha256": "fce8f18a9003967306fdb8f47f82095127ca9a70a3272a3db7dbb91c3a54f51e",
+      "integration_sha256": "ba616d246945561ed4e0b79e0e5f1559c940967f63d01d44bd192e11d2fefebc",
+      "contract_test_sha256": "5e755e09322df3bf89eb0ca6d0cf78bb9e616a7b4ab26b122f65685816c6b108",
+      "integration_test_sha256": "6a84f5e4fc88fa80d265f62ce4e4c0ecbed306d4a351bc7dd8ef47f58f313653",
+      "portability_report_sha256": "377a2d322de707b1432dd275bc694dfa717dbc34f7f779d034e001a1add27b99",
+      "main_sha256": "d1c3c283f9d68b8b64b66d9f8d6b29cb40905b75e7adeb540b37000cac0574e2",
+      "check_source_sha256": "12676a864948ed98ff43200be4f6030671e3bfface473d3331efb84bc8548e0c",
+      "package_sha256": "1a20309fb017f99cad65c01cbb3fc497c7f4b18671ad32f7edc81e275b52722a"
+    },
+    "sentinel_portability_test": {
+      "path": "sgrid-lab/tests/w0o6-prime-shadow-contract.portability-v1.js",
+      "sha256": "df3a02cff12b5733498d30f91efa8b1e0b1d17e601bdc7b29e2ff0589ecbda76"
+    }
+  },
+  "engine": {
+    "id": "sentinel-prime-root-puct-v1-development",
+    "policy_version": "sentinel-prime-observation-policy-v1-development",
+    "mode": "shadow-only",
+    "authority": "none-no-action-execution",
+    "feature_layout_id": "zeknova-prime-observation-layout-v1",
+    "feature_count": 592,
+    "action_space_id": "zeknova-observation-action-space-v1-development",
+    "action_count": 6,
+    "default_simulations": 192,
+    "transition_model": "none-root-only",
+    "trained_model_claim": false,
+    "long_horizon_claim": false
+  },
+  "semantics": {
+    "validated_w0o3_observation_required": true,
+    "validated_w0o5_target_view_and_legality_required": true,
+    "final_w0o5_mask_is_never_bypassed": true,
+    "only_legal_actions_receive_visits": true,
+    "hidden_and_other_faction_private_state_cannot_change_recommendation": true,
+    "stale_or_overflow_omitted_targets_cannot_be_recommended": true,
+    "terminal_or_replan_selects_no_action": true,
+    "canonical_recommendation_and_comparison": true,
+    "canonical_monotonic_shadow_ledger": true,
+    "incumbent_comparison_is_observational_only": true,
+    "action_execution_commit_dispatch_apply_are_out_of_scope": true,
+    "incumbent_scripted_ai_remains_authoritative": true
+  },
+  "verification": {
+    "sentinel_linux_portability_digest": "819682ce38c43b385ff9166337398e3380cf6b16fdd78e1a40a251af04fc9f56",
+    "zeknova_linux_portability_digest": "7e18b18fcab3e45ee0d605f3e6264d5d6403b2c6134af7c93fae044d2135f231",
+    "portability_digest_non_circular": true,
+    "platforms_passed": [
+      "linux-node-v22",
+      "darwin-node-v22"
+    ],
+    "freeze_gate": "satisfied: Linux and Darwin portability digests are identical",
+    "sentinel_darwin_portability_digest": "819682ce38c43b385ff9166337398e3380cf6b16fdd78e1a40a251af04fc9f56",
+    "zeknova_darwin_portability_digest": "7e18b18fcab3e45ee0d605f3e6264d5d6403b2c6134af7c93fae044d2135f231"
+  }
+}

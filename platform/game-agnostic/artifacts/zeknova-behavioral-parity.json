@@ -1,0 +1,303 @@
+{
+  "pass": true,
+  "identity": "zeknova:zeknova-stage1az-shadow-adapter",
+  "baselineHash": "ceeae0ec743ead62a156a69e07b0a5c780329bc2cfa2c6087c71bad8d9714aa1",
+  "fixtureCount": 6,
+  "checkCount": 13,
+  "deterministicEvidenceHash": "5bc3ebf1dc50e98f134cb86d8c23ece0292fc08a6570bd068b11f66ca671cf86",
+  "report": {
+    "pass": true,
+    "adapter": {
+      "contractVersion": 1,
+      "gameId": "zeknova",
+      "adapterId": "zeknova-stage1az-shadow-adapter",
+      "adapterVersion": "1.0.0",
+      "deterministic": true,
+      "observationSchemas": [
+        {
+          "schemaId": "zeknova/stage1az-faction-observation-592",
+          "schemaVersion": 1,
+          "variableSize": false
+        }
+      ],
+      "capabilities": {
+        "imperfectInformation": true,
+        "stochasticTransitions": true,
+        "simultaneousActions": false,
+        "variableObservationSize": false
+      },
+      "authority": {
+        "tier": "R0",
+        "executionInterface": false
+      },
+      "metadata": {
+        "packageMode": "external-production-adapter",
+        "sourceLineage": "Stage 1A-Z",
+        "engineIdentity": "sentinel-prime-root-puct-v1-development",
+        "observationFeatureCount": 592,
+        "legalActionCount": 6,
+        "actionCatalog": [
+          "stabilize",
+          "scout_region",
+          "intercept_contact",
+          "fortify_known_route",
+          "repair_known_structure",
+          "share_intelligence"
+        ],
+        "canonicalTargetSlots": true,
+        "factionPrivateKnowledge": true,
+        "snapshotIngestion": true,
+        "behavioralParity": "frozen-corpus-certified"
+      }
+    },
+    "certification": {
+      "evidenceKind": "zeknova-stage1az-behavioral-parity",
+      "parityVersion": 1,
+      "sourceLineage": "Stage 1A-Z",
+      "legacyEngineIdentity": "sentinel-prime-root-puct-v1-development",
+      "baselineHash": "ceeae0ec743ead62a156a69e07b0a5c780329bc2cfa2c6087c71bad8d9714aa1",
+      "fixtureCount": 6,
+      "observationFeatureCount": 592,
+      "actionCount": 6,
+      "authority": "R0"
+    },
+    "checks": [
+      {
+        "name": "zeknova-production-manifest",
+        "pass": true,
+        "durationMs": 0.045,
+        "adapterVersion": "1.0.0",
+        "observationFeatureCount": 592,
+        "actionCount": 6,
+        "engineIdentity": "sentinel-prime-root-puct-v1-development"
+      },
+      {
+        "name": "frozen-parity-baseline-integrity",
+        "pass": true,
+        "durationMs": 0.226,
+        "fixtureCount": 6,
+        "baselineHash": "ceeae0ec743ead62a156a69e07b0a5c780329bc2cfa2c6087c71bad8d9714aa1"
+      },
+      {
+        "name": "fixture-corpus-completeness",
+        "pass": true,
+        "durationMs": 0.151,
+        "fixtureCount": 6,
+        "distinctLegalMasks": 6,
+        "distinctSelectedActions": 3
+      },
+      {
+        "name": "exact-592-feature-parity",
+        "pass": true,
+        "durationMs": 0.018,
+        "fixtureCount": 6,
+        "featureCount": 592,
+        "observationHashes": [
+          "fac76b33160ac437a012ddb5ffaa7781de05e4327bef4b7c0a1455b4e6c46efb",
+          "d52966ffe0a8865d77eae5dc511e328062b1113990f3f433565282db0e74aaa9",
+          "8bf50816e54ce261094d9942c1670809ce78d0b21ed968e180fc89f20f75a4da",
+          "a8176609767aac0018b36c47fcb47938166467f080418089a298f67cc703dc21",
+          "2ec220f9324fb78da10b8934273b8e679fd08a7de0b257844ac218f79045db1d",
+          "403e99df2a4c0a1ffc9bca6069892dca43c450d6b3d09875ad27c15be5caa001"
+        ]
+      },
+      {
+        "name": "six-action-mask-parity",
+        "pass": true,
+        "durationMs": 0.016,
+        "actionCatalog": [
+          "stabilize",
+          "scout_region",
+          "intercept_contact",
+          "fortify_known_route",
+          "repair_known_structure",
+          "share_intelligence"
+        ],
+        "legalMaskHashes": [
+          "c18126723e74d9b67f28c511ccfdb9f1572ac367ba4e7a70d60c4378ae87b870",
+          "776c72edc0f21890edcac24726fb0b6aab9ebe3f49c828ecda728866fa89872a",
+          "7aecf95b70439c1821f012040d821f2c35ac9bb2d1d26dbf3bf0504258ad58ae",
+          "c541e6f64b36fecb496ef0febb9adf87da23069fa1506de7e83cabfce9a1b173",
+          "1387628a81941056f7bd959066bc2fabf7b95300cb7469435d10eccd4a703b24",
+          "b44471e708f35b3ab8b54e1e434e495de696b539bd711a8fbf5379766296232c"
+        ]
+      },
+      {
+        "name": "canonical-target-slot-parity",
+        "pass": true,
+        "durationMs": 0.012,
+        "targetSlotHashes": [
+          "e23e646be738b6f8c8ea15dc27624d2b5fd9ffccb86538f2189b33c45d2b7c59",
+          "e23e646be738b6f8c8ea15dc27624d2b5fd9ffccb86538f2189b33c45d2b7c59",
+          "e23e646be738b6f8c8ea15dc27624d2b5fd9ffccb86538f2189b33c45d2b7c59",
+          "e23e646be738b6f8c8ea15dc27624d2b5fd9ffccb86538f2189b33c45d2b7c59",
+          "e23e646be738b6f8c8ea15dc27624d2b5fd9ffccb86538f2189b33c45d2b7c59",
+          "e23e646be738b6f8c8ea15dc27624d2b5fd9ffccb86538f2189b33c45d2b7c59"
+        ]
+      },
+      {
+        "name": "opaque-action-descriptor-parity",
+        "pass": true,
+        "durationMs": 0.011,
+        "legalActionCounts": [
+          6,
+          4,
+          4,
+          4,
+          4,
+          3
+        ]
+      },
+      {
+        "name": "detached-transition-parity",
+        "pass": true,
+        "durationMs": 0.01,
+        "transitionCounts": [
+          6,
+          4,
+          4,
+          4,
+          4,
+          3
+        ]
+      },
+      {
+        "name": "outcome-scalarization-parity",
+        "pass": true,
+        "durationMs": 0.006,
+        "scalarization": "stage1az-shadow-v1"
+      },
+      {
+        "name": "prime-ranking-and-selection-parity",
+        "pass": true,
+        "durationMs": 0.023,
+        "selectedActionKeys": [
+          "[\"zeknova.stage1az/stabilize\",\"forest\",{\"id\":\"forest:settlement:0\",\"kind\":\"settlement\",\"known\":true,\"slot\":0},{\"legacyActionIndex\":0,\"targetSlot\":0}]",
+          "[\"zeknova.stage1az/stabilize\",\"forest\",{\"id\":\"forest:settlement:0\",\"kind\":\"settlement\",\"known\":true,\"slot\":0},{\"legacyActionIndex\":0,\"targetSlot\":0}]",
+          "[\"zeknova.stage1az/stabilize\",\"forest\",{\"id\":\"forest:settlement:0\",\"kind\":\"settlement\",\"known\":true,\"slot\":0},{\"legacyActionIndex\":0,\"targetSlot\":0}]",
+          "[\"zeknova.stage1az/intercept_contact\",\"forest\",{\"id\":\"forest:contact:2\",\"kind\":\"contact\",\"known\":true,\"slot\":2},{\"legacyActionIndex\":2,\"targetSlot\":2}]",
+          "[\"zeknova.stage1az/stabilize\",\"forest\",{\"id\":\"forest:settlement:0\",\"kind\":\"settlement\",\"known\":true,\"slot\":0},{\"legacyActionIndex\":0,\"targetSlot\":0}]",
+          "[\"zeknova.stage1az/fortify_known_route\",\"forest\",{\"id\":\"forest:route:3\",\"kind\":\"route\",\"known\":true,\"slot\":3},{\"legacyActionIndex\":3,\"targetSlot\":3}]"
+        ],
+        "rankingHashes": [
+          "aaa6963fa2bf2e863828a62c2659c3ad90808dd82afc0fd92cd4d5385a74b50d",
+          "b1d31efc4f8171dced9415ba142a4e596f9a87a98f28248f0bea47021e52a3cd",
+          "f59a5f0249f5fa38705338bd493b0f340e0e9be82755eaafc89d7835115395b0",
+          "e5376e4d1469e8b7652a5c97aab98f4f97a76e58618c216187539fb803f8e83a",
+          "d0dae0d603b28330b7c381107ae2c7c91c77b958b4da50a2b6f2c811ffdaf94b",
+          "cbcb7f447e0d85572435fe4228fc07ad1cf42a4ebd0604340ffc4d97b7272730"
+        ]
+      },
+      {
+        "name": "faction-private-information-boundary",
+        "pass": true,
+        "durationMs": 0.009,
+        "observerMode": "faction-private",
+        "fixtureCount": 6
+      },
+      {
+        "name": "source-state-clone-isolation",
+        "pass": true,
+        "durationMs": 0.011,
+        "sourceStateHashes": [
+          "c4a9fe224a9486594685f945771a7dfd945300b4be314a914b01e7b957b204b8",
+          "d031a25ebb31a15882070ac61c94382a3934f56aa6ceb7b3c2c59d71a08c87cc",
+          "97c8b7f4f3b5a1c864f556d196f157e955618edbe6a84d76cecca2e335186c7c",
+          "7378787b0733b3fb489795de92f260be797a42a23ff6ff463e51b0114799b7e4",
+          "07bdc8799837146ab326795ca81aa4f43fc8250fb0c15faa7ffb918991728ef3",
+          "bc518c67244a5fd833a40fbd1bc3596bf8494b62d40dcc054afdc7646dedde24"
+        ]
+      },
+      {
+        "name": "r0-no-execution-boundary",
+        "pass": true,
+        "durationMs": 0.008,
+        "tier": "R0",
+        "canDispatch": false,
+        "canMutateLiveWorld": false,
+        "scriptedNpcExecutorPreserved": true
+      }
+    ],
+    "fixtureResults": [
+      {
+        "fixtureId": "zeknova-stage1az-parity-01",
+        "pass": true,
+        "sourceStateHash": "c4a9fe224a9486594685f945771a7dfd945300b4be314a914b01e7b957b204b8",
+        "observationHash": "fac76b33160ac437a012ddb5ffaa7781de05e4327bef4b7c0a1455b4e6c46efb",
+        "legalMaskHash": "c18126723e74d9b67f28c511ccfdb9f1572ac367ba4e7a70d60c4378ae87b870",
+        "targetSlotsHash": "e23e646be738b6f8c8ea15dc27624d2b5fd9ffccb86538f2189b33c45d2b7c59",
+        "legalActionCount": 6,
+        "transitionCount": 6,
+        "selectedActionKey": "[\"zeknova.stage1az/stabilize\",\"forest\",{\"id\":\"forest:settlement:0\",\"kind\":\"settlement\",\"known\":true,\"slot\":0},{\"legacyActionIndex\":0,\"targetSlot\":0}]",
+        "rankingHash": "aaa6963fa2bf2e863828a62c2659c3ad90808dd82afc0fd92cd4d5385a74b50d",
+        "legacyEvidenceHash": "9ba33249330b67d69ef3ecf5954afa1107a8cf8fb1f23fb986191a054d5eb2df"
+      },
+      {
+        "fixtureId": "zeknova-stage1az-parity-02",
+        "pass": true,
+        "sourceStateHash": "d031a25ebb31a15882070ac61c94382a3934f56aa6ceb7b3c2c59d71a08c87cc",
+        "observationHash": "d52966ffe0a8865d77eae5dc511e328062b1113990f3f433565282db0e74aaa9",
+        "legalMaskHash": "776c72edc0f21890edcac24726fb0b6aab9ebe3f49c828ecda728866fa89872a",
+        "targetSlotsHash": "e23e646be738b6f8c8ea15dc27624d2b5fd9ffccb86538f2189b33c45d2b7c59",
+        "legalActionCount": 4,
+        "transitionCount": 4,
+        "selectedActionKey": "[\"zeknova.stage1az/stabilize\",\"forest\",{\"id\":\"forest:settlement:0\",\"kind\":\"settlement\",\"known\":true,\"slot\":0},{\"legacyActionIndex\":0,\"targetSlot\":0}]",
+        "rankingHash": "b1d31efc4f8171dced9415ba142a4e596f9a87a98f28248f0bea47021e52a3cd",
+        "legacyEvidenceHash": "f29cc0eb5a4806bf4e135e5e9eafe70c56421f14579dc9e87363739c8b9204fa"
+      },
+      {
+        "fixtureId": "zeknova-stage1az-parity-03",
+        "pass": true,
+        "sourceStateHash": "97c8b7f4f3b5a1c864f556d196f157e955618edbe6a84d76cecca2e335186c7c",
+        "observationHash": "8bf50816e54ce261094d9942c1670809ce78d0b21ed968e180fc89f20f75a4da",
+        "legalMaskHash": "7aecf95b70439c1821f012040d821f2c35ac9bb2d1d26dbf3bf0504258ad58ae",
+        "targetSlotsHash": "e23e646be738b6f8c8ea15dc27624d2b5fd9ffccb86538f2189b33c45d2b7c59",
+        "legalActionCount": 4,
+        "transitionCount": 4,
+        "selectedActionKey": "[\"zeknova.stage1az/stabilize\",\"forest\",{\"id\":\"forest:settlement:0\",\"kind\":\"settlement\",\"known\":true,\"slot\":0},{\"legacyActionIndex\":0,\"targetSlot\":0}]",
+        "rankingHash": "f59a5f0249f5fa38705338bd493b0f340e0e9be82755eaafc89d7835115395b0",
+        "legacyEvidenceHash": "88e5282317af9e9bc274268b731c6bedd1ccfc3895dcddce3d1973a74d7598bc"
+      },
+      {
+        "fixtureId": "zeknova-stage1az-parity-04",
+        "pass": true,
+        "sourceStateHash": "7378787b0733b3fb489795de92f260be797a42a23ff6ff463e51b0114799b7e4",
+        "observationHash": "a8176609767aac0018b36c47fcb47938166467f080418089a298f67cc703dc21",
+        "legalMaskHash": "c541e6f64b36fecb496ef0febb9adf87da23069fa1506de7e83cabfce9a1b173",
+        "targetSlotsHash": "e23e646be738b6f8c8ea15dc27624d2b5fd9ffccb86538f2189b33c45d2b7c59",
+        "legalActionCount": 4,
+        "transitionCount": 4,
+        "selectedActionKey": "[\"zeknova.stage1az/intercept_contact\",\"forest\",{\"id\":\"forest:contact:2\",\"kind\":\"contact\",\"known\":true,\"slot\":2},{\"legacyActionIndex\":2,\"targetSlot\":2}]",
+        "rankingHash": "e5376e4d1469e8b7652a5c97aab98f4f97a76e58618c216187539fb803f8e83a",
+        "legacyEvidenceHash": "771fc9cc7396a1461806f4bcf23231e7d25117d6cee640e32b680a8aebc38ba6"
+      },
+      {
+        "fixtureId": "zeknova-stage1az-parity-05",
+        "pass": true,
+        "sourceStateHash": "07bdc8799837146ab326795ca81aa4f43fc8250fb0c15faa7ffb918991728ef3",
+        "observationHash": "2ec220f9324fb78da10b8934273b8e679fd08a7de0b257844ac218f79045db1d",
+        "legalMaskHash": "1387628a81941056f7bd959066bc2fabf7b95300cb7469435d10eccd4a703b24",
+        "targetSlotsHash": "e23e646be738b6f8c8ea15dc27624d2b5fd9ffccb86538f2189b33c45d2b7c59",
+        "legalActionCount": 4,
+        "transitionCount": 4,
+        "selectedActionKey": "[\"zeknova.stage1az/stabilize\",\"forest\",{\"id\":\"forest:settlement:0\",\"kind\":\"settlement\",\"known\":true,\"slot\":0},{\"legacyActionIndex\":0,\"targetSlot\":0}]",
+        "rankingHash": "d0dae0d603b28330b7c381107ae2c7c91c77b958b4da50a2b6f2c811ffdaf94b",
+        "legacyEvidenceHash": "6d3139a42414227537e31bc03f55121f826d53adeae1692ef82d7fd22c9de407"
+      },
+      {
+        "fixtureId": "zeknova-stage1az-parity-06",
+        "pass": true,
+        "sourceStateHash": "bc518c67244a5fd833a40fbd1bc3596bf8494b62d40dcc054afdc7646dedde24",
+        "observationHash": "403e99df2a4c0a1ffc9bca6069892dca43c450d6b3d09875ad27c15be5caa001",
+        "legalMaskHash": "b44471e708f35b3ab8b54e1e434e495de696b539bd711a8fbf5379766296232c",
+        "targetSlotsHash": "e23e646be738b6f8c8ea15dc27624d2b5fd9ffccb86538f2189b33c45d2b7c59",
+        "legalActionCount": 3,
+        "transitionCount": 3,
+        "selectedActionKey": "[\"zeknova.stage1az/fortify_known_route\",\"forest\",{\"id\":\"forest:route:3\",\"kind\":\"route\",\"known\":true,\"slot\":3},{\"legacyActionIndex\":3,\"targetSlot\":3}]",
+        "rankingHash": "cbcb7f447e0d85572435fe4228fc07ad1cf42a4ebd0604340ffc4d97b7272730",
+        "legacyEvidenceHash": "56b41fdc1b7b0ddf81fff1a6a01351bb1927d5f5c44a01665087a0deee353e7c"
+      }
+    ],
+    "deterministicEvidenceHash": "227c65e31a8a5e7529854cab4feee81a1bcaf8817def44e77fb726c4661d042d"
+  }
+}

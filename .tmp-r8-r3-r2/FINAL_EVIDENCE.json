@@ -1,0 +1,39 @@
+{
+  "gate": "Stage 2F.4E.3G-R8-R3-R2",
+  "timestamp": "2026-08-07T16:58:00Z",
+  "authority": "R0",
+  "steps_requested": [1,2,3],
+  "step1_freeze": {
+    "lsof_8790": "php 66196 LISTEN 127.0.0.1:8790",
+    "lsof_43127": "no listener",
+    "collector_process": "STOPPED",
+    "kill_attempt": "Operation not permitted (sandbox)",
+    "result": "PROCEDURAL_FAIL_NEEDS_MANUAL_KILL"
+  },
+  "step2_runtime_forensics": {
+    "R7_certified": "7c97573c60f2f04830ec72d5a9cf7ba7a9f4d2055c36458fac8ca46fdb4812a7",
+    "R7_size": 1302376,
+    "HEAD": "c227d31da80a41ed8743864a9f0228927995082de27fa1dbeba3db8d60730210",
+    "HEAD_size": 1162996,
+    "CURRENT": "39276d3b10e8323f25148bf38e1b226a644b32c8fa3a523c88ef54305d21a5f2",
+    "CURRENT_size": 1330657,
+    "sentinel_anchors": {"getAdvisorTelemetry": "2/2 unchanged", "getStrategicStateQuantum": "0/0 unchanged"},
+    "classification": "FULL_REBUILD_WITH_BOSS_LOADER_PLUS_MISSION_AND_RUNTIME_CHANGES",
+    "rebaseline_review_eligible": false
+  },
+  "step3_self_test": {
+    "orig_sha": "ecefd85ecb8f23f2606a93a20f6a3becb7c660871c2a209d80cf4a535406873e",
+    "patched_sha": "d2e90525848064627e2fb136667912955779efb0be3d773d86890efe668a41f6",
+    "patch_sha": "eeb6f8c287f13747a74c177e7c69560cf228cf9486868b2d22bdc00c2e351710",
+    "patch_file": "sentinel-grid/live-parity/runtime-collector/tests/self-test.mjs",
+    "lines": "80 -> 94",
+    "isolated_test_single": "PASS",
+    "isolated_test_all6": "PASS (6/6 fixtures, recordCount 6)",
+    "sandbox_write": "blocked Operation not permitted; staged in .tmp-r8-r3-r2 for manual apply",
+    "manual_apply": "cp .tmp-r8-r3-r2/self-test.mjs.patched -> zeknova/.../tests/self-test.mjs"
+  },
+  "repository_modified_by_gate": false,
+  "collector_started": false,
+  "qualification_restarted": false,
+  "production_promotion_eligible": false
+}

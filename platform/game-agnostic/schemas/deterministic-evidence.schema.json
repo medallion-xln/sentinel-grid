@@ -1,0 +1,61 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://sentinel-grid.local/schemas/deterministic-evidence.schema.json",
+  "title": "Sentinel Grid Deterministic Evidence",
+  "type": "object",
+  "required": [
+    "evidenceVersion",
+    "contractVersion",
+    "kernelVersion",
+    "kernelScope",
+    "authority",
+    "pass",
+    "evidenceReportCount",
+    "checkCount",
+    "failedCheckCount",
+    "reports",
+    "deterministicEvidenceHash"
+  ],
+  "properties": {
+    "evidenceVersion": {
+      "const": 4
+    },
+    "contractVersion": {
+      "const": 1
+    },
+    "kernelVersion": {
+      "type": "string",
+      "minLength": 1
+    },
+    "kernelScope": {
+      "const": "game-agnostic"
+    },
+    "authority": {
+      "const": "R0"
+    },
+    "pass": {
+      "type": "boolean"
+    },
+    "checkCount": {
+      "type": "integer",
+      "minimum": 0
+    },
+    "failedCheckCount": {
+      "type": "integer",
+      "minimum": 0
+    },
+    "reports": {
+      "type": "array",
+      "minItems": 1
+    },
+    "deterministicEvidenceHash": {
+      "type": "string",
+      "pattern": "^[a-f0-9]{64}$"
+    },
+    "evidenceReportCount": {
+      "type": "integer",
+      "minimum": 1
+    }
+  },
+  "additionalProperties": false
+}

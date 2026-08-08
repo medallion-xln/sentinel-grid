@@ -1,0 +1,44 @@
+{
+  "name": "@sentinel-grid/kernel",
+  "version": "0.9.0",
+  "private": true,
+  "description": "Game-agnostic deterministic decision-intelligence kernel with provenance-locked ZekNova sustained-shadow campaigns and controlled next-stage evaluation gates.",
+  "type": "module",
+  "main": "./src/index.js",
+  "types": "./src/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./src/index.d.ts",
+      "import": "./src/index.js"
+    },
+    "./reference-game": "./src/adapters/reference-game/index.js",
+    "./reference-rescue": "./src/adapters/reference-rescue/index.js"
+  },
+  "engines": {
+    "node": ">=18"
+  },
+  "scripts": {
+    "test": "node --test",
+    "verify": "node scripts/verify.mjs",
+    "demo": "node scripts/demo.mjs",
+    "evidence": "node scripts/generate-evidence.mjs",
+    "evidence:compare": "node scripts/compare-evidence.mjs",
+    "evidence:check": "node scripts/check-evidence.mjs",
+    "sha256:generate": "node scripts/generate-sha256.mjs",
+    "sha256:check": "node scripts/check-sha256.mjs",
+    "adapters:discover": "node scripts/discover-adapters.mjs",
+    "adapters:lock": "node scripts/generate-adapter-lock.mjs",
+    "adapters:lock:check": "node scripts/verify-adapter-lock.mjs",
+    "adapters:certify": "node scripts/certify-production-adapters.mjs",
+    "snapshots:validate": "node scripts/validate-snapshots.mjs",
+    "snapshots:certify": "node scripts/certify-snapshots.mjs",
+    "conformance:production": "node scripts/certify-production-conformance.mjs",
+    "conformance:stress": "node scripts/run-conformance-stress.mjs",
+    "parity:zeknova": "node scripts/certify-zeknova-parity.mjs",
+    "shadow:zeknova:framework": "node scripts/certify-zeknova-shadow-framework.mjs",
+    "shadow:zeknova:certify": "node scripts/certify-zeknova-live-shadow.mjs",
+    "shadow:zeknova:stage2f:framework": "node scripts/certify-zeknova-stage2f-framework.mjs",
+    "shadow:zeknova:stage2f:campaign": "node scripts/certify-zeknova-stage2f-campaign.mjs"
+  },
+  "license": "UNLICENSED"
+}

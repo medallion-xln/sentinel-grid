@@ -1,0 +1,325 @@
+{
+ "generatedAt": "2026-07-21T05:58:47.764Z",
+ "baseline": {
+  "frozenAt": "2026-07-21T04:57:26.231Z",
+  "envId": "reference-colony",
+  "envVersion": 2,
+  "horizon": 2400,
+  "scoringWeights": {
+   "survived": 0.35,
+   "ticksFrac": 0.15,
+   "popN": 0.2,
+   "infraN": 0.1,
+   "exploredN": 0.1,
+   "threatContained": 0.1
+  },
+  "moduleHashes": {
+   "azl-config.js": "bb6dd3c7c4741c3b",
+   "azl-util.js": "44a2dc74ef301dde",
+   "azl-state.js": "66a48d1efd64c310",
+   "azl-nn.js": "37b26f47939698f2",
+   "azl-scout.js": "ae2771a6aef44da8",
+   "azl-strategist.js": "e6305a4cb78b8b55",
+   "azl-oracle.js": "9304ac433301d6d5",
+   "azl-relational.js": "cfea5f27c7bec599",
+   "azl-mcts.js": "95a6bbb84ba89cf4",
+   "azl-router.js": "f614b061c00917d1",
+   "azl-weights.js": "1ce04a68d7e76a5f",
+   "azl-federated.js": "961ee99d95725aa8",
+   "azl-eval.js": "460d590c2b473a75",
+   "azl-ref-adapter-v2.js": "0c8968eae1db78cf"
+  },
+  "weights": {
+   "vanguard": "9995ef7422685457",
+   "horizon": "3634a56cc1811994"
+  },
+  "runtime": "node v22.22.2"
+ },
+ "stats": {
+  "C0": {
+   "meanAgg": 0.242,
+   "vec": {
+    "survived": 0.036,
+    "ticksFrac": 0.781,
+    "popN": 0,
+    "infraN": 0.14,
+    "exploredN": 0.1,
+    "threatContained": 0.878
+   },
+   "collapses": 27,
+   "latP50": 0,
+   "latP95": 0
+  },
+  "C1": {
+   "meanAgg": 0.206,
+   "vec": {
+    "survived": 0,
+    "ticksFrac": 0.057,
+    "popN": 0,
+    "infraN": 0.991,
+    "exploredN": 0.1,
+    "threatContained": 0.88
+   },
+   "collapses": 28,
+   "latP50": 0.13,
+   "latP95": 0.18
+  },
+  "C2": {
+   "meanAgg": 0.787,
+   "vec": {
+    "survived": 1,
+    "ticksFrac": 1,
+    "popN": 0.507,
+    "infraN": 0.631,
+    "exploredN": 0.766,
+    "threatContained": 0.462
+   },
+   "collapses": 0,
+   "latP50": 0.8,
+   "latP95": 1.16
+  },
+  "C3": {
+   "meanAgg": 0.653,
+   "vec": {
+    "survived": 0.893,
+    "ticksFrac": 0.93,
+    "popN": 0.008,
+    "infraN": 1,
+    "exploredN": 0.282,
+    "threatContained": 0.717
+   },
+   "collapses": 3,
+   "latP50": 17.66,
+   "latP95": 20.9
+  },
+  "RND": {
+   "meanAgg": 0.818,
+   "vec": {
+    "survived": 1,
+    "ticksFrac": 1,
+    "popN": 0.344,
+    "infraN": 1,
+    "exploredN": 1,
+    "threatContained": 0.492
+   },
+   "collapses": 0,
+   "latP50": 0,
+   "latP95": 0
+  }
+ },
+ "comparisons": {
+  "C2_vs_C0": {
+   "wins": 28,
+   "losses": 0,
+   "draws": 0,
+   "winRate": 1,
+   "lcb": 0.879,
+   "segments": {
+    "calm": {
+     "n": 28,
+     "w": 28,
+     "l": 0,
+     "lcb": 0.879
+    }
+   },
+   "segmentVeto": null
+  },
+  "C2_vs_RND": {
+   "wins": 0,
+   "losses": 18,
+   "draws": 10,
+   "winRate": 0,
+   "lcb": 0,
+   "segments": {
+    "calm": {
+     "n": 28,
+     "w": 0,
+     "l": 18,
+     "lcb": 0
+    }
+   },
+   "segmentVeto": "calm"
+  },
+  "C3_vs_C1": {
+   "wins": 28,
+   "losses": 0,
+   "draws": 0,
+   "winRate": 1,
+   "lcb": 0.879,
+   "segments": {
+    "calm": {
+     "n": 28,
+     "w": 28,
+     "l": 0,
+     "lcb": 0.879
+    }
+   },
+   "segmentVeto": null
+  },
+  "C2_vs_C3": {
+   "wins": 27,
+   "losses": 0,
+   "draws": 1,
+   "winRate": 1,
+   "lcb": 0.875,
+   "segments": {
+    "calm": {
+     "n": 28,
+     "w": 27,
+     "l": 0,
+     "lcb": 0.875
+    }
+   },
+   "segmentVeto": null
+  },
+  "C1_vs_C0": {
+   "wins": 0,
+   "losses": 16,
+   "draws": 12,
+   "winRate": 0,
+   "lcb": 0,
+   "segments": {
+    "calm": {
+     "n": 28,
+     "w": 0,
+     "l": 16,
+     "lcb": 0
+    }
+   },
+   "segmentVeto": "calm"
+  }
+ },
+ "sweep": {
+  "rows": [
+   {
+    "sims": 64,
+    "eps": [
+     {
+      "seed": 1000,
+      "agg": 0.789,
+      "survived": 1
+     },
+     {
+      "seed": 8919,
+      "agg": 0.7782,
+      "survived": 1
+     },
+     {
+      "seed": 16838,
+      "agg": 0.6775,
+      "survived": 1
+     },
+     {
+      "seed": 24757,
+      "agg": 0.7668,
+      "survived": 1
+     },
+     {
+      "seed": 32676,
+      "agg": 0.7609,
+      "survived": 1
+     },
+     {
+      "seed": 40595,
+      "agg": 0.7311,
+      "survived": 1
+     },
+     {
+      "seed": 48514,
+      "agg": 0.7098,
+      "survived": 1
+     },
+     {
+      "seed": 56433,
+      "agg": 0.7534,
+      "survived": 1
+     }
+    ],
+    "meanAgg": 0.746,
+    "survRate": 1
+   },
+   {
+    "sims": 256,
+    "eps": [
+     {
+      "seed": 1000,
+      "agg": 0.8194,
+      "survived": 1
+     },
+     {
+      "seed": 8919,
+      "agg": 0.7911,
+      "survived": 1
+     },
+     {
+      "seed": 16838,
+      "agg": 0.8289,
+      "survived": 1
+     },
+     {
+      "seed": 24757,
+      "agg": 0.8089,
+      "survived": 1
+     },
+     {
+      "seed": 32676,
+      "agg": 0.84,
+      "survived": 1
+     },
+     {
+      "seed": 40595,
+      "agg": 0.8099,
+      "survived": 1
+     }
+    ],
+    "meanAgg": 0.816,
+    "survRate": 1
+   }
+  ]
+ },
+ "identity": {
+  "states": 60,
+  "c4c5_actions_differing_from_C3": 0,
+  "conclusion": "C4/C5 inherit C3 quality exactly under env v2 (verified on 60 states)"
+ },
+ "prereg": {
+  "preregisteredAt": "before any ladder2 episode ran (env v2, vector scoring)",
+  "expectations": [
+   {
+    "id": "P1",
+    "kind": "collapse-prone",
+    "config": "C0",
+    "text": "Heuristic (C0) collapses in most episodes (greedy probe showed 19/20)"
+   },
+   {
+    "id": "P2",
+    "kind": "collapse-prone",
+    "config": "C1",
+    "text": "Vanguard greedy (C1) inherits heuristic behavior -> also collapse-prone"
+   },
+   {
+    "id": "P3",
+    "kind": "gain",
+    "comparison": "C2_vs_C0",
+    "text": "Uniform-prior Prime materially raises survival + agg over heuristic. ALTERNATIVE: if collapse spirals (~tick 1800) exceed ~6-ply reactive correction, C2 fails too -> finding = long-horizon planning gap (Horizon's future job), not a search bug"
+   },
+   {
+    "id": "P4",
+    "kind": "parity",
+    "comparison": "C3_vs_C1",
+    "text": "Vanguard-guided Prime (C3) ~ Vanguard greedy (prior capture persists under env v2)"
+   },
+   {
+    "id": "P5",
+    "kind": "gamed-survival",
+    "text": "Random control survives by stagnating (low pop growth) but loses to C2 on the aggregate - the vector resists do-nothing gaming"
+   },
+   {
+    "id": "P6",
+    "kind": "gain",
+    "comparison": "C2_vs_RND",
+    "text": "C2 beats the do-nothing survivor on the full vector"
+   }
+  ]
+ }
+}

@@ -1,0 +1,54 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "type": "object",
+  "properties": {
+    "turn": {
+      "type": "integer",
+      "minimum": 0,
+      "maximum": 1000000
+    },
+    "activePlayer": {
+      "type": "string",
+      "enum": [
+        "player-1",
+        "player-2"
+      ]
+    },
+    "scores": {
+      "type": "object",
+      "properties": {
+        "player-1": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 1000000
+        },
+        "player-2": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 1000000
+        }
+      },
+      "required": [
+        "player-1",
+        "player-2"
+      ],
+      "additionalProperties": false
+    },
+    "target": {
+      "type": "integer",
+      "minimum": 4,
+      "maximum": 100
+    },
+    "bonusAvailable": {
+      "type": "boolean"
+    }
+  },
+  "required": [
+    "turn",
+    "activePlayer",
+    "scores",
+    "target",
+    "bonusAvailable"
+  ],
+  "additionalProperties": false
+}

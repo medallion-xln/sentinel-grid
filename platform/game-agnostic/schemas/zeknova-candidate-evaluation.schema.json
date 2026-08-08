@@ -1,0 +1,14 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "ZekNova Stage 2F-Z Candidate Evaluation Record",
+  "type": "object",
+  "required": ["candidateEvaluationVersion", "candidateId", "engineId", "captureId", "sourceStateHash", "selectedActionKey", "safety", "pass", "authority", "candidateRecordHash"],
+  "additionalProperties": true,
+  "properties": {
+    "candidateEvaluationVersion": { "const": 1 },
+    "candidateId": { "type": "string", "minLength": 1 },
+    "sourceStateHash": { "type": "string", "pattern": "^[a-f0-9]{64}$" },
+    "pass": { "type": "boolean" },
+    "candidateRecordHash": { "type": "string", "pattern": "^[a-f0-9]{64}$" }
+  }
+}
