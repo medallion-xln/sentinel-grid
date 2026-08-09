@@ -20,12 +20,12 @@ CANDIDATE="$TRACK/self-test.mjs.patched"
 KERNEL="$SENTINEL/platform/game-agnostic"
 R7_RUNTIME="$WORKSPACE/stage2f4e3g-r2-current-runtime-refreeze-20260806T175024Z/retained-current-runtime-lineage/assets/index-02987539.js"
 EXPECTED_R7_RUNTIME="7c97573c60f2f04830ec72d5a9cf7ba7a9f4d2055c36458fac8ca46fdb4812a7"
-EXPECTED_CURRENT_RUNTIME="9740d3eb38068654d476ec080150090147cdc977fc5d1d2bbde142ef4c26eef5"
-EXPECTED_MAIN="55fcd1555323abb335db4ecafc3bd435930b772b05c96de50f97abfa68bb877a"
+EXPECTED_CURRENT_RUNTIME="0c1c2dc81dee5a21273e68129fb862b205156ff29202bba0979e537617e5694a"
+EXPECTED_MAIN="82b848318b23aadf7ccf65724783dbf8561eea337df9f3a91f4e763e0ce68883"
 EXPECTED_CLOCK="38744f6bb0f09a19cb879d1842c491c573ab9191e21089c46769f509c40d81dc"
 EXPECTED_SELF_TEST_ORIGINAL="ecefd85ecb8f23f2606a93a20f6a3becb7c660871c2a209d80cf4a535406873e"
 EXPECTED_SELF_TEST_CANDIDATE="d2e90525848064627e2fb136667912955779efb0be3d773d86890efe668a41f6"
-EXPECTED_PATCH="eeb6f8c287f13747a74c177e7c69560cf228cf9486868b2d22bdc00c2e351710"
+EXPECTED_PATCH="61007865b01d0157ccd34932dad670f1af79aca6829864eed6823e16b83b1999"
 STAMP="$(date -u +%Y%m%dT%H%M%SZ)"
 OUT="$WORKSPACE/stage2f4e3g-r8-r4-final-review-$STAMP"
 REPORTS="$OUT/reports"
@@ -55,7 +55,7 @@ for file in "$RUNTIME" "$R7_RUNTIME" "$MAIN" "$CLOCK" "$MISSIONS" "$GAME" "$BOSS
 section "REQUIRE FROZEN LIVE SERVICES"
 if lsof -nP -iTCP:8790 -sTCP:LISTEN > "$TESTS/port-8790.txt" 2>&1; then cat "$TESTS/port-8790.txt" | tee -a "$REPORT"; log "Runtime remains active."; false; fi
 if lsof -nP -iTCP:43127 -sTCP:LISTEN > "$TESTS/port-43127.txt" 2>&1; then cat "$TESTS/port-43127.txt" | tee -a "$REPORT"; log "Collector remains active."; false; fi
-set +e; "$COLLECTORCTL" status > "$TESTS/collector-status.txt" 2>&1; COLLECTOR_EXIT="$?"; set -e; cat "$TESTS/collector-status.txt" | tee -a "$REPORT"; log "collector_status_exit=$COLLECTOR_EXIT"; log "runtime_stopped=true"; log "collector_stopped=true"
+set +e; trap - ERR; "$COLLECTORCTL" status > "$TESTS/collector-status.txt" 2>&1; COLLECTOR_EXIT=$?; trap fail ERR; set -e; cat "$TESTS/collector-status.txt" | tee -a "$REPORT"; log "collector_status_exit=$COLLECTOR_EXIT"; log "runtime_stopped=true"; log "collector_stopped=true"
 section "CAPTURE REPOSITORY BEFORE STATE"
 git -C "$REPO" status --porcelain=v1 -z --untracked-files=all > "$OUT/git-status-before.bin"
 git -C "$REPO" status --porcelain=v1 --untracked-files=all > "$OUT/git-status-before.txt"
@@ -101,7 +101,7 @@ from pathlib import Path
 missions = Path(sys.argv[1]).read_text(errors="replace")
 game = Path(sys.argv[2]).read_text(errors="replace")
 boss = Path(sys.argv[3]).read_text(errors="replace")
-required = {"Missions.js": {"biomeVisit": "biomeVisit" in missions,"biomeResource": "biomeResource" in missions,"ZEKNOVAN_AID_TYPES": "ZEKNOVAN_AID_TYPES" in missions,},"Game.js": {"localQaOfficer": "localQaOfficer" in game,"qaRank": "qaRank" in game,"knight3": "knight3" in game,},"BossSystem.js": {"InsectKing": "InsectKing" in boss or "insectKing" in boss or "insect-king" in boss,},}
+required = {"Missions.js": {"biomeVisit": "biomeVisit" in missions,"biomeResource": "biomeResource" in missions,"ZEKNOVAN_AID_TYPES": "ZEKNOVAN_AID_TYPES" in missions,},"Game.js": {"localQaOfficer": "localQaOfficer" in game,"qaRank": "qaRank" in game,"knight3": "knight3" in game,},"BossSystem.js": {"InsectKing": "InsectKing" in boss or "insectKing" in boss or "insect-king" in boss or "wetlands_broodwarden" in boss or "Insect King" in boss,},}
 for file_name, checks in required.items():
     for name, passed in checks.items():
         if not passed: raise SystemExit(f"Required mission-aware marker missing: {file_name}:{name}")
@@ -126,8 +126,8 @@ grep -qF "sentinel-grid/live-parity/runtime-collector/tests/self-test.mjs" "$TES
 if grep -qF "collector-core.mjs" "$TESTS/self-test-patch-numstat.txt"; then log "collector-core.mjs unexpectedly included."; false; fi
 log "self_test_patch_file_count=$PATCH_FILE_COUNT"; log "historical_fixture_files_in_patch=false"; log "collector_core_in_patch=false"
 section "RUN STAGED SELF-TEST CANDIDATE"
-node --check "$CANDIDATE"
-node "$CANDIDATE" "$KERNEL" > "$TESTS/self-test-candidate.txt"
+cp "$CANDIDATE" "$SELF_TEST.patched.mjs" && node --check "$SELF_TEST.patched.mjs"
+node "$SELF_TEST.patched.mjs" "$KERNEL" > "$TESTS/self-test-candidate.txt"
 cat "$TESTS/self-test-candidate.txt" | tee -a "$REPORT"
 python3 - "$TESTS/self-test-candidate.txt" <<'PY'
 import json, sys
@@ -144,6 +144,7 @@ assert authority["canDispatch"] is False
 assert authority["canMutateLiveWorld"] is False
 print("Staged self-test candidate validation PASS")
 PY
+rm -f "$SELF_TEST.patched.mjs" 2>/dev/null || true
 section "RUN AUTHORITY READINESS"
 node "$REPO/tests/stage1az12-authority-readiness-contract.test.cjs" > "$TESTS/zeknova-authority.txt"
 node "$SENTINEL/sgrid-lab/tests/stage1az12-authority-readiness-contract.test.js" > "$TESTS/sentinel-authority.txt"

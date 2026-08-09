@@ -1,0 +1,94 @@
+SENTINEL GRID - CURRENT STATUS vs FULL ROADMAP - PLAIN TEXT HANDOFF
+==================================================================
+Generated: 2026-08-08T04:10Z (UTC)
+Workspace: ~/Desktop/sentinel-grid + ~/Desktop/zeknova-shared-gaming-experience
+Authority: R0 everywhere (canDispatch:false canMutateLiveWorld:false)
+
+ROADMAP - TEN STAGES (game-agnostic):
+Stage 0 - Universal deterministic kernel - DONE
+Stage 1 - Adapter SDK + Certification Lab - DONE (2 reference adapters)
+Stage 2 - First production adapter ZekNova parity (592 features, 6 actions) - DONE
+Stage 2D-Z - Frozen parity (parity-01..06) - DONE
+Stage 2E-Z / 2F - Real-state shadow + thresholds 1000 records / 250 identities / 5 sessions / 4 factions / 4 biomes / 12 missions / 3 phases / 6 masks / 320k sims - STALLED at R8-R4, numerically MET but procedural FAIL
+Stage 3 - Universal multistep simulation - NOT STARTED
+Stage 4 - Universal Sentinel Prime (multistep PUCT) - NOT STARTED (uniform-prior PUCT candidate only)
+Stage 5 - Universal Expert SDK (Vanguard/Scout 47K, Strategist 340K, Oracle, Nexus, Horizon) - NOT STARTED
+Stage 6 - Temporal + Relational (Oracle + Nexus R0) - THIS IS STAGE 2G DEEPER ADVISOR - NEXT after 2F Final Certification
+Stage 7 - Calibrated policy learning (rebuild Vanguard from certified search targets) - NOT STARTED (next bundle build after 2G)
+Stage 8 - Constrained MoE routing (deterministic first) - NOT STARTED
+Stage 9 - Intelligence Lab (replay/shadow/canary/promotion) - NOT STARTED
+Stage 10 - Authority plane (R2+ per-game execution tokens, human authorized) - NOT STARTED
+
+CURRENT STATUS - DETAILED:
+
+R7 certified (human authorized):
+  Runtime: 7c97573c60f2f04830ec72d5a9cf7ba7a9f4d2055c36458fac8ca46fdb4812a7 1302376 bytes
+  Main: 55fcd1555323abb335db4ecafc3bd435930b772b05c96de50f97abfa68bb877a
+  Clock: 38744f6bb0f09a19cb879d1842c491c573ab9191e21089c46769f509c40d81dc
+  Patch: 4e52474a0a8ed7b581570576cda1f433e687f61ae346fd2a9305977e25c8adf3 (2 files)
+
+R8 - PREPARATION FAILED: UNCOMMITTED_RUNTIME_DRIFT + SAMPLING_STATE_IDENTITY_INVALID
+  R8-R2 forensics found 2-substitution boss-loader drift (AncientThornwarden -> InsectKing)
+  R8-R3 brittle pgrep -af -> R8-R3-R2 uses lsof frozen snapshot
+
+R8-R3-R2 - STAGED, SANDBOX-BLOCKED WRITE:
+  Freeze: lsof 8790 = php 38230 LISTEN (sandbox kill blocked Operation not permitted), 43127 free, collector STOPPED R0
+  Runtime: drifted repeatedly: 39276d3b... -> 834867dc... -> abbc3a3bf... -> f41a806e... -> 9740d3eb38068654d476ec080150090147cdc977fc5d1d2bbde142ef4c26eef5 1334668 (current, re-frozen)
+  Anchors: getAdvisorTelemetry 2/2, getStrategicStateQuantum 0/0, R0 unchanged - PASS
+  Mission changes: Missions.js 164-line biomeVisit/biomeResource/ZEKNOVAN_AID_TYPES, Game.js localQaOfficer/?qaRank v=knight3, BossSystem InsectKing - safe, check-source PASS
+  Classification: FULL_REBUILD_WITH_BOSS_LOADER_PLUS_MISSION_AND_RUNTIME_CHANGES (not boss-only)
+  Collector self-test: SAMPLING_STATE_IDENTITY_INVALID - 6 parity fixtures lack stateIdentity, sourceStateHash valid
+    Isolated hydration from sourceStateHash PASS single + all-6 (recordCount 6)
+    One-file patch staged: tests/self-test.mjs ecefd85ecb8f... -> d2e90525848064627e2fb136667912955779efb0be3d773d86890efe668a41f6, patch eeb6f8c287f..., 80->94 lines
+    Sandbox cp to sibling -> Operation not permitted - staged in sentinel-grid/.tmp-r8-r3-r2/
+
+R8-R4 - Stage 2F.4E.3G-R8-R4 Exact Runtime Rebaseline + Self-Test Application Review:
+  Script: sentinel-grid/.tmp-r8-r4/stage2f4e3g-r8-r4-final-review.sh a057c4bf836b2a7602ce5236b5665ea98482e99367cc9fd2dfa35a23530218c2 14K bash -n PASS
+  Expected re-frozen to current: f41a80... -> 9740d3eb38068654d476ec080150090147cdc977fc5d1d2bbde142ef4c26eef5
+  Staged due to ~/Downloads sandbox block, plus WORKSPACE mkdir Operation not permitted and 8790 LISTEN cause correct FAIL-closed inside sandbox
+  Must run outside sandbox after killing 8790
+
+STAGE 2F THRESHOLDS (collector.log):
+  recordCount 1749 / 1000 MET
+  samplingStateIdentityCount 1735 / 250 MET
+  manifestCount 41 / 5 MET
+  authority R0 canDispatch:false MET
+  But procedural FAIL: collector STOPPED, patch not live applied, runtime not yet re-baselined under new lineage
+
+NEXT PHASE - WHAT TO DO NEXT (in order):
+
+1. In regular macOS Terminal (NOT Muse sandbox):
+   lsof -tiTCP:8790 | xargs kill
+   lsof -nP -iTCP:8790 -sTCP:LISTEN || echo "8790 free"
+   cp /Users/dwaynecampbell/Desktop/sentinel-grid/.tmp-r8-r4/stage2f4e3g-r8-r4-final-review.sh ~/Downloads/stage2f4e3g-r8-r4-final-review.sh
+   chmod +x ~/Downloads/stage2f4e3g-r8-r4-final-review.sh
+   bash -n ~/Downloads/stage2f4e3g-r8-r4-final-review.sh && echo "Shell syntax PASS"
+   ~/Downloads/stage2f4e3g-r8-r4-final-review.sh
+   Must show: STAGE_2F4E3G_R8_R4_PROCEDURAL=PASS
+              PROPOSED_RUNTIME_REBASELINE_SHA256=9740d3eb38068654d476ec080150090147cdc977fc5d1d2bbde142ef4c26eef5
+              RUNTIME_CLASSIFICATION=FULL_REBUILD_WITH_BOSS_LOADER_PLUS_MISSION_AND_RUNTIME_CHANGES
+              SELF_TEST_PATCH_SHA256=eeb6f8c287f13747a74c177e7c69560cf228cf9486868b2d22bdc00c2e351710
+              SELF_TEST_CANDIDATE_SHA256=d2e90525848064627e2fb136667912955779efb0be3d773d86890efe668a41f6
+              REPOSITORY_MODIFIED_BY_GATE=false AUTHORITY=R0
+
+2. After R8-R4 PASS, two separate authorizations:
+   - Runtime rebaseline: accept 9740d3eb... supersedes 7c97573c...
+   - Collector self-test: authorize patch eeb6f8c... at sentinel-grid/.../tests/self-test.mjs -> d2e905...
+
+3. R8-R5: record rebaseline provenance + apply one-file patch with automatic rollback:
+   cp sentinel-grid/.tmp-r8-r3-r2/self-test.mjs.patched zeknova.../tests/self-test.mjs
+   node .../tests/self-test.mjs sentinel-grid/platform/game-agnostic # pass:true checks:18
+
+4. R8-R6: collectorctl.sh start -> 127.0.0.1:43127 R0
+   R8-R7: node scripts/dev.mjs -> 127.0.0.1:8790, verify ZekNovaStrategicStateClock.currentQuantum() === getAdvisorTelemetry().tick
+   R8-R8: first submitCapture -> recordCount 1749->1750+ certifies qualification restart
+
+5. Stage 2F campaign: sustain to thresholds under new lineage, then Stage 2F Final Certification audit -> Stage 2G (Oracle + Nexus R0 experts) is the next build after certification. No authority increase until Stage 10 R2+ token.
+
+WHAT NEXT CHAT SHOULD VERIFY:
+- shasum -a 256 for 7c97573c..., 9740d3eb..., 38744f6..., 55fcd155..., ecefd85..., d2e905..., eeb6f8c..., a057c4bf...
+- lsof -iTCP:8790 and 43127 both free before gate, then LISTEN after restart
+- grep getAdvisorTelemetry 2, getStrategicStateQuantum 0 in current runtime
+- node scripts/check-source.mjs PASS
+- node tests/self-test.mjs PASS 18 checks R0
+- collector log recordCount increase after restart

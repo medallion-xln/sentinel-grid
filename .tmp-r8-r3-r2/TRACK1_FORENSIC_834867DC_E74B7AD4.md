@@ -2,7 +2,7 @@
 ## Target
 - R7 certified: 7c97573c60f2f04830ec72d5a9cf7ba7a9f4d2055c36458fac8ca46fdb4812a7 1302376 bytes
 - Interim 834867dc547aa4385cdb6be8a62a1b687d8a46e3505eb6f3402feea5917d7266 1334668 bytes (18:57)
-- CURRENT 9740d3eb38068654d476ec080150090147cdc977fc5d1d2bbde142ef4c26eef5 1334668 bytes (19:xx) — successor, same mission lineage
+- CURRENT 0c1c2dc81dee5a21273e68129fb862b205156ff29202bba0979e537617e5694a 1400007 bytes (19:xx) — successor, same mission lineage
 ## Sentinel anchors (must be unchanged)
 - getAdvisorTelemetry: 2/2, getStrategicStateQuantum: 0/0, R0 unchanged, canDispatch/canMutate false
 - Verified via python count above — PASS
