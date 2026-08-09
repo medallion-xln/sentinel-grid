@@ -92,3 +92,4 @@ Also confirm the superseded file is gone:
 test ! -e sgrid-lab/tests/w0a-clone-mask.test.js && echo absent
 node sgrid-lab/tests/check-install.js
 ```
+# sentinel-grid
