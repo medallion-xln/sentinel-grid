@@ -2,14 +2,18 @@
   "$schema": "https://json-schema.org/draft/2020-12/schema",
   "title": "ZekNova Stage 2F-Z Session Manifest",
   "type": "object",
-  "required": ["manifestVersion", "sessionId", "environmentId", "repositoryHead", "runtimeBuildHash", "collectorId", "startedAt", "endedAt", "recordCount", "entries", "entriesHash", "authority", "manifestHash"],
+  "required": ["manifestVersion", "sessionId", "stage2fCampaignId", "sentinelRuntimeId", "generatedRuntimeProvenanceId", "environmentId", "repositoryHead", "runtimeBuildHash", "collectorId", "startedAt", "endedAt", "recordCount", "firstSequence", "lastSequence", "samplingIdentities", "samplingIdentitiesHash", "entries", "entriesHash", "authority", "manifestHash"],
   "additionalProperties": true,
   "properties": {
-    "manifestVersion": { "const": 1 },
+    "manifestVersion": { "const": 2 },
     "sessionId": { "type": "string", "minLength": 1 },
+    "stage2fCampaignId": { "type": "string", "pattern": "^sha256:[a-f0-9]{64}$" },
+    "sentinelRuntimeId": { "type": "string", "pattern": "^sha256:[a-f0-9]{64}$" },
+    "generatedRuntimeProvenanceId": { "type": "string", "pattern": "^sha256:[a-f0-9]{64}$" },
     "repositoryHead": { "type": "string", "pattern": "^[a-f0-9]{40}([a-f0-9]{24})?$" },
     "runtimeBuildHash": { "type": "string", "pattern": "^[a-f0-9]{64}$" },
     "recordCount": { "type": "integer", "minimum": 1 },
+    "samplingIdentities": { "type": "array", "minItems": 1, "uniqueItems": true, "items": { "type": "string", "pattern": "^[a-f0-9]{64}$" } },
     "manifestHash": { "type": "string", "pattern": "^[a-f0-9]{64}$" }
   }
 }

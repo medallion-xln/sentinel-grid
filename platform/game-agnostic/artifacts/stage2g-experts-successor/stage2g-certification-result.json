@@ -1,0 +1,143 @@
+{
+  "certificationSchemaVersion": 1,
+  "stage": "STAGE2G_ORACLE_NEXUS_R0",
+  "authority": "R0",
+  "expertContractVersion": 1,
+  "signalScale": 1000000,
+  "sentinelRuntimeId": "sha256:f1cd5ec6bc292f07b31aed40c6fd530291da69b2362c6b09632bd0a2b9bd5389",
+  "generatedRuntimeProvenanceId": "sha256:94ca7ddde61f99f22cff26735e08817d19ff576ca72fc311e39d3a1e5cd95452",
+  "stage2fCampaignId": "sha256:81ebdf78deb391d1658958cb15352450cb16c6bac69ab280792a1e7385cdbdc1",
+  "sessionId": "stage2g-certification-89b75ec618b162fe",
+  "samplingIdentity": "89b75ec618b162fe83cd56dab84b0d2c073d2f6021fed661d7e0decd62a2dacb",
+  "evidenceMode": "QUALIFICATION",
+  "qualificationEligible": false,
+  "experts": [
+    {
+      "expertId": "sentinel-oracle-temporal",
+      "expertVersion": 1,
+      "expertContractVersion": 1,
+      "kind": "deterministic-temporal",
+      "isLearned": false,
+      "usesRandomness": false,
+      "usesWallClock": false,
+      "authorityTier": "R0"
+    },
+    {
+      "expertId": "sentinel-nexus-relational",
+      "expertVersion": 1,
+      "expertContractVersion": 1,
+      "kind": "deterministic-relational",
+      "isLearned": false,
+      "usesRandomness": false,
+      "usesWallClock": false,
+      "authorityTier": "R0"
+    }
+  ],
+  "oracleCertified": true,
+  "nexusCertified": true,
+  "oracleDeterministic": true,
+  "nexusDeterministic": true,
+  "oracleReplayEquivalent": true,
+  "nexusReplayEquivalent": true,
+  "oracleCaseCount": 11,
+  "nexusCaseCount": 11,
+  "oracleExpertVersion": 1,
+  "nexusExpertVersion": 1,
+  "stage2fProvenanceInherited": true,
+  "runtimeIdentityBound": true,
+  "campaignBound": true,
+  "expertOutputDigestBound": true,
+  "evidenceRecordCount": 22,
+  "evidenceDigest": "e61537fbeb3fb1c17a995784e166c2271080a8ea22931c0be5768981313c66ac",
+  "caseCorpusDigest": "89b75ec618b162fe83cd56dab84b0d2c073d2f6021fed661d7e0decd62a2dacb",
+  "negativeGateCount": 13,
+  "negativeGatesPassed": true,
+  "negativeGates": [
+    {
+      "name": "tampered-signal-value",
+      "rejected": true,
+      "code": "EXPERT_DIGEST_MISMATCH"
+    },
+    {
+      "name": "forged-authority-dispatch",
+      "rejected": true,
+      "code": "EXPERT_AUTHORITY_MISMATCH"
+    },
+    {
+      "name": "manufactured-authority-token",
+      "rejected": true,
+      "code": "EXPERT_AUTHORITY_MISMATCH"
+    },
+    {
+      "name": "injected-dispatch-surface",
+      "rejected": true,
+      "code": "EXPERT_EXECUTION_SURFACE"
+    },
+    {
+      "name": "injected-world-mutation-surface",
+      "rejected": true,
+      "code": "EXPERT_EXECUTION_SURFACE"
+    },
+    {
+      "name": "executable-callback",
+      "rejected": true,
+      "code": "EXPERT_EXECUTION_SURFACE"
+    },
+    {
+      "name": "out-of-range-signal",
+      "rejected": true,
+      "code": "EXPERT_SIGNAL_OUT_OF_RANGE"
+    },
+    {
+      "name": "non-integer-signal",
+      "rejected": true,
+      "code": "EXPERT_SIGNAL_NOT_INTEGER"
+    },
+    {
+      "name": "substituted-runtime-identity",
+      "rejected": true,
+      "code": "RUNTIME_ID_MISMATCH"
+    },
+    {
+      "name": "substituted-campaign-identity",
+      "rejected": true,
+      "code": "CAMPAIGN_ID_MISMATCH"
+    },
+    {
+      "name": "substituted-provenance-identity",
+      "rejected": true,
+      "code": "PROVENANCE_ID_MISMATCH"
+    },
+    {
+      "name": "qualification-inflation",
+      "rejected": true,
+      "code": "STAGE2F_PROVENANCE_VIOLATION"
+    },
+    {
+      "name": "escalated-evidence-authority",
+      "rejected": true,
+      "code": "AUTHORITY_MISMATCH"
+    }
+  ],
+  "primeIntegration": "none-prime-unmodified",
+  "routerIntegration": "none-shadow-envelope-only",
+  "consumedBy": "shadow-evaluation-only",
+  "liveActionDispatches": 0,
+  "worldMutations": 0,
+  "authorityEscalations": 0,
+  "authorityTokenIssues": 0,
+  "incumbentScriptedExecutorPreserved": true,
+  "canDispatch": false,
+  "canMutateLiveWorld": false,
+  "stage2gCertified": true,
+  "certificationHash": "31271de552ff93c35bba0df0cc55f538ef371282c71badd0398e9437a065961e",
+  "certificationMode": "LIVE_CURRENT",
+  "runtimeVerification": {
+    "certificationMode": "LIVE_CURRENT",
+    "declaredRuntimeIdentity": "sha256:f1cd5ec6bc292f07b31aed40c6fd530291da69b2362c6b09632bd0a2b9bd5389",
+    "measuredRuntimeIdentity": "sha256:f1cd5ec6bc292f07b31aed40c6fd530291da69b2362c6b09632bd0a2b9bd5389",
+    "declaredEqualsMeasured": true,
+    "runtimeInventoryMatch": true,
+    "identitySelfValid": true
+  }
+}

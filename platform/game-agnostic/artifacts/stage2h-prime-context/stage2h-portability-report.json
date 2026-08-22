@@ -1,0 +1,407 @@
+{
+  "portabilityDigestVersion": 1,
+  "stage": "STAGE2H_SHADOW_EXPERT_CONSUMPTION",
+  "digest": "967e9e13abe30daae47252048c493103d3d6ca6fd082bf247c9b99fe14ef124a",
+  "portabilityStatus": "PASS",
+  "platformsPassed": [
+    "darwin",
+    "linux"
+  ],
+  "measuredPlatforms": [
+    {
+      "platform": "darwin",
+      "arch": "arm64",
+      "nodeVersion": "v22.22.2",
+      "measuredAt": "2026-08-20",
+      "digest": "967e9e13abe30daae47252048c493103d3d6ca6fd082bf247c9b99fe14ef124a"
+    },
+    {
+      "platform": "linux",
+      "arch": "arm64",
+      "nodeVersion": "v22.22.2",
+      "measuredAt": "2026-08-20",
+      "digest": "967e9e13abe30daae47252048c493103d3d6ca6fd082bf247c9b99fe14ef124a"
+    },
+    {
+      "platform": "linux",
+      "arch": "x64",
+      "nodeVersion": "v22.22.2",
+      "measuredAt": "2026-08-20",
+      "digest": "967e9e13abe30daae47252048c493103d3d6ca6fd082bf247c9b99fe14ef124a"
+    }
+  ],
+  "disagreeingPlatforms": [],
+  "witnesses": {
+    "portabilityDigestVersion": 1,
+    "stage": "STAGE2H_SHADOW_EXPERT_CONSUMPTION",
+    "expertContextSchemaVersion": 1,
+    "adjustmentBounds": {
+      "oracleMicro": 20000,
+      "nexusMicro": 20000,
+      "totalMicro": 30000
+    },
+    "caseCorpusDigest": "6a890acd62bf8eaedf7782531a85c27572492fbd63dfb098dd06e3f28c66f448",
+    "scenarios": [
+      {
+        "scenarioId": "neutral",
+        "contextDigest": "sha256:0549bf7cc57072ff368ba91b5441e95e4ec20233715573fbb533de805247ef94",
+        "contextFeatures": {
+          "temporalRisk": 0,
+          "temporalOpportunity": 0,
+          "stability": 1000000,
+          "volatility": 0,
+          "dependencyRisk": 0,
+          "criticality": 0,
+          "supportStrength": 0,
+          "isolationRisk": 0
+        },
+        "adjustmentMicro": 0,
+        "comparisons": [
+          {
+            "fixtureId": "game-s64",
+            "baselineHash": "628b72a9af99ee8ef3a0e2deaf886fbb9d2a77ffa8e81486f5c2b2313c02d0ab",
+            "contextHash": "53fff013aee11cf7b048b88b5d520f8be45fe693cee24e68098c0f3d8afc1b36",
+            "selectedActionKey": "[\"reference.token-race/take@bonus\",\"player-1\",{\"id\":\"bonus-1\",\"kind\":\"shared-bonus\"},{\"amount\":3}]",
+            "recommendationChanged": true
+          },
+          {
+            "fixtureId": "game-s96",
+            "baselineHash": "9602f065b94fb36b8159fdfaee88a0104db4b9eaf52ca8bd3035f710cc2dcc30",
+            "contextHash": "b9b574640f870f1835286dfef90da57e29118a886ee35b00cb81807d9924da94",
+            "selectedActionKey": "[\"reference.token-race/take@2\",\"player-1\",null,{\"amount\":2}]",
+            "recommendationChanged": true
+          },
+          {
+            "fixtureId": "rescue-s64",
+            "baselineHash": "dd3748d9e703b48061451be01a14b9b9279b1cfc99eebdf8ff6786d599d6cc38",
+            "contextHash": "44cbcf127642e4305295211278652b90ce2051812a50df261bbc8a61e55d54a9",
+            "selectedActionKey": "[\"reference.grid-rescue/assist\",\"controller\",{\"id\":\"north\",\"kind\":\"site\"},{\"energyCost\":2}]",
+            "recommendationChanged": true
+          },
+          {
+            "fixtureId": "rescue-s128",
+            "baselineHash": "439fc48b82df707d09679766083b3bd8de220f72a3f70a878ba82b48856bb1ed",
+            "contextHash": "c481eac396d443919a7d2a1aaed4099808c8f85a3ff47cae5ba08377fcdc4b6a",
+            "selectedActionKey": "[\"reference.grid-rescue/assist\",\"controller\",{\"id\":\"north\",\"kind\":\"site\"},{\"energyCost\":2}]",
+            "recommendationChanged": true
+          }
+        ]
+      },
+      {
+        "scenarioId": "oracle-only-rising",
+        "contextDigest": "sha256:bab4c79a66c7abd4477033d4cf16be7d5086a94283aded294ac78621120fdfe6",
+        "contextFeatures": {
+          "temporalRisk": 0,
+          "temporalOpportunity": 1000000,
+          "stability": 555556,
+          "volatility": 444444,
+          "dependencyRisk": 0,
+          "criticality": 0,
+          "supportStrength": 0,
+          "isolationRisk": 0
+        },
+        "adjustmentMicro": 11111,
+        "comparisons": [
+          {
+            "fixtureId": "game-s64",
+            "baselineHash": "628b72a9af99ee8ef3a0e2deaf886fbb9d2a77ffa8e81486f5c2b2313c02d0ab",
+            "contextHash": "f2555a804c0d746e433652709f11315ec137b379e4fff71904699adbc0c4d932",
+            "selectedActionKey": "[\"reference.token-race/take@bonus\",\"player-1\",{\"id\":\"bonus-1\",\"kind\":\"shared-bonus\"},{\"amount\":3}]",
+            "recommendationChanged": true
+          },
+          {
+            "fixtureId": "game-s96",
+            "baselineHash": "9602f065b94fb36b8159fdfaee88a0104db4b9eaf52ca8bd3035f710cc2dcc30",
+            "contextHash": "89353ac257fe4c200588bea968c6ce87da572fb33de341c2016f858fc13b88ef",
+            "selectedActionKey": "[\"reference.token-race/take@2\",\"player-1\",null,{\"amount\":2}]",
+            "recommendationChanged": true
+          },
+          {
+            "fixtureId": "rescue-s64",
+            "baselineHash": "dd3748d9e703b48061451be01a14b9b9279b1cfc99eebdf8ff6786d599d6cc38",
+            "contextHash": "8b82ca473636f5ac2a620e4b2c12d92c678c8105ba28d0e632d5cf2389b0a9c0",
+            "selectedActionKey": "[\"reference.grid-rescue/assist\",\"controller\",{\"id\":\"north\",\"kind\":\"site\"},{\"energyCost\":2}]",
+            "recommendationChanged": true
+          },
+          {
+            "fixtureId": "rescue-s128",
+            "baselineHash": "439fc48b82df707d09679766083b3bd8de220f72a3f70a878ba82b48856bb1ed",
+            "contextHash": "63ea1fb460346282f0a316b861834e7b47b47f11e07b31a57352962591cec4a4",
+            "selectedActionKey": "[\"reference.grid-rescue/assist\",\"controller\",{\"id\":\"north\",\"kind\":\"site\"},{\"energyCost\":2}]",
+            "recommendationChanged": true
+          }
+        ]
+      },
+      {
+        "scenarioId": "oracle-only-falling",
+        "contextDigest": "sha256:9d2765299006064a5efbd312e3b2009921770bf56182b8f2f853199ced1717dc",
+        "contextFeatures": {
+          "temporalRisk": 1000000,
+          "temporalOpportunity": 0,
+          "stability": 384615,
+          "volatility": 615385,
+          "dependencyRisk": 0,
+          "criticality": 0,
+          "supportStrength": 0,
+          "isolationRisk": 0
+        },
+        "adjustmentMicro": -20000,
+        "comparisons": [
+          {
+            "fixtureId": "game-s64",
+            "baselineHash": "628b72a9af99ee8ef3a0e2deaf886fbb9d2a77ffa8e81486f5c2b2313c02d0ab",
+            "contextHash": "9445d2fae124f3ea0edea15e42299368a11a91dd189e7ef9ead893978988954a",
+            "selectedActionKey": "[\"reference.token-race/take@bonus\",\"player-1\",{\"id\":\"bonus-1\",\"kind\":\"shared-bonus\"},{\"amount\":3}]",
+            "recommendationChanged": true
+          },
+          {
+            "fixtureId": "game-s96",
+            "baselineHash": "9602f065b94fb36b8159fdfaee88a0104db4b9eaf52ca8bd3035f710cc2dcc30",
+            "contextHash": "0c6e2e92a9fd3b6b115bd56e6bf61b7a1e498d719fc36bba6a2899c94cedb375",
+            "selectedActionKey": "[\"reference.token-race/take@2\",\"player-1\",null,{\"amount\":2}]",
+            "recommendationChanged": true
+          },
+          {
+            "fixtureId": "rescue-s64",
+            "baselineHash": "dd3748d9e703b48061451be01a14b9b9279b1cfc99eebdf8ff6786d599d6cc38",
+            "contextHash": "536da139cab179fc1236f442517e5ed0f3bf7911dee9c674351157541f463607",
+            "selectedActionKey": "[\"reference.grid-rescue/assist\",\"controller\",{\"id\":\"north\",\"kind\":\"site\"},{\"energyCost\":2}]",
+            "recommendationChanged": true
+          },
+          {
+            "fixtureId": "rescue-s128",
+            "baselineHash": "439fc48b82df707d09679766083b3bd8de220f72a3f70a878ba82b48856bb1ed",
+            "contextHash": "89dcc44a370fa8ee897ee2e449525aea4cd57b07569f04f2ae9771f7b888f6cb",
+            "selectedActionKey": "[\"reference.grid-rescue/assist\",\"controller\",{\"id\":\"north\",\"kind\":\"site\"},{\"energyCost\":2}]",
+            "recommendationChanged": true
+          }
+        ]
+      },
+      {
+        "scenarioId": "nexus-only-supported",
+        "contextDigest": "sha256:c7b0188fe05615a46be5719778318af16f483ec1a896fe2be2dc3fd8bf696c52",
+        "contextFeatures": {
+          "temporalRisk": 0,
+          "temporalOpportunity": 0,
+          "stability": 1000000,
+          "volatility": 0,
+          "dependencyRisk": 0,
+          "criticality": 0,
+          "supportStrength": 1000000,
+          "isolationRisk": 0
+        },
+        "adjustmentMicro": 20000,
+        "comparisons": [
+          {
+            "fixtureId": "game-s64",
+            "baselineHash": "628b72a9af99ee8ef3a0e2deaf886fbb9d2a77ffa8e81486f5c2b2313c02d0ab",
+            "contextHash": "b7c7b3a207ca16505f314f93945a19a396d8f9db510382b9199f6ab7f310922f",
+            "selectedActionKey": "[\"reference.token-race/take@bonus\",\"player-1\",{\"id\":\"bonus-1\",\"kind\":\"shared-bonus\"},{\"amount\":3}]",
+            "recommendationChanged": true
+          },
+          {
+            "fixtureId": "game-s96",
+            "baselineHash": "9602f065b94fb36b8159fdfaee88a0104db4b9eaf52ca8bd3035f710cc2dcc30",
+            "contextHash": "96f8f1a4f41ed84acf5138767c8d3bf0a0f537f874abd78a7a22bd3cff0c83e0",
+            "selectedActionKey": "[\"reference.token-race/take@2\",\"player-1\",null,{\"amount\":2}]",
+            "recommendationChanged": true
+          },
+          {
+            "fixtureId": "rescue-s64",
+            "baselineHash": "dd3748d9e703b48061451be01a14b9b9279b1cfc99eebdf8ff6786d599d6cc38",
+            "contextHash": "83b325069f0fe4cdf0cb5587c75242a545ecd4517154dd8c0a7d3002f0f22e62",
+            "selectedActionKey": "[\"reference.grid-rescue/assist\",\"controller\",{\"id\":\"north\",\"kind\":\"site\"},{\"energyCost\":2}]",
+            "recommendationChanged": true
+          },
+          {
+            "fixtureId": "rescue-s128",
+            "baselineHash": "439fc48b82df707d09679766083b3bd8de220f72a3f70a878ba82b48856bb1ed",
+            "contextHash": "a0cba8f40d67f605f1f9d34883ebbb610e1febc79339f146e0d856749b90a869",
+            "selectedActionKey": "[\"reference.grid-rescue/assist\",\"controller\",{\"id\":\"north\",\"kind\":\"site\"},{\"energyCost\":2}]",
+            "recommendationChanged": true
+          }
+        ]
+      },
+      {
+        "scenarioId": "nexus-only-isolated",
+        "contextDigest": "sha256:c49ed9d4378754ef2c570a48332ecfcb6f476a4f87882c3761dd00d7b1dbc5c1",
+        "contextFeatures": {
+          "temporalRisk": 0,
+          "temporalOpportunity": 0,
+          "stability": 1000000,
+          "volatility": 0,
+          "dependencyRisk": 0,
+          "criticality": 0,
+          "supportStrength": 0,
+          "isolationRisk": 1000000
+        },
+        "adjustmentMicro": -20000,
+        "comparisons": [
+          {
+            "fixtureId": "game-s64",
+            "baselineHash": "628b72a9af99ee8ef3a0e2deaf886fbb9d2a77ffa8e81486f5c2b2313c02d0ab",
+            "contextHash": "9361fd88a1b43b966a5129002d1afeb26c270e9811402ea2b6b12b69045d90cd",
+            "selectedActionKey": "[\"reference.token-race/take@bonus\",\"player-1\",{\"id\":\"bonus-1\",\"kind\":\"shared-bonus\"},{\"amount\":3}]",
+            "recommendationChanged": true
+          },
+          {
+            "fixtureId": "game-s96",
+            "baselineHash": "9602f065b94fb36b8159fdfaee88a0104db4b9eaf52ca8bd3035f710cc2dcc30",
+            "contextHash": "a39f96dafc03395ddc21b536afe56765cc2117fcfa2c4a5023c8b3ac86a67a6d",
+            "selectedActionKey": "[\"reference.token-race/take@2\",\"player-1\",null,{\"amount\":2}]",
+            "recommendationChanged": true
+          },
+          {
+            "fixtureId": "rescue-s64",
+            "baselineHash": "dd3748d9e703b48061451be01a14b9b9279b1cfc99eebdf8ff6786d599d6cc38",
+            "contextHash": "7fe5f9f1fa2d87964f09ba15b7e7e264515f689068f25add215a467928696fa3",
+            "selectedActionKey": "[\"reference.grid-rescue/assist\",\"controller\",{\"id\":\"north\",\"kind\":\"site\"},{\"energyCost\":2}]",
+            "recommendationChanged": true
+          },
+          {
+            "fixtureId": "rescue-s128",
+            "baselineHash": "439fc48b82df707d09679766083b3bd8de220f72a3f70a878ba82b48856bb1ed",
+            "contextHash": "1dad51878154d4f0271849856849d15bc6569fc0e86545593a9335095e8381f8",
+            "selectedActionKey": "[\"reference.grid-rescue/assist\",\"controller\",{\"id\":\"north\",\"kind\":\"site\"},{\"energyCost\":2}]",
+            "recommendationChanged": true
+          }
+        ]
+      },
+      {
+        "scenarioId": "combined",
+        "contextDigest": "sha256:2351146a8deb75e31f0caf71a52c7a3a57b32ace64a5f81f35e9252b1ce61512",
+        "contextFeatures": {
+          "temporalRisk": 0,
+          "temporalOpportunity": 1000000,
+          "stability": 454545,
+          "volatility": 545455,
+          "dependencyRisk": 0,
+          "criticality": 250000,
+          "supportStrength": 0,
+          "isolationRisk": 0
+        },
+        "adjustmentMicro": 4091,
+        "comparisons": [
+          {
+            "fixtureId": "game-s64",
+            "baselineHash": "628b72a9af99ee8ef3a0e2deaf886fbb9d2a77ffa8e81486f5c2b2313c02d0ab",
+            "contextHash": "89edc4e34585783fd03c29a32a56edbcc195035d0cfb48dbb974e18ab8c3547c",
+            "selectedActionKey": "[\"reference.token-race/take@bonus\",\"player-1\",{\"id\":\"bonus-1\",\"kind\":\"shared-bonus\"},{\"amount\":3}]",
+            "recommendationChanged": true
+          },
+          {
+            "fixtureId": "game-s96",
+            "baselineHash": "9602f065b94fb36b8159fdfaee88a0104db4b9eaf52ca8bd3035f710cc2dcc30",
+            "contextHash": "d751d4404d033eaf564d0cd37d6b4ba7529e5ffb6d1a70894cbdcc3e1ba45446",
+            "selectedActionKey": "[\"reference.token-race/take@2\",\"player-1\",null,{\"amount\":2}]",
+            "recommendationChanged": true
+          },
+          {
+            "fixtureId": "rescue-s64",
+            "baselineHash": "dd3748d9e703b48061451be01a14b9b9279b1cfc99eebdf8ff6786d599d6cc38",
+            "contextHash": "894ea69f21632768b9d36eb8239cfd01bbe1928b6a970548c2d5cd7ebd3ded7e",
+            "selectedActionKey": "[\"reference.grid-rescue/assist\",\"controller\",{\"id\":\"north\",\"kind\":\"site\"},{\"energyCost\":2}]",
+            "recommendationChanged": true
+          },
+          {
+            "fixtureId": "rescue-s128",
+            "baselineHash": "439fc48b82df707d09679766083b3bd8de220f72a3f70a878ba82b48856bb1ed",
+            "contextHash": "ca4c6af3d66d0d4339b4f72c8b0c0ad6a1a0f2c8e46b411d535cbade9be88a7a",
+            "selectedActionKey": "[\"reference.grid-rescue/assist\",\"controller\",{\"id\":\"north\",\"kind\":\"site\"},{\"energyCost\":2}]",
+            "recommendationChanged": true
+          }
+        ]
+      },
+      {
+        "scenarioId": "max-positive",
+        "contextDigest": "sha256:7dc25c0fd8493ddfe0812fadb713ab70a59a071f31b2185c3e53d4ea72377ab8",
+        "contextFeatures": {
+          "temporalRisk": 0,
+          "temporalOpportunity": 1000000,
+          "stability": 862069,
+          "volatility": 137931,
+          "dependencyRisk": 0,
+          "criticality": 0,
+          "supportStrength": 1000000,
+          "isolationRisk": 0
+        },
+        "adjustmentMicro": 30000,
+        "comparisons": [
+          {
+            "fixtureId": "game-s64",
+            "baselineHash": "628b72a9af99ee8ef3a0e2deaf886fbb9d2a77ffa8e81486f5c2b2313c02d0ab",
+            "contextHash": "1399c142d35e286b220c486a548e584fd80776cae0687ea0e93fd7d4e74489db",
+            "selectedActionKey": "[\"reference.token-race/take@bonus\",\"player-1\",{\"id\":\"bonus-1\",\"kind\":\"shared-bonus\"},{\"amount\":3}]",
+            "recommendationChanged": true
+          },
+          {
+            "fixtureId": "game-s96",
+            "baselineHash": "9602f065b94fb36b8159fdfaee88a0104db4b9eaf52ca8bd3035f710cc2dcc30",
+            "contextHash": "43e49aefb2cc0b4cff30f2a19b1e2ccb02b24fd4ce532e59522fa8008ce93012",
+            "selectedActionKey": "[\"reference.token-race/take@2\",\"player-1\",null,{\"amount\":2}]",
+            "recommendationChanged": true
+          },
+          {
+            "fixtureId": "rescue-s64",
+            "baselineHash": "dd3748d9e703b48061451be01a14b9b9279b1cfc99eebdf8ff6786d599d6cc38",
+            "contextHash": "403864c30e5c61476cbfc0fe3f196d7ed83a6215b41e2270ff0433f35d67e025",
+            "selectedActionKey": "[\"reference.grid-rescue/assist\",\"controller\",{\"id\":\"north\",\"kind\":\"site\"},{\"energyCost\":2}]",
+            "recommendationChanged": true
+          },
+          {
+            "fixtureId": "rescue-s128",
+            "baselineHash": "439fc48b82df707d09679766083b3bd8de220f72a3f70a878ba82b48856bb1ed",
+            "contextHash": "0d53cc00bc24cd2e1b4750d5e17f768448503955831a1630239598fd027c2e25",
+            "selectedActionKey": "[\"reference.grid-rescue/assist\",\"controller\",{\"id\":\"north\",\"kind\":\"site\"},{\"energyCost\":2}]",
+            "recommendationChanged": true
+          }
+        ]
+      },
+      {
+        "scenarioId": "max-negative",
+        "contextDigest": "sha256:c8671d91319ba936f7fe9cbc46232b33c7cef1dd4ba7fccf82b16f3adeecf4b1",
+        "contextFeatures": {
+          "temporalRisk": 1000000,
+          "temporalOpportunity": 0,
+          "stability": 138685,
+          "volatility": 861315,
+          "dependencyRisk": 750000,
+          "criticality": 250000,
+          "supportStrength": 0,
+          "isolationRisk": 250000
+        },
+        "adjustmentMicro": -30000,
+        "comparisons": [
+          {
+            "fixtureId": "game-s64",
+            "baselineHash": "628b72a9af99ee8ef3a0e2deaf886fbb9d2a77ffa8e81486f5c2b2313c02d0ab",
+            "contextHash": "d2e8a5beb52833669174cde2e456d09ef4a6f35540af73f4057ed0707e7698a0",
+            "selectedActionKey": "[\"reference.token-race/take@bonus\",\"player-1\",{\"id\":\"bonus-1\",\"kind\":\"shared-bonus\"},{\"amount\":3}]",
+            "recommendationChanged": true
+          },
+          {
+            "fixtureId": "game-s96",
+            "baselineHash": "9602f065b94fb36b8159fdfaee88a0104db4b9eaf52ca8bd3035f710cc2dcc30",
+            "contextHash": "475ac4e72b661a62961d765940558d2a180dd26f734d1198ffefee6b17bae13e",
+            "selectedActionKey": "[\"reference.token-race/take@2\",\"player-1\",null,{\"amount\":2}]",
+            "recommendationChanged": true
+          },
+          {
+            "fixtureId": "rescue-s64",
+            "baselineHash": "dd3748d9e703b48061451be01a14b9b9279b1cfc99eebdf8ff6786d599d6cc38",
+            "contextHash": "22d1a87562fe780b0df84ecda20c2a8de35eff623a56a0d0267007b9d46dc2c4",
+            "selectedActionKey": "[\"reference.grid-rescue/assist\",\"controller\",{\"id\":\"north\",\"kind\":\"site\"},{\"energyCost\":2}]",
+            "recommendationChanged": true
+          },
+          {
+            "fixtureId": "rescue-s128",
+            "baselineHash": "439fc48b82df707d09679766083b3bd8de220f72a3f70a878ba82b48856bb1ed",
+            "contextHash": "0b5122ea1c70a597a7fad79f1d23513c18dc7103a9467334604110fef38ee706",
+            "selectedActionKey": "[\"reference.grid-rescue/assist\",\"controller\",{\"id\":\"north\",\"kind\":\"site\"},{\"energyCost\":2}]",
+            "recommendationChanged": true
+          }
+        ]
+      }
+    ]
+  }
+}

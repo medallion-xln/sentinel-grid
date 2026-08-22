@@ -1,0 +1,104 @@
+{
+  "stage": "STAGE2L0_CORE_TRIAD_SHADOW_INTEGRATION_AND_EVIDENCE_CONTRACT_CERTIFICATION",
+  "failureIsolation": {
+    "primeFailureIsolation": true,
+    "oracleFailureIsolation": true,
+    "nexusFailureIsolation": true,
+    "expertFailureCascade": false
+  },
+  "featureGates": {
+    "primeDepth2GatePresent": true,
+    "oracleV2GatePresent": true,
+    "nexusDeltaGatePresent": true,
+    "configurations": [
+      {
+        "configuration": "PRIME_ONLY",
+        "gates": {
+          "prime": true,
+          "oracle": false,
+          "nexus": false
+        },
+        "primeRecommendationDigest": "6170725f5d734b7f4e01e475c5e75bf8fb64ac17bea12e279980702c7e02cee7",
+        "primeInvariant": true,
+        "oracleStatus": "DISABLED",
+        "nexusStatus": "DISABLED"
+      },
+      {
+        "configuration": "PRIME_ORACLE",
+        "gates": {
+          "prime": true,
+          "oracle": true,
+          "nexus": false
+        },
+        "primeRecommendationDigest": "6170725f5d734b7f4e01e475c5e75bf8fb64ac17bea12e279980702c7e02cee7",
+        "primeInvariant": true,
+        "oracleStatus": "ACTIVE",
+        "nexusStatus": "DISABLED"
+      },
+      {
+        "configuration": "PRIME_NEXUS",
+        "gates": {
+          "prime": true,
+          "oracle": false,
+          "nexus": true
+        },
+        "primeRecommendationDigest": "6170725f5d734b7f4e01e475c5e75bf8fb64ac17bea12e279980702c7e02cee7",
+        "primeInvariant": true,
+        "oracleStatus": "DISABLED",
+        "nexusStatus": "ACTIVE"
+      },
+      {
+        "configuration": "PRIME_ORACLE_NEXUS",
+        "gates": {
+          "prime": true,
+          "oracle": true,
+          "nexus": true
+        },
+        "primeRecommendationDigest": "6170725f5d734b7f4e01e475c5e75bf8fb64ac17bea12e279980702c7e02cee7",
+        "primeInvariant": true,
+        "oracleStatus": "ACTIVE",
+        "nexusStatus": "ACTIVE"
+      }
+    ],
+    "primeInvariant": true
+  },
+  "security": {
+    "nonPrimeAuthorityFieldsAccepted": 0,
+    "authorityInjection": {
+      "attempts": 4,
+      "accepted": 0,
+      "results": [
+        {
+          "expert": "ORACLE",
+          "accepted": false,
+          "errorCode": "STAGE2L0_NON_PRIME_AUTHORITY_FIELD:ORACLE"
+        },
+        {
+          "expert": "ORACLE",
+          "accepted": false,
+          "errorCode": "STAGE2L0_NON_PRIME_AUTHORITY_FIELD:ORACLE"
+        },
+        {
+          "expert": "NEXUS",
+          "accepted": false,
+          "errorCode": "STAGE2L0_NON_PRIME_AUTHORITY_FIELD:NEXUS"
+        },
+        {
+          "expert": "NEXUS",
+          "accepted": false,
+          "errorCode": "STAGE2L0_NON_PRIME_AUTHORITY_FIELD:NEXUS"
+        }
+      ]
+    }
+  },
+  "authority": {
+    "tier": "R0",
+    "canDispatch": false,
+    "canMutateLiveWorld": false,
+    "liveActionDispatches": 0,
+    "worldMutations": 0,
+    "authorityEscalations": 0,
+    "tokenIssues": 0
+  },
+  "evidenceDigest": "6c99676eb2fbf05910fcb12365a71fc0f42de8739121b5593e02c0079c3caacf"
+}

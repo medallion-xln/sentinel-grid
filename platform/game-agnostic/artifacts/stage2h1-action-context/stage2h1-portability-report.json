@@ -1,0 +1,1455 @@
+{
+  "portabilityDigestVersion": 1,
+  "stage": "STAGE2H1_ACTION_DISCRIMINATING_EXPERT_CONTEXT",
+  "digest": "cc7ff03a25d899f607c2f13624736ee3cf41e96bb18c23a2b41c78c1922284bd",
+  "portabilityStatus": "PASS",
+  "platformsPassed": [
+    "darwin",
+    "linux"
+  ],
+  "measuredPlatforms": [
+    {
+      "platform": "darwin",
+      "arch": "arm64",
+      "nodeVersion": "v22.22.2",
+      "measuredAt": "2026-08-20",
+      "digest": "cc7ff03a25d899f607c2f13624736ee3cf41e96bb18c23a2b41c78c1922284bd"
+    },
+    {
+      "platform": "linux",
+      "arch": "arm64",
+      "nodeVersion": "v22.22.2",
+      "measuredAt": "2026-08-20",
+      "digest": "cc7ff03a25d899f607c2f13624736ee3cf41e96bb18c23a2b41c78c1922284bd"
+    },
+    {
+      "platform": "linux",
+      "arch": "x64",
+      "nodeVersion": "v22.22.2",
+      "measuredAt": "2026-08-20",
+      "digest": "cc7ff03a25d899f607c2f13624736ee3cf41e96bb18c23a2b41c78c1922284bd"
+    }
+  ],
+  "disagreeingPlatforms": [],
+  "witnesses": {
+    "portabilityDigestVersion": 1,
+    "stage": "STAGE2H1_ACTION_DISCRIMINATING_EXPERT_CONTEXT",
+    "actionContextSchemaVersion": 1,
+    "adjustmentBounds": {
+      "oracleMicro": 20000,
+      "nexusMicro": 20000,
+      "totalMicro": 30000,
+      "maxInterActionDifferentialMicro": 60000
+    },
+    "caseCorpusDigest": "982389953a6f8f948a5c224f3ce0122aaf877616d7c4db58ead6bdf32f4d166f",
+    "fixtures": [
+      {
+        "fixtureId": "control-no-context",
+        "experimentClass": "control",
+        "contextDigest": null,
+        "baselineSelected": "[\"stage2h1/shift\",\"controller\",{\"id\":\"node-shift\",\"kind\":\"node\"},{\"mode\":\"shift\"}]",
+        "baselineVisits": [
+          16,
+          16
+        ],
+        "selectionCause": "NONE",
+        "rankingChanged": false,
+        "selectionChanged": false,
+        "arms": []
+      },
+      {
+        "fixtureId": "neutral-context",
+        "experimentClass": "neutral",
+        "contextDigest": "sha256:44222c8a4d53c154ada8a3914d933ecd578980b8eb8f31636839a34bef236c44",
+        "baselineSelected": "[\"stage2h1/shift\",\"controller\",{\"id\":\"node-shift\",\"kind\":\"node\"},{\"mode\":\"shift\"}]",
+        "baselineVisits": [
+          16,
+          16
+        ],
+        "selectionCause": "NONE",
+        "rankingChanged": false,
+        "selectionChanged": false,
+        "arms": [
+          {
+            "arm": "prime+oracle",
+            "recommendationHash": "9220cc0e14bf088e0317fa4c3745533d3665b2b8303ac4ce3dadc45a835b4ff1",
+            "visits": [
+              16,
+              16
+            ],
+            "actionAdjustments": {
+              "[\"stage2h1/hold\",\"controller\",{\"id\":\"node-hold\",\"kind\":\"node\"},{\"mode\":\"hold\"}]": {
+                "oracle": 0,
+                "nexus": 0,
+                "combined": 0,
+                "rationaleCodes": [
+                  "NEXUS_ACTION_NO_GRAPH",
+                  "ORACLE_ACTION_TREND_FLAT"
+                ]
+              },
+              "[\"stage2h1/shift\",\"controller\",{\"id\":\"node-shift\",\"kind\":\"node\"},{\"mode\":\"shift\"}]": {
+                "oracle": 0,
+                "nexus": 0,
+                "combined": 0,
+                "rationaleCodes": [
+                  "NEXUS_ACTION_NO_GRAPH",
+                  "ORACLE_ACTION_TREND_FLAT"
+                ]
+              }
+            }
+          },
+          {
+            "arm": "prime+nexus",
+            "recommendationHash": "653bd933fc3636ce2c62086e6b5aa25db9e00627a48f6b40855035562ba9841e",
+            "visits": [
+              16,
+              16
+            ],
+            "actionAdjustments": {
+              "[\"stage2h1/hold\",\"controller\",{\"id\":\"node-hold\",\"kind\":\"node\"},{\"mode\":\"hold\"}]": {
+                "oracle": 0,
+                "nexus": 0,
+                "combined": 0,
+                "rationaleCodes": [
+                  "NEXUS_ACTION_NO_GRAPH",
+                  "ORACLE_ACTION_TREND_FLAT"
+                ]
+              },
+              "[\"stage2h1/shift\",\"controller\",{\"id\":\"node-shift\",\"kind\":\"node\"},{\"mode\":\"shift\"}]": {
+                "oracle": 0,
+                "nexus": 0,
+                "combined": 0,
+                "rationaleCodes": [
+                  "NEXUS_ACTION_NO_GRAPH",
+                  "ORACLE_ACTION_TREND_FLAT"
+                ]
+              }
+            }
+          },
+          {
+            "arm": "prime+oracle+nexus",
+            "recommendationHash": "611135a13b8d3835dff5ad1750f4f55542e427ba7ffbd89d66ef5dbeeafa6185",
+            "visits": [
+              16,
+              16
+            ],
+            "actionAdjustments": {
+              "[\"stage2h1/hold\",\"controller\",{\"id\":\"node-hold\",\"kind\":\"node\"},{\"mode\":\"hold\"}]": {
+                "oracle": 0,
+                "nexus": 0,
+                "combined": 0,
+                "rationaleCodes": [
+                  "NEXUS_ACTION_NO_GRAPH",
+                  "ORACLE_ACTION_TREND_FLAT"
+                ]
+              },
+              "[\"stage2h1/shift\",\"controller\",{\"id\":\"node-shift\",\"kind\":\"node\"},{\"mode\":\"shift\"}]": {
+                "oracle": 0,
+                "nexus": 0,
+                "combined": 0,
+                "rationaleCodes": [
+                  "NEXUS_ACTION_NO_GRAPH",
+                  "ORACLE_ACTION_TREND_FLAT"
+                ]
+              }
+            }
+          }
+        ]
+      },
+      {
+        "fixtureId": "oracle-aligned",
+        "experimentClass": "oracle-aligned",
+        "contextDigest": "sha256:4a9a1976be5db80d40eb021f4c87884a4bd8d8f8c5ebba73052a546bd514b152",
+        "baselineSelected": "[\"stage2h1/shift\",\"controller\",{\"id\":\"node-shift\",\"kind\":\"node\"},{\"mode\":\"shift\"}]",
+        "baselineVisits": [
+          16,
+          16
+        ],
+        "selectionCause": "NONE",
+        "rankingChanged": false,
+        "selectionChanged": false,
+        "arms": [
+          {
+            "arm": "prime+oracle",
+            "recommendationHash": "bbe36e94b62ec89df1c3ef2a8c14ed457bb946060bbaa1057af56a4eff1bebe9",
+            "visits": [
+              17,
+              15
+            ],
+            "actionAdjustments": {
+              "[\"stage2h1/hold\",\"controller\",{\"id\":\"node-hold\",\"kind\":\"node\"},{\"mode\":\"hold\"}]": {
+                "oracle": -16983,
+                "nexus": 0,
+                "combined": -16983,
+                "rationaleCodes": [
+                  "NEXUS_ACTION_NO_GRAPH",
+                  "ORACLE_ACTION_TREND_REVERSED",
+                  "ORACLE_ACTION_VOLATILITY_RISK"
+                ]
+              },
+              "[\"stage2h1/shift\",\"controller\",{\"id\":\"node-shift\",\"kind\":\"node\"},{\"mode\":\"shift\"}]": {
+                "oracle": 11111,
+                "nexus": 0,
+                "combined": 11111,
+                "rationaleCodes": [
+                  "NEXUS_ACTION_NO_GRAPH",
+                  "ORACLE_ACTION_ADDRESSES_DECLINE",
+                  "ORACLE_ACTION_VOLATILITY_RISK"
+                ]
+              }
+            }
+          },
+          {
+            "arm": "prime+nexus",
+            "recommendationHash": "e6addb6ac3a85c3f95911aed2cc747eed1b90a9015fc27af026edda4626b84a7",
+            "visits": [
+              16,
+              16
+            ],
+            "actionAdjustments": {
+              "[\"stage2h1/hold\",\"controller\",{\"id\":\"node-hold\",\"kind\":\"node\"},{\"mode\":\"hold\"}]": {
+                "oracle": 0,
+                "nexus": 0,
+                "combined": 0,
+                "rationaleCodes": [
+                  "NEXUS_ACTION_NO_GRAPH",
+                  "ORACLE_ACTION_TREND_FLAT"
+                ]
+              },
+              "[\"stage2h1/shift\",\"controller\",{\"id\":\"node-shift\",\"kind\":\"node\"},{\"mode\":\"shift\"}]": {
+                "oracle": 0,
+                "nexus": 0,
+                "combined": 0,
+                "rationaleCodes": [
+                  "NEXUS_ACTION_NO_GRAPH",
+                  "ORACLE_ACTION_TREND_FLAT"
+                ]
+              }
+            }
+          },
+          {
+            "arm": "prime+oracle+nexus",
+            "recommendationHash": "9402948298a7735d5e83989fee90c3b9f187ead33065841c96500ace40aa20df",
+            "visits": [
+              17,
+              15
+            ],
+            "actionAdjustments": {
+              "[\"stage2h1/hold\",\"controller\",{\"id\":\"node-hold\",\"kind\":\"node\"},{\"mode\":\"hold\"}]": {
+                "oracle": -16983,
+                "nexus": 0,
+                "combined": -16983,
+                "rationaleCodes": [
+                  "NEXUS_ACTION_NO_GRAPH",
+                  "ORACLE_ACTION_TREND_REVERSED",
+                  "ORACLE_ACTION_VOLATILITY_RISK"
+                ]
+              },
+              "[\"stage2h1/shift\",\"controller\",{\"id\":\"node-shift\",\"kind\":\"node\"},{\"mode\":\"shift\"}]": {
+                "oracle": 11111,
+                "nexus": 0,
+                "combined": 11111,
+                "rationaleCodes": [
+                  "NEXUS_ACTION_NO_GRAPH",
+                  "ORACLE_ACTION_ADDRESSES_DECLINE",
+                  "ORACLE_ACTION_VOLATILITY_RISK"
+                ]
+              }
+            }
+          }
+        ]
+      },
+      {
+        "fixtureId": "oracle-opposed",
+        "experimentClass": "oracle-opposed",
+        "contextDigest": "sha256:35ee66d7e3dddd0ab95094c6badd9b2aa5dc1c6811da9e1e7b14b08354708813",
+        "baselineSelected": "[\"stage2h1/shift\",\"controller\",{\"id\":\"node-shift\",\"kind\":\"node\"},{\"mode\":\"shift\"}]",
+        "baselineVisits": [
+          16,
+          16
+        ],
+        "selectionCause": "ORACLE",
+        "rankingChanged": true,
+        "selectionChanged": true,
+        "arms": [
+          {
+            "arm": "prime+oracle",
+            "recommendationHash": "bac0738a40ad8e6555b53a6d6f5103e161dfe277bb91cf177d2dffc058935dd3",
+            "visits": [
+              17,
+              15
+            ],
+            "actionAdjustments": {
+              "[\"stage2h1/hold\",\"controller\",{\"id\":\"node-hold\",\"kind\":\"node\"},{\"mode\":\"hold\"}]": {
+                "oracle": 11111,
+                "nexus": 0,
+                "combined": 11111,
+                "rationaleCodes": [
+                  "NEXUS_ACTION_NO_GRAPH",
+                  "ORACLE_ACTION_ADDRESSES_DECLINE",
+                  "ORACLE_ACTION_VOLATILITY_RISK"
+                ]
+              },
+              "[\"stage2h1/shift\",\"controller\",{\"id\":\"node-shift\",\"kind\":\"node\"},{\"mode\":\"shift\"}]": {
+                "oracle": -16983,
+                "nexus": 0,
+                "combined": -16983,
+                "rationaleCodes": [
+                  "NEXUS_ACTION_NO_GRAPH",
+                  "ORACLE_ACTION_TREND_REVERSED",
+                  "ORACLE_ACTION_VOLATILITY_RISK"
+                ]
+              }
+            }
+          },
+          {
+            "arm": "prime+nexus",
+            "recommendationHash": "a361b2796b285b3b844d39489ac50b52eec7ee8793777174691f20c281869e4e",
+            "visits": [
+              16,
+              16
+            ],
+            "actionAdjustments": {
+              "[\"stage2h1/hold\",\"controller\",{\"id\":\"node-hold\",\"kind\":\"node\"},{\"mode\":\"hold\"}]": {
+                "oracle": 0,
+                "nexus": 0,
+                "combined": 0,
+                "rationaleCodes": [
+                  "NEXUS_ACTION_NO_GRAPH",
+                  "ORACLE_ACTION_TREND_FLAT"
+                ]
+              },
+              "[\"stage2h1/shift\",\"controller\",{\"id\":\"node-shift\",\"kind\":\"node\"},{\"mode\":\"shift\"}]": {
+                "oracle": 0,
+                "nexus": 0,
+                "combined": 0,
+                "rationaleCodes": [
+                  "NEXUS_ACTION_NO_GRAPH",
+                  "ORACLE_ACTION_TREND_FLAT"
+                ]
+              }
+            }
+          },
+          {
+            "arm": "prime+oracle+nexus",
+            "recommendationHash": "6237efdc9c125954cd11bd48582083ccbee868a198d3a0778f0bf44473cfd82a",
+            "visits": [
+              17,
+              15
+            ],
+            "actionAdjustments": {
+              "[\"stage2h1/hold\",\"controller\",{\"id\":\"node-hold\",\"kind\":\"node\"},{\"mode\":\"hold\"}]": {
+                "oracle": 11111,
+                "nexus": 0,
+                "combined": 11111,
+                "rationaleCodes": [
+                  "NEXUS_ACTION_NO_GRAPH",
+                  "ORACLE_ACTION_ADDRESSES_DECLINE",
+                  "ORACLE_ACTION_VOLATILITY_RISK"
+                ]
+              },
+              "[\"stage2h1/shift\",\"controller\",{\"id\":\"node-shift\",\"kind\":\"node\"},{\"mode\":\"shift\"}]": {
+                "oracle": -16983,
+                "nexus": 0,
+                "combined": -16983,
+                "rationaleCodes": [
+                  "NEXUS_ACTION_NO_GRAPH",
+                  "ORACLE_ACTION_TREND_REVERSED",
+                  "ORACLE_ACTION_VOLATILITY_RISK"
+                ]
+              }
+            }
+          }
+        ]
+      },
+      {
+        "fixtureId": "nexus-aligned",
+        "experimentClass": "nexus-aligned",
+        "contextDigest": "sha256:895f68d1d4a8e6e53dbac6ec353a0ab8aef8dd67a8b884e993481ec2c1c21562",
+        "baselineSelected": "[\"stage2h1/shift\",\"controller\",{\"id\":\"node-shift\",\"kind\":\"node\"},{\"mode\":\"shift\"}]",
+        "baselineVisits": [
+          16,
+          16
+        ],
+        "selectionCause": "NONE",
+        "rankingChanged": false,
+        "selectionChanged": false,
+        "arms": [
+          {
+            "arm": "prime+oracle",
+            "recommendationHash": "78c261f1bb65630fc13d1da3f1f90001fa0d179d41465f3a11cef7af663419cd",
+            "visits": [
+              16,
+              16
+            ],
+            "actionAdjustments": {
+              "[\"stage2h1/hold\",\"controller\",{\"id\":\"node-hold\",\"kind\":\"node\"},{\"mode\":\"hold\"}]": {
+                "oracle": 0,
+                "nexus": 0,
+                "combined": 0,
+                "rationaleCodes": [
+                  "NEXUS_ACTION_NO_GRAPH",
+                  "ORACLE_ACTION_TREND_FLAT"
+                ]
+              },
+              "[\"stage2h1/shift\",\"controller\",{\"id\":\"node-shift\",\"kind\":\"node\"},{\"mode\":\"shift\"}]": {
+                "oracle": 0,
+                "nexus": 0,
+                "combined": 0,
+                "rationaleCodes": [
+                  "NEXUS_ACTION_NO_GRAPH",
+                  "ORACLE_ACTION_TREND_FLAT"
+                ]
+              }
+            }
+          },
+          {
+            "arm": "prime+nexus",
+            "recommendationHash": "66cb13e516f53a207c6bbe5856751d3dfa87286284f107883230df4628665ef2",
+            "visits": [
+              18,
+              14
+            ],
+            "actionAdjustments": {
+              "[\"stage2h1/hold\",\"controller\",{\"id\":\"node-hold\",\"kind\":\"node\"},{\"mode\":\"hold\"}]": {
+                "oracle": 0,
+                "nexus": -20000,
+                "combined": -20000,
+                "rationaleCodes": [
+                  "NEXUS_ACTION_ISOLATED",
+                  "ORACLE_ACTION_TREND_FLAT"
+                ]
+              },
+              "[\"stage2h1/shift\",\"controller\",{\"id\":\"node-shift\",\"kind\":\"node\"},{\"mode\":\"shift\"}]": {
+                "oracle": 0,
+                "nexus": 20000,
+                "combined": 20000,
+                "rationaleCodes": [
+                  "NEXUS_ACTION_BOTTLENECK",
+                  "NEXUS_ACTION_CRITICAL_DEPENDENCY",
+                  "NEXUS_ACTION_UNSUPPORTED_THREAT",
+                  "ORACLE_ACTION_TREND_FLAT"
+                ]
+              }
+            }
+          },
+          {
+            "arm": "prime+oracle+nexus",
+            "recommendationHash": "20b51b0098343f30741744637530fe78d91ae60a78cdb912cf46521237be23c3",
+            "visits": [
+              18,
+              14
+            ],
+            "actionAdjustments": {
+              "[\"stage2h1/hold\",\"controller\",{\"id\":\"node-hold\",\"kind\":\"node\"},{\"mode\":\"hold\"}]": {
+                "oracle": 0,
+                "nexus": -20000,
+                "combined": -20000,
+                "rationaleCodes": [
+                  "NEXUS_ACTION_ISOLATED",
+                  "ORACLE_ACTION_TREND_FLAT"
+                ]
+              },
+              "[\"stage2h1/shift\",\"controller\",{\"id\":\"node-shift\",\"kind\":\"node\"},{\"mode\":\"shift\"}]": {
+                "oracle": 0,
+                "nexus": 20000,
+                "combined": 20000,
+                "rationaleCodes": [
+                  "NEXUS_ACTION_BOTTLENECK",
+                  "NEXUS_ACTION_CRITICAL_DEPENDENCY",
+                  "NEXUS_ACTION_UNSUPPORTED_THREAT",
+                  "ORACLE_ACTION_TREND_FLAT"
+                ]
+              }
+            }
+          }
+        ]
+      },
+      {
+        "fixtureId": "nexus-opposed",
+        "experimentClass": "nexus-opposed",
+        "contextDigest": "sha256:685f426b637c054d0f999b6583f14a1d832930db8ec0b8d8809ff5385a963c2a",
+        "baselineSelected": "[\"stage2h1/shift\",\"controller\",{\"id\":\"node-shift\",\"kind\":\"node\"},{\"mode\":\"shift\"}]",
+        "baselineVisits": [
+          16,
+          16
+        ],
+        "selectionCause": "NEXUS",
+        "rankingChanged": true,
+        "selectionChanged": true,
+        "arms": [
+          {
+            "arm": "prime+oracle",
+            "recommendationHash": "9b775af138a8fbe91ef6663d068bad11bcff8b9fbc1bcd8ecc0801be053e3c63",
+            "visits": [
+              16,
+              16
+            ],
+            "actionAdjustments": {
+              "[\"stage2h1/hold\",\"controller\",{\"id\":\"node-hold\",\"kind\":\"node\"},{\"mode\":\"hold\"}]": {
+                "oracle": 0,
+                "nexus": 0,
+                "combined": 0,
+                "rationaleCodes": [
+                  "NEXUS_ACTION_NO_GRAPH",
+                  "ORACLE_ACTION_TREND_FLAT"
+                ]
+              },
+              "[\"stage2h1/shift\",\"controller\",{\"id\":\"node-shift\",\"kind\":\"node\"},{\"mode\":\"shift\"}]": {
+                "oracle": 0,
+                "nexus": 0,
+                "combined": 0,
+                "rationaleCodes": [
+                  "NEXUS_ACTION_NO_GRAPH",
+                  "ORACLE_ACTION_TREND_FLAT"
+                ]
+              }
+            }
+          },
+          {
+            "arm": "prime+nexus",
+            "recommendationHash": "ee9799dcae809abb259bde85807dd2a7aa994ba0e9cfd8c469fd031a4c15049b",
+            "visits": [
+              17,
+              15
+            ],
+            "actionAdjustments": {
+              "[\"stage2h1/hold\",\"controller\",{\"id\":\"node-hold\",\"kind\":\"node\"},{\"mode\":\"hold\"}]": {
+                "oracle": 0,
+                "nexus": 20000,
+                "combined": 20000,
+                "rationaleCodes": [
+                  "NEXUS_ACTION_BOTTLENECK",
+                  "NEXUS_ACTION_CRITICAL_DEPENDENCY",
+                  "NEXUS_ACTION_UNSUPPORTED_THREAT",
+                  "ORACLE_ACTION_TREND_FLAT"
+                ]
+              },
+              "[\"stage2h1/shift\",\"controller\",{\"id\":\"node-shift\",\"kind\":\"node\"},{\"mode\":\"shift\"}]": {
+                "oracle": 0,
+                "nexus": -20000,
+                "combined": -20000,
+                "rationaleCodes": [
+                  "NEXUS_ACTION_ISOLATED",
+                  "ORACLE_ACTION_TREND_FLAT"
+                ]
+              }
+            }
+          },
+          {
+            "arm": "prime+oracle+nexus",
+            "recommendationHash": "e9d48aec19e05a52f5b3c57cd11887c19dacbe6cebc73c289ec68dd7c2fa1ce2",
+            "visits": [
+              17,
+              15
+            ],
+            "actionAdjustments": {
+              "[\"stage2h1/hold\",\"controller\",{\"id\":\"node-hold\",\"kind\":\"node\"},{\"mode\":\"hold\"}]": {
+                "oracle": 0,
+                "nexus": 20000,
+                "combined": 20000,
+                "rationaleCodes": [
+                  "NEXUS_ACTION_BOTTLENECK",
+                  "NEXUS_ACTION_CRITICAL_DEPENDENCY",
+                  "NEXUS_ACTION_UNSUPPORTED_THREAT",
+                  "ORACLE_ACTION_TREND_FLAT"
+                ]
+              },
+              "[\"stage2h1/shift\",\"controller\",{\"id\":\"node-shift\",\"kind\":\"node\"},{\"mode\":\"shift\"}]": {
+                "oracle": 0,
+                "nexus": -20000,
+                "combined": -20000,
+                "rationaleCodes": [
+                  "NEXUS_ACTION_ISOLATED",
+                  "ORACLE_ACTION_TREND_FLAT"
+                ]
+              }
+            }
+          }
+        ]
+      },
+      {
+        "fixtureId": "experts-agree",
+        "experimentClass": "both-agree",
+        "contextDigest": "sha256:e5a905ceb70270e2cdf44ae730e8ffe2f136adaf9ffe241552fc1865496e0939",
+        "baselineSelected": "[\"stage2h1/shift\",\"controller\",{\"id\":\"node-shift\",\"kind\":\"node\"},{\"mode\":\"shift\"}]",
+        "baselineVisits": [
+          16,
+          16
+        ],
+        "selectionCause": "EITHER_SUFFICIENT",
+        "rankingChanged": true,
+        "selectionChanged": true,
+        "arms": [
+          {
+            "arm": "prime+oracle",
+            "recommendationHash": "02b0123c931960eb6e105121a6280b2c75ca693fda55d536b909e4665d55fb67",
+            "visits": [
+              17,
+              15
+            ],
+            "actionAdjustments": {
+              "[\"stage2h1/hold\",\"controller\",{\"id\":\"node-hold\",\"kind\":\"node\"},{\"mode\":\"hold\"}]": {
+                "oracle": 11111,
+                "nexus": 0,
+                "combined": 11111,
+                "rationaleCodes": [
+                  "NEXUS_ACTION_NO_GRAPH",
+                  "ORACLE_ACTION_ADDRESSES_DECLINE",
+                  "ORACLE_ACTION_VOLATILITY_RISK"
+                ]
+              },
+              "[\"stage2h1/shift\",\"controller\",{\"id\":\"node-shift\",\"kind\":\"node\"},{\"mode\":\"shift\"}]": {
+                "oracle": -16983,
+                "nexus": 0,
+                "combined": -16983,
+                "rationaleCodes": [
+                  "NEXUS_ACTION_NO_GRAPH",
+                  "ORACLE_ACTION_TREND_REVERSED",
+                  "ORACLE_ACTION_VOLATILITY_RISK"
+                ]
+              }
+            }
+          },
+          {
+            "arm": "prime+nexus",
+            "recommendationHash": "a1aa8306cb53a84cdb770dbee34bbaf62c1f8811ad9c754073087d6ddb7d90d4",
+            "visits": [
+              17,
+              15
+            ],
+            "actionAdjustments": {
+              "[\"stage2h1/hold\",\"controller\",{\"id\":\"node-hold\",\"kind\":\"node\"},{\"mode\":\"hold\"}]": {
+                "oracle": 0,
+                "nexus": 20000,
+                "combined": 20000,
+                "rationaleCodes": [
+                  "NEXUS_ACTION_BOTTLENECK",
+                  "NEXUS_ACTION_CRITICAL_DEPENDENCY",
+                  "NEXUS_ACTION_UNSUPPORTED_THREAT",
+                  "ORACLE_ACTION_TREND_FLAT"
+                ]
+              },
+              "[\"stage2h1/shift\",\"controller\",{\"id\":\"node-shift\",\"kind\":\"node\"},{\"mode\":\"shift\"}]": {
+                "oracle": 0,
+                "nexus": -20000,
+                "combined": -20000,
+                "rationaleCodes": [
+                  "NEXUS_ACTION_ISOLATED",
+                  "ORACLE_ACTION_TREND_FLAT"
+                ]
+              }
+            }
+          },
+          {
+            "arm": "prime+oracle+nexus",
+            "recommendationHash": "e2b2678aac67318c86f9cbbe5baab2ddcb4894f8fe24f0c8164faee0f8e7554a",
+            "visits": [
+              18,
+              14
+            ],
+            "actionAdjustments": {
+              "[\"stage2h1/hold\",\"controller\",{\"id\":\"node-hold\",\"kind\":\"node\"},{\"mode\":\"hold\"}]": {
+                "oracle": 11111,
+                "nexus": 20000,
+                "combined": 30000,
+                "rationaleCodes": [
+                  "NEXUS_ACTION_BOTTLENECK",
+                  "NEXUS_ACTION_CRITICAL_DEPENDENCY",
+                  "NEXUS_ACTION_UNSUPPORTED_THREAT",
+                  "ORACLE_ACTION_ADDRESSES_DECLINE",
+                  "ORACLE_ACTION_VOLATILITY_RISK"
+                ]
+              },
+              "[\"stage2h1/shift\",\"controller\",{\"id\":\"node-shift\",\"kind\":\"node\"},{\"mode\":\"shift\"}]": {
+                "oracle": -16983,
+                "nexus": -20000,
+                "combined": -30000,
+                "rationaleCodes": [
+                  "NEXUS_ACTION_ISOLATED",
+                  "ORACLE_ACTION_TREND_REVERSED",
+                  "ORACLE_ACTION_VOLATILITY_RISK"
+                ]
+              }
+            }
+          }
+        ]
+      },
+      {
+        "fixtureId": "experts-disagree",
+        "experimentClass": "both-disagree",
+        "contextDigest": "sha256:70ac5ca24560a222a43870707715938d32466c176da5be34be95ce62db5b83e1",
+        "baselineSelected": "[\"stage2h1/shift\",\"controller\",{\"id\":\"node-shift\",\"kind\":\"node\"},{\"mode\":\"shift\"}]",
+        "baselineVisits": [
+          16,
+          16
+        ],
+        "selectionCause": "NONE",
+        "rankingChanged": false,
+        "selectionChanged": false,
+        "arms": [
+          {
+            "arm": "prime+oracle",
+            "recommendationHash": "1153d58c55e706b92ef5c818708bac83757a59cbca549760ce1fe91ce13bddd2",
+            "visits": [
+              17,
+              15
+            ],
+            "actionAdjustments": {
+              "[\"stage2h1/hold\",\"controller\",{\"id\":\"node-hold\",\"kind\":\"node\"},{\"mode\":\"hold\"}]": {
+                "oracle": 11111,
+                "nexus": 0,
+                "combined": 11111,
+                "rationaleCodes": [
+                  "NEXUS_ACTION_NO_GRAPH",
+                  "ORACLE_ACTION_ADDRESSES_DECLINE",
+                  "ORACLE_ACTION_VOLATILITY_RISK"
+                ]
+              },
+              "[\"stage2h1/shift\",\"controller\",{\"id\":\"node-shift\",\"kind\":\"node\"},{\"mode\":\"shift\"}]": {
+                "oracle": -16983,
+                "nexus": 0,
+                "combined": -16983,
+                "rationaleCodes": [
+                  "NEXUS_ACTION_NO_GRAPH",
+                  "ORACLE_ACTION_TREND_REVERSED",
+                  "ORACLE_ACTION_VOLATILITY_RISK"
+                ]
+              }
+            }
+          },
+          {
+            "arm": "prime+nexus",
+            "recommendationHash": "3917ea43b42e03e975690dcc5eb6b848206ff6d47b76a40316abebaae8c4ca52",
+            "visits": [
+              18,
+              14
+            ],
+            "actionAdjustments": {
+              "[\"stage2h1/hold\",\"controller\",{\"id\":\"node-hold\",\"kind\":\"node\"},{\"mode\":\"hold\"}]": {
+                "oracle": 0,
+                "nexus": -20000,
+                "combined": -20000,
+                "rationaleCodes": [
+                  "NEXUS_ACTION_ISOLATED",
+                  "ORACLE_ACTION_TREND_FLAT"
+                ]
+              },
+              "[\"stage2h1/shift\",\"controller\",{\"id\":\"node-shift\",\"kind\":\"node\"},{\"mode\":\"shift\"}]": {
+                "oracle": 0,
+                "nexus": 20000,
+                "combined": 20000,
+                "rationaleCodes": [
+                  "NEXUS_ACTION_BOTTLENECK",
+                  "NEXUS_ACTION_CRITICAL_DEPENDENCY",
+                  "NEXUS_ACTION_UNSUPPORTED_THREAT",
+                  "ORACLE_ACTION_TREND_FLAT"
+                ]
+              }
+            }
+          },
+          {
+            "arm": "prime+oracle+nexus",
+            "recommendationHash": "fd91ba7999f09d710e44f3d7731dc1c97965e7c7881ae3502b4e20ade8974e3b",
+            "visits": [
+              17,
+              15
+            ],
+            "actionAdjustments": {
+              "[\"stage2h1/hold\",\"controller\",{\"id\":\"node-hold\",\"kind\":\"node\"},{\"mode\":\"hold\"}]": {
+                "oracle": 11111,
+                "nexus": -20000,
+                "combined": -8889,
+                "rationaleCodes": [
+                  "NEXUS_ACTION_ISOLATED",
+                  "ORACLE_ACTION_ADDRESSES_DECLINE",
+                  "ORACLE_ACTION_VOLATILITY_RISK"
+                ]
+              },
+              "[\"stage2h1/shift\",\"controller\",{\"id\":\"node-shift\",\"kind\":\"node\"},{\"mode\":\"shift\"}]": {
+                "oracle": -16983,
+                "nexus": 20000,
+                "combined": 3017,
+                "rationaleCodes": [
+                  "NEXUS_ACTION_BOTTLENECK",
+                  "NEXUS_ACTION_CRITICAL_DEPENDENCY",
+                  "NEXUS_ACTION_UNSUPPORTED_THREAT",
+                  "ORACLE_ACTION_TREND_REVERSED",
+                  "ORACLE_ACTION_VOLATILITY_RISK"
+                ]
+              }
+            }
+          }
+        ]
+      },
+      {
+        "fixtureId": "near-tie-flip",
+        "experimentClass": "near-tie",
+        "contextDigest": "sha256:8886f7b947864123de6929851a95b0af43102471a8dbc98008bda3a078ec92a7",
+        "baselineSelected": "[\"stage2h1/shift\",\"controller\",{\"id\":\"node-shift\",\"kind\":\"node\"},{\"mode\":\"shift\"}]",
+        "baselineVisits": [
+          32,
+          32
+        ],
+        "selectionCause": "EITHER_SUFFICIENT",
+        "rankingChanged": true,
+        "selectionChanged": true,
+        "arms": [
+          {
+            "arm": "prime+oracle",
+            "recommendationHash": "3383923447ec763c0b194c92d945830464699b3389ad8c3e00426ec7b2620027",
+            "visits": [
+              34,
+              30
+            ],
+            "actionAdjustments": {
+              "[\"stage2h1/hold\",\"controller\",{\"id\":\"node-hold\",\"kind\":\"node\"},{\"mode\":\"hold\"}]": {
+                "oracle": 11111,
+                "nexus": 0,
+                "combined": 11111,
+                "rationaleCodes": [
+                  "NEXUS_ACTION_NO_GRAPH",
+                  "ORACLE_ACTION_ADDRESSES_DECLINE",
+                  "ORACLE_ACTION_VOLATILITY_RISK"
+                ]
+              },
+              "[\"stage2h1/shift\",\"controller\",{\"id\":\"node-shift\",\"kind\":\"node\"},{\"mode\":\"shift\"}]": {
+                "oracle": -16983,
+                "nexus": 0,
+                "combined": -16983,
+                "rationaleCodes": [
+                  "NEXUS_ACTION_NO_GRAPH",
+                  "ORACLE_ACTION_TREND_REVERSED",
+                  "ORACLE_ACTION_VOLATILITY_RISK"
+                ]
+              }
+            }
+          },
+          {
+            "arm": "prime+nexus",
+            "recommendationHash": "2aa8d5e5388cbe9af96bff72e2cf58047e2852c0b691520d75fece4e83c05826",
+            "visits": [
+              35,
+              29
+            ],
+            "actionAdjustments": {
+              "[\"stage2h1/hold\",\"controller\",{\"id\":\"node-hold\",\"kind\":\"node\"},{\"mode\":\"hold\"}]": {
+                "oracle": 0,
+                "nexus": 20000,
+                "combined": 20000,
+                "rationaleCodes": [
+                  "NEXUS_ACTION_BOTTLENECK",
+                  "NEXUS_ACTION_CRITICAL_DEPENDENCY",
+                  "NEXUS_ACTION_UNSUPPORTED_THREAT",
+                  "ORACLE_ACTION_TREND_FLAT"
+                ]
+              },
+              "[\"stage2h1/shift\",\"controller\",{\"id\":\"node-shift\",\"kind\":\"node\"},{\"mode\":\"shift\"}]": {
+                "oracle": 0,
+                "nexus": -20000,
+                "combined": -20000,
+                "rationaleCodes": [
+                  "NEXUS_ACTION_ISOLATED",
+                  "ORACLE_ACTION_TREND_FLAT"
+                ]
+              }
+            }
+          },
+          {
+            "arm": "prime+oracle+nexus",
+            "recommendationHash": "1821928c81a19a13af15ca5935f064bd80c7aa07599f284f09ab80f54b271f26",
+            "visits": [
+              37,
+              27
+            ],
+            "actionAdjustments": {
+              "[\"stage2h1/hold\",\"controller\",{\"id\":\"node-hold\",\"kind\":\"node\"},{\"mode\":\"hold\"}]": {
+                "oracle": 11111,
+                "nexus": 20000,
+                "combined": 30000,
+                "rationaleCodes": [
+                  "NEXUS_ACTION_BOTTLENECK",
+                  "NEXUS_ACTION_CRITICAL_DEPENDENCY",
+                  "NEXUS_ACTION_UNSUPPORTED_THREAT",
+                  "ORACLE_ACTION_ADDRESSES_DECLINE",
+                  "ORACLE_ACTION_VOLATILITY_RISK"
+                ]
+              },
+              "[\"stage2h1/shift\",\"controller\",{\"id\":\"node-shift\",\"kind\":\"node\"},{\"mode\":\"shift\"}]": {
+                "oracle": -16983,
+                "nexus": -20000,
+                "combined": -30000,
+                "rationaleCodes": [
+                  "NEXUS_ACTION_ISOLATED",
+                  "ORACLE_ACTION_TREND_REVERSED",
+                  "ORACLE_ACTION_VOLATILITY_RISK"
+                ]
+              }
+            }
+          }
+        ]
+      },
+      {
+        "fixtureId": "strong-preference",
+        "experimentClass": "strong-preference",
+        "contextDigest": "sha256:51683fc06b4434324270169f285a205d97e6f7d0c239b55d181a9c9264de6266",
+        "baselineSelected": "[\"stage2h1/shift\",\"controller\",{\"id\":\"node-shift\",\"kind\":\"node\"},{\"mode\":\"shift\"}]",
+        "baselineVisits": [
+          55,
+          9
+        ],
+        "selectionCause": "NONE",
+        "rankingChanged": false,
+        "selectionChanged": false,
+        "arms": [
+          {
+            "arm": "prime+oracle",
+            "recommendationHash": "b8ad0a9c98ea71c14413569b6211bd9fbf9052432d43a2608f3d0b6adf0ef21e",
+            "visits": [
+              55,
+              9
+            ],
+            "actionAdjustments": {
+              "[\"stage2h1/hold\",\"controller\",{\"id\":\"node-hold\",\"kind\":\"node\"},{\"mode\":\"hold\"}]": {
+                "oracle": 11111,
+                "nexus": 0,
+                "combined": 11111,
+                "rationaleCodes": [
+                  "NEXUS_ACTION_NO_GRAPH",
+                  "ORACLE_ACTION_ADDRESSES_DECLINE",
+                  "ORACLE_ACTION_VOLATILITY_RISK"
+                ]
+              },
+              "[\"stage2h1/shift\",\"controller\",{\"id\":\"node-shift\",\"kind\":\"node\"},{\"mode\":\"shift\"}]": {
+                "oracle": -16983,
+                "nexus": 0,
+                "combined": -16983,
+                "rationaleCodes": [
+                  "NEXUS_ACTION_NO_GRAPH",
+                  "ORACLE_ACTION_TREND_REVERSED",
+                  "ORACLE_ACTION_VOLATILITY_RISK"
+                ]
+              }
+            }
+          },
+          {
+            "arm": "prime+nexus",
+            "recommendationHash": "f5f1fd761b07b55e7801462ceb15636793fa21e895dd8750cad063e6d1372a55",
+            "visits": [
+              55,
+              9
+            ],
+            "actionAdjustments": {
+              "[\"stage2h1/hold\",\"controller\",{\"id\":\"node-hold\",\"kind\":\"node\"},{\"mode\":\"hold\"}]": {
+                "oracle": 0,
+                "nexus": 20000,
+                "combined": 20000,
+                "rationaleCodes": [
+                  "NEXUS_ACTION_BOTTLENECK",
+                  "NEXUS_ACTION_CRITICAL_DEPENDENCY",
+                  "NEXUS_ACTION_UNSUPPORTED_THREAT",
+                  "ORACLE_ACTION_TREND_FLAT"
+                ]
+              },
+              "[\"stage2h1/shift\",\"controller\",{\"id\":\"node-shift\",\"kind\":\"node\"},{\"mode\":\"shift\"}]": {
+                "oracle": 0,
+                "nexus": -20000,
+                "combined": -20000,
+                "rationaleCodes": [
+                  "NEXUS_ACTION_ISOLATED",
+                  "ORACLE_ACTION_TREND_FLAT"
+                ]
+              }
+            }
+          },
+          {
+            "arm": "prime+oracle+nexus",
+            "recommendationHash": "4bd2b72197ce194b2d13e5c3ff44dcbf74ce933af67f5f0ca87d0eb83a378ce1",
+            "visits": [
+              54,
+              10
+            ],
+            "actionAdjustments": {
+              "[\"stage2h1/hold\",\"controller\",{\"id\":\"node-hold\",\"kind\":\"node\"},{\"mode\":\"hold\"}]": {
+                "oracle": 11111,
+                "nexus": 20000,
+                "combined": 30000,
+                "rationaleCodes": [
+                  "NEXUS_ACTION_BOTTLENECK",
+                  "NEXUS_ACTION_CRITICAL_DEPENDENCY",
+                  "NEXUS_ACTION_UNSUPPORTED_THREAT",
+                  "ORACLE_ACTION_ADDRESSES_DECLINE",
+                  "ORACLE_ACTION_VOLATILITY_RISK"
+                ]
+              },
+              "[\"stage2h1/shift\",\"controller\",{\"id\":\"node-shift\",\"kind\":\"node\"},{\"mode\":\"shift\"}]": {
+                "oracle": -16983,
+                "nexus": -20000,
+                "combined": -30000,
+                "rationaleCodes": [
+                  "NEXUS_ACTION_ISOLATED",
+                  "ORACLE_ACTION_TREND_REVERSED",
+                  "ORACLE_ACTION_VOLATILITY_RISK"
+                ]
+              }
+            }
+          }
+        ]
+      },
+      {
+        "fixtureId": "oracle-reversal",
+        "experimentClass": "oracle-reversal",
+        "contextDigest": "sha256:4711ec478f5435842bdcb3e36ffd41923c8acb406fe55a6cde83faf54b5477bd",
+        "baselineSelected": "[\"stage2h1/shift\",\"controller\",{\"id\":\"node-shift\",\"kind\":\"node\"},{\"mode\":\"shift\"}]",
+        "baselineVisits": [
+          16,
+          16
+        ],
+        "selectionCause": "NONE",
+        "rankingChanged": false,
+        "selectionChanged": false,
+        "arms": [
+          {
+            "arm": "prime+oracle",
+            "recommendationHash": "afd6783446715b8acd743342552403925c00aaf6f1c2dcce0a96ce263e1747a1",
+            "visits": [
+              16,
+              16
+            ],
+            "actionAdjustments": {
+              "[\"stage2h1/hold\",\"controller\",{\"id\":\"node-hold\",\"kind\":\"node\"},{\"mode\":\"hold\"}]": {
+                "oracle": -8889,
+                "nexus": 0,
+                "combined": -8889,
+                "rationaleCodes": [
+                  "NEXUS_ACTION_NO_GRAPH",
+                  "ORACLE_ACTION_TREND_REVERSED",
+                  "ORACLE_ACTION_VOLATILITY_RISK"
+                ]
+              },
+              "[\"stage2h1/shift\",\"controller\",{\"id\":\"node-shift\",\"kind\":\"node\"},{\"mode\":\"shift\"}]": {
+                "oracle": 0,
+                "nexus": 0,
+                "combined": 0,
+                "rationaleCodes": [
+                  "NEXUS_ACTION_NO_GRAPH",
+                  "ORACLE_ACTION_TREND_FLAT"
+                ]
+              }
+            }
+          },
+          {
+            "arm": "prime+nexus",
+            "recommendationHash": "3d6bc657e7634ce075a7c86dd6909966ff77c12e65dc8b7cb4b04565453280ca",
+            "visits": [
+              16,
+              16
+            ],
+            "actionAdjustments": {
+              "[\"stage2h1/hold\",\"controller\",{\"id\":\"node-hold\",\"kind\":\"node\"},{\"mode\":\"hold\"}]": {
+                "oracle": 0,
+                "nexus": 0,
+                "combined": 0,
+                "rationaleCodes": [
+                  "NEXUS_ACTION_NO_GRAPH",
+                  "ORACLE_ACTION_TREND_FLAT"
+                ]
+              },
+              "[\"stage2h1/shift\",\"controller\",{\"id\":\"node-shift\",\"kind\":\"node\"},{\"mode\":\"shift\"}]": {
+                "oracle": 0,
+                "nexus": 0,
+                "combined": 0,
+                "rationaleCodes": [
+                  "NEXUS_ACTION_NO_GRAPH",
+                  "ORACLE_ACTION_TREND_FLAT"
+                ]
+              }
+            }
+          },
+          {
+            "arm": "prime+oracle+nexus",
+            "recommendationHash": "d19f8ee2891981237bdf2a44c11aa89e069efa80e0a40286eff4fba3cd75b505",
+            "visits": [
+              16,
+              16
+            ],
+            "actionAdjustments": {
+              "[\"stage2h1/hold\",\"controller\",{\"id\":\"node-hold\",\"kind\":\"node\"},{\"mode\":\"hold\"}]": {
+                "oracle": -8889,
+                "nexus": 0,
+                "combined": -8889,
+                "rationaleCodes": [
+                  "NEXUS_ACTION_NO_GRAPH",
+                  "ORACLE_ACTION_TREND_REVERSED",
+                  "ORACLE_ACTION_VOLATILITY_RISK"
+                ]
+              },
+              "[\"stage2h1/shift\",\"controller\",{\"id\":\"node-shift\",\"kind\":\"node\"},{\"mode\":\"shift\"}]": {
+                "oracle": 0,
+                "nexus": 0,
+                "combined": 0,
+                "rationaleCodes": [
+                  "NEXUS_ACTION_NO_GRAPH",
+                  "ORACLE_ACTION_TREND_FLAT"
+                ]
+              }
+            }
+          }
+        ]
+      },
+      {
+        "fixtureId": "oracle-insufficient-history",
+        "experimentClass": "insufficient-history",
+        "contextDigest": "sha256:b0c421b3188409bf6b9a6c7d5cad91a2e844d0d49e340c36dab11a1b6bf7d673",
+        "baselineSelected": "[\"stage2h1/shift\",\"controller\",{\"id\":\"node-shift\",\"kind\":\"node\"},{\"mode\":\"shift\"}]",
+        "baselineVisits": [
+          16,
+          16
+        ],
+        "selectionCause": "NONE",
+        "rankingChanged": false,
+        "selectionChanged": false,
+        "arms": [
+          {
+            "arm": "prime+oracle",
+            "recommendationHash": "19c4fdd17d368742fa665e6de2920934a78f2bf16e403e85fa5690ace113fee8",
+            "visits": [
+              16,
+              16
+            ],
+            "actionAdjustments": {
+              "[\"stage2h1/hold\",\"controller\",{\"id\":\"node-hold\",\"kind\":\"node\"},{\"mode\":\"hold\"}]": {
+                "oracle": 0,
+                "nexus": 0,
+                "combined": 0,
+                "rationaleCodes": [
+                  "NEXUS_ACTION_NO_GRAPH",
+                  "ORACLE_ACTION_NO_HISTORY"
+                ]
+              },
+              "[\"stage2h1/shift\",\"controller\",{\"id\":\"node-shift\",\"kind\":\"node\"},{\"mode\":\"shift\"}]": {
+                "oracle": 0,
+                "nexus": 0,
+                "combined": 0,
+                "rationaleCodes": [
+                  "NEXUS_ACTION_NO_GRAPH",
+                  "ORACLE_ACTION_NO_HISTORY"
+                ]
+              }
+            }
+          },
+          {
+            "arm": "prime+nexus",
+            "recommendationHash": "b583591ed7b5f60d451c1101b9524ae429d2c4a8d0e551e5d1898ebce3666be6",
+            "visits": [
+              16,
+              16
+            ],
+            "actionAdjustments": {
+              "[\"stage2h1/hold\",\"controller\",{\"id\":\"node-hold\",\"kind\":\"node\"},{\"mode\":\"hold\"}]": {
+                "oracle": 0,
+                "nexus": 0,
+                "combined": 0,
+                "rationaleCodes": [
+                  "NEXUS_ACTION_NO_GRAPH",
+                  "ORACLE_ACTION_TREND_FLAT"
+                ]
+              },
+              "[\"stage2h1/shift\",\"controller\",{\"id\":\"node-shift\",\"kind\":\"node\"},{\"mode\":\"shift\"}]": {
+                "oracle": 0,
+                "nexus": 0,
+                "combined": 0,
+                "rationaleCodes": [
+                  "NEXUS_ACTION_NO_GRAPH",
+                  "ORACLE_ACTION_TREND_FLAT"
+                ]
+              }
+            }
+          },
+          {
+            "arm": "prime+oracle+nexus",
+            "recommendationHash": "cbb04a542050b6beca83a2f0be167e401564028070b4a5f88759024b72450583",
+            "visits": [
+              16,
+              16
+            ],
+            "actionAdjustments": {
+              "[\"stage2h1/hold\",\"controller\",{\"id\":\"node-hold\",\"kind\":\"node\"},{\"mode\":\"hold\"}]": {
+                "oracle": 0,
+                "nexus": 0,
+                "combined": 0,
+                "rationaleCodes": [
+                  "NEXUS_ACTION_NO_GRAPH",
+                  "ORACLE_ACTION_NO_HISTORY"
+                ]
+              },
+              "[\"stage2h1/shift\",\"controller\",{\"id\":\"node-shift\",\"kind\":\"node\"},{\"mode\":\"shift\"}]": {
+                "oracle": 0,
+                "nexus": 0,
+                "combined": 0,
+                "rationaleCodes": [
+                  "NEXUS_ACTION_NO_GRAPH",
+                  "ORACLE_ACTION_NO_HISTORY"
+                ]
+              }
+            }
+          }
+        ]
+      },
+      {
+        "fixtureId": "nexus-redundant-support",
+        "experimentClass": "nexus-redundancy",
+        "contextDigest": "sha256:3956465001f64d08c60ddfdb3efb35c3078c3c97526f7df7ec212a8af2c43fce",
+        "baselineSelected": "[\"stage2h1/shift\",\"controller\",{\"id\":\"node-shift\",\"kind\":\"node\"},{\"mode\":\"shift\"}]",
+        "baselineVisits": [
+          16,
+          16
+        ],
+        "selectionCause": "NEXUS",
+        "rankingChanged": true,
+        "selectionChanged": true,
+        "arms": [
+          {
+            "arm": "prime+oracle",
+            "recommendationHash": "af531e94bc63b500e00073632d8a81cd199bbdd872f6550d358288bde503d942",
+            "visits": [
+              16,
+              16
+            ],
+            "actionAdjustments": {
+              "[\"stage2h1/hold\",\"controller\",{\"id\":\"node-hold\",\"kind\":\"node\"},{\"mode\":\"hold\"}]": {
+                "oracle": 0,
+                "nexus": 0,
+                "combined": 0,
+                "rationaleCodes": [
+                  "NEXUS_ACTION_NO_GRAPH",
+                  "ORACLE_ACTION_TREND_FLAT"
+                ]
+              },
+              "[\"stage2h1/shift\",\"controller\",{\"id\":\"node-shift\",\"kind\":\"node\"},{\"mode\":\"shift\"}]": {
+                "oracle": 0,
+                "nexus": 0,
+                "combined": 0,
+                "rationaleCodes": [
+                  "NEXUS_ACTION_NO_GRAPH",
+                  "ORACLE_ACTION_TREND_FLAT"
+                ]
+              }
+            }
+          },
+          {
+            "arm": "prime+nexus",
+            "recommendationHash": "004d49ffc3da32de576935be5cc5483d75ca85b1e30c1d3c051ba469e20bc7c0",
+            "visits": [
+              17,
+              15
+            ],
+            "actionAdjustments": {
+              "[\"stage2h1/hold\",\"controller\",{\"id\":\"node-hold\",\"kind\":\"node\"},{\"mode\":\"hold\"}]": {
+                "oracle": 0,
+                "nexus": 13333,
+                "combined": 13333,
+                "rationaleCodes": [
+                  "NEXUS_ACTION_BOTTLENECK",
+                  "NEXUS_ACTION_CRITICAL_DEPENDENCY",
+                  "NEXUS_ACTION_REDUNDANT_SUPPORT",
+                  "NEXUS_ACTION_SUPPORTED_THREAT",
+                  "ORACLE_ACTION_TREND_FLAT"
+                ]
+              },
+              "[\"stage2h1/shift\",\"controller\",{\"id\":\"node-shift\",\"kind\":\"node\"},{\"mode\":\"shift\"}]": {
+                "oracle": 0,
+                "nexus": -20000,
+                "combined": -20000,
+                "rationaleCodes": [
+                  "NEXUS_ACTION_ISOLATED",
+                  "ORACLE_ACTION_TREND_FLAT"
+                ]
+              }
+            }
+          },
+          {
+            "arm": "prime+oracle+nexus",
+            "recommendationHash": "5a0b5a762725e37c0fc3e75eb1baa8b5fc60767de69df180708b78f2780a04b2",
+            "visits": [
+              17,
+              15
+            ],
+            "actionAdjustments": {
+              "[\"stage2h1/hold\",\"controller\",{\"id\":\"node-hold\",\"kind\":\"node\"},{\"mode\":\"hold\"}]": {
+                "oracle": 0,
+                "nexus": 13333,
+                "combined": 13333,
+                "rationaleCodes": [
+                  "NEXUS_ACTION_BOTTLENECK",
+                  "NEXUS_ACTION_CRITICAL_DEPENDENCY",
+                  "NEXUS_ACTION_REDUNDANT_SUPPORT",
+                  "NEXUS_ACTION_SUPPORTED_THREAT",
+                  "ORACLE_ACTION_TREND_FLAT"
+                ]
+              },
+              "[\"stage2h1/shift\",\"controller\",{\"id\":\"node-shift\",\"kind\":\"node\"},{\"mode\":\"shift\"}]": {
+                "oracle": 0,
+                "nexus": -20000,
+                "combined": -20000,
+                "rationaleCodes": [
+                  "NEXUS_ACTION_ISOLATED",
+                  "ORACLE_ACTION_TREND_FLAT"
+                ]
+              }
+            }
+          }
+        ]
+      },
+      {
+        "fixtureId": "oracle-volatility-risk",
+        "experimentClass": "oracle-volatility",
+        "contextDigest": "sha256:2e59e2a093a98f13457b1162098b8346bbebc1a6ed03c824c155fda95fc564a1",
+        "baselineSelected": "[\"stage2h1/shift\",\"controller\",{\"id\":\"node-shift\",\"kind\":\"node\"},{\"mode\":\"shift\"}]",
+        "baselineVisits": [
+          16,
+          16
+        ],
+        "selectionCause": "NONE",
+        "rankingChanged": false,
+        "selectionChanged": false,
+        "arms": [
+          {
+            "arm": "prime+oracle",
+            "recommendationHash": "4efef9a5f5ed03f6d12da12ca5e0cd623731a9776a2f67f58a7a228d93748e1a",
+            "visits": [
+              17,
+              15
+            ],
+            "actionAdjustments": {
+              "[\"stage2h1/hold\",\"controller\",{\"id\":\"node-hold\",\"kind\":\"node\"},{\"mode\":\"hold\"}]": {
+                "oracle": -16983,
+                "nexus": 0,
+                "combined": -16983,
+                "rationaleCodes": [
+                  "NEXUS_ACTION_NO_GRAPH",
+                  "ORACLE_ACTION_TREND_REVERSED",
+                  "ORACLE_ACTION_VOLATILITY_RISK"
+                ]
+              },
+              "[\"stage2h1/shift\",\"controller\",{\"id\":\"node-shift\",\"kind\":\"node\"},{\"mode\":\"shift\"}]": {
+                "oracle": 11111,
+                "nexus": 0,
+                "combined": 11111,
+                "rationaleCodes": [
+                  "NEXUS_ACTION_NO_GRAPH",
+                  "ORACLE_ACTION_ADDRESSES_DECLINE",
+                  "ORACLE_ACTION_VOLATILITY_RISK"
+                ]
+              }
+            }
+          },
+          {
+            "arm": "prime+nexus",
+            "recommendationHash": "d9f8a44a5345c9831507b5f38b80c3d407ab9003b8cf46e02177cb2a9061670c",
+            "visits": [
+              16,
+              16
+            ],
+            "actionAdjustments": {
+              "[\"stage2h1/hold\",\"controller\",{\"id\":\"node-hold\",\"kind\":\"node\"},{\"mode\":\"hold\"}]": {
+                "oracle": 0,
+                "nexus": 0,
+                "combined": 0,
+                "rationaleCodes": [
+                  "NEXUS_ACTION_NO_GRAPH",
+                  "ORACLE_ACTION_TREND_FLAT"
+                ]
+              },
+              "[\"stage2h1/shift\",\"controller\",{\"id\":\"node-shift\",\"kind\":\"node\"},{\"mode\":\"shift\"}]": {
+                "oracle": 0,
+                "nexus": 0,
+                "combined": 0,
+                "rationaleCodes": [
+                  "NEXUS_ACTION_NO_GRAPH",
+                  "ORACLE_ACTION_TREND_FLAT"
+                ]
+              }
+            }
+          },
+          {
+            "arm": "prime+oracle+nexus",
+            "recommendationHash": "9fc2ac15d5783d1df0a12c2853ce0f0dd6304cd20b0172f6069ab9fb5e176fc7",
+            "visits": [
+              17,
+              15
+            ],
+            "actionAdjustments": {
+              "[\"stage2h1/hold\",\"controller\",{\"id\":\"node-hold\",\"kind\":\"node\"},{\"mode\":\"hold\"}]": {
+                "oracle": -16983,
+                "nexus": 0,
+                "combined": -16983,
+                "rationaleCodes": [
+                  "NEXUS_ACTION_NO_GRAPH",
+                  "ORACLE_ACTION_TREND_REVERSED",
+                  "ORACLE_ACTION_VOLATILITY_RISK"
+                ]
+              },
+              "[\"stage2h1/shift\",\"controller\",{\"id\":\"node-shift\",\"kind\":\"node\"},{\"mode\":\"shift\"}]": {
+                "oracle": 11111,
+                "nexus": 0,
+                "combined": 11111,
+                "rationaleCodes": [
+                  "NEXUS_ACTION_NO_GRAPH",
+                  "ORACLE_ACTION_ADDRESSES_DECLINE",
+                  "ORACLE_ACTION_VOLATILITY_RISK"
+                ]
+              }
+            }
+          }
+        ]
+      },
+      {
+        "fixtureId": "unlinked-fallback",
+        "experimentClass": "unlinked-fallback",
+        "contextDigest": "sha256:24e018cc58974458e3d286d80f3bb7c81f52af65b58bfc4e85c4b3bdb1863392",
+        "baselineSelected": "[\"reference.token-race/take@bonus\",\"player-1\",{\"id\":\"bonus-1\",\"kind\":\"shared-bonus\"},{\"amount\":3}]",
+        "baselineVisits": [
+          34,
+          18,
+          12
+        ],
+        "selectionCause": "NONE",
+        "rankingChanged": false,
+        "selectionChanged": false,
+        "arms": [
+          {
+            "arm": "prime+oracle",
+            "recommendationHash": "e58809dfa402fdf4b91eb585af2e2973ff92aff136fc7a8b6edde33d1e1cb240",
+            "visits": [
+              34,
+              18,
+              12
+            ],
+            "actionAdjustments": {}
+          },
+          {
+            "arm": "prime+nexus",
+            "recommendationHash": "d40141a26ca0fcd4cb77750a529f7f140d1b8ad39ca06c8819dc190c9e82922d",
+            "visits": [
+              34,
+              18,
+              12
+            ],
+            "actionAdjustments": {}
+          },
+          {
+            "arm": "prime+oracle+nexus",
+            "recommendationHash": "56f21ffd4749922b8e37a2316d40fa24dcd6918bae5605428eb3a421984e6b29",
+            "visits": [
+              34,
+              18,
+              12
+            ],
+            "actionAdjustments": {}
+          }
+        ]
+      }
+    ]
+  }
+}

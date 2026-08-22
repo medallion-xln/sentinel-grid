@@ -1,0 +1,503 @@
+{
+  "stage": "STAGE2I3_ORACLE_PERSISTENCE_AND_REGIME_HEAD_REMEDIATION",
+  "baseline": {
+    "scores": {
+      "prime": 4,
+      "oracleV1": 3,
+      "nexus": 4
+    },
+    "stage2i2Certified": true,
+    "stage2i2CertificationHash": "5c481283d006a82115fcd1c8be8422282eb813f97ad696264d9fdda96406fb6c"
+  },
+  "scoreAudit": {
+    "persistence": {
+      "rawAccuracy": 0.8,
+      "adversarialAccuracy": "NOT_RECORDED_IN_FROZEN_STAGE2I2_EVIDENCE",
+      "incrementalValue": -0.08499999999999996,
+      "baselineDelta": -0.08499999999999996,
+      "falsePositiveRate": 0.3333333333333333,
+      "abstentionBehavior": {
+        "activationRate": "NOT_RECORDED",
+        "abstentionRate": "NOT_RECORDED",
+        "falseConfidenceRate": 0,
+        "falseAbstentionRate": 0
+      },
+      "scoreBefore": 3,
+      "scoreDerivation": "RAW_0.800000=>RUBRIC_6;BELOW_BASELINE_0.885000=>CAP_3",
+      "scoreDefectDetected": false
+    },
+    "regime": {
+      "rawAccuracy": 0.8181818181818182,
+      "adversarialAccuracy": "NOT_RECORDED_IN_FROZEN_STAGE2I2_EVIDENCE",
+      "incrementalValue": 0.3636363636363637,
+      "baselineDelta": 0.3636363636363637,
+      "falsePositiveRate": "NOT_RECORDED_IN_FROZEN_STAGE2I2_EVIDENCE",
+      "abstentionBehavior": {
+        "activationRate": "NOT_RECORDED",
+        "abstentionRate": "NOT_RECORDED",
+        "falseConfidenceRate": 0,
+        "falseAbstentionRate": 0
+      },
+      "scoreBefore": 6,
+      "scoreDerivation": "RAW_0.818182=>RUBRIC_THRESHOLD_0.75=>SCORE_6;BASELINE_BEAT=>NO_CAP",
+      "scoreDefectDetected": false
+    }
+  },
+  "frozenHeads": {
+    "owner": "platform/game-agnostic/src/lab/stage2i2-oracle-task-head-diagnostic.js",
+    "ownerSha256": "bc908a23dd595376deb7ef39a81b7d95fbfb7da118bb65989e05a12165d51bdf",
+    "evidenceIdentities": {
+      "direction": "5315a3eb7918001d3011f71cb1b57ed4a6f2d0fdccfc5ecf0cf94c8bbe3672b7",
+      "reversal": "e8ad0b9ef655073f644f304c598e99cfba12c55381dc29e1d87c8b1c32d71541",
+      "volatility": "28ee47dff24228b83c9cec51f3431e8dd2a2677a741cec3cd7979180d2df8b7a",
+      "cycle": "332bc9e3f4d861e4807293faf162708be286ad23ed6379e7946775b4ce9d75e6",
+      "timeToThreshold": "42884e7605aade02f46a25c142ee4ade6238b25a513c3ce40a9bf09093e4af54",
+      "abstention": "1e768c78f20e842bee671ae63058b5e013e280fb4a4707f344fdb0cc6bfe0bd6"
+    },
+    "changed": {
+      "direction": false,
+      "reversal": false,
+      "volatility": false,
+      "cycle": false,
+      "timeToThreshold": false,
+      "abstention": false
+    },
+    "allFrozenSuccessfulHeadsUnchanged": true
+  },
+  "corpus": {
+    "semanticFamilyLeakage": false,
+    "splitBySemanticFamily": true,
+    "finalHoldoutExecutedOnce": true,
+    "persistence": {
+      "cases": 840,
+      "effectiveSemanticGroups": 711,
+      "developmentCases": 200,
+      "validationCases": 200,
+      "finalHoldoutCases": 440,
+      "families": {
+        "development": [
+          "STRONG_SUSTAINED_TREND",
+          "INTERRUPTED_TREND",
+          "STABLE_NO_TREND",
+          "SHORT_HISTORY",
+          "SINGLE_OUTLIER"
+        ],
+        "validation": [
+          "WEAK_SUSTAINED_TREND",
+          "LATE_INTERRUPTION",
+          "ALTERNATING_DIRECTION",
+          "MISSING_HISTORY",
+          "TEMPORARY_DEVIATION"
+        ],
+        "finalHoldout": [
+          "NOISY_SUSTAINED_TREND",
+          "EARLY_INTERRUPTION",
+          "MULTIPLE_OUTLIERS",
+          "LATE_EMERGING_TREND",
+          "DUPLICATED_SAMPLE",
+          "HISTORY_REVERSAL",
+          "MISSING_LATEST_SAMPLE",
+          "MISSING_OLDEST_SAMPLE",
+          "SHORTENED_HISTORY",
+          "ONE_TIME_INTERRUPTION",
+          "EXTREME_NOISE"
+        ]
+      }
+    },
+    "regime": {
+      "cases": 810,
+      "effectiveSemanticGroups": 764,
+      "developmentCases": 180,
+      "validationCases": 180,
+      "finalHoldoutCases": 450,
+      "families": {
+        "development": [
+          "MEAN_LEVEL_SHIFT",
+          "SLOPE_SHIFT",
+          "VARIANCE_SHIFT",
+          "STABLE_TO_VOLATILE",
+          "TEMPORARY_ANOMALY",
+          "SHORT_HISTORY"
+        ],
+        "validation": [
+          "CYCLE_ONSET",
+          "CYCLE_DISAPPEARANCE",
+          "STABLE_TO_TRENDING",
+          "TRENDING_TO_STABLE",
+          "SINGLE_OUTLIER",
+          "SHARP_TRANSITION"
+        ],
+        "finalHoldout": [
+          "FREQUENCY_SHIFT",
+          "VOLATILE_TO_STABLE",
+          "GRADUAL_TRANSITION",
+          "PERSISTENT_UP_TO_DOWN",
+          "REVERSAL_WITHOUT_REGIME_CHANGE",
+          "REGIME_CHANGE_WITHOUT_SIMPLE_REVERSAL",
+          "REVERSAL_AND_REGIME_CHANGE",
+          "NEITHER",
+          "SINGLE_SPIKE",
+          "SINGLE_DROP",
+          "TEMPORARY_REVERSAL",
+          "SHORT_VOLATILITY_BURST",
+          "OUTLIER_CLUSTER",
+          "DUPLICATED_SAMPLES",
+          "LATE_SHIFT_INSUFFICIENT_POST_CHANGE"
+        ]
+      }
+    }
+  },
+  "search": {
+    "persistence": {
+      "space": [
+        {
+          "id": "MAJORITY_CONSISTENCY",
+          "minimumSupport": 0.78,
+          "maximumOpposingRun": 2,
+          "requireFullRecentAgreement": false
+        },
+        {
+          "id": "WEIGHTED_RECENT_CONSISTENCY",
+          "minimumSupport": 0.68,
+          "maximumOpposingRun": 2,
+          "requireFullRecentAgreement": true
+        },
+        {
+          "id": "BOUNDED_INTERRUPTION_TOLERANCE",
+          "minimumSupport": 0.68,
+          "maximumOpposingRun": 2,
+          "requireFullRecentAgreement": true
+        },
+        {
+          "id": "RUN_LENGTH_PERSISTENCE",
+          "minimumSupport": 0.62,
+          "maximumOpposingRun": 1,
+          "requireFullRecentAgreement": false
+        },
+        {
+          "id": "FULL_RECENT_AGREEMENT",
+          "minimumSupport": 0.72,
+          "maximumOpposingRun": 2,
+          "requireFullRecentAgreement": true
+        }
+      ],
+      "digest": "d65d28ab44d6dc58b5c609e75a0fa57cf097b4c337ff77c88604934afdc68076",
+      "validationResults": {
+        "MAJORITY_CONSISTENCY": {
+          "cases": 200,
+          "correct": 200,
+          "accuracy": 1,
+          "activationRate": 0.6,
+          "abstentionRate": 0.4,
+          "falseConfidenceRate": 0,
+          "falseAbstentionRate": 0
+        },
+        "WEIGHTED_RECENT_CONSISTENCY": {
+          "cases": 200,
+          "correct": 200,
+          "accuracy": 1,
+          "activationRate": 0.6,
+          "abstentionRate": 0.4,
+          "falseConfidenceRate": 0,
+          "falseAbstentionRate": 0
+        },
+        "BOUNDED_INTERRUPTION_TOLERANCE": {
+          "cases": 200,
+          "correct": 200,
+          "accuracy": 1,
+          "activationRate": 0.6,
+          "abstentionRate": 0.4,
+          "falseConfidenceRate": 0,
+          "falseAbstentionRate": 0
+        },
+        "RUN_LENGTH_PERSISTENCE": {
+          "cases": 200,
+          "correct": 200,
+          "accuracy": 1,
+          "activationRate": 0.6,
+          "abstentionRate": 0.4,
+          "falseConfidenceRate": 0,
+          "falseAbstentionRate": 0
+        },
+        "FULL_RECENT_AGREEMENT": {
+          "cases": 200,
+          "correct": 200,
+          "accuracy": 1,
+          "activationRate": 0.6,
+          "abstentionRate": 0.4,
+          "falseConfidenceRate": 0,
+          "falseAbstentionRate": 0
+        }
+      }
+    },
+    "regime": {
+      "space": [
+        {
+          "id": "ROBUST_LEVEL_TREND",
+          "level": true,
+          "trend": true,
+          "volatility": false,
+          "cycle": false,
+          "sensitivity": 1
+        },
+        {
+          "id": "ROBUST_LEVEL_TREND_VARIANCE",
+          "level": true,
+          "trend": true,
+          "volatility": true,
+          "cycle": false,
+          "sensitivity": 1
+        },
+        {
+          "id": "ROBUST_MULTI_SIGNAL",
+          "level": true,
+          "trend": true,
+          "volatility": true,
+          "cycle": true,
+          "sensitivity": 1
+        },
+        {
+          "id": "CONSERVATIVE_MULTI_SIGNAL",
+          "level": true,
+          "trend": true,
+          "volatility": true,
+          "cycle": true,
+          "sensitivity": 1.2
+        }
+      ],
+      "digest": "784228c1e9ab13fe9ee63e122169c5692cf7c9b84e58a4f21b9f8879830bedf9",
+      "validationResults": {
+        "ROBUST_LEVEL_TREND": {
+          "cases": 180,
+          "correct": 120,
+          "accuracy": 0.6666666666666666,
+          "activationRate": 1,
+          "abstentionRate": 0,
+          "falseConfidenceRate": 0,
+          "falseAbstentionRate": 0
+        },
+        "ROBUST_LEVEL_TREND_VARIANCE": {
+          "cases": 180,
+          "correct": 120,
+          "accuracy": 0.6666666666666666,
+          "activationRate": 1,
+          "abstentionRate": 0,
+          "falseConfidenceRate": 0,
+          "falseAbstentionRate": 0
+        },
+        "ROBUST_MULTI_SIGNAL": {
+          "cases": 180,
+          "correct": 60,
+          "accuracy": 0.3333333333333333,
+          "activationRate": 1,
+          "abstentionRate": 0,
+          "falseConfidenceRate": 0,
+          "falseAbstentionRate": 0
+        },
+        "CONSERVATIVE_MULTI_SIGNAL": {
+          "cases": 180,
+          "correct": 60,
+          "accuracy": 0.3333333333333333,
+          "activationRate": 1,
+          "abstentionRate": 0,
+          "falseConfidenceRate": 0,
+          "falseAbstentionRate": 0
+        }
+      }
+    },
+    "selection": {
+      "selectedPersistenceV2": {
+        "id": "BOUNDED_INTERRUPTION_TOLERANCE",
+        "minimumSupport": 0.68,
+        "maximumOpposingRun": 2,
+        "requireFullRecentAgreement": true
+      },
+      "selectedRegimeV2": {
+        "id": "ROBUST_LEVEL_TREND",
+        "level": true,
+        "trend": true,
+        "volatility": false,
+        "cycle": false,
+        "sensitivity": 1
+      },
+      "persistenceSelectionFrozen": true,
+      "regimeSelectionFrozen": true,
+      "frozenBeforeFinalHoldout": true
+    }
+  },
+  "finalHoldout": {
+    "persistence": {
+      "v1Score": 3,
+      "v2Score": 7,
+      "cases": 440,
+      "correct": 385,
+      "accuracy": 0.875,
+      "activationRate": 0.8522727272727273,
+      "abstentionRate": 0.14772727272727273,
+      "falseConfidenceRate": 0.03409090909090909,
+      "falseAbstentionRate": 0,
+      "adversarialAccuracy": 0.8625,
+      "incrementalValue": 0.7840909090909091,
+      "baselines": {
+        "MAJORITY_DELTA_SIGN": {
+          "cases": 440,
+          "correct": 360,
+          "accuracy": 0.8181818181818182,
+          "activationRate": 0.9090909090909091,
+          "abstentionRate": 0.09090909090909091,
+          "falseConfidenceRate": 0.09090909090909091,
+          "falseAbstentionRate": 0
+        },
+        "CONSECUTIVE_SIGN_COUNT": {
+          "cases": 440,
+          "correct": 320,
+          "accuracy": 0.7272727272727273,
+          "activationRate": 0.9090909090909091,
+          "abstentionRate": 0.09090909090909091,
+          "falseConfidenceRate": 0.09090909090909091,
+          "falseAbstentionRate": 0
+        },
+        "FULL_WINDOW_SIGN_AGREEMENT": {
+          "cases": 440,
+          "correct": 360,
+          "accuracy": 0.8181818181818182,
+          "activationRate": 0.9090909090909091,
+          "abstentionRate": 0.09090909090909091,
+          "falseConfidenceRate": 0.09090909090909091,
+          "falseAbstentionRate": 0
+        },
+        "RECENT_WINDOW_SIGN_AGREEMENT": {
+          "cases": 440,
+          "correct": 320,
+          "accuracy": 0.7272727272727273,
+          "activationRate": 0.9090909090909091,
+          "abstentionRate": 0.09090909090909091,
+          "falseConfidenceRate": 0.09090909090909091,
+          "falseAbstentionRate": 0
+        }
+      },
+      "bestSimpleBaseline": {
+        "name": "FULL_WINDOW_SIGN_AGREEMENT",
+        "cases": 440,
+        "correct": 360,
+        "accuracy": 0.8181818181818182,
+        "activationRate": 0.9090909090909091,
+        "abstentionRate": 0.09090909090909091,
+        "falseConfidenceRate": 0.09090909090909091,
+        "falseAbstentionRate": 0
+      },
+      "beatsSimpleBaseline": true,
+      "signalCausallyAttributed": true,
+      "gatePass": true
+    },
+    "regime": {
+      "v1Score": 6,
+      "v2Score": 6,
+      "cases": 450,
+      "correct": 360,
+      "accuracy": 0.8,
+      "activationRate": 1,
+      "abstentionRate": 0,
+      "falseConfidenceRate": 0,
+      "falseAbstentionRate": 0,
+      "adversarialAccuracy": 0.8,
+      "incrementalValue": 0.2666666666666667,
+      "baselines": {
+        "RECENT_VS_PRIOR_MEAN_DELTA": {
+          "cases": 450,
+          "correct": 300,
+          "accuracy": 0.6666666666666666,
+          "activationRate": 1,
+          "abstentionRate": 0,
+          "falseConfidenceRate": 0,
+          "falseAbstentionRate": 0
+        },
+        "RECENT_VS_PRIOR_SLOPE_DELTA": {
+          "cases": 450,
+          "correct": 300,
+          "accuracy": 0.6666666666666666,
+          "activationRate": 1,
+          "abstentionRate": 0,
+          "falseConfidenceRate": 0,
+          "falseAbstentionRate": 0
+        },
+        "RECENT_VS_PRIOR_VARIANCE_DELTA": {
+          "cases": 450,
+          "correct": 240,
+          "accuracy": 0.5333333333333333,
+          "activationRate": 1,
+          "abstentionRate": 0,
+          "falseConfidenceRate": 0,
+          "falseAbstentionRate": 0
+        }
+      },
+      "bestSimpleBaseline": {
+        "name": "RECENT_VS_PRIOR_MEAN_DELTA",
+        "cases": 450,
+        "correct": 300,
+        "accuracy": 0.6666666666666666,
+        "activationRate": 1,
+        "abstentionRate": 0,
+        "falseConfidenceRate": 0,
+        "falseAbstentionRate": 0
+      },
+      "beatsSimpleBaseline": true,
+      "signalCausallyAttributed": true,
+      "gatePass": false
+    },
+    "regimeVsReversal": {
+      "truePositive": 60,
+      "falsePositive": 30,
+      "falseNegative": 0,
+      "trueNegative": 30,
+      "distinctFromReversal": false
+    }
+  },
+  "projectedOracleV2": {
+    "heads": {
+      "direction": 10,
+      "persistence": 7,
+      "reversal": 7,
+      "regimeChange": 6,
+      "volatility": 10,
+      "cycle": 7,
+      "timeToThreshold": 10,
+      "abstention": 10
+    },
+    "capabilityScore": "NOT_CERTIFIABLE_UNTIL_ASSEMBLY",
+    "reason": "STAGE2I0_REQUIRES_AN_INTEGRATED_ORACLE_BENCHMARK"
+  },
+  "qualityGate": {
+    "persistence": {
+      "minimumScore": 7,
+      "minimumAccuracy": 0.85,
+      "minimumAdversarialAccuracy": 0.8,
+      "requiresBaselineSuperiority": true
+    },
+    "regime": {
+      "minimumScore": 7,
+      "minimumAccuracy": 0.8,
+      "minimumAdversarialAccuracy": 0.8,
+      "requiresBaselineSuperiority": true
+    }
+  },
+  "qualityGatePass": false,
+  "oracleV2Assembled": false,
+  "oracleProductionReplaced": false,
+  "primeChanged": false,
+  "nexusChanged": false,
+  "expertSelectionInfluence": 0,
+  "expertActionSelectionApproved": false,
+  "finalRecommendationOwner": "PRIME",
+  "replayEquivalent": true,
+  "authority": {
+    "tier": "R0",
+    "canDispatch": false,
+    "canMutateLiveWorld": false
+  },
+  "liveActionDispatches": 0,
+  "worldMutations": 0,
+  "authorityEscalations": 0,
+  "authorityTokenIssues": 0,
+  "evidenceDigest": "1be4b3081d9b3350c433bb4718f0deb42603c63426fa45689cb426e30c21434b"
+}

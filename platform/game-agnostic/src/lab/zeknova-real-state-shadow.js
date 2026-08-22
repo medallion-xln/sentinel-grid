@@ -3,9 +3,13 @@ import { actionKey, validateObservationPacket } from '../core/contracts.js';
 import { createSeededRandom, deriveSeed, sha256 } from '../core/determinism.js';
 import { recommend } from '../prime/root-puct.js';
 import { LEGACY_ACTIONS, LEGACY_ENGINE_ID } from '../compat/zeknova-stage1az-legacy.js';
+import {
+  STAGE2F_RECORD_SCHEMA_VERSION,
+  validateStage2FQualificationIdentity,
+} from './zeknova-stage2f-identity.js';
 
 export const ZEKNOVA_LIVE_CAPTURE_VERSION = 1;
-export const ZEKNOVA_SHADOW_RECORD_VERSION = 1;
+export const ZEKNOVA_SHADOW_RECORD_VERSION = STAGE2F_RECORD_SCHEMA_VERSION;
 export const ZEKNOVA_SHADOW_CERTIFICATION_VERSION = 1;
 
 export const DEFAULT_PRODUCTION_SHADOW_THRESHOLDS = Object.freeze({
@@ -58,7 +62,7 @@ function validateInteger(value, name, minimum = 0) {
   return value;
 }
 
-export function validateZekNovaLiveCapture(capture) {
+export function validateZekNovaLiveCapture(capture, { campaignManifest = null } = {}) {
   assert(capture && typeof capture === 'object' && !Array.isArray(capture), 'Live capture must be an object');
   assert(capture.captureVersion === ZEKNOVA_LIVE_CAPTURE_VERSION, `captureVersion must be ${ZEKNOVA_LIVE_CAPTURE_VERSION}`);
   validateString(capture.captureId, 'captureId');
@@ -83,12 +87,19 @@ export function validateZekNovaLiveCapture(capture) {
   assert(Array.isArray(capture.legacyEvidence.legalActionKeys), 'Legacy legalActionKeys are required');
   assert(Array.isArray(capture.legacyEvidence.transitions), 'Legacy transitions are required');
   assert(Array.isArray(capture.legacyEvidence.recommendation?.ranking), 'Legacy recommendation ranking is required');
+  if (campaignManifest) {
+    validateStage2FQualificationIdentity(capture.qualificationIdentity, {
+      campaignManifest,
+      sessionId: capture.context.sessionId,
+      samplingIdentity: capture.envelope?.metadata?.stateIdentity,
+    });
+  }
   return structuredClone(capture);
 }
 
-export function evaluateZekNovaLiveCapture({ adapter, manifest, configuration, capture }) {
+export function evaluateZekNovaLiveCapture({ adapter, manifest, configuration, capture, campaignManifest = null }) {
   const startedAt = performance.now();
-  const validated = validateZekNovaLiveCapture(capture);
+  const validated = validateZekNovaLiveCapture(capture, { campaignManifest });
   const expected = validated.legacyEvidence;
   const observerId = validated.context.factionId;
   const state = adapter.importSnapshot(structuredClone(validated.envelope.payload), {
@@ -142,12 +153,13 @@ export function evaluateZekNovaLiveCapture({ adapter, manifest, configuration, c
   };
   const pass = Object.values(agreement).every(Boolean);
   const payload = {
-    shadowRecordVersion: ZEKNOVA_SHADOW_RECORD_VERSION,
+    shadowRecordVersion: validated.qualificationIdentity ? ZEKNOVA_SHADOW_RECORD_VERSION : 1,
     captureId: validated.captureId,
     fixtureHash: sha256({ envelope: validated.envelope, legacyEvidence: validated.legacyEvidence }),
     captureHash: sha256(validated),
     capturedAt: validated.capturedAt ?? null,
     captureProvenance: structuredClone(validated.source ?? { kind: 'unknown', productionEligible: false }),
+    ...(validated.qualificationIdentity ? { qualificationIdentity: structuredClone(validated.qualificationIdentity) } : {}),
     context: validated.context,
     sourceStateHash,
     observerId,
@@ -177,11 +189,14 @@ export function evaluateZekNovaLiveCapture({ adapter, manifest, configuration, c
 
 export function validateShadowRecord(record) {
   assert(record && typeof record === 'object' && !Array.isArray(record), 'Shadow record must be an object');
-  assert(record.shadowRecordVersion === ZEKNOVA_SHADOW_RECORD_VERSION, 'Unsupported shadow record version');
+  assert(record.shadowRecordVersion === 1 || record.shadowRecordVersion === ZEKNOVA_SHADOW_RECORD_VERSION, 'Unsupported shadow record version');
   const { recordHash, ...payload } = record;
   assert(recordHash === sha256(payload), 'Shadow record hash mismatch');
   assert(record.authority?.tier === 'R0', 'Shadow record authority must remain R0');
   assert(record.authority?.canDispatch === false && record.authority?.canMutateLiveWorld === false, 'Shadow record cannot dispatch or mutate the live world');
+  if (record.shadowRecordVersion === ZEKNOVA_SHADOW_RECORD_VERSION) {
+    assert(record.qualificationIdentity && typeof record.qualificationIdentity === 'object', 'Stage2F v2 record requires qualificationIdentity');
+  }
   return structuredClone(record);
 }
 

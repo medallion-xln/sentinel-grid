@@ -1,0 +1,2573 @@
+{
+  "stage": "STAGE2H2_EXPERT_CONTEXT_QUALITY_EVALUATION",
+  "qualityGate": {
+    "gateVersion": 1,
+    "registeredBeforeEvaluation": true,
+    "maximumCombinedHarmfulSelectionChangeRate": 0.05,
+    "maximumNoSignalRegressionRate": 0.01,
+    "maximumStrongPrimePreferenceHarmRate": 0.01,
+    "positiveValueRequirement": "COMBINED_ACCURACY_DELTA_GT_ZERO_OR_TARGET_SIGNAL_REGIME_POSITIVE_VALUE"
+  },
+  "qualityGateDigest": "3374ee9c0459547b30ad30624ce9e7953ccf3f749c25851fac41b2d489704843",
+  "groundTruth": {
+    "owner": "ADAPTER_STEP_TRANSITION_REWARD",
+    "method": "EXHAUSTIVE_DETERMINISTIC_ONE_STEP_TRANSITION_REWARD",
+    "deterministic": true,
+    "independentOfOracleNexus": true
+  },
+  "corpusDigest": "70549165aec89a22dc8d6f691a7191ac10cf4d3652f49a83e4d0861094ade898",
+  "cases": [
+    {
+      "caseId": "stage2h2-neutral-context",
+      "population": "SYNTHETIC_CONTROLLED",
+      "experimentClass": "neutral",
+      "runtimeIdentity": "sha256:f1cd5ec6bc292f07b31aed40c6fd530291da69b2362c6b09632bd0a2b9bd5389",
+      "campaignId": "sha256:81ebdf78deb391d1658958cb15352450cb16c6bac69ab280792a1e7385cdbdc1",
+      "stateDigest": "b902471bd4a2142e4603bd79e00c428cce0321f4f99f4a099c6356796cad3129",
+      "legalActionDigest": "db0c8fdaae93414931b6dfde7cd2e584b28d35ad5dde8522cf308e28441d48da",
+      "seed": "5",
+      "simulationCount": 32,
+      "groundTruthAction": "[\"stage2h1/shift\",\"controller\",{\"id\":\"node-shift\",\"kind\":\"node\"},{\"mode\":\"shift\"}]",
+      "groundTruthValue": 0.504,
+      "groundTruthMethod": "EXHAUSTIVE_DETERMINISTIC_ONE_STEP_TRANSITION_REWARD",
+      "oracleInputDigest": "sha256:48f2b0c28ef575c866b9bff596353feddab5dd31e22d9196984ea20619ec1c74",
+      "oracleOutputDigest": "sha256:41664916acc3bff785e55d2a4cd395c0e6174b145bc63f06bca35bb07636a1b4",
+      "nexusInputDigest": "sha256:a399318d4d7d943d8dd2d3bde22357025ce37675f977f3d80be5d1da1b8cf4b2",
+      "nexusOutputDigest": "sha256:04b4dba7d5da28af71cdfbd295860b95531614bbba13a1b054a609d0c63b0574",
+      "expertActionContextDigest": "sha256:c5c388de8e5c694bf15c159f5b02c2b4a556b9dada5fdb2179aee746b26e3c93",
+      "oracleConfidence": 375000,
+      "nexusConfidence": 0,
+      "oracleFavored": "[\"stage2h1/hold\",\"controller\",{\"id\":\"node-hold\",\"kind\":\"node\"},{\"mode\":\"hold\"}]",
+      "nexusFavored": "[\"stage2h1/hold\",\"controller\",{\"id\":\"node-hold\",\"kind\":\"node\"},{\"mode\":\"hold\"}]",
+      "oracleNonNeutral": false,
+      "nexusNonNeutral": false,
+      "oracleCorrect": false,
+      "nexusCorrect": false,
+      "signalRegime": "NO_SIGNAL",
+      "agreementRegime": "BOTH_NEUTRAL",
+      "primeMargin": 0.0039999999999997815,
+      "interActionDifferential": 0,
+      "contributions": {
+        "[\"stage2h1/hold\",\"controller\",{\"id\":\"node-hold\",\"kind\":\"node\"},{\"mode\":\"hold\"}]": {
+          "oracle": 0,
+          "nexus": 0,
+          "combined": 0
+        },
+        "[\"stage2h1/shift\",\"controller\",{\"id\":\"node-shift\",\"kind\":\"node\"},{\"mode\":\"shift\"}]": {
+          "oracle": 0,
+          "nexus": 0,
+          "combined": 0
+        }
+      },
+      "arms": {
+        "prime-only": {
+          "selectedAction": "[\"stage2h1/shift\",\"controller\",{\"id\":\"node-shift\",\"kind\":\"node\"},{\"mode\":\"shift\"}]",
+          "actionRanking": [
+            "[\"stage2h1/shift\",\"controller\",{\"id\":\"node-shift\",\"kind\":\"node\"},{\"mode\":\"shift\"}]",
+            "[\"stage2h1/hold\",\"controller\",{\"id\":\"node-hold\",\"kind\":\"node\"},{\"mode\":\"hold\"}]"
+          ],
+          "valueEstimate": 0.5039999999999998,
+          "visitDistribution": [
+            {
+              "actionKey": "[\"stage2h1/shift\",\"controller\",{\"id\":\"node-shift\",\"kind\":\"node\"},{\"mode\":\"shift\"}]",
+              "visits": 16
+            },
+            {
+              "actionKey": "[\"stage2h1/hold\",\"controller\",{\"id\":\"node-hold\",\"kind\":\"node\"},{\"mode\":\"hold\"}]",
+              "visits": 16
+            }
+          ],
+          "meanValues": {
+            "[\"stage2h1/shift\",\"controller\",{\"id\":\"node-shift\",\"kind\":\"node\"},{\"mode\":\"shift\"}]": 0.5039999999999998,
+            "[\"stage2h1/hold\",\"controller\",{\"id\":\"node-hold\",\"kind\":\"node\"},{\"mode\":\"hold\"}]": 0.5
+          },
+          "recommendationDigest": "8203a596f4b101ededd94c343e8b11ad1f03812fcfa49691dc326504ca265e65",
+          "correct": true,
+          "effect": "UNCHANGED_CORRECT"
+        },
+        "prime+oracle": {
+          "selectedAction": "[\"stage2h1/shift\",\"controller\",{\"id\":\"node-shift\",\"kind\":\"node\"},{\"mode\":\"shift\"}]",
+          "actionRanking": [
+            "[\"stage2h1/shift\",\"controller\",{\"id\":\"node-shift\",\"kind\":\"node\"},{\"mode\":\"shift\"}]",
+            "[\"stage2h1/hold\",\"controller\",{\"id\":\"node-hold\",\"kind\":\"node\"},{\"mode\":\"hold\"}]"
+          ],
+          "valueEstimate": 0.5039999999999998,
+          "visitDistribution": [
+            {
+              "actionKey": "[\"stage2h1/shift\",\"controller\",{\"id\":\"node-shift\",\"kind\":\"node\"},{\"mode\":\"shift\"}]",
+              "visits": 16
+            },
+            {
+              "actionKey": "[\"stage2h1/hold\",\"controller\",{\"id\":\"node-hold\",\"kind\":\"node\"},{\"mode\":\"hold\"}]",
+              "visits": 16
+            }
+          ],
+          "meanValues": {
+            "[\"stage2h1/shift\",\"controller\",{\"id\":\"node-shift\",\"kind\":\"node\"},{\"mode\":\"shift\"}]": 0.5039999999999998,
+            "[\"stage2h1/hold\",\"controller\",{\"id\":\"node-hold\",\"kind\":\"node\"},{\"mode\":\"hold\"}]": 0.5
+          },
+          "recommendationDigest": "8a132be5864e54ca49c71759a51333c4aed2d3a709723dcaff9621855cb2fdc9",
+          "correct": true,
+          "effect": "UNCHANGED_CORRECT",
+          "correctMarginDelta": 0
+        },
+        "prime+nexus": {
+          "selectedAction": "[\"stage2h1/shift\",\"controller\",{\"id\":\"node-shift\",\"kind\":\"node\"},{\"mode\":\"shift\"}]",
+          "actionRanking": [
+            "[\"stage2h1/shift\",\"controller\",{\"id\":\"node-shift\",\"kind\":\"node\"},{\"mode\":\"shift\"}]",
+            "[\"stage2h1/hold\",\"controller\",{\"id\":\"node-hold\",\"kind\":\"node\"},{\"mode\":\"hold\"}]"
+          ],
+          "valueEstimate": 0.5039999999999998,
+          "visitDistribution": [
+            {
+              "actionKey": "[\"stage2h1/shift\",\"controller\",{\"id\":\"node-shift\",\"kind\":\"node\"},{\"mode\":\"shift\"}]",
+              "visits": 16
+            },
+            {
+              "actionKey": "[\"stage2h1/hold\",\"controller\",{\"id\":\"node-hold\",\"kind\":\"node\"},{\"mode\":\"hold\"}]",
+              "visits": 16
+            }
+          ],
+          "meanValues": {
+            "[\"stage2h1/shift\",\"controller\",{\"id\":\"node-shift\",\"kind\":\"node\"},{\"mode\":\"shift\"}]": 0.5039999999999998,
+            "[\"stage2h1/hold\",\"controller\",{\"id\":\"node-hold\",\"kind\":\"node\"},{\"mode\":\"hold\"}]": 0.5
+          },
+          "recommendationDigest": "7a74ed1ff1302028e75174fc2954e0d22c49e67b65ff8084a87dfdd3d77bffda",
+          "correct": true,
+          "effect": "UNCHANGED_CORRECT",
+          "correctMarginDelta": 0
+        },
+        "prime+oracle+nexus": {
+          "selectedAction": "[\"stage2h1/shift\",\"controller\",{\"id\":\"node-shift\",\"kind\":\"node\"},{\"mode\":\"shift\"}]",
+          "actionRanking": [
+            "[\"stage2h1/shift\",\"controller\",{\"id\":\"node-shift\",\"kind\":\"node\"},{\"mode\":\"shift\"}]",
+            "[\"stage2h1/hold\",\"controller\",{\"id\":\"node-hold\",\"kind\":\"node\"},{\"mode\":\"hold\"}]"
+          ],
+          "valueEstimate": 0.5039999999999998,
+          "visitDistribution": [
+            {
+              "actionKey": "[\"stage2h1/shift\",\"controller\",{\"id\":\"node-shift\",\"kind\":\"node\"},{\"mode\":\"shift\"}]",
+              "visits": 16
+            },
+            {
+              "actionKey": "[\"stage2h1/hold\",\"controller\",{\"id\":\"node-hold\",\"kind\":\"node\"},{\"mode\":\"hold\"}]",
+              "visits": 16
+            }
+          ],
+          "meanValues": {
+            "[\"stage2h1/shift\",\"controller\",{\"id\":\"node-shift\",\"kind\":\"node\"},{\"mode\":\"shift\"}]": 0.5039999999999998,
+            "[\"stage2h1/hold\",\"controller\",{\"id\":\"node-hold\",\"kind\":\"node\"},{\"mode\":\"hold\"}]": 0.5
+          },
+          "recommendationDigest": "9b8e6e45cd0ce47fd7251f8c20f4d073cf45f94bf3a4f8c18a2571ff228e9b01",
+          "correct": true,
+          "effect": "UNCHANGED_CORRECT",
+          "correctMarginDelta": 0
+        }
+      }
+    },
+    {
+      "caseId": "stage2h2-oracle-aligned",
+      "population": "SYNTHETIC_CONTROLLED",
+      "experimentClass": "oracle-aligned",
+      "runtimeIdentity": "sha256:f1cd5ec6bc292f07b31aed40c6fd530291da69b2362c6b09632bd0a2b9bd5389",
+      "campaignId": "sha256:81ebdf78deb391d1658958cb15352450cb16c6bac69ab280792a1e7385cdbdc1",
+      "stateDigest": "b902471bd4a2142e4603bd79e00c428cce0321f4f99f4a099c6356796cad3129",
+      "legalActionDigest": "db0c8fdaae93414931b6dfde7cd2e584b28d35ad5dde8522cf308e28441d48da",
+      "seed": "5",
+      "simulationCount": 32,
+      "groundTruthAction": "[\"stage2h1/shift\",\"controller\",{\"id\":\"node-shift\",\"kind\":\"node\"},{\"mode\":\"shift\"}]",
+      "groundTruthValue": 0.504,
+      "groundTruthMethod": "EXHAUSTIVE_DETERMINISTIC_ONE_STEP_TRANSITION_REWARD",
+      "oracleInputDigest": "sha256:2684bb6a1f5f4c3aa9c4274b2c4074c3b8616dc7b99bd9c81ae18224df898a84",
+      "oracleOutputDigest": "sha256:d41d5f1aed6a11965e45f32f6c23176fa1d5008494700c21956fcbf9f8a4bce0",
+      "nexusInputDigest": "sha256:a399318d4d7d943d8dd2d3bde22357025ce37675f977f3d80be5d1da1b8cf4b2",
+      "nexusOutputDigest": "sha256:04b4dba7d5da28af71cdfbd295860b95531614bbba13a1b054a609d0c63b0574",
+      "expertActionContextDigest": "sha256:b037a44a3c4886f210b6f88d2d25b55b9c2aad7ed782e1ea3e02dde54cb65bfa",
+      "oracleConfidence": 375000,
+      "nexusConfidence": 0,
+      "oracleFavored": "[\"stage2h1/shift\",\"controller\",{\"id\":\"node-shift\",\"kind\":\"node\"},{\"mode\":\"shift\"}]",
+      "nexusFavored": "[\"stage2h1/hold\",\"controller\",{\"id\":\"node-hold\",\"kind\":\"node\"},{\"mode\":\"hold\"}]",
+      "oracleNonNeutral": true,
+      "nexusNonNeutral": false,
+      "oracleCorrect": true,
+      "nexusCorrect": false,
+      "signalRegime": "TEMPORAL_ONLY",
+      "agreementRegime": "ORACLE_ONLY_NON_NEUTRAL",
+      "primeMargin": 0.0039999999999997815,
+      "interActionDifferential": 0.028094,
+      "contributions": {
+        "[\"stage2h1/hold\",\"controller\",{\"id\":\"node-hold\",\"kind\":\"node\"},{\"mode\":\"hold\"}]": {
+          "oracle": -0.016983,
+          "nexus": 0,
+          "combined": -0.016983
+        },
+        "[\"stage2h1/shift\",\"controller\",{\"id\":\"node-shift\",\"kind\":\"node\"},{\"mode\":\"shift\"}]": {
+          "oracle": 0.011111,
+          "nexus": 0,
+          "combined": 0.011111
+        }
+      },
+      "arms": {
+        "prime-only": {
+          "selectedAction": "[\"stage2h1/shift\",\"controller\",{\"id\":\"node-shift\",\"kind\":\"node\"},{\"mode\":\"shift\"}]",
+          "actionRanking": [
+            "[\"stage2h1/shift\",\"controller\",{\"id\":\"node-shift\",\"kind\":\"node\"},{\"mode\":\"shift\"}]",
+            "[\"stage2h1/hold\",\"controller\",{\"id\":\"node-hold\",\"kind\":\"node\"},{\"mode\":\"hold\"}]"
+          ],
+          "valueEstimate": 0.5039999999999998,
+          "visitDistribution": [
+            {
+              "actionKey": "[\"stage2h1/shift\",\"controller\",{\"id\":\"node-shift\",\"kind\":\"node\"},{\"mode\":\"shift\"}]",
+              "visits": 16
+            },
+            {
+              "actionKey": "[\"stage2h1/hold\",\"controller\",{\"id\":\"node-hold\",\"kind\":\"node\"},{\"mode\":\"hold\"}]",
+              "visits": 16
+            }
+          ],
+          "meanValues": {
+            "[\"stage2h1/shift\",\"controller\",{\"id\":\"node-shift\",\"kind\":\"node\"},{\"mode\":\"shift\"}]": 0.5039999999999998,
+            "[\"stage2h1/hold\",\"controller\",{\"id\":\"node-hold\",\"kind\":\"node\"},{\"mode\":\"hold\"}]": 0.5
+          },
+          "recommendationDigest": "8203a596f4b101ededd94c343e8b11ad1f03812fcfa49691dc326504ca265e65",
+          "correct": true,
+          "effect": "UNCHANGED_CORRECT"
+        },
+        "prime+oracle": {
+          "selectedAction": "[\"stage2h1/shift\",\"controller\",{\"id\":\"node-shift\",\"kind\":\"node\"},{\"mode\":\"shift\"}]",
+          "actionRanking": [
+            "[\"stage2h1/shift\",\"controller\",{\"id\":\"node-shift\",\"kind\":\"node\"},{\"mode\":\"shift\"}]",
+            "[\"stage2h1/hold\",\"controller\",{\"id\":\"node-hold\",\"kind\":\"node\"},{\"mode\":\"hold\"}]"
+          ],
+          "valueEstimate": 0.515111,
+          "visitDistribution": [
+            {
+              "actionKey": "[\"stage2h1/shift\",\"controller\",{\"id\":\"node-shift\",\"kind\":\"node\"},{\"mode\":\"shift\"}]",
+              "visits": 17
+            },
+            {
+              "actionKey": "[\"stage2h1/hold\",\"controller\",{\"id\":\"node-hold\",\"kind\":\"node\"},{\"mode\":\"hold\"}]",
+              "visits": 15
+            }
+          ],
+          "meanValues": {
+            "[\"stage2h1/shift\",\"controller\",{\"id\":\"node-shift\",\"kind\":\"node\"},{\"mode\":\"shift\"}]": 0.515111,
+            "[\"stage2h1/hold\",\"controller\",{\"id\":\"node-hold\",\"kind\":\"node\"},{\"mode\":\"hold\"}]": 0.4830170000000001
+          },
+          "recommendationDigest": "72484205a0ee8e754a849ace37a4f145b81493c2e2455353eabbc9c5451a109d",
+          "correct": true,
+          "effect": "UNCHANGED_CORRECT",
+          "correctMarginDelta": 0.02809400000000012
+        },
+        "prime+nexus": {
+          "selectedAction": "[\"stage2h1/shift\",\"controller\",{\"id\":\"node-shift\",\"kind\":\"node\"},{\"mode\":\"shift\"}]",
+          "actionRanking": [
+            "[\"stage2h1/shift\",\"controller\",{\"id\":\"node-shift\",\"kind\":\"node\"},{\"mode\":\"shift\"}]",
+            "[\"stage2h1/hold\",\"controller\",{\"id\":\"node-hold\",\"kind\":\"node\"},{\"mode\":\"hold\"}]"
+          ],
+          "valueEstimate": 0.5039999999999998,
+          "visitDistribution": [
+            {
+              "actionKey": "[\"stage2h1/shift\",\"controller\",{\"id\":\"node-shift\",\"kind\":\"node\"},{\"mode\":\"shift\"}]",
+              "visits": 16
+            },
+            {
+              "actionKey": "[\"stage2h1/hold\",\"controller\",{\"id\":\"node-hold\",\"kind\":\"node\"},{\"mode\":\"hold\"}]",
+              "visits": 16
+            }
+          ],
+          "meanValues": {
+            "[\"stage2h1/shift\",\"controller\",{\"id\":\"node-shift\",\"kind\":\"node\"},{\"mode\":\"shift\"}]": 0.5039999999999998,
+            "[\"stage2h1/hold\",\"controller\",{\"id\":\"node-hold\",\"kind\":\"node\"},{\"mode\":\"hold\"}]": 0.5
+          },
+          "recommendationDigest": "5103fe49ce158a598ce84da5cf4561d50e1cc1f1a2e19d2ae3d3e9ce4f5be2dc",
+          "correct": true,
+          "effect": "UNCHANGED_CORRECT",
+          "correctMarginDelta": 0
+        },
+        "prime+oracle+nexus": {
+          "selectedAction": "[\"stage2h1/shift\",\"controller\",{\"id\":\"node-shift\",\"kind\":\"node\"},{\"mode\":\"shift\"}]",
+          "actionRanking": [
+            "[\"stage2h1/shift\",\"controller\",{\"id\":\"node-shift\",\"kind\":\"node\"},{\"mode\":\"shift\"}]",
+            "[\"stage2h1/hold\",\"controller\",{\"id\":\"node-hold\",\"kind\":\"node\"},{\"mode\":\"hold\"}]"
+          ],
+          "valueEstimate": 0.515111,
+          "visitDistribution": [
+            {
+              "actionKey": "[\"stage2h1/shift\",\"controller\",{\"id\":\"node-shift\",\"kind\":\"node\"},{\"mode\":\"shift\"}]",
+              "visits": 17
+            },
+            {
+              "actionKey": "[\"stage2h1/hold\",\"controller\",{\"id\":\"node-hold\",\"kind\":\"node\"},{\"mode\":\"hold\"}]",
+              "visits": 15
+            }
+          ],
+          "meanValues": {
+            "[\"stage2h1/shift\",\"controller\",{\"id\":\"node-shift\",\"kind\":\"node\"},{\"mode\":\"shift\"}]": 0.515111,
+            "[\"stage2h1/hold\",\"controller\",{\"id\":\"node-hold\",\"kind\":\"node\"},{\"mode\":\"hold\"}]": 0.4830170000000001
+          },
+          "recommendationDigest": "5a707bbe543e3760f8a52e03f4209ddbaaae075e4026bcb78a5b9435c1c71414",
+          "correct": true,
+          "effect": "UNCHANGED_CORRECT",
+          "correctMarginDelta": 0.02809400000000012
+        }
+      }
+    },
+    {
+      "caseId": "stage2h2-oracle-opposed",
+      "population": "SYNTHETIC_CONTROLLED",
+      "experimentClass": "oracle-opposed",
+      "runtimeIdentity": "sha256:f1cd5ec6bc292f07b31aed40c6fd530291da69b2362c6b09632bd0a2b9bd5389",
+      "campaignId": "sha256:81ebdf78deb391d1658958cb15352450cb16c6bac69ab280792a1e7385cdbdc1",
+      "stateDigest": "b902471bd4a2142e4603bd79e00c428cce0321f4f99f4a099c6356796cad3129",
+      "legalActionDigest": "db0c8fdaae93414931b6dfde7cd2e584b28d35ad5dde8522cf308e28441d48da",
+      "seed": "5",
+      "simulationCount": 32,
+      "groundTruthAction": "[\"stage2h1/shift\",\"controller\",{\"id\":\"node-shift\",\"kind\":\"node\"},{\"mode\":\"shift\"}]",
+      "groundTruthValue": 0.504,
+      "groundTruthMethod": "EXHAUSTIVE_DETERMINISTIC_ONE_STEP_TRANSITION_REWARD",
+      "oracleInputDigest": "sha256:cca9db3d62afba5e7be9468a593b51298847393481ba782a90fc8f919a9db6f3",
+      "oracleOutputDigest": "sha256:0a43d0dbf0e29291daa951ebb9c22818032c06af6fa8e8661d2f52b39793be81",
+      "nexusInputDigest": "sha256:a399318d4d7d943d8dd2d3bde22357025ce37675f977f3d80be5d1da1b8cf4b2",
+      "nexusOutputDigest": "sha256:04b4dba7d5da28af71cdfbd295860b95531614bbba13a1b054a609d0c63b0574",
+      "expertActionContextDigest": "sha256:a28344c5f9a2b03a5cb9b46f14eb072abdc2b6c2a99d7fcf3e0e4ee5d685a70a",
+      "oracleConfidence": 375000,
+      "nexusConfidence": 0,
+      "oracleFavored": "[\"stage2h1/hold\",\"controller\",{\"id\":\"node-hold\",\"kind\":\"node\"},{\"mode\":\"hold\"}]",
+      "nexusFavored": "[\"stage2h1/hold\",\"controller\",{\"id\":\"node-hold\",\"kind\":\"node\"},{\"mode\":\"hold\"}]",
+      "oracleNonNeutral": true,
+      "nexusNonNeutral": false,
+      "oracleCorrect": false,
+      "nexusCorrect": false,
+      "signalRegime": "TEMPORAL_ONLY",
+      "agreementRegime": "ORACLE_ONLY_NON_NEUTRAL",
+      "primeMargin": 0.0039999999999997815,
+      "interActionDifferential": 0.028094,
+      "contributions": {
+        "[\"stage2h1/hold\",\"controller\",{\"id\":\"node-hold\",\"kind\":\"node\"},{\"mode\":\"hold\"}]": {
+          "oracle": 0.011111,
+          "nexus": 0,
+          "combined": 0.011111
+        },
+        "[\"stage2h1/shift\",\"controller\",{\"id\":\"node-shift\",\"kind\":\"node\"},{\"mode\":\"shift\"}]": {
+          "oracle": -0.016983,
+          "nexus": 0,
+          "combined": -0.016983
+        }
+      },
+      "arms": {
+        "prime-only": {
+          "selectedAction": "[\"stage2h1/shift\",\"controller\",{\"id\":\"node-shift\",\"kind\":\"node\"},{\"mode\":\"shift\"}]",
+          "actionRanking": [
+            "[\"stage2h1/shift\",\"controller\",{\"id\":\"node-shift\",\"kind\":\"node\"},{\"mode\":\"shift\"}]",
+            "[\"stage2h1/hold\",\"controller\",{\"id\":\"node-hold\",\"kind\":\"node\"},{\"mode\":\"hold\"}]"
+          ],
+          "valueEstimate": 0.5039999999999998,
+          "visitDistribution": [
+            {
+              "actionKey": "[\"stage2h1/shift\",\"controller\",{\"id\":\"node-shift\",\"kind\":\"node\"},{\"mode\":\"shift\"}]",
+              "visits": 16
+            },
+            {
+              "actionKey": "[\"stage2h1/hold\",\"controller\",{\"id\":\"node-hold\",\"kind\":\"node\"},{\"mode\":\"hold\"}]",
+              "visits": 16
+            }
+          ],
+          "meanValues": {
+            "[\"stage2h1/shift\",\"controller\",{\"id\":\"node-shift\",\"kind\":\"node\"},{\"mode\":\"shift\"}]": 0.5039999999999998,
+            "[\"stage2h1/hold\",\"controller\",{\"id\":\"node-hold\",\"kind\":\"node\"},{\"mode\":\"hold\"}]": 0.5
+          },
+          "recommendationDigest": "8203a596f4b101ededd94c343e8b11ad1f03812fcfa49691dc326504ca265e65",
+          "correct": true,
+          "effect": "UNCHANGED_CORRECT"
+        },
+        "prime+oracle": {
+          "selectedAction": "[\"stage2h1/hold\",\"controller\",{\"id\":\"node-hold\",\"kind\":\"node\"},{\"mode\":\"hold\"}]",
+          "actionRanking": [
+            "[\"stage2h1/hold\",\"controller\",{\"id\":\"node-hold\",\"kind\":\"node\"},{\"mode\":\"hold\"}]",
+            "[\"stage2h1/shift\",\"controller\",{\"id\":\"node-shift\",\"kind\":\"node\"},{\"mode\":\"shift\"}]"
+          ],
+          "valueEstimate": 0.5111109999999999,
+          "visitDistribution": [
+            {
+              "actionKey": "[\"stage2h1/hold\",\"controller\",{\"id\":\"node-hold\",\"kind\":\"node\"},{\"mode\":\"hold\"}]",
+              "visits": 17
+            },
+            {
+              "actionKey": "[\"stage2h1/shift\",\"controller\",{\"id\":\"node-shift\",\"kind\":\"node\"},{\"mode\":\"shift\"}]",
+              "visits": 15
+            }
+          ],
+          "meanValues": {
+            "[\"stage2h1/hold\",\"controller\",{\"id\":\"node-hold\",\"kind\":\"node\"},{\"mode\":\"hold\"}]": 0.5111109999999999,
+            "[\"stage2h1/shift\",\"controller\",{\"id\":\"node-shift\",\"kind\":\"node\"},{\"mode\":\"shift\"}]": 0.48701699999999987
+          },
+          "recommendationDigest": "9c7a0a053534fc18b25f30df76b967969c5e9b066353533948927814530622c0",
+          "correct": false,
+          "effect": "HARMFUL_SELECTION_CHANGE",
+          "correctMarginDelta": -0.028093999999999786
+        },
+        "prime+nexus": {
+          "selectedAction": "[\"stage2h1/shift\",\"controller\",{\"id\":\"node-shift\",\"kind\":\"node\"},{\"mode\":\"shift\"}]",
+          "actionRanking": [
+            "[\"stage2h1/shift\",\"controller\",{\"id\":\"node-shift\",\"kind\":\"node\"},{\"mode\":\"shift\"}]",
+            "[\"stage2h1/hold\",\"controller\",{\"id\":\"node-hold\",\"kind\":\"node\"},{\"mode\":\"hold\"}]"
+          ],
+          "valueEstimate": 0.5039999999999998,
+          "visitDistribution": [
+            {
+              "actionKey": "[\"stage2h1/shift\",\"controller\",{\"id\":\"node-shift\",\"kind\":\"node\"},{\"mode\":\"shift\"}]",
+              "visits": 16
+            },
+            {
+              "actionKey": "[\"stage2h1/hold\",\"controller\",{\"id\":\"node-hold\",\"kind\":\"node\"},{\"mode\":\"hold\"}]",
+              "visits": 16
+            }
+          ],
+          "meanValues": {
+            "[\"stage2h1/shift\",\"controller\",{\"id\":\"node-shift\",\"kind\":\"node\"},{\"mode\":\"shift\"}]": 0.5039999999999998,
+            "[\"stage2h1/hold\",\"controller\",{\"id\":\"node-hold\",\"kind\":\"node\"},{\"mode\":\"hold\"}]": 0.5
+          },
+          "recommendationDigest": "4421846398dbc8f8111f9d265e8c2adcb4ea9ba8f258e4c73bced661c766d5be",
+          "correct": true,
+          "effect": "UNCHANGED_CORRECT",
+          "correctMarginDelta": 0
+        },
+        "prime+oracle+nexus": {
+          "selectedAction": "[\"stage2h1/hold\",\"controller\",{\"id\":\"node-hold\",\"kind\":\"node\"},{\"mode\":\"hold\"}]",
+          "actionRanking": [
+            "[\"stage2h1/hold\",\"controller\",{\"id\":\"node-hold\",\"kind\":\"node\"},{\"mode\":\"hold\"}]",
+            "[\"stage2h1/shift\",\"controller\",{\"id\":\"node-shift\",\"kind\":\"node\"},{\"mode\":\"shift\"}]"
+          ],
+          "valueEstimate": 0.5111109999999999,
+          "visitDistribution": [
+            {
+              "actionKey": "[\"stage2h1/hold\",\"controller\",{\"id\":\"node-hold\",\"kind\":\"node\"},{\"mode\":\"hold\"}]",
+              "visits": 17
+            },
+            {
+              "actionKey": "[\"stage2h1/shift\",\"controller\",{\"id\":\"node-shift\",\"kind\":\"node\"},{\"mode\":\"shift\"}]",
+              "visits": 15
+            }
+          ],
+          "meanValues": {
+            "[\"stage2h1/hold\",\"controller\",{\"id\":\"node-hold\",\"kind\":\"node\"},{\"mode\":\"hold\"}]": 0.5111109999999999,
+            "[\"stage2h1/shift\",\"controller\",{\"id\":\"node-shift\",\"kind\":\"node\"},{\"mode\":\"shift\"}]": 0.48701699999999987
+          },
+          "recommendationDigest": "e8bd773972f587901d0c2a175a888e3f9860b5fc99617ce5d66bf830e42c9999",
+          "correct": false,
+          "effect": "HARMFUL_SELECTION_CHANGE",
+          "correctMarginDelta": -0.028093999999999786
+        }
+      }
+    },
+    {
+      "caseId": "stage2h2-nexus-aligned",
+      "population": "SYNTHETIC_CONTROLLED",
+      "experimentClass": "nexus-aligned",
+      "runtimeIdentity": "sha256:f1cd5ec6bc292f07b31aed40c6fd530291da69b2362c6b09632bd0a2b9bd5389",
+      "campaignId": "sha256:81ebdf78deb391d1658958cb15352450cb16c6bac69ab280792a1e7385cdbdc1",
+      "stateDigest": "b902471bd4a2142e4603bd79e00c428cce0321f4f99f4a099c6356796cad3129",
+      "legalActionDigest": "db0c8fdaae93414931b6dfde7cd2e584b28d35ad5dde8522cf308e28441d48da",
+      "seed": "5",
+      "simulationCount": 32,
+      "groundTruthAction": "[\"stage2h1/shift\",\"controller\",{\"id\":\"node-shift\",\"kind\":\"node\"},{\"mode\":\"shift\"}]",
+      "groundTruthValue": 0.504,
+      "groundTruthMethod": "EXHAUSTIVE_DETERMINISTIC_ONE_STEP_TRANSITION_REWARD",
+      "oracleInputDigest": "sha256:48f2b0c28ef575c866b9bff596353feddab5dd31e22d9196984ea20619ec1c74",
+      "oracleOutputDigest": "sha256:41664916acc3bff785e55d2a4cd395c0e6174b145bc63f06bca35bb07636a1b4",
+      "nexusInputDigest": "sha256:1cec73c785f3924cfb9937b42e0e592b6d6ab973fa0c919f9cc92b11fd634cb4",
+      "nexusOutputDigest": "sha256:f97c9340a80ff6320d8f757ed0a3c721bb2ea26158f3b823b89986e9527e76e8",
+      "expertActionContextDigest": "sha256:c5487a4bdda7099bc4dcf0574c946a8048ad99ee5470c1be31bd6553aee02195",
+      "oracleConfidence": 375000,
+      "nexusConfidence": 600000,
+      "oracleFavored": "[\"stage2h1/hold\",\"controller\",{\"id\":\"node-hold\",\"kind\":\"node\"},{\"mode\":\"hold\"}]",
+      "nexusFavored": "[\"stage2h1/shift\",\"controller\",{\"id\":\"node-shift\",\"kind\":\"node\"},{\"mode\":\"shift\"}]",
+      "oracleNonNeutral": false,
+      "nexusNonNeutral": true,
+      "oracleCorrect": false,
+      "nexusCorrect": true,
+      "signalRegime": "RELATIONAL_ONLY",
+      "agreementRegime": "NEXUS_ONLY_NON_NEUTRAL",
+      "primeMargin": 0.0039999999999997815,
+      "interActionDifferential": 0.04,
+      "contributions": {
+        "[\"stage2h1/hold\",\"controller\",{\"id\":\"node-hold\",\"kind\":\"node\"},{\"mode\":\"hold\"}]": {
+          "oracle": 0,
+          "nexus": -0.02,
+          "combined": -0.02
+        },
+        "[\"stage2h1/shift\",\"controller\",{\"id\":\"node-shift\",\"kind\":\"node\"},{\"mode\":\"shift\"}]": {
+          "oracle": 0,
+          "nexus": 0.02,
+          "combined": 0.02
+        }
+      },
+      "arms": {
+        "prime-only": {
+          "selectedAction": "[\"stage2h1/shift\",\"controller\",{\"id\":\"node-shift\",\"kind\":\"node\"},{\"mode\":\"shift\"}]",
+          "actionRanking": [
+            "[\"stage2h1/shift\",\"controller\",{\"id\":\"node-shift\",\"kind\":\"node\"},{\"mode\":\"shift\"}]",
+            "[\"stage2h1/hold\",\"controller\",{\"id\":\"node-hold\",\"kind\":\"node\"},{\"mode\":\"hold\"}]"
+          ],
+          "valueEstimate": 0.5039999999999998,
+          "visitDistribution": [
+            {
+              "actionKey": "[\"stage2h1/shift\",\"controller\",{\"id\":\"node-shift\",\"kind\":\"node\"},{\"mode\":\"shift\"}]",
+              "visits": 16
+            },
+            {
+              "actionKey": "[\"stage2h1/hold\",\"controller\",{\"id\":\"node-hold\",\"kind\":\"node\"},{\"mode\":\"hold\"}]",
+              "visits": 16
+            }
+          ],
+          "meanValues": {
+            "[\"stage2h1/shift\",\"controller\",{\"id\":\"node-shift\",\"kind\":\"node\"},{\"mode\":\"shift\"}]": 0.5039999999999998,
+            "[\"stage2h1/hold\",\"controller\",{\"id\":\"node-hold\",\"kind\":\"node\"},{\"mode\":\"hold\"}]": 0.5
+          },
+          "recommendationDigest": "8203a596f4b101ededd94c343e8b11ad1f03812fcfa49691dc326504ca265e65",
+          "correct": true,
+          "effect": "UNCHANGED_CORRECT"
+        },
+        "prime+oracle": {
+          "selectedAction": "[\"stage2h1/shift\",\"controller\",{\"id\":\"node-shift\",\"kind\":\"node\"},{\"mode\":\"shift\"}]",
+          "actionRanking": [
+            "[\"stage2h1/shift\",\"controller\",{\"id\":\"node-shift\",\"kind\":\"node\"},{\"mode\":\"shift\"}]",
+            "[\"stage2h1/hold\",\"controller\",{\"id\":\"node-hold\",\"kind\":\"node\"},{\"mode\":\"hold\"}]"
+          ],
+          "valueEstimate": 0.5039999999999998,
+          "visitDistribution": [
+            {
+              "actionKey": "[\"stage2h1/shift\",\"controller\",{\"id\":\"node-shift\",\"kind\":\"node\"},{\"mode\":\"shift\"}]",
+              "visits": 16
+            },
+            {
+              "actionKey": "[\"stage2h1/hold\",\"controller\",{\"id\":\"node-hold\",\"kind\":\"node\"},{\"mode\":\"hold\"}]",
+              "visits": 16
+            }
+          ],
+          "meanValues": {
+            "[\"stage2h1/shift\",\"controller\",{\"id\":\"node-shift\",\"kind\":\"node\"},{\"mode\":\"shift\"}]": 0.5039999999999998,
+            "[\"stage2h1/hold\",\"controller\",{\"id\":\"node-hold\",\"kind\":\"node\"},{\"mode\":\"hold\"}]": 0.5
+          },
+          "recommendationDigest": "48660d0bea6d8f52eb758d4b0698075a2b4fafde49b789759ffe710bca08b1bb",
+          "correct": true,
+          "effect": "UNCHANGED_CORRECT",
+          "correctMarginDelta": 0
+        },
+        "prime+nexus": {
+          "selectedAction": "[\"stage2h1/shift\",\"controller\",{\"id\":\"node-shift\",\"kind\":\"node\"},{\"mode\":\"shift\"}]",
+          "actionRanking": [
+            "[\"stage2h1/shift\",\"controller\",{\"id\":\"node-shift\",\"kind\":\"node\"},{\"mode\":\"shift\"}]",
+            "[\"stage2h1/hold\",\"controller\",{\"id\":\"node-hold\",\"kind\":\"node\"},{\"mode\":\"hold\"}]"
+          ],
+          "valueEstimate": 0.5240000000000001,
+          "visitDistribution": [
+            {
+              "actionKey": "[\"stage2h1/shift\",\"controller\",{\"id\":\"node-shift\",\"kind\":\"node\"},{\"mode\":\"shift\"}]",
+              "visits": 18
+            },
+            {
+              "actionKey": "[\"stage2h1/hold\",\"controller\",{\"id\":\"node-hold\",\"kind\":\"node\"},{\"mode\":\"hold\"}]",
+              "visits": 14
+            }
+          ],
+          "meanValues": {
+            "[\"stage2h1/shift\",\"controller\",{\"id\":\"node-shift\",\"kind\":\"node\"},{\"mode\":\"shift\"}]": 0.5240000000000001,
+            "[\"stage2h1/hold\",\"controller\",{\"id\":\"node-hold\",\"kind\":\"node\"},{\"mode\":\"hold\"}]": 0.48000000000000015
+          },
+          "recommendationDigest": "b2958e608c581bec2266e0bb8f9d6fbd17c790e96e909aa568d63bea6328e931",
+          "correct": true,
+          "effect": "UNCHANGED_CORRECT",
+          "correctMarginDelta": 0.0400000000000002
+        },
+        "prime+oracle+nexus": {
+          "selectedAction": "[\"stage2h1/shift\",\"controller\",{\"id\":\"node-shift\",\"kind\":\"node\"},{\"mode\":\"shift\"}]",
+          "actionRanking": [
+            "[\"stage2h1/shift\",\"controller\",{\"id\":\"node-shift\",\"kind\":\"node\"},{\"mode\":\"shift\"}]",
+            "[\"stage2h1/hold\",\"controller\",{\"id\":\"node-hold\",\"kind\":\"node\"},{\"mode\":\"hold\"}]"
+          ],
+          "valueEstimate": 0.5240000000000001,
+          "visitDistribution": [
+            {
+              "actionKey": "[\"stage2h1/shift\",\"controller\",{\"id\":\"node-shift\",\"kind\":\"node\"},{\"mode\":\"shift\"}]",
+              "visits": 18
+            },
+            {
+              "actionKey": "[\"stage2h1/hold\",\"controller\",{\"id\":\"node-hold\",\"kind\":\"node\"},{\"mode\":\"hold\"}]",
+              "visits": 14
+            }
+          ],
+          "meanValues": {
+            "[\"stage2h1/shift\",\"controller\",{\"id\":\"node-shift\",\"kind\":\"node\"},{\"mode\":\"shift\"}]": 0.5240000000000001,
+            "[\"stage2h1/hold\",\"controller\",{\"id\":\"node-hold\",\"kind\":\"node\"},{\"mode\":\"hold\"}]": 0.48000000000000015
+          },
+          "recommendationDigest": "8b6d69410f851893a803d0bb21e6612272ad7a80231db48f8d72381b8b20a6aa",
+          "correct": true,
+          "effect": "UNCHANGED_CORRECT",
+          "correctMarginDelta": 0.0400000000000002
+        }
+      }
+    },
+    {
+      "caseId": "stage2h2-nexus-opposed",
+      "population": "SYNTHETIC_CONTROLLED",
+      "experimentClass": "nexus-opposed",
+      "runtimeIdentity": "sha256:f1cd5ec6bc292f07b31aed40c6fd530291da69b2362c6b09632bd0a2b9bd5389",
+      "campaignId": "sha256:81ebdf78deb391d1658958cb15352450cb16c6bac69ab280792a1e7385cdbdc1",
+      "stateDigest": "b902471bd4a2142e4603bd79e00c428cce0321f4f99f4a099c6356796cad3129",
+      "legalActionDigest": "db0c8fdaae93414931b6dfde7cd2e584b28d35ad5dde8522cf308e28441d48da",
+      "seed": "5",
+      "simulationCount": 32,
+      "groundTruthAction": "[\"stage2h1/shift\",\"controller\",{\"id\":\"node-shift\",\"kind\":\"node\"},{\"mode\":\"shift\"}]",
+      "groundTruthValue": 0.504,
+      "groundTruthMethod": "EXHAUSTIVE_DETERMINISTIC_ONE_STEP_TRANSITION_REWARD",
+      "oracleInputDigest": "sha256:48f2b0c28ef575c866b9bff596353feddab5dd31e22d9196984ea20619ec1c74",
+      "oracleOutputDigest": "sha256:41664916acc3bff785e55d2a4cd395c0e6174b145bc63f06bca35bb07636a1b4",
+      "nexusInputDigest": "sha256:d99eac3583ff4465539701a54b1139dbb54996ab530e1e7ec0ce215bede8db1a",
+      "nexusOutputDigest": "sha256:7a906edbce81e0cafb1e268a38caf12a09a096fca2736636cbb3f7ee80f56cdb",
+      "expertActionContextDigest": "sha256:f50ce40039434ce67afadf084105bd61ab82221b1fab12cfe81d37328b1c91be",
+      "oracleConfidence": 375000,
+      "nexusConfidence": 600000,
+      "oracleFavored": "[\"stage2h1/hold\",\"controller\",{\"id\":\"node-hold\",\"kind\":\"node\"},{\"mode\":\"hold\"}]",
+      "nexusFavored": "[\"stage2h1/hold\",\"controller\",{\"id\":\"node-hold\",\"kind\":\"node\"},{\"mode\":\"hold\"}]",
+      "oracleNonNeutral": false,
+      "nexusNonNeutral": true,
+      "oracleCorrect": false,
+      "nexusCorrect": false,
+      "signalRegime": "RELATIONAL_ONLY",
+      "agreementRegime": "NEXUS_ONLY_NON_NEUTRAL",
+      "primeMargin": 0.0039999999999997815,
+      "interActionDifferential": 0.04,
+      "contributions": {
+        "[\"stage2h1/hold\",\"controller\",{\"id\":\"node-hold\",\"kind\":\"node\"},{\"mode\":\"hold\"}]": {
+          "oracle": 0,
+          "nexus": 0.02,
+          "combined": 0.02
+        },
+        "[\"stage2h1/shift\",\"controller\",{\"id\":\"node-shift\",\"kind\":\"node\"},{\"mode\":\"shift\"}]": {
+          "oracle": 0,
+          "nexus": -0.02,
+          "combined": -0.02
+        }
+      },
+      "arms": {
+        "prime-only": {
+          "selectedAction": "[\"stage2h1/shift\",\"controller\",{\"id\":\"node-shift\",\"kind\":\"node\"},{\"mode\":\"shift\"}]",
+          "actionRanking": [
+            "[\"stage2h1/shift\",\"controller\",{\"id\":\"node-shift\",\"kind\":\"node\"},{\"mode\":\"shift\"}]",
+            "[\"stage2h1/hold\",\"controller\",{\"id\":\"node-hold\",\"kind\":\"node\"},{\"mode\":\"hold\"}]"
+          ],
+          "valueEstimate": 0.5039999999999998,
+          "visitDistribution": [
+            {
+              "actionKey": "[\"stage2h1/shift\",\"controller\",{\"id\":\"node-shift\",\"kind\":\"node\"},{\"mode\":\"shift\"}]",
+              "visits": 16
+            },
+            {
+              "actionKey": "[\"stage2h1/hold\",\"controller\",{\"id\":\"node-hold\",\"kind\":\"node\"},{\"mode\":\"hold\"}]",
+              "visits": 16
+            }
+          ],
+          "meanValues": {
+            "[\"stage2h1/shift\",\"controller\",{\"id\":\"node-shift\",\"kind\":\"node\"},{\"mode\":\"shift\"}]": 0.5039999999999998,
+            "[\"stage2h1/hold\",\"controller\",{\"id\":\"node-hold\",\"kind\":\"node\"},{\"mode\":\"hold\"}]": 0.5
+          },
+          "recommendationDigest": "8203a596f4b101ededd94c343e8b11ad1f03812fcfa49691dc326504ca265e65",
+          "correct": true,
+          "effect": "UNCHANGED_CORRECT"
+        },
+        "prime+oracle": {
+          "selectedAction": "[\"stage2h1/shift\",\"controller\",{\"id\":\"node-shift\",\"kind\":\"node\"},{\"mode\":\"shift\"}]",
+          "actionRanking": [
+            "[\"stage2h1/shift\",\"controller\",{\"id\":\"node-shift\",\"kind\":\"node\"},{\"mode\":\"shift\"}]",
+            "[\"stage2h1/hold\",\"controller\",{\"id\":\"node-hold\",\"kind\":\"node\"},{\"mode\":\"hold\"}]"
+          ],
+          "valueEstimate": 0.5039999999999998,
+          "visitDistribution": [
+            {
+              "actionKey": "[\"stage2h1/shift\",\"controller\",{\"id\":\"node-shift\",\"kind\":\"node\"},{\"mode\":\"shift\"}]",
+              "visits": 16
+            },
+            {
+              "actionKey": "[\"stage2h1/hold\",\"controller\",{\"id\":\"node-hold\",\"kind\":\"node\"},{\"mode\":\"hold\"}]",
+              "visits": 16
+            }
+          ],
+          "meanValues": {
+            "[\"stage2h1/shift\",\"controller\",{\"id\":\"node-shift\",\"kind\":\"node\"},{\"mode\":\"shift\"}]": 0.5039999999999998,
+            "[\"stage2h1/hold\",\"controller\",{\"id\":\"node-hold\",\"kind\":\"node\"},{\"mode\":\"hold\"}]": 0.5
+          },
+          "recommendationDigest": "3218d635e6211bd401f04aa32e36630052e65591c2490ac2af4efb739dce4c51",
+          "correct": true,
+          "effect": "UNCHANGED_CORRECT",
+          "correctMarginDelta": 0
+        },
+        "prime+nexus": {
+          "selectedAction": "[\"stage2h1/hold\",\"controller\",{\"id\":\"node-hold\",\"kind\":\"node\"},{\"mode\":\"hold\"}]",
+          "actionRanking": [
+            "[\"stage2h1/hold\",\"controller\",{\"id\":\"node-hold\",\"kind\":\"node\"},{\"mode\":\"hold\"}]",
+            "[\"stage2h1/shift\",\"controller\",{\"id\":\"node-shift\",\"kind\":\"node\"},{\"mode\":\"shift\"}]"
+          ],
+          "valueEstimate": 0.5199999999999998,
+          "visitDistribution": [
+            {
+              "actionKey": "[\"stage2h1/hold\",\"controller\",{\"id\":\"node-hold\",\"kind\":\"node\"},{\"mode\":\"hold\"}]",
+              "visits": 17
+            },
+            {
+              "actionKey": "[\"stage2h1/shift\",\"controller\",{\"id\":\"node-shift\",\"kind\":\"node\"},{\"mode\":\"shift\"}]",
+              "visits": 15
+            }
+          ],
+          "meanValues": {
+            "[\"stage2h1/hold\",\"controller\",{\"id\":\"node-hold\",\"kind\":\"node\"},{\"mode\":\"hold\"}]": 0.5199999999999998,
+            "[\"stage2h1/shift\",\"controller\",{\"id\":\"node-shift\",\"kind\":\"node\"},{\"mode\":\"shift\"}]": 0.484
+          },
+          "recommendationDigest": "c56819b14fc49994993a8192fed54a9c16837795b75536b56875c06d723792ce",
+          "correct": false,
+          "effect": "HARMFUL_SELECTION_CHANGE",
+          "correctMarginDelta": -0.03999999999999959
+        },
+        "prime+oracle+nexus": {
+          "selectedAction": "[\"stage2h1/hold\",\"controller\",{\"id\":\"node-hold\",\"kind\":\"node\"},{\"mode\":\"hold\"}]",
+          "actionRanking": [
+            "[\"stage2h1/hold\",\"controller\",{\"id\":\"node-hold\",\"kind\":\"node\"},{\"mode\":\"hold\"}]",
+            "[\"stage2h1/shift\",\"controller\",{\"id\":\"node-shift\",\"kind\":\"node\"},{\"mode\":\"shift\"}]"
+          ],
+          "valueEstimate": 0.5199999999999998,
+          "visitDistribution": [
+            {
+              "actionKey": "[\"stage2h1/hold\",\"controller\",{\"id\":\"node-hold\",\"kind\":\"node\"},{\"mode\":\"hold\"}]",
+              "visits": 17
+            },
+            {
+              "actionKey": "[\"stage2h1/shift\",\"controller\",{\"id\":\"node-shift\",\"kind\":\"node\"},{\"mode\":\"shift\"}]",
+              "visits": 15
+            }
+          ],
+          "meanValues": {
+            "[\"stage2h1/hold\",\"controller\",{\"id\":\"node-hold\",\"kind\":\"node\"},{\"mode\":\"hold\"}]": 0.5199999999999998,
+            "[\"stage2h1/shift\",\"controller\",{\"id\":\"node-shift\",\"kind\":\"node\"},{\"mode\":\"shift\"}]": 0.484
+          },
+          "recommendationDigest": "a1f8a7981d92fe04543415d87efc1df4009b5e030f78649ad5192fb0c613408c",
+          "correct": false,
+          "effect": "HARMFUL_SELECTION_CHANGE",
+          "correctMarginDelta": -0.03999999999999959
+        }
+      }
+    },
+    {
+      "caseId": "stage2h2-experts-agree",
+      "population": "SYNTHETIC_CONTROLLED",
+      "experimentClass": "both-agree",
+      "runtimeIdentity": "sha256:f1cd5ec6bc292f07b31aed40c6fd530291da69b2362c6b09632bd0a2b9bd5389",
+      "campaignId": "sha256:81ebdf78deb391d1658958cb15352450cb16c6bac69ab280792a1e7385cdbdc1",
+      "stateDigest": "b902471bd4a2142e4603bd79e00c428cce0321f4f99f4a099c6356796cad3129",
+      "legalActionDigest": "db0c8fdaae93414931b6dfde7cd2e584b28d35ad5dde8522cf308e28441d48da",
+      "seed": "5",
+      "simulationCount": 32,
+      "groundTruthAction": "[\"stage2h1/shift\",\"controller\",{\"id\":\"node-shift\",\"kind\":\"node\"},{\"mode\":\"shift\"}]",
+      "groundTruthValue": 0.504,
+      "groundTruthMethod": "EXHAUSTIVE_DETERMINISTIC_ONE_STEP_TRANSITION_REWARD",
+      "oracleInputDigest": "sha256:cca9db3d62afba5e7be9468a593b51298847393481ba782a90fc8f919a9db6f3",
+      "oracleOutputDigest": "sha256:0a43d0dbf0e29291daa951ebb9c22818032c06af6fa8e8661d2f52b39793be81",
+      "nexusInputDigest": "sha256:d99eac3583ff4465539701a54b1139dbb54996ab530e1e7ec0ce215bede8db1a",
+      "nexusOutputDigest": "sha256:7a906edbce81e0cafb1e268a38caf12a09a096fca2736636cbb3f7ee80f56cdb",
+      "expertActionContextDigest": "sha256:1fc52dad08fdf29b40d74f7fcace088f6f3aca37e423ae792ca7bd024f6b961b",
+      "oracleConfidence": 375000,
+      "nexusConfidence": 600000,
+      "oracleFavored": "[\"stage2h1/hold\",\"controller\",{\"id\":\"node-hold\",\"kind\":\"node\"},{\"mode\":\"hold\"}]",
+      "nexusFavored": "[\"stage2h1/hold\",\"controller\",{\"id\":\"node-hold\",\"kind\":\"node\"},{\"mode\":\"hold\"}]",
+      "oracleNonNeutral": true,
+      "nexusNonNeutral": true,
+      "oracleCorrect": false,
+      "nexusCorrect": false,
+      "signalRegime": "BOTH_SIGNALS",
+      "agreementRegime": "ORACLE_NEXUS_AGREE",
+      "primeMargin": 0.0039999999999997815,
+      "interActionDifferential": 0.06,
+      "contributions": {
+        "[\"stage2h1/hold\",\"controller\",{\"id\":\"node-hold\",\"kind\":\"node\"},{\"mode\":\"hold\"}]": {
+          "oracle": 0.011111,
+          "nexus": 0.02,
+          "combined": 0.03
+        },
+        "[\"stage2h1/shift\",\"controller\",{\"id\":\"node-shift\",\"kind\":\"node\"},{\"mode\":\"shift\"}]": {
+          "oracle": -0.016983,
+          "nexus": -0.02,
+          "combined": -0.03
+        }
+      },
+      "arms": {
+        "prime-only": {
+          "selectedAction": "[\"stage2h1/shift\",\"controller\",{\"id\":\"node-shift\",\"kind\":\"node\"},{\"mode\":\"shift\"}]",
+          "actionRanking": [
+            "[\"stage2h1/shift\",\"controller\",{\"id\":\"node-shift\",\"kind\":\"node\"},{\"mode\":\"shift\"}]",
+            "[\"stage2h1/hold\",\"controller\",{\"id\":\"node-hold\",\"kind\":\"node\"},{\"mode\":\"hold\"}]"
+          ],
+          "valueEstimate": 0.5039999999999998,
+          "visitDistribution": [
+            {
+              "actionKey": "[\"stage2h1/shift\",\"controller\",{\"id\":\"node-shift\",\"kind\":\"node\"},{\"mode\":\"shift\"}]",
+              "visits": 16
+            },
+            {
+              "actionKey": "[\"stage2h1/hold\",\"controller\",{\"id\":\"node-hold\",\"kind\":\"node\"},{\"mode\":\"hold\"}]",
+              "visits": 16
+            }
+          ],
+          "meanValues": {
+            "[\"stage2h1/shift\",\"controller\",{\"id\":\"node-shift\",\"kind\":\"node\"},{\"mode\":\"shift\"}]": 0.5039999999999998,
+            "[\"stage2h1/hold\",\"controller\",{\"id\":\"node-hold\",\"kind\":\"node\"},{\"mode\":\"hold\"}]": 0.5
+          },
+          "recommendationDigest": "8203a596f4b101ededd94c343e8b11ad1f03812fcfa49691dc326504ca265e65",
+          "correct": true,
+          "effect": "UNCHANGED_CORRECT"
+        },
+        "prime+oracle": {
+          "selectedAction": "[\"stage2h1/hold\",\"controller\",{\"id\":\"node-hold\",\"kind\":\"node\"},{\"mode\":\"hold\"}]",
+          "actionRanking": [
+            "[\"stage2h1/hold\",\"controller\",{\"id\":\"node-hold\",\"kind\":\"node\"},{\"mode\":\"hold\"}]",
+            "[\"stage2h1/shift\",\"controller\",{\"id\":\"node-shift\",\"kind\":\"node\"},{\"mode\":\"shift\"}]"
+          ],
+          "valueEstimate": 0.5111109999999999,
+          "visitDistribution": [
+            {
+              "actionKey": "[\"stage2h1/hold\",\"controller\",{\"id\":\"node-hold\",\"kind\":\"node\"},{\"mode\":\"hold\"}]",
+              "visits": 17
+            },
+            {
+              "actionKey": "[\"stage2h1/shift\",\"controller\",{\"id\":\"node-shift\",\"kind\":\"node\"},{\"mode\":\"shift\"}]",
+              "visits": 15
+            }
+          ],
+          "meanValues": {
+            "[\"stage2h1/hold\",\"controller\",{\"id\":\"node-hold\",\"kind\":\"node\"},{\"mode\":\"hold\"}]": 0.5111109999999999,
+            "[\"stage2h1/shift\",\"controller\",{\"id\":\"node-shift\",\"kind\":\"node\"},{\"mode\":\"shift\"}]": 0.48701699999999987
+          },
+          "recommendationDigest": "9e34efc8c1fdf716c465d382012b5113652e2cd01dc2310b19709df47ce61e78",
+          "correct": false,
+          "effect": "HARMFUL_SELECTION_CHANGE",
+          "correctMarginDelta": -0.028093999999999786
+        },
+        "prime+nexus": {
+          "selectedAction": "[\"stage2h1/hold\",\"controller\",{\"id\":\"node-hold\",\"kind\":\"node\"},{\"mode\":\"hold\"}]",
+          "actionRanking": [
+            "[\"stage2h1/hold\",\"controller\",{\"id\":\"node-hold\",\"kind\":\"node\"},{\"mode\":\"hold\"}]",
+            "[\"stage2h1/shift\",\"controller\",{\"id\":\"node-shift\",\"kind\":\"node\"},{\"mode\":\"shift\"}]"
+          ],
+          "valueEstimate": 0.5199999999999998,
+          "visitDistribution": [
+            {
+              "actionKey": "[\"stage2h1/hold\",\"controller\",{\"id\":\"node-hold\",\"kind\":\"node\"},{\"mode\":\"hold\"}]",
+              "visits": 17
+            },
+            {
+              "actionKey": "[\"stage2h1/shift\",\"controller\",{\"id\":\"node-shift\",\"kind\":\"node\"},{\"mode\":\"shift\"}]",
+              "visits": 15
+            }
+          ],
+          "meanValues": {
+            "[\"stage2h1/hold\",\"controller\",{\"id\":\"node-hold\",\"kind\":\"node\"},{\"mode\":\"hold\"}]": 0.5199999999999998,
+            "[\"stage2h1/shift\",\"controller\",{\"id\":\"node-shift\",\"kind\":\"node\"},{\"mode\":\"shift\"}]": 0.484
+          },
+          "recommendationDigest": "dddd938a48ee55a98c8093f23e8d85879df161c6c54f398712d772c47fc3670a",
+          "correct": false,
+          "effect": "HARMFUL_SELECTION_CHANGE",
+          "correctMarginDelta": -0.03999999999999959
+        },
+        "prime+oracle+nexus": {
+          "selectedAction": "[\"stage2h1/hold\",\"controller\",{\"id\":\"node-hold\",\"kind\":\"node\"},{\"mode\":\"hold\"}]",
+          "actionRanking": [
+            "[\"stage2h1/hold\",\"controller\",{\"id\":\"node-hold\",\"kind\":\"node\"},{\"mode\":\"hold\"}]",
+            "[\"stage2h1/shift\",\"controller\",{\"id\":\"node-shift\",\"kind\":\"node\"},{\"mode\":\"shift\"}]"
+          ],
+          "valueEstimate": 0.53,
+          "visitDistribution": [
+            {
+              "actionKey": "[\"stage2h1/hold\",\"controller\",{\"id\":\"node-hold\",\"kind\":\"node\"},{\"mode\":\"hold\"}]",
+              "visits": 18
+            },
+            {
+              "actionKey": "[\"stage2h1/shift\",\"controller\",{\"id\":\"node-shift\",\"kind\":\"node\"},{\"mode\":\"shift\"}]",
+              "visits": 14
+            }
+          ],
+          "meanValues": {
+            "[\"stage2h1/hold\",\"controller\",{\"id\":\"node-hold\",\"kind\":\"node\"},{\"mode\":\"hold\"}]": 0.53,
+            "[\"stage2h1/shift\",\"controller\",{\"id\":\"node-shift\",\"kind\":\"node\"},{\"mode\":\"shift\"}]": 0.47400000000000014
+          },
+          "recommendationDigest": "79a2f6232d4606c30357ce5f00092985b1e263fa7afcf2af73036a0ce2699013",
+          "correct": false,
+          "effect": "HARMFUL_SELECTION_CHANGE",
+          "correctMarginDelta": -0.059999999999999665
+        }
+      }
+    },
+    {
+      "caseId": "stage2h2-experts-disagree",
+      "population": "SYNTHETIC_CONTROLLED",
+      "experimentClass": "both-disagree",
+      "runtimeIdentity": "sha256:f1cd5ec6bc292f07b31aed40c6fd530291da69b2362c6b09632bd0a2b9bd5389",
+      "campaignId": "sha256:81ebdf78deb391d1658958cb15352450cb16c6bac69ab280792a1e7385cdbdc1",
+      "stateDigest": "b902471bd4a2142e4603bd79e00c428cce0321f4f99f4a099c6356796cad3129",
+      "legalActionDigest": "db0c8fdaae93414931b6dfde7cd2e584b28d35ad5dde8522cf308e28441d48da",
+      "seed": "5",
+      "simulationCount": 32,
+      "groundTruthAction": "[\"stage2h1/shift\",\"controller\",{\"id\":\"node-shift\",\"kind\":\"node\"},{\"mode\":\"shift\"}]",
+      "groundTruthValue": 0.504,
+      "groundTruthMethod": "EXHAUSTIVE_DETERMINISTIC_ONE_STEP_TRANSITION_REWARD",
+      "oracleInputDigest": "sha256:cca9db3d62afba5e7be9468a593b51298847393481ba782a90fc8f919a9db6f3",
+      "oracleOutputDigest": "sha256:0a43d0dbf0e29291daa951ebb9c22818032c06af6fa8e8661d2f52b39793be81",
+      "nexusInputDigest": "sha256:1cec73c785f3924cfb9937b42e0e592b6d6ab973fa0c919f9cc92b11fd634cb4",
+      "nexusOutputDigest": "sha256:f97c9340a80ff6320d8f757ed0a3c721bb2ea26158f3b823b89986e9527e76e8",
+      "expertActionContextDigest": "sha256:0125c91f70ae3895c3103a9ee77c1222d33748e54fd0c83d9e644cbf4f3149b0",
+      "oracleConfidence": 375000,
+      "nexusConfidence": 600000,
+      "oracleFavored": "[\"stage2h1/hold\",\"controller\",{\"id\":\"node-hold\",\"kind\":\"node\"},{\"mode\":\"hold\"}]",
+      "nexusFavored": "[\"stage2h1/shift\",\"controller\",{\"id\":\"node-shift\",\"kind\":\"node\"},{\"mode\":\"shift\"}]",
+      "oracleNonNeutral": true,
+      "nexusNonNeutral": true,
+      "oracleCorrect": false,
+      "nexusCorrect": true,
+      "signalRegime": "BOTH_SIGNALS",
+      "agreementRegime": "ORACLE_NEXUS_DISAGREE",
+      "primeMargin": 0.0039999999999997815,
+      "interActionDifferential": 0.011906,
+      "contributions": {
+        "[\"stage2h1/hold\",\"controller\",{\"id\":\"node-hold\",\"kind\":\"node\"},{\"mode\":\"hold\"}]": {
+          "oracle": 0.011111,
+          "nexus": -0.02,
+          "combined": -0.008889
+        },
+        "[\"stage2h1/shift\",\"controller\",{\"id\":\"node-shift\",\"kind\":\"node\"},{\"mode\":\"shift\"}]": {
+          "oracle": -0.016983,
+          "nexus": 0.02,
+          "combined": 0.003017
+        }
+      },
+      "arms": {
+        "prime-only": {
+          "selectedAction": "[\"stage2h1/shift\",\"controller\",{\"id\":\"node-shift\",\"kind\":\"node\"},{\"mode\":\"shift\"}]",
+          "actionRanking": [
+            "[\"stage2h1/shift\",\"controller\",{\"id\":\"node-shift\",\"kind\":\"node\"},{\"mode\":\"shift\"}]",
+            "[\"stage2h1/hold\",\"controller\",{\"id\":\"node-hold\",\"kind\":\"node\"},{\"mode\":\"hold\"}]"
+          ],
+          "valueEstimate": 0.5039999999999998,
+          "visitDistribution": [
+            {
+              "actionKey": "[\"stage2h1/shift\",\"controller\",{\"id\":\"node-shift\",\"kind\":\"node\"},{\"mode\":\"shift\"}]",
+              "visits": 16
+            },
+            {
+              "actionKey": "[\"stage2h1/hold\",\"controller\",{\"id\":\"node-hold\",\"kind\":\"node\"},{\"mode\":\"hold\"}]",
+              "visits": 16
+            }
+          ],
+          "meanValues": {
+            "[\"stage2h1/shift\",\"controller\",{\"id\":\"node-shift\",\"kind\":\"node\"},{\"mode\":\"shift\"}]": 0.5039999999999998,
+            "[\"stage2h1/hold\",\"controller\",{\"id\":\"node-hold\",\"kind\":\"node\"},{\"mode\":\"hold\"}]": 0.5
+          },
+          "recommendationDigest": "8203a596f4b101ededd94c343e8b11ad1f03812fcfa49691dc326504ca265e65",
+          "correct": true,
+          "effect": "UNCHANGED_CORRECT"
+        },
+        "prime+oracle": {
+          "selectedAction": "[\"stage2h1/hold\",\"controller\",{\"id\":\"node-hold\",\"kind\":\"node\"},{\"mode\":\"hold\"}]",
+          "actionRanking": [
+            "[\"stage2h1/hold\",\"controller\",{\"id\":\"node-hold\",\"kind\":\"node\"},{\"mode\":\"hold\"}]",
+            "[\"stage2h1/shift\",\"controller\",{\"id\":\"node-shift\",\"kind\":\"node\"},{\"mode\":\"shift\"}]"
+          ],
+          "valueEstimate": 0.5111109999999999,
+          "visitDistribution": [
+            {
+              "actionKey": "[\"stage2h1/hold\",\"controller\",{\"id\":\"node-hold\",\"kind\":\"node\"},{\"mode\":\"hold\"}]",
+              "visits": 17
+            },
+            {
+              "actionKey": "[\"stage2h1/shift\",\"controller\",{\"id\":\"node-shift\",\"kind\":\"node\"},{\"mode\":\"shift\"}]",
+              "visits": 15
+            }
+          ],
+          "meanValues": {
+            "[\"stage2h1/hold\",\"controller\",{\"id\":\"node-hold\",\"kind\":\"node\"},{\"mode\":\"hold\"}]": 0.5111109999999999,
+            "[\"stage2h1/shift\",\"controller\",{\"id\":\"node-shift\",\"kind\":\"node\"},{\"mode\":\"shift\"}]": 0.48701699999999987
+          },
+          "recommendationDigest": "3dbb60f7ef473dfef70f53b014af691dcb2b843bd2f0eb1ea60fb728178e3b04",
+          "correct": false,
+          "effect": "HARMFUL_SELECTION_CHANGE",
+          "correctMarginDelta": -0.028093999999999786
+        },
+        "prime+nexus": {
+          "selectedAction": "[\"stage2h1/shift\",\"controller\",{\"id\":\"node-shift\",\"kind\":\"node\"},{\"mode\":\"shift\"}]",
+          "actionRanking": [
+            "[\"stage2h1/shift\",\"controller\",{\"id\":\"node-shift\",\"kind\":\"node\"},{\"mode\":\"shift\"}]",
+            "[\"stage2h1/hold\",\"controller\",{\"id\":\"node-hold\",\"kind\":\"node\"},{\"mode\":\"hold\"}]"
+          ],
+          "valueEstimate": 0.5240000000000001,
+          "visitDistribution": [
+            {
+              "actionKey": "[\"stage2h1/shift\",\"controller\",{\"id\":\"node-shift\",\"kind\":\"node\"},{\"mode\":\"shift\"}]",
+              "visits": 18
+            },
+            {
+              "actionKey": "[\"stage2h1/hold\",\"controller\",{\"id\":\"node-hold\",\"kind\":\"node\"},{\"mode\":\"hold\"}]",
+              "visits": 14
+            }
+          ],
+          "meanValues": {
+            "[\"stage2h1/shift\",\"controller\",{\"id\":\"node-shift\",\"kind\":\"node\"},{\"mode\":\"shift\"}]": 0.5240000000000001,
+            "[\"stage2h1/hold\",\"controller\",{\"id\":\"node-hold\",\"kind\":\"node\"},{\"mode\":\"hold\"}]": 0.48000000000000015
+          },
+          "recommendationDigest": "eeda78d5457fc29bf39dfbb00d36fcdbe9c7f7f90136ad998940af26281ed6f9",
+          "correct": true,
+          "effect": "UNCHANGED_CORRECT",
+          "correctMarginDelta": 0.0400000000000002
+        },
+        "prime+oracle+nexus": {
+          "selectedAction": "[\"stage2h1/shift\",\"controller\",{\"id\":\"node-shift\",\"kind\":\"node\"},{\"mode\":\"shift\"}]",
+          "actionRanking": [
+            "[\"stage2h1/shift\",\"controller\",{\"id\":\"node-shift\",\"kind\":\"node\"},{\"mode\":\"shift\"}]",
+            "[\"stage2h1/hold\",\"controller\",{\"id\":\"node-hold\",\"kind\":\"node\"},{\"mode\":\"hold\"}]"
+          ],
+          "valueEstimate": 0.5070170000000002,
+          "visitDistribution": [
+            {
+              "actionKey": "[\"stage2h1/shift\",\"controller\",{\"id\":\"node-shift\",\"kind\":\"node\"},{\"mode\":\"shift\"}]",
+              "visits": 17
+            },
+            {
+              "actionKey": "[\"stage2h1/hold\",\"controller\",{\"id\":\"node-hold\",\"kind\":\"node\"},{\"mode\":\"hold\"}]",
+              "visits": 15
+            }
+          ],
+          "meanValues": {
+            "[\"stage2h1/shift\",\"controller\",{\"id\":\"node-shift\",\"kind\":\"node\"},{\"mode\":\"shift\"}]": 0.5070170000000002,
+            "[\"stage2h1/hold\",\"controller\",{\"id\":\"node-hold\",\"kind\":\"node\"},{\"mode\":\"hold\"}]": 0.491111
+          },
+          "recommendationDigest": "a6b1ba25c07d6a9c918b2ff0014aff35164a1f52f6121b27ced6ad08d032aa36",
+          "correct": true,
+          "effect": "UNCHANGED_CORRECT",
+          "correctMarginDelta": 0.01190600000000036
+        }
+      }
+    },
+    {
+      "caseId": "stage2h2-near-tie-flip",
+      "population": "SYNTHETIC_CONTROLLED",
+      "experimentClass": "near-tie",
+      "runtimeIdentity": "sha256:f1cd5ec6bc292f07b31aed40c6fd530291da69b2362c6b09632bd0a2b9bd5389",
+      "campaignId": "sha256:81ebdf78deb391d1658958cb15352450cb16c6bac69ab280792a1e7385cdbdc1",
+      "stateDigest": "b902471bd4a2142e4603bd79e00c428cce0321f4f99f4a099c6356796cad3129",
+      "legalActionDigest": "db0c8fdaae93414931b6dfde7cd2e584b28d35ad5dde8522cf308e28441d48da",
+      "seed": "5",
+      "simulationCount": 64,
+      "groundTruthAction": "[\"stage2h1/shift\",\"controller\",{\"id\":\"node-shift\",\"kind\":\"node\"},{\"mode\":\"shift\"}]",
+      "groundTruthValue": 0.504,
+      "groundTruthMethod": "EXHAUSTIVE_DETERMINISTIC_ONE_STEP_TRANSITION_REWARD",
+      "oracleInputDigest": "sha256:cca9db3d62afba5e7be9468a593b51298847393481ba782a90fc8f919a9db6f3",
+      "oracleOutputDigest": "sha256:0a43d0dbf0e29291daa951ebb9c22818032c06af6fa8e8661d2f52b39793be81",
+      "nexusInputDigest": "sha256:d99eac3583ff4465539701a54b1139dbb54996ab530e1e7ec0ce215bede8db1a",
+      "nexusOutputDigest": "sha256:7a906edbce81e0cafb1e268a38caf12a09a096fca2736636cbb3f7ee80f56cdb",
+      "expertActionContextDigest": "sha256:2dd4e0705640bb6c2d679807e3bb114e5126dd82d529bfd80334fa25414e99b2",
+      "oracleConfidence": 375000,
+      "nexusConfidence": 600000,
+      "oracleFavored": "[\"stage2h1/hold\",\"controller\",{\"id\":\"node-hold\",\"kind\":\"node\"},{\"mode\":\"hold\"}]",
+      "nexusFavored": "[\"stage2h1/hold\",\"controller\",{\"id\":\"node-hold\",\"kind\":\"node\"},{\"mode\":\"hold\"}]",
+      "oracleNonNeutral": true,
+      "nexusNonNeutral": true,
+      "oracleCorrect": false,
+      "nexusCorrect": false,
+      "signalRegime": "BOTH_SIGNALS",
+      "agreementRegime": "ORACLE_NEXUS_AGREE",
+      "primeMargin": 0.0039999999999996705,
+      "interActionDifferential": 0.06,
+      "contributions": {
+        "[\"stage2h1/hold\",\"controller\",{\"id\":\"node-hold\",\"kind\":\"node\"},{\"mode\":\"hold\"}]": {
+          "oracle": 0.011111,
+          "nexus": 0.02,
+          "combined": 0.03
+        },
+        "[\"stage2h1/shift\",\"controller\",{\"id\":\"node-shift\",\"kind\":\"node\"},{\"mode\":\"shift\"}]": {
+          "oracle": -0.016983,
+          "nexus": -0.02,
+          "combined": -0.03
+        }
+      },
+      "arms": {
+        "prime-only": {
+          "selectedAction": "[\"stage2h1/shift\",\"controller\",{\"id\":\"node-shift\",\"kind\":\"node\"},{\"mode\":\"shift\"}]",
+          "actionRanking": [
+            "[\"stage2h1/shift\",\"controller\",{\"id\":\"node-shift\",\"kind\":\"node\"},{\"mode\":\"shift\"}]",
+            "[\"stage2h1/hold\",\"controller\",{\"id\":\"node-hold\",\"kind\":\"node\"},{\"mode\":\"hold\"}]"
+          ],
+          "valueEstimate": 0.5039999999999997,
+          "visitDistribution": [
+            {
+              "actionKey": "[\"stage2h1/shift\",\"controller\",{\"id\":\"node-shift\",\"kind\":\"node\"},{\"mode\":\"shift\"}]",
+              "visits": 32
+            },
+            {
+              "actionKey": "[\"stage2h1/hold\",\"controller\",{\"id\":\"node-hold\",\"kind\":\"node\"},{\"mode\":\"hold\"}]",
+              "visits": 32
+            }
+          ],
+          "meanValues": {
+            "[\"stage2h1/shift\",\"controller\",{\"id\":\"node-shift\",\"kind\":\"node\"},{\"mode\":\"shift\"}]": 0.5039999999999997,
+            "[\"stage2h1/hold\",\"controller\",{\"id\":\"node-hold\",\"kind\":\"node\"},{\"mode\":\"hold\"}]": 0.5
+          },
+          "recommendationDigest": "00d892ac21707fdd5a4c5e0f9259d5fc5b844126bbf3891a22742a518e1ad2c0",
+          "correct": true,
+          "effect": "UNCHANGED_CORRECT"
+        },
+        "prime+oracle": {
+          "selectedAction": "[\"stage2h1/hold\",\"controller\",{\"id\":\"node-hold\",\"kind\":\"node\"},{\"mode\":\"hold\"}]",
+          "actionRanking": [
+            "[\"stage2h1/hold\",\"controller\",{\"id\":\"node-hold\",\"kind\":\"node\"},{\"mode\":\"hold\"}]",
+            "[\"stage2h1/shift\",\"controller\",{\"id\":\"node-shift\",\"kind\":\"node\"},{\"mode\":\"shift\"}]"
+          ],
+          "valueEstimate": 0.5111109999999998,
+          "visitDistribution": [
+            {
+              "actionKey": "[\"stage2h1/hold\",\"controller\",{\"id\":\"node-hold\",\"kind\":\"node\"},{\"mode\":\"hold\"}]",
+              "visits": 34
+            },
+            {
+              "actionKey": "[\"stage2h1/shift\",\"controller\",{\"id\":\"node-shift\",\"kind\":\"node\"},{\"mode\":\"shift\"}]",
+              "visits": 30
+            }
+          ],
+          "meanValues": {
+            "[\"stage2h1/hold\",\"controller\",{\"id\":\"node-hold\",\"kind\":\"node\"},{\"mode\":\"hold\"}]": 0.5111109999999998,
+            "[\"stage2h1/shift\",\"controller\",{\"id\":\"node-shift\",\"kind\":\"node\"},{\"mode\":\"shift\"}]": 0.48701699999999987
+          },
+          "recommendationDigest": "b66251993d2d830b53f7eb248d0d732276dc165020e6d9349570eba4fc19fecd",
+          "correct": false,
+          "effect": "HARMFUL_SELECTION_CHANGE",
+          "correctMarginDelta": -0.028093999999999564
+        },
+        "prime+nexus": {
+          "selectedAction": "[\"stage2h1/hold\",\"controller\",{\"id\":\"node-hold\",\"kind\":\"node\"},{\"mode\":\"hold\"}]",
+          "actionRanking": [
+            "[\"stage2h1/hold\",\"controller\",{\"id\":\"node-hold\",\"kind\":\"node\"},{\"mode\":\"hold\"}]",
+            "[\"stage2h1/shift\",\"controller\",{\"id\":\"node-shift\",\"kind\":\"node\"},{\"mode\":\"shift\"}]"
+          ],
+          "valueEstimate": 0.5199999999999997,
+          "visitDistribution": [
+            {
+              "actionKey": "[\"stage2h1/hold\",\"controller\",{\"id\":\"node-hold\",\"kind\":\"node\"},{\"mode\":\"hold\"}]",
+              "visits": 35
+            },
+            {
+              "actionKey": "[\"stage2h1/shift\",\"controller\",{\"id\":\"node-shift\",\"kind\":\"node\"},{\"mode\":\"shift\"}]",
+              "visits": 29
+            }
+          ],
+          "meanValues": {
+            "[\"stage2h1/hold\",\"controller\",{\"id\":\"node-hold\",\"kind\":\"node\"},{\"mode\":\"hold\"}]": 0.5199999999999997,
+            "[\"stage2h1/shift\",\"controller\",{\"id\":\"node-shift\",\"kind\":\"node\"},{\"mode\":\"shift\"}]": 0.484
+          },
+          "recommendationDigest": "9c05d3d79ad0f6d7e3fbb9947e36115ca6e085d81f6ab27353d378d09c779fc9",
+          "correct": false,
+          "effect": "HARMFUL_SELECTION_CHANGE",
+          "correctMarginDelta": -0.03999999999999937
+        },
+        "prime+oracle+nexus": {
+          "selectedAction": "[\"stage2h1/hold\",\"controller\",{\"id\":\"node-hold\",\"kind\":\"node\"},{\"mode\":\"hold\"}]",
+          "actionRanking": [
+            "[\"stage2h1/hold\",\"controller\",{\"id\":\"node-hold\",\"kind\":\"node\"},{\"mode\":\"hold\"}]",
+            "[\"stage2h1/shift\",\"controller\",{\"id\":\"node-shift\",\"kind\":\"node\"},{\"mode\":\"shift\"}]"
+          ],
+          "valueEstimate": 0.53,
+          "visitDistribution": [
+            {
+              "actionKey": "[\"stage2h1/hold\",\"controller\",{\"id\":\"node-hold\",\"kind\":\"node\"},{\"mode\":\"hold\"}]",
+              "visits": 37
+            },
+            {
+              "actionKey": "[\"stage2h1/shift\",\"controller\",{\"id\":\"node-shift\",\"kind\":\"node\"},{\"mode\":\"shift\"}]",
+              "visits": 27
+            }
+          ],
+          "meanValues": {
+            "[\"stage2h1/hold\",\"controller\",{\"id\":\"node-hold\",\"kind\":\"node\"},{\"mode\":\"hold\"}]": 0.53,
+            "[\"stage2h1/shift\",\"controller\",{\"id\":\"node-shift\",\"kind\":\"node\"},{\"mode\":\"shift\"}]": 0.47400000000000014
+          },
+          "recommendationDigest": "695db03c39b5e49b2ff88ede1cae5b53805d3d3d26d42b45417771dc23521389",
+          "correct": false,
+          "effect": "HARMFUL_SELECTION_CHANGE",
+          "correctMarginDelta": -0.059999999999999554
+        }
+      }
+    },
+    {
+      "caseId": "stage2h2-strong-preference",
+      "population": "SYNTHETIC_CONTROLLED",
+      "experimentClass": "strong-preference",
+      "runtimeIdentity": "sha256:f1cd5ec6bc292f07b31aed40c6fd530291da69b2362c6b09632bd0a2b9bd5389",
+      "campaignId": "sha256:81ebdf78deb391d1658958cb15352450cb16c6bac69ab280792a1e7385cdbdc1",
+      "stateDigest": "e5494a445fafa4c55e03651557f50b628454b90ab8af5f7becd619ebb86b5e47",
+      "legalActionDigest": "db0c8fdaae93414931b6dfde7cd2e584b28d35ad5dde8522cf308e28441d48da",
+      "seed": "5",
+      "simulationCount": 64,
+      "groundTruthAction": "[\"stage2h1/shift\",\"controller\",{\"id\":\"node-shift\",\"kind\":\"node\"},{\"mode\":\"shift\"}]",
+      "groundTruthValue": 1,
+      "groundTruthMethod": "EXHAUSTIVE_DETERMINISTIC_ONE_STEP_TRANSITION_REWARD",
+      "oracleInputDigest": "sha256:cca9db3d62afba5e7be9468a593b51298847393481ba782a90fc8f919a9db6f3",
+      "oracleOutputDigest": "sha256:0a43d0dbf0e29291daa951ebb9c22818032c06af6fa8e8661d2f52b39793be81",
+      "nexusInputDigest": "sha256:d99eac3583ff4465539701a54b1139dbb54996ab530e1e7ec0ce215bede8db1a",
+      "nexusOutputDigest": "sha256:7a906edbce81e0cafb1e268a38caf12a09a096fca2736636cbb3f7ee80f56cdb",
+      "expertActionContextDigest": "sha256:ae1e1eeef3e0c5f258d2c0b6ba11fcef8d676906ccfbad5fa16c583b200e94d0",
+      "oracleConfidence": 375000,
+      "nexusConfidence": 600000,
+      "oracleFavored": "[\"stage2h1/hold\",\"controller\",{\"id\":\"node-hold\",\"kind\":\"node\"},{\"mode\":\"hold\"}]",
+      "nexusFavored": "[\"stage2h1/hold\",\"controller\",{\"id\":\"node-hold\",\"kind\":\"node\"},{\"mode\":\"hold\"}]",
+      "oracleNonNeutral": true,
+      "nexusNonNeutral": true,
+      "oracleCorrect": false,
+      "nexusCorrect": false,
+      "signalRegime": "BOTH_SIGNALS",
+      "agreementRegime": "ORACLE_NEXUS_AGREE",
+      "primeMargin": 0.5,
+      "interActionDifferential": 0.06,
+      "contributions": {
+        "[\"stage2h1/hold\",\"controller\",{\"id\":\"node-hold\",\"kind\":\"node\"},{\"mode\":\"hold\"}]": {
+          "oracle": 0.011111,
+          "nexus": 0.02,
+          "combined": 0.03
+        },
+        "[\"stage2h1/shift\",\"controller\",{\"id\":\"node-shift\",\"kind\":\"node\"},{\"mode\":\"shift\"}]": {
+          "oracle": -0.016983,
+          "nexus": -0.02,
+          "combined": -0.03
+        }
+      },
+      "arms": {
+        "prime-only": {
+          "selectedAction": "[\"stage2h1/shift\",\"controller\",{\"id\":\"node-shift\",\"kind\":\"node\"},{\"mode\":\"shift\"}]",
+          "actionRanking": [
+            "[\"stage2h1/shift\",\"controller\",{\"id\":\"node-shift\",\"kind\":\"node\"},{\"mode\":\"shift\"}]",
+            "[\"stage2h1/hold\",\"controller\",{\"id\":\"node-hold\",\"kind\":\"node\"},{\"mode\":\"hold\"}]"
+          ],
+          "valueEstimate": 1,
+          "visitDistribution": [
+            {
+              "actionKey": "[\"stage2h1/shift\",\"controller\",{\"id\":\"node-shift\",\"kind\":\"node\"},{\"mode\":\"shift\"}]",
+              "visits": 55
+            },
+            {
+              "actionKey": "[\"stage2h1/hold\",\"controller\",{\"id\":\"node-hold\",\"kind\":\"node\"},{\"mode\":\"hold\"}]",
+              "visits": 9
+            }
+          ],
+          "meanValues": {
+            "[\"stage2h1/shift\",\"controller\",{\"id\":\"node-shift\",\"kind\":\"node\"},{\"mode\":\"shift\"}]": 1,
+            "[\"stage2h1/hold\",\"controller\",{\"id\":\"node-hold\",\"kind\":\"node\"},{\"mode\":\"hold\"}]": 0.5
+          },
+          "recommendationDigest": "55dab4cd316c85c411ee417f0ab41b2e693624703d86db642242221ce380f5ba",
+          "correct": true,
+          "effect": "UNCHANGED_CORRECT"
+        },
+        "prime+oracle": {
+          "selectedAction": "[\"stage2h1/shift\",\"controller\",{\"id\":\"node-shift\",\"kind\":\"node\"},{\"mode\":\"shift\"}]",
+          "actionRanking": [
+            "[\"stage2h1/shift\",\"controller\",{\"id\":\"node-shift\",\"kind\":\"node\"},{\"mode\":\"shift\"}]",
+            "[\"stage2h1/hold\",\"controller\",{\"id\":\"node-hold\",\"kind\":\"node\"},{\"mode\":\"hold\"}]"
+          ],
+          "valueEstimate": 0.9830169999999988,
+          "visitDistribution": [
+            {
+              "actionKey": "[\"stage2h1/shift\",\"controller\",{\"id\":\"node-shift\",\"kind\":\"node\"},{\"mode\":\"shift\"}]",
+              "visits": 55
+            },
+            {
+              "actionKey": "[\"stage2h1/hold\",\"controller\",{\"id\":\"node-hold\",\"kind\":\"node\"},{\"mode\":\"hold\"}]",
+              "visits": 9
+            }
+          ],
+          "meanValues": {
+            "[\"stage2h1/shift\",\"controller\",{\"id\":\"node-shift\",\"kind\":\"node\"},{\"mode\":\"shift\"}]": 0.9830169999999988,
+            "[\"stage2h1/hold\",\"controller\",{\"id\":\"node-hold\",\"kind\":\"node\"},{\"mode\":\"hold\"}]": 0.511111
+          },
+          "recommendationDigest": "0f36051afd4865ea66fda00d6dfbbc2c90dff88b2b337535636a9497ae8a3a51",
+          "correct": true,
+          "effect": "UNCHANGED_CORRECT",
+          "correctMarginDelta": -0.028094000000001174
+        },
+        "prime+nexus": {
+          "selectedAction": "[\"stage2h1/shift\",\"controller\",{\"id\":\"node-shift\",\"kind\":\"node\"},{\"mode\":\"shift\"}]",
+          "actionRanking": [
+            "[\"stage2h1/shift\",\"controller\",{\"id\":\"node-shift\",\"kind\":\"node\"},{\"mode\":\"shift\"}]",
+            "[\"stage2h1/hold\",\"controller\",{\"id\":\"node-hold\",\"kind\":\"node\"},{\"mode\":\"hold\"}]"
+          ],
+          "valueEstimate": 0.979999999999999,
+          "visitDistribution": [
+            {
+              "actionKey": "[\"stage2h1/shift\",\"controller\",{\"id\":\"node-shift\",\"kind\":\"node\"},{\"mode\":\"shift\"}]",
+              "visits": 55
+            },
+            {
+              "actionKey": "[\"stage2h1/hold\",\"controller\",{\"id\":\"node-hold\",\"kind\":\"node\"},{\"mode\":\"hold\"}]",
+              "visits": 9
+            }
+          ],
+          "meanValues": {
+            "[\"stage2h1/shift\",\"controller\",{\"id\":\"node-shift\",\"kind\":\"node\"},{\"mode\":\"shift\"}]": 0.979999999999999,
+            "[\"stage2h1/hold\",\"controller\",{\"id\":\"node-hold\",\"kind\":\"node\"},{\"mode\":\"hold\"}]": 0.52
+          },
+          "recommendationDigest": "e4f335261f9c0879e44b4a7c1b044b35cb83c264d4aa41ddaf11ef161ccc72b5",
+          "correct": true,
+          "effect": "UNCHANGED_CORRECT",
+          "correctMarginDelta": -0.040000000000001035
+        },
+        "prime+oracle+nexus": {
+          "selectedAction": "[\"stage2h1/shift\",\"controller\",{\"id\":\"node-shift\",\"kind\":\"node\"},{\"mode\":\"shift\"}]",
+          "actionRanking": [
+            "[\"stage2h1/shift\",\"controller\",{\"id\":\"node-shift\",\"kind\":\"node\"},{\"mode\":\"shift\"}]",
+            "[\"stage2h1/hold\",\"controller\",{\"id\":\"node-hold\",\"kind\":\"node\"},{\"mode\":\"hold\"}]"
+          ],
+          "valueEstimate": 0.9699999999999993,
+          "visitDistribution": [
+            {
+              "actionKey": "[\"stage2h1/shift\",\"controller\",{\"id\":\"node-shift\",\"kind\":\"node\"},{\"mode\":\"shift\"}]",
+              "visits": 54
+            },
+            {
+              "actionKey": "[\"stage2h1/hold\",\"controller\",{\"id\":\"node-hold\",\"kind\":\"node\"},{\"mode\":\"hold\"}]",
+              "visits": 10
+            }
+          ],
+          "meanValues": {
+            "[\"stage2h1/shift\",\"controller\",{\"id\":\"node-shift\",\"kind\":\"node\"},{\"mode\":\"shift\"}]": 0.9699999999999993,
+            "[\"stage2h1/hold\",\"controller\",{\"id\":\"node-hold\",\"kind\":\"node\"},{\"mode\":\"hold\"}]": 0.5300000000000001
+          },
+          "recommendationDigest": "f004439d0fd62190a94bdf981d55d0619cd613e39112308a91f0533d93f6808d",
+          "correct": true,
+          "effect": "UNCHANGED_CORRECT",
+          "correctMarginDelta": -0.06000000000000083
+        }
+      }
+    },
+    {
+      "caseId": "stage2h2-oracle-reversal",
+      "population": "SYNTHETIC_CONTROLLED",
+      "experimentClass": "oracle-reversal",
+      "runtimeIdentity": "sha256:f1cd5ec6bc292f07b31aed40c6fd530291da69b2362c6b09632bd0a2b9bd5389",
+      "campaignId": "sha256:81ebdf78deb391d1658958cb15352450cb16c6bac69ab280792a1e7385cdbdc1",
+      "stateDigest": "b902471bd4a2142e4603bd79e00c428cce0321f4f99f4a099c6356796cad3129",
+      "legalActionDigest": "db0c8fdaae93414931b6dfde7cd2e584b28d35ad5dde8522cf308e28441d48da",
+      "seed": "5",
+      "simulationCount": 32,
+      "groundTruthAction": "[\"stage2h1/shift\",\"controller\",{\"id\":\"node-shift\",\"kind\":\"node\"},{\"mode\":\"shift\"}]",
+      "groundTruthValue": 0.504,
+      "groundTruthMethod": "EXHAUSTIVE_DETERMINISTIC_ONE_STEP_TRANSITION_REWARD",
+      "oracleInputDigest": "sha256:29fd5375d60c91e7cbe81029ad032a767a239628b10b920fb7fd03b2b7f0f824",
+      "oracleOutputDigest": "sha256:667c29df89e82394dbc927d9c735fe015d3e9f0a15e2ad0c203cce48e8bc55cf",
+      "nexusInputDigest": "sha256:a399318d4d7d943d8dd2d3bde22357025ce37675f977f3d80be5d1da1b8cf4b2",
+      "nexusOutputDigest": "sha256:04b4dba7d5da28af71cdfbd295860b95531614bbba13a1b054a609d0c63b0574",
+      "expertActionContextDigest": "sha256:ccf8ec95e5eafb8bec6a582afb581db252a9dd1746c038390ad5f53a9f071916",
+      "oracleConfidence": 375000,
+      "nexusConfidence": 0,
+      "oracleFavored": "[\"stage2h1/shift\",\"controller\",{\"id\":\"node-shift\",\"kind\":\"node\"},{\"mode\":\"shift\"}]",
+      "nexusFavored": "[\"stage2h1/hold\",\"controller\",{\"id\":\"node-hold\",\"kind\":\"node\"},{\"mode\":\"hold\"}]",
+      "oracleNonNeutral": true,
+      "nexusNonNeutral": false,
+      "oracleCorrect": true,
+      "nexusCorrect": false,
+      "signalRegime": "TEMPORAL_ONLY",
+      "agreementRegime": "ORACLE_ONLY_NON_NEUTRAL",
+      "primeMargin": 0.0039999999999997815,
+      "interActionDifferential": 0.008889,
+      "contributions": {
+        "[\"stage2h1/hold\",\"controller\",{\"id\":\"node-hold\",\"kind\":\"node\"},{\"mode\":\"hold\"}]": {
+          "oracle": -0.008889,
+          "nexus": 0,
+          "combined": -0.008889
+        },
+        "[\"stage2h1/shift\",\"controller\",{\"id\":\"node-shift\",\"kind\":\"node\"},{\"mode\":\"shift\"}]": {
+          "oracle": 0,
+          "nexus": 0,
+          "combined": 0
+        }
+      },
+      "arms": {
+        "prime-only": {
+          "selectedAction": "[\"stage2h1/shift\",\"controller\",{\"id\":\"node-shift\",\"kind\":\"node\"},{\"mode\":\"shift\"}]",
+          "actionRanking": [
+            "[\"stage2h1/shift\",\"controller\",{\"id\":\"node-shift\",\"kind\":\"node\"},{\"mode\":\"shift\"}]",
+            "[\"stage2h1/hold\",\"controller\",{\"id\":\"node-hold\",\"kind\":\"node\"},{\"mode\":\"hold\"}]"
+          ],
+          "valueEstimate": 0.5039999999999998,
+          "visitDistribution": [
+            {
+              "actionKey": "[\"stage2h1/shift\",\"controller\",{\"id\":\"node-shift\",\"kind\":\"node\"},{\"mode\":\"shift\"}]",
+              "visits": 16
+            },
+            {
+              "actionKey": "[\"stage2h1/hold\",\"controller\",{\"id\":\"node-hold\",\"kind\":\"node\"},{\"mode\":\"hold\"}]",
+              "visits": 16
+            }
+          ],
+          "meanValues": {
+            "[\"stage2h1/shift\",\"controller\",{\"id\":\"node-shift\",\"kind\":\"node\"},{\"mode\":\"shift\"}]": 0.5039999999999998,
+            "[\"stage2h1/hold\",\"controller\",{\"id\":\"node-hold\",\"kind\":\"node\"},{\"mode\":\"hold\"}]": 0.5
+          },
+          "recommendationDigest": "8203a596f4b101ededd94c343e8b11ad1f03812fcfa49691dc326504ca265e65",
+          "correct": true,
+          "effect": "UNCHANGED_CORRECT"
+        },
+        "prime+oracle": {
+          "selectedAction": "[\"stage2h1/shift\",\"controller\",{\"id\":\"node-shift\",\"kind\":\"node\"},{\"mode\":\"shift\"}]",
+          "actionRanking": [
+            "[\"stage2h1/shift\",\"controller\",{\"id\":\"node-shift\",\"kind\":\"node\"},{\"mode\":\"shift\"}]",
+            "[\"stage2h1/hold\",\"controller\",{\"id\":\"node-hold\",\"kind\":\"node\"},{\"mode\":\"hold\"}]"
+          ],
+          "valueEstimate": 0.5039999999999998,
+          "visitDistribution": [
+            {
+              "actionKey": "[\"stage2h1/shift\",\"controller\",{\"id\":\"node-shift\",\"kind\":\"node\"},{\"mode\":\"shift\"}]",
+              "visits": 16
+            },
+            {
+              "actionKey": "[\"stage2h1/hold\",\"controller\",{\"id\":\"node-hold\",\"kind\":\"node\"},{\"mode\":\"hold\"}]",
+              "visits": 16
+            }
+          ],
+          "meanValues": {
+            "[\"stage2h1/shift\",\"controller\",{\"id\":\"node-shift\",\"kind\":\"node\"},{\"mode\":\"shift\"}]": 0.5039999999999998,
+            "[\"stage2h1/hold\",\"controller\",{\"id\":\"node-hold\",\"kind\":\"node\"},{\"mode\":\"hold\"}]": 0.491111
+          },
+          "recommendationDigest": "240d14988ce9b4bac7b8aebc8fa822c06c0266b34a1111258c0aebad92603646",
+          "correct": true,
+          "effect": "UNCHANGED_CORRECT",
+          "correctMarginDelta": 0.00888899999999998
+        },
+        "prime+nexus": {
+          "selectedAction": "[\"stage2h1/shift\",\"controller\",{\"id\":\"node-shift\",\"kind\":\"node\"},{\"mode\":\"shift\"}]",
+          "actionRanking": [
+            "[\"stage2h1/shift\",\"controller\",{\"id\":\"node-shift\",\"kind\":\"node\"},{\"mode\":\"shift\"}]",
+            "[\"stage2h1/hold\",\"controller\",{\"id\":\"node-hold\",\"kind\":\"node\"},{\"mode\":\"hold\"}]"
+          ],
+          "valueEstimate": 0.5039999999999998,
+          "visitDistribution": [
+            {
+              "actionKey": "[\"stage2h1/shift\",\"controller\",{\"id\":\"node-shift\",\"kind\":\"node\"},{\"mode\":\"shift\"}]",
+              "visits": 16
+            },
+            {
+              "actionKey": "[\"stage2h1/hold\",\"controller\",{\"id\":\"node-hold\",\"kind\":\"node\"},{\"mode\":\"hold\"}]",
+              "visits": 16
+            }
+          ],
+          "meanValues": {
+            "[\"stage2h1/shift\",\"controller\",{\"id\":\"node-shift\",\"kind\":\"node\"},{\"mode\":\"shift\"}]": 0.5039999999999998,
+            "[\"stage2h1/hold\",\"controller\",{\"id\":\"node-hold\",\"kind\":\"node\"},{\"mode\":\"hold\"}]": 0.5
+          },
+          "recommendationDigest": "b7c168ad6ba49a096ca88f6907cbc45e5533a0bd2d16e4f15d7f31b69aa73ba0",
+          "correct": true,
+          "effect": "UNCHANGED_CORRECT",
+          "correctMarginDelta": 0
+        },
+        "prime+oracle+nexus": {
+          "selectedAction": "[\"stage2h1/shift\",\"controller\",{\"id\":\"node-shift\",\"kind\":\"node\"},{\"mode\":\"shift\"}]",
+          "actionRanking": [
+            "[\"stage2h1/shift\",\"controller\",{\"id\":\"node-shift\",\"kind\":\"node\"},{\"mode\":\"shift\"}]",
+            "[\"stage2h1/hold\",\"controller\",{\"id\":\"node-hold\",\"kind\":\"node\"},{\"mode\":\"hold\"}]"
+          ],
+          "valueEstimate": 0.5039999999999998,
+          "visitDistribution": [
+            {
+              "actionKey": "[\"stage2h1/shift\",\"controller\",{\"id\":\"node-shift\",\"kind\":\"node\"},{\"mode\":\"shift\"}]",
+              "visits": 16
+            },
+            {
+              "actionKey": "[\"stage2h1/hold\",\"controller\",{\"id\":\"node-hold\",\"kind\":\"node\"},{\"mode\":\"hold\"}]",
+              "visits": 16
+            }
+          ],
+          "meanValues": {
+            "[\"stage2h1/shift\",\"controller\",{\"id\":\"node-shift\",\"kind\":\"node\"},{\"mode\":\"shift\"}]": 0.5039999999999998,
+            "[\"stage2h1/hold\",\"controller\",{\"id\":\"node-hold\",\"kind\":\"node\"},{\"mode\":\"hold\"}]": 0.491111
+          },
+          "recommendationDigest": "5ca49eabaadfaa111df73b401dded8603b9de5b15c6f4c9e09dac01eaf38428e",
+          "correct": true,
+          "effect": "UNCHANGED_CORRECT",
+          "correctMarginDelta": 0.00888899999999998
+        }
+      }
+    },
+    {
+      "caseId": "stage2h2-oracle-insufficient-history",
+      "population": "SYNTHETIC_CONTROLLED",
+      "experimentClass": "insufficient-history",
+      "runtimeIdentity": "sha256:f1cd5ec6bc292f07b31aed40c6fd530291da69b2362c6b09632bd0a2b9bd5389",
+      "campaignId": "sha256:81ebdf78deb391d1658958cb15352450cb16c6bac69ab280792a1e7385cdbdc1",
+      "stateDigest": "b902471bd4a2142e4603bd79e00c428cce0321f4f99f4a099c6356796cad3129",
+      "legalActionDigest": "db0c8fdaae93414931b6dfde7cd2e584b28d35ad5dde8522cf308e28441d48da",
+      "seed": "5",
+      "simulationCount": 32,
+      "groundTruthAction": "[\"stage2h1/shift\",\"controller\",{\"id\":\"node-shift\",\"kind\":\"node\"},{\"mode\":\"shift\"}]",
+      "groundTruthValue": 0.504,
+      "groundTruthMethod": "EXHAUSTIVE_DETERMINISTIC_ONE_STEP_TRANSITION_REWARD",
+      "oracleInputDigest": "sha256:3ce1866c18023fe90644e9c41cde80dd2259bd664dcb1ebd56c963dd0d6d1a65",
+      "oracleOutputDigest": "sha256:04a34cdad558771fb949c43c569bc41e6db903a94ece3fcb7b01012261611c95",
+      "nexusInputDigest": "sha256:a399318d4d7d943d8dd2d3bde22357025ce37675f977f3d80be5d1da1b8cf4b2",
+      "nexusOutputDigest": "sha256:04b4dba7d5da28af71cdfbd295860b95531614bbba13a1b054a609d0c63b0574",
+      "expertActionContextDigest": "sha256:59e2b750d51d5ef8c58e7f2d7dec60bed5bbab7bdc7b527e5f4e890265552fb4",
+      "oracleConfidence": 0,
+      "nexusConfidence": 0,
+      "oracleFavored": "[\"stage2h1/hold\",\"controller\",{\"id\":\"node-hold\",\"kind\":\"node\"},{\"mode\":\"hold\"}]",
+      "nexusFavored": "[\"stage2h1/hold\",\"controller\",{\"id\":\"node-hold\",\"kind\":\"node\"},{\"mode\":\"hold\"}]",
+      "oracleNonNeutral": false,
+      "nexusNonNeutral": false,
+      "oracleCorrect": false,
+      "nexusCorrect": false,
+      "signalRegime": "NO_SIGNAL",
+      "agreementRegime": "BOTH_NEUTRAL",
+      "primeMargin": 0.0039999999999997815,
+      "interActionDifferential": 0,
+      "contributions": {
+        "[\"stage2h1/hold\",\"controller\",{\"id\":\"node-hold\",\"kind\":\"node\"},{\"mode\":\"hold\"}]": {
+          "oracle": 0,
+          "nexus": 0,
+          "combined": 0
+        },
+        "[\"stage2h1/shift\",\"controller\",{\"id\":\"node-shift\",\"kind\":\"node\"},{\"mode\":\"shift\"}]": {
+          "oracle": 0,
+          "nexus": 0,
+          "combined": 0
+        }
+      },
+      "arms": {
+        "prime-only": {
+          "selectedAction": "[\"stage2h1/shift\",\"controller\",{\"id\":\"node-shift\",\"kind\":\"node\"},{\"mode\":\"shift\"}]",
+          "actionRanking": [
+            "[\"stage2h1/shift\",\"controller\",{\"id\":\"node-shift\",\"kind\":\"node\"},{\"mode\":\"shift\"}]",
+            "[\"stage2h1/hold\",\"controller\",{\"id\":\"node-hold\",\"kind\":\"node\"},{\"mode\":\"hold\"}]"
+          ],
+          "valueEstimate": 0.5039999999999998,
+          "visitDistribution": [
+            {
+              "actionKey": "[\"stage2h1/shift\",\"controller\",{\"id\":\"node-shift\",\"kind\":\"node\"},{\"mode\":\"shift\"}]",
+              "visits": 16
+            },
+            {
+              "actionKey": "[\"stage2h1/hold\",\"controller\",{\"id\":\"node-hold\",\"kind\":\"node\"},{\"mode\":\"hold\"}]",
+              "visits": 16
+            }
+          ],
+          "meanValues": {
+            "[\"stage2h1/shift\",\"controller\",{\"id\":\"node-shift\",\"kind\":\"node\"},{\"mode\":\"shift\"}]": 0.5039999999999998,
+            "[\"stage2h1/hold\",\"controller\",{\"id\":\"node-hold\",\"kind\":\"node\"},{\"mode\":\"hold\"}]": 0.5
+          },
+          "recommendationDigest": "8203a596f4b101ededd94c343e8b11ad1f03812fcfa49691dc326504ca265e65",
+          "correct": true,
+          "effect": "UNCHANGED_CORRECT"
+        },
+        "prime+oracle": {
+          "selectedAction": "[\"stage2h1/shift\",\"controller\",{\"id\":\"node-shift\",\"kind\":\"node\"},{\"mode\":\"shift\"}]",
+          "actionRanking": [
+            "[\"stage2h1/shift\",\"controller\",{\"id\":\"node-shift\",\"kind\":\"node\"},{\"mode\":\"shift\"}]",
+            "[\"stage2h1/hold\",\"controller\",{\"id\":\"node-hold\",\"kind\":\"node\"},{\"mode\":\"hold\"}]"
+          ],
+          "valueEstimate": 0.5039999999999998,
+          "visitDistribution": [
+            {
+              "actionKey": "[\"stage2h1/shift\",\"controller\",{\"id\":\"node-shift\",\"kind\":\"node\"},{\"mode\":\"shift\"}]",
+              "visits": 16
+            },
+            {
+              "actionKey": "[\"stage2h1/hold\",\"controller\",{\"id\":\"node-hold\",\"kind\":\"node\"},{\"mode\":\"hold\"}]",
+              "visits": 16
+            }
+          ],
+          "meanValues": {
+            "[\"stage2h1/shift\",\"controller\",{\"id\":\"node-shift\",\"kind\":\"node\"},{\"mode\":\"shift\"}]": 0.5039999999999998,
+            "[\"stage2h1/hold\",\"controller\",{\"id\":\"node-hold\",\"kind\":\"node\"},{\"mode\":\"hold\"}]": 0.5
+          },
+          "recommendationDigest": "2da5b3e5ffe4e2966429860d199c8157761acad3a3efb63d4608e020b72e1e92",
+          "correct": true,
+          "effect": "UNCHANGED_CORRECT",
+          "correctMarginDelta": 0
+        },
+        "prime+nexus": {
+          "selectedAction": "[\"stage2h1/shift\",\"controller\",{\"id\":\"node-shift\",\"kind\":\"node\"},{\"mode\":\"shift\"}]",
+          "actionRanking": [
+            "[\"stage2h1/shift\",\"controller\",{\"id\":\"node-shift\",\"kind\":\"node\"},{\"mode\":\"shift\"}]",
+            "[\"stage2h1/hold\",\"controller\",{\"id\":\"node-hold\",\"kind\":\"node\"},{\"mode\":\"hold\"}]"
+          ],
+          "valueEstimate": 0.5039999999999998,
+          "visitDistribution": [
+            {
+              "actionKey": "[\"stage2h1/shift\",\"controller\",{\"id\":\"node-shift\",\"kind\":\"node\"},{\"mode\":\"shift\"}]",
+              "visits": 16
+            },
+            {
+              "actionKey": "[\"stage2h1/hold\",\"controller\",{\"id\":\"node-hold\",\"kind\":\"node\"},{\"mode\":\"hold\"}]",
+              "visits": 16
+            }
+          ],
+          "meanValues": {
+            "[\"stage2h1/shift\",\"controller\",{\"id\":\"node-shift\",\"kind\":\"node\"},{\"mode\":\"shift\"}]": 0.5039999999999998,
+            "[\"stage2h1/hold\",\"controller\",{\"id\":\"node-hold\",\"kind\":\"node\"},{\"mode\":\"hold\"}]": 0.5
+          },
+          "recommendationDigest": "6aaee1ece8f0658e1fe322e19e25f7ddde96821a2f1997a6c4bf0d64a2958f85",
+          "correct": true,
+          "effect": "UNCHANGED_CORRECT",
+          "correctMarginDelta": 0
+        },
+        "prime+oracle+nexus": {
+          "selectedAction": "[\"stage2h1/shift\",\"controller\",{\"id\":\"node-shift\",\"kind\":\"node\"},{\"mode\":\"shift\"}]",
+          "actionRanking": [
+            "[\"stage2h1/shift\",\"controller\",{\"id\":\"node-shift\",\"kind\":\"node\"},{\"mode\":\"shift\"}]",
+            "[\"stage2h1/hold\",\"controller\",{\"id\":\"node-hold\",\"kind\":\"node\"},{\"mode\":\"hold\"}]"
+          ],
+          "valueEstimate": 0.5039999999999998,
+          "visitDistribution": [
+            {
+              "actionKey": "[\"stage2h1/shift\",\"controller\",{\"id\":\"node-shift\",\"kind\":\"node\"},{\"mode\":\"shift\"}]",
+              "visits": 16
+            },
+            {
+              "actionKey": "[\"stage2h1/hold\",\"controller\",{\"id\":\"node-hold\",\"kind\":\"node\"},{\"mode\":\"hold\"}]",
+              "visits": 16
+            }
+          ],
+          "meanValues": {
+            "[\"stage2h1/shift\",\"controller\",{\"id\":\"node-shift\",\"kind\":\"node\"},{\"mode\":\"shift\"}]": 0.5039999999999998,
+            "[\"stage2h1/hold\",\"controller\",{\"id\":\"node-hold\",\"kind\":\"node\"},{\"mode\":\"hold\"}]": 0.5
+          },
+          "recommendationDigest": "890a41d82b37a06ca174cb889af2335dcffca99136a5c25dc7bf6b6e1d17420f",
+          "correct": true,
+          "effect": "UNCHANGED_CORRECT",
+          "correctMarginDelta": 0
+        }
+      }
+    },
+    {
+      "caseId": "stage2h2-nexus-redundant-support",
+      "population": "SYNTHETIC_CONTROLLED",
+      "experimentClass": "nexus-redundancy",
+      "runtimeIdentity": "sha256:f1cd5ec6bc292f07b31aed40c6fd530291da69b2362c6b09632bd0a2b9bd5389",
+      "campaignId": "sha256:81ebdf78deb391d1658958cb15352450cb16c6bac69ab280792a1e7385cdbdc1",
+      "stateDigest": "b902471bd4a2142e4603bd79e00c428cce0321f4f99f4a099c6356796cad3129",
+      "legalActionDigest": "db0c8fdaae93414931b6dfde7cd2e584b28d35ad5dde8522cf308e28441d48da",
+      "seed": "5",
+      "simulationCount": 32,
+      "groundTruthAction": "[\"stage2h1/shift\",\"controller\",{\"id\":\"node-shift\",\"kind\":\"node\"},{\"mode\":\"shift\"}]",
+      "groundTruthValue": 0.504,
+      "groundTruthMethod": "EXHAUSTIVE_DETERMINISTIC_ONE_STEP_TRANSITION_REWARD",
+      "oracleInputDigest": "sha256:48f2b0c28ef575c866b9bff596353feddab5dd31e22d9196984ea20619ec1c74",
+      "oracleOutputDigest": "sha256:41664916acc3bff785e55d2a4cd395c0e6174b145bc63f06bca35bb07636a1b4",
+      "nexusInputDigest": "sha256:52b7c46640e3d631bf334e8ad59a8b8b397467909ad2e4283860b1412c87dee3",
+      "nexusOutputDigest": "sha256:9339c7ad72a82a71947f06407f9bac1fdc62b5cf66e6ac9eb7c0e4452989776a",
+      "expertActionContextDigest": "sha256:091e8a7f8d8ddeb89751edb06f28dba9f888fb819fcef2bbc32887659e298752",
+      "oracleConfidence": 375000,
+      "nexusConfidence": 714286,
+      "oracleFavored": "[\"stage2h1/hold\",\"controller\",{\"id\":\"node-hold\",\"kind\":\"node\"},{\"mode\":\"hold\"}]",
+      "nexusFavored": "[\"stage2h1/hold\",\"controller\",{\"id\":\"node-hold\",\"kind\":\"node\"},{\"mode\":\"hold\"}]",
+      "oracleNonNeutral": false,
+      "nexusNonNeutral": true,
+      "oracleCorrect": false,
+      "nexusCorrect": false,
+      "signalRegime": "RELATIONAL_ONLY",
+      "agreementRegime": "NEXUS_ONLY_NON_NEUTRAL",
+      "primeMargin": 0.0039999999999997815,
+      "interActionDifferential": 0.033333,
+      "contributions": {
+        "[\"stage2h1/hold\",\"controller\",{\"id\":\"node-hold\",\"kind\":\"node\"},{\"mode\":\"hold\"}]": {
+          "oracle": 0,
+          "nexus": 0.013333,
+          "combined": 0.013333
+        },
+        "[\"stage2h1/shift\",\"controller\",{\"id\":\"node-shift\",\"kind\":\"node\"},{\"mode\":\"shift\"}]": {
+          "oracle": 0,
+          "nexus": -0.02,
+          "combined": -0.02
+        }
+      },
+      "arms": {
+        "prime-only": {
+          "selectedAction": "[\"stage2h1/shift\",\"controller\",{\"id\":\"node-shift\",\"kind\":\"node\"},{\"mode\":\"shift\"}]",
+          "actionRanking": [
+            "[\"stage2h1/shift\",\"controller\",{\"id\":\"node-shift\",\"kind\":\"node\"},{\"mode\":\"shift\"}]",
+            "[\"stage2h1/hold\",\"controller\",{\"id\":\"node-hold\",\"kind\":\"node\"},{\"mode\":\"hold\"}]"
+          ],
+          "valueEstimate": 0.5039999999999998,
+          "visitDistribution": [
+            {
+              "actionKey": "[\"stage2h1/shift\",\"controller\",{\"id\":\"node-shift\",\"kind\":\"node\"},{\"mode\":\"shift\"}]",
+              "visits": 16
+            },
+            {
+              "actionKey": "[\"stage2h1/hold\",\"controller\",{\"id\":\"node-hold\",\"kind\":\"node\"},{\"mode\":\"hold\"}]",
+              "visits": 16
+            }
+          ],
+          "meanValues": {
+            "[\"stage2h1/shift\",\"controller\",{\"id\":\"node-shift\",\"kind\":\"node\"},{\"mode\":\"shift\"}]": 0.5039999999999998,
+            "[\"stage2h1/hold\",\"controller\",{\"id\":\"node-hold\",\"kind\":\"node\"},{\"mode\":\"hold\"}]": 0.5
+          },
+          "recommendationDigest": "8203a596f4b101ededd94c343e8b11ad1f03812fcfa49691dc326504ca265e65",
+          "correct": true,
+          "effect": "UNCHANGED_CORRECT"
+        },
+        "prime+oracle": {
+          "selectedAction": "[\"stage2h1/shift\",\"controller\",{\"id\":\"node-shift\",\"kind\":\"node\"},{\"mode\":\"shift\"}]",
+          "actionRanking": [
+            "[\"stage2h1/shift\",\"controller\",{\"id\":\"node-shift\",\"kind\":\"node\"},{\"mode\":\"shift\"}]",
+            "[\"stage2h1/hold\",\"controller\",{\"id\":\"node-hold\",\"kind\":\"node\"},{\"mode\":\"hold\"}]"
+          ],
+          "valueEstimate": 0.5039999999999998,
+          "visitDistribution": [
+            {
+              "actionKey": "[\"stage2h1/shift\",\"controller\",{\"id\":\"node-shift\",\"kind\":\"node\"},{\"mode\":\"shift\"}]",
+              "visits": 16
+            },
+            {
+              "actionKey": "[\"stage2h1/hold\",\"controller\",{\"id\":\"node-hold\",\"kind\":\"node\"},{\"mode\":\"hold\"}]",
+              "visits": 16
+            }
+          ],
+          "meanValues": {
+            "[\"stage2h1/shift\",\"controller\",{\"id\":\"node-shift\",\"kind\":\"node\"},{\"mode\":\"shift\"}]": 0.5039999999999998,
+            "[\"stage2h1/hold\",\"controller\",{\"id\":\"node-hold\",\"kind\":\"node\"},{\"mode\":\"hold\"}]": 0.5
+          },
+          "recommendationDigest": "db4a4d9c82c09b7c79da475be9b379f32c40eeb4a3edc171db7e1d166a11e45e",
+          "correct": true,
+          "effect": "UNCHANGED_CORRECT",
+          "correctMarginDelta": 0
+        },
+        "prime+nexus": {
+          "selectedAction": "[\"stage2h1/hold\",\"controller\",{\"id\":\"node-hold\",\"kind\":\"node\"},{\"mode\":\"hold\"}]",
+          "actionRanking": [
+            "[\"stage2h1/hold\",\"controller\",{\"id\":\"node-hold\",\"kind\":\"node\"},{\"mode\":\"hold\"}]",
+            "[\"stage2h1/shift\",\"controller\",{\"id\":\"node-shift\",\"kind\":\"node\"},{\"mode\":\"shift\"}]"
+          ],
+          "valueEstimate": 0.5133330000000002,
+          "visitDistribution": [
+            {
+              "actionKey": "[\"stage2h1/hold\",\"controller\",{\"id\":\"node-hold\",\"kind\":\"node\"},{\"mode\":\"hold\"}]",
+              "visits": 17
+            },
+            {
+              "actionKey": "[\"stage2h1/shift\",\"controller\",{\"id\":\"node-shift\",\"kind\":\"node\"},{\"mode\":\"shift\"}]",
+              "visits": 15
+            }
+          ],
+          "meanValues": {
+            "[\"stage2h1/hold\",\"controller\",{\"id\":\"node-hold\",\"kind\":\"node\"},{\"mode\":\"hold\"}]": 0.5133330000000002,
+            "[\"stage2h1/shift\",\"controller\",{\"id\":\"node-shift\",\"kind\":\"node\"},{\"mode\":\"shift\"}]": 0.484
+          },
+          "recommendationDigest": "cc10446de2472c1c5e50916ab7e495a1a18c910e1ecc64446b9bbe2ad3b5b528",
+          "correct": false,
+          "effect": "HARMFUL_SELECTION_CHANGE",
+          "correctMarginDelta": -0.033332999999999946
+        },
+        "prime+oracle+nexus": {
+          "selectedAction": "[\"stage2h1/hold\",\"controller\",{\"id\":\"node-hold\",\"kind\":\"node\"},{\"mode\":\"hold\"}]",
+          "actionRanking": [
+            "[\"stage2h1/hold\",\"controller\",{\"id\":\"node-hold\",\"kind\":\"node\"},{\"mode\":\"hold\"}]",
+            "[\"stage2h1/shift\",\"controller\",{\"id\":\"node-shift\",\"kind\":\"node\"},{\"mode\":\"shift\"}]"
+          ],
+          "valueEstimate": 0.5133330000000002,
+          "visitDistribution": [
+            {
+              "actionKey": "[\"stage2h1/hold\",\"controller\",{\"id\":\"node-hold\",\"kind\":\"node\"},{\"mode\":\"hold\"}]",
+              "visits": 17
+            },
+            {
+              "actionKey": "[\"stage2h1/shift\",\"controller\",{\"id\":\"node-shift\",\"kind\":\"node\"},{\"mode\":\"shift\"}]",
+              "visits": 15
+            }
+          ],
+          "meanValues": {
+            "[\"stage2h1/hold\",\"controller\",{\"id\":\"node-hold\",\"kind\":\"node\"},{\"mode\":\"hold\"}]": 0.5133330000000002,
+            "[\"stage2h1/shift\",\"controller\",{\"id\":\"node-shift\",\"kind\":\"node\"},{\"mode\":\"shift\"}]": 0.484
+          },
+          "recommendationDigest": "8d69f387cf1abeb30a8a857b4880b91b2514cc46f913d23dc3b2ee52f3965ec8",
+          "correct": false,
+          "effect": "HARMFUL_SELECTION_CHANGE",
+          "correctMarginDelta": -0.033332999999999946
+        }
+      }
+    },
+    {
+      "caseId": "stage2h2-oracle-volatility-risk",
+      "population": "SYNTHETIC_CONTROLLED",
+      "experimentClass": "oracle-volatility",
+      "runtimeIdentity": "sha256:f1cd5ec6bc292f07b31aed40c6fd530291da69b2362c6b09632bd0a2b9bd5389",
+      "campaignId": "sha256:81ebdf78deb391d1658958cb15352450cb16c6bac69ab280792a1e7385cdbdc1",
+      "stateDigest": "b902471bd4a2142e4603bd79e00c428cce0321f4f99f4a099c6356796cad3129",
+      "legalActionDigest": "db0c8fdaae93414931b6dfde7cd2e584b28d35ad5dde8522cf308e28441d48da",
+      "seed": "5",
+      "simulationCount": 32,
+      "groundTruthAction": "[\"stage2h1/shift\",\"controller\",{\"id\":\"node-shift\",\"kind\":\"node\"},{\"mode\":\"shift\"}]",
+      "groundTruthValue": 0.504,
+      "groundTruthMethod": "EXHAUSTIVE_DETERMINISTIC_ONE_STEP_TRANSITION_REWARD",
+      "oracleInputDigest": "sha256:cca9db3d62afba5e7be9468a593b51298847393481ba782a90fc8f919a9db6f3",
+      "oracleOutputDigest": "sha256:0a43d0dbf0e29291daa951ebb9c22818032c06af6fa8e8661d2f52b39793be81",
+      "nexusInputDigest": "sha256:a399318d4d7d943d8dd2d3bde22357025ce37675f977f3d80be5d1da1b8cf4b2",
+      "nexusOutputDigest": "sha256:04b4dba7d5da28af71cdfbd295860b95531614bbba13a1b054a609d0c63b0574",
+      "expertActionContextDigest": "sha256:2ecc0d00648006420a2a3340aea54723970fdc9dd4305f71961e440854aa3148",
+      "oracleConfidence": 375000,
+      "nexusConfidence": 0,
+      "oracleFavored": "[\"stage2h1/shift\",\"controller\",{\"id\":\"node-shift\",\"kind\":\"node\"},{\"mode\":\"shift\"}]",
+      "nexusFavored": "[\"stage2h1/hold\",\"controller\",{\"id\":\"node-hold\",\"kind\":\"node\"},{\"mode\":\"hold\"}]",
+      "oracleNonNeutral": true,
+      "nexusNonNeutral": false,
+      "oracleCorrect": true,
+      "nexusCorrect": false,
+      "signalRegime": "TEMPORAL_ONLY",
+      "agreementRegime": "ORACLE_ONLY_NON_NEUTRAL",
+      "primeMargin": 0.0039999999999997815,
+      "interActionDifferential": 0.028094,
+      "contributions": {
+        "[\"stage2h1/hold\",\"controller\",{\"id\":\"node-hold\",\"kind\":\"node\"},{\"mode\":\"hold\"}]": {
+          "oracle": -0.016983,
+          "nexus": 0,
+          "combined": -0.016983
+        },
+        "[\"stage2h1/shift\",\"controller\",{\"id\":\"node-shift\",\"kind\":\"node\"},{\"mode\":\"shift\"}]": {
+          "oracle": 0.011111,
+          "nexus": 0,
+          "combined": 0.011111
+        }
+      },
+      "arms": {
+        "prime-only": {
+          "selectedAction": "[\"stage2h1/shift\",\"controller\",{\"id\":\"node-shift\",\"kind\":\"node\"},{\"mode\":\"shift\"}]",
+          "actionRanking": [
+            "[\"stage2h1/shift\",\"controller\",{\"id\":\"node-shift\",\"kind\":\"node\"},{\"mode\":\"shift\"}]",
+            "[\"stage2h1/hold\",\"controller\",{\"id\":\"node-hold\",\"kind\":\"node\"},{\"mode\":\"hold\"}]"
+          ],
+          "valueEstimate": 0.5039999999999998,
+          "visitDistribution": [
+            {
+              "actionKey": "[\"stage2h1/shift\",\"controller\",{\"id\":\"node-shift\",\"kind\":\"node\"},{\"mode\":\"shift\"}]",
+              "visits": 16
+            },
+            {
+              "actionKey": "[\"stage2h1/hold\",\"controller\",{\"id\":\"node-hold\",\"kind\":\"node\"},{\"mode\":\"hold\"}]",
+              "visits": 16
+            }
+          ],
+          "meanValues": {
+            "[\"stage2h1/shift\",\"controller\",{\"id\":\"node-shift\",\"kind\":\"node\"},{\"mode\":\"shift\"}]": 0.5039999999999998,
+            "[\"stage2h1/hold\",\"controller\",{\"id\":\"node-hold\",\"kind\":\"node\"},{\"mode\":\"hold\"}]": 0.5
+          },
+          "recommendationDigest": "8203a596f4b101ededd94c343e8b11ad1f03812fcfa49691dc326504ca265e65",
+          "correct": true,
+          "effect": "UNCHANGED_CORRECT"
+        },
+        "prime+oracle": {
+          "selectedAction": "[\"stage2h1/shift\",\"controller\",{\"id\":\"node-shift\",\"kind\":\"node\"},{\"mode\":\"shift\"}]",
+          "actionRanking": [
+            "[\"stage2h1/shift\",\"controller\",{\"id\":\"node-shift\",\"kind\":\"node\"},{\"mode\":\"shift\"}]",
+            "[\"stage2h1/hold\",\"controller\",{\"id\":\"node-hold\",\"kind\":\"node\"},{\"mode\":\"hold\"}]"
+          ],
+          "valueEstimate": 0.515111,
+          "visitDistribution": [
+            {
+              "actionKey": "[\"stage2h1/shift\",\"controller\",{\"id\":\"node-shift\",\"kind\":\"node\"},{\"mode\":\"shift\"}]",
+              "visits": 17
+            },
+            {
+              "actionKey": "[\"stage2h1/hold\",\"controller\",{\"id\":\"node-hold\",\"kind\":\"node\"},{\"mode\":\"hold\"}]",
+              "visits": 15
+            }
+          ],
+          "meanValues": {
+            "[\"stage2h1/shift\",\"controller\",{\"id\":\"node-shift\",\"kind\":\"node\"},{\"mode\":\"shift\"}]": 0.515111,
+            "[\"stage2h1/hold\",\"controller\",{\"id\":\"node-hold\",\"kind\":\"node\"},{\"mode\":\"hold\"}]": 0.4830170000000001
+          },
+          "recommendationDigest": "5e8a573ae203d38ab738f59120f052da70ec878d911c036d4534513a377c131b",
+          "correct": true,
+          "effect": "UNCHANGED_CORRECT",
+          "correctMarginDelta": 0.02809400000000012
+        },
+        "prime+nexus": {
+          "selectedAction": "[\"stage2h1/shift\",\"controller\",{\"id\":\"node-shift\",\"kind\":\"node\"},{\"mode\":\"shift\"}]",
+          "actionRanking": [
+            "[\"stage2h1/shift\",\"controller\",{\"id\":\"node-shift\",\"kind\":\"node\"},{\"mode\":\"shift\"}]",
+            "[\"stage2h1/hold\",\"controller\",{\"id\":\"node-hold\",\"kind\":\"node\"},{\"mode\":\"hold\"}]"
+          ],
+          "valueEstimate": 0.5039999999999998,
+          "visitDistribution": [
+            {
+              "actionKey": "[\"stage2h1/shift\",\"controller\",{\"id\":\"node-shift\",\"kind\":\"node\"},{\"mode\":\"shift\"}]",
+              "visits": 16
+            },
+            {
+              "actionKey": "[\"stage2h1/hold\",\"controller\",{\"id\":\"node-hold\",\"kind\":\"node\"},{\"mode\":\"hold\"}]",
+              "visits": 16
+            }
+          ],
+          "meanValues": {
+            "[\"stage2h1/shift\",\"controller\",{\"id\":\"node-shift\",\"kind\":\"node\"},{\"mode\":\"shift\"}]": 0.5039999999999998,
+            "[\"stage2h1/hold\",\"controller\",{\"id\":\"node-hold\",\"kind\":\"node\"},{\"mode\":\"hold\"}]": 0.5
+          },
+          "recommendationDigest": "9a52178a841a8fb0fd94d2839f95000ecab00383b93ecefaf1c921f96cc3fb27",
+          "correct": true,
+          "effect": "UNCHANGED_CORRECT",
+          "correctMarginDelta": 0
+        },
+        "prime+oracle+nexus": {
+          "selectedAction": "[\"stage2h1/shift\",\"controller\",{\"id\":\"node-shift\",\"kind\":\"node\"},{\"mode\":\"shift\"}]",
+          "actionRanking": [
+            "[\"stage2h1/shift\",\"controller\",{\"id\":\"node-shift\",\"kind\":\"node\"},{\"mode\":\"shift\"}]",
+            "[\"stage2h1/hold\",\"controller\",{\"id\":\"node-hold\",\"kind\":\"node\"},{\"mode\":\"hold\"}]"
+          ],
+          "valueEstimate": 0.515111,
+          "visitDistribution": [
+            {
+              "actionKey": "[\"stage2h1/shift\",\"controller\",{\"id\":\"node-shift\",\"kind\":\"node\"},{\"mode\":\"shift\"}]",
+              "visits": 17
+            },
+            {
+              "actionKey": "[\"stage2h1/hold\",\"controller\",{\"id\":\"node-hold\",\"kind\":\"node\"},{\"mode\":\"hold\"}]",
+              "visits": 15
+            }
+          ],
+          "meanValues": {
+            "[\"stage2h1/shift\",\"controller\",{\"id\":\"node-shift\",\"kind\":\"node\"},{\"mode\":\"shift\"}]": 0.515111,
+            "[\"stage2h1/hold\",\"controller\",{\"id\":\"node-hold\",\"kind\":\"node\"},{\"mode\":\"hold\"}]": 0.4830170000000001
+          },
+          "recommendationDigest": "e7f775b99f08c76b1632ff461c1cb024b8942ca6edde33b81a29b17576bc60f5",
+          "correct": true,
+          "effect": "UNCHANGED_CORRECT",
+          "correctMarginDelta": 0.02809400000000012
+        }
+      }
+    },
+    {
+      "caseId": "stage2h2-unlinked-fallback",
+      "population": "REFERENCE_ADAPTER",
+      "experimentClass": "unlinked-fallback",
+      "runtimeIdentity": "sha256:f1cd5ec6bc292f07b31aed40c6fd530291da69b2362c6b09632bd0a2b9bd5389",
+      "campaignId": "sha256:81ebdf78deb391d1658958cb15352450cb16c6bac69ab280792a1e7385cdbdc1",
+      "stateDigest": "95c0118aabab04d7b35d87936c9f469e81c6895acc217b4fb7e51b78b1f81869",
+      "legalActionDigest": "0422b53e85e3cb3b27c9a008edf6477c3c8302cba8c623c734cd0aea7e1adb16",
+      "seed": "99",
+      "simulationCount": 64,
+      "groundTruthAction": "[\"reference.token-race/take@bonus\",\"player-1\",{\"id\":\"bonus-1\",\"kind\":\"shared-bonus\"},{\"amount\":3}]",
+      "groundTruthValue": 0.3,
+      "groundTruthMethod": "EXHAUSTIVE_DETERMINISTIC_ONE_STEP_TRANSITION_REWARD",
+      "oracleInputDigest": "sha256:cca9db3d62afba5e7be9468a593b51298847393481ba782a90fc8f919a9db6f3",
+      "oracleOutputDigest": "sha256:0a43d0dbf0e29291daa951ebb9c22818032c06af6fa8e8661d2f52b39793be81",
+      "nexusInputDigest": "sha256:d99eac3583ff4465539701a54b1139dbb54996ab530e1e7ec0ce215bede8db1a",
+      "nexusOutputDigest": "sha256:7a906edbce81e0cafb1e268a38caf12a09a096fca2736636cbb3f7ee80f56cdb",
+      "expertActionContextDigest": "sha256:877b24c45e7c4b7b371741fe67ed38af61c2ee41a4cac8c16bfd8abb407d37ab",
+      "oracleConfidence": 375000,
+      "nexusConfidence": 600000,
+      "oracleFavored": null,
+      "nexusFavored": null,
+      "oracleNonNeutral": false,
+      "nexusNonNeutral": false,
+      "oracleCorrect": false,
+      "nexusCorrect": false,
+      "signalRegime": "NO_SIGNAL",
+      "agreementRegime": "ORACLE_NEXUS_AGREE",
+      "primeMargin": 0.10000000000000003,
+      "interActionDifferential": null,
+      "contributions": {},
+      "arms": {
+        "prime-only": {
+          "selectedAction": "[\"reference.token-race/take@bonus\",\"player-1\",{\"id\":\"bonus-1\",\"kind\":\"shared-bonus\"},{\"amount\":3}]",
+          "actionRanking": [
+            "[\"reference.token-race/take@bonus\",\"player-1\",{\"id\":\"bonus-1\",\"kind\":\"shared-bonus\"},{\"amount\":3}]",
+            "[\"reference.token-race/take@2\",\"player-1\",null,{\"amount\":2}]",
+            "[\"reference.token-race/take@1\",\"player-1\",null,{\"amount\":1}]"
+          ],
+          "valueEstimate": 0.3000000000000001,
+          "visitDistribution": [
+            {
+              "actionKey": "[\"reference.token-race/take@bonus\",\"player-1\",{\"id\":\"bonus-1\",\"kind\":\"shared-bonus\"},{\"amount\":3}]",
+              "visits": 34
+            },
+            {
+              "actionKey": "[\"reference.token-race/take@2\",\"player-1\",null,{\"amount\":2}]",
+              "visits": 18
+            },
+            {
+              "actionKey": "[\"reference.token-race/take@1\",\"player-1\",null,{\"amount\":1}]",
+              "visits": 12
+            }
+          ],
+          "meanValues": {
+            "[\"reference.token-race/take@bonus\",\"player-1\",{\"id\":\"bonus-1\",\"kind\":\"shared-bonus\"},{\"amount\":3}]": 0.3000000000000001,
+            "[\"reference.token-race/take@2\",\"player-1\",null,{\"amount\":2}]": 0.20000000000000007,
+            "[\"reference.token-race/take@1\",\"player-1\",null,{\"amount\":1}]": 0.09999999999999999
+          },
+          "recommendationDigest": "628b72a9af99ee8ef3a0e2deaf886fbb9d2a77ffa8e81486f5c2b2313c02d0ab",
+          "correct": true,
+          "effect": "UNCHANGED_CORRECT"
+        },
+        "prime+oracle": {
+          "selectedAction": "[\"reference.token-race/take@bonus\",\"player-1\",{\"id\":\"bonus-1\",\"kind\":\"shared-bonus\"},{\"amount\":3}]",
+          "actionRanking": [
+            "[\"reference.token-race/take@bonus\",\"player-1\",{\"id\":\"bonus-1\",\"kind\":\"shared-bonus\"},{\"amount\":3}]",
+            "[\"reference.token-race/take@2\",\"player-1\",null,{\"amount\":2}]",
+            "[\"reference.token-race/take@1\",\"player-1\",null,{\"amount\":1}]"
+          ],
+          "valueEstimate": 0.2830169999999999,
+          "visitDistribution": [
+            {
+              "actionKey": "[\"reference.token-race/take@bonus\",\"player-1\",{\"id\":\"bonus-1\",\"kind\":\"shared-bonus\"},{\"amount\":3}]",
+              "visits": 34
+            },
+            {
+              "actionKey": "[\"reference.token-race/take@2\",\"player-1\",null,{\"amount\":2}]",
+              "visits": 18
+            },
+            {
+              "actionKey": "[\"reference.token-race/take@1\",\"player-1\",null,{\"amount\":1}]",
+              "visits": 12
+            }
+          ],
+          "meanValues": {
+            "[\"reference.token-race/take@bonus\",\"player-1\",{\"id\":\"bonus-1\",\"kind\":\"shared-bonus\"},{\"amount\":3}]": 0.2830169999999999,
+            "[\"reference.token-race/take@2\",\"player-1\",null,{\"amount\":2}]": 0.183017,
+            "[\"reference.token-race/take@1\",\"player-1\",null,{\"amount\":1}]": 0.08301700000000001
+          },
+          "recommendationDigest": "4c2b15c7bc012edd84a6172d67e27de82db1a53f13c2a39d1582a59f4708a0ad",
+          "correct": true,
+          "effect": "UNCHANGED_CORRECT",
+          "correctMarginDelta": -1.3877787807814457e-16
+        },
+        "prime+nexus": {
+          "selectedAction": "[\"reference.token-race/take@bonus\",\"player-1\",{\"id\":\"bonus-1\",\"kind\":\"shared-bonus\"},{\"amount\":3}]",
+          "actionRanking": [
+            "[\"reference.token-race/take@bonus\",\"player-1\",{\"id\":\"bonus-1\",\"kind\":\"shared-bonus\"},{\"amount\":3}]",
+            "[\"reference.token-race/take@2\",\"player-1\",null,{\"amount\":2}]",
+            "[\"reference.token-race/take@1\",\"player-1\",null,{\"amount\":1}]"
+          ],
+          "valueEstimate": 0.29199999999999987,
+          "visitDistribution": [
+            {
+              "actionKey": "[\"reference.token-race/take@bonus\",\"player-1\",{\"id\":\"bonus-1\",\"kind\":\"shared-bonus\"},{\"amount\":3}]",
+              "visits": 34
+            },
+            {
+              "actionKey": "[\"reference.token-race/take@2\",\"player-1\",null,{\"amount\":2}]",
+              "visits": 18
+            },
+            {
+              "actionKey": "[\"reference.token-race/take@1\",\"player-1\",null,{\"amount\":1}]",
+              "visits": 12
+            }
+          ],
+          "meanValues": {
+            "[\"reference.token-race/take@bonus\",\"player-1\",{\"id\":\"bonus-1\",\"kind\":\"shared-bonus\"},{\"amount\":3}]": 0.29199999999999987,
+            "[\"reference.token-race/take@2\",\"player-1\",null,{\"amount\":2}]": 0.19200000000000006,
+            "[\"reference.token-race/take@1\",\"player-1\",null,{\"amount\":1}]": 0.09199999999999998
+          },
+          "recommendationDigest": "80f41ed168f5258dbfac745e9780956e113171cce567a67d04ea7379730137de",
+          "correct": true,
+          "effect": "UNCHANGED_CORRECT",
+          "correctMarginDelta": -2.220446049250313e-16
+        },
+        "prime+oracle+nexus": {
+          "selectedAction": "[\"reference.token-race/take@bonus\",\"player-1\",{\"id\":\"bonus-1\",\"kind\":\"shared-bonus\"},{\"amount\":3}]",
+          "actionRanking": [
+            "[\"reference.token-race/take@bonus\",\"player-1\",{\"id\":\"bonus-1\",\"kind\":\"shared-bonus\"},{\"amount\":3}]",
+            "[\"reference.token-race/take@2\",\"player-1\",null,{\"amount\":2}]",
+            "[\"reference.token-race/take@1\",\"player-1\",null,{\"amount\":1}]"
+          ],
+          "valueEstimate": 0.275017,
+          "visitDistribution": [
+            {
+              "actionKey": "[\"reference.token-race/take@bonus\",\"player-1\",{\"id\":\"bonus-1\",\"kind\":\"shared-bonus\"},{\"amount\":3}]",
+              "visits": 34
+            },
+            {
+              "actionKey": "[\"reference.token-race/take@2\",\"player-1\",null,{\"amount\":2}]",
+              "visits": 18
+            },
+            {
+              "actionKey": "[\"reference.token-race/take@1\",\"player-1\",null,{\"amount\":1}]",
+              "visits": 12
+            }
+          ],
+          "meanValues": {
+            "[\"reference.token-race/take@bonus\",\"player-1\",{\"id\":\"bonus-1\",\"kind\":\"shared-bonus\"},{\"amount\":3}]": 0.275017,
+            "[\"reference.token-race/take@2\",\"player-1\",null,{\"amount\":2}]": 0.175017,
+            "[\"reference.token-race/take@1\",\"player-1\",null,{\"amount\":1}]": 0.075017
+          },
+          "recommendationDigest": "9b2676544bad7db54e877d197e227372a2d6709248ce7e382564e87bb1b0b1a5",
+          "correct": true,
+          "effect": "UNCHANGED_CORRECT",
+          "correctMarginDelta": -2.7755575615628914e-17
+        }
+      }
+    }
+  ],
+  "accuracy": {
+    "prime-only": 1,
+    "prime+oracle": 0.7142857142857143,
+    "prime+nexus": 0.7142857142857143,
+    "prime+oracle+nexus": 0.6428571428571429
+  },
+  "effects": {
+    "oracle": {
+      "cases": 14,
+      "primeAccuracy": 1,
+      "assistedAccuracy": 0.7142857142857143,
+      "accuracyDelta": -0.2857142857142857,
+      "selectionChanges": 4,
+      "beneficialChanges": 0,
+      "harmfulChanges": 4
+    },
+    "nexus": {
+      "cases": 14,
+      "primeAccuracy": 1,
+      "assistedAccuracy": 0.7142857142857143,
+      "accuracyDelta": -0.2857142857142857,
+      "selectionChanges": 4,
+      "beneficialChanges": 0,
+      "harmfulChanges": 4
+    },
+    "combined": {
+      "cases": 14,
+      "primeAccuracy": 1,
+      "assistedAccuracy": 0.6428571428571429,
+      "accuracyDelta": -0.35714285714285715,
+      "selectionChanges": 5,
+      "beneficialChanges": 0,
+      "harmfulChanges": 5
+    }
+  },
+  "populations": {
+    "REFERENCE_ADAPTER": {
+      "cases": 1,
+      "primeAccuracy": 1,
+      "assistedAccuracy": 1,
+      "accuracyDelta": 0,
+      "selectionChanges": 0,
+      "beneficialChanges": 0,
+      "harmfulChanges": 0
+    },
+    "SYNTHETIC_CONTROLLED": {
+      "cases": 13,
+      "primeAccuracy": 1,
+      "assistedAccuracy": 0.6153846153846154,
+      "accuracyDelta": -0.38461538461538464,
+      "selectionChanges": 5,
+      "beneficialChanges": 0,
+      "harmfulChanges": 5
+    }
+  },
+  "signalRegimes": {
+    "TEMPORAL_ONLY": {
+      "cases": 4,
+      "primeAccuracy": 1,
+      "assistedAccuracy": 0.75,
+      "accuracyDelta": -0.25,
+      "selectionChanges": 1,
+      "beneficialChanges": 0,
+      "harmfulChanges": 1
+    },
+    "RELATIONAL_ONLY": {
+      "cases": 3,
+      "primeAccuracy": 1,
+      "assistedAccuracy": 0.3333333333333333,
+      "accuracyDelta": -0.6666666666666666,
+      "selectionChanges": 2,
+      "beneficialChanges": 0,
+      "harmfulChanges": 2
+    },
+    "BOTH_SIGNALS": {
+      "cases": 4,
+      "primeAccuracy": 1,
+      "assistedAccuracy": 0.5,
+      "accuracyDelta": -0.5,
+      "selectionChanges": 2,
+      "beneficialChanges": 0,
+      "harmfulChanges": 2
+    },
+    "NO_SIGNAL": {
+      "cases": 3,
+      "primeAccuracy": 1,
+      "assistedAccuracy": 1,
+      "accuracyDelta": 0,
+      "selectionChanges": 0,
+      "beneficialChanges": 0,
+      "harmfulChanges": 0
+    }
+  },
+  "agreement": {
+    "ORACLE_NEXUS_AGREE": {
+      "cases": 4,
+      "primeAccuracy": 1,
+      "assistedAccuracy": 0.5,
+      "accuracyDelta": -0.5,
+      "selectionChanges": 2,
+      "beneficialChanges": 0,
+      "harmfulChanges": 2
+    },
+    "ORACLE_NEXUS_DISAGREE": {
+      "cases": 1,
+      "primeAccuracy": 1,
+      "assistedAccuracy": 1,
+      "accuracyDelta": 0,
+      "selectionChanges": 0,
+      "beneficialChanges": 0,
+      "harmfulChanges": 0
+    },
+    "ORACLE_ONLY_NON_NEUTRAL": {
+      "cases": 4,
+      "primeAccuracy": 1,
+      "assistedAccuracy": 0.75,
+      "accuracyDelta": -0.25,
+      "selectionChanges": 1,
+      "beneficialChanges": 0,
+      "harmfulChanges": 1
+    },
+    "NEXUS_ONLY_NON_NEUTRAL": {
+      "cases": 3,
+      "primeAccuracy": 1,
+      "assistedAccuracy": 0.3333333333333333,
+      "accuracyDelta": -0.6666666666666666,
+      "selectionChanges": 2,
+      "beneficialChanges": 0,
+      "harmfulChanges": 2
+    },
+    "BOTH_NEUTRAL": {
+      "cases": 2,
+      "primeAccuracy": 1,
+      "assistedAccuracy": 1,
+      "accuracyDelta": 0,
+      "selectionChanges": 0,
+      "beneficialChanges": 0,
+      "harmfulChanges": 0
+    }
+  },
+  "confidence": {
+    "oracle": [
+      {
+        "bucket": "0-199999",
+        "cases": 1,
+        "primeAccuracy": 1,
+        "assistedAccuracy": 1,
+        "accuracyDelta": 0,
+        "selectionChanges": 0,
+        "beneficialChanges": 0,
+        "harmfulChanges": 0,
+        "expertCorrect": 0,
+        "expertWrong": 1
+      },
+      {
+        "bucket": "200000-399999",
+        "cases": 13,
+        "primeAccuracy": 1,
+        "assistedAccuracy": 0.6923076923076923,
+        "accuracyDelta": -0.3076923076923077,
+        "selectionChanges": 4,
+        "beneficialChanges": 0,
+        "harmfulChanges": 4,
+        "expertCorrect": 3,
+        "expertWrong": 10
+      },
+      {
+        "bucket": "400000-599999",
+        "cases": 0,
+        "primeAccuracy": 0,
+        "assistedAccuracy": 0,
+        "accuracyDelta": 0,
+        "selectionChanges": 0,
+        "beneficialChanges": 0,
+        "harmfulChanges": 0,
+        "expertCorrect": 0,
+        "expertWrong": 0
+      },
+      {
+        "bucket": "600000-799999",
+        "cases": 0,
+        "primeAccuracy": 0,
+        "assistedAccuracy": 0,
+        "accuracyDelta": 0,
+        "selectionChanges": 0,
+        "beneficialChanges": 0,
+        "harmfulChanges": 0,
+        "expertCorrect": 0,
+        "expertWrong": 0
+      },
+      {
+        "bucket": "800000-1000000",
+        "cases": 0,
+        "primeAccuracy": 0,
+        "assistedAccuracy": 0,
+        "accuracyDelta": 0,
+        "selectionChanges": 0,
+        "beneficialChanges": 0,
+        "harmfulChanges": 0,
+        "expertCorrect": 0,
+        "expertWrong": 0
+      }
+    ],
+    "nexus": [
+      {
+        "bucket": "0-199999",
+        "cases": 6,
+        "primeAccuracy": 1,
+        "assistedAccuracy": 1,
+        "accuracyDelta": 0,
+        "selectionChanges": 0,
+        "beneficialChanges": 0,
+        "harmfulChanges": 0,
+        "expertCorrect": 0,
+        "expertWrong": 6
+      },
+      {
+        "bucket": "200000-399999",
+        "cases": 0,
+        "primeAccuracy": 0,
+        "assistedAccuracy": 0,
+        "accuracyDelta": 0,
+        "selectionChanges": 0,
+        "beneficialChanges": 0,
+        "harmfulChanges": 0,
+        "expertCorrect": 0,
+        "expertWrong": 0
+      },
+      {
+        "bucket": "400000-599999",
+        "cases": 0,
+        "primeAccuracy": 0,
+        "assistedAccuracy": 0,
+        "accuracyDelta": 0,
+        "selectionChanges": 0,
+        "beneficialChanges": 0,
+        "harmfulChanges": 0,
+        "expertCorrect": 0,
+        "expertWrong": 0
+      },
+      {
+        "bucket": "600000-799999",
+        "cases": 8,
+        "primeAccuracy": 1,
+        "assistedAccuracy": 0.5,
+        "accuracyDelta": -0.5,
+        "selectionChanges": 4,
+        "beneficialChanges": 0,
+        "harmfulChanges": 4,
+        "expertCorrect": 2,
+        "expertWrong": 6
+      },
+      {
+        "bucket": "800000-1000000",
+        "cases": 0,
+        "primeAccuracy": 0,
+        "assistedAccuracy": 0,
+        "accuracyDelta": 0,
+        "selectionChanges": 0,
+        "beneficialChanges": 0,
+        "harmfulChanges": 0,
+        "expertCorrect": 0,
+        "expertWrong": 0
+      }
+    ]
+  },
+  "margins": [
+    {
+      "bucket": "0-0.01",
+      "cases": 12,
+      "primeAccuracy": 1,
+      "assistedAccuracy": 0.5833333333333334,
+      "accuracyDelta": -0.4166666666666667,
+      "selectionChanges": 5,
+      "beneficialChanges": 0,
+      "harmfulChanges": 5
+    },
+    {
+      "bucket": "0.01-0.03",
+      "cases": 0,
+      "primeAccuracy": 0,
+      "assistedAccuracy": 0,
+      "accuracyDelta": 0,
+      "selectionChanges": 0,
+      "beneficialChanges": 0,
+      "harmfulChanges": 0
+    },
+    {
+      "bucket": "0.03-0.06",
+      "cases": 0,
+      "primeAccuracy": 0,
+      "assistedAccuracy": 0,
+      "accuracyDelta": 0,
+      "selectionChanges": 0,
+      "beneficialChanges": 0,
+      "harmfulChanges": 0
+    },
+    {
+      "bucket": "0.06-0.1",
+      "cases": 0,
+      "primeAccuracy": 0,
+      "assistedAccuracy": 0,
+      "accuracyDelta": 0,
+      "selectionChanges": 0,
+      "beneficialChanges": 0,
+      "harmfulChanges": 0
+    },
+    {
+      "bucket": "0.1-Infinity",
+      "cases": 2,
+      "primeAccuracy": 1,
+      "assistedAccuracy": 1,
+      "accuracyDelta": 0,
+      "selectionChanges": 0,
+      "beneficialChanges": 0,
+      "harmfulChanges": 0
+    }
+  ],
+  "boundSensitivity": [
+    {
+      "bound": 0,
+      "accuracy": 1,
+      "beneficialChanges": 0,
+      "harmfulChanges": 0,
+      "selectionChanges": 0,
+      "status": "PRIME_ONLY_CONTROL",
+      "productionChanged": false
+    },
+    {
+      "bound": 0.005,
+      "accuracy": 0.6428571428571429,
+      "beneficialChanges": 0,
+      "harmfulChanges": 5,
+      "selectionChanges": 5,
+      "status": "OFFLINE_LINEAR_COUNTERFACTUAL",
+      "productionChanged": false
+    },
+    {
+      "bound": 0.01,
+      "accuracy": 0.6428571428571429,
+      "beneficialChanges": 0,
+      "harmfulChanges": 5,
+      "selectionChanges": 5,
+      "status": "OFFLINE_LINEAR_COUNTERFACTUAL",
+      "productionChanged": false
+    },
+    {
+      "bound": 0.02,
+      "accuracy": 0.6428571428571429,
+      "beneficialChanges": 0,
+      "harmfulChanges": 5,
+      "selectionChanges": 5,
+      "status": "OFFLINE_LINEAR_COUNTERFACTUAL",
+      "productionChanged": false
+    },
+    {
+      "bound": 0.03,
+      "accuracy": 0.6428571428571429,
+      "beneficialChanges": 0,
+      "harmfulChanges": 5,
+      "selectionChanges": 5,
+      "status": "OFFLINE_LINEAR_COUNTERFACTUAL",
+      "productionChanged": false
+    }
+  ],
+  "differential": {
+    "maximum": 0.06,
+    "p50": 0.028094,
+    "p95": 0.06,
+    "p99": 0.06
+  },
+  "harmfulCases": [
+    {
+      "caseId": "stage2h2-oracle-opposed",
+      "population": "SYNTHETIC_CONTROLLED",
+      "primeAction": "[\"stage2h1/shift\",\"controller\",{\"id\":\"node-shift\",\"kind\":\"node\"},{\"mode\":\"shift\"}]",
+      "expertAssistedAction": "[\"stage2h1/hold\",\"controller\",{\"id\":\"node-hold\",\"kind\":\"node\"},{\"mode\":\"hold\"}]",
+      "groundTruthAction": "[\"stage2h1/shift\",\"controller\",{\"id\":\"node-shift\",\"kind\":\"node\"},{\"mode\":\"shift\"}]",
+      "primeBaselineGap": 0.0039999999999997815,
+      "oracleContribution": 0.011111,
+      "nexusContribution": 0,
+      "combinedDifferential": 0.028094,
+      "oracleConfidence": 0.375,
+      "nexusConfidence": 0,
+      "causeClassification": "ORACLE_WRONG"
+    },
+    {
+      "caseId": "stage2h2-nexus-opposed",
+      "population": "SYNTHETIC_CONTROLLED",
+      "primeAction": "[\"stage2h1/shift\",\"controller\",{\"id\":\"node-shift\",\"kind\":\"node\"},{\"mode\":\"shift\"}]",
+      "expertAssistedAction": "[\"stage2h1/hold\",\"controller\",{\"id\":\"node-hold\",\"kind\":\"node\"},{\"mode\":\"hold\"}]",
+      "groundTruthAction": "[\"stage2h1/shift\",\"controller\",{\"id\":\"node-shift\",\"kind\":\"node\"},{\"mode\":\"shift\"}]",
+      "primeBaselineGap": 0.0039999999999997815,
+      "oracleContribution": 0,
+      "nexusContribution": 0.02,
+      "combinedDifferential": 0.04,
+      "oracleConfidence": 0.375,
+      "nexusConfidence": 0.6,
+      "causeClassification": "NEXUS_WRONG"
+    },
+    {
+      "caseId": "stage2h2-experts-agree",
+      "population": "SYNTHETIC_CONTROLLED",
+      "primeAction": "[\"stage2h1/shift\",\"controller\",{\"id\":\"node-shift\",\"kind\":\"node\"},{\"mode\":\"shift\"}]",
+      "expertAssistedAction": "[\"stage2h1/hold\",\"controller\",{\"id\":\"node-hold\",\"kind\":\"node\"},{\"mode\":\"hold\"}]",
+      "groundTruthAction": "[\"stage2h1/shift\",\"controller\",{\"id\":\"node-shift\",\"kind\":\"node\"},{\"mode\":\"shift\"}]",
+      "primeBaselineGap": 0.0039999999999997815,
+      "oracleContribution": 0.011111,
+      "nexusContribution": 0.02,
+      "combinedDifferential": 0.06,
+      "oracleConfidence": 0.375,
+      "nexusConfidence": 0.6,
+      "causeClassification": "BOTH_EXPERTS_WRONG"
+    },
+    {
+      "caseId": "stage2h2-near-tie-flip",
+      "population": "SYNTHETIC_CONTROLLED",
+      "primeAction": "[\"stage2h1/shift\",\"controller\",{\"id\":\"node-shift\",\"kind\":\"node\"},{\"mode\":\"shift\"}]",
+      "expertAssistedAction": "[\"stage2h1/hold\",\"controller\",{\"id\":\"node-hold\",\"kind\":\"node\"},{\"mode\":\"hold\"}]",
+      "groundTruthAction": "[\"stage2h1/shift\",\"controller\",{\"id\":\"node-shift\",\"kind\":\"node\"},{\"mode\":\"shift\"}]",
+      "primeBaselineGap": 0.0039999999999996705,
+      "oracleContribution": 0.011111,
+      "nexusContribution": 0.02,
+      "combinedDifferential": 0.06,
+      "oracleConfidence": 0.375,
+      "nexusConfidence": 0.6,
+      "causeClassification": "BOTH_EXPERTS_WRONG"
+    },
+    {
+      "caseId": "stage2h2-nexus-redundant-support",
+      "population": "SYNTHETIC_CONTROLLED",
+      "primeAction": "[\"stage2h1/shift\",\"controller\",{\"id\":\"node-shift\",\"kind\":\"node\"},{\"mode\":\"shift\"}]",
+      "expertAssistedAction": "[\"stage2h1/hold\",\"controller\",{\"id\":\"node-hold\",\"kind\":\"node\"},{\"mode\":\"hold\"}]",
+      "groundTruthAction": "[\"stage2h1/shift\",\"controller\",{\"id\":\"node-shift\",\"kind\":\"node\"},{\"mode\":\"shift\"}]",
+      "primeBaselineGap": 0.0039999999999997815,
+      "oracleContribution": 0,
+      "nexusContribution": 0.013333,
+      "combinedDifferential": 0.033333,
+      "oracleConfidence": 0.375,
+      "nexusConfidence": 0.714286,
+      "causeClassification": "NEXUS_WRONG"
+    }
+  ],
+  "allHarmfulChangesExplained": true,
+  "valueWithoutSelection": {
+    "improved": 5,
+    "regressed": 2,
+    "noEffect": 2
+  },
+  "metrics": {
+    "combinedHarmfulSelectionChangeRate": 0.35714285714285715,
+    "noSignalRegressionRate": 0,
+    "strongPrimePreferenceHarmRate": 0,
+    "targetSignalRegimePositiveValue": true
+  },
+  "qualityGatePass": false,
+  "authority": {
+    "tier": "R0",
+    "canDispatch": false,
+    "canMutateLiveWorld": false
+  },
+  "finalRecommendationOwner": "PRIME",
+  "liveActionDispatches": 0,
+  "worldMutations": 0,
+  "authorityEscalations": 0,
+  "authorityTokenIssues": 0,
+  "evidenceDigest": "1689e9fff9268d457192fd058c3e92b5c2ab3a613a64619121d513d230cee881"
+}

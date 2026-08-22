@@ -1,0 +1,134 @@
+{
+  "certificationSchemaVersion": 1,
+  "stage": "STAGE2G_ORACLE_NEXUS_R0",
+  "authority": "R0",
+  "expertContractVersion": 1,
+  "signalScale": 1000000,
+  "sentinelRuntimeId": "sha256:bdc88a75795283152f13ea724233a8e80adf6c0b210e4b6050418d767f22c668",
+  "generatedRuntimeProvenanceId": "sha256:8621541069da7bcfa1c77e13605eaa98a0d241a8b831b461a7b343c75823150e",
+  "stage2fCampaignId": "sha256:6fe9f8abfbdb164f910444b927bc105f3e1ca133b6f5a5a5e5a06718e70289d9",
+  "sessionId": "stage2g-certification-89b75ec618b162fe",
+  "samplingIdentity": "89b75ec618b162fe83cd56dab84b0d2c073d2f6021fed661d7e0decd62a2dacb",
+  "evidenceMode": "QUALIFICATION",
+  "qualificationEligible": false,
+  "experts": [
+    {
+      "expertId": "sentinel-oracle-temporal",
+      "expertVersion": 1,
+      "expertContractVersion": 1,
+      "kind": "deterministic-temporal",
+      "isLearned": false,
+      "usesRandomness": false,
+      "usesWallClock": false,
+      "authorityTier": "R0"
+    },
+    {
+      "expertId": "sentinel-nexus-relational",
+      "expertVersion": 1,
+      "expertContractVersion": 1,
+      "kind": "deterministic-relational",
+      "isLearned": false,
+      "usesRandomness": false,
+      "usesWallClock": false,
+      "authorityTier": "R0"
+    }
+  ],
+  "oracleCertified": true,
+  "nexusCertified": true,
+  "oracleDeterministic": true,
+  "nexusDeterministic": true,
+  "oracleReplayEquivalent": true,
+  "nexusReplayEquivalent": true,
+  "oracleCaseCount": 11,
+  "nexusCaseCount": 11,
+  "oracleExpertVersion": 1,
+  "nexusExpertVersion": 1,
+  "stage2fProvenanceInherited": true,
+  "runtimeIdentityBound": true,
+  "campaignBound": true,
+  "expertOutputDigestBound": true,
+  "evidenceRecordCount": 22,
+  "evidenceDigest": "30a576900e332ae426abef0fe33a28170049f98beb9ddd1fd791c77c29931fa5",
+  "caseCorpusDigest": "89b75ec618b162fe83cd56dab84b0d2c073d2f6021fed661d7e0decd62a2dacb",
+  "negativeGateCount": 13,
+  "negativeGatesPassed": true,
+  "negativeGates": [
+    {
+      "name": "tampered-signal-value",
+      "rejected": true,
+      "code": "EXPERT_DIGEST_MISMATCH"
+    },
+    {
+      "name": "forged-authority-dispatch",
+      "rejected": true,
+      "code": "EXPERT_AUTHORITY_MISMATCH"
+    },
+    {
+      "name": "manufactured-authority-token",
+      "rejected": true,
+      "code": "EXPERT_AUTHORITY_MISMATCH"
+    },
+    {
+      "name": "injected-dispatch-surface",
+      "rejected": true,
+      "code": "EXPERT_EXECUTION_SURFACE"
+    },
+    {
+      "name": "injected-world-mutation-surface",
+      "rejected": true,
+      "code": "EXPERT_EXECUTION_SURFACE"
+    },
+    {
+      "name": "executable-callback",
+      "rejected": true,
+      "code": "EXPERT_EXECUTION_SURFACE"
+    },
+    {
+      "name": "out-of-range-signal",
+      "rejected": true,
+      "code": "EXPERT_SIGNAL_OUT_OF_RANGE"
+    },
+    {
+      "name": "non-integer-signal",
+      "rejected": true,
+      "code": "EXPERT_SIGNAL_NOT_INTEGER"
+    },
+    {
+      "name": "substituted-runtime-identity",
+      "rejected": true,
+      "code": "RUNTIME_ID_MISMATCH"
+    },
+    {
+      "name": "substituted-campaign-identity",
+      "rejected": true,
+      "code": "CAMPAIGN_ID_MISMATCH"
+    },
+    {
+      "name": "substituted-provenance-identity",
+      "rejected": true,
+      "code": "PROVENANCE_ID_MISMATCH"
+    },
+    {
+      "name": "qualification-inflation",
+      "rejected": true,
+      "code": "STAGE2F_PROVENANCE_VIOLATION"
+    },
+    {
+      "name": "escalated-evidence-authority",
+      "rejected": true,
+      "code": "AUTHORITY_MISMATCH"
+    }
+  ],
+  "primeIntegration": "none-prime-unmodified",
+  "routerIntegration": "none-shadow-envelope-only",
+  "consumedBy": "shadow-evaluation-only",
+  "liveActionDispatches": 0,
+  "worldMutations": 0,
+  "authorityEscalations": 0,
+  "authorityTokenIssues": 0,
+  "incumbentScriptedExecutorPreserved": true,
+  "canDispatch": false,
+  "canMutateLiveWorld": false,
+  "stage2gCertified": true,
+  "certificationHash": "efd49221d970d47162481e8d596d905fe3f60814fc21c08c3b67347ff73bc7a6"
+}

@@ -13,6 +13,7 @@ const recordsDir = path.resolve(get('--records', './records'));
 const sessionsDir = path.resolve(get('--sessions', './sessions'));
 const candidatesDir = path.resolve(get('--candidates', './candidates'));
 const outputFile = path.resolve(get('--output', './evidence/stage2f-latest.json'));
+const campaignFile = path.resolve(get('--campaign', './artifacts/r0-runtime-identity/stage2f-campaign-manifest.json'));
 
 async function loadJsonFiles(directory) {
   let names = [];
@@ -25,7 +26,8 @@ const registration = registry.get('zeknova:zeknova-stage1az-shadow-adapter');
 const records = await loadJsonFiles(recordsDir);
 const sessionManifests = await loadJsonFiles(sessionsDir);
 const candidateRecords = await loadJsonFiles(candidatesDir);
-const campaign = certifyZekNovaSustainedShadowCampaign({ manifest: registration.manifest, records, sessionManifests });
+const campaignManifest = JSON.parse(await readFile(campaignFile, 'utf8'));
+const campaign = certifyZekNovaSustainedShadowCampaign({ manifest: registration.manifest, records, sessionManifests, campaignManifest });
 const candidate = certifyControlledCandidateEvaluation({ manifest: registration.manifest, campaignCertification: campaign, candidateRecords });
 const decision = buildControlledNextStageDecisionPacket({ campaignCertification: campaign, candidateCertification: candidate });
 const output = {

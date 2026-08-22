@@ -1,0 +1,100 @@
+{
+  "stage": "STAGE2K0_NEXUS_RELATIONAL_CAPABILITY_FAILURE_DIAGNOSTIC_AND_7_OF_10_REMEDIATION_BASELINE",
+  "diagnostic": {
+    "redundancyCases": 50,
+    "redundancyFailuresAttributed": 50,
+    "unattributedRedundancyFailures": 0,
+    "primaryRedundancyFailureLayer": "NO_ALTERNATE_PATH_ANALYSIS",
+    "redundancyFailureCounts": {
+      "NO_ALTERNATE_PATH_ANALYSIS": 50,
+      "ENTITY_IDENTITY_LOST": 0,
+      "EDGE_DIRECTION_LOST": 0,
+      "DEPENDENCY_TYPE_LOST": 0,
+      "AGGREGATE_OUTPUT_ONLY": 0,
+      "WRONG_REDUNDANCY_SEMANTICS": 0,
+      "GROUND_TRUTH_MISMATCH": 0,
+      "OTHER": 0
+    },
+    "alternatePathAnalysisPresent": false,
+    "currentNodeRemovalReachabilityAccuracy": 0.5,
+    "currentEdgeRemovalReachabilityAccuracy": 0.5,
+    "currentAlternatePathDetectionAccuracy": 0.5,
+    "currentSpofNodeAccuracy": 0,
+    "currentSpofEdgeAccuracy": 0,
+    "decisionInterpretationCases": 600,
+    "decisionInterpretationFailuresAttributed": 600,
+    "unattributedDecisionInterpretationFailures": 0,
+    "decisionFailureCounts": {
+      "NO_COUNTERFACTUAL_GRAPH_MUTATION": 600,
+      "ENTITY_IDENTITY_LOST": 0,
+      "WRONG_REACHABILITY": 0,
+      "NO_DEPENDENCY_TYPE": 0,
+      "OUTPUT_CONTRACT_LIMITATION": 0,
+      "OTHER": 0
+    },
+    "currentRelationalCounterfactualAccuracy": 0,
+    "bottleneckAndRedundancySemanticallyDistinct": true,
+    "bottleneckRedundancyConfusionMatrix": {
+      "trueTrue": 0,
+      "trueFalse": 300,
+      "falseTrue": 50,
+      "falseFalse": 250
+    },
+    "criticalDependencyEntityIdentificationAccuracy": 0,
+    "bottleneckEntityIdentificationAccuracy": 0,
+    "redundancyEntityIdentificationAccuracy": 0,
+    "primaryNexusFailureMode": "MISSING_RELATIONAL_DELTA_AND_ENTITY_BOUND_OUTPUT",
+    "secondaryNexusFailureModes": [
+      "NO_ALTERNATE_PATH_ANALYSIS",
+      "NO_COUNTERFACTUAL_GRAPH_MUTATION",
+      "AGGREGATE_ONLY_OUTPUT_CONTRACT"
+    ],
+    "diagnosticComplete": true
+  },
+  "remediation": {
+    "target": "SHARED_DETERMINISTIC_RELATIONAL_DELTA_WITH_ENTITY_BOUND_OUTPUT",
+    "candidateSearchSpace": [
+      {
+        "id": "AGGREGATE_SIGNAL_EXTENSION",
+        "redundancy": 0,
+        "interpretation": 0,
+        "entity": 0
+      },
+      {
+        "id": "ALTERNATE_PATH_ENTITY_ENVELOPE",
+        "redundancy": 1,
+        "interpretation": 0,
+        "entity": 1
+      },
+      {
+        "id": "RELATIONAL_DELTA_ENGINE",
+        "redundancy": 1,
+        "interpretation": 1,
+        "entity": 1
+      }
+    ],
+    "candidateSearchSpaceDigest": "9e8fe2b5f14c1697b6a113dc00b580062c18fb6b365f258a769227aa37276cc3",
+    "selectedNexusCandidate": "RELATIONAL_DELTA_ENGINE",
+    "candidateSelectionFrozen": true,
+    "developmentTop1": 1,
+    "validationTop1": 1
+  },
+  "capability": {
+    "nexusV1Score": 4,
+    "nexusCandidateScore": 10,
+    "nexus7Of10GatePass": true,
+    "nexus9Of10GatePass": true,
+    "nexus9Of10RemainingGaps": [],
+    "gateChecks": {
+      "structural": true,
+      "redundancy": true,
+      "bottleneck": true,
+      "decisionInterpretation": true,
+      "beatsGraphBaselines": true,
+      "entityIdentity": true,
+      "causality": true,
+      "ordering": true
+    }
+  },
+  "evidenceDigest": "26799d1969679dab04d9553a82098ec179cd745c23fa0749497a0f38ff8a8076"
+}

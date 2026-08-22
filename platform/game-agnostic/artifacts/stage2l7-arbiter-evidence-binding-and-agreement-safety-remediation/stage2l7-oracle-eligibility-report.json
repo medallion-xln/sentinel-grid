@@ -1,0 +1,62 @@
+{
+  "oracleEligibility": {
+    "adversarial": {
+      "cycle": {
+        "cases": 600,
+        "falseEligible": 0,
+        "rate": 0,
+        "familyEligible": {
+          "MONOTONIC": 0,
+          "QUASI_PERIODIC_NOISE": 0,
+          "SINGLE_REVERSAL": 0,
+          "IRREGULAR_OSCILLATION": 5,
+          "TREND_PLUS_NOISE": 0,
+          "DUPLICATED_SAMPLES": 0
+        }
+      },
+      "threshold": {
+        "cases": 600,
+        "invalidEligible": 0,
+        "rate": 0,
+        "familyEligible": {
+          "ALREADY_CROSSED": 0,
+          "ACTION_INDEPENDENT": 0,
+          "WRONG_POLARITY": 0,
+          "OUTSIDE_RELEVANT_HORIZON": 0,
+          "MISSING_THRESHOLD": 0,
+          "HISTORICAL_EVENT": 0
+        }
+      }
+    },
+    "benefitRetention": {
+      "cycle": {
+        "baseline": 23,
+        "preserved": 23,
+        "rate": 1
+      },
+      "threshold": {
+        "baseline": 73,
+        "preserved": 73,
+        "rate": 1
+      }
+    },
+    "wrapperRule": {
+      "schemaVersion": 1,
+      "id": "ORACLE_HEAD_SPECIFIC_DECISION_ELIGIBILITY_V3_TREND_REJECTION_AND_DEPTH2_HORIZON",
+      "parentRuleDigest": "caf164da491f2b848613f67988473ff913d141084609a1cd859fe4cd4edaafe4",
+      "cycle": {
+        "rejectTrendDominatedRecurrence": true,
+        "maximumEndpointDriftToAmplitudeRatio": 0.55
+      },
+      "threshold": {
+        "maximumActionableHorizonSteps": 2,
+        "rejectMissingOrNonFiniteHorizon": true
+      },
+      "unknownState": "DENY",
+      "actionSelection": false,
+      "advisoryOnly": true
+    },
+    "wrapperRuleDigest": "84008cdd1d91115596244f0d4c3e8d67b82b59a9d27d4231bc32bdf6116b4aa2"
+  },
+  "evidenceDigest": "a8326135c0eddfe621f1b3bc7be9e360e1cd1fc50f80c506b7a310e0a23a1212"
+}

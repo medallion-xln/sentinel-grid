@@ -1,0 +1,45 @@
+{
+  "ruleTable": [
+    {
+      "entry": "A",
+      "condition": "NEITHER_EXPERT_ELIGIBLE",
+      "outcome": "RETURN_PRIME"
+    },
+    {
+      "entry": "B",
+      "condition": "ORACLE_ONLY_ELIGIBLE",
+      "outcome": "SELECT_ORACLE_SUPPORTED_CERTIFIED_TIED_ACTION_ELSE_RETURN_PRIME"
+    },
+    {
+      "entry": "C",
+      "condition": "NEXUS_ONLY_ELIGIBLE",
+      "outcome": "SELECT_NEXUS_SUPPORTED_CERTIFIED_TIED_ACTION_ELSE_RETURN_PRIME"
+    },
+    {
+      "entry": "D",
+      "condition": "BOTH_SUPPORT_SAME_ACTION",
+      "outcome": "SELECT_COMMON_CERTIFIED_TIED_ACTION_ELSE_RETURN_PRIME"
+    },
+    {
+      "entry": "E",
+      "condition": "EXPERTS_SUPPORT_DIFFERENT_ACTIONS",
+      "outcome": "SELECT_HIGHEST_PRIME_RANKED_SUPPORTED_CERTIFIED_TIED_ACTION_ELSE_RETURN_PRIME"
+    },
+    {
+      "entry": "F",
+      "condition": "ONE_SUPPORTS_PRIME_ONE_SUPPORTS_ALTERNATE",
+      "outcome": "RETURN_PRIME"
+    },
+    {
+      "entry": "G",
+      "condition": "BOTH_NEUTRAL_OR_OUTSIDE_AMBIGUITY",
+      "outcome": "RETURN_PRIME"
+    },
+    {
+      "entry": "H",
+      "condition": "MALFORMED_OR_MISSING_EXPERT_EVIDENCE",
+      "outcome": "RETURN_PRIME"
+    }
+  ],
+  "ruleTableDigest": "85f03d3665a9242d350a67842ecdf5a8a007bf4eabde7ac5fa74185ea5b28c9b"
+}

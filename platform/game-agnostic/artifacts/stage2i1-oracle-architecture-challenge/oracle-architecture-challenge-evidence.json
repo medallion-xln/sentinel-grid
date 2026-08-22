@@ -1,0 +1,556 @@
+{
+  "stage": "STAGE2I1_ORACLE_TEMPORAL_ARCHITECTURE_REPLACEMENT_CHALLENGE",
+  "stage2i0Baseline": {
+    "unchanged": true,
+    "digest": "a5bc20e210f90f9b1ebaa8fa69e439468aa995da1fc15285c26b7f75c04b19fe",
+    "scores": {
+      "prime": 4,
+      "oracle": 3,
+      "nexus": 4
+    }
+  },
+  "corpus": {
+    "cases": 2040,
+    "effectiveSemanticGroups": 1605,
+    "digest": "8efa82be84b0dbd27a9a1db55ca483e272466f2c0375ba37a0374a73d30c478c",
+    "semanticFamilyLeakage": false,
+    "development": {
+      "cases": 840,
+      "families": [
+        "MONOTONIC_IMPROVING",
+        "MONOTONIC_WORSENING",
+        "STABLE",
+        "ACCELERATING",
+        "DECELERATING",
+        "LOW_VOLATILITY",
+        "LONG_HISTORY"
+      ],
+      "digest": "655db7f9be3839e4d25ad51a4f1be667360e9af546e0e026fee2fffd209331bb"
+    },
+    "validation": {
+      "cases": 600,
+      "families": [
+        "SINGLE_SPIKE",
+        "SINGLE_DROP",
+        "SHORT_HISTORY",
+        "MISSING_HISTORY",
+        "NOISY_TREND"
+      ],
+      "digest": "21e4507e2a3da07ce5f37920cf15bf36ba36aae6a389fb959b963ffc76c6628e"
+    },
+    "finalHoldout": {
+      "cases": 600,
+      "families": [
+        "REVERSAL",
+        "OSCILLATING",
+        "REGIME_CHANGE",
+        "HIGH_VOLATILITY",
+        "TREND_WITH_OUTLIER"
+      ],
+      "digest": "8e40a5b6c4b29cb0a4792518125e1ea7158e6d4969301da27e857be3ea91f69f",
+      "executedOnce": true
+    }
+  },
+  "simpleBaselinesFrozen": true,
+  "competitors": [
+    "ORACLE_V1",
+    "SIMPLE_TEMPORAL_ENSEMBLE",
+    "REGIME_AWARE_ORACLE",
+    "TEMPORAL_STATE_MACHINE",
+    "ROBUST_TREND_EXPERT"
+  ],
+  "development": {
+    "ORACLE_V1": {
+      "cases": 840,
+      "taskAccuracies": {
+        "DIRECTION": 0.8142857142857143,
+        "PERSISTENCE": 1,
+        "REVERSAL": 1,
+        "REGIME_CHANGE": 1,
+        "VOLATILITY": 1,
+        "ACCELERATION": 1,
+        "DECELERATION": 0.7226190476190476,
+        "CYCLE": 1,
+        "TIME_TO_THRESHOLD": 0.6238095238095238,
+        "HISTORY_SUFFICIENCY": 1
+      },
+      "taskMean": 0.9160714285714284,
+      "directionNetValue": 444,
+      "activationRate": 0.9,
+      "abstentionRate": 0.09999999999999998,
+      "correctAbstentionRate": 0.1,
+      "falseConfidenceRate": 0.18571428571428572
+    },
+    "SIMPLE_TEMPORAL_ENSEMBLE": {
+      "cases": 840,
+      "taskAccuracies": {
+        "DIRECTION": 1,
+        "PERSISTENCE": 1,
+        "REVERSAL": 1,
+        "REGIME_CHANGE": 1,
+        "VOLATILITY": 1,
+        "ACCELERATION": 1,
+        "DECELERATION": 0.7226190476190476,
+        "CYCLE": 1,
+        "TIME_TO_THRESHOLD": 0.6238095238095238,
+        "HISTORY_SUFFICIENCY": 1
+      },
+      "taskMean": 0.9346428571428571,
+      "directionNetValue": 600,
+      "activationRate": 0.7142857142857143,
+      "abstentionRate": 0.2857142857142857,
+      "correctAbstentionRate": 0.2857142857142857,
+      "falseConfidenceRate": 0
+    },
+    "REGIME_AWARE_ORACLE": {
+      "cases": 840,
+      "taskAccuracies": {
+        "DIRECTION": 1,
+        "PERSISTENCE": 1,
+        "REVERSAL": 1,
+        "REGIME_CHANGE": 1,
+        "VOLATILITY": 1,
+        "ACCELERATION": 1,
+        "DECELERATION": 0.7226190476190476,
+        "CYCLE": 1,
+        "TIME_TO_THRESHOLD": 0.6238095238095238,
+        "HISTORY_SUFFICIENCY": 1
+      },
+      "taskMean": 0.9346428571428571,
+      "directionNetValue": 600,
+      "activationRate": 0.7142857142857143,
+      "abstentionRate": 0.2857142857142857,
+      "correctAbstentionRate": 0.2857142857142857,
+      "falseConfidenceRate": 0
+    },
+    "TEMPORAL_STATE_MACHINE": {
+      "cases": 840,
+      "taskAccuracies": {
+        "DIRECTION": 1,
+        "PERSISTENCE": 1,
+        "REVERSAL": 1,
+        "REGIME_CHANGE": 1,
+        "VOLATILITY": 1,
+        "ACCELERATION": 1,
+        "DECELERATION": 0.7226190476190476,
+        "CYCLE": 1,
+        "TIME_TO_THRESHOLD": 0.6238095238095238,
+        "HISTORY_SUFFICIENCY": 1
+      },
+      "taskMean": 0.9346428571428571,
+      "directionNetValue": 600,
+      "activationRate": 0.7142857142857143,
+      "abstentionRate": 0.2857142857142857,
+      "correctAbstentionRate": 0.2857142857142857,
+      "falseConfidenceRate": 0
+    },
+    "ROBUST_TREND_EXPERT": {
+      "cases": 840,
+      "taskAccuracies": {
+        "DIRECTION": 1,
+        "PERSISTENCE": 1,
+        "REVERSAL": 1,
+        "REGIME_CHANGE": 1,
+        "VOLATILITY": 1,
+        "ACCELERATION": 1,
+        "DECELERATION": 0.7226190476190476,
+        "CYCLE": 1,
+        "TIME_TO_THRESHOLD": 0.6238095238095238,
+        "HISTORY_SUFFICIENCY": 1
+      },
+      "taskMean": 0.9346428571428571,
+      "directionNetValue": 600,
+      "activationRate": 0.7142857142857143,
+      "abstentionRate": 0.2857142857142857,
+      "correctAbstentionRate": 0.2857142857142857,
+      "falseConfidenceRate": 0
+    }
+  },
+  "validation": {
+    "ORACLE_V1": {
+      "cases": 600,
+      "taskAccuracies": {
+        "DIRECTION": 0.64,
+        "PERSISTENCE": 1,
+        "REVERSAL": 1,
+        "REGIME_CHANGE": 1,
+        "VOLATILITY": 0.6,
+        "ACCELERATION": 0.54,
+        "DECELERATION": 0.54,
+        "CYCLE": 1,
+        "TIME_TO_THRESHOLD": 0.4,
+        "HISTORY_SUFFICIENCY": 1
+      },
+      "taskMean": 0.772,
+      "directionNetValue": 24,
+      "activationRate": 0.36,
+      "abstentionRate": 0.64,
+      "correctAbstentionRate": 0.44,
+      "falseConfidenceRate": 0.16
+    },
+    "SIMPLE_TEMPORAL_ENSEMBLE": {
+      "cases": 600,
+      "taskAccuracies": {
+        "DIRECTION": 0.6,
+        "PERSISTENCE": 1,
+        "REVERSAL": 1,
+        "REGIME_CHANGE": 1,
+        "VOLATILITY": 1,
+        "ACCELERATION": 0.54,
+        "DECELERATION": 0.54,
+        "CYCLE": 1,
+        "TIME_TO_THRESHOLD": 0.4,
+        "HISTORY_SUFFICIENCY": 1
+      },
+      "taskMean": 0.808,
+      "directionNetValue": -120,
+      "activationRate": 0.6,
+      "abstentionRate": 0.4,
+      "correctAbstentionRate": 0.4,
+      "falseConfidenceRate": 0.4
+    },
+    "REGIME_AWARE_ORACLE": {
+      "cases": 600,
+      "taskAccuracies": {
+        "DIRECTION": 0.6,
+        "PERSISTENCE": 1,
+        "REVERSAL": 1,
+        "REGIME_CHANGE": 1,
+        "VOLATILITY": 1,
+        "ACCELERATION": 0.54,
+        "DECELERATION": 0.54,
+        "CYCLE": 1,
+        "TIME_TO_THRESHOLD": 0.4,
+        "HISTORY_SUFFICIENCY": 1
+      },
+      "taskMean": 0.808,
+      "directionNetValue": -120,
+      "activationRate": 0.6,
+      "abstentionRate": 0.4,
+      "correctAbstentionRate": 0.4,
+      "falseConfidenceRate": 0.4
+    },
+    "TEMPORAL_STATE_MACHINE": {
+      "cases": 600,
+      "taskAccuracies": {
+        "DIRECTION": 0.8,
+        "PERSISTENCE": 1,
+        "REVERSAL": 1,
+        "REGIME_CHANGE": 1,
+        "VOLATILITY": 1,
+        "ACCELERATION": 0.54,
+        "DECELERATION": 0.54,
+        "CYCLE": 1,
+        "TIME_TO_THRESHOLD": 0.4,
+        "HISTORY_SUFFICIENCY": 1
+      },
+      "taskMean": 0.8280000000000001,
+      "directionNetValue": 120,
+      "activationRate": 0.2,
+      "abstentionRate": 0.8,
+      "correctAbstentionRate": 0.6,
+      "falseConfidenceRate": 0
+    },
+    "ROBUST_TREND_EXPERT": {
+      "cases": 600,
+      "taskAccuracies": {
+        "DIRECTION": 0.8,
+        "PERSISTENCE": 1,
+        "REVERSAL": 1,
+        "REGIME_CHANGE": 1,
+        "VOLATILITY": 1,
+        "ACCELERATION": 0.54,
+        "DECELERATION": 0.54,
+        "CYCLE": 1,
+        "TIME_TO_THRESHOLD": 0.4,
+        "HISTORY_SUFFICIENCY": 1
+      },
+      "taskMean": 0.8280000000000001,
+      "directionNetValue": 120,
+      "activationRate": 0.2,
+      "abstentionRate": 0.8,
+      "correctAbstentionRate": 0.6,
+      "falseConfidenceRate": 0
+    }
+  },
+  "selection": {
+    "selectedArchitecture": "ROBUST_TREND_EXPERT",
+    "frozenBeforeHoldout": true,
+    "rule": "MAX_VALIDATION_TASK_MEAN_THEN_MIN_FALSE_CONFIDENCE_THEN_MIN_NAME_LENGTH"
+  },
+  "finalHoldout": {
+    "competitors": {
+      "ORACLE_V1": {
+        "cases": 600,
+        "taskAccuracies": {
+          "DIRECTION": 0.2,
+          "PERSISTENCE": 1,
+          "REVERSAL": 0.6,
+          "REGIME_CHANGE": 0.8,
+          "VOLATILITY": 0.8,
+          "ACCELERATION": 0.16,
+          "DECELERATION": 0.16,
+          "CYCLE": 0.8,
+          "TIME_TO_THRESHOLD": 0.7966666666666666,
+          "HISTORY_SUFFICIENCY": 1
+        },
+        "taskMean": 0.6316666666666666,
+        "directionNetValue": -120,
+        "activationRate": 0.6,
+        "abstentionRate": 0.4,
+        "correctAbstentionRate": 0,
+        "falseConfidenceRate": 0.4
+      },
+      "SIMPLE_TEMPORAL_ENSEMBLE": {
+        "cases": 600,
+        "taskAccuracies": {
+          "DIRECTION": 0.2,
+          "PERSISTENCE": 1,
+          "REVERSAL": 1,
+          "REGIME_CHANGE": 0.725,
+          "VOLATILITY": 0.76,
+          "ACCELERATION": 0.16,
+          "DECELERATION": 0.16,
+          "CYCLE": 0.8,
+          "TIME_TO_THRESHOLD": 0.7966666666666666,
+          "HISTORY_SUFFICIENCY": 1
+        },
+        "taskMean": 0.6601666666666668,
+        "directionNetValue": -264,
+        "activationRate": 0.84,
+        "abstentionRate": 0.16000000000000003,
+        "correctAbstentionRate": 0,
+        "falseConfidenceRate": 0.64
+      },
+      "REGIME_AWARE_ORACLE": {
+        "cases": 600,
+        "taskAccuracies": {
+          "DIRECTION": 0.6,
+          "PERSISTENCE": 1,
+          "REVERSAL": 1,
+          "REGIME_CHANGE": 0.725,
+          "VOLATILITY": 0.76,
+          "ACCELERATION": 0.16,
+          "DECELERATION": 0.16,
+          "CYCLE": 0.8,
+          "TIME_TO_THRESHOLD": 0.7966666666666666,
+          "HISTORY_SUFFICIENCY": 1
+        },
+        "taskMean": 0.7001666666666667,
+        "directionNetValue": 216,
+        "activationRate": 0.84,
+        "abstentionRate": 0.16000000000000003,
+        "correctAbstentionRate": 0,
+        "falseConfidenceRate": 0.24
+      },
+      "TEMPORAL_STATE_MACHINE": {
+        "cases": 600,
+        "taskAccuracies": {
+          "DIRECTION": 1,
+          "PERSISTENCE": 1,
+          "REVERSAL": 1,
+          "REGIME_CHANGE": 0.725,
+          "VOLATILITY": 0.76,
+          "ACCELERATION": 0.16,
+          "DECELERATION": 0.16,
+          "CYCLE": 0.8,
+          "TIME_TO_THRESHOLD": 0.7966666666666666,
+          "HISTORY_SUFFICIENCY": 1
+        },
+        "taskMean": 0.7401666666666668,
+        "directionNetValue": 600,
+        "activationRate": 1,
+        "abstentionRate": 0,
+        "correctAbstentionRate": 0,
+        "falseConfidenceRate": 0
+      },
+      "ROBUST_TREND_EXPERT": {
+        "cases": 600,
+        "taskAccuracies": {
+          "DIRECTION": 0.6,
+          "PERSISTENCE": 1,
+          "REVERSAL": 1,
+          "REGIME_CHANGE": 0.725,
+          "VOLATILITY": 0.76,
+          "ACCELERATION": 0.16,
+          "DECELERATION": 0.16,
+          "CYCLE": 0.8,
+          "TIME_TO_THRESHOLD": 0.7966666666666666,
+          "HISTORY_SUFFICIENCY": 1
+        },
+        "taskMean": 0.7001666666666667,
+        "directionNetValue": 120,
+        "activationRate": 1,
+        "abstentionRate": 0,
+        "correctAbstentionRate": 0,
+        "falseConfidenceRate": 0.4
+      }
+    },
+    "simpleBaselines": {
+      "CURRENT_STATE_ONLY": {
+        "cases": 600,
+        "directionAccuracy": 0.6,
+        "netValue": 120,
+        "netValueRate": 0.2,
+        "abstention": 0
+      },
+      "LAST_MINUS_FIRST": {
+        "cases": 600,
+        "directionAccuracy": 0.23809523809523808,
+        "netValue": -264,
+        "netValueRate": -0.44,
+        "abstention": 96
+      },
+      "RECENT_DELTA": {
+        "cases": 600,
+        "directionAccuracy": 0.6,
+        "netValue": 120,
+        "netValueRate": 0.2,
+        "abstention": 0
+      },
+      "MOVING_AVERAGE_DIRECTION": {
+        "cases": 600,
+        "directionAccuracy": 0.2631578947368421,
+        "netValue": -216,
+        "netValueRate": -0.36,
+        "abstention": 144
+      },
+      "FULL_WINDOW_LINEAR_SLOPE": {
+        "cases": 600,
+        "directionAccuracy": 0.23809523809523808,
+        "netValue": -264,
+        "netValueRate": -0.44,
+        "abstention": 96
+      },
+      "RECENT_WINDOW_LINEAR_SLOPE": {
+        "cases": 600,
+        "directionAccuracy": 1,
+        "netValue": 360,
+        "netValueRate": 0.6,
+        "abstention": 240
+      },
+      "MAJORITY_DELTA_DIRECTION": {
+        "cases": 600,
+        "directionAccuracy": 0.23809523809523808,
+        "netValue": -264,
+        "netValueRate": -0.44,
+        "abstention": 96
+      }
+    },
+    "bestSimpleBaseline": {
+      "name": "RECENT_WINDOW_LINEAR_SLOPE",
+      "cases": 600,
+      "directionAccuracy": 1,
+      "netValue": 360,
+      "netValueRate": 0.6,
+      "abstention": 240
+    },
+    "selected": {
+      "cases": 600,
+      "taskAccuracies": {
+        "DIRECTION": 0.6,
+        "PERSISTENCE": 1,
+        "REVERSAL": 1,
+        "REGIME_CHANGE": 0.725,
+        "VOLATILITY": 0.76,
+        "ACCELERATION": 0.16,
+        "DECELERATION": 0.16,
+        "CYCLE": 0.8,
+        "TIME_TO_THRESHOLD": 0.7966666666666666,
+        "HISTORY_SUFFICIENCY": 1
+      },
+      "taskMean": 0.7001666666666667,
+      "directionNetValue": 120,
+      "activationRate": 1,
+      "abstentionRate": 0,
+      "correctAbstentionRate": 0,
+      "falseConfidenceRate": 0.4
+    },
+    "oracleV1": {
+      "cases": 600,
+      "taskAccuracies": {
+        "DIRECTION": 0.2,
+        "PERSISTENCE": 1,
+        "REVERSAL": 0.6,
+        "REGIME_CHANGE": 0.8,
+        "VOLATILITY": 0.8,
+        "ACCELERATION": 0.16,
+        "DECELERATION": 0.16,
+        "CYCLE": 0.8,
+        "TIME_TO_THRESHOLD": 0.7966666666666666,
+        "HISTORY_SUFFICIENCY": 1
+      },
+      "taskMean": 0.6316666666666666,
+      "directionNetValue": -120,
+      "activationRate": 0.6,
+      "abstentionRate": 0.4,
+      "correctAbstentionRate": 0,
+      "falseConfidenceRate": 0.4
+    },
+    "temporalIncrementalValue": 0,
+    "adversarialTemporalAccuracy": 0.7001666666666667,
+    "beatAllSimpleBaselines": false,
+    "adversarialFamilies": [
+      "REVERSAL",
+      "OSCILLATING",
+      "REGIME_CHANGE",
+      "HIGH_VOLATILITY",
+      "TREND_WITH_OUTLIER"
+    ]
+  },
+  "complexity": {
+    "ORACLE_V1": {
+      "stateSize": 0,
+      "signalCount": 18
+    },
+    "SIMPLE_TEMPORAL_ENSEMBLE": {
+      "stateSize": 0,
+      "signalCount": 5
+    },
+    "REGIME_AWARE_ORACLE": {
+      "stateSize": 0,
+      "signalCount": 7
+    },
+    "TEMPORAL_STATE_MACHINE": {
+      "stateSize": 1,
+      "signalCount": 10
+    },
+    "ROBUST_TREND_EXPERT": {
+      "stateSize": 0,
+      "signalCount": 5
+    }
+  },
+  "capability": {
+    "oracleV1": 3,
+    "challenger": 3,
+    "gatePass": false
+  },
+  "qualityGate": {
+    "preRegistered": true,
+    "minimumTaskMean": 0.85,
+    "minimumReversalAccuracy": 0.8,
+    "minimumRegimeChangeAccuracy": 0.8,
+    "minimumAdversarialAccuracy": 0.8,
+    "requiresPositiveTemporalIncrementalValue": true,
+    "requiresBeatAllSimpleBaselines": true,
+    "minimumCapabilityScore": 7
+  },
+  "qualityGatePass": false,
+  "oracleProductionReplaced": false,
+  "primeChanged": false,
+  "nexusChanged": false,
+  "expertSelectionInfluence": 0,
+  "expertActionSelectionApproved": false,
+  "finalRecommendationOwner": "PRIME",
+  "replayEquivalent": true,
+  "authority": {
+    "tier": "R0",
+    "canDispatch": false,
+    "canMutateLiveWorld": false
+  },
+  "liveActionDispatches": 0,
+  "worldMutations": 0,
+  "authorityEscalations": 0,
+  "authorityTokenIssues": 0,
+  "evidenceDigest": "b5241cdab75f87933601adfa48dc014c7b3f8c99c5b530e50655966d2302aa87"
+}

@@ -1,0 +1,971 @@
+{
+  "stage": "STAGE2H6_ORACLE_TEMPORAL_CORPUS_AND_VOLATILITY_MAPPING_REMEDIATION_DESIGN",
+  "corpus": {
+    "cases": 1020,
+    "digest": "28eb0a7c447891bb653499ad2a810fa1b342c2b8b445a873f51a73f1ad1bb19d",
+    "effectiveSemanticSampleSize": 803,
+    "semanticFamilies": 17,
+    "groundTruthLeakage": false,
+    "postTransitionLeakage": false
+  },
+  "partitions": {
+    "semanticFamilyLeakage": false,
+    "development": {
+      "cases": 420,
+      "digest": "8ffaccc625d36737e7c76529f5f0bc7b977b37d8a0575bbccd22c740a119ff2a",
+      "families": [
+        "MONOTONIC_IMPROVING",
+        "MONOTONIC_WORSENING",
+        "STABLE",
+        "ACCELERATING",
+        "DECELERATING",
+        "LOW_VOLATILITY",
+        "LONG_HISTORY"
+      ]
+    },
+    "validation": {
+      "cases": 300,
+      "digest": "459dd33db395a5d86160f0412feba66896c806a5d55e1c157408c98b73cb745a",
+      "families": [
+        "SINGLE_SPIKE",
+        "SINGLE_DROP",
+        "SHORT_HISTORY",
+        "MISSING_HISTORY",
+        "NOISY_TREND"
+      ]
+    },
+    "finalHoldout": {
+      "cases": 300,
+      "digest": "218c92b692a572cdd12a96231dfaed67dfced3ff387b4a388046e6c92e7257f9",
+      "families": [
+        "REVERSAL",
+        "OSCILLATING",
+        "REGIME_CHANGE",
+        "HIGH_VOLATILITY",
+        "TREND_WITH_OUTLIER"
+      ],
+      "executedOnce": true
+    }
+  },
+  "baselineImplementationsFrozen": true,
+  "search": {
+    "space": [
+      {
+        "id": "recent-window-3",
+        "estimator": "RECENT_SLOPE",
+        "window": 3,
+        "reversal": false,
+        "volatilityAbstention": false
+      },
+      {
+        "id": "recent-window-5",
+        "estimator": "RECENT_SLOPE",
+        "window": 5,
+        "reversal": false,
+        "volatilityAbstention": false
+      },
+      {
+        "id": "majority-deltas",
+        "estimator": "MAJORITY_DELTA",
+        "window": 8,
+        "reversal": false,
+        "volatilityAbstention": false
+      },
+      {
+        "id": "recency-weighted",
+        "estimator": "RECENCY_WEIGHTED",
+        "window": 8,
+        "reversal": true,
+        "volatilityAbstention": false
+      },
+      {
+        "id": "robust-reversal",
+        "estimator": "ROBUST_MEDIAN",
+        "window": 5,
+        "reversal": true,
+        "volatilityAbstention": false
+      },
+      {
+        "id": "robust-reversal-volatility-abstention",
+        "estimator": "ROBUST_MEDIAN",
+        "window": 5,
+        "reversal": true,
+        "volatilityAbstention": true
+      }
+    ],
+    "digest": "29484fb7bcf9d235f5b4948f1a0b564ea9539abd1c04c540da627138fe4ab0bb",
+    "selectionRuleFrozen": true,
+    "developmentResults": [
+      {
+        "candidate": {
+          "id": "recent-window-3",
+          "estimator": "RECENT_SLOPE",
+          "window": 3,
+          "reversal": false,
+          "volatilityAbstention": false
+        },
+        "cases": 420,
+        "improvements": 300,
+        "regressions": 0,
+        "neutral": 120,
+        "netValue": 300,
+        "netValueRate": 0.7142857142857143,
+        "regressionRate": 0,
+        "activationRate": 0.7142857142857143,
+        "abstentionRate": 0.2857142857142857
+      },
+      {
+        "candidate": {
+          "id": "recent-window-5",
+          "estimator": "RECENT_SLOPE",
+          "window": 5,
+          "reversal": false,
+          "volatilityAbstention": false
+        },
+        "cases": 420,
+        "improvements": 300,
+        "regressions": 0,
+        "neutral": 120,
+        "netValue": 300,
+        "netValueRate": 0.7142857142857143,
+        "regressionRate": 0,
+        "activationRate": 0.7142857142857143,
+        "abstentionRate": 0.2857142857142857
+      },
+      {
+        "candidate": {
+          "id": "majority-deltas",
+          "estimator": "MAJORITY_DELTA",
+          "window": 8,
+          "reversal": false,
+          "volatilityAbstention": false
+        },
+        "cases": 420,
+        "improvements": 300,
+        "regressions": 88,
+        "neutral": 32,
+        "netValue": 212,
+        "netValueRate": 0.5047619047619047,
+        "regressionRate": 0.20952380952380953,
+        "activationRate": 0.9238095238095239,
+        "abstentionRate": 0.0761904761904762
+      },
+      {
+        "candidate": {
+          "id": "recency-weighted",
+          "estimator": "RECENCY_WEIGHTED",
+          "window": 8,
+          "reversal": true,
+          "volatilityAbstention": false
+        },
+        "cases": 420,
+        "improvements": 300,
+        "regressions": 0,
+        "neutral": 120,
+        "netValue": 300,
+        "netValueRate": 0.7142857142857143,
+        "regressionRate": 0,
+        "activationRate": 0.7142857142857143,
+        "abstentionRate": 0.2857142857142857
+      },
+      {
+        "candidate": {
+          "id": "robust-reversal",
+          "estimator": "ROBUST_MEDIAN",
+          "window": 5,
+          "reversal": true,
+          "volatilityAbstention": false
+        },
+        "cases": 420,
+        "improvements": 300,
+        "regressions": 0,
+        "neutral": 120,
+        "netValue": 300,
+        "netValueRate": 0.7142857142857143,
+        "regressionRate": 0,
+        "activationRate": 0.7142857142857143,
+        "abstentionRate": 0.2857142857142857
+      },
+      {
+        "candidate": {
+          "id": "robust-reversal-volatility-abstention",
+          "estimator": "ROBUST_MEDIAN",
+          "window": 5,
+          "reversal": true,
+          "volatilityAbstention": true
+        },
+        "cases": 420,
+        "improvements": 300,
+        "regressions": 0,
+        "neutral": 120,
+        "netValue": 300,
+        "netValueRate": 0.7142857142857143,
+        "regressionRate": 0,
+        "activationRate": 0.7142857142857143,
+        "abstentionRate": 0.2857142857142857
+      }
+    ],
+    "validationResults": [
+      {
+        "candidate": {
+          "id": "recent-window-3",
+          "estimator": "RECENT_SLOPE",
+          "window": 3,
+          "reversal": false,
+          "volatilityAbstention": false
+        },
+        "cases": 300,
+        "improvements": 60,
+        "regressions": 0,
+        "neutral": 240,
+        "netValue": 60,
+        "netValueRate": 0.2,
+        "regressionRate": 0,
+        "activationRate": 0.2,
+        "abstentionRate": 0.8
+      },
+      {
+        "candidate": {
+          "id": "recent-window-5",
+          "estimator": "RECENT_SLOPE",
+          "window": 5,
+          "reversal": false,
+          "volatilityAbstention": false
+        },
+        "cases": 300,
+        "improvements": 60,
+        "regressions": 120,
+        "neutral": 120,
+        "netValue": -60,
+        "netValueRate": -0.2,
+        "regressionRate": 0.4,
+        "activationRate": 0.6,
+        "abstentionRate": 0.4
+      },
+      {
+        "candidate": {
+          "id": "majority-deltas",
+          "estimator": "MAJORITY_DELTA",
+          "window": 8,
+          "reversal": false,
+          "volatilityAbstention": false
+        },
+        "cases": 300,
+        "improvements": 81,
+        "regressions": 59,
+        "neutral": 160,
+        "netValue": 22,
+        "netValueRate": 0.07333333333333333,
+        "regressionRate": 0.19666666666666666,
+        "activationRate": 0.4666666666666667,
+        "abstentionRate": 0.5333333333333333
+      },
+      {
+        "candidate": {
+          "id": "recency-weighted",
+          "estimator": "RECENCY_WEIGHTED",
+          "window": 8,
+          "reversal": true,
+          "volatilityAbstention": false
+        },
+        "cases": 300,
+        "improvements": 120,
+        "regressions": 60,
+        "neutral": 120,
+        "netValue": 60,
+        "netValueRate": 0.2,
+        "regressionRate": 0.2,
+        "activationRate": 0.6,
+        "abstentionRate": 0.4
+      },
+      {
+        "candidate": {
+          "id": "robust-reversal",
+          "estimator": "ROBUST_MEDIAN",
+          "window": 5,
+          "reversal": true,
+          "volatilityAbstention": false
+        },
+        "cases": 300,
+        "improvements": 60,
+        "regressions": 0,
+        "neutral": 240,
+        "netValue": 60,
+        "netValueRate": 0.2,
+        "regressionRate": 0,
+        "activationRate": 0.2,
+        "abstentionRate": 0.8
+      },
+      {
+        "candidate": {
+          "id": "robust-reversal-volatility-abstention",
+          "estimator": "ROBUST_MEDIAN",
+          "window": 5,
+          "reversal": true,
+          "volatilityAbstention": true
+        },
+        "cases": 300,
+        "improvements": 60,
+        "regressions": 0,
+        "neutral": 240,
+        "netValue": 60,
+        "netValueRate": 0.2,
+        "regressionRate": 0,
+        "activationRate": 0.2,
+        "abstentionRate": 0.8
+      }
+    ],
+    "selectedCandidate": {
+      "id": "recent-window-3",
+      "estimator": "RECENT_SLOPE",
+      "window": 3,
+      "reversal": false,
+      "volatilityAbstention": false
+    }
+  },
+  "diagnosis": {
+    "oracleV1DirectionFailureModes": [
+      "FULL_HISTORY_SLOPE_OVERWEIGHTS_STALE_SAMPLES",
+      "RECENT_REGIME_CHANGES_NOT_EXPLICITLY_INTERPRETED",
+      "MAGNITUDE_AND_DIRECTION_COUPLED_IN_ACTION_MAPPING"
+    ],
+    "volatilityPrimaryFailureMode": "VOLATILITY_SIGN_INTERPRETATION_AND_ACTION_MAPPING",
+    "volatilityV2Semantics": "NON_DIRECTIONAL_UNCERTAINTY_ONLY"
+  },
+  "finalHoldout": {
+    "oracleV1": {
+      "cases": 300,
+      "improvements": 60,
+      "regressions": 120,
+      "neutral": 120,
+      "netValue": -60,
+      "netValueRate": -0.2,
+      "regressionRate": 0.4,
+      "activationRate": 0.6,
+      "abstentionRate": 0.4
+    },
+    "oracleV2": {
+      "cases": 300,
+      "improvements": 60,
+      "regressions": 0,
+      "neutral": 240,
+      "netValue": 60,
+      "netValueRate": 0.2,
+      "regressionRate": 0,
+      "activationRate": 0.2,
+      "abstentionRate": 0.8
+    },
+    "baselines": {
+      "CURRENT_STATE_ONLY": {
+        "cases": 300,
+        "improvements": 180,
+        "regressions": 120,
+        "neutral": 0,
+        "netValue": 60,
+        "netValueRate": 0.2,
+        "regressionRate": 0.4,
+        "activationRate": 1,
+        "abstentionRate": 0
+      },
+      "LAST_MINUS_FIRST": {
+        "cases": 300,
+        "improvements": 60,
+        "regressions": 192,
+        "neutral": 48,
+        "netValue": -132,
+        "netValueRate": -0.44,
+        "regressionRate": 0.64,
+        "activationRate": 0.84,
+        "abstentionRate": 0.16
+      },
+      "RECENT_DELTA": {
+        "cases": 300,
+        "improvements": 180,
+        "regressions": 120,
+        "neutral": 0,
+        "netValue": 60,
+        "netValueRate": 0.2,
+        "regressionRate": 0.4,
+        "activationRate": 1,
+        "abstentionRate": 0
+      },
+      "SIMPLE_LINEAR_SLOPE": {
+        "cases": 300,
+        "improvements": 74,
+        "regressions": 206,
+        "neutral": 20,
+        "netValue": -132,
+        "netValueRate": -0.44,
+        "regressionRate": 0.6866666666666666,
+        "activationRate": 0.9333333333333333,
+        "abstentionRate": 0.06666666666666667
+      },
+      "MOVING_AVERAGE_DIRECTION": {
+        "cases": 300,
+        "improvements": 60,
+        "regressions": 168,
+        "neutral": 72,
+        "netValue": -108,
+        "netValueRate": -0.36,
+        "regressionRate": 0.56,
+        "activationRate": 0.76,
+        "abstentionRate": 0.24
+      }
+    },
+    "temporalIncrementalValue": 0,
+    "outperformsOracleV1": true,
+    "outperformsSimpleBaselines": false
+  },
+  "familyResults": {
+    "MONOTONIC_IMPROVING": {
+      "oracleV1": {
+        "cases": 60,
+        "improvements": 60,
+        "regressions": 0,
+        "neutral": 0,
+        "netValue": 60,
+        "netValueRate": 1,
+        "regressionRate": 0,
+        "activationRate": 1,
+        "abstentionRate": 0
+      },
+      "oracleV2": {
+        "cases": 60,
+        "improvements": 60,
+        "regressions": 0,
+        "neutral": 0,
+        "netValue": 60,
+        "netValueRate": 1,
+        "regressionRate": 0,
+        "activationRate": 1,
+        "abstentionRate": 0
+      }
+    },
+    "MONOTONIC_WORSENING": {
+      "oracleV1": {
+        "cases": 60,
+        "improvements": 60,
+        "regressions": 0,
+        "neutral": 0,
+        "netValue": 60,
+        "netValueRate": 1,
+        "regressionRate": 0,
+        "activationRate": 1,
+        "abstentionRate": 0
+      },
+      "oracleV2": {
+        "cases": 60,
+        "improvements": 60,
+        "regressions": 0,
+        "neutral": 0,
+        "netValue": 60,
+        "netValueRate": 1,
+        "regressionRate": 0,
+        "activationRate": 1,
+        "abstentionRate": 0
+      }
+    },
+    "STABLE": {
+      "oracleV1": {
+        "cases": 60,
+        "improvements": 0,
+        "regressions": 39,
+        "neutral": 21,
+        "netValue": -39,
+        "netValueRate": -0.65,
+        "regressionRate": 0.65,
+        "activationRate": 0.65,
+        "abstentionRate": 0.35
+      },
+      "oracleV2": {
+        "cases": 60,
+        "improvements": 0,
+        "regressions": 0,
+        "neutral": 60,
+        "netValue": 0,
+        "netValueRate": 0,
+        "regressionRate": 0,
+        "activationRate": 0,
+        "abstentionRate": 1
+      }
+    },
+    "REVERSAL": {
+      "oracleV1": {
+        "cases": 60,
+        "improvements": 0,
+        "regressions": 60,
+        "neutral": 0,
+        "netValue": -60,
+        "netValueRate": -1,
+        "regressionRate": 1,
+        "activationRate": 1,
+        "abstentionRate": 0
+      },
+      "oracleV2": {
+        "cases": 60,
+        "improvements": 0,
+        "regressions": 0,
+        "neutral": 60,
+        "netValue": 0,
+        "netValueRate": 0,
+        "regressionRate": 0,
+        "activationRate": 0,
+        "abstentionRate": 1
+      }
+    },
+    "OSCILLATING": {
+      "oracleV1": {
+        "cases": 60,
+        "improvements": 0,
+        "regressions": 0,
+        "neutral": 60,
+        "netValue": 0,
+        "netValueRate": 0,
+        "regressionRate": 0,
+        "activationRate": 0,
+        "abstentionRate": 1
+      },
+      "oracleV2": {
+        "cases": 60,
+        "improvements": 0,
+        "regressions": 0,
+        "neutral": 60,
+        "netValue": 0,
+        "netValueRate": 0,
+        "regressionRate": 0,
+        "activationRate": 0,
+        "abstentionRate": 1
+      }
+    },
+    "ACCELERATING": {
+      "oracleV1": {
+        "cases": 60,
+        "improvements": 60,
+        "regressions": 0,
+        "neutral": 0,
+        "netValue": 60,
+        "netValueRate": 1,
+        "regressionRate": 0,
+        "activationRate": 1,
+        "abstentionRate": 0
+      },
+      "oracleV2": {
+        "cases": 60,
+        "improvements": 60,
+        "regressions": 0,
+        "neutral": 0,
+        "netValue": 60,
+        "netValueRate": 1,
+        "regressionRate": 0,
+        "activationRate": 1,
+        "abstentionRate": 0
+      }
+    },
+    "DECELERATING": {
+      "oracleV1": {
+        "cases": 60,
+        "improvements": 60,
+        "regressions": 0,
+        "neutral": 0,
+        "netValue": 60,
+        "netValueRate": 1,
+        "regressionRate": 0,
+        "activationRate": 1,
+        "abstentionRate": 0
+      },
+      "oracleV2": {
+        "cases": 60,
+        "improvements": 60,
+        "regressions": 0,
+        "neutral": 0,
+        "netValue": 60,
+        "netValueRate": 1,
+        "regressionRate": 0,
+        "activationRate": 1,
+        "abstentionRate": 0
+      }
+    },
+    "SINGLE_SPIKE": {
+      "oracleV1": {
+        "cases": 60,
+        "improvements": 0,
+        "regressions": 47,
+        "neutral": 13,
+        "netValue": -47,
+        "netValueRate": -0.7833333333333333,
+        "regressionRate": 0.7833333333333333,
+        "activationRate": 0.7833333333333333,
+        "abstentionRate": 0.21666666666666667
+      },
+      "oracleV2": {
+        "cases": 60,
+        "improvements": 0,
+        "regressions": 0,
+        "neutral": 60,
+        "netValue": 0,
+        "netValueRate": 0,
+        "regressionRate": 0,
+        "activationRate": 0,
+        "abstentionRate": 1
+      }
+    },
+    "SINGLE_DROP": {
+      "oracleV1": {
+        "cases": 60,
+        "improvements": 0,
+        "regressions": 0,
+        "neutral": 60,
+        "netValue": 0,
+        "netValueRate": 0,
+        "regressionRate": 0,
+        "activationRate": 0,
+        "abstentionRate": 1
+      },
+      "oracleV2": {
+        "cases": 60,
+        "improvements": 0,
+        "regressions": 0,
+        "neutral": 60,
+        "netValue": 0,
+        "netValueRate": 0,
+        "regressionRate": 0,
+        "activationRate": 0,
+        "abstentionRate": 1
+      }
+    },
+    "REGIME_CHANGE": {
+      "oracleV1": {
+        "cases": 60,
+        "improvements": 0,
+        "regressions": 60,
+        "neutral": 0,
+        "netValue": -60,
+        "netValueRate": -1,
+        "regressionRate": 1,
+        "activationRate": 1,
+        "abstentionRate": 0
+      },
+      "oracleV2": {
+        "cases": 60,
+        "improvements": 0,
+        "regressions": 0,
+        "neutral": 60,
+        "netValue": 0,
+        "netValueRate": 0,
+        "regressionRate": 0,
+        "activationRate": 0,
+        "abstentionRate": 1
+      }
+    },
+    "HIGH_VOLATILITY": {
+      "oracleV1": {
+        "cases": 60,
+        "improvements": 0,
+        "regressions": 0,
+        "neutral": 60,
+        "netValue": 0,
+        "netValueRate": 0,
+        "regressionRate": 0,
+        "activationRate": 0,
+        "abstentionRate": 1
+      },
+      "oracleV2": {
+        "cases": 60,
+        "improvements": 0,
+        "regressions": 0,
+        "neutral": 60,
+        "netValue": 0,
+        "netValueRate": 0,
+        "regressionRate": 0,
+        "activationRate": 0,
+        "abstentionRate": 1
+      }
+    },
+    "LOW_VOLATILITY": {
+      "oracleV1": {
+        "cases": 60,
+        "improvements": 0,
+        "regressions": 39,
+        "neutral": 21,
+        "netValue": -39,
+        "netValueRate": -0.65,
+        "regressionRate": 0.65,
+        "activationRate": 0.65,
+        "abstentionRate": 0.35
+      },
+      "oracleV2": {
+        "cases": 60,
+        "improvements": 0,
+        "regressions": 0,
+        "neutral": 60,
+        "netValue": 0,
+        "netValueRate": 0,
+        "regressionRate": 0,
+        "activationRate": 0,
+        "abstentionRate": 1
+      }
+    },
+    "SHORT_HISTORY": {
+      "oracleV1": {
+        "cases": 60,
+        "improvements": 0,
+        "regressions": 0,
+        "neutral": 60,
+        "netValue": 0,
+        "netValueRate": 0,
+        "regressionRate": 0,
+        "activationRate": 0,
+        "abstentionRate": 1
+      },
+      "oracleV2": {
+        "cases": 60,
+        "improvements": 0,
+        "regressions": 0,
+        "neutral": 60,
+        "netValue": 0,
+        "netValueRate": 0,
+        "regressionRate": 0,
+        "activationRate": 0,
+        "abstentionRate": 1
+      }
+    },
+    "LONG_HISTORY": {
+      "oracleV1": {
+        "cases": 60,
+        "improvements": 60,
+        "regressions": 0,
+        "neutral": 0,
+        "netValue": 60,
+        "netValueRate": 1,
+        "regressionRate": 0,
+        "activationRate": 1,
+        "abstentionRate": 0
+      },
+      "oracleV2": {
+        "cases": 60,
+        "improvements": 60,
+        "regressions": 0,
+        "neutral": 0,
+        "netValue": 60,
+        "netValueRate": 1,
+        "regressionRate": 0,
+        "activationRate": 1,
+        "abstentionRate": 0
+      }
+    },
+    "MISSING_HISTORY": {
+      "oracleV1": {
+        "cases": 60,
+        "improvements": 0,
+        "regressions": 0,
+        "neutral": 60,
+        "netValue": 0,
+        "netValueRate": 0,
+        "regressionRate": 0,
+        "activationRate": 0,
+        "abstentionRate": 1
+      },
+      "oracleV2": {
+        "cases": 60,
+        "improvements": 0,
+        "regressions": 0,
+        "neutral": 60,
+        "netValue": 0,
+        "netValueRate": 0,
+        "regressionRate": 0,
+        "activationRate": 0,
+        "abstentionRate": 1
+      }
+    },
+    "NOISY_TREND": {
+      "oracleV1": {
+        "cases": 60,
+        "improvements": 60,
+        "regressions": 0,
+        "neutral": 0,
+        "netValue": 60,
+        "netValueRate": 1,
+        "regressionRate": 0,
+        "activationRate": 1,
+        "abstentionRate": 0
+      },
+      "oracleV2": {
+        "cases": 60,
+        "improvements": 60,
+        "regressions": 0,
+        "neutral": 0,
+        "netValue": 60,
+        "netValueRate": 1,
+        "regressionRate": 0,
+        "activationRate": 1,
+        "abstentionRate": 0
+      }
+    },
+    "TREND_WITH_OUTLIER": {
+      "oracleV1": {
+        "cases": 60,
+        "improvements": 60,
+        "regressions": 0,
+        "neutral": 0,
+        "netValue": 60,
+        "netValueRate": 1,
+        "regressionRate": 0,
+        "activationRate": 1,
+        "abstentionRate": 0
+      },
+      "oracleV2": {
+        "cases": 60,
+        "improvements": 60,
+        "regressions": 0,
+        "neutral": 0,
+        "netValue": 60,
+        "netValueRate": 1,
+        "regressionRate": 0,
+        "activationRate": 1,
+        "abstentionRate": 0
+      }
+    }
+  },
+  "componentAblation": {
+    "recent-window-3": {
+      "cases": 300,
+      "improvements": 60,
+      "regressions": 0,
+      "neutral": 240,
+      "netValue": 60,
+      "netValueRate": 0.2,
+      "regressionRate": 0,
+      "activationRate": 0.2,
+      "abstentionRate": 0.8
+    },
+    "recent-window-5": {
+      "cases": 300,
+      "improvements": 60,
+      "regressions": 0,
+      "neutral": 240,
+      "netValue": 60,
+      "netValueRate": 0.2,
+      "regressionRate": 0,
+      "activationRate": 0.2,
+      "abstentionRate": 0.8
+    },
+    "majority-deltas": {
+      "cases": 300,
+      "improvements": 60,
+      "regressions": 240,
+      "neutral": 0,
+      "netValue": -180,
+      "netValueRate": -0.6,
+      "regressionRate": 0.8,
+      "activationRate": 1,
+      "abstentionRate": 0
+    },
+    "recency-weighted": {
+      "cases": 300,
+      "improvements": 180,
+      "regressions": 120,
+      "neutral": 0,
+      "netValue": 60,
+      "netValueRate": 0.2,
+      "regressionRate": 0.4,
+      "activationRate": 1,
+      "abstentionRate": 0
+    },
+    "robust-reversal": {
+      "cases": 300,
+      "improvements": 180,
+      "regressions": 0,
+      "neutral": 120,
+      "netValue": 180,
+      "netValueRate": 0.6,
+      "regressionRate": 0,
+      "activationRate": 0.6,
+      "abstentionRate": 0.4
+    },
+    "robust-reversal-volatility-abstention": {
+      "cases": 300,
+      "improvements": 180,
+      "regressions": 0,
+      "neutral": 120,
+      "netValue": 180,
+      "netValueRate": 0.6,
+      "regressionRate": 0,
+      "activationRate": 0.6,
+      "abstentionRate": 0.4
+    }
+  },
+  "confidence": {
+    "oracleV1Monotonic": false,
+    "oracleV2Buckets": [
+      {
+        "min": 0,
+        "max": 250000,
+        "cases": 240,
+        "accuracy": 0
+      },
+      {
+        "min": 250000,
+        "max": 500000,
+        "cases": 0,
+        "accuracy": 0
+      },
+      {
+        "min": 500000,
+        "max": 750000,
+        "cases": 24,
+        "accuracy": 1
+      },
+      {
+        "min": 750000,
+        "max": 1000001,
+        "cases": 36,
+        "accuracy": 1
+      }
+    ],
+    "oracleV2Monotonic": true
+  },
+  "causality": {
+    "signalCausallyAttributed": true,
+    "temporalSemanticsStable": true,
+    "adversarialTests": [
+      "HISTORY_REVERSAL",
+      "SAMPLE_DUPLICATION",
+      "OUTLIER_INJECTION",
+      "SINGLE_SPIKE",
+      "SINGLE_DROP",
+      "HISTORY_TRUNCATION",
+      "CONSTANT_HISTORY",
+      "ALTERNATING_HISTORY",
+      "MISSING_SAMPLES"
+    ]
+  },
+  "qualityGate": {
+    "preRegistered": true,
+    "minimumNetValueRate": 0.1,
+    "maximumRegressionRate": 0.35,
+    "requiresPositiveIncrementalValue": true,
+    "requiresBeatMovingAverage": true,
+    "selectionRule": "MIN_REGRESSIONS_THEN_MAX_NET_VALUE_THEN_MAX_COVERAGE_THEN_MIN_COMPLEXITY"
+  },
+  "qualityGatePass": false,
+  "selection": {
+    "expertSelectionInfluence": 0,
+    "valueOnlySelectionChanges": 0,
+    "finalRecommendationOwner": "PRIME",
+    "oracleV2ActionSelectionApproved": false
+  },
+  "oracleV2ProductionPromoted": false,
+  "nexusChanged": false,
+  "nexusRemediationStarted": false,
+  "replayEquivalent": true,
+  "authority": {
+    "tier": "R0",
+    "canDispatch": false,
+    "canMutateLiveWorld": false
+  },
+  "liveActionDispatches": 0,
+  "worldMutations": 0,
+  "authorityEscalations": 0,
+  "authorityTokenIssues": 0,
+  "evaluationDigest": "bd331cae293875e69b5acb2137bea1172e18f039cc540f816e58d236959ec96f"
+}

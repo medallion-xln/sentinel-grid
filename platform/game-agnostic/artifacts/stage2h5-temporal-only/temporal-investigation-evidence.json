@@ -1,0 +1,392 @@
+{
+  "stage": "STAGE2H5_TEMPORAL_ONLY_DIAGNOSTIC_SIGNAL_QUALITY_INVESTIGATION",
+  "qualityGate": {
+    "preRegistered": true,
+    "minimumNewNetValueRate": 0.1,
+    "maximumNewRegressionRate": 0.4,
+    "requiresPositiveTemporalIncrementalValue": true,
+    "requiresNoGroundTruthLeakage": true,
+    "requiresCausalAttribution": true
+  },
+  "originalResult": {
+    "cases": 80,
+    "improvements": 60,
+    "regressions": 20,
+    "neutral": 0,
+    "netValue": 40,
+    "netValueRate": 0.5,
+    "regressionRate": 0.25,
+    "reproduced": true
+  },
+  "originalAudit": {
+    "uniqueStateDigests": 20,
+    "uniqueHistoryDigests": 3,
+    "uniqueGroundTruthPatterns": 20,
+    "uniqueOracleOutputDigests": 3,
+    "duplicateStateCases": 60,
+    "duplicateHistoryCases": 77,
+    "semanticDuplicateCases": 76,
+    "effectiveTemporalSampleSize": 4
+  },
+  "leakageAudit": {
+    "groundTruthLeakageDetected": false,
+    "postTransitionFeatureLeakage": false,
+    "features": [
+      {
+        "path": "observationHistory[*].tick",
+        "classification": "PAST_ONLY"
+      },
+      {
+        "path": "observationHistory[*].channels.*",
+        "classification": "PAST_ONLY"
+      },
+      {
+        "path": "actionLinks[*].channels",
+        "classification": "ACTION_DESCRIPTOR"
+      }
+    ],
+    "constructionIndependence": "HISTORY_FAMILY_AND_LINK_ORIENTATION_DO_NOT_READ_STATE_GROUND_TRUTH_OR_TRANSITION_REWARD"
+  },
+  "semanticClasses": {
+    "MONOTONIC_IMPROVING": {
+      "cases": 50,
+      "improvements": 25,
+      "regressions": 25,
+      "neutral": 0,
+      "netValue": 0,
+      "netValueRate": 0,
+      "regressionRate": 0.5
+    },
+    "MONOTONIC_WORSENING": {
+      "cases": 50,
+      "improvements": 25,
+      "regressions": 25,
+      "neutral": 0,
+      "netValue": 0,
+      "netValueRate": 0,
+      "regressionRate": 0.5
+    },
+    "STABLE": {
+      "cases": 50,
+      "improvements": 26,
+      "regressions": 24,
+      "neutral": 0,
+      "netValue": 2,
+      "netValueRate": 0.04,
+      "regressionRate": 0.48
+    },
+    "REVERSAL": {
+      "cases": 50,
+      "improvements": 25,
+      "regressions": 25,
+      "neutral": 0,
+      "netValue": 0,
+      "netValueRate": 0,
+      "regressionRate": 0.5
+    },
+    "OSCILLATING": {
+      "cases": 50,
+      "improvements": 25,
+      "regressions": 24,
+      "neutral": 1,
+      "netValue": 1,
+      "netValueRate": 0.02,
+      "regressionRate": 0.48
+    },
+    "HIGH_VOLATILITY": {
+      "cases": 50,
+      "improvements": 28,
+      "regressions": 22,
+      "neutral": 0,
+      "netValue": 6,
+      "netValueRate": 0.12,
+      "regressionRate": 0.44
+    },
+    "LOW_VOLATILITY": {
+      "cases": 50,
+      "improvements": 25,
+      "regressions": 25,
+      "neutral": 0,
+      "netValue": 0,
+      "netValueRate": 0,
+      "regressionRate": 0.5
+    },
+    "SHORT_HISTORY": {
+      "cases": 50,
+      "improvements": 0,
+      "regressions": 0,
+      "neutral": 50,
+      "netValue": 0,
+      "netValueRate": 0,
+      "regressionRate": 0
+    },
+    "LONG_HISTORY": {
+      "cases": 50,
+      "improvements": 25,
+      "regressions": 25,
+      "neutral": 0,
+      "netValue": 0,
+      "netValueRate": 0,
+      "regressionRate": 0.5
+    },
+    "MISSING_HISTORY": {
+      "cases": 50,
+      "improvements": 0,
+      "regressions": 0,
+      "neutral": 50,
+      "netValue": 0,
+      "netValueRate": 0,
+      "regressionRate": 0
+    }
+  },
+  "historyAblation": [
+    {
+      "window": 1,
+      "cases": 500,
+      "improvements": 0,
+      "regressions": 0,
+      "neutral": 500,
+      "netValue": 0,
+      "netValueRate": 0,
+      "regressionRate": 0
+    },
+    {
+      "window": 2,
+      "cases": 500,
+      "improvements": 0,
+      "regressions": 0,
+      "neutral": 500,
+      "netValue": 0,
+      "netValueRate": 0,
+      "regressionRate": 0
+    },
+    {
+      "window": 4,
+      "cases": 500,
+      "improvements": 203,
+      "regressions": 197,
+      "neutral": 100,
+      "netValue": 6,
+      "netValueRate": 0.012,
+      "regressionRate": 0.394
+    },
+    {
+      "window": 8,
+      "cases": 500,
+      "improvements": 204,
+      "regressions": 196,
+      "neutral": 100,
+      "netValue": 8,
+      "netValueRate": 0.016,
+      "regressionRate": 0.392
+    },
+    {
+      "window": 16,
+      "cases": 500,
+      "improvements": 204,
+      "regressions": 195,
+      "neutral": 101,
+      "netValue": 9,
+      "netValueRate": 0.018,
+      "regressionRate": 0.39
+    },
+    {
+      "window": 32,
+      "cases": 500,
+      "improvements": 204,
+      "regressions": 195,
+      "neutral": 101,
+      "netValue": 9,
+      "netValueRate": 0.018,
+      "regressionRate": 0.39
+    }
+  ],
+  "causality": {
+    "timeDirectionConsistent": true,
+    "temporalOrderSensitivityValid": true,
+    "temporalSignalCausallyAttributed": true
+  },
+  "incrementalValue": {
+    "currentStateOnly": {
+      "cases": 500,
+      "improvements": 0,
+      "regressions": 0,
+      "neutral": 500,
+      "netValue": 0,
+      "netValueRate": 0
+    },
+    "oracleTemporal": {
+      "cases": 500,
+      "improvements": 204,
+      "regressions": 195,
+      "neutral": 101,
+      "netValue": 9,
+      "netValueRate": 0.018,
+      "regressionRate": 0.39
+    },
+    "temporalIncrementalValue": 9
+  },
+  "simpleBaselines": {
+    "lastMinusFirst": {
+      "netValue": 6
+    },
+    "simpleLinearSlope": {
+      "netValue": 8
+    },
+    "recentDelta": {
+      "netValue": 4
+    },
+    "movingAverageDirection": {
+      "netValue": 16
+    }
+  },
+  "oracleOutperformsSimpleTemporalBaselines": false,
+  "signalAblation": {
+    "components": [
+      {
+        "component": "direction",
+        "cases": 400,
+        "netValue": 8
+      },
+      {
+        "component": "slope",
+        "cases": 400,
+        "netValue": 8
+      },
+      {
+        "component": "acceleration",
+        "cases": 242,
+        "netValue": 2
+      },
+      {
+        "component": "volatility",
+        "cases": 400,
+        "netValue": -8
+      },
+      {
+        "component": "persistence",
+        "cases": 60,
+        "netValue": 0
+      }
+    ],
+    "best": {
+      "component": "direction",
+      "cases": 400,
+      "netValue": 8
+    },
+    "worst": {
+      "component": "volatility",
+      "cases": 400,
+      "netValue": -8
+    }
+  },
+  "confidence": {
+    "correlation": 0.36252296214433694,
+    "buckets": [
+      {
+        "bucket": "0-199999",
+        "cases": 100,
+        "improvements": 0,
+        "regressions": 0,
+        "neutral": 100,
+        "netValue": 0,
+        "netValueRate": 0,
+        "regressionRate": 0
+      },
+      {
+        "bucket": "200000-399999",
+        "cases": 0,
+        "improvements": 0,
+        "regressions": 0,
+        "neutral": 0,
+        "netValue": 0,
+        "netValueRate": 0,
+        "regressionRate": 0
+      },
+      {
+        "bucket": "400000-599999",
+        "cases": 140,
+        "improvements": 73,
+        "regressions": 66,
+        "neutral": 1,
+        "netValue": 7,
+        "netValueRate": 0.05,
+        "regressionRate": 0.4714285714285714
+      },
+      {
+        "bucket": "600000-799999",
+        "cases": 210,
+        "improvements": 106,
+        "regressions": 104,
+        "neutral": 0,
+        "netValue": 2,
+        "netValueRate": 0.009523809523809525,
+        "regressionRate": 0.49523809523809526
+      },
+      {
+        "bucket": "800000-1000000",
+        "cases": 50,
+        "improvements": 25,
+        "regressions": 25,
+        "neutral": 0,
+        "netValue": 0,
+        "netValueRate": 0,
+        "regressionRate": 0.5
+      }
+    ],
+    "monotonicWithQuality": false
+  },
+  "newCorpus": {
+    "cases": 500,
+    "improvements": 204,
+    "regressions": 195,
+    "neutral": 101,
+    "netValue": 9,
+    "netValueRate": 0.018,
+    "regressionRate": 0.39,
+    "digest": "906a6734f6ebcb0bfa00d0aea1f2ac0bbc023e102554c503d095cbc03287917c",
+    "canonicalCaseDigestOverlap": 0,
+    "semanticFamilyHoldout": true,
+    "holdoutFamilies": [
+      "REVERSAL",
+      "OSCILLATING",
+      "HIGH_VOLATILITY"
+    ]
+  },
+  "combined": {
+    "cases": 580,
+    "netValue": 49,
+    "netValueRate": 0.08448275862068966
+  },
+  "qualityGatePass": false,
+  "nexusControl": {
+    "cases": 500,
+    "improvements": 0,
+    "regressions": 0,
+    "neutral": 500,
+    "netValue": 0,
+    "netValueRate": 0,
+    "regressionRate": 0
+  },
+  "originalHarmfulOracleUseful": 0,
+  "selection": {
+    "oracleIsolated": true,
+    "nexusDiagnosticActive": false,
+    "postDecisionOnly": true,
+    "expertSelectionInfluence": 0,
+    "valueOnlySelectionChanges": 0,
+    "finalRecommendationOwner": "PRIME"
+  },
+  "replayEquivalent": true,
+  "authority": {
+    "tier": "R0",
+    "canDispatch": false,
+    "canMutateLiveWorld": false
+  },
+  "expertActionSelectionApproved": false,
+  "liveActionDispatches": 0,
+  "worldMutations": 0,
+  "authorityEscalations": 0,
+  "authorityTokenIssues": 0,
+  "evaluationDigest": "562ea83083411dd00d2a6e9ae6c555705c40edf3575b555ccaef7208ef5d778c"
+}

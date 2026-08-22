@@ -1,0 +1,2100 @@
+{
+  "certificationSchemaVersion": 1,
+  "stage": "STAGE2H_SHADOW_EXPERT_CONSUMPTION",
+  "authority": "R0",
+  "expertContextSchemaVersion": 1,
+  "sentinelRuntimeId": "sha256:f1cd5ec6bc292f07b31aed40c6fd530291da69b2362c6b09632bd0a2b9bd5389",
+  "generatedRuntimeProvenanceId": "sha256:94ca7ddde61f99f22cff26735e08817d19ff576ca72fc311e39d3a1e5cd95452",
+  "stage2fCampaignId": "sha256:81ebdf78deb391d1658958cb15352450cb16c6bac69ab280792a1e7385cdbdc1",
+  "sessionId": "stage2h-certification-6a890acd62bf8eae",
+  "samplingIdentity": "6a890acd62bf8eaedf7782531a85c27572492fbd63dfb098dd06e3f28c66f448",
+  "caseCorpusDigest": "6a890acd62bf8eaedf7782531a85c27572492fbd63dfb098dd06e3f28c66f448",
+  "stage2fRuntimeIdentityInherited": true,
+  "stage2gExpertCertificationInherited": true,
+  "runtimeIdentityBound": true,
+  "campaignBound": true,
+  "expertContextDigestBound": true,
+  "oracleContextConsumed": true,
+  "nexusContextConsumed": true,
+  "primeRemainsDecisionOwner": true,
+  "finalRecommendationOwner": "PRIME",
+  "oracleRole": "ADVISORY_CONTEXT",
+  "nexusRole": "ADVISORY_CONTEXT",
+  "baselineModeBitExact": true,
+  "neutralContextIsZero": true,
+  "neutralContextBitExact": true,
+  "expertAdjustmentBounded": true,
+  "positiveClampCertified": true,
+  "negativeClampCertified": true,
+  "adjustmentBounds": {
+    "oracleMicro": 20000,
+    "nexusMicro": 20000,
+    "totalMicro": 30000
+  },
+  "legalActionsPreserved": true,
+  "priorsUnchanged": true,
+  "expertCanOverrideLegalMask": false,
+  "expertCanBypassPrime": false,
+  "expertDispatchPathExists": false,
+  "expertMutationPathExists": false,
+  "expertAuthorityTokenPathExists": false,
+  "replayEquivalent": true,
+  "scenarioCount": 8,
+  "fixtureCount": 4,
+  "comparisonCount": 32,
+  "decisionsChanged": 28,
+  "decisionsUnchanged": 4,
+  "recommendationsChanged": 32,
+  "recommendationsUnchanged": 0,
+  "selectionsChanged": 0,
+  "onlyProvenanceOrEvaluationChanged": true,
+  "scenarios": [
+    {
+      "scenarioId": "neutral",
+      "contextDigest": "sha256:b648ac66e6b288517198770345bf5d891ea497715327d70f580d5a6487be7c2b",
+      "oracleOutputDigest": "sha256:3c65abc5908032ff0a9dbdf83b6dd9cd9bdfcd78ca03a001fdd51f803259638f",
+      "nexusOutputDigest": "sha256:04b4dba7d5da28af71cdfbd295860b95531614bbba13a1b054a609d0c63b0574",
+      "contextFeatures": {
+        "temporalRisk": 0,
+        "temporalOpportunity": 0,
+        "stability": 1000000,
+        "volatility": 0,
+        "dependencyRisk": 0,
+        "criticality": 0,
+        "supportStrength": 0,
+        "isolationRisk": 0
+      },
+      "oracleAdjustmentMicro": 0,
+      "nexusAdjustmentMicro": 0,
+      "adjustmentMicro": 0,
+      "comparisons": [
+        {
+          "fixtureId": "game-s64",
+          "adjustmentMicro": 0,
+          "baseline": {
+            "recommendationHash": "628b72a9af99ee8ef3a0e2deaf886fbb9d2a77ffa8e81486f5c2b2313c02d0ab",
+            "selectedActionKey": "[\"reference.token-race/take@bonus\",\"player-1\",{\"id\":\"bonus-1\",\"kind\":\"shared-bonus\"},{\"amount\":3}]",
+            "rankingKeys": [
+              "[\"reference.token-race/take@bonus\",\"player-1\",{\"id\":\"bonus-1\",\"kind\":\"shared-bonus\"},{\"amount\":3}]",
+              "[\"reference.token-race/take@2\",\"player-1\",null,{\"amount\":2}]",
+              "[\"reference.token-race/take@1\",\"player-1\",null,{\"amount\":1}]"
+            ],
+            "legalActionsHash": "0422b53e85e3cb3b27c9a008edf6477c3c8302cba8c623c734cd0aea7e1adb16",
+            "legalActionCount": 3,
+            "priors": "uniform",
+            "visits": [
+              34,
+              18,
+              12
+            ],
+            "meanValues": [
+              0.3000000000000001,
+              0.20000000000000007,
+              0.09999999999999999
+            ]
+          },
+          "withContext": {
+            "recommendationHash": "d9646557c85a22f3cbbbbbe033549e36e6fa3b560c3ec5265a9e00a093f0a34f",
+            "selectedActionKey": "[\"reference.token-race/take@bonus\",\"player-1\",{\"id\":\"bonus-1\",\"kind\":\"shared-bonus\"},{\"amount\":3}]",
+            "rankingKeys": [
+              "[\"reference.token-race/take@bonus\",\"player-1\",{\"id\":\"bonus-1\",\"kind\":\"shared-bonus\"},{\"amount\":3}]",
+              "[\"reference.token-race/take@2\",\"player-1\",null,{\"amount\":2}]",
+              "[\"reference.token-race/take@1\",\"player-1\",null,{\"amount\":1}]"
+            ],
+            "legalActionsHash": "0422b53e85e3cb3b27c9a008edf6477c3c8302cba8c623c734cd0aea7e1adb16",
+            "legalActionCount": 3,
+            "priors": "uniform",
+            "visits": [
+              34,
+              18,
+              12
+            ],
+            "meanValues": [
+              0.3000000000000001,
+              0.20000000000000007,
+              0.09999999999999999
+            ]
+          },
+          "selectionChanged": false,
+          "rankingChanged": false,
+          "valueChanged": false,
+          "visitsChanged": false,
+          "decisionChanged": false,
+          "identicalExceptProvenance": true,
+          "recommendationChanged": true,
+          "legalActionsPreserved": true,
+          "priorsUnchanged": true
+        },
+        {
+          "fixtureId": "game-s96",
+          "adjustmentMicro": 0,
+          "baseline": {
+            "recommendationHash": "9602f065b94fb36b8159fdfaee88a0104db4b9eaf52ca8bd3035f710cc2dcc30",
+            "selectedActionKey": "[\"reference.token-race/take@2\",\"player-1\",null,{\"amount\":2}]",
+            "rankingKeys": [
+              "[\"reference.token-race/take@2\",\"player-1\",null,{\"amount\":2}]",
+              "[\"reference.token-race/take@1\",\"player-1\",null,{\"amount\":1}]"
+            ],
+            "legalActionsHash": "94443bc29055fb3948bb0e1c880104fad643e2d359e3cc578df249788fc49c11",
+            "legalActionCount": 2,
+            "priors": "uniform",
+            "visits": [
+              63,
+              33
+            ],
+            "meanValues": [
+              0.1999999999999998,
+              0.10000000000000005
+            ]
+          },
+          "withContext": {
+            "recommendationHash": "55978ee1cb47e54383d7ed9e3271e263f7c2f8562bc41e6239586d59c13d38fa",
+            "selectedActionKey": "[\"reference.token-race/take@2\",\"player-1\",null,{\"amount\":2}]",
+            "rankingKeys": [
+              "[\"reference.token-race/take@2\",\"player-1\",null,{\"amount\":2}]",
+              "[\"reference.token-race/take@1\",\"player-1\",null,{\"amount\":1}]"
+            ],
+            "legalActionsHash": "94443bc29055fb3948bb0e1c880104fad643e2d359e3cc578df249788fc49c11",
+            "legalActionCount": 2,
+            "priors": "uniform",
+            "visits": [
+              63,
+              33
+            ],
+            "meanValues": [
+              0.1999999999999998,
+              0.10000000000000005
+            ]
+          },
+          "selectionChanged": false,
+          "rankingChanged": false,
+          "valueChanged": false,
+          "visitsChanged": false,
+          "decisionChanged": false,
+          "identicalExceptProvenance": true,
+          "recommendationChanged": true,
+          "legalActionsPreserved": true,
+          "priorsUnchanged": true
+        },
+        {
+          "fixtureId": "rescue-s64",
+          "adjustmentMicro": 0,
+          "baseline": {
+            "recommendationHash": "dd3748d9e703b48061451be01a14b9b9279b1cfc99eebdf8ff6786d599d6cc38",
+            "selectedActionKey": "[\"reference.grid-rescue/assist\",\"controller\",{\"id\":\"north\",\"kind\":\"site\"},{\"energyCost\":2}]",
+            "rankingKeys": [
+              "[\"reference.grid-rescue/assist\",\"controller\",{\"id\":\"north\",\"kind\":\"site\"},{\"energyCost\":2}]",
+              "[\"reference.grid-rescue/scan\",\"controller\",null,{\"energyCost\":1}]",
+              "[\"reference.grid-rescue/rest\",\"controller\",null,{\"energyGain\":2}]"
+            ],
+            "legalActionsHash": "e47fd64ccdb29736e8d6853b364ffe889e72aa75c8539d5dd35c72d4d14af897",
+            "legalActionCount": 3,
+            "priors": "uniform",
+            "visits": [
+              55,
+              5,
+              4
+            ],
+            "meanValues": [
+              0.6666666666666667,
+              0.05,
+              -0.02
+            ]
+          },
+          "withContext": {
+            "recommendationHash": "2dbcdecc6452639d20b9706722c30fd9008efba1c10aadf6a6f6c3362746b323",
+            "selectedActionKey": "[\"reference.grid-rescue/assist\",\"controller\",{\"id\":\"north\",\"kind\":\"site\"},{\"energyCost\":2}]",
+            "rankingKeys": [
+              "[\"reference.grid-rescue/assist\",\"controller\",{\"id\":\"north\",\"kind\":\"site\"},{\"energyCost\":2}]",
+              "[\"reference.grid-rescue/scan\",\"controller\",null,{\"energyCost\":1}]",
+              "[\"reference.grid-rescue/rest\",\"controller\",null,{\"energyGain\":2}]"
+            ],
+            "legalActionsHash": "e47fd64ccdb29736e8d6853b364ffe889e72aa75c8539d5dd35c72d4d14af897",
+            "legalActionCount": 3,
+            "priors": "uniform",
+            "visits": [
+              55,
+              5,
+              4
+            ],
+            "meanValues": [
+              0.6666666666666667,
+              0.05,
+              -0.02
+            ]
+          },
+          "selectionChanged": false,
+          "rankingChanged": false,
+          "valueChanged": false,
+          "visitsChanged": false,
+          "decisionChanged": false,
+          "identicalExceptProvenance": true,
+          "recommendationChanged": true,
+          "legalActionsPreserved": true,
+          "priorsUnchanged": true
+        },
+        {
+          "fixtureId": "rescue-s128",
+          "adjustmentMicro": 0,
+          "baseline": {
+            "recommendationHash": "439fc48b82df707d09679766083b3bd8de220f72a3f70a878ba82b48856bb1ed",
+            "selectedActionKey": "[\"reference.grid-rescue/assist\",\"controller\",{\"id\":\"north\",\"kind\":\"site\"},{\"energyCost\":2}]",
+            "rankingKeys": [
+              "[\"reference.grid-rescue/assist\",\"controller\",{\"id\":\"north\",\"kind\":\"site\"},{\"energyCost\":2}]",
+              "[\"reference.grid-rescue/scan\",\"controller\",null,{\"energyCost\":1}]",
+              "[\"reference.grid-rescue/rest\",\"controller\",null,{\"energyGain\":2}]"
+            ],
+            "legalActionsHash": "e47fd64ccdb29736e8d6853b364ffe889e72aa75c8539d5dd35c72d4d14af897",
+            "legalActionCount": 3,
+            "priors": "uniform",
+            "visits": [
+              100,
+              15,
+              13
+            ],
+            "meanValues": [
+              0.3333333333333329,
+              0.05000000000000001,
+              -0.019999999999999997
+            ]
+          },
+          "withContext": {
+            "recommendationHash": "4405da0070cbf82491b78f7138cbd64580e30460bfd05f907b5ed6b9cdd56bab",
+            "selectedActionKey": "[\"reference.grid-rescue/assist\",\"controller\",{\"id\":\"north\",\"kind\":\"site\"},{\"energyCost\":2}]",
+            "rankingKeys": [
+              "[\"reference.grid-rescue/assist\",\"controller\",{\"id\":\"north\",\"kind\":\"site\"},{\"energyCost\":2}]",
+              "[\"reference.grid-rescue/scan\",\"controller\",null,{\"energyCost\":1}]",
+              "[\"reference.grid-rescue/rest\",\"controller\",null,{\"energyGain\":2}]"
+            ],
+            "legalActionsHash": "e47fd64ccdb29736e8d6853b364ffe889e72aa75c8539d5dd35c72d4d14af897",
+            "legalActionCount": 3,
+            "priors": "uniform",
+            "visits": [
+              100,
+              15,
+              13
+            ],
+            "meanValues": [
+              0.3333333333333329,
+              0.05000000000000001,
+              -0.019999999999999997
+            ]
+          },
+          "selectionChanged": false,
+          "rankingChanged": false,
+          "valueChanged": false,
+          "visitsChanged": false,
+          "decisionChanged": false,
+          "identicalExceptProvenance": true,
+          "recommendationChanged": true,
+          "legalActionsPreserved": true,
+          "priorsUnchanged": true
+        }
+      ]
+    },
+    {
+      "scenarioId": "oracle-only-rising",
+      "contextDigest": "sha256:8a5154a9a1003ffcb7eabf4d2e7004e7743a51455e62a1eac7f0331acd09a38e",
+      "oracleOutputDigest": "sha256:87ee8d407e26d740a9aa317487fcf8f851d504210edfb0e4fa2e524cb71ef5e9",
+      "nexusOutputDigest": "sha256:04b4dba7d5da28af71cdfbd295860b95531614bbba13a1b054a609d0c63b0574",
+      "contextFeatures": {
+        "temporalRisk": 0,
+        "temporalOpportunity": 1000000,
+        "stability": 555556,
+        "volatility": 444444,
+        "dependencyRisk": 0,
+        "criticality": 0,
+        "supportStrength": 0,
+        "isolationRisk": 0
+      },
+      "oracleAdjustmentMicro": 11111,
+      "nexusAdjustmentMicro": 0,
+      "adjustmentMicro": 11111,
+      "comparisons": [
+        {
+          "fixtureId": "game-s64",
+          "adjustmentMicro": 11111,
+          "baseline": {
+            "recommendationHash": "628b72a9af99ee8ef3a0e2deaf886fbb9d2a77ffa8e81486f5c2b2313c02d0ab",
+            "selectedActionKey": "[\"reference.token-race/take@bonus\",\"player-1\",{\"id\":\"bonus-1\",\"kind\":\"shared-bonus\"},{\"amount\":3}]",
+            "rankingKeys": [
+              "[\"reference.token-race/take@bonus\",\"player-1\",{\"id\":\"bonus-1\",\"kind\":\"shared-bonus\"},{\"amount\":3}]",
+              "[\"reference.token-race/take@2\",\"player-1\",null,{\"amount\":2}]",
+              "[\"reference.token-race/take@1\",\"player-1\",null,{\"amount\":1}]"
+            ],
+            "legalActionsHash": "0422b53e85e3cb3b27c9a008edf6477c3c8302cba8c623c734cd0aea7e1adb16",
+            "legalActionCount": 3,
+            "priors": "uniform",
+            "visits": [
+              34,
+              18,
+              12
+            ],
+            "meanValues": [
+              0.3000000000000001,
+              0.20000000000000007,
+              0.09999999999999999
+            ]
+          },
+          "withContext": {
+            "recommendationHash": "a4f4352480ea39f802179835d145418875b0d88fbd99c43b6412082eb25161d8",
+            "selectedActionKey": "[\"reference.token-race/take@bonus\",\"player-1\",{\"id\":\"bonus-1\",\"kind\":\"shared-bonus\"},{\"amount\":3}]",
+            "rankingKeys": [
+              "[\"reference.token-race/take@bonus\",\"player-1\",{\"id\":\"bonus-1\",\"kind\":\"shared-bonus\"},{\"amount\":3}]",
+              "[\"reference.token-race/take@2\",\"player-1\",null,{\"amount\":2}]",
+              "[\"reference.token-race/take@1\",\"player-1\",null,{\"amount\":1}]"
+            ],
+            "legalActionsHash": "0422b53e85e3cb3b27c9a008edf6477c3c8302cba8c623c734cd0aea7e1adb16",
+            "legalActionCount": 3,
+            "priors": "uniform",
+            "visits": [
+              34,
+              18,
+              12
+            ],
+            "meanValues": [
+              0.3111110000000002,
+              0.21111099999999994,
+              0.11111099999999997
+            ]
+          },
+          "selectionChanged": false,
+          "rankingChanged": false,
+          "valueChanged": true,
+          "visitsChanged": false,
+          "decisionChanged": true,
+          "identicalExceptProvenance": false,
+          "recommendationChanged": true,
+          "legalActionsPreserved": true,
+          "priorsUnchanged": true
+        },
+        {
+          "fixtureId": "game-s96",
+          "adjustmentMicro": 11111,
+          "baseline": {
+            "recommendationHash": "9602f065b94fb36b8159fdfaee88a0104db4b9eaf52ca8bd3035f710cc2dcc30",
+            "selectedActionKey": "[\"reference.token-race/take@2\",\"player-1\",null,{\"amount\":2}]",
+            "rankingKeys": [
+              "[\"reference.token-race/take@2\",\"player-1\",null,{\"amount\":2}]",
+              "[\"reference.token-race/take@1\",\"player-1\",null,{\"amount\":1}]"
+            ],
+            "legalActionsHash": "94443bc29055fb3948bb0e1c880104fad643e2d359e3cc578df249788fc49c11",
+            "legalActionCount": 2,
+            "priors": "uniform",
+            "visits": [
+              63,
+              33
+            ],
+            "meanValues": [
+              0.1999999999999998,
+              0.10000000000000005
+            ]
+          },
+          "withContext": {
+            "recommendationHash": "a816a3bc42a886c7e827fbe5d30d3af67a2f3cad18de65acb20774ca2f4c09b6",
+            "selectedActionKey": "[\"reference.token-race/take@2\",\"player-1\",null,{\"amount\":2}]",
+            "rankingKeys": [
+              "[\"reference.token-race/take@2\",\"player-1\",null,{\"amount\":2}]",
+              "[\"reference.token-race/take@1\",\"player-1\",null,{\"amount\":1}]"
+            ],
+            "legalActionsHash": "94443bc29055fb3948bb0e1c880104fad643e2d359e3cc578df249788fc49c11",
+            "legalActionCount": 2,
+            "priors": "uniform",
+            "visits": [
+              63,
+              33
+            ],
+            "meanValues": [
+              0.21111100000000022,
+              0.11111100000000006
+            ]
+          },
+          "selectionChanged": false,
+          "rankingChanged": false,
+          "valueChanged": true,
+          "visitsChanged": false,
+          "decisionChanged": true,
+          "identicalExceptProvenance": false,
+          "recommendationChanged": true,
+          "legalActionsPreserved": true,
+          "priorsUnchanged": true
+        },
+        {
+          "fixtureId": "rescue-s64",
+          "adjustmentMicro": 11111,
+          "baseline": {
+            "recommendationHash": "dd3748d9e703b48061451be01a14b9b9279b1cfc99eebdf8ff6786d599d6cc38",
+            "selectedActionKey": "[\"reference.grid-rescue/assist\",\"controller\",{\"id\":\"north\",\"kind\":\"site\"},{\"energyCost\":2}]",
+            "rankingKeys": [
+              "[\"reference.grid-rescue/assist\",\"controller\",{\"id\":\"north\",\"kind\":\"site\"},{\"energyCost\":2}]",
+              "[\"reference.grid-rescue/scan\",\"controller\",null,{\"energyCost\":1}]",
+              "[\"reference.grid-rescue/rest\",\"controller\",null,{\"energyGain\":2}]"
+            ],
+            "legalActionsHash": "e47fd64ccdb29736e8d6853b364ffe889e72aa75c8539d5dd35c72d4d14af897",
+            "legalActionCount": 3,
+            "priors": "uniform",
+            "visits": [
+              55,
+              5,
+              4
+            ],
+            "meanValues": [
+              0.6666666666666667,
+              0.05,
+              -0.02
+            ]
+          },
+          "withContext": {
+            "recommendationHash": "074c4fa2f8c246809f2f8e5291e9e9581d4153d5bc32852b19085552965defaf",
+            "selectedActionKey": "[\"reference.grid-rescue/assist\",\"controller\",{\"id\":\"north\",\"kind\":\"site\"},{\"energyCost\":2}]",
+            "rankingKeys": [
+              "[\"reference.grid-rescue/assist\",\"controller\",{\"id\":\"north\",\"kind\":\"site\"},{\"energyCost\":2}]",
+              "[\"reference.grid-rescue/scan\",\"controller\",null,{\"energyCost\":1}]",
+              "[\"reference.grid-rescue/rest\",\"controller\",null,{\"energyGain\":2}]"
+            ],
+            "legalActionsHash": "e47fd64ccdb29736e8d6853b364ffe889e72aa75c8539d5dd35c72d4d14af897",
+            "legalActionCount": 3,
+            "priors": "uniform",
+            "visits": [
+              55,
+              5,
+              4
+            ],
+            "meanValues": [
+              0.6777776666666668,
+              0.061111000000000006,
+              -0.008889000000000001
+            ]
+          },
+          "selectionChanged": false,
+          "rankingChanged": false,
+          "valueChanged": true,
+          "visitsChanged": false,
+          "decisionChanged": true,
+          "identicalExceptProvenance": false,
+          "recommendationChanged": true,
+          "legalActionsPreserved": true,
+          "priorsUnchanged": true
+        },
+        {
+          "fixtureId": "rescue-s128",
+          "adjustmentMicro": 11111,
+          "baseline": {
+            "recommendationHash": "439fc48b82df707d09679766083b3bd8de220f72a3f70a878ba82b48856bb1ed",
+            "selectedActionKey": "[\"reference.grid-rescue/assist\",\"controller\",{\"id\":\"north\",\"kind\":\"site\"},{\"energyCost\":2}]",
+            "rankingKeys": [
+              "[\"reference.grid-rescue/assist\",\"controller\",{\"id\":\"north\",\"kind\":\"site\"},{\"energyCost\":2}]",
+              "[\"reference.grid-rescue/scan\",\"controller\",null,{\"energyCost\":1}]",
+              "[\"reference.grid-rescue/rest\",\"controller\",null,{\"energyGain\":2}]"
+            ],
+            "legalActionsHash": "e47fd64ccdb29736e8d6853b364ffe889e72aa75c8539d5dd35c72d4d14af897",
+            "legalActionCount": 3,
+            "priors": "uniform",
+            "visits": [
+              100,
+              15,
+              13
+            ],
+            "meanValues": [
+              0.3333333333333329,
+              0.05000000000000001,
+              -0.019999999999999997
+            ]
+          },
+          "withContext": {
+            "recommendationHash": "d5315366c5f08ef2aa043a41925c5f9d8f1301ada4482d0d901ea6a55f4944d4",
+            "selectedActionKey": "[\"reference.grid-rescue/assist\",\"controller\",{\"id\":\"north\",\"kind\":\"site\"},{\"energyCost\":2}]",
+            "rankingKeys": [
+              "[\"reference.grid-rescue/assist\",\"controller\",{\"id\":\"north\",\"kind\":\"site\"},{\"energyCost\":2}]",
+              "[\"reference.grid-rescue/scan\",\"controller\",null,{\"energyCost\":1}]",
+              "[\"reference.grid-rescue/rest\",\"controller\",null,{\"energyGain\":2}]"
+            ],
+            "legalActionsHash": "e47fd64ccdb29736e8d6853b364ffe889e72aa75c8539d5dd35c72d4d14af897",
+            "legalActionCount": 3,
+            "priors": "uniform",
+            "visits": [
+              100,
+              15,
+              13
+            ],
+            "meanValues": [
+              0.34444433333333285,
+              0.06111100000000002,
+              -0.008889000000000005
+            ]
+          },
+          "selectionChanged": false,
+          "rankingChanged": false,
+          "valueChanged": true,
+          "visitsChanged": false,
+          "decisionChanged": true,
+          "identicalExceptProvenance": false,
+          "recommendationChanged": true,
+          "legalActionsPreserved": true,
+          "priorsUnchanged": true
+        }
+      ]
+    },
+    {
+      "scenarioId": "oracle-only-falling",
+      "contextDigest": "sha256:8163260eb323192557dec6c0c14d2db351e6bf5e43c3494bd323052b6728751c",
+      "oracleOutputDigest": "sha256:c1b46b85666be6a9efb5f9144d3cd88266973c784e225d234cbe84b9c082039d",
+      "nexusOutputDigest": "sha256:04b4dba7d5da28af71cdfbd295860b95531614bbba13a1b054a609d0c63b0574",
+      "contextFeatures": {
+        "temporalRisk": 1000000,
+        "temporalOpportunity": 0,
+        "stability": 384615,
+        "volatility": 615385,
+        "dependencyRisk": 0,
+        "criticality": 0,
+        "supportStrength": 0,
+        "isolationRisk": 0
+      },
+      "oracleAdjustmentMicro": -20000,
+      "nexusAdjustmentMicro": 0,
+      "adjustmentMicro": -20000,
+      "comparisons": [
+        {
+          "fixtureId": "game-s64",
+          "adjustmentMicro": -20000,
+          "baseline": {
+            "recommendationHash": "628b72a9af99ee8ef3a0e2deaf886fbb9d2a77ffa8e81486f5c2b2313c02d0ab",
+            "selectedActionKey": "[\"reference.token-race/take@bonus\",\"player-1\",{\"id\":\"bonus-1\",\"kind\":\"shared-bonus\"},{\"amount\":3}]",
+            "rankingKeys": [
+              "[\"reference.token-race/take@bonus\",\"player-1\",{\"id\":\"bonus-1\",\"kind\":\"shared-bonus\"},{\"amount\":3}]",
+              "[\"reference.token-race/take@2\",\"player-1\",null,{\"amount\":2}]",
+              "[\"reference.token-race/take@1\",\"player-1\",null,{\"amount\":1}]"
+            ],
+            "legalActionsHash": "0422b53e85e3cb3b27c9a008edf6477c3c8302cba8c623c734cd0aea7e1adb16",
+            "legalActionCount": 3,
+            "priors": "uniform",
+            "visits": [
+              34,
+              18,
+              12
+            ],
+            "meanValues": [
+              0.3000000000000001,
+              0.20000000000000007,
+              0.09999999999999999
+            ]
+          },
+          "withContext": {
+            "recommendationHash": "89610ddbf5cc71238e20bdbf7ffcfb95ea1e93801909c69c5d1c623975540eac",
+            "selectedActionKey": "[\"reference.token-race/take@bonus\",\"player-1\",{\"id\":\"bonus-1\",\"kind\":\"shared-bonus\"},{\"amount\":3}]",
+            "rankingKeys": [
+              "[\"reference.token-race/take@bonus\",\"player-1\",{\"id\":\"bonus-1\",\"kind\":\"shared-bonus\"},{\"amount\":3}]",
+              "[\"reference.token-race/take@2\",\"player-1\",null,{\"amount\":2}]",
+              "[\"reference.token-race/take@1\",\"player-1\",null,{\"amount\":1}]"
+            ],
+            "legalActionsHash": "0422b53e85e3cb3b27c9a008edf6477c3c8302cba8c623c734cd0aea7e1adb16",
+            "legalActionCount": 3,
+            "priors": "uniform",
+            "visits": [
+              34,
+              18,
+              12
+            ],
+            "meanValues": [
+              0.2799999999999999,
+              0.18000000000000005,
+              0.07999999999999999
+            ]
+          },
+          "selectionChanged": false,
+          "rankingChanged": false,
+          "valueChanged": true,
+          "visitsChanged": false,
+          "decisionChanged": true,
+          "identicalExceptProvenance": false,
+          "recommendationChanged": true,
+          "legalActionsPreserved": true,
+          "priorsUnchanged": true
+        },
+        {
+          "fixtureId": "game-s96",
+          "adjustmentMicro": -20000,
+          "baseline": {
+            "recommendationHash": "9602f065b94fb36b8159fdfaee88a0104db4b9eaf52ca8bd3035f710cc2dcc30",
+            "selectedActionKey": "[\"reference.token-race/take@2\",\"player-1\",null,{\"amount\":2}]",
+            "rankingKeys": [
+              "[\"reference.token-race/take@2\",\"player-1\",null,{\"amount\":2}]",
+              "[\"reference.token-race/take@1\",\"player-1\",null,{\"amount\":1}]"
+            ],
+            "legalActionsHash": "94443bc29055fb3948bb0e1c880104fad643e2d359e3cc578df249788fc49c11",
+            "legalActionCount": 2,
+            "priors": "uniform",
+            "visits": [
+              63,
+              33
+            ],
+            "meanValues": [
+              0.1999999999999998,
+              0.10000000000000005
+            ]
+          },
+          "withContext": {
+            "recommendationHash": "ff2f199d28c03fe89336858ae354126d3c8afcde1d21b0e5d34111c2cec8a27b",
+            "selectedActionKey": "[\"reference.token-race/take@2\",\"player-1\",null,{\"amount\":2}]",
+            "rankingKeys": [
+              "[\"reference.token-race/take@2\",\"player-1\",null,{\"amount\":2}]",
+              "[\"reference.token-race/take@1\",\"player-1\",null,{\"amount\":1}]"
+            ],
+            "legalActionsHash": "94443bc29055fb3948bb0e1c880104fad643e2d359e3cc578df249788fc49c11",
+            "legalActionCount": 2,
+            "priors": "uniform",
+            "visits": [
+              63,
+              33
+            ],
+            "meanValues": [
+              0.17999999999999985,
+              0.08000000000000003
+            ]
+          },
+          "selectionChanged": false,
+          "rankingChanged": false,
+          "valueChanged": true,
+          "visitsChanged": false,
+          "decisionChanged": true,
+          "identicalExceptProvenance": false,
+          "recommendationChanged": true,
+          "legalActionsPreserved": true,
+          "priorsUnchanged": true
+        },
+        {
+          "fixtureId": "rescue-s64",
+          "adjustmentMicro": -20000,
+          "baseline": {
+            "recommendationHash": "dd3748d9e703b48061451be01a14b9b9279b1cfc99eebdf8ff6786d599d6cc38",
+            "selectedActionKey": "[\"reference.grid-rescue/assist\",\"controller\",{\"id\":\"north\",\"kind\":\"site\"},{\"energyCost\":2}]",
+            "rankingKeys": [
+              "[\"reference.grid-rescue/assist\",\"controller\",{\"id\":\"north\",\"kind\":\"site\"},{\"energyCost\":2}]",
+              "[\"reference.grid-rescue/scan\",\"controller\",null,{\"energyCost\":1}]",
+              "[\"reference.grid-rescue/rest\",\"controller\",null,{\"energyGain\":2}]"
+            ],
+            "legalActionsHash": "e47fd64ccdb29736e8d6853b364ffe889e72aa75c8539d5dd35c72d4d14af897",
+            "legalActionCount": 3,
+            "priors": "uniform",
+            "visits": [
+              55,
+              5,
+              4
+            ],
+            "meanValues": [
+              0.6666666666666667,
+              0.05,
+              -0.02
+            ]
+          },
+          "withContext": {
+            "recommendationHash": "da2fd260f7a8c3c4ed4afdd128473d15c986410e83a88bde824802de18df218e",
+            "selectedActionKey": "[\"reference.grid-rescue/assist\",\"controller\",{\"id\":\"north\",\"kind\":\"site\"},{\"energyCost\":2}]",
+            "rankingKeys": [
+              "[\"reference.grid-rescue/assist\",\"controller\",{\"id\":\"north\",\"kind\":\"site\"},{\"energyCost\":2}]",
+              "[\"reference.grid-rescue/scan\",\"controller\",null,{\"energyCost\":1}]",
+              "[\"reference.grid-rescue/rest\",\"controller\",null,{\"energyGain\":2}]"
+            ],
+            "legalActionsHash": "e47fd64ccdb29736e8d6853b364ffe889e72aa75c8539d5dd35c72d4d14af897",
+            "legalActionCount": 3,
+            "priors": "uniform",
+            "visits": [
+              55,
+              5,
+              4
+            ],
+            "meanValues": [
+              0.6466666666666675,
+              0.030000000000000006,
+              -0.04
+            ]
+          },
+          "selectionChanged": false,
+          "rankingChanged": false,
+          "valueChanged": true,
+          "visitsChanged": false,
+          "decisionChanged": true,
+          "identicalExceptProvenance": false,
+          "recommendationChanged": true,
+          "legalActionsPreserved": true,
+          "priorsUnchanged": true
+        },
+        {
+          "fixtureId": "rescue-s128",
+          "adjustmentMicro": -20000,
+          "baseline": {
+            "recommendationHash": "439fc48b82df707d09679766083b3bd8de220f72a3f70a878ba82b48856bb1ed",
+            "selectedActionKey": "[\"reference.grid-rescue/assist\",\"controller\",{\"id\":\"north\",\"kind\":\"site\"},{\"energyCost\":2}]",
+            "rankingKeys": [
+              "[\"reference.grid-rescue/assist\",\"controller\",{\"id\":\"north\",\"kind\":\"site\"},{\"energyCost\":2}]",
+              "[\"reference.grid-rescue/scan\",\"controller\",null,{\"energyCost\":1}]",
+              "[\"reference.grid-rescue/rest\",\"controller\",null,{\"energyGain\":2}]"
+            ],
+            "legalActionsHash": "e47fd64ccdb29736e8d6853b364ffe889e72aa75c8539d5dd35c72d4d14af897",
+            "legalActionCount": 3,
+            "priors": "uniform",
+            "visits": [
+              100,
+              15,
+              13
+            ],
+            "meanValues": [
+              0.3333333333333329,
+              0.05000000000000001,
+              -0.019999999999999997
+            ]
+          },
+          "withContext": {
+            "recommendationHash": "020f1d8684f4dea2d52088a26bfc2b1b545369e119847ce6613794592542aade",
+            "selectedActionKey": "[\"reference.grid-rescue/assist\",\"controller\",{\"id\":\"north\",\"kind\":\"site\"},{\"energyCost\":2}]",
+            "rankingKeys": [
+              "[\"reference.grid-rescue/assist\",\"controller\",{\"id\":\"north\",\"kind\":\"site\"},{\"energyCost\":2}]",
+              "[\"reference.grid-rescue/scan\",\"controller\",null,{\"energyCost\":1}]",
+              "[\"reference.grid-rescue/rest\",\"controller\",null,{\"energyGain\":2}]"
+            ],
+            "legalActionsHash": "e47fd64ccdb29736e8d6853b364ffe889e72aa75c8539d5dd35c72d4d14af897",
+            "legalActionCount": 3,
+            "priors": "uniform",
+            "visits": [
+              100,
+              15,
+              13
+            ],
+            "meanValues": [
+              0.3133333333333328,
+              0.030000000000000013,
+              -0.039999999999999994
+            ]
+          },
+          "selectionChanged": false,
+          "rankingChanged": false,
+          "valueChanged": true,
+          "visitsChanged": false,
+          "decisionChanged": true,
+          "identicalExceptProvenance": false,
+          "recommendationChanged": true,
+          "legalActionsPreserved": true,
+          "priorsUnchanged": true
+        }
+      ]
+    },
+    {
+      "scenarioId": "nexus-only-supported",
+      "contextDigest": "sha256:35a12f75019c0bf285066fa690f63857e9567b1a10a35a9f713770cbdbf98d20",
+      "oracleOutputDigest": "sha256:3c65abc5908032ff0a9dbdf83b6dd9cd9bdfcd78ca03a001fdd51f803259638f",
+      "nexusOutputDigest": "sha256:989b6ed56c6bde781b55c31eb9207ddcd637326c931f8c6a770cd23e1980c708",
+      "contextFeatures": {
+        "temporalRisk": 0,
+        "temporalOpportunity": 0,
+        "stability": 1000000,
+        "volatility": 0,
+        "dependencyRisk": 0,
+        "criticality": 0,
+        "supportStrength": 1000000,
+        "isolationRisk": 0
+      },
+      "oracleAdjustmentMicro": 0,
+      "nexusAdjustmentMicro": 20000,
+      "adjustmentMicro": 20000,
+      "comparisons": [
+        {
+          "fixtureId": "game-s64",
+          "adjustmentMicro": 20000,
+          "baseline": {
+            "recommendationHash": "628b72a9af99ee8ef3a0e2deaf886fbb9d2a77ffa8e81486f5c2b2313c02d0ab",
+            "selectedActionKey": "[\"reference.token-race/take@bonus\",\"player-1\",{\"id\":\"bonus-1\",\"kind\":\"shared-bonus\"},{\"amount\":3}]",
+            "rankingKeys": [
+              "[\"reference.token-race/take@bonus\",\"player-1\",{\"id\":\"bonus-1\",\"kind\":\"shared-bonus\"},{\"amount\":3}]",
+              "[\"reference.token-race/take@2\",\"player-1\",null,{\"amount\":2}]",
+              "[\"reference.token-race/take@1\",\"player-1\",null,{\"amount\":1}]"
+            ],
+            "legalActionsHash": "0422b53e85e3cb3b27c9a008edf6477c3c8302cba8c623c734cd0aea7e1adb16",
+            "legalActionCount": 3,
+            "priors": "uniform",
+            "visits": [
+              34,
+              18,
+              12
+            ],
+            "meanValues": [
+              0.3000000000000001,
+              0.20000000000000007,
+              0.09999999999999999
+            ]
+          },
+          "withContext": {
+            "recommendationHash": "d12778227d9702becbb1886662eeba6a956e23cf34bcd5cd5c95f911dcb3b59d",
+            "selectedActionKey": "[\"reference.token-race/take@bonus\",\"player-1\",{\"id\":\"bonus-1\",\"kind\":\"shared-bonus\"},{\"amount\":3}]",
+            "rankingKeys": [
+              "[\"reference.token-race/take@bonus\",\"player-1\",{\"id\":\"bonus-1\",\"kind\":\"shared-bonus\"},{\"amount\":3}]",
+              "[\"reference.token-race/take@2\",\"player-1\",null,{\"amount\":2}]",
+              "[\"reference.token-race/take@1\",\"player-1\",null,{\"amount\":1}]"
+            ],
+            "legalActionsHash": "0422b53e85e3cb3b27c9a008edf6477c3c8302cba8c623c734cd0aea7e1adb16",
+            "legalActionCount": 3,
+            "priors": "uniform",
+            "visits": [
+              34,
+              18,
+              12
+            ],
+            "meanValues": [
+              0.3200000000000001,
+              0.22000000000000008,
+              0.12000000000000004
+            ]
+          },
+          "selectionChanged": false,
+          "rankingChanged": false,
+          "valueChanged": true,
+          "visitsChanged": false,
+          "decisionChanged": true,
+          "identicalExceptProvenance": false,
+          "recommendationChanged": true,
+          "legalActionsPreserved": true,
+          "priorsUnchanged": true
+        },
+        {
+          "fixtureId": "game-s96",
+          "adjustmentMicro": 20000,
+          "baseline": {
+            "recommendationHash": "9602f065b94fb36b8159fdfaee88a0104db4b9eaf52ca8bd3035f710cc2dcc30",
+            "selectedActionKey": "[\"reference.token-race/take@2\",\"player-1\",null,{\"amount\":2}]",
+            "rankingKeys": [
+              "[\"reference.token-race/take@2\",\"player-1\",null,{\"amount\":2}]",
+              "[\"reference.token-race/take@1\",\"player-1\",null,{\"amount\":1}]"
+            ],
+            "legalActionsHash": "94443bc29055fb3948bb0e1c880104fad643e2d359e3cc578df249788fc49c11",
+            "legalActionCount": 2,
+            "priors": "uniform",
+            "visits": [
+              63,
+              33
+            ],
+            "meanValues": [
+              0.1999999999999998,
+              0.10000000000000005
+            ]
+          },
+          "withContext": {
+            "recommendationHash": "a086f47e04ac8da135567d99b9b694ff0975343677b503efbac54af856cfa9ce",
+            "selectedActionKey": "[\"reference.token-race/take@2\",\"player-1\",null,{\"amount\":2}]",
+            "rankingKeys": [
+              "[\"reference.token-race/take@2\",\"player-1\",null,{\"amount\":2}]",
+              "[\"reference.token-race/take@1\",\"player-1\",null,{\"amount\":1}]"
+            ],
+            "legalActionsHash": "94443bc29055fb3948bb0e1c880104fad643e2d359e3cc578df249788fc49c11",
+            "legalActionCount": 2,
+            "priors": "uniform",
+            "visits": [
+              63,
+              33
+            ],
+            "meanValues": [
+              0.22000000000000022,
+              0.12000000000000008
+            ]
+          },
+          "selectionChanged": false,
+          "rankingChanged": false,
+          "valueChanged": true,
+          "visitsChanged": false,
+          "decisionChanged": true,
+          "identicalExceptProvenance": false,
+          "recommendationChanged": true,
+          "legalActionsPreserved": true,
+          "priorsUnchanged": true
+        },
+        {
+          "fixtureId": "rescue-s64",
+          "adjustmentMicro": 20000,
+          "baseline": {
+            "recommendationHash": "dd3748d9e703b48061451be01a14b9b9279b1cfc99eebdf8ff6786d599d6cc38",
+            "selectedActionKey": "[\"reference.grid-rescue/assist\",\"controller\",{\"id\":\"north\",\"kind\":\"site\"},{\"energyCost\":2}]",
+            "rankingKeys": [
+              "[\"reference.grid-rescue/assist\",\"controller\",{\"id\":\"north\",\"kind\":\"site\"},{\"energyCost\":2}]",
+              "[\"reference.grid-rescue/scan\",\"controller\",null,{\"energyCost\":1}]",
+              "[\"reference.grid-rescue/rest\",\"controller\",null,{\"energyGain\":2}]"
+            ],
+            "legalActionsHash": "e47fd64ccdb29736e8d6853b364ffe889e72aa75c8539d5dd35c72d4d14af897",
+            "legalActionCount": 3,
+            "priors": "uniform",
+            "visits": [
+              55,
+              5,
+              4
+            ],
+            "meanValues": [
+              0.6666666666666667,
+              0.05,
+              -0.02
+            ]
+          },
+          "withContext": {
+            "recommendationHash": "43821f621e006fccd765f1cda5fd1a259f5644f742ce7adcdaace9c0c6b19616",
+            "selectedActionKey": "[\"reference.grid-rescue/assist\",\"controller\",{\"id\":\"north\",\"kind\":\"site\"},{\"energyCost\":2}]",
+            "rankingKeys": [
+              "[\"reference.grid-rescue/assist\",\"controller\",{\"id\":\"north\",\"kind\":\"site\"},{\"energyCost\":2}]",
+              "[\"reference.grid-rescue/scan\",\"controller\",null,{\"energyCost\":1}]",
+              "[\"reference.grid-rescue/rest\",\"controller\",null,{\"energyGain\":2}]"
+            ],
+            "legalActionsHash": "e47fd64ccdb29736e8d6853b364ffe889e72aa75c8539d5dd35c72d4d14af897",
+            "legalActionCount": 3,
+            "priors": "uniform",
+            "visits": [
+              55,
+              5,
+              4
+            ],
+            "meanValues": [
+              0.6866666666666672,
+              0.07,
+              0
+            ]
+          },
+          "selectionChanged": false,
+          "rankingChanged": false,
+          "valueChanged": true,
+          "visitsChanged": false,
+          "decisionChanged": true,
+          "identicalExceptProvenance": false,
+          "recommendationChanged": true,
+          "legalActionsPreserved": true,
+          "priorsUnchanged": true
+        },
+        {
+          "fixtureId": "rescue-s128",
+          "adjustmentMicro": 20000,
+          "baseline": {
+            "recommendationHash": "439fc48b82df707d09679766083b3bd8de220f72a3f70a878ba82b48856bb1ed",
+            "selectedActionKey": "[\"reference.grid-rescue/assist\",\"controller\",{\"id\":\"north\",\"kind\":\"site\"},{\"energyCost\":2}]",
+            "rankingKeys": [
+              "[\"reference.grid-rescue/assist\",\"controller\",{\"id\":\"north\",\"kind\":\"site\"},{\"energyCost\":2}]",
+              "[\"reference.grid-rescue/scan\",\"controller\",null,{\"energyCost\":1}]",
+              "[\"reference.grid-rescue/rest\",\"controller\",null,{\"energyGain\":2}]"
+            ],
+            "legalActionsHash": "e47fd64ccdb29736e8d6853b364ffe889e72aa75c8539d5dd35c72d4d14af897",
+            "legalActionCount": 3,
+            "priors": "uniform",
+            "visits": [
+              100,
+              15,
+              13
+            ],
+            "meanValues": [
+              0.3333333333333329,
+              0.05000000000000001,
+              -0.019999999999999997
+            ]
+          },
+          "withContext": {
+            "recommendationHash": "6526a84570cd3de270498ac2800fefe645e0000e31349bdc2fcf6de4d918a05d",
+            "selectedActionKey": "[\"reference.grid-rescue/assist\",\"controller\",{\"id\":\"north\",\"kind\":\"site\"},{\"energyCost\":2}]",
+            "rankingKeys": [
+              "[\"reference.grid-rescue/assist\",\"controller\",{\"id\":\"north\",\"kind\":\"site\"},{\"energyCost\":2}]",
+              "[\"reference.grid-rescue/scan\",\"controller\",null,{\"energyCost\":1}]",
+              "[\"reference.grid-rescue/rest\",\"controller\",null,{\"energyGain\":2}]"
+            ],
+            "legalActionsHash": "e47fd64ccdb29736e8d6853b364ffe889e72aa75c8539d5dd35c72d4d14af897",
+            "legalActionCount": 3,
+            "priors": "uniform",
+            "visits": [
+              100,
+              15,
+              13
+            ],
+            "meanValues": [
+              0.3533333333333325,
+              0.07000000000000003,
+              0
+            ]
+          },
+          "selectionChanged": false,
+          "rankingChanged": false,
+          "valueChanged": true,
+          "visitsChanged": false,
+          "decisionChanged": true,
+          "identicalExceptProvenance": false,
+          "recommendationChanged": true,
+          "legalActionsPreserved": true,
+          "priorsUnchanged": true
+        }
+      ]
+    },
+    {
+      "scenarioId": "nexus-only-isolated",
+      "contextDigest": "sha256:e17bf67cecf7107b370e29dc49d6de309d186c42e81b7320e8d42a42cc6d3a83",
+      "oracleOutputDigest": "sha256:3c65abc5908032ff0a9dbdf83b6dd9cd9bdfcd78ca03a001fdd51f803259638f",
+      "nexusOutputDigest": "sha256:460269fc9cc05b1a11f3b18f2af4523d6f12eb74f66cb350ab3968f8557151c2",
+      "contextFeatures": {
+        "temporalRisk": 0,
+        "temporalOpportunity": 0,
+        "stability": 1000000,
+        "volatility": 0,
+        "dependencyRisk": 0,
+        "criticality": 0,
+        "supportStrength": 0,
+        "isolationRisk": 1000000
+      },
+      "oracleAdjustmentMicro": 0,
+      "nexusAdjustmentMicro": -20000,
+      "adjustmentMicro": -20000,
+      "comparisons": [
+        {
+          "fixtureId": "game-s64",
+          "adjustmentMicro": -20000,
+          "baseline": {
+            "recommendationHash": "628b72a9af99ee8ef3a0e2deaf886fbb9d2a77ffa8e81486f5c2b2313c02d0ab",
+            "selectedActionKey": "[\"reference.token-race/take@bonus\",\"player-1\",{\"id\":\"bonus-1\",\"kind\":\"shared-bonus\"},{\"amount\":3}]",
+            "rankingKeys": [
+              "[\"reference.token-race/take@bonus\",\"player-1\",{\"id\":\"bonus-1\",\"kind\":\"shared-bonus\"},{\"amount\":3}]",
+              "[\"reference.token-race/take@2\",\"player-1\",null,{\"amount\":2}]",
+              "[\"reference.token-race/take@1\",\"player-1\",null,{\"amount\":1}]"
+            ],
+            "legalActionsHash": "0422b53e85e3cb3b27c9a008edf6477c3c8302cba8c623c734cd0aea7e1adb16",
+            "legalActionCount": 3,
+            "priors": "uniform",
+            "visits": [
+              34,
+              18,
+              12
+            ],
+            "meanValues": [
+              0.3000000000000001,
+              0.20000000000000007,
+              0.09999999999999999
+            ]
+          },
+          "withContext": {
+            "recommendationHash": "92e86b6fec04661a09ea9e936624e64a1a0f6dcb5b37043b36b3ed36611cde86",
+            "selectedActionKey": "[\"reference.token-race/take@bonus\",\"player-1\",{\"id\":\"bonus-1\",\"kind\":\"shared-bonus\"},{\"amount\":3}]",
+            "rankingKeys": [
+              "[\"reference.token-race/take@bonus\",\"player-1\",{\"id\":\"bonus-1\",\"kind\":\"shared-bonus\"},{\"amount\":3}]",
+              "[\"reference.token-race/take@2\",\"player-1\",null,{\"amount\":2}]",
+              "[\"reference.token-race/take@1\",\"player-1\",null,{\"amount\":1}]"
+            ],
+            "legalActionsHash": "0422b53e85e3cb3b27c9a008edf6477c3c8302cba8c623c734cd0aea7e1adb16",
+            "legalActionCount": 3,
+            "priors": "uniform",
+            "visits": [
+              34,
+              18,
+              12
+            ],
+            "meanValues": [
+              0.2799999999999999,
+              0.18000000000000005,
+              0.07999999999999999
+            ]
+          },
+          "selectionChanged": false,
+          "rankingChanged": false,
+          "valueChanged": true,
+          "visitsChanged": false,
+          "decisionChanged": true,
+          "identicalExceptProvenance": false,
+          "recommendationChanged": true,
+          "legalActionsPreserved": true,
+          "priorsUnchanged": true
+        },
+        {
+          "fixtureId": "game-s96",
+          "adjustmentMicro": -20000,
+          "baseline": {
+            "recommendationHash": "9602f065b94fb36b8159fdfaee88a0104db4b9eaf52ca8bd3035f710cc2dcc30",
+            "selectedActionKey": "[\"reference.token-race/take@2\",\"player-1\",null,{\"amount\":2}]",
+            "rankingKeys": [
+              "[\"reference.token-race/take@2\",\"player-1\",null,{\"amount\":2}]",
+              "[\"reference.token-race/take@1\",\"player-1\",null,{\"amount\":1}]"
+            ],
+            "legalActionsHash": "94443bc29055fb3948bb0e1c880104fad643e2d359e3cc578df249788fc49c11",
+            "legalActionCount": 2,
+            "priors": "uniform",
+            "visits": [
+              63,
+              33
+            ],
+            "meanValues": [
+              0.1999999999999998,
+              0.10000000000000005
+            ]
+          },
+          "withContext": {
+            "recommendationHash": "bc3c815cf5215672d325e73716ba44ec9e1ef8fca54c4babdaedaade6b660f43",
+            "selectedActionKey": "[\"reference.token-race/take@2\",\"player-1\",null,{\"amount\":2}]",
+            "rankingKeys": [
+              "[\"reference.token-race/take@2\",\"player-1\",null,{\"amount\":2}]",
+              "[\"reference.token-race/take@1\",\"player-1\",null,{\"amount\":1}]"
+            ],
+            "legalActionsHash": "94443bc29055fb3948bb0e1c880104fad643e2d359e3cc578df249788fc49c11",
+            "legalActionCount": 2,
+            "priors": "uniform",
+            "visits": [
+              63,
+              33
+            ],
+            "meanValues": [
+              0.17999999999999985,
+              0.08000000000000003
+            ]
+          },
+          "selectionChanged": false,
+          "rankingChanged": false,
+          "valueChanged": true,
+          "visitsChanged": false,
+          "decisionChanged": true,
+          "identicalExceptProvenance": false,
+          "recommendationChanged": true,
+          "legalActionsPreserved": true,
+          "priorsUnchanged": true
+        },
+        {
+          "fixtureId": "rescue-s64",
+          "adjustmentMicro": -20000,
+          "baseline": {
+            "recommendationHash": "dd3748d9e703b48061451be01a14b9b9279b1cfc99eebdf8ff6786d599d6cc38",
+            "selectedActionKey": "[\"reference.grid-rescue/assist\",\"controller\",{\"id\":\"north\",\"kind\":\"site\"},{\"energyCost\":2}]",
+            "rankingKeys": [
+              "[\"reference.grid-rescue/assist\",\"controller\",{\"id\":\"north\",\"kind\":\"site\"},{\"energyCost\":2}]",
+              "[\"reference.grid-rescue/scan\",\"controller\",null,{\"energyCost\":1}]",
+              "[\"reference.grid-rescue/rest\",\"controller\",null,{\"energyGain\":2}]"
+            ],
+            "legalActionsHash": "e47fd64ccdb29736e8d6853b364ffe889e72aa75c8539d5dd35c72d4d14af897",
+            "legalActionCount": 3,
+            "priors": "uniform",
+            "visits": [
+              55,
+              5,
+              4
+            ],
+            "meanValues": [
+              0.6666666666666667,
+              0.05,
+              -0.02
+            ]
+          },
+          "withContext": {
+            "recommendationHash": "c96dbbc365dc52ba98e3bf1006eb0f98d819d352099a2562263437757a8cee74",
+            "selectedActionKey": "[\"reference.grid-rescue/assist\",\"controller\",{\"id\":\"north\",\"kind\":\"site\"},{\"energyCost\":2}]",
+            "rankingKeys": [
+              "[\"reference.grid-rescue/assist\",\"controller\",{\"id\":\"north\",\"kind\":\"site\"},{\"energyCost\":2}]",
+              "[\"reference.grid-rescue/scan\",\"controller\",null,{\"energyCost\":1}]",
+              "[\"reference.grid-rescue/rest\",\"controller\",null,{\"energyGain\":2}]"
+            ],
+            "legalActionsHash": "e47fd64ccdb29736e8d6853b364ffe889e72aa75c8539d5dd35c72d4d14af897",
+            "legalActionCount": 3,
+            "priors": "uniform",
+            "visits": [
+              55,
+              5,
+              4
+            ],
+            "meanValues": [
+              0.6466666666666675,
+              0.030000000000000006,
+              -0.04
+            ]
+          },
+          "selectionChanged": false,
+          "rankingChanged": false,
+          "valueChanged": true,
+          "visitsChanged": false,
+          "decisionChanged": true,
+          "identicalExceptProvenance": false,
+          "recommendationChanged": true,
+          "legalActionsPreserved": true,
+          "priorsUnchanged": true
+        },
+        {
+          "fixtureId": "rescue-s128",
+          "adjustmentMicro": -20000,
+          "baseline": {
+            "recommendationHash": "439fc48b82df707d09679766083b3bd8de220f72a3f70a878ba82b48856bb1ed",
+            "selectedActionKey": "[\"reference.grid-rescue/assist\",\"controller\",{\"id\":\"north\",\"kind\":\"site\"},{\"energyCost\":2}]",
+            "rankingKeys": [
+              "[\"reference.grid-rescue/assist\",\"controller\",{\"id\":\"north\",\"kind\":\"site\"},{\"energyCost\":2}]",
+              "[\"reference.grid-rescue/scan\",\"controller\",null,{\"energyCost\":1}]",
+              "[\"reference.grid-rescue/rest\",\"controller\",null,{\"energyGain\":2}]"
+            ],
+            "legalActionsHash": "e47fd64ccdb29736e8d6853b364ffe889e72aa75c8539d5dd35c72d4d14af897",
+            "legalActionCount": 3,
+            "priors": "uniform",
+            "visits": [
+              100,
+              15,
+              13
+            ],
+            "meanValues": [
+              0.3333333333333329,
+              0.05000000000000001,
+              -0.019999999999999997
+            ]
+          },
+          "withContext": {
+            "recommendationHash": "a8ebb0f6c21df909296762253611123d5c22490d02788baec087c329738d8bf1",
+            "selectedActionKey": "[\"reference.grid-rescue/assist\",\"controller\",{\"id\":\"north\",\"kind\":\"site\"},{\"energyCost\":2}]",
+            "rankingKeys": [
+              "[\"reference.grid-rescue/assist\",\"controller\",{\"id\":\"north\",\"kind\":\"site\"},{\"energyCost\":2}]",
+              "[\"reference.grid-rescue/scan\",\"controller\",null,{\"energyCost\":1}]",
+              "[\"reference.grid-rescue/rest\",\"controller\",null,{\"energyGain\":2}]"
+            ],
+            "legalActionsHash": "e47fd64ccdb29736e8d6853b364ffe889e72aa75c8539d5dd35c72d4d14af897",
+            "legalActionCount": 3,
+            "priors": "uniform",
+            "visits": [
+              100,
+              15,
+              13
+            ],
+            "meanValues": [
+              0.3133333333333328,
+              0.030000000000000013,
+              -0.039999999999999994
+            ]
+          },
+          "selectionChanged": false,
+          "rankingChanged": false,
+          "valueChanged": true,
+          "visitsChanged": false,
+          "decisionChanged": true,
+          "identicalExceptProvenance": false,
+          "recommendationChanged": true,
+          "legalActionsPreserved": true,
+          "priorsUnchanged": true
+        }
+      ]
+    },
+    {
+      "scenarioId": "combined",
+      "contextDigest": "sha256:6cbde0c566af54e1f53208c5f7c721ac69beb9dd681e94aeb2924698e8bfceb6",
+      "oracleOutputDigest": "sha256:f914c0a4c87947259e9e218b36bc3d7dd6b8b82e274b2e2fb478317a5f1ced7a",
+      "nexusOutputDigest": "sha256:c8e3c6901efa9b230b19b71cd1a4084f92fa49689d5bd4dcd1cf5f9d0bf4e676",
+      "contextFeatures": {
+        "temporalRisk": 0,
+        "temporalOpportunity": 1000000,
+        "stability": 454545,
+        "volatility": 545455,
+        "dependencyRisk": 0,
+        "criticality": 250000,
+        "supportStrength": 0,
+        "isolationRisk": 0
+      },
+      "oracleAdjustmentMicro": 9091,
+      "nexusAdjustmentMicro": -5000,
+      "adjustmentMicro": 4091,
+      "comparisons": [
+        {
+          "fixtureId": "game-s64",
+          "adjustmentMicro": 4091,
+          "baseline": {
+            "recommendationHash": "628b72a9af99ee8ef3a0e2deaf886fbb9d2a77ffa8e81486f5c2b2313c02d0ab",
+            "selectedActionKey": "[\"reference.token-race/take@bonus\",\"player-1\",{\"id\":\"bonus-1\",\"kind\":\"shared-bonus\"},{\"amount\":3}]",
+            "rankingKeys": [
+              "[\"reference.token-race/take@bonus\",\"player-1\",{\"id\":\"bonus-1\",\"kind\":\"shared-bonus\"},{\"amount\":3}]",
+              "[\"reference.token-race/take@2\",\"player-1\",null,{\"amount\":2}]",
+              "[\"reference.token-race/take@1\",\"player-1\",null,{\"amount\":1}]"
+            ],
+            "legalActionsHash": "0422b53e85e3cb3b27c9a008edf6477c3c8302cba8c623c734cd0aea7e1adb16",
+            "legalActionCount": 3,
+            "priors": "uniform",
+            "visits": [
+              34,
+              18,
+              12
+            ],
+            "meanValues": [
+              0.3000000000000001,
+              0.20000000000000007,
+              0.09999999999999999
+            ]
+          },
+          "withContext": {
+            "recommendationHash": "d5aac957cedd0cfc75a2552cbfef150b66c554b275cf5134afde9b4295498678",
+            "selectedActionKey": "[\"reference.token-race/take@bonus\",\"player-1\",{\"id\":\"bonus-1\",\"kind\":\"shared-bonus\"},{\"amount\":3}]",
+            "rankingKeys": [
+              "[\"reference.token-race/take@bonus\",\"player-1\",{\"id\":\"bonus-1\",\"kind\":\"shared-bonus\"},{\"amount\":3}]",
+              "[\"reference.token-race/take@2\",\"player-1\",null,{\"amount\":2}]",
+              "[\"reference.token-race/take@1\",\"player-1\",null,{\"amount\":1}]"
+            ],
+            "legalActionsHash": "0422b53e85e3cb3b27c9a008edf6477c3c8302cba8c623c734cd0aea7e1adb16",
+            "legalActionCount": 3,
+            "priors": "uniform",
+            "visits": [
+              34,
+              18,
+              12
+            ],
+            "meanValues": [
+              0.30409099999999983,
+              0.20409100000000002,
+              0.104091
+            ]
+          },
+          "selectionChanged": false,
+          "rankingChanged": false,
+          "valueChanged": true,
+          "visitsChanged": false,
+          "decisionChanged": true,
+          "identicalExceptProvenance": false,
+          "recommendationChanged": true,
+          "legalActionsPreserved": true,
+          "priorsUnchanged": true
+        },
+        {
+          "fixtureId": "game-s96",
+          "adjustmentMicro": 4091,
+          "baseline": {
+            "recommendationHash": "9602f065b94fb36b8159fdfaee88a0104db4b9eaf52ca8bd3035f710cc2dcc30",
+            "selectedActionKey": "[\"reference.token-race/take@2\",\"player-1\",null,{\"amount\":2}]",
+            "rankingKeys": [
+              "[\"reference.token-race/take@2\",\"player-1\",null,{\"amount\":2}]",
+              "[\"reference.token-race/take@1\",\"player-1\",null,{\"amount\":1}]"
+            ],
+            "legalActionsHash": "94443bc29055fb3948bb0e1c880104fad643e2d359e3cc578df249788fc49c11",
+            "legalActionCount": 2,
+            "priors": "uniform",
+            "visits": [
+              63,
+              33
+            ],
+            "meanValues": [
+              0.1999999999999998,
+              0.10000000000000005
+            ]
+          },
+          "withContext": {
+            "recommendationHash": "ef96ab7fbe1a2aa42e9d828e5215829d7c9bcb72390f688971ff3c335d086f39",
+            "selectedActionKey": "[\"reference.token-race/take@2\",\"player-1\",null,{\"amount\":2}]",
+            "rankingKeys": [
+              "[\"reference.token-race/take@2\",\"player-1\",null,{\"amount\":2}]",
+              "[\"reference.token-race/take@1\",\"player-1\",null,{\"amount\":1}]"
+            ],
+            "legalActionsHash": "94443bc29055fb3948bb0e1c880104fad643e2d359e3cc578df249788fc49c11",
+            "legalActionCount": 2,
+            "priors": "uniform",
+            "visits": [
+              63,
+              33
+            ],
+            "meanValues": [
+              0.20409100000000002,
+              0.10409099999999996
+            ]
+          },
+          "selectionChanged": false,
+          "rankingChanged": false,
+          "valueChanged": true,
+          "visitsChanged": false,
+          "decisionChanged": true,
+          "identicalExceptProvenance": false,
+          "recommendationChanged": true,
+          "legalActionsPreserved": true,
+          "priorsUnchanged": true
+        },
+        {
+          "fixtureId": "rescue-s64",
+          "adjustmentMicro": 4091,
+          "baseline": {
+            "recommendationHash": "dd3748d9e703b48061451be01a14b9b9279b1cfc99eebdf8ff6786d599d6cc38",
+            "selectedActionKey": "[\"reference.grid-rescue/assist\",\"controller\",{\"id\":\"north\",\"kind\":\"site\"},{\"energyCost\":2}]",
+            "rankingKeys": [
+              "[\"reference.grid-rescue/assist\",\"controller\",{\"id\":\"north\",\"kind\":\"site\"},{\"energyCost\":2}]",
+              "[\"reference.grid-rescue/scan\",\"controller\",null,{\"energyCost\":1}]",
+              "[\"reference.grid-rescue/rest\",\"controller\",null,{\"energyGain\":2}]"
+            ],
+            "legalActionsHash": "e47fd64ccdb29736e8d6853b364ffe889e72aa75c8539d5dd35c72d4d14af897",
+            "legalActionCount": 3,
+            "priors": "uniform",
+            "visits": [
+              55,
+              5,
+              4
+            ],
+            "meanValues": [
+              0.6666666666666667,
+              0.05,
+              -0.02
+            ]
+          },
+          "withContext": {
+            "recommendationHash": "727473214273c3034e489628ddc671eb832f58332b41c918fd0bed8f96954df0",
+            "selectedActionKey": "[\"reference.grid-rescue/assist\",\"controller\",{\"id\":\"north\",\"kind\":\"site\"},{\"energyCost\":2}]",
+            "rankingKeys": [
+              "[\"reference.grid-rescue/assist\",\"controller\",{\"id\":\"north\",\"kind\":\"site\"},{\"energyCost\":2}]",
+              "[\"reference.grid-rescue/scan\",\"controller\",null,{\"energyCost\":1}]",
+              "[\"reference.grid-rescue/rest\",\"controller\",null,{\"energyGain\":2}]"
+            ],
+            "legalActionsHash": "e47fd64ccdb29736e8d6853b364ffe889e72aa75c8539d5dd35c72d4d14af897",
+            "legalActionCount": 3,
+            "priors": "uniform",
+            "visits": [
+              55,
+              5,
+              4
+            ],
+            "meanValues": [
+              0.6707576666666667,
+              0.054091,
+              -0.015909
+            ]
+          },
+          "selectionChanged": false,
+          "rankingChanged": false,
+          "valueChanged": true,
+          "visitsChanged": false,
+          "decisionChanged": true,
+          "identicalExceptProvenance": false,
+          "recommendationChanged": true,
+          "legalActionsPreserved": true,
+          "priorsUnchanged": true
+        },
+        {
+          "fixtureId": "rescue-s128",
+          "adjustmentMicro": 4091,
+          "baseline": {
+            "recommendationHash": "439fc48b82df707d09679766083b3bd8de220f72a3f70a878ba82b48856bb1ed",
+            "selectedActionKey": "[\"reference.grid-rescue/assist\",\"controller\",{\"id\":\"north\",\"kind\":\"site\"},{\"energyCost\":2}]",
+            "rankingKeys": [
+              "[\"reference.grid-rescue/assist\",\"controller\",{\"id\":\"north\",\"kind\":\"site\"},{\"energyCost\":2}]",
+              "[\"reference.grid-rescue/scan\",\"controller\",null,{\"energyCost\":1}]",
+              "[\"reference.grid-rescue/rest\",\"controller\",null,{\"energyGain\":2}]"
+            ],
+            "legalActionsHash": "e47fd64ccdb29736e8d6853b364ffe889e72aa75c8539d5dd35c72d4d14af897",
+            "legalActionCount": 3,
+            "priors": "uniform",
+            "visits": [
+              100,
+              15,
+              13
+            ],
+            "meanValues": [
+              0.3333333333333329,
+              0.05000000000000001,
+              -0.019999999999999997
+            ]
+          },
+          "withContext": {
+            "recommendationHash": "5751f55081846d2e40de8190fd979602e8850ec7173fc55967f534f2e97a4083",
+            "selectedActionKey": "[\"reference.grid-rescue/assist\",\"controller\",{\"id\":\"north\",\"kind\":\"site\"},{\"energyCost\":2}]",
+            "rankingKeys": [
+              "[\"reference.grid-rescue/assist\",\"controller\",{\"id\":\"north\",\"kind\":\"site\"},{\"energyCost\":2}]",
+              "[\"reference.grid-rescue/scan\",\"controller\",null,{\"energyCost\":1}]",
+              "[\"reference.grid-rescue/rest\",\"controller\",null,{\"energyGain\":2}]"
+            ],
+            "legalActionsHash": "e47fd64ccdb29736e8d6853b364ffe889e72aa75c8539d5dd35c72d4d14af897",
+            "legalActionCount": 3,
+            "priors": "uniform",
+            "visits": [
+              100,
+              15,
+              13
+            ],
+            "meanValues": [
+              0.33742433333333366,
+              0.054091,
+              -0.015909000000000003
+            ]
+          },
+          "selectionChanged": false,
+          "rankingChanged": false,
+          "valueChanged": true,
+          "visitsChanged": false,
+          "decisionChanged": true,
+          "identicalExceptProvenance": false,
+          "recommendationChanged": true,
+          "legalActionsPreserved": true,
+          "priorsUnchanged": true
+        }
+      ]
+    },
+    {
+      "scenarioId": "max-positive",
+      "contextDigest": "sha256:c39fd48be36741c6734e373434260935b77524e7a7ccd32de6f0f306ebef0ef1",
+      "oracleOutputDigest": "sha256:3ffa452018d3e3aeb68d18cda4d86744585aa882bb4909da9df103a68a7e06a7",
+      "nexusOutputDigest": "sha256:d35576d1b80ce9914bca28e073707013003b3768cee5c4107052a4c9971d035f",
+      "contextFeatures": {
+        "temporalRisk": 0,
+        "temporalOpportunity": 1000000,
+        "stability": 862069,
+        "volatility": 137931,
+        "dependencyRisk": 0,
+        "criticality": 0,
+        "supportStrength": 1000000,
+        "isolationRisk": 0
+      },
+      "oracleAdjustmentMicro": 17241,
+      "nexusAdjustmentMicro": 20000,
+      "adjustmentMicro": 30000,
+      "comparisons": [
+        {
+          "fixtureId": "game-s64",
+          "adjustmentMicro": 30000,
+          "baseline": {
+            "recommendationHash": "628b72a9af99ee8ef3a0e2deaf886fbb9d2a77ffa8e81486f5c2b2313c02d0ab",
+            "selectedActionKey": "[\"reference.token-race/take@bonus\",\"player-1\",{\"id\":\"bonus-1\",\"kind\":\"shared-bonus\"},{\"amount\":3}]",
+            "rankingKeys": [
+              "[\"reference.token-race/take@bonus\",\"player-1\",{\"id\":\"bonus-1\",\"kind\":\"shared-bonus\"},{\"amount\":3}]",
+              "[\"reference.token-race/take@2\",\"player-1\",null,{\"amount\":2}]",
+              "[\"reference.token-race/take@1\",\"player-1\",null,{\"amount\":1}]"
+            ],
+            "legalActionsHash": "0422b53e85e3cb3b27c9a008edf6477c3c8302cba8c623c734cd0aea7e1adb16",
+            "legalActionCount": 3,
+            "priors": "uniform",
+            "visits": [
+              34,
+              18,
+              12
+            ],
+            "meanValues": [
+              0.3000000000000001,
+              0.20000000000000007,
+              0.09999999999999999
+            ]
+          },
+          "withContext": {
+            "recommendationHash": "ca11cdfcbaab29701227f518f16ad958dfecac61ccedf59037791431685dd27b",
+            "selectedActionKey": "[\"reference.token-race/take@bonus\",\"player-1\",{\"id\":\"bonus-1\",\"kind\":\"shared-bonus\"},{\"amount\":3}]",
+            "rankingKeys": [
+              "[\"reference.token-race/take@bonus\",\"player-1\",{\"id\":\"bonus-1\",\"kind\":\"shared-bonus\"},{\"amount\":3}]",
+              "[\"reference.token-race/take@2\",\"player-1\",null,{\"amount\":2}]",
+              "[\"reference.token-race/take@1\",\"player-1\",null,{\"amount\":1}]"
+            ],
+            "legalActionsHash": "0422b53e85e3cb3b27c9a008edf6477c3c8302cba8c623c734cd0aea7e1adb16",
+            "legalActionCount": 3,
+            "priors": "uniform",
+            "visits": [
+              34,
+              18,
+              12
+            ],
+            "meanValues": [
+              0.33,
+              0.23000000000000004,
+              0.12999999999999998
+            ]
+          },
+          "selectionChanged": false,
+          "rankingChanged": false,
+          "valueChanged": true,
+          "visitsChanged": false,
+          "decisionChanged": true,
+          "identicalExceptProvenance": false,
+          "recommendationChanged": true,
+          "legalActionsPreserved": true,
+          "priorsUnchanged": true
+        },
+        {
+          "fixtureId": "game-s96",
+          "adjustmentMicro": 30000,
+          "baseline": {
+            "recommendationHash": "9602f065b94fb36b8159fdfaee88a0104db4b9eaf52ca8bd3035f710cc2dcc30",
+            "selectedActionKey": "[\"reference.token-race/take@2\",\"player-1\",null,{\"amount\":2}]",
+            "rankingKeys": [
+              "[\"reference.token-race/take@2\",\"player-1\",null,{\"amount\":2}]",
+              "[\"reference.token-race/take@1\",\"player-1\",null,{\"amount\":1}]"
+            ],
+            "legalActionsHash": "94443bc29055fb3948bb0e1c880104fad643e2d359e3cc578df249788fc49c11",
+            "legalActionCount": 2,
+            "priors": "uniform",
+            "visits": [
+              63,
+              33
+            ],
+            "meanValues": [
+              0.1999999999999998,
+              0.10000000000000005
+            ]
+          },
+          "withContext": {
+            "recommendationHash": "3701524f1491d2df0f0d65e85f105229f67a7d875c7bbf3576cc1d75091a7fdd",
+            "selectedActionKey": "[\"reference.token-race/take@2\",\"player-1\",null,{\"amount\":2}]",
+            "rankingKeys": [
+              "[\"reference.token-race/take@2\",\"player-1\",null,{\"amount\":2}]",
+              "[\"reference.token-race/take@1\",\"player-1\",null,{\"amount\":1}]"
+            ],
+            "legalActionsHash": "94443bc29055fb3948bb0e1c880104fad643e2d359e3cc578df249788fc49c11",
+            "legalActionCount": 2,
+            "priors": "uniform",
+            "visits": [
+              63,
+              33
+            ],
+            "meanValues": [
+              0.23000000000000032,
+              0.12999999999999992
+            ]
+          },
+          "selectionChanged": false,
+          "rankingChanged": false,
+          "valueChanged": true,
+          "visitsChanged": false,
+          "decisionChanged": true,
+          "identicalExceptProvenance": false,
+          "recommendationChanged": true,
+          "legalActionsPreserved": true,
+          "priorsUnchanged": true
+        },
+        {
+          "fixtureId": "rescue-s64",
+          "adjustmentMicro": 30000,
+          "baseline": {
+            "recommendationHash": "dd3748d9e703b48061451be01a14b9b9279b1cfc99eebdf8ff6786d599d6cc38",
+            "selectedActionKey": "[\"reference.grid-rescue/assist\",\"controller\",{\"id\":\"north\",\"kind\":\"site\"},{\"energyCost\":2}]",
+            "rankingKeys": [
+              "[\"reference.grid-rescue/assist\",\"controller\",{\"id\":\"north\",\"kind\":\"site\"},{\"energyCost\":2}]",
+              "[\"reference.grid-rescue/scan\",\"controller\",null,{\"energyCost\":1}]",
+              "[\"reference.grid-rescue/rest\",\"controller\",null,{\"energyGain\":2}]"
+            ],
+            "legalActionsHash": "e47fd64ccdb29736e8d6853b364ffe889e72aa75c8539d5dd35c72d4d14af897",
+            "legalActionCount": 3,
+            "priors": "uniform",
+            "visits": [
+              55,
+              5,
+              4
+            ],
+            "meanValues": [
+              0.6666666666666667,
+              0.05,
+              -0.02
+            ]
+          },
+          "withContext": {
+            "recommendationHash": "6cb73e0e69b036be54ee725ace82f4b916d9028c64c0620dc83b834dc5bc518f",
+            "selectedActionKey": "[\"reference.grid-rescue/assist\",\"controller\",{\"id\":\"north\",\"kind\":\"site\"},{\"energyCost\":2}]",
+            "rankingKeys": [
+              "[\"reference.grid-rescue/assist\",\"controller\",{\"id\":\"north\",\"kind\":\"site\"},{\"energyCost\":2}]",
+              "[\"reference.grid-rescue/scan\",\"controller\",null,{\"energyCost\":1}]",
+              "[\"reference.grid-rescue/rest\",\"controller\",null,{\"energyGain\":2}]"
+            ],
+            "legalActionsHash": "e47fd64ccdb29736e8d6853b364ffe889e72aa75c8539d5dd35c72d4d14af897",
+            "legalActionCount": 3,
+            "priors": "uniform",
+            "visits": [
+              55,
+              5,
+              4
+            ],
+            "meanValues": [
+              0.6966666666666661,
+              0.08,
+              0.009999999999999998
+            ]
+          },
+          "selectionChanged": false,
+          "rankingChanged": false,
+          "valueChanged": true,
+          "visitsChanged": false,
+          "decisionChanged": true,
+          "identicalExceptProvenance": false,
+          "recommendationChanged": true,
+          "legalActionsPreserved": true,
+          "priorsUnchanged": true
+        },
+        {
+          "fixtureId": "rescue-s128",
+          "adjustmentMicro": 30000,
+          "baseline": {
+            "recommendationHash": "439fc48b82df707d09679766083b3bd8de220f72a3f70a878ba82b48856bb1ed",
+            "selectedActionKey": "[\"reference.grid-rescue/assist\",\"controller\",{\"id\":\"north\",\"kind\":\"site\"},{\"energyCost\":2}]",
+            "rankingKeys": [
+              "[\"reference.grid-rescue/assist\",\"controller\",{\"id\":\"north\",\"kind\":\"site\"},{\"energyCost\":2}]",
+              "[\"reference.grid-rescue/scan\",\"controller\",null,{\"energyCost\":1}]",
+              "[\"reference.grid-rescue/rest\",\"controller\",null,{\"energyGain\":2}]"
+            ],
+            "legalActionsHash": "e47fd64ccdb29736e8d6853b364ffe889e72aa75c8539d5dd35c72d4d14af897",
+            "legalActionCount": 3,
+            "priors": "uniform",
+            "visits": [
+              100,
+              15,
+              13
+            ],
+            "meanValues": [
+              0.3333333333333329,
+              0.05000000000000001,
+              -0.019999999999999997
+            ]
+          },
+          "withContext": {
+            "recommendationHash": "b56ef78b9a5604e6780de851bf46471dc9efa4f2e66d4ce922256ca81b7d3d63",
+            "selectedActionKey": "[\"reference.grid-rescue/assist\",\"controller\",{\"id\":\"north\",\"kind\":\"site\"},{\"energyCost\":2}]",
+            "rankingKeys": [
+              "[\"reference.grid-rescue/assist\",\"controller\",{\"id\":\"north\",\"kind\":\"site\"},{\"energyCost\":2}]",
+              "[\"reference.grid-rescue/scan\",\"controller\",null,{\"energyCost\":1}]",
+              "[\"reference.grid-rescue/rest\",\"controller\",null,{\"energyGain\":2}]"
+            ],
+            "legalActionsHash": "e47fd64ccdb29736e8d6853b364ffe889e72aa75c8539d5dd35c72d4d14af897",
+            "legalActionCount": 3,
+            "priors": "uniform",
+            "visits": [
+              100,
+              15,
+              13
+            ],
+            "meanValues": [
+              0.36333333333333284,
+              0.08,
+              0.009999999999999997
+            ]
+          },
+          "selectionChanged": false,
+          "rankingChanged": false,
+          "valueChanged": true,
+          "visitsChanged": false,
+          "decisionChanged": true,
+          "identicalExceptProvenance": false,
+          "recommendationChanged": true,
+          "legalActionsPreserved": true,
+          "priorsUnchanged": true
+        }
+      ]
+    },
+    {
+      "scenarioId": "max-negative",
+      "contextDigest": "sha256:887122546da298b896060cced4f85f7d052aaadbf5ef66254370bf067b4ea1c3",
+      "oracleOutputDigest": "sha256:bb13d347b931e00061b364d9046bc74334b52888e3fe8df948cd9b6aba491177",
+      "nexusOutputDigest": "sha256:a98993c80959801a1a5884a54181124cd0fcd0c64a778303acefebe5c3083de2",
+      "contextFeatures": {
+        "temporalRisk": 1000000,
+        "temporalOpportunity": 0,
+        "stability": 138685,
+        "volatility": 861315,
+        "dependencyRisk": 750000,
+        "criticality": 250000,
+        "supportStrength": 0,
+        "isolationRisk": 250000
+      },
+      "oracleAdjustmentMicro": -20000,
+      "nexusAdjustmentMicro": -20000,
+      "adjustmentMicro": -30000,
+      "comparisons": [
+        {
+          "fixtureId": "game-s64",
+          "adjustmentMicro": -30000,
+          "baseline": {
+            "recommendationHash": "628b72a9af99ee8ef3a0e2deaf886fbb9d2a77ffa8e81486f5c2b2313c02d0ab",
+            "selectedActionKey": "[\"reference.token-race/take@bonus\",\"player-1\",{\"id\":\"bonus-1\",\"kind\":\"shared-bonus\"},{\"amount\":3}]",
+            "rankingKeys": [
+              "[\"reference.token-race/take@bonus\",\"player-1\",{\"id\":\"bonus-1\",\"kind\":\"shared-bonus\"},{\"amount\":3}]",
+              "[\"reference.token-race/take@2\",\"player-1\",null,{\"amount\":2}]",
+              "[\"reference.token-race/take@1\",\"player-1\",null,{\"amount\":1}]"
+            ],
+            "legalActionsHash": "0422b53e85e3cb3b27c9a008edf6477c3c8302cba8c623c734cd0aea7e1adb16",
+            "legalActionCount": 3,
+            "priors": "uniform",
+            "visits": [
+              34,
+              18,
+              12
+            ],
+            "meanValues": [
+              0.3000000000000001,
+              0.20000000000000007,
+              0.09999999999999999
+            ]
+          },
+          "withContext": {
+            "recommendationHash": "6c5e74c1e067fc4c3a50162c80225eca9abb99022c01e30c526e22572d901613",
+            "selectedActionKey": "[\"reference.token-race/take@bonus\",\"player-1\",{\"id\":\"bonus-1\",\"kind\":\"shared-bonus\"},{\"amount\":3}]",
+            "rankingKeys": [
+              "[\"reference.token-race/take@bonus\",\"player-1\",{\"id\":\"bonus-1\",\"kind\":\"shared-bonus\"},{\"amount\":3}]",
+              "[\"reference.token-race/take@2\",\"player-1\",null,{\"amount\":2}]",
+              "[\"reference.token-race/take@1\",\"player-1\",null,{\"amount\":1}]"
+            ],
+            "legalActionsHash": "0422b53e85e3cb3b27c9a008edf6477c3c8302cba8c623c734cd0aea7e1adb16",
+            "legalActionCount": 3,
+            "priors": "uniform",
+            "visits": [
+              34,
+              18,
+              12
+            ],
+            "meanValues": [
+              0.2699999999999998,
+              0.16999999999999996,
+              0.07000000000000002
+            ]
+          },
+          "selectionChanged": false,
+          "rankingChanged": false,
+          "valueChanged": true,
+          "visitsChanged": false,
+          "decisionChanged": true,
+          "identicalExceptProvenance": false,
+          "recommendationChanged": true,
+          "legalActionsPreserved": true,
+          "priorsUnchanged": true
+        },
+        {
+          "fixtureId": "game-s96",
+          "adjustmentMicro": -30000,
+          "baseline": {
+            "recommendationHash": "9602f065b94fb36b8159fdfaee88a0104db4b9eaf52ca8bd3035f710cc2dcc30",
+            "selectedActionKey": "[\"reference.token-race/take@2\",\"player-1\",null,{\"amount\":2}]",
+            "rankingKeys": [
+              "[\"reference.token-race/take@2\",\"player-1\",null,{\"amount\":2}]",
+              "[\"reference.token-race/take@1\",\"player-1\",null,{\"amount\":1}]"
+            ],
+            "legalActionsHash": "94443bc29055fb3948bb0e1c880104fad643e2d359e3cc578df249788fc49c11",
+            "legalActionCount": 2,
+            "priors": "uniform",
+            "visits": [
+              63,
+              33
+            ],
+            "meanValues": [
+              0.1999999999999998,
+              0.10000000000000005
+            ]
+          },
+          "withContext": {
+            "recommendationHash": "1f55d2ff4c57399926be18f05ccd5ec88acff0339f4367f4a1a78b410158b6ae",
+            "selectedActionKey": "[\"reference.token-race/take@2\",\"player-1\",null,{\"amount\":2}]",
+            "rankingKeys": [
+              "[\"reference.token-race/take@2\",\"player-1\",null,{\"amount\":2}]",
+              "[\"reference.token-race/take@1\",\"player-1\",null,{\"amount\":1}]"
+            ],
+            "legalActionsHash": "94443bc29055fb3948bb0e1c880104fad643e2d359e3cc578df249788fc49c11",
+            "legalActionCount": 2,
+            "priors": "uniform",
+            "visits": [
+              63,
+              33
+            ],
+            "meanValues": [
+              0.16999999999999996,
+              0.07000000000000002
+            ]
+          },
+          "selectionChanged": false,
+          "rankingChanged": false,
+          "valueChanged": true,
+          "visitsChanged": false,
+          "decisionChanged": true,
+          "identicalExceptProvenance": false,
+          "recommendationChanged": true,
+          "legalActionsPreserved": true,
+          "priorsUnchanged": true
+        },
+        {
+          "fixtureId": "rescue-s64",
+          "adjustmentMicro": -30000,
+          "baseline": {
+            "recommendationHash": "dd3748d9e703b48061451be01a14b9b9279b1cfc99eebdf8ff6786d599d6cc38",
+            "selectedActionKey": "[\"reference.grid-rescue/assist\",\"controller\",{\"id\":\"north\",\"kind\":\"site\"},{\"energyCost\":2}]",
+            "rankingKeys": [
+              "[\"reference.grid-rescue/assist\",\"controller\",{\"id\":\"north\",\"kind\":\"site\"},{\"energyCost\":2}]",
+              "[\"reference.grid-rescue/scan\",\"controller\",null,{\"energyCost\":1}]",
+              "[\"reference.grid-rescue/rest\",\"controller\",null,{\"energyGain\":2}]"
+            ],
+            "legalActionsHash": "e47fd64ccdb29736e8d6853b364ffe889e72aa75c8539d5dd35c72d4d14af897",
+            "legalActionCount": 3,
+            "priors": "uniform",
+            "visits": [
+              55,
+              5,
+              4
+            ],
+            "meanValues": [
+              0.6666666666666667,
+              0.05,
+              -0.02
+            ]
+          },
+          "withContext": {
+            "recommendationHash": "7e29f60d0a52cf69fdf8733abaa9e0822e4135c12a7775d87d5724f7a3e27df9",
+            "selectedActionKey": "[\"reference.grid-rescue/assist\",\"controller\",{\"id\":\"north\",\"kind\":\"site\"},{\"energyCost\":2}]",
+            "rankingKeys": [
+              "[\"reference.grid-rescue/assist\",\"controller\",{\"id\":\"north\",\"kind\":\"site\"},{\"energyCost\":2}]",
+              "[\"reference.grid-rescue/scan\",\"controller\",null,{\"energyCost\":1}]",
+              "[\"reference.grid-rescue/rest\",\"controller\",null,{\"energyGain\":2}]"
+            ],
+            "legalActionsHash": "e47fd64ccdb29736e8d6853b364ffe889e72aa75c8539d5dd35c72d4d14af897",
+            "legalActionCount": 3,
+            "priors": "uniform",
+            "visits": [
+              55,
+              5,
+              4
+            ],
+            "meanValues": [
+              0.6366666666666664,
+              0.020000000000000004,
+              -0.05
+            ]
+          },
+          "selectionChanged": false,
+          "rankingChanged": false,
+          "valueChanged": true,
+          "visitsChanged": false,
+          "decisionChanged": true,
+          "identicalExceptProvenance": false,
+          "recommendationChanged": true,
+          "legalActionsPreserved": true,
+          "priorsUnchanged": true
+        },
+        {
+          "fixtureId": "rescue-s128",
+          "adjustmentMicro": -30000,
+          "baseline": {
+            "recommendationHash": "439fc48b82df707d09679766083b3bd8de220f72a3f70a878ba82b48856bb1ed",
+            "selectedActionKey": "[\"reference.grid-rescue/assist\",\"controller\",{\"id\":\"north\",\"kind\":\"site\"},{\"energyCost\":2}]",
+            "rankingKeys": [
+              "[\"reference.grid-rescue/assist\",\"controller\",{\"id\":\"north\",\"kind\":\"site\"},{\"energyCost\":2}]",
+              "[\"reference.grid-rescue/scan\",\"controller\",null,{\"energyCost\":1}]",
+              "[\"reference.grid-rescue/rest\",\"controller\",null,{\"energyGain\":2}]"
+            ],
+            "legalActionsHash": "e47fd64ccdb29736e8d6853b364ffe889e72aa75c8539d5dd35c72d4d14af897",
+            "legalActionCount": 3,
+            "priors": "uniform",
+            "visits": [
+              100,
+              15,
+              13
+            ],
+            "meanValues": [
+              0.3333333333333329,
+              0.05000000000000001,
+              -0.019999999999999997
+            ]
+          },
+          "withContext": {
+            "recommendationHash": "bbaffab57ce4349cdbc46663190dd14e650ae56c67d3ded02cf5bc3460b83a25",
+            "selectedActionKey": "[\"reference.grid-rescue/assist\",\"controller\",{\"id\":\"north\",\"kind\":\"site\"},{\"energyCost\":2}]",
+            "rankingKeys": [
+              "[\"reference.grid-rescue/assist\",\"controller\",{\"id\":\"north\",\"kind\":\"site\"},{\"energyCost\":2}]",
+              "[\"reference.grid-rescue/scan\",\"controller\",null,{\"energyCost\":1}]",
+              "[\"reference.grid-rescue/rest\",\"controller\",null,{\"energyGain\":2}]"
+            ],
+            "legalActionsHash": "e47fd64ccdb29736e8d6853b364ffe889e72aa75c8539d5dd35c72d4d14af897",
+            "legalActionCount": 3,
+            "priors": "uniform",
+            "visits": [
+              100,
+              15,
+              13
+            ],
+            "meanValues": [
+              0.30333333333333384,
+              0.02000000000000001,
+              -0.05
+            ]
+          },
+          "selectionChanged": false,
+          "rankingChanged": false,
+          "valueChanged": true,
+          "visitsChanged": false,
+          "decisionChanged": true,
+          "identicalExceptProvenance": false,
+          "recommendationChanged": true,
+          "legalActionsPreserved": true,
+          "priorsUnchanged": true
+        }
+      ]
+    }
+  ],
+  "negativeGateCount": 16,
+  "negativeGatesPassed": true,
+  "negativeGates": [
+    {
+      "name": "malformed-oracle-signals",
+      "rejected": true,
+      "code": "EXPERT_CONTEXT_FEATURE_INVALID"
+    },
+    {
+      "name": "malformed-nexus-signals",
+      "rejected": true,
+      "code": "EXPERT_NONFINITE"
+    },
+    {
+      "name": "substituted-runtime-identity",
+      "rejected": true,
+      "code": "EXPERT_CONTEXT_DIGEST_MISMATCH"
+    },
+    {
+      "name": "substituted-campaign-identity",
+      "rejected": true,
+      "code": "EXPERT_CONTEXT_DIGEST_MISMATCH"
+    },
+    {
+      "name": "substituted-expert-output-digest",
+      "rejected": true,
+      "code": "EXPERT_CONTEXT_DIGEST_MISMATCH"
+    },
+    {
+      "name": "tampered-context-feature",
+      "rejected": true,
+      "code": "EXPERT_CONTEXT_TAMPERED"
+    },
+    {
+      "name": "tampered-adjustment",
+      "rejected": true,
+      "code": "EXPERT_CONTEXT_TAMPERED"
+    },
+    {
+      "name": "widened-adjustment-bound",
+      "rejected": true,
+      "code": "EXPERT_CONTEXT_TAMPERED"
+    },
+    {
+      "name": "forged-authority-dispatch",
+      "rejected": true,
+      "code": "AUTHORITY_MISMATCH"
+    },
+    {
+      "name": "forged-authority-tier-r2",
+      "rejected": true,
+      "code": "AUTHORITY_MISMATCH"
+    },
+    {
+      "name": "forged-world-mutation-flag",
+      "rejected": true,
+      "code": "AUTHORITY_MISMATCH"
+    },
+    {
+      "name": "context-carrying-action",
+      "rejected": true,
+      "code": "EXPERT_CONTEXT_CARRIES_ACTION"
+    },
+    {
+      "name": "context-carrying-priors",
+      "rejected": true,
+      "code": "EXPERT_CONTEXT_CARRIES_ACTION"
+    },
+    {
+      "name": "context-claiming-decision-ownership",
+      "rejected": true,
+      "code": "AUTHORITY_MISMATCH"
+    },
+    {
+      "name": "executable-callback-in-context",
+      "rejected": true,
+      "code": "EXPERT_EXECUTION_SURFACE"
+    },
+    {
+      "name": "unknown-context-schema",
+      "rejected": true,
+      "code": "UNKNOWN_SCHEMA"
+    }
+  ],
+  "liveActionDispatches": 0,
+  "worldMutations": 0,
+  "authorityEscalations": 0,
+  "authorityTokenIssues": 0,
+  "incumbentScriptedExecutorPreserved": true,
+  "canDispatch": false,
+  "canMutateLiveWorld": false,
+  "stage2hCertified": true,
+  "certificationHash": "919c5f54ace8b4917bf1cac94eea9c03ee6eadecad8906d9238c384a2b894ec8",
+  "certificationMode": "LIVE_CURRENT",
+  "runtimeVerification": {
+    "certificationMode": "LIVE_CURRENT",
+    "declaredRuntimeIdentity": "sha256:f1cd5ec6bc292f07b31aed40c6fd530291da69b2362c6b09632bd0a2b9bd5389",
+    "measuredRuntimeIdentity": "sha256:f1cd5ec6bc292f07b31aed40c6fd530291da69b2362c6b09632bd0a2b9bd5389",
+    "declaredEqualsMeasured": true,
+    "runtimeInventoryMatch": true,
+    "identitySelfValid": true
+  },
+  "stage2gCertificationHash": "31271de552ff93c35bba0df0cc55f538ef371282c71badd0398e9437a065961e"
+}

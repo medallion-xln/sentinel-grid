@@ -11,6 +11,7 @@ import {
 } from '../core/contracts.js';
 import { buildRecommendationPacket } from '../core/recommendation.js';
 import { createSeededRandom, deriveSeed, sha256 } from '../core/determinism.js';
+import { resolveExpertContext } from '../experts/expert-action-context.js';
 
 function validateSearchArguments({ observerId, simulations, seed, cPuct }) {
   if (typeof observerId !== 'string' || observerId.length === 0) throw new Error('observerId is required');
@@ -44,11 +45,23 @@ export function recommend({
   simulations = 128,
   seed = 1n,
   cPuct = 1.4,
+  expertContext = null,
 }) {
   validateSearchArguments({ observerId, simulations, seed, cPuct });
   const { manifest } = validateAdapter(adapter);
   const authority = defaultAuthorityPolicy();
   assertEvaluationOnly(authority);
+
+  /* Stage 2H — bounded advisory context.
+   *
+   * When no envelope is supplied this resolves to null and every downstream code
+   * path is byte-identical to pre-Stage-2H Prime. The envelope is validated here,
+   * before it can reach any arithmetic; it can only ever contribute one bounded
+   * scalar to leaf evaluation. It never touches legalActions, never touches
+   * priors, and cannot name an action. */
+  const expertContextResolved = expertContext === null || expertContext === undefined
+    ? null
+    : resolveExpertContext(expertContext);
 
   const sourceStateHash = sha256(state);
   if (adapter.isTerminal(state)) throw new Error('Cannot recommend from a terminal state');
@@ -60,6 +73,14 @@ export function recommend({
   if (sha256(state) !== sourceStateHash) throw new Error('Adapter.legalActions mutated the source state');
 
   const orderedActions = [...legalActions].sort((a, b) => actionKey(a).localeCompare(actionKey(b)));
+
+  /* Stage 2H.1: an action context is re-resolved against the LIVE legal set, so it
+   * can only ever score actions Prime already declared legal. It cannot add, remove
+   * or legalize an action — orderedActions is built before this line and is never
+   * touched by it. */
+  const expertContextBound = expertContextResolved === null
+    ? null
+    : resolveExpertContext(expertContext, { legalActions: orderedActions });
   const prior = 1 / orderedActions.length;
   const stats = new Map(orderedActions.map((action) => {
     const key = actionKey(action);
@@ -103,8 +124,14 @@ export function recommend({
     }
     if (!Number.isFinite(value)) throw new Error('Search evaluation must be finite');
 
+    // Baseline mode takes the untouched value: no arithmetic is applied at all.
+    const evaluatedValue = expertContextBound === null
+      ? value
+      : value + expertContextBound.adjustmentFor(selected.key);
+    if (!Number.isFinite(evaluatedValue)) throw new Error('Context-adjusted evaluation must be finite');
+
     selected.visits += 1;
-    selected.valueSum += value;
+    selected.valueSum += evaluatedValue;
   }
 
   const ranking = [...stats.values()]
@@ -136,5 +163,6 @@ export function recommend({
     cPuct,
     engineId: ROOT_PUCT_ENGINE_ID,
     authority,
+    expertContext: expertContextBound === null ? null : expertContextBound.packetBlock,
   });
 }

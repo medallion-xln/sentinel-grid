@@ -124,6 +124,7 @@ export {
   DEFAULT_CONTROLLED_CANDIDATE_THRESHOLDS,
   buildZekNovaSessionManifest,
   validateZekNovaSessionManifest,
+  reconcileStage2FEvidence,
   certifyZekNovaSustainedShadowCampaign,
   evaluateControlledCandidateRecommendation,
   validateCandidateEvaluationRecord,
@@ -131,3 +132,109 @@ export {
   buildControlledNextStageDecisionPacket,
   buildStage2FFrameworkCertification,
 } from './lab/zeknova-controlled-evaluation.js';
+
+export {
+  STAGE2F_CAMPAIGN_MANIFEST_VERSION,
+  STAGE2F_QUALIFICATION_IDENTITY_VERSION,
+  STAGE2F_RECORD_SCHEMA_VERSION,
+  STAGE2F_COLLECTOR_SCHEMA_VERSION,
+  STAGE2F_SESSION_MANIFEST_VERSION,
+  buildStage2FCampaignManifest,
+  validateStage2FCampaignManifest,
+  buildStage2FQualificationIdentity,
+  validateStage2FQualificationIdentity,
+} from './lab/zeknova-stage2f-identity.js';
+
+export {
+  EXPERT_CONTRACT_VERSION,
+  SIGNAL_SCALE,
+  MAX_HISTORY_FRAMES,
+  MAX_ENTITIES,
+  MAX_EDGES,
+  expertAuthority,
+  isExactR0AuthorityBlock,
+  assertNoExecutionSurface,
+  normalizeExpertInput,
+  computeInputDigest,
+  buildExpertOutput,
+  validateExpertOutput,
+} from './experts/expert-contract.js';
+
+export {
+  ORACLE_EXPERT_ID,
+  ORACLE_EXPERT_VERSION,
+  evaluateOracle,
+  oracleManifest,
+} from './experts/oracle.js';
+
+export {
+  NEXUS_EXPERT_ID,
+  NEXUS_EXPERT_VERSION,
+  NEXUS_EDGE_KINDS,
+  evaluateNexus,
+  nexusManifest,
+} from './experts/nexus.js';
+
+export {
+  STAGE2G_STAGE_ID,
+  STAGE2G_EVIDENCE_VERSION,
+  STAGE2G_CERTIFICATION_VERSION,
+  STAGE2G_ORACLE_CASES,
+  STAGE2G_NEXUS_CASES,
+  buildStage2GEvidenceRecord,
+  validateStage2GEvidenceRecord,
+  runExpertDeterminismGate,
+  runStage2GNegativeGates,
+  certifyStage2GExperts,
+  buildStage2GPortabilityDigest,
+} from './lab/stage2g-expert-certification.js';
+
+export {
+  EXPERT_CONTEXT_SCHEMA_VERSION,
+  ORACLE_ADJUSTMENT_BOUND_MICRO,
+  NEXUS_ADJUSTMENT_BOUND_MICRO,
+  TOTAL_ADJUSTMENT_BOUND_MICRO,
+  CONTEXT_FEATURE_NAMES,
+  deriveContextFeatures,
+  computeContextAdjustmentMicro,
+  buildExpertContextEnvelope,
+  validateExpertContextEnvelope,
+  resolveExpertContextAdjustment,
+} from './experts/expert-context.js';
+
+export {
+  STAGE2H_STAGE_ID,
+  STAGE2H_CERTIFICATION_VERSION,
+  STAGE2H_CONTEXT_SCENARIOS,
+  STAGE2H_SEARCH_FIXTURES,
+  buildScenarioEnvelope,
+  compareFixture,
+  runBaselineModeGate,
+  runStage2HNegativeGates,
+  certifyStage2HPrimeContext,
+  buildStage2HPortabilityDigest,
+} from './lab/stage2h-prime-context-certification.js';
+
+export {
+  ACTION_CONTEXT_SCHEMA_VERSION,
+  deriveEntityRelations,
+  deriveOracleActionMicro,
+  deriveNexusActionMicro,
+  canonicalLegalActionKeys,
+  buildExpertActionContext,
+  validateExpertActionContext,
+  resolveActionAdjustmentMicro,
+  resolveExpertContext,
+} from './experts/expert-action-context.js';
+
+export {
+  STAGE2H1_STAGE_ID,
+  STAGE2H1_CERTIFICATION_VERSION,
+  STAGE2H1_FIXTURES,
+  buildActionLinks,
+  buildArmContext,
+  measureFixture,
+  runStage2H1NegativeGates,
+  certifyStage2H1ActionContext,
+  buildStage2H1PortabilityDigest,
+} from './lab/stage2h1-action-context-certification.js';

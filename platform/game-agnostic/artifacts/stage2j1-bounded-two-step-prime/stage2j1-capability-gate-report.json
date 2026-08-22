@@ -1,0 +1,69 @@
+{
+  "stage": "STAGE2J1_BOUNDED_TWO_STEP_PRIME_CANDIDATE_AND_SIMPLE_BASELINE_DELTA_CERTIFICATION",
+  "capability": {
+    "primeV1Score": 4,
+    "primeDepth1CorrectedScore": 7,
+    "primeDepth2CandidateScore": 7,
+    "prime7Of10GatePass": true,
+    "demonstratedTwoStepCorpus": true,
+    "gateChecks": {
+      "oneStepTop1": true,
+      "oneStepTop2": true,
+      "twoStepTop1": true,
+      "twoStepTop2": true,
+      "illegal": true,
+      "replay": true,
+      "nearTie": true,
+      "strongPreference": true,
+      "deceptive": true,
+      "beatsSimpleHeuristics": true,
+      "referenceTolerance": true
+    }
+  },
+  "valueContract": {
+    "actionSensitiveStepRewardPreserved": true,
+    "terminalValueActionSensitive": true,
+    "wrongActionOvervaluationRate": 0,
+    "rootActionTrajectoryBinding": true,
+    "crossRootValueLeakage": false,
+    "terminalOutcomeReads": 0
+  },
+  "depthContract": {
+    "primeCandidateDepth": 2,
+    "maxSearchDepth": 2,
+    "twoStepReturnContract": "G=r0+r1_UNDISCOUNTED_CUMULATIVE_TRANSITION_REWARD",
+    "twoStepDiscountFactor": 1,
+    "twoStepReturnActionSensitive": true,
+    "twoStepReturnDeterministic": true,
+    "noRecursiveUnboundedPlanning": true
+  },
+  "baselineSemantics": {
+    "simpleBaselineAndReferenceOracleSeparated": true,
+    "simpleHeuristicBaselines": {
+      "values": {
+        "UNIFORM_RANDOM": 0.2,
+        "POLICY_ARGMAX": 0.18,
+        "IMMEDIATE_REWARD_ARGMAX": 0,
+        "VALUE_ARGMAX_DEPTH1": 0
+      },
+      "best": {
+        "name": "UNIFORM_RANDOM",
+        "top1": 0.2
+      }
+    },
+    "referenceOracles": [
+      "EXHAUSTIVE_ONE_STEP_REFERENCE",
+      "EXHAUSTIVE_TWO_STEP_REFERENCE"
+    ],
+    "primeDepth2BeatsSimpleHeuristics": true
+  },
+  "reference": {
+    "exhaustiveOneStepReferenceTop1": 1,
+    "exhaustiveTwoStepReferenceTop1": 1,
+    "exhaustive": true,
+    "deterministic": true,
+    "groundTruthIndependentOfCandidate": true,
+    "primeDepth2VsExhaustiveTwoStepDelta": 0
+  },
+  "evidenceDigest": "48ffcb8b05b37533dd17fa6b23a3c41998e00326130f25bc81d0b30f7f5b8d96"
+}

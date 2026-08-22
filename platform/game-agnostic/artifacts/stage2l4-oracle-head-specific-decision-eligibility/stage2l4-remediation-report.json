@@ -1,0 +1,215 @@
+{
+  "stage": "STAGE2L4_ORACLE_HEAD_SPECIFIC_DECISION_ELIGIBILITY_REMEDIATION",
+  "evidenceDigest": "d4770e0d891c87c2eaf1ccb4748249bfb374f0d309c3be1c525ac1a9a54edd39",
+  "architecture": {
+    "oracleHeadSpecificDecisionEligibility": true,
+    "oracleEligibilityActionSelectionPresent": false,
+    "selectedOracleEligibilityRule": "HEAD_SPECIFIC_CAUSAL_ELIGIBILITY_WITH_STRICT_CYCLE_VALIDITY",
+    "oracleEligibilityRule": {
+      "schemaVersion": 1,
+      "id": "HEAD_SPECIFIC_CAUSAL_ELIGIBILITY_WITH_STRICT_CYCLE_VALIDITY",
+      "architecture": "ORACLE_HEAD_OUTPUT_THEN_HEAD_VALIDITY_THEN_ACTION_CAUSAL_RELEVANCE_THEN_EXISTING_TIE_BREAK_ONLY",
+      "safeHeads": "DIRECTION_PERSISTENCE_REVERSAL_REGIME_CHANGE_VOLATILITY_UNCHANGED",
+      "cycle": {
+        "negativeOutput": "NOT_CYCLICAL_REMAINS_ELIGIBLE_WHEN_MAPPED_AND_SUPPORTED",
+        "positiveOutput": "CYCLICAL_REQUIRES_AT_LEAST_THREE_COMPLETE_PERIODS_NON_MONOTONICITY_RECURRENT_PHASE_ERROR_LE_0_20_CORRELATION_GE_0_90_AND_AT_LEAST_FOUR_MATERIAL_REVERSALS",
+        "minimumSamples": 8,
+        "minimumCompletePeriods": 3,
+        "minimumLagCorrelation": 0.9,
+        "maximumNormalizedPhaseError": 0.2,
+        "minimumMaterialDirectionReversals": 4
+      },
+      "threshold": {
+        "states": [
+          "NOT_YET_REACHED",
+          "REACHED_THIS_DECISION_BOUNDARY",
+          "ALREADY_CROSSED",
+          "NO_VALID_THRESHOLD",
+          "UNKNOWN"
+        ],
+        "causalClasses": [
+          "ACTION_CAN_DELAY_THRESHOLD",
+          "ACTION_CAN_ACCELERATE_THRESHOLD",
+          "ACTION_CAN_REVERSE_THRESHOLD_STATE",
+          "ACTION_CAN_MITIGATE_POST_THRESHOLD_EFFECT",
+          "ACTION_HAS_NO_THRESHOLD_CONTROL"
+        ],
+        "alreadyCrossedDefaultEligible": false,
+        "alreadyCrossedException": "EXPLICIT_ACTION_CAN_MITIGATE_POST_THRESHOLD_EFFECT_WITH_PERSISTENT_POST_THRESHOLD_STATE",
+        "purelyHistoricalEvidenceEligible": false
+      },
+      "confidenceUsed": false,
+      "nexusConfirmationRequired": false,
+      "primeProtectionHeuristic": false,
+      "actionSelection": false,
+      "baseTieBreakRuleDigest": "b915cbb7074b5a29bc05a1e586d6e68a789d8332df0de3046d6ccb4000546eb1",
+      "baseTieBreakRule": "PRIME_TOP1_MINUS_TOP2_Q_LE_0_03; EXACTLY_MAPPED_EXPERT_ACTION_RECEIVES_MARGIN_PLUS_0_000001"
+    },
+    "oracleEligibilityRuleDigest": "caf164da491f2b848613f67988473ff913d141084609a1cd859fe4cd4edaafe4",
+    "oracleEligibilityFailsClosed": true,
+    "nexusConfirmationRequiredForOracle": false,
+    "oracleConfidenceUsedAsPrimaryEligibilityGate": false,
+    "newPrimeProtectionHeuristicAdded": false
+  },
+  "candidateSelection": {
+    "space": [
+      {
+        "id": "HEAD_SPECIFIC_CAUSAL_ELIGIBILITY",
+        "cycleValidity": "FROZEN_HEAD_OUTPUT_ONLY",
+        "thresholdCausality": "EXPLICIT_STATE_AND_ACTION_CAUSALITY"
+      },
+      {
+        "id": "HEAD_SPECIFIC_CAUSAL_ELIGIBILITY_WITH_STRICT_CYCLE_VALIDITY",
+        "cycleValidity": "MULTI_PERIOD_NON_MONOTONIC_RECURRENCE",
+        "thresholdCausality": "EXPLICIT_STATE_AND_ACTION_CAUSALITY"
+      },
+      {
+        "id": "NO_ORACLE_CHANGE_CONTROL",
+        "cycleValidity": "FROZEN_HEAD_OUTPUT_ONLY",
+        "thresholdCausality": "FROZEN_INTERPRETER_ONLY"
+      }
+    ],
+    "spaceDigest": "fd3cc61ac05d3316b9014160ecdd01ba291a23e140482ff830ff6981c5aa8147",
+    "validationResults": {
+      "HEAD_SPECIFIC_CAUSAL_ELIGIBILITY": {
+        "cases": 400,
+        "accuracy": 0.725,
+        "falseDecisionEligibilityRate": 0.5789473684210527,
+        "positiveRetentionRate": 1
+      },
+      "HEAD_SPECIFIC_CAUSAL_ELIGIBILITY_WITH_STRICT_CYCLE_VALIDITY": {
+        "cases": 400,
+        "accuracy": 1,
+        "falseDecisionEligibilityRate": 0,
+        "positiveRetentionRate": 1
+      },
+      "NO_ORACLE_CHANGE_CONTROL": {
+        "cases": 400,
+        "accuracy": 0.575,
+        "falseDecisionEligibilityRate": 0.8947368421052632,
+        "positiveRetentionRate": 1
+      }
+    },
+    "selected": {
+      "id": "HEAD_SPECIFIC_CAUSAL_ELIGIBILITY_WITH_STRICT_CYCLE_VALIDITY",
+      "cycleValidity": "MULTI_PERIOD_NON_MONOTONIC_RECURRENCE",
+      "thresholdCausality": "EXPLICIT_STATE_AND_ACTION_CAUSALITY"
+    },
+    "selectedBeforeFinalHoldout": true,
+    "postHoldoutChanges": 0
+  },
+  "cycleRemediation": {
+    "cycleDecisionEligibilityDeterministic": true,
+    "cycleTemporalDetectionAccuracy": 0.45,
+    "cycleDecisionEligibilityAccuracy": 1,
+    "cycleFalseDecisionEligibilityRate": 0,
+    "inheritedCycleHarms": 17,
+    "cycleHarmsAfter": 0,
+    "beneficialBaselineCases": 23,
+    "beneficialPreserved": 23,
+    "beneficialLost": 0,
+    "benefitRetentionRate": 1,
+    "minimumBenefitRetentionRate": 0.8
+  },
+  "thresholdRemediation": {
+    "thresholdStateExplicit": true,
+    "thresholdActionCausalityBound": true,
+    "alreadyCrossedThresholdDecisionEligible": false,
+    "alreadyCrossedException": "EXPLICIT_ACTION_CAN_MITIGATE_POST_THRESHOLD_EFFECT_WITH_PERSISTENT_POST_THRESHOLD_STATE",
+    "thresholdDecisionEligibilityAccuracy": 1,
+    "inheritedThresholdHarmsEligible": 0,
+    "inheritedThresholdHarms": 12,
+    "thresholdHarmsAfter": 0,
+    "beneficialBaselineCases": 73,
+    "beneficialPreserved": 73,
+    "beneficialLost": 0,
+    "benefitRetentionRate": 1,
+    "minimumBenefitRetentionRate": 0.8,
+    "causalClasses": [
+      "ACTION_CAN_DELAY_THRESHOLD",
+      "ACTION_CAN_ACCELERATE_THRESHOLD",
+      "ACTION_CAN_REVERSE_THRESHOLD_STATE",
+      "ACTION_CAN_MITIGATE_POST_THRESHOLD_EFFECT",
+      "ACTION_HAS_NO_THRESHOLD_CONTROL"
+    ]
+  },
+  "inheritedHarmRegression": {
+    "before": 29,
+    "after": 0,
+    "cycleBefore": 17,
+    "cycleAfter": 0,
+    "thresholdBefore": 12,
+    "thresholdAfter": 0
+  },
+  "replication": {
+    "primeOnlyTop1": 0.445,
+    "oracleRemediated": {
+      "cases": 5000,
+      "top1": 0.55,
+      "top2": 1,
+      "selectionChanges": 525,
+      "beneficialChanges": 525,
+      "harmfulChanges": 0,
+      "neutralChanges": 0,
+      "decisionDelta": 0.105,
+      "harmfulChangeRate": 0,
+      "breaksCorrectPrime": 0,
+      "correctPrimeBreakRate": 0,
+      "repairsPrime": 525
+    },
+    "oracleDeltaRetentionRatio": 1.0584677419354838,
+    "oracleBeneficialChangeRetentionRatio": 1,
+    "minimumOracleDecisionDelta": 0.05,
+    "combinedRemediated": {
+      "cases": 5000,
+      "top1": 0.6322,
+      "top2": 1,
+      "selectionChanges": 936,
+      "beneficialChanges": 936,
+      "harmfulChanges": 0,
+      "neutralChanges": 0,
+      "decisionDelta": 0.1872,
+      "harmfulChangeRate": 0,
+      "breaksCorrectPrime": 0,
+      "correctPrimeBreakRate": 0,
+      "repairsPrime": 936
+    },
+    "nexus": {
+      "cases": 5000,
+      "top1": 0.545,
+      "top2": 1,
+      "selectionChanges": 500,
+      "beneficialChanges": 500,
+      "harmfulChanges": 0,
+      "neutralChanges": 0,
+      "decisionDelta": 0.1,
+      "harmfulChangeRate": 0,
+      "breaksCorrectPrime": 0,
+      "correctPrimeBreakRate": 0,
+      "repairsPrime": 500
+    },
+    "nexusBranchOutputBitExact": true,
+    "disagreementHarmfulChangesAfterRemediation": 0,
+    "nonTieSelectionChanges": 0,
+    "irrelevantEvidenceSelectionChangeRate": 0
+  },
+  "freshHoldout": {
+    "cases": 2400,
+    "effectiveSemanticGroups": 2400,
+    "semanticTemplates": 12,
+    "overlapWithStage2l2": 0,
+    "overlapWithStage2l3HarmCorpus": 0,
+    "oracleDecisionDelta": 0.6229166666666667,
+    "oracleTop1": 0.8729166666666667,
+    "oracleSelectionChanges": 1495,
+    "oracleBeneficialChanges": 1495,
+    "oracleHarmfulChanges": 0,
+    "oracleHarmfulChangeRate": 0,
+    "oracleCorrectPrimeBreakRate": 0
+  },
+  "readiness": {
+    "oracleDecisionEligibilityCertified": true,
+    "deterministicArbiterCandidateJustified": true,
+    "arbiterImplemented": false
+  }
+}

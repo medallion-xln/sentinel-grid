@@ -1,0 +1,86 @@
+{
+  "preregisteredBounds": {
+    "maxOracleHarmfulChangeRate": 0.05,
+    "maxNexusHarmfulChangeRate": 0.05,
+    "maxCombinedHarmfulChangeRate": 0.05,
+    "maxCorrectPrimeBreakRate": 0.01,
+    "minOracleDecisionDelta": 0.03,
+    "minNexusDecisionDelta": 0.03,
+    "minCombinedDecisionDelta": 0.05
+  },
+  "metrics": {
+    "prime": {
+      "top1": 0.445,
+      "top2": 1,
+      "correctCases": 2225,
+      "wrongCases": 2775
+    },
+    "oracle": {
+      "cases": 5000,
+      "top1": 0.5442,
+      "top2": 1,
+      "selectionChanges": 554,
+      "beneficialChanges": 525,
+      "harmfulChanges": 29,
+      "neutralChanges": 0,
+      "decisionDelta": 0.0992,
+      "harmfulChangeRate": 0.0058,
+      "breaksCorrectPrime": 29,
+      "correctPrimeBreakRate": 0.01303370786516854,
+      "repairsPrime": 525,
+      "repairRate": 0.1891891891891892
+    },
+    "nexus": {
+      "cases": 5000,
+      "top1": 0.545,
+      "top2": 1,
+      "selectionChanges": 500,
+      "beneficialChanges": 500,
+      "harmfulChanges": 0,
+      "neutralChanges": 0,
+      "decisionDelta": 0.1,
+      "harmfulChangeRate": 0,
+      "breaksCorrectPrime": 0,
+      "correctPrimeBreakRate": 0,
+      "repairsPrime": 500,
+      "repairRate": 0.18018018018018017
+    },
+    "combined": {
+      "cases": 5000,
+      "top1": 0.6262,
+      "top2": 1,
+      "selectionChanges": 936,
+      "beneficialChanges": 921,
+      "harmfulChanges": 15,
+      "neutralChanges": 0,
+      "decisionDelta": 0.1812,
+      "harmfulChangeRate": 0.003,
+      "breaksCorrectPrime": 15,
+      "correctPrimeBreakRate": 0.006741573033707865,
+      "repairsPrime": 921,
+      "repairRate": 0.3318918918918919
+    }
+  },
+  "replicated": {
+    "oracleReplicatedUseful": false,
+    "nexusReplicatedUseful": true,
+    "combinedReplicatedUseful": true
+  },
+  "tieBound": {
+    "eligibilityRule": "PRIME_TOP1_MINUS_TOP2_Q_LE_0_03; EXACTLY_MAPPED_EXPERT_ACTION_RECEIVES_MARGIN_PLUS_0_000001",
+    "nonTieCases": 3000,
+    "nonTieSelectionChanges": 0,
+    "irrelevantEvidenceSelectionChangeRate": 0
+  },
+  "disagreement": {
+    "cases": 576,
+    "selectionChanges": 176,
+    "beneficialChanges": 176,
+    "harmfulChanges": 0,
+    "harmfulChangeRate": 0
+  },
+  "readiness": {
+    "deterministicArbiterCandidateJustified": false
+  },
+  "evidenceDigest": "0f6783e91c7819c295157a9198a884f729b24f42e6064ceda2bdb48930997557"
+}

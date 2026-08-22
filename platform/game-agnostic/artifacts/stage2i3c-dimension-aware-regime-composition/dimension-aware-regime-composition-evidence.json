@@ -1,0 +1,434 @@
+{
+  "stage": "STAGE2I3C_DIMENSION_AWARE_PERSISTENCE_COMPOSITION_REMEDIATION",
+  "baseline": {
+    "scores": {
+      "prime": 4,
+      "oracleV1": 3,
+      "nexus": 4,
+      "persistenceV2": 7,
+      "regimeV3": 3
+    },
+    "stage2i3bCertificationHash": "cd4625a9bea8d1c9345ce3461f104c0dc26e4adaaaa18de56dac28fead81114d",
+    "stage2i3bEvidenceDigest": "0ad49e8cf78f514ca229371f1a151d3a7abf608a69fc64bd520f7ec78ff7fca9"
+  },
+  "rootCauseReproduction": {
+    "stage2i3bResultReproduced": true,
+    "descriptorRecall": 1,
+    "trueRegimeCasesRejectedByPersistence": 60,
+    "falseNegativeCorpusDigest": "2a3e38ee2a6748fd6d118ae97b773f7a7312e460bac679758bcbab2ae8305ae4"
+  },
+  "processStates": {
+    "canonical": [
+      "STABLE",
+      "PERSISTENT_UP",
+      "PERSISTENT_DOWN",
+      "VOLATILE",
+      "CYCLICAL",
+      "UNKNOWN"
+    ],
+    "noDirectionalTrendDistinctFromInsufficientHistory": true,
+    "stablePriorInterpretationAvailable": true,
+    "audit": {
+      "stableWithSufficientHistory": {
+        "persistenceV2Interpretation": "INSUFFICIENT_EVIDENCE",
+        "regimeV4PriorState": "STABLE",
+        "regimeV4Output": "NO_CHANGE"
+      },
+      "shortHistory": {
+        "persistenceV2Interpretation": "INSUFFICIENT_EVIDENCE",
+        "regimeV4PriorState": "UNKNOWN",
+        "regimeV4Output": "INSUFFICIENT_EVIDENCE"
+      },
+      "missingHistory": {
+        "persistenceV2Interpretation": "INSUFFICIENT_EVIDENCE",
+        "regimeV4PriorState": "UNKNOWN",
+        "regimeV4Output": "INSUFFICIENT_EVIDENCE"
+      },
+      "weakAmbiguousTrend": {
+        "persistenceV2Interpretation": "PERSISTENT",
+        "regimeV4PriorState": "STABLE",
+        "regimeV4Output": "NO_CHANGE"
+      }
+    }
+  },
+  "composition": {
+    "persistenceRequirementsDimensionAware": true,
+    "multiDimensionConsensusRequired": false,
+    "validSignificantSingleDimensionChangeAllowed": true,
+    "processDescriptorImplementationChanged": false
+  },
+  "corpus": {
+    "reusedFrozenStage2i3aCases": 1080,
+    "casesPerQuadrant": {
+      "REVERSAL_ONLY": 270,
+      "REGIME_ONLY": 270,
+      "REVERSAL_AND_REGIME": 270,
+      "NEITHER": 270
+    },
+    "semanticFamilyLeakage": false,
+    "additionalDevelopmentCases": 0,
+    "partitionDigests": {
+      "DEVELOPMENT_SET": "49b00d60e9340edb9b6ee074077077314613b81ea5ba189145483eeda9b3e608",
+      "VALIDATION_SET": "d6e336fc466916ec7ae2a06a6c0281fdb02ffad3f8fb17138b9785b078909a40",
+      "FINAL_HOLDOUT_SET": "104673b2fe90fd57cb6cbc4011cbebe6ef17b552acfa9497c51242e686f259a3"
+    }
+  },
+  "search": {
+    "space": [
+      {
+        "id": "DIMENSION_AWARE_SINGLE_VALID_CHANGE",
+        "anomalyFilter": false,
+        "hierarchicalSingleDimension": false
+      },
+      {
+        "id": "DIMENSION_AWARE_WITH_ANOMALY_FILTER",
+        "anomalyFilter": true,
+        "hierarchicalSingleDimension": false
+      },
+      {
+        "id": "DIMENSION_AWARE_HIERARCHICAL_CHANGE",
+        "anomalyFilter": true,
+        "hierarchicalSingleDimension": true
+      }
+    ],
+    "digest": "5ebb21431f8cc11d21236c8b395f794d13f2dc480014a50f09947ae14077245a",
+    "validationResults": {
+      "DIMENSION_AWARE_SINGLE_VALID_CHANGE": {
+        "cases": 360,
+        "correct": 343,
+        "accuracy": 0.9527777777777777,
+        "truePositive": 180,
+        "falsePositive": 0,
+        "falseNegative": 0,
+        "trueNegative": 180,
+        "precision": 1,
+        "recall": 1,
+        "specificity": 1,
+        "f1": 1,
+        "labelAccuracy": {
+          "NO_CHANGE": 1,
+          "LEVEL_CHANGE": null,
+          "TREND_CHANGE": 1,
+          "VOLATILITY_CHANGE": 0.43333333333333335,
+          "CYCLE_CHANGE": 1,
+          "MULTIPLE_CHANGE": 1
+        },
+        "quadrantAccuracy": {
+          "REVERSAL_ONLY": 1,
+          "REGIME_ONLY": 0.8111111111111111,
+          "REVERSAL_AND_REGIME": 1,
+          "NEITHER": 1
+        }
+      },
+      "DIMENSION_AWARE_WITH_ANOMALY_FILTER": {
+        "cases": 360,
+        "correct": 343,
+        "accuracy": 0.9527777777777777,
+        "truePositive": 180,
+        "falsePositive": 0,
+        "falseNegative": 0,
+        "trueNegative": 180,
+        "precision": 1,
+        "recall": 1,
+        "specificity": 1,
+        "f1": 1,
+        "labelAccuracy": {
+          "NO_CHANGE": 1,
+          "LEVEL_CHANGE": null,
+          "TREND_CHANGE": 1,
+          "VOLATILITY_CHANGE": 0.43333333333333335,
+          "CYCLE_CHANGE": 1,
+          "MULTIPLE_CHANGE": 1
+        },
+        "quadrantAccuracy": {
+          "REVERSAL_ONLY": 1,
+          "REGIME_ONLY": 0.8111111111111111,
+          "REVERSAL_AND_REGIME": 1,
+          "NEITHER": 1
+        }
+      },
+      "DIMENSION_AWARE_HIERARCHICAL_CHANGE": {
+        "cases": 360,
+        "correct": 343,
+        "accuracy": 0.9527777777777777,
+        "truePositive": 175,
+        "falsePositive": 0,
+        "falseNegative": 5,
+        "trueNegative": 180,
+        "precision": 1,
+        "recall": 0.9722222222222222,
+        "specificity": 1,
+        "f1": 0.9859154929577464,
+        "labelAccuracy": {
+          "NO_CHANGE": 1,
+          "LEVEL_CHANGE": null,
+          "TREND_CHANGE": 1,
+          "VOLATILITY_CHANGE": 0.43333333333333335,
+          "CYCLE_CHANGE": 1,
+          "MULTIPLE_CHANGE": 1
+        },
+        "quadrantAccuracy": {
+          "REVERSAL_ONLY": 1,
+          "REGIME_ONLY": 0.8111111111111111,
+          "REVERSAL_AND_REGIME": 1,
+          "NEITHER": 1
+        }
+      }
+    },
+    "selection": {
+      "selectedRegimeV4": {
+        "id": "DIMENSION_AWARE_WITH_ANOMALY_FILTER",
+        "anomalyFilter": true,
+        "hierarchicalSingleDimension": false
+      },
+      "selectionFrozen": true,
+      "frozenBeforeFinalHoldout": true,
+      "rule": "MAX_EXACT_ACCURACY_THEN_MIN_FALSE_NEGATIVES_THEN_MIN_FALSE_POSITIVES_THEN_PREFER_ANOMALY_FILTER_THEN_LEXICAL_ID"
+    }
+  },
+  "finalHoldout": {
+    "regimeV1Score": 6,
+    "regimeV2Score": 6,
+    "regimeV3Score": 3,
+    "regimeV4Score": 9,
+    "cases": 360,
+    "correct": 356,
+    "accuracy": 0.9888888888888889,
+    "truePositive": 180,
+    "falsePositive": 4,
+    "falseNegative": 0,
+    "trueNegative": 176,
+    "precision": 0.9782608695652174,
+    "recall": 1,
+    "specificity": 0.9777777777777777,
+    "f1": 0.989010989010989,
+    "labelAccuracy": {
+      "NO_CHANGE": 0.9777777777777777,
+      "LEVEL_CHANGE": 1,
+      "TREND_CHANGE": 1,
+      "VOLATILITY_CHANGE": null,
+      "CYCLE_CHANGE": null,
+      "MULTIPLE_CHANGE": 1
+    },
+    "quadrantAccuracy": {
+      "REVERSAL_ONLY": 1,
+      "REGIME_ONLY": 1,
+      "REVERSAL_AND_REGIME": 1,
+      "NEITHER": 0.9555555555555556
+    },
+    "adversarialAccuracy": 0.9851851851851852,
+    "incrementalValue": 0.48888888888888893,
+    "bestSimpleBaseline": {
+      "name": "ANY_DIMENSION_DELTA_BASELINE",
+      "cases": 360,
+      "correct": 320,
+      "accuracy": 0.8888888888888888,
+      "truePositive": 180,
+      "falsePositive": 40,
+      "falseNegative": 0,
+      "trueNegative": 140,
+      "precision": 0.8181818181818182,
+      "recall": 1,
+      "specificity": 0.7777777777777778,
+      "f1": 0.9,
+      "labelAccuracy": {
+        "NO_CHANGE": 0.7777777777777778,
+        "LEVEL_CHANGE": 1,
+        "TREND_CHANGE": 1,
+        "VOLATILITY_CHANGE": null,
+        "CYCLE_CHANGE": null,
+        "MULTIPLE_CHANGE": 1,
+        "INSUFFICIENT_EVIDENCE": null
+      },
+      "quadrantAccuracy": {
+        "REVERSAL_ONLY": 0.6666666666666666,
+        "REGIME_ONLY": 1,
+        "REVERSAL_AND_REGIME": 1,
+        "NEITHER": 0.8888888888888888
+      }
+    },
+    "beatsSimpleBaseline": true,
+    "regimeV3FalseNegatives": 60,
+    "falseNegativesRecovered": 60,
+    "falseNegativeReductionRate": 1,
+    "regimeV3FalsePositives": 4,
+    "falsePositiveIncrease": 0,
+    "reversalOnlyFalseRegimeRate": 0,
+    "temporaryAnomalyFalsePositiveRate": 0.044444444444444446,
+    "distinctFromReversal": true
+  },
+  "frozenCorpusResult": {
+    "cases": 1080,
+    "correct": 1042,
+    "accuracy": 0.9648148148148148,
+    "truePositive": 540,
+    "falsePositive": 4,
+    "falseNegative": 0,
+    "trueNegative": 536,
+    "precision": 0.9926470588235294,
+    "recall": 1,
+    "specificity": 0.9925925925925926,
+    "f1": 0.996309963099631,
+    "labelAccuracy": {
+      "NO_CHANGE": 0.9925925925925926,
+      "LEVEL_CHANGE": 1,
+      "TREND_CHANGE": 1,
+      "VOLATILITY_CHANGE": 0.43333333333333335,
+      "CYCLE_CHANGE": 1,
+      "MULTIPLE_CHANGE": 1
+    },
+    "quadrantAccuracy": {
+      "REVERSAL_ONLY": 1,
+      "REGIME_ONLY": 0.8740740740740741,
+      "REVERSAL_AND_REGIME": 1,
+      "NEITHER": 0.9851851851851852
+    }
+  },
+  "exactFalseNegativeRecovery": {
+    "original60FalseNegatives": 60,
+    "recoveredFromOriginal60": 60,
+    "stillMissedFromOriginal60": 0
+  },
+  "trendTransitions": {
+    "STABLE_TO_UP": {
+      "cases": 30,
+      "accuracy": 1
+    },
+    "STABLE_TO_DOWN": {
+      "cases": 30,
+      "accuracy": 1
+    },
+    "UP_TO_STABLE": {
+      "cases": 0,
+      "accuracy": null
+    },
+    "DOWN_TO_STABLE": {
+      "cases": 0,
+      "accuracy": null
+    },
+    "UP_TO_DOWN": {
+      "cases": 30,
+      "accuracy": 1
+    },
+    "DOWN_TO_UP": {
+      "cases": 30,
+      "accuracy": 1
+    },
+    "UP_TO_FASTER_UP": {
+      "cases": 30,
+      "accuracy": 1
+    },
+    "UP_TO_SLOWER_UP": {
+      "cases": 0,
+      "accuracy": null
+    },
+    "DOWN_TO_FASTER_DOWN": {
+      "cases": 30,
+      "accuracy": 1
+    },
+    "DOWN_TO_SLOWER_DOWN": {
+      "cases": 0,
+      "accuracy": null
+    }
+  },
+  "causalAttribution": {
+    "pairs": [
+      {
+        "name": "STABLE_TO_TRENDING",
+        "controlOutput": "NO_CHANGE",
+        "changedOutput": "TREND_CHANGE",
+        "attributed": true
+      },
+      {
+        "name": "TRENDING_TO_STABLE",
+        "controlOutput": "NO_CHANGE",
+        "changedOutput": "TREND_CHANGE",
+        "attributed": true
+      },
+      {
+        "name": "VOLATILITY_CHANGE",
+        "controlOutput": "NO_CHANGE",
+        "changedOutput": "MULTIPLE_CHANGE",
+        "attributed": true
+      },
+      {
+        "name": "SLOPE_CHANGE",
+        "controlOutput": "NO_CHANGE",
+        "changedOutput": "TREND_CHANGE",
+        "attributed": true
+      },
+      {
+        "name": "CYCLE_APPEARS",
+        "controlOutput": "NO_CHANGE",
+        "changedOutput": "CYCLE_CHANGE",
+        "attributed": true
+      },
+      {
+        "name": "CYCLE_DISAPPEARS",
+        "controlOutput": "NO_CHANGE",
+        "changedOutput": "CYCLE_CHANGE",
+        "attributed": true
+      }
+    ],
+    "signalCausallyAttributed": true
+  },
+  "qualityGate": {
+    "preRegistered": true,
+    "minimumScore": 7,
+    "minimumAccuracy": 0.85,
+    "minimumAdversarialAccuracy": 0.85,
+    "requiresPositiveIncrementalValue": true,
+    "requiresSimpleBaselineSuperiority": true,
+    "maximumReversalOnlyFalseRegimeRate": 0.1,
+    "maximumTemporaryAnomalyFalsePositiveRate": 0.05,
+    "requiresDistinctFromReversal": true,
+    "requiresCausalAttribution": true
+  },
+  "qualityGatePass": true,
+  "projectedOracleV2": {
+    "heads": {
+      "direction": 10,
+      "persistence": 7,
+      "reversal": 7,
+      "regimeChange": 9,
+      "volatility": 10,
+      "cycle": 7,
+      "timeToThreshold": 10,
+      "abstention": 10
+    },
+    "oracleV2Assembled": false,
+    "oracleProductionReplaced": false
+  },
+  "freeze": {
+    "changed": {
+      "processDescriptors": false,
+      "direction": false,
+      "persistenceV2": false,
+      "reversal": false,
+      "reversalSeparationLogic": false,
+      "volatility": false,
+      "cycle": false,
+      "timeToThreshold": false,
+      "abstention": false
+    },
+    "allOtherOracleHeadsUnchanged": true,
+    "primeChanged": false,
+    "nexusChanged": false
+  },
+  "safety": {
+    "expertSelectionInfluence": 0,
+    "expertActionSelectionApproved": false,
+    "finalRecommendationOwner": "PRIME",
+    "authority": {
+      "tier": "R0",
+      "canDispatch": false,
+      "canMutateLiveWorld": false
+    },
+    "liveActionDispatches": 0,
+    "worldMutations": 0,
+    "authorityEscalations": 0,
+    "authorityTokenIssues": 0
+  },
+  "replayEquivalent": true,
+  "evidenceDigest": "9a1a6006ee32315c120ae16e0b130a91c11166ce41d17139d8ec68774c1a2ad7"
+}

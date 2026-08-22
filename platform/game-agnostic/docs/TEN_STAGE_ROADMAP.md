@@ -68,9 +68,27 @@ Add optional per-game execution adapters only behind explicit human authorizatio
 
 ## Current roadmap position
 
-Stage 2D-Z is implemented. The next gate is Stage 2E-Z live-repository parity expansion and sustained real-state shadow certification before any action-surface or authority expansion.
+Documentation reconciliation only — no historical evidence is rewritten here.
 
+| Stage | State |
+|---|---|
+| Stage 2D-Z | Frozen ZekNova parity certified |
+| Stage 2E-Z | Real-state capture and sustained-shadow machinery certified |
+| Stage 2F | Runtime identity, provenance binding and campaign identity complete and certified. Runtime `sha256:bdc88a75…`, campaign `sha256:6fe9f8ab…`. The live qualification campaign itself is still **not** certified: it awaits provenance-verified live records under the current lineage. |
+| Stage 2G | Sentinel Oracle + Sentinel Nexus certified as deterministic R0 experts. Portability PASS on darwin and linux. |
+| Stage 2H | Shadow expert consumption and Prime context integration — certified. Prime consumes bounded expert context while remaining the decision owner. Portability PASS on darwin and linux. |
+| Stage 2H.1 | Action-discriminating expert context — **current**, certified. Oracle and Nexus score individual legal actions within the unchanged 0.02/0.03 bounds; every ranking change is causally attributed. Portability PASS on darwin and linux. |
+| Stage 3+ | Not started |
 
-## Current position — Stage 2E-Z
+Authority remains **R0** at every stage above: `canDispatch=false`,
+`canMutateLiveWorld=false`. The scripted ZekNova NPC AI is still the sole live
+executor, and no authority increase is permitted before Stage 10.
 
-The ZekNova adapter is registered and frozen parity is certified. The current gate is accumulation of real-state sustained shadow evidence. No authority increase is permitted.
+Still open after Stage 2H.1:
+
+- Prime's priors are still uniform. Expert signals adjust bounded per-action leaf
+  evaluation; they never become action priors.
+- The Router remains outside the certified Prime path.
+- No stage so far claims that expert context improves decision quality. Stage 2H.1
+  certifies that discrimination exists, is bounded, and is causally attributable —
+  measuring whether it *helps* is a separate evaluation stage.

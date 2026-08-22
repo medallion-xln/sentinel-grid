@@ -1,0 +1,2879 @@
+{
+  "certificationSchemaVersion": 1,
+  "stage": "STAGE2H1_ACTION_DISCRIMINATING_EXPERT_CONTEXT",
+  "authority": "R0",
+  "actionContextSchemaVersion": 1,
+  "sentinelRuntimeId": "sha256:bdc88a75795283152f13ea724233a8e80adf6c0b210e4b6050418d767f22c668",
+  "generatedRuntimeProvenanceId": "sha256:8621541069da7bcfa1c77e13605eaa98a0d241a8b831b461a7b343c75823150e",
+  "stage2fCampaignId": "sha256:6fe9f8abfbdb164f910444b927bc105f3e1ca133b6f5a5a5e5a06718e70289d9",
+  "sessionId": "stage2h1-certification-982389953a6f8f94",
+  "samplingIdentity": "982389953a6f8f948a5c224f3ce0122aaf877616d7c4db58ead6bdf32f4d166f",
+  "caseCorpusDigest": "982389953a6f8f948a5c224f3ce0122aaf877616d7c4db58ead6bdf32f4d166f",
+  "stage2fInherited": true,
+  "stage2gInherited": true,
+  "stage2hInherited": true,
+  "actionSpecificContext": true,
+  "oracleActionDiscrimination": true,
+  "nexusActionDiscrimination": true,
+  "neutralContextInert": true,
+  "noFabricatedPreference": true,
+  "strongPreferenceHeld": true,
+  "nearTieSelectionChanged": true,
+  "legalActionSetPreserved": true,
+  "priorsUnchanged": true,
+  "primeRemainsDecisionOwner": true,
+  "finalRecommendationOwner": "PRIME",
+  "expertCanAddAction": false,
+  "expertCanLegalizeAction": false,
+  "expertCanBypassPrime": false,
+  "actionAdjustmentBounded": true,
+  "boundsUnchanged": true,
+  "adjustmentBounds": {
+    "oracleMicro": 20000,
+    "nexusMicro": 20000,
+    "totalMicro": 30000,
+    "maxInterActionDifferentialMicro": 60000
+  },
+  "ablationMeasured": true,
+  "oracleAblationMeasured": true,
+  "nexusAblationMeasured": true,
+  "combinedAblationMeasured": true,
+  "counterfactualCausalityMeasured": true,
+  "selectionChangesCausallyAttributed": true,
+  "unattributedSelectionChanges": 0,
+  "replayEquivalent": true,
+  "fixtureCount": 15,
+  "contextualFixtureCount": 14,
+  "packetsChanged": 14,
+  "decisionsChanged": 12,
+  "rankingsChanged": 5,
+  "selectionsChanged": 5,
+  "selectionChangeDemonstrated": true,
+  "selectionChangeCausallyAttributed": true,
+  "fixtures": [
+    {
+      "fixtureId": "control-no-context",
+      "experimentClass": "control",
+      "baseline": {
+        "recommendationHash": "8203a596f4b101ededd94c343e8b11ad1f03812fcfa49691dc326504ca265e65",
+        "selectedActionKey": "[\"stage2h1/shift\",\"controller\",{\"id\":\"node-shift\",\"kind\":\"node\"},{\"mode\":\"shift\"}]",
+        "rankingKeys": [
+          "[\"stage2h1/shift\",\"controller\",{\"id\":\"node-shift\",\"kind\":\"node\"},{\"mode\":\"shift\"}]",
+          "[\"stage2h1/hold\",\"controller\",{\"id\":\"node-hold\",\"kind\":\"node\"},{\"mode\":\"hold\"}]"
+        ],
+        "visits": [
+          16,
+          16
+        ],
+        "meanValues": [
+          0.5039999999999998,
+          0.5
+        ],
+        "legalActionsHash": "db0c8fdaae93414931b6dfde7cd2e584b28d35ad5dde8522cf308e28441d48da",
+        "legalActionCount": 2,
+        "priors": "uniform",
+        "valueGap": 0.0039999999999997815
+      },
+      "arms": [],
+      "contextDigest": null,
+      "packetChanged": false,
+      "decisionChanged": false,
+      "rankingChanged": false,
+      "selectionChanged": false,
+      "legalActionSetPreserved": true,
+      "priorsUnchanged": true,
+      "selectionCause": "NONE",
+      "selectionCausallyAttributed": true
+    },
+    {
+      "fixtureId": "neutral-context",
+      "experimentClass": "neutral",
+      "baseline": {
+        "recommendationHash": "8203a596f4b101ededd94c343e8b11ad1f03812fcfa49691dc326504ca265e65",
+        "selectedActionKey": "[\"stage2h1/shift\",\"controller\",{\"id\":\"node-shift\",\"kind\":\"node\"},{\"mode\":\"shift\"}]",
+        "rankingKeys": [
+          "[\"stage2h1/shift\",\"controller\",{\"id\":\"node-shift\",\"kind\":\"node\"},{\"mode\":\"shift\"}]",
+          "[\"stage2h1/hold\",\"controller\",{\"id\":\"node-hold\",\"kind\":\"node\"},{\"mode\":\"hold\"}]"
+        ],
+        "visits": [
+          16,
+          16
+        ],
+        "meanValues": [
+          0.5039999999999998,
+          0.5
+        ],
+        "legalActionsHash": "db0c8fdaae93414931b6dfde7cd2e584b28d35ad5dde8522cf308e28441d48da",
+        "legalActionCount": 2,
+        "priors": "uniform",
+        "valueGap": 0.0039999999999997815
+      },
+      "arms": [
+        {
+          "arm": "prime+oracle",
+          "contextDigest": "sha256:573542dc69011e42f9ab1414e8035d1197f547e5f1736f486e6e278f74e0feb5",
+          "globalAdjustmentMicro": 0,
+          "scoredActionCount": 2,
+          "actionAdjustments": {
+            "[\"stage2h1/hold\",\"controller\",{\"id\":\"node-hold\",\"kind\":\"node\"},{\"mode\":\"hold\"}]": {
+              "oracle": 0,
+              "nexus": 0,
+              "combined": 0,
+              "rationaleCodes": [
+                "NEXUS_ACTION_NO_GRAPH",
+                "ORACLE_ACTION_TREND_FLAT"
+              ]
+            },
+            "[\"stage2h1/shift\",\"controller\",{\"id\":\"node-shift\",\"kind\":\"node\"},{\"mode\":\"shift\"}]": {
+              "oracle": 0,
+              "nexus": 0,
+              "combined": 0,
+              "rationaleCodes": [
+                "NEXUS_ACTION_NO_GRAPH",
+                "ORACLE_ACTION_TREND_FLAT"
+              ]
+            }
+          },
+          "result": {
+            "recommendationHash": "9220cc0e14bf088e0317fa4c3745533d3665b2b8303ac4ce3dadc45a835b4ff1",
+            "selectedActionKey": "[\"stage2h1/shift\",\"controller\",{\"id\":\"node-shift\",\"kind\":\"node\"},{\"mode\":\"shift\"}]",
+            "rankingKeys": [
+              "[\"stage2h1/shift\",\"controller\",{\"id\":\"node-shift\",\"kind\":\"node\"},{\"mode\":\"shift\"}]",
+              "[\"stage2h1/hold\",\"controller\",{\"id\":\"node-hold\",\"kind\":\"node\"},{\"mode\":\"hold\"}]"
+            ],
+            "visits": [
+              16,
+              16
+            ],
+            "meanValues": [
+              0.5039999999999998,
+              0.5
+            ],
+            "legalActionsHash": "db0c8fdaae93414931b6dfde7cd2e584b28d35ad5dde8522cf308e28441d48da",
+            "legalActionCount": 2,
+            "priors": "uniform",
+            "valueGap": 0.0039999999999997815
+          },
+          "packetChanged": true,
+          "decisionChanged": false,
+          "rankingChanged": false,
+          "selectionChanged": false,
+          "legalActionSetPreserved": true,
+          "priorsUnchanged": true
+        },
+        {
+          "arm": "prime+nexus",
+          "contextDigest": "sha256:415f56ccb162f81a3c7c014848a7a213112be09a8043e85d18c74d80871f3efc",
+          "globalAdjustmentMicro": 0,
+          "scoredActionCount": 2,
+          "actionAdjustments": {
+            "[\"stage2h1/hold\",\"controller\",{\"id\":\"node-hold\",\"kind\":\"node\"},{\"mode\":\"hold\"}]": {
+              "oracle": 0,
+              "nexus": 0,
+              "combined": 0,
+              "rationaleCodes": [
+                "NEXUS_ACTION_NO_GRAPH",
+                "ORACLE_ACTION_TREND_FLAT"
+              ]
+            },
+            "[\"stage2h1/shift\",\"controller\",{\"id\":\"node-shift\",\"kind\":\"node\"},{\"mode\":\"shift\"}]": {
+              "oracle": 0,
+              "nexus": 0,
+              "combined": 0,
+              "rationaleCodes": [
+                "NEXUS_ACTION_NO_GRAPH",
+                "ORACLE_ACTION_TREND_FLAT"
+              ]
+            }
+          },
+          "result": {
+            "recommendationHash": "653bd933fc3636ce2c62086e6b5aa25db9e00627a48f6b40855035562ba9841e",
+            "selectedActionKey": "[\"stage2h1/shift\",\"controller\",{\"id\":\"node-shift\",\"kind\":\"node\"},{\"mode\":\"shift\"}]",
+            "rankingKeys": [
+              "[\"stage2h1/shift\",\"controller\",{\"id\":\"node-shift\",\"kind\":\"node\"},{\"mode\":\"shift\"}]",
+              "[\"stage2h1/hold\",\"controller\",{\"id\":\"node-hold\",\"kind\":\"node\"},{\"mode\":\"hold\"}]"
+            ],
+            "visits": [
+              16,
+              16
+            ],
+            "meanValues": [
+              0.5039999999999998,
+              0.5
+            ],
+            "legalActionsHash": "db0c8fdaae93414931b6dfde7cd2e584b28d35ad5dde8522cf308e28441d48da",
+            "legalActionCount": 2,
+            "priors": "uniform",
+            "valueGap": 0.0039999999999997815
+          },
+          "packetChanged": true,
+          "decisionChanged": false,
+          "rankingChanged": false,
+          "selectionChanged": false,
+          "legalActionSetPreserved": true,
+          "priorsUnchanged": true
+        },
+        {
+          "arm": "prime+oracle+nexus",
+          "contextDigest": "sha256:44222c8a4d53c154ada8a3914d933ecd578980b8eb8f31636839a34bef236c44",
+          "globalAdjustmentMicro": 0,
+          "scoredActionCount": 2,
+          "actionAdjustments": {
+            "[\"stage2h1/hold\",\"controller\",{\"id\":\"node-hold\",\"kind\":\"node\"},{\"mode\":\"hold\"}]": {
+              "oracle": 0,
+              "nexus": 0,
+              "combined": 0,
+              "rationaleCodes": [
+                "NEXUS_ACTION_NO_GRAPH",
+                "ORACLE_ACTION_TREND_FLAT"
+              ]
+            },
+            "[\"stage2h1/shift\",\"controller\",{\"id\":\"node-shift\",\"kind\":\"node\"},{\"mode\":\"shift\"}]": {
+              "oracle": 0,
+              "nexus": 0,
+              "combined": 0,
+              "rationaleCodes": [
+                "NEXUS_ACTION_NO_GRAPH",
+                "ORACLE_ACTION_TREND_FLAT"
+              ]
+            }
+          },
+          "result": {
+            "recommendationHash": "611135a13b8d3835dff5ad1750f4f55542e427ba7ffbd89d66ef5dbeeafa6185",
+            "selectedActionKey": "[\"stage2h1/shift\",\"controller\",{\"id\":\"node-shift\",\"kind\":\"node\"},{\"mode\":\"shift\"}]",
+            "rankingKeys": [
+              "[\"stage2h1/shift\",\"controller\",{\"id\":\"node-shift\",\"kind\":\"node\"},{\"mode\":\"shift\"}]",
+              "[\"stage2h1/hold\",\"controller\",{\"id\":\"node-hold\",\"kind\":\"node\"},{\"mode\":\"hold\"}]"
+            ],
+            "visits": [
+              16,
+              16
+            ],
+            "meanValues": [
+              0.5039999999999998,
+              0.5
+            ],
+            "legalActionsHash": "db0c8fdaae93414931b6dfde7cd2e584b28d35ad5dde8522cf308e28441d48da",
+            "legalActionCount": 2,
+            "priors": "uniform",
+            "valueGap": 0.0039999999999997815
+          },
+          "packetChanged": true,
+          "decisionChanged": false,
+          "rankingChanged": false,
+          "selectionChanged": false,
+          "legalActionSetPreserved": true,
+          "priorsUnchanged": true
+        }
+      ],
+      "contextDigest": "sha256:44222c8a4d53c154ada8a3914d933ecd578980b8eb8f31636839a34bef236c44",
+      "packetChanged": true,
+      "decisionChanged": false,
+      "rankingChanged": false,
+      "selectionChanged": false,
+      "legalActionSetPreserved": true,
+      "priorsUnchanged": true,
+      "selectionCause": "NONE",
+      "selectionCausallyAttributed": true
+    },
+    {
+      "fixtureId": "oracle-aligned",
+      "experimentClass": "oracle-aligned",
+      "baseline": {
+        "recommendationHash": "8203a596f4b101ededd94c343e8b11ad1f03812fcfa49691dc326504ca265e65",
+        "selectedActionKey": "[\"stage2h1/shift\",\"controller\",{\"id\":\"node-shift\",\"kind\":\"node\"},{\"mode\":\"shift\"}]",
+        "rankingKeys": [
+          "[\"stage2h1/shift\",\"controller\",{\"id\":\"node-shift\",\"kind\":\"node\"},{\"mode\":\"shift\"}]",
+          "[\"stage2h1/hold\",\"controller\",{\"id\":\"node-hold\",\"kind\":\"node\"},{\"mode\":\"hold\"}]"
+        ],
+        "visits": [
+          16,
+          16
+        ],
+        "meanValues": [
+          0.5039999999999998,
+          0.5
+        ],
+        "legalActionsHash": "db0c8fdaae93414931b6dfde7cd2e584b28d35ad5dde8522cf308e28441d48da",
+        "legalActionCount": 2,
+        "priors": "uniform",
+        "valueGap": 0.0039999999999997815
+      },
+      "arms": [
+        {
+          "arm": "prime+oracle",
+          "contextDigest": "sha256:f6b6a0ce00dbe1606ebfe12b5d3f056a5fd5529ff02da718c00dfca4013394f7",
+          "globalAdjustmentMicro": -16983,
+          "scoredActionCount": 2,
+          "actionAdjustments": {
+            "[\"stage2h1/hold\",\"controller\",{\"id\":\"node-hold\",\"kind\":\"node\"},{\"mode\":\"hold\"}]": {
+              "oracle": -16983,
+              "nexus": 0,
+              "combined": -16983,
+              "rationaleCodes": [
+                "NEXUS_ACTION_NO_GRAPH",
+                "ORACLE_ACTION_TREND_REVERSED",
+                "ORACLE_ACTION_VOLATILITY_RISK"
+              ]
+            },
+            "[\"stage2h1/shift\",\"controller\",{\"id\":\"node-shift\",\"kind\":\"node\"},{\"mode\":\"shift\"}]": {
+              "oracle": 11111,
+              "nexus": 0,
+              "combined": 11111,
+              "rationaleCodes": [
+                "NEXUS_ACTION_NO_GRAPH",
+                "ORACLE_ACTION_ADDRESSES_DECLINE",
+                "ORACLE_ACTION_VOLATILITY_RISK"
+              ]
+            }
+          },
+          "result": {
+            "recommendationHash": "bbe36e94b62ec89df1c3ef2a8c14ed457bb946060bbaa1057af56a4eff1bebe9",
+            "selectedActionKey": "[\"stage2h1/shift\",\"controller\",{\"id\":\"node-shift\",\"kind\":\"node\"},{\"mode\":\"shift\"}]",
+            "rankingKeys": [
+              "[\"stage2h1/shift\",\"controller\",{\"id\":\"node-shift\",\"kind\":\"node\"},{\"mode\":\"shift\"}]",
+              "[\"stage2h1/hold\",\"controller\",{\"id\":\"node-hold\",\"kind\":\"node\"},{\"mode\":\"hold\"}]"
+            ],
+            "visits": [
+              17,
+              15
+            ],
+            "meanValues": [
+              0.515111,
+              0.4830170000000001
+            ],
+            "legalActionsHash": "db0c8fdaae93414931b6dfde7cd2e584b28d35ad5dde8522cf308e28441d48da",
+            "legalActionCount": 2,
+            "priors": "uniform",
+            "valueGap": 0.0320939999999999
+          },
+          "packetChanged": true,
+          "decisionChanged": true,
+          "rankingChanged": false,
+          "selectionChanged": false,
+          "legalActionSetPreserved": true,
+          "priorsUnchanged": true
+        },
+        {
+          "arm": "prime+nexus",
+          "contextDigest": "sha256:8d73bc20f7743171a7aa27848c1a6a3c71447dfa0130e27314837694a699cbd9",
+          "globalAdjustmentMicro": 0,
+          "scoredActionCount": 2,
+          "actionAdjustments": {
+            "[\"stage2h1/hold\",\"controller\",{\"id\":\"node-hold\",\"kind\":\"node\"},{\"mode\":\"hold\"}]": {
+              "oracle": 0,
+              "nexus": 0,
+              "combined": 0,
+              "rationaleCodes": [
+                "NEXUS_ACTION_NO_GRAPH",
+                "ORACLE_ACTION_TREND_FLAT"
+              ]
+            },
+            "[\"stage2h1/shift\",\"controller\",{\"id\":\"node-shift\",\"kind\":\"node\"},{\"mode\":\"shift\"}]": {
+              "oracle": 0,
+              "nexus": 0,
+              "combined": 0,
+              "rationaleCodes": [
+                "NEXUS_ACTION_NO_GRAPH",
+                "ORACLE_ACTION_TREND_FLAT"
+              ]
+            }
+          },
+          "result": {
+            "recommendationHash": "e6addb6ac3a85c3f95911aed2cc747eed1b90a9015fc27af026edda4626b84a7",
+            "selectedActionKey": "[\"stage2h1/shift\",\"controller\",{\"id\":\"node-shift\",\"kind\":\"node\"},{\"mode\":\"shift\"}]",
+            "rankingKeys": [
+              "[\"stage2h1/shift\",\"controller\",{\"id\":\"node-shift\",\"kind\":\"node\"},{\"mode\":\"shift\"}]",
+              "[\"stage2h1/hold\",\"controller\",{\"id\":\"node-hold\",\"kind\":\"node\"},{\"mode\":\"hold\"}]"
+            ],
+            "visits": [
+              16,
+              16
+            ],
+            "meanValues": [
+              0.5039999999999998,
+              0.5
+            ],
+            "legalActionsHash": "db0c8fdaae93414931b6dfde7cd2e584b28d35ad5dde8522cf308e28441d48da",
+            "legalActionCount": 2,
+            "priors": "uniform",
+            "valueGap": 0.0039999999999997815
+          },
+          "packetChanged": true,
+          "decisionChanged": false,
+          "rankingChanged": false,
+          "selectionChanged": false,
+          "legalActionSetPreserved": true,
+          "priorsUnchanged": true
+        },
+        {
+          "arm": "prime+oracle+nexus",
+          "contextDigest": "sha256:4a9a1976be5db80d40eb021f4c87884a4bd8d8f8c5ebba73052a546bd514b152",
+          "globalAdjustmentMicro": -16983,
+          "scoredActionCount": 2,
+          "actionAdjustments": {
+            "[\"stage2h1/hold\",\"controller\",{\"id\":\"node-hold\",\"kind\":\"node\"},{\"mode\":\"hold\"}]": {
+              "oracle": -16983,
+              "nexus": 0,
+              "combined": -16983,
+              "rationaleCodes": [
+                "NEXUS_ACTION_NO_GRAPH",
+                "ORACLE_ACTION_TREND_REVERSED",
+                "ORACLE_ACTION_VOLATILITY_RISK"
+              ]
+            },
+            "[\"stage2h1/shift\",\"controller\",{\"id\":\"node-shift\",\"kind\":\"node\"},{\"mode\":\"shift\"}]": {
+              "oracle": 11111,
+              "nexus": 0,
+              "combined": 11111,
+              "rationaleCodes": [
+                "NEXUS_ACTION_NO_GRAPH",
+                "ORACLE_ACTION_ADDRESSES_DECLINE",
+                "ORACLE_ACTION_VOLATILITY_RISK"
+              ]
+            }
+          },
+          "result": {
+            "recommendationHash": "9402948298a7735d5e83989fee90c3b9f187ead33065841c96500ace40aa20df",
+            "selectedActionKey": "[\"stage2h1/shift\",\"controller\",{\"id\":\"node-shift\",\"kind\":\"node\"},{\"mode\":\"shift\"}]",
+            "rankingKeys": [
+              "[\"stage2h1/shift\",\"controller\",{\"id\":\"node-shift\",\"kind\":\"node\"},{\"mode\":\"shift\"}]",
+              "[\"stage2h1/hold\",\"controller\",{\"id\":\"node-hold\",\"kind\":\"node\"},{\"mode\":\"hold\"}]"
+            ],
+            "visits": [
+              17,
+              15
+            ],
+            "meanValues": [
+              0.515111,
+              0.4830170000000001
+            ],
+            "legalActionsHash": "db0c8fdaae93414931b6dfde7cd2e584b28d35ad5dde8522cf308e28441d48da",
+            "legalActionCount": 2,
+            "priors": "uniform",
+            "valueGap": 0.0320939999999999
+          },
+          "packetChanged": true,
+          "decisionChanged": true,
+          "rankingChanged": false,
+          "selectionChanged": false,
+          "legalActionSetPreserved": true,
+          "priorsUnchanged": true
+        }
+      ],
+      "contextDigest": "sha256:4a9a1976be5db80d40eb021f4c87884a4bd8d8f8c5ebba73052a546bd514b152",
+      "packetChanged": true,
+      "decisionChanged": true,
+      "rankingChanged": false,
+      "selectionChanged": false,
+      "legalActionSetPreserved": true,
+      "priorsUnchanged": true,
+      "selectionCause": "NONE",
+      "selectionCausallyAttributed": true
+    },
+    {
+      "fixtureId": "oracle-opposed",
+      "experimentClass": "oracle-opposed",
+      "baseline": {
+        "recommendationHash": "8203a596f4b101ededd94c343e8b11ad1f03812fcfa49691dc326504ca265e65",
+        "selectedActionKey": "[\"stage2h1/shift\",\"controller\",{\"id\":\"node-shift\",\"kind\":\"node\"},{\"mode\":\"shift\"}]",
+        "rankingKeys": [
+          "[\"stage2h1/shift\",\"controller\",{\"id\":\"node-shift\",\"kind\":\"node\"},{\"mode\":\"shift\"}]",
+          "[\"stage2h1/hold\",\"controller\",{\"id\":\"node-hold\",\"kind\":\"node\"},{\"mode\":\"hold\"}]"
+        ],
+        "visits": [
+          16,
+          16
+        ],
+        "meanValues": [
+          0.5039999999999998,
+          0.5
+        ],
+        "legalActionsHash": "db0c8fdaae93414931b6dfde7cd2e584b28d35ad5dde8522cf308e28441d48da",
+        "legalActionCount": 2,
+        "priors": "uniform",
+        "valueGap": 0.0039999999999997815
+      },
+      "arms": [
+        {
+          "arm": "prime+oracle",
+          "contextDigest": "sha256:cb4fbd1599477a6c467867043c21687605629e56717b50c966993b971e014fca",
+          "globalAdjustmentMicro": -16983,
+          "scoredActionCount": 2,
+          "actionAdjustments": {
+            "[\"stage2h1/hold\",\"controller\",{\"id\":\"node-hold\",\"kind\":\"node\"},{\"mode\":\"hold\"}]": {
+              "oracle": 11111,
+              "nexus": 0,
+              "combined": 11111,
+              "rationaleCodes": [
+                "NEXUS_ACTION_NO_GRAPH",
+                "ORACLE_ACTION_ADDRESSES_DECLINE",
+                "ORACLE_ACTION_VOLATILITY_RISK"
+              ]
+            },
+            "[\"stage2h1/shift\",\"controller\",{\"id\":\"node-shift\",\"kind\":\"node\"},{\"mode\":\"shift\"}]": {
+              "oracle": -16983,
+              "nexus": 0,
+              "combined": -16983,
+              "rationaleCodes": [
+                "NEXUS_ACTION_NO_GRAPH",
+                "ORACLE_ACTION_TREND_REVERSED",
+                "ORACLE_ACTION_VOLATILITY_RISK"
+              ]
+            }
+          },
+          "result": {
+            "recommendationHash": "bac0738a40ad8e6555b53a6d6f5103e161dfe277bb91cf177d2dffc058935dd3",
+            "selectedActionKey": "[\"stage2h1/hold\",\"controller\",{\"id\":\"node-hold\",\"kind\":\"node\"},{\"mode\":\"hold\"}]",
+            "rankingKeys": [
+              "[\"stage2h1/hold\",\"controller\",{\"id\":\"node-hold\",\"kind\":\"node\"},{\"mode\":\"hold\"}]",
+              "[\"stage2h1/shift\",\"controller\",{\"id\":\"node-shift\",\"kind\":\"node\"},{\"mode\":\"shift\"}]"
+            ],
+            "visits": [
+              17,
+              15
+            ],
+            "meanValues": [
+              0.5111109999999999,
+              0.48701699999999987
+            ],
+            "legalActionsHash": "db0c8fdaae93414931b6dfde7cd2e584b28d35ad5dde8522cf308e28441d48da",
+            "legalActionCount": 2,
+            "priors": "uniform",
+            "valueGap": 0.024094000000000004
+          },
+          "packetChanged": true,
+          "decisionChanged": true,
+          "rankingChanged": true,
+          "selectionChanged": true,
+          "legalActionSetPreserved": true,
+          "priorsUnchanged": true
+        },
+        {
+          "arm": "prime+nexus",
+          "contextDigest": "sha256:57f8bf73a6eeed6d150f4a5763e1f29c743930a8d4ed8a178bce8b23ecaf95f7",
+          "globalAdjustmentMicro": 0,
+          "scoredActionCount": 2,
+          "actionAdjustments": {
+            "[\"stage2h1/hold\",\"controller\",{\"id\":\"node-hold\",\"kind\":\"node\"},{\"mode\":\"hold\"}]": {
+              "oracle": 0,
+              "nexus": 0,
+              "combined": 0,
+              "rationaleCodes": [
+                "NEXUS_ACTION_NO_GRAPH",
+                "ORACLE_ACTION_TREND_FLAT"
+              ]
+            },
+            "[\"stage2h1/shift\",\"controller\",{\"id\":\"node-shift\",\"kind\":\"node\"},{\"mode\":\"shift\"}]": {
+              "oracle": 0,
+              "nexus": 0,
+              "combined": 0,
+              "rationaleCodes": [
+                "NEXUS_ACTION_NO_GRAPH",
+                "ORACLE_ACTION_TREND_FLAT"
+              ]
+            }
+          },
+          "result": {
+            "recommendationHash": "a361b2796b285b3b844d39489ac50b52eec7ee8793777174691f20c281869e4e",
+            "selectedActionKey": "[\"stage2h1/shift\",\"controller\",{\"id\":\"node-shift\",\"kind\":\"node\"},{\"mode\":\"shift\"}]",
+            "rankingKeys": [
+              "[\"stage2h1/shift\",\"controller\",{\"id\":\"node-shift\",\"kind\":\"node\"},{\"mode\":\"shift\"}]",
+              "[\"stage2h1/hold\",\"controller\",{\"id\":\"node-hold\",\"kind\":\"node\"},{\"mode\":\"hold\"}]"
+            ],
+            "visits": [
+              16,
+              16
+            ],
+            "meanValues": [
+              0.5039999999999998,
+              0.5
+            ],
+            "legalActionsHash": "db0c8fdaae93414931b6dfde7cd2e584b28d35ad5dde8522cf308e28441d48da",
+            "legalActionCount": 2,
+            "priors": "uniform",
+            "valueGap": 0.0039999999999997815
+          },
+          "packetChanged": true,
+          "decisionChanged": false,
+          "rankingChanged": false,
+          "selectionChanged": false,
+          "legalActionSetPreserved": true,
+          "priorsUnchanged": true
+        },
+        {
+          "arm": "prime+oracle+nexus",
+          "contextDigest": "sha256:35ee66d7e3dddd0ab95094c6badd9b2aa5dc1c6811da9e1e7b14b08354708813",
+          "globalAdjustmentMicro": -16983,
+          "scoredActionCount": 2,
+          "actionAdjustments": {
+            "[\"stage2h1/hold\",\"controller\",{\"id\":\"node-hold\",\"kind\":\"node\"},{\"mode\":\"hold\"}]": {
+              "oracle": 11111,
+              "nexus": 0,
+              "combined": 11111,
+              "rationaleCodes": [
+                "NEXUS_ACTION_NO_GRAPH",
+                "ORACLE_ACTION_ADDRESSES_DECLINE",
+                "ORACLE_ACTION_VOLATILITY_RISK"
+              ]
+            },
+            "[\"stage2h1/shift\",\"controller\",{\"id\":\"node-shift\",\"kind\":\"node\"},{\"mode\":\"shift\"}]": {
+              "oracle": -16983,
+              "nexus": 0,
+              "combined": -16983,
+              "rationaleCodes": [
+                "NEXUS_ACTION_NO_GRAPH",
+                "ORACLE_ACTION_TREND_REVERSED",
+                "ORACLE_ACTION_VOLATILITY_RISK"
+              ]
+            }
+          },
+          "result": {
+            "recommendationHash": "6237efdc9c125954cd11bd48582083ccbee868a198d3a0778f0bf44473cfd82a",
+            "selectedActionKey": "[\"stage2h1/hold\",\"controller\",{\"id\":\"node-hold\",\"kind\":\"node\"},{\"mode\":\"hold\"}]",
+            "rankingKeys": [
+              "[\"stage2h1/hold\",\"controller\",{\"id\":\"node-hold\",\"kind\":\"node\"},{\"mode\":\"hold\"}]",
+              "[\"stage2h1/shift\",\"controller\",{\"id\":\"node-shift\",\"kind\":\"node\"},{\"mode\":\"shift\"}]"
+            ],
+            "visits": [
+              17,
+              15
+            ],
+            "meanValues": [
+              0.5111109999999999,
+              0.48701699999999987
+            ],
+            "legalActionsHash": "db0c8fdaae93414931b6dfde7cd2e584b28d35ad5dde8522cf308e28441d48da",
+            "legalActionCount": 2,
+            "priors": "uniform",
+            "valueGap": 0.024094000000000004
+          },
+          "packetChanged": true,
+          "decisionChanged": true,
+          "rankingChanged": true,
+          "selectionChanged": true,
+          "legalActionSetPreserved": true,
+          "priorsUnchanged": true
+        }
+      ],
+      "contextDigest": "sha256:35ee66d7e3dddd0ab95094c6badd9b2aa5dc1c6811da9e1e7b14b08354708813",
+      "packetChanged": true,
+      "decisionChanged": true,
+      "rankingChanged": true,
+      "selectionChanged": true,
+      "legalActionSetPreserved": true,
+      "priorsUnchanged": true,
+      "selectionCause": "ORACLE",
+      "selectionCausallyAttributed": true
+    },
+    {
+      "fixtureId": "nexus-aligned",
+      "experimentClass": "nexus-aligned",
+      "baseline": {
+        "recommendationHash": "8203a596f4b101ededd94c343e8b11ad1f03812fcfa49691dc326504ca265e65",
+        "selectedActionKey": "[\"stage2h1/shift\",\"controller\",{\"id\":\"node-shift\",\"kind\":\"node\"},{\"mode\":\"shift\"}]",
+        "rankingKeys": [
+          "[\"stage2h1/shift\",\"controller\",{\"id\":\"node-shift\",\"kind\":\"node\"},{\"mode\":\"shift\"}]",
+          "[\"stage2h1/hold\",\"controller\",{\"id\":\"node-hold\",\"kind\":\"node\"},{\"mode\":\"hold\"}]"
+        ],
+        "visits": [
+          16,
+          16
+        ],
+        "meanValues": [
+          0.5039999999999998,
+          0.5
+        ],
+        "legalActionsHash": "db0c8fdaae93414931b6dfde7cd2e584b28d35ad5dde8522cf308e28441d48da",
+        "legalActionCount": 2,
+        "priors": "uniform",
+        "valueGap": 0.0039999999999997815
+      },
+      "arms": [
+        {
+          "arm": "prime+oracle",
+          "contextDigest": "sha256:14408ca19ff81fca30911fc01b68eb40522caca048be3f8a88409a9ae21e52ba",
+          "globalAdjustmentMicro": 0,
+          "scoredActionCount": 2,
+          "actionAdjustments": {
+            "[\"stage2h1/hold\",\"controller\",{\"id\":\"node-hold\",\"kind\":\"node\"},{\"mode\":\"hold\"}]": {
+              "oracle": 0,
+              "nexus": 0,
+              "combined": 0,
+              "rationaleCodes": [
+                "NEXUS_ACTION_NO_GRAPH",
+                "ORACLE_ACTION_TREND_FLAT"
+              ]
+            },
+            "[\"stage2h1/shift\",\"controller\",{\"id\":\"node-shift\",\"kind\":\"node\"},{\"mode\":\"shift\"}]": {
+              "oracle": 0,
+              "nexus": 0,
+              "combined": 0,
+              "rationaleCodes": [
+                "NEXUS_ACTION_NO_GRAPH",
+                "ORACLE_ACTION_TREND_FLAT"
+              ]
+            }
+          },
+          "result": {
+            "recommendationHash": "78c261f1bb65630fc13d1da3f1f90001fa0d179d41465f3a11cef7af663419cd",
+            "selectedActionKey": "[\"stage2h1/shift\",\"controller\",{\"id\":\"node-shift\",\"kind\":\"node\"},{\"mode\":\"shift\"}]",
+            "rankingKeys": [
+              "[\"stage2h1/shift\",\"controller\",{\"id\":\"node-shift\",\"kind\":\"node\"},{\"mode\":\"shift\"}]",
+              "[\"stage2h1/hold\",\"controller\",{\"id\":\"node-hold\",\"kind\":\"node\"},{\"mode\":\"hold\"}]"
+            ],
+            "visits": [
+              16,
+              16
+            ],
+            "meanValues": [
+              0.5039999999999998,
+              0.5
+            ],
+            "legalActionsHash": "db0c8fdaae93414931b6dfde7cd2e584b28d35ad5dde8522cf308e28441d48da",
+            "legalActionCount": 2,
+            "priors": "uniform",
+            "valueGap": 0.0039999999999997815
+          },
+          "packetChanged": true,
+          "decisionChanged": false,
+          "rankingChanged": false,
+          "selectionChanged": false,
+          "legalActionSetPreserved": true,
+          "priorsUnchanged": true
+        },
+        {
+          "arm": "prime+nexus",
+          "contextDigest": "sha256:113eaea432d6c17faae1e5356a7de390dfe7dd1d8d9ea1bd0448e43e8a15d2cd",
+          "globalAdjustmentMicro": -8000,
+          "scoredActionCount": 2,
+          "actionAdjustments": {
+            "[\"stage2h1/hold\",\"controller\",{\"id\":\"node-hold\",\"kind\":\"node\"},{\"mode\":\"hold\"}]": {
+              "oracle": 0,
+              "nexus": -20000,
+              "combined": -20000,
+              "rationaleCodes": [
+                "NEXUS_ACTION_ISOLATED",
+                "ORACLE_ACTION_TREND_FLAT"
+              ]
+            },
+            "[\"stage2h1/shift\",\"controller\",{\"id\":\"node-shift\",\"kind\":\"node\"},{\"mode\":\"shift\"}]": {
+              "oracle": 0,
+              "nexus": 20000,
+              "combined": 20000,
+              "rationaleCodes": [
+                "NEXUS_ACTION_BOTTLENECK",
+                "NEXUS_ACTION_CRITICAL_DEPENDENCY",
+                "NEXUS_ACTION_UNSUPPORTED_THREAT",
+                "ORACLE_ACTION_TREND_FLAT"
+              ]
+            }
+          },
+          "result": {
+            "recommendationHash": "66cb13e516f53a207c6bbe5856751d3dfa87286284f107883230df4628665ef2",
+            "selectedActionKey": "[\"stage2h1/shift\",\"controller\",{\"id\":\"node-shift\",\"kind\":\"node\"},{\"mode\":\"shift\"}]",
+            "rankingKeys": [
+              "[\"stage2h1/shift\",\"controller\",{\"id\":\"node-shift\",\"kind\":\"node\"},{\"mode\":\"shift\"}]",
+              "[\"stage2h1/hold\",\"controller\",{\"id\":\"node-hold\",\"kind\":\"node\"},{\"mode\":\"hold\"}]"
+            ],
+            "visits": [
+              18,
+              14
+            ],
+            "meanValues": [
+              0.5240000000000001,
+              0.48000000000000015
+            ],
+            "legalActionsHash": "db0c8fdaae93414931b6dfde7cd2e584b28d35ad5dde8522cf308e28441d48da",
+            "legalActionCount": 2,
+            "priors": "uniform",
+            "valueGap": 0.043999999999999984
+          },
+          "packetChanged": true,
+          "decisionChanged": true,
+          "rankingChanged": false,
+          "selectionChanged": false,
+          "legalActionSetPreserved": true,
+          "priorsUnchanged": true
+        },
+        {
+          "arm": "prime+oracle+nexus",
+          "contextDigest": "sha256:895f68d1d4a8e6e53dbac6ec353a0ab8aef8dd67a8b884e993481ec2c1c21562",
+          "globalAdjustmentMicro": -8000,
+          "scoredActionCount": 2,
+          "actionAdjustments": {
+            "[\"stage2h1/hold\",\"controller\",{\"id\":\"node-hold\",\"kind\":\"node\"},{\"mode\":\"hold\"}]": {
+              "oracle": 0,
+              "nexus": -20000,
+              "combined": -20000,
+              "rationaleCodes": [
+                "NEXUS_ACTION_ISOLATED",
+                "ORACLE_ACTION_TREND_FLAT"
+              ]
+            },
+            "[\"stage2h1/shift\",\"controller\",{\"id\":\"node-shift\",\"kind\":\"node\"},{\"mode\":\"shift\"}]": {
+              "oracle": 0,
+              "nexus": 20000,
+              "combined": 20000,
+              "rationaleCodes": [
+                "NEXUS_ACTION_BOTTLENECK",
+                "NEXUS_ACTION_CRITICAL_DEPENDENCY",
+                "NEXUS_ACTION_UNSUPPORTED_THREAT",
+                "ORACLE_ACTION_TREND_FLAT"
+              ]
+            }
+          },
+          "result": {
+            "recommendationHash": "20b51b0098343f30741744637530fe78d91ae60a78cdb912cf46521237be23c3",
+            "selectedActionKey": "[\"stage2h1/shift\",\"controller\",{\"id\":\"node-shift\",\"kind\":\"node\"},{\"mode\":\"shift\"}]",
+            "rankingKeys": [
+              "[\"stage2h1/shift\",\"controller\",{\"id\":\"node-shift\",\"kind\":\"node\"},{\"mode\":\"shift\"}]",
+              "[\"stage2h1/hold\",\"controller\",{\"id\":\"node-hold\",\"kind\":\"node\"},{\"mode\":\"hold\"}]"
+            ],
+            "visits": [
+              18,
+              14
+            ],
+            "meanValues": [
+              0.5240000000000001,
+              0.48000000000000015
+            ],
+            "legalActionsHash": "db0c8fdaae93414931b6dfde7cd2e584b28d35ad5dde8522cf308e28441d48da",
+            "legalActionCount": 2,
+            "priors": "uniform",
+            "valueGap": 0.043999999999999984
+          },
+          "packetChanged": true,
+          "decisionChanged": true,
+          "rankingChanged": false,
+          "selectionChanged": false,
+          "legalActionSetPreserved": true,
+          "priorsUnchanged": true
+        }
+      ],
+      "contextDigest": "sha256:895f68d1d4a8e6e53dbac6ec353a0ab8aef8dd67a8b884e993481ec2c1c21562",
+      "packetChanged": true,
+      "decisionChanged": true,
+      "rankingChanged": false,
+      "selectionChanged": false,
+      "legalActionSetPreserved": true,
+      "priorsUnchanged": true,
+      "selectionCause": "NONE",
+      "selectionCausallyAttributed": true
+    },
+    {
+      "fixtureId": "nexus-opposed",
+      "experimentClass": "nexus-opposed",
+      "baseline": {
+        "recommendationHash": "8203a596f4b101ededd94c343e8b11ad1f03812fcfa49691dc326504ca265e65",
+        "selectedActionKey": "[\"stage2h1/shift\",\"controller\",{\"id\":\"node-shift\",\"kind\":\"node\"},{\"mode\":\"shift\"}]",
+        "rankingKeys": [
+          "[\"stage2h1/shift\",\"controller\",{\"id\":\"node-shift\",\"kind\":\"node\"},{\"mode\":\"shift\"}]",
+          "[\"stage2h1/hold\",\"controller\",{\"id\":\"node-hold\",\"kind\":\"node\"},{\"mode\":\"hold\"}]"
+        ],
+        "visits": [
+          16,
+          16
+        ],
+        "meanValues": [
+          0.5039999999999998,
+          0.5
+        ],
+        "legalActionsHash": "db0c8fdaae93414931b6dfde7cd2e584b28d35ad5dde8522cf308e28441d48da",
+        "legalActionCount": 2,
+        "priors": "uniform",
+        "valueGap": 0.0039999999999997815
+      },
+      "arms": [
+        {
+          "arm": "prime+oracle",
+          "contextDigest": "sha256:0ed68b6b68f58477176fb3537d754a69b1e9b39c1a0082dae9c40a1d35ce993b",
+          "globalAdjustmentMicro": 0,
+          "scoredActionCount": 2,
+          "actionAdjustments": {
+            "[\"stage2h1/hold\",\"controller\",{\"id\":\"node-hold\",\"kind\":\"node\"},{\"mode\":\"hold\"}]": {
+              "oracle": 0,
+              "nexus": 0,
+              "combined": 0,
+              "rationaleCodes": [
+                "NEXUS_ACTION_NO_GRAPH",
+                "ORACLE_ACTION_TREND_FLAT"
+              ]
+            },
+            "[\"stage2h1/shift\",\"controller\",{\"id\":\"node-shift\",\"kind\":\"node\"},{\"mode\":\"shift\"}]": {
+              "oracle": 0,
+              "nexus": 0,
+              "combined": 0,
+              "rationaleCodes": [
+                "NEXUS_ACTION_NO_GRAPH",
+                "ORACLE_ACTION_TREND_FLAT"
+              ]
+            }
+          },
+          "result": {
+            "recommendationHash": "9b775af138a8fbe91ef6663d068bad11bcff8b9fbc1bcd8ecc0801be053e3c63",
+            "selectedActionKey": "[\"stage2h1/shift\",\"controller\",{\"id\":\"node-shift\",\"kind\":\"node\"},{\"mode\":\"shift\"}]",
+            "rankingKeys": [
+              "[\"stage2h1/shift\",\"controller\",{\"id\":\"node-shift\",\"kind\":\"node\"},{\"mode\":\"shift\"}]",
+              "[\"stage2h1/hold\",\"controller\",{\"id\":\"node-hold\",\"kind\":\"node\"},{\"mode\":\"hold\"}]"
+            ],
+            "visits": [
+              16,
+              16
+            ],
+            "meanValues": [
+              0.5039999999999998,
+              0.5
+            ],
+            "legalActionsHash": "db0c8fdaae93414931b6dfde7cd2e584b28d35ad5dde8522cf308e28441d48da",
+            "legalActionCount": 2,
+            "priors": "uniform",
+            "valueGap": 0.0039999999999997815
+          },
+          "packetChanged": true,
+          "decisionChanged": false,
+          "rankingChanged": false,
+          "selectionChanged": false,
+          "legalActionSetPreserved": true,
+          "priorsUnchanged": true
+        },
+        {
+          "arm": "prime+nexus",
+          "contextDigest": "sha256:997085c7088e61e6cf9a127d1d2c8a8337d72b77077c05d5764c9c2682eba70e",
+          "globalAdjustmentMicro": -8000,
+          "scoredActionCount": 2,
+          "actionAdjustments": {
+            "[\"stage2h1/hold\",\"controller\",{\"id\":\"node-hold\",\"kind\":\"node\"},{\"mode\":\"hold\"}]": {
+              "oracle": 0,
+              "nexus": 20000,
+              "combined": 20000,
+              "rationaleCodes": [
+                "NEXUS_ACTION_BOTTLENECK",
+                "NEXUS_ACTION_CRITICAL_DEPENDENCY",
+                "NEXUS_ACTION_UNSUPPORTED_THREAT",
+                "ORACLE_ACTION_TREND_FLAT"
+              ]
+            },
+            "[\"stage2h1/shift\",\"controller\",{\"id\":\"node-shift\",\"kind\":\"node\"},{\"mode\":\"shift\"}]": {
+              "oracle": 0,
+              "nexus": -20000,
+              "combined": -20000,
+              "rationaleCodes": [
+                "NEXUS_ACTION_ISOLATED",
+                "ORACLE_ACTION_TREND_FLAT"
+              ]
+            }
+          },
+          "result": {
+            "recommendationHash": "ee9799dcae809abb259bde85807dd2a7aa994ba0e9cfd8c469fd031a4c15049b",
+            "selectedActionKey": "[\"stage2h1/hold\",\"controller\",{\"id\":\"node-hold\",\"kind\":\"node\"},{\"mode\":\"hold\"}]",
+            "rankingKeys": [
+              "[\"stage2h1/hold\",\"controller\",{\"id\":\"node-hold\",\"kind\":\"node\"},{\"mode\":\"hold\"}]",
+              "[\"stage2h1/shift\",\"controller\",{\"id\":\"node-shift\",\"kind\":\"node\"},{\"mode\":\"shift\"}]"
+            ],
+            "visits": [
+              17,
+              15
+            ],
+            "meanValues": [
+              0.5199999999999998,
+              0.484
+            ],
+            "legalActionsHash": "db0c8fdaae93414931b6dfde7cd2e584b28d35ad5dde8522cf308e28441d48da",
+            "legalActionCount": 2,
+            "priors": "uniform",
+            "valueGap": 0.03599999999999981
+          },
+          "packetChanged": true,
+          "decisionChanged": true,
+          "rankingChanged": true,
+          "selectionChanged": true,
+          "legalActionSetPreserved": true,
+          "priorsUnchanged": true
+        },
+        {
+          "arm": "prime+oracle+nexus",
+          "contextDigest": "sha256:685f426b637c054d0f999b6583f14a1d832930db8ec0b8d8809ff5385a963c2a",
+          "globalAdjustmentMicro": -8000,
+          "scoredActionCount": 2,
+          "actionAdjustments": {
+            "[\"stage2h1/hold\",\"controller\",{\"id\":\"node-hold\",\"kind\":\"node\"},{\"mode\":\"hold\"}]": {
+              "oracle": 0,
+              "nexus": 20000,
+              "combined": 20000,
+              "rationaleCodes": [
+                "NEXUS_ACTION_BOTTLENECK",
+                "NEXUS_ACTION_CRITICAL_DEPENDENCY",
+                "NEXUS_ACTION_UNSUPPORTED_THREAT",
+                "ORACLE_ACTION_TREND_FLAT"
+              ]
+            },
+            "[\"stage2h1/shift\",\"controller\",{\"id\":\"node-shift\",\"kind\":\"node\"},{\"mode\":\"shift\"}]": {
+              "oracle": 0,
+              "nexus": -20000,
+              "combined": -20000,
+              "rationaleCodes": [
+                "NEXUS_ACTION_ISOLATED",
+                "ORACLE_ACTION_TREND_FLAT"
+              ]
+            }
+          },
+          "result": {
+            "recommendationHash": "e9d48aec19e05a52f5b3c57cd11887c19dacbe6cebc73c289ec68dd7c2fa1ce2",
+            "selectedActionKey": "[\"stage2h1/hold\",\"controller\",{\"id\":\"node-hold\",\"kind\":\"node\"},{\"mode\":\"hold\"}]",
+            "rankingKeys": [
+              "[\"stage2h1/hold\",\"controller\",{\"id\":\"node-hold\",\"kind\":\"node\"},{\"mode\":\"hold\"}]",
+              "[\"stage2h1/shift\",\"controller\",{\"id\":\"node-shift\",\"kind\":\"node\"},{\"mode\":\"shift\"}]"
+            ],
+            "visits": [
+              17,
+              15
+            ],
+            "meanValues": [
+              0.5199999999999998,
+              0.484
+            ],
+            "legalActionsHash": "db0c8fdaae93414931b6dfde7cd2e584b28d35ad5dde8522cf308e28441d48da",
+            "legalActionCount": 2,
+            "priors": "uniform",
+            "valueGap": 0.03599999999999981
+          },
+          "packetChanged": true,
+          "decisionChanged": true,
+          "rankingChanged": true,
+          "selectionChanged": true,
+          "legalActionSetPreserved": true,
+          "priorsUnchanged": true
+        }
+      ],
+      "contextDigest": "sha256:685f426b637c054d0f999b6583f14a1d832930db8ec0b8d8809ff5385a963c2a",
+      "packetChanged": true,
+      "decisionChanged": true,
+      "rankingChanged": true,
+      "selectionChanged": true,
+      "legalActionSetPreserved": true,
+      "priorsUnchanged": true,
+      "selectionCause": "NEXUS",
+      "selectionCausallyAttributed": true
+    },
+    {
+      "fixtureId": "experts-agree",
+      "experimentClass": "both-agree",
+      "baseline": {
+        "recommendationHash": "8203a596f4b101ededd94c343e8b11ad1f03812fcfa49691dc326504ca265e65",
+        "selectedActionKey": "[\"stage2h1/shift\",\"controller\",{\"id\":\"node-shift\",\"kind\":\"node\"},{\"mode\":\"shift\"}]",
+        "rankingKeys": [
+          "[\"stage2h1/shift\",\"controller\",{\"id\":\"node-shift\",\"kind\":\"node\"},{\"mode\":\"shift\"}]",
+          "[\"stage2h1/hold\",\"controller\",{\"id\":\"node-hold\",\"kind\":\"node\"},{\"mode\":\"hold\"}]"
+        ],
+        "visits": [
+          16,
+          16
+        ],
+        "meanValues": [
+          0.5039999999999998,
+          0.5
+        ],
+        "legalActionsHash": "db0c8fdaae93414931b6dfde7cd2e584b28d35ad5dde8522cf308e28441d48da",
+        "legalActionCount": 2,
+        "priors": "uniform",
+        "valueGap": 0.0039999999999997815
+      },
+      "arms": [
+        {
+          "arm": "prime+oracle",
+          "contextDigest": "sha256:ab5dd646b268b13b59c3885c86f5d924e78c722f6c3b1e62196959d75fb9dd18",
+          "globalAdjustmentMicro": -16983,
+          "scoredActionCount": 2,
+          "actionAdjustments": {
+            "[\"stage2h1/hold\",\"controller\",{\"id\":\"node-hold\",\"kind\":\"node\"},{\"mode\":\"hold\"}]": {
+              "oracle": 11111,
+              "nexus": 0,
+              "combined": 11111,
+              "rationaleCodes": [
+                "NEXUS_ACTION_NO_GRAPH",
+                "ORACLE_ACTION_ADDRESSES_DECLINE",
+                "ORACLE_ACTION_VOLATILITY_RISK"
+              ]
+            },
+            "[\"stage2h1/shift\",\"controller\",{\"id\":\"node-shift\",\"kind\":\"node\"},{\"mode\":\"shift\"}]": {
+              "oracle": -16983,
+              "nexus": 0,
+              "combined": -16983,
+              "rationaleCodes": [
+                "NEXUS_ACTION_NO_GRAPH",
+                "ORACLE_ACTION_TREND_REVERSED",
+                "ORACLE_ACTION_VOLATILITY_RISK"
+              ]
+            }
+          },
+          "result": {
+            "recommendationHash": "02b0123c931960eb6e105121a6280b2c75ca693fda55d536b909e4665d55fb67",
+            "selectedActionKey": "[\"stage2h1/hold\",\"controller\",{\"id\":\"node-hold\",\"kind\":\"node\"},{\"mode\":\"hold\"}]",
+            "rankingKeys": [
+              "[\"stage2h1/hold\",\"controller\",{\"id\":\"node-hold\",\"kind\":\"node\"},{\"mode\":\"hold\"}]",
+              "[\"stage2h1/shift\",\"controller\",{\"id\":\"node-shift\",\"kind\":\"node\"},{\"mode\":\"shift\"}]"
+            ],
+            "visits": [
+              17,
+              15
+            ],
+            "meanValues": [
+              0.5111109999999999,
+              0.48701699999999987
+            ],
+            "legalActionsHash": "db0c8fdaae93414931b6dfde7cd2e584b28d35ad5dde8522cf308e28441d48da",
+            "legalActionCount": 2,
+            "priors": "uniform",
+            "valueGap": 0.024094000000000004
+          },
+          "packetChanged": true,
+          "decisionChanged": true,
+          "rankingChanged": true,
+          "selectionChanged": true,
+          "legalActionSetPreserved": true,
+          "priorsUnchanged": true
+        },
+        {
+          "arm": "prime+nexus",
+          "contextDigest": "sha256:28175f66f30a0bae209c15e1ea7142de5eef9b2b3f575e5e2f13f4a2167cb700",
+          "globalAdjustmentMicro": -8000,
+          "scoredActionCount": 2,
+          "actionAdjustments": {
+            "[\"stage2h1/hold\",\"controller\",{\"id\":\"node-hold\",\"kind\":\"node\"},{\"mode\":\"hold\"}]": {
+              "oracle": 0,
+              "nexus": 20000,
+              "combined": 20000,
+              "rationaleCodes": [
+                "NEXUS_ACTION_BOTTLENECK",
+                "NEXUS_ACTION_CRITICAL_DEPENDENCY",
+                "NEXUS_ACTION_UNSUPPORTED_THREAT",
+                "ORACLE_ACTION_TREND_FLAT"
+              ]
+            },
+            "[\"stage2h1/shift\",\"controller\",{\"id\":\"node-shift\",\"kind\":\"node\"},{\"mode\":\"shift\"}]": {
+              "oracle": 0,
+              "nexus": -20000,
+              "combined": -20000,
+              "rationaleCodes": [
+                "NEXUS_ACTION_ISOLATED",
+                "ORACLE_ACTION_TREND_FLAT"
+              ]
+            }
+          },
+          "result": {
+            "recommendationHash": "a1aa8306cb53a84cdb770dbee34bbaf62c1f8811ad9c754073087d6ddb7d90d4",
+            "selectedActionKey": "[\"stage2h1/hold\",\"controller\",{\"id\":\"node-hold\",\"kind\":\"node\"},{\"mode\":\"hold\"}]",
+            "rankingKeys": [
+              "[\"stage2h1/hold\",\"controller\",{\"id\":\"node-hold\",\"kind\":\"node\"},{\"mode\":\"hold\"}]",
+              "[\"stage2h1/shift\",\"controller\",{\"id\":\"node-shift\",\"kind\":\"node\"},{\"mode\":\"shift\"}]"
+            ],
+            "visits": [
+              17,
+              15
+            ],
+            "meanValues": [
+              0.5199999999999998,
+              0.484
+            ],
+            "legalActionsHash": "db0c8fdaae93414931b6dfde7cd2e584b28d35ad5dde8522cf308e28441d48da",
+            "legalActionCount": 2,
+            "priors": "uniform",
+            "valueGap": 0.03599999999999981
+          },
+          "packetChanged": true,
+          "decisionChanged": true,
+          "rankingChanged": true,
+          "selectionChanged": true,
+          "legalActionSetPreserved": true,
+          "priorsUnchanged": true
+        },
+        {
+          "arm": "prime+oracle+nexus",
+          "contextDigest": "sha256:e5a905ceb70270e2cdf44ae730e8ffe2f136adaf9ffe241552fc1865496e0939",
+          "globalAdjustmentMicro": -24983,
+          "scoredActionCount": 2,
+          "actionAdjustments": {
+            "[\"stage2h1/hold\",\"controller\",{\"id\":\"node-hold\",\"kind\":\"node\"},{\"mode\":\"hold\"}]": {
+              "oracle": 11111,
+              "nexus": 20000,
+              "combined": 30000,
+              "rationaleCodes": [
+                "NEXUS_ACTION_BOTTLENECK",
+                "NEXUS_ACTION_CRITICAL_DEPENDENCY",
+                "NEXUS_ACTION_UNSUPPORTED_THREAT",
+                "ORACLE_ACTION_ADDRESSES_DECLINE",
+                "ORACLE_ACTION_VOLATILITY_RISK"
+              ]
+            },
+            "[\"stage2h1/shift\",\"controller\",{\"id\":\"node-shift\",\"kind\":\"node\"},{\"mode\":\"shift\"}]": {
+              "oracle": -16983,
+              "nexus": -20000,
+              "combined": -30000,
+              "rationaleCodes": [
+                "NEXUS_ACTION_ISOLATED",
+                "ORACLE_ACTION_TREND_REVERSED",
+                "ORACLE_ACTION_VOLATILITY_RISK"
+              ]
+            }
+          },
+          "result": {
+            "recommendationHash": "e2b2678aac67318c86f9cbbe5baab2ddcb4894f8fe24f0c8164faee0f8e7554a",
+            "selectedActionKey": "[\"stage2h1/hold\",\"controller\",{\"id\":\"node-hold\",\"kind\":\"node\"},{\"mode\":\"hold\"}]",
+            "rankingKeys": [
+              "[\"stage2h1/hold\",\"controller\",{\"id\":\"node-hold\",\"kind\":\"node\"},{\"mode\":\"hold\"}]",
+              "[\"stage2h1/shift\",\"controller\",{\"id\":\"node-shift\",\"kind\":\"node\"},{\"mode\":\"shift\"}]"
+            ],
+            "visits": [
+              18,
+              14
+            ],
+            "meanValues": [
+              0.53,
+              0.47400000000000014
+            ],
+            "legalActionsHash": "db0c8fdaae93414931b6dfde7cd2e584b28d35ad5dde8522cf308e28441d48da",
+            "legalActionCount": 2,
+            "priors": "uniform",
+            "valueGap": 0.05599999999999988
+          },
+          "packetChanged": true,
+          "decisionChanged": true,
+          "rankingChanged": true,
+          "selectionChanged": true,
+          "legalActionSetPreserved": true,
+          "priorsUnchanged": true
+        }
+      ],
+      "contextDigest": "sha256:e5a905ceb70270e2cdf44ae730e8ffe2f136adaf9ffe241552fc1865496e0939",
+      "packetChanged": true,
+      "decisionChanged": true,
+      "rankingChanged": true,
+      "selectionChanged": true,
+      "legalActionSetPreserved": true,
+      "priorsUnchanged": true,
+      "selectionCause": "EITHER_SUFFICIENT",
+      "selectionCausallyAttributed": true
+    },
+    {
+      "fixtureId": "experts-disagree",
+      "experimentClass": "both-disagree",
+      "baseline": {
+        "recommendationHash": "8203a596f4b101ededd94c343e8b11ad1f03812fcfa49691dc326504ca265e65",
+        "selectedActionKey": "[\"stage2h1/shift\",\"controller\",{\"id\":\"node-shift\",\"kind\":\"node\"},{\"mode\":\"shift\"}]",
+        "rankingKeys": [
+          "[\"stage2h1/shift\",\"controller\",{\"id\":\"node-shift\",\"kind\":\"node\"},{\"mode\":\"shift\"}]",
+          "[\"stage2h1/hold\",\"controller\",{\"id\":\"node-hold\",\"kind\":\"node\"},{\"mode\":\"hold\"}]"
+        ],
+        "visits": [
+          16,
+          16
+        ],
+        "meanValues": [
+          0.5039999999999998,
+          0.5
+        ],
+        "legalActionsHash": "db0c8fdaae93414931b6dfde7cd2e584b28d35ad5dde8522cf308e28441d48da",
+        "legalActionCount": 2,
+        "priors": "uniform",
+        "valueGap": 0.0039999999999997815
+      },
+      "arms": [
+        {
+          "arm": "prime+oracle",
+          "contextDigest": "sha256:a8123ab1067d38829672c1c5fbcd774dda8826fefc3510d17cf2e171d409ebcd",
+          "globalAdjustmentMicro": -16983,
+          "scoredActionCount": 2,
+          "actionAdjustments": {
+            "[\"stage2h1/hold\",\"controller\",{\"id\":\"node-hold\",\"kind\":\"node\"},{\"mode\":\"hold\"}]": {
+              "oracle": 11111,
+              "nexus": 0,
+              "combined": 11111,
+              "rationaleCodes": [
+                "NEXUS_ACTION_NO_GRAPH",
+                "ORACLE_ACTION_ADDRESSES_DECLINE",
+                "ORACLE_ACTION_VOLATILITY_RISK"
+              ]
+            },
+            "[\"stage2h1/shift\",\"controller\",{\"id\":\"node-shift\",\"kind\":\"node\"},{\"mode\":\"shift\"}]": {
+              "oracle": -16983,
+              "nexus": 0,
+              "combined": -16983,
+              "rationaleCodes": [
+                "NEXUS_ACTION_NO_GRAPH",
+                "ORACLE_ACTION_TREND_REVERSED",
+                "ORACLE_ACTION_VOLATILITY_RISK"
+              ]
+            }
+          },
+          "result": {
+            "recommendationHash": "1153d58c55e706b92ef5c818708bac83757a59cbca549760ce1fe91ce13bddd2",
+            "selectedActionKey": "[\"stage2h1/hold\",\"controller\",{\"id\":\"node-hold\",\"kind\":\"node\"},{\"mode\":\"hold\"}]",
+            "rankingKeys": [
+              "[\"stage2h1/hold\",\"controller\",{\"id\":\"node-hold\",\"kind\":\"node\"},{\"mode\":\"hold\"}]",
+              "[\"stage2h1/shift\",\"controller\",{\"id\":\"node-shift\",\"kind\":\"node\"},{\"mode\":\"shift\"}]"
+            ],
+            "visits": [
+              17,
+              15
+            ],
+            "meanValues": [
+              0.5111109999999999,
+              0.48701699999999987
+            ],
+            "legalActionsHash": "db0c8fdaae93414931b6dfde7cd2e584b28d35ad5dde8522cf308e28441d48da",
+            "legalActionCount": 2,
+            "priors": "uniform",
+            "valueGap": 0.024094000000000004
+          },
+          "packetChanged": true,
+          "decisionChanged": true,
+          "rankingChanged": true,
+          "selectionChanged": true,
+          "legalActionSetPreserved": true,
+          "priorsUnchanged": true
+        },
+        {
+          "arm": "prime+nexus",
+          "contextDigest": "sha256:6704ca3910649c307fe96670b4571e08fa0bec04bbd4f8d5627e9697c8875ab6",
+          "globalAdjustmentMicro": -8000,
+          "scoredActionCount": 2,
+          "actionAdjustments": {
+            "[\"stage2h1/hold\",\"controller\",{\"id\":\"node-hold\",\"kind\":\"node\"},{\"mode\":\"hold\"}]": {
+              "oracle": 0,
+              "nexus": -20000,
+              "combined": -20000,
+              "rationaleCodes": [
+                "NEXUS_ACTION_ISOLATED",
+                "ORACLE_ACTION_TREND_FLAT"
+              ]
+            },
+            "[\"stage2h1/shift\",\"controller\",{\"id\":\"node-shift\",\"kind\":\"node\"},{\"mode\":\"shift\"}]": {
+              "oracle": 0,
+              "nexus": 20000,
+              "combined": 20000,
+              "rationaleCodes": [
+                "NEXUS_ACTION_BOTTLENECK",
+                "NEXUS_ACTION_CRITICAL_DEPENDENCY",
+                "NEXUS_ACTION_UNSUPPORTED_THREAT",
+                "ORACLE_ACTION_TREND_FLAT"
+              ]
+            }
+          },
+          "result": {
+            "recommendationHash": "3917ea43b42e03e975690dcc5eb6b848206ff6d47b76a40316abebaae8c4ca52",
+            "selectedActionKey": "[\"stage2h1/shift\",\"controller\",{\"id\":\"node-shift\",\"kind\":\"node\"},{\"mode\":\"shift\"}]",
+            "rankingKeys": [
+              "[\"stage2h1/shift\",\"controller\",{\"id\":\"node-shift\",\"kind\":\"node\"},{\"mode\":\"shift\"}]",
+              "[\"stage2h1/hold\",\"controller\",{\"id\":\"node-hold\",\"kind\":\"node\"},{\"mode\":\"hold\"}]"
+            ],
+            "visits": [
+              18,
+              14
+            ],
+            "meanValues": [
+              0.5240000000000001,
+              0.48000000000000015
+            ],
+            "legalActionsHash": "db0c8fdaae93414931b6dfde7cd2e584b28d35ad5dde8522cf308e28441d48da",
+            "legalActionCount": 2,
+            "priors": "uniform",
+            "valueGap": 0.043999999999999984
+          },
+          "packetChanged": true,
+          "decisionChanged": true,
+          "rankingChanged": false,
+          "selectionChanged": false,
+          "legalActionSetPreserved": true,
+          "priorsUnchanged": true
+        },
+        {
+          "arm": "prime+oracle+nexus",
+          "contextDigest": "sha256:70ac5ca24560a222a43870707715938d32466c176da5be34be95ce62db5b83e1",
+          "globalAdjustmentMicro": -24983,
+          "scoredActionCount": 2,
+          "actionAdjustments": {
+            "[\"stage2h1/hold\",\"controller\",{\"id\":\"node-hold\",\"kind\":\"node\"},{\"mode\":\"hold\"}]": {
+              "oracle": 11111,
+              "nexus": -20000,
+              "combined": -8889,
+              "rationaleCodes": [
+                "NEXUS_ACTION_ISOLATED",
+                "ORACLE_ACTION_ADDRESSES_DECLINE",
+                "ORACLE_ACTION_VOLATILITY_RISK"
+              ]
+            },
+            "[\"stage2h1/shift\",\"controller\",{\"id\":\"node-shift\",\"kind\":\"node\"},{\"mode\":\"shift\"}]": {
+              "oracle": -16983,
+              "nexus": 20000,
+              "combined": 3017,
+              "rationaleCodes": [
+                "NEXUS_ACTION_BOTTLENECK",
+                "NEXUS_ACTION_CRITICAL_DEPENDENCY",
+                "NEXUS_ACTION_UNSUPPORTED_THREAT",
+                "ORACLE_ACTION_TREND_REVERSED",
+                "ORACLE_ACTION_VOLATILITY_RISK"
+              ]
+            }
+          },
+          "result": {
+            "recommendationHash": "fd91ba7999f09d710e44f3d7731dc1c97965e7c7881ae3502b4e20ade8974e3b",
+            "selectedActionKey": "[\"stage2h1/shift\",\"controller\",{\"id\":\"node-shift\",\"kind\":\"node\"},{\"mode\":\"shift\"}]",
+            "rankingKeys": [
+              "[\"stage2h1/shift\",\"controller\",{\"id\":\"node-shift\",\"kind\":\"node\"},{\"mode\":\"shift\"}]",
+              "[\"stage2h1/hold\",\"controller\",{\"id\":\"node-hold\",\"kind\":\"node\"},{\"mode\":\"hold\"}]"
+            ],
+            "visits": [
+              17,
+              15
+            ],
+            "meanValues": [
+              0.5070170000000002,
+              0.491111
+            ],
+            "legalActionsHash": "db0c8fdaae93414931b6dfde7cd2e584b28d35ad5dde8522cf308e28441d48da",
+            "legalActionCount": 2,
+            "priors": "uniform",
+            "valueGap": 0.015906000000000142
+          },
+          "packetChanged": true,
+          "decisionChanged": true,
+          "rankingChanged": false,
+          "selectionChanged": false,
+          "legalActionSetPreserved": true,
+          "priorsUnchanged": true
+        }
+      ],
+      "contextDigest": "sha256:70ac5ca24560a222a43870707715938d32466c176da5be34be95ce62db5b83e1",
+      "packetChanged": true,
+      "decisionChanged": true,
+      "rankingChanged": false,
+      "selectionChanged": false,
+      "legalActionSetPreserved": true,
+      "priorsUnchanged": true,
+      "selectionCause": "NONE",
+      "selectionCausallyAttributed": true
+    },
+    {
+      "fixtureId": "near-tie-flip",
+      "experimentClass": "near-tie",
+      "baseline": {
+        "recommendationHash": "00d892ac21707fdd5a4c5e0f9259d5fc5b844126bbf3891a22742a518e1ad2c0",
+        "selectedActionKey": "[\"stage2h1/shift\",\"controller\",{\"id\":\"node-shift\",\"kind\":\"node\"},{\"mode\":\"shift\"}]",
+        "rankingKeys": [
+          "[\"stage2h1/shift\",\"controller\",{\"id\":\"node-shift\",\"kind\":\"node\"},{\"mode\":\"shift\"}]",
+          "[\"stage2h1/hold\",\"controller\",{\"id\":\"node-hold\",\"kind\":\"node\"},{\"mode\":\"hold\"}]"
+        ],
+        "visits": [
+          32,
+          32
+        ],
+        "meanValues": [
+          0.5039999999999997,
+          0.5
+        ],
+        "legalActionsHash": "db0c8fdaae93414931b6dfde7cd2e584b28d35ad5dde8522cf308e28441d48da",
+        "legalActionCount": 2,
+        "priors": "uniform",
+        "valueGap": 0.0039999999999996705
+      },
+      "arms": [
+        {
+          "arm": "prime+oracle",
+          "contextDigest": "sha256:cd529065db72f90ad26243bbe0894c73653aea40491dfd42ae37d53e97ccbc8e",
+          "globalAdjustmentMicro": -16983,
+          "scoredActionCount": 2,
+          "actionAdjustments": {
+            "[\"stage2h1/hold\",\"controller\",{\"id\":\"node-hold\",\"kind\":\"node\"},{\"mode\":\"hold\"}]": {
+              "oracle": 11111,
+              "nexus": 0,
+              "combined": 11111,
+              "rationaleCodes": [
+                "NEXUS_ACTION_NO_GRAPH",
+                "ORACLE_ACTION_ADDRESSES_DECLINE",
+                "ORACLE_ACTION_VOLATILITY_RISK"
+              ]
+            },
+            "[\"stage2h1/shift\",\"controller\",{\"id\":\"node-shift\",\"kind\":\"node\"},{\"mode\":\"shift\"}]": {
+              "oracle": -16983,
+              "nexus": 0,
+              "combined": -16983,
+              "rationaleCodes": [
+                "NEXUS_ACTION_NO_GRAPH",
+                "ORACLE_ACTION_TREND_REVERSED",
+                "ORACLE_ACTION_VOLATILITY_RISK"
+              ]
+            }
+          },
+          "result": {
+            "recommendationHash": "3383923447ec763c0b194c92d945830464699b3389ad8c3e00426ec7b2620027",
+            "selectedActionKey": "[\"stage2h1/hold\",\"controller\",{\"id\":\"node-hold\",\"kind\":\"node\"},{\"mode\":\"hold\"}]",
+            "rankingKeys": [
+              "[\"stage2h1/hold\",\"controller\",{\"id\":\"node-hold\",\"kind\":\"node\"},{\"mode\":\"hold\"}]",
+              "[\"stage2h1/shift\",\"controller\",{\"id\":\"node-shift\",\"kind\":\"node\"},{\"mode\":\"shift\"}]"
+            ],
+            "visits": [
+              34,
+              30
+            ],
+            "meanValues": [
+              0.5111109999999998,
+              0.48701699999999987
+            ],
+            "legalActionsHash": "db0c8fdaae93414931b6dfde7cd2e584b28d35ad5dde8522cf308e28441d48da",
+            "legalActionCount": 2,
+            "priors": "uniform",
+            "valueGap": 0.024093999999999893
+          },
+          "packetChanged": true,
+          "decisionChanged": true,
+          "rankingChanged": true,
+          "selectionChanged": true,
+          "legalActionSetPreserved": true,
+          "priorsUnchanged": true
+        },
+        {
+          "arm": "prime+nexus",
+          "contextDigest": "sha256:594d0cc3884febf5b9302c7adc5faf879442508454d924a5ab15ed348ae940e0",
+          "globalAdjustmentMicro": -8000,
+          "scoredActionCount": 2,
+          "actionAdjustments": {
+            "[\"stage2h1/hold\",\"controller\",{\"id\":\"node-hold\",\"kind\":\"node\"},{\"mode\":\"hold\"}]": {
+              "oracle": 0,
+              "nexus": 20000,
+              "combined": 20000,
+              "rationaleCodes": [
+                "NEXUS_ACTION_BOTTLENECK",
+                "NEXUS_ACTION_CRITICAL_DEPENDENCY",
+                "NEXUS_ACTION_UNSUPPORTED_THREAT",
+                "ORACLE_ACTION_TREND_FLAT"
+              ]
+            },
+            "[\"stage2h1/shift\",\"controller\",{\"id\":\"node-shift\",\"kind\":\"node\"},{\"mode\":\"shift\"}]": {
+              "oracle": 0,
+              "nexus": -20000,
+              "combined": -20000,
+              "rationaleCodes": [
+                "NEXUS_ACTION_ISOLATED",
+                "ORACLE_ACTION_TREND_FLAT"
+              ]
+            }
+          },
+          "result": {
+            "recommendationHash": "2aa8d5e5388cbe9af96bff72e2cf58047e2852c0b691520d75fece4e83c05826",
+            "selectedActionKey": "[\"stage2h1/hold\",\"controller\",{\"id\":\"node-hold\",\"kind\":\"node\"},{\"mode\":\"hold\"}]",
+            "rankingKeys": [
+              "[\"stage2h1/hold\",\"controller\",{\"id\":\"node-hold\",\"kind\":\"node\"},{\"mode\":\"hold\"}]",
+              "[\"stage2h1/shift\",\"controller\",{\"id\":\"node-shift\",\"kind\":\"node\"},{\"mode\":\"shift\"}]"
+            ],
+            "visits": [
+              35,
+              29
+            ],
+            "meanValues": [
+              0.5199999999999997,
+              0.484
+            ],
+            "legalActionsHash": "db0c8fdaae93414931b6dfde7cd2e584b28d35ad5dde8522cf308e28441d48da",
+            "legalActionCount": 2,
+            "priors": "uniform",
+            "valueGap": 0.0359999999999997
+          },
+          "packetChanged": true,
+          "decisionChanged": true,
+          "rankingChanged": true,
+          "selectionChanged": true,
+          "legalActionSetPreserved": true,
+          "priorsUnchanged": true
+        },
+        {
+          "arm": "prime+oracle+nexus",
+          "contextDigest": "sha256:8886f7b947864123de6929851a95b0af43102471a8dbc98008bda3a078ec92a7",
+          "globalAdjustmentMicro": -24983,
+          "scoredActionCount": 2,
+          "actionAdjustments": {
+            "[\"stage2h1/hold\",\"controller\",{\"id\":\"node-hold\",\"kind\":\"node\"},{\"mode\":\"hold\"}]": {
+              "oracle": 11111,
+              "nexus": 20000,
+              "combined": 30000,
+              "rationaleCodes": [
+                "NEXUS_ACTION_BOTTLENECK",
+                "NEXUS_ACTION_CRITICAL_DEPENDENCY",
+                "NEXUS_ACTION_UNSUPPORTED_THREAT",
+                "ORACLE_ACTION_ADDRESSES_DECLINE",
+                "ORACLE_ACTION_VOLATILITY_RISK"
+              ]
+            },
+            "[\"stage2h1/shift\",\"controller\",{\"id\":\"node-shift\",\"kind\":\"node\"},{\"mode\":\"shift\"}]": {
+              "oracle": -16983,
+              "nexus": -20000,
+              "combined": -30000,
+              "rationaleCodes": [
+                "NEXUS_ACTION_ISOLATED",
+                "ORACLE_ACTION_TREND_REVERSED",
+                "ORACLE_ACTION_VOLATILITY_RISK"
+              ]
+            }
+          },
+          "result": {
+            "recommendationHash": "1821928c81a19a13af15ca5935f064bd80c7aa07599f284f09ab80f54b271f26",
+            "selectedActionKey": "[\"stage2h1/hold\",\"controller\",{\"id\":\"node-hold\",\"kind\":\"node\"},{\"mode\":\"hold\"}]",
+            "rankingKeys": [
+              "[\"stage2h1/hold\",\"controller\",{\"id\":\"node-hold\",\"kind\":\"node\"},{\"mode\":\"hold\"}]",
+              "[\"stage2h1/shift\",\"controller\",{\"id\":\"node-shift\",\"kind\":\"node\"},{\"mode\":\"shift\"}]"
+            ],
+            "visits": [
+              37,
+              27
+            ],
+            "meanValues": [
+              0.53,
+              0.47400000000000014
+            ],
+            "legalActionsHash": "db0c8fdaae93414931b6dfde7cd2e584b28d35ad5dde8522cf308e28441d48da",
+            "legalActionCount": 2,
+            "priors": "uniform",
+            "valueGap": 0.05599999999999988
+          },
+          "packetChanged": true,
+          "decisionChanged": true,
+          "rankingChanged": true,
+          "selectionChanged": true,
+          "legalActionSetPreserved": true,
+          "priorsUnchanged": true
+        }
+      ],
+      "contextDigest": "sha256:8886f7b947864123de6929851a95b0af43102471a8dbc98008bda3a078ec92a7",
+      "packetChanged": true,
+      "decisionChanged": true,
+      "rankingChanged": true,
+      "selectionChanged": true,
+      "legalActionSetPreserved": true,
+      "priorsUnchanged": true,
+      "selectionCause": "EITHER_SUFFICIENT",
+      "selectionCausallyAttributed": true
+    },
+    {
+      "fixtureId": "strong-preference",
+      "experimentClass": "strong-preference",
+      "baseline": {
+        "recommendationHash": "55dab4cd316c85c411ee417f0ab41b2e693624703d86db642242221ce380f5ba",
+        "selectedActionKey": "[\"stage2h1/shift\",\"controller\",{\"id\":\"node-shift\",\"kind\":\"node\"},{\"mode\":\"shift\"}]",
+        "rankingKeys": [
+          "[\"stage2h1/shift\",\"controller\",{\"id\":\"node-shift\",\"kind\":\"node\"},{\"mode\":\"shift\"}]",
+          "[\"stage2h1/hold\",\"controller\",{\"id\":\"node-hold\",\"kind\":\"node\"},{\"mode\":\"hold\"}]"
+        ],
+        "visits": [
+          55,
+          9
+        ],
+        "meanValues": [
+          1,
+          0.5
+        ],
+        "legalActionsHash": "db0c8fdaae93414931b6dfde7cd2e584b28d35ad5dde8522cf308e28441d48da",
+        "legalActionCount": 2,
+        "priors": "uniform",
+        "valueGap": 0.5
+      },
+      "arms": [
+        {
+          "arm": "prime+oracle",
+          "contextDigest": "sha256:1e0dbe3183b28236c5d996246710d4bdaa438e6f8b08f40aadc894accc737a6e",
+          "globalAdjustmentMicro": -16983,
+          "scoredActionCount": 2,
+          "actionAdjustments": {
+            "[\"stage2h1/hold\",\"controller\",{\"id\":\"node-hold\",\"kind\":\"node\"},{\"mode\":\"hold\"}]": {
+              "oracle": 11111,
+              "nexus": 0,
+              "combined": 11111,
+              "rationaleCodes": [
+                "NEXUS_ACTION_NO_GRAPH",
+                "ORACLE_ACTION_ADDRESSES_DECLINE",
+                "ORACLE_ACTION_VOLATILITY_RISK"
+              ]
+            },
+            "[\"stage2h1/shift\",\"controller\",{\"id\":\"node-shift\",\"kind\":\"node\"},{\"mode\":\"shift\"}]": {
+              "oracle": -16983,
+              "nexus": 0,
+              "combined": -16983,
+              "rationaleCodes": [
+                "NEXUS_ACTION_NO_GRAPH",
+                "ORACLE_ACTION_TREND_REVERSED",
+                "ORACLE_ACTION_VOLATILITY_RISK"
+              ]
+            }
+          },
+          "result": {
+            "recommendationHash": "b8ad0a9c98ea71c14413569b6211bd9fbf9052432d43a2608f3d0b6adf0ef21e",
+            "selectedActionKey": "[\"stage2h1/shift\",\"controller\",{\"id\":\"node-shift\",\"kind\":\"node\"},{\"mode\":\"shift\"}]",
+            "rankingKeys": [
+              "[\"stage2h1/shift\",\"controller\",{\"id\":\"node-shift\",\"kind\":\"node\"},{\"mode\":\"shift\"}]",
+              "[\"stage2h1/hold\",\"controller\",{\"id\":\"node-hold\",\"kind\":\"node\"},{\"mode\":\"hold\"}]"
+            ],
+            "visits": [
+              55,
+              9
+            ],
+            "meanValues": [
+              0.9830169999999988,
+              0.511111
+            ],
+            "legalActionsHash": "db0c8fdaae93414931b6dfde7cd2e584b28d35ad5dde8522cf308e28441d48da",
+            "legalActionCount": 2,
+            "priors": "uniform",
+            "valueGap": 0.4719059999999988
+          },
+          "packetChanged": true,
+          "decisionChanged": true,
+          "rankingChanged": false,
+          "selectionChanged": false,
+          "legalActionSetPreserved": true,
+          "priorsUnchanged": true
+        },
+        {
+          "arm": "prime+nexus",
+          "contextDigest": "sha256:f3d6c37dff9dba263763cbb8c94c9bd5f28f135e5433ee753141fa34bf78bee2",
+          "globalAdjustmentMicro": -8000,
+          "scoredActionCount": 2,
+          "actionAdjustments": {
+            "[\"stage2h1/hold\",\"controller\",{\"id\":\"node-hold\",\"kind\":\"node\"},{\"mode\":\"hold\"}]": {
+              "oracle": 0,
+              "nexus": 20000,
+              "combined": 20000,
+              "rationaleCodes": [
+                "NEXUS_ACTION_BOTTLENECK",
+                "NEXUS_ACTION_CRITICAL_DEPENDENCY",
+                "NEXUS_ACTION_UNSUPPORTED_THREAT",
+                "ORACLE_ACTION_TREND_FLAT"
+              ]
+            },
+            "[\"stage2h1/shift\",\"controller\",{\"id\":\"node-shift\",\"kind\":\"node\"},{\"mode\":\"shift\"}]": {
+              "oracle": 0,
+              "nexus": -20000,
+              "combined": -20000,
+              "rationaleCodes": [
+                "NEXUS_ACTION_ISOLATED",
+                "ORACLE_ACTION_TREND_FLAT"
+              ]
+            }
+          },
+          "result": {
+            "recommendationHash": "f5f1fd761b07b55e7801462ceb15636793fa21e895dd8750cad063e6d1372a55",
+            "selectedActionKey": "[\"stage2h1/shift\",\"controller\",{\"id\":\"node-shift\",\"kind\":\"node\"},{\"mode\":\"shift\"}]",
+            "rankingKeys": [
+              "[\"stage2h1/shift\",\"controller\",{\"id\":\"node-shift\",\"kind\":\"node\"},{\"mode\":\"shift\"}]",
+              "[\"stage2h1/hold\",\"controller\",{\"id\":\"node-hold\",\"kind\":\"node\"},{\"mode\":\"hold\"}]"
+            ],
+            "visits": [
+              55,
+              9
+            ],
+            "meanValues": [
+              0.979999999999999,
+              0.52
+            ],
+            "legalActionsHash": "db0c8fdaae93414931b6dfde7cd2e584b28d35ad5dde8522cf308e28441d48da",
+            "legalActionCount": 2,
+            "priors": "uniform",
+            "valueGap": 0.45999999999999897
+          },
+          "packetChanged": true,
+          "decisionChanged": true,
+          "rankingChanged": false,
+          "selectionChanged": false,
+          "legalActionSetPreserved": true,
+          "priorsUnchanged": true
+        },
+        {
+          "arm": "prime+oracle+nexus",
+          "contextDigest": "sha256:51683fc06b4434324270169f285a205d97e6f7d0c239b55d181a9c9264de6266",
+          "globalAdjustmentMicro": -24983,
+          "scoredActionCount": 2,
+          "actionAdjustments": {
+            "[\"stage2h1/hold\",\"controller\",{\"id\":\"node-hold\",\"kind\":\"node\"},{\"mode\":\"hold\"}]": {
+              "oracle": 11111,
+              "nexus": 20000,
+              "combined": 30000,
+              "rationaleCodes": [
+                "NEXUS_ACTION_BOTTLENECK",
+                "NEXUS_ACTION_CRITICAL_DEPENDENCY",
+                "NEXUS_ACTION_UNSUPPORTED_THREAT",
+                "ORACLE_ACTION_ADDRESSES_DECLINE",
+                "ORACLE_ACTION_VOLATILITY_RISK"
+              ]
+            },
+            "[\"stage2h1/shift\",\"controller\",{\"id\":\"node-shift\",\"kind\":\"node\"},{\"mode\":\"shift\"}]": {
+              "oracle": -16983,
+              "nexus": -20000,
+              "combined": -30000,
+              "rationaleCodes": [
+                "NEXUS_ACTION_ISOLATED",
+                "ORACLE_ACTION_TREND_REVERSED",
+                "ORACLE_ACTION_VOLATILITY_RISK"
+              ]
+            }
+          },
+          "result": {
+            "recommendationHash": "4bd2b72197ce194b2d13e5c3ff44dcbf74ce933af67f5f0ca87d0eb83a378ce1",
+            "selectedActionKey": "[\"stage2h1/shift\",\"controller\",{\"id\":\"node-shift\",\"kind\":\"node\"},{\"mode\":\"shift\"}]",
+            "rankingKeys": [
+              "[\"stage2h1/shift\",\"controller\",{\"id\":\"node-shift\",\"kind\":\"node\"},{\"mode\":\"shift\"}]",
+              "[\"stage2h1/hold\",\"controller\",{\"id\":\"node-hold\",\"kind\":\"node\"},{\"mode\":\"hold\"}]"
+            ],
+            "visits": [
+              54,
+              10
+            ],
+            "meanValues": [
+              0.9699999999999993,
+              0.5300000000000001
+            ],
+            "legalActionsHash": "db0c8fdaae93414931b6dfde7cd2e584b28d35ad5dde8522cf308e28441d48da",
+            "legalActionCount": 2,
+            "priors": "uniform",
+            "valueGap": 0.43999999999999917
+          },
+          "packetChanged": true,
+          "decisionChanged": true,
+          "rankingChanged": false,
+          "selectionChanged": false,
+          "legalActionSetPreserved": true,
+          "priorsUnchanged": true
+        }
+      ],
+      "contextDigest": "sha256:51683fc06b4434324270169f285a205d97e6f7d0c239b55d181a9c9264de6266",
+      "packetChanged": true,
+      "decisionChanged": true,
+      "rankingChanged": false,
+      "selectionChanged": false,
+      "legalActionSetPreserved": true,
+      "priorsUnchanged": true,
+      "selectionCause": "NONE",
+      "selectionCausallyAttributed": true
+    },
+    {
+      "fixtureId": "oracle-reversal",
+      "experimentClass": "oracle-reversal",
+      "baseline": {
+        "recommendationHash": "8203a596f4b101ededd94c343e8b11ad1f03812fcfa49691dc326504ca265e65",
+        "selectedActionKey": "[\"stage2h1/shift\",\"controller\",{\"id\":\"node-shift\",\"kind\":\"node\"},{\"mode\":\"shift\"}]",
+        "rankingKeys": [
+          "[\"stage2h1/shift\",\"controller\",{\"id\":\"node-shift\",\"kind\":\"node\"},{\"mode\":\"shift\"}]",
+          "[\"stage2h1/hold\",\"controller\",{\"id\":\"node-hold\",\"kind\":\"node\"},{\"mode\":\"hold\"}]"
+        ],
+        "visits": [
+          16,
+          16
+        ],
+        "meanValues": [
+          0.5039999999999998,
+          0.5
+        ],
+        "legalActionsHash": "db0c8fdaae93414931b6dfde7cd2e584b28d35ad5dde8522cf308e28441d48da",
+        "legalActionCount": 2,
+        "priors": "uniform",
+        "valueGap": 0.0039999999999997815
+      },
+      "arms": [
+        {
+          "arm": "prime+oracle",
+          "contextDigest": "sha256:2cc1b31a04c347fba54e6256c5a2e492d0f8430b0e76da75fe5365bd832d786d",
+          "globalAdjustmentMicro": 1111,
+          "scoredActionCount": 2,
+          "actionAdjustments": {
+            "[\"stage2h1/hold\",\"controller\",{\"id\":\"node-hold\",\"kind\":\"node\"},{\"mode\":\"hold\"}]": {
+              "oracle": -8889,
+              "nexus": 0,
+              "combined": -8889,
+              "rationaleCodes": [
+                "NEXUS_ACTION_NO_GRAPH",
+                "ORACLE_ACTION_TREND_REVERSED",
+                "ORACLE_ACTION_VOLATILITY_RISK"
+              ]
+            },
+            "[\"stage2h1/shift\",\"controller\",{\"id\":\"node-shift\",\"kind\":\"node\"},{\"mode\":\"shift\"}]": {
+              "oracle": 0,
+              "nexus": 0,
+              "combined": 0,
+              "rationaleCodes": [
+                "NEXUS_ACTION_NO_GRAPH",
+                "ORACLE_ACTION_TREND_FLAT"
+              ]
+            }
+          },
+          "result": {
+            "recommendationHash": "afd6783446715b8acd743342552403925c00aaf6f1c2dcce0a96ce263e1747a1",
+            "selectedActionKey": "[\"stage2h1/shift\",\"controller\",{\"id\":\"node-shift\",\"kind\":\"node\"},{\"mode\":\"shift\"}]",
+            "rankingKeys": [
+              "[\"stage2h1/shift\",\"controller\",{\"id\":\"node-shift\",\"kind\":\"node\"},{\"mode\":\"shift\"}]",
+              "[\"stage2h1/hold\",\"controller\",{\"id\":\"node-hold\",\"kind\":\"node\"},{\"mode\":\"hold\"}]"
+            ],
+            "visits": [
+              16,
+              16
+            ],
+            "meanValues": [
+              0.5039999999999998,
+              0.491111
+            ],
+            "legalActionsHash": "db0c8fdaae93414931b6dfde7cd2e584b28d35ad5dde8522cf308e28441d48da",
+            "legalActionCount": 2,
+            "priors": "uniform",
+            "valueGap": 0.012888999999999762
+          },
+          "packetChanged": true,
+          "decisionChanged": true,
+          "rankingChanged": false,
+          "selectionChanged": false,
+          "legalActionSetPreserved": true,
+          "priorsUnchanged": true
+        },
+        {
+          "arm": "prime+nexus",
+          "contextDigest": "sha256:865a055826b4debaf1ea5332e57bfb46f2ff6dd322a870cd0405e0e4173f654b",
+          "globalAdjustmentMicro": 0,
+          "scoredActionCount": 2,
+          "actionAdjustments": {
+            "[\"stage2h1/hold\",\"controller\",{\"id\":\"node-hold\",\"kind\":\"node\"},{\"mode\":\"hold\"}]": {
+              "oracle": 0,
+              "nexus": 0,
+              "combined": 0,
+              "rationaleCodes": [
+                "NEXUS_ACTION_NO_GRAPH",
+                "ORACLE_ACTION_TREND_FLAT"
+              ]
+            },
+            "[\"stage2h1/shift\",\"controller\",{\"id\":\"node-shift\",\"kind\":\"node\"},{\"mode\":\"shift\"}]": {
+              "oracle": 0,
+              "nexus": 0,
+              "combined": 0,
+              "rationaleCodes": [
+                "NEXUS_ACTION_NO_GRAPH",
+                "ORACLE_ACTION_TREND_FLAT"
+              ]
+            }
+          },
+          "result": {
+            "recommendationHash": "3d6bc657e7634ce075a7c86dd6909966ff77c12e65dc8b7cb4b04565453280ca",
+            "selectedActionKey": "[\"stage2h1/shift\",\"controller\",{\"id\":\"node-shift\",\"kind\":\"node\"},{\"mode\":\"shift\"}]",
+            "rankingKeys": [
+              "[\"stage2h1/shift\",\"controller\",{\"id\":\"node-shift\",\"kind\":\"node\"},{\"mode\":\"shift\"}]",
+              "[\"stage2h1/hold\",\"controller\",{\"id\":\"node-hold\",\"kind\":\"node\"},{\"mode\":\"hold\"}]"
+            ],
+            "visits": [
+              16,
+              16
+            ],
+            "meanValues": [
+              0.5039999999999998,
+              0.5
+            ],
+            "legalActionsHash": "db0c8fdaae93414931b6dfde7cd2e584b28d35ad5dde8522cf308e28441d48da",
+            "legalActionCount": 2,
+            "priors": "uniform",
+            "valueGap": 0.0039999999999997815
+          },
+          "packetChanged": true,
+          "decisionChanged": false,
+          "rankingChanged": false,
+          "selectionChanged": false,
+          "legalActionSetPreserved": true,
+          "priorsUnchanged": true
+        },
+        {
+          "arm": "prime+oracle+nexus",
+          "contextDigest": "sha256:4711ec478f5435842bdcb3e36ffd41923c8acb406fe55a6cde83faf54b5477bd",
+          "globalAdjustmentMicro": 1111,
+          "scoredActionCount": 2,
+          "actionAdjustments": {
+            "[\"stage2h1/hold\",\"controller\",{\"id\":\"node-hold\",\"kind\":\"node\"},{\"mode\":\"hold\"}]": {
+              "oracle": -8889,
+              "nexus": 0,
+              "combined": -8889,
+              "rationaleCodes": [
+                "NEXUS_ACTION_NO_GRAPH",
+                "ORACLE_ACTION_TREND_REVERSED",
+                "ORACLE_ACTION_VOLATILITY_RISK"
+              ]
+            },
+            "[\"stage2h1/shift\",\"controller\",{\"id\":\"node-shift\",\"kind\":\"node\"},{\"mode\":\"shift\"}]": {
+              "oracle": 0,
+              "nexus": 0,
+              "combined": 0,
+              "rationaleCodes": [
+                "NEXUS_ACTION_NO_GRAPH",
+                "ORACLE_ACTION_TREND_FLAT"
+              ]
+            }
+          },
+          "result": {
+            "recommendationHash": "d19f8ee2891981237bdf2a44c11aa89e069efa80e0a40286eff4fba3cd75b505",
+            "selectedActionKey": "[\"stage2h1/shift\",\"controller\",{\"id\":\"node-shift\",\"kind\":\"node\"},{\"mode\":\"shift\"}]",
+            "rankingKeys": [
+              "[\"stage2h1/shift\",\"controller\",{\"id\":\"node-shift\",\"kind\":\"node\"},{\"mode\":\"shift\"}]",
+              "[\"stage2h1/hold\",\"controller\",{\"id\":\"node-hold\",\"kind\":\"node\"},{\"mode\":\"hold\"}]"
+            ],
+            "visits": [
+              16,
+              16
+            ],
+            "meanValues": [
+              0.5039999999999998,
+              0.491111
+            ],
+            "legalActionsHash": "db0c8fdaae93414931b6dfde7cd2e584b28d35ad5dde8522cf308e28441d48da",
+            "legalActionCount": 2,
+            "priors": "uniform",
+            "valueGap": 0.012888999999999762
+          },
+          "packetChanged": true,
+          "decisionChanged": true,
+          "rankingChanged": false,
+          "selectionChanged": false,
+          "legalActionSetPreserved": true,
+          "priorsUnchanged": true
+        }
+      ],
+      "contextDigest": "sha256:4711ec478f5435842bdcb3e36ffd41923c8acb406fe55a6cde83faf54b5477bd",
+      "packetChanged": true,
+      "decisionChanged": true,
+      "rankingChanged": false,
+      "selectionChanged": false,
+      "legalActionSetPreserved": true,
+      "priorsUnchanged": true,
+      "selectionCause": "NONE",
+      "selectionCausallyAttributed": true
+    },
+    {
+      "fixtureId": "oracle-insufficient-history",
+      "experimentClass": "insufficient-history",
+      "baseline": {
+        "recommendationHash": "8203a596f4b101ededd94c343e8b11ad1f03812fcfa49691dc326504ca265e65",
+        "selectedActionKey": "[\"stage2h1/shift\",\"controller\",{\"id\":\"node-shift\",\"kind\":\"node\"},{\"mode\":\"shift\"}]",
+        "rankingKeys": [
+          "[\"stage2h1/shift\",\"controller\",{\"id\":\"node-shift\",\"kind\":\"node\"},{\"mode\":\"shift\"}]",
+          "[\"stage2h1/hold\",\"controller\",{\"id\":\"node-hold\",\"kind\":\"node\"},{\"mode\":\"hold\"}]"
+        ],
+        "visits": [
+          16,
+          16
+        ],
+        "meanValues": [
+          0.5039999999999998,
+          0.5
+        ],
+        "legalActionsHash": "db0c8fdaae93414931b6dfde7cd2e584b28d35ad5dde8522cf308e28441d48da",
+        "legalActionCount": 2,
+        "priors": "uniform",
+        "valueGap": 0.0039999999999997815
+      },
+      "arms": [
+        {
+          "arm": "prime+oracle",
+          "contextDigest": "sha256:38672b332703bdf8f6d779bde7d31383284b1905a91ec130f777be292174a600",
+          "globalAdjustmentMicro": 0,
+          "scoredActionCount": 2,
+          "actionAdjustments": {
+            "[\"stage2h1/hold\",\"controller\",{\"id\":\"node-hold\",\"kind\":\"node\"},{\"mode\":\"hold\"}]": {
+              "oracle": 0,
+              "nexus": 0,
+              "combined": 0,
+              "rationaleCodes": [
+                "NEXUS_ACTION_NO_GRAPH",
+                "ORACLE_ACTION_NO_HISTORY"
+              ]
+            },
+            "[\"stage2h1/shift\",\"controller\",{\"id\":\"node-shift\",\"kind\":\"node\"},{\"mode\":\"shift\"}]": {
+              "oracle": 0,
+              "nexus": 0,
+              "combined": 0,
+              "rationaleCodes": [
+                "NEXUS_ACTION_NO_GRAPH",
+                "ORACLE_ACTION_NO_HISTORY"
+              ]
+            }
+          },
+          "result": {
+            "recommendationHash": "19c4fdd17d368742fa665e6de2920934a78f2bf16e403e85fa5690ace113fee8",
+            "selectedActionKey": "[\"stage2h1/shift\",\"controller\",{\"id\":\"node-shift\",\"kind\":\"node\"},{\"mode\":\"shift\"}]",
+            "rankingKeys": [
+              "[\"stage2h1/shift\",\"controller\",{\"id\":\"node-shift\",\"kind\":\"node\"},{\"mode\":\"shift\"}]",
+              "[\"stage2h1/hold\",\"controller\",{\"id\":\"node-hold\",\"kind\":\"node\"},{\"mode\":\"hold\"}]"
+            ],
+            "visits": [
+              16,
+              16
+            ],
+            "meanValues": [
+              0.5039999999999998,
+              0.5
+            ],
+            "legalActionsHash": "db0c8fdaae93414931b6dfde7cd2e584b28d35ad5dde8522cf308e28441d48da",
+            "legalActionCount": 2,
+            "priors": "uniform",
+            "valueGap": 0.0039999999999997815
+          },
+          "packetChanged": true,
+          "decisionChanged": false,
+          "rankingChanged": false,
+          "selectionChanged": false,
+          "legalActionSetPreserved": true,
+          "priorsUnchanged": true
+        },
+        {
+          "arm": "prime+nexus",
+          "contextDigest": "sha256:274f2bc944e30a81ea2f432c6fb331fa83a020a3dd75b64dfaf734d6dbf74002",
+          "globalAdjustmentMicro": 0,
+          "scoredActionCount": 2,
+          "actionAdjustments": {
+            "[\"stage2h1/hold\",\"controller\",{\"id\":\"node-hold\",\"kind\":\"node\"},{\"mode\":\"hold\"}]": {
+              "oracle": 0,
+              "nexus": 0,
+              "combined": 0,
+              "rationaleCodes": [
+                "NEXUS_ACTION_NO_GRAPH",
+                "ORACLE_ACTION_TREND_FLAT"
+              ]
+            },
+            "[\"stage2h1/shift\",\"controller\",{\"id\":\"node-shift\",\"kind\":\"node\"},{\"mode\":\"shift\"}]": {
+              "oracle": 0,
+              "nexus": 0,
+              "combined": 0,
+              "rationaleCodes": [
+                "NEXUS_ACTION_NO_GRAPH",
+                "ORACLE_ACTION_TREND_FLAT"
+              ]
+            }
+          },
+          "result": {
+            "recommendationHash": "b583591ed7b5f60d451c1101b9524ae429d2c4a8d0e551e5d1898ebce3666be6",
+            "selectedActionKey": "[\"stage2h1/shift\",\"controller\",{\"id\":\"node-shift\",\"kind\":\"node\"},{\"mode\":\"shift\"}]",
+            "rankingKeys": [
+              "[\"stage2h1/shift\",\"controller\",{\"id\":\"node-shift\",\"kind\":\"node\"},{\"mode\":\"shift\"}]",
+              "[\"stage2h1/hold\",\"controller\",{\"id\":\"node-hold\",\"kind\":\"node\"},{\"mode\":\"hold\"}]"
+            ],
+            "visits": [
+              16,
+              16
+            ],
+            "meanValues": [
+              0.5039999999999998,
+              0.5
+            ],
+            "legalActionsHash": "db0c8fdaae93414931b6dfde7cd2e584b28d35ad5dde8522cf308e28441d48da",
+            "legalActionCount": 2,
+            "priors": "uniform",
+            "valueGap": 0.0039999999999997815
+          },
+          "packetChanged": true,
+          "decisionChanged": false,
+          "rankingChanged": false,
+          "selectionChanged": false,
+          "legalActionSetPreserved": true,
+          "priorsUnchanged": true
+        },
+        {
+          "arm": "prime+oracle+nexus",
+          "contextDigest": "sha256:b0c421b3188409bf6b9a6c7d5cad91a2e844d0d49e340c36dab11a1b6bf7d673",
+          "globalAdjustmentMicro": 0,
+          "scoredActionCount": 2,
+          "actionAdjustments": {
+            "[\"stage2h1/hold\",\"controller\",{\"id\":\"node-hold\",\"kind\":\"node\"},{\"mode\":\"hold\"}]": {
+              "oracle": 0,
+              "nexus": 0,
+              "combined": 0,
+              "rationaleCodes": [
+                "NEXUS_ACTION_NO_GRAPH",
+                "ORACLE_ACTION_NO_HISTORY"
+              ]
+            },
+            "[\"stage2h1/shift\",\"controller\",{\"id\":\"node-shift\",\"kind\":\"node\"},{\"mode\":\"shift\"}]": {
+              "oracle": 0,
+              "nexus": 0,
+              "combined": 0,
+              "rationaleCodes": [
+                "NEXUS_ACTION_NO_GRAPH",
+                "ORACLE_ACTION_NO_HISTORY"
+              ]
+            }
+          },
+          "result": {
+            "recommendationHash": "cbb04a542050b6beca83a2f0be167e401564028070b4a5f88759024b72450583",
+            "selectedActionKey": "[\"stage2h1/shift\",\"controller\",{\"id\":\"node-shift\",\"kind\":\"node\"},{\"mode\":\"shift\"}]",
+            "rankingKeys": [
+              "[\"stage2h1/shift\",\"controller\",{\"id\":\"node-shift\",\"kind\":\"node\"},{\"mode\":\"shift\"}]",
+              "[\"stage2h1/hold\",\"controller\",{\"id\":\"node-hold\",\"kind\":\"node\"},{\"mode\":\"hold\"}]"
+            ],
+            "visits": [
+              16,
+              16
+            ],
+            "meanValues": [
+              0.5039999999999998,
+              0.5
+            ],
+            "legalActionsHash": "db0c8fdaae93414931b6dfde7cd2e584b28d35ad5dde8522cf308e28441d48da",
+            "legalActionCount": 2,
+            "priors": "uniform",
+            "valueGap": 0.0039999999999997815
+          },
+          "packetChanged": true,
+          "decisionChanged": false,
+          "rankingChanged": false,
+          "selectionChanged": false,
+          "legalActionSetPreserved": true,
+          "priorsUnchanged": true
+        }
+      ],
+      "contextDigest": "sha256:b0c421b3188409bf6b9a6c7d5cad91a2e844d0d49e340c36dab11a1b6bf7d673",
+      "packetChanged": true,
+      "decisionChanged": false,
+      "rankingChanged": false,
+      "selectionChanged": false,
+      "legalActionSetPreserved": true,
+      "priorsUnchanged": true,
+      "selectionCause": "NONE",
+      "selectionCausallyAttributed": true
+    },
+    {
+      "fixtureId": "nexus-redundant-support",
+      "experimentClass": "nexus-redundancy",
+      "baseline": {
+        "recommendationHash": "8203a596f4b101ededd94c343e8b11ad1f03812fcfa49691dc326504ca265e65",
+        "selectedActionKey": "[\"stage2h1/shift\",\"controller\",{\"id\":\"node-shift\",\"kind\":\"node\"},{\"mode\":\"shift\"}]",
+        "rankingKeys": [
+          "[\"stage2h1/shift\",\"controller\",{\"id\":\"node-shift\",\"kind\":\"node\"},{\"mode\":\"shift\"}]",
+          "[\"stage2h1/hold\",\"controller\",{\"id\":\"node-hold\",\"kind\":\"node\"},{\"mode\":\"hold\"}]"
+        ],
+        "visits": [
+          16,
+          16
+        ],
+        "meanValues": [
+          0.5039999999999998,
+          0.5
+        ],
+        "legalActionsHash": "db0c8fdaae93414931b6dfde7cd2e584b28d35ad5dde8522cf308e28441d48da",
+        "legalActionCount": 2,
+        "priors": "uniform",
+        "valueGap": 0.0039999999999997815
+      },
+      "arms": [
+        {
+          "arm": "prime+oracle",
+          "contextDigest": "sha256:a5a187e6d5e94a44fcf4f84a045da9e3d50422ffaa4da0e9dc9665a48606def9",
+          "globalAdjustmentMicro": 0,
+          "scoredActionCount": 2,
+          "actionAdjustments": {
+            "[\"stage2h1/hold\",\"controller\",{\"id\":\"node-hold\",\"kind\":\"node\"},{\"mode\":\"hold\"}]": {
+              "oracle": 0,
+              "nexus": 0,
+              "combined": 0,
+              "rationaleCodes": [
+                "NEXUS_ACTION_NO_GRAPH",
+                "ORACLE_ACTION_TREND_FLAT"
+              ]
+            },
+            "[\"stage2h1/shift\",\"controller\",{\"id\":\"node-shift\",\"kind\":\"node\"},{\"mode\":\"shift\"}]": {
+              "oracle": 0,
+              "nexus": 0,
+              "combined": 0,
+              "rationaleCodes": [
+                "NEXUS_ACTION_NO_GRAPH",
+                "ORACLE_ACTION_TREND_FLAT"
+              ]
+            }
+          },
+          "result": {
+            "recommendationHash": "af531e94bc63b500e00073632d8a81cd199bbdd872f6550d358288bde503d942",
+            "selectedActionKey": "[\"stage2h1/shift\",\"controller\",{\"id\":\"node-shift\",\"kind\":\"node\"},{\"mode\":\"shift\"}]",
+            "rankingKeys": [
+              "[\"stage2h1/shift\",\"controller\",{\"id\":\"node-shift\",\"kind\":\"node\"},{\"mode\":\"shift\"}]",
+              "[\"stage2h1/hold\",\"controller\",{\"id\":\"node-hold\",\"kind\":\"node\"},{\"mode\":\"hold\"}]"
+            ],
+            "visits": [
+              16,
+              16
+            ],
+            "meanValues": [
+              0.5039999999999998,
+              0.5
+            ],
+            "legalActionsHash": "db0c8fdaae93414931b6dfde7cd2e584b28d35ad5dde8522cf308e28441d48da",
+            "legalActionCount": 2,
+            "priors": "uniform",
+            "valueGap": 0.0039999999999997815
+          },
+          "packetChanged": true,
+          "decisionChanged": false,
+          "rankingChanged": false,
+          "selectionChanged": false,
+          "legalActionSetPreserved": true,
+          "priorsUnchanged": true
+        },
+        {
+          "arm": "prime+nexus",
+          "contextDigest": "sha256:3137e2fce76c44abfe614dbb7271efafd2124e9383cf9322fcd6893d9ee03fc8",
+          "globalAdjustmentMicro": 14286,
+          "scoredActionCount": 2,
+          "actionAdjustments": {
+            "[\"stage2h1/hold\",\"controller\",{\"id\":\"node-hold\",\"kind\":\"node\"},{\"mode\":\"hold\"}]": {
+              "oracle": 0,
+              "nexus": 13333,
+              "combined": 13333,
+              "rationaleCodes": [
+                "NEXUS_ACTION_BOTTLENECK",
+                "NEXUS_ACTION_CRITICAL_DEPENDENCY",
+                "NEXUS_ACTION_REDUNDANT_SUPPORT",
+                "NEXUS_ACTION_SUPPORTED_THREAT",
+                "ORACLE_ACTION_TREND_FLAT"
+              ]
+            },
+            "[\"stage2h1/shift\",\"controller\",{\"id\":\"node-shift\",\"kind\":\"node\"},{\"mode\":\"shift\"}]": {
+              "oracle": 0,
+              "nexus": -20000,
+              "combined": -20000,
+              "rationaleCodes": [
+                "NEXUS_ACTION_ISOLATED",
+                "ORACLE_ACTION_TREND_FLAT"
+              ]
+            }
+          },
+          "result": {
+            "recommendationHash": "004d49ffc3da32de576935be5cc5483d75ca85b1e30c1d3c051ba469e20bc7c0",
+            "selectedActionKey": "[\"stage2h1/hold\",\"controller\",{\"id\":\"node-hold\",\"kind\":\"node\"},{\"mode\":\"hold\"}]",
+            "rankingKeys": [
+              "[\"stage2h1/hold\",\"controller\",{\"id\":\"node-hold\",\"kind\":\"node\"},{\"mode\":\"hold\"}]",
+              "[\"stage2h1/shift\",\"controller\",{\"id\":\"node-shift\",\"kind\":\"node\"},{\"mode\":\"shift\"}]"
+            ],
+            "visits": [
+              17,
+              15
+            ],
+            "meanValues": [
+              0.5133330000000002,
+              0.484
+            ],
+            "legalActionsHash": "db0c8fdaae93414931b6dfde7cd2e584b28d35ad5dde8522cf308e28441d48da",
+            "legalActionCount": 2,
+            "priors": "uniform",
+            "valueGap": 0.029333000000000164
+          },
+          "packetChanged": true,
+          "decisionChanged": true,
+          "rankingChanged": true,
+          "selectionChanged": true,
+          "legalActionSetPreserved": true,
+          "priorsUnchanged": true
+        },
+        {
+          "arm": "prime+oracle+nexus",
+          "contextDigest": "sha256:3956465001f64d08c60ddfdb3efb35c3078c3c97526f7df7ec212a8af2c43fce",
+          "globalAdjustmentMicro": 14286,
+          "scoredActionCount": 2,
+          "actionAdjustments": {
+            "[\"stage2h1/hold\",\"controller\",{\"id\":\"node-hold\",\"kind\":\"node\"},{\"mode\":\"hold\"}]": {
+              "oracle": 0,
+              "nexus": 13333,
+              "combined": 13333,
+              "rationaleCodes": [
+                "NEXUS_ACTION_BOTTLENECK",
+                "NEXUS_ACTION_CRITICAL_DEPENDENCY",
+                "NEXUS_ACTION_REDUNDANT_SUPPORT",
+                "NEXUS_ACTION_SUPPORTED_THREAT",
+                "ORACLE_ACTION_TREND_FLAT"
+              ]
+            },
+            "[\"stage2h1/shift\",\"controller\",{\"id\":\"node-shift\",\"kind\":\"node\"},{\"mode\":\"shift\"}]": {
+              "oracle": 0,
+              "nexus": -20000,
+              "combined": -20000,
+              "rationaleCodes": [
+                "NEXUS_ACTION_ISOLATED",
+                "ORACLE_ACTION_TREND_FLAT"
+              ]
+            }
+          },
+          "result": {
+            "recommendationHash": "5a0b5a762725e37c0fc3e75eb1baa8b5fc60767de69df180708b78f2780a04b2",
+            "selectedActionKey": "[\"stage2h1/hold\",\"controller\",{\"id\":\"node-hold\",\"kind\":\"node\"},{\"mode\":\"hold\"}]",
+            "rankingKeys": [
+              "[\"stage2h1/hold\",\"controller\",{\"id\":\"node-hold\",\"kind\":\"node\"},{\"mode\":\"hold\"}]",
+              "[\"stage2h1/shift\",\"controller\",{\"id\":\"node-shift\",\"kind\":\"node\"},{\"mode\":\"shift\"}]"
+            ],
+            "visits": [
+              17,
+              15
+            ],
+            "meanValues": [
+              0.5133330000000002,
+              0.484
+            ],
+            "legalActionsHash": "db0c8fdaae93414931b6dfde7cd2e584b28d35ad5dde8522cf308e28441d48da",
+            "legalActionCount": 2,
+            "priors": "uniform",
+            "valueGap": 0.029333000000000164
+          },
+          "packetChanged": true,
+          "decisionChanged": true,
+          "rankingChanged": true,
+          "selectionChanged": true,
+          "legalActionSetPreserved": true,
+          "priorsUnchanged": true
+        }
+      ],
+      "contextDigest": "sha256:3956465001f64d08c60ddfdb3efb35c3078c3c97526f7df7ec212a8af2c43fce",
+      "packetChanged": true,
+      "decisionChanged": true,
+      "rankingChanged": true,
+      "selectionChanged": true,
+      "legalActionSetPreserved": true,
+      "priorsUnchanged": true,
+      "selectionCause": "NEXUS",
+      "selectionCausallyAttributed": true
+    },
+    {
+      "fixtureId": "oracle-volatility-risk",
+      "experimentClass": "oracle-volatility",
+      "baseline": {
+        "recommendationHash": "8203a596f4b101ededd94c343e8b11ad1f03812fcfa49691dc326504ca265e65",
+        "selectedActionKey": "[\"stage2h1/shift\",\"controller\",{\"id\":\"node-shift\",\"kind\":\"node\"},{\"mode\":\"shift\"}]",
+        "rankingKeys": [
+          "[\"stage2h1/shift\",\"controller\",{\"id\":\"node-shift\",\"kind\":\"node\"},{\"mode\":\"shift\"}]",
+          "[\"stage2h1/hold\",\"controller\",{\"id\":\"node-hold\",\"kind\":\"node\"},{\"mode\":\"hold\"}]"
+        ],
+        "visits": [
+          16,
+          16
+        ],
+        "meanValues": [
+          0.5039999999999998,
+          0.5
+        ],
+        "legalActionsHash": "db0c8fdaae93414931b6dfde7cd2e584b28d35ad5dde8522cf308e28441d48da",
+        "legalActionCount": 2,
+        "priors": "uniform",
+        "valueGap": 0.0039999999999997815
+      },
+      "arms": [
+        {
+          "arm": "prime+oracle",
+          "contextDigest": "sha256:00a91db31cd75ce3e8e89958878c208706daa53841ad90ce85fdc7b29e5e4dc6",
+          "globalAdjustmentMicro": -16983,
+          "scoredActionCount": 2,
+          "actionAdjustments": {
+            "[\"stage2h1/hold\",\"controller\",{\"id\":\"node-hold\",\"kind\":\"node\"},{\"mode\":\"hold\"}]": {
+              "oracle": -16983,
+              "nexus": 0,
+              "combined": -16983,
+              "rationaleCodes": [
+                "NEXUS_ACTION_NO_GRAPH",
+                "ORACLE_ACTION_TREND_REVERSED",
+                "ORACLE_ACTION_VOLATILITY_RISK"
+              ]
+            },
+            "[\"stage2h1/shift\",\"controller\",{\"id\":\"node-shift\",\"kind\":\"node\"},{\"mode\":\"shift\"}]": {
+              "oracle": 11111,
+              "nexus": 0,
+              "combined": 11111,
+              "rationaleCodes": [
+                "NEXUS_ACTION_NO_GRAPH",
+                "ORACLE_ACTION_ADDRESSES_DECLINE",
+                "ORACLE_ACTION_VOLATILITY_RISK"
+              ]
+            }
+          },
+          "result": {
+            "recommendationHash": "4efef9a5f5ed03f6d12da12ca5e0cd623731a9776a2f67f58a7a228d93748e1a",
+            "selectedActionKey": "[\"stage2h1/shift\",\"controller\",{\"id\":\"node-shift\",\"kind\":\"node\"},{\"mode\":\"shift\"}]",
+            "rankingKeys": [
+              "[\"stage2h1/shift\",\"controller\",{\"id\":\"node-shift\",\"kind\":\"node\"},{\"mode\":\"shift\"}]",
+              "[\"stage2h1/hold\",\"controller\",{\"id\":\"node-hold\",\"kind\":\"node\"},{\"mode\":\"hold\"}]"
+            ],
+            "visits": [
+              17,
+              15
+            ],
+            "meanValues": [
+              0.515111,
+              0.4830170000000001
+            ],
+            "legalActionsHash": "db0c8fdaae93414931b6dfde7cd2e584b28d35ad5dde8522cf308e28441d48da",
+            "legalActionCount": 2,
+            "priors": "uniform",
+            "valueGap": 0.0320939999999999
+          },
+          "packetChanged": true,
+          "decisionChanged": true,
+          "rankingChanged": false,
+          "selectionChanged": false,
+          "legalActionSetPreserved": true,
+          "priorsUnchanged": true
+        },
+        {
+          "arm": "prime+nexus",
+          "contextDigest": "sha256:51c5f28c27181f9fdaca35a79dd65b70ffb7c6e98b1fae6f0a3820f82cf28763",
+          "globalAdjustmentMicro": 0,
+          "scoredActionCount": 2,
+          "actionAdjustments": {
+            "[\"stage2h1/hold\",\"controller\",{\"id\":\"node-hold\",\"kind\":\"node\"},{\"mode\":\"hold\"}]": {
+              "oracle": 0,
+              "nexus": 0,
+              "combined": 0,
+              "rationaleCodes": [
+                "NEXUS_ACTION_NO_GRAPH",
+                "ORACLE_ACTION_TREND_FLAT"
+              ]
+            },
+            "[\"stage2h1/shift\",\"controller\",{\"id\":\"node-shift\",\"kind\":\"node\"},{\"mode\":\"shift\"}]": {
+              "oracle": 0,
+              "nexus": 0,
+              "combined": 0,
+              "rationaleCodes": [
+                "NEXUS_ACTION_NO_GRAPH",
+                "ORACLE_ACTION_TREND_FLAT"
+              ]
+            }
+          },
+          "result": {
+            "recommendationHash": "d9f8a44a5345c9831507b5f38b80c3d407ab9003b8cf46e02177cb2a9061670c",
+            "selectedActionKey": "[\"stage2h1/shift\",\"controller\",{\"id\":\"node-shift\",\"kind\":\"node\"},{\"mode\":\"shift\"}]",
+            "rankingKeys": [
+              "[\"stage2h1/shift\",\"controller\",{\"id\":\"node-shift\",\"kind\":\"node\"},{\"mode\":\"shift\"}]",
+              "[\"stage2h1/hold\",\"controller\",{\"id\":\"node-hold\",\"kind\":\"node\"},{\"mode\":\"hold\"}]"
+            ],
+            "visits": [
+              16,
+              16
+            ],
+            "meanValues": [
+              0.5039999999999998,
+              0.5
+            ],
+            "legalActionsHash": "db0c8fdaae93414931b6dfde7cd2e584b28d35ad5dde8522cf308e28441d48da",
+            "legalActionCount": 2,
+            "priors": "uniform",
+            "valueGap": 0.0039999999999997815
+          },
+          "packetChanged": true,
+          "decisionChanged": false,
+          "rankingChanged": false,
+          "selectionChanged": false,
+          "legalActionSetPreserved": true,
+          "priorsUnchanged": true
+        },
+        {
+          "arm": "prime+oracle+nexus",
+          "contextDigest": "sha256:2e59e2a093a98f13457b1162098b8346bbebc1a6ed03c824c155fda95fc564a1",
+          "globalAdjustmentMicro": -16983,
+          "scoredActionCount": 2,
+          "actionAdjustments": {
+            "[\"stage2h1/hold\",\"controller\",{\"id\":\"node-hold\",\"kind\":\"node\"},{\"mode\":\"hold\"}]": {
+              "oracle": -16983,
+              "nexus": 0,
+              "combined": -16983,
+              "rationaleCodes": [
+                "NEXUS_ACTION_NO_GRAPH",
+                "ORACLE_ACTION_TREND_REVERSED",
+                "ORACLE_ACTION_VOLATILITY_RISK"
+              ]
+            },
+            "[\"stage2h1/shift\",\"controller\",{\"id\":\"node-shift\",\"kind\":\"node\"},{\"mode\":\"shift\"}]": {
+              "oracle": 11111,
+              "nexus": 0,
+              "combined": 11111,
+              "rationaleCodes": [
+                "NEXUS_ACTION_NO_GRAPH",
+                "ORACLE_ACTION_ADDRESSES_DECLINE",
+                "ORACLE_ACTION_VOLATILITY_RISK"
+              ]
+            }
+          },
+          "result": {
+            "recommendationHash": "9fc2ac15d5783d1df0a12c2853ce0f0dd6304cd20b0172f6069ab9fb5e176fc7",
+            "selectedActionKey": "[\"stage2h1/shift\",\"controller\",{\"id\":\"node-shift\",\"kind\":\"node\"},{\"mode\":\"shift\"}]",
+            "rankingKeys": [
+              "[\"stage2h1/shift\",\"controller\",{\"id\":\"node-shift\",\"kind\":\"node\"},{\"mode\":\"shift\"}]",
+              "[\"stage2h1/hold\",\"controller\",{\"id\":\"node-hold\",\"kind\":\"node\"},{\"mode\":\"hold\"}]"
+            ],
+            "visits": [
+              17,
+              15
+            ],
+            "meanValues": [
+              0.515111,
+              0.4830170000000001
+            ],
+            "legalActionsHash": "db0c8fdaae93414931b6dfde7cd2e584b28d35ad5dde8522cf308e28441d48da",
+            "legalActionCount": 2,
+            "priors": "uniform",
+            "valueGap": 0.0320939999999999
+          },
+          "packetChanged": true,
+          "decisionChanged": true,
+          "rankingChanged": false,
+          "selectionChanged": false,
+          "legalActionSetPreserved": true,
+          "priorsUnchanged": true
+        }
+      ],
+      "contextDigest": "sha256:2e59e2a093a98f13457b1162098b8346bbebc1a6ed03c824c155fda95fc564a1",
+      "packetChanged": true,
+      "decisionChanged": true,
+      "rankingChanged": false,
+      "selectionChanged": false,
+      "legalActionSetPreserved": true,
+      "priorsUnchanged": true,
+      "selectionCause": "NONE",
+      "selectionCausallyAttributed": true
+    },
+    {
+      "fixtureId": "unlinked-fallback",
+      "experimentClass": "unlinked-fallback",
+      "baseline": {
+        "recommendationHash": "628b72a9af99ee8ef3a0e2deaf886fbb9d2a77ffa8e81486f5c2b2313c02d0ab",
+        "selectedActionKey": "[\"reference.token-race/take@bonus\",\"player-1\",{\"id\":\"bonus-1\",\"kind\":\"shared-bonus\"},{\"amount\":3}]",
+        "rankingKeys": [
+          "[\"reference.token-race/take@bonus\",\"player-1\",{\"id\":\"bonus-1\",\"kind\":\"shared-bonus\"},{\"amount\":3}]",
+          "[\"reference.token-race/take@2\",\"player-1\",null,{\"amount\":2}]",
+          "[\"reference.token-race/take@1\",\"player-1\",null,{\"amount\":1}]"
+        ],
+        "visits": [
+          34,
+          18,
+          12
+        ],
+        "meanValues": [
+          0.3000000000000001,
+          0.20000000000000007,
+          0.09999999999999999
+        ],
+        "legalActionsHash": "0422b53e85e3cb3b27c9a008edf6477c3c8302cba8c623c734cd0aea7e1adb16",
+        "legalActionCount": 3,
+        "priors": "uniform",
+        "valueGap": 0.10000000000000003
+      },
+      "arms": [
+        {
+          "arm": "prime+oracle",
+          "contextDigest": "sha256:1d0f94ad88f14f45df79f4b661cf2073df2652daa86e27ff28c407c8b3cf6458",
+          "globalAdjustmentMicro": -16983,
+          "scoredActionCount": 0,
+          "actionAdjustments": {},
+          "result": {
+            "recommendationHash": "e58809dfa402fdf4b91eb585af2e2973ff92aff136fc7a8b6edde33d1e1cb240",
+            "selectedActionKey": "[\"reference.token-race/take@bonus\",\"player-1\",{\"id\":\"bonus-1\",\"kind\":\"shared-bonus\"},{\"amount\":3}]",
+            "rankingKeys": [
+              "[\"reference.token-race/take@bonus\",\"player-1\",{\"id\":\"bonus-1\",\"kind\":\"shared-bonus\"},{\"amount\":3}]",
+              "[\"reference.token-race/take@2\",\"player-1\",null,{\"amount\":2}]",
+              "[\"reference.token-race/take@1\",\"player-1\",null,{\"amount\":1}]"
+            ],
+            "visits": [
+              34,
+              18,
+              12
+            ],
+            "meanValues": [
+              0.2830169999999999,
+              0.183017,
+              0.08301700000000001
+            ],
+            "legalActionsHash": "0422b53e85e3cb3b27c9a008edf6477c3c8302cba8c623c734cd0aea7e1adb16",
+            "legalActionCount": 3,
+            "priors": "uniform",
+            "valueGap": 0.0999999999999999
+          },
+          "packetChanged": true,
+          "decisionChanged": true,
+          "rankingChanged": false,
+          "selectionChanged": false,
+          "legalActionSetPreserved": true,
+          "priorsUnchanged": true
+        },
+        {
+          "arm": "prime+nexus",
+          "contextDigest": "sha256:316ddc208e3782d8f5aaa5a7dedba9a748b93e4e4cfbddf18937bb57f1ebe20e",
+          "globalAdjustmentMicro": -8000,
+          "scoredActionCount": 0,
+          "actionAdjustments": {},
+          "result": {
+            "recommendationHash": "d40141a26ca0fcd4cb77750a529f7f140d1b8ad39ca06c8819dc190c9e82922d",
+            "selectedActionKey": "[\"reference.token-race/take@bonus\",\"player-1\",{\"id\":\"bonus-1\",\"kind\":\"shared-bonus\"},{\"amount\":3}]",
+            "rankingKeys": [
+              "[\"reference.token-race/take@bonus\",\"player-1\",{\"id\":\"bonus-1\",\"kind\":\"shared-bonus\"},{\"amount\":3}]",
+              "[\"reference.token-race/take@2\",\"player-1\",null,{\"amount\":2}]",
+              "[\"reference.token-race/take@1\",\"player-1\",null,{\"amount\":1}]"
+            ],
+            "visits": [
+              34,
+              18,
+              12
+            ],
+            "meanValues": [
+              0.29199999999999987,
+              0.19200000000000006,
+              0.09199999999999998
+            ],
+            "legalActionsHash": "0422b53e85e3cb3b27c9a008edf6477c3c8302cba8c623c734cd0aea7e1adb16",
+            "legalActionCount": 3,
+            "priors": "uniform",
+            "valueGap": 0.09999999999999981
+          },
+          "packetChanged": true,
+          "decisionChanged": true,
+          "rankingChanged": false,
+          "selectionChanged": false,
+          "legalActionSetPreserved": true,
+          "priorsUnchanged": true
+        },
+        {
+          "arm": "prime+oracle+nexus",
+          "contextDigest": "sha256:24e018cc58974458e3d286d80f3bb7c81f52af65b58bfc4e85c4b3bdb1863392",
+          "globalAdjustmentMicro": -24983,
+          "scoredActionCount": 0,
+          "actionAdjustments": {},
+          "result": {
+            "recommendationHash": "56f21ffd4749922b8e37a2316d40fa24dcd6918bae5605428eb3a421984e6b29",
+            "selectedActionKey": "[\"reference.token-race/take@bonus\",\"player-1\",{\"id\":\"bonus-1\",\"kind\":\"shared-bonus\"},{\"amount\":3}]",
+            "rankingKeys": [
+              "[\"reference.token-race/take@bonus\",\"player-1\",{\"id\":\"bonus-1\",\"kind\":\"shared-bonus\"},{\"amount\":3}]",
+              "[\"reference.token-race/take@2\",\"player-1\",null,{\"amount\":2}]",
+              "[\"reference.token-race/take@1\",\"player-1\",null,{\"amount\":1}]"
+            ],
+            "visits": [
+              34,
+              18,
+              12
+            ],
+            "meanValues": [
+              0.275017,
+              0.175017,
+              0.075017
+            ],
+            "legalActionsHash": "0422b53e85e3cb3b27c9a008edf6477c3c8302cba8c623c734cd0aea7e1adb16",
+            "legalActionCount": 3,
+            "priors": "uniform",
+            "valueGap": 0.1
+          },
+          "packetChanged": true,
+          "decisionChanged": true,
+          "rankingChanged": false,
+          "selectionChanged": false,
+          "legalActionSetPreserved": true,
+          "priorsUnchanged": true
+        }
+      ],
+      "contextDigest": "sha256:24e018cc58974458e3d286d80f3bb7c81f52af65b58bfc4e85c4b3bdb1863392",
+      "packetChanged": true,
+      "decisionChanged": true,
+      "rankingChanged": false,
+      "selectionChanged": false,
+      "legalActionSetPreserved": true,
+      "priorsUnchanged": true,
+      "selectionCause": "NONE",
+      "selectionCausallyAttributed": true
+    }
+  ],
+  "negativeGateCount": 17,
+  "negativeGatesPassed": true,
+  "negativeGates": [
+    {
+      "name": "nonexistent-action-id",
+      "rejected": true,
+      "code": "ACTION_CONTEXT_ILLEGAL_ACTION"
+    },
+    {
+      "name": "illegal-action-scored",
+      "rejected": true,
+      "code": "ACTION_CONTEXT_DIGEST_MISMATCH"
+    },
+    {
+      "name": "duplicate-legal-action-key",
+      "rejected": true,
+      "code": "ACTION_CONTEXT_DUPLICATE_ACTION"
+    },
+    {
+      "name": "reordered-legal-action-list",
+      "rejected": true,
+      "code": "ACTION_CONTEXT_DIGEST_MISMATCH"
+    },
+    {
+      "name": "missing-legal-action",
+      "rejected": true,
+      "code": "ACTION_CONTEXT_ILLEGAL_ACTION"
+    },
+    {
+      "name": "forged-action-adjustment",
+      "rejected": true,
+      "code": "ACTION_CONTEXT_TAMPERED"
+    },
+    {
+      "name": "action-adjustment-out-of-bound",
+      "rejected": true,
+      "code": "ACTION_CONTEXT_BOUND_EXCEEDED"
+    },
+    {
+      "name": "widened-bounds",
+      "rejected": true,
+      "code": "ACTION_CONTEXT_BOUND_ALTERED"
+    },
+    {
+      "name": "substituted-runtime-identity",
+      "rejected": true,
+      "code": "RUNTIME_ID_MISMATCH"
+    },
+    {
+      "name": "substituted-campaign-identity",
+      "rejected": true,
+      "code": "CAMPAIGN_ID_MISMATCH"
+    },
+    {
+      "name": "substituted-expert-output-digest",
+      "rejected": true,
+      "code": "EXPERT_DIGEST_MISMATCH"
+    },
+    {
+      "name": "forged-authority-dispatch",
+      "rejected": true,
+      "code": "AUTHORITY_MISMATCH"
+    },
+    {
+      "name": "forged-decision-ownership",
+      "rejected": true,
+      "code": "AUTHORITY_MISMATCH"
+    },
+    {
+      "name": "executable-callback",
+      "rejected": true,
+      "code": "EXPERT_EXECUTION_SURFACE"
+    },
+    {
+      "name": "unknown-action-context-schema",
+      "rejected": true,
+      "code": "UNKNOWN_SCHEMA"
+    },
+    {
+      "name": "legal-set-mismatch-against-live-actions",
+      "rejected": true,
+      "code": "ACTION_CONTEXT_LEGAL_SET_MISMATCH"
+    },
+    {
+      "name": "action-adjustment-detached-from-expert-evidence",
+      "rejected": true,
+      "code": "ACTION_CONTEXT_TAMPERED"
+    }
+  ],
+  "liveActionDispatches": 0,
+  "worldMutations": 0,
+  "authorityEscalations": 0,
+  "authorityTokenIssues": 0,
+  "expertDispatchPathExists": false,
+  "expertMutationPathExists": false,
+  "expertAuthorityTokenPathExists": false,
+  "incumbentScriptedExecutorPreserved": true,
+  "canDispatch": false,
+  "canMutateLiveWorld": false,
+  "stage2h1Certified": true,
+  "certificationHash": "4fb6639f14bf979cce0b55d459dbb2a0a22bb2cb2b430a1bd5309e3befbe506d"
+}

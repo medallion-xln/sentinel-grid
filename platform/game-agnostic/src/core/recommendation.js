@@ -19,6 +19,7 @@ export function buildRecommendationPacket({
   cPuct,
   engineId,
   authority,
+  expertContext = null,
 }) {
   assertEvaluationOnly(authority);
   validateActionDescriptor(selected);
@@ -69,6 +70,9 @@ export function buildRecommendationPacket({
       action: selected,
     },
     authority,
+    // Stage 2H: present only when advisory context was consumed, so a baseline
+    // packet keeps its exact pre-Stage-2H shape and hash.
+    ...(expertContext === null ? {} : { expertContext }),
     replay: {
       deterministic: true,
       requiresDetachedState: true,

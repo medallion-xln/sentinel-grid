@@ -1,0 +1,518 @@
+{
+  "searchSpace": [
+    {
+      "id": "NO_CHANGE_CONTROL",
+      "rule": "EXPERT_EVIDENCE_RECORDED_WITH_ZERO_COUNTERFACTUAL_EFFECT",
+      "maximumOracleEffect": 0,
+      "maximumNexusEffect": 0
+    },
+    {
+      "id": "TIE_BREAK_ONLY",
+      "rule": "BOUND_EXACT_SEMANTIC_EVIDENCE_TO_THE_MAPPED_ACTION_ONLY_WHEN_PRIME_MARGIN_LE_0_03",
+      "maximumOracleEffect": 0.030001,
+      "maximumNexusEffect": 0.030001
+    },
+    {
+      "id": "BOUNDED_Q_CONTEXT",
+      "rule": "ADD_BOUNDED_ACTION_SPECIFIC_EVIDENCE_STRENGTH_TO_THE_EXISTING_PRIME_Q_ONLY",
+      "maximumOracleEffect": 0.1,
+      "maximumNexusEffect": 0.1
+    },
+    {
+      "id": "EVIDENCE_ONLY_RERANK",
+      "rule": "RERANK_ONLY_ACTIONS_WITH_EXACT_SEMANTIC_BINDINGS_BY_PLACING_BOUND_EVIDENCE_ABOVE_THE_PRIME_RANGE",
+      "maximumOracleEffect": 0.250001,
+      "maximumNexusEffect": 0.250001
+    }
+  ],
+  "searchSpaceDigest": "b534076d2e100e032021914e8a398fce704a90e03c1cdb47e06aa26917664a67",
+  "developmentResults": [
+    {
+      "candidateId": "NO_CHANGE_CONTROL",
+      "metrics": {
+        "prime": {
+          "top1": 0.61,
+          "top2": 1,
+          "correctCases": 854,
+          "wrongCases": 546
+        },
+        "oracle": {
+          "cases": 1400,
+          "top1": 0.61,
+          "top2": 1,
+          "selectionChanges": 0,
+          "beneficialChanges": 0,
+          "harmfulChanges": 0,
+          "neutralChanges": 0,
+          "decisionDelta": 0,
+          "harmfulChangeRate": 0,
+          "breaksCorrectPrime": 0,
+          "repairsPrime": 0,
+          "repairRate": 0
+        },
+        "nexus": {
+          "cases": 1400,
+          "top1": 0.61,
+          "top2": 1,
+          "selectionChanges": 0,
+          "beneficialChanges": 0,
+          "harmfulChanges": 0,
+          "neutralChanges": 0,
+          "decisionDelta": 0,
+          "harmfulChangeRate": 0,
+          "breaksCorrectPrime": 0,
+          "repairsPrime": 0,
+          "repairRate": 0
+        },
+        "combined": {
+          "cases": 1400,
+          "top1": 0.61,
+          "top2": 1,
+          "selectionChanges": 0,
+          "beneficialChanges": 0,
+          "harmfulChanges": 0,
+          "neutralChanges": 0,
+          "decisionDelta": 0,
+          "harmfulChangeRate": 0,
+          "breaksCorrectPrime": 0,
+          "repairsPrime": 0,
+          "repairRate": 0
+        }
+      }
+    },
+    {
+      "candidateId": "TIE_BREAK_ONLY",
+      "metrics": {
+        "prime": {
+          "top1": 0.61,
+          "top2": 1,
+          "correctCases": 854,
+          "wrongCases": 546
+        },
+        "oracle": {
+          "cases": 1400,
+          "top1": 0.6528571428571428,
+          "top2": 1,
+          "selectionChanges": 60,
+          "beneficialChanges": 60,
+          "harmfulChanges": 0,
+          "neutralChanges": 0,
+          "decisionDelta": 0.04285714285714286,
+          "harmfulChangeRate": 0,
+          "breaksCorrectPrime": 0,
+          "repairsPrime": 60,
+          "repairRate": 0.10989010989010989
+        },
+        "nexus": {
+          "cases": 1400,
+          "top1": 0.685,
+          "top2": 1,
+          "selectionChanges": 105,
+          "beneficialChanges": 105,
+          "harmfulChanges": 0,
+          "neutralChanges": 0,
+          "decisionDelta": 0.075,
+          "harmfulChangeRate": 0,
+          "breaksCorrectPrime": 0,
+          "repairsPrime": 105,
+          "repairRate": 0.19230769230769232
+        },
+        "combined": {
+          "cases": 1400,
+          "top1": 0.7171428571428572,
+          "top2": 1,
+          "selectionChanges": 150,
+          "beneficialChanges": 150,
+          "harmfulChanges": 0,
+          "neutralChanges": 0,
+          "decisionDelta": 0.10714285714285714,
+          "harmfulChangeRate": 0,
+          "breaksCorrectPrime": 0,
+          "repairsPrime": 150,
+          "repairRate": 0.27472527472527475
+        }
+      }
+    },
+    {
+      "candidateId": "BOUNDED_Q_CONTEXT",
+      "metrics": {
+        "prime": {
+          "top1": 0.61,
+          "top2": 1,
+          "correctCases": 854,
+          "wrongCases": 546
+        },
+        "oracle": {
+          "cases": 1400,
+          "top1": 0.6871428571428572,
+          "top2": 1,
+          "selectionChanges": 130,
+          "beneficialChanges": 119,
+          "harmfulChanges": 11,
+          "neutralChanges": 0,
+          "decisionDelta": 0.07714285714285714,
+          "harmfulChangeRate": 0.007857142857142858,
+          "breaksCorrectPrime": 11,
+          "repairsPrime": 119,
+          "repairRate": 0.21794871794871795
+        },
+        "nexus": {
+          "cases": 1400,
+          "top1": 0.76,
+          "top2": 0.935,
+          "selectionChanges": 420,
+          "beneficialChanges": 280,
+          "harmfulChanges": 70,
+          "neutralChanges": 70,
+          "decisionDelta": 0.15,
+          "harmfulChangeRate": 0.05,
+          "breaksCorrectPrime": 70,
+          "repairsPrime": 280,
+          "repairRate": 0.5128205128205128
+        },
+        "combined": {
+          "cases": 1400,
+          "top1": 0.82,
+          "top2": 0.9607142857142857,
+          "selectionChanges": 480,
+          "beneficialChanges": 363,
+          "harmfulChanges": 69,
+          "neutralChanges": 48,
+          "decisionDelta": 0.21,
+          "harmfulChangeRate": 0.04928571428571429,
+          "breaksCorrectPrime": 69,
+          "repairsPrime": 363,
+          "repairRate": 0.6648351648351648
+        }
+      }
+    },
+    {
+      "candidateId": "EVIDENCE_ONLY_RERANK",
+      "metrics": {
+        "prime": {
+          "top1": 0.61,
+          "top2": 1,
+          "correctCases": 854,
+          "wrongCases": 546
+        },
+        "oracle": {
+          "cases": 1400,
+          "top1": 0.6885714285714286,
+          "top2": 1,
+          "selectionChanges": 200,
+          "beneficialChanges": 155,
+          "harmfulChanges": 45,
+          "neutralChanges": 0,
+          "decisionDelta": 0.07857142857142857,
+          "harmfulChangeRate": 0.03214285714285714,
+          "breaksCorrectPrime": 45,
+          "repairsPrime": 155,
+          "repairRate": 0.2838827838827839
+        },
+        "nexus": {
+          "cases": 1400,
+          "top1": 0.67,
+          "top2": 0.935,
+          "selectionChanges": 595,
+          "beneficialChanges": 294,
+          "harmfulChanges": 210,
+          "neutralChanges": 91,
+          "decisionDelta": 0.06,
+          "harmfulChangeRate": 0.15,
+          "breaksCorrectPrime": 210,
+          "repairsPrime": 294,
+          "repairRate": 0.5384615384615384
+        },
+        "combined": {
+          "cases": 1400,
+          "top1": 0.71,
+          "top2": 0.955,
+          "selectionChanges": 690,
+          "beneficialChanges": 376,
+          "harmfulChanges": 236,
+          "neutralChanges": 78,
+          "decisionDelta": 0.1,
+          "harmfulChangeRate": 0.16857142857142857,
+          "breaksCorrectPrime": 236,
+          "repairsPrime": 376,
+          "repairRate": 0.6886446886446886
+        }
+      }
+    }
+  ],
+  "validationResults": [
+    {
+      "candidateId": "TIE_BREAK_ONLY",
+      "metrics": {
+        "prime": {
+          "top1": 0.61,
+          "top2": 1,
+          "correctCases": 854,
+          "wrongCases": 546
+        },
+        "oracle": {
+          "cases": 1400,
+          "top1": 0.71,
+          "top2": 1,
+          "selectionChanges": 140,
+          "beneficialChanges": 140,
+          "harmfulChanges": 0,
+          "neutralChanges": 0,
+          "decisionDelta": 0.1,
+          "harmfulChangeRate": 0,
+          "breaksCorrectPrime": 0,
+          "repairsPrime": 140,
+          "repairRate": 0.2564102564102564
+        },
+        "nexus": {
+          "cases": 1400,
+          "top1": 0.685,
+          "top2": 1,
+          "selectionChanges": 105,
+          "beneficialChanges": 105,
+          "harmfulChanges": 0,
+          "neutralChanges": 0,
+          "decisionDelta": 0.075,
+          "harmfulChangeRate": 0,
+          "breaksCorrectPrime": 0,
+          "repairsPrime": 105,
+          "repairRate": 0.19230769230769232
+        },
+        "combined": {
+          "cases": 1400,
+          "top1": 0.76,
+          "top2": 1,
+          "selectionChanges": 210,
+          "beneficialChanges": 210,
+          "harmfulChanges": 0,
+          "neutralChanges": 0,
+          "decisionDelta": 0.15,
+          "harmfulChangeRate": 0,
+          "breaksCorrectPrime": 0,
+          "repairsPrime": 210,
+          "repairRate": 0.38461538461538464
+        }
+      },
+      "harmGate": true,
+      "selectionScore": 0.32499999999999996
+    },
+    {
+      "candidateId": "NO_CHANGE_CONTROL",
+      "metrics": {
+        "prime": {
+          "top1": 0.61,
+          "top2": 1,
+          "correctCases": 854,
+          "wrongCases": 546
+        },
+        "oracle": {
+          "cases": 1400,
+          "top1": 0.61,
+          "top2": 1,
+          "selectionChanges": 0,
+          "beneficialChanges": 0,
+          "harmfulChanges": 0,
+          "neutralChanges": 0,
+          "decisionDelta": 0,
+          "harmfulChangeRate": 0,
+          "breaksCorrectPrime": 0,
+          "repairsPrime": 0,
+          "repairRate": 0
+        },
+        "nexus": {
+          "cases": 1400,
+          "top1": 0.61,
+          "top2": 1,
+          "selectionChanges": 0,
+          "beneficialChanges": 0,
+          "harmfulChanges": 0,
+          "neutralChanges": 0,
+          "decisionDelta": 0,
+          "harmfulChangeRate": 0,
+          "breaksCorrectPrime": 0,
+          "repairsPrime": 0,
+          "repairRate": 0
+        },
+        "combined": {
+          "cases": 1400,
+          "top1": 0.61,
+          "top2": 1,
+          "selectionChanges": 0,
+          "beneficialChanges": 0,
+          "harmfulChanges": 0,
+          "neutralChanges": 0,
+          "decisionDelta": 0,
+          "harmfulChangeRate": 0,
+          "breaksCorrectPrime": 0,
+          "repairsPrime": 0,
+          "repairRate": 0
+        }
+      },
+      "harmGate": true,
+      "selectionScore": 0
+    },
+    {
+      "candidateId": "BOUNDED_Q_CONTEXT",
+      "metrics": {
+        "prime": {
+          "top1": 0.61,
+          "top2": 1,
+          "correctCases": 854,
+          "wrongCases": 546
+        },
+        "oracle": {
+          "cases": 1400,
+          "top1": 0.7642857142857142,
+          "top2": 1,
+          "selectionChanges": 260,
+          "beneficialChanges": 238,
+          "harmfulChanges": 22,
+          "neutralChanges": 0,
+          "decisionDelta": 0.15428571428571428,
+          "harmfulChangeRate": 0.015714285714285715,
+          "breaksCorrectPrime": 22,
+          "repairsPrime": 238,
+          "repairRate": 0.4358974358974359
+        },
+        "nexus": {
+          "cases": 1400,
+          "top1": 0.76,
+          "top2": 0.935,
+          "selectionChanges": 420,
+          "beneficialChanges": 280,
+          "harmfulChanges": 70,
+          "neutralChanges": 70,
+          "decisionDelta": 0.15,
+          "harmfulChangeRate": 0.05,
+          "breaksCorrectPrime": 70,
+          "repairsPrime": 280,
+          "repairRate": 0.5128205128205128
+        },
+        "combined": {
+          "cases": 1400,
+          "top1": 0.8578571428571429,
+          "top2": 0.9785714285714285,
+          "selectionChanges": 550,
+          "beneficialChanges": 425,
+          "harmfulChanges": 78,
+          "neutralChanges": 47,
+          "decisionDelta": 0.24785714285714286,
+          "harmfulChangeRate": 0.055714285714285716,
+          "breaksCorrectPrime": 78,
+          "repairsPrime": 425,
+          "repairRate": 0.7783882783882784
+        }
+      },
+      "harmGate": false,
+      "selectionScore": 0.5521428571428572
+    },
+    {
+      "candidateId": "EVIDENCE_ONLY_RERANK",
+      "metrics": {
+        "prime": {
+          "top1": 0.61,
+          "top2": 1,
+          "correctCases": 854,
+          "wrongCases": 546
+        },
+        "oracle": {
+          "cases": 1400,
+          "top1": 0.7842857142857143,
+          "top2": 1,
+          "selectionChanges": 400,
+          "beneficialChanges": 322,
+          "harmfulChanges": 78,
+          "neutralChanges": 0,
+          "decisionDelta": 0.1742857142857143,
+          "harmfulChangeRate": 0.055714285714285716,
+          "breaksCorrectPrime": 78,
+          "repairsPrime": 322,
+          "repairRate": 0.5897435897435898
+        },
+        "nexus": {
+          "cases": 1400,
+          "top1": 0.67,
+          "top2": 0.935,
+          "selectionChanges": 595,
+          "beneficialChanges": 294,
+          "harmfulChanges": 210,
+          "neutralChanges": 91,
+          "decisionDelta": 0.06,
+          "harmfulChangeRate": 0.15,
+          "breaksCorrectPrime": 210,
+          "repairsPrime": 294,
+          "repairRate": 0.5384615384615384
+        },
+        "combined": {
+          "cases": 1400,
+          "top1": 0.7614285714285715,
+          "top2": 0.9807142857142858,
+          "selectionChanges": 785,
+          "beneficialChanges": 466,
+          "harmfulChanges": 254,
+          "neutralChanges": 65,
+          "decisionDelta": 0.15142857142857144,
+          "harmfulChangeRate": 0.18142857142857144,
+          "breaksCorrectPrime": 254,
+          "repairsPrime": 466,
+          "repairRate": 0.8534798534798534
+        }
+      },
+      "harmGate": false,
+      "selectionScore": 0.38571428571428573
+    }
+  ],
+  "selectedExpertInterpreter": "TIE_BREAK_ONLY",
+  "selectionFrozenBeforeFinalHoldout": true,
+  "maxHarmfulSelectionChangeRate": 0.05,
+  "finalHoldout": {
+    "prime": {
+      "top1": 0.61,
+      "top2": 1,
+      "correctCases": 732,
+      "wrongCases": 468
+    },
+    "oracle": {
+      "cases": 1200,
+      "top1": 0.71,
+      "top2": 1,
+      "selectionChanges": 120,
+      "beneficialChanges": 120,
+      "harmfulChanges": 0,
+      "neutralChanges": 0,
+      "decisionDelta": 0.1,
+      "harmfulChangeRate": 0,
+      "breaksCorrectPrime": 0,
+      "repairsPrime": 120,
+      "repairRate": 0.2564102564102564
+    },
+    "nexus": {
+      "cases": 1200,
+      "top1": 0.685,
+      "top2": 1,
+      "selectionChanges": 90,
+      "beneficialChanges": 90,
+      "harmfulChanges": 0,
+      "neutralChanges": 0,
+      "decisionDelta": 0.075,
+      "harmfulChangeRate": 0,
+      "breaksCorrectPrime": 0,
+      "repairsPrime": 90,
+      "repairRate": 0.19230769230769232
+    },
+    "combined": {
+      "cases": 1200,
+      "top1": 0.76,
+      "top2": 1,
+      "selectionChanges": 180,
+      "beneficialChanges": 180,
+      "harmfulChanges": 0,
+      "neutralChanges": 0,
+      "decisionDelta": 0.15,
+      "harmfulChangeRate": 0,
+      "breaksCorrectPrime": 0,
+      "repairsPrime": 180,
+      "repairRate": 0.38461538461538464
+    }
+  }
+}

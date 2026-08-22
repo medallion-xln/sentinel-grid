@@ -1,0 +1,318 @@
+{
+  "stage": "STAGE2I4_ORACLE_V2_ASSEMBLY_AND_AGGREGATE_CAPABILITY_CERTIFICATION",
+  "inherited": {
+    "stage2i0Reproduced": true,
+    "stage2i2Reproduced": true,
+    "stage2i3bCertified": true,
+    "stage2i3cReproduced": true,
+    "stage2i3cEvidenceDigest": "9a1a6006ee32315c120ae16e0b130a91c11166ce41d17139d8ec68774c1a2ad7",
+    "oracleV1CapabilityScore": 3
+  },
+  "architecture": {
+    "modular": true,
+    "singleScalarValue": false,
+    "actionMappingPresent": false,
+    "forbiddenFields": [
+      "recommendedAction",
+      "selectedAction",
+      "actionAdjustment",
+      "actionBias",
+      "dispatchAction"
+    ],
+    "compositionRules": {
+      "schemaVersion": 1,
+      "abstention": "GLOBAL_ABSTENTION_CONTEXTUALIZES_SUPPORT; TASK_HEADS_RETAIN_RAW_EVIDENCE_AND_SELF_ABSTENTION",
+      "direction": "FROZEN_DIRECTION_HEAD_REMAINS_PRIMARY; REVERSAL_RECENT_SLOPE_CONTEXTUALIZES_WITHHELD_DIRECTION_SCORING",
+      "reversalAndRegime": "REVERSAL_AND_REGIME_CHANGE_MAY_COEXIST",
+      "volatility": "VOLATILITY_IS_INSTABILITY_NOT_VALUE_POLARITY",
+      "cycle": "CYCLE_CONTEXTUALIZES_APPARENT_REVERSAL_WITHOUT_SUPPRESSING_RAW_HEAD_OUTPUT",
+      "threshold": "TIME_TO_THRESHOLD_REQUIRES_EXPLICIT_CHANNEL_THRESHOLD_SEMANTICS",
+      "persistence": "PERSISTENCE_DESCRIBES_TEMPORAL_CONDITIONS_AND_DOES_NOT_OVERRIDE_OTHER_HEADS",
+      "precedence": "NO_WINNER_TAKES_ALL; ALL_SUPPORTED_HEAD_OUTPUTS_ARE_RETAINED",
+      "actionMapping": false
+    },
+    "compositionRulesDigest": "e4b2f8d1d514a6186193eae731526a3ac6b9d38e35f58faf6b579c1af6ead5c8",
+    "canonicalEvidence": true
+  },
+  "frozenHeads": {
+    "scores": {
+      "direction": 10,
+      "persistence": 7,
+      "reversal": 7,
+      "regimeChange": 9,
+      "volatility": 10,
+      "cycle": 7,
+      "timeToThreshold": 10,
+      "abstention": 10
+    },
+    "individualAccuracy": {
+      "direction": 1,
+      "persistence": 0.875,
+      "reversal": 0.8666666666666667,
+      "regimeChange": 0.9888888888888889,
+      "volatility": 1,
+      "cycle": 0.8583333333333333,
+      "timeToThreshold": 1,
+      "abstention": 1
+    },
+    "changed": {
+      "direction": false,
+      "persistence": false,
+      "reversal": false,
+      "regimeChange": false,
+      "volatility": false,
+      "cycle": false,
+      "timeToThreshold": false,
+      "abstention": false
+    },
+    "allUnchanged": true,
+    "allowableRegressionTolerance": 0,
+    "assembledRegression": {
+      "direction": 0,
+      "persistence": 0,
+      "reversal": 0,
+      "regimeChange": 0,
+      "volatility": 0,
+      "cycle": 0,
+      "timeToThreshold": 0,
+      "abstention": 0
+    }
+  },
+  "corpus": {
+    "stage2i0OracleCorpusReproduced": true,
+    "stage2i0Cases": 1020,
+    "finalHoldoutCases": 2400,
+    "effectiveSemanticGroups": 1575,
+    "semanticFamilyLeakage": false,
+    "digest": "98304e400a26af5553c2bc57d628bb96f149b2d12cdaf0f4c15140a103433130",
+    "gameSemanticCases": 400
+  },
+  "tasks": {
+    "direction": {
+      "cases": 300,
+      "correct": 300,
+      "accuracy": 1
+    },
+    "persistence": {
+      "cases": 300,
+      "correct": 200,
+      "accuracy": 0.6666666666666666
+    },
+    "reversal": {
+      "cases": 300,
+      "correct": 300,
+      "accuracy": 1
+    },
+    "regimeChange": {
+      "cases": 300,
+      "correct": 300,
+      "accuracy": 1
+    },
+    "volatility": {
+      "cases": 300,
+      "correct": 300,
+      "accuracy": 1
+    },
+    "cycle": {
+      "cases": 300,
+      "correct": 147,
+      "accuracy": 0.49
+    },
+    "timeToThreshold": {
+      "cases": 300,
+      "correct": 200,
+      "accuracy": 0.6666666666666666
+    },
+    "abstention": {
+      "cases": 300,
+      "correct": 300,
+      "accuracy": 1
+    },
+    "taskMean": 0.8529166666666667
+  },
+  "temporalValue": {
+    "currentStateOnlyScore": 360,
+    "oracleV1ScoreRaw": 175,
+    "oracleV2ScoreRaw": 468,
+    "oracleV1TemporalIncrementalValue": -185,
+    "oracleV2TemporalIncrementalValue": 108,
+    "oracleV2ScoreDetails": {
+      "correct": 540,
+      "wrong": 72,
+      "abstain": 408,
+      "accuracy": 0.8823529411764706,
+      "netValue": 468,
+      "netValueRate": 0.4588235294117647
+    }
+  },
+  "baselines": {
+    "frozen": {
+      "CURRENT_STATE_ONLY": {
+        "correct": 540,
+        "wrong": 180,
+        "abstain": 300,
+        "accuracy": 0.75,
+        "netValue": 360,
+        "netValueRate": 0.35294117647058826
+      },
+      "LAST_MINUS_FIRST": {
+        "correct": 420,
+        "wrong": 252,
+        "abstain": 348,
+        "accuracy": 0.625,
+        "netValue": 168,
+        "netValueRate": 0.16470588235294117
+      },
+      "RECENT_DELTA": {
+        "correct": 600,
+        "wrong": 240,
+        "abstain": 180,
+        "accuracy": 0.7142857142857143,
+        "netValue": 360,
+        "netValueRate": 0.35294117647058826
+      },
+      "LINEAR_SLOPE": {
+        "correct": 434,
+        "wrong": 454,
+        "abstain": 132,
+        "accuracy": 0.48873873873873874,
+        "netValue": -20,
+        "netValueRate": -0.0196078431372549
+      },
+      "MOVING_AVERAGE_DIRECTION": {
+        "correct": 420,
+        "wrong": 348,
+        "abstain": 252,
+        "accuracy": 0.546875,
+        "netValue": 72,
+        "netValueRate": 0.07058823529411765
+      }
+    },
+    "bestSimpleTemporalBaseline": {
+      "name": "CURRENT_STATE_ONLY",
+      "correct": 540,
+      "wrong": 180,
+      "abstain": 300,
+      "accuracy": 0.75,
+      "netValue": 360,
+      "netValueRate": 0.35294117647058826
+    },
+    "oracleV2VsBestSimpleBaseline": 108,
+    "beatsBestSimpleBaseline": true,
+    "beatsAllSimpleBaselines": true
+  },
+  "semanticConsistency": {
+    "cases": 40,
+    "passing": 40,
+    "contradictions": 0,
+    "outputConflictCases": 0,
+    "outputConflictRate": 0
+  },
+  "confidence": {
+    "correlation": -0.1579308810863642,
+    "monotonicWithQuality": false,
+    "falseHighConfidenceRate": 0.18115942028985507,
+    "highCases": 1104,
+    "highAccuracy": 0.8188405797101449,
+    "lowAccuracy": 0.8819444444444444
+  },
+  "adversarial": {
+    "cases": 600,
+    "correct": 600,
+    "accuracy": 1
+  },
+  "crossHeadCausality": {
+    "pairs": [
+      {
+        "name": "THRESHOLD_ONLY",
+        "changedHeads": [
+          "timeToThreshold"
+        ],
+        "allowedHeads": [
+          "timeToThreshold"
+        ],
+        "valid": true
+      },
+      {
+        "name": "VOLATILITY",
+        "changedHeads": [
+          "direction",
+          "volatility",
+          "cycle",
+          "abstention"
+        ],
+        "allowedHeads": [
+          "direction",
+          "volatility",
+          "cycle",
+          "abstention",
+          "persistence"
+        ],
+        "valid": true
+      },
+      {
+        "name": "REVERSAL",
+        "changedHeads": [
+          "persistence",
+          "reversal",
+          "regimeChange",
+          "abstention"
+        ],
+        "allowedHeads": [
+          "direction",
+          "reversal",
+          "regimeChange",
+          "persistence",
+          "abstention"
+        ],
+        "valid": true
+      }
+    ],
+    "valid": true
+  },
+  "gameSemantics": {
+    "cases": 400,
+    "correct": 400,
+    "accuracy": 1,
+    "realZeknovaGameplayImprovementClaimed": false
+  },
+  "capability": {
+    "oracleV1Score": 3,
+    "oracleV2Score": 7,
+    "gate7Pass": true,
+    "gate9Pass": false,
+    "gate9RemainingGaps": [
+      "TASK_MEAN_BELOW_0_97",
+      "CALIBRATED_CONFIDENCE",
+      "POSITIVE_DECISION_DELTA_NOT_MEASURED"
+    ]
+  },
+  "replay": {
+    "outputIdentical": true,
+    "digestIdentical": true,
+    "replayEquivalent": true
+  },
+  "production": {
+    "oracleProductionReplaced": false,
+    "oracleV2ProductionPromoted": false,
+    "primeChanged": false,
+    "nexusChanged": false,
+    "primeScoreRemains": 4,
+    "nexusScoreRemains": 4
+  },
+  "safety": {
+    "expertSelectionInfluence": 0,
+    "expertActionSelectionApproved": false,
+    "finalRecommendationOwner": "PRIME",
+    "authority": {
+      "tier": "R0",
+      "canDispatch": false,
+      "canMutateLiveWorld": false
+    },
+    "liveActionDispatches": 0,
+    "worldMutations": 0,
+    "authorityEscalations": 0,
+    "authorityTokenIssues": 0
+  },
+  "evidenceDigest": "03510e716de44b530f2a24cd6f3f369e54ae177a10158d2ae2aeeaec6184c5da"
+}

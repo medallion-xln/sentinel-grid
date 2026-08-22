@@ -1,0 +1,237 @@
+{
+  "stage": "STAGE2L6_DETERMINISTIC_ARBITER_ADVERSARIAL_SHADOW_CHALLENGE",
+  "evidenceDigest": "ddbf63bad7f32618b5afbeab6e8f3d9e666a32e21222078f34def866578f4a40",
+  "status": "FAIL",
+  "corpus": {
+    "totalAdversarialCases": 16500,
+    "effectiveSemanticGroups": 16500,
+    "semanticTemplates": 33,
+    "overlapWithPriorCorpora": 0,
+    "casesPerStratum": 500,
+    "strata": {
+      "PRIME_CORRECT_BOTH_WRONG_AGREE": 500,
+      "PRIME_WRONG_BOTH_RIGHT_AGREE": 500,
+      "PRIME_WRONG_ORACLE_RIGHT_NEXUS_WRONG": 500,
+      "PRIME_WRONG_NEXUS_RIGHT_ORACLE_WRONG": 500,
+      "DISAGREEMENT_PRIME_CORRECT": 500,
+      "DISAGREEMENT_ORACLE_CORRECT": 500,
+      "DISAGREEMENT_NEXUS_CORRECT": 500,
+      "DISAGREEMENT_NEITHER_CORRECT": 500,
+      "PRIME_WRONG_EXPERTS_INCORRECT": 500,
+      "PRIME_WRONG_IRRELEVANT": 500,
+      "PRIME_WRONG_MISSING": 500,
+      "STALE_ORACLE_EVIDENCE": 500,
+      "STALE_NEXUS_EVIDENCE": 500,
+      "CROSS_OBSERVATION_ORACLE": 500,
+      "CROSS_OBSERVATION_NEXUS": 500,
+      "CROSS_RUNTIME_EVIDENCE": 500,
+      "ACTION_IDENTITY_ATTACKS": 500,
+      "NEXUS_ENTITY_IDENTITY_ATTACKS": 500,
+      "ORACLE_CHANNEL_IDENTITY_ATTACKS": 500,
+      "TRUE_IRRELEVANT_ORACLE": 500,
+      "TRUE_IRRELEVANT_NEXUS": 500,
+      "STALE_GRAPH_MUTATION_RACE": 500,
+      "PRIME_TIE_BOUNDARY": 500,
+      "DUPLICATE_EVIDENCE": 500,
+      "MISSING_EVIDENCE": 500,
+      "MALFORMED_DIGEST_UNKNOWN_SCHEMA": 500,
+      "UNKNOWN_RULE_STATE": 500,
+      "AGREEMENT_OUTSIDE_AMBIGUITY": 500,
+      "HIGH_CONFIDENCE_INELIGIBLE_ORACLE": 500,
+      "HIGH_IMPORTANCE_INELIGIBLE_NEXUS": 500,
+      "FALSE_CYCLE_ADVERSARY": 500,
+      "INVALID_THRESHOLD_ADVERSARY": 500,
+      "NEXUS_FALSE_REDUNDANCY_ADVERSARY": 500
+    },
+    "primeCorrectAmbiguousCases": 11000,
+    "primeWrongCases": 4850
+  },
+  "expertCorrectness": {
+    "bothExpertsWrong": {
+      "cases": 500,
+      "selectionChanges": 500,
+      "beneficialChanges": 0,
+      "harmfulChanges": 500
+    },
+    "bothExpertsRight": {
+      "cases": 500,
+      "selectionChanges": 500,
+      "beneficialChanges": 500,
+      "harmfulChanges": 0
+    },
+    "oracleRightNexusWrong": {
+      "cases": 500,
+      "primeOnlyTop1": 0,
+      "arbiterTop1": 1,
+      "selectionChanges": 500,
+      "beneficialChanges": 500,
+      "harmfulChanges": 0,
+      "neutralChanges": 0,
+      "decisionDelta": 1,
+      "harmfulChangeRate": 0,
+      "correctPrimeBreakRate": 0
+    },
+    "nexusRightOracleWrong": {
+      "cases": 500,
+      "primeOnlyTop1": 0,
+      "arbiterTop1": 1,
+      "selectionChanges": 500,
+      "beneficialChanges": 500,
+      "harmfulChanges": 0,
+      "neutralChanges": 0,
+      "decisionDelta": 1,
+      "harmfulChangeRate": 0,
+      "correctPrimeBreakRate": 0
+    },
+    "disagreement": {
+      "primeCorrect": {
+        "cases": 500,
+        "metrics": {
+          "cases": 500,
+          "primeOnlyTop1": 1,
+          "arbiterTop1": 0,
+          "selectionChanges": 500,
+          "beneficialChanges": 0,
+          "harmfulChanges": 500,
+          "neutralChanges": 0,
+          "decisionDelta": -1,
+          "harmfulChangeRate": 1,
+          "correctPrimeBreakRate": 1
+        }
+      },
+      "oracleCorrect": {
+        "cases": 500,
+        "metrics": {
+          "cases": 500,
+          "primeOnlyTop1": 0,
+          "arbiterTop1": 1,
+          "selectionChanges": 500,
+          "beneficialChanges": 500,
+          "harmfulChanges": 0,
+          "neutralChanges": 0,
+          "decisionDelta": 1,
+          "harmfulChangeRate": 0,
+          "correctPrimeBreakRate": 0
+        }
+      },
+      "nexusCorrect": {
+        "cases": 500,
+        "metrics": {
+          "cases": 500,
+          "primeOnlyTop1": 0,
+          "arbiterTop1": 1,
+          "selectionChanges": 500,
+          "beneficialChanges": 500,
+          "harmfulChanges": 0,
+          "neutralChanges": 0,
+          "decisionDelta": 1,
+          "harmfulChangeRate": 0,
+          "correctPrimeBreakRate": 0
+        }
+      },
+      "neitherCorrect": {
+        "cases": 500,
+        "metrics": {
+          "cases": 500,
+          "primeOnlyTop1": 0,
+          "arbiterTop1": 0,
+          "selectionChanges": 0,
+          "beneficialChanges": 0,
+          "harmfulChanges": 0,
+          "neutralChanges": 0,
+          "decisionDelta": 0,
+          "harmfulChangeRate": 0,
+          "correctPrimeBreakRate": 0
+        }
+      }
+    }
+  },
+  "identityAttacks": {
+    "staleOracleEvidenceAccepted": 500,
+    "staleNexusEvidenceAccepted": 500,
+    "crossObservationExpertEvidenceAccepted": 1000,
+    "crossRuntimeExpertEvidenceAccepted": 500,
+    "campaignIdentityInCanonicalContract": false,
+    "crossCampaignExpertEvidenceAccepted": 0,
+    "ambiguousActionBindingAccepted": 300,
+    "illegalExpertSupportedActionAccepted": 0,
+    "ambiguousNexusEntityBindingAccepted": 500,
+    "ambiguousOracleChannelBindingAccepted": 500,
+    "staleGraphEvidenceAccepted": 500
+  },
+  "causalIrrelevance": {
+    "trueButIrrelevantOracleSelectionChanges": 0,
+    "trueButIrrelevantNexusSelectionChanges": 0
+  },
+  "oracleAdversarial": {
+    "cycle": {
+      "cases": 600,
+      "falseCycleDecisionEligible": 100,
+      "falseCycleDecisionEligibilityRate": 0.16666666666666666,
+      "families": {
+        "MONOTONIC": 100,
+        "QUASI_PERIODIC_NOISE": 100,
+        "SINGLE_REVERSAL": 100,
+        "IRREGULAR_OSCILLATION": 100,
+        "TREND_PLUS_NOISE": 100,
+        "DUPLICATED_SAMPLES": 100
+      }
+    },
+    "threshold": {
+      "cases": 600,
+      "invalidThresholdDecisionEligible": 100,
+      "invalidThresholdDecisionEligibilityRate": 0.16666666666666666,
+      "families": {
+        "ALREADY_CROSSED": 100,
+        "ACTION_INDEPENDENT": 100,
+        "WRONG_POLARITY": 100,
+        "OUTSIDE_RELEVANT_HORIZON": 100,
+        "MISSING_THRESHOLD": 100,
+        "HISTORICAL_EVENT": 100
+      }
+    }
+  },
+  "nexusAdversarial": {
+    "cases": 500,
+    "falseRedundancyDecisionSupport": 0,
+    "falseRedundancyDecisionSupportRate": 0
+  },
+  "results": {
+    "cases": 16500,
+    "primeOnlyTop1": 0.706060606060606,
+    "arbiterTop1": 0.5121212121212121,
+    "selectionChanges": 8900,
+    "beneficialChanges": 2850,
+    "harmfulChanges": 6050,
+    "neutralChanges": 0,
+    "decisionDelta": -0.19393939393939394,
+    "harmfulChangeRate": 0.36666666666666664,
+    "correctPrimeBreakRate": 0.51931330472103
+  },
+  "failClosed": {
+    "missingExpertEvidenceReturnsSafeBehavior": true,
+    "malformedDigestAccepted": 0,
+    "unknownExpertSchemaAccepted": 250,
+    "unknownRuleStateReturnsPrime": false,
+    "requiredCases": 11000,
+    "successCases": 5450,
+    "rate": 0.4954545454545455
+  },
+  "failedQualityChecks": [
+    "staleOracleRejected",
+    "staleNexusRejected",
+    "crossObservationRejected",
+    "crossRuntimeRejected",
+    "ambiguousActionRejected",
+    "ambiguousNexusEntityRejected",
+    "ambiguousOracleChannelRejected",
+    "falseCycleRateZero",
+    "invalidThresholdRateZero",
+    "staleGraphRejected",
+    "unknownRuleStateClosed",
+    "failClosedPerfect",
+    "harmfulRateBound",
+    "correctPrimeBreakBound"
+  ],
+  "remediationImplemented": false
+}

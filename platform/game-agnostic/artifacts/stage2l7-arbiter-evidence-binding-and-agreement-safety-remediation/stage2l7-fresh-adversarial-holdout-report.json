@@ -1,0 +1,68 @@
+{
+  "freshAdversarialHoldout": {
+    "cases": 10000,
+    "effectiveSemanticGroups": 10000,
+    "overlapWithStage2l6": 0,
+    "semanticFamilyLeakage": false,
+    "metrics": {
+      "cases": 10000,
+      "primeOnlyTop1": 0.85,
+      "arbiterTop1": 0.85,
+      "selectionChanges": 0,
+      "beneficialChanges": 0,
+      "harmfulChanges": 0,
+      "neutralChanges": 0,
+      "decisionDelta": 0,
+      "harmfulChangeRate": 0,
+      "correctPrimeBreakRate": 0
+    },
+    "failClosed": {
+      "requiredCases": 7500,
+      "successCases": 7500,
+      "rate": 1
+    },
+    "strata": {
+      "STALE_SIMILAR_OBSERVATION": 500,
+      "SAME_VALUES_CROSS_OBSERVATION": 500,
+      "SAME_OBSERVATION_CROSS_RUNTIME": 500,
+      "CROSS_CAMPAIGN": 500,
+      "RENAMED_ACTION": 500,
+      "REUSED_DIGEST_ALTERED_PAYLOAD": 500,
+      "SCHEMA_DOWNGRADE": 500,
+      "SCHEMA_UPGRADE": 500,
+      "GRAPH_SAME_LABEL_CHANGED_TOPOLOGY": 500,
+      "HISTORY_SAME_TAIL_DIFFERENT_DIGEST": 500,
+      "BOTH_WRONG_AGREE": 500,
+      "BOTH_RIGHT_AGREE": 500,
+      "ORACLE_RIGHT_NEXUS_WRONG": 500,
+      "NEXUS_RIGHT_ORACLE_WRONG": 500,
+      "AGREE_IRRELEVANT_ACTION": 500,
+      "AGREE_OUTSIDE_AMBIGUITY": 500,
+      "BOTH_VALID_WRONG_OBSERVATION": 500,
+      "UNKNOWN_RULE_STATE": 500,
+      "AMBIGUOUS_ENTITY_OR_CHANNEL": 500,
+      "CONFLICTING_DUPLICATE": 500
+    },
+    "rowDigest": "7d0ba2fb19e2dfd610da1ce8d98b363139e689227c0d9272441b464341bdd4bb"
+  },
+  "separatedSets": {
+    "developmentSet": {
+      "cases": 1500,
+      "semanticFamilies": 6,
+      "corpusDigest": "0610fb2d7b14f95959e3a5b06a866a9c0797aa5e601c73c561be253d321fc171"
+    },
+    "validationSet": {
+      "cases": 1500,
+      "semanticFamilies": 6,
+      "corpusDigest": "b434b60834bdbff4e7133aca63e3f4f844611f3bd84a91e730f2b6e79df66c05"
+    },
+    "finalHoldoutSet": {
+      "cases": 10000,
+      "semanticFamilies": 20
+    },
+    "semanticFamilyLeakage": false,
+    "candidateFrozenBeforeFinalHoldout": true,
+    "postHoldoutRuleChanges": 0
+  },
+  "evidenceDigest": "a8326135c0eddfe621f1b3bc7be9e360e1cd1fc50f80c506b7a310e0a23a1212"
+}

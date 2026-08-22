@@ -1,0 +1,62 @@
+{
+  "ruleTable": [
+    {
+      "entry": "A",
+      "condition": "NO_INDEPENDENTLY_VALID_ELIGIBLE_EXPERT",
+      "outcome": "RETURN_PRIME"
+    },
+    {
+      "entry": "B",
+      "condition": "ORACLE_ONLY_INDEPENDENTLY_VALID_ELIGIBLE",
+      "outcome": "SELECT_EXACT_CERTIFIED_TIE_ACTION_ELSE_RETURN_PRIME"
+    },
+    {
+      "entry": "C",
+      "condition": "NEXUS_ONLY_INDEPENDENTLY_VALID_ELIGIBLE",
+      "outcome": "SELECT_EXACT_CERTIFIED_TIE_ACTION_ELSE_RETURN_PRIME"
+    },
+    {
+      "entry": "D",
+      "condition": "BOTH_VALID_AND_AGREE",
+      "outcome": "RETURN_PRIME_CONSENSUS_IS_NOT_INDEPENDENT_AUTHORITY"
+    },
+    {
+      "entry": "E",
+      "condition": "BOTH_VALID_AND_DISAGREE",
+      "outcome": "RETURN_PRIME_UNRESOLVED_DISAGREEMENT"
+    },
+    {
+      "entry": "F",
+      "condition": "ANY_VALID_EXPERT_SUPPORTS_PRIME",
+      "outcome": "RETURN_PRIME"
+    },
+    {
+      "entry": "G",
+      "condition": "PRIME_OUTSIDE_AMBIGUITY_REGION",
+      "outcome": "RETURN_PRIME"
+    },
+    {
+      "entry": "H",
+      "condition": "INVALID_UNKNOWN_MISSING_DUPLICATE_OR_UNSUPPORTED_STATE",
+      "outcome": "RETURN_PRIME_AND_IGNORE_ALL_EXPERTS"
+    }
+  ],
+  "ruleDigest": "2c3014ba4916e532861402befb955a8a5fba8e9a55a7fce5d6096a0537456822",
+  "failClosedMatrix": {
+    "VALID": "VALIDATE_THEN_APPLY_CONSERVATIVE_RULE_TABLE",
+    "STALE": "RETURN_PRIME_IGNORE_EXPERT",
+    "CROSS_OBSERVATION": "RETURN_PRIME_IGNORE_EXPERT",
+    "CROSS_RUNTIME": "RETURN_PRIME_IGNORE_EXPERT",
+    "CROSS_CAMPAIGN": "RETURN_PRIME_IGNORE_EXPERT",
+    "UNKNOWN_SCHEMA": "RETURN_PRIME_IGNORE_EXPERT",
+    "BAD_DIGEST": "RETURN_PRIME_IGNORE_EXPERT",
+    "AMBIGUOUS_ACTION": "RETURN_PRIME_IGNORE_EXPERT",
+    "ILLEGAL_ACTION": "RETURN_PRIME_IGNORE_EXPERT",
+    "AMBIGUOUS_ENTITY": "RETURN_PRIME_IGNORE_EXPERT",
+    "AMBIGUOUS_CHANNEL": "RETURN_PRIME_IGNORE_EXPERT",
+    "UNKNOWN_RULE_STATE": "RETURN_PRIME_IGNORE_EXPERT",
+    "MISSING_EVIDENCE": "RETURN_PRIME_IGNORE_EXPERT",
+    "CONFLICTING_DUPLICATE": "RETURN_PRIME_IGNORE_EXPERT"
+  },
+  "failClosedMatrixDigest": "59e0c7d6a3c4c648dd9d0beff6a9bc85c690a2c28adb1baaad4064c019269ad3"
+}

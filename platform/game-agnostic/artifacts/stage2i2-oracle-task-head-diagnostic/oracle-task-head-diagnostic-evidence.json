@@ -1,0 +1,583 @@
+{
+  "stage": "STAGE2I2_ORACLE_TEMPORAL_TASK_HEAD_DIAGNOSTIC",
+  "baseline": {
+    "scores": {
+      "prime": 4,
+      "oracle": 3,
+      "nexus": 4
+    },
+    "stage2i0Unchanged": true,
+    "stage2i1Status": "FAIL"
+  },
+  "frozenOwners": {
+    "oracleV1Sha256": "ce50bcc3a9d5c56f5c3d9986710609af5bc2c5e4ece9b73fc739a65f87b8373a",
+    "robustTrendExpertSha256": "476e9287142ed6de8ddcecef13a9f4366134f0b6ba3b47750bca71ae7a68214a",
+    "oracleV1Changed": false,
+    "robustTrendExpertChanged": false
+  },
+  "contracts": {
+    "DIRECTION_HEAD": {
+      "consumesBoundedHistory": true,
+      "maximumFrames": 32,
+      "ownSemanticOutputOnly": true,
+      "deterministicConfidence": true,
+      "canAbstain": true,
+      "carriesDigest": true,
+      "isolatedFromPrimeSelection": true
+    },
+    "PERSISTENCE_HEAD": {
+      "consumesBoundedHistory": true,
+      "maximumFrames": 32,
+      "ownSemanticOutputOnly": true,
+      "deterministicConfidence": true,
+      "canAbstain": true,
+      "carriesDigest": true,
+      "isolatedFromPrimeSelection": true
+    },
+    "REVERSAL_HEAD": {
+      "consumesBoundedHistory": true,
+      "maximumFrames": 32,
+      "ownSemanticOutputOnly": true,
+      "deterministicConfidence": true,
+      "canAbstain": true,
+      "carriesDigest": true,
+      "isolatedFromPrimeSelection": true
+    },
+    "REGIME_CHANGE_HEAD": {
+      "consumesBoundedHistory": true,
+      "maximumFrames": 32,
+      "ownSemanticOutputOnly": true,
+      "deterministicConfidence": true,
+      "canAbstain": true,
+      "carriesDigest": true,
+      "isolatedFromPrimeSelection": true
+    },
+    "VOLATILITY_HEAD": {
+      "consumesBoundedHistory": true,
+      "maximumFrames": 32,
+      "ownSemanticOutputOnly": true,
+      "deterministicConfidence": true,
+      "canAbstain": true,
+      "carriesDigest": true,
+      "isolatedFromPrimeSelection": true
+    },
+    "CYCLE_HEAD": {
+      "consumesBoundedHistory": true,
+      "maximumFrames": 32,
+      "ownSemanticOutputOnly": true,
+      "deterministicConfidence": true,
+      "canAbstain": true,
+      "carriesDigest": true,
+      "isolatedFromPrimeSelection": true
+    },
+    "TIME_TO_THRESHOLD_HEAD": {
+      "consumesBoundedHistory": true,
+      "maximumFrames": 32,
+      "ownSemanticOutputOnly": true,
+      "deterministicConfidence": true,
+      "canAbstain": true,
+      "carriesDigest": true,
+      "isolatedFromPrimeSelection": true
+    },
+    "HISTORY_SUFFICIENCY_HEAD": {
+      "consumesBoundedHistory": true,
+      "maximumFrames": 32,
+      "ownSemanticOutputOnly": true,
+      "deterministicConfidence": true,
+      "canAbstain": true,
+      "carriesDigest": true,
+      "isolatedFromPrimeSelection": true
+    },
+    "ABSTENTION_HEAD": {
+      "consumesBoundedHistory": true,
+      "maximumFrames": 32,
+      "ownSemanticOutputOnly": true,
+      "deterministicConfidence": true,
+      "canAbstain": true,
+      "carriesDigest": true,
+      "isolatedFromPrimeSelection": true
+    }
+  },
+  "groundTruth": {
+    "DIRECTION_HEAD": {
+      "owner": "STAGE2H6_SEMANTIC_FAMILY_GENERATOR",
+      "deterministic": true,
+      "benchmarkable": true,
+      "cases": 1080,
+      "effectiveSemanticGroups": 902
+    },
+    "PERSISTENCE_HEAD": {
+      "owner": "STAGE2I2_PERSISTENCE_SCENARIO_GENERATOR",
+      "deterministic": true,
+      "benchmarkable": true,
+      "cases": 200,
+      "effectiveSemanticGroups": 175
+    },
+    "REVERSAL_HEAD": {
+      "owner": "STAGE2I2_REVERSAL_SCENARIO_GENERATOR",
+      "deterministic": true,
+      "benchmarkable": true,
+      "cases": 240,
+      "effectiveSemanticGroups": 210
+    },
+    "REGIME_CHANGE_HEAD": {
+      "owner": "STAGE2I2_CHANGE_POINT_SCENARIO_GENERATOR",
+      "deterministic": true,
+      "benchmarkable": true,
+      "cases": 330,
+      "effectiveSemanticGroups": 307
+    },
+    "VOLATILITY_HEAD": {
+      "owner": "EXACT_RMS_FIRST_DIFFERENCE_REFERENCE",
+      "deterministic": true,
+      "benchmarkable": true,
+      "cases": 200,
+      "effectiveSemanticGroups": 147
+    },
+    "CYCLE_HEAD": {
+      "owner": "STAGE2I2_CYCLE_SCENARIO_GENERATOR",
+      "deterministic": true,
+      "benchmarkable": true,
+      "cases": 240,
+      "effectiveSemanticGroups": 215
+    },
+    "TIME_TO_THRESHOLD_HEAD": {
+      "owner": "WITHHELD_DETERMINISTIC_CONTINUATION",
+      "deterministic": true,
+      "benchmarkable": true,
+      "cases": 240,
+      "effectiveSemanticGroups": 210
+    },
+    "HISTORY_SUFFICIENCY_HEAD": {
+      "owner": "FROZEN_MINIMUM_COVERAGE_RULE",
+      "deterministic": true,
+      "benchmarkable": true,
+      "cases": 320,
+      "effectiveSemanticGroups": 218
+    },
+    "ABSTENTION_HEAD": {
+      "owner": "STAGE2I2_EVIDENCE_QUALITY_SCENARIO_GENERATOR",
+      "deterministic": true,
+      "benchmarkable": true,
+      "cases": 320,
+      "effectiveSemanticGroups": 218
+    }
+  },
+  "corpus": {
+    "sourceStage2i1Cases": 2040,
+    "reusedStage2i1Cases": 1080,
+    "semanticFamilyLeakage": false,
+    "partitionStrategy": "HEAD_SPECIFIC_DIAGNOSTIC_NO_TRAINING",
+    "digest": "ea346739738ed5b94ab98f253ec5cdb26e84f2bb7cc2a9289eec9451da7e8c8c"
+  },
+  "semanticPolicy": {
+    "temporalObservationValueCoupling": false,
+    "channelPolarityBound": true,
+    "permittedPolarities": [
+      "HIGHER_IS_BETTER",
+      "LOWER_IS_BETTER",
+      "NEUTRAL_DIRECTION",
+      "UNKNOWN_POLARITY"
+    ],
+    "valueInterpretationRequiresExplicitPolarity": true
+  },
+  "headRubric": {
+    "preRegistered": true,
+    "thresholds": [
+      {
+        "score": 1,
+        "min": 0
+      },
+      {
+        "score": 2,
+        "min": 0.2
+      },
+      {
+        "score": 3,
+        "min": 0.35
+      },
+      {
+        "score": 4,
+        "min": 0.5
+      },
+      {
+        "score": 5,
+        "min": 0.65
+      },
+      {
+        "score": 6,
+        "min": 0.75
+      },
+      {
+        "score": 7,
+        "min": 0.85
+      },
+      {
+        "score": 8,
+        "min": 0.92
+      },
+      {
+        "score": 9,
+        "min": 0.97
+      },
+      {
+        "score": 10,
+        "min": 0.99
+      }
+    ],
+    "belowRelevantSimpleBaselineMaximum": 3,
+    "dispositions": {
+      "KEEP": "score>=7 AND beatsRelevantSimpleBaseline",
+      "REDESIGN": "score>=4 AND score<7",
+      "REPLACE": "score<=3 AND benchmarkable",
+      "REMOVE": "benchmarkable=false"
+    }
+  },
+  "results": {
+    "direction": {
+      "cases": 1080,
+      "correct": 1080,
+      "accuracy": 1,
+      "falseConfidenceRate": 0,
+      "falseAbstentionRate": 0,
+      "effectiveSemanticGroups": 902,
+      "relevantSimpleBaseline": {
+        "cases": 1080,
+        "correct": 0,
+        "accuracy": 0,
+        "falseConfidenceRate": 0,
+        "falseAbstentionRate": 1,
+        "name": "CURRENT_STATE_NO_TEMPORAL_DIRECTION"
+      },
+      "beatsRelevantSimpleBaseline": true,
+      "incrementalValue": 1,
+      "score": 10,
+      "disposition": "KEEP",
+      "bestArchitecture": "LAST_MINUS_FIRST",
+      "candidates": {
+        "ORACLE_V1_FULL_SLOPE": {
+          "cases": 1080,
+          "correct": 1080,
+          "accuracy": 1,
+          "falseConfidenceRate": 0,
+          "falseAbstentionRate": 0
+        },
+        "ROBUST_TREND_DIRECTION": {
+          "cases": 1080,
+          "correct": 1080,
+          "accuracy": 1,
+          "falseConfidenceRate": 0,
+          "falseAbstentionRate": 0
+        },
+        "LAST_MINUS_FIRST": {
+          "cases": 1080,
+          "correct": 1080,
+          "accuracy": 1,
+          "falseConfidenceRate": 0,
+          "falseAbstentionRate": 0
+        },
+        "MOVING_AVERAGE_DIRECTION": {
+          "cases": 1080,
+          "correct": 1080,
+          "accuracy": 1,
+          "falseConfidenceRate": 0,
+          "falseAbstentionRate": 0
+        },
+        "RECENT_WINDOW_SLOPE": {
+          "cases": 1080,
+          "correct": 1080,
+          "accuracy": 1,
+          "falseConfidenceRate": 0,
+          "falseAbstentionRate": 0
+        },
+        "MAJORITY_DELTA_DIRECTION": {
+          "cases": 1080,
+          "correct": 1069,
+          "accuracy": 0.9898148148148148,
+          "falseConfidenceRate": 0,
+          "falseAbstentionRate": 0
+        }
+      },
+      "adversarialAccuracy": 1
+    },
+    "persistence": {
+      "cases": 200,
+      "correct": 160,
+      "accuracy": 0.8,
+      "falseConfidenceRate": 0,
+      "falseAbstentionRate": 0,
+      "effectiveSemanticGroups": 175,
+      "relevantSimpleBaseline": {
+        "cases": 200,
+        "correct": 177,
+        "accuracy": 0.885,
+        "falseConfidenceRate": 0,
+        "falseAbstentionRate": 0,
+        "name": "CURRENT_LEVEL_DISTANCE"
+      },
+      "beatsRelevantSimpleBaseline": false,
+      "incrementalValue": -0.08499999999999996,
+      "score": 3,
+      "disposition": "REPLACE",
+      "falsePositiveRate": 0.3333333333333333
+    },
+    "reversal": {
+      "cases": 240,
+      "correct": 208,
+      "accuracy": 0.8666666666666667,
+      "falseConfidenceRate": 0,
+      "falseAbstentionRate": 0,
+      "effectiveSemanticGroups": 210,
+      "relevantSimpleBaseline": {
+        "cases": 240,
+        "correct": 80,
+        "accuracy": 0.3333333333333333,
+        "falseConfidenceRate": 0,
+        "falseAbstentionRate": 0,
+        "name": "LAST_DELTA_FLIP"
+      },
+      "beatsRelevantSimpleBaseline": true,
+      "incrementalValue": 0.5333333333333334,
+      "score": 7,
+      "disposition": "KEEP",
+      "adversarialAccuracy": 0.8
+    },
+    "regimeChange": {
+      "cases": 330,
+      "correct": 270,
+      "accuracy": 0.8181818181818182,
+      "falseConfidenceRate": 0,
+      "falseAbstentionRate": 0,
+      "effectiveSemanticGroups": 307,
+      "relevantSimpleBaseline": {
+        "cases": 330,
+        "correct": 150,
+        "accuracy": 0.45454545454545453,
+        "falseConfidenceRate": 0,
+        "falseAbstentionRate": 0,
+        "name": "ABS_SPLIT_MEAN_SHIFT"
+      },
+      "beatsRelevantSimpleBaseline": true,
+      "incrementalValue": 0.3636363636363637,
+      "score": 6,
+      "disposition": "REDESIGN",
+      "bestArchitecture": "COMPOSITE_CHANGE_POINT",
+      "candidates": {
+        "SPLIT_MEAN_SHIFT": {
+          "cases": 330,
+          "correct": 150,
+          "accuracy": 0.45454545454545453,
+          "falseConfidenceRate": 0,
+          "falseAbstentionRate": 0
+        },
+        "SPLIT_VARIANCE_SHIFT": {
+          "cases": 330,
+          "correct": 270,
+          "accuracy": 0.8181818181818182,
+          "falseConfidenceRate": 0,
+          "falseAbstentionRate": 0
+        },
+        "COMPOSITE_CHANGE_POINT": {
+          "cases": 330,
+          "correct": 270,
+          "accuracy": 0.8181818181818182,
+          "falseConfidenceRate": 0,
+          "falseAbstentionRate": 0
+        }
+      }
+    },
+    "volatility": {
+      "cases": 200,
+      "correct": 200,
+      "accuracy": 1,
+      "falseConfidenceRate": 0,
+      "falseAbstentionRate": 0,
+      "effectiveSemanticGroups": 147,
+      "relevantSimpleBaseline": {
+        "cases": 200,
+        "correct": 160,
+        "accuracy": 0.8,
+        "falseConfidenceRate": 0,
+        "falseAbstentionRate": 0,
+        "name": "RANGE_THRESHOLD"
+      },
+      "beatsRelevantSimpleBaseline": true,
+      "incrementalValue": 0.19999999999999996,
+      "score": 10,
+      "disposition": "KEEP",
+      "magnitudeError": 0
+    },
+    "cycle": {
+      "cases": 240,
+      "correct": 206,
+      "accuracy": 0.8583333333333333,
+      "falseConfidenceRate": 0,
+      "falseAbstentionRate": 0,
+      "effectiveSemanticGroups": 215,
+      "relevantSimpleBaseline": {
+        "cases": 240,
+        "correct": 111,
+        "accuracy": 0.4625,
+        "falseConfidenceRate": 0,
+        "falseAbstentionRate": 0,
+        "name": "ALTERNATION_RATIO"
+      },
+      "beatsRelevantSimpleBaseline": true,
+      "incrementalValue": 0.39583333333333326,
+      "score": 7,
+      "disposition": "KEEP",
+      "falsePositiveRate": 0.425
+    },
+    "timeToThreshold": {
+      "cases": 240,
+      "correct": 240,
+      "accuracy": 1,
+      "falseConfidenceRate": 0,
+      "falseAbstentionRate": 0,
+      "effectiveSemanticGroups": 210,
+      "relevantSimpleBaseline": {
+        "cases": 240,
+        "correct": 160,
+        "accuracy": 0.6666666666666666,
+        "falseConfidenceRate": 0,
+        "falseAbstentionRate": 0,
+        "name": "CURRENT_STATE_THRESHOLD"
+      },
+      "beatsRelevantSimpleBaseline": true,
+      "incrementalValue": 0.33333333333333337,
+      "score": 10,
+      "disposition": "KEEP",
+      "abstentionRate": 0
+    },
+    "abstention": {
+      "cases": 320,
+      "correct": 320,
+      "accuracy": 1,
+      "falseConfidenceRate": 0,
+      "falseAbstentionRate": 0,
+      "effectiveSemanticGroups": 218,
+      "relevantSimpleBaseline": {
+        "cases": 320,
+        "correct": 200,
+        "accuracy": 0.625,
+        "falseConfidenceRate": 0,
+        "falseAbstentionRate": 0,
+        "name": "HISTORY_LENGTH_ONLY"
+      },
+      "beatsRelevantSimpleBaseline": true,
+      "incrementalValue": 0.375,
+      "score": 10,
+      "disposition": "KEEP"
+    },
+    "historySufficiency": {
+      "cases": 320,
+      "correct": 320,
+      "accuracy": 1,
+      "falseConfidenceRate": 0,
+      "falseAbstentionRate": 0,
+      "effectiveSemanticGroups": 218,
+      "relevantSimpleBaseline": {
+        "cases": 320,
+        "correct": 240,
+        "accuracy": 0.75,
+        "falseConfidenceRate": 0,
+        "falseAbstentionRate": 0,
+        "name": "THREE_FRAME_LENGTH_ONLY"
+      },
+      "beatsRelevantSimpleBaseline": true,
+      "incrementalValue": 0.25,
+      "score": 10,
+      "disposition": "KEEP"
+    }
+  },
+  "dispositions": {
+    "direction": "KEEP",
+    "persistence": "REPLACE",
+    "reversal": "KEEP",
+    "regimeChange": "REDESIGN",
+    "volatility": "KEEP",
+    "cycle": "KEEP",
+    "timeToThreshold": "KEEP",
+    "historySufficiency": "KEEP",
+    "abstention": "KEEP"
+  },
+  "oracleV2Design": {
+    "frozen": true,
+    "composition": [
+      "DIRECTION_HEAD",
+      "PERSISTENCE_HEAD",
+      "REVERSAL_HEAD",
+      "REGIME_CHANGE_HEAD",
+      "VOLATILITY_HEAD",
+      "CYCLE_HEAD",
+      "TIME_TO_THRESHOLD_HEAD",
+      "HISTORY_SUFFICIENCY_HEAD",
+      "ABSTENTION_HEAD"
+    ],
+    "structuredTemporalAssessment": true,
+    "genericScalarTemporalValueRequired": false,
+    "actionMappingPresent": false,
+    "forbiddenFields": [
+      "recommendedAction",
+      "actionAdjustment",
+      "selectedAction"
+    ],
+    "requirements7Of10": {
+      "requiredHeadMinimums": {
+        "DIRECTION_HEAD": 7,
+        "REVERSAL_HEAD": 7,
+        "REGIME_CHANGE_HEAD": 7,
+        "ABSTENTION_HEAD": 7
+      },
+      "requiresPositiveIncrementalValueByRequiredHead": true,
+      "requiresTaskSpecificBaselineSuperiority": true,
+      "requiresDeterministicConfidenceAndAbstention": true,
+      "requiresNoActionMapping": true
+    }
+  },
+  "gameRoleMap": {
+    "currentlySupported": [
+      "RESOURCE_TREND",
+      "ENEMY_PRESSURE_TREND",
+      "TEMPORAL_HISTORY_SUFFICIENCY",
+      "RESOURCE_INSTABILITY"
+    ],
+    "partiallySupported": [
+      "COMBAT_MOMENTUM_REVERSAL",
+      "RESOURCE_RECOVERY",
+      "AMMO_DEPLETION",
+      "SHIELD_FAILURE",
+      "WATER_RESERVE_EXHAUSTION"
+    ],
+    "futureTargets": [
+      "BOSS_PHASE_CHANGE",
+      "ENEMY_BEHAVIOR_MODE_CHANGE",
+      "BOSS_ATTACK_CADENCE",
+      "PATROL_ROTATION"
+    ]
+  },
+  "qualityGate": {
+    "trustworthyTaskDecompositionProduced": true,
+    "allGroundTruthDeterministic": true,
+    "modularOracleV2DesignFrozen": true,
+    "noPostMeasurementTuning": true
+  },
+  "qualityGatePass": true,
+  "oracleProductionReplaced": false,
+  "primeChanged": false,
+  "nexusChanged": false,
+  "expertSelectionInfluence": 0,
+  "expertActionSelectionApproved": false,
+  "finalRecommendationOwner": "PRIME",
+  "replayEquivalent": true,
+  "authority": {
+    "tier": "R0",
+    "canDispatch": false,
+    "canMutateLiveWorld": false
+  },
+  "liveActionDispatches": 0,
+  "worldMutations": 0,
+  "authorityEscalations": 0,
+  "authorityTokenIssues": 0,
+  "evidenceDigest": "c88755d267da83ba2c82ce5492bb3fe9fb8f645eb07a5b75b4df5e65378a90f9"
+}

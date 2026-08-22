@@ -1,0 +1,15 @@
+import assert from 'node:assert/strict';
+import { readFile } from 'node:fs/promises';
+import test from 'node:test';
+import { sha256 } from '../src/core/determinism.js';
+import { buildStage2H5Evaluation, buildStage2H5ExtensionFixtures, STAGE2H5_QUALITY_GATE } from '../src/lab/stage2h5-temporal-investigation.js';
+const campaign=JSON.parse(await readFile(new URL('../artifacts/stage2f-successor-r0/stage2f-campaign-manifest.json',import.meta.url))); let cached; const build=()=>cached??=buildStage2H5Evaluation({campaignManifest:campaign});
+test('quality gate is frozen before extension evaluation',()=>{assert.equal(STAGE2H5_QUALITY_GATE.preRegistered,true);assert.equal(STAGE2H5_QUALITY_GATE.minimumNewNetValueRate,.10);assert.equal(STAGE2H5_QUALITY_GATE.maximumNewRegressionRate,.40)});
+test('original temporal result reproduces exactly',()=>{const x=build();assert.equal(x.originalResult.cases,80);assert.equal(x.originalResult.netValue,40);assert.equal(x.originalResult.netValueRate,.5);assert.equal(x.originalResult.reproduced,true)});
+test('original audit exposes semantic duplication',()=>{const x=build();assert.equal(x.originalAudit.uniqueHistoryDigests,3);assert.equal(x.originalAudit.effectiveTemporalSampleSize,4);assert.equal(x.originalAudit.semanticDuplicateCases,76)});
+test('extension contains 500 non-overlapping cases and whole semantic families',()=>{const x=build();assert.equal(buildStage2H5ExtensionFixtures().length,500);assert.equal(x.newCorpus.cases,500);assert.equal(x.newCorpus.canonicalCaseDigestOverlap,0);assert.equal(x.newCorpus.semanticFamilyHoldout,true)});
+test('no ground truth or post-transition feature leakage exists',()=>{const x=build();assert.equal(x.leakageAudit.groundTruthLeakageDetected,false);assert.equal(x.leakageAudit.postTransitionFeatureLeakage,false);assert.ok(x.leakageAudit.features.every(f=>['PAST_ONLY','ACTION_DESCRIPTOR'].includes(f.classification)))});
+test('time direction and causal perturbations are valid',()=>{const x=build();assert.equal(x.causality.timeDirectionConsistent,true);assert.equal(x.causality.temporalOrderSensitivityValid,true);assert.equal(x.causality.temporalSignalCausallyAttributed,true)});
+test('independent population falsifies the original quality effect',()=>{const x=build();assert.equal(x.newCorpus.netValue,9);assert.equal(x.newCorpus.netValueRate,.018);assert.equal(x.qualityGatePass,false);assert.equal(x.expertActionSelectionApproved,false)});
+test('selection and authority remain isolated at R0',()=>{const x=build();assert.equal(x.selection.oracleIsolated,true);assert.equal(x.selection.nexusDiagnosticActive,false);assert.equal(x.selection.expertSelectionInfluence,0);assert.equal(x.selection.valueOnlySelectionChanges,0);assert.deepEqual(x.authority,{tier:'R0',canDispatch:false,canMutateLiveWorld:false})});
+test('replay is deterministic',()=>assert.equal(sha256(buildStage2H5Evaluation({campaignManifest:campaign})),sha256(buildStage2H5Evaluation({campaignManifest:campaign}))));

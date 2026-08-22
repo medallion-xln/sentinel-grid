@@ -4,9 +4,15 @@ import {
   certifyZekNovaSustainedShadow,
   validateShadowRecord,
 } from './zeknova-real-state-shadow.js';
+import {
+  STAGE2F_RECORD_SCHEMA_VERSION,
+  STAGE2F_SESSION_MANIFEST_VERSION,
+  validateStage2FCampaignManifest,
+  validateStage2FQualificationIdentity,
+} from './zeknova-stage2f-identity.js';
 
-export const ZEKNOVA_SESSION_MANIFEST_VERSION = 1;
-export const ZEKNOVA_CAMPAIGN_CERTIFICATION_VERSION = 1;
+export const ZEKNOVA_SESSION_MANIFEST_VERSION = STAGE2F_SESSION_MANIFEST_VERSION;
+export const ZEKNOVA_CAMPAIGN_CERTIFICATION_VERSION = 2;
 export const ZEKNOVA_CANDIDATE_EVALUATION_VERSION = 1;
 export const ZEKNOVA_CONTROLLED_DECISION_VERSION = 1;
 
@@ -94,6 +100,7 @@ export function buildZekNovaSessionManifest({
   startedAt,
   endedAt,
   records,
+  campaignManifest = null,
 }) {
   validateString(sessionId, 'sessionId');
   validateString(environmentId, 'environmentId');
@@ -107,15 +114,32 @@ export function buildZekNovaSessionManifest({
   const validated = records.map(validateShadowRecord).filter((record) => record.context.sessionId === sessionId);
   assert(validated.length === records.length, 'Every session record must match sessionId');
   const ordered = [...validated].sort((a, b) => a.context.sequence - b.context.sequence || a.captureId.localeCompare(b.captureId));
+  const bound = campaignManifest !== null;
+  const campaign = bound ? validateStage2FCampaignManifest(campaignManifest) : null;
+  if (bound) {
+    assert(ordered.every((record) => record.shadowRecordVersion === STAGE2F_RECORD_SCHEMA_VERSION), 'Every bound session record must use the current record schema');
+    for (const record of ordered) {
+      validateStage2FQualificationIdentity(record.qualificationIdentity, {
+        campaignManifest: campaign,
+        sessionId,
+        samplingIdentity: record.qualificationIdentity?.samplingIdentity,
+      });
+    }
+    assert(new Set(ordered.map((record) => record.qualificationIdentity.samplingIdentity)).size === ordered.length, 'Session contains a duplicate sampling identity');
+  }
+  const sequences = ordered.map((record) => record.context.sequence);
+  assert(new Set(sequences).size === sequences.length, 'Session contains a duplicate sequence');
+  for (let index = 1; index < sequences.length; index += 1) assert(sequences[index] === sequences[index - 1] + 1, 'Session sequence chain is not contiguous');
   const entries = ordered.map((record) => ({
     sequence: record.context.sequence,
     captureId: record.captureId,
     captureHash: record.captureHash ?? null,
     recordHash: record.recordHash,
     sourceStateHash: record.sourceStateHash,
+    ...(bound ? { samplingIdentity: record.qualificationIdentity.samplingIdentity } : {}),
   }));
   const payload = {
-    manifestVersion: ZEKNOVA_SESSION_MANIFEST_VERSION,
+    manifestVersion: bound ? ZEKNOVA_SESSION_MANIFEST_VERSION : 1,
     sessionId,
     environmentId,
     repositoryHead,
@@ -126,19 +150,32 @@ export function buildZekNovaSessionManifest({
     recordCount: entries.length,
     firstSequence: entries[0].sequence,
     lastSequence: entries.at(-1).sequence,
+    ...(bound ? {
+      stage2fCampaignId: campaign.stage2fCampaignId,
+      sentinelRuntimeId: campaign.sentinelRuntimeId,
+      generatedRuntimeProvenanceId: campaign.generatedRuntimeProvenanceId,
+      recordSchemaVersion: campaign.recordSchemaVersion,
+      collectorSchemaVersion: campaign.collectorSchemaVersion,
+      samplingIdentities: entries.map((entry) => entry.samplingIdentity),
+      samplingIdentitiesHash: sha256(entries.map((entry) => entry.samplingIdentity)),
+      evidenceMode: campaign.campaignMode,
+      qualificationEligible: campaign.qualificationEligible === true,
+    } : {}),
     entries,
     entriesHash: sha256(entries),
-    authority: { tier: 'R0', canDispatch: false, canMutateLiveWorld: false },
+    authority: { tier: 'R0', canDispatch: false, canMutateLiveWorld: false, canIssueAuthorityTokens: false },
   };
   return Object.freeze({ ...payload, manifestHash: sha256(payload) });
 }
 
-export function validateZekNovaSessionManifest(manifest, records) {
+export function validateZekNovaSessionManifest(manifest, records, { campaignManifest = null } = {}) {
   assert(manifest && typeof manifest === 'object' && !Array.isArray(manifest), 'Session manifest must be an object');
-  assert(manifest.manifestVersion === ZEKNOVA_SESSION_MANIFEST_VERSION, 'Unsupported session manifest version');
+  assert(manifest.manifestVersion === 1 || manifest.manifestVersion === ZEKNOVA_SESSION_MANIFEST_VERSION, 'Unsupported session manifest version');
+  if (campaignManifest) assert(manifest.manifestVersion === ZEKNOVA_SESSION_MANIFEST_VERSION, 'Bound campaign requires the current session manifest schema');
   const { manifestHash, ...payload } = manifest;
   assert(manifestHash === sha256(payload), 'Session manifest hash mismatch');
   assert(manifest.authority?.tier === 'R0' && manifest.authority?.canDispatch === false && manifest.authority?.canMutateLiveWorld === false, 'Session manifest must remain R0');
+  if (manifest.manifestVersion === ZEKNOVA_SESSION_MANIFEST_VERSION) assert(manifest.authority?.canIssueAuthorityTokens === false, 'Session manifest cannot issue authority tokens');
   const rebuilt = buildZekNovaSessionManifest({
     sessionId: manifest.sessionId,
     environmentId: manifest.environmentId,
@@ -148,12 +185,114 @@ export function validateZekNovaSessionManifest(manifest, records) {
     startedAt: manifest.startedAt,
     endedAt: manifest.endedAt,
     records,
+    campaignManifest,
   });
   assert(rebuilt.manifestHash === manifest.manifestHash, 'Session manifest does not match supplied records');
   return structuredClone(manifest);
 }
 
-function analyzeSessionChains(records, manifests) {
+function identityFailure(record, campaignManifest) {
+  if (!record?.qualificationIdentity?.sentinelRuntimeId) return 'MISSING_RUNTIME_BINDING';
+  if (!record.qualificationIdentity.generatedRuntimeProvenanceId) return 'MISSING_PROVENANCE_ID';
+  if (!record.qualificationIdentity.stage2fCampaignId) return 'MISSING_CAMPAIGN_ID';
+  if (record.shadowRecordVersion !== STAGE2F_RECORD_SCHEMA_VERSION) return 'UNKNOWN_SCHEMA';
+  try {
+    validateShadowRecord(record);
+  } catch (error) {
+    return /version/i.test(error.message) ? 'UNKNOWN_SCHEMA' : 'TAMPERED';
+  }
+  if (!campaignManifest) return 'UNKNOWN_CAMPAIGN';
+  try {
+    validateStage2FQualificationIdentity(record.qualificationIdentity, {
+      campaignManifest,
+      sessionId: record.context?.sessionId,
+      samplingIdentity: record.qualificationIdentity?.samplingIdentity,
+    });
+  } catch (error) {
+    return error.code ?? 'TAMPERED';
+  }
+  if (record.authority?.tier !== 'R0'
+      || record.authority?.canDispatch !== false
+      || record.authority?.canMutateLiveWorld !== false) return 'AUTHORITY_MISMATCH';
+  if (record.captureProvenance?.sentinelRuntimeId !== record.qualificationIdentity.sentinelRuntimeId) return 'RUNTIME_ID_MISMATCH';
+  if (record.captureProvenance?.generatedRuntimeProvenanceId !== record.qualificationIdentity.generatedRuntimeProvenanceId) return 'PROVENANCE_ID_MISMATCH';
+  if (record.captureProvenance?.stage2fCampaignId !== record.qualificationIdentity.stage2fCampaignId) return 'CAMPAIGN_ID_MISMATCH';
+  return null;
+}
+
+export function reconcileStage2FEvidence({ records, sessionManifests = [], campaignManifest = null }) {
+  assert(Array.isArray(records), 'records must be an array');
+  assert(Array.isArray(sessionManifests), 'sessionManifests must be an array');
+  let campaign = null;
+  let campaignError = null;
+  try { campaign = campaignManifest ? validateStage2FCampaignManifest(campaignManifest) : null; }
+  catch (error) { campaignError = error.code ?? 'UNKNOWN_CAMPAIGN'; }
+
+  const accepted = [];
+  const quarantined = [];
+  const rejected = [];
+  const candidates = [];
+  const seenRecordHashes = new Set();
+  const seenSamplingIdentities = new Set();
+  for (const [index, record] of records.entries()) {
+    const recordRef = record?.recordHash ?? record?.captureId ?? `index:${index}`;
+    const failure = campaignError ?? identityFailure(record, campaign);
+    if (failure) {
+      const target = record?.shadowRecordVersion === 1 || failure.startsWith('MISSING_') ? quarantined : rejected;
+      target.push({ recordRef, reason: failure });
+      continue;
+    }
+    if (seenRecordHashes.has(record.recordHash) || seenSamplingIdentities.has(record.qualificationIdentity.samplingIdentity)) {
+      rejected.push({ recordRef, reason: 'DUPLICATE' });
+      continue;
+    }
+    seenRecordHashes.add(record.recordHash);
+    seenSamplingIdentities.add(record.qualificationIdentity.samplingIdentity);
+    candidates.push(record);
+  }
+
+  const manifestsBySession = new Map();
+  for (const manifest of sessionManifests) {
+    if (manifestsBySession.has(manifest?.sessionId)) {
+      manifestsBySession.set(manifest.sessionId, null);
+    } else manifestsBySession.set(manifest?.sessionId, manifest);
+  }
+  for (const record of candidates) {
+    const sessionId = record.context.sessionId;
+    const sessionRecords = candidates.filter((entry) => entry.context.sessionId === sessionId);
+    const sessionManifest = manifestsBySession.get(sessionId);
+    const recordRef = record.recordHash;
+    if (!sessionManifest) {
+      rejected.push({ recordRef, reason: 'BROKEN_SESSION_CHAIN' });
+      continue;
+    }
+    try {
+      validateZekNovaSessionManifest(sessionManifest, sessionRecords, { campaignManifest: campaign });
+      accepted.push(record);
+    } catch {
+      rejected.push({ recordRef, reason: 'BROKEN_SESSION_CHAIN' });
+    }
+  }
+
+  const reasons = {};
+  for (const item of [...quarantined, ...rejected]) reasons[item.reason] = (reasons[item.reason] ?? 0) + 1;
+  return Object.freeze({
+    reconciliationVersion: 2,
+    stage2fCampaignId: campaign?.stage2fCampaignId ?? null,
+    sentinelRuntimeId: campaign?.sentinelRuntimeId ?? null,
+    generatedRuntimeProvenanceId: campaign?.generatedRuntimeProvenanceId ?? null,
+    total: records.length,
+    accepted: accepted.length,
+    quarantined: quarantined.length,
+    rejected: rejected.length,
+    acceptedRecords: Object.freeze(accepted.map((record) => structuredClone(record))),
+    quarantinedRecords: Object.freeze(quarantined),
+    rejectedRecords: Object.freeze(rejected),
+    reasons: Object.freeze(reasons),
+  });
+}
+
+function analyzeSessionChains(records, manifests, campaignManifest = null) {
   const manifestBySession = new Map(manifests.map((manifest) => [manifest.sessionId, manifest]));
   let sequenceGapCount = 0;
   let chainBreakCount = 0;
@@ -165,7 +304,7 @@ function analyzeSessionChains(records, manifests) {
       chainBreakCount += 1;
       continue;
     }
-    try { validateZekNovaSessionManifest(manifest, sessionRecords); } catch { chainBreakCount += 1; }
+    try { validateZekNovaSessionManifest(manifest, sessionRecords, { campaignManifest }); } catch { chainBreakCount += 1; }
     const sequences = [...sessionRecords].map((record) => record.context.sequence).sort((a, b) => a - b);
     for (let index = 1; index < sequences.length; index += 1) {
       if (sequences[index] !== sequences[index - 1] + 1) sequenceGapCount += 1;
@@ -184,30 +323,36 @@ export function certifyZekNovaSustainedShadowCampaign({
   manifest,
   records,
   sessionManifests = [],
+  campaignManifest = null,
   thresholds = DEFAULT_STAGE2F_CAMPAIGN_THRESHOLDS,
   profileName = 'stage2f-production-live-r0',
 }) {
   assert(Array.isArray(records), 'records must be an array');
   assert(Array.isArray(sessionManifests), 'sessionManifests must be an array');
-  const validated = [];
-  const quarantined = [];
-  for (const record of records) {
-    try {
-      const accepted = validateShadowRecord(record);
-      if (isAuthenticLiveRuntimeRecord(accepted)) validated.push(accepted);
-      else quarantined.push({ recordHash: accepted.recordHash, reason: 'non-authentic-or-incomplete-live-provenance' });
-    } catch (error) {
-      quarantined.push({ recordHash: record?.recordHash ?? null, reason: error.message });
-    }
-  }
+  let boundCampaign = null;
+  try { boundCampaign = campaignManifest ? validateStage2FCampaignManifest(campaignManifest) : null; } catch { boundCampaign = null; }
+  const reconciliation = reconcileStage2FEvidence({ records, sessionManifests, campaignManifest });
+  const validated = reconciliation.acceptedRecords.filter((record) => record.qualificationIdentity?.qualificationEligible === true && isAuthenticLiveRuntimeRecord(record));
+  const quarantined = [
+    ...reconciliation.quarantinedRecords,
+    ...reconciliation.rejectedRecords,
+    ...reconciliation.acceptedRecords
+      .filter((record) => record.qualificationIdentity?.qualificationEligible !== true || !isAuthenticLiveRuntimeRecord(record))
+      .map((record) => ({ recordRef: record.recordHash, reason: record.qualificationIdentity?.evidenceMode === 'DRY_RUN' ? 'DRY_RUN_NONQUALIFYING' : 'NON_AUTHENTIC_OR_INCOMPLETE_LIVE_PROVENANCE' })),
+  ];
   const duplicateCaptureIdCount = duplicateCount(validated.map((record) => record.captureId));
   const duplicateFixtureHashCount = duplicateCount(validated.map((record) => record.fixtureHash));
-  const chains = analyzeSessionChains(validated, sessionManifests);
+  const chains = analyzeSessionChains(validated, sessionManifests, campaignManifest);
   const baseThresholds = { ...DEFAULT_PRODUCTION_SHADOW_THRESHOLDS, ...thresholds };
   const base = certifyZekNovaSustainedShadow({ manifest, records: validated, thresholds: baseThresholds, profileName });
   const holdoutRecords = validated.filter((record) => Number.parseInt(record.sourceStateHash.slice(0, 8), 16) % 5 === 0);
   const checks = [
+    { name: 'current-campaign-manifest-required', pass: Boolean(boundCampaign), stage2fCampaignId: boundCampaign?.stage2fCampaignId ?? null },
+    { name: 'qualification-campaign-active', pass: boundCampaign?.campaignMode === 'QUALIFICATION' && boundCampaign?.campaignState === 'ACTIVE' && boundCampaign?.qualificationEligible === true, campaignMode: boundCampaign?.campaignMode ?? null, campaignState: boundCampaign?.campaignState ?? null },
     { name: 'authentic-live-runtime-provenance', pass: quarantined.length <= thresholds.maxQuarantinedRecordCount, authenticRecordCount: validated.length, quarantinedRecordCount: quarantined.length },
+    { name: 'runtime-identity-binding', pass: validated.every((record) => record.qualificationIdentity.sentinelRuntimeId === campaignManifest?.sentinelRuntimeId), sentinelRuntimeId: campaignManifest?.sentinelRuntimeId ?? null },
+    { name: 'generated-runtime-provenance-binding', pass: validated.every((record) => record.qualificationIdentity.generatedRuntimeProvenanceId === campaignManifest?.generatedRuntimeProvenanceId), generatedRuntimeProvenanceId: campaignManifest?.generatedRuntimeProvenanceId ?? null },
+    { name: 'campaign-identity-binding', pass: validated.every((record) => record.qualificationIdentity.stage2fCampaignId === campaignManifest?.stage2fCampaignId), stage2fCampaignId: campaignManifest?.stage2fCampaignId ?? null },
     thresholdCheck('minimum-authentic-records', validated.length, '>=', thresholds.minAuthenticRecordCount),
     thresholdCheck('minimum-manifested-sessions', chains.manifestedSessionCount, '>=', thresholds.minManifestedSessionCount),
     thresholdCheck('minimum-deterministic-holdout-records', holdoutRecords.length, '>=', thresholds.minHoldoutRecordCount),
@@ -221,6 +366,9 @@ export function certifyZekNovaSustainedShadowCampaign({
   const pass = checks.every((check) => check.pass);
   const campaignPayload = {
     campaignCertificationVersion: ZEKNOVA_CAMPAIGN_CERTIFICATION_VERSION,
+    stage2fCampaignId: campaignManifest?.stage2fCampaignId ?? null,
+    sentinelRuntimeId: campaignManifest?.sentinelRuntimeId ?? null,
+    generatedRuntimeProvenanceId: campaignManifest?.generatedRuntimeProvenanceId ?? null,
     profileName,
     authenticRecordCount: validated.length,
     quarantinedRecordCount: quarantined.length,
@@ -239,6 +387,7 @@ export function certifyZekNovaSustainedShadowCampaign({
     checks,
     baseCertification: base,
     quarantined,
+    reconciliation,
     holdoutRecordHashes: holdoutRecords.map((record) => record.recordHash).sort(),
   });
 }

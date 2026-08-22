@@ -1,0 +1,537 @@
+{
+  "stage": "STAGE2I3A_REGIME_CHANGE_REVERSAL_SEPARATION_REMEDIATION",
+  "baseline": {
+    "scores": {
+      "prime": 4,
+      "oracleV1": 3,
+      "nexus": 4,
+      "persistenceV2": 7,
+      "regimeV2": 6
+    },
+    "stage2i3Status": "FAIL",
+    "stage2i3CertificationHash": "75a9308cba3a16dcfafdef0214df607f2812f2052b5aaa1d76746e86f6e5573c",
+    "stage2i3EvidenceDigest": "1be4b3081d9b3350c433bb4718f0deb42603c63426fa45689cb426e30c21434b"
+  },
+  "semantics": {
+    "reversal": "RECENT_DIRECTION_MATERIALLY_OPPOSES_EARLIER_DIRECTION",
+    "regimeChange": "ONE_OR_MORE_STABLE_GENERATING_PROCESS_PROPERTIES_CHANGED_MATERIALLY_AND_PERSISTENTLY",
+    "reversalImpliesRegimeChange": false,
+    "regimeChangeMayIncludeReversal": true,
+    "processDimensions": [
+      "LEVEL",
+      "TREND",
+      "VOLATILITY",
+      "CYCLE_STRUCTURE",
+      "FREQUENCY",
+      "PERSISTENCE_PATTERN"
+    ]
+  },
+  "frozenHeads": {
+    "stage2i2OwnerSha256": "bc908a23dd595376deb7ef39a81b7d95fbfb7da118bb65989e05a12165d51bdf",
+    "stage2i3OwnerSha256": "d334e768f2ab559a04c3906f53d37b588a265e39c7c79821d086fedf0b96fcf9",
+    "persistenceSelection": {
+      "id": "BOUNDED_INTERRUPTION_TOLERANCE",
+      "minimumSupport": 0.68,
+      "maximumOpposingRun": 2,
+      "requireFullRecentAgreement": true
+    },
+    "persistenceSelectionDigest": "573b3a7b2325b8c0a18d129d9957b30ad021f097eed41515a8d769b2136f0ef9",
+    "evidenceIdentities": {
+      "direction": "5315a3eb7918001d3011f71cb1b57ed4a6f2d0fdccfc5ecf0cf94c8bbe3672b7",
+      "persistenceV2": "5ddd3243ade1811dac8d465dcf435d493b4d2bf7ac3c8600b6483f8156545d69",
+      "reversal": "e8ad0b9ef655073f644f304c598e99cfba12c55381dc29e1d87c8b1c32d71541",
+      "volatility": "28ee47dff24228b83c9cec51f3431e8dd2a2677a741cec3cd7979180d2df8b7a",
+      "cycle": "332bc9e3f4d861e4807293faf162708be286ad23ed6379e7946775b4ce9d75e6",
+      "timeToThreshold": "42884e7605aade02f46a25c142ee4ade6238b25a513c3ce40a9bf09093e4af54",
+      "abstention": "1e768c78f20e842bee671ae63058b5e013e280fb4a4707f344fdb0cc6bfe0bd6"
+    },
+    "changed": {
+      "direction": false,
+      "persistenceV2": false,
+      "reversal": false,
+      "volatility": false,
+      "cycle": false,
+      "timeToThreshold": false,
+      "abstention": false
+    },
+    "allOtherSuccessfulHeadsUnchanged": true
+  },
+  "corpus": {
+    "totalCases": 1080,
+    "effectiveSemanticGroups": 1057,
+    "casesPerQuadrant": {
+      "REVERSAL_ONLY": 270,
+      "REGIME_ONLY": 270,
+      "REVERSAL_AND_REGIME": 270,
+      "NEITHER": 270
+    },
+    "semanticFamilyLeakage": false,
+    "development": {
+      "cases": 360,
+      "families": [
+        "SMOOTH_OSCILLATION_MIDPOINT",
+        "NORMAL_CYCLIC_DOWNTURN",
+        "TEMPORARY_CORRECTION_PERSISTENT_TREND",
+        "STABLE_TO_VOLATILE",
+        "LOW_TO_HIGH_AMPLITUDE_CYCLE",
+        "POSITIVE_TREND_STEEPENS",
+        "POSITIVE_TO_NEGATIVE",
+        "NEGATIVE_TO_POSITIVE_NEW_VARIANCE",
+        "CYCLE_TO_MONOTONIC",
+        "STABLE_CONTINUATION",
+        "POSITIVE_TREND_CONTINUATION",
+        "SINGLE_OUTLIER"
+      ],
+      "digest": "49b00d60e9340edb9b6ee074077077314613b81ea5ba189145483eeda9b3e608"
+    },
+    "validation": {
+      "cases": 360,
+      "families": [
+        "BOUNDED_MEAN_REVERSION",
+        "SINGLE_LOCAL_TURNING_POINT",
+        "SHORT_LIVED_REVERSAL",
+        "VOLATILE_TO_STABLE",
+        "CYCLE_FREQUENCY_SHIFT",
+        "NEGATIVE_TREND_STEEPENS",
+        "NEGATIVE_TO_POSITIVE",
+        "POSITIVE_TO_NEGATIVE_NEW_LEVEL",
+        "MONOTONIC_TO_CYCLE",
+        "NORMAL_NOISE",
+        "TEMPORARY_SPIKE",
+        "TEMPORARY_DIP"
+      ],
+      "digest": "d6e336fc466916ec7ae2a06a6c0281fdb02ffad3f8fb17138b9785b078909a40"
+    },
+    "finalHoldout": {
+      "cases": 360,
+      "families": [
+        "REVERSAL_RETURN_TO_PRIOR_BEHAVIOR",
+        "CYCLIC_TROUGH_EXIT",
+        "ONE_WINDOW_CORRECTION",
+        "LEVEL_SHIFT_SAME_DIRECTION",
+        "STABLE_TO_TREND_POSITIVE",
+        "STABLE_TO_TREND_NEGATIVE",
+        "POSITIVE_TO_NEGATIVE_NEW_VARIANCE",
+        "NEGATIVE_TO_POSITIVE_NEW_LEVEL",
+        "CYCLE_REPLACED_BY_TREND",
+        "BOUNDED_VOLATILITY",
+        "OUTLIER_CLUSTER",
+        "DUPLICATED_SAMPLE_CONTINUATION"
+      ],
+      "digest": "104673b2fe90fd57cb6cbc4011cbebe6ef17b552acfa9497c51242e686f259a3",
+      "executedOnce": true
+    }
+  },
+  "search": {
+    "space": [
+      {
+        "id": "MULTI_DIMENSION_WINDOW_DELTA",
+        "persistenceGate": false,
+        "cycleAware": true,
+        "anomalySuppression": false,
+        "sensitivity": 1
+      },
+      {
+        "id": "PERSISTENCE_GATED_WINDOW_DELTA",
+        "persistenceGate": true,
+        "cycleAware": false,
+        "anomalySuppression": true,
+        "sensitivity": 1
+      },
+      {
+        "id": "CONSENSUS_PROCESS_CHANGE",
+        "persistenceGate": true,
+        "cycleAware": true,
+        "anomalySuppression": true,
+        "sensitivity": 1
+      },
+      {
+        "id": "HIERARCHICAL_PROCESS_CHANGE",
+        "persistenceGate": true,
+        "cycleAware": true,
+        "anomalySuppression": true,
+        "sensitivity": 1.15
+      }
+    ],
+    "digest": "51e2cf5d7d3a33fd3befdd0e7a5f912490c71c3bad0312caa1fd3af4ff49b5ef",
+    "validationResults": {
+      "MULTI_DIMENSION_WINDOW_DELTA": {
+        "cases": 360,
+        "correct": 291,
+        "accuracy": 0.8083333333333333,
+        "truePositive": 180,
+        "falsePositive": 9,
+        "falseNegative": 0,
+        "trueNegative": 171,
+        "precision": 0.9523809523809523,
+        "recall": 1,
+        "specificity": 0.95,
+        "f1": 0.975609756097561,
+        "labelAccuracy": {
+          "NO_CHANGE": 0.95,
+          "LEVEL_CHANGE": null,
+          "TREND_CHANGE": 1,
+          "VOLATILITY_CHANGE": 0,
+          "CYCLE_CHANGE": 0,
+          "MULTIPLE_CHANGE": 1,
+          "INSUFFICIENT_EVIDENCE": null
+        },
+        "quadrantAccuracy": {
+          "REVERSAL_ONLY": 1,
+          "REGIME_ONLY": 0.3333333333333333,
+          "REVERSAL_AND_REGIME": 1,
+          "NEITHER": 0.9
+        }
+      },
+      "PERSISTENCE_GATED_WINDOW_DELTA": {
+        "cases": 360,
+        "correct": 295,
+        "accuracy": 0.8194444444444444,
+        "truePositive": 176,
+        "falsePositive": 0,
+        "falseNegative": 4,
+        "trueNegative": 180,
+        "precision": 1,
+        "recall": 0.9777777777777777,
+        "specificity": 1,
+        "f1": 0.9887640449438202,
+        "labelAccuracy": {
+          "NO_CHANGE": 1,
+          "LEVEL_CHANGE": null,
+          "TREND_CHANGE": 1,
+          "VOLATILITY_CHANGE": 0.8333333333333334,
+          "CYCLE_CHANGE": 0,
+          "MULTIPLE_CHANGE": 0.5,
+          "INSUFFICIENT_EVIDENCE": null
+        },
+        "quadrantAccuracy": {
+          "REVERSAL_ONLY": 1,
+          "REGIME_ONLY": 0.6111111111111112,
+          "REVERSAL_AND_REGIME": 0.6666666666666666,
+          "NEITHER": 1
+        }
+      },
+      "CONSENSUS_PROCESS_CHANGE": {
+        "cases": 360,
+        "correct": 313,
+        "accuracy": 0.8694444444444445,
+        "truePositive": 176,
+        "falsePositive": 0,
+        "falseNegative": 4,
+        "trueNegative": 180,
+        "precision": 1,
+        "recall": 0.9777777777777777,
+        "specificity": 1,
+        "f1": 0.9887640449438202,
+        "labelAccuracy": {
+          "NO_CHANGE": 1,
+          "LEVEL_CHANGE": null,
+          "TREND_CHANGE": 1,
+          "VOLATILITY_CHANGE": 0.43333333333333335,
+          "CYCLE_CHANGE": 1,
+          "MULTIPLE_CHANGE": 0.5,
+          "INSUFFICIENT_EVIDENCE": null
+        },
+        "quadrantAccuracy": {
+          "REVERSAL_ONLY": 1,
+          "REGIME_ONLY": 0.8111111111111111,
+          "REVERSAL_AND_REGIME": 0.6666666666666666,
+          "NEITHER": 1
+        }
+      },
+      "HIERARCHICAL_PROCESS_CHANGE": {
+        "cases": 360,
+        "correct": 313,
+        "accuracy": 0.8694444444444445,
+        "truePositive": 176,
+        "falsePositive": 0,
+        "falseNegative": 4,
+        "trueNegative": 180,
+        "precision": 1,
+        "recall": 0.9777777777777777,
+        "specificity": 1,
+        "f1": 0.9887640449438202,
+        "labelAccuracy": {
+          "NO_CHANGE": 1,
+          "LEVEL_CHANGE": null,
+          "TREND_CHANGE": 1,
+          "VOLATILITY_CHANGE": 0.43333333333333335,
+          "CYCLE_CHANGE": 1,
+          "MULTIPLE_CHANGE": 0.5,
+          "INSUFFICIENT_EVIDENCE": null
+        },
+        "quadrantAccuracy": {
+          "REVERSAL_ONLY": 1,
+          "REGIME_ONLY": 0.8111111111111111,
+          "REVERSAL_AND_REGIME": 0.6666666666666666,
+          "NEITHER": 1
+        }
+      }
+    },
+    "selection": {
+      "selectedRegimeV3": {
+        "id": "CONSENSUS_PROCESS_CHANGE",
+        "persistenceGate": true,
+        "cycleAware": true,
+        "anomalySuppression": true,
+        "sensitivity": 1
+      },
+      "selectionFrozen": true,
+      "frozenBeforeFinalHoldout": true,
+      "rule": "MAX_EXACT_ACCURACY_THEN_MIN_FALSE_POSITIVES_THEN_LEXICAL_ID"
+    }
+  },
+  "simpleBaselinesFrozen": true,
+  "finalHoldout": {
+    "regimeV1Score": 6,
+    "regimeV2Score": 6,
+    "regimeV3Score": 3,
+    "cases": 360,
+    "correct": 266,
+    "accuracy": 0.7388888888888889,
+    "truePositive": 120,
+    "falsePositive": 4,
+    "falseNegative": 60,
+    "trueNegative": 176,
+    "precision": 0.967741935483871,
+    "recall": 0.6666666666666666,
+    "specificity": 0.9777777777777777,
+    "f1": 0.7894736842105263,
+    "labelAccuracy": {
+      "NO_CHANGE": 0.9777777777777777,
+      "LEVEL_CHANGE": 1,
+      "TREND_CHANGE": 0,
+      "VOLATILITY_CHANGE": null,
+      "CYCLE_CHANGE": null,
+      "MULTIPLE_CHANGE": 0.6666666666666666,
+      "INSUFFICIENT_EVIDENCE": null
+    },
+    "quadrantAccuracy": {
+      "REVERSAL_ONLY": 1,
+      "REGIME_ONLY": 0.3333333333333333,
+      "REVERSAL_AND_REGIME": 0.6666666666666666,
+      "NEITHER": 0.9555555555555556
+    },
+    "adversarialAccuracy": 0.8740740740740741,
+    "incrementalValue": 0.23888888888888893,
+    "baselines": {
+      "RECENT_VS_PRIOR_MEAN_DELTA": {
+        "cases": 360,
+        "correct": 210,
+        "accuracy": 0.5833333333333334,
+        "truePositive": 60,
+        "falsePositive": 0,
+        "falseNegative": 120,
+        "trueNegative": 180,
+        "precision": 1,
+        "recall": 0.3333333333333333,
+        "specificity": 1,
+        "f1": 0.5,
+        "labelAccuracy": {
+          "NO_CHANGE": 1,
+          "LEVEL_CHANGE": 1,
+          "TREND_CHANGE": 0,
+          "VOLATILITY_CHANGE": null,
+          "CYCLE_CHANGE": null,
+          "MULTIPLE_CHANGE": 0,
+          "INSUFFICIENT_EVIDENCE": null
+        },
+        "quadrantAccuracy": {
+          "REVERSAL_ONLY": 1,
+          "REGIME_ONLY": 0.3333333333333333,
+          "REVERSAL_AND_REGIME": 0,
+          "NEITHER": 1
+        }
+      },
+      "RECENT_VS_PRIOR_SLOPE_DELTA": {
+        "cases": 360,
+        "correct": 204,
+        "accuracy": 0.5666666666666667,
+        "truePositive": 150,
+        "falsePositive": 36,
+        "falseNegative": 30,
+        "trueNegative": 144,
+        "precision": 0.8064516129032258,
+        "recall": 0.8333333333333334,
+        "specificity": 0.8,
+        "f1": 0.819672131147541,
+        "labelAccuracy": {
+          "NO_CHANGE": 0.8,
+          "LEVEL_CHANGE": 0,
+          "TREND_CHANGE": 1,
+          "VOLATILITY_CHANGE": null,
+          "CYCLE_CHANGE": null,
+          "MULTIPLE_CHANGE": 0,
+          "INSUFFICIENT_EVIDENCE": null
+        },
+        "quadrantAccuracy": {
+          "REVERSAL_ONLY": 0.6666666666666666,
+          "REGIME_ONLY": 0.6666666666666666,
+          "REVERSAL_AND_REGIME": 0,
+          "NEITHER": 0.9333333333333333
+        }
+      },
+      "RECENT_VS_PRIOR_VARIANCE_DELTA": {
+        "cases": 360,
+        "correct": 176,
+        "accuracy": 0.4888888888888889,
+        "truePositive": 60,
+        "falsePositive": 4,
+        "falseNegative": 120,
+        "trueNegative": 176,
+        "precision": 0.9375,
+        "recall": 0.3333333333333333,
+        "specificity": 0.9777777777777777,
+        "f1": 0.49180327868852464,
+        "labelAccuracy": {
+          "NO_CHANGE": 0.9777777777777777,
+          "LEVEL_CHANGE": 0,
+          "TREND_CHANGE": 0,
+          "VOLATILITY_CHANGE": null,
+          "CYCLE_CHANGE": null,
+          "MULTIPLE_CHANGE": 0,
+          "INSUFFICIENT_EVIDENCE": null
+        },
+        "quadrantAccuracy": {
+          "REVERSAL_ONLY": 1,
+          "REGIME_ONLY": 0,
+          "REVERSAL_AND_REGIME": 0,
+          "NEITHER": 0.9555555555555556
+        }
+      },
+      "REVERSAL_ONLY_BASELINE": {
+        "cases": 360,
+        "correct": 90,
+        "accuracy": 0.25,
+        "truePositive": 90,
+        "falsePositive": 90,
+        "falseNegative": 90,
+        "trueNegative": 90,
+        "precision": 0.5,
+        "recall": 0.5,
+        "specificity": 0.5,
+        "f1": 0.5,
+        "labelAccuracy": {
+          "NO_CHANGE": 0.5,
+          "LEVEL_CHANGE": 0,
+          "TREND_CHANGE": 0,
+          "VOLATILITY_CHANGE": null,
+          "CYCLE_CHANGE": null,
+          "MULTIPLE_CHANGE": 0,
+          "INSUFFICIENT_EVIDENCE": null
+        },
+        "quadrantAccuracy": {
+          "REVERSAL_ONLY": 0,
+          "REGIME_ONLY": 0,
+          "REVERSAL_AND_REGIME": 0,
+          "NEITHER": 1
+        }
+      },
+      "ANY_DIMENSION_DELTA_BASELINE": {
+        "cases": 360,
+        "correct": 320,
+        "accuracy": 0.8888888888888888,
+        "truePositive": 180,
+        "falsePositive": 40,
+        "falseNegative": 0,
+        "trueNegative": 140,
+        "precision": 0.8181818181818182,
+        "recall": 1,
+        "specificity": 0.7777777777777778,
+        "f1": 0.9,
+        "labelAccuracy": {
+          "NO_CHANGE": 0.7777777777777778,
+          "LEVEL_CHANGE": 1,
+          "TREND_CHANGE": 1,
+          "VOLATILITY_CHANGE": null,
+          "CYCLE_CHANGE": null,
+          "MULTIPLE_CHANGE": 1,
+          "INSUFFICIENT_EVIDENCE": null
+        },
+        "quadrantAccuracy": {
+          "REVERSAL_ONLY": 0.6666666666666666,
+          "REGIME_ONLY": 1,
+          "REVERSAL_AND_REGIME": 1,
+          "NEITHER": 0.8888888888888888
+        }
+      }
+    },
+    "bestSimpleBaseline": {
+      "name": "ANY_DIMENSION_DELTA_BASELINE",
+      "cases": 360,
+      "correct": 320,
+      "accuracy": 0.8888888888888888,
+      "truePositive": 180,
+      "falsePositive": 40,
+      "falseNegative": 0,
+      "trueNegative": 140,
+      "precision": 0.8181818181818182,
+      "recall": 1,
+      "specificity": 0.7777777777777778,
+      "f1": 0.9,
+      "labelAccuracy": {
+        "NO_CHANGE": 0.7777777777777778,
+        "LEVEL_CHANGE": 1,
+        "TREND_CHANGE": 1,
+        "VOLATILITY_CHANGE": null,
+        "CYCLE_CHANGE": null,
+        "MULTIPLE_CHANGE": 1,
+        "INSUFFICIENT_EVIDENCE": null
+      },
+      "quadrantAccuracy": {
+        "REVERSAL_ONLY": 0.6666666666666666,
+        "REGIME_ONLY": 1,
+        "REVERSAL_AND_REGIME": 1,
+        "NEITHER": 0.8888888888888888
+      }
+    },
+    "beatsSimpleBaseline": false,
+    "reversalOnlyFalseRegimeRate": 0,
+    "temporaryAnomalyFalsePositiveRate": 0.044444444444444446,
+    "distinctFromReversal": false,
+    "signalCausallyAttributed": true
+  },
+  "qualityGate": {
+    "preRegistered": true,
+    "minimumScore": 7,
+    "minimumAccuracy": 0.85,
+    "minimumAdversarialAccuracy": 0.85,
+    "maximumReversalOnlyFalseRegimeRate": 0.1,
+    "requiresSimpleBaselineSuperiority": true,
+    "requiresPositiveIncrementalValue": true,
+    "requiresDistinctFromReversal": true,
+    "requiresCausalAttribution": true
+  },
+  "qualityGatePass": false,
+  "projectedOracleV2": {
+    "heads": {
+      "direction": 10,
+      "persistence": 7,
+      "reversal": 7,
+      "regimeChange": 3,
+      "volatility": 10,
+      "cycle": 7,
+      "timeToThreshold": 10,
+      "abstention": 10
+    },
+    "capabilityScore": "NOT_CERTIFIABLE_UNTIL_ASSEMBLY"
+  },
+  "oracleV2Assembled": false,
+  "oracleProductionReplaced": false,
+  "primeChanged": false,
+  "nexusChanged": false,
+  "expertSelectionInfluence": 0,
+  "expertActionSelectionApproved": false,
+  "finalRecommendationOwner": "PRIME",
+  "replayEquivalent": true,
+  "authority": {
+    "tier": "R0",
+    "canDispatch": false,
+    "canMutateLiveWorld": false
+  },
+  "liveActionDispatches": 0,
+  "worldMutations": 0,
+  "authorityEscalations": 0,
+  "authorityTokenIssues": 0,
+  "evidenceDigest": "725356e2a55c788b30c19d4addc06e227964e906f25bcaaa9a6484304b794414"
+}
