@@ -84,7 +84,8 @@ Documentation reconciliation only — no historical evidence is rewritten here.
 | Stage 2L.7 | **PASS** — remediated. Evidence identity binding, runtime/campaign binding, expert and head eligibility, default-deny validation, malformed/stale/cross-runtime rejection, fail-closed behaviour, R0 preserved. |
 | Stage 2L.8 | **PASS** — independent 20,020-case red-team replication. Prime 49.83%, Arbiter 52.36% (+2.53 pp), 507 selection changes, 0 harmful changes, 0 correct-Prime breaks. |
 | Stage 2L.9 | **FAIL** — 20,500 cases. Prime 49.94%, Arbiter 61.48% (+11.54 pp), but 915 harmful changes against a 1.00% ceiling (4.46%). Correctness discrimination measured at −0.0038 (Oracle) and +0.0030 (Nexus): the Arbiter could prove evidence was *authentic* but had no signal for whether the expert was *correct*. |
-| Stage 2L.10 | **PASS** — **current**. Arbiter correctness calibration and selective delegation. 22,750-case holdout, disjoint from an 8,450-case calibration corpus. Prime 54.81%, Arbiter 60.66% (+5.85 pp), 1,332 beneficial changes, **0 harmful changes**, **0 correct-Prime breaks**, delegation precision 1.000. Oracle correctness discrimination **+0.5651**, Nexus 0.0000 (abstains — measured non-identifiability). Portability recorded on a single platform. |
+| Stage 2L.10 | **PASS** — Arbiter correctness calibration and selective delegation. 22,750-case holdout, disjoint from an 8,450-case calibration corpus. Prime 54.81%, Arbiter 60.66% (+5.85 pp), 1,332 beneficial changes, **0 harmful changes**, **0 correct-Prime breaks**, delegation precision 1.000. Oracle correctness discrimination **+0.5651**, Nexus 0.0000 (abstains everywhere; whether that was remediable was left open and is settled by Stage 2L.11). Portability recorded on a single platform. |
+| Stage 2L.11 | **PASS** — **current**. Nexus semantic identifiability and decision-utility certification. A measurement stage: it passes because it answered its question, not because Nexus turned out useful. 12,000-case holdout over twelve topology families, disjoint from a 6,000-case discovery corpus. `NEXUS_IDENTIFIABILITY_STATUS = NON_IDENTIFIABLE_CURRENT_TASK`. Best gap over 264 predicates spanning all four feature tiers was 0.0520, **below** the permutation-null median of 0.0593; a rule frozen on discovery fell from 0.5947 to 0.5242 out of sample against a 0.5338 base rate. Nexus delegations 0, harm 0, correct-Prime breaks 0. |
 | Stage 3+ | Not started |
 
 Authority remains **R0** at every stage above: `canDispatch=false`,
@@ -108,18 +109,46 @@ produces `ABSTAIN_FROM_DELEGATION`, never trust-by-default. Stage 2L.10
 delegations are a strict subset of Stage 2L.7 delegations, so no inherited
 protection can be weakened by construction.
 
-Still open after Stage 2L.10:
+### What Stage 2L.11 established
 
-- **Nexus contributes no utility.** No structural bucket reached the reliability
-  floor, so Nexus abstains everywhere; 1,849 correct delegation opportunities on
-  the holdout were declined. Recovering them needs Nexus to certify *semantic*
-  optimality, not just structural criticality — a Nexus contract question.
+Stage 2L.10 left one question open: was Nexus's zero contribution a property of
+Nexus, of the evidence contract, or of the task? Stage 2L.11 measured it.
+
+The analysis was deliberately given **more** information than the Arbiter is
+allowed to use — four feature tiers including every field Nexus computes but
+discards, and the entire 19-signal certified `evaluateNexus` contract that is not
+in the Arbiter path at all. Correctness was still unpredictable:
+
+- No feature beat a permutation null. The best gap found was *smaller* than what
+  the same search finds on shuffled labels.
+- A rule frozen on a discovery corpus collapsed below the base rate on holdout.
+- Among delegation opportunities, `expertCorrect` is identically equal to a hidden
+  seeded draw that Nexus, the Arbiter and Prime all cannot see — verified on all
+  5,809 opportunities.
+
+`CONTRACT_INCOMPLETE` is therefore **empirically excluded**: widening the evidence
+contract cannot help, because the wider tiers carry no more signal than the
+exposed one. The minimum contract change required is **none**.
+
+The defect is located in **corpus semantics and world-state observability**, not
+in Nexus. The corpus models semantic alignment as an independent coin flip at a
+declared 0.7 rate rather than as a function of latent world state, and the
+observation stream carries no utility information from which any expert could
+recover it.
+
+Still open after Stage 2L.11:
+
+- **Nexus contributes no utility, and cannot under the current task.** This is now
+  a measured result rather than an open question. Recovering it requires the
+  observation stream to carry entity utility / objective weighting — an adapter
+  and corpus-semantics question, not an Arbiter or evidence-contract one.
 - **Only Oracle's direction head has a calibrated correctness signal.** The other
-  six heads cannot currently justify a delegation.
-- **Zero harm is measured on this corpus, not proven in general.** A mean-reverting
-  displacement slower than the calibrated slope ratio would pass the gate and be
-  wrong.
-- **Portability is single-platform** (`DIGEST_PRODUCED_SINGLE_PLATFORM`), not PASS.
+  six heads still cannot justify a delegation.
+- **Zero harm remains measured, not proven in general.** Stage 2L.11 added twelve
+  unseen topology families and the inherited protections held on all of them, but
+  that is out-of-distribution evidence, not a proof.
+- **Portability is single-platform** (`DIGEST_PRODUCED_SINGLE_PLATFORM`), for both
+  Stage 2L.10 and Stage 2L.11. It remains an explicit later certification item.
 - Prime's priors are still uniform; the Router remains outside the certified Prime
   path.
 - **Live ZekNova qualification remains uncertified** under the current lineage:

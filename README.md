@@ -72,7 +72,7 @@ A valid expert that cannot establish decision-specific confidence yields
 |---|---|
 | Sentinel Prime | Bounded depth-2 search, certified. Priors still uniform. |
 | Sentinel Oracle | V2 head assembly certified. Only the **direction** head has a calibrated correctness signal. |
-| Sentinel Nexus | Relational graph-delta reasoning certified as exact. Currently **abstains from all delegation** — no structural bucket reaches the reliability floor. |
+| Sentinel Nexus | Relational graph-delta reasoning certified as exact. **Abstains from all delegation, and cannot do otherwise under the current task** — Stage 2L.11 measured its correctness as non-identifiable from any decision-time observable. |
 | Arbiter | Certified at Stage 2L.10. Delegations are a strict subset of the Stage 2L.7 delegation set. |
 | Router | Outside the certified Prime path. Not certified. |
 
@@ -93,6 +93,25 @@ Twelve inherited evidence attacks and nine attacks on the new attestation surfac
 all fail closed. See
 `platform/game-agnostic/artifacts/stage2l10-arbiter-correctness-calibration-and-selective-delegation/stage2l10-report.md`
 for the full result including measured residual exposure.
+
+### Why Nexus contributes nothing (Stage 2L.11)
+
+Nexus's zero contribution is not a tuning gap. Stage 2L.11 gave an identifiability
+analysis **more** information than the Arbiter is allowed to use — every field
+Nexus computes internally, plus the entire 19-signal certified expert contract
+that is not in the Arbiter path — across 12,000 holdout cases spanning twelve
+topology families. Correctness was still unpredictable:
+
+- the best signal found over 264 predicates was *weaker* than the same search
+  finds on shuffled labels;
+- a rule frozen on a discovery corpus collapsed below the base rate on holdout.
+
+Among delegation opportunities, Nexus is correct exactly when a hidden draw — one
+that Nexus, the Arbiter and Prime all cannot see — comes up true. The limitation
+is in **corpus semantics and world-state observability**, not in Nexus and not in
+the evidence contract. Recovering Nexus utility requires the observation stream to
+carry entity utility or objective weighting; widening the evidence contract would
+not help.
 
 ## ZekNova status
 
@@ -115,7 +134,7 @@ promotion is available or planned before Stage 10.
 
 ## Roadmap position
 
-Current stage: **2L.10 — PASS**. Recent history:
+Current stage: **2L.11 — PASS**. Recent history:
 
 | Stage | Result |
 |---|---|
@@ -124,6 +143,7 @@ Current stage: **2L.10 — PASS**. Recent history:
 | 2L.8 | PASS — independent 20,020-case red-team replication |
 | 2L.9 | FAIL — 4.46% harmful-change rate; no expert-correctness signal existed |
 | 2L.10 | PASS — correctness calibration and selective delegation |
+| 2L.11 | PASS — Nexus correctness measured non-identifiable under the current task |
 
 Full detail in [`platform/game-agnostic/docs/TEN_STAGE_ROADMAP.md`](platform/game-agnostic/docs/TEN_STAGE_ROADMAP.md).
 

@@ -1,0 +1,173 @@
+{
+  "stage": "STAGE2L11_NEXUS_SEMANTIC_IDENTIFIABILITY_AND_DECISION_UTILITY",
+  "contractMapVersion": 1,
+  "layers": {
+    "NEXUS_INPUTS": {
+      "description": "Canonical relational state plus the reachability query the Arbiter binds.",
+      "fields": [
+        "canonicalState.entities",
+        "canonicalState.relationships",
+        "query.source",
+        "query.target",
+        "query.edgeType",
+        "query.candidateType",
+        "query.candidateNodeId",
+        "query.candidateEdgeId",
+        "mutation.type"
+      ]
+    },
+    "NEXUS_COMPUTES": {
+      "description": "Everything relationalReference / analyzeRelationalDelta derive, plus the certified evaluateNexus expert contract.",
+      "relationalFields": [
+        "kind",
+        "candidateIsSpof",
+        "spofNodeCount",
+        "spofEdgeCount",
+        "criticalCount",
+        "bottleneckCount",
+        "componentCount",
+        "entityCount",
+        "edgeCount",
+        "redundantPathPresent",
+        "reachableWithoutCandidate",
+        "semanticOptimalityCertified",
+        "cyclePresent",
+        "reachableBefore",
+        "reachableWithoutNode",
+        "reachableWithoutEdge",
+        "nodeRedundant",
+        "edgeRedundant",
+        "redundantEntityCount",
+        "redundantEdgeCount",
+        "counterfactualConsequence",
+        "counterfactualReachableAfter",
+        "componentsBefore",
+        "componentsAfter",
+        "spofNodeRank",
+        "graphDensityMicro",
+        "edgeToEntityRatioMicro",
+        "declaredEntityCount",
+        "declaredRelationshipCount",
+        "droppedRelationshipCount",
+        "distinctEdgeTypeCount"
+      ],
+      "expertContractFields": [
+        "actionTargetedEntityCount",
+        "bottleneckCount",
+        "criticalDependencyCount",
+        "cycleDetected",
+        "cycleNodeCount",
+        "edgeCount",
+        "entityCount",
+        "graphDensity",
+        "hostileEntityCount",
+        "isolatedEntityCount",
+        "isolatedRatio",
+        "maxCentrality",
+        "maxDegree",
+        "maxDependencyDepth",
+        "maxDependents",
+        "threatenedEntityCount",
+        "uncoveredThreatenedCount",
+        "unresolvedDependencyCount",
+        "unsupportedThreatenedCount",
+        "expertConfidence",
+        "rationaleCodeCount"
+      ]
+    },
+    "NEXUS_EXPOSES": {
+      "description": "The Stage 2L.10 correctness attestation payload — the only Nexus-derived information that crosses into the Arbiter.",
+      "fields": [
+        "kind",
+        "candidateIsSpof",
+        "spofNodeCount",
+        "spofEdgeCount",
+        "criticalCount",
+        "bottleneckCount",
+        "componentCount",
+        "entityCount",
+        "edgeCount",
+        "redundantPathPresent",
+        "reachableWithoutCandidate",
+        "semanticOptimalityCertified"
+      ]
+    },
+    "ARBITER_USES": {
+      "description": "Fields the Stage 2L.10 nexusUncertaintyBucket function actually conditions on. The rest are validated for integrity but never scored.",
+      "fields": [
+        "candidateIsSpof",
+        "redundantPathPresent",
+        "reachableWithoutCandidate",
+        "spofNodeCount",
+        "entityCount"
+      ]
+    }
+  },
+  "counts": {
+    "nexusInputCount": 9,
+    "nexusDerivedSignalCount": 52,
+    "nexusExposedSignalCount": 12,
+    "arbiterConsumedSignalCount": 5
+  },
+  "informationLoss": {
+    "computedButNotExposed": [
+      "cyclePresent",
+      "reachableBefore",
+      "reachableWithoutNode",
+      "reachableWithoutEdge",
+      "nodeRedundant",
+      "edgeRedundant",
+      "redundantEntityCount",
+      "redundantEdgeCount",
+      "counterfactualConsequence",
+      "counterfactualReachableAfter",
+      "componentsBefore",
+      "componentsAfter",
+      "spofNodeRank",
+      "graphDensityMicro",
+      "edgeToEntityRatioMicro",
+      "declaredEntityCount",
+      "declaredRelationshipCount",
+      "droppedRelationshipCount",
+      "distinctEdgeTypeCount"
+    ],
+    "expertContractNotInArbiterPath": [
+      "actionTargetedEntityCount",
+      "bottleneckCount",
+      "criticalDependencyCount",
+      "cycleDetected",
+      "cycleNodeCount",
+      "edgeCount",
+      "entityCount",
+      "graphDensity",
+      "hostileEntityCount",
+      "isolatedEntityCount",
+      "isolatedRatio",
+      "maxCentrality",
+      "maxDegree",
+      "maxDependencyDepth",
+      "maxDependents",
+      "threatenedEntityCount",
+      "uncoveredThreatenedCount",
+      "unresolvedDependencyCount",
+      "unsupportedThreatenedCount",
+      "expertConfidence",
+      "rationaleCodeCount"
+    ],
+    "exposedButNotConsumed": [
+      "kind",
+      "spofEdgeCount",
+      "criticalCount",
+      "bottleneckCount",
+      "componentCount",
+      "edgeCount",
+      "semanticOptimalityCertified"
+    ],
+    "internalInformationLossDetected": true
+  },
+  "twoNexusImplementations": {
+    "note": "The Arbiter path uses the lab relational analyzer (analyzeRelationalDelta). The certified expert contract (evaluateNexus, 19 signals) is not in the Arbiter path. Stage 2L.11 measured BOTH.",
+    "arbiterPath": "src/lab/stage2k0-nexus-relational-diagnostic.js::analyzeRelationalDelta",
+    "certifiedExpert": "src/experts/nexus.js::evaluateNexus"
+  }
+}

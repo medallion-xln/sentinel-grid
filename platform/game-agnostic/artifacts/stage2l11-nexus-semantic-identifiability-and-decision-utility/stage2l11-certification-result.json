@@ -1,0 +1,590 @@
+{
+  "certificationSchemaVersion": 1,
+  "stage": "STAGE2L11_NEXUS_SEMANTIC_IDENTIFIABILITY_AND_DECISION_UTILITY",
+  "status": "PASS",
+  "authority": "R0",
+  "canDispatch": false,
+  "canMutateLiveWorld": false,
+  "arbiterShadowOnly": true,
+  "finalRecommendationOwner": "PRIME",
+  "stageKind": "MEASUREMENT_AND_CERTIFICATION",
+  "freeze": {
+    "stage2l10CertificationHash": "73e958a02a479326bb60cad058fa5cc3e29d5c77614aaef87936aa41dba41a86",
+    "stage2l10EvidenceDigest": "354fa1d701f89d5118fb973233dca5bf7aa066df72642d6239156b38de91089d",
+    "stage2l10CalibrationDigest": "94e94ec145cc97e4779f789f65bffe1996afab0821b070a8c3ec6ca551fa0b79",
+    "nexusChanged": false,
+    "arbiterChanged": false,
+    "calibrationChanged": false,
+    "thresholdsUnchanged": true,
+    "minBucketReliability": 0.99,
+    "minBucketSamples": 60,
+    "maxHarmfulChangeRate": 0.01,
+    "maxCorrectPrimeBreakRate": 0.01
+  },
+  "corpus": {
+    "discoveryCases": 6000,
+    "holdoutCases": 12000,
+    "corpusOverlap": 0,
+    "calibrationHoldoutSeparate": true,
+    "topologyFamilies": [
+      "SPARSE_CHAIN",
+      "DENSE_MESH",
+      "SINGLE_BRIDGE",
+      "TANDEM_BRIDGES",
+      "REDUNDANT_PARALLEL",
+      "CYCLE_WITH_BRIDGE",
+      "WIDE_FAN_BRIDGE",
+      "DISCONNECTED_COMPONENT",
+      "TYPED_RELATION_CONFLICT",
+      "INCOMPLETE_RELATIONS",
+      "AMBIGUOUS_EQUIVALENT_PATHS",
+      "THREAT_SUPPORT_NETWORK"
+    ],
+    "discoveryCorpusDigest": "d01c81d0fd2908572662c30519ff5cec3f2eb7dead56f33a77648d3f17eddfe2",
+    "holdoutCorpusDigest": "3282a7effa601c457142017e8f48e59bb56b4cfb116cfa10769fc96f8e3e77d5",
+    "declaredAlignmentRate": 0.7
+  },
+  "contractMap": {
+    "contractMapVersion": 1,
+    "stage": "STAGE2L11_NEXUS_SEMANTIC_IDENTIFIABILITY_AND_DECISION_UTILITY",
+    "layers": {
+      "NEXUS_INPUTS": {
+        "description": "Canonical relational state plus the reachability query the Arbiter binds.",
+        "fields": [
+          "canonicalState.entities",
+          "canonicalState.relationships",
+          "query.source",
+          "query.target",
+          "query.edgeType",
+          "query.candidateType",
+          "query.candidateNodeId",
+          "query.candidateEdgeId",
+          "mutation.type"
+        ]
+      },
+      "NEXUS_COMPUTES": {
+        "description": "Everything relationalReference / analyzeRelationalDelta derive, plus the certified evaluateNexus expert contract.",
+        "relationalFields": [
+          "kind",
+          "candidateIsSpof",
+          "spofNodeCount",
+          "spofEdgeCount",
+          "criticalCount",
+          "bottleneckCount",
+          "componentCount",
+          "entityCount",
+          "edgeCount",
+          "redundantPathPresent",
+          "reachableWithoutCandidate",
+          "semanticOptimalityCertified",
+          "cyclePresent",
+          "reachableBefore",
+          "reachableWithoutNode",
+          "reachableWithoutEdge",
+          "nodeRedundant",
+          "edgeRedundant",
+          "redundantEntityCount",
+          "redundantEdgeCount",
+          "counterfactualConsequence",
+          "counterfactualReachableAfter",
+          "componentsBefore",
+          "componentsAfter",
+          "spofNodeRank",
+          "graphDensityMicro",
+          "edgeToEntityRatioMicro",
+          "declaredEntityCount",
+          "declaredRelationshipCount",
+          "droppedRelationshipCount",
+          "distinctEdgeTypeCount"
+        ],
+        "expertContractFields": [
+          "actionTargetedEntityCount",
+          "bottleneckCount",
+          "criticalDependencyCount",
+          "cycleDetected",
+          "cycleNodeCount",
+          "edgeCount",
+          "entityCount",
+          "graphDensity",
+          "hostileEntityCount",
+          "isolatedEntityCount",
+          "isolatedRatio",
+          "maxCentrality",
+          "maxDegree",
+          "maxDependencyDepth",
+          "maxDependents",
+          "threatenedEntityCount",
+          "uncoveredThreatenedCount",
+          "unresolvedDependencyCount",
+          "unsupportedThreatenedCount",
+          "expertConfidence",
+          "rationaleCodeCount"
+        ]
+      },
+      "NEXUS_EXPOSES": {
+        "description": "The Stage 2L.10 correctness attestation payload — the only Nexus-derived information that crosses into the Arbiter.",
+        "fields": [
+          "kind",
+          "candidateIsSpof",
+          "spofNodeCount",
+          "spofEdgeCount",
+          "criticalCount",
+          "bottleneckCount",
+          "componentCount",
+          "entityCount",
+          "edgeCount",
+          "redundantPathPresent",
+          "reachableWithoutCandidate",
+          "semanticOptimalityCertified"
+        ]
+      },
+      "ARBITER_USES": {
+        "description": "Fields the Stage 2L.10 nexusUncertaintyBucket function actually conditions on. The rest are validated for integrity but never scored.",
+        "fields": [
+          "candidateIsSpof",
+          "redundantPathPresent",
+          "reachableWithoutCandidate",
+          "spofNodeCount",
+          "entityCount"
+        ]
+      }
+    },
+    "counts": {
+      "nexusInputCount": 9,
+      "nexusDerivedSignalCount": 52,
+      "nexusExposedSignalCount": 12,
+      "arbiterConsumedSignalCount": 5
+    },
+    "informationLoss": {
+      "computedButNotExposed": [
+        "cyclePresent",
+        "reachableBefore",
+        "reachableWithoutNode",
+        "reachableWithoutEdge",
+        "nodeRedundant",
+        "edgeRedundant",
+        "redundantEntityCount",
+        "redundantEdgeCount",
+        "counterfactualConsequence",
+        "counterfactualReachableAfter",
+        "componentsBefore",
+        "componentsAfter",
+        "spofNodeRank",
+        "graphDensityMicro",
+        "edgeToEntityRatioMicro",
+        "declaredEntityCount",
+        "declaredRelationshipCount",
+        "droppedRelationshipCount",
+        "distinctEdgeTypeCount"
+      ],
+      "expertContractNotInArbiterPath": [
+        "actionTargetedEntityCount",
+        "bottleneckCount",
+        "criticalDependencyCount",
+        "cycleDetected",
+        "cycleNodeCount",
+        "edgeCount",
+        "entityCount",
+        "graphDensity",
+        "hostileEntityCount",
+        "isolatedEntityCount",
+        "isolatedRatio",
+        "maxCentrality",
+        "maxDegree",
+        "maxDependencyDepth",
+        "maxDependents",
+        "threatenedEntityCount",
+        "uncoveredThreatenedCount",
+        "unresolvedDependencyCount",
+        "unsupportedThreatenedCount",
+        "expertConfidence",
+        "rationaleCodeCount"
+      ],
+      "exposedButNotConsumed": [
+        "kind",
+        "spofEdgeCount",
+        "criticalCount",
+        "bottleneckCount",
+        "componentCount",
+        "edgeCount",
+        "semanticOptimalityCertified"
+      ],
+      "internalInformationLossDetected": true
+    },
+    "twoNexusImplementations": {
+      "note": "The Arbiter path uses the lab relational analyzer (analyzeRelationalDelta). The certified expert contract (evaluateNexus, 19 signals) is not in the Arbiter path. Stage 2L.11 measured BOTH.",
+      "arbiterPath": "src/lab/stage2k0-nexus-relational-diagnostic.js::analyzeRelationalDelta",
+      "certifiedExpert": "src/experts/nexus.js::evaluateNexus"
+    }
+  },
+  "semanticAudit": {
+    "auditVersion": 1,
+    "stage": "STAGE2L11_NEXUS_SEMANTIC_IDENTIFIABILITY_AND_DECISION_UTILITY",
+    "semanticTruthSource": "INDEPENDENT_SEEDED_DRAW",
+    "semanticTruthVariable": "nexusAligned — whether the structurally critical entity is also the utility-optimal one",
+    "declaredAlignmentRate": 0.7,
+    "randomnessSources": [
+      {
+        "name": "STAGE2L9_INDEPENDENT_GROUND_TRUTH",
+        "seed": "0x5347324c39 (\"SG2L9\")",
+        "drawPosition": 4,
+        "drives": "nexusAligned",
+        "visibleToNexus": false,
+        "visibleToArbiter": false,
+        "visibleToPrime": false,
+        "availableAtRealDecisionTime": false
+      },
+      {
+        "name": "STAGE2L10_INDEPENDENT_GROUND_TRUTH",
+        "seed": "0x5347324c313043 / 0x5347324c313048 (\"SG2L10C\"/\"SG2L10H\")",
+        "drawPosition": 4,
+        "drives": "nexusAligned (graphShapeIndex is a separate draw at position 6)",
+        "visibleToNexus": false,
+        "visibleToArbiter": false,
+        "visibleToPrime": false,
+        "availableAtRealDecisionTime": false
+      },
+      {
+        "name": "STAGE2L11_SEMANTIC_ALIGNMENT",
+        "seed": "0x5347324c313144 / 0x5347324c313148",
+        "drawPosition": 1,
+        "drives": "nexusAligned",
+        "note": "Stage 2L.11 puts alignment on a SEPARATE derived stream from topology so the two cannot share structure even incidentally.",
+        "visibleToNexus": false,
+        "visibleToArbiter": false,
+        "visibleToPrime": false,
+        "availableAtRealDecisionTime": false
+      },
+      {
+        "name": "STAGE2L11_DECISION_CONTEXT",
+        "seed": "0x5347324c313144 / 0x5347324c313148",
+        "drives": "primeCorrect, ambiguity band, supportInTieBand, topology family, topology scale",
+        "visibleToNexus": "topology only, via the graph itself",
+        "visibleToArbiter": "band and margin only",
+        "visibleToPrime": true,
+        "availableAtRealDecisionTime": true
+      }
+    ],
+    "semanticTruthDecisionTimeObservable": false,
+    "hiddenRandomnessInvolved": true,
+    "hiddenRandomnessIndependentOfObservables": true,
+    "correctnessReducesToHiddenDrawAmongOpportunities": true,
+    "derivation": "expertCorrect = candidateIsSpof AND nexusAligned. Conditioning on a delegation opportunity fixes the first conjunct true, leaving expertCorrect identically equal to the hidden draw.",
+    "whatWouldMakeItObservable": [
+      "Objective or utility weights over entities in the canonical observation stream.",
+      "Per-entity value, threat cost, or mission-criticality scoring the adapter does not currently emit.",
+      "An outcome channel linking structural criticality to realised utility, which no current corpus provides."
+    ],
+    "defectLocus": "CORPUS_SEMANTICS_AND_WORLD_STATE_OBSERVABILITY",
+    "defectLocusExplanation": "Nexus's relational computation is exact and is not at fault. The corpus models semantic alignment as an independent coin flip rather than as a function of latent world state, and the observation stream carries no utility information from which any expert could recover it."
+  },
+  "identifiability": {
+    "status": "NON_IDENTIFIABLE_CURRENT_TASK",
+    "reasons": [
+      "Best gap over 264 predicates spanning all 4 tiers was 0.052037, below the permutation-null median of 0.059301: shuffled labels produce a larger apparent signal than the real ones.",
+      "The best rule a full discovery search could find fell from 0.594714 to 0.524229 out of sample, against a holdout base rate of 0.533827.",
+      "Correctness reduces to a hidden draw that is statistically independent of every legitimate decision-time observable."
+    ],
+    "opportunities": 5809,
+    "baseRate": 0.533827,
+    "featuresInspected": 60,
+    "featuresVarying": 40,
+    "predicatesSearched": 264,
+    "predicatesEvaluable": 205,
+    "bestExistingSignal": "expert.maxDependencyDepth==6",
+    "bestExistingDiscrimination": 0.052037,
+    "bestSideReliability": 0.581349,
+    "permutationNull": {
+      "permutations": 40,
+      "min": 0.04103,
+      "median": 0.059301,
+      "p95": 0.076556,
+      "max": 0.091533
+    },
+    "observedExceedsPermutationP95": false,
+    "anyPredicateReachesReliabilityFloor": false,
+    "perTierBestGap": {
+      "TIER_EXPOSED": 0.052037,
+      "TIER_COMPUTED": 0.043284,
+      "TIER_EXPERT": 0.052037,
+      "TIER_CONTEXT": 0.043284
+    },
+    "internalSignalExists": false,
+    "internalSignalExposed": false
+  },
+  "ruleSearch": {
+    "searchSpace": {
+      "singles": 264,
+      "singlesEvaluable": 176,
+      "conjunctionSeeds": 40,
+      "conjunctions": 780,
+      "conjunctionsEvaluable": 234
+    },
+    "discoveryOpportunities": 2898,
+    "discoveryBaseRate": 0.533816,
+    "frozenRule": {
+      "id": "(computed.declaredEntityCount==6) AND (expert.edgeCount==5)",
+      "side": "IN",
+      "discoveryReliability": 0.594714,
+      "discoverySupport": 227,
+      "discoveryGap": 0.066073,
+      "reachesFloorOnDiscovery": false
+    },
+    "topTen": [
+      {
+        "id": "(computed.declaredEntityCount==6) AND (expert.edgeCount==5)",
+        "side": "IN",
+        "reliability": 0.594714,
+        "support": 227,
+        "gap": 0.066073
+      },
+      {
+        "id": "(computed.declaredEntityCount==6) AND (exposed.edgeCount==5)",
+        "side": "IN",
+        "reliability": 0.594714,
+        "support": 227,
+        "gap": 0.066073
+      },
+      {
+        "id": "(expert.entityCount==6) AND (expert.edgeCount==5)",
+        "side": "IN",
+        "reliability": 0.594714,
+        "support": 227,
+        "gap": 0.066073
+      },
+      {
+        "id": "(expert.entityCount==6) AND (exposed.edgeCount==5)",
+        "side": "IN",
+        "reliability": 0.594714,
+        "support": 227,
+        "gap": 0.066073
+      },
+      {
+        "id": "(exposed.entityCount==6) AND (expert.edgeCount==5)",
+        "side": "IN",
+        "reliability": 0.594714,
+        "support": 227,
+        "gap": 0.066073
+      },
+      {
+        "id": "(exposed.entityCount==6) AND (exposed.edgeCount==5)",
+        "side": "IN",
+        "reliability": 0.594714,
+        "support": 227,
+        "gap": 0.066073
+      },
+      {
+        "id": "(expert.maxCentrality==400000) AND (computed.declaredEntityCount==6)",
+        "side": "IN",
+        "reliability": 0.593886,
+        "support": 229,
+        "gap": 0.065224
+      },
+      {
+        "id": "(expert.maxCentrality==400000) AND (computed.edgeToEntityRatioMicro<=857143)",
+        "side": "IN",
+        "reliability": 0.593886,
+        "support": 229,
+        "gap": 0.065224
+      },
+      {
+        "id": "(expert.maxCentrality==400000) AND (expert.bottleneckCount==0)",
+        "side": "IN",
+        "reliability": 0.593886,
+        "support": 229,
+        "gap": 0.065224
+      },
+      {
+        "id": "(expert.maxCentrality==400000) AND (expert.entityCount==6)",
+        "side": "IN",
+        "reliability": 0.593886,
+        "support": 229,
+        "gap": 0.065224
+      }
+    ]
+  },
+  "generalization": {
+    "applicable": true,
+    "ruleId": "(computed.declaredEntityCount==6) AND (expert.edgeCount==5)",
+    "ruleSide": "IN",
+    "discoveryReliability": 0.594714,
+    "discoverySupport": 227,
+    "holdoutOpportunities": 5809,
+    "holdoutBaseRate": 0.533827,
+    "holdoutSelected": 454,
+    "holdoutReliability": 0.524229,
+    "holdoutRejected": 5355,
+    "holdoutRejectedReliability": 0.534641,
+    "holdoutGap": 0.010412,
+    "reliabilityLostFromDiscoveryToHoldout": 0.070485,
+    "holdoutReachesFloor": false,
+    "collapsedToBaseRate": true
+  },
+  "coverage": {
+    "opportunities": 5809,
+    "medianGraphDensityMicro": 166667,
+    "medianMaxDependents": 1,
+    "denseNexusCorrect": 1359,
+    "denseNexusWrong": 1220,
+    "sparseNexusCorrect": 1742,
+    "sparseNexusWrong": 1488,
+    "highSupportNexusCorrect": 1075,
+    "highSupportNexusWrong": 911,
+    "lowSupportNexusCorrect": 2026,
+    "lowSupportNexusWrong": 1797,
+    "primeCorrectNexusWrong": 1298,
+    "primeWrongNexusCorrect": 3101,
+    "primeWrongNexusWrong": 1410,
+    "conflictingRelations": 666,
+    "incompleteRelations": 640,
+    "ambiguousCriticalityTopology": 2591,
+    "cyclicTopology": 1355,
+    "multiComponentTopology": 646,
+    "multipleCriticalNodes": 1925,
+    "logicallyEmptyCells": {
+      "primeCorrectNexusCorrect": 0,
+      "noCriticalityFamilyOpportunities": 0
+    },
+    "logicallyEmptyCellsExplained": true,
+    "corpusLevel": {
+      "denseMeshCases": 1005,
+      "ambiguousEquivalentPathCases": 1021,
+      "redundantParallelCases": 981,
+      "noCriticalitySilentCases": 3007
+    },
+    "familiesInCorpus": [
+      "AMBIGUOUS_EQUIVALENT_PATHS",
+      "CYCLE_WITH_BRIDGE",
+      "DENSE_MESH",
+      "DISCONNECTED_COMPONENT",
+      "INCOMPLETE_RELATIONS",
+      "REDUNDANT_PARALLEL",
+      "SINGLE_BRIDGE",
+      "SPARSE_CHAIN",
+      "TANDEM_BRIDGES",
+      "THREAT_SUPPORT_NETWORK",
+      "TYPED_RELATION_CONFLICT",
+      "WIDE_FAN_BRIDGE"
+    ],
+    "familiesRepresentedAmongOpportunities": [
+      "CYCLE_WITH_BRIDGE",
+      "DISCONNECTED_COMPONENT",
+      "INCOMPLETE_RELATIONS",
+      "SINGLE_BRIDGE",
+      "SPARSE_CHAIN",
+      "TANDEM_BRIDGES",
+      "THREAT_SUPPORT_NETWORK",
+      "TYPED_RELATION_CONFLICT",
+      "WIDE_FAN_BRIDGE"
+    ],
+    "allAttainableCellsPopulated": true
+  },
+  "delegation": {
+    "totalCases": 12000,
+    "inheritedDelegations": 4246,
+    "nexusDelegations": 0,
+    "nexusDelegationRate": 0,
+    "nexusDelegationPrecision": 0,
+    "nexusBeneficialChanges": 0,
+    "nexusHarmfulChanges": 0,
+    "nexusHarmRate": 0,
+    "nexusCorrectPrimeBreaks": 0,
+    "nexusCorrectPrimeBreakRate": 0,
+    "nexusAbstentions": 4246,
+    "nexusAbstentionRate": 0.353833,
+    "delegationOpportunities": 5809,
+    "expertCorrectDelegated": 0,
+    "expertCorrectAbstained": 3101,
+    "expertWrongDelegated": 0,
+    "expertWrongAbstained": 2708,
+    "delegationRateWhenCorrect": 0,
+    "delegationRateWhenWrong": 0,
+    "nexusCorrectnessDiscrimination": 0,
+    "primeOnlyTop1": 0.496417,
+    "arbiterTop1": 0.496417,
+    "harmCeilingRespected": true,
+    "correctPrimeBreakCeilingRespected": true,
+    "bucketUsage": {
+      "NEXUS_MULTIPLE_CRITICAL_NODES": {
+        "cases": 1425,
+        "delegated": 0,
+        "abstained": 1425
+      },
+      "NEXUS_SOLE_CRITICAL_NODE": {
+        "cases": 1295,
+        "delegated": 0,
+        "abstained": 1295
+      },
+      "NEXUS_WIDE_FAN_CRITICAL": {
+        "cases": 1526,
+        "delegated": 0,
+        "abstained": 1526
+      },
+      "null": {
+        "cases": 7754,
+        "delegated": 0,
+        "abstained": 0
+      }
+    }
+  },
+  "security": {
+    "staleEvidenceRejection": true,
+    "crossRuntimeRejection": true,
+    "crossCampaignRejection": true,
+    "malformedEvidenceRejection": true,
+    "unknownSchemaRejection": true,
+    "duplicateEvidenceHandling": true,
+    "illegalActionHandling": true,
+    "ambiguousEvidenceRejection": true,
+    "orderingInvariance": true,
+    "replayDeterminism": true,
+    "failureIsolation": true,
+    "r0Boundary": true
+  },
+  "labelLeakage": {
+    "inputKeysInspected": 86,
+    "forbiddenRuntimeKeysScanned": [
+      "expertCorrect",
+      "aligned",
+      "truthAction",
+      "primeCorrect",
+      "beneficial",
+      "harmful",
+      "selectedCorrect",
+      "caseId",
+      "split",
+      "variant",
+      "family"
+    ],
+    "forbiddenKeysPresent": [],
+    "dispositionGroups": 25,
+    "correctnessSensitiveGroups": [],
+    "labelLeakageDetected": false
+  },
+  "labelLeakageDetected": false,
+  "replayEquivalent": true,
+  "interpretation": {
+    "currentNexusSafeForSelectiveDelegation": false,
+    "currentContractSufficient": false,
+    "nexusRemediationRequired": true,
+    "remediationClass": "CORPUS_SEMANTICS",
+    "defectLocus": "CORPUS_SEMANTICS_AND_WORLD_STATE_OBSERVABILITY",
+    "minimumContractChangeRequired": "None. Widening the evidence contract cannot help: the analysis already searched every internally computed field and the full certified expert contract, and found no signal above chance.",
+    "whatWouldMakeItObservable": [
+      "Objective or utility weights over entities in the canonical observation stream.",
+      "Per-entity value, threat cost, or mission-criticality scoring the adapter does not currently emit.",
+      "An outcome channel linking structural criticality to realised utility, which no current corpus provides."
+    ]
+  },
+  "liveActionDispatches": 0,
+  "worldMutations": 0,
+  "authorityEscalations": 0,
+  "realZeknovaDecisionDeltaMeasured": false,
+  "portabilityNote": "Stage 2L.10 remains DIGEST_PRODUCED_SINGLE_PLATFORM. Stage 2L.11 does not change that and claims no cross-platform deterministic certification.",
+  "identifiabilityQuestionAnswered": true,
+  "conclusionReproducible": true,
+  "securityRegressionPass": true,
+  "stage2l11Certified": true,
+  "evidenceDigest": "4c05bc0be523c0e4eb49c7558c274c8ae8db7b6955b3d52b65d6b6bbd7f5cbc2",
+  "certificationHash": "c8a2cde31674c3c19f1a8918f7a37fcfd69bf74393a700d5ee2d9ef99d9d14f5"
+}
