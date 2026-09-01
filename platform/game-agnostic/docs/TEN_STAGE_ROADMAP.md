@@ -86,7 +86,8 @@ Documentation reconciliation only — no historical evidence is rewritten here.
 | Stage 2L.9 | **FAIL** — 20,500 cases. Prime 49.94%, Arbiter 61.48% (+11.54 pp), but 915 harmful changes against a 1.00% ceiling (4.46%). Correctness discrimination measured at −0.0038 (Oracle) and +0.0030 (Nexus): the Arbiter could prove evidence was *authentic* but had no signal for whether the expert was *correct*. |
 | Stage 2L.10 | **PASS** — Arbiter correctness calibration and selective delegation. 22,750-case holdout, disjoint from an 8,450-case calibration corpus. Prime 54.81%, Arbiter 60.66% (+5.85 pp), 1,332 beneficial changes, **0 harmful changes**, **0 correct-Prime breaks**, delegation precision 1.000. Oracle correctness discrimination **+0.5651**, Nexus 0.0000 (abstains everywhere; whether that was remediable was left open and is settled by Stage 2L.11). Portability recorded on a single platform. |
 | Stage 2L.11 | **PASS** — Nexus semantic identifiability and decision-utility certification. A measurement stage: it passes because it answered its question, not because Nexus turned out useful. 12,000-case holdout over twelve topology families, disjoint from a 6,000-case discovery corpus. `NEXUS_IDENTIFIABILITY_STATUS = NON_IDENTIFIABLE_CURRENT_TASK`. Best gap over 264 predicates spanning all four feature tiers was 0.0520, **below** the permutation-null median of 0.0593; a rule frozen on discovery fell from 0.5947 to 0.5242 out of sample against a 0.5338 base rate. Nexus delegations 0, harm 0, correct-Prime breaks 0. |
-| Stage 2L.12 | **PASS** — **current**. Nexus semantic grounding and observable utility. A benchmark-remediation stage: it passes because Nexus evaluation became meaningful and reproducible, not because Nexus performed well. Ground truth is now computed from world state — entity value, capacity, availability, risk and cost across seven relation kinds, scored by a versioned objective function over five action kinds — replacing the independent `nexusAligned` draw entirely. 14,000-case holdout (5,261 decidable, 84,000 legal actions evaluated), disjoint from a 7,000-case discovery corpus. Best trivial baseline 0.393 against a 0.60 rejection gate. **Measured: Nexus 0.0844, Prime 0.3946** — the inherited expert beats neither random (0.1667) nor the best trivial baseline. `GROUNDED_NEXUS_IDENTIFIABILITY_STATUS = IDENTIFIABLE` but only from world state (gap 0.1526), not from Nexus output (0.0379, below the permutation null). Nexus delegations 0, harm 0. |
+| Stage 2L.12 | **PASS** — Nexus semantic grounding and observable utility. A benchmark-remediation stage: it passes because Nexus evaluation became meaningful and reproducible, not because Nexus performed well. Ground truth is now computed from world state — entity value, capacity, availability, risk and cost across seven relation kinds, scored by a versioned objective function over five action kinds — replacing the independent `nexusAligned` draw entirely. 14,000-case holdout (5,261 decidable, 84,000 legal actions evaluated), disjoint from a 7,000-case discovery corpus. Best trivial baseline 0.393 against a 0.60 rejection gate. **Measured: Nexus 0.0844, Prime 0.3946** — the inherited expert beats neither random (0.1667) nor the best trivial baseline. `GROUNDED_NEXUS_IDENTIFIABILITY_STATUS = IDENTIFIABLE` but only from world state (gap 0.1526), not from Nexus output (0.0379, below the permutation null). Nexus delegations 0, harm 0. |
+| Stage 2L.13 | **PASS** — **current**. Value-aware Nexus relational utility. A bounded expert remediation: the benchmark, the Arbiter, its calibration and every ceiling are untouched; only Nexus changes. A source audit confirmed the Stage 2L.12 diagnosis — of the eight quantitative semantic fields the canonical state carries, the inherited Nexus path read **none**, and ignored five of eight relation kinds. The remediated expert scores an auditable relational utility (`relationalBenefit + riskAdjustment − actionCostPenalty`) over structure crossed with value, cost and risk. On the frozen 5,261-case grounded benchmark: **Nexus 0.0844 → 0.7826**, overtaking Prime (0.3946), random 0.1667. `STRUCTURE_VALUE_DECOUPLED_ACCURACY` **0.0469 → 0.7520 (+70.51 pp)** across 4,093 cases. Nexus can now also discriminate its own correctness (gap 0.5475 vs null p95 0.1055; frozen rule held 0.9833 out of sample). But its best bucket reaches **0.9459** against the inherited **0.99** floor, so **delegations remain 0** and safe delegation is still unauthorised. Outcome `B_IMPROVED_NOT_SELF_CALIBRATED`. |
 | Stage 3+ | Not started |
 
 Authority remains **R0** at every stage above: `canDispatch=false`,
@@ -145,20 +146,44 @@ itself emits falls **below** the permutation null.
 optimality is determined by value, cost and risk — quantities that are present in
 the canonical state but that its contract does not read.
 
-Still open after Stage 2L.12:
+### What Stage 2L.13 established
 
-- **Nexus is not accurate enough for delegation, and now it is known why.** The
-  limitation is the expert's semantics, not the corpus (repaired), not the
-  evidence contract (excluded in 2L.11), and not the Arbiter. Remediation would
-  mean a Nexus that reads entity value, cost and risk — a change to the expert,
-  not to its plumbing. That work is **not** started here.
-- **The usable confidence signal is not one Nexus emits.** Any future selective
-  Nexus delegation would need world-utility features the Arbiter does not
-  currently receive.
+Stage 2L.12 named the limitation `EXPERT_SEMANTICS` and stopped. Stage 2L.13 acted
+on exactly that, and nothing else.
+
+A source audit of the whole inherited Nexus path confirmed the diagnosis at the
+line level: `objectiveValue`, `restorationCost`, `risk`, `protectionNeed`,
+`availability`, `demand`, `baseCapacity` and `objectiveRelevant` were read by
+nothing. Recommendation and confidence were functions of graph shape and two
+booleans.
+
+The remediated expert reasons about relational *utility* — value reached through
+the dependency graph, priced against cost and risk, discounted for redundancy —
+and emits an auditable decomposition rather than one opaque scalar. It lives in
+its own file that imports nothing from the benchmark; the certify script refuses
+to run if that ever changes. It remains an approximation, not the oracle: it picks
+the optimal action 80% of the time but reproduces the true full ranking only 38.5%
+of the time.
+
+The decisive check is the identical-topology test. Under the inherited expert the
+same graph always produced the same recommendation regardless of where the value
+sat, which is why it failed. It no longer does.
+
+Still open after Stage 2L.13:
+
+- **Nexus delegation remains unauthorised, and the blocker has moved.** It is no
+  longer accuracy — Nexus now beats Prime by 39 points. It is *confidence*: the
+  best eligible bucket reaches 0.9459 against the inherited 0.99 floor. Closing
+  that gap needs better expert self-assessment, not better recommendations.
+- **Nexus can now discriminate its own correctness**, which it could not at
+  Stage 2L.12. The frozen rule held at 0.9833 out of sample against a 0.8041 base
+  rate. It just does not reach the delegation standard.
+- **The residual ~22% error concentrates in `VALUE_DIFFUSE` and `CYCLE`**, where
+  the expert's single-pass, no-fixed-point approximation is weakest.
 - **Only Oracle's direction head has a calibrated correctness signal.** The other
   six heads still cannot justify a delegation.
 - **Portability is single-platform** (`DIGEST_PRODUCED_SINGLE_PLATFORM`) for
-  2L.10, 2L.11 and 2L.12. It remains an explicit later certification item.
+  2L.10 through 2L.13. It remains an explicit later certification item.
 - Prime's priors are still uniform; the Router remains outside the certified Prime
   path.
 - **Live ZekNova qualification remains uncertified** under the current lineage:

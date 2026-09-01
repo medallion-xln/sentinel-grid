@@ -72,7 +72,7 @@ A valid expert that cannot establish decision-specific confidence yields
 |---|---|
 | Sentinel Prime | Bounded depth-2 search, certified. Priors still uniform. |
 | Sentinel Oracle | V2 head assembly certified. Only the **direction** head has a calibrated correctness signal. |
-| Sentinel Nexus | Relational graph-delta reasoning certified as exact. **Abstains from all delegation.** Stage 2L.12 rebuilt the benchmark on real world semantics and measured Nexus at **0.0844**, where Prime scores 0.3946 and the best trivial policy scores 0.3931. The limitation is the expert's semantics: it reasons about structure while optimality is set by value, cost and risk. |
+| Sentinel Nexus | Relational graph-delta reasoning certified as exact. Stage 2L.13 made it **value-aware**: it now scores relational utility over structure, value, cost and risk, and measures **0.7826** on the grounded benchmark where Prime scores 0.3946 (was 0.0844). It **still abstains from all delegation** — its best confidence bucket reaches 0.9459 against the inherited 0.99 floor. |
 | Arbiter | Certified at Stage 2L.10. Delegations are a strict subset of the Stage 2L.7 delegation set. |
 | Router | Outside the certified Prime path. Not certified. |
 
@@ -94,33 +94,42 @@ all fail closed. See
 `platform/game-agnostic/artifacts/stage2l10-arbiter-correctness-calibration-and-selective-delegation/stage2l10-report.md`
 for the full result including measured residual exposure.
 
-### Why Nexus contributes nothing (Stages 2L.11 → 2L.12)
+### The Nexus arc (Stages 2L.11 → 2L.13)
 
-This took two stages to pin down, and the answer moved.
+Three stages to move one expert, and the answer moved twice.
 
-**Stage 2L.11** found the *benchmark* was broken. Nexus correctness was decided by
-an independent seeded draw, so no expert could be shown good or bad. An analysis
-given **more** information than the Arbiter may use — every field Nexus computes
-internally, plus the entire 19-signal certified expert contract that is not in the
-Arbiter path — still found nothing above chance. That ruled out the evidence
-contract as the culprit.
+**Stage 2L.11** found the *benchmark* was broken: Nexus correctness was an
+independent seeded draw, so no expert could be shown good or bad. An analysis
+given more information than the Arbiter may use still found nothing above chance,
+which ruled out the evidence contract.
 
-**Stage 2L.12** rebuilt the benchmark on deterministic world semantics: entity
+**Stage 2L.12** rebuilt the benchmark on deterministic world semantics — entity
 value, capacity, availability, risk and cost across seven relation kinds, scored
-by a versioned objective function over five action kinds. Ground truth is
-*computed*, never drawn. Topology and semantics are sampled from independent
-streams so structural attractiveness and objective utility can disagree — and
-eight semantic profiles ensure they do.
+by a versioned objective function. Ground truth is *computed*, never drawn.
+Measured against it: Nexus 0.0844, Prime 0.3946. The limitation was located as
+**expert semantics**.
 
-Measured against that benchmark: **Nexus 0.0844, Prime 0.3946**, random 0.1667,
-best trivial policy 0.3931. Nexus scores 0.1432 where structure carries the value
-and 0.0225 where the value sits on a low-degree leaf.
+**Stage 2L.13** acted on exactly that. A source audit confirmed the inherited
+Nexus path read *none* of the eight quantitative semantic fields — recommendation
+and confidence were functions of graph shape and two booleans. The remediated
+expert reasons about relational *utility*: value reached through the dependency
+graph, priced against cost and risk, discounted for redundancy, emitted as an
+auditable decomposition.
 
-Correctness is now partially predictable, but the signal is `baselineUtility` —
-world state the Arbiter does not receive. Every feature Nexus itself emits falls
-below the permutation null. The limitation is **expert semantics**: Nexus reasons
-about structure while optimality is set by value, cost and risk, quantities that
-are present in the canonical state but that its contract does not read.
+| | inherited | remediated |
+|---|---|---|
+| accuracy | 0.0844 | **0.7826** |
+| where structure and value **disagree** | 0.0469 | **0.7520** |
+| abstention rate | 0.3899 | 0.0268 |
+
+Prime scores 0.3946; random is 0.1667. The decisive check: identical topology with
+the value moved now yields a *different* recommendation. Under the inherited
+expert it never did.
+
+**Nexus still delegates nothing.** The blocker has moved from accuracy to
+confidence: it can now discriminate its own correctness (frozen rule held at
+0.9833 out of sample against a 0.8041 base rate), but its best bucket reaches
+0.9459 against the inherited 0.99 delegation floor.
 
 ## ZekNova status
 
@@ -143,7 +152,7 @@ promotion is available or planned before Stage 10.
 
 ## Roadmap position
 
-Current stage: **2L.12 — PASS**. Recent history:
+Current stage: **2L.13 — PASS**. Recent history:
 
 | Stage | Result |
 |---|---|
@@ -154,6 +163,7 @@ Current stage: **2L.12 — PASS**. Recent history:
 | 2L.10 | PASS — correctness calibration and selective delegation |
 | 2L.11 | PASS — Nexus correctness non-identifiable; the benchmark itself was the defect |
 | 2L.12 | PASS — benchmark rebuilt on world semantics; Nexus measured at 0.0844 vs Prime 0.3946 |
+| 2L.13 | PASS — value-aware Nexus: 0.0844 → 0.7826, still below the delegation floor |
 
 Full detail in [`platform/game-agnostic/docs/TEN_STAGE_ROADMAP.md`](platform/game-agnostic/docs/TEN_STAGE_ROADMAP.md).
 
