@@ -1,0 +1,130 @@
+{
+  "stage": "STAGE2L15_NEXUS_DECISION_STABILITY_AND_CONFIDENCE_CEILING",
+  "id": "STAGE2L15_HETEROGENEOUS_BOUNDED_PERTURBATION_V1",
+  "families": [
+    {
+      "id": "ENTITY_VALUE_JITTER",
+      "rationale": "How much an entity is worth when delivered is an estimate, not a measurement.",
+      "fields": [
+        "objectiveValue"
+      ],
+      "maxMagnitudePercent": 8,
+      "heterogeneous": true,
+      "preservesActionSet": true,
+      "preservesObjectiveIdentity": true,
+      "preservesGraphShape": true
+    },
+    {
+      "id": "COST_JITTER",
+      "rationale": "Restoration cost is a forecast; a decision resting on a 5% cost estimate is fragile.",
+      "fields": [
+        "restorationCost"
+      ],
+      "maxMagnitudePercent": 8,
+      "heterogeneous": true,
+      "preservesActionSet": true,
+      "preservesObjectiveIdentity": true,
+      "preservesGraphShape": true
+    },
+    {
+      "id": "RISK_JITTER",
+      "rationale": "Exposure is inferred from incomplete observation.",
+      "fields": [
+        "risk",
+        "protectionNeed"
+      ],
+      "maxMagnitudePercent": 8,
+      "heterogeneous": true,
+      "preservesActionSet": true,
+      "preservesObjectiveIdentity": true,
+      "preservesGraphShape": true
+    },
+    {
+      "id": "CAPACITY_DEMAND_JITTER",
+      "rationale": "Supplied capacity and required demand are both measured with error.",
+      "fields": [
+        "baseCapacity",
+        "demand"
+      ],
+      "maxMagnitudePercent": 6,
+      "heterogeneous": true,
+      "preservesActionSet": true,
+      "preservesObjectiveIdentity": true,
+      "preservesGraphShape": true
+    },
+    {
+      "id": "AVAILABILITY_JITTER",
+      "rationale": "Operational state is sampled. The threshold side is held: which entities are down does not change, only how far.",
+      "fields": [
+        "availability"
+      ],
+      "maxMagnitudePercent": 6,
+      "heterogeneous": true,
+      "preservesActionSet": true,
+      "preservesObjectiveIdentity": true,
+      "preservesGraphShape": true,
+      "preservesAvailabilityThresholdSide": true
+    },
+    {
+      "id": "RELATION_WEIGHT_JITTER",
+      "rationale": "Edge strength is the least directly observed quantity in the model.",
+      "fields": [
+        "relation.weight"
+      ],
+      "maxMagnitudePercent": 10,
+      "heterogeneous": true,
+      "preservesActionSet": true,
+      "preservesObjectiveIdentity": true,
+      "preservesGraphShape": true
+    },
+    {
+      "id": "COMBINED_MILD",
+      "rationale": "Real uncertainty is not confined to one field at a time.",
+      "fields": [
+        "objectiveValue",
+        "restorationCost",
+        "risk"
+      ],
+      "maxMagnitudePercent": 5,
+      "heterogeneous": true,
+      "preservesActionSet": true,
+      "preservesObjectiveIdentity": true,
+      "preservesGraphShape": true
+    },
+    {
+      "id": "ORDERING_PERMUTATION",
+      "rationale": "A pure invariance probe. Reordering entities and relations changes nothing real, so any flip here is an expert defect, not evidence about the world.",
+      "fields": [],
+      "maxMagnitudePercent": 0,
+      "heterogeneous": false,
+      "preservesActionSet": true,
+      "preservesObjectiveIdentity": true,
+      "preservesGraphShape": true,
+      "semanticNoOp": true
+    }
+  ],
+  "familyCount": 8,
+  "probesPerFamily": 2,
+  "perturbationsPerCase": 15,
+  "seededFrom": "SHA256_OF_WORLD_CONTENT",
+  "readsGroundTruth": false,
+  "readsCaseIdentity": false,
+  "validation": {
+    "sampleCases": 400,
+    "perturbationsChecked": 6000,
+    "problemPreserved": 5958,
+    "problemPreservationRate": 0.993,
+    "minimumRequired": 0.95,
+    "problemPreservationPass": true,
+    "actionSetPreservedRate": 1,
+    "objectiveIdentityPreservedRate": 1,
+    "graphShapePreservedRate": 1,
+    "note": "Ground truth is consulted here ONLY to validate that the perturbation preserves the decision problem. It reaches no signal, no rule and no delegation."
+  },
+  "isolation": {
+    "groundTruthInStabilityMeasurement": false,
+    "groundTruthInPerturbation": false,
+    "caseIdentityInPerturbation": false,
+    "isolationHolds": true
+  }
+}

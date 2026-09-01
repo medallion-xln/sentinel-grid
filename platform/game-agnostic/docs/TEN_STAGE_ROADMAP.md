@@ -88,7 +88,8 @@ Documentation reconciliation only — no historical evidence is rewritten here.
 | Stage 2L.11 | **PASS** — Nexus semantic identifiability and decision-utility certification. A measurement stage: it passes because it answered its question, not because Nexus turned out useful. 12,000-case holdout over twelve topology families, disjoint from a 6,000-case discovery corpus. `NEXUS_IDENTIFIABILITY_STATUS = NON_IDENTIFIABLE_CURRENT_TASK`. Best gap over 264 predicates spanning all four feature tiers was 0.0520, **below** the permutation-null median of 0.0593; a rule frozen on discovery fell from 0.5947 to 0.5242 out of sample against a 0.5338 base rate. Nexus delegations 0, harm 0, correct-Prime breaks 0. |
 | Stage 2L.12 | **PASS** — Nexus semantic grounding and observable utility. A benchmark-remediation stage: it passes because Nexus evaluation became meaningful and reproducible, not because Nexus performed well. Ground truth is now computed from world state — entity value, capacity, availability, risk and cost across seven relation kinds, scored by a versioned objective function over five action kinds — replacing the independent `nexusAligned` draw entirely. 14,000-case holdout (5,261 decidable, 84,000 legal actions evaluated), disjoint from a 7,000-case discovery corpus. Best trivial baseline 0.393 against a 0.60 rejection gate. **Measured: Nexus 0.0844, Prime 0.3946** — the inherited expert beats neither random (0.1667) nor the best trivial baseline. `GROUNDED_NEXUS_IDENTIFIABILITY_STATUS = IDENTIFIABLE` but only from world state (gap 0.1526), not from Nexus output (0.0379, below the permutation null). Nexus delegations 0, harm 0. |
 | Stage 2L.13 | **PASS** — Value-aware Nexus relational utility. A bounded expert remediation: the benchmark, the Arbiter, its calibration and every ceiling are untouched; only Nexus changes. A source audit confirmed the Stage 2L.12 diagnosis — of the eight quantitative semantic fields the canonical state carries, the inherited Nexus path read **none**, and ignored five of eight relation kinds. The remediated expert scores an auditable relational utility (`relationalBenefit + riskAdjustment − actionCostPenalty`) over structure crossed with value, cost and risk. On the frozen 5,261-case grounded benchmark: **Nexus 0.0844 → 0.7826**, overtaking Prime (0.3946), random 0.1667. `STRUCTURE_VALUE_DECOUPLED_ACCURACY` **0.0469 → 0.7520 (+70.51 pp)** across 4,093 cases. Nexus can now also discriminate its own correctness (gap 0.5475 vs null p95 0.1055; frozen rule held 0.9833 out of sample). But its best bucket reaches **0.9459** against the inherited **0.99** floor, so **delegations remain 0** and safe delegation is still unauthorised. Outcome `B_IMPROVED_NOT_SELF_CALIBRATED`. |
-| Stage 2L.14 | **FAIL** — **current**. Nexus confidence calibration and safe selective delegation. A calibration stage that failed honestly: it asked whether a genuinely high-confidence Nexus region exists, and the answer measured out as no. Three disjoint splits carved from the frozen Stage 2L.12 corpus — `DEVELOPMENT` 5,261, `CALIBRATION` 5,232, `FINAL_HOLDOUT` 5,324 decidable cases — with only `CALIBRATION` permitted to select and `FINAL_HOLDOUT` scored once, after freezing. Nexus confidence is real and strongly ordered (`OBSTRUCTED` 0.7135 → best region 0.9832), but **no supported region on the 25-cell predeclared risk/margin grid reached the inherited 0.99 floor**. Cells that cleared it on `DEVELOPMENT` (0.9917 at n=121, 1.0000 at n=48) fell to 0.9691 and 0.9444 on a fresh calibration draw — the overfitting a two-way split would have shipped, since those same cells score 0.9926 and 0.9844 on the final holdout. `SELECTED = null`; the frozen parameters fall back to the most restrictive rung, not the best-measured one. **0 delegations, 0 harmful changes, 0 correct-Prime breaks, 172/172 harmful opportunities rejected**, and 2,332 beneficial opportunities deliberately forgone. Outcome `D_CONFIDENCE_DOES_NOT_GENERALIZE`, `FAILURE_MODE = FAILED_GENERALIZATION`. The 0.99 floor was **not** lowered — the certify script exits `2` on any attempt to weaken it. |
+| Stage 2L.14 | **FAIL** — Nexus confidence calibration and safe selective delegation. A calibration stage that failed honestly: it asked whether a genuinely high-confidence Nexus region exists, and the answer measured out as no. Three disjoint splits carved from the frozen Stage 2L.12 corpus — `DEVELOPMENT` 5,261, `CALIBRATION` 5,232, `FINAL_HOLDOUT` 5,324 decidable cases — with only `CALIBRATION` permitted to select and `FINAL_HOLDOUT` scored once, after freezing. Nexus confidence is real and strongly ordered (`OBSTRUCTED` 0.7135 → best region 0.9832), but **no supported region on the 25-cell predeclared risk/margin grid reached the inherited 0.99 floor**. Cells that cleared it on `DEVELOPMENT` (0.9917 at n=121, 1.0000 at n=48) fell to 0.9691 and 0.9444 on a fresh calibration draw — the overfitting a two-way split would have shipped, since those same cells score 0.9926 and 0.9844 on the final holdout. `SELECTED = null`; the frozen parameters fall back to the most restrictive rung, not the best-measured one. **0 delegations, 0 harmful changes, 0 correct-Prime breaks, 172/172 harmful opportunities rejected**, and 2,332 beneficial opportunities deliberately forgone. Outcome `D_CONFIDENCE_DOES_NOT_GENERALIZE`, `FAILURE_MODE = FAILED_GENERALIZATION`. The 0.99 floor was **not** lowered — the certify script exits `2` on any attempt to weaken it. |
+| Stage 2L.15 | **FAIL** — **current**. Nexus decision stability, counterfactual consistency and confidence-ceiling evaluation. Tested whether surviving legitimate perturbation identifies a smaller region at >=0.99. Eight heterogeneous perturbation families, 15 probes per case, seeded from a digest of world CONTENT only; validated before use — the benchmark's own optimum survives **99.30%** of perturbations, and objective identity and graph shape survive 100%. Stability **is** a real signal: out-of-sample discrimination rises from **0.6245 to 0.6744** (+0.0499), so `STABILITY_ADDS_INFORMATION=true`. One rule of 406 cleared the floor on CALIBRATION (`risk>=400k & margin>=100k & marginVariance<=20k`, 0.9910 at n=111) and was frozen and carried to the final holdout, where it delegated **94 times at 0.9894** — one harmful change, and **below the inherited 0.99 floor**. Every other gate passed; the stage fails on 0.0006 of precision. Outcome `B_STABILITY_IMPROVES_CONFIDENCE_BUT_BELOW_FLOOR`. Estimated ceiling **0.9606** (conservative bound), limitation class `RESIDUAL_EXPERT_ERROR`: inside the high-confidence region the four errors are *more* stable than the successes (margin variance 30074 vs 31140), so no rule built from these signals can exclude them. The floor was not lowered and the statistical method was not changed. |
 | Stage 3+ | Not started |
 
 Authority remains **R0** at every stage above: `canDispatch=false`,
@@ -222,7 +223,7 @@ Three further things were measured and deliberately not acted on:
   `nexusTopRiskAdjustment`. Margin survives only as a secondary gate at
   predeclared values.
 
-Still open after Stage 2L.14:
+Still open after Stage 2L.14, and carried into Stage 2L.15:
 
 - **Selective Nexus delegation remains unauthorised**, and the limitation is now
   named precisely: it is neither the expert (2L.13), the benchmark (2L.12), the
@@ -234,3 +235,60 @@ Still open after Stage 2L.14:
   2L.10 through 2L.14. Stage 2L.14 records the limitation and does not address it.
 - Everything else open after Stage 2L.13 remains open. Stage 2L.14 changed no
   expert, no benchmark, no arbiter and no threshold.
+
+### What Stage 2L.15 established
+
+Stage 2L.14 left the ceiling measured but unexplained: supported reliability near
+0.98 against a 0.99 floor, with no account of *why*. Stage 2L.15 added one family
+of decision-time evidence — does the recommendation survive bounded, legitimate
+perturbation of the quantities the world is uncertain about? — and answered it.
+
+**The signal is real.** Combining stability with the existing confidence signal
+lifts out-of-sample discrimination from 0.6245 to 0.6744. That is reported as a
+genuine gain, not talked up and not talked down.
+
+**It is not sufficient, and the reason is specific.** Stability exposes errors in
+the regions where Nexus was already visibly unsure, and exposes nothing where
+delegation would actually occur:
+
+| high-confidence region (risk >= 500k, margin >= 200k), n=274, 4 wrong | correct | wrong |
+|---|---|---|
+| mean margin variance | 31140 | 30074 |
+| mean top-action stability | 999471 | 1000000 |
+
+The errors that matter are not unstable, not contradicted, not low-margin and not
+low-risk. They are simply wrong, and confidently so. Hence
+`CEILING_LIMITATION_CLASS = RESIDUAL_EXPERT_ERROR`: the remaining gap is reachable
+by improving the expert, not by measuring confidence better over the current one.
+
+Three further findings, measured and deliberately not acted on:
+
+- **The flip rate is nearly worthless.** 81.1% of all errors are perfectly
+  top-stable and 7.8% of correct answers are not. Variance carries what signal
+  exists; flipping does not.
+- **Multiplicity was priced rather than ignored.** At n=111 a region whose true
+  rate is 0.98 has a 34.7% chance of measuring at or above 0.99. Across 406 rules,
+  one such region appearing is the expectation. The one that did scored 0.9524 on
+  DEVELOPMENT — the Stage 2L.14 noise-pocket pattern with the odd draw moved.
+- **`VALUE_DIFFUSE` errors are unstable; `RISK_DOMINATED` errors are not.** The
+  former is the worst regime (0.5476) and stability finds it. The latter is the
+  largest (982 cases), holds most delegation-eligible work, and stability is blind
+  to its errors.
+
+Two defects in this stage's own machinery were caught by its adversarial suite and
+fixed before certification: a delegation gate that trusted stability evidence with
+an unknown schema, a superseded producing model or out-of-domain values; and a
+Prime baseline that used a convenience ordering rather than the inherited certified
+path, understating Prime at 0.0605 instead of 0.3995 and inflating apparent uplift
+roughly sixfold. A test now pins the Prime figure to Stage 2L.14's.
+
+Still open after Stage 2L.15:
+
+- **Selective Nexus delegation remains unauthorised.** The blocker has moved once
+  more — from accuracy (2L.13) to confidence (2L.14) to *residual expert error that
+  carries no observable instability*. Prime keeps the recommendation on all 5,324
+  holdout cases.
+- **Portability is single-platform** (`DIGEST_PRODUCED_SINGLE_PLATFORM`) for
+  2L.10 through 2L.15. Stage 2L.15 records the limitation and does not address it.
+- Everything else open after Stage 2L.14 remains open. Stage 2L.15 changed no
+  expert, no benchmark, no arbiter, no threshold and no statistical method.
