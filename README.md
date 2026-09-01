@@ -72,7 +72,7 @@ A valid expert that cannot establish decision-specific confidence yields
 |---|---|
 | Sentinel Prime | Bounded depth-2 search, certified. Priors still uniform. |
 | Sentinel Oracle | V2 head assembly certified. Only the **direction** head has a calibrated correctness signal. |
-| Sentinel Nexus | Relational graph-delta reasoning certified as exact. Stage 2L.13 made it **value-aware**: it now scores relational utility over structure, value, cost and risk, and measures **0.7826** on the grounded benchmark where Prime scores 0.3946 (was 0.0844). It **still abstains from all delegation** — its best confidence bucket reaches 0.9459 against the inherited 0.99 floor. |
+| Sentinel Nexus | Relational graph-delta reasoning certified as exact. Stage 2L.13 made it **value-aware**: it now scores relational utility over structure, value, cost and risk, and measures **0.7826** on the grounded benchmark where Prime scores 0.3946 (was 0.0844). It **still abstains from all delegation**: Stage 2L.14 calibrated its confidence across three disjoint splits and found no supported region reaching the inherited 0.99 floor (best 0.9832). |
 | Arbiter | Certified at Stage 2L.10. Delegations are a strict subset of the Stage 2L.7 delegation set. |
 | Router | Outside the certified Prime path. Not certified. |
 
@@ -94,9 +94,9 @@ all fail closed. See
 `platform/game-agnostic/artifacts/stage2l10-arbiter-correctness-calibration-and-selective-delegation/stage2l10-report.md`
 for the full result including measured residual exposure.
 
-### The Nexus arc (Stages 2L.11 → 2L.13)
+### The Nexus arc (Stages 2L.11 → 2L.14)
 
-Three stages to move one expert, and the answer moved twice.
+Four stages to move one expert, and the answer moved three times.
 
 **Stage 2L.11** found the *benchmark* was broken: Nexus correctness was an
 independent seeded draw, so no expert could be shown good or bad. An analysis
@@ -126,10 +126,35 @@ Prime scores 0.3946; random is 0.1667. The decisive check: identical topology wi
 the value moved now yields a *different* recommendation. Under the inherited
 expert it never did.
 
-**Nexus still delegates nothing.** The blocker has moved from accuracy to
-confidence: it can now discriminate its own correctness (frozen rule held at
-0.9833 out of sample against a 0.8041 base rate), but its best bucket reaches
-0.9459 against the inherited 0.99 delegation floor.
+**Stage 2L.14** asked whether that confidence gap could be closed by calibration
+alone, with the inherited 0.99 floor held fixed. It could not — and the way it
+failed is the point.
+
+Three disjoint splits were carved from the frozen corpus: `DEVELOPMENT` (5,261
+cases) for exploration, `CALIBRATION` (5,232) as the only split allowed to select,
+and `FINAL_HOLDOUT` (5,324) scored once after freezing.
+
+| region `R>=500k / M>=300k` | n | precision |
+|---|---|---|
+| DEVELOPMENT | 121 | **0.9917** |
+| CALIBRATION | 162 | 0.9691 |
+| FINAL_HOLDOUT | 136 | **0.9926** |
+
+A conventional two-way split would have selected on the first row, scored the
+third, and shipped a pass. The middle draw says otherwise, and the same pattern
+holds for every cell on the 25-cell predeclared grid that cleared the floor on
+DEVELOPMENT. Best precision anywhere on CALIBRATION: **0.9832**, against a floor of
+0.99.
+
+**Nexus still delegates nothing**, and the limitation is now named exactly. It is
+not the expert, not the benchmark, not the Arbiter and not the expressiveness of
+the confidence contract. It is that this expert's achievable reliability ceiling
+on this corpus sits near 0.98. Prime keeps the recommendation on all 5,324 holdout
+cases — 0 harmful changes, 0 correct-Prime breaks, 172/172 harmful opportunities
+rejected, and 2,332 beneficial opportunities deliberately forgone.
+
+The floor was not lowered. The certify script exits `2` before measuring anything
+if it ever is.
 
 ## ZekNova status
 
@@ -152,7 +177,7 @@ promotion is available or planned before Stage 10.
 
 ## Roadmap position
 
-Current stage: **2L.13 — PASS**. Recent history:
+Current stage: **2L.14 — FAIL** (a measured negative result, reported unremediated). Recent history:
 
 | Stage | Result |
 |---|---|
@@ -164,6 +189,7 @@ Current stage: **2L.13 — PASS**. Recent history:
 | 2L.11 | PASS — Nexus correctness non-identifiable; the benchmark itself was the defect |
 | 2L.12 | PASS — benchmark rebuilt on world semantics; Nexus measured at 0.0844 vs Prime 0.3946 |
 | 2L.13 | PASS — value-aware Nexus: 0.0844 → 0.7826, still below the delegation floor |
+| 2L.14 | FAIL — no supported Nexus confidence region reaches the 0.99 floor; best 0.9832, and the regions that cleared it did not generalize |
 
 Full detail in [`platform/game-agnostic/docs/TEN_STAGE_ROADMAP.md`](platform/game-agnostic/docs/TEN_STAGE_ROADMAP.md).
 

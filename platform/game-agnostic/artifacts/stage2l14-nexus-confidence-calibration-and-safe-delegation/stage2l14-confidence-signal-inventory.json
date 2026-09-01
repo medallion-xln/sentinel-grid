@@ -1,0 +1,279 @@
+{
+  "stage": "STAGE2L14_NEXUS_CONFIDENCE_CALIBRATION_AND_SAFE_DELEGATION",
+  "signalInventory": [
+    {
+      "signal": "nexusUtilityMargin",
+      "source": "STAGE2L13_EXPERT",
+      "description": "own first-versus-second utility estimate",
+      "deterministic": true,
+      "decisionTimeAvailable": true,
+      "expertEmitted": true,
+      "arbiterVisible": true,
+      "potentialLeakage": false
+    },
+    {
+      "signal": "nexusTopUtility",
+      "source": "STAGE2L13_EXPERT",
+      "description": "estimated utility of the chosen action",
+      "deterministic": true,
+      "decisionTimeAvailable": true,
+      "expertEmitted": true,
+      "arbiterVisible": true,
+      "potentialLeakage": false
+    },
+    {
+      "signal": "nexusTopObjectiveRelevance",
+      "source": "STAGE2L13_EXPERT",
+      "description": "value reachable downstream of the target",
+      "deterministic": true,
+      "decisionTimeAvailable": true,
+      "expertEmitted": true,
+      "arbiterVisible": true,
+      "potentialLeakage": false
+    },
+    {
+      "signal": "nexusTopStructuralImportance",
+      "source": "STAGE2L13_EXPERT",
+      "description": "dependents hanging off the target",
+      "deterministic": true,
+      "decisionTimeAvailable": true,
+      "expertEmitted": true,
+      "arbiterVisible": true,
+      "potentialLeakage": false
+    },
+    {
+      "signal": "nexusTopCostPenalty",
+      "source": "STAGE2L13_EXPERT",
+      "description": "restoration cost of the target",
+      "deterministic": true,
+      "decisionTimeAvailable": true,
+      "expertEmitted": true,
+      "arbiterVisible": true,
+      "potentialLeakage": false
+    },
+    {
+      "signal": "nexusTopRiskAdjustment",
+      "source": "STAGE2L13_EXPERT",
+      "description": "exposure the action removes",
+      "deterministic": true,
+      "decisionTimeAvailable": true,
+      "expertEmitted": true,
+      "arbiterVisible": true,
+      "potentialLeakage": false
+    },
+    {
+      "signal": "nexusTopRedundancyAdjustment",
+      "source": "STAGE2L13_EXPERT",
+      "description": "discount applied for an alternate path",
+      "deterministic": true,
+      "decisionTimeAvailable": true,
+      "expertEmitted": true,
+      "arbiterVisible": true,
+      "potentialLeakage": false
+    },
+    {
+      "signal": "remainingBlockerCount",
+      "source": "STAGE2L13_EXPERT",
+      "description": "blockers still on the best path after this action",
+      "deterministic": true,
+      "decisionTimeAvailable": true,
+      "expertEmitted": true,
+      "arbiterVisible": true,
+      "potentialLeakage": false
+    },
+    {
+      "signal": "objectiveSupportCount",
+      "source": "STAGE2L13_EXPERT",
+      "description": "objective-bearing entities downstream",
+      "deterministic": true,
+      "decisionTimeAvailable": true,
+      "expertEmitted": true,
+      "arbiterVisible": true,
+      "potentialLeakage": false
+    },
+    {
+      "signal": "contradictionCount",
+      "source": "STAGE2L13_EXPERT",
+      "description": "conflicting or inhibiting relations touching the target",
+      "deterministic": true,
+      "decisionTimeAvailable": true,
+      "expertEmitted": true,
+      "arbiterVisible": true,
+      "potentialLeakage": false
+    },
+    {
+      "signal": "structuralSemanticAlignment",
+      "source": "STAGE2L13_EXPERT",
+      "description": "whether shape and utility agree on the pick",
+      "deterministic": true,
+      "decisionTimeAvailable": true,
+      "expertEmitted": true,
+      "arbiterVisible": true,
+      "potentialLeakage": false
+    },
+    {
+      "signal": "positiveUtilityCandidateCount",
+      "source": "STAGE2L13_EXPERT",
+      "description": "candidates with net-positive utility",
+      "deterministic": true,
+      "decisionTimeAvailable": true,
+      "expertEmitted": true,
+      "arbiterVisible": true,
+      "potentialLeakage": false
+    },
+    {
+      "signal": "candidateCount",
+      "source": "STAGE2L13_EXPERT",
+      "description": "actionable candidates considered",
+      "deterministic": true,
+      "decisionTimeAvailable": true,
+      "expertEmitted": true,
+      "arbiterVisible": true,
+      "potentialLeakage": false
+    },
+    {
+      "signal": "semanticCoverage",
+      "source": "STAGE2L13_EXPERT",
+      "description": "fraction of candidates with complete semantics",
+      "deterministic": true,
+      "decisionTimeAvailable": true,
+      "expertEmitted": true,
+      "arbiterVisible": true,
+      "potentialLeakage": false
+    },
+    {
+      "signal": "semanticFieldsIncompleteCount",
+      "source": "STAGE2L13_EXPERT",
+      "description": "candidates with missing or malformed fields",
+      "deterministic": true,
+      "decisionTimeAvailable": true,
+      "expertEmitted": true,
+      "arbiterVisible": true,
+      "potentialLeakage": false
+    },
+    {
+      "signal": "perturbationStable",
+      "source": "STAGE2L13_EXPERT",
+      "description": "cost-only stability flag inherited from Stage 2L.13",
+      "deterministic": true,
+      "decisionTimeAvailable": true,
+      "expertEmitted": true,
+      "arbiterVisible": true,
+      "potentialLeakage": false
+    },
+    {
+      "signal": "nexusRobustnessScore",
+      "source": "STAGE2L14_ADDITIVE",
+      "description": "multi-axis value/cost/risk stability, added by this stage",
+      "deterministic": true,
+      "decisionTimeAvailable": true,
+      "expertEmitted": true,
+      "arbiterVisible": true,
+      "potentialLeakage": false
+    },
+    {
+      "signal": "nexusNormalizedMargin",
+      "source": "STAGE2L14_ADDITIVE",
+      "description": "margin as a fraction of top utility, added by this stage",
+      "deterministic": true,
+      "decisionTimeAvailable": true,
+      "expertEmitted": true,
+      "arbiterVisible": true,
+      "potentialLeakage": false
+    }
+  ],
+  "confidenceBuckets": {
+    "NEXUS_CONFIDENCE_INELIGIBLE_ABSTAINED": {
+      "opportunities": 103,
+      "expertCorrect": 0,
+      "expertWrong": 103,
+      "reliability": 0,
+      "wilsonLowerBound": 0,
+      "movesPrime": 0,
+      "beneficialOverrides": 0,
+      "harmfulOverrides": 0,
+      "structurallyEligible": false,
+      "delegates": false
+    },
+    "NEXUS_CONFIDENCE_INELIGIBLE_SEMANTICS": {
+      "opportunities": 0,
+      "expertCorrect": 0,
+      "expertWrong": 0,
+      "reliability": null,
+      "wilsonLowerBound": 0,
+      "movesPrime": 0,
+      "beneficialOverrides": 0,
+      "harmfulOverrides": 0,
+      "structurallyEligible": false,
+      "delegates": false
+    },
+    "NEXUS_CONFIDENCE_INELIGIBLE_UNSTABLE": {
+      "opportunities": 85,
+      "expertCorrect": 59,
+      "expertWrong": 26,
+      "reliability": 0.694118,
+      "wilsonLowerBound": 0.606976,
+      "movesPrime": 50,
+      "beneficialOverrides": 35,
+      "harmfulOverrides": 7,
+      "structurallyEligible": false,
+      "delegates": false
+    },
+    "NEXUS_CONFIDENCE_OBSTRUCTED": {
+      "opportunities": 2562,
+      "expertCorrect": 1828,
+      "expertWrong": 734,
+      "reliability": 0.713505,
+      "wilsonLowerBound": 0.698593,
+      "movesPrime": 1608,
+      "beneficialOverrides": 1107,
+      "harmfulOverrides": 119,
+      "structurallyEligible": true,
+      "delegates": false
+    },
+    "NEXUS_CONFIDENCE_MODERATE": {
+      "opportunities": 2447,
+      "expertCorrect": 2240,
+      "expertWrong": 207,
+      "reliability": 0.915407,
+      "wilsonLowerBound": 0.905688,
+      "movesPrime": 1279,
+      "beneficialOverrides": 1135,
+      "harmfulOverrides": 45,
+      "structurallyEligible": true,
+      "delegates": false
+    },
+    "NEXUS_CONFIDENCE_HIGH": {
+      "opportunities": 35,
+      "expertCorrect": 32,
+      "expertWrong": 3,
+      "reliability": 0.914286,
+      "wilsonLowerBound": 0.80389,
+      "movesPrime": 29,
+      "beneficialOverrides": 26,
+      "harmfulOverrides": 1,
+      "structurallyEligible": true,
+      "delegates": false
+    }
+  },
+  "structurallyIneligibleBuckets": [
+    "NEXUS_CONFIDENCE_INELIGIBLE_ABSTAINED",
+    "NEXUS_CONFIDENCE_INELIGIBLE_SEMANTICS",
+    "NEXUS_CONFIDENCE_INELIGIBLE_UNSTABLE"
+  ],
+  "labelLeakage": {
+    "signalKeysInspected": 24,
+    "forbiddenScanned": [
+      "nexusCorrect",
+      "primeCorrect",
+      "optimalActionId",
+      "movesPrime",
+      "worldId",
+      "family",
+      "profile",
+      "splitName"
+    ],
+    "forbiddenInSignals": [],
+    "labelLeakageDetected": false
+  }
+}
