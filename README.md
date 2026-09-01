@@ -72,7 +72,7 @@ A valid expert that cannot establish decision-specific confidence yields
 |---|---|
 | Sentinel Prime | Bounded depth-2 search, certified. Priors still uniform. |
 | Sentinel Oracle | V2 head assembly certified. Only the **direction** head has a calibrated correctness signal. |
-| Sentinel Nexus | Relational graph-delta reasoning certified as exact. **Abstains from all delegation, and cannot do otherwise under the current task** — Stage 2L.11 measured its correctness as non-identifiable from any decision-time observable. |
+| Sentinel Nexus | Relational graph-delta reasoning certified as exact. **Abstains from all delegation.** Stage 2L.12 rebuilt the benchmark on real world semantics and measured Nexus at **0.0844**, where Prime scores 0.3946 and the best trivial policy scores 0.3931. The limitation is the expert's semantics: it reasons about structure while optimality is set by value, cost and risk. |
 | Arbiter | Certified at Stage 2L.10. Delegations are a strict subset of the Stage 2L.7 delegation set. |
 | Router | Outside the certified Prime path. Not certified. |
 
@@ -94,24 +94,33 @@ all fail closed. See
 `platform/game-agnostic/artifacts/stage2l10-arbiter-correctness-calibration-and-selective-delegation/stage2l10-report.md`
 for the full result including measured residual exposure.
 
-### Why Nexus contributes nothing (Stage 2L.11)
+### Why Nexus contributes nothing (Stages 2L.11 → 2L.12)
 
-Nexus's zero contribution is not a tuning gap. Stage 2L.11 gave an identifiability
-analysis **more** information than the Arbiter is allowed to use — every field
-Nexus computes internally, plus the entire 19-signal certified expert contract
-that is not in the Arbiter path — across 12,000 holdout cases spanning twelve
-topology families. Correctness was still unpredictable:
+This took two stages to pin down, and the answer moved.
 
-- the best signal found over 264 predicates was *weaker* than the same search
-  finds on shuffled labels;
-- a rule frozen on a discovery corpus collapsed below the base rate on holdout.
+**Stage 2L.11** found the *benchmark* was broken. Nexus correctness was decided by
+an independent seeded draw, so no expert could be shown good or bad. An analysis
+given **more** information than the Arbiter may use — every field Nexus computes
+internally, plus the entire 19-signal certified expert contract that is not in the
+Arbiter path — still found nothing above chance. That ruled out the evidence
+contract as the culprit.
 
-Among delegation opportunities, Nexus is correct exactly when a hidden draw — one
-that Nexus, the Arbiter and Prime all cannot see — comes up true. The limitation
-is in **corpus semantics and world-state observability**, not in Nexus and not in
-the evidence contract. Recovering Nexus utility requires the observation stream to
-carry entity utility or objective weighting; widening the evidence contract would
-not help.
+**Stage 2L.12** rebuilt the benchmark on deterministic world semantics: entity
+value, capacity, availability, risk and cost across seven relation kinds, scored
+by a versioned objective function over five action kinds. Ground truth is
+*computed*, never drawn. Topology and semantics are sampled from independent
+streams so structural attractiveness and objective utility can disagree — and
+eight semantic profiles ensure they do.
+
+Measured against that benchmark: **Nexus 0.0844, Prime 0.3946**, random 0.1667,
+best trivial policy 0.3931. Nexus scores 0.1432 where structure carries the value
+and 0.0225 where the value sits on a low-degree leaf.
+
+Correctness is now partially predictable, but the signal is `baselineUtility` —
+world state the Arbiter does not receive. Every feature Nexus itself emits falls
+below the permutation null. The limitation is **expert semantics**: Nexus reasons
+about structure while optimality is set by value, cost and risk, quantities that
+are present in the canonical state but that its contract does not read.
 
 ## ZekNova status
 
@@ -134,7 +143,7 @@ promotion is available or planned before Stage 10.
 
 ## Roadmap position
 
-Current stage: **2L.11 — PASS**. Recent history:
+Current stage: **2L.12 — PASS**. Recent history:
 
 | Stage | Result |
 |---|---|
@@ -143,7 +152,8 @@ Current stage: **2L.11 — PASS**. Recent history:
 | 2L.8 | PASS — independent 20,020-case red-team replication |
 | 2L.9 | FAIL — 4.46% harmful-change rate; no expert-correctness signal existed |
 | 2L.10 | PASS — correctness calibration and selective delegation |
-| 2L.11 | PASS — Nexus correctness measured non-identifiable under the current task |
+| 2L.11 | PASS — Nexus correctness non-identifiable; the benchmark itself was the defect |
+| 2L.12 | PASS — benchmark rebuilt on world semantics; Nexus measured at 0.0844 vs Prime 0.3946 |
 
 Full detail in [`platform/game-agnostic/docs/TEN_STAGE_ROADMAP.md`](platform/game-agnostic/docs/TEN_STAGE_ROADMAP.md).
 

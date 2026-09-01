@@ -1,0 +1,587 @@
+{
+  "certificationSchemaVersion": 1,
+  "stage": "STAGE2L12_NEXUS_SEMANTIC_GROUNDING_AND_OBSERVABLE_UTILITY",
+  "status": "PASS",
+  "stageKind": "BENCHMARK_REMEDIATION_AND_MEASUREMENT",
+  "authority": "R0",
+  "canDispatch": false,
+  "canMutateLiveWorld": false,
+  "arbiterShadowOnly": true,
+  "finalRecommendationOwner": "PRIME",
+  "freeze": {
+    "stage2l11CertificationHash": "c8a2cde31674c3c19f1a8918f7a37fcfd69bf74393a700d5ee2d9ef99d9d14f5",
+    "stage2l10CertificationHash": "73e958a02a479326bb60cad058fa5cc3e29d5c77614aaef87936aa41dba41a86",
+    "stage2l10CalibrationDigest": "94e94ec145cc97e4779f789f65bffe1996afab0821b070a8c3ec6ca551fa0b79",
+    "nexusChanged": false,
+    "arbiterChanged": false,
+    "calibrationChanged": false,
+    "evidenceContractChanged": false,
+    "thresholdsUnchanged": true
+  },
+  "corpus": {
+    "discoveryCases": 7000,
+    "holdoutCases": 14000,
+    "corpusOverlap": 0,
+    "calibrationHoldoutSeparate": true,
+    "discoveryDecidable": 2663,
+    "holdoutDecidable": 5261,
+    "topologyFamilies": [
+      "CHAIN",
+      "STAR",
+      "TREE",
+      "DIAMOND",
+      "CYCLE",
+      "MULTI_COMPONENT",
+      "REDUNDANT_NETWORK",
+      "NESTED_BOTTLENECK",
+      "COMPETING_CRITICAL_PATHS",
+      "PROTECTED_CRITICAL_NODE",
+      "DECOY_HIGH_DEGREE",
+      "LOW_DEGREE_HIGH_VALUE"
+    ],
+    "semanticProfiles": [
+      "VALUE_ON_BOTTLENECK",
+      "VALUE_ON_LEAF",
+      "VALUE_DIFFUSE",
+      "BOTTLENECK_WORTHLESS",
+      "EXPENSIVE_BOTTLENECK",
+      "RISK_DOMINATED",
+      "CAPACITY_STARVED",
+      "SUBSTITUTE_AVAILABLE"
+    ],
+    "objectiveTypes": [
+      "THROUGHPUT",
+      "PROTECTION",
+      "CONTINUITY"
+    ],
+    "worldFeatureCount": 16,
+    "discoveryCorpusDigest": "d07454b7feb9c54e92eb04b6ad4dd5cf70638cf255a80a499bb4ecf3a2e70eb6",
+    "holdoutCorpusDigest": "a82b92e02b0a5e633773e0b670157c072d86a58afed8283a2d08613b161e6539"
+  },
+  "semanticModel": {
+    "objectiveModel": {
+      "schemaVersion": 1,
+      "id": "STAGE2L12_DELIVERED_VALUE_MINUS_RISK_V1",
+      "scale": 1000000,
+      "availabilityThreshold": 600000,
+      "terms": [
+        {
+          "name": "deliveredObjectiveValue",
+          "sign": "+",
+          "description": "objectiveValue of every entity that delivers"
+        },
+        {
+          "name": "amplification",
+          "sign": "+",
+          "description": "delivered value scaled by available amplifiers"
+        },
+        {
+          "name": "riskPenalty",
+          "sign": "-",
+          "description": "risk x protectionNeed for entities whose protectors are unavailable"
+        },
+        {
+          "name": "conflictPenalty",
+          "sign": "-",
+          "description": "mutual degradation between simultaneously delivering conflicting entities"
+        }
+      ],
+      "deliveryRule": "available AND all depends satisfied (directly or via a delivering substitute) AND effectiveCapacity >= demand",
+      "capacityRule": "baseCapacity + sum(supports from delivering suppliers) - sum(inhibits from delivering inhibitors)",
+      "fixedPointResolution": "iterate delivery to convergence, bounded by entity count",
+      "readsExpertOutput": false,
+      "readsPrimeOutput": false,
+      "readsArbiterOutput": false,
+      "readsRandomCorrectnessFlag": false
+    },
+    "objectiveModelDigest": "761e69eea469a5d51068a94feccb8f787dddd3c8d1052f19f822bb00d2e5e8c9",
+    "consequenceModel": {
+      "schemaVersion": 1,
+      "id": "STAGE2L12_PURE_ENTITY_TRANSFORM_V1",
+      "kinds": [
+        "RESTORE",
+        "REINFORCE",
+        "PROTECT",
+        "BYPASS",
+        "HOLD"
+      ],
+      "effects": {
+        "RESTORE": "availability := MICRO",
+        "REINFORCE": "baseCapacity += reinforceAmount",
+        "PROTECT": "risk := 0",
+        "BYPASS": "every substitutes relation naming this entity becomes available",
+        "HOLD": "no change, no cost"
+      },
+      "purity": "clone-then-edit; the source world is never mutated",
+      "costRule": "ACTION_UTILITY = U(after) - U(before) - restorationCost of the target (HOLD costs 0)",
+      "tieRule": "ties in ACTION_UTILITY are broken by ascending canonical action key, and every tie is recorded",
+      "readsExpertOutput": false
+    },
+    "consequenceModelDigest": "3599dbc36be8316965f55a0b99110b8897eeab9c8e129334b1c0be9c96ff0b55",
+    "entityFields": [
+      "entityId",
+      "objectiveValue",
+      "demand",
+      "baseCapacity",
+      "availability",
+      "risk",
+      "protectionNeed",
+      "restorationCost",
+      "objectiveRelevant"
+    ],
+    "relationKinds": [
+      "depends",
+      "supports",
+      "protects",
+      "inhibits",
+      "amplifies",
+      "substitutes",
+      "conflicts"
+    ],
+    "actionKinds": [
+      "RESTORE",
+      "REINFORCE",
+      "PROTECT",
+      "BYPASS",
+      "HOLD"
+    ]
+  },
+  "groundTruth": {
+    "validationVersion": 1,
+    "casesValidated": 14000,
+    "sampleValidated": 400,
+    "legalActionsEvaluated": 84000,
+    "groundTruthDeterministic": true,
+    "groundTruthOrderingInvariance": true,
+    "groundTruthSerializationInvariance": true,
+    "groundTruthReplayPass": true,
+    "decidableCases": 5261,
+    "decidableRate": 0.375786,
+    "tieCases": 0,
+    "tieRate": 0,
+    "optimalActionKindDistribution": {
+      "PROTECT": 1561,
+      "REINFORCE": 1086,
+      "RESTORE": 2310,
+      "BYPASS": 304
+    },
+    "maxOptimalKindShare": 0.43908,
+    "trivialBaselineAccuracy": {
+      "ALWAYS_HOLD": 0,
+      "HIGHEST_DEGREE_TARGET": 0.222011,
+      "LOWEST_DEGREE_TARGET": 0.158525,
+      "CHEAPEST_ACTION": 0.233606,
+      "HIGHEST_OBJECTIVE_VALUE_TARGET": 0.393081,
+      "FIRST_ALPHABETICAL": 0.198822,
+      "PREFER_RESTORE": 0.339099
+    },
+    "bestTrivialBaselineAccuracy": 0.393081,
+    "randomChoiceBaseline": 0.166667,
+    "trivialBaselineDominates": false,
+    "utilityMarginP10": 24893,
+    "utilityMarginP50": 458568,
+    "utilityMarginP90": 1087171,
+    "topologyFamilyDistribution": {
+      "CHAIN": 407,
+      "STAR": 447,
+      "TREE": 473,
+      "DIAMOND": 436,
+      "CYCLE": 281,
+      "MULTI_COMPONENT": 449,
+      "REDUNDANT_NETWORK": 494,
+      "NESTED_BOTTLENECK": 427,
+      "COMPETING_CRITICAL_PATHS": 441,
+      "PROTECTED_CRITICAL_NODE": 458,
+      "DECOY_HIGH_DEGREE": 465,
+      "LOW_DEGREE_HIGH_VALUE": 483
+    },
+    "semanticProfileDistribution": {
+      "VALUE_ON_BOTTLENECK": 447,
+      "VALUE_ON_LEAF": 89,
+      "VALUE_DIFFUSE": 1336,
+      "BOTTLENECK_WORTHLESS": 772,
+      "EXPENSIVE_BOTTLENECK": 293,
+      "RISK_DOMINATED": 1702,
+      "CAPACITY_STARVED": 318,
+      "SUBSTITUTE_AVAILABLE": 304
+    },
+    "objectiveTypeDistribution": {
+      "THROUGHPUT": 1729,
+      "PROTECTION": 1711,
+      "CONTINUITY": 1821
+    },
+    "hiddenCorrectnessFields": [],
+    "independentRandomCorrectnessLabel": false,
+    "groundTruthDerivedFromWorldState": true,
+    "objectiveModelDigest": "761e69eea469a5d51068a94feccb8f787dddd3c8d1052f19f822bb00d2e5e8c9",
+    "consequenceModelDigest": "3599dbc36be8316965f55a0b99110b8897eeab9c8e129334b1c0be9c96ff0b55",
+    "valid": true
+  },
+  "nexusEvaluation": {
+    "decidableCases": 5261,
+    "nexusAccuracy": 0.084395,
+    "primeAccuracy": 0.394602,
+    "nexusAbstentionRate": 0.38985,
+    "nexusAccuracyWhenRecommending": 0.138318,
+    "nexusPrimeAgreement": 0.111386,
+    "nexusCorrectPrimeWrong": 311,
+    "nexusWrongPrimeCorrect": 1943,
+    "bothCorrect": 133,
+    "bothWrong": 2874,
+    "byFamily": {
+      "CHAIN": {
+        "cases": 407,
+        "nexusAccuracy": 0.125307
+      },
+      "STAR": {
+        "cases": 447,
+        "nexusAccuracy": 0
+      },
+      "TREE": {
+        "cases": 473,
+        "nexusAccuracy": 0.143763
+      },
+      "DIAMOND": {
+        "cases": 436,
+        "nexusAccuracy": 0.084862
+      },
+      "CYCLE": {
+        "cases": 281,
+        "nexusAccuracy": 0.142349
+      },
+      "MULTI_COMPONENT": {
+        "cases": 449,
+        "nexusAccuracy": 0.13363
+      },
+      "REDUNDANT_NETWORK": {
+        "cases": 494,
+        "nexusAccuracy": 0
+      },
+      "NESTED_BOTTLENECK": {
+        "cases": 427,
+        "nexusAccuracy": 0.105386
+      },
+      "COMPETING_CRITICAL_PATHS": {
+        "cases": 441,
+        "nexusAccuracy": 0.070295
+      },
+      "PROTECTED_CRITICAL_NODE": {
+        "cases": 458,
+        "nexusAccuracy": 0.117904
+      },
+      "DECOY_HIGH_DEGREE": {
+        "cases": 465,
+        "nexusAccuracy": 0
+      },
+      "LOW_DEGREE_HIGH_VALUE": {
+        "cases": 483,
+        "nexusAccuracy": 0.120083
+      }
+    },
+    "byProfile": {
+      "VALUE_ON_BOTTLENECK": {
+        "cases": 447,
+        "nexusAccuracy": 0.143177
+      },
+      "VALUE_ON_LEAF": {
+        "cases": 89,
+        "nexusAccuracy": 0.022472
+      },
+      "VALUE_DIFFUSE": {
+        "cases": 1336,
+        "nexusAccuracy": 0.062126
+      },
+      "BOTTLENECK_WORTHLESS": {
+        "cases": 772,
+        "nexusAccuracy": 0.047927
+      },
+      "EXPENSIVE_BOTTLENECK": {
+        "cases": 293,
+        "nexusAccuracy": 0.05802
+      },
+      "RISK_DOMINATED": {
+        "cases": 1702,
+        "nexusAccuracy": 0.125147
+      },
+      "CAPACITY_STARVED": {
+        "cases": 318,
+        "nexusAccuracy": 0.059748
+      },
+      "SUBSTITUTE_AVAILABLE": {
+        "cases": 304,
+        "nexusAccuracy": 0.029605
+      }
+    },
+    "byMarginQuartile": [
+      {
+        "quartile": 1,
+        "cases": 1315,
+        "nexusAccuracy": 0.107985
+      },
+      {
+        "quartile": 2,
+        "cases": 1315,
+        "nexusAccuracy": 0.110266
+      },
+      {
+        "quartile": 3,
+        "cases": 1315,
+        "nexusAccuracy": 0.063878
+      },
+      {
+        "quartile": 4,
+        "cases": 1316,
+        "nexusAccuracy": 0.055471
+      }
+    ],
+    "bestTrivialBaselineAccuracy": 0.393081,
+    "randomChoiceBaseline": 0.166667,
+    "nexusBeatsRandom": false,
+    "nexusBeatsBestTrivialBaseline": false
+  },
+  "identifiability": {
+    "status": "IDENTIFIABLE",
+    "reasons": [
+      "A frozen rule retained an out-of-sample edge (0.258065 vs base rate 0.138318) but did not reach the 0.99 delegation floor.",
+      "Correctness is partially predictable, so the signal is real, but not to the standard selective delegation requires."
+    ],
+    "cases": 3210,
+    "baseRate": 0.138318,
+    "featuresInspected": 30,
+    "featuresVarying": 21,
+    "predicatesSearched": 3421,
+    "bestSignal": "context.baselineUtility<=848218",
+    "bestSignalTier": "TIER_WORLD_STATE",
+    "bestDiscrimination": 0.152619,
+    "perTierBestGap": {
+      "TIER_NEXUS_OUTPUT": 0.03794,
+      "TIER_WORLD_STATE": 0.152619
+    },
+    "coverage": 0.61015,
+    "conditionedOn": "NEXUS_MADE_A_RECOMMENDATION",
+    "permutationNull": {
+      "permutations": 40,
+      "min": 0.041196,
+      "median": 0.069338,
+      "p95": 0.087078,
+      "max": 0.101891
+    },
+    "observedExceedsPermutationP95": true,
+    "anyPredicateReachesReliabilityFloor": false
+  },
+  "ruleSearch": {
+    "searchSpace": {
+      "singles": 1812,
+      "singlesEvaluable": 1543,
+      "conjunctionSeeds": 30,
+      "conjunctions": 0,
+      "conjunctionsEvaluable": 0
+    },
+    "discoveryCases": 1593,
+    "discoveryBaseRate": 0.141243,
+    "frozenRule": {
+      "id": "context.baselineUtility<=668799",
+      "side": "OUT",
+      "discoveryReliability": 0.289855,
+      "discoverySupport": 138,
+      "discoveryGap": 0.162707,
+      "reachesFloorOnDiscovery": false
+    },
+    "topTen": [
+      {
+        "id": "context.baselineUtility<=668799",
+        "side": "OUT",
+        "reliability": 0.289855,
+        "support": 138,
+        "gap": 0.162707
+      },
+      {
+        "id": "context.baselineUtility<=-7062862",
+        "side": "IN",
+        "reliability": 0.288462,
+        "support": 104,
+        "gap": 0.157501
+      },
+      {
+        "id": "context.baselineUtility<=668046",
+        "side": "OUT",
+        "reliability": 0.28777,
+        "support": 139,
+        "gap": 0.160535
+      },
+      {
+        "id": "context.baselineUtility<=-7135331",
+        "side": "IN",
+        "reliability": 0.287129,
+        "support": 101,
+        "gap": 0.155761
+      },
+      {
+        "id": "context.baselineUtility<=695457",
+        "side": "OUT",
+        "reliability": 0.286765,
+        "support": 136,
+        "gap": 0.159105
+      },
+      {
+        "id": "context.baselineUtility<=666638",
+        "side": "OUT",
+        "reliability": 0.285714,
+        "support": 140,
+        "gap": 0.158392
+      },
+      {
+        "id": "context.baselineUtility<=721051",
+        "side": "OUT",
+        "reliability": 0.285714,
+        "support": 133,
+        "gap": 0.157632
+      },
+      {
+        "id": "context.baselineUtility<=-7053709",
+        "side": "IN",
+        "reliability": 0.285714,
+        "support": 105,
+        "gap": 0.154666
+      },
+      {
+        "id": "context.baselineUtility<=690747",
+        "side": "OUT",
+        "reliability": 0.284672,
+        "support": 137,
+        "gap": 0.156924
+      },
+      {
+        "id": "context.baselineUtility<=730873",
+        "side": "OUT",
+        "reliability": 0.284615,
+        "support": 130,
+        "gap": 0.156112
+      }
+    ]
+  },
+  "generalization": {
+    "applicable": true,
+    "ruleId": "context.baselineUtility<=668799",
+    "discoveryReliability": 0.289855,
+    "discoverySupport": 138,
+    "holdoutCases": 3210,
+    "holdoutBaseRate": 0.138318,
+    "holdoutSelected": 279,
+    "holdoutReliability": 0.258065,
+    "holdoutRejected": 2931,
+    "holdoutRejectedReliability": 0.126919,
+    "holdoutGap": 0.131146,
+    "reliabilityLostFromDiscoveryToHoldout": 0.03179,
+    "holdoutReachesFloor": false,
+    "generalizes": true,
+    "collapsedToBaseRate": false
+  },
+  "delegation": {
+    "casesEvaluated": 5261,
+    "calibrationDigest": "94e94ec145cc97e4779f789f65bffe1996afab0821b070a8c3ec6ca551fa0b79",
+    "calibrationUnchanged": true,
+    "nexusDelegatingBuckets": [],
+    "bucketUsage": {
+      "NEXUS_MULTIPLE_CRITICAL_NODES": {
+        "cases": 1719,
+        "delegates": false,
+        "reliability": 0.521978
+      },
+      "NEXUS_NO_STRUCTURAL_CRITICALITY": {
+        "cases": 2051,
+        "delegates": false,
+        "reliability": null
+      },
+      "NEXUS_WIDE_FAN_CRITICAL": {
+        "cases": 1491,
+        "delegates": false,
+        "reliability": 0.544474
+      }
+    },
+    "nexusDelegations": 0,
+    "nexusDelegationRate": 0,
+    "nexusDelegationPrecision": 0,
+    "nexusBeneficialChanges": 0,
+    "nexusHarmfulChanges": 0,
+    "nexusHarmRate": 0,
+    "nexusCorrectPrimeBreaks": 0,
+    "nexusCorrectPrimeBreakRate": 0,
+    "harmCeilingRespected": true,
+    "correctPrimeBreakCeilingRespected": true,
+    "delegationForced": false
+  },
+  "security": {
+    "arbiterModified": false,
+    "calibrationModified": false,
+    "evidenceContractModified": false,
+    "nexusExpertModified": false,
+    "inheritedCalibrationDigest": "94e94ec145cc97e4779f789f65bffe1996afab0821b070a8c3ec6ca551fa0b79",
+    "minBucketReliabilityUnchanged": true,
+    "minBucketSamplesUnchanged": true,
+    "harmCeilingUnchanged": true,
+    "correctPrimeBreakCeilingUnchanged": true,
+    "authority": {
+      "tier": "R0",
+      "canDispatch": false,
+      "canMutateLiveWorld": false,
+      "canIssueAuthorityTokens": false
+    },
+    "inheritedAttackSuites": [
+      "STAGE2L10_TWELVE_EVIDENCE_ATTACKS",
+      "STAGE2L10_NINE_ATTESTATION_ATTACKS",
+      "STAGE2L11_TWELVE_TOPOLOGY_FAMILY_REGRESSION"
+    ]
+  },
+  "labelLeakage": {
+    "featureKeysInspected": 30,
+    "forbiddenScanned": [
+      "nexusCorrect",
+      "primeCorrect",
+      "optimalActionId",
+      "nexusAligned",
+      "correct",
+      "aligned",
+      "answer",
+      "label",
+      "worldId",
+      "variant",
+      "family",
+      "profile",
+      "objectiveType",
+      "split",
+      "utilityMargin",
+      "utilityMarginMicro",
+      "optimalActionUtility",
+      "actionUtility",
+      "tied",
+      "tieCount"
+    ],
+    "forbiddenInFeatures": [],
+    "hiddenCorrectnessFieldsInCorpus": [],
+    "labelLeakageDetected": false
+  },
+  "labelLeakageDetected": false,
+  "replayEquivalent": true,
+  "semanticGroundingValid": true,
+  "groundTruthValidationPass": true,
+  "identifiabilityQuestionAnswered": true,
+  "securityRegressionPass": true,
+  "stage2l12Certified": true,
+  "interpretation": {
+    "nexusSafeForSelectiveDelegation": false,
+    "nexusExpertRemediationRequired": true,
+    "nexusContractRemediationRequired": false,
+    "arbiterRemediationRequired": false,
+    "corpusRemediationRequired": false,
+    "measuredLimitation": "EXPERT_SEMANTICS",
+    "summary": "The grounded benchmark is valid. Measured against it, the inherited Nexus expert does not beat the best trivial baseline: purely structural criticality does not determine objective utility once value, cost and risk are decoupled from topology."
+  },
+  "portabilityNote": "Stage 2L.10 and Stage 2L.11 remain DIGEST_PRODUCED_SINGLE_PLATFORM. Stage 2L.12 does not change that and claims no cross-platform deterministic certification.",
+  "liveActionDispatches": 0,
+  "worldMutations": 0,
+  "authorityEscalations": 0,
+  "realZeknovaDecisionDeltaMeasured": false,
+  "evidenceDigest": "2b6eab84f6d844c94ccb61bb56950e097c145b2f924401c892a5ef44359c31a2",
+  "certificationHash": "6584e2506b18ab597aa689b380b9b861359e60f019887395b4461c4cf8b3ef34"
+}
