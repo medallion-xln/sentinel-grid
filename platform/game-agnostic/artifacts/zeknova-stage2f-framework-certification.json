@@ -4,7 +4,7 @@
   "replayRecordCount": 6,
   "authenticLiveRecordCount": 0,
   "checkCount": 11,
-  "deterministicEvidenceHash": "9c6281f3ba744927ff2191e0a7b186ab08b187b7fb0e6ec7e565c21f19a4a7e6",
+  "deterministicEvidenceHash": "631edb5036d3d9c858a8656d163f55041aa6369608e4af39976be1cdeb27a55e",
   "controlledDecisionStatus": "blocked-live-campaign-not-certified",
   "controlledShadowEvaluationEligible": false,
   "authorityPromotionEligible": false,
@@ -111,7 +111,7 @@
       {
         "name": "decision-packet-self-hashing",
         "pass": true,
-        "decisionHash": "a2dec6792de140630942b4a0f6226a9ecd50d2aa11d6ab77278d53dc9377fa09"
+        "decisionHash": "c4aeae2701561caaedd057bcf1264521eadacd67543020d572147d4150277379"
       },
       {
         "name": "r0-stage2f-boundary",
@@ -125,25 +125,54 @@
       "pass": false,
       "status": "pending-authentic-live-captures",
       "certification": {
-        "campaignCertificationVersion": 1,
+        "campaignCertificationVersion": 2,
+        "stage2fCampaignId": null,
+        "sentinelRuntimeId": null,
+        "generatedRuntimeProvenanceId": null,
         "profileName": "stage2f-production-live-r0",
         "authenticRecordCount": 0,
         "quarantinedRecordCount": 6,
         "sessionManifestCount": 2,
         "holdoutRecordCount": 0,
         "recordsHash": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
-        "sessionManifestsHash": "bf4e6994d42a4a3c72aa8bdad0e50f72c2f48dd0fc69e1d2507f1ea57c11ac28",
+        "sessionManifestsHash": "ba90d400204b6afa1437e7d5c1fd867891adae6b87b148ada5004b9f5f1e399a",
         "thresholdHash": "8f353858983ef33fa92722a25281cd1f30de059b228c3ab42d686ce0e6a73988",
         "promotionEligible": false,
         "authority": "R0",
-        "campaignHash": "88234ef9d2387f0761a7bf1fa8fb96fe062d2cc0039361a84ecef08fcb524d97"
+        "campaignHash": "11f1914dc5f949259d3b3f3165280b9ba6a32b76bf731761caf33b380dc16131"
       },
       "checks": [
+        {
+          "name": "current-campaign-manifest-required",
+          "pass": false,
+          "stage2fCampaignId": null
+        },
+        {
+          "name": "qualification-campaign-active",
+          "pass": false,
+          "campaignMode": null,
+          "campaignState": null
+        },
         {
           "name": "authentic-live-runtime-provenance",
           "pass": false,
           "authenticRecordCount": 0,
           "quarantinedRecordCount": 6
+        },
+        {
+          "name": "runtime-identity-binding",
+          "pass": true,
+          "sentinelRuntimeId": null
+        },
+        {
+          "name": "generated-runtime-provenance-binding",
+          "pass": true,
+          "generatedRuntimeProvenanceId": null
+        },
+        {
+          "name": "campaign-identity-binding",
+          "pass": true,
+          "stage2fCampaignId": null
         },
         {
           "name": "minimum-authentic-records",
@@ -454,30 +483,71 @@
       },
       "quarantined": [
         {
-          "recordHash": "3539122eacc25c6dd6c44a21e4f1e1473a6c5dd0fcd8fe2d750bb3d46d61290e",
-          "reason": "non-authentic-or-incomplete-live-provenance"
+          "recordRef": "3539122eacc25c6dd6c44a21e4f1e1473a6c5dd0fcd8fe2d750bb3d46d61290e",
+          "reason": "MISSING_RUNTIME_BINDING"
         },
         {
-          "recordHash": "1cf48df7de9a96b52b0a7333a82f14bbfe5a5dd4d3a94cfeb5ca293bdbd92bd9",
-          "reason": "non-authentic-or-incomplete-live-provenance"
+          "recordRef": "1cf48df7de9a96b52b0a7333a82f14bbfe5a5dd4d3a94cfeb5ca293bdbd92bd9",
+          "reason": "MISSING_RUNTIME_BINDING"
         },
         {
-          "recordHash": "effdb9cf20216c6e2b3e7e03500b8ebfe662543f3524c937dfcefcdcdc5ea7dc",
-          "reason": "non-authentic-or-incomplete-live-provenance"
+          "recordRef": "effdb9cf20216c6e2b3e7e03500b8ebfe662543f3524c937dfcefcdcdc5ea7dc",
+          "reason": "MISSING_RUNTIME_BINDING"
         },
         {
-          "recordHash": "4a70145d933d66ac2f91c91f6bc210dbb6db376e4c7c22ae6640d8b63e48dada",
-          "reason": "non-authentic-or-incomplete-live-provenance"
+          "recordRef": "4a70145d933d66ac2f91c91f6bc210dbb6db376e4c7c22ae6640d8b63e48dada",
+          "reason": "MISSING_RUNTIME_BINDING"
         },
         {
-          "recordHash": "a49a474a6a3e4d9cfafc65661d8ddfcac21e1d853bf75717aa2f7fb98193f151",
-          "reason": "non-authentic-or-incomplete-live-provenance"
+          "recordRef": "a49a474a6a3e4d9cfafc65661d8ddfcac21e1d853bf75717aa2f7fb98193f151",
+          "reason": "MISSING_RUNTIME_BINDING"
         },
         {
-          "recordHash": "ba596c69ccd0e0ad8f47111dbefffc0e596ad567e7684d5216178ca65967e876",
-          "reason": "non-authentic-or-incomplete-live-provenance"
+          "recordRef": "ba596c69ccd0e0ad8f47111dbefffc0e596ad567e7684d5216178ca65967e876",
+          "reason": "MISSING_RUNTIME_BINDING"
         }
       ],
+      "reconciliation": {
+        "reconciliationVersion": 2,
+        "stage2fCampaignId": null,
+        "sentinelRuntimeId": null,
+        "generatedRuntimeProvenanceId": null,
+        "total": 6,
+        "accepted": 0,
+        "quarantined": 6,
+        "rejected": 0,
+        "acceptedRecords": [],
+        "quarantinedRecords": [
+          {
+            "recordRef": "3539122eacc25c6dd6c44a21e4f1e1473a6c5dd0fcd8fe2d750bb3d46d61290e",
+            "reason": "MISSING_RUNTIME_BINDING"
+          },
+          {
+            "recordRef": "1cf48df7de9a96b52b0a7333a82f14bbfe5a5dd4d3a94cfeb5ca293bdbd92bd9",
+            "reason": "MISSING_RUNTIME_BINDING"
+          },
+          {
+            "recordRef": "effdb9cf20216c6e2b3e7e03500b8ebfe662543f3524c937dfcefcdcdc5ea7dc",
+            "reason": "MISSING_RUNTIME_BINDING"
+          },
+          {
+            "recordRef": "4a70145d933d66ac2f91c91f6bc210dbb6db376e4c7c22ae6640d8b63e48dada",
+            "reason": "MISSING_RUNTIME_BINDING"
+          },
+          {
+            "recordRef": "a49a474a6a3e4d9cfafc65661d8ddfcac21e1d853bf75717aa2f7fb98193f151",
+            "reason": "MISSING_RUNTIME_BINDING"
+          },
+          {
+            "recordRef": "ba596c69ccd0e0ad8f47111dbefffc0e596ad567e7684d5216178ca65967e876",
+            "reason": "MISSING_RUNTIME_BINDING"
+          }
+        ],
+        "rejectedRecords": [],
+        "reasons": {
+          "MISSING_RUNTIME_BINDING": 6
+        }
+      },
       "holdoutRecordHashes": []
     },
     "candidate": {
@@ -607,7 +677,7 @@
       "decisionVersion": 1,
       "stage": "Stage 2F-Z",
       "status": "blocked-live-campaign-not-certified",
-      "campaignHash": "88234ef9d2387f0761a7bf1fa8fb96fe062d2cc0039361a84ecef08fcb524d97",
+      "campaignHash": "11f1914dc5f949259d3b3f3165280b9ba6a32b76bf731761caf33b380dc16131",
       "candidateRecordsHash": "9a3546d3dcf983e0b841b1e9e139b8dd7753aa31cbf834182d3d33b716bdebc0",
       "controlledShadowEvaluationEligible": false,
       "authorityPromotionEligible": false,
@@ -618,7 +688,7 @@
         "canDispatch": false,
         "canMutateLiveWorld": false
       },
-      "decisionHash": "a2dec6792de140630942b4a0f6226a9ecd50d2aa11d6ab77278d53dc9377fa09"
+      "decisionHash": "c4aeae2701561caaedd057bcf1264521eadacd67543020d572147d4150277379"
     }
   }
 }

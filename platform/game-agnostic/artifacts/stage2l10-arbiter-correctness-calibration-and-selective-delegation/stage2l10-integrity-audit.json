@@ -1,0 +1,193 @@
+{
+  "auditVersion": 1,
+  "stage": "STAGE2L10_ARBITER_CORRECTNESS_CALIBRATION_AND_SELECTIVE_DELEGATION",
+  "auditedAt": "2026-09-01",
+  "repositoryHead": "5f589832ad76e71611eff32d69811d7f5f1d9695",
+  "inventoryLastWrittenAtCommit": "451fb7d020397ce0037c1ac8f9154b2f6e078c5c",
+  "inventoryLastWrittenAtCommitShort": "451fb7d",
+  "filesChecked": 155,
+  "baselineMismatchCount": 12,
+  "classificationCounts": {
+    "STALE_INVENTORY_ENTRY": 11,
+    "STALE_INVENTORY_ENTRY_PLUS_LOCAL_STAGE2L10_EDIT": 1
+  },
+  "explainedMismatchCount": 12,
+  "unexplainedMismatchCount": 0,
+  "blocked": false,
+  "rootCause": "SHA256SUMS.txt was last generated at 451fb7d and never regenerated. Every subsequent authored commit that touched a listed file therefore reports a mismatch. This is a stale inventory, not source drift: for all 12 entries the inventory hash equals the file's content at 451fb7d, the working tree is clean, and each file was changed only by later authored commits.",
+  "mismatches": [
+    {
+      "path": "config/zeknova-stage2f-controlled-evaluation.json",
+      "inventoryHash": "3b715748d87f876308e7a1d6b65c684fc76828e7bacfbf772594494237e237d6",
+      "currentHash": "1c2f74b830c55ae3dab31e34f64df662e6ec1241f2819f9f19b3b823094c665f",
+      "hashAtInventoryCommit": "3b715748d87f876308e7a1d6b65c684fc76828e7bacfbf772594494237e237d6",
+      "inventoryEntryMatchesInventoryCommit": true,
+      "modifiedInCommitsAfterInventory": [
+        "b22e325"
+      ],
+      "workingTreeClean": true,
+      "classification": "STALE_INVENTORY_ENTRY",
+      "explanation": "Inventory entry equals this file's content at 451fb7d, the commit that last wrote SHA256SUMS.txt. The file was changed in later authored commit(s) b22e325 and the inventory was never regenerated. Current bytes equal committed HEAD bytes; no uncommitted drift."
+    },
+    {
+      "path": "docs/TEN_STAGE_ROADMAP.md",
+      "inventoryHash": "c414f529ff4abd17bebc616a7bab3b4ad89afecd1e3cb8c4ecbcbb20e963fb39",
+      "currentHash": "fe0c0e59a373e633dd0bcd57adcc2308952e3d35a7ec7e10744ec98d444e464a",
+      "hashAtInventoryCommit": "c414f529ff4abd17bebc616a7bab3b4ad89afecd1e3cb8c4ecbcbb20e963fb39",
+      "inventoryEntryMatchesInventoryCommit": true,
+      "modifiedInCommitsAfterInventory": [
+        "b22e325"
+      ],
+      "workingTreeClean": true,
+      "classification": "STALE_INVENTORY_ENTRY",
+      "explanation": "Inventory entry equals this file's content at 451fb7d, the commit that last wrote SHA256SUMS.txt. The file was changed in later authored commit(s) b22e325 and the inventory was never regenerated. Current bytes equal committed HEAD bytes; no uncommitted drift."
+    },
+    {
+      "path": "package.json",
+      "inventoryHash": "38fe80fbb49f05491a0077ae7edfa9754dbdf0fc8c1c45290c0d8c2aece71f96",
+      "currentHash": "8143f197fac16d07bf198afbf4319ad495924397190bfee7556087cc15a16c95",
+      "hashAtInventoryCommit": "38fe80fbb49f05491a0077ae7edfa9754dbdf0fc8c1c45290c0d8c2aece71f96",
+      "inventoryEntryMatchesInventoryCommit": true,
+      "modifiedInCommitsAfterInventory": [
+        "5f58983",
+        "b22e325"
+      ],
+      "workingTreeClean": false,
+      "classification": "STALE_INVENTORY_ENTRY_PLUS_LOCAL_STAGE2L10_EDIT",
+      "explanation": "Two independent divergences on one file. (1) The inventory entry equals this file's content at 451fb7d and the file was changed in later authored commit(s) 5f58983, b22e325 without the inventory being regenerated. (2) Stage 2L.10 additionally added its own npm scripts to this file in the working tree at audit time. Both are accounted for; neither is unexplained source drift."
+    },
+    {
+      "path": "schemas/zeknova-session-manifest.schema.json",
+      "inventoryHash": "8b08824d97ee89ffbfebe727dda9ae50545a1e0e573294a632b71cc2d14544eb",
+      "currentHash": "011c58a25971637735f9aa9b07356f226131ada85b40371d0c1f425d46abfcd8",
+      "hashAtInventoryCommit": "8b08824d97ee89ffbfebe727dda9ae50545a1e0e573294a632b71cc2d14544eb",
+      "inventoryEntryMatchesInventoryCommit": true,
+      "modifiedInCommitsAfterInventory": [
+        "b22e325"
+      ],
+      "workingTreeClean": true,
+      "classification": "STALE_INVENTORY_ENTRY",
+      "explanation": "Inventory entry equals this file's content at 451fb7d, the commit that last wrote SHA256SUMS.txt. The file was changed in later authored commit(s) b22e325 and the inventory was never regenerated. Current bytes equal committed HEAD bytes; no uncommitted drift."
+    },
+    {
+      "path": "schemas/zeknova-shadow-record.schema.json",
+      "inventoryHash": "26a0e6be72023dad91b480ffa57bcc05b23279e181fc8dd03c7735c461180075",
+      "currentHash": "f9cc56c55aeb112e4712f57a001a8913fad43bea839d454305cf68dfdd71414b",
+      "hashAtInventoryCommit": "26a0e6be72023dad91b480ffa57bcc05b23279e181fc8dd03c7735c461180075",
+      "inventoryEntryMatchesInventoryCommit": true,
+      "modifiedInCommitsAfterInventory": [
+        "b22e325"
+      ],
+      "workingTreeClean": true,
+      "classification": "STALE_INVENTORY_ENTRY",
+      "explanation": "Inventory entry equals this file's content at 451fb7d, the commit that last wrote SHA256SUMS.txt. The file was changed in later authored commit(s) b22e325 and the inventory was never regenerated. Current bytes equal committed HEAD bytes; no uncommitted drift."
+    },
+    {
+      "path": "scripts/certify-zeknova-stage2f-campaign.mjs",
+      "inventoryHash": "4a22534c61f980c71b12b3d96dc00bc20c72d4ab9942805e1218a9ca5cc6a9c4",
+      "currentHash": "562e813b534f59531df6d3626093c36c7b1b450b071c2d731876a537a539c0c8",
+      "hashAtInventoryCommit": "4a22534c61f980c71b12b3d96dc00bc20c72d4ab9942805e1218a9ca5cc6a9c4",
+      "inventoryEntryMatchesInventoryCommit": true,
+      "modifiedInCommitsAfterInventory": [
+        "b22e325"
+      ],
+      "workingTreeClean": true,
+      "classification": "STALE_INVENTORY_ENTRY",
+      "explanation": "Inventory entry equals this file's content at 451fb7d, the commit that last wrote SHA256SUMS.txt. The file was changed in later authored commit(s) b22e325 and the inventory was never regenerated. Current bytes equal committed HEAD bytes; no uncommitted drift."
+    },
+    {
+      "path": "src/core/recommendation.js",
+      "inventoryHash": "c33af009500fd95d11b7432c3cd860e5c5f1be198e2009e06c97fe051bf30a7f",
+      "currentHash": "20cf8d3033d9dc9a75be947ec20ab51b1f722cc29f998d23a00e7095c4d2b4af",
+      "hashAtInventoryCommit": "c33af009500fd95d11b7432c3cd860e5c5f1be198e2009e06c97fe051bf30a7f",
+      "inventoryEntryMatchesInventoryCommit": true,
+      "modifiedInCommitsAfterInventory": [
+        "b22e325"
+      ],
+      "workingTreeClean": true,
+      "classification": "STALE_INVENTORY_ENTRY",
+      "explanation": "Inventory entry equals this file's content at 451fb7d, the commit that last wrote SHA256SUMS.txt. The file was changed in later authored commit(s) b22e325 and the inventory was never regenerated. Current bytes equal committed HEAD bytes; no uncommitted drift."
+    },
+    {
+      "path": "src/index.d.ts",
+      "inventoryHash": "ff25dda82276bab1e83ec9fcea07c9adf420868c84935e87d3032f31ad2257b0",
+      "currentHash": "50a9f105756ef885e824f90d2fe3db5a4c1b50f2459988b74c579b90e420da24",
+      "hashAtInventoryCommit": "ff25dda82276bab1e83ec9fcea07c9adf420868c84935e87d3032f31ad2257b0",
+      "inventoryEntryMatchesInventoryCommit": true,
+      "modifiedInCommitsAfterInventory": [
+        "b22e325"
+      ],
+      "workingTreeClean": true,
+      "classification": "STALE_INVENTORY_ENTRY",
+      "explanation": "Inventory entry equals this file's content at 451fb7d, the commit that last wrote SHA256SUMS.txt. The file was changed in later authored commit(s) b22e325 and the inventory was never regenerated. Current bytes equal committed HEAD bytes; no uncommitted drift."
+    },
+    {
+      "path": "src/index.js",
+      "inventoryHash": "cc118c183b449bfe3f08f718206db4494657a3e228da39a73957c7409209560a",
+      "currentHash": "642265b9cf5149c9066a0576d0a37ed45332ac662b090c57f3fbd2ac8b86169b",
+      "hashAtInventoryCommit": "cc118c183b449bfe3f08f718206db4494657a3e228da39a73957c7409209560a",
+      "inventoryEntryMatchesInventoryCommit": true,
+      "modifiedInCommitsAfterInventory": [
+        "b22e325"
+      ],
+      "workingTreeClean": true,
+      "classification": "STALE_INVENTORY_ENTRY",
+      "explanation": "Inventory entry equals this file's content at 451fb7d, the commit that last wrote SHA256SUMS.txt. The file was changed in later authored commit(s) b22e325 and the inventory was never regenerated. Current bytes equal committed HEAD bytes; no uncommitted drift."
+    },
+    {
+      "path": "src/lab/zeknova-controlled-evaluation.js",
+      "inventoryHash": "ccf18071f42dda6025d8274066f78b56ab269025758b5193ccb3d7c74c9bdabf",
+      "currentHash": "d4817da2ab11ba365439dae5e8ada4d807e13779d6860eeb60c83d4110af8fa5",
+      "hashAtInventoryCommit": "ccf18071f42dda6025d8274066f78b56ab269025758b5193ccb3d7c74c9bdabf",
+      "inventoryEntryMatchesInventoryCommit": true,
+      "modifiedInCommitsAfterInventory": [
+        "b22e325"
+      ],
+      "workingTreeClean": true,
+      "classification": "STALE_INVENTORY_ENTRY",
+      "explanation": "Inventory entry equals this file's content at 451fb7d, the commit that last wrote SHA256SUMS.txt. The file was changed in later authored commit(s) b22e325 and the inventory was never regenerated. Current bytes equal committed HEAD bytes; no uncommitted drift."
+    },
+    {
+      "path": "src/lab/zeknova-real-state-shadow.js",
+      "inventoryHash": "8495f0dee790f35a2a0b826467370e710c74947f06b2841cd7e63ce90b024753",
+      "currentHash": "c239a0826c8b237cf38a6f50d8700bc99fe4f8ee9bb0bd59dbe8157ffc1ccd09",
+      "hashAtInventoryCommit": "8495f0dee790f35a2a0b826467370e710c74947f06b2841cd7e63ce90b024753",
+      "inventoryEntryMatchesInventoryCommit": true,
+      "modifiedInCommitsAfterInventory": [
+        "b22e325"
+      ],
+      "workingTreeClean": true,
+      "classification": "STALE_INVENTORY_ENTRY",
+      "explanation": "Inventory entry equals this file's content at 451fb7d, the commit that last wrote SHA256SUMS.txt. The file was changed in later authored commit(s) b22e325 and the inventory was never regenerated. Current bytes equal committed HEAD bytes; no uncommitted drift."
+    },
+    {
+      "path": "src/prime/root-puct.js",
+      "inventoryHash": "985fc248517a5ecc8b082d1d9ca14d70a73ae367a80f2408977188c8f85c56fc",
+      "currentHash": "93b62027a77088690027201d3ed05ead8f8f50f77e44a37bca6237070e2148fc",
+      "hashAtInventoryCommit": "985fc248517a5ecc8b082d1d9ca14d70a73ae367a80f2408977188c8f85c56fc",
+      "inventoryEntryMatchesInventoryCommit": true,
+      "modifiedInCommitsAfterInventory": [
+        "b22e325"
+      ],
+      "workingTreeClean": true,
+      "classification": "STALE_INVENTORY_ENTRY",
+      "explanation": "Inventory entry equals this file's content at 451fb7d, the commit that last wrote SHA256SUMS.txt. The file was changed in later authored commit(s) b22e325 and the inventory was never regenerated. Current bytes equal committed HEAD bytes; no uncommitted drift."
+    }
+  ],
+  "deterministicEvidence": {
+    "storedDeterministicEvidenceHash": "d0afc2bca0f10d6bcbc62902dbf86a46255a0a9aea16ffca2885114f8d465668",
+    "currentDeterministicEvidenceHash": "3aedfedc8e2fb9c1b2b6b38ad74bd206581b5d4d262c456ee7ec85530f7cda75",
+    "divergingReportIndex": 11,
+    "divergingReport": "zeknova-stage2f-framework-certification",
+    "divergingCheck": "decision-packet-self-hashing",
+    "storedDecisionHash": "a2dec6792de140630942b4a0f6226a9ecd50d2aa11d6ab77278d53dc9377fa09",
+    "currentDecisionHash": "c4aeae2701561caaedd057bcf1264521eadacd67543020d572147d4150277379",
+    "rootCauseCommit": "b22e325",
+    "rootCause": "Commit b22e325 added `canIssueAuthorityTokens: false` to the R0 authority block emitted by src/lab/zeknova-controlled-evaluation.js. That field is inside the decision packet, so the packet's self-hash changed. artifacts/deterministic-evidence.json was never regenerated afterwards.",
+    "classification": "EXPECTED_CURRENT_LINEAGE",
+    "safetyDirection": "STRENGTHENING",
+    "note": "The change tightens the R0 denial block by explicitly denying authority-token issuance. It is a safety strengthening, not a weakening, and every other check in every other report is byte-identical."
+  },
+  "workingTreeCleanAtAudit": false,
+  "reconciliationPolicy": "The inventory and the deterministic evidence artifact are regenerated ONLY after every divergence above has been individually explained and classified. No hash was regenerated to obtain a green result."
+}

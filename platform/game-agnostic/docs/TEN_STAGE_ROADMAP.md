@@ -76,19 +76,52 @@ Documentation reconciliation only — no historical evidence is rewritten here.
 | Stage 2E-Z | Real-state capture and sustained-shadow machinery certified |
 | Stage 2F | Runtime identity, provenance binding and campaign identity complete and certified. Runtime `sha256:bdc88a75…`, campaign `sha256:6fe9f8ab…`. The live qualification campaign itself is still **not** certified: it awaits provenance-verified live records under the current lineage. |
 | Stage 2G | Sentinel Oracle + Sentinel Nexus certified as deterministic R0 experts. Portability PASS on darwin and linux. |
-| Stage 2H | Shadow expert consumption and Prime context integration — certified. Prime consumes bounded expert context while remaining the decision owner. Portability PASS on darwin and linux. |
-| Stage 2H.1 | Action-discriminating expert context — **current**, certified. Oracle and Nexus score individual legal actions within the unchanged 0.02/0.03 bounds; every ranking change is causally attributed. Portability PASS on darwin and linux. |
+| Stage 2H | Shadow expert consumption and Prime context integration — certified. Prime consumes bounded expert context while remaining the decision owner. |
+| Stage 2H.1 | Action-discriminating expert context — certified. Oracle and Nexus score individual legal actions within the unchanged 0.02/0.03 bounds; every ranking change is causally attributed. |
+| Stage 2I–2K | Oracle V2 head architecture, bounded depth-2 Prime, and Nexus relational reasoning — certified as individual expert capabilities. |
+| Stage 2L.0–2L.5 | Core triad shadow integration, counterfactual expert information, and the first deterministic Arbiter candidate. |
+| Stage 2L.6 | **FAIL** — the first Arbiter failed adversarial evidence and trust-boundary testing: stale evidence, cross-observation mismatch, ambiguous binding, and unsafe expert consensus. |
+| Stage 2L.7 | **PASS** — remediated. Evidence identity binding, runtime/campaign binding, expert and head eligibility, default-deny validation, malformed/stale/cross-runtime rejection, fail-closed behaviour, R0 preserved. |
+| Stage 2L.8 | **PASS** — independent 20,020-case red-team replication. Prime 49.83%, Arbiter 52.36% (+2.53 pp), 507 selection changes, 0 harmful changes, 0 correct-Prime breaks. |
+| Stage 2L.9 | **FAIL** — 20,500 cases. Prime 49.94%, Arbiter 61.48% (+11.54 pp), but 915 harmful changes against a 1.00% ceiling (4.46%). Correctness discrimination measured at −0.0038 (Oracle) and +0.0030 (Nexus): the Arbiter could prove evidence was *authentic* but had no signal for whether the expert was *correct*. |
+| Stage 2L.10 | **PASS** — **current**. Arbiter correctness calibration and selective delegation. 22,750-case holdout, disjoint from an 8,450-case calibration corpus. Prime 54.81%, Arbiter 60.66% (+5.85 pp), 1,332 beneficial changes, **0 harmful changes**, **0 correct-Prime breaks**, delegation precision 1.000. Oracle correctness discrimination **+0.5651**, Nexus 0.0000 (abstains — measured non-identifiability). Portability recorded on a single platform. |
 | Stage 3+ | Not started |
 
 Authority remains **R0** at every stage above: `canDispatch=false`,
 `canMutateLiveWorld=false`. The scripted ZekNova NPC AI is still the sole live
 executor, and no authority increase is permitted before Stage 10.
 
-Still open after Stage 2H.1:
+### What Stage 2L.10 established
 
-- Prime's priors are still uniform. Expert signals adjust bounded per-action leaf
-  evaluation; they never become action priors.
-- The Router remains outside the certified Prime path.
-- No stage so far claims that expert context improves decision quality. Stage 2H.1
-  certifies that discrimination exists, is bounded, and is causally attributable —
-  measuring whether it *helps* is a separate evaluation stage.
+Delegation now requires two independent things, not one:
+
+- **evidence validity** — is this legitimate Oracle/Nexus evidence for this exact
+  decision? (Stage 2L.7, imported frozen, still holds the veto)
+- **expert correctness confidence** — given legitimate evidence, how justified are
+  we in believing this expert should replace Prime?
+
+The second is answered by expert-emitted correctness attestations mapped to
+deterministic uncertainty buckets, each carrying a reliability measured only on
+the calibration corpus and gated at a floor fixed a priori from the inherited
+harm ceiling. A valid expert that cannot establish decision-specific confidence
+produces `ABSTAIN_FROM_DELEGATION`, never trust-by-default. Stage 2L.10
+delegations are a strict subset of Stage 2L.7 delegations, so no inherited
+protection can be weakened by construction.
+
+Still open after Stage 2L.10:
+
+- **Nexus contributes no utility.** No structural bucket reached the reliability
+  floor, so Nexus abstains everywhere; 1,849 correct delegation opportunities on
+  the holdout were declined. Recovering them needs Nexus to certify *semantic*
+  optimality, not just structural criticality — a Nexus contract question.
+- **Only Oracle's direction head has a calibrated correctness signal.** The other
+  six heads cannot currently justify a delegation.
+- **Zero harm is measured on this corpus, not proven in general.** A mean-reverting
+  displacement slower than the calibrated slope ratio would pass the gate and be
+  wrong.
+- **Portability is single-platform** (`DIGEST_PRODUCED_SINGLE_PLATFORM`), not PASS.
+- Prime's priors are still uniform; the Router remains outside the certified Prime
+  path.
+- **Live ZekNova qualification remains uncertified** under the current lineage:
+  0 accepted records, 0 accepted sessions, 0 accepted simulations,
+  `thresholdsPass=false`, `certified=false`.

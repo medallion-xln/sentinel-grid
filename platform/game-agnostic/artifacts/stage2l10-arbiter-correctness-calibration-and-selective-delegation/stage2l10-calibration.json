@@ -1,0 +1,778 @@
+{
+  "stage": "STAGE2L10_ARBITER_CORRECTNESS_CALIBRATION_AND_SELECTIVE_DELEGATION",
+  "frozenCalibration": {
+    "calibrationVersion": 1,
+    "stage": "STAGE2L10_ARBITER_CORRECTNESS_CALIBRATION_AND_SELECTIVE_DELEGATION",
+    "minBucketReliability": 0.99,
+    "minBucketSamples": 60,
+    "oracle": {
+      "parameters": {
+        "ratioNumerator": 3,
+        "ratioDenominator": 2,
+        "minFullSlopeMicro": 500,
+        "primeProtectionMarginMicro": 30000
+      },
+      "measurementRuleIdentity": "sha256:e68b8fdb4b6bd51e52622dcf348a69e790b4c7d94199925f50f45fb31fa0de1c",
+      "buckets": {
+        "ORACLE_UNSUPPORTED_HEAD": {
+          "opportunities": 82,
+          "expertCorrect": 82,
+          "expertWrong": 0,
+          "reliability": 1,
+          "calibrated": true,
+          "structurallyEligible": false,
+          "delegates": false
+        },
+        "ORACLE_STABLE_EXACT": {
+          "opportunities": 117,
+          "expertCorrect": 117,
+          "expertWrong": 0,
+          "reliability": 1,
+          "calibrated": true,
+          "structurallyEligible": true,
+          "delegates": true
+        },
+        "ORACLE_STABLE_UNSTEADY": {
+          "opportunities": 148,
+          "expertCorrect": 0,
+          "expertWrong": 148,
+          "reliability": 0,
+          "calibrated": true,
+          "structurallyEligible": false,
+          "delegates": false
+        },
+        "ORACLE_DIRECTIONAL_FULL_WINDOW_FLAT": {
+          "opportunities": 202,
+          "expertCorrect": 0,
+          "expertWrong": 202,
+          "reliability": 0,
+          "calibrated": true,
+          "structurallyEligible": true,
+          "delegates": false
+        },
+        "ORACLE_DIRECTIONAL_CONTRADICTED": {
+          "opportunities": 207,
+          "expertCorrect": 25,
+          "expertWrong": 182,
+          "reliability": 0.120773,
+          "calibrated": true,
+          "structurallyEligible": true,
+          "delegates": false
+        },
+        "ORACLE_DIRECTIONAL_RECENT_DOMINATED": {
+          "opportunities": 265,
+          "expertCorrect": 55,
+          "expertWrong": 210,
+          "reliability": 0.207547,
+          "calibrated": true,
+          "structurallyEligible": true,
+          "delegates": false
+        },
+        "ORACLE_DIRECTIONAL_COHERENT": {
+          "opportunities": 449,
+          "expertCorrect": 449,
+          "expertWrong": 0,
+          "reliability": 1,
+          "calibrated": true,
+          "structurallyEligible": true,
+          "delegates": true
+        }
+      },
+      "delegatingBuckets": [
+        "ORACLE_STABLE_EXACT",
+        "ORACLE_DIRECTIONAL_COHERENT"
+      ]
+    },
+    "nexus": {
+      "parameters": {
+        "minWideFanEntityCount": 6,
+        "primeProtectionMarginMicro": 30000
+      },
+      "measurementRuleIdentity": "sha256:c9810b9e0250aba1dd2ff008afac0889354090be1e13edaf7864b7e9f392f128",
+      "buckets": {
+        "NEXUS_NO_STRUCTURAL_CRITICALITY": {
+          "opportunities": 0,
+          "expertCorrect": 0,
+          "expertWrong": 0,
+          "reliability": null,
+          "calibrated": false,
+          "structurallyEligible": false,
+          "delegates": false
+        },
+        "NEXUS_REDUNDANT_PATH": {
+          "opportunities": 0,
+          "expertCorrect": 0,
+          "expertWrong": 0,
+          "reliability": null,
+          "calibrated": false,
+          "structurallyEligible": true,
+          "delegates": false
+        },
+        "NEXUS_MULTIPLE_CRITICAL_NODES": {
+          "opportunities": 364,
+          "expertCorrect": 190,
+          "expertWrong": 174,
+          "reliability": 0.521978,
+          "calibrated": true,
+          "structurallyEligible": true,
+          "delegates": false
+        },
+        "NEXUS_WIDE_FAN_CRITICAL": {
+          "opportunities": 371,
+          "expertCorrect": 202,
+          "expertWrong": 169,
+          "reliability": 0.544474,
+          "calibrated": true,
+          "structurallyEligible": true,
+          "delegates": false
+        },
+        "NEXUS_SOLE_CRITICAL_NODE": {
+          "opportunities": 349,
+          "expertCorrect": 183,
+          "expertWrong": 166,
+          "reliability": 0.524355,
+          "calibrated": true,
+          "structurallyEligible": true,
+          "delegates": false
+        }
+      },
+      "delegatingBuckets": []
+    },
+    "calibrationCorpusDigest": "2ee292bb04ce7508f80cb913cc9d69bef380f4a23977ef6e41129a807d361155",
+    "calibrationCases": 8450,
+    "calibrationDelegationOpportunities": 3004,
+    "calibrationDigest": "94e94ec145cc97e4779f789f65bffe1996afab0821b070a8c3ec6ca551fa0b79"
+  },
+  "derivedCalibration": {
+    "calibrationVersion": 1,
+    "stage": "STAGE2L10_ARBITER_CORRECTNESS_CALIBRATION_AND_SELECTIVE_DELEGATION",
+    "minBucketReliability": 0.99,
+    "minBucketSamples": 60,
+    "oracle": {
+      "parameters": {
+        "ratioNumerator": 3,
+        "ratioDenominator": 2,
+        "minFullSlopeMicro": 500,
+        "primeProtectionMarginMicro": 30000
+      },
+      "measurementRuleIdentity": "sha256:e68b8fdb4b6bd51e52622dcf348a69e790b4c7d94199925f50f45fb31fa0de1c",
+      "buckets": {
+        "ORACLE_UNSUPPORTED_HEAD": {
+          "opportunities": 82,
+          "expertCorrect": 82,
+          "expertWrong": 0,
+          "reliability": 1,
+          "calibrated": true,
+          "structurallyEligible": false,
+          "delegates": false
+        },
+        "ORACLE_STABLE_EXACT": {
+          "opportunities": 117,
+          "expertCorrect": 117,
+          "expertWrong": 0,
+          "reliability": 1,
+          "calibrated": true,
+          "structurallyEligible": true,
+          "delegates": true
+        },
+        "ORACLE_STABLE_UNSTEADY": {
+          "opportunities": 148,
+          "expertCorrect": 0,
+          "expertWrong": 148,
+          "reliability": 0,
+          "calibrated": true,
+          "structurallyEligible": false,
+          "delegates": false
+        },
+        "ORACLE_DIRECTIONAL_FULL_WINDOW_FLAT": {
+          "opportunities": 202,
+          "expertCorrect": 0,
+          "expertWrong": 202,
+          "reliability": 0,
+          "calibrated": true,
+          "structurallyEligible": true,
+          "delegates": false
+        },
+        "ORACLE_DIRECTIONAL_CONTRADICTED": {
+          "opportunities": 207,
+          "expertCorrect": 25,
+          "expertWrong": 182,
+          "reliability": 0.120773,
+          "calibrated": true,
+          "structurallyEligible": true,
+          "delegates": false
+        },
+        "ORACLE_DIRECTIONAL_RECENT_DOMINATED": {
+          "opportunities": 265,
+          "expertCorrect": 55,
+          "expertWrong": 210,
+          "reliability": 0.207547,
+          "calibrated": true,
+          "structurallyEligible": true,
+          "delegates": false
+        },
+        "ORACLE_DIRECTIONAL_COHERENT": {
+          "opportunities": 449,
+          "expertCorrect": 449,
+          "expertWrong": 0,
+          "reliability": 1,
+          "calibrated": true,
+          "structurallyEligible": true,
+          "delegates": true
+        }
+      },
+      "delegatingBuckets": [
+        "ORACLE_STABLE_EXACT",
+        "ORACLE_DIRECTIONAL_COHERENT"
+      ],
+      "primeProtection": {
+        "bandHarm": [
+          {
+            "band": "Q_MARGIN_0_005",
+            "marginMicro": 5000,
+            "delegations": 96,
+            "harmfulDelegations": 0,
+            "harmRate": 0
+          },
+          {
+            "band": "Q_MARGIN_0_010",
+            "marginMicro": 10000,
+            "delegations": 104,
+            "harmfulDelegations": 0,
+            "harmRate": 0
+          },
+          {
+            "band": "Q_MARGIN_0_015",
+            "marginMicro": 15000,
+            "delegations": 89,
+            "harmfulDelegations": 0,
+            "harmRate": 0
+          },
+          {
+            "band": "Q_MARGIN_0_020",
+            "marginMicro": 20000,
+            "delegations": 86,
+            "harmfulDelegations": 0,
+            "harmRate": 0
+          },
+          {
+            "band": "Q_MARGIN_0_025",
+            "marginMicro": 25000,
+            "delegations": 86,
+            "harmfulDelegations": 0,
+            "harmRate": 0
+          },
+          {
+            "band": "Q_MARGIN_0_030",
+            "marginMicro": 30000,
+            "delegations": 105,
+            "harmfulDelegations": 0,
+            "harmRate": 0
+          },
+          {
+            "band": "Q_MARGIN_GT_0_030",
+            "marginMicro": 55000,
+            "delegations": 0,
+            "harmfulDelegations": 0,
+            "harmRate": 0
+          }
+        ],
+        "primeProtectionMarginMicro": 30000,
+        "marginRestrictionAddedBeyondInherited": false
+      },
+      "sweep": [
+        {
+          "ratioNumerator": 3,
+          "ratioDenominator": 2,
+          "minFullSlopeMicro": 0,
+          "opportunities": 449,
+          "reliability": 1,
+          "qualifies": true
+        },
+        {
+          "ratioNumerator": 3,
+          "ratioDenominator": 2,
+          "minFullSlopeMicro": 250,
+          "opportunities": 449,
+          "reliability": 1,
+          "qualifies": true
+        },
+        {
+          "ratioNumerator": 3,
+          "ratioDenominator": 2,
+          "minFullSlopeMicro": 500,
+          "opportunities": 449,
+          "reliability": 1,
+          "qualifies": true
+        },
+        {
+          "ratioNumerator": 3,
+          "ratioDenominator": 2,
+          "minFullSlopeMicro": 1000,
+          "opportunities": 434,
+          "reliability": 1,
+          "qualifies": true
+        },
+        {
+          "ratioNumerator": 3,
+          "ratioDenominator": 2,
+          "minFullSlopeMicro": 2000,
+          "opportunities": 434,
+          "reliability": 1,
+          "qualifies": true
+        },
+        {
+          "ratioNumerator": 2,
+          "ratioDenominator": 1,
+          "minFullSlopeMicro": 0,
+          "opportunities": 449,
+          "reliability": 1,
+          "qualifies": true
+        },
+        {
+          "ratioNumerator": 2,
+          "ratioDenominator": 1,
+          "minFullSlopeMicro": 250,
+          "opportunities": 449,
+          "reliability": 1,
+          "qualifies": true
+        },
+        {
+          "ratioNumerator": 2,
+          "ratioDenominator": 1,
+          "minFullSlopeMicro": 500,
+          "opportunities": 449,
+          "reliability": 1,
+          "qualifies": true
+        },
+        {
+          "ratioNumerator": 2,
+          "ratioDenominator": 1,
+          "minFullSlopeMicro": 1000,
+          "opportunities": 434,
+          "reliability": 1,
+          "qualifies": true
+        },
+        {
+          "ratioNumerator": 2,
+          "ratioDenominator": 1,
+          "minFullSlopeMicro": 2000,
+          "opportunities": 434,
+          "reliability": 1,
+          "qualifies": true
+        },
+        {
+          "ratioNumerator": 3,
+          "ratioDenominator": 1,
+          "minFullSlopeMicro": 0,
+          "opportunities": 449,
+          "reliability": 1,
+          "qualifies": true
+        },
+        {
+          "ratioNumerator": 3,
+          "ratioDenominator": 1,
+          "minFullSlopeMicro": 250,
+          "opportunities": 449,
+          "reliability": 1,
+          "qualifies": true
+        },
+        {
+          "ratioNumerator": 3,
+          "ratioDenominator": 1,
+          "minFullSlopeMicro": 500,
+          "opportunities": 449,
+          "reliability": 1,
+          "qualifies": true
+        },
+        {
+          "ratioNumerator": 3,
+          "ratioDenominator": 1,
+          "minFullSlopeMicro": 1000,
+          "opportunities": 434,
+          "reliability": 1,
+          "qualifies": true
+        },
+        {
+          "ratioNumerator": 3,
+          "ratioDenominator": 1,
+          "minFullSlopeMicro": 2000,
+          "opportunities": 434,
+          "reliability": 1,
+          "qualifies": true
+        },
+        {
+          "ratioNumerator": 5,
+          "ratioDenominator": 1,
+          "minFullSlopeMicro": 0,
+          "opportunities": 638,
+          "reliability": 0.730408,
+          "qualifies": false
+        },
+        {
+          "ratioNumerator": 5,
+          "ratioDenominator": 1,
+          "minFullSlopeMicro": 250,
+          "opportunities": 638,
+          "reliability": 0.730408,
+          "qualifies": false
+        },
+        {
+          "ratioNumerator": 5,
+          "ratioDenominator": 1,
+          "minFullSlopeMicro": 500,
+          "opportunities": 638,
+          "reliability": 0.730408,
+          "qualifies": false
+        },
+        {
+          "ratioNumerator": 5,
+          "ratioDenominator": 1,
+          "minFullSlopeMicro": 1000,
+          "opportunities": 606,
+          "reliability": 0.716172,
+          "qualifies": false
+        },
+        {
+          "ratioNumerator": 5,
+          "ratioDenominator": 1,
+          "minFullSlopeMicro": 2000,
+          "opportunities": 606,
+          "reliability": 0.716172,
+          "qualifies": false
+        },
+        {
+          "ratioNumerator": 8,
+          "ratioDenominator": 1,
+          "minFullSlopeMicro": 0,
+          "opportunities": 714,
+          "reliability": 0.705882,
+          "qualifies": false
+        },
+        {
+          "ratioNumerator": 8,
+          "ratioDenominator": 1,
+          "minFullSlopeMicro": 250,
+          "opportunities": 714,
+          "reliability": 0.705882,
+          "qualifies": false
+        },
+        {
+          "ratioNumerator": 8,
+          "ratioDenominator": 1,
+          "minFullSlopeMicro": 500,
+          "opportunities": 714,
+          "reliability": 0.705882,
+          "qualifies": false
+        },
+        {
+          "ratioNumerator": 8,
+          "ratioDenominator": 1,
+          "minFullSlopeMicro": 1000,
+          "opportunities": 606,
+          "reliability": 0.716172,
+          "qualifies": false
+        },
+        {
+          "ratioNumerator": 8,
+          "ratioDenominator": 1,
+          "minFullSlopeMicro": 2000,
+          "opportunities": 606,
+          "reliability": 0.716172,
+          "qualifies": false
+        },
+        {
+          "ratioNumerator": 12,
+          "ratioDenominator": 1,
+          "minFullSlopeMicro": 0,
+          "opportunities": 714,
+          "reliability": 0.705882,
+          "qualifies": false
+        },
+        {
+          "ratioNumerator": 12,
+          "ratioDenominator": 1,
+          "minFullSlopeMicro": 250,
+          "opportunities": 714,
+          "reliability": 0.705882,
+          "qualifies": false
+        },
+        {
+          "ratioNumerator": 12,
+          "ratioDenominator": 1,
+          "minFullSlopeMicro": 500,
+          "opportunities": 714,
+          "reliability": 0.705882,
+          "qualifies": false
+        },
+        {
+          "ratioNumerator": 12,
+          "ratioDenominator": 1,
+          "minFullSlopeMicro": 1000,
+          "opportunities": 606,
+          "reliability": 0.716172,
+          "qualifies": false
+        },
+        {
+          "ratioNumerator": 12,
+          "ratioDenominator": 1,
+          "minFullSlopeMicro": 2000,
+          "opportunities": 606,
+          "reliability": 0.716172,
+          "qualifies": false
+        }
+      ],
+      "selected": {
+        "ratioNumerator": 3,
+        "ratioDenominator": 2,
+        "minFullSlopeMicro": 500,
+        "opportunities": 449,
+        "reliability": 1,
+        "qualifies": true
+      }
+    },
+    "nexus": {
+      "parameters": {
+        "minWideFanEntityCount": 6,
+        "primeProtectionMarginMicro": 30000
+      },
+      "measurementRuleIdentity": "sha256:c9810b9e0250aba1dd2ff008afac0889354090be1e13edaf7864b7e9f392f128",
+      "buckets": {
+        "NEXUS_NO_STRUCTURAL_CRITICALITY": {
+          "opportunities": 0,
+          "expertCorrect": 0,
+          "expertWrong": 0,
+          "reliability": null,
+          "calibrated": false,
+          "structurallyEligible": false,
+          "delegates": false
+        },
+        "NEXUS_REDUNDANT_PATH": {
+          "opportunities": 0,
+          "expertCorrect": 0,
+          "expertWrong": 0,
+          "reliability": null,
+          "calibrated": false,
+          "structurallyEligible": true,
+          "delegates": false
+        },
+        "NEXUS_MULTIPLE_CRITICAL_NODES": {
+          "opportunities": 364,
+          "expertCorrect": 190,
+          "expertWrong": 174,
+          "reliability": 0.521978,
+          "calibrated": true,
+          "structurallyEligible": true,
+          "delegates": false
+        },
+        "NEXUS_WIDE_FAN_CRITICAL": {
+          "opportunities": 371,
+          "expertCorrect": 202,
+          "expertWrong": 169,
+          "reliability": 0.544474,
+          "calibrated": true,
+          "structurallyEligible": true,
+          "delegates": false
+        },
+        "NEXUS_SOLE_CRITICAL_NODE": {
+          "opportunities": 349,
+          "expertCorrect": 183,
+          "expertWrong": 166,
+          "reliability": 0.524355,
+          "calibrated": true,
+          "structurallyEligible": true,
+          "delegates": false
+        }
+      },
+      "delegatingBuckets": [],
+      "primeProtection": {
+        "bandHarm": [
+          {
+            "band": "Q_MARGIN_0_005",
+            "marginMicro": 5000,
+            "delegations": 0,
+            "harmfulDelegations": 0,
+            "harmRate": 0
+          },
+          {
+            "band": "Q_MARGIN_0_010",
+            "marginMicro": 10000,
+            "delegations": 0,
+            "harmfulDelegations": 0,
+            "harmRate": 0
+          },
+          {
+            "band": "Q_MARGIN_0_015",
+            "marginMicro": 15000,
+            "delegations": 0,
+            "harmfulDelegations": 0,
+            "harmRate": 0
+          },
+          {
+            "band": "Q_MARGIN_0_020",
+            "marginMicro": 20000,
+            "delegations": 0,
+            "harmfulDelegations": 0,
+            "harmRate": 0
+          },
+          {
+            "band": "Q_MARGIN_0_025",
+            "marginMicro": 25000,
+            "delegations": 0,
+            "harmfulDelegations": 0,
+            "harmRate": 0
+          },
+          {
+            "band": "Q_MARGIN_0_030",
+            "marginMicro": 30000,
+            "delegations": 0,
+            "harmfulDelegations": 0,
+            "harmRate": 0
+          },
+          {
+            "band": "Q_MARGIN_GT_0_030",
+            "marginMicro": 55000,
+            "delegations": 0,
+            "harmfulDelegations": 0,
+            "harmRate": 0
+          }
+        ],
+        "primeProtectionMarginMicro": 30000,
+        "marginRestrictionAddedBeyondInherited": false
+      },
+      "sweep": [
+        {
+          "minWideFanEntityCount": 6,
+          "ratioNumerator": 1,
+          "ratioDenominator": 1,
+          "minFullSlopeMicro": 0,
+          "opportunities": 0,
+          "qualifies": false,
+          "buckets": [
+            {
+              "bucket": "NEXUS_NO_STRUCTURAL_CRITICALITY",
+              "opportunities": 0,
+              "reliability": null,
+              "qualifies": false
+            },
+            {
+              "bucket": "NEXUS_REDUNDANT_PATH",
+              "opportunities": 0,
+              "reliability": null,
+              "qualifies": false
+            },
+            {
+              "bucket": "NEXUS_MULTIPLE_CRITICAL_NODES",
+              "opportunities": 364,
+              "reliability": 0.521978,
+              "qualifies": false
+            },
+            {
+              "bucket": "NEXUS_WIDE_FAN_CRITICAL",
+              "opportunities": 371,
+              "reliability": 0.544474,
+              "qualifies": false
+            },
+            {
+              "bucket": "NEXUS_SOLE_CRITICAL_NODE",
+              "opportunities": 349,
+              "reliability": 0.524355,
+              "qualifies": false
+            }
+          ]
+        },
+        {
+          "minWideFanEntityCount": 7,
+          "ratioNumerator": 1,
+          "ratioDenominator": 1,
+          "minFullSlopeMicro": 0,
+          "opportunities": 0,
+          "qualifies": false,
+          "buckets": [
+            {
+              "bucket": "NEXUS_NO_STRUCTURAL_CRITICALITY",
+              "opportunities": 0,
+              "reliability": null,
+              "qualifies": false
+            },
+            {
+              "bucket": "NEXUS_REDUNDANT_PATH",
+              "opportunities": 0,
+              "reliability": null,
+              "qualifies": false
+            },
+            {
+              "bucket": "NEXUS_MULTIPLE_CRITICAL_NODES",
+              "opportunities": 364,
+              "reliability": 0.521978,
+              "qualifies": false
+            },
+            {
+              "bucket": "NEXUS_WIDE_FAN_CRITICAL",
+              "opportunities": 371,
+              "reliability": 0.544474,
+              "qualifies": false
+            },
+            {
+              "bucket": "NEXUS_SOLE_CRITICAL_NODE",
+              "opportunities": 349,
+              "reliability": 0.524355,
+              "qualifies": false
+            }
+          ]
+        },
+        {
+          "minWideFanEntityCount": 8,
+          "ratioNumerator": 1,
+          "ratioDenominator": 1,
+          "minFullSlopeMicro": 0,
+          "opportunities": 0,
+          "qualifies": false,
+          "buckets": [
+            {
+              "bucket": "NEXUS_NO_STRUCTURAL_CRITICALITY",
+              "opportunities": 0,
+              "reliability": null,
+              "qualifies": false
+            },
+            {
+              "bucket": "NEXUS_REDUNDANT_PATH",
+              "opportunities": 0,
+              "reliability": null,
+              "qualifies": false
+            },
+            {
+              "bucket": "NEXUS_MULTIPLE_CRITICAL_NODES",
+              "opportunities": 364,
+              "reliability": 0.521978,
+              "qualifies": false
+            },
+            {
+              "bucket": "NEXUS_WIDE_FAN_CRITICAL",
+              "opportunities": 371,
+              "reliability": 0.544474,
+              "qualifies": false
+            },
+            {
+              "bucket": "NEXUS_SOLE_CRITICAL_NODE",
+              "opportunities": 349,
+              "reliability": 0.524355,
+              "qualifies": false
+            }
+          ]
+        }
+      ],
+      "selected": null
+    },
+    "calibrationCorpus": {
+      "split": "CALIBRATION",
+      "cases": 8450,
+      "delegationOpportunities": 3004,
+      "oracleOpportunities": 1470,
+      "nexusOpportunities": 1084,
+      "corpusDigest": "2ee292bb04ce7508f80cb913cc9d69bef380f4a23977ef6e41129a807d361155"
+    },
+    "calibrationDigest": "76c712157e6797218ca5ee92e11df21d1353db14647d7f36a29c91348b22461a"
+  },
+  "frozenReproducedFromCalibrationCorpus": true
+}
