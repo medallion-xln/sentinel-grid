@@ -72,7 +72,7 @@ A valid expert that cannot establish decision-specific confidence yields
 |---|---|
 | Sentinel Prime | Bounded depth-2 search, certified. Priors still uniform. |
 | Sentinel Oracle | V2 head assembly certified. Only the **direction** head has a calibrated correctness signal. |
-| Sentinel Nexus | Relational graph-delta reasoning certified as exact. Stage 2L.13 made it **value-aware**: it now scores relational utility over structure, value, cost and risk, and measures **0.7826** on the grounded benchmark where Prime scores 0.3946 (was 0.0844). It **still abstains from all delegation**: Stages 2L.14 and 2L.15 calibrated its confidence and its decision stability across three disjoint splits and found no supported region reaching the inherited 0.99 floor (best delegation precision 0.9894). |
+| Sentinel Nexus | Relational graph-delta reasoning certified as exact. Stage 2L.13 made it **value-aware**: it now scores relational utility over structure, value, cost and risk, and measures **0.7826** on the grounded benchmark where Prime scores 0.3946 (was 0.0844). It **still abstains from all delegation**: Stages 2L.14 and 2L.15 found no supported region reaching the inherited 0.99 floor (best delegation precision 0.9894), and Stage 2L.16 traced the residual errors to substitute misvaluation rather than to risk. |
 | Arbiter | Certified at Stage 2L.10. Delegations are a strict subset of the Stage 2L.7 delegation set. |
 | Router | Outside the certified Prime path. Not certified. |
 
@@ -94,9 +94,10 @@ all fail closed. See
 `platform/game-agnostic/artifacts/stage2l10-arbiter-correctness-calibration-and-selective-delegation/stage2l10-report.md`
 for the full result including measured residual exposure.
 
-### The Nexus arc (Stages 2L.11 → 2L.15)
+### The Nexus arc (Stages 2L.11 → 2L.16)
 
-Five stages to move one expert, and the blocker moved three times.
+Six stages to move one expert, and the blocker moved three times before the
+defect was finally named.
 
 **Stage 2L.11** found the *benchmark* was broken: Nexus correctness was an
 independent seeded draw, so no expert could be shown good or bad. An analysis
@@ -185,6 +186,30 @@ can exclude them. Estimated ceiling **0.9606**, limitation class
 expert error that carries no observable instability. That is reachable by improving
 the expert, not by measuring it better.
 
+**Stage 2L.16** stopped measuring confidence and diagnosed the expert. Its first
+result contradicts the previous stage's hypothesis: risk is not the problem. Nexus
+is 17 points *better* in risk-dominated worlds (0.9022 vs 0.7353), and pricing risk
+conditionally measures **net −309**. `RISK_UNDERESTIMATION` appears in 84.6% of
+errors and explains none of them — prevalence is not causation.
+
+The dominant defect is one line of reasoning:
+
+> Nexus credits a `BYPASS` whenever a substitute **exists**. The world honours a
+> substitute only when it is itself **delivering**.
+
+That is 41.9% of the 3,308 residual errors. A bounded probe correcting only it
+lifts accuracy **0.7909 → 0.8130**; aligning the expert's operational threshold
+(500,000) with the world's availability threshold (600,000) adds more.
+
+A second finding explains the shape of the errors. The true optimum sits second in
+Nexus's ranking 52% of the time — which sounds like near-miss error — yet **73.5%
+of its errors choose an action worse than doing nothing**. Both hold because Nexus
+*never ranks HOLD*: it orders interventions only and acts whenever its own score
+clears zero, a threshold on a private scale never calibrated against the true
+do-nothing baseline.
+
+Nothing was remediated. The stage identifies what to fix and stops.
+
 ## ZekNova status
 
 ZekNova is the first production adapter. Frozen-corpus behavioural parity,
@@ -206,7 +231,7 @@ promotion is available or planned before Stage 10.
 
 ## Roadmap position
 
-Current stage: **2L.15 — FAIL** (a measured negative result, reported unremediated). Recent history:
+Current stage: **2L.16 — PASS** (a diagnostic stage; it changed no behaviour). Recent history:
 
 | Stage | Result |
 |---|---|
@@ -220,6 +245,7 @@ Current stage: **2L.15 — FAIL** (a measured negative result, reported unremedi
 | 2L.13 | PASS — value-aware Nexus: 0.0844 → 0.7826, still below the delegation floor |
 | 2L.14 | FAIL — no supported Nexus confidence region reaches the 0.99 floor; best 0.9832, and the regions that cleared it did not generalize |
 | 2L.15 | FAIL — decision stability is a real signal (+0.0499 AUROC) but delegation reaches only 0.9894; ceiling 0.9606, limited by residual expert error |
+| 2L.16 | PASS — residual errors decomposed: dominant defect is crediting a BYPASS to a non-delivering substitute (41.9%); risk was ruled out |
 
 Full detail in [`platform/game-agnostic/docs/TEN_STAGE_ROADMAP.md`](platform/game-agnostic/docs/TEN_STAGE_ROADMAP.md).
 

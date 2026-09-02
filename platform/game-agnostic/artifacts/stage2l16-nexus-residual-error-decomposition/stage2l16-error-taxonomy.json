@@ -1,0 +1,275 @@
+{
+  "stage": "STAGE2L16_NEXUS_RESIDUAL_ERROR_DECOMPOSITION",
+  "totalErrors": 3308,
+  "classes": [
+    "SUBSTITUTE_MISVALUATION",
+    "SINGLE_PASS_APPROXIMATION",
+    "REDUNDANCY_MISVALUATION",
+    "RISK_UNDERESTIMATION",
+    "COST_VALUE_TRADEOFF",
+    "VALUE_DIFFUSION",
+    "MULTIHOP_DEPENDENCY",
+    "CYCLE_PROPAGATION",
+    "THRESHOLD_BOUNDARY",
+    "ACTION_INTERACTION",
+    "BOTTLENECK_MISVALUATION",
+    "TIE_NEAR_TIE",
+    "OTHER"
+  ],
+  "precedence": [
+    "SUBSTITUTE_MISVALUATION",
+    "THRESHOLD_BOUNDARY",
+    "SINGLE_PASS_APPROXIMATION",
+    "CYCLE_PROPAGATION",
+    "REDUNDANCY_MISVALUATION",
+    "MULTIHOP_DEPENDENCY",
+    "VALUE_DIFFUSION",
+    "RISK_UNDERESTIMATION",
+    "COST_VALUE_TRADEOFF",
+    "ACTION_INTERACTION",
+    "BOTTLENECK_MISVALUATION",
+    "TIE_NEAR_TIE",
+    "OTHER"
+  ],
+  "byDominantClass": [
+    {
+      "errorClass": "SUBSTITUTE_MISVALUATION",
+      "dominantCount": 1385,
+      "dominantShare": 0.418682,
+      "anyLabelCount": 1385,
+      "anyLabelShare": 0.418682
+    },
+    {
+      "errorClass": "SINGLE_PASS_APPROXIMATION",
+      "dominantCount": 1318,
+      "dominantShare": 0.398428,
+      "anyLabelCount": 2185,
+      "anyLabelShare": 0.66052
+    },
+    {
+      "errorClass": "OTHER",
+      "dominantCount": 348,
+      "dominantShare": 0.1052,
+      "anyLabelCount": 348,
+      "anyLabelShare": 0.1052
+    },
+    {
+      "errorClass": "RISK_UNDERESTIMATION",
+      "dominantCount": 100,
+      "dominantShare": 0.03023,
+      "anyLabelCount": 2797,
+      "anyLabelShare": 0.845526
+    },
+    {
+      "errorClass": "MULTIHOP_DEPENDENCY",
+      "dominantCount": 43,
+      "dominantShare": 0.012999,
+      "anyLabelCount": 1897,
+      "anyLabelShare": 0.573458
+    },
+    {
+      "errorClass": "COST_VALUE_TRADEOFF",
+      "dominantCount": 42,
+      "dominantShare": 0.012696,
+      "anyLabelCount": 163,
+      "anyLabelShare": 0.049274
+    },
+    {
+      "errorClass": "THRESHOLD_BOUNDARY",
+      "dominantCount": 40,
+      "dominantShare": 0.012092,
+      "anyLabelCount": 55,
+      "anyLabelShare": 0.016626
+    },
+    {
+      "errorClass": "VALUE_DIFFUSION",
+      "dominantCount": 18,
+      "dominantShare": 0.005441,
+      "anyLabelCount": 1440,
+      "anyLabelShare": 0.435308
+    },
+    {
+      "errorClass": "REDUNDANCY_MISVALUATION",
+      "dominantCount": 9,
+      "dominantShare": 0.002721,
+      "anyLabelCount": 269,
+      "anyLabelShare": 0.081318
+    },
+    {
+      "errorClass": "CYCLE_PROPAGATION",
+      "dominantCount": 5,
+      "dominantShare": 0.001511,
+      "anyLabelCount": 308,
+      "anyLabelShare": 0.093108
+    },
+    {
+      "errorClass": "ACTION_INTERACTION",
+      "dominantCount": 0,
+      "dominantShare": 0,
+      "anyLabelCount": 180,
+      "anyLabelShare": 0.054414
+    },
+    {
+      "errorClass": "BOTTLENECK_MISVALUATION",
+      "dominantCount": 0,
+      "dominantShare": 0,
+      "anyLabelCount": 157,
+      "anyLabelShare": 0.047461
+    },
+    {
+      "errorClass": "TIE_NEAR_TIE",
+      "dominantCount": 0,
+      "dominantShare": 0,
+      "anyLabelCount": 0,
+      "anyLabelShare": 0
+    }
+  ],
+  "unclassifiedShare": 0.1052,
+  "explainedShare": 0.8948,
+  "highConfidenceErrorCount": 11,
+  "highConfidenceByDominantClass": [
+    {
+      "errorClass": "SINGLE_PASS_APPROXIMATION",
+      "count": 8,
+      "share": 0.727273
+    },
+    {
+      "errorClass": "COST_VALUE_TRADEOFF",
+      "count": 2,
+      "share": 0.181818
+    },
+    {
+      "errorClass": "THRESHOLD_BOUNDARY",
+      "count": 1,
+      "share": 0.090909
+    }
+  ],
+  "multiLabelAverage": 3.380895,
+  "highConfidenceDominantClass": "SINGLE_PASS_APPROXIMATION",
+  "highConfidenceDominantShare": 0.727273,
+  "highConfidenceAgreesWithOverallDominant": false,
+  "highConfidenceSampleTooSmallForRates": true,
+  "mechanismProbes": {
+    "residualErrors": 3308,
+    "probeBaselineFaithful": true,
+    "baselineAccuracy": 0.790858,
+    "mechanisms": [
+      {
+        "id": "M0_FROZEN_BASELINE",
+        "describes": "No change. Must reproduce the frozen expert exactly.",
+        "targetsClasses": [],
+        "accuracy": 0.790858,
+        "fixes": 0,
+        "breaks": 0,
+        "net": 0,
+        "errorShareFixed": 0,
+        "reproducesFrozenBaseline": 1
+      },
+      {
+        "id": "M1_LIVE_SUBSTITUTE_REQUIRED",
+        "describes": "Withdraw the benefit credited to a BYPASS whose substitutes are all non-delivering.",
+        "targetsClasses": [
+          "SUBSTITUTE_MISVALUATION"
+        ],
+        "accuracy": 0.813049,
+        "fixes": 903,
+        "breaks": 552,
+        "net": 351,
+        "errorShareFixed": 0.272975,
+        "reproducesFrozenBaseline": 0.877537
+      },
+      {
+        "id": "M2_PROPAGATED_DELIVERY",
+        "describes": "Withdraw benefit credited through a value chain that propagation shows is still down.",
+        "targetsClasses": [
+          "SINGLE_PASS_APPROXIMATION",
+          "MULTIHOP_DEPENDENCY",
+          "CYCLE_PROPAGATION"
+        ],
+        "accuracy": 0.79168,
+        "fixes": 273,
+        "breaks": 260,
+        "net": 13,
+        "errorShareFixed": 0.082527,
+        "reproducesFrozenBaseline": 0.959917
+      },
+      {
+        "id": "M3_THRESHOLD_ALIGNMENT",
+        "describes": "Credit a RESTORE on a target inside the operational-threshold gap.",
+        "targetsClasses": [
+          "THRESHOLD_BOUNDARY"
+        ],
+        "accuracy": 0.804324,
+        "fixes": 414,
+        "breaks": 201,
+        "net": 213,
+        "errorShareFixed": 0.125151,
+        "reproducesFrozenBaseline": 0.954226
+      },
+      {
+        "id": "M4_RISK_PROPAGATION",
+        "describes": "Credit the exposure removed downstream when a non-delivering protector is brought back.",
+        "targetsClasses": [
+          "RISK_UNDERESTIMATION"
+        ],
+        "accuracy": 0.771322,
+        "fixes": 57,
+        "breaks": 366,
+        "net": -309,
+        "errorShareFixed": 0.017231,
+        "reproducesFrozenBaseline": 0.971107
+      },
+      {
+        "id": "M5_AMPLIFICATION",
+        "describes": "Credit amplification conferred by currently-delivering amplifiers.",
+        "targetsClasses": [
+          "VALUE_DIFFUSION"
+        ],
+        "accuracy": 0.790858,
+        "fixes": 0,
+        "breaks": 0,
+        "net": 0,
+        "errorShareFixed": 0,
+        "reproducesFrozenBaseline": 1
+      },
+      {
+        "id": "M6_CONFLICT_PRICING",
+        "describes": "Charge the conflict penalty an intervention would activate.",
+        "targetsClasses": [
+          "ACTION_INTERACTION"
+        ],
+        "accuracy": 0.791048,
+        "fixes": 3,
+        "breaks": 0,
+        "net": 3,
+        "errorShareFixed": 0.000907,
+        "reproducesFrozenBaseline": 0.999747
+      },
+      {
+        "id": "M1_M2_COMBINED",
+        "describes": "Live-substitute requirement plus propagated delivery.",
+        "targetsClasses": [
+          "SUBSTITUTE_MISVALUATION",
+          "SINGLE_PASS_APPROXIMATION"
+        ],
+        "accuracy": 0.804767,
+        "fixes": 990,
+        "breaks": 770,
+        "net": 220,
+        "errorShareFixed": 0.299274,
+        "reproducesFrozenBaseline": 0.853828
+      },
+      {
+        "id": "ALL_MECHANISMS",
+        "describes": "Every probe together. An upper bound on this probe family, not a proposed expert.",
+        "targetsClasses": [],
+        "accuracy": 0.802301,
+        "fixes": 1514,
+        "breaks": 1333,
+        "net": 181,
+        "errorShareFixed": 0.457678,
+        "reproducesFrozenBaseline": 0.7858
+      }
+    ]
+  }
+}

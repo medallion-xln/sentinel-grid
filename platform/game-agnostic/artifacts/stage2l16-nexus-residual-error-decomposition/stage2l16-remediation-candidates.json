@@ -1,0 +1,210 @@
+{
+  "stage": "STAGE2L16_NEXUS_RESIDUAL_ERROR_DECOMPOSITION",
+  "candidates": [
+    {
+      "id": "LIVE_SUBSTITUTE_REQUIREMENT",
+      "mechanism": "M1_LIVE_SUBSTITUTE_REQUIRED",
+      "description": "Credit a BYPASS only when at least one substitute is itself delivering.",
+      "complexity": "O(substitutes) per action; no new traversal.",
+      "determinismImpact": "None. Same integer arithmetic, same ordering rule.",
+      "contractImpact": "None. No new signal, no new field, no schema change.",
+      "arbiterImpact": "None. The arbiter consumes a recommendation and a signal block, both unchanged in shape.",
+      "blastRadius": "One predicate inside scoreRelationalUtility.",
+      "measuredFixes": 903,
+      "measuredBreaks": 552,
+      "measuredNet": 351,
+      "measuredErrorShareFixed": 0.272975,
+      "measuredAccuracy": 0.813049,
+      "improvesAccuracy": true,
+      "errorClassesAddressed": [
+        "SUBSTITUTE_MISVALUATION"
+      ]
+    },
+    {
+      "id": "THRESHOLD_ALIGNMENT",
+      "mechanism": "M3_THRESHOLD_ALIGNMENT",
+      "description": "Align the expert operational threshold with the world availability threshold.",
+      "complexity": "Constant.",
+      "determinismImpact": "None.",
+      "contractImpact": "None.",
+      "arbiterImpact": "None.",
+      "blastRadius": "One constant. Note it was set deliberately different in Stage 2L.13.",
+      "measuredFixes": 414,
+      "measuredBreaks": 201,
+      "measuredNet": 213,
+      "measuredErrorShareFixed": 0.125151,
+      "measuredAccuracy": 0.804324,
+      "improvesAccuracy": true,
+      "errorClassesAddressed": [
+        "THRESHOLD_BOUNDARY"
+      ]
+    },
+    {
+      "id": "PROPAGATED_DELIVERY_STATE",
+      "mechanism": "M2_PROPAGATED_DELIVERY",
+      "description": "Replace the local blocked test with a fixed-point delivery resolution over dependency, support, inhibition and substitution.",
+      "complexity": "O(entities * relations) per case, bounded by entity count passes.",
+      "determinismImpact": "None if the iteration bound and ordering are fixed, as in the diagnostic here.",
+      "contractImpact": "None required; existing signals keep their meaning.",
+      "arbiterImpact": "None.",
+      "blastRadius": "The blocked predicate and everything derived from it: addressesTarget, remainingBlockers, alreadyProtected.",
+      "measuredFixes": 273,
+      "measuredBreaks": 260,
+      "measuredNet": 13,
+      "measuredErrorShareFixed": 0.082527,
+      "measuredAccuracy": 0.79168,
+      "improvesAccuracy": true,
+      "errorClassesAddressed": [
+        "SINGLE_PASS_APPROXIMATION",
+        "MULTIHOP_DEPENDENCY",
+        "CYCLE_PROPAGATION"
+      ]
+    },
+    {
+      "id": "CONFLICT_PRICING",
+      "mechanism": "M6_CONFLICT_PRICING",
+      "description": "Charge the conflict penalty an intervention would activate.",
+      "complexity": "O(conflict relations) per action.",
+      "determinismImpact": "None.",
+      "contractImpact": "None.",
+      "arbiterImpact": "None.",
+      "blastRadius": "The benefit term.",
+      "measuredFixes": 3,
+      "measuredBreaks": 0,
+      "measuredNet": 3,
+      "measuredErrorShareFixed": 0.000907,
+      "measuredAccuracy": 0.791048,
+      "improvesAccuracy": true,
+      "errorClassesAddressed": [
+        "ACTION_INTERACTION"
+      ]
+    },
+    {
+      "id": "AMPLIFICATION_PRICING",
+      "mechanism": "M5_AMPLIFICATION",
+      "description": "Include amplification conferred by delivering amplifiers in bearer value.",
+      "complexity": "O(amplifier relations) per bearer.",
+      "determinismImpact": "None.",
+      "contractImpact": "None.",
+      "arbiterImpact": "None.",
+      "blastRadius": "The benefit term.",
+      "measuredFixes": 0,
+      "measuredBreaks": 0,
+      "measuredNet": 0,
+      "measuredErrorShareFixed": 0,
+      "measuredAccuracy": 0.790858,
+      "improvesAccuracy": false,
+      "errorClassesAddressed": [
+        "VALUE_DIFFUSION"
+      ]
+    },
+    {
+      "id": "RISK_PROPAGATION",
+      "mechanism": "M4_RISK_PROPAGATION",
+      "description": "Credit exposure removed downstream when a non-delivering protector is restored.",
+      "complexity": "O(protected entities) per action.",
+      "determinismImpact": "None.",
+      "contractImpact": "None.",
+      "arbiterImpact": "None.",
+      "blastRadius": "The risk term in scoreRelationalUtility.",
+      "measuredFixes": 57,
+      "measuredBreaks": 366,
+      "measuredNet": -309,
+      "measuredErrorShareFixed": 0.017231,
+      "measuredAccuracy": 0.771322,
+      "improvesAccuracy": false,
+      "errorClassesAddressed": [
+        "RISK_UNDERESTIMATION"
+      ]
+    }
+  ],
+  "helpfulCandidateCount": 4,
+  "topCandidate": {
+    "id": "LIVE_SUBSTITUTE_REQUIREMENT",
+    "mechanism": "M1_LIVE_SUBSTITUTE_REQUIRED",
+    "description": "Credit a BYPASS only when at least one substitute is itself delivering.",
+    "complexity": "O(substitutes) per action; no new traversal.",
+    "determinismImpact": "None. Same integer arithmetic, same ordering rule.",
+    "contractImpact": "None. No new signal, no new field, no schema change.",
+    "arbiterImpact": "None. The arbiter consumes a recommendation and a signal block, both unchanged in shape.",
+    "blastRadius": "One predicate inside scoreRelationalUtility.",
+    "measuredFixes": 903,
+    "measuredBreaks": 552,
+    "measuredNet": 351,
+    "measuredErrorShareFixed": 0.272975,
+    "measuredAccuracy": 0.813049,
+    "improvesAccuracy": true,
+    "errorClassesAddressed": [
+      "SUBSTITUTE_MISVALUATION"
+    ]
+  },
+  "secondCandidate": {
+    "id": "THRESHOLD_ALIGNMENT",
+    "mechanism": "M3_THRESHOLD_ALIGNMENT",
+    "description": "Align the expert operational threshold with the world availability threshold.",
+    "complexity": "Constant.",
+    "determinismImpact": "None.",
+    "contractImpact": "None.",
+    "arbiterImpact": "None.",
+    "blastRadius": "One constant. Note it was set deliberately different in Stage 2L.13.",
+    "measuredFixes": 414,
+    "measuredBreaks": 201,
+    "measuredNet": 213,
+    "measuredErrorShareFixed": 0.125151,
+    "measuredAccuracy": 0.804324,
+    "improvesAccuracy": true,
+    "errorClassesAddressed": [
+      "THRESHOLD_BOUNDARY"
+    ]
+  },
+  "combinedProbe": {
+    "id": "M1_M2_COMBINED",
+    "describes": "Live-substitute requirement plus propagated delivery.",
+    "targetsClasses": [
+      "SUBSTITUTE_MISVALUATION",
+      "SINGLE_PASS_APPROXIMATION"
+    ],
+    "accuracy": 0.804767,
+    "fixes": 990,
+    "breaks": 770,
+    "net": 220,
+    "errorShareFixed": 0.299274,
+    "reproducesFrozenBaseline": 0.853828
+  },
+  "allMechanismsProbe": {
+    "id": "ALL_MECHANISMS",
+    "describes": "Every probe together. An upper bound on this probe family, not a proposed expert.",
+    "targetsClasses": [],
+    "accuracy": 0.802301,
+    "fixes": 1514,
+    "breaks": 1333,
+    "net": 181,
+    "errorShareFixed": 0.457678,
+    "reproducesFrozenBaseline": 0.7858
+  },
+  "arbiterChangeRequired": false,
+  "contractChangeRequired": false,
+  "note": "Coverage is measured by re-ranking the frozen expert's own decomposition with one additive delta. A probe is evidence that a mechanism matters, not a proposed implementation: the breaks column shows each probe also costs correct cases, so a real remediation must be more surgical than the probe.",
+  "feasibility": {
+    "bestProbeId": "M1_LIVE_SUBSTITUTE_REQUIRED",
+    "bestProbeAccuracy": 0.813049,
+    "baselineAccuracy": 0.790858,
+    "bestProbeAccuracyGain": 0.022191,
+    "bestProbeNet": 351,
+    "estimatedRemediableErrorShare": 0.829202,
+    "estimatedRemediableErrorShareMeaning": "Share of residual errors whose dominant class is targeted by at least one candidate mechanism. An upper bound on scope, NOT a predicted fix rate.",
+    "measuredErrorShareFixedByBestProbe": 0.272975,
+    "measuredNetFixesByBestProbe": 351,
+    "unclassifiedShare": 0.1052,
+    "fundamentalMisorderShare": 0.806419,
+    "feasibility": "PLAUSIBLE_WITH_BOUNDED_REMEDIATION",
+    "caveat": "Raw accuracy is not delegation precision. Stage 2L.14 and 2L.15 both showed a supported region at 0.99 is a much stronger requirement than an accuracy gain, and nothing here certifies future performance."
+  },
+  "interpretation": {
+    "measuredRootCause": "SUBSTITUTE_MISVALUATION is the dominant class at 41.8682% of residual errors by precedence and 41.8682% by any-label prevalence. A bounded probe targeting it improves accuracy, so it is remediable rather than intrinsic.",
+    "recommendedRemediationClass": "LIVE_SUBSTITUTE_REQUIREMENT",
+    "nexusExpertRemediationRequired": true,
+    "nexusConfidenceRemediationRequired": false,
+    "arbiterRemediationRequired": false
+  }
+}
