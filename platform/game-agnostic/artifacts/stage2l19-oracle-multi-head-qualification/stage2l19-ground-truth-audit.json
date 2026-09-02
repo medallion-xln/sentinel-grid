@@ -1,0 +1,232 @@
+{
+  "stage": "STAGE2L19_ORACLE_MULTI_HEAD_QUALIFICATION",
+  "classes": [
+    "WORLD_STATE_DERIVED",
+    "TEMPORAL_STATE_DERIVED",
+    "DETERMINISTIC_LATENT_DERIVED",
+    "INDEPENDENT_RANDOM_LABEL",
+    "MISSING",
+    "OTHER"
+  ],
+  "heads": [
+    {
+      "headId": "direction",
+      "arbiterEligibility": "CERTIFIED_STAGE2L10_SELECTIVE_DELEGATION",
+      "certificationStatus": "CERTIFIED_DIRECTION_HEAD",
+      "groundTruthClass": "DETERMINISTIC_LATENT_DERIVED",
+      "groundTruthSource": "GENERATOR_FAMILY_DECLARED_EXPECTED_LABEL",
+      "decisionTimeObservable": true,
+      "hiddenRandomnessInvolved": false,
+      "futureInformationInvolved": false,
+      "expertOutputUsedInTruthConstruction": false,
+      "labelLeakagePossible": false,
+      "cases": 300,
+      "expectedLabels": [
+        "DOWN",
+        "STABLE",
+        "UP"
+      ],
+      "emittedLabels": [
+        "DOWN",
+        "STABLE",
+        "UP"
+      ],
+      "unreachableExpectedLabels": [],
+      "hasUnreachableLabel": false,
+      "achievableAccuracyCeiling": 1,
+      "semanticallyValid": true
+    },
+    {
+      "headId": "persistence",
+      "arbiterEligibility": "NOT_WIRED",
+      "certificationStatus": "UNCERTIFIED",
+      "groundTruthClass": "DETERMINISTIC_LATENT_DERIVED",
+      "groundTruthSource": "GENERATOR_FAMILY_DECLARED_EXPECTED_LABEL",
+      "decisionTimeObservable": true,
+      "hiddenRandomnessInvolved": false,
+      "futureInformationInvolved": false,
+      "expertOutputUsedInTruthConstruction": false,
+      "labelLeakagePossible": false,
+      "cases": 300,
+      "expectedLabels": [
+        "NOT_PERSISTENT",
+        "PERSISTENT"
+      ],
+      "emittedLabels": [
+        "INSUFFICIENT_EVIDENCE",
+        "NON_PERSISTENT",
+        "PERSISTENT"
+      ],
+      "unreachableExpectedLabels": [
+        "NOT_PERSISTENT"
+      ],
+      "hasUnreachableLabel": true,
+      "achievableAccuracyCeiling": 0.666667,
+      "semanticallyValid": false
+    },
+    {
+      "headId": "reversal",
+      "arbiterEligibility": "NOT_WIRED",
+      "certificationStatus": "UNCERTIFIED",
+      "groundTruthClass": "DETERMINISTIC_LATENT_DERIVED",
+      "groundTruthSource": "GENERATOR_FAMILY_DECLARED_EXPECTED_LABEL",
+      "decisionTimeObservable": true,
+      "hiddenRandomnessInvolved": false,
+      "futureInformationInvolved": false,
+      "expertOutputUsedInTruthConstruction": false,
+      "labelLeakagePossible": false,
+      "cases": 300,
+      "expectedLabels": [
+        "NO_REVERSAL",
+        "REVERSAL"
+      ],
+      "emittedLabels": [
+        "NO_REVERSAL",
+        "REVERSAL"
+      ],
+      "unreachableExpectedLabels": [],
+      "hasUnreachableLabel": false,
+      "achievableAccuracyCeiling": 1,
+      "semanticallyValid": true
+    },
+    {
+      "headId": "regimeChange",
+      "arbiterEligibility": "NOT_WIRED",
+      "certificationStatus": "UNCERTIFIED",
+      "groundTruthClass": "DETERMINISTIC_LATENT_DERIVED",
+      "groundTruthSource": "GENERATOR_FAMILY_DECLARED_EXPECTED_LABEL",
+      "decisionTimeObservable": true,
+      "hiddenRandomnessInvolved": false,
+      "futureInformationInvolved": false,
+      "expertOutputUsedInTruthConstruction": false,
+      "labelLeakagePossible": false,
+      "cases": 300,
+      "expectedLabels": [
+        "LEVEL_CHANGE",
+        "NO_CHANGE",
+        "TREND_CHANGE"
+      ],
+      "emittedLabels": [
+        "CYCLE_CHANGE",
+        "INSUFFICIENT_EVIDENCE",
+        "LEVEL_CHANGE",
+        "MULTIPLE_CHANGE",
+        "NO_CHANGE",
+        "TREND_CHANGE"
+      ],
+      "unreachableExpectedLabels": [],
+      "hasUnreachableLabel": false,
+      "achievableAccuracyCeiling": 1,
+      "semanticallyValid": true
+    },
+    {
+      "headId": "volatility",
+      "arbiterEligibility": "NOT_WIRED",
+      "certificationStatus": "UNCERTIFIED",
+      "groundTruthClass": "DETERMINISTIC_LATENT_DERIVED",
+      "groundTruthSource": "GENERATOR_FAMILY_DECLARED_EXPECTED_LABEL",
+      "decisionTimeObservable": true,
+      "hiddenRandomnessInvolved": false,
+      "futureInformationInvolved": false,
+      "expertOutputUsedInTruthConstruction": false,
+      "labelLeakagePossible": false,
+      "cases": 300,
+      "expectedLabels": [
+        "HIGH_VOLATILITY",
+        "LOW_VOLATILITY"
+      ],
+      "emittedLabels": [
+        "HIGH_VOLATILITY",
+        "LOW_VOLATILITY"
+      ],
+      "unreachableExpectedLabels": [],
+      "hasUnreachableLabel": false,
+      "achievableAccuracyCeiling": 1,
+      "semanticallyValid": true
+    },
+    {
+      "headId": "cycle",
+      "arbiterEligibility": "NOT_WIRED",
+      "certificationStatus": "UNCERTIFIED",
+      "groundTruthClass": "DETERMINISTIC_LATENT_DERIVED",
+      "groundTruthSource": "GENERATOR_FAMILY_DECLARED_EXPECTED_LABEL",
+      "decisionTimeObservable": true,
+      "hiddenRandomnessInvolved": false,
+      "futureInformationInvolved": false,
+      "expertOutputUsedInTruthConstruction": false,
+      "labelLeakagePossible": false,
+      "cases": 300,
+      "expectedLabels": [
+        "CYCLICAL",
+        "NOT_CYCLICAL"
+      ],
+      "emittedLabels": [
+        "CYCLICAL",
+        "NOT_CYCLICAL"
+      ],
+      "unreachableExpectedLabels": [],
+      "hasUnreachableLabel": false,
+      "achievableAccuracyCeiling": 1,
+      "semanticallyValid": true
+    },
+    {
+      "headId": "timeToThreshold",
+      "arbiterEligibility": "NOT_WIRED",
+      "certificationStatus": "UNCERTIFIED",
+      "groundTruthClass": "DETERMINISTIC_LATENT_DERIVED",
+      "groundTruthSource": "GENERATOR_FAMILY_DECLARED_EXPECTED_LABEL",
+      "decisionTimeObservable": true,
+      "hiddenRandomnessInvolved": false,
+      "futureInformationInvolved": false,
+      "expertOutputUsedInTruthConstruction": false,
+      "labelLeakagePossible": false,
+      "cases": 300,
+      "expectedLabels": [
+        "ALREADY_CROSSED",
+        "CROSSING_1_TO_3",
+        "NOT_CROSSING"
+      ],
+      "emittedLabels": [
+        "ALREADY_CROSSED",
+        "INSUFFICIENT_EVIDENCE",
+        "NOT_CROSSING"
+      ],
+      "unreachableExpectedLabels": [
+        "CROSSING_1_TO_3"
+      ],
+      "hasUnreachableLabel": true,
+      "achievableAccuracyCeiling": 0.666667,
+      "semanticallyValid": false
+    },
+    {
+      "headId": "abstention",
+      "arbiterEligibility": "GLOBAL_SUFFICIENCY_GATE",
+      "certificationStatus": "UNCERTIFIED",
+      "groundTruthClass": "DETERMINISTIC_LATENT_DERIVED",
+      "groundTruthSource": "GENERATOR_FAMILY_DECLARED_EXPECTED_LABEL",
+      "decisionTimeObservable": true,
+      "hiddenRandomnessInvolved": false,
+      "futureInformationInvolved": false,
+      "expertOutputUsedInTruthConstruction": false,
+      "labelLeakagePossible": false,
+      "cases": 300,
+      "expectedLabels": [
+        "ENOUGH_EVIDENCE",
+        "INSUFFICIENT_EVIDENCE"
+      ],
+      "emittedLabels": [
+        "ENOUGH_EVIDENCE",
+        "INSUFFICIENT_EVIDENCE"
+      ],
+      "unreachableExpectedLabels": [],
+      "hasUnreachableLabel": false,
+      "achievableAccuracyCeiling": 1,
+      "semanticallyValid": true
+    }
+  ],
+  "semanticallyValidHeadCount": 6,
+  "invalidBenchmarkHeadCount": 2,
+  "anyHiddenRandomness": false,
+  "labelLeakageDetected": false,
+  "note": "No head is scored against an independent random draw. Every truth label is a deterministic property of its generator family, so the Stage 2L.11 failure mode is absent — but the labels are construction intent, not independently derived world state, and are classified as such."
+}

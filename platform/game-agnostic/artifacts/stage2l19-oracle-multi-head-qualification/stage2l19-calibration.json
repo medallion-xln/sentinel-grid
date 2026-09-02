@@ -1,0 +1,73 @@
+{
+  "stage": "STAGE2L19_ORACLE_MULTI_HEAD_QUALIFICATION",
+  "reliabilityFloor": 0.99,
+  "reliabilityFloorLowered": false,
+  "harmCeiling": 0.01,
+  "correctPrimeBreakCeiling": 0.01,
+  "boundMethod": "WILSON_SCORE_LOWER_BOUND",
+  "boundZ": 1.6449,
+  "calibratedHeads": [
+    {
+      "headId": "direction",
+      "reason": "REVALIDATED_AGAINST_STAGE2L19_STRESS_CORPUS_AND_STAGE2L10_CERTIFICATION",
+      "revalidation": {
+        "corpus": "STAGE2L19_ORACLE_STRESS_CORPUS",
+        "cases": 350,
+        "supportedCases": 350,
+        "correctWhenSupported": 350,
+        "precision": 1,
+        "lowerBound": 0.992329,
+        "boundMethod": "WILSON_SCORE_LOWER_BOUND",
+        "boundZ": 1.6449,
+        "supportAdequate": true,
+        "minimumDelegationCount": 50,
+        "meetsFloor": true,
+        "scope": "LABEL_LEVEL_ONLY_NO_PRIME_COMPARISON_ON_THIS_CORPUS",
+        "note": "This corpus scores temporal labels, not actions, so it can contradict the inherited certification but cannot by itself establish a Prime-relative harmful-change rate."
+      },
+      "inheritedEvidence": {
+        "source": "STAGE2L10_ARBITER_CORRECTNESS_CALIBRATION_AND_SELECTIVE_DELEGATION",
+        "artifactField": "oracleSingleExpert",
+        "inheritedDelegations": 3416,
+        "delegations": 1332,
+        "precision": 1,
+        "beneficialChanges": 1332,
+        "harmfulChanges": 0,
+        "harmfulChangeRate": 0,
+        "correctPrimeBreaks": 0,
+        "correctPrimeBreakRate": 0
+      }
+    }
+  ],
+  "headsWithNoCalibrationPath": [
+    {
+      "headId": "persistence",
+      "reason": "BENCHMARK_SEMANTICS_INVALID"
+    },
+    {
+      "headId": "reversal",
+      "reason": "NO_ACTION_DELEGATION_PATH"
+    },
+    {
+      "headId": "regimeChange",
+      "reason": "NO_ACTION_DELEGATION_PATH"
+    },
+    {
+      "headId": "volatility",
+      "reason": "NO_ACTION_DELEGATION_PATH"
+    },
+    {
+      "headId": "cycle",
+      "reason": "NO_ACTION_DELEGATION_PATH"
+    },
+    {
+      "headId": "timeToThreshold",
+      "reason": "BENCHMARK_SEMANTICS_INVALID"
+    },
+    {
+      "headId": "abstention",
+      "reason": "NO_ACTION_DELEGATION_PATH"
+    }
+  ],
+  "note": "No new calibration rule was derived. The direction head is revalidated against its inherited Stage 2L.10 calibration; every other head has no action path to calibrate onto, so deriving one would have been inventing a delegation surface this stage was asked to audit."
+}

@@ -1,0 +1,2692 @@
+{
+  "certificationSchemaVersion": 1,
+  "stage": "STAGE2L19_ORACLE_MULTI_HEAD_QUALIFICATION",
+  "status": "PASS",
+  "stageKind": "ORACLE_MULTI_HEAD_CHARACTERIZATION_AND_CERTIFICATION",
+  "authority": "R0",
+  "canDispatch": false,
+  "canMutateLiveWorld": false,
+  "arbiterShadowOnly": true,
+  "finalRecommendationOwner": "PRIME",
+  "freeze": {
+    "stage2l18CertificationHash": "9c4c07d5fead5fe80f7895b49c204e0f42d767079f71658d52d7b35f21862ee7",
+    "stage2l17CertificationHash": "c0bc3360712a3a51e16fe898bf8cfc2d437a131e5c8b8ae14d4cef61e00c1e2a",
+    "stage2l10CertificationHash": "73e958a02a479326bb60cad058fa5cc3e29d5c77614aaef87936aa41dba41a86",
+    "nexusBehaviourChanged": false,
+    "oracleBehaviourChanged": false,
+    "arbiterChanged": false,
+    "primeChanged": false,
+    "reliabilityFloor": 0.99,
+    "reliabilityFloorLowered": false,
+    "harmCeiling": 0.01,
+    "correctPrimeBreakCeiling": 0.01,
+    "boundMethod": "WILSON_SCORE_LOWER_BOUND",
+    "boundZ": 1.6449,
+    "conservativeBoundRequirement": 0.95
+  },
+  "inventory": {
+    "implementedHeadIds": [
+      "abstention",
+      "cycle",
+      "direction",
+      "persistence",
+      "regimeChange",
+      "reversal",
+      "timeToThreshold",
+      "volatility"
+    ],
+    "declaredHeadIds": [
+      "abstention",
+      "cycle",
+      "direction",
+      "persistence",
+      "regimeChange",
+      "reversal",
+      "timeToThreshold",
+      "volatility"
+    ],
+    "inventoryMatchesImplementation": true,
+    "headCount": 8,
+    "compositionRules": "ORACLE_V2_EXPERIMENTAL",
+    "actionMappingDeclared": false,
+    "forbiddenActionFieldsPresent": [],
+    "advisoryOnly": true,
+    "authority": {
+      "tier": "R0",
+      "canDispatch": false,
+      "canMutateLiveWorld": false
+    }
+  },
+  "contracts": {
+    "probeDigest": "sha256:24a96aaebdae2758b9e28e4a3b8ee87aeccc532fe37b4575f8d0f5c5db4c6a70",
+    "exposedTopLevelFields": [
+      "advisoryOnly",
+      "assessmentDigest",
+      "authority",
+      "confidence",
+      "evidence",
+      "expert",
+      "expertSelectionInfluence",
+      "heads",
+      "historySufficiency",
+      "modular",
+      "provenance",
+      "schemaVersion",
+      "singleScalarValue"
+    ],
+    "arbiterOracleHeadBinding": "direction",
+    "arbiterUnknownHeadCode": "ORACLE_SIGNAL_HEAD_UNKNOWN",
+    "arbiterOracleSignalKeys": [
+      "kind",
+      "head",
+      "supported",
+      "claim",
+      "confidence",
+      "fullSlopeMicro",
+      "recentSlopeMicro",
+      "samples",
+      "historySufficiency"
+    ],
+    "arbiterOracleSignalKind": "ORACLE_DIRECTION_SLOPE_COHERENCE_V1",
+    "headsExposed": 8,
+    "headsConsumedByArbiter": 1,
+    "headsExposedButNotConsumed": [
+      "persistence",
+      "reversal",
+      "regimeChange",
+      "volatility",
+      "cycle",
+      "timeToThreshold",
+      "abstention"
+    ],
+    "anyHeadEmitsAction": false,
+    "heads": [
+      {
+        "headId": "direction",
+        "headName": "DIRECTION_HEAD",
+        "canonicalInputsConsumed": [
+          "observationHistory.channels"
+        ],
+        "derivedStateComputed": [
+          "architecture",
+          "fullSlope",
+          "recentSlope",
+          "samples"
+        ],
+        "expertOutputFieldsExposed": [
+          "confidence",
+          "observation",
+          "outputDigest",
+          "rawSemanticOutput",
+          "semanticOutput",
+          "supportContext",
+          "supported"
+        ],
+        "confidenceFieldsExposed": [
+          "confidence"
+        ],
+        "supportFieldsExposed": [
+          "supported",
+          "supportContext"
+        ],
+        "evidenceMetadataExposed": [
+          "evidence.headOutputDigests",
+          "outputDigest"
+        ],
+        "correctnessDefinition": "semanticOutput equals the corpus case's declared expected label drawn from UP|DOWN|STABLE",
+        "arbiterPath": "STAGE2L10_ORACLE_BINDING_HEAD_DIRECTION",
+        "consumedByArbiter": true,
+        "emitsAction": false,
+        "informationOracleComputes": 4,
+        "informationOracleExposes": 7,
+        "informationArbiterConsumes": 3,
+        "contractDeficiencyMeasured": false
+      },
+      {
+        "headId": "persistence",
+        "headName": "PERSISTENCE_HEAD",
+        "canonicalInputsConsumed": [
+          "observationHistory.channels"
+        ],
+        "derivedStateComputed": [
+          "directionalActivity",
+          "directionalConsistency",
+          "fullDirection",
+          "historyCoverage",
+          "nonzeroSteps",
+          "opposingRun",
+          "recentDirection",
+          "samples",
+          "support"
+        ],
+        "expertOutputFieldsExposed": [
+          "confidence",
+          "observation",
+          "outputDigest",
+          "rawSemanticOutput",
+          "semanticOutput",
+          "supportContext",
+          "supported"
+        ],
+        "confidenceFieldsExposed": [
+          "confidence"
+        ],
+        "supportFieldsExposed": [
+          "supported",
+          "supportContext"
+        ],
+        "evidenceMetadataExposed": [
+          "evidence.headOutputDigests",
+          "outputDigest"
+        ],
+        "correctnessDefinition": "semanticOutput equals the corpus case's declared expected label drawn from PERSISTENT|NON_PERSISTENT|INSUFFICIENT_EVIDENCE",
+        "arbiterPath": "NOT_WIRED_ARBITER_REJECTS_WITH_ORACLE_SIGNAL_HEAD_UNKNOWN",
+        "consumedByArbiter": false,
+        "emitsAction": false,
+        "informationOracleComputes": 9,
+        "informationOracleExposes": 7,
+        "informationArbiterConsumes": 0,
+        "contractDeficiencyMeasured": false
+      },
+      {
+        "headId": "reversal",
+        "headName": "REVERSAL_HEAD",
+        "canonicalInputsConsumed": [
+          "observationHistory.channels"
+        ],
+        "derivedStateComputed": [
+          "material",
+          "priorSlope",
+          "recentSlope"
+        ],
+        "expertOutputFieldsExposed": [
+          "confidence",
+          "observation",
+          "outputDigest",
+          "rawSemanticOutput",
+          "semanticOutput",
+          "supportContext",
+          "supported"
+        ],
+        "confidenceFieldsExposed": [
+          "confidence"
+        ],
+        "supportFieldsExposed": [
+          "supported",
+          "supportContext"
+        ],
+        "evidenceMetadataExposed": [
+          "evidence.headOutputDigests",
+          "outputDigest"
+        ],
+        "correctnessDefinition": "semanticOutput equals the corpus case's declared expected label drawn from REVERSAL|NO_REVERSAL",
+        "arbiterPath": "NOT_WIRED_ARBITER_REJECTS_WITH_ORACLE_SIGNAL_HEAD_UNKNOWN",
+        "consumedByArbiter": false,
+        "emitsAction": false,
+        "informationOracleComputes": 3,
+        "informationOracleExposes": 7,
+        "informationArbiterConsumes": 0,
+        "contractDeficiencyMeasured": false
+      },
+      {
+        "headId": "regimeChange",
+        "headName": "REGIME_CHANGE_HEAD",
+        "canonicalInputsConsumed": [
+          "observationHistory.channels"
+        ],
+        "derivedStateComputed": [
+          "anomalyFilter",
+          "deltas",
+          "detectedChanges",
+          "dimensionEvidence",
+          "prior",
+          "priorPersistence",
+          "priorProcessState",
+          "recent",
+          "recentPersistence",
+          "recentProcessState",
+          "reversalObservation",
+          "samples",
+          "stablePriorInterpretationAvailable"
+        ],
+        "expertOutputFieldsExposed": [
+          "confidence",
+          "observation",
+          "outputDigest",
+          "rawSemanticOutput",
+          "semanticOutput",
+          "supportContext",
+          "supported"
+        ],
+        "confidenceFieldsExposed": [
+          "confidence"
+        ],
+        "supportFieldsExposed": [
+          "supported",
+          "supportContext"
+        ],
+        "evidenceMetadataExposed": [
+          "evidence.headOutputDigests",
+          "outputDigest"
+        ],
+        "correctnessDefinition": "semanticOutput equals the corpus case's declared expected label drawn from TREND_CHANGE|LEVEL_CHANGE|CYCLE_CHANGE|MULTIPLE_CHANGE|NO_CHANGE|INSUFFICIENT_EVIDENCE",
+        "arbiterPath": "NOT_WIRED_ARBITER_REJECTS_WITH_ORACLE_SIGNAL_HEAD_UNKNOWN",
+        "consumedByArbiter": false,
+        "emitsAction": false,
+        "informationOracleComputes": 13,
+        "informationOracleExposes": 7,
+        "informationArbiterConsumes": 0,
+        "contractDeficiencyMeasured": false
+      },
+      {
+        "headId": "volatility",
+        "headName": "VOLATILITY_HEAD",
+        "canonicalInputsConsumed": [
+          "observationHistory.channels"
+        ],
+        "derivedStateComputed": [
+          "magnitude",
+          "samples"
+        ],
+        "expertOutputFieldsExposed": [
+          "confidence",
+          "observation",
+          "outputDigest",
+          "rawSemanticOutput",
+          "semanticOutput",
+          "supportContext",
+          "supported"
+        ],
+        "confidenceFieldsExposed": [
+          "confidence"
+        ],
+        "supportFieldsExposed": [
+          "supported",
+          "supportContext"
+        ],
+        "evidenceMetadataExposed": [
+          "evidence.headOutputDigests",
+          "outputDigest"
+        ],
+        "correctnessDefinition": "semanticOutput equals the corpus case's declared expected label drawn from HIGH_VOLATILITY|LOW_VOLATILITY",
+        "arbiterPath": "NOT_WIRED_ARBITER_REJECTS_WITH_ORACLE_SIGNAL_HEAD_UNKNOWN",
+        "consumedByArbiter": false,
+        "emitsAction": false,
+        "informationOracleComputes": 2,
+        "informationOracleExposes": 7,
+        "informationArbiterConsumes": 0,
+        "contractDeficiencyMeasured": false
+      },
+      {
+        "headId": "cycle",
+        "headName": "CYCLE_HEAD",
+        "canonicalInputsConsumed": [
+          "observationHistory.channels"
+        ],
+        "derivedStateComputed": [
+          "amplitude",
+          "bestCorrelation",
+          "bestLag",
+          "samples"
+        ],
+        "expertOutputFieldsExposed": [
+          "confidence",
+          "observation",
+          "outputDigest",
+          "rawSemanticOutput",
+          "semanticOutput",
+          "supportContext",
+          "supported"
+        ],
+        "confidenceFieldsExposed": [
+          "confidence"
+        ],
+        "supportFieldsExposed": [
+          "supported",
+          "supportContext"
+        ],
+        "evidenceMetadataExposed": [
+          "evidence.headOutputDigests",
+          "outputDigest"
+        ],
+        "correctnessDefinition": "semanticOutput equals the corpus case's declared expected label drawn from CYCLICAL|NOT_CYCLICAL",
+        "arbiterPath": "NOT_WIRED_ARBITER_REJECTS_WITH_ORACLE_SIGNAL_HEAD_UNKNOWN",
+        "consumedByArbiter": false,
+        "emitsAction": false,
+        "informationOracleComputes": 4,
+        "informationOracleExposes": 7,
+        "informationArbiterConsumes": 0,
+        "contractDeficiencyMeasured": false
+      },
+      {
+        "headId": "timeToThreshold",
+        "headName": "TIME_TO_THRESHOLD_HEAD",
+        "canonicalInputsConsumed": [
+          "observationHistory.channels",
+          "channelSemantics.threshold",
+          "channelSemantics.polarity"
+        ],
+        "derivedStateComputed": [
+          "estimatedTicks",
+          "fullSlope",
+          "last",
+          "recentSlope",
+          "threshold"
+        ],
+        "expertOutputFieldsExposed": [
+          "confidence",
+          "observation",
+          "outputDigest",
+          "rawSemanticOutput",
+          "semanticOutput",
+          "supportContext",
+          "supported"
+        ],
+        "confidenceFieldsExposed": [
+          "confidence"
+        ],
+        "supportFieldsExposed": [
+          "supported",
+          "supportContext"
+        ],
+        "evidenceMetadataExposed": [
+          "evidence.headOutputDigests",
+          "outputDigest"
+        ],
+        "correctnessDefinition": "semanticOutput equals the corpus case's declared expected label drawn from ALREADY_CROSSED|NOT_CROSSING|INSUFFICIENT_EVIDENCE",
+        "arbiterPath": "NOT_WIRED_ARBITER_REJECTS_WITH_ORACLE_SIGNAL_HEAD_UNKNOWN",
+        "consumedByArbiter": false,
+        "emitsAction": false,
+        "informationOracleComputes": 5,
+        "informationOracleExposes": 7,
+        "informationArbiterConsumes": 0,
+        "contractDeficiencyMeasured": false
+      },
+      {
+        "headId": "abstention",
+        "headName": "ABSTENTION_HEAD",
+        "canonicalInputsConsumed": [
+          "observationHistory"
+        ],
+        "derivedStateComputed": [
+          "conflict",
+          "coverage",
+          "samples",
+          "volatility"
+        ],
+        "expertOutputFieldsExposed": [
+          "confidence",
+          "observation",
+          "outputDigest",
+          "rawSemanticOutput",
+          "semanticOutput",
+          "supportContext",
+          "supported"
+        ],
+        "confidenceFieldsExposed": [
+          "confidence"
+        ],
+        "supportFieldsExposed": [
+          "supported",
+          "supportContext"
+        ],
+        "evidenceMetadataExposed": [
+          "evidence.headOutputDigests",
+          "outputDigest"
+        ],
+        "correctnessDefinition": "semanticOutput equals the corpus case's declared expected label drawn from ENOUGH_EVIDENCE|INSUFFICIENT_EVIDENCE",
+        "arbiterPath": "NOT_WIRED_ARBITER_REJECTS_WITH_ORACLE_SIGNAL_HEAD_UNKNOWN",
+        "consumedByArbiter": false,
+        "emitsAction": false,
+        "informationOracleComputes": 4,
+        "informationOracleExposes": 7,
+        "informationArbiterConsumes": 0,
+        "contractDeficiencyMeasured": false
+      }
+    ],
+    "contractDeficienciesFound": [],
+    "note": "Seven heads are computed and fully exposed with their own digests, and none is readable through the Stage 2L.10 Arbiter binding, which pins head=direction by identity. Widening that binding is an Arbiter change and is out of scope for this stage."
+  },
+  "heads": [
+    {
+      "headId": "direction",
+      "headName": "DIRECTION_HEAD",
+      "implementation": "STAGE2I2_LAST_MINUS_FIRST",
+      "inputs": [
+        "observationHistory.channels"
+      ],
+      "outputs": [
+        "UP",
+        "DOWN",
+        "STABLE"
+      ],
+      "taskSemantics": "Sign of net change across the observation window.",
+      "abstentionSemantics": "INSUFFICIENT_EVIDENCE when global sufficiency suppresses the head.",
+      "confidenceFields": [
+        "confidence"
+      ],
+      "arbiterEligibility": "CERTIFIED_STAGE2L10_SELECTIVE_DELEGATION",
+      "certificationStatus": "CERTIFIED_DIRECTION_HEAD"
+    },
+    {
+      "headId": "persistence",
+      "headName": "PERSISTENCE_HEAD",
+      "implementation": "BOUNDED_INTERRUPTION_TOLERANCE",
+      "inputs": [
+        "observationHistory.channels"
+      ],
+      "outputs": [
+        "PERSISTENT",
+        "NON_PERSISTENT",
+        "INSUFFICIENT_EVIDENCE"
+      ],
+      "taskSemantics": "Whether a direction is sustained despite bounded interruptions.",
+      "abstentionSemantics": "Emits INSUFFICIENT_EVIDENCE on its own account.",
+      "confidenceFields": [
+        "confidence"
+      ],
+      "arbiterEligibility": "NOT_WIRED",
+      "certificationStatus": "UNCERTIFIED"
+    },
+    {
+      "headId": "reversal",
+      "headName": "REVERSAL_HEAD",
+      "implementation": "STAGE2I2_FROZEN",
+      "inputs": [
+        "observationHistory.channels"
+      ],
+      "outputs": [
+        "REVERSAL",
+        "NO_REVERSAL"
+      ],
+      "taskSemantics": "Whether the recent direction opposes the earlier direction.",
+      "abstentionSemantics": "Suppressed by global sufficiency only.",
+      "confidenceFields": [
+        "confidence"
+      ],
+      "arbiterEligibility": "NOT_WIRED",
+      "certificationStatus": "UNCERTIFIED"
+    },
+    {
+      "headId": "regimeChange",
+      "headName": "REGIME_CHANGE_HEAD",
+      "implementation": "DIMENSION_AWARE_WITH_ANOMALY_FILTER",
+      "inputs": [
+        "observationHistory.channels"
+      ],
+      "outputs": [
+        "TREND_CHANGE",
+        "LEVEL_CHANGE",
+        "CYCLE_CHANGE",
+        "MULTIPLE_CHANGE",
+        "NO_CHANGE",
+        "INSUFFICIENT_EVIDENCE"
+      ],
+      "taskSemantics": "Whether the generating process changed, and along which dimension.",
+      "abstentionSemantics": "Emits INSUFFICIENT_EVIDENCE on its own account.",
+      "confidenceFields": [
+        "confidence"
+      ],
+      "arbiterEligibility": "NOT_WIRED",
+      "certificationStatus": "UNCERTIFIED"
+    },
+    {
+      "headId": "volatility",
+      "headName": "VOLATILITY_HEAD",
+      "implementation": "STAGE2I2_FROZEN",
+      "inputs": [
+        "observationHistory.channels"
+      ],
+      "outputs": [
+        "HIGH_VOLATILITY",
+        "LOW_VOLATILITY"
+      ],
+      "taskSemantics": "Instability magnitude. Explicitly not a value polarity.",
+      "abstentionSemantics": "Suppressed by global sufficiency only.",
+      "confidenceFields": [
+        "confidence"
+      ],
+      "arbiterEligibility": "NOT_WIRED",
+      "certificationStatus": "UNCERTIFIED"
+    },
+    {
+      "headId": "cycle",
+      "headName": "CYCLE_HEAD",
+      "implementation": "STAGE2I2_FROZEN",
+      "inputs": [
+        "observationHistory.channels"
+      ],
+      "outputs": [
+        "CYCLICAL",
+        "NOT_CYCLICAL"
+      ],
+      "taskSemantics": "Whether the series repeats with a detectable period.",
+      "abstentionSemantics": "Suppressed by global sufficiency only.",
+      "confidenceFields": [
+        "confidence"
+      ],
+      "arbiterEligibility": "NOT_WIRED",
+      "certificationStatus": "UNCERTIFIED"
+    },
+    {
+      "headId": "timeToThreshold",
+      "headName": "TIME_TO_THRESHOLD_HEAD",
+      "implementation": "STAGE2I2_FROZEN",
+      "inputs": [
+        "observationHistory.channels",
+        "channelSemantics.threshold",
+        "channelSemantics.polarity"
+      ],
+      "outputs": [
+        "ALREADY_CROSSED",
+        "NOT_CROSSING",
+        "INSUFFICIENT_EVIDENCE"
+      ],
+      "taskSemantics": "How soon a channel crosses a declared threshold.",
+      "abstentionSemantics": "Hard-suppressed to SUPPRESSED_MISSING_THRESHOLD_SEMANTICS when no threshold is declared.",
+      "confidenceFields": [
+        "confidence"
+      ],
+      "arbiterEligibility": "NOT_WIRED",
+      "certificationStatus": "UNCERTIFIED"
+    },
+    {
+      "headId": "abstention",
+      "headName": "ABSTENTION_HEAD",
+      "implementation": "STAGE2I2_FROZEN",
+      "inputs": [
+        "observationHistory"
+      ],
+      "outputs": [
+        "ENOUGH_EVIDENCE",
+        "INSUFFICIENT_EVIDENCE"
+      ],
+      "taskSemantics": "Whether the history supports any temporal claim. Gates the other heads.",
+      "abstentionSemantics": "Is itself the abstention mechanism.",
+      "confidenceFields": [
+        "confidence"
+      ],
+      "arbiterEligibility": "GLOBAL_SUFFICIENCY_GATE",
+      "certificationStatus": "UNCERTIFIED"
+    }
+  ],
+  "certifiedHeadIds": [
+    "direction"
+  ],
+  "uncertifiedHeadIds": [
+    "persistence",
+    "reversal",
+    "regimeChange",
+    "volatility",
+    "cycle",
+    "timeToThreshold",
+    "abstention"
+  ],
+  "groundTruth": {
+    "classes": [
+      "WORLD_STATE_DERIVED",
+      "TEMPORAL_STATE_DERIVED",
+      "DETERMINISTIC_LATENT_DERIVED",
+      "INDEPENDENT_RANDOM_LABEL",
+      "MISSING",
+      "OTHER"
+    ],
+    "heads": [
+      {
+        "headId": "direction",
+        "arbiterEligibility": "CERTIFIED_STAGE2L10_SELECTIVE_DELEGATION",
+        "certificationStatus": "CERTIFIED_DIRECTION_HEAD",
+        "groundTruthClass": "DETERMINISTIC_LATENT_DERIVED",
+        "groundTruthSource": "GENERATOR_FAMILY_DECLARED_EXPECTED_LABEL",
+        "decisionTimeObservable": true,
+        "hiddenRandomnessInvolved": false,
+        "futureInformationInvolved": false,
+        "expertOutputUsedInTruthConstruction": false,
+        "labelLeakagePossible": false,
+        "cases": 300,
+        "expectedLabels": [
+          "DOWN",
+          "STABLE",
+          "UP"
+        ],
+        "emittedLabels": [
+          "DOWN",
+          "STABLE",
+          "UP"
+        ],
+        "unreachableExpectedLabels": [],
+        "hasUnreachableLabel": false,
+        "achievableAccuracyCeiling": 1,
+        "semanticallyValid": true
+      },
+      {
+        "headId": "persistence",
+        "arbiterEligibility": "NOT_WIRED",
+        "certificationStatus": "UNCERTIFIED",
+        "groundTruthClass": "DETERMINISTIC_LATENT_DERIVED",
+        "groundTruthSource": "GENERATOR_FAMILY_DECLARED_EXPECTED_LABEL",
+        "decisionTimeObservable": true,
+        "hiddenRandomnessInvolved": false,
+        "futureInformationInvolved": false,
+        "expertOutputUsedInTruthConstruction": false,
+        "labelLeakagePossible": false,
+        "cases": 300,
+        "expectedLabels": [
+          "NOT_PERSISTENT",
+          "PERSISTENT"
+        ],
+        "emittedLabels": [
+          "INSUFFICIENT_EVIDENCE",
+          "NON_PERSISTENT",
+          "PERSISTENT"
+        ],
+        "unreachableExpectedLabels": [
+          "NOT_PERSISTENT"
+        ],
+        "hasUnreachableLabel": true,
+        "achievableAccuracyCeiling": 0.666667,
+        "semanticallyValid": false
+      },
+      {
+        "headId": "reversal",
+        "arbiterEligibility": "NOT_WIRED",
+        "certificationStatus": "UNCERTIFIED",
+        "groundTruthClass": "DETERMINISTIC_LATENT_DERIVED",
+        "groundTruthSource": "GENERATOR_FAMILY_DECLARED_EXPECTED_LABEL",
+        "decisionTimeObservable": true,
+        "hiddenRandomnessInvolved": false,
+        "futureInformationInvolved": false,
+        "expertOutputUsedInTruthConstruction": false,
+        "labelLeakagePossible": false,
+        "cases": 300,
+        "expectedLabels": [
+          "NO_REVERSAL",
+          "REVERSAL"
+        ],
+        "emittedLabels": [
+          "NO_REVERSAL",
+          "REVERSAL"
+        ],
+        "unreachableExpectedLabels": [],
+        "hasUnreachableLabel": false,
+        "achievableAccuracyCeiling": 1,
+        "semanticallyValid": true
+      },
+      {
+        "headId": "regimeChange",
+        "arbiterEligibility": "NOT_WIRED",
+        "certificationStatus": "UNCERTIFIED",
+        "groundTruthClass": "DETERMINISTIC_LATENT_DERIVED",
+        "groundTruthSource": "GENERATOR_FAMILY_DECLARED_EXPECTED_LABEL",
+        "decisionTimeObservable": true,
+        "hiddenRandomnessInvolved": false,
+        "futureInformationInvolved": false,
+        "expertOutputUsedInTruthConstruction": false,
+        "labelLeakagePossible": false,
+        "cases": 300,
+        "expectedLabels": [
+          "LEVEL_CHANGE",
+          "NO_CHANGE",
+          "TREND_CHANGE"
+        ],
+        "emittedLabels": [
+          "CYCLE_CHANGE",
+          "INSUFFICIENT_EVIDENCE",
+          "LEVEL_CHANGE",
+          "MULTIPLE_CHANGE",
+          "NO_CHANGE",
+          "TREND_CHANGE"
+        ],
+        "unreachableExpectedLabels": [],
+        "hasUnreachableLabel": false,
+        "achievableAccuracyCeiling": 1,
+        "semanticallyValid": true
+      },
+      {
+        "headId": "volatility",
+        "arbiterEligibility": "NOT_WIRED",
+        "certificationStatus": "UNCERTIFIED",
+        "groundTruthClass": "DETERMINISTIC_LATENT_DERIVED",
+        "groundTruthSource": "GENERATOR_FAMILY_DECLARED_EXPECTED_LABEL",
+        "decisionTimeObservable": true,
+        "hiddenRandomnessInvolved": false,
+        "futureInformationInvolved": false,
+        "expertOutputUsedInTruthConstruction": false,
+        "labelLeakagePossible": false,
+        "cases": 300,
+        "expectedLabels": [
+          "HIGH_VOLATILITY",
+          "LOW_VOLATILITY"
+        ],
+        "emittedLabels": [
+          "HIGH_VOLATILITY",
+          "LOW_VOLATILITY"
+        ],
+        "unreachableExpectedLabels": [],
+        "hasUnreachableLabel": false,
+        "achievableAccuracyCeiling": 1,
+        "semanticallyValid": true
+      },
+      {
+        "headId": "cycle",
+        "arbiterEligibility": "NOT_WIRED",
+        "certificationStatus": "UNCERTIFIED",
+        "groundTruthClass": "DETERMINISTIC_LATENT_DERIVED",
+        "groundTruthSource": "GENERATOR_FAMILY_DECLARED_EXPECTED_LABEL",
+        "decisionTimeObservable": true,
+        "hiddenRandomnessInvolved": false,
+        "futureInformationInvolved": false,
+        "expertOutputUsedInTruthConstruction": false,
+        "labelLeakagePossible": false,
+        "cases": 300,
+        "expectedLabels": [
+          "CYCLICAL",
+          "NOT_CYCLICAL"
+        ],
+        "emittedLabels": [
+          "CYCLICAL",
+          "NOT_CYCLICAL"
+        ],
+        "unreachableExpectedLabels": [],
+        "hasUnreachableLabel": false,
+        "achievableAccuracyCeiling": 1,
+        "semanticallyValid": true
+      },
+      {
+        "headId": "timeToThreshold",
+        "arbiterEligibility": "NOT_WIRED",
+        "certificationStatus": "UNCERTIFIED",
+        "groundTruthClass": "DETERMINISTIC_LATENT_DERIVED",
+        "groundTruthSource": "GENERATOR_FAMILY_DECLARED_EXPECTED_LABEL",
+        "decisionTimeObservable": true,
+        "hiddenRandomnessInvolved": false,
+        "futureInformationInvolved": false,
+        "expertOutputUsedInTruthConstruction": false,
+        "labelLeakagePossible": false,
+        "cases": 300,
+        "expectedLabels": [
+          "ALREADY_CROSSED",
+          "CROSSING_1_TO_3",
+          "NOT_CROSSING"
+        ],
+        "emittedLabels": [
+          "ALREADY_CROSSED",
+          "INSUFFICIENT_EVIDENCE",
+          "NOT_CROSSING"
+        ],
+        "unreachableExpectedLabels": [
+          "CROSSING_1_TO_3"
+        ],
+        "hasUnreachableLabel": true,
+        "achievableAccuracyCeiling": 0.666667,
+        "semanticallyValid": false
+      },
+      {
+        "headId": "abstention",
+        "arbiterEligibility": "GLOBAL_SUFFICIENCY_GATE",
+        "certificationStatus": "UNCERTIFIED",
+        "groundTruthClass": "DETERMINISTIC_LATENT_DERIVED",
+        "groundTruthSource": "GENERATOR_FAMILY_DECLARED_EXPECTED_LABEL",
+        "decisionTimeObservable": true,
+        "hiddenRandomnessInvolved": false,
+        "futureInformationInvolved": false,
+        "expertOutputUsedInTruthConstruction": false,
+        "labelLeakagePossible": false,
+        "cases": 300,
+        "expectedLabels": [
+          "ENOUGH_EVIDENCE",
+          "INSUFFICIENT_EVIDENCE"
+        ],
+        "emittedLabels": [
+          "ENOUGH_EVIDENCE",
+          "INSUFFICIENT_EVIDENCE"
+        ],
+        "unreachableExpectedLabels": [],
+        "hasUnreachableLabel": false,
+        "achievableAccuracyCeiling": 1,
+        "semanticallyValid": true
+      }
+    ],
+    "semanticallyValidHeadCount": 6,
+    "invalidBenchmarkHeadCount": 2,
+    "anyHiddenRandomness": false,
+    "labelLeakageDetected": false,
+    "note": "No head is scored against an independent random draw. Every truth label is a deterministic property of its generator family, so the Stage 2L.11 failure mode is absent — but the labels are construction intent, not independently derived world state, and are classified as such."
+  },
+  "degeneracy": {
+    "corpus": "STAGE2I4_ORACLE_V2_HOLDOUT",
+    "nominalCases": 2400,
+    "heads": [
+      {
+        "headId": "direction",
+        "nominalCases": 300,
+        "familyCount": 3,
+        "familiesWithVaryingPrediction": 0,
+        "effectiveSampleSize": 3,
+        "variantsPerFamily": 100,
+        "majorityBaseline": 0.333333,
+        "labelCounts": {
+          "UP": 100,
+          "DOWN": 100,
+          "STABLE": 100
+        },
+        "perFamily": [
+          {
+            "family": "INDEPENDENT_DOWN",
+            "n": 100,
+            "expected": "DOWN",
+            "distinctPredictions": [
+              "DOWN"
+            ],
+            "accuracy": 1
+          },
+          {
+            "family": "INDEPENDENT_STABLE",
+            "n": 100,
+            "expected": "STABLE",
+            "distinctPredictions": [
+              "STABLE"
+            ],
+            "accuracy": 1
+          },
+          {
+            "family": "INDEPENDENT_UP",
+            "n": 100,
+            "expected": "UP",
+            "distinctPredictions": [
+              "UP"
+            ],
+            "accuracy": 1
+          }
+        ],
+        "degenerate": true
+      },
+      {
+        "headId": "persistence",
+        "nominalCases": 300,
+        "familyCount": 3,
+        "familiesWithVaryingPrediction": 0,
+        "effectiveSampleSize": 3,
+        "variantsPerFamily": 100,
+        "majorityBaseline": 0.666667,
+        "labelCounts": {
+          "PERSISTENT": 200,
+          "NOT_PERSISTENT": 100
+        },
+        "perFamily": [
+          {
+            "family": "ALTERNATING_INTERRUPTION",
+            "n": 100,
+            "expected": "NOT_PERSISTENT",
+            "distinctPredictions": [
+              "INSUFFICIENT_EVIDENCE"
+            ],
+            "accuracy": 0
+          },
+          {
+            "family": "SUSTAINED_DOWN",
+            "n": 100,
+            "expected": "PERSISTENT",
+            "distinctPredictions": [
+              "PERSISTENT"
+            ],
+            "accuracy": 1
+          },
+          {
+            "family": "SUSTAINED_UP",
+            "n": 100,
+            "expected": "PERSISTENT",
+            "distinctPredictions": [
+              "PERSISTENT"
+            ],
+            "accuracy": 1
+          }
+        ],
+        "degenerate": true
+      },
+      {
+        "headId": "reversal",
+        "nominalCases": 300,
+        "familyCount": 3,
+        "familiesWithVaryingPrediction": 0,
+        "effectiveSampleSize": 3,
+        "variantsPerFamily": 100,
+        "majorityBaseline": 0.666667,
+        "labelCounts": {
+          "REVERSAL": 100,
+          "NO_REVERSAL": 200
+        },
+        "perFamily": [
+          {
+            "family": "CLEAN_LATE_REVERSAL",
+            "n": 100,
+            "expected": "REVERSAL",
+            "distinctPredictions": [
+              "REVERSAL"
+            ],
+            "accuracy": 1
+          },
+          {
+            "family": "CONTINUING_DIRECTION",
+            "n": 100,
+            "expected": "NO_REVERSAL",
+            "distinctPredictions": [
+              "NO_REVERSAL"
+            ],
+            "accuracy": 1
+          },
+          {
+            "family": "TRANSIENT_TURN",
+            "n": 100,
+            "expected": "NO_REVERSAL",
+            "distinctPredictions": [
+              "NO_REVERSAL"
+            ],
+            "accuracy": 1
+          }
+        ],
+        "degenerate": true
+      },
+      {
+        "headId": "regimeChange",
+        "nominalCases": 300,
+        "familyCount": 3,
+        "familiesWithVaryingPrediction": 0,
+        "effectiveSampleSize": 3,
+        "variantsPerFamily": 100,
+        "majorityBaseline": 0.333333,
+        "labelCounts": {
+          "TREND_CHANGE": 100,
+          "LEVEL_CHANGE": 100,
+          "NO_CHANGE": 100
+        },
+        "perFamily": [
+          {
+            "family": "LEVEL_PROCESS_SHIFT",
+            "n": 100,
+            "expected": "LEVEL_CHANGE",
+            "distinctPredictions": [
+              "LEVEL_CHANGE"
+            ],
+            "accuracy": 1
+          },
+          {
+            "family": "REVERSAL_SAME_PROCESS",
+            "n": 100,
+            "expected": "NO_CHANGE",
+            "distinctPredictions": [
+              "NO_CHANGE"
+            ],
+            "accuracy": 1
+          },
+          {
+            "family": "STABLE_TO_TREND",
+            "n": 100,
+            "expected": "TREND_CHANGE",
+            "distinctPredictions": [
+              "TREND_CHANGE"
+            ],
+            "accuracy": 1
+          }
+        ],
+        "degenerate": true
+      },
+      {
+        "headId": "volatility",
+        "nominalCases": 300,
+        "familyCount": 3,
+        "familiesWithVaryingPrediction": 0,
+        "effectiveSampleSize": 3,
+        "variantsPerFamily": 100,
+        "majorityBaseline": 0.666667,
+        "labelCounts": {
+          "HIGH_VOLATILITY": 100,
+          "LOW_VOLATILITY": 200
+        },
+        "perFamily": [
+          {
+            "family": "INDEPENDENT_HIGH_VOLATILITY",
+            "n": 100,
+            "expected": "HIGH_VOLATILITY",
+            "distinctPredictions": [
+              "HIGH_VOLATILITY"
+            ],
+            "accuracy": 1
+          },
+          {
+            "family": "INDEPENDENT_LOW_VOLATILITY",
+            "n": 100,
+            "expected": "LOW_VOLATILITY",
+            "distinctPredictions": [
+              "LOW_VOLATILITY"
+            ],
+            "accuracy": 1
+          },
+          {
+            "family": "OUTLIER_WITH_LOW_BACKGROUND",
+            "n": 100,
+            "expected": "LOW_VOLATILITY",
+            "distinctPredictions": [
+              "LOW_VOLATILITY"
+            ],
+            "accuracy": 1
+          }
+        ],
+        "degenerate": true
+      },
+      {
+        "headId": "cycle",
+        "nominalCases": 300,
+        "familyCount": 3,
+        "familiesWithVaryingPrediction": 1,
+        "effectiveSampleSize": 3,
+        "variantsPerFamily": 100,
+        "majorityBaseline": 0.666667,
+        "labelCounts": {
+          "CYCLICAL": 100,
+          "NOT_CYCLICAL": 200
+        },
+        "perFamily": [
+          {
+            "family": "FOUR_PHASE_CYCLE",
+            "n": 100,
+            "expected": "CYCLICAL",
+            "distinctPredictions": [
+              "CYCLICAL"
+            ],
+            "accuracy": 1
+          },
+          {
+            "family": "IRREGULAR_NON_CYCLE",
+            "n": 100,
+            "expected": "NOT_CYCLICAL",
+            "distinctPredictions": [
+              "CYCLICAL",
+              "NOT_CYCLICAL"
+            ],
+            "accuracy": 0.47
+          },
+          {
+            "family": "MONOTONIC_NON_CYCLE",
+            "n": 100,
+            "expected": "NOT_CYCLICAL",
+            "distinctPredictions": [
+              "CYCLICAL"
+            ],
+            "accuracy": 0
+          }
+        ],
+        "degenerate": true
+      },
+      {
+        "headId": "timeToThreshold",
+        "nominalCases": 300,
+        "familyCount": 3,
+        "familiesWithVaryingPrediction": 0,
+        "effectiveSampleSize": 3,
+        "variantsPerFamily": 100,
+        "majorityBaseline": 0.333333,
+        "labelCounts": {
+          "CROSSING_1_TO_3": 100,
+          "ALREADY_CROSSED": 100,
+          "NOT_CROSSING": 100
+        },
+        "perFamily": [
+          {
+            "family": "ALREADY_OVER_LIMIT",
+            "n": 100,
+            "expected": "ALREADY_CROSSED",
+            "distinctPredictions": [
+              "ALREADY_CROSSED"
+            ],
+            "accuracy": 1
+          },
+          {
+            "family": "APPROACHING_LIMIT",
+            "n": 100,
+            "expected": "CROSSING_1_TO_3",
+            "distinctPredictions": [
+              "ALREADY_CROSSED"
+            ],
+            "accuracy": 0
+          },
+          {
+            "family": "NO_THRESHOLD_CROSSING",
+            "n": 100,
+            "expected": "NOT_CROSSING",
+            "distinctPredictions": [
+              "NOT_CROSSING"
+            ],
+            "accuracy": 1
+          }
+        ],
+        "degenerate": true
+      },
+      {
+        "headId": "abstention",
+        "nominalCases": 300,
+        "familyCount": 3,
+        "familiesWithVaryingPrediction": 0,
+        "effectiveSampleSize": 3,
+        "variantsPerFamily": 100,
+        "majorityBaseline": 0.666667,
+        "labelCounts": {
+          "INSUFFICIENT_EVIDENCE": 200,
+          "ENOUGH_EVIDENCE": 100
+        },
+        "perFamily": [
+          {
+            "family": "MISSING_EVIDENCE",
+            "n": 100,
+            "expected": "INSUFFICIENT_EVIDENCE",
+            "distinctPredictions": [
+              "INSUFFICIENT_EVIDENCE"
+            ],
+            "accuracy": 1
+          },
+          {
+            "family": "SHORT_EVIDENCE",
+            "n": 100,
+            "expected": "INSUFFICIENT_EVIDENCE",
+            "distinctPredictions": [
+              "INSUFFICIENT_EVIDENCE"
+            ],
+            "accuracy": 1
+          },
+          {
+            "family": "SUFFICIENT_CLEAN_EVIDENCE",
+            "n": 100,
+            "expected": "ENOUGH_EVIDENCE",
+            "distinctPredictions": [
+              "ENOUGH_EVIDENCE"
+            ],
+            "accuracy": 1
+          }
+        ],
+        "degenerate": true
+      }
+    ],
+    "degenerateHeadCount": 8,
+    "minimumEligibleCaseCount": 100,
+    "anyHeadHasSufficientEffectiveSupport": false,
+    "note": "Effective sample size counts generator families, not variants, because a family whose prediction never varies across its variants supplies one independent observation. Certifying from nominal counts would report an effective three as three hundred."
+  },
+  "stressReport": {
+    "corpus": "STAGE2L19_ORACLE_STRESS_CORPUS",
+    "acceptedCases": 2007,
+    "rejectedCases": 153,
+    "rejectionRate": 0.070833,
+    "rejectedByFamily": {
+      "timeToThreshold/APPROACHING": 75,
+      "volatility/ALTERNATING_LOW": 30,
+      "abstention/SHORT_HISTORY": 30,
+      "direction/RAMP_DOWN": 6,
+      "direction/RAMP_UP": 4,
+      "cycle/MONOTONE": 4,
+      "persistence/SUSTAINED_RUN": 4
+    },
+    "wellPosednessSlopeFloor": 0.002,
+    "wellPosednessFlatCeiling": 0.0008,
+    "note": "Cases are dropped when the label is not unambiguously true of the series actually produced — including any series that saturates at the range bound. A first draft scored a clamped, flattened reversal tail as a head error; that was a generator bug, and this filter exists so it cannot recur."
+  },
+  "inheritedBlind": {
+    "corpus": "STAGE2I4_ORACLE_V2_HOLDOUT",
+    "cases": 2400,
+    "heads": [
+      {
+        "headId": "direction",
+        "corpus": "STAGE2I4_ORACLE_V2_HOLDOUT",
+        "cases": 300,
+        "accuracy": 1,
+        "accuracyWhenSupported": 1,
+        "abstentionRate": 0,
+        "majorityBaseline": 0.333333,
+        "liftOverTrivialBaseline": 0.666667,
+        "distinctPredictions": [
+          "DOWN",
+          "STABLE",
+          "UP"
+        ],
+        "constantPrediction": false,
+        "labelCounts": {
+          "UP": 100,
+          "DOWN": 100,
+          "STABLE": 100
+        },
+        "perFamily": [
+          {
+            "family": "INDEPENDENT_DOWN",
+            "n": 100,
+            "expected": "DOWN",
+            "accuracy": 1,
+            "predictions": [
+              "DOWN"
+            ]
+          },
+          {
+            "family": "INDEPENDENT_STABLE",
+            "n": 100,
+            "expected": "STABLE",
+            "accuracy": 1,
+            "predictions": [
+              "STABLE"
+            ]
+          },
+          {
+            "family": "INDEPENDENT_UP",
+            "n": 100,
+            "expected": "UP",
+            "accuracy": 1,
+            "predictions": [
+              "UP"
+            ]
+          }
+        ],
+        "hasCertifiedActionPath": true,
+        "primeComparable": true,
+        "utilityClass": "POSITIVE_SPECIALIST_UTILITY",
+        "utilityNote": "Comparable with Prime: this head has a certified action-delegation path."
+      },
+      {
+        "headId": "persistence",
+        "corpus": "STAGE2I4_ORACLE_V2_HOLDOUT",
+        "cases": 300,
+        "accuracy": 0.666667,
+        "accuracyWhenSupported": 1,
+        "abstentionRate": 0.333333,
+        "majorityBaseline": 0.666667,
+        "liftOverTrivialBaseline": 0,
+        "distinctPredictions": [
+          "INSUFFICIENT_EVIDENCE",
+          "PERSISTENT"
+        ],
+        "constantPrediction": false,
+        "labelCounts": {
+          "PERSISTENT": 200,
+          "NOT_PERSISTENT": 100
+        },
+        "perFamily": [
+          {
+            "family": "ALTERNATING_INTERRUPTION",
+            "n": 100,
+            "expected": "NOT_PERSISTENT",
+            "accuracy": 0,
+            "predictions": [
+              "INSUFFICIENT_EVIDENCE"
+            ]
+          },
+          {
+            "family": "SUSTAINED_DOWN",
+            "n": 100,
+            "expected": "PERSISTENT",
+            "accuracy": 1,
+            "predictions": [
+              "PERSISTENT"
+            ]
+          },
+          {
+            "family": "SUSTAINED_UP",
+            "n": 100,
+            "expected": "PERSISTENT",
+            "accuracy": 1,
+            "predictions": [
+              "PERSISTENT"
+            ]
+          }
+        ],
+        "hasCertifiedActionPath": false,
+        "primeComparable": false,
+        "utilityClass": "INCONCLUSIVE",
+        "utilityNote": "Not comparable with Prime: this head emits a temporal label, not an action, and the assembly forbids action fields. Measured against the best trivial classifier instead."
+      },
+      {
+        "headId": "reversal",
+        "corpus": "STAGE2I4_ORACLE_V2_HOLDOUT",
+        "cases": 300,
+        "accuracy": 1,
+        "accuracyWhenSupported": 1,
+        "abstentionRate": 0,
+        "majorityBaseline": 0.666667,
+        "liftOverTrivialBaseline": 0.333333,
+        "distinctPredictions": [
+          "NO_REVERSAL",
+          "REVERSAL"
+        ],
+        "constantPrediction": false,
+        "labelCounts": {
+          "REVERSAL": 100,
+          "NO_REVERSAL": 200
+        },
+        "perFamily": [
+          {
+            "family": "CLEAN_LATE_REVERSAL",
+            "n": 100,
+            "expected": "REVERSAL",
+            "accuracy": 1,
+            "predictions": [
+              "REVERSAL"
+            ]
+          },
+          {
+            "family": "CONTINUING_DIRECTION",
+            "n": 100,
+            "expected": "NO_REVERSAL",
+            "accuracy": 1,
+            "predictions": [
+              "NO_REVERSAL"
+            ]
+          },
+          {
+            "family": "TRANSIENT_TURN",
+            "n": 100,
+            "expected": "NO_REVERSAL",
+            "accuracy": 1,
+            "predictions": [
+              "NO_REVERSAL"
+            ]
+          }
+        ],
+        "hasCertifiedActionPath": false,
+        "primeComparable": false,
+        "utilityClass": "NOT_COMPARABLE_NO_ACTION_PATH",
+        "utilityNote": "Not comparable with Prime: this head emits a temporal label, not an action, and the assembly forbids action fields. Measured against the best trivial classifier instead."
+      },
+      {
+        "headId": "regimeChange",
+        "corpus": "STAGE2I4_ORACLE_V2_HOLDOUT",
+        "cases": 300,
+        "accuracy": 1,
+        "accuracyWhenSupported": 1,
+        "abstentionRate": 0,
+        "majorityBaseline": 0.333333,
+        "liftOverTrivialBaseline": 0.666667,
+        "distinctPredictions": [
+          "LEVEL_CHANGE",
+          "NO_CHANGE",
+          "TREND_CHANGE"
+        ],
+        "constantPrediction": false,
+        "labelCounts": {
+          "TREND_CHANGE": 100,
+          "LEVEL_CHANGE": 100,
+          "NO_CHANGE": 100
+        },
+        "perFamily": [
+          {
+            "family": "LEVEL_PROCESS_SHIFT",
+            "n": 100,
+            "expected": "LEVEL_CHANGE",
+            "accuracy": 1,
+            "predictions": [
+              "LEVEL_CHANGE"
+            ]
+          },
+          {
+            "family": "REVERSAL_SAME_PROCESS",
+            "n": 100,
+            "expected": "NO_CHANGE",
+            "accuracy": 1,
+            "predictions": [
+              "NO_CHANGE"
+            ]
+          },
+          {
+            "family": "STABLE_TO_TREND",
+            "n": 100,
+            "expected": "TREND_CHANGE",
+            "accuracy": 1,
+            "predictions": [
+              "TREND_CHANGE"
+            ]
+          }
+        ],
+        "hasCertifiedActionPath": false,
+        "primeComparable": false,
+        "utilityClass": "NOT_COMPARABLE_NO_ACTION_PATH",
+        "utilityNote": "Not comparable with Prime: this head emits a temporal label, not an action, and the assembly forbids action fields. Measured against the best trivial classifier instead."
+      },
+      {
+        "headId": "volatility",
+        "corpus": "STAGE2I4_ORACLE_V2_HOLDOUT",
+        "cases": 300,
+        "accuracy": 1,
+        "accuracyWhenSupported": 1,
+        "abstentionRate": 0,
+        "majorityBaseline": 0.666667,
+        "liftOverTrivialBaseline": 0.333333,
+        "distinctPredictions": [
+          "HIGH_VOLATILITY",
+          "LOW_VOLATILITY"
+        ],
+        "constantPrediction": false,
+        "labelCounts": {
+          "HIGH_VOLATILITY": 100,
+          "LOW_VOLATILITY": 200
+        },
+        "perFamily": [
+          {
+            "family": "INDEPENDENT_HIGH_VOLATILITY",
+            "n": 100,
+            "expected": "HIGH_VOLATILITY",
+            "accuracy": 1,
+            "predictions": [
+              "HIGH_VOLATILITY"
+            ]
+          },
+          {
+            "family": "INDEPENDENT_LOW_VOLATILITY",
+            "n": 100,
+            "expected": "LOW_VOLATILITY",
+            "accuracy": 1,
+            "predictions": [
+              "LOW_VOLATILITY"
+            ]
+          },
+          {
+            "family": "OUTLIER_WITH_LOW_BACKGROUND",
+            "n": 100,
+            "expected": "LOW_VOLATILITY",
+            "accuracy": 1,
+            "predictions": [
+              "LOW_VOLATILITY"
+            ]
+          }
+        ],
+        "hasCertifiedActionPath": false,
+        "primeComparable": false,
+        "utilityClass": "NOT_COMPARABLE_NO_ACTION_PATH",
+        "utilityNote": "Not comparable with Prime: this head emits a temporal label, not an action, and the assembly forbids action fields. Measured against the best trivial classifier instead."
+      },
+      {
+        "headId": "cycle",
+        "corpus": "STAGE2I4_ORACLE_V2_HOLDOUT",
+        "cases": 300,
+        "accuracy": 0.49,
+        "accuracyWhenSupported": 0.49,
+        "abstentionRate": 0,
+        "majorityBaseline": 0.666667,
+        "liftOverTrivialBaseline": -0.176667,
+        "distinctPredictions": [
+          "CYCLICAL",
+          "NOT_CYCLICAL"
+        ],
+        "constantPrediction": false,
+        "labelCounts": {
+          "CYCLICAL": 100,
+          "NOT_CYCLICAL": 200
+        },
+        "perFamily": [
+          {
+            "family": "FOUR_PHASE_CYCLE",
+            "n": 100,
+            "expected": "CYCLICAL",
+            "accuracy": 1,
+            "predictions": [
+              "CYCLICAL"
+            ]
+          },
+          {
+            "family": "IRREGULAR_NON_CYCLE",
+            "n": 100,
+            "expected": "NOT_CYCLICAL",
+            "accuracy": 0.47,
+            "predictions": [
+              "CYCLICAL",
+              "NOT_CYCLICAL"
+            ]
+          },
+          {
+            "family": "MONOTONIC_NON_CYCLE",
+            "n": 100,
+            "expected": "NOT_CYCLICAL",
+            "accuracy": 0,
+            "predictions": [
+              "CYCLICAL"
+            ]
+          }
+        ],
+        "hasCertifiedActionPath": false,
+        "primeComparable": false,
+        "utilityClass": "NEGATIVE_UTILITY",
+        "utilityNote": "Not comparable with Prime: this head emits a temporal label, not an action, and the assembly forbids action fields. Measured against the best trivial classifier instead."
+      },
+      {
+        "headId": "timeToThreshold",
+        "corpus": "STAGE2I4_ORACLE_V2_HOLDOUT",
+        "cases": 300,
+        "accuracy": 0.666667,
+        "accuracyWhenSupported": 0.666667,
+        "abstentionRate": 0,
+        "majorityBaseline": 0.333333,
+        "liftOverTrivialBaseline": 0.333334,
+        "distinctPredictions": [
+          "ALREADY_CROSSED",
+          "NOT_CROSSING"
+        ],
+        "constantPrediction": false,
+        "labelCounts": {
+          "CROSSING_1_TO_3": 100,
+          "ALREADY_CROSSED": 100,
+          "NOT_CROSSING": 100
+        },
+        "perFamily": [
+          {
+            "family": "ALREADY_OVER_LIMIT",
+            "n": 100,
+            "expected": "ALREADY_CROSSED",
+            "accuracy": 1,
+            "predictions": [
+              "ALREADY_CROSSED"
+            ]
+          },
+          {
+            "family": "APPROACHING_LIMIT",
+            "n": 100,
+            "expected": "CROSSING_1_TO_3",
+            "accuracy": 0,
+            "predictions": [
+              "ALREADY_CROSSED"
+            ]
+          },
+          {
+            "family": "NO_THRESHOLD_CROSSING",
+            "n": 100,
+            "expected": "NOT_CROSSING",
+            "accuracy": 1,
+            "predictions": [
+              "NOT_CROSSING"
+            ]
+          }
+        ],
+        "hasCertifiedActionPath": false,
+        "primeComparable": false,
+        "utilityClass": "NOT_COMPARABLE_NO_ACTION_PATH",
+        "utilityNote": "Not comparable with Prime: this head emits a temporal label, not an action, and the assembly forbids action fields. Measured against the best trivial classifier instead."
+      },
+      {
+        "headId": "abstention",
+        "corpus": "STAGE2I4_ORACLE_V2_HOLDOUT",
+        "cases": 300,
+        "accuracy": 1,
+        "accuracyWhenSupported": 1,
+        "abstentionRate": 0.666667,
+        "majorityBaseline": 0.666667,
+        "liftOverTrivialBaseline": 0.333333,
+        "distinctPredictions": [
+          "ENOUGH_EVIDENCE",
+          "INSUFFICIENT_EVIDENCE"
+        ],
+        "constantPrediction": false,
+        "labelCounts": {
+          "INSUFFICIENT_EVIDENCE": 200,
+          "ENOUGH_EVIDENCE": 100
+        },
+        "perFamily": [
+          {
+            "family": "MISSING_EVIDENCE",
+            "n": 100,
+            "expected": "INSUFFICIENT_EVIDENCE",
+            "accuracy": 1,
+            "predictions": [
+              "INSUFFICIENT_EVIDENCE"
+            ]
+          },
+          {
+            "family": "SHORT_EVIDENCE",
+            "n": 100,
+            "expected": "INSUFFICIENT_EVIDENCE",
+            "accuracy": 1,
+            "predictions": [
+              "INSUFFICIENT_EVIDENCE"
+            ]
+          },
+          {
+            "family": "SUFFICIENT_CLEAN_EVIDENCE",
+            "n": 100,
+            "expected": "ENOUGH_EVIDENCE",
+            "accuracy": 1,
+            "predictions": [
+              "ENOUGH_EVIDENCE"
+            ]
+          }
+        ],
+        "hasCertifiedActionPath": false,
+        "primeComparable": false,
+        "utilityClass": "NOT_COMPARABLE_NO_ACTION_PATH",
+        "utilityNote": "Not comparable with Prime: this head emits a temporal label, not an action, and the assembly forbids action fields. Measured against the best trivial classifier instead."
+      }
+    ],
+    "materialLiftThreshold": 0.05,
+    "headsAboveTrivialBaseline": 6,
+    "headsAtOrBelowTrivialBaseline": 2
+  },
+  "stressBlind": {
+    "corpus": "STAGE2L19_ORACLE_STRESS_CORPUS",
+    "cases": 2007,
+    "heads": [
+      {
+        "headId": "direction",
+        "corpus": "STAGE2L19_ORACLE_STRESS_CORPUS",
+        "cases": 350,
+        "accuracy": 1,
+        "accuracyWhenSupported": 1,
+        "abstentionRate": 0,
+        "majorityBaseline": 0.342857,
+        "liftOverTrivialBaseline": 0.657143,
+        "distinctPredictions": [
+          "DOWN",
+          "STABLE",
+          "UP"
+        ],
+        "constantPrediction": false,
+        "labelCounts": {
+          "UP": 116,
+          "DOWN": 114,
+          "STABLE": 120
+        },
+        "perFamily": [
+          {
+            "family": "FLAT",
+            "n": 120,
+            "expected": "STABLE",
+            "accuracy": 1,
+            "predictions": [
+              "STABLE"
+            ]
+          },
+          {
+            "family": "RAMP_DOWN",
+            "n": 114,
+            "expected": "DOWN",
+            "accuracy": 1,
+            "predictions": [
+              "DOWN"
+            ]
+          },
+          {
+            "family": "RAMP_UP",
+            "n": 116,
+            "expected": "UP",
+            "accuracy": 1,
+            "predictions": [
+              "UP"
+            ]
+          }
+        ],
+        "hasCertifiedActionPath": true,
+        "primeComparable": true,
+        "utilityClass": "POSITIVE_SPECIALIST_UTILITY",
+        "utilityNote": "Comparable with Prime: this head has a certified action-delegation path."
+      },
+      {
+        "headId": "persistence",
+        "corpus": "STAGE2L19_ORACLE_STRESS_CORPUS",
+        "cases": 236,
+        "accuracy": 0.34322,
+        "accuracyWhenSupported": 0.870968,
+        "abstentionRate": 0.605932,
+        "majorityBaseline": 0.508475,
+        "liftOverTrivialBaseline": -0.165255,
+        "distinctPredictions": [
+          "INSUFFICIENT_EVIDENCE",
+          "NON_PERSISTENT",
+          "PERSISTENT"
+        ],
+        "constantPrediction": false,
+        "labelCounts": {
+          "PERSISTENT": 116,
+          "NON_PERSISTENT": 120
+        },
+        "perFamily": [
+          {
+            "family": "INTERRUPTED_RUN",
+            "n": 120,
+            "expected": "NON_PERSISTENT",
+            "accuracy": 0,
+            "predictions": [
+              "INSUFFICIENT_EVIDENCE"
+            ]
+          },
+          {
+            "family": "SUSTAINED_RUN",
+            "n": 116,
+            "expected": "PERSISTENT",
+            "accuracy": 0.698276,
+            "predictions": [
+              "INSUFFICIENT_EVIDENCE",
+              "NON_PERSISTENT",
+              "PERSISTENT"
+            ]
+          }
+        ],
+        "hasCertifiedActionPath": false,
+        "primeComparable": false,
+        "utilityClass": "NEGATIVE_UTILITY",
+        "utilityNote": "Not comparable with Prime: this head emits a temporal label, not an action, and the assembly forbids action fields. Measured against the best trivial classifier instead."
+      },
+      {
+        "headId": "reversal",
+        "corpus": "STAGE2L19_ORACLE_STRESS_CORPUS",
+        "cases": 240,
+        "accuracy": 0.6625,
+        "accuracyWhenSupported": 0.6625,
+        "abstentionRate": 0,
+        "majorityBaseline": 0.5,
+        "liftOverTrivialBaseline": 0.1625,
+        "distinctPredictions": [
+          "NO_REVERSAL",
+          "REVERSAL"
+        ],
+        "constantPrediction": false,
+        "labelCounts": {
+          "REVERSAL": 120,
+          "NO_REVERSAL": 120
+        },
+        "perFamily": [
+          {
+            "family": "CONTINUING",
+            "n": 120,
+            "expected": "NO_REVERSAL",
+            "accuracy": 1,
+            "predictions": [
+              "NO_REVERSAL"
+            ]
+          },
+          {
+            "family": "LATE_REVERSAL",
+            "n": 120,
+            "expected": "REVERSAL",
+            "accuracy": 0.325,
+            "predictions": [
+              "NO_REVERSAL",
+              "REVERSAL"
+            ]
+          }
+        ],
+        "hasCertifiedActionPath": false,
+        "primeComparable": false,
+        "utilityClass": "NOT_COMPARABLE_NO_ACTION_PATH",
+        "utilityNote": "Not comparable with Prime: this head emits a temporal label, not an action, and the assembly forbids action fields. Measured against the best trivial classifier instead."
+      },
+      {
+        "headId": "regimeChange",
+        "corpus": "STAGE2L19_ORACLE_STRESS_CORPUS",
+        "cases": 240,
+        "accuracy": 0.916667,
+        "accuracyWhenSupported": 0.916667,
+        "abstentionRate": 0,
+        "majorityBaseline": 0.5,
+        "liftOverTrivialBaseline": 0.416667,
+        "distinctPredictions": [
+          "LEVEL_CHANGE",
+          "NO_CHANGE"
+        ],
+        "constantPrediction": false,
+        "labelCounts": {
+          "LEVEL_CHANGE": 120,
+          "NO_CHANGE": 120
+        },
+        "perFamily": [
+          {
+            "family": "LEVEL_SHIFT",
+            "n": 120,
+            "expected": "LEVEL_CHANGE",
+            "accuracy": 0.833333,
+            "predictions": [
+              "LEVEL_CHANGE",
+              "NO_CHANGE"
+            ]
+          },
+          {
+            "family": "STEADY",
+            "n": 120,
+            "expected": "NO_CHANGE",
+            "accuracy": 1,
+            "predictions": [
+              "NO_CHANGE"
+            ]
+          }
+        ],
+        "hasCertifiedActionPath": false,
+        "primeComparable": false,
+        "utilityClass": "NOT_COMPARABLE_NO_ACTION_PATH",
+        "utilityNote": "Not comparable with Prime: this head emits a temporal label, not an action, and the assembly forbids action fields. Measured against the best trivial classifier instead."
+      },
+      {
+        "headId": "volatility",
+        "corpus": "STAGE2L19_ORACLE_STRESS_CORPUS",
+        "cases": 210,
+        "accuracy": 1,
+        "accuracyWhenSupported": 1,
+        "abstentionRate": 0,
+        "majorityBaseline": 0.571429,
+        "liftOverTrivialBaseline": 0.428571,
+        "distinctPredictions": [
+          "HIGH_VOLATILITY",
+          "LOW_VOLATILITY"
+        ],
+        "constantPrediction": false,
+        "labelCounts": {
+          "HIGH_VOLATILITY": 120,
+          "LOW_VOLATILITY": 90
+        },
+        "perFamily": [
+          {
+            "family": "ALTERNATING_HIGH",
+            "n": 120,
+            "expected": "HIGH_VOLATILITY",
+            "accuracy": 1,
+            "predictions": [
+              "HIGH_VOLATILITY"
+            ]
+          },
+          {
+            "family": "ALTERNATING_LOW",
+            "n": 90,
+            "expected": "LOW_VOLATILITY",
+            "accuracy": 1,
+            "predictions": [
+              "LOW_VOLATILITY"
+            ]
+          }
+        ],
+        "hasCertifiedActionPath": false,
+        "primeComparable": false,
+        "utilityClass": "NOT_COMPARABLE_NO_ACTION_PATH",
+        "utilityNote": "Not comparable with Prime: this head emits a temporal label, not an action, and the assembly forbids action fields. Measured against the best trivial classifier instead."
+      },
+      {
+        "headId": "cycle",
+        "corpus": "STAGE2L19_ORACLE_STRESS_CORPUS",
+        "cases": 236,
+        "accuracy": 0.521186,
+        "accuracyWhenSupported": 0.521186,
+        "abstentionRate": 0,
+        "majorityBaseline": 0.508475,
+        "liftOverTrivialBaseline": 0.012711,
+        "distinctPredictions": [
+          "CYCLICAL",
+          "NOT_CYCLICAL"
+        ],
+        "constantPrediction": false,
+        "labelCounts": {
+          "CYCLICAL": 120,
+          "NOT_CYCLICAL": 116
+        },
+        "perFamily": [
+          {
+            "family": "MONOTONE",
+            "n": 116,
+            "expected": "NOT_CYCLICAL",
+            "accuracy": 0.025862,
+            "predictions": [
+              "CYCLICAL",
+              "NOT_CYCLICAL"
+            ]
+          },
+          {
+            "family": "PERIODIC",
+            "n": 120,
+            "expected": "CYCLICAL",
+            "accuracy": 1,
+            "predictions": [
+              "CYCLICAL"
+            ]
+          }
+        ],
+        "hasCertifiedActionPath": false,
+        "primeComparable": false,
+        "utilityClass": "INCONCLUSIVE",
+        "utilityNote": "Not comparable with Prime: this head emits a temporal label, not an action, and the assembly forbids action fields. Measured against the best trivial classifier instead."
+      },
+      {
+        "headId": "timeToThreshold",
+        "corpus": "STAGE2L19_ORACLE_STRESS_CORPUS",
+        "cases": 285,
+        "accuracy": 0.842105,
+        "accuracyWhenSupported": 0.842105,
+        "abstentionRate": 0,
+        "majorityBaseline": 0.421053,
+        "liftOverTrivialBaseline": 0.421052,
+        "distinctPredictions": [
+          "ALREADY_CROSSED",
+          "NOT_CROSSING"
+        ],
+        "constantPrediction": false,
+        "labelCounts": {
+          "ALREADY_CROSSED": 120,
+          "NOT_CROSSING": 120,
+          "CROSSING_1_TO_3": 45
+        },
+        "perFamily": [
+          {
+            "family": "ALREADY_OVER",
+            "n": 120,
+            "expected": "ALREADY_CROSSED",
+            "accuracy": 1,
+            "predictions": [
+              "ALREADY_CROSSED"
+            ]
+          },
+          {
+            "family": "APPROACHING",
+            "n": 45,
+            "expected": "CROSSING_1_TO_3",
+            "accuracy": 0,
+            "predictions": [
+              "ALREADY_CROSSED"
+            ]
+          },
+          {
+            "family": "STAYING_BELOW",
+            "n": 120,
+            "expected": "NOT_CROSSING",
+            "accuracy": 1,
+            "predictions": [
+              "NOT_CROSSING"
+            ]
+          }
+        ],
+        "hasCertifiedActionPath": false,
+        "primeComparable": false,
+        "utilityClass": "NOT_COMPARABLE_NO_ACTION_PATH",
+        "utilityNote": "Not comparable with Prime: this head emits a temporal label, not an action, and the assembly forbids action fields. Measured against the best trivial classifier instead."
+      },
+      {
+        "headId": "abstention",
+        "corpus": "STAGE2L19_ORACLE_STRESS_CORPUS",
+        "cases": 210,
+        "accuracy": 0.995238,
+        "accuracyWhenSupported": 1,
+        "abstentionRate": 0.433333,
+        "majorityBaseline": 0.571429,
+        "liftOverTrivialBaseline": 0.423809,
+        "distinctPredictions": [
+          "ENOUGH_EVIDENCE",
+          "INSUFFICIENT_EVIDENCE"
+        ],
+        "constantPrediction": false,
+        "labelCounts": {
+          "INSUFFICIENT_EVIDENCE": 90,
+          "ENOUGH_EVIDENCE": 120
+        },
+        "perFamily": [
+          {
+            "family": "SHORT_HISTORY",
+            "n": 90,
+            "expected": "INSUFFICIENT_EVIDENCE",
+            "accuracy": 1,
+            "predictions": [
+              "INSUFFICIENT_EVIDENCE"
+            ]
+          },
+          {
+            "family": "SUFFICIENT_HISTORY",
+            "n": 120,
+            "expected": "ENOUGH_EVIDENCE",
+            "accuracy": 0.991667,
+            "predictions": [
+              "ENOUGH_EVIDENCE",
+              "INSUFFICIENT_EVIDENCE"
+            ]
+          }
+        ],
+        "hasCertifiedActionPath": false,
+        "primeComparable": false,
+        "utilityClass": "NOT_COMPARABLE_NO_ACTION_PATH",
+        "utilityNote": "Not comparable with Prime: this head emits a temporal label, not an action, and the assembly forbids action fields. Measured against the best trivial classifier instead."
+      }
+    ],
+    "materialLiftThreshold": 0.05,
+    "headsAboveTrivialBaseline": 6,
+    "headsAtOrBelowTrivialBaseline": 2
+  },
+  "identifiability": [
+    {
+      "headId": "direction",
+      "developmentCases": 119,
+      "calibrationCases": 114,
+      "finalHoldoutCases": 117,
+      "developmentErrors": 0,
+      "calibrationErrors": 0,
+      "finalHoldoutErrors": 0,
+      "errorVarianceMeasurable": false,
+      "identifiabilityStatus": "NOT_MEASURABLE_NO_ERROR_VARIANCE",
+      "bestSignal": null,
+      "developmentDiscrimination": null,
+      "observedDiscrimination": null,
+      "finalHoldoutDiscrimination": null,
+      "nullMedian": null,
+      "nullP95": null,
+      "nullP99": null,
+      "nullMax": null,
+      "permutations": 0,
+      "searchSpaceMatchedNull": true,
+      "headsSearched": 8,
+      "familyWiseAlpha": 0.05,
+      "familyWiseQuantile": 0.99375,
+      "familyWiseThreshold": null,
+      "multiplicityAccountedFor": true,
+      "signalExceedsNull": null,
+      "generalisesToHoldout": null,
+      "identifiable": false,
+      "note": "This head has no wrong cases on at least one of DEVELOPMENT and CALIBRATION, so an AUROC over correctness is undefined rather than at chance. Reported as not measurable; it is NOT evidence that the head cannot predict its own correctness."
+    },
+    {
+      "headId": "persistence",
+      "developmentCases": 80,
+      "calibrationCases": 77,
+      "finalHoldoutCases": 79,
+      "developmentErrors": 51,
+      "calibrationErrors": 53,
+      "finalHoldoutErrors": 51,
+      "errorVarianceMeasurable": true,
+      "bestSignal": "confidence",
+      "developmentDiscrimination": 1,
+      "observedDiscrimination": 1,
+      "finalHoldoutDiscrimination": 1,
+      "nullMedian": 0.545204,
+      "nullP95": 0.634827,
+      "nullP99": 0.678852,
+      "nullMax": 0.678852,
+      "permutations": 200,
+      "searchSpaceMatchedNull": true,
+      "headsSearched": 8,
+      "familyWiseAlpha": 0.05,
+      "familyWiseQuantile": 0.99375,
+      "familyWiseThreshold": 0.678852,
+      "multiplicityAccountedFor": true,
+      "materialMargin": 0.02,
+      "materialThreshold": 0.698852,
+      "observedLiftOverNullMedian": 0.454796,
+      "holdoutLiftOverNullMedian": 0.454796,
+      "holdoutRetention": 1,
+      "minimumHoldoutRetention": 0.5,
+      "signalExceedsNull": true,
+      "generalisesToHoldout": true,
+      "identifiable": true,
+      "identifiabilityStatus": "MEASURED_IDENTIFIABLE"
+    },
+    {
+      "headId": "reversal",
+      "developmentCases": 80,
+      "calibrationCases": 80,
+      "finalHoldoutCases": 80,
+      "developmentErrors": 24,
+      "calibrationErrors": 28,
+      "finalHoldoutErrors": 29,
+      "errorVarianceMeasurable": true,
+      "bestSignal": "confidence",
+      "developmentDiscrimination": 0.770089,
+      "observedDiscrimination": 0.715659,
+      "finalHoldoutDiscrimination": 0.72549,
+      "nullMedian": 0.559753,
+      "nullP95": 0.656593,
+      "nullP99": 0.712912,
+      "nullMax": 0.730769,
+      "permutations": 200,
+      "searchSpaceMatchedNull": true,
+      "headsSearched": 8,
+      "familyWiseAlpha": 0.05,
+      "familyWiseQuantile": 0.99375,
+      "familyWiseThreshold": 0.712912,
+      "multiplicityAccountedFor": true,
+      "materialMargin": 0.02,
+      "materialThreshold": 0.732912,
+      "observedLiftOverNullMedian": 0.155906,
+      "holdoutLiftOverNullMedian": 0.165737,
+      "holdoutRetention": 1.063057,
+      "minimumHoldoutRetention": 0.5,
+      "signalExceedsNull": false,
+      "generalisesToHoldout": true,
+      "identifiable": false,
+      "identifiabilityStatus": "MEASURED_NON_IDENTIFIABLE"
+    },
+    {
+      "headId": "regimeChange",
+      "developmentCases": 80,
+      "calibrationCases": 80,
+      "finalHoldoutCases": 80,
+      "developmentErrors": 7,
+      "calibrationErrors": 7,
+      "finalHoldoutErrors": 6,
+      "errorVarianceMeasurable": true,
+      "bestSignal": "overallConfidence",
+      "developmentDiscrimination": 0.808219,
+      "observedDiscrimination": 0.821918,
+      "finalHoldoutDiscrimination": 0.824324,
+      "nullMedian": 0.590998,
+      "nullP95": 0.740705,
+      "nullP99": 0.821918,
+      "nullMax": 0.885519,
+      "permutations": 200,
+      "searchSpaceMatchedNull": true,
+      "headsSearched": 8,
+      "familyWiseAlpha": 0.05,
+      "familyWiseQuantile": 0.99375,
+      "familyWiseThreshold": 0.821918,
+      "multiplicityAccountedFor": true,
+      "materialMargin": 0.02,
+      "materialThreshold": 0.841918,
+      "observedLiftOverNullMedian": 0.23092,
+      "holdoutLiftOverNullMedian": 0.233326,
+      "holdoutRetention": 1.010419,
+      "minimumHoldoutRetention": 0.5,
+      "signalExceedsNull": false,
+      "generalisesToHoldout": true,
+      "identifiable": false,
+      "identifiabilityStatus": "MEASURED_NON_IDENTIFIABLE"
+    },
+    {
+      "headId": "volatility",
+      "developmentCases": 70,
+      "calibrationCases": 70,
+      "finalHoldoutCases": 70,
+      "developmentErrors": 0,
+      "calibrationErrors": 0,
+      "finalHoldoutErrors": 0,
+      "errorVarianceMeasurable": false,
+      "identifiabilityStatus": "NOT_MEASURABLE_NO_ERROR_VARIANCE",
+      "bestSignal": null,
+      "developmentDiscrimination": null,
+      "observedDiscrimination": null,
+      "finalHoldoutDiscrimination": null,
+      "nullMedian": null,
+      "nullP95": null,
+      "nullP99": null,
+      "nullMax": null,
+      "permutations": 0,
+      "searchSpaceMatchedNull": true,
+      "headsSearched": 8,
+      "familyWiseAlpha": 0.05,
+      "familyWiseQuantile": 0.99375,
+      "familyWiseThreshold": null,
+      "multiplicityAccountedFor": true,
+      "signalExceedsNull": null,
+      "generalisesToHoldout": null,
+      "identifiable": false,
+      "note": "This head has no wrong cases on at least one of DEVELOPMENT and CALIBRATION, so an AUROC over correctness is undefined rather than at chance. Reported as not measurable; it is NOT evidence that the head cannot predict its own correctness."
+    },
+    {
+      "headId": "cycle",
+      "developmentCases": 80,
+      "calibrationCases": 77,
+      "finalHoldoutCases": 79,
+      "developmentErrors": 39,
+      "calibrationErrors": 37,
+      "finalHoldoutErrors": 37,
+      "errorVarianceMeasurable": true,
+      "bestSignal": "overallConfidence",
+      "developmentDiscrimination": 0.91995,
+      "observedDiscrimination": 0.926351,
+      "finalHoldoutDiscrimination": 0.919562,
+      "nullMedian": 0.541554,
+      "nullP95": 0.622635,
+      "nullP99": 0.660135,
+      "nullMax": 0.693243,
+      "permutations": 200,
+      "searchSpaceMatchedNull": true,
+      "headsSearched": 8,
+      "familyWiseAlpha": 0.05,
+      "familyWiseQuantile": 0.99375,
+      "familyWiseThreshold": 0.660135,
+      "multiplicityAccountedFor": true,
+      "materialMargin": 0.02,
+      "materialThreshold": 0.680135,
+      "observedLiftOverNullMedian": 0.384797,
+      "holdoutLiftOverNullMedian": 0.378008,
+      "holdoutRetention": 0.982357,
+      "minimumHoldoutRetention": 0.5,
+      "signalExceedsNull": true,
+      "generalisesToHoldout": true,
+      "identifiable": true,
+      "identifiabilityStatus": "MEASURED_IDENTIFIABLE"
+    },
+    {
+      "headId": "timeToThreshold",
+      "developmentCases": 96,
+      "calibrationCases": 94,
+      "finalHoldoutCases": 95,
+      "developmentErrors": 16,
+      "calibrationErrors": 14,
+      "finalHoldoutErrors": 15,
+      "errorVarianceMeasurable": true,
+      "bestSignal": "overallConfidence",
+      "developmentDiscrimination": 1,
+      "observedDiscrimination": 0.964286,
+      "finalHoldoutDiscrimination": 1,
+      "nullMedian": 0.553125,
+      "nullP95": 0.649554,
+      "nullP99": 0.717857,
+      "nullMax": 0.749554,
+      "permutations": 200,
+      "searchSpaceMatchedNull": true,
+      "headsSearched": 8,
+      "familyWiseAlpha": 0.05,
+      "familyWiseQuantile": 0.99375,
+      "familyWiseThreshold": 0.717857,
+      "multiplicityAccountedFor": true,
+      "materialMargin": 0.02,
+      "materialThreshold": 0.737857,
+      "observedLiftOverNullMedian": 0.411161,
+      "holdoutLiftOverNullMedian": 0.446875,
+      "holdoutRetention": 1.086861,
+      "minimumHoldoutRetention": 0.5,
+      "signalExceedsNull": true,
+      "generalisesToHoldout": true,
+      "identifiable": true,
+      "identifiabilityStatus": "MEASURED_IDENTIFIABLE"
+    },
+    {
+      "headId": "abstention",
+      "developmentCases": 70,
+      "calibrationCases": 70,
+      "finalHoldoutCases": 70,
+      "developmentErrors": 0,
+      "calibrationErrors": 0,
+      "finalHoldoutErrors": 1,
+      "errorVarianceMeasurable": false,
+      "identifiabilityStatus": "NOT_MEASURABLE_NO_ERROR_VARIANCE",
+      "bestSignal": null,
+      "developmentDiscrimination": null,
+      "observedDiscrimination": null,
+      "finalHoldoutDiscrimination": null,
+      "nullMedian": null,
+      "nullP95": null,
+      "nullP99": null,
+      "nullMax": null,
+      "permutations": 0,
+      "searchSpaceMatchedNull": true,
+      "headsSearched": 8,
+      "familyWiseAlpha": 0.05,
+      "familyWiseQuantile": 0.99375,
+      "familyWiseThreshold": null,
+      "multiplicityAccountedFor": true,
+      "signalExceedsNull": null,
+      "generalisesToHoldout": null,
+      "identifiable": false,
+      "note": "This head has no wrong cases on at least one of DEVELOPMENT and CALIBRATION, so an AUROC over correctness is undefined rather than at chance. Reported as not measurable; it is NOT evidence that the head cannot predict its own correctness."
+    }
+  ],
+  "delegation": [
+    {
+      "headId": "direction",
+      "evaluated": true,
+      "hasCertifiedActionPath": true,
+      "reason": "REVALIDATED_AGAINST_STAGE2L19_STRESS_CORPUS_AND_STAGE2L10_CERTIFICATION",
+      "identifiabilityStatus": "NOT_MEASURABLE_NO_ERROR_VARIANCE",
+      "delegations": 1332,
+      "delegationRate": 0.38993,
+      "delegationPrecision": 1,
+      "delegationLowerBound": 0.997973,
+      "beneficialChanges": 1332,
+      "harmfulChanges": 0,
+      "harmfulChangeRate": 0,
+      "correctPrimeBreaks": 0,
+      "correctPrimeBreakRate": 0,
+      "inheritedEvidence": {
+        "source": "STAGE2L10_ARBITER_CORRECTNESS_CALIBRATION_AND_SELECTIVE_DELEGATION",
+        "artifactField": "oracleSingleExpert",
+        "inheritedDelegations": 3416,
+        "delegations": 1332,
+        "precision": 1,
+        "beneficialChanges": 1332,
+        "harmfulChanges": 0,
+        "harmfulChangeRate": 0,
+        "correctPrimeBreaks": 0,
+        "correctPrimeBreakRate": 0
+      },
+      "inheritedMeetsFloor": true,
+      "revalidation": {
+        "corpus": "STAGE2L19_ORACLE_STRESS_CORPUS",
+        "cases": 350,
+        "supportedCases": 350,
+        "correctWhenSupported": 350,
+        "precision": 1,
+        "lowerBound": 0.992329,
+        "boundMethod": "WILSON_SCORE_LOWER_BOUND",
+        "boundZ": 1.6449,
+        "supportAdequate": true,
+        "minimumDelegationCount": 50,
+        "meetsFloor": true,
+        "scope": "LABEL_LEVEL_ONLY_NO_PRIME_COMPARISON_ON_THIS_CORPUS",
+        "note": "This corpus scores temporal labels, not actions, so it can contradict the inherited certification but cannot by itself establish a Prime-relative harmful-change rate."
+      },
+      "reliabilityFloor": 0.99,
+      "conservativeBoundRequirement": 0.95,
+      "maxHarmfulChangeRate": 0.01,
+      "maxCorrectPrimeBreakRate": 0.01,
+      "ceilingsRespected": true,
+      "safeForDelegation": true
+    },
+    {
+      "headId": "persistence",
+      "evaluated": false,
+      "hasCertifiedActionPath": false,
+      "reason": "BENCHMARK_SEMANTICS_INVALID",
+      "identifiabilityStatus": "MEASURED_IDENTIFIABLE",
+      "delegations": 0,
+      "delegationRate": 0,
+      "delegationPrecision": 0,
+      "delegationLowerBound": 0,
+      "beneficialChanges": 0,
+      "harmfulChanges": 0,
+      "harmfulChangeRate": 0,
+      "correctPrimeBreaks": 0,
+      "correctPrimeBreakRate": 0,
+      "safeForDelegation": false
+    },
+    {
+      "headId": "reversal",
+      "evaluated": false,
+      "hasCertifiedActionPath": false,
+      "reason": "NO_ACTION_DELEGATION_PATH",
+      "identifiabilityStatus": "MEASURED_NON_IDENTIFIABLE",
+      "delegations": 0,
+      "delegationRate": 0,
+      "delegationPrecision": 0,
+      "delegationLowerBound": 0,
+      "beneficialChanges": 0,
+      "harmfulChanges": 0,
+      "harmfulChangeRate": 0,
+      "correctPrimeBreaks": 0,
+      "correctPrimeBreakRate": 0,
+      "safeForDelegation": false
+    },
+    {
+      "headId": "regimeChange",
+      "evaluated": false,
+      "hasCertifiedActionPath": false,
+      "reason": "NO_ACTION_DELEGATION_PATH",
+      "identifiabilityStatus": "MEASURED_NON_IDENTIFIABLE",
+      "delegations": 0,
+      "delegationRate": 0,
+      "delegationPrecision": 0,
+      "delegationLowerBound": 0,
+      "beneficialChanges": 0,
+      "harmfulChanges": 0,
+      "harmfulChangeRate": 0,
+      "correctPrimeBreaks": 0,
+      "correctPrimeBreakRate": 0,
+      "safeForDelegation": false
+    },
+    {
+      "headId": "volatility",
+      "evaluated": false,
+      "hasCertifiedActionPath": false,
+      "reason": "NO_ACTION_DELEGATION_PATH",
+      "identifiabilityStatus": "NOT_MEASURABLE_NO_ERROR_VARIANCE",
+      "delegations": 0,
+      "delegationRate": 0,
+      "delegationPrecision": 0,
+      "delegationLowerBound": 0,
+      "beneficialChanges": 0,
+      "harmfulChanges": 0,
+      "harmfulChangeRate": 0,
+      "correctPrimeBreaks": 0,
+      "correctPrimeBreakRate": 0,
+      "safeForDelegation": false
+    },
+    {
+      "headId": "cycle",
+      "evaluated": false,
+      "hasCertifiedActionPath": false,
+      "reason": "NO_ACTION_DELEGATION_PATH",
+      "identifiabilityStatus": "MEASURED_IDENTIFIABLE",
+      "delegations": 0,
+      "delegationRate": 0,
+      "delegationPrecision": 0,
+      "delegationLowerBound": 0,
+      "beneficialChanges": 0,
+      "harmfulChanges": 0,
+      "harmfulChangeRate": 0,
+      "correctPrimeBreaks": 0,
+      "correctPrimeBreakRate": 0,
+      "safeForDelegation": false
+    },
+    {
+      "headId": "timeToThreshold",
+      "evaluated": false,
+      "hasCertifiedActionPath": false,
+      "reason": "BENCHMARK_SEMANTICS_INVALID",
+      "identifiabilityStatus": "MEASURED_IDENTIFIABLE",
+      "delegations": 0,
+      "delegationRate": 0,
+      "delegationPrecision": 0,
+      "delegationLowerBound": 0,
+      "beneficialChanges": 0,
+      "harmfulChanges": 0,
+      "harmfulChangeRate": 0,
+      "correctPrimeBreaks": 0,
+      "correctPrimeBreakRate": 0,
+      "safeForDelegation": false
+    },
+    {
+      "headId": "abstention",
+      "evaluated": false,
+      "hasCertifiedActionPath": false,
+      "reason": "NO_ACTION_DELEGATION_PATH",
+      "identifiabilityStatus": "NOT_MEASURABLE_NO_ERROR_VARIANCE",
+      "delegations": 0,
+      "delegationRate": 0,
+      "delegationPrecision": 0,
+      "delegationLowerBound": 0,
+      "beneficialChanges": 0,
+      "harmfulChanges": 0,
+      "harmfulChangeRate": 0,
+      "correctPrimeBreaks": 0,
+      "correctPrimeBreakRate": 0,
+      "safeForDelegation": false
+    }
+  ],
+  "classifications": [
+    {
+      "headId": "direction",
+      "headName": "DIRECTION_HEAD",
+      "classification": "SAFE_SPECIALIST"
+    },
+    {
+      "headId": "persistence",
+      "headName": "PERSISTENCE_HEAD",
+      "classification": "INVALID_BENCHMARK_SEMANTICS"
+    },
+    {
+      "headId": "reversal",
+      "headName": "REVERSAL_HEAD",
+      "classification": "NON_IDENTIFIABLE"
+    },
+    {
+      "headId": "regimeChange",
+      "headName": "REGIME_CHANGE_HEAD",
+      "classification": "NON_IDENTIFIABLE"
+    },
+    {
+      "headId": "volatility",
+      "headName": "VOLATILITY_HEAD",
+      "classification": "USEFUL_NOT_SAFE"
+    },
+    {
+      "headId": "cycle",
+      "headName": "CYCLE_HEAD",
+      "classification": "IDENTIFIABLE_BUT_WEAK"
+    },
+    {
+      "headId": "timeToThreshold",
+      "headName": "TIME_TO_THRESHOLD_HEAD",
+      "classification": "INVALID_BENCHMARK_SEMANTICS"
+    },
+    {
+      "headId": "abstention",
+      "headName": "ABSTENTION_HEAD",
+      "classification": "USEFUL_NOT_SAFE"
+    }
+  ],
+  "collisions": {
+    "safeHeadIds": [
+      "direction"
+    ],
+    "safeHeadCount": 1,
+    "sampledCases": 600,
+    "multiHeadEligibleCases": 0,
+    "headAgreementCases": 0,
+    "headDisagreementCases": 0,
+    "multiHeadCollisionRemediationRequired": false,
+    "note": "Fewer than two heads are delegation eligible, so no overlapping delegation can arise and the inherited Arbiter path is unchanged."
+  },
+  "portfolio": {
+    "totalHeads": 8,
+    "semanticallyValidHeads": 6,
+    "usefulHeads": 6,
+    "identifiableHeads": 3,
+    "measuredNonIdentifiableHeads": 2,
+    "identifiabilityNotMeasurableHeads": 3,
+    "safeSpecialistHeads": 1,
+    "redundantHeads": 0,
+    "invalidOrUnresolvedHeads": 2,
+    "weakHeads": 1,
+    "byClassification": [
+      {
+        "classification": "SAFE_SPECIALIST",
+        "heads": [
+          "direction"
+        ]
+      },
+      {
+        "classification": "USEFUL_NOT_SAFE",
+        "heads": [
+          "volatility",
+          "abstention"
+        ]
+      },
+      {
+        "classification": "IDENTIFIABLE_BUT_WEAK",
+        "heads": [
+          "cycle"
+        ]
+      },
+      {
+        "classification": "NON_IDENTIFIABLE",
+        "heads": [
+          "reversal",
+          "regimeChange"
+        ]
+      },
+      {
+        "classification": "INVALID_BENCHMARK_SEMANTICS",
+        "heads": [
+          "persistence",
+          "timeToThreshold"
+        ]
+      }
+    ],
+    "combinedUniquePrimeErrorCoverage": "NOT_MEASURABLE_WITHOUT_ACTION_PATH",
+    "combinedCoverageNote": "Seven of the eight heads emit temporal labels, not actions, so there is no action-level error they can be said to cover. Only the direction head has a certified action-delegation path, and its coverage is the Stage 2L.10 certified figure."
+  },
+  "corpusDigest": "2f032a26e10ad66bb98e5e92e1cc340188136e1840ad5e290aab956611034f4a",
+  "labelLeakage": {
+    "forbiddenInSignals": [],
+    "signalsUsed": [
+      "confidence",
+      "supported",
+      "historyFrames",
+      "overallConfidence",
+      "activeHeadCount",
+      "globalSufficiency"
+    ],
+    "labelLeakageDetected": false
+  },
+  "labelLeakageDetected": false,
+  "oracleHeadInventoryComplete": true,
+  "contractAuditComplete": true,
+  "groundTruthAuditComplete": true,
+  "corpusValidationComplete": true,
+  "allHeadsClassified": true,
+  "searchSpaceMatchedNull": true,
+  "multiplicityAccountedFor": true,
+  "nexusBehaviorChanged": false,
+  "securityRegressionPass": true,
+  "oraclePortfolioOutcome": "B_ONE_SAFE_SPECIALIST_OTHERS_USEFUL_NOT_SAFE",
+  "stage2l19Certified": true,
+  "inheritedDirectionDelegation": {
+    "source": "STAGE2L10_ARBITER_CORRECTNESS_CALIBRATION_AND_SELECTIVE_DELEGATION",
+    "artifactField": "oracleSingleExpert",
+    "inheritedDelegations": 3416,
+    "delegations": 1332,
+    "precision": 1,
+    "beneficialChanges": 1332,
+    "harmfulChanges": 0,
+    "harmfulChangeRate": 0,
+    "correctPrimeBreaks": 0,
+    "correctPrimeBreakRate": 0
+  },
+  "interpretation": {
+    "measuredOracleLimitation": "ORACLE_IS_ONE_CERTIFIED_ACTION_HEAD_PLUS_LABEL_ONLY_DIAGNOSTICS",
+    "limitationDetail": [
+      "Only 1 of 8 heads (direction) has an action-delegation path; the assembly sets actionMapping=false and forbids action fields, so the other 7 emit temporal labels and have no delegation to be safe or unsafe about.",
+      "2 head(s) cannot be scored at all against the current benchmark because they emit labels it does not expect: persistence (unreachable: NOT_PERSISTENT); timeToThreshold (unreachable: CROSSING_1_TO_3).",
+      "2 head(s) were measured against a search-space-matched, Bonferroni-corrected null and did not separate materially; 3 produced no wrong case on a measurable split, so their self-correctness AUROC is undefined rather than at chance and is reported as not measurable, not as non-identifiable."
+    ],
+    "benchmarkVocabularyDefects": [
+      {
+        "headId": "persistence",
+        "headName": "PERSISTENCE_HEAD",
+        "expectedLabels": [
+          "NOT_PERSISTENT",
+          "PERSISTENT"
+        ],
+        "emittedLabels": [
+          "INSUFFICIENT_EVIDENCE",
+          "NON_PERSISTENT",
+          "PERSISTENT"
+        ],
+        "unreachableExpectedLabels": [
+          "NOT_PERSISTENT"
+        ],
+        "achievableAccuracyCeiling": 0.666667,
+        "defectClass": "BENCHMARK_LABEL_VOCABULARY_MISMATCH",
+        "defectOwner": "HEAD_AND_BENCHMARK_CONTRACT"
+      },
+      {
+        "headId": "timeToThreshold",
+        "headName": "TIME_TO_THRESHOLD_HEAD",
+        "expectedLabels": [
+          "ALREADY_CROSSED",
+          "CROSSING_1_TO_3",
+          "NOT_CROSSING"
+        ],
+        "emittedLabels": [
+          "ALREADY_CROSSED",
+          "INSUFFICIENT_EVIDENCE",
+          "NOT_CROSSING"
+        ],
+        "unreachableExpectedLabels": [
+          "CROSSING_1_TO_3"
+        ],
+        "achievableAccuracyCeiling": 0.666667,
+        "defectClass": "BENCHMARK_LABEL_VOCABULARY_MISMATCH",
+        "defectOwner": "HEAD_AND_BENCHMARK_CONTRACT"
+      }
+    ],
+    "labelOnlyHeadIds": [
+      "persistence",
+      "reversal",
+      "regimeChange",
+      "volatility",
+      "cycle",
+      "timeToThreshold",
+      "abstention"
+    ],
+    "remediationRequired": true,
+    "remediationClass": "BENCHMARK_LABEL_VOCABULARY_ALIGNMENT",
+    "remediationOwner": "BENCHMARK_AND_HEAD_CONTRACT_NOT_HEAD_REASONING",
+    "remediationPerformedInThisStage": false,
+    "remediationNote": "Stage 2L.19 is a characterization stage and the brief forbids remediating weak heads here. The defects are identified and stopped at."
+  },
+  "portabilityNote": "Stage 2L.10 through 2L.18 remain DIGEST_PRODUCED_SINGLE_PLATFORM. Stage 2L.19 does not change that.",
+  "liveActionDispatches": 0,
+  "worldMutations": 0,
+  "authorityEscalations": 0,
+  "realZeknovaDecisionDeltaMeasured": false,
+  "evidenceDigest": "67ba3c2fc67be10c3c1ebeae175306c326380dae08d1ef2c171d2fd49a1ff532",
+  "certificationHash": "145ce640b0b7a9bcceaa9688d248f2ba4cf8dd89ff30cd8301f69f2eadc9f3fe"
+}

@@ -1,0 +1,104 @@
+{
+  "stage": "STAGE2L19_ORACLE_MULTI_HEAD_QUALIFICATION",
+  "utilityClasses": [
+    {
+      "headId": "direction",
+      "corpus": "STAGE2L19_ORACLE_STRESS_CORPUS",
+      "accuracy": 1,
+      "majorityBaseline": 0.342857,
+      "liftOverTrivialBaseline": 0.657143,
+      "constantPrediction": false,
+      "hasCertifiedActionPath": true,
+      "primeComparable": true,
+      "utilityClass": "POSITIVE_SPECIALIST_UTILITY",
+      "utilityNote": "Comparable with Prime: this head has a certified action-delegation path."
+    },
+    {
+      "headId": "persistence",
+      "corpus": "STAGE2L19_ORACLE_STRESS_CORPUS",
+      "accuracy": 0.34322,
+      "majorityBaseline": 0.508475,
+      "liftOverTrivialBaseline": -0.165255,
+      "constantPrediction": false,
+      "hasCertifiedActionPath": false,
+      "primeComparable": false,
+      "utilityClass": "NEGATIVE_UTILITY",
+      "utilityNote": "Not comparable with Prime: this head emits a temporal label, not an action, and the assembly forbids action fields. Measured against the best trivial classifier instead."
+    },
+    {
+      "headId": "reversal",
+      "corpus": "STAGE2L19_ORACLE_STRESS_CORPUS",
+      "accuracy": 0.6625,
+      "majorityBaseline": 0.5,
+      "liftOverTrivialBaseline": 0.1625,
+      "constantPrediction": false,
+      "hasCertifiedActionPath": false,
+      "primeComparable": false,
+      "utilityClass": "NOT_COMPARABLE_NO_ACTION_PATH",
+      "utilityNote": "Not comparable with Prime: this head emits a temporal label, not an action, and the assembly forbids action fields. Measured against the best trivial classifier instead."
+    },
+    {
+      "headId": "regimeChange",
+      "corpus": "STAGE2L19_ORACLE_STRESS_CORPUS",
+      "accuracy": 0.916667,
+      "majorityBaseline": 0.5,
+      "liftOverTrivialBaseline": 0.416667,
+      "constantPrediction": false,
+      "hasCertifiedActionPath": false,
+      "primeComparable": false,
+      "utilityClass": "NOT_COMPARABLE_NO_ACTION_PATH",
+      "utilityNote": "Not comparable with Prime: this head emits a temporal label, not an action, and the assembly forbids action fields. Measured against the best trivial classifier instead."
+    },
+    {
+      "headId": "volatility",
+      "corpus": "STAGE2L19_ORACLE_STRESS_CORPUS",
+      "accuracy": 1,
+      "majorityBaseline": 0.571429,
+      "liftOverTrivialBaseline": 0.428571,
+      "constantPrediction": false,
+      "hasCertifiedActionPath": false,
+      "primeComparable": false,
+      "utilityClass": "NOT_COMPARABLE_NO_ACTION_PATH",
+      "utilityNote": "Not comparable with Prime: this head emits a temporal label, not an action, and the assembly forbids action fields. Measured against the best trivial classifier instead."
+    },
+    {
+      "headId": "cycle",
+      "corpus": "STAGE2L19_ORACLE_STRESS_CORPUS",
+      "accuracy": 0.521186,
+      "majorityBaseline": 0.508475,
+      "liftOverTrivialBaseline": 0.012711,
+      "constantPrediction": false,
+      "hasCertifiedActionPath": false,
+      "primeComparable": false,
+      "utilityClass": "INCONCLUSIVE",
+      "utilityNote": "Not comparable with Prime: this head emits a temporal label, not an action, and the assembly forbids action fields. Measured against the best trivial classifier instead."
+    },
+    {
+      "headId": "timeToThreshold",
+      "corpus": "STAGE2L19_ORACLE_STRESS_CORPUS",
+      "accuracy": 0.842105,
+      "majorityBaseline": 0.421053,
+      "liftOverTrivialBaseline": 0.421052,
+      "constantPrediction": false,
+      "hasCertifiedActionPath": false,
+      "primeComparable": false,
+      "utilityClass": "NOT_COMPARABLE_NO_ACTION_PATH",
+      "utilityNote": "Not comparable with Prime: this head emits a temporal label, not an action, and the assembly forbids action fields. Measured against the best trivial classifier instead."
+    },
+    {
+      "headId": "abstention",
+      "corpus": "STAGE2L19_ORACLE_STRESS_CORPUS",
+      "accuracy": 0.995238,
+      "majorityBaseline": 0.571429,
+      "liftOverTrivialBaseline": 0.423809,
+      "constantPrediction": false,
+      "hasCertifiedActionPath": false,
+      "primeComparable": false,
+      "utilityClass": "NOT_COMPARABLE_NO_ACTION_PATH",
+      "utilityNote": "Not comparable with Prime: this head emits a temporal label, not an action, and the assembly forbids action fields. Measured against the best trivial classifier instead."
+    }
+  ],
+  "materialLiftThreshold": 0.05,
+  "combinedUniquePrimeErrorCoverage": "NOT_MEASURABLE_WITHOUT_ACTION_PATH",
+  "combinedCoverageNote": "Seven of the eight heads emit temporal labels, not actions, so there is no action-level error they can be said to cover. Only the direction head has a certified action-delegation path, and its coverage is the Stage 2L.10 certified figure."
+}

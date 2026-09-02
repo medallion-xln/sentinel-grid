@@ -265,6 +265,78 @@ nothing separating was found, and at six positives nothing moderate *could* have
 been found. Both routes to the 0.99 floor are now closed: a better expert does not
 reach it, and neither does a better confidence rule over the current state.
 
+### The Oracle portfolio (Stage 2L.19)
+
+With the Nexus line closed on principle, Stage 2L.19 turned to the one expert
+surface that had never been examined head by head. `assembleOracleV2` composes
+**eight** heads — `direction`, `persistence`, `reversal`, `regimeChange`,
+`volatility`, `cycle`, `timeToThreshold`, `abstention` — and Stage 2L.10 had
+certified exactly one.
+
+Two things had to be settled before a single head could be scored, and both
+changed what the question even means.
+
+**Seven of the eight emit labels, not actions.** The assembly declares
+`actionMapping: false` and forbids `recommendedAction` and its relatives outright.
+Prime emits an action; those seven emit a claim about history. "Does this head beat
+Prime" is not a question they can answer, and inventing a label-to-action mapping
+would have been this stage fabricating the semantics it was auditing. The honest
+baseline for a classifier is the best trivial classifier, and that is what was
+used.
+
+**The inherited corpus is degenerate.** 2,400 cases looks ample. It is three
+generator families per head, 100 near-identical variants each, with predictions
+constant inside every family — so the effective sample size is **3 per head**, not
+300. Reporting it as 300 would have repeated the exact failure Stage 2L.11 was
+undone by. An independent stress corpus was built instead, and it caught a defect
+in its own generator first: a reversal series ran off the top of the range,
+clamped, flattened the recent window, and the head's "no reversal" answer was
+*correct*. That would have shipped as a head defect. A case is now usable only if
+its label is true of the series actually produced, saturation included — 153 of
+2,160 were rejected on that test.
+
+The result:
+
+| Head | Stress accuracy | Trivial baseline | Verdict |
+|---|---|---|---|
+| `direction` | 1.0000 | 0.3429 | **SAFE_SPECIALIST** |
+| `volatility` | 1.0000 | 0.5714 | useful, no action path |
+| `abstention` | 0.9952 | 0.5714 | useful, no action path |
+| `regimeChange` | 0.9167 | 0.5000 | non-identifiable |
+| `reversal` | 0.6625 | 0.5000 | non-identifiable |
+| `cycle` | 0.5212 | 0.5085 | identifiable but weak |
+| `persistence` | 0.3432 | 0.5085 | benchmark cannot score it |
+| `timeToThreshold` | 0.8421 | 0.4211 | benchmark cannot score it |
+
+`direction` was revalidated rather than presumed, and had to clear the 0.99 floor
+on two independent bodies of evidence: **350/350** on the new stress corpus
+(Wilson lower bound 0.992329) and the inherited Stage 2L.10 evidence of 1,332
+delegations at precision 1.0 with zero harmful changes (lower bound 0.997973).
+
+The other seven are recorded as `NO_ACTION_DELEGATION_PATH` — never as an
+inherited pass. The Stage 2L.10 Arbiter binding pins `head: 'direction'` and its
+Oracle signal schema is direction-shaped down to the field names, so any other
+head is rejected by identity. Extending that certification to `volatility`
+because it also scores 1.0000 would have been borrowing a result that was never
+measured.
+
+Two heads cannot be scored at all: `persistence` emits `NON_PERSISTENT` where the
+benchmark expects `NOT_PERSISTENT`, and `timeToThreshold` never emits
+`CROSSING_1_TO_3`. Each caps achievable accuracy at 0.6667 no matter how well the
+head reasons. That is a contract defect between head and benchmark, identified and
+left alone.
+
+One measurement artifact was caught before it became a finding. Three heads have
+**no wrong cases** on a measurable split, so an AUROC over their correctness is
+undefined. Reporting that as 0.5 would read as "chance" and would have classified
+the certified `direction` head as non-identifiable. "No errors to predict" and
+"the errors cannot be predicted" are different results and are reported as
+different results.
+
+So Oracle is **one certified action head plus seven label-only diagnostics** —
+architecture, not quality. Nothing says the other seven reason badly; there is
+simply no delegation for them to be safe or unsafe about.
+
 ## ZekNova status
 
 ZekNova is the first production adapter. Frozen-corpus behavioural parity,
@@ -286,7 +358,7 @@ promotion is available or planned before Stage 10.
 
 ## Roadmap position
 
-Current stage: **2L.18 — PASS** (diagnostic; the delegation tail is not separable with current information). Recent history:
+Current stage: **2L.19 — PASS** (characterization; Oracle is one certified action head plus seven label-only diagnostics). Recent history:
 
 | Stage | Result |
 |---|---|
@@ -303,6 +375,7 @@ Current stage: **2L.18 — PASS** (diagnostic; the delegation tail is not separa
 | 2L.16 | PASS — residual errors decomposed: dominant defect is crediting a BYPASS to a non-delivering substitute (41.9%); risk was ruled out |
 | 2L.17 | PASS — live-substitute and do-nothing-delta fixes: 0.7909 → 0.8291, 605 net errors gone; delegation still 0.9894 vs the 0.99 floor |
 | 2L.18 | PASS — the delegation tail is six cases; the best rule found sits exactly on the permutation null's p95 and does not generalize |
+| 2L.19 | PASS — Oracle's eight heads characterized: `direction` revalidated safe at the 0.99 floor, seven have no action path, two cannot be scored by the current benchmark |
 
 Full detail in [`platform/game-agnostic/docs/TEN_STAGE_ROADMAP.md`](platform/game-agnostic/docs/TEN_STAGE_ROADMAP.md).
 

@@ -1,0 +1,391 @@
+{
+  "stage": "STAGE2L19_ORACLE_MULTI_HEAD_QUALIFICATION",
+  "probeDigest": "sha256:24a96aaebdae2758b9e28e4a3b8ee87aeccc532fe37b4575f8d0f5c5db4c6a70",
+  "exposedTopLevelFields": [
+    "advisoryOnly",
+    "assessmentDigest",
+    "authority",
+    "confidence",
+    "evidence",
+    "expert",
+    "expertSelectionInfluence",
+    "heads",
+    "historySufficiency",
+    "modular",
+    "provenance",
+    "schemaVersion",
+    "singleScalarValue"
+  ],
+  "arbiterOracleHeadBinding": "direction",
+  "arbiterUnknownHeadCode": "ORACLE_SIGNAL_HEAD_UNKNOWN",
+  "arbiterOracleSignalKeys": [
+    "kind",
+    "head",
+    "supported",
+    "claim",
+    "confidence",
+    "fullSlopeMicro",
+    "recentSlopeMicro",
+    "samples",
+    "historySufficiency"
+  ],
+  "arbiterOracleSignalKind": "ORACLE_DIRECTION_SLOPE_COHERENCE_V1",
+  "headsExposed": 8,
+  "headsConsumedByArbiter": 1,
+  "headsExposedButNotConsumed": [
+    "persistence",
+    "reversal",
+    "regimeChange",
+    "volatility",
+    "cycle",
+    "timeToThreshold",
+    "abstention"
+  ],
+  "anyHeadEmitsAction": false,
+  "heads": [
+    {
+      "headId": "direction",
+      "headName": "DIRECTION_HEAD",
+      "canonicalInputsConsumed": [
+        "observationHistory.channels"
+      ],
+      "derivedStateComputed": [
+        "architecture",
+        "fullSlope",
+        "recentSlope",
+        "samples"
+      ],
+      "expertOutputFieldsExposed": [
+        "confidence",
+        "observation",
+        "outputDigest",
+        "rawSemanticOutput",
+        "semanticOutput",
+        "supportContext",
+        "supported"
+      ],
+      "confidenceFieldsExposed": [
+        "confidence"
+      ],
+      "supportFieldsExposed": [
+        "supported",
+        "supportContext"
+      ],
+      "evidenceMetadataExposed": [
+        "evidence.headOutputDigests",
+        "outputDigest"
+      ],
+      "correctnessDefinition": "semanticOutput equals the corpus case's declared expected label drawn from UP|DOWN|STABLE",
+      "arbiterPath": "STAGE2L10_ORACLE_BINDING_HEAD_DIRECTION",
+      "consumedByArbiter": true,
+      "emitsAction": false,
+      "informationOracleComputes": 4,
+      "informationOracleExposes": 7,
+      "informationArbiterConsumes": 3,
+      "contractDeficiencyMeasured": false
+    },
+    {
+      "headId": "persistence",
+      "headName": "PERSISTENCE_HEAD",
+      "canonicalInputsConsumed": [
+        "observationHistory.channels"
+      ],
+      "derivedStateComputed": [
+        "directionalActivity",
+        "directionalConsistency",
+        "fullDirection",
+        "historyCoverage",
+        "nonzeroSteps",
+        "opposingRun",
+        "recentDirection",
+        "samples",
+        "support"
+      ],
+      "expertOutputFieldsExposed": [
+        "confidence",
+        "observation",
+        "outputDigest",
+        "rawSemanticOutput",
+        "semanticOutput",
+        "supportContext",
+        "supported"
+      ],
+      "confidenceFieldsExposed": [
+        "confidence"
+      ],
+      "supportFieldsExposed": [
+        "supported",
+        "supportContext"
+      ],
+      "evidenceMetadataExposed": [
+        "evidence.headOutputDigests",
+        "outputDigest"
+      ],
+      "correctnessDefinition": "semanticOutput equals the corpus case's declared expected label drawn from PERSISTENT|NON_PERSISTENT|INSUFFICIENT_EVIDENCE",
+      "arbiterPath": "NOT_WIRED_ARBITER_REJECTS_WITH_ORACLE_SIGNAL_HEAD_UNKNOWN",
+      "consumedByArbiter": false,
+      "emitsAction": false,
+      "informationOracleComputes": 9,
+      "informationOracleExposes": 7,
+      "informationArbiterConsumes": 0,
+      "contractDeficiencyMeasured": false
+    },
+    {
+      "headId": "reversal",
+      "headName": "REVERSAL_HEAD",
+      "canonicalInputsConsumed": [
+        "observationHistory.channels"
+      ],
+      "derivedStateComputed": [
+        "material",
+        "priorSlope",
+        "recentSlope"
+      ],
+      "expertOutputFieldsExposed": [
+        "confidence",
+        "observation",
+        "outputDigest",
+        "rawSemanticOutput",
+        "semanticOutput",
+        "supportContext",
+        "supported"
+      ],
+      "confidenceFieldsExposed": [
+        "confidence"
+      ],
+      "supportFieldsExposed": [
+        "supported",
+        "supportContext"
+      ],
+      "evidenceMetadataExposed": [
+        "evidence.headOutputDigests",
+        "outputDigest"
+      ],
+      "correctnessDefinition": "semanticOutput equals the corpus case's declared expected label drawn from REVERSAL|NO_REVERSAL",
+      "arbiterPath": "NOT_WIRED_ARBITER_REJECTS_WITH_ORACLE_SIGNAL_HEAD_UNKNOWN",
+      "consumedByArbiter": false,
+      "emitsAction": false,
+      "informationOracleComputes": 3,
+      "informationOracleExposes": 7,
+      "informationArbiterConsumes": 0,
+      "contractDeficiencyMeasured": false
+    },
+    {
+      "headId": "regimeChange",
+      "headName": "REGIME_CHANGE_HEAD",
+      "canonicalInputsConsumed": [
+        "observationHistory.channels"
+      ],
+      "derivedStateComputed": [
+        "anomalyFilter",
+        "deltas",
+        "detectedChanges",
+        "dimensionEvidence",
+        "prior",
+        "priorPersistence",
+        "priorProcessState",
+        "recent",
+        "recentPersistence",
+        "recentProcessState",
+        "reversalObservation",
+        "samples",
+        "stablePriorInterpretationAvailable"
+      ],
+      "expertOutputFieldsExposed": [
+        "confidence",
+        "observation",
+        "outputDigest",
+        "rawSemanticOutput",
+        "semanticOutput",
+        "supportContext",
+        "supported"
+      ],
+      "confidenceFieldsExposed": [
+        "confidence"
+      ],
+      "supportFieldsExposed": [
+        "supported",
+        "supportContext"
+      ],
+      "evidenceMetadataExposed": [
+        "evidence.headOutputDigests",
+        "outputDigest"
+      ],
+      "correctnessDefinition": "semanticOutput equals the corpus case's declared expected label drawn from TREND_CHANGE|LEVEL_CHANGE|CYCLE_CHANGE|MULTIPLE_CHANGE|NO_CHANGE|INSUFFICIENT_EVIDENCE",
+      "arbiterPath": "NOT_WIRED_ARBITER_REJECTS_WITH_ORACLE_SIGNAL_HEAD_UNKNOWN",
+      "consumedByArbiter": false,
+      "emitsAction": false,
+      "informationOracleComputes": 13,
+      "informationOracleExposes": 7,
+      "informationArbiterConsumes": 0,
+      "contractDeficiencyMeasured": false
+    },
+    {
+      "headId": "volatility",
+      "headName": "VOLATILITY_HEAD",
+      "canonicalInputsConsumed": [
+        "observationHistory.channels"
+      ],
+      "derivedStateComputed": [
+        "magnitude",
+        "samples"
+      ],
+      "expertOutputFieldsExposed": [
+        "confidence",
+        "observation",
+        "outputDigest",
+        "rawSemanticOutput",
+        "semanticOutput",
+        "supportContext",
+        "supported"
+      ],
+      "confidenceFieldsExposed": [
+        "confidence"
+      ],
+      "supportFieldsExposed": [
+        "supported",
+        "supportContext"
+      ],
+      "evidenceMetadataExposed": [
+        "evidence.headOutputDigests",
+        "outputDigest"
+      ],
+      "correctnessDefinition": "semanticOutput equals the corpus case's declared expected label drawn from HIGH_VOLATILITY|LOW_VOLATILITY",
+      "arbiterPath": "NOT_WIRED_ARBITER_REJECTS_WITH_ORACLE_SIGNAL_HEAD_UNKNOWN",
+      "consumedByArbiter": false,
+      "emitsAction": false,
+      "informationOracleComputes": 2,
+      "informationOracleExposes": 7,
+      "informationArbiterConsumes": 0,
+      "contractDeficiencyMeasured": false
+    },
+    {
+      "headId": "cycle",
+      "headName": "CYCLE_HEAD",
+      "canonicalInputsConsumed": [
+        "observationHistory.channels"
+      ],
+      "derivedStateComputed": [
+        "amplitude",
+        "bestCorrelation",
+        "bestLag",
+        "samples"
+      ],
+      "expertOutputFieldsExposed": [
+        "confidence",
+        "observation",
+        "outputDigest",
+        "rawSemanticOutput",
+        "semanticOutput",
+        "supportContext",
+        "supported"
+      ],
+      "confidenceFieldsExposed": [
+        "confidence"
+      ],
+      "supportFieldsExposed": [
+        "supported",
+        "supportContext"
+      ],
+      "evidenceMetadataExposed": [
+        "evidence.headOutputDigests",
+        "outputDigest"
+      ],
+      "correctnessDefinition": "semanticOutput equals the corpus case's declared expected label drawn from CYCLICAL|NOT_CYCLICAL",
+      "arbiterPath": "NOT_WIRED_ARBITER_REJECTS_WITH_ORACLE_SIGNAL_HEAD_UNKNOWN",
+      "consumedByArbiter": false,
+      "emitsAction": false,
+      "informationOracleComputes": 4,
+      "informationOracleExposes": 7,
+      "informationArbiterConsumes": 0,
+      "contractDeficiencyMeasured": false
+    },
+    {
+      "headId": "timeToThreshold",
+      "headName": "TIME_TO_THRESHOLD_HEAD",
+      "canonicalInputsConsumed": [
+        "observationHistory.channels",
+        "channelSemantics.threshold",
+        "channelSemantics.polarity"
+      ],
+      "derivedStateComputed": [
+        "estimatedTicks",
+        "fullSlope",
+        "last",
+        "recentSlope",
+        "threshold"
+      ],
+      "expertOutputFieldsExposed": [
+        "confidence",
+        "observation",
+        "outputDigest",
+        "rawSemanticOutput",
+        "semanticOutput",
+        "supportContext",
+        "supported"
+      ],
+      "confidenceFieldsExposed": [
+        "confidence"
+      ],
+      "supportFieldsExposed": [
+        "supported",
+        "supportContext"
+      ],
+      "evidenceMetadataExposed": [
+        "evidence.headOutputDigests",
+        "outputDigest"
+      ],
+      "correctnessDefinition": "semanticOutput equals the corpus case's declared expected label drawn from ALREADY_CROSSED|NOT_CROSSING|INSUFFICIENT_EVIDENCE",
+      "arbiterPath": "NOT_WIRED_ARBITER_REJECTS_WITH_ORACLE_SIGNAL_HEAD_UNKNOWN",
+      "consumedByArbiter": false,
+      "emitsAction": false,
+      "informationOracleComputes": 5,
+      "informationOracleExposes": 7,
+      "informationArbiterConsumes": 0,
+      "contractDeficiencyMeasured": false
+    },
+    {
+      "headId": "abstention",
+      "headName": "ABSTENTION_HEAD",
+      "canonicalInputsConsumed": [
+        "observationHistory"
+      ],
+      "derivedStateComputed": [
+        "conflict",
+        "coverage",
+        "samples",
+        "volatility"
+      ],
+      "expertOutputFieldsExposed": [
+        "confidence",
+        "observation",
+        "outputDigest",
+        "rawSemanticOutput",
+        "semanticOutput",
+        "supportContext",
+        "supported"
+      ],
+      "confidenceFieldsExposed": [
+        "confidence"
+      ],
+      "supportFieldsExposed": [
+        "supported",
+        "supportContext"
+      ],
+      "evidenceMetadataExposed": [
+        "evidence.headOutputDigests",
+        "outputDigest"
+      ],
+      "correctnessDefinition": "semanticOutput equals the corpus case's declared expected label drawn from ENOUGH_EVIDENCE|INSUFFICIENT_EVIDENCE",
+      "arbiterPath": "NOT_WIRED_ARBITER_REJECTS_WITH_ORACLE_SIGNAL_HEAD_UNKNOWN",
+      "consumedByArbiter": false,
+      "emitsAction": false,
+      "informationOracleComputes": 4,
+      "informationOracleExposes": 7,
+      "informationArbiterConsumes": 0,
+      "contractDeficiencyMeasured": false
+    }
+  ],
+  "contractDeficienciesFound": [],
+  "note": "Seven heads are computed and fully exposed with their own digests, and none is readable through the Stage 2L.10 Arbiter binding, which pins head=direction by identity. Widening that binding is an Arbiter change and is out of scope for this stage."
+}
