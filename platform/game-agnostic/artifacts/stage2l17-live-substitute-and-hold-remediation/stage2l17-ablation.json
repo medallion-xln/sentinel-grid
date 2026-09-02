@@ -1,0 +1,118 @@
+{
+  "stage": "STAGE2L17_NEXUS_LIVE_SUBSTITUTE_AND_HOLD_REMEDIATION",
+  "inheritedAccuracy": 0.790858,
+  "inheritedVariantFaithful": true,
+  "results": [
+    {
+      "variant": "INHERITED",
+      "flags": {
+        "liveSubstitute": false,
+        "holdDelta": false,
+        "holdAbstain": false
+      },
+      "accuracy": 0.790858,
+      "fixes": 0,
+      "breaks": 0,
+      "netErrorsEliminated": 0,
+      "abstentions": 348,
+      "abstentionRate": 0.022002,
+      "reproducesInheritedRate": 1
+    },
+    {
+      "variant": "LIVE_SUBSTITUTE_ONLY",
+      "flags": {
+        "liveSubstitute": true,
+        "holdDelta": false,
+        "holdAbstain": false
+      },
+      "accuracy": 0.809825,
+      "fixes": 300,
+      "breaks": 0,
+      "netErrorsEliminated": 300,
+      "abstentions": 390,
+      "abstentionRate": 0.024657,
+      "reproducesInheritedRate": 0.974837
+    },
+    {
+      "variant": "HOLD_DELTA_ONLY",
+      "flags": {
+        "liveSubstitute": false,
+        "holdDelta": true,
+        "holdAbstain": false
+      },
+      "accuracy": 0.822533,
+      "fixes": 553,
+      "breaks": 52,
+      "netErrorsEliminated": 501,
+      "abstentions": 453,
+      "abstentionRate": 0.02864,
+      "reproducesInheritedRate": 0.951381
+    },
+    {
+      "variant": "HOLD_ABSTAIN_ONLY",
+      "flags": {
+        "liveSubstitute": false,
+        "holdDelta": false,
+        "holdAbstain": true
+      },
+      "accuracy": 0.731808,
+      "fixes": 0,
+      "breaks": 934,
+      "netErrorsEliminated": -934,
+      "abstentions": 1503,
+      "abstentionRate": 0.095024,
+      "reproducesInheritedRate": 0.926977
+    },
+    {
+      "variant": "HOLD_ONLY",
+      "flags": {
+        "liveSubstitute": false,
+        "holdDelta": true,
+        "holdAbstain": true
+      },
+      "accuracy": 0.757982,
+      "fixes": 455,
+      "breaks": 975,
+      "netErrorsEliminated": -520,
+      "abstentions": 1508,
+      "abstentionRate": 0.09534,
+      "reproducesInheritedRate": 0.891067
+    },
+    {
+      "variant": "LIVE_SUBSTITUTE_AND_HOLD_DELTA",
+      "flags": {
+        "liveSubstitute": true,
+        "holdDelta": true,
+        "holdAbstain": false
+      },
+      "accuracy": 0.829108,
+      "fixes": 657,
+      "breaks": 52,
+      "netErrorsEliminated": 605,
+      "abstentions": 466,
+      "abstentionRate": 0.029462,
+      "reproducesInheritedRate": 0.941835
+    },
+    {
+      "variant": "BOTH",
+      "flags": {
+        "liveSubstitute": true,
+        "holdDelta": true,
+        "holdAbstain": true
+      },
+      "accuracy": 0.764557,
+      "fixes": 559,
+      "breaks": 975,
+      "netErrorsEliminated": -416,
+      "abstentions": 1521,
+      "abstentionRate": 0.096162,
+      "reproducesInheritedRate": 0.88152
+    }
+  ],
+  "bestByNet": "LIVE_SUBSTITUTE_AND_HOLD_DELTA",
+  "selectedVariant": "LIVE_SUBSTITUTE_AND_HOLD_DELTA",
+  "selectionMatchesEvidence": true,
+  "combiningEverythingIsBest": false,
+  "holdIsNeverOptimal": true,
+  "note": "Abstention is scored as recommending HOLD. Because the corpus is decidability-filtered, HOLD is never optimal, so an abstention mechanism can only lose accuracy here — a limit of what this corpus can measure, not a refutation of the mechanism."
+}

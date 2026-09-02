@@ -1,0 +1,95 @@
+{
+  "stage": "STAGE2L17_NEXUS_LIVE_SUBSTITUTE_AND_HOLD_REMEDIATION",
+  "classifier": "STAGE2L16_UNCHANGED",
+  "totalErrorsBefore": 3308,
+  "totalErrorsAfter": 2703,
+  "errorsEliminated": 657,
+  "newErrorsIntroduced": 52,
+  "netErrorsEliminated": 605,
+  "movement": [
+    {
+      "errorClass": "SUBSTITUTE_MISVALUATION",
+      "before": 1385,
+      "after": 517,
+      "delta": -868
+    },
+    {
+      "errorClass": "SINGLE_PASS_APPROXIMATION",
+      "before": 1318,
+      "after": 1356,
+      "delta": 38
+    },
+    {
+      "errorClass": "RISK_UNDERESTIMATION",
+      "before": 432,
+      "after": 555,
+      "delta": 123
+    },
+    {
+      "errorClass": "MULTIHOP_DEPENDENCY",
+      "before": 43,
+      "after": 65,
+      "delta": 22
+    },
+    {
+      "errorClass": "COST_VALUE_TRADEOFF",
+      "before": 42,
+      "after": 46,
+      "delta": 4
+    },
+    {
+      "errorClass": "THRESHOLD_BOUNDARY",
+      "before": 40,
+      "after": 48,
+      "delta": 8
+    },
+    {
+      "errorClass": "VALUE_DIFFUSION",
+      "before": 21,
+      "after": 88,
+      "delta": 67
+    },
+    {
+      "errorClass": "CYCLE_PROPAGATION",
+      "before": 18,
+      "after": 19,
+      "delta": 1
+    },
+    {
+      "errorClass": "REDUNDANCY_MISVALUATION",
+      "before": 9,
+      "after": 9,
+      "delta": 0
+    }
+  ],
+  "dominantErrorClassBefore": "SUBSTITUTE_MISVALUATION",
+  "dominantErrorClassAfter": "SINGLE_PASS_APPROXIMATION",
+  "dominantClassChanged": true,
+  "dominantAfterWasAlreadyProminent": true,
+  "dominantAfterGrewMaterially": false,
+  "newlyExposedDominantClass": false,
+  "dominantAfterBeforeCount": 1318,
+  "dominantAfterAfterCount": 1356,
+  "classesThatGrew": [
+    "SINGLE_PASS_APPROXIMATION",
+    "RISK_UNDERESTIMATION",
+    "MULTIHOP_DEPENDENCY",
+    "COST_VALUE_TRADEOFF",
+    "THRESHOLD_BOUNDARY",
+    "VALUE_DIFFUSION",
+    "CYCLE_PROPAGATION"
+  ],
+  "growthInOtherClasses": 263,
+  "relabellingOnly": false,
+  "fixedPoint": {
+    "inheritedNet": 13,
+    "remediatedNet": -93,
+    "remediatedFixes": 166,
+    "remediatedBreaks": 259,
+    "netShareOfRemainingErrors": -0.034406,
+    "materialityThreshold": 0.05,
+    "fixedPointImportanceChanged": false,
+    "implementedInExpert": false,
+    "note": "Diagnostic only. Stage 2L.17 adds no iterative or fixed-point reasoning to the production expert, per its brief."
+  }
+}

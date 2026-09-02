@@ -1,0 +1,86 @@
+{
+  "stage": "STAGE2L17_NEXUS_LIVE_SUBSTITUTE_AND_HOLD_REMEDIATION",
+  "holdCases": {
+    "NOTHING_BROKEN_ALL_INTERVENTIONS_WASTE": {
+      "optimalActionId": "a-hold",
+      "inheritedPick": "a-bypass-t",
+      "inheritedCorrect": false,
+      "inheritedBypassCredit": 1000000,
+      "remediatedPick": "a-hold",
+      "remediatedCorrect": true,
+      "remediatedBypassCredit": 0,
+      "substitutes": {
+        "substituteCount": 1,
+        "liveSubstituteCount": 1,
+        "substituteCoverage": 1000000,
+        "bypassSupportValid": true,
+        "bypassReason": "LIVE_SUBSTITUTE_AVAILABLE"
+      },
+      "holdBaseline": {
+        "holdBaselineSchema": "NEXUS_HOLD_BASELINE_V1",
+        "estimatedDeliveredValue": 1000000,
+        "deliveringBearerCount": 1,
+        "estimatedRecoverableValue": 0,
+        "blockedBearerCount": 0,
+        "holdUtilityEstimate": 0,
+        "nothingToRecover": true
+      },
+      "bypassTrueUtility": -5000
+    },
+    "INTERVENTION_CLEARLY_BETTER_THAN_INACTION": {
+      "optimalActionId": "a-bypass-t",
+      "inheritedPick": "a-bypass-t",
+      "inheritedCorrect": true,
+      "inheritedBypassCredit": 1000000,
+      "remediatedPick": "a-bypass-t",
+      "remediatedCorrect": true,
+      "remediatedBypassCredit": 1000000,
+      "substitutes": {
+        "substituteCount": 1,
+        "liveSubstituteCount": 1,
+        "substituteCoverage": 1000000,
+        "bypassSupportValid": true,
+        "bypassReason": "LIVE_SUBSTITUTE_AVAILABLE"
+      },
+      "holdBaseline": {
+        "holdBaselineSchema": "NEXUS_HOLD_BASELINE_V1",
+        "estimatedDeliveredValue": 0,
+        "deliveringBearerCount": 0,
+        "estimatedRecoverableValue": 1000000,
+        "blockedBearerCount": 1,
+        "holdUtilityEstimate": 0,
+        "nothingToRecover": false
+      },
+      "bypassTrueUtility": 995000
+    },
+    "INTERVENTION_TOO_EXPENSIVE_TO_BE_WORTH_IT": {
+      "optimalActionId": "a-hold",
+      "inheritedPick": "a-hold",
+      "inheritedCorrect": true,
+      "inheritedBypassCredit": 1000000,
+      "remediatedPick": "a-hold",
+      "remediatedCorrect": true,
+      "remediatedBypassCredit": 1000000,
+      "substitutes": {
+        "substituteCount": 1,
+        "liveSubstituteCount": 1,
+        "substituteCoverage": 1000000,
+        "bypassSupportValid": true,
+        "bypassReason": "LIVE_SUBSTITUTE_AVAILABLE"
+      },
+      "holdBaseline": {
+        "holdBaselineSchema": "NEXUS_HOLD_BASELINE_V1",
+        "estimatedDeliveredValue": 0,
+        "deliveringBearerCount": 0,
+        "estimatedRecoverableValue": 1000000,
+        "blockedBearerCount": 1,
+        "holdUtilityEstimate": 0,
+        "nothingToRecover": false
+      },
+      "bypassTrueUtility": -1000000
+    }
+  },
+  "holdBaselineDefectReproduced": true,
+  "holdBaselineDefectRepairedInSelectedVariant": true,
+  "holdIsNeverOptimalInCorpus": true
+}
