@@ -91,7 +91,8 @@ Documentation reconciliation only — no historical evidence is rewritten here.
 | Stage 2L.14 | **FAIL** — Nexus confidence calibration and safe selective delegation. A calibration stage that failed honestly: it asked whether a genuinely high-confidence Nexus region exists, and the answer measured out as no. Three disjoint splits carved from the frozen Stage 2L.12 corpus — `DEVELOPMENT` 5,261, `CALIBRATION` 5,232, `FINAL_HOLDOUT` 5,324 decidable cases — with only `CALIBRATION` permitted to select and `FINAL_HOLDOUT` scored once, after freezing. Nexus confidence is real and strongly ordered (`OBSTRUCTED` 0.7135 → best region 0.9832), but **no supported region on the 25-cell predeclared risk/margin grid reached the inherited 0.99 floor**. Cells that cleared it on `DEVELOPMENT` (0.9917 at n=121, 1.0000 at n=48) fell to 0.9691 and 0.9444 on a fresh calibration draw — the overfitting a two-way split would have shipped, since those same cells score 0.9926 and 0.9844 on the final holdout. `SELECTED = null`; the frozen parameters fall back to the most restrictive rung, not the best-measured one. **0 delegations, 0 harmful changes, 0 correct-Prime breaks, 172/172 harmful opportunities rejected**, and 2,332 beneficial opportunities deliberately forgone. Outcome `D_CONFIDENCE_DOES_NOT_GENERALIZE`, `FAILURE_MODE = FAILED_GENERALIZATION`. The 0.99 floor was **not** lowered — the certify script exits `2` on any attempt to weaken it. |
 | Stage 2L.15 | **FAIL** — Nexus decision stability, counterfactual consistency and confidence-ceiling evaluation. Tested whether surviving legitimate perturbation identifies a smaller region at >=0.99. Eight heterogeneous perturbation families, 15 probes per case, seeded from a digest of world CONTENT only; validated before use — the benchmark's own optimum survives **99.30%** of perturbations, and objective identity and graph shape survive 100%. Stability **is** a real signal: out-of-sample discrimination rises from **0.6245 to 0.6744** (+0.0499), so `STABILITY_ADDS_INFORMATION=true`. One rule of 406 cleared the floor on CALIBRATION (`risk>=400k & margin>=100k & marginVariance<=20k`, 0.9910 at n=111) and was frozen and carried to the final holdout, where it delegated **94 times at 0.9894** — one harmful change, and **below the inherited 0.99 floor**. Every other gate passed; the stage fails on 0.0006 of precision. Outcome `B_STABILITY_IMPROVES_CONFIDENCE_BUT_BELOW_FLOOR`. Estimated ceiling **0.9606** (conservative bound), limitation class `RESIDUAL_EXPERT_ERROR`: inside the high-confidence region the four errors are *more* stable than the successes (margin variance 30074 vs 31140), so no rule built from these signals can exclude them. The floor was not lowered and the statistical method was not changed. |
 | Stage 2L.16 | **PASS** — Nexus residual error decomposition and risk-aware reasoning diagnosis. A diagnostic stage: it passes because it explained the residual errors reproducibly and changed nothing, not because Nexus improved. 3,308 residual errors over 15,817 decidable cases. **The mechanism Stage 2L.15 nominated is not the defect**: Nexus is 17 points *better* in risk-dominated worlds (0.9022) than outside them (0.7353), and pricing risk conditionally measures **net −309**, so `NONLINEAR_RISK_DEFECT_DETECTED=false`. The dominant defect is `SUBSTITUTE_MISVALUATION` (41.9%): Nexus credits a BYPASS whenever a substitute *exists*, without checking it is itself delivering. A bounded probe correcting only that lifts accuracy **0.7909 → 0.8130** (+351 net, 27.3% of errors); threshold alignment adds +213. Second class `SINGLE_PASS_APPROXIMATION` (39.8% dominant, 66.1% any-label) is prevalent but only marginally productive (+13 net, flagged marginal). Explained share 0.8948. **73.5% of errors choose an action worse than doing nothing** and 80.6% are fundamental misorders, because Nexus never ranks HOLD — its "should I act" test is a threshold on its own private scale. Only 11 errors are high-confidence, and their dominant class differs from the overall one (n too small for rates). Outcome `B_MULTIPLE_BOUNDED_REMEDIABLE_DEFECTS`, `NEXUS_099_FEASIBILITY=PLAUSIBLE_WITH_BOUNDED_REMEDIATION`. No remediation implemented. |
-| Stage 2L.17 | **PASS** (expert remediation) — **current**. Nexus live-substitute validation and do-nothing baseline. A bounded expert remediation acting on exactly the Stage 2L.16 diagnosis; the Stage 2L.13 expert is imported frozen and was not edited. Two corrections: a BYPASS is credited only when at least one substitute could actually carry the dependency once its availability is restored, and benefit counts only value **not already delivering**. Measured on the frozen 15,817-case corpus: **Nexus 0.790858 -> 0.829108 (+3.83 pp)**, 657 errors fixed against 52 broken, **605 net eliminated**. Dead-substitute region **0.8046 -> 0.9193**; BYPASS->RESTORE errors 925 -> 417; worse-than-HOLD error rate 0.1375 -> 0.0984. `SUBSTITUTE_MISVALUATION` falls **1,385 -> 517** on the unchanged Stage 2L.16 classifier, and the replay confirms this is not relabelling. The ablation rejected switching everything on: the abstention half of the HOLD baseline measures **net -934 with zero fixes**, because the corpus is decidability-filtered so HOLD is never optimal — a limit of the corpus, not a refutation. **Safe delegation still fails**: precision **0.989474** against the 0.99 floor, one harmful change in 95 delegations — essentially unmoved from Stage 2L.15's 0.989362 despite a far better expert. Outcome `B_EXPERT_FIXED_DELEGATION_STILL_BELOW_FLOOR`. Fixed-point importance fell from +13 to **-93** and was not implemented. |
+| Stage 2L.17 | **PASS** (expert remediation) — Nexus live-substitute validation and do-nothing baseline. A bounded expert remediation acting on exactly the Stage 2L.16 diagnosis; the Stage 2L.13 expert is imported frozen and was not edited. Two corrections: a BYPASS is credited only when at least one substitute could actually carry the dependency once its availability is restored, and benefit counts only value **not already delivering**. Measured on the frozen 15,817-case corpus: **Nexus 0.790858 -> 0.829108 (+3.83 pp)**, 657 errors fixed against 52 broken, **605 net eliminated**. Dead-substitute region **0.8046 -> 0.9193**; BYPASS->RESTORE errors 925 -> 417; worse-than-HOLD error rate 0.1375 -> 0.0984. `SUBSTITUTE_MISVALUATION` falls **1,385 -> 517** on the unchanged Stage 2L.16 classifier, and the replay confirms this is not relabelling. The ablation rejected switching everything on: the abstention half of the HOLD baseline measures **net -934 with zero fixes**, because the corpus is decidability-filtered so HOLD is never optimal — a limit of the corpus, not a refutation. **Safe delegation still fails**: precision **0.989474** against the 0.99 floor, one harmful change in 95 delegations — essentially unmoved from Stage 2L.15's 0.989362 despite a far better expert. Outcome `B_EXPERT_FIXED_DELEGATION_STILL_BELOW_FLOOR`. Fixed-point importance fell from +13 to **-93** and was not implemented. |
+| Stage 2L.18 | **PASS** (diagnostic) — **current**. Nexus high-confidence tail isolation and delegation-boundary diagnosis. Stage 2L.17 showed the delegation ceiling does not move with expert accuracy, so this stage isolated the population that actually governs it. **The entire high-confidence wrong tail is SIX cases** across all three splits (4 DEV / 1 CAL / 1 HOLDOUT) against 304 correct. A bounded search over 34 decision-time features found a rule — `nexusTopRiskAdjustment<=526975 & positiveUtilityCandidateCount<=2` — whose development lift of **0.2311 lands exactly on the permutation null's p95** (median 0.1789, p99 0.2543) and which retains only **33%/31%** of that lift on CALIBRATION and FINAL_HOLDOUT. It fails both declared criteria independently, so `SEPARABLE_SIGNAL=false`. Propagation is ruled out (the iterative probe fixes **0** and breaks 0 on this region); value diffusion has **no variance** here (every case has concentration 1.0 and one value bearer); and action type has **no contrast by construction** — the region is 310/310 PROTECT, because the rule gates on a risk adjustment the expert assigns only to PROTECT. All six errors are RISK_DOMINATED and five choose PROTECT where RESTORE was optimal; all six are fixable by a bounded single-field edit and none is a structural modelling failure. Outcome `D_REPRESENTATION_LIMIT_IDENTIFIED`, `NEXUS_099_FEASIBILITY=NOT_SEPARABLE_WITH_CURRENT_REPRESENTATION`. Nothing remediated. |
 | Stage 3+ | Not started |
 
 Authority remains **R0** at every stage above: `canDispatch=false`,
@@ -386,7 +387,7 @@ grew by 38. It was promoted because the class above it shrank, so the stage does
 NOT report a newly exposed defect; the certification requires a class to be both
 not-already-prominent and materially grown before it will.
 
-Still open after Stage 2L.17:
+Still open after Stage 2L.17, and carried into Stage 2L.18:
 
 - **Selective Nexus delegation remains unauthorised**, now for a reason that
   survived a real expert improvement. The next question is what the delegation
@@ -397,3 +398,59 @@ Still open after Stage 2L.17:
   2L.10 through 2L.17.
 - Everything else open after Stage 2L.16 remains open. Stage 2L.17 changed no
   benchmark, no arbiter, no Prime, no threshold and no statistical method.
+
+### What Stage 2L.18 established
+
+Stage 2L.17 ruled out expert accuracy as the thing governing the 0.99 ceiling.
+Stage 2L.18 asked what does, and the answer is a population too small to interrogate.
+
+**Six cases.** That is the entire high-confidence wrong tail across all three
+splits — four in DEVELOPMENT, one in CALIBRATION, one in FINAL_HOLDOUT, against
+304 correct. Every figure in the stage is reported with its sample size attached,
+and shares over six cases are labelled as counts rather than rates.
+
+**The search found a rule, and the rule is noise.** A bounded search over 34
+decision-time features produced a two-term conjunction with a development lift of
+0.2311. The permutation null — re-running the *identical* greedy conjunction
+search over shuffled labels — has median 0.1789, p95 0.2311 and p99 0.2543. The
+observed lift lands exactly on p95: the search finds a rule this good on shuffled
+labels one time in twenty. It also retains only a third of its lift out of sample
+(33.2% on CALIBRATION, 30.7% on FINAL_HOLDOUT). It fails both declared criteria
+independently.
+
+A methodological note that changed the verdict: an earlier draft compared a
+conjunction search against a single-term null. That is rigged — the observed
+search explores a strictly larger space, so its best is inflated relative to its
+threshold — and it produced a false positive. Corrected, the signal disappears.
+
+**Three candidate mechanisms were ruled out, each for a different reason.**
+
+- *Propagation* is not it: the wrong cases are LESS likely to show a propagation
+  disagreement than the correct ones (0.833 vs 0.878), and the Stage 2L.16
+  iterative probe applied to this region fixes 0 and breaks 0.
+- *Value diffusion* cannot be it: every case in the region, correct and wrong,
+  has value concentration 1.0 and exactly one value bearer. The feature has no
+  variance to separate anything with.
+- *Action type* has no contrast by construction: the region is 310/310 PROTECT,
+  because the frozen rule gates on `nexusTopRiskAdjustment` and the expert assigns
+  a non-zero risk adjustment only to PROTECT. That is arithmetic, and it is
+  recorded as such rather than reported as "PROTECT carries 100% of the errors".
+
+**The limit is information, not mechanism.** `REPRESENTATION_INSUFFICIENT`. And
+the honest statement cuts both ways: no separating property was found in the
+expert-visible state, AND at six positives a real but moderate effect could not
+have been detected if one existed. That is a characterised absence of evidence,
+not evidence of absence. `RECOMMENDED_REMEDIATION_CLASS=NONE_SUPPORTED_BY_EVIDENCE`
+— proposing a fix here would mean fitting to six cases.
+
+Still open after Stage 2L.18:
+
+- **Selective Nexus delegation remains unauthorised**, and both obvious routes are
+  now closed: it does not yield to a better expert (2L.17) and it does not yield
+  to a better confidence rule over the current representation (2L.18).
+- **The delegation region is structurally PROTECT-only.** Whether that is the
+  right region at all is a question this arc has not asked.
+- **Portability is single-platform** (`DIGEST_PRODUCED_SINGLE_PLATFORM`) for
+  2L.10 through 2L.18.
+- Everything else open after Stage 2L.17 remains open. Stage 2L.18 changed no
+  expert, no benchmark, no arbiter, no threshold and no confidence rule.

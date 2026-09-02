@@ -1,0 +1,2539 @@
+{
+  "certificationSchemaVersion": 1,
+  "stage": "STAGE2L18_NEXUS_HIGH_CONFIDENCE_TAIL_DIAGNOSIS",
+  "status": "PASS",
+  "stageKind": "HIGH_CONFIDENCE_TAIL_DIAGNOSTIC",
+  "authority": "R0",
+  "canDispatch": false,
+  "canMutateLiveWorld": false,
+  "arbiterShadowOnly": true,
+  "finalRecommendationOwner": "PRIME",
+  "freeze": {
+    "stage2l17CertificationHash": "c0bc3360712a3a51e16fe898bf8cfc2d437a131e5c8b8ae14d4cef61e00c1e2a",
+    "frozenRuleId": "risk>=400000 & margin>=100000 & marginVariance<=20000",
+    "confidenceRuleUnchanged": true,
+    "nexusExpertChanged": false,
+    "nexusBehaviourChanged": false,
+    "benchmarkUnchanged": true,
+    "arbiterChanged": false,
+    "primeChanged": false,
+    "reliabilityFloorLowered": false,
+    "newConfidenceSearchIntroduced": false
+  },
+  "population": {
+    "decidableCases": 15817,
+    "frozenRuleId": "risk>=400000 & margin>=100000 & marginVariance<=20000",
+    "frozenRuleTerms": {
+      "minRisk": 400000,
+      "minMargin": 100000,
+      "maxMarginVariance": 20000
+    },
+    "secondaryBandId": "risk>=400000 & margin>=100000",
+    "secondaryBandRationale": "The immediate superset of the frozen rule, obtained by dropping exactly one term — the marginVariance constraint, which is the newest and least supported of the three. Declared by that principle before its numbers were seen.",
+    "structurallyEligible": 7918,
+    "confidenceEligible": 310,
+    "delegationCandidates": 266,
+    "primaryTail": {
+      "total": 310,
+      "correct": 304,
+      "wrong": 6,
+      "nexusCorrectPrimeWrong": 260,
+      "nexusWrongPrimeCorrect": 3,
+      "agreementCorrect": 44,
+      "agreementWrong": 3,
+      "bySplit": {
+        "DEVELOPMENT": {
+          "n": 85,
+          "wrong": 4,
+          "precision": 0.952941
+        },
+        "CALIBRATION": {
+          "n": 116,
+          "wrong": 1,
+          "precision": 0.991379
+        },
+        "FINAL_HOLDOUT": {
+          "n": 109,
+          "wrong": 1,
+          "precision": 0.990826
+        }
+      }
+    },
+    "delegationCandidatePartition": {
+      "total": 266,
+      "correct": 260,
+      "wrong": 6,
+      "nexusCorrectPrimeWrong": 260,
+      "nexusWrongPrimeCorrect": 3,
+      "agreementCorrect": 0,
+      "agreementWrong": 3,
+      "bySplit": {
+        "DEVELOPMENT": {
+          "n": 78,
+          "wrong": 4,
+          "precision": 0.948718
+        },
+        "CALIBRATION": {
+          "n": 93,
+          "wrong": 1,
+          "precision": 0.989247
+        },
+        "FINAL_HOLDOUT": {
+          "n": 95,
+          "wrong": 1,
+          "precision": 0.989474
+        }
+      }
+    },
+    "secondaryBand": {
+      "total": 1649,
+      "correct": 1614,
+      "wrong": 35,
+      "nexusCorrectPrimeWrong": 1368,
+      "nexusWrongPrimeCorrect": 10,
+      "agreementCorrect": 246,
+      "agreementWrong": 25,
+      "bySplit": {
+        "DEVELOPMENT": {
+          "n": 495,
+          "wrong": 14,
+          "precision": 0.971717
+        },
+        "CALIBRATION": {
+          "n": 581,
+          "wrong": 14,
+          "precision": 0.975904
+        },
+        "FINAL_HOLDOUT": {
+          "n": 573,
+          "wrong": 7,
+          "precision": 0.987784
+        }
+      }
+    },
+    "highConfidenceWrongTotal": 6,
+    "highConfidenceWrongInDevelopment": 4,
+    "sampleTooSmallForRates": true
+  },
+  "corpusDigest": "386909f608a4f93c6e4221e0a67eb95b227456eec6ff50abcc357f49ca95fe7f",
+  "matchedControls": {
+    "tiers": [
+      {
+        "tier": "STRICT",
+        "dimensions": [
+          "family",
+          "chosenActionKind",
+          "riskBand",
+          "marginBand",
+          "dependencyDepth",
+          "valueConcentrationBand",
+          "aggregateRiskBand"
+        ],
+        "dropped": [],
+        "matchedWrongCases": 1,
+        "matchRate": 0.166667,
+        "pairs": [
+          {
+            "wrongVariantIndex": 1824,
+            "splitName": "DEVELOPMENT",
+            "matchKey": "PROTECTED_CRITICAL_NODE|PROTECT|4|1|4|4|3",
+            "matchedControlCount": 0,
+            "matchedControlVariantIndices": [],
+            "matched": false
+          },
+          {
+            "wrongVariantIndex": 7822,
+            "splitName": "DEVELOPMENT",
+            "matchKey": "COMPETING_CRITICAL_PATHS|PROTECT|4|1|4|4|5",
+            "matchedControlCount": 0,
+            "matchedControlVariantIndices": [],
+            "matched": false
+          },
+          {
+            "wrongVariantIndex": 7894,
+            "splitName": "DEVELOPMENT",
+            "matchKey": "MULTI_COMPONENT|PROTECT|2|2|4|4|7",
+            "matchedControlCount": 0,
+            "matchedControlVariantIndices": [],
+            "matched": false
+          },
+          {
+            "wrongVariantIndex": 10490,
+            "splitName": "DEVELOPMENT",
+            "matchKey": "DECOY_HIGH_DEGREE|PROTECT|3|0|4|4|5",
+            "matchedControlCount": 2,
+            "matchedControlVariantIndices": [
+              17787,
+              33049
+            ],
+            "matched": true
+          },
+          {
+            "wrongVariantIndex": 21915,
+            "splitName": "CALIBRATION",
+            "matchKey": "COMPETING_CRITICAL_PATHS|PROTECT|3|2|4|4|6",
+            "matchedControlCount": 0,
+            "matchedControlVariantIndices": [],
+            "matched": false
+          },
+          {
+            "wrongVariantIndex": 39126,
+            "splitName": "FINAL_HOLDOUT",
+            "matchKey": "MULTI_COMPONENT|PROTECT|3|0|3|4|4",
+            "matchedControlCount": 0,
+            "matchedControlVariantIndices": [],
+            "matched": false
+          }
+        ]
+      },
+      {
+        "tier": "NO_TOPOLOGY",
+        "dimensions": [
+          "chosenActionKind",
+          "riskBand",
+          "marginBand",
+          "dependencyDepth",
+          "valueConcentrationBand",
+          "aggregateRiskBand"
+        ],
+        "dropped": [
+          "family"
+        ],
+        "matchedWrongCases": 4,
+        "matchRate": 0.666667,
+        "pairs": [
+          {
+            "wrongVariantIndex": 1824,
+            "splitName": "DEVELOPMENT",
+            "matchKey": "PROTECT|4|1|4|4|3",
+            "matchedControlCount": 5,
+            "matchedControlVariantIndices": [
+              4003,
+              14550,
+              24129,
+              38163,
+              41259
+            ],
+            "matched": true
+          },
+          {
+            "wrongVariantIndex": 7822,
+            "splitName": "DEVELOPMENT",
+            "matchKey": "PROTECT|4|1|4|4|5",
+            "matchedControlCount": 13,
+            "matchedControlVariantIndices": [
+              7687,
+              12226,
+              19165,
+              19567,
+              21088
+            ],
+            "matched": true
+          },
+          {
+            "wrongVariantIndex": 7894,
+            "splitName": "DEVELOPMENT",
+            "matchKey": "PROTECT|2|2|4|4|7",
+            "matchedControlCount": 1,
+            "matchedControlVariantIndices": [
+              7266
+            ],
+            "matched": true
+          },
+          {
+            "wrongVariantIndex": 10490,
+            "splitName": "DEVELOPMENT",
+            "matchKey": "PROTECT|3|0|4|4|5",
+            "matchedControlCount": 13,
+            "matchedControlVariantIndices": [
+              277,
+              1966,
+              11828,
+              13188,
+              17787
+            ],
+            "matched": true
+          },
+          {
+            "wrongVariantIndex": 21915,
+            "splitName": "CALIBRATION",
+            "matchKey": "PROTECT|3|2|4|4|6",
+            "matchedControlCount": 0,
+            "matchedControlVariantIndices": [],
+            "matched": false
+          },
+          {
+            "wrongVariantIndex": 39126,
+            "splitName": "FINAL_HOLDOUT",
+            "matchKey": "PROTECT|3|0|3|4|4",
+            "matchedControlCount": 0,
+            "matchedControlVariantIndices": [],
+            "matched": false
+          }
+        ]
+      },
+      {
+        "tier": "COARSE",
+        "dimensions": [
+          "chosenActionKind",
+          "riskBand",
+          "marginBand",
+          "dependencyDepth"
+        ],
+        "dropped": [
+          "family",
+          "valueConcentrationBand",
+          "aggregateRiskBand"
+        ],
+        "matchedWrongCases": 5,
+        "matchRate": 0.833333,
+        "pairs": [
+          {
+            "wrongVariantIndex": 1824,
+            "splitName": "DEVELOPMENT",
+            "matchKey": "PROTECT|4|1|4",
+            "matchedControlCount": 47,
+            "matchedControlVariantIndices": [
+              2482,
+              2665,
+              3864,
+              4003,
+              7600
+            ],
+            "matched": true
+          },
+          {
+            "wrongVariantIndex": 7822,
+            "splitName": "DEVELOPMENT",
+            "matchKey": "PROTECT|4|1|4",
+            "matchedControlCount": 47,
+            "matchedControlVariantIndices": [
+              2482,
+              2665,
+              3864,
+              4003,
+              7600
+            ],
+            "matched": true
+          },
+          {
+            "wrongVariantIndex": 7894,
+            "splitName": "DEVELOPMENT",
+            "matchKey": "PROTECT|2|2|4",
+            "matchedControlCount": 6,
+            "matchedControlVariantIndices": [
+              7266,
+              13384,
+              22242,
+              23923,
+              25085
+            ],
+            "matched": true
+          },
+          {
+            "wrongVariantIndex": 10490,
+            "splitName": "DEVELOPMENT",
+            "matchKey": "PROTECT|3|0|4",
+            "matchedControlCount": 55,
+            "matchedControlVariantIndices": [
+              277,
+              1575,
+              1966,
+              3384,
+              5155
+            ],
+            "matched": true
+          },
+          {
+            "wrongVariantIndex": 21915,
+            "splitName": "CALIBRATION",
+            "matchKey": "PROTECT|3|2|4",
+            "matchedControlCount": 12,
+            "matchedControlVariantIndices": [
+              2166,
+              3761,
+              5510,
+              15484,
+              16175
+            ],
+            "matched": true
+          },
+          {
+            "wrongVariantIndex": 39126,
+            "splitName": "FINAL_HOLDOUT",
+            "matchKey": "PROTECT|3|0|3",
+            "matchedControlCount": 0,
+            "matchedControlVariantIndices": [],
+            "matched": false
+          }
+        ]
+      }
+    ],
+    "matchDimensions": [
+      "family",
+      "chosenActionKind",
+      "riskBand",
+      "marginBand",
+      "dependencyDepth",
+      "valueConcentrationBand",
+      "aggregateRiskBand"
+    ],
+    "wrongCases": 6,
+    "matchedWrongCases": 1,
+    "matchRate": 0.166667,
+    "pairs": [
+      {
+        "wrongVariantIndex": 1824,
+        "splitName": "DEVELOPMENT",
+        "matchKey": "PROTECTED_CRITICAL_NODE|PROTECT|4|1|4|4|3",
+        "matchedControlCount": 0,
+        "matchedControlVariantIndices": [],
+        "matched": false
+      },
+      {
+        "wrongVariantIndex": 7822,
+        "splitName": "DEVELOPMENT",
+        "matchKey": "COMPETING_CRITICAL_PATHS|PROTECT|4|1|4|4|5",
+        "matchedControlCount": 0,
+        "matchedControlVariantIndices": [],
+        "matched": false
+      },
+      {
+        "wrongVariantIndex": 7894,
+        "splitName": "DEVELOPMENT",
+        "matchKey": "MULTI_COMPONENT|PROTECT|2|2|4|4|7",
+        "matchedControlCount": 0,
+        "matchedControlVariantIndices": [],
+        "matched": false
+      },
+      {
+        "wrongVariantIndex": 10490,
+        "splitName": "DEVELOPMENT",
+        "matchKey": "DECOY_HIGH_DEGREE|PROTECT|3|0|4|4|5",
+        "matchedControlCount": 2,
+        "matchedControlVariantIndices": [
+          17787,
+          33049
+        ],
+        "matched": true
+      },
+      {
+        "wrongVariantIndex": 21915,
+        "splitName": "CALIBRATION",
+        "matchKey": "COMPETING_CRITICAL_PATHS|PROTECT|3|2|4|4|6",
+        "matchedControlCount": 0,
+        "matchedControlVariantIndices": [],
+        "matched": false
+      },
+      {
+        "wrongVariantIndex": 39126,
+        "splitName": "FINAL_HOLDOUT",
+        "matchKey": "MULTI_COMPONENT|PROTECT|3|0|3|4|4",
+        "matchedControlCount": 0,
+        "matchedControlVariantIndices": [],
+        "matched": false
+      }
+    ],
+    "poweredForInference": false
+  },
+  "featureAudit": {
+    "primaryTail": {
+      "population": "PRIMARY_TAIL",
+      "correctCases": 304,
+      "wrongCases": 6,
+      "featureCount": 33,
+      "features": [
+        {
+          "feature": "nexusTopCostPenalty",
+          "correct": {
+            "n": 304,
+            "mean": 44205,
+            "median": 44400,
+            "p10": 10802,
+            "p90": 79734,
+            "min": 5035,
+            "max": 89557
+          },
+          "wrong": {
+            "n": 6,
+            "mean": 22706,
+            "median": 20097,
+            "p10": 6349,
+            "p90": 43540,
+            "min": 6349,
+            "max": 43540
+          },
+          "effectSize": 0.870857,
+          "discrimination": 0.761513,
+          "absoluteDiscrimination": 0.761513
+        },
+        {
+          "feature": "nexusTop2Stability",
+          "correct": {
+            "n": 304,
+            "mean": 956532,
+            "median": 1000000,
+            "p10": 857143,
+            "p90": 1000000,
+            "min": 0,
+            "max": 1000000
+          },
+          "wrong": {
+            "n": 6,
+            "mean": 940476,
+            "median": 928571,
+            "p10": 857143,
+            "p90": 1000000,
+            "min": 857143,
+            "max": 1000000
+          },
+          "effectSize": 0.100879,
+          "discrimination": 0.72341,
+          "absoluteDiscrimination": 0.72341
+        },
+        {
+          "feature": "nexusCounterfactualAgreement",
+          "correct": {
+            "n": 304,
+            "mean": 974781,
+            "median": 1000000,
+            "p10": 952381,
+            "p90": 1000000,
+            "min": 0,
+            "max": 1000000
+          },
+          "wrong": {
+            "n": 6,
+            "mean": 980159,
+            "median": 976190,
+            "p10": 952381,
+            "p90": 1000000,
+            "min": 952381,
+            "max": 1000000
+          },
+          "effectSize": -0.043277,
+          "discrimination": 0.719298,
+          "absoluteDiscrimination": 0.719298
+        },
+        {
+          "feature": "propagationDisagreementCount",
+          "correct": {
+            "n": 304,
+            "mean": 3,
+            "median": 3,
+            "p10": 0,
+            "p90": 5,
+            "min": 0,
+            "max": 10
+          },
+          "wrong": {
+            "n": 6,
+            "mean": 4,
+            "median": 5,
+            "p10": 0,
+            "p90": 6,
+            "min": 0,
+            "max": 6
+          },
+          "effectSize": -0.644706,
+          "discrimination": 0.309211,
+          "absoluteDiscrimination": 0.690789
+        },
+        {
+          "feature": "nexusTopStructuralImportance",
+          "correct": {
+            "n": 304,
+            "mean": 2,
+            "median": 0,
+            "p10": 0,
+            "p90": 7,
+            "min": 0,
+            "max": 13
+          },
+          "wrong": {
+            "n": 6,
+            "mean": 5,
+            "median": 5,
+            "p10": 0,
+            "p90": 11,
+            "min": 0,
+            "max": 11
+          },
+          "effectSize": -0.861181,
+          "discrimination": 0.319901,
+          "absoluteDiscrimination": 0.680099
+        },
+        {
+          "feature": "nexusMarginVariance",
+          "correct": {
+            "n": 304,
+            "mean": 15636,
+            "median": 16547,
+            "p10": 10605,
+            "p90": 19452,
+            "min": 4094,
+            "max": 19999
+          },
+          "wrong": {
+            "n": 6,
+            "mean": 17098,
+            "median": 19250,
+            "p10": 10212,
+            "p90": 19671,
+            "min": 10212,
+            "max": 19671
+          },
+          "effectSize": -0.421026,
+          "discrimination": 0.338268,
+          "absoluteDiscrimination": 0.661732
+        },
+        {
+          "feature": "dependencyDepth",
+          "correct": {
+            "n": 304,
+            "mean": 8,
+            "median": 8,
+            "p10": 5,
+            "p90": 12,
+            "min": 2,
+            "max": 13
+          },
+          "wrong": {
+            "n": 6,
+            "mean": 7,
+            "median": 8,
+            "p10": 3,
+            "p90": 11,
+            "min": 3,
+            "max": 11
+          },
+          "effectSize": 0.523866,
+          "discrimination": 0.647204,
+          "absoluteDiscrimination": 0.647204
+        },
+        {
+          "feature": "nexusLiveSubstituteCount",
+          "correct": {
+            "n": 304,
+            "mean": 0,
+            "median": 0,
+            "p10": 0,
+            "p90": 0,
+            "min": 0,
+            "max": 1
+          },
+          "wrong": {
+            "n": 6,
+            "mean": 0,
+            "median": 0,
+            "p10": 0,
+            "p90": 1,
+            "min": 0,
+            "max": 1
+          },
+          "effectSize": -1.049458,
+          "discrimination": 0.366228,
+          "absoluteDiscrimination": 0.633772
+        },
+        {
+          "feature": "nexusSubstituteCoverage",
+          "correct": {
+            "n": 304,
+            "mean": 65789,
+            "median": 0,
+            "p10": 0,
+            "p90": 0,
+            "min": 0,
+            "max": 1000000
+          },
+          "wrong": {
+            "n": 6,
+            "mean": 333333,
+            "median": 0,
+            "p10": 0,
+            "p90": 1000000,
+            "min": 0,
+            "max": 1000000
+          },
+          "effectSize": -1.049458,
+          "discrimination": 0.366228,
+          "absoluteDiscrimination": 0.633772
+        },
+        {
+          "feature": "nexusRankingStability",
+          "correct": {
+            "n": 304,
+            "mean": 948496,
+            "median": 1000000,
+            "p10": 914286,
+            "p90": 1000000,
+            "min": 0,
+            "max": 1000000
+          },
+          "wrong": {
+            "n": 6,
+            "mean": 971429,
+            "median": 971429,
+            "p10": 914286,
+            "p90": 1000000,
+            "min": 914286,
+            "max": 1000000
+          },
+          "effectSize": -0.154184,
+          "discrimination": 0.626919,
+          "absoluteDiscrimination": 0.626919
+        },
+        {
+          "feature": "nexusSubstituteCount",
+          "correct": {
+            "n": 304,
+            "mean": 0,
+            "median": 0,
+            "p10": 0,
+            "p90": 0,
+            "min": 0,
+            "max": 1
+          },
+          "wrong": {
+            "n": 6,
+            "mean": 0,
+            "median": 0,
+            "p10": 0,
+            "p90": 1,
+            "min": 0,
+            "max": 1
+          },
+          "effectSize": -0.818476,
+          "discrimination": 0.379386,
+          "absoluteDiscrimination": 0.620614
+        },
+        {
+          "feature": "nexusTopObjectiveRelevance",
+          "correct": {
+            "n": 304,
+            "mean": 100556,
+            "median": 0,
+            "p10": 0,
+            "p90": 500577,
+            "min": 0,
+            "max": 1199313
+          },
+          "wrong": {
+            "n": 6,
+            "mean": 318070,
+            "median": 0,
+            "p10": 0,
+            "p90": 1180736,
+            "min": 0,
+            "max": 1180736
+          },
+          "effectSize": -0.79046,
+          "discrimination": 0.390351,
+          "absoluteDiscrimination": 0.609649
+        },
+        {
+          "feature": "nexusTopUtility",
+          "correct": {
+            "n": 304,
+            "mean": 674323,
+            "median": 685092,
+            "p10": 482841,
+            "p90": 860805,
+            "min": 364521,
+            "max": 953881
+          },
+          "wrong": {
+            "n": 6,
+            "mean": 726346,
+            "median": 723774,
+            "p10": 441175,
+            "p90": 956824,
+            "min": 441175,
+            "max": 956824
+          },
+          "effectSize": -0.369653,
+          "discrimination": 0.400219,
+          "absoluteDiscrimination": 0.599781
+        },
+        {
+          "feature": "nexusGainOverHold",
+          "correct": {
+            "n": 304,
+            "mean": 674323,
+            "median": 685092,
+            "p10": 482841,
+            "p90": 860805,
+            "min": 364521,
+            "max": 953881
+          },
+          "wrong": {
+            "n": 6,
+            "mean": 726346,
+            "median": 723774,
+            "p10": 441175,
+            "p90": 956824,
+            "min": 441175,
+            "max": 956824
+          },
+          "effectSize": -0.369653,
+          "discrimination": 0.400219,
+          "absoluteDiscrimination": 0.599781
+        },
+        {
+          "feature": "objectiveSupportCount",
+          "correct": {
+            "n": 304,
+            "mean": 0,
+            "median": 0,
+            "p10": 0,
+            "p90": 1,
+            "min": 0,
+            "max": 1
+          },
+          "wrong": {
+            "n": 6,
+            "mean": 0,
+            "median": 0,
+            "p10": 0,
+            "p90": 1,
+            "min": 0,
+            "max": 1
+          },
+          "effectSize": -0.574134,
+          "discrimination": 0.400768,
+          "absoluteDiscrimination": 0.599232
+        },
+        {
+          "feature": "positiveUtilityCandidateCount",
+          "correct": {
+            "n": 304,
+            "mean": 3,
+            "median": 3,
+            "p10": 2,
+            "p90": 5,
+            "min": 1,
+            "max": 5
+          },
+          "wrong": {
+            "n": 6,
+            "mean": 4,
+            "median": 4,
+            "p10": 1,
+            "p90": 4,
+            "min": 1,
+            "max": 4
+          },
+          "effectSize": -0.167616,
+          "discrimination": 0.406524,
+          "absoluteDiscrimination": 0.593476
+        },
+        {
+          "feature": "nexusUtilityVariance",
+          "correct": {
+            "n": 304,
+            "mean": 18045,
+            "median": 17099,
+            "p10": 10232,
+            "p90": 26281,
+            "min": 4166,
+            "max": 39638
+          },
+          "wrong": {
+            "n": 6,
+            "mean": 16455,
+            "median": 15325,
+            "p10": 13631,
+            "p90": 21371,
+            "min": 13631,
+            "max": 21371
+          },
+          "effectSize": 0.252015,
+          "discrimination": 0.568531,
+          "absoluteDiscrimination": 0.568531
+        },
+        {
+          "feature": "nexusEstimatedRecoverableValue",
+          "correct": {
+            "n": 304,
+            "mean": 516404,
+            "median": 541980,
+            "p10": 0,
+            "p90": 1080861,
+            "min": 0,
+            "max": 1198803
+          },
+          "wrong": {
+            "n": 6,
+            "mean": 587367,
+            "median": 807556,
+            "p10": 0,
+            "p90": 1180736,
+            "min": 0,
+            "max": 1180736
+          },
+          "effectSize": -0.168238,
+          "discrimination": 0.436404,
+          "absoluteDiscrimination": 0.563596
+        },
+        {
+          "feature": "nexusTopRiskAdjustment",
+          "correct": {
+            "n": 304,
+            "mean": 718529,
+            "median": 724852,
+            "p10": 520089,
+            "p90": 901970,
+            "min": 400284,
+            "max": 995483
+          },
+          "wrong": {
+            "n": 6,
+            "mean": 749051,
+            "median": 741102,
+            "p10": 484715,
+            "p90": 963173,
+            "min": 484715,
+            "max": 963173
+          },
+          "effectSize": -0.215506,
+          "discrimination": 0.441338,
+          "absoluteDiscrimination": 0.558662
+        },
+        {
+          "feature": "relationCount",
+          "correct": {
+            "n": 304,
+            "mean": 13,
+            "median": 12,
+            "p10": 8,
+            "p90": 17,
+            "min": 6,
+            "max": 28
+          },
+          "wrong": {
+            "n": 6,
+            "mean": 12,
+            "median": 12,
+            "p10": 8,
+            "p90": 18,
+            "min": 8,
+            "max": 18
+          },
+          "effectSize": 0.206039,
+          "discrimination": 0.558114,
+          "absoluteDiscrimination": 0.558114
+        },
+        {
+          "feature": "entityCount",
+          "correct": {
+            "n": 304,
+            "mean": 11,
+            "median": 11,
+            "p10": 7,
+            "p90": 14,
+            "min": 7,
+            "max": 15
+          },
+          "wrong": {
+            "n": 6,
+            "mean": 10,
+            "median": 11,
+            "p10": 7,
+            "p90": 13,
+            "min": 7,
+            "max": 13
+          },
+          "effectSize": 0.16579,
+          "discrimination": 0.544134,
+          "absoluteDiscrimination": 0.544134
+        },
+        {
+          "feature": "nexusUtilityMargin",
+          "correct": {
+            "n": 304,
+            "mean": 285757,
+            "median": 250286,
+            "p10": 133712,
+            "p90": 497479,
+            "min": 102313,
+            "max": 890945
+          },
+          "wrong": {
+            "n": 6,
+            "mean": 296588,
+            "median": 383494,
+            "p10": 139435,
+            "p90": 480118,
+            "min": 139435,
+            "max": 480118
+          },
+          "effectSize": -0.072415,
+          "discrimination": 0.46875,
+          "absoluteDiscrimination": 0.53125
+        },
+        {
+          "feature": "nexusEstimatedDeliveredValue",
+          "correct": {
+            "n": 304,
+            "mean": 108272,
+            "median": 0,
+            "p10": 0,
+            "p90": 530342,
+            "min": 0,
+            "max": 1199313
+          },
+          "wrong": {
+            "n": 6,
+            "mean": 186769,
+            "median": 0,
+            "p10": 0,
+            "p90": 1120611,
+            "min": 0,
+            "max": 1120611
+          },
+          "effectSize": -0.27582,
+          "discrimination": 0.478618,
+          "absoluteDiscrimination": 0.521382
+        },
+        {
+          "feature": "cycleCount",
+          "correct": {
+            "n": 304,
+            "mean": 0,
+            "median": 0,
+            "p10": 0,
+            "p90": 0,
+            "min": 0,
+            "max": 1
+          },
+          "wrong": {
+            "n": 6,
+            "mean": 0,
+            "median": 0,
+            "p10": 0,
+            "p90": 0,
+            "min": 0,
+            "max": 0
+          },
+          "effectSize": 0.185637,
+          "discrimination": 0.516447,
+          "absoluteDiscrimination": 0.516447
+        },
+        {
+          "feature": "entitiesInCycles",
+          "correct": {
+            "n": 304,
+            "mean": 0,
+            "median": 0,
+            "p10": 0,
+            "p90": 0,
+            "min": 0,
+            "max": 14
+          },
+          "wrong": {
+            "n": 6,
+            "mean": 0,
+            "median": 0,
+            "p10": 0,
+            "p90": 0,
+            "min": 0,
+            "max": 0
+          },
+          "effectSize": 0.175249,
+          "discrimination": 0.516447,
+          "absoluteDiscrimination": 0.516447
+        },
+        {
+          "feature": "valueBearers",
+          "correct": {
+            "n": 304,
+            "mean": 1,
+            "median": 1,
+            "p10": 0,
+            "p90": 1,
+            "min": 0,
+            "max": 1
+          },
+          "wrong": {
+            "n": 6,
+            "mean": 1,
+            "median": 1,
+            "p10": 0,
+            "p90": 1,
+            "min": 0,
+            "max": 1
+          },
+          "effectSize": -0.069163,
+          "discrimination": 0.486294,
+          "absoluteDiscrimination": 0.513706
+        },
+        {
+          "feature": "nexusSemanticStability",
+          "correct": {
+            "n": 304,
+            "mean": 983788,
+            "median": 1000000,
+            "p10": 1000000,
+            "p90": 1000000,
+            "min": 0,
+            "max": 1000000
+          },
+          "wrong": {
+            "n": 6,
+            "mean": 1000000,
+            "median": 1000000,
+            "p10": 1000000,
+            "p90": 1000000,
+            "min": 1000000,
+            "max": 1000000
+          },
+          "effectSize": -0.136843,
+          "discrimination": 0.488487,
+          "absoluteDiscrimination": 0.511513
+        },
+        {
+          "feature": "nexusTopActionStability",
+          "correct": {
+            "n": 304,
+            "mean": 984023,
+            "median": 1000000,
+            "p10": 1000000,
+            "p90": 1000000,
+            "min": 0,
+            "max": 1000000
+          },
+          "wrong": {
+            "n": 6,
+            "mean": 1000000,
+            "median": 1000000,
+            "p10": 1000000,
+            "p90": 1000000,
+            "min": 1000000,
+            "max": 1000000
+          },
+          "effectSize": -0.134903,
+          "discrimination": 0.490132,
+          "absoluteDiscrimination": 0.509868
+        },
+        {
+          "feature": "aggregateRisk",
+          "correct": {
+            "n": 304,
+            "mean": 5694726,
+            "median": 5498296,
+            "p10": 3852036,
+            "p90": 7864745,
+            "min": 2791838,
+            "max": 9461104
+          },
+          "wrong": {
+            "n": 6,
+            "mean": 5668795,
+            "median": 5904326,
+            "p10": 3507899,
+            "p90": 7584255,
+            "min": 3507899,
+            "max": 7584255
+          },
+          "effectSize": 0.017554,
+          "discrimination": 0.496162,
+          "absoluteDiscrimination": 0.503838
+        },
+        {
+          "feature": "nexusTopRedundancyAdjustment",
+          "correct": {
+            "n": 304,
+            "mean": 0,
+            "median": 0,
+            "p10": 0,
+            "p90": 0,
+            "min": 0,
+            "max": 0
+          },
+          "wrong": {
+            "n": 6,
+            "mean": 0,
+            "median": 0,
+            "p10": 0,
+            "p90": 0,
+            "min": 0,
+            "max": 0
+          },
+          "effectSize": 0,
+          "discrimination": 0.5,
+          "absoluteDiscrimination": 0.5
+        },
+        {
+          "feature": "candidateCount",
+          "correct": {
+            "n": 304,
+            "mean": 5,
+            "median": 5,
+            "p10": 5,
+            "p90": 5,
+            "min": 5,
+            "max": 5
+          },
+          "wrong": {
+            "n": 6,
+            "mean": 5,
+            "median": 5,
+            "p10": 5,
+            "p90": 5,
+            "min": 5,
+            "max": 5
+          },
+          "effectSize": 0,
+          "discrimination": 0.5,
+          "absoluteDiscrimination": 0.5
+        },
+        {
+          "feature": "actionCount",
+          "correct": {
+            "n": 304,
+            "mean": 6,
+            "median": 6,
+            "p10": 6,
+            "p90": 6,
+            "min": 6,
+            "max": 6
+          },
+          "wrong": {
+            "n": 6,
+            "mean": 6,
+            "median": 6,
+            "p10": 6,
+            "p90": 6,
+            "min": 6,
+            "max": 6
+          },
+          "effectSize": 0,
+          "discrimination": 0.5,
+          "absoluteDiscrimination": 0.5
+        },
+        {
+          "feature": "valueConcentration",
+          "correct": {
+            "n": 304,
+            "mean": 1000000,
+            "median": 1000000,
+            "p10": 1000000,
+            "p90": 1000000,
+            "min": 1000000,
+            "max": 1000000
+          },
+          "wrong": {
+            "n": 6,
+            "mean": 1000000,
+            "median": 1000000,
+            "p10": 1000000,
+            "p90": 1000000,
+            "min": 1000000,
+            "max": 1000000
+          },
+          "effectSize": 0,
+          "discrimination": 0.5,
+          "absoluteDiscrimination": 0.5
+        }
+      ],
+      "bestFeature": "nexusTopCostPenalty",
+      "bestDiscrimination": 0.761513,
+      "poweredForInference": false
+    },
+    "secondaryBand": {
+      "population": "SECONDARY_BAND",
+      "correctCases": 1614,
+      "wrongCases": 35,
+      "featureCount": 33,
+      "features": [
+        {
+          "feature": "positiveUtilityCandidateCount",
+          "correct": {
+            "n": 1614,
+            "mean": 3,
+            "median": 3,
+            "p10": 2,
+            "p90": 5,
+            "min": 1,
+            "max": 5
+          },
+          "wrong": {
+            "n": 35,
+            "mean": 3,
+            "median": 3,
+            "p10": 1,
+            "p90": 4,
+            "min": 1,
+            "max": 5
+          },
+          "effectSize": 0.502173,
+          "discrimination": 0.619658,
+          "absoluteDiscrimination": 0.619658
+        },
+        {
+          "feature": "propagationDisagreementCount",
+          "correct": {
+            "n": 1614,
+            "mean": 3,
+            "median": 2,
+            "p10": 0,
+            "p90": 5,
+            "min": 0,
+            "max": 10
+          },
+          "wrong": {
+            "n": 35,
+            "mean": 3,
+            "median": 3,
+            "p10": 1,
+            "p90": 6,
+            "min": 0,
+            "max": 7
+          },
+          "effectSize": -0.263914,
+          "discrimination": 0.421738,
+          "absoluteDiscrimination": 0.578262
+        },
+        {
+          "feature": "nexusTopUtility",
+          "correct": {
+            "n": 1614,
+            "mean": 661317,
+            "median": 664191,
+            "p10": 480746,
+            "p90": 842521,
+            "min": 324410,
+            "max": 966896
+          },
+          "wrong": {
+            "n": 35,
+            "mean": 623815,
+            "median": 639819,
+            "p10": 437140,
+            "p90": 811864,
+            "min": 390419,
+            "max": 956824
+          },
+          "effectSize": 0.27912,
+          "discrimination": 0.570482,
+          "absoluteDiscrimination": 0.570482
+        },
+        {
+          "feature": "nexusGainOverHold",
+          "correct": {
+            "n": 1614,
+            "mean": 661317,
+            "median": 664191,
+            "p10": 480746,
+            "p90": 842521,
+            "min": 324410,
+            "max": 966896
+          },
+          "wrong": {
+            "n": 35,
+            "mean": 623815,
+            "median": 639819,
+            "p10": 437140,
+            "p90": 811864,
+            "min": 390419,
+            "max": 956824
+          },
+          "effectSize": 0.27912,
+          "discrimination": 0.570482,
+          "absoluteDiscrimination": 0.570482
+        },
+        {
+          "feature": "nexusTopRiskAdjustment",
+          "correct": {
+            "n": 1614,
+            "mean": 704880,
+            "median": 709445,
+            "p10": 522412,
+            "p90": 883519,
+            "min": 400284,
+            "max": 995483
+          },
+          "wrong": {
+            "n": 35,
+            "mean": 666647,
+            "median": 681395,
+            "p10": 459241,
+            "p90": 870066,
+            "min": 408229,
+            "max": 963173
+          },
+          "effectSize": 0.284363,
+          "discrimination": 0.567092,
+          "absoluteDiscrimination": 0.567092
+        },
+        {
+          "feature": "nexusEstimatedRecoverableValue",
+          "correct": {
+            "n": 1614,
+            "mean": 503180,
+            "median": 553810,
+            "p10": 0,
+            "p90": 1066156,
+            "min": 0,
+            "max": 1199606
+          },
+          "wrong": {
+            "n": 35,
+            "mean": 404929,
+            "median": 466529,
+            "p10": 0,
+            "p90": 965034,
+            "min": 0,
+            "max": 1180736
+          },
+          "effectSize": 0.23289,
+          "discrimination": 0.561905,
+          "absoluteDiscrimination": 0.561905
+        },
+        {
+          "feature": "dependencyDepth",
+          "correct": {
+            "n": 1614,
+            "mean": 8,
+            "median": 8,
+            "p10": 5,
+            "p90": 12,
+            "min": 2,
+            "max": 13
+          },
+          "wrong": {
+            "n": 35,
+            "mean": 8,
+            "median": 8,
+            "p10": 4,
+            "p90": 11,
+            "min": 2,
+            "max": 13
+          },
+          "effectSize": 0.187164,
+          "discrimination": 0.550593,
+          "absoluteDiscrimination": 0.550593
+        },
+        {
+          "feature": "entityCount",
+          "correct": {
+            "n": 1614,
+            "mean": 11,
+            "median": 11,
+            "p10": 7,
+            "p90": 14,
+            "min": 7,
+            "max": 15
+          },
+          "wrong": {
+            "n": 35,
+            "mean": 10,
+            "median": 10,
+            "p10": 7,
+            "p90": 14,
+            "min": 7,
+            "max": 15
+          },
+          "effectSize": 0.181677,
+          "discrimination": 0.550469,
+          "absoluteDiscrimination": 0.550469
+        },
+        {
+          "feature": "nexusEstimatedDeliveredValue",
+          "correct": {
+            "n": 1614,
+            "mean": 129336,
+            "median": 0,
+            "p10": 0,
+            "p90": 703207,
+            "min": 0,
+            "max": 1199313
+          },
+          "wrong": {
+            "n": 35,
+            "mean": 203129,
+            "median": 0,
+            "p10": 0,
+            "p90": 997588,
+            "min": 0,
+            "max": 1120611
+          },
+          "effectSize": -0.24054,
+          "discrimination": 0.463303,
+          "absoluteDiscrimination": 0.536697
+        },
+        {
+          "feature": "nexusMarginVariance",
+          "correct": {
+            "n": 1614,
+            "mean": 31985,
+            "median": 30433,
+            "p10": 16792,
+            "p90": 49275,
+            "min": 4094,
+            "max": 185393
+          },
+          "wrong": {
+            "n": 35,
+            "mean": 41431,
+            "median": 31817,
+            "p10": 19250,
+            "p90": 72850,
+            "min": 10212,
+            "max": 245840
+          },
+          "effectSize": -0.635195,
+          "discrimination": 0.464516,
+          "absoluteDiscrimination": 0.535484
+        },
+        {
+          "feature": "valueBearers",
+          "correct": {
+            "n": 1614,
+            "mean": 1,
+            "median": 1,
+            "p10": 0,
+            "p90": 1,
+            "min": 0,
+            "max": 1
+          },
+          "wrong": {
+            "n": 35,
+            "mean": 1,
+            "median": 1,
+            "p10": 0,
+            "p90": 1,
+            "min": 0,
+            "max": 1
+          },
+          "effectSize": 0.161167,
+          "discrimination": 0.531917,
+          "absoluteDiscrimination": 0.531917
+        },
+        {
+          "feature": "nexusTop2Stability",
+          "correct": {
+            "n": 1614,
+            "mean": 928439,
+            "median": 1000000,
+            "p10": 857143,
+            "p90": 1000000,
+            "min": 0,
+            "max": 1000000
+          },
+          "wrong": {
+            "n": 35,
+            "mean": 944898,
+            "median": 1000000,
+            "p10": 857143,
+            "p90": 1000000,
+            "min": 0,
+            "max": 1000000
+          },
+          "effectSize": -0.073739,
+          "discrimination": 0.519313,
+          "absoluteDiscrimination": 0.519313
+        },
+        {
+          "feature": "nexusUtilityVariance",
+          "correct": {
+            "n": 1614,
+            "mean": 26623,
+            "median": 25533,
+            "p10": 13983,
+            "p90": 40138,
+            "min": 2693,
+            "max": 185566
+          },
+          "wrong": {
+            "n": 35,
+            "mean": 25735,
+            "median": 24301,
+            "p10": 15003,
+            "p90": 39004,
+            "min": 10347,
+            "max": 46668
+          },
+          "effectSize": 0.077118,
+          "discrimination": 0.517853,
+          "absoluteDiscrimination": 0.517853
+        },
+        {
+          "feature": "nexusCounterfactualAgreement",
+          "correct": {
+            "n": 1614,
+            "mean": 949195,
+            "median": 1000000,
+            "p10": 952381,
+            "p90": 1000000,
+            "min": 0,
+            "max": 1000000
+          },
+          "wrong": {
+            "n": 35,
+            "mean": 960544,
+            "median": 1000000,
+            "p10": 928571,
+            "p90": 1000000,
+            "min": 0,
+            "max": 1000000
+          },
+          "effectSize": -0.058464,
+          "discrimination": 0.517437,
+          "absoluteDiscrimination": 0.517437
+        },
+        {
+          "feature": "relationCount",
+          "correct": {
+            "n": 1614,
+            "mean": 13,
+            "median": 12,
+            "p10": 8,
+            "p90": 18,
+            "min": 6,
+            "max": 28
+          },
+          "wrong": {
+            "n": 35,
+            "mean": 13,
+            "median": 12,
+            "p10": 8,
+            "p90": 19,
+            "min": 7,
+            "max": 24
+          },
+          "effectSize": -0.07909,
+          "discrimination": 0.483103,
+          "absoluteDiscrimination": 0.516897
+        },
+        {
+          "feature": "objectiveSupportCount",
+          "correct": {
+            "n": 1614,
+            "mean": 0,
+            "median": 0,
+            "p10": 0,
+            "p90": 1,
+            "min": 0,
+            "max": 1
+          },
+          "wrong": {
+            "n": 35,
+            "mean": 0,
+            "median": 0,
+            "p10": 0,
+            "p90": 1,
+            "min": 0,
+            "max": 1
+          },
+          "effectSize": 0.079186,
+          "discrimination": 0.513799,
+          "absoluteDiscrimination": 0.513799
+        },
+        {
+          "feature": "nexusSemanticStability",
+          "correct": {
+            "n": 1614,
+            "mean": 959418,
+            "median": 1000000,
+            "p10": 1000000,
+            "p90": 1000000,
+            "min": 0,
+            "max": 1000000
+          },
+          "wrong": {
+            "n": 35,
+            "mean": 967347,
+            "median": 1000000,
+            "p10": 1000000,
+            "p90": 1000000,
+            "min": 0,
+            "max": 1000000
+          },
+          "effectSize": -0.041416,
+          "discrimination": 0.513153,
+          "absoluteDiscrimination": 0.513153
+        },
+        {
+          "feature": "nexusUtilityMargin",
+          "correct": {
+            "n": 1614,
+            "mean": 255018,
+            "median": 221136,
+            "p10": 120029,
+            "p90": 436777,
+            "min": 100108,
+            "max": 890945
+          },
+          "wrong": {
+            "n": 35,
+            "mean": 257071,
+            "median": 195955,
+            "p10": 116485,
+            "p90": 459478,
+            "min": 104890,
+            "max": 480118
+          },
+          "effectSize": -0.015381,
+          "discrimination": 0.5131,
+          "absoluteDiscrimination": 0.5131
+        },
+        {
+          "feature": "nexusLiveSubstituteCount",
+          "correct": {
+            "n": 1614,
+            "mean": 0,
+            "median": 0,
+            "p10": 0,
+            "p90": 0,
+            "min": 0,
+            "max": 1
+          },
+          "wrong": {
+            "n": 35,
+            "mean": 0,
+            "median": 0,
+            "p10": 0,
+            "p90": 0,
+            "min": 0,
+            "max": 1
+          },
+          "effectSize": -0.09812,
+          "discrimination": 0.488122,
+          "absoluteDiscrimination": 0.511878
+        },
+        {
+          "feature": "nexusSubstituteCoverage",
+          "correct": {
+            "n": 1614,
+            "mean": 61958,
+            "median": 0,
+            "p10": 0,
+            "p90": 0,
+            "min": 0,
+            "max": 1000000
+          },
+          "wrong": {
+            "n": 35,
+            "mean": 85714,
+            "median": 0,
+            "p10": 0,
+            "p90": 0,
+            "min": 0,
+            "max": 1000000
+          },
+          "effectSize": -0.09812,
+          "discrimination": 0.488122,
+          "absoluteDiscrimination": 0.511878
+        },
+        {
+          "feature": "nexusRankingStability",
+          "correct": {
+            "n": 1614,
+            "mean": 923624,
+            "median": 1000000,
+            "p10": 885714,
+            "p90": 1000000,
+            "min": 0,
+            "max": 1000000
+          },
+          "wrong": {
+            "n": 35,
+            "mean": 948980,
+            "median": 1000000,
+            "p10": 914286,
+            "p90": 1000000,
+            "min": 214286,
+            "max": 1000000
+          },
+          "effectSize": -0.125556,
+          "discrimination": 0.48875,
+          "absoluteDiscrimination": 0.51125
+        },
+        {
+          "feature": "nexusTopCostPenalty",
+          "correct": {
+            "n": 1614,
+            "mean": 43563,
+            "median": 42734,
+            "p10": 11070,
+            "p90": 78918,
+            "min": 5035,
+            "max": 89890
+          },
+          "wrong": {
+            "n": 35,
+            "mean": 42833,
+            "median": 42373,
+            "p10": 10256,
+            "p90": 81559,
+            "min": 6349,
+            "max": 89257
+          },
+          "effectSize": 0.030038,
+          "discrimination": 0.510506,
+          "absoluteDiscrimination": 0.510506
+        },
+        {
+          "feature": "nexusTopObjectiveRelevance",
+          "correct": {
+            "n": 1614,
+            "mean": 109884,
+            "median": 0,
+            "p10": 0,
+            "p90": 615769,
+            "min": 0,
+            "max": 1199313
+          },
+          "wrong": {
+            "n": 35,
+            "mean": 114755,
+            "median": 0,
+            "p10": 0,
+            "p90": 727683,
+            "min": 0,
+            "max": 1180736
+          },
+          "effectSize": -0.017139,
+          "discrimination": 0.509108,
+          "absoluteDiscrimination": 0.509108
+        },
+        {
+          "feature": "entitiesInCycles",
+          "correct": {
+            "n": 1614,
+            "mean": 0,
+            "median": 0,
+            "p10": 0,
+            "p90": 0,
+            "min": 0,
+            "max": 14
+          },
+          "wrong": {
+            "n": 35,
+            "mean": 1,
+            "median": 0,
+            "p10": 0,
+            "p90": 0,
+            "min": 0,
+            "max": 13
+          },
+          "effectSize": -0.096648,
+          "discrimination": 0.492246,
+          "absoluteDiscrimination": 0.507754
+        },
+        {
+          "feature": "cycleCount",
+          "correct": {
+            "n": 1614,
+            "mean": 0,
+            "median": 0,
+            "p10": 0,
+            "p90": 0,
+            "min": 0,
+            "max": 1
+          },
+          "wrong": {
+            "n": 35,
+            "mean": 0,
+            "median": 0,
+            "p10": 0,
+            "p90": 0,
+            "min": 0,
+            "max": 1
+          },
+          "effectSize": -0.074416,
+          "discrimination": 0.492494,
+          "absoluteDiscrimination": 0.507506
+        },
+        {
+          "feature": "nexusSubstituteCount",
+          "correct": {
+            "n": 1614,
+            "mean": 0,
+            "median": 0,
+            "p10": 0,
+            "p90": 0,
+            "min": 0,
+            "max": 1
+          },
+          "wrong": {
+            "n": 35,
+            "mean": 0,
+            "median": 0,
+            "p10": 0,
+            "p90": 0,
+            "min": 0,
+            "max": 1
+          },
+          "effectSize": 0.042975,
+          "discrimination": 0.506399,
+          "absoluteDiscrimination": 0.506399
+        },
+        {
+          "feature": "aggregateRisk",
+          "correct": {
+            "n": 1614,
+            "mean": 5712465,
+            "median": 5616040,
+            "p10": 3852036,
+            "p90": 7693197,
+            "min": 2716193,
+            "max": 9732996
+          },
+          "wrong": {
+            "n": 35,
+            "mean": 5626839,
+            "median": 5698286,
+            "p10": 3537792,
+            "p90": 7489070,
+            "min": 2609008,
+            "max": 7951021
+          },
+          "effectSize": 0.058968,
+          "discrimination": 0.505523,
+          "absoluteDiscrimination": 0.505523
+        },
+        {
+          "feature": "nexusTopStructuralImportance",
+          "correct": {
+            "n": 1614,
+            "mean": 2,
+            "median": 0,
+            "p10": 0,
+            "p90": 6,
+            "min": 0,
+            "max": 13
+          },
+          "wrong": {
+            "n": 35,
+            "mean": 2,
+            "median": 0,
+            "p10": 0,
+            "p90": 5,
+            "min": 0,
+            "max": 11
+          },
+          "effectSize": 0.019213,
+          "discrimination": 0.503806,
+          "absoluteDiscrimination": 0.503806
+        },
+        {
+          "feature": "nexusTopActionStability",
+          "correct": {
+            "n": 1614,
+            "mean": 959727,
+            "median": 1000000,
+            "p10": 1000000,
+            "p90": 1000000,
+            "min": 0,
+            "max": 1000000
+          },
+          "wrong": {
+            "n": 35,
+            "mean": 969388,
+            "median": 1000000,
+            "p10": 1000000,
+            "p90": 1000000,
+            "min": 0,
+            "max": 1000000
+          },
+          "effectSize": -0.05046,
+          "discrimination": 0.501292,
+          "absoluteDiscrimination": 0.501292
+        },
+        {
+          "feature": "nexusTopRedundancyAdjustment",
+          "correct": {
+            "n": 1614,
+            "mean": 0,
+            "median": 0,
+            "p10": 0,
+            "p90": 0,
+            "min": 0,
+            "max": 0
+          },
+          "wrong": {
+            "n": 35,
+            "mean": 0,
+            "median": 0,
+            "p10": 0,
+            "p90": 0,
+            "min": 0,
+            "max": 0
+          },
+          "effectSize": 0,
+          "discrimination": 0.5,
+          "absoluteDiscrimination": 0.5
+        },
+        {
+          "feature": "candidateCount",
+          "correct": {
+            "n": 1614,
+            "mean": 5,
+            "median": 5,
+            "p10": 5,
+            "p90": 5,
+            "min": 5,
+            "max": 5
+          },
+          "wrong": {
+            "n": 35,
+            "mean": 5,
+            "median": 5,
+            "p10": 5,
+            "p90": 5,
+            "min": 5,
+            "max": 5
+          },
+          "effectSize": 0,
+          "discrimination": 0.5,
+          "absoluteDiscrimination": 0.5
+        },
+        {
+          "feature": "actionCount",
+          "correct": {
+            "n": 1614,
+            "mean": 6,
+            "median": 6,
+            "p10": 6,
+            "p90": 6,
+            "min": 6,
+            "max": 6
+          },
+          "wrong": {
+            "n": 35,
+            "mean": 6,
+            "median": 6,
+            "p10": 6,
+            "p90": 6,
+            "min": 6,
+            "max": 6
+          },
+          "effectSize": 0,
+          "discrimination": 0.5,
+          "absoluteDiscrimination": 0.5
+        },
+        {
+          "feature": "valueConcentration",
+          "correct": {
+            "n": 1614,
+            "mean": 1000000,
+            "median": 1000000,
+            "p10": 1000000,
+            "p90": 1000000,
+            "min": 1000000,
+            "max": 1000000
+          },
+          "wrong": {
+            "n": 35,
+            "mean": 1000000,
+            "median": 1000000,
+            "p10": 1000000,
+            "p90": 1000000,
+            "min": 1000000,
+            "max": 1000000
+          },
+          "effectSize": 0,
+          "discrimination": 0.5,
+          "absoluteDiscrimination": 0.5
+        }
+      ],
+      "bestFeature": "positiveUtilityCandidateCount",
+      "bestDiscrimination": 0.619658,
+      "poweredForInference": true
+    }
+  },
+  "taxonomy": {
+    "classifier": "STAGE2L16_UNCHANGED",
+    "classes": [
+      "SUBSTITUTE_MISVALUATION",
+      "SINGLE_PASS_APPROXIMATION",
+      "REDUNDANCY_MISVALUATION",
+      "RISK_UNDERESTIMATION",
+      "COST_VALUE_TRADEOFF",
+      "VALUE_DIFFUSION",
+      "MULTIHOP_DEPENDENCY",
+      "CYCLE_PROPAGATION",
+      "THRESHOLD_BOUNDARY",
+      "ACTION_INTERACTION",
+      "BOTTLENECK_MISVALUATION",
+      "TIE_NEAR_TIE",
+      "OTHER"
+    ],
+    "globalWrongCases": 2703,
+    "globalByClass": [
+      {
+        "errorClass": "SINGLE_PASS_APPROXIMATION",
+        "count": 1356,
+        "share": 0.501665
+      },
+      {
+        "errorClass": "RISK_UNDERESTIMATION",
+        "count": 555,
+        "share": 0.205327
+      },
+      {
+        "errorClass": "SUBSTITUTE_MISVALUATION",
+        "count": 517,
+        "share": 0.191269
+      },
+      {
+        "errorClass": "VALUE_DIFFUSION",
+        "count": 88,
+        "share": 0.032556
+      },
+      {
+        "errorClass": "MULTIHOP_DEPENDENCY",
+        "count": 65,
+        "share": 0.024047
+      },
+      {
+        "errorClass": "THRESHOLD_BOUNDARY",
+        "count": 48,
+        "share": 0.017758
+      },
+      {
+        "errorClass": "COST_VALUE_TRADEOFF",
+        "count": 46,
+        "share": 0.017018
+      },
+      {
+        "errorClass": "CYCLE_PROPAGATION",
+        "count": 19,
+        "share": 0.007029
+      },
+      {
+        "errorClass": "REDUNDANCY_MISVALUATION",
+        "count": 9,
+        "share": 0.00333
+      }
+    ],
+    "globalDominantClass": "SINGLE_PASS_APPROXIMATION",
+    "tailWrongCases": 6,
+    "tailByClass": [
+      {
+        "errorClass": "COST_VALUE_TRADEOFF",
+        "count": 3,
+        "share": 0.5
+      },
+      {
+        "errorClass": "SINGLE_PASS_APPROXIMATION",
+        "count": 2,
+        "share": 0.333333
+      },
+      {
+        "errorClass": "THRESHOLD_BOUNDARY",
+        "count": 1,
+        "share": 0.166667
+      }
+    ],
+    "tailDominantClass": "COST_VALUE_TRADEOFF",
+    "tailDominantShare": 0.5,
+    "tailSecondClass": "SINGLE_PASS_APPROXIMATION",
+    "tailSecondShare": 0.333333,
+    "tailUnclassifiedShare": 0,
+    "tailExplainedShare": 1,
+    "tailDominantMatchesGlobal": false,
+    "secondaryBandWrongCases": 35,
+    "secondaryBandByClass": [
+      {
+        "errorClass": "SINGLE_PASS_APPROXIMATION",
+        "count": 17,
+        "share": 0.485714
+      },
+      {
+        "errorClass": "COST_VALUE_TRADEOFF",
+        "count": 16,
+        "share": 0.457143
+      },
+      {
+        "errorClass": "CYCLE_PROPAGATION",
+        "count": 1,
+        "share": 0.028571
+      },
+      {
+        "errorClass": "THRESHOLD_BOUNDARY",
+        "count": 1,
+        "share": 0.028571
+      }
+    ],
+    "secondaryBandDominantClass": "SINGLE_PASS_APPROXIMATION",
+    "tailSharesAreCountsNotRates": true
+  },
+  "propagation": {
+    "highConfWrongPropagationRate": 0.833333,
+    "highConfCorrectPropagationRate": 0.878289,
+    "highConfWrongMeanDisagreements": 3.833333,
+    "highConfCorrectMeanDisagreements": 2.654605,
+    "secondaryBandWrongPropagationRate": 0.914286,
+    "secondaryBandCorrectPropagationRate": 0.850062,
+    "iterativeDiagnosticFixesTailErrors": 0,
+    "iterativeDiagnosticBreaksTailCorrect": 0,
+    "iterativeDiagnosticNetOnTail": 0,
+    "propagationLimitDetected": false,
+    "integratedIntoExpert": false
+  },
+  "valueDiffusion": {
+    "concentrationThreshold": 250000,
+    "highConfWrongValueDiffuseRate": 0,
+    "highConfCorrectValueDiffuseRate": 0,
+    "secondaryBandWrongValueDiffuseRate": 0,
+    "secondaryBandCorrectValueDiffuseRate": 0,
+    "highConfWrongMeanValueBearers": 1,
+    "highConfCorrectMeanValueBearers": 1,
+    "highConfWrongMeanConcentration": 1000000,
+    "highConfCorrectMeanConcentration": 1000000,
+    "highConfWrongMeanRecoverableValue": 587367,
+    "highConfCorrectMeanRecoverableValue": 516404,
+    "valueModelLimitDetected": false
+  },
+  "actions": {
+    "tailByActionKind": {
+      "RESTORE": {
+        "n": 0,
+        "correct": 0,
+        "wrong": 0,
+        "precision": 0,
+        "wilsonLowerBound": 0
+      },
+      "PROTECT": {
+        "n": 310,
+        "correct": 304,
+        "wrong": 6,
+        "precision": 0.980645,
+        "wilsonLowerBound": 0.963013
+      },
+      "REINFORCE": {
+        "n": 0,
+        "correct": 0,
+        "wrong": 0,
+        "precision": 0,
+        "wilsonLowerBound": 0
+      },
+      "BYPASS": {
+        "n": 0,
+        "correct": 0,
+        "wrong": 0,
+        "precision": 0,
+        "wilsonLowerBound": 0
+      },
+      "HOLD": {
+        "n": 0,
+        "correct": 0,
+        "wrong": 0,
+        "precision": 0,
+        "wilsonLowerBound": 0
+      }
+    },
+    "secondaryBandByActionKind": {
+      "RESTORE": {
+        "n": 0,
+        "correct": 0,
+        "wrong": 0,
+        "precision": 0,
+        "wilsonLowerBound": 0
+      },
+      "PROTECT": {
+        "n": 1649,
+        "correct": 1614,
+        "wrong": 35,
+        "precision": 0.978775,
+        "wilsonLowerBound": 0.972105
+      },
+      "REINFORCE": {
+        "n": 0,
+        "correct": 0,
+        "wrong": 0,
+        "precision": 0,
+        "wilsonLowerBound": 0
+      },
+      "BYPASS": {
+        "n": 0,
+        "correct": 0,
+        "wrong": 0,
+        "precision": 0,
+        "wilsonLowerBound": 0
+      },
+      "HOLD": {
+        "n": 0,
+        "correct": 0,
+        "wrong": 0,
+        "precision": 0,
+        "wilsonLowerBound": 0
+      }
+    },
+    "dominantErrorAction": "PROTECT",
+    "dominantErrorActionShare": 1,
+    "wrongByKind": [
+      {
+        "kind": "PROTECT",
+        "wrong": 6
+      },
+      {
+        "kind": "RESTORE",
+        "wrong": 0
+      },
+      {
+        "kind": "REINFORCE",
+        "wrong": 0
+      },
+      {
+        "kind": "BYPASS",
+        "wrong": 0
+      },
+      {
+        "kind": "HOLD",
+        "wrong": 0
+      }
+    ],
+    "actionSpecificDefectDetected": false,
+    "actionSpecificDefectUnmeasurable": true,
+    "actionKindsPresentInTail": [
+      "PROTECT"
+    ],
+    "tailIsActionHomogeneous": true,
+    "homogeneityReason": "The frozen delegation rule requires nexusTopRiskAdjustment >= 400000, and the expert assigns a non-zero risk adjustment only to PROTECT actions. The region is PROTECT-only by construction."
+  },
+  "counterfactuals": {
+    "percents": [
+      5,
+      10,
+      25,
+      50
+    ],
+    "fields": [
+      "objectiveValue",
+      "restorationCost",
+      "risk",
+      "baseCapacity",
+      "availability"
+    ],
+    "cases": [
+      {
+        "variantIndex": 1824,
+        "splitName": "DEVELOPMENT",
+        "smallestFix": {
+          "percent": 25,
+          "field": "risk",
+          "entityId": "s2l12h-01824-n0",
+          "becomes": "s2l12h-01824-act-protect-n0"
+        },
+        "smallestJustification": {
+          "percent": 25,
+          "field": "risk",
+          "entityId": "s2l12h-01824-n0"
+        },
+        "classification": "RISK_MODEL_ERROR"
+      },
+      {
+        "variantIndex": 7822,
+        "splitName": "DEVELOPMENT",
+        "smallestFix": {
+          "percent": 50,
+          "field": "risk",
+          "entityId": "s2l12h-07822-n0",
+          "becomes": "s2l12h-07822-act-protect-n0"
+        },
+        "smallestJustification": {
+          "percent": 50,
+          "field": "risk",
+          "entityId": "s2l12h-07822-n0"
+        },
+        "classification": "RISK_MODEL_ERROR"
+      },
+      {
+        "variantIndex": 7894,
+        "splitName": "DEVELOPMENT",
+        "smallestFix": {
+          "percent": -25,
+          "field": "risk",
+          "entityId": "s2l12h-07894-n8",
+          "becomes": "s2l12h-07894-act-protect-n0"
+        },
+        "smallestJustification": {
+          "percent": -25,
+          "field": "risk",
+          "entityId": "s2l12h-07894-n8"
+        },
+        "classification": "RISK_MODEL_ERROR"
+      },
+      {
+        "variantIndex": 10490,
+        "splitName": "DEVELOPMENT",
+        "smallestFix": {
+          "percent": -10,
+          "field": "availability",
+          "entityId": "s2l12h-10490-n0",
+          "becomes": "s2l12h-10490-act-restore-n0"
+        },
+        "smallestJustification": {
+          "percent": 25,
+          "field": "availability",
+          "entityId": "s2l12h-10490-n0"
+        },
+        "classification": "BOUNDARY_ERROR"
+      },
+      {
+        "variantIndex": 21915,
+        "splitName": "CALIBRATION",
+        "smallestFix": {
+          "percent": 5,
+          "field": "risk",
+          "entityId": "s2l12h-21915-n0",
+          "becomes": "s2l12h-21915-act-protect-n0"
+        },
+        "smallestJustification": {
+          "percent": 5,
+          "field": "risk",
+          "entityId": "s2l12h-21915-n0"
+        },
+        "classification": "BOUNDARY_ERROR"
+      },
+      {
+        "variantIndex": 39126,
+        "splitName": "FINAL_HOLDOUT",
+        "smallestFix": {
+          "percent": 5,
+          "field": "risk",
+          "entityId": "s2l12h-39126-n2",
+          "becomes": "s2l12h-39126-act-protect-n2"
+        },
+        "smallestJustification": {
+          "percent": 5,
+          "field": "risk",
+          "entityId": "s2l12h-39126-n2"
+        },
+        "classification": "BOUNDARY_ERROR"
+      }
+    ],
+    "classificationCounts": {
+      "RISK_MODEL_ERROR": 3,
+      "BOUNDARY_ERROR": 3
+    },
+    "boundaryErrorCount": 3,
+    "structuralModelErrorCount": 0,
+    "valueModelErrorCount": 0,
+    "propagationErrorCount": 0,
+    "costModelErrorCount": 0,
+    "riskModelErrorCount": 3,
+    "everyCaseFixableByBoundedEdit": true,
+    "dominantClassification": "RISK_MODEL_ERROR"
+  },
+  "separability": {
+    "candidateTermCount": 196,
+    "maxConjunctionWidth": 3,
+    "minRuleSupport": 20,
+    "minRuleWrong": 3,
+    "developmentCases": 495,
+    "developmentWrong": 14,
+    "calibrationCases": 581,
+    "finalHoldoutCases": 573,
+    "ruleFound": true,
+    "best": {
+      "id": "nexusTopRiskAdjustment<=526975 & positiveUtilityCandidateCount<=2",
+      "development": {
+        "n": 20,
+        "wrong": 5,
+        "wrongRate": 0.25,
+        "complementWrongRate": 0.018947,
+        "lift": 0.231053,
+        "coverage": 0.357143
+      },
+      "calibration": {
+        "n": 31,
+        "wrong": 3,
+        "wrongRate": 0.096774,
+        "complementWrongRate": 0.02,
+        "lift": 0.076774,
+        "coverage": 0.214286
+      },
+      "finalHoldout": {
+        "n": 25,
+        "wrong": 2,
+        "wrongRate": 0.08,
+        "complementWrongRate": 0.009124,
+        "lift": 0.070876,
+        "coverage": 0.285714
+      }
+    },
+    "splitsDisjoint": true,
+    "developmentPoweredForSearch": false
+  },
+  "nullAnalysis": {
+    "permutations": 200,
+    "searchSpace": "IDENTICAL_TO_OBSERVED_SEARCH_GREEDY_CONJUNCTION_UP_TO_WIDTH_3",
+    "developmentCases": 495,
+    "developmentWrong": 14,
+    "candidateTermsWithSupport": 196,
+    "nullMedian": 0.178947,
+    "nullP95": 0.231053,
+    "nullP99": 0.254305,
+    "nullMax": 0.289517,
+    "observedLift": 0.231053,
+    "signalExceedsNull": true,
+    "signalExceedsNullP99": false,
+    "note": "The null re-runs the identical greedy conjunction search over shuffled labels, so the observed best is compared against the best the same search finds on no signal at all."
+  },
+  "behaviour": {
+    "compared": 400,
+    "identical": 400,
+    "behaviourUnchanged": true
+  },
+  "invariance": {
+    "orderingInvariant": true
+  },
+  "labelLeakage": {
+    "forbiddenFields": [
+      "optimalActionId",
+      "optimalKind",
+      "nexusCorrect",
+      "primeCorrect",
+      "truthByAction",
+      "holdUtility",
+      "actionUtility",
+      "groundTruth"
+    ],
+    "forbiddenInFeatures": [],
+    "labelLeakageDetected": false
+  },
+  "labelLeakageDetected": false,
+  "tailCorpusComplete": true,
+  "matchedControlAnalysisComplete": true,
+  "nullAnalysisComplete": true,
+  "delegationBoundaryCharacterized": true,
+  "nexusBehaviorChanged": false,
+  "securityRegressionPass": true,
+  "threeWaySplitsDisjoint": true,
+  "separableSignal": false,
+  "separabilityVerdict": {
+    "ruleFound": true,
+    "exceedsNullP95": true,
+    "exceedsNullP99": false,
+    "lastSplitRetentionFloor": 0.5,
+    "developmentLift": 0.231053,
+    "calibrationLift": 0.076774,
+    "finalHoldoutLift": 0.070876,
+    "calibrationRetention": 0.332279,
+    "finalHoldoutRetention": 0.306752,
+    "ruleGeneralises": false
+  },
+  "nexusTailIdentifiabilityStatus": "REPRESENTATION_INSUFFICIENT",
+  "nexus099Feasibility": "NOT_SEPARABLE_WITH_CURRENT_REPRESENTATION",
+  "stage2l18Outcome": "D_REPRESENTATION_LIMIT_IDENTIFIED",
+  "stage2l18Certified": true,
+  "interpretation": {
+    "measuredTailRootCause": "The entire high-confidence wrong tail is 6 cases across all three splits (4 in DEVELOPMENT). No bounded decision-time rule separates wrong from correct beyond what the permutation null produces by chance. The limitation is not a missing mechanism but a missing SAMPLE: at this population size no rule can be distinguished from noise, so the tail is not separable with the information currently available to the expert.",
+    "recommendedRemediationClass": "NONE_SUPPORTED_BY_EVIDENCE",
+    "nexusExpertRemediationRequired": false,
+    "nexusConfidenceRemediationRequired": false,
+    "arbiterRemediationRequired": false
+  },
+  "portabilityNote": "Stage 2L.10 through 2L.17 remain DIGEST_PRODUCED_SINGLE_PLATFORM. Stage 2L.18 does not change that.",
+  "liveActionDispatches": 0,
+  "worldMutations": 0,
+  "authorityEscalations": 0,
+  "realZeknovaDecisionDeltaMeasured": false,
+  "evidenceDigest": "bfa93936b5c955ed2fe450e2d762c950ad39c017e67f4cbd7e9cb01e582f0c08",
+  "certificationHash": "9c4c07d5fead5fe80f7895b49c204e0f42d767079f71658d52d7b35f21862ee7"
+}

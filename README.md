@@ -94,10 +94,11 @@ all fail closed. See
 `platform/game-agnostic/artifacts/stage2l10-arbiter-correctness-calibration-and-selective-delegation/stage2l10-report.md`
 for the full result including measured residual exposure.
 
-### The Nexus arc (Stages 2L.11 → 2L.17)
+### The Nexus arc (Stages 2L.11 → 2L.18)
 
-Seven stages to move one expert: three to make it accurate, three to work out why
-it still could not be trusted, and one to fix what the diagnosis found.
+Eight stages to move one expert: three to make it accurate, three to work out why
+it still could not be trusted, one to fix what the diagnosis found, and one to
+establish that the remaining gap cannot be closed with the information available.
 
 **Stage 2L.11** found the *benchmark* was broken: Nexus correctness was an
 independent seeded draw, so no expert could be shown good or bad. An analysis
@@ -236,6 +237,34 @@ shipped.
 more accurate. Still one harmful change, now out of 95 delegations. Whatever
 governs that ceiling, it is not the expert's average accuracy.
 
+**Stage 2L.18** went looking for what does. The answer is a population too small
+to interrogate: the entire high-confidence wrong tail is **six cases** across all
+three splits, against 304 correct.
+
+A bounded search over 34 decision-time features did produce a rule. It is noise:
+
+| | lift |
+|---|---|
+| observed (development) | **0.2311** |
+| permutation null p95 | **0.2311** |
+| permutation null p99 | 0.2543 |
+| retained on calibration / holdout | 33% / 31% |
+
+The observed lift lands exactly on the null's 95th percentile — the same search
+finds a rule this good on *shuffled labels* one time in twenty — and it keeps a
+third of its strength out of sample. It fails both criteria independently.
+
+Three candidate mechanisms were ruled out for three different reasons: propagation
+fixes **zero** cases here, value diffusion has **no variance** in the region, and
+action type has **no contrast** because the region is 310/310 PROTECT by
+construction (the rule gates on a risk adjustment the expert assigns only to
+PROTECT).
+
+The limit is information, not mechanism — and stated honestly it cuts both ways:
+nothing separating was found, and at six positives nothing moderate *could* have
+been found. Both routes to the 0.99 floor are now closed: a better expert does not
+reach it, and neither does a better confidence rule over the current state.
+
 ## ZekNova status
 
 ZekNova is the first production adapter. Frozen-corpus behavioural parity,
@@ -257,7 +286,7 @@ promotion is available or planned before Stage 10.
 
 ## Roadmap position
 
-Current stage: **2L.17 — PASS** (expert remediation; safe delegation still below the floor). Recent history:
+Current stage: **2L.18 — PASS** (diagnostic; the delegation tail is not separable with current information). Recent history:
 
 | Stage | Result |
 |---|---|
@@ -273,6 +302,7 @@ Current stage: **2L.17 — PASS** (expert remediation; safe delegation still bel
 | 2L.15 | FAIL — decision stability is a real signal (+0.0499 AUROC) but delegation reaches only 0.9894; ceiling 0.9606, limited by residual expert error |
 | 2L.16 | PASS — residual errors decomposed: dominant defect is crediting a BYPASS to a non-delivering substitute (41.9%); risk was ruled out |
 | 2L.17 | PASS — live-substitute and do-nothing-delta fixes: 0.7909 → 0.8291, 605 net errors gone; delegation still 0.9894 vs the 0.99 floor |
+| 2L.18 | PASS — the delegation tail is six cases; the best rule found sits exactly on the permutation null's p95 and does not generalize |
 
 Full detail in [`platform/game-agnostic/docs/TEN_STAGE_ROADMAP.md`](platform/game-agnostic/docs/TEN_STAGE_ROADMAP.md).
 
