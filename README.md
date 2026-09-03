@@ -433,6 +433,56 @@ construction and proved nothing about whether the change was safe. Sixty cases
 that genuinely require one were added; all sixty abstentions survive, no false
 `PERSISTENT` appears, and no case moves from right to wrong.
 
+### Being right without having anything to fix (Stage 2L.22)
+
+One abstention reason was left alone in 2L.21: `CONFLICTING_EVIDENCE`. Stage 2L.22
+went after it, and the answer is the same category error — the control flow proves
+it. The reason code is the *fourth* of five gates:
+
+```
+1. too short / too sparse        -> SHORT_OR_MISSING_HISTORY
+2. no determinable direction     -> INDETERMINATE_DIRECTION
+3. sustained tendency found      -> PERSISTENT
+4. consistency below 0.62        -> CONFLICTING_EVIDENCE
+5. otherwise                     -> NOT_PERSISTENT
+```
+
+Everything above it has already established that the data is sufficient, and the
+only thing below it is `NOT_PERSISTENT`. So all the gate can do is withhold an
+answer the head was about to give.
+
+**And the head was still not changed.** A sweep of 3,520 deterministic cases
+reaches that gate zero times. So does the real corpus: zero of 296. The reason is
+arithmetic — consistency is `max(up, down) / (up + down)`, which never drops below
+0.5, so the gate needs a near-balanced series; and a near-balanced series almost
+always fails the slope test one gate above, which catches it first.
+
+Being right about a defect is not the same as having something to fix. A change
+justified by two hand-built cases, altering nothing on any real corpus, is not a
+repair — and the certification refuses to record a reduction for a change that
+didn't ship.
+
+The other half of the stage found the real problem. Of the 120 cases labelled as
+sustained runs, **18 are not sustained runs** — judged from the series alone,
+without consulting Oracle:
+
+| median signal-to-noise | min | max |
+|---|---|---|
+| **0.5** | 0.08 | 2.33 |
+
+The generator sweeps slope 0.004–0.028 against jitter 0–0.024 independently, so at
+the low end the noise is six times the signal. The typical case has jitter swings
+twice its intended per-step advance.
+
+That gives two scores, and they are reported separately rather than averaged into
+one comforting number: **0.8818** against the labels, **0.9426** against what the
+series actually show. The gap is the corpus defect.
+
+The corpus is diagnosed and owned, not quietly regenerated. It is also the third
+generator defect this arc has found in its own test data — which suggests a
+missing discipline rather than bad luck: a generator needs a well-posedness proof
+at its parameter extremes, not just at its centre.
+
 ## ZekNova status
 
 ZekNova is the first production adapter. Frozen-corpus behavioural parity,
@@ -454,7 +504,7 @@ promotion is available or planned before Stage 10.
 
 ## Roadmap position
 
-Current stage: **2L.21 — PASS** (bounded head-semantics remediation; two consistent contracts had been spliced, and abstention was doing the wrong job). Recent history:
+Current stage: **2L.22 — PASS** (semantic completion and corpus diagnosis; the last abstention defect is real but unreachable, and the corpus is 15% mislabelled). Recent history:
 
 | Stage | Result |
 |---|---|
@@ -474,6 +524,7 @@ Current stage: **2L.21 — PASS** (bounded head-semantics remediation; two consi
 | 2L.19 | PASS — Oracle's eight heads characterized: `direction` revalidated safe at the 0.99 floor, seven have no action path, two cannot be scored by the current benchmark |
 | 2L.20 | PASS — contract repair: `timeToThreshold` 0.8421 → 1.0000 (the benchmark was wrong, not the head); `persistence` vocabulary fixed but accuracy unmoved, exposing a deeper abstention defect |
 | 2L.21 | PASS — abstention redefined as data sufficiency rather than direction certainty; `persistence` 0.3432 → 0.8517, with abstention preservation proven on 60 cases added for the purpose |
+| 2L.22 | PASS — the last abstention gate is the same category error but fires on 0 of 3,520 swept cases, so nothing was changed; 18 of 120 `SUSTAINED_RUN` cases are mislabelled (median SNR 0.5) |
 
 Full detail in [`platform/game-agnostic/docs/TEN_STAGE_ROADMAP.md`](platform/game-agnostic/docs/TEN_STAGE_ROADMAP.md).
 

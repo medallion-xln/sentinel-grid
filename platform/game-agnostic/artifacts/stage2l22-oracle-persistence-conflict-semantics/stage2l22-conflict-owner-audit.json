@@ -1,0 +1,79 @@
+{
+  "stage": "STAGE2L22_ORACLE_PERSISTENCE_CONFLICT_SEMANTICS",
+  "owner": {
+    "reasonCode": "CONFLICTING_EVIDENCE",
+    "introducedAt": "STAGE2I3",
+    "implementationOwner": "src/lab/stage2i3-oracle-head-remediation.js::evaluatePersistenceV2",
+    "predicate": "directionalConsistency < 0.62",
+    "predicateDefinition": "directionalConsistency = max(positiveSteps, negativeSteps) / nonzeroSteps",
+    "threshold": 0.62,
+    "gateOrdinal": 4,
+    "gatesBefore": [
+      "SHORT_OR_MISSING_HISTORY (sufficiency)",
+      "INDETERMINATE_DIRECTION",
+      "PERSISTENT branch"
+    ],
+    "gateAfter": "NOT_PERSISTENT fallthrough",
+    "presentInStage2I2": false,
+    "presentInAnyLabelSchema": false,
+    "presentInAnyBenchmarkExpectation": false,
+    "declaredInStage2L19HeadTable": false,
+    "documented": false,
+    "safetyRationaleFound": false,
+    "introducedAs": "BEHAVIOUR_CLASSIFICATION_GATE_LABELLED_AS_UNCERTAINTY",
+    "introducedAsEvidence": "It is the fourth gate. Sufficiency and indeterminacy are already excluded above it, and the only outcome below it is NOT_PERSISTENT, so the sole effect of the gate is to withhold a NOT_PERSISTENT answer that the head was otherwise about to give."
+  },
+  "probes": [
+    {
+      "id": "SHORT_WINDOW",
+      "samples": 4,
+      "historyCoverage": 1,
+      "directionalConsistency": 0.666667,
+      "semanticOutput": "INSUFFICIENT_EVIDENCE",
+      "abstentionReason": "SHORT_OR_MISSING_HISTORY"
+    },
+    {
+      "id": "SPARSE_WINDOW",
+      "samples": 13,
+      "historyCoverage": 0.65,
+      "directionalConsistency": 1,
+      "semanticOutput": "INSUFFICIENT_EVIDENCE",
+      "abstentionReason": "SHORT_OR_MISSING_HISTORY"
+    },
+    {
+      "id": "DENSE_CONFLICT",
+      "samples": 20,
+      "historyCoverage": 1,
+      "directionalConsistency": 0.526316,
+      "semanticOutput": "INSUFFICIENT_EVIDENCE",
+      "abstentionReason": "INDETERMINATE_DIRECTION"
+    },
+    {
+      "id": "DENSE_SUSTAINED",
+      "samples": 20,
+      "historyCoverage": 1,
+      "directionalConsistency": 1,
+      "semanticOutput": "PERSISTENT",
+      "abstentionReason": null
+    }
+  ],
+  "conflictingEvidenceRequiresSufficientHistory": true,
+  "conflictProbeCount": 0,
+  "gateKind": "BEHAVIOR_CLASSIFICATION_GATE",
+  "gateKindEvidence": "Every path reaching it has already cleared the sufficiency gate; the only alternative outcome below it is NOT_PERSISTENT.",
+  "complete": true,
+  "reachability": {
+    "sweepCases": 3520,
+    "outcomeCounts": {
+      "PERSISTENT": 2096,
+      "NON_PERSISTENT": 423,
+      "INDETERMINATE_DIRECTION": 1001
+    },
+    "conflictGateHits": 0,
+    "conflictGateHitRate": 0,
+    "shadowingExplanation": "directionalConsistency is max(dominant, other)/nonzero and so is never below 0.5. The gate needs it under 0.62, i.e. near-balanced step signs — and a near-balanced series almost always has |slope| < .003, which the INDETERMINATE_DIRECTION gate above it catches first. Gate two shadows gate four across nearly the whole input space.",
+    "reachableOnlyWhen": "Step signs are near-balanced AND the full-window slope still clears 0.003 — a few large steps in one direction against many small opposing ones.",
+    "empiricallyReachable": false
+  },
+  "corpusConflictCases": 0
+}
