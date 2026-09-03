@@ -1,0 +1,139 @@
+{
+  "stage": "STAGE2L21_ORACLE_PERSISTENCE_ABSTENTION_SEMANTICS",
+  "stages": [
+    {
+      "stage": "STAGE2I2",
+      "module": "src/lab/stage2i2-oracle-task-head-diagnostic.js",
+      "definition": "Dominant step-sign share over nonzero steps; PERSISTENT when share >= 0.75 AND the full-window slope has a nonzero sign.",
+      "minimumEvidence": "values.length >= 6",
+      "outputLabels": [
+        "PERSISTENT",
+        "NOT_PERSISTENT"
+      ],
+      "abstentionSemantics": "SHORT_HISTORY only. Data sufficiency and nothing else.",
+      "directionDependency": "A zero-signed full-window slope yields NOT_PERSISTENT, not abstention.",
+      "flatSeriesExpectationInOwnCorpus": "NOT_PERSISTENT",
+      "corpusFamilies": [
+        "CONSISTENT_TREND",
+        "INTERMITTENT_TREND",
+        "LATE_INTERRUPTION",
+        "NOISY_PERSISTENCE",
+        "STABLE"
+      ],
+      "measuredOnAlternatingSeries": "NOT_PERSISTENT",
+      "verified": true
+    },
+    {
+      "stage": "STAGE2I3",
+      "module": "src/lab/stage2i3-oracle-head-remediation.js",
+      "definition": "Bounded-interruption tolerance: PERSISTENT when support or directional consistency clears a candidate threshold and no opposing run exceeds the bound.",
+      "minimumEvidence": "values.length >= 6 AND historyCoverage >= 0.8",
+      "outputLabels": [
+        "PERSISTENT",
+        "NON_PERSISTENT",
+        "INSUFFICIENT_EVIDENCE"
+      ],
+      "abstentionSemantics": "THREE reasons: SHORT_OR_MISSING_HISTORY (sufficiency), INDETERMINATE_DIRECTION (dominantSign === 0 || |slope| < .003 || support < .28), CONFLICTING_EVIDENCE (directionalConsistency < .62).",
+      "directionDependency": "A zero dominant sign or a near-flat slope yields abstention, not an answer.",
+      "flatSeriesExpectationInOwnCorpus": "INSUFFICIENT_EVIDENCE",
+      "corpusFamilies": [
+        "STRONG_SUSTAINED_TREND",
+        "INTERRUPTED_TREND",
+        "STABLE_NO_TREND",
+        "SHORT_HISTORY",
+        "SINGLE_OUTLIER",
+        "ALTERNATING_DIRECTION"
+      ],
+      "measuredOnAlternatingSeries": "INSUFFICIENT_EVIDENCE",
+      "measuredAbstentionReason": "INDETERMINATE_DIRECTION",
+      "verified": true
+    },
+    {
+      "stage": "STAGE2I4",
+      "module": "src/lab/stage2i4-oracle-v2-assembly.js",
+      "definition": "Composes the STAGE 2I.3 head (BOUNDED_INTERRUPTION_TOLERANCE) into the assembly.",
+      "minimumEvidence": "inherited from Stage 2I.3",
+      "outputLabels": [
+        "PERSISTENT",
+        "NON_PERSISTENT",
+        "INSUFFICIENT_EVIDENCE"
+      ],
+      "abstentionSemantics": "inherited from Stage 2I.3",
+      "directionDependency": "inherited from Stage 2I.3",
+      "flatSeriesExpectationInOwnCorpus": "NOT_PERSISTENT",
+      "corpusFamilies": [
+        "SUSTAINED_UP",
+        "SUSTAINED_DOWN",
+        "ALTERNATING_INTERRUPTION"
+      ],
+      "spliceDetected": true,
+      "spliceDescription": "Wires the Stage 2I.3 head to a corpus carrying the Stage 2I.2 expectation. The head answers INSUFFICIENT_EVIDENCE where this corpus expects NOT_PERSISTENT, and neither party is internally wrong.",
+      "verified": true
+    },
+    {
+      "stage": "STAGE2L1_2L2_2L4",
+      "module": "src/lab/stage2l1-*.js, stage2l2-*.js, stage2l4-*.js",
+      "definition": "Label schemas only; no persistence implementation.",
+      "outputLabels": [
+        "PERSISTENT",
+        "NOT_PERSISTENT"
+      ],
+      "abstentionSemantics": "No abstention label declared in these schemas at all.",
+      "flatSeriesExpectationInOwnCorpus": "n/a",
+      "verified": true,
+      "note": "Three independent stages declare a two-label persistence vocabulary with no INSUFFICIENT_EVIDENCE member, which is evidence that abstention was not intended as a routine persistence answer."
+    },
+    {
+      "stage": "STAGE2L19",
+      "module": "src/lab/stage2l19-oracle-multi-head-qualification.js",
+      "definition": "Characterisation only; no implementation change.",
+      "outputLabels": [
+        "PERSISTENT",
+        "NON_PERSISTENT",
+        "INSUFFICIENT_EVIDENCE"
+      ],
+      "abstentionSemantics": "Recorded as \"Emits INSUFFICIENT_EVIDENCE on its own account.\"",
+      "flatSeriesExpectationInOwnCorpus": "NON_PERSISTENT (INTERRUPTED_RUN)",
+      "verified": true
+    },
+    {
+      "stage": "STAGE2L20",
+      "module": "src/lab/stage2l20-oracle-vocabulary-alignment.js",
+      "definition": "Vocabulary canonicalisation only; NON_PERSISTENT -> NOT_PERSISTENT.",
+      "outputLabels": [
+        "PERSISTENT",
+        "NOT_PERSISTENT",
+        "INSUFFICIENT_EVIDENCE"
+      ],
+      "abstentionSemantics": "Unchanged. Recorded ABSTENTION_SEMANTICS_DIVERGENCE as the residual defect.",
+      "flatSeriesExpectationInOwnCorpus": "NOT_PERSISTENT",
+      "verified": true
+    }
+  ],
+  "gateIntroducedAt": "STAGE2I3",
+  "gateIdentity": "dominantSign === 0 || Math.abs(slope(values)) < .003 || support < .28  ->  INSUFFICIENT_EVIDENCE / INDETERMINATE_DIRECTION",
+  "gateIntent": "TEST_DRIVEN_AND_INTERNALLY_CONSISTENT_AT_STAGE2I3",
+  "gateIntentEvidence": "Stage 2I.3 introduced STABLE_NO_TREND and ALTERNATING_DIRECTION families expecting INSUFFICIENT_EVIDENCE in the same change as the gate. The head and its benchmark agree. No safety rationale, specification comment or documentation for the gate exists in the module.",
+  "gateDocumented": false,
+  "gateSafetyRationaleFound": false,
+  "defectOrigin": "STAGE2I4_INTEGRATION_SPLICE",
+  "defectOriginEvidence": "Stage 2I.4 composes the Stage 2I.3 head with a corpus family carrying the Stage 2I.2 expectation (NOT_PERSISTENT on an alternating series). Every later stage inherited that pairing and scored the mismatch as head error.",
+  "probes": {
+    "alternating": {
+      "stage2i2": "NOT_PERSISTENT",
+      "stage2i3": "INSUFFICIENT_EVIDENCE",
+      "stage2i3Reason": "INDETERMINATE_DIRECTION"
+    },
+    "tinyAlternating": {
+      "stage2i2": "NOT_PERSISTENT",
+      "stage2i3": "INSUFFICIENT_EVIDENCE",
+      "stage2i3Reason": "INDETERMINATE_DIRECTION"
+    },
+    "shortSeries": {
+      "stage2i2": null,
+      "stage2i3": "INSUFFICIENT_EVIDENCE",
+      "stage2i3Reason": "SHORT_OR_MISSING_HISTORY"
+    }
+  },
+  "complete": true
+}

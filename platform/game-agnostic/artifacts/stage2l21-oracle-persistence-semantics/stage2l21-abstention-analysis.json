@@ -1,0 +1,40 @@
+{
+  "stage": "STAGE2L21_ORACLE_PERSISTENCE_ABSTENTION_SEMANTICS",
+  "contract": {
+    "version": "STAGE2L21_PERSISTENCE_SEMANTICS_V1",
+    "mayAbstainWhen": [
+      "SHORT_OR_MISSING_HISTORY: fewer than 6 samples, or history coverage below 0.8"
+    ],
+    "mayNotAbstainWhen": [
+      "INDETERMINATE_DIRECTION: the window is sufficient and the series simply has no dominant direction. That is NOT_PERSISTENT."
+    ],
+    "underReview": [
+      "CONFLICTING_EVIDENCE: directional consistency below 0.62 on a sufficient window. Measured and reported here, but NOT changed — the brief asks for the smallest bounded change and the evidence for narrowing this one is weaker."
+    ],
+    "principle": "Abstention represents insufficient evidence to answer the persistence question, not an inability to assign a direction."
+  },
+  "classification": "OVER_ABSTENTION",
+  "narrowedReasons": [
+    "INDETERMINATE_DIRECTION"
+  ],
+  "retainedAbstentionReasons": [
+    "SHORT_OR_MISSING_HISTORY"
+  ],
+  "leftAloneReasons": [
+    "CONFLICTING_EVIDENCE"
+  ],
+  "tradeoff": {
+    "abstentionsRemoved": 143,
+    "correctAbstentionsRemoved": 0,
+    "incorrectAbstentionsRemoved": 143,
+    "falsePersistentIntroduced": 0,
+    "falseNotPersistentIntroduced": 23,
+    "netCorrectnessChange": 120,
+    "casesExpectingAbstention": 60,
+    "abstentionsCorrectlyRetained": 60,
+    "abstentionRetentionRate": 1,
+    "correctAbstentionEvidenceAvailable": true,
+    "lowerAbstentionIsNotAutomaticallyBetter": true,
+    "note": "A removed abstention counts as a gain only where the case expected an answer and the answer is right. Correct abstentions removed and false assertions introduced are both counted against the change."
+  }
+}

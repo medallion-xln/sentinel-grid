@@ -384,6 +384,55 @@ one corpus family, so every prior certification still reproduces byte-identicall
 `direction` remains the only head with an action path, and the Arbiter schema is
 untouched.
 
+### What "insufficient evidence" means (Stage 2L.21)
+
+That left one question: `persistence` abstained on 60% of cases, and the fix for
+that was not a rename. Tracing it back turned up something more interesting than
+a bug.
+
+| stage | flat / alternating series expected | head behaviour |
+|---|---|---|
+| 2I.2 | `NOT_PERSISTENT` | answers |
+| 2I.3 | `INSUFFICIENT_EVIDENCE` | abstains |
+| 2I.4 | `NOT_PERSISTENT` | **wires the 2I.3 head** |
+
+Neither contract is broken. 2I.3 changed the head *and* its own tests together,
+and they agree with each other. 2I.4 then paired that head with the older corpus,
+and every stage since scored the mismatch as head error. Nobody had ever
+adjudicated which contract was intended.
+
+Doing so needed a rule the project had never written down. Four independent parts
+of the system — the original head, the newer head's own reason codes, the Oracle
+expert's contract, and the assembly's dedicated abstention head — all treat
+abstention as meaning *not enough data*. Three separate label schemas declare
+persistence with two labels and no abstention member at all. So:
+
+> Direction certainty and data sufficiency are different things. "No stable
+> direction" measured over an adequate window is a **finding** — `NOT_PERSISTENT` —
+> not an admission that the question could not be answered.
+
+A 28-frame alternating square wave is not short of evidence. There is plenty, and
+it says clearly that nothing is sustained.
+
+On 18 cases written from that definition before either head was run, the original
+head scores **1.0000** and the newer one **0.5000** — and the gate prevents
+**zero** false assertions. It converts correct answers into abstentions, nine
+times out of nine.
+
+Narrowing just that one reason code, leaving the sufficiency check and every
+threshold alone:
+
+| corpus | before | after | abstention |
+|---|---|---|---|
+| frozen 2L.20 corpus | 0.3432 | **0.8517** | 0.6059 → 0 |
+| inherited 2I.4 holdout | 0.6667 | **1.0000** | 0.3333 → 0 |
+
+One more thing had to be built first. The existing corpus contains **no case that
+expects an abstention**, so "correct abstentions removed: 0" was true by
+construction and proved nothing about whether the change was safe. Sixty cases
+that genuinely require one were added; all sixty abstentions survive, no false
+`PERSISTENT` appears, and no case moves from right to wrong.
+
 ## ZekNova status
 
 ZekNova is the first production adapter. Frozen-corpus behavioural parity,
@@ -405,7 +454,7 @@ promotion is available or planned before Stage 10.
 
 ## Roadmap position
 
-Current stage: **2L.20 — PASS** (bounded contract remediation; one head was never broken, the other's real defect was not its vocabulary). Recent history:
+Current stage: **2L.21 — PASS** (bounded head-semantics remediation; two consistent contracts had been spliced, and abstention was doing the wrong job). Recent history:
 
 | Stage | Result |
 |---|---|
@@ -424,6 +473,7 @@ Current stage: **2L.20 — PASS** (bounded contract remediation; one head was ne
 | 2L.18 | PASS — the delegation tail is six cases; the best rule found sits exactly on the permutation null's p95 and does not generalize |
 | 2L.19 | PASS — Oracle's eight heads characterized: `direction` revalidated safe at the 0.99 floor, seven have no action path, two cannot be scored by the current benchmark |
 | 2L.20 | PASS — contract repair: `timeToThreshold` 0.8421 → 1.0000 (the benchmark was wrong, not the head); `persistence` vocabulary fixed but accuracy unmoved, exposing a deeper abstention defect |
+| 2L.21 | PASS — abstention redefined as data sufficiency rather than direction certainty; `persistence` 0.3432 → 0.8517, with abstention preservation proven on 60 cases added for the purpose |
 
 Full detail in [`platform/game-agnostic/docs/TEN_STAGE_ROADMAP.md`](platform/game-agnostic/docs/TEN_STAGE_ROADMAP.md).
 

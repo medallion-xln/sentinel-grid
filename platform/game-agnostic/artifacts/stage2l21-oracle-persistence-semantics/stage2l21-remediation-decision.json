@@ -1,0 +1,49 @@
+{
+  "stage": "STAGE2L21_ORACLE_PERSISTENCE_ABSTENTION_SEMANTICS",
+  "options": [
+    "A_2I2_SEMANTICS_RESTORED",
+    "B_2I3_ABSTENTION_CONFIRMED",
+    "C_ABSTENTION_NARROWED",
+    "D_NEW_PERSISTENCE_RULE_REQUIRED",
+    "E_SEMANTICS_VALID_BUT_HEAD_WEAK",
+    "F_INCONCLUSIVE",
+    "G_BLOCKED"
+  ],
+  "decision": "C_ABSTENTION_NARROWED",
+  "persistenceHeadChanged": true,
+  "changeDescription": "INDETERMINATE_DIRECTION abstention is converted to NOT_PERSISTENT past the head's own sufficiency gate. SHORT_OR_MISSING_HISTORY still abstains; CONFLICTING_EVIDENCE is measured and left unchanged. No threshold, tolerance or PERSISTENT branch is touched, and the frozen module is not edited.",
+  "semanticsVersion": "STAGE2L21_PERSISTENCE_SEMANTICS_V1",
+  "semantics": {
+    "version": "STAGE2L21_PERSISTENCE_SEMANTICS_V1",
+    "concept": "Persistence measures whether a directional tendency, once present, is SUSTAINED across the observation window despite bounded interruption. It is a statement about the window that was supplied, never a prediction.",
+    "persistentDefinition": "A single dominant step direction holds across the window, interruptions are bounded (no opposing run longer than the candidate allows), and the window's net movement is consistent with that direction.",
+    "notPersistentDefinition": "The window carries enough observations to judge, and no sustained tendency is present. This INCLUDES a flat series (no tendency to sustain), an oscillating or alternating series (a tendency exists but inverts every step, so it is not sustained), a zero-mean noisy series, and a series whose established direction reverses materially before the window ends.",
+    "insufficientEvidenceDefinition": "The window does not carry enough observations to judge: fewer than the minimum sample count, or history coverage below the required density. DATA SUFFICIENCY ONLY.",
+    "directionUncertaintyImpliesNonPersistence": true,
+    "oscillationImpliesNonPersistence": true,
+    "reversalTreatment": "A material reversal inside the window is NOT_PERSISTENT, because the tendency was not sustained to the window's end.",
+    "minimumSamples": 6,
+    "minimumHistoryCoverage": 0.8,
+    "coreRule": "DIRECTION_CERTAINTY and DATA_SUFFICIENCY are different axes. \"No stable direction\" measured over an adequate window is a POSITIVE FINDING of NOT_PERSISTENT, not an admission that the question could not be answered.",
+    "derivedFrom": [
+      "STAGE2I2 head: abstains on values.length < 6 and on nothing else; a zero-signed slope answers NOT_PERSISTENT.",
+      "STAGE2I3 head: its own abstentionReason vocabulary separates SHORT_OR_MISSING_HISTORY from INDETERMINATE_DIRECTION and CONFLICTING_EVIDENCE, marking only the first as a sufficiency failure.",
+      "src/experts/oracle.js contract: \"when history is too short the expert says so through ORACLE_INSUFFICIENT_HISTORY\" — abstention is defined as a history-length concept.",
+      "STAGE2I4 assembly: carries a dedicated `abstention` head whose declared role is to be the sufficiency mechanism, which a second in-head sufficiency gate duplicates.",
+      "STAGE2L1/2L2/2L4 label schemas: declare a two-label persistence vocabulary with no INSUFFICIENT_EVIDENCE member."
+    ],
+    "notDerivedFrom": "No benchmark accuracy figure was consulted in choosing this definition. The definition was fixed before any post-repair accuracy was computed."
+  },
+  "decidedOnSemanticsNotAccuracy": true,
+  "residual": {
+    "remainingErrors": 35,
+    "byShape": {
+      "SUSTAINED_RUN|expected=PERSISTENT|got=NOT_PERSISTENT|wasAbstaining=false": 12,
+      "SUSTAINED_RUN|expected=PERSISTENT|got=NOT_PERSISTENT|wasAbstaining=true": 23
+    },
+    "errorsIntroducedByNarrowing": 0,
+    "dominantShape": "SUSTAINED_RUN|expected=PERSISTENT|got=NOT_PERSISTENT|wasAbstaining=true",
+    "cause": "The Stage 2L.19 SUSTAINED_RUN family applies jitter on top of a slope as small as 0.004, so on some variants the step signs balance even though the generator intended a sustained ramp. Whether those cases are truly PERSISTENT is a corpus well-posedness question, not a head defect, and this stage does not relabel them: relabelling a case because the head disagrees is exactly the tuning the brief forbids.",
+    "remediatedInThisStage": false
+  }
+}
