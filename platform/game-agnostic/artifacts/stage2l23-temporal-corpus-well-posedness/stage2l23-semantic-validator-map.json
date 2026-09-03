@@ -1,0 +1,169 @@
+{
+  "stage": "STAGE2L23_TEMPORAL_CORPUS_WELL_POSEDNESS",
+  "semanticsReused": [
+    "STAGE2L21_PERSISTENCE_SEMANTICS_V1"
+  ],
+  "validators": [
+    {
+      "familyId": "direction/RAMP_UP",
+      "intendedLabel": "UP",
+      "validator": "STAGE2L23_VALIDATOR/direction/RAMP_UP",
+      "callsHeadUnderTest": false,
+      "derivedFrom": "STAGE2L19_STAGE2L20_CONTRACT_AUDIT"
+    },
+    {
+      "familyId": "direction/RAMP_DOWN",
+      "intendedLabel": "DOWN",
+      "validator": "STAGE2L23_VALIDATOR/direction/RAMP_DOWN",
+      "callsHeadUnderTest": false,
+      "derivedFrom": "STAGE2L19_STAGE2L20_CONTRACT_AUDIT"
+    },
+    {
+      "familyId": "direction/FLAT",
+      "intendedLabel": "STABLE",
+      "validator": "STAGE2L23_VALIDATOR/direction/FLAT",
+      "callsHeadUnderTest": false,
+      "derivedFrom": "STAGE2L19_STAGE2L20_CONTRACT_AUDIT"
+    },
+    {
+      "familyId": "volatility/ALTERNATING_HIGH",
+      "intendedLabel": "HIGH_VOLATILITY",
+      "validator": "STAGE2L23_VALIDATOR/volatility/ALTERNATING_HIGH",
+      "callsHeadUnderTest": false,
+      "derivedFrom": "STAGE2L19_STAGE2L20_CONTRACT_AUDIT"
+    },
+    {
+      "familyId": "volatility/ALTERNATING_LOW",
+      "intendedLabel": "LOW_VOLATILITY",
+      "validator": "STAGE2L23_VALIDATOR/volatility/ALTERNATING_LOW",
+      "callsHeadUnderTest": false,
+      "derivedFrom": "STAGE2L19_STAGE2L20_CONTRACT_AUDIT"
+    },
+    {
+      "familyId": "cycle/PERIODIC",
+      "intendedLabel": "CYCLICAL",
+      "validator": "STAGE2L23_VALIDATOR/cycle/PERIODIC",
+      "callsHeadUnderTest": false,
+      "derivedFrom": "STAGE2L19_STAGE2L20_CONTRACT_AUDIT"
+    },
+    {
+      "familyId": "cycle/MONOTONE",
+      "intendedLabel": "NOT_CYCLICAL",
+      "validator": "STAGE2L23_VALIDATOR/cycle/MONOTONE",
+      "callsHeadUnderTest": false,
+      "derivedFrom": "STAGE2L19_STAGE2L20_CONTRACT_AUDIT"
+    },
+    {
+      "familyId": "reversal/LATE_REVERSAL",
+      "intendedLabel": "REVERSAL",
+      "validator": "STAGE2L23_VALIDATOR/reversal/LATE_REVERSAL",
+      "callsHeadUnderTest": false,
+      "derivedFrom": "STAGE2L19_STAGE2L20_CONTRACT_AUDIT"
+    },
+    {
+      "familyId": "reversal/CONTINUING",
+      "intendedLabel": "NO_REVERSAL",
+      "validator": "STAGE2L23_VALIDATOR/reversal/CONTINUING",
+      "callsHeadUnderTest": false,
+      "derivedFrom": "STAGE2L19_STAGE2L20_CONTRACT_AUDIT"
+    },
+    {
+      "familyId": "regimeChange/LEVEL_SHIFT",
+      "intendedLabel": "LEVEL_CHANGE",
+      "validator": "STAGE2L23_VALIDATOR/regimeChange/LEVEL_SHIFT",
+      "callsHeadUnderTest": false,
+      "derivedFrom": "STAGE2L19_STAGE2L20_CONTRACT_AUDIT"
+    },
+    {
+      "familyId": "regimeChange/STEADY",
+      "intendedLabel": "NO_CHANGE",
+      "validator": "STAGE2L23_VALIDATOR/regimeChange/STEADY",
+      "callsHeadUnderTest": false,
+      "derivedFrom": "STAGE2L19_STAGE2L20_CONTRACT_AUDIT"
+    },
+    {
+      "familyId": "persistence/SUSTAINED_RUN",
+      "intendedLabel": "PERSISTENT",
+      "validator": "STAGE2L23_VALIDATOR/persistence/SUSTAINED_RUN",
+      "callsHeadUnderTest": false,
+      "derivedFrom": "STAGE2L21_PERSISTENCE_SEMANTICS_V1"
+    },
+    {
+      "familyId": "persistence/INTERRUPTED_RUN",
+      "intendedLabel": "NOT_PERSISTENT",
+      "validator": "STAGE2L23_VALIDATOR/persistence/INTERRUPTED_RUN",
+      "callsHeadUnderTest": false,
+      "derivedFrom": "STAGE2L21_PERSISTENCE_SEMANTICS_V1"
+    },
+    {
+      "familyId": "persistence/SHORT_HISTORY",
+      "intendedLabel": "INSUFFICIENT_EVIDENCE",
+      "validator": "STAGE2L23_VALIDATOR/persistence/SHORT_HISTORY",
+      "callsHeadUnderTest": false,
+      "derivedFrom": "STAGE2L21_PERSISTENCE_SEMANTICS_V1"
+    },
+    {
+      "familyId": "timeToThreshold/APPROACHING",
+      "intendedLabel": "CROSSING_1_TO_3",
+      "validator": "STAGE2L23_VALIDATOR/timeToThreshold/APPROACHING",
+      "callsHeadUnderTest": false,
+      "derivedFrom": "STAGE2L19_STAGE2L20_CONTRACT_AUDIT"
+    },
+    {
+      "familyId": "timeToThreshold/APPROACHING_4_TO_8",
+      "intendedLabel": "CROSSING_4_TO_8",
+      "validator": "STAGE2L23_VALIDATOR/timeToThreshold/APPROACHING_4_TO_8",
+      "callsHeadUnderTest": false,
+      "derivedFrom": "STAGE2L19_STAGE2L20_CONTRACT_AUDIT"
+    },
+    {
+      "familyId": "timeToThreshold/ALREADY_OVER",
+      "intendedLabel": "ALREADY_CROSSED",
+      "validator": "STAGE2L23_VALIDATOR/timeToThreshold/ALREADY_OVER",
+      "callsHeadUnderTest": false,
+      "derivedFrom": "STAGE2L19_STAGE2L20_CONTRACT_AUDIT"
+    },
+    {
+      "familyId": "timeToThreshold/STAYING_BELOW",
+      "intendedLabel": "NOT_CROSSING",
+      "validator": "STAGE2L23_VALIDATOR/timeToThreshold/STAYING_BELOW",
+      "callsHeadUnderTest": false,
+      "derivedFrom": "STAGE2L19_STAGE2L20_CONTRACT_AUDIT"
+    },
+    {
+      "familyId": "timeToThreshold/MISSING_THRESHOLD_SEMANTICS",
+      "intendedLabel": "INSUFFICIENT_EVIDENCE",
+      "validator": "STAGE2L23_VALIDATOR/timeToThreshold/MISSING_THRESHOLD_SEMANTICS",
+      "callsHeadUnderTest": false,
+      "derivedFrom": "STAGE2L19_STAGE2L20_CONTRACT_AUDIT"
+    },
+    {
+      "familyId": "abstention/SHORT_HISTORY",
+      "intendedLabel": "INSUFFICIENT_EVIDENCE",
+      "validator": "STAGE2L23_VALIDATOR/abstention/SHORT_HISTORY",
+      "callsHeadUnderTest": false,
+      "derivedFrom": "STAGE2L19_STAGE2L20_CONTRACT_AUDIT"
+    },
+    {
+      "familyId": "abstention/SUFFICIENT_HISTORY",
+      "intendedLabel": "ENOUGH_EVIDENCE",
+      "validator": "STAGE2L23_VALIDATOR/abstention/SUFFICIENT_HISTORY",
+      "callsHeadUnderTest": false,
+      "derivedFrom": "STAGE2L19_STAGE2L20_CONTRACT_AUDIT"
+    }
+  ],
+  "universalDisqualifier": "SERIES_TOUCHES_RANGE_BOUND (saturation)",
+  "thresholds": {
+    "directionEpsilon": 0.0025,
+    "flatCeiling": 0.0008,
+    "volatilityHighFloor": 0.12,
+    "volatilityLowCeiling": 0.05,
+    "levelShiftFloor": 0.1,
+    "reversalSegmentFloor": 0.004,
+    "persistenceConsistency": 0.72,
+    "persistenceMaxOpposingRun": 2,
+    "thresholdValue": 0.76
+  },
+  "noHeadIsConsulted": true,
+  "defined": true
+}

@@ -1,0 +1,356 @@
+{
+  "stage": "STAGE2L23_TEMPORAL_CORPUS_WELL_POSEDNESS",
+  "architecture": "generate -> semantic validator -> well-posedness assertion -> admit",
+  "admissionOutcomes": [
+    "ADMITTED",
+    "REJECTED_ILL_POSED",
+    "REJECTED_INSIDE_MARGIN",
+    "ADMITTED_AS_BOUNDARY_PROBE"
+  ],
+  "properties": [
+    {
+      "id": "NO_SATURATION",
+      "appliesTo": "ALL_EXCEPT_SHORT_AND_MISSING_SEMANTICS",
+      "property": "No admitted case touches the range bound."
+    },
+    {
+      "id": "SUSTAINED_RUN_IS_PERSISTENT",
+      "appliesTo": "persistence/SUSTAINED_RUN",
+      "property": "Every case labelled PERSISTENT validates as PERSISTENT under V1."
+    },
+    {
+      "id": "CROSSING_NOT_ALREADY_CROSSED",
+      "appliesTo": "timeToThreshold/APPROACHING*",
+      "property": "The last observed value has not yet crossed the threshold."
+    },
+    {
+      "id": "REVERSAL_IS_MEASURABLE",
+      "appliesTo": "reversal/LATE_REVERSAL",
+      "property": "The produced series contains opposite, non-trivial early and late slopes."
+    },
+    {
+      "id": "CYCLE_REPEATS",
+      "appliesTo": "cycle/PERIODIC",
+      "property": "The produced series repeats exactly at its declared period."
+    },
+    {
+      "id": "VOLATILITY_BANDS_DISJOINT",
+      "appliesTo": "volatility/*",
+      "property": "Realized high-volatility RMS exceeds the high floor and low stays under the low ceiling."
+    },
+    {
+      "id": "FLAT_IS_FLAT",
+      "appliesTo": "direction/FLAT, regimeChange/STEADY",
+      "property": "Net displacement and slope both stay inside the flat ceiling."
+    },
+    {
+      "id": "SHORT_IS_SHORT",
+      "appliesTo": "*/SHORT_HISTORY",
+      "property": "The window is genuinely below the minimum sample count."
+    }
+  ],
+  "propertyResults": {
+    "properties": [
+      {
+        "id": "NO_SATURATION",
+        "appliesTo": "ALL_EXCEPT_SHORT_AND_MISSING_SEMANTICS",
+        "property": "No admitted case touches the range bound."
+      },
+      {
+        "id": "SUSTAINED_RUN_IS_PERSISTENT",
+        "appliesTo": "persistence/SUSTAINED_RUN",
+        "property": "Every case labelled PERSISTENT validates as PERSISTENT under V1."
+      },
+      {
+        "id": "CROSSING_NOT_ALREADY_CROSSED",
+        "appliesTo": "timeToThreshold/APPROACHING*",
+        "property": "The last observed value has not yet crossed the threshold."
+      },
+      {
+        "id": "REVERSAL_IS_MEASURABLE",
+        "appliesTo": "reversal/LATE_REVERSAL",
+        "property": "The produced series contains opposite, non-trivial early and late slopes."
+      },
+      {
+        "id": "CYCLE_REPEATS",
+        "appliesTo": "cycle/PERIODIC",
+        "property": "The produced series repeats exactly at its declared period."
+      },
+      {
+        "id": "VOLATILITY_BANDS_DISJOINT",
+        "appliesTo": "volatility/*",
+        "property": "Realized high-volatility RMS exceeds the high floor and low stays under the low ceiling."
+      },
+      {
+        "id": "FLAT_IS_FLAT",
+        "appliesTo": "direction/FLAT, regimeChange/STEADY",
+        "property": "Net displacement and slope both stay inside the flat ceiling."
+      },
+      {
+        "id": "SHORT_IS_SHORT",
+        "appliesTo": "*/SHORT_HISTORY",
+        "property": "The window is genuinely below the minimum sample count."
+      }
+    ],
+    "propertyCount": 8,
+    "familyResults": [
+      {
+        "familyId": "direction/RAMP_UP",
+        "corpusCases": 116,
+        "valid": 116,
+        "mislabelled": 0,
+        "saturationHygieneCases": 0,
+        "labelSurvivesSaturation": false,
+        "mislabelledShare": 0,
+        "failureReasons": [],
+        "minMargin": 0.055004,
+        "offendingCaseIds": []
+      },
+      {
+        "familyId": "direction/RAMP_DOWN",
+        "corpusCases": 114,
+        "valid": 114,
+        "mislabelled": 0,
+        "saturationHygieneCases": 0,
+        "labelSurvivesSaturation": false,
+        "mislabelledShare": 0,
+        "failureReasons": [],
+        "minMargin": 0.051468,
+        "offendingCaseIds": []
+      },
+      {
+        "familyId": "direction/FLAT",
+        "corpusCases": 120,
+        "valid": 120,
+        "mislabelled": 0,
+        "saturationHygieneCases": 0,
+        "labelSurvivesSaturation": false,
+        "mislabelledShare": 0,
+        "failureReasons": [],
+        "minMargin": 0.0008,
+        "offendingCaseIds": []
+      },
+      {
+        "familyId": "volatility/ALTERNATING_HIGH",
+        "corpusCases": 120,
+        "valid": 120,
+        "mislabelled": 0,
+        "saturationHygieneCases": 0,
+        "labelSurvivesSaturation": false,
+        "mislabelledShare": 0,
+        "failureReasons": [],
+        "minMargin": 0.24,
+        "offendingCaseIds": []
+      },
+      {
+        "familyId": "volatility/ALTERNATING_LOW",
+        "corpusCases": 90,
+        "valid": 90,
+        "mislabelled": 0,
+        "saturationHygieneCases": 0,
+        "labelSurvivesSaturation": false,
+        "mislabelledShare": 0,
+        "failureReasons": [],
+        "minMargin": 0.026,
+        "offendingCaseIds": []
+      },
+      {
+        "familyId": "cycle/PERIODIC",
+        "corpusCases": 120,
+        "valid": 120,
+        "mislabelled": 0,
+        "saturationHygieneCases": 0,
+        "labelSurvivesSaturation": false,
+        "mislabelledShare": 0,
+        "failureReasons": [],
+        "minMargin": 0.000001,
+        "offendingCaseIds": []
+      },
+      {
+        "familyId": "cycle/MONOTONE",
+        "corpusCases": 116,
+        "valid": 116,
+        "mislabelled": 0,
+        "saturationHygieneCases": 0,
+        "labelSurvivesSaturation": false,
+        "mislabelledShare": 0,
+        "failureReasons": [],
+        "minMargin": 0,
+        "offendingCaseIds": []
+      },
+      {
+        "familyId": "reversal/LATE_REVERSAL",
+        "corpusCases": 119,
+        "valid": 119,
+        "mislabelled": 0,
+        "saturationHygieneCases": 0,
+        "labelSurvivesSaturation": false,
+        "mislabelledShare": 0,
+        "failureReasons": [],
+        "minMargin": 0.004,
+        "offendingCaseIds": []
+      },
+      {
+        "familyId": "reversal/CONTINUING",
+        "corpusCases": 120,
+        "valid": 120,
+        "mislabelled": 0,
+        "saturationHygieneCases": 0,
+        "labelSurvivesSaturation": false,
+        "mislabelledShare": 0,
+        "failureReasons": [],
+        "minMargin": 0.004,
+        "offendingCaseIds": []
+      },
+      {
+        "familyId": "regimeChange/LEVEL_SHIFT",
+        "corpusCases": 120,
+        "valid": 120,
+        "mislabelled": 0,
+        "saturationHygieneCases": 0,
+        "labelSurvivesSaturation": false,
+        "mislabelledShare": 0,
+        "failureReasons": [],
+        "minMargin": 0.02,
+        "offendingCaseIds": []
+      },
+      {
+        "familyId": "regimeChange/STEADY",
+        "corpusCases": 120,
+        "valid": 120,
+        "mislabelled": 0,
+        "saturationHygieneCases": 0,
+        "labelSurvivesSaturation": false,
+        "mislabelledShare": 0,
+        "failureReasons": [],
+        "minMargin": 0.0008,
+        "offendingCaseIds": []
+      },
+      {
+        "familyId": "persistence/SUSTAINED_RUN",
+        "corpusCases": 116,
+        "valid": 116,
+        "mislabelled": 0,
+        "saturationHygieneCases": 0,
+        "labelSurvivesSaturation": false,
+        "mislabelledShare": 0,
+        "failureReasons": [],
+        "minMargin": 0.28,
+        "offendingCaseIds": []
+      },
+      {
+        "familyId": "persistence/INTERRUPTED_RUN",
+        "corpusCases": 120,
+        "valid": 120,
+        "mislabelled": 0,
+        "saturationHygieneCases": 0,
+        "labelSurvivesSaturation": false,
+        "mislabelledShare": 0,
+        "failureReasons": [],
+        "minMargin": 0.22,
+        "offendingCaseIds": []
+      },
+      {
+        "familyId": "persistence/SHORT_HISTORY",
+        "corpusCases": 60,
+        "valid": 60,
+        "mislabelled": 0,
+        "saturationHygieneCases": 0,
+        "labelSurvivesSaturation": true,
+        "mislabelledShare": 0,
+        "failureReasons": [],
+        "minMargin": 1,
+        "offendingCaseIds": []
+      },
+      {
+        "familyId": "timeToThreshold/APPROACHING",
+        "corpusCases": 120,
+        "valid": 120,
+        "mislabelled": 0,
+        "saturationHygieneCases": 0,
+        "labelSurvivesSaturation": false,
+        "mislabelledShare": 0,
+        "failureReasons": [],
+        "minMargin": 0.4,
+        "offendingCaseIds": []
+      },
+      {
+        "familyId": "timeToThreshold/APPROACHING_4_TO_8",
+        "corpusCases": 120,
+        "valid": 120,
+        "mislabelled": 0,
+        "saturationHygieneCases": 0,
+        "labelSurvivesSaturation": false,
+        "mislabelledShare": 0,
+        "failureReasons": [],
+        "minMargin": 0.4,
+        "offendingCaseIds": []
+      },
+      {
+        "familyId": "timeToThreshold/ALREADY_OVER",
+        "corpusCases": 120,
+        "valid": 120,
+        "mislabelled": 0,
+        "saturationHygieneCases": 0,
+        "labelSurvivesSaturation": false,
+        "mislabelledShare": 0,
+        "failureReasons": [],
+        "minMargin": 0.06,
+        "offendingCaseIds": []
+      },
+      {
+        "familyId": "timeToThreshold/STAYING_BELOW",
+        "corpusCases": 120,
+        "valid": 120,
+        "mislabelled": 0,
+        "saturationHygieneCases": 0,
+        "labelSurvivesSaturation": false,
+        "mislabelledShare": 0,
+        "failureReasons": [],
+        "minMargin": 0.41,
+        "offendingCaseIds": []
+      },
+      {
+        "familyId": "timeToThreshold/MISSING_THRESHOLD_SEMANTICS",
+        "corpusCases": 40,
+        "valid": 40,
+        "mislabelled": 0,
+        "saturationHygieneCases": 0,
+        "labelSurvivesSaturation": true,
+        "mislabelledShare": 0,
+        "failureReasons": [],
+        "minMargin": 0,
+        "offendingCaseIds": []
+      },
+      {
+        "familyId": "abstention/SHORT_HISTORY",
+        "corpusCases": 90,
+        "valid": 90,
+        "mislabelled": 0,
+        "saturationHygieneCases": 0,
+        "labelSurvivesSaturation": true,
+        "mislabelledShare": 0,
+        "failureReasons": [],
+        "minMargin": 1,
+        "offendingCaseIds": []
+      },
+      {
+        "familyId": "abstention/SUFFICIENT_HISTORY",
+        "corpusCases": 120,
+        "valid": 120,
+        "mislabelled": 0,
+        "saturationHygieneCases": 17,
+        "labelSurvivesSaturation": true,
+        "mislabelledShare": 0,
+        "failureReasons": [],
+        "minMargin": 15,
+        "offendingCaseIds": []
+      }
+    ],
+    "failingFamilies": [],
+    "totalCases": 2301,
+    "totalMislabelled": 0,
+    "allPass": true
+  },
+  "validatorsCallHeadUnderTest": false
+}

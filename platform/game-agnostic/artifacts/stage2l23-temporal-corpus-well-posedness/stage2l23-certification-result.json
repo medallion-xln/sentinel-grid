@@ -1,0 +1,7223 @@
+{
+  "certificationSchemaVersion": 1,
+  "stage": "STAGE2L23_TEMPORAL_CORPUS_WELL_POSEDNESS",
+  "status": "PASS",
+  "stageKind": "EVALUATION_INFRASTRUCTURE_REMEDIATION_AND_RECERTIFICATION",
+  "authority": "R0",
+  "canDispatch": false,
+  "canMutateLiveWorld": false,
+  "arbiterShadowOnly": true,
+  "finalRecommendationOwner": "PRIME",
+  "freeze": {
+    "stage2l22CertificationHash": "035e61a4cade46156ba69ed2af613297b6651d432993389d43babcd0fc69ce2b",
+    "stage2l21CertificationHash": "61b70821c4019a9ea6c3a47c9da7ceb06c8f7feb72ff218614db44e1173d5104",
+    "stage2l19CertificationHash": "145ce640b0b7a9bcceaa9688d248f2ba4cf8dd89ff30cd8301f69f2eadc9f3fe",
+    "nexusBehaviourChanged": false,
+    "oracleHeadsChanged": false,
+    "frozenProducerEdited": false,
+    "arbiterChanged": false,
+    "repairShape": "CORPUS_FAMILY_REGENERATION_ONLY_NO_EXPERT_CHANGE"
+  },
+  "inventory": {
+    "families": [
+      {
+        "familyId": "direction/RAMP_UP",
+        "head": "direction",
+        "intendedLabel": "UP",
+        "owner": "STAGE2L19",
+        "parameters": {
+          "slopeMagnitude": [
+            0.004,
+            0.028
+          ],
+          "noise": [
+            0,
+            0.024
+          ],
+          "length": [
+            18,
+            30
+          ]
+        },
+        "clamped": true,
+        "corpusCases": 116,
+        "seededVariables": [
+          "variantIndex-derived jitter hash"
+        ],
+        "windowLengths": [
+          18,
+          19,
+          20,
+          21,
+          22,
+          23,
+          24,
+          25,
+          26,
+          27,
+          28,
+          29,
+          30
+        ],
+        "wellPosednessValidator": "STAGE2L23_VALIDATOR/direction/RAMP_UP",
+        "existingBoundaryTests": "NONE_BEFORE_STAGE2L23",
+        "presentInCorpus": true
+      },
+      {
+        "familyId": "direction/RAMP_DOWN",
+        "head": "direction",
+        "intendedLabel": "DOWN",
+        "owner": "STAGE2L19",
+        "parameters": {
+          "slopeMagnitude": [
+            -0.028,
+            -0.004
+          ],
+          "noise": [
+            0,
+            0.024
+          ],
+          "length": [
+            18,
+            30
+          ]
+        },
+        "clamped": true,
+        "corpusCases": 114,
+        "seededVariables": [
+          "variantIndex-derived jitter hash"
+        ],
+        "windowLengths": [
+          18,
+          19,
+          20,
+          21,
+          22,
+          23,
+          24,
+          25,
+          26,
+          27,
+          28,
+          29,
+          30
+        ],
+        "wellPosednessValidator": "STAGE2L23_VALIDATOR/direction/RAMP_DOWN",
+        "existingBoundaryTests": "NONE_BEFORE_STAGE2L23",
+        "presentInCorpus": true
+      },
+      {
+        "familyId": "direction/FLAT",
+        "head": "direction",
+        "intendedLabel": "STABLE",
+        "owner": "STAGE2L19",
+        "parameters": {
+          "slopeMagnitude": [
+            0,
+            0
+          ],
+          "noise": [
+            0,
+            0
+          ],
+          "length": [
+            18,
+            30
+          ]
+        },
+        "clamped": true,
+        "corpusCases": 120,
+        "seededVariables": [
+          "variantIndex-derived jitter hash"
+        ],
+        "windowLengths": [
+          18,
+          19,
+          20,
+          21,
+          22,
+          23,
+          24,
+          25,
+          26,
+          27,
+          28,
+          29,
+          30
+        ],
+        "wellPosednessValidator": "STAGE2L23_VALIDATOR/direction/FLAT",
+        "existingBoundaryTests": "NONE_BEFORE_STAGE2L23",
+        "presentInCorpus": true
+      },
+      {
+        "familyId": "volatility/ALTERNATING_HIGH",
+        "head": "volatility",
+        "intendedLabel": "HIGH_VOLATILITY",
+        "owner": "STAGE2L19",
+        "parameters": {
+          "amplitude": [
+            0.18,
+            0.38
+          ],
+          "length": [
+            18,
+            30
+          ]
+        },
+        "clamped": true,
+        "corpusCases": 120,
+        "seededVariables": [
+          "variantIndex-derived jitter hash"
+        ],
+        "windowLengths": [
+          18,
+          19,
+          20,
+          21,
+          22,
+          23,
+          24,
+          25,
+          26,
+          27,
+          28,
+          29,
+          30
+        ],
+        "wellPosednessValidator": "STAGE2L23_VALIDATOR/volatility/ALTERNATING_HIGH",
+        "existingBoundaryTests": "NONE_BEFORE_STAGE2L23",
+        "presentInCorpus": true
+      },
+      {
+        "familyId": "volatility/ALTERNATING_LOW",
+        "head": "volatility",
+        "intendedLabel": "LOW_VOLATILITY",
+        "owner": "STAGE2L19",
+        "parameters": {
+          "amplitude": [
+            0.004,
+            0.016
+          ],
+          "length": [
+            18,
+            30
+          ]
+        },
+        "clamped": true,
+        "corpusCases": 90,
+        "seededVariables": [
+          "variantIndex-derived jitter hash"
+        ],
+        "windowLengths": [
+          18,
+          19,
+          20,
+          21,
+          22,
+          23,
+          24,
+          25,
+          26,
+          27,
+          28,
+          29,
+          30
+        ],
+        "wellPosednessValidator": "STAGE2L23_VALIDATOR/volatility/ALTERNATING_LOW",
+        "existingBoundaryTests": "NONE_BEFORE_STAGE2L23",
+        "presentInCorpus": true
+      },
+      {
+        "familyId": "cycle/PERIODIC",
+        "head": "cycle",
+        "intendedLabel": "CYCLICAL",
+        "owner": "STAGE2L19",
+        "parameters": {
+          "period": [
+            3,
+            6
+          ],
+          "length": [
+            24,
+            36
+          ]
+        },
+        "clamped": true,
+        "corpusCases": 120,
+        "seededVariables": [
+          "variantIndex-derived jitter hash"
+        ],
+        "windowLengths": [
+          24,
+          25,
+          26,
+          27,
+          28,
+          29,
+          30,
+          31,
+          32,
+          33,
+          34,
+          35,
+          36
+        ],
+        "wellPosednessValidator": "STAGE2L23_VALIDATOR/cycle/PERIODIC",
+        "existingBoundaryTests": "NONE_BEFORE_STAGE2L23",
+        "presentInCorpus": true
+      },
+      {
+        "familyId": "cycle/MONOTONE",
+        "head": "cycle",
+        "intendedLabel": "NOT_CYCLICAL",
+        "owner": "STAGE2L19",
+        "parameters": {
+          "slopeMagnitude": [
+            0.004,
+            0.028
+          ],
+          "noise": [
+            0,
+            0.024
+          ],
+          "length": [
+            18,
+            30
+          ]
+        },
+        "clamped": true,
+        "corpusCases": 116,
+        "seededVariables": [
+          "variantIndex-derived jitter hash"
+        ],
+        "windowLengths": [
+          18,
+          19,
+          20,
+          21,
+          22,
+          23,
+          24,
+          25,
+          26,
+          27,
+          28,
+          29,
+          30
+        ],
+        "wellPosednessValidator": "STAGE2L23_VALIDATOR/cycle/MONOTONE",
+        "existingBoundaryTests": "NONE_BEFORE_STAGE2L23",
+        "presentInCorpus": true
+      },
+      {
+        "familyId": "reversal/LATE_REVERSAL",
+        "head": "reversal",
+        "intendedLabel": "REVERSAL",
+        "owner": "STAGE2L19",
+        "parameters": {
+          "turn": [
+            6,
+            13
+          ],
+          "tail": [
+            6,
+            13
+          ],
+          "descent": [
+            0.004,
+            0.028
+          ],
+          "ascent": [
+            0.008,
+            0.056
+          ]
+        },
+        "clamped": true,
+        "corpusCases": 120,
+        "seededVariables": [
+          "variantIndex-derived jitter hash"
+        ],
+        "windowLengths": [
+          12,
+          14,
+          16,
+          18,
+          20,
+          22,
+          24,
+          26
+        ],
+        "wellPosednessValidator": "STAGE2L23_VALIDATOR/reversal/LATE_REVERSAL",
+        "existingBoundaryTests": "NONE_BEFORE_STAGE2L23",
+        "presentInCorpus": true
+      },
+      {
+        "familyId": "reversal/CONTINUING",
+        "head": "reversal",
+        "intendedLabel": "NO_REVERSAL",
+        "owner": "STAGE2L19",
+        "parameters": {
+          "slopeMagnitude": [
+            0.004,
+            0.028
+          ],
+          "length": [
+            12,
+            26
+          ]
+        },
+        "clamped": true,
+        "corpusCases": 120,
+        "seededVariables": [
+          "variantIndex-derived jitter hash"
+        ],
+        "windowLengths": [
+          12,
+          14,
+          16,
+          18,
+          20,
+          22,
+          24,
+          26
+        ],
+        "wellPosednessValidator": "STAGE2L23_VALIDATOR/reversal/CONTINUING",
+        "existingBoundaryTests": "NONE_BEFORE_STAGE2L23",
+        "presentInCorpus": true
+      },
+      {
+        "familyId": "regimeChange/LEVEL_SHIFT",
+        "head": "regimeChange",
+        "intendedLabel": "LEVEL_CHANGE",
+        "owner": "STAGE2L19",
+        "parameters": {
+          "shift": [
+            0.12,
+            0.32
+          ],
+          "length": [
+            24,
+            24
+          ]
+        },
+        "clamped": true,
+        "corpusCases": 120,
+        "seededVariables": [
+          "variantIndex-derived jitter hash"
+        ],
+        "windowLengths": [
+          24
+        ],
+        "wellPosednessValidator": "STAGE2L23_VALIDATOR/regimeChange/LEVEL_SHIFT",
+        "existingBoundaryTests": "NONE_BEFORE_STAGE2L23",
+        "presentInCorpus": true
+      },
+      {
+        "familyId": "regimeChange/STEADY",
+        "head": "regimeChange",
+        "intendedLabel": "NO_CHANGE",
+        "owner": "STAGE2L19",
+        "parameters": {
+          "shift": [
+            0,
+            0
+          ],
+          "length": [
+            24,
+            24
+          ]
+        },
+        "clamped": true,
+        "corpusCases": 120,
+        "seededVariables": [
+          "variantIndex-derived jitter hash"
+        ],
+        "windowLengths": [
+          24
+        ],
+        "wellPosednessValidator": "STAGE2L23_VALIDATOR/regimeChange/STEADY",
+        "existingBoundaryTests": "NONE_BEFORE_STAGE2L23",
+        "presentInCorpus": true
+      },
+      {
+        "familyId": "persistence/SUSTAINED_RUN",
+        "head": "persistence",
+        "intendedLabel": "PERSISTENT",
+        "owner": "STAGE2L19",
+        "parameters": {
+          "slopeMagnitude": [
+            0.004,
+            0.028
+          ],
+          "noise": [
+            0,
+            0.024
+          ],
+          "length": [
+            18,
+            30
+          ]
+        },
+        "clamped": true,
+        "corpusCases": 116,
+        "seededVariables": [
+          "variantIndex-derived jitter hash"
+        ],
+        "windowLengths": [
+          18,
+          19,
+          20,
+          21,
+          22,
+          23,
+          24,
+          25,
+          26,
+          27,
+          28,
+          29,
+          30
+        ],
+        "wellPosednessValidator": "STAGE2L23_VALIDATOR/persistence/SUSTAINED_RUN",
+        "existingBoundaryTests": "NONE_BEFORE_STAGE2L23",
+        "presentInCorpus": true
+      },
+      {
+        "familyId": "persistence/INTERRUPTED_RUN",
+        "head": "persistence",
+        "intendedLabel": "NOT_PERSISTENT",
+        "owner": "STAGE2L19",
+        "parameters": {
+          "interruptions": [
+            0,
+            4
+          ],
+          "length": [
+            18,
+            30
+          ]
+        },
+        "clamped": true,
+        "corpusCases": 120,
+        "seededVariables": [
+          "variantIndex-derived jitter hash"
+        ],
+        "windowLengths": [
+          18,
+          19,
+          20,
+          21,
+          22,
+          23,
+          24,
+          25,
+          26,
+          27,
+          28,
+          29,
+          30
+        ],
+        "wellPosednessValidator": "STAGE2L23_VALIDATOR/persistence/INTERRUPTED_RUN",
+        "existingBoundaryTests": "NONE_BEFORE_STAGE2L23",
+        "presentInCorpus": true
+      },
+      {
+        "familyId": "persistence/SHORT_HISTORY",
+        "head": "persistence",
+        "intendedLabel": "INSUFFICIENT_EVIDENCE",
+        "owner": "STAGE2L21",
+        "parameters": {
+          "samples": [
+            2,
+            5
+          ]
+        },
+        "clamped": true,
+        "corpusCases": 60,
+        "seededVariables": [
+          "variantIndex-derived jitter hash"
+        ],
+        "windowLengths": [
+          2,
+          3,
+          4,
+          5
+        ],
+        "wellPosednessValidator": "STAGE2L23_VALIDATOR/persistence/SHORT_HISTORY",
+        "existingBoundaryTests": "NONE_BEFORE_STAGE2L23",
+        "presentInCorpus": true
+      },
+      {
+        "familyId": "timeToThreshold/APPROACHING",
+        "head": "timeToThreshold",
+        "intendedLabel": "CROSSING_1_TO_3",
+        "owner": "STAGE2L20",
+        "parameters": {
+          "slope": [
+            0.006,
+            0.018
+          ],
+          "ticksToThreshold": [
+            1,
+            3
+          ],
+          "length": [
+            18,
+            30
+          ]
+        },
+        "clamped": true,
+        "corpusCases": 120,
+        "seededVariables": [
+          "variantIndex-derived jitter hash"
+        ],
+        "windowLengths": [
+          18,
+          19,
+          20,
+          21,
+          22,
+          23,
+          24,
+          25,
+          26,
+          27,
+          28,
+          29,
+          30
+        ],
+        "wellPosednessValidator": "STAGE2L23_VALIDATOR/timeToThreshold/APPROACHING",
+        "existingBoundaryTests": "STAGE2L20_BOUNDARY_TESTS",
+        "presentInCorpus": true
+      },
+      {
+        "familyId": "timeToThreshold/APPROACHING_4_TO_8",
+        "head": "timeToThreshold",
+        "intendedLabel": "CROSSING_4_TO_8",
+        "owner": "STAGE2L20",
+        "parameters": {
+          "slope": [
+            0.006,
+            0.018
+          ],
+          "ticksToThreshold": [
+            4,
+            8
+          ],
+          "length": [
+            18,
+            30
+          ]
+        },
+        "clamped": true,
+        "corpusCases": 120,
+        "seededVariables": [
+          "variantIndex-derived jitter hash"
+        ],
+        "windowLengths": [
+          18,
+          19,
+          20,
+          21,
+          22,
+          23,
+          24,
+          25,
+          26,
+          27,
+          28,
+          29,
+          30
+        ],
+        "wellPosednessValidator": "STAGE2L23_VALIDATOR/timeToThreshold/APPROACHING_4_TO_8",
+        "existingBoundaryTests": "STAGE2L20_BOUNDARY_TESTS",
+        "presentInCorpus": true
+      },
+      {
+        "familyId": "timeToThreshold/ALREADY_OVER",
+        "head": "timeToThreshold",
+        "intendedLabel": "ALREADY_CROSSED",
+        "owner": "STAGE2L19",
+        "parameters": {
+          "start": [
+            0.82,
+            0.82
+          ],
+          "slope": [
+            0.002,
+            0.002
+          ],
+          "length": [
+            18,
+            30
+          ]
+        },
+        "clamped": true,
+        "corpusCases": 120,
+        "seededVariables": [
+          "variantIndex-derived jitter hash"
+        ],
+        "windowLengths": [
+          18,
+          19,
+          20,
+          21,
+          22,
+          23,
+          24,
+          25,
+          26,
+          27,
+          28,
+          29,
+          30
+        ],
+        "wellPosednessValidator": "STAGE2L23_VALIDATOR/timeToThreshold/ALREADY_OVER",
+        "existingBoundaryTests": "NONE_BEFORE_STAGE2L23",
+        "presentInCorpus": true
+      },
+      {
+        "familyId": "timeToThreshold/STAYING_BELOW",
+        "head": "timeToThreshold",
+        "intendedLabel": "NOT_CROSSING",
+        "owner": "STAGE2L19",
+        "parameters": {
+          "start": [
+            0.35,
+            0.35
+          ],
+          "slope": [
+            0,
+            0
+          ],
+          "length": [
+            18,
+            30
+          ]
+        },
+        "clamped": true,
+        "corpusCases": 120,
+        "seededVariables": [
+          "variantIndex-derived jitter hash"
+        ],
+        "windowLengths": [
+          18,
+          19,
+          20,
+          21,
+          22,
+          23,
+          24,
+          25,
+          26,
+          27,
+          28,
+          29,
+          30
+        ],
+        "wellPosednessValidator": "STAGE2L23_VALIDATOR/timeToThreshold/STAYING_BELOW",
+        "existingBoundaryTests": "NONE_BEFORE_STAGE2L23",
+        "presentInCorpus": true
+      },
+      {
+        "familyId": "timeToThreshold/MISSING_THRESHOLD_SEMANTICS",
+        "head": "timeToThreshold",
+        "intendedLabel": "INSUFFICIENT_EVIDENCE",
+        "owner": "STAGE2L20",
+        "parameters": {
+          "thresholdDeclared": false
+        },
+        "clamped": true,
+        "corpusCases": 40,
+        "seededVariables": [
+          "variantIndex-derived jitter hash"
+        ],
+        "windowLengths": [
+          18,
+          19,
+          20,
+          21,
+          22,
+          23,
+          24,
+          25,
+          26,
+          27,
+          28,
+          29,
+          30
+        ],
+        "wellPosednessValidator": "STAGE2L23_VALIDATOR/timeToThreshold/MISSING_THRESHOLD_SEMANTICS",
+        "existingBoundaryTests": "STAGE2L20_BOUNDARY_TESTS",
+        "presentInCorpus": true
+      },
+      {
+        "familyId": "abstention/SHORT_HISTORY",
+        "head": "abstention",
+        "intendedLabel": "INSUFFICIENT_EVIDENCE",
+        "owner": "STAGE2L19",
+        "parameters": {
+          "length": [
+            0,
+            3
+          ]
+        },
+        "clamped": true,
+        "corpusCases": 90,
+        "seededVariables": [
+          "variantIndex-derived jitter hash"
+        ],
+        "windowLengths": [
+          0,
+          1,
+          2
+        ],
+        "wellPosednessValidator": "STAGE2L23_VALIDATOR/abstention/SHORT_HISTORY",
+        "existingBoundaryTests": "NONE_BEFORE_STAGE2L23",
+        "presentInCorpus": true
+      },
+      {
+        "familyId": "abstention/SUFFICIENT_HISTORY",
+        "head": "abstention",
+        "intendedLabel": "ENOUGH_EVIDENCE",
+        "owner": "STAGE2L19",
+        "parameters": {
+          "length": [
+            18,
+            30
+          ]
+        },
+        "clamped": true,
+        "corpusCases": 120,
+        "seededVariables": [
+          "variantIndex-derived jitter hash"
+        ],
+        "windowLengths": [
+          18,
+          19,
+          20,
+          21,
+          22,
+          23,
+          24,
+          25,
+          26,
+          27,
+          28,
+          29,
+          30
+        ],
+        "wellPosednessValidator": "STAGE2L23_VALIDATOR/abstention/SUFFICIENT_HISTORY",
+        "existingBoundaryTests": "NONE_BEFORE_STAGE2L23",
+        "presentInCorpus": true
+      }
+    ],
+    "familyCount": 21,
+    "corpusFamiliesFound": 21,
+    "corpusCases": 2302,
+    "inventorySource": "GENERATOR_SOURCE_AND_LIVE_CORPUS_NOT_DOCUMENTATION",
+    "complete": true
+  },
+  "temporalFamilyCount": 21,
+  "boundaryAuditedFamilyCount": 21,
+  "validatorMap": {
+    "semanticsReused": [
+      "STAGE2L21_PERSISTENCE_SEMANTICS_V1"
+    ],
+    "validators": [
+      {
+        "familyId": "direction/RAMP_UP",
+        "intendedLabel": "UP",
+        "validator": "STAGE2L23_VALIDATOR/direction/RAMP_UP",
+        "callsHeadUnderTest": false,
+        "derivedFrom": "STAGE2L19_STAGE2L20_CONTRACT_AUDIT"
+      },
+      {
+        "familyId": "direction/RAMP_DOWN",
+        "intendedLabel": "DOWN",
+        "validator": "STAGE2L23_VALIDATOR/direction/RAMP_DOWN",
+        "callsHeadUnderTest": false,
+        "derivedFrom": "STAGE2L19_STAGE2L20_CONTRACT_AUDIT"
+      },
+      {
+        "familyId": "direction/FLAT",
+        "intendedLabel": "STABLE",
+        "validator": "STAGE2L23_VALIDATOR/direction/FLAT",
+        "callsHeadUnderTest": false,
+        "derivedFrom": "STAGE2L19_STAGE2L20_CONTRACT_AUDIT"
+      },
+      {
+        "familyId": "volatility/ALTERNATING_HIGH",
+        "intendedLabel": "HIGH_VOLATILITY",
+        "validator": "STAGE2L23_VALIDATOR/volatility/ALTERNATING_HIGH",
+        "callsHeadUnderTest": false,
+        "derivedFrom": "STAGE2L19_STAGE2L20_CONTRACT_AUDIT"
+      },
+      {
+        "familyId": "volatility/ALTERNATING_LOW",
+        "intendedLabel": "LOW_VOLATILITY",
+        "validator": "STAGE2L23_VALIDATOR/volatility/ALTERNATING_LOW",
+        "callsHeadUnderTest": false,
+        "derivedFrom": "STAGE2L19_STAGE2L20_CONTRACT_AUDIT"
+      },
+      {
+        "familyId": "cycle/PERIODIC",
+        "intendedLabel": "CYCLICAL",
+        "validator": "STAGE2L23_VALIDATOR/cycle/PERIODIC",
+        "callsHeadUnderTest": false,
+        "derivedFrom": "STAGE2L19_STAGE2L20_CONTRACT_AUDIT"
+      },
+      {
+        "familyId": "cycle/MONOTONE",
+        "intendedLabel": "NOT_CYCLICAL",
+        "validator": "STAGE2L23_VALIDATOR/cycle/MONOTONE",
+        "callsHeadUnderTest": false,
+        "derivedFrom": "STAGE2L19_STAGE2L20_CONTRACT_AUDIT"
+      },
+      {
+        "familyId": "reversal/LATE_REVERSAL",
+        "intendedLabel": "REVERSAL",
+        "validator": "STAGE2L23_VALIDATOR/reversal/LATE_REVERSAL",
+        "callsHeadUnderTest": false,
+        "derivedFrom": "STAGE2L19_STAGE2L20_CONTRACT_AUDIT"
+      },
+      {
+        "familyId": "reversal/CONTINUING",
+        "intendedLabel": "NO_REVERSAL",
+        "validator": "STAGE2L23_VALIDATOR/reversal/CONTINUING",
+        "callsHeadUnderTest": false,
+        "derivedFrom": "STAGE2L19_STAGE2L20_CONTRACT_AUDIT"
+      },
+      {
+        "familyId": "regimeChange/LEVEL_SHIFT",
+        "intendedLabel": "LEVEL_CHANGE",
+        "validator": "STAGE2L23_VALIDATOR/regimeChange/LEVEL_SHIFT",
+        "callsHeadUnderTest": false,
+        "derivedFrom": "STAGE2L19_STAGE2L20_CONTRACT_AUDIT"
+      },
+      {
+        "familyId": "regimeChange/STEADY",
+        "intendedLabel": "NO_CHANGE",
+        "validator": "STAGE2L23_VALIDATOR/regimeChange/STEADY",
+        "callsHeadUnderTest": false,
+        "derivedFrom": "STAGE2L19_STAGE2L20_CONTRACT_AUDIT"
+      },
+      {
+        "familyId": "persistence/SUSTAINED_RUN",
+        "intendedLabel": "PERSISTENT",
+        "validator": "STAGE2L23_VALIDATOR/persistence/SUSTAINED_RUN",
+        "callsHeadUnderTest": false,
+        "derivedFrom": "STAGE2L21_PERSISTENCE_SEMANTICS_V1"
+      },
+      {
+        "familyId": "persistence/INTERRUPTED_RUN",
+        "intendedLabel": "NOT_PERSISTENT",
+        "validator": "STAGE2L23_VALIDATOR/persistence/INTERRUPTED_RUN",
+        "callsHeadUnderTest": false,
+        "derivedFrom": "STAGE2L21_PERSISTENCE_SEMANTICS_V1"
+      },
+      {
+        "familyId": "persistence/SHORT_HISTORY",
+        "intendedLabel": "INSUFFICIENT_EVIDENCE",
+        "validator": "STAGE2L23_VALIDATOR/persistence/SHORT_HISTORY",
+        "callsHeadUnderTest": false,
+        "derivedFrom": "STAGE2L21_PERSISTENCE_SEMANTICS_V1"
+      },
+      {
+        "familyId": "timeToThreshold/APPROACHING",
+        "intendedLabel": "CROSSING_1_TO_3",
+        "validator": "STAGE2L23_VALIDATOR/timeToThreshold/APPROACHING",
+        "callsHeadUnderTest": false,
+        "derivedFrom": "STAGE2L19_STAGE2L20_CONTRACT_AUDIT"
+      },
+      {
+        "familyId": "timeToThreshold/APPROACHING_4_TO_8",
+        "intendedLabel": "CROSSING_4_TO_8",
+        "validator": "STAGE2L23_VALIDATOR/timeToThreshold/APPROACHING_4_TO_8",
+        "callsHeadUnderTest": false,
+        "derivedFrom": "STAGE2L19_STAGE2L20_CONTRACT_AUDIT"
+      },
+      {
+        "familyId": "timeToThreshold/ALREADY_OVER",
+        "intendedLabel": "ALREADY_CROSSED",
+        "validator": "STAGE2L23_VALIDATOR/timeToThreshold/ALREADY_OVER",
+        "callsHeadUnderTest": false,
+        "derivedFrom": "STAGE2L19_STAGE2L20_CONTRACT_AUDIT"
+      },
+      {
+        "familyId": "timeToThreshold/STAYING_BELOW",
+        "intendedLabel": "NOT_CROSSING",
+        "validator": "STAGE2L23_VALIDATOR/timeToThreshold/STAYING_BELOW",
+        "callsHeadUnderTest": false,
+        "derivedFrom": "STAGE2L19_STAGE2L20_CONTRACT_AUDIT"
+      },
+      {
+        "familyId": "timeToThreshold/MISSING_THRESHOLD_SEMANTICS",
+        "intendedLabel": "INSUFFICIENT_EVIDENCE",
+        "validator": "STAGE2L23_VALIDATOR/timeToThreshold/MISSING_THRESHOLD_SEMANTICS",
+        "callsHeadUnderTest": false,
+        "derivedFrom": "STAGE2L19_STAGE2L20_CONTRACT_AUDIT"
+      },
+      {
+        "familyId": "abstention/SHORT_HISTORY",
+        "intendedLabel": "INSUFFICIENT_EVIDENCE",
+        "validator": "STAGE2L23_VALIDATOR/abstention/SHORT_HISTORY",
+        "callsHeadUnderTest": false,
+        "derivedFrom": "STAGE2L19_STAGE2L20_CONTRACT_AUDIT"
+      },
+      {
+        "familyId": "abstention/SUFFICIENT_HISTORY",
+        "intendedLabel": "ENOUGH_EVIDENCE",
+        "validator": "STAGE2L23_VALIDATOR/abstention/SUFFICIENT_HISTORY",
+        "callsHeadUnderTest": false,
+        "derivedFrom": "STAGE2L19_STAGE2L20_CONTRACT_AUDIT"
+      }
+    ],
+    "universalDisqualifier": "SERIES_TOUCHES_RANGE_BOUND (saturation)",
+    "thresholds": {
+      "directionEpsilon": 0.0025,
+      "flatCeiling": 0.0008,
+      "volatilityHighFloor": 0.12,
+      "volatilityLowCeiling": 0.05,
+      "levelShiftFloor": 0.1,
+      "reversalSegmentFloor": 0.004,
+      "persistenceConsistency": 0.72,
+      "persistenceMaxOpposingRun": 2,
+      "thresholdValue": 0.76
+    },
+    "noHeadIsConsulted": true,
+    "defined": true
+  },
+  "sweeps": [
+    {
+      "familyId": "direction/RAMP_UP",
+      "intendedLabel": "UP",
+      "swept": 144,
+      "valid": 132,
+      "mislabelled": 12,
+      "ambiguous": 0,
+      "saturatedCases": 12,
+      "mislabelledShare": 0.083333,
+      "minMargin": 0.062476,
+      "failureReasons": [
+        "SERIES_TOUCHES_RANGE_BOUND"
+      ],
+      "extremeFailures": [
+        {
+          "point": {
+            "length": 30,
+            "slope": 0.028,
+            "noise": 0,
+            "variant": 0
+          },
+          "reason": "SERIES_TOUCHES_RANGE_BOUND"
+        },
+        {
+          "point": {
+            "length": 30,
+            "slope": 0.028,
+            "noise": 0,
+            "variant": 3
+          },
+          "reason": "SERIES_TOUCHES_RANGE_BOUND"
+        },
+        {
+          "point": {
+            "length": 30,
+            "slope": 0.028,
+            "noise": 0,
+            "variant": 7
+          },
+          "reason": "SERIES_TOUCHES_RANGE_BOUND"
+        },
+        {
+          "point": {
+            "length": 30,
+            "slope": 0.028,
+            "noise": 0.006,
+            "variant": 0
+          },
+          "reason": "SERIES_TOUCHES_RANGE_BOUND"
+        },
+        {
+          "point": {
+            "length": 30,
+            "slope": 0.028,
+            "noise": 0.006,
+            "variant": 3
+          },
+          "reason": "SERIES_TOUCHES_RANGE_BOUND"
+        },
+        {
+          "point": {
+            "length": 30,
+            "slope": 0.028,
+            "noise": 0.006,
+            "variant": 7
+          },
+          "reason": "SERIES_TOUCHES_RANGE_BOUND"
+        },
+        {
+          "point": {
+            "length": 30,
+            "slope": 0.028,
+            "noise": 0.012,
+            "variant": 0
+          },
+          "reason": "SERIES_TOUCHES_RANGE_BOUND"
+        },
+        {
+          "point": {
+            "length": 30,
+            "slope": 0.028,
+            "noise": 0.012,
+            "variant": 3
+          },
+          "reason": "SERIES_TOUCHES_RANGE_BOUND"
+        }
+      ],
+      "rows": [
+        {
+          "point": {
+            "length": 30,
+            "slope": 0.028,
+            "noise": 0,
+            "variant": 0
+          },
+          "intendedLabel": "UP",
+          "valid": false,
+          "realizedLabel": "SATURATED",
+          "reason": "SERIES_TOUCHES_RANGE_BOUND",
+          "margin": 0,
+          "saturated": true
+        },
+        {
+          "point": {
+            "length": 30,
+            "slope": 0.028,
+            "noise": 0,
+            "variant": 3
+          },
+          "intendedLabel": "UP",
+          "valid": false,
+          "realizedLabel": "SATURATED",
+          "reason": "SERIES_TOUCHES_RANGE_BOUND",
+          "margin": 0,
+          "saturated": true
+        },
+        {
+          "point": {
+            "length": 30,
+            "slope": 0.028,
+            "noise": 0,
+            "variant": 7
+          },
+          "intendedLabel": "UP",
+          "valid": false,
+          "realizedLabel": "SATURATED",
+          "reason": "SERIES_TOUCHES_RANGE_BOUND",
+          "margin": 0,
+          "saturated": true
+        },
+        {
+          "point": {
+            "length": 30,
+            "slope": 0.028,
+            "noise": 0.006,
+            "variant": 0
+          },
+          "intendedLabel": "UP",
+          "valid": false,
+          "realizedLabel": "SATURATED",
+          "reason": "SERIES_TOUCHES_RANGE_BOUND",
+          "margin": 0,
+          "saturated": true
+        },
+        {
+          "point": {
+            "length": 30,
+            "slope": 0.028,
+            "noise": 0.006,
+            "variant": 3
+          },
+          "intendedLabel": "UP",
+          "valid": false,
+          "realizedLabel": "SATURATED",
+          "reason": "SERIES_TOUCHES_RANGE_BOUND",
+          "margin": 0,
+          "saturated": true
+        },
+        {
+          "point": {
+            "length": 30,
+            "slope": 0.028,
+            "noise": 0.006,
+            "variant": 7
+          },
+          "intendedLabel": "UP",
+          "valid": false,
+          "realizedLabel": "SATURATED",
+          "reason": "SERIES_TOUCHES_RANGE_BOUND",
+          "margin": 0,
+          "saturated": true
+        },
+        {
+          "point": {
+            "length": 30,
+            "slope": 0.028,
+            "noise": 0.012,
+            "variant": 0
+          },
+          "intendedLabel": "UP",
+          "valid": false,
+          "realizedLabel": "SATURATED",
+          "reason": "SERIES_TOUCHES_RANGE_BOUND",
+          "margin": 0,
+          "saturated": true
+        },
+        {
+          "point": {
+            "length": 30,
+            "slope": 0.028,
+            "noise": 0.012,
+            "variant": 3
+          },
+          "intendedLabel": "UP",
+          "valid": false,
+          "realizedLabel": "SATURATED",
+          "reason": "SERIES_TOUCHES_RANGE_BOUND",
+          "margin": 0,
+          "saturated": true
+        },
+        {
+          "point": {
+            "length": 30,
+            "slope": 0.028,
+            "noise": 0.012,
+            "variant": 7
+          },
+          "intendedLabel": "UP",
+          "valid": false,
+          "realizedLabel": "SATURATED",
+          "reason": "SERIES_TOUCHES_RANGE_BOUND",
+          "margin": 0,
+          "saturated": true
+        },
+        {
+          "point": {
+            "length": 30,
+            "slope": 0.028,
+            "noise": 0.024,
+            "variant": 0
+          },
+          "intendedLabel": "UP",
+          "valid": false,
+          "realizedLabel": "SATURATED",
+          "reason": "SERIES_TOUCHES_RANGE_BOUND",
+          "margin": 0,
+          "saturated": true
+        },
+        {
+          "point": {
+            "length": 30,
+            "slope": 0.028,
+            "noise": 0.024,
+            "variant": 3
+          },
+          "intendedLabel": "UP",
+          "valid": false,
+          "realizedLabel": "SATURATED",
+          "reason": "SERIES_TOUCHES_RANGE_BOUND",
+          "margin": 0,
+          "saturated": true
+        },
+        {
+          "point": {
+            "length": 30,
+            "slope": 0.028,
+            "noise": 0.024,
+            "variant": 7
+          },
+          "intendedLabel": "UP",
+          "valid": false,
+          "realizedLabel": "SATURATED",
+          "reason": "SERIES_TOUCHES_RANGE_BOUND",
+          "margin": 0,
+          "saturated": true
+        }
+      ]
+    },
+    {
+      "familyId": "direction/RAMP_DOWN",
+      "intendedLabel": "DOWN",
+      "swept": 144,
+      "valid": 132,
+      "mislabelled": 12,
+      "ambiguous": 0,
+      "saturatedCases": 12,
+      "mislabelledShare": 0.083333,
+      "minMargin": 0.065356,
+      "failureReasons": [
+        "SERIES_TOUCHES_RANGE_BOUND"
+      ],
+      "extremeFailures": [
+        {
+          "point": {
+            "length": 30,
+            "slope": 0.028,
+            "noise": 0,
+            "variant": 0
+          },
+          "reason": "SERIES_TOUCHES_RANGE_BOUND"
+        },
+        {
+          "point": {
+            "length": 30,
+            "slope": 0.028,
+            "noise": 0,
+            "variant": 3
+          },
+          "reason": "SERIES_TOUCHES_RANGE_BOUND"
+        },
+        {
+          "point": {
+            "length": 30,
+            "slope": 0.028,
+            "noise": 0,
+            "variant": 7
+          },
+          "reason": "SERIES_TOUCHES_RANGE_BOUND"
+        },
+        {
+          "point": {
+            "length": 30,
+            "slope": 0.028,
+            "noise": 0.006,
+            "variant": 0
+          },
+          "reason": "SERIES_TOUCHES_RANGE_BOUND"
+        },
+        {
+          "point": {
+            "length": 30,
+            "slope": 0.028,
+            "noise": 0.006,
+            "variant": 3
+          },
+          "reason": "SERIES_TOUCHES_RANGE_BOUND"
+        },
+        {
+          "point": {
+            "length": 30,
+            "slope": 0.028,
+            "noise": 0.006,
+            "variant": 7
+          },
+          "reason": "SERIES_TOUCHES_RANGE_BOUND"
+        },
+        {
+          "point": {
+            "length": 30,
+            "slope": 0.028,
+            "noise": 0.012,
+            "variant": 0
+          },
+          "reason": "SERIES_TOUCHES_RANGE_BOUND"
+        },
+        {
+          "point": {
+            "length": 30,
+            "slope": 0.028,
+            "noise": 0.012,
+            "variant": 3
+          },
+          "reason": "SERIES_TOUCHES_RANGE_BOUND"
+        }
+      ],
+      "rows": [
+        {
+          "point": {
+            "length": 30,
+            "slope": 0.028,
+            "noise": 0,
+            "variant": 0
+          },
+          "intendedLabel": "DOWN",
+          "valid": false,
+          "realizedLabel": "SATURATED",
+          "reason": "SERIES_TOUCHES_RANGE_BOUND",
+          "margin": 0,
+          "saturated": true
+        },
+        {
+          "point": {
+            "length": 30,
+            "slope": 0.028,
+            "noise": 0,
+            "variant": 3
+          },
+          "intendedLabel": "DOWN",
+          "valid": false,
+          "realizedLabel": "SATURATED",
+          "reason": "SERIES_TOUCHES_RANGE_BOUND",
+          "margin": 0,
+          "saturated": true
+        },
+        {
+          "point": {
+            "length": 30,
+            "slope": 0.028,
+            "noise": 0,
+            "variant": 7
+          },
+          "intendedLabel": "DOWN",
+          "valid": false,
+          "realizedLabel": "SATURATED",
+          "reason": "SERIES_TOUCHES_RANGE_BOUND",
+          "margin": 0,
+          "saturated": true
+        },
+        {
+          "point": {
+            "length": 30,
+            "slope": 0.028,
+            "noise": 0.006,
+            "variant": 0
+          },
+          "intendedLabel": "DOWN",
+          "valid": false,
+          "realizedLabel": "SATURATED",
+          "reason": "SERIES_TOUCHES_RANGE_BOUND",
+          "margin": 0,
+          "saturated": true
+        },
+        {
+          "point": {
+            "length": 30,
+            "slope": 0.028,
+            "noise": 0.006,
+            "variant": 3
+          },
+          "intendedLabel": "DOWN",
+          "valid": false,
+          "realizedLabel": "SATURATED",
+          "reason": "SERIES_TOUCHES_RANGE_BOUND",
+          "margin": 0,
+          "saturated": true
+        },
+        {
+          "point": {
+            "length": 30,
+            "slope": 0.028,
+            "noise": 0.006,
+            "variant": 7
+          },
+          "intendedLabel": "DOWN",
+          "valid": false,
+          "realizedLabel": "SATURATED",
+          "reason": "SERIES_TOUCHES_RANGE_BOUND",
+          "margin": 0,
+          "saturated": true
+        },
+        {
+          "point": {
+            "length": 30,
+            "slope": 0.028,
+            "noise": 0.012,
+            "variant": 0
+          },
+          "intendedLabel": "DOWN",
+          "valid": false,
+          "realizedLabel": "SATURATED",
+          "reason": "SERIES_TOUCHES_RANGE_BOUND",
+          "margin": 0,
+          "saturated": true
+        },
+        {
+          "point": {
+            "length": 30,
+            "slope": 0.028,
+            "noise": 0.012,
+            "variant": 3
+          },
+          "intendedLabel": "DOWN",
+          "valid": false,
+          "realizedLabel": "SATURATED",
+          "reason": "SERIES_TOUCHES_RANGE_BOUND",
+          "margin": 0,
+          "saturated": true
+        },
+        {
+          "point": {
+            "length": 30,
+            "slope": 0.028,
+            "noise": 0.012,
+            "variant": 7
+          },
+          "intendedLabel": "DOWN",
+          "valid": false,
+          "realizedLabel": "SATURATED",
+          "reason": "SERIES_TOUCHES_RANGE_BOUND",
+          "margin": 0,
+          "saturated": true
+        },
+        {
+          "point": {
+            "length": 30,
+            "slope": 0.028,
+            "noise": 0.024,
+            "variant": 0
+          },
+          "intendedLabel": "DOWN",
+          "valid": false,
+          "realizedLabel": "SATURATED",
+          "reason": "SERIES_TOUCHES_RANGE_BOUND",
+          "margin": 0,
+          "saturated": true
+        },
+        {
+          "point": {
+            "length": 30,
+            "slope": 0.028,
+            "noise": 0.024,
+            "variant": 3
+          },
+          "intendedLabel": "DOWN",
+          "valid": false,
+          "realizedLabel": "SATURATED",
+          "reason": "SERIES_TOUCHES_RANGE_BOUND",
+          "margin": 0,
+          "saturated": true
+        },
+        {
+          "point": {
+            "length": 30,
+            "slope": 0.028,
+            "noise": 0.024,
+            "variant": 7
+          },
+          "intendedLabel": "DOWN",
+          "valid": false,
+          "realizedLabel": "SATURATED",
+          "reason": "SERIES_TOUCHES_RANGE_BOUND",
+          "margin": 0,
+          "saturated": true
+        }
+      ]
+    },
+    {
+      "familyId": "direction/FLAT",
+      "intendedLabel": "STABLE",
+      "swept": 9,
+      "valid": 9,
+      "mislabelled": 0,
+      "ambiguous": 9,
+      "saturatedCases": 0,
+      "mislabelledShare": 0,
+      "minMargin": 0.0008,
+      "failureReasons": [],
+      "extremeFailures": [],
+      "rows": [
+        {
+          "point": {
+            "length": 18,
+            "variant": 0
+          },
+          "intendedLabel": "STABLE",
+          "valid": true,
+          "realizedLabel": "STABLE",
+          "reason": null,
+          "margin": 0.0008,
+          "saturated": false
+        },
+        {
+          "point": {
+            "length": 18,
+            "variant": 3
+          },
+          "intendedLabel": "STABLE",
+          "valid": true,
+          "realizedLabel": "STABLE",
+          "reason": null,
+          "margin": 0.0008,
+          "saturated": false
+        },
+        {
+          "point": {
+            "length": 18,
+            "variant": 7
+          },
+          "intendedLabel": "STABLE",
+          "valid": true,
+          "realizedLabel": "STABLE",
+          "reason": null,
+          "margin": 0.0008,
+          "saturated": false
+        },
+        {
+          "point": {
+            "length": 24,
+            "variant": 0
+          },
+          "intendedLabel": "STABLE",
+          "valid": true,
+          "realizedLabel": "STABLE",
+          "reason": null,
+          "margin": 0.0008,
+          "saturated": false
+        },
+        {
+          "point": {
+            "length": 24,
+            "variant": 3
+          },
+          "intendedLabel": "STABLE",
+          "valid": true,
+          "realizedLabel": "STABLE",
+          "reason": null,
+          "margin": 0.0008,
+          "saturated": false
+        },
+        {
+          "point": {
+            "length": 24,
+            "variant": 7
+          },
+          "intendedLabel": "STABLE",
+          "valid": true,
+          "realizedLabel": "STABLE",
+          "reason": null,
+          "margin": 0.0008,
+          "saturated": false
+        },
+        {
+          "point": {
+            "length": 30,
+            "variant": 0
+          },
+          "intendedLabel": "STABLE",
+          "valid": true,
+          "realizedLabel": "STABLE",
+          "reason": null,
+          "margin": 0.0008,
+          "saturated": false
+        },
+        {
+          "point": {
+            "length": 30,
+            "variant": 3
+          },
+          "intendedLabel": "STABLE",
+          "valid": true,
+          "realizedLabel": "STABLE",
+          "reason": null,
+          "margin": 0.0008,
+          "saturated": false
+        },
+        {
+          "point": {
+            "length": 30,
+            "variant": 7
+          },
+          "intendedLabel": "STABLE",
+          "valid": true,
+          "realizedLabel": "STABLE",
+          "reason": null,
+          "margin": 0.0008,
+          "saturated": false
+        }
+      ]
+    },
+    {
+      "familyId": "volatility/ALTERNATING_HIGH",
+      "intendedLabel": "HIGH_VOLATILITY",
+      "swept": 12,
+      "valid": 12,
+      "mislabelled": 0,
+      "ambiguous": 0,
+      "saturatedCases": 0,
+      "mislabelledShare": 0,
+      "minMargin": 0.24,
+      "failureReasons": [],
+      "extremeFailures": [],
+      "rows": [
+        {
+          "point": {
+            "length": 18,
+            "amplitude": 0.18
+          },
+          "intendedLabel": "HIGH_VOLATILITY",
+          "valid": true,
+          "realizedLabel": "HIGH_VOLATILITY",
+          "reason": null,
+          "margin": 0.24,
+          "saturated": false
+        },
+        {
+          "point": {
+            "length": 18,
+            "amplitude": 0.26
+          },
+          "intendedLabel": "HIGH_VOLATILITY",
+          "valid": true,
+          "realizedLabel": "HIGH_VOLATILITY",
+          "reason": null,
+          "margin": 0.4,
+          "saturated": false
+        },
+        {
+          "point": {
+            "length": 18,
+            "amplitude": 0.34
+          },
+          "intendedLabel": "HIGH_VOLATILITY",
+          "valid": true,
+          "realizedLabel": "HIGH_VOLATILITY",
+          "reason": null,
+          "margin": 0.56,
+          "saturated": false
+        },
+        {
+          "point": {
+            "length": 18,
+            "amplitude": 0.38
+          },
+          "intendedLabel": "HIGH_VOLATILITY",
+          "valid": true,
+          "realizedLabel": "HIGH_VOLATILITY",
+          "reason": null,
+          "margin": 0.64,
+          "saturated": false
+        },
+        {
+          "point": {
+            "length": 24,
+            "amplitude": 0.18
+          },
+          "intendedLabel": "HIGH_VOLATILITY",
+          "valid": true,
+          "realizedLabel": "HIGH_VOLATILITY",
+          "reason": null,
+          "margin": 0.24,
+          "saturated": false
+        },
+        {
+          "point": {
+            "length": 24,
+            "amplitude": 0.26
+          },
+          "intendedLabel": "HIGH_VOLATILITY",
+          "valid": true,
+          "realizedLabel": "HIGH_VOLATILITY",
+          "reason": null,
+          "margin": 0.4,
+          "saturated": false
+        },
+        {
+          "point": {
+            "length": 24,
+            "amplitude": 0.34
+          },
+          "intendedLabel": "HIGH_VOLATILITY",
+          "valid": true,
+          "realizedLabel": "HIGH_VOLATILITY",
+          "reason": null,
+          "margin": 0.56,
+          "saturated": false
+        },
+        {
+          "point": {
+            "length": 24,
+            "amplitude": 0.38
+          },
+          "intendedLabel": "HIGH_VOLATILITY",
+          "valid": true,
+          "realizedLabel": "HIGH_VOLATILITY",
+          "reason": null,
+          "margin": 0.64,
+          "saturated": false
+        },
+        {
+          "point": {
+            "length": 30,
+            "amplitude": 0.18
+          },
+          "intendedLabel": "HIGH_VOLATILITY",
+          "valid": true,
+          "realizedLabel": "HIGH_VOLATILITY",
+          "reason": null,
+          "margin": 0.24,
+          "saturated": false
+        },
+        {
+          "point": {
+            "length": 30,
+            "amplitude": 0.26
+          },
+          "intendedLabel": "HIGH_VOLATILITY",
+          "valid": true,
+          "realizedLabel": "HIGH_VOLATILITY",
+          "reason": null,
+          "margin": 0.4,
+          "saturated": false
+        },
+        {
+          "point": {
+            "length": 30,
+            "amplitude": 0.34
+          },
+          "intendedLabel": "HIGH_VOLATILITY",
+          "valid": true,
+          "realizedLabel": "HIGH_VOLATILITY",
+          "reason": null,
+          "margin": 0.56,
+          "saturated": false
+        },
+        {
+          "point": {
+            "length": 30,
+            "amplitude": 0.38
+          },
+          "intendedLabel": "HIGH_VOLATILITY",
+          "valid": true,
+          "realizedLabel": "HIGH_VOLATILITY",
+          "reason": null,
+          "margin": 0.64,
+          "saturated": false
+        }
+      ]
+    },
+    {
+      "familyId": "volatility/ALTERNATING_LOW",
+      "intendedLabel": "LOW_VOLATILITY",
+      "swept": 12,
+      "valid": 12,
+      "mislabelled": 0,
+      "ambiguous": 0,
+      "saturatedCases": 0,
+      "mislabelledShare": 0,
+      "minMargin": 0.018,
+      "failureReasons": [],
+      "extremeFailures": [],
+      "rows": [
+        {
+          "point": {
+            "length": 18,
+            "amplitude": 0.004
+          },
+          "intendedLabel": "LOW_VOLATILITY",
+          "valid": true,
+          "realizedLabel": "LOW_VOLATILITY",
+          "reason": null,
+          "margin": 0.042,
+          "saturated": false
+        },
+        {
+          "point": {
+            "length": 18,
+            "amplitude": 0.008
+          },
+          "intendedLabel": "LOW_VOLATILITY",
+          "valid": true,
+          "realizedLabel": "LOW_VOLATILITY",
+          "reason": null,
+          "margin": 0.034,
+          "saturated": false
+        },
+        {
+          "point": {
+            "length": 18,
+            "amplitude": 0.012
+          },
+          "intendedLabel": "LOW_VOLATILITY",
+          "valid": true,
+          "realizedLabel": "LOW_VOLATILITY",
+          "reason": null,
+          "margin": 0.026,
+          "saturated": false
+        },
+        {
+          "point": {
+            "length": 18,
+            "amplitude": 0.016
+          },
+          "intendedLabel": "LOW_VOLATILITY",
+          "valid": true,
+          "realizedLabel": "LOW_VOLATILITY",
+          "reason": null,
+          "margin": 0.018,
+          "saturated": false
+        },
+        {
+          "point": {
+            "length": 24,
+            "amplitude": 0.004
+          },
+          "intendedLabel": "LOW_VOLATILITY",
+          "valid": true,
+          "realizedLabel": "LOW_VOLATILITY",
+          "reason": null,
+          "margin": 0.042,
+          "saturated": false
+        },
+        {
+          "point": {
+            "length": 24,
+            "amplitude": 0.008
+          },
+          "intendedLabel": "LOW_VOLATILITY",
+          "valid": true,
+          "realizedLabel": "LOW_VOLATILITY",
+          "reason": null,
+          "margin": 0.034,
+          "saturated": false
+        },
+        {
+          "point": {
+            "length": 24,
+            "amplitude": 0.012
+          },
+          "intendedLabel": "LOW_VOLATILITY",
+          "valid": true,
+          "realizedLabel": "LOW_VOLATILITY",
+          "reason": null,
+          "margin": 0.026,
+          "saturated": false
+        },
+        {
+          "point": {
+            "length": 24,
+            "amplitude": 0.016
+          },
+          "intendedLabel": "LOW_VOLATILITY",
+          "valid": true,
+          "realizedLabel": "LOW_VOLATILITY",
+          "reason": null,
+          "margin": 0.018,
+          "saturated": false
+        },
+        {
+          "point": {
+            "length": 30,
+            "amplitude": 0.004
+          },
+          "intendedLabel": "LOW_VOLATILITY",
+          "valid": true,
+          "realizedLabel": "LOW_VOLATILITY",
+          "reason": null,
+          "margin": 0.042,
+          "saturated": false
+        },
+        {
+          "point": {
+            "length": 30,
+            "amplitude": 0.008
+          },
+          "intendedLabel": "LOW_VOLATILITY",
+          "valid": true,
+          "realizedLabel": "LOW_VOLATILITY",
+          "reason": null,
+          "margin": 0.034,
+          "saturated": false
+        },
+        {
+          "point": {
+            "length": 30,
+            "amplitude": 0.012
+          },
+          "intendedLabel": "LOW_VOLATILITY",
+          "valid": true,
+          "realizedLabel": "LOW_VOLATILITY",
+          "reason": null,
+          "margin": 0.026,
+          "saturated": false
+        },
+        {
+          "point": {
+            "length": 30,
+            "amplitude": 0.016
+          },
+          "intendedLabel": "LOW_VOLATILITY",
+          "valid": true,
+          "realizedLabel": "LOW_VOLATILITY",
+          "reason": null,
+          "margin": 0.018,
+          "saturated": false
+        }
+      ]
+    },
+    {
+      "familyId": "cycle/PERIODIC",
+      "intendedLabel": "CYCLICAL",
+      "swept": 12,
+      "valid": 12,
+      "mislabelled": 0,
+      "ambiguous": 12,
+      "saturatedCases": 0,
+      "mislabelledShare": 0,
+      "minMargin": 0.000001,
+      "failureReasons": [],
+      "extremeFailures": [],
+      "rows": [
+        {
+          "point": {
+            "length": 18,
+            "period": 3
+          },
+          "intendedLabel": "CYCLICAL",
+          "valid": true,
+          "realizedLabel": "CYCLICAL",
+          "reason": null,
+          "margin": 0.000001,
+          "saturated": false
+        },
+        {
+          "point": {
+            "length": 18,
+            "period": 4
+          },
+          "intendedLabel": "CYCLICAL",
+          "valid": true,
+          "realizedLabel": "CYCLICAL",
+          "reason": null,
+          "margin": 0.000001,
+          "saturated": false
+        },
+        {
+          "point": {
+            "length": 18,
+            "period": 5
+          },
+          "intendedLabel": "CYCLICAL",
+          "valid": true,
+          "realizedLabel": "CYCLICAL",
+          "reason": null,
+          "margin": 0.000001,
+          "saturated": false
+        },
+        {
+          "point": {
+            "length": 18,
+            "period": 6
+          },
+          "intendedLabel": "CYCLICAL",
+          "valid": true,
+          "realizedLabel": "CYCLICAL",
+          "reason": null,
+          "margin": 0.000001,
+          "saturated": false
+        },
+        {
+          "point": {
+            "length": 24,
+            "period": 3
+          },
+          "intendedLabel": "CYCLICAL",
+          "valid": true,
+          "realizedLabel": "CYCLICAL",
+          "reason": null,
+          "margin": 0.000001,
+          "saturated": false
+        },
+        {
+          "point": {
+            "length": 24,
+            "period": 4
+          },
+          "intendedLabel": "CYCLICAL",
+          "valid": true,
+          "realizedLabel": "CYCLICAL",
+          "reason": null,
+          "margin": 0.000001,
+          "saturated": false
+        },
+        {
+          "point": {
+            "length": 24,
+            "period": 5
+          },
+          "intendedLabel": "CYCLICAL",
+          "valid": true,
+          "realizedLabel": "CYCLICAL",
+          "reason": null,
+          "margin": 0.000001,
+          "saturated": false
+        },
+        {
+          "point": {
+            "length": 24,
+            "period": 6
+          },
+          "intendedLabel": "CYCLICAL",
+          "valid": true,
+          "realizedLabel": "CYCLICAL",
+          "reason": null,
+          "margin": 0.000001,
+          "saturated": false
+        },
+        {
+          "point": {
+            "length": 30,
+            "period": 3
+          },
+          "intendedLabel": "CYCLICAL",
+          "valid": true,
+          "realizedLabel": "CYCLICAL",
+          "reason": null,
+          "margin": 0.000001,
+          "saturated": false
+        },
+        {
+          "point": {
+            "length": 30,
+            "period": 4
+          },
+          "intendedLabel": "CYCLICAL",
+          "valid": true,
+          "realizedLabel": "CYCLICAL",
+          "reason": null,
+          "margin": 0.000001,
+          "saturated": false
+        },
+        {
+          "point": {
+            "length": 30,
+            "period": 5
+          },
+          "intendedLabel": "CYCLICAL",
+          "valid": true,
+          "realizedLabel": "CYCLICAL",
+          "reason": null,
+          "margin": 0.000001,
+          "saturated": false
+        },
+        {
+          "point": {
+            "length": 30,
+            "period": 6
+          },
+          "intendedLabel": "CYCLICAL",
+          "valid": true,
+          "realizedLabel": "CYCLICAL",
+          "reason": null,
+          "margin": 0.000001,
+          "saturated": false
+        }
+      ]
+    },
+    {
+      "familyId": "cycle/MONOTONE",
+      "intendedLabel": "NOT_CYCLICAL",
+      "swept": 144,
+      "valid": 132,
+      "mislabelled": 12,
+      "ambiguous": 132,
+      "saturatedCases": 12,
+      "mislabelledShare": 0.083333,
+      "minMargin": 0,
+      "failureReasons": [
+        "SERIES_TOUCHES_RANGE_BOUND"
+      ],
+      "extremeFailures": [
+        {
+          "point": {
+            "length": 30,
+            "slope": 0.028,
+            "noise": 0,
+            "variant": 0
+          },
+          "reason": "SERIES_TOUCHES_RANGE_BOUND"
+        },
+        {
+          "point": {
+            "length": 30,
+            "slope": 0.028,
+            "noise": 0,
+            "variant": 3
+          },
+          "reason": "SERIES_TOUCHES_RANGE_BOUND"
+        },
+        {
+          "point": {
+            "length": 30,
+            "slope": 0.028,
+            "noise": 0,
+            "variant": 7
+          },
+          "reason": "SERIES_TOUCHES_RANGE_BOUND"
+        },
+        {
+          "point": {
+            "length": 30,
+            "slope": 0.028,
+            "noise": 0.006,
+            "variant": 0
+          },
+          "reason": "SERIES_TOUCHES_RANGE_BOUND"
+        },
+        {
+          "point": {
+            "length": 30,
+            "slope": 0.028,
+            "noise": 0.006,
+            "variant": 3
+          },
+          "reason": "SERIES_TOUCHES_RANGE_BOUND"
+        },
+        {
+          "point": {
+            "length": 30,
+            "slope": 0.028,
+            "noise": 0.006,
+            "variant": 7
+          },
+          "reason": "SERIES_TOUCHES_RANGE_BOUND"
+        },
+        {
+          "point": {
+            "length": 30,
+            "slope": 0.028,
+            "noise": 0.012,
+            "variant": 0
+          },
+          "reason": "SERIES_TOUCHES_RANGE_BOUND"
+        },
+        {
+          "point": {
+            "length": 30,
+            "slope": 0.028,
+            "noise": 0.012,
+            "variant": 3
+          },
+          "reason": "SERIES_TOUCHES_RANGE_BOUND"
+        }
+      ],
+      "rows": [
+        {
+          "point": {
+            "length": 30,
+            "slope": 0.028,
+            "noise": 0,
+            "variant": 0
+          },
+          "intendedLabel": "NOT_CYCLICAL",
+          "valid": false,
+          "realizedLabel": "SATURATED",
+          "reason": "SERIES_TOUCHES_RANGE_BOUND",
+          "margin": 0,
+          "saturated": true
+        },
+        {
+          "point": {
+            "length": 30,
+            "slope": 0.028,
+            "noise": 0,
+            "variant": 3
+          },
+          "intendedLabel": "NOT_CYCLICAL",
+          "valid": false,
+          "realizedLabel": "SATURATED",
+          "reason": "SERIES_TOUCHES_RANGE_BOUND",
+          "margin": 0,
+          "saturated": true
+        },
+        {
+          "point": {
+            "length": 30,
+            "slope": 0.028,
+            "noise": 0,
+            "variant": 7
+          },
+          "intendedLabel": "NOT_CYCLICAL",
+          "valid": false,
+          "realizedLabel": "SATURATED",
+          "reason": "SERIES_TOUCHES_RANGE_BOUND",
+          "margin": 0,
+          "saturated": true
+        },
+        {
+          "point": {
+            "length": 30,
+            "slope": 0.028,
+            "noise": 0.006,
+            "variant": 0
+          },
+          "intendedLabel": "NOT_CYCLICAL",
+          "valid": false,
+          "realizedLabel": "SATURATED",
+          "reason": "SERIES_TOUCHES_RANGE_BOUND",
+          "margin": 0,
+          "saturated": true
+        },
+        {
+          "point": {
+            "length": 30,
+            "slope": 0.028,
+            "noise": 0.006,
+            "variant": 3
+          },
+          "intendedLabel": "NOT_CYCLICAL",
+          "valid": false,
+          "realizedLabel": "SATURATED",
+          "reason": "SERIES_TOUCHES_RANGE_BOUND",
+          "margin": 0,
+          "saturated": true
+        },
+        {
+          "point": {
+            "length": 30,
+            "slope": 0.028,
+            "noise": 0.006,
+            "variant": 7
+          },
+          "intendedLabel": "NOT_CYCLICAL",
+          "valid": false,
+          "realizedLabel": "SATURATED",
+          "reason": "SERIES_TOUCHES_RANGE_BOUND",
+          "margin": 0,
+          "saturated": true
+        },
+        {
+          "point": {
+            "length": 30,
+            "slope": 0.028,
+            "noise": 0.012,
+            "variant": 0
+          },
+          "intendedLabel": "NOT_CYCLICAL",
+          "valid": false,
+          "realizedLabel": "SATURATED",
+          "reason": "SERIES_TOUCHES_RANGE_BOUND",
+          "margin": 0,
+          "saturated": true
+        },
+        {
+          "point": {
+            "length": 30,
+            "slope": 0.028,
+            "noise": 0.012,
+            "variant": 3
+          },
+          "intendedLabel": "NOT_CYCLICAL",
+          "valid": false,
+          "realizedLabel": "SATURATED",
+          "reason": "SERIES_TOUCHES_RANGE_BOUND",
+          "margin": 0,
+          "saturated": true
+        },
+        {
+          "point": {
+            "length": 30,
+            "slope": 0.028,
+            "noise": 0.012,
+            "variant": 7
+          },
+          "intendedLabel": "NOT_CYCLICAL",
+          "valid": false,
+          "realizedLabel": "SATURATED",
+          "reason": "SERIES_TOUCHES_RANGE_BOUND",
+          "margin": 0,
+          "saturated": true
+        },
+        {
+          "point": {
+            "length": 30,
+            "slope": 0.028,
+            "noise": 0.024,
+            "variant": 0
+          },
+          "intendedLabel": "NOT_CYCLICAL",
+          "valid": false,
+          "realizedLabel": "SATURATED",
+          "reason": "SERIES_TOUCHES_RANGE_BOUND",
+          "margin": 0,
+          "saturated": true
+        },
+        {
+          "point": {
+            "length": 30,
+            "slope": 0.028,
+            "noise": 0.024,
+            "variant": 3
+          },
+          "intendedLabel": "NOT_CYCLICAL",
+          "valid": false,
+          "realizedLabel": "SATURATED",
+          "reason": "SERIES_TOUCHES_RANGE_BOUND",
+          "margin": 0,
+          "saturated": true
+        },
+        {
+          "point": {
+            "length": 30,
+            "slope": 0.028,
+            "noise": 0.024,
+            "variant": 7
+          },
+          "intendedLabel": "NOT_CYCLICAL",
+          "valid": false,
+          "realizedLabel": "SATURATED",
+          "reason": "SERIES_TOUCHES_RANGE_BOUND",
+          "margin": 0,
+          "saturated": true
+        }
+      ]
+    },
+    {
+      "familyId": "reversal/LATE_REVERSAL",
+      "intendedLabel": "REVERSAL",
+      "swept": 216,
+      "valid": 210,
+      "mislabelled": 6,
+      "ambiguous": 102,
+      "saturatedCases": 0,
+      "mislabelledShare": 0.027778,
+      "minMargin": 0,
+      "failureReasons": [
+        "NO_MEASURABLE_REVERSAL_IN_PRODUCED_SERIES"
+      ],
+      "extremeFailures": [
+        {
+          "point": {
+            "turn": 9,
+            "tail": 6,
+            "slope": 0.004,
+            "noise": 0.024,
+            "variant": 0
+          },
+          "reason": "NO_MEASURABLE_REVERSAL_IN_PRODUCED_SERIES"
+        },
+        {
+          "point": {
+            "turn": 13,
+            "tail": 6,
+            "slope": 0.004,
+            "noise": 0,
+            "variant": 0
+          },
+          "reason": "NO_MEASURABLE_REVERSAL_IN_PRODUCED_SERIES"
+        },
+        {
+          "point": {
+            "turn": 13,
+            "tail": 6,
+            "slope": 0.004,
+            "noise": 0,
+            "variant": 3
+          },
+          "reason": "NO_MEASURABLE_REVERSAL_IN_PRODUCED_SERIES"
+        },
+        {
+          "point": {
+            "turn": 13,
+            "tail": 6,
+            "slope": 0.004,
+            "noise": 0,
+            "variant": 7
+          },
+          "reason": "NO_MEASURABLE_REVERSAL_IN_PRODUCED_SERIES"
+        },
+        {
+          "point": {
+            "turn": 13,
+            "tail": 6,
+            "slope": 0.004,
+            "noise": 0.024,
+            "variant": 0
+          },
+          "reason": "NO_MEASURABLE_REVERSAL_IN_PRODUCED_SERIES"
+        },
+        {
+          "point": {
+            "turn": 13,
+            "tail": 9,
+            "slope": 0.004,
+            "noise": 0.024,
+            "variant": 0
+          },
+          "reason": "NO_MEASURABLE_REVERSAL_IN_PRODUCED_SERIES"
+        }
+      ],
+      "rows": [
+        {
+          "point": {
+            "turn": 9,
+            "tail": 6,
+            "slope": 0.004,
+            "noise": 0.024,
+            "variant": 0
+          },
+          "intendedLabel": "REVERSAL",
+          "valid": false,
+          "realizedLabel": "NO_REVERSAL",
+          "reason": "NO_MEASURABLE_REVERSAL_IN_PRODUCED_SERIES",
+          "margin": -0.00056,
+          "saturated": false
+        },
+        {
+          "point": {
+            "turn": 13,
+            "tail": 6,
+            "slope": 0.004,
+            "noise": 0,
+            "variant": 0
+          },
+          "intendedLabel": "REVERSAL",
+          "valid": false,
+          "realizedLabel": "NO_REVERSAL",
+          "reason": "NO_MEASURABLE_REVERSAL_IN_PRODUCED_SERIES",
+          "margin": 0,
+          "saturated": false
+        },
+        {
+          "point": {
+            "turn": 13,
+            "tail": 6,
+            "slope": 0.004,
+            "noise": 0,
+            "variant": 3
+          },
+          "intendedLabel": "REVERSAL",
+          "valid": false,
+          "realizedLabel": "NO_REVERSAL",
+          "reason": "NO_MEASURABLE_REVERSAL_IN_PRODUCED_SERIES",
+          "margin": 0,
+          "saturated": false
+        },
+        {
+          "point": {
+            "turn": 13,
+            "tail": 6,
+            "slope": 0.004,
+            "noise": 0,
+            "variant": 7
+          },
+          "intendedLabel": "REVERSAL",
+          "valid": false,
+          "realizedLabel": "NO_REVERSAL",
+          "reason": "NO_MEASURABLE_REVERSAL_IN_PRODUCED_SERIES",
+          "margin": 0,
+          "saturated": false
+        },
+        {
+          "point": {
+            "turn": 13,
+            "tail": 6,
+            "slope": 0.004,
+            "noise": 0.024,
+            "variant": 0
+          },
+          "intendedLabel": "REVERSAL",
+          "valid": false,
+          "realizedLabel": "NO_REVERSAL",
+          "reason": "NO_MEASURABLE_REVERSAL_IN_PRODUCED_SERIES",
+          "margin": -0.00049,
+          "saturated": false
+        },
+        {
+          "point": {
+            "turn": 13,
+            "tail": 9,
+            "slope": 0.004,
+            "noise": 0.024,
+            "variant": 0
+          },
+          "intendedLabel": "REVERSAL",
+          "valid": false,
+          "realizedLabel": "NO_REVERSAL",
+          "reason": "NO_MEASURABLE_REVERSAL_IN_PRODUCED_SERIES",
+          "margin": -0.000164,
+          "saturated": false
+        }
+      ]
+    },
+    {
+      "familyId": "reversal/CONTINUING",
+      "intendedLabel": "NO_REVERSAL",
+      "swept": 216,
+      "valid": 205,
+      "mislabelled": 11,
+      "ambiguous": 205,
+      "saturatedCases": 0,
+      "mislabelledShare": 0.050926,
+      "minMargin": 0.000061,
+      "failureReasons": [
+        "PRODUCED_SERIES_CONTAINS_A_REVERSAL"
+      ],
+      "extremeFailures": [
+        {
+          "point": {
+            "turn": 6,
+            "tail": 13,
+            "slope": 0.004,
+            "noise": 0.024,
+            "variant": 3
+          },
+          "reason": "PRODUCED_SERIES_CONTAINS_A_REVERSAL"
+        },
+        {
+          "point": {
+            "turn": 6,
+            "tail": 13,
+            "slope": 0.004,
+            "noise": 0.024,
+            "variant": 7
+          },
+          "reason": "PRODUCED_SERIES_CONTAINS_A_REVERSAL"
+        },
+        {
+          "point": {
+            "turn": 9,
+            "tail": 9,
+            "slope": 0.004,
+            "noise": 0.024,
+            "variant": 0
+          },
+          "reason": "PRODUCED_SERIES_CONTAINS_A_REVERSAL"
+        },
+        {
+          "point": {
+            "turn": 9,
+            "tail": 9,
+            "slope": 0.004,
+            "noise": 0.024,
+            "variant": 3
+          },
+          "reason": "PRODUCED_SERIES_CONTAINS_A_REVERSAL"
+        },
+        {
+          "point": {
+            "turn": 9,
+            "tail": 9,
+            "slope": 0.004,
+            "noise": 0.024,
+            "variant": 7
+          },
+          "reason": "PRODUCED_SERIES_CONTAINS_A_REVERSAL"
+        },
+        {
+          "point": {
+            "turn": 9,
+            "tail": 13,
+            "slope": 0.004,
+            "noise": 0.024,
+            "variant": 0
+          },
+          "reason": "PRODUCED_SERIES_CONTAINS_A_REVERSAL"
+        },
+        {
+          "point": {
+            "turn": 9,
+            "tail": 13,
+            "slope": 0.004,
+            "noise": 0.024,
+            "variant": 3
+          },
+          "reason": "PRODUCED_SERIES_CONTAINS_A_REVERSAL"
+        },
+        {
+          "point": {
+            "turn": 13,
+            "tail": 6,
+            "slope": 0.004,
+            "noise": 0.024,
+            "variant": 3
+          },
+          "reason": "PRODUCED_SERIES_CONTAINS_A_REVERSAL"
+        }
+      ],
+      "rows": [
+        {
+          "point": {
+            "turn": 6,
+            "tail": 13,
+            "slope": 0.004,
+            "noise": 0.024,
+            "variant": 3
+          },
+          "intendedLabel": "NO_REVERSAL",
+          "valid": false,
+          "realizedLabel": "REVERSAL",
+          "reason": "PRODUCED_SERIES_CONTAINS_A_REVERSAL",
+          "margin": -0.000185,
+          "saturated": false
+        },
+        {
+          "point": {
+            "turn": 6,
+            "tail": 13,
+            "slope": 0.004,
+            "noise": 0.024,
+            "variant": 7
+          },
+          "intendedLabel": "NO_REVERSAL",
+          "valid": false,
+          "realizedLabel": "REVERSAL",
+          "reason": "PRODUCED_SERIES_CONTAINS_A_REVERSAL",
+          "margin": -0.000185,
+          "saturated": false
+        },
+        {
+          "point": {
+            "turn": 9,
+            "tail": 9,
+            "slope": 0.004,
+            "noise": 0.024,
+            "variant": 0
+          },
+          "intendedLabel": "NO_REVERSAL",
+          "valid": false,
+          "realizedLabel": "REVERSAL",
+          "reason": "PRODUCED_SERIES_CONTAINS_A_REVERSAL",
+          "margin": -0.000343,
+          "saturated": false
+        },
+        {
+          "point": {
+            "turn": 9,
+            "tail": 9,
+            "slope": 0.004,
+            "noise": 0.024,
+            "variant": 3
+          },
+          "intendedLabel": "NO_REVERSAL",
+          "valid": false,
+          "realizedLabel": "REVERSAL",
+          "reason": "PRODUCED_SERIES_CONTAINS_A_REVERSAL",
+          "margin": -0.000343,
+          "saturated": false
+        },
+        {
+          "point": {
+            "turn": 9,
+            "tail": 9,
+            "slope": 0.004,
+            "noise": 0.024,
+            "variant": 7
+          },
+          "intendedLabel": "NO_REVERSAL",
+          "valid": false,
+          "realizedLabel": "REVERSAL",
+          "reason": "PRODUCED_SERIES_CONTAINS_A_REVERSAL",
+          "margin": -0.000343,
+          "saturated": false
+        },
+        {
+          "point": {
+            "turn": 9,
+            "tail": 13,
+            "slope": 0.004,
+            "noise": 0.024,
+            "variant": 0
+          },
+          "intendedLabel": "NO_REVERSAL",
+          "valid": false,
+          "realizedLabel": "REVERSAL",
+          "reason": "PRODUCED_SERIES_CONTAINS_A_REVERSAL",
+          "margin": -0.000417,
+          "saturated": false
+        },
+        {
+          "point": {
+            "turn": 9,
+            "tail": 13,
+            "slope": 0.004,
+            "noise": 0.024,
+            "variant": 3
+          },
+          "intendedLabel": "NO_REVERSAL",
+          "valid": false,
+          "realizedLabel": "REVERSAL",
+          "reason": "PRODUCED_SERIES_CONTAINS_A_REVERSAL",
+          "margin": -0.000417,
+          "saturated": false
+        },
+        {
+          "point": {
+            "turn": 13,
+            "tail": 6,
+            "slope": 0.004,
+            "noise": 0.024,
+            "variant": 3
+          },
+          "intendedLabel": "NO_REVERSAL",
+          "valid": false,
+          "realizedLabel": "REVERSAL",
+          "reason": "PRODUCED_SERIES_CONTAINS_A_REVERSAL",
+          "margin": -0.000185,
+          "saturated": false
+        },
+        {
+          "point": {
+            "turn": 13,
+            "tail": 6,
+            "slope": 0.004,
+            "noise": 0.024,
+            "variant": 7
+          },
+          "intendedLabel": "NO_REVERSAL",
+          "valid": false,
+          "realizedLabel": "REVERSAL",
+          "reason": "PRODUCED_SERIES_CONTAINS_A_REVERSAL",
+          "margin": -0.000185,
+          "saturated": false
+        },
+        {
+          "point": {
+            "turn": 13,
+            "tail": 9,
+            "slope": 0.004,
+            "noise": 0.024,
+            "variant": 0
+          },
+          "intendedLabel": "NO_REVERSAL",
+          "valid": false,
+          "realizedLabel": "REVERSAL",
+          "reason": "PRODUCED_SERIES_CONTAINS_A_REVERSAL",
+          "margin": -0.000417,
+          "saturated": false
+        },
+        {
+          "point": {
+            "turn": 13,
+            "tail": 9,
+            "slope": 0.004,
+            "noise": 0.024,
+            "variant": 3
+          },
+          "intendedLabel": "NO_REVERSAL",
+          "valid": false,
+          "realizedLabel": "REVERSAL",
+          "reason": "PRODUCED_SERIES_CONTAINS_A_REVERSAL",
+          "margin": -0.000417,
+          "saturated": false
+        }
+      ]
+    },
+    {
+      "familyId": "regimeChange/LEVEL_SHIFT",
+      "intendedLabel": "LEVEL_CHANGE",
+      "swept": 12,
+      "valid": 12,
+      "mislabelled": 0,
+      "ambiguous": 0,
+      "saturatedCases": 0,
+      "mislabelledShare": 0,
+      "minMargin": 0.02,
+      "failureReasons": [],
+      "extremeFailures": [],
+      "rows": [
+        {
+          "point": {
+            "shift": 0.12,
+            "variant": 0
+          },
+          "intendedLabel": "LEVEL_CHANGE",
+          "valid": true,
+          "realizedLabel": "LEVEL_CHANGE",
+          "reason": null,
+          "margin": 0.02,
+          "saturated": false
+        },
+        {
+          "point": {
+            "shift": 0.12,
+            "variant": 3
+          },
+          "intendedLabel": "LEVEL_CHANGE",
+          "valid": true,
+          "realizedLabel": "LEVEL_CHANGE",
+          "reason": null,
+          "margin": 0.02,
+          "saturated": false
+        },
+        {
+          "point": {
+            "shift": 0.12,
+            "variant": 7
+          },
+          "intendedLabel": "LEVEL_CHANGE",
+          "valid": true,
+          "realizedLabel": "LEVEL_CHANGE",
+          "reason": null,
+          "margin": 0.02,
+          "saturated": false
+        },
+        {
+          "point": {
+            "shift": 0.2,
+            "variant": 0
+          },
+          "intendedLabel": "LEVEL_CHANGE",
+          "valid": true,
+          "realizedLabel": "LEVEL_CHANGE",
+          "reason": null,
+          "margin": 0.1,
+          "saturated": false
+        },
+        {
+          "point": {
+            "shift": 0.2,
+            "variant": 3
+          },
+          "intendedLabel": "LEVEL_CHANGE",
+          "valid": true,
+          "realizedLabel": "LEVEL_CHANGE",
+          "reason": null,
+          "margin": 0.1,
+          "saturated": false
+        },
+        {
+          "point": {
+            "shift": 0.2,
+            "variant": 7
+          },
+          "intendedLabel": "LEVEL_CHANGE",
+          "valid": true,
+          "realizedLabel": "LEVEL_CHANGE",
+          "reason": null,
+          "margin": 0.1,
+          "saturated": false
+        },
+        {
+          "point": {
+            "shift": 0.28,
+            "variant": 0
+          },
+          "intendedLabel": "LEVEL_CHANGE",
+          "valid": true,
+          "realizedLabel": "LEVEL_CHANGE",
+          "reason": null,
+          "margin": 0.18,
+          "saturated": false
+        },
+        {
+          "point": {
+            "shift": 0.28,
+            "variant": 3
+          },
+          "intendedLabel": "LEVEL_CHANGE",
+          "valid": true,
+          "realizedLabel": "LEVEL_CHANGE",
+          "reason": null,
+          "margin": 0.18,
+          "saturated": false
+        },
+        {
+          "point": {
+            "shift": 0.28,
+            "variant": 7
+          },
+          "intendedLabel": "LEVEL_CHANGE",
+          "valid": true,
+          "realizedLabel": "LEVEL_CHANGE",
+          "reason": null,
+          "margin": 0.18,
+          "saturated": false
+        },
+        {
+          "point": {
+            "shift": 0.32,
+            "variant": 0
+          },
+          "intendedLabel": "LEVEL_CHANGE",
+          "valid": true,
+          "realizedLabel": "LEVEL_CHANGE",
+          "reason": null,
+          "margin": 0.22,
+          "saturated": false
+        },
+        {
+          "point": {
+            "shift": 0.32,
+            "variant": 3
+          },
+          "intendedLabel": "LEVEL_CHANGE",
+          "valid": true,
+          "realizedLabel": "LEVEL_CHANGE",
+          "reason": null,
+          "margin": 0.22,
+          "saturated": false
+        },
+        {
+          "point": {
+            "shift": 0.32,
+            "variant": 7
+          },
+          "intendedLabel": "LEVEL_CHANGE",
+          "valid": true,
+          "realizedLabel": "LEVEL_CHANGE",
+          "reason": null,
+          "margin": 0.22,
+          "saturated": false
+        }
+      ]
+    },
+    {
+      "familyId": "regimeChange/STEADY",
+      "intendedLabel": "NO_CHANGE",
+      "swept": 9,
+      "valid": 9,
+      "mislabelled": 0,
+      "ambiguous": 9,
+      "saturatedCases": 0,
+      "mislabelledShare": 0,
+      "minMargin": 0.0008,
+      "failureReasons": [],
+      "extremeFailures": [],
+      "rows": [
+        {
+          "point": {
+            "length": 18,
+            "variant": 0
+          },
+          "intendedLabel": "NO_CHANGE",
+          "valid": true,
+          "realizedLabel": "NO_CHANGE",
+          "reason": null,
+          "margin": 0.0008,
+          "saturated": false
+        },
+        {
+          "point": {
+            "length": 18,
+            "variant": 3
+          },
+          "intendedLabel": "NO_CHANGE",
+          "valid": true,
+          "realizedLabel": "NO_CHANGE",
+          "reason": null,
+          "margin": 0.0008,
+          "saturated": false
+        },
+        {
+          "point": {
+            "length": 18,
+            "variant": 7
+          },
+          "intendedLabel": "NO_CHANGE",
+          "valid": true,
+          "realizedLabel": "NO_CHANGE",
+          "reason": null,
+          "margin": 0.0008,
+          "saturated": false
+        },
+        {
+          "point": {
+            "length": 24,
+            "variant": 0
+          },
+          "intendedLabel": "NO_CHANGE",
+          "valid": true,
+          "realizedLabel": "NO_CHANGE",
+          "reason": null,
+          "margin": 0.0008,
+          "saturated": false
+        },
+        {
+          "point": {
+            "length": 24,
+            "variant": 3
+          },
+          "intendedLabel": "NO_CHANGE",
+          "valid": true,
+          "realizedLabel": "NO_CHANGE",
+          "reason": null,
+          "margin": 0.0008,
+          "saturated": false
+        },
+        {
+          "point": {
+            "length": 24,
+            "variant": 7
+          },
+          "intendedLabel": "NO_CHANGE",
+          "valid": true,
+          "realizedLabel": "NO_CHANGE",
+          "reason": null,
+          "margin": 0.0008,
+          "saturated": false
+        },
+        {
+          "point": {
+            "length": 30,
+            "variant": 0
+          },
+          "intendedLabel": "NO_CHANGE",
+          "valid": true,
+          "realizedLabel": "NO_CHANGE",
+          "reason": null,
+          "margin": 0.0008,
+          "saturated": false
+        },
+        {
+          "point": {
+            "length": 30,
+            "variant": 3
+          },
+          "intendedLabel": "NO_CHANGE",
+          "valid": true,
+          "realizedLabel": "NO_CHANGE",
+          "reason": null,
+          "margin": 0.0008,
+          "saturated": false
+        },
+        {
+          "point": {
+            "length": 30,
+            "variant": 7
+          },
+          "intendedLabel": "NO_CHANGE",
+          "valid": true,
+          "realizedLabel": "NO_CHANGE",
+          "reason": null,
+          "margin": 0.0008,
+          "saturated": false
+        }
+      ]
+    },
+    {
+      "familyId": "persistence/SUSTAINED_RUN",
+      "intendedLabel": "PERSISTENT",
+      "swept": 144,
+      "valid": 105,
+      "mislabelled": 39,
+      "ambiguous": 0,
+      "saturatedCases": 12,
+      "mislabelledShare": 0.270833,
+      "minMargin": 0.28,
+      "failureReasons": [
+        "SERIES_TOUCHES_RANGE_BOUND",
+        "V1_SEMANTICS_SAY_NOT_PERSISTENT"
+      ],
+      "extremeFailures": [
+        {
+          "point": {
+            "length": 18,
+            "slope": 0.004,
+            "noise": 0.012,
+            "variant": 0
+          },
+          "reason": "V1_SEMANTICS_SAY_NOT_PERSISTENT"
+        },
+        {
+          "point": {
+            "length": 18,
+            "slope": 0.004,
+            "noise": 0.012,
+            "variant": 3
+          },
+          "reason": "V1_SEMANTICS_SAY_NOT_PERSISTENT"
+        },
+        {
+          "point": {
+            "length": 18,
+            "slope": 0.004,
+            "noise": 0.012,
+            "variant": 7
+          },
+          "reason": "V1_SEMANTICS_SAY_NOT_PERSISTENT"
+        },
+        {
+          "point": {
+            "length": 18,
+            "slope": 0.004,
+            "noise": 0.024,
+            "variant": 0
+          },
+          "reason": "V1_SEMANTICS_SAY_NOT_PERSISTENT"
+        },
+        {
+          "point": {
+            "length": 18,
+            "slope": 0.004,
+            "noise": 0.024,
+            "variant": 3
+          },
+          "reason": "V1_SEMANTICS_SAY_NOT_PERSISTENT"
+        },
+        {
+          "point": {
+            "length": 18,
+            "slope": 0.004,
+            "noise": 0.024,
+            "variant": 7
+          },
+          "reason": "V1_SEMANTICS_SAY_NOT_PERSISTENT"
+        },
+        {
+          "point": {
+            "length": 18,
+            "slope": 0.008,
+            "noise": 0.024,
+            "variant": 0
+          },
+          "reason": "V1_SEMANTICS_SAY_NOT_PERSISTENT"
+        },
+        {
+          "point": {
+            "length": 18,
+            "slope": 0.008,
+            "noise": 0.024,
+            "variant": 3
+          },
+          "reason": "V1_SEMANTICS_SAY_NOT_PERSISTENT"
+        }
+      ],
+      "rows": [
+        {
+          "point": {
+            "length": 18,
+            "slope": 0.004,
+            "noise": 0.012,
+            "variant": 0
+          },
+          "intendedLabel": "PERSISTENT",
+          "valid": false,
+          "realizedLabel": "NOT_PERSISTENT",
+          "reason": "V1_SEMANTICS_SAY_NOT_PERSISTENT",
+          "margin": 0.044706,
+          "saturated": false
+        },
+        {
+          "point": {
+            "length": 18,
+            "slope": 0.004,
+            "noise": 0.012,
+            "variant": 3
+          },
+          "intendedLabel": "PERSISTENT",
+          "valid": false,
+          "realizedLabel": "NOT_PERSISTENT",
+          "reason": "V1_SEMANTICS_SAY_NOT_PERSISTENT",
+          "margin": 0.044706,
+          "saturated": false
+        },
+        {
+          "point": {
+            "length": 18,
+            "slope": 0.004,
+            "noise": 0.012,
+            "variant": 7
+          },
+          "intendedLabel": "PERSISTENT",
+          "valid": false,
+          "realizedLabel": "NOT_PERSISTENT",
+          "reason": "V1_SEMANTICS_SAY_NOT_PERSISTENT",
+          "margin": 0.044706,
+          "saturated": false
+        },
+        {
+          "point": {
+            "length": 18,
+            "slope": 0.004,
+            "noise": 0.024,
+            "variant": 0
+          },
+          "intendedLabel": "PERSISTENT",
+          "valid": false,
+          "realizedLabel": "NOT_PERSISTENT",
+          "reason": "V1_SEMANTICS_SAY_NOT_PERSISTENT",
+          "margin": 0.044706,
+          "saturated": false
+        },
+        {
+          "point": {
+            "length": 18,
+            "slope": 0.004,
+            "noise": 0.024,
+            "variant": 3
+          },
+          "intendedLabel": "PERSISTENT",
+          "valid": false,
+          "realizedLabel": "NOT_PERSISTENT",
+          "reason": "V1_SEMANTICS_SAY_NOT_PERSISTENT",
+          "margin": 0.044706,
+          "saturated": false
+        },
+        {
+          "point": {
+            "length": 18,
+            "slope": 0.004,
+            "noise": 0.024,
+            "variant": 7
+          },
+          "intendedLabel": "PERSISTENT",
+          "valid": false,
+          "realizedLabel": "NOT_PERSISTENT",
+          "reason": "V1_SEMANTICS_SAY_NOT_PERSISTENT",
+          "margin": 0.044706,
+          "saturated": false
+        },
+        {
+          "point": {
+            "length": 18,
+            "slope": 0.008,
+            "noise": 0.024,
+            "variant": 0
+          },
+          "intendedLabel": "PERSISTENT",
+          "valid": false,
+          "realizedLabel": "NOT_PERSISTENT",
+          "reason": "V1_SEMANTICS_SAY_NOT_PERSISTENT",
+          "margin": 0.044706,
+          "saturated": false
+        },
+        {
+          "point": {
+            "length": 18,
+            "slope": 0.008,
+            "noise": 0.024,
+            "variant": 3
+          },
+          "intendedLabel": "PERSISTENT",
+          "valid": false,
+          "realizedLabel": "NOT_PERSISTENT",
+          "reason": "V1_SEMANTICS_SAY_NOT_PERSISTENT",
+          "margin": 0.044706,
+          "saturated": false
+        },
+        {
+          "point": {
+            "length": 18,
+            "slope": 0.008,
+            "noise": 0.024,
+            "variant": 7
+          },
+          "intendedLabel": "PERSISTENT",
+          "valid": false,
+          "realizedLabel": "NOT_PERSISTENT",
+          "reason": "V1_SEMANTICS_SAY_NOT_PERSISTENT",
+          "margin": 0.044706,
+          "saturated": false
+        },
+        {
+          "point": {
+            "length": 24,
+            "slope": 0.004,
+            "noise": 0.012,
+            "variant": 0
+          },
+          "intendedLabel": "PERSISTENT",
+          "valid": false,
+          "realizedLabel": "NOT_PERSISTENT",
+          "reason": "V1_SEMANTICS_SAY_NOT_PERSISTENT",
+          "margin": 0.01913,
+          "saturated": false
+        },
+        {
+          "point": {
+            "length": 24,
+            "slope": 0.004,
+            "noise": 0.012,
+            "variant": 3
+          },
+          "intendedLabel": "PERSISTENT",
+          "valid": false,
+          "realizedLabel": "NOT_PERSISTENT",
+          "reason": "V1_SEMANTICS_SAY_NOT_PERSISTENT",
+          "margin": 0.062609,
+          "saturated": false
+        },
+        {
+          "point": {
+            "length": 24,
+            "slope": 0.004,
+            "noise": 0.012,
+            "variant": 7
+          },
+          "intendedLabel": "PERSISTENT",
+          "valid": false,
+          "realizedLabel": "NOT_PERSISTENT",
+          "reason": "V1_SEMANTICS_SAY_NOT_PERSISTENT",
+          "margin": 0.062609,
+          "saturated": false
+        },
+        {
+          "point": {
+            "length": 24,
+            "slope": 0.004,
+            "noise": 0.024,
+            "variant": 0
+          },
+          "intendedLabel": "PERSISTENT",
+          "valid": false,
+          "realizedLabel": "NOT_PERSISTENT",
+          "reason": "V1_SEMANTICS_SAY_NOT_PERSISTENT",
+          "margin": 0.01913,
+          "saturated": false
+        },
+        {
+          "point": {
+            "length": 24,
+            "slope": 0.004,
+            "noise": 0.024,
+            "variant": 3
+          },
+          "intendedLabel": "PERSISTENT",
+          "valid": false,
+          "realizedLabel": "NOT_PERSISTENT",
+          "reason": "V1_SEMANTICS_SAY_NOT_PERSISTENT",
+          "margin": 0.062609,
+          "saturated": false
+        },
+        {
+          "point": {
+            "length": 24,
+            "slope": 0.004,
+            "noise": 0.024,
+            "variant": 7
+          },
+          "intendedLabel": "PERSISTENT",
+          "valid": false,
+          "realizedLabel": "NOT_PERSISTENT",
+          "reason": "V1_SEMANTICS_SAY_NOT_PERSISTENT",
+          "margin": 0.062609,
+          "saturated": false
+        },
+        {
+          "point": {
+            "length": 24,
+            "slope": 0.008,
+            "noise": 0.024,
+            "variant": 0
+          },
+          "intendedLabel": "PERSISTENT",
+          "valid": false,
+          "realizedLabel": "NOT_PERSISTENT",
+          "reason": "V1_SEMANTICS_SAY_NOT_PERSISTENT",
+          "margin": 0.01913,
+          "saturated": false
+        },
+        {
+          "point": {
+            "length": 24,
+            "slope": 0.008,
+            "noise": 0.024,
+            "variant": 3
+          },
+          "intendedLabel": "PERSISTENT",
+          "valid": false,
+          "realizedLabel": "NOT_PERSISTENT",
+          "reason": "V1_SEMANTICS_SAY_NOT_PERSISTENT",
+          "margin": 0.062609,
+          "saturated": false
+        },
+        {
+          "point": {
+            "length": 24,
+            "slope": 0.008,
+            "noise": 0.024,
+            "variant": 7
+          },
+          "intendedLabel": "PERSISTENT",
+          "valid": false,
+          "realizedLabel": "NOT_PERSISTENT",
+          "reason": "V1_SEMANTICS_SAY_NOT_PERSISTENT",
+          "margin": 0.062609,
+          "saturated": false
+        },
+        {
+          "point": {
+            "length": 30,
+            "slope": 0.004,
+            "noise": 0.012,
+            "variant": 0
+          },
+          "intendedLabel": "PERSISTENT",
+          "valid": false,
+          "realizedLabel": "NOT_PERSISTENT",
+          "reason": "V1_SEMANTICS_SAY_NOT_PERSISTENT",
+          "margin": 0.038621,
+          "saturated": false
+        },
+        {
+          "point": {
+            "length": 30,
+            "slope": 0.004,
+            "noise": 0.012,
+            "variant": 3
+          },
+          "intendedLabel": "PERSISTENT",
+          "valid": false,
+          "realizedLabel": "NOT_PERSISTENT",
+          "reason": "V1_SEMANTICS_SAY_NOT_PERSISTENT",
+          "margin": 0.038621,
+          "saturated": false
+        },
+        {
+          "point": {
+            "length": 30,
+            "slope": 0.004,
+            "noise": 0.012,
+            "variant": 7
+          },
+          "intendedLabel": "PERSISTENT",
+          "valid": false,
+          "realizedLabel": "NOT_PERSISTENT",
+          "reason": "V1_SEMANTICS_SAY_NOT_PERSISTENT",
+          "margin": 0.038621,
+          "saturated": false
+        },
+        {
+          "point": {
+            "length": 30,
+            "slope": 0.004,
+            "noise": 0.024,
+            "variant": 0
+          },
+          "intendedLabel": "PERSISTENT",
+          "valid": false,
+          "realizedLabel": "NOT_PERSISTENT",
+          "reason": "V1_SEMANTICS_SAY_NOT_PERSISTENT",
+          "margin": 0.038621,
+          "saturated": false
+        },
+        {
+          "point": {
+            "length": 30,
+            "slope": 0.004,
+            "noise": 0.024,
+            "variant": 3
+          },
+          "intendedLabel": "PERSISTENT",
+          "valid": false,
+          "realizedLabel": "NOT_PERSISTENT",
+          "reason": "V1_SEMANTICS_SAY_NOT_PERSISTENT",
+          "margin": 0.038621,
+          "saturated": false
+        },
+        {
+          "point": {
+            "length": 30,
+            "slope": 0.004,
+            "noise": 0.024,
+            "variant": 7
+          },
+          "intendedLabel": "PERSISTENT",
+          "valid": false,
+          "realizedLabel": "NOT_PERSISTENT",
+          "reason": "V1_SEMANTICS_SAY_NOT_PERSISTENT",
+          "margin": 0.038621,
+          "saturated": false
+        },
+        {
+          "point": {
+            "length": 30,
+            "slope": 0.008,
+            "noise": 0.024,
+            "variant": 0
+          },
+          "intendedLabel": "PERSISTENT",
+          "valid": false,
+          "realizedLabel": "NOT_PERSISTENT",
+          "reason": "V1_SEMANTICS_SAY_NOT_PERSISTENT",
+          "margin": 0.038621,
+          "saturated": false
+        },
+        {
+          "point": {
+            "length": 30,
+            "slope": 0.008,
+            "noise": 0.024,
+            "variant": 3
+          },
+          "intendedLabel": "PERSISTENT",
+          "valid": false,
+          "realizedLabel": "NOT_PERSISTENT",
+          "reason": "V1_SEMANTICS_SAY_NOT_PERSISTENT",
+          "margin": 0.038621,
+          "saturated": false
+        },
+        {
+          "point": {
+            "length": 30,
+            "slope": 0.008,
+            "noise": 0.024,
+            "variant": 7
+          },
+          "intendedLabel": "PERSISTENT",
+          "valid": false,
+          "realizedLabel": "NOT_PERSISTENT",
+          "reason": "V1_SEMANTICS_SAY_NOT_PERSISTENT",
+          "margin": 0.038621,
+          "saturated": false
+        },
+        {
+          "point": {
+            "length": 30,
+            "slope": 0.028,
+            "noise": 0,
+            "variant": 0
+          },
+          "intendedLabel": "PERSISTENT",
+          "valid": false,
+          "realizedLabel": "SATURATED",
+          "reason": "SERIES_TOUCHES_RANGE_BOUND",
+          "margin": 0,
+          "saturated": true
+        },
+        {
+          "point": {
+            "length": 30,
+            "slope": 0.028,
+            "noise": 0,
+            "variant": 3
+          },
+          "intendedLabel": "PERSISTENT",
+          "valid": false,
+          "realizedLabel": "SATURATED",
+          "reason": "SERIES_TOUCHES_RANGE_BOUND",
+          "margin": 0,
+          "saturated": true
+        },
+        {
+          "point": {
+            "length": 30,
+            "slope": 0.028,
+            "noise": 0,
+            "variant": 7
+          },
+          "intendedLabel": "PERSISTENT",
+          "valid": false,
+          "realizedLabel": "SATURATED",
+          "reason": "SERIES_TOUCHES_RANGE_BOUND",
+          "margin": 0,
+          "saturated": true
+        },
+        {
+          "point": {
+            "length": 30,
+            "slope": 0.028,
+            "noise": 0.006,
+            "variant": 0
+          },
+          "intendedLabel": "PERSISTENT",
+          "valid": false,
+          "realizedLabel": "SATURATED",
+          "reason": "SERIES_TOUCHES_RANGE_BOUND",
+          "margin": 0,
+          "saturated": true
+        },
+        {
+          "point": {
+            "length": 30,
+            "slope": 0.028,
+            "noise": 0.006,
+            "variant": 3
+          },
+          "intendedLabel": "PERSISTENT",
+          "valid": false,
+          "realizedLabel": "SATURATED",
+          "reason": "SERIES_TOUCHES_RANGE_BOUND",
+          "margin": 0,
+          "saturated": true
+        },
+        {
+          "point": {
+            "length": 30,
+            "slope": 0.028,
+            "noise": 0.006,
+            "variant": 7
+          },
+          "intendedLabel": "PERSISTENT",
+          "valid": false,
+          "realizedLabel": "SATURATED",
+          "reason": "SERIES_TOUCHES_RANGE_BOUND",
+          "margin": 0,
+          "saturated": true
+        },
+        {
+          "point": {
+            "length": 30,
+            "slope": 0.028,
+            "noise": 0.012,
+            "variant": 0
+          },
+          "intendedLabel": "PERSISTENT",
+          "valid": false,
+          "realizedLabel": "SATURATED",
+          "reason": "SERIES_TOUCHES_RANGE_BOUND",
+          "margin": 0,
+          "saturated": true
+        },
+        {
+          "point": {
+            "length": 30,
+            "slope": 0.028,
+            "noise": 0.012,
+            "variant": 3
+          },
+          "intendedLabel": "PERSISTENT",
+          "valid": false,
+          "realizedLabel": "SATURATED",
+          "reason": "SERIES_TOUCHES_RANGE_BOUND",
+          "margin": 0,
+          "saturated": true
+        },
+        {
+          "point": {
+            "length": 30,
+            "slope": 0.028,
+            "noise": 0.012,
+            "variant": 7
+          },
+          "intendedLabel": "PERSISTENT",
+          "valid": false,
+          "realizedLabel": "SATURATED",
+          "reason": "SERIES_TOUCHES_RANGE_BOUND",
+          "margin": 0,
+          "saturated": true
+        },
+        {
+          "point": {
+            "length": 30,
+            "slope": 0.028,
+            "noise": 0.024,
+            "variant": 0
+          },
+          "intendedLabel": "PERSISTENT",
+          "valid": false,
+          "realizedLabel": "SATURATED",
+          "reason": "SERIES_TOUCHES_RANGE_BOUND",
+          "margin": 0,
+          "saturated": true
+        },
+        {
+          "point": {
+            "length": 30,
+            "slope": 0.028,
+            "noise": 0.024,
+            "variant": 3
+          },
+          "intendedLabel": "PERSISTENT",
+          "valid": false,
+          "realizedLabel": "SATURATED",
+          "reason": "SERIES_TOUCHES_RANGE_BOUND",
+          "margin": 0,
+          "saturated": true
+        },
+        {
+          "point": {
+            "length": 30,
+            "slope": 0.028,
+            "noise": 0.024,
+            "variant": 7
+          },
+          "intendedLabel": "PERSISTENT",
+          "valid": false,
+          "realizedLabel": "SATURATED",
+          "reason": "SERIES_TOUCHES_RANGE_BOUND",
+          "margin": 0,
+          "saturated": true
+        }
+      ]
+    },
+    {
+      "familyId": "persistence/INTERRUPTED_RUN",
+      "intendedLabel": "NOT_PERSISTENT",
+      "swept": 15,
+      "valid": 15,
+      "mislabelled": 0,
+      "ambiguous": 0,
+      "saturatedCases": 0,
+      "mislabelledShare": 0,
+      "minMargin": 0.22,
+      "failureReasons": [],
+      "extremeFailures": [],
+      "rows": [
+        {
+          "point": {
+            "length": 18,
+            "interruptions": 0
+          },
+          "intendedLabel": "NOT_PERSISTENT",
+          "valid": true,
+          "realizedLabel": "NOT_PERSISTENT",
+          "reason": null,
+          "margin": 0.22,
+          "saturated": false
+        },
+        {
+          "point": {
+            "length": 18,
+            "interruptions": 1
+          },
+          "intendedLabel": "NOT_PERSISTENT",
+          "valid": true,
+          "realizedLabel": "NOT_PERSISTENT",
+          "reason": null,
+          "margin": 0.22,
+          "saturated": false
+        },
+        {
+          "point": {
+            "length": 18,
+            "interruptions": 2
+          },
+          "intendedLabel": "NOT_PERSISTENT",
+          "valid": true,
+          "realizedLabel": "NOT_PERSISTENT",
+          "reason": null,
+          "margin": 0.22,
+          "saturated": false
+        },
+        {
+          "point": {
+            "length": 18,
+            "interruptions": 3
+          },
+          "intendedLabel": "NOT_PERSISTENT",
+          "valid": true,
+          "realizedLabel": "NOT_PERSISTENT",
+          "reason": null,
+          "margin": 0.22,
+          "saturated": false
+        },
+        {
+          "point": {
+            "length": 18,
+            "interruptions": 4
+          },
+          "intendedLabel": "NOT_PERSISTENT",
+          "valid": true,
+          "realizedLabel": "NOT_PERSISTENT",
+          "reason": null,
+          "margin": 0.22,
+          "saturated": false
+        },
+        {
+          "point": {
+            "length": 24,
+            "interruptions": 0
+          },
+          "intendedLabel": "NOT_PERSISTENT",
+          "valid": true,
+          "realizedLabel": "NOT_PERSISTENT",
+          "reason": null,
+          "margin": 0.22,
+          "saturated": false
+        },
+        {
+          "point": {
+            "length": 24,
+            "interruptions": 1
+          },
+          "intendedLabel": "NOT_PERSISTENT",
+          "valid": true,
+          "realizedLabel": "NOT_PERSISTENT",
+          "reason": null,
+          "margin": 0.22,
+          "saturated": false
+        },
+        {
+          "point": {
+            "length": 24,
+            "interruptions": 2
+          },
+          "intendedLabel": "NOT_PERSISTENT",
+          "valid": true,
+          "realizedLabel": "NOT_PERSISTENT",
+          "reason": null,
+          "margin": 0.22,
+          "saturated": false
+        },
+        {
+          "point": {
+            "length": 24,
+            "interruptions": 3
+          },
+          "intendedLabel": "NOT_PERSISTENT",
+          "valid": true,
+          "realizedLabel": "NOT_PERSISTENT",
+          "reason": null,
+          "margin": 0.22,
+          "saturated": false
+        },
+        {
+          "point": {
+            "length": 24,
+            "interruptions": 4
+          },
+          "intendedLabel": "NOT_PERSISTENT",
+          "valid": true,
+          "realizedLabel": "NOT_PERSISTENT",
+          "reason": null,
+          "margin": 0.22,
+          "saturated": false
+        },
+        {
+          "point": {
+            "length": 30,
+            "interruptions": 0
+          },
+          "intendedLabel": "NOT_PERSISTENT",
+          "valid": true,
+          "realizedLabel": "NOT_PERSISTENT",
+          "reason": null,
+          "margin": 0.22,
+          "saturated": false
+        },
+        {
+          "point": {
+            "length": 30,
+            "interruptions": 1
+          },
+          "intendedLabel": "NOT_PERSISTENT",
+          "valid": true,
+          "realizedLabel": "NOT_PERSISTENT",
+          "reason": null,
+          "margin": 0.22,
+          "saturated": false
+        },
+        {
+          "point": {
+            "length": 30,
+            "interruptions": 2
+          },
+          "intendedLabel": "NOT_PERSISTENT",
+          "valid": true,
+          "realizedLabel": "NOT_PERSISTENT",
+          "reason": null,
+          "margin": 0.22,
+          "saturated": false
+        },
+        {
+          "point": {
+            "length": 30,
+            "interruptions": 3
+          },
+          "intendedLabel": "NOT_PERSISTENT",
+          "valid": true,
+          "realizedLabel": "NOT_PERSISTENT",
+          "reason": null,
+          "margin": 0.22,
+          "saturated": false
+        },
+        {
+          "point": {
+            "length": 30,
+            "interruptions": 4
+          },
+          "intendedLabel": "NOT_PERSISTENT",
+          "valid": true,
+          "realizedLabel": "NOT_PERSISTENT",
+          "reason": null,
+          "margin": 0.22,
+          "saturated": false
+        }
+      ]
+    },
+    {
+      "familyId": "persistence/SHORT_HISTORY",
+      "intendedLabel": "INSUFFICIENT_EVIDENCE",
+      "swept": 4,
+      "valid": 4,
+      "mislabelled": 0,
+      "ambiguous": 0,
+      "saturatedCases": 0,
+      "mislabelledShare": 0,
+      "minMargin": 1,
+      "failureReasons": [],
+      "extremeFailures": [],
+      "rows": [
+        {
+          "point": {
+            "samples": 2
+          },
+          "intendedLabel": "INSUFFICIENT_EVIDENCE",
+          "valid": true,
+          "realizedLabel": "INSUFFICIENT_EVIDENCE",
+          "reason": null,
+          "margin": 4,
+          "saturated": false
+        },
+        {
+          "point": {
+            "samples": 3
+          },
+          "intendedLabel": "INSUFFICIENT_EVIDENCE",
+          "valid": true,
+          "realizedLabel": "INSUFFICIENT_EVIDENCE",
+          "reason": null,
+          "margin": 3,
+          "saturated": false
+        },
+        {
+          "point": {
+            "samples": 4
+          },
+          "intendedLabel": "INSUFFICIENT_EVIDENCE",
+          "valid": true,
+          "realizedLabel": "INSUFFICIENT_EVIDENCE",
+          "reason": null,
+          "margin": 2,
+          "saturated": false
+        },
+        {
+          "point": {
+            "samples": 5
+          },
+          "intendedLabel": "INSUFFICIENT_EVIDENCE",
+          "valid": true,
+          "realizedLabel": "INSUFFICIENT_EVIDENCE",
+          "reason": null,
+          "margin": 1,
+          "saturated": false
+        }
+      ]
+    },
+    {
+      "familyId": "timeToThreshold/APPROACHING",
+      "intendedLabel": "CROSSING_1_TO_3",
+      "swept": 18,
+      "valid": 16,
+      "mislabelled": 2,
+      "ambiguous": 1,
+      "saturatedCases": 0,
+      "mislabelledShare": 0.111111,
+      "minMargin": 0,
+      "failureReasons": [
+        "PROJECTED_CROSSING_OUTSIDE_DECLARED_BUCKET"
+      ],
+      "extremeFailures": [
+        {
+          "point": {
+            "length": 24,
+            "slope": 0.012,
+            "ticks": 3,
+            "interior": 0
+          },
+          "reason": "PROJECTED_CROSSING_OUTSIDE_DECLARED_BUCKET"
+        },
+        {
+          "point": {
+            "length": 24,
+            "slope": 0.018,
+            "ticks": 3,
+            "interior": 0
+          },
+          "reason": "PROJECTED_CROSSING_OUTSIDE_DECLARED_BUCKET"
+        }
+      ],
+      "rows": [
+        {
+          "point": {
+            "length": 24,
+            "slope": 0.006,
+            "ticks": 1,
+            "interior": 0
+          },
+          "intendedLabel": "CROSSING_1_TO_3",
+          "valid": true,
+          "realizedLabel": "CROSSING_1_TO_3",
+          "reason": null,
+          "margin": 1,
+          "saturated": false
+        },
+        {
+          "point": {
+            "length": 24,
+            "slope": 0.006,
+            "ticks": 1,
+            "interior": 0.4
+          },
+          "intendedLabel": "CROSSING_1_TO_3",
+          "valid": true,
+          "realizedLabel": "CROSSING_1_TO_3",
+          "reason": null,
+          "margin": 0.6,
+          "saturated": false
+        },
+        {
+          "point": {
+            "length": 24,
+            "slope": 0.006,
+            "ticks": 2,
+            "interior": 0
+          },
+          "intendedLabel": "CROSSING_1_TO_3",
+          "valid": true,
+          "realizedLabel": "CROSSING_1_TO_3",
+          "reason": null,
+          "margin": 1,
+          "saturated": false
+        },
+        {
+          "point": {
+            "length": 24,
+            "slope": 0.006,
+            "ticks": 2,
+            "interior": 0.4
+          },
+          "intendedLabel": "CROSSING_1_TO_3",
+          "valid": true,
+          "realizedLabel": "CROSSING_1_TO_3",
+          "reason": null,
+          "margin": 1.4,
+          "saturated": false
+        },
+        {
+          "point": {
+            "length": 24,
+            "slope": 0.006,
+            "ticks": 3,
+            "interior": 0
+          },
+          "intendedLabel": "CROSSING_1_TO_3",
+          "valid": true,
+          "realizedLabel": "CROSSING_1_TO_3",
+          "reason": null,
+          "margin": 0,
+          "saturated": false
+        },
+        {
+          "point": {
+            "length": 24,
+            "slope": 0.006,
+            "ticks": 3,
+            "interior": 0.4
+          },
+          "intendedLabel": "CROSSING_1_TO_3",
+          "valid": true,
+          "realizedLabel": "CROSSING_1_TO_3",
+          "reason": null,
+          "margin": 0.4,
+          "saturated": false
+        },
+        {
+          "point": {
+            "length": 24,
+            "slope": 0.012,
+            "ticks": 1,
+            "interior": 0
+          },
+          "intendedLabel": "CROSSING_1_TO_3",
+          "valid": true,
+          "realizedLabel": "CROSSING_1_TO_3",
+          "reason": null,
+          "margin": 1,
+          "saturated": false
+        },
+        {
+          "point": {
+            "length": 24,
+            "slope": 0.012,
+            "ticks": 1,
+            "interior": 0.4
+          },
+          "intendedLabel": "CROSSING_1_TO_3",
+          "valid": true,
+          "realizedLabel": "CROSSING_1_TO_3",
+          "reason": null,
+          "margin": 0.6,
+          "saturated": false
+        },
+        {
+          "point": {
+            "length": 24,
+            "slope": 0.012,
+            "ticks": 2,
+            "interior": 0
+          },
+          "intendedLabel": "CROSSING_1_TO_3",
+          "valid": true,
+          "realizedLabel": "CROSSING_1_TO_3",
+          "reason": null,
+          "margin": 1,
+          "saturated": false
+        },
+        {
+          "point": {
+            "length": 24,
+            "slope": 0.012,
+            "ticks": 2,
+            "interior": 0.4
+          },
+          "intendedLabel": "CROSSING_1_TO_3",
+          "valid": true,
+          "realizedLabel": "CROSSING_1_TO_3",
+          "reason": null,
+          "margin": 1.4,
+          "saturated": false
+        },
+        {
+          "point": {
+            "length": 24,
+            "slope": 0.012,
+            "ticks": 3,
+            "interior": 0
+          },
+          "intendedLabel": "CROSSING_1_TO_3",
+          "valid": false,
+          "realizedLabel": "OUT_OF_BUCKET",
+          "reason": "PROJECTED_CROSSING_OUTSIDE_DECLARED_BUCKET",
+          "margin": 0,
+          "saturated": false
+        },
+        {
+          "point": {
+            "length": 24,
+            "slope": 0.012,
+            "ticks": 3,
+            "interior": 0.4
+          },
+          "intendedLabel": "CROSSING_1_TO_3",
+          "valid": true,
+          "realizedLabel": "CROSSING_1_TO_3",
+          "reason": null,
+          "margin": 0.4,
+          "saturated": false
+        },
+        {
+          "point": {
+            "length": 24,
+            "slope": 0.018,
+            "ticks": 1,
+            "interior": 0
+          },
+          "intendedLabel": "CROSSING_1_TO_3",
+          "valid": true,
+          "realizedLabel": "CROSSING_1_TO_3",
+          "reason": null,
+          "margin": 1,
+          "saturated": false
+        },
+        {
+          "point": {
+            "length": 24,
+            "slope": 0.018,
+            "ticks": 1,
+            "interior": 0.4
+          },
+          "intendedLabel": "CROSSING_1_TO_3",
+          "valid": true,
+          "realizedLabel": "CROSSING_1_TO_3",
+          "reason": null,
+          "margin": 0.6,
+          "saturated": false
+        },
+        {
+          "point": {
+            "length": 24,
+            "slope": 0.018,
+            "ticks": 2,
+            "interior": 0
+          },
+          "intendedLabel": "CROSSING_1_TO_3",
+          "valid": true,
+          "realizedLabel": "CROSSING_1_TO_3",
+          "reason": null,
+          "margin": 1,
+          "saturated": false
+        },
+        {
+          "point": {
+            "length": 24,
+            "slope": 0.018,
+            "ticks": 2,
+            "interior": 0.4
+          },
+          "intendedLabel": "CROSSING_1_TO_3",
+          "valid": true,
+          "realizedLabel": "CROSSING_1_TO_3",
+          "reason": null,
+          "margin": 1.4,
+          "saturated": false
+        },
+        {
+          "point": {
+            "length": 24,
+            "slope": 0.018,
+            "ticks": 3,
+            "interior": 0
+          },
+          "intendedLabel": "CROSSING_1_TO_3",
+          "valid": false,
+          "realizedLabel": "OUT_OF_BUCKET",
+          "reason": "PROJECTED_CROSSING_OUTSIDE_DECLARED_BUCKET",
+          "margin": 0,
+          "saturated": false
+        },
+        {
+          "point": {
+            "length": 24,
+            "slope": 0.018,
+            "ticks": 3,
+            "interior": 0.4
+          },
+          "intendedLabel": "CROSSING_1_TO_3",
+          "valid": true,
+          "realizedLabel": "CROSSING_1_TO_3",
+          "reason": null,
+          "margin": 0.4,
+          "saturated": false
+        }
+      ]
+    },
+    {
+      "familyId": "timeToThreshold/APPROACHING_4_TO_8",
+      "intendedLabel": "CROSSING_4_TO_8",
+      "swept": 18,
+      "valid": 17,
+      "mislabelled": 1,
+      "ambiguous": 2,
+      "saturatedCases": 0,
+      "mislabelledShare": 0.055556,
+      "minMargin": 0,
+      "failureReasons": [
+        "PROJECTED_CROSSING_OUTSIDE_DECLARED_BUCKET"
+      ],
+      "extremeFailures": [
+        {
+          "point": {
+            "length": 24,
+            "slope": 0.018,
+            "ticks": 8,
+            "interior": 0
+          },
+          "reason": "PROJECTED_CROSSING_OUTSIDE_DECLARED_BUCKET"
+        }
+      ],
+      "rows": [
+        {
+          "point": {
+            "length": 24,
+            "slope": 0.006,
+            "ticks": 4,
+            "interior": 0
+          },
+          "intendedLabel": "CROSSING_4_TO_8",
+          "valid": true,
+          "realizedLabel": "CROSSING_4_TO_8",
+          "reason": null,
+          "margin": 1,
+          "saturated": false
+        },
+        {
+          "point": {
+            "length": 24,
+            "slope": 0.006,
+            "ticks": 4,
+            "interior": 0.4
+          },
+          "intendedLabel": "CROSSING_4_TO_8",
+          "valid": true,
+          "realizedLabel": "CROSSING_4_TO_8",
+          "reason": null,
+          "margin": 0.6,
+          "saturated": false
+        },
+        {
+          "point": {
+            "length": 24,
+            "slope": 0.006,
+            "ticks": 6,
+            "interior": 0
+          },
+          "intendedLabel": "CROSSING_4_TO_8",
+          "valid": true,
+          "realizedLabel": "CROSSING_4_TO_8",
+          "reason": null,
+          "margin": 2,
+          "saturated": false
+        },
+        {
+          "point": {
+            "length": 24,
+            "slope": 0.006,
+            "ticks": 6,
+            "interior": 0.4
+          },
+          "intendedLabel": "CROSSING_4_TO_8",
+          "valid": true,
+          "realizedLabel": "CROSSING_4_TO_8",
+          "reason": null,
+          "margin": 2.4,
+          "saturated": false
+        },
+        {
+          "point": {
+            "length": 24,
+            "slope": 0.006,
+            "ticks": 8,
+            "interior": 0
+          },
+          "intendedLabel": "CROSSING_4_TO_8",
+          "valid": true,
+          "realizedLabel": "CROSSING_4_TO_8",
+          "reason": null,
+          "margin": 0,
+          "saturated": false
+        },
+        {
+          "point": {
+            "length": 24,
+            "slope": 0.006,
+            "ticks": 8,
+            "interior": 0.4
+          },
+          "intendedLabel": "CROSSING_4_TO_8",
+          "valid": true,
+          "realizedLabel": "CROSSING_4_TO_8",
+          "reason": null,
+          "margin": 0.4,
+          "saturated": false
+        },
+        {
+          "point": {
+            "length": 24,
+            "slope": 0.012,
+            "ticks": 4,
+            "interior": 0
+          },
+          "intendedLabel": "CROSSING_4_TO_8",
+          "valid": true,
+          "realizedLabel": "CROSSING_4_TO_8",
+          "reason": null,
+          "margin": 1,
+          "saturated": false
+        },
+        {
+          "point": {
+            "length": 24,
+            "slope": 0.012,
+            "ticks": 4,
+            "interior": 0.4
+          },
+          "intendedLabel": "CROSSING_4_TO_8",
+          "valid": true,
+          "realizedLabel": "CROSSING_4_TO_8",
+          "reason": null,
+          "margin": 0.6,
+          "saturated": false
+        },
+        {
+          "point": {
+            "length": 24,
+            "slope": 0.012,
+            "ticks": 6,
+            "interior": 0
+          },
+          "intendedLabel": "CROSSING_4_TO_8",
+          "valid": true,
+          "realizedLabel": "CROSSING_4_TO_8",
+          "reason": null,
+          "margin": 2,
+          "saturated": false
+        },
+        {
+          "point": {
+            "length": 24,
+            "slope": 0.012,
+            "ticks": 6,
+            "interior": 0.4
+          },
+          "intendedLabel": "CROSSING_4_TO_8",
+          "valid": true,
+          "realizedLabel": "CROSSING_4_TO_8",
+          "reason": null,
+          "margin": 2.4,
+          "saturated": false
+        },
+        {
+          "point": {
+            "length": 24,
+            "slope": 0.012,
+            "ticks": 8,
+            "interior": 0
+          },
+          "intendedLabel": "CROSSING_4_TO_8",
+          "valid": true,
+          "realizedLabel": "CROSSING_4_TO_8",
+          "reason": null,
+          "margin": 0,
+          "saturated": false
+        },
+        {
+          "point": {
+            "length": 24,
+            "slope": 0.012,
+            "ticks": 8,
+            "interior": 0.4
+          },
+          "intendedLabel": "CROSSING_4_TO_8",
+          "valid": true,
+          "realizedLabel": "CROSSING_4_TO_8",
+          "reason": null,
+          "margin": 0.4,
+          "saturated": false
+        },
+        {
+          "point": {
+            "length": 24,
+            "slope": 0.018,
+            "ticks": 4,
+            "interior": 0
+          },
+          "intendedLabel": "CROSSING_4_TO_8",
+          "valid": true,
+          "realizedLabel": "CROSSING_4_TO_8",
+          "reason": null,
+          "margin": 1,
+          "saturated": false
+        },
+        {
+          "point": {
+            "length": 24,
+            "slope": 0.018,
+            "ticks": 4,
+            "interior": 0.4
+          },
+          "intendedLabel": "CROSSING_4_TO_8",
+          "valid": true,
+          "realizedLabel": "CROSSING_4_TO_8",
+          "reason": null,
+          "margin": 0.6,
+          "saturated": false
+        },
+        {
+          "point": {
+            "length": 24,
+            "slope": 0.018,
+            "ticks": 6,
+            "interior": 0
+          },
+          "intendedLabel": "CROSSING_4_TO_8",
+          "valid": true,
+          "realizedLabel": "CROSSING_4_TO_8",
+          "reason": null,
+          "margin": 2,
+          "saturated": false
+        },
+        {
+          "point": {
+            "length": 24,
+            "slope": 0.018,
+            "ticks": 6,
+            "interior": 0.4
+          },
+          "intendedLabel": "CROSSING_4_TO_8",
+          "valid": true,
+          "realizedLabel": "CROSSING_4_TO_8",
+          "reason": null,
+          "margin": 2.4,
+          "saturated": false
+        },
+        {
+          "point": {
+            "length": 24,
+            "slope": 0.018,
+            "ticks": 8,
+            "interior": 0
+          },
+          "intendedLabel": "CROSSING_4_TO_8",
+          "valid": false,
+          "realizedLabel": "OUT_OF_BUCKET",
+          "reason": "PROJECTED_CROSSING_OUTSIDE_DECLARED_BUCKET",
+          "margin": 0,
+          "saturated": false
+        },
+        {
+          "point": {
+            "length": 24,
+            "slope": 0.018,
+            "ticks": 8,
+            "interior": 0.4
+          },
+          "intendedLabel": "CROSSING_4_TO_8",
+          "valid": true,
+          "realizedLabel": "CROSSING_4_TO_8",
+          "reason": null,
+          "margin": 0.4,
+          "saturated": false
+        }
+      ]
+    },
+    {
+      "familyId": "timeToThreshold/ALREADY_OVER",
+      "intendedLabel": "ALREADY_CROSSED",
+      "swept": 9,
+      "valid": 9,
+      "mislabelled": 0,
+      "ambiguous": 0,
+      "saturatedCases": 0,
+      "mislabelledShare": 0,
+      "minMargin": 0.06,
+      "failureReasons": [],
+      "extremeFailures": [],
+      "rows": [
+        {
+          "point": {
+            "length": 18,
+            "variant": 0
+          },
+          "intendedLabel": "ALREADY_CROSSED",
+          "valid": true,
+          "realizedLabel": "ALREADY_CROSSED",
+          "reason": null,
+          "margin": 0.06,
+          "saturated": false
+        },
+        {
+          "point": {
+            "length": 18,
+            "variant": 3
+          },
+          "intendedLabel": "ALREADY_CROSSED",
+          "valid": true,
+          "realizedLabel": "ALREADY_CROSSED",
+          "reason": null,
+          "margin": 0.06,
+          "saturated": false
+        },
+        {
+          "point": {
+            "length": 18,
+            "variant": 7
+          },
+          "intendedLabel": "ALREADY_CROSSED",
+          "valid": true,
+          "realizedLabel": "ALREADY_CROSSED",
+          "reason": null,
+          "margin": 0.06,
+          "saturated": false
+        },
+        {
+          "point": {
+            "length": 24,
+            "variant": 0
+          },
+          "intendedLabel": "ALREADY_CROSSED",
+          "valid": true,
+          "realizedLabel": "ALREADY_CROSSED",
+          "reason": null,
+          "margin": 0.06,
+          "saturated": false
+        },
+        {
+          "point": {
+            "length": 24,
+            "variant": 3
+          },
+          "intendedLabel": "ALREADY_CROSSED",
+          "valid": true,
+          "realizedLabel": "ALREADY_CROSSED",
+          "reason": null,
+          "margin": 0.06,
+          "saturated": false
+        },
+        {
+          "point": {
+            "length": 24,
+            "variant": 7
+          },
+          "intendedLabel": "ALREADY_CROSSED",
+          "valid": true,
+          "realizedLabel": "ALREADY_CROSSED",
+          "reason": null,
+          "margin": 0.06,
+          "saturated": false
+        },
+        {
+          "point": {
+            "length": 30,
+            "variant": 0
+          },
+          "intendedLabel": "ALREADY_CROSSED",
+          "valid": true,
+          "realizedLabel": "ALREADY_CROSSED",
+          "reason": null,
+          "margin": 0.06,
+          "saturated": false
+        },
+        {
+          "point": {
+            "length": 30,
+            "variant": 3
+          },
+          "intendedLabel": "ALREADY_CROSSED",
+          "valid": true,
+          "realizedLabel": "ALREADY_CROSSED",
+          "reason": null,
+          "margin": 0.06,
+          "saturated": false
+        },
+        {
+          "point": {
+            "length": 30,
+            "variant": 7
+          },
+          "intendedLabel": "ALREADY_CROSSED",
+          "valid": true,
+          "realizedLabel": "ALREADY_CROSSED",
+          "reason": null,
+          "margin": 0.06,
+          "saturated": false
+        }
+      ]
+    },
+    {
+      "familyId": "timeToThreshold/STAYING_BELOW",
+      "intendedLabel": "NOT_CROSSING",
+      "swept": 9,
+      "valid": 9,
+      "mislabelled": 0,
+      "ambiguous": 0,
+      "saturatedCases": 0,
+      "mislabelledShare": 0,
+      "minMargin": 0.41,
+      "failureReasons": [],
+      "extremeFailures": [],
+      "rows": [
+        {
+          "point": {
+            "length": 18,
+            "variant": 0
+          },
+          "intendedLabel": "NOT_CROSSING",
+          "valid": true,
+          "realizedLabel": "NOT_CROSSING",
+          "reason": null,
+          "margin": 0.41,
+          "saturated": false
+        },
+        {
+          "point": {
+            "length": 18,
+            "variant": 3
+          },
+          "intendedLabel": "NOT_CROSSING",
+          "valid": true,
+          "realizedLabel": "NOT_CROSSING",
+          "reason": null,
+          "margin": 0.41,
+          "saturated": false
+        },
+        {
+          "point": {
+            "length": 18,
+            "variant": 7
+          },
+          "intendedLabel": "NOT_CROSSING",
+          "valid": true,
+          "realizedLabel": "NOT_CROSSING",
+          "reason": null,
+          "margin": 0.41,
+          "saturated": false
+        },
+        {
+          "point": {
+            "length": 24,
+            "variant": 0
+          },
+          "intendedLabel": "NOT_CROSSING",
+          "valid": true,
+          "realizedLabel": "NOT_CROSSING",
+          "reason": null,
+          "margin": 0.41,
+          "saturated": false
+        },
+        {
+          "point": {
+            "length": 24,
+            "variant": 3
+          },
+          "intendedLabel": "NOT_CROSSING",
+          "valid": true,
+          "realizedLabel": "NOT_CROSSING",
+          "reason": null,
+          "margin": 0.41,
+          "saturated": false
+        },
+        {
+          "point": {
+            "length": 24,
+            "variant": 7
+          },
+          "intendedLabel": "NOT_CROSSING",
+          "valid": true,
+          "realizedLabel": "NOT_CROSSING",
+          "reason": null,
+          "margin": 0.41,
+          "saturated": false
+        },
+        {
+          "point": {
+            "length": 30,
+            "variant": 0
+          },
+          "intendedLabel": "NOT_CROSSING",
+          "valid": true,
+          "realizedLabel": "NOT_CROSSING",
+          "reason": null,
+          "margin": 0.41,
+          "saturated": false
+        },
+        {
+          "point": {
+            "length": 30,
+            "variant": 3
+          },
+          "intendedLabel": "NOT_CROSSING",
+          "valid": true,
+          "realizedLabel": "NOT_CROSSING",
+          "reason": null,
+          "margin": 0.41,
+          "saturated": false
+        },
+        {
+          "point": {
+            "length": 30,
+            "variant": 7
+          },
+          "intendedLabel": "NOT_CROSSING",
+          "valid": true,
+          "realizedLabel": "NOT_CROSSING",
+          "reason": null,
+          "margin": 0.41,
+          "saturated": false
+        }
+      ]
+    },
+    {
+      "familyId": "timeToThreshold/MISSING_THRESHOLD_SEMANTICS",
+      "intendedLabel": "INSUFFICIENT_EVIDENCE",
+      "swept": 9,
+      "valid": 9,
+      "mislabelled": 0,
+      "ambiguous": 9,
+      "saturatedCases": 0,
+      "mislabelledShare": 0,
+      "minMargin": 0,
+      "failureReasons": [],
+      "extremeFailures": [],
+      "rows": [
+        {
+          "point": {
+            "length": 18,
+            "variant": 0
+          },
+          "intendedLabel": "INSUFFICIENT_EVIDENCE",
+          "valid": true,
+          "realizedLabel": "INSUFFICIENT_EVIDENCE",
+          "reason": null,
+          "margin": 0,
+          "saturated": false
+        },
+        {
+          "point": {
+            "length": 18,
+            "variant": 3
+          },
+          "intendedLabel": "INSUFFICIENT_EVIDENCE",
+          "valid": true,
+          "realizedLabel": "INSUFFICIENT_EVIDENCE",
+          "reason": null,
+          "margin": 0,
+          "saturated": false
+        },
+        {
+          "point": {
+            "length": 18,
+            "variant": 7
+          },
+          "intendedLabel": "INSUFFICIENT_EVIDENCE",
+          "valid": true,
+          "realizedLabel": "INSUFFICIENT_EVIDENCE",
+          "reason": null,
+          "margin": 0,
+          "saturated": false
+        },
+        {
+          "point": {
+            "length": 24,
+            "variant": 0
+          },
+          "intendedLabel": "INSUFFICIENT_EVIDENCE",
+          "valid": true,
+          "realizedLabel": "INSUFFICIENT_EVIDENCE",
+          "reason": null,
+          "margin": 0,
+          "saturated": false
+        },
+        {
+          "point": {
+            "length": 24,
+            "variant": 3
+          },
+          "intendedLabel": "INSUFFICIENT_EVIDENCE",
+          "valid": true,
+          "realizedLabel": "INSUFFICIENT_EVIDENCE",
+          "reason": null,
+          "margin": 0,
+          "saturated": false
+        },
+        {
+          "point": {
+            "length": 24,
+            "variant": 7
+          },
+          "intendedLabel": "INSUFFICIENT_EVIDENCE",
+          "valid": true,
+          "realizedLabel": "INSUFFICIENT_EVIDENCE",
+          "reason": null,
+          "margin": 0,
+          "saturated": false
+        },
+        {
+          "point": {
+            "length": 30,
+            "variant": 0
+          },
+          "intendedLabel": "INSUFFICIENT_EVIDENCE",
+          "valid": true,
+          "realizedLabel": "INSUFFICIENT_EVIDENCE",
+          "reason": null,
+          "margin": 0,
+          "saturated": false
+        },
+        {
+          "point": {
+            "length": 30,
+            "variant": 3
+          },
+          "intendedLabel": "INSUFFICIENT_EVIDENCE",
+          "valid": true,
+          "realizedLabel": "INSUFFICIENT_EVIDENCE",
+          "reason": null,
+          "margin": 0,
+          "saturated": false
+        },
+        {
+          "point": {
+            "length": 30,
+            "variant": 7
+          },
+          "intendedLabel": "INSUFFICIENT_EVIDENCE",
+          "valid": true,
+          "realizedLabel": "INSUFFICIENT_EVIDENCE",
+          "reason": null,
+          "margin": 0,
+          "saturated": false
+        }
+      ]
+    },
+    {
+      "familyId": "abstention/SHORT_HISTORY",
+      "intendedLabel": "INSUFFICIENT_EVIDENCE",
+      "swept": 4,
+      "valid": 3,
+      "mislabelled": 1,
+      "ambiguous": 0,
+      "saturatedCases": 0,
+      "mislabelledShare": 0.25,
+      "minMargin": 1,
+      "failureReasons": [
+        "WINDOW_IS_LONG_ENOUGH"
+      ],
+      "extremeFailures": [
+        {
+          "point": {
+            "samples": 3
+          },
+          "reason": "WINDOW_IS_LONG_ENOUGH"
+        }
+      ],
+      "rows": [
+        {
+          "point": {
+            "samples": 0
+          },
+          "intendedLabel": "INSUFFICIENT_EVIDENCE",
+          "valid": true,
+          "realizedLabel": "INSUFFICIENT_EVIDENCE",
+          "reason": null,
+          "margin": 3,
+          "saturated": false
+        },
+        {
+          "point": {
+            "samples": 1
+          },
+          "intendedLabel": "INSUFFICIENT_EVIDENCE",
+          "valid": true,
+          "realizedLabel": "INSUFFICIENT_EVIDENCE",
+          "reason": null,
+          "margin": 2,
+          "saturated": false
+        },
+        {
+          "point": {
+            "samples": 2
+          },
+          "intendedLabel": "INSUFFICIENT_EVIDENCE",
+          "valid": true,
+          "realizedLabel": "INSUFFICIENT_EVIDENCE",
+          "reason": null,
+          "margin": 1,
+          "saturated": false
+        },
+        {
+          "point": {
+            "samples": 3
+          },
+          "intendedLabel": "INSUFFICIENT_EVIDENCE",
+          "valid": false,
+          "realizedLabel": "ENOUGH_EVIDENCE",
+          "reason": "WINDOW_IS_LONG_ENOUGH",
+          "margin": 0,
+          "saturated": false
+        }
+      ]
+    },
+    {
+      "familyId": "abstention/SUFFICIENT_HISTORY",
+      "intendedLabel": "ENOUGH_EVIDENCE",
+      "swept": 144,
+      "valid": 144,
+      "mislabelled": 0,
+      "ambiguous": 0,
+      "saturatedCases": 24,
+      "mislabelledShare": 0,
+      "minMargin": 15,
+      "failureReasons": [],
+      "extremeFailures": [],
+      "rows": []
+    }
+  ],
+  "parentAudits": [
+    {
+      "familyId": "direction/RAMP_UP",
+      "corpusCases": 116,
+      "valid": 116,
+      "mislabelled": 0,
+      "saturationHygieneCases": 0,
+      "labelSurvivesSaturation": false,
+      "mislabelledShare": 0,
+      "failureReasons": [],
+      "minMargin": 0.055004,
+      "offendingCaseIds": []
+    },
+    {
+      "familyId": "direction/RAMP_DOWN",
+      "corpusCases": 114,
+      "valid": 114,
+      "mislabelled": 0,
+      "saturationHygieneCases": 0,
+      "labelSurvivesSaturation": false,
+      "mislabelledShare": 0,
+      "failureReasons": [],
+      "minMargin": 0.051468,
+      "offendingCaseIds": []
+    },
+    {
+      "familyId": "direction/FLAT",
+      "corpusCases": 120,
+      "valid": 120,
+      "mislabelled": 0,
+      "saturationHygieneCases": 0,
+      "labelSurvivesSaturation": false,
+      "mislabelledShare": 0,
+      "failureReasons": [],
+      "minMargin": 0.0008,
+      "offendingCaseIds": []
+    },
+    {
+      "familyId": "volatility/ALTERNATING_HIGH",
+      "corpusCases": 120,
+      "valid": 120,
+      "mislabelled": 0,
+      "saturationHygieneCases": 0,
+      "labelSurvivesSaturation": false,
+      "mislabelledShare": 0,
+      "failureReasons": [],
+      "minMargin": 0.24,
+      "offendingCaseIds": []
+    },
+    {
+      "familyId": "volatility/ALTERNATING_LOW",
+      "corpusCases": 90,
+      "valid": 90,
+      "mislabelled": 0,
+      "saturationHygieneCases": 0,
+      "labelSurvivesSaturation": false,
+      "mislabelledShare": 0,
+      "failureReasons": [],
+      "minMargin": 0.026,
+      "offendingCaseIds": []
+    },
+    {
+      "familyId": "cycle/PERIODIC",
+      "corpusCases": 120,
+      "valid": 120,
+      "mislabelled": 0,
+      "saturationHygieneCases": 0,
+      "labelSurvivesSaturation": false,
+      "mislabelledShare": 0,
+      "failureReasons": [],
+      "minMargin": 0.000001,
+      "offendingCaseIds": []
+    },
+    {
+      "familyId": "cycle/MONOTONE",
+      "corpusCases": 116,
+      "valid": 116,
+      "mislabelled": 0,
+      "saturationHygieneCases": 0,
+      "labelSurvivesSaturation": false,
+      "mislabelledShare": 0,
+      "failureReasons": [],
+      "minMargin": 0,
+      "offendingCaseIds": []
+    },
+    {
+      "familyId": "reversal/LATE_REVERSAL",
+      "corpusCases": 120,
+      "valid": 119,
+      "mislabelled": 1,
+      "saturationHygieneCases": 0,
+      "labelSurvivesSaturation": false,
+      "mislabelledShare": 0.008333,
+      "failureReasons": [
+        "NO_MEASURABLE_REVERSAL_IN_PRODUCED_SERIES"
+      ],
+      "minMargin": 0,
+      "offendingCaseIds": [
+        "stage2l19-reversal-late_reversal-112"
+      ]
+    },
+    {
+      "familyId": "reversal/CONTINUING",
+      "corpusCases": 120,
+      "valid": 119,
+      "mislabelled": 1,
+      "saturationHygieneCases": 0,
+      "labelSurvivesSaturation": false,
+      "mislabelledShare": 0.008333,
+      "failureReasons": [
+        "PRODUCED_SERIES_CONTAINS_A_REVERSAL"
+      ],
+      "minMargin": 0.000441,
+      "offendingCaseIds": [
+        "stage2l19-reversal-continuing-063"
+      ]
+    },
+    {
+      "familyId": "regimeChange/LEVEL_SHIFT",
+      "corpusCases": 120,
+      "valid": 120,
+      "mislabelled": 0,
+      "saturationHygieneCases": 0,
+      "labelSurvivesSaturation": false,
+      "mislabelledShare": 0,
+      "failureReasons": [],
+      "minMargin": 0.02,
+      "offendingCaseIds": []
+    },
+    {
+      "familyId": "regimeChange/STEADY",
+      "corpusCases": 120,
+      "valid": 120,
+      "mislabelled": 0,
+      "saturationHygieneCases": 0,
+      "labelSurvivesSaturation": false,
+      "mislabelledShare": 0,
+      "failureReasons": [],
+      "minMargin": 0.0008,
+      "offendingCaseIds": []
+    },
+    {
+      "familyId": "persistence/SUSTAINED_RUN",
+      "corpusCases": 116,
+      "valid": 98,
+      "mislabelled": 18,
+      "saturationHygieneCases": 0,
+      "labelSurvivesSaturation": false,
+      "mislabelledShare": 0.155172,
+      "failureReasons": [
+        "V1_SEMANTICS_SAY_NOT_PERSISTENT"
+      ],
+      "minMargin": 0.28,
+      "offendingCaseIds": [
+        "stage2l19-persistence-sustained_run-007",
+        "stage2l19-persistence-sustained_run-008",
+        "stage2l19-persistence-sustained_run-014",
+        "stage2l19-persistence-sustained_run-028",
+        "stage2l19-persistence-sustained_run-029",
+        "stage2l19-persistence-sustained_run-042",
+        "stage2l19-persistence-sustained_run-043",
+        "stage2l19-persistence-sustained_run-049",
+        "stage2l19-persistence-sustained_run-063",
+        "stage2l19-persistence-sustained_run-064"
+      ]
+    },
+    {
+      "familyId": "persistence/INTERRUPTED_RUN",
+      "corpusCases": 120,
+      "valid": 120,
+      "mislabelled": 0,
+      "saturationHygieneCases": 0,
+      "labelSurvivesSaturation": false,
+      "mislabelledShare": 0,
+      "failureReasons": [],
+      "minMargin": 0.22,
+      "offendingCaseIds": []
+    },
+    {
+      "familyId": "persistence/SHORT_HISTORY",
+      "corpusCases": 60,
+      "valid": 60,
+      "mislabelled": 0,
+      "saturationHygieneCases": 0,
+      "labelSurvivesSaturation": true,
+      "mislabelledShare": 0,
+      "failureReasons": [],
+      "minMargin": 1,
+      "offendingCaseIds": []
+    },
+    {
+      "familyId": "timeToThreshold/APPROACHING",
+      "corpusCases": 120,
+      "valid": 120,
+      "mislabelled": 0,
+      "saturationHygieneCases": 0,
+      "labelSurvivesSaturation": false,
+      "mislabelledShare": 0,
+      "failureReasons": [],
+      "minMargin": 0.4,
+      "offendingCaseIds": []
+    },
+    {
+      "familyId": "timeToThreshold/APPROACHING_4_TO_8",
+      "corpusCases": 120,
+      "valid": 120,
+      "mislabelled": 0,
+      "saturationHygieneCases": 0,
+      "labelSurvivesSaturation": false,
+      "mislabelledShare": 0,
+      "failureReasons": [],
+      "minMargin": 0.4,
+      "offendingCaseIds": []
+    },
+    {
+      "familyId": "timeToThreshold/ALREADY_OVER",
+      "corpusCases": 120,
+      "valid": 120,
+      "mislabelled": 0,
+      "saturationHygieneCases": 0,
+      "labelSurvivesSaturation": false,
+      "mislabelledShare": 0,
+      "failureReasons": [],
+      "minMargin": 0.06,
+      "offendingCaseIds": []
+    },
+    {
+      "familyId": "timeToThreshold/STAYING_BELOW",
+      "corpusCases": 120,
+      "valid": 120,
+      "mislabelled": 0,
+      "saturationHygieneCases": 0,
+      "labelSurvivesSaturation": false,
+      "mislabelledShare": 0,
+      "failureReasons": [],
+      "minMargin": 0.41,
+      "offendingCaseIds": []
+    },
+    {
+      "familyId": "timeToThreshold/MISSING_THRESHOLD_SEMANTICS",
+      "corpusCases": 40,
+      "valid": 40,
+      "mislabelled": 0,
+      "saturationHygieneCases": 0,
+      "labelSurvivesSaturation": true,
+      "mislabelledShare": 0,
+      "failureReasons": [],
+      "minMargin": 0,
+      "offendingCaseIds": []
+    },
+    {
+      "familyId": "abstention/SHORT_HISTORY",
+      "corpusCases": 90,
+      "valid": 90,
+      "mislabelled": 0,
+      "saturationHygieneCases": 0,
+      "labelSurvivesSaturation": true,
+      "mislabelledShare": 0,
+      "failureReasons": [],
+      "minMargin": 1,
+      "offendingCaseIds": []
+    },
+    {
+      "familyId": "abstention/SUFFICIENT_HISTORY",
+      "corpusCases": 120,
+      "valid": 120,
+      "mislabelled": 0,
+      "saturationHygieneCases": 17,
+      "labelSurvivesSaturation": true,
+      "mislabelledShare": 0,
+      "failureReasons": [],
+      "minMargin": 15,
+      "offendingCaseIds": []
+    }
+  ],
+  "repairedAudits": [
+    {
+      "familyId": "direction/RAMP_UP",
+      "corpusCases": 116,
+      "valid": 116,
+      "mislabelled": 0,
+      "saturationHygieneCases": 0,
+      "labelSurvivesSaturation": false,
+      "mislabelledShare": 0,
+      "failureReasons": [],
+      "minMargin": 0.055004,
+      "offendingCaseIds": []
+    },
+    {
+      "familyId": "direction/RAMP_DOWN",
+      "corpusCases": 114,
+      "valid": 114,
+      "mislabelled": 0,
+      "saturationHygieneCases": 0,
+      "labelSurvivesSaturation": false,
+      "mislabelledShare": 0,
+      "failureReasons": [],
+      "minMargin": 0.051468,
+      "offendingCaseIds": []
+    },
+    {
+      "familyId": "direction/FLAT",
+      "corpusCases": 120,
+      "valid": 120,
+      "mislabelled": 0,
+      "saturationHygieneCases": 0,
+      "labelSurvivesSaturation": false,
+      "mislabelledShare": 0,
+      "failureReasons": [],
+      "minMargin": 0.0008,
+      "offendingCaseIds": []
+    },
+    {
+      "familyId": "volatility/ALTERNATING_HIGH",
+      "corpusCases": 120,
+      "valid": 120,
+      "mislabelled": 0,
+      "saturationHygieneCases": 0,
+      "labelSurvivesSaturation": false,
+      "mislabelledShare": 0,
+      "failureReasons": [],
+      "minMargin": 0.24,
+      "offendingCaseIds": []
+    },
+    {
+      "familyId": "volatility/ALTERNATING_LOW",
+      "corpusCases": 90,
+      "valid": 90,
+      "mislabelled": 0,
+      "saturationHygieneCases": 0,
+      "labelSurvivesSaturation": false,
+      "mislabelledShare": 0,
+      "failureReasons": [],
+      "minMargin": 0.026,
+      "offendingCaseIds": []
+    },
+    {
+      "familyId": "cycle/PERIODIC",
+      "corpusCases": 120,
+      "valid": 120,
+      "mislabelled": 0,
+      "saturationHygieneCases": 0,
+      "labelSurvivesSaturation": false,
+      "mislabelledShare": 0,
+      "failureReasons": [],
+      "minMargin": 0.000001,
+      "offendingCaseIds": []
+    },
+    {
+      "familyId": "cycle/MONOTONE",
+      "corpusCases": 116,
+      "valid": 116,
+      "mislabelled": 0,
+      "saturationHygieneCases": 0,
+      "labelSurvivesSaturation": false,
+      "mislabelledShare": 0,
+      "failureReasons": [],
+      "minMargin": 0,
+      "offendingCaseIds": []
+    },
+    {
+      "familyId": "reversal/LATE_REVERSAL",
+      "corpusCases": 119,
+      "valid": 119,
+      "mislabelled": 0,
+      "saturationHygieneCases": 0,
+      "labelSurvivesSaturation": false,
+      "mislabelledShare": 0,
+      "failureReasons": [],
+      "minMargin": 0.004,
+      "offendingCaseIds": []
+    },
+    {
+      "familyId": "reversal/CONTINUING",
+      "corpusCases": 120,
+      "valid": 120,
+      "mislabelled": 0,
+      "saturationHygieneCases": 0,
+      "labelSurvivesSaturation": false,
+      "mislabelledShare": 0,
+      "failureReasons": [],
+      "minMargin": 0.004,
+      "offendingCaseIds": []
+    },
+    {
+      "familyId": "regimeChange/LEVEL_SHIFT",
+      "corpusCases": 120,
+      "valid": 120,
+      "mislabelled": 0,
+      "saturationHygieneCases": 0,
+      "labelSurvivesSaturation": false,
+      "mislabelledShare": 0,
+      "failureReasons": [],
+      "minMargin": 0.02,
+      "offendingCaseIds": []
+    },
+    {
+      "familyId": "regimeChange/STEADY",
+      "corpusCases": 120,
+      "valid": 120,
+      "mislabelled": 0,
+      "saturationHygieneCases": 0,
+      "labelSurvivesSaturation": false,
+      "mislabelledShare": 0,
+      "failureReasons": [],
+      "minMargin": 0.0008,
+      "offendingCaseIds": []
+    },
+    {
+      "familyId": "persistence/SUSTAINED_RUN",
+      "corpusCases": 116,
+      "valid": 116,
+      "mislabelled": 0,
+      "saturationHygieneCases": 0,
+      "labelSurvivesSaturation": false,
+      "mislabelledShare": 0,
+      "failureReasons": [],
+      "minMargin": 0.28,
+      "offendingCaseIds": []
+    },
+    {
+      "familyId": "persistence/INTERRUPTED_RUN",
+      "corpusCases": 120,
+      "valid": 120,
+      "mislabelled": 0,
+      "saturationHygieneCases": 0,
+      "labelSurvivesSaturation": false,
+      "mislabelledShare": 0,
+      "failureReasons": [],
+      "minMargin": 0.22,
+      "offendingCaseIds": []
+    },
+    {
+      "familyId": "persistence/SHORT_HISTORY",
+      "corpusCases": 60,
+      "valid": 60,
+      "mislabelled": 0,
+      "saturationHygieneCases": 0,
+      "labelSurvivesSaturation": true,
+      "mislabelledShare": 0,
+      "failureReasons": [],
+      "minMargin": 1,
+      "offendingCaseIds": []
+    },
+    {
+      "familyId": "timeToThreshold/APPROACHING",
+      "corpusCases": 120,
+      "valid": 120,
+      "mislabelled": 0,
+      "saturationHygieneCases": 0,
+      "labelSurvivesSaturation": false,
+      "mislabelledShare": 0,
+      "failureReasons": [],
+      "minMargin": 0.4,
+      "offendingCaseIds": []
+    },
+    {
+      "familyId": "timeToThreshold/APPROACHING_4_TO_8",
+      "corpusCases": 120,
+      "valid": 120,
+      "mislabelled": 0,
+      "saturationHygieneCases": 0,
+      "labelSurvivesSaturation": false,
+      "mislabelledShare": 0,
+      "failureReasons": [],
+      "minMargin": 0.4,
+      "offendingCaseIds": []
+    },
+    {
+      "familyId": "timeToThreshold/ALREADY_OVER",
+      "corpusCases": 120,
+      "valid": 120,
+      "mislabelled": 0,
+      "saturationHygieneCases": 0,
+      "labelSurvivesSaturation": false,
+      "mislabelledShare": 0,
+      "failureReasons": [],
+      "minMargin": 0.06,
+      "offendingCaseIds": []
+    },
+    {
+      "familyId": "timeToThreshold/STAYING_BELOW",
+      "corpusCases": 120,
+      "valid": 120,
+      "mislabelled": 0,
+      "saturationHygieneCases": 0,
+      "labelSurvivesSaturation": false,
+      "mislabelledShare": 0,
+      "failureReasons": [],
+      "minMargin": 0.41,
+      "offendingCaseIds": []
+    },
+    {
+      "familyId": "timeToThreshold/MISSING_THRESHOLD_SEMANTICS",
+      "corpusCases": 40,
+      "valid": 40,
+      "mislabelled": 0,
+      "saturationHygieneCases": 0,
+      "labelSurvivesSaturation": true,
+      "mislabelledShare": 0,
+      "failureReasons": [],
+      "minMargin": 0,
+      "offendingCaseIds": []
+    },
+    {
+      "familyId": "abstention/SHORT_HISTORY",
+      "corpusCases": 90,
+      "valid": 90,
+      "mislabelled": 0,
+      "saturationHygieneCases": 0,
+      "labelSurvivesSaturation": true,
+      "mislabelledShare": 0,
+      "failureReasons": [],
+      "minMargin": 1,
+      "offendingCaseIds": []
+    },
+    {
+      "familyId": "abstention/SUFFICIENT_HISTORY",
+      "corpusCases": 120,
+      "valid": 120,
+      "mislabelled": 0,
+      "saturationHygieneCases": 17,
+      "labelSurvivesSaturation": true,
+      "mislabelledShare": 0,
+      "failureReasons": [],
+      "minMargin": 15,
+      "offendingCaseIds": []
+    }
+  ],
+  "classifications": [
+    {
+      "familyId": "direction/RAMP_UP",
+      "classification": "BOUNDARY_UNSTABLE",
+      "sweptMislabelled": 12,
+      "corpusMislabelled": 0
+    },
+    {
+      "familyId": "direction/RAMP_DOWN",
+      "classification": "BOUNDARY_UNSTABLE",
+      "sweptMislabelled": 12,
+      "corpusMislabelled": 0
+    },
+    {
+      "familyId": "direction/FLAT",
+      "classification": "SEMANTICALLY_AMBIGUOUS",
+      "sweptMislabelled": 0,
+      "corpusMislabelled": 0
+    },
+    {
+      "familyId": "volatility/ALTERNATING_HIGH",
+      "classification": "VALID",
+      "sweptMislabelled": 0,
+      "corpusMislabelled": 0
+    },
+    {
+      "familyId": "volatility/ALTERNATING_LOW",
+      "classification": "VALID",
+      "sweptMislabelled": 0,
+      "corpusMislabelled": 0
+    },
+    {
+      "familyId": "cycle/PERIODIC",
+      "classification": "SEMANTICALLY_AMBIGUOUS",
+      "sweptMislabelled": 0,
+      "corpusMislabelled": 0
+    },
+    {
+      "familyId": "cycle/MONOTONE",
+      "classification": "BOUNDARY_UNSTABLE",
+      "sweptMislabelled": 12,
+      "corpusMislabelled": 0
+    },
+    {
+      "familyId": "reversal/LATE_REVERSAL",
+      "classification": "PARTIALLY_MISLABELLED",
+      "sweptMislabelled": 6,
+      "corpusMislabelled": 1
+    },
+    {
+      "familyId": "reversal/CONTINUING",
+      "classification": "PARTIALLY_MISLABELLED",
+      "sweptMislabelled": 11,
+      "corpusMislabelled": 1
+    },
+    {
+      "familyId": "regimeChange/LEVEL_SHIFT",
+      "classification": "VALID",
+      "sweptMislabelled": 0,
+      "corpusMislabelled": 0
+    },
+    {
+      "familyId": "regimeChange/STEADY",
+      "classification": "SEMANTICALLY_AMBIGUOUS",
+      "sweptMislabelled": 0,
+      "corpusMislabelled": 0
+    },
+    {
+      "familyId": "persistence/SUSTAINED_RUN",
+      "classification": "PARTIALLY_MISLABELLED",
+      "sweptMislabelled": 39,
+      "corpusMislabelled": 18
+    },
+    {
+      "familyId": "persistence/INTERRUPTED_RUN",
+      "classification": "VALID",
+      "sweptMislabelled": 0,
+      "corpusMislabelled": 0
+    },
+    {
+      "familyId": "persistence/SHORT_HISTORY",
+      "classification": "VALID",
+      "sweptMislabelled": 0,
+      "corpusMislabelled": 0
+    },
+    {
+      "familyId": "timeToThreshold/APPROACHING",
+      "classification": "BOUNDARY_UNSTABLE",
+      "sweptMislabelled": 2,
+      "corpusMislabelled": 0
+    },
+    {
+      "familyId": "timeToThreshold/APPROACHING_4_TO_8",
+      "classification": "BOUNDARY_UNSTABLE",
+      "sweptMislabelled": 1,
+      "corpusMislabelled": 0
+    },
+    {
+      "familyId": "timeToThreshold/ALREADY_OVER",
+      "classification": "VALID",
+      "sweptMislabelled": 0,
+      "corpusMislabelled": 0
+    },
+    {
+      "familyId": "timeToThreshold/STAYING_BELOW",
+      "classification": "VALID",
+      "sweptMislabelled": 0,
+      "corpusMislabelled": 0
+    },
+    {
+      "familyId": "timeToThreshold/MISSING_THRESHOLD_SEMANTICS",
+      "classification": "SEMANTICALLY_AMBIGUOUS",
+      "sweptMislabelled": 0,
+      "corpusMislabelled": 0
+    },
+    {
+      "familyId": "abstention/SHORT_HISTORY",
+      "classification": "BOUNDARY_UNSTABLE",
+      "sweptMislabelled": 1,
+      "corpusMislabelled": 0
+    },
+    {
+      "familyId": "abstention/SUFFICIENT_HISTORY",
+      "classification": "VALID",
+      "sweptMislabelled": 0,
+      "corpusMislabelled": 0
+    }
+  ],
+  "provenDefectiveFamilies": [
+    "reversal/LATE_REVERSAL",
+    "reversal/CONTINUING",
+    "persistence/SUSTAINED_RUN"
+  ],
+  "boundaryFragileFamilies": [
+    "direction/RAMP_UP",
+    "direction/RAMP_DOWN",
+    "cycle/MONOTONE",
+    "timeToThreshold/APPROACHING",
+    "timeToThreshold/APPROACHING_4_TO_8",
+    "abstention/SHORT_HISTORY"
+  ],
+  "sustainedRunBefore": {
+    "familyId": "persistence/SUSTAINED_RUN",
+    "corpusCases": 116,
+    "valid": 98,
+    "mislabelled": 18,
+    "saturationHygieneCases": 0,
+    "labelSurvivesSaturation": false,
+    "mislabelledShare": 0.155172,
+    "failureReasons": [
+      "V1_SEMANTICS_SAY_NOT_PERSISTENT"
+    ],
+    "minMargin": 0.28,
+    "offendingCaseIds": [
+      "stage2l19-persistence-sustained_run-007",
+      "stage2l19-persistence-sustained_run-008",
+      "stage2l19-persistence-sustained_run-014",
+      "stage2l19-persistence-sustained_run-028",
+      "stage2l19-persistence-sustained_run-029",
+      "stage2l19-persistence-sustained_run-042",
+      "stage2l19-persistence-sustained_run-043",
+      "stage2l19-persistence-sustained_run-049",
+      "stage2l19-persistence-sustained_run-063",
+      "stage2l19-persistence-sustained_run-064"
+    ]
+  },
+  "sustainedRunAfter": {
+    "familyId": "persistence/SUSTAINED_RUN",
+    "corpusCases": 116,
+    "valid": 116,
+    "mislabelled": 0,
+    "saturationHygieneCases": 0,
+    "labelSurvivesSaturation": false,
+    "mislabelledShare": 0,
+    "failureReasons": [],
+    "minMargin": 0.28,
+    "offendingCaseIds": []
+  },
+  "sustainedRunResolved": true,
+  "minSemanticMargin": 0.004,
+  "minSemanticMarginByFamily": {
+    "persistence/SUSTAINED_RUN": 0.28,
+    "reversal/LATE_REVERSAL": 0.004,
+    "reversal/CONTINUING": 0.004
+  },
+  "safetyMarginByFamily": {
+    "persistence/SUSTAINED_RUN": 0.2,
+    "reversal/LATE_REVERSAL": 0.002,
+    "reversal/CONTINUING": 0
+  },
+  "lineage": {
+    "parentCorpus": "STAGE2L21_CORPUS",
+    "parentCorpusDigest": "7d1aa026db5d3970d1d03570fa74ea60595629f98b4fcb60e263baf55fec7bb3",
+    "corpusDigest": "5af69d76bf9523eaea5b062603b59a264f14d2876b20d2260be27a3521e264c2",
+    "parentCases": 2302,
+    "carriedCases": 1946,
+    "removedCases": 356,
+    "regeneratedCases": 355,
+    "rejectedDuringGeneration": 5,
+    "changedFamilies": [
+      "persistence/SUSTAINED_RUN",
+      "reversal/LATE_REVERSAL",
+      "reversal/CONTINUING"
+    ],
+    "changedFamilyParentDigest": "677c697296851ca4af12e2a1c00b27d0916ed3b68efd540e4c0808514c071d5c",
+    "changedFamilyDigest": "3ebfd3b4ed9cccb00032e9a93ba6e5dc274b3ddde663bcb24d1d2001aa75ed44",
+    "carriedCasesByteIdentical": true,
+    "minSemanticMargin": 0.004,
+    "minSemanticMarginByFamily": {
+      "persistence/SUSTAINED_RUN": 0.28,
+      "reversal/LATE_REVERSAL": 0.004,
+      "reversal/CONTINUING": 0.004
+    },
+    "safetyMarginByFamily": {
+      "persistence/SUSTAINED_RUN": 0.2,
+      "reversal/LATE_REVERSAL": 0.002,
+      "reversal/CONTINUING": 0
+    },
+    "marginUnits": "Per family, in that family's own semantic units: consistency share for persistence, segment slope for reversal. A single global number would compare unlike quantities.",
+    "everyFamilyClearsItsMargin": true
+  },
+  "properties": {
+    "properties": [
+      {
+        "id": "NO_SATURATION",
+        "appliesTo": "ALL_EXCEPT_SHORT_AND_MISSING_SEMANTICS",
+        "property": "No admitted case touches the range bound."
+      },
+      {
+        "id": "SUSTAINED_RUN_IS_PERSISTENT",
+        "appliesTo": "persistence/SUSTAINED_RUN",
+        "property": "Every case labelled PERSISTENT validates as PERSISTENT under V1."
+      },
+      {
+        "id": "CROSSING_NOT_ALREADY_CROSSED",
+        "appliesTo": "timeToThreshold/APPROACHING*",
+        "property": "The last observed value has not yet crossed the threshold."
+      },
+      {
+        "id": "REVERSAL_IS_MEASURABLE",
+        "appliesTo": "reversal/LATE_REVERSAL",
+        "property": "The produced series contains opposite, non-trivial early and late slopes."
+      },
+      {
+        "id": "CYCLE_REPEATS",
+        "appliesTo": "cycle/PERIODIC",
+        "property": "The produced series repeats exactly at its declared period."
+      },
+      {
+        "id": "VOLATILITY_BANDS_DISJOINT",
+        "appliesTo": "volatility/*",
+        "property": "Realized high-volatility RMS exceeds the high floor and low stays under the low ceiling."
+      },
+      {
+        "id": "FLAT_IS_FLAT",
+        "appliesTo": "direction/FLAT, regimeChange/STEADY",
+        "property": "Net displacement and slope both stay inside the flat ceiling."
+      },
+      {
+        "id": "SHORT_IS_SHORT",
+        "appliesTo": "*/SHORT_HISTORY",
+        "property": "The window is genuinely below the minimum sample count."
+      }
+    ],
+    "propertyCount": 8,
+    "familyResults": [
+      {
+        "familyId": "direction/RAMP_UP",
+        "corpusCases": 116,
+        "valid": 116,
+        "mislabelled": 0,
+        "saturationHygieneCases": 0,
+        "labelSurvivesSaturation": false,
+        "mislabelledShare": 0,
+        "failureReasons": [],
+        "minMargin": 0.055004,
+        "offendingCaseIds": []
+      },
+      {
+        "familyId": "direction/RAMP_DOWN",
+        "corpusCases": 114,
+        "valid": 114,
+        "mislabelled": 0,
+        "saturationHygieneCases": 0,
+        "labelSurvivesSaturation": false,
+        "mislabelledShare": 0,
+        "failureReasons": [],
+        "minMargin": 0.051468,
+        "offendingCaseIds": []
+      },
+      {
+        "familyId": "direction/FLAT",
+        "corpusCases": 120,
+        "valid": 120,
+        "mislabelled": 0,
+        "saturationHygieneCases": 0,
+        "labelSurvivesSaturation": false,
+        "mislabelledShare": 0,
+        "failureReasons": [],
+        "minMargin": 0.0008,
+        "offendingCaseIds": []
+      },
+      {
+        "familyId": "volatility/ALTERNATING_HIGH",
+        "corpusCases": 120,
+        "valid": 120,
+        "mislabelled": 0,
+        "saturationHygieneCases": 0,
+        "labelSurvivesSaturation": false,
+        "mislabelledShare": 0,
+        "failureReasons": [],
+        "minMargin": 0.24,
+        "offendingCaseIds": []
+      },
+      {
+        "familyId": "volatility/ALTERNATING_LOW",
+        "corpusCases": 90,
+        "valid": 90,
+        "mislabelled": 0,
+        "saturationHygieneCases": 0,
+        "labelSurvivesSaturation": false,
+        "mislabelledShare": 0,
+        "failureReasons": [],
+        "minMargin": 0.026,
+        "offendingCaseIds": []
+      },
+      {
+        "familyId": "cycle/PERIODIC",
+        "corpusCases": 120,
+        "valid": 120,
+        "mislabelled": 0,
+        "saturationHygieneCases": 0,
+        "labelSurvivesSaturation": false,
+        "mislabelledShare": 0,
+        "failureReasons": [],
+        "minMargin": 0.000001,
+        "offendingCaseIds": []
+      },
+      {
+        "familyId": "cycle/MONOTONE",
+        "corpusCases": 116,
+        "valid": 116,
+        "mislabelled": 0,
+        "saturationHygieneCases": 0,
+        "labelSurvivesSaturation": false,
+        "mislabelledShare": 0,
+        "failureReasons": [],
+        "minMargin": 0,
+        "offendingCaseIds": []
+      },
+      {
+        "familyId": "reversal/LATE_REVERSAL",
+        "corpusCases": 119,
+        "valid": 119,
+        "mislabelled": 0,
+        "saturationHygieneCases": 0,
+        "labelSurvivesSaturation": false,
+        "mislabelledShare": 0,
+        "failureReasons": [],
+        "minMargin": 0.004,
+        "offendingCaseIds": []
+      },
+      {
+        "familyId": "reversal/CONTINUING",
+        "corpusCases": 120,
+        "valid": 120,
+        "mislabelled": 0,
+        "saturationHygieneCases": 0,
+        "labelSurvivesSaturation": false,
+        "mislabelledShare": 0,
+        "failureReasons": [],
+        "minMargin": 0.004,
+        "offendingCaseIds": []
+      },
+      {
+        "familyId": "regimeChange/LEVEL_SHIFT",
+        "corpusCases": 120,
+        "valid": 120,
+        "mislabelled": 0,
+        "saturationHygieneCases": 0,
+        "labelSurvivesSaturation": false,
+        "mislabelledShare": 0,
+        "failureReasons": [],
+        "minMargin": 0.02,
+        "offendingCaseIds": []
+      },
+      {
+        "familyId": "regimeChange/STEADY",
+        "corpusCases": 120,
+        "valid": 120,
+        "mislabelled": 0,
+        "saturationHygieneCases": 0,
+        "labelSurvivesSaturation": false,
+        "mislabelledShare": 0,
+        "failureReasons": [],
+        "minMargin": 0.0008,
+        "offendingCaseIds": []
+      },
+      {
+        "familyId": "persistence/SUSTAINED_RUN",
+        "corpusCases": 116,
+        "valid": 116,
+        "mislabelled": 0,
+        "saturationHygieneCases": 0,
+        "labelSurvivesSaturation": false,
+        "mislabelledShare": 0,
+        "failureReasons": [],
+        "minMargin": 0.28,
+        "offendingCaseIds": []
+      },
+      {
+        "familyId": "persistence/INTERRUPTED_RUN",
+        "corpusCases": 120,
+        "valid": 120,
+        "mislabelled": 0,
+        "saturationHygieneCases": 0,
+        "labelSurvivesSaturation": false,
+        "mislabelledShare": 0,
+        "failureReasons": [],
+        "minMargin": 0.22,
+        "offendingCaseIds": []
+      },
+      {
+        "familyId": "persistence/SHORT_HISTORY",
+        "corpusCases": 60,
+        "valid": 60,
+        "mislabelled": 0,
+        "saturationHygieneCases": 0,
+        "labelSurvivesSaturation": true,
+        "mislabelledShare": 0,
+        "failureReasons": [],
+        "minMargin": 1,
+        "offendingCaseIds": []
+      },
+      {
+        "familyId": "timeToThreshold/APPROACHING",
+        "corpusCases": 120,
+        "valid": 120,
+        "mislabelled": 0,
+        "saturationHygieneCases": 0,
+        "labelSurvivesSaturation": false,
+        "mislabelledShare": 0,
+        "failureReasons": [],
+        "minMargin": 0.4,
+        "offendingCaseIds": []
+      },
+      {
+        "familyId": "timeToThreshold/APPROACHING_4_TO_8",
+        "corpusCases": 120,
+        "valid": 120,
+        "mislabelled": 0,
+        "saturationHygieneCases": 0,
+        "labelSurvivesSaturation": false,
+        "mislabelledShare": 0,
+        "failureReasons": [],
+        "minMargin": 0.4,
+        "offendingCaseIds": []
+      },
+      {
+        "familyId": "timeToThreshold/ALREADY_OVER",
+        "corpusCases": 120,
+        "valid": 120,
+        "mislabelled": 0,
+        "saturationHygieneCases": 0,
+        "labelSurvivesSaturation": false,
+        "mislabelledShare": 0,
+        "failureReasons": [],
+        "minMargin": 0.06,
+        "offendingCaseIds": []
+      },
+      {
+        "familyId": "timeToThreshold/STAYING_BELOW",
+        "corpusCases": 120,
+        "valid": 120,
+        "mislabelled": 0,
+        "saturationHygieneCases": 0,
+        "labelSurvivesSaturation": false,
+        "mislabelledShare": 0,
+        "failureReasons": [],
+        "minMargin": 0.41,
+        "offendingCaseIds": []
+      },
+      {
+        "familyId": "timeToThreshold/MISSING_THRESHOLD_SEMANTICS",
+        "corpusCases": 40,
+        "valid": 40,
+        "mislabelled": 0,
+        "saturationHygieneCases": 0,
+        "labelSurvivesSaturation": true,
+        "mislabelledShare": 0,
+        "failureReasons": [],
+        "minMargin": 0,
+        "offendingCaseIds": []
+      },
+      {
+        "familyId": "abstention/SHORT_HISTORY",
+        "corpusCases": 90,
+        "valid": 90,
+        "mislabelled": 0,
+        "saturationHygieneCases": 0,
+        "labelSurvivesSaturation": true,
+        "mislabelledShare": 0,
+        "failureReasons": [],
+        "minMargin": 1,
+        "offendingCaseIds": []
+      },
+      {
+        "familyId": "abstention/SUFFICIENT_HISTORY",
+        "corpusCases": 120,
+        "valid": 120,
+        "mislabelled": 0,
+        "saturationHygieneCases": 17,
+        "labelSurvivesSaturation": true,
+        "mislabelledShare": 0,
+        "failureReasons": [],
+        "minMargin": 15,
+        "offendingCaseIds": []
+      }
+    ],
+    "failingFamilies": [],
+    "totalCases": 2301,
+    "totalMislabelled": 0,
+    "allPass": true
+  },
+  "floatingPoint": {
+    "findings": [
+      {
+        "site": "timeToThreshold bucket edge",
+        "slope": 0.006,
+        "ticks": 1,
+        "exactQuotient": 1.0000000000000009,
+        "representationError": 0,
+        "ceilMovesBucket": true
+      },
+      {
+        "site": "timeToThreshold bucket edge",
+        "slope": 0.006,
+        "ticks": 3,
+        "exactQuotient": 3.0000000000000027,
+        "representationError": 0,
+        "ceilMovesBucket": true
+      },
+      {
+        "site": "timeToThreshold bucket edge",
+        "slope": 0.006,
+        "ticks": 4,
+        "exactQuotient": 4.0000000000000036,
+        "representationError": 0,
+        "ceilMovesBucket": true
+      },
+      {
+        "site": "timeToThreshold bucket edge",
+        "slope": 0.006,
+        "ticks": 8,
+        "exactQuotient": 8.000000000000007,
+        "representationError": 0,
+        "ceilMovesBucket": true
+      },
+      {
+        "site": "timeToThreshold bucket edge",
+        "slope": 0.012,
+        "ticks": 1,
+        "exactQuotient": 1.0000000000000009,
+        "representationError": 0,
+        "ceilMovesBucket": true
+      },
+      {
+        "site": "timeToThreshold bucket edge",
+        "slope": 0.012,
+        "ticks": 3,
+        "exactQuotient": 3.0000000000000027,
+        "representationError": 0,
+        "ceilMovesBucket": true
+      },
+      {
+        "site": "timeToThreshold bucket edge",
+        "slope": 0.012,
+        "ticks": 4,
+        "exactQuotient": 4.0000000000000036,
+        "representationError": 0,
+        "ceilMovesBucket": true
+      },
+      {
+        "site": "timeToThreshold bucket edge",
+        "slope": 0.012,
+        "ticks": 8,
+        "exactQuotient": 7.999999999999997,
+        "representationError": 0,
+        "ceilMovesBucket": false
+      },
+      {
+        "site": "timeToThreshold bucket edge",
+        "slope": 0.018,
+        "ticks": 1,
+        "exactQuotient": 1.0000000000000009,
+        "representationError": 0,
+        "ceilMovesBucket": true
+      },
+      {
+        "site": "timeToThreshold bucket edge",
+        "slope": 0.018,
+        "ticks": 3,
+        "exactQuotient": 3.000000000000003,
+        "representationError": 0,
+        "ceilMovesBucket": true
+      },
+      {
+        "site": "timeToThreshold bucket edge",
+        "slope": 0.018,
+        "ticks": 4,
+        "exactQuotient": 3.999999999999998,
+        "representationError": 0,
+        "ceilMovesBucket": false
+      },
+      {
+        "site": "timeToThreshold bucket edge",
+        "slope": 0.018,
+        "ticks": 8,
+        "exactQuotient": 8.000000000000002,
+        "representationError": 0,
+        "ceilMovesBucket": true
+      }
+    ],
+    "unstableEdgeCount": 10,
+    "corpusCasesOnExactEdges": 0,
+    "headModifiedForEdges": false,
+    "policy": "Ordinary semantic families target bucket interiors. Exact-edge behaviour is tested by explicit boundary probes, never by a certification family, and the frozen head is not altered to suit a generator that aimed at an unstable edge."
+  },
+  "effectiveVariationBefore": {
+    "families": [
+      {
+        "familyId": "abstention/SHORT_HISTORY",
+        "rawCaseCount": 90,
+        "distinctSeriesCount": 3,
+        "distinctParameterCount": 3,
+        "effectiveVariationCount": 3,
+        "nearDuplicateRate": 0.966667,
+        "labelDistribution": {
+          "INSUFFICIENT_EVIDENCE": 90
+        }
+      },
+      {
+        "familyId": "abstention/SUFFICIENT_HISTORY",
+        "rawCaseCount": 120,
+        "distinctSeriesCount": 120,
+        "distinctParameterCount": 13,
+        "effectiveVariationCount": 13,
+        "nearDuplicateRate": 0,
+        "labelDistribution": {
+          "ENOUGH_EVIDENCE": 120
+        }
+      },
+      {
+        "familyId": "cycle/MONOTONE",
+        "rawCaseCount": 116,
+        "distinctSeriesCount": 116,
+        "distinctParameterCount": 87,
+        "effectiveVariationCount": 87,
+        "nearDuplicateRate": 0,
+        "labelDistribution": {
+          "NOT_CYCLICAL": 116
+        }
+      },
+      {
+        "familyId": "cycle/PERIODIC",
+        "rawCaseCount": 120,
+        "distinctSeriesCount": 52,
+        "distinctParameterCount": 52,
+        "effectiveVariationCount": 52,
+        "nearDuplicateRate": 0.566667,
+        "labelDistribution": {
+          "CYCLICAL": 120
+        }
+      },
+      {
+        "familyId": "direction/FLAT",
+        "rawCaseCount": 120,
+        "distinctSeriesCount": 13,
+        "distinctParameterCount": 13,
+        "effectiveVariationCount": 13,
+        "nearDuplicateRate": 0.891667,
+        "labelDistribution": {
+          "STABLE": 120
+        }
+      },
+      {
+        "familyId": "direction/RAMP_DOWN",
+        "rawCaseCount": 114,
+        "distinctSeriesCount": 114,
+        "distinctParameterCount": 114,
+        "effectiveVariationCount": 114,
+        "nearDuplicateRate": 0,
+        "labelDistribution": {
+          "DOWN": 114
+        }
+      },
+      {
+        "familyId": "direction/RAMP_UP",
+        "rawCaseCount": 116,
+        "distinctSeriesCount": 116,
+        "distinctParameterCount": 116,
+        "effectiveVariationCount": 116,
+        "nearDuplicateRate": 0,
+        "labelDistribution": {
+          "UP": 116
+        }
+      },
+      {
+        "familyId": "persistence/INTERRUPTED_RUN",
+        "rawCaseCount": 120,
+        "distinctSeriesCount": 65,
+        "distinctParameterCount": 5,
+        "effectiveVariationCount": 5,
+        "nearDuplicateRate": 0.458333,
+        "labelDistribution": {
+          "NOT_PERSISTENT": 120
+        }
+      },
+      {
+        "familyId": "persistence/SHORT_HISTORY",
+        "rawCaseCount": 60,
+        "distinctSeriesCount": 4,
+        "distinctParameterCount": 4,
+        "effectiveVariationCount": 4,
+        "nearDuplicateRate": 0.933333,
+        "labelDistribution": {
+          "INSUFFICIENT_EVIDENCE": 60
+        }
+      },
+      {
+        "familyId": "persistence/SUSTAINED_RUN",
+        "rawCaseCount": 116,
+        "distinctSeriesCount": 116,
+        "distinctParameterCount": 1,
+        "effectiveVariationCount": 1,
+        "nearDuplicateRate": 0,
+        "labelDistribution": {
+          "PERSISTENT": 116
+        }
+      },
+      {
+        "familyId": "regimeChange/LEVEL_SHIFT",
+        "rawCaseCount": 120,
+        "distinctSeriesCount": 6,
+        "distinctParameterCount": 6,
+        "effectiveVariationCount": 6,
+        "nearDuplicateRate": 0.95,
+        "labelDistribution": {
+          "LEVEL_CHANGE": 120
+        }
+      },
+      {
+        "familyId": "regimeChange/STEADY",
+        "rawCaseCount": 120,
+        "distinctSeriesCount": 1,
+        "distinctParameterCount": 1,
+        "effectiveVariationCount": 1,
+        "nearDuplicateRate": 0.991667,
+        "labelDistribution": {
+          "NO_CHANGE": 120
+        }
+      },
+      {
+        "familyId": "reversal/CONTINUING",
+        "rawCaseCount": 120,
+        "distinctSeriesCount": 119,
+        "distinctParameterCount": 7,
+        "effectiveVariationCount": 7,
+        "nearDuplicateRate": 0.008333,
+        "labelDistribution": {
+          "NO_REVERSAL": 120
+        }
+      },
+      {
+        "familyId": "reversal/LATE_REVERSAL",
+        "rawCaseCount": 120,
+        "distinctSeriesCount": 119,
+        "distinctParameterCount": 52,
+        "effectiveVariationCount": 52,
+        "nearDuplicateRate": 0.008333,
+        "labelDistribution": {
+          "REVERSAL": 120
+        }
+      },
+      {
+        "familyId": "timeToThreshold/ALREADY_OVER",
+        "rawCaseCount": 120,
+        "distinctSeriesCount": 13,
+        "distinctParameterCount": 1,
+        "effectiveVariationCount": 1,
+        "nearDuplicateRate": 0.891667,
+        "labelDistribution": {
+          "ALREADY_CROSSED": 120
+        }
+      },
+      {
+        "familyId": "timeToThreshold/APPROACHING",
+        "rawCaseCount": 120,
+        "distinctSeriesCount": 120,
+        "distinctParameterCount": 120,
+        "effectiveVariationCount": 120,
+        "nearDuplicateRate": 0,
+        "labelDistribution": {
+          "CROSSING_1_TO_3": 120
+        }
+      },
+      {
+        "familyId": "timeToThreshold/APPROACHING_4_TO_8",
+        "rawCaseCount": 120,
+        "distinctSeriesCount": 65,
+        "distinctParameterCount": 65,
+        "effectiveVariationCount": 65,
+        "nearDuplicateRate": 0.458333,
+        "labelDistribution": {
+          "CROSSING_4_TO_8": 120
+        }
+      },
+      {
+        "familyId": "timeToThreshold/MISSING_THRESHOLD_SEMANTICS",
+        "rawCaseCount": 40,
+        "distinctSeriesCount": 13,
+        "distinctParameterCount": 1,
+        "effectiveVariationCount": 1,
+        "nearDuplicateRate": 0.675,
+        "labelDistribution": {
+          "INSUFFICIENT_EVIDENCE": 40
+        }
+      },
+      {
+        "familyId": "timeToThreshold/STAYING_BELOW",
+        "rawCaseCount": 120,
+        "distinctSeriesCount": 13,
+        "distinctParameterCount": 1,
+        "effectiveVariationCount": 1,
+        "nearDuplicateRate": 0.891667,
+        "labelDistribution": {
+          "NOT_CROSSING": 120
+        }
+      },
+      {
+        "familyId": "volatility/ALTERNATING_HIGH",
+        "rawCaseCount": 120,
+        "distinctSeriesCount": 78,
+        "distinctParameterCount": 78,
+        "effectiveVariationCount": 78,
+        "nearDuplicateRate": 0.35,
+        "labelDistribution": {
+          "HIGH_VOLATILITY": 120
+        }
+      },
+      {
+        "familyId": "volatility/ALTERNATING_LOW",
+        "rawCaseCount": 90,
+        "distinctSeriesCount": 39,
+        "distinctParameterCount": 39,
+        "effectiveVariationCount": 39,
+        "nearDuplicateRate": 0.566667,
+        "labelDistribution": {
+          "LOW_VOLATILITY": 90
+        }
+      }
+    ],
+    "rawCaseCount": 2302,
+    "effectiveVariationCount": 779,
+    "nearDuplicateRate": 0.661599,
+    "degenerateFamilies": [
+      "abstention/SHORT_HISTORY",
+      "persistence/SHORT_HISTORY",
+      "persistence/SUSTAINED_RUN",
+      "regimeChange/STEADY",
+      "timeToThreshold/ALREADY_OVER",
+      "timeToThreshold/MISSING_THRESHOLD_SEMANTICS",
+      "timeToThreshold/STAYING_BELOW"
+    ],
+    "note": "Effective variation counts distinct produced series and distinct parameter tuples, whichever is smaller. Stage 2L.19 found effective n = 3 behind 300 inherited cases; this is the guard against repeating that."
+  },
+  "effectiveVariationAfter": {
+    "families": [
+      {
+        "familyId": "abstention/SHORT_HISTORY",
+        "rawCaseCount": 90,
+        "distinctSeriesCount": 3,
+        "distinctParameterCount": 3,
+        "effectiveVariationCount": 3,
+        "nearDuplicateRate": 0.966667,
+        "labelDistribution": {
+          "INSUFFICIENT_EVIDENCE": 90
+        }
+      },
+      {
+        "familyId": "abstention/SUFFICIENT_HISTORY",
+        "rawCaseCount": 120,
+        "distinctSeriesCount": 120,
+        "distinctParameterCount": 13,
+        "effectiveVariationCount": 13,
+        "nearDuplicateRate": 0,
+        "labelDistribution": {
+          "ENOUGH_EVIDENCE": 120
+        }
+      },
+      {
+        "familyId": "cycle/MONOTONE",
+        "rawCaseCount": 116,
+        "distinctSeriesCount": 116,
+        "distinctParameterCount": 87,
+        "effectiveVariationCount": 87,
+        "nearDuplicateRate": 0,
+        "labelDistribution": {
+          "NOT_CYCLICAL": 116
+        }
+      },
+      {
+        "familyId": "cycle/PERIODIC",
+        "rawCaseCount": 120,
+        "distinctSeriesCount": 52,
+        "distinctParameterCount": 52,
+        "effectiveVariationCount": 52,
+        "nearDuplicateRate": 0.566667,
+        "labelDistribution": {
+          "CYCLICAL": 120
+        }
+      },
+      {
+        "familyId": "direction/FLAT",
+        "rawCaseCount": 120,
+        "distinctSeriesCount": 13,
+        "distinctParameterCount": 13,
+        "effectiveVariationCount": 13,
+        "nearDuplicateRate": 0.891667,
+        "labelDistribution": {
+          "STABLE": 120
+        }
+      },
+      {
+        "familyId": "direction/RAMP_DOWN",
+        "rawCaseCount": 114,
+        "distinctSeriesCount": 114,
+        "distinctParameterCount": 114,
+        "effectiveVariationCount": 114,
+        "nearDuplicateRate": 0,
+        "labelDistribution": {
+          "DOWN": 114
+        }
+      },
+      {
+        "familyId": "direction/RAMP_UP",
+        "rawCaseCount": 116,
+        "distinctSeriesCount": 116,
+        "distinctParameterCount": 116,
+        "effectiveVariationCount": 116,
+        "nearDuplicateRate": 0,
+        "labelDistribution": {
+          "UP": 116
+        }
+      },
+      {
+        "familyId": "persistence/INTERRUPTED_RUN",
+        "rawCaseCount": 120,
+        "distinctSeriesCount": 65,
+        "distinctParameterCount": 5,
+        "effectiveVariationCount": 5,
+        "nearDuplicateRate": 0.458333,
+        "labelDistribution": {
+          "NOT_PERSISTENT": 120
+        }
+      },
+      {
+        "familyId": "persistence/SHORT_HISTORY",
+        "rawCaseCount": 60,
+        "distinctSeriesCount": 4,
+        "distinctParameterCount": 4,
+        "effectiveVariationCount": 4,
+        "nearDuplicateRate": 0.933333,
+        "labelDistribution": {
+          "INSUFFICIENT_EVIDENCE": 60
+        }
+      },
+      {
+        "familyId": "persistence/SUSTAINED_RUN",
+        "rawCaseCount": 116,
+        "distinctSeriesCount": 113,
+        "distinctParameterCount": 116,
+        "effectiveVariationCount": 113,
+        "nearDuplicateRate": 0.025862,
+        "labelDistribution": {
+          "PERSISTENT": 116
+        }
+      },
+      {
+        "familyId": "regimeChange/LEVEL_SHIFT",
+        "rawCaseCount": 120,
+        "distinctSeriesCount": 6,
+        "distinctParameterCount": 6,
+        "effectiveVariationCount": 6,
+        "nearDuplicateRate": 0.95,
+        "labelDistribution": {
+          "LEVEL_CHANGE": 120
+        }
+      },
+      {
+        "familyId": "regimeChange/STEADY",
+        "rawCaseCount": 120,
+        "distinctSeriesCount": 1,
+        "distinctParameterCount": 1,
+        "effectiveVariationCount": 1,
+        "nearDuplicateRate": 0.991667,
+        "labelDistribution": {
+          "NO_CHANGE": 120
+        }
+      },
+      {
+        "familyId": "reversal/CONTINUING",
+        "rawCaseCount": 120,
+        "distinctSeriesCount": 116,
+        "distinctParameterCount": 120,
+        "effectiveVariationCount": 116,
+        "nearDuplicateRate": 0.033333,
+        "labelDistribution": {
+          "NO_REVERSAL": 120
+        }
+      },
+      {
+        "familyId": "reversal/LATE_REVERSAL",
+        "rawCaseCount": 119,
+        "distinctSeriesCount": 119,
+        "distinctParameterCount": 119,
+        "effectiveVariationCount": 119,
+        "nearDuplicateRate": 0,
+        "labelDistribution": {
+          "REVERSAL": 119
+        }
+      },
+      {
+        "familyId": "timeToThreshold/ALREADY_OVER",
+        "rawCaseCount": 120,
+        "distinctSeriesCount": 13,
+        "distinctParameterCount": 1,
+        "effectiveVariationCount": 1,
+        "nearDuplicateRate": 0.891667,
+        "labelDistribution": {
+          "ALREADY_CROSSED": 120
+        }
+      },
+      {
+        "familyId": "timeToThreshold/APPROACHING",
+        "rawCaseCount": 120,
+        "distinctSeriesCount": 120,
+        "distinctParameterCount": 120,
+        "effectiveVariationCount": 120,
+        "nearDuplicateRate": 0,
+        "labelDistribution": {
+          "CROSSING_1_TO_3": 120
+        }
+      },
+      {
+        "familyId": "timeToThreshold/APPROACHING_4_TO_8",
+        "rawCaseCount": 120,
+        "distinctSeriesCount": 65,
+        "distinctParameterCount": 65,
+        "effectiveVariationCount": 65,
+        "nearDuplicateRate": 0.458333,
+        "labelDistribution": {
+          "CROSSING_4_TO_8": 120
+        }
+      },
+      {
+        "familyId": "timeToThreshold/MISSING_THRESHOLD_SEMANTICS",
+        "rawCaseCount": 40,
+        "distinctSeriesCount": 13,
+        "distinctParameterCount": 1,
+        "effectiveVariationCount": 1,
+        "nearDuplicateRate": 0.675,
+        "labelDistribution": {
+          "INSUFFICIENT_EVIDENCE": 40
+        }
+      },
+      {
+        "familyId": "timeToThreshold/STAYING_BELOW",
+        "rawCaseCount": 120,
+        "distinctSeriesCount": 13,
+        "distinctParameterCount": 1,
+        "effectiveVariationCount": 1,
+        "nearDuplicateRate": 0.891667,
+        "labelDistribution": {
+          "NOT_CROSSING": 120
+        }
+      },
+      {
+        "familyId": "volatility/ALTERNATING_HIGH",
+        "rawCaseCount": 120,
+        "distinctSeriesCount": 78,
+        "distinctParameterCount": 78,
+        "effectiveVariationCount": 78,
+        "nearDuplicateRate": 0.35,
+        "labelDistribution": {
+          "HIGH_VOLATILITY": 120
+        }
+      },
+      {
+        "familyId": "volatility/ALTERNATING_LOW",
+        "rawCaseCount": 90,
+        "distinctSeriesCount": 39,
+        "distinctParameterCount": 39,
+        "effectiveVariationCount": 39,
+        "nearDuplicateRate": 0.566667,
+        "labelDistribution": {
+          "LOW_VOLATILITY": 90
+        }
+      }
+    ],
+    "rawCaseCount": 2301,
+    "effectiveVariationCount": 1067,
+    "nearDuplicateRate": 0.536289,
+    "degenerateFamilies": [
+      "abstention/SHORT_HISTORY",
+      "persistence/SHORT_HISTORY",
+      "regimeChange/STEADY",
+      "timeToThreshold/ALREADY_OVER",
+      "timeToThreshold/MISSING_THRESHOLD_SEMANTICS",
+      "timeToThreshold/STAYING_BELOW"
+    ],
+    "note": "Effective variation counts distinct produced series and distinct parameter tuples, whichever is smaller. Stage 2L.19 found effective n = 3 behind 300 inherited cases; this is the guard against repeating that."
+  },
+  "blindBefore": {
+    "corpus": "STAGE2L21_CORPUS",
+    "heads": [
+      {
+        "headId": "direction",
+        "corpus": "STAGE2L21_CORPUS",
+        "cases": 350,
+        "accuracy": 1,
+        "abstentionRate": 0,
+        "majorityBaseline": 0.342857,
+        "byFamily": {
+          "RAMP_UP": {
+            "cases": 116,
+            "correct": 116,
+            "accuracy": 1
+          },
+          "RAMP_DOWN": {
+            "cases": 114,
+            "correct": 114,
+            "accuracy": 1
+          },
+          "FLAT": {
+            "cases": 120,
+            "correct": 120,
+            "accuracy": 1
+          }
+        }
+      },
+      {
+        "headId": "persistence",
+        "corpus": "STAGE2L21_CORPUS",
+        "cases": 296,
+        "accuracy": 0.881757,
+        "abstentionRate": 0.202703,
+        "majorityBaseline": 0.405405,
+        "byFamily": {
+          "SUSTAINED_RUN": {
+            "cases": 116,
+            "correct": 81,
+            "accuracy": 0.698276
+          },
+          "INTERRUPTED_RUN": {
+            "cases": 120,
+            "correct": 120,
+            "accuracy": 1
+          },
+          "SHORT_HISTORY": {
+            "cases": 60,
+            "correct": 60,
+            "accuracy": 1
+          }
+        }
+      },
+      {
+        "headId": "reversal",
+        "corpus": "STAGE2L21_CORPUS",
+        "cases": 240,
+        "accuracy": 0.6625,
+        "abstentionRate": 0,
+        "majorityBaseline": 0.5,
+        "byFamily": {
+          "LATE_REVERSAL": {
+            "cases": 120,
+            "correct": 39,
+            "accuracy": 0.325
+          },
+          "CONTINUING": {
+            "cases": 120,
+            "correct": 120,
+            "accuracy": 1
+          }
+        }
+      },
+      {
+        "headId": "regimeChange",
+        "corpus": "STAGE2L21_CORPUS",
+        "cases": 240,
+        "accuracy": 0.916667,
+        "abstentionRate": 0,
+        "majorityBaseline": 0.5,
+        "byFamily": {
+          "LEVEL_SHIFT": {
+            "cases": 120,
+            "correct": 100,
+            "accuracy": 0.833333
+          },
+          "STEADY": {
+            "cases": 120,
+            "correct": 120,
+            "accuracy": 1
+          }
+        }
+      },
+      {
+        "headId": "volatility",
+        "corpus": "STAGE2L21_CORPUS",
+        "cases": 210,
+        "accuracy": 1,
+        "abstentionRate": 0,
+        "majorityBaseline": 0.571429,
+        "byFamily": {
+          "ALTERNATING_HIGH": {
+            "cases": 120,
+            "correct": 120,
+            "accuracy": 1
+          },
+          "ALTERNATING_LOW": {
+            "cases": 90,
+            "correct": 90,
+            "accuracy": 1
+          }
+        }
+      },
+      {
+        "headId": "cycle",
+        "corpus": "STAGE2L21_CORPUS",
+        "cases": 236,
+        "accuracy": 0.521186,
+        "abstentionRate": 0,
+        "majorityBaseline": 0.508475,
+        "byFamily": {
+          "PERIODIC": {
+            "cases": 120,
+            "correct": 120,
+            "accuracy": 1
+          },
+          "MONOTONE": {
+            "cases": 116,
+            "correct": 3,
+            "accuracy": 0.025862
+          }
+        }
+      },
+      {
+        "headId": "timeToThreshold",
+        "corpus": "STAGE2L21_CORPUS",
+        "cases": 520,
+        "accuracy": 1,
+        "abstentionRate": 0.076923,
+        "majorityBaseline": 0.230769,
+        "byFamily": {
+          "ALREADY_OVER": {
+            "cases": 120,
+            "correct": 120,
+            "accuracy": 1
+          },
+          "STAYING_BELOW": {
+            "cases": 120,
+            "correct": 120,
+            "accuracy": 1
+          },
+          "APPROACHING": {
+            "cases": 120,
+            "correct": 120,
+            "accuracy": 1
+          },
+          "APPROACHING_4_TO_8": {
+            "cases": 120,
+            "correct": 120,
+            "accuracy": 1
+          },
+          "MISSING_THRESHOLD_SEMANTICS": {
+            "cases": 40,
+            "correct": 40,
+            "accuracy": 1
+          }
+        }
+      },
+      {
+        "headId": "abstention",
+        "corpus": "STAGE2L21_CORPUS",
+        "cases": 210,
+        "accuracy": 0.995238,
+        "abstentionRate": 0.433333,
+        "majorityBaseline": 0.571429,
+        "byFamily": {
+          "SHORT_HISTORY": {
+            "cases": 90,
+            "correct": 90,
+            "accuracy": 1
+          },
+          "SUFFICIENT_HISTORY": {
+            "cases": 120,
+            "correct": 119,
+            "accuracy": 0.991667
+          }
+        }
+      }
+    ]
+  },
+  "blindAfter": {
+    "corpus": "STAGE2L23_CORPUS",
+    "heads": [
+      {
+        "headId": "direction",
+        "corpus": "STAGE2L23_CORPUS",
+        "cases": 350,
+        "accuracy": 1,
+        "abstentionRate": 0,
+        "majorityBaseline": 0.342857,
+        "byFamily": {
+          "RAMP_UP": {
+            "cases": 116,
+            "correct": 116,
+            "accuracy": 1
+          },
+          "RAMP_DOWN": {
+            "cases": 114,
+            "correct": 114,
+            "accuracy": 1
+          },
+          "FLAT": {
+            "cases": 120,
+            "correct": 120,
+            "accuracy": 1
+          }
+        }
+      },
+      {
+        "headId": "persistence",
+        "corpus": "STAGE2L23_CORPUS",
+        "cases": 296,
+        "accuracy": 0.939189,
+        "abstentionRate": 0.202703,
+        "majorityBaseline": 0.405405,
+        "byFamily": {
+          "INTERRUPTED_RUN": {
+            "cases": 120,
+            "correct": 120,
+            "accuracy": 1
+          },
+          "SHORT_HISTORY": {
+            "cases": 60,
+            "correct": 60,
+            "accuracy": 1
+          },
+          "SUSTAINED_RUN": {
+            "cases": 116,
+            "correct": 98,
+            "accuracy": 0.844828
+          }
+        }
+      },
+      {
+        "headId": "reversal",
+        "corpus": "STAGE2L23_CORPUS",
+        "cases": 239,
+        "accuracy": 0.715481,
+        "abstentionRate": 0,
+        "majorityBaseline": 0.502092,
+        "byFamily": {
+          "LATE_REVERSAL": {
+            "cases": 119,
+            "correct": 51,
+            "accuracy": 0.428571
+          },
+          "CONTINUING": {
+            "cases": 120,
+            "correct": 120,
+            "accuracy": 1
+          }
+        }
+      },
+      {
+        "headId": "regimeChange",
+        "corpus": "STAGE2L23_CORPUS",
+        "cases": 240,
+        "accuracy": 0.916667,
+        "abstentionRate": 0,
+        "majorityBaseline": 0.5,
+        "byFamily": {
+          "LEVEL_SHIFT": {
+            "cases": 120,
+            "correct": 100,
+            "accuracy": 0.833333
+          },
+          "STEADY": {
+            "cases": 120,
+            "correct": 120,
+            "accuracy": 1
+          }
+        }
+      },
+      {
+        "headId": "volatility",
+        "corpus": "STAGE2L23_CORPUS",
+        "cases": 210,
+        "accuracy": 1,
+        "abstentionRate": 0,
+        "majorityBaseline": 0.571429,
+        "byFamily": {
+          "ALTERNATING_HIGH": {
+            "cases": 120,
+            "correct": 120,
+            "accuracy": 1
+          },
+          "ALTERNATING_LOW": {
+            "cases": 90,
+            "correct": 90,
+            "accuracy": 1
+          }
+        }
+      },
+      {
+        "headId": "cycle",
+        "corpus": "STAGE2L23_CORPUS",
+        "cases": 236,
+        "accuracy": 0.521186,
+        "abstentionRate": 0,
+        "majorityBaseline": 0.508475,
+        "byFamily": {
+          "PERIODIC": {
+            "cases": 120,
+            "correct": 120,
+            "accuracy": 1
+          },
+          "MONOTONE": {
+            "cases": 116,
+            "correct": 3,
+            "accuracy": 0.025862
+          }
+        }
+      },
+      {
+        "headId": "timeToThreshold",
+        "corpus": "STAGE2L23_CORPUS",
+        "cases": 520,
+        "accuracy": 1,
+        "abstentionRate": 0.076923,
+        "majorityBaseline": 0.230769,
+        "byFamily": {
+          "ALREADY_OVER": {
+            "cases": 120,
+            "correct": 120,
+            "accuracy": 1
+          },
+          "STAYING_BELOW": {
+            "cases": 120,
+            "correct": 120,
+            "accuracy": 1
+          },
+          "APPROACHING": {
+            "cases": 120,
+            "correct": 120,
+            "accuracy": 1
+          },
+          "APPROACHING_4_TO_8": {
+            "cases": 120,
+            "correct": 120,
+            "accuracy": 1
+          },
+          "MISSING_THRESHOLD_SEMANTICS": {
+            "cases": 40,
+            "correct": 40,
+            "accuracy": 1
+          }
+        }
+      },
+      {
+        "headId": "abstention",
+        "corpus": "STAGE2L23_CORPUS",
+        "cases": 210,
+        "accuracy": 0.995238,
+        "abstentionRate": 0.433333,
+        "majorityBaseline": 0.571429,
+        "byFamily": {
+          "SHORT_HISTORY": {
+            "cases": 90,
+            "correct": 90,
+            "accuracy": 1
+          },
+          "SUFFICIENT_HISTORY": {
+            "cases": 120,
+            "correct": 119,
+            "accuracy": 0.991667
+          }
+        }
+      }
+    ]
+  },
+  "identifiability": [
+    {
+      "headId": "reversal",
+      "before": {
+        "headId": "reversal",
+        "developmentCases": 80,
+        "calibrationCases": 80,
+        "finalHoldoutCases": 80,
+        "developmentErrors": 24,
+        "calibrationErrors": 28,
+        "finalHoldoutErrors": 29,
+        "errorVarianceMeasurable": true,
+        "bestSignal": "confidence",
+        "developmentDiscrimination": 0.770089,
+        "observedDiscrimination": 0.715659,
+        "finalHoldoutDiscrimination": 0.72549,
+        "nullMedian": 0.548077,
+        "nullP95": 0.637363,
+        "nullP99": 0.684753,
+        "nullMax": 0.712912,
+        "permutations": 200,
+        "searchSpaceMatchedNull": true,
+        "headsSearched": 8,
+        "familyWiseAlpha": 0.05,
+        "familyWiseQuantile": 0.99375,
+        "familyWiseThreshold": 0.684753,
+        "multiplicityAccountedFor": true,
+        "materialMargin": 0.02,
+        "materialThreshold": 0.704753,
+        "observedLiftOverNullMedian": 0.167582,
+        "holdoutLiftOverNullMedian": 0.177413,
+        "holdoutRetention": 1.058664,
+        "minimumHoldoutRetention": 0.5,
+        "signalExceedsNull": true,
+        "generalisesToHoldout": true,
+        "identifiable": true,
+        "identifiabilityStatus": "MEASURED_IDENTIFIABLE"
+      },
+      "after": {
+        "headId": "reversal",
+        "developmentCases": 80,
+        "calibrationCases": 79,
+        "finalHoldoutCases": 80,
+        "developmentErrors": 21,
+        "calibrationErrors": 25,
+        "finalHoldoutErrors": 22,
+        "errorVarianceMeasurable": true,
+        "bestSignal": "confidence",
+        "developmentDiscrimination": 0.788539,
+        "observedDiscrimination": 0.707407,
+        "finalHoldoutDiscrimination": 0.785266,
+        "nullMedian": 0.551111,
+        "nullP95": 0.628889,
+        "nullP99": 0.688889,
+        "nullMax": 0.714815,
+        "permutations": 200,
+        "searchSpaceMatchedNull": true,
+        "headsSearched": 8,
+        "familyWiseAlpha": 0.05,
+        "familyWiseQuantile": 0.99375,
+        "familyWiseThreshold": 0.688889,
+        "multiplicityAccountedFor": true,
+        "materialMargin": 0.02,
+        "materialThreshold": 0.708889,
+        "observedLiftOverNullMedian": 0.156296,
+        "holdoutLiftOverNullMedian": 0.234155,
+        "holdoutRetention": 1.498151,
+        "minimumHoldoutRetention": 0.5,
+        "signalExceedsNull": false,
+        "generalisesToHoldout": true,
+        "identifiable": false,
+        "identifiabilityStatus": "MEASURED_NON_IDENTIFIABLE"
+      }
+    },
+    {
+      "headId": "persistence",
+      "before": {
+        "headId": "persistence",
+        "developmentCases": 100,
+        "calibrationCases": 97,
+        "finalHoldoutCases": 99,
+        "developmentErrors": 51,
+        "calibrationErrors": 53,
+        "finalHoldoutErrors": 51,
+        "errorVarianceMeasurable": true,
+        "bestSignal": "activeHeadCount",
+        "developmentDiscrimination": 0.723689,
+        "observedDiscrimination": 0.713336,
+        "finalHoldoutDiscrimination": 0.711193,
+        "nullMedian": 0.540094,
+        "nullP95": 0.621141,
+        "nullP99": 0.659949,
+        "nullMax": 0.662307,
+        "permutations": 200,
+        "searchSpaceMatchedNull": true,
+        "headsSearched": 8,
+        "familyWiseAlpha": 0.05,
+        "familyWiseQuantile": 0.99375,
+        "familyWiseThreshold": 0.659949,
+        "multiplicityAccountedFor": true,
+        "materialMargin": 0.02,
+        "materialThreshold": 0.679949,
+        "observedLiftOverNullMedian": 0.173242,
+        "holdoutLiftOverNullMedian": 0.171099,
+        "holdoutRetention": 0.98763,
+        "minimumHoldoutRetention": 0.5,
+        "signalExceedsNull": true,
+        "generalisesToHoldout": true,
+        "identifiable": true,
+        "identifiabilityStatus": "MEASURED_IDENTIFIABLE"
+      },
+      "after": {
+        "headId": "persistence",
+        "developmentCases": 100,
+        "calibrationCases": 97,
+        "finalHoldoutCases": 99,
+        "developmentErrors": 46,
+        "calibrationErrors": 46,
+        "finalHoldoutErrors": 46,
+        "errorVarianceMeasurable": true,
+        "bestSignal": "overallConfidence",
+        "developmentDiscrimination": 0.702093,
+        "observedDiscrimination": 0.688832,
+        "finalHoldoutDiscrimination": 0.696473,
+        "nullMedian": 0.538363,
+        "nullP95": 0.606351,
+        "nullP99": 0.638534,
+        "nullMax": 0.645141,
+        "permutations": 200,
+        "searchSpaceMatchedNull": true,
+        "headsSearched": 8,
+        "familyWiseAlpha": 0.05,
+        "familyWiseQuantile": 0.99375,
+        "familyWiseThreshold": 0.638534,
+        "multiplicityAccountedFor": true,
+        "materialMargin": 0.02,
+        "materialThreshold": 0.658534,
+        "observedLiftOverNullMedian": 0.150469,
+        "holdoutLiftOverNullMedian": 0.15811,
+        "holdoutRetention": 1.050781,
+        "minimumHoldoutRetention": 0.5,
+        "signalExceedsNull": true,
+        "generalisesToHoldout": true,
+        "identifiable": true,
+        "identifiabilityStatus": "MEASURED_IDENTIFIABLE"
+      }
+    }
+  ],
+  "headsChecked": 2800,
+  "headDrift": 0,
+  "oracleHeadsUnchanged": true,
+  "actionPaths": {
+    "before": [
+      "direction"
+    ],
+    "after": [
+      "direction"
+    ],
+    "unchanged": true
+  },
+  "oracleActionPathsUnchanged": true,
+  "nexusBehaviorChanged": false,
+  "securityRegressionPass": true,
+  "corpusDigest": "5af69d76bf9523eaea5b062603b59a264f14d2876b20d2260be27a3521e264c2",
+  "labelLeakage": {
+    "labelLeakageDetected": false,
+    "validatorsCallHeadUnderTest": false
+  },
+  "labelLeakageDetected": false,
+  "generatorInventoryComplete": true,
+  "semanticValidatorsDefined": true,
+  "allTemporalFamiliesBoundaryAudited": true,
+  "sustainedRunDefectResolved": true,
+  "provenDefectiveFamiliesRepaired": true,
+  "repairedFamiliesWellPosed": true,
+  "regeneratedFamilies": [
+    "persistence/SUSTAINED_RUN",
+    "reversal/LATE_REVERSAL",
+    "reversal/CONTINUING"
+  ],
+  "regeneratedFamilyMargins": {
+    "persistence/SUSTAINED_RUN": 0.28,
+    "reversal/LATE_REVERSAL": 0.004,
+    "reversal/CONTINUING": 0.004
+  },
+  "generatorPropertyTestsPass": true,
+  "effectiveVariationMeasured": true,
+  "temporalCorpusOutcome": "B_MULTIPLE_GENERATOR_DEFECTS_REPAIRED",
+  "stage2l23Certified": true,
+  "interpretation": {
+    "corpusInfrastructureStatus": "ALL_TEMPORAL_FAMILIES_WELL_POSED_UNDER_INDEPENDENT_VALIDATION_WITH_ADMISSION_GATE",
+    "boundaryFragilityNote": "6 family/families are well posed on the certification corpus but fail somewhere in their declared parameter range: direction/RAMP_UP, direction/RAMP_DOWN, cycle/MONOTONE, timeToThreshold/APPROACHING, timeToThreshold/APPROACHING_4_TO_8, abstention/SHORT_HISTORY. The corpus never visits those points, so nothing certified rests on them, and the ranges are recorded rather than silently narrowed.",
+    "actionPathExpansionRecommended": false,
+    "scoreMovementAttribution": "CORPUS_ONLY_NO_EXPERT_CHANGE"
+  },
+  "portabilityNote": "Stage 2L.10 through 2L.22 remain DIGEST_PRODUCED_SINGLE_PLATFORM. Stage 2L.23 does not change that.",
+  "liveActionDispatches": 0,
+  "worldMutations": 0,
+  "authorityEscalations": 0,
+  "realZeknovaDecisionDeltaMeasured": false,
+  "evidenceDigest": "e185602c4e19f9dee7278123b2b353eb7a6114ba721973faeda40c9f3c7554a5",
+  "certificationHash": "1d9981817d31381eaa481e4141ce2065ee758267bc08b83f8179b60379eac428"
+}

@@ -1,0 +1,665 @@
+{
+  "stage": "STAGE2L23_TEMPORAL_CORPUS_WELL_POSEDNESS",
+  "classifications": [
+    {
+      "familyId": "direction/RAMP_UP",
+      "classification": "BOUNDARY_UNSTABLE",
+      "sweptMislabelled": 12,
+      "corpusMislabelled": 0
+    },
+    {
+      "familyId": "direction/RAMP_DOWN",
+      "classification": "BOUNDARY_UNSTABLE",
+      "sweptMislabelled": 12,
+      "corpusMislabelled": 0
+    },
+    {
+      "familyId": "direction/FLAT",
+      "classification": "SEMANTICALLY_AMBIGUOUS",
+      "sweptMislabelled": 0,
+      "corpusMislabelled": 0
+    },
+    {
+      "familyId": "volatility/ALTERNATING_HIGH",
+      "classification": "VALID",
+      "sweptMislabelled": 0,
+      "corpusMislabelled": 0
+    },
+    {
+      "familyId": "volatility/ALTERNATING_LOW",
+      "classification": "VALID",
+      "sweptMislabelled": 0,
+      "corpusMislabelled": 0
+    },
+    {
+      "familyId": "cycle/PERIODIC",
+      "classification": "SEMANTICALLY_AMBIGUOUS",
+      "sweptMislabelled": 0,
+      "corpusMislabelled": 0
+    },
+    {
+      "familyId": "cycle/MONOTONE",
+      "classification": "BOUNDARY_UNSTABLE",
+      "sweptMislabelled": 12,
+      "corpusMislabelled": 0
+    },
+    {
+      "familyId": "reversal/LATE_REVERSAL",
+      "classification": "PARTIALLY_MISLABELLED",
+      "sweptMislabelled": 6,
+      "corpusMislabelled": 1
+    },
+    {
+      "familyId": "reversal/CONTINUING",
+      "classification": "PARTIALLY_MISLABELLED",
+      "sweptMislabelled": 11,
+      "corpusMislabelled": 1
+    },
+    {
+      "familyId": "regimeChange/LEVEL_SHIFT",
+      "classification": "VALID",
+      "sweptMislabelled": 0,
+      "corpusMislabelled": 0
+    },
+    {
+      "familyId": "regimeChange/STEADY",
+      "classification": "SEMANTICALLY_AMBIGUOUS",
+      "sweptMislabelled": 0,
+      "corpusMislabelled": 0
+    },
+    {
+      "familyId": "persistence/SUSTAINED_RUN",
+      "classification": "PARTIALLY_MISLABELLED",
+      "sweptMislabelled": 39,
+      "corpusMislabelled": 18
+    },
+    {
+      "familyId": "persistence/INTERRUPTED_RUN",
+      "classification": "VALID",
+      "sweptMislabelled": 0,
+      "corpusMislabelled": 0
+    },
+    {
+      "familyId": "persistence/SHORT_HISTORY",
+      "classification": "VALID",
+      "sweptMislabelled": 0,
+      "corpusMislabelled": 0
+    },
+    {
+      "familyId": "timeToThreshold/APPROACHING",
+      "classification": "BOUNDARY_UNSTABLE",
+      "sweptMislabelled": 2,
+      "corpusMislabelled": 0
+    },
+    {
+      "familyId": "timeToThreshold/APPROACHING_4_TO_8",
+      "classification": "BOUNDARY_UNSTABLE",
+      "sweptMislabelled": 1,
+      "corpusMislabelled": 0
+    },
+    {
+      "familyId": "timeToThreshold/ALREADY_OVER",
+      "classification": "VALID",
+      "sweptMislabelled": 0,
+      "corpusMislabelled": 0
+    },
+    {
+      "familyId": "timeToThreshold/STAYING_BELOW",
+      "classification": "VALID",
+      "sweptMislabelled": 0,
+      "corpusMislabelled": 0
+    },
+    {
+      "familyId": "timeToThreshold/MISSING_THRESHOLD_SEMANTICS",
+      "classification": "SEMANTICALLY_AMBIGUOUS",
+      "sweptMislabelled": 0,
+      "corpusMislabelled": 0
+    },
+    {
+      "familyId": "abstention/SHORT_HISTORY",
+      "classification": "BOUNDARY_UNSTABLE",
+      "sweptMislabelled": 1,
+      "corpusMislabelled": 0
+    },
+    {
+      "familyId": "abstention/SUFFICIENT_HISTORY",
+      "classification": "VALID",
+      "sweptMislabelled": 0,
+      "corpusMislabelled": 0
+    }
+  ],
+  "parentAudits": [
+    {
+      "familyId": "direction/RAMP_UP",
+      "corpusCases": 116,
+      "valid": 116,
+      "mislabelled": 0,
+      "saturationHygieneCases": 0,
+      "labelSurvivesSaturation": false,
+      "mislabelledShare": 0,
+      "failureReasons": [],
+      "minMargin": 0.055004,
+      "offendingCaseIds": []
+    },
+    {
+      "familyId": "direction/RAMP_DOWN",
+      "corpusCases": 114,
+      "valid": 114,
+      "mislabelled": 0,
+      "saturationHygieneCases": 0,
+      "labelSurvivesSaturation": false,
+      "mislabelledShare": 0,
+      "failureReasons": [],
+      "minMargin": 0.051468,
+      "offendingCaseIds": []
+    },
+    {
+      "familyId": "direction/FLAT",
+      "corpusCases": 120,
+      "valid": 120,
+      "mislabelled": 0,
+      "saturationHygieneCases": 0,
+      "labelSurvivesSaturation": false,
+      "mislabelledShare": 0,
+      "failureReasons": [],
+      "minMargin": 0.0008,
+      "offendingCaseIds": []
+    },
+    {
+      "familyId": "volatility/ALTERNATING_HIGH",
+      "corpusCases": 120,
+      "valid": 120,
+      "mislabelled": 0,
+      "saturationHygieneCases": 0,
+      "labelSurvivesSaturation": false,
+      "mislabelledShare": 0,
+      "failureReasons": [],
+      "minMargin": 0.24,
+      "offendingCaseIds": []
+    },
+    {
+      "familyId": "volatility/ALTERNATING_LOW",
+      "corpusCases": 90,
+      "valid": 90,
+      "mislabelled": 0,
+      "saturationHygieneCases": 0,
+      "labelSurvivesSaturation": false,
+      "mislabelledShare": 0,
+      "failureReasons": [],
+      "minMargin": 0.026,
+      "offendingCaseIds": []
+    },
+    {
+      "familyId": "cycle/PERIODIC",
+      "corpusCases": 120,
+      "valid": 120,
+      "mislabelled": 0,
+      "saturationHygieneCases": 0,
+      "labelSurvivesSaturation": false,
+      "mislabelledShare": 0,
+      "failureReasons": [],
+      "minMargin": 0.000001,
+      "offendingCaseIds": []
+    },
+    {
+      "familyId": "cycle/MONOTONE",
+      "corpusCases": 116,
+      "valid": 116,
+      "mislabelled": 0,
+      "saturationHygieneCases": 0,
+      "labelSurvivesSaturation": false,
+      "mislabelledShare": 0,
+      "failureReasons": [],
+      "minMargin": 0,
+      "offendingCaseIds": []
+    },
+    {
+      "familyId": "reversal/LATE_REVERSAL",
+      "corpusCases": 120,
+      "valid": 119,
+      "mislabelled": 1,
+      "saturationHygieneCases": 0,
+      "labelSurvivesSaturation": false,
+      "mislabelledShare": 0.008333,
+      "failureReasons": [
+        "NO_MEASURABLE_REVERSAL_IN_PRODUCED_SERIES"
+      ],
+      "minMargin": 0,
+      "offendingCaseIds": [
+        "stage2l19-reversal-late_reversal-112"
+      ]
+    },
+    {
+      "familyId": "reversal/CONTINUING",
+      "corpusCases": 120,
+      "valid": 119,
+      "mislabelled": 1,
+      "saturationHygieneCases": 0,
+      "labelSurvivesSaturation": false,
+      "mislabelledShare": 0.008333,
+      "failureReasons": [
+        "PRODUCED_SERIES_CONTAINS_A_REVERSAL"
+      ],
+      "minMargin": 0.000441,
+      "offendingCaseIds": [
+        "stage2l19-reversal-continuing-063"
+      ]
+    },
+    {
+      "familyId": "regimeChange/LEVEL_SHIFT",
+      "corpusCases": 120,
+      "valid": 120,
+      "mislabelled": 0,
+      "saturationHygieneCases": 0,
+      "labelSurvivesSaturation": false,
+      "mislabelledShare": 0,
+      "failureReasons": [],
+      "minMargin": 0.02,
+      "offendingCaseIds": []
+    },
+    {
+      "familyId": "regimeChange/STEADY",
+      "corpusCases": 120,
+      "valid": 120,
+      "mislabelled": 0,
+      "saturationHygieneCases": 0,
+      "labelSurvivesSaturation": false,
+      "mislabelledShare": 0,
+      "failureReasons": [],
+      "minMargin": 0.0008,
+      "offendingCaseIds": []
+    },
+    {
+      "familyId": "persistence/SUSTAINED_RUN",
+      "corpusCases": 116,
+      "valid": 98,
+      "mislabelled": 18,
+      "saturationHygieneCases": 0,
+      "labelSurvivesSaturation": false,
+      "mislabelledShare": 0.155172,
+      "failureReasons": [
+        "V1_SEMANTICS_SAY_NOT_PERSISTENT"
+      ],
+      "minMargin": 0.28,
+      "offendingCaseIds": [
+        "stage2l19-persistence-sustained_run-007",
+        "stage2l19-persistence-sustained_run-008",
+        "stage2l19-persistence-sustained_run-014",
+        "stage2l19-persistence-sustained_run-028",
+        "stage2l19-persistence-sustained_run-029",
+        "stage2l19-persistence-sustained_run-042",
+        "stage2l19-persistence-sustained_run-043",
+        "stage2l19-persistence-sustained_run-049",
+        "stage2l19-persistence-sustained_run-063",
+        "stage2l19-persistence-sustained_run-064"
+      ]
+    },
+    {
+      "familyId": "persistence/INTERRUPTED_RUN",
+      "corpusCases": 120,
+      "valid": 120,
+      "mislabelled": 0,
+      "saturationHygieneCases": 0,
+      "labelSurvivesSaturation": false,
+      "mislabelledShare": 0,
+      "failureReasons": [],
+      "minMargin": 0.22,
+      "offendingCaseIds": []
+    },
+    {
+      "familyId": "persistence/SHORT_HISTORY",
+      "corpusCases": 60,
+      "valid": 60,
+      "mislabelled": 0,
+      "saturationHygieneCases": 0,
+      "labelSurvivesSaturation": true,
+      "mislabelledShare": 0,
+      "failureReasons": [],
+      "minMargin": 1,
+      "offendingCaseIds": []
+    },
+    {
+      "familyId": "timeToThreshold/APPROACHING",
+      "corpusCases": 120,
+      "valid": 120,
+      "mislabelled": 0,
+      "saturationHygieneCases": 0,
+      "labelSurvivesSaturation": false,
+      "mislabelledShare": 0,
+      "failureReasons": [],
+      "minMargin": 0.4,
+      "offendingCaseIds": []
+    },
+    {
+      "familyId": "timeToThreshold/APPROACHING_4_TO_8",
+      "corpusCases": 120,
+      "valid": 120,
+      "mislabelled": 0,
+      "saturationHygieneCases": 0,
+      "labelSurvivesSaturation": false,
+      "mislabelledShare": 0,
+      "failureReasons": [],
+      "minMargin": 0.4,
+      "offendingCaseIds": []
+    },
+    {
+      "familyId": "timeToThreshold/ALREADY_OVER",
+      "corpusCases": 120,
+      "valid": 120,
+      "mislabelled": 0,
+      "saturationHygieneCases": 0,
+      "labelSurvivesSaturation": false,
+      "mislabelledShare": 0,
+      "failureReasons": [],
+      "minMargin": 0.06,
+      "offendingCaseIds": []
+    },
+    {
+      "familyId": "timeToThreshold/STAYING_BELOW",
+      "corpusCases": 120,
+      "valid": 120,
+      "mislabelled": 0,
+      "saturationHygieneCases": 0,
+      "labelSurvivesSaturation": false,
+      "mislabelledShare": 0,
+      "failureReasons": [],
+      "minMargin": 0.41,
+      "offendingCaseIds": []
+    },
+    {
+      "familyId": "timeToThreshold/MISSING_THRESHOLD_SEMANTICS",
+      "corpusCases": 40,
+      "valid": 40,
+      "mislabelled": 0,
+      "saturationHygieneCases": 0,
+      "labelSurvivesSaturation": true,
+      "mislabelledShare": 0,
+      "failureReasons": [],
+      "minMargin": 0,
+      "offendingCaseIds": []
+    },
+    {
+      "familyId": "abstention/SHORT_HISTORY",
+      "corpusCases": 90,
+      "valid": 90,
+      "mislabelled": 0,
+      "saturationHygieneCases": 0,
+      "labelSurvivesSaturation": true,
+      "mislabelledShare": 0,
+      "failureReasons": [],
+      "minMargin": 1,
+      "offendingCaseIds": []
+    },
+    {
+      "familyId": "abstention/SUFFICIENT_HISTORY",
+      "corpusCases": 120,
+      "valid": 120,
+      "mislabelled": 0,
+      "saturationHygieneCases": 17,
+      "labelSurvivesSaturation": true,
+      "mislabelledShare": 0,
+      "failureReasons": [],
+      "minMargin": 15,
+      "offendingCaseIds": []
+    }
+  ],
+  "repairedAudits": [
+    {
+      "familyId": "direction/RAMP_UP",
+      "corpusCases": 116,
+      "valid": 116,
+      "mislabelled": 0,
+      "saturationHygieneCases": 0,
+      "labelSurvivesSaturation": false,
+      "mislabelledShare": 0,
+      "failureReasons": [],
+      "minMargin": 0.055004,
+      "offendingCaseIds": []
+    },
+    {
+      "familyId": "direction/RAMP_DOWN",
+      "corpusCases": 114,
+      "valid": 114,
+      "mislabelled": 0,
+      "saturationHygieneCases": 0,
+      "labelSurvivesSaturation": false,
+      "mislabelledShare": 0,
+      "failureReasons": [],
+      "minMargin": 0.051468,
+      "offendingCaseIds": []
+    },
+    {
+      "familyId": "direction/FLAT",
+      "corpusCases": 120,
+      "valid": 120,
+      "mislabelled": 0,
+      "saturationHygieneCases": 0,
+      "labelSurvivesSaturation": false,
+      "mislabelledShare": 0,
+      "failureReasons": [],
+      "minMargin": 0.0008,
+      "offendingCaseIds": []
+    },
+    {
+      "familyId": "volatility/ALTERNATING_HIGH",
+      "corpusCases": 120,
+      "valid": 120,
+      "mislabelled": 0,
+      "saturationHygieneCases": 0,
+      "labelSurvivesSaturation": false,
+      "mislabelledShare": 0,
+      "failureReasons": [],
+      "minMargin": 0.24,
+      "offendingCaseIds": []
+    },
+    {
+      "familyId": "volatility/ALTERNATING_LOW",
+      "corpusCases": 90,
+      "valid": 90,
+      "mislabelled": 0,
+      "saturationHygieneCases": 0,
+      "labelSurvivesSaturation": false,
+      "mislabelledShare": 0,
+      "failureReasons": [],
+      "minMargin": 0.026,
+      "offendingCaseIds": []
+    },
+    {
+      "familyId": "cycle/PERIODIC",
+      "corpusCases": 120,
+      "valid": 120,
+      "mislabelled": 0,
+      "saturationHygieneCases": 0,
+      "labelSurvivesSaturation": false,
+      "mislabelledShare": 0,
+      "failureReasons": [],
+      "minMargin": 0.000001,
+      "offendingCaseIds": []
+    },
+    {
+      "familyId": "cycle/MONOTONE",
+      "corpusCases": 116,
+      "valid": 116,
+      "mislabelled": 0,
+      "saturationHygieneCases": 0,
+      "labelSurvivesSaturation": false,
+      "mislabelledShare": 0,
+      "failureReasons": [],
+      "minMargin": 0,
+      "offendingCaseIds": []
+    },
+    {
+      "familyId": "reversal/LATE_REVERSAL",
+      "corpusCases": 119,
+      "valid": 119,
+      "mislabelled": 0,
+      "saturationHygieneCases": 0,
+      "labelSurvivesSaturation": false,
+      "mislabelledShare": 0,
+      "failureReasons": [],
+      "minMargin": 0.004,
+      "offendingCaseIds": []
+    },
+    {
+      "familyId": "reversal/CONTINUING",
+      "corpusCases": 120,
+      "valid": 120,
+      "mislabelled": 0,
+      "saturationHygieneCases": 0,
+      "labelSurvivesSaturation": false,
+      "mislabelledShare": 0,
+      "failureReasons": [],
+      "minMargin": 0.004,
+      "offendingCaseIds": []
+    },
+    {
+      "familyId": "regimeChange/LEVEL_SHIFT",
+      "corpusCases": 120,
+      "valid": 120,
+      "mislabelled": 0,
+      "saturationHygieneCases": 0,
+      "labelSurvivesSaturation": false,
+      "mislabelledShare": 0,
+      "failureReasons": [],
+      "minMargin": 0.02,
+      "offendingCaseIds": []
+    },
+    {
+      "familyId": "regimeChange/STEADY",
+      "corpusCases": 120,
+      "valid": 120,
+      "mislabelled": 0,
+      "saturationHygieneCases": 0,
+      "labelSurvivesSaturation": false,
+      "mislabelledShare": 0,
+      "failureReasons": [],
+      "minMargin": 0.0008,
+      "offendingCaseIds": []
+    },
+    {
+      "familyId": "persistence/SUSTAINED_RUN",
+      "corpusCases": 116,
+      "valid": 116,
+      "mislabelled": 0,
+      "saturationHygieneCases": 0,
+      "labelSurvivesSaturation": false,
+      "mislabelledShare": 0,
+      "failureReasons": [],
+      "minMargin": 0.28,
+      "offendingCaseIds": []
+    },
+    {
+      "familyId": "persistence/INTERRUPTED_RUN",
+      "corpusCases": 120,
+      "valid": 120,
+      "mislabelled": 0,
+      "saturationHygieneCases": 0,
+      "labelSurvivesSaturation": false,
+      "mislabelledShare": 0,
+      "failureReasons": [],
+      "minMargin": 0.22,
+      "offendingCaseIds": []
+    },
+    {
+      "familyId": "persistence/SHORT_HISTORY",
+      "corpusCases": 60,
+      "valid": 60,
+      "mislabelled": 0,
+      "saturationHygieneCases": 0,
+      "labelSurvivesSaturation": true,
+      "mislabelledShare": 0,
+      "failureReasons": [],
+      "minMargin": 1,
+      "offendingCaseIds": []
+    },
+    {
+      "familyId": "timeToThreshold/APPROACHING",
+      "corpusCases": 120,
+      "valid": 120,
+      "mislabelled": 0,
+      "saturationHygieneCases": 0,
+      "labelSurvivesSaturation": false,
+      "mislabelledShare": 0,
+      "failureReasons": [],
+      "minMargin": 0.4,
+      "offendingCaseIds": []
+    },
+    {
+      "familyId": "timeToThreshold/APPROACHING_4_TO_8",
+      "corpusCases": 120,
+      "valid": 120,
+      "mislabelled": 0,
+      "saturationHygieneCases": 0,
+      "labelSurvivesSaturation": false,
+      "mislabelledShare": 0,
+      "failureReasons": [],
+      "minMargin": 0.4,
+      "offendingCaseIds": []
+    },
+    {
+      "familyId": "timeToThreshold/ALREADY_OVER",
+      "corpusCases": 120,
+      "valid": 120,
+      "mislabelled": 0,
+      "saturationHygieneCases": 0,
+      "labelSurvivesSaturation": false,
+      "mislabelledShare": 0,
+      "failureReasons": [],
+      "minMargin": 0.06,
+      "offendingCaseIds": []
+    },
+    {
+      "familyId": "timeToThreshold/STAYING_BELOW",
+      "corpusCases": 120,
+      "valid": 120,
+      "mislabelled": 0,
+      "saturationHygieneCases": 0,
+      "labelSurvivesSaturation": false,
+      "mislabelledShare": 0,
+      "failureReasons": [],
+      "minMargin": 0.41,
+      "offendingCaseIds": []
+    },
+    {
+      "familyId": "timeToThreshold/MISSING_THRESHOLD_SEMANTICS",
+      "corpusCases": 40,
+      "valid": 40,
+      "mislabelled": 0,
+      "saturationHygieneCases": 0,
+      "labelSurvivesSaturation": true,
+      "mislabelledShare": 0,
+      "failureReasons": [],
+      "minMargin": 0,
+      "offendingCaseIds": []
+    },
+    {
+      "familyId": "abstention/SHORT_HISTORY",
+      "corpusCases": 90,
+      "valid": 90,
+      "mislabelled": 0,
+      "saturationHygieneCases": 0,
+      "labelSurvivesSaturation": true,
+      "mislabelledShare": 0,
+      "failureReasons": [],
+      "minMargin": 1,
+      "offendingCaseIds": []
+    },
+    {
+      "familyId": "abstention/SUFFICIENT_HISTORY",
+      "corpusCases": 120,
+      "valid": 120,
+      "mislabelled": 0,
+      "saturationHygieneCases": 17,
+      "labelSurvivesSaturation": true,
+      "mislabelledShare": 0,
+      "failureReasons": [],
+      "minMargin": 15,
+      "offendingCaseIds": []
+    }
+  ],
+  "provenDefectiveFamilies": [
+    "reversal/LATE_REVERSAL",
+    "reversal/CONTINUING",
+    "persistence/SUSTAINED_RUN"
+  ]
+}

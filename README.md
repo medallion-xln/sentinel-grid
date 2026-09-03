@@ -483,6 +483,49 @@ generator defect this arc has found in its own test data — which suggests a
 missing discipline rather than bad luck: a generator needs a well-posedness proof
 at its parameter extremes, not just at its centre.
 
+### Building the missing discipline (Stage 2L.23)
+
+Three defects of one shape is a pattern, so this stage fixed the practice rather
+than the third instance. Every one of the 21 temporal families now has a
+**semantic validator** that reads the series a generator actually produced and
+asks whether the intended label is true of it — and crucially, never calls the
+head being scored. The certify script reads the validator's own source and refuses
+to certify if it does.
+
+Sweeping every family across its full declared range, not just its centre, found
+**three** genuinely defective families where the corpus samples: `SUSTAINED_RUN`
+(18 of 116), and both reversal families (1 each). Six more are fragile at extremes
+the corpus never visits — recorded, not quietly narrowed.
+
+**Two of the stage's own validators were wrong first.** The reversal test looked
+only at the midpoint split and flagged 9 cases; searching every split shows 8 of
+them turn away from the middle and are perfectly fine. And saturation was applied
+as a universal disqualifier, flagging 17 more — but clamping cannot make a
+24-frame window shorter, so it never falsified those labels. Both were corrected
+before any repair was made. A validator that is too strict fabricates corpus
+defects exactly as a generator that is too loose fabricates expert defects.
+
+All three real defects had one root cause: a **shape** parameter and a **noise**
+parameter sampled independently, so their extremes could combine into a series
+that doesn't depict the intended shape. The fix makes noise a *fraction of* the
+shape parameter, which bounds the worst swing below one step — correct by
+construction rather than by luck. An admission gate (generate → validate → assert
+→ admit) now rejects ill-posed cases during construction; it rejected five, which
+is what distinguishes a check from a decoration.
+
+The heads were not touched — 2,800 digest comparisons, zero drift — so every score
+change is the corpus becoming honest:
+
+| head | before | after |
+|---|---|---|
+| `persistence` | 0.8818 | **0.9392** |
+| `reversal` | 0.6625 | **0.7155** |
+
+That persistence number is the best evidence the repair was right. Stage 2L.22 had
+computed **0.9426** by adjudicating the series and ignoring the labels entirely.
+Repairing the labels lands on almost exactly the same place, by a completely
+different route.
+
 ## ZekNova status
 
 ZekNova is the first production adapter. Frozen-corpus behavioural parity,
@@ -504,7 +547,7 @@ promotion is available or planned before Stage 10.
 
 ## Roadmap position
 
-Current stage: **2L.22 — PASS** (semantic completion and corpus diagnosis; the last abstention defect is real but unreachable, and the corpus is 15% mislabelled). Recent history:
+Current stage: **2L.23 — PASS** (evaluation-infrastructure remediation; three generator defects repaired and the missing validation discipline built). Recent history:
 
 | Stage | Result |
 |---|---|
@@ -525,6 +568,7 @@ Current stage: **2L.22 — PASS** (semantic completion and corpus diagnosis; the
 | 2L.20 | PASS — contract repair: `timeToThreshold` 0.8421 → 1.0000 (the benchmark was wrong, not the head); `persistence` vocabulary fixed but accuracy unmoved, exposing a deeper abstention defect |
 | 2L.21 | PASS — abstention redefined as data sufficiency rather than direction certainty; `persistence` 0.3432 → 0.8517, with abstention preservation proven on 60 cases added for the purpose |
 | 2L.22 | PASS — the last abstention gate is the same category error but fires on 0 of 3,520 swept cases, so nothing was changed; 18 of 120 `SUSTAINED_RUN` cases are mislabelled (median SNR 0.5) |
+| 2L.23 | PASS — 21 families boundary-audited by head-free validators; 3 proven defective and repaired by joint sampling; `persistence` 0.8818 → 0.9392, converging on the independently adjudicated 0.9426 |
 
 Full detail in [`platform/game-agnostic/docs/TEN_STAGE_ROADMAP.md`](platform/game-agnostic/docs/TEN_STAGE_ROADMAP.md).
 
