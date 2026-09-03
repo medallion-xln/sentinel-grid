@@ -1,0 +1,110 @@
+{
+  "stage": "STAGE2L20_ORACLE_VOCABULARY_ALIGNMENT_AND_CONTRACT_REPAIR",
+  "repairedCorpus": {
+    "heads": [
+      {
+        "headId": "persistence",
+        "canonicalLabels": [
+          "PERSISTENT",
+          "NOT_PERSISTENT",
+          "INSUFFICIENT_EVIDENCE"
+        ],
+        "labelCount": 3,
+        "reachableLabels": [
+          "PERSISTENT",
+          "NOT_PERSISTENT",
+          "INSUFFICIENT_EVIDENCE"
+        ],
+        "reachableCount": 3,
+        "unreachableLabels": [],
+        "unreachableCount": 0,
+        "allReachable": true
+      },
+      {
+        "headId": "timeToThreshold",
+        "canonicalLabels": [
+          "CROSSING_1_TO_3",
+          "CROSSING_4_TO_8",
+          "ALREADY_CROSSED",
+          "NOT_CROSSING",
+          "INSUFFICIENT_EVIDENCE"
+        ],
+        "labelCount": 5,
+        "reachableLabels": [
+          "CROSSING_1_TO_3",
+          "CROSSING_4_TO_8",
+          "ALREADY_CROSSED",
+          "NOT_CROSSING",
+          "INSUFFICIENT_EVIDENCE"
+        ],
+        "reachableCount": 5,
+        "unreachableLabels": [],
+        "unreachableCount": 0,
+        "allReachable": true
+      }
+    ],
+    "allCanonicalLabelsReachable": true
+  },
+  "inheritedCorpus": {
+    "heads": [
+      {
+        "headId": "persistence",
+        "canonicalLabels": [
+          "PERSISTENT",
+          "NOT_PERSISTENT",
+          "INSUFFICIENT_EVIDENCE"
+        ],
+        "labelCount": 3,
+        "reachableLabels": [
+          "PERSISTENT",
+          "INSUFFICIENT_EVIDENCE"
+        ],
+        "reachableCount": 2,
+        "unreachableLabels": [
+          "NOT_PERSISTENT"
+        ],
+        "unreachableCount": 1,
+        "allReachable": false
+      },
+      {
+        "headId": "timeToThreshold",
+        "canonicalLabels": [
+          "CROSSING_1_TO_3",
+          "CROSSING_4_TO_8",
+          "ALREADY_CROSSED",
+          "NOT_CROSSING",
+          "INSUFFICIENT_EVIDENCE"
+        ],
+        "labelCount": 5,
+        "reachableLabels": [
+          "ALREADY_CROSSED",
+          "NOT_CROSSING"
+        ],
+        "reachableCount": 2,
+        "unreachableLabels": [
+          "CROSSING_1_TO_3",
+          "CROSSING_4_TO_8",
+          "INSUFFICIENT_EVIDENCE"
+        ],
+        "unreachableCount": 3,
+        "allReachable": false
+      }
+    ],
+    "allCanonicalLabelsReachable": false
+  },
+  "corpusReport": {
+    "corpus": "STAGE2L20_REPAIRED_STRESS_CORPUS",
+    "inheritedCases": 2007,
+    "carriedUnchanged": 1962,
+    "removedIllPosedCases": 45,
+    "repairedCases": 280,
+    "rejectedCases": 0,
+    "totalCases": 2242,
+    "repairedFamilies": [
+      "timeToThreshold/APPROACHING",
+      "timeToThreshold/APPROACHING_4_TO_8"
+    ],
+    "carriedCasesByteIdentical": true,
+    "note": "Only the timeToThreshold family whose every case was proven ill-posed is regenerated. A CROSSING_4_TO_8 family is added because the producer emits that label and no benchmark ever exercised it."
+  }
+}

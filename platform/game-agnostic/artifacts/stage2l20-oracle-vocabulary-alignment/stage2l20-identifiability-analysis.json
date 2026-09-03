@@ -1,0 +1,117 @@
+{
+  "stage": "STAGE2L20_ORACLE_VOCABULARY_ALIGNMENT_AND_CONTRACT_REPAIR",
+  "heads": [
+    {
+      "headId": "persistence",
+      "developmentCases": 80,
+      "calibrationCases": 77,
+      "finalHoldoutCases": 79,
+      "developmentErrors": 51,
+      "calibrationErrors": 53,
+      "finalHoldoutErrors": 51,
+      "errorVarianceMeasurable": true,
+      "bestSignal": "confidence",
+      "developmentDiscrimination": 1,
+      "observedDiscrimination": 1,
+      "finalHoldoutDiscrimination": 1,
+      "nullMedian": 0.545204,
+      "nullP95": 0.634827,
+      "nullP99": 0.678852,
+      "nullMax": 0.678852,
+      "permutations": 200,
+      "searchSpaceMatchedNull": true,
+      "headsSearched": 8,
+      "familyWiseAlpha": 0.05,
+      "familyWiseQuantile": 0.99375,
+      "familyWiseThreshold": 0.678852,
+      "multiplicityAccountedFor": true,
+      "materialMargin": 0.02,
+      "materialThreshold": 0.698852,
+      "observedLiftOverNullMedian": 0.454796,
+      "holdoutLiftOverNullMedian": 0.454796,
+      "holdoutRetention": 1,
+      "minimumHoldoutRetention": 0.5,
+      "signalExceedsNull": true,
+      "generalisesToHoldout": true,
+      "identifiable": true,
+      "identifiabilityStatus": "MEASURED_IDENTIFIABLE"
+    },
+    {
+      "headId": "timeToThreshold",
+      "developmentCases": 174,
+      "calibrationCases": 173,
+      "finalHoldoutCases": 173,
+      "developmentErrors": 0,
+      "calibrationErrors": 0,
+      "finalHoldoutErrors": 0,
+      "errorVarianceMeasurable": false,
+      "identifiabilityStatus": "NOT_MEASURABLE_NO_ERROR_VARIANCE",
+      "bestSignal": null,
+      "developmentDiscrimination": null,
+      "observedDiscrimination": null,
+      "finalHoldoutDiscrimination": null,
+      "nullMedian": null,
+      "nullP95": null,
+      "nullP99": null,
+      "nullMax": null,
+      "permutations": 0,
+      "searchSpaceMatchedNull": true,
+      "headsSearched": 8,
+      "familyWiseAlpha": 0.05,
+      "familyWiseQuantile": 0.99375,
+      "familyWiseThreshold": null,
+      "multiplicityAccountedFor": true,
+      "signalExceedsNull": null,
+      "generalisesToHoldout": null,
+      "identifiable": false
+    }
+  ],
+  "methodologyFaithfulness": {
+    "heads": [
+      {
+        "headId": "direction",
+        "mismatchedFields": [],
+        "faithful": true
+      },
+      {
+        "headId": "persistence",
+        "mismatchedFields": [],
+        "faithful": true
+      },
+      {
+        "headId": "reversal",
+        "mismatchedFields": [],
+        "faithful": true
+      },
+      {
+        "headId": "regimeChange",
+        "mismatchedFields": [],
+        "faithful": true
+      },
+      {
+        "headId": "volatility",
+        "mismatchedFields": [],
+        "faithful": true
+      },
+      {
+        "headId": "cycle",
+        "mismatchedFields": [],
+        "faithful": true
+      },
+      {
+        "headId": "timeToThreshold",
+        "mismatchedFields": [],
+        "faithful": true
+      },
+      {
+        "headId": "abstention",
+        "mismatchedFields": [],
+        "faithful": true
+      }
+    ],
+    "faithfulHeadCount": 8,
+    "totalHeads": 8,
+    "methodologyFaithful": true,
+    "note": "Stage 2L.19 keeps its row builder and shuffle private, so the method is reimplemented here and then pinned to the original by exact replay. Stage 2L.16 shipped a reimplementation that agreed on only 98.5% of cases; this gate exists so that cannot recur silently."
+  }
+}

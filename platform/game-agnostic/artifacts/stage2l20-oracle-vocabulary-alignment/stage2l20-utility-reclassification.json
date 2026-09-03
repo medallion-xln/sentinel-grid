@@ -1,0 +1,30 @@
+{
+  "stage": "STAGE2L20_ORACLE_VOCABULARY_ALIGNMENT_AND_CONTRACT_REPAIR",
+  "diagnostics": [
+    {
+      "headId": "persistence",
+      "before": "NEGATIVE_DIAGNOSTIC",
+      "after": "NEGATIVE_DIAGNOSTIC"
+    },
+    {
+      "headId": "timeToThreshold",
+      "before": "USEFUL_DIAGNOSTIC",
+      "after": "USEFUL_DIAGNOSTIC"
+    }
+  ],
+  "residual": {
+    "headId": "persistence",
+    "renameAccuracyDeltaOnStressCorpus": 0,
+    "renameAccuracyDeltaOnInheritedCorpus": 0,
+    "abstentionRateOnInheritedCorpus": 0.333333,
+    "abstentionRateOnStressCorpus": 0.605932,
+    "vocabularyDefectResolved": true,
+    "accuracyCeilingExplainedByVocabulary": false,
+    "deeperDefectClass": "ABSTENTION_SEMANTICS_DIVERGENCE",
+    "deeperDefectOwner": "src/lab/stage2i3-oracle-head-remediation.js::evaluatePersistenceV2 (INDETERMINATE_DIRECTION gate)",
+    "deeperDefectEvidence": "The original Stage 2I.2 head has no indeterminate-direction abstention and answers NOT_PERSISTENT on a flat or alternating series — its own STABLE family is labelled exactly that. Stage 2I.3 added `dominantSign === 0 || |slope| < .003 || support < .28 -> INSUFFICIENT_EVIDENCE`, so the inherited ALTERNATING_INTERRUPTION family, a pure square wave, abstains instead of answering.",
+    "remediatedInThisStage": false,
+    "remediationWouldRequire": "Changing an abstention gate in a frozen head, which is an Oracle algorithm redesign and is out of scope for this stage."
+  },
+  "note": "These heads remain label-only. Diagnostic quality is measured against the best trivial classifier; no Prime-relative action utility is fabricated."
+}

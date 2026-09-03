@@ -337,6 +337,53 @@ So Oracle is **one certified action head plus seven label-only diagnostics** —
 architecture, not quality. Nothing says the other seven reason badly; there is
 simply no delegation for them to be safe or unsafe about.
 
+### Repairing the contracts (Stage 2L.20)
+
+Stage 2L.19 filed both broken heads under one label: a benchmark vocabulary
+problem. Tracing each to its owner showed they were different defects, and that
+**one of them had been blamed on the wrong party**.
+
+`persistence` was a real naming drift, and the producer was at fault.
+`NOT_PERSISTENT` is canonical by ownership, not by being the benchmark's word for
+it: the original head emits it, that head's own corpus expects it, and three
+independent stage label schemas declare it. `NON_PERSISTENT` appears in exactly
+one place — the remediation that introduced it.
+
+`timeToThreshold` was never broken at all. The head emits `CROSSING_1_TO_3`
+correctly whenever that state occurs. What no benchmark ever did was present the
+state:
+
+| corpus | cases claiming "about to cross" | already past the threshold |
+|---|---|---|
+| inherited (2I.4) | 100 | **100** |
+| Stage 2L.19 stress corpus | 45 | **45** |
+
+The second row is our own. Stage 2L.19 built a well-posedness filter *specifically*
+to stop a generator bug being scored as a head defect — and then wrote a rule that
+required the crossing to fall inside the observed window, which for a rising line
+guarantees it ends above the threshold. The rule enforced the negation of the
+label it was guarding. It caught the reversal family and missed this one.
+
+Repaired, with the producer untouched:
+
+| head | before | after | trivial baseline |
+|---|---|---|---|
+| `timeToThreshold` | 0.8421 | **1.0000** | 0.2308 |
+| `persistence` | 0.3432 | 0.3432 | 0.5085 |
+
+The second row is the more interesting one. Fixing the vocabulary moved
+`persistence` by **exactly zero**, on both corpora. The rename was real and is
+fixed, but it was never what capped the head: on the inherited corpus the head
+does not emit the misnamed label either — it *abstains*. One earlier change had
+renamed the label and added an indeterminate-direction abstention at the same
+time, and only the second one mattered. That gate lives inside a frozen head, so
+it is named, owned, and left alone rather than patched wider.
+
+Nothing frozen was edited. The repair wraps the existing assembly and regenerates
+one corpus family, so every prior certification still reproduces byte-identically,
+`direction` remains the only head with an action path, and the Arbiter schema is
+untouched.
+
 ## ZekNova status
 
 ZekNova is the first production adapter. Frozen-corpus behavioural parity,
@@ -358,7 +405,7 @@ promotion is available or planned before Stage 10.
 
 ## Roadmap position
 
-Current stage: **2L.19 — PASS** (characterization; Oracle is one certified action head plus seven label-only diagnostics). Recent history:
+Current stage: **2L.20 — PASS** (bounded contract remediation; one head was never broken, the other's real defect was not its vocabulary). Recent history:
 
 | Stage | Result |
 |---|---|
@@ -376,6 +423,7 @@ Current stage: **2L.19 — PASS** (characterization; Oracle is one certified act
 | 2L.17 | PASS — live-substitute and do-nothing-delta fixes: 0.7909 → 0.8291, 605 net errors gone; delegation still 0.9894 vs the 0.99 floor |
 | 2L.18 | PASS — the delegation tail is six cases; the best rule found sits exactly on the permutation null's p95 and does not generalize |
 | 2L.19 | PASS — Oracle's eight heads characterized: `direction` revalidated safe at the 0.99 floor, seven have no action path, two cannot be scored by the current benchmark |
+| 2L.20 | PASS — contract repair: `timeToThreshold` 0.8421 → 1.0000 (the benchmark was wrong, not the head); `persistence` vocabulary fixed but accuracy unmoved, exposing a deeper abstention defect |
 
 Full detail in [`platform/game-agnostic/docs/TEN_STAGE_ROADMAP.md`](platform/game-agnostic/docs/TEN_STAGE_ROADMAP.md).
 
