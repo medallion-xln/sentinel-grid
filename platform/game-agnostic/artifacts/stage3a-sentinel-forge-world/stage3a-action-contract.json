@@ -1,0 +1,71 @@
+{
+  "actionTypes": {
+    "MOVE": {
+      "needsTarget": false,
+      "description": "step one cell in a cardinal direction"
+    },
+    "RESTORE": {
+      "needsTarget": true,
+      "description": "bring an unavailable node back into service"
+    },
+    "PROTECT": {
+      "needsTarget": true,
+      "description": "shield a node from degradation"
+    },
+    "REINFORCE": {
+      "needsTarget": true,
+      "description": "raise a node above its damage threshold"
+    },
+    "BYPASS": {
+      "needsTarget": true,
+      "description": "route a dependency around a failed node via a substitute"
+    },
+    "REPAIR": {
+      "needsTarget": true,
+      "description": "restore health to a damaged node"
+    },
+    "BUILD": {
+      "needsTarget": true,
+      "description": "construct a planned structural node"
+    },
+    "TRANSFER": {
+      "needsTarget": true,
+      "description": "move carried resources into a node"
+    },
+    "COLLECT": {
+      "needsTarget": true,
+      "description": "take a co-located resource"
+    },
+    "WAIT": {
+      "needsTarget": false,
+      "description": "advance one tick without acting"
+    },
+    "ATTACK": {
+      "needsTarget": true,
+      "description": "degrade a hostile actor"
+    },
+    "RETREAT": {
+      "needsTarget": false,
+      "description": "move one cell away from the nearest hostile"
+    }
+  },
+  "actionTypeCount": 12,
+  "illegalityReasons": [
+    "UNKNOWN_ACTION_TYPE",
+    "MALFORMED_ACTION",
+    "ACTOR_NOT_FOUND",
+    "TARGET_REQUIRED",
+    "TARGET_NOT_FOUND",
+    "TARGET_OUT_OF_RANGE",
+    "TARGET_NOT_ELIGIBLE",
+    "BLOCKED_CELL",
+    "OUT_OF_BOUNDS",
+    "INSUFFICIENT_RESOURCES",
+    "INSUFFICIENT_ENERGY",
+    "NO_HOSTILE_PRESENT",
+    "NO_SUBSTITUTE_AVAILABLE",
+    "TERMINAL_STATE"
+  ],
+  "illegalActionBehaviour": "THROWS_BY_NAME_AND_PRODUCES_NO_WORLD",
+  "identity": "sha256 over [actionType, actorId, target, parameters]"
+}

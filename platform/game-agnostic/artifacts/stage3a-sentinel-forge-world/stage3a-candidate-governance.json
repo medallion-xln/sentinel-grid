@@ -1,0 +1,120 @@
+{
+  "states": [
+    "GENERATED",
+    "TRAINED",
+    "CANDIDATE",
+    "OFFLINE_EVALUATED",
+    "SHADOW_EVALUATED",
+    "CERTIFIED",
+    "REJECTED"
+  ],
+  "transitions": {
+    "GENERATED": [
+      "TRAINED",
+      "REJECTED"
+    ],
+    "TRAINED": [
+      "CANDIDATE",
+      "REJECTED"
+    ],
+    "CANDIDATE": [
+      "OFFLINE_EVALUATED",
+      "REJECTED"
+    ],
+    "OFFLINE_EVALUATED": [
+      "SHADOW_EVALUATED",
+      "REJECTED"
+    ],
+    "SHADOW_EVALUATED": [
+      "CERTIFIED",
+      "REJECTED"
+    ],
+    "CERTIFIED": [],
+    "REJECTED": []
+  },
+  "stateAuthority": {
+    "GENERATED": "FORGE_WORLD",
+    "TRAINED": "SOUP",
+    "CANDIDATE": "SENTINEL_LAB",
+    "OFFLINE_EVALUATED": "SENTINEL_LAB",
+    "SHADOW_EVALUATED": "SENTINEL_LAB",
+    "CERTIFIED": "SENTINEL_GRID_CERTIFICATION",
+    "REJECTED": "SENTINEL_LAB"
+  },
+  "probes": [
+    {
+      "from": "SHADOW_EVALUATED",
+      "to": "CERTIFIED",
+      "actor": "SOUP",
+      "mustBeAllowed": false,
+      "allowed": false,
+      "reason": "SOUP may not assign CERTIFIED; only SENTINEL_GRID_CERTIFICATION may",
+      "behavesAsSpecified": true
+    },
+    {
+      "from": "TRAINED",
+      "to": "CERTIFIED",
+      "actor": "SOUP",
+      "mustBeAllowed": false,
+      "allowed": false,
+      "reason": "TRAINED -> CERTIFIED is not a legal transition",
+      "behavesAsSpecified": true
+    },
+    {
+      "from": "GENERATED",
+      "to": "CERTIFIED",
+      "actor": "SENTINEL_GRID_CERTIFICATION",
+      "mustBeAllowed": false,
+      "allowed": false,
+      "reason": "GENERATED -> CERTIFIED is not a legal transition",
+      "behavesAsSpecified": true
+    },
+    {
+      "from": "SHADOW_EVALUATED",
+      "to": "CERTIFIED",
+      "actor": "SENTINEL_GRID_CERTIFICATION",
+      "mustBeAllowed": true,
+      "allowed": true,
+      "reason": null,
+      "behavesAsSpecified": true
+    },
+    {
+      "from": "GENERATED",
+      "to": "TRAINED",
+      "actor": "SOUP",
+      "mustBeAllowed": true,
+      "allowed": true,
+      "reason": null,
+      "behavesAsSpecified": true
+    },
+    {
+      "from": "TRAINED",
+      "to": "CANDIDATE",
+      "actor": "SOUP",
+      "mustBeAllowed": false,
+      "allowed": false,
+      "reason": "SOUP may not assign CANDIDATE; only SENTINEL_LAB may",
+      "behavesAsSpecified": true
+    }
+  ],
+  "soupCanCertify": false,
+  "sentinelOwnsPromotion": true,
+  "firstFutureTrainingTarget": {
+    "target": "LEARNED_NEXUS_CANDIDATE",
+    "trainedInThisStage": false,
+    "rationale": [
+      "A deterministic relational benchmark already exists and is certified (2L.10 through 2L.18).",
+      "Forge World supplies grounded counterfactual truth for relational decisions, so a learned candidate can be scored against exact optima rather than against another model.",
+      "Expert complementarity is measurable: the delegation ceiling and its six-case tail are characterised, so an improvement would be visible rather than inferred.",
+      "The deterministic Nexus is a strong, frozen baseline, which makes a null result informative instead of ambiguous."
+    ],
+    "futureComparison": [
+      "deterministic Nexus (frozen baseline)",
+      "learned Nexus candidate",
+      "hybrid Nexus (deterministic with learned advisory)",
+      "Prime without candidate",
+      "Prime with candidate"
+    ],
+    "admissionPath": "GENERATED -> TRAINED (Soup) -> CANDIDATE -> OFFLINE_EVALUATED -> SHADOW_EVALUATED -> CERTIFIED (Sentinel only)"
+  }
+}

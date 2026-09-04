@@ -559,7 +559,7 @@ reachable from the certifying environment.
 
 ## Roadmap position
 
-Current stage: **2M — PASS** (portability and environment independence; Stage 2L closed at 2L.23). Recent history:
+Current stage: **3A — PASS** (Sentinel Forge World: a deterministic counterfactual simulation substrate). Recent history:
 
 | Stage | Result |
 |---|---|
@@ -582,6 +582,7 @@ Current stage: **2M — PASS** (portability and environment independence; Stage 
 | 2L.22 | PASS — the last abstention gate is the same category error but fires on 0 of 3,520 swept cases, so nothing was changed; 18 of 120 `SUSTAINED_RUN` cases are mislabelled (median SNR 0.5) |
 | 2L.23 | PASS — 21 families boundary-audited by head-free validators; 3 proven defective and repaired by joint sampling; `persistence` 0.8818 → 0.9392, converging on the independently adjudicated 0.9426 |
 | 2M | PASS — 31 machine-bound entry points replaced by an explicit fail-closed `ZEKNOVA_ROOT` contract; content identity proven path-independent in both directions; lineage, contract compatibility and live readiness `NOT_MEASURED` because no runtime is reachable |
+| 3A | PASS — Sentinel Forge World: 28 scenario families, 504 admitted cases, exact counterfactual truth; Prime reaches the optimum on 94% of horizon-aligned cases and 0% of the 86 horizon-dependent ones; Soup audited and format-bridged, never invoked |
 
 Full detail in [`platform/game-agnostic/docs/TEN_STAGE_ROADMAP.md`](platform/game-agnostic/docs/TEN_STAGE_ROADMAP.md).
 
@@ -596,7 +597,9 @@ platform/game-agnostic/     the kernel — start here
   scripts/                  certify-*.mjs, one per stage
   tests/                    node:test suites
   artifacts/                certification results and evidence, per stage
+  src/forge/              Sentinel Forge World — deterministic simulation substrate
   docs/TEN_STAGE_ROADMAP.md the authoritative stage ledger
+  docs/SENTINEL_FORGE_WORLD.md  Forge World architecture
 sgrid-lab/                  earlier ZekNova-specific lab lineage
 docs/                       repository-level design and historical notes
 ```
@@ -611,6 +614,8 @@ npm run arbiter:stage2l10:certify       # regenerate Stage 2L.10 artifacts
 npm run arbiter:stage2l10:check         # verify the stored certification reproduces
 npm run portability:stage2m:certify     # Stage 2M portability certification
 npm run portability:stage2m:check       # verify the stored Stage 2M certification reproduces
+npm run forge:stage3a:certify           # Stage 3A Sentinel Forge World certification
+npm run forge:stage3a:check             # verify the stored Stage 3A certification reproduces
 ./verify.sh                             # mainline verifier
 ```
 

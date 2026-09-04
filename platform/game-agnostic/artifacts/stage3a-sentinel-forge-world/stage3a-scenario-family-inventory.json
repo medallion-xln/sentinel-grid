@@ -1,0 +1,176 @@
+{
+  "families": [
+    {
+      "id": "nexus/dependency_chain",
+      "surface": "NEXUS",
+      "claim": "a linear dependsOn chain of at least the declared depth exists"
+    },
+    {
+      "id": "nexus/dead_substitute",
+      "surface": "NEXUS",
+      "claim": "a failed dependency target has a substitute that cannot currently carry it"
+    },
+    {
+      "id": "nexus/live_substitute",
+      "surface": "NEXUS",
+      "claim": "a failed dependency target has a substitute that can carry it now"
+    },
+    {
+      "id": "nexus/redundant_infrastructure",
+      "surface": "NEXUS",
+      "claim": "at least two independent paths reach the objective node"
+    },
+    {
+      "id": "nexus/single_bottleneck",
+      "surface": "NEXUS",
+      "claim": "exactly one node lies on every path to the objective"
+    },
+    {
+      "id": "nexus/multi_hop_dependency",
+      "surface": "NEXUS",
+      "claim": "the objective depends on a node at least three hops away"
+    },
+    {
+      "id": "nexus/cycle",
+      "surface": "NEXUS",
+      "claim": "the dependsOn graph contains a genuine cycle"
+    },
+    {
+      "id": "nexus/distributed_value",
+      "surface": "NEXUS",
+      "claim": "value is spread across many nodes rather than concentrated"
+    },
+    {
+      "id": "nexus/conflicting_objectives",
+      "surface": "NEXUS",
+      "claim": "two objectives compete for the same limited resource"
+    },
+    {
+      "id": "oracle/monotonic_trend",
+      "surface": "ORACLE",
+      "claim": "the driving channel is strictly monotone across the window"
+    },
+    {
+      "id": "oracle/reversal",
+      "surface": "ORACLE",
+      "claim": "the channel slope genuinely changes sign with a margin"
+    },
+    {
+      "id": "oracle/regime_change",
+      "surface": "ORACLE",
+      "claim": "the channel has two segments with materially different slopes"
+    },
+    {
+      "id": "oracle/volatility_shift",
+      "surface": "ORACLE",
+      "claim": "second-half variation materially exceeds first-half variation"
+    },
+    {
+      "id": "oracle/cycle_temporal",
+      "surface": "ORACLE",
+      "claim": "the channel completes at least one full oscillation"
+    },
+    {
+      "id": "oracle/persistence",
+      "surface": "ORACLE",
+      "claim": "the direction of change is consistent above the persistence threshold"
+    },
+    {
+      "id": "oracle/threshold_crossing",
+      "surface": "ORACLE",
+      "claim": "the last observed value is below the threshold and the trend projects across it"
+    },
+    {
+      "id": "oracle/insufficient_history",
+      "surface": "ORACLE",
+      "claim": "fewer frames are available than the Oracle needs to answer"
+    },
+    {
+      "id": "archimedes/repair_network",
+      "surface": "ARCHIMEDES",
+      "claim": "multiple damaged nodes are reachable and repairable"
+    },
+    {
+      "id": "archimedes/material_shortage",
+      "surface": "ARCHIMEDES",
+      "claim": "available material is strictly less than total demand"
+    },
+    {
+      "id": "archimedes/load_balancing",
+      "surface": "ARCHIMEDES",
+      "claim": "load is unevenly distributed across parallel supporting nodes"
+    },
+    {
+      "id": "archimedes/damaged_infrastructure",
+      "surface": "ARCHIMEDES",
+      "claim": "at least one structural node is below the damage threshold"
+    },
+    {
+      "id": "archimedes/construction_sequencing",
+      "surface": "ARCHIMEDES",
+      "claim": "a planned node depends on another planned node"
+    },
+    {
+      "id": "archimedes/redundant_structural_paths",
+      "surface": "ARCHIMEDES",
+      "claim": "at least two supports edges bear the same node"
+    },
+    {
+      "id": "prime/mixed_expert_problem",
+      "surface": "PRIME",
+      "claim": "the world carries both a relational structure and a temporal signal"
+    },
+    {
+      "id": "prime/resource_constrained_planning",
+      "surface": "PRIME",
+      "claim": "energy is insufficient to take every useful action"
+    },
+    {
+      "id": "prime/multi_objective_intervention",
+      "surface": "PRIME",
+      "claim": "more than one objective is open at once"
+    },
+    {
+      "id": "prime/adversarial_choice",
+      "surface": "PRIME",
+      "claim": "a hostile actively degrades an objective-bearing node"
+    },
+    {
+      "id": "prime/long_horizon_tradeoff",
+      "surface": "PRIME",
+      "claim": "the immediate-best action is not the horizon-best action"
+    }
+  ],
+  "familyCount": 28,
+  "validatedFamilies": [
+    "archimedes/construction_sequencing",
+    "archimedes/damaged_infrastructure",
+    "archimedes/load_balancing",
+    "archimedes/material_shortage",
+    "archimedes/redundant_structural_paths",
+    "archimedes/repair_network",
+    "nexus/conflicting_objectives",
+    "nexus/cycle",
+    "nexus/dead_substitute",
+    "nexus/dependency_chain",
+    "nexus/distributed_value",
+    "nexus/live_substitute",
+    "nexus/multi_hop_dependency",
+    "nexus/redundant_infrastructure",
+    "nexus/single_bottleneck",
+    "oracle/cycle_temporal",
+    "oracle/insufficient_history",
+    "oracle/monotonic_trend",
+    "oracle/persistence",
+    "oracle/regime_change",
+    "oracle/reversal",
+    "oracle/threshold_crossing",
+    "oracle/volatility_shift",
+    "prime/adversarial_choice",
+    "prime/long_horizon_tradeoff",
+    "prime/mixed_expert_problem",
+    "prime/multi_objective_intervention",
+    "prime/resource_constrained_planning"
+  ],
+  "everyFamilyHasAValidator": true
+}

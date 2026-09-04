@@ -793,3 +793,104 @@ byte-identically.
 Stage 2M certification hash: `9a44f6bc6803b2d32ff53203d9eb8fd56ff4a77809e7d7d7a1bfc72ca09af463`
 (`npm run portability:stage2m:check` reproduces it byte-identically, including from an
 unpacked distribution tree with no `.git`).
+
+## Stage 3A — Sentinel Forge World
+
+A new subsystem rather than a change to an existing one: a deterministic ASCII
+simulation environment that owns world truth — dynamics, legal actions, canonical
+state, exact counterfactual outcomes and a versioned reward — so Sentinel can be
+measured against exact answers instead of against another model's opinion.
+
+Recorded here as an early foundational capability. Forge World belongs primarily
+to **Stage 5 — Learning & Adaptation**; it was built ahead of the stage that will
+use it, and nothing in Stage 3A trains anything.
+
+Every certified decision component is a frozen owner of the Stage 3A certify
+script: both experts, Prime, the authority core, the contract layer, and the 2L/2M
+lab modules. Forge World is measured against Sentinel; Sentinel is not adjusted to
+suit Forge World.
+
+### What it establishes
+
+28 scenario families across four decision surfaces, six curriculum levels, 504
+generated cases, all admitted. 12 entity types, 11 relation types, 12 action types,
+11 reward components under `FORGE_REWARD_V1`. Forge World implements the existing
+Adapter SDK contract, so Prime and both experts run against it with no
+Forge-specific branch anywhere in their path — Prime produced a legal
+recommendation on 100% of cases.
+
+Every quantity is an integer. No floating point appears in any transition or
+reward path, which makes determinism a property of the arithmetic rather than a
+hope about it, and makes an exact tie exactly a tie.
+
+### The three disciplines carried forward
+
+**ASCII is presentation, and it is checked.** `hashWorld` excludes presentation,
+the certify script verifies neither kernel nor adapter imports the renderer, and a
+test renders a world twice with different options and requires identical identity.
+
+**The admission gate has a control.** A 100% admission rate is equally consistent
+with a gate that cannot reject anything, so seven scenarios are generated under one
+family and validated against a different family's claim — the honest claim must
+hold and the false one must be refused. The gate earned its place during
+construction: `prime/resource_constrained_planning` was rejected on all eighteen of
+its first cases because the generator placed repairable nodes by entity count and
+the energy budget always covered every repair. The family claimed a constraint that
+was not in the world it produced.
+
+**Effective variation, not raw count.** 504 cases rest on 105 distinct topologies
+and 334 distinct outcome rankings. The reportable sample size is the smallest of
+those, never the raw count.
+
+### The measurement that had to be corrected
+
+The first run reported 0% agreement between Prime and the counterfactual optimum
+across all 144 Oracle-surface cases. Zero across a whole surface is a claim about a
+systematic effect, so it was inspected rather than reported — and the defect was in
+the metric. Prime was choosing `PROTECT target`, which tied at the optimum, and
+losing a lexicographic tie-break to a `MOVE`. The metric was measuring agreement
+with a sorting rule.
+
+Agreement now means regret zero. The corrected decomposition is the stage's most
+useful result:
+
+| | cases | agreement |
+| --- | --- | --- |
+| horizon-aligned (one-step optimum is the horizon optimum) | 319 | 94.04% |
+| horizon-dependent (they differ) | 86 | 0% |
+
+Prime scores an action over one step; the oracle scores it over three under a
+declared continuation policy. Where those agree Prime reaches the optimum almost
+always; where they disagree it reaches it never, because a one-step objective
+structurally cannot. That is an objective mismatch, measured — not a search defect
+and not a claim that Prime is wrong. Those 86 cases are the first precisely
+characterised target this substrate has produced.
+
+### Soup
+
+Audited at `f07e07ed` (v0.74.0, Apache-2.0) from a clone in an isolated
+training-tools location. SFT, preference training, GRPO, PPO, reward models, LoRA,
+QLoRA, Qwen recipes, checkpointing and adapter/GGUF export are all present.
+Reproducibility control is **partial** — no single global training seed makes a run
+bit-reproducible — and that is recorded as a limitation of the training engine.
+
+The bridge is a translation, not a pass-through, and the audit proved it: Forge SFT
+rows are `{prompt, completion}`, which matches no Soup format signature at all.
+Preference rows are already Soup `dpo` exactly. Every translated row is checked
+against Soup's own detection rule, and the untranslated row is checked too as a
+control — it must detect as nothing.
+
+No training was run. Soup may reach `TRAINED` and may never reach `CERTIFIED`; no
+transition into that state names any actor but Sentinel certification, and the
+certify script blocks if that stops being true.
+
+### Still open after Stage 3A
+
+- **No learned candidate exists.** Nothing is claimed about what one would do.
+- **The continuation policy is a choice.** Horizon utilities are exact under a
+  named policy, not in the abstract.
+- **416 of 504 cases have an exact tie at the optimum**, capping SFT yield at 88
+  rows. Sharpening the reward vector is scenario-design work.
+- **Portability is single-platform.** `DIGEST_PRODUCED_SINGLE_PLATFORM` unchanged.
+
+Full architecture: [`docs/SENTINEL_FORGE_WORLD.md`](SENTINEL_FORGE_WORLD.md).

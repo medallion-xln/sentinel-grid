@@ -1,0 +1,76 @@
+{
+  "rewardVersion": "FORGE_REWARD_V1",
+  "components": [
+    {
+      "id": "objectiveProgress",
+      "sense": "benefit",
+      "description": "objective satisfaction gained this transition"
+    },
+    {
+      "id": "deliveredValue",
+      "sense": "benefit",
+      "description": "value actually delivered to objective-bearing nodes"
+    },
+    {
+      "id": "preservedValue",
+      "sense": "benefit",
+      "description": "value that would have been lost and was not"
+    },
+    {
+      "id": "civilianSafety",
+      "sense": "benefit",
+      "description": "civilian health preserved"
+    },
+    {
+      "id": "infrastructureHealth",
+      "sense": "benefit",
+      "description": "net infrastructure health change"
+    },
+    {
+      "id": "resourceCost",
+      "sense": "cost",
+      "description": "resources consumed"
+    },
+    {
+      "id": "riskExposure",
+      "sense": "cost",
+      "description": "risk the actor took on"
+    },
+    {
+      "id": "timeCost",
+      "sense": "cost",
+      "description": "ticks spent"
+    },
+    {
+      "id": "illegalActionPenalty",
+      "sense": "cost",
+      "description": "penalty for an attempted illegal action"
+    },
+    {
+      "id": "terminalSuccess",
+      "sense": "benefit",
+      "description": "objective completion bonus"
+    },
+    {
+      "id": "terminalFailure",
+      "sense": "cost",
+      "description": "terminal failure penalty"
+    }
+  ],
+  "componentCount": 11,
+  "weights": {
+    "objectiveProgress": 10,
+    "deliveredValue": 4,
+    "preservedValue": 3,
+    "civilianSafety": 6,
+    "infrastructureHealth": 2,
+    "resourceCost": -1,
+    "riskExposure": -2,
+    "timeCost": -1,
+    "illegalActionPenalty": -50,
+    "terminalSuccess": 25,
+    "terminalFailure": -25
+  },
+  "scalarization": "exact integer weighted sum",
+  "versioningRule": "Any weight change MUST create a new reward version id. A stored scalar is only interpretable against the weights that produced it."
+}

@@ -1,0 +1,52 @@
+{
+  "bridgeVersion": "FORGE_SOUP_BRIDGE_V1",
+  "formatMap": {
+    "sft": {
+      "soupFormat": "alpaca",
+      "translation": "REQUIRED",
+      "reason": "{prompt, completion} matches no Soup signature; mapped to {instruction, output}"
+    },
+    "preference": {
+      "soupFormat": "dpo",
+      "translation": "NONE",
+      "reason": "{prompt, chosen, rejected} is Soup dpo exactly"
+    },
+    "rl_episode": {
+      "soupFormat": null,
+      "translation": "NOT_APPLICABLE",
+      "reason": "Soup GRPO/PPO consume prompts plus a reward function, not (s,a,r,s-prime) tuples. Forge RL episodes are for Sentinel-side analysis; a GRPO bridge would need a reward adapter and is out of Stage 3A scope."
+    },
+    "jsonl": {
+      "soupFormat": null,
+      "translation": "NOT_APPLICABLE",
+      "reason": "Full-fidelity replay is a Sentinel evidence format, not a training format."
+    }
+  },
+  "compatibilityChecks": [
+    {
+      "dataset": "sft",
+      "rows": 88,
+      "expectedFormat": "alpaca",
+      "detectedFormat": "alpaca",
+      "compatible": true,
+      "basis": "DETECTED_BY_SOUP_SIGNATURE_RULE"
+    },
+    {
+      "dataset": "preference",
+      "rows": 405,
+      "expectedFormat": "dpo",
+      "detectedFormat": "dpo",
+      "compatible": true,
+      "basis": "DETECTED_BY_SOUP_SIGNATURE_RULE"
+    }
+  ],
+  "allCompatible": true,
+  "translationIsNecessary": true,
+  "untranslatedSftDetectedAs": null,
+  "sourceDatasetHash": "2bd1d178f59e39b088c88c4ab27461842028854af8cc3803d791165735592049",
+  "simulatorVersion": "sentinel-forge-world-0.1.0",
+  "rewardVersion": "FORGE_REWARD_V1",
+  "curriculumVersion": "FORGE_CURRICULUM_V1",
+  "exportVersion": "FORGE_EXPORT_V1",
+  "trainingExecuted": false
+}
