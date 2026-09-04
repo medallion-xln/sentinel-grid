@@ -75,7 +75,7 @@ const [baselineManifest, runtime, campaign, stage2l3Certification, stage2l3Evide
   readJson(path.join(root, 'artifacts/stage2l3-oracle-correct-prime-break-diagnostic/stage2l3-certification-result.json')),
   readJson(path.join(root, 'artifacts/stage2l3-oracle-correct-prime-break-diagnostic/oracle-correct-prime-break-diagnostic-evidence.json')),
 ]);
-const verification = await verifyDeclaredRuntime({ baseline: baselineManifest, runtimeIdentity: runtime, sentinelRoot, zeknovaRoot: process.env.ZEKNOVA_ROOT || '/Users/dwaynecampbell/Desktop/zeknova-shared-gaming-experience' });
+const verification = await verifyDeclaredRuntime({ baseline: baselineManifest, runtimeIdentity: runtime, sentinelRoot, zeknovaRoot: process.env.ZEKNOVA_ROOT ?? null });
 if (!verification.declaredEqualsMeasured) throw new Error('STAGE2L4_BLOCKED_BY_RUNTIME_DRIFT');
 
 const { certificationHash: stage2l3Hash, ...stage2l3CertificationBody } = stage2l3Certification;

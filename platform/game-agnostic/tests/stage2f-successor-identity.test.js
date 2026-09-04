@@ -5,13 +5,23 @@ import path from 'node:path';
 import test from 'node:test';
 
 import { buildSuccessionEvent, buildSuccessorRuntimeIdentity, measureRuntimeInventory, verifyDeclaredRuntime, verifyHistoricalReplay } from '../src/lab/stage2f-successor-identity.js';
+import { ZEKNOVA_ROOT_ENV, resolveZeknovaRoot } from '../src/core/zeknova-root.js';
 
 const sentinelRoot = path.resolve(import.meta.dirname, '../../..');
-const zeknovaRoot = process.env.ZEKNOVA_ROOT || '/Users/dwaynecampbell/Desktop/zeknova-shared-gaming-experience';
 const artifactRoot = path.resolve(import.meta.dirname, '../artifacts');
 const json = async (filePath) => JSON.parse(await readFile(filePath, 'utf8'));
 
-test('successor lineage is explicit and current inventory reproduces', async () => {
+/* The ZekNova binding is resolved ONCE, explicitly, through the contract. When it
+ * is absent the dependent test skips with a named reason rather than failing with
+ * an anonymous ENOENT from the first readFile — the distinction between "this
+ * environment cannot run this check" and "this check found a defect" is the whole
+ * point. The two tests below that need no ZekNova run unconditionally. */
+const zeknova = await resolveZeknovaRoot();
+const zeknovaRoot = zeknova.root;
+const skipReason = zeknova.bound ? false
+  : `${ZEKNOVA_ROOT_ENV} not bound (${zeknova.status}): ${zeknova.reason}`;
+
+test('successor lineage is explicit and current inventory reproduces', { skip: skipReason }, async () => {
   const predecessorBaseline = await json(path.join(artifactRoot, 'r0-runtime-identity/baseline-manifest.json'));
   const predecessor = await json(path.join(artifactRoot, 'r0-runtime-identity/canonical-runtime-identity.json'));
   const baseline = await measureRuntimeInventory({ predecessorBaseline, sentinelRoot, zeknovaRoot });

@@ -42,7 +42,7 @@ const [baseline, runtime, campaign, stage2i3b] = await Promise.all([
 ].map((file) => readJson(path.join(successor, file))).concat([
   readJson(path.join(root, 'artifacts/stage2i3b-regime-recall-diagnostic/stage2i3b-certification-result.json')),
 ]));
-const verification = await verifyDeclaredRuntime({ baseline, runtimeIdentity: runtime, sentinelRoot: path.resolve(root, '../..'), zeknovaRoot: process.env.ZEKNOVA_ROOT || '/Users/dwaynecampbell/Desktop/zeknova-shared-gaming-experience' });
+const verification = await verifyDeclaredRuntime({ baseline, runtimeIdentity: runtime, sentinelRoot: path.resolve(root, '../..'), zeknovaRoot: process.env.ZEKNOVA_ROOT ?? null });
 if (!verification.declaredEqualsMeasured) throw new Error('STAGE2I3C_BLOCKED_BY_RUNTIME_DRIFT');
 if (!stage2i3b.stage2i3bCertified || stage2i3b.certificationHash !== STAGE2I3C_STAGE2I3B_CERTIFICATION_HASH || stage2i3b.evidenceDigest !== STAGE2I3C_STAGE2I3B_EVIDENCE_DIGEST) throw new Error('STAGE2I3C_BLOCKED_BY_STAGE2I3B_DRIFT');
 const measuredOwners = Object.fromEntries(await Promise.all(Object.entries(ownerPaths).map(async ([name, target]) => [name, await fileSha256(path.join(root, target))])));

@@ -110,7 +110,7 @@ const [baselineManifest, runtime, campaign, stage2l5Certification, stage2l5Evide
   readJson(path.join(root, 'artifacts/stage2l5-deterministic-arbiter-candidate/stage2l5-certification-result.json')),
   readJson(path.join(root, 'artifacts/stage2l5-deterministic-arbiter-candidate/deterministic-arbiter-shadow-evidence.json')),
 ]);
-const verification = await verifyDeclaredRuntime({ baseline: baselineManifest, runtimeIdentity: runtime, sentinelRoot, zeknovaRoot: process.env.ZEKNOVA_ROOT || '/Users/dwaynecampbell/Desktop/zeknova-shared-gaming-experience' });
+const verification = await verifyDeclaredRuntime({ baseline: baselineManifest, runtimeIdentity: runtime, sentinelRoot, zeknovaRoot: process.env.ZEKNOVA_ROOT ?? null });
 if (!verification.declaredEqualsMeasured) throw new Error('STAGE2L6_BLOCKED_BY_RUNTIME_DRIFT');
 const stage2l5InheritanceValid = validateCertification(stage2l5Certification) && validateEvidence(stage2l5Evidence);
 if (!stage2l5InheritanceValid) throw new Error('STAGE2L6_BLOCKED_BY_STAGE2L5_CERTIFICATION_DRIFT');

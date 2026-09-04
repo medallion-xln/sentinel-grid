@@ -25,7 +25,7 @@ const expectedOwners = { prime: '93b62027a77088690027201d3ed05ead8f8f50f77e44a37
 const [baseline, runtime, campaign, stage2i0, stage2i2, stage2i3b, stage2i3c] = await Promise.all([
   'baseline-manifest.json', 'canonical-runtime-identity.json', 'stage2f-campaign-manifest.json',
 ].map((file) => readJson(path.join(successor, file))).concat(Object.values(certFiles).map((file) => readJson(path.join(root, file)))));
-const verification = await verifyDeclaredRuntime({ baseline, runtimeIdentity: runtime, sentinelRoot: path.resolve(root, '../..'), zeknovaRoot: process.env.ZEKNOVA_ROOT || '/Users/dwaynecampbell/Desktop/zeknova-shared-gaming-experience' });
+const verification = await verifyDeclaredRuntime({ baseline, runtimeIdentity: runtime, sentinelRoot: path.resolve(root, '../..'), zeknovaRoot: process.env.ZEKNOVA_ROOT ?? null });
 if (!verification.declaredEqualsMeasured) throw new Error('STAGE2I4_BLOCKED_BY_RUNTIME_DRIFT');
 if (!stage2i0.stage2i0Certified || !stage2i2.stage2i2Certified || !stage2i3b.stage2i3bCertified || !stage2i3c.stage2i3cCertified || stage2i3c.certificationHash !== STAGE2I4_STAGE2I3C_CERTIFICATION_HASH || stage2i3c.evidenceDigest !== STAGE2I4_STAGE2I3C_EVIDENCE_DIGEST) throw new Error('STAGE2I4_BLOCKED_BY_INHERITED_CERTIFICATION_DRIFT');
 const measuredOwners = Object.fromEntries(await Promise.all(Object.entries(ownerPaths).map(async ([name, target]) => [name, await fileSha256(path.join(root, target))])));

@@ -1,0 +1,118 @@
+{
+  "certificateSchemaVersion": 1,
+  "arc": "STAGE_2L",
+  "status": "CLOSED",
+  "startStage": "2L.10",
+  "finalStage": "2L.23",
+  "finalCertificationHash": "1d9981817d31381eaa481e4141ce2065ee758267bc08b83f8179b60379eac428",
+  "finalCorpusDigest": "5af69d76bf9523eaea5b062603b59a264f14d2876b20d2260be27a3521e264c2",
+  "repositoryLineageAtClosure": "ORACLE_V2_STAGE2L23_WELL_POSED_CORPUS",
+  "stages": [
+    {
+      "stage": "2L.10",
+      "result": "PASS",
+      "summary": "Arbiter correctness calibration and selective delegation; Oracle direction certified safe."
+    },
+    {
+      "stage": "2L.11",
+      "result": "PASS",
+      "summary": "Nexus correctness shown non-identifiable; the benchmark itself was the defect."
+    },
+    {
+      "stage": "2L.12",
+      "result": "PASS",
+      "summary": "Benchmark rebuilt on world semantics."
+    },
+    {
+      "stage": "2L.13",
+      "result": "PASS",
+      "summary": "Value-aware Nexus: 0.0844 to 0.7826, still below the delegation floor."
+    },
+    {
+      "stage": "2L.14",
+      "result": "FAIL",
+      "summary": "No supported Nexus confidence region reaches the 0.99 floor."
+    },
+    {
+      "stage": "2L.15",
+      "result": "FAIL",
+      "summary": "Stability adds information but delegation reaches only 0.9894."
+    },
+    {
+      "stage": "2L.16",
+      "result": "PASS",
+      "summary": "Residual errors decomposed; substitute misvaluation dominant."
+    },
+    {
+      "stage": "2L.17",
+      "result": "PASS",
+      "summary": "Expert remediated 0.7909 to 0.8291; delegation ceiling unmoved."
+    },
+    {
+      "stage": "2L.18",
+      "result": "PASS",
+      "summary": "Delegation tail is six cases and is not separable beyond a matched null."
+    },
+    {
+      "stage": "2L.19",
+      "result": "PASS",
+      "summary": "Oracle characterized: one certified action head plus seven label-only diagnostics."
+    },
+    {
+      "stage": "2L.20",
+      "result": "PASS",
+      "summary": "Vocabulary alignment; timeToThreshold exonerated, the benchmark was wrong."
+    },
+    {
+      "stage": "2L.21",
+      "result": "PASS",
+      "summary": "Abstention redefined as data sufficiency; persistence 0.3432 to 0.8517."
+    },
+    {
+      "stage": "2L.22",
+      "result": "PASS",
+      "summary": "Conflict gate real but unreachable; SUSTAINED_RUN corpus 15% mislabelled."
+    },
+    {
+      "stage": "2L.23",
+      "result": "PASS",
+      "summary": "All 21 generator families boundary-audited; three repaired; persistence 0.8818 to 0.9392."
+    }
+  ],
+  "passCount": 12,
+  "failCount": 2,
+  "ownedLimitations": [
+    {
+      "id": "NEXUS_DELEGATION_NOT_SEPARABLE",
+      "owner": "STAGE2L18",
+      "detail": "Both routes to the 0.99 floor are closed: a better expert does not reach it, and neither does a better confidence rule over the current representation."
+    },
+    {
+      "id": "ORACLE_SINGLE_ACTION_PATH",
+      "owner": "STAGE2L19",
+      "detail": "Only the direction head has an action-delegation path; the other seven emit labels. Widening it is an Arbiter decision, not a measurement."
+    },
+    {
+      "id": "CONFLICTING_EVIDENCE_UNREACHABLE",
+      "owner": "STAGE2L22",
+      "detail": "The gate is structurally over-abstention but fires on 0 of 3,520 swept cases and 0 of the corpus, so there is nothing to repair."
+    },
+    {
+      "id": "GENERATOR_EXTREME_FRAGILITY",
+      "owner": "STAGE2L23",
+      "detail": "Six families fail somewhere in their declared parameter range at points the certification corpus never samples. Ranges recorded, not narrowed."
+    }
+  ],
+  "closureBlockers": [],
+  "authorityAtClosure": {
+    "tier": "R0",
+    "canDispatch": false,
+    "canMutateLiveWorld": false
+  },
+  "nexusStatusAtClosure": "FROZEN_SINCE_STAGE2L18_DELEGATION_UNAUTHORISED",
+  "oracleStatusAtClosure": "ONE_CERTIFIED_ACTION_HEAD_DIRECTION_PLUS_SEVEN_LABEL_ONLY_DIAGNOSTICS",
+  "corpusInfrastructureStatusAtClosure": "ALL_21_TEMPORAL_FAMILIES_WELL_POSED_UNDER_INDEPENDENT_VALIDATION_WITH_ADMISSION_GATE",
+  "historicalResultsMutated": false,
+  "note": "A record of what the arc concluded. It restates no historical certification and changes none. Every prior stage artifact remains byte-identical.",
+  "certificateHash": "57d00337ac703578f3a031406f35730e721b510a3974a99f85b70aae4bfa12db"
+}

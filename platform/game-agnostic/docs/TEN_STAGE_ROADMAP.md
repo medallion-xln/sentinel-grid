@@ -624,3 +624,141 @@ Still open after Stage 2L.23:
   unreachable documentation-level defect (2L.22).
 - **No Oracle head gained an action path.** `direction` is still the only one.
 - **Portability is single-platform** for 2L.10 through 2L.23.
+
+## Stage 2M — portability, environment independence and qualification readiness
+
+Stage 2L closed at 2L.23. Stage 2M is the first stage of this arc that changes no
+reasoning at all: not one Oracle head, not one Nexus module, not the Arbiter
+policy, not an action path. Every one of those is a frozen owner of the certify
+script, which exits 2 rather than proceed if any of them moves. What it changes is
+how the repository *finds* its runtime.
+
+### The defect
+
+Thirty-one entry points would not run on a machine other than the one they were
+written on, in two shapes.
+
+Twenty-eight of them — every ZekNova-dependent certify script and test in the
+kernel workspace — resolved the runtime as:
+
+```js
+process.env.ZEKNOVA_ROOT || '/Users/<developer>/Desktop/zeknova-shared-gaming-experience'
+```
+
+On the machine where that path exists, everything worked. Anywhere else the
+fallback produced a path that did not exist, and the failure surfaced several
+layers later as an anonymous `ENOENT`. A missing dependency was being reported as
+a broken file read, which is why it survived this long: the error never named the
+thing that was actually wrong.
+
+The other three are the more interesting ones, because no literal-path search
+finds them. Two mainline shell entry points hardcoded absolute paths for *both*
+repositories. And `integration/status.mjs` defaulted both roots to
+`os.homedir()/Desktop/...` — which reads as a default and is in fact a machine
+assumption. That shape is the one worth remembering: it had passed every previous
+audit precisely because it contains no suspicious string.
+
+### The contract, and what portability is not
+
+`ZEKNOVA_ROOT` (`ZEKNOVA_ROOT_CONTRACT_V1`): one variable, no default, no search,
+four structural markers, five named statuses, fail-closed.
+
+Portability here does **not** mean "finds the runtime somewhere". A resolver that
+walked the filesystem or read a home directory would satisfy every behavioural
+test in this stage while reintroducing exactly the defect the stage exists to
+remove — it would simply fail later and less legibly. So the certify script scans
+the resolver's own source for directory traversal, home-directory reads, developer
+paths and fallback defaults, and refuses to certify if it finds any of them. The
+prohibition is structural, not behavioural, because the behaviour is identical
+right up until it is catastrophic.
+
+Structural validity is also kept separate from lineage identity. Asking "is this a
+ZekNova root?" and "is this the certified ZekNova?" are different questions, and a
+resolver that answered both would refuse a legitimate runtime for the sin of
+having changed.
+
+Eight adversarial roots were exercised. Six refuse — unset, blank, nonexistent, an
+empty directory, a file, and a decoy carrying three of four markers. Two bind — a
+path containing a space, and one with surrounding whitespace. Refusing those two
+would be a portability defect of the opposite kind. Every refusal carries a named
+status and a reason; none reaches a raw `ENOENT`.
+
+### Path independence, proved in both directions
+
+Two byte-identical trees at unrelated roots — one nested three levels deep with a
+space in its name — produce one identity. A single changed byte under a third root
+breaks it.
+
+Both halves are load-bearing and neither is sufficient alone: a constant digest
+passes the first test, and a path-dependent digest passes the second. Only a
+content-addressed identity passes both. The same measurement re-run from a
+different working directory produces byte-identical results, which is the
+invocation-independence claim.
+
+### What was not measured, and was not assumed
+
+No ZekNova runtime is reachable from the certifying environment. Three phases
+therefore report `NOT_MEASURED`, and the certification refuses outcome A for
+exactly that reason:
+
+- **Current lineage** — `UNKNOWN`, basis `NOT_MEASURED_ZEKNOVA_ROOT_UNBOUND`. A
+  lineage classification produced without reading the runtime would be a guess
+  wearing a certification label.
+- **Observation-contract compatibility** — every one of the nine surfaces is
+  `null`, not `compatible`.
+- **The full suite under a valid root** — a fixture root is not a runtime, and
+  running the suite against one and calling the result "the full suite with a
+  valid root" would be the overclaim this stage is meant to prevent.
+
+The machinery for all three is built and exercised against fixtures. It is the
+runtime that is absent, not the capability.
+
+`CURRENT_LINEAGE_LIVE_QUALIFICATION_READY=false`. Live qualification was not begun.
+
+### The portability claim, stated at its actual size
+
+**`MULTI_ROOT_SAME_PLATFORM_CERTIFIED`** — and specifically not
+`MULTI_PLATFORM_CERTIFIED`. Measured on one platform across multiple invocation
+directories and multiple runtime roots. No second operating system was available,
+so the inherited `DIGEST_PRODUCED_SINGLE_PLATFORM` limitation is carried forward
+unchanged rather than closed. Environment independence and platform diversity are
+different claims and this stage earned only the first. The certify script blocks
+on an unrecorded platform rather than silently widening the claim by being run
+somewhere new.
+
+### The delivered lean bundle
+
+Audited, not rebuilt. The bundle delivered after 2L.19 is pinned to `91ec243`,
+four commits behind, and carries the defect this stage removed in 33 files —
+unpacked anywhere but the build machine, it fails in exactly the way described
+above. It is left byte-identical: overwriting the artifact an earlier delivery
+refers to would destroy the object being certified. A portable bundle is a new
+file under a new name. "Lean" describes packaging, not authority; the bundled
+system is R0 advisory-only and shipping it promotes nothing.
+
+### One inherited finding, recorded rather than absorbed
+
+`SHA256SUMS.txt` already disagreed with four artifacts at `3d9a14d`, before this
+stage changed anything — none of the four is modified in the Stage 2M tree and
+the manifest itself is unmodified, so the drift is inherited. Regenerating the
+manifest is the normal end-of-stage inventory step and would have corrected those
+four silently, which is precisely how a stale manifest survives a dozen stages.
+The finding is written down in
+`artifacts/stage2m-portability-and-qualification-readiness/stage2m-inventory-drift-note.json`,
+deliberately outside the certification body: it says nothing about any certified
+claim, and every prior certification was re-verified independently and reproduces
+byte-identically.
+
+### Still open after Stage 2M
+
+- **Current ZekNova lineage is unmeasured.** Not drifted, not compatible —
+  unmeasured. The comparison runs the moment a root is bound.
+- **Portability is single-platform.** `DIGEST_PRODUCED_SINGLE_PLATFORM` is carried
+  forward, not remediated.
+- **Six corpus families remain fragile at parameter extremes** (2L.23).
+- **`CONFLICTING_EVIDENCE` remains** in the frozen persistence head as an
+  unreachable documentation-level defect (2L.22).
+- **No Oracle head gained an action path.** `direction` is still the only one.
+
+Stage 2M certification hash: `e6d7c999aa1999e273e574f861aa2d6c0b1923fa52aabcefaf55310aeea11a49`
+(`npm run portability:stage2m:check` reproduces it byte-identically).

@@ -97,7 +97,7 @@ const [baselineManifest, runtime, campaign, stage2l5Certification, stage2l5Evide
   readJson(path.join(root, 'artifacts/stage2l6-deterministic-arbiter-adversarial-shadow-challenge/adversarial-arbiter-shadow-evidence.json')),
 ]);
 
-const verification = await verifyDeclaredRuntime({ baseline: baselineManifest, runtimeIdentity: runtime, sentinelRoot, zeknovaRoot: process.env.ZEKNOVA_ROOT || '/Users/dwaynecampbell/Desktop/zeknova-shared-gaming-experience' });
+const verification = await verifyDeclaredRuntime({ baseline: baselineManifest, runtimeIdentity: runtime, sentinelRoot, zeknovaRoot: process.env.ZEKNOVA_ROOT ?? null });
 if (!verification.declaredEqualsMeasured) throw new Error('STAGE2L7_BLOCKED_BY_RUNTIME_DRIFT');
 
 const stage2l5InheritanceValid = stage2l5Certification.status === 'PASS'

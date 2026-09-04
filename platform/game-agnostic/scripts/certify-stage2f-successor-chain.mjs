@@ -14,7 +14,7 @@ import { sha256 } from '../src/core/determinism.js';
 
 const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 const sentinelRoot = path.resolve(root, '../..');
-const zeknovaRoot = process.env.ZEKNOVA_ROOT || '/Users/dwaynecampbell/Desktop/zeknova-shared-gaming-experience';
+const zeknovaRoot = process.env.ZEKNOVA_ROOT ?? null;
 const predecessorRoot = path.join(root, 'artifacts/r0-runtime-identity');
 const successorRoot = path.join(root, 'artifacts/stage2f-successor-r0');
 const readJson = async (filePath) => JSON.parse(await readFile(filePath, 'utf8'));

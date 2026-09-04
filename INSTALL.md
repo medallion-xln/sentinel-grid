@@ -4,7 +4,7 @@
 command silently omits the lifecycle registry and the suite cannot run.
 
 ```bash
-cd ~/Desktop/sentinel-grid
+cd /path/to/sentinel-grid
 rm -f sgrid-lab/tests/w0a-clone-mask.test.js        # superseded
 
 cp -R /path/to/w0a-prime-a1-a10/docs/governance/.        docs/governance/
@@ -28,7 +28,7 @@ a partial install explicitly, which is what went wrong last time.
 If a file landed in the wrong place:
 
 ```bash
-find ~/Desktop/sentinel-grid -name "action-lifecycle-registry.json"
+find /path/to/sentinel-grid -name "action-lifecycle-registry.json"
 ```
 
 Remove any nested `docs/docs/` copy once the real one is in place.

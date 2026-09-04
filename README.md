@@ -545,9 +545,21 @@ certified             false
 It awaits provenance-verified live records under the current lineage. No authority
 promotion is available or planned before Stage 10.
 
+Since Stage 2M the runtime root is bound explicitly and is never inferred:
+
+```bash
+export ZEKNOVA_ROOT=/path/to/zeknova-shared-gaming-experience
+```
+
+With it unset, ZekNova-dependent certification refuses with a named reason and
+ZekNova-dependent tests skip rather than fail. Nothing searches the filesystem for
+a runtime, and there is no default. As of Stage 2M the current lineage is
+**unmeasured** — not drifted and not compatible — because no ZekNova runtime was
+reachable from the certifying environment.
+
 ## Roadmap position
 
-Current stage: **2L.23 — PASS** (evaluation-infrastructure remediation; three generator defects repaired and the missing validation discipline built). Recent history:
+Current stage: **2M — PASS** (portability and environment independence; Stage 2L closed at 2L.23). Recent history:
 
 | Stage | Result |
 |---|---|
@@ -569,6 +581,7 @@ Current stage: **2L.23 — PASS** (evaluation-infrastructure remediation; three 
 | 2L.21 | PASS — abstention redefined as data sufficiency rather than direction certainty; `persistence` 0.3432 → 0.8517, with abstention preservation proven on 60 cases added for the purpose |
 | 2L.22 | PASS — the last abstention gate is the same category error but fires on 0 of 3,520 swept cases, so nothing was changed; 18 of 120 `SUSTAINED_RUN` cases are mislabelled (median SNR 0.5) |
 | 2L.23 | PASS — 21 families boundary-audited by head-free validators; 3 proven defective and repaired by joint sampling; `persistence` 0.8818 → 0.9392, converging on the independently adjudicated 0.9426 |
+| 2M | PASS — 31 machine-bound entry points replaced by an explicit fail-closed `ZEKNOVA_ROOT` contract; content identity proven path-independent in both directions; lineage, contract compatibility and live readiness `NOT_MEASURED` because no runtime is reachable |
 
 Full detail in [`platform/game-agnostic/docs/TEN_STAGE_ROADMAP.md`](platform/game-agnostic/docs/TEN_STAGE_ROADMAP.md).
 
@@ -593,10 +606,12 @@ docs/                       repository-level design and historical notes
 ```bash
 cd platform/game-agnostic
 
-npm test                              # full suite
-npm run arbiter:stage2l10:certify     # regenerate Stage 2L.10 artifacts
-npm run arbiter:stage2l10:check       # verify the stored certification reproduces
-./verify.sh                           # mainline verifier
+npm test                                # full suite (ZekNova-dependent tests skip when unbound)
+npm run arbiter:stage2l10:certify       # regenerate Stage 2L.10 artifacts
+npm run arbiter:stage2l10:check         # verify the stored certification reproduces
+npm run portability:stage2m:certify     # Stage 2M portability certification
+npm run portability:stage2m:check       # verify the stored Stage 2M certification reproduces
+./verify.sh                             # mainline verifier
 ```
 
 ### Two different things called "verification"
