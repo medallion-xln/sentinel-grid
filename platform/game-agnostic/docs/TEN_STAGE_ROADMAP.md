@@ -736,6 +736,36 @@ refers to would destroy the object being certified. A portable bundle is a new
 file under a new name. "Lean" describes packaging, not authority; the bundled
 system is R0 advisory-only and shipping it promotes nothing.
 
+### Three defects the stage found in its own fence
+
+Testing the certification from a distribution bundle — the thing the stage is
+supposed to make possible — broke it three times, and each break was the failure
+mode this stage exists to remove, reproduced by the script enforcing its removal.
+
+**It died on a raw git error.** Unpacked from a zip there is no `.git`, and the
+repository-wide scan crashed with `fatal: not a git repository` — an anonymous
+error standing in for a missing dependency, which is exactly the shape of the
+original defect. It is now a named status, `REPOSITORY_SCAN_UNAVAILABLE_NOT_A_GIT_CHECKOUT`,
+that blocks certification and permits `--check`; and the survivor count and the
+bundle's commit distance are pinned rather than re-derived from git, so the
+certification verifies from the bundle it ships in.
+
+**The fence read prose.** Once this stage's own sources were committed, the scan
+saw them and flagged them — they quote the defect in the scan pattern, in the
+dependency descriptions and throughout the report. Excluding two files from a text
+search and stopping there would put the blind spot exactly where a defect could
+hide best, so string literals are now collapsed to a token before scanning: what a
+file *says* disappears, what it *does* survives, and the two files are held to the
+stricter question of whether they resolve anything from a fallback.
+
+**The pattern missed the real shape.** A mutation test — reintroduce the defect
+four ways, confirm each is caught — found that the fallback pattern matched
+`process.env.ZEKNOVA_ROOT || '...'` but not `env[ZEKNOVA_ROOT_ENV] || '...'`,
+which is the form the resolver actually uses. A fence that catches the defect only
+in the shape nobody would write it in is decoration. All four mutants are caught
+now, and the fence was verified against a genuinely mutated resolver, not only in
+a probe.
+
 ### One inherited finding, recorded rather than absorbed
 
 `SHA256SUMS.txt` already disagreed with four artifacts at `3d9a14d`, before this
@@ -760,5 +790,6 @@ byte-identically.
   unreachable documentation-level defect (2L.22).
 - **No Oracle head gained an action path.** `direction` is still the only one.
 
-Stage 2M certification hash: `e6d7c999aa1999e273e574f861aa2d6c0b1923fa52aabcefaf55310aeea11a49`
-(`npm run portability:stage2m:check` reproduces it byte-identically).
+Stage 2M certification hash: `9a44f6bc6803b2d32ff53203d9eb8fd56ff4a77809e7d7d7a1bfc72ca09af463`
+(`npm run portability:stage2m:check` reproduces it byte-identically, including from an
+unpacked distribution tree with no `.git`).

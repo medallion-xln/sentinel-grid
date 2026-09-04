@@ -127,7 +127,7 @@ zero that was never attempted would prove nothing about what happens when it is.
 
 ## The delivered lean bundle
 
-`sentinel-grid-2l19-production-lean-91ec243.zip` is pinned to `91ec243`, **4 commits behind** this head,
+`sentinel-grid-2l19-production-lean-91ec243.zip` is pinned to `91ec243`, **4 commits behind** the head it was audited against,
 and **carries the defect this stage removed** in 33 files. Unpacked on any machine but the
 build machine it fails in exactly the way this stage exists to stop.
 
@@ -142,5 +142,5 @@ Stage 2L is **CLOSED** at 2L.23 (`1d9981817d31381e…`):
 12 passing stages, 2 failing, 4 owned limitations carried forward.
 No historical certification was restated, reinterpreted or modified.
 
-Certification hash: `e6d7c999aa1999e273e574f861aa2d6c0b1923fa52aabcefaf55310aeea11a49`
+Certification hash: `9a44f6bc6803b2d32ff53203d9eb8fd56ff4a77809e7d7d7a1bfc72ca09af463`
 

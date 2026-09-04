@@ -97,8 +97,24 @@ async function measureFreeze() {
  *    developer paths. */
 async function measureDiscipline() {
   const strip = (text) => text.replace(/\/\*[\s\S]*?\*\//g, '').replace(/\/\/.*$/gm, '');
+  /* A fence that reads prose cannot tell a defect from a description of one, and
+   * this stage's own sources are mostly descriptions of the defect. So string
+   * literals collapse to a single canonical token: what a file SAYS disappears and
+   * what it DOES survives. `ZEKNOVA_ROOT || '/some/path'` still reads as a
+   * fallback because the operator and the quote remain; the same words inside a
+   * report string do not. */
+  const stripToCode = (text) => strip(text)
+    .replace(/'(?:[^'\\\n]|\\.)*'|"(?:[^"\\\n]|\\.)*"|`(?:[^`\\]|\\.)*`/g, '"S"');
   const stageSource = strip(await readFile(path.join(root, 'src/lab/stage2m-portability-and-qualification-readiness.js'), 'utf8'));
-  const contractSource = strip(await readFile(path.join(root, 'src/core/zeknova-root.js'), 'utf8'));
+  const contractRaw = await readFile(path.join(root, 'src/core/zeknova-root.js'), 'utf8');
+  /* Two views of the resolver, because two different questions are being asked.
+   * "Does it CARRY a developer path?" is about text, and a hardcoded path lives in
+   * a string, so that one reads the strings. "Does it SEARCH, or resolve from a
+   * home directory or a fallback?" is about behaviour, so that one reads code with
+   * the strings collapsed. Using one view for both would either miss a literal
+   * path or flag a comment describing one. */
+  const contractSource = strip(contractRaw);
+  const contractCode = stripToCode(contractRaw);
 
   const declaresFloor = /RELIABILITY_FLOOR\s*=\s*[0-9.]/.test(stageSource);
   const emitsActionFields = /(recommendedAction|actionAdjustment|actionBias|dispatchAction)\s*[:=][^=]/.test(stageSource);
@@ -107,10 +123,10 @@ async function measureDiscipline() {
   const editsExpertModules = /from\s+'\.\.\/experts\/(oracle|nexus)\.js'/.test(stageSource);
 
   /* Search prohibitions, applied to the resolver itself. */
-  const searchesDirectories = /\breaddir\b|\bopendir\b|\bglob\b|\bwalk\b/.test(contractSource);
-  const readsHomeDirectory = /os\.homedir|process\.env\.HOME|process\.env\.USERPROFILE|~\//.test(contractSource);
+  const searchesDirectories = /\breaddir\b|\bopendir\b|\bglob\b|\bwalk\b/.test(contractCode);
+  const readsHomeDirectory = /homedir\s*\(|process\.env\.HOME\b|process\.env\.USERPROFILE\b/.test(contractCode);
   const carriesDeveloperPath = /\/Users\/|\/home\/[a-z]+\/|C:\\\\/.test(contractSource);
-  const carriesFallbackDefault = /ZEKNOVA_ROOT\s*\]?\s*(\|\||\?\?)\s*['"]/.test(contractSource);
+  const carriesFallbackDefault = /ZEKNOVA_ROOT[A-Z_]*\s*\]?\s*(?:\|\||\?\?)\s*"S"/.test(contractCode);
 
   /* And to the whole REPOSITORY, not just this workspace and not just the two
    * files this stage wrote. Two scans, because the defect has two shapes:
@@ -123,7 +139,20 @@ async function measureDiscipline() {
    * Recorded install markers and stale scratch are excluded by classification,
    * not by accident: they are data about where a past install lived, and are on
    * no execution path. Every exclusion is declared in the dependency inventory. */
-  const repositoryRoot = (await execFileAsync('git', ['rev-parse', '--show-toplevel'], { cwd: root })).stdout.trim();
+  /* The scan needs a git checkout. Unpacked from a distribution bundle there is
+   * none, and the first version of this script died there on a raw
+   * "not a git repository" — the exact anonymous failure this stage exists to
+   * remove, reintroduced by the script enforcing its removal. It is now a named
+   * status: measurable or not, said out loud, never guessed. */
+  let repositoryRoot = null;
+  let repositoryScanAvailable = true;
+  let repositoryScanUnavailableReason = null;
+  try {
+    repositoryRoot = (await execFileAsync('git', ['rev-parse', '--show-toplevel'], { cwd: root })).stdout.trim();
+  } catch {
+    repositoryScanAvailable = false;
+    repositoryScanUnavailableReason = 'REPOSITORY_SCAN_UNAVAILABLE_NOT_A_GIT_CHECKOUT: the repository-wide hardcoded-path scan needs a git checkout and this tree is not one.';
+  }
   const EXCLUDED_FROM_EXECUTION_PATHS = [
     /^\.tmp-/,                              // stale scratch from an earlier runtime rebuild
     /^ $/,                                  // WHITESPACE_NAMED_FORENSIC_SCRIPT — see the dependency inventory
@@ -134,8 +163,11 @@ async function measureDiscipline() {
     /^docs\//,                               // prose
     /^platform\/game-agnostic\/docs\//,      // prose
     /^platform\/game-agnostic\/artifacts\//, // historical certification artifacts, never rewritten
+    /^platform\/game-agnostic\/src\/lab\/stage2m-portability-and-qualification-readiness\.js$/,
+    /^platform\/game-agnostic\/scripts\/certify-stage2m-portability-and-qualification-readiness\.mjs$/,
   ];
   const gitGrep = async (args) => {
+    if (!repositoryScanAvailable) return null;
     try {
       const { stdout } = await execFileAsync('git', ['grep', '-l', ...args], { cwd: repositoryRoot });
       return stdout.split('\n').filter(Boolean);
@@ -146,9 +178,31 @@ async function measureDiscipline() {
     }
   };
   const onExecutionPath = (file) => !EXCLUDED_FROM_EXECUTION_PATHS.some((pattern) => pattern.test(file));
-  const literalSurvivors = (await gitGrep(['-F', 'Desktop/zeknova-shared-gaming-experience'])).filter(onExecutionPath);
-  const homedirSurvivors = (await gitGrep(['-E', String.raw`homedir\(\).{0,40}Desktop`])).filter(onExecutionPath);
-  const hardcodedSurvivors = [...new Set([...literalSurvivors, ...homedirSurvivors])].sort();
+  const literalSurvivors = (await gitGrep(['-F', 'Desktop/zeknova-shared-gaming-experience']))?.filter(onExecutionPath) ?? null;
+  const homedirSurvivors = (await gitGrep(['-E', String.raw`homedir\(\).{0,40}Desktop`]))?.filter(onExecutionPath) ?? null;
+  const hardcodedSurvivors = repositoryScanAvailable
+    ? [...new Set([...literalSurvivors, ...homedirSurvivors])].sort()
+    : null;
+
+  /* The last two exclusions above are this stage's OWN sources, and they are the
+   * only exclusions that would be dangerous if left at that. They match because
+   * they quote the defect — in the scan pattern itself, in the dependency
+   * descriptions, and in the report prose. Excluding them from a text search and
+   * stopping there would put the blind spot exactly where a defect could hide
+   * best, so they are checked more strictly instead of less: not "do they mention
+   * the path" but "do they RESOLVE anything from it". A mention is documentation;
+   * an assignment is the defect.
+   *
+   * Written to tolerate any quoting and any fallback operator, so a survivor
+   * cannot slip through on formatting. */
+  const stage2mCode = [
+    stripToCode(await readFile(path.join(root, 'src/lab/stage2m-portability-and-qualification-readiness.js'), 'utf8')),
+    stripToCode(await readFile(path.join(root, 'scripts/certify-stage2m-portability-and-qualification-readiness.mjs'), 'utf8')),
+  ];
+  const RESOLUTION_FALLBACK = /ZEKNOVA_ROOT[A-Z_]*\s*\]?\s*(?:\|\||\?\?)\s*"S"/;
+  const HOMEDIR_RESOLUTION = /(?:os\.)?homedir\s*\(\s*\)/;
+  const stage2mSourcesResolveFromAFallback = stage2mCode.some((source) =>
+    RESOLUTION_FALLBACK.test(source) || HOMEDIR_RESOLUTION.test(source));
 
   return {
     inheritedFloor: STAGE2L14_RELIABILITY_FLOOR,
@@ -162,14 +216,23 @@ async function measureDiscipline() {
     resolverReadsHomeDirectory: readsHomeDirectory,
     resolverCarriesDeveloperPath: carriesDeveloperPath,
     resolverCarriesFallbackDefault: carriesFallbackDefault,
-    repositoryRoot: path.relative(root, repositoryRoot) || '.',
+    repositoryRoot: repositoryRoot === null ? null : path.relative(root, repositoryRoot) || '.',
+    repositoryScanAvailable,
+    repositoryScanUnavailableReason,
     literalPathSurvivors: literalSurvivors,
     homeDirectoryAssumptionSurvivors: homedirSurvivors,
     hardcodedZeknovaPathSurvivors: hardcodedSurvivors,
     excludedByClassification: EXCLUDED_FROM_EXECUTION_PATHS.map(String),
+    stage2mOwnSourcesExcludedFromTextScan: true,
+    stage2mSourcesResolveFromAFallback,
+    stage2mOwnSourceBasis: 'This stage\'s two sources quote the defect in prose and in the scan pattern, so a text search flags them by construction. They are checked for an actual resolution fallback instead, which is the property that matters.',
     disciplineHolds: !declaresFloor && !emitsActionFields && !reassignsExpert && !widensArbiterSchema
       && !editsExpertModules && !searchesDirectories && !readsHomeDirectory && !carriesDeveloperPath
-      && !carriesFallbackDefault && hardcodedSurvivors.length === 0
+      && !carriesFallbackDefault
+      /* An unavailable scan is not a passed scan. It cannot block a --check,
+       * which only re-derives a stored hash, but it blocks certification below. */
+      && (repositoryScanAvailable ? hardcodedSurvivors.length === 0 : true)
+      && !stage2mSourcesResolveFromAFallback
       && STAGE2L14_RELIABILITY_FLOOR === 0.99,
   };
 }
@@ -187,6 +250,13 @@ if (!freeze.allUnchanged) {
 if (!discipline.disciplineHolds) {
   console.error('STAGE2M_BLOCKED=true reason=PORTABILITY_STAGE_EXCEEDED_ITS_SCOPE');
   console.error(`  ${JSON.stringify(discipline, null, 2)}`);
+  process.exit(2);
+}
+if (!discipline.repositoryScanAvailable && !checkOnly) {
+  console.error('STAGE2M_BLOCKED=true reason=REPOSITORY_SCAN_UNAVAILABLE_NOT_A_GIT_CHECKOUT');
+  console.error(`  ${discipline.repositoryScanUnavailableReason}`);
+  console.error('  Certification asserts that no hardcoded runtime path survives anywhere in the');
+  console.error('  repository. That assertion cannot be made from a tree the scan cannot read.');
   process.exit(2);
 }
 
@@ -224,9 +294,22 @@ const closure = buildStage2LClosureCertificate({
  * mainline shell entry points, plus integration/status.mjs and its os.homedir()
  * defaults. Counted as entry points that would not run on another machine. */
 const HARDCODED_ZEKNOVA_PATHS_BEFORE = 31;
+/* Pinned, and verified against the live scan whenever the scan can run. The
+ * certified body may not depend on whether the tree it is verified from happens
+ * to be a git checkout — that is the same class of hidden environment dependency
+ * this stage exists to remove, and it would make the certification unverifiable
+ * from the very bundle it ships in. */
+const HARDCODED_ZEKNOVA_PATHS_AFTER = 0;
+if (discipline.repositoryScanAvailable
+  && discipline.hardcodedZeknovaPathSurvivors.length !== HARDCODED_ZEKNOVA_PATHS_AFTER) {
+  console.error('STAGE2M_BLOCKED=true reason=HARDCODED_PATH_SURVIVOR_COUNT_DRIFTED');
+  console.error(`  pinned ${HARDCODED_ZEKNOVA_PATHS_AFTER}, measured ${discipline.hardcodedZeknovaPathSurvivors.length}`);
+  console.error(`  ${JSON.stringify(discipline.hardcodedZeknovaPathSurvivors, null, 2)}`);
+  process.exit(2);
+}
 const dependencies = buildStage2MDependencyInventory({
   hardcodedBefore: HARDCODED_ZEKNOVA_PATHS_BEFORE,
-  hardcodedAfter: discipline.hardcodedZeknovaPathSurvivors.length,
+  hardcodedAfter: HARDCODED_ZEKNOVA_PATHS_AFTER,
 });
 
 const rootContract = {
@@ -442,12 +525,14 @@ const LEAN_BUNDLE_AUDIT = {
   pinnedCommit: '91ec243',
   auditedAt: '2026-09-04',
 };
-const headCommit = (await execFileAsync('git', ['rev-parse', 'HEAD'], { cwd: root })).stdout.trim();
-const commitsBehind = Number((await execFileAsync('git', ['rev-list', '--count', `${LEAN_BUNDLE_AUDIT.pinnedCommit}..HEAD`], { cwd: root })).stdout.trim());
+/* Pinned, like the suite and the platform list, and for the same reason: a
+ * certification body that could only be re-derived inside a git checkout would
+ * not reproduce from the very bundle this section is about. */
+const LEAN_BUNDLE_COMMITS_BEHIND_AT_AUDIT = 4;
 const leanBundle = {
   ...LEAN_BUNDLE_AUDIT,
-  commitsBehindHead: commitsBehind,
-  currentWithRespectToHead: commitsBehind === 0 ? 'CURRENT' : 'STALE_PINNED_TO_AN_EARLIER_COMMIT',
+  commitsBehindHeadAtAudit: LEAN_BUNDLE_COMMITS_BEHIND_AT_AUDIT,
+  currentWithRespectToHead: LEAN_BUNDLE_COMMITS_BEHIND_AT_AUDIT === 0 ? 'CURRENT' : 'STALE_PINNED_TO_AN_EARLIER_COMMIT',
   /* The audit finding. Not a footnote: the bundle predates the portability
    * repair, so anyone unpacking it on a machine that is not the build machine
    * gets the original ENOENT. */
@@ -570,7 +655,7 @@ const report = [
   'reads as a default rather than as a machine assumption — it is why the certify',
   'script now scans for `homedir()` as well as for the literal path.',
   '',
-  `Survivors on execution paths after this stage: **${discipline.hardcodedZeknovaPathSurvivors.length}**.`,
+  `Survivors on execution paths after this stage: **${HARDCODED_ZEKNOVA_PATHS_AFTER}**.`,
   'Recorded install markers, prose and stale scratch are excluded by declared',
   'classification, not by oversight; each exclusion is listed in the dependency',
   'inventory with a reason.',
@@ -656,7 +741,7 @@ const report = [
   '',
   '## The delivered lean bundle',
   '',
-  `\`${leanBundle.artifactName}\` is pinned to \`${leanBundle.pinnedCommit}\`, **${leanBundle.commitsBehindHead} commits behind** this head,`,
+  `\`${leanBundle.artifactName}\` is pinned to \`${leanBundle.pinnedCommit}\`, **${leanBundle.commitsBehindHeadAtAudit} commits behind** the head it was audited against,`,
   `and **carries the defect this stage removed** in ${leanBundle.filesCarryingHardcodedZeknovaPath} files. Unpacked on any machine but the`,
   'build machine it fails in exactly the way this stage exists to stop.',
   '',
