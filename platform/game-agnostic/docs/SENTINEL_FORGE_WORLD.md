@@ -270,3 +270,128 @@ npm run forge:stage3a:certify     # regenerate Stage 3A artifacts
 npm run forge:stage3a:check       # verify the stored certification reproduces
 npm run test:stage3a-forge-world  # 49 tests
 ```
+
+---
+
+# Stage 3B — MicroWorld curriculum
+
+Stage 3A produced a working substrate with two measured limits: 82.5% of cases
+had an exact tie at the optimum, and 504 cases rested on only 105 topologies.
+Stage 3B addresses both — and the way it addresses the first is the more
+interesting half.
+
+## Ties are not one thing
+
+The obvious move is to engineer ties away. That is forbidden without a taxonomy,
+and the taxonomy is what changed the plan. Every tie is classified:
+
+| class | reward defect? |
+| --- | --- |
+| `ACCIDENTAL_REWARD_COLLAPSE` | yes — different vectors, same scalar |
+| `INSUFFICIENT_REWARD_RESOLUTION` | yes — different worlds, same reward |
+| `GENUINE_STRATEGIC_EQUIVALENCE` | no — the actions genuinely are the same move |
+| `SYMMETRIC_ACTIONS` | no |
+| `HORIZON_ALIASING` | no — the paths actually converge |
+| `OTHER` | — |
+
+Only the first two may be removed. A genuine equivalence that gets "fixed" is a
+fabricated label, and a model trained on it learns a fabricated world.
+
+**The first classifier got this wrong.** It asked "did the immediate rewards
+differ?" first and called every such case horizon aliasing, putting 397 of 416
+ties beyond scrutiny. Checking whether the paths actually *converge* first showed
+only 17 of those 397 merge. The other 380 end in materially different worlds
+carrying identical accumulated reward.
+
+## FORGE_REWARD_V2, and why it is not tie-breaking
+
+V1 is a pure **flow** reward: it sums what happened along the way and has no term
+for the value of the world it left behind. Two paths with the same flow score the
+same however differently they end. That is a missing dimension.
+
+V2 adds two **potential** terms:
+
+- `futureObjectivePotential` — how much closer the world is to satisfying its
+  objectives, counting shortfall, material in hand, and distance to the bearer.
+- `optionValue` — how much room to act survives: live substitutes, redundant
+  supply, unbroken structure.
+
+Each is a difference Φ(after) − Φ(before) of a function of world state. Because
+they are differences of a potential they **telescope**: over a complete trajectory
+their sum collapses to Φ(end) − Φ(start), so they cannot reorder complete
+trajectories. They separate only truncated horizons — exactly the case the
+taxonomy found and exactly the case the oracle scores. That is the argument for
+their admissibility, and it is why they are potentials rather than bonuses.
+
+V1 is frozen. V2 is a superseding module computed from the V1 vector plus the two
+worlds, so every Stage 3A certification still reproduces.
+
+## Supervision is routed, not forced
+
+Five classes decide which exporter may use a case:
+
+| class | SFT | preference | RL |
+| --- | --- | --- | --- |
+| `UNIQUE_OPTIMUM` | yes | yes | yes |
+| `NEAR_TIE` | no | only above the declared gap | yes |
+| `EXACT_EQUIVALENCE` | as an explicit set of equal optima | **no** | yes |
+| `PARETO_TRADEOFF` | no | **no** | yes |
+| `INSUFFICIENTLY_RESOLVED` | no | no | yes |
+
+Supervision density rises because cases go to the dataset that can represent them
+truthfully — not because any distinction was invented. An exact equivalence
+produces an SFT completion naming **every** equal optimum; a lexicographic
+tie-break is never taught as world truth. A Pareto-incomparable pair never
+becomes chosen/rejected, because preferring one is a statement about weights.
+
+## Topology by composition
+
+Fifteen procedural shapes × six role mixes × eight objective compositions × five
+horizon bands × six levels. Composition is what buys structural diversity: a star
+and a mesh of the same size fail differently, and that difference is what the
+relational experts are asked to see.
+
+### A validator that was too strict
+
+The gate's first run rejected 3,403 cases concentrated in three shapes. The cause
+was not the generator: depth and cut analysis were anchored at the objective node,
+and the objective is often attached *below* the structure being sought. Both
+anchors are now canonical and label-free — depth is the deepest run anywhere, cuts
+are computed from the node that reaches the most.
+
+A second defect surfaced immediately after: `longestDependencyDepth` enumerated
+every simple path, which is exponential, and the gate stopped making progress on
+dense meshes. It is now a memoized DFS in O(V+E) that reports the node count for a
+cycle, since "at least this deep" answers every threshold correctly without
+claiming a precision that does not exist.
+
+## Continuation policies are named assumptions
+
+Stage 3A had one. Stage 3B has three — `GREEDY_CONTINUATION_V1`,
+`OBJECTIVE_PRIORITY_V1`, `RISK_CONSERVATIVE_V1` — because a dataset whose optimal
+actions are all artefacts of one roll-forward rule is a dataset about that rule.
+No policy is "the true future". Cases where all three agree are marked
+`POLICY_INVARIANT_OPTIMUM` and are stronger supervision than those where they do
+not.
+
+## Splits by structure
+
+Assignment is by **topology hash**, so a structure appears in exactly one split by
+construction. Splitting records at random would put near-identical structures on
+both sides and let a model score well by having memorised the shape.
+
+The OOD set is **constructed, not sampled**: levels above the training curriculum,
+with larger graphs and longer horizons. It is not used during tuning.
+
+## Running it
+
+```bash
+cd platform/game-agnostic
+npm run forge:stage3b:generate    # deterministic corpus, sharded across processes
+npm run forge:stage3b:certify     # measure and certify
+npm run forge:stage3b:check       # verify the stored certification reproduces
+npm run test:stage3b-curriculum   # 47 tests
+```
+
+The corpus is a build product: deterministic from pinned seeds, kept out of the
+repository by size, with its sha256 recorded in the dataset manifest.

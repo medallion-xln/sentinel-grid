@@ -559,7 +559,7 @@ reachable from the certifying environment.
 
 ## Roadmap position
 
-Current stage: **3A — PASS** (Sentinel Forge World: a deterministic counterfactual simulation substrate). Recent history:
+Current stage: **3B — PASS** (MicroWorld curriculum, reward resolution, and a large-scale counterfactual dataset). Recent history:
 
 | Stage | Result |
 |---|---|
@@ -583,6 +583,7 @@ Current stage: **3A — PASS** (Sentinel Forge World: a deterministic counterfac
 | 2L.23 | PASS — 21 families boundary-audited by head-free validators; 3 proven defective and repaired by joint sampling; `persistence` 0.8818 → 0.9392, converging on the independently adjudicated 0.9426 |
 | 2M | PASS — 31 machine-bound entry points replaced by an explicit fail-closed `ZEKNOVA_ROOT` contract; content identity proven path-independent in both directions; lineage, contract compatibility and live readiness `NOT_MEASURED` because no runtime is reachable |
 | 3A | PASS — Sentinel Forge World: 28 scenario families, 504 admitted cases, exact counterfactual truth; Prime reaches the optimum on 94% of horizon-aligned cases and 0% of the 86 horizon-dependent ones; Soup audited and format-bridged, never invoked |
+| 3B | PASS — ties classified before being touched: 382 of 416 were a missing reward dimension, not a tiebreaker; FORGE_REWARD_V2 adds two telescoping potential terms, cutting the tie rate 0.83 → 0.48 while genuine equivalence *grew*; topology composed to tens of thousands of structures; corpus split by topology hash with a constructed OOD holdout |
 
 Full detail in [`platform/game-agnostic/docs/TEN_STAGE_ROADMAP.md`](platform/game-agnostic/docs/TEN_STAGE_ROADMAP.md).
 
@@ -616,6 +617,9 @@ npm run portability:stage2m:certify     # Stage 2M portability certification
 npm run portability:stage2m:check       # verify the stored Stage 2M certification reproduces
 npm run forge:stage3a:certify           # Stage 3A Sentinel Forge World certification
 npm run forge:stage3a:check             # verify the stored Stage 3A certification reproduces
+npm run forge:stage3b:generate          # regenerate the Stage 3B corpus (deterministic, sharded)
+npm run forge:stage3b:certify           # Stage 3B curriculum and dataset certification
+npm run forge:stage3b:check             # verify the stored Stage 3B certification reproduces
 ./verify.sh                             # mainline verifier
 ```
 

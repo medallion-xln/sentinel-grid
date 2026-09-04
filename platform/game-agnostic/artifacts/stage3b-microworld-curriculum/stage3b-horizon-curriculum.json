@@ -1,0 +1,55 @@
+{
+  "bands": [
+    {
+      "id": "H0",
+      "horizon": 0,
+      "maxTicksBonus": 0,
+      "description": "one step"
+    },
+    {
+      "id": "H1",
+      "horizon": 1,
+      "maxTicksBonus": 2,
+      "description": "two steps"
+    },
+    {
+      "id": "H2",
+      "horizon": 3,
+      "maxTicksBonus": 4,
+      "description": "three steps"
+    },
+    {
+      "id": "H3",
+      "horizon": 5,
+      "maxTicksBonus": 8,
+      "description": "five steps"
+    },
+    {
+      "id": "H4",
+      "horizon": 8,
+      "maxTicksBonus": 14,
+      "description": "longer bounded planning"
+    }
+  ],
+  "byBand": {
+    "H3": 14155,
+    "H4": 14170,
+    "H1": 14172,
+    "H0": 14162,
+    "H2": 14145
+  },
+  "horizonAligned": 19087,
+  "horizonDependent": 51717,
+  "policyAgreement": {
+    "policies": [
+      "GREEDY_CONTINUATION_V1",
+      "OBJECTIVE_PRIORITY_V1",
+      "RISK_CONSERVATIVE_V1"
+    ],
+    "probes": 140,
+    "invariant": 131,
+    "dependent": 9,
+    "invariantRate": 0.9357,
+    "note": "Sampled during generation. No policy is \"the true future\": each is a named assumption, and a case where all three agree is stronger supervision than one where they do not."
+  }
+}

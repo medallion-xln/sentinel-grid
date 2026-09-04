@@ -1,0 +1,54 @@
+{
+  "specVersion": 1,
+  "target": "LEARNED_NEXUS_CANDIDATE",
+  "executed": false,
+  "executionStage": "STAGE_3C",
+  "baseModelCandidates": [
+    {
+      "model": "Qwen/Qwen2.5-7B-Instruct",
+      "reason": "Soup ships a validated SFT recipe for it; size fits a single-GPU LoRA run"
+    },
+    {
+      "model": "Qwen/Qwen2.5-Coder-7B-Instruct",
+      "reason": "structured-output bias suits an action-selection format"
+    }
+  ],
+  "trainingSubsets": {
+    "sft": "TRAIN split, supervision class UNIQUE_OPTIMUM and EXACT_EQUIVALENCE only",
+    "preference": "TRAIN split, utility gap at or above the predeclared minimum",
+    "grpo": "TRAIN split RL episodes, requiring a reward adapter that does not exist yet"
+  },
+  "phases": [
+    {
+      "phase": "SFT",
+      "required": true,
+      "gate": "holdout optimum-set agreement must exceed the deterministic Nexus baseline on the same cases"
+    },
+    {
+      "phase": "PREFERENCE",
+      "required": false,
+      "gate": "no regression on the SFT holdout gate"
+    },
+    {
+      "phase": "GRPO",
+      "required": false,
+      "gate": "blocked until a reward adapter is specified and certified"
+    }
+  ],
+  "validationGates": [
+    "VALIDATION split for model selection; HOLDOUT touched once, at the end",
+    "OOD holdout never used during tuning",
+    "the deterministic Nexus baseline measured on identical cases, not on a remembered number",
+    "no gate may be evaluated on TRAIN"
+  ],
+  "rejectionConditions": [
+    "incomplete training provenance envelope",
+    "no improvement over the deterministic baseline on HOLDOUT",
+    "improvement on HOLDOUT but degradation on OOD beyond a predeclared margin",
+    "any behaviour requiring authority above R0",
+    "any dependence on a Soup artifact that cannot be reproduced from its recorded provenance"
+  ],
+  "promotionAuthority": "SENTINEL_GRID_CERTIFICATION",
+  "soupMayReach": "TRAINED",
+  "soupMayNeverReach": "CERTIFIED"
+}

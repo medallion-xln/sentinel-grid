@@ -1,0 +1,98 @@
+{
+  "version": "FORGE_REWARD_V2",
+  "components": [
+    {
+      "id": "immediateObjectiveProgress",
+      "sense": "benefit",
+      "kind": "flow",
+      "description": "objective units satisfied by this transition"
+    },
+    {
+      "id": "futureObjectivePotential",
+      "sense": "benefit",
+      "kind": "potential",
+      "description": "change in how close the world is to satisfying its objectives, counting reachability"
+    },
+    {
+      "id": "deliveredValue",
+      "sense": "benefit",
+      "kind": "flow",
+      "description": "value actually delivered to objective-bearing nodes"
+    },
+    {
+      "id": "restoredDependencyValue",
+      "sense": "benefit",
+      "kind": "flow",
+      "description": "value of dependencies restored, bypassed or rebuilt"
+    },
+    {
+      "id": "preservedValue",
+      "sense": "benefit",
+      "kind": "flow",
+      "description": "value that would have been lost and was not"
+    },
+    {
+      "id": "civilianSafety",
+      "sense": "benefit",
+      "kind": "flow",
+      "description": "civilian health preserved"
+    },
+    {
+      "id": "infrastructureHealth",
+      "sense": "benefit",
+      "kind": "flow",
+      "description": "net infrastructure health change"
+    },
+    {
+      "id": "optionValue",
+      "sense": "benefit",
+      "kind": "potential",
+      "description": "change in the room the world leaves to act: live substitutes, redundant paths, surviving structure"
+    },
+    {
+      "id": "riskExposure",
+      "sense": "cost",
+      "kind": "flow",
+      "description": "risk the actor took on"
+    },
+    {
+      "id": "resourceCost",
+      "sense": "cost",
+      "kind": "flow",
+      "description": "resources and energy consumed"
+    },
+    {
+      "id": "timeCost",
+      "sense": "cost",
+      "kind": "flow",
+      "description": "ticks spent"
+    },
+    {
+      "id": "terminalOutcome",
+      "sense": "signed",
+      "kind": "terminal",
+      "description": "positive on objective completion, negative on terminal failure"
+    }
+  ],
+  "weights": {
+    "immediateObjectiveProgress": 10,
+    "futureObjectivePotential": 4,
+    "deliveredValue": 4,
+    "restoredDependencyValue": 3,
+    "preservedValue": 3,
+    "civilianSafety": 6,
+    "infrastructureHealth": 2,
+    "optionValue": 2,
+    "riskExposure": -2,
+    "resourceCost": -1,
+    "timeCost": -1,
+    "terminalOutcome": 25
+  },
+  "supersedes": "FORGE_REWARD_V1",
+  "v1Frozen": true,
+  "potentialTerms": [
+    "futureObjectivePotential",
+    "optionValue"
+  ],
+  "telescopingArgument": "Both potential terms are differences of a state function, so over a complete trajectory they collapse to Phi(end) - Phi(start) and cannot reorder complete trajectories. They separate only truncated horizons, which is exactly the case the taxonomy found and the case the oracle scores."
+}

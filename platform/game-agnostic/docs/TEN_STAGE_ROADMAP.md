@@ -894,3 +894,89 @@ certify script blocks if that stops being true.
 - **Portability is single-platform.** `DIGEST_PRODUCED_SINGLE_PLATFORM` unchanged.
 
 Full architecture: [`docs/SENTINEL_FORGE_WORLD.md`](SENTINEL_FORGE_WORLD.md).
+
+## Stage 3B — MicroWorld curriculum, reward resolution and large-scale dataset
+
+Stage 3A produced a working substrate with two measured limits: 82.5% of cases
+tied at the optimum, and 504 cases rested on 105 topologies. Stage 3B addresses
+both. Everything Stage 3A certified — the kernel, FORGE_REWARD_V1, the V1 oracle,
+the V1 generators and validators, the adapter, the export layer — is a frozen
+owner here; Stage 3B adds superseding modules beside them.
+
+### The taxonomy came before the fix, and changed it
+
+The brief forbids removing ties without classifying them first, and that
+prohibition earned its place. Under V1, 416 tied cases classify as:
+
+| class | cases | reward defect? |
+| --- | --- | --- |
+| `INSUFFICIENT_REWARD_RESOLUTION` | 381 | yes |
+| `GENUINE_STRATEGIC_EQUIVALENCE` | 17 | no |
+| `HORIZON_ALIASING` | 17 | no |
+| `ACCIDENTAL_REWARD_COLLAPSE` | 1 | yes |
+
+**The first classifier was wrong.** It asked "did the immediate rewards differ?"
+first and called every such case horizon aliasing — not a defect — which put 397
+of 416 ties beyond scrutiny. Checking whether the paths actually *converge* first
+showed only 17 of those 397 merge. The other 380 end in materially different
+worlds carrying identical accumulated reward. Aliasing means the paths merge; if
+they do not, the equality of the totals is the reward's problem.
+
+### FORGE_REWARD_V2 is a missing dimension, not a tiebreaker
+
+V1 is a pure flow reward: it sums what happened along the way and has no term for
+the value of the world it left behind. V2 adds two potential terms —
+`futureObjectivePotential` and `optionValue` — each a difference Φ(after) −
+Φ(before) of a function of world state. Being differences of a potential they
+telescope over a complete trajectory, so they cannot reorder complete
+trajectories; they separate only truncated horizons, which is exactly what the
+oracle scores.
+
+Measured on the identical frozen Stage 3A worlds:
+
+| | V1 | V2 |
+| --- | --- | --- |
+| tie rate | 0.8254 | 0.4782 |
+| reward-defect ties | 382 | 31 |
+| genuine equivalence + true aliasing | 34 | 210 |
+| unique-optimum rate | 0.1369 | 0.5198 |
+
+Genuine ties were **preserved and grew** — V2 lets the classifier tell a real
+equivalence from a reward that could not see a difference. The certification
+blocks if genuine equivalence ever falls.
+
+### A latent bug the tests caught
+
+`vectorKey` compared only FORGE_REWARD_V1's component names. Applied to a V2
+vector it silently dropped the five components V2 exists for, both potential terms
+among them, so every V2 tie looked like a vector match. It happened not to change
+the numbers on this corpus — verified, not assumed — but a comparison that only
+sees the components it was written against is not a comparison of the vectors it
+was handed. Both the tie comparison and the Pareto comparison are now
+schema-agnostic.
+
+### Topology by composition
+
+15 procedural shapes × 6 role mixes × 8 objective compositions × 5 horizon bands ×
+6 levels. The gate's first run rejected 3,403 cases concentrated in three shapes —
+because depth and cut analysis were anchored at the objective node, which is often
+attached *below* the structure being sought. Both anchors are now canonical and
+label-free. A second defect surfaced immediately: `longestDependencyDepth`
+enumerated every simple path and stalled on dense meshes; it is now O(V+E).
+
+### Supervision routed, not forced
+
+Five classes decide which exporter may use a case. Exact equivalences produce an
+SFT completion naming **every** equal optimum rather than teaching a lexicographic
+tie-break as world truth; Pareto-incomparable pairs never become chosen/rejected,
+because preferring one is a statement about weights. Supervision density rises
+because cases go where they can be represented truthfully.
+
+### Still open after Stage 3B
+
+- **Residual unresolved ties** remain and are routed to RL, not forced into SFT.
+- **Continuation-policy dependence is sampled**, not measured on every case.
+- **No model was trained.** Soup was schema-validated and never invoked.
+- **Portability is single-platform.** `DIGEST_PRODUCED_SINGLE_PLATFORM` unchanged.
+
+Full architecture: [`docs/SENTINEL_FORGE_WORLD.md`](SENTINEL_FORGE_WORLD.md).

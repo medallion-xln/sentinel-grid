@@ -1,0 +1,327 @@
+{
+  "axisSizes": {
+    "shapes": 15,
+    "roleCompositions": 6,
+    "objectiveCompositions": 8,
+    "horizonBands": 5,
+    "levels": 6,
+    "combinationsPerSeed": 21600
+  },
+  "roleCompositions": [
+    {
+      "id": "bare",
+      "hostiles": 0,
+      "civilians": 0,
+      "substitutes": 0,
+      "resources": 1,
+      "barriers": 0,
+      "hazards": 0,
+      "description": "structure alone"
+    },
+    {
+      "id": "defended",
+      "hostiles": 2,
+      "civilians": 1,
+      "substitutes": 0,
+      "resources": 1,
+      "barriers": 0,
+      "hazards": 1,
+      "description": "structure under attack with a civilian at stake"
+    },
+    {
+      "id": "redundant",
+      "hostiles": 0,
+      "civilians": 0,
+      "substitutes": 3,
+      "resources": 2,
+      "barriers": 0,
+      "hazards": 0,
+      "description": "alternatives available for most failures"
+    },
+    {
+      "id": "scarce",
+      "hostiles": 1,
+      "civilians": 0,
+      "substitutes": 1,
+      "resources": 1,
+      "barriers": 1,
+      "hazards": 1,
+      "description": "few resources, one substitute, obstructions"
+    },
+    {
+      "id": "populated",
+      "hostiles": 1,
+      "civilians": 4,
+      "substitutes": 1,
+      "resources": 2,
+      "barriers": 0,
+      "hazards": 2,
+      "description": "many civilians exposed to hazards"
+    },
+    {
+      "id": "industrial",
+      "hostiles": 0,
+      "civilians": 1,
+      "substitutes": 2,
+      "resources": 3,
+      "barriers": 1,
+      "hazards": 1,
+      "description": "material-rich, depot-driven repair work"
+    }
+  ],
+  "objectiveCompositions": [
+    {
+      "id": "reach_target",
+      "goals": [
+        "deliver"
+      ],
+      "description": "deliver material to one objective node"
+    },
+    {
+      "id": "restore_infrastructure",
+      "goals": [
+        "restore"
+      ],
+      "description": "bring failed structure back into service"
+    },
+    {
+      "id": "protect_civilians",
+      "goals": [
+        "protect"
+      ],
+      "description": "keep civilians alive through the horizon"
+    },
+    {
+      "id": "restore_and_protect",
+      "goals": [
+        "restore",
+        "protect"
+      ],
+      "description": "both, with one actor and one budget"
+    },
+    {
+      "id": "restore_and_conserve",
+      "goals": [
+        "restore",
+        "conserve"
+      ],
+      "description": "repair while holding resources back"
+    },
+    {
+      "id": "supply_and_defend",
+      "goals": [
+        "deliver",
+        "defend"
+      ],
+      "description": "deliver while a hostile degrades the target"
+    },
+    {
+      "id": "repair_and_maintain_redundancy",
+      "goals": [
+        "restore",
+        "redundancy"
+      ],
+      "description": "repair without spending the last alternative"
+    },
+    {
+      "id": "multi_target_delivery",
+      "goals": [
+        "deliver",
+        "deliver"
+      ],
+      "description": "two objective nodes competing for one supply"
+    }
+  ],
+  "horizonBands": [
+    {
+      "id": "H0",
+      "horizon": 0,
+      "maxTicksBonus": 0,
+      "description": "one step"
+    },
+    {
+      "id": "H1",
+      "horizon": 1,
+      "maxTicksBonus": 2,
+      "description": "two steps"
+    },
+    {
+      "id": "H2",
+      "horizon": 3,
+      "maxTicksBonus": 4,
+      "description": "three steps"
+    },
+    {
+      "id": "H3",
+      "horizon": 5,
+      "maxTicksBonus": 8,
+      "description": "five steps"
+    },
+    {
+      "id": "H4",
+      "horizon": 8,
+      "maxTicksBonus": 14,
+      "description": "longer bounded planning"
+    }
+  ],
+  "levels": [
+    {
+      "level": 0,
+      "topologyNodes": 4,
+      "gridSize": 8,
+      "energy": 44,
+      "hazardDensity": 0,
+      "valueSpread": 1,
+      "scarcity": 0,
+      "maxTicksBase": 10
+    },
+    {
+      "level": 1,
+      "topologyNodes": 8,
+      "gridSize": 10,
+      "energy": 40,
+      "hazardDensity": 1,
+      "valueSpread": 2,
+      "scarcity": 1,
+      "maxTicksBase": 13
+    },
+    {
+      "level": 2,
+      "topologyNodes": 12,
+      "gridSize": 12,
+      "energy": 36,
+      "hazardDensity": 2,
+      "valueSpread": 3,
+      "scarcity": 2,
+      "maxTicksBase": 16
+    },
+    {
+      "level": 3,
+      "topologyNodes": 16,
+      "gridSize": 14,
+      "energy": 32,
+      "hazardDensity": 3,
+      "valueSpread": 4,
+      "scarcity": 3,
+      "maxTicksBase": 19
+    },
+    {
+      "level": 4,
+      "topologyNodes": 20,
+      "gridSize": 16,
+      "energy": 28,
+      "hazardDensity": 4,
+      "valueSpread": 5,
+      "scarcity": 4,
+      "maxTicksBase": 22
+    },
+    {
+      "level": 5,
+      "topologyNodes": 24,
+      "gridSize": 18,
+      "energy": 24,
+      "hazardDensity": 5,
+      "valueSpread": 6,
+      "scarcity": 5,
+      "maxTicksBase": 25
+    }
+  ],
+  "difficulty": {
+    "levels": [
+      {
+        "level": 0,
+        "cases": 10403,
+        "meanLegalActionsTimes100": 674,
+        "meanEntitiesTimes100": 1304,
+        "meanRelationsTimes100": 846,
+        "horizonDependenceRate": 0.7251,
+        "meanUtilitySpreadTimes100": 8575,
+        "meanGreedyRegretTimes100": 3680,
+        "uniqueOptimumRate": 0.6229
+      },
+      {
+        "level": 1,
+        "cases": 10562,
+        "meanLegalActionsTimes100": 674,
+        "meanEntitiesTimes100": 1633,
+        "meanRelationsTimes100": 1211,
+        "horizonDependenceRate": 0.7306,
+        "meanUtilitySpreadTimes100": 9231,
+        "meanGreedyRegretTimes100": 4128,
+        "uniqueOptimumRate": 0.6183
+      },
+      {
+        "level": 2,
+        "cases": 10642,
+        "meanLegalActionsTimes100": 678,
+        "meanEntitiesTimes100": 2033,
+        "meanRelationsTimes100": 1651,
+        "horizonDependenceRate": 0.7228,
+        "meanUtilitySpreadTimes100": 9898,
+        "meanGreedyRegretTimes100": 4411,
+        "uniqueOptimumRate": 0.599
+      },
+      {
+        "level": 3,
+        "cases": 10680,
+        "meanLegalActionsTimes100": 674,
+        "meanEntitiesTimes100": 2433,
+        "meanRelationsTimes100": 2078,
+        "horizonDependenceRate": 0.724,
+        "meanUtilitySpreadTimes100": 10705,
+        "meanGreedyRegretTimes100": 4993,
+        "uniqueOptimumRate": 0.5899
+      },
+      {
+        "level": 4,
+        "cases": 10674,
+        "meanLegalActionsTimes100": 675,
+        "meanEntitiesTimes100": 2833,
+        "meanRelationsTimes100": 2522,
+        "horizonDependenceRate": 0.7268,
+        "meanUtilitySpreadTimes100": 11710,
+        "meanGreedyRegretTimes100": 5545,
+        "uniqueOptimumRate": 0.5822
+      },
+      {
+        "level": 5,
+        "cases": 10699,
+        "meanLegalActionsTimes100": 671,
+        "meanEntitiesTimes100": 3234,
+        "meanRelationsTimes100": 2964,
+        "horizonDependenceRate": 0.7375,
+        "meanUtilitySpreadTimes100": 12561,
+        "meanGreedyRegretTimes100": 6181,
+        "uniqueOptimumRate": 0.5815
+      },
+      {
+        "level": 6,
+        "cases": 3570,
+        "meanLegalActionsTimes100": 672,
+        "meanEntitiesTimes100": 3634,
+        "meanRelationsTimes100": 3399,
+        "horizonDependenceRate": 0.7434,
+        "meanUtilitySpreadTimes100": 13561,
+        "meanGreedyRegretTimes100": 6842,
+        "uniqueOptimumRate": 0.5776
+      },
+      {
+        "level": 7,
+        "cases": 3574,
+        "meanLegalActionsTimes100": 670,
+        "meanEntitiesTimes100": 4033,
+        "meanRelationsTimes100": 3834,
+        "horizonDependenceRate": 0.7641,
+        "meanUtilitySpreadTimes100": 14561,
+        "meanGreedyRegretTimes100": 7842,
+        "uniqueOptimumRate": 0.5996
+      }
+    ],
+    "structuralComplexityMonotone": true,
+    "l5HarderThanL2": true,
+    "l2GreedyRegretTimes100": 4411,
+    "l5GreedyRegretTimes100": 6181,
+    "calibrationPass": true,
+    "note": "Difficulty is measured by what a myopic chooser loses, not by the level label. A level that is not measurably harder than a lower one is a generator defect."
+  }
+}
