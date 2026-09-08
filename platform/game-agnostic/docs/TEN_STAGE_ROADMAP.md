@@ -1068,6 +1068,42 @@ a 403 through the installed stack. Not bypassed. Every alternate host probed was
 unreachable. No candidate exists, so no accuracy, complementarity or generalization
 figure is reported.
 
+## Stage 3C-R.1 — trusted base model acquisition — BLOCKED on acquisition
+
+Stage 3C-R left one requirement. Stage 3C-R.1 asks whether a
+provenance-established, trainable base model can be supplied through an authorized
+path, and the answer is `E_NO_AUTHORIZED_BASE_MODEL_AVAILABLE`.
+
+The container was reprovisioned between the stages, so the pipeline was
+re-executed rather than inherited — and passed again, reproducing Stage 3C-R's LoRA
+adapter bit-for-bit. The pipeline is sound on two different machines.
+
+The open channels were enumerated and each was checked for a model that could pass
+provenance. PyPI is fully accessible and its entire 886,683-package index was
+searched; anonymous GitHub git reads work but Git LFS objects are not served, so
+weights arrive as pointer stubs; GitHub's HTTP lane returns 403, which removes
+release assets as a channel; GCS and S3 answer as object stores with no authorized
+model bucket declared anywhere. Every model host and artifact archive is denied or
+unreachable. Nothing was bypassed.
+
+**A bucket name is not provenance.** `gs://gpt-2`, which OpenAI's own download
+script once used, is reachable and now holds one unrelated HTML file uploaded by a
+third party. Matching on the name would have put an attacker-controlled object into
+a training run. Nothing was downloaded from it. This is the Stage 3B admission-gate
+lesson from a new direction.
+
+What ships is the acquisition path itself with the model-shaped hole left open: a
+10-field provenance envelope whose aggregate hash is derived from its parts, a
+supplied-path validator behind `SENTINEL_BASE_MODEL_PATH` that looks only where
+told, format classification that decides inference-only before trainable, a 9-step
+trainability contract, and a 7-requirement activation gate that opens directly into
+the frozen Stage 3C-R campaign with no stage in between. The gate was run against
+this project's own harness fixture and rejected it on provenance, because a
+rejection rule that has never rejected anything is a rule nobody has tested.
+
+The campaign was not started, redesigned or approximated. FORGE_DATASET_V2 is
+unmodified and VALIDATION, HOLDOUT and OOD were never opened.
+
 ### Still open after Stage 3B.1
 
 - **Per-head reachability is confounded by role mix.** The heads needing the

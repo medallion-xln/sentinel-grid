@@ -1,0 +1,21 @@
+{
+  "rule": "A BUCKET, REPOSITORY OR DIRECTORY NAME IS NEVER EVIDENCE OF WHAT IS INSIDE IT",
+  "observed": "gs://gpt-2, the bucket OpenAI's own download_model.py once used, is reachable and now holds a single unrelated HTML file uploaded by a third party in 2026.",
+  "consequence": "Matching on the bucket name would have pulled an attacker-controlled object into a training pipeline under the label \"GPT-2, official\".",
+  "enforcement": "Provenance is established from the artifact's own content, hashes and license, and from a publisher that can be named — never from where it happens to sit.",
+  "measured": {
+    "probed": true,
+    "bucket": "gs://gpt-2",
+    "historicalUse": "the bucket openai/gpt-2's download_model.py once fetched from",
+    "objectCount": 2,
+    "objectNames": [
+      "wrwejvhjkewr324234dad.html",
+      "xyzzz.html"
+    ],
+    "containsModelFiles": false,
+    "firstObjectCreated": "2026-08-05T13:40:04.495Z",
+    "verdict": "NAME_MATCHED_CONTENT_DID_NOT"
+  },
+  "actedOn": false,
+  "actedOnNote": "Nothing was downloaded from it. It is recorded because the near miss is the finding."
+}

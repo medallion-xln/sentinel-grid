@@ -1,0 +1,552 @@
+{
+  "certificationSchemaVersion": 1,
+  "stage": "STAGE3CR1_BASE_MODEL_ACQUISITION_AND_TRAINING_ACTIVATION",
+  "status": "BLOCKED",
+  "stageKind": "BASE_MODEL_ACQUISITION",
+  "authority": "R0",
+  "canDispatch": false,
+  "canMutateLiveWorld": false,
+  "phase0": {
+    "stage3cCertificationHash": "aecd3183fa322c6e47557d309e07e1bb8d0e04695922be76e51057d6a6749e72",
+    "stage3cHashMatches": true,
+    "stage3cStillBlocked": true,
+    "stage3crCertificationHash": "50e1b908443e8592b9321103cfe3b2ca8ccb1d441e7406001430136481822db4",
+    "stage3crHashMatches": true,
+    "stage3crStillBlocked": true,
+    "stage3crOutcomeUnchanged": true,
+    "parentsRewritten": false,
+    "soupExecutable": true,
+    "soupCommitMatchesPin": true,
+    "soupWorkingTreeClean": true,
+    "torchAvailable": true,
+    "datasetParsePass": true,
+    "datasetParseRows": 4459,
+    "trainLoopPass": true,
+    "loraApplicationPass": true,
+    "checkpointWritePass": true,
+    "adapterReloadPass": true,
+    "inferencePass": true,
+    "containerReprovisioned": true,
+    "containerReprovisionedNote": "This container is not the one Stage 3C-R measured. The Soup checkout, the venv and the FORGE_DATASET_V2 exports survived; the pipeline was re-executed rather than assumed, and the LoRA adapter came back bit-identical to Stage 3C-R's.",
+    "adapterSha256": "21550fad0b01099be40b46bd6883ed1a7b22931ee56ead71a0761fe67d05243f",
+    "adapterReproducedFromStage3cr": true,
+    "passed": true
+  },
+  "parents": {
+    "stage3c": {
+      "certification": "aecd3183fa322c6e47557d309e07e1bb8d0e04695922be76e51057d6a6749e72",
+      "status": "BLOCKED",
+      "mutated": false
+    },
+    "stage3cr": {
+      "certification": "50e1b908443e8592b9321103cfe3b2ca8ccb1d441e7406001430136481822db4",
+      "status": "BLOCKED",
+      "outcome": "F_TRAINING_ENVIRONMENT_STILL_BLOCKED",
+      "mutated": false
+    },
+    "note": "Both parent certifications are read and neither is written. Their BLOCKED results stand."
+  },
+  "inventory": {
+    "locationsSearched": [
+      {
+        "id": "HF_HUB_CACHE",
+        "path": "/root/.cache/huggingface/hub",
+        "present": false
+      },
+      {
+        "id": "HF_CACHE",
+        "path": "/root/.cache/huggingface",
+        "present": false
+      },
+      {
+        "id": "TORCH_CACHE",
+        "path": "/root/.cache/torch",
+        "present": false
+      },
+      {
+        "id": "TRANSFORMERS_CACHE",
+        "path": "/root/.cache/transformers",
+        "present": false
+      },
+      {
+        "id": "OLLAMA_MODELS",
+        "path": "/root/.ollama/models",
+        "present": false
+      },
+      {
+        "id": "SOUP_HARNESS",
+        "path": "/home/user/soup-harness",
+        "present": true
+      }
+    ],
+    "searchDiscipline": "Only the caches, stores and project folders where a model legitimately lives. No recursive scan of unrelated personal directories was performed.",
+    "artifactsFound": 1,
+    "total": 1,
+    "selfAuthoredFixtures": [
+      {
+        "path": "/home/user/soup-harness/tiny-harness",
+        "formatClass": "HF_TRAINABLE_CHECKPOINT"
+      }
+    ],
+    "acquisitionCandidates": [],
+    "candidateCount": 0,
+    "trainableCandidateCount": 0,
+    "exclusionRule": "A model this project generated is not a model this project acquired.",
+    "formatClasses": [
+      "HF_TRAINABLE_CHECKPOINT",
+      "SAFETENSORS_TRAINABLE",
+      "PYTORCH_TRAINABLE",
+      "GGUF_INFERENCE_ONLY",
+      "OLLAMA_INFERENCE_ONLY",
+      "PARTIAL_MODEL",
+      "TOKENIZER_ONLY",
+      "UNKNOWN"
+    ],
+    "hfCachePresent": false,
+    "previouslyDownloadedQwenCheckpoints": 0
+  },
+  "ollama": {
+    "installed": false,
+    "binary": null,
+    "storePresent": false,
+    "models": [],
+    "qwenFamilyPresent": false,
+    "classification": "NOT_INSTALLED",
+    "trainableWeightsReconstructable": false,
+    "reconstructionNote": "No Ollama installation and no GGUF artifact exists on this machine, so the inference-only-versus-trainable distinction had nothing to apply to. Had one existed, a lossy reverse conversion to force training is forbidden by the brief and would not have been attempted."
+  },
+  "fixtureRejection": {
+    "ran": true,
+    "path": "/home/user/soup-harness/tiny-harness",
+    "formatClass": "HF_TRAINABLE_CHECKPOINT",
+    "formatIsTrainable": true,
+    "accepted": false,
+    "rejections": [
+      "PROVENANCE_INCOMPLETE"
+    ],
+    "why": "The Stage 3C-R pipeline harness is HF-format and technically trainable, and it is still not a base model: it is randomly initialised with no publisher, no license and no version. The gate rejects it on provenance, which is the outcome that proves the gate does something."
+  },
+  "acquisitionAttempts": {
+    "channelsProbed": 19,
+    "summary": {
+      "total": 19,
+      "byStatus": {
+        "AUTHORIZED": 7,
+        "DENIED_BY_POLICY": 1,
+        "UNREACHABLE": 11,
+        "FORBIDDEN_BY_BRIEF": 0
+      },
+      "authorized": [
+        "PYPI",
+        "PYTHONHOSTED",
+        "GITHUB_GIT_ANONYMOUS",
+        "GITHUB_API",
+        "GCS",
+        "S3",
+        "GITLAB"
+      ],
+      "authorizedCarryingModel": [],
+      "anyAuthorizedModelSource": false
+    },
+    "gitLane": {
+      "status": "AUTHORIZED",
+      "lsRemoteSucceeded": true,
+      "note": "Anonymous git read works. Git LFS objects are NOT served on this lane, so a repository that stores weights in LFS yields pointer stubs, not weights.",
+      "lfsServed": false,
+      "lfsNote": "Git LFS objects are not served on the anonymous lane, so any repository storing weights in LFS yields pointer stubs. That rules out the usual way a model reaches GitHub."
+    },
+    "githubHttpLane": {
+      "status": "DENIED_BY_POLICY",
+      "httpCode": 403,
+      "consequence": "GitHub release assets are not an available channel: the git lane is served and the HTTP download lane is not."
+    },
+    "pypi": {
+      "status": "AUTHORIZED",
+      "simpleIndexPackages": 886683,
+      "indexSearched": true,
+      "trainableCausalLmFound": false,
+      "note": "The full PyPI simple index was retrieved and searched. Every Qwen-named package is a third-party wrapper or client; no package distributes provenance-established trainable causal-LM weights."
+    },
+    "objectStores": {
+      "gcs": "AUTHORIZED as an object store; no authorized model bucket is declared anywhere in this project.",
+      "s3": "AUTHORIZED as an object store; an AWS config file exists on this machine but declares no model bucket, and no credentials were inspected or used."
+    },
+    "forbiddenMethods": [
+      "PROXY_BYPASS",
+      "URL_REWRITING_TO_EVADE_CONTROLS",
+      "UNDOCUMENTED_PROXY",
+      "UNAUTHORIZED_MIRROR",
+      "RANDOM_THIRD_PARTY_ARCHIVE",
+      "LOSSY_REVERSE_CONVERSION_TO_FORCE_TRAINING"
+    ],
+    "forbiddenMethodsUsed": [],
+    "egressPolicyBypassed": false,
+    "egressPolicyBypassedNote": "huggingface.co and its CDN remain denied. No proxy bypass, URL rewriting, undocumented proxy, unauthorized mirror or third-party archive was used. An HF-owned alternate endpoint would have been the same evasion wearing a different hostname, and was not used either."
+  },
+  "squattedBucket": {
+    "rule": "A BUCKET, REPOSITORY OR DIRECTORY NAME IS NEVER EVIDENCE OF WHAT IS INSIDE IT",
+    "observed": "gs://gpt-2, the bucket OpenAI's own download_model.py once used, is reachable and now holds a single unrelated HTML file uploaded by a third party in 2026.",
+    "consequence": "Matching on the bucket name would have pulled an attacker-controlled object into a training pipeline under the label \"GPT-2, official\".",
+    "enforcement": "Provenance is established from the artifact's own content, hashes and license, and from a publisher that can be named — never from where it happens to sit.",
+    "measured": {
+      "probed": true,
+      "bucket": "gs://gpt-2",
+      "historicalUse": "the bucket openai/gpt-2's download_model.py once fetched from",
+      "objectCount": 2,
+      "objectNames": [
+        "wrwejvhjkewr324234dad.html",
+        "xyzzz.html"
+      ],
+      "containsModelFiles": false,
+      "firstObjectCreated": "2026-08-05T13:40:04.495Z",
+      "verdict": "NAME_MATCHED_CONTENT_DID_NOT"
+    },
+    "actedOn": false,
+    "actedOnNote": "Nothing was downloaded from it. It is recorded because the near miss is the finding."
+  },
+  "suppliedModel": {
+    "variables": [
+      "SENTINEL_BASE_MODEL_PATH",
+      "SENTINEL_BASE_MODEL"
+    ],
+    "declared": false,
+    "path": null,
+    "rejections": [
+      "NOT_DECLARED",
+      "PROVENANCE_INCOMPLETE"
+    ],
+    "accepted": false,
+    "provenance": {
+      "fields": [
+        "BASE_MODEL_ID",
+        "BASE_MODEL_VERSION",
+        "BASE_MODEL_SOURCE",
+        "BASE_MODEL_PATH",
+        "BASE_MODEL_LICENSE",
+        "BASE_MODEL_PARAMETER_COUNT",
+        "CONFIG_HASH",
+        "TOKENIZER_HASH",
+        "WEIGHT_FILE_HASHES",
+        "AGGREGATE_MODEL_HASH"
+      ],
+      "present": {
+        "BASE_MODEL_ID": false,
+        "BASE_MODEL_VERSION": false,
+        "BASE_MODEL_SOURCE": false,
+        "BASE_MODEL_PATH": false,
+        "BASE_MODEL_LICENSE": false,
+        "BASE_MODEL_PARAMETER_COUNT": false,
+        "CONFIG_HASH": false,
+        "TOKENIZER_HASH": false,
+        "WEIGHT_FILE_HASHES": false,
+        "AGGREGATE_MODEL_HASH": false
+      },
+      "missing": [
+        "BASE_MODEL_ID",
+        "BASE_MODEL_VERSION",
+        "BASE_MODEL_SOURCE",
+        "BASE_MODEL_PATH",
+        "BASE_MODEL_LICENSE",
+        "BASE_MODEL_PARAMETER_COUNT",
+        "CONFIG_HASH",
+        "TOKENIZER_HASH",
+        "WEIGHT_FILE_HASHES",
+        "AGGREGATE_MODEL_HASH"
+      ],
+      "complete": false,
+      "derivedAggregate": null,
+      "aggregateMatches": null
+    },
+    "discipline": "The declared path is the only place this looks. There is no fallback search: a stage that hunts for something model-shaped when the declared path is wrong will eventually train on the wrong thing and report it as the right one.",
+    "declaredFieldsRequired": [
+      "BASE_MODEL_ID",
+      "BASE_MODEL_VERSION",
+      "BASE_MODEL_SOURCE",
+      "BASE_MODEL_PATH",
+      "BASE_MODEL_LICENSE",
+      "BASE_MODEL_PARAMETER_COUNT",
+      "CONFIG_HASH",
+      "TOKENIZER_HASH",
+      "WEIGHT_FILE_HASHES",
+      "AGGREGATE_MODEL_HASH"
+    ],
+    "declaredFieldsNote": "Path-derived hashes are computed from the files. Identity, version, source, license, parameter count and aggregate hash must be declared by whoever supplies the model; inferring them from a directory is the failure this envelope exists to prevent."
+  },
+  "baseModel": {
+    "available": false,
+    "model": null,
+    "version": null,
+    "source": null,
+    "path": null,
+    "license": null,
+    "parameterCount": null,
+    "configHash": null,
+    "tokenizerHash": null,
+    "weightFileHashes": [],
+    "aggregateHash": null,
+    "format": null,
+    "formatClass": null,
+    "soupCompatible": false,
+    "envelope": {
+      "fields": [
+        "BASE_MODEL_ID",
+        "BASE_MODEL_VERSION",
+        "BASE_MODEL_SOURCE",
+        "BASE_MODEL_PATH",
+        "BASE_MODEL_LICENSE",
+        "BASE_MODEL_PARAMETER_COUNT",
+        "CONFIG_HASH",
+        "TOKENIZER_HASH",
+        "WEIGHT_FILE_HASHES",
+        "AGGREGATE_MODEL_HASH"
+      ],
+      "present": {
+        "BASE_MODEL_ID": false,
+        "BASE_MODEL_VERSION": false,
+        "BASE_MODEL_SOURCE": false,
+        "BASE_MODEL_PATH": false,
+        "BASE_MODEL_LICENSE": false,
+        "BASE_MODEL_PARAMETER_COUNT": false,
+        "CONFIG_HASH": false,
+        "TOKENIZER_HASH": false,
+        "WEIGHT_FILE_HASHES": false,
+        "AGGREGATE_MODEL_HASH": false
+      },
+      "missing": [
+        "BASE_MODEL_ID",
+        "BASE_MODEL_VERSION",
+        "BASE_MODEL_SOURCE",
+        "BASE_MODEL_PATH",
+        "BASE_MODEL_LICENSE",
+        "BASE_MODEL_PARAMETER_COUNT",
+        "CONFIG_HASH",
+        "TOKENIZER_HASH",
+        "WEIGHT_FILE_HASHES",
+        "AGGREGATE_MODEL_HASH"
+      ],
+      "complete": false,
+      "derivedAggregate": null,
+      "aggregateMatches": null
+    },
+    "hashed": false,
+    "tokenizerAvailable": false
+  },
+  "trainability": {
+    "ranAgainstBaseModel": false,
+    "ranAgainstBaseModelNote": "Phase 8 loads the accepted base model through Soup. No model was accepted, so it did not run.",
+    "steps": [
+      "FROM_PRETRAINED",
+      "TOKENIZER_LOAD",
+      "LORA_ATTACH",
+      "FORWARD_PASS",
+      "BACKWARD_PASS",
+      "LOSS_FINITE",
+      "CHECKPOINT_WRITE",
+      "ADAPTER_RELOAD",
+      "INFERENCE"
+    ],
+    "result": {
+      "steps": [
+        "FROM_PRETRAINED",
+        "TOKENIZER_LOAD",
+        "LORA_ATTACH",
+        "FORWARD_PASS",
+        "BACKWARD_PASS",
+        "LOSS_FINITE",
+        "CHECKPOINT_WRITE",
+        "ADAPTER_RELOAD",
+        "INFERENCE"
+      ],
+      "observed": {
+        "FROM_PRETRAINED": false,
+        "TOKENIZER_LOAD": false,
+        "LORA_ATTACH": false,
+        "FORWARD_PASS": false,
+        "BACKWARD_PASS": false,
+        "LOSS_FINITE": false,
+        "CHECKPOINT_WRITE": false,
+        "ADAPTER_RELOAD": false,
+        "INFERENCE": false
+      },
+      "failed": [
+        "FROM_PRETRAINED",
+        "TOKENIZER_LOAD",
+        "LORA_ATTACH",
+        "FORWARD_PASS",
+        "BACKWARD_PASS",
+        "LOSS_FINITE",
+        "CHECKPOINT_WRITE",
+        "ADAPTER_RELOAD",
+        "INFERENCE"
+      ],
+      "pass": false
+    },
+    "harnessSelfTest": {
+      "isNotACandidate": true,
+      "purpose": "Exercises the same code path end to end so the contract ships tested rather than merely written.",
+      "result": {
+        "steps": [
+          "FROM_PRETRAINED",
+          "TOKENIZER_LOAD",
+          "LORA_ATTACH",
+          "FORWARD_PASS",
+          "BACKWARD_PASS",
+          "LOSS_FINITE",
+          "CHECKPOINT_WRITE",
+          "ADAPTER_RELOAD",
+          "INFERENCE"
+        ],
+        "observed": {
+          "FROM_PRETRAINED": true,
+          "TOKENIZER_LOAD": true,
+          "LORA_ATTACH": true,
+          "FORWARD_PASS": true,
+          "BACKWARD_PASS": true,
+          "LOSS_FINITE": true,
+          "CHECKPOINT_WRITE": true,
+          "ADAPTER_RELOAD": true,
+          "INFERENCE": true
+        },
+        "failed": [],
+        "pass": true
+      },
+      "lossStart": 7.3384,
+      "lossEnd": 7.1936,
+      "adapterSha256": "21550fad0b01099be40b46bd6883ed1a7b22931ee56ead71a0761fe67d05243f"
+    }
+  },
+  "compute": {
+    "environmentClass": "CPU_SMALL_MODEL_ONLY",
+    "hardware": {
+      "os": "Linux 6.18.44-fc-v24",
+      "arch": "x64",
+      "cpuModel": "Intel(R) Xeon(R) Processor @ 2.80GHz",
+      "cpuCount": 4,
+      "ramMb": 16075,
+      "gpuCount": 0,
+      "vramMb": 0,
+      "metal": false,
+      "cuda": false,
+      "diskFreeMb": 20224
+    },
+    "measuredForBaseModel": false,
+    "budgetHours": 12,
+    "feasible": false,
+    "reason": "NO_BASE_MODEL_TO_BENCHMARK",
+    "extrapolationRefused": "The harness throughput is a fact about a 1.07M-parameter random model, not a prediction about a 0.5B one. Reporting it as the campaign's feasibility would be exactly the parameter-count estimate the brief forbids, run backwards.",
+    "harnessSelfTest": {
+      "isNotACandidate": true,
+      "trainingExamples": 4459,
+      "epochs": 1,
+      "note": "Throughput is measured per run and is not part of the certification body: a wall-clock number would make the hash depend on how busy the machine was."
+    }
+  },
+  "activationGate": {
+    "requirements": [
+      {
+        "id": "BASE_MODEL_AVAILABLE",
+        "why": "SFT adapts a base model"
+      },
+      {
+        "id": "BASE_MODEL_HASHED",
+        "why": "a candidate whose parent cannot be identified cannot be reproduced"
+      },
+      {
+        "id": "BASE_MODEL_PROVENANCE_COMPLETE",
+        "why": "source and license are decided before training, not after"
+      },
+      {
+        "id": "TOKENIZER_AVAILABLE",
+        "why": "the task is text-shaped and needs one"
+      },
+      {
+        "id": "MODEL_SOUP_COMPATIBLE",
+        "why": "the pinned engine has to be able to load it"
+      },
+      {
+        "id": "TRAINABILITY_SMOKE_PASS",
+        "why": "a gradient must have been observed, not assumed"
+      },
+      {
+        "id": "COMPUTE_FEASIBLE",
+        "why": "a run that cannot finish is not a run"
+      }
+    ],
+    "probe": {
+      "BASE_MODEL_AVAILABLE": false,
+      "BASE_MODEL_HASHED": false,
+      "BASE_MODEL_PROVENANCE_COMPLETE": false,
+      "TOKENIZER_AVAILABLE": false,
+      "MODEL_SOUP_COMPATIBLE": false,
+      "TRAINABILITY_SMOKE_PASS": false,
+      "COMPUTE_FEASIBLE": false
+    },
+    "missing": [
+      "BASE_MODEL_AVAILABLE",
+      "BASE_MODEL_HASHED",
+      "BASE_MODEL_PROVENANCE_COMPLETE",
+      "TOKENIZER_AVAILABLE",
+      "MODEL_SOUP_COMPATIBLE",
+      "TRAINABILITY_SMOKE_PASS",
+      "COMPUTE_FEASIBLE"
+    ],
+    "qualified": false
+  },
+  "campaign": {
+    "started": false,
+    "startedNote": "The activation gate did not open. The campaign is not redesigned, not partially run and not approximated.",
+    "frozenTaskContract": "LEARNED_NEXUS_ACTION_SELECTION_V1",
+    "frozenTargetContract": "ACCEPT_ANY_MEMBER_OF_OPTIMAL_SET_AT_EVALUATION; EXCLUDE_FROM_SINGLE_TARGET_SFT",
+    "datasetVersion": "FORGE_DATASET_V2",
+    "datasetHash": "4d1a27925346258ebafea93890739f8d0ef206927b77ba6240e54d83488cea20",
+    "datasetModified": false,
+    "trainSplitOnly": true,
+    "validationOpened": false,
+    "holdoutOpened": false,
+    "oodOpened": false,
+    "soupVersion": "0.74.0",
+    "soupCommit": "f07e07ed7edd548a4d1d9143f77af9027b1b7036",
+    "candidateStatus": "NOT_TRAINED",
+    "candidateArtifact": null,
+    "candidateArtifactHash": null,
+    "sftStarted": false,
+    "sftCompleted": false,
+    "notRun": [
+      "PHASE_11_FULL_SFT",
+      "PHASE_11_VALIDATION",
+      "PHASE_11_COMPLEMENTARITY",
+      "PHASE_11_HYBRID_EVALUATION",
+      "PHASE_11_MODEL_FREEZE",
+      "PHASE_11_HOLDOUT",
+      "PHASE_11_OOD",
+      "PHASE_11_PRIME_OFFLINE_ANALYSIS",
+      "PHASE_11_PROMOTION_FIREWALL"
+    ]
+  },
+  "selectorLimitation": {
+    "nexusSelectorAccuracy": 0.2462,
+    "greedyHeuristicAccuracy": 0.275,
+    "selectorBeatsGreedy": false,
+    "misreadingToAvoid": "This is NOT deterministic Nexus's relational accuracy. Nexus emits graph-level signals and no action at all; NEXUS_RELATIONAL_SELECTOR_V1 is one policy built on those signals, and its score is that policy's score. A different policy over the same signals could do better or worse without Nexus having changed.",
+    "rawSignalsPreserved": true,
+    "rawSignalsPreservedWhy": "Future hybrid work needs the signals themselves, not one policy's collapse of them into a choice."
+  },
+  "outcomes": [
+    "A_BASE_MODEL_BOUND_AND_LEARNED_NEXUS_TRAINED",
+    "B_BASE_MODEL_AVAILABLE_BUT_COMPUTE_INSUFFICIENT",
+    "C_MODEL_ARTIFACT_FOUND_BUT_NOT_TRAINABLE",
+    "D_MODEL_PROVENANCE_INSUFFICIENT",
+    "E_NO_AUTHORIZED_BASE_MODEL_AVAILABLE",
+    "F_TRAINING_PIPELINE_INCOMPATIBLE_WITH_MODEL",
+    "G_BLOCKED"
+  ],
+  "stage3cr1Outcome": "E_NO_AUTHORIZED_BASE_MODEL_AVAILABLE",
+  "stage3cr1Certified": false,
+  "liveActionDispatches": 0,
+  "worldMutations": 0,
+  "authorityEscalations": 0,
+  "liveRuntimeReferencesCandidate": false,
+  "interpretation": "Stage 3C-R.1 is BLOCKED on acquisition, not on infrastructure. The pipeline was re-executed in a freshly reprovisioned container and every step passed, reproducing Stage 3C-R's LoRA adapter bit-for-bit (21550fad0b01099b…). What does not exist is a base model: every model host remains denied or unreachable, and of the channels that ARE open — PyPI, anonymous GitHub git, GCS, S3, GitLab — none carries a causal LM whose publisher, license and version can be named. The one HF-format artifact on this machine is this project's own randomly-initialised harness, which the gate rejects on provenance. The nearest miss was gs://gpt-2, OpenAI's historical bucket, which is reachable and now holds an unrelated file uploaded by a third party; matching on the bucket name would have put an attacker-controlled object into a training run.",
+  "evidenceDigest": "b4ca887dc9b3479921ff9c355eda61ad764377e3c532b446f1852980cdad0531",
+  "certificationHash": "482f23bff9fb8c8a1f2310074e4dbf3e8145863fbe187706f6c0cb79237f7826"
+}

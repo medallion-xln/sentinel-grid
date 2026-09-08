@@ -121,7 +121,11 @@
     "forge:stage3cr:probe": "node scripts/probe-stage3cr-environment.mjs",
     "forge:stage3cr:certify": "node scripts/certify-stage3cr-training-environment.mjs",
     "forge:stage3cr:check": "node scripts/certify-stage3cr-training-environment.mjs --check",
-    "test:stage3cr-training-environment": "node --test tests/stage3cr-training-environment.test.js"
+    "test:stage3cr-training-environment": "node --test tests/stage3cr-training-environment.test.js",
+    "forge:stage3cr1:probe": "node scripts/probe-stage3cr1-acquisition.mjs && node scripts/probe-stage3cr1-pipeline.mjs",
+    "forge:stage3cr1:certify": "node scripts/certify-stage3cr1-base-model-acquisition.mjs",
+    "forge:stage3cr1:check": "node scripts/certify-stage3cr1-base-model-acquisition.mjs --check",
+    "test:stage3cr1-base-model-acquisition": "node --test tests/stage3cr1-base-model-acquisition.test.js"
   },
   "license": "UNLICENSED"
 }

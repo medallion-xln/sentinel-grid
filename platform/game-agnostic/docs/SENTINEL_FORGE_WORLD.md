@@ -708,3 +708,69 @@ npm run forge:stage3cr:certify
 npm run forge:stage3cr:check
 npm run test:stage3cr-training-environment
 ```
+
+## Stage 3C-R.1 — trusted base model acquisition
+
+Stage 3C-R stopped on one requirement: SFT adapts a base model, and no base model
+could be obtained. Stage 3C-R.1 asks whether one can be supplied through an
+authorized path, and answers **no** — `E_NO_AUTHORIZED_BASE_MODEL_AVAILABLE`.
+
+The container was reprovisioned between the two stages, so the pipeline was
+re-executed rather than inherited. Every step passed again and the LoRA adapter
+came back with the identical sha256 `21550fad0b01099b…`. The pipeline has now been
+shown sound on two different machines.
+
+### The channels that are actually open
+
+| channel | status | what it means |
+| --- | --- | --- |
+| PyPI | authorized | full simple index (886,683 packages) searched; no trainable causal LM |
+| GitHub anonymous git | authorized | works, but Git LFS objects are not served, so weights arrive as pointer stubs |
+| GitHub HTTP / releases | 403 | release assets are not a channel at all |
+| GCS / S3 | authorized | object stores reachable; no authorized model bucket is declared anywhere |
+| model hosts | denied / unreachable | huggingface.co and CDN, mirrors, PyTorch, Ollama, Kaggle |
+| artifact archives | unreachable | Zenodo, archive.org, figshare |
+
+No proxy bypass, URL rewriting, undocumented proxy, unauthorized mirror or
+third-party archive was used. An HF-owned alternate endpoint would have been the
+same evasion wearing a different hostname, and was not used either.
+
+### A bucket name is not provenance
+
+`gs://gpt-2` — the bucket OpenAI's own `download_model.py` once fetched from — is
+reachable, and now holds a single unrelated HTML file uploaded by a third party in
+2026. A stage that had matched on the bucket *name* would have pulled an
+attacker-controlled object into a training pipeline labelled "GPT-2, official".
+Nothing was downloaded from it. This is the Stage 3B admission-gate lesson arriving
+from a new direction: **the name of a container is never evidence of its contents.**
+
+### What is built and waiting
+
+The model-shaped hole is the only thing missing. Acquisition is complete and tested:
+
+- **Provenance envelope** — 10 required fields, no optional ones. The aggregate
+  hash is derived from the per-file hashes, so two envelopes agreeing on the
+  aggregate cannot disagree on the parts.
+- **Supplied model path** — `SENTINEL_BASE_MODEL_PATH` or `SENTINEL_BASE_MODEL`,
+  validated for format, causal-LM architecture, tokenizer and complete provenance.
+  The declared path is the *only* place it looks; there is no fallback search.
+- **Format classification** — 8 classes, with inference-only formats decided
+  before trainable ones so a stray `config.json` cannot promote a GGUF.
+- **Trainability contract** — 9 steps, from `from_pretrained` to inference.
+- **Activation gate** — 7 requirements opening directly into the frozen Stage 3C-R
+  campaign, with no stage in between.
+
+The one HF-format artifact on this machine is this project's own randomly
+initialised harness. The gate rejects it on provenance — which is the outcome that
+proves the gate does something. A model this project generated is not a model this
+project acquired, so it is excluded from the candidate count by origin.
+
+## Running Stage 3C-R.1
+
+```bash
+cd platform/game-agnostic
+npm run forge:stage3cr1:probe     # inventory, channels, pipeline re-execution
+npm run forge:stage3cr1:certify
+npm run forge:stage3cr1:check
+npm run test:stage3cr1-base-model-acquisition
+```

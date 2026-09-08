@@ -1,0 +1,57 @@
+{
+  "channelsProbed": 19,
+  "summary": {
+    "total": 19,
+    "byStatus": {
+      "AUTHORIZED": 7,
+      "DENIED_BY_POLICY": 1,
+      "UNREACHABLE": 11,
+      "FORBIDDEN_BY_BRIEF": 0
+    },
+    "authorized": [
+      "PYPI",
+      "PYTHONHOSTED",
+      "GITHUB_GIT_ANONYMOUS",
+      "GITHUB_API",
+      "GCS",
+      "S3",
+      "GITLAB"
+    ],
+    "authorizedCarryingModel": [],
+    "anyAuthorizedModelSource": false
+  },
+  "gitLane": {
+    "status": "AUTHORIZED",
+    "lsRemoteSucceeded": true,
+    "note": "Anonymous git read works. Git LFS objects are NOT served on this lane, so a repository that stores weights in LFS yields pointer stubs, not weights.",
+    "lfsServed": false,
+    "lfsNote": "Git LFS objects are not served on the anonymous lane, so any repository storing weights in LFS yields pointer stubs. That rules out the usual way a model reaches GitHub."
+  },
+  "githubHttpLane": {
+    "status": "DENIED_BY_POLICY",
+    "httpCode": 403,
+    "consequence": "GitHub release assets are not an available channel: the git lane is served and the HTTP download lane is not."
+  },
+  "pypi": {
+    "status": "AUTHORIZED",
+    "simpleIndexPackages": 886683,
+    "indexSearched": true,
+    "trainableCausalLmFound": false,
+    "note": "The full PyPI simple index was retrieved and searched. Every Qwen-named package is a third-party wrapper or client; no package distributes provenance-established trainable causal-LM weights."
+  },
+  "objectStores": {
+    "gcs": "AUTHORIZED as an object store; no authorized model bucket is declared anywhere in this project.",
+    "s3": "AUTHORIZED as an object store; an AWS config file exists on this machine but declares no model bucket, and no credentials were inspected or used."
+  },
+  "forbiddenMethods": [
+    "PROXY_BYPASS",
+    "URL_REWRITING_TO_EVADE_CONTROLS",
+    "UNDOCUMENTED_PROXY",
+    "UNAUTHORIZED_MIRROR",
+    "RANDOM_THIRD_PARTY_ARCHIVE",
+    "LOSSY_REVERSE_CONVERSION_TO_FORCE_TRAINING"
+  ],
+  "forbiddenMethodsUsed": [],
+  "egressPolicyBypassed": false,
+  "egressPolicyBypassedNote": "huggingface.co and its CDN remain denied. No proxy bypass, URL rewriting, undocumented proxy, unauthorized mirror or third-party archive was used. An HF-owned alternate endpoint would have been the same evasion wearing a different hostname, and was not used either."
+}
