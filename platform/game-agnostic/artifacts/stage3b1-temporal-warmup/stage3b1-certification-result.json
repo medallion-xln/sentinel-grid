@@ -1,0 +1,1212 @@
+{
+  "certificationSchemaVersion": 1,
+  "stage": "STAGE3B1_TEMPORAL_WARMUP_AND_ORACLE_REACHABILITY",
+  "status": "PASS",
+  "stageKind": "CORPUS_CONSTRUCTION_REPAIR_AND_RECERTIFICATION",
+  "authority": "R0",
+  "canDispatch": false,
+  "canMutateLiveWorld": false,
+  "inherited": {
+    "stage3aCertificationHash": "c66b85d863d428d2da0e9d738f426e0b655124509bad04e0e7220f6eaf34898d",
+    "stage3bCertificationHash": "61a8ab8d7769b3c09541d3cb2665d4451eba95513f08b6055390e6212236156d",
+    "baselineReproduction": {
+      "certificationPresent": true,
+      "certificationHashMatches": true,
+      "checks": [
+        {
+          "field": "stage3bCertified",
+          "expected": true,
+          "actual": true,
+          "matches": true
+        },
+        {
+          "field": "admittedRecords",
+          "expected": 70804,
+          "actual": 70804,
+          "matches": true
+        },
+        {
+          "field": "topologyCount",
+          "expected": 65307,
+          "actual": 65307,
+          "matches": true
+        },
+        {
+          "field": "effectiveDatasetSize",
+          "expected": 60493,
+          "actual": 60493,
+          "matches": true
+        },
+        {
+          "field": "oracleCases",
+          "expected": 0,
+          "actual": 0,
+          "matches": true
+        },
+        {
+          "field": "oracleSufficientRate",
+          "expected": 0,
+          "actual": 0,
+          "matches": true
+        },
+        {
+          "field": "routerAlignment",
+          "expected": 0.0268,
+          "actual": 0.0268,
+          "matches": true
+        },
+        {
+          "field": "historyFramesAtDecision",
+          "expected": 1,
+          "actual": 1,
+          "matches": true
+        },
+        {
+          "field": "worldOverlap",
+          "expected": 0,
+          "actual": 0,
+          "matches": true
+        },
+        {
+          "field": "topologyLeakage",
+          "expected": 0,
+          "actual": 0,
+          "matches": true
+        },
+        {
+          "field": "authority",
+          "expected": "R0",
+          "actual": "R0",
+          "matches": true
+        },
+        {
+          "field": "canDispatch",
+          "expected": false,
+          "actual": false,
+          "matches": true
+        },
+        {
+          "field": "canMutateLiveWorld",
+          "expected": false,
+          "actual": false,
+          "matches": true
+        }
+      ],
+      "reproduced": true,
+      "stage3bArtifactsModified": false
+    }
+  },
+  "defect": {
+    "repaired": "ORACLE_AXIS_UNREACHABLE",
+    "secondary": "ORACLE_HEAD_CHANNEL_VOCABULARY_UNMAPPED",
+    "class": "CORPUS_CONSTRUCTION",
+    "notReinterpretedAsPass": true
+  },
+  "warmup": {
+    "version": "FORGE_TEMPORAL_WARMUP_V1",
+    "contract": {
+      "id": "FORGE_TEMPORAL_WARMUP_V1",
+      "contractVersion": 1,
+      "targetTicks": 24,
+      "minimumToClearGuards": 18,
+      "actionPolicy": "WAIT_ONLY",
+      "actionPolicyRationale": "WAIT is the only action that expresses \"let the world run\" without the warm-up making choices the decision is supposed to make. It costs zero energy, moves nothing, and takes no objective step, so any change observed during warm-up is the world evolving, never the warm-up playing.",
+      "environmentalEvolution": "Whatever the frozen kernel does on any tick: hazard terrain damage, hostile degradation through `attacks` relations, tick and horizon advance. The warm-up neither adds nor suppresses dynamics.",
+      "observationCapture": "One frame per tick, produced by the kernel through currentFrame(), pushed by the kernel inside step().",
+      "historyUpdate": "Kernel-owned. Nothing in this module writes to world.history.",
+      "decisionCapturePoint": "After the warm-up terminates, at the first tick where the required temporal context exists and the task is still the task.",
+      "truncationRule": "The warm-up stops at the last tick whose world still satisfies the task-preservation predicate. A truncated warm-up is recorded with its cause; the heads it can no longer support abstain and say so.",
+      "neverDoes": [
+        "append frames to history",
+        "mutate world state outside step()",
+        "consult a Sentinel expert",
+        "let a recommendation influence the simulator",
+        "vary with wall-clock time or randomness"
+      ]
+    },
+    "decisionStates": [
+      "WORLD_INITIALIZED",
+      "WARMUP_COMPLETE",
+      "HISTORY_VALID",
+      "SEMANTIC_ADMISSION_PASS",
+      "DECISION_CAPTURED"
+    ],
+    "stopReasons": [
+      "TARGET_REACHED",
+      "TASK_CHANGED",
+      "WORLD_TERMINAL",
+      "NO_WAIT_ACTION"
+    ]
+  },
+  "oracleContract": {
+    "heads": [
+      {
+        "headId": "direction",
+        "requiredFrames": 3,
+        "measurableAtFrames": 3,
+        "measurableAtFramesReason": "the head's own guard is also the point at which it measures what it claims",
+        "temporalField": "channel level, first vs last",
+        "samplingAssumption": "One frame per tick, evenly spaced. Sign of net change over the whole window.",
+        "windowSemantics": "LAST_MINUS_FIRST over the full window; no sub-window.",
+        "missingHistoryBehaviour": "Returns null (no semantic output) below three usable samples.",
+        "source": "stage2i2-oracle-task-head-diagnostic.js: values.length < 3 => null"
+      },
+      {
+        "headId": "volatility",
+        "requiredFrames": 4,
+        "measurableAtFrames": 4,
+        "measurableAtFramesReason": "the head's own guard is also the point at which it measures what it claims",
+        "temporalField": "first differences of the channel",
+        "samplingAssumption": "Adjacent frames are one tick apart, so a difference is a rate.",
+        "windowSemantics": "RMS of all first differences over the window.",
+        "missingHistoryBehaviour": "SHORT_HISTORY, semantic output null.",
+        "source": "stage2i2: VOLATILITY_HEAD values.length < 4 => SHORT_HISTORY"
+      },
+      {
+        "headId": "timeToThreshold",
+        "requiredFrames": 4,
+        "measurableAtFrames": 5,
+        "measurableAtFramesReason": "the head's own guard is also the point at which it measures what it claims",
+        "temporalField": "channel level and recent slope against a DECLARED threshold",
+        "samplingAssumption": "Recent slope extrapolates linearly in ticks.",
+        "windowSemantics": "Slope of the last five samples; ticks-to-cross is a division.",
+        "missingHistoryBehaviour": "MISSING_THRESHOLD_OR_HISTORY. Hard-suppressed when the scenario declares no threshold semantics, regardless of history length.",
+        "source": "stage2i2: TIME_TO_THRESHOLD_HEAD requires channelSemantics.threshold + polarity and values.length >= 4"
+      },
+      {
+        "headId": "abstention",
+        "requiredFrames": 5,
+        "measurableAtFrames": 5,
+        "measurableAtFramesReason": "the head's own guard is also the point at which it measures what it claims",
+        "temporalField": "sample count, channel coverage, full vs recent slope agreement, volatility",
+        "samplingAssumption": "Coverage is measured against the number of frames offered, so a partially populated channel is visible as such.",
+        "windowSemantics": "Gate: >= 5 samples AND coverage >= 0.8 AND no full/recent slope conflict AND volatility < 0.14.",
+        "missingHistoryBehaviour": "INSUFFICIENT_EVIDENCE. This head IS the abstention mechanism.",
+        "source": "stage2i2: ABSTENTION_HEAD enough = values.length >= 5 && coverage >= 0.8 && !conflict && !noisy"
+      },
+      {
+        "headId": "persistence",
+        "requiredFrames": 6,
+        "measurableAtFrames": 6,
+        "measurableAtFramesReason": "the head's own guard is also the point at which it measures what it claims",
+        "temporalField": "signs of first differences, longest opposing run, full vs recent slope",
+        "samplingAssumption": "A run of same-signed differences is a sustained direction; interruptions are bounded, not fatal.",
+        "windowSemantics": "Dominant sign share over all differences, tolerant of bounded interruption.",
+        "missingHistoryBehaviour": "INSUFFICIENT_EVIDENCE with SHORT_OR_MISSING_HISTORY; also requires coverage >= 0.8.",
+        "source": "stage2i3-oracle-head-remediation.js: values.length < 6 || coverage < .8"
+      },
+      {
+        "headId": "reversal",
+        "requiredFrames": 8,
+        "measurableAtFrames": 9,
+        "measurableAtFramesReason": "the head's own guard is also the point at which it measures what it claims",
+        "temporalField": "prior-segment slope vs tail-segment slope",
+        "samplingAssumption": "The window splits into a prior stretch and a tail of about four ticks.",
+        "windowSemantics": "cut = max(3, n - 4); prior slope over [0, cut), tail slope over [cut - 1, n). Both must be materially non-flat.",
+        "missingHistoryBehaviour": "SHORT_HISTORY, semantic output null.",
+        "source": "stage2i2: REVERSAL_HEAD values.length < 8 => SHORT_HISTORY"
+      },
+      {
+        "headId": "cycle",
+        "requiredFrames": 8,
+        "measurableAtFrames": 18,
+        "measurableAtFramesReason": "The head will search a lag of 8 only once floor(n/2) >= 8, i.e. n >= 16, and a lag-8 correlation on 16 points rests on 8 pairs. At n >= 18 the deepest lag it can select is supported by at least ten pairs.",
+        "temporalField": "lagged autocorrelation of the channel",
+        "samplingAssumption": "A period is a whole number of ticks; a lag of L needs n - L paired points to be worth anything.",
+        "windowSemantics": "Best correlation over lags 2..min(8, floor(n/2)); needs amplitude >= 0.08 as well.",
+        "missingHistoryBehaviour": "SHORT_HISTORY, semantic output null.",
+        "source": "stage2i2: CYCLE_HEAD values.length < 8 => SHORT_HISTORY; lag <= min(8, floor(n/2))"
+      },
+      {
+        "headId": "regimeChange",
+        "requiredFrames": 18,
+        "measurableAtFrames": 24,
+        "measurableAtFramesReason": "The guard admits the head at n = 18, but window = floor(n/3) is only 6 there: the head answers on windows narrower than the 8 it is built for. floor(n/3) reaches 8 at n = 24, which is the first length at which the head compares two full, disjoint eight-sample windows.",
+        "temporalField": "level, slope, volatility and cycle statistics of a prior window vs a recent window",
+        "samplingAssumption": "The two windows describe different stretches of the same process, so they must not overlap.",
+        "windowSemantics": "window = min(8, floor(n/3)); prior = first `window` samples, recent = last `window` samples.",
+        "missingHistoryBehaviour": "INSUFFICIENT_EVIDENCE with SHORT_OR_MISSING_HISTORY; also requires coverage >= 0.8.",
+        "source": "stage2i3-oracle-head-remediation.js: values.length < 18 || coverage < .8; window = min(8, floor(values.length / 3))"
+      }
+    ],
+    "minimumClearingAllGuards": 18,
+    "chosenWarmupTicks": 24,
+    "chosenBecause": "The binding head is regimeChange. Its guard opens at 18 frames, so a warm-up of 17 ticks would clear every documented minimum — and would be exactly the mistake the stage forbids, because at 18 frames the head compares six-sample windows instead of the eight-sample windows it is built around. floor(n/3) reaches 8 at n = 24. The warm-up therefore targets 24 observed frames, which 24 ticks deliver on top of the tick-zero frame.",
+    "lengthNotChosenToClearMinimum": true,
+    "channelVocabularyDefect": {
+      "code": "ORACLE_HEAD_CHANNEL_VOCABULARY_UNMAPPED",
+      "finding": "The eight-head assembly reads frame.channels.alpha and nothing else. Forge declares its channel as `primary`, so every head computed over an empty series, reported coverage zero and abstained — at any history length. Warm-up alone would not have reached them.",
+      "remedy": "FORGE_ORACLE_CHANNEL_MAPPING_V1",
+      "remedyClass": "ADAPTER_LAYER_CHANNEL_MAPPING",
+      "oracleModified": false,
+      "headsModified": false
+    }
+  },
+  "warmupAudit": {
+    "probes": 45,
+    "actionPolicy": "WAIT_ONLY",
+    "reachedFullTarget": 21,
+    "truncated": 24,
+    "truncationCauses": {
+      "TASK_CHANGED": 24
+    },
+    "taskPreserved": 45,
+    "taskPreservationRate": 1,
+    "horizonPreservedExactly": 45,
+    "channelClamped": 0,
+    "consumedResources": 0,
+    "movedActors": 0,
+    "killedEntities": 0,
+    "completedObjectives": 0,
+    "changedLegalActions": 0,
+    "changedStructure": 0,
+    "changedFieldCounts": {
+      "available": 24,
+      "legalActions": 1
+    },
+    "warmupTickHistogram": {
+      "1": 1,
+      "2": 1,
+      "3": 2,
+      "4": 2,
+      "8": 1,
+      "9": 2,
+      "12": 5,
+      "19": 10,
+      "24": 21
+    },
+    "truncationMechanism": "The only dynamic that ends a warm-up early is hostile degradation through an `attacks` relation crossing an availability threshold. Terrain hazards never fire during warm-up in this curriculum (no entity is placed on damaging terrain at tick zero), WAIT costs no energy, and nothing moves. Role mixes that declare hostiles (defended, scarce, populated) therefore support shorter warm-ups than those that do not (bare, redundant, industrial).",
+    "reachabilityConfound": "ORACLE_HEAD_REACHABILITY_CONFOUNDED_BY_ROLE_MIX: because truncation is caused by hostiles, the heads needing the longest history are measurable disproportionately in worlds without them. This is a property of the curriculum, not a defect introduced here, and it is reported so that no per-head rate is read as unconditional."
+  },
+  "familyAudit": {
+    "families": [
+      "MONOTONIC_RISE",
+      "MONOTONIC_FALL",
+      "LATE_REVERSAL",
+      "PERIODIC_CYCLE",
+      "LEVEL_SHIFT",
+      "HIGH_VOLATILITY",
+      "FLAT"
+    ],
+    "byFamily": {
+      "MONOTONIC_RISE": {
+        "records": 10116,
+        "realized": 9990,
+        "shortWarmup": 126,
+        "realisationRate": 0.9875
+      },
+      "MONOTONIC_FALL": {
+        "records": 10244,
+        "realized": 10121,
+        "shortWarmup": 123,
+        "realisationRate": 0.988
+      },
+      "LATE_REVERSAL": {
+        "records": 9847,
+        "realized": 9426,
+        "shortWarmup": 421,
+        "realisationRate": 0.9572
+      },
+      "PERIODIC_CYCLE": {
+        "records": 10178,
+        "realized": 9896,
+        "shortWarmup": 282,
+        "realisationRate": 0.9723
+      },
+      "LEVEL_SHIFT": {
+        "records": 10187,
+        "realized": 9900,
+        "shortWarmup": 287,
+        "realisationRate": 0.9718
+      },
+      "HIGH_VOLATILITY": {
+        "records": 10107,
+        "realized": 9834,
+        "shortWarmup": 273,
+        "realisationRate": 0.973
+      },
+      "FLAT": {
+        "records": 10125,
+        "realized": 10125,
+        "shortWarmup": 0,
+        "realisationRate": 1
+      }
+    },
+    "realized": 69292,
+    "realisationRate": 0.9786,
+    "method": "Head-free. Monotonicity, net change, alternation ratio, mean absolute step and split-level shift are measured directly off the realized series. No Oracle head is consulted, so a head agreeing with a family is evidence rather than a tautology.",
+    "unrealisedCause": "A family that does not show up is almost always a warm-up truncated too short for the family to express itself — a one-tick history cannot exhibit a level shift. Those records carry temporalFamilyRealized=false and the family name is not treated as ground truth for them."
+  },
+  "pilot": {
+    "records": 4062,
+    "bounds": {
+      "minimum": 2000,
+      "maximum": 5000
+    },
+    "withinBounds": true,
+    "admitted": 4062,
+    "rejected": 53,
+    "decisionStages": {
+      "WORLD_INITIALIZED": 0,
+      "WARMUP_COMPLETE": 0,
+      "HISTORY_VALID": 53,
+      "SEMANTIC_ADMISSION_PASS": 0,
+      "DECISION_CAPTURED": 4062
+    },
+    "genericOracleSufficientRate": 0.9638,
+    "headsReachable": 8,
+    "oracleReachable": true,
+    "scaleDecision": "SCALED",
+    "scaleRule": "The pilot gates the full run: if the Oracle had still been unreachable at pilot scale, generating seventy thousand more records of the same defect would have been the wrong answer."
+  },
+  "corpus": {
+    "records": 70804,
+    "counterfactualActions": 477119,
+    "diversity": {
+      "rawRecords": 70804,
+      "uniqueWorldHashes": 70804,
+      "uniqueTopologyHashes": 65307,
+      "uniqueRewardRankings": 62377,
+      "uniqueOptimalActionPatterns": 1762,
+      "uniqueObjectiveCombinations": 8,
+      "nearDuplicateRate": 0,
+      "effectiveDatasetSize": 62377,
+      "method": "min(unique world hashes, unique topology hashes, unique reward rankings). A corpus is only as informative as its least-varied dimension."
+    },
+    "bySupervision": {
+      "UNIQUE_OPTIMUM": 42429,
+      "EXACT_EQUIVALENCE": 24167,
+      "INSUFFICIENTLY_RESOLVED": 2769,
+      "NEAR_TIE": 969,
+      "PARETO_TRADEOFF": 470
+    },
+    "byTieClass": {
+      "GENUINE_STRATEGIC_EQUIVALENCE": 9859,
+      "HORIZON_ALIASING": 14306,
+      "INSUFFICIENT_REWARD_RESOLUTION": 2769,
+      "ACCIDENTAL_REWARD_COLLAPSE": 470,
+      "SYMMETRIC_ACTIONS": 2
+    },
+    "byHorizonClass": {
+      "HORIZON_DEPENDENT": 51886,
+      "HORIZON_ALIGNED": 18918
+    },
+    "byShape": {
+      "nested_dependency": 4800,
+      "contested_bottleneck": 4767,
+      "hub_and_spoke": 4800,
+      "mesh": 4800,
+      "ring": 4800,
+      "multi_settlement": 4800,
+      "star": 4800,
+      "layered_infrastructure": 4403,
+      "tree": 4304,
+      "disconnected_islands": 4624,
+      "multi_cycle": 4800,
+      "parallel_dependency": 4800,
+      "chain": 4800,
+      "bridge": 4706,
+      "redundant_network": 4800
+    },
+    "byLevel": {
+      "0": 10403,
+      "1": 10562,
+      "2": 10642,
+      "3": 10680,
+      "4": 10674,
+      "5": 10699,
+      "6": 3570,
+      "7": 3574
+    },
+    "bySplit": {
+      "TRAIN": 50860,
+      "OOD": 7144,
+      "VALIDATION": 6509,
+      "HOLDOUT": 6291
+    },
+    "byBand": {
+      "H0": 14162,
+      "H3": 14155,
+      "H1": 14172,
+      "H2": 14145,
+      "H4": 14170
+    },
+    "tiedCases": 27406,
+    "tieRate": 0.3871,
+    "rewardDefectTies": 3239,
+    "genuineTies": 24167,
+    "paretoTradeoffs": 470,
+    "scalarizationCollapse": 470,
+    "uniqueOptimumRate": 0.5992,
+    "horizonDependentCases": 51886,
+    "horizonAlignedCases": 18918,
+    "leakage": {
+      "worldOverlapByPair": {
+        "TRAIN|OOD": 0,
+        "TRAIN|VALIDATION": 0,
+        "TRAIN|HOLDOUT": 0,
+        "OOD|VALIDATION": 0,
+        "OOD|HOLDOUT": 0,
+        "VALIDATION|HOLDOUT": 0
+      },
+      "topologyOverlapByPair": {
+        "TRAIN|OOD": 0,
+        "TRAIN|VALIDATION": 0,
+        "TRAIN|HOLDOUT": 0,
+        "OOD|VALIDATION": 0,
+        "OOD|HOLDOUT": 0,
+        "VALIDATION|HOLDOUT": 0
+      },
+      "exactWorldOverlap": 0,
+      "topologyLeakage": 0,
+      "topologyLeakageControlPass": true
+    },
+    "rejected": 1196,
+    "generated": 72000,
+    "rewardVersion": "FORGE_REWARD_V2",
+    "decisionStages": {
+      "WORLD_INITIALIZED": 0,
+      "WARMUP_COMPLETE": 0,
+      "HISTORY_VALID": 1196,
+      "SEMANTIC_ADMISSION_PASS": 0,
+      "DECISION_CAPTURED": 70804
+    }
+  },
+  "preservation": {
+    "diversity": {
+      "v1": {
+        "uniqueTopologyHashes": 65307,
+        "effectiveDatasetSize": 60493,
+        "nearDuplicateRate": 0
+      },
+      "v2": {
+        "uniqueTopologyHashes": 65307,
+        "effectiveDatasetSize": 62377,
+        "nearDuplicateRate": 0
+      },
+      "topologyCountPreserved": true,
+      "nearDuplicateRateNotWorse": true
+    },
+    "supervision": {
+      "rewardVersion": "FORGE_REWARD_V2",
+      "rewardSemanticsChanged": false,
+      "classes": [
+        "EXACT_EQUIVALENCE",
+        "INSUFFICIENTLY_RESOLVED",
+        "NEAR_TIE",
+        "PARETO_TRADEOFF",
+        "UNIQUE_OPTIMUM"
+      ],
+      "shares": [
+        {
+          "class": "EXACT_EQUIVALENCE",
+          "v1": 0.3435,
+          "v2": 0.3413
+        },
+        {
+          "class": "INSUFFICIENTLY_RESOLVED",
+          "v1": 0.0378,
+          "v2": 0.0391
+        },
+        {
+          "class": "NEAR_TIE",
+          "v1": 0.0142,
+          "v2": 0.0137
+        },
+        {
+          "class": "PARETO_TRADEOFF",
+          "v1": 0.0067,
+          "v2": 0.0066
+        },
+        {
+          "class": "UNIQUE_OPTIMUM",
+          "v1": 0.5978,
+          "v2": 0.5992
+        }
+      ],
+      "allClassesStillPopulated": true
+    },
+    "horizon": {
+      "classes": [
+        "HORIZON_ALIGNED",
+        "HORIZON_DEPENDENT"
+      ],
+      "shares": [
+        {
+          "class": "HORIZON_ALIGNED",
+          "v1": 0.2696,
+          "v2": 0.2672
+        },
+        {
+          "class": "HORIZON_DEPENDENT",
+          "v1": 0.7304,
+          "v2": 0.7328
+        }
+      ],
+      "bothClassesPopulated": true,
+      "horizonDependentCases": 51886
+    },
+    "note": "FORGE_REWARD_V2 is frozen and unchanged: the reward that scores a V2 record is byte-identical to the one that scored a V1 record. Any shift in the supervision or horizon mix is therefore caused by which world state was scored, not by how it was scored."
+  },
+  "oracleHeads": {
+    "records": 70804,
+    "heads": {
+      "direction": {
+        "outputs": {
+          "UP": 36231,
+          "NO_OUTPUT": 1977,
+          "DOWN": 16094,
+          "STABLE": 16502
+        },
+        "distinctSubstantiveOutputs": 3,
+        "framesSufficientRate": 0.9721,
+        "guardClearedRate": 0.9721,
+        "supportedRate": 0.9721,
+        "reachable": true
+      },
+      "volatility": {
+        "outputs": {
+          "LOW_VOLATILITY": 47374,
+          "NO_OUTPUT": 3221,
+          "HIGH_VOLATILITY": 20209
+        },
+        "distinctSubstantiveOutputs": 2,
+        "framesSufficientRate": 0.9545,
+        "guardClearedRate": 0.9545,
+        "supportedRate": 0.9545,
+        "reachable": true
+      },
+      "timeToThreshold": {
+        "outputs": {
+          "NOT_CROSSING": 58083,
+          "NO_OUTPUT": 3221,
+          "ALREADY_CROSSED": 6404,
+          "CROSSING_4_TO_8": 1689,
+          "CROSSING_1_TO_3": 1407
+        },
+        "distinctSubstantiveOutputs": 4,
+        "framesSufficientRate": 0.9335,
+        "guardClearedRate": 0.9545,
+        "supportedRate": 0.9545,
+        "reachable": true
+      },
+      "abstention": {
+        "outputs": {
+          "INSUFFICIENT_EVIDENCE": 29410,
+          "ENOUGH_EVIDENCE": 41394
+        },
+        "distinctSubstantiveOutputs": 1,
+        "framesSufficientRate": 0.9335,
+        "guardClearedRate": 0.9335,
+        "supportedRate": 0.5846,
+        "reachable": true
+      },
+      "persistence": {
+        "outputs": {
+          "NON_PERSISTENT": 7926,
+          "INSUFFICIENT_EVIDENCE": 44558,
+          "PERSISTENT": 18320
+        },
+        "distinctSubstantiveOutputs": 2,
+        "framesSufficientRate": 0.8994,
+        "guardClearedRate": 0.8994,
+        "supportedRate": 0.3707,
+        "reachable": true
+      },
+      "reversal": {
+        "outputs": {
+          "REVERSAL": 7488,
+          "NO_OUTPUT": 10934,
+          "NO_REVERSAL": 52382
+        },
+        "distinctSubstantiveOutputs": 2,
+        "framesSufficientRate": 0.8212,
+        "guardClearedRate": 0.8456,
+        "supportedRate": 0.8456,
+        "reachable": true
+      },
+      "cycle": {
+        "outputs": {
+          "CYCLICAL": 49717,
+          "NO_OUTPUT": 10934,
+          "NOT_CYCLICAL": 10153
+        },
+        "distinctSubstantiveOutputs": 2,
+        "framesSufficientRate": 0.7029,
+        "guardClearedRate": 0.8456,
+        "supportedRate": 0.8456,
+        "reachable": true
+      },
+      "regimeChange": {
+        "outputs": {
+          "MULTIPLE_CHANGE": 4692,
+          "INSUFFICIENT_EVIDENCE": 36900,
+          "NO_CHANGE": 14650,
+          "LEVEL_CHANGE": 14562
+        },
+        "distinctSubstantiveOutputs": 3,
+        "framesSufficientRate": 0.4788,
+        "guardClearedRate": 0.7029,
+        "supportedRate": 0.4788,
+        "reachable": true
+      }
+    },
+    "headsReachable": 8,
+    "headCount": 8,
+    "allHeadsReachable": true,
+    "genericOracleSufficient": 68827,
+    "genericOracleSufficientRate": 0.9721,
+    "neverCollapsed": true,
+    "collapseNote": "Reported per head on purpose. A single \"Oracle accuracy\" would average a gate (abstention), a label about direction and a label about regime change into a number that is not about anything.",
+    "knownHeadProperty": {
+      "code": "CYCLE_HEAD_FIRES_ON_SMOOTH_TRENDS",
+      "finding": "The cycle head selects the lag with the highest autocorrelation, and a smooth monotonic ramp is strongly autocorrelated at every lag, so it reports CYCLICAL on MONOTONIC_RISE and MONOTONIC_FALL histories. Measured here, not corrected: the head is frozen, and the declared family is not used as its ground truth.",
+      "headModified": false
+    }
+  },
+  "router": {
+    "classes": [
+      "NEXUS_DOMINANT",
+      "ORACLE_DOMINANT",
+      "ARCHIMEDES_DOMINANT",
+      "MIXED",
+      "NO_SPECIALIST_NEEDED"
+    ],
+    "counts": {
+      "NEXUS_DOMINANT": 875,
+      "ORACLE_DOMINANT": 23488,
+      "ARCHIMEDES_DOMINANT": 7543,
+      "MIXED": 30046,
+      "NO_SPECIALIST_NEEDED": 8852
+    },
+    "coverage": {
+      "NEXUS_DOMINANT": 0.0124,
+      "ORACLE_DOMINANT": 0.3317,
+      "ARCHIMEDES_DOMINANT": 0.1065,
+      "MIXED": 0.4244,
+      "NO_SPECIALIST_NEEDED": 0.125
+    },
+    "allClassesPopulated": true,
+    "routerTrained": false,
+    "note": "Usefulness is still derived from world structure, never from an expert scoring its own relevance, and no router was trained. What changed between V1 and V2 is whether the specialist the structure calls for can actually see anything — a corpus property.",
+    "oracleDominantCases": 23488,
+    "oracleDominantServed": 22659,
+    "oracleDominantServedRate": 0.9647,
+    "routerModified": false,
+    "groundTruthSource": "WORLD_STRUCTURE_BY_ABLATION"
+  },
+  "determinism": {
+    "probes": 15,
+    "framesCompared": 286,
+    "allFramesIdentical": true,
+    "allTicksIdentical": true,
+    "allWorldHashesIdentical": true,
+    "everyWarmupFrameReproduced": true,
+    "note": "Replay identity is asserted over EVERY warm-up frame, not just the decision state. Reproducing only the endpoint would prove the endpoint deterministic and say nothing about the evolution that produced it."
+  },
+  "shardIndependence": {
+    "sampled": 60,
+    "rebuiltAndAdmitted": 60,
+    "recordHashesIdentical": 60,
+    "worldHashesIdentical": 60,
+    "warmupTicksIdentical": 60,
+    "shardIndependent": true,
+    "method": "Rebuilt in ONE process through the same builder the workers used, then compared by record hash. Reusing the builder is the point: two copies of the logic could drift and the comparison would still pass."
+  },
+  "baseline": {
+    "adapterId": "sentinel-forge-world-adapter",
+    "authorityTier": "R0",
+    "sampleRequested": 300,
+    "casesEvaluated": 300,
+    "worldRegenerationMismatches": 0,
+    "primeLegalRate": 1,
+    "decisiveCases": 300,
+    "primeOptimumRate": 0.2267,
+    "primeAverageRegretTimes100": 5644,
+    "horizonAlignedCases": 77,
+    "horizonAlignedOptimumRate": 0.8831,
+    "horizonDependentCases": 223,
+    "horizonDependentOptimumRate": 0,
+    "horizonDependentAverageRegretTimes100": 7506,
+    "oracleReachable": true,
+    "oracleFramesVisibleAtDecisionMin": 1,
+    "oracleFramesVisibleAtDecisionMax": 25,
+    "oracleCases": 289,
+    "oracleSufficientRate": 0.9633,
+    "meanHeadsSupported": 6,
+    "nexusCases": 300,
+    "nexusStructuralRate": 1,
+    "routerAlignment": 0.932,
+    "bySplit": [
+      {
+        "split": "VALIDATION",
+        "cases": 102,
+        "decisive": 102,
+        "optimumRate": 0.2353,
+        "averageRegretTimes100": 5017
+      },
+      {
+        "split": "HOLDOUT",
+        "cases": 92,
+        "decisive": 92,
+        "optimumRate": 0.1848,
+        "averageRegretTimes100": 4857
+      },
+      {
+        "split": "OOD",
+        "cases": 106,
+        "decisive": 106,
+        "optimumRate": 0.2547,
+        "averageRegretTimes100": 6931
+      }
+    ],
+    "dispatchProbe": {
+      "attempted": true,
+      "refused": true,
+      "errorName": "AuthorityError"
+    },
+    "expertsModified": false,
+    "routerTrained": false,
+    "trainingStarted": false
+  },
+  "comparison": {
+    "modelsFrozen": true,
+    "attribution": "CORPUS_EFFECT",
+    "attributionNote": "Prime, Nexus, Oracle, the Arbiter and the router are byte-identical between the two lineages, and no training was run in either. Every difference below is caused by which world state the decision was captured in. Describing any of it as a model improvement would be false.",
+    "rows": [
+      {
+        "metric": "oracleCases",
+        "v1": 0,
+        "v2": 289,
+        "delta": 289
+      },
+      {
+        "metric": "oracleSufficientRate",
+        "v1": 0,
+        "v2": 0.9633,
+        "delta": 0.9633
+      },
+      {
+        "metric": "routerAlignment",
+        "v1": 0.0268,
+        "v2": 0.932,
+        "delta": 0.9052
+      },
+      {
+        "metric": "historyFramesAtDecision",
+        "v1": 1,
+        "v2": 25,
+        "delta": 24
+      },
+      {
+        "metric": "primeOptimumRate",
+        "v1": 0.2207,
+        "v2": 0.2267,
+        "delta": 0.006
+      },
+      {
+        "metric": "primeLegalRate",
+        "v1": 1,
+        "v2": 1,
+        "delta": 0
+      },
+      {
+        "metric": "nexusStructuralRate",
+        "v1": 1,
+        "v2": 1,
+        "delta": 0
+      },
+      {
+        "metric": "horizonAlignedOptimumRate",
+        "v1": 0.8684,
+        "v2": 0.8831,
+        "delta": 0.0147
+      },
+      {
+        "metric": "horizonDependentOptimumRate",
+        "v1": 0,
+        "v2": 0,
+        "delta": 0
+      }
+    ]
+  },
+  "datasetExport": {
+    "datasetVersion": "FORGE_DATASET_V2",
+    "exportedFrom": "TRAIN",
+    "exportedRecords": 50860,
+    "rlRecordCap": 20000,
+    "parentDatasetVersion": "FORGE_DATASET_V1",
+    "sft": {
+      "rows": 47683,
+      "excluded": {
+        "INSUFFICIENTLY_RESOLVED": 2071,
+        "NEAR_TIE": 764,
+        "PARETO_TRADEOFF": 342
+      }
+    },
+    "preference": {
+      "rows": 33235,
+      "skipped": {
+        "EXACT_EQUIVALENCE": 17252,
+        "PARETO_TRADEOFF": 342,
+        "GAP_BELOW_MINIMUM": 31
+      }
+    },
+    "rl": {
+      "rows": 135045
+    },
+    "allRowsTaggedV2": true,
+    "ood": {
+      "levels": [
+        6,
+        7
+      ],
+      "description": "levels above the training curriculum: larger graphs, deeper dependencies, scarcer resources, longer horizons"
+    }
+  },
+  "lineage": {
+    "version": "FORGE_DATASET_V2",
+    "parent": "FORGE_DATASET_V1",
+    "parentImmutable": true,
+    "parentArtifactsModified": false,
+    "simulatorVersion": "forge-scenarios-v3",
+    "warmupVersion": "FORGE_TEMPORAL_WARMUP_V1",
+    "oracleSurfaceVersion": "FORGE_ORACLE_CHANNEL_MAPPING_V1",
+    "defectRepaired": "ORACLE_AXIS_UNREACHABLE",
+    "secondaryDefectRepaired": "ORACLE_HEAD_CHANNEL_VOCABULARY_UNMAPPED",
+    "changeClass": "CORPUS_CONSTRUCTION",
+    "changeClassNote": "Every difference between V1 and V2 is a property of how the corpus was built. No model was trained, tuned, retuned or replaced, and no expert was modified. A V1-to-V2 difference in any Sentinel measurement is a dataset effect and must be reported as one.",
+    "differencesFromParent": [
+      "decisions are captured after a temporal warm-up instead of at tick 0",
+      "the horizon remaining at the decision point is preserved exactly, by calibrating the warm-up before the scenario is declared",
+      "the temporal channel is declared across the whole observable timeline instead of 8 to 22 samples",
+      "the scenario declares channel threshold semantics, without which the TIME_TO_THRESHOLD head is hard-suppressed",
+      "world hashes therefore differ from V1 throughout; splits are recomputed rather than inherited"
+    ]
+  },
+  "soup": {
+    "soupCommit": "f07e07ed7edd548a4d1d9143f77af9027b1b7036",
+    "soupVersion": "0.74.0",
+    "checks": [
+      {
+        "dataset": "sft",
+        "rows": 47683,
+        "expectedFormat": "alpaca",
+        "detectedFormats": [
+          "alpaca"
+        ],
+        "allRowsDetectAsExpected": true,
+        "compatible": true,
+        "basis": "EVERY_ROW_CHECKED_AGAINST_SOUP_SIGNATURE_RULE"
+      },
+      {
+        "dataset": "preference",
+        "rows": 33235,
+        "expectedFormat": "dpo",
+        "detectedFormats": [
+          "dpo"
+        ],
+        "allRowsDetectAsExpected": true,
+        "compatible": true,
+        "basis": "EVERY_ROW_CHECKED_AGAINST_SOUP_SIGNATURE_RULE"
+      }
+    ],
+    "rlEpisodes": 135045,
+    "rlSoupFormat": null,
+    "rlBasis": "NOT_APPLICABLE: Soup GRPO/PPO consume prompts plus a reward function, not (s,a,r,s-prime) transitions. The RL export is for Sentinel-side analysis and a future reward-adapter bridge.",
+    "allCompatible": true,
+    "trainingStarted": false,
+    "invokedForTraining": false
+  },
+  "security": {
+    "authority": "R0",
+    "canDispatch": false,
+    "canMutateLiveWorld": false,
+    "expertsModified": false,
+    "routerModified": false,
+    "rewardSemanticsChanged": false,
+    "recommendationInfluencesSimulator": false,
+    "warmupConsultsExpert": false,
+    "warmupWritesHistory": false,
+    "historyOwnedByFrozenKernel": true,
+    "dispatchProbe": {
+      "attempted": true,
+      "refused": true,
+      "errorName": "AuthorityError"
+    },
+    "frozenOwners": 28,
+    "frozenOwnersUnchanged": true
+  },
+  "regression": {
+    "stage3aReproduced": true,
+    "stage3aCertificationHash": "c66b85d863d428d2da0e9d738f426e0b655124509bad04e0e7220f6eaf34898d",
+    "stage3bReproduced": true,
+    "stage3bCertificationHash": "61a8ab8d7769b3c09541d3cb2665d4451eba95513f08b6055390e6212236156d",
+    "predecessorArtifactsModified": false,
+    "note": "Both predecessor certifications are read, not recomputed here; each has its own --check mode that reproduces it byte-identically, and neither artifact was written by this stage."
+  },
+  "trainingCampaignSpec": {
+    "status": "DECLARED_NOT_STARTED",
+    "datasetVersion": "FORGE_DATASET_V2",
+    "parentDatasetVersion": "FORGE_DATASET_V1",
+    "warmupVersion": "FORGE_TEMPORAL_WARMUP_V1",
+    "oracleSurfaceVersion": "FORGE_ORACLE_CHANNEL_MAPPING_V1",
+    "rewardVersion": "FORGE_REWARD_V2",
+    "candidate": "LEARNED_NEXUS_CANDIDATE",
+    "successorStage": "STAGE3C_LEARNED_NEXUS_CANDIDATE_TRAINING_AND_OFFLINE_EVALUATION",
+    "trainingStarted": false,
+    "soupInvokedForTraining": false,
+    "routerTrained": false,
+    "governance": {
+      "replacesSentinelExpert": false,
+      "rule": "A learned candidate is a SHADOW until it beats the frozen expert on the evaluation splits under this lineage. Soup never automatically replaces a Sentinel expert.",
+      "authorityTier": "R0",
+      "canDispatch": false,
+      "canMutateLiveWorld": false
+    },
+    "provenancePins": {
+      "dataset": "FORGE_DATASET_V2",
+      "stage3aCertification": "c66b85d863d428d2da0e9d738f426e0b655124509bad04e0e7220f6eaf34898d",
+      "stage3bCertification": "61a8ab8d7769b3c09541d3cb2665d4451eba95513f08b6055390e6212236156d"
+    }
+  },
+  "targets": {
+    "admittedRecords": 50000,
+    "trainRecords": 50000,
+    "topologyCount": 1000,
+    "oracleGenericSufficientRate": 0.5,
+    "headsWithRealisedOutputs": 8,
+    "temporalFamilyRealisationRate": 0.9,
+    "taskPreservationRate": 1,
+    "horizonExactnessRate": 1,
+    "zeroLeakage": true
+  },
+  "supervisionVocabulary": {
+    "supervisionClasses": [
+      "UNIQUE_OPTIMUM",
+      "NEAR_TIE",
+      "EXACT_EQUIVALENCE",
+      "PARETO_TRADEOFF",
+      "INSUFFICIENTLY_RESOLVED"
+    ],
+    "tieClasses": [
+      "ACCIDENTAL_REWARD_COLLAPSE",
+      "INSUFFICIENT_REWARD_RESOLUTION",
+      "GENUINE_STRATEGIC_EQUIVALENCE",
+      "SYMMETRIC_ACTIONS",
+      "HORIZON_ALIASING",
+      "OTHER"
+    ],
+    "nearTieMargin": 3,
+    "preferenceMinimumGap": 5
+  },
+  "rewardComponents": [
+    "immediateObjectiveProgress",
+    "futureObjectivePotential",
+    "deliveredValue",
+    "restoredDependencyValue",
+    "preservedValue",
+    "civilianSafety",
+    "infrastructureHealth",
+    "optionValue",
+    "riskExposure",
+    "resourceCost",
+    "timeCost",
+    "terminalOutcome"
+  ],
+  "gates": [
+    {
+      "id": "STAGE3B_BASELINE_REPRODUCED",
+      "pass": true
+    },
+    {
+      "id": "STAGE3B_ARTIFACTS_UNMODIFIED",
+      "pass": true
+    },
+    {
+      "id": "WARMUP_LENGTH_NOT_MERELY_CLEARING_MINIMUM",
+      "pass": true
+    },
+    {
+      "id": "WARMUP_PRESERVES_THE_TASK",
+      "pass": true
+    },
+    {
+      "id": "DECISION_HORIZON_PRESERVED_EXACTLY",
+      "pass": true
+    },
+    {
+      "id": "NO_CHANNEL_CLAMPING",
+      "pass": true
+    },
+    {
+      "id": "WARMUP_CONSUMES_NO_RESOURCES",
+      "pass": true
+    },
+    {
+      "id": "WARMUP_MOVES_NO_ACTORS",
+      "pass": true
+    },
+    {
+      "id": "WARMUP_KILLS_NO_ENTITIES",
+      "pass": true
+    },
+    {
+      "id": "WARMUP_COMPLETES_NO_OBJECTIVES",
+      "pass": true
+    },
+    {
+      "id": "WARMUP_CHANGES_NO_LEGAL_ACTIONS",
+      "pass": true
+    },
+    {
+      "id": "WARMUP_CHANGES_NO_STRUCTURE",
+      "pass": true
+    },
+    {
+      "id": "EVERY_WARMUP_FRAME_REPRODUCES",
+      "pass": true
+    },
+    {
+      "id": "SHARDED_GENERATION_IS_ORDER_INDEPENDENT",
+      "pass": true
+    },
+    {
+      "id": "TEMPORAL_FAMILIES_REALISED",
+      "pass": true
+    },
+    {
+      "id": "PILOT_WITHIN_DECLARED_BOUNDS",
+      "pass": true
+    },
+    {
+      "id": "PILOT_SHOWED_ORACLE_REACHABLE",
+      "pass": true
+    },
+    {
+      "id": "ORACLE_AXIS_REACHABLE",
+      "pass": true
+    },
+    {
+      "id": "ALL_ORACLE_HEADS_REACHABLE",
+      "pass": true
+    },
+    {
+      "id": "ORACLE_NEVER_COLLAPSED_TO_ONE_METRIC",
+      "pass": true
+    },
+    {
+      "id": "ROUTER_NOT_TRAINED",
+      "pass": true
+    },
+    {
+      "id": "ROUTER_ALIGNMENT_IMPROVED",
+      "pass": true
+    },
+    {
+      "id": "CORPUS_SIZE",
+      "pass": true
+    },
+    {
+      "id": "TRAIN_SPLIT_SIZE",
+      "pass": true
+    },
+    {
+      "id": "TOPOLOGY_COUNT",
+      "pass": true
+    },
+    {
+      "id": "ZERO_WORLD_LEAKAGE",
+      "pass": true
+    },
+    {
+      "id": "ZERO_TOPOLOGY_LEAKAGE",
+      "pass": true
+    },
+    {
+      "id": "LEAKAGE_CONTROL_SENSITIVE",
+      "pass": true
+    },
+    {
+      "id": "ADMISSION_GATE_STILL_REJECTS",
+      "pass": true
+    },
+    {
+      "id": "REWARD_SEMANTICS_UNCHANGED",
+      "pass": true
+    },
+    {
+      "id": "DIVERSITY_PRESERVED",
+      "pass": true
+    },
+    {
+      "id": "NEAR_DUPLICATE_RATE_NOT_WORSE",
+      "pass": true
+    },
+    {
+      "id": "SUPERVISION_CLASSES_STILL_POPULATED",
+      "pass": true
+    },
+    {
+      "id": "HORIZON_CURRICULUM_PRESERVED",
+      "pass": true
+    },
+    {
+      "id": "DATASET_LINEAGE_TAGGED",
+      "pass": true
+    },
+    {
+      "id": "PARENT_LINEAGE_IMMUTABLE",
+      "pass": true
+    },
+    {
+      "id": "SOUP_EXPORTS_VALID",
+      "pass": true
+    },
+    {
+      "id": "SOUP_NOT_INVOKED_FOR_TRAINING",
+      "pass": true
+    },
+    {
+      "id": "NO_TRAINING_STARTED",
+      "pass": true
+    },
+    {
+      "id": "EXPERTS_UNMODIFIED",
+      "pass": true
+    },
+    {
+      "id": "AUTHORITY_UNCHANGED",
+      "pass": true
+    },
+    {
+      "id": "DISPATCH_PROBE_REFUSED",
+      "pass": true
+    },
+    {
+      "id": "NO_SIMULATOR_AUTHORITY_PATHWAY",
+      "pass": true
+    },
+    {
+      "id": "STAGE3A_REGRESSION",
+      "pass": true
+    },
+    {
+      "id": "STAGE3B_REGRESSION",
+      "pass": true
+    },
+    {
+      "id": "COMPARISON_ATTRIBUTED_TO_CORPUS",
+      "pass": true
+    }
+  ],
+  "blockers": [],
+  "stage3b1Outcome": "A_TEMPORAL_WARMUP_AND_ORACLE_REACHABILITY_CERTIFIED",
+  "stage3b1Certified": true,
+  "interpretation": "The Oracle axis is reachable. Decisions are captured after a deterministic warm-up that the world actually lived, the horizon the decision receives is the horizon the curriculum declared, and every one of the eight Oracle heads produces substantive outputs on the V2 corpus. Nothing was trained and nothing was modified: the change is a corpus effect, and the residual per-head reachability gap in worlds with active hostiles is reported rather than closed.",
+  "liveActionDispatches": 0,
+  "worldMutations": 0,
+  "authorityEscalations": 0,
+  "evidenceDigest": "881af373fb3f97d6d036acec0fc06aea95ac4bddcf9bc847088a31b37efc2e52",
+  "certificationHash": "1fd230523adbde9dc5e1971cb07637be9e9dc741b5a51b1d6f0e90b4966bab74"
+}

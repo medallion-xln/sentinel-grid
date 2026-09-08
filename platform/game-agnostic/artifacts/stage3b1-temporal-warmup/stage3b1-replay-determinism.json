@@ -1,0 +1,18 @@
+{
+  "probes": 15,
+  "framesCompared": 286,
+  "allFramesIdentical": true,
+  "allTicksIdentical": true,
+  "allWorldHashesIdentical": true,
+  "everyWarmupFrameReproduced": true,
+  "note": "Replay identity is asserted over EVERY warm-up frame, not just the decision state. Reproducing only the endpoint would prove the endpoint deterministic and say nothing about the evolution that produced it.",
+  "shardIndependence": {
+    "sampled": 60,
+    "rebuiltAndAdmitted": 60,
+    "recordHashesIdentical": 60,
+    "worldHashesIdentical": 60,
+    "warmupTicksIdentical": 60,
+    "shardIndependent": true,
+    "method": "Rebuilt in ONE process through the same builder the workers used, then compared by record hash. Reusing the builder is the point: two copies of the logic could drift and the comparison would still pass."
+  }
+}

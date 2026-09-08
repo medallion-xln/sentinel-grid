@@ -1,0 +1,116 @@
+{
+  "records": 70804,
+  "heads": {
+    "direction": {
+      "outputs": {
+        "UP": 36231,
+        "NO_OUTPUT": 1977,
+        "DOWN": 16094,
+        "STABLE": 16502
+      },
+      "distinctSubstantiveOutputs": 3,
+      "framesSufficientRate": 0.9721,
+      "guardClearedRate": 0.9721,
+      "supportedRate": 0.9721,
+      "reachable": true
+    },
+    "volatility": {
+      "outputs": {
+        "LOW_VOLATILITY": 47374,
+        "NO_OUTPUT": 3221,
+        "HIGH_VOLATILITY": 20209
+      },
+      "distinctSubstantiveOutputs": 2,
+      "framesSufficientRate": 0.9545,
+      "guardClearedRate": 0.9545,
+      "supportedRate": 0.9545,
+      "reachable": true
+    },
+    "timeToThreshold": {
+      "outputs": {
+        "NOT_CROSSING": 58083,
+        "NO_OUTPUT": 3221,
+        "ALREADY_CROSSED": 6404,
+        "CROSSING_4_TO_8": 1689,
+        "CROSSING_1_TO_3": 1407
+      },
+      "distinctSubstantiveOutputs": 4,
+      "framesSufficientRate": 0.9335,
+      "guardClearedRate": 0.9545,
+      "supportedRate": 0.9545,
+      "reachable": true
+    },
+    "abstention": {
+      "outputs": {
+        "INSUFFICIENT_EVIDENCE": 29410,
+        "ENOUGH_EVIDENCE": 41394
+      },
+      "distinctSubstantiveOutputs": 1,
+      "framesSufficientRate": 0.9335,
+      "guardClearedRate": 0.9335,
+      "supportedRate": 0.5846,
+      "reachable": true
+    },
+    "persistence": {
+      "outputs": {
+        "NON_PERSISTENT": 7926,
+        "INSUFFICIENT_EVIDENCE": 44558,
+        "PERSISTENT": 18320
+      },
+      "distinctSubstantiveOutputs": 2,
+      "framesSufficientRate": 0.8994,
+      "guardClearedRate": 0.8994,
+      "supportedRate": 0.3707,
+      "reachable": true
+    },
+    "reversal": {
+      "outputs": {
+        "REVERSAL": 7488,
+        "NO_OUTPUT": 10934,
+        "NO_REVERSAL": 52382
+      },
+      "distinctSubstantiveOutputs": 2,
+      "framesSufficientRate": 0.8212,
+      "guardClearedRate": 0.8456,
+      "supportedRate": 0.8456,
+      "reachable": true
+    },
+    "cycle": {
+      "outputs": {
+        "CYCLICAL": 49717,
+        "NO_OUTPUT": 10934,
+        "NOT_CYCLICAL": 10153
+      },
+      "distinctSubstantiveOutputs": 2,
+      "framesSufficientRate": 0.7029,
+      "guardClearedRate": 0.8456,
+      "supportedRate": 0.8456,
+      "reachable": true
+    },
+    "regimeChange": {
+      "outputs": {
+        "MULTIPLE_CHANGE": 4692,
+        "INSUFFICIENT_EVIDENCE": 36900,
+        "NO_CHANGE": 14650,
+        "LEVEL_CHANGE": 14562
+      },
+      "distinctSubstantiveOutputs": 3,
+      "framesSufficientRate": 0.4788,
+      "guardClearedRate": 0.7029,
+      "supportedRate": 0.4788,
+      "reachable": true
+    }
+  },
+  "headsReachable": 8,
+  "headCount": 8,
+  "allHeadsReachable": true,
+  "genericOracleSufficient": 68827,
+  "genericOracleSufficientRate": 0.9721,
+  "neverCollapsed": true,
+  "collapseNote": "Reported per head on purpose. A single \"Oracle accuracy\" would average a gate (abstention), a label about direction and a label about regime change into a number that is not about anything.",
+  "knownHeadProperty": {
+    "code": "CYCLE_HEAD_FIRES_ON_SMOOTH_TRENDS",
+    "finding": "The cycle head selects the lag with the highest autocorrelation, and a smooth monotonic ramp is strongly autocorrelated at every lag, so it reports CYCLICAL on MONOTONIC_RISE and MONOTONIC_FALL histories. Measured here, not corrected: the head is frozen, and the declared family is not used as its ground truth.",
+    "headModified": false
+  }
+}

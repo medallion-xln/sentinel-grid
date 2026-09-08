@@ -1,0 +1,104 @@
+{
+  "heads": [
+    {
+      "headId": "direction",
+      "requiredFrames": 3,
+      "measurableAtFrames": 3,
+      "measurableAtFramesReason": "the head's own guard is also the point at which it measures what it claims",
+      "temporalField": "channel level, first vs last",
+      "samplingAssumption": "One frame per tick, evenly spaced. Sign of net change over the whole window.",
+      "windowSemantics": "LAST_MINUS_FIRST over the full window; no sub-window.",
+      "missingHistoryBehaviour": "Returns null (no semantic output) below three usable samples.",
+      "source": "stage2i2-oracle-task-head-diagnostic.js: values.length < 3 => null"
+    },
+    {
+      "headId": "volatility",
+      "requiredFrames": 4,
+      "measurableAtFrames": 4,
+      "measurableAtFramesReason": "the head's own guard is also the point at which it measures what it claims",
+      "temporalField": "first differences of the channel",
+      "samplingAssumption": "Adjacent frames are one tick apart, so a difference is a rate.",
+      "windowSemantics": "RMS of all first differences over the window.",
+      "missingHistoryBehaviour": "SHORT_HISTORY, semantic output null.",
+      "source": "stage2i2: VOLATILITY_HEAD values.length < 4 => SHORT_HISTORY"
+    },
+    {
+      "headId": "timeToThreshold",
+      "requiredFrames": 4,
+      "measurableAtFrames": 5,
+      "measurableAtFramesReason": "the head's own guard is also the point at which it measures what it claims",
+      "temporalField": "channel level and recent slope against a DECLARED threshold",
+      "samplingAssumption": "Recent slope extrapolates linearly in ticks.",
+      "windowSemantics": "Slope of the last five samples; ticks-to-cross is a division.",
+      "missingHistoryBehaviour": "MISSING_THRESHOLD_OR_HISTORY. Hard-suppressed when the scenario declares no threshold semantics, regardless of history length.",
+      "source": "stage2i2: TIME_TO_THRESHOLD_HEAD requires channelSemantics.threshold + polarity and values.length >= 4"
+    },
+    {
+      "headId": "abstention",
+      "requiredFrames": 5,
+      "measurableAtFrames": 5,
+      "measurableAtFramesReason": "the head's own guard is also the point at which it measures what it claims",
+      "temporalField": "sample count, channel coverage, full vs recent slope agreement, volatility",
+      "samplingAssumption": "Coverage is measured against the number of frames offered, so a partially populated channel is visible as such.",
+      "windowSemantics": "Gate: >= 5 samples AND coverage >= 0.8 AND no full/recent slope conflict AND volatility < 0.14.",
+      "missingHistoryBehaviour": "INSUFFICIENT_EVIDENCE. This head IS the abstention mechanism.",
+      "source": "stage2i2: ABSTENTION_HEAD enough = values.length >= 5 && coverage >= 0.8 && !conflict && !noisy"
+    },
+    {
+      "headId": "persistence",
+      "requiredFrames": 6,
+      "measurableAtFrames": 6,
+      "measurableAtFramesReason": "the head's own guard is also the point at which it measures what it claims",
+      "temporalField": "signs of first differences, longest opposing run, full vs recent slope",
+      "samplingAssumption": "A run of same-signed differences is a sustained direction; interruptions are bounded, not fatal.",
+      "windowSemantics": "Dominant sign share over all differences, tolerant of bounded interruption.",
+      "missingHistoryBehaviour": "INSUFFICIENT_EVIDENCE with SHORT_OR_MISSING_HISTORY; also requires coverage >= 0.8.",
+      "source": "stage2i3-oracle-head-remediation.js: values.length < 6 || coverage < .8"
+    },
+    {
+      "headId": "reversal",
+      "requiredFrames": 8,
+      "measurableAtFrames": 9,
+      "measurableAtFramesReason": "the head's own guard is also the point at which it measures what it claims",
+      "temporalField": "prior-segment slope vs tail-segment slope",
+      "samplingAssumption": "The window splits into a prior stretch and a tail of about four ticks.",
+      "windowSemantics": "cut = max(3, n - 4); prior slope over [0, cut), tail slope over [cut - 1, n). Both must be materially non-flat.",
+      "missingHistoryBehaviour": "SHORT_HISTORY, semantic output null.",
+      "source": "stage2i2: REVERSAL_HEAD values.length < 8 => SHORT_HISTORY"
+    },
+    {
+      "headId": "cycle",
+      "requiredFrames": 8,
+      "measurableAtFrames": 18,
+      "measurableAtFramesReason": "The head will search a lag of 8 only once floor(n/2) >= 8, i.e. n >= 16, and a lag-8 correlation on 16 points rests on 8 pairs. At n >= 18 the deepest lag it can select is supported by at least ten pairs.",
+      "temporalField": "lagged autocorrelation of the channel",
+      "samplingAssumption": "A period is a whole number of ticks; a lag of L needs n - L paired points to be worth anything.",
+      "windowSemantics": "Best correlation over lags 2..min(8, floor(n/2)); needs amplitude >= 0.08 as well.",
+      "missingHistoryBehaviour": "SHORT_HISTORY, semantic output null.",
+      "source": "stage2i2: CYCLE_HEAD values.length < 8 => SHORT_HISTORY; lag <= min(8, floor(n/2))"
+    },
+    {
+      "headId": "regimeChange",
+      "requiredFrames": 18,
+      "measurableAtFrames": 24,
+      "measurableAtFramesReason": "The guard admits the head at n = 18, but window = floor(n/3) is only 6 there: the head answers on windows narrower than the 8 it is built for. floor(n/3) reaches 8 at n = 24, which is the first length at which the head compares two full, disjoint eight-sample windows.",
+      "temporalField": "level, slope, volatility and cycle statistics of a prior window vs a recent window",
+      "samplingAssumption": "The two windows describe different stretches of the same process, so they must not overlap.",
+      "windowSemantics": "window = min(8, floor(n/3)); prior = first `window` samples, recent = last `window` samples.",
+      "missingHistoryBehaviour": "INSUFFICIENT_EVIDENCE with SHORT_OR_MISSING_HISTORY; also requires coverage >= 0.8.",
+      "source": "stage2i3-oracle-head-remediation.js: values.length < 18 || coverage < .8; window = min(8, floor(values.length / 3))"
+    }
+  ],
+  "minimumClearingAllGuards": 18,
+  "chosenWarmupTicks": 24,
+  "chosenBecause": "The binding head is regimeChange. Its guard opens at 18 frames, so a warm-up of 17 ticks would clear every documented minimum — and would be exactly the mistake the stage forbids, because at 18 frames the head compares six-sample windows instead of the eight-sample windows it is built around. floor(n/3) reaches 8 at n = 24. The warm-up therefore targets 24 observed frames, which 24 ticks deliver on top of the tick-zero frame.",
+  "lengthNotChosenToClearMinimum": true,
+  "channelVocabularyDefect": {
+    "code": "ORACLE_HEAD_CHANNEL_VOCABULARY_UNMAPPED",
+    "finding": "The eight-head assembly reads frame.channels.alpha and nothing else. Forge declares its channel as `primary`, so every head computed over an empty series, reported coverage zero and abstained — at any history length. Warm-up alone would not have reached them.",
+    "remedy": "FORGE_ORACLE_CHANNEL_MAPPING_V1",
+    "remedyClass": "ADAPTER_LAYER_CHANNEL_MAPPING",
+    "oracleModified": false,
+    "headsModified": false
+  }
+}

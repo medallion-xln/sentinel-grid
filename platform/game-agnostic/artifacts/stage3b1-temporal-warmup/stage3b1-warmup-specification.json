@@ -1,0 +1,37 @@
+{
+  "contract": {
+    "id": "FORGE_TEMPORAL_WARMUP_V1",
+    "contractVersion": 1,
+    "targetTicks": 24,
+    "minimumToClearGuards": 18,
+    "actionPolicy": "WAIT_ONLY",
+    "actionPolicyRationale": "WAIT is the only action that expresses \"let the world run\" without the warm-up making choices the decision is supposed to make. It costs zero energy, moves nothing, and takes no objective step, so any change observed during warm-up is the world evolving, never the warm-up playing.",
+    "environmentalEvolution": "Whatever the frozen kernel does on any tick: hazard terrain damage, hostile degradation through `attacks` relations, tick and horizon advance. The warm-up neither adds nor suppresses dynamics.",
+    "observationCapture": "One frame per tick, produced by the kernel through currentFrame(), pushed by the kernel inside step().",
+    "historyUpdate": "Kernel-owned. Nothing in this module writes to world.history.",
+    "decisionCapturePoint": "After the warm-up terminates, at the first tick where the required temporal context exists and the task is still the task.",
+    "truncationRule": "The warm-up stops at the last tick whose world still satisfies the task-preservation predicate. A truncated warm-up is recorded with its cause; the heads it can no longer support abstain and say so.",
+    "neverDoes": [
+      "append frames to history",
+      "mutate world state outside step()",
+      "consult a Sentinel expert",
+      "let a recommendation influence the simulator",
+      "vary with wall-clock time or randomness"
+    ]
+  },
+  "decisionStates": [
+    "WORLD_INITIALIZED",
+    "WARMUP_COMPLETE",
+    "HISTORY_VALID",
+    "SEMANTIC_ADMISSION_PASS",
+    "DECISION_CAPTURED"
+  ],
+  "channelMapping": {
+    "id": "FORGE_ORACLE_CHANNEL_MAPPING_V1",
+    "from": "forge channel (integer, declared domain 0..100)",
+    "to": "alpha (unit interval, the head vocabulary)",
+    "normalization": "value / (domainMax - domainMin), against the DECLARED domain, never against the observed range",
+    "normalizationRationale": "Normalizing by the observed minimum and maximum would let the series being measured set its own scale, so two worlds with different volatility would normalize to the same spread. The declared domain is fixed at scenario construction and identical in every world.",
+    "headsAreUnmodified": true
+  }
+}

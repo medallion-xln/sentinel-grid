@@ -1,0 +1,36 @@
+{
+  "probes": 45,
+  "actionPolicy": "WAIT_ONLY",
+  "reachedFullTarget": 21,
+  "truncated": 24,
+  "truncationCauses": {
+    "TASK_CHANGED": 24
+  },
+  "taskPreserved": 45,
+  "taskPreservationRate": 1,
+  "horizonPreservedExactly": 45,
+  "channelClamped": 0,
+  "consumedResources": 0,
+  "movedActors": 0,
+  "killedEntities": 0,
+  "completedObjectives": 0,
+  "changedLegalActions": 0,
+  "changedStructure": 0,
+  "changedFieldCounts": {
+    "available": 24,
+    "legalActions": 1
+  },
+  "warmupTickHistogram": {
+    "1": 1,
+    "2": 1,
+    "3": 2,
+    "4": 2,
+    "8": 1,
+    "9": 2,
+    "12": 5,
+    "19": 10,
+    "24": 21
+  },
+  "truncationMechanism": "The only dynamic that ends a warm-up early is hostile degradation through an `attacks` relation crossing an availability threshold. Terrain hazards never fire during warm-up in this curriculum (no entity is placed on damaging terrain at tick zero), WAIT costs no energy, and nothing moves. Role mixes that declare hostiles (defended, scarce, populated) therefore support shorter warm-ups than those that do not (bare, redundant, industrial).",
+  "reachabilityConfound": "ORACLE_HEAD_REACHABILITY_CONFOUNDED_BY_ROLE_MIX: because truncation is caused by hostiles, the heads needing the longest history are measurable disproportionately in worlds without them. This is a property of the curriculum, not a defect introduced here, and it is reported so that no per-head rate is read as unconditional."
+}
