@@ -106,14 +106,39 @@ interrupted generation pass can be restarted without losing work.
   Authority stays R0; it cannot dispatch, cannot mutate the world, is not loaded by the
   live Router or Prime, and the deterministic Nexus remains the incumbent.
 
-## Baseline bar (300 VALIDATION records, deterministic policies)
+## Baseline bar
 
-| Policy | Optimal-set accuracy |
-|---|---|
-| Heuristic greedy | 21.3% |
-| Random legal | 20.0% |
-| Prime (MCTS, 24 sims) | 20.0% |
-| `NEXUS_RELATIONAL_SELECTOR_V1` | 17.8% (19.7% abstention) |
+Measured on the **full VALIDATION split (6,509 records)** with the repo's own scoring
+functions, `LIMIT` unset:
+
+| Policy | Optimal-set accuracy | Mean regret |
+|---|---|---|
+| Heuristic greedy | **25.27%** | 50.48 |
+| Prime (MCTS, 24 sims) | **23.50%** | see note |
+| Random legal | **22.34%** | 58.95 |
+| `NEXUS_RELATIONAL_SELECTOR_V1` | **21.99%** | 52.26 |
+
+Prime is strided, not exhaustive: `n=1085, stride=6, scored=1085, mismatch=0`, subset
+digest `04e77ca0683fced3…`. The selector re-scored on that identical subset gives
+23.34%, so the two are directly comparable.
+
+**Prime is materially sample-sensitive and must never be quoted without its record
+set.** It measures 17.00% on the first 300 contiguous records and 23.50% strided over
+the full split. The evaluator now records `sampling.rule`, `stride`, `n` and a
+`subsetDigestSha256` next to every Prime number for exactly this reason, and re-scores
+learned and selector on the same subset so all three move together.
+
+An earlier revision of this file published a 300-record bar (greedy 21.3%, random
+20.0%, Prime 20.0%, selector 17.8%). Those numbers are reproducible but **too small a
+sample**: the first 300 records understate every baseline by 2-4 points, and that
+Prime figure came from only n=60. Use the full-split table above.
+
+Reproduce the bar on any machine, with or without a candidate:
+
+```bash
+node scripts/evaluate-stage3cr2-candidate.mjs VALIDATION NONE bar.json
+LIMIT=300 PRIME_N=300 node scripts/evaluate-stage3cr2-candidate.mjs VALIDATION NONE bar300.json
+```
 
 The task is hard and the bar is real. A complementary candidate — one that is right
 where the deterministic selector is wrong — is a legitimate success even if its

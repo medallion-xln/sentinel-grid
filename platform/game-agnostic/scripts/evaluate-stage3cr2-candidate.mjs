@@ -3,6 +3,11 @@
  * baseline on one split, using the repo's own scoring functions.
  *
  *   node scripts/evaluate-stage3cr2-candidate.mjs <SPLIT> <generations.jsonl> <out.json> [tau]
+ *   node scripts/evaluate-stage3cr2-candidate.mjs <SPLIT> NONE <out.json>      # baselines only
+ *
+ * Pass NONE for <generations.jsonl> to measure the deterministic baseline bar on a
+ * machine that has no candidate — useful for verifying a fresh environment reproduces
+ * the published numbers. LIMIT=<n> restricts to the first n records of the split.
  *
  * <generations.jsonl> comes from training/stage3cr2/infer.py. Nothing here loads a
  * model: it maps recordHash -> parsed answer and scores it exactly as every baseline
@@ -13,6 +18,7 @@
  * ~61 ms/record; every other policy is evaluated on the full split.
  */
 import path from 'node:path';
+import { createHash } from 'node:crypto';
 import { fileURLToPath } from 'node:url';
 const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 const corpusPath = path.join(root, 'build/stage3b1-corpus/corpus.jsonl');
@@ -29,14 +35,22 @@ const TAU = process.argv[5] ? Number(process.argv[5]) : null;   // frozen confid
 const corpus = await loadCorpus(corpusPath);
 const records = corpus.records.filter(r => r.split === SPLIT);
 
+const BASELINES_ONLY = GEN === 'NONE' || GEN === '-';
+const LIMIT = process.env.LIMIT ? Number(process.env.LIMIT) : null;
+
 const gen = new Map();
-for (const line of readFileSync(GEN,'utf8').split('\n')) {
-  if (!line.trim()) continue;
-  const g = JSON.parse(line);
-  gen.set(g.recordHash, g);
+if (!BASELINES_ONLY) {
+  for (const line of readFileSync(GEN,'utf8').split('\n')) {
+    if (!line.trim()) continue;
+    const g = JSON.parse(line);
+    gen.set(g.recordHash, g);
+  }
 }
-const covered = records.filter(r => gen.has(r.recordHash));
-console.error(`${SPLIT}: ${records.length} records, ${covered.length} with generations`);
+let covered = BASELINES_ONLY ? records : records.filter(r => gen.has(r.recordHash));
+if (LIMIT !== null) covered = covered.slice(0, LIMIT);
+console.error(BASELINES_ONLY
+  ? `${SPLIT}: ${records.length} records, evaluating ${covered.length} (baselines only, no candidate)`
+  : `${SPLIT}: ${records.length} records, ${covered.length} with generations`);
 
 const learnedPolicy = (r) => { const g = gen.get(r.recordHash); return g ? g.answer : null; };
 
@@ -49,7 +63,7 @@ const nexusOut = (r) => {
 const selectorPolicy = (r) => { const n = nexusOut(r); return n ? nexusRelationalSelector(r, n) : null; };
 
 const res = {};
-res.learned  = evaluatePolicy(covered, learnedPolicy);
+if (!BASELINES_ONLY) res.learned = evaluatePolicy(covered, learnedPolicy);
 res.random   = evaluatePolicy(covered, randomLegalBaseline);
 res.greedy   = evaluatePolicy(covered, heuristicGreedyBaseline);
 res.selector = evaluatePolicy(covered, selectorPolicy);
@@ -80,7 +94,7 @@ if (TAU !== null) {
   }
 }
 res.hybrids = {};
-for (const [k,p] of Object.entries(H)) {
+for (const [k,p] of (BASELINES_ONLY ? [] : Object.entries(H))) {
   const e = evaluatePolicy(covered, p);
   res.hybrids[k] = { optimalSetAccuracy:e.optimalSetAccuracy, meanRegret:e.meanRegret,
     medianRegret:e.medianRegret, worstRegret:e.worstRegret, scored:e.scored,
@@ -91,7 +105,7 @@ for (const [k,p] of Object.entries(H)) {
 const comp = { LEARNED_ONLY_CORRECT:0, NEXUS_ONLY_CORRECT:0, BOTH_CORRECT:0, BOTH_WRONG:0,
                LEARNED_LOWER_REGRET:0, NEXUS_LOWER_REGRET:0, REGRET_TIE:0,
                SELECTOR_ABSTAINED:0, COMPARABLE:0 };
-for (const r of covered) {
+for (const r of (BASELINES_ONLY ? [] : covered)) {
   const ls = scoreAnswer(r, learnedPolicy(r));
   const ss = scoreAnswer(r, selectorPolicy(r));
   if (!ss.scored) { comp.SELECTOR_ABSTAINED++; continue; }
@@ -116,9 +130,10 @@ const bucket = (keyFn) => {
   }
   const out = {};
   for (const [k,rs] of Object.entries(m)) {
-    const e = evaluatePolicy(rs, learnedPolicy);
+    const e = BASELINES_ONLY ? null : evaluatePolicy(rs, learnedPolicy);
     const s = evaluatePolicy(rs, selectorPolicy);
-    out[k] = { n: rs.length, learnedAcc: e.optimalSetAccuracy, learnedRegret: e.meanRegret,
+    out[k] = { n: rs.length, learnedAcc: e?.optimalSetAccuracy ?? null,
+               learnedRegret: e?.meanRegret ?? null,
                selectorAcc: s.optimalSetAccuracy, selectorRegret: s.meanRegret };
   }
   return out;
@@ -132,7 +147,7 @@ res.byLegalCount  = bucket(r => r.legalActionCount<=8?'<=8':r.legalActionCount<=
 
 // ---- confidence calibration ----
 const buckets = {};
-for (const r of covered) {
+for (const r of (BASELINES_ONLY ? [] : covered)) {
   const l = learnedPolicy(r); if (!l || typeof l.confidence!=='number') continue;
   const b = (Math.floor(l.confidence*10)/10).toFixed(1);
   const s = scoreAnswer(r,l);
@@ -146,7 +161,7 @@ res.confidence = Object.fromEntries(Object.entries(buckets).map(([k,v])=>[k,{
 
 // ---- error taxonomy on learned failures ----
 const tax = {};
-for (const r of covered) {
+for (const r of (BASELINES_ONLY ? [] : covered)) {
   const l = learnedPolicy(r); const s = scoreAnswer(r,l);
   if (!s.valid) { tax[s.code] = (tax[s.code]??0)+1; continue; }
   if (s.scored && !s.inOptimalSet) {
@@ -158,25 +173,52 @@ for (const r of covered) {
 }
 res.errorTaxonomy = tax;
 
-// ---- Prime offline (subsampled deterministically for cost) ----
+// ---- Prime offline ----
+/* Prime is the one baseline that is materially sample-sensitive: it was measured at
+ * 17.00% on the first 300 contiguous VALIDATION records and 21.96% on 296 strided
+ * across the full split, while random / greedy / selector reproduced to the decimal
+ * on the same records. A Prime optimum rate is therefore meaningless without its
+ * record set, so the sampling rule, stride, count and a digest of the exact record
+ * hashes are recorded alongside the number. Learned and selector are re-scored on
+ * that identical subset so the three are always compared like for like. */
 const PRIME_N = Number(process.env.PRIME_N ?? 1200);
-const primeRecs = covered.filter((_,i)=> i % Math.max(1,Math.ceil(covered.length/PRIME_N)) === 0);
+const primeStride = Math.max(1, Math.ceil(covered.length / PRIME_N));
+const primeRecs = covered.filter((_, i) => i % primeStride === 0);
 const primeRows = primeBaseline(primeRecs, { simulations: 24 });
-let pOpt=0,pScored=0,mismatch=0;
+let pOpt = 0, pScored = 0, mismatch = 0;
+const pRegrets = [];
 for (const row of primeRows) {
   if (row.mismatch || !row.answer) { mismatch++; continue; }
-  const s = scoreAnswer(row.record,row.answer);
-  if (s.scored){ pScored++; if(s.inOptimalSet) pOpt++; }
+  const sc = scoreAnswer(row.record, row.answer);
+  if (sc.scored) { pScored++; if (sc.inOptimalSet) pOpt++; pRegrets.push(sc.regret); }
 }
-const primeSub = { n: primeRecs.length, scored: pScored, mismatch,
-  optimumRate: pScored? Math.round(pOpt*10000/pScored)/10000 : null };
-const lSub = evaluatePolicy(primeRecs, learnedPolicy);
+const subsetDigest = createHash('sha256')
+  .update(primeRecs.map(r => r.recordHash).join('\n')).digest('hex');
+const primeSub = {
+  n: primeRecs.length, scored: pScored, mismatch,
+  optimumRate: pScored ? Math.round(pOpt * 10000 / pScored) / 10000 : null,
+  meanRegret: pRegrets.length
+    ? Math.round(pRegrets.reduce((a, b) => a + b, 0) * 100 / pRegrets.length) / 100 : null,
+  sampling: {
+    rule: 'STRIDED_OVER_EVALUATED_RECORDS',
+    primeNRequested: PRIME_N,
+    stride: primeStride,
+    drawnFrom: covered.length,
+    subsetDigestSha256: subsetDigest,
+    warning: 'Prime moves several points on sampling alone. Never quote this rate without n, stride and digest.',
+  },
+};
+const lSub = BASELINES_ONLY ? null : evaluatePolicy(primeRecs, learnedPolicy);
 const sSub = evaluatePolicy(primeRecs, selectorPolicy);
 res.primeOffline = { prime: primeSub,
-  learnedOnSameSubset: { optimumRate: lSub.optimalSetAccuracy, meanRegret: lSub.meanRegret },
-  selectorOnSameSubset:{ optimumRate: sSub.optimalSetAccuracy, meanRegret: sSub.meanRegret } };
+  learnedOnSameSubset: lSub
+    ? { optimumRate: lSub.optimalSetAccuracy, meanRegret: lSub.meanRegret } : null,
+  selectorOnSameSubset: { optimumRate: sSub.optimalSetAccuracy, meanRegret: sSub.meanRegret },
+  comparableBecause: 'all three are scored on the identical strided subset',
+};
 
-for (const k of ['learned','random','greedy','selector']) delete res[k].rows;
-res.meta = { split: SPLIT, records: records.length, evaluated: covered.length, tau: TAU };
+for (const k of ['learned','random','greedy','selector']) if (res[k]) delete res[k].rows;
+res.meta = { split: SPLIT, records: records.length, evaluated: covered.length,
+  tau: TAU, baselinesOnly: BASELINES_ONLY, limit: LIMIT };
 writeFileSync(OUT, JSON.stringify(res,null,2));
 console.error('wrote ' + OUT);
