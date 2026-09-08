@@ -395,3 +395,127 @@ npm run test:stage3b-curriculum   # 47 tests
 
 The corpus is a build product: deterministic from pinned seeds, kept out of the
 repository by size, with its sha256 recorded in the dataset manifest.
+
+---
+
+# Stage 3B.1 — temporal warm-up and Oracle reachability
+
+Stage 3B certified a large, diverse, leakage-free corpus and recorded, in the same
+certification, the defect that made one of its axes useless:
+
+> `ORACLE_AXIS_UNREACHABLE` — decisions were captured at tick 0, where
+> `world.history` holds one frame, against an Oracle that needs three. Every Oracle
+> case abstained; router usefulness alignment fell to 0.0268.
+
+That was never an Oracle deficiency. The signal was in the world state — every
+world carried a temporal channel — and the expert could not reach it. Stage 3B.1
+repairs that one defect and recertifies as a new lineage, `FORGE_DATASET_V2`.
+`FORGE_DATASET_V1` is immutable and still reproduces from its own artifacts.
+
+## History is state, so it has to be lived
+
+The warm-up does not append frames. A scenario is initialized, the frozen kernel
+is stepped, each state is observed, and the decision is captured only once the
+required temporal context exists. Nothing outside `step()` writes to
+`world.history`, and the warm-up never consults a Sentinel expert — a recommendation
+shaping the world the recommendation is later scored in would be exactly the
+pathway from advice to simulator authority that R0 forbids.
+
+## Why 24 ticks, and not 18
+
+Every Oracle head's history requirement was read off its implementation, not
+guessed. The longest guard — `regimeChange` — opens at 18 frames, so a 17-tick
+warm-up would clear every documented minimum. It would also be a fake fix: the
+head's comparison window is `min(8, floor(n/3))`, which at 18 frames is 6, so the
+head would answer on windows narrower than the eight samples it is built around.
+`floor(n/3)` reaches 8 at n = 24. The warm-up targets 24.
+
+| head | guard opens at | measurable at |
+| --- | --- | --- |
+| `direction` | 3 | 3 |
+| `volatility` | 4 | 4 |
+| `timeToThreshold` | 4 | 5 |
+| `abstention` | 5 | 5 |
+| `persistence` | 6 | 6 |
+| `reversal` | 8 | 9 |
+| `cycle` | 8 | 18 |
+| `regimeChange` | 18 | 24 |
+
+## A warm-up that changes the task is invalid
+
+Measured, not assumed. A naive 24-tick WAIT on the Stage 3B generator terminates
+45% of worlds on `HORIZON_EXHAUSTED` and kills entities in 43% — so it was rejected.
+Two things fix it, both decided at **scenario construction**, before any world
+exists, and neither of them history:
+
+1. **The horizon is calibrated.** The safe warm-up length is measured on a probe
+   run first, and the scenario is then declared with exactly that much extra
+   `maxTicks`. The horizon remaining at the decision point equals the horizon
+   Stage 3B gave the decision — not less, and not more. Extra horizon is as much a
+   task change as too little.
+2. **The channel spans the whole timeline.** Stage 3B declared 8 to 22 samples,
+   shorter than the warm-up, and `currentFrame()` clamps past the end of a series.
+   A warm-up running off the end observes the same value forever — length without
+   information, and a flat history the Oracle would correctly read as stable.
+
+What remains is truncation: the one dynamic that ends a warm-up early is hostile
+degradation through an `attacks` relation crossing an availability threshold. Role
+mixes that declare hostiles support shorter warm-ups, so the heads needing the
+longest history are measurable disproportionately in worlds without them. That is
+reported as `ORACLE_HEAD_REACHABILITY_CONFOUNDED_BY_ROLE_MIX` rather than tuned
+away.
+
+## The second defect
+
+Repairing the first surfaced a second, which would have hidden the repair:
+
+> `ORACLE_HEAD_CHANNEL_VOCABULARY_UNMAPPED` — the eight-head assembly reads
+> `frame.channels.alpha` and nothing else. Forge declares `primary`. Every head
+> computed over an empty series, reported coverage zero and abstained — at any
+> history length.
+
+The remedy is a declared channel mapping at the adapter layer, exactly as the
+Oracle's own contract says it should be ("mapping a game's state onto channels is
+adapter work"). No head was modified. Normalization is against the **declared**
+domain, never the observed range: letting the series set its own scale would make
+two worlds of different volatility normalize to the same spread.
+
+## Families are validated by measurement, never by name
+
+The V3 generator names a temporal family. A name is not evidence — the same rule
+the semantic admission gate has enforced since Stage 3A. Each realized series is
+measured head-free (monotonicity, net change, alternation ratio, mean absolute
+step, split-level shift) and the family is only treated as ground truth where the
+observed window actually exhibits it.
+
+This also caught a real construction defect: placing a reversal or a level shift at
+the midpoint of the *whole* timeline puts it after the warm-up ends, so the observed
+history is a plain ramp and the family name is a claim about frames nobody looked
+at. Structural events are now placed inside the observed prefix.
+
+One measured head property is reported rather than corrected: the cycle head picks
+the lag with the highest autocorrelation, and a smooth monotonic ramp is strongly
+autocorrelated at every lag, so it reports `CYCLICAL` on monotone histories. The
+head is frozen; the declared family is not used as its ground truth.
+
+## Every difference is a corpus effect
+
+Prime, Nexus, Oracle, the Arbiter and the router are byte-identical across the two
+lineages, and no training was run in either. Every V1-to-V2 difference is caused by
+which world state the decision was captured in. Describing any of it as a model
+improvement would be false.
+
+## Running it
+
+```bash
+cd platform/game-agnostic
+npm run forge:stage3b1:pilot      # 2k-5k records; gates the full run
+npm run forge:stage3b1:generate   # deterministic corpus, sharded across processes
+npm run forge:stage3b1:certify    # measure and certify
+npm run forge:stage3b1:check      # verify the stored certification reproduces
+npm run test:stage3b1-temporal-warmup
+```
+
+The pilot is a gate, not a warm-up lap: if the Oracle had still been unreachable at
+pilot scale, generating seventy thousand more records of the same defect would have
+been the wrong answer.

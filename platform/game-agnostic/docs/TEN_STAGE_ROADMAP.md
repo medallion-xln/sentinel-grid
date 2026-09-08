@@ -978,5 +978,44 @@ because cases go where they can be represented truthfully.
 - **Continuation-policy dependence is sampled**, not measured on every case.
 - **No model was trained.** Soup was schema-validated and never invoked.
 - **Portability is single-platform.** `DIGEST_PRODUCED_SINGLE_PLATFORM` unchanged.
+- **The Oracle axis was unreachable.** Recorded, not hidden — and repaired in
+  Stage 3B.1.
+
+## Stage 3B.1 — temporal warm-up, Oracle reachability and corpus V2
+
+Stage 3B recorded `ORACLE_AXIS_UNREACHABLE`: decisions captured at tick 0, where
+`world.history` holds one frame against an Oracle needing three, so every Oracle
+case abstained and router usefulness alignment fell to 0.0268. The signal was in
+the world state; the expert could not reach it.
+
+Stage 3B.1 repairs that one corpus-construction defect. The world is **evolved**
+rather than backfilled: a scenario is initialized, the frozen kernel is stepped,
+each state is observed, and the decision is captured only once the temporal context
+exists. Nothing outside `step()` writes to `world.history`, and the warm-up never
+consults a Sentinel expert.
+
+The warm-up length is derived from what makes each of the eight Oracle heads
+semantically measurable, not from what clears their guards — 24 ticks, where 17
+would have cleared every documented minimum and left `regimeChange` comparing
+six-sample windows instead of the eight it is built around.
+
+A warm-up that changes the task is invalid, so the horizon is calibrated on a probe
+run before the scenario is declared, and the channel is declared across the whole
+observable timeline. What remains — truncation caused by hostile degradation, and
+the resulting per-head reachability confound with role mix — is reported rather
+than tuned away.
+
+Results are a new lineage, `FORGE_DATASET_V2`, with `FORGE_DATASET_V1` immutable
+and still reproducing. Models are frozen across both: every V1-to-V2 difference is
+a corpus effect.
+
+### Still open after Stage 3B.1
+
+- **Per-head reachability is confounded by role mix.** The heads needing the
+  longest history are measurable disproportionately in worlds without hostiles.
+- **The cycle head fires on smooth trends.** A measured property of a frozen head,
+  reported rather than corrected.
+- **No model was trained.** Soup was schema-validated and never invoked.
+- **Portability is single-platform.** `DIGEST_PRODUCED_SINGLE_PLATFORM` unchanged.
 
 Full architecture: [`docs/SENTINEL_FORGE_WORLD.md`](SENTINEL_FORGE_WORLD.md).
