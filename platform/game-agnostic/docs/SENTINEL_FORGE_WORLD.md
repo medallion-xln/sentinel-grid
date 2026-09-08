@@ -611,3 +611,100 @@ npm run forge:stage3c:certify
 npm run forge:stage3c:check
 npm run test:stage3c-learned-nexus
 ```
+
+---
+
+# Stage 3C-R — training environment provisioning — BLOCKED on one requirement
+
+Stage 3C was blocked on four things. Three of them are now false.
+
+| requirement | Stage 3C | Stage 3C-R | why it changed |
+| --- | --- | --- | --- |
+| `SOUP_INSTALLED` | no | **yes** | Stage 3C's probe was wrong |
+| `TRAINING_RUNTIME` | no | **yes** | installed by this stage |
+| `ACCELERATOR_OR_VIABLE_CPU_BUDGET` | no | **yes** | the CPU budget was measured, not assumed |
+| `BASE_MODEL_WEIGHTS` | no | no | still denied by organizational egress policy |
+
+## One of those is a correction, not a change in the world
+
+Stage 3C probed for Soup with `which soup` and concluded it was absent. That
+answers "is there an installed executable on PATH", not "is Soup available". A
+clean git checkout of Soup at exactly the pinned commit
+`f07e07ed7edd548a4d1d9143f77af9027b1b7036` was sitting one directory above the
+repository the whole time.
+
+Stage 3C's **result** is not rewritten — it was BLOCKED, and it would have been
+BLOCKED on the base model alone, so the corrected line does not change its
+outcome. But the line was wrong, and a stage that quietly dropped it while
+re-reporting the rest would be laundering its own error.
+
+## What now works
+
+- Soup at the pinned commit, clean tree, CLI runs, `soup doctor` green on every
+  required dependency
+- torch 2.14.0, transformers 5.16.1, peft 0.20.0, trl 0.29.1; CPU backend
+  recognized by both Soup and torch
+- environment class `CPU_SMALL_MODEL_ONLY` — four cores and 16 GB will not train a
+  7B model, but a sub-billion-parameter LoRA run is genuinely inside this budget,
+  which is why it is not `UNSUITABLE`
+- Soup's own `detect_format` reads **all 4,459 rows** of the real
+  FORGE_DATASET_V2 export as `alpaca` — every row, not just the first
+- a full train loop completes on this machine: load, LoRA, gradient, checkpoint,
+  adapter reload, inference
+
+## The Soup bridge drift check finally ran
+
+Stage 3A transcribed Soup's twelve format signatures into `soup-bridge.js` as
+DATA rather than reimplementing them, on the reasoning that a drift check should
+be a comparison rather than an argument about whether two implementations agree.
+That comparison had never actually been run against live Soup, because Soup was
+believed absent. It runs now, and the twelve signatures match **exactly**.
+
+## What is still blocked
+
+`BASE_MODEL_AVAILABLE`. `huggingface_hub.snapshot_download` returns a
+`ProxyError` 403 through the installed stack — the same organizational egress
+denial `curl` saw. The stage brief forbids bypassing it, using an undocumented
+proxy, or pulling weights from an untrusted mirror to make the stage pass, and
+none of those was attempted. Every alternate host probed — modelscope.cn,
+hf-mirror.com, download.pytorch.org, ollama.com, registry.ollama.ai, kaggle.com —
+was unreachable, and no local cache, Ollama installation or GGUF artifact exists.
+
+So no candidate exists, and no accuracy, regret, complementarity, hybrid or
+generalization figure appears in these artifacts.
+
+## The pipeline harness is not a candidate
+
+To test the checkpoint writer without weights, this stage builds a tiny model that
+is randomly initialised locally from a Llama architecture config, with a BPE
+tokenizer trained on the Sentinel corpus itself. It has no pretrained knowledge,
+and it is never scored. Reporting its loss as a result would be reporting the
+arithmetic of a random model.
+
+It exists to prove one thing: Soup can load a model, compute a gradient, write a
+checkpoint and reload an adapter here. It can.
+
+## Decisions taken that need no weights
+
+- **Abstention** — option A, action selection without claiming abstention. The
+  corpus has 20 negative controls in 50,860 TRAIN records; a model trained on that
+  which emitted an abstention would be guessing. The task contract drops the
+  `abstain` field rather than carrying one nothing taught it to use.
+- **Topology skew** — a sampler caps any shape at 12% of the sample, taking the
+  largest share from **0.2798** to **0.1749**. TRAIN only: reshaping VALIDATION,
+  HOLDOUT or OOD would be choosing the exam.
+- **Task** — `LEARNED_NEXUS_ACTION_SELECTION_V1`, structured output, no
+  natural-language explanation, no hidden chain of thought.
+- **Targets** — accept any member of the optimal set at evaluation; exclude exact
+  ties from single-target SFT. A tie is the world saying two actions are worth the
+  same, and training the sort order as the answer teaches the sorting function.
+
+## Running it
+
+```bash
+cd platform/game-agnostic
+npm run forge:stage3cr:probe      # measures the environment, writes evidence
+npm run forge:stage3cr:certify
+npm run forge:stage3cr:check
+npm run test:stage3cr-training-environment
+```

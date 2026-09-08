@@ -1,0 +1,21 @@
+{
+  "taskId": "LEARNED_NEXUS_ACTION_SELECTION_V1",
+  "parentTaskId": "LEARNED_NEXUS_RELATIONAL_INTERVENTION_V1",
+  "framing": "STRUCTURED_ACTION_SELECTION",
+  "input": [
+    "objective",
+    "canonicalEntities",
+    "relations",
+    "quantitativeState",
+    "legalActions"
+  ],
+  "output": {
+    "actionId": "string",
+    "confidence": "number in [0,1]"
+  },
+  "abstainField": false,
+  "abstainFieldNote": "Removed relative to the Stage 3C contract, per the Phase 8 decision. A field the training data cannot teach is a field the model will fill with noise.",
+  "naturalLanguageExplanationRequired": false,
+  "hiddenChainOfThoughtRequired": false,
+  "legalityRule": "Every emitted actionId is checked against the legal action set for that exact world before it is scored. A model output can never bypass legality: an illegal or unparseable answer is counted as such, never silently repaired into the nearest legal action."
+}

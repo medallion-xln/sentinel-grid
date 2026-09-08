@@ -1044,6 +1044,30 @@ Three things the stage surfaced:
   it would get very little signal for when to abstain. A measured dataset
   limitation for whoever runs the training.
 
+## Stage 3C-R — training environment provisioning — BLOCKED on one requirement
+
+Stage 3C was blocked on four substrate requirements. Three are now false: Soup is
+installed from its own source at the pinned commit and its CLI runs, torch is
+present with the CPU backend recognized, and the CPU budget was measured rather
+than assumed (`CPU_SMALL_MODEL_ONLY`, not `UNSUITABLE`).
+
+One of those three is a **correction to Stage 3C's measurement, not a change in the
+world**: Stage 3C probed `which soup` and concluded Soup was absent, when a clean
+checkout at the pinned commit was one directory above the repository. Stage 3C's
+BLOCKED result is not rewritten — it would have been BLOCKED on the base model
+alone — but the wrong line is corrected here rather than quietly dropped.
+
+Verified along the way: Soup's parser reads all 4,459 rows of the real
+FORGE_DATASET_V2 export as `alpaca`; a full train loop completes (load, LoRA,
+gradient, checkpoint, adapter reload, inference); and the twelve Soup format
+signatures Stage 3A transcribed into the bridge match live Soup exactly — the
+first time that drift check has actually been run.
+
+Still blocked: `BASE_MODEL_AVAILABLE`, denied by organizational egress policy with
+a 403 through the installed stack. Not bypassed. Every alternate host probed was
+unreachable. No candidate exists, so no accuracy, complementarity or generalization
+figure is reported.
+
 ### Still open after Stage 3B.1
 
 - **Per-head reachability is confounded by role mix.** The heads needing the

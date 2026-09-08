@@ -1,0 +1,56 @@
+{
+  "requirements": [
+    {
+      "id": "SOUP_EXECUTABLE",
+      "why": "the named training engine must actually run",
+      "satisfied": true
+    },
+    {
+      "id": "TORCH_AVAILABLE",
+      "why": "a gradient has to be computable",
+      "satisfied": true
+    },
+    {
+      "id": "BASE_MODEL_AVAILABLE",
+      "why": "SFT adapts a base model; without weights there is nothing to adapt",
+      "satisfied": false
+    },
+    {
+      "id": "BASE_MODEL_HASHED",
+      "why": "a candidate whose parent cannot be identified cannot be reproduced",
+      "satisfied": false
+    },
+    {
+      "id": "TOKENIZER_AVAILABLE",
+      "why": "the task is text-shaped and needs one",
+      "satisfied": false
+    },
+    {
+      "id": "TRAIN_SPLIT_AVAILABLE",
+      "why": "TRAIN-only optimisation must have TRAIN to optimise on",
+      "satisfied": true
+    },
+    {
+      "id": "CHECKPOINT_WRITE_TEST",
+      "why": "a run that cannot save is a run that produced nothing",
+      "satisfied": true
+    }
+  ],
+  "probe": {
+    "SOUP_EXECUTABLE": true,
+    "TORCH_AVAILABLE": true,
+    "BASE_MODEL_AVAILABLE": false,
+    "BASE_MODEL_HASHED": false,
+    "TOKENIZER_AVAILABLE": false,
+    "TRAIN_SPLIT_AVAILABLE": true,
+    "CHECKPOINT_WRITE_TEST": true
+  },
+  "missing": [
+    "BASE_MODEL_AVAILABLE",
+    "BASE_MODEL_HASHED",
+    "TOKENIZER_AVAILABLE"
+  ],
+  "qualified": false,
+  "blockerClass": "ORGANIZATIONAL_EGRESS_POLICY_DENIAL",
+  "outcome": "F_TRAINING_ENVIRONMENT_STILL_BLOCKED"
+}

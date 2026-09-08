@@ -1,0 +1,16 @@
+{
+  "option": "A_TRAIN_ACTION_SELECTION_WITHOUT_CLAIMING_ABSTENTION",
+  "rejected": [
+    {
+      "option": "B_SUPPLEMENTAL_NEGATIVE_CONTROLS",
+      "why": "it would mean generating a new TRAIN-only control set before the first candidate has demonstrated it can learn the base task at all — solving a second problem before the first one is known to be solvable"
+    },
+    {
+      "option": "C_DEFER",
+      "why": "equivalent in effect to A for this campaign; A is chosen because it states positively what the candidate is being asked to do"
+    }
+  ],
+  "rationale": "FORGE_DATASET_V2 contains 20 negative controls in 50,860 TRAIN records. That is not enough signal to learn when to abstain, and a model trained on it that emitted an abstention would be guessing. The first candidate is asked to select an action, and the task contract drops the abstain field rather than carrying one nothing taught it to use.",
+  "canonicalDatasetRebalanced": false,
+  "abstentionClaimed": false
+}
