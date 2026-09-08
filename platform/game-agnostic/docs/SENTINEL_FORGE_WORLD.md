@@ -519,3 +519,95 @@ npm run test:stage3b1-temporal-warmup
 The pilot is a gate, not a warm-up lap: if the Oracle had still been unreachable at
 pilot scale, generating seventy thousand more records of the same defect would have
 been the wrong answer.
+
+---
+
+# Stage 3C — first learned Nexus candidate — BLOCKED
+
+Stage 3C is the first stage in Sentinel Grid that would train a model. This
+environment cannot train one, and that is measured rather than assumed:
+
+| requirement | present |
+| --- | --- |
+| `SOUP_INSTALLED` | no |
+| `BASE_MODEL_WEIGHTS` | no |
+| `TRAINING_RUNTIME` | no |
+| `ACCELERATOR_OR_VIABLE_CPU_BUDGET` | no |
+
+The decisive one is the base model: `huggingface.co` is refused by the
+environment's egress policy with a 403 to CONNECT. The proxy documentation states
+that organization policy denials are to be reported rather than routed around, so
+no alternate host was attempted.
+
+No candidate exists, so no accuracy, regret, complementarity, hybrid or
+generalization figure is reported anywhere in the artifacts. A plausible number
+written there would be indistinguishable, in every stage that later reads it, from
+one that was measured. The blocker is classified
+`ENVIRONMENT_SUBSTRATE_UNAVAILABLE` — explicitly not `DATASET_LIMIT`,
+`MODEL_CAPACITY` or `F_TRAINING_PIPELINE_DEFECT`, because no pipeline was
+exercised and no model was built.
+
+## What was delivered anyway
+
+Everything that does not need a trained model:
+
+- **The entry gate**, verified rather than asserted. Stage 3A, 3B and 3B.1 all
+  reproduce; FORGE_DATASET_V2 is frozen; all four split hashes recorded; zero
+  record-level and zero topology-level leakage from TRAIN into VALIDATION, HOLDOUT
+  or OOD; training exports drawn from TRAIN only. HOLDOUT and OOD were counted and
+  hashed and never evaluated against any policy.
+- **The task contract** a learned specialist would have to satisfy — structured
+  output with `actionId`, `confidence` and `abstain`, no hidden chain-of-thought,
+  and a legality rule that an illegal answer is counted as illegal and never
+  silently repaired into the nearest legal one.
+- **Case selection, targets and the distribution audit.**
+- **Four baselines** a candidate would have had to beat, measured now so the
+  comparison exists before the candidate does.
+- **The legality gate and a mutation-tested promotion firewall.**
+
+## Deterministic Nexus does not pick actions
+
+The brief asks for "deterministic Nexus accuracy" on a pick-an-action task. Nexus
+emits **graph-level signals** — counts of bottlenecks, critical dependencies,
+threatened and unsupported nodes, depth, density — and has no per-action output at
+all. Scoring it directly against an action-picking model would be comparing two
+different kinds of thing and reporting the difference as a result.
+
+So Stage 3C builds `NEXUS_RELATIONAL_SELECTOR_V1`, a deterministic policy on top
+of those signals, and reports it under that name everywhere. Nexus is unmodified.
+On 400 VALIDATION cases the selector reaches 0.2462 optimal-set accuracy while
+abstaining on 16.75%, which does **not** beat a greedy immediate-reward heuristic
+at 0.275. That is worth stating plainly: the relational signal, turned into a
+policy this way, is not currently better than taking the best next step.
+
+## A selection rule with base rate 1.0 selects nothing
+
+The first draft of the case selector keyed on the generator's shape and role
+**names** — `shape === 'bridge'` meant BRIDGE — which is the mistake this project
+has refused since the Stage 3A admission gate, and it admitted 99.96% of TRAIN.
+
+Rewriting the rules to measure the record did not fix it, because two of them are
+constants on this corpus: every Forge world affords at least three action types
+and at least one of PROTECT or REINFORCE. Requiring "two relational rules" while
+two rules always fire admits everything.
+
+Rules are now measured for informativeness before they may carry the selection —
+only a base rate strictly inside (0.02, 0.98) qualifies — which brings selection
+to 23.3% and surfaces two further corpus facts: `SUBSTITUTION` and `BOTTLENECK`
+never fire at all, and the corpus contains only 20 negative controls in 50,860
+TRAIN records, so a specialist trained on it would get almost no signal for when
+to abstain.
+
+Selecting for relational density also skews the subset: mesh and
+redundant_network supply 55% of it. Reported as
+`SELECTION_SKEWED_TOWARD_DENSE_TOPOLOGIES` rather than left for a later reader to
+discover in a per-topology table.
+
+## Running it
+
+```bash
+cd platform/game-agnostic
+npm run forge:stage3c:certify
+npm run forge:stage3c:check
+npm run test:stage3c-learned-nexus
+```

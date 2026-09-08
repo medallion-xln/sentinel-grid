@@ -1,0 +1,125 @@
+{
+  "records": 11836,
+  "byTopology": {
+    "mesh": 3312,
+    "parallel_dependency": 413,
+    "tree": 354,
+    "hub_and_spoke": 384,
+    "multi_cycle": 653,
+    "ring": 442,
+    "redundant_network": 3243,
+    "star": 401,
+    "chain": 395,
+    "contested_bottleneck": 394,
+    "multi_settlement": 386,
+    "disconnected_islands": 364,
+    "bridge": 379,
+    "nested_dependency": 372,
+    "layered_infrastructure": 344
+  },
+  "byRoles": {
+    "defended": 1942,
+    "scarce": 1988,
+    "redundant": 2048,
+    "industrial": 1933,
+    "bare": 2002,
+    "populated": 1923
+  },
+  "byObjectives": {
+    "restore_and_conserve": 1420,
+    "protect_civilians": 1418,
+    "multi_target_delivery": 1478,
+    "repair_and_maintain_redundancy": 1746,
+    "supply_and_defend": 1412,
+    "restore_and_protect": 1428,
+    "reach_target": 1452,
+    "restore_infrastructure": 1482
+  },
+  "byLevel": {
+    "0": 1959,
+    "1": 2072,
+    "2": 2048,
+    "3": 1955,
+    "4": 1974,
+    "5": 1828
+  },
+  "byHorizonBand": {
+    "H4": 2489,
+    "H3": 2496,
+    "H0": 2186,
+    "H1": 2178,
+    "H2": 2487
+  },
+  "byHorizonClass": {
+    "HORIZON_DEPENDENT": 7969,
+    "HORIZON_ALIGNED": 3867
+  },
+  "bySupervision": {
+    "UNIQUE_OPTIMUM": 6686,
+    "EXACT_EQUIVALENCE": 4519,
+    "NEAR_TIE": 171,
+    "PARETO_TRADEOFF": 74,
+    "INSUFFICIENTLY_RESOLVED": 386
+  },
+  "byEntityCount": {
+    "<=24": 4153,
+    "<=32": 3714,
+    "<=16": 2863,
+    ">32": 993,
+    "<=8": 113
+  },
+  "byRelationCount": {
+    ">32": 3475,
+    "<=16": 2869,
+    "<=24": 2742,
+    "<=32": 1912,
+    "<=8": 838
+  },
+  "byLegalActionCount": {
+    "<=16": 4422,
+    "<=8": 7263,
+    "<=4": 151
+  },
+  "byRewardGap": {
+    ">60": 9743,
+    "<=60": 1944,
+    "<=20": 148,
+    "<=5": 1
+  },
+  "bySelectionRule": {
+    "DEPENDENCY_CHAIN": 6827,
+    "SUBSTITUTION": 0,
+    "BOTTLENECK": 0,
+    "BRIDGE": 7969,
+    "CYCLE": 3143,
+    "REDUNDANCY": 3879,
+    "MULTI_HOP": 6827,
+    "DISTRIBUTED_VALUE": 3258,
+    "CASCADING_FAILURE": 11836,
+    "RESOURCE_ALLOCATION": 458,
+    "INTERVENTION_CHOICE": 11836,
+    "NEGATIVE_CONTROL_NO_RELATIONS": 0,
+    "NEGATIVE_CONTROL_SINGLE_ACTION": 0,
+    "NEGATIVE_CONTROL_NO_SEPARATION": 0
+  },
+  "selectionCountsReportedIn": "stage3c-training-selection.json",
+  "domination": {
+    "largestSingleLevelShare": 0.1751,
+    "levelDominated": false,
+    "largestSingleTopologyShare": 0.2798,
+    "topTwoTopologies": [
+      {
+        "shape": "mesh",
+        "count": 3312
+      },
+      {
+        "shape": "redundant_network",
+        "count": 3243
+      }
+    ],
+    "topTwoTopologyShare": 0.5538,
+    "topologyDominated": true,
+    "note": "A subset dominated by one curriculum level would measure that level rather than relational reasoning. The same is true of topology, which the first version of this check did not look at.",
+    "topologyFinding": "SELECTION_SKEWED_TOWARD_DENSE_TOPOLOGIES: the informative rules key on relational density, so mesh and redundant_network — the two densest shapes — supply most of the selected subset. This is a property of selecting for relational richness, and it means a specialist trained on this subset would see sparse topologies far less often than dense ones. Reported so that any later per-topology result is read against it."
+  }
+}

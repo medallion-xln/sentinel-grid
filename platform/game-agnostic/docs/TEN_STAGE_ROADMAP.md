@@ -1009,6 +1009,41 @@ Results are a new lineage, `FORGE_DATASET_V2`, with `FORGE_DATASET_V1` immutable
 and still reproducing. Models are frozen across both: every V1-to-V2 difference is
 a corpus effect.
 
+## Stage 3C — first learned Nexus candidate — BLOCKED on the training substrate
+
+Stage 3C is the first stage that would train anything, and this environment cannot
+train. Measured, not assumed: no Soup, no training runtime, no accelerator, and —
+decisively — no base model weights, because `huggingface.co` is refused by the
+environment's egress policy with a 403 to CONNECT. The proxy documentation is
+explicit that organization policy denials are reported rather than routed around,
+so no alternate host was tried.
+
+No candidate exists, so no accuracy, regret, complementarity, hybrid or
+generalization figure is reported. A plausible number written into these artifacts
+would be indistinguishable downstream from a measured one.
+
+Everything training-free was built and run: the entry gate (3A, 3B and 3B.1 all
+reproduce; zero record-level and topology-level leakage from TRAIN into
+VALIDATION, HOLDOUT or OOD; exports TRAIN-only), the task contract, case selection,
+targets, the distribution audit, four baselines, the legality gate and a
+mutation-tested promotion firewall.
+
+Three things the stage surfaced:
+
+- **Deterministic Nexus does not pick actions.** It emits graph-level signals and
+  has no per-action output at all, so a head-to-head "Nexus accuracy" needs a
+  policy built on top of it. That policy is reported as
+  `NEXUS_RELATIONAL_SELECTOR_V1`, under its own name, and it does not beat a
+  greedy immediate-reward heuristic on this corpus.
+- **A selection rule with base rate 1.0 selects nothing.** Two rules fire on every
+  record in FORGE_DATASET_V2 — every world affords a protective action and at
+  least three action types — so rules are now measured for informativeness before
+  they are allowed to carry the filter.
+- **The corpus has almost no negative controls.** Only 20 of 50,860 TRAIN records
+  are cases where relational reasoning is unnecessary, so a specialist trained on
+  it would get very little signal for when to abstain. A measured dataset
+  limitation for whoever runs the training.
+
 ### Still open after Stage 3B.1
 
 - **Per-head reachability is confounded by role mix.** The heads needing the

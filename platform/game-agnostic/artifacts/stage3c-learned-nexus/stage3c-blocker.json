@@ -1,0 +1,37 @@
+{
+  "requirements": [
+    {
+      "id": "SOUP_INSTALLED",
+      "why": "the stage names Soup as the training engine and pins its commit"
+    },
+    {
+      "id": "BASE_MODEL_WEIGHTS",
+      "why": "SFT needs a base model to adapt; no weights, no candidate"
+    },
+    {
+      "id": "TRAINING_RUNTIME",
+      "why": "torch or equivalent to compute a gradient"
+    },
+    {
+      "id": "ACCELERATOR_OR_VIABLE_CPU_BUDGET",
+      "why": "a candidate that cannot finish training is not a candidate"
+    }
+  ],
+  "probe": {
+    "SOUP_INSTALLED": false,
+    "BASE_MODEL_WEIGHTS": false,
+    "TRAINING_RUNTIME": false,
+    "ACCELERATOR_OR_VIABLE_CPU_BUDGET": false
+  },
+  "missing": [
+    "SOUP_INSTALLED",
+    "BASE_MODEL_WEIGHTS",
+    "TRAINING_RUNTIME",
+    "ACCELERATOR_OR_VIABLE_CPU_BUDGET"
+  ],
+  "blocked": true,
+  "outcome": "G_BLOCKED",
+  "diagnosisClass": "ENVIRONMENT_SUBSTRATE_UNAVAILABLE",
+  "notADatasetLimit": true,
+  "notAModelCapacityLimit": true
+}
