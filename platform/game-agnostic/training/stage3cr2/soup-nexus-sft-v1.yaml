@@ -1,0 +1,40 @@
+# LEARNED_NEXUS_SFT_V1 — Stage 3C-R.2 first real training campaign.
+#
+# ONE configuration. No sweep. Frozen after Phase 10 feasibility measurement.
+#
+# batch_size=1 is a MEASURED constraint, not a preference. Qwen3's 151,936-token
+# vocabulary makes the full-sequence logits tensor dominate training memory:
+#   bs=1  ->  1.04 s/step, 309 tok/s,  4.42 GB   (feasible)
+#   bs=2  -> 21.19 s/step,  48 tok/s, 11.34 GB   (memory cliff)
+#   bs=4  -> OOM at 18.45 GiB
+# Effective batch is preserved at 16 via gradient accumulation.
+#
+# Paths are relative: run `soup train` from the work directory described in
+# training/stage3cr2/README.md.
+base: ./models/Qwen3-0.6B
+task: sft
+backend: transformers
+
+data:
+  train: ./campaign/nexus-sft-train.jsonl
+  format: alpaca
+  val_split: 0.0          # selection happens on the real VALIDATION split, never a carve-out
+  max_length: 512         # covers 100% of rows; zero truncation
+
+training:
+  epochs: 2
+  lr: 1.0e-4
+  batch_size: 1
+  gradient_accumulation_steps: 16
+  seed: 20260908
+  quantization: none      # LoRA, not QLoRA; bitsandbytes deliberately absent
+  auto_mixed_precision: true
+  logging_steps: 5        # was 25 on the local attempt, which stalled before logging any loss
+  save_steps: 100
+  lora:
+    r: 16
+    alpha: 32
+    dropout: 0.05
+    target_modules: [q_proj, k_proj, v_proj, o_proj, gate_proj, up_proj, down_proj]
+
+output: ./campaign/out-nexus-sft-v1

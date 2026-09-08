@@ -1,0 +1,13 @@
+# Pinned to the versions proven in the original Stage 3C-R environment.
+# torch is unpinned by build tag so each platform resolves its own wheel
+# (linux/cu* or macos/arm64); the version is pinned.
+torch==2.14.0
+transformers==5.16.1
+peft==0.20.0
+trl==0.29.1
+datasets==5.0.1
+accelerate
+# Soup is NOT on PyPI. Install from source at the pinned commit:
+#   git clone https://github.com/MakazhanAlpamys/Soup.git
+#   git -C Soup checkout f07e07ed7edd548a4d1d9143f77af9027b1b7036
+#   pip install -e Soup

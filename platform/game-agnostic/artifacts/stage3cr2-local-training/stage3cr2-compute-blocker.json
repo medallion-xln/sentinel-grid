@@ -1,0 +1,67 @@
+{
+  "stage": "STAGE3CR2_LOCAL_REAL_TRAINING",
+  "status": "BLOCKED",
+  "outcome": "F_QWEN06B_LOCAL_COMPUTE_INSUFFICIENT",
+  "isNotAModelCapabilityLimit": true,
+  "isNotADatasetLimit": true,
+  "diagnosisClass": "HOST_FREE_MEMORY_EXHAUSTED",
+  "campaignId": "STAGE3CR2-ca6847dafb04b823afd2f13a",
+  "gatesPassed": [
+    "OFFICIAL_BASE_MODEL_ACQUIRED",
+    "BASE_MODEL_PROVENANCE_COMPLETE",
+    "BASE_MODEL_HASHED",
+    "LOCAL_ONLY_MODEL_LOAD_PASS",
+    "MPS_MODEL_LOAD_PASS",
+    "LORA_ATTACH_PASS",
+    "TRAINABILITY_SMOKE_PASS",
+    "TRAINING_LEAKAGE_COUNT_ZERO"
+  ],
+  "gateFailed": "COMPUTE_FEASIBLE",
+  "hardware": {
+    "machine": "Apple M1 Pro", "cpuCores": 10, "gpuCores": 16,
+    "unifiedMemoryGb": 16, "metal": "Metal 4", "os": "Darwin 25.5.0"
+  },
+  "isolatedBenchmark": {
+    "note": "Measured with the machine otherwise quiet. The model itself is trainable here.",
+    "bs1_seq320": { "secondsPerStep": 1.04, "tokensPerSecond": 309, "peakAcceleratorGb": 4.42 },
+    "bs2_seq512": { "secondsPerStep": 21.19, "tokensPerSecond": 48, "peakAcceleratorGb": 11.34 },
+    "bs4_seq512": { "result": "OOM", "attemptedGb": 18.45 },
+    "memoryCliffCause": "Qwen3 vocabulary is 151936 tokens; the full-sequence logits tensor dominates training memory."
+  },
+  "observedRun": {
+    "optimizerStepsCompleted": 12,
+    "optimizerStepsTotal": 558,
+    "examplesSeen": 192,
+    "examplesTotal": 8918,
+    "stepTimingsSeconds": [19.34, 19.57, 20.80, 20.89, 88.52, 196.21],
+    "thenStalled": "step 13 did not complete in 14 minutes at 10% CPU",
+    "lossLogged": false,
+    "lossNotLoggedReason": "logging_steps was 25 and the run stalled at step 12; the committed config sets it to 5."
+  },
+  "hostEvidence": {
+    "swapTotalMb": 16384, "swapUsedMb": 14778, "swapFreeMb": 1605,
+    "swapouts": 52050961, "swapins": 47102090,
+    "trainerRssPagedDownToMb": 57,
+    "freeMemoryPercentDuringRun": 18,
+    "freeMemoryPercentAfterKill": 61,
+    "swapAlreadyCommittedBeforeTrainingMb": 14088,
+    "coResidentConsumers": ["Docker Desktop VM", "Google Chrome (~2 GB)", "Claude", "ChatGPT/Codex"]
+  },
+  "selfInflictedContribution": {
+    "acknowledged": true,
+    "what": "An evaluation-harness smoke test was run concurrently and caused the 88s spike at step 11.",
+    "butNotTheCause": "Degradation continued after that test finished, and 14.1 GB of swap was already committed before training started."
+  },
+  "remedy": {
+    "freeMemoryGbNeeded": "6 to 8",
+    "orUse": "any CUDA host, or a Mac with >=24 GB free",
+    "projectedRuntimeHours": { "training": 2.6, "evaluationGenerations": 2.0 },
+    "resumeInstructions": "platform/game-agnostic/training/stage3cr2/README.md"
+  },
+  "governance": {
+    "authority": "R0", "canDispatch": false, "canMutateLiveWorld": false,
+    "candidateStatus": "NOT_TRAINED",
+    "historicalResultsMutated": false,
+    "historicalResultsNote": "Stage 3C, 3C-R and 3C-R.1 remain BLOCKED and byte-identical; this stage only reads them."
+  }
+}
