@@ -1,0 +1,1557 @@
+{
+  "records": 70804,
+  "counterfactualActions": 477119,
+  "diversity": {
+    "rawRecords": 70804,
+    "uniqueWorldHashes": 70804,
+    "uniqueTopologyHashes": 65307,
+    "uniqueRewardRankings": 62377,
+    "uniqueOptimalActionPatterns": 1762,
+    "uniqueObjectiveCombinations": 8,
+    "nearDuplicateRate": 0,
+    "effectiveDatasetSize": 62377,
+    "method": "min(unique world hashes, unique topology hashes, unique reward rankings). A corpus is only as informative as its least-varied dimension."
+  },
+  "bySupervision": {
+    "UNIQUE_OPTIMUM": 42429,
+    "EXACT_EQUIVALENCE": 24167,
+    "INSUFFICIENTLY_RESOLVED": 2769,
+    "NEAR_TIE": 969,
+    "PARETO_TRADEOFF": 470
+  },
+  "byTieClass": {
+    "GENUINE_STRATEGIC_EQUIVALENCE": 9859,
+    "HORIZON_ALIASING": 14306,
+    "INSUFFICIENT_REWARD_RESOLUTION": 2769,
+    "ACCIDENTAL_REWARD_COLLAPSE": 470,
+    "SYMMETRIC_ACTIONS": 2
+  },
+  "byHorizonClass": {
+    "HORIZON_DEPENDENT": 51886,
+    "HORIZON_ALIGNED": 18918
+  },
+  "byShape": {
+    "nested_dependency": 4800,
+    "contested_bottleneck": 4767,
+    "hub_and_spoke": 4800,
+    "mesh": 4800,
+    "ring": 4800,
+    "multi_settlement": 4800,
+    "star": 4800,
+    "layered_infrastructure": 4403,
+    "tree": 4304,
+    "disconnected_islands": 4624,
+    "multi_cycle": 4800,
+    "parallel_dependency": 4800,
+    "chain": 4800,
+    "bridge": 4706,
+    "redundant_network": 4800
+  },
+  "byLevel": {
+    "0": 10403,
+    "1": 10562,
+    "2": 10642,
+    "3": 10680,
+    "4": 10674,
+    "5": 10699,
+    "6": 3570,
+    "7": 3574
+  },
+  "bySplit": {
+    "TRAIN": 50860,
+    "OOD": 7144,
+    "VALIDATION": 6509,
+    "HOLDOUT": 6291
+  },
+  "byBand": {
+    "H0": 14162,
+    "H3": 14155,
+    "H1": 14172,
+    "H2": 14145,
+    "H4": 14170
+  },
+  "tiedCases": 27406,
+  "tieRate": 0.3871,
+  "rewardDefectTies": 3239,
+  "genuineTies": 24167,
+  "paretoTradeoffs": 470,
+  "scalarizationCollapse": 470,
+  "uniqueOptimumRate": 0.5992,
+  "horizonDependentCases": 51886,
+  "horizonAlignedCases": 18918,
+  "leakage": {
+    "worldOverlapByPair": {
+      "TRAIN|OOD": 0,
+      "TRAIN|VALIDATION": 0,
+      "TRAIN|HOLDOUT": 0,
+      "OOD|VALIDATION": 0,
+      "OOD|HOLDOUT": 0,
+      "VALIDATION|HOLDOUT": 0
+    },
+    "topologyOverlapByPair": {
+      "TRAIN|OOD": 0,
+      "TRAIN|VALIDATION": 0,
+      "TRAIN|HOLDOUT": 0,
+      "OOD|VALIDATION": 0,
+      "OOD|HOLDOUT": 0,
+      "VALIDATION|HOLDOUT": 0
+    },
+    "exactWorldOverlap": 0,
+    "topologyLeakage": 0,
+    "topologyLeakageControlPass": true
+  },
+  "rejected": 1196,
+  "generated": 72000,
+  "rewardVersion": "FORGE_REWARD_V2",
+  "decisionStages": {
+    "WORLD_INITIALIZED": 0,
+    "WARMUP_COMPLETE": 0,
+    "HISTORY_VALID": 1196,
+    "SEMANTIC_ADMISSION_PASS": 0,
+    "DECISION_CAPTURED": 70804
+  },
+  "corpusSha256": "4d1a27925346258ebafea93890739f8d0ef206927b77ba6240e54d83488cea20",
+  "bytes": 392356253,
+  "difficulty": {
+    "levels": [
+      {
+        "level": 0,
+        "cases": 10403,
+        "meanLegalActionsTimes100": 674,
+        "meanEntitiesTimes100": 1304,
+        "meanRelationsTimes100": 846,
+        "horizonDependenceRate": 0.7306,
+        "meanUtilitySpreadTimes100": 8876,
+        "meanGreedyRegretTimes100": 3824,
+        "uniqueOptimumRate": 0.6246
+      },
+      {
+        "level": 1,
+        "cases": 10562,
+        "meanLegalActionsTimes100": 674,
+        "meanEntitiesTimes100": 1633,
+        "meanRelationsTimes100": 1211,
+        "horizonDependenceRate": 0.733,
+        "meanUtilitySpreadTimes100": 9371,
+        "meanGreedyRegretTimes100": 4198,
+        "uniqueOptimumRate": 0.6193
+      },
+      {
+        "level": 2,
+        "cases": 10642,
+        "meanLegalActionsTimes100": 678,
+        "meanEntitiesTimes100": 2033,
+        "meanRelationsTimes100": 1651,
+        "horizonDependenceRate": 0.725,
+        "meanUtilitySpreadTimes100": 10008,
+        "meanGreedyRegretTimes100": 4456,
+        "uniqueOptimumRate": 0.6006
+      },
+      {
+        "level": 3,
+        "cases": 10680,
+        "meanLegalActionsTimes100": 674,
+        "meanEntitiesTimes100": 2433,
+        "meanRelationsTimes100": 2078,
+        "horizonDependenceRate": 0.7262,
+        "meanUtilitySpreadTimes100": 10812,
+        "meanGreedyRegretTimes100": 5034,
+        "uniqueOptimumRate": 0.592
+      },
+      {
+        "level": 4,
+        "cases": 10674,
+        "meanLegalActionsTimes100": 675,
+        "meanEntitiesTimes100": 2833,
+        "meanRelationsTimes100": 2522,
+        "horizonDependenceRate": 0.7279,
+        "meanUtilitySpreadTimes100": 11781,
+        "meanGreedyRegretTimes100": 5583,
+        "uniqueOptimumRate": 0.5823
+      },
+      {
+        "level": 5,
+        "cases": 10699,
+        "meanLegalActionsTimes100": 671,
+        "meanEntitiesTimes100": 3234,
+        "meanRelationsTimes100": 2964,
+        "horizonDependenceRate": 0.7391,
+        "meanUtilitySpreadTimes100": 12634,
+        "meanGreedyRegretTimes100": 6206,
+        "uniqueOptimumRate": 0.5831
+      },
+      {
+        "level": 6,
+        "cases": 3570,
+        "meanLegalActionsTimes100": 672,
+        "meanEntitiesTimes100": 3634,
+        "meanRelationsTimes100": 3399,
+        "horizonDependenceRate": 0.7454,
+        "meanUtilitySpreadTimes100": 13617,
+        "meanGreedyRegretTimes100": 6866,
+        "uniqueOptimumRate": 0.5801
+      },
+      {
+        "level": 7,
+        "cases": 3574,
+        "meanLegalActionsTimes100": 670,
+        "meanEntitiesTimes100": 4033,
+        "meanRelationsTimes100": 3834,
+        "horizonDependenceRate": 0.765,
+        "meanUtilitySpreadTimes100": 14616,
+        "meanGreedyRegretTimes100": 7871,
+        "uniqueOptimumRate": 0.6016
+      }
+    ],
+    "structuralComplexityMonotone": true,
+    "l5HarderThanL2": true,
+    "l2GreedyRegretTimes100": 4456,
+    "l5GreedyRegretTimes100": 6206,
+    "calibrationPass": true,
+    "note": "Difficulty is measured by what a myopic chooser loses, not by the level label. A level that is not measurably harder than a lower one is a generator defect."
+  },
+  "boundary": {
+    "shapeCount": 15,
+    "shapes": [
+      {
+        "shape": "chain",
+        "minNodes": 3,
+        "probes": [
+          {
+            "requestedNodes": 1,
+            "realizedNodes": 3,
+            "edges": 2,
+            "clampedUp": true,
+            "hasEdges": true,
+            "seed": 1
+          },
+          {
+            "requestedNodes": 1,
+            "realizedNodes": 3,
+            "edges": 2,
+            "clampedUp": true,
+            "hasEdges": true,
+            "seed": 7
+          },
+          {
+            "requestedNodes": 3,
+            "realizedNodes": 3,
+            "edges": 2,
+            "clampedUp": true,
+            "hasEdges": true,
+            "seed": 1
+          },
+          {
+            "requestedNodes": 3,
+            "realizedNodes": 3,
+            "edges": 2,
+            "clampedUp": true,
+            "hasEdges": true,
+            "seed": 7
+          },
+          {
+            "requestedNodes": 4,
+            "realizedNodes": 4,
+            "edges": 3,
+            "clampedUp": true,
+            "hasEdges": true,
+            "seed": 1
+          },
+          {
+            "requestedNodes": 4,
+            "realizedNodes": 4,
+            "edges": 3,
+            "clampedUp": true,
+            "hasEdges": true,
+            "seed": 7
+          },
+          {
+            "requestedNodes": 12,
+            "realizedNodes": 12,
+            "edges": 11,
+            "clampedUp": true,
+            "hasEdges": true,
+            "seed": 1
+          },
+          {
+            "requestedNodes": 12,
+            "realizedNodes": 12,
+            "edges": 11,
+            "clampedUp": true,
+            "hasEdges": true,
+            "seed": 7
+          },
+          {
+            "requestedNodes": 32,
+            "realizedNodes": 32,
+            "edges": 31,
+            "clampedUp": true,
+            "hasEdges": true,
+            "seed": 1
+          },
+          {
+            "requestedNodes": 32,
+            "realizedNodes": 32,
+            "edges": 31,
+            "clampedUp": true,
+            "hasEdges": true,
+            "seed": 7
+          }
+        ],
+        "alwaysClamped": true,
+        "alwaysConnected": true,
+        "edgeCountMonotone": true
+      },
+      {
+        "shape": "tree",
+        "minNodes": 4,
+        "probes": [
+          {
+            "requestedNodes": 1,
+            "realizedNodes": 4,
+            "edges": 3,
+            "clampedUp": true,
+            "hasEdges": true,
+            "seed": 1
+          },
+          {
+            "requestedNodes": 1,
+            "realizedNodes": 4,
+            "edges": 3,
+            "clampedUp": true,
+            "hasEdges": true,
+            "seed": 7
+          },
+          {
+            "requestedNodes": 4,
+            "realizedNodes": 4,
+            "edges": 3,
+            "clampedUp": true,
+            "hasEdges": true,
+            "seed": 1
+          },
+          {
+            "requestedNodes": 4,
+            "realizedNodes": 4,
+            "edges": 3,
+            "clampedUp": true,
+            "hasEdges": true,
+            "seed": 7
+          },
+          {
+            "requestedNodes": 5,
+            "realizedNodes": 5,
+            "edges": 4,
+            "clampedUp": true,
+            "hasEdges": true,
+            "seed": 1
+          },
+          {
+            "requestedNodes": 5,
+            "realizedNodes": 5,
+            "edges": 4,
+            "clampedUp": true,
+            "hasEdges": true,
+            "seed": 7
+          },
+          {
+            "requestedNodes": 12,
+            "realizedNodes": 12,
+            "edges": 11,
+            "clampedUp": true,
+            "hasEdges": true,
+            "seed": 1
+          },
+          {
+            "requestedNodes": 12,
+            "realizedNodes": 12,
+            "edges": 11,
+            "clampedUp": true,
+            "hasEdges": true,
+            "seed": 7
+          },
+          {
+            "requestedNodes": 32,
+            "realizedNodes": 32,
+            "edges": 31,
+            "clampedUp": true,
+            "hasEdges": true,
+            "seed": 1
+          },
+          {
+            "requestedNodes": 32,
+            "realizedNodes": 32,
+            "edges": 31,
+            "clampedUp": true,
+            "hasEdges": true,
+            "seed": 7
+          }
+        ],
+        "alwaysClamped": true,
+        "alwaysConnected": true,
+        "edgeCountMonotone": true
+      },
+      {
+        "shape": "star",
+        "minNodes": 4,
+        "probes": [
+          {
+            "requestedNodes": 1,
+            "realizedNodes": 4,
+            "edges": 3,
+            "clampedUp": true,
+            "hasEdges": true,
+            "seed": 1
+          },
+          {
+            "requestedNodes": 1,
+            "realizedNodes": 4,
+            "edges": 3,
+            "clampedUp": true,
+            "hasEdges": true,
+            "seed": 7
+          },
+          {
+            "requestedNodes": 4,
+            "realizedNodes": 4,
+            "edges": 3,
+            "clampedUp": true,
+            "hasEdges": true,
+            "seed": 1
+          },
+          {
+            "requestedNodes": 4,
+            "realizedNodes": 4,
+            "edges": 3,
+            "clampedUp": true,
+            "hasEdges": true,
+            "seed": 7
+          },
+          {
+            "requestedNodes": 5,
+            "realizedNodes": 5,
+            "edges": 4,
+            "clampedUp": true,
+            "hasEdges": true,
+            "seed": 1
+          },
+          {
+            "requestedNodes": 5,
+            "realizedNodes": 5,
+            "edges": 4,
+            "clampedUp": true,
+            "hasEdges": true,
+            "seed": 7
+          },
+          {
+            "requestedNodes": 12,
+            "realizedNodes": 12,
+            "edges": 11,
+            "clampedUp": true,
+            "hasEdges": true,
+            "seed": 1
+          },
+          {
+            "requestedNodes": 12,
+            "realizedNodes": 12,
+            "edges": 11,
+            "clampedUp": true,
+            "hasEdges": true,
+            "seed": 7
+          },
+          {
+            "requestedNodes": 32,
+            "realizedNodes": 32,
+            "edges": 31,
+            "clampedUp": true,
+            "hasEdges": true,
+            "seed": 1
+          },
+          {
+            "requestedNodes": 32,
+            "realizedNodes": 32,
+            "edges": 31,
+            "clampedUp": true,
+            "hasEdges": true,
+            "seed": 7
+          }
+        ],
+        "alwaysClamped": true,
+        "alwaysConnected": true,
+        "edgeCountMonotone": true
+      },
+      {
+        "shape": "mesh",
+        "minNodes": 4,
+        "probes": [
+          {
+            "requestedNodes": 1,
+            "realizedNodes": 4,
+            "edges": 8,
+            "clampedUp": true,
+            "hasEdges": true,
+            "seed": 1
+          },
+          {
+            "requestedNodes": 1,
+            "realizedNodes": 4,
+            "edges": 8,
+            "clampedUp": true,
+            "hasEdges": true,
+            "seed": 7
+          },
+          {
+            "requestedNodes": 4,
+            "realizedNodes": 4,
+            "edges": 8,
+            "clampedUp": true,
+            "hasEdges": true,
+            "seed": 1
+          },
+          {
+            "requestedNodes": 4,
+            "realizedNodes": 4,
+            "edges": 8,
+            "clampedUp": true,
+            "hasEdges": true,
+            "seed": 7
+          },
+          {
+            "requestedNodes": 5,
+            "realizedNodes": 5,
+            "edges": 10,
+            "clampedUp": true,
+            "hasEdges": true,
+            "seed": 1
+          },
+          {
+            "requestedNodes": 5,
+            "realizedNodes": 5,
+            "edges": 10,
+            "clampedUp": true,
+            "hasEdges": true,
+            "seed": 7
+          },
+          {
+            "requestedNodes": 12,
+            "realizedNodes": 12,
+            "edges": 24,
+            "clampedUp": true,
+            "hasEdges": true,
+            "seed": 1
+          },
+          {
+            "requestedNodes": 12,
+            "realizedNodes": 12,
+            "edges": 24,
+            "clampedUp": true,
+            "hasEdges": true,
+            "seed": 7
+          },
+          {
+            "requestedNodes": 32,
+            "realizedNodes": 32,
+            "edges": 64,
+            "clampedUp": true,
+            "hasEdges": true,
+            "seed": 1
+          },
+          {
+            "requestedNodes": 32,
+            "realizedNodes": 32,
+            "edges": 64,
+            "clampedUp": true,
+            "hasEdges": true,
+            "seed": 7
+          }
+        ],
+        "alwaysClamped": true,
+        "alwaysConnected": true,
+        "edgeCountMonotone": true
+      },
+      {
+        "shape": "ring",
+        "minNodes": 3,
+        "probes": [
+          {
+            "requestedNodes": 1,
+            "realizedNodes": 3,
+            "edges": 3,
+            "clampedUp": true,
+            "hasEdges": true,
+            "seed": 1
+          },
+          {
+            "requestedNodes": 1,
+            "realizedNodes": 3,
+            "edges": 3,
+            "clampedUp": true,
+            "hasEdges": true,
+            "seed": 7
+          },
+          {
+            "requestedNodes": 3,
+            "realizedNodes": 3,
+            "edges": 3,
+            "clampedUp": true,
+            "hasEdges": true,
+            "seed": 1
+          },
+          {
+            "requestedNodes": 3,
+            "realizedNodes": 3,
+            "edges": 3,
+            "clampedUp": true,
+            "hasEdges": true,
+            "seed": 7
+          },
+          {
+            "requestedNodes": 4,
+            "realizedNodes": 4,
+            "edges": 4,
+            "clampedUp": true,
+            "hasEdges": true,
+            "seed": 1
+          },
+          {
+            "requestedNodes": 4,
+            "realizedNodes": 4,
+            "edges": 4,
+            "clampedUp": true,
+            "hasEdges": true,
+            "seed": 7
+          },
+          {
+            "requestedNodes": 12,
+            "realizedNodes": 12,
+            "edges": 12,
+            "clampedUp": true,
+            "hasEdges": true,
+            "seed": 1
+          },
+          {
+            "requestedNodes": 12,
+            "realizedNodes": 12,
+            "edges": 12,
+            "clampedUp": true,
+            "hasEdges": true,
+            "seed": 7
+          },
+          {
+            "requestedNodes": 32,
+            "realizedNodes": 32,
+            "edges": 32,
+            "clampedUp": true,
+            "hasEdges": true,
+            "seed": 1
+          },
+          {
+            "requestedNodes": 32,
+            "realizedNodes": 32,
+            "edges": 32,
+            "clampedUp": true,
+            "hasEdges": true,
+            "seed": 7
+          }
+        ],
+        "alwaysClamped": true,
+        "alwaysConnected": true,
+        "edgeCountMonotone": true
+      },
+      {
+        "shape": "multi_cycle",
+        "minNodes": 6,
+        "probes": [
+          {
+            "requestedNodes": 1,
+            "realizedNodes": 6,
+            "edges": 7,
+            "clampedUp": true,
+            "hasEdges": true,
+            "seed": 1
+          },
+          {
+            "requestedNodes": 1,
+            "realizedNodes": 6,
+            "edges": 7,
+            "clampedUp": true,
+            "hasEdges": true,
+            "seed": 7
+          },
+          {
+            "requestedNodes": 6,
+            "realizedNodes": 6,
+            "edges": 7,
+            "clampedUp": true,
+            "hasEdges": true,
+            "seed": 1
+          },
+          {
+            "requestedNodes": 6,
+            "realizedNodes": 6,
+            "edges": 7,
+            "clampedUp": true,
+            "hasEdges": true,
+            "seed": 7
+          },
+          {
+            "requestedNodes": 7,
+            "realizedNodes": 7,
+            "edges": 8,
+            "clampedUp": true,
+            "hasEdges": true,
+            "seed": 1
+          },
+          {
+            "requestedNodes": 7,
+            "realizedNodes": 7,
+            "edges": 8,
+            "clampedUp": true,
+            "hasEdges": true,
+            "seed": 7
+          },
+          {
+            "requestedNodes": 12,
+            "realizedNodes": 12,
+            "edges": 13,
+            "clampedUp": true,
+            "hasEdges": true,
+            "seed": 1
+          },
+          {
+            "requestedNodes": 12,
+            "realizedNodes": 12,
+            "edges": 13,
+            "clampedUp": true,
+            "hasEdges": true,
+            "seed": 7
+          },
+          {
+            "requestedNodes": 32,
+            "realizedNodes": 32,
+            "edges": 33,
+            "clampedUp": true,
+            "hasEdges": true,
+            "seed": 1
+          },
+          {
+            "requestedNodes": 32,
+            "realizedNodes": 32,
+            "edges": 33,
+            "clampedUp": true,
+            "hasEdges": true,
+            "seed": 7
+          }
+        ],
+        "alwaysClamped": true,
+        "alwaysConnected": true,
+        "edgeCountMonotone": true
+      },
+      {
+        "shape": "bridge",
+        "minNodes": 6,
+        "probes": [
+          {
+            "requestedNodes": 1,
+            "realizedNodes": 6,
+            "edges": 5,
+            "clampedUp": true,
+            "hasEdges": true,
+            "seed": 1
+          },
+          {
+            "requestedNodes": 1,
+            "realizedNodes": 6,
+            "edges": 5,
+            "clampedUp": true,
+            "hasEdges": true,
+            "seed": 7
+          },
+          {
+            "requestedNodes": 6,
+            "realizedNodes": 6,
+            "edges": 5,
+            "clampedUp": true,
+            "hasEdges": true,
+            "seed": 1
+          },
+          {
+            "requestedNodes": 6,
+            "realizedNodes": 6,
+            "edges": 5,
+            "clampedUp": true,
+            "hasEdges": true,
+            "seed": 7
+          },
+          {
+            "requestedNodes": 7,
+            "realizedNodes": 7,
+            "edges": 6,
+            "clampedUp": true,
+            "hasEdges": true,
+            "seed": 1
+          },
+          {
+            "requestedNodes": 7,
+            "realizedNodes": 7,
+            "edges": 6,
+            "clampedUp": true,
+            "hasEdges": true,
+            "seed": 7
+          },
+          {
+            "requestedNodes": 12,
+            "realizedNodes": 12,
+            "edges": 11,
+            "clampedUp": true,
+            "hasEdges": true,
+            "seed": 1
+          },
+          {
+            "requestedNodes": 12,
+            "realizedNodes": 12,
+            "edges": 11,
+            "clampedUp": true,
+            "hasEdges": true,
+            "seed": 7
+          },
+          {
+            "requestedNodes": 32,
+            "realizedNodes": 32,
+            "edges": 31,
+            "clampedUp": true,
+            "hasEdges": true,
+            "seed": 1
+          },
+          {
+            "requestedNodes": 32,
+            "realizedNodes": 32,
+            "edges": 31,
+            "clampedUp": true,
+            "hasEdges": true,
+            "seed": 7
+          }
+        ],
+        "alwaysClamped": true,
+        "alwaysConnected": true,
+        "edgeCountMonotone": true
+      },
+      {
+        "shape": "hub_and_spoke",
+        "minNodes": 6,
+        "probes": [
+          {
+            "requestedNodes": 1,
+            "realizedNodes": 6,
+            "edges": 5,
+            "clampedUp": true,
+            "hasEdges": true,
+            "seed": 1
+          },
+          {
+            "requestedNodes": 1,
+            "realizedNodes": 6,
+            "edges": 5,
+            "clampedUp": true,
+            "hasEdges": true,
+            "seed": 7
+          },
+          {
+            "requestedNodes": 6,
+            "realizedNodes": 6,
+            "edges": 5,
+            "clampedUp": true,
+            "hasEdges": true,
+            "seed": 1
+          },
+          {
+            "requestedNodes": 6,
+            "realizedNodes": 6,
+            "edges": 5,
+            "clampedUp": true,
+            "hasEdges": true,
+            "seed": 7
+          },
+          {
+            "requestedNodes": 7,
+            "realizedNodes": 7,
+            "edges": 6,
+            "clampedUp": true,
+            "hasEdges": true,
+            "seed": 1
+          },
+          {
+            "requestedNodes": 7,
+            "realizedNodes": 7,
+            "edges": 6,
+            "clampedUp": true,
+            "hasEdges": true,
+            "seed": 7
+          },
+          {
+            "requestedNodes": 12,
+            "realizedNodes": 12,
+            "edges": 11,
+            "clampedUp": true,
+            "hasEdges": true,
+            "seed": 1
+          },
+          {
+            "requestedNodes": 12,
+            "realizedNodes": 12,
+            "edges": 11,
+            "clampedUp": true,
+            "hasEdges": true,
+            "seed": 7
+          },
+          {
+            "requestedNodes": 32,
+            "realizedNodes": 32,
+            "edges": 31,
+            "clampedUp": true,
+            "hasEdges": true,
+            "seed": 1
+          },
+          {
+            "requestedNodes": 32,
+            "realizedNodes": 32,
+            "edges": 31,
+            "clampedUp": true,
+            "hasEdges": true,
+            "seed": 7
+          }
+        ],
+        "alwaysClamped": true,
+        "alwaysConnected": true,
+        "edgeCountMonotone": true
+      },
+      {
+        "shape": "parallel_dependency",
+        "minNodes": 5,
+        "probes": [
+          {
+            "requestedNodes": 1,
+            "realizedNodes": 5,
+            "edges": 4,
+            "clampedUp": true,
+            "hasEdges": true,
+            "seed": 1
+          },
+          {
+            "requestedNodes": 1,
+            "realizedNodes": 5,
+            "edges": 4,
+            "clampedUp": true,
+            "hasEdges": true,
+            "seed": 7
+          },
+          {
+            "requestedNodes": 5,
+            "realizedNodes": 5,
+            "edges": 4,
+            "clampedUp": true,
+            "hasEdges": true,
+            "seed": 1
+          },
+          {
+            "requestedNodes": 5,
+            "realizedNodes": 5,
+            "edges": 4,
+            "clampedUp": true,
+            "hasEdges": true,
+            "seed": 7
+          },
+          {
+            "requestedNodes": 6,
+            "realizedNodes": 6,
+            "edges": 4,
+            "clampedUp": true,
+            "hasEdges": true,
+            "seed": 1
+          },
+          {
+            "requestedNodes": 6,
+            "realizedNodes": 6,
+            "edges": 4,
+            "clampedUp": true,
+            "hasEdges": true,
+            "seed": 7
+          },
+          {
+            "requestedNodes": 12,
+            "realizedNodes": 12,
+            "edges": 8,
+            "clampedUp": true,
+            "hasEdges": true,
+            "seed": 1
+          },
+          {
+            "requestedNodes": 12,
+            "realizedNodes": 12,
+            "edges": 8,
+            "clampedUp": true,
+            "hasEdges": true,
+            "seed": 7
+          },
+          {
+            "requestedNodes": 32,
+            "realizedNodes": 32,
+            "edges": 28,
+            "clampedUp": true,
+            "hasEdges": true,
+            "seed": 1
+          },
+          {
+            "requestedNodes": 32,
+            "realizedNodes": 32,
+            "edges": 28,
+            "clampedUp": true,
+            "hasEdges": true,
+            "seed": 7
+          }
+        ],
+        "alwaysClamped": true,
+        "alwaysConnected": true,
+        "edgeCountMonotone": true
+      },
+      {
+        "shape": "redundant_network",
+        "minNodes": 5,
+        "probes": [
+          {
+            "requestedNodes": 1,
+            "realizedNodes": 5,
+            "edges": 8,
+            "clampedUp": true,
+            "hasEdges": true,
+            "seed": 1
+          },
+          {
+            "requestedNodes": 1,
+            "realizedNodes": 5,
+            "edges": 8,
+            "clampedUp": true,
+            "hasEdges": true,
+            "seed": 7
+          },
+          {
+            "requestedNodes": 5,
+            "realizedNodes": 5,
+            "edges": 8,
+            "clampedUp": true,
+            "hasEdges": true,
+            "seed": 1
+          },
+          {
+            "requestedNodes": 5,
+            "realizedNodes": 5,
+            "edges": 8,
+            "clampedUp": true,
+            "hasEdges": true,
+            "seed": 7
+          },
+          {
+            "requestedNodes": 6,
+            "realizedNodes": 6,
+            "edges": 10,
+            "clampedUp": true,
+            "hasEdges": true,
+            "seed": 1
+          },
+          {
+            "requestedNodes": 6,
+            "realizedNodes": 6,
+            "edges": 10,
+            "clampedUp": true,
+            "hasEdges": true,
+            "seed": 7
+          },
+          {
+            "requestedNodes": 12,
+            "realizedNodes": 12,
+            "edges": 22,
+            "clampedUp": true,
+            "hasEdges": true,
+            "seed": 1
+          },
+          {
+            "requestedNodes": 12,
+            "realizedNodes": 12,
+            "edges": 22,
+            "clampedUp": true,
+            "hasEdges": true,
+            "seed": 7
+          },
+          {
+            "requestedNodes": 32,
+            "realizedNodes": 32,
+            "edges": 62,
+            "clampedUp": true,
+            "hasEdges": true,
+            "seed": 1
+          },
+          {
+            "requestedNodes": 32,
+            "realizedNodes": 32,
+            "edges": 62,
+            "clampedUp": true,
+            "hasEdges": true,
+            "seed": 7
+          }
+        ],
+        "alwaysClamped": true,
+        "alwaysConnected": true,
+        "edgeCountMonotone": true
+      },
+      {
+        "shape": "nested_dependency",
+        "minNodes": 6,
+        "probes": [
+          {
+            "requestedNodes": 1,
+            "realizedNodes": 6,
+            "edges": 5,
+            "clampedUp": true,
+            "hasEdges": true,
+            "seed": 1
+          },
+          {
+            "requestedNodes": 1,
+            "realizedNodes": 6,
+            "edges": 5,
+            "clampedUp": true,
+            "hasEdges": true,
+            "seed": 7
+          },
+          {
+            "requestedNodes": 6,
+            "realizedNodes": 6,
+            "edges": 5,
+            "clampedUp": true,
+            "hasEdges": true,
+            "seed": 1
+          },
+          {
+            "requestedNodes": 6,
+            "realizedNodes": 6,
+            "edges": 5,
+            "clampedUp": true,
+            "hasEdges": true,
+            "seed": 7
+          },
+          {
+            "requestedNodes": 7,
+            "realizedNodes": 7,
+            "edges": 6,
+            "clampedUp": true,
+            "hasEdges": true,
+            "seed": 1
+          },
+          {
+            "requestedNodes": 7,
+            "realizedNodes": 7,
+            "edges": 6,
+            "clampedUp": true,
+            "hasEdges": true,
+            "seed": 7
+          },
+          {
+            "requestedNodes": 12,
+            "realizedNodes": 12,
+            "edges": 11,
+            "clampedUp": true,
+            "hasEdges": true,
+            "seed": 1
+          },
+          {
+            "requestedNodes": 12,
+            "realizedNodes": 12,
+            "edges": 11,
+            "clampedUp": true,
+            "hasEdges": true,
+            "seed": 7
+          },
+          {
+            "requestedNodes": 32,
+            "realizedNodes": 32,
+            "edges": 31,
+            "clampedUp": true,
+            "hasEdges": true,
+            "seed": 1
+          },
+          {
+            "requestedNodes": 32,
+            "realizedNodes": 32,
+            "edges": 31,
+            "clampedUp": true,
+            "hasEdges": true,
+            "seed": 7
+          }
+        ],
+        "alwaysClamped": true,
+        "alwaysConnected": true,
+        "edgeCountMonotone": true
+      },
+      {
+        "shape": "multi_settlement",
+        "minNodes": 8,
+        "probes": [
+          {
+            "requestedNodes": 1,
+            "realizedNodes": 8,
+            "edges": 7,
+            "clampedUp": true,
+            "hasEdges": true,
+            "seed": 1
+          },
+          {
+            "requestedNodes": 1,
+            "realizedNodes": 8,
+            "edges": 7,
+            "clampedUp": true,
+            "hasEdges": true,
+            "seed": 7
+          },
+          {
+            "requestedNodes": 8,
+            "realizedNodes": 8,
+            "edges": 7,
+            "clampedUp": true,
+            "hasEdges": true,
+            "seed": 1
+          },
+          {
+            "requestedNodes": 8,
+            "realizedNodes": 8,
+            "edges": 7,
+            "clampedUp": true,
+            "hasEdges": true,
+            "seed": 7
+          },
+          {
+            "requestedNodes": 9,
+            "realizedNodes": 9,
+            "edges": 7,
+            "clampedUp": true,
+            "hasEdges": true,
+            "seed": 1
+          },
+          {
+            "requestedNodes": 9,
+            "realizedNodes": 9,
+            "edges": 7,
+            "clampedUp": true,
+            "hasEdges": true,
+            "seed": 7
+          },
+          {
+            "requestedNodes": 12,
+            "realizedNodes": 12,
+            "edges": 11,
+            "clampedUp": true,
+            "hasEdges": true,
+            "seed": 1
+          },
+          {
+            "requestedNodes": 12,
+            "realizedNodes": 12,
+            "edges": 11,
+            "clampedUp": true,
+            "hasEdges": true,
+            "seed": 7
+          },
+          {
+            "requestedNodes": 32,
+            "realizedNodes": 32,
+            "edges": 31,
+            "clampedUp": true,
+            "hasEdges": true,
+            "seed": 1
+          },
+          {
+            "requestedNodes": 32,
+            "realizedNodes": 32,
+            "edges": 31,
+            "clampedUp": true,
+            "hasEdges": true,
+            "seed": 7
+          }
+        ],
+        "alwaysClamped": true,
+        "alwaysConnected": true,
+        "edgeCountMonotone": true
+      },
+      {
+        "shape": "disconnected_islands",
+        "minNodes": 6,
+        "probes": [
+          {
+            "requestedNodes": 1,
+            "realizedNodes": 6,
+            "edges": 4,
+            "clampedUp": true,
+            "hasEdges": true,
+            "seed": 1
+          },
+          {
+            "requestedNodes": 1,
+            "realizedNodes": 6,
+            "edges": 4,
+            "clampedUp": true,
+            "hasEdges": true,
+            "seed": 7
+          },
+          {
+            "requestedNodes": 6,
+            "realizedNodes": 6,
+            "edges": 4,
+            "clampedUp": true,
+            "hasEdges": true,
+            "seed": 1
+          },
+          {
+            "requestedNodes": 6,
+            "realizedNodes": 6,
+            "edges": 4,
+            "clampedUp": true,
+            "hasEdges": true,
+            "seed": 7
+          },
+          {
+            "requestedNodes": 7,
+            "realizedNodes": 7,
+            "edges": 4,
+            "clampedUp": true,
+            "hasEdges": true,
+            "seed": 1
+          },
+          {
+            "requestedNodes": 7,
+            "realizedNodes": 7,
+            "edges": 4,
+            "clampedUp": true,
+            "hasEdges": true,
+            "seed": 7
+          },
+          {
+            "requestedNodes": 12,
+            "realizedNodes": 12,
+            "edges": 8,
+            "clampedUp": true,
+            "hasEdges": true,
+            "seed": 1
+          },
+          {
+            "requestedNodes": 12,
+            "realizedNodes": 12,
+            "edges": 8,
+            "clampedUp": true,
+            "hasEdges": true,
+            "seed": 7
+          },
+          {
+            "requestedNodes": 32,
+            "realizedNodes": 32,
+            "edges": 20,
+            "clampedUp": true,
+            "hasEdges": true,
+            "seed": 1
+          },
+          {
+            "requestedNodes": 32,
+            "realizedNodes": 32,
+            "edges": 20,
+            "clampedUp": true,
+            "hasEdges": true,
+            "seed": 7
+          }
+        ],
+        "alwaysClamped": true,
+        "alwaysConnected": true,
+        "edgeCountMonotone": true
+      },
+      {
+        "shape": "contested_bottleneck",
+        "minNodes": 7,
+        "probes": [
+          {
+            "requestedNodes": 1,
+            "realizedNodes": 7,
+            "edges": 6,
+            "clampedUp": true,
+            "hasEdges": true,
+            "seed": 1
+          },
+          {
+            "requestedNodes": 1,
+            "realizedNodes": 7,
+            "edges": 6,
+            "clampedUp": true,
+            "hasEdges": true,
+            "seed": 7
+          },
+          {
+            "requestedNodes": 7,
+            "realizedNodes": 7,
+            "edges": 6,
+            "clampedUp": true,
+            "hasEdges": true,
+            "seed": 1
+          },
+          {
+            "requestedNodes": 7,
+            "realizedNodes": 7,
+            "edges": 6,
+            "clampedUp": true,
+            "hasEdges": true,
+            "seed": 7
+          },
+          {
+            "requestedNodes": 8,
+            "realizedNodes": 8,
+            "edges": 7,
+            "clampedUp": true,
+            "hasEdges": true,
+            "seed": 1
+          },
+          {
+            "requestedNodes": 8,
+            "realizedNodes": 8,
+            "edges": 7,
+            "clampedUp": true,
+            "hasEdges": true,
+            "seed": 7
+          },
+          {
+            "requestedNodes": 12,
+            "realizedNodes": 12,
+            "edges": 11,
+            "clampedUp": true,
+            "hasEdges": true,
+            "seed": 1
+          },
+          {
+            "requestedNodes": 12,
+            "realizedNodes": 12,
+            "edges": 11,
+            "clampedUp": true,
+            "hasEdges": true,
+            "seed": 7
+          },
+          {
+            "requestedNodes": 32,
+            "realizedNodes": 32,
+            "edges": 31,
+            "clampedUp": true,
+            "hasEdges": true,
+            "seed": 1
+          },
+          {
+            "requestedNodes": 32,
+            "realizedNodes": 32,
+            "edges": 31,
+            "clampedUp": true,
+            "hasEdges": true,
+            "seed": 7
+          }
+        ],
+        "alwaysClamped": true,
+        "alwaysConnected": true,
+        "edgeCountMonotone": true
+      },
+      {
+        "shape": "layered_infrastructure",
+        "minNodes": 8,
+        "probes": [
+          {
+            "requestedNodes": 1,
+            "realizedNodes": 8,
+            "edges": 4,
+            "clampedUp": true,
+            "hasEdges": true,
+            "seed": 1
+          },
+          {
+            "requestedNodes": 1,
+            "realizedNodes": 8,
+            "edges": 4,
+            "clampedUp": true,
+            "hasEdges": true,
+            "seed": 7
+          },
+          {
+            "requestedNodes": 8,
+            "realizedNodes": 8,
+            "edges": 4,
+            "clampedUp": true,
+            "hasEdges": true,
+            "seed": 1
+          },
+          {
+            "requestedNodes": 8,
+            "realizedNodes": 8,
+            "edges": 4,
+            "clampedUp": true,
+            "hasEdges": true,
+            "seed": 7
+          },
+          {
+            "requestedNodes": 9,
+            "realizedNodes": 9,
+            "edges": 6,
+            "clampedUp": true,
+            "hasEdges": true,
+            "seed": 1
+          },
+          {
+            "requestedNodes": 9,
+            "realizedNodes": 9,
+            "edges": 6,
+            "clampedUp": true,
+            "hasEdges": true,
+            "seed": 7
+          },
+          {
+            "requestedNodes": 12,
+            "realizedNodes": 12,
+            "edges": 9,
+            "clampedUp": true,
+            "hasEdges": true,
+            "seed": 1
+          },
+          {
+            "requestedNodes": 12,
+            "realizedNodes": 12,
+            "edges": 9,
+            "clampedUp": true,
+            "hasEdges": true,
+            "seed": 7
+          },
+          {
+            "requestedNodes": 32,
+            "realizedNodes": 32,
+            "edges": 24,
+            "clampedUp": true,
+            "hasEdges": true,
+            "seed": 1
+          },
+          {
+            "requestedNodes": 32,
+            "realizedNodes": 32,
+            "edges": 24,
+            "clampedUp": true,
+            "hasEdges": true,
+            "seed": 7
+          }
+        ],
+        "alwaysClamped": true,
+        "alwaysConnected": true,
+        "edgeCountMonotone": true
+      }
+    ],
+    "allClamped": true,
+    "allProduceEdges": true,
+    "boundaryAuditPass": true,
+    "note": "Every shape is probed below its minimum, at it, just above it, and at two larger sizes. A shape that degenerates at an extreme would produce a mislabelled corpus at that extreme, which is how three Stage 2L generator defects reached certification."
+  }
+}

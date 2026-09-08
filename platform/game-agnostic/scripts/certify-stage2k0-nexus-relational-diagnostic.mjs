@@ -34,7 +34,7 @@ const [baselineManifest, runtime, campaign, stage2i0, stage2j1] = await Promise.
   readJson(path.join(root, 'artifacts/stage2i0-capability-baseline/stage2i0-certification-result.json')),
   readJson(path.join(root, 'artifacts/stage2j1-bounded-two-step-prime/stage2j1-certification-result.json')),
 ]));
-const verification = await verifyDeclaredRuntime({ baseline: baselineManifest, runtimeIdentity: runtime, sentinelRoot: path.resolve(root, '../..'), zeknovaRoot: process.env.ZEKNOVA_ROOT || '/Users/dwaynecampbell/Desktop/zeknova-shared-gaming-experience' });
+const verification = await verifyDeclaredRuntime({ baseline: baselineManifest, runtimeIdentity: runtime, sentinelRoot: path.resolve(root, '../..'), zeknovaRoot: process.env.ZEKNOVA_ROOT ?? null });
 if (!verification.declaredEqualsMeasured) throw new Error('STAGE2K0_BLOCKED_BY_RUNTIME_DRIFT');
 if (!stage2i0.stage2i0Certified || stage2i0.certificationHash !== '7ac8077b322c1d763ff0dc9442d8462f7cc4340d71cbdae1696b352a1571a77a') throw new Error('STAGE2K0_BLOCKED_BY_STAGE2I0_CERTIFICATION_DRIFT');
 if (!stage2j1.stage2j1Certified || stage2j1.certificationHash !== STAGE2K0_STAGE2J1_CERTIFICATION_HASH) throw new Error('STAGE2K0_BLOCKED_BY_STAGE2J1_CERTIFICATION_DRIFT');

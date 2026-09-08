@@ -1,0 +1,209 @@
+{
+  "stage": "STAGE2L19_ORACLE_MULTI_HEAD_QUALIFICATION",
+  "implementedHeadIds": [
+    "abstention",
+    "cycle",
+    "direction",
+    "persistence",
+    "regimeChange",
+    "reversal",
+    "timeToThreshold",
+    "volatility"
+  ],
+  "declaredHeadIds": [
+    "abstention",
+    "cycle",
+    "direction",
+    "persistence",
+    "regimeChange",
+    "reversal",
+    "timeToThreshold",
+    "volatility"
+  ],
+  "inventoryMatchesImplementation": true,
+  "headCount": 8,
+  "compositionRules": "ORACLE_V2_EXPERIMENTAL",
+  "actionMappingDeclared": false,
+  "forbiddenActionFieldsPresent": [],
+  "advisoryOnly": true,
+  "authority": {
+    "tier": "R0",
+    "canDispatch": false,
+    "canMutateLiveWorld": false
+  },
+  "heads": [
+    {
+      "headId": "direction",
+      "headName": "DIRECTION_HEAD",
+      "implementation": "STAGE2I2_LAST_MINUS_FIRST",
+      "inputs": [
+        "observationHistory.channels"
+      ],
+      "outputs": [
+        "UP",
+        "DOWN",
+        "STABLE"
+      ],
+      "taskSemantics": "Sign of net change across the observation window.",
+      "abstentionSemantics": "INSUFFICIENT_EVIDENCE when global sufficiency suppresses the head.",
+      "confidenceFields": [
+        "confidence"
+      ],
+      "arbiterEligibility": "CERTIFIED_STAGE2L10_SELECTIVE_DELEGATION",
+      "certificationStatus": "CERTIFIED_DIRECTION_HEAD"
+    },
+    {
+      "headId": "persistence",
+      "headName": "PERSISTENCE_HEAD",
+      "implementation": "BOUNDED_INTERRUPTION_TOLERANCE",
+      "inputs": [
+        "observationHistory.channels"
+      ],
+      "outputs": [
+        "PERSISTENT",
+        "NON_PERSISTENT",
+        "INSUFFICIENT_EVIDENCE"
+      ],
+      "taskSemantics": "Whether a direction is sustained despite bounded interruptions.",
+      "abstentionSemantics": "Emits INSUFFICIENT_EVIDENCE on its own account.",
+      "confidenceFields": [
+        "confidence"
+      ],
+      "arbiterEligibility": "NOT_WIRED",
+      "certificationStatus": "UNCERTIFIED"
+    },
+    {
+      "headId": "reversal",
+      "headName": "REVERSAL_HEAD",
+      "implementation": "STAGE2I2_FROZEN",
+      "inputs": [
+        "observationHistory.channels"
+      ],
+      "outputs": [
+        "REVERSAL",
+        "NO_REVERSAL"
+      ],
+      "taskSemantics": "Whether the recent direction opposes the earlier direction.",
+      "abstentionSemantics": "Suppressed by global sufficiency only.",
+      "confidenceFields": [
+        "confidence"
+      ],
+      "arbiterEligibility": "NOT_WIRED",
+      "certificationStatus": "UNCERTIFIED"
+    },
+    {
+      "headId": "regimeChange",
+      "headName": "REGIME_CHANGE_HEAD",
+      "implementation": "DIMENSION_AWARE_WITH_ANOMALY_FILTER",
+      "inputs": [
+        "observationHistory.channels"
+      ],
+      "outputs": [
+        "TREND_CHANGE",
+        "LEVEL_CHANGE",
+        "CYCLE_CHANGE",
+        "MULTIPLE_CHANGE",
+        "NO_CHANGE",
+        "INSUFFICIENT_EVIDENCE"
+      ],
+      "taskSemantics": "Whether the generating process changed, and along which dimension.",
+      "abstentionSemantics": "Emits INSUFFICIENT_EVIDENCE on its own account.",
+      "confidenceFields": [
+        "confidence"
+      ],
+      "arbiterEligibility": "NOT_WIRED",
+      "certificationStatus": "UNCERTIFIED"
+    },
+    {
+      "headId": "volatility",
+      "headName": "VOLATILITY_HEAD",
+      "implementation": "STAGE2I2_FROZEN",
+      "inputs": [
+        "observationHistory.channels"
+      ],
+      "outputs": [
+        "HIGH_VOLATILITY",
+        "LOW_VOLATILITY"
+      ],
+      "taskSemantics": "Instability magnitude. Explicitly not a value polarity.",
+      "abstentionSemantics": "Suppressed by global sufficiency only.",
+      "confidenceFields": [
+        "confidence"
+      ],
+      "arbiterEligibility": "NOT_WIRED",
+      "certificationStatus": "UNCERTIFIED"
+    },
+    {
+      "headId": "cycle",
+      "headName": "CYCLE_HEAD",
+      "implementation": "STAGE2I2_FROZEN",
+      "inputs": [
+        "observationHistory.channels"
+      ],
+      "outputs": [
+        "CYCLICAL",
+        "NOT_CYCLICAL"
+      ],
+      "taskSemantics": "Whether the series repeats with a detectable period.",
+      "abstentionSemantics": "Suppressed by global sufficiency only.",
+      "confidenceFields": [
+        "confidence"
+      ],
+      "arbiterEligibility": "NOT_WIRED",
+      "certificationStatus": "UNCERTIFIED"
+    },
+    {
+      "headId": "timeToThreshold",
+      "headName": "TIME_TO_THRESHOLD_HEAD",
+      "implementation": "STAGE2I2_FROZEN",
+      "inputs": [
+        "observationHistory.channels",
+        "channelSemantics.threshold",
+        "channelSemantics.polarity"
+      ],
+      "outputs": [
+        "ALREADY_CROSSED",
+        "NOT_CROSSING",
+        "INSUFFICIENT_EVIDENCE"
+      ],
+      "taskSemantics": "How soon a channel crosses a declared threshold.",
+      "abstentionSemantics": "Hard-suppressed to SUPPRESSED_MISSING_THRESHOLD_SEMANTICS when no threshold is declared.",
+      "confidenceFields": [
+        "confidence"
+      ],
+      "arbiterEligibility": "NOT_WIRED",
+      "certificationStatus": "UNCERTIFIED"
+    },
+    {
+      "headId": "abstention",
+      "headName": "ABSTENTION_HEAD",
+      "implementation": "STAGE2I2_FROZEN",
+      "inputs": [
+        "observationHistory"
+      ],
+      "outputs": [
+        "ENOUGH_EVIDENCE",
+        "INSUFFICIENT_EVIDENCE"
+      ],
+      "taskSemantics": "Whether the history supports any temporal claim. Gates the other heads.",
+      "abstentionSemantics": "Is itself the abstention mechanism.",
+      "confidenceFields": [
+        "confidence"
+      ],
+      "arbiterEligibility": "GLOBAL_SUFFICIENCY_GATE",
+      "certificationStatus": "UNCERTIFIED"
+    }
+  ],
+  "certifiedHeadIds": [
+    "direction"
+  ],
+  "uncertifiedHeadIds": [
+    "persistence",
+    "reversal",
+    "regimeChange",
+    "volatility",
+    "cycle",
+    "timeToThreshold",
+    "abstention"
+  ]
+}

@@ -1,0 +1,1425 @@
+{
+  "stage": "STAGE2L10_ARBITER_CORRECTNESS_CALIBRATION_AND_SELECTIVE_DELEGATION",
+  "evidenceDigest": "354fa1d701f89d5118fb973233dca5bf7aa066df72642d6239156b38de91089d",
+  "corpus": {
+    "holdoutCases": 22750,
+    "calibrationCases": 8450,
+    "effectiveSemanticGroups": 22750,
+    "semanticFamilyLeakage": false,
+    "corpusOverlap": 0,
+    "calibrationHoldoutSeparate": true,
+    "groundTruthIndependentOfExpertOutput": true,
+    "groundTruthIndependentOfArbiterOutput": true,
+    "oracleCases": 7000,
+    "nexusCases": 7000,
+    "controlCases": 3500,
+    "adversarialCases": 3000,
+    "attestationAttackCases": 2250,
+    "oracleRegimes": [
+      "STRONG_RISE",
+      "STRONG_FALL",
+      "EXACT_FLAT",
+      "WEAK_RISE",
+      "WEAK_FALL",
+      "ZERO_DRIFT_OSCILLATION",
+      "LATE_REVERSAL_NET_RISE",
+      "MEAN_REVERTING_LATE_DISPLACEMENT",
+      "NOISY_STRONG_RISE",
+      "MICRO_DRIFT_UP",
+      "MICRO_DRIFT_DOWN",
+      "STEP_LEVEL_SHIFT"
+    ],
+    "newStressRegimes": [
+      "LATE_REVERSAL_NET_RISE",
+      "MEAN_REVERTING_LATE_DISPLACEMENT",
+      "NOISY_STRONG_RISE",
+      "MICRO_DRIFT_UP",
+      "MICRO_DRIFT_DOWN",
+      "STEP_LEVEL_SHIFT"
+    ],
+    "holdoutCorpusDigest": "ed8268b02dcac27403a25195594c98edacd0b55adefc6f82414e3fc5742a5ff3",
+    "calibrationCorpusDigest": "08e8210f38b059dc3b621215636df37eabf9c7fe3407fad7c064e88d33a0229d"
+  },
+  "calibration": {
+    "frozenCalibrationDigest": "94e94ec145cc97e4779f789f65bffe1996afab0821b070a8c3ec6ca551fa0b79",
+    "derivedCalibrationDigest": "76c712157e6797218ca5ee92e11df21d1353db14647d7f36a29c91348b22461a",
+    "frozenReproducedFromCalibrationCorpus": true,
+    "minBucketReliability": 0.99,
+    "minBucketSamples": 60,
+    "oracleParameters": {
+      "ratioNumerator": 3,
+      "ratioDenominator": 2,
+      "minFullSlopeMicro": 500,
+      "primeProtectionMarginMicro": 30000
+    },
+    "nexusParameters": {
+      "minWideFanEntityCount": 6,
+      "primeProtectionMarginMicro": 30000
+    },
+    "oracleBuckets": {
+      "ORACLE_UNSUPPORTED_HEAD": {
+        "opportunities": 82,
+        "expertCorrect": 82,
+        "expertWrong": 0,
+        "reliability": 1,
+        "calibrated": true,
+        "structurallyEligible": false,
+        "delegates": false
+      },
+      "ORACLE_STABLE_EXACT": {
+        "opportunities": 117,
+        "expertCorrect": 117,
+        "expertWrong": 0,
+        "reliability": 1,
+        "calibrated": true,
+        "structurallyEligible": true,
+        "delegates": true
+      },
+      "ORACLE_STABLE_UNSTEADY": {
+        "opportunities": 148,
+        "expertCorrect": 0,
+        "expertWrong": 148,
+        "reliability": 0,
+        "calibrated": true,
+        "structurallyEligible": false,
+        "delegates": false
+      },
+      "ORACLE_DIRECTIONAL_FULL_WINDOW_FLAT": {
+        "opportunities": 202,
+        "expertCorrect": 0,
+        "expertWrong": 202,
+        "reliability": 0,
+        "calibrated": true,
+        "structurallyEligible": true,
+        "delegates": false
+      },
+      "ORACLE_DIRECTIONAL_CONTRADICTED": {
+        "opportunities": 207,
+        "expertCorrect": 25,
+        "expertWrong": 182,
+        "reliability": 0.120773,
+        "calibrated": true,
+        "structurallyEligible": true,
+        "delegates": false
+      },
+      "ORACLE_DIRECTIONAL_RECENT_DOMINATED": {
+        "opportunities": 265,
+        "expertCorrect": 55,
+        "expertWrong": 210,
+        "reliability": 0.207547,
+        "calibrated": true,
+        "structurallyEligible": true,
+        "delegates": false
+      },
+      "ORACLE_DIRECTIONAL_COHERENT": {
+        "opportunities": 449,
+        "expertCorrect": 449,
+        "expertWrong": 0,
+        "reliability": 1,
+        "calibrated": true,
+        "structurallyEligible": true,
+        "delegates": true
+      }
+    },
+    "nexusBuckets": {
+      "NEXUS_NO_STRUCTURAL_CRITICALITY": {
+        "opportunities": 0,
+        "expertCorrect": 0,
+        "expertWrong": 0,
+        "reliability": null,
+        "calibrated": false,
+        "structurallyEligible": false,
+        "delegates": false
+      },
+      "NEXUS_REDUNDANT_PATH": {
+        "opportunities": 0,
+        "expertCorrect": 0,
+        "expertWrong": 0,
+        "reliability": null,
+        "calibrated": false,
+        "structurallyEligible": true,
+        "delegates": false
+      },
+      "NEXUS_MULTIPLE_CRITICAL_NODES": {
+        "opportunities": 364,
+        "expertCorrect": 190,
+        "expertWrong": 174,
+        "reliability": 0.521978,
+        "calibrated": true,
+        "structurallyEligible": true,
+        "delegates": false
+      },
+      "NEXUS_WIDE_FAN_CRITICAL": {
+        "opportunities": 371,
+        "expertCorrect": 202,
+        "expertWrong": 169,
+        "reliability": 0.544474,
+        "calibrated": true,
+        "structurallyEligible": true,
+        "delegates": false
+      },
+      "NEXUS_SOLE_CRITICAL_NODE": {
+        "opportunities": 349,
+        "expertCorrect": 183,
+        "expertWrong": 166,
+        "reliability": 0.524355,
+        "calibrated": true,
+        "structurallyEligible": true,
+        "delegates": false
+      }
+    },
+    "oracleDelegatingBuckets": [
+      "ORACLE_STABLE_EXACT",
+      "ORACLE_DIRECTIONAL_COHERENT"
+    ],
+    "nexusDelegatingBuckets": [],
+    "structurallyIneligibleBuckets": [
+      "ORACLE_UNSUPPORTED_HEAD",
+      "ORACLE_STABLE_UNSTEADY",
+      "NEXUS_NO_STRUCTURAL_CRITICALITY"
+    ],
+    "oraclePrimeProtection": {
+      "bandHarm": [
+        {
+          "band": "Q_MARGIN_0_005",
+          "marginMicro": 5000,
+          "delegations": 96,
+          "harmfulDelegations": 0,
+          "harmRate": 0
+        },
+        {
+          "band": "Q_MARGIN_0_010",
+          "marginMicro": 10000,
+          "delegations": 104,
+          "harmfulDelegations": 0,
+          "harmRate": 0
+        },
+        {
+          "band": "Q_MARGIN_0_015",
+          "marginMicro": 15000,
+          "delegations": 89,
+          "harmfulDelegations": 0,
+          "harmRate": 0
+        },
+        {
+          "band": "Q_MARGIN_0_020",
+          "marginMicro": 20000,
+          "delegations": 86,
+          "harmfulDelegations": 0,
+          "harmRate": 0
+        },
+        {
+          "band": "Q_MARGIN_0_025",
+          "marginMicro": 25000,
+          "delegations": 86,
+          "harmfulDelegations": 0,
+          "harmRate": 0
+        },
+        {
+          "band": "Q_MARGIN_0_030",
+          "marginMicro": 30000,
+          "delegations": 105,
+          "harmfulDelegations": 0,
+          "harmRate": 0
+        },
+        {
+          "band": "Q_MARGIN_GT_0_030",
+          "marginMicro": 55000,
+          "delegations": 0,
+          "harmfulDelegations": 0,
+          "harmRate": 0
+        }
+      ],
+      "primeProtectionMarginMicro": 30000,
+      "marginRestrictionAddedBeyondInherited": false
+    },
+    "nexusPrimeProtection": {
+      "bandHarm": [
+        {
+          "band": "Q_MARGIN_0_005",
+          "marginMicro": 5000,
+          "delegations": 0,
+          "harmfulDelegations": 0,
+          "harmRate": 0
+        },
+        {
+          "band": "Q_MARGIN_0_010",
+          "marginMicro": 10000,
+          "delegations": 0,
+          "harmfulDelegations": 0,
+          "harmRate": 0
+        },
+        {
+          "band": "Q_MARGIN_0_015",
+          "marginMicro": 15000,
+          "delegations": 0,
+          "harmfulDelegations": 0,
+          "harmRate": 0
+        },
+        {
+          "band": "Q_MARGIN_0_020",
+          "marginMicro": 20000,
+          "delegations": 0,
+          "harmfulDelegations": 0,
+          "harmRate": 0
+        },
+        {
+          "band": "Q_MARGIN_0_025",
+          "marginMicro": 25000,
+          "delegations": 0,
+          "harmfulDelegations": 0,
+          "harmRate": 0
+        },
+        {
+          "band": "Q_MARGIN_0_030",
+          "marginMicro": 30000,
+          "delegations": 0,
+          "harmfulDelegations": 0,
+          "harmRate": 0
+        },
+        {
+          "band": "Q_MARGIN_GT_0_030",
+          "marginMicro": 55000,
+          "delegations": 0,
+          "harmfulDelegations": 0,
+          "harmRate": 0
+        }
+      ],
+      "primeProtectionMarginMicro": 30000,
+      "marginRestrictionAddedBeyondInherited": false
+    },
+    "oracleSweep": [
+      {
+        "ratioNumerator": 3,
+        "ratioDenominator": 2,
+        "minFullSlopeMicro": 0,
+        "opportunities": 449,
+        "reliability": 1,
+        "qualifies": true
+      },
+      {
+        "ratioNumerator": 3,
+        "ratioDenominator": 2,
+        "minFullSlopeMicro": 250,
+        "opportunities": 449,
+        "reliability": 1,
+        "qualifies": true
+      },
+      {
+        "ratioNumerator": 3,
+        "ratioDenominator": 2,
+        "minFullSlopeMicro": 500,
+        "opportunities": 449,
+        "reliability": 1,
+        "qualifies": true
+      },
+      {
+        "ratioNumerator": 3,
+        "ratioDenominator": 2,
+        "minFullSlopeMicro": 1000,
+        "opportunities": 434,
+        "reliability": 1,
+        "qualifies": true
+      },
+      {
+        "ratioNumerator": 3,
+        "ratioDenominator": 2,
+        "minFullSlopeMicro": 2000,
+        "opportunities": 434,
+        "reliability": 1,
+        "qualifies": true
+      },
+      {
+        "ratioNumerator": 2,
+        "ratioDenominator": 1,
+        "minFullSlopeMicro": 0,
+        "opportunities": 449,
+        "reliability": 1,
+        "qualifies": true
+      },
+      {
+        "ratioNumerator": 2,
+        "ratioDenominator": 1,
+        "minFullSlopeMicro": 250,
+        "opportunities": 449,
+        "reliability": 1,
+        "qualifies": true
+      },
+      {
+        "ratioNumerator": 2,
+        "ratioDenominator": 1,
+        "minFullSlopeMicro": 500,
+        "opportunities": 449,
+        "reliability": 1,
+        "qualifies": true
+      },
+      {
+        "ratioNumerator": 2,
+        "ratioDenominator": 1,
+        "minFullSlopeMicro": 1000,
+        "opportunities": 434,
+        "reliability": 1,
+        "qualifies": true
+      },
+      {
+        "ratioNumerator": 2,
+        "ratioDenominator": 1,
+        "minFullSlopeMicro": 2000,
+        "opportunities": 434,
+        "reliability": 1,
+        "qualifies": true
+      },
+      {
+        "ratioNumerator": 3,
+        "ratioDenominator": 1,
+        "minFullSlopeMicro": 0,
+        "opportunities": 449,
+        "reliability": 1,
+        "qualifies": true
+      },
+      {
+        "ratioNumerator": 3,
+        "ratioDenominator": 1,
+        "minFullSlopeMicro": 250,
+        "opportunities": 449,
+        "reliability": 1,
+        "qualifies": true
+      },
+      {
+        "ratioNumerator": 3,
+        "ratioDenominator": 1,
+        "minFullSlopeMicro": 500,
+        "opportunities": 449,
+        "reliability": 1,
+        "qualifies": true
+      },
+      {
+        "ratioNumerator": 3,
+        "ratioDenominator": 1,
+        "minFullSlopeMicro": 1000,
+        "opportunities": 434,
+        "reliability": 1,
+        "qualifies": true
+      },
+      {
+        "ratioNumerator": 3,
+        "ratioDenominator": 1,
+        "minFullSlopeMicro": 2000,
+        "opportunities": 434,
+        "reliability": 1,
+        "qualifies": true
+      },
+      {
+        "ratioNumerator": 5,
+        "ratioDenominator": 1,
+        "minFullSlopeMicro": 0,
+        "opportunities": 638,
+        "reliability": 0.730408,
+        "qualifies": false
+      },
+      {
+        "ratioNumerator": 5,
+        "ratioDenominator": 1,
+        "minFullSlopeMicro": 250,
+        "opportunities": 638,
+        "reliability": 0.730408,
+        "qualifies": false
+      },
+      {
+        "ratioNumerator": 5,
+        "ratioDenominator": 1,
+        "minFullSlopeMicro": 500,
+        "opportunities": 638,
+        "reliability": 0.730408,
+        "qualifies": false
+      },
+      {
+        "ratioNumerator": 5,
+        "ratioDenominator": 1,
+        "minFullSlopeMicro": 1000,
+        "opportunities": 606,
+        "reliability": 0.716172,
+        "qualifies": false
+      },
+      {
+        "ratioNumerator": 5,
+        "ratioDenominator": 1,
+        "minFullSlopeMicro": 2000,
+        "opportunities": 606,
+        "reliability": 0.716172,
+        "qualifies": false
+      },
+      {
+        "ratioNumerator": 8,
+        "ratioDenominator": 1,
+        "minFullSlopeMicro": 0,
+        "opportunities": 714,
+        "reliability": 0.705882,
+        "qualifies": false
+      },
+      {
+        "ratioNumerator": 8,
+        "ratioDenominator": 1,
+        "minFullSlopeMicro": 250,
+        "opportunities": 714,
+        "reliability": 0.705882,
+        "qualifies": false
+      },
+      {
+        "ratioNumerator": 8,
+        "ratioDenominator": 1,
+        "minFullSlopeMicro": 500,
+        "opportunities": 714,
+        "reliability": 0.705882,
+        "qualifies": false
+      },
+      {
+        "ratioNumerator": 8,
+        "ratioDenominator": 1,
+        "minFullSlopeMicro": 1000,
+        "opportunities": 606,
+        "reliability": 0.716172,
+        "qualifies": false
+      },
+      {
+        "ratioNumerator": 8,
+        "ratioDenominator": 1,
+        "minFullSlopeMicro": 2000,
+        "opportunities": 606,
+        "reliability": 0.716172,
+        "qualifies": false
+      },
+      {
+        "ratioNumerator": 12,
+        "ratioDenominator": 1,
+        "minFullSlopeMicro": 0,
+        "opportunities": 714,
+        "reliability": 0.705882,
+        "qualifies": false
+      },
+      {
+        "ratioNumerator": 12,
+        "ratioDenominator": 1,
+        "minFullSlopeMicro": 250,
+        "opportunities": 714,
+        "reliability": 0.705882,
+        "qualifies": false
+      },
+      {
+        "ratioNumerator": 12,
+        "ratioDenominator": 1,
+        "minFullSlopeMicro": 500,
+        "opportunities": 714,
+        "reliability": 0.705882,
+        "qualifies": false
+      },
+      {
+        "ratioNumerator": 12,
+        "ratioDenominator": 1,
+        "minFullSlopeMicro": 1000,
+        "opportunities": 606,
+        "reliability": 0.716172,
+        "qualifies": false
+      },
+      {
+        "ratioNumerator": 12,
+        "ratioDenominator": 1,
+        "minFullSlopeMicro": 2000,
+        "opportunities": 606,
+        "reliability": 0.716172,
+        "qualifies": false
+      }
+    ],
+    "nexusSweep": [
+      {
+        "minWideFanEntityCount": 6,
+        "ratioNumerator": 1,
+        "ratioDenominator": 1,
+        "minFullSlopeMicro": 0,
+        "opportunities": 0,
+        "qualifies": false,
+        "buckets": [
+          {
+            "bucket": "NEXUS_NO_STRUCTURAL_CRITICALITY",
+            "opportunities": 0,
+            "reliability": null,
+            "qualifies": false
+          },
+          {
+            "bucket": "NEXUS_REDUNDANT_PATH",
+            "opportunities": 0,
+            "reliability": null,
+            "qualifies": false
+          },
+          {
+            "bucket": "NEXUS_MULTIPLE_CRITICAL_NODES",
+            "opportunities": 364,
+            "reliability": 0.521978,
+            "qualifies": false
+          },
+          {
+            "bucket": "NEXUS_WIDE_FAN_CRITICAL",
+            "opportunities": 371,
+            "reliability": 0.544474,
+            "qualifies": false
+          },
+          {
+            "bucket": "NEXUS_SOLE_CRITICAL_NODE",
+            "opportunities": 349,
+            "reliability": 0.524355,
+            "qualifies": false
+          }
+        ]
+      },
+      {
+        "minWideFanEntityCount": 7,
+        "ratioNumerator": 1,
+        "ratioDenominator": 1,
+        "minFullSlopeMicro": 0,
+        "opportunities": 0,
+        "qualifies": false,
+        "buckets": [
+          {
+            "bucket": "NEXUS_NO_STRUCTURAL_CRITICALITY",
+            "opportunities": 0,
+            "reliability": null,
+            "qualifies": false
+          },
+          {
+            "bucket": "NEXUS_REDUNDANT_PATH",
+            "opportunities": 0,
+            "reliability": null,
+            "qualifies": false
+          },
+          {
+            "bucket": "NEXUS_MULTIPLE_CRITICAL_NODES",
+            "opportunities": 364,
+            "reliability": 0.521978,
+            "qualifies": false
+          },
+          {
+            "bucket": "NEXUS_WIDE_FAN_CRITICAL",
+            "opportunities": 371,
+            "reliability": 0.544474,
+            "qualifies": false
+          },
+          {
+            "bucket": "NEXUS_SOLE_CRITICAL_NODE",
+            "opportunities": 349,
+            "reliability": 0.524355,
+            "qualifies": false
+          }
+        ]
+      },
+      {
+        "minWideFanEntityCount": 8,
+        "ratioNumerator": 1,
+        "ratioDenominator": 1,
+        "minFullSlopeMicro": 0,
+        "opportunities": 0,
+        "qualifies": false,
+        "buckets": [
+          {
+            "bucket": "NEXUS_NO_STRUCTURAL_CRITICALITY",
+            "opportunities": 0,
+            "reliability": null,
+            "qualifies": false
+          },
+          {
+            "bucket": "NEXUS_REDUNDANT_PATH",
+            "opportunities": 0,
+            "reliability": null,
+            "qualifies": false
+          },
+          {
+            "bucket": "NEXUS_MULTIPLE_CRITICAL_NODES",
+            "opportunities": 364,
+            "reliability": 0.521978,
+            "qualifies": false
+          },
+          {
+            "bucket": "NEXUS_WIDE_FAN_CRITICAL",
+            "opportunities": 371,
+            "reliability": 0.544474,
+            "qualifies": false
+          },
+          {
+            "bucket": "NEXUS_SOLE_CRITICAL_NODE",
+            "opportunities": 349,
+            "reliability": 0.524355,
+            "qualifies": false
+          }
+        ]
+      }
+    ],
+    "oracleSelected": {
+      "ratioNumerator": 3,
+      "ratioDenominator": 2,
+      "minFullSlopeMicro": 500,
+      "opportunities": 449,
+      "reliability": 1,
+      "qualifies": true
+    },
+    "nexusSelected": null
+  },
+  "overall": {
+    "totalCases": 22750,
+    "eligibleCases": 8231,
+    "selectionChanges": 1332,
+    "beneficialChanges": 1332,
+    "harmfulChanges": 0,
+    "neutralChanges": 0,
+    "harmfulChangeRate": 0,
+    "correctPrimeBreaks": 0,
+    "correctPrimeBreakRate": 0,
+    "precision": 1,
+    "repairRate": 0.129559,
+    "primeOnlyTop1": 0.548088,
+    "arbiterTop1": 0.606637,
+    "decisionDelta": 0.058549,
+    "inheritedDelegations": 8231,
+    "delegations": 1332,
+    "delegationRate": 0.058549,
+    "abstentions": 6899,
+    "abstentionRate": 0.303253,
+    "abstentionRateAmongInheritedDelegations": 0.838173
+  },
+  "oracle": {
+    "totalCases": 7000,
+    "eligibleCases": 3416,
+    "selectionChanges": 1332,
+    "beneficialChanges": 1332,
+    "harmfulChanges": 0,
+    "neutralChanges": 0,
+    "harmfulChangeRate": 0,
+    "correctPrimeBreaks": 0,
+    "correctPrimeBreakRate": 0,
+    "precision": 1,
+    "repairRate": 0.380571,
+    "primeOnlyTop1": 0.5,
+    "arbiterTop1": 0.690286,
+    "decisionDelta": 0.190286,
+    "inheritedDelegations": 3416,
+    "delegations": 1332,
+    "delegationRate": 0.190286,
+    "abstentions": 2084,
+    "abstentionRate": 0.297714,
+    "abstentionRateAmongInheritedDelegations": 0.61007
+  },
+  "nexus": {
+    "totalCases": 7000,
+    "eligibleCases": 2565,
+    "selectionChanges": 0,
+    "beneficialChanges": 0,
+    "harmfulChanges": 0,
+    "neutralChanges": 0,
+    "harmfulChangeRate": 0,
+    "correctPrimeBreaks": 0,
+    "correctPrimeBreakRate": 0,
+    "precision": 0,
+    "repairRate": 0,
+    "primeOnlyTop1": 0.499714,
+    "arbiterTop1": 0.499714,
+    "decisionDelta": 0,
+    "inheritedDelegations": 2565,
+    "delegations": 0,
+    "delegationRate": 0,
+    "abstentions": 2565,
+    "abstentionRate": 0.366429,
+    "abstentionRateAmongInheritedDelegations": 1
+  },
+  "expertPrecision": {
+    "oracleClassificationAccuracy": 0.659429,
+    "nexusDecisionAccuracy": 0.527143,
+    "nexusDeclaredAlignmentRate": 0.7
+  },
+  "discrimination": {
+    "oracle": {
+      "delegationOpportunities": 4741,
+      "expertCorrectDelegated": 1332,
+      "expertCorrectAbstained": 1025,
+      "expertWrongDelegated": 0,
+      "expertWrongAbstained": 2384,
+      "delegationRateWhenCorrect": 0.565125,
+      "delegationRateWhenWrong": 0,
+      "correctnessDiscrimination": 0.565125,
+      "delegationPrecisionOverOpportunities": 1
+    },
+    "nexus": {
+      "delegationOpportunities": 3422,
+      "expertCorrectDelegated": 0,
+      "expertCorrectAbstained": 1849,
+      "expertWrongDelegated": 0,
+      "expertWrongAbstained": 1573,
+      "delegationRateWhenCorrect": 0,
+      "delegationRateWhenWrong": 0,
+      "correctnessDiscrimination": 0,
+      "delegationPrecisionOverOpportunities": 0
+    },
+    "combined": {
+      "delegationOpportunities": 8163,
+      "expertCorrectDelegated": 1332,
+      "expertCorrectAbstained": 2874,
+      "expertWrongDelegated": 0,
+      "expertWrongAbstained": 3957,
+      "delegationRateWhenCorrect": 0.31669,
+      "delegationRateWhenWrong": 0,
+      "correctnessDiscrimination": 0.31669,
+      "delegationPrecisionOverOpportunities": 1
+    },
+    "oracleCorrectnessDiscrimination": 0.565125,
+    "nexusCorrectnessDiscrimination": 0,
+    "combinedCorrectnessDiscrimination": 0.31669,
+    "relevanceDiscriminationPerfect": true,
+    "stage2l9OracleCorrectnessDiscrimination": -0.003844,
+    "stage2l9NexusCorrectnessDiscrimination": 0.003037
+  },
+  "controls": {
+    "PRIME_ONLY_CONTROL": {
+      "totalCases": 500,
+      "eligibleCases": 0,
+      "selectionChanges": 0,
+      "beneficialChanges": 0,
+      "harmfulChanges": 0,
+      "neutralChanges": 0,
+      "harmfulChangeRate": 0,
+      "correctPrimeBreaks": 0,
+      "correctPrimeBreakRate": 0,
+      "precision": 0,
+      "repairRate": 0,
+      "primeOnlyTop1": 0.514,
+      "arbiterTop1": 0.514,
+      "decisionDelta": 0,
+      "inheritedDelegations": 0,
+      "delegations": 0,
+      "delegationRate": 0,
+      "abstentions": 0,
+      "abstentionRate": 0,
+      "abstentionRateAmongInheritedDelegations": 0
+    },
+    "ORACLE_RELEVANT_CONTROL": {
+      "totalCases": 500,
+      "eligibleCases": 0,
+      "selectionChanges": 0,
+      "beneficialChanges": 0,
+      "harmfulChanges": 0,
+      "neutralChanges": 0,
+      "harmfulChangeRate": 0,
+      "correctPrimeBreaks": 0,
+      "correctPrimeBreakRate": 0,
+      "precision": 0,
+      "repairRate": 0,
+      "primeOnlyTop1": 0.482,
+      "arbiterTop1": 0.482,
+      "decisionDelta": 0,
+      "inheritedDelegations": 0,
+      "delegations": 0,
+      "delegationRate": 0,
+      "abstentions": 0,
+      "abstentionRate": 0,
+      "abstentionRateAmongInheritedDelegations": 0
+    },
+    "NEXUS_RELEVANT_CONTROL": {
+      "totalCases": 500,
+      "eligibleCases": 0,
+      "selectionChanges": 0,
+      "beneficialChanges": 0,
+      "harmfulChanges": 0,
+      "neutralChanges": 0,
+      "harmfulChangeRate": 0,
+      "correctPrimeBreaks": 0,
+      "correctPrimeBreakRate": 0,
+      "precision": 0,
+      "repairRate": 0,
+      "primeOnlyTop1": 0.506,
+      "arbiterTop1": 0.506,
+      "decisionDelta": 0,
+      "inheritedDelegations": 0,
+      "delegations": 0,
+      "delegationRate": 0,
+      "abstentions": 0,
+      "abstentionRate": 0,
+      "abstentionRateAmongInheritedDelegations": 0
+    },
+    "ORACLE_IRRELEVANT_CONTROL": {
+      "totalCases": 500,
+      "eligibleCases": 0,
+      "selectionChanges": 0,
+      "beneficialChanges": 0,
+      "harmfulChanges": 0,
+      "neutralChanges": 0,
+      "harmfulChangeRate": 0,
+      "correctPrimeBreaks": 0,
+      "correctPrimeBreakRate": 0,
+      "precision": 0,
+      "repairRate": 0,
+      "primeOnlyTop1": 0.506,
+      "arbiterTop1": 0.506,
+      "decisionDelta": 0,
+      "inheritedDelegations": 0,
+      "delegations": 0,
+      "delegationRate": 0,
+      "abstentions": 0,
+      "abstentionRate": 0,
+      "abstentionRateAmongInheritedDelegations": 0
+    },
+    "NEXUS_IRRELEVANT_CONTROL": {
+      "totalCases": 500,
+      "eligibleCases": 0,
+      "selectionChanges": 0,
+      "beneficialChanges": 0,
+      "harmfulChanges": 0,
+      "neutralChanges": 0,
+      "harmfulChangeRate": 0,
+      "correctPrimeBreaks": 0,
+      "correctPrimeBreakRate": 0,
+      "precision": 0,
+      "repairRate": 0,
+      "primeOnlyTop1": 0.5,
+      "arbiterTop1": 0.5,
+      "decisionDelta": 0,
+      "inheritedDelegations": 0,
+      "delegations": 0,
+      "delegationRate": 0,
+      "abstentions": 0,
+      "abstentionRate": 0,
+      "abstentionRateAmongInheritedDelegations": 0
+    },
+    "BOTH_WRONG_CONTROL": {
+      "totalCases": 500,
+      "eligibleCases": 0,
+      "selectionChanges": 0,
+      "beneficialChanges": 0,
+      "harmfulChanges": 0,
+      "neutralChanges": 0,
+      "harmfulChangeRate": 0,
+      "correctPrimeBreaks": 0,
+      "correctPrimeBreakRate": 0,
+      "precision": 0,
+      "repairRate": 0,
+      "primeOnlyTop1": 0.484,
+      "arbiterTop1": 0.484,
+      "decisionDelta": 0,
+      "inheritedDelegations": 0,
+      "delegations": 0,
+      "delegationRate": 0,
+      "abstentions": 0,
+      "abstentionRate": 0,
+      "abstentionRateAmongInheritedDelegations": 0
+    },
+    "NO_EXPERT_INFORMATION_CONTROL": {
+      "totalCases": 500,
+      "eligibleCases": 0,
+      "selectionChanges": 0,
+      "beneficialChanges": 0,
+      "harmfulChanges": 0,
+      "neutralChanges": 0,
+      "harmfulChangeRate": 0,
+      "correctPrimeBreaks": 0,
+      "correctPrimeBreakRate": 0,
+      "precision": 0,
+      "repairRate": 0,
+      "primeOnlyTop1": 0.47,
+      "arbiterTop1": 0.47,
+      "decisionDelta": 0,
+      "inheritedDelegations": 0,
+      "delegations": 0,
+      "delegationRate": 0,
+      "abstentions": 0,
+      "abstentionRate": 0,
+      "abstentionRateAmongInheritedDelegations": 0
+    }
+  },
+  "adversarial": {
+    "SE_MISSING_EVIDENCE": {
+      "cases": 250,
+      "evidenceAccepted": 0,
+      "selectionChanges": 0,
+      "failClosed": 250
+    },
+    "SE_MALFORMED_EVIDENCE": {
+      "cases": 250,
+      "evidenceAccepted": 0,
+      "selectionChanges": 0,
+      "failClosed": 250
+    },
+    "SE_STALE_EVIDENCE": {
+      "cases": 250,
+      "evidenceAccepted": 0,
+      "selectionChanges": 0,
+      "failClosed": 250
+    },
+    "SE_CROSS_RUNTIME": {
+      "cases": 250,
+      "evidenceAccepted": 0,
+      "selectionChanges": 0,
+      "failClosed": 250
+    },
+    "SE_CROSS_OBSERVATION": {
+      "cases": 250,
+      "evidenceAccepted": 0,
+      "selectionChanges": 0,
+      "failClosed": 250
+    },
+    "SE_CROSS_CAMPAIGN": {
+      "cases": 250,
+      "evidenceAccepted": 0,
+      "selectionChanges": 0,
+      "failClosed": 250
+    },
+    "SE_AMBIGUOUS_ACTION_BINDING": {
+      "cases": 250,
+      "evidenceAccepted": 0,
+      "selectionChanges": 0,
+      "failClosed": 250
+    },
+    "SE_AMBIGUOUS_CHANNEL_ENTITY_BINDING": {
+      "cases": 250,
+      "evidenceAccepted": 0,
+      "selectionChanges": 0,
+      "failClosed": 250
+    },
+    "SE_ILLEGAL_ACTION": {
+      "cases": 250,
+      "evidenceAccepted": 0,
+      "selectionChanges": 0,
+      "failClosed": 250
+    },
+    "SE_UNKNOWN_SCHEMA": {
+      "cases": 250,
+      "evidenceAccepted": 0,
+      "selectionChanges": 0,
+      "failClosed": 250
+    },
+    "SE_UNKNOWN_RULE": {
+      "cases": 250,
+      "evidenceAccepted": 0,
+      "selectionChanges": 0,
+      "failClosed": 250
+    },
+    "SE_CONFLICTING_DUPLICATE": {
+      "cases": 250,
+      "evidenceAccepted": 0,
+      "selectionChanges": 0,
+      "failClosed": 250
+    }
+  },
+  "attestationControls": {
+    "AT_MISSING_ATTESTATION": {
+      "cases": 250,
+      "inheritedDelegations": 250,
+      "selectionChanges": 0,
+      "abstentions": 250,
+      "failClosed": true,
+      "abstentionReason": "oracle_correctness_attestation_absent"
+    },
+    "AT_MALFORMED_ATTESTATION": {
+      "cases": 250,
+      "inheritedDelegations": 250,
+      "selectionChanges": 0,
+      "abstentions": 250,
+      "failClosed": true,
+      "abstentionReason": "delegation_abstained_attestation_schema_fields_unknown"
+    },
+    "AT_STALE_ATTESTATION": {
+      "cases": 250,
+      "inheritedDelegations": 250,
+      "selectionChanges": 0,
+      "abstentions": 250,
+      "failClosed": true,
+      "abstentionReason": "delegation_abstained_attestation_decision_binding_mismatch"
+    },
+    "AT_CROSS_RUNTIME_ATTESTATION": {
+      "cases": 250,
+      "inheritedDelegations": 250,
+      "selectionChanges": 0,
+      "abstentions": 250,
+      "failClosed": true,
+      "abstentionReason": "delegation_abstained_attestation_decision_binding_mismatch"
+    },
+    "AT_UNBOUND_EVIDENCE_DIGEST": {
+      "cases": 250,
+      "inheritedDelegations": 250,
+      "selectionChanges": 0,
+      "abstentions": 250,
+      "failClosed": true,
+      "abstentionReason": "delegation_abstained_attestation_not_bound_to_accepted_evidence"
+    },
+    "AT_FORGED_SIGNALS": {
+      "cases": 250,
+      "inheritedDelegations": 250,
+      "selectionChanges": 0,
+      "abstentions": 250,
+      "failClosed": true,
+      "abstentionReason": "delegation_abstained_attestation_digest_invalid"
+    },
+    "AT_DUPLICATE_ATTESTATION": {
+      "cases": 250,
+      "inheritedDelegations": 250,
+      "selectionChanges": 0,
+      "abstentions": 250,
+      "failClosed": true,
+      "abstentionReason": "delegation_abstained_duplicate_attestation"
+    },
+    "AT_WRONG_EXPERT_ATTESTATION": {
+      "cases": 250,
+      "inheritedDelegations": 250,
+      "selectionChanges": 0,
+      "abstentions": 250,
+      "failClosed": true,
+      "abstentionReason": "oracle_correctness_attestation_absent"
+    },
+    "AT_UNKNOWN_SIGNAL_KIND": {
+      "cases": 250,
+      "inheritedDelegations": 250,
+      "selectionChanges": 0,
+      "abstentions": 250,
+      "failClosed": true,
+      "abstentionReason": "delegation_abstained_oracle_signal_kind_unknown"
+    }
+  },
+  "bounds": {
+    "arbiterHarmfulChangeRate": 0,
+    "arbiterCorrectPrimeBreakRate": 0,
+    "nonAmbiguousPrimeCasesChanged": 0,
+    "staleOracleEvidenceAccepted": 0,
+    "staleNexusEvidenceAccepted": 0,
+    "staleGraphEvidenceAccepted": 0,
+    "crossObservationExpertEvidenceAccepted": 0,
+    "crossRuntimeExpertEvidenceAccepted": 0,
+    "crossCampaignExpertEvidenceAccepted": 0,
+    "ambiguousActionBindingAccepted": 0,
+    "ambiguousOracleChannelBindingAccepted": 0,
+    "ambiguousNexusEntityBindingAccepted": 0,
+    "illegalExpertSupportedActionAccepted": 0,
+    "unknownExpertSchemaAccepted": 0,
+    "unknownRuleStateAccepted": 0,
+    "conflictingDuplicateAccepted": 0,
+    "missingEvidenceAccepted": 0,
+    "malformedEvidenceAccepted": 0,
+    "trueButIrrelevantOracleSelectionChanges": 0,
+    "trueButIrrelevantNexusSelectionChanges": 0,
+    "bothWrongHarmfulChanges": 0,
+    "unresolvedExpertDisagreementReturnsPrime": true,
+    "oracleSelectionInfluenceFromNexus": 0,
+    "nexusSelectionInfluenceFromOracle": 0,
+    "allSingleExpertChangesCausallyAttributed": true,
+    "attestationAttackDelegations": 0,
+    "attestationAttackInheritedDelegations": 2250,
+    "delegationsNotAuthorisedByInheritedArbiter": 0,
+    "strictRefinementOfInheritedArbiter": true
+  },
+  "boundsPass": true,
+  "bucketUsage": {
+    "oracle": {
+      "ORACLE_UNSUPPORTED_HEAD": {
+        "cases": 231,
+        "delegated": 0,
+        "abstained": 231,
+        "expertCorrect": 231,
+        "harmfulChanges": 0
+      },
+      "ORACLE_STABLE_EXACT": {
+        "cases": 235,
+        "delegated": 235,
+        "abstained": 0,
+        "expertCorrect": 235,
+        "harmfulChanges": 0
+      },
+      "ORACLE_STABLE_UNSTEADY": {
+        "cases": 360,
+        "delegated": 0,
+        "abstained": 360,
+        "expertCorrect": 0,
+        "harmfulChanges": 0
+      },
+      "ORACLE_DIRECTIONAL_FULL_WINDOW_FLAT": {
+        "cases": 433,
+        "delegated": 0,
+        "abstained": 433,
+        "expertCorrect": 0,
+        "harmfulChanges": 0
+      },
+      "ORACLE_DIRECTIONAL_CONTRADICTED": {
+        "cases": 426,
+        "delegated": 0,
+        "abstained": 426,
+        "expertCorrect": 38,
+        "harmfulChanges": 0
+      },
+      "ORACLE_DIRECTIONAL_RECENT_DOMINATED": {
+        "cases": 634,
+        "delegated": 0,
+        "abstained": 634,
+        "expertCorrect": 114,
+        "harmfulChanges": 0
+      },
+      "ORACLE_DIRECTIONAL_COHERENT": {
+        "cases": 1097,
+        "delegated": 1097,
+        "abstained": 0,
+        "expertCorrect": 1097,
+        "harmfulChanges": 0
+      }
+    },
+    "nexus": {
+      "NEXUS_NO_STRUCTURAL_CRITICALITY": {
+        "cases": 0,
+        "delegated": 0,
+        "abstained": 0,
+        "expertCorrect": 0,
+        "harmfulChanges": 0
+      },
+      "NEXUS_REDUNDANT_PATH": {
+        "cases": 0,
+        "delegated": 0,
+        "abstained": 0,
+        "expertCorrect": 0,
+        "harmfulChanges": 0
+      },
+      "NEXUS_MULTIPLE_CRITICAL_NODES": {
+        "cases": 836,
+        "delegated": 0,
+        "abstained": 836,
+        "expertCorrect": 452,
+        "harmfulChanges": 0
+      },
+      "NEXUS_WIDE_FAN_CRITICAL": {
+        "cases": 849,
+        "delegated": 0,
+        "abstained": 849,
+        "expertCorrect": 444,
+        "harmfulChanges": 0
+      },
+      "NEXUS_SOLE_CRITICAL_NODE": {
+        "cases": 880,
+        "delegated": 0,
+        "abstained": 880,
+        "expertCorrect": 488,
+        "harmfulChanges": 0
+      }
+    }
+  },
+  "regimeBreakdown": {
+    "EXACT_FLAT": {
+      "cases": 597,
+      "expertCorrect": 597,
+      "delegated": 235,
+      "delegatedExpertCorrect": 235,
+      "beneficialChanges": 235,
+      "harmfulChanges": 0,
+      "inherited": true
+    },
+    "LATE_REVERSAL_NET_RISE": {
+      "cases": 620,
+      "expertCorrect": 620,
+      "delegated": 0,
+      "delegatedExpertCorrect": 0,
+      "beneficialChanges": 0,
+      "harmfulChanges": 0,
+      "inherited": false
+    },
+    "MEAN_REVERTING_LATE_DISPLACEMENT": {
+      "cases": 579,
+      "expertCorrect": 0,
+      "delegated": 0,
+      "delegatedExpertCorrect": 0,
+      "beneficialChanges": 0,
+      "harmfulChanges": 0,
+      "inherited": false
+    },
+    "MICRO_DRIFT_DOWN": {
+      "cases": 600,
+      "expertCorrect": 109,
+      "delegated": 0,
+      "delegatedExpertCorrect": 0,
+      "beneficialChanges": 0,
+      "harmfulChanges": 0,
+      "inherited": false
+    },
+    "MICRO_DRIFT_UP": {
+      "cases": 593,
+      "expertCorrect": 458,
+      "delegated": 53,
+      "delegatedExpertCorrect": 53,
+      "beneficialChanges": 53,
+      "harmfulChanges": 0,
+      "inherited": false
+    },
+    "NOISY_STRONG_RISE": {
+      "cases": 551,
+      "expertCorrect": 551,
+      "delegated": 203,
+      "delegatedExpertCorrect": 203,
+      "beneficialChanges": 203,
+      "harmfulChanges": 0,
+      "inherited": false
+    },
+    "STEP_LEVEL_SHIFT": {
+      "cases": 556,
+      "expertCorrect": 0,
+      "delegated": 0,
+      "delegatedExpertCorrect": 0,
+      "beneficialChanges": 0,
+      "harmfulChanges": 0,
+      "inherited": false
+    },
+    "STRONG_FALL": {
+      "cases": 584,
+      "expertCorrect": 584,
+      "delegated": 223,
+      "delegatedExpertCorrect": 223,
+      "beneficialChanges": 223,
+      "harmfulChanges": 0,
+      "inherited": true
+    },
+    "STRONG_RISE": {
+      "cases": 541,
+      "expertCorrect": 541,
+      "delegated": 196,
+      "delegatedExpertCorrect": 196,
+      "beneficialChanges": 196,
+      "harmfulChanges": 0,
+      "inherited": true
+    },
+    "WEAK_FALL": {
+      "cases": 572,
+      "expertCorrect": 572,
+      "delegated": 216,
+      "delegatedExpertCorrect": 216,
+      "beneficialChanges": 216,
+      "harmfulChanges": 0,
+      "inherited": true
+    },
+    "WEAK_RISE": {
+      "cases": 584,
+      "expertCorrect": 584,
+      "delegated": 206,
+      "delegatedExpertCorrect": 206,
+      "beneficialChanges": 206,
+      "harmfulChanges": 0,
+      "inherited": true
+    },
+    "ZERO_DRIFT_OSCILLATION": {
+      "cases": 623,
+      "expertCorrect": 0,
+      "delegated": 0,
+      "delegatedExpertCorrect": 0,
+      "beneficialChanges": 0,
+      "harmfulChanges": 0,
+      "inherited": true
+    }
+  },
+  "marginCurve": {
+    "Q_MARGIN_0_005": {
+      "cases": 2020,
+      "inheritedDelegations": 1027,
+      "delegations": 222,
+      "abstentions": 805,
+      "beneficialChanges": 222,
+      "harmfulChanges": 0,
+      "precision": 1
+    },
+    "Q_MARGIN_0_010": {
+      "cases": 1977,
+      "inheritedDelegations": 976,
+      "delegations": 212,
+      "abstentions": 764,
+      "beneficialChanges": 212,
+      "harmfulChanges": 0,
+      "precision": 1
+    },
+    "Q_MARGIN_0_015": {
+      "cases": 2119,
+      "inheritedDelegations": 1053,
+      "delegations": 208,
+      "abstentions": 845,
+      "beneficialChanges": 208,
+      "harmfulChanges": 0,
+      "precision": 1
+    },
+    "Q_MARGIN_0_020": {
+      "cases": 2028,
+      "inheritedDelegations": 1004,
+      "delegations": 235,
+      "abstentions": 769,
+      "beneficialChanges": 235,
+      "harmfulChanges": 0,
+      "precision": 1
+    },
+    "Q_MARGIN_0_025": {
+      "cases": 1953,
+      "inheritedDelegations": 991,
+      "delegations": 230,
+      "abstentions": 761,
+      "beneficialChanges": 230,
+      "harmfulChanges": 0,
+      "precision": 1
+    },
+    "Q_MARGIN_0_030": {
+      "cases": 1934,
+      "inheritedDelegations": 930,
+      "delegations": 225,
+      "abstentions": 705,
+      "beneficialChanges": 225,
+      "harmfulChanges": 0,
+      "precision": 1
+    },
+    "Q_MARGIN_GT_0_030": {
+      "cases": 1969,
+      "inheritedDelegations": 0,
+      "delegations": 0,
+      "abstentions": 0,
+      "beneficialChanges": 0,
+      "harmfulChanges": 0,
+      "precision": 0
+    }
+  },
+  "labelLeakage": {
+    "inputKeysInspected": 78,
+    "forbiddenRuntimeKeysScanned": [
+      "truthAction",
+      "expertCorrect",
+      "primeCorrect",
+      "correct",
+      "beneficial",
+      "harmful",
+      "selectedCorrect",
+      "caseId",
+      "index",
+      "variant",
+      "stratum",
+      "regime",
+      "label",
+      "outcome",
+      "split"
+    ],
+    "forbiddenKeysPresent": [],
+    "dispositionGroups": 68,
+    "dispositionGroupsSplitByAnything": [],
+    "correctnessSensitiveGroups": [],
+    "labelLeakageDetected": false
+  },
+  "invariance": {
+    "legalActionOrderInvariant": true,
+    "expertEvidenceOrderInvariant": true,
+    "attestationOrderInvariant": true,
+    "nexusEntityOrderInvariant": true,
+    "nexusEdgeOrderInvariant": true,
+    "duplicateEvidenceDoesNotAmplifySupport": true,
+    "duplicateAttestationFailsClosed": true,
+    "conflictingDuplicateFailsClosed": true
+  },
+  "failureIsolation": {
+    "arbiterFailureReturnsPrime": true,
+    "calibrationFailureReturnsPrime": true,
+    "attestationFailureReturnsPrime": true,
+    "oracleFailureSafe": true,
+    "noExpertAuthorizedAction": true
+  },
+  "replay": {
+    "rowDigest": "0128e61da8d157dcff06deef272c6d62e6a7eefd73a2207a95ff8e83f714c2a9",
+    "replayDigest": "0128e61da8d157dcff06deef272c6d62e6a7eefd73a2207a95ff8e83f714c2a9",
+    "replayEquivalent": true
+  }
+}

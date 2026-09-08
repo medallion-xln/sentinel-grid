@@ -6,7 +6,7 @@ import { fileURLToPath } from "node:url";
 
 const kernelRoot = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..");
 const sentinelRoot = path.resolve(kernelRoot, "../..");
-const zeknovaRoot = process.env.ZEKNOVA_ROOT || "/Users/dwaynecampbell/Desktop/zeknova-shared-gaming-experience";
+const zeknovaRoot = process.env.ZEKNOVA_ROOT ?? null;
 const artifactRoot = path.join(kernelRoot, "artifacts/r0-runtime-identity");
 const digest = (value) => createHash("sha256").update(value).digest("hex");
 function sorted(value) {

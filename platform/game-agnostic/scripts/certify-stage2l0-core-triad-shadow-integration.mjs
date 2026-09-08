@@ -52,7 +52,7 @@ const verification = await verifyDeclaredRuntime({
   baseline: baselineManifest,
   runtimeIdentity: runtime,
   sentinelRoot: path.resolve(root, '../..'),
-  zeknovaRoot: process.env.ZEKNOVA_ROOT || '/Users/dwaynecampbell/Desktop/zeknova-shared-gaming-experience',
+  zeknovaRoot: process.env.ZEKNOVA_ROOT ?? null,
 });
 if (!verification.declaredEqualsMeasured) throw new Error('STAGE2L0_BLOCKED_BY_RUNTIME_DRIFT');
 

@@ -1,0 +1,1580 @@
+{
+  "stage": "STAGE2L11_NEXUS_SEMANTIC_IDENTIFIABILITY_AND_DECISION_UTILITY",
+  "evidenceDigest": "4c05bc0be523c0e4eb49c7558c274c8ae8db7b6955b3d52b65d6b6bbd7f5cbc2",
+  "corpus": {
+    "discoveryCases": 6000,
+    "holdoutCases": 12000,
+    "corpusOverlap": 0,
+    "calibrationHoldoutSeparate": true,
+    "topologyFamilies": [
+      "SPARSE_CHAIN",
+      "DENSE_MESH",
+      "SINGLE_BRIDGE",
+      "TANDEM_BRIDGES",
+      "REDUNDANT_PARALLEL",
+      "CYCLE_WITH_BRIDGE",
+      "WIDE_FAN_BRIDGE",
+      "DISCONNECTED_COMPONENT",
+      "TYPED_RELATION_CONFLICT",
+      "INCOMPLETE_RELATIONS",
+      "AMBIGUOUS_EQUIVALENT_PATHS",
+      "THREAT_SUPPORT_NETWORK"
+    ],
+    "discoveryCorpusDigest": "d01c81d0fd2908572662c30519ff5cec3f2eb7dead56f33a77648d3f17eddfe2",
+    "holdoutCorpusDigest": "3282a7effa601c457142017e8f48e59bb56b4cfb116cfa10769fc96f8e3e77d5",
+    "declaredAlignmentRate": 0.7
+  },
+  "contractMap": {
+    "contractMapVersion": 1,
+    "stage": "STAGE2L11_NEXUS_SEMANTIC_IDENTIFIABILITY_AND_DECISION_UTILITY",
+    "layers": {
+      "NEXUS_INPUTS": {
+        "description": "Canonical relational state plus the reachability query the Arbiter binds.",
+        "fields": [
+          "canonicalState.entities",
+          "canonicalState.relationships",
+          "query.source",
+          "query.target",
+          "query.edgeType",
+          "query.candidateType",
+          "query.candidateNodeId",
+          "query.candidateEdgeId",
+          "mutation.type"
+        ]
+      },
+      "NEXUS_COMPUTES": {
+        "description": "Everything relationalReference / analyzeRelationalDelta derive, plus the certified evaluateNexus expert contract.",
+        "relationalFields": [
+          "kind",
+          "candidateIsSpof",
+          "spofNodeCount",
+          "spofEdgeCount",
+          "criticalCount",
+          "bottleneckCount",
+          "componentCount",
+          "entityCount",
+          "edgeCount",
+          "redundantPathPresent",
+          "reachableWithoutCandidate",
+          "semanticOptimalityCertified",
+          "cyclePresent",
+          "reachableBefore",
+          "reachableWithoutNode",
+          "reachableWithoutEdge",
+          "nodeRedundant",
+          "edgeRedundant",
+          "redundantEntityCount",
+          "redundantEdgeCount",
+          "counterfactualConsequence",
+          "counterfactualReachableAfter",
+          "componentsBefore",
+          "componentsAfter",
+          "spofNodeRank",
+          "graphDensityMicro",
+          "edgeToEntityRatioMicro",
+          "declaredEntityCount",
+          "declaredRelationshipCount",
+          "droppedRelationshipCount",
+          "distinctEdgeTypeCount"
+        ],
+        "expertContractFields": [
+          "actionTargetedEntityCount",
+          "bottleneckCount",
+          "criticalDependencyCount",
+          "cycleDetected",
+          "cycleNodeCount",
+          "edgeCount",
+          "entityCount",
+          "graphDensity",
+          "hostileEntityCount",
+          "isolatedEntityCount",
+          "isolatedRatio",
+          "maxCentrality",
+          "maxDegree",
+          "maxDependencyDepth",
+          "maxDependents",
+          "threatenedEntityCount",
+          "uncoveredThreatenedCount",
+          "unresolvedDependencyCount",
+          "unsupportedThreatenedCount",
+          "expertConfidence",
+          "rationaleCodeCount"
+        ]
+      },
+      "NEXUS_EXPOSES": {
+        "description": "The Stage 2L.10 correctness attestation payload — the only Nexus-derived information that crosses into the Arbiter.",
+        "fields": [
+          "kind",
+          "candidateIsSpof",
+          "spofNodeCount",
+          "spofEdgeCount",
+          "criticalCount",
+          "bottleneckCount",
+          "componentCount",
+          "entityCount",
+          "edgeCount",
+          "redundantPathPresent",
+          "reachableWithoutCandidate",
+          "semanticOptimalityCertified"
+        ]
+      },
+      "ARBITER_USES": {
+        "description": "Fields the Stage 2L.10 nexusUncertaintyBucket function actually conditions on. The rest are validated for integrity but never scored.",
+        "fields": [
+          "candidateIsSpof",
+          "redundantPathPresent",
+          "reachableWithoutCandidate",
+          "spofNodeCount",
+          "entityCount"
+        ]
+      }
+    },
+    "counts": {
+      "nexusInputCount": 9,
+      "nexusDerivedSignalCount": 52,
+      "nexusExposedSignalCount": 12,
+      "arbiterConsumedSignalCount": 5
+    },
+    "informationLoss": {
+      "computedButNotExposed": [
+        "cyclePresent",
+        "reachableBefore",
+        "reachableWithoutNode",
+        "reachableWithoutEdge",
+        "nodeRedundant",
+        "edgeRedundant",
+        "redundantEntityCount",
+        "redundantEdgeCount",
+        "counterfactualConsequence",
+        "counterfactualReachableAfter",
+        "componentsBefore",
+        "componentsAfter",
+        "spofNodeRank",
+        "graphDensityMicro",
+        "edgeToEntityRatioMicro",
+        "declaredEntityCount",
+        "declaredRelationshipCount",
+        "droppedRelationshipCount",
+        "distinctEdgeTypeCount"
+      ],
+      "expertContractNotInArbiterPath": [
+        "actionTargetedEntityCount",
+        "bottleneckCount",
+        "criticalDependencyCount",
+        "cycleDetected",
+        "cycleNodeCount",
+        "edgeCount",
+        "entityCount",
+        "graphDensity",
+        "hostileEntityCount",
+        "isolatedEntityCount",
+        "isolatedRatio",
+        "maxCentrality",
+        "maxDegree",
+        "maxDependencyDepth",
+        "maxDependents",
+        "threatenedEntityCount",
+        "uncoveredThreatenedCount",
+        "unresolvedDependencyCount",
+        "unsupportedThreatenedCount",
+        "expertConfidence",
+        "rationaleCodeCount"
+      ],
+      "exposedButNotConsumed": [
+        "kind",
+        "spofEdgeCount",
+        "criticalCount",
+        "bottleneckCount",
+        "componentCount",
+        "edgeCount",
+        "semanticOptimalityCertified"
+      ],
+      "internalInformationLossDetected": true
+    },
+    "twoNexusImplementations": {
+      "note": "The Arbiter path uses the lab relational analyzer (analyzeRelationalDelta). The certified expert contract (evaluateNexus, 19 signals) is not in the Arbiter path. Stage 2L.11 measured BOTH.",
+      "arbiterPath": "src/lab/stage2k0-nexus-relational-diagnostic.js::analyzeRelationalDelta",
+      "certifiedExpert": "src/experts/nexus.js::evaluateNexus"
+    }
+  },
+  "audit": {
+    "auditVersion": 1,
+    "stage": "STAGE2L11_NEXUS_SEMANTIC_IDENTIFIABILITY_AND_DECISION_UTILITY",
+    "semanticTruthSource": "INDEPENDENT_SEEDED_DRAW",
+    "semanticTruthVariable": "nexusAligned — whether the structurally critical entity is also the utility-optimal one",
+    "declaredAlignmentRate": 0.7,
+    "randomnessSources": [
+      {
+        "name": "STAGE2L9_INDEPENDENT_GROUND_TRUTH",
+        "seed": "0x5347324c39 (\"SG2L9\")",
+        "drawPosition": 4,
+        "drives": "nexusAligned",
+        "visibleToNexus": false,
+        "visibleToArbiter": false,
+        "visibleToPrime": false,
+        "availableAtRealDecisionTime": false
+      },
+      {
+        "name": "STAGE2L10_INDEPENDENT_GROUND_TRUTH",
+        "seed": "0x5347324c313043 / 0x5347324c313048 (\"SG2L10C\"/\"SG2L10H\")",
+        "drawPosition": 4,
+        "drives": "nexusAligned (graphShapeIndex is a separate draw at position 6)",
+        "visibleToNexus": false,
+        "visibleToArbiter": false,
+        "visibleToPrime": false,
+        "availableAtRealDecisionTime": false
+      },
+      {
+        "name": "STAGE2L11_SEMANTIC_ALIGNMENT",
+        "seed": "0x5347324c313144 / 0x5347324c313148",
+        "drawPosition": 1,
+        "drives": "nexusAligned",
+        "note": "Stage 2L.11 puts alignment on a SEPARATE derived stream from topology so the two cannot share structure even incidentally.",
+        "visibleToNexus": false,
+        "visibleToArbiter": false,
+        "visibleToPrime": false,
+        "availableAtRealDecisionTime": false
+      },
+      {
+        "name": "STAGE2L11_DECISION_CONTEXT",
+        "seed": "0x5347324c313144 / 0x5347324c313148",
+        "drives": "primeCorrect, ambiguity band, supportInTieBand, topology family, topology scale",
+        "visibleToNexus": "topology only, via the graph itself",
+        "visibleToArbiter": "band and margin only",
+        "visibleToPrime": true,
+        "availableAtRealDecisionTime": true
+      }
+    ],
+    "semanticTruthDecisionTimeObservable": false,
+    "hiddenRandomnessInvolved": true,
+    "hiddenRandomnessIndependentOfObservables": true,
+    "correctnessReducesToHiddenDrawAmongOpportunities": true,
+    "derivation": "expertCorrect = candidateIsSpof AND nexusAligned. Conditioning on a delegation opportunity fixes the first conjunct true, leaving expertCorrect identically equal to the hidden draw.",
+    "whatWouldMakeItObservable": [
+      "Objective or utility weights over entities in the canonical observation stream.",
+      "Per-entity value, threat cost, or mission-criticality scoring the adapter does not currently emit.",
+      "An outcome channel linking structural criticality to realised utility, which no current corpus provides."
+    ],
+    "defectLocus": "CORPUS_SEMANTICS_AND_WORLD_STATE_OBSERVABILITY",
+    "defectLocusExplanation": "Nexus's relational computation is exact and is not at fault. The corpus models semantic alignment as an independent coin flip rather than as a function of latent world state, and the observation stream carries no utility information from which any expert could recover it."
+  },
+  "analysis": {
+    "opportunities": 5809,
+    "baseRate": 0.533827,
+    "featuresInspected": 60,
+    "featuresVarying": 40,
+    "featuresConstantUnderConditioning": [
+      "computed.counterfactualConsequence",
+      "computed.counterfactualReachableAfter",
+      "computed.edgeRedundant",
+      "computed.nodeRedundant",
+      "computed.reachableBefore",
+      "computed.reachableWithoutEdge",
+      "computed.reachableWithoutNode",
+      "computed.redundantEdgeCount",
+      "computed.redundantEntityCount",
+      "computed.spofNodeRank",
+      "context.legalActionCount",
+      "expert.actionTargetedEntityCount",
+      "expert.isolatedEntityCount",
+      "expert.isolatedRatio",
+      "expert.uncoveredThreatenedCount",
+      "exposed.candidateIsSpof",
+      "exposed.kind",
+      "exposed.reachableWithoutCandidate",
+      "exposed.redundantPathPresent",
+      "exposed.semanticOptimalityCertified"
+    ],
+    "tiersInspected": [
+      "TIER_EXPOSED",
+      "TIER_COMPUTED",
+      "TIER_EXPERT",
+      "TIER_CONTEXT"
+    ],
+    "predicatesSearched": 264,
+    "predicatesEvaluable": 205,
+    "perFeature": [
+      {
+        "feature": "expert.maxDependencyDepth",
+        "tier": "TIER_EXPERT",
+        "distinctValues": 7,
+        "evaluablePredicates": 6,
+        "bestGap": 0.052037,
+        "bestPredicate": "expert.maxDependencyDepth==6",
+        "bestSideReliability": 0.581349,
+        "constantUnderConditioning": false
+      },
+      {
+        "feature": "exposed.bottleneckCount",
+        "tier": "TIER_EXPOSED",
+        "distinctValues": 7,
+        "evaluablePredicates": 5,
+        "bestGap": 0.052037,
+        "bestPredicate": "exposed.bottleneckCount==5",
+        "bestSideReliability": 0.581349,
+        "constantUnderConditioning": false
+      },
+      {
+        "feature": "exposed.criticalCount",
+        "tier": "TIER_EXPOSED",
+        "distinctValues": 7,
+        "evaluablePredicates": 5,
+        "bestGap": 0.052037,
+        "bestPredicate": "exposed.criticalCount==5",
+        "bestSideReliability": 0.581349,
+        "constantUnderConditioning": false
+      },
+      {
+        "feature": "exposed.spofEdgeCount",
+        "tier": "TIER_EXPOSED",
+        "distinctValues": 7,
+        "evaluablePredicates": 5,
+        "bestGap": 0.052037,
+        "bestPredicate": "exposed.spofEdgeCount==6",
+        "bestSideReliability": 0.581349,
+        "constantUnderConditioning": false
+      },
+      {
+        "feature": "exposed.spofNodeCount",
+        "tier": "TIER_EXPOSED",
+        "distinctValues": 7,
+        "evaluablePredicates": 5,
+        "bestGap": 0.052037,
+        "bestPredicate": "exposed.spofNodeCount==5",
+        "bestSideReliability": 0.581349,
+        "constantUnderConditioning": false
+      },
+      {
+        "feature": "expert.maxDegree",
+        "tier": "TIER_EXPERT",
+        "distinctValues": 9,
+        "evaluablePredicates": 5,
+        "bestGap": 0.051695,
+        "bestPredicate": "expert.maxDegree==6",
+        "bestSideReliability": 0.58125,
+        "constantUnderConditioning": false
+      },
+      {
+        "feature": "expert.maxDependents",
+        "tier": "TIER_EXPERT",
+        "distinctValues": 8,
+        "evaluablePredicates": 3,
+        "bestGap": 0.050029,
+        "bestPredicate": "expert.maxDependents==5",
+        "bestSideReliability": 0.58104,
+        "constantUnderConditioning": false
+      },
+      {
+        "feature": "computed.componentsAfter",
+        "tier": "TIER_COMPUTED",
+        "distinctValues": 2,
+        "evaluablePredicates": 2,
+        "bestGap": 0.043284,
+        "bestPredicate": "computed.componentsAfter==1",
+        "bestSideReliability": 0.53864,
+        "constantUnderConditioning": false
+      },
+      {
+        "feature": "computed.componentsBefore",
+        "tier": "TIER_COMPUTED",
+        "distinctValues": 2,
+        "evaluablePredicates": 2,
+        "bestGap": 0.043284,
+        "bestPredicate": "computed.componentsBefore==1",
+        "bestSideReliability": 0.53864,
+        "constantUnderConditioning": false
+      },
+      {
+        "feature": "context.family",
+        "tier": "TIER_CONTEXT",
+        "distinctValues": 9,
+        "evaluablePredicates": 9,
+        "bestGap": 0.043284,
+        "bestPredicate": "context.family==DISCONNECTED_COMPONENT",
+        "bestSideReliability": 0.53864,
+        "constantUnderConditioning": false
+      },
+      {
+        "feature": "exposed.componentCount",
+        "tier": "TIER_EXPOSED",
+        "distinctValues": 2,
+        "evaluablePredicates": 2,
+        "bestGap": 0.043284,
+        "bestPredicate": "exposed.componentCount==1",
+        "bestSideReliability": 0.53864,
+        "constantUnderConditioning": false
+      },
+      {
+        "feature": "computed.declaredRelationshipCount",
+        "tier": "TIER_COMPUTED",
+        "distinctValues": 10,
+        "evaluablePredicates": 7,
+        "bestGap": 0.037788,
+        "bestPredicate": "computed.declaredRelationshipCount==7",
+        "bestSideReliability": 0.569364,
+        "constantUnderConditioning": false
+      },
+      {
+        "feature": "expert.edgeCount",
+        "tier": "TIER_EXPERT",
+        "distinctValues": 11,
+        "evaluablePredicates": 8,
+        "bestGap": 0.037788,
+        "bestPredicate": "expert.edgeCount==7",
+        "bestSideReliability": 0.569364,
+        "constantUnderConditioning": false
+      },
+      {
+        "feature": "exposed.edgeCount",
+        "tier": "TIER_EXPOSED",
+        "distinctValues": 11,
+        "evaluablePredicates": 8,
+        "bestGap": 0.037788,
+        "bestPredicate": "exposed.edgeCount==7",
+        "bestSideReliability": 0.569364,
+        "constantUnderConditioning": false
+      },
+      {
+        "feature": "computed.declaredEntityCount",
+        "tier": "TIER_COMPUTED",
+        "distinctValues": 10,
+        "evaluablePredicates": 7,
+        "bestGap": 0.036317,
+        "bestPredicate": "computed.declaredEntityCount==7",
+        "bestSideReliability": 0.561798,
+        "constantUnderConditioning": false
+      },
+      {
+        "feature": "expert.entityCount",
+        "tier": "TIER_EXPERT",
+        "distinctValues": 10,
+        "evaluablePredicates": 7,
+        "bestGap": 0.036317,
+        "bestPredicate": "expert.entityCount==7",
+        "bestSideReliability": 0.561798,
+        "constantUnderConditioning": false
+      },
+      {
+        "feature": "exposed.entityCount",
+        "tier": "TIER_EXPOSED",
+        "distinctValues": 10,
+        "evaluablePredicates": 7,
+        "bestGap": 0.036317,
+        "bestPredicate": "exposed.entityCount==7",
+        "bestSideReliability": 0.561798,
+        "constantUnderConditioning": false
+      },
+      {
+        "feature": "context.band",
+        "tier": "TIER_CONTEXT",
+        "distinctValues": 7,
+        "evaluablePredicates": 7,
+        "bestGap": 0.032963,
+        "bestPredicate": "context.band==Q_MARGIN_0_005",
+        "bestSideReliability": 0.561983,
+        "constantUnderConditioning": false
+      },
+      {
+        "feature": "context.marginMicro",
+        "tier": "TIER_CONTEXT",
+        "distinctValues": 7,
+        "evaluablePredicates": 7,
+        "bestGap": 0.032963,
+        "bestPredicate": "context.marginMicro==5000",
+        "bestSideReliability": 0.561983,
+        "constantUnderConditioning": false
+      },
+      {
+        "feature": "context.primeTopGapMicro",
+        "tier": "TIER_CONTEXT",
+        "distinctValues": 7,
+        "evaluablePredicates": 7,
+        "bestGap": 0.032963,
+        "bestPredicate": "context.primeTopGapMicro==5000",
+        "bestSideReliability": 0.561983,
+        "constantUnderConditioning": false
+      },
+      {
+        "feature": "expert.maxCentrality",
+        "tier": "TIER_EXPERT",
+        "distinctValues": 12,
+        "evaluablePredicates": 6,
+        "bestGap": 0.031783,
+        "bestPredicate": "expert.maxCentrality==400000",
+        "bestSideReliability": 0.536267,
+        "constantUnderConditioning": false
+      },
+      {
+        "feature": "computed.edgeToEntityRatioMicro",
+        "tier": "TIER_COMPUTED",
+        "distinctValues": 16,
+        "evaluablePredicates": 13,
+        "bestGap": 0.030496,
+        "bestPredicate": "computed.edgeToEntityRatioMicro<=833333",
+        "bestSideReliability": 0.548847,
+        "constantUnderConditioning": false
+      },
+      {
+        "feature": "expert.expertConfidence",
+        "tier": "TIER_EXPERT",
+        "distinctValues": 13,
+        "evaluablePredicates": 11,
+        "bestGap": 0.030496,
+        "bestPredicate": "expert.expertConfidence<=833333",
+        "bestSideReliability": 0.548847,
+        "constantUnderConditioning": false
+      },
+      {
+        "feature": "expert.unsupportedThreatenedCount",
+        "tier": "TIER_EXPERT",
+        "distinctValues": 2,
+        "evaluablePredicates": 2,
+        "bestGap": 0.028888,
+        "bestPredicate": "expert.unsupportedThreatenedCount==0",
+        "bestSideReliability": 0.561129,
+        "constantUnderConditioning": false
+      },
+      {
+        "feature": "computed.distinctEdgeTypeCount",
+        "tier": "TIER_COMPUTED",
+        "distinctValues": 3,
+        "evaluablePredicates": 3,
+        "bestGap": 0.025733,
+        "bestPredicate": "computed.distinctEdgeTypeCount==3",
+        "bestSideReliability": 0.535227,
+        "constantUnderConditioning": false
+      },
+      {
+        "feature": "computed.graphDensityMicro",
+        "tier": "TIER_COMPUTED",
+        "distinctValues": 17,
+        "evaluablePredicates": 15,
+        "bestGap": 0.025212,
+        "bestPredicate": "computed.graphDensityMicro<=133333",
+        "bestSideReliability": 0.540198,
+        "constantUnderConditioning": false
+      },
+      {
+        "feature": "expert.graphDensity",
+        "tier": "TIER_EXPERT",
+        "distinctValues": 17,
+        "evaluablePredicates": 15,
+        "bestGap": 0.025212,
+        "bestPredicate": "expert.graphDensity<=133333",
+        "bestSideReliability": 0.540198,
+        "constantUnderConditioning": false
+      },
+      {
+        "feature": "context.scale",
+        "tier": "TIER_CONTEXT",
+        "distinctValues": 4,
+        "evaluablePredicates": 4,
+        "bestGap": 0.022994,
+        "bestPredicate": "context.scale==0",
+        "bestSideReliability": 0.53965,
+        "constantUnderConditioning": false
+      },
+      {
+        "feature": "context.supportInTieBand",
+        "tier": "TIER_CONTEXT",
+        "distinctValues": 2,
+        "evaluablePredicates": 2,
+        "bestGap": 0.018897,
+        "bestPredicate": "context.supportInTieBand==false",
+        "bestSideReliability": 0.536585,
+        "constantUnderConditioning": false
+      },
+      {
+        "feature": "context.insideAmbiguityRegion",
+        "tier": "TIER_CONTEXT",
+        "distinctValues": 2,
+        "evaluablePredicates": 2,
+        "bestGap": 0.01422,
+        "bestPredicate": "context.insideAmbiguityRegion==false",
+        "bestSideReliability": 0.545998,
+        "constantUnderConditioning": false
+      },
+      {
+        "feature": "expert.criticalDependencyCount",
+        "tier": "TIER_EXPERT",
+        "distinctValues": 2,
+        "evaluablePredicates": 2,
+        "bestGap": 0.011339,
+        "bestPredicate": "expert.criticalDependencyCount==0",
+        "bestSideReliability": 0.541289,
+        "constantUnderConditioning": false
+      },
+      {
+        "feature": "expert.rationaleCodeCount",
+        "tier": "TIER_EXPERT",
+        "distinctValues": 3,
+        "evaluablePredicates": 3,
+        "bestGap": 0.010686,
+        "bestPredicate": "expert.rationaleCodeCount==2",
+        "bestSideReliability": 0.542659,
+        "constantUnderConditioning": false
+      },
+      {
+        "feature": "computed.droppedRelationshipCount",
+        "tier": "TIER_COMPUTED",
+        "distinctValues": 5,
+        "evaluablePredicates": 1,
+        "bestGap": 0.00992,
+        "bestPredicate": "computed.droppedRelationshipCount==0",
+        "bestSideReliability": 0.53492,
+        "constantUnderConditioning": false
+      },
+      {
+        "feature": "expert.unresolvedDependencyCount",
+        "tier": "TIER_EXPERT",
+        "distinctValues": 5,
+        "evaluablePredicates": 1,
+        "bestGap": 0.00992,
+        "bestPredicate": "expert.unresolvedDependencyCount==0",
+        "bestSideReliability": 0.53492,
+        "constantUnderConditioning": false
+      },
+      {
+        "feature": "computed.cyclePresent",
+        "tier": "TIER_COMPUTED",
+        "distinctValues": 2,
+        "evaluablePredicates": 2,
+        "bestGap": 0.005452,
+        "bestPredicate": "computed.cyclePresent==false",
+        "bestSideReliability": 0.538007,
+        "constantUnderConditioning": false
+      },
+      {
+        "feature": "expert.bottleneckCount",
+        "tier": "TIER_EXPERT",
+        "distinctValues": 2,
+        "evaluablePredicates": 2,
+        "bestGap": 0.001803,
+        "bestPredicate": "expert.bottleneckCount==0",
+        "bestSideReliability": 0.535433,
+        "constantUnderConditioning": false
+      },
+      {
+        "feature": "expert.hostileEntityCount",
+        "tier": "TIER_EXPERT",
+        "distinctValues": 5,
+        "evaluablePredicates": 1,
+        "bestGap": 0.001803,
+        "bestPredicate": "expert.hostileEntityCount==0",
+        "bestSideReliability": 0.535433,
+        "constantUnderConditioning": false
+      },
+      {
+        "feature": "expert.threatenedEntityCount",
+        "tier": "TIER_EXPERT",
+        "distinctValues": 2,
+        "evaluablePredicates": 2,
+        "bestGap": 0.001803,
+        "bestPredicate": "expert.threatenedEntityCount==0",
+        "bestSideReliability": 0.535433,
+        "constantUnderConditioning": false
+      },
+      {
+        "feature": "expert.cycleDetected",
+        "tier": "TIER_EXPERT",
+        "distinctValues": 2,
+        "evaluablePredicates": 2,
+        "bestGap": 0.000318,
+        "bestPredicate": "expert.cycleDetected==0",
+        "bestSideReliability": 0.534107,
+        "constantUnderConditioning": false
+      },
+      {
+        "feature": "expert.cycleNodeCount",
+        "tier": "TIER_EXPERT",
+        "distinctValues": 2,
+        "evaluablePredicates": 2,
+        "bestGap": 0.000318,
+        "bestPredicate": "expert.cycleNodeCount==0",
+        "bestSideReliability": 0.534107,
+        "constantUnderConditioning": false
+      },
+      {
+        "feature": "computed.counterfactualConsequence",
+        "tier": "TIER_COMPUTED",
+        "distinctValues": 1,
+        "evaluablePredicates": 0,
+        "bestGap": 0,
+        "bestPredicate": null,
+        "bestSideReliability": null,
+        "constantUnderConditioning": true
+      },
+      {
+        "feature": "computed.counterfactualReachableAfter",
+        "tier": "TIER_COMPUTED",
+        "distinctValues": 1,
+        "evaluablePredicates": 0,
+        "bestGap": 0,
+        "bestPredicate": null,
+        "bestSideReliability": null,
+        "constantUnderConditioning": true
+      },
+      {
+        "feature": "computed.edgeRedundant",
+        "tier": "TIER_COMPUTED",
+        "distinctValues": 1,
+        "evaluablePredicates": 0,
+        "bestGap": 0,
+        "bestPredicate": null,
+        "bestSideReliability": null,
+        "constantUnderConditioning": true
+      },
+      {
+        "feature": "computed.nodeRedundant",
+        "tier": "TIER_COMPUTED",
+        "distinctValues": 1,
+        "evaluablePredicates": 0,
+        "bestGap": 0,
+        "bestPredicate": null,
+        "bestSideReliability": null,
+        "constantUnderConditioning": true
+      },
+      {
+        "feature": "computed.reachableBefore",
+        "tier": "TIER_COMPUTED",
+        "distinctValues": 1,
+        "evaluablePredicates": 0,
+        "bestGap": 0,
+        "bestPredicate": null,
+        "bestSideReliability": null,
+        "constantUnderConditioning": true
+      },
+      {
+        "feature": "computed.reachableWithoutEdge",
+        "tier": "TIER_COMPUTED",
+        "distinctValues": 1,
+        "evaluablePredicates": 0,
+        "bestGap": 0,
+        "bestPredicate": null,
+        "bestSideReliability": null,
+        "constantUnderConditioning": true
+      },
+      {
+        "feature": "computed.reachableWithoutNode",
+        "tier": "TIER_COMPUTED",
+        "distinctValues": 1,
+        "evaluablePredicates": 0,
+        "bestGap": 0,
+        "bestPredicate": null,
+        "bestSideReliability": null,
+        "constantUnderConditioning": true
+      },
+      {
+        "feature": "computed.redundantEdgeCount",
+        "tier": "TIER_COMPUTED",
+        "distinctValues": 1,
+        "evaluablePredicates": 0,
+        "bestGap": 0,
+        "bestPredicate": null,
+        "bestSideReliability": null,
+        "constantUnderConditioning": true
+      },
+      {
+        "feature": "computed.redundantEntityCount",
+        "tier": "TIER_COMPUTED",
+        "distinctValues": 1,
+        "evaluablePredicates": 0,
+        "bestGap": 0,
+        "bestPredicate": null,
+        "bestSideReliability": null,
+        "constantUnderConditioning": true
+      },
+      {
+        "feature": "computed.spofNodeRank",
+        "tier": "TIER_COMPUTED",
+        "distinctValues": 1,
+        "evaluablePredicates": 0,
+        "bestGap": 0,
+        "bestPredicate": null,
+        "bestSideReliability": null,
+        "constantUnderConditioning": true
+      },
+      {
+        "feature": "context.legalActionCount",
+        "tier": "TIER_CONTEXT",
+        "distinctValues": 1,
+        "evaluablePredicates": 0,
+        "bestGap": 0,
+        "bestPredicate": null,
+        "bestSideReliability": null,
+        "constantUnderConditioning": true
+      },
+      {
+        "feature": "expert.actionTargetedEntityCount",
+        "tier": "TIER_EXPERT",
+        "distinctValues": 1,
+        "evaluablePredicates": 0,
+        "bestGap": 0,
+        "bestPredicate": null,
+        "bestSideReliability": null,
+        "constantUnderConditioning": true
+      },
+      {
+        "feature": "expert.isolatedEntityCount",
+        "tier": "TIER_EXPERT",
+        "distinctValues": 1,
+        "evaluablePredicates": 0,
+        "bestGap": 0,
+        "bestPredicate": null,
+        "bestSideReliability": null,
+        "constantUnderConditioning": true
+      },
+      {
+        "feature": "expert.isolatedRatio",
+        "tier": "TIER_EXPERT",
+        "distinctValues": 1,
+        "evaluablePredicates": 0,
+        "bestGap": 0,
+        "bestPredicate": null,
+        "bestSideReliability": null,
+        "constantUnderConditioning": true
+      },
+      {
+        "feature": "expert.uncoveredThreatenedCount",
+        "tier": "TIER_EXPERT",
+        "distinctValues": 1,
+        "evaluablePredicates": 0,
+        "bestGap": 0,
+        "bestPredicate": null,
+        "bestSideReliability": null,
+        "constantUnderConditioning": true
+      },
+      {
+        "feature": "exposed.candidateIsSpof",
+        "tier": "TIER_EXPOSED",
+        "distinctValues": 1,
+        "evaluablePredicates": 0,
+        "bestGap": 0,
+        "bestPredicate": null,
+        "bestSideReliability": null,
+        "constantUnderConditioning": true
+      },
+      {
+        "feature": "exposed.kind",
+        "tier": "TIER_EXPOSED",
+        "distinctValues": 1,
+        "evaluablePredicates": 0,
+        "bestGap": 0,
+        "bestPredicate": null,
+        "bestSideReliability": null,
+        "constantUnderConditioning": true
+      },
+      {
+        "feature": "exposed.reachableWithoutCandidate",
+        "tier": "TIER_EXPOSED",
+        "distinctValues": 1,
+        "evaluablePredicates": 0,
+        "bestGap": 0,
+        "bestPredicate": null,
+        "bestSideReliability": null,
+        "constantUnderConditioning": true
+      },
+      {
+        "feature": "exposed.redundantPathPresent",
+        "tier": "TIER_EXPOSED",
+        "distinctValues": 1,
+        "evaluablePredicates": 0,
+        "bestGap": 0,
+        "bestPredicate": null,
+        "bestSideReliability": null,
+        "constantUnderConditioning": true
+      },
+      {
+        "feature": "exposed.semanticOptimalityCertified",
+        "tier": "TIER_EXPOSED",
+        "distinctValues": 1,
+        "evaluablePredicates": 0,
+        "bestGap": 0,
+        "bestPredicate": null,
+        "bestSideReliability": null,
+        "constantUnderConditioning": true
+      }
+    ],
+    "topByGap": [
+      {
+        "id": "expert.maxDependencyDepth==6",
+        "inCount": 504,
+        "inCorrect": 293,
+        "inReliability": 0.581349,
+        "outCount": 5305,
+        "outCorrect": 2808,
+        "outReliability": 0.529312,
+        "gap": 0.052037,
+        "bestSideReliability": 0.581349,
+        "bestSideSupport": 504,
+        "bestSide": "IN"
+      },
+      {
+        "id": "exposed.bottleneckCount==5",
+        "inCount": 504,
+        "inCorrect": 293,
+        "inReliability": 0.581349,
+        "outCount": 5305,
+        "outCorrect": 2808,
+        "outReliability": 0.529312,
+        "gap": 0.052037,
+        "bestSideReliability": 0.581349,
+        "bestSideSupport": 504,
+        "bestSide": "IN"
+      },
+      {
+        "id": "exposed.criticalCount==5",
+        "inCount": 504,
+        "inCorrect": 293,
+        "inReliability": 0.581349,
+        "outCount": 5305,
+        "outCorrect": 2808,
+        "outReliability": 0.529312,
+        "gap": 0.052037,
+        "bestSideReliability": 0.581349,
+        "bestSideSupport": 504,
+        "bestSide": "IN"
+      },
+      {
+        "id": "exposed.spofEdgeCount==6",
+        "inCount": 504,
+        "inCorrect": 293,
+        "inReliability": 0.581349,
+        "outCount": 5305,
+        "outCorrect": 2808,
+        "outReliability": 0.529312,
+        "gap": 0.052037,
+        "bestSideReliability": 0.581349,
+        "bestSideSupport": 504,
+        "bestSide": "IN"
+      },
+      {
+        "id": "exposed.spofNodeCount==5",
+        "inCount": 504,
+        "inCorrect": 293,
+        "inReliability": 0.581349,
+        "outCount": 5305,
+        "outCorrect": 2808,
+        "outReliability": 0.529312,
+        "gap": 0.052037,
+        "bestSideReliability": 0.581349,
+        "bestSideSupport": 504,
+        "bestSide": "IN"
+      },
+      {
+        "id": "expert.maxDegree==6",
+        "inCount": 480,
+        "inCorrect": 279,
+        "inReliability": 0.58125,
+        "outCount": 5329,
+        "outCorrect": 2822,
+        "outReliability": 0.529555,
+        "gap": 0.051695,
+        "bestSideReliability": 0.58125,
+        "bestSideSupport": 480,
+        "bestSide": "IN"
+      },
+      {
+        "id": "expert.maxDependents==5",
+        "inCount": 327,
+        "inCorrect": 190,
+        "inReliability": 0.58104,
+        "outCount": 5482,
+        "outCorrect": 2911,
+        "outReliability": 0.531011,
+        "gap": 0.050029,
+        "bestSideReliability": 0.58104,
+        "bestSideSupport": 327,
+        "bestSide": "IN"
+      },
+      {
+        "id": "computed.componentsAfter==1",
+        "inCount": 5163,
+        "inCorrect": 2781,
+        "inReliability": 0.53864,
+        "outCount": 646,
+        "outCorrect": 320,
+        "outReliability": 0.495356,
+        "gap": 0.043284,
+        "bestSideReliability": 0.53864,
+        "bestSideSupport": 5163,
+        "bestSide": "IN"
+      },
+      {
+        "id": "computed.componentsAfter==2",
+        "inCount": 646,
+        "inCorrect": 320,
+        "inReliability": 0.495356,
+        "outCount": 5163,
+        "outCorrect": 2781,
+        "outReliability": 0.53864,
+        "gap": 0.043284,
+        "bestSideReliability": 0.53864,
+        "bestSideSupport": 5163,
+        "bestSide": "OUT"
+      },
+      {
+        "id": "computed.componentsBefore==1",
+        "inCount": 5163,
+        "inCorrect": 2781,
+        "inReliability": 0.53864,
+        "outCount": 646,
+        "outCorrect": 320,
+        "outReliability": 0.495356,
+        "gap": 0.043284,
+        "bestSideReliability": 0.53864,
+        "bestSideSupport": 5163,
+        "bestSide": "IN"
+      },
+      {
+        "id": "computed.componentsBefore==2",
+        "inCount": 646,
+        "inCorrect": 320,
+        "inReliability": 0.495356,
+        "outCount": 5163,
+        "outCorrect": 2781,
+        "outReliability": 0.53864,
+        "gap": 0.043284,
+        "bestSideReliability": 0.53864,
+        "bestSideSupport": 5163,
+        "bestSide": "OUT"
+      },
+      {
+        "id": "context.family==DISCONNECTED_COMPONENT",
+        "inCount": 646,
+        "inCorrect": 320,
+        "inReliability": 0.495356,
+        "outCount": 5163,
+        "outCorrect": 2781,
+        "outReliability": 0.53864,
+        "gap": 0.043284,
+        "bestSideReliability": 0.53864,
+        "bestSideSupport": 5163,
+        "bestSide": "OUT"
+      },
+      {
+        "id": "exposed.componentCount==1",
+        "inCount": 5163,
+        "inCorrect": 2781,
+        "inReliability": 0.53864,
+        "outCount": 646,
+        "outCorrect": 320,
+        "outReliability": 0.495356,
+        "gap": 0.043284,
+        "bestSideReliability": 0.53864,
+        "bestSideSupport": 5163,
+        "bestSide": "IN"
+      },
+      {
+        "id": "exposed.componentCount==2",
+        "inCount": 646,
+        "inCorrect": 320,
+        "inReliability": 0.495356,
+        "outCount": 5163,
+        "outCorrect": 2781,
+        "outReliability": 0.53864,
+        "gap": 0.043284,
+        "bestSideReliability": 0.53864,
+        "bestSideSupport": 5163,
+        "bestSide": "OUT"
+      },
+      {
+        "id": "computed.declaredRelationshipCount==7",
+        "inCount": 346,
+        "inCorrect": 197,
+        "inReliability": 0.569364,
+        "outCount": 5463,
+        "outCorrect": 2904,
+        "outReliability": 0.531576,
+        "gap": 0.037788,
+        "bestSideReliability": 0.569364,
+        "bestSideSupport": 346,
+        "bestSide": "IN"
+      }
+    ],
+    "topByReliability": [
+      {
+        "id": "expert.maxDependencyDepth==6",
+        "inCount": 504,
+        "inCorrect": 293,
+        "inReliability": 0.581349,
+        "outCount": 5305,
+        "outCorrect": 2808,
+        "outReliability": 0.529312,
+        "gap": 0.052037,
+        "bestSideReliability": 0.581349,
+        "bestSideSupport": 504,
+        "bestSide": "IN"
+      },
+      {
+        "id": "exposed.bottleneckCount==5",
+        "inCount": 504,
+        "inCorrect": 293,
+        "inReliability": 0.581349,
+        "outCount": 5305,
+        "outCorrect": 2808,
+        "outReliability": 0.529312,
+        "gap": 0.052037,
+        "bestSideReliability": 0.581349,
+        "bestSideSupport": 504,
+        "bestSide": "IN"
+      },
+      {
+        "id": "exposed.criticalCount==5",
+        "inCount": 504,
+        "inCorrect": 293,
+        "inReliability": 0.581349,
+        "outCount": 5305,
+        "outCorrect": 2808,
+        "outReliability": 0.529312,
+        "gap": 0.052037,
+        "bestSideReliability": 0.581349,
+        "bestSideSupport": 504,
+        "bestSide": "IN"
+      },
+      {
+        "id": "exposed.spofEdgeCount==6",
+        "inCount": 504,
+        "inCorrect": 293,
+        "inReliability": 0.581349,
+        "outCount": 5305,
+        "outCorrect": 2808,
+        "outReliability": 0.529312,
+        "gap": 0.052037,
+        "bestSideReliability": 0.581349,
+        "bestSideSupport": 504,
+        "bestSide": "IN"
+      },
+      {
+        "id": "exposed.spofNodeCount==5",
+        "inCount": 504,
+        "inCorrect": 293,
+        "inReliability": 0.581349,
+        "outCount": 5305,
+        "outCorrect": 2808,
+        "outReliability": 0.529312,
+        "gap": 0.052037,
+        "bestSideReliability": 0.581349,
+        "bestSideSupport": 504,
+        "bestSide": "IN"
+      },
+      {
+        "id": "expert.maxDegree==6",
+        "inCount": 480,
+        "inCorrect": 279,
+        "inReliability": 0.58125,
+        "outCount": 5329,
+        "outCorrect": 2822,
+        "outReliability": 0.529555,
+        "gap": 0.051695,
+        "bestSideReliability": 0.58125,
+        "bestSideSupport": 480,
+        "bestSide": "IN"
+      },
+      {
+        "id": "expert.maxDependents==5",
+        "inCount": 327,
+        "inCorrect": 190,
+        "inReliability": 0.58104,
+        "outCount": 5482,
+        "outCorrect": 2911,
+        "outReliability": 0.531011,
+        "gap": 0.050029,
+        "bestSideReliability": 0.58104,
+        "bestSideSupport": 327,
+        "bestSide": "IN"
+      },
+      {
+        "id": "computed.declaredRelationshipCount==7",
+        "inCount": 346,
+        "inCorrect": 197,
+        "inReliability": 0.569364,
+        "outCount": 5463,
+        "outCorrect": 2904,
+        "outReliability": 0.531576,
+        "gap": 0.037788,
+        "bestSideReliability": 0.569364,
+        "bestSideSupport": 346,
+        "bestSide": "IN"
+      },
+      {
+        "id": "expert.edgeCount==7",
+        "inCount": 346,
+        "inCorrect": 197,
+        "inReliability": 0.569364,
+        "outCount": 5463,
+        "outCorrect": 2904,
+        "outReliability": 0.531576,
+        "gap": 0.037788,
+        "bestSideReliability": 0.569364,
+        "bestSideSupport": 346,
+        "bestSide": "IN"
+      },
+      {
+        "id": "exposed.edgeCount==7",
+        "inCount": 346,
+        "inCorrect": 197,
+        "inReliability": 0.569364,
+        "outCount": 5463,
+        "outCorrect": 2904,
+        "outReliability": 0.531576,
+        "gap": 0.037788,
+        "bestSideReliability": 0.569364,
+        "bestSideSupport": 346,
+        "bestSide": "IN"
+      },
+      {
+        "id": "context.band==Q_MARGIN_0_005",
+        "inCount": 847,
+        "inCorrect": 476,
+        "inReliability": 0.561983,
+        "outCount": 4962,
+        "outCorrect": 2625,
+        "outReliability": 0.529021,
+        "gap": 0.032963,
+        "bestSideReliability": 0.561983,
+        "bestSideSupport": 847,
+        "bestSide": "IN"
+      },
+      {
+        "id": "context.marginMicro==5000",
+        "inCount": 847,
+        "inCorrect": 476,
+        "inReliability": 0.561983,
+        "outCount": 4962,
+        "outCorrect": 2625,
+        "outReliability": 0.529021,
+        "gap": 0.032963,
+        "bestSideReliability": 0.561983,
+        "bestSideSupport": 847,
+        "bestSide": "IN"
+      },
+      {
+        "id": "context.primeTopGapMicro==5000",
+        "inCount": 847,
+        "inCorrect": 476,
+        "inReliability": 0.561983,
+        "outCount": 4962,
+        "outCorrect": 2625,
+        "outReliability": 0.529021,
+        "gap": 0.032963,
+        "bestSideReliability": 0.561983,
+        "bestSideSupport": 847,
+        "bestSide": "IN"
+      },
+      {
+        "id": "computed.declaredEntityCount==7",
+        "inCount": 1335,
+        "inCorrect": 750,
+        "inReliability": 0.561798,
+        "outCount": 4474,
+        "outCorrect": 2351,
+        "outReliability": 0.525481,
+        "gap": 0.036317,
+        "bestSideReliability": 0.561798,
+        "bestSideSupport": 1335,
+        "bestSide": "IN"
+      },
+      {
+        "id": "expert.entityCount==7",
+        "inCount": 1335,
+        "inCorrect": 750,
+        "inReliability": 0.561798,
+        "outCount": 4474,
+        "outCorrect": 2351,
+        "outReliability": 0.525481,
+        "gap": 0.036317,
+        "bestSideReliability": 0.561798,
+        "bestSideSupport": 1335,
+        "bestSide": "IN"
+      }
+    ],
+    "observedBestGap": 0.052037,
+    "observedBestPredicate": "expert.maxDependencyDepth==6",
+    "observedBestSideReliability": 0.581349,
+    "permutationNull": {
+      "permutations": 40,
+      "min": 0.04103,
+      "median": 0.059301,
+      "p95": 0.076556,
+      "max": 0.091533
+    },
+    "observedExceedsPermutationP95": false,
+    "anyPredicateReachesReliabilityFloor": false
+  },
+  "discoveryAnalysis": {
+    "opportunities": 2898,
+    "baseRate": 0.533816,
+    "observedBestGap": 0.067984,
+    "permutationNull": {
+      "permutations": 20,
+      "min": 0.056361,
+      "median": 0.06585,
+      "p95": 0.088178,
+      "max": 0.092671
+    },
+    "observedExceedsPermutationP95": false
+  },
+  "ruleSearch": {
+    "searchSpace": {
+      "singles": 264,
+      "singlesEvaluable": 176,
+      "conjunctionSeeds": 40,
+      "conjunctions": 780,
+      "conjunctionsEvaluable": 234
+    },
+    "discoveryOpportunities": 2898,
+    "discoveryBaseRate": 0.533816,
+    "frozenRule": {
+      "id": "(computed.declaredEntityCount==6) AND (expert.edgeCount==5)",
+      "side": "IN",
+      "discoveryReliability": 0.594714,
+      "discoverySupport": 227,
+      "discoveryGap": 0.066073,
+      "reachesFloorOnDiscovery": false
+    },
+    "topTen": [
+      {
+        "id": "(computed.declaredEntityCount==6) AND (expert.edgeCount==5)",
+        "side": "IN",
+        "reliability": 0.594714,
+        "support": 227,
+        "gap": 0.066073
+      },
+      {
+        "id": "(computed.declaredEntityCount==6) AND (exposed.edgeCount==5)",
+        "side": "IN",
+        "reliability": 0.594714,
+        "support": 227,
+        "gap": 0.066073
+      },
+      {
+        "id": "(expert.entityCount==6) AND (expert.edgeCount==5)",
+        "side": "IN",
+        "reliability": 0.594714,
+        "support": 227,
+        "gap": 0.066073
+      },
+      {
+        "id": "(expert.entityCount==6) AND (exposed.edgeCount==5)",
+        "side": "IN",
+        "reliability": 0.594714,
+        "support": 227,
+        "gap": 0.066073
+      },
+      {
+        "id": "(exposed.entityCount==6) AND (expert.edgeCount==5)",
+        "side": "IN",
+        "reliability": 0.594714,
+        "support": 227,
+        "gap": 0.066073
+      },
+      {
+        "id": "(exposed.entityCount==6) AND (exposed.edgeCount==5)",
+        "side": "IN",
+        "reliability": 0.594714,
+        "support": 227,
+        "gap": 0.066073
+      },
+      {
+        "id": "(expert.maxCentrality==400000) AND (computed.declaredEntityCount==6)",
+        "side": "IN",
+        "reliability": 0.593886,
+        "support": 229,
+        "gap": 0.065224
+      },
+      {
+        "id": "(expert.maxCentrality==400000) AND (computed.edgeToEntityRatioMicro<=857143)",
+        "side": "IN",
+        "reliability": 0.593886,
+        "support": 229,
+        "gap": 0.065224
+      },
+      {
+        "id": "(expert.maxCentrality==400000) AND (expert.bottleneckCount==0)",
+        "side": "IN",
+        "reliability": 0.593886,
+        "support": 229,
+        "gap": 0.065224
+      },
+      {
+        "id": "(expert.maxCentrality==400000) AND (expert.entityCount==6)",
+        "side": "IN",
+        "reliability": 0.593886,
+        "support": 229,
+        "gap": 0.065224
+      }
+    ]
+  },
+  "generalization": {
+    "applicable": true,
+    "ruleId": "(computed.declaredEntityCount==6) AND (expert.edgeCount==5)",
+    "ruleSide": "IN",
+    "discoveryReliability": 0.594714,
+    "discoverySupport": 227,
+    "holdoutOpportunities": 5809,
+    "holdoutBaseRate": 0.533827,
+    "holdoutSelected": 454,
+    "holdoutReliability": 0.524229,
+    "holdoutRejected": 5355,
+    "holdoutRejectedReliability": 0.534641,
+    "holdoutGap": 0.010412,
+    "reliabilityLostFromDiscoveryToHoldout": 0.070485,
+    "holdoutReachesFloor": false,
+    "collapsedToBaseRate": true
+  },
+  "coverage": {
+    "opportunities": 5809,
+    "medianGraphDensityMicro": 166667,
+    "medianMaxDependents": 1,
+    "denseNexusCorrect": 1359,
+    "denseNexusWrong": 1220,
+    "sparseNexusCorrect": 1742,
+    "sparseNexusWrong": 1488,
+    "highSupportNexusCorrect": 1075,
+    "highSupportNexusWrong": 911,
+    "lowSupportNexusCorrect": 2026,
+    "lowSupportNexusWrong": 1797,
+    "primeCorrectNexusWrong": 1298,
+    "primeWrongNexusCorrect": 3101,
+    "primeWrongNexusWrong": 1410,
+    "conflictingRelations": 666,
+    "incompleteRelations": 640,
+    "ambiguousCriticalityTopology": 2591,
+    "cyclicTopology": 1355,
+    "multiComponentTopology": 646,
+    "multipleCriticalNodes": 1925,
+    "logicallyEmptyCells": {
+      "primeCorrectNexusCorrect": 0,
+      "noCriticalityFamilyOpportunities": 0
+    },
+    "logicallyEmptyCellsExplained": true,
+    "corpusLevel": {
+      "denseMeshCases": 1005,
+      "ambiguousEquivalentPathCases": 1021,
+      "redundantParallelCases": 981,
+      "noCriticalitySilentCases": 3007
+    },
+    "familiesInCorpus": [
+      "AMBIGUOUS_EQUIVALENT_PATHS",
+      "CYCLE_WITH_BRIDGE",
+      "DENSE_MESH",
+      "DISCONNECTED_COMPONENT",
+      "INCOMPLETE_RELATIONS",
+      "REDUNDANT_PARALLEL",
+      "SINGLE_BRIDGE",
+      "SPARSE_CHAIN",
+      "TANDEM_BRIDGES",
+      "THREAT_SUPPORT_NETWORK",
+      "TYPED_RELATION_CONFLICT",
+      "WIDE_FAN_BRIDGE"
+    ],
+    "familiesRepresentedAmongOpportunities": [
+      "CYCLE_WITH_BRIDGE",
+      "DISCONNECTED_COMPONENT",
+      "INCOMPLETE_RELATIONS",
+      "SINGLE_BRIDGE",
+      "SPARSE_CHAIN",
+      "TANDEM_BRIDGES",
+      "THREAT_SUPPORT_NETWORK",
+      "TYPED_RELATION_CONFLICT",
+      "WIDE_FAN_BRIDGE"
+    ],
+    "allAttainableCellsPopulated": true
+  },
+  "delegation": {
+    "totalCases": 12000,
+    "inheritedDelegations": 4246,
+    "nexusDelegations": 0,
+    "nexusDelegationRate": 0,
+    "nexusDelegationPrecision": 0,
+    "nexusBeneficialChanges": 0,
+    "nexusHarmfulChanges": 0,
+    "nexusHarmRate": 0,
+    "nexusCorrectPrimeBreaks": 0,
+    "nexusCorrectPrimeBreakRate": 0,
+    "nexusAbstentions": 4246,
+    "nexusAbstentionRate": 0.353833,
+    "delegationOpportunities": 5809,
+    "expertCorrectDelegated": 0,
+    "expertCorrectAbstained": 3101,
+    "expertWrongDelegated": 0,
+    "expertWrongAbstained": 2708,
+    "delegationRateWhenCorrect": 0,
+    "delegationRateWhenWrong": 0,
+    "nexusCorrectnessDiscrimination": 0,
+    "primeOnlyTop1": 0.496417,
+    "arbiterTop1": 0.496417,
+    "harmCeilingRespected": true,
+    "correctPrimeBreakCeilingRespected": true,
+    "bucketUsage": {
+      "NEXUS_MULTIPLE_CRITICAL_NODES": {
+        "cases": 1425,
+        "delegated": 0,
+        "abstained": 1425
+      },
+      "NEXUS_SOLE_CRITICAL_NODE": {
+        "cases": 1295,
+        "delegated": 0,
+        "abstained": 1295
+      },
+      "NEXUS_WIDE_FAN_CRITICAL": {
+        "cases": 1526,
+        "delegated": 0,
+        "abstained": 1526
+      },
+      "null": {
+        "cases": 7754,
+        "delegated": 0,
+        "abstained": 0
+      }
+    }
+  },
+  "security": {
+    "staleEvidenceRejection": true,
+    "crossRuntimeRejection": true,
+    "crossCampaignRejection": true,
+    "malformedEvidenceRejection": true,
+    "unknownSchemaRejection": true,
+    "duplicateEvidenceHandling": true,
+    "illegalActionHandling": true,
+    "ambiguousEvidenceRejection": true,
+    "orderingInvariance": true,
+    "replayDeterminism": true,
+    "failureIsolation": true,
+    "r0Boundary": true
+  },
+  "classification": {
+    "status": "NON_IDENTIFIABLE_CURRENT_TASK",
+    "reasons": [
+      "Best gap over 264 predicates spanning all 4 tiers was 0.052037, below the permutation-null median of 0.059301: shuffled labels produce a larger apparent signal than the real ones.",
+      "The best rule a full discovery search could find fell from 0.594714 to 0.524229 out of sample, against a holdout base rate of 0.533827.",
+      "Correctness reduces to a hidden draw that is statistically independent of every legitimate decision-time observable."
+    ]
+  },
+  "labelLeakage": {
+    "inputKeysInspected": 86,
+    "forbiddenRuntimeKeysScanned": [
+      "expertCorrect",
+      "aligned",
+      "truthAction",
+      "primeCorrect",
+      "beneficial",
+      "harmful",
+      "selectedCorrect",
+      "caseId",
+      "split",
+      "variant",
+      "family"
+    ],
+    "forbiddenKeysPresent": [],
+    "dispositionGroups": 25,
+    "correctnessSensitiveGroups": [],
+    "labelLeakageDetected": false
+  },
+  "replay": {
+    "rowDigest": "e23127cce3af2936a423f28b2c2ba8050f454cf22faaf9dd227cc9d0bb436c88",
+    "replayDigest": "e23127cce3af2936a423f28b2c2ba8050f454cf22faaf9dd227cc9d0bb436c88",
+    "replayEquivalent": true
+  }
+}

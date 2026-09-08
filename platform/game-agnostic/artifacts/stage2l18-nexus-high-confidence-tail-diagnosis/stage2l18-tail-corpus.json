@@ -1,0 +1,4353 @@
+{
+  "stage": "STAGE2L18_NEXUS_HIGH_CONFIDENCE_TAIL_DIAGNOSIS",
+  "corpusDigest": "386909f608a4f93c6e4221e0a67eb95b227456eec6ff50abcc357f49ca95fe7f",
+  "population": {
+    "decidableCases": 15817,
+    "frozenRuleId": "risk>=400000 & margin>=100000 & marginVariance<=20000",
+    "frozenRuleTerms": {
+      "minRisk": 400000,
+      "minMargin": 100000,
+      "maxMarginVariance": 20000
+    },
+    "secondaryBandId": "risk>=400000 & margin>=100000",
+    "secondaryBandRationale": "The immediate superset of the frozen rule, obtained by dropping exactly one term — the marginVariance constraint, which is the newest and least supported of the three. Declared by that principle before its numbers were seen.",
+    "structurallyEligible": 7918,
+    "confidenceEligible": 310,
+    "delegationCandidates": 266,
+    "primaryTail": {
+      "total": 310,
+      "correct": 304,
+      "wrong": 6,
+      "nexusCorrectPrimeWrong": 260,
+      "nexusWrongPrimeCorrect": 3,
+      "agreementCorrect": 44,
+      "agreementWrong": 3,
+      "bySplit": {
+        "DEVELOPMENT": {
+          "n": 85,
+          "wrong": 4,
+          "precision": 0.952941
+        },
+        "CALIBRATION": {
+          "n": 116,
+          "wrong": 1,
+          "precision": 0.991379
+        },
+        "FINAL_HOLDOUT": {
+          "n": 109,
+          "wrong": 1,
+          "precision": 0.990826
+        }
+      }
+    },
+    "delegationCandidatePartition": {
+      "total": 266,
+      "correct": 260,
+      "wrong": 6,
+      "nexusCorrectPrimeWrong": 260,
+      "nexusWrongPrimeCorrect": 3,
+      "agreementCorrect": 0,
+      "agreementWrong": 3,
+      "bySplit": {
+        "DEVELOPMENT": {
+          "n": 78,
+          "wrong": 4,
+          "precision": 0.948718
+        },
+        "CALIBRATION": {
+          "n": 93,
+          "wrong": 1,
+          "precision": 0.989247
+        },
+        "FINAL_HOLDOUT": {
+          "n": 95,
+          "wrong": 1,
+          "precision": 0.989474
+        }
+      }
+    },
+    "secondaryBand": {
+      "total": 1649,
+      "correct": 1614,
+      "wrong": 35,
+      "nexusCorrectPrimeWrong": 1368,
+      "nexusWrongPrimeCorrect": 10,
+      "agreementCorrect": 246,
+      "agreementWrong": 25,
+      "bySplit": {
+        "DEVELOPMENT": {
+          "n": 495,
+          "wrong": 14,
+          "precision": 0.971717
+        },
+        "CALIBRATION": {
+          "n": 581,
+          "wrong": 14,
+          "precision": 0.975904
+        },
+        "FINAL_HOLDOUT": {
+          "n": 573,
+          "wrong": 7,
+          "precision": 0.987784
+        }
+      }
+    },
+    "highConfidenceWrongTotal": 6,
+    "highConfidenceWrongInDevelopment": 4,
+    "sampleTooSmallForRates": true
+  },
+  "highConfidenceWrongExplanations": [
+    {
+      "variantIndex": 1824,
+      "splitName": "DEVELOPMENT",
+      "family": "PROTECTED_CRITICAL_NODE",
+      "profile": "RISK_DOMINATED",
+      "objectiveType": "CONTINUITY",
+      "entityCount": 7,
+      "relationCount": 8,
+      "actionCount": 6,
+      "dependencyDepth": 4,
+      "cycleCount": 0,
+      "largestCycleLength": 0,
+      "valueConcentration": 1000000,
+      "valueBearers": 1,
+      "aggregateRisk": 3507899,
+      "nexusRecommendation": "s2l12h-01824-act-protect-n0",
+      "nexusRecommendationKind": "PROTECT",
+      "primeRecommendation": "s2l12h-01824-act-restore-n5",
+      "primeCorrect": true,
+      "optimalAction": "s2l12h-01824-act-restore-n5",
+      "optimalKind": "RESTORE",
+      "nexusComponents": {
+        "actionId": "s2l12h-01824-act-protect-n0",
+        "kind": "PROTECT",
+        "targetEntityId": "s2l12h-01824-n0",
+        "structuralImportance": 4,
+        "objectiveRelevance": 0,
+        "relationalBenefit": 0,
+        "actionCostPenalty": 6349,
+        "riskAdjustment": 963173,
+        "redundancyAdjustment": 0,
+        "remainingBlockerCount": 0,
+        "objectiveSupportCount": 0,
+        "substituteCount": 1,
+        "liveSubstituteCount": 1,
+        "bypassSupportValid": false,
+        "bypassReason": "NOT_A_BYPASS",
+        "alreadyDeliveringValue": 0,
+        "newlyDeliveredValue": 0,
+        "finalRelationalUtility": 956824
+      },
+      "optimalComponentsUnderNexus": {
+        "actionId": "s2l12h-01824-act-restore-n5",
+        "kind": "RESTORE",
+        "targetEntityId": "s2l12h-01824-n5",
+        "structuralImportance": 0,
+        "objectiveRelevance": 807556,
+        "relationalBenefit": 807556,
+        "actionCostPenalty": 78071,
+        "riskAdjustment": 0,
+        "redundancyAdjustment": 0,
+        "remainingBlockerCount": 0,
+        "objectiveSupportCount": 1,
+        "substituteCount": 0,
+        "liveSubstituteCount": 0,
+        "bypassSupportValid": false,
+        "bypassReason": "NOT_A_BYPASS",
+        "alreadyDeliveringValue": 0,
+        "newlyDeliveredValue": 807556,
+        "finalRelationalUtility": 729485
+      },
+      "optimalRankUnderNexus": 1,
+      "nexusRanking": [
+        {
+          "actionId": "s2l12h-01824-act-protect-n0",
+          "finalRelationalUtility": 956824
+        },
+        {
+          "actionId": "s2l12h-01824-act-restore-n5",
+          "finalRelationalUtility": 729485
+        },
+        {
+          "actionId": "s2l12h-01824-act-protect-n1",
+          "finalRelationalUtility": 455814
+        },
+        {
+          "actionId": "s2l12h-01824-act-protect-n3",
+          "finalRelationalUtility": 303597
+        },
+        {
+          "actionId": "s2l12h-01824-act-reinforce-n2",
+          "finalRelationalUtility": -57197
+        }
+      ],
+      "groundTruthRanking": [
+        {
+          "actionId": "s2l12h-01824-act-restore-n5",
+          "kind": "RESTORE",
+          "actionUtility": 1196963
+        },
+        {
+          "actionId": "s2l12h-01824-act-protect-n0",
+          "kind": "PROTECT",
+          "actionUtility": 956824
+        },
+        {
+          "actionId": "s2l12h-01824-act-protect-n1",
+          "kind": "PROTECT",
+          "actionUtility": 455814
+        },
+        {
+          "actionId": "s2l12h-01824-act-protect-n3",
+          "kind": "PROTECT",
+          "actionUtility": 303597
+        },
+        {
+          "actionId": "s2l12h-01824-act-hold",
+          "kind": "HOLD",
+          "actionUtility": 0
+        },
+        {
+          "actionId": "s2l12h-01824-act-reinforce-n2",
+          "kind": "REINFORCE",
+          "actionUtility": -57197
+        }
+      ],
+      "confidenceSignals": {
+        "nexusTopRiskAdjustment": 963173,
+        "nexusUtilityMargin": 227339,
+        "nexusTopUtility": 956824,
+        "nexusSubstituteCount": 1,
+        "nexusLiveSubstituteCount": 1,
+        "nexusBypassSupportValid": false,
+        "nexusEstimatedDeliveredValue": 0,
+        "nexusEstimatedRecoverableValue": 807556,
+        "nexusGainOverHold": 956824,
+        "semanticCoverage": 1000000
+      },
+      "stabilitySignals": {
+        "nexusMarginVariance": 19100,
+        "nexusUtilityVariance": 14706,
+        "nexusTopActionStability": 1000000,
+        "nexusCounterfactualAgreement": 1000000,
+        "nexusSemanticStability": 1000000
+      },
+      "substituteState": [
+        {
+          "replaces": "s2l12h-01824-n0",
+          "substitutes": [
+            {
+              "id": "s2l12h-01824-sub",
+              "wouldCarry": true
+            }
+          ]
+        }
+      ],
+      "relationSummary": {
+        "depends": 4,
+        "protects": 1,
+        "substitutes": 1,
+        "inhibits": 2
+      },
+      "propagationDisagreementCount": 0,
+      "whyOptimalWon": {
+        "deliveredAdvantage": 807556,
+        "amplificationAdvantage": 0,
+        "riskAdvantage": -495695,
+        "conflictAdvantage": 0,
+        "costAdvantage": -71722,
+        "deliveringCountAdvantage": 1,
+        "totalAdvantage": 240139
+      },
+      "errorClass": {
+        "labels": [
+          "COST_VALUE_TRADEOFF"
+        ],
+        "dominant": "COST_VALUE_TRADEOFF"
+      }
+    },
+    {
+      "variantIndex": 7822,
+      "splitName": "DEVELOPMENT",
+      "family": "COMPETING_CRITICAL_PATHS",
+      "profile": "RISK_DOMINATED",
+      "objectiveType": "PROTECTION",
+      "entityCount": 10,
+      "relationCount": 12,
+      "actionCount": 6,
+      "dependencyDepth": 8,
+      "cycleCount": 0,
+      "largestCycleLength": 0,
+      "valueConcentration": 1000000,
+      "valueBearers": 1,
+      "aggregateRisk": 5904326,
+      "nexusRecommendation": "s2l12h-07822-act-protect-n0",
+      "nexusRecommendationKind": "PROTECT",
+      "primeRecommendation": "s2l12h-07822-act-protect-n6",
+      "primeCorrect": false,
+      "optimalAction": "s2l12h-07822-act-restore-sub",
+      "optimalKind": "RESTORE",
+      "nexusComponents": {
+        "actionId": "s2l12h-07822-act-protect-n0",
+        "kind": "PROTECT",
+        "targetEntityId": "s2l12h-07822-n0",
+        "structuralImportance": 8,
+        "objectiveRelevance": 1180736,
+        "relationalBenefit": 0,
+        "actionCostPenalty": 39152,
+        "riskAdjustment": 883942,
+        "redundancyAdjustment": 0,
+        "remainingBlockerCount": 0,
+        "objectiveSupportCount": 1,
+        "substituteCount": 0,
+        "liveSubstituteCount": 0,
+        "bypassSupportValid": false,
+        "bypassReason": "NOT_A_BYPASS",
+        "alreadyDeliveringValue": 0,
+        "newlyDeliveredValue": 0,
+        "finalRelationalUtility": 844790
+      },
+      "optimalComponentsUnderNexus": {
+        "actionId": "s2l12h-07822-act-restore-sub",
+        "kind": "RESTORE",
+        "targetEntityId": "s2l12h-07822-sub",
+        "structuralImportance": 0,
+        "objectiveRelevance": 0,
+        "relationalBenefit": 0,
+        "actionCostPenalty": 8240,
+        "riskAdjustment": 0,
+        "redundancyAdjustment": 0,
+        "remainingBlockerCount": 0,
+        "objectiveSupportCount": 0,
+        "substituteCount": 0,
+        "liveSubstituteCount": 0,
+        "bypassSupportValid": false,
+        "bypassReason": "NOT_A_BYPASS",
+        "alreadyDeliveringValue": 0,
+        "newlyDeliveredValue": 0,
+        "finalRelationalUtility": -8240
+      },
+      "optimalRankUnderNexus": 4,
+      "nexusRanking": [
+        {
+          "actionId": "s2l12h-07822-act-protect-n0",
+          "finalRelationalUtility": 844790
+        },
+        {
+          "actionId": "s2l12h-07822-act-protect-n6",
+          "finalRelationalUtility": 461296
+        },
+        {
+          "actionId": "s2l12h-07822-act-protect-n5",
+          "finalRelationalUtility": 407964
+        },
+        {
+          "actionId": "s2l12h-07822-act-protect-n3",
+          "finalRelationalUtility": 191525
+        },
+        {
+          "actionId": "s2l12h-07822-act-restore-sub",
+          "finalRelationalUtility": -8240
+        }
+      ],
+      "groundTruthRanking": [
+        {
+          "actionId": "s2l12h-07822-act-restore-sub",
+          "kind": "RESTORE",
+          "actionUtility": 1172496
+        },
+        {
+          "actionId": "s2l12h-07822-act-protect-n0",
+          "kind": "PROTECT",
+          "actionUtility": 844790
+        },
+        {
+          "actionId": "s2l12h-07822-act-protect-n6",
+          "kind": "PROTECT",
+          "actionUtility": 461296
+        },
+        {
+          "actionId": "s2l12h-07822-act-protect-n5",
+          "kind": "PROTECT",
+          "actionUtility": 407964
+        },
+        {
+          "actionId": "s2l12h-07822-act-protect-n3",
+          "kind": "PROTECT",
+          "actionUtility": 191525
+        },
+        {
+          "actionId": "s2l12h-07822-act-hold",
+          "kind": "HOLD",
+          "actionUtility": 0
+        }
+      ],
+      "confidenceSignals": {
+        "nexusTopRiskAdjustment": 883942,
+        "nexusUtilityMargin": 383494,
+        "nexusTopUtility": 844790,
+        "nexusSubstituteCount": 0,
+        "nexusLiveSubstituteCount": 0,
+        "nexusBypassSupportValid": false,
+        "nexusEstimatedDeliveredValue": 0,
+        "nexusEstimatedRecoverableValue": 1180736,
+        "nexusGainOverHold": 844790,
+        "semanticCoverage": 1000000
+      },
+      "stabilitySignals": {
+        "nexusMarginVariance": 19671,
+        "nexusUtilityVariance": 21371,
+        "nexusTopActionStability": 1000000,
+        "nexusCounterfactualAgreement": 1000000,
+        "nexusSemanticStability": 1000000
+      },
+      "substituteState": [
+        {
+          "replaces": "s2l12h-07822-n3",
+          "substitutes": [
+            {
+              "id": "s2l12h-07822-sub",
+              "wouldCarry": true
+            }
+          ]
+        }
+      ],
+      "relationSummary": {
+        "depends": 10,
+        "substitutes": 1,
+        "conflicts": 1
+      },
+      "propagationDisagreementCount": 5,
+      "whyOptimalWon": {
+        "deliveredAdvantage": 1180736,
+        "amplificationAdvantage": 0,
+        "riskAdvantage": -883942,
+        "conflictAdvantage": 0,
+        "costAdvantage": 30912,
+        "deliveringCountAdvantage": 4,
+        "totalAdvantage": 327706
+      },
+      "errorClass": {
+        "labels": [
+          "COST_VALUE_TRADEOFF",
+          "SINGLE_PASS_APPROXIMATION"
+        ],
+        "dominant": "SINGLE_PASS_APPROXIMATION"
+      }
+    },
+    {
+      "variantIndex": 7894,
+      "splitName": "DEVELOPMENT",
+      "family": "MULTI_COMPONENT",
+      "profile": "RISK_DOMINATED",
+      "objectiveType": "PROTECTION",
+      "entityCount": 13,
+      "relationCount": 14,
+      "actionCount": 6,
+      "dependencyDepth": 5,
+      "cycleCount": 0,
+      "largestCycleLength": 0,
+      "valueConcentration": 1000000,
+      "valueBearers": 0,
+      "aggregateRisk": 7584255,
+      "nexusRecommendation": "s2l12h-07894-act-protect-n0",
+      "nexusRecommendationKind": "PROTECT",
+      "primeRecommendation": "s2l12h-07894-act-protect-n8",
+      "primeCorrect": true,
+      "optimalAction": "s2l12h-07894-act-protect-n8",
+      "optimalKind": "PROTECT",
+      "nexusComponents": {
+        "actionId": "s2l12h-07894-act-protect-n0",
+        "kind": "PROTECT",
+        "targetEntityId": "s2l12h-07894-n0",
+        "structuralImportance": 5,
+        "objectiveRelevance": 0,
+        "relationalBenefit": 0,
+        "actionCostPenalty": 43540,
+        "riskAdjustment": 484715,
+        "redundancyAdjustment": 0,
+        "remainingBlockerCount": 0,
+        "objectiveSupportCount": 0,
+        "substituteCount": 0,
+        "liveSubstituteCount": 0,
+        "bypassSupportValid": false,
+        "bypassReason": "NOT_A_BYPASS",
+        "alreadyDeliveringValue": 0,
+        "newlyDeliveredValue": 0,
+        "finalRelationalUtility": 441175
+      },
+      "optimalComponentsUnderNexus": {
+        "actionId": "s2l12h-07894-act-protect-n8",
+        "kind": "PROTECT",
+        "targetEntityId": "s2l12h-07894-n8",
+        "structuralImportance": 3,
+        "objectiveRelevance": 0,
+        "relationalBenefit": 0,
+        "actionCostPenalty": 38943,
+        "riskAdjustment": 0,
+        "redundancyAdjustment": 0,
+        "remainingBlockerCount": 0,
+        "objectiveSupportCount": 0,
+        "substituteCount": 0,
+        "liveSubstituteCount": 0,
+        "bypassSupportValid": false,
+        "bypassReason": "NOT_A_BYPASS",
+        "alreadyDeliveringValue": 0,
+        "newlyDeliveredValue": 0,
+        "finalRelationalUtility": -38943
+      },
+      "optimalRankUnderNexus": 1,
+      "nexusRanking": [
+        {
+          "actionId": "s2l12h-07894-act-protect-n0",
+          "finalRelationalUtility": 441175
+        },
+        {
+          "actionId": "s2l12h-07894-act-protect-n8",
+          "finalRelationalUtility": -38943
+        },
+        {
+          "actionId": "s2l12h-07894-act-restore-n4",
+          "finalRelationalUtility": -39698
+        },
+        {
+          "actionId": "s2l12h-07894-act-reinforce-n1",
+          "finalRelationalUtility": -48545
+        },
+        {
+          "actionId": "s2l12h-07894-act-reinforce-sub",
+          "finalRelationalUtility": -82416
+        }
+      ],
+      "groundTruthRanking": [
+        {
+          "actionId": "s2l12h-07894-act-protect-n8",
+          "kind": "PROTECT",
+          "actionUtility": 597113
+        },
+        {
+          "actionId": "s2l12h-07894-act-reinforce-n1",
+          "kind": "REINFORCE",
+          "actionUtility": 587511
+        },
+        {
+          "actionId": "s2l12h-07894-act-protect-n0",
+          "kind": "PROTECT",
+          "actionUtility": 441175
+        },
+        {
+          "actionId": "s2l12h-07894-act-hold",
+          "kind": "HOLD",
+          "actionUtility": 0
+        },
+        {
+          "actionId": "s2l12h-07894-act-restore-n4",
+          "kind": "RESTORE",
+          "actionUtility": -39698
+        },
+        {
+          "actionId": "s2l12h-07894-act-reinforce-sub",
+          "kind": "REINFORCE",
+          "actionUtility": -82416
+        }
+      ],
+      "confidenceSignals": {
+        "nexusTopRiskAdjustment": 484715,
+        "nexusUtilityMargin": 480118,
+        "nexusTopUtility": 441175,
+        "nexusSubstituteCount": 0,
+        "nexusLiveSubstituteCount": 0,
+        "nexusBypassSupportValid": false,
+        "nexusEstimatedDeliveredValue": 0,
+        "nexusEstimatedRecoverableValue": 0,
+        "nexusGainOverHold": 441175,
+        "semanticCoverage": 1000000
+      },
+      "stabilitySignals": {
+        "nexusMarginVariance": 15046,
+        "nexusUtilityVariance": 15003,
+        "nexusTopActionStability": 1000000,
+        "nexusCounterfactualAgreement": 976190,
+        "nexusSemanticStability": 1000000
+      },
+      "substituteState": [
+        {
+          "replaces": "s2l12h-07894-n4",
+          "substitutes": [
+            {
+              "id": "s2l12h-07894-sub",
+              "wouldCarry": false
+            }
+          ]
+        }
+      ],
+      "relationSummary": {
+        "depends": 10,
+        "substitutes": 1,
+        "protects": 2,
+        "supports": 1
+      },
+      "propagationDisagreementCount": 5,
+      "whyOptimalWon": {
+        "deliveredAdvantage": 0,
+        "amplificationAdvantage": 0,
+        "riskAdvantage": 151341,
+        "conflictAdvantage": 0,
+        "costAdvantage": 4597,
+        "deliveringCountAdvantage": 0,
+        "totalAdvantage": 155938
+      },
+      "errorClass": {
+        "labels": [
+          "COST_VALUE_TRADEOFF",
+          "SINGLE_PASS_APPROXIMATION"
+        ],
+        "dominant": "SINGLE_PASS_APPROXIMATION"
+      }
+    },
+    {
+      "variantIndex": 10490,
+      "splitName": "DEVELOPMENT",
+      "family": "DECOY_HIGH_DEGREE",
+      "profile": "RISK_DOMINATED",
+      "objectiveType": "CONTINUITY",
+      "entityCount": 11,
+      "relationCount": 11,
+      "actionCount": 6,
+      "dependencyDepth": 9,
+      "cycleCount": 0,
+      "largestCycleLength": 0,
+      "valueConcentration": 1000000,
+      "valueBearers": 1,
+      "aggregateRisk": 5698286,
+      "nexusRecommendation": "s2l12h-10490-act-protect-n1",
+      "nexusRecommendationKind": "PROTECT",
+      "primeRecommendation": "s2l12h-10490-act-protect-n9",
+      "primeCorrect": false,
+      "optimalAction": "s2l12h-10490-act-restore-n0",
+      "optimalKind": "RESTORE",
+      "nexusComponents": {
+        "actionId": "s2l12h-10490-act-protect-n1",
+        "kind": "PROTECT",
+        "targetEntityId": "s2l12h-10490-n1",
+        "structuralImportance": 0,
+        "objectiveRelevance": 0,
+        "relationalBenefit": 0,
+        "actionCostPenalty": 20097,
+        "riskAdjustment": 739980,
+        "redundancyAdjustment": 0,
+        "remainingBlockerCount": 0,
+        "objectiveSupportCount": 0,
+        "substituteCount": 0,
+        "liveSubstituteCount": 0,
+        "bypassSupportValid": false,
+        "bypassReason": "NOT_A_BYPASS",
+        "alreadyDeliveringValue": 0,
+        "newlyDeliveredValue": 0,
+        "finalRelationalUtility": 719883
+      },
+      "optimalComponentsUnderNexus": {
+        "actionId": "s2l12h-10490-act-restore-n0",
+        "kind": "RESTORE",
+        "targetEntityId": "s2l12h-10490-n0",
+        "structuralImportance": 9,
+        "objectiveRelevance": 1120611,
+        "relationalBenefit": 0,
+        "actionCostPenalty": 72361,
+        "riskAdjustment": 0,
+        "redundancyAdjustment": 0,
+        "remainingBlockerCount": 0,
+        "objectiveSupportCount": 1,
+        "substituteCount": 1,
+        "liveSubstituteCount": 1,
+        "bypassSupportValid": false,
+        "bypassReason": "NOT_A_BYPASS",
+        "alreadyDeliveringValue": 0,
+        "newlyDeliveredValue": 0,
+        "finalRelationalUtility": -72361
+      },
+      "optimalRankUnderNexus": 4,
+      "nexusRanking": [
+        {
+          "actionId": "s2l12h-10490-act-protect-n1",
+          "finalRelationalUtility": 719883
+        },
+        {
+          "actionId": "s2l12h-10490-act-protect-n2",
+          "finalRelationalUtility": 580448
+        },
+        {
+          "actionId": "s2l12h-10490-act-protect-sub",
+          "finalRelationalUtility": 520529
+        },
+        {
+          "actionId": "s2l12h-10490-act-protect-n9",
+          "finalRelationalUtility": 461518
+        },
+        {
+          "actionId": "s2l12h-10490-act-restore-n0",
+          "finalRelationalUtility": -72361
+        }
+      ],
+      "groundTruthRanking": [
+        {
+          "actionId": "s2l12h-10490-act-restore-n0",
+          "kind": "RESTORE",
+          "actionUtility": 1048250
+        },
+        {
+          "actionId": "s2l12h-10490-act-protect-n1",
+          "kind": "PROTECT",
+          "actionUtility": 719883
+        },
+        {
+          "actionId": "s2l12h-10490-act-protect-n2",
+          "kind": "PROTECT",
+          "actionUtility": 580448
+        },
+        {
+          "actionId": "s2l12h-10490-act-protect-sub",
+          "kind": "PROTECT",
+          "actionUtility": 520529
+        },
+        {
+          "actionId": "s2l12h-10490-act-protect-n9",
+          "kind": "PROTECT",
+          "actionUtility": 461518
+        },
+        {
+          "actionId": "s2l12h-10490-act-hold",
+          "kind": "HOLD",
+          "actionUtility": 0
+        }
+      ],
+      "confidenceSignals": {
+        "nexusTopRiskAdjustment": 739980,
+        "nexusUtilityMargin": 139435,
+        "nexusTopUtility": 719883,
+        "nexusSubstituteCount": 0,
+        "nexusLiveSubstituteCount": 0,
+        "nexusBypassSupportValid": false,
+        "nexusEstimatedDeliveredValue": 1120611,
+        "nexusEstimatedRecoverableValue": 0,
+        "nexusGainOverHold": 719883,
+        "semanticCoverage": 1000000
+      },
+      "stabilitySignals": {
+        "nexusMarginVariance": 19309,
+        "nexusUtilityVariance": 13631,
+        "nexusTopActionStability": 1000000,
+        "nexusCounterfactualAgreement": 976190,
+        "nexusSemanticStability": 1000000
+      },
+      "substituteState": [
+        {
+          "replaces": "s2l12h-10490-n0",
+          "substitutes": [
+            {
+              "id": "s2l12h-10490-sub",
+              "wouldCarry": true
+            }
+          ]
+        }
+      ],
+      "relationSummary": {
+        "depends": 9,
+        "protects": 1,
+        "substitutes": 1
+      },
+      "propagationDisagreementCount": 4,
+      "whyOptimalWon": {
+        "deliveredAdvantage": 1120611,
+        "amplificationAdvantage": 0,
+        "riskAdvantage": -739980,
+        "conflictAdvantage": 0,
+        "costAdvantage": -52264,
+        "deliveringCountAdvantage": 4,
+        "totalAdvantage": 328367
+      },
+      "errorClass": {
+        "labels": [
+          "BOTTLENECK_MISVALUATION",
+          "COST_VALUE_TRADEOFF"
+        ],
+        "dominant": "COST_VALUE_TRADEOFF"
+      }
+    },
+    {
+      "variantIndex": 21915,
+      "splitName": "CALIBRATION",
+      "family": "COMPETING_CRITICAL_PATHS",
+      "profile": "RISK_DOMINATED",
+      "objectiveType": "PROTECTION",
+      "entityCount": 13,
+      "relationCount": 18,
+      "actionCount": 6,
+      "dependencyDepth": 11,
+      "cycleCount": 0,
+      "largestCycleLength": 0,
+      "valueConcentration": 1000000,
+      "valueBearers": 1,
+      "aggregateRisk": 6995686,
+      "nexusRecommendation": "s2l12h-21915-act-protect-n0",
+      "nexusRecommendationKind": "PROTECT",
+      "primeRecommendation": "s2l12h-21915-act-protect-n8",
+      "primeCorrect": false,
+      "optimalAction": "s2l12h-21915-act-restore-sub",
+      "optimalKind": "RESTORE",
+      "nexusComponents": {
+        "actionId": "s2l12h-21915-act-protect-n0",
+        "kind": "PROTECT",
+        "targetEntityId": "s2l12h-21915-n0",
+        "structuralImportance": 11,
+        "objectiveRelevance": 727683,
+        "relationalBenefit": 0,
+        "actionCostPenalty": 9768,
+        "riskAdjustment": 681395,
+        "redundancyAdjustment": 0,
+        "remainingBlockerCount": 0,
+        "objectiveSupportCount": 1,
+        "substituteCount": 1,
+        "liveSubstituteCount": 1,
+        "bypassSupportValid": false,
+        "bypassReason": "NOT_A_BYPASS",
+        "alreadyDeliveringValue": 0,
+        "newlyDeliveredValue": 0,
+        "finalRelationalUtility": 671627
+      },
+      "optimalComponentsUnderNexus": {
+        "actionId": "s2l12h-21915-act-restore-sub",
+        "kind": "RESTORE",
+        "targetEntityId": "s2l12h-21915-sub",
+        "structuralImportance": 0,
+        "objectiveRelevance": 0,
+        "relationalBenefit": 0,
+        "actionCostPenalty": 43390,
+        "riskAdjustment": 0,
+        "redundancyAdjustment": 0,
+        "remainingBlockerCount": 0,
+        "objectiveSupportCount": 0,
+        "substituteCount": 0,
+        "liveSubstituteCount": 0,
+        "bypassSupportValid": false,
+        "bypassReason": "NOT_A_BYPASS",
+        "alreadyDeliveringValue": 0,
+        "newlyDeliveredValue": 0,
+        "finalRelationalUtility": -43390
+      },
+      "optimalRankUnderNexus": 4,
+      "nexusRanking": [
+        {
+          "actionId": "s2l12h-21915-act-protect-n0",
+          "finalRelationalUtility": 671627
+        },
+        {
+          "actionId": "s2l12h-21915-act-protect-n8",
+          "finalRelationalUtility": 262082
+        },
+        {
+          "actionId": "s2l12h-21915-act-protect-n7",
+          "finalRelationalUtility": 252864
+        },
+        {
+          "actionId": "s2l12h-21915-act-protect-n11",
+          "finalRelationalUtility": 186275
+        },
+        {
+          "actionId": "s2l12h-21915-act-restore-sub",
+          "finalRelationalUtility": -43390
+        }
+      ],
+      "groundTruthRanking": [
+        {
+          "actionId": "s2l12h-21915-act-restore-sub",
+          "kind": "RESTORE",
+          "actionUtility": 684293
+        },
+        {
+          "actionId": "s2l12h-21915-act-protect-n0",
+          "kind": "PROTECT",
+          "actionUtility": 671627
+        },
+        {
+          "actionId": "s2l12h-21915-act-protect-n8",
+          "kind": "PROTECT",
+          "actionUtility": 262082
+        },
+        {
+          "actionId": "s2l12h-21915-act-protect-n7",
+          "kind": "PROTECT",
+          "actionUtility": 252864
+        },
+        {
+          "actionId": "s2l12h-21915-act-protect-n11",
+          "kind": "PROTECT",
+          "actionUtility": 186275
+        },
+        {
+          "actionId": "s2l12h-21915-act-hold",
+          "kind": "HOLD",
+          "actionUtility": 0
+        }
+      ],
+      "confidenceSignals": {
+        "nexusTopRiskAdjustment": 681395,
+        "nexusUtilityMargin": 409545,
+        "nexusTopUtility": 671627,
+        "nexusSubstituteCount": 1,
+        "nexusLiveSubstituteCount": 1,
+        "nexusBypassSupportValid": false,
+        "nexusEstimatedDeliveredValue": 0,
+        "nexusEstimatedRecoverableValue": 727683,
+        "nexusGainOverHold": 671627,
+        "semanticCoverage": 1000000
+      },
+      "stabilitySignals": {
+        "nexusMarginVariance": 19250,
+        "nexusUtilityVariance": 18695,
+        "nexusTopActionStability": 1000000,
+        "nexusCounterfactualAgreement": 976190,
+        "nexusSemanticStability": 1000000
+      },
+      "substituteState": [
+        {
+          "replaces": "s2l12h-21915-n0",
+          "substitutes": [
+            {
+              "id": "s2l12h-21915-sub",
+              "wouldCarry": true
+            }
+          ]
+        }
+      ],
+      "relationSummary": {
+        "depends": 15,
+        "substitutes": 1,
+        "protects": 1,
+        "amplifies": 1
+      },
+      "propagationDisagreementCount": 6,
+      "whyOptimalWon": {
+        "deliveredAdvantage": 727683,
+        "amplificationAdvantage": 0,
+        "riskAdvantage": -681395,
+        "conflictAdvantage": 0,
+        "costAdvantage": -33622,
+        "deliveringCountAdvantage": 5,
+        "totalAdvantage": 12666
+      },
+      "errorClass": {
+        "labels": [
+          "COST_VALUE_TRADEOFF",
+          "SINGLE_PASS_APPROXIMATION",
+          "THRESHOLD_BOUNDARY"
+        ],
+        "dominant": "THRESHOLD_BOUNDARY"
+      }
+    },
+    {
+      "variantIndex": 39126,
+      "splitName": "FINAL_HOLDOUT",
+      "family": "MULTI_COMPONENT",
+      "profile": "RISK_DOMINATED",
+      "objectiveType": "THROUGHPUT",
+      "entityCount": 8,
+      "relationCount": 8,
+      "actionCount": 6,
+      "dependencyDepth": 3,
+      "cycleCount": 0,
+      "largestCycleLength": 0,
+      "valueConcentration": 1000000,
+      "valueBearers": 1,
+      "aggregateRisk": 4322319,
+      "nexusRecommendation": "s2l12h-39126-act-protect-n2",
+      "nexusRecommendationKind": "PROTECT",
+      "primeRecommendation": "s2l12h-39126-act-restore-n1",
+      "primeCorrect": true,
+      "optimalAction": "s2l12h-39126-act-restore-n1",
+      "optimalKind": "RESTORE",
+      "nexusComponents": {
+        "actionId": "s2l12h-39126-act-protect-n2",
+        "kind": "PROTECT",
+        "targetEntityId": "s2l12h-39126-n2",
+        "structuralImportance": 0,
+        "objectiveRelevance": 0,
+        "relationalBenefit": 0,
+        "actionCostPenalty": 17328,
+        "riskAdjustment": 741102,
+        "redundancyAdjustment": 0,
+        "remainingBlockerCount": 0,
+        "objectiveSupportCount": 0,
+        "substituteCount": 0,
+        "liveSubstituteCount": 0,
+        "bypassSupportValid": false,
+        "bypassReason": "NOT_A_BYPASS",
+        "alreadyDeliveringValue": 0,
+        "newlyDeliveredValue": 0,
+        "finalRelationalUtility": 723774
+      },
+      "optimalComponentsUnderNexus": {
+        "actionId": "s2l12h-39126-act-restore-n1",
+        "kind": "RESTORE",
+        "targetEntityId": "s2l12h-39126-n1",
+        "structuralImportance": 1,
+        "objectiveRelevance": 808225,
+        "relationalBenefit": 606169,
+        "actionCostPenalty": 68200,
+        "riskAdjustment": 0,
+        "redundancyAdjustment": -202056,
+        "remainingBlockerCount": 0,
+        "objectiveSupportCount": 1,
+        "substituteCount": 1,
+        "liveSubstituteCount": 1,
+        "bypassSupportValid": false,
+        "bypassReason": "NOT_A_BYPASS",
+        "alreadyDeliveringValue": 0,
+        "newlyDeliveredValue": 808225,
+        "finalRelationalUtility": 537969
+      },
+      "optimalRankUnderNexus": 3,
+      "nexusRanking": [
+        {
+          "actionId": "s2l12h-39126-act-protect-n2",
+          "finalRelationalUtility": 723774
+        },
+        {
+          "actionId": "s2l12h-39126-act-protect-n6",
+          "finalRelationalUtility": 584175
+        },
+        {
+          "actionId": "s2l12h-39126-act-protect-n0",
+          "finalRelationalUtility": 554602
+        },
+        {
+          "actionId": "s2l12h-39126-act-restore-n1",
+          "finalRelationalUtility": 537969
+        },
+        {
+          "actionId": "s2l12h-39126-act-reinforce-n3",
+          "finalRelationalUtility": -60195
+        }
+      ],
+      "groundTruthRanking": [
+        {
+          "actionId": "s2l12h-39126-act-restore-n1",
+          "kind": "RESTORE",
+          "actionUtility": 740025
+        },
+        {
+          "actionId": "s2l12h-39126-act-protect-n2",
+          "kind": "PROTECT",
+          "actionUtility": 723774
+        },
+        {
+          "actionId": "s2l12h-39126-act-protect-n6",
+          "kind": "PROTECT",
+          "actionUtility": 584175
+        },
+        {
+          "actionId": "s2l12h-39126-act-protect-n0",
+          "kind": "PROTECT",
+          "actionUtility": 554602
+        },
+        {
+          "actionId": "s2l12h-39126-act-hold",
+          "kind": "HOLD",
+          "actionUtility": 0
+        },
+        {
+          "actionId": "s2l12h-39126-act-reinforce-n3",
+          "kind": "REINFORCE",
+          "actionUtility": -60195
+        }
+      ],
+      "confidenceSignals": {
+        "nexusTopRiskAdjustment": 741102,
+        "nexusUtilityMargin": 139599,
+        "nexusTopUtility": 723774,
+        "nexusSubstituteCount": 0,
+        "nexusLiveSubstituteCount": 0,
+        "nexusBypassSupportValid": false,
+        "nexusEstimatedDeliveredValue": 0,
+        "nexusEstimatedRecoverableValue": 808225,
+        "nexusGainOverHold": 723774,
+        "semanticCoverage": 1000000
+      },
+      "stabilitySignals": {
+        "nexusMarginVariance": 10212,
+        "nexusUtilityVariance": 15325,
+        "nexusTopActionStability": 1000000,
+        "nexusCounterfactualAgreement": 952381,
+        "nexusSemanticStability": 1000000
+      },
+      "substituteState": [
+        {
+          "replaces": "s2l12h-39126-n1",
+          "substitutes": [
+            {
+              "id": "s2l12h-39126-sub",
+              "wouldCarry": true
+            }
+          ]
+        }
+      ],
+      "relationSummary": {
+        "depends": 5,
+        "substitutes": 1,
+        "protects": 2
+      },
+      "propagationDisagreementCount": 3,
+      "whyOptimalWon": {
+        "deliveredAdvantage": 808225,
+        "amplificationAdvantage": 0,
+        "riskAdvantage": -741102,
+        "conflictAdvantage": 0,
+        "costAdvantage": -50872,
+        "deliveringCountAdvantage": 1,
+        "totalAdvantage": 16251
+      },
+      "errorClass": {
+        "labels": [
+          "BOTTLENECK_MISVALUATION",
+          "COST_VALUE_TRADEOFF"
+        ],
+        "dominant": "COST_VALUE_TRADEOFF"
+      }
+    }
+  ],
+  "highConfidenceCorrectControlSample": [
+    {
+      "variantIndex": 77,
+      "splitName": "DEVELOPMENT",
+      "family": "REDUNDANT_NETWORK",
+      "profile": "RISK_DOMINATED",
+      "objectiveType": "THROUGHPUT",
+      "entityCount": 8,
+      "relationCount": 12,
+      "actionCount": 6,
+      "dependencyDepth": 5,
+      "cycleCount": 0,
+      "largestCycleLength": 0,
+      "valueConcentration": 1000000,
+      "valueBearers": 1,
+      "aggregateRisk": 3910000,
+      "nexusRecommendation": "s2l12h-00077-act-protect-n3",
+      "nexusRecommendationKind": "PROTECT",
+      "primeRecommendation": "s2l12h-00077-act-restore-n1",
+      "primeCorrect": false,
+      "optimalAction": "s2l12h-00077-act-protect-n3",
+      "optimalKind": "PROTECT",
+      "nexusComponents": {
+        "actionId": "s2l12h-00077-act-protect-n3",
+        "kind": "PROTECT",
+        "targetEntityId": "s2l12h-00077-n3",
+        "structuralImportance": 0,
+        "objectiveRelevance": 0,
+        "relationalBenefit": 0,
+        "actionCostPenalty": 87745,
+        "riskAdjustment": 690148,
+        "redundancyAdjustment": 0,
+        "remainingBlockerCount": 0,
+        "objectiveSupportCount": 0,
+        "substituteCount": 0,
+        "liveSubstituteCount": 0,
+        "bypassSupportValid": false,
+        "bypassReason": "NOT_A_BYPASS",
+        "alreadyDeliveringValue": 0,
+        "newlyDeliveredValue": 0,
+        "finalRelationalUtility": 602403
+      },
+      "optimalComponentsUnderNexus": {
+        "actionId": "s2l12h-00077-act-protect-n3",
+        "kind": "PROTECT",
+        "targetEntityId": "s2l12h-00077-n3",
+        "structuralImportance": 0,
+        "objectiveRelevance": 0,
+        "relationalBenefit": 0,
+        "actionCostPenalty": 87745,
+        "riskAdjustment": 690148,
+        "redundancyAdjustment": 0,
+        "remainingBlockerCount": 0,
+        "objectiveSupportCount": 0,
+        "substituteCount": 0,
+        "liveSubstituteCount": 0,
+        "bypassSupportValid": false,
+        "bypassReason": "NOT_A_BYPASS",
+        "alreadyDeliveringValue": 0,
+        "newlyDeliveredValue": 0,
+        "finalRelationalUtility": 602403
+      },
+      "optimalRankUnderNexus": 0,
+      "nexusRanking": [
+        {
+          "actionId": "s2l12h-00077-act-protect-n3",
+          "finalRelationalUtility": 602403
+        },
+        {
+          "actionId": "s2l12h-00077-act-restore-n1",
+          "finalRelationalUtility": 357174
+        },
+        {
+          "actionId": "s2l12h-00077-act-bypass-n0",
+          "finalRelationalUtility": 328228
+        },
+        {
+          "actionId": "s2l12h-00077-act-protect-n2",
+          "finalRelationalUtility": 327712
+        },
+        {
+          "actionId": "s2l12h-00077-act-restore-sub",
+          "finalRelationalUtility": -72966
+        }
+      ],
+      "groundTruthRanking": [
+        {
+          "actionId": "s2l12h-00077-act-protect-n3",
+          "kind": "PROTECT",
+          "actionUtility": 602403
+        },
+        {
+          "actionId": "s2l12h-00077-act-protect-n2",
+          "kind": "PROTECT",
+          "actionUtility": 327712
+        },
+        {
+          "actionId": "s2l12h-00077-act-hold",
+          "kind": "HOLD",
+          "actionUtility": 0
+        },
+        {
+          "actionId": "s2l12h-00077-act-restore-n1",
+          "kind": "RESTORE",
+          "actionUtility": -24712
+        },
+        {
+          "actionId": "s2l12h-00077-act-bypass-n0",
+          "kind": "BYPASS",
+          "actionUtility": -53658
+        },
+        {
+          "actionId": "s2l12h-00077-act-restore-sub",
+          "kind": "RESTORE",
+          "actionUtility": -72966
+        }
+      ],
+      "confidenceSignals": {
+        "nexusTopRiskAdjustment": 690148,
+        "nexusUtilityMargin": 245229,
+        "nexusTopUtility": 602403,
+        "nexusSubstituteCount": 0,
+        "nexusLiveSubstituteCount": 0,
+        "nexusBypassSupportValid": false,
+        "nexusEstimatedDeliveredValue": 0,
+        "nexusEstimatedRecoverableValue": 1145657,
+        "nexusGainOverHold": 602403,
+        "semanticCoverage": 1000000
+      },
+      "stabilitySignals": {
+        "nexusMarginVariance": 18250,
+        "nexusUtilityVariance": 16617,
+        "nexusTopActionStability": 1000000,
+        "nexusCounterfactualAgreement": 952381,
+        "nexusSemanticStability": 1000000
+      },
+      "substituteState": [
+        {
+          "replaces": "s2l12h-00077-n0",
+          "substitutes": [
+            {
+              "id": "s2l12h-00077-sub",
+              "wouldCarry": true
+            }
+          ]
+        }
+      ],
+      "relationSummary": {
+        "depends": 5,
+        "supports": 5,
+        "substitutes": 1,
+        "protects": 1
+      },
+      "propagationDisagreementCount": 2,
+      "whyOptimalWon": null,
+      "errorClass": {
+        "labels": [
+          "BOTTLENECK_MISVALUATION",
+          "COST_VALUE_TRADEOFF"
+        ],
+        "dominant": "COST_VALUE_TRADEOFF"
+      }
+    },
+    {
+      "variantIndex": 99,
+      "splitName": "DEVELOPMENT",
+      "family": "LOW_DEGREE_HIGH_VALUE",
+      "profile": "RISK_DOMINATED",
+      "objectiveType": "THROUGHPUT",
+      "entityCount": 8,
+      "relationCount": 8,
+      "actionCount": 6,
+      "dependencyDepth": 6,
+      "cycleCount": 0,
+      "largestCycleLength": 0,
+      "valueConcentration": 1000000,
+      "valueBearers": 1,
+      "aggregateRisk": 4121283,
+      "nexusRecommendation": "s2l12h-00099-act-protect-n1",
+      "nexusRecommendationKind": "PROTECT",
+      "primeRecommendation": "s2l12h-00099-act-restore-n2",
+      "primeCorrect": false,
+      "optimalAction": "s2l12h-00099-act-protect-n1",
+      "optimalKind": "PROTECT",
+      "nexusComponents": {
+        "actionId": "s2l12h-00099-act-protect-n1",
+        "kind": "PROTECT",
+        "targetEntityId": "s2l12h-00099-n1",
+        "structuralImportance": 2,
+        "objectiveRelevance": 0,
+        "relationalBenefit": 0,
+        "actionCostPenalty": 10278,
+        "riskAdjustment": 579405,
+        "redundancyAdjustment": 0,
+        "remainingBlockerCount": 0,
+        "objectiveSupportCount": 0,
+        "substituteCount": 0,
+        "liveSubstituteCount": 0,
+        "bypassSupportValid": false,
+        "bypassReason": "NOT_A_BYPASS",
+        "alreadyDeliveringValue": 0,
+        "newlyDeliveredValue": 0,
+        "finalRelationalUtility": 569127
+      },
+      "optimalComponentsUnderNexus": {
+        "actionId": "s2l12h-00099-act-protect-n1",
+        "kind": "PROTECT",
+        "targetEntityId": "s2l12h-00099-n1",
+        "structuralImportance": 2,
+        "objectiveRelevance": 0,
+        "relationalBenefit": 0,
+        "actionCostPenalty": 10278,
+        "riskAdjustment": 579405,
+        "redundancyAdjustment": 0,
+        "remainingBlockerCount": 0,
+        "objectiveSupportCount": 0,
+        "substituteCount": 0,
+        "liveSubstituteCount": 0,
+        "bypassSupportValid": false,
+        "bypassReason": "NOT_A_BYPASS",
+        "alreadyDeliveringValue": 0,
+        "newlyDeliveredValue": 0,
+        "finalRelationalUtility": 569127
+      },
+      "optimalRankUnderNexus": 0,
+      "nexusRanking": [
+        {
+          "actionId": "s2l12h-00099-act-protect-n1",
+          "finalRelationalUtility": 569127
+        },
+        {
+          "actionId": "s2l12h-00099-act-reinforce-n0",
+          "finalRelationalUtility": 310987
+        },
+        {
+          "actionId": "s2l12h-00099-act-restore-n2",
+          "finalRelationalUtility": 225403
+        },
+        {
+          "actionId": "s2l12h-00099-act-restore-n3",
+          "finalRelationalUtility": -43449
+        },
+        {
+          "actionId": "s2l12h-00099-act-reinforce-sub",
+          "finalRelationalUtility": -88477
+        }
+      ],
+      "groundTruthRanking": [
+        {
+          "actionId": "s2l12h-00099-act-protect-n1",
+          "kind": "PROTECT",
+          "actionUtility": 569127
+        },
+        {
+          "actionId": "s2l12h-00099-act-hold",
+          "kind": "HOLD",
+          "actionUtility": 0
+        },
+        {
+          "actionId": "s2l12h-00099-act-restore-n3",
+          "kind": "RESTORE",
+          "actionUtility": -43449
+        },
+        {
+          "actionId": "s2l12h-00099-act-restore-n2",
+          "kind": "RESTORE",
+          "actionUtility": -73945
+        },
+        {
+          "actionId": "s2l12h-00099-act-reinforce-n0",
+          "kind": "REINFORCE",
+          "actionUtility": -88144
+        },
+        {
+          "actionId": "s2l12h-00099-act-reinforce-sub",
+          "kind": "REINFORCE",
+          "actionUtility": -88477
+        }
+      ],
+      "confidenceSignals": {
+        "nexusTopRiskAdjustment": 579405,
+        "nexusUtilityMargin": 258140,
+        "nexusTopUtility": 569127,
+        "nexusSubstituteCount": 0,
+        "nexusLiveSubstituteCount": 0,
+        "nexusBypassSupportValid": false,
+        "nexusEstimatedDeliveredValue": 0,
+        "nexusEstimatedRecoverableValue": 1197392,
+        "nexusGainOverHold": 569127,
+        "semanticCoverage": 1000000
+      },
+      "stabilitySignals": {
+        "nexusMarginVariance": 17618,
+        "nexusUtilityVariance": 15023,
+        "nexusTopActionStability": 1000000,
+        "nexusCounterfactualAgreement": 1000000,
+        "nexusSemanticStability": 1000000
+      },
+      "substituteState": [
+        {
+          "replaces": "s2l12h-00099-n2",
+          "substitutes": [
+            {
+              "id": "s2l12h-00099-sub",
+              "wouldCarry": false
+            }
+          ]
+        }
+      ],
+      "relationSummary": {
+        "depends": 6,
+        "substitutes": 1,
+        "conflicts": 1
+      },
+      "propagationDisagreementCount": 1,
+      "whyOptimalWon": null,
+      "errorClass": {
+        "labels": [
+          "COST_VALUE_TRADEOFF",
+          "SINGLE_PASS_APPROXIMATION"
+        ],
+        "dominant": "SINGLE_PASS_APPROXIMATION"
+      }
+    },
+    {
+      "variantIndex": 167,
+      "splitName": "DEVELOPMENT",
+      "family": "NESTED_BOTTLENECK",
+      "profile": "RISK_DOMINATED",
+      "objectiveType": "CONTINUITY",
+      "entityCount": 11,
+      "relationCount": 11,
+      "actionCount": 6,
+      "dependencyDepth": 9,
+      "cycleCount": 0,
+      "largestCycleLength": 0,
+      "valueConcentration": 1000000,
+      "valueBearers": 1,
+      "aggregateRisk": 4579147,
+      "nexusRecommendation": "s2l12h-00167-act-protect-n9",
+      "nexusRecommendationKind": "PROTECT",
+      "primeRecommendation": "s2l12h-00167-act-reinforce-n8",
+      "primeCorrect": false,
+      "optimalAction": "s2l12h-00167-act-protect-n9",
+      "optimalKind": "PROTECT",
+      "nexusComponents": {
+        "actionId": "s2l12h-00167-act-protect-n9",
+        "kind": "PROTECT",
+        "targetEntityId": "s2l12h-00167-n9",
+        "structuralImportance": 0,
+        "objectiveRelevance": 0,
+        "relationalBenefit": 0,
+        "actionCostPenalty": 5156,
+        "riskAdjustment": 690248,
+        "redundancyAdjustment": 0,
+        "remainingBlockerCount": 0,
+        "objectiveSupportCount": 0,
+        "substituteCount": 0,
+        "liveSubstituteCount": 0,
+        "bypassSupportValid": false,
+        "bypassReason": "NOT_A_BYPASS",
+        "alreadyDeliveringValue": 0,
+        "newlyDeliveredValue": 0,
+        "finalRelationalUtility": 685092
+      },
+      "optimalComponentsUnderNexus": {
+        "actionId": "s2l12h-00167-act-protect-n9",
+        "kind": "PROTECT",
+        "targetEntityId": "s2l12h-00167-n9",
+        "structuralImportance": 0,
+        "objectiveRelevance": 0,
+        "relationalBenefit": 0,
+        "actionCostPenalty": 5156,
+        "riskAdjustment": 690248,
+        "redundancyAdjustment": 0,
+        "remainingBlockerCount": 0,
+        "objectiveSupportCount": 0,
+        "substituteCount": 0,
+        "liveSubstituteCount": 0,
+        "bypassSupportValid": false,
+        "bypassReason": "NOT_A_BYPASS",
+        "alreadyDeliveringValue": 0,
+        "newlyDeliveredValue": 0,
+        "finalRelationalUtility": 685092
+      },
+      "optimalRankUnderNexus": 0,
+      "nexusRanking": [
+        {
+          "actionId": "s2l12h-00167-act-protect-n9",
+          "finalRelationalUtility": 685092
+        },
+        {
+          "actionId": "s2l12h-00167-act-protect-n6",
+          "finalRelationalUtility": 336742
+        },
+        {
+          "actionId": "s2l12h-00167-act-protect-n0",
+          "finalRelationalUtility": 230165
+        },
+        {
+          "actionId": "s2l12h-00167-act-restore-n7",
+          "finalRelationalUtility": -25609
+        },
+        {
+          "actionId": "s2l12h-00167-act-reinforce-n8",
+          "finalRelationalUtility": -39114
+        }
+      ],
+      "groundTruthRanking": [
+        {
+          "actionId": "s2l12h-00167-act-protect-n9",
+          "kind": "PROTECT",
+          "actionUtility": 685092
+        },
+        {
+          "actionId": "s2l12h-00167-act-protect-n6",
+          "kind": "PROTECT",
+          "actionUtility": 336742
+        },
+        {
+          "actionId": "s2l12h-00167-act-protect-n0",
+          "kind": "PROTECT",
+          "actionUtility": 230165
+        },
+        {
+          "actionId": "s2l12h-00167-act-hold",
+          "kind": "HOLD",
+          "actionUtility": 0
+        },
+        {
+          "actionId": "s2l12h-00167-act-reinforce-n8",
+          "kind": "REINFORCE",
+          "actionUtility": -39114
+        },
+        {
+          "actionId": "s2l12h-00167-act-restore-n7",
+          "kind": "RESTORE",
+          "actionUtility": -78341
+        }
+      ],
+      "confidenceSignals": {
+        "nexusTopRiskAdjustment": 690248,
+        "nexusUtilityMargin": 348350,
+        "nexusTopUtility": 685092,
+        "nexusSubstituteCount": 0,
+        "nexusLiveSubstituteCount": 0,
+        "nexusBypassSupportValid": false,
+        "nexusEstimatedDeliveredValue": 0,
+        "nexusEstimatedRecoverableValue": 1107376,
+        "nexusGainOverHold": 685092,
+        "semanticCoverage": 1000000
+      },
+      "stabilitySignals": {
+        "nexusMarginVariance": 17285,
+        "nexusUtilityVariance": 20137,
+        "nexusTopActionStability": 1000000,
+        "nexusCounterfactualAgreement": 1000000,
+        "nexusSemanticStability": 1000000
+      },
+      "substituteState": [
+        {
+          "replaces": "s2l12h-00167-n6",
+          "substitutes": [
+            {
+              "id": "s2l12h-00167-sub",
+              "wouldCarry": true
+            }
+          ]
+        }
+      ],
+      "relationSummary": {
+        "depends": 9,
+        "inhibits": 1,
+        "substitutes": 1
+      },
+      "propagationDisagreementCount": 1,
+      "whyOptimalWon": null,
+      "errorClass": {
+        "labels": [
+          "BOTTLENECK_MISVALUATION",
+          "COST_VALUE_TRADEOFF"
+        ],
+        "dominant": "COST_VALUE_TRADEOFF"
+      }
+    },
+    {
+      "variantIndex": 277,
+      "splitName": "DEVELOPMENT",
+      "family": "MULTI_COMPONENT",
+      "profile": "RISK_DOMINATED",
+      "objectiveType": "CONTINUITY",
+      "entityCount": 10,
+      "relationCount": 11,
+      "actionCount": 6,
+      "dependencyDepth": 4,
+      "cycleCount": 0,
+      "largestCycleLength": 0,
+      "valueConcentration": 1000000,
+      "valueBearers": 1,
+      "aggregateRisk": 5699903,
+      "nexusRecommendation": "s2l12h-00277-act-protect-sub",
+      "nexusRecommendationKind": "PROTECT",
+      "primeRecommendation": "s2l12h-00277-act-protect-n8",
+      "primeCorrect": false,
+      "optimalAction": "s2l12h-00277-act-protect-sub",
+      "optimalKind": "PROTECT",
+      "nexusComponents": {
+        "actionId": "s2l12h-00277-act-protect-sub",
+        "kind": "PROTECT",
+        "targetEntityId": "s2l12h-00277-sub",
+        "structuralImportance": 0,
+        "objectiveRelevance": 0,
+        "relationalBenefit": 0,
+        "actionCostPenalty": 14886,
+        "riskAdjustment": 748922,
+        "redundancyAdjustment": 0,
+        "remainingBlockerCount": 0,
+        "objectiveSupportCount": 0,
+        "substituteCount": 0,
+        "liveSubstituteCount": 0,
+        "bypassSupportValid": false,
+        "bypassReason": "NOT_A_BYPASS",
+        "alreadyDeliveringValue": 0,
+        "newlyDeliveredValue": 0,
+        "finalRelationalUtility": 734036
+      },
+      "optimalComponentsUnderNexus": {
+        "actionId": "s2l12h-00277-act-protect-sub",
+        "kind": "PROTECT",
+        "targetEntityId": "s2l12h-00277-sub",
+        "structuralImportance": 0,
+        "objectiveRelevance": 0,
+        "relationalBenefit": 0,
+        "actionCostPenalty": 14886,
+        "riskAdjustment": 748922,
+        "redundancyAdjustment": 0,
+        "remainingBlockerCount": 0,
+        "objectiveSupportCount": 0,
+        "substituteCount": 0,
+        "liveSubstituteCount": 0,
+        "bypassSupportValid": false,
+        "bypassReason": "NOT_A_BYPASS",
+        "alreadyDeliveringValue": 0,
+        "newlyDeliveredValue": 0,
+        "finalRelationalUtility": 734036
+      },
+      "optimalRankUnderNexus": 0,
+      "nexusRanking": [
+        {
+          "actionId": "s2l12h-00277-act-protect-sub",
+          "finalRelationalUtility": 734036
+        },
+        {
+          "actionId": "s2l12h-00277-act-protect-n8",
+          "finalRelationalUtility": 623996
+        },
+        {
+          "actionId": "s2l12h-00277-act-protect-n7",
+          "finalRelationalUtility": 598975
+        },
+        {
+          "actionId": "s2l12h-00277-act-protect-n6",
+          "finalRelationalUtility": 343818
+        },
+        {
+          "actionId": "s2l12h-00277-act-restore-n1",
+          "finalRelationalUtility": -33035
+        }
+      ],
+      "groundTruthRanking": [
+        {
+          "actionId": "s2l12h-00277-act-protect-sub",
+          "kind": "PROTECT",
+          "actionUtility": 734036
+        },
+        {
+          "actionId": "s2l12h-00277-act-restore-n1",
+          "kind": "RESTORE",
+          "actionUtility": 638211
+        },
+        {
+          "actionId": "s2l12h-00277-act-protect-n8",
+          "kind": "PROTECT",
+          "actionUtility": 623996
+        },
+        {
+          "actionId": "s2l12h-00277-act-protect-n7",
+          "kind": "PROTECT",
+          "actionUtility": 598975
+        },
+        {
+          "actionId": "s2l12h-00277-act-protect-n6",
+          "kind": "PROTECT",
+          "actionUtility": 343818
+        },
+        {
+          "actionId": "s2l12h-00277-act-hold",
+          "kind": "HOLD",
+          "actionUtility": 0
+        }
+      ],
+      "confidenceSignals": {
+        "nexusTopRiskAdjustment": 748922,
+        "nexusUtilityMargin": 110040,
+        "nexusTopUtility": 734036,
+        "nexusSubstituteCount": 0,
+        "nexusLiveSubstituteCount": 0,
+        "nexusBypassSupportValid": false,
+        "nexusEstimatedDeliveredValue": 0,
+        "nexusEstimatedRecoverableValue": 958323,
+        "nexusGainOverHold": 734036,
+        "semanticCoverage": 1000000
+      },
+      "stabilitySignals": {
+        "nexusMarginVariance": 16080,
+        "nexusUtilityVariance": 23706,
+        "nexusTopActionStability": 1000000,
+        "nexusCounterfactualAgreement": 976190,
+        "nexusSemanticStability": 1000000
+      },
+      "substituteState": [
+        {
+          "replaces": "s2l12h-00277-n6",
+          "substitutes": [
+            {
+              "id": "s2l12h-00277-sub",
+              "wouldCarry": false
+            }
+          ]
+        }
+      ],
+      "relationSummary": {
+        "depends": 7,
+        "supports": 1,
+        "substitutes": 1,
+        "inhibits": 1,
+        "protects": 1
+      },
+      "propagationDisagreementCount": 1,
+      "whyOptimalWon": null,
+      "errorClass": {
+        "labels": [
+          "BOTTLENECK_MISVALUATION",
+          "COST_VALUE_TRADEOFF"
+        ],
+        "dominant": "COST_VALUE_TRADEOFF"
+      }
+    },
+    {
+      "variantIndex": 294,
+      "splitName": "DEVELOPMENT",
+      "family": "LOW_DEGREE_HIGH_VALUE",
+      "profile": "RISK_DOMINATED",
+      "objectiveType": "PROTECTION",
+      "entityCount": 11,
+      "relationCount": 12,
+      "actionCount": 6,
+      "dependencyDepth": 9,
+      "cycleCount": 0,
+      "largestCycleLength": 0,
+      "valueConcentration": 1000000,
+      "valueBearers": 0,
+      "aggregateRisk": 5771567,
+      "nexusRecommendation": "s2l12h-00294-act-protect-n1",
+      "nexusRecommendationKind": "PROTECT",
+      "primeRecommendation": "s2l12h-00294-act-protect-n1",
+      "primeCorrect": true,
+      "optimalAction": "s2l12h-00294-act-protect-n1",
+      "optimalKind": "PROTECT",
+      "nexusComponents": {
+        "actionId": "s2l12h-00294-act-protect-n1",
+        "kind": "PROTECT",
+        "targetEntityId": "s2l12h-00294-n1",
+        "structuralImportance": 5,
+        "objectiveRelevance": 0,
+        "relationalBenefit": 0,
+        "actionCostPenalty": 27737,
+        "riskAdjustment": 625487,
+        "redundancyAdjustment": 0,
+        "remainingBlockerCount": 0,
+        "objectiveSupportCount": 0,
+        "substituteCount": 0,
+        "liveSubstituteCount": 0,
+        "bypassSupportValid": false,
+        "bypassReason": "NOT_A_BYPASS",
+        "alreadyDeliveringValue": 0,
+        "newlyDeliveredValue": 0,
+        "finalRelationalUtility": 597750
+      },
+      "optimalComponentsUnderNexus": {
+        "actionId": "s2l12h-00294-act-protect-n1",
+        "kind": "PROTECT",
+        "targetEntityId": "s2l12h-00294-n1",
+        "structuralImportance": 5,
+        "objectiveRelevance": 0,
+        "relationalBenefit": 0,
+        "actionCostPenalty": 27737,
+        "riskAdjustment": 625487,
+        "redundancyAdjustment": 0,
+        "remainingBlockerCount": 0,
+        "objectiveSupportCount": 0,
+        "substituteCount": 0,
+        "liveSubstituteCount": 0,
+        "bypassSupportValid": false,
+        "bypassReason": "NOT_A_BYPASS",
+        "alreadyDeliveringValue": 0,
+        "newlyDeliveredValue": 0,
+        "finalRelationalUtility": 597750
+      },
+      "optimalRankUnderNexus": 0,
+      "nexusRanking": [
+        {
+          "actionId": "s2l12h-00294-act-protect-n1",
+          "finalRelationalUtility": 597750
+        },
+        {
+          "actionId": "s2l12h-00294-act-protect-n0",
+          "finalRelationalUtility": 283084
+        },
+        {
+          "actionId": "s2l12h-00294-act-restore-n2",
+          "finalRelationalUtility": -37980
+        },
+        {
+          "actionId": "s2l12h-00294-act-restore-n3",
+          "finalRelationalUtility": -71304
+        },
+        {
+          "actionId": "s2l12h-00294-act-restore-sub",
+          "finalRelationalUtility": -83787
+        }
+      ],
+      "groundTruthRanking": [
+        {
+          "actionId": "s2l12h-00294-act-protect-n1",
+          "kind": "PROTECT",
+          "actionUtility": 597750
+        },
+        {
+          "actionId": "s2l12h-00294-act-protect-n0",
+          "kind": "PROTECT",
+          "actionUtility": 283084
+        },
+        {
+          "actionId": "s2l12h-00294-act-hold",
+          "kind": "HOLD",
+          "actionUtility": 0
+        },
+        {
+          "actionId": "s2l12h-00294-act-restore-n2",
+          "kind": "RESTORE",
+          "actionUtility": -37980
+        },
+        {
+          "actionId": "s2l12h-00294-act-restore-n3",
+          "kind": "RESTORE",
+          "actionUtility": -71304
+        },
+        {
+          "actionId": "s2l12h-00294-act-restore-sub",
+          "kind": "RESTORE",
+          "actionUtility": -83787
+        }
+      ],
+      "confidenceSignals": {
+        "nexusTopRiskAdjustment": 625487,
+        "nexusUtilityMargin": 314666,
+        "nexusTopUtility": 597750,
+        "nexusSubstituteCount": 0,
+        "nexusLiveSubstituteCount": 0,
+        "nexusBypassSupportValid": false,
+        "nexusEstimatedDeliveredValue": 0,
+        "nexusEstimatedRecoverableValue": 0,
+        "nexusGainOverHold": 597750,
+        "semanticCoverage": 1000000
+      },
+      "stabilitySignals": {
+        "nexusMarginVariance": 17795,
+        "nexusUtilityVariance": 19480,
+        "nexusTopActionStability": 1000000,
+        "nexusCounterfactualAgreement": 1000000,
+        "nexusSemanticStability": 1000000
+      },
+      "substituteState": [
+        {
+          "replaces": "s2l12h-00294-n0",
+          "substitutes": [
+            {
+              "id": "s2l12h-00294-sub",
+              "wouldCarry": true
+            }
+          ]
+        }
+      ],
+      "relationSummary": {
+        "depends": 9,
+        "amplifies": 1,
+        "conflicts": 1,
+        "substitutes": 1
+      },
+      "propagationDisagreementCount": 3,
+      "whyOptimalWon": null,
+      "errorClass": {
+        "labels": [
+          "COST_VALUE_TRADEOFF",
+          "SINGLE_PASS_APPROXIMATION"
+        ],
+        "dominant": "SINGLE_PASS_APPROXIMATION"
+      }
+    },
+    {
+      "variantIndex": 997,
+      "splitName": "DEVELOPMENT",
+      "family": "REDUNDANT_NETWORK",
+      "profile": "RISK_DOMINATED",
+      "objectiveType": "THROUGHPUT",
+      "entityCount": 8,
+      "relationCount": 13,
+      "actionCount": 6,
+      "dependencyDepth": 5,
+      "cycleCount": 0,
+      "largestCycleLength": 0,
+      "valueConcentration": 1000000,
+      "valueBearers": 1,
+      "aggregateRisk": 3419852,
+      "nexusRecommendation": "s2l12h-00997-act-protect-n1",
+      "nexusRecommendationKind": "PROTECT",
+      "primeRecommendation": "s2l12h-00997-act-reinforce-n5",
+      "primeCorrect": false,
+      "optimalAction": "s2l12h-00997-act-protect-n1",
+      "optimalKind": "PROTECT",
+      "nexusComponents": {
+        "actionId": "s2l12h-00997-act-protect-n1",
+        "kind": "PROTECT",
+        "targetEntityId": "s2l12h-00997-n1",
+        "structuralImportance": 0,
+        "objectiveRelevance": 0,
+        "relationalBenefit": 0,
+        "actionCostPenalty": 70272,
+        "riskAdjustment": 513207,
+        "redundancyAdjustment": 0,
+        "remainingBlockerCount": 0,
+        "objectiveSupportCount": 0,
+        "substituteCount": 0,
+        "liveSubstituteCount": 0,
+        "bypassSupportValid": false,
+        "bypassReason": "NOT_A_BYPASS",
+        "alreadyDeliveringValue": 0,
+        "newlyDeliveredValue": 0,
+        "finalRelationalUtility": 442935
+      },
+      "optimalComponentsUnderNexus": {
+        "actionId": "s2l12h-00997-act-protect-n1",
+        "kind": "PROTECT",
+        "targetEntityId": "s2l12h-00997-n1",
+        "structuralImportance": 0,
+        "objectiveRelevance": 0,
+        "relationalBenefit": 0,
+        "actionCostPenalty": 70272,
+        "riskAdjustment": 513207,
+        "redundancyAdjustment": 0,
+        "remainingBlockerCount": 0,
+        "objectiveSupportCount": 0,
+        "substituteCount": 0,
+        "liveSubstituteCount": 0,
+        "bypassSupportValid": false,
+        "bypassReason": "NOT_A_BYPASS",
+        "alreadyDeliveringValue": 0,
+        "newlyDeliveredValue": 0,
+        "finalRelationalUtility": 442935
+      },
+      "optimalRankUnderNexus": 0,
+      "nexusRanking": [
+        {
+          "actionId": "s2l12h-00997-act-protect-n1",
+          "finalRelationalUtility": 442935
+        },
+        {
+          "actionId": "s2l12h-00997-act-reinforce-n5",
+          "finalRelationalUtility": 247017
+        },
+        {
+          "actionId": "s2l12h-00997-act-restore-n0",
+          "finalRelationalUtility": 196946
+        },
+        {
+          "actionId": "s2l12h-00997-act-reinforce-n2",
+          "finalRelationalUtility": -38231
+        },
+        {
+          "actionId": "s2l12h-00997-act-restore-n4",
+          "finalRelationalUtility": -87792
+        }
+      ],
+      "groundTruthRanking": [
+        {
+          "actionId": "s2l12h-00997-act-protect-n1",
+          "kind": "PROTECT",
+          "actionUtility": 442935
+        },
+        {
+          "actionId": "s2l12h-00997-act-hold",
+          "kind": "HOLD",
+          "actionUtility": 0
+        },
+        {
+          "actionId": "s2l12h-00997-act-restore-n0",
+          "kind": "RESTORE",
+          "actionUtility": -20369
+        },
+        {
+          "actionId": "s2l12h-00997-act-reinforce-n2",
+          "kind": "REINFORCE",
+          "actionUtility": -38231
+        },
+        {
+          "actionId": "s2l12h-00997-act-reinforce-n5",
+          "kind": "REINFORCE",
+          "actionUtility": -42737
+        },
+        {
+          "actionId": "s2l12h-00997-act-restore-n4",
+          "kind": "RESTORE",
+          "actionUtility": -87792
+        }
+      ],
+      "confidenceSignals": {
+        "nexusTopRiskAdjustment": 513207,
+        "nexusUtilityMargin": 195918,
+        "nexusTopUtility": 442935,
+        "nexusSubstituteCount": 0,
+        "nexusLiveSubstituteCount": 0,
+        "nexusBypassSupportValid": false,
+        "nexusEstimatedDeliveredValue": 0,
+        "nexusEstimatedRecoverableValue": 869261,
+        "nexusGainOverHold": 442935,
+        "semanticCoverage": 1000000
+      },
+      "stabilitySignals": {
+        "nexusMarginVariance": 19249,
+        "nexusUtilityVariance": 18739,
+        "nexusTopActionStability": 1000000,
+        "nexusCounterfactualAgreement": 1000000,
+        "nexusSemanticStability": 1000000
+      },
+      "substituteState": [
+        {
+          "replaces": "s2l12h-00997-n0",
+          "substitutes": [
+            {
+              "id": "s2l12h-00997-sub",
+              "wouldCarry": false
+            }
+          ]
+        }
+      ],
+      "relationSummary": {
+        "depends": 5,
+        "supports": 5,
+        "substitutes": 1,
+        "amplifies": 2
+      },
+      "propagationDisagreementCount": 1,
+      "whyOptimalWon": null,
+      "errorClass": {
+        "labels": [
+          "BOTTLENECK_MISVALUATION",
+          "COST_VALUE_TRADEOFF",
+          "SINGLE_PASS_APPROXIMATION"
+        ],
+        "dominant": "SINGLE_PASS_APPROXIMATION"
+      }
+    },
+    {
+      "variantIndex": 1196,
+      "splitName": "DEVELOPMENT",
+      "family": "DECOY_HIGH_DEGREE",
+      "profile": "RISK_DOMINATED",
+      "objectiveType": "CONTINUITY",
+      "entityCount": 12,
+      "relationCount": 12,
+      "actionCount": 6,
+      "dependencyDepth": 10,
+      "cycleCount": 0,
+      "largestCycleLength": 0,
+      "valueConcentration": 1000000,
+      "valueBearers": 0,
+      "aggregateRisk": 5963281,
+      "nexusRecommendation": "s2l12h-01196-act-protect-n10",
+      "nexusRecommendationKind": "PROTECT",
+      "primeRecommendation": "s2l12h-01196-act-restore-n1",
+      "primeCorrect": false,
+      "optimalAction": "s2l12h-01196-act-protect-n10",
+      "optimalKind": "PROTECT",
+      "nexusComponents": {
+        "actionId": "s2l12h-01196-act-protect-n10",
+        "kind": "PROTECT",
+        "targetEntityId": "s2l12h-01196-n10",
+        "structuralImportance": 0,
+        "objectiveRelevance": 0,
+        "relationalBenefit": 0,
+        "actionCostPenalty": 67510,
+        "riskAdjustment": 578426,
+        "redundancyAdjustment": 0,
+        "remainingBlockerCount": 0,
+        "objectiveSupportCount": 0,
+        "substituteCount": 0,
+        "liveSubstituteCount": 0,
+        "bypassSupportValid": false,
+        "bypassReason": "NOT_A_BYPASS",
+        "alreadyDeliveringValue": 0,
+        "newlyDeliveredValue": 0,
+        "finalRelationalUtility": 510916
+      },
+      "optimalComponentsUnderNexus": {
+        "actionId": "s2l12h-01196-act-protect-n10",
+        "kind": "PROTECT",
+        "targetEntityId": "s2l12h-01196-n10",
+        "structuralImportance": 0,
+        "objectiveRelevance": 0,
+        "relationalBenefit": 0,
+        "actionCostPenalty": 67510,
+        "riskAdjustment": 578426,
+        "redundancyAdjustment": 0,
+        "remainingBlockerCount": 0,
+        "objectiveSupportCount": 0,
+        "substituteCount": 0,
+        "liveSubstituteCount": 0,
+        "bypassSupportValid": false,
+        "bypassReason": "NOT_A_BYPASS",
+        "alreadyDeliveringValue": 0,
+        "newlyDeliveredValue": 0,
+        "finalRelationalUtility": 510916
+      },
+      "optimalRankUnderNexus": 0,
+      "nexusRanking": [
+        {
+          "actionId": "s2l12h-01196-act-protect-n10",
+          "finalRelationalUtility": 510916
+        },
+        {
+          "actionId": "s2l12h-01196-act-protect-n2",
+          "finalRelationalUtility": 282543
+        },
+        {
+          "actionId": "s2l12h-01196-act-restore-n1",
+          "finalRelationalUtility": -41051
+        },
+        {
+          "actionId": "s2l12h-01196-act-restore-n0",
+          "finalRelationalUtility": -69430
+        },
+        {
+          "actionId": "s2l12h-01196-act-reinforce-sub",
+          "finalRelationalUtility": -80315
+        }
+      ],
+      "groundTruthRanking": [
+        {
+          "actionId": "s2l12h-01196-act-protect-n10",
+          "kind": "PROTECT",
+          "actionUtility": 510916
+        },
+        {
+          "actionId": "s2l12h-01196-act-protect-n2",
+          "kind": "PROTECT",
+          "actionUtility": 282543
+        },
+        {
+          "actionId": "s2l12h-01196-act-hold",
+          "kind": "HOLD",
+          "actionUtility": 0
+        },
+        {
+          "actionId": "s2l12h-01196-act-restore-n1",
+          "kind": "RESTORE",
+          "actionUtility": -41051
+        },
+        {
+          "actionId": "s2l12h-01196-act-restore-n0",
+          "kind": "RESTORE",
+          "actionUtility": -69430
+        },
+        {
+          "actionId": "s2l12h-01196-act-reinforce-sub",
+          "kind": "REINFORCE",
+          "actionUtility": -80315
+        }
+      ],
+      "confidenceSignals": {
+        "nexusTopRiskAdjustment": 578426,
+        "nexusUtilityMargin": 228373,
+        "nexusTopUtility": 510916,
+        "nexusSubstituteCount": 0,
+        "nexusLiveSubstituteCount": 0,
+        "nexusBypassSupportValid": false,
+        "nexusEstimatedDeliveredValue": 0,
+        "nexusEstimatedRecoverableValue": 0,
+        "nexusGainOverHold": 510916,
+        "semanticCoverage": 1000000
+      },
+      "stabilitySignals": {
+        "nexusMarginVariance": 19078,
+        "nexusUtilityVariance": 16416,
+        "nexusTopActionStability": 1000000,
+        "nexusCounterfactualAgreement": 1000000,
+        "nexusSemanticStability": 1000000
+      },
+      "substituteState": [
+        {
+          "replaces": "s2l12h-01196-n0",
+          "substitutes": [
+            {
+              "id": "s2l12h-01196-sub",
+              "wouldCarry": false
+            }
+          ]
+        }
+      ],
+      "relationSummary": {
+        "depends": 10,
+        "substitutes": 1,
+        "amplifies": 1
+      },
+      "propagationDisagreementCount": 3,
+      "whyOptimalWon": null,
+      "errorClass": {
+        "labels": [
+          "BOTTLENECK_MISVALUATION",
+          "COST_VALUE_TRADEOFF"
+        ],
+        "dominant": "COST_VALUE_TRADEOFF"
+      }
+    },
+    {
+      "variantIndex": 1466,
+      "splitName": "DEVELOPMENT",
+      "family": "COMPETING_CRITICAL_PATHS",
+      "profile": "RISK_DOMINATED",
+      "objectiveType": "PROTECTION",
+      "entityCount": 13,
+      "relationCount": 17,
+      "actionCount": 6,
+      "dependencyDepth": 11,
+      "cycleCount": 0,
+      "largestCycleLength": 0,
+      "valueConcentration": 1000000,
+      "valueBearers": 1,
+      "aggregateRisk": 6481545,
+      "nexusRecommendation": "s2l12h-01466-act-protect-n11",
+      "nexusRecommendationKind": "PROTECT",
+      "primeRecommendation": "s2l12h-01466-act-reinforce-n1",
+      "primeCorrect": false,
+      "optimalAction": "s2l12h-01466-act-protect-n11",
+      "optimalKind": "PROTECT",
+      "nexusComponents": {
+        "actionId": "s2l12h-01466-act-protect-n11",
+        "kind": "PROTECT",
+        "targetEntityId": "s2l12h-01466-n11",
+        "structuralImportance": 0,
+        "objectiveRelevance": 0,
+        "relationalBenefit": 0,
+        "actionCostPenalty": 44294,
+        "riskAdjustment": 578915,
+        "redundancyAdjustment": 0,
+        "remainingBlockerCount": 0,
+        "objectiveSupportCount": 0,
+        "substituteCount": 0,
+        "liveSubstituteCount": 0,
+        "bypassSupportValid": false,
+        "bypassReason": "NOT_A_BYPASS",
+        "alreadyDeliveringValue": 0,
+        "newlyDeliveredValue": 0,
+        "finalRelationalUtility": 534621
+      },
+      "optimalComponentsUnderNexus": {
+        "actionId": "s2l12h-01466-act-protect-n11",
+        "kind": "PROTECT",
+        "targetEntityId": "s2l12h-01466-n11",
+        "structuralImportance": 0,
+        "objectiveRelevance": 0,
+        "relationalBenefit": 0,
+        "actionCostPenalty": 44294,
+        "riskAdjustment": 578915,
+        "redundancyAdjustment": 0,
+        "remainingBlockerCount": 0,
+        "objectiveSupportCount": 0,
+        "substituteCount": 0,
+        "liveSubstituteCount": 0,
+        "bypassSupportValid": false,
+        "bypassReason": "NOT_A_BYPASS",
+        "alreadyDeliveringValue": 0,
+        "newlyDeliveredValue": 0,
+        "finalRelationalUtility": 534621
+      },
+      "optimalRankUnderNexus": 0,
+      "nexusRanking": [
+        {
+          "actionId": "s2l12h-01466-act-protect-n11",
+          "finalRelationalUtility": 534621
+        },
+        {
+          "actionId": "s2l12h-01466-act-protect-sub",
+          "finalRelationalUtility": 290959
+        },
+        {
+          "actionId": "s2l12h-01466-act-reinforce-n1",
+          "finalRelationalUtility": 225707
+        },
+        {
+          "actionId": "s2l12h-01466-act-bypass-n2",
+          "finalRelationalUtility": -35539
+        },
+        {
+          "actionId": "s2l12h-01466-act-reinforce-n0",
+          "finalRelationalUtility": -79236
+        }
+      ],
+      "groundTruthRanking": [
+        {
+          "actionId": "s2l12h-01466-act-protect-n11",
+          "kind": "PROTECT",
+          "actionUtility": 534621
+        },
+        {
+          "actionId": "s2l12h-01466-act-protect-sub",
+          "kind": "PROTECT",
+          "actionUtility": 290959
+        },
+        {
+          "actionId": "s2l12h-01466-act-hold",
+          "kind": "HOLD",
+          "actionUtility": 0
+        },
+        {
+          "actionId": "s2l12h-01466-act-bypass-n2",
+          "kind": "BYPASS",
+          "actionUtility": -35539
+        },
+        {
+          "actionId": "s2l12h-01466-act-reinforce-n1",
+          "kind": "REINFORCE",
+          "actionUtility": -37905
+        },
+        {
+          "actionId": "s2l12h-01466-act-reinforce-n0",
+          "kind": "REINFORCE",
+          "actionUtility": -79236
+        }
+      ],
+      "confidenceSignals": {
+        "nexusTopRiskAdjustment": 578915,
+        "nexusUtilityMargin": 243662,
+        "nexusTopUtility": 534621,
+        "nexusSubstituteCount": 0,
+        "nexusLiveSubstituteCount": 0,
+        "nexusBypassSupportValid": false,
+        "nexusEstimatedDeliveredValue": 0,
+        "nexusEstimatedRecoverableValue": 790836,
+        "nexusGainOverHold": 534621,
+        "semanticCoverage": 1000000
+      },
+      "stabilitySignals": {
+        "nexusMarginVariance": 11876,
+        "nexusUtilityVariance": 8045,
+        "nexusTopActionStability": 1000000,
+        "nexusCounterfactualAgreement": 1000000,
+        "nexusSemanticStability": 1000000
+      },
+      "substituteState": [
+        {
+          "replaces": "s2l12h-01466-n2",
+          "substitutes": [
+            {
+              "id": "s2l12h-01466-sub",
+              "wouldCarry": true
+            }
+          ]
+        }
+      ],
+      "relationSummary": {
+        "depends": 15,
+        "substitutes": 1,
+        "supports": 1
+      },
+      "propagationDisagreementCount": 2,
+      "whyOptimalWon": null,
+      "errorClass": {
+        "labels": [
+          "BOTTLENECK_MISVALUATION",
+          "COST_VALUE_TRADEOFF"
+        ],
+        "dominant": "COST_VALUE_TRADEOFF"
+      }
+    },
+    {
+      "variantIndex": 1554,
+      "splitName": "DEVELOPMENT",
+      "family": "MULTI_COMPONENT",
+      "profile": "RISK_DOMINATED",
+      "objectiveType": "CONTINUITY",
+      "entityCount": 10,
+      "relationCount": 10,
+      "actionCount": 6,
+      "dependencyDepth": 4,
+      "cycleCount": 0,
+      "largestCycleLength": 0,
+      "valueConcentration": 1000000,
+      "valueBearers": 1,
+      "aggregateRisk": 4879300,
+      "nexusRecommendation": "s2l12h-01554-act-protect-sub",
+      "nexusRecommendationKind": "PROTECT",
+      "primeRecommendation": "s2l12h-01554-act-protect-n7",
+      "primeCorrect": false,
+      "optimalAction": "s2l12h-01554-act-protect-sub",
+      "optimalKind": "PROTECT",
+      "nexusComponents": {
+        "actionId": "s2l12h-01554-act-protect-sub",
+        "kind": "PROTECT",
+        "targetEntityId": "s2l12h-01554-sub",
+        "structuralImportance": 0,
+        "objectiveRelevance": 0,
+        "relationalBenefit": 0,
+        "actionCostPenalty": 54292,
+        "riskAdjustment": 474001,
+        "redundancyAdjustment": 0,
+        "remainingBlockerCount": 0,
+        "objectiveSupportCount": 0,
+        "substituteCount": 0,
+        "liveSubstituteCount": 0,
+        "bypassSupportValid": false,
+        "bypassReason": "NOT_A_BYPASS",
+        "alreadyDeliveringValue": 0,
+        "newlyDeliveredValue": 0,
+        "finalRelationalUtility": 419709
+      },
+      "optimalComponentsUnderNexus": {
+        "actionId": "s2l12h-01554-act-protect-sub",
+        "kind": "PROTECT",
+        "targetEntityId": "s2l12h-01554-sub",
+        "structuralImportance": 0,
+        "objectiveRelevance": 0,
+        "relationalBenefit": 0,
+        "actionCostPenalty": 54292,
+        "riskAdjustment": 474001,
+        "redundancyAdjustment": 0,
+        "remainingBlockerCount": 0,
+        "objectiveSupportCount": 0,
+        "substituteCount": 0,
+        "liveSubstituteCount": 0,
+        "bypassSupportValid": false,
+        "bypassReason": "NOT_A_BYPASS",
+        "alreadyDeliveringValue": 0,
+        "newlyDeliveredValue": 0,
+        "finalRelationalUtility": 419709
+      },
+      "optimalRankUnderNexus": 0,
+      "nexusRanking": [
+        {
+          "actionId": "s2l12h-01554-act-protect-sub",
+          "finalRelationalUtility": 419709
+        },
+        {
+          "actionId": "s2l12h-01554-act-protect-n7",
+          "finalRelationalUtility": 299680
+        },
+        {
+          "actionId": "s2l12h-01554-act-bypass-n2",
+          "finalRelationalUtility": -28887
+        },
+        {
+          "actionId": "s2l12h-01554-act-reinforce-n1",
+          "finalRelationalUtility": -29157
+        },
+        {
+          "actionId": "s2l12h-01554-act-reinforce-n0",
+          "finalRelationalUtility": -64407
+        }
+      ],
+      "groundTruthRanking": [
+        {
+          "actionId": "s2l12h-01554-act-protect-sub",
+          "kind": "PROTECT",
+          "actionUtility": 419709
+        },
+        {
+          "actionId": "s2l12h-01554-act-protect-n7",
+          "kind": "PROTECT",
+          "actionUtility": 299680
+        },
+        {
+          "actionId": "s2l12h-01554-act-hold",
+          "kind": "HOLD",
+          "actionUtility": 0
+        },
+        {
+          "actionId": "s2l12h-01554-act-bypass-n2",
+          "kind": "BYPASS",
+          "actionUtility": -28887
+        },
+        {
+          "actionId": "s2l12h-01554-act-reinforce-n1",
+          "kind": "REINFORCE",
+          "actionUtility": -29157
+        },
+        {
+          "actionId": "s2l12h-01554-act-reinforce-n0",
+          "kind": "REINFORCE",
+          "actionUtility": -64407
+        }
+      ],
+      "confidenceSignals": {
+        "nexusTopRiskAdjustment": 474001,
+        "nexusUtilityMargin": 120029,
+        "nexusTopUtility": 419709,
+        "nexusSubstituteCount": 0,
+        "nexusLiveSubstituteCount": 0,
+        "nexusBypassSupportValid": false,
+        "nexusEstimatedDeliveredValue": 0,
+        "nexusEstimatedRecoverableValue": 418040,
+        "nexusGainOverHold": 419709,
+        "semanticCoverage": 1000000
+      },
+      "stabilitySignals": {
+        "nexusMarginVariance": 15516,
+        "nexusUtilityVariance": 19225,
+        "nexusTopActionStability": 1000000,
+        "nexusCounterfactualAgreement": 1000000,
+        "nexusSemanticStability": 1000000
+      },
+      "substituteState": [
+        {
+          "replaces": "s2l12h-01554-n2",
+          "substitutes": [
+            {
+              "id": "s2l12h-01554-sub",
+              "wouldCarry": false
+            }
+          ]
+        }
+      ],
+      "relationSummary": {
+        "depends": 7,
+        "substitutes": 1,
+        "protects": 1,
+        "amplifies": 1
+      },
+      "propagationDisagreementCount": 2,
+      "whyOptimalWon": null,
+      "errorClass": {
+        "labels": [
+          "BOTTLENECK_MISVALUATION",
+          "COST_VALUE_TRADEOFF"
+        ],
+        "dominant": "COST_VALUE_TRADEOFF"
+      }
+    },
+    {
+      "variantIndex": 1575,
+      "splitName": "DEVELOPMENT",
+      "family": "DECOY_HIGH_DEGREE",
+      "profile": "RISK_DOMINATED",
+      "objectiveType": "CONTINUITY",
+      "entityCount": 14,
+      "relationCount": 14,
+      "actionCount": 6,
+      "dependencyDepth": 12,
+      "cycleCount": 0,
+      "largestCycleLength": 0,
+      "valueConcentration": 1000000,
+      "valueBearers": 1,
+      "aggregateRisk": 7022763,
+      "nexusRecommendation": "s2l12h-01575-act-protect-n9",
+      "nexusRecommendationKind": "PROTECT",
+      "primeRecommendation": "s2l12h-01575-act-protect-n5",
+      "primeCorrect": false,
+      "optimalAction": "s2l12h-01575-act-protect-n9",
+      "optimalKind": "PROTECT",
+      "nexusComponents": {
+        "actionId": "s2l12h-01575-act-protect-n9",
+        "kind": "PROTECT",
+        "targetEntityId": "s2l12h-01575-n9",
+        "structuralImportance": 0,
+        "objectiveRelevance": 0,
+        "relationalBenefit": 0,
+        "actionCostPenalty": 76087,
+        "riskAdjustment": 674427,
+        "redundancyAdjustment": 0,
+        "remainingBlockerCount": 0,
+        "objectiveSupportCount": 0,
+        "substituteCount": 0,
+        "liveSubstituteCount": 0,
+        "bypassSupportValid": false,
+        "bypassReason": "NOT_A_BYPASS",
+        "alreadyDeliveringValue": 0,
+        "newlyDeliveredValue": 0,
+        "finalRelationalUtility": 598340
+      },
+      "optimalComponentsUnderNexus": {
+        "actionId": "s2l12h-01575-act-protect-n9",
+        "kind": "PROTECT",
+        "targetEntityId": "s2l12h-01575-n9",
+        "structuralImportance": 0,
+        "objectiveRelevance": 0,
+        "relationalBenefit": 0,
+        "actionCostPenalty": 76087,
+        "riskAdjustment": 674427,
+        "redundancyAdjustment": 0,
+        "remainingBlockerCount": 0,
+        "objectiveSupportCount": 0,
+        "substituteCount": 0,
+        "liveSubstituteCount": 0,
+        "bypassSupportValid": false,
+        "bypassReason": "NOT_A_BYPASS",
+        "alreadyDeliveringValue": 0,
+        "newlyDeliveredValue": 0,
+        "finalRelationalUtility": 598340
+      },
+      "optimalRankUnderNexus": 0,
+      "nexusRanking": [
+        {
+          "actionId": "s2l12h-01575-act-protect-n9",
+          "finalRelationalUtility": 598340
+        },
+        {
+          "actionId": "s2l12h-01575-act-protect-n5",
+          "finalRelationalUtility": 485079
+        },
+        {
+          "actionId": "s2l12h-01575-act-protect-n0",
+          "finalRelationalUtility": 347912
+        },
+        {
+          "actionId": "s2l12h-01575-act-reinforce-n1",
+          "finalRelationalUtility": -26715
+        },
+        {
+          "actionId": "s2l12h-01575-act-reinforce-n10",
+          "finalRelationalUtility": -33149
+        }
+      ],
+      "groundTruthRanking": [
+        {
+          "actionId": "s2l12h-01575-act-protect-n9",
+          "kind": "PROTECT",
+          "actionUtility": 598340
+        },
+        {
+          "actionId": "s2l12h-01575-act-protect-n5",
+          "kind": "PROTECT",
+          "actionUtility": 485079
+        },
+        {
+          "actionId": "s2l12h-01575-act-protect-n0",
+          "kind": "PROTECT",
+          "actionUtility": 347912
+        },
+        {
+          "actionId": "s2l12h-01575-act-hold",
+          "kind": "HOLD",
+          "actionUtility": 0
+        },
+        {
+          "actionId": "s2l12h-01575-act-reinforce-n1",
+          "kind": "REINFORCE",
+          "actionUtility": -26715
+        },
+        {
+          "actionId": "s2l12h-01575-act-reinforce-n10",
+          "kind": "REINFORCE",
+          "actionUtility": -33149
+        }
+      ],
+      "confidenceSignals": {
+        "nexusTopRiskAdjustment": 674427,
+        "nexusUtilityMargin": 113261,
+        "nexusTopUtility": 598340,
+        "nexusSubstituteCount": 0,
+        "nexusLiveSubstituteCount": 0,
+        "nexusBypassSupportValid": false,
+        "nexusEstimatedDeliveredValue": 0,
+        "nexusEstimatedRecoverableValue": 727563,
+        "nexusGainOverHold": 598340,
+        "semanticCoverage": 1000000
+      },
+      "stabilitySignals": {
+        "nexusMarginVariance": 17274,
+        "nexusUtilityVariance": 19499,
+        "nexusTopActionStability": 1000000,
+        "nexusCounterfactualAgreement": 1000000,
+        "nexusSemanticStability": 1000000
+      },
+      "substituteState": [
+        {
+          "replaces": "s2l12h-01575-n0",
+          "substitutes": [
+            {
+              "id": "s2l12h-01575-sub",
+              "wouldCarry": false
+            }
+          ]
+        }
+      ],
+      "relationSummary": {
+        "depends": 12,
+        "substitutes": 1,
+        "protects": 1
+      },
+      "propagationDisagreementCount": 0,
+      "whyOptimalWon": null,
+      "errorClass": {
+        "labels": [
+          "BOTTLENECK_MISVALUATION",
+          "COST_VALUE_TRADEOFF"
+        ],
+        "dominant": "COST_VALUE_TRADEOFF"
+      }
+    },
+    {
+      "variantIndex": 1855,
+      "splitName": "DEVELOPMENT",
+      "family": "TREE",
+      "profile": "RISK_DOMINATED",
+      "objectiveType": "PROTECTION",
+      "entityCount": 13,
+      "relationCount": 12,
+      "actionCount": 6,
+      "dependencyDepth": 11,
+      "cycleCount": 0,
+      "largestCycleLength": 0,
+      "valueConcentration": 1000000,
+      "valueBearers": 1,
+      "aggregateRisk": 6901356,
+      "nexusRecommendation": "s2l12h-01855-act-protect-n1",
+      "nexusRecommendationKind": "PROTECT",
+      "primeRecommendation": "s2l12h-01855-act-protect-n2",
+      "primeCorrect": false,
+      "optimalAction": "s2l12h-01855-act-protect-n1",
+      "optimalKind": "PROTECT",
+      "nexusComponents": {
+        "actionId": "s2l12h-01855-act-protect-n1",
+        "kind": "PROTECT",
+        "targetEntityId": "s2l12h-01855-n1",
+        "structuralImportance": 6,
+        "objectiveRelevance": 0,
+        "relationalBenefit": 0,
+        "actionCostPenalty": 41549,
+        "riskAdjustment": 838475,
+        "redundancyAdjustment": 0,
+        "remainingBlockerCount": 0,
+        "objectiveSupportCount": 0,
+        "substituteCount": 0,
+        "liveSubstituteCount": 0,
+        "bypassSupportValid": false,
+        "bypassReason": "NOT_A_BYPASS",
+        "alreadyDeliveringValue": 0,
+        "newlyDeliveredValue": 0,
+        "finalRelationalUtility": 796926
+      },
+      "optimalComponentsUnderNexus": {
+        "actionId": "s2l12h-01855-act-protect-n1",
+        "kind": "PROTECT",
+        "targetEntityId": "s2l12h-01855-n1",
+        "structuralImportance": 6,
+        "objectiveRelevance": 0,
+        "relationalBenefit": 0,
+        "actionCostPenalty": 41549,
+        "riskAdjustment": 838475,
+        "redundancyAdjustment": 0,
+        "remainingBlockerCount": 0,
+        "objectiveSupportCount": 0,
+        "substituteCount": 0,
+        "liveSubstituteCount": 0,
+        "bypassSupportValid": false,
+        "bypassReason": "NOT_A_BYPASS",
+        "alreadyDeliveringValue": 0,
+        "newlyDeliveredValue": 0,
+        "finalRelationalUtility": 796926
+      },
+      "optimalRankUnderNexus": 0,
+      "nexusRanking": [
+        {
+          "actionId": "s2l12h-01855-act-protect-n1",
+          "finalRelationalUtility": 796926
+        },
+        {
+          "actionId": "s2l12h-01855-act-protect-sub",
+          "finalRelationalUtility": 614911
+        },
+        {
+          "actionId": "s2l12h-01855-act-protect-n4",
+          "finalRelationalUtility": 581675
+        },
+        {
+          "actionId": "s2l12h-01855-act-protect-n2",
+          "finalRelationalUtility": 555029
+        },
+        {
+          "actionId": "s2l12h-01855-act-protect-n0",
+          "finalRelationalUtility": 454550
+        }
+      ],
+      "groundTruthRanking": [
+        {
+          "actionId": "s2l12h-01855-act-protect-n1",
+          "kind": "PROTECT",
+          "actionUtility": 796926
+        },
+        {
+          "actionId": "s2l12h-01855-act-protect-sub",
+          "kind": "PROTECT",
+          "actionUtility": 614911
+        },
+        {
+          "actionId": "s2l12h-01855-act-protect-n4",
+          "kind": "PROTECT",
+          "actionUtility": 581675
+        },
+        {
+          "actionId": "s2l12h-01855-act-protect-n2",
+          "kind": "PROTECT",
+          "actionUtility": 555029
+        },
+        {
+          "actionId": "s2l12h-01855-act-protect-n0",
+          "kind": "PROTECT",
+          "actionUtility": 454550
+        },
+        {
+          "actionId": "s2l12h-01855-act-hold",
+          "kind": "HOLD",
+          "actionUtility": 0
+        }
+      ],
+      "confidenceSignals": {
+        "nexusTopRiskAdjustment": 838475,
+        "nexusUtilityMargin": 182015,
+        "nexusTopUtility": 796926,
+        "nexusSubstituteCount": 0,
+        "nexusLiveSubstituteCount": 0,
+        "nexusBypassSupportValid": false,
+        "nexusEstimatedDeliveredValue": 0,
+        "nexusEstimatedRecoverableValue": 722107,
+        "nexusGainOverHold": 796926,
+        "semanticCoverage": 1000000
+      },
+      "stabilitySignals": {
+        "nexusMarginVariance": 18211,
+        "nexusUtilityVariance": 28041,
+        "nexusTopActionStability": 1000000,
+        "nexusCounterfactualAgreement": 952381,
+        "nexusSemanticStability": 1000000
+      },
+      "substituteState": [
+        {
+          "replaces": "s2l12h-01855-n4",
+          "substitutes": [
+            {
+              "id": "s2l12h-01855-sub",
+              "wouldCarry": true
+            }
+          ]
+        }
+      ],
+      "relationSummary": {
+        "depends": 11,
+        "substitutes": 1
+      },
+      "propagationDisagreementCount": 2,
+      "whyOptimalWon": null,
+      "errorClass": {
+        "labels": [
+          "COST_VALUE_TRADEOFF",
+          "SINGLE_PASS_APPROXIMATION"
+        ],
+        "dominant": "SINGLE_PASS_APPROXIMATION"
+      }
+    },
+    {
+      "variantIndex": 1966,
+      "splitName": "DEVELOPMENT",
+      "family": "REDUNDANT_NETWORK",
+      "profile": "RISK_DOMINATED",
+      "objectiveType": "PROTECTION",
+      "entityCount": 10,
+      "relationCount": 16,
+      "actionCount": 6,
+      "dependencyDepth": 7,
+      "cycleCount": 0,
+      "largestCycleLength": 0,
+      "valueConcentration": 1000000,
+      "valueBearers": 1,
+      "aggregateRisk": 5075214,
+      "nexusRecommendation": "s2l12h-01966-act-protect-n8",
+      "nexusRecommendationKind": "PROTECT",
+      "primeRecommendation": "s2l12h-01966-act-protect-n2",
+      "primeCorrect": false,
+      "optimalAction": "s2l12h-01966-act-protect-n8",
+      "optimalKind": "PROTECT",
+      "nexusComponents": {
+        "actionId": "s2l12h-01966-act-protect-n8",
+        "kind": "PROTECT",
+        "targetEntityId": "s2l12h-01966-n8",
+        "structuralImportance": 0,
+        "objectiveRelevance": 0,
+        "relationalBenefit": 0,
+        "actionCostPenalty": 56660,
+        "riskAdjustment": 689626,
+        "redundancyAdjustment": 0,
+        "remainingBlockerCount": 0,
+        "objectiveSupportCount": 0,
+        "substituteCount": 0,
+        "liveSubstituteCount": 0,
+        "bypassSupportValid": false,
+        "bypassReason": "NOT_A_BYPASS",
+        "alreadyDeliveringValue": 0,
+        "newlyDeliveredValue": 0,
+        "finalRelationalUtility": 632966
+      },
+      "optimalComponentsUnderNexus": {
+        "actionId": "s2l12h-01966-act-protect-n8",
+        "kind": "PROTECT",
+        "targetEntityId": "s2l12h-01966-n8",
+        "structuralImportance": 0,
+        "objectiveRelevance": 0,
+        "relationalBenefit": 0,
+        "actionCostPenalty": 56660,
+        "riskAdjustment": 689626,
+        "redundancyAdjustment": 0,
+        "remainingBlockerCount": 0,
+        "objectiveSupportCount": 0,
+        "substituteCount": 0,
+        "liveSubstituteCount": 0,
+        "bypassSupportValid": false,
+        "bypassReason": "NOT_A_BYPASS",
+        "alreadyDeliveringValue": 0,
+        "newlyDeliveredValue": 0,
+        "finalRelationalUtility": 632966
+      },
+      "optimalRankUnderNexus": 0,
+      "nexusRanking": [
+        {
+          "actionId": "s2l12h-01966-act-protect-n8",
+          "finalRelationalUtility": 632966
+        },
+        {
+          "actionId": "s2l12h-01966-act-protect-n2",
+          "finalRelationalUtility": 459040
+        },
+        {
+          "actionId": "s2l12h-01966-act-reinforce-n0",
+          "finalRelationalUtility": 187405
+        },
+        {
+          "actionId": "s2l12h-01966-act-restore-n1",
+          "finalRelationalUtility": -63276
+        },
+        {
+          "actionId": "s2l12h-01966-act-restore-sub",
+          "finalRelationalUtility": -75700
+        }
+      ],
+      "groundTruthRanking": [
+        {
+          "actionId": "s2l12h-01966-act-protect-n8",
+          "kind": "PROTECT",
+          "actionUtility": 632966
+        },
+        {
+          "actionId": "s2l12h-01966-act-protect-n2",
+          "kind": "PROTECT",
+          "actionUtility": 459040
+        },
+        {
+          "actionId": "s2l12h-01966-act-hold",
+          "kind": "HOLD",
+          "actionUtility": 0
+        },
+        {
+          "actionId": "s2l12h-01966-act-restore-n1",
+          "kind": "RESTORE",
+          "actionUtility": -63276
+        },
+        {
+          "actionId": "s2l12h-01966-act-restore-sub",
+          "kind": "RESTORE",
+          "actionUtility": -75700
+        },
+        {
+          "actionId": "s2l12h-01966-act-reinforce-n0",
+          "kind": "REINFORCE",
+          "actionUtility": -84938
+        }
+      ],
+      "confidenceSignals": {
+        "nexusTopRiskAdjustment": 689626,
+        "nexusUtilityMargin": 173926,
+        "nexusTopUtility": 632966,
+        "nexusSubstituteCount": 0,
+        "nexusLiveSubstituteCount": 0,
+        "nexusBypassSupportValid": false,
+        "nexusEstimatedDeliveredValue": 0,
+        "nexusEstimatedRecoverableValue": 1089371,
+        "nexusGainOverHold": 632966,
+        "semanticCoverage": 1000000
+      },
+      "stabilitySignals": {
+        "nexusMarginVariance": 13283,
+        "nexusUtilityVariance": 20406,
+        "nexusTopActionStability": 1000000,
+        "nexusCounterfactualAgreement": 1000000,
+        "nexusSemanticStability": 1000000
+      },
+      "substituteState": [
+        {
+          "replaces": "s2l12h-01966-n0",
+          "substitutes": [
+            {
+              "id": "s2l12h-01966-sub",
+              "wouldCarry": true
+            }
+          ]
+        }
+      ],
+      "relationSummary": {
+        "depends": 7,
+        "supports": 8,
+        "substitutes": 1
+      },
+      "propagationDisagreementCount": 2,
+      "whyOptimalWon": null,
+      "errorClass": {
+        "labels": [
+          "BOTTLENECK_MISVALUATION",
+          "COST_VALUE_TRADEOFF"
+        ],
+        "dominant": "COST_VALUE_TRADEOFF"
+      }
+    },
+    {
+      "variantIndex": 2062,
+      "splitName": "DEVELOPMENT",
+      "family": "DIAMOND",
+      "profile": "RISK_DOMINATED",
+      "objectiveType": "CONTINUITY",
+      "entityCount": 9,
+      "relationCount": 11,
+      "actionCount": 6,
+      "dependencyDepth": 7,
+      "cycleCount": 0,
+      "largestCycleLength": 0,
+      "valueConcentration": 1000000,
+      "valueBearers": 0,
+      "aggregateRisk": 5627883,
+      "nexusRecommendation": "s2l12h-02062-act-protect-n1",
+      "nexusRecommendationKind": "PROTECT",
+      "primeRecommendation": "s2l12h-02062-act-protect-n1",
+      "primeCorrect": true,
+      "optimalAction": "s2l12h-02062-act-protect-n1",
+      "optimalKind": "PROTECT",
+      "nexusComponents": {
+        "actionId": "s2l12h-02062-act-protect-n1",
+        "kind": "PROTECT",
+        "targetEntityId": "s2l12h-02062-n1",
+        "structuralImportance": 1,
+        "objectiveRelevance": 0,
+        "relationalBenefit": 0,
+        "actionCostPenalty": 26069,
+        "riskAdjustment": 613454,
+        "redundancyAdjustment": 0,
+        "remainingBlockerCount": 0,
+        "objectiveSupportCount": 0,
+        "substituteCount": 0,
+        "liveSubstituteCount": 0,
+        "bypassSupportValid": false,
+        "bypassReason": "NOT_A_BYPASS",
+        "alreadyDeliveringValue": 0,
+        "newlyDeliveredValue": 0,
+        "finalRelationalUtility": 587385
+      },
+      "optimalComponentsUnderNexus": {
+        "actionId": "s2l12h-02062-act-protect-n1",
+        "kind": "PROTECT",
+        "targetEntityId": "s2l12h-02062-n1",
+        "structuralImportance": 1,
+        "objectiveRelevance": 0,
+        "relationalBenefit": 0,
+        "actionCostPenalty": 26069,
+        "riskAdjustment": 613454,
+        "redundancyAdjustment": 0,
+        "remainingBlockerCount": 0,
+        "objectiveSupportCount": 0,
+        "substituteCount": 0,
+        "liveSubstituteCount": 0,
+        "bypassSupportValid": false,
+        "bypassReason": "NOT_A_BYPASS",
+        "alreadyDeliveringValue": 0,
+        "newlyDeliveredValue": 0,
+        "finalRelationalUtility": 587385
+      },
+      "optimalRankUnderNexus": 0,
+      "nexusRanking": [
+        {
+          "actionId": "s2l12h-02062-act-protect-n1",
+          "finalRelationalUtility": 587385
+        },
+        {
+          "actionId": "s2l12h-02062-act-protect-n7",
+          "finalRelationalUtility": 289286
+        },
+        {
+          "actionId": "s2l12h-02062-act-reinforce-n0",
+          "finalRelationalUtility": -27898
+        },
+        {
+          "actionId": "s2l12h-02062-act-bypass-n3",
+          "finalRelationalUtility": -53729
+        },
+        {
+          "actionId": "s2l12h-02062-act-restore-sub",
+          "finalRelationalUtility": -65144
+        }
+      ],
+      "groundTruthRanking": [
+        {
+          "actionId": "s2l12h-02062-act-protect-n1",
+          "kind": "PROTECT",
+          "actionUtility": 587385
+        },
+        {
+          "actionId": "s2l12h-02062-act-protect-n7",
+          "kind": "PROTECT",
+          "actionUtility": 289286
+        },
+        {
+          "actionId": "s2l12h-02062-act-hold",
+          "kind": "HOLD",
+          "actionUtility": 0
+        },
+        {
+          "actionId": "s2l12h-02062-act-reinforce-n0",
+          "kind": "REINFORCE",
+          "actionUtility": -27898
+        },
+        {
+          "actionId": "s2l12h-02062-act-bypass-n3",
+          "kind": "BYPASS",
+          "actionUtility": -53729
+        },
+        {
+          "actionId": "s2l12h-02062-act-restore-sub",
+          "kind": "RESTORE",
+          "actionUtility": -65144
+        }
+      ],
+      "confidenceSignals": {
+        "nexusTopRiskAdjustment": 613454,
+        "nexusUtilityMargin": 298099,
+        "nexusTopUtility": 587385,
+        "nexusSubstituteCount": 0,
+        "nexusLiveSubstituteCount": 0,
+        "nexusBypassSupportValid": false,
+        "nexusEstimatedDeliveredValue": 0,
+        "nexusEstimatedRecoverableValue": 0,
+        "nexusGainOverHold": 587385,
+        "semanticCoverage": 1000000
+      },
+      "stabilitySignals": {
+        "nexusMarginVariance": 12697,
+        "nexusUtilityVariance": 18240,
+        "nexusTopActionStability": 1000000,
+        "nexusCounterfactualAgreement": 1000000,
+        "nexusSemanticStability": 1000000
+      },
+      "substituteState": [
+        {
+          "replaces": "s2l12h-02062-n3",
+          "substitutes": [
+            {
+              "id": "s2l12h-02062-sub",
+              "wouldCarry": true
+            }
+          ]
+        }
+      ],
+      "relationSummary": {
+        "depends": 9,
+        "inhibits": 1,
+        "substitutes": 1
+      },
+      "propagationDisagreementCount": 3,
+      "whyOptimalWon": null,
+      "errorClass": {
+        "labels": [
+          "COST_VALUE_TRADEOFF"
+        ],
+        "dominant": "COST_VALUE_TRADEOFF"
+      }
+    },
+    {
+      "variantIndex": 2133,
+      "splitName": "DEVELOPMENT",
+      "family": "DIAMOND",
+      "profile": "RISK_DOMINATED",
+      "objectiveType": "PROTECTION",
+      "entityCount": 7,
+      "relationCount": 8,
+      "actionCount": 6,
+      "dependencyDepth": 5,
+      "cycleCount": 0,
+      "largestCycleLength": 0,
+      "valueConcentration": 1000000,
+      "valueBearers": 1,
+      "aggregateRisk": 4894971,
+      "nexusRecommendation": "s2l12h-02133-act-protect-n1",
+      "nexusRecommendationKind": "PROTECT",
+      "primeRecommendation": "s2l12h-02133-act-restore-n3",
+      "primeCorrect": false,
+      "optimalAction": "s2l12h-02133-act-protect-n1",
+      "optimalKind": "PROTECT",
+      "nexusComponents": {
+        "actionId": "s2l12h-02133-act-protect-n1",
+        "kind": "PROTECT",
+        "targetEntityId": "s2l12h-02133-n1",
+        "structuralImportance": 1,
+        "objectiveRelevance": 0,
+        "relationalBenefit": 0,
+        "actionCostPenalty": 48114,
+        "riskAdjustment": 621781,
+        "redundancyAdjustment": 0,
+        "remainingBlockerCount": 0,
+        "objectiveSupportCount": 0,
+        "substituteCount": 0,
+        "liveSubstituteCount": 0,
+        "bypassSupportValid": false,
+        "bypassReason": "NOT_A_BYPASS",
+        "alreadyDeliveringValue": 0,
+        "newlyDeliveredValue": 0,
+        "finalRelationalUtility": 573667
+      },
+      "optimalComponentsUnderNexus": {
+        "actionId": "s2l12h-02133-act-protect-n1",
+        "kind": "PROTECT",
+        "targetEntityId": "s2l12h-02133-n1",
+        "structuralImportance": 1,
+        "objectiveRelevance": 0,
+        "relationalBenefit": 0,
+        "actionCostPenalty": 48114,
+        "riskAdjustment": 621781,
+        "redundancyAdjustment": 0,
+        "remainingBlockerCount": 0,
+        "objectiveSupportCount": 0,
+        "substituteCount": 0,
+        "liveSubstituteCount": 0,
+        "bypassSupportValid": false,
+        "bypassReason": "NOT_A_BYPASS",
+        "alreadyDeliveringValue": 0,
+        "newlyDeliveredValue": 0,
+        "finalRelationalUtility": 573667
+      },
+      "optimalRankUnderNexus": 0,
+      "nexusRanking": [
+        {
+          "actionId": "s2l12h-02133-act-protect-n1",
+          "finalRelationalUtility": 573667
+        },
+        {
+          "actionId": "s2l12h-02133-act-protect-sub",
+          "finalRelationalUtility": 238684
+        },
+        {
+          "actionId": "s2l12h-02133-act-restore-n2",
+          "finalRelationalUtility": 135675
+        },
+        {
+          "actionId": "s2l12h-02133-act-restore-n3",
+          "finalRelationalUtility": 108938
+        },
+        {
+          "actionId": "s2l12h-02133-act-restore-n0",
+          "finalRelationalUtility": -89454
+        }
+      ],
+      "groundTruthRanking": [
+        {
+          "actionId": "s2l12h-02133-act-protect-n1",
+          "kind": "PROTECT",
+          "actionUtility": 573667
+        },
+        {
+          "actionId": "s2l12h-02133-act-protect-sub",
+          "kind": "PROTECT",
+          "actionUtility": 238684
+        },
+        {
+          "actionId": "s2l12h-02133-act-hold",
+          "kind": "HOLD",
+          "actionUtility": 0
+        },
+        {
+          "actionId": "s2l12h-02133-act-restore-n3",
+          "kind": "RESTORE",
+          "actionUtility": -13346
+        },
+        {
+          "actionId": "s2l12h-02133-act-restore-n2",
+          "kind": "RESTORE",
+          "actionUtility": -27371
+        },
+        {
+          "actionId": "s2l12h-02133-act-restore-n0",
+          "kind": "RESTORE",
+          "actionUtility": -89454
+        }
+      ],
+      "confidenceSignals": {
+        "nexusTopRiskAdjustment": 621781,
+        "nexusUtilityMargin": 334983,
+        "nexusTopUtility": 573667,
+        "nexusSubstituteCount": 0,
+        "nexusLiveSubstituteCount": 0,
+        "nexusBypassSupportValid": false,
+        "nexusEstimatedDeliveredValue": 0,
+        "nexusEstimatedRecoverableValue": 489137,
+        "nexusGainOverHold": 573667,
+        "semanticCoverage": 1000000
+      },
+      "stabilitySignals": {
+        "nexusMarginVariance": 13241,
+        "nexusUtilityVariance": 23630,
+        "nexusTopActionStability": 1000000,
+        "nexusCounterfactualAgreement": 1000000,
+        "nexusSemanticStability": 1000000
+      },
+      "substituteState": [
+        {
+          "replaces": "s2l12h-02133-n3",
+          "substitutes": [
+            {
+              "id": "s2l12h-02133-sub",
+              "wouldCarry": true
+            }
+          ]
+        }
+      ],
+      "relationSummary": {
+        "depends": 6,
+        "substitutes": 1,
+        "conflicts": 1
+      },
+      "propagationDisagreementCount": 2,
+      "whyOptimalWon": null,
+      "errorClass": {
+        "labels": [
+          "COST_VALUE_TRADEOFF",
+          "SINGLE_PASS_APPROXIMATION"
+        ],
+        "dominant": "SINGLE_PASS_APPROXIMATION"
+      }
+    },
+    {
+      "variantIndex": 2166,
+      "splitName": "DEVELOPMENT",
+      "family": "NESTED_BOTTLENECK",
+      "profile": "RISK_DOMINATED",
+      "objectiveType": "THROUGHPUT",
+      "entityCount": 8,
+      "relationCount": 9,
+      "actionCount": 6,
+      "dependencyDepth": 6,
+      "cycleCount": 0,
+      "largestCycleLength": 0,
+      "valueConcentration": 1000000,
+      "valueBearers": 1,
+      "aggregateRisk": 3897674,
+      "nexusRecommendation": "s2l12h-02166-act-protect-sub",
+      "nexusRecommendationKind": "PROTECT",
+      "primeRecommendation": "s2l12h-02166-act-restore-n3",
+      "primeCorrect": false,
+      "optimalAction": "s2l12h-02166-act-protect-sub",
+      "optimalKind": "PROTECT",
+      "nexusComponents": {
+        "actionId": "s2l12h-02166-act-protect-sub",
+        "kind": "PROTECT",
+        "targetEntityId": "s2l12h-02166-sub",
+        "structuralImportance": 0,
+        "objectiveRelevance": 0,
+        "relationalBenefit": 0,
+        "actionCostPenalty": 77823,
+        "riskAdjustment": 693413,
+        "redundancyAdjustment": 0,
+        "remainingBlockerCount": 0,
+        "objectiveSupportCount": 0,
+        "substituteCount": 0,
+        "liveSubstituteCount": 0,
+        "bypassSupportValid": false,
+        "bypassReason": "NOT_A_BYPASS",
+        "alreadyDeliveringValue": 0,
+        "newlyDeliveredValue": 0,
+        "finalRelationalUtility": 615590
+      },
+      "optimalComponentsUnderNexus": {
+        "actionId": "s2l12h-02166-act-protect-sub",
+        "kind": "PROTECT",
+        "targetEntityId": "s2l12h-02166-sub",
+        "structuralImportance": 0,
+        "objectiveRelevance": 0,
+        "relationalBenefit": 0,
+        "actionCostPenalty": 77823,
+        "riskAdjustment": 693413,
+        "redundancyAdjustment": 0,
+        "remainingBlockerCount": 0,
+        "objectiveSupportCount": 0,
+        "substituteCount": 0,
+        "liveSubstituteCount": 0,
+        "bypassSupportValid": false,
+        "bypassReason": "NOT_A_BYPASS",
+        "alreadyDeliveringValue": 0,
+        "newlyDeliveredValue": 0,
+        "finalRelationalUtility": 615590
+      },
+      "optimalRankUnderNexus": 0,
+      "nexusRanking": [
+        {
+          "actionId": "s2l12h-02166-act-protect-sub",
+          "finalRelationalUtility": 615590
+        },
+        {
+          "actionId": "s2l12h-02166-act-restore-n3",
+          "finalRelationalUtility": 74755
+        },
+        {
+          "actionId": "s2l12h-02166-act-bypass-n0",
+          "finalRelationalUtility": 68450
+        },
+        {
+          "actionId": "s2l12h-02166-act-reinforce-n2",
+          "finalRelationalUtility": 55280
+        },
+        {
+          "actionId": "s2l12h-02166-act-restore-n1",
+          "finalRelationalUtility": 52982
+        }
+      ],
+      "groundTruthRanking": [
+        {
+          "actionId": "s2l12h-02166-act-protect-sub",
+          "kind": "PROTECT",
+          "actionUtility": 615590
+        },
+        {
+          "actionId": "s2l12h-02166-act-hold",
+          "kind": "HOLD",
+          "actionUtility": 0
+        },
+        {
+          "actionId": "s2l12h-02166-act-restore-n3",
+          "kind": "RESTORE",
+          "actionUtility": -33980
+        },
+        {
+          "actionId": "s2l12h-02166-act-bypass-n0",
+          "kind": "BYPASS",
+          "actionUtility": -40285
+        },
+        {
+          "actionId": "s2l12h-02166-act-reinforce-n2",
+          "kind": "REINFORCE",
+          "actionUtility": -53455
+        },
+        {
+          "actionId": "s2l12h-02166-act-restore-n1",
+          "kind": "RESTORE",
+          "actionUtility": -55753
+        }
+      ],
+      "confidenceSignals": {
+        "nexusTopRiskAdjustment": 693413,
+        "nexusUtilityMargin": 540835,
+        "nexusTopUtility": 615590,
+        "nexusSubstituteCount": 0,
+        "nexusLiveSubstituteCount": 0,
+        "nexusBypassSupportValid": false,
+        "nexusEstimatedDeliveredValue": 0,
+        "nexusEstimatedRecoverableValue": 978615,
+        "nexusGainOverHold": 615590,
+        "semanticCoverage": 1000000
+      },
+      "stabilitySignals": {
+        "nexusMarginVariance": 16607,
+        "nexusUtilityVariance": 17694,
+        "nexusTopActionStability": 1000000,
+        "nexusCounterfactualAgreement": 1000000,
+        "nexusSemanticStability": 1000000
+      },
+      "substituteState": [
+        {
+          "replaces": "s2l12h-02166-n0",
+          "substitutes": [
+            {
+              "id": "s2l12h-02166-sub",
+              "wouldCarry": true
+            }
+          ]
+        }
+      ],
+      "relationSummary": {
+        "depends": 6,
+        "substitutes": 1,
+        "inhibits": 1,
+        "amplifies": 1
+      },
+      "propagationDisagreementCount": 0,
+      "whyOptimalWon": null,
+      "errorClass": {
+        "labels": [
+          "BOTTLENECK_MISVALUATION",
+          "COST_VALUE_TRADEOFF"
+        ],
+        "dominant": "COST_VALUE_TRADEOFF"
+      }
+    },
+    {
+      "variantIndex": 2482,
+      "splitName": "DEVELOPMENT",
+      "family": "PROTECTED_CRITICAL_NODE",
+      "profile": "RISK_DOMINATED",
+      "objectiveType": "THROUGHPUT",
+      "entityCount": 13,
+      "relationCount": 14,
+      "actionCount": 6,
+      "dependencyDepth": 10,
+      "cycleCount": 0,
+      "largestCycleLength": 0,
+      "valueConcentration": 1000000,
+      "valueBearers": 1,
+      "aggregateRisk": 6619523,
+      "nexusRecommendation": "s2l12h-02482-act-protect-sub",
+      "nexusRecommendationKind": "PROTECT",
+      "primeRecommendation": "s2l12h-02482-act-reinforce-n2",
+      "primeCorrect": false,
+      "optimalAction": "s2l12h-02482-act-protect-sub",
+      "optimalKind": "PROTECT",
+      "nexusComponents": {
+        "actionId": "s2l12h-02482-act-protect-sub",
+        "kind": "PROTECT",
+        "targetEntityId": "s2l12h-02482-sub",
+        "structuralImportance": 0,
+        "objectiveRelevance": 0,
+        "relationalBenefit": 0,
+        "actionCostPenalty": 13052,
+        "riskAdjustment": 890681,
+        "redundancyAdjustment": 0,
+        "remainingBlockerCount": 0,
+        "objectiveSupportCount": 0,
+        "substituteCount": 0,
+        "liveSubstituteCount": 0,
+        "bypassSupportValid": false,
+        "bypassReason": "NOT_A_BYPASS",
+        "alreadyDeliveringValue": 0,
+        "newlyDeliveredValue": 0,
+        "finalRelationalUtility": 877629
+      },
+      "optimalComponentsUnderNexus": {
+        "actionId": "s2l12h-02482-act-protect-sub",
+        "kind": "PROTECT",
+        "targetEntityId": "s2l12h-02482-sub",
+        "structuralImportance": 0,
+        "objectiveRelevance": 0,
+        "relationalBenefit": 0,
+        "actionCostPenalty": 13052,
+        "riskAdjustment": 890681,
+        "redundancyAdjustment": 0,
+        "remainingBlockerCount": 0,
+        "objectiveSupportCount": 0,
+        "substituteCount": 0,
+        "liveSubstituteCount": 0,
+        "bypassSupportValid": false,
+        "bypassReason": "NOT_A_BYPASS",
+        "alreadyDeliveringValue": 0,
+        "newlyDeliveredValue": 0,
+        "finalRelationalUtility": 877629
+      },
+      "optimalRankUnderNexus": 0,
+      "nexusRanking": [
+        {
+          "actionId": "s2l12h-02482-act-protect-sub",
+          "finalRelationalUtility": 877629
+        },
+        {
+          "actionId": "s2l12h-02482-act-protect-n0",
+          "finalRelationalUtility": 551808
+        },
+        {
+          "actionId": "s2l12h-02482-act-protect-n10",
+          "finalRelationalUtility": 325507
+        },
+        {
+          "actionId": "s2l12h-02482-act-protect-n1",
+          "finalRelationalUtility": 214256
+        },
+        {
+          "actionId": "s2l12h-02482-act-reinforce-n2",
+          "finalRelationalUtility": 120632
+        }
+      ],
+      "groundTruthRanking": [
+        {
+          "actionId": "s2l12h-02482-act-protect-sub",
+          "kind": "PROTECT",
+          "actionUtility": 877629
+        },
+        {
+          "actionId": "s2l12h-02482-act-protect-n0",
+          "kind": "PROTECT",
+          "actionUtility": 551808
+        },
+        {
+          "actionId": "s2l12h-02482-act-protect-n10",
+          "kind": "PROTECT",
+          "actionUtility": 325507
+        },
+        {
+          "actionId": "s2l12h-02482-act-protect-n1",
+          "kind": "PROTECT",
+          "actionUtility": 214256
+        },
+        {
+          "actionId": "s2l12h-02482-act-hold",
+          "kind": "HOLD",
+          "actionUtility": 0
+        },
+        {
+          "actionId": "s2l12h-02482-act-reinforce-n2",
+          "kind": "REINFORCE",
+          "actionUtility": -52716
+        }
+      ],
+      "confidenceSignals": {
+        "nexusTopRiskAdjustment": 890681,
+        "nexusUtilityMargin": 325821,
+        "nexusTopUtility": 877629,
+        "nexusSubstituteCount": 0,
+        "nexusLiveSubstituteCount": 0,
+        "nexusBypassSupportValid": false,
+        "nexusEstimatedDeliveredValue": 0,
+        "nexusEstimatedRecoverableValue": 520045,
+        "nexusGainOverHold": 877629,
+        "semanticCoverage": 1000000
+      },
+      "stabilitySignals": {
+        "nexusMarginVariance": 16085,
+        "nexusUtilityVariance": 19630,
+        "nexusTopActionStability": 1000000,
+        "nexusCounterfactualAgreement": 1000000,
+        "nexusSemanticStability": 1000000
+      },
+      "substituteState": [
+        {
+          "replaces": "s2l12h-02482-n1",
+          "substitutes": [
+            {
+              "id": "s2l12h-02482-sub",
+              "wouldCarry": false
+            }
+          ]
+        }
+      ],
+      "relationSummary": {
+        "depends": 10,
+        "protects": 1,
+        "substitutes": 1,
+        "supports": 1,
+        "inhibits": 1
+      },
+      "propagationDisagreementCount": 5,
+      "whyOptimalWon": null,
+      "errorClass": {
+        "labels": [
+          "BOTTLENECK_MISVALUATION",
+          "COST_VALUE_TRADEOFF"
+        ],
+        "dominant": "COST_VALUE_TRADEOFF"
+      }
+    },
+    {
+      "variantIndex": 2665,
+      "splitName": "DEVELOPMENT",
+      "family": "PROTECTED_CRITICAL_NODE",
+      "profile": "RISK_DOMINATED",
+      "objectiveType": "THROUGHPUT",
+      "entityCount": 15,
+      "relationCount": 17,
+      "actionCount": 6,
+      "dependencyDepth": 12,
+      "cycleCount": 0,
+      "largestCycleLength": 0,
+      "valueConcentration": 1000000,
+      "valueBearers": 1,
+      "aggregateRisk": 8482121,
+      "nexusRecommendation": "s2l12h-02665-act-protect-sub",
+      "nexusRecommendationKind": "PROTECT",
+      "primeRecommendation": "s2l12h-02665-act-protect-n0",
+      "primeCorrect": false,
+      "optimalAction": "s2l12h-02665-act-protect-sub",
+      "optimalKind": "PROTECT",
+      "nexusComponents": {
+        "actionId": "s2l12h-02665-act-protect-sub",
+        "kind": "PROTECT",
+        "targetEntityId": "s2l12h-02665-sub",
+        "structuralImportance": 0,
+        "objectiveRelevance": 0,
+        "relationalBenefit": 0,
+        "actionCostPenalty": 5885,
+        "riskAdjustment": 958865,
+        "redundancyAdjustment": 0,
+        "remainingBlockerCount": 0,
+        "objectiveSupportCount": 0,
+        "substituteCount": 0,
+        "liveSubstituteCount": 0,
+        "bypassSupportValid": false,
+        "bypassReason": "NOT_A_BYPASS",
+        "alreadyDeliveringValue": 0,
+        "newlyDeliveredValue": 0,
+        "finalRelationalUtility": 952980
+      },
+      "optimalComponentsUnderNexus": {
+        "actionId": "s2l12h-02665-act-protect-sub",
+        "kind": "PROTECT",
+        "targetEntityId": "s2l12h-02665-sub",
+        "structuralImportance": 0,
+        "objectiveRelevance": 0,
+        "relationalBenefit": 0,
+        "actionCostPenalty": 5885,
+        "riskAdjustment": 958865,
+        "redundancyAdjustment": 0,
+        "remainingBlockerCount": 0,
+        "objectiveSupportCount": 0,
+        "substituteCount": 0,
+        "liveSubstituteCount": 0,
+        "bypassSupportValid": false,
+        "bypassReason": "NOT_A_BYPASS",
+        "alreadyDeliveringValue": 0,
+        "newlyDeliveredValue": 0,
+        "finalRelationalUtility": 952980
+      },
+      "optimalRankUnderNexus": 0,
+      "nexusRanking": [
+        {
+          "actionId": "s2l12h-02665-act-protect-sub",
+          "finalRelationalUtility": 952980
+        },
+        {
+          "actionId": "s2l12h-02665-act-protect-n0",
+          "finalRelationalUtility": 556517
+        },
+        {
+          "actionId": "s2l12h-02665-act-protect-n2",
+          "finalRelationalUtility": 320827
+        },
+        {
+          "actionId": "s2l12h-02665-act-protect-n3",
+          "finalRelationalUtility": 293833
+        },
+        {
+          "actionId": "s2l12h-02665-act-protect-n1",
+          "finalRelationalUtility": -78093
+        }
+      ],
+      "groundTruthRanking": [
+        {
+          "actionId": "s2l12h-02665-act-protect-sub",
+          "kind": "PROTECT",
+          "actionUtility": 952980
+        },
+        {
+          "actionId": "s2l12h-02665-act-protect-n0",
+          "kind": "PROTECT",
+          "actionUtility": 556517
+        },
+        {
+          "actionId": "s2l12h-02665-act-protect-n2",
+          "kind": "PROTECT",
+          "actionUtility": 320827
+        },
+        {
+          "actionId": "s2l12h-02665-act-protect-n3",
+          "kind": "PROTECT",
+          "actionUtility": 293833
+        },
+        {
+          "actionId": "s2l12h-02665-act-hold",
+          "kind": "HOLD",
+          "actionUtility": 0
+        },
+        {
+          "actionId": "s2l12h-02665-act-protect-n1",
+          "kind": "PROTECT",
+          "actionUtility": -78093
+        }
+      ],
+      "confidenceSignals": {
+        "nexusTopRiskAdjustment": 958865,
+        "nexusUtilityMargin": 396463,
+        "nexusTopUtility": 952980,
+        "nexusSubstituteCount": 0,
+        "nexusLiveSubstituteCount": 0,
+        "nexusBypassSupportValid": false,
+        "nexusEstimatedDeliveredValue": 0,
+        "nexusEstimatedRecoverableValue": 677854,
+        "nexusGainOverHold": 952980,
+        "semanticCoverage": 1000000
+      },
+      "stabilitySignals": {
+        "nexusMarginVariance": 19813,
+        "nexusUtilityVariance": 14741,
+        "nexusTopActionStability": 1000000,
+        "nexusCounterfactualAgreement": 1000000,
+        "nexusSemanticStability": 1000000
+      },
+      "substituteState": [
+        {
+          "replaces": "s2l12h-02665-n2",
+          "substitutes": [
+            {
+              "id": "s2l12h-02665-sub",
+              "wouldCarry": true
+            }
+          ]
+        }
+      ],
+      "relationSummary": {
+        "depends": 12,
+        "protects": 1,
+        "substitutes": 1,
+        "conflicts": 3
+      },
+      "propagationDisagreementCount": 6,
+      "whyOptimalWon": null,
+      "errorClass": {
+        "labels": [
+          "BOTTLENECK_MISVALUATION",
+          "COST_VALUE_TRADEOFF"
+        ],
+        "dominant": "COST_VALUE_TRADEOFF"
+      }
+    },
+    {
+      "variantIndex": 2694,
+      "splitName": "DEVELOPMENT",
+      "family": "MULTI_COMPONENT",
+      "profile": "RISK_DOMINATED",
+      "objectiveType": "PROTECTION",
+      "entityCount": 10,
+      "relationCount": 11,
+      "actionCount": 6,
+      "dependencyDepth": 4,
+      "cycleCount": 0,
+      "largestCycleLength": 0,
+      "valueConcentration": 1000000,
+      "valueBearers": 1,
+      "aggregateRisk": 5742259,
+      "nexusRecommendation": "s2l12h-02694-act-protect-n2",
+      "nexusRecommendationKind": "PROTECT",
+      "primeRecommendation": "s2l12h-02694-act-protect-n4",
+      "primeCorrect": false,
+      "optimalAction": "s2l12h-02694-act-protect-n2",
+      "optimalKind": "PROTECT",
+      "nexusComponents": {
+        "actionId": "s2l12h-02694-act-protect-n2",
+        "kind": "PROTECT",
+        "targetEntityId": "s2l12h-02694-n2",
+        "structuralImportance": 1,
+        "objectiveRelevance": 0,
+        "relationalBenefit": 0,
+        "actionCostPenalty": 51009,
+        "riskAdjustment": 744715,
+        "redundancyAdjustment": 0,
+        "remainingBlockerCount": 0,
+        "objectiveSupportCount": 0,
+        "substituteCount": 0,
+        "liveSubstituteCount": 0,
+        "bypassSupportValid": false,
+        "bypassReason": "NOT_A_BYPASS",
+        "alreadyDeliveringValue": 0,
+        "newlyDeliveredValue": 0,
+        "finalRelationalUtility": 693706
+      },
+      "optimalComponentsUnderNexus": {
+        "actionId": "s2l12h-02694-act-protect-n2",
+        "kind": "PROTECT",
+        "targetEntityId": "s2l12h-02694-n2",
+        "structuralImportance": 1,
+        "objectiveRelevance": 0,
+        "relationalBenefit": 0,
+        "actionCostPenalty": 51009,
+        "riskAdjustment": 744715,
+        "redundancyAdjustment": 0,
+        "remainingBlockerCount": 0,
+        "objectiveSupportCount": 0,
+        "substituteCount": 0,
+        "liveSubstituteCount": 0,
+        "bypassSupportValid": false,
+        "bypassReason": "NOT_A_BYPASS",
+        "alreadyDeliveringValue": 0,
+        "newlyDeliveredValue": 0,
+        "finalRelationalUtility": 693706
+      },
+      "optimalRankUnderNexus": 0,
+      "nexusRanking": [
+        {
+          "actionId": "s2l12h-02694-act-protect-n2",
+          "finalRelationalUtility": 693706
+        },
+        {
+          "actionId": "s2l12h-02694-act-protect-n7",
+          "finalRelationalUtility": 474510
+        },
+        {
+          "actionId": "s2l12h-02694-act-protect-sub",
+          "finalRelationalUtility": 441183
+        },
+        {
+          "actionId": "s2l12h-02694-act-protect-n4",
+          "finalRelationalUtility": 422327
+        },
+        {
+          "actionId": "s2l12h-02694-act-restore-n0",
+          "finalRelationalUtility": -22965
+        }
+      ],
+      "groundTruthRanking": [
+        {
+          "actionId": "s2l12h-02694-act-protect-n2",
+          "kind": "PROTECT",
+          "actionUtility": 693706
+        },
+        {
+          "actionId": "s2l12h-02694-act-protect-n7",
+          "kind": "PROTECT",
+          "actionUtility": 474510
+        },
+        {
+          "actionId": "s2l12h-02694-act-protect-sub",
+          "kind": "PROTECT",
+          "actionUtility": 441183
+        },
+        {
+          "actionId": "s2l12h-02694-act-protect-n4",
+          "kind": "PROTECT",
+          "actionUtility": 422327
+        },
+        {
+          "actionId": "s2l12h-02694-act-hold",
+          "kind": "HOLD",
+          "actionUtility": 0
+        },
+        {
+          "actionId": "s2l12h-02694-act-restore-n0",
+          "kind": "RESTORE",
+          "actionUtility": -22965
+        }
+      ],
+      "confidenceSignals": {
+        "nexusTopRiskAdjustment": 744715,
+        "nexusUtilityMargin": 219196,
+        "nexusTopUtility": 693706,
+        "nexusSubstituteCount": 0,
+        "nexusLiveSubstituteCount": 0,
+        "nexusBypassSupportValid": false,
+        "nexusEstimatedDeliveredValue": 0,
+        "nexusEstimatedRecoverableValue": 1198803,
+        "nexusGainOverHold": 693706,
+        "semanticCoverage": 1000000
+      },
+      "stabilitySignals": {
+        "nexusMarginVariance": 16206,
+        "nexusUtilityVariance": 16217,
+        "nexusTopActionStability": 1000000,
+        "nexusCounterfactualAgreement": 1000000,
+        "nexusSemanticStability": 1000000
+      },
+      "substituteState": [
+        {
+          "replaces": "s2l12h-02694-n7",
+          "substitutes": [
+            {
+              "id": "s2l12h-02694-sub",
+              "wouldCarry": true
+            }
+          ]
+        }
+      ],
+      "relationSummary": {
+        "depends": 7,
+        "supports": 2,
+        "substitutes": 1,
+        "inhibits": 1
+      },
+      "propagationDisagreementCount": 4,
+      "whyOptimalWon": null,
+      "errorClass": {
+        "labels": [
+          "COST_VALUE_TRADEOFF",
+          "SINGLE_PASS_APPROXIMATION"
+        ],
+        "dominant": "SINGLE_PASS_APPROXIMATION"
+      }
+    },
+    {
+      "variantIndex": 2836,
+      "splitName": "DEVELOPMENT",
+      "family": "REDUNDANT_NETWORK",
+      "profile": "RISK_DOMINATED",
+      "objectiveType": "PROTECTION",
+      "entityCount": 9,
+      "relationCount": 16,
+      "actionCount": 6,
+      "dependencyDepth": 6,
+      "cycleCount": 0,
+      "largestCycleLength": 0,
+      "valueConcentration": 1000000,
+      "valueBearers": 1,
+      "aggregateRisk": 4939717,
+      "nexusRecommendation": "s2l12h-02836-act-protect-n2",
+      "nexusRecommendationKind": "PROTECT",
+      "primeRecommendation": "s2l12h-02836-act-protect-n0",
+      "primeCorrect": false,
+      "optimalAction": "s2l12h-02836-act-protect-n2",
+      "optimalKind": "PROTECT",
+      "nexusComponents": {
+        "actionId": "s2l12h-02836-act-protect-n2",
+        "kind": "PROTECT",
+        "targetEntityId": "s2l12h-02836-n2",
+        "structuralImportance": 0,
+        "objectiveRelevance": 0,
+        "relationalBenefit": 0,
+        "actionCostPenalty": 53550,
+        "riskAdjustment": 605083,
+        "redundancyAdjustment": 0,
+        "remainingBlockerCount": 0,
+        "objectiveSupportCount": 0,
+        "substituteCount": 0,
+        "liveSubstituteCount": 0,
+        "bypassSupportValid": false,
+        "bypassReason": "NOT_A_BYPASS",
+        "alreadyDeliveringValue": 0,
+        "newlyDeliveredValue": 0,
+        "finalRelationalUtility": 551533
+      },
+      "optimalComponentsUnderNexus": {
+        "actionId": "s2l12h-02836-act-protect-n2",
+        "kind": "PROTECT",
+        "targetEntityId": "s2l12h-02836-n2",
+        "structuralImportance": 0,
+        "objectiveRelevance": 0,
+        "relationalBenefit": 0,
+        "actionCostPenalty": 53550,
+        "riskAdjustment": 605083,
+        "redundancyAdjustment": 0,
+        "remainingBlockerCount": 0,
+        "objectiveSupportCount": 0,
+        "substituteCount": 0,
+        "liveSubstituteCount": 0,
+        "bypassSupportValid": false,
+        "bypassReason": "NOT_A_BYPASS",
+        "alreadyDeliveringValue": 0,
+        "newlyDeliveredValue": 0,
+        "finalRelationalUtility": 551533
+      },
+      "optimalRankUnderNexus": 0,
+      "nexusRanking": [
+        {
+          "actionId": "s2l12h-02836-act-protect-n2",
+          "finalRelationalUtility": 551533
+        },
+        {
+          "actionId": "s2l12h-02836-act-protect-n1",
+          "finalRelationalUtility": 348911
+        },
+        {
+          "actionId": "s2l12h-02836-act-protect-n0",
+          "finalRelationalUtility": 348682
+        },
+        {
+          "actionId": "s2l12h-02836-act-protect-n3",
+          "finalRelationalUtility": 260876
+        },
+        {
+          "actionId": "s2l12h-02836-act-restore-sub",
+          "finalRelationalUtility": -71507
+        }
+      ],
+      "groundTruthRanking": [
+        {
+          "actionId": "s2l12h-02836-act-protect-n2",
+          "kind": "PROTECT",
+          "actionUtility": 551533
+        },
+        {
+          "actionId": "s2l12h-02836-act-protect-n1",
+          "kind": "PROTECT",
+          "actionUtility": 348911
+        },
+        {
+          "actionId": "s2l12h-02836-act-protect-n0",
+          "kind": "PROTECT",
+          "actionUtility": 348682
+        },
+        {
+          "actionId": "s2l12h-02836-act-protect-n3",
+          "kind": "PROTECT",
+          "actionUtility": 260876
+        },
+        {
+          "actionId": "s2l12h-02836-act-hold",
+          "kind": "HOLD",
+          "actionUtility": 0
+        },
+        {
+          "actionId": "s2l12h-02836-act-restore-sub",
+          "kind": "RESTORE",
+          "actionUtility": -71507
+        }
+      ],
+      "confidenceSignals": {
+        "nexusTopRiskAdjustment": 605083,
+        "nexusUtilityMargin": 202622,
+        "nexusTopUtility": 551533,
+        "nexusSubstituteCount": 0,
+        "nexusLiveSubstituteCount": 0,
+        "nexusBypassSupportValid": false,
+        "nexusEstimatedDeliveredValue": 0,
+        "nexusEstimatedRecoverableValue": 491625,
+        "nexusGainOverHold": 551533,
+        "semanticCoverage": 1000000
+      },
+      "stabilitySignals": {
+        "nexusMarginVariance": 11615,
+        "nexusUtilityVariance": 18340,
+        "nexusTopActionStability": 1000000,
+        "nexusCounterfactualAgreement": 880952,
+        "nexusSemanticStability": 1000000
+      },
+      "substituteState": [
+        {
+          "replaces": "s2l12h-02836-n0",
+          "substitutes": [
+            {
+              "id": "s2l12h-02836-sub",
+              "wouldCarry": true
+            }
+          ]
+        }
+      ],
+      "relationSummary": {
+        "depends": 6,
+        "supports": 7,
+        "substitutes": 1,
+        "protects": 1,
+        "amplifies": 1
+      },
+      "propagationDisagreementCount": 2,
+      "whyOptimalWon": null,
+      "errorClass": {
+        "labels": [
+          "BOTTLENECK_MISVALUATION",
+          "COST_VALUE_TRADEOFF",
+          "SINGLE_PASS_APPROXIMATION"
+        ],
+        "dominant": "SINGLE_PASS_APPROXIMATION"
+      }
+    },
+    {
+      "variantIndex": 3384,
+      "splitName": "DEVELOPMENT",
+      "family": "DIAMOND",
+      "profile": "RISK_DOMINATED",
+      "objectiveType": "CONTINUITY",
+      "entityCount": 9,
+      "relationCount": 11,
+      "actionCount": 6,
+      "dependencyDepth": 7,
+      "cycleCount": 0,
+      "largestCycleLength": 0,
+      "valueConcentration": 1000000,
+      "valueBearers": 1,
+      "aggregateRisk": 4306729,
+      "nexusRecommendation": "s2l12h-03384-act-protect-n0",
+      "nexusRecommendationKind": "PROTECT",
+      "primeRecommendation": "s2l12h-03384-act-protect-n4",
+      "primeCorrect": false,
+      "optimalAction": "s2l12h-03384-act-protect-n0",
+      "optimalKind": "PROTECT",
+      "nexusComponents": {
+        "actionId": "s2l12h-03384-act-protect-n0",
+        "kind": "PROTECT",
+        "targetEntityId": "s2l12h-03384-n0",
+        "structuralImportance": 7,
+        "objectiveRelevance": 979445,
+        "relationalBenefit": 0,
+        "actionCostPenalty": 65078,
+        "riskAdjustment": 642288,
+        "redundancyAdjustment": 0,
+        "remainingBlockerCount": 0,
+        "objectiveSupportCount": 1,
+        "substituteCount": 0,
+        "liveSubstituteCount": 0,
+        "bypassSupportValid": false,
+        "bypassReason": "NOT_A_BYPASS",
+        "alreadyDeliveringValue": 0,
+        "newlyDeliveredValue": 0,
+        "finalRelationalUtility": 577210
+      },
+      "optimalComponentsUnderNexus": {
+        "actionId": "s2l12h-03384-act-protect-n0",
+        "kind": "PROTECT",
+        "targetEntityId": "s2l12h-03384-n0",
+        "structuralImportance": 7,
+        "objectiveRelevance": 979445,
+        "relationalBenefit": 0,
+        "actionCostPenalty": 65078,
+        "riskAdjustment": 642288,
+        "redundancyAdjustment": 0,
+        "remainingBlockerCount": 0,
+        "objectiveSupportCount": 1,
+        "substituteCount": 0,
+        "liveSubstituteCount": 0,
+        "bypassSupportValid": false,
+        "bypassReason": "NOT_A_BYPASS",
+        "alreadyDeliveringValue": 0,
+        "newlyDeliveredValue": 0,
+        "finalRelationalUtility": 577210
+      },
+      "optimalRankUnderNexus": 0,
+      "nexusRanking": [
+        {
+          "actionId": "s2l12h-03384-act-protect-n0",
+          "finalRelationalUtility": 577210
+        },
+        {
+          "actionId": "s2l12h-03384-act-protect-n7",
+          "finalRelationalUtility": 382808
+        },
+        {
+          "actionId": "s2l12h-03384-act-reinforce-sub",
+          "finalRelationalUtility": -18576
+        },
+        {
+          "actionId": "s2l12h-03384-act-protect-n4",
+          "finalRelationalUtility": -81258
+        },
+        {
+          "actionId": "s2l12h-03384-act-bypass-n1",
+          "finalRelationalUtility": -85440
+        }
+      ],
+      "groundTruthRanking": [
+        {
+          "actionId": "s2l12h-03384-act-protect-n0",
+          "kind": "PROTECT",
+          "actionUtility": 577210
+        },
+        {
+          "actionId": "s2l12h-03384-act-protect-n7",
+          "kind": "PROTECT",
+          "actionUtility": 382808
+        },
+        {
+          "actionId": "s2l12h-03384-act-hold",
+          "kind": "HOLD",
+          "actionUtility": 0
+        },
+        {
+          "actionId": "s2l12h-03384-act-reinforce-sub",
+          "kind": "REINFORCE",
+          "actionUtility": -18576
+        },
+        {
+          "actionId": "s2l12h-03384-act-protect-n4",
+          "kind": "PROTECT",
+          "actionUtility": -81258
+        },
+        {
+          "actionId": "s2l12h-03384-act-bypass-n1",
+          "kind": "BYPASS",
+          "actionUtility": -85440
+        }
+      ],
+      "confidenceSignals": {
+        "nexusTopRiskAdjustment": 642288,
+        "nexusUtilityMargin": 194402,
+        "nexusTopUtility": 577210,
+        "nexusSubstituteCount": 0,
+        "nexusLiveSubstituteCount": 0,
+        "nexusBypassSupportValid": false,
+        "nexusEstimatedDeliveredValue": 979445,
+        "nexusEstimatedRecoverableValue": 0,
+        "nexusGainOverHold": 577210,
+        "semanticCoverage": 1000000
+      },
+      "stabilitySignals": {
+        "nexusMarginVariance": 10428,
+        "nexusUtilityVariance": 15539,
+        "nexusTopActionStability": 1000000,
+        "nexusCounterfactualAgreement": 1000000,
+        "nexusSemanticStability": 1000000
+      },
+      "substituteState": [
+        {
+          "replaces": "s2l12h-03384-n1",
+          "substitutes": [
+            {
+              "id": "s2l12h-03384-sub",
+              "wouldCarry": false
+            }
+          ]
+        }
+      ],
+      "relationSummary": {
+        "depends": 9,
+        "protects": 1,
+        "substitutes": 1
+      },
+      "propagationDisagreementCount": 1,
+      "whyOptimalWon": null,
+      "errorClass": {
+        "labels": [
+          "COST_VALUE_TRADEOFF",
+          "SINGLE_PASS_APPROXIMATION"
+        ],
+        "dominant": "SINGLE_PASS_APPROXIMATION"
+      }
+    }
+  ]
+}

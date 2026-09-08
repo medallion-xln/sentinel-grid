@@ -1,0 +1,123 @@
+{
+  "stage": "STAGE2L15_NEXUS_DECISION_STABILITY_AND_CONFIDENCE_CEILING",
+  "confidenceModel": "STAGE2L15_STABILITY_AUGMENTED_CONFIDENCE_V1",
+  "calibrationDigest": "fb4bc385b61d6a31b06e518b6ad476229da7d2d411c9aadb852bee04dfb268bb",
+  "ladders": {
+    "risk": [
+      400000,
+      500000,
+      600000,
+      700000,
+      800000
+    ],
+    "margin": [
+      0,
+      100000,
+      200000,
+      300000,
+      400000
+    ],
+    "variance": [
+      10000,
+      20000,
+      30000,
+      50000,
+      100000
+    ],
+    "stability": [
+      857143,
+      928571,
+      1000000
+    ],
+    "maxConjunctionWidth": 3
+  },
+  "crossSplitConsistencyRequired": true,
+  "qualifyingRuleCount": 1,
+  "meetsInheritedCriterionCount": 1,
+  "inheritedCriterionCandidates": [
+    {
+      "id": "risk>=400000 & margin>=100000 & marginVariance<=20000",
+      "cls": "COMBINED",
+      "calibration": {
+        "n": 111,
+        "correct": 110,
+        "wrong": 1,
+        "precision": 0.990991,
+        "wilsonLowerBound": 0.960627,
+        "complementPrecision": 0.907025,
+        "discriminationGap": 0.083966,
+        "movesPrime": 90
+      },
+      "development": {
+        "n": 84,
+        "correct": 80,
+        "wrong": 4,
+        "precision": 0.952381,
+        "wilsonLowerBound": 0.898083,
+        "complementPrecision": 0.902662,
+        "discriminationGap": 0.049719,
+        "movesPrime": 77
+      },
+      "rejectedByCrossSplitGuard": false
+    }
+  ],
+  "selected": {
+    "id": "risk>=400000 & margin>=100000 & marginVariance<=20000",
+    "cls": "COMBINED",
+    "calibration": {
+      "n": 111,
+      "correct": 110,
+      "wrong": 1,
+      "precision": 0.990991,
+      "wilsonLowerBound": 0.960627,
+      "complementPrecision": 0.907025,
+      "discriminationGap": 0.083966,
+      "movesPrime": 90
+    },
+    "development": {
+      "n": 84,
+      "correct": 80,
+      "wrong": 4,
+      "precision": 0.952381,
+      "wilsonLowerBound": 0.898083,
+      "complementPrecision": 0.902662,
+      "discriminationGap": 0.049719,
+      "movesPrime": 77
+    }
+  },
+  "delegatingRuleId": "risk>=400000 & margin>=100000 & marginVariance<=20000",
+  "incremental": {
+    "method": "AUROC_ON_CALIBRATION_WITH_SIGNAL_CHOSEN_ON_DEVELOPMENT",
+    "bestExistingSignal": "nexusTopRiskAdjustment",
+    "bestStabilitySignal": "nexusMarginVariance",
+    "existingConfidenceDiscrimination": 0.624481,
+    "stabilityOnlyDiscrimination": 0.57379,
+    "combinedDiscrimination": 0.674371,
+    "incrementalOverExisting": 0.04989,
+    "perSignalCalibrationAuroc": {
+      "nexusTopActionStability": 0.53489,
+      "nexusTop2Stability": 0.545751,
+      "nexusRankingStability": 0.553303,
+      "nexusUtilityVariance": 0.488128,
+      "nexusMarginVariance": 0.57379,
+      "nexusSemanticStability": 0.539572,
+      "nexusRelationSupportStability": 0.511429,
+      "nexusCounterfactualAgreement": 0.567235,
+      "nexusAbstentionStability": 0.496529
+    },
+    "stabilityAddsInformation": true
+  },
+  "inheritedThresholds": {
+    "inheritedFloor": 0.99,
+    "loadedFloor": 0.99,
+    "floorIsReExportedNotRedeclared": true,
+    "boundMethod": "WILSON_SCORE_LOWER_BOUND",
+    "boundZ": 1.6449,
+    "conservativeBoundRequirement": 0.95,
+    "harmCeiling": 0.01,
+    "correctPrimeBreakCeiling": 0.01,
+    "floorLowered": false,
+    "ceilingsLoosened": false,
+    "statisticalMethodChanged": false
+  }
+}

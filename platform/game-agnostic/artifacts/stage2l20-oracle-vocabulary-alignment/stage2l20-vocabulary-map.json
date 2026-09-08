@@ -1,0 +1,97 @@
+{
+  "stage": "STAGE2L20_ORACLE_VOCABULARY_ALIGNMENT_AND_CONTRACT_REPAIR",
+  "aliasTable": {
+    "NON_PERSISTENT": "NOT_PERSISTENT"
+  },
+  "canonicalLabelSets": {
+    "persistence": [
+      "PERSISTENT",
+      "NOT_PERSISTENT",
+      "INSUFFICIENT_EVIDENCE"
+    ],
+    "timeToThreshold": [
+      "CROSSING_1_TO_3",
+      "CROSSING_4_TO_8",
+      "ALREADY_CROSSED",
+      "NOT_CROSSING",
+      "INSUFFICIENT_EVIDENCE"
+    ]
+  },
+  "persistenceCanonicalLabel": "NOT_PERSISTENT",
+  "persistenceLegacyLabel": "NON_PERSISTENT",
+  "persistenceLegacyAliasSupported": true,
+  "heads": [
+    {
+      "headId": "persistence",
+      "producerLabels": [
+        "INSUFFICIENT_EVIDENCE",
+        "NON_PERSISTENT",
+        "PERSISTENT"
+      ],
+      "benchmarkLabels": [
+        "NON_PERSISTENT",
+        "NOT_PERSISTENT",
+        "PERSISTENT"
+      ],
+      "producerOnlyLabels": [
+        "INSUFFICIENT_EVIDENCE"
+      ],
+      "benchmarkOnlyLabels": [
+        "NOT_PERSISTENT"
+      ],
+      "casingCollisions": [],
+      "semanticDuplicates": [
+        "NON_PERSISTENT"
+      ],
+      "aliasesApplied": [
+        "NON_PERSISTENT"
+      ],
+      "canonicalProducerLabels": [
+        "INSUFFICIENT_EVIDENCE",
+        "NOT_PERSISTENT",
+        "PERSISTENT"
+      ],
+      "canonicalBenchmarkLabels": [
+        "NOT_PERSISTENT",
+        "PERSISTENT"
+      ],
+      "unreachableAfterCanonicalisation": [],
+      "bijectionValid": true
+    },
+    {
+      "headId": "timeToThreshold",
+      "producerLabels": [
+        "ALREADY_CROSSED",
+        "CROSSING_1_TO_3",
+        "CROSSING_4_TO_8",
+        "NOT_CROSSING"
+      ],
+      "benchmarkLabels": [
+        "ALREADY_CROSSED",
+        "CROSSING_1_TO_3",
+        "NOT_CROSSING"
+      ],
+      "producerOnlyLabels": [
+        "CROSSING_4_TO_8"
+      ],
+      "benchmarkOnlyLabels": [],
+      "casingCollisions": [],
+      "semanticDuplicates": [],
+      "aliasesApplied": [],
+      "canonicalProducerLabels": [
+        "ALREADY_CROSSED",
+        "CROSSING_1_TO_3",
+        "CROSSING_4_TO_8",
+        "NOT_CROSSING"
+      ],
+      "canonicalBenchmarkLabels": [
+        "ALREADY_CROSSED",
+        "CROSSING_1_TO_3",
+        "NOT_CROSSING"
+      ],
+      "unreachableAfterCanonicalisation": [],
+      "bijectionValid": true
+    }
+  ],
+  "bijectionValid": true
+}

@@ -1,0 +1,17 @@
+{
+  "noteSchemaVersion": 1,
+  "stage": "STAGE3A_SENTINEL_FORGE_WORLD",
+  "partOfCertificationBody": false,
+  "finding": "Stage 3A adds a test file, so the full-suite counts pinned inside the Stage 2M certify script no longer match the current tree.",
+  "detail": "Stage 2M pins MEASURED_SUITE = {passing: 1257, failing: 0, skipped: 1, todo: 0} and re-verifies it against a live run on every real certification. Stage 3A adds tests/stage3a-sentinel-forge-world.test.js, which raises the passing count. Re-running `npm run portability:stage2m:certify` therefore blocks with SUITE_MEASUREMENT_DRIFTED.",
+  "isThisADefect": false,
+  "why": "The pin is a snapshot of the tree Stage 2M certified, and a later stage adding tests is exactly the drift it exists to detect. The block is the mechanism working, not failing.",
+  "whatWasNotDone": "The Stage 2M pin was NOT updated. Editing it would change the Stage 2M certification hash, which would be modifying a historical certification artifact — the thing every brief in this arc forbids.",
+  "verification": "`npm run portability:stage2m:check` reads the pin rather than re-running the suite, and still reproduces the stored Stage 2M certification hash byte-identically. Verified during the Stage 3A regression.",
+  "stage2mCertificationHash": "9a44f6bc6803b2d32ff53203d9eb8fd56ff4a77809e7d7d7a1bfc72ca09af463",
+  "stage2mCheckReproduces": true,
+  "consequence": "Stage 2M is verifiable but not re-certifiable from the Stage 3A tree. Any future stage that legitimately needs to re-certify Stage 2M must re-pin its suite counts as a deliberate act, in a stage that says so.",
+  "authority": "R0",
+  "canDispatch": false,
+  "canMutateLiveWorld": false
+}

@@ -153,7 +153,7 @@ const [baselineManifest, runtime, campaign, stage2l0Certification, stage2l0Evide
   readJson(path.join(root, 'artifacts/stage2l4-oracle-head-specific-decision-eligibility/oracle-head-specific-eligibility-evidence.json')),
 ]);
 
-const verification = await verifyDeclaredRuntime({ baseline: baselineManifest, runtimeIdentity: runtime, sentinelRoot, zeknovaRoot: process.env.ZEKNOVA_ROOT || '/Users/dwaynecampbell/Desktop/zeknova-shared-gaming-experience' });
+const verification = await verifyDeclaredRuntime({ baseline: baselineManifest, runtimeIdentity: runtime, sentinelRoot, zeknovaRoot: process.env.ZEKNOVA_ROOT ?? null });
 if (!verification.declaredEqualsMeasured) throw new Error('STAGE2L5_BLOCKED_BY_RUNTIME_DRIFT');
 
 const inheritance = {

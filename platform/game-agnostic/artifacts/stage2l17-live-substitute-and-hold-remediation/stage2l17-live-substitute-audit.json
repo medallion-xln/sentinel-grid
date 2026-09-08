@@ -1,0 +1,216 @@
+{
+  "stage": "STAGE2L17_NEXUS_LIVE_SUBSTITUTE_AND_HOLD_REMEDIATION",
+  "substituteCases": {
+    "A_SUBSTITUTE_EXISTS_AND_DELIVERS": {
+      "optimalActionId": "a-hold",
+      "inheritedPick": "a-bypass-t",
+      "inheritedCorrect": false,
+      "inheritedBypassCredit": 1000000,
+      "remediatedPick": "a-bypass-t",
+      "remediatedCorrect": false,
+      "remediatedBypassCredit": 1000000,
+      "substitutes": {
+        "substituteCount": 1,
+        "liveSubstituteCount": 1,
+        "substituteCoverage": 1000000,
+        "bypassSupportValid": true,
+        "bypassReason": "LIVE_SUBSTITUTE_AVAILABLE"
+      },
+      "holdBaseline": {
+        "holdBaselineSchema": "NEXUS_HOLD_BASELINE_V1",
+        "estimatedDeliveredValue": 0,
+        "deliveringBearerCount": 0,
+        "estimatedRecoverableValue": 1000000,
+        "blockedBearerCount": 1,
+        "holdUtilityEstimate": 0,
+        "nothingToRecover": false
+      },
+      "bypassTrueUtility": -5000
+    },
+    "B_SUBSTITUTE_EXISTS_DOES_NOT_DELIVER": {
+      "optimalActionId": "a-bypass-t",
+      "inheritedPick": "a-bypass-t",
+      "inheritedCorrect": true,
+      "inheritedBypassCredit": 1000000,
+      "remediatedPick": "a-bypass-t",
+      "remediatedCorrect": true,
+      "remediatedBypassCredit": 1000000,
+      "substitutes": {
+        "substituteCount": 1,
+        "liveSubstituteCount": 1,
+        "substituteCoverage": 1000000,
+        "bypassSupportValid": true,
+        "bypassReason": "LIVE_SUBSTITUTE_AVAILABLE"
+      },
+      "holdBaseline": {
+        "holdBaselineSchema": "NEXUS_HOLD_BASELINE_V1",
+        "estimatedDeliveredValue": 0,
+        "deliveringBearerCount": 0,
+        "estimatedRecoverableValue": 1000000,
+        "blockedBearerCount": 1,
+        "holdUtilityEstimate": 0,
+        "nothingToRecover": false
+      },
+      "bypassTrueUtility": 995000
+    },
+    "B2_SUBSTITUTE_STARVED_BYPASS_CANNOT_FIX": {
+      "optimalActionId": "a-restore-t",
+      "inheritedPick": "a-bypass-t",
+      "inheritedCorrect": false,
+      "inheritedBypassCredit": 1000000,
+      "remediatedPick": "a-restore-t",
+      "remediatedCorrect": true,
+      "remediatedBypassCredit": 0,
+      "substitutes": {
+        "substituteCount": 1,
+        "liveSubstituteCount": 0,
+        "substituteCoverage": 0,
+        "bypassSupportValid": false,
+        "bypassReason": "ALL_SUBSTITUTES_CANNOT_CARRY"
+      },
+      "holdBaseline": {
+        "holdBaselineSchema": "NEXUS_HOLD_BASELINE_V1",
+        "estimatedDeliveredValue": 0,
+        "deliveringBearerCount": 0,
+        "estimatedRecoverableValue": 1000000,
+        "blockedBearerCount": 1,
+        "holdUtilityEstimate": 0,
+        "nothingToRecover": false
+      },
+      "bypassTrueUtility": -5000
+    },
+    "B3_SUBSTITUTE_OWN_DEPENDENCY_UNMET": {
+      "optimalActionId": "a-restore-t",
+      "inheritedPick": "a-bypass-t",
+      "inheritedCorrect": false,
+      "inheritedBypassCredit": 1000000,
+      "remediatedPick": "a-restore-t",
+      "remediatedCorrect": true,
+      "remediatedBypassCredit": 0,
+      "substitutes": {
+        "substituteCount": 1,
+        "liveSubstituteCount": 0,
+        "substituteCoverage": 0,
+        "bypassSupportValid": false,
+        "bypassReason": "ALL_SUBSTITUTES_CANNOT_CARRY"
+      },
+      "holdBaseline": {
+        "holdBaselineSchema": "NEXUS_HOLD_BASELINE_V1",
+        "estimatedDeliveredValue": 0,
+        "deliveringBearerCount": 0,
+        "estimatedRecoverableValue": 1000000,
+        "blockedBearerCount": 1,
+        "holdUtilityEstimate": 0,
+        "nothingToRecover": false
+      },
+      "bypassTrueUtility": -5000
+    },
+    "C_MULTIPLE_SUBSTITUTES_ONE_USABLE": {
+      "optimalActionId": "a-bypass-t",
+      "inheritedPick": "a-bypass-t",
+      "inheritedCorrect": true,
+      "inheritedBypassCredit": 1000000,
+      "remediatedPick": "a-bypass-t",
+      "remediatedCorrect": true,
+      "remediatedBypassCredit": 1000000,
+      "substitutes": {
+        "substituteCount": 2,
+        "liveSubstituteCount": 1,
+        "substituteCoverage": 500000,
+        "bypassSupportValid": true,
+        "bypassReason": "LIVE_SUBSTITUTE_AVAILABLE"
+      },
+      "holdBaseline": {
+        "holdBaselineSchema": "NEXUS_HOLD_BASELINE_V1",
+        "estimatedDeliveredValue": 0,
+        "deliveringBearerCount": 0,
+        "estimatedRecoverableValue": 1000000,
+        "blockedBearerCount": 1,
+        "holdUtilityEstimate": 0,
+        "nothingToRecover": false
+      },
+      "bypassTrueUtility": 995000
+    },
+    "D_MULTIPLE_SUBSTITUTES_NONE_USABLE": {
+      "optimalActionId": "a-restore-t",
+      "inheritedPick": "a-bypass-t",
+      "inheritedCorrect": false,
+      "inheritedBypassCredit": 1000000,
+      "remediatedPick": "a-restore-t",
+      "remediatedCorrect": true,
+      "remediatedBypassCredit": 0,
+      "substitutes": {
+        "substituteCount": 2,
+        "liveSubstituteCount": 0,
+        "substituteCoverage": 0,
+        "bypassSupportValid": false,
+        "bypassReason": "ALL_SUBSTITUTES_CANNOT_CARRY"
+      },
+      "holdBaseline": {
+        "holdBaselineSchema": "NEXUS_HOLD_BASELINE_V1",
+        "estimatedDeliveredValue": 0,
+        "deliveringBearerCount": 0,
+        "estimatedRecoverableValue": 1000000,
+        "blockedBearerCount": 1,
+        "holdUtilityEstimate": 0,
+        "nothingToRecover": false
+      },
+      "bypassTrueUtility": -5000
+    },
+    "E_SUBSTITUTE_RELATION_EXISTS_SUBSTITUTE_UNAVAILABLE": {
+      "optimalActionId": "a-bypass-t",
+      "inheritedPick": "a-bypass-t",
+      "inheritedCorrect": true,
+      "inheritedBypassCredit": 1000000,
+      "remediatedPick": "a-bypass-t",
+      "remediatedCorrect": true,
+      "remediatedBypassCredit": 1000000,
+      "substitutes": {
+        "substituteCount": 1,
+        "liveSubstituteCount": 1,
+        "substituteCoverage": 1000000,
+        "bypassSupportValid": true,
+        "bypassReason": "LIVE_SUBSTITUTE_AVAILABLE"
+      },
+      "holdBaseline": {
+        "holdBaselineSchema": "NEXUS_HOLD_BASELINE_V1",
+        "estimatedDeliveredValue": 0,
+        "deliveringBearerCount": 0,
+        "estimatedRecoverableValue": 1000000,
+        "blockedBearerCount": 1,
+        "holdUtilityEstimate": 0,
+        "nothingToRecover": false
+      },
+      "bypassTrueUtility": 995000
+    },
+    "F_LIVE_SUBSTITUTE_TARGET_NOT_BLOCKED": {
+      "optimalActionId": "a-hold",
+      "inheritedPick": "a-bypass-t",
+      "inheritedCorrect": false,
+      "inheritedBypassCredit": 1000000,
+      "remediatedPick": "a-hold",
+      "remediatedCorrect": true,
+      "remediatedBypassCredit": 0,
+      "substitutes": {
+        "substituteCount": 1,
+        "liveSubstituteCount": 1,
+        "substituteCoverage": 1000000,
+        "bypassSupportValid": true,
+        "bypassReason": "LIVE_SUBSTITUTE_AVAILABLE"
+      },
+      "holdBaseline": {
+        "holdBaselineSchema": "NEXUS_HOLD_BASELINE_V1",
+        "estimatedDeliveredValue": 1000000,
+        "deliveringBearerCount": 1,
+        "estimatedRecoverableValue": 0,
+        "blockedBearerCount": 0,
+        "holdUtilityEstimate": 0,
+        "nothingToRecover": true
+      },
+      "bypassTrueUtility": -5000
+    }
+  },
+  "liveSubstituteDefectReproduced": true,
+  "liveSubstituteDefectRepaired": true,
+  "note": "Case F and NOTHING_BROKEN are the same world: a live substitute with an unblocked target. The inherited expert intervenes anyway."
+}

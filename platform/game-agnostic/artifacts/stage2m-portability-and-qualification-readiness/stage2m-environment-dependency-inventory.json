@@ -1,0 +1,174 @@
+{
+  "classes": [
+    "REQUIRED_RUNTIME_BINDING",
+    "TEST_FIXTURE",
+    "DEVELOPER_CONVENIENCE",
+    "ACCIDENTAL_HARDCODING",
+    "DOCUMENTATION_ONLY"
+  ],
+  "declared": [
+    {
+      "id": "ZEKNOVA_ROOT_BINDING",
+      "classification": "REQUIRED_RUNTIME_BINDING",
+      "description": "The ZekNova runtime root, needed by lineage verification and every live-parity path.",
+      "resolution": "Explicit ZEKNOVA_ROOT through ZEKNOVA_ROOT_CONTRACT_V1; no default, no search, fail-closed with a named reason.",
+      "remediated": true
+    },
+    {
+      "id": "ZEKNOVA_HARDCODED_DEFAULT",
+      "classification": "ACCIDENTAL_HARDCODING",
+      "description": "28 entry points fell back to one developer's Desktop path when the variable was unset, turning a missing dependency into an anonymous ENOENT.",
+      "resolution": "Default removed everywhere; the binding is now null when unset and the contract decides what happens next.",
+      "remediated": true
+    },
+    {
+      "id": "MAINLINE_ENTRY_POINT_HARDCODING",
+      "classification": "ACCIDENTAL_HARDCODING",
+      "description": "scripts/sentinel-grid-mainline-status.sh and scripts/sentinel-grid-mainline-verify.sh hardcoded absolute Desktop paths for BOTH repositories, so the mainline entry points only ran on one machine.",
+      "resolution": "The Sentinel root is derived from the script location; the ZekNova root must be declared and is checked before use, with exit 2 and a named reason when it is not.",
+      "remediated": true
+    },
+    {
+      "id": "MAINLINE_STATUS_HOME_DIRECTORY_DEFAULT",
+      "classification": "ACCIDENTAL_HARDCODING",
+      "description": "integration/status.mjs defaulted both roots to os.homedir()/Desktop/... — a machine assumption rather than a default, and invisible to a literal-path scan.",
+      "resolution": "Sentinel derives from the module location; ZekNova comes from --zeknova or ZEKNOVA_ROOT and is never inferred.",
+      "remediated": true
+    },
+    {
+      "id": "RECORDED_INSTALL_MARKERS",
+      "classification": "DOCUMENTATION_ONLY",
+      "description": "integration/mainline-integration.json and integration/targets/zeknova.json record the absolute paths of a past install.",
+      "resolution": "Left unchanged. They are a record of where an install happened, not a source anyone resolves a path from; rewriting them would falsify the record without making anything portable.",
+      "remediated": false
+    },
+    {
+      "id": "EVIDENCE_PORTABILITY_FIXTURE",
+      "classification": "TEST_FIXTURE",
+      "description": "tests/evidence-portability.test.js uses '/Users/example/project' to assert that absolute paths are NOT encoded into evidence.",
+      "resolution": "Left unchanged on purpose. Replacing it would delete the assertion it exists to make.",
+      "remediated": false
+    },
+    {
+      "id": "WHITESPACE_NAMED_FORENSIC_SCRIPT",
+      "classification": "DOCUMENTATION_ONLY",
+      "description": "A tracked, executable copy of the Stage 2F.4E.3G R8-R4 forensic review script sits at the repository root under a filename consisting of a single space, and builds every path from $HOME/Desktop/... It is a near-duplicate of .tmp-r8-r4/stage2f4e3g-r8-r4-final-review.sh and nothing references it.",
+      "resolution": "Recorded, not repaired and not deleted. It is on no execution path, so it is not a portability defect of the running system; it is an accidentally committed artifact whose removal is a repository-hygiene decision, not this stage's to make. Named here so it is excluded knowingly rather than missed.",
+      "remediated": false
+    },
+    {
+      "id": "STALE_SCRATCH_SCRIPTS",
+      "classification": "DOCUMENTATION_ONLY",
+      "description": ".tmp-r8-r3-r2/MANUAL_APPLY.sh carries developer paths from an earlier runtime rebuild.",
+      "resolution": "Not on any execution path and excluded from the production bundle. Left as historical scratch.",
+      "remediated": false
+    },
+    {
+      "id": "SENTINEL_ROOT_RESOLUTION",
+      "classification": "DEVELOPER_CONVENIENCE",
+      "description": "Sentinel roots are derived from import.meta.dirname rather than hardcoded.",
+      "resolution": "Already portable; relative to the module, so the repository can live anywhere.",
+      "remediated": false
+    },
+    {
+      "id": "TEMP_WORKSPACE",
+      "classification": "DEVELOPER_CONVENIENCE",
+      "description": "Tests that need scratch space use os.tmpdir() rather than a fixed directory.",
+      "resolution": "Already portable across platforms.",
+      "remediated": false
+    }
+  ],
+  "dependencies": [
+    {
+      "id": "ZEKNOVA_ROOT_BINDING",
+      "classification": "REQUIRED_RUNTIME_BINDING",
+      "description": "The ZekNova runtime root, needed by lineage verification and every live-parity path.",
+      "resolution": "Explicit ZEKNOVA_ROOT through ZEKNOVA_ROOT_CONTRACT_V1; no default, no search, fail-closed with a named reason.",
+      "remediated": true
+    },
+    {
+      "id": "ZEKNOVA_HARDCODED_DEFAULT",
+      "classification": "ACCIDENTAL_HARDCODING",
+      "description": "28 entry points fell back to one developer's Desktop path when the variable was unset, turning a missing dependency into an anonymous ENOENT.",
+      "resolution": "Default removed everywhere; the binding is now null when unset and the contract decides what happens next.",
+      "remediated": true
+    },
+    {
+      "id": "MAINLINE_ENTRY_POINT_HARDCODING",
+      "classification": "ACCIDENTAL_HARDCODING",
+      "description": "scripts/sentinel-grid-mainline-status.sh and scripts/sentinel-grid-mainline-verify.sh hardcoded absolute Desktop paths for BOTH repositories, so the mainline entry points only ran on one machine.",
+      "resolution": "The Sentinel root is derived from the script location; the ZekNova root must be declared and is checked before use, with exit 2 and a named reason when it is not.",
+      "remediated": true
+    },
+    {
+      "id": "MAINLINE_STATUS_HOME_DIRECTORY_DEFAULT",
+      "classification": "ACCIDENTAL_HARDCODING",
+      "description": "integration/status.mjs defaulted both roots to os.homedir()/Desktop/... — a machine assumption rather than a default, and invisible to a literal-path scan.",
+      "resolution": "Sentinel derives from the module location; ZekNova comes from --zeknova or ZEKNOVA_ROOT and is never inferred.",
+      "remediated": true
+    },
+    {
+      "id": "RECORDED_INSTALL_MARKERS",
+      "classification": "DOCUMENTATION_ONLY",
+      "description": "integration/mainline-integration.json and integration/targets/zeknova.json record the absolute paths of a past install.",
+      "resolution": "Left unchanged. They are a record of where an install happened, not a source anyone resolves a path from; rewriting them would falsify the record without making anything portable.",
+      "remediated": false
+    },
+    {
+      "id": "EVIDENCE_PORTABILITY_FIXTURE",
+      "classification": "TEST_FIXTURE",
+      "description": "tests/evidence-portability.test.js uses '/Users/example/project' to assert that absolute paths are NOT encoded into evidence.",
+      "resolution": "Left unchanged on purpose. Replacing it would delete the assertion it exists to make.",
+      "remediated": false
+    },
+    {
+      "id": "WHITESPACE_NAMED_FORENSIC_SCRIPT",
+      "classification": "DOCUMENTATION_ONLY",
+      "description": "A tracked, executable copy of the Stage 2F.4E.3G R8-R4 forensic review script sits at the repository root under a filename consisting of a single space, and builds every path from $HOME/Desktop/... It is a near-duplicate of .tmp-r8-r4/stage2f4e3g-r8-r4-final-review.sh and nothing references it.",
+      "resolution": "Recorded, not repaired and not deleted. It is on no execution path, so it is not a portability defect of the running system; it is an accidentally committed artifact whose removal is a repository-hygiene decision, not this stage's to make. Named here so it is excluded knowingly rather than missed.",
+      "remediated": false
+    },
+    {
+      "id": "STALE_SCRATCH_SCRIPTS",
+      "classification": "DOCUMENTATION_ONLY",
+      "description": ".tmp-r8-r3-r2/MANUAL_APPLY.sh carries developer paths from an earlier runtime rebuild.",
+      "resolution": "Not on any execution path and excluded from the production bundle. Left as historical scratch.",
+      "remediated": false
+    },
+    {
+      "id": "SENTINEL_ROOT_RESOLUTION",
+      "classification": "DEVELOPER_CONVENIENCE",
+      "description": "Sentinel roots are derived from import.meta.dirname rather than hardcoded.",
+      "resolution": "Already portable; relative to the module, so the repository can live anywhere.",
+      "remediated": false
+    },
+    {
+      "id": "TEMP_WORKSPACE",
+      "classification": "DEVELOPER_CONVENIENCE",
+      "description": "Tests that need scratch space use os.tmpdir() rather than a fixed directory.",
+      "resolution": "Already portable across platforms.",
+      "remediated": false
+    }
+  ],
+  "dependencyCount": 10,
+  "byClassification": {
+    "REQUIRED_RUNTIME_BINDING": 1,
+    "TEST_FIXTURE": 1,
+    "DEVELOPER_CONVENIENCE": 2,
+    "ACCIDENTAL_HARDCODING": 3,
+    "DOCUMENTATION_ONLY": 3
+  },
+  "hardcodedZeknovaPathsBefore": 31,
+  "hardcodedZeknovaPathsAfter": 0,
+  "hardcodedZeknovaPathRemoved": true,
+  "deliberatelyRetained": [
+    "RECORDED_INSTALL_MARKERS",
+    "EVIDENCE_PORTABILITY_FIXTURE",
+    "WHITESPACE_NAMED_FORENSIC_SCRIPT",
+    "STALE_SCRATCH_SCRIPTS",
+    "SENTINEL_ROOT_RESOLUTION",
+    "TEMP_WORKSPACE"
+  ],
+  "complete": true,
+  "note": "Not every absolute path is a defect. A fixture that asserts a path is never leaked must keep its path to keep testing."
+}

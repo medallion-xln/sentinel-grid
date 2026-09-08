@@ -18,7 +18,7 @@ const [baseline, runtime, campaign, stage2i3] = await Promise.all([
 ].map((file) => readJson(path.join(successor, file))).concat([
   readJson(path.join(root, 'artifacts/stage2i3-oracle-head-remediation/stage2i3-certification-result.json')),
 ]));
-const verification = await verifyDeclaredRuntime({ baseline, runtimeIdentity: runtime, sentinelRoot: path.resolve(root, '../..'), zeknovaRoot: process.env.ZEKNOVA_ROOT || '/Users/dwaynecampbell/Desktop/zeknova-shared-gaming-experience' });
+const verification = await verifyDeclaredRuntime({ baseline, runtimeIdentity: runtime, sentinelRoot: path.resolve(root, '../..'), zeknovaRoot: process.env.ZEKNOVA_ROOT ?? null });
 if (!verification.declaredEqualsMeasured) throw new Error('STAGE2I3A_BLOCKED_BY_RUNTIME_DRIFT');
 if (stage2i3.status !== 'FAIL' || stage2i3.certificationHash !== '75a9308cba3a16dcfafdef0214df607f2812f2052b5aaa1d76746e86f6e5573c' || stage2i3.evidenceDigest !== '1be4b3081d9b3350c433bb4718f0deb42603c63426fa45689cb426e30c21434b') throw new Error('STAGE2I3A_BLOCKED_BY_STAGE2I3_DRIFT');
 const [stage2i2OwnerSha256, stage2i3OwnerSha256] = await Promise.all([fileSha256(path.join(root, 'src/lab/stage2i2-oracle-task-head-diagnostic.js')), fileSha256(path.join(root, 'src/lab/stage2i3-oracle-head-remediation.js'))]);

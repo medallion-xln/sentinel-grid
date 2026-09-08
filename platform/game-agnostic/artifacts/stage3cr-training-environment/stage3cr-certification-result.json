@@ -1,0 +1,470 @@
+{
+  "certificationSchemaVersion": 1,
+  "stage": "STAGE3CR_TRAINING_ENVIRONMENT_AND_CAMPAIGN_RERUN",
+  "status": "BLOCKED",
+  "stageKind": "TRAINING_ENVIRONMENT_PROVISIONING",
+  "authority": "R0",
+  "canDispatch": false,
+  "canMutateLiveWorld": false,
+  "phase0": {
+    "stage3aReproduced": true,
+    "stage3bReproduced": true,
+    "stage3b1Reproduced": true,
+    "stage3cCertificationHash": "aecd3183fa322c6e47557d309e07e1bb8d0e04695922be76e51057d6a6749e72",
+    "stage3cCertificationHashMatches": true,
+    "stage3cHistoricalStatus": "BLOCKED",
+    "stage3cStatusStillBlocked": true,
+    "stage3cOutcomeStillBlocked": true,
+    "stage3cRewritten": false,
+    "datasetVersion": "FORGE_DATASET_V2",
+    "datasetHashMatches": null,
+    "passed": true
+  },
+  "parent": {
+    "certification": "aecd3183fa322c6e47557d309e07e1bb8d0e04695922be76e51057d6a6749e72",
+    "status": "BLOCKED",
+    "outcome": "G_BLOCKED",
+    "mutated": false,
+    "mutatedNote": "The Stage 3C artifacts are read and never written by this stage. Its historical BLOCKED result stands."
+  },
+  "probeCorrection": {
+    "field": "SOUP_INSTALLED",
+    "stage3cReported": false,
+    "stage3crMeasured": true,
+    "cause": "Stage 3C probed `which soup`, which answers \"is there an installed executable on PATH\", not \"is Soup available\". A clean git checkout of Soup at the pinned commit was present outside the repository the whole time and the probe could not see it.",
+    "correctedBy": "checking for a source checkout at the pinned commit AND installing it, then running the CLI",
+    "stage3cResultChanged": false,
+    "stage3cResultChangedNote": "Stage 3C was BLOCKED and remains BLOCKED in the historical record. It would have been BLOCKED on BASE_MODEL_WEIGHTS alone, so the corrected line does not change its outcome — but the line was wrong and is corrected here rather than quietly dropped."
+  },
+  "environment": {
+    "class": "CPU_SMALL_MODEL_ONLY",
+    "classes": [
+      "GPU_FULL",
+      "GPU_QLORA_ONLY",
+      "APPLE_METAL",
+      "CPU_SMALL_MODEL_ONLY",
+      "CLOUD_AVAILABLE",
+      "UNSUITABLE"
+    ],
+    "hardware": {
+      "os": "Linux 6.18.44-fc-v24",
+      "arch": "x64",
+      "cpuModel": "Intel(R) Xeon(R) Processor @ 2.80GHz",
+      "cpuCount": 4,
+      "ramMb": 16075,
+      "gpuCount": 0,
+      "vramMb": 0,
+      "metal": false,
+      "cuda": false,
+      "diskFreeMb": 20224
+    }
+  },
+  "soupAudit": {
+    "sourcePresent": true,
+    "sourcePath": "/home/user/makazhanalpamys/soup",
+    "commit": "f07e07ed7edd548a4d1d9143f77af9027b1b7036",
+    "workingTreeClean": true,
+    "installed": true,
+    "cliRuns": true,
+    "doctorRan": true,
+    "doctorAllRequiredOk": true,
+    "commitMatchesPin": true,
+    "stack": {
+      "torch": "2.14.0+cu130",
+      "cuda": false,
+      "threads": 4,
+      "transformers": "5.16.1",
+      "peft": "0.20.0",
+      "trl": "0.29.1",
+      "datasets": "5.0.1"
+    },
+    "torchAvailable": true,
+    "acceleratorRecognized": true,
+    "acceleratorNote": "Soup reports \"CPU (no GPU detected)\" and torch agrees. Recognized correctly is what matters here, not present.",
+    "datasetParserVerified": true,
+    "datasetParserRows": 4459,
+    "datasetParserNote": "Every row of the real FORGE_DATASET_V2 export was passed through Soup's own detect_format, not just the first. A dataset whose thousandth row fails detection fails in training.",
+    "formatSignatureDrift": [],
+    "formatSignaturesIdentical": true,
+    "formatSignatureNote": "Stage 3A transcribed Soup's format signatures into the bridge as DATA so that a drift check would be a comparison rather than an argument. This is the first time that comparison has been run against live Soup, and the 12 signatures match exactly.",
+    "soupSourceModified": false
+  },
+  "baseModel": {
+    "attempted": true,
+    "attemptedVia": "huggingface_hub.snapshot_download",
+    "target": "Qwen/Qwen2.5-0.5B-Instruct",
+    "succeeded": false,
+    "failure": "ProxyError 403 Forbidden",
+    "denialClass": "ORGANIZATIONAL_EGRESS_POLICY_DENIAL",
+    "bypassAttempted": false,
+    "bypassAttemptedNote": "The stage brief forbids bypassing the policy, using an undocumented proxy, or pulling weights from an untrusted mirror to make the stage pass. None was attempted.",
+    "localCacheSearched": true,
+    "localCacheHits": 0,
+    "alternateHostsProbed": [
+      "modelscope.cn",
+      "hf-mirror.com",
+      "download.pytorch.org",
+      "ollama.com",
+      "registry.ollama.ai",
+      "kaggle.com"
+    ],
+    "alternateHostsReachable": 0,
+    "available": false,
+    "hashed": false,
+    "model": null,
+    "parameters": null,
+    "hash": null,
+    "tokenizerHash": null,
+    "source": null,
+    "ollamaChecked": true,
+    "ollamaPresent": false,
+    "ggufTrainingIncompatibleRecorded": "NOT_APPLICABLE_NO_LOCAL_GGUF: no Ollama installation and no GGUF artifact exists on this machine, so the inference-only-versus-trainable distinction had nothing to apply to."
+  },
+  "qualification": {
+    "requirements": [
+      {
+        "id": "SOUP_EXECUTABLE",
+        "why": "the named training engine must actually run",
+        "satisfied": true
+      },
+      {
+        "id": "TORCH_AVAILABLE",
+        "why": "a gradient has to be computable",
+        "satisfied": true
+      },
+      {
+        "id": "BASE_MODEL_AVAILABLE",
+        "why": "SFT adapts a base model; without weights there is nothing to adapt",
+        "satisfied": false
+      },
+      {
+        "id": "BASE_MODEL_HASHED",
+        "why": "a candidate whose parent cannot be identified cannot be reproduced",
+        "satisfied": false
+      },
+      {
+        "id": "TOKENIZER_AVAILABLE",
+        "why": "the task is text-shaped and needs one",
+        "satisfied": false
+      },
+      {
+        "id": "TRAIN_SPLIT_AVAILABLE",
+        "why": "TRAIN-only optimisation must have TRAIN to optimise on",
+        "satisfied": true
+      },
+      {
+        "id": "CHECKPOINT_WRITE_TEST",
+        "why": "a run that cannot save is a run that produced nothing",
+        "satisfied": true
+      }
+    ],
+    "probe": {
+      "SOUP_EXECUTABLE": true,
+      "TORCH_AVAILABLE": true,
+      "BASE_MODEL_AVAILABLE": false,
+      "BASE_MODEL_HASHED": false,
+      "TOKENIZER_AVAILABLE": false,
+      "TRAIN_SPLIT_AVAILABLE": true,
+      "CHECKPOINT_WRITE_TEST": true
+    },
+    "missing": [
+      "BASE_MODEL_AVAILABLE",
+      "BASE_MODEL_HASHED",
+      "TOKENIZER_AVAILABLE"
+    ],
+    "qualified": false,
+    "blockerClass": "ORGANIZATIONAL_EGRESS_POLICY_DENIAL",
+    "outcome": "F_TRAINING_ENVIRONMENT_STILL_BLOCKED"
+  },
+  "substrateProgress": {
+    "SOUP_INSTALLED": {
+      "stage3c": false,
+      "stage3cr": true,
+      "changed": true,
+      "changeKind": "STAGE3C_PROBE_WAS_WRONG"
+    },
+    "TRAINING_RUNTIME": {
+      "stage3c": false,
+      "stage3cr": true,
+      "changed": true,
+      "changeKind": "INSTALLED_BY_THIS_STAGE"
+    },
+    "ACCELERATOR_OR_VIABLE_CPU_BUDGET": {
+      "stage3c": false,
+      "stage3cr": true,
+      "changed": true,
+      "changeKind": "MEASURED_CPU_BUDGET_IS_VIABLE_FOR_A_SUB_BILLION_LORA_RUN"
+    },
+    "BASE_MODEL_WEIGHTS": {
+      "stage3c": false,
+      "stage3cr": false,
+      "changed": false,
+      "changeKind": "STILL_DENIED_BY_ORGANIZATIONAL_EGRESS_POLICY"
+    }
+  },
+  "abstentionDecision": {
+    "option": "A_TRAIN_ACTION_SELECTION_WITHOUT_CLAIMING_ABSTENTION",
+    "rejected": [
+      {
+        "option": "B_SUPPLEMENTAL_NEGATIVE_CONTROLS",
+        "why": "it would mean generating a new TRAIN-only control set before the first candidate has demonstrated it can learn the base task at all — solving a second problem before the first one is known to be solvable"
+      },
+      {
+        "option": "C_DEFER",
+        "why": "equivalent in effect to A for this campaign; A is chosen because it states positively what the candidate is being asked to do"
+      }
+    ],
+    "rationale": "FORGE_DATASET_V2 contains 20 negative controls in 50,860 TRAIN records. That is not enough signal to learn when to abstain, and a model trained on it that emitted an abstention would be guessing. The first candidate is asked to select an action, and the task contract drops the abstain field rather than carrying one nothing taught it to use.",
+    "canonicalDatasetRebalanced": false,
+    "abstentionClaimed": false
+  },
+  "taskContract": {
+    "taskId": "LEARNED_NEXUS_ACTION_SELECTION_V1",
+    "parentTaskId": "LEARNED_NEXUS_RELATIONAL_INTERVENTION_V1",
+    "framing": "STRUCTURED_ACTION_SELECTION",
+    "input": [
+      "objective",
+      "canonicalEntities",
+      "relations",
+      "quantitativeState",
+      "legalActions"
+    ],
+    "output": {
+      "actionId": "string",
+      "confidence": "number in [0,1]"
+    },
+    "abstainField": false,
+    "abstainFieldNote": "Removed relative to the Stage 3C contract, per the Phase 8 decision. A field the training data cannot teach is a field the model will fill with noise.",
+    "naturalLanguageExplanationRequired": false,
+    "hiddenChainOfThoughtRequired": false,
+    "legalityRule": "Every emitted actionId is checked against the legal action set for that exact world before it is scored. A model output can never bypass legality: an illegal or unparseable answer is counted as such, never silently repaired into the nearest legal action."
+  },
+  "targetContract": {
+    "source": "FORGE_COUNTERFACTUAL_OPTIMAL_SET",
+    "exactTiePolicy": "ACCEPT_ANY_MEMBER_OF_OPTIMAL_SET_AT_EVALUATION; EXCLUDE_FROM_SINGLE_TARGET_SFT",
+    "neverTrains": "LEXICOGRAPHIC_TIE_BREAKING_AS_CORRECTNESS",
+    "neverTrainsNote": "A tie is the world saying two actions are worth the same. Training the sort order as if it were the answer teaches the sorting function, which is a fact about the code rather than about the world."
+  },
+  "sampler": {
+    "version": "STAGE3CR_TOPOLOGY_BALANCED_SAMPLER_V1",
+    "maxSharePerShape": 0.12,
+    "capPerShape": 1420,
+    "sourceRecords": 11836,
+    "sampledRecords": 8121,
+    "sourceDistribution": {
+      "mesh": 0.2798,
+      "parallel_dependency": 0.0349,
+      "tree": 0.0299,
+      "hub_and_spoke": 0.0324,
+      "multi_cycle": 0.0552,
+      "ring": 0.0373,
+      "redundant_network": 0.274,
+      "star": 0.0339,
+      "chain": 0.0334,
+      "contested_bottleneck": 0.0333,
+      "multi_settlement": 0.0326,
+      "disconnected_islands": 0.0308,
+      "bridge": 0.032,
+      "nested_dependency": 0.0314,
+      "layered_infrastructure": 0.0291
+    },
+    "sampledDistribution": {
+      "mesh": 0.1749,
+      "parallel_dependency": 0.0509,
+      "tree": 0.0436,
+      "hub_and_spoke": 0.0473,
+      "multi_cycle": 0.0804,
+      "ring": 0.0544,
+      "redundant_network": 0.1749,
+      "star": 0.0494,
+      "chain": 0.0486,
+      "contested_bottleneck": 0.0485,
+      "multi_settlement": 0.0475,
+      "disconnected_islands": 0.0448,
+      "bridge": 0.0467,
+      "nested_dependency": 0.0458,
+      "layered_infrastructure": 0.0424
+    },
+    "sourceLargestShare": 0.2798,
+    "sampledLargestShare": 0.1749,
+    "skewReduced": true,
+    "appliedTo": "TRAIN_ONLY",
+    "evaluationSplitsUntouched": true
+  },
+  "sftDataset": {
+    "rows": 4459,
+    "sha256": "93c20fc679492cdbc5a7ee3e7dd289ecf942ae818151d17bfbd79f73cde8d9d5",
+    "drawnFrom": "TRAIN",
+    "evaluationSplitsUntouched": true,
+    "soupFormat": "alpaca",
+    "everyRowVerified": true
+  },
+  "selectorLimitation": {
+    "nexusSelectorAccuracy": 0.2462,
+    "greedyHeuristicAccuracy": 0.275,
+    "selectorBeatsGreedy": false,
+    "misreadingToAvoid": "This is NOT deterministic Nexus's relational accuracy. Nexus emits graph-level signals and no action at all; NEXUS_RELATIONAL_SELECTOR_V1 is one policy built on those signals, and its score is that policy's score. A different policy over the same signals could do better or worse without Nexus having changed.",
+    "rawSignalsPreserved": true,
+    "rawSignalsPreservedWhy": "Future hybrid work needs the signals themselves, not one policy's collapse of them into a choice."
+  },
+  "pipelineHarness": {
+    "purpose": "PIPELINE_VERIFICATION_ONLY",
+    "isBaseModel": false,
+    "isCandidate": false,
+    "provenance": "RANDOMLY_INITIALISED_LOCALLY_FROM_A_LLAMA_ARCHITECTURE_CONFIG; tokenizer is a BPE trained on the Sentinel corpus itself",
+    "note": "It has no pretrained knowledge and is never evaluated for accuracy. Its only job is to prove Soup can load a model, compute a gradient, write a checkpoint and reload an adapter on this machine.",
+    "trained": true,
+    "adapterBytes": 526384,
+    "adapterSha256": "21550fad0b01099be40b46bd6883ed1a7b22931ee56ead71a0761fe67d05243f",
+    "checkpointWritten": true,
+    "adapterReloaded": true,
+    "lossDecreased": true
+  },
+  "campaign": {
+    "campaignKind": "SUCCESSOR",
+    "parentStage": "STAGE3C_LEARNED_NEXUS_CANDIDATE",
+    "parentCertification": "aecd3183fa322c6e47557d309e07e1bb8d0e04695922be76e51057d6a6749e72",
+    "parentStatus": "BLOCKED",
+    "parentMutated": false,
+    "datasetVersion": "FORGE_DATASET_V2",
+    "datasetHash": "4d1a27925346258ebafea93890739f8d0ef206927b77ba6240e54d83488cea20",
+    "soupCommit": "f07e07ed7edd548a4d1d9143f77af9027b1b7036",
+    "soupVersion": "0.74.0",
+    "soupInstalled": true,
+    "baseModel": null,
+    "baseModelHash": null,
+    "tokenizerHash": null,
+    "environment": {
+      "class": "CPU_SMALL_MODEL_ONLY",
+      "os": "Linux 6.18.44-fc-v24",
+      "arch": "x64",
+      "cpuModel": "Intel(R) Xeon(R) Processor @ 2.80GHz",
+      "cpuCount": 4,
+      "ramMb": 16075,
+      "gpuCount": 0,
+      "vramMb": 0,
+      "metal": false,
+      "cuda": false,
+      "diskFreeMb": 20224
+    },
+    "trainingConfig": null,
+    "sampler": "STAGE3CR_TOPOLOGY_BALANCED_SAMPLER_V1",
+    "taskContract": "LEARNED_NEXUS_ACTION_SELECTION_V1",
+    "targetContract": "ACCEPT_ANY_MEMBER_OF_OPTIMAL_SET_AT_EVALUATION; EXCLUDE_FROM_SINGLE_TARGET_SFT",
+    "campaignId": "STAGE3CR-2fdbd9abad38cb40",
+    "frozen": false,
+    "frozenNote": "A campaign cannot be frozen around a base model that does not exist. The lineage is recorded so the successor binds to it."
+  },
+  "firewall": {
+    "forbiddenStatuses": [
+      "CERTIFIED_FOR_RUNTIME",
+      "PRODUCTION",
+      "LIVE",
+      "R1"
+    ],
+    "permittedStatuses": [
+      "CANDIDATE",
+      "OFFLINE_EVALUATED",
+      "TRAINED",
+      "NOT_TRAINED"
+    ],
+    "allForbiddenRejected": true,
+    "permittedControl": {
+      "permitted": true,
+      "reason": null
+    },
+    "candidateLoadedByRuntime": false,
+    "candidateReferencedByRouter": false,
+    "candidateReferencedByPrime": false,
+    "candidateCanDispatch": false,
+    "soupCanCertifyExpert": false,
+    "deterministicNexusIncumbent": true,
+    "soupPushNotInvoked": true,
+    "soupPushNote": "Soup offers `soup push` to a hub. It was never invoked: nothing here is published, and there is no candidate to publish.",
+    "mutants": [
+      {
+        "status": "CERTIFIED_FOR_RUNTIME",
+        "result": {
+          "permitted": false,
+          "reason": "STAGE3C_MAY_NOT_ASSIGN_CERTIFIED_FOR_RUNTIME"
+        }
+      },
+      {
+        "status": "PRODUCTION",
+        "result": {
+          "permitted": false,
+          "reason": "STAGE3C_MAY_NOT_ASSIGN_PRODUCTION"
+        }
+      },
+      {
+        "status": "LIVE",
+        "result": {
+          "permitted": false,
+          "reason": "STAGE3C_MAY_NOT_ASSIGN_LIVE"
+        }
+      },
+      {
+        "status": "R1",
+        "result": {
+          "permitted": false,
+          "reason": "STAGE3C_MAY_NOT_ASSIGN_R1"
+        }
+      },
+      {
+        "status": "NOT_A_STATUS",
+        "result": {
+          "permitted": false,
+          "reason": "UNKNOWN_CANDIDATE_STATUS"
+        }
+      }
+    ],
+    "pass": true
+  },
+  "training": {
+    "engine": "SOUP",
+    "soupCommit": "f07e07ed7edd548a4d1d9143f77af9027b1b7036",
+    "soupVersion": "0.74.0",
+    "trainingMethod": null,
+    "trainingConfigHash": null,
+    "smokeTrainPass": false,
+    "smokeTrainNote": "The Phase 14 smoke train is a run of the real candidate pipeline on the real base model. No base model exists, so it did not run. The pipeline harness is a different thing and is reported separately.",
+    "sftCompleted": false,
+    "trainingExamples": 0,
+    "trainingTokens": 0,
+    "trainingSteps": 0,
+    "finalTrainLoss": null,
+    "candidateArtifact": null,
+    "candidateArtifactHash": null,
+    "candidateStatus": "NOT_TRAINED"
+  },
+  "notRun": [
+    "PHASE_13_TRAINING_CONFIGURATION_FREEZE",
+    "PHASE_14_SMOKE_TRAIN",
+    "PHASE_15_FULL_SFT",
+    "PHASE_16_VALIDATION",
+    "PHASE_17_COMPLEMENTARITY",
+    "PHASE_18_HYBRID_PROTOTYPES",
+    "PHASE_19_MODEL_SELECTION",
+    "PHASE_20_HOLDOUT",
+    "PHASE_21_OOD",
+    "PHASE_22_PRIME_OFFLINE_EXPERIMENT",
+    "PHASE_23_TRAINING_REPRODUCIBILITY"
+  ],
+  "holdoutUntouched": true,
+  "oodUntouched": true,
+  "reproducibility": {
+    "DATA_REPRODUCIBLE": true,
+    "CONFIG_REPRODUCIBLE": true,
+    "BITWISE_REPRODUCIBLE": null,
+    "STATISTICALLY_REPRODUCIBLE": null,
+    "note": "The two training classes stay unclaimed because no training run of a candidate happened. The pipeline harness proves the loop executes; it does not measure whether a candidate would reproduce."
+  },
+  "stage3crOutcome": "F_TRAINING_ENVIRONMENT_STILL_BLOCKED",
+  "stage3crCertified": false,
+  "liveActionDispatches": 0,
+  "worldMutations": 0,
+  "authorityEscalations": 0,
+  "interpretation": "Stage 3C-R is BLOCKED on one requirement, not four. Soup is installed from its own source at the pinned commit f07e07ed7edd and its CLI runs; torch 2.14.0+cu130 is present and the CPU backend is recognized; Soup's parser reads all 4459 rows of the real FORGE_DATASET_V2 export as alpaca; and a full train loop — load, gradient, checkpoint, adapter reload, inference — completes on this machine. What remains is BASE_MODEL_AVAILABLE, denied by organizational egress policy with a 403 through the installed stack, which the brief forbids working around. No candidate exists, so no accuracy, regret, complementarity, hybrid or generalization figure is reported.",
+  "evidenceDigest": "a1b37899fa33554ef0322fdd027f0ed8264d9bf73132694700f53c9d60417439",
+  "certificationHash": "50e1b908443e8592b9321103cfe3b2ca8ccb1d441e7406001430136481822db4"
+}

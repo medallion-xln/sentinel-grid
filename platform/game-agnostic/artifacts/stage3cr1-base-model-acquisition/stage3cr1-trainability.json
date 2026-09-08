@@ -1,0 +1,84 @@
+{
+  "ranAgainstBaseModel": false,
+  "ranAgainstBaseModelNote": "Phase 8 loads the accepted base model through Soup. No model was accepted, so it did not run.",
+  "steps": [
+    "FROM_PRETRAINED",
+    "TOKENIZER_LOAD",
+    "LORA_ATTACH",
+    "FORWARD_PASS",
+    "BACKWARD_PASS",
+    "LOSS_FINITE",
+    "CHECKPOINT_WRITE",
+    "ADAPTER_RELOAD",
+    "INFERENCE"
+  ],
+  "result": {
+    "steps": [
+      "FROM_PRETRAINED",
+      "TOKENIZER_LOAD",
+      "LORA_ATTACH",
+      "FORWARD_PASS",
+      "BACKWARD_PASS",
+      "LOSS_FINITE",
+      "CHECKPOINT_WRITE",
+      "ADAPTER_RELOAD",
+      "INFERENCE"
+    ],
+    "observed": {
+      "FROM_PRETRAINED": false,
+      "TOKENIZER_LOAD": false,
+      "LORA_ATTACH": false,
+      "FORWARD_PASS": false,
+      "BACKWARD_PASS": false,
+      "LOSS_FINITE": false,
+      "CHECKPOINT_WRITE": false,
+      "ADAPTER_RELOAD": false,
+      "INFERENCE": false
+    },
+    "failed": [
+      "FROM_PRETRAINED",
+      "TOKENIZER_LOAD",
+      "LORA_ATTACH",
+      "FORWARD_PASS",
+      "BACKWARD_PASS",
+      "LOSS_FINITE",
+      "CHECKPOINT_WRITE",
+      "ADAPTER_RELOAD",
+      "INFERENCE"
+    ],
+    "pass": false
+  },
+  "harnessSelfTest": {
+    "isNotACandidate": true,
+    "purpose": "Exercises the same code path end to end so the contract ships tested rather than merely written.",
+    "result": {
+      "steps": [
+        "FROM_PRETRAINED",
+        "TOKENIZER_LOAD",
+        "LORA_ATTACH",
+        "FORWARD_PASS",
+        "BACKWARD_PASS",
+        "LOSS_FINITE",
+        "CHECKPOINT_WRITE",
+        "ADAPTER_RELOAD",
+        "INFERENCE"
+      ],
+      "observed": {
+        "FROM_PRETRAINED": true,
+        "TOKENIZER_LOAD": true,
+        "LORA_ATTACH": true,
+        "FORWARD_PASS": true,
+        "BACKWARD_PASS": true,
+        "LOSS_FINITE": true,
+        "CHECKPOINT_WRITE": true,
+        "ADAPTER_RELOAD": true,
+        "INFERENCE": true
+      },
+      "failed": [],
+      "pass": true
+    },
+    "lossStart": 7.3384,
+    "lossEnd": 7.1936,
+    "adapterSha256": "21550fad0b01099be40b46bd6883ed1a7b22931ee56ead71a0761fe67d05243f"
+  }
+}

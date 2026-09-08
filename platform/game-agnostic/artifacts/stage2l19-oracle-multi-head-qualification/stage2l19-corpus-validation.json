@@ -1,0 +1,380 @@
+{
+  "stage": "STAGE2L19_ORACLE_MULTI_HEAD_QUALIFICATION",
+  "inheritedCorpusDegeneracy": {
+    "corpus": "STAGE2I4_ORACLE_V2_HOLDOUT",
+    "nominalCases": 2400,
+    "heads": [
+      {
+        "headId": "direction",
+        "nominalCases": 300,
+        "familyCount": 3,
+        "familiesWithVaryingPrediction": 0,
+        "effectiveSampleSize": 3,
+        "variantsPerFamily": 100,
+        "majorityBaseline": 0.333333,
+        "labelCounts": {
+          "UP": 100,
+          "DOWN": 100,
+          "STABLE": 100
+        },
+        "perFamily": [
+          {
+            "family": "INDEPENDENT_DOWN",
+            "n": 100,
+            "expected": "DOWN",
+            "distinctPredictions": [
+              "DOWN"
+            ],
+            "accuracy": 1
+          },
+          {
+            "family": "INDEPENDENT_STABLE",
+            "n": 100,
+            "expected": "STABLE",
+            "distinctPredictions": [
+              "STABLE"
+            ],
+            "accuracy": 1
+          },
+          {
+            "family": "INDEPENDENT_UP",
+            "n": 100,
+            "expected": "UP",
+            "distinctPredictions": [
+              "UP"
+            ],
+            "accuracy": 1
+          }
+        ],
+        "degenerate": true
+      },
+      {
+        "headId": "persistence",
+        "nominalCases": 300,
+        "familyCount": 3,
+        "familiesWithVaryingPrediction": 0,
+        "effectiveSampleSize": 3,
+        "variantsPerFamily": 100,
+        "majorityBaseline": 0.666667,
+        "labelCounts": {
+          "PERSISTENT": 200,
+          "NOT_PERSISTENT": 100
+        },
+        "perFamily": [
+          {
+            "family": "ALTERNATING_INTERRUPTION",
+            "n": 100,
+            "expected": "NOT_PERSISTENT",
+            "distinctPredictions": [
+              "INSUFFICIENT_EVIDENCE"
+            ],
+            "accuracy": 0
+          },
+          {
+            "family": "SUSTAINED_DOWN",
+            "n": 100,
+            "expected": "PERSISTENT",
+            "distinctPredictions": [
+              "PERSISTENT"
+            ],
+            "accuracy": 1
+          },
+          {
+            "family": "SUSTAINED_UP",
+            "n": 100,
+            "expected": "PERSISTENT",
+            "distinctPredictions": [
+              "PERSISTENT"
+            ],
+            "accuracy": 1
+          }
+        ],
+        "degenerate": true
+      },
+      {
+        "headId": "reversal",
+        "nominalCases": 300,
+        "familyCount": 3,
+        "familiesWithVaryingPrediction": 0,
+        "effectiveSampleSize": 3,
+        "variantsPerFamily": 100,
+        "majorityBaseline": 0.666667,
+        "labelCounts": {
+          "REVERSAL": 100,
+          "NO_REVERSAL": 200
+        },
+        "perFamily": [
+          {
+            "family": "CLEAN_LATE_REVERSAL",
+            "n": 100,
+            "expected": "REVERSAL",
+            "distinctPredictions": [
+              "REVERSAL"
+            ],
+            "accuracy": 1
+          },
+          {
+            "family": "CONTINUING_DIRECTION",
+            "n": 100,
+            "expected": "NO_REVERSAL",
+            "distinctPredictions": [
+              "NO_REVERSAL"
+            ],
+            "accuracy": 1
+          },
+          {
+            "family": "TRANSIENT_TURN",
+            "n": 100,
+            "expected": "NO_REVERSAL",
+            "distinctPredictions": [
+              "NO_REVERSAL"
+            ],
+            "accuracy": 1
+          }
+        ],
+        "degenerate": true
+      },
+      {
+        "headId": "regimeChange",
+        "nominalCases": 300,
+        "familyCount": 3,
+        "familiesWithVaryingPrediction": 0,
+        "effectiveSampleSize": 3,
+        "variantsPerFamily": 100,
+        "majorityBaseline": 0.333333,
+        "labelCounts": {
+          "TREND_CHANGE": 100,
+          "LEVEL_CHANGE": 100,
+          "NO_CHANGE": 100
+        },
+        "perFamily": [
+          {
+            "family": "LEVEL_PROCESS_SHIFT",
+            "n": 100,
+            "expected": "LEVEL_CHANGE",
+            "distinctPredictions": [
+              "LEVEL_CHANGE"
+            ],
+            "accuracy": 1
+          },
+          {
+            "family": "REVERSAL_SAME_PROCESS",
+            "n": 100,
+            "expected": "NO_CHANGE",
+            "distinctPredictions": [
+              "NO_CHANGE"
+            ],
+            "accuracy": 1
+          },
+          {
+            "family": "STABLE_TO_TREND",
+            "n": 100,
+            "expected": "TREND_CHANGE",
+            "distinctPredictions": [
+              "TREND_CHANGE"
+            ],
+            "accuracy": 1
+          }
+        ],
+        "degenerate": true
+      },
+      {
+        "headId": "volatility",
+        "nominalCases": 300,
+        "familyCount": 3,
+        "familiesWithVaryingPrediction": 0,
+        "effectiveSampleSize": 3,
+        "variantsPerFamily": 100,
+        "majorityBaseline": 0.666667,
+        "labelCounts": {
+          "HIGH_VOLATILITY": 100,
+          "LOW_VOLATILITY": 200
+        },
+        "perFamily": [
+          {
+            "family": "INDEPENDENT_HIGH_VOLATILITY",
+            "n": 100,
+            "expected": "HIGH_VOLATILITY",
+            "distinctPredictions": [
+              "HIGH_VOLATILITY"
+            ],
+            "accuracy": 1
+          },
+          {
+            "family": "INDEPENDENT_LOW_VOLATILITY",
+            "n": 100,
+            "expected": "LOW_VOLATILITY",
+            "distinctPredictions": [
+              "LOW_VOLATILITY"
+            ],
+            "accuracy": 1
+          },
+          {
+            "family": "OUTLIER_WITH_LOW_BACKGROUND",
+            "n": 100,
+            "expected": "LOW_VOLATILITY",
+            "distinctPredictions": [
+              "LOW_VOLATILITY"
+            ],
+            "accuracy": 1
+          }
+        ],
+        "degenerate": true
+      },
+      {
+        "headId": "cycle",
+        "nominalCases": 300,
+        "familyCount": 3,
+        "familiesWithVaryingPrediction": 1,
+        "effectiveSampleSize": 3,
+        "variantsPerFamily": 100,
+        "majorityBaseline": 0.666667,
+        "labelCounts": {
+          "CYCLICAL": 100,
+          "NOT_CYCLICAL": 200
+        },
+        "perFamily": [
+          {
+            "family": "FOUR_PHASE_CYCLE",
+            "n": 100,
+            "expected": "CYCLICAL",
+            "distinctPredictions": [
+              "CYCLICAL"
+            ],
+            "accuracy": 1
+          },
+          {
+            "family": "IRREGULAR_NON_CYCLE",
+            "n": 100,
+            "expected": "NOT_CYCLICAL",
+            "distinctPredictions": [
+              "CYCLICAL",
+              "NOT_CYCLICAL"
+            ],
+            "accuracy": 0.47
+          },
+          {
+            "family": "MONOTONIC_NON_CYCLE",
+            "n": 100,
+            "expected": "NOT_CYCLICAL",
+            "distinctPredictions": [
+              "CYCLICAL"
+            ],
+            "accuracy": 0
+          }
+        ],
+        "degenerate": true
+      },
+      {
+        "headId": "timeToThreshold",
+        "nominalCases": 300,
+        "familyCount": 3,
+        "familiesWithVaryingPrediction": 0,
+        "effectiveSampleSize": 3,
+        "variantsPerFamily": 100,
+        "majorityBaseline": 0.333333,
+        "labelCounts": {
+          "CROSSING_1_TO_3": 100,
+          "ALREADY_CROSSED": 100,
+          "NOT_CROSSING": 100
+        },
+        "perFamily": [
+          {
+            "family": "ALREADY_OVER_LIMIT",
+            "n": 100,
+            "expected": "ALREADY_CROSSED",
+            "distinctPredictions": [
+              "ALREADY_CROSSED"
+            ],
+            "accuracy": 1
+          },
+          {
+            "family": "APPROACHING_LIMIT",
+            "n": 100,
+            "expected": "CROSSING_1_TO_3",
+            "distinctPredictions": [
+              "ALREADY_CROSSED"
+            ],
+            "accuracy": 0
+          },
+          {
+            "family": "NO_THRESHOLD_CROSSING",
+            "n": 100,
+            "expected": "NOT_CROSSING",
+            "distinctPredictions": [
+              "NOT_CROSSING"
+            ],
+            "accuracy": 1
+          }
+        ],
+        "degenerate": true
+      },
+      {
+        "headId": "abstention",
+        "nominalCases": 300,
+        "familyCount": 3,
+        "familiesWithVaryingPrediction": 0,
+        "effectiveSampleSize": 3,
+        "variantsPerFamily": 100,
+        "majorityBaseline": 0.666667,
+        "labelCounts": {
+          "INSUFFICIENT_EVIDENCE": 200,
+          "ENOUGH_EVIDENCE": 100
+        },
+        "perFamily": [
+          {
+            "family": "MISSING_EVIDENCE",
+            "n": 100,
+            "expected": "INSUFFICIENT_EVIDENCE",
+            "distinctPredictions": [
+              "INSUFFICIENT_EVIDENCE"
+            ],
+            "accuracy": 1
+          },
+          {
+            "family": "SHORT_EVIDENCE",
+            "n": 100,
+            "expected": "INSUFFICIENT_EVIDENCE",
+            "distinctPredictions": [
+              "INSUFFICIENT_EVIDENCE"
+            ],
+            "accuracy": 1
+          },
+          {
+            "family": "SUFFICIENT_CLEAN_EVIDENCE",
+            "n": 100,
+            "expected": "ENOUGH_EVIDENCE",
+            "distinctPredictions": [
+              "ENOUGH_EVIDENCE"
+            ],
+            "accuracy": 1
+          }
+        ],
+        "degenerate": true
+      }
+    ],
+    "degenerateHeadCount": 8,
+    "minimumEligibleCaseCount": 100,
+    "anyHeadHasSufficientEffectiveSupport": false,
+    "note": "Effective sample size counts generator families, not variants, because a family whose prediction never varies across its variants supplies one independent observation. Certifying from nominal counts would report an effective three as three hundred."
+  },
+  "stressCorpus": {
+    "corpus": "STAGE2L19_ORACLE_STRESS_CORPUS",
+    "acceptedCases": 2007,
+    "rejectedCases": 153,
+    "rejectionRate": 0.070833,
+    "rejectedByFamily": {
+      "timeToThreshold/APPROACHING": 75,
+      "volatility/ALTERNATING_LOW": 30,
+      "abstention/SHORT_HISTORY": 30,
+      "direction/RAMP_DOWN": 6,
+      "direction/RAMP_UP": 4,
+      "cycle/MONOTONE": 4,
+      "persistence/SUSTAINED_RUN": 4
+    },
+    "wellPosednessSlopeFloor": 0.002,
+    "wellPosednessFlatCeiling": 0.0008,
+    "note": "Cases are dropped when the label is not unambiguously true of the series actually produced — including any series that saturates at the range bound. A first draft scored a clamped, flattened reversal tail as a head error; that was a generator bug, and this filter exists so it cannot recur."
+  },
+  "corpusDigest": "2f032a26e10ad66bb98e5e92e1cc340188136e1840ad5e290aab956611034f4a"
+}

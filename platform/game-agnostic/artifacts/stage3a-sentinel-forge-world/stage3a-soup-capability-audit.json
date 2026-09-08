@@ -1,0 +1,125 @@
+{
+  "soupCommit": "f07e07ed7edd548a4d1d9143f77af9027b1b7036",
+  "soupVersion": "0.74.0",
+  "capabilities": {
+    "sft": {
+      "supported": true,
+      "evidence": "src/soup_cli/trainer/sft.py"
+    },
+    "preferenceTraining": {
+      "supported": true,
+      "evidence": "trainer/dpo.py, orpo.py, ipo.py, simpo.py, kto.py, bco.py, online_dpo.py"
+    },
+    "grpo": {
+      "supported": true,
+      "evidence": "src/soup_cli/trainer/grpo.py (wraps trl.GRPOTrainer)"
+    },
+    "ppo": {
+      "supported": true,
+      "evidence": "src/soup_cli/trainer/ppo.py"
+    },
+    "rewardModels": {
+      "supported": true,
+      "evidence": "trainer/reward_model.py, prm.py, rewards.py"
+    },
+    "customRewards": {
+      "supported": true,
+      "evidence": "src/soup_cli/trainer/rewards.py"
+    },
+    "lora": {
+      "supported": true,
+      "evidence": "config/schema.py LoraConfig; peft>=0.20.0"
+    },
+    "qlora": {
+      "supported": true,
+      "evidence": "bitsandbytes in the [train] extra; 4-bit load path in config/schema.py"
+    },
+    "qwen": {
+      "supported": true,
+      "evidence": "recipes/catalog.py ships Qwen2.5 SFT and DPO recipes"
+    },
+    "checkpointing": {
+      "supported": true,
+      "evidence": "config/schema.py save_steps; resume paths in trainer/"
+    },
+    "adapterExport": {
+      "supported": true,
+      "evidence": "registry/store.py; peft adapter output"
+    },
+    "ggufExport": {
+      "supported": true,
+      "evidence": "gguf paths in cli.py, config/schema.py, cans/"
+    },
+    "experimentMetadata": {
+      "supported": true,
+      "evidence": "monitoring/trace_logger.py, monitoring/hf_push.py"
+    },
+    "reproducibilityControls": {
+      "supported": "PARTIAL",
+      "evidence": "per-feature seeds (raft_shuffle_seed, replay_seed) exist in config/schema.py",
+      "limitation": "No single global training seed was found that would make a full run bit-reproducible. Recorded as a limitation of the training engine, not of the bridge, and it is why SEED in the provenance envelope is mandatory but not by itself sufficient to reproduce a checkpoint."
+    }
+  },
+  "dependencyNotes": {
+    "license": "Apache-2.0",
+    "pythonRequirement": ">=3.10,<3.13",
+    "heavyStackIsOptional": true,
+    "heavyStackExtra": "[train] — torch>=2.5, transformers, peft, trl, datasets, bitsandbytes, accelerate",
+    "securityPolicyPresent": true,
+    "securityPolicyPath": "SECURITY.md",
+    "networkBehaviour": "Soup pulls base models and can push to the Hugging Face Hub (monitoring/hf_push.py). Any Sentinel use must treat that as an outbound egress surface and pin the base model by hash.",
+    "isolation": "Cloned to a training-tools location outside the Sentinel repository. No Soup file is imported by, vendored into, or referenced from Sentinel runtime source."
+  },
+  "formatSignatures": {
+    "alpaca": [
+      "instruction",
+      "output"
+    ],
+    "llava": [
+      "conversations",
+      "image"
+    ],
+    "sharegpt4v": [
+      "conversations",
+      "image"
+    ],
+    "kto": [
+      "completion",
+      "label",
+      "prompt"
+    ],
+    "dpo": [
+      "chosen",
+      "prompt",
+      "rejected"
+    ],
+    "embedding": [
+      "anchor",
+      "positive"
+    ],
+    "tool-calling": [
+      "messages",
+      "tool_calls",
+      "tools"
+    ],
+    "audio": [
+      "audio",
+      "messages"
+    ],
+    "asr": [
+      "audio",
+      "text"
+    ],
+    "sharegpt": [
+      "conversations"
+    ],
+    "chatml": [
+      "messages"
+    ],
+    "plaintext": [
+      "text"
+    ]
+  },
+  "auditedFrom": "a clone in an isolated training-tools location outside the Sentinel repository",
+  "embeddedInSentinelRuntime": false
+}

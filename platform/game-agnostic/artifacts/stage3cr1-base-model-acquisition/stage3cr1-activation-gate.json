@@ -1,0 +1,51 @@
+{
+  "requirements": [
+    {
+      "id": "BASE_MODEL_AVAILABLE",
+      "why": "SFT adapts a base model"
+    },
+    {
+      "id": "BASE_MODEL_HASHED",
+      "why": "a candidate whose parent cannot be identified cannot be reproduced"
+    },
+    {
+      "id": "BASE_MODEL_PROVENANCE_COMPLETE",
+      "why": "source and license are decided before training, not after"
+    },
+    {
+      "id": "TOKENIZER_AVAILABLE",
+      "why": "the task is text-shaped and needs one"
+    },
+    {
+      "id": "MODEL_SOUP_COMPATIBLE",
+      "why": "the pinned engine has to be able to load it"
+    },
+    {
+      "id": "TRAINABILITY_SMOKE_PASS",
+      "why": "a gradient must have been observed, not assumed"
+    },
+    {
+      "id": "COMPUTE_FEASIBLE",
+      "why": "a run that cannot finish is not a run"
+    }
+  ],
+  "probe": {
+    "BASE_MODEL_AVAILABLE": false,
+    "BASE_MODEL_HASHED": false,
+    "BASE_MODEL_PROVENANCE_COMPLETE": false,
+    "TOKENIZER_AVAILABLE": false,
+    "MODEL_SOUP_COMPATIBLE": false,
+    "TRAINABILITY_SMOKE_PASS": false,
+    "COMPUTE_FEASIBLE": false
+  },
+  "missing": [
+    "BASE_MODEL_AVAILABLE",
+    "BASE_MODEL_HASHED",
+    "BASE_MODEL_PROVENANCE_COMPLETE",
+    "TOKENIZER_AVAILABLE",
+    "MODEL_SOUP_COMPATIBLE",
+    "TRAINABILITY_SMOKE_PASS",
+    "COMPUTE_FEASIBLE"
+  ],
+  "qualified": false
+}

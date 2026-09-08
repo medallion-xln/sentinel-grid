@@ -1,0 +1,20 @@
+{
+  "version": "FORGE_DATASET_V2",
+  "parent": "FORGE_DATASET_V1",
+  "parentImmutable": true,
+  "parentArtifactsModified": false,
+  "simulatorVersion": "forge-scenarios-v3",
+  "warmupVersion": "FORGE_TEMPORAL_WARMUP_V1",
+  "oracleSurfaceVersion": "FORGE_ORACLE_CHANNEL_MAPPING_V1",
+  "defectRepaired": "ORACLE_AXIS_UNREACHABLE",
+  "secondaryDefectRepaired": "ORACLE_HEAD_CHANNEL_VOCABULARY_UNMAPPED",
+  "changeClass": "CORPUS_CONSTRUCTION",
+  "changeClassNote": "Every difference between V1 and V2 is a property of how the corpus was built. No model was trained, tuned, retuned or replaced, and no expert was modified. A V1-to-V2 difference in any Sentinel measurement is a dataset effect and must be reported as one.",
+  "differencesFromParent": [
+    "decisions are captured after a temporal warm-up instead of at tick 0",
+    "the horizon remaining at the decision point is preserved exactly, by calibrating the warm-up before the scenario is declared",
+    "the temporal channel is declared across the whole observable timeline instead of 8 to 22 samples",
+    "the scenario declares channel threshold semantics, without which the TIME_TO_THRESHOLD head is hard-suppressed",
+    "world hashes therefore differ from V1 throughout; splits are recomputed rather than inherited"
+  ]
+}

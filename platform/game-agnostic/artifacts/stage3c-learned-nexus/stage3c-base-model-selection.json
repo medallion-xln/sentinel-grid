@@ -1,0 +1,32 @@
+{
+  "preferredFamily": "Qwen",
+  "sizePolicy": "SMALLEST_MODEL_CAPABLE_OF_SPECIALIST_PERFORMANCE",
+  "sizePolicyNote": "Not the largest that fits. The task is a structured relational choice with a fixed output schema, which is the shape of problem small specialists do well.",
+  "candidates": [
+    {
+      "model": "Qwen2.5-0.5B-Instruct",
+      "parameters": "0.5B",
+      "contextLength": 32768,
+      "license": "Apache-2.0",
+      "rationale": "first choice: smallest plausible specialist, LoRA-trainable on modest hardware"
+    },
+    {
+      "model": "Qwen2.5-1.5B-Instruct",
+      "parameters": "1.5B",
+      "contextLength": 32768,
+      "license": "Apache-2.0",
+      "rationale": "fallback if 0.5B underfits the relational task"
+    },
+    {
+      "model": "Qwen2.5-3B-Instruct",
+      "parameters": "3B",
+      "contextLength": 32768,
+      "license": "Qwen research license",
+      "rationale": "only if both smaller sizes fail; licence is not Apache-2.0"
+    }
+  ],
+  "selected": null,
+  "selectionBlocked": true,
+  "blockedReason": "BASE_MODEL_WEIGHTS_UNOBTAINABLE",
+  "measuredCause": "huggingface.co is denied by this environment's egress policy (403 to CONNECT). The proxy documentation is explicit that organization policy denials are to be reported, not routed around, so no alternate host was attempted."
+}

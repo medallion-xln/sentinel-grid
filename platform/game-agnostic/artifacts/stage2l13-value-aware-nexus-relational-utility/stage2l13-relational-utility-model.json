@@ -1,0 +1,44 @@
+{
+  "stage": "STAGE2L13_VALUE_AWARE_NEXUS_RELATIONAL_UTILITY",
+  "model": {
+    "schemaVersion": 1,
+    "id": "STAGE2L13_VALUE_AWARE_RELATIONAL_UTILITY_V1",
+    "expertId": "sentinel-nexus-value-aware-relational-utility",
+    "expertVersion": 1,
+    "scale": 1000000,
+    "components": [
+      "structuralImportance",
+      "objectiveRelevance",
+      "relationalBenefit",
+      "actionCostPenalty",
+      "riskAdjustment",
+      "redundancyAdjustment",
+      "finalRelationalUtility"
+    ],
+    "composition": "finalRelationalUtility = relationalBenefit + riskAdjustment - actionCostPenalty",
+    "benefitRule": "value of objective-bearing entities downstream of the target that this action would unblock, attenuated per remaining blocker on the path and discounted where an alternate path exists",
+    "approximations": [
+      "expert-declared operational threshold, not the world delivery threshold",
+      "single-pass blocking analysis, no recursive fixed point",
+      "no semantics for amplifies or conflicts",
+      "capacity approximated as baseCapacity vs demand, ignoring supports contributions"
+    ],
+    "importsBenchmarkScoring": false,
+    "readsGroundTruth": false,
+    "readsOptimalAction": false,
+    "readsCorpusIdentity": false,
+    "advisoryOnly": true,
+    "actionGeneration": false,
+    "authorityTier": "R0"
+  },
+  "modelDigest": "fbec1bd8d1db1a482083d5e5b4fa093b46599f0272cc9ec98f98bacfa5c7446a",
+  "expertIsolation": {
+    "imports": [
+      "../core/determinism.js",
+      "../experts/nexus.js"
+    ],
+    "forbiddenImports": [],
+    "importsBenchmarkScoring": false,
+    "mentionsGroundTruthSymbols": false
+  }
+}

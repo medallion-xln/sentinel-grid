@@ -1,0 +1,64 @@
+{
+  "stage": "STAGE2L17_NEXUS_LIVE_SUBSTITUTE_AND_HOLD_REMEDIATION",
+  "model": {
+    "id": "STAGE2L17_LIVE_SUBSTITUTE_AND_HOLD_BASELINE_V1",
+    "basedOn": "STAGE2L13_VALUE_AWARE_RELATIONAL_UTILITY_V1",
+    "corrections": [
+      {
+        "id": "LIVE_SUBSTITUTE_REQUIREMENT",
+        "replaces": "addressesTarget = substitutes.length > 0",
+        "with": "addressesTarget = at least one substitute would deliver once its availability is restored",
+        "usesOnly": [
+          "baseCapacity",
+          "demand",
+          "prerequisite closure",
+          "availability"
+        ],
+        "readsGroundTruth": false
+      },
+      {
+        "id": "DO_NOTHING_BASELINE_DELTA",
+        "replaces": "benefit = sum of downstream objective value",
+        "with": "benefit = sum of downstream objective value NOT ALREADY DELIVERING",
+        "usesOnly": [
+          "prerequisite closure",
+          "availability",
+          "baseCapacity",
+          "demand"
+        ],
+        "readsGroundTruth": false,
+        "selected": true
+      },
+      {
+        "id": "DO_NOTHING_BASELINE_ABSTENTION",
+        "replaces": "act whenever the private score clears zero",
+        "with": "act only when the estimated gain over inaction is positive",
+        "usesOnly": [
+          "prerequisite closure",
+          "availability",
+          "baseCapacity",
+          "demand",
+          "restorationCost"
+        ],
+        "readsGroundTruth": false,
+        "selected": false,
+        "notSelectedBecause": "The corpus is decidability-filtered, so HOLD is never optimal and any added abstention is necessarily wrong. Measured net -934 with zero fixes. Its merit is untestable on this corpus rather than disproven."
+      }
+    ],
+    "importsBenchmarkScoring": false,
+    "usesFixedPointReasoning": false,
+    "operationalThreshold": 500000
+  },
+  "modelDigest": "744d098c945fd2ad77e86da6ab34db8da96fd12a63b1e93db683fa2e0cdae35a",
+  "variantSelected": "LIVE_SUBSTITUTE_AND_HOLD_DELTA",
+  "expertIsolation": {
+    "imports": [
+      "../core/determinism.js"
+    ],
+    "forbiddenImports": [],
+    "forbiddenSymbols": [],
+    "importsBenchmarkScoring": false,
+    "namesGroundTruthSymbols": false,
+    "isolationHolds": true
+  }
+}

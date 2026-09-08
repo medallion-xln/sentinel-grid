@@ -9,7 +9,7 @@ import { buildStage2H2Evaluation } from '../src/lab/stage2h2-expert-quality-eval
 
 const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 const sentinelRoot = path.resolve(root, '../..');
-const zeknovaRoot = process.env.ZEKNOVA_ROOT || '/Users/dwaynecampbell/Desktop/zeknova-shared-gaming-experience';
+const zeknovaRoot = process.env.ZEKNOVA_ROOT ?? null;
 const successorRoot = path.join(root, 'artifacts/stage2f-successor-r0');
 const artifactRoot = path.join(root, 'artifacts/stage2h2-expert-quality');
 const readJson = async (filePath) => JSON.parse(await readFile(filePath, 'utf8'));

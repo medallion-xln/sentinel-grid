@@ -41,7 +41,7 @@ const [baselineManifest, runtime, campaign, stage2l0] = await Promise.all([
 ].map((file) => readJson(path.join(successor, file))).concat([
   readJson(path.join(root, 'artifacts/stage2l0-core-triad-shadow-integration/stage2l0-certification-result.json')),
 ]));
-const verification = await verifyDeclaredRuntime({ baseline: baselineManifest, runtimeIdentity: runtime, sentinelRoot: path.resolve(root, '../..'), zeknovaRoot: process.env.ZEKNOVA_ROOT || '/Users/dwaynecampbell/Desktop/zeknova-shared-gaming-experience' });
+const verification = await verifyDeclaredRuntime({ baseline: baselineManifest, runtimeIdentity: runtime, sentinelRoot: path.resolve(root, '../..'), zeknovaRoot: process.env.ZEKNOVA_ROOT ?? null });
 if (!verification.declaredEqualsMeasured) throw new Error('STAGE2L1_BLOCKED_BY_RUNTIME_DRIFT');
 const { certificationHash: stage2l0Hash, ...stage2l0Body } = stage2l0;
 if (!stage2l0.stage2l0Certified || stage2l0Hash !== STAGE2L1_STAGE2L0_CERTIFICATION_HASH || sha256(stage2l0Body) !== stage2l0Hash) throw new Error('STAGE2L1_BLOCKED_BY_STAGE2L0_CERTIFICATION_DRIFT');

@@ -1,0 +1,670 @@
+{
+  "certificationSchemaVersion": 1,
+  "stage": "STAGE3A_SENTINEL_FORGE_WORLD",
+  "status": "PASS",
+  "stageKind": "SIMULATION_FOUNDATION",
+  "authority": "R0",
+  "canDispatch": false,
+  "canMutateLiveWorld": false,
+  "forgeWorldVersion": "sentinel-forge-world-0.1.0",
+  "kernelVersion": "forge-kernel-v1",
+  "entityTypeCount": 12,
+  "relationTypeCount": 11,
+  "actionTypeCount": 12,
+  "rewardVersion": "FORGE_REWARD_V1",
+  "rewardComponentCount": 11,
+  "scenarioFamilyCount": 28,
+  "curriculumLevelCount": 6,
+  "corpus": {
+    "generated": 504,
+    "admitted": 504,
+    "rejected": 0,
+    "admissionRate": 1,
+    "rejectionReasons": []
+  },
+  "admissionGateSensitivity": {
+    "probeCount": 7,
+    "probes": [
+      {
+        "generatedAs": "nexus/live_substitute",
+        "validatedAs": "nexus/dead_substitute",
+        "honestClaimHolds": true,
+        "mislabelledClaimRejected": true,
+        "failedChecks": [
+          "SUBSTITUTE_CANNOT_CARRY"
+        ],
+        "caught": true
+      },
+      {
+        "generatedAs": "nexus/redundant_infrastructure",
+        "validatedAs": "nexus/cycle",
+        "honestClaimHolds": true,
+        "mislabelledClaimRejected": true,
+        "failedChecks": [
+          "CYCLE_PRESENT"
+        ],
+        "caught": true
+      },
+      {
+        "generatedAs": "oracle/monotonic_trend",
+        "validatedAs": "oracle/reversal",
+        "honestClaimHolds": true,
+        "mislabelledClaimRejected": true,
+        "failedChecks": [
+          "SIGN_CHANGE_WITH_MARGIN"
+        ],
+        "caught": true
+      },
+      {
+        "generatedAs": "oracle/monotonic_trend",
+        "validatedAs": "oracle/insufficient_history",
+        "honestClaimHolds": true,
+        "mislabelledClaimRejected": true,
+        "failedChecks": [
+          "BELOW_SUFFICIENCY"
+        ],
+        "caught": true
+      },
+      {
+        "generatedAs": "oracle/persistence",
+        "validatedAs": "oracle/volatility_shift",
+        "honestClaimHolds": true,
+        "mislabelledClaimRejected": true,
+        "failedChecks": [
+          "VOLATILITY_INCREASED"
+        ],
+        "caught": true
+      },
+      {
+        "generatedAs": "archimedes/redundant_structural_paths",
+        "validatedAs": "archimedes/material_shortage",
+        "honestClaimHolds": true,
+        "mislabelledClaimRejected": true,
+        "failedChecks": [
+          "DEMAND_EXCEEDS_SUPPLY"
+        ],
+        "caught": true
+      },
+      {
+        "generatedAs": "prime/multi_objective_intervention",
+        "validatedAs": "prime/adversarial_choice",
+        "honestClaimHolds": true,
+        "mislabelledClaimRejected": true,
+        "failedChecks": [
+          "OBJECTIVE_UNDER_ATTACK"
+        ],
+        "caught": true
+      }
+    ],
+    "caughtCount": 7,
+    "allCaught": true,
+    "note": "Each probe generates a world under one family and validates it against a different family's claim. The honest claim must hold and the false one must be refused. A gate that passed both would be a decoration."
+  },
+  "determinism": {
+    "casesChecked": 504,
+    "branchingCasesChecked": 504,
+    "deterministicGeneration": true,
+    "regenerationFailures": 0,
+    "serializationStable": true,
+    "serializationFailures": 0,
+    "cloneIsolationPass": true,
+    "cloneIsolationFailures": 0,
+    "orderingInvariancePass": true,
+    "orderingInvarianceFailures": 0
+  },
+  "variation": {
+    "rawCaseCount": 504,
+    "uniqueCanonicalStates": 499,
+    "uniqueTopologies": 105,
+    "uniqueOutcomeRankings": 334,
+    "uniqueOutcomeVectors": 296,
+    "effectiveVariationCount": 334,
+    "nearDuplicateRate": 0.0099,
+    "reportableSampleSize": 334,
+    "note": "Effective variation is the smallest of the distinct-state, distinct-topology and distinct-ranking counts. Quoting the raw case count as independent sample size would overstate the corpus by whatever factor the duplicates supply."
+  },
+  "shadow": {
+    "casesEvaluated": 504,
+    "primeLegalRecommendationRate": 1,
+    "primeIllegalRecommendations": 0,
+    "decisiveCases": 405,
+    "optimumAgreementRate": 0.7407,
+    "tieBreakMatchRate": 0.4617,
+    "uniqueOptimumCases": 88,
+    "uniqueOptimumAgreementRate": 0.0341,
+    "meanRegretTimes1000": 10919,
+    "horizonAlignedCases": 319,
+    "horizonAlignedAgreementRate": 0.9404,
+    "horizonDependentCases": 86,
+    "horizonDependentAgreementRate": 0,
+    "primeTracksItsOwnObjectiveRate": 0.2148,
+    "objectiveMismatchNote": "Prime scores an action over one step; the oracle scores it over three under the declared continuation policy. Where those disagree, a one-step searcher cannot reach the horizon optimum. This is an objective mismatch, measured, not a search defect.",
+    "zeroRegretCases": 399,
+    "exactTieCases": 416,
+    "nexusCasesEvaluated": 504,
+    "oracleCasesEvaluated": 504,
+    "nexusAbstentions": 0,
+    "oracleAbstentions": 504,
+    "averageLegalActionsTimes100": 697,
+    "counterfactualActionsEvaluated": 3515,
+    "bySurface": [
+      {
+        "surface": "ARCHIMEDES",
+        "cases": 108,
+        "legalRate": 1,
+        "decisiveCases": 105,
+        "optimumAgreementRate": 0.6667,
+        "uniqueOptimumCases": 29,
+        "uniqueOptimumAgreementRate": 0
+      },
+      {
+        "surface": "NEXUS",
+        "cases": 162,
+        "legalRate": 1,
+        "decisiveCases": 162,
+        "optimumAgreementRate": 0.7716,
+        "uniqueOptimumCases": 28,
+        "uniqueOptimumAgreementRate": 0
+      },
+      {
+        "surface": "ORACLE",
+        "cases": 144,
+        "legalRate": 1,
+        "decisiveCases": 48,
+        "optimumAgreementRate": 1,
+        "uniqueOptimumCases": 0,
+        "uniqueOptimumAgreementRate": null
+      },
+      {
+        "surface": "PRIME",
+        "cases": 90,
+        "legalRate": 1,
+        "decisiveCases": 90,
+        "optimumAgreementRate": 0.6333,
+        "uniqueOptimumCases": 31,
+        "uniqueOptimumAgreementRate": 0.0968
+      }
+    ],
+    "dispatchProbe": {
+      "attempted": true,
+      "refused": true,
+      "errorName": "AuthorityError"
+    }
+  },
+  "adversarial": {
+    "caseCount": 16,
+    "cases": [
+      {
+        "id": "ILLEGAL_ACTION_UNKNOWN_TYPE",
+        "description": "an action type the contract does not define",
+        "expectation": "REFUSE",
+        "threw": true,
+        "reason": "UNKNOWN_ACTION_TYPE",
+        "message": "Illegal action: UNKNOWN_ACTION_TYPE",
+        "failedClosed": true
+      },
+      {
+        "id": "ILLEGAL_ACTION_MALFORMED",
+        "description": "a non-object action",
+        "expectation": "REFUSE",
+        "threw": true,
+        "reason": "MALFORMED_ACTION",
+        "message": "Illegal action: MALFORMED_ACTION",
+        "failedClosed": true
+      },
+      {
+        "id": "ILLEGAL_ACTION_UNKNOWN_ACTOR",
+        "description": "an action from an actor that does not exist",
+        "expectation": "REFUSE",
+        "threw": true,
+        "reason": "ACTOR_NOT_FOUND",
+        "message": "Illegal action: ACTOR_NOT_FOUND",
+        "failedClosed": true
+      },
+      {
+        "id": "ILLEGAL_ACTION_UNKNOWN_TARGET",
+        "description": "a target that does not exist",
+        "expectation": "REFUSE",
+        "threw": true,
+        "reason": "TARGET_NOT_FOUND",
+        "message": "Illegal action: TARGET_NOT_FOUND",
+        "failedClosed": true
+      },
+      {
+        "id": "ILLEGAL_ACTION_OUT_OF_RANGE",
+        "description": "a target outside action range",
+        "expectation": "REFUSE",
+        "threw": true,
+        "reason": "TARGET_OUT_OF_RANGE",
+        "message": "Illegal action: TARGET_OUT_OF_RANGE",
+        "failedClosed": true
+      },
+      {
+        "id": "MALFORMED_WORLD_DUPLICATE_ENTITY",
+        "description": "two entities sharing an id",
+        "expectation": "REFUSE",
+        "threw": true,
+        "reason": "FORGE_CONTRACT",
+        "message": "Duplicate entity id",
+        "failedClosed": true
+      },
+      {
+        "id": "MALFORMED_WORLD_UNRESOLVED_RELATION",
+        "description": "a relation naming a missing entity",
+        "expectation": "REFUSE",
+        "threw": true,
+        "reason": "FORGE_CONTRACT",
+        "message": "Relation references an unknown target entity",
+        "failedClosed": true
+      },
+      {
+        "id": "MALFORMED_WORLD_OUT_OF_BOUNDS",
+        "description": "an entity outside the grid",
+        "expectation": "REFUSE",
+        "threw": true,
+        "reason": "FORGE_CONTRACT",
+        "message": "entity.position.x out of bounds",
+        "failedClosed": true
+      },
+      {
+        "id": "MALFORMED_WORLD_UNKNOWN_TERRAIN",
+        "description": "a terrain code the contract does not define",
+        "expectation": "REFUSE",
+        "threw": true,
+        "reason": "FORGE_CONTRACT",
+        "message": "grid.cells contains an unknown terrain code",
+        "failedClosed": true
+      },
+      {
+        "id": "CYCLIC_GRAPH_ACCEPTED",
+        "description": "a genuine dependency cycle, which is legal world content",
+        "expectation": "ACCEPT",
+        "threw": false,
+        "reason": null,
+        "value": 9,
+        "failedClosed": true
+      },
+      {
+        "id": "DEAD_SUBSTITUTE_NO_BYPASS",
+        "description": "a dead substitute must not yield a bypass action",
+        "expectation": "ACCEPT",
+        "threw": false,
+        "reason": null,
+        "value": 0,
+        "failedClosed": true
+      },
+      {
+        "id": "TERMINAL_STATE_MUTATION",
+        "description": "stepping a terminal world",
+        "expectation": "REFUSE",
+        "threw": true,
+        "reason": "TERMINAL_STATE",
+        "message": "Illegal action: TERMINAL_STATE",
+        "failedClosed": true
+      },
+      {
+        "id": "ZERO_LEGAL_ACTIONS",
+        "description": "a terminal world offers no actions",
+        "expectation": "ACCEPT",
+        "threw": false,
+        "reason": null,
+        "value": 0,
+        "failedClosed": true
+      },
+      {
+        "id": "WRONG_REWARD_VERSION",
+        "description": "scalarizing under an unknown reward version",
+        "expectation": "REFUSE",
+        "threw": true,
+        "reason": "FORGE_CONTRACT",
+        "message": "Unknown reward version: FORGE_REWARD_V99",
+        "failedClosed": true
+      },
+      {
+        "id": "REPLAY_WRONG_SEED",
+        "description": "a replay produced from a different seed must not match",
+        "expectation": "ACCEPT",
+        "threw": false,
+        "reason": null,
+        "value": 0,
+        "failedClosed": true
+      },
+      {
+        "id": "CROSS_SESSION_REPLAY",
+        "description": "a record bound to one world must not verify against another",
+        "expectation": "ACCEPT",
+        "threw": false,
+        "reason": null,
+        "value": 0,
+        "failedClosed": true
+      }
+    ],
+    "allBehaveAsSpecified": true,
+    "refusedCount": 11,
+    "sourceWorldUnchanged": true,
+    "illegalActionHandling": "REFUSED_BY_NAME_NO_MUTATION",
+    "malformedWorldHandling": "REFUSED_BY_NAME_AT_VALIDATION",
+    "replayIdentityBinding": "SELF_EXCLUDING_HASH_OVER_WORLD_AND_PROVENANCE",
+    "crossSessionRejection": "TAMPERED_RECORD_FAILS_VERIFICATION",
+    "wrongRewardVersionRejection": "THROWS_FORGE_CONTRACT_ERROR"
+  },
+  "performanceMeasured": {
+    "sizesBenchmarked": [
+      "small",
+      "medium",
+      "large"
+    ],
+    "metrics": [
+      "worldCreationsPerSecond",
+      "clonesPerSecond",
+      "stepsPerSecond",
+      "counterfactualBranchesPerSecond"
+    ],
+    "excludedFromCertificationBody": true,
+    "reason": "Wall-clock throughput varies per run and per machine. No gate depends on it: determinism is a property of the code, speed is a property of the host."
+  },
+  "replayIntegrity": {
+    "recordCount": 504,
+    "allVerify": true,
+    "replaySetDigest": "00f54f5520e0ad85e9b740687409dc65ad304aa642dc020be0c3121f52693174",
+    "orderIndependent": true,
+    "reproducible": true,
+    "absolutePathCount": 0,
+    "absolutePathSamples": [],
+    "noAbsolutePaths": true
+  },
+  "datasetExport": {
+    "exportVersion": "FORGE_EXPORT_V1",
+    "datasetHash": "942dcd6a0dd34a811bb336c3718f2007f4a316af9e51c3ea1e7ef62a72b591d1",
+    "counts": {
+      "jsonl": 504,
+      "sft": 88,
+      "preference": 405,
+      "rl_episode": 3515
+    },
+    "contentHashes": {
+      "jsonl": "2bd1d178f59e39b088c88c4ab27461842028854af8cc3803d791165735592049",
+      "sft": "767768cba247621a743eacda6c2de118ee79c96e3de34f2cd9d655a7609bdf04",
+      "preference": "7a0e9db4854f03715a895aff59f5d88ca11ec9e31f9bd8c3935e5efc381bd739",
+      "rl_episode": "414316db0576863a257d32163ec521fc4b36ae3d4c8c6ccb89bedfcadcc54748"
+    },
+    "sftExcludedTies": 416,
+    "preferenceSkippedZeroGap": 494
+  },
+  "soup": {
+    "audited": true,
+    "commit": "f07e07ed7edd548a4d1d9143f77af9027b1b7036",
+    "version": "0.74.0",
+    "capabilities": {
+      "sft": {
+        "supported": true,
+        "evidence": "src/soup_cli/trainer/sft.py"
+      },
+      "preferenceTraining": {
+        "supported": true,
+        "evidence": "trainer/dpo.py, orpo.py, ipo.py, simpo.py, kto.py, bco.py, online_dpo.py"
+      },
+      "grpo": {
+        "supported": true,
+        "evidence": "src/soup_cli/trainer/grpo.py (wraps trl.GRPOTrainer)"
+      },
+      "ppo": {
+        "supported": true,
+        "evidence": "src/soup_cli/trainer/ppo.py"
+      },
+      "rewardModels": {
+        "supported": true,
+        "evidence": "trainer/reward_model.py, prm.py, rewards.py"
+      },
+      "customRewards": {
+        "supported": true,
+        "evidence": "src/soup_cli/trainer/rewards.py"
+      },
+      "lora": {
+        "supported": true,
+        "evidence": "config/schema.py LoraConfig; peft>=0.20.0"
+      },
+      "qlora": {
+        "supported": true,
+        "evidence": "bitsandbytes in the [train] extra; 4-bit load path in config/schema.py"
+      },
+      "qwen": {
+        "supported": true,
+        "evidence": "recipes/catalog.py ships Qwen2.5 SFT and DPO recipes"
+      },
+      "checkpointing": {
+        "supported": true,
+        "evidence": "config/schema.py save_steps; resume paths in trainer/"
+      },
+      "adapterExport": {
+        "supported": true,
+        "evidence": "registry/store.py; peft adapter output"
+      },
+      "ggufExport": {
+        "supported": true,
+        "evidence": "gguf paths in cli.py, config/schema.py, cans/"
+      },
+      "experimentMetadata": {
+        "supported": true,
+        "evidence": "monitoring/trace_logger.py, monitoring/hf_push.py"
+      },
+      "reproducibilityControls": {
+        "supported": "PARTIAL",
+        "evidence": "per-feature seeds (raft_shuffle_seed, replay_seed) exist in config/schema.py",
+        "limitation": "No single global training seed was found that would make a full run bit-reproducible. Recorded as a limitation of the training engine, not of the bridge, and it is why SEED in the provenance envelope is mandatory but not by itself sufficient to reproduce a checkpoint."
+      }
+    },
+    "dependencyNotes": {
+      "license": "Apache-2.0",
+      "pythonRequirement": ">=3.10,<3.13",
+      "heavyStackIsOptional": true,
+      "heavyStackExtra": "[train] — torch>=2.5, transformers, peft, trl, datasets, bitsandbytes, accelerate",
+      "securityPolicyPresent": true,
+      "securityPolicyPath": "SECURITY.md",
+      "networkBehaviour": "Soup pulls base models and can push to the Hugging Face Hub (monitoring/hf_push.py). Any Sentinel use must treat that as an outbound egress surface and pin the base model by hash.",
+      "isolation": "Cloned to a training-tools location outside the Sentinel repository. No Soup file is imported by, vendored into, or referenced from Sentinel runtime source."
+    },
+    "bridgeVersion": "FORGE_SOUP_BRIDGE_V1",
+    "compatibilityChecks": [
+      {
+        "dataset": "sft",
+        "rows": 88,
+        "expectedFormat": "alpaca",
+        "detectedFormat": "alpaca",
+        "compatible": true,
+        "basis": "DETECTED_BY_SOUP_SIGNATURE_RULE"
+      },
+      {
+        "dataset": "preference",
+        "rows": 405,
+        "expectedFormat": "dpo",
+        "detectedFormat": "dpo",
+        "compatible": true,
+        "basis": "DETECTED_BY_SOUP_SIGNATURE_RULE"
+      }
+    ],
+    "allCompatible": true,
+    "translationIsNecessary": true,
+    "untranslatedSftDetectedAs": null,
+    "trainingExecuted": false,
+    "runtimeIntegration": false
+  },
+  "trainingProvenance": {
+    "fields": [
+      "TRAINING_ENGINE",
+      "SOUP_COMMIT",
+      "BASE_MODEL",
+      "BASE_MODEL_HASH",
+      "TOKENIZER_HASH",
+      "DATASET_HASH",
+      "DATASET_RECORD_COUNT",
+      "FORGE_WORLD_VERSION",
+      "SCENARIO_FAMILY_SET",
+      "CURRICULUM_VERSION",
+      "REWARD_VERSION",
+      "TRAINING_METHOD",
+      "TRAINING_CONFIG_HASH",
+      "SEED",
+      "OUTPUT_ARTIFACT_HASH"
+    ],
+    "fieldCount": 15,
+    "completeEnvelopeAccepted": true,
+    "incompleteEnvelopeRejected": true,
+    "incompleteRejection": {
+      "provenanceVersion": "FORGE_TRAINING_PROVENANCE_V1",
+      "complete": false,
+      "accepted": false,
+      "missingFields": [
+        "DATASET_HASH"
+      ],
+      "emptyFields": [
+        "BASE_MODEL_HASH"
+      ],
+      "rejectionReason": "INCOMPLETE_TRAINING_PROVENANCE",
+      "note": "A candidate without complete training provenance is rejected. Every field names an input that changes what the artifact is."
+    },
+    "note": "The envelope is defined and enforced. No candidate exists yet, so no real envelope has been populated; the placeholders exercise the validator, they do not describe an artifact."
+  },
+  "candidateGovernance": {
+    "states": [
+      "GENERATED",
+      "TRAINED",
+      "CANDIDATE",
+      "OFFLINE_EVALUATED",
+      "SHADOW_EVALUATED",
+      "CERTIFIED",
+      "REJECTED"
+    ],
+    "stateCount": 7,
+    "probes": [
+      {
+        "from": "SHADOW_EVALUATED",
+        "to": "CERTIFIED",
+        "actor": "SOUP",
+        "mustBeAllowed": false,
+        "allowed": false,
+        "reason": "SOUP may not assign CERTIFIED; only SENTINEL_GRID_CERTIFICATION may",
+        "behavesAsSpecified": true
+      },
+      {
+        "from": "TRAINED",
+        "to": "CERTIFIED",
+        "actor": "SOUP",
+        "mustBeAllowed": false,
+        "allowed": false,
+        "reason": "TRAINED -> CERTIFIED is not a legal transition",
+        "behavesAsSpecified": true
+      },
+      {
+        "from": "GENERATED",
+        "to": "CERTIFIED",
+        "actor": "SENTINEL_GRID_CERTIFICATION",
+        "mustBeAllowed": false,
+        "allowed": false,
+        "reason": "GENERATED -> CERTIFIED is not a legal transition",
+        "behavesAsSpecified": true
+      },
+      {
+        "from": "SHADOW_EVALUATED",
+        "to": "CERTIFIED",
+        "actor": "SENTINEL_GRID_CERTIFICATION",
+        "mustBeAllowed": true,
+        "allowed": true,
+        "reason": null,
+        "behavesAsSpecified": true
+      },
+      {
+        "from": "GENERATED",
+        "to": "TRAINED",
+        "actor": "SOUP",
+        "mustBeAllowed": true,
+        "allowed": true,
+        "reason": null,
+        "behavesAsSpecified": true
+      },
+      {
+        "from": "TRAINED",
+        "to": "CANDIDATE",
+        "actor": "SOUP",
+        "mustBeAllowed": false,
+        "allowed": false,
+        "reason": "SOUP may not assign CANDIDATE; only SENTINEL_LAB may",
+        "behavesAsSpecified": true
+      }
+    ],
+    "allProbesBehaveAsSpecified": true,
+    "soupCanCertify": false,
+    "sentinelOwnsPromotion": true,
+    "soupRuntimeIntegration": false,
+    "stateMachineDefined": true
+  },
+  "firstFutureTrainingTarget": {
+    "target": "LEARNED_NEXUS_CANDIDATE",
+    "trainedInThisStage": false,
+    "rationale": [
+      "A deterministic relational benchmark already exists and is certified (2L.10 through 2L.18).",
+      "Forge World supplies grounded counterfactual truth for relational decisions, so a learned candidate can be scored against exact optima rather than against another model.",
+      "Expert complementarity is measurable: the delegation ceiling and its six-case tail are characterised, so an improvement would be visible rather than inferred.",
+      "The deterministic Nexus is a strong, frozen baseline, which makes a null result informative instead of ambiguous."
+    ],
+    "futureComparison": [
+      "deterministic Nexus (frozen baseline)",
+      "learned Nexus candidate",
+      "hybrid Nexus (deterministic with learned advisory)",
+      "Prime without candidate",
+      "Prime with candidate"
+    ],
+    "admissionPath": "GENERATED -> TRAINED (Soup) -> CANDIDATE -> OFFLINE_EVALUATED -> SHADOW_EVALUATED -> CERTIFIED (Sentinel only)"
+  },
+  "gates": {
+    "FORGE_WORLD_KERNEL_IMPLEMENTED": true,
+    "STRUCTURED_WORLD_STATE": true,
+    "ASCII_RENDERER_IMPLEMENTED": true,
+    "DETERMINISTIC_GENERATION": true,
+    "CLONE_ISOLATION_PASS": true,
+    "ORDERING_INVARIANCE_PASS": true,
+    "LEGAL_ACTION_CONTRACT_PASS": true,
+    "COUNTERFACTUAL_BRANCHING_PASS": true,
+    "REWARD_CONTRACT_VERSIONED": true,
+    "SCENARIO_FAMILIES_IMPLEMENTED": true,
+    "SEMANTIC_ADMISSION_GATE_PASS": true,
+    "EFFECTIVE_VARIATION_MEASURED": true,
+    "SENTINEL_GRID_ADAPTER_PASS": true,
+    "SENTINEL_SHADOW_EVALUATION_PASS": true,
+    "REPLAY_DETERMINISM_PASS": true,
+    "DATASET_EXPORT_PASS": true,
+    "SOUP_CAPABILITY_AUDIT_COMPLETE": true,
+    "SOUP_BRIDGE_FORMAT_PASS": true,
+    "TRAINING_PROVENANCE_DEFINED": true,
+    "CANDIDATE_GOVERNANCE_DEFINED": true,
+    "NO_SOUP_RUNTIME_AUTHORITY": true,
+    "NO_EXPERT_PRODUCTION_REPLACEMENT": true,
+    "AUTHORITY_R0": true,
+    "SECURITY_REGRESSION_PASS": true
+  },
+  "blockers": [],
+  "stage3aOutcome": "A_FORGE_WORLD_AND_SOUP_FOUNDATION_CERTIFIED",
+  "stage3aCertified": true,
+  "freeze": {
+    "nexusChanged": false,
+    "oracleChanged": false,
+    "arbiterChanged": false,
+    "primePolicyChanged": false,
+    "expertActionPathsWidened": false,
+    "authorityIncreased": false,
+    "zeknovaReplaced": false,
+    "modelTrained": false,
+    "soupConnectedToInference": false
+  },
+  "interpretation": {
+    "forgeWorldStatus": "DETERMINISTIC_COUNTERFACTUAL_SUBSTRATE_CERTIFIED_R0_ADVISORY_ONLY",
+    "soupStatus": "AUDITED_AND_FORMAT_BRIDGED_NOT_INVOKED_NO_RUNTIME_AUTHORITY",
+    "measuredRemainingLimitation": "NO_LEARNED_CANDIDATE_EXISTS: Soup was audited and format-bridged but never invoked, so no statement is made about what a trained candidate would do. | CONTINUATION_POLICY_IS_A_CHOICE: horizon utilities are exact under the declared greedy continuation policy. A different declared policy would produce different — equally exact — utilities, so the optimum is optimal with respect to a named policy rather than in the abstract. | SINGLE_PLATFORM: performance figures and the run itself come from one platform; the inherited DIGEST_PRODUCED_SINGLE_PLATFORM limitation is unchanged."
+  },
+  "liveActionDispatches": 0,
+  "worldMutations": 0,
+  "authorityEscalations": 0,
+  "realZeknovaDecisionDeltaMeasured": false,
+  "evidenceDigest": "d7ab60af5aa994d610dd4af782f22e710b9f4852ebe3d189d620822515752b76",
+  "certificationHash": "c66b85d863d428d2da0e9d738f426e0b655124509bad04e0e7220f6eaf34898d"
+}

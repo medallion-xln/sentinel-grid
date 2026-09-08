@@ -1,0 +1,64 @@
+{
+  "sampleSize": 400,
+  "split": "VALIDATION",
+  "identicalCases": true,
+  "identicalCasesNote": "RANDOM_LEGAL, HEURISTIC_GREEDY_IMMEDIATE and NEXUS_RELATIONAL_SELECTOR_V1 run on the same VALIDATION sample. PRIME_FROZEN runs on a quarter of it because it regenerates and searches each world, and its sample size is reported alongside its numbers rather than being compared as if it were the same set.",
+  "nexusSelectorNote": "NEXUS_RELATIONAL_SELECTOR_V1 is a deterministic policy BUILT ON deterministic Nexus, not Nexus itself. Nexus emits graph-level signals — bottleneck, critical-dependency, threatened and unsupported counts, depth, density — and no per-action output whatsoever. Ranking legal actions therefore needs a policy on top of those signals, and it is reported under its own name so no reader mistakes it for the certified expert. Nexus is unmodified.",
+  "nexusRegenerationMismatches": 0,
+  "baselines": {
+    "RANDOM_LEGAL": {
+      "cases": 400,
+      "scored": 400,
+      "parseSuccessRate": 1,
+      "parseFailures": 0,
+      "parseFailureCodes": {},
+      "illegalActionCount": 0,
+      "legalActionRate": 1,
+      "abstentionRate": 0,
+      "optimalSetAccuracy": 0.205,
+      "meanRegret": 60.65,
+      "medianRegret": 54,
+      "worstRegret": 324
+    },
+    "HEURISTIC_GREEDY_IMMEDIATE": {
+      "cases": 400,
+      "scored": 400,
+      "parseSuccessRate": 1,
+      "parseFailures": 0,
+      "parseFailureCodes": {},
+      "illegalActionCount": 0,
+      "legalActionRate": 1,
+      "abstentionRate": 0,
+      "optimalSetAccuracy": 0.275,
+      "meanRegret": 45.61,
+      "medianRegret": 39,
+      "worstRegret": 242
+    },
+    "NEXUS_RELATIONAL_SELECTOR_V1": {
+      "cases": 400,
+      "scored": 333,
+      "parseSuccessRate": 1,
+      "parseFailures": 0,
+      "parseFailureCodes": {},
+      "illegalActionCount": 0,
+      "legalActionRate": 1,
+      "abstentionRate": 0.1675,
+      "optimalSetAccuracy": 0.2462,
+      "meanRegret": 48.15,
+      "medianRegret": 44,
+      "worstRegret": 242
+    },
+    "PRIME_FROZEN": {
+      "cases": 100,
+      "scored": 100,
+      "worldRegenerationMismatches": 0,
+      "parseSuccessRate": 1,
+      "legalActionRate": 1,
+      "abstentionRate": 0,
+      "optimalSetAccuracy": 0.26,
+      "meanRegret": 43.69,
+      "medianRegret": 39,
+      "worstRegret": 150
+    }
+  }
+}

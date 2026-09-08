@@ -1,0 +1,37 @@
+{
+  "stage": "STAGE2L15_NEXUS_DECISION_STABILITY_AND_CONFIDENCE_CEILING",
+  "highestSupportedReliability": 0.990991,
+  "supportAtHighestReliability": 111,
+  "lowerBoundAtHighestReliability": 0.960627,
+  "ruleAtHighestReliability": "risk>=400000 & margin>=100000 & marginVariance<=20000",
+  "developmentAtHighestReliability": 0.952381,
+  "holdoutAtHighestReliability": 0.990741,
+  "holdoutSupportAtHighestReliability": 108,
+  "estimatedConfidenceCeiling": 0.960627,
+  "multiplicity": {
+    "ruleSetSize": 406,
+    "representativeSupport": 111,
+    "perRuleFalseDiscoveryAt0975": 0.231494,
+    "perRuleFalseDiscoveryAt098": 0.346751,
+    "perRuleFalseDiscoveryAt0985": 0.50261,
+    "note": "Rules in this set are heavily correlated, so multiplying by the rule count overstates the expected hit count. The order of magnitude is what matters: at these sample sizes a region measuring above the floor by chance is expected, not surprising."
+  },
+  "highConfidenceSeparation": {
+    "n": 274,
+    "wrong": 4,
+    "marginVarianceCorrect": 31140,
+    "marginVarianceWrong": 30074,
+    "topActionStabilityCorrect": 999471,
+    "topActionStabilityWrong": 1000000,
+    "separates": false
+  },
+  "ceilingLimitationClass": "RESIDUAL_EXPERT_ERROR",
+  "ceilingLimitationReason": "Inside the high-confidence region where delegation would occur, the errors are indistinguishable from the successes on every stability signal measured. The residual error is not accompanied by any observable instability, so no confidence rule built from these signals can exclude it.",
+  "reliabilityFloor": 0.99,
+  "interpretation": {
+    "nexusExpertRemediationRequired": true,
+    "nexusConfidenceRemediationRequired": false,
+    "arbiterRemediationRequired": false,
+    "measuredRemainingLimitation": "Supported reliability reaches 0.990991 (n=111, lower bound 0.960627) against an inherited floor of 0.99. Inside the high-confidence region where delegation would occur, the errors are indistinguishable from the successes on every stability signal measured. The residual error is not accompanied by any observable instability, so no confidence rule built from these signals can exclude it."
+  }
+}

@@ -1,0 +1,36 @@
+{
+  "splits": {
+    "TRAIN": 50860,
+    "OOD": 7144,
+    "VALIDATION": 6509,
+    "HOLDOUT": 6291
+  },
+  "leakage": {
+    "worldOverlapByPair": {
+      "TRAIN|OOD": 0,
+      "TRAIN|VALIDATION": 0,
+      "TRAIN|HOLDOUT": 0,
+      "OOD|VALIDATION": 0,
+      "OOD|HOLDOUT": 0,
+      "VALIDATION|HOLDOUT": 0
+    },
+    "topologyOverlapByPair": {
+      "TRAIN|OOD": 0,
+      "TRAIN|VALIDATION": 0,
+      "TRAIN|HOLDOUT": 0,
+      "OOD|VALIDATION": 0,
+      "OOD|HOLDOUT": 0,
+      "VALIDATION|HOLDOUT": 0
+    },
+    "exactWorldOverlap": 0,
+    "topologyLeakage": 0,
+    "topologyLeakageControlPass": true
+  },
+  "ood": {
+    "levels": [
+      6,
+      7
+    ],
+    "description": "levels above the training curriculum: larger graphs, deeper dependencies, scarcer resources, longer horizons"
+  }
+}

@@ -1,0 +1,66 @@
+{
+  "forbiddenStatuses": [
+    "CERTIFIED_FOR_RUNTIME",
+    "PRODUCTION",
+    "LIVE",
+    "R1"
+  ],
+  "permittedStatuses": [
+    "CANDIDATE",
+    "OFFLINE_EVALUATED",
+    "TRAINED",
+    "NOT_TRAINED"
+  ],
+  "liveRuntimeReferencesCandidate": false,
+  "liveReferences": [],
+  "soupCanCertifyExpert": false,
+  "candidateLoadedAutomatically": false,
+  "deterministicNexusUnchanged": true,
+  "authorityUnchanged": true,
+  "mutationTest": {
+    "mutants": 5,
+    "allRejected": true,
+    "detail": [
+      {
+        "status": "CERTIFIED_FOR_RUNTIME",
+        "result": {
+          "permitted": false,
+          "reason": "STAGE3C_MAY_NOT_ASSIGN_CERTIFIED_FOR_RUNTIME"
+        }
+      },
+      {
+        "status": "PRODUCTION",
+        "result": {
+          "permitted": false,
+          "reason": "STAGE3C_MAY_NOT_ASSIGN_PRODUCTION"
+        }
+      },
+      {
+        "status": "LIVE",
+        "result": {
+          "permitted": false,
+          "reason": "STAGE3C_MAY_NOT_ASSIGN_LIVE"
+        }
+      },
+      {
+        "status": "R1",
+        "result": {
+          "permitted": false,
+          "reason": "STAGE3C_MAY_NOT_ASSIGN_R1"
+        }
+      },
+      {
+        "status": "NOT_A_STATUS",
+        "result": {
+          "permitted": false,
+          "reason": "UNKNOWN_CANDIDATE_STATUS"
+        }
+      }
+    ],
+    "permittedControl": {
+      "permitted": true,
+      "reason": null
+    }
+  },
+  "pass": true
+}

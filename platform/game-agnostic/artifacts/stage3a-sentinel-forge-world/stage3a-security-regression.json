@@ -1,0 +1,267 @@
+{
+  "frozenOwners": {
+    "owners": [
+      {
+        "path": "src/experts/oracle.js",
+        "expected": "ce50bcc3a9d5c56f5c3d9986710609af5bc2c5e4ece9b73fc739a65f87b8373a",
+        "measured": "ce50bcc3a9d5c56f5c3d9986710609af5bc2c5e4ece9b73fc739a65f87b8373a",
+        "unchanged": true
+      },
+      {
+        "path": "src/experts/nexus.js",
+        "expected": "7a6e194b1b97221fc9e2a15cc9f1885c0858ab50d784bdf81e5cbc58de70a144",
+        "measured": "7a6e194b1b97221fc9e2a15cc9f1885c0858ab50d784bdf81e5cbc58de70a144",
+        "unchanged": true
+      },
+      {
+        "path": "src/prime/root-puct.js",
+        "expected": "93b62027a77088690027201d3ed05ead8f8f50f77e44a37bca6237070e2148fc",
+        "measured": "93b62027a77088690027201d3ed05ead8f8f50f77e44a37bca6237070e2148fc",
+        "unchanged": true
+      },
+      {
+        "path": "src/core/authority.js",
+        "expected": "fa622b39e80fd8808aefa41b4f4525d28bc778f7c3c19db046ee72648e1f2ee8",
+        "measured": "fa622b39e80fd8808aefa41b4f4525d28bc778f7c3c19db046ee72648e1f2ee8",
+        "unchanged": true
+      },
+      {
+        "path": "src/core/contracts.js",
+        "expected": "1215a623f553c7c155d60978387a5f9cf42c450733afb9c4dce44b7180df001a",
+        "measured": "1215a623f553c7c155d60978387a5f9cf42c450733afb9c4dce44b7180df001a",
+        "unchanged": true
+      },
+      {
+        "path": "src/core/determinism.js",
+        "expected": "06bba4bb8c1018097a684961921eea1c8ed0d7e011252d55fb2705eb3f503bc5",
+        "measured": "06bba4bb8c1018097a684961921eea1c8ed0d7e011252d55fb2705eb3f503bc5",
+        "unchanged": true
+      },
+      {
+        "path": "src/core/recommendation.js",
+        "expected": "20cf8d3033d9dc9a75be947ec20ab51b1f722cc29f998d23a00e7095c4d2b4af",
+        "measured": "20cf8d3033d9dc9a75be947ec20ab51b1f722cc29f998d23a00e7095c4d2b4af",
+        "unchanged": true
+      },
+      {
+        "path": "src/core/zeknova-root.js",
+        "expected": "ac06bd1c6be9c471a55ea33f2e69dd2304557d43335e0ea38ae87c0c79cd2e4a",
+        "measured": "ac06bd1c6be9c471a55ea33f2e69dd2304557d43335e0ea38ae87c0c79cd2e4a",
+        "unchanged": true
+      },
+      {
+        "path": "src/lab/stage2m-portability-and-qualification-readiness.js",
+        "expected": "466784dc9bb067d540d803ef8ea80dd70c058c2fa8d9dc60aeddcc90f95e2c56",
+        "measured": "466784dc9bb067d540d803ef8ea80dd70c058c2fa8d9dc60aeddcc90f95e2c56",
+        "unchanged": true
+      },
+      {
+        "path": "src/lab/stage2l23-temporal-corpus-well-posedness.js",
+        "expected": "6709b53c2f8d63586c1463bc6ccd8a1b013671c036d9da59eadaf0196b1ebd74",
+        "measured": "6709b53c2f8d63586c1463bc6ccd8a1b013671c036d9da59eadaf0196b1ebd74",
+        "unchanged": true
+      },
+      {
+        "path": "src/lab/stage2l14-nexus-confidence-calibration.js",
+        "expected": "0efbef966c7625675244b57a95e706c67c81ddd2c60b871ac3a48f4c07ceeb16",
+        "measured": "0efbef966c7625675244b57a95e706c67c81ddd2c60b871ac3a48f4c07ceeb16",
+        "unchanged": true
+      }
+    ],
+    "ownerCount": 11,
+    "allUnchanged": true
+  },
+  "discipline": {
+    "inheritedFloor": 0.99,
+    "floorUnchanged": true,
+    "validatorImports": [
+      "../core/determinism.js",
+      "./contract.js",
+      "./counterfactual.js",
+      "./kernel.js"
+    ],
+    "semanticValidatorCallsExpert": false,
+    "soupLeakedIntoRuntime": [],
+    "adapterImportsCounterfactualOracle": false,
+    "adapterLeaksWorldTruth": false,
+    "rendererImportedByKernel": false,
+    "rendererImportedByAdapter": false,
+    "executesTraining": false,
+    "declaresOwnReliabilityFloor": false,
+    "raisesAuthority": false,
+    "disciplineHolds": true
+  },
+  "adversarial": {
+    "caseCount": 16,
+    "cases": [
+      {
+        "id": "ILLEGAL_ACTION_UNKNOWN_TYPE",
+        "description": "an action type the contract does not define",
+        "expectation": "REFUSE",
+        "threw": true,
+        "reason": "UNKNOWN_ACTION_TYPE",
+        "message": "Illegal action: UNKNOWN_ACTION_TYPE",
+        "failedClosed": true
+      },
+      {
+        "id": "ILLEGAL_ACTION_MALFORMED",
+        "description": "a non-object action",
+        "expectation": "REFUSE",
+        "threw": true,
+        "reason": "MALFORMED_ACTION",
+        "message": "Illegal action: MALFORMED_ACTION",
+        "failedClosed": true
+      },
+      {
+        "id": "ILLEGAL_ACTION_UNKNOWN_ACTOR",
+        "description": "an action from an actor that does not exist",
+        "expectation": "REFUSE",
+        "threw": true,
+        "reason": "ACTOR_NOT_FOUND",
+        "message": "Illegal action: ACTOR_NOT_FOUND",
+        "failedClosed": true
+      },
+      {
+        "id": "ILLEGAL_ACTION_UNKNOWN_TARGET",
+        "description": "a target that does not exist",
+        "expectation": "REFUSE",
+        "threw": true,
+        "reason": "TARGET_NOT_FOUND",
+        "message": "Illegal action: TARGET_NOT_FOUND",
+        "failedClosed": true
+      },
+      {
+        "id": "ILLEGAL_ACTION_OUT_OF_RANGE",
+        "description": "a target outside action range",
+        "expectation": "REFUSE",
+        "threw": true,
+        "reason": "TARGET_OUT_OF_RANGE",
+        "message": "Illegal action: TARGET_OUT_OF_RANGE",
+        "failedClosed": true
+      },
+      {
+        "id": "MALFORMED_WORLD_DUPLICATE_ENTITY",
+        "description": "two entities sharing an id",
+        "expectation": "REFUSE",
+        "threw": true,
+        "reason": "FORGE_CONTRACT",
+        "message": "Duplicate entity id",
+        "failedClosed": true
+      },
+      {
+        "id": "MALFORMED_WORLD_UNRESOLVED_RELATION",
+        "description": "a relation naming a missing entity",
+        "expectation": "REFUSE",
+        "threw": true,
+        "reason": "FORGE_CONTRACT",
+        "message": "Relation references an unknown target entity",
+        "failedClosed": true
+      },
+      {
+        "id": "MALFORMED_WORLD_OUT_OF_BOUNDS",
+        "description": "an entity outside the grid",
+        "expectation": "REFUSE",
+        "threw": true,
+        "reason": "FORGE_CONTRACT",
+        "message": "entity.position.x out of bounds",
+        "failedClosed": true
+      },
+      {
+        "id": "MALFORMED_WORLD_UNKNOWN_TERRAIN",
+        "description": "a terrain code the contract does not define",
+        "expectation": "REFUSE",
+        "threw": true,
+        "reason": "FORGE_CONTRACT",
+        "message": "grid.cells contains an unknown terrain code",
+        "failedClosed": true
+      },
+      {
+        "id": "CYCLIC_GRAPH_ACCEPTED",
+        "description": "a genuine dependency cycle, which is legal world content",
+        "expectation": "ACCEPT",
+        "threw": false,
+        "reason": null,
+        "value": 9,
+        "failedClosed": true
+      },
+      {
+        "id": "DEAD_SUBSTITUTE_NO_BYPASS",
+        "description": "a dead substitute must not yield a bypass action",
+        "expectation": "ACCEPT",
+        "threw": false,
+        "reason": null,
+        "value": 0,
+        "failedClosed": true
+      },
+      {
+        "id": "TERMINAL_STATE_MUTATION",
+        "description": "stepping a terminal world",
+        "expectation": "REFUSE",
+        "threw": true,
+        "reason": "TERMINAL_STATE",
+        "message": "Illegal action: TERMINAL_STATE",
+        "failedClosed": true
+      },
+      {
+        "id": "ZERO_LEGAL_ACTIONS",
+        "description": "a terminal world offers no actions",
+        "expectation": "ACCEPT",
+        "threw": false,
+        "reason": null,
+        "value": 0,
+        "failedClosed": true
+      },
+      {
+        "id": "WRONG_REWARD_VERSION",
+        "description": "scalarizing under an unknown reward version",
+        "expectation": "REFUSE",
+        "threw": true,
+        "reason": "FORGE_CONTRACT",
+        "message": "Unknown reward version: FORGE_REWARD_V99",
+        "failedClosed": true
+      },
+      {
+        "id": "REPLAY_WRONG_SEED",
+        "description": "a replay produced from a different seed must not match",
+        "expectation": "ACCEPT",
+        "threw": false,
+        "reason": null,
+        "value": 0,
+        "failedClosed": true
+      },
+      {
+        "id": "CROSS_SESSION_REPLAY",
+        "description": "a record bound to one world must not verify against another",
+        "expectation": "ACCEPT",
+        "threw": false,
+        "reason": null,
+        "value": 0,
+        "failedClosed": true
+      }
+    ],
+    "allBehaveAsSpecified": true,
+    "refusedCount": 11,
+    "sourceWorldUnchanged": true,
+    "illegalActionHandling": "REFUSED_BY_NAME_NO_MUTATION",
+    "malformedWorldHandling": "REFUSED_BY_NAME_AT_VALIDATION",
+    "replayIdentityBinding": "SELF_EXCLUDING_HASH_OVER_WORLD_AND_PROVENANCE",
+    "crossSessionRejection": "TAMPERED_RECORD_FAILS_VERIFICATION",
+    "wrongRewardVersionRejection": "THROWS_FORGE_CONTRACT_ERROR"
+  },
+  "authority": {
+    "tier": "R0",
+    "canDispatch": false,
+    "canMutateLiveWorld": false
+  },
+  "dispatchProbe": {
+    "attempted": true,
+    "refused": true,
+    "errorName": "AuthorityError"
+  },
+  "liveActionDispatches": 0,
+  "worldMutations": 0,
+  "authorityEscalations": 0,
+  "soupRuntimeIntegration": false,
+  "modelTrained": false,
+  "pass": true
+}

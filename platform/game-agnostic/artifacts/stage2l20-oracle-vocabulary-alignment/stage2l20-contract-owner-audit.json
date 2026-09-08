@@ -1,0 +1,84 @@
+{
+  "stage": "STAGE2L20_ORACLE_VOCABULARY_ALIGNMENT_AND_CONTRACT_REPAIR",
+  "heads": [
+    {
+      "headId": "persistence",
+      "implementationOwner": "src/lab/stage2i3-oracle-head-remediation.js::evaluatePersistenceV2 (BOUNDED_INTERRUPTION_TOLERANCE)",
+      "originalImplementationOwner": "src/lab/stage2i2-oracle-task-head-diagnostic.js::evaluateStage2I2Head(PERSISTENCE_HEAD)",
+      "schemaOwners": [
+        "src/lab/stage2l1-counterfactual-expert-information.js::persistence",
+        "src/lab/stage2l2-independent-counterfactual-replication.js::persistence",
+        "src/lab/stage2l4-oracle-head-specific-decision-eligibility.js::persistence"
+      ],
+      "corpusOwner": "src/lab/stage2i4-oracle-v2-assembly.js::buildOracleV2Holdout (ALTERNATING_INTERRUPTION)",
+      "benchmarkOwner": "src/lab/stage2i2-oracle-task-head-diagnostic.js (INTERMITTENT_TREND / LATE_INTERRUPTION / STABLE)",
+      "testOwner": "tests/stage2l19-oracle-multi-head-qualification.test.js",
+      "serializationOwner": "src/lab/stage2i4-oracle-v2-assembly.js::headEnvelope",
+      "producerLabels": [
+        "INSUFFICIENT_EVIDENCE",
+        "NON_PERSISTENT",
+        "PERSISTENT"
+      ],
+      "benchmarkLabels": [
+        "NON_PERSISTENT",
+        "NOT_PERSISTENT",
+        "PERSISTENT"
+      ],
+      "stage2l19DeclaredOutputs": [
+        "INSUFFICIENT_EVIDENCE",
+        "NON_PERSISTENT",
+        "PERSISTENT"
+      ],
+      "declaredMatchesProducer": true,
+      "inheritedBenchmarkLabels": [
+        "NOT_PERSISTENT",
+        "PERSISTENT"
+      ],
+      "stressBenchmarkLabels": [
+        "NON_PERSISTENT",
+        "PERSISTENT"
+      ]
+    },
+    {
+      "headId": "timeToThreshold",
+      "implementationOwner": "src/lab/stage2i2-oracle-task-head-diagnostic.js::evaluateStage2I2Head(TIME_TO_THRESHOLD_HEAD)",
+      "originalImplementationOwner": "src/lab/stage2i2-oracle-task-head-diagnostic.js::evaluateStage2I2Head(TIME_TO_THRESHOLD_HEAD)",
+      "schemaOwners": [
+        "src/lab/stage2l2-independent-counterfactual-replication.js::timeToThreshold"
+      ],
+      "corpusOwner": "src/lab/stage2i4-oracle-v2-assembly.js::buildOracleV2Holdout (APPROACHING_LIMIT)",
+      "benchmarkOwner": "src/lab/stage2l19-oracle-multi-head-qualification.js::buildStage2L19StressCorpus (APPROACHING)",
+      "testOwner": "tests/stage2l19-oracle-multi-head-qualification.test.js",
+      "serializationOwner": "src/lab/stage2i4-oracle-v2-assembly.js::headEnvelope",
+      "producerLabels": [
+        "ALREADY_CROSSED",
+        "CROSSING_1_TO_3",
+        "CROSSING_4_TO_8",
+        "NOT_CROSSING"
+      ],
+      "benchmarkLabels": [
+        "ALREADY_CROSSED",
+        "CROSSING_1_TO_3",
+        "NOT_CROSSING"
+      ],
+      "stage2l19DeclaredOutputs": [
+        "ALREADY_CROSSED",
+        "INSUFFICIENT_EVIDENCE",
+        "NOT_CROSSING"
+      ],
+      "declaredMatchesProducer": false,
+      "inheritedBenchmarkLabels": [
+        "ALREADY_CROSSED",
+        "CROSSING_1_TO_3",
+        "NOT_CROSSING"
+      ],
+      "stressBenchmarkLabels": [
+        "ALREADY_CROSSED",
+        "CROSSING_1_TO_3",
+        "NOT_CROSSING"
+      ]
+    }
+  ],
+  "complete": true,
+  "note": "Producer label sets are probed off live evaluation, not copied from the head table, so a stale table cannot conceal a divergence. Stage 2L.19 declared timeToThreshold outputs that omit CROSSING_1_TO_3 and CROSSING_4_TO_8; the probe shows the producer emits them."
+}

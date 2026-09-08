@@ -23,7 +23,7 @@ const verification = await verifyDeclaredRuntime({
   baseline,
   runtimeIdentity: runtime,
   sentinelRoot: path.resolve(root, '../..'),
-  zeknovaRoot: process.env.ZEKNOVA_ROOT || '/Users/dwaynecampbell/Desktop/zeknova-shared-gaming-experience',
+  zeknovaRoot: process.env.ZEKNOVA_ROOT ?? null,
 });
 if (!verification.declaredEqualsMeasured) throw new Error('STAGE2I3_BLOCKED_BY_RUNTIME_DRIFT');
 if (!stage2i2.stage2i2Certified || stage2i2.certificationHash !== '5c481283d006a82115fcd1c8be8422282eb813f97ad696264d9fdda96406fb6c') throw new Error('STAGE2I3_BLOCKED_BY_STAGE2I2_DRIFT');

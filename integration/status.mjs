@@ -1,9 +1,20 @@
 import { createHash } from 'node:crypto';
+import { fileURLToPath } from 'node:url';
 import { execFileSync } from 'node:child_process';
 import { mkdir, readFile, stat, writeFile } from 'node:fs/promises';
 import os from 'node:os'; import path from 'node:path';
 const args = process.argv.slice(2); const value = (flag, fallback) => { const i=args.indexOf(flag); return i>=0?args[i+1]:fallback; };
-const sentinel=path.resolve(value('--sentinel',path.join(os.homedir(),'Desktop','sentinel-grid'))); const zeknova=path.resolve(value('--zeknova',path.join(os.homedir(),'Desktop','zeknova-shared-gaming-experience'))); const output=value('--output',null);
+/* Stage 2M: the roots were defaulted to one developer's Desktop layout via
+ * os.homedir(). That is a hidden machine assumption, not a default — on any other
+ * machine it produced a path that did not exist and the failure surfaced as an
+ * anonymous ENOENT. The Sentinel root is now derived from this module's own
+ * location; the ZekNova root must be declared through --zeknova or ZEKNOVA_ROOT
+ * and is never inferred. */
+const sentinel=path.resolve(value('--sentinel',path.resolve(path.dirname(fileURLToPath(import.meta.url)),'..')));
+const declaredZeknova=value('--zeknova',process.env.ZEKNOVA_ROOT??null);
+if(declaredZeknova===null||String(declaredZeknova).trim()===''){console.error('ZEKNOVA_ROOT is not set and --zeknova was not given. The ZekNova root is never inferred.');console.error('  export ZEKNOVA_ROOT=/path/to/zeknova-shared-gaming-experience');process.exit(2);}
+const zeknova=path.resolve(String(declaredZeknova).trim());
+const output=value('--output',null);
 async function exists(file){try{await stat(file);return true;}catch{return false;}} async function json(file){try{return JSON.parse(await readFile(file,'utf8'));}catch{return null;}} async function sha(file){try{return createHash('sha256').update(await readFile(file)).digest('hex');}catch{return null;}}
 function git(root){try{const run=(...a)=>execFileSync('git',['-C',root,...a],{encoding:'utf8',stdio:['ignore','pipe','ignore']}).trim(); if(run('rev-parse','--is-inside-work-tree')!=='true')return{present:false}; const lines=run('status','--porcelain').split('\n').filter(Boolean); return{present:true,branch:run('branch','--show-current')||null,head:run('rev-parse','HEAD'),dirty:lines.length>0,changedPathCount:lines.length,untrackedPathCount:lines.filter(x=>x.startsWith('??')).length};}catch(error){return{present:false,error:error.message};}}
 const kernel=path.join(sentinel,'platform','game-agnostic'); const pkg=await json(path.join(kernel,'package.json')); const summary=await json(path.join(kernel,'artifacts','stage2f-z-certification-summary.json')); const sm=await json(path.join(sentinel,'integration','mainline-integration.json')); const zm=await json(path.join(zeknova,'sentinel-grid','integration.json')); const stage2fLive=await json(path.join(zeknova,'sentinel-grid','live-parity','evidence','stage2f-latest.json')); const stage2eLive=await json(path.join(zeknova,'sentinel-grid','live-parity','evidence','latest.json'));

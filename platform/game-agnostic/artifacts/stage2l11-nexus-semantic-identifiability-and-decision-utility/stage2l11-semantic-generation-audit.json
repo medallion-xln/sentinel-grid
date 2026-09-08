@@ -1,0 +1,61 @@
+{
+  "stage": "STAGE2L11_NEXUS_SEMANTIC_IDENTIFIABILITY_AND_DECISION_UTILITY",
+  "auditVersion": 1,
+  "semanticTruthSource": "INDEPENDENT_SEEDED_DRAW",
+  "semanticTruthVariable": "nexusAligned — whether the structurally critical entity is also the utility-optimal one",
+  "declaredAlignmentRate": 0.7,
+  "randomnessSources": [
+    {
+      "name": "STAGE2L9_INDEPENDENT_GROUND_TRUTH",
+      "seed": "0x5347324c39 (\"SG2L9\")",
+      "drawPosition": 4,
+      "drives": "nexusAligned",
+      "visibleToNexus": false,
+      "visibleToArbiter": false,
+      "visibleToPrime": false,
+      "availableAtRealDecisionTime": false
+    },
+    {
+      "name": "STAGE2L10_INDEPENDENT_GROUND_TRUTH",
+      "seed": "0x5347324c313043 / 0x5347324c313048 (\"SG2L10C\"/\"SG2L10H\")",
+      "drawPosition": 4,
+      "drives": "nexusAligned (graphShapeIndex is a separate draw at position 6)",
+      "visibleToNexus": false,
+      "visibleToArbiter": false,
+      "visibleToPrime": false,
+      "availableAtRealDecisionTime": false
+    },
+    {
+      "name": "STAGE2L11_SEMANTIC_ALIGNMENT",
+      "seed": "0x5347324c313144 / 0x5347324c313148",
+      "drawPosition": 1,
+      "drives": "nexusAligned",
+      "note": "Stage 2L.11 puts alignment on a SEPARATE derived stream from topology so the two cannot share structure even incidentally.",
+      "visibleToNexus": false,
+      "visibleToArbiter": false,
+      "visibleToPrime": false,
+      "availableAtRealDecisionTime": false
+    },
+    {
+      "name": "STAGE2L11_DECISION_CONTEXT",
+      "seed": "0x5347324c313144 / 0x5347324c313148",
+      "drives": "primeCorrect, ambiguity band, supportInTieBand, topology family, topology scale",
+      "visibleToNexus": "topology only, via the graph itself",
+      "visibleToArbiter": "band and margin only",
+      "visibleToPrime": true,
+      "availableAtRealDecisionTime": true
+    }
+  ],
+  "semanticTruthDecisionTimeObservable": false,
+  "hiddenRandomnessInvolved": true,
+  "hiddenRandomnessIndependentOfObservables": true,
+  "correctnessReducesToHiddenDrawAmongOpportunities": true,
+  "derivation": "expertCorrect = candidateIsSpof AND nexusAligned. Conditioning on a delegation opportunity fixes the first conjunct true, leaving expertCorrect identically equal to the hidden draw.",
+  "whatWouldMakeItObservable": [
+    "Objective or utility weights over entities in the canonical observation stream.",
+    "Per-entity value, threat cost, or mission-criticality scoring the adapter does not currently emit.",
+    "An outcome channel linking structural criticality to realised utility, which no current corpus provides."
+  ],
+  "defectLocus": "CORPUS_SEMANTICS_AND_WORLD_STATE_OBSERVABILITY",
+  "defectLocusExplanation": "Nexus's relational computation is exact and is not at fault. The corpus models semantic alignment as an independent coin flip rather than as a function of latent world state, and the observation stream carries no utility information from which any expert could recover it."
+}

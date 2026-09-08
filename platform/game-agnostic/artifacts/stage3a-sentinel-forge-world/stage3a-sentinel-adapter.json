@@ -1,0 +1,106 @@
+{
+  "adapterId": "sentinel-forge-world-adapter",
+  "gameId": "sentinel-forge-world",
+  "adapterVersion": "1.0.0",
+  "manifest": {
+    "contractVersion": 1,
+    "gameId": "sentinel-forge-world",
+    "adapterId": "sentinel-forge-world-adapter",
+    "adapterVersion": "1.0.0",
+    "deterministic": true,
+    "observationSchemas": [
+      {
+        "schemaId": "sentinel-forge-world/observation",
+        "schemaVersion": 1,
+        "variableSize": false
+      }
+    ],
+    "capabilities": {
+      "imperfectInformation": false,
+      "stochasticTransitions": false,
+      "simultaneousActions": false,
+      "variableObservationSize": false
+    },
+    "authority": {
+      "tier": "R0",
+      "executionInterface": false
+    },
+    "metadata": {
+      "purpose": "deterministic counterfactual training substrate",
+      "worldVersion": "sentinel-forge-world-0.1.0",
+      "kernelVersion": "forge-kernel-v1",
+      "counterfactualOracleExposed": false
+    }
+  },
+  "validatesAsOrdinaryAdapter": true,
+  "forgeSpecificDecisionShortcuts": 0,
+  "counterfactualOracleReachableFromAdapter": false,
+  "shadow": {
+    "casesEvaluated": 504,
+    "primeLegalRecommendationRate": 1,
+    "primeIllegalRecommendations": 0,
+    "decisiveCases": 405,
+    "optimumAgreementRate": 0.7407,
+    "tieBreakMatchRate": 0.4617,
+    "uniqueOptimumCases": 88,
+    "uniqueOptimumAgreementRate": 0.0341,
+    "meanRegretTimes1000": 10919,
+    "horizonAlignedCases": 319,
+    "horizonAlignedAgreementRate": 0.9404,
+    "horizonDependentCases": 86,
+    "horizonDependentAgreementRate": 0,
+    "primeTracksItsOwnObjectiveRate": 0.2148,
+    "objectiveMismatchNote": "Prime scores an action over one step; the oracle scores it over three under the declared continuation policy. Where those disagree, a one-step searcher cannot reach the horizon optimum. This is an objective mismatch, measured, not a search defect.",
+    "zeroRegretCases": 399,
+    "exactTieCases": 416,
+    "nexusCasesEvaluated": 504,
+    "oracleCasesEvaluated": 504,
+    "nexusAbstentions": 0,
+    "oracleAbstentions": 504,
+    "averageLegalActionsTimes100": 697,
+    "counterfactualActionsEvaluated": 3515,
+    "bySurface": [
+      {
+        "surface": "ARCHIMEDES",
+        "cases": 108,
+        "legalRate": 1,
+        "decisiveCases": 105,
+        "optimumAgreementRate": 0.6667,
+        "uniqueOptimumCases": 29,
+        "uniqueOptimumAgreementRate": 0
+      },
+      {
+        "surface": "NEXUS",
+        "cases": 162,
+        "legalRate": 1,
+        "decisiveCases": 162,
+        "optimumAgreementRate": 0.7716,
+        "uniqueOptimumCases": 28,
+        "uniqueOptimumAgreementRate": 0
+      },
+      {
+        "surface": "ORACLE",
+        "cases": 144,
+        "legalRate": 1,
+        "decisiveCases": 48,
+        "optimumAgreementRate": 1,
+        "uniqueOptimumCases": 0,
+        "uniqueOptimumAgreementRate": null
+      },
+      {
+        "surface": "PRIME",
+        "cases": 90,
+        "legalRate": 1,
+        "decisiveCases": 90,
+        "optimumAgreementRate": 0.6333,
+        "uniqueOptimumCases": 31,
+        "uniqueOptimumAgreementRate": 0.0968
+      }
+    ],
+    "dispatchProbe": {
+      "attempted": true,
+      "refused": true,
+      "errorName": "AuthorityError"
+    }
+  }
+}

@@ -1,0 +1,734 @@
+{
+  "stage": "STAGE2L20_ORACLE_VOCABULARY_ALIGNMENT_AND_CONTRACT_REPAIR",
+  "before": {
+    "corpus": "STAGE2L19_STRESS_CORPUS_FROZEN",
+    "cases": 2007,
+    "heads": [
+      {
+        "headId": "direction",
+        "corpus": "STAGE2L19_STRESS_CORPUS_FROZEN",
+        "cases": 350,
+        "accuracy": 1,
+        "abstentionRate": 0,
+        "majorityBaseline": 0.342857,
+        "liftOverTrivialBaseline": 0.657143,
+        "labelCounts": {
+          "UP": 116,
+          "DOWN": 114,
+          "STABLE": 120
+        },
+        "predictionCounts": {
+          "UP": 116,
+          "DOWN": 114,
+          "STABLE": 120
+        },
+        "distinctPredictions": [
+          "DOWN",
+          "STABLE",
+          "UP"
+        ]
+      },
+      {
+        "headId": "persistence",
+        "corpus": "STAGE2L19_STRESS_CORPUS_FROZEN",
+        "cases": 236,
+        "accuracy": 0.34322,
+        "abstentionRate": 0.605932,
+        "majorityBaseline": 0.508475,
+        "liftOverTrivialBaseline": -0.165255,
+        "labelCounts": {
+          "PERSISTENT": 116,
+          "NON_PERSISTENT": 120
+        },
+        "predictionCounts": {
+          "NON_PERSISTENT": 12,
+          "INSUFFICIENT_EVIDENCE": 143,
+          "PERSISTENT": 81
+        },
+        "distinctPredictions": [
+          "INSUFFICIENT_EVIDENCE",
+          "NON_PERSISTENT",
+          "PERSISTENT"
+        ]
+      },
+      {
+        "headId": "reversal",
+        "corpus": "STAGE2L19_STRESS_CORPUS_FROZEN",
+        "cases": 240,
+        "accuracy": 0.6625,
+        "abstentionRate": 0,
+        "majorityBaseline": 0.5,
+        "liftOverTrivialBaseline": 0.1625,
+        "labelCounts": {
+          "REVERSAL": 120,
+          "NO_REVERSAL": 120
+        },
+        "predictionCounts": {
+          "NO_REVERSAL": 201,
+          "REVERSAL": 39
+        },
+        "distinctPredictions": [
+          "NO_REVERSAL",
+          "REVERSAL"
+        ]
+      },
+      {
+        "headId": "regimeChange",
+        "corpus": "STAGE2L19_STRESS_CORPUS_FROZEN",
+        "cases": 240,
+        "accuracy": 0.916667,
+        "abstentionRate": 0,
+        "majorityBaseline": 0.5,
+        "liftOverTrivialBaseline": 0.416667,
+        "labelCounts": {
+          "LEVEL_CHANGE": 120,
+          "NO_CHANGE": 120
+        },
+        "predictionCounts": {
+          "NO_CHANGE": 140,
+          "LEVEL_CHANGE": 100
+        },
+        "distinctPredictions": [
+          "LEVEL_CHANGE",
+          "NO_CHANGE"
+        ]
+      },
+      {
+        "headId": "volatility",
+        "corpus": "STAGE2L19_STRESS_CORPUS_FROZEN",
+        "cases": 210,
+        "accuracy": 1,
+        "abstentionRate": 0,
+        "majorityBaseline": 0.571429,
+        "liftOverTrivialBaseline": 0.428571,
+        "labelCounts": {
+          "HIGH_VOLATILITY": 120,
+          "LOW_VOLATILITY": 90
+        },
+        "predictionCounts": {
+          "HIGH_VOLATILITY": 120,
+          "LOW_VOLATILITY": 90
+        },
+        "distinctPredictions": [
+          "HIGH_VOLATILITY",
+          "LOW_VOLATILITY"
+        ]
+      },
+      {
+        "headId": "cycle",
+        "corpus": "STAGE2L19_STRESS_CORPUS_FROZEN",
+        "cases": 236,
+        "accuracy": 0.521186,
+        "abstentionRate": 0,
+        "majorityBaseline": 0.508475,
+        "liftOverTrivialBaseline": 0.012711,
+        "labelCounts": {
+          "CYCLICAL": 120,
+          "NOT_CYCLICAL": 116
+        },
+        "predictionCounts": {
+          "CYCLICAL": 233,
+          "NOT_CYCLICAL": 3
+        },
+        "distinctPredictions": [
+          "CYCLICAL",
+          "NOT_CYCLICAL"
+        ]
+      },
+      {
+        "headId": "timeToThreshold",
+        "corpus": "STAGE2L19_STRESS_CORPUS_FROZEN",
+        "cases": 285,
+        "accuracy": 0.842105,
+        "abstentionRate": 0,
+        "majorityBaseline": 0.421053,
+        "liftOverTrivialBaseline": 0.421052,
+        "labelCounts": {
+          "ALREADY_CROSSED": 120,
+          "NOT_CROSSING": 120,
+          "CROSSING_1_TO_3": 45
+        },
+        "predictionCounts": {
+          "ALREADY_CROSSED": 165,
+          "NOT_CROSSING": 120
+        },
+        "distinctPredictions": [
+          "ALREADY_CROSSED",
+          "NOT_CROSSING"
+        ]
+      },
+      {
+        "headId": "abstention",
+        "corpus": "STAGE2L19_STRESS_CORPUS_FROZEN",
+        "cases": 210,
+        "accuracy": 0.995238,
+        "abstentionRate": 0.433333,
+        "majorityBaseline": 0.571429,
+        "liftOverTrivialBaseline": 0.423809,
+        "labelCounts": {
+          "INSUFFICIENT_EVIDENCE": 90,
+          "ENOUGH_EVIDENCE": 120
+        },
+        "predictionCounts": {
+          "INSUFFICIENT_EVIDENCE": 91,
+          "ENOUGH_EVIDENCE": 119
+        },
+        "distinctPredictions": [
+          "ENOUGH_EVIDENCE",
+          "INSUFFICIENT_EVIDENCE"
+        ]
+      }
+    ]
+  },
+  "after": {
+    "corpus": "STAGE2L20_REPAIRED_STRESS_CORPUS",
+    "cases": 2242,
+    "heads": [
+      {
+        "headId": "direction",
+        "corpus": "STAGE2L20_REPAIRED_STRESS_CORPUS",
+        "cases": 350,
+        "accuracy": 1,
+        "abstentionRate": 0,
+        "majorityBaseline": 0.342857,
+        "liftOverTrivialBaseline": 0.657143,
+        "labelCounts": {
+          "UP": 116,
+          "DOWN": 114,
+          "STABLE": 120
+        },
+        "predictionCounts": {
+          "UP": 116,
+          "DOWN": 114,
+          "STABLE": 120
+        },
+        "distinctPredictions": [
+          "DOWN",
+          "STABLE",
+          "UP"
+        ]
+      },
+      {
+        "headId": "persistence",
+        "corpus": "STAGE2L20_REPAIRED_STRESS_CORPUS",
+        "cases": 236,
+        "accuracy": 0.34322,
+        "abstentionRate": 0.605932,
+        "majorityBaseline": 0.508475,
+        "liftOverTrivialBaseline": -0.165255,
+        "labelCounts": {
+          "PERSISTENT": 116,
+          "NON_PERSISTENT": 120
+        },
+        "predictionCounts": {
+          "NOT_PERSISTENT": 12,
+          "INSUFFICIENT_EVIDENCE": 143,
+          "PERSISTENT": 81
+        },
+        "distinctPredictions": [
+          "INSUFFICIENT_EVIDENCE",
+          "NOT_PERSISTENT",
+          "PERSISTENT"
+        ]
+      },
+      {
+        "headId": "reversal",
+        "corpus": "STAGE2L20_REPAIRED_STRESS_CORPUS",
+        "cases": 240,
+        "accuracy": 0.6625,
+        "abstentionRate": 0,
+        "majorityBaseline": 0.5,
+        "liftOverTrivialBaseline": 0.1625,
+        "labelCounts": {
+          "REVERSAL": 120,
+          "NO_REVERSAL": 120
+        },
+        "predictionCounts": {
+          "NO_REVERSAL": 201,
+          "REVERSAL": 39
+        },
+        "distinctPredictions": [
+          "NO_REVERSAL",
+          "REVERSAL"
+        ]
+      },
+      {
+        "headId": "regimeChange",
+        "corpus": "STAGE2L20_REPAIRED_STRESS_CORPUS",
+        "cases": 240,
+        "accuracy": 0.916667,
+        "abstentionRate": 0,
+        "majorityBaseline": 0.5,
+        "liftOverTrivialBaseline": 0.416667,
+        "labelCounts": {
+          "LEVEL_CHANGE": 120,
+          "NO_CHANGE": 120
+        },
+        "predictionCounts": {
+          "NO_CHANGE": 140,
+          "LEVEL_CHANGE": 100
+        },
+        "distinctPredictions": [
+          "LEVEL_CHANGE",
+          "NO_CHANGE"
+        ]
+      },
+      {
+        "headId": "volatility",
+        "corpus": "STAGE2L20_REPAIRED_STRESS_CORPUS",
+        "cases": 210,
+        "accuracy": 1,
+        "abstentionRate": 0,
+        "majorityBaseline": 0.571429,
+        "liftOverTrivialBaseline": 0.428571,
+        "labelCounts": {
+          "HIGH_VOLATILITY": 120,
+          "LOW_VOLATILITY": 90
+        },
+        "predictionCounts": {
+          "HIGH_VOLATILITY": 120,
+          "LOW_VOLATILITY": 90
+        },
+        "distinctPredictions": [
+          "HIGH_VOLATILITY",
+          "LOW_VOLATILITY"
+        ]
+      },
+      {
+        "headId": "cycle",
+        "corpus": "STAGE2L20_REPAIRED_STRESS_CORPUS",
+        "cases": 236,
+        "accuracy": 0.521186,
+        "abstentionRate": 0,
+        "majorityBaseline": 0.508475,
+        "liftOverTrivialBaseline": 0.012711,
+        "labelCounts": {
+          "CYCLICAL": 120,
+          "NOT_CYCLICAL": 116
+        },
+        "predictionCounts": {
+          "CYCLICAL": 233,
+          "NOT_CYCLICAL": 3
+        },
+        "distinctPredictions": [
+          "CYCLICAL",
+          "NOT_CYCLICAL"
+        ]
+      },
+      {
+        "headId": "timeToThreshold",
+        "corpus": "STAGE2L20_REPAIRED_STRESS_CORPUS",
+        "cases": 520,
+        "accuracy": 1,
+        "abstentionRate": 0.076923,
+        "majorityBaseline": 0.230769,
+        "liftOverTrivialBaseline": 0.769231,
+        "labelCounts": {
+          "ALREADY_CROSSED": 120,
+          "NOT_CROSSING": 120,
+          "CROSSING_1_TO_3": 120,
+          "CROSSING_4_TO_8": 120,
+          "INSUFFICIENT_EVIDENCE": 40
+        },
+        "predictionCounts": {
+          "ALREADY_CROSSED": 120,
+          "NOT_CROSSING": 120,
+          "CROSSING_1_TO_3": 120,
+          "CROSSING_4_TO_8": 120,
+          "INSUFFICIENT_EVIDENCE": 40
+        },
+        "distinctPredictions": [
+          "ALREADY_CROSSED",
+          "CROSSING_1_TO_3",
+          "CROSSING_4_TO_8",
+          "INSUFFICIENT_EVIDENCE",
+          "NOT_CROSSING"
+        ]
+      },
+      {
+        "headId": "abstention",
+        "corpus": "STAGE2L20_REPAIRED_STRESS_CORPUS",
+        "cases": 210,
+        "accuracy": 0.995238,
+        "abstentionRate": 0.433333,
+        "majorityBaseline": 0.571429,
+        "liftOverTrivialBaseline": 0.423809,
+        "labelCounts": {
+          "INSUFFICIENT_EVIDENCE": 90,
+          "ENOUGH_EVIDENCE": 120
+        },
+        "predictionCounts": {
+          "INSUFFICIENT_EVIDENCE": 91,
+          "ENOUGH_EVIDENCE": 119
+        },
+        "distinctPredictions": [
+          "ENOUGH_EVIDENCE",
+          "INSUFFICIENT_EVIDENCE"
+        ]
+      }
+    ]
+  },
+  "inheritedBefore": {
+    "corpus": "STAGE2I4_HOLDOUT_FROZEN",
+    "cases": 2400,
+    "heads": [
+      {
+        "headId": "direction",
+        "corpus": "STAGE2I4_HOLDOUT_FROZEN",
+        "cases": 300,
+        "accuracy": 1,
+        "abstentionRate": 0,
+        "majorityBaseline": 0.333333,
+        "liftOverTrivialBaseline": 0.666667,
+        "labelCounts": {
+          "UP": 100,
+          "DOWN": 100,
+          "STABLE": 100
+        },
+        "predictionCounts": {
+          "UP": 100,
+          "DOWN": 100,
+          "STABLE": 100
+        },
+        "distinctPredictions": [
+          "DOWN",
+          "STABLE",
+          "UP"
+        ]
+      },
+      {
+        "headId": "persistence",
+        "corpus": "STAGE2I4_HOLDOUT_FROZEN",
+        "cases": 300,
+        "accuracy": 0.666667,
+        "abstentionRate": 0.333333,
+        "majorityBaseline": 0.666667,
+        "liftOverTrivialBaseline": 0,
+        "labelCounts": {
+          "PERSISTENT": 200,
+          "NOT_PERSISTENT": 100
+        },
+        "predictionCounts": {
+          "PERSISTENT": 200,
+          "INSUFFICIENT_EVIDENCE": 100
+        },
+        "distinctPredictions": [
+          "INSUFFICIENT_EVIDENCE",
+          "PERSISTENT"
+        ]
+      },
+      {
+        "headId": "reversal",
+        "corpus": "STAGE2I4_HOLDOUT_FROZEN",
+        "cases": 300,
+        "accuracy": 1,
+        "abstentionRate": 0,
+        "majorityBaseline": 0.666667,
+        "liftOverTrivialBaseline": 0.333333,
+        "labelCounts": {
+          "REVERSAL": 100,
+          "NO_REVERSAL": 200
+        },
+        "predictionCounts": {
+          "REVERSAL": 100,
+          "NO_REVERSAL": 200
+        },
+        "distinctPredictions": [
+          "NO_REVERSAL",
+          "REVERSAL"
+        ]
+      },
+      {
+        "headId": "regimeChange",
+        "corpus": "STAGE2I4_HOLDOUT_FROZEN",
+        "cases": 300,
+        "accuracy": 1,
+        "abstentionRate": 0,
+        "majorityBaseline": 0.333333,
+        "liftOverTrivialBaseline": 0.666667,
+        "labelCounts": {
+          "TREND_CHANGE": 100,
+          "LEVEL_CHANGE": 100,
+          "NO_CHANGE": 100
+        },
+        "predictionCounts": {
+          "TREND_CHANGE": 100,
+          "LEVEL_CHANGE": 100,
+          "NO_CHANGE": 100
+        },
+        "distinctPredictions": [
+          "LEVEL_CHANGE",
+          "NO_CHANGE",
+          "TREND_CHANGE"
+        ]
+      },
+      {
+        "headId": "volatility",
+        "corpus": "STAGE2I4_HOLDOUT_FROZEN",
+        "cases": 300,
+        "accuracy": 1,
+        "abstentionRate": 0,
+        "majorityBaseline": 0.666667,
+        "liftOverTrivialBaseline": 0.333333,
+        "labelCounts": {
+          "HIGH_VOLATILITY": 100,
+          "LOW_VOLATILITY": 200
+        },
+        "predictionCounts": {
+          "HIGH_VOLATILITY": 100,
+          "LOW_VOLATILITY": 200
+        },
+        "distinctPredictions": [
+          "HIGH_VOLATILITY",
+          "LOW_VOLATILITY"
+        ]
+      },
+      {
+        "headId": "cycle",
+        "corpus": "STAGE2I4_HOLDOUT_FROZEN",
+        "cases": 300,
+        "accuracy": 0.49,
+        "abstentionRate": 0,
+        "majorityBaseline": 0.666667,
+        "liftOverTrivialBaseline": -0.176667,
+        "labelCounts": {
+          "CYCLICAL": 100,
+          "NOT_CYCLICAL": 200
+        },
+        "predictionCounts": {
+          "CYCLICAL": 253,
+          "NOT_CYCLICAL": 47
+        },
+        "distinctPredictions": [
+          "CYCLICAL",
+          "NOT_CYCLICAL"
+        ]
+      },
+      {
+        "headId": "timeToThreshold",
+        "corpus": "STAGE2I4_HOLDOUT_FROZEN",
+        "cases": 300,
+        "accuracy": 0.666667,
+        "abstentionRate": 0,
+        "majorityBaseline": 0.333333,
+        "liftOverTrivialBaseline": 0.333334,
+        "labelCounts": {
+          "CROSSING_1_TO_3": 100,
+          "ALREADY_CROSSED": 100,
+          "NOT_CROSSING": 100
+        },
+        "predictionCounts": {
+          "ALREADY_CROSSED": 200,
+          "NOT_CROSSING": 100
+        },
+        "distinctPredictions": [
+          "ALREADY_CROSSED",
+          "NOT_CROSSING"
+        ]
+      },
+      {
+        "headId": "abstention",
+        "corpus": "STAGE2I4_HOLDOUT_FROZEN",
+        "cases": 300,
+        "accuracy": 1,
+        "abstentionRate": 0.666667,
+        "majorityBaseline": 0.666667,
+        "liftOverTrivialBaseline": 0.333333,
+        "labelCounts": {
+          "INSUFFICIENT_EVIDENCE": 200,
+          "ENOUGH_EVIDENCE": 100
+        },
+        "predictionCounts": {
+          "INSUFFICIENT_EVIDENCE": 200,
+          "ENOUGH_EVIDENCE": 100
+        },
+        "distinctPredictions": [
+          "ENOUGH_EVIDENCE",
+          "INSUFFICIENT_EVIDENCE"
+        ]
+      }
+    ]
+  },
+  "inheritedAfter": {
+    "corpus": "STAGE2I4_HOLDOUT_CANONICAL",
+    "cases": 2400,
+    "heads": [
+      {
+        "headId": "direction",
+        "corpus": "STAGE2I4_HOLDOUT_CANONICAL",
+        "cases": 300,
+        "accuracy": 1,
+        "abstentionRate": 0,
+        "majorityBaseline": 0.333333,
+        "liftOverTrivialBaseline": 0.666667,
+        "labelCounts": {
+          "UP": 100,
+          "DOWN": 100,
+          "STABLE": 100
+        },
+        "predictionCounts": {
+          "UP": 100,
+          "DOWN": 100,
+          "STABLE": 100
+        },
+        "distinctPredictions": [
+          "DOWN",
+          "STABLE",
+          "UP"
+        ]
+      },
+      {
+        "headId": "persistence",
+        "corpus": "STAGE2I4_HOLDOUT_CANONICAL",
+        "cases": 300,
+        "accuracy": 0.666667,
+        "abstentionRate": 0.333333,
+        "majorityBaseline": 0.666667,
+        "liftOverTrivialBaseline": 0,
+        "labelCounts": {
+          "PERSISTENT": 200,
+          "NOT_PERSISTENT": 100
+        },
+        "predictionCounts": {
+          "PERSISTENT": 200,
+          "INSUFFICIENT_EVIDENCE": 100
+        },
+        "distinctPredictions": [
+          "INSUFFICIENT_EVIDENCE",
+          "PERSISTENT"
+        ]
+      },
+      {
+        "headId": "reversal",
+        "corpus": "STAGE2I4_HOLDOUT_CANONICAL",
+        "cases": 300,
+        "accuracy": 1,
+        "abstentionRate": 0,
+        "majorityBaseline": 0.666667,
+        "liftOverTrivialBaseline": 0.333333,
+        "labelCounts": {
+          "REVERSAL": 100,
+          "NO_REVERSAL": 200
+        },
+        "predictionCounts": {
+          "REVERSAL": 100,
+          "NO_REVERSAL": 200
+        },
+        "distinctPredictions": [
+          "NO_REVERSAL",
+          "REVERSAL"
+        ]
+      },
+      {
+        "headId": "regimeChange",
+        "corpus": "STAGE2I4_HOLDOUT_CANONICAL",
+        "cases": 300,
+        "accuracy": 1,
+        "abstentionRate": 0,
+        "majorityBaseline": 0.333333,
+        "liftOverTrivialBaseline": 0.666667,
+        "labelCounts": {
+          "TREND_CHANGE": 100,
+          "LEVEL_CHANGE": 100,
+          "NO_CHANGE": 100
+        },
+        "predictionCounts": {
+          "TREND_CHANGE": 100,
+          "LEVEL_CHANGE": 100,
+          "NO_CHANGE": 100
+        },
+        "distinctPredictions": [
+          "LEVEL_CHANGE",
+          "NO_CHANGE",
+          "TREND_CHANGE"
+        ]
+      },
+      {
+        "headId": "volatility",
+        "corpus": "STAGE2I4_HOLDOUT_CANONICAL",
+        "cases": 300,
+        "accuracy": 1,
+        "abstentionRate": 0,
+        "majorityBaseline": 0.666667,
+        "liftOverTrivialBaseline": 0.333333,
+        "labelCounts": {
+          "HIGH_VOLATILITY": 100,
+          "LOW_VOLATILITY": 200
+        },
+        "predictionCounts": {
+          "HIGH_VOLATILITY": 100,
+          "LOW_VOLATILITY": 200
+        },
+        "distinctPredictions": [
+          "HIGH_VOLATILITY",
+          "LOW_VOLATILITY"
+        ]
+      },
+      {
+        "headId": "cycle",
+        "corpus": "STAGE2I4_HOLDOUT_CANONICAL",
+        "cases": 300,
+        "accuracy": 0.49,
+        "abstentionRate": 0,
+        "majorityBaseline": 0.666667,
+        "liftOverTrivialBaseline": -0.176667,
+        "labelCounts": {
+          "CYCLICAL": 100,
+          "NOT_CYCLICAL": 200
+        },
+        "predictionCounts": {
+          "CYCLICAL": 253,
+          "NOT_CYCLICAL": 47
+        },
+        "distinctPredictions": [
+          "CYCLICAL",
+          "NOT_CYCLICAL"
+        ]
+      },
+      {
+        "headId": "timeToThreshold",
+        "corpus": "STAGE2I4_HOLDOUT_CANONICAL",
+        "cases": 300,
+        "accuracy": 0.666667,
+        "abstentionRate": 0,
+        "majorityBaseline": 0.333333,
+        "liftOverTrivialBaseline": 0.333334,
+        "labelCounts": {
+          "CROSSING_1_TO_3": 100,
+          "ALREADY_CROSSED": 100,
+          "NOT_CROSSING": 100
+        },
+        "predictionCounts": {
+          "ALREADY_CROSSED": 200,
+          "NOT_CROSSING": 100
+        },
+        "distinctPredictions": [
+          "ALREADY_CROSSED",
+          "NOT_CROSSING"
+        ]
+      },
+      {
+        "headId": "abstention",
+        "corpus": "STAGE2I4_HOLDOUT_CANONICAL",
+        "cases": 300,
+        "accuracy": 1,
+        "abstentionRate": 0.666667,
+        "majorityBaseline": 0.666667,
+        "liftOverTrivialBaseline": 0.333333,
+        "labelCounts": {
+          "INSUFFICIENT_EVIDENCE": 200,
+          "ENOUGH_EVIDENCE": 100
+        },
+        "predictionCounts": {
+          "INSUFFICIENT_EVIDENCE": 200,
+          "ENOUGH_EVIDENCE": 100
+        },
+        "distinctPredictions": [
+          "ENOUGH_EVIDENCE",
+          "INSUFFICIENT_EVIDENCE"
+        ]
+      }
+    ]
+  },
+  "unrelatedHeadsPreserved": true
+}

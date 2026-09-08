@@ -1,0 +1,126 @@
+{
+  "stage": "STAGE2L18_NEXUS_HIGH_CONFIDENCE_TAIL_DIAGNOSIS",
+  "percents": [
+    5,
+    10,
+    25,
+    50
+  ],
+  "fields": [
+    "objectiveValue",
+    "restorationCost",
+    "risk",
+    "baseCapacity",
+    "availability"
+  ],
+  "cases": [
+    {
+      "variantIndex": 1824,
+      "splitName": "DEVELOPMENT",
+      "smallestFix": {
+        "percent": 25,
+        "field": "risk",
+        "entityId": "s2l12h-01824-n0",
+        "becomes": "s2l12h-01824-act-protect-n0"
+      },
+      "smallestJustification": {
+        "percent": 25,
+        "field": "risk",
+        "entityId": "s2l12h-01824-n0"
+      },
+      "classification": "RISK_MODEL_ERROR"
+    },
+    {
+      "variantIndex": 7822,
+      "splitName": "DEVELOPMENT",
+      "smallestFix": {
+        "percent": 50,
+        "field": "risk",
+        "entityId": "s2l12h-07822-n0",
+        "becomes": "s2l12h-07822-act-protect-n0"
+      },
+      "smallestJustification": {
+        "percent": 50,
+        "field": "risk",
+        "entityId": "s2l12h-07822-n0"
+      },
+      "classification": "RISK_MODEL_ERROR"
+    },
+    {
+      "variantIndex": 7894,
+      "splitName": "DEVELOPMENT",
+      "smallestFix": {
+        "percent": -25,
+        "field": "risk",
+        "entityId": "s2l12h-07894-n8",
+        "becomes": "s2l12h-07894-act-protect-n0"
+      },
+      "smallestJustification": {
+        "percent": -25,
+        "field": "risk",
+        "entityId": "s2l12h-07894-n8"
+      },
+      "classification": "RISK_MODEL_ERROR"
+    },
+    {
+      "variantIndex": 10490,
+      "splitName": "DEVELOPMENT",
+      "smallestFix": {
+        "percent": -10,
+        "field": "availability",
+        "entityId": "s2l12h-10490-n0",
+        "becomes": "s2l12h-10490-act-restore-n0"
+      },
+      "smallestJustification": {
+        "percent": 25,
+        "field": "availability",
+        "entityId": "s2l12h-10490-n0"
+      },
+      "classification": "BOUNDARY_ERROR"
+    },
+    {
+      "variantIndex": 21915,
+      "splitName": "CALIBRATION",
+      "smallestFix": {
+        "percent": 5,
+        "field": "risk",
+        "entityId": "s2l12h-21915-n0",
+        "becomes": "s2l12h-21915-act-protect-n0"
+      },
+      "smallestJustification": {
+        "percent": 5,
+        "field": "risk",
+        "entityId": "s2l12h-21915-n0"
+      },
+      "classification": "BOUNDARY_ERROR"
+    },
+    {
+      "variantIndex": 39126,
+      "splitName": "FINAL_HOLDOUT",
+      "smallestFix": {
+        "percent": 5,
+        "field": "risk",
+        "entityId": "s2l12h-39126-n2",
+        "becomes": "s2l12h-39126-act-protect-n2"
+      },
+      "smallestJustification": {
+        "percent": 5,
+        "field": "risk",
+        "entityId": "s2l12h-39126-n2"
+      },
+      "classification": "BOUNDARY_ERROR"
+    }
+  ],
+  "classificationCounts": {
+    "RISK_MODEL_ERROR": 3,
+    "BOUNDARY_ERROR": 3
+  },
+  "boundaryErrorCount": 3,
+  "structuralModelErrorCount": 0,
+  "valueModelErrorCount": 0,
+  "propagationErrorCount": 0,
+  "costModelErrorCount": 0,
+  "riskModelErrorCount": 3,
+  "everyCaseFixableByBoundedEdit": true,
+  "dominantClassification": "RISK_MODEL_ERROR"
+}

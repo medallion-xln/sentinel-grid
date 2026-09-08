@@ -1,0 +1,94 @@
+{
+  "stage": "STAGE2L22_ORACLE_PERSISTENCE_CONFLICT_SEMANTICS",
+  "classification": "OVER_ABSTENTION",
+  "decision": "E_NO_CHANGE_INCONCLUSIVE",
+  "rationale": {
+    "decision": "E_NO_CHANGE_INCONCLUSIVE",
+    "reason": "STRUCTURALLY_OVER_ABSTENTION_BUT_EMPIRICALLY_UNREACHABLE",
+    "adequate": false,
+    "population": 2,
+    "corpusConflictCases": 0,
+    "minimumPopulation": 8,
+    "sweepHitRate": 0,
+    "note": "The structural argument stands: the gate sits after sufficiency and immediately before NOT_PERSISTENT, so it can only withhold an answer the head was about to give. But it fires on no case of any real corpus and on none of a wide deterministic sweep, so there is nothing to repair and no way to demonstrate a repair worked. Recorded as a documentation-level defect in the frozen head, owned and not patched."
+  },
+  "persistenceHeadChanged": false,
+  "changeDescription": "No change. The structural argument stands: the gate sits after sufficiency and immediately before NOT_PERSISTENT, so it can only withhold an answer the head was about to give. But it fires on no case of any real corpus and on none of a wide deterministic sweep, so there is nothing to repair and no way to demonstrate a repair worked. Recorded as a documentation-level defect in the frozen head, owned and not patched.",
+  "separationRule": "historyCoverage === 1 -> genuine conflict (NOT_PERSISTENT); historyCoverage < 1 -> apparent conflict (INSUFFICIENT_EVIDENCE)",
+  "minimumConflictPopulation": 8,
+  "adversarialTableResults": [
+    {
+      "id": "A_ALTERNATING_STEPS",
+      "category": "CONFLICT",
+      "expected": "NOT_PERSISTENT",
+      "emitted": "NOT_PERSISTENT",
+      "correct": true
+    },
+    {
+      "id": "B_SUSTAINED_UP_RARE_INTERRUPTION",
+      "category": "SUSTAINED",
+      "expected": "PERSISTENT",
+      "emitted": "PERSISTENT",
+      "correct": true
+    },
+    {
+      "id": "C_SUSTAINED_DOWN_RARE_INTERRUPTION",
+      "category": "SUSTAINED",
+      "expected": "PERSISTENT",
+      "emitted": "PERSISTENT",
+      "correct": true
+    },
+    {
+      "id": "D_TREND_THEN_REVERSAL",
+      "category": "CONFLICT",
+      "expected": "NOT_PERSISTENT",
+      "emitted": "NOT_PERSISTENT",
+      "correct": true
+    },
+    {
+      "id": "E_REPEATED_REVERSALS",
+      "category": "CONFLICT",
+      "expected": "NOT_PERSISTENT",
+      "emitted": "NOT_PERSISTENT",
+      "correct": true
+    },
+    {
+      "id": "F_ZERO_MEAN_NOISE",
+      "category": "CONFLICT",
+      "expected": "NOT_PERSISTENT",
+      "emitted": "NOT_PERSISTENT",
+      "correct": true
+    },
+    {
+      "id": "G_STRONG_TREND_NOISY_LOCAL",
+      "category": "SUSTAINED",
+      "expected": "PERSISTENT",
+      "emitted": "PERSISTENT",
+      "correct": true
+    },
+    {
+      "id": "H_WEAK_TREND_CONFLICTING_LOCAL",
+      "category": "CONFLICT",
+      "expected": "NOT_PERSISTENT",
+      "emitted": "NOT_PERSISTENT",
+      "correct": true
+    },
+    {
+      "id": "I_SPARSE_HISTORY_APPARENT_CONFLICT",
+      "category": "SPARSE",
+      "expected": "INSUFFICIENT_EVIDENCE",
+      "emitted": "INSUFFICIENT_EVIDENCE",
+      "correct": true
+    },
+    {
+      "id": "J_DENSE_HISTORY_GENUINE_CONFLICT",
+      "category": "CONFLICT",
+      "expected": "NOT_PERSISTENT",
+      "emitted": "NOT_PERSISTENT",
+      "correct": true
+    }
+  ],
+  "priorTableAccuracy": 0.5,
+  "repairedTableAccuracyIfApplied": 1,
+  "decidedOnSemanticsAndReachabilityNotAccuracy": true
+}

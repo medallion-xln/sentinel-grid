@@ -1,0 +1,1176 @@
+{
+  "stage": "STAGE2L13_VALUE_AWARE_NEXUS_RELATIONAL_UTILITY",
+  "evidenceDigest": "6d68772044ea0f4001744a98d465c0cce83b93e1da4dfd24f6fce557e127aba1",
+  "gapAudit": {
+    "auditVersion": 1,
+    "method": "Source scan of the complete inherited Nexus path: src/experts/nexus.js, src/lab/stage2k0-nexus-relational-diagnostic.js, and the Stage 2L.12 nexusRecommendation policy.",
+    "matrix": [
+      {
+        "field": "objectiveValue",
+        "availableInCanonicalState": true,
+        "readByNexus": false,
+        "derivedByNexus": false,
+        "usedInRecommendation": false,
+        "usedInConfidence": false,
+        "exposedToArbiter": false
+      },
+      {
+        "field": "restorationCost",
+        "availableInCanonicalState": true,
+        "readByNexus": false,
+        "derivedByNexus": false,
+        "usedInRecommendation": false,
+        "usedInConfidence": false,
+        "exposedToArbiter": false
+      },
+      {
+        "field": "risk",
+        "availableInCanonicalState": true,
+        "readByNexus": false,
+        "derivedByNexus": false,
+        "usedInRecommendation": false,
+        "usedInConfidence": false,
+        "exposedToArbiter": false
+      },
+      {
+        "field": "protectionNeed",
+        "availableInCanonicalState": true,
+        "readByNexus": false,
+        "derivedByNexus": false,
+        "usedInRecommendation": false,
+        "usedInConfidence": false,
+        "exposedToArbiter": false
+      },
+      {
+        "field": "availability",
+        "availableInCanonicalState": true,
+        "readByNexus": false,
+        "derivedByNexus": false,
+        "usedInRecommendation": false,
+        "usedInConfidence": false,
+        "exposedToArbiter": false
+      },
+      {
+        "field": "demand",
+        "availableInCanonicalState": true,
+        "readByNexus": false,
+        "derivedByNexus": false,
+        "usedInRecommendation": false,
+        "usedInConfidence": false,
+        "exposedToArbiter": false
+      },
+      {
+        "field": "baseCapacity",
+        "availableInCanonicalState": true,
+        "readByNexus": false,
+        "derivedByNexus": false,
+        "usedInRecommendation": false,
+        "usedInConfidence": false,
+        "exposedToArbiter": false
+      },
+      {
+        "field": "objectiveRelevant",
+        "availableInCanonicalState": true,
+        "readByNexus": false,
+        "derivedByNexus": false,
+        "usedInRecommendation": false,
+        "usedInConfidence": false,
+        "exposedToArbiter": false
+      },
+      {
+        "field": "critical (boolean)",
+        "availableInCanonicalState": true,
+        "readByNexus": true,
+        "derivedByNexus": true,
+        "usedInRecommendation": true,
+        "usedInConfidence": true,
+        "exposedToArbiter": true
+      },
+      {
+        "field": "hostile (boolean)",
+        "availableInCanonicalState": true,
+        "readByNexus": true,
+        "derivedByNexus": true,
+        "usedInRecommendation": false,
+        "usedInConfidence": true,
+        "exposedToArbiter": false
+      }
+    ],
+    "relationKindsHandledByInheritedExpert": [
+      "depends",
+      "supports",
+      "threatens"
+    ],
+    "relationKindsIgnoredByInheritedExpert": [
+      "protects",
+      "inhibits",
+      "amplifies",
+      "substitutes",
+      "conflicts"
+    ],
+    "relationKindsHandledByInheritedAnalyzer": [
+      "depends",
+      "supports"
+    ],
+    "measuredRootCause": "Every quantitative semantic field the canonical state carries is read by nothing in the inherited Nexus path. Recommendation and confidence are functions of graph shape and two booleans only, while objective optimality is set by value, cost and risk."
+  },
+  "relationalUtilityModel": {
+    "schemaVersion": 1,
+    "id": "STAGE2L13_VALUE_AWARE_RELATIONAL_UTILITY_V1",
+    "expertId": "sentinel-nexus-value-aware-relational-utility",
+    "expertVersion": 1,
+    "scale": 1000000,
+    "components": [
+      "structuralImportance",
+      "objectiveRelevance",
+      "relationalBenefit",
+      "actionCostPenalty",
+      "riskAdjustment",
+      "redundancyAdjustment",
+      "finalRelationalUtility"
+    ],
+    "composition": "finalRelationalUtility = relationalBenefit + riskAdjustment - actionCostPenalty",
+    "benefitRule": "value of objective-bearing entities downstream of the target that this action would unblock, attenuated per remaining blocker on the path and discounted where an alternate path exists",
+    "approximations": [
+      "expert-declared operational threshold, not the world delivery threshold",
+      "single-pass blocking analysis, no recursive fixed point",
+      "no semantics for amplifies or conflicts",
+      "capacity approximated as baseCapacity vs demand, ignoring supports contributions"
+    ],
+    "importsBenchmarkScoring": false,
+    "readsGroundTruth": false,
+    "readsOptimalAction": false,
+    "readsCorpusIdentity": false,
+    "advisoryOnly": true,
+    "actionGeneration": false,
+    "authorityTier": "R0"
+  },
+  "relationalUtilityModelDigest": "fbec1bd8d1db1a482083d5e5b4fa093b46599f0272cc9ec98f98bacfa5c7446a",
+  "improvementFloor": {
+    "mustBeatInheritedAccuracy": true,
+    "mustBeatRandomBaseline": true,
+    "mustImproveStructureValueDecoupledAccuracy": true,
+    "minimumAbsoluteAccuracyGainPp": 5,
+    "minimumDecoupledAccuracyGainPp": 5
+  },
+  "corpus": {
+    "discoveryCases": 7000,
+    "holdoutCases": 14000,
+    "discoveryDecidable": 2663,
+    "holdoutDecidable": 5261,
+    "corpusOverlap": 0,
+    "calibrationHoldoutSeparate": true,
+    "benchmarkUnchanged": true,
+    "holdoutCorpusDigest": "3006168be746ef5eafbbaaa53dbc6cae6a6bafcd9bd3a2c6019933478198dcff"
+  },
+  "evaluation": {
+    "decidableCases": 5261,
+    "inherited": {
+      "cases": 5261,
+      "accuracy": 0.084395,
+      "accuracyWhenRecommending": 0.138318,
+      "abstentionRate": 0.38985
+    },
+    "remediated": {
+      "cases": 5261,
+      "accuracy": 0.782551,
+      "accuracyWhenRecommending": 0.804102,
+      "abstentionRate": 0.026801
+    },
+    "primeAccuracy": 0.394602,
+    "absoluteImprovementPp": 69.815624,
+    "structureValueDecoupled": {
+      "cases": 4093,
+      "inheritedAccuracy": 0.046909,
+      "remediatedAccuracy": 0.752016,
+      "primeAccuracy": 0.395065
+    },
+    "structureValueAligned": {
+      "cases": 1168,
+      "inheritedAccuracy": 0.215753,
+      "remediatedAccuracy": 0.889555,
+      "primeAccuracy": 0.392979
+    },
+    "nexusPrimeAgreement": 0.408477,
+    "nexusCorrectPrimeWrong": 2282,
+    "nexusWrongPrimeCorrect": 241,
+    "bothCorrect": 1835,
+    "bothWrong": 903,
+    "inheritedNexusCorrectPrimeWrong": 311,
+    "inheritedNexusWrongPrimeCorrect": 1943,
+    "byFamily": {
+      "CHAIN": {
+        "cases": 407,
+        "inheritedAccuracy": 0.125307,
+        "remediatedAccuracy": 0.815725
+      },
+      "COMPETING_CRITICAL_PATHS": {
+        "cases": 441,
+        "inheritedAccuracy": 0.070295,
+        "remediatedAccuracy": 0.836735
+      },
+      "CYCLE": {
+        "cases": 281,
+        "inheritedAccuracy": 0.142349,
+        "remediatedAccuracy": 0.572954
+      },
+      "DECOY_HIGH_DEGREE": {
+        "cases": 465,
+        "inheritedAccuracy": 0,
+        "remediatedAccuracy": 0.744086
+      },
+      "DIAMOND": {
+        "cases": 436,
+        "inheritedAccuracy": 0.084862,
+        "remediatedAccuracy": 0.791284
+      },
+      "LOW_DEGREE_HIGH_VALUE": {
+        "cases": 483,
+        "inheritedAccuracy": 0.120083,
+        "remediatedAccuracy": 0.811594
+      },
+      "MULTI_COMPONENT": {
+        "cases": 449,
+        "inheritedAccuracy": 0.13363,
+        "remediatedAccuracy": 0.828508
+      },
+      "NESTED_BOTTLENECK": {
+        "cases": 427,
+        "inheritedAccuracy": 0.105386,
+        "remediatedAccuracy": 0.805621
+      },
+      "PROTECTED_CRITICAL_NODE": {
+        "cases": 458,
+        "inheritedAccuracy": 0.117904,
+        "remediatedAccuracy": 0.79476
+      },
+      "REDUNDANT_NETWORK": {
+        "cases": 494,
+        "inheritedAccuracy": 0,
+        "remediatedAccuracy": 0.736842
+      },
+      "STAR": {
+        "cases": 447,
+        "inheritedAccuracy": 0,
+        "remediatedAccuracy": 0.742729
+      },
+      "TREE": {
+        "cases": 473,
+        "inheritedAccuracy": 0.143763,
+        "remediatedAccuracy": 0.837209
+      }
+    },
+    "byProfile": {
+      "BOTTLENECK_WORTHLESS": {
+        "cases": 772,
+        "inheritedAccuracy": 0.047927,
+        "remediatedAccuracy": 0.814767
+      },
+      "CAPACITY_STARVED": {
+        "cases": 318,
+        "inheritedAccuracy": 0.059748,
+        "remediatedAccuracy": 0.886792
+      },
+      "EXPENSIVE_BOTTLENECK": {
+        "cases": 293,
+        "inheritedAccuracy": 0.05802,
+        "remediatedAccuracy": 0.819113
+      },
+      "RISK_DOMINATED": {
+        "cases": 1702,
+        "inheritedAccuracy": 0.125147,
+        "remediatedAccuracy": 0.902468
+      },
+      "SUBSTITUTE_AVAILABLE": {
+        "cases": 304,
+        "inheritedAccuracy": 0.029605,
+        "remediatedAccuracy": 0.815789
+      },
+      "VALUE_DIFFUSE": {
+        "cases": 1336,
+        "inheritedAccuracy": 0.062126,
+        "remediatedAccuracy": 0.574102
+      },
+      "VALUE_ON_BOTTLENECK": {
+        "cases": 447,
+        "inheritedAccuracy": 0.143177,
+        "remediatedAccuracy": 0.758389
+      },
+      "VALUE_ON_LEAF": {
+        "cases": 89,
+        "inheritedAccuracy": 0.022472,
+        "remediatedAccuracy": 0.853933
+      }
+    },
+    "byObjectiveType": {
+      "CONTINUITY": {
+        "cases": 1821,
+        "inheritedAccuracy": 0.076332,
+        "remediatedAccuracy": 0.773751
+      },
+      "PROTECTION": {
+        "cases": 1711,
+        "inheritedAccuracy": 0.084746,
+        "remediatedAccuracy": 0.79135
+      },
+      "THROUGHPUT": {
+        "cases": 1729,
+        "inheritedAccuracy": 0.092539,
+        "remediatedAccuracy": 0.783112
+      }
+    },
+    "byEntityCountQuartile": [
+      {
+        "quartile": 1,
+        "cases": 1315,
+        "inheritedAccuracy": 0.088213,
+        "remediatedAccuracy": 0.780228
+      },
+      {
+        "quartile": 2,
+        "cases": 1315,
+        "inheritedAccuracy": 0.088973,
+        "remediatedAccuracy": 0.793916
+      },
+      {
+        "quartile": 3,
+        "cases": 1315,
+        "inheritedAccuracy": 0.076806,
+        "remediatedAccuracy": 0.774905
+      },
+      {
+        "quartile": 4,
+        "cases": 1316,
+        "inheritedAccuracy": 0.083587,
+        "remediatedAccuracy": 0.781155
+      }
+    ],
+    "byRelationCountQuartile": [
+      {
+        "quartile": 1,
+        "cases": 1315,
+        "inheritedAccuracy": 0.101901,
+        "remediatedAccuracy": 0.797719
+      },
+      {
+        "quartile": 2,
+        "cases": 1315,
+        "inheritedAccuracy": 0.087452,
+        "remediatedAccuracy": 0.780228
+      },
+      {
+        "quartile": 3,
+        "cases": 1315,
+        "inheritedAccuracy": 0.091255,
+        "remediatedAccuracy": 0.777947
+      },
+      {
+        "quartile": 4,
+        "cases": 1316,
+        "inheritedAccuracy": 0.056991,
+        "remediatedAccuracy": 0.774316
+      }
+    ]
+  },
+  "analysis": {
+    "cases": 5120,
+    "conditionedOn": "NEXUS_MADE_A_RECOMMENDATION",
+    "rowsBeforeConditioning": 5261,
+    "coverage": 0.973199,
+    "baseRate": 0.804102,
+    "featuresInspected": 16,
+    "featuresVarying": 13,
+    "featureSource": "NEXUS_EMITTED_SIGNALS_ONLY",
+    "predicatesSearched": 415,
+    "predicatesEvaluable": 384,
+    "perFeature": [
+      {
+        "feature": "nexus.nexusTopUtility",
+        "distinctValues": 5109,
+        "bestGap": 0.547535,
+        "bestPredicate": "nexus.nexusTopUtility<=227543",
+        "bestSideReliability": 0.822388
+      },
+      {
+        "feature": "nexus.nexusUtilityMargin",
+        "distinctValues": 5111,
+        "bestGap": 0.315182,
+        "bestPredicate": "nexus.nexusUtilityMargin<=2424607",
+        "bestSideReliability": 0.815182
+      },
+      {
+        "feature": "nexus.objectiveSupportCount",
+        "distinctValues": 15,
+        "bestGap": 0.297459,
+        "bestPredicate": "nexus.objectiveSupportCount<=2",
+        "bestSideReliability": 0.878583
+      },
+      {
+        "feature": "nexus.nexusTopObjectiveRelevance",
+        "distinctValues": 4354,
+        "bestGap": 0.27435,
+        "bestPredicate": "nexus.nexusTopObjectiveRelevance<=2062295",
+        "bestSideReliability": 0.867598
+      },
+      {
+        "feature": "nexus.nexusTopRiskAdjustment",
+        "distinctValues": 1507,
+        "bestGap": 0.222618,
+        "bestPredicate": "nexus.nexusTopRiskAdjustment<=332272",
+        "bestSideReliability": 0.962239
+      },
+      {
+        "feature": "nexus.remainingBlockerCount",
+        "distinctValues": 13,
+        "bestGap": 0.213435,
+        "bestPredicate": "nexus.remainingBlockerCount<=0",
+        "bestSideReliability": 0.9059
+      },
+      {
+        "feature": "nexus.nexusTopStructuralImportance",
+        "distinctValues": 14,
+        "bestGap": 0.174459,
+        "bestPredicate": "nexus.nexusTopStructuralImportance<=0",
+        "bestSideReliability": 0.945066
+      },
+      {
+        "feature": "nexus.positiveUtilityCandidateCount",
+        "distinctValues": 5,
+        "bestGap": 0.119534,
+        "bestPredicate": "nexus.positiveUtilityCandidateCount==1",
+        "bestSideReliability": 0.891557
+      },
+      {
+        "feature": "nexus.nexusTopRedundancyAdjustment",
+        "distinctValues": 644,
+        "bestGap": 0.092825,
+        "bestPredicate": "nexus.nexusTopRedundancyAdjustment<=-103108",
+        "bestSideReliability": 0.885668
+      },
+      {
+        "feature": "nexus.structuralSemanticAlignment",
+        "distinctValues": 2,
+        "bestGap": 0.070261,
+        "bestPredicate": "nexus.structuralSemanticAlignment==false",
+        "bestSideReliability": 0.839904
+      },
+      {
+        "feature": "nexus.nexusTopCostPenalty",
+        "distinctValues": 4991,
+        "bestGap": 0.036741,
+        "bestPredicate": "nexus.nexusTopCostPenalty<=83842",
+        "bestSideReliability": 0.806628
+      },
+      {
+        "feature": "nexus.contradictionCount",
+        "distinctValues": 3,
+        "bestGap": 0.017659,
+        "bestPredicate": "nexus.contradictionCount==0",
+        "bestSideReliability": 0.820588
+      },
+      {
+        "feature": "nexus.candidateCount",
+        "distinctValues": 1,
+        "bestGap": 0,
+        "bestPredicate": null,
+        "bestSideReliability": null
+      },
+      {
+        "feature": "nexus.perturbationStable",
+        "distinctValues": 2,
+        "bestGap": 0,
+        "bestPredicate": null,
+        "bestSideReliability": null
+      },
+      {
+        "feature": "nexus.semanticCoverage",
+        "distinctValues": 1,
+        "bestGap": 0,
+        "bestPredicate": null,
+        "bestSideReliability": null
+      },
+      {
+        "feature": "nexus.semanticFieldsIncompleteCount",
+        "distinctValues": 1,
+        "bestGap": 0,
+        "bestPredicate": null,
+        "bestSideReliability": null
+      }
+    ],
+    "topByGap": [
+      {
+        "id": "nexus.nexusTopUtility<=227543",
+        "inCount": 171,
+        "outCount": 4949,
+        "inReliability": 0.274854,
+        "outReliability": 0.822388,
+        "gap": 0.547535,
+        "bestSideReliability": 0.822388,
+        "bestSideSupport": 4949,
+        "bestSide": "OUT"
+      },
+      {
+        "id": "nexus.nexusTopUtility<=296985",
+        "inCount": 256,
+        "outCount": 4864,
+        "inReliability": 0.378906,
+        "outReliability": 0.82648,
+        "gap": 0.447574,
+        "bestSideReliability": 0.82648,
+        "bestSideSupport": 4864,
+        "bestSide": "OUT"
+      },
+      {
+        "id": "nexus.nexusTopUtility<=337605",
+        "inCount": 341,
+        "outCount": 4779,
+        "inReliability": 0.445748,
+        "outReliability": 0.829671,
+        "gap": 0.383924,
+        "bestSideReliability": 0.829671,
+        "bestSideSupport": 4779,
+        "bestSide": "OUT"
+      },
+      {
+        "id": "nexus.nexusTopUtility<=2682095",
+        "inCount": 4942,
+        "outCount": 178,
+        "inReliability": 0.816471,
+        "outReliability": 0.460674,
+        "gap": 0.355797,
+        "bestSideReliability": 0.816471,
+        "bestSideSupport": 4942,
+        "bestSide": "IN"
+      },
+      {
+        "id": "nexus.nexusTopUtility<=2381515",
+        "inCount": 4857,
+        "outCount": 263,
+        "inReliability": 0.820877,
+        "outReliability": 0.494297,
+        "gap": 0.326581,
+        "bestSideReliability": 0.820877,
+        "bestSideSupport": 4857,
+        "bestSide": "IN"
+      },
+      {
+        "id": "nexus.nexusTopUtility<=366218",
+        "inCount": 426,
+        "outCount": 4694,
+        "inReliability": 0.514085,
+        "outReliability": 0.830422,
+        "gap": 0.316337,
+        "bestSideReliability": 0.830422,
+        "bestSideSupport": 4694,
+        "bestSide": "OUT"
+      },
+      {
+        "id": "nexus.nexusUtilityMargin<=2424607",
+        "inCount": 4940,
+        "outCount": 180,
+        "inReliability": 0.815182,
+        "outReliability": 0.5,
+        "gap": 0.315182,
+        "bestSideReliability": 0.815182,
+        "bestSideSupport": 4940,
+        "bestSide": "IN"
+      },
+      {
+        "id": "nexus.nexusTopUtility<=2150671",
+        "inCount": 4772,
+        "outCount": 348,
+        "inReliability": 0.825231,
+        "outReliability": 0.514368,
+        "gap": 0.310863,
+        "bestSideReliability": 0.825231,
+        "bestSideSupport": 4772,
+        "bestSide": "IN"
+      },
+      {
+        "id": "nexus.objectiveSupportCount<=2",
+        "inCount": 3838,
+        "outCount": 1282,
+        "inReliability": 0.878583,
+        "outReliability": 0.581123,
+        "gap": 0.297459,
+        "bestSideReliability": 0.878583,
+        "bestSideSupport": 3838,
+        "bestSide": "IN"
+      },
+      {
+        "id": "nexus.objectiveSupportCount<=3",
+        "inCount": 3912,
+        "outCount": 1208,
+        "inReliability": 0.872188,
+        "outReliability": 0.583609,
+        "gap": 0.288579,
+        "bestSideReliability": 0.872188,
+        "bestSideSupport": 3912,
+        "bestSide": "IN"
+      },
+      {
+        "id": "nexus.objectiveSupportCount<=4",
+        "inCount": 3949,
+        "outCount": 1171,
+        "inReliability": 0.86984,
+        "outReliability": 0.582408,
+        "gap": 0.287432,
+        "bestSideReliability": 0.86984,
+        "bestSideSupport": 3949,
+        "bestSide": "IN"
+      },
+      {
+        "id": "nexus.nexusTopObjectiveRelevance<=2062295",
+        "inCount": 3935,
+        "outCount": 1185,
+        "inReliability": 0.867598,
+        "outReliability": 0.593249,
+        "gap": 0.27435,
+        "bestSideReliability": 0.867598,
+        "bestSideSupport": 3935,
+        "bestSide": "IN"
+      }
+    ],
+    "topByReliability": [
+      {
+        "id": "nexus.nexusTopRiskAdjustment<=794224",
+        "inCount": 4814,
+        "outCount": 306,
+        "inReliability": 0.792688,
+        "outReliability": 0.98366,
+        "gap": 0.190972,
+        "bestSideReliability": 0.98366,
+        "bestSideSupport": 306,
+        "bestSide": "OUT"
+      },
+      {
+        "id": "nexus.nexusTopRiskAdjustment<=842639",
+        "inCount": 4939,
+        "outCount": 181,
+        "inReliability": 0.79753,
+        "outReliability": 0.983425,
+        "gap": 0.185896,
+        "bestSideReliability": 0.983425,
+        "bestSideSupport": 181,
+        "bestSide": "OUT"
+      },
+      {
+        "id": "nexus.nexusTopRiskAdjustment<=802798",
+        "inCount": 4839,
+        "outCount": 281,
+        "inReliability": 0.793759,
+        "outReliability": 0.982206,
+        "gap": 0.188447,
+        "bestSideReliability": 0.982206,
+        "bestSideSupport": 281,
+        "bestSide": "OUT"
+      },
+      {
+        "id": "nexus.nexusTopRiskAdjustment<=878807",
+        "inCount": 5014,
+        "outCount": 106,
+        "inReliability": 0.800359,
+        "outReliability": 0.981132,
+        "gap": 0.180773,
+        "bestSideReliability": 0.981132,
+        "bestSideSupport": 106,
+        "bestSide": "OUT"
+      },
+      {
+        "id": "nexus.nexusTopRiskAdjustment<=851535",
+        "inCount": 4964,
+        "outCount": 156,
+        "inReliability": 0.79855,
+        "outReliability": 0.980769,
+        "gap": 0.18222,
+        "bestSideReliability": 0.980769,
+        "bestSideSupport": 156,
+        "bestSide": "OUT"
+      },
+      {
+        "id": "nexus.nexusTopRiskAdjustment<=832459",
+        "inCount": 4914,
+        "outCount": 206,
+        "inReliability": 0.796703,
+        "outReliability": 0.980583,
+        "gap": 0.183879,
+        "bestSideReliability": 0.980583,
+        "bestSideSupport": 206,
+        "bestSide": "OUT"
+      },
+      {
+        "id": "nexus.nexusTopRiskAdjustment<=812096",
+        "inCount": 4864,
+        "outCount": 256,
+        "inReliability": 0.794819,
+        "outReliability": 0.980469,
+        "gap": 0.18565,
+        "bestSideReliability": 0.980469,
+        "bestSideSupport": 256,
+        "bestSide": "OUT"
+      },
+      {
+        "id": "nexus.nexusTopRiskAdjustment<=820260",
+        "inCount": 4889,
+        "outCount": 231,
+        "inReliability": 0.795868,
+        "outReliability": 0.978355,
+        "gap": 0.182487,
+        "bestSideReliability": 0.978355,
+        "bestSideSupport": 231,
+        "bestSide": "OUT"
+      },
+      {
+        "id": "nexus.nexusTopRiskAdjustment<=866883",
+        "inCount": 4989,
+        "outCount": 131,
+        "inReliability": 0.799559,
+        "outReliability": 0.977099,
+        "gap": 0.17754,
+        "bestSideReliability": 0.977099,
+        "bestSideSupport": 131,
+        "bestSide": "OUT"
+      },
+      {
+        "id": "nexus.nexusTopRiskAdjustment<=782981",
+        "inCount": 4789,
+        "outCount": 331,
+        "inReliability": 0.792232,
+        "outReliability": 0.975831,
+        "gap": 0.183599,
+        "bestSideReliability": 0.975831,
+        "bestSideSupport": 331,
+        "bestSide": "OUT"
+      },
+      {
+        "id": "nexus.nexusTopRiskAdjustment<=585711",
+        "inCount": 4114,
+        "outCount": 1006,
+        "inReliability": 0.762275,
+        "outReliability": 0.975149,
+        "gap": 0.212874,
+        "bestSideReliability": 0.975149,
+        "bestSideSupport": 1006,
+        "bestSide": "OUT"
+      },
+      {
+        "id": "nexus.nexusTopRiskAdjustment<=578426",
+        "inCount": 4089,
+        "outCount": 1031,
+        "inReliability": 0.761066,
+        "outReliability": 0.974782,
+        "gap": 0.213715,
+        "bestSideReliability": 0.974782,
+        "bestSideSupport": 1031,
+        "bestSide": "OUT"
+      }
+    ],
+    "observedBestGap": 0.547535,
+    "observedBestPredicate": "nexus.nexusTopUtility<=227543",
+    "observedBestSideReliability": 0.98366,
+    "permutationNull": {
+      "permutations": 40,
+      "min": 0.040795,
+      "median": 0.065172,
+      "p95": 0.105523,
+      "max": 0.130589
+    },
+    "observedExceedsPermutationP95": true,
+    "anyPredicateReachesReliabilityFloor": false
+  },
+  "ruleSearch": {
+    "searchSpace": {
+      "singles": 413,
+      "singlesEvaluable": 360,
+      "conjunctions": 0,
+      "conjunctionsEvaluable": 0
+    },
+    "discoveryCases": 2612,
+    "discoveryBaseRate": 0.796708,
+    "frozenRule": {
+      "id": "nexus.nexusTopRiskAdjustment<=797022",
+      "side": "OUT",
+      "discoveryReliability": 0.988095,
+      "discoverySupport": 168,
+      "discoveryGap": 0.204544,
+      "reachesFloorOnDiscovery": false
+    },
+    "topTen": [
+      {
+        "id": "nexus.nexusTopRiskAdjustment<=797022",
+        "side": "OUT",
+        "reliability": 0.988095,
+        "support": 168,
+        "gap": 0.204544
+      },
+      {
+        "id": "nexus.nexusTopRiskAdjustment<=811527",
+        "side": "OUT",
+        "reliability": 0.987097,
+        "support": 155,
+        "gap": 0.2024
+      },
+      {
+        "id": "nexus.nexusTopRiskAdjustment<=817041",
+        "side": "OUT",
+        "reliability": 0.985915,
+        "support": 142,
+        "gap": 0.200086
+      },
+      {
+        "id": "nexus.nexusTopRiskAdjustment<=823755",
+        "side": "OUT",
+        "reliability": 0.984496,
+        "support": 129,
+        "gap": 0.197545
+      },
+      {
+        "id": "nexus.nexusTopRiskAdjustment<=786471",
+        "side": "OUT",
+        "reliability": 0.983425,
+        "support": 181,
+        "gap": 0.20062
+      },
+      {
+        "id": "nexus.nexusTopRiskAdjustment<=837528",
+        "side": "OUT",
+        "reliability": 0.982759,
+        "support": 116,
+        "gap": 0.194698
+      },
+      {
+        "id": "nexus.nexusTopRiskAdjustment<=843231",
+        "side": "OUT",
+        "reliability": 0.980583,
+        "support": 103,
+        "gap": 0.191423
+      },
+      {
+        "id": "nexus.nexusTopRiskAdjustment<=775251",
+        "side": "OUT",
+        "reliability": 0.979381,
+        "support": 194,
+        "gap": 0.19733
+      },
+      {
+        "id": "nexus.nexusTopRiskAdjustment<=736741",
+        "side": "OUT",
+        "reliability": 0.976834,
+        "support": 259,
+        "gap": 0.199953
+      },
+      {
+        "id": "nexus.nexusTopRiskAdjustment<=714237",
+        "side": "OUT",
+        "reliability": 0.97651,
+        "support": 298,
+        "gap": 0.202958
+      }
+    ]
+  },
+  "generalization": {
+    "applicable": true,
+    "ruleId": "nexus.nexusTopRiskAdjustment<=797022",
+    "discoveryReliability": 0.988095,
+    "discoverySupport": 168,
+    "holdoutCases": 5120,
+    "holdoutBaseRate": 0.804102,
+    "holdoutSelected": 300,
+    "holdoutReliability": 0.983333,
+    "holdoutRejected": 4820,
+    "holdoutRejectedReliability": 0.792946,
+    "reliabilityLostFromDiscoveryToHoldout": 0.004762,
+    "holdoutReachesFloor": false,
+    "generalizes": true,
+    "collapsedToBaseRate": false
+  },
+  "calibration": {
+    "calibrationVersion": 1,
+    "stage": "STAGE2L13_VALUE_AWARE_NEXUS_RELATIONAL_UTILITY",
+    "signalKind": "NEXUS_RELATIONAL_UTILITY_V1",
+    "minBucketReliability": 0.99,
+    "minBucketSamples": 60,
+    "parameters": {
+      "minUtilityMargin": 1000000
+    },
+    "buckets": {
+      "NEXUS_SEMANTICS_INCOMPLETE": {
+        "opportunities": 0,
+        "expertCorrect": 0,
+        "expertWrong": 0,
+        "reliability": null,
+        "calibrated": false,
+        "structurallyEligible": false,
+        "delegates": false
+      },
+      "NEXUS_UNSTABLE_UNDER_PERTURBATION": {
+        "opportunities": 8,
+        "expertCorrect": 8,
+        "expertWrong": 0,
+        "reliability": 1,
+        "calibrated": false,
+        "structurallyEligible": false,
+        "delegates": false
+      },
+      "NEXUS_CHAIN_STILL_BLOCKED": {
+        "opportunities": 1224,
+        "expertCorrect": 827,
+        "expertWrong": 397,
+        "reliability": 0.675654,
+        "calibrated": true,
+        "structurallyEligible": true,
+        "delegates": false
+      },
+      "NEXUS_CONTRADICTED": {
+        "opportunities": 86,
+        "expertCorrect": 79,
+        "expertWrong": 7,
+        "reliability": 0.918605,
+        "calibrated": true,
+        "structurallyEligible": true,
+        "delegates": false
+      },
+      "NEXUS_CLEAN_LOW_MARGIN": {
+        "opportunities": 1146,
+        "expertCorrect": 1027,
+        "expertWrong": 119,
+        "reliability": 0.896161,
+        "calibrated": true,
+        "structurallyEligible": true,
+        "delegates": false
+      },
+      "NEXUS_CLEAN_HIGH_MARGIN": {
+        "opportunities": 148,
+        "expertCorrect": 140,
+        "expertWrong": 8,
+        "reliability": 0.945946,
+        "calibrated": true,
+        "structurallyEligible": true,
+        "delegates": false
+      }
+    },
+    "delegatingBuckets": [],
+    "structurallyIneligibleBuckets": [
+      "NEXUS_SEMANTICS_INCOMPLETE",
+      "NEXUS_UNSTABLE_UNDER_PERTURBATION"
+    ],
+    "sweep": [
+      {
+        "minUtilityMargin": 50000,
+        "opportunities": 1187,
+        "reliability": 0.898062,
+        "qualifies": false
+      },
+      {
+        "minUtilityMargin": 150000,
+        "opportunities": 1011,
+        "reliability": 0.901088,
+        "qualifies": false
+      },
+      {
+        "minUtilityMargin": 300000,
+        "opportunities": 833,
+        "reliability": 0.914766,
+        "qualifies": false
+      },
+      {
+        "minUtilityMargin": 600000,
+        "opportunities": 463,
+        "reliability": 0.930886,
+        "qualifies": false
+      },
+      {
+        "minUtilityMargin": 1000000,
+        "opportunities": 148,
+        "reliability": 0.945946,
+        "qualifies": false
+      }
+    ],
+    "selected": null,
+    "discoveryOpportunities": 2612,
+    "inheritedCalibrationDigest": "94e94ec145cc97e4779f789f65bffe1996afab0821b070a8c3ec6ca551fa0b79",
+    "inheritedCalibrationModified": false,
+    "calibrationDigest": "f51610c30cf01ec48630609e3575735daccb7e9df38a1d5107cfe37d9b6a0a83"
+  },
+  "delegation": {
+    "casesEvaluated": 5261,
+    "calibrationDigest": "f51610c30cf01ec48630609e3575735daccb7e9df38a1d5107cfe37d9b6a0a83",
+    "inheritedCalibrationDigest": "94e94ec145cc97e4779f789f65bffe1996afab0821b070a8c3ec6ca551fa0b79",
+    "inheritedCalibrationModified": false,
+    "delegatingBuckets": [],
+    "bucketUsage": {
+      "NEXUS_CHAIN_STILL_BLOCKED": {
+        "cases": 2438,
+        "delegated": 0,
+        "expertCorrect": 1687
+      },
+      "NEXUS_CLEAN_HIGH_MARGIN": {
+        "cases": 279,
+        "delegated": 0,
+        "expertCorrect": 259
+      },
+      "NEXUS_CLEAN_LOW_MARGIN": {
+        "cases": 2209,
+        "delegated": 0,
+        "expertCorrect": 1991
+      },
+      "NEXUS_CONTRADICTED": {
+        "cases": 177,
+        "delegated": 0,
+        "expertCorrect": 164
+      },
+      "NEXUS_UNSTABLE_UNDER_PERTURBATION": {
+        "cases": 17,
+        "delegated": 0,
+        "expertCorrect": 16
+      },
+      "null": {
+        "cases": 141,
+        "delegated": 0,
+        "expertCorrect": 0
+      }
+    },
+    "nexusDelegations": 0,
+    "nexusDelegationRate": 0,
+    "nexusDelegationPrecision": 0,
+    "nexusBeneficialChanges": 0,
+    "nexusHarmfulChanges": 0,
+    "nexusHarmRate": 0,
+    "nexusCorrectPrimeBreaks": 0,
+    "nexusCorrectPrimeBreakRate": 0,
+    "primeOnlyAccuracy": 0.394602,
+    "arbiterAccuracyWithNexus": 0.394602,
+    "accuracyUpliftOverPrimePp": 0,
+    "harmCeilingRespected": true,
+    "correctPrimeBreakCeilingRespected": true,
+    "delegationForced": false,
+    "reliabilityFloorLowered": false
+  },
+  "adversarial": {
+    "MISSING_VALUE": {
+      "threw": false,
+      "recommendedActionId": null,
+      "abstained": true,
+      "semanticFieldsIncompleteCount": 1,
+      "recommendationIsLegal": true,
+      "failedClosed": true,
+      "deterministic": true
+    },
+    "MALFORMED_COST": {
+      "threw": false,
+      "recommendedActionId": null,
+      "abstained": true,
+      "semanticFieldsIncompleteCount": 1,
+      "recommendationIsLegal": true,
+      "failedClosed": true,
+      "deterministic": true
+    },
+    "NEGATIVE_RISK": {
+      "threw": false,
+      "recommendedActionId": null,
+      "abstained": true,
+      "semanticFieldsIncompleteCount": 1,
+      "recommendationIsLegal": true,
+      "failedClosed": true,
+      "deterministic": true
+    },
+    "ABSENT_OBJECTIVE_WEIGHTS": {
+      "threw": false,
+      "recommendedActionId": null,
+      "abstained": true,
+      "semanticFieldsIncompleteCount": 0,
+      "recommendationIsLegal": true,
+      "failedClosed": true,
+      "deterministic": true
+    },
+    "CONTRADICTORY_RELATIONS": {
+      "threw": false,
+      "recommendedActionId": "b-restore-a",
+      "abstained": false,
+      "semanticFieldsIncompleteCount": 0,
+      "recommendationIsLegal": true,
+      "failedClosed": true,
+      "deterministic": true
+    },
+    "DUPLICATED_RELATIONS": {
+      "threw": false,
+      "recommendedActionId": "b-restore-a",
+      "abstained": false,
+      "semanticFieldsIncompleteCount": 0,
+      "recommendationIsLegal": true,
+      "failedClosed": true,
+      "deterministic": true
+    },
+    "CYCLIC_DEPENDENCY": {
+      "threw": false,
+      "recommendedActionId": "b-restore-a",
+      "abstained": false,
+      "semanticFieldsIncompleteCount": 0,
+      "recommendationIsLegal": true,
+      "failedClosed": true,
+      "deterministic": true
+    },
+    "DISCONNECTED_GRAPH": {
+      "threw": false,
+      "recommendedActionId": null,
+      "abstained": true,
+      "semanticFieldsIncompleteCount": 0,
+      "recommendationIsLegal": true,
+      "failedClosed": true,
+      "deterministic": true
+    },
+    "LEGAL_ACTION_MISMATCH": {
+      "threw": false,
+      "recommendedActionId": "b-restore-a",
+      "abstained": false,
+      "semanticFieldsIncompleteCount": 1,
+      "recommendationIsLegal": true,
+      "failedClosed": true,
+      "deterministic": true
+    },
+    "ZERO_UTILITY_MARGIN": {
+      "threw": false,
+      "recommendedActionId": "b-restore-p",
+      "abstained": false,
+      "semanticFieldsIncompleteCount": 0,
+      "recommendationIsLegal": true,
+      "failedClosed": true,
+      "deterministic": true
+    },
+    "EXPERT_TIE": {
+      "threw": false,
+      "recommendedActionId": "b-restore-p",
+      "abstained": false,
+      "semanticFieldsIncompleteCount": 0,
+      "recommendationIsLegal": true,
+      "failedClosed": true,
+      "deterministic": true
+    }
+  },
+  "invariance": {
+    "orderingInvariant": true,
+    "replayEquivalent": true,
+    "rowDigest": "1767f7127a98fbcf5a5db5d9680f0a834fe9240e68145604c465229e262773dc",
+    "replayDigest": "1767f7127a98fbcf5a5db5d9680f0a834fe9240e68145604c465229e262773dc"
+  },
+  "labelLeakage": {
+    "featureSource": "NEXUS_EMITTED_SIGNALS_ONLY",
+    "featureKeysInspected": 16,
+    "forbiddenScanned": [
+      "optimalActionId",
+      "remediatedCorrect",
+      "inheritedCorrect",
+      "primeCorrect",
+      "structureValueDecoupled",
+      "family",
+      "profile",
+      "objectiveType",
+      "worldId",
+      "utilityMargin",
+      "actionUtility",
+      "baselineUtility"
+    ],
+    "forbiddenInFeatures": [],
+    "labelLeakageDetected": false
+  }
+}

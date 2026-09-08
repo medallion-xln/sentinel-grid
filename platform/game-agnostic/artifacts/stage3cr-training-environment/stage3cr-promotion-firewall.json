@@ -1,0 +1,65 @@
+{
+  "forbiddenStatuses": [
+    "CERTIFIED_FOR_RUNTIME",
+    "PRODUCTION",
+    "LIVE",
+    "R1"
+  ],
+  "permittedStatuses": [
+    "CANDIDATE",
+    "OFFLINE_EVALUATED",
+    "TRAINED",
+    "NOT_TRAINED"
+  ],
+  "allForbiddenRejected": true,
+  "permittedControl": {
+    "permitted": true,
+    "reason": null
+  },
+  "candidateLoadedByRuntime": false,
+  "candidateReferencedByRouter": false,
+  "candidateReferencedByPrime": false,
+  "candidateCanDispatch": false,
+  "soupCanCertifyExpert": false,
+  "deterministicNexusIncumbent": true,
+  "soupPushNotInvoked": true,
+  "soupPushNote": "Soup offers `soup push` to a hub. It was never invoked: nothing here is published, and there is no candidate to publish.",
+  "mutants": [
+    {
+      "status": "CERTIFIED_FOR_RUNTIME",
+      "result": {
+        "permitted": false,
+        "reason": "STAGE3C_MAY_NOT_ASSIGN_CERTIFIED_FOR_RUNTIME"
+      }
+    },
+    {
+      "status": "PRODUCTION",
+      "result": {
+        "permitted": false,
+        "reason": "STAGE3C_MAY_NOT_ASSIGN_PRODUCTION"
+      }
+    },
+    {
+      "status": "LIVE",
+      "result": {
+        "permitted": false,
+        "reason": "STAGE3C_MAY_NOT_ASSIGN_LIVE"
+      }
+    },
+    {
+      "status": "R1",
+      "result": {
+        "permitted": false,
+        "reason": "STAGE3C_MAY_NOT_ASSIGN_R1"
+      }
+    },
+    {
+      "status": "NOT_A_STATUS",
+      "result": {
+        "permitted": false,
+        "reason": "UNKNOWN_CANDIDATE_STATUS"
+      }
+    }
+  ],
+  "pass": true
+}

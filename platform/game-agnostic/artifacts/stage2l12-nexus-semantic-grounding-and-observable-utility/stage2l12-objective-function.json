@@ -1,0 +1,62 @@
+{
+  "stage": "STAGE2L12_NEXUS_SEMANTIC_GROUNDING_AND_OBSERVABLE_UTILITY",
+  "objectiveModel": {
+    "schemaVersion": 1,
+    "id": "STAGE2L12_DELIVERED_VALUE_MINUS_RISK_V1",
+    "scale": 1000000,
+    "availabilityThreshold": 600000,
+    "terms": [
+      {
+        "name": "deliveredObjectiveValue",
+        "sign": "+",
+        "description": "objectiveValue of every entity that delivers"
+      },
+      {
+        "name": "amplification",
+        "sign": "+",
+        "description": "delivered value scaled by available amplifiers"
+      },
+      {
+        "name": "riskPenalty",
+        "sign": "-",
+        "description": "risk x protectionNeed for entities whose protectors are unavailable"
+      },
+      {
+        "name": "conflictPenalty",
+        "sign": "-",
+        "description": "mutual degradation between simultaneously delivering conflicting entities"
+      }
+    ],
+    "deliveryRule": "available AND all depends satisfied (directly or via a delivering substitute) AND effectiveCapacity >= demand",
+    "capacityRule": "baseCapacity + sum(supports from delivering suppliers) - sum(inhibits from delivering inhibitors)",
+    "fixedPointResolution": "iterate delivery to convergence, bounded by entity count",
+    "readsExpertOutput": false,
+    "readsPrimeOutput": false,
+    "readsArbiterOutput": false,
+    "readsRandomCorrectnessFlag": false
+  },
+  "objectiveModelDigest": "761e69eea469a5d51068a94feccb8f787dddd3c8d1052f19f822bb00d2e5e8c9",
+  "consequenceModel": {
+    "schemaVersion": 1,
+    "id": "STAGE2L12_PURE_ENTITY_TRANSFORM_V1",
+    "kinds": [
+      "RESTORE",
+      "REINFORCE",
+      "PROTECT",
+      "BYPASS",
+      "HOLD"
+    ],
+    "effects": {
+      "RESTORE": "availability := MICRO",
+      "REINFORCE": "baseCapacity += reinforceAmount",
+      "PROTECT": "risk := 0",
+      "BYPASS": "every substitutes relation naming this entity becomes available",
+      "HOLD": "no change, no cost"
+    },
+    "purity": "clone-then-edit; the source world is never mutated",
+    "costRule": "ACTION_UTILITY = U(after) - U(before) - restorationCost of the target (HOLD costs 0)",
+    "tieRule": "ties in ACTION_UTILITY are broken by ascending canonical action key, and every tie is recorded",
+    "readsExpertOutput": false
+  },
+  "consequenceModelDigest": "3599dbc36be8316965f55a0b99110b8897eeab9c8e129334b1c0be9c96ff0b55"
+}

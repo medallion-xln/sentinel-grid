@@ -1,0 +1,402 @@
+{
+  "stage": "STAGE2L15_NEXUS_DECISION_STABILITY_AND_CONFIDENCE_CEILING",
+  "eligibleCases": 2488,
+  "baseRate": 0.904341,
+  "perSignal": {
+    "nexusTopActionStability": {
+      "higherIsBetter": true,
+      "correct": {
+        "n": 2250,
+        "mean": 991429,
+        "median": 1000000,
+        "p10": 1000000,
+        "p90": 1000000
+      },
+      "wrong": {
+        "n": 238,
+        "mean": 979892,
+        "median": 1000000,
+        "p10": 928571,
+        "p90": 1000000
+      },
+      "developmentAuroc": 0.555066
+    },
+    "nexusTop2Stability": {
+      "higherIsBetter": true,
+      "correct": {
+        "n": 2250,
+        "mean": 986921,
+        "median": 1000000,
+        "p10": 928571,
+        "p90": 1000000
+      },
+      "wrong": {
+        "n": 238,
+        "mean": 982893,
+        "median": 1000000,
+        "p10": 928571,
+        "p90": 1000000
+      },
+      "developmentAuroc": 0.535203
+    },
+    "nexusRankingStability": {
+      "higherIsBetter": true,
+      "correct": {
+        "n": 2250,
+        "mean": 981638,
+        "median": 1000000,
+        "p10": 942857,
+        "p90": 1000000
+      },
+      "wrong": {
+        "n": 238,
+        "mean": 975510,
+        "median": 1000000,
+        "p10": 914286,
+        "p90": 1000000
+      },
+      "developmentAuroc": 0.542088
+    },
+    "nexusUtilityVariance": {
+      "higherIsBetter": false,
+      "correct": {
+        "n": 2250,
+        "mean": 25001,
+        "median": 21495,
+        "p10": 12558,
+        "p90": 32756
+      },
+      "wrong": {
+        "n": 238,
+        "mean": 41403,
+        "median": 20834,
+        "p10": 11741,
+        "p90": 38147
+      },
+      "developmentAuroc": 0.486225
+    },
+    "nexusMarginVariance": {
+      "higherIsBetter": false,
+      "correct": {
+        "n": 2250,
+        "mean": 26406,
+        "median": 21857,
+        "p10": 11598,
+        "p90": 40185
+      },
+      "wrong": {
+        "n": 238,
+        "mean": 45014,
+        "median": 24066,
+        "p10": 12550,
+        "p90": 88766
+      },
+      "developmentAuroc": 0.56419
+    },
+    "nexusSemanticStability": {
+      "higherIsBetter": true,
+      "correct": {
+        "n": 2250,
+        "mean": 991206,
+        "median": 1000000,
+        "p10": 1000000,
+        "p90": 1000000
+      },
+      "wrong": {
+        "n": 238,
+        "mean": 979892,
+        "median": 1000000,
+        "p10": 928571,
+        "p90": 1000000
+      },
+      "developmentAuroc": 0.553779
+    },
+    "nexusRelationSupportStability": {
+      "higherIsBetter": true,
+      "correct": {
+        "n": 2250,
+        "mean": 995143,
+        "median": 1000000,
+        "p10": 1000000,
+        "p90": 1000000
+      },
+      "wrong": {
+        "n": 238,
+        "mean": 986194,
+        "median": 1000000,
+        "p10": 928571,
+        "p90": 1000000
+      },
+      "developmentAuroc": 0.539866
+    },
+    "nexusCounterfactualAgreement": {
+      "higherIsBetter": true,
+      "correct": {
+        "n": 2250,
+        "mean": 989852,
+        "median": 1000000,
+        "p10": 952381,
+        "p90": 1000000
+      },
+      "wrong": {
+        "n": 238,
+        "mean": 980892,
+        "median": 1000000,
+        "p10": 928571,
+        "p90": 1000000
+      },
+      "developmentAuroc": 0.559246
+    },
+    "nexusAbstentionStability": {
+      "higherIsBetter": true,
+      "correct": {
+        "n": 2250,
+        "mean": 999333,
+        "median": 1000000,
+        "p10": 1000000,
+        "p90": 1000000
+      },
+      "wrong": {
+        "n": 238,
+        "mean": 999100,
+        "median": 1000000,
+        "p10": 1000000,
+        "p90": 1000000
+      },
+      "developmentAuroc": 0.499993
+    }
+  },
+  "failureRegimes": [
+    {
+      "profile": "BOTTLENECK_WORTHLESS",
+      "n": 329,
+      "accuracy": 0.890578,
+      "marginVarianceCorrect": 23422,
+      "marginVarianceWrong": 73226,
+      "instabilityExposesError": true
+    },
+    {
+      "profile": "CAPACITY_STARVED",
+      "n": 270,
+      "accuracy": 0.97037,
+      "marginVarianceCorrect": 23270,
+      "marginVarianceWrong": 47168,
+      "instabilityExposesError": true
+    },
+    {
+      "profile": "EXPENSIVE_BOTTLENECK",
+      "n": 232,
+      "accuracy": 0.961207,
+      "marginVarianceCorrect": 24345,
+      "marginVarianceWrong": 83282,
+      "instabilityExposesError": true
+    },
+    {
+      "profile": "RISK_DOMINATED",
+      "n": 982,
+      "accuracy": 0.874745,
+      "marginVarianceCorrect": 30760,
+      "marginVarianceWrong": 32042,
+      "instabilityExposesError": false
+    },
+    {
+      "profile": "SUBSTITUTE_AVAILABLE",
+      "n": 242,
+      "accuracy": 0.929752,
+      "marginVarianceCorrect": 20185,
+      "marginVarianceWrong": 28780,
+      "instabilityExposesError": true
+    },
+    {
+      "profile": "VALUE_DIFFUSE",
+      "n": 42,
+      "accuracy": 0.547619,
+      "marginVarianceCorrect": 27447,
+      "marginVarianceWrong": 92086,
+      "instabilityExposesError": true
+    },
+    {
+      "profile": "VALUE_ON_BOTTLENECK",
+      "n": 314,
+      "accuracy": 0.920382,
+      "marginVarianceCorrect": 26118,
+      "marginVarianceWrong": 30105,
+      "instabilityExposesError": false
+    },
+    {
+      "profile": "VALUE_ON_LEAF",
+      "n": 77,
+      "accuracy": 0.987013,
+      "marginVarianceCorrect": 24766,
+      "marginVarianceWrong": 17749,
+      "instabilityExposesError": false
+    }
+  ],
+  "topologies": [
+    {
+      "family": "CHAIN",
+      "n": 135,
+      "accuracy": 0.962963
+    },
+    {
+      "family": "COMPETING_CRITICAL_PATHS",
+      "n": 212,
+      "accuracy": 0.910377
+    },
+    {
+      "family": "CYCLE",
+      "n": 42,
+      "accuracy": 0.952381
+    },
+    {
+      "family": "DECOY_HIGH_DEGREE",
+      "n": 270,
+      "accuracy": 0.896296
+    },
+    {
+      "family": "DIAMOND",
+      "n": 193,
+      "accuracy": 0.901554
+    },
+    {
+      "family": "LOW_DEGREE_HIGH_VALUE",
+      "n": 254,
+      "accuracy": 0.88189
+    },
+    {
+      "family": "MULTI_COMPONENT",
+      "n": 244,
+      "accuracy": 0.930328
+    },
+    {
+      "family": "NESTED_BOTTLENECK",
+      "n": 152,
+      "accuracy": 0.921053
+    },
+    {
+      "family": "PROTECTED_CRITICAL_NODE",
+      "n": 204,
+      "accuracy": 0.901961
+    },
+    {
+      "family": "REDUNDANT_NETWORK",
+      "n": 271,
+      "accuracy": 0.874539
+    },
+    {
+      "family": "STAR",
+      "n": 265,
+      "accuracy": 0.898113
+    },
+    {
+      "family": "TREE",
+      "n": 246,
+      "accuracy": 0.898374
+    }
+  ],
+  "stableButWrongCount": 193,
+  "stableButWrongShareOfErrors": 0.810924,
+  "unstableButCorrectCount": 176,
+  "unstableButCorrectShareOfCorrect": 0.078222,
+  "signalInventory": [
+    {
+      "signal": "nexusTopActionStability",
+      "source": "STAGE2L15_ADDITIVE",
+      "higherIsBetter": true,
+      "deterministic": true,
+      "decisionTimeAvailable": true,
+      "expertEmitted": false,
+      "derivedFromExpertOutputsOnly": true,
+      "readsGroundTruth": false,
+      "potentialLeakage": false
+    },
+    {
+      "signal": "nexusTop2Stability",
+      "source": "STAGE2L15_ADDITIVE",
+      "higherIsBetter": true,
+      "deterministic": true,
+      "decisionTimeAvailable": true,
+      "expertEmitted": false,
+      "derivedFromExpertOutputsOnly": true,
+      "readsGroundTruth": false,
+      "potentialLeakage": false
+    },
+    {
+      "signal": "nexusRankingStability",
+      "source": "STAGE2L15_ADDITIVE",
+      "higherIsBetter": true,
+      "deterministic": true,
+      "decisionTimeAvailable": true,
+      "expertEmitted": false,
+      "derivedFromExpertOutputsOnly": true,
+      "readsGroundTruth": false,
+      "potentialLeakage": false
+    },
+    {
+      "signal": "nexusUtilityVariance",
+      "source": "STAGE2L15_ADDITIVE",
+      "higherIsBetter": false,
+      "deterministic": true,
+      "decisionTimeAvailable": true,
+      "expertEmitted": false,
+      "derivedFromExpertOutputsOnly": true,
+      "readsGroundTruth": false,
+      "potentialLeakage": false
+    },
+    {
+      "signal": "nexusMarginVariance",
+      "source": "STAGE2L15_ADDITIVE",
+      "higherIsBetter": false,
+      "deterministic": true,
+      "decisionTimeAvailable": true,
+      "expertEmitted": false,
+      "derivedFromExpertOutputsOnly": true,
+      "readsGroundTruth": false,
+      "potentialLeakage": false
+    },
+    {
+      "signal": "nexusSemanticStability",
+      "source": "STAGE2L15_ADDITIVE",
+      "higherIsBetter": true,
+      "deterministic": true,
+      "decisionTimeAvailable": true,
+      "expertEmitted": false,
+      "derivedFromExpertOutputsOnly": true,
+      "readsGroundTruth": false,
+      "potentialLeakage": false
+    },
+    {
+      "signal": "nexusRelationSupportStability",
+      "source": "STAGE2L15_ADDITIVE",
+      "higherIsBetter": true,
+      "deterministic": true,
+      "decisionTimeAvailable": true,
+      "expertEmitted": false,
+      "derivedFromExpertOutputsOnly": true,
+      "readsGroundTruth": false,
+      "potentialLeakage": false
+    },
+    {
+      "signal": "nexusCounterfactualAgreement",
+      "source": "STAGE2L15_ADDITIVE",
+      "higherIsBetter": true,
+      "deterministic": true,
+      "decisionTimeAvailable": true,
+      "expertEmitted": false,
+      "derivedFromExpertOutputsOnly": true,
+      "readsGroundTruth": false,
+      "potentialLeakage": false
+    },
+    {
+      "signal": "nexusAbstentionStability",
+      "source": "STAGE2L15_ADDITIVE",
+      "higherIsBetter": true,
+      "deterministic": true,
+      "decisionTimeAvailable": true,
+      "expertEmitted": false,
+      "derivedFromExpertOutputsOnly": true,
+      "readsGroundTruth": false,
+      "potentialLeakage": false
+    }
+  ]
+}

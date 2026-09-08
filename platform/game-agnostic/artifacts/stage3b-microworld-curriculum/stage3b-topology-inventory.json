@@ -1,0 +1,99 @@
+{
+  "shapes": [
+    {
+      "id": "chain",
+      "minNodes": 3,
+      "description": "a single linear dependency run"
+    },
+    {
+      "id": "tree",
+      "minNodes": 4,
+      "description": "branching dependencies from one root"
+    },
+    {
+      "id": "star",
+      "minNodes": 4,
+      "description": "many leaves depending on one hub"
+    },
+    {
+      "id": "mesh",
+      "minNodes": 4,
+      "description": "densely cross-linked nodes with no single cut"
+    },
+    {
+      "id": "ring",
+      "minNodes": 3,
+      "description": "a single closed dependency cycle"
+    },
+    {
+      "id": "multi_cycle",
+      "minNodes": 6,
+      "description": "two or more interlocking cycles"
+    },
+    {
+      "id": "bridge",
+      "minNodes": 6,
+      "description": "two clusters joined by exactly one edge"
+    },
+    {
+      "id": "hub_and_spoke",
+      "minNodes": 6,
+      "description": "several hubs, each with its own spokes, linked at the top"
+    },
+    {
+      "id": "parallel_dependency",
+      "minNodes": 5,
+      "description": "independent parallel runs converging on one node"
+    },
+    {
+      "id": "redundant_network",
+      "minNodes": 5,
+      "description": "every node reachable by at least two distinct paths"
+    },
+    {
+      "id": "nested_dependency",
+      "minNodes": 6,
+      "description": "dependency groups nested inside dependency groups"
+    },
+    {
+      "id": "multi_settlement",
+      "minNodes": 8,
+      "description": "several self-contained clusters with light coupling"
+    },
+    {
+      "id": "disconnected_islands",
+      "minNodes": 6,
+      "description": "clusters with no path between them at all"
+    },
+    {
+      "id": "contested_bottleneck",
+      "minNodes": 7,
+      "description": "one node every path must cross, under threat"
+    },
+    {
+      "id": "layered_infrastructure",
+      "minNodes": 8,
+      "description": "strata where each layer depends only on the one below"
+    }
+  ],
+  "shapeCount": 15,
+  "distinctTopologiesInCorpus": 65307,
+  "stage3aTopologies": 105,
+  "byShape": {
+    "tree": 4304,
+    "star": 4800,
+    "redundant_network": 4800,
+    "parallel_dependency": 4800,
+    "multi_cycle": 4800,
+    "multi_settlement": 4800,
+    "nested_dependency": 4800,
+    "chain": 4800,
+    "contested_bottleneck": 4767,
+    "mesh": 4800,
+    "disconnected_islands": 4624,
+    "bridge": 4706,
+    "hub_and_spoke": 4800,
+    "ring": 4800,
+    "layered_infrastructure": 4403
+  }
+}

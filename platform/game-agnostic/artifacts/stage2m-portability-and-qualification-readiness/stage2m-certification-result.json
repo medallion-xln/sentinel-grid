@@ -1,0 +1,587 @@
+{
+  "certificationSchemaVersion": 1,
+  "stage": "STAGE2M_PORTABILITY_AND_QUALIFICATION_READINESS",
+  "status": "PASS",
+  "stageKind": "PORTABILITY_AND_QUALIFICATION_READINESS",
+  "authority": "R0",
+  "canDispatch": false,
+  "canMutateLiveWorld": false,
+  "arbiterShadowOnly": true,
+  "finalRecommendationOwner": "PRIME",
+  "freeze": {
+    "stage2l23CertificationHash": "1d9981817d31381eaa481e4141ce2065ee758267bc08b83f8179b60379eac428",
+    "stage2lClosed": true,
+    "nexusChanged": false,
+    "oracleChanged": false,
+    "arbiterChanged": false,
+    "expertActionPathsWidened": false,
+    "repairShape": "ENVIRONMENT_BINDING_ONLY_NO_EXPERT_CHANGE"
+  },
+  "stage2lClosureCertificate": {
+    "certificateSchemaVersion": 1,
+    "arc": "STAGE_2L",
+    "status": "CLOSED",
+    "startStage": "2L.10",
+    "finalStage": "2L.23",
+    "finalCertificationHash": "1d9981817d31381eaa481e4141ce2065ee758267bc08b83f8179b60379eac428",
+    "finalCorpusDigest": "5af69d76bf9523eaea5b062603b59a264f14d2876b20d2260be27a3521e264c2",
+    "repositoryLineageAtClosure": "ORACLE_V2_STAGE2L23_WELL_POSED_CORPUS",
+    "stages": [
+      {
+        "stage": "2L.10",
+        "result": "PASS",
+        "summary": "Arbiter correctness calibration and selective delegation; Oracle direction certified safe."
+      },
+      {
+        "stage": "2L.11",
+        "result": "PASS",
+        "summary": "Nexus correctness shown non-identifiable; the benchmark itself was the defect."
+      },
+      {
+        "stage": "2L.12",
+        "result": "PASS",
+        "summary": "Benchmark rebuilt on world semantics."
+      },
+      {
+        "stage": "2L.13",
+        "result": "PASS",
+        "summary": "Value-aware Nexus: 0.0844 to 0.7826, still below the delegation floor."
+      },
+      {
+        "stage": "2L.14",
+        "result": "FAIL",
+        "summary": "No supported Nexus confidence region reaches the 0.99 floor."
+      },
+      {
+        "stage": "2L.15",
+        "result": "FAIL",
+        "summary": "Stability adds information but delegation reaches only 0.9894."
+      },
+      {
+        "stage": "2L.16",
+        "result": "PASS",
+        "summary": "Residual errors decomposed; substitute misvaluation dominant."
+      },
+      {
+        "stage": "2L.17",
+        "result": "PASS",
+        "summary": "Expert remediated 0.7909 to 0.8291; delegation ceiling unmoved."
+      },
+      {
+        "stage": "2L.18",
+        "result": "PASS",
+        "summary": "Delegation tail is six cases and is not separable beyond a matched null."
+      },
+      {
+        "stage": "2L.19",
+        "result": "PASS",
+        "summary": "Oracle characterized: one certified action head plus seven label-only diagnostics."
+      },
+      {
+        "stage": "2L.20",
+        "result": "PASS",
+        "summary": "Vocabulary alignment; timeToThreshold exonerated, the benchmark was wrong."
+      },
+      {
+        "stage": "2L.21",
+        "result": "PASS",
+        "summary": "Abstention redefined as data sufficiency; persistence 0.3432 to 0.8517."
+      },
+      {
+        "stage": "2L.22",
+        "result": "PASS",
+        "summary": "Conflict gate real but unreachable; SUSTAINED_RUN corpus 15% mislabelled."
+      },
+      {
+        "stage": "2L.23",
+        "result": "PASS",
+        "summary": "All 21 generator families boundary-audited; three repaired; persistence 0.8818 to 0.9392."
+      }
+    ],
+    "passCount": 12,
+    "failCount": 2,
+    "ownedLimitations": [
+      {
+        "id": "NEXUS_DELEGATION_NOT_SEPARABLE",
+        "owner": "STAGE2L18",
+        "detail": "Both routes to the 0.99 floor are closed: a better expert does not reach it, and neither does a better confidence rule over the current representation."
+      },
+      {
+        "id": "ORACLE_SINGLE_ACTION_PATH",
+        "owner": "STAGE2L19",
+        "detail": "Only the direction head has an action-delegation path; the other seven emit labels. Widening it is an Arbiter decision, not a measurement."
+      },
+      {
+        "id": "CONFLICTING_EVIDENCE_UNREACHABLE",
+        "owner": "STAGE2L22",
+        "detail": "The gate is structurally over-abstention but fires on 0 of 3,520 swept cases and 0 of the corpus, so there is nothing to repair."
+      },
+      {
+        "id": "GENERATOR_EXTREME_FRAGILITY",
+        "owner": "STAGE2L23",
+        "detail": "Six families fail somewhere in their declared parameter range at points the certification corpus never samples. Ranges recorded, not narrowed."
+      }
+    ],
+    "closureBlockers": [],
+    "authorityAtClosure": {
+      "tier": "R0",
+      "canDispatch": false,
+      "canMutateLiveWorld": false
+    },
+    "nexusStatusAtClosure": "FROZEN_SINCE_STAGE2L18_DELEGATION_UNAUTHORISED",
+    "oracleStatusAtClosure": "ONE_CERTIFIED_ACTION_HEAD_DIRECTION_PLUS_SEVEN_LABEL_ONLY_DIAGNOSTICS",
+    "corpusInfrastructureStatusAtClosure": "ALL_21_TEMPORAL_FAMILIES_WELL_POSED_UNDER_INDEPENDENT_VALIDATION_WITH_ADMISSION_GATE",
+    "historicalResultsMutated": false,
+    "note": "A record of what the arc concluded. It restates no historical certification and changes none. Every prior stage artifact remains byte-identical.",
+    "certificateHash": "57d00337ac703578f3a031406f35730e721b510a3974a99f85b70aae4bfa12db"
+  },
+  "dependencies": {
+    "dependencies": [
+      {
+        "id": "ZEKNOVA_ROOT_BINDING",
+        "classification": "REQUIRED_RUNTIME_BINDING",
+        "description": "The ZekNova runtime root, needed by lineage verification and every live-parity path.",
+        "resolution": "Explicit ZEKNOVA_ROOT through ZEKNOVA_ROOT_CONTRACT_V1; no default, no search, fail-closed with a named reason.",
+        "remediated": true
+      },
+      {
+        "id": "ZEKNOVA_HARDCODED_DEFAULT",
+        "classification": "ACCIDENTAL_HARDCODING",
+        "description": "28 entry points fell back to one developer's Desktop path when the variable was unset, turning a missing dependency into an anonymous ENOENT.",
+        "resolution": "Default removed everywhere; the binding is now null when unset and the contract decides what happens next.",
+        "remediated": true
+      },
+      {
+        "id": "MAINLINE_ENTRY_POINT_HARDCODING",
+        "classification": "ACCIDENTAL_HARDCODING",
+        "description": "scripts/sentinel-grid-mainline-status.sh and scripts/sentinel-grid-mainline-verify.sh hardcoded absolute Desktop paths for BOTH repositories, so the mainline entry points only ran on one machine.",
+        "resolution": "The Sentinel root is derived from the script location; the ZekNova root must be declared and is checked before use, with exit 2 and a named reason when it is not.",
+        "remediated": true
+      },
+      {
+        "id": "MAINLINE_STATUS_HOME_DIRECTORY_DEFAULT",
+        "classification": "ACCIDENTAL_HARDCODING",
+        "description": "integration/status.mjs defaulted both roots to os.homedir()/Desktop/... — a machine assumption rather than a default, and invisible to a literal-path scan.",
+        "resolution": "Sentinel derives from the module location; ZekNova comes from --zeknova or ZEKNOVA_ROOT and is never inferred.",
+        "remediated": true
+      },
+      {
+        "id": "RECORDED_INSTALL_MARKERS",
+        "classification": "DOCUMENTATION_ONLY",
+        "description": "integration/mainline-integration.json and integration/targets/zeknova.json record the absolute paths of a past install.",
+        "resolution": "Left unchanged. They are a record of where an install happened, not a source anyone resolves a path from; rewriting them would falsify the record without making anything portable.",
+        "remediated": false
+      },
+      {
+        "id": "EVIDENCE_PORTABILITY_FIXTURE",
+        "classification": "TEST_FIXTURE",
+        "description": "tests/evidence-portability.test.js uses '/Users/example/project' to assert that absolute paths are NOT encoded into evidence.",
+        "resolution": "Left unchanged on purpose. Replacing it would delete the assertion it exists to make.",
+        "remediated": false
+      },
+      {
+        "id": "WHITESPACE_NAMED_FORENSIC_SCRIPT",
+        "classification": "DOCUMENTATION_ONLY",
+        "description": "A tracked, executable copy of the Stage 2F.4E.3G R8-R4 forensic review script sits at the repository root under a filename consisting of a single space, and builds every path from $HOME/Desktop/... It is a near-duplicate of .tmp-r8-r4/stage2f4e3g-r8-r4-final-review.sh and nothing references it.",
+        "resolution": "Recorded, not repaired and not deleted. It is on no execution path, so it is not a portability defect of the running system; it is an accidentally committed artifact whose removal is a repository-hygiene decision, not this stage's to make. Named here so it is excluded knowingly rather than missed.",
+        "remediated": false
+      },
+      {
+        "id": "STALE_SCRATCH_SCRIPTS",
+        "classification": "DOCUMENTATION_ONLY",
+        "description": ".tmp-r8-r3-r2/MANUAL_APPLY.sh carries developer paths from an earlier runtime rebuild.",
+        "resolution": "Not on any execution path and excluded from the production bundle. Left as historical scratch.",
+        "remediated": false
+      },
+      {
+        "id": "SENTINEL_ROOT_RESOLUTION",
+        "classification": "DEVELOPER_CONVENIENCE",
+        "description": "Sentinel roots are derived from import.meta.dirname rather than hardcoded.",
+        "resolution": "Already portable; relative to the module, so the repository can live anywhere.",
+        "remediated": false
+      },
+      {
+        "id": "TEMP_WORKSPACE",
+        "classification": "DEVELOPER_CONVENIENCE",
+        "description": "Tests that need scratch space use os.tmpdir() rather than a fixed directory.",
+        "resolution": "Already portable across platforms.",
+        "remediated": false
+      }
+    ],
+    "dependencyCount": 10,
+    "byClassification": {
+      "REQUIRED_RUNTIME_BINDING": 1,
+      "TEST_FIXTURE": 1,
+      "DEVELOPER_CONVENIENCE": 2,
+      "ACCIDENTAL_HARDCODING": 3,
+      "DOCUMENTATION_ONLY": 3
+    },
+    "hardcodedZeknovaPathsBefore": 31,
+    "hardcodedZeknovaPathsAfter": 0,
+    "hardcodedZeknovaPathRemoved": true,
+    "deliberatelyRetained": [
+      "RECORDED_INSTALL_MARKERS",
+      "EVIDENCE_PORTABILITY_FIXTURE",
+      "WHITESPACE_NAMED_FORENSIC_SCRIPT",
+      "STALE_SCRATCH_SCRIPTS",
+      "SENTINEL_ROOT_RESOLUTION",
+      "TEMP_WORKSPACE"
+    ],
+    "complete": true,
+    "note": "Not every absolute path is a defect. A fixture that asserts a path is never leaked must keep its path to keep testing."
+  },
+  "rootContract": {
+    "defined": true,
+    "contractVersion": "ZEKNOVA_ROOT_CONTRACT_V1",
+    "variable": "ZEKNOVA_ROOT",
+    "statuses": [
+      "BOUND",
+      "UNBOUND",
+      "INVALID_NOT_A_DIRECTORY",
+      "INVALID_MISSING_MARKERS",
+      "INVALID_UNREADABLE"
+    ],
+    "structuralMarkers": [
+      "azl/zeknova-strategic-state-contract-v2.js",
+      "src/world/PrimeShadow.js",
+      "src/game/Stage2FStrategicProjectionV2.js",
+      "sentinel-grid/live-parity/runtime-collector/collector-core.mjs"
+    ],
+    "markerCount": 4,
+    "defaultValue": null,
+    "searchesFilesystem": false,
+    "readsHomeDirectory": false,
+    "failClosed": true,
+    "sourceHash": "ac06bd1c6be9c471a55ea33f2e69dd2304557d43335e0ea38ae87c0c79cd2e4a",
+    "note": "One variable, no default, no search. Structural validity (is this a ZekNova root) is decided separately from lineage identity (is it the certified one), because a resolver that answered both would refuse a legitimate root for having drifted."
+  },
+  "pathIndependence": {
+    "rootAShape": "zeknova-a",
+    "rootBShape": "nested/deeper still/zeknova-b",
+    "rootCShape": "zeknova-c",
+    "rootDepthA": 1,
+    "rootDepthB": 3,
+    "rootsDiffer": true,
+    "rootBContainsSpace": true,
+    "contentIdentityA": "8d9a2f02d444cbd77cc59a98e8e8d006ebeaeadbed5ca2c9ace64f1414ff7321",
+    "contentIdentityB": "8d9a2f02d444cbd77cc59a98e8e8d006ebeaeadbed5ca2c9ace64f1414ff7321",
+    "contentIdentityC": "86436d12a5a1aa56d61d59e2f1082478ca098f1cf5e5577c380a62ee227f015d",
+    "zeknovaSourceA": "264d10120c583bc870d057e944b98fcd67d1ce3dc876527bdf6f95c670b03421",
+    "zeknovaSourceB": "264d10120c583bc870d057e944b98fcd67d1ce3dc876527bdf6f95c670b03421",
+    "identicalContentSameIdentity": true,
+    "mutatedContentDifferentIdentity": true,
+    "contentIdentityPathIndependent": true,
+    "note": "Two byte-identical trees at unrelated roots — one nested and containing a space — must produce one identity, and a single changed byte must break it. Either half alone would be worthless: a constant would pass the first and a path-dependent digest would pass the second."
+  },
+  "adversarialRoots": {
+    "cases": [
+      {
+        "id": "ROOT_ABSENT",
+        "description": "the variable is not set at all",
+        "declared": null,
+        "declaredShape": "UNSET",
+        "status": "UNBOUND",
+        "bound": false,
+        "reason": "ZEKNOVA_ROOT is not set. ZekNova-dependent certification cannot run without an explicit binding; it is never inferred.",
+        "failsClosed": true,
+        "expectation": "REFUSE"
+      },
+      {
+        "id": "ROOT_EMPTY_STRING",
+        "description": "the variable is set to an empty string",
+        "declared": "   ",
+        "declaredShape": "BLANK",
+        "status": "UNBOUND",
+        "bound": false,
+        "reason": "ZEKNOVA_ROOT is not set. ZekNova-dependent certification cannot run without an explicit binding; it is never inferred.",
+        "failsClosed": true,
+        "expectation": "REFUSE"
+      },
+      {
+        "id": "ROOT_NONEXISTENT",
+        "description": "the variable points at a path that does not exist",
+        "declared": "<TMP>/no-such-dir",
+        "declaredShape": "TEMP_RELATIVE",
+        "status": "INVALID_NOT_A_DIRECTORY",
+        "bound": false,
+        "reason": "ZEKNOVA_ROOT points at <TMP>/no-such-dir, which is not a readable directory.",
+        "failsClosed": true,
+        "expectation": "REFUSE"
+      },
+      {
+        "id": "ROOT_EMPTY_DIRECTORY",
+        "description": "an existing but empty directory",
+        "declared": "<TMP>/empty",
+        "declaredShape": "TEMP_RELATIVE",
+        "status": "INVALID_MISSING_MARKERS",
+        "bound": false,
+        "reason": "<TMP>/empty does not look like a ZekNova runtime root: 4 of 4 structural markers are missing.",
+        "failsClosed": true,
+        "expectation": "REFUSE"
+      },
+      {
+        "id": "ROOT_WRONG_REPOSITORY",
+        "description": "a repository carrying some but not all structural markers",
+        "declared": "<TMP>/wrong-repository",
+        "declaredShape": "TEMP_RELATIVE",
+        "status": "INVALID_MISSING_MARKERS",
+        "bound": false,
+        "reason": "<TMP>/wrong-repository does not look like a ZekNova runtime root: 1 of 4 structural markers are missing.",
+        "failsClosed": true,
+        "expectation": "REFUSE"
+      },
+      {
+        "id": "ROOT_IS_A_FILE",
+        "description": "the variable points at a file",
+        "declared": "<TMP>/a-file",
+        "declaredShape": "TEMP_RELATIVE",
+        "status": "INVALID_NOT_A_DIRECTORY",
+        "bound": false,
+        "reason": "ZEKNOVA_ROOT points at <TMP>/a-file, which is not a readable directory.",
+        "failsClosed": true,
+        "expectation": "REFUSE"
+      },
+      {
+        "id": "ROOT_VALID_WITH_SPACE",
+        "description": "a valid root whose path contains a space",
+        "declared": "<TMP>/zeknova valid",
+        "declaredShape": "TEMP_RELATIVE",
+        "status": "BOUND",
+        "bound": true,
+        "reason": null,
+        "failsClosed": true,
+        "expectation": "BIND"
+      },
+      {
+        "id": "ROOT_VALID_TRAILING_WHITESPACE",
+        "description": "a valid root with surrounding whitespace",
+        "declared": "  <TMP>/zeknova valid  ",
+        "declaredShape": "LITERAL",
+        "status": "BOUND",
+        "bound": true,
+        "reason": null,
+        "failsClosed": true,
+        "expectation": "BIND"
+      }
+    ],
+    "caseCount": 8,
+    "allBehaveAsSpecified": true,
+    "refusedCount": 6,
+    "boundCount": 2,
+    "decoyInventoryComplete": false,
+    "decoyUnreadableFiles": 1,
+    "wrongRepositoryNeverBinds": true,
+    "noAccidentalPathErrors": true,
+    "note": "Every refusal carries a named status and reason. No case reaches a raw ENOENT, which was the inherited defect."
+  },
+  "currentLineage": {
+    "measured": false,
+    "zeknovaRootStatus": "UNBOUND",
+    "reason": "ZEKNOVA_ROOT is not set. ZekNova-dependent certification cannot run without an explicit binding; it is never inferred.",
+    "classification": "UNKNOWN",
+    "classificationBasis": "NOT_MEASURED_ZEKNOVA_ROOT_UNBOUND",
+    "historicalRuntimeOwner": "sha256:bdc88a75795283152f13ea724233a8e80adf6c0b210e4b6050418d767f22c668",
+    "historicalGeneratedRuntimeProvenanceId": "sha256:8621541069da7bcfa1c77e13605eaa98a0d241a8b831b461a7b343c75823150e",
+    "currentRuntimeOwner": null,
+    "currentAdapterOwner": null,
+    "currentRuntimeHash": null,
+    "currentAdapterHash": null,
+    "changedFields": [],
+    "note": "No lineage is asserted. A classification produced without reading the runtime would be a guess wearing a certification label."
+  },
+  "contractCompatibility": {
+    "measured": false,
+    "reason": "ZEKNOVA_ROOT is not set. ZekNova-dependent certification cannot run without an explicit binding; it is never inferred.",
+    "surfaces": [
+      {
+        "surface": "canonicalState",
+        "compatible": null,
+        "basis": "NOT_MEASURED_ZEKNOVA_ROOT_UNBOUND"
+      },
+      {
+        "surface": "legalActions",
+        "compatible": null,
+        "basis": "NOT_MEASURED_ZEKNOVA_ROOT_UNBOUND"
+      },
+      {
+        "surface": "runtimeProvenance",
+        "compatible": null,
+        "basis": "NOT_MEASURED_ZEKNOVA_ROOT_UNBOUND"
+      },
+      {
+        "surface": "actionIdentity",
+        "compatible": null,
+        "basis": "NOT_MEASURED_ZEKNOVA_ROOT_UNBOUND"
+      },
+      {
+        "surface": "observationExtraction",
+        "compatible": null,
+        "basis": "NOT_MEASURED_ZEKNOVA_ROOT_UNBOUND"
+      },
+      {
+        "surface": "outcomeBinding",
+        "compatible": null,
+        "basis": "NOT_MEASURED_ZEKNOVA_ROOT_UNBOUND"
+      },
+      {
+        "surface": "sessionIdentity",
+        "compatible": null,
+        "basis": "NOT_MEASURED_ZEKNOVA_ROOT_UNBOUND"
+      },
+      {
+        "surface": "replayInputs",
+        "compatible": null,
+        "basis": "NOT_MEASURED_ZEKNOVA_ROOT_UNBOUND"
+      },
+      {
+        "surface": "authorityFencing",
+        "compatible": null,
+        "basis": "NOT_MEASURED_ZEKNOVA_ROOT_UNBOUND"
+      }
+    ],
+    "changedFields": [],
+    "allCompatible": null,
+    "note": "Contract compatibility is a statement about the real runtime. With none bound, every surface is unmeasured rather than assumed compatible."
+  },
+  "shadowDryRun": {
+    "adapterId": "reference-grid-rescue-adapter",
+    "gameId": "reference-grid-rescue",
+    "observerId": "controller",
+    "observationAccepted": true,
+    "canonicalizationPass": true,
+    "legalActionCount": 3,
+    "routingPass": true,
+    "primeRecommendationProduced": true,
+    "selectedActionKey": "[\"reference.grid-rescue/assist\",\"controller\",{\"id\":\"north\",\"kind\":\"site\"},{\"energyCost\":2}]",
+    "evidencePacketProduced": true,
+    "recommendationHash": "61319734ca4f8861badc5aa784062c9a3dbf04732f089e9016e9a7f9db5ace6e",
+    "replayReproduced": true,
+    "authorityTier": "R0",
+    "evaluationOnlyEnforced": true,
+    "evaluationOnlyError": null,
+    "dispatchProbeAttempted": true,
+    "dispatchRefused": true,
+    "refusalErrorName": "AuthorityError",
+    "refusalMessage": "Operation denied at R0: STAGE2M_SHADOW_DRY_RUN_DISPATCH_PROBE",
+    "dispatches": 0,
+    "worldMutations": 0,
+    "authorityTokensIssued": 0,
+    "zeknovaInvolved": false,
+    "scope": "GAME_AGNOSTIC_PIPELINE_ONLY_ZEKNOVA_NOT_BOUND",
+    "pass": true
+  },
+  "suite": {
+    "withoutZeknova": {
+      "command": "node --test (ZEKNOVA_ROOT unset)",
+      "passing": 1257,
+      "failing": 0,
+      "skipped": 1,
+      "todo": 0,
+      "zeknovaDependentSkipObserved": true,
+      "measuredAt": "2026-09-04"
+    },
+    "failing": 0,
+    "passing": 1257,
+    "skipped": 1,
+    "gameAgnosticPortable": true,
+    "zeknovaDependentFailureExplicit": true,
+    "fullSuiteWithValidRootPass": null,
+    "fullSuiteWithValidRootBasis": "NOT_MEASURED_NO_ZEKNOVA_RUNTIME_REACHABLE_IN_THIS_ENVIRONMENT",
+    "invocationIndependence": {
+      "invocationDirectories": [
+        "<repository root>",
+        "<system temp>"
+      ],
+      "measurements": {
+        "pathIndependence": "954ef52ac392e57c240b9c0b3c4e51a57244376cc670f372656f0972edf2addd",
+        "adversarial": "e9511280d5b2cf2420167b6cc9435086cd4f0f18c58e74c2e94c0ab68c6cc873",
+        "dryRun": "43b48b7f854d602b41a466e54576a281646b309c7cba8f9132bf118780f8470f"
+      },
+      "identical": true,
+      "claim": "MULTI_ROOT_SAME_PLATFORM_CERTIFIED",
+      "note": "One platform, several invocation roots. This is NOT a multi-platform claim and must never be reported as one; no second operating system was available to this run."
+    },
+    "note": "Before this stage the ZekNova-dependent test failed on a missing developer path. It now skips with a named reason. A skip that says why is a measurement; a failure that says ENOENT is not."
+  },
+  "portabilityStatus": {
+    "claim": "MULTI_ROOT_SAME_PLATFORM_CERTIFIED",
+    "multiPlatformCertified": false,
+    "platformsMeasured": [
+      {
+        "platform": "linux",
+        "arch": "x64",
+        "nodeVersion": "v22.22.2",
+        "measuredAt": "2026-09-04"
+      }
+    ],
+    "distinctPlatformCount": 1,
+    "inheritedLimitation": "DIGEST_PRODUCED_SINGLE_PLATFORM",
+    "inheritedLimitationRemediated": false,
+    "note": "MULTI_ROOT_SAME_PLATFORM_CERTIFIED. The repository is invocation-independent and root-independent on this platform. No second operating system was reachable, so the inherited DIGEST_PRODUCED_SINGLE_PLATFORM limitation is carried forward unchanged rather than closed. Environment independence and platform diversity are different claims and this stage only earned the first."
+  },
+  "readiness": {
+    "gates": {
+      "PORTABILITY_CERTIFIED": true,
+      "FULL_SUITE_GREEN": true,
+      "ZEKNOVA_ROOT_EXPLICIT": true,
+      "CURRENT_LINEAGE_IDENTIFIED": false,
+      "OBSERVATION_CONTRACT_COMPATIBLE": false,
+      "REPLAY_READY": true,
+      "EVIDENCE_PROVENANCE_READY": true,
+      "AUTHORITY_R0_CONFIRMED": true
+    },
+    "blockers": [
+      "CURRENT_LINEAGE_IDENTIFIED",
+      "OBSERVATION_CONTRACT_COMPATIBLE"
+    ],
+    "currentLineageLiveQualificationReady": false,
+    "note": "Live qualification is not ready. Blocking gates: CURRENT_LINEAGE_IDENTIFIED, OBSERVATION_CONTRACT_COMPATIBLE."
+  },
+  "leanBundle": {
+    "artifactName": "sentinel-grid-2l19-production-lean-91ec243.zip",
+    "isRepositoryArtifact": false,
+    "sha256": "7ec6fa1ef8d865dd429ba22541068d441d3096926e6c4eca6a8381645440b6f9",
+    "bytes": 5940264,
+    "fileCount": 1508,
+    "pinnedCommit": "91ec243",
+    "auditedAt": "2026-09-04",
+    "commitsBehindHeadAtAudit": 4,
+    "currentWithRespectToHead": "STALE_PINNED_TO_AN_EARLIER_COMMIT",
+    "containsHardcodedZeknovaPath": true,
+    "filesCarryingHardcodedZeknovaPath": 33,
+    "carriesPortabilityDefectRepairedByThisStage": true,
+    "rebuiltByThisStage": false,
+    "overwritten": false,
+    "impliesProductionAuthority": false,
+    "authorityOfBundledSystem": "R0_ADVISORY_ONLY",
+    "recommendation": "Rebuild as a NEW artifact pinned to this stage if a portable bundle is wanted. Do not overwrite the 2L.19 bundle: it is the object an earlier delivery refers to.",
+    "note": "\"Lean\" describes packaging, not authority. The bundled system is R0 advisory-only, confers no dispatch capability, and shipping it does not promote anything."
+  },
+  "stage2lClosed": true,
+  "environmentDependencyInventoryComplete": true,
+  "zeknovaRootContractDefined": true,
+  "hardcodedZeknovaPathRemoved": true,
+  "invalidRootFailsClosed": true,
+  "contentIdentityPathIndependent": true,
+  "gameAgnosticSuitePortable": true,
+  "zeknovaDependentFailureExplicit": true,
+  "fullSuiteWithValidRootPass": null,
+  "currentZeknovaLineageIdentified": false,
+  "observationContractCompatibilityMeasured": false,
+  "shadowReadinessDryRunPass": true,
+  "securityRegressionPass": true,
+  "stage2mOutcome": "D_PORTABILITY_REPAIRED_ZEKNOVA_UNAVAILABLE",
+  "stage2mCertified": true,
+  "interpretation": {
+    "currentSystemStatus": "PORTABLE_R0_STACK_WITH_EXPLICIT_ZEKNOVA_BINDING_AWAITING_A_BOUND_RUNTIME_FOR_LINEAGE_QUALIFICATION",
+    "measuredRemainingLimitation": "CURRENT_ZEKNOVA_LINEAGE_NOT_MEASURED_IN_THIS_ENVIRONMENT: no ZekNova runtime is reachable here, so lineage classification, observation-contract compatibility and live-qualification readiness are unmeasured rather than assumed. The machinery for all three is built and exercised against fixtures.",
+    "portabilityClaimScope": "MULTI_ROOT_SAME_PLATFORM_CERTIFIED"
+  },
+  "portabilityNote": "MULTI_ROOT_SAME_PLATFORM_CERTIFIED. The repository is invocation-independent and root-independent on this platform. No second operating system was reachable, so the inherited DIGEST_PRODUCED_SINGLE_PLATFORM limitation is carried forward unchanged rather than closed. Environment independence and platform diversity are different claims and this stage only earned the first.",
+  "liveActionDispatches": 0,
+  "worldMutations": 0,
+  "authorityEscalations": 0,
+  "realZeknovaDecisionDeltaMeasured": false,
+  "evidenceDigest": "7bb0996aad1e27aa735730aced6103a7de5e94610fe5d03a9d952085049f97ef",
+  "certificationHash": "9a44f6bc6803b2d32ff53203d9eb8fd56ff4a77809e7d7d7a1bfc72ca09af463"
+}

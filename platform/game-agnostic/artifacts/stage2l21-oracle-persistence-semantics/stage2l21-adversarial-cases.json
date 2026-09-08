@@ -1,0 +1,314 @@
+{
+  "stage": "STAGE2L21_ORACLE_PERSISTENCE_ABSTENTION_SEMANTICS",
+  "declaredCases": [
+    {
+      "id": "FLAT_CONSTANT",
+      "category": "FLAT",
+      "samples": 20,
+      "dataSufficiency": true,
+      "directionCertainty": false,
+      "persistenceStrength": false,
+      "expected": "NOT_PERSISTENT",
+      "rationale": "Ample data; there is no tendency at all to sustain, which is a finding, not a gap."
+    },
+    {
+      "id": "TINY_ALTERNATING",
+      "category": "OSCILLATING",
+      "samples": 12,
+      "dataSufficiency": true,
+      "directionCertainty": false,
+      "persistenceStrength": false,
+      "expected": "NOT_PERSISTENT",
+      "rationale": "Direction inverts every step. Not sustained."
+    },
+    {
+      "id": "LARGE_ALTERNATING",
+      "category": "OSCILLATING",
+      "samples": 28,
+      "dataSufficiency": true,
+      "directionCertainty": false,
+      "persistenceStrength": false,
+      "expected": "NOT_PERSISTENT",
+      "rationale": "Large amplitude does not make an inverting series sustained."
+    },
+    {
+      "id": "NOISY_FLAT",
+      "category": "FLAT",
+      "samples": 20,
+      "dataSufficiency": true,
+      "directionCertainty": false,
+      "persistenceStrength": false,
+      "expected": "NOT_PERSISTENT",
+      "rationale": "Zero-mean noise; net movement is nil."
+    },
+    {
+      "id": "WEAK_UP",
+      "category": "WEAK_TREND",
+      "samples": 20,
+      "dataSufficiency": true,
+      "directionCertainty": true,
+      "persistenceStrength": true,
+      "expected": "PERSISTENT",
+      "rationale": "Every step moves the same way. Weak is not the same as unsustained."
+    },
+    {
+      "id": "WEAK_DOWN",
+      "category": "WEAK_TREND",
+      "samples": 20,
+      "dataSufficiency": true,
+      "directionCertainty": true,
+      "persistenceStrength": true,
+      "expected": "PERSISTENT",
+      "rationale": "As WEAK_UP, mirrored."
+    },
+    {
+      "id": "STRONG_UP",
+      "category": "STRONG_TREND",
+      "samples": 20,
+      "dataSufficiency": true,
+      "directionCertainty": true,
+      "persistenceStrength": true,
+      "expected": "PERSISTENT",
+      "rationale": "Monotone across the window."
+    },
+    {
+      "id": "STRONG_DOWN",
+      "category": "STRONG_TREND",
+      "samples": 20,
+      "dataSufficiency": true,
+      "directionCertainty": true,
+      "persistenceStrength": true,
+      "expected": "PERSISTENT",
+      "rationale": "As STRONG_UP, mirrored."
+    },
+    {
+      "id": "STAIRCASE",
+      "category": "WEAK_TREND",
+      "samples": 20,
+      "dataSufficiency": true,
+      "directionCertainty": true,
+      "persistenceStrength": true,
+      "expected": "PERSISTENT",
+      "rationale": "Flat steps interleave with rises but nothing opposes the direction."
+    },
+    {
+      "id": "TREND_ONE_OUTLIER",
+      "category": "STRONG_TREND",
+      "samples": 20,
+      "dataSufficiency": true,
+      "directionCertainty": true,
+      "persistenceStrength": true,
+      "expected": "PERSISTENT",
+      "rationale": "One excursion is a bounded interruption, which the contract explicitly tolerates."
+    },
+    {
+      "id": "TREND_THEN_REVERSAL",
+      "category": "REVERSAL",
+      "samples": 20,
+      "dataSufficiency": true,
+      "directionCertainty": true,
+      "persistenceStrength": false,
+      "expected": "NOT_PERSISTENT",
+      "rationale": "The tendency was real and then was not sustained to the window end."
+    },
+    {
+      "id": "REPEATED_REVERSALS",
+      "category": "REVERSAL",
+      "samples": 20,
+      "dataSufficiency": true,
+      "directionCertainty": false,
+      "persistenceStrength": false,
+      "expected": "NOT_PERSISTENT",
+      "rationale": "Direction turns repeatedly inside the window."
+    },
+    {
+      "id": "PERFECT_CYCLE",
+      "category": "OSCILLATING",
+      "samples": 24,
+      "dataSufficiency": true,
+      "directionCertainty": false,
+      "persistenceStrength": false,
+      "expected": "NOT_PERSISTENT",
+      "rationale": "A cycle is the canonical sustained-nothing case."
+    },
+    {
+      "id": "DAMPED_CYCLE",
+      "category": "OSCILLATING",
+      "samples": 24,
+      "dataSufficiency": true,
+      "directionCertainty": false,
+      "persistenceStrength": false,
+      "expected": "NOT_PERSISTENT",
+      "rationale": "Decaying amplitude still never sustains a direction."
+    },
+    {
+      "id": "EXPANDING_OSCILLATION",
+      "category": "OSCILLATING",
+      "samples": 24,
+      "dataSufficiency": true,
+      "directionCertainty": false,
+      "persistenceStrength": false,
+      "expected": "NOT_PERSISTENT",
+      "rationale": "Growing amplitude is a volatility statement, not a persistence one."
+    },
+    {
+      "id": "DETERMINISTIC_NOISE",
+      "category": "FLAT",
+      "samples": 20,
+      "dataSufficiency": true,
+      "directionCertainty": false,
+      "persistenceStrength": false,
+      "expected": "NOT_PERSISTENT",
+      "rationale": "Random-looking but bounded and zero-mean."
+    },
+    {
+      "id": "EXACTLY_MINIMUM_SAMPLES",
+      "category": "BOUNDARY",
+      "samples": 6,
+      "dataSufficiency": true,
+      "directionCertainty": true,
+      "persistenceStrength": true,
+      "expected": "PERSISTENT",
+      "rationale": "At the minimum the window is sufficient, so an answer is owed."
+    },
+    {
+      "id": "ONE_BELOW_MINIMUM_SAMPLES",
+      "category": "BOUNDARY",
+      "samples": 5,
+      "dataSufficiency": false,
+      "directionCertainty": null,
+      "persistenceStrength": null,
+      "expected": "INSUFFICIENT_EVIDENCE",
+      "rationale": "Below the minimum the window genuinely cannot support an answer. This is the ONLY legitimate abstention in the whole table."
+    }
+  ],
+  "repairedResults": [
+    {
+      "id": "FLAT_CONSTANT",
+      "category": "FLAT",
+      "expected": "NOT_PERSISTENT",
+      "emitted": "NOT_PERSISTENT",
+      "correct": true
+    },
+    {
+      "id": "TINY_ALTERNATING",
+      "category": "OSCILLATING",
+      "expected": "NOT_PERSISTENT",
+      "emitted": "NOT_PERSISTENT",
+      "correct": true
+    },
+    {
+      "id": "LARGE_ALTERNATING",
+      "category": "OSCILLATING",
+      "expected": "NOT_PERSISTENT",
+      "emitted": "NOT_PERSISTENT",
+      "correct": true
+    },
+    {
+      "id": "NOISY_FLAT",
+      "category": "FLAT",
+      "expected": "NOT_PERSISTENT",
+      "emitted": "NOT_PERSISTENT",
+      "correct": true
+    },
+    {
+      "id": "WEAK_UP",
+      "category": "WEAK_TREND",
+      "expected": "PERSISTENT",
+      "emitted": "PERSISTENT",
+      "correct": true
+    },
+    {
+      "id": "WEAK_DOWN",
+      "category": "WEAK_TREND",
+      "expected": "PERSISTENT",
+      "emitted": "PERSISTENT",
+      "correct": true
+    },
+    {
+      "id": "STRONG_UP",
+      "category": "STRONG_TREND",
+      "expected": "PERSISTENT",
+      "emitted": "PERSISTENT",
+      "correct": true
+    },
+    {
+      "id": "STRONG_DOWN",
+      "category": "STRONG_TREND",
+      "expected": "PERSISTENT",
+      "emitted": "PERSISTENT",
+      "correct": true
+    },
+    {
+      "id": "STAIRCASE",
+      "category": "WEAK_TREND",
+      "expected": "PERSISTENT",
+      "emitted": "PERSISTENT",
+      "correct": true
+    },
+    {
+      "id": "TREND_ONE_OUTLIER",
+      "category": "STRONG_TREND",
+      "expected": "PERSISTENT",
+      "emitted": "PERSISTENT",
+      "correct": true
+    },
+    {
+      "id": "TREND_THEN_REVERSAL",
+      "category": "REVERSAL",
+      "expected": "NOT_PERSISTENT",
+      "emitted": "NOT_PERSISTENT",
+      "correct": true
+    },
+    {
+      "id": "REPEATED_REVERSALS",
+      "category": "REVERSAL",
+      "expected": "NOT_PERSISTENT",
+      "emitted": "NOT_PERSISTENT",
+      "correct": true
+    },
+    {
+      "id": "PERFECT_CYCLE",
+      "category": "OSCILLATING",
+      "expected": "NOT_PERSISTENT",
+      "emitted": "NOT_PERSISTENT",
+      "correct": true
+    },
+    {
+      "id": "DAMPED_CYCLE",
+      "category": "OSCILLATING",
+      "expected": "NOT_PERSISTENT",
+      "emitted": "NOT_PERSISTENT",
+      "correct": true
+    },
+    {
+      "id": "EXPANDING_OSCILLATION",
+      "category": "OSCILLATING",
+      "expected": "NOT_PERSISTENT",
+      "emitted": "NOT_PERSISTENT",
+      "correct": true
+    },
+    {
+      "id": "DETERMINISTIC_NOISE",
+      "category": "FLAT",
+      "expected": "NOT_PERSISTENT",
+      "emitted": "NOT_PERSISTENT",
+      "correct": true
+    },
+    {
+      "id": "EXACTLY_MINIMUM_SAMPLES",
+      "category": "BOUNDARY",
+      "expected": "PERSISTENT",
+      "emitted": "PERSISTENT",
+      "correct": true
+    },
+    {
+      "id": "ONE_BELOW_MINIMUM_SAMPLES",
+      "category": "BOUNDARY",
+      "expected": "INSUFFICIENT_EVIDENCE",
+      "emitted": "INSUFFICIENT_EVIDENCE",
+      "correct": true
+    }
+  ],
+  "expectationsDeclaredBeforeExecution": true
+}

@@ -1,0 +1,91 @@
+{
+  "validatorVersion": "forge-semantic-validators-v1",
+  "architecture": "generate -> validate -> assert -> admit",
+  "headFree": true,
+  "corpus": {
+    "generated": 504,
+    "admitted": 504,
+    "rejected": 0,
+    "admissionRate": 1,
+    "rejectionReasons": []
+  },
+  "sensitivity": {
+    "probeCount": 7,
+    "probes": [
+      {
+        "generatedAs": "nexus/live_substitute",
+        "validatedAs": "nexus/dead_substitute",
+        "honestClaimHolds": true,
+        "mislabelledClaimRejected": true,
+        "failedChecks": [
+          "SUBSTITUTE_CANNOT_CARRY"
+        ],
+        "caught": true
+      },
+      {
+        "generatedAs": "nexus/redundant_infrastructure",
+        "validatedAs": "nexus/cycle",
+        "honestClaimHolds": true,
+        "mislabelledClaimRejected": true,
+        "failedChecks": [
+          "CYCLE_PRESENT"
+        ],
+        "caught": true
+      },
+      {
+        "generatedAs": "oracle/monotonic_trend",
+        "validatedAs": "oracle/reversal",
+        "honestClaimHolds": true,
+        "mislabelledClaimRejected": true,
+        "failedChecks": [
+          "SIGN_CHANGE_WITH_MARGIN"
+        ],
+        "caught": true
+      },
+      {
+        "generatedAs": "oracle/monotonic_trend",
+        "validatedAs": "oracle/insufficient_history",
+        "honestClaimHolds": true,
+        "mislabelledClaimRejected": true,
+        "failedChecks": [
+          "BELOW_SUFFICIENCY"
+        ],
+        "caught": true
+      },
+      {
+        "generatedAs": "oracle/persistence",
+        "validatedAs": "oracle/volatility_shift",
+        "honestClaimHolds": true,
+        "mislabelledClaimRejected": true,
+        "failedChecks": [
+          "VOLATILITY_INCREASED"
+        ],
+        "caught": true
+      },
+      {
+        "generatedAs": "archimedes/redundant_structural_paths",
+        "validatedAs": "archimedes/material_shortage",
+        "honestClaimHolds": true,
+        "mislabelledClaimRejected": true,
+        "failedChecks": [
+          "DEMAND_EXCEEDS_SUPPLY"
+        ],
+        "caught": true
+      },
+      {
+        "generatedAs": "prime/multi_objective_intervention",
+        "validatedAs": "prime/adversarial_choice",
+        "honestClaimHolds": true,
+        "mislabelledClaimRejected": true,
+        "failedChecks": [
+          "OBJECTIVE_UNDER_ATTACK"
+        ],
+        "caught": true
+      }
+    ],
+    "caughtCount": 7,
+    "allCaught": true,
+    "note": "Each probe generates a world under one family and validates it against a different family's claim. The honest claim must hold and the false one must be refused. A gate that passed both would be a decoration."
+  },
+  "rule": "A generator declaration is not ground truth. The family label selects which validator runs; it is never evidence that the claim holds."
+}

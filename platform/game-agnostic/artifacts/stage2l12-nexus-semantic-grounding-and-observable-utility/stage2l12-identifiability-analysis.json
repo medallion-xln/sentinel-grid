@@ -1,0 +1,721 @@
+{
+  "stage": "STAGE2L12_NEXUS_SEMANTIC_GROUNDING_AND_OBSERVABLE_UTILITY",
+  "analysis": {
+    "cases": 3210,
+    "conditionedOn": "NEXUS_MADE_A_RECOMMENDATION",
+    "rowsBeforeConditioning": 5261,
+    "coverage": 0.61015,
+    "baseRate": 0.138318,
+    "featuresInspected": 30,
+    "featuresVarying": 21,
+    "predicatesSearched": 3421,
+    "predicatesEvaluable": 3167,
+    "perFeature": [
+      {
+        "feature": "context.baselineUtility",
+        "distinctValues": 3194,
+        "bestGap": 0.152619,
+        "bestPredicate": "context.baselineUtility<=848218",
+        "bestSideReliability": 0.280952,
+        "tier": "TIER_WORLD_STATE"
+      },
+      {
+        "feature": "nexus.maxDependencyDepth",
+        "distinctValues": 13,
+        "bestGap": 0.03794,
+        "bestPredicate": "nexus.maxDependencyDepth<=2",
+        "bestSideReliability": 0.174497,
+        "tier": "TIER_NEXUS_OUTPUT"
+      },
+      {
+        "feature": "nexus.graphDensity",
+        "distinctValues": 58,
+        "bestGap": 0.034037,
+        "bestPredicate": "nexus.graphDensity<=180556",
+        "bestSideReliability": 0.140704,
+        "tier": "TIER_NEXUS_OUTPUT"
+      },
+      {
+        "feature": "context.relationCount",
+        "distinctValues": 18,
+        "bestGap": 0.033936,
+        "bestPredicate": "context.relationCount<=7",
+        "bestSideReliability": 0.17033,
+        "tier": "TIER_WORLD_STATE"
+      },
+      {
+        "feature": "nexus.spofCandidateCount",
+        "distinctValues": 4,
+        "bestGap": 0.031058,
+        "bestPredicate": "nexus.spofCandidateCount==3",
+        "bestSideReliability": 0.146058,
+        "tier": "TIER_NEXUS_OUTPUT"
+      },
+      {
+        "feature": "nexus.threatenedEntityCount",
+        "distinctValues": 4,
+        "bestGap": 0.030974,
+        "bestPredicate": "nexus.threatenedEntityCount==2",
+        "bestSideReliability": 0.168317,
+        "tier": "TIER_NEXUS_OUTPUT"
+      },
+      {
+        "feature": "nexus.edgeCount",
+        "distinctValues": 18,
+        "bestGap": 0.028236,
+        "bestPredicate": "nexus.edgeCount<=18",
+        "bestSideReliability": 0.139347,
+        "tier": "TIER_NEXUS_OUTPUT"
+      },
+      {
+        "feature": "nexus.bottleneckCount",
+        "distinctValues": 6,
+        "bestGap": 0.027022,
+        "bestPredicate": "nexus.bottleneckCount==1",
+        "bestSideReliability": 0.15379,
+        "tier": "TIER_NEXUS_OUTPUT"
+      },
+      {
+        "feature": "nexus.maxCentrality",
+        "distinctValues": 34,
+        "bestGap": 0.026145,
+        "bestPredicate": "nexus.maxCentrality<=214286",
+        "bestSideReliability": 0.163265,
+        "tier": "TIER_NEXUS_OUTPUT"
+      },
+      {
+        "feature": "nexus.criticalityMargin",
+        "distinctValues": 3,
+        "bestGap": 0.023506,
+        "bestPredicate": "nexus.criticalityMargin==0",
+        "bestSideReliability": 0.150905,
+        "tier": "TIER_NEXUS_OUTPUT"
+      },
+      {
+        "feature": "context.entityCount",
+        "distinctValues": 9,
+        "bestGap": 0.021181,
+        "bestPredicate": "context.entityCount==15",
+        "bestSideReliability": 0.140746,
+        "tier": "TIER_WORLD_STATE"
+      },
+      {
+        "feature": "nexus.entityCount",
+        "distinctValues": 9,
+        "bestGap": 0.021181,
+        "bestPredicate": "nexus.entityCount==15",
+        "bestSideReliability": 0.140746,
+        "tier": "TIER_NEXUS_OUTPUT"
+      },
+      {
+        "feature": "nexus.expertConfidence",
+        "distinctValues": 18,
+        "bestGap": 0.020679,
+        "bestPredicate": "nexus.expertConfidence<=900000",
+        "bestSideReliability": 0.157895,
+        "tier": "TIER_NEXUS_OUTPUT"
+      },
+      {
+        "feature": "nexus.rationaleCodeCount",
+        "distinctValues": 5,
+        "bestGap": 0.017019,
+        "bestPredicate": "nexus.rationaleCodeCount==5",
+        "bestSideReliability": 0.13897,
+        "tier": "TIER_NEXUS_OUTPUT"
+      },
+      {
+        "feature": "nexus.uncoveredThreatenedCount",
+        "distinctValues": 4,
+        "bestGap": 0.016436,
+        "bestPredicate": "nexus.uncoveredThreatenedCount==1",
+        "bestSideReliability": 0.14095,
+        "tier": "TIER_NEXUS_OUTPUT"
+      },
+      {
+        "feature": "nexus.maxDegree",
+        "distinctValues": 7,
+        "bestGap": 0.014539,
+        "bestPredicate": "nexus.maxDegree==6",
+        "bestSideReliability": 0.152381,
+        "tier": "TIER_NEXUS_OUTPUT"
+      },
+      {
+        "feature": "nexus.cycleNodeCount",
+        "distinctValues": 6,
+        "bestGap": 0.013871,
+        "bestPredicate": "nexus.cycleNodeCount==4",
+        "bestSideReliability": 0.138871,
+        "tier": "TIER_NEXUS_OUTPUT"
+      },
+      {
+        "feature": "nexus.unsupportedThreatenedCount",
+        "distinctValues": 4,
+        "bestGap": 0.010202,
+        "bestPredicate": "nexus.unsupportedThreatenedCount==1",
+        "bestSideReliability": 0.141086,
+        "tier": "TIER_NEXUS_OUTPUT"
+      },
+      {
+        "feature": "nexus.maxDependents",
+        "distinctValues": 7,
+        "bestGap": 0.009792,
+        "bestPredicate": "nexus.maxDependents==3",
+        "bestSideReliability": 0.139889,
+        "tier": "TIER_NEXUS_OUTPUT"
+      },
+      {
+        "feature": "nexus.cycleDetected",
+        "distinctValues": 2,
+        "bestGap": 0.009587,
+        "bestPredicate": "nexus.cycleDetected==0",
+        "bestSideReliability": 0.144473,
+        "tier": "TIER_NEXUS_OUTPUT"
+      },
+      {
+        "feature": "nexus.criticalDependencyCount",
+        "distinctValues": 5,
+        "bestGap": 0.001968,
+        "bestPredicate": "nexus.criticalDependencyCount==3",
+        "bestSideReliability": 0.138614,
+        "tier": "TIER_NEXUS_OUTPUT"
+      },
+      {
+        "feature": "context.legalActionCount",
+        "distinctValues": 1,
+        "bestGap": 0,
+        "bestPredicate": null,
+        "bestSideReliability": null,
+        "tier": "TIER_WORLD_STATE"
+      },
+      {
+        "feature": "nexus.actionTargetedEntityCount",
+        "distinctValues": 1,
+        "bestGap": 0,
+        "bestPredicate": null,
+        "bestSideReliability": null,
+        "tier": "TIER_NEXUS_OUTPUT"
+      },
+      {
+        "feature": "nexus.candidateCount",
+        "distinctValues": 1,
+        "bestGap": 0,
+        "bestPredicate": null,
+        "bestSideReliability": null,
+        "tier": "TIER_NEXUS_OUTPUT"
+      },
+      {
+        "feature": "nexus.hostileEntityCount",
+        "distinctValues": 1,
+        "bestGap": 0,
+        "bestPredicate": null,
+        "bestSideReliability": null,
+        "tier": "TIER_NEXUS_OUTPUT"
+      },
+      {
+        "feature": "nexus.isolatedEntityCount",
+        "distinctValues": 1,
+        "bestGap": 0,
+        "bestPredicate": null,
+        "bestSideReliability": null,
+        "tier": "TIER_NEXUS_OUTPUT"
+      },
+      {
+        "feature": "nexus.isolatedRatio",
+        "distinctValues": 1,
+        "bestGap": 0,
+        "bestPredicate": null,
+        "bestSideReliability": null,
+        "tier": "TIER_NEXUS_OUTPUT"
+      },
+      {
+        "feature": "nexus.queryReachable",
+        "distinctValues": 1,
+        "bestGap": 0,
+        "bestPredicate": null,
+        "bestSideReliability": null,
+        "tier": "TIER_NEXUS_OUTPUT"
+      },
+      {
+        "feature": "nexus.topCriticality",
+        "distinctValues": 1,
+        "bestGap": 0,
+        "bestPredicate": null,
+        "bestSideReliability": null,
+        "tier": "TIER_NEXUS_OUTPUT"
+      },
+      {
+        "feature": "nexus.unresolvedDependencyCount",
+        "distinctValues": 1,
+        "bestGap": 0,
+        "bestPredicate": null,
+        "bestSideReliability": null,
+        "tier": "TIER_NEXUS_OUTPUT"
+      }
+    ],
+    "perTierBestGap": {
+      "TIER_NEXUS_OUTPUT": 0.03794,
+      "TIER_WORLD_STATE": 0.152619
+    },
+    "topByGap": [
+      {
+        "id": "context.baselineUtility<=848218",
+        "inCount": 3000,
+        "outCount": 210,
+        "inReliability": 0.128333,
+        "outReliability": 0.280952,
+        "gap": 0.152619,
+        "bestSideReliability": 0.280952,
+        "bestSideSupport": 210,
+        "bestSide": "OUT"
+      },
+      {
+        "id": "context.baselineUtility<=847862",
+        "inCount": 2999,
+        "outCount": 211,
+        "inReliability": 0.128376,
+        "outReliability": 0.279621,
+        "gap": 0.151245,
+        "bestSideReliability": 0.279621,
+        "bestSideSupport": 211,
+        "bestSide": "OUT"
+      },
+      {
+        "id": "context.baselineUtility<=841592",
+        "inCount": 2998,
+        "outCount": 212,
+        "inReliability": 0.128419,
+        "outReliability": 0.278302,
+        "gap": 0.149883,
+        "bestSideReliability": 0.278302,
+        "bestSideSupport": 212,
+        "bestSide": "OUT"
+      },
+      {
+        "id": "context.baselineUtility<=849364",
+        "inCount": 3001,
+        "outCount": 209,
+        "inReliability": 0.128624,
+        "outReliability": 0.277512,
+        "gap": 0.148888,
+        "bestSideReliability": 0.277512,
+        "bestSideSupport": 209,
+        "bestSide": "OUT"
+      },
+      {
+        "id": "context.baselineUtility<=840211",
+        "inCount": 2997,
+        "outCount": 213,
+        "inReliability": 0.128462,
+        "outReliability": 0.276995,
+        "gap": 0.148534,
+        "bestSideReliability": 0.276995,
+        "bestSideSupport": 213,
+        "bestSide": "OUT"
+      },
+      {
+        "id": "context.baselineUtility<=836820",
+        "inCount": 2996,
+        "outCount": 214,
+        "inReliability": 0.128505,
+        "outReliability": 0.275701,
+        "gap": 0.147196,
+        "bestSideReliability": 0.275701,
+        "bestSideSupport": 214,
+        "bestSide": "OUT"
+      },
+      {
+        "id": "context.baselineUtility<=836387",
+        "inCount": 2995,
+        "outCount": 215,
+        "inReliability": 0.128548,
+        "outReliability": 0.274419,
+        "gap": 0.145871,
+        "bestSideReliability": 0.274419,
+        "bestSideSupport": 215,
+        "bestSide": "OUT"
+      },
+      {
+        "id": "context.baselineUtility<=820223",
+        "inCount": 2991,
+        "outCount": 219,
+        "inReliability": 0.128385,
+        "outReliability": 0.273973,
+        "gap": 0.145587,
+        "bestSideReliability": 0.273973,
+        "bestSideSupport": 219,
+        "bestSide": "OUT"
+      },
+      {
+        "id": "context.baselineUtility<=850190",
+        "inCount": 3002,
+        "outCount": 208,
+        "inReliability": 0.128914,
+        "outReliability": 0.274038,
+        "gap": 0.145124,
+        "bestSideReliability": 0.274038,
+        "bestSideSupport": 208,
+        "bestSide": "OUT"
+      },
+      {
+        "id": "context.baselineUtility<=829417",
+        "inCount": 2994,
+        "outCount": 216,
+        "inReliability": 0.128591,
+        "outReliability": 0.273148,
+        "gap": 0.144558,
+        "bestSideReliability": 0.273148,
+        "bestSideSupport": 216,
+        "bestSide": "OUT"
+      },
+      {
+        "id": "context.baselineUtility<=818738",
+        "inCount": 2990,
+        "outCount": 220,
+        "inReliability": 0.128428,
+        "outReliability": 0.272727,
+        "gap": 0.144299,
+        "bestSideReliability": 0.272727,
+        "bestSideSupport": 220,
+        "bestSide": "OUT"
+      },
+      {
+        "id": "context.baselineUtility<=485262",
+        "inCount": 2857,
+        "outCount": 353,
+        "inReliability": 0.122506,
+        "outReliability": 0.266289,
+        "gap": 0.143783,
+        "bestSideReliability": 0.266289,
+        "bestSideSupport": 353,
+        "bestSide": "OUT"
+      },
+      {
+        "id": "context.baselineUtility<=822658",
+        "inCount": 2993,
+        "outCount": 217,
+        "inReliability": 0.128633,
+        "outReliability": 0.271889,
+        "gap": 0.143256,
+        "bestSideReliability": 0.271889,
+        "bestSideSupport": 217,
+        "bestSide": "OUT"
+      },
+      {
+        "id": "context.baselineUtility<=817161",
+        "inCount": 2989,
+        "outCount": 221,
+        "inReliability": 0.128471,
+        "outReliability": 0.271493,
+        "gap": 0.143022,
+        "bestSideReliability": 0.271493,
+        "bestSideSupport": 221,
+        "bestSide": "OUT"
+      },
+      {
+        "id": "context.baselineUtility<=478671",
+        "inCount": 2856,
+        "outCount": 354,
+        "inReliability": 0.122549,
+        "outReliability": 0.265537,
+        "gap": 0.142988,
+        "bestSideReliability": 0.265537,
+        "bestSideSupport": 354,
+        "bestSide": "OUT"
+      }
+    ],
+    "topByReliability": [
+      {
+        "id": "context.baselineUtility<=848218",
+        "inCount": 3000,
+        "outCount": 210,
+        "inReliability": 0.128333,
+        "outReliability": 0.280952,
+        "gap": 0.152619,
+        "bestSideReliability": 0.280952,
+        "bestSideSupport": 210,
+        "bestSide": "OUT"
+      },
+      {
+        "id": "context.baselineUtility<=847862",
+        "inCount": 2999,
+        "outCount": 211,
+        "inReliability": 0.128376,
+        "outReliability": 0.279621,
+        "gap": 0.151245,
+        "bestSideReliability": 0.279621,
+        "bestSideSupport": 211,
+        "bestSide": "OUT"
+      },
+      {
+        "id": "context.baselineUtility<=841592",
+        "inCount": 2998,
+        "outCount": 212,
+        "inReliability": 0.128419,
+        "outReliability": 0.278302,
+        "gap": 0.149883,
+        "bestSideReliability": 0.278302,
+        "bestSideSupport": 212,
+        "bestSide": "OUT"
+      },
+      {
+        "id": "context.baselineUtility<=849364",
+        "inCount": 3001,
+        "outCount": 209,
+        "inReliability": 0.128624,
+        "outReliability": 0.277512,
+        "gap": 0.148888,
+        "bestSideReliability": 0.277512,
+        "bestSideSupport": 209,
+        "bestSide": "OUT"
+      },
+      {
+        "id": "context.baselineUtility<=840211",
+        "inCount": 2997,
+        "outCount": 213,
+        "inReliability": 0.128462,
+        "outReliability": 0.276995,
+        "gap": 0.148534,
+        "bestSideReliability": 0.276995,
+        "bestSideSupport": 213,
+        "bestSide": "OUT"
+      },
+      {
+        "id": "context.baselineUtility<=836820",
+        "inCount": 2996,
+        "outCount": 214,
+        "inReliability": 0.128505,
+        "outReliability": 0.275701,
+        "gap": 0.147196,
+        "bestSideReliability": 0.275701,
+        "bestSideSupport": 214,
+        "bestSide": "OUT"
+      },
+      {
+        "id": "context.baselineUtility<=836387",
+        "inCount": 2995,
+        "outCount": 215,
+        "inReliability": 0.128548,
+        "outReliability": 0.274419,
+        "gap": 0.145871,
+        "bestSideReliability": 0.274419,
+        "bestSideSupport": 215,
+        "bestSide": "OUT"
+      },
+      {
+        "id": "context.baselineUtility<=850190",
+        "inCount": 3002,
+        "outCount": 208,
+        "inReliability": 0.128914,
+        "outReliability": 0.274038,
+        "gap": 0.145124,
+        "bestSideReliability": 0.274038,
+        "bestSideSupport": 208,
+        "bestSide": "OUT"
+      },
+      {
+        "id": "context.baselineUtility<=820223",
+        "inCount": 2991,
+        "outCount": 219,
+        "inReliability": 0.128385,
+        "outReliability": 0.273973,
+        "gap": 0.145587,
+        "bestSideReliability": 0.273973,
+        "bestSideSupport": 219,
+        "bestSide": "OUT"
+      },
+      {
+        "id": "context.baselineUtility<=829417",
+        "inCount": 2994,
+        "outCount": 216,
+        "inReliability": 0.128591,
+        "outReliability": 0.273148,
+        "gap": 0.144558,
+        "bestSideReliability": 0.273148,
+        "bestSideSupport": 216,
+        "bestSide": "OUT"
+      },
+      {
+        "id": "context.baselineUtility<=818738",
+        "inCount": 2990,
+        "outCount": 220,
+        "inReliability": 0.128428,
+        "outReliability": 0.272727,
+        "gap": 0.144299,
+        "bestSideReliability": 0.272727,
+        "bestSideSupport": 220,
+        "bestSide": "OUT"
+      },
+      {
+        "id": "context.baselineUtility<=822658",
+        "inCount": 2993,
+        "outCount": 217,
+        "inReliability": 0.128633,
+        "outReliability": 0.271889,
+        "gap": 0.143256,
+        "bestSideReliability": 0.271889,
+        "bestSideSupport": 217,
+        "bestSide": "OUT"
+      },
+      {
+        "id": "context.baselineUtility<=817161",
+        "inCount": 2989,
+        "outCount": 221,
+        "inReliability": 0.128471,
+        "outReliability": 0.271493,
+        "gap": 0.143022,
+        "bestSideReliability": 0.271493,
+        "bestSideSupport": 221,
+        "bestSide": "OUT"
+      },
+      {
+        "id": "context.baselineUtility<=860354",
+        "inCount": 3007,
+        "outCount": 203,
+        "inReliability": 0.129365,
+        "outReliability": 0.270936,
+        "gap": 0.141571,
+        "bestSideReliability": 0.270936,
+        "bestSideSupport": 203,
+        "bestSide": "OUT"
+      },
+      {
+        "id": "context.baselineUtility<=820570",
+        "inCount": 2992,
+        "outCount": 218,
+        "inReliability": 0.128676,
+        "outReliability": 0.270642,
+        "gap": 0.141966,
+        "bestSideReliability": 0.270642,
+        "bestSideSupport": 218,
+        "bestSide": "OUT"
+      }
+    ],
+    "observedBestGap": 0.152619,
+    "observedBestPredicate": "context.baselineUtility<=848218",
+    "observedBestSideReliability": 0.280952,
+    "permutationNull": {
+      "permutations": 40,
+      "min": 0.041196,
+      "median": 0.069338,
+      "p95": 0.087078,
+      "max": 0.101891
+    },
+    "observedExceedsPermutationP95": true,
+    "anyPredicateReachesReliabilityFloor": false
+  },
+  "ruleSearch": {
+    "searchSpace": {
+      "singles": 1812,
+      "singlesEvaluable": 1543,
+      "conjunctionSeeds": 30,
+      "conjunctions": 0,
+      "conjunctionsEvaluable": 0
+    },
+    "discoveryCases": 1593,
+    "discoveryBaseRate": 0.141243,
+    "frozenRule": {
+      "id": "context.baselineUtility<=668799",
+      "side": "OUT",
+      "discoveryReliability": 0.289855,
+      "discoverySupport": 138,
+      "discoveryGap": 0.162707,
+      "reachesFloorOnDiscovery": false
+    },
+    "topTen": [
+      {
+        "id": "context.baselineUtility<=668799",
+        "side": "OUT",
+        "reliability": 0.289855,
+        "support": 138,
+        "gap": 0.162707
+      },
+      {
+        "id": "context.baselineUtility<=-7062862",
+        "side": "IN",
+        "reliability": 0.288462,
+        "support": 104,
+        "gap": 0.157501
+      },
+      {
+        "id": "context.baselineUtility<=668046",
+        "side": "OUT",
+        "reliability": 0.28777,
+        "support": 139,
+        "gap": 0.160535
+      },
+      {
+        "id": "context.baselineUtility<=-7135331",
+        "side": "IN",
+        "reliability": 0.287129,
+        "support": 101,
+        "gap": 0.155761
+      },
+      {
+        "id": "context.baselineUtility<=695457",
+        "side": "OUT",
+        "reliability": 0.286765,
+        "support": 136,
+        "gap": 0.159105
+      },
+      {
+        "id": "context.baselineUtility<=666638",
+        "side": "OUT",
+        "reliability": 0.285714,
+        "support": 140,
+        "gap": 0.158392
+      },
+      {
+        "id": "context.baselineUtility<=721051",
+        "side": "OUT",
+        "reliability": 0.285714,
+        "support": 133,
+        "gap": 0.157632
+      },
+      {
+        "id": "context.baselineUtility<=-7053709",
+        "side": "IN",
+        "reliability": 0.285714,
+        "support": 105,
+        "gap": 0.154666
+      },
+      {
+        "id": "context.baselineUtility<=690747",
+        "side": "OUT",
+        "reliability": 0.284672,
+        "support": 137,
+        "gap": 0.156924
+      },
+      {
+        "id": "context.baselineUtility<=730873",
+        "side": "OUT",
+        "reliability": 0.284615,
+        "support": 130,
+        "gap": 0.156112
+      }
+    ]
+  },
+  "generalization": {
+    "applicable": true,
+    "ruleId": "context.baselineUtility<=668799",
+    "discoveryReliability": 0.289855,
+    "discoverySupport": 138,
+    "holdoutCases": 3210,
+    "holdoutBaseRate": 0.138318,
+    "holdoutSelected": 279,
+    "holdoutReliability": 0.258065,
+    "holdoutRejected": 2931,
+    "holdoutRejectedReliability": 0.126919,
+    "holdoutGap": 0.131146,
+    "reliabilityLostFromDiscoveryToHoldout": 0.03179,
+    "holdoutReachesFloor": false,
+    "generalizes": true,
+    "collapsedToBaseRate": false
+  },
+  "classification": {
+    "status": "IDENTIFIABLE",
+    "reasons": [
+      "A frozen rule retained an out-of-sample edge (0.258065 vs base rate 0.138318) but did not reach the 0.99 delegation floor.",
+      "Correctness is partially predictable, so the signal is real, but not to the standard selective delegation requires."
+    ]
+  }
+}

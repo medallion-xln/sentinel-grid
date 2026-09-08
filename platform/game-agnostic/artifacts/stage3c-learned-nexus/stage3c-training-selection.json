@@ -1,0 +1,225 @@
+{
+  "rules": [
+    {
+      "id": "DEPENDENCY_CHAIN",
+      "rule": "at least one depends-edge and dependency depth >= 2"
+    },
+    {
+      "id": "SUBSTITUTION",
+      "rule": "at least one substitutes relation present"
+    },
+    {
+      "id": "BOTTLENECK",
+      "rule": "a node with degree >= 3 that is critical or threatened"
+    },
+    {
+      "id": "BRIDGE",
+      "rule": "a node whose removal disconnects reachable structure"
+    },
+    {
+      "id": "CYCLE",
+      "rule": "a directed cycle among depends-edges"
+    },
+    {
+      "id": "REDUNDANCY",
+      "rule": "two or more live substitutes for the same failed node"
+    },
+    {
+      "id": "MULTI_HOP",
+      "rule": "dependency depth >= 3"
+    },
+    {
+      "id": "DISTRIBUTED_VALUE",
+      "rule": "value spread across three or more structural nodes"
+    },
+    {
+      "id": "CASCADING_FAILURE",
+      "rule": "an unavailable node with two or more dependents"
+    },
+    {
+      "id": "RESOURCE_ALLOCATION",
+      "rule": "energy below the cost of the open work"
+    },
+    {
+      "id": "INTERVENTION_CHOICE",
+      "rule": "two or more distinct action types legal on structural targets"
+    },
+    {
+      "id": "NEGATIVE_CONTROL_NO_RELATIONS",
+      "rule": "no relations at all — relational reasoning cannot help",
+      "negativeControl": true
+    },
+    {
+      "id": "NEGATIVE_CONTROL_SINGLE_ACTION",
+      "rule": "exactly one legal action — nothing to choose",
+      "negativeControl": true
+    },
+    {
+      "id": "NEGATIVE_CONTROL_NO_SEPARATION",
+      "rule": "every legal action scores identically — no decision to make",
+      "negativeControl": true
+    }
+  ],
+  "discipline": {
+    "selectsOn": "WORLD_STRUCTURE",
+    "neverSelectsOn": [
+      "model output",
+      "candidate correctness",
+      "evaluation labels",
+      "split identity"
+    ],
+    "rulesRecordedBeforeTraining": true,
+    "negativeControlsIncluded": true,
+    "negativeControlPurpose": "so the specialist can learn to abstain rather than always answering"
+  },
+  "ruleBaseRates": {
+    "records": 50860,
+    "rules": [
+      {
+        "id": "DEPENDENCY_CHAIN",
+        "negativeControl": false,
+        "count": 6831,
+        "baseRate": 0.1343,
+        "informative": true,
+        "excludedReason": null
+      },
+      {
+        "id": "SUBSTITUTION",
+        "negativeControl": false,
+        "count": 0,
+        "baseRate": 0,
+        "informative": false,
+        "excludedReason": "NEARLY_EMPTY_ON_THIS_CORPUS"
+      },
+      {
+        "id": "BOTTLENECK",
+        "negativeControl": false,
+        "count": 0,
+        "baseRate": 0,
+        "informative": false,
+        "excludedReason": "NEARLY_EMPTY_ON_THIS_CORPUS"
+      },
+      {
+        "id": "BRIDGE",
+        "negativeControl": false,
+        "count": 37041,
+        "baseRate": 0.7283,
+        "informative": true,
+        "excludedReason": null
+      },
+      {
+        "id": "CYCLE",
+        "negativeControl": false,
+        "count": 10395,
+        "baseRate": 0.2044,
+        "informative": true,
+        "excludedReason": null
+      },
+      {
+        "id": "REDUNDANCY",
+        "negativeControl": false,
+        "count": 4536,
+        "baseRate": 0.0892,
+        "informative": true,
+        "excludedReason": null
+      },
+      {
+        "id": "MULTI_HOP",
+        "negativeControl": false,
+        "count": 6831,
+        "baseRate": 0.1343,
+        "informative": true,
+        "excludedReason": null
+      },
+      {
+        "id": "DISTRIBUTED_VALUE",
+        "negativeControl": false,
+        "count": 3401,
+        "baseRate": 0.0669,
+        "informative": true,
+        "excludedReason": null
+      },
+      {
+        "id": "CASCADING_FAILURE",
+        "negativeControl": false,
+        "count": 50860,
+        "baseRate": 1,
+        "informative": false,
+        "excludedReason": "CONSTANT_ON_THIS_CORPUS_FIRES_ON_ALMOST_EVERY_RECORD"
+      },
+      {
+        "id": "RESOURCE_ALLOCATION",
+        "negativeControl": false,
+        "count": 990,
+        "baseRate": 0.0195,
+        "informative": false,
+        "excludedReason": "NEARLY_EMPTY_ON_THIS_CORPUS"
+      },
+      {
+        "id": "INTERVENTION_CHOICE",
+        "negativeControl": false,
+        "count": 50860,
+        "baseRate": 1,
+        "informative": false,
+        "excludedReason": "CONSTANT_ON_THIS_CORPUS_FIRES_ON_ALMOST_EVERY_RECORD"
+      },
+      {
+        "id": "NEGATIVE_CONTROL_NO_RELATIONS",
+        "negativeControl": true,
+        "count": 0,
+        "baseRate": 0,
+        "informative": false,
+        "excludedReason": "NEARLY_EMPTY_ON_THIS_CORPUS"
+      },
+      {
+        "id": "NEGATIVE_CONTROL_SINGLE_ACTION",
+        "negativeControl": true,
+        "count": 0,
+        "baseRate": 0,
+        "informative": false,
+        "excludedReason": "NEARLY_EMPTY_ON_THIS_CORPUS"
+      },
+      {
+        "id": "NEGATIVE_CONTROL_NO_SEPARATION",
+        "negativeControl": true,
+        "count": 20,
+        "baseRate": 0.0004,
+        "informative": false,
+        "excludedReason": "NEARLY_EMPTY_ON_THIS_CORPUS"
+      }
+    ],
+    "informativeRuleIds": [
+      "DEPENDENCY_CHAIN",
+      "BRIDGE",
+      "CYCLE",
+      "REDUNDANCY",
+      "MULTI_HOP",
+      "DISTRIBUTED_VALUE"
+    ],
+    "nonInformativeRuleIds": [
+      "SUBSTITUTION",
+      "BOTTLENECK",
+      "CASCADING_FAILURE",
+      "RESOURCE_ALLOCATION",
+      "INTERVENTION_CHOICE",
+      "NEGATIVE_CONTROL_NO_RELATIONS",
+      "NEGATIVE_CONTROL_SINGLE_ACTION",
+      "NEGATIVE_CONTROL_NO_SEPARATION"
+    ],
+    "method": "A rule is informative only if its base rate lies strictly inside (0.02, 0.98) on the records it will select from. Measured before selection, so a constant rule cannot silently carry the filter."
+  },
+  "trainRecords": 50860,
+  "relationallyMeaningful": 11836,
+  "selectionRate": 0.2327,
+  "negativeControls": 20,
+  "negativeControlFinding": "NEGATIVE_CONTROLS_NEARLY_ABSENT: FORGE_DATASET_V2 contains almost no cases where relational reasoning is unnecessary, so a specialist trained on it would get very little signal for when to abstain. A measured dataset limitation for any future training run, not a defect introduced here.",
+  "targets": {
+    "targets": 11836,
+    "singleTargetSftEligible": 6686,
+    "setTargetEligible": 4519,
+    "excludedFromSft": 631,
+    "exactTies": 4979,
+    "tieHandling": "OPTIMAL_SET_PRESERVED_NEVER_COLLAPSED",
+    "meanOptimalSetSize": 1.55
+  }
+}

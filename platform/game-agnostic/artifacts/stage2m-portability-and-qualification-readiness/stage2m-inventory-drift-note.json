@@ -1,0 +1,22 @@
+{
+  "noteSchemaVersion": 1,
+  "stage": "STAGE2M_PORTABILITY_AND_QUALIFICATION_READINESS",
+  "partOfCertificationBody": false,
+  "why": "Recorded outside the certification because it is a finding about repository inventory hygiene, not about any claim the certification makes. Regenerating SHA256SUMS.txt would otherwise have absorbed it silently, which is exactly how a stale manifest survives.",
+  "finding": "SHA256SUMS.txt already disagreed with four artifacts at commit 3d9a14d, before Stage 2M changed anything.",
+  "staleAtPredecessorHead": [
+    "artifacts/execution-diagnostics.json",
+    "artifacts/production-conformance-expansion.json",
+    "artifacts/verification-report.json",
+    "artifacts/zeknova-behavioral-parity.json"
+  ],
+  "evidence": "None of the four is modified in the Stage 2M working tree, and SHA256SUMS.txt itself is unmodified, so the disagreement is inherited rather than introduced. Verified by hashing each file's content at 3d9a14d and comparing against the manifest entry committed alongside it.",
+  "entriesFailingBeforeRegeneration": 34,
+  "entriesAttributableToStage2M": 30,
+  "entriesInheritedStale": 4,
+  "resolution": "SHA256SUMS.txt regenerated as the stage's normal inventory step (676 entries, all verifying). The four inherited entries are now correct as a side effect, which is why they are named here rather than left to vanish into a clean check.",
+  "certificationImpact": "None. No certified claim depends on SHA256SUMS.txt; every prior stage certification was re-verified independently and reproduces byte-identically.",
+  "authority": "R0",
+  "canDispatch": false,
+  "canMutateLiveWorld": false
+}

@@ -1,0 +1,85 @@
+{
+  "auditVersion": 1,
+  "question": "What can Forge World implement directly, without creating a parallel incompatible architecture?",
+  "findings": [
+    {
+      "contract": "canonical state codec",
+      "source": "src/core/determinism.js canonicalize/stableStringify/sha256",
+      "reuse": "DIRECT",
+      "note": "Forge world identity is sha256 over a canonical semantic projection. No new codec."
+    },
+    {
+      "contract": "legal action representation",
+      "source": "src/core/contracts.js validateActionDescriptor/actionKey",
+      "reuse": "DIRECT",
+      "note": "Forge actions are wrapped into ActionDescriptors by the adapter; actionKey stays the identity."
+    },
+    {
+      "contract": "deterministic replay",
+      "source": "src/sdk/replay.js replayRecommendation",
+      "reuse": "DIRECT",
+      "note": "Prime recommendations over Forge worlds replay through the existing verifier unchanged."
+    },
+    {
+      "contract": "adapter interface",
+      "source": "src/core/constants.js REQUIRED_ADAPTER_METHODS + src/sdk/define-adapter.js",
+      "reuse": "DIRECT",
+      "note": "Forge implements all eight required methods. It is an ordinary adapter, not a special case."
+    },
+    {
+      "contract": "runtime identity",
+      "source": "artifacts/r0-runtime-identity + Stage 2M ZEKNOVA_ROOT_CONTRACT_V1",
+      "reuse": "PATTERN",
+      "note": "Forge is self-contained and binds no external root, so it needs no environment binding of its own. It inherits the discipline, not the variable."
+    },
+    {
+      "contract": "evidence identity",
+      "source": "self-excluding output digests in src/experts/expert-contract.js",
+      "reuse": "PATTERN",
+      "note": "Replay records use the same self-excluding hash rule: a document may not contain its own hash."
+    },
+    {
+      "contract": "session/campaign identity",
+      "source": "src/sdk/snapshot-ingestion.js, stage2f campaign manifests",
+      "reuse": "PATTERN",
+      "note": "Forge binds records to (scenarioSeed, worldHash, configHash) instead of a live session id, because there is no live session."
+    },
+    {
+      "contract": "expert routing interface",
+      "source": "src/experts/expert-contract.js normalizeExpertInput",
+      "reuse": "DIRECT",
+      "note": "Forge observations carry canonicalState and observationHistory in exactly the shapes the normalizer accepts."
+    },
+    {
+      "contract": "Prime input contract",
+      "source": "src/prime/root-puct.js recommend",
+      "reuse": "DIRECT",
+      "note": "Prime runs against Forge with no Forge-specific branch anywhere in its path."
+    },
+    {
+      "contract": "Nexus input contract",
+      "source": "src/experts/nexus.js — entities{id,kind,hostile,critical}, relationships{from,to,kind in depends|supports|threatens}",
+      "reuse": "DIRECT_WITH_PROJECTION",
+      "note": "Forge has eleven relation types; the adapter projects them onto the three Nexus kinds. The projection is declared in the contract table, not buried in the adapter."
+    },
+    {
+      "contract": "Oracle temporal input contract",
+      "source": "src/experts/oracle.js — observationHistory frames {tick, channels}",
+      "reuse": "DIRECT",
+      "note": "Forge channels are authoritative world state and are emitted as frames directly."
+    },
+    {
+      "contract": "outcome/replay records",
+      "source": "src/core/contracts.js validateOutcomePacket",
+      "reuse": "DIRECT",
+      "note": "Forge OutcomePackets carry a scalar plus a component vector, which is the shape the validator already requires."
+    }
+  ],
+  "parallelArchitectureCreated": false,
+  "newContractsIntroduced": [
+    "FORGE_REWARD_V1 — a versioned reward vector, which no existing contract provided",
+    "FORGE_REPLAY_V1 — a training record, which no existing contract provided",
+    "the semantic admission gate — a discipline inherited from Stage 2L.23, now generalized to scenario generation"
+  ],
+  "conclusion": "Forge World implements the existing Adapter SDK contract directly. Sentinel needs no change to run against it, and Forge needs no decision path of its own."
+}

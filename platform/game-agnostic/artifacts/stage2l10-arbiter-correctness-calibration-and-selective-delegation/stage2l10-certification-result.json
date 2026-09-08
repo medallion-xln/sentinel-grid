@@ -1,0 +1,870 @@
+{
+  "certificationSchemaVersion": 1,
+  "stage": "STAGE2L10_ARBITER_CORRECTNESS_CALIBRATION_AND_SELECTIVE_DELEGATION",
+  "status": "PASS",
+  "authority": "R0",
+  "canDispatch": false,
+  "canMutateLiveWorld": false,
+  "arbiterShadowOnly": true,
+  "finalRecommendationOwner": "PRIME",
+  "freeze": {
+    "stage2l7OwnerSha256": "5047dc0576b8242c00a1f73729c4b0bc49fc1d181eac22bc90896d2cf5cccc00",
+    "stage2l8OwnerSha256": "0e9e09c3d853237365ebbd42512ba3f18bb4ee6577db554bd9c15588eb7f70e0",
+    "stage2l9OwnerSha256": "ec80274f55630cfd96da413786d3dbe8af9c7ee99ac583041fe5538bf6a20a81",
+    "stage2l9CertificationHash": "e2c068666c5c160840ab94feaf9c973f9d60f94495f05787d3a06cd4c3997b1b",
+    "stage2l9EvidenceDigest": "87548f427f25f74be2d867a49add445f6cb939e12a96f019ff31c6ba79a1e5ce",
+    "inheritedArbiterRuleTableDigest": "2c3014ba4916e532861402befb955a8a5fba8e9a55a7fce5d6096a0537456822",
+    "inheritedArbiterRuleTableUnchanged": true,
+    "inheritedFailClosedMatrixDigest": "59e0c7d6a3c4c648dd9d0beff6a9bc85c690a2c28adb1baaad4064c019269ad3",
+    "inheritedFailClosedMatrixUnchanged": true,
+    "primeAmbiguityThreshold": 0.03,
+    "oracleEligibilityRuleIdentity": "sha256:84008cdd1d91115596244f0d4c3e8d67b82b59a9d27d4231bc32bdf6116b4aa2"
+  },
+  "primeChanged": false,
+  "oracleCoreChanged": false,
+  "nexusChanged": false,
+  "inheritedArbiterChanged": false,
+  "remediationShape": "STRICT_REFINEMENT_OF_INHERITED_DELEGATION_SET",
+  "corpus": {
+    "holdoutCases": 22750,
+    "calibrationCases": 8450,
+    "effectiveSemanticGroups": 22750,
+    "semanticFamilyLeakage": false,
+    "corpusOverlap": 0,
+    "calibrationHoldoutSeparate": true,
+    "groundTruthIndependentOfExpertOutput": true,
+    "groundTruthIndependentOfArbiterOutput": true,
+    "oracleCases": 7000,
+    "nexusCases": 7000,
+    "controlCases": 3500,
+    "adversarialCases": 3000,
+    "attestationAttackCases": 2250,
+    "oracleRegimes": [
+      "STRONG_RISE",
+      "STRONG_FALL",
+      "EXACT_FLAT",
+      "WEAK_RISE",
+      "WEAK_FALL",
+      "ZERO_DRIFT_OSCILLATION",
+      "LATE_REVERSAL_NET_RISE",
+      "MEAN_REVERTING_LATE_DISPLACEMENT",
+      "NOISY_STRONG_RISE",
+      "MICRO_DRIFT_UP",
+      "MICRO_DRIFT_DOWN",
+      "STEP_LEVEL_SHIFT"
+    ],
+    "newStressRegimes": [
+      "LATE_REVERSAL_NET_RISE",
+      "MEAN_REVERTING_LATE_DISPLACEMENT",
+      "NOISY_STRONG_RISE",
+      "MICRO_DRIFT_UP",
+      "MICRO_DRIFT_DOWN",
+      "STEP_LEVEL_SHIFT"
+    ],
+    "holdoutCorpusDigest": "ed8268b02dcac27403a25195594c98edacd0b55adefc6f82414e3fc5742a5ff3",
+    "calibrationCorpusDigest": "08e8210f38b059dc3b621215636df37eabf9c7fe3407fad7c064e88d33a0229d"
+  },
+  "calibration": {
+    "frozenCalibrationDigest": "94e94ec145cc97e4779f789f65bffe1996afab0821b070a8c3ec6ca551fa0b79",
+    "derivedCalibrationDigest": "76c712157e6797218ca5ee92e11df21d1353db14647d7f36a29c91348b22461a",
+    "frozenReproducedFromCalibrationCorpus": true,
+    "minBucketReliability": 0.99,
+    "minBucketSamples": 60,
+    "oracleParameters": {
+      "ratioNumerator": 3,
+      "ratioDenominator": 2,
+      "minFullSlopeMicro": 500,
+      "primeProtectionMarginMicro": 30000
+    },
+    "nexusParameters": {
+      "minWideFanEntityCount": 6,
+      "primeProtectionMarginMicro": 30000
+    },
+    "oracleDelegatingBuckets": [
+      "ORACLE_STABLE_EXACT",
+      "ORACLE_DIRECTIONAL_COHERENT"
+    ],
+    "nexusDelegatingBuckets": [],
+    "structurallyIneligibleBuckets": [
+      "ORACLE_UNSUPPORTED_HEAD",
+      "ORACLE_STABLE_UNSTEADY",
+      "NEXUS_NO_STRUCTURAL_CRITICALITY"
+    ]
+  },
+  "labelLeakageDetected": false,
+  "labelLeakage": {
+    "inputKeysInspected": 78,
+    "forbiddenRuntimeKeysScanned": [
+      "truthAction",
+      "expertCorrect",
+      "primeCorrect",
+      "correct",
+      "beneficial",
+      "harmful",
+      "selectedCorrect",
+      "caseId",
+      "index",
+      "variant",
+      "stratum",
+      "regime",
+      "label",
+      "outcome",
+      "split"
+    ],
+    "forbiddenKeysPresent": [],
+    "dispositionGroups": 68,
+    "dispositionGroupsSplitByAnything": [],
+    "correctnessSensitiveGroups": [],
+    "labelLeakageDetected": false
+  },
+  "overall": {
+    "totalCases": 22750,
+    "eligibleCases": 8231,
+    "selectionChanges": 1332,
+    "beneficialChanges": 1332,
+    "harmfulChanges": 0,
+    "neutralChanges": 0,
+    "harmfulChangeRate": 0,
+    "correctPrimeBreaks": 0,
+    "correctPrimeBreakRate": 0,
+    "precision": 1,
+    "repairRate": 0.129559,
+    "primeOnlyTop1": 0.548088,
+    "arbiterTop1": 0.606637,
+    "decisionDelta": 0.058549,
+    "inheritedDelegations": 8231,
+    "delegations": 1332,
+    "delegationRate": 0.058549,
+    "abstentions": 6899,
+    "abstentionRate": 0.303253,
+    "abstentionRateAmongInheritedDelegations": 0.838173
+  },
+  "oracleSingleExpert": {
+    "totalCases": 7000,
+    "eligibleCases": 3416,
+    "selectionChanges": 1332,
+    "beneficialChanges": 1332,
+    "harmfulChanges": 0,
+    "neutralChanges": 0,
+    "harmfulChangeRate": 0,
+    "correctPrimeBreaks": 0,
+    "correctPrimeBreakRate": 0,
+    "precision": 1,
+    "repairRate": 0.380571,
+    "primeOnlyTop1": 0.5,
+    "arbiterTop1": 0.690286,
+    "decisionDelta": 0.190286,
+    "inheritedDelegations": 3416,
+    "delegations": 1332,
+    "delegationRate": 0.190286,
+    "abstentions": 2084,
+    "abstentionRate": 0.297714,
+    "abstentionRateAmongInheritedDelegations": 0.61007
+  },
+  "nexusSingleExpert": {
+    "totalCases": 7000,
+    "eligibleCases": 2565,
+    "selectionChanges": 0,
+    "beneficialChanges": 0,
+    "harmfulChanges": 0,
+    "neutralChanges": 0,
+    "harmfulChangeRate": 0,
+    "correctPrimeBreaks": 0,
+    "correctPrimeBreakRate": 0,
+    "precision": 0,
+    "repairRate": 0,
+    "primeOnlyTop1": 0.499714,
+    "arbiterTop1": 0.499714,
+    "decisionDelta": 0,
+    "inheritedDelegations": 2565,
+    "delegations": 0,
+    "delegationRate": 0,
+    "abstentions": 2565,
+    "abstentionRate": 0.366429,
+    "abstentionRateAmongInheritedDelegations": 1
+  },
+  "oracleSingleExpertPrecision": 1,
+  "nexusSingleExpertPrecision": 0,
+  "oracleSingleExpertHarmRate": 0,
+  "nexusSingleExpertHarmRate": 0,
+  "expertPrecision": {
+    "oracleClassificationAccuracy": 0.659429,
+    "nexusDecisionAccuracy": 0.527143,
+    "nexusDeclaredAlignmentRate": 0.7
+  },
+  "discrimination": {
+    "oracle": {
+      "delegationOpportunities": 4741,
+      "expertCorrectDelegated": 1332,
+      "expertCorrectAbstained": 1025,
+      "expertWrongDelegated": 0,
+      "expertWrongAbstained": 2384,
+      "delegationRateWhenCorrect": 0.565125,
+      "delegationRateWhenWrong": 0,
+      "correctnessDiscrimination": 0.565125,
+      "delegationPrecisionOverOpportunities": 1
+    },
+    "nexus": {
+      "delegationOpportunities": 3422,
+      "expertCorrectDelegated": 0,
+      "expertCorrectAbstained": 1849,
+      "expertWrongDelegated": 0,
+      "expertWrongAbstained": 1573,
+      "delegationRateWhenCorrect": 0,
+      "delegationRateWhenWrong": 0,
+      "correctnessDiscrimination": 0,
+      "delegationPrecisionOverOpportunities": 0
+    },
+    "combined": {
+      "delegationOpportunities": 8163,
+      "expertCorrectDelegated": 1332,
+      "expertCorrectAbstained": 2874,
+      "expertWrongDelegated": 0,
+      "expertWrongAbstained": 3957,
+      "delegationRateWhenCorrect": 0.31669,
+      "delegationRateWhenWrong": 0,
+      "correctnessDiscrimination": 0.31669,
+      "delegationPrecisionOverOpportunities": 1
+    },
+    "oracleCorrectnessDiscrimination": 0.565125,
+    "nexusCorrectnessDiscrimination": 0,
+    "combinedCorrectnessDiscrimination": 0.31669,
+    "relevanceDiscriminationPerfect": true,
+    "stage2l9OracleCorrectnessDiscrimination": -0.003844,
+    "stage2l9NexusCorrectnessDiscrimination": 0.003037
+  },
+  "bucketUsage": {
+    "oracle": {
+      "ORACLE_UNSUPPORTED_HEAD": {
+        "cases": 231,
+        "delegated": 0,
+        "abstained": 231,
+        "expertCorrect": 231,
+        "harmfulChanges": 0
+      },
+      "ORACLE_STABLE_EXACT": {
+        "cases": 235,
+        "delegated": 235,
+        "abstained": 0,
+        "expertCorrect": 235,
+        "harmfulChanges": 0
+      },
+      "ORACLE_STABLE_UNSTEADY": {
+        "cases": 360,
+        "delegated": 0,
+        "abstained": 360,
+        "expertCorrect": 0,
+        "harmfulChanges": 0
+      },
+      "ORACLE_DIRECTIONAL_FULL_WINDOW_FLAT": {
+        "cases": 433,
+        "delegated": 0,
+        "abstained": 433,
+        "expertCorrect": 0,
+        "harmfulChanges": 0
+      },
+      "ORACLE_DIRECTIONAL_CONTRADICTED": {
+        "cases": 426,
+        "delegated": 0,
+        "abstained": 426,
+        "expertCorrect": 38,
+        "harmfulChanges": 0
+      },
+      "ORACLE_DIRECTIONAL_RECENT_DOMINATED": {
+        "cases": 634,
+        "delegated": 0,
+        "abstained": 634,
+        "expertCorrect": 114,
+        "harmfulChanges": 0
+      },
+      "ORACLE_DIRECTIONAL_COHERENT": {
+        "cases": 1097,
+        "delegated": 1097,
+        "abstained": 0,
+        "expertCorrect": 1097,
+        "harmfulChanges": 0
+      }
+    },
+    "nexus": {
+      "NEXUS_NO_STRUCTURAL_CRITICALITY": {
+        "cases": 0,
+        "delegated": 0,
+        "abstained": 0,
+        "expertCorrect": 0,
+        "harmfulChanges": 0
+      },
+      "NEXUS_REDUNDANT_PATH": {
+        "cases": 0,
+        "delegated": 0,
+        "abstained": 0,
+        "expertCorrect": 0,
+        "harmfulChanges": 0
+      },
+      "NEXUS_MULTIPLE_CRITICAL_NODES": {
+        "cases": 836,
+        "delegated": 0,
+        "abstained": 836,
+        "expertCorrect": 452,
+        "harmfulChanges": 0
+      },
+      "NEXUS_WIDE_FAN_CRITICAL": {
+        "cases": 849,
+        "delegated": 0,
+        "abstained": 849,
+        "expertCorrect": 444,
+        "harmfulChanges": 0
+      },
+      "NEXUS_SOLE_CRITICAL_NODE": {
+        "cases": 880,
+        "delegated": 0,
+        "abstained": 880,
+        "expertCorrect": 488,
+        "harmfulChanges": 0
+      }
+    }
+  },
+  "regimeBreakdown": {
+    "EXACT_FLAT": {
+      "cases": 597,
+      "expertCorrect": 597,
+      "delegated": 235,
+      "delegatedExpertCorrect": 235,
+      "beneficialChanges": 235,
+      "harmfulChanges": 0,
+      "inherited": true
+    },
+    "LATE_REVERSAL_NET_RISE": {
+      "cases": 620,
+      "expertCorrect": 620,
+      "delegated": 0,
+      "delegatedExpertCorrect": 0,
+      "beneficialChanges": 0,
+      "harmfulChanges": 0,
+      "inherited": false
+    },
+    "MEAN_REVERTING_LATE_DISPLACEMENT": {
+      "cases": 579,
+      "expertCorrect": 0,
+      "delegated": 0,
+      "delegatedExpertCorrect": 0,
+      "beneficialChanges": 0,
+      "harmfulChanges": 0,
+      "inherited": false
+    },
+    "MICRO_DRIFT_DOWN": {
+      "cases": 600,
+      "expertCorrect": 109,
+      "delegated": 0,
+      "delegatedExpertCorrect": 0,
+      "beneficialChanges": 0,
+      "harmfulChanges": 0,
+      "inherited": false
+    },
+    "MICRO_DRIFT_UP": {
+      "cases": 593,
+      "expertCorrect": 458,
+      "delegated": 53,
+      "delegatedExpertCorrect": 53,
+      "beneficialChanges": 53,
+      "harmfulChanges": 0,
+      "inherited": false
+    },
+    "NOISY_STRONG_RISE": {
+      "cases": 551,
+      "expertCorrect": 551,
+      "delegated": 203,
+      "delegatedExpertCorrect": 203,
+      "beneficialChanges": 203,
+      "harmfulChanges": 0,
+      "inherited": false
+    },
+    "STEP_LEVEL_SHIFT": {
+      "cases": 556,
+      "expertCorrect": 0,
+      "delegated": 0,
+      "delegatedExpertCorrect": 0,
+      "beneficialChanges": 0,
+      "harmfulChanges": 0,
+      "inherited": false
+    },
+    "STRONG_FALL": {
+      "cases": 584,
+      "expertCorrect": 584,
+      "delegated": 223,
+      "delegatedExpertCorrect": 223,
+      "beneficialChanges": 223,
+      "harmfulChanges": 0,
+      "inherited": true
+    },
+    "STRONG_RISE": {
+      "cases": 541,
+      "expertCorrect": 541,
+      "delegated": 196,
+      "delegatedExpertCorrect": 196,
+      "beneficialChanges": 196,
+      "harmfulChanges": 0,
+      "inherited": true
+    },
+    "WEAK_FALL": {
+      "cases": 572,
+      "expertCorrect": 572,
+      "delegated": 216,
+      "delegatedExpertCorrect": 216,
+      "beneficialChanges": 216,
+      "harmfulChanges": 0,
+      "inherited": true
+    },
+    "WEAK_RISE": {
+      "cases": 584,
+      "expertCorrect": 584,
+      "delegated": 206,
+      "delegatedExpertCorrect": 206,
+      "beneficialChanges": 206,
+      "harmfulChanges": 0,
+      "inherited": true
+    },
+    "ZERO_DRIFT_OSCILLATION": {
+      "cases": 623,
+      "expertCorrect": 0,
+      "delegated": 0,
+      "delegatedExpertCorrect": 0,
+      "beneficialChanges": 0,
+      "harmfulChanges": 0,
+      "inherited": true
+    }
+  },
+  "marginCurve": {
+    "Q_MARGIN_0_005": {
+      "cases": 2020,
+      "inheritedDelegations": 1027,
+      "delegations": 222,
+      "abstentions": 805,
+      "beneficialChanges": 222,
+      "harmfulChanges": 0,
+      "precision": 1
+    },
+    "Q_MARGIN_0_010": {
+      "cases": 1977,
+      "inheritedDelegations": 976,
+      "delegations": 212,
+      "abstentions": 764,
+      "beneficialChanges": 212,
+      "harmfulChanges": 0,
+      "precision": 1
+    },
+    "Q_MARGIN_0_015": {
+      "cases": 2119,
+      "inheritedDelegations": 1053,
+      "delegations": 208,
+      "abstentions": 845,
+      "beneficialChanges": 208,
+      "harmfulChanges": 0,
+      "precision": 1
+    },
+    "Q_MARGIN_0_020": {
+      "cases": 2028,
+      "inheritedDelegations": 1004,
+      "delegations": 235,
+      "abstentions": 769,
+      "beneficialChanges": 235,
+      "harmfulChanges": 0,
+      "precision": 1
+    },
+    "Q_MARGIN_0_025": {
+      "cases": 1953,
+      "inheritedDelegations": 991,
+      "delegations": 230,
+      "abstentions": 761,
+      "beneficialChanges": 230,
+      "harmfulChanges": 0,
+      "precision": 1
+    },
+    "Q_MARGIN_0_030": {
+      "cases": 1934,
+      "inheritedDelegations": 930,
+      "delegations": 225,
+      "abstentions": 705,
+      "beneficialChanges": 225,
+      "harmfulChanges": 0,
+      "precision": 1
+    },
+    "Q_MARGIN_GT_0_030": {
+      "cases": 1969,
+      "inheritedDelegations": 0,
+      "delegations": 0,
+      "abstentions": 0,
+      "beneficialChanges": 0,
+      "harmfulChanges": 0,
+      "precision": 0
+    }
+  },
+  "controls": {
+    "PRIME_ONLY_CONTROL": {
+      "totalCases": 500,
+      "eligibleCases": 0,
+      "selectionChanges": 0,
+      "beneficialChanges": 0,
+      "harmfulChanges": 0,
+      "neutralChanges": 0,
+      "harmfulChangeRate": 0,
+      "correctPrimeBreaks": 0,
+      "correctPrimeBreakRate": 0,
+      "precision": 0,
+      "repairRate": 0,
+      "primeOnlyTop1": 0.514,
+      "arbiterTop1": 0.514,
+      "decisionDelta": 0,
+      "inheritedDelegations": 0,
+      "delegations": 0,
+      "delegationRate": 0,
+      "abstentions": 0,
+      "abstentionRate": 0,
+      "abstentionRateAmongInheritedDelegations": 0
+    },
+    "ORACLE_RELEVANT_CONTROL": {
+      "totalCases": 500,
+      "eligibleCases": 0,
+      "selectionChanges": 0,
+      "beneficialChanges": 0,
+      "harmfulChanges": 0,
+      "neutralChanges": 0,
+      "harmfulChangeRate": 0,
+      "correctPrimeBreaks": 0,
+      "correctPrimeBreakRate": 0,
+      "precision": 0,
+      "repairRate": 0,
+      "primeOnlyTop1": 0.482,
+      "arbiterTop1": 0.482,
+      "decisionDelta": 0,
+      "inheritedDelegations": 0,
+      "delegations": 0,
+      "delegationRate": 0,
+      "abstentions": 0,
+      "abstentionRate": 0,
+      "abstentionRateAmongInheritedDelegations": 0
+    },
+    "NEXUS_RELEVANT_CONTROL": {
+      "totalCases": 500,
+      "eligibleCases": 0,
+      "selectionChanges": 0,
+      "beneficialChanges": 0,
+      "harmfulChanges": 0,
+      "neutralChanges": 0,
+      "harmfulChangeRate": 0,
+      "correctPrimeBreaks": 0,
+      "correctPrimeBreakRate": 0,
+      "precision": 0,
+      "repairRate": 0,
+      "primeOnlyTop1": 0.506,
+      "arbiterTop1": 0.506,
+      "decisionDelta": 0,
+      "inheritedDelegations": 0,
+      "delegations": 0,
+      "delegationRate": 0,
+      "abstentions": 0,
+      "abstentionRate": 0,
+      "abstentionRateAmongInheritedDelegations": 0
+    },
+    "ORACLE_IRRELEVANT_CONTROL": {
+      "totalCases": 500,
+      "eligibleCases": 0,
+      "selectionChanges": 0,
+      "beneficialChanges": 0,
+      "harmfulChanges": 0,
+      "neutralChanges": 0,
+      "harmfulChangeRate": 0,
+      "correctPrimeBreaks": 0,
+      "correctPrimeBreakRate": 0,
+      "precision": 0,
+      "repairRate": 0,
+      "primeOnlyTop1": 0.506,
+      "arbiterTop1": 0.506,
+      "decisionDelta": 0,
+      "inheritedDelegations": 0,
+      "delegations": 0,
+      "delegationRate": 0,
+      "abstentions": 0,
+      "abstentionRate": 0,
+      "abstentionRateAmongInheritedDelegations": 0
+    },
+    "NEXUS_IRRELEVANT_CONTROL": {
+      "totalCases": 500,
+      "eligibleCases": 0,
+      "selectionChanges": 0,
+      "beneficialChanges": 0,
+      "harmfulChanges": 0,
+      "neutralChanges": 0,
+      "harmfulChangeRate": 0,
+      "correctPrimeBreaks": 0,
+      "correctPrimeBreakRate": 0,
+      "precision": 0,
+      "repairRate": 0,
+      "primeOnlyTop1": 0.5,
+      "arbiterTop1": 0.5,
+      "decisionDelta": 0,
+      "inheritedDelegations": 0,
+      "delegations": 0,
+      "delegationRate": 0,
+      "abstentions": 0,
+      "abstentionRate": 0,
+      "abstentionRateAmongInheritedDelegations": 0
+    },
+    "BOTH_WRONG_CONTROL": {
+      "totalCases": 500,
+      "eligibleCases": 0,
+      "selectionChanges": 0,
+      "beneficialChanges": 0,
+      "harmfulChanges": 0,
+      "neutralChanges": 0,
+      "harmfulChangeRate": 0,
+      "correctPrimeBreaks": 0,
+      "correctPrimeBreakRate": 0,
+      "precision": 0,
+      "repairRate": 0,
+      "primeOnlyTop1": 0.484,
+      "arbiterTop1": 0.484,
+      "decisionDelta": 0,
+      "inheritedDelegations": 0,
+      "delegations": 0,
+      "delegationRate": 0,
+      "abstentions": 0,
+      "abstentionRate": 0,
+      "abstentionRateAmongInheritedDelegations": 0
+    },
+    "NO_EXPERT_INFORMATION_CONTROL": {
+      "totalCases": 500,
+      "eligibleCases": 0,
+      "selectionChanges": 0,
+      "beneficialChanges": 0,
+      "harmfulChanges": 0,
+      "neutralChanges": 0,
+      "harmfulChangeRate": 0,
+      "correctPrimeBreaks": 0,
+      "correctPrimeBreakRate": 0,
+      "precision": 0,
+      "repairRate": 0,
+      "primeOnlyTop1": 0.47,
+      "arbiterTop1": 0.47,
+      "decisionDelta": 0,
+      "inheritedDelegations": 0,
+      "delegations": 0,
+      "delegationRate": 0,
+      "abstentions": 0,
+      "abstentionRate": 0,
+      "abstentionRateAmongInheritedDelegations": 0
+    }
+  },
+  "adversarial": {
+    "SE_MISSING_EVIDENCE": {
+      "cases": 250,
+      "evidenceAccepted": 0,
+      "selectionChanges": 0,
+      "failClosed": 250
+    },
+    "SE_MALFORMED_EVIDENCE": {
+      "cases": 250,
+      "evidenceAccepted": 0,
+      "selectionChanges": 0,
+      "failClosed": 250
+    },
+    "SE_STALE_EVIDENCE": {
+      "cases": 250,
+      "evidenceAccepted": 0,
+      "selectionChanges": 0,
+      "failClosed": 250
+    },
+    "SE_CROSS_RUNTIME": {
+      "cases": 250,
+      "evidenceAccepted": 0,
+      "selectionChanges": 0,
+      "failClosed": 250
+    },
+    "SE_CROSS_OBSERVATION": {
+      "cases": 250,
+      "evidenceAccepted": 0,
+      "selectionChanges": 0,
+      "failClosed": 250
+    },
+    "SE_CROSS_CAMPAIGN": {
+      "cases": 250,
+      "evidenceAccepted": 0,
+      "selectionChanges": 0,
+      "failClosed": 250
+    },
+    "SE_AMBIGUOUS_ACTION_BINDING": {
+      "cases": 250,
+      "evidenceAccepted": 0,
+      "selectionChanges": 0,
+      "failClosed": 250
+    },
+    "SE_AMBIGUOUS_CHANNEL_ENTITY_BINDING": {
+      "cases": 250,
+      "evidenceAccepted": 0,
+      "selectionChanges": 0,
+      "failClosed": 250
+    },
+    "SE_ILLEGAL_ACTION": {
+      "cases": 250,
+      "evidenceAccepted": 0,
+      "selectionChanges": 0,
+      "failClosed": 250
+    },
+    "SE_UNKNOWN_SCHEMA": {
+      "cases": 250,
+      "evidenceAccepted": 0,
+      "selectionChanges": 0,
+      "failClosed": 250
+    },
+    "SE_UNKNOWN_RULE": {
+      "cases": 250,
+      "evidenceAccepted": 0,
+      "selectionChanges": 0,
+      "failClosed": 250
+    },
+    "SE_CONFLICTING_DUPLICATE": {
+      "cases": 250,
+      "evidenceAccepted": 0,
+      "selectionChanges": 0,
+      "failClosed": 250
+    }
+  },
+  "attestationControls": {
+    "AT_MISSING_ATTESTATION": {
+      "cases": 250,
+      "inheritedDelegations": 250,
+      "selectionChanges": 0,
+      "abstentions": 250,
+      "failClosed": true,
+      "abstentionReason": "oracle_correctness_attestation_absent"
+    },
+    "AT_MALFORMED_ATTESTATION": {
+      "cases": 250,
+      "inheritedDelegations": 250,
+      "selectionChanges": 0,
+      "abstentions": 250,
+      "failClosed": true,
+      "abstentionReason": "delegation_abstained_attestation_schema_fields_unknown"
+    },
+    "AT_STALE_ATTESTATION": {
+      "cases": 250,
+      "inheritedDelegations": 250,
+      "selectionChanges": 0,
+      "abstentions": 250,
+      "failClosed": true,
+      "abstentionReason": "delegation_abstained_attestation_decision_binding_mismatch"
+    },
+    "AT_CROSS_RUNTIME_ATTESTATION": {
+      "cases": 250,
+      "inheritedDelegations": 250,
+      "selectionChanges": 0,
+      "abstentions": 250,
+      "failClosed": true,
+      "abstentionReason": "delegation_abstained_attestation_decision_binding_mismatch"
+    },
+    "AT_UNBOUND_EVIDENCE_DIGEST": {
+      "cases": 250,
+      "inheritedDelegations": 250,
+      "selectionChanges": 0,
+      "abstentions": 250,
+      "failClosed": true,
+      "abstentionReason": "delegation_abstained_attestation_not_bound_to_accepted_evidence"
+    },
+    "AT_FORGED_SIGNALS": {
+      "cases": 250,
+      "inheritedDelegations": 250,
+      "selectionChanges": 0,
+      "abstentions": 250,
+      "failClosed": true,
+      "abstentionReason": "delegation_abstained_attestation_digest_invalid"
+    },
+    "AT_DUPLICATE_ATTESTATION": {
+      "cases": 250,
+      "inheritedDelegations": 250,
+      "selectionChanges": 0,
+      "abstentions": 250,
+      "failClosed": true,
+      "abstentionReason": "delegation_abstained_duplicate_attestation"
+    },
+    "AT_WRONG_EXPERT_ATTESTATION": {
+      "cases": 250,
+      "inheritedDelegations": 250,
+      "selectionChanges": 0,
+      "abstentions": 250,
+      "failClosed": true,
+      "abstentionReason": "oracle_correctness_attestation_absent"
+    },
+    "AT_UNKNOWN_SIGNAL_KIND": {
+      "cases": 250,
+      "inheritedDelegations": 250,
+      "selectionChanges": 0,
+      "abstentions": 250,
+      "failClosed": true,
+      "abstentionReason": "delegation_abstained_oracle_signal_kind_unknown"
+    }
+  },
+  "bounds": {
+    "arbiterHarmfulChangeRate": 0,
+    "arbiterCorrectPrimeBreakRate": 0,
+    "nonAmbiguousPrimeCasesChanged": 0,
+    "staleOracleEvidenceAccepted": 0,
+    "staleNexusEvidenceAccepted": 0,
+    "staleGraphEvidenceAccepted": 0,
+    "crossObservationExpertEvidenceAccepted": 0,
+    "crossRuntimeExpertEvidenceAccepted": 0,
+    "crossCampaignExpertEvidenceAccepted": 0,
+    "ambiguousActionBindingAccepted": 0,
+    "ambiguousOracleChannelBindingAccepted": 0,
+    "ambiguousNexusEntityBindingAccepted": 0,
+    "illegalExpertSupportedActionAccepted": 0,
+    "unknownExpertSchemaAccepted": 0,
+    "unknownRuleStateAccepted": 0,
+    "conflictingDuplicateAccepted": 0,
+    "missingEvidenceAccepted": 0,
+    "malformedEvidenceAccepted": 0,
+    "trueButIrrelevantOracleSelectionChanges": 0,
+    "trueButIrrelevantNexusSelectionChanges": 0,
+    "bothWrongHarmfulChanges": 0,
+    "unresolvedExpertDisagreementReturnsPrime": true,
+    "oracleSelectionInfluenceFromNexus": 0,
+    "nexusSelectionInfluenceFromOracle": 0,
+    "allSingleExpertChangesCausallyAttributed": true,
+    "attestationAttackDelegations": 0,
+    "attestationAttackInheritedDelegations": 2250,
+    "delegationsNotAuthorisedByInheritedArbiter": 0,
+    "strictRefinementOfInheritedArbiter": true
+  },
+  "boundsPass": true,
+  "invariance": {
+    "legalActionOrderInvariant": true,
+    "expertEvidenceOrderInvariant": true,
+    "attestationOrderInvariant": true,
+    "nexusEntityOrderInvariant": true,
+    "nexusEdgeOrderInvariant": true,
+    "duplicateEvidenceDoesNotAmplifySupport": true,
+    "duplicateAttestationFailsClosed": true,
+    "conflictingDuplicateFailsClosed": true
+  },
+  "invariancePass": true,
+  "failureIsolation": {
+    "arbiterFailureReturnsPrime": true,
+    "calibrationFailureReturnsPrime": true,
+    "attestationFailureReturnsPrime": true,
+    "oracleFailureSafe": true,
+    "noExpertAuthorizedAction": true
+  },
+  "failureIsolationPass": true,
+  "replayEquivalent": true,
+  "liveActionDispatches": 0,
+  "worldMutations": 0,
+  "authorityEscalations": 0,
+  "realZeknovaDecisionDeltaMeasured": false,
+  "harmCeiling": 0.01,
+  "harmCeilingPass": true,
+  "utilityPass": true,
+  "correctnessDiscriminationPass": true,
+  "securityRegressionPass": true,
+  "methodologyPass": true,
+  "stage2l10Certified": true,
+  "evidenceDigest": "354fa1d701f89d5118fb973233dca5bf7aa066df72642d6239156b38de91089d",
+  "certificationHash": "73e958a02a479326bb60cad058fa5cc3e29d5c77614aaef87936aa41dba41a86"
+}

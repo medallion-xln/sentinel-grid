@@ -1,0 +1,815 @@
+{
+  "stage": "STAGE2L19_ORACLE_MULTI_HEAD_QUALIFICATION",
+  "inherited": {
+    "corpus": "STAGE2I4_ORACLE_V2_HOLDOUT",
+    "cases": 2400,
+    "heads": [
+      {
+        "headId": "direction",
+        "corpus": "STAGE2I4_ORACLE_V2_HOLDOUT",
+        "cases": 300,
+        "accuracy": 1,
+        "accuracyWhenSupported": 1,
+        "abstentionRate": 0,
+        "majorityBaseline": 0.333333,
+        "liftOverTrivialBaseline": 0.666667,
+        "distinctPredictions": [
+          "DOWN",
+          "STABLE",
+          "UP"
+        ],
+        "constantPrediction": false,
+        "labelCounts": {
+          "UP": 100,
+          "DOWN": 100,
+          "STABLE": 100
+        },
+        "perFamily": [
+          {
+            "family": "INDEPENDENT_DOWN",
+            "n": 100,
+            "expected": "DOWN",
+            "accuracy": 1,
+            "predictions": [
+              "DOWN"
+            ]
+          },
+          {
+            "family": "INDEPENDENT_STABLE",
+            "n": 100,
+            "expected": "STABLE",
+            "accuracy": 1,
+            "predictions": [
+              "STABLE"
+            ]
+          },
+          {
+            "family": "INDEPENDENT_UP",
+            "n": 100,
+            "expected": "UP",
+            "accuracy": 1,
+            "predictions": [
+              "UP"
+            ]
+          }
+        ],
+        "hasCertifiedActionPath": true,
+        "primeComparable": true,
+        "utilityClass": "POSITIVE_SPECIALIST_UTILITY",
+        "utilityNote": "Comparable with Prime: this head has a certified action-delegation path."
+      },
+      {
+        "headId": "persistence",
+        "corpus": "STAGE2I4_ORACLE_V2_HOLDOUT",
+        "cases": 300,
+        "accuracy": 0.666667,
+        "accuracyWhenSupported": 1,
+        "abstentionRate": 0.333333,
+        "majorityBaseline": 0.666667,
+        "liftOverTrivialBaseline": 0,
+        "distinctPredictions": [
+          "INSUFFICIENT_EVIDENCE",
+          "PERSISTENT"
+        ],
+        "constantPrediction": false,
+        "labelCounts": {
+          "PERSISTENT": 200,
+          "NOT_PERSISTENT": 100
+        },
+        "perFamily": [
+          {
+            "family": "ALTERNATING_INTERRUPTION",
+            "n": 100,
+            "expected": "NOT_PERSISTENT",
+            "accuracy": 0,
+            "predictions": [
+              "INSUFFICIENT_EVIDENCE"
+            ]
+          },
+          {
+            "family": "SUSTAINED_DOWN",
+            "n": 100,
+            "expected": "PERSISTENT",
+            "accuracy": 1,
+            "predictions": [
+              "PERSISTENT"
+            ]
+          },
+          {
+            "family": "SUSTAINED_UP",
+            "n": 100,
+            "expected": "PERSISTENT",
+            "accuracy": 1,
+            "predictions": [
+              "PERSISTENT"
+            ]
+          }
+        ],
+        "hasCertifiedActionPath": false,
+        "primeComparable": false,
+        "utilityClass": "INCONCLUSIVE",
+        "utilityNote": "Not comparable with Prime: this head emits a temporal label, not an action, and the assembly forbids action fields. Measured against the best trivial classifier instead."
+      },
+      {
+        "headId": "reversal",
+        "corpus": "STAGE2I4_ORACLE_V2_HOLDOUT",
+        "cases": 300,
+        "accuracy": 1,
+        "accuracyWhenSupported": 1,
+        "abstentionRate": 0,
+        "majorityBaseline": 0.666667,
+        "liftOverTrivialBaseline": 0.333333,
+        "distinctPredictions": [
+          "NO_REVERSAL",
+          "REVERSAL"
+        ],
+        "constantPrediction": false,
+        "labelCounts": {
+          "REVERSAL": 100,
+          "NO_REVERSAL": 200
+        },
+        "perFamily": [
+          {
+            "family": "CLEAN_LATE_REVERSAL",
+            "n": 100,
+            "expected": "REVERSAL",
+            "accuracy": 1,
+            "predictions": [
+              "REVERSAL"
+            ]
+          },
+          {
+            "family": "CONTINUING_DIRECTION",
+            "n": 100,
+            "expected": "NO_REVERSAL",
+            "accuracy": 1,
+            "predictions": [
+              "NO_REVERSAL"
+            ]
+          },
+          {
+            "family": "TRANSIENT_TURN",
+            "n": 100,
+            "expected": "NO_REVERSAL",
+            "accuracy": 1,
+            "predictions": [
+              "NO_REVERSAL"
+            ]
+          }
+        ],
+        "hasCertifiedActionPath": false,
+        "primeComparable": false,
+        "utilityClass": "NOT_COMPARABLE_NO_ACTION_PATH",
+        "utilityNote": "Not comparable with Prime: this head emits a temporal label, not an action, and the assembly forbids action fields. Measured against the best trivial classifier instead."
+      },
+      {
+        "headId": "regimeChange",
+        "corpus": "STAGE2I4_ORACLE_V2_HOLDOUT",
+        "cases": 300,
+        "accuracy": 1,
+        "accuracyWhenSupported": 1,
+        "abstentionRate": 0,
+        "majorityBaseline": 0.333333,
+        "liftOverTrivialBaseline": 0.666667,
+        "distinctPredictions": [
+          "LEVEL_CHANGE",
+          "NO_CHANGE",
+          "TREND_CHANGE"
+        ],
+        "constantPrediction": false,
+        "labelCounts": {
+          "TREND_CHANGE": 100,
+          "LEVEL_CHANGE": 100,
+          "NO_CHANGE": 100
+        },
+        "perFamily": [
+          {
+            "family": "LEVEL_PROCESS_SHIFT",
+            "n": 100,
+            "expected": "LEVEL_CHANGE",
+            "accuracy": 1,
+            "predictions": [
+              "LEVEL_CHANGE"
+            ]
+          },
+          {
+            "family": "REVERSAL_SAME_PROCESS",
+            "n": 100,
+            "expected": "NO_CHANGE",
+            "accuracy": 1,
+            "predictions": [
+              "NO_CHANGE"
+            ]
+          },
+          {
+            "family": "STABLE_TO_TREND",
+            "n": 100,
+            "expected": "TREND_CHANGE",
+            "accuracy": 1,
+            "predictions": [
+              "TREND_CHANGE"
+            ]
+          }
+        ],
+        "hasCertifiedActionPath": false,
+        "primeComparable": false,
+        "utilityClass": "NOT_COMPARABLE_NO_ACTION_PATH",
+        "utilityNote": "Not comparable with Prime: this head emits a temporal label, not an action, and the assembly forbids action fields. Measured against the best trivial classifier instead."
+      },
+      {
+        "headId": "volatility",
+        "corpus": "STAGE2I4_ORACLE_V2_HOLDOUT",
+        "cases": 300,
+        "accuracy": 1,
+        "accuracyWhenSupported": 1,
+        "abstentionRate": 0,
+        "majorityBaseline": 0.666667,
+        "liftOverTrivialBaseline": 0.333333,
+        "distinctPredictions": [
+          "HIGH_VOLATILITY",
+          "LOW_VOLATILITY"
+        ],
+        "constantPrediction": false,
+        "labelCounts": {
+          "HIGH_VOLATILITY": 100,
+          "LOW_VOLATILITY": 200
+        },
+        "perFamily": [
+          {
+            "family": "INDEPENDENT_HIGH_VOLATILITY",
+            "n": 100,
+            "expected": "HIGH_VOLATILITY",
+            "accuracy": 1,
+            "predictions": [
+              "HIGH_VOLATILITY"
+            ]
+          },
+          {
+            "family": "INDEPENDENT_LOW_VOLATILITY",
+            "n": 100,
+            "expected": "LOW_VOLATILITY",
+            "accuracy": 1,
+            "predictions": [
+              "LOW_VOLATILITY"
+            ]
+          },
+          {
+            "family": "OUTLIER_WITH_LOW_BACKGROUND",
+            "n": 100,
+            "expected": "LOW_VOLATILITY",
+            "accuracy": 1,
+            "predictions": [
+              "LOW_VOLATILITY"
+            ]
+          }
+        ],
+        "hasCertifiedActionPath": false,
+        "primeComparable": false,
+        "utilityClass": "NOT_COMPARABLE_NO_ACTION_PATH",
+        "utilityNote": "Not comparable with Prime: this head emits a temporal label, not an action, and the assembly forbids action fields. Measured against the best trivial classifier instead."
+      },
+      {
+        "headId": "cycle",
+        "corpus": "STAGE2I4_ORACLE_V2_HOLDOUT",
+        "cases": 300,
+        "accuracy": 0.49,
+        "accuracyWhenSupported": 0.49,
+        "abstentionRate": 0,
+        "majorityBaseline": 0.666667,
+        "liftOverTrivialBaseline": -0.176667,
+        "distinctPredictions": [
+          "CYCLICAL",
+          "NOT_CYCLICAL"
+        ],
+        "constantPrediction": false,
+        "labelCounts": {
+          "CYCLICAL": 100,
+          "NOT_CYCLICAL": 200
+        },
+        "perFamily": [
+          {
+            "family": "FOUR_PHASE_CYCLE",
+            "n": 100,
+            "expected": "CYCLICAL",
+            "accuracy": 1,
+            "predictions": [
+              "CYCLICAL"
+            ]
+          },
+          {
+            "family": "IRREGULAR_NON_CYCLE",
+            "n": 100,
+            "expected": "NOT_CYCLICAL",
+            "accuracy": 0.47,
+            "predictions": [
+              "CYCLICAL",
+              "NOT_CYCLICAL"
+            ]
+          },
+          {
+            "family": "MONOTONIC_NON_CYCLE",
+            "n": 100,
+            "expected": "NOT_CYCLICAL",
+            "accuracy": 0,
+            "predictions": [
+              "CYCLICAL"
+            ]
+          }
+        ],
+        "hasCertifiedActionPath": false,
+        "primeComparable": false,
+        "utilityClass": "NEGATIVE_UTILITY",
+        "utilityNote": "Not comparable with Prime: this head emits a temporal label, not an action, and the assembly forbids action fields. Measured against the best trivial classifier instead."
+      },
+      {
+        "headId": "timeToThreshold",
+        "corpus": "STAGE2I4_ORACLE_V2_HOLDOUT",
+        "cases": 300,
+        "accuracy": 0.666667,
+        "accuracyWhenSupported": 0.666667,
+        "abstentionRate": 0,
+        "majorityBaseline": 0.333333,
+        "liftOverTrivialBaseline": 0.333334,
+        "distinctPredictions": [
+          "ALREADY_CROSSED",
+          "NOT_CROSSING"
+        ],
+        "constantPrediction": false,
+        "labelCounts": {
+          "CROSSING_1_TO_3": 100,
+          "ALREADY_CROSSED": 100,
+          "NOT_CROSSING": 100
+        },
+        "perFamily": [
+          {
+            "family": "ALREADY_OVER_LIMIT",
+            "n": 100,
+            "expected": "ALREADY_CROSSED",
+            "accuracy": 1,
+            "predictions": [
+              "ALREADY_CROSSED"
+            ]
+          },
+          {
+            "family": "APPROACHING_LIMIT",
+            "n": 100,
+            "expected": "CROSSING_1_TO_3",
+            "accuracy": 0,
+            "predictions": [
+              "ALREADY_CROSSED"
+            ]
+          },
+          {
+            "family": "NO_THRESHOLD_CROSSING",
+            "n": 100,
+            "expected": "NOT_CROSSING",
+            "accuracy": 1,
+            "predictions": [
+              "NOT_CROSSING"
+            ]
+          }
+        ],
+        "hasCertifiedActionPath": false,
+        "primeComparable": false,
+        "utilityClass": "NOT_COMPARABLE_NO_ACTION_PATH",
+        "utilityNote": "Not comparable with Prime: this head emits a temporal label, not an action, and the assembly forbids action fields. Measured against the best trivial classifier instead."
+      },
+      {
+        "headId": "abstention",
+        "corpus": "STAGE2I4_ORACLE_V2_HOLDOUT",
+        "cases": 300,
+        "accuracy": 1,
+        "accuracyWhenSupported": 1,
+        "abstentionRate": 0.666667,
+        "majorityBaseline": 0.666667,
+        "liftOverTrivialBaseline": 0.333333,
+        "distinctPredictions": [
+          "ENOUGH_EVIDENCE",
+          "INSUFFICIENT_EVIDENCE"
+        ],
+        "constantPrediction": false,
+        "labelCounts": {
+          "INSUFFICIENT_EVIDENCE": 200,
+          "ENOUGH_EVIDENCE": 100
+        },
+        "perFamily": [
+          {
+            "family": "MISSING_EVIDENCE",
+            "n": 100,
+            "expected": "INSUFFICIENT_EVIDENCE",
+            "accuracy": 1,
+            "predictions": [
+              "INSUFFICIENT_EVIDENCE"
+            ]
+          },
+          {
+            "family": "SHORT_EVIDENCE",
+            "n": 100,
+            "expected": "INSUFFICIENT_EVIDENCE",
+            "accuracy": 1,
+            "predictions": [
+              "INSUFFICIENT_EVIDENCE"
+            ]
+          },
+          {
+            "family": "SUFFICIENT_CLEAN_EVIDENCE",
+            "n": 100,
+            "expected": "ENOUGH_EVIDENCE",
+            "accuracy": 1,
+            "predictions": [
+              "ENOUGH_EVIDENCE"
+            ]
+          }
+        ],
+        "hasCertifiedActionPath": false,
+        "primeComparable": false,
+        "utilityClass": "NOT_COMPARABLE_NO_ACTION_PATH",
+        "utilityNote": "Not comparable with Prime: this head emits a temporal label, not an action, and the assembly forbids action fields. Measured against the best trivial classifier instead."
+      }
+    ],
+    "materialLiftThreshold": 0.05,
+    "headsAboveTrivialBaseline": 6,
+    "headsAtOrBelowTrivialBaseline": 2
+  },
+  "stress": {
+    "corpus": "STAGE2L19_ORACLE_STRESS_CORPUS",
+    "cases": 2007,
+    "heads": [
+      {
+        "headId": "direction",
+        "corpus": "STAGE2L19_ORACLE_STRESS_CORPUS",
+        "cases": 350,
+        "accuracy": 1,
+        "accuracyWhenSupported": 1,
+        "abstentionRate": 0,
+        "majorityBaseline": 0.342857,
+        "liftOverTrivialBaseline": 0.657143,
+        "distinctPredictions": [
+          "DOWN",
+          "STABLE",
+          "UP"
+        ],
+        "constantPrediction": false,
+        "labelCounts": {
+          "UP": 116,
+          "DOWN": 114,
+          "STABLE": 120
+        },
+        "perFamily": [
+          {
+            "family": "FLAT",
+            "n": 120,
+            "expected": "STABLE",
+            "accuracy": 1,
+            "predictions": [
+              "STABLE"
+            ]
+          },
+          {
+            "family": "RAMP_DOWN",
+            "n": 114,
+            "expected": "DOWN",
+            "accuracy": 1,
+            "predictions": [
+              "DOWN"
+            ]
+          },
+          {
+            "family": "RAMP_UP",
+            "n": 116,
+            "expected": "UP",
+            "accuracy": 1,
+            "predictions": [
+              "UP"
+            ]
+          }
+        ],
+        "hasCertifiedActionPath": true,
+        "primeComparable": true,
+        "utilityClass": "POSITIVE_SPECIALIST_UTILITY",
+        "utilityNote": "Comparable with Prime: this head has a certified action-delegation path."
+      },
+      {
+        "headId": "persistence",
+        "corpus": "STAGE2L19_ORACLE_STRESS_CORPUS",
+        "cases": 236,
+        "accuracy": 0.34322,
+        "accuracyWhenSupported": 0.870968,
+        "abstentionRate": 0.605932,
+        "majorityBaseline": 0.508475,
+        "liftOverTrivialBaseline": -0.165255,
+        "distinctPredictions": [
+          "INSUFFICIENT_EVIDENCE",
+          "NON_PERSISTENT",
+          "PERSISTENT"
+        ],
+        "constantPrediction": false,
+        "labelCounts": {
+          "PERSISTENT": 116,
+          "NON_PERSISTENT": 120
+        },
+        "perFamily": [
+          {
+            "family": "INTERRUPTED_RUN",
+            "n": 120,
+            "expected": "NON_PERSISTENT",
+            "accuracy": 0,
+            "predictions": [
+              "INSUFFICIENT_EVIDENCE"
+            ]
+          },
+          {
+            "family": "SUSTAINED_RUN",
+            "n": 116,
+            "expected": "PERSISTENT",
+            "accuracy": 0.698276,
+            "predictions": [
+              "INSUFFICIENT_EVIDENCE",
+              "NON_PERSISTENT",
+              "PERSISTENT"
+            ]
+          }
+        ],
+        "hasCertifiedActionPath": false,
+        "primeComparable": false,
+        "utilityClass": "NEGATIVE_UTILITY",
+        "utilityNote": "Not comparable with Prime: this head emits a temporal label, not an action, and the assembly forbids action fields. Measured against the best trivial classifier instead."
+      },
+      {
+        "headId": "reversal",
+        "corpus": "STAGE2L19_ORACLE_STRESS_CORPUS",
+        "cases": 240,
+        "accuracy": 0.6625,
+        "accuracyWhenSupported": 0.6625,
+        "abstentionRate": 0,
+        "majorityBaseline": 0.5,
+        "liftOverTrivialBaseline": 0.1625,
+        "distinctPredictions": [
+          "NO_REVERSAL",
+          "REVERSAL"
+        ],
+        "constantPrediction": false,
+        "labelCounts": {
+          "REVERSAL": 120,
+          "NO_REVERSAL": 120
+        },
+        "perFamily": [
+          {
+            "family": "CONTINUING",
+            "n": 120,
+            "expected": "NO_REVERSAL",
+            "accuracy": 1,
+            "predictions": [
+              "NO_REVERSAL"
+            ]
+          },
+          {
+            "family": "LATE_REVERSAL",
+            "n": 120,
+            "expected": "REVERSAL",
+            "accuracy": 0.325,
+            "predictions": [
+              "NO_REVERSAL",
+              "REVERSAL"
+            ]
+          }
+        ],
+        "hasCertifiedActionPath": false,
+        "primeComparable": false,
+        "utilityClass": "NOT_COMPARABLE_NO_ACTION_PATH",
+        "utilityNote": "Not comparable with Prime: this head emits a temporal label, not an action, and the assembly forbids action fields. Measured against the best trivial classifier instead."
+      },
+      {
+        "headId": "regimeChange",
+        "corpus": "STAGE2L19_ORACLE_STRESS_CORPUS",
+        "cases": 240,
+        "accuracy": 0.916667,
+        "accuracyWhenSupported": 0.916667,
+        "abstentionRate": 0,
+        "majorityBaseline": 0.5,
+        "liftOverTrivialBaseline": 0.416667,
+        "distinctPredictions": [
+          "LEVEL_CHANGE",
+          "NO_CHANGE"
+        ],
+        "constantPrediction": false,
+        "labelCounts": {
+          "LEVEL_CHANGE": 120,
+          "NO_CHANGE": 120
+        },
+        "perFamily": [
+          {
+            "family": "LEVEL_SHIFT",
+            "n": 120,
+            "expected": "LEVEL_CHANGE",
+            "accuracy": 0.833333,
+            "predictions": [
+              "LEVEL_CHANGE",
+              "NO_CHANGE"
+            ]
+          },
+          {
+            "family": "STEADY",
+            "n": 120,
+            "expected": "NO_CHANGE",
+            "accuracy": 1,
+            "predictions": [
+              "NO_CHANGE"
+            ]
+          }
+        ],
+        "hasCertifiedActionPath": false,
+        "primeComparable": false,
+        "utilityClass": "NOT_COMPARABLE_NO_ACTION_PATH",
+        "utilityNote": "Not comparable with Prime: this head emits a temporal label, not an action, and the assembly forbids action fields. Measured against the best trivial classifier instead."
+      },
+      {
+        "headId": "volatility",
+        "corpus": "STAGE2L19_ORACLE_STRESS_CORPUS",
+        "cases": 210,
+        "accuracy": 1,
+        "accuracyWhenSupported": 1,
+        "abstentionRate": 0,
+        "majorityBaseline": 0.571429,
+        "liftOverTrivialBaseline": 0.428571,
+        "distinctPredictions": [
+          "HIGH_VOLATILITY",
+          "LOW_VOLATILITY"
+        ],
+        "constantPrediction": false,
+        "labelCounts": {
+          "HIGH_VOLATILITY": 120,
+          "LOW_VOLATILITY": 90
+        },
+        "perFamily": [
+          {
+            "family": "ALTERNATING_HIGH",
+            "n": 120,
+            "expected": "HIGH_VOLATILITY",
+            "accuracy": 1,
+            "predictions": [
+              "HIGH_VOLATILITY"
+            ]
+          },
+          {
+            "family": "ALTERNATING_LOW",
+            "n": 90,
+            "expected": "LOW_VOLATILITY",
+            "accuracy": 1,
+            "predictions": [
+              "LOW_VOLATILITY"
+            ]
+          }
+        ],
+        "hasCertifiedActionPath": false,
+        "primeComparable": false,
+        "utilityClass": "NOT_COMPARABLE_NO_ACTION_PATH",
+        "utilityNote": "Not comparable with Prime: this head emits a temporal label, not an action, and the assembly forbids action fields. Measured against the best trivial classifier instead."
+      },
+      {
+        "headId": "cycle",
+        "corpus": "STAGE2L19_ORACLE_STRESS_CORPUS",
+        "cases": 236,
+        "accuracy": 0.521186,
+        "accuracyWhenSupported": 0.521186,
+        "abstentionRate": 0,
+        "majorityBaseline": 0.508475,
+        "liftOverTrivialBaseline": 0.012711,
+        "distinctPredictions": [
+          "CYCLICAL",
+          "NOT_CYCLICAL"
+        ],
+        "constantPrediction": false,
+        "labelCounts": {
+          "CYCLICAL": 120,
+          "NOT_CYCLICAL": 116
+        },
+        "perFamily": [
+          {
+            "family": "MONOTONE",
+            "n": 116,
+            "expected": "NOT_CYCLICAL",
+            "accuracy": 0.025862,
+            "predictions": [
+              "CYCLICAL",
+              "NOT_CYCLICAL"
+            ]
+          },
+          {
+            "family": "PERIODIC",
+            "n": 120,
+            "expected": "CYCLICAL",
+            "accuracy": 1,
+            "predictions": [
+              "CYCLICAL"
+            ]
+          }
+        ],
+        "hasCertifiedActionPath": false,
+        "primeComparable": false,
+        "utilityClass": "INCONCLUSIVE",
+        "utilityNote": "Not comparable with Prime: this head emits a temporal label, not an action, and the assembly forbids action fields. Measured against the best trivial classifier instead."
+      },
+      {
+        "headId": "timeToThreshold",
+        "corpus": "STAGE2L19_ORACLE_STRESS_CORPUS",
+        "cases": 285,
+        "accuracy": 0.842105,
+        "accuracyWhenSupported": 0.842105,
+        "abstentionRate": 0,
+        "majorityBaseline": 0.421053,
+        "liftOverTrivialBaseline": 0.421052,
+        "distinctPredictions": [
+          "ALREADY_CROSSED",
+          "NOT_CROSSING"
+        ],
+        "constantPrediction": false,
+        "labelCounts": {
+          "ALREADY_CROSSED": 120,
+          "NOT_CROSSING": 120,
+          "CROSSING_1_TO_3": 45
+        },
+        "perFamily": [
+          {
+            "family": "ALREADY_OVER",
+            "n": 120,
+            "expected": "ALREADY_CROSSED",
+            "accuracy": 1,
+            "predictions": [
+              "ALREADY_CROSSED"
+            ]
+          },
+          {
+            "family": "APPROACHING",
+            "n": 45,
+            "expected": "CROSSING_1_TO_3",
+            "accuracy": 0,
+            "predictions": [
+              "ALREADY_CROSSED"
+            ]
+          },
+          {
+            "family": "STAYING_BELOW",
+            "n": 120,
+            "expected": "NOT_CROSSING",
+            "accuracy": 1,
+            "predictions": [
+              "NOT_CROSSING"
+            ]
+          }
+        ],
+        "hasCertifiedActionPath": false,
+        "primeComparable": false,
+        "utilityClass": "NOT_COMPARABLE_NO_ACTION_PATH",
+        "utilityNote": "Not comparable with Prime: this head emits a temporal label, not an action, and the assembly forbids action fields. Measured against the best trivial classifier instead."
+      },
+      {
+        "headId": "abstention",
+        "corpus": "STAGE2L19_ORACLE_STRESS_CORPUS",
+        "cases": 210,
+        "accuracy": 0.995238,
+        "accuracyWhenSupported": 1,
+        "abstentionRate": 0.433333,
+        "majorityBaseline": 0.571429,
+        "liftOverTrivialBaseline": 0.423809,
+        "distinctPredictions": [
+          "ENOUGH_EVIDENCE",
+          "INSUFFICIENT_EVIDENCE"
+        ],
+        "constantPrediction": false,
+        "labelCounts": {
+          "INSUFFICIENT_EVIDENCE": 90,
+          "ENOUGH_EVIDENCE": 120
+        },
+        "perFamily": [
+          {
+            "family": "SHORT_HISTORY",
+            "n": 90,
+            "expected": "INSUFFICIENT_EVIDENCE",
+            "accuracy": 1,
+            "predictions": [
+              "INSUFFICIENT_EVIDENCE"
+            ]
+          },
+          {
+            "family": "SUFFICIENT_HISTORY",
+            "n": 120,
+            "expected": "ENOUGH_EVIDENCE",
+            "accuracy": 0.991667,
+            "predictions": [
+              "ENOUGH_EVIDENCE",
+              "INSUFFICIENT_EVIDENCE"
+            ]
+          }
+        ],
+        "hasCertifiedActionPath": false,
+        "primeComparable": false,
+        "utilityClass": "NOT_COMPARABLE_NO_ACTION_PATH",
+        "utilityNote": "Not comparable with Prime: this head emits a temporal label, not an action, and the assembly forbids action fields. Measured against the best trivial classifier instead."
+      }
+    ],
+    "materialLiftThreshold": 0.05,
+    "headsAboveTrivialBaseline": 6,
+    "headsAtOrBelowTrivialBaseline": 2
+  }
+}

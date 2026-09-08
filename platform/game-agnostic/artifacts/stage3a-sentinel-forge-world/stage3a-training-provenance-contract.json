@@ -1,0 +1,57 @@
+{
+  "fields": [
+    "TRAINING_ENGINE",
+    "SOUP_COMMIT",
+    "BASE_MODEL",
+    "BASE_MODEL_HASH",
+    "TOKENIZER_HASH",
+    "DATASET_HASH",
+    "DATASET_RECORD_COUNT",
+    "FORGE_WORLD_VERSION",
+    "SCENARIO_FAMILY_SET",
+    "CURRICULUM_VERSION",
+    "REWARD_VERSION",
+    "TRAINING_METHOD",
+    "TRAINING_CONFIG_HASH",
+    "SEED",
+    "OUTPUT_ARTIFACT_HASH"
+  ],
+  "fieldCount": 15,
+  "enforcement": {
+    "fields": [
+      "TRAINING_ENGINE",
+      "SOUP_COMMIT",
+      "BASE_MODEL",
+      "BASE_MODEL_HASH",
+      "TOKENIZER_HASH",
+      "DATASET_HASH",
+      "DATASET_RECORD_COUNT",
+      "FORGE_WORLD_VERSION",
+      "SCENARIO_FAMILY_SET",
+      "CURRICULUM_VERSION",
+      "REWARD_VERSION",
+      "TRAINING_METHOD",
+      "TRAINING_CONFIG_HASH",
+      "SEED",
+      "OUTPUT_ARTIFACT_HASH"
+    ],
+    "fieldCount": 15,
+    "completeEnvelopeAccepted": true,
+    "incompleteEnvelopeRejected": true,
+    "incompleteRejection": {
+      "provenanceVersion": "FORGE_TRAINING_PROVENANCE_V1",
+      "complete": false,
+      "accepted": false,
+      "missingFields": [
+        "DATASET_HASH"
+      ],
+      "emptyFields": [
+        "BASE_MODEL_HASH"
+      ],
+      "rejectionReason": "INCOMPLETE_TRAINING_PROVENANCE",
+      "note": "A candidate without complete training provenance is rejected. Every field names an input that changes what the artifact is."
+    },
+    "note": "The envelope is defined and enforced. No candidate exists yet, so no real envelope has been populated; the placeholders exercise the validator, they do not describe an artifact."
+  },
+  "rule": "A candidate without complete training provenance is rejected, not accepted with a warning."
+}

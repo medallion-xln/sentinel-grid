@@ -1,0 +1,2712 @@
+{
+  "certificationSchemaVersion": 1,
+  "stage": "STAGE3B_MICROWORLD_CURRICULUM",
+  "status": "PASS",
+  "stageKind": "CURRICULUM_AND_DATASET",
+  "authority": "R0",
+  "canDispatch": false,
+  "canMutateLiveWorld": false,
+  "stage3a": {
+    "certificationHash": "c66b85d863d428d2da0e9d738f426e0b655124509bad04e0e7220f6eaf34898d",
+    "reproduced": true
+  },
+  "reward": {
+    "versionBefore": "FORGE_REWARD_V1",
+    "versionAfter": "FORGE_REWARD_V2",
+    "componentCountBefore": 11,
+    "componentCountAfter": 12,
+    "audit": {
+      "audited": true,
+      "v1IsFlowOnly": true,
+      "finding": "FORGE_REWARD_V1 sums transition rewards and carries no term for the value of the resulting world. Branches that end in materially different worlds therefore score identically whenever the flow matched.",
+      "tiedCasesBefore": 416,
+      "rewardDefectTiesBefore": 382,
+      "genuineTiesBefore": 34,
+      "tiedCasesAfter": 241,
+      "rewardDefectTiesAfter": 31,
+      "genuineTiesAfter": 210,
+      "v2Justified": true,
+      "genuineTiesPreserved": true,
+      "componentsAdded": [
+        "futureObjectivePotential",
+        "optionValue",
+        "restoredDependencyValue"
+      ],
+      "potentialTermsTelescope": true,
+      "telescopingArgument": "Both potential terms are differences of a state function, so over a complete trajectory they collapse to Phi(end) - Phi(start) and cannot reorder complete trajectories. They separate only truncated horizons, which is exactly the case the taxonomy found and the case the oracle scores.",
+      "note": "No component was added to break a tie. The two potential terms measure properties of the resulting world that a flow reward structurally cannot see."
+    },
+    "tieTaxonomyBefore": {
+      "taxonomyVersion": "FORGE_SUPERVISION_V1",
+      "totalCases": 504,
+      "tiedCases": 416,
+      "tieRate": 0.8254,
+      "byClass": {
+        "ACCIDENTAL_REWARD_COLLAPSE": 1,
+        "INSUFFICIENT_REWARD_RESOLUTION": 381,
+        "GENUINE_STRATEGIC_EQUIVALENCE": 17,
+        "SYMMETRIC_ACTIONS": 0,
+        "HORIZON_ALIASING": 17,
+        "OTHER": 0
+      },
+      "byFamily": {
+        "nexus/dependency_chain": {
+          "cases": 18,
+          "tied": 18,
+          "classes": {
+            "INSUFFICIENT_REWARD_RESOLUTION": 17,
+            "HORIZON_ALIASING": 1
+          }
+        },
+        "nexus/dead_substitute": {
+          "cases": 18,
+          "tied": 6,
+          "classes": {
+            "GENUINE_STRATEGIC_EQUIVALENCE": 6
+          }
+        },
+        "nexus/live_substitute": {
+          "cases": 18,
+          "tied": 3,
+          "classes": {
+            "GENUINE_STRATEGIC_EQUIVALENCE": 3
+          }
+        },
+        "nexus/redundant_infrastructure": {
+          "cases": 18,
+          "tied": 18,
+          "classes": {
+            "INSUFFICIENT_REWARD_RESOLUTION": 17,
+            "HORIZON_ALIASING": 1
+          }
+        },
+        "nexus/single_bottleneck": {
+          "cases": 18,
+          "tied": 18,
+          "classes": {
+            "INSUFFICIENT_REWARD_RESOLUTION": 17,
+            "HORIZON_ALIASING": 1
+          }
+        },
+        "nexus/multi_hop_dependency": {
+          "cases": 18,
+          "tied": 17,
+          "classes": {
+            "INSUFFICIENT_REWARD_RESOLUTION": 16,
+            "HORIZON_ALIASING": 1
+          }
+        },
+        "nexus/cycle": {
+          "cases": 18,
+          "tied": 18,
+          "classes": {
+            "INSUFFICIENT_REWARD_RESOLUTION": 14,
+            "HORIZON_ALIASING": 4
+          }
+        },
+        "nexus/distributed_value": {
+          "cases": 18,
+          "tied": 18,
+          "classes": {
+            "INSUFFICIENT_REWARD_RESOLUTION": 15,
+            "HORIZON_ALIASING": 3
+          }
+        },
+        "nexus/conflicting_objectives": {
+          "cases": 18,
+          "tied": 18,
+          "classes": {
+            "INSUFFICIENT_REWARD_RESOLUTION": 18
+          }
+        },
+        "oracle/monotonic_trend": {
+          "cases": 18,
+          "tied": 18,
+          "classes": {
+            "INSUFFICIENT_REWARD_RESOLUTION": 18
+          }
+        },
+        "oracle/reversal": {
+          "cases": 18,
+          "tied": 18,
+          "classes": {
+            "INSUFFICIENT_REWARD_RESOLUTION": 18
+          }
+        },
+        "oracle/regime_change": {
+          "cases": 18,
+          "tied": 18,
+          "classes": {
+            "INSUFFICIENT_REWARD_RESOLUTION": 18
+          }
+        },
+        "oracle/volatility_shift": {
+          "cases": 18,
+          "tied": 18,
+          "classes": {
+            "INSUFFICIENT_REWARD_RESOLUTION": 18
+          }
+        },
+        "oracle/cycle_temporal": {
+          "cases": 18,
+          "tied": 18,
+          "classes": {
+            "INSUFFICIENT_REWARD_RESOLUTION": 18
+          }
+        },
+        "oracle/persistence": {
+          "cases": 18,
+          "tied": 18,
+          "classes": {
+            "INSUFFICIENT_REWARD_RESOLUTION": 18
+          }
+        },
+        "oracle/threshold_crossing": {
+          "cases": 18,
+          "tied": 18,
+          "classes": {
+            "INSUFFICIENT_REWARD_RESOLUTION": 18
+          }
+        },
+        "oracle/insufficient_history": {
+          "cases": 18,
+          "tied": 18,
+          "classes": {
+            "INSUFFICIENT_REWARD_RESOLUTION": 18
+          }
+        },
+        "archimedes/repair_network": {
+          "cases": 18,
+          "tied": 12,
+          "classes": {
+            "INSUFFICIENT_REWARD_RESOLUTION": 9,
+            "HORIZON_ALIASING": 2,
+            "GENUINE_STRATEGIC_EQUIVALENCE": 1
+          }
+        },
+        "archimedes/material_shortage": {
+          "cases": 18,
+          "tied": 16,
+          "classes": {
+            "INSUFFICIENT_REWARD_RESOLUTION": 16
+          }
+        },
+        "archimedes/load_balancing": {
+          "cases": 18,
+          "tied": 16,
+          "classes": {
+            "INSUFFICIENT_REWARD_RESOLUTION": 16
+          }
+        },
+        "archimedes/damaged_infrastructure": {
+          "cases": 18,
+          "tied": 3,
+          "classes": {
+            "GENUINE_STRATEGIC_EQUIVALENCE": 3
+          }
+        },
+        "archimedes/construction_sequencing": {
+          "cases": 18,
+          "tied": 14,
+          "classes": {
+            "INSUFFICIENT_REWARD_RESOLUTION": 13,
+            "HORIZON_ALIASING": 1
+          }
+        },
+        "archimedes/redundant_structural_paths": {
+          "cases": 18,
+          "tied": 18,
+          "classes": {
+            "INSUFFICIENT_REWARD_RESOLUTION": 18
+          }
+        },
+        "prime/mixed_expert_problem": {
+          "cases": 18,
+          "tied": 17,
+          "classes": {
+            "INSUFFICIENT_REWARD_RESOLUTION": 17
+          }
+        },
+        "prime/resource_constrained_planning": {
+          "cases": 18,
+          "tied": 8,
+          "classes": {
+            "GENUINE_STRATEGIC_EQUIVALENCE": 4,
+            "HORIZON_ALIASING": 3,
+            "INSUFFICIENT_REWARD_RESOLUTION": 1
+          }
+        },
+        "prime/multi_objective_intervention": {
+          "cases": 18,
+          "tied": 18,
+          "classes": {
+            "INSUFFICIENT_REWARD_RESOLUTION": 18
+          }
+        },
+        "prime/adversarial_choice": {
+          "cases": 18,
+          "tied": 1,
+          "classes": {
+            "ACCIDENTAL_REWARD_COLLAPSE": 1
+          }
+        },
+        "prime/long_horizon_tradeoff": {
+          "cases": 18,
+          "tied": 15,
+          "classes": {
+            "INSUFFICIENT_REWARD_RESOLUTION": 15
+          }
+        }
+      },
+      "byLevel": {
+        "0": {
+          "cases": 84,
+          "tied": 68,
+          "classes": {
+            "INSUFFICIENT_REWARD_RESOLUTION": 64,
+            "HORIZON_ALIASING": 2,
+            "GENUINE_STRATEGIC_EQUIVALENCE": 2
+          }
+        },
+        "1": {
+          "cases": 84,
+          "tied": 65,
+          "classes": {
+            "INSUFFICIENT_REWARD_RESOLUTION": 61,
+            "HORIZON_ALIASING": 2,
+            "GENUINE_STRATEGIC_EQUIVALENCE": 1,
+            "ACCIDENTAL_REWARD_COLLAPSE": 1
+          }
+        },
+        "2": {
+          "cases": 84,
+          "tied": 68,
+          "classes": {
+            "INSUFFICIENT_REWARD_RESOLUTION": 64,
+            "GENUINE_STRATEGIC_EQUIVALENCE": 2,
+            "HORIZON_ALIASING": 2
+          }
+        },
+        "3": {
+          "cases": 84,
+          "tied": 68,
+          "classes": {
+            "HORIZON_ALIASING": 5,
+            "INSUFFICIENT_REWARD_RESOLUTION": 61,
+            "GENUINE_STRATEGIC_EQUIVALENCE": 2
+          }
+        },
+        "4": {
+          "cases": 84,
+          "tied": 75,
+          "classes": {
+            "INSUFFICIENT_REWARD_RESOLUTION": 66,
+            "GENUINE_STRATEGIC_EQUIVALENCE": 6,
+            "HORIZON_ALIASING": 3
+          }
+        },
+        "5": {
+          "cases": 84,
+          "tied": 72,
+          "classes": {
+            "INSUFFICIENT_REWARD_RESOLUTION": 65,
+            "GENUINE_STRATEGIC_EQUIVALENCE": 4,
+            "HORIZON_ALIASING": 3
+          }
+        }
+      },
+      "byActionType": {
+        "MOVE": {
+          "tiedGroupsContainingIt": 346,
+          "classes": {
+            "INSUFFICIENT_REWARD_RESOLUTION": 331,
+            "GENUINE_STRATEGIC_EQUIVALENCE": 14,
+            "ACCIDENTAL_REWARD_COLLAPSE": 1
+          }
+        },
+        "PROTECT": {
+          "tiedGroupsContainingIt": 398,
+          "classes": {
+            "INSUFFICIENT_REWARD_RESOLUTION": 380,
+            "HORIZON_ALIASING": 17,
+            "ACCIDENTAL_REWARD_COLLAPSE": 1
+          }
+        },
+        "WAIT": {
+          "tiedGroupsContainingIt": 380,
+          "classes": {
+            "INSUFFICIENT_REWARD_RESOLUTION": 380
+          }
+        },
+        "RETREAT": {
+          "tiedGroupsContainingIt": 127,
+          "classes": {
+            "INSUFFICIENT_REWARD_RESOLUTION": 113,
+            "GENUINE_STRATEGIC_EQUIVALENCE": 14
+          }
+        },
+        "REPAIR": {
+          "tiedGroupsContainingIt": 8,
+          "classes": {
+            "HORIZON_ALIASING": 5,
+            "GENUINE_STRATEGIC_EQUIVALENCE": 3
+          }
+        },
+        "BUILD": {
+          "tiedGroupsContainingIt": 1,
+          "classes": {
+            "HORIZON_ALIASING": 1
+          }
+        }
+      },
+      "samples": {
+        "INSUFFICIENT_REWARD_RESOLUTION": {
+          "family": "nexus/dependency_chain",
+          "level": 0,
+          "class": "INSUFFICIENT_REWARD_RESOLUTION",
+          "rewardDefect": true,
+          "why": "The branches reach materially different worlds and are STILL different at the end of the horizon, yet every accumulated reward component is equal. FORGE_REWARD_V1 is a pure flow reward: it sums what happened along the way and carries no term for the value of the world it left behind, so two paths with the same flow score the same however differently they end.",
+          "evidence": {
+            "groupSize": 4,
+            "distinctTotalVectors": 1,
+            "distinctImmediateVectors": 3,
+            "distinctResultingStates": 4,
+            "distinctHorizonStates": 3,
+            "distinctActionTypes": 3,
+            "actionTypes": [
+              "MOVE",
+              "PROTECT",
+              "WAIT"
+            ]
+          }
+        },
+        "HORIZON_ALIASING": {
+          "family": "nexus/dependency_chain",
+          "level": 3,
+          "class": "HORIZON_ALIASING",
+          "rewardDefect": false,
+          "why": "The branches differ on the immediate step and then genuinely converge: they reach a byte-identical world by the end of the horizon. A property of the horizon length, not of the reward.",
+          "evidence": {
+            "groupSize": 2,
+            "distinctTotalVectors": 1,
+            "distinctImmediateVectors": 2,
+            "distinctResultingStates": 2,
+            "distinctHorizonStates": 1,
+            "distinctActionTypes": 1,
+            "actionTypes": [
+              "PROTECT"
+            ]
+          }
+        },
+        "GENUINE_STRATEGIC_EQUIVALENCE": {
+          "family": "nexus/dead_substitute",
+          "level": 2,
+          "class": "GENUINE_STRATEGIC_EQUIVALENCE",
+          "rewardDefect": false,
+          "why": "Different action types reach a byte-identical successor state. The actions are the same move by another name.",
+          "evidence": {
+            "groupSize": 2,
+            "distinctTotalVectors": 1,
+            "distinctImmediateVectors": 1,
+            "distinctResultingStates": 1,
+            "distinctHorizonStates": 1,
+            "distinctActionTypes": 2,
+            "actionTypes": [
+              "MOVE",
+              "RETREAT"
+            ]
+          }
+        },
+        "ACCIDENTAL_REWARD_COLLAPSE": {
+          "family": "prime/adversarial_choice",
+          "level": 1,
+          "class": "ACCIDENTAL_REWARD_COLLAPSE",
+          "rewardDefect": true,
+          "why": "The branches have different reward vectors that the weighting maps to the same scalar. The information exists in the vector and is destroyed by scalarization.",
+          "evidence": {
+            "groupSize": 2,
+            "distinctTotalVectors": 2,
+            "distinctImmediateVectors": 2,
+            "distinctResultingStates": 2,
+            "distinctHorizonStates": 2,
+            "distinctActionTypes": 2,
+            "actionTypes": [
+              "MOVE",
+              "PROTECT"
+            ]
+          }
+        }
+      },
+      "rewardDefectCases": 382,
+      "rewardDefectRate": 0.9183,
+      "genuineEquivalenceCases": 17,
+      "horizonAliasingCases": 17,
+      "complete": true,
+      "note": "Only ACCIDENTAL_REWARD_COLLAPSE and INSUFFICIENT_REWARD_RESOLUTION are reward defects. The rest are properties of the world and must survive any reward change."
+    },
+    "tieTaxonomyAfter": {
+      "taxonomyVersion": "FORGE_SUPERVISION_V1",
+      "totalCases": 504,
+      "tiedCases": 241,
+      "tieRate": 0.4782,
+      "byClass": {
+        "ACCIDENTAL_REWARD_COLLAPSE": 0,
+        "INSUFFICIENT_REWARD_RESOLUTION": 31,
+        "GENUINE_STRATEGIC_EQUIVALENCE": 69,
+        "SYMMETRIC_ACTIONS": 0,
+        "HORIZON_ALIASING": 141,
+        "OTHER": 0
+      },
+      "byFamily": {
+        "nexus/dependency_chain": {
+          "cases": 18,
+          "tied": 5,
+          "classes": {
+            "GENUINE_STRATEGIC_EQUIVALENCE": 5
+          }
+        },
+        "nexus/dead_substitute": {
+          "cases": 18,
+          "tied": 7,
+          "classes": {
+            "GENUINE_STRATEGIC_EQUIVALENCE": 6,
+            "HORIZON_ALIASING": 1
+          }
+        },
+        "nexus/live_substitute": {
+          "cases": 18,
+          "tied": 3,
+          "classes": {
+            "GENUINE_STRATEGIC_EQUIVALENCE": 3
+          }
+        },
+        "nexus/redundant_infrastructure": {
+          "cases": 18,
+          "tied": 2,
+          "classes": {
+            "GENUINE_STRATEGIC_EQUIVALENCE": 2
+          }
+        },
+        "nexus/single_bottleneck": {
+          "cases": 18,
+          "tied": 5,
+          "classes": {
+            "GENUINE_STRATEGIC_EQUIVALENCE": 5
+          }
+        },
+        "nexus/multi_hop_dependency": {
+          "cases": 18,
+          "tied": 2,
+          "classes": {
+            "GENUINE_STRATEGIC_EQUIVALENCE": 2
+          }
+        },
+        "nexus/cycle": {
+          "cases": 18,
+          "tied": 5,
+          "classes": {
+            "GENUINE_STRATEGIC_EQUIVALENCE": 5
+          }
+        },
+        "nexus/distributed_value": {
+          "cases": 18,
+          "tied": 4,
+          "classes": {
+            "INSUFFICIENT_REWARD_RESOLUTION": 1,
+            "GENUINE_STRATEGIC_EQUIVALENCE": 3
+          }
+        },
+        "nexus/conflicting_objectives": {
+          "cases": 18,
+          "tied": 5,
+          "classes": {
+            "HORIZON_ALIASING": 2,
+            "GENUINE_STRATEGIC_EQUIVALENCE": 3
+          }
+        },
+        "oracle/monotonic_trend": {
+          "cases": 18,
+          "tied": 18,
+          "classes": {
+            "HORIZON_ALIASING": 16,
+            "INSUFFICIENT_REWARD_RESOLUTION": 2
+          }
+        },
+        "oracle/reversal": {
+          "cases": 18,
+          "tied": 18,
+          "classes": {
+            "HORIZON_ALIASING": 16,
+            "INSUFFICIENT_REWARD_RESOLUTION": 2
+          }
+        },
+        "oracle/regime_change": {
+          "cases": 18,
+          "tied": 18,
+          "classes": {
+            "HORIZON_ALIASING": 16,
+            "INSUFFICIENT_REWARD_RESOLUTION": 2
+          }
+        },
+        "oracle/volatility_shift": {
+          "cases": 18,
+          "tied": 18,
+          "classes": {
+            "HORIZON_ALIASING": 14,
+            "INSUFFICIENT_REWARD_RESOLUTION": 4
+          }
+        },
+        "oracle/cycle_temporal": {
+          "cases": 18,
+          "tied": 18,
+          "classes": {
+            "HORIZON_ALIASING": 15,
+            "INSUFFICIENT_REWARD_RESOLUTION": 3
+          }
+        },
+        "oracle/persistence": {
+          "cases": 18,
+          "tied": 18,
+          "classes": {
+            "HORIZON_ALIASING": 15,
+            "INSUFFICIENT_REWARD_RESOLUTION": 3
+          }
+        },
+        "oracle/threshold_crossing": {
+          "cases": 18,
+          "tied": 18,
+          "classes": {
+            "HORIZON_ALIASING": 11,
+            "INSUFFICIENT_REWARD_RESOLUTION": 7
+          }
+        },
+        "oracle/insufficient_history": {
+          "cases": 18,
+          "tied": 18,
+          "classes": {
+            "HORIZON_ALIASING": 17,
+            "INSUFFICIENT_REWARD_RESOLUTION": 1
+          }
+        },
+        "archimedes/repair_network": {
+          "cases": 18,
+          "tied": 3,
+          "classes": {
+            "HORIZON_ALIASING": 2,
+            "GENUINE_STRATEGIC_EQUIVALENCE": 1
+          }
+        },
+        "archimedes/material_shortage": {
+          "cases": 18,
+          "tied": 6,
+          "classes": {
+            "GENUINE_STRATEGIC_EQUIVALENCE": 6
+          }
+        },
+        "archimedes/load_balancing": {
+          "cases": 18,
+          "tied": 4,
+          "classes": {
+            "GENUINE_STRATEGIC_EQUIVALENCE": 4
+          }
+        },
+        "archimedes/damaged_infrastructure": {
+          "cases": 18,
+          "tied": 18,
+          "classes": {
+            "INSUFFICIENT_REWARD_RESOLUTION": 6,
+            "HORIZON_ALIASING": 12
+          }
+        },
+        "archimedes/construction_sequencing": {
+          "cases": 18,
+          "tied": 4,
+          "classes": {
+            "GENUINE_STRATEGIC_EQUIVALENCE": 3,
+            "HORIZON_ALIASING": 1
+          }
+        },
+        "archimedes/redundant_structural_paths": {
+          "cases": 18,
+          "tied": 0,
+          "classes": {}
+        },
+        "prime/mixed_expert_problem": {
+          "cases": 18,
+          "tied": 3,
+          "classes": {
+            "GENUINE_STRATEGIC_EQUIVALENCE": 3
+          }
+        },
+        "prime/resource_constrained_planning": {
+          "cases": 18,
+          "tied": 5,
+          "classes": {
+            "GENUINE_STRATEGIC_EQUIVALENCE": 3,
+            "HORIZON_ALIASING": 2
+          }
+        },
+        "prime/multi_objective_intervention": {
+          "cases": 18,
+          "tied": 6,
+          "classes": {
+            "GENUINE_STRATEGIC_EQUIVALENCE": 5,
+            "HORIZON_ALIASING": 1
+          }
+        },
+        "prime/adversarial_choice": {
+          "cases": 18,
+          "tied": 9,
+          "classes": {
+            "GENUINE_STRATEGIC_EQUIVALENCE": 9
+          }
+        },
+        "prime/long_horizon_tradeoff": {
+          "cases": 18,
+          "tied": 1,
+          "classes": {
+            "GENUINE_STRATEGIC_EQUIVALENCE": 1
+          }
+        }
+      },
+      "byLevel": {
+        "0": {
+          "cases": 84,
+          "tied": 32,
+          "classes": {
+            "HORIZON_ALIASING": 24,
+            "INSUFFICIENT_REWARD_RESOLUTION": 3,
+            "GENUINE_STRATEGIC_EQUIVALENCE": 5
+          }
+        },
+        "1": {
+          "cases": 84,
+          "tied": 31,
+          "classes": {
+            "INSUFFICIENT_REWARD_RESOLUTION": 6,
+            "HORIZON_ALIASING": 23,
+            "GENUINE_STRATEGIC_EQUIVALENCE": 2
+          }
+        },
+        "2": {
+          "cases": 84,
+          "tied": 43,
+          "classes": {
+            "GENUINE_STRATEGIC_EQUIVALENCE": 16,
+            "HORIZON_ALIASING": 22,
+            "INSUFFICIENT_REWARD_RESOLUTION": 5
+          }
+        },
+        "3": {
+          "cases": 84,
+          "tied": 45,
+          "classes": {
+            "GENUINE_STRATEGIC_EQUIVALENCE": 13,
+            "HORIZON_ALIASING": 26,
+            "INSUFFICIENT_REWARD_RESOLUTION": 6
+          }
+        },
+        "4": {
+          "cases": 84,
+          "tied": 45,
+          "classes": {
+            "GENUINE_STRATEGIC_EQUIVALENCE": 17,
+            "HORIZON_ALIASING": 21,
+            "INSUFFICIENT_REWARD_RESOLUTION": 7
+          }
+        },
+        "5": {
+          "cases": 84,
+          "tied": 45,
+          "classes": {
+            "GENUINE_STRATEGIC_EQUIVALENCE": 16,
+            "HORIZON_ALIASING": 25,
+            "INSUFFICIENT_REWARD_RESOLUTION": 4
+          }
+        }
+      },
+      "byActionType": {
+        "MOVE": {
+          "tiedGroupsContainingIt": 216,
+          "classes": {
+            "GENUINE_STRATEGIC_EQUIVALENCE": 66,
+            "HORIZON_ALIASING": 120,
+            "INSUFFICIENT_REWARD_RESOLUTION": 30
+          }
+        },
+        "RETREAT": {
+          "tiedGroupsContainingIt": 149,
+          "classes": {
+            "GENUINE_STRATEGIC_EQUIVALENCE": 66,
+            "HORIZON_ALIASING": 64,
+            "INSUFFICIENT_REWARD_RESOLUTION": 19
+          }
+        },
+        "PROTECT": {
+          "tiedGroupsContainingIt": 172,
+          "classes": {
+            "HORIZON_ALIASING": 141,
+            "INSUFFICIENT_REWARD_RESOLUTION": 31
+          }
+        },
+        "RESTORE": {
+          "tiedGroupsContainingIt": 1,
+          "classes": {
+            "HORIZON_ALIASING": 1
+          }
+        },
+        "WAIT": {
+          "tiedGroupsContainingIt": 144,
+          "classes": {
+            "HORIZON_ALIASING": 120,
+            "INSUFFICIENT_REWARD_RESOLUTION": 24
+          }
+        },
+        "REPAIR": {
+          "tiedGroupsContainingIt": 6,
+          "classes": {
+            "HORIZON_ALIASING": 3,
+            "GENUINE_STRATEGIC_EQUIVALENCE": 3
+          }
+        },
+        "BUILD": {
+          "tiedGroupsContainingIt": 1,
+          "classes": {
+            "HORIZON_ALIASING": 1
+          }
+        }
+      },
+      "samples": {
+        "GENUINE_STRATEGIC_EQUIVALENCE": {
+          "family": "nexus/dependency_chain",
+          "level": 2,
+          "class": "GENUINE_STRATEGIC_EQUIVALENCE",
+          "rewardDefect": false,
+          "why": "Different action types reach a byte-identical successor state. The actions are the same move by another name.",
+          "evidence": {
+            "groupSize": 2,
+            "distinctTotalVectors": 1,
+            "distinctImmediateVectors": 1,
+            "distinctResultingStates": 1,
+            "distinctHorizonStates": 1,
+            "distinctActionTypes": 2,
+            "actionTypes": [
+              "MOVE",
+              "RETREAT"
+            ]
+          }
+        },
+        "HORIZON_ALIASING": {
+          "family": "nexus/dead_substitute",
+          "level": 3,
+          "class": "HORIZON_ALIASING",
+          "rewardDefect": false,
+          "why": "The branches differ on the immediate step and then genuinely converge: they reach a byte-identical world by the end of the horizon. A property of the horizon length, not of the reward.",
+          "evidence": {
+            "groupSize": 2,
+            "distinctTotalVectors": 1,
+            "distinctImmediateVectors": 2,
+            "distinctResultingStates": 2,
+            "distinctHorizonStates": 1,
+            "distinctActionTypes": 2,
+            "actionTypes": [
+              "PROTECT",
+              "RESTORE"
+            ]
+          }
+        },
+        "INSUFFICIENT_REWARD_RESOLUTION": {
+          "family": "nexus/distributed_value",
+          "level": 1,
+          "class": "INSUFFICIENT_REWARD_RESOLUTION",
+          "rewardDefect": true,
+          "why": "The branches reach materially different worlds and are STILL different at the end of the horizon, yet every accumulated reward component is equal. FORGE_REWARD_V1 is a pure flow reward: it sums what happened along the way and carries no term for the value of the world it left behind, so two paths with the same flow score the same however differently they end.",
+          "evidence": {
+            "groupSize": 2,
+            "distinctTotalVectors": 1,
+            "distinctImmediateVectors": 1,
+            "distinctResultingStates": 2,
+            "distinctHorizonStates": 2,
+            "distinctActionTypes": 1,
+            "actionTypes": [
+              "PROTECT"
+            ]
+          }
+        }
+      },
+      "rewardDefectCases": 31,
+      "rewardDefectRate": 0.1286,
+      "genuineEquivalenceCases": 69,
+      "horizonAliasingCases": 141,
+      "complete": true,
+      "note": "Only ACCIDENTAL_REWARD_COLLAPSE and INSUFFICIENT_REWARD_RESOLUTION are reward defects. The rest are properties of the world and must survive any reward change."
+    }
+  },
+  "curriculum": {
+    "axisSizes": {
+      "shapes": 15,
+      "roleCompositions": 6,
+      "objectiveCompositions": 8,
+      "horizonBands": 5,
+      "levels": 6,
+      "combinationsPerSeed": 21600
+    },
+    "topologyShapes": 15,
+    "roleCompositions": 6,
+    "objectiveCompositions": 8,
+    "horizonBands": 5,
+    "continuationPolicies": 3,
+    "supervisionClasses": [
+      "UNIQUE_OPTIMUM",
+      "NEAR_TIE",
+      "EXACT_EQUIVALENCE",
+      "PARETO_TRADEOFF",
+      "INSUFFICIENTLY_RESOLVED"
+    ],
+    "tieClasses": [
+      "ACCIDENTAL_REWARD_COLLAPSE",
+      "INSUFFICIENT_REWARD_RESOLUTION",
+      "GENUINE_STRATEGIC_EQUIVALENCE",
+      "SYMMETRIC_ACTIONS",
+      "HORIZON_ALIASING",
+      "OTHER"
+    ],
+    "thresholds": {
+      "NEAR_TIE_MARGIN": 3,
+      "PREFERENCE_MINIMUM_GAP": 5
+    }
+  },
+  "generation": {
+    "generated": 72000,
+    "admitted": 70804,
+    "rejected": 1196,
+    "rejectionsByCheck": {
+      "TREE_BRANCHES_ACYCLIC": 496,
+      "BRIDGE_CUT_EXISTS": 94,
+      "ISLANDS": 176,
+      "CONTESTED_BOTTLENECK": 33,
+      "LAYERS": 397
+    },
+    "admissionRate": 0.9834,
+    "corpusSha256": "0c66d9b3b5e26212938c0eadaab0aa819bb3f5e38425d379a342da6049c74edf",
+    "corpusBytes": 298102804,
+    "workers": 4,
+    "seeds": [
+      1,
+      2,
+      3
+    ],
+    "oodSeeds": [
+      11
+    ]
+  },
+  "corpus": {
+    "records": 70804,
+    "counterfactualActions": 477119,
+    "diversity": {
+      "rawRecords": 70804,
+      "uniqueWorldHashes": 70804,
+      "uniqueTopologyHashes": 65307,
+      "uniqueRewardRankings": 60493,
+      "uniqueOptimalActionPatterns": 1746,
+      "uniqueObjectiveCombinations": 8,
+      "nearDuplicateRate": 0,
+      "effectiveDatasetSize": 60493,
+      "method": "min(unique world hashes, unique topology hashes, unique reward rankings). A corpus is only as informative as its least-varied dimension."
+    },
+    "bySupervision": {
+      "UNIQUE_OPTIMUM": 42325,
+      "EXACT_EQUIVALENCE": 24324,
+      "NEAR_TIE": 1006,
+      "INSUFFICIENTLY_RESOLVED": 2675,
+      "PARETO_TRADEOFF": 474
+    },
+    "byTieClass": {
+      "GENUINE_STRATEGIC_EQUIVALENCE": 9898,
+      "HORIZON_ALIASING": 14424,
+      "INSUFFICIENT_REWARD_RESOLUTION": 2675,
+      "ACCIDENTAL_REWARD_COLLAPSE": 474,
+      "SYMMETRIC_ACTIONS": 2
+    },
+    "byHorizonClass": {
+      "HORIZON_DEPENDENT": 51717,
+      "HORIZON_ALIGNED": 19087
+    },
+    "byShape": {
+      "tree": 4304,
+      "star": 4800,
+      "redundant_network": 4800,
+      "parallel_dependency": 4800,
+      "multi_cycle": 4800,
+      "multi_settlement": 4800,
+      "nested_dependency": 4800,
+      "chain": 4800,
+      "contested_bottleneck": 4767,
+      "mesh": 4800,
+      "disconnected_islands": 4624,
+      "bridge": 4706,
+      "hub_and_spoke": 4800,
+      "ring": 4800,
+      "layered_infrastructure": 4403
+    },
+    "byLevel": {
+      "0": 10403,
+      "1": 10562,
+      "2": 10642,
+      "3": 10680,
+      "4": 10674,
+      "5": 10699,
+      "6": 3570,
+      "7": 3574
+    },
+    "bySplit": {
+      "TRAIN": 50990,
+      "HOLDOUT": 6268,
+      "VALIDATION": 6402,
+      "OOD": 7144
+    },
+    "byBand": {
+      "H3": 14155,
+      "H4": 14170,
+      "H1": 14172,
+      "H0": 14162,
+      "H2": 14145
+    },
+    "tiedCases": 27473,
+    "tieRate": 0.388,
+    "rewardDefectTies": 3149,
+    "genuineTies": 24324,
+    "paretoTradeoffs": 474,
+    "scalarizationCollapse": 474,
+    "uniqueOptimumRate": 0.5978,
+    "horizonDependentCases": 51717,
+    "horizonAlignedCases": 19087,
+    "leakage": {
+      "worldOverlapByPair": {
+        "TRAIN|HOLDOUT": 0,
+        "TRAIN|VALIDATION": 0,
+        "TRAIN|OOD": 0,
+        "HOLDOUT|VALIDATION": 0,
+        "HOLDOUT|OOD": 0,
+        "VALIDATION|OOD": 0
+      },
+      "topologyOverlapByPair": {
+        "TRAIN|HOLDOUT": 0,
+        "TRAIN|VALIDATION": 0,
+        "TRAIN|OOD": 0,
+        "HOLDOUT|VALIDATION": 0,
+        "HOLDOUT|OOD": 0,
+        "VALIDATION|OOD": 0
+      },
+      "exactWorldOverlap": 0,
+      "topologyLeakage": 0,
+      "topologyLeakageControlPass": true
+    }
+  },
+  "difficulty": {
+    "levels": [
+      {
+        "level": 0,
+        "cases": 10403,
+        "meanLegalActionsTimes100": 674,
+        "meanEntitiesTimes100": 1304,
+        "meanRelationsTimes100": 846,
+        "horizonDependenceRate": 0.7251,
+        "meanUtilitySpreadTimes100": 8575,
+        "meanGreedyRegretTimes100": 3680,
+        "uniqueOptimumRate": 0.6229
+      },
+      {
+        "level": 1,
+        "cases": 10562,
+        "meanLegalActionsTimes100": 674,
+        "meanEntitiesTimes100": 1633,
+        "meanRelationsTimes100": 1211,
+        "horizonDependenceRate": 0.7306,
+        "meanUtilitySpreadTimes100": 9231,
+        "meanGreedyRegretTimes100": 4128,
+        "uniqueOptimumRate": 0.6183
+      },
+      {
+        "level": 2,
+        "cases": 10642,
+        "meanLegalActionsTimes100": 678,
+        "meanEntitiesTimes100": 2033,
+        "meanRelationsTimes100": 1651,
+        "horizonDependenceRate": 0.7228,
+        "meanUtilitySpreadTimes100": 9898,
+        "meanGreedyRegretTimes100": 4411,
+        "uniqueOptimumRate": 0.599
+      },
+      {
+        "level": 3,
+        "cases": 10680,
+        "meanLegalActionsTimes100": 674,
+        "meanEntitiesTimes100": 2433,
+        "meanRelationsTimes100": 2078,
+        "horizonDependenceRate": 0.724,
+        "meanUtilitySpreadTimes100": 10705,
+        "meanGreedyRegretTimes100": 4993,
+        "uniqueOptimumRate": 0.5899
+      },
+      {
+        "level": 4,
+        "cases": 10674,
+        "meanLegalActionsTimes100": 675,
+        "meanEntitiesTimes100": 2833,
+        "meanRelationsTimes100": 2522,
+        "horizonDependenceRate": 0.7268,
+        "meanUtilitySpreadTimes100": 11710,
+        "meanGreedyRegretTimes100": 5545,
+        "uniqueOptimumRate": 0.5822
+      },
+      {
+        "level": 5,
+        "cases": 10699,
+        "meanLegalActionsTimes100": 671,
+        "meanEntitiesTimes100": 3234,
+        "meanRelationsTimes100": 2964,
+        "horizonDependenceRate": 0.7375,
+        "meanUtilitySpreadTimes100": 12561,
+        "meanGreedyRegretTimes100": 6181,
+        "uniqueOptimumRate": 0.5815
+      },
+      {
+        "level": 6,
+        "cases": 3570,
+        "meanLegalActionsTimes100": 672,
+        "meanEntitiesTimes100": 3634,
+        "meanRelationsTimes100": 3399,
+        "horizonDependenceRate": 0.7434,
+        "meanUtilitySpreadTimes100": 13561,
+        "meanGreedyRegretTimes100": 6842,
+        "uniqueOptimumRate": 0.5776
+      },
+      {
+        "level": 7,
+        "cases": 3574,
+        "meanLegalActionsTimes100": 670,
+        "meanEntitiesTimes100": 4033,
+        "meanRelationsTimes100": 3834,
+        "horizonDependenceRate": 0.7641,
+        "meanUtilitySpreadTimes100": 14561,
+        "meanGreedyRegretTimes100": 7842,
+        "uniqueOptimumRate": 0.5996
+      }
+    ],
+    "structuralComplexityMonotone": true,
+    "l5HarderThanL2": true,
+    "l2GreedyRegretTimes100": 4411,
+    "l5GreedyRegretTimes100": 6181,
+    "calibrationPass": true,
+    "note": "Difficulty is measured by what a myopic chooser loses, not by the level label. A level that is not measurably harder than a lower one is a generator defect."
+  },
+  "boundary": {
+    "shapeCount": 15,
+    "shapes": [
+      {
+        "shape": "chain",
+        "minNodes": 3,
+        "probes": [
+          {
+            "requestedNodes": 1,
+            "realizedNodes": 3,
+            "edges": 2,
+            "clampedUp": true,
+            "hasEdges": true,
+            "seed": 1
+          },
+          {
+            "requestedNodes": 1,
+            "realizedNodes": 3,
+            "edges": 2,
+            "clampedUp": true,
+            "hasEdges": true,
+            "seed": 7
+          },
+          {
+            "requestedNodes": 3,
+            "realizedNodes": 3,
+            "edges": 2,
+            "clampedUp": true,
+            "hasEdges": true,
+            "seed": 1
+          },
+          {
+            "requestedNodes": 3,
+            "realizedNodes": 3,
+            "edges": 2,
+            "clampedUp": true,
+            "hasEdges": true,
+            "seed": 7
+          },
+          {
+            "requestedNodes": 4,
+            "realizedNodes": 4,
+            "edges": 3,
+            "clampedUp": true,
+            "hasEdges": true,
+            "seed": 1
+          },
+          {
+            "requestedNodes": 4,
+            "realizedNodes": 4,
+            "edges": 3,
+            "clampedUp": true,
+            "hasEdges": true,
+            "seed": 7
+          },
+          {
+            "requestedNodes": 12,
+            "realizedNodes": 12,
+            "edges": 11,
+            "clampedUp": true,
+            "hasEdges": true,
+            "seed": 1
+          },
+          {
+            "requestedNodes": 12,
+            "realizedNodes": 12,
+            "edges": 11,
+            "clampedUp": true,
+            "hasEdges": true,
+            "seed": 7
+          },
+          {
+            "requestedNodes": 32,
+            "realizedNodes": 32,
+            "edges": 31,
+            "clampedUp": true,
+            "hasEdges": true,
+            "seed": 1
+          },
+          {
+            "requestedNodes": 32,
+            "realizedNodes": 32,
+            "edges": 31,
+            "clampedUp": true,
+            "hasEdges": true,
+            "seed": 7
+          }
+        ],
+        "alwaysClamped": true,
+        "alwaysConnected": true,
+        "edgeCountMonotone": true
+      },
+      {
+        "shape": "tree",
+        "minNodes": 4,
+        "probes": [
+          {
+            "requestedNodes": 1,
+            "realizedNodes": 4,
+            "edges": 3,
+            "clampedUp": true,
+            "hasEdges": true,
+            "seed": 1
+          },
+          {
+            "requestedNodes": 1,
+            "realizedNodes": 4,
+            "edges": 3,
+            "clampedUp": true,
+            "hasEdges": true,
+            "seed": 7
+          },
+          {
+            "requestedNodes": 4,
+            "realizedNodes": 4,
+            "edges": 3,
+            "clampedUp": true,
+            "hasEdges": true,
+            "seed": 1
+          },
+          {
+            "requestedNodes": 4,
+            "realizedNodes": 4,
+            "edges": 3,
+            "clampedUp": true,
+            "hasEdges": true,
+            "seed": 7
+          },
+          {
+            "requestedNodes": 5,
+            "realizedNodes": 5,
+            "edges": 4,
+            "clampedUp": true,
+            "hasEdges": true,
+            "seed": 1
+          },
+          {
+            "requestedNodes": 5,
+            "realizedNodes": 5,
+            "edges": 4,
+            "clampedUp": true,
+            "hasEdges": true,
+            "seed": 7
+          },
+          {
+            "requestedNodes": 12,
+            "realizedNodes": 12,
+            "edges": 11,
+            "clampedUp": true,
+            "hasEdges": true,
+            "seed": 1
+          },
+          {
+            "requestedNodes": 12,
+            "realizedNodes": 12,
+            "edges": 11,
+            "clampedUp": true,
+            "hasEdges": true,
+            "seed": 7
+          },
+          {
+            "requestedNodes": 32,
+            "realizedNodes": 32,
+            "edges": 31,
+            "clampedUp": true,
+            "hasEdges": true,
+            "seed": 1
+          },
+          {
+            "requestedNodes": 32,
+            "realizedNodes": 32,
+            "edges": 31,
+            "clampedUp": true,
+            "hasEdges": true,
+            "seed": 7
+          }
+        ],
+        "alwaysClamped": true,
+        "alwaysConnected": true,
+        "edgeCountMonotone": true
+      },
+      {
+        "shape": "star",
+        "minNodes": 4,
+        "probes": [
+          {
+            "requestedNodes": 1,
+            "realizedNodes": 4,
+            "edges": 3,
+            "clampedUp": true,
+            "hasEdges": true,
+            "seed": 1
+          },
+          {
+            "requestedNodes": 1,
+            "realizedNodes": 4,
+            "edges": 3,
+            "clampedUp": true,
+            "hasEdges": true,
+            "seed": 7
+          },
+          {
+            "requestedNodes": 4,
+            "realizedNodes": 4,
+            "edges": 3,
+            "clampedUp": true,
+            "hasEdges": true,
+            "seed": 1
+          },
+          {
+            "requestedNodes": 4,
+            "realizedNodes": 4,
+            "edges": 3,
+            "clampedUp": true,
+            "hasEdges": true,
+            "seed": 7
+          },
+          {
+            "requestedNodes": 5,
+            "realizedNodes": 5,
+            "edges": 4,
+            "clampedUp": true,
+            "hasEdges": true,
+            "seed": 1
+          },
+          {
+            "requestedNodes": 5,
+            "realizedNodes": 5,
+            "edges": 4,
+            "clampedUp": true,
+            "hasEdges": true,
+            "seed": 7
+          },
+          {
+            "requestedNodes": 12,
+            "realizedNodes": 12,
+            "edges": 11,
+            "clampedUp": true,
+            "hasEdges": true,
+            "seed": 1
+          },
+          {
+            "requestedNodes": 12,
+            "realizedNodes": 12,
+            "edges": 11,
+            "clampedUp": true,
+            "hasEdges": true,
+            "seed": 7
+          },
+          {
+            "requestedNodes": 32,
+            "realizedNodes": 32,
+            "edges": 31,
+            "clampedUp": true,
+            "hasEdges": true,
+            "seed": 1
+          },
+          {
+            "requestedNodes": 32,
+            "realizedNodes": 32,
+            "edges": 31,
+            "clampedUp": true,
+            "hasEdges": true,
+            "seed": 7
+          }
+        ],
+        "alwaysClamped": true,
+        "alwaysConnected": true,
+        "edgeCountMonotone": true
+      },
+      {
+        "shape": "mesh",
+        "minNodes": 4,
+        "probes": [
+          {
+            "requestedNodes": 1,
+            "realizedNodes": 4,
+            "edges": 8,
+            "clampedUp": true,
+            "hasEdges": true,
+            "seed": 1
+          },
+          {
+            "requestedNodes": 1,
+            "realizedNodes": 4,
+            "edges": 8,
+            "clampedUp": true,
+            "hasEdges": true,
+            "seed": 7
+          },
+          {
+            "requestedNodes": 4,
+            "realizedNodes": 4,
+            "edges": 8,
+            "clampedUp": true,
+            "hasEdges": true,
+            "seed": 1
+          },
+          {
+            "requestedNodes": 4,
+            "realizedNodes": 4,
+            "edges": 8,
+            "clampedUp": true,
+            "hasEdges": true,
+            "seed": 7
+          },
+          {
+            "requestedNodes": 5,
+            "realizedNodes": 5,
+            "edges": 10,
+            "clampedUp": true,
+            "hasEdges": true,
+            "seed": 1
+          },
+          {
+            "requestedNodes": 5,
+            "realizedNodes": 5,
+            "edges": 10,
+            "clampedUp": true,
+            "hasEdges": true,
+            "seed": 7
+          },
+          {
+            "requestedNodes": 12,
+            "realizedNodes": 12,
+            "edges": 24,
+            "clampedUp": true,
+            "hasEdges": true,
+            "seed": 1
+          },
+          {
+            "requestedNodes": 12,
+            "realizedNodes": 12,
+            "edges": 24,
+            "clampedUp": true,
+            "hasEdges": true,
+            "seed": 7
+          },
+          {
+            "requestedNodes": 32,
+            "realizedNodes": 32,
+            "edges": 64,
+            "clampedUp": true,
+            "hasEdges": true,
+            "seed": 1
+          },
+          {
+            "requestedNodes": 32,
+            "realizedNodes": 32,
+            "edges": 64,
+            "clampedUp": true,
+            "hasEdges": true,
+            "seed": 7
+          }
+        ],
+        "alwaysClamped": true,
+        "alwaysConnected": true,
+        "edgeCountMonotone": true
+      },
+      {
+        "shape": "ring",
+        "minNodes": 3,
+        "probes": [
+          {
+            "requestedNodes": 1,
+            "realizedNodes": 3,
+            "edges": 3,
+            "clampedUp": true,
+            "hasEdges": true,
+            "seed": 1
+          },
+          {
+            "requestedNodes": 1,
+            "realizedNodes": 3,
+            "edges": 3,
+            "clampedUp": true,
+            "hasEdges": true,
+            "seed": 7
+          },
+          {
+            "requestedNodes": 3,
+            "realizedNodes": 3,
+            "edges": 3,
+            "clampedUp": true,
+            "hasEdges": true,
+            "seed": 1
+          },
+          {
+            "requestedNodes": 3,
+            "realizedNodes": 3,
+            "edges": 3,
+            "clampedUp": true,
+            "hasEdges": true,
+            "seed": 7
+          },
+          {
+            "requestedNodes": 4,
+            "realizedNodes": 4,
+            "edges": 4,
+            "clampedUp": true,
+            "hasEdges": true,
+            "seed": 1
+          },
+          {
+            "requestedNodes": 4,
+            "realizedNodes": 4,
+            "edges": 4,
+            "clampedUp": true,
+            "hasEdges": true,
+            "seed": 7
+          },
+          {
+            "requestedNodes": 12,
+            "realizedNodes": 12,
+            "edges": 12,
+            "clampedUp": true,
+            "hasEdges": true,
+            "seed": 1
+          },
+          {
+            "requestedNodes": 12,
+            "realizedNodes": 12,
+            "edges": 12,
+            "clampedUp": true,
+            "hasEdges": true,
+            "seed": 7
+          },
+          {
+            "requestedNodes": 32,
+            "realizedNodes": 32,
+            "edges": 32,
+            "clampedUp": true,
+            "hasEdges": true,
+            "seed": 1
+          },
+          {
+            "requestedNodes": 32,
+            "realizedNodes": 32,
+            "edges": 32,
+            "clampedUp": true,
+            "hasEdges": true,
+            "seed": 7
+          }
+        ],
+        "alwaysClamped": true,
+        "alwaysConnected": true,
+        "edgeCountMonotone": true
+      },
+      {
+        "shape": "multi_cycle",
+        "minNodes": 6,
+        "probes": [
+          {
+            "requestedNodes": 1,
+            "realizedNodes": 6,
+            "edges": 7,
+            "clampedUp": true,
+            "hasEdges": true,
+            "seed": 1
+          },
+          {
+            "requestedNodes": 1,
+            "realizedNodes": 6,
+            "edges": 7,
+            "clampedUp": true,
+            "hasEdges": true,
+            "seed": 7
+          },
+          {
+            "requestedNodes": 6,
+            "realizedNodes": 6,
+            "edges": 7,
+            "clampedUp": true,
+            "hasEdges": true,
+            "seed": 1
+          },
+          {
+            "requestedNodes": 6,
+            "realizedNodes": 6,
+            "edges": 7,
+            "clampedUp": true,
+            "hasEdges": true,
+            "seed": 7
+          },
+          {
+            "requestedNodes": 7,
+            "realizedNodes": 7,
+            "edges": 8,
+            "clampedUp": true,
+            "hasEdges": true,
+            "seed": 1
+          },
+          {
+            "requestedNodes": 7,
+            "realizedNodes": 7,
+            "edges": 8,
+            "clampedUp": true,
+            "hasEdges": true,
+            "seed": 7
+          },
+          {
+            "requestedNodes": 12,
+            "realizedNodes": 12,
+            "edges": 13,
+            "clampedUp": true,
+            "hasEdges": true,
+            "seed": 1
+          },
+          {
+            "requestedNodes": 12,
+            "realizedNodes": 12,
+            "edges": 13,
+            "clampedUp": true,
+            "hasEdges": true,
+            "seed": 7
+          },
+          {
+            "requestedNodes": 32,
+            "realizedNodes": 32,
+            "edges": 33,
+            "clampedUp": true,
+            "hasEdges": true,
+            "seed": 1
+          },
+          {
+            "requestedNodes": 32,
+            "realizedNodes": 32,
+            "edges": 33,
+            "clampedUp": true,
+            "hasEdges": true,
+            "seed": 7
+          }
+        ],
+        "alwaysClamped": true,
+        "alwaysConnected": true,
+        "edgeCountMonotone": true
+      },
+      {
+        "shape": "bridge",
+        "minNodes": 6,
+        "probes": [
+          {
+            "requestedNodes": 1,
+            "realizedNodes": 6,
+            "edges": 5,
+            "clampedUp": true,
+            "hasEdges": true,
+            "seed": 1
+          },
+          {
+            "requestedNodes": 1,
+            "realizedNodes": 6,
+            "edges": 5,
+            "clampedUp": true,
+            "hasEdges": true,
+            "seed": 7
+          },
+          {
+            "requestedNodes": 6,
+            "realizedNodes": 6,
+            "edges": 5,
+            "clampedUp": true,
+            "hasEdges": true,
+            "seed": 1
+          },
+          {
+            "requestedNodes": 6,
+            "realizedNodes": 6,
+            "edges": 5,
+            "clampedUp": true,
+            "hasEdges": true,
+            "seed": 7
+          },
+          {
+            "requestedNodes": 7,
+            "realizedNodes": 7,
+            "edges": 6,
+            "clampedUp": true,
+            "hasEdges": true,
+            "seed": 1
+          },
+          {
+            "requestedNodes": 7,
+            "realizedNodes": 7,
+            "edges": 6,
+            "clampedUp": true,
+            "hasEdges": true,
+            "seed": 7
+          },
+          {
+            "requestedNodes": 12,
+            "realizedNodes": 12,
+            "edges": 11,
+            "clampedUp": true,
+            "hasEdges": true,
+            "seed": 1
+          },
+          {
+            "requestedNodes": 12,
+            "realizedNodes": 12,
+            "edges": 11,
+            "clampedUp": true,
+            "hasEdges": true,
+            "seed": 7
+          },
+          {
+            "requestedNodes": 32,
+            "realizedNodes": 32,
+            "edges": 31,
+            "clampedUp": true,
+            "hasEdges": true,
+            "seed": 1
+          },
+          {
+            "requestedNodes": 32,
+            "realizedNodes": 32,
+            "edges": 31,
+            "clampedUp": true,
+            "hasEdges": true,
+            "seed": 7
+          }
+        ],
+        "alwaysClamped": true,
+        "alwaysConnected": true,
+        "edgeCountMonotone": true
+      },
+      {
+        "shape": "hub_and_spoke",
+        "minNodes": 6,
+        "probes": [
+          {
+            "requestedNodes": 1,
+            "realizedNodes": 6,
+            "edges": 5,
+            "clampedUp": true,
+            "hasEdges": true,
+            "seed": 1
+          },
+          {
+            "requestedNodes": 1,
+            "realizedNodes": 6,
+            "edges": 5,
+            "clampedUp": true,
+            "hasEdges": true,
+            "seed": 7
+          },
+          {
+            "requestedNodes": 6,
+            "realizedNodes": 6,
+            "edges": 5,
+            "clampedUp": true,
+            "hasEdges": true,
+            "seed": 1
+          },
+          {
+            "requestedNodes": 6,
+            "realizedNodes": 6,
+            "edges": 5,
+            "clampedUp": true,
+            "hasEdges": true,
+            "seed": 7
+          },
+          {
+            "requestedNodes": 7,
+            "realizedNodes": 7,
+            "edges": 6,
+            "clampedUp": true,
+            "hasEdges": true,
+            "seed": 1
+          },
+          {
+            "requestedNodes": 7,
+            "realizedNodes": 7,
+            "edges": 6,
+            "clampedUp": true,
+            "hasEdges": true,
+            "seed": 7
+          },
+          {
+            "requestedNodes": 12,
+            "realizedNodes": 12,
+            "edges": 11,
+            "clampedUp": true,
+            "hasEdges": true,
+            "seed": 1
+          },
+          {
+            "requestedNodes": 12,
+            "realizedNodes": 12,
+            "edges": 11,
+            "clampedUp": true,
+            "hasEdges": true,
+            "seed": 7
+          },
+          {
+            "requestedNodes": 32,
+            "realizedNodes": 32,
+            "edges": 31,
+            "clampedUp": true,
+            "hasEdges": true,
+            "seed": 1
+          },
+          {
+            "requestedNodes": 32,
+            "realizedNodes": 32,
+            "edges": 31,
+            "clampedUp": true,
+            "hasEdges": true,
+            "seed": 7
+          }
+        ],
+        "alwaysClamped": true,
+        "alwaysConnected": true,
+        "edgeCountMonotone": true
+      },
+      {
+        "shape": "parallel_dependency",
+        "minNodes": 5,
+        "probes": [
+          {
+            "requestedNodes": 1,
+            "realizedNodes": 5,
+            "edges": 4,
+            "clampedUp": true,
+            "hasEdges": true,
+            "seed": 1
+          },
+          {
+            "requestedNodes": 1,
+            "realizedNodes": 5,
+            "edges": 4,
+            "clampedUp": true,
+            "hasEdges": true,
+            "seed": 7
+          },
+          {
+            "requestedNodes": 5,
+            "realizedNodes": 5,
+            "edges": 4,
+            "clampedUp": true,
+            "hasEdges": true,
+            "seed": 1
+          },
+          {
+            "requestedNodes": 5,
+            "realizedNodes": 5,
+            "edges": 4,
+            "clampedUp": true,
+            "hasEdges": true,
+            "seed": 7
+          },
+          {
+            "requestedNodes": 6,
+            "realizedNodes": 6,
+            "edges": 4,
+            "clampedUp": true,
+            "hasEdges": true,
+            "seed": 1
+          },
+          {
+            "requestedNodes": 6,
+            "realizedNodes": 6,
+            "edges": 4,
+            "clampedUp": true,
+            "hasEdges": true,
+            "seed": 7
+          },
+          {
+            "requestedNodes": 12,
+            "realizedNodes": 12,
+            "edges": 8,
+            "clampedUp": true,
+            "hasEdges": true,
+            "seed": 1
+          },
+          {
+            "requestedNodes": 12,
+            "realizedNodes": 12,
+            "edges": 8,
+            "clampedUp": true,
+            "hasEdges": true,
+            "seed": 7
+          },
+          {
+            "requestedNodes": 32,
+            "realizedNodes": 32,
+            "edges": 28,
+            "clampedUp": true,
+            "hasEdges": true,
+            "seed": 1
+          },
+          {
+            "requestedNodes": 32,
+            "realizedNodes": 32,
+            "edges": 28,
+            "clampedUp": true,
+            "hasEdges": true,
+            "seed": 7
+          }
+        ],
+        "alwaysClamped": true,
+        "alwaysConnected": true,
+        "edgeCountMonotone": true
+      },
+      {
+        "shape": "redundant_network",
+        "minNodes": 5,
+        "probes": [
+          {
+            "requestedNodes": 1,
+            "realizedNodes": 5,
+            "edges": 8,
+            "clampedUp": true,
+            "hasEdges": true,
+            "seed": 1
+          },
+          {
+            "requestedNodes": 1,
+            "realizedNodes": 5,
+            "edges": 8,
+            "clampedUp": true,
+            "hasEdges": true,
+            "seed": 7
+          },
+          {
+            "requestedNodes": 5,
+            "realizedNodes": 5,
+            "edges": 8,
+            "clampedUp": true,
+            "hasEdges": true,
+            "seed": 1
+          },
+          {
+            "requestedNodes": 5,
+            "realizedNodes": 5,
+            "edges": 8,
+            "clampedUp": true,
+            "hasEdges": true,
+            "seed": 7
+          },
+          {
+            "requestedNodes": 6,
+            "realizedNodes": 6,
+            "edges": 10,
+            "clampedUp": true,
+            "hasEdges": true,
+            "seed": 1
+          },
+          {
+            "requestedNodes": 6,
+            "realizedNodes": 6,
+            "edges": 10,
+            "clampedUp": true,
+            "hasEdges": true,
+            "seed": 7
+          },
+          {
+            "requestedNodes": 12,
+            "realizedNodes": 12,
+            "edges": 22,
+            "clampedUp": true,
+            "hasEdges": true,
+            "seed": 1
+          },
+          {
+            "requestedNodes": 12,
+            "realizedNodes": 12,
+            "edges": 22,
+            "clampedUp": true,
+            "hasEdges": true,
+            "seed": 7
+          },
+          {
+            "requestedNodes": 32,
+            "realizedNodes": 32,
+            "edges": 62,
+            "clampedUp": true,
+            "hasEdges": true,
+            "seed": 1
+          },
+          {
+            "requestedNodes": 32,
+            "realizedNodes": 32,
+            "edges": 62,
+            "clampedUp": true,
+            "hasEdges": true,
+            "seed": 7
+          }
+        ],
+        "alwaysClamped": true,
+        "alwaysConnected": true,
+        "edgeCountMonotone": true
+      },
+      {
+        "shape": "nested_dependency",
+        "minNodes": 6,
+        "probes": [
+          {
+            "requestedNodes": 1,
+            "realizedNodes": 6,
+            "edges": 5,
+            "clampedUp": true,
+            "hasEdges": true,
+            "seed": 1
+          },
+          {
+            "requestedNodes": 1,
+            "realizedNodes": 6,
+            "edges": 5,
+            "clampedUp": true,
+            "hasEdges": true,
+            "seed": 7
+          },
+          {
+            "requestedNodes": 6,
+            "realizedNodes": 6,
+            "edges": 5,
+            "clampedUp": true,
+            "hasEdges": true,
+            "seed": 1
+          },
+          {
+            "requestedNodes": 6,
+            "realizedNodes": 6,
+            "edges": 5,
+            "clampedUp": true,
+            "hasEdges": true,
+            "seed": 7
+          },
+          {
+            "requestedNodes": 7,
+            "realizedNodes": 7,
+            "edges": 6,
+            "clampedUp": true,
+            "hasEdges": true,
+            "seed": 1
+          },
+          {
+            "requestedNodes": 7,
+            "realizedNodes": 7,
+            "edges": 6,
+            "clampedUp": true,
+            "hasEdges": true,
+            "seed": 7
+          },
+          {
+            "requestedNodes": 12,
+            "realizedNodes": 12,
+            "edges": 11,
+            "clampedUp": true,
+            "hasEdges": true,
+            "seed": 1
+          },
+          {
+            "requestedNodes": 12,
+            "realizedNodes": 12,
+            "edges": 11,
+            "clampedUp": true,
+            "hasEdges": true,
+            "seed": 7
+          },
+          {
+            "requestedNodes": 32,
+            "realizedNodes": 32,
+            "edges": 31,
+            "clampedUp": true,
+            "hasEdges": true,
+            "seed": 1
+          },
+          {
+            "requestedNodes": 32,
+            "realizedNodes": 32,
+            "edges": 31,
+            "clampedUp": true,
+            "hasEdges": true,
+            "seed": 7
+          }
+        ],
+        "alwaysClamped": true,
+        "alwaysConnected": true,
+        "edgeCountMonotone": true
+      },
+      {
+        "shape": "multi_settlement",
+        "minNodes": 8,
+        "probes": [
+          {
+            "requestedNodes": 1,
+            "realizedNodes": 8,
+            "edges": 7,
+            "clampedUp": true,
+            "hasEdges": true,
+            "seed": 1
+          },
+          {
+            "requestedNodes": 1,
+            "realizedNodes": 8,
+            "edges": 7,
+            "clampedUp": true,
+            "hasEdges": true,
+            "seed": 7
+          },
+          {
+            "requestedNodes": 8,
+            "realizedNodes": 8,
+            "edges": 7,
+            "clampedUp": true,
+            "hasEdges": true,
+            "seed": 1
+          },
+          {
+            "requestedNodes": 8,
+            "realizedNodes": 8,
+            "edges": 7,
+            "clampedUp": true,
+            "hasEdges": true,
+            "seed": 7
+          },
+          {
+            "requestedNodes": 9,
+            "realizedNodes": 9,
+            "edges": 7,
+            "clampedUp": true,
+            "hasEdges": true,
+            "seed": 1
+          },
+          {
+            "requestedNodes": 9,
+            "realizedNodes": 9,
+            "edges": 7,
+            "clampedUp": true,
+            "hasEdges": true,
+            "seed": 7
+          },
+          {
+            "requestedNodes": 12,
+            "realizedNodes": 12,
+            "edges": 11,
+            "clampedUp": true,
+            "hasEdges": true,
+            "seed": 1
+          },
+          {
+            "requestedNodes": 12,
+            "realizedNodes": 12,
+            "edges": 11,
+            "clampedUp": true,
+            "hasEdges": true,
+            "seed": 7
+          },
+          {
+            "requestedNodes": 32,
+            "realizedNodes": 32,
+            "edges": 31,
+            "clampedUp": true,
+            "hasEdges": true,
+            "seed": 1
+          },
+          {
+            "requestedNodes": 32,
+            "realizedNodes": 32,
+            "edges": 31,
+            "clampedUp": true,
+            "hasEdges": true,
+            "seed": 7
+          }
+        ],
+        "alwaysClamped": true,
+        "alwaysConnected": true,
+        "edgeCountMonotone": true
+      },
+      {
+        "shape": "disconnected_islands",
+        "minNodes": 6,
+        "probes": [
+          {
+            "requestedNodes": 1,
+            "realizedNodes": 6,
+            "edges": 4,
+            "clampedUp": true,
+            "hasEdges": true,
+            "seed": 1
+          },
+          {
+            "requestedNodes": 1,
+            "realizedNodes": 6,
+            "edges": 4,
+            "clampedUp": true,
+            "hasEdges": true,
+            "seed": 7
+          },
+          {
+            "requestedNodes": 6,
+            "realizedNodes": 6,
+            "edges": 4,
+            "clampedUp": true,
+            "hasEdges": true,
+            "seed": 1
+          },
+          {
+            "requestedNodes": 6,
+            "realizedNodes": 6,
+            "edges": 4,
+            "clampedUp": true,
+            "hasEdges": true,
+            "seed": 7
+          },
+          {
+            "requestedNodes": 7,
+            "realizedNodes": 7,
+            "edges": 4,
+            "clampedUp": true,
+            "hasEdges": true,
+            "seed": 1
+          },
+          {
+            "requestedNodes": 7,
+            "realizedNodes": 7,
+            "edges": 4,
+            "clampedUp": true,
+            "hasEdges": true,
+            "seed": 7
+          },
+          {
+            "requestedNodes": 12,
+            "realizedNodes": 12,
+            "edges": 8,
+            "clampedUp": true,
+            "hasEdges": true,
+            "seed": 1
+          },
+          {
+            "requestedNodes": 12,
+            "realizedNodes": 12,
+            "edges": 8,
+            "clampedUp": true,
+            "hasEdges": true,
+            "seed": 7
+          },
+          {
+            "requestedNodes": 32,
+            "realizedNodes": 32,
+            "edges": 20,
+            "clampedUp": true,
+            "hasEdges": true,
+            "seed": 1
+          },
+          {
+            "requestedNodes": 32,
+            "realizedNodes": 32,
+            "edges": 20,
+            "clampedUp": true,
+            "hasEdges": true,
+            "seed": 7
+          }
+        ],
+        "alwaysClamped": true,
+        "alwaysConnected": true,
+        "edgeCountMonotone": true
+      },
+      {
+        "shape": "contested_bottleneck",
+        "minNodes": 7,
+        "probes": [
+          {
+            "requestedNodes": 1,
+            "realizedNodes": 7,
+            "edges": 6,
+            "clampedUp": true,
+            "hasEdges": true,
+            "seed": 1
+          },
+          {
+            "requestedNodes": 1,
+            "realizedNodes": 7,
+            "edges": 6,
+            "clampedUp": true,
+            "hasEdges": true,
+            "seed": 7
+          },
+          {
+            "requestedNodes": 7,
+            "realizedNodes": 7,
+            "edges": 6,
+            "clampedUp": true,
+            "hasEdges": true,
+            "seed": 1
+          },
+          {
+            "requestedNodes": 7,
+            "realizedNodes": 7,
+            "edges": 6,
+            "clampedUp": true,
+            "hasEdges": true,
+            "seed": 7
+          },
+          {
+            "requestedNodes": 8,
+            "realizedNodes": 8,
+            "edges": 7,
+            "clampedUp": true,
+            "hasEdges": true,
+            "seed": 1
+          },
+          {
+            "requestedNodes": 8,
+            "realizedNodes": 8,
+            "edges": 7,
+            "clampedUp": true,
+            "hasEdges": true,
+            "seed": 7
+          },
+          {
+            "requestedNodes": 12,
+            "realizedNodes": 12,
+            "edges": 11,
+            "clampedUp": true,
+            "hasEdges": true,
+            "seed": 1
+          },
+          {
+            "requestedNodes": 12,
+            "realizedNodes": 12,
+            "edges": 11,
+            "clampedUp": true,
+            "hasEdges": true,
+            "seed": 7
+          },
+          {
+            "requestedNodes": 32,
+            "realizedNodes": 32,
+            "edges": 31,
+            "clampedUp": true,
+            "hasEdges": true,
+            "seed": 1
+          },
+          {
+            "requestedNodes": 32,
+            "realizedNodes": 32,
+            "edges": 31,
+            "clampedUp": true,
+            "hasEdges": true,
+            "seed": 7
+          }
+        ],
+        "alwaysClamped": true,
+        "alwaysConnected": true,
+        "edgeCountMonotone": true
+      },
+      {
+        "shape": "layered_infrastructure",
+        "minNodes": 8,
+        "probes": [
+          {
+            "requestedNodes": 1,
+            "realizedNodes": 8,
+            "edges": 4,
+            "clampedUp": true,
+            "hasEdges": true,
+            "seed": 1
+          },
+          {
+            "requestedNodes": 1,
+            "realizedNodes": 8,
+            "edges": 4,
+            "clampedUp": true,
+            "hasEdges": true,
+            "seed": 7
+          },
+          {
+            "requestedNodes": 8,
+            "realizedNodes": 8,
+            "edges": 4,
+            "clampedUp": true,
+            "hasEdges": true,
+            "seed": 1
+          },
+          {
+            "requestedNodes": 8,
+            "realizedNodes": 8,
+            "edges": 4,
+            "clampedUp": true,
+            "hasEdges": true,
+            "seed": 7
+          },
+          {
+            "requestedNodes": 9,
+            "realizedNodes": 9,
+            "edges": 6,
+            "clampedUp": true,
+            "hasEdges": true,
+            "seed": 1
+          },
+          {
+            "requestedNodes": 9,
+            "realizedNodes": 9,
+            "edges": 6,
+            "clampedUp": true,
+            "hasEdges": true,
+            "seed": 7
+          },
+          {
+            "requestedNodes": 12,
+            "realizedNodes": 12,
+            "edges": 9,
+            "clampedUp": true,
+            "hasEdges": true,
+            "seed": 1
+          },
+          {
+            "requestedNodes": 12,
+            "realizedNodes": 12,
+            "edges": 9,
+            "clampedUp": true,
+            "hasEdges": true,
+            "seed": 7
+          },
+          {
+            "requestedNodes": 32,
+            "realizedNodes": 32,
+            "edges": 24,
+            "clampedUp": true,
+            "hasEdges": true,
+            "seed": 1
+          },
+          {
+            "requestedNodes": 32,
+            "realizedNodes": 32,
+            "edges": 24,
+            "clampedUp": true,
+            "hasEdges": true,
+            "seed": 7
+          }
+        ],
+        "alwaysClamped": true,
+        "alwaysConnected": true,
+        "edgeCountMonotone": true
+      }
+    ],
+    "allClamped": true,
+    "allProduceEdges": true,
+    "boundaryAuditPass": true,
+    "note": "Every shape is probed below its minimum, at it, just above it, and at two larger sizes. A shape that degenerates at an extreme would produce a mislabelled corpus at that extreme, which is how three Stage 2L generator defects reached certification."
+  },
+  "router": {
+    "classes": [
+      "NEXUS_DOMINANT",
+      "ORACLE_DOMINANT",
+      "ARCHIMEDES_DOMINANT",
+      "MIXED",
+      "NO_SPECIALIST_NEEDED"
+    ],
+    "counts": {
+      "NEXUS_DOMINANT": 888,
+      "ORACLE_DOMINANT": 23390,
+      "ARCHIMEDES_DOMINANT": 7578,
+      "MIXED": 29998,
+      "NO_SPECIALIST_NEEDED": 8950
+    },
+    "coverage": {
+      "NEXUS_DOMINANT": 0.0125,
+      "ORACLE_DOMINANT": 0.3303,
+      "ARCHIMEDES_DOMINANT": 0.107,
+      "MIXED": 0.4237,
+      "NO_SPECIALIST_NEEDED": 0.1264
+    },
+    "allClassesPopulated": true,
+    "routerTrained": false,
+    "note": "Ground-truth expert usefulness is derived from world structure by ablation, never from an expert scoring its own relevance. No router was trained."
+  },
+  "policyAgreement": {
+    "policies": [
+      "GREEDY_CONTINUATION_V1",
+      "OBJECTIVE_PRIORITY_V1",
+      "RISK_CONSERVATIVE_V1"
+    ],
+    "probes": 140,
+    "invariant": 131,
+    "dependent": 9,
+    "invariantRate": 0.9357,
+    "note": "Sampled during generation. No policy is \"the true future\": each is a named assumption, and a case where all three agree is stronger supervision than one where they do not."
+  },
+  "baseline": {
+    "adapterId": "sentinel-forge-world-adapter",
+    "authorityTier": "R0",
+    "sampleRequested": 300,
+    "casesEvaluated": 300,
+    "worldRegenerationMismatches": 0,
+    "primeLegalRate": 1,
+    "decisiveCases": 299,
+    "primeOptimumRate": 0.2207,
+    "primeAverageRegretTimes100": 5822,
+    "horizonAlignedCases": 76,
+    "horizonAlignedOptimumRate": 0.8684,
+    "horizonDependentCases": 223,
+    "horizonDependentOptimumRate": 0,
+    "horizonDependentAverageRegretTimes100": 7702,
+    "horizonDependentWorstRegret": 280,
+    "oracleReachable": false,
+    "oracleUnreachableReason": "ORACLE_STRUCTURALLY_UNREACHABLE_AT_TICK_ZERO: decisions are recorded at tick 0, where world.history holds one frame against the Oracle three-frame sufficiency floor.",
+    "oracleFramesAvailableInWorldState": "CHANNEL_LENGTH_8_TO_18",
+    "oracleFramesVisibleAtDecision": 1,
+    "nexusCases": 300,
+    "nexusStructuralRate": 1,
+    "oracleCases": 0,
+    "oracleSufficientRate": 0,
+    "routerAlignment": 0.0268,
+    "bySplit": [
+      {
+        "split": "VALIDATION",
+        "cases": 102,
+        "decisive": 102,
+        "optimumRate": 0.2451,
+        "averageRegretTimes100": 4528
+      },
+      {
+        "split": "HOLDOUT",
+        "cases": 96,
+        "decisive": 96,
+        "optimumRate": 0.2188,
+        "averageRegretTimes100": 5488
+      },
+      {
+        "split": "OOD",
+        "cases": 102,
+        "decisive": 101,
+        "optimumRate": 0.198,
+        "averageRegretTimes100": 7448
+      }
+    ],
+    "dispatchProbe": {
+      "attempted": true,
+      "refused": true,
+      "errorName": "AuthorityError"
+    },
+    "expertsModified": false,
+    "trainingStarted": false
+  },
+  "datasetExport": {
+    "sft": {
+      "count": 47839,
+      "excluded": {
+        "NEAR_TIE": 787,
+        "INSUFFICIENTLY_RESOLVED": 2008,
+        "PARETO_TRADEOFF": 356
+      },
+      "contentHash": "84ca48796eb72601aceb6c4dd28b8d6280c180795ceabfdfe0684e36627e2157"
+    },
+    "preference": {
+      "count": 33288,
+      "skipped": {
+        "EXACT_EQUIVALENCE": 17315,
+        "PARETO_TRADEOFF": 356,
+        "GAP_BELOW_MINIMUM": 31
+      },
+      "contentHash": "37ae4a4894afea01ea46976ab4998cafc85c62cd4c806cb3ac639820e9ff484b"
+    },
+    "rl": {
+      "count": 135001,
+      "contentHash": "8b98e8482723b7ed8ec0c64040ffcd437854ff17cf4febfea528d70a86ed4fa6"
+    }
+  },
+  "soup": {
+    "soupCommit": "f07e07ed7edd548a4d1d9143f77af9027b1b7036",
+    "soupVersion": "0.74.0",
+    "checks": [
+      {
+        "dataset": "sft",
+        "rows": 47839,
+        "expectedFormat": "alpaca",
+        "detectedFormats": [
+          "alpaca"
+        ],
+        "allRowsDetectAsExpected": true,
+        "compatible": true,
+        "basis": "EVERY_ROW_CHECKED_AGAINST_SOUP_SIGNATURE_RULE"
+      },
+      {
+        "dataset": "preference",
+        "rows": 33288,
+        "expectedFormat": "dpo",
+        "detectedFormats": [
+          "dpo"
+        ],
+        "allRowsDetectAsExpected": true,
+        "compatible": true,
+        "basis": "EVERY_ROW_CHECKED_AGAINST_SOUP_SIGNATURE_RULE"
+      }
+    ],
+    "rlEpisodes": 135001,
+    "rlSoupFormat": null,
+    "rlBasis": "NOT_APPLICABLE: Soup GRPO/PPO consume prompts plus a reward function, not (s,a,r,s-prime) transitions. The RL export is for Sentinel-side analysis and a future reward-adapter bridge.",
+    "allCompatible": true,
+    "trainingStarted": false
+  },
+  "trainingCampaignSpec": {
+    "specVersion": 1,
+    "target": "LEARNED_NEXUS_CANDIDATE",
+    "executed": false,
+    "executionStage": "STAGE_3C",
+    "baseModelCandidates": [
+      {
+        "model": "Qwen/Qwen2.5-7B-Instruct",
+        "reason": "Soup ships a validated SFT recipe for it; size fits a single-GPU LoRA run"
+      },
+      {
+        "model": "Qwen/Qwen2.5-Coder-7B-Instruct",
+        "reason": "structured-output bias suits an action-selection format"
+      }
+    ],
+    "trainingSubsets": {
+      "sft": "TRAIN split, supervision class UNIQUE_OPTIMUM and EXACT_EQUIVALENCE only",
+      "preference": "TRAIN split, utility gap at or above the predeclared minimum",
+      "grpo": "TRAIN split RL episodes, requiring a reward adapter that does not exist yet"
+    },
+    "phases": [
+      {
+        "phase": "SFT",
+        "required": true,
+        "gate": "holdout optimum-set agreement must exceed the deterministic Nexus baseline on the same cases"
+      },
+      {
+        "phase": "PREFERENCE",
+        "required": false,
+        "gate": "no regression on the SFT holdout gate"
+      },
+      {
+        "phase": "GRPO",
+        "required": false,
+        "gate": "blocked until a reward adapter is specified and certified"
+      }
+    ],
+    "validationGates": [
+      "VALIDATION split for model selection; HOLDOUT touched once, at the end",
+      "OOD holdout never used during tuning",
+      "the deterministic Nexus baseline measured on identical cases, not on a remembered number",
+      "no gate may be evaluated on TRAIN"
+    ],
+    "rejectionConditions": [
+      "incomplete training provenance envelope",
+      "no improvement over the deterministic baseline on HOLDOUT",
+      "improvement on HOLDOUT but degradation on OOD beyond a predeclared margin",
+      "any behaviour requiring authority above R0",
+      "any dependence on a Soup artifact that cannot be reproduced from its recorded provenance"
+    ],
+    "promotionAuthority": "SENTINEL_GRID_CERTIFICATION",
+    "soupMayReach": "TRAINED",
+    "soupMayNeverReach": "CERTIFIED"
+  },
+  "targets": {
+    "topologyCount": 1000,
+    "admittedRecords": 50000,
+    "horizonDependentCases": 5000,
+    "uniqueOptimumRate": 0.4,
+    "uniqueOptimumRateIsConditional": "Only if semantically justified. If genuine equivalence remains high the target is NOT forced; the certification records that preference and RL data are the appropriate carriers for those regions."
+  },
+  "gates": {
+    "STAGE3A_REPRODUCED": true,
+    "TIE_TAXONOMY_COMPLETE": true,
+    "REWARD_RESOLUTION_AUDITED": true,
+    "GENUINE_TIES_PRESERVED": true,
+    "TOPOLOGY_DIVERSITY_MATERIALLY_INCREASED": true,
+    "TOPOLOGY_COUNT_TARGET": true,
+    "SEMANTIC_ADMISSION_GATE_PASS": true,
+    "ALL_NEW_GENERATORS_BOUNDARY_AUDITED": true,
+    "EFFECTIVE_DIVERSITY_MEASURED": true,
+    "ADMITTED_RECORD_COUNT": true,
+    "COUNTERFACTUAL_DATA_COMPLETE": true,
+    "TRAIN_VALIDATION_HOLDOUT_SPLIT_PASS": true,
+    "TOPOLOGY_LEAKAGE_CONTROL_PASS": true,
+    "OOD_HOLDOUT_CREATED": true,
+    "HORIZON_DEPENDENT_CASE_COUNT": true,
+    "DIFFICULTY_CALIBRATION_PASS": true,
+    "BASELINE_SENTINEL_EVALUATION_COMPLETE": true,
+    "SFT_EXPORT_PASS": true,
+    "PREFERENCE_EXPORT_PASS": true,
+    "RL_EXPORT_PASS": true,
+    "SOUP_SCHEMA_VALIDATION_PASS": true,
+    "TRAINING_NOT_STARTED": true,
+    "SENTINEL_EXPERTS_UNCHANGED": true,
+    "AUTHORITY_R0": true,
+    "SECURITY_REGRESSION_PASS": true
+  },
+  "blockers": [],
+  "stage3bOutcome": "A_LARGE_SCALE_CURRICULUM_AND_DATASET_CERTIFIED",
+  "stage3bCertified": true,
+  "freeze": {
+    "nexusChanged": false,
+    "oracleChanged": false,
+    "arbiterChanged": false,
+    "primePolicyChanged": false,
+    "zeknovaChanged": false,
+    "rewardV1Changed": false,
+    "stage3aKernelChanged": false,
+    "modelTrained": false,
+    "soupInvoked": false,
+    "authorityIncreased": false
+  },
+  "interpretation": {
+    "curriculumStatus": "COMPOSED_CURRICULUM_CERTIFIED_R0_ADVISORY_ONLY",
+    "datasetStatus": "LARGE_SCALE_COUNTERFACTUAL_DATASET_GENERATED_SPLIT_AND_SOUP_VALIDATED_NOT_TRAINED",
+    "measuredRemainingLimitation": "ORACLE_AXIS_UNREACHABLE: every decision is recorded at tick 0, where world.history holds a single frame against the Oracle three-frame sufficiency floor, so the Oracle abstains on 100% of cases. The temporal signal is present in world state (8-18 channel frames per world) and cannot be read by the temporal expert. This is a curriculum defect, not an Oracle defect; the fix is a warm-up of a few ticks before the decision is recorded, which changes every world hash and is therefore a new corpus version rather than a patch to this one. | RESIDUAL_UNRESOLVED_TIES: 2675 corpus cases still carry a tie the reward cannot see. They are routed to RL, not forced into SFT. | CONTINUATION_POLICY_DEPENDENCE_IS_SAMPLED: policy-family agreement is measured on a sample, not on every case, so the invariance rate is an estimate with the sample size recorded beside it. | NO_MODEL_TRAINED: Soup was schema-validated and never invoked. Nothing is claimed about what a trained candidate would do. | ARCHIMEDES_IS_STRUCTURAL_ONLY: there is no Archimedes expert to evaluate, so its router class is a property of the corpus rather than a measured expert usefulness. | SINGLE_PLATFORM: the inherited DIGEST_PRODUCED_SINGLE_PLATFORM limitation is unchanged."
+  },
+  "liveActionDispatches": 0,
+  "worldMutations": 0,
+  "authorityEscalations": 0,
+  "evidenceDigest": "1fd22056788f13af4552ba4eaec14d3d1a044e7e7494dfb6e9a66ac4f55291fe",
+  "certificationHash": "61a8ab8d7769b3c09541d3cb2665d4451eba95513f08b6055390e6212236156d"
+}

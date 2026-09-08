@@ -19,7 +19,7 @@ const [baseline, runtime, campaign, g, h, h1, h3] = await Promise.all([
   'stage2h3-calibration/stage2h3-certification-result.json',
 ].map((name) => readJson(path.join(root, 'artifacts', name)))));
 
-const runtimeVerification = await verifyDeclaredRuntime({ baseline, runtimeIdentity: runtime, sentinelRoot: path.resolve(root, '../..'), zeknovaRoot: process.env.ZEKNOVA_ROOT || '/Users/dwaynecampbell/Desktop/zeknova-shared-gaming-experience' });
+const runtimeVerification = await verifyDeclaredRuntime({ baseline, runtimeIdentity: runtime, sentinelRoot: path.resolve(root, '../..'), zeknovaRoot: process.env.ZEKNOVA_ROOT ?? null });
 if (!runtimeVerification.declaredEqualsMeasured) throw new Error('STAGE2H4_BLOCKED_BY_RUNTIME_DRIFT');
 if (!g.stage2gCertified || !h.stage2hCertified || !h1.stage2h1Certified || !h3.stage2h3Certified) throw new Error('STAGE2H4_BLOCKED_BY_SUCCESSOR_CHAIN');
 if (g.certificationHash !== '31271de552ff93c35bba0df0cc55f538ef371282c71badd0398e9437a065961e' || h.certificationHash !== '919c5f54ace8b4917bf1cac94eea9c03ee6eadecad8906d9238c384a2b894ec8' || h1.certificationHash !== 'b5e13db14cefdb00164da8781e9a628ff93b4007d93658f6b68b39c9111799ff' || h3.certificationHash !== 'b0245dd4df4577142399532be41dfe126989014d5a54dcddab14f694ad04d05a') throw new Error('STAGE2H4_BLOCKED_BY_PROVENANCE_HASH');

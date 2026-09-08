@@ -1,0 +1,21 @@
+{
+  "audited": true,
+  "v1IsFlowOnly": true,
+  "finding": "FORGE_REWARD_V1 sums transition rewards and carries no term for the value of the resulting world. Branches that end in materially different worlds therefore score identically whenever the flow matched.",
+  "tiedCasesBefore": 416,
+  "rewardDefectTiesBefore": 382,
+  "genuineTiesBefore": 34,
+  "tiedCasesAfter": 241,
+  "rewardDefectTiesAfter": 31,
+  "genuineTiesAfter": 210,
+  "v2Justified": true,
+  "genuineTiesPreserved": true,
+  "componentsAdded": [
+    "futureObjectivePotential",
+    "optionValue",
+    "restoredDependencyValue"
+  ],
+  "potentialTermsTelescope": true,
+  "telescopingArgument": "Both potential terms are differences of a state function, so over a complete trajectory they collapse to Phi(end) - Phi(start) and cannot reorder complete trajectories. They separate only truncated horizons, which is exactly the case the taxonomy found and the case the oracle scores.",
+  "note": "No component was added to break a tie. The two potential terms measure properties of the resulting world that a flow reward structurally cannot see."
+}

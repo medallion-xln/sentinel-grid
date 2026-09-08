@@ -1,0 +1,53 @@
+{
+  "taskId": "LEARNED_NEXUS_RELATIONAL_INTERVENTION_V1",
+  "framing": "STRUCTURED_EXPERT_TASK_NOT_FREE_GENERATION",
+  "input": [
+    "objective",
+    "canonicalEntities",
+    "relations",
+    "quantitativeState",
+    "legalActions"
+  ],
+  "output": {
+    "actionId": "string",
+    "confidence": "number in [0,1]",
+    "abstain": "boolean"
+  },
+  "optionalOutput": {
+    "ranking": "[{actionId, score}]"
+  },
+  "hiddenChainOfThoughtRequired": false,
+  "schema": {
+    "type": "object",
+    "required": [
+      "actionId",
+      "confidence",
+      "abstain"
+    ],
+    "properties": {
+      "actionId": {
+        "type": "string"
+      },
+      "confidence": {
+        "type": "number",
+        "minimum": 0,
+        "maximum": 1
+      },
+      "abstain": {
+        "type": "boolean"
+      },
+      "ranking": {
+        "type": "array",
+        "items": {
+          "type": "object",
+          "required": [
+            "actionId",
+            "score"
+          ]
+        }
+      }
+    }
+  },
+  "legalityRule": "Every emitted actionId is checked against the legal action set for that exact world before it is scored. A model output can never bypass legality: an illegal or unparseable answer is counted as such, never silently repaired into the nearest legal action.",
+  "abstentionRule": "Abstention is a first-class answer, which is why the selection rules deliberately include negative controls where relational reasoning is unnecessary. A specialist that cannot say \"this one is not mine\" is not a specialist."
+}

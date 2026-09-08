@@ -1,0 +1,59 @@
+{
+  "families": [
+    "MONOTONIC_RISE",
+    "MONOTONIC_FALL",
+    "LATE_REVERSAL",
+    "PERIODIC_CYCLE",
+    "LEVEL_SHIFT",
+    "HIGH_VOLATILITY",
+    "FLAT"
+  ],
+  "byFamily": {
+    "MONOTONIC_RISE": {
+      "records": 10116,
+      "realized": 9990,
+      "shortWarmup": 126,
+      "realisationRate": 0.9875
+    },
+    "MONOTONIC_FALL": {
+      "records": 10244,
+      "realized": 10121,
+      "shortWarmup": 123,
+      "realisationRate": 0.988
+    },
+    "LATE_REVERSAL": {
+      "records": 9847,
+      "realized": 9426,
+      "shortWarmup": 421,
+      "realisationRate": 0.9572
+    },
+    "PERIODIC_CYCLE": {
+      "records": 10178,
+      "realized": 9896,
+      "shortWarmup": 282,
+      "realisationRate": 0.9723
+    },
+    "LEVEL_SHIFT": {
+      "records": 10187,
+      "realized": 9900,
+      "shortWarmup": 287,
+      "realisationRate": 0.9718
+    },
+    "HIGH_VOLATILITY": {
+      "records": 10107,
+      "realized": 9834,
+      "shortWarmup": 273,
+      "realisationRate": 0.973
+    },
+    "FLAT": {
+      "records": 10125,
+      "realized": 10125,
+      "shortWarmup": 0,
+      "realisationRate": 1
+    }
+  },
+  "realized": 69292,
+  "realisationRate": 0.9786,
+  "method": "Head-free. Monotonicity, net change, alternation ratio, mean absolute step and split-level shift are measured directly off the realized series. No Oracle head is consulted, so a head agreeing with a family is evidence rather than a tautology.",
+  "unrealisedCause": "A family that does not show up is almost always a warm-up truncated too short for the family to express itself — a one-tick history cannot exhibit a level shift. Those records carry temporalFamilyRealized=false and the family name is not treated as ground truth for them."
+}
