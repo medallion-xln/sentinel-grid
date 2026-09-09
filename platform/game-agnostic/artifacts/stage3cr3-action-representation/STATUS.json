@@ -1,0 +1,40 @@
+{
+  "stage": "STAGE3CR3_ACTION_REPRESENTATION",
+  "experimentA": {
+    "status": "COMPLETE",
+    "outcome": "C_REPRESENTATION_FIX_WORKS_BUT_LABEL_PRIOR_STILL_DOMINATES",
+    "campaign": "STAGE3CR3A-ba12e6b1185754a5f5d49343",
+    "validation": 0.7106,
+    "holdout": 0.7023,
+    "ood": 0.8322,
+    "relationalLift": {
+      "VALIDATION": -0.142,
+      "HOLDOUT": -0.1236,
+      "OOD": -0.1659
+    }
+  },
+  "experimentB": {
+    "status": "IN_PROGRESS_VALIDATION_COMPLETE",
+    "campaign": "STAGE3CR3B-f76b16d0c026a23238557ac2",
+    "validation": 0.4206,
+    "relationalLift": {
+      "VALIDATION": 0.0676
+    },
+    "pending": [
+      "HOLDOUT",
+      "OOD"
+    ],
+    "frozenBeforeHoldout": true,
+    "freezeHash": "9ba5a862fe5f5863b9dc5a60524ea4d103ef84f55c56ae4c01d9e944aae3b11e",
+    "note": "HOLDOUT and OOD inference were running when this commit was made. VALIDATION result and all frozen artifacts are final; HOLDOUT/OOD numbers are not yet in this tree."
+  },
+  "governance": {
+    "authority": "R0",
+    "canDispatch": false,
+    "canMutateLiveWorld": false,
+    "v1Preserved": true,
+    "v2aPreserved": true,
+    "candidatesOfflineOnly": true,
+    "deterministicNexusRemainsIncumbent": true
+  }
+}

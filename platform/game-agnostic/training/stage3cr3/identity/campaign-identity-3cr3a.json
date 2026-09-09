@@ -1,0 +1,63 @@
+{
+  "experiment": "STAGE3CR3_EXPERIMENT_A",
+  "parentCampaign": "STAGE3CR2B-98000527aa50df4e81a7d06e",
+  "TARGET_SCHEMA": "LOCAL_ACTION_INDEX",
+  "CONFIDENCE_TARGET_INCLUDED": false,
+  "ACTION_ORDER_POLICY": "SENTINEL_ACTION_ORDER_V2_RECORDHASH_FISHER_YATES",
+  "ACTION_ORDER_POLICY_HASH": "94c88a942c79fa7d25f00f8f10394520259557c1d86247347f50052756a58dad",
+  "V2_SFT_RECORDS": 4459,
+  "V2_SFT_HASH": "2fdb80fa0198f1118e3910cd0f0674ae5449b7e538a01ed0d1e2f545f1bc34cd",
+  "targetIndexEntropyBits": 3.23,
+  "mostCommonIndexShare": 0.1346,
+  "BASE_MODEL_HASH": "52bf9bc0d287fe78281e91bfd0c2efcfaa9a7bf1c1dde9a8ef7cf44ff8104115",
+  "TOKENIZER_HASH": "01f5c72a384cca65f8bb43f999ce074a39d36a424f42586ccf3fa5938fef0ac4",
+  "DATASET_HASH": "4d1a27925346258ebafea93890739f8d0ef206927b77ba6240e54d83488cea20",
+  "V1_SFT_HASH": "93c20fc679492cdbc5a7ee3e7dd289ecf942ae818151d17bfbd79f73cde8d9d5",
+  "challengeHashes": {
+    "VALIDATION": "fa3efd911f6493fdb1e8119bb70074b45f51a07a4a55fbdde77693258687a49d",
+    "HOLDOUT": "1ffe5a7e86e21f8128e07791670ce97237eb51834635e5a3e6e0da9551eed82e",
+    "OOD": "7d6948895c778b72034a4f84e05653fc41c139c3f01a5e1c86cb482d529e9530"
+  },
+  "challengeN": {
+    "VALIDATION": 1774,
+    "HOLDOUT": 1772,
+    "OOD": 1157
+  },
+  "naturalDistributionPreserved": true,
+  "experimentBRun": false,
+  "config": {
+    "method": "LoRA",
+    "r": 16,
+    "alpha": 32,
+    "dropout": 0.05,
+    "target_modules": [
+      "q_proj",
+      "k_proj",
+      "v_proj",
+      "o_proj",
+      "gate_proj",
+      "up_proj",
+      "down_proj"
+    ],
+    "epochs": 2,
+    "lr": 0.0001,
+    "batch_size": 1,
+    "gradient_accumulation_steps": 16,
+    "max_length": 512,
+    "padding": "FIXED_MAX_LENGTH",
+    "seed": 20260908,
+    "optimizer": "AdamW",
+    "schedule": "linear_warmup_3pct",
+    "max_grad_norm": 1.0,
+    "dtype": "bfloat16",
+    "device": "mps",
+    "loss_masking": "COMPLETION_ONLY",
+    "trainer": "SENTINEL_FIXED_PAD_LOOP_V1",
+    "trainer_sha256": "0e9a14fc32e7197540215ced2152e03a632652fc91df67ccc8af97f25715c3c9"
+  },
+  "executionEnvironment": "AppleM1Pro-mps-16GB",
+  "GPU_ENVIRONMENT_QUALIFIED": false,
+  "gpuNote": "No qualified GPU host available: the tested cloud environment has no accelerator and is denied model egress (403). Falling back to the proven M1 environment rather than altering model or dataset.",
+  "TRAINING_CONFIG_HASH": "ea4a7c26fb8df2921acef7090f4122ff2e140843b2297fa889575c4f7380996e",
+  "STAGE3CR3A_CAMPAIGN_ID": "STAGE3CR3A-ba12e6b1185754a5f5d49343"
+}

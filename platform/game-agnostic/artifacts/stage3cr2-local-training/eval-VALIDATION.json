@@ -1,0 +1,727 @@
+{
+  "meta": {
+    "split": "VALIDATION",
+    "records": 6509,
+    "evaluated": 6509,
+    "tau": null
+  },
+  "learned": {
+    "optimalSetAccuracy": 0.7045,
+    "meanRegret": 17.16,
+    "medianRegret": 0,
+    "p95Regret": 101,
+    "worstRegret": 438,
+    "parseSuccessRate": 0.9997,
+    "legalActionRate": 0.9997,
+    "illegalActionCount": 2,
+    "parseFailureCodes": {
+      "UNKNOWN_ACTION_ID": 2
+    },
+    "abstentionRate": 0,
+    "scored": 6507,
+    "cases": 6509
+  },
+  "random": {
+    "optimalSetAccuracy": 0.2234,
+    "meanRegret": 58.95,
+    "medianRegret": 52,
+    "p95Regret": 158,
+    "worstRegret": 442,
+    "parseSuccessRate": 1,
+    "legalActionRate": 1,
+    "illegalActionCount": 0,
+    "parseFailureCodes": {},
+    "abstentionRate": 0,
+    "scored": 6509,
+    "cases": 6509
+  },
+  "greedy": {
+    "optimalSetAccuracy": 0.2527,
+    "meanRegret": 50.48,
+    "medianRegret": 44,
+    "p95Regret": 142,
+    "worstRegret": 406,
+    "parseSuccessRate": 1,
+    "legalActionRate": 1,
+    "illegalActionCount": 0,
+    "parseFailureCodes": {},
+    "abstentionRate": 0,
+    "scored": 6509,
+    "cases": 6509
+  },
+  "selector": {
+    "optimalSetAccuracy": 0.2199,
+    "meanRegret": 52.26,
+    "medianRegret": 47,
+    "p95Regret": 142,
+    "worstRegret": 406,
+    "parseSuccessRate": 1,
+    "legalActionRate": 1,
+    "illegalActionCount": 0,
+    "parseFailureCodes": {},
+    "abstentionRate": 0.1559,
+    "scored": 5494,
+    "cases": 6509
+  },
+  "hybrids": {
+    "A_learned_alone": {
+      "optimalSetAccuracy": 0.7045,
+      "meanRegret": 17.16,
+      "medianRegret": 0,
+      "p95Regret": 101,
+      "worstRegret": 438,
+      "parseSuccessRate": 0.9997,
+      "legalActionRate": 0.9997,
+      "illegalActionCount": 2,
+      "parseFailureCodes": {
+        "UNKNOWN_ACTION_ID": 2
+      },
+      "abstentionRate": 0,
+      "scored": 6507,
+      "cases": 6509,
+      "coverage": 0.9997
+    },
+    "B_selector_alone": {
+      "optimalSetAccuracy": 0.2199,
+      "meanRegret": 52.26,
+      "medianRegret": 47,
+      "p95Regret": 142,
+      "worstRegret": 406,
+      "parseSuccessRate": 1,
+      "legalActionRate": 1,
+      "illegalActionCount": 0,
+      "parseFailureCodes": {},
+      "abstentionRate": 0.1559,
+      "scored": 5494,
+      "cases": 6509,
+      "coverage": 0.8441
+    },
+    "C_selector_veto": {
+      "optimalSetAccuracy": 0.2985,
+      "meanRegret": 46.28,
+      "medianRegret": 39,
+      "p95Regret": 140,
+      "worstRegret": 406,
+      "parseSuccessRate": 1,
+      "legalActionRate": 1,
+      "illegalActionCount": 0,
+      "parseFailureCodes": {},
+      "abstentionRate": 0,
+      "scored": 6509,
+      "cases": 6509,
+      "coverage": 1
+    },
+    "D_nexus_guided": {
+      "optimalSetAccuracy": 0.6992,
+      "meanRegret": 16.4,
+      "medianRegret": 0,
+      "p95Regret": 98,
+      "worstRegret": 438,
+      "parseSuccessRate": 1,
+      "legalActionRate": 1,
+      "illegalActionCount": 0,
+      "parseFailureCodes": {},
+      "abstentionRate": 0,
+      "scored": 6509,
+      "cases": 6509,
+      "coverage": 1
+    },
+    "E_agreement_only": {
+      "optimalSetAccuracy": 0.619,
+      "meanRegret": 22,
+      "medianRegret": 0,
+      "p95Regret": 89,
+      "worstRegret": 114,
+      "parseSuccessRate": 1,
+      "legalActionRate": 1,
+      "illegalActionCount": 0,
+      "parseFailureCodes": {},
+      "abstentionRate": 0.9968,
+      "scored": 21,
+      "cases": 6509,
+      "coverage": 0.0032
+    },
+    "F_confidence_gate_tau0.5": {
+      "optimalSetAccuracy": 0.7045,
+      "meanRegret": 17.16,
+      "medianRegret": 0,
+      "p95Regret": 101,
+      "worstRegret": 438,
+      "parseSuccessRate": 0.9997,
+      "legalActionRate": 0.9997,
+      "illegalActionCount": 2,
+      "parseFailureCodes": {
+        "UNKNOWN_ACTION_ID": 2
+      },
+      "abstentionRate": 0,
+      "scored": 6507,
+      "cases": 6509,
+      "tau": 0.5,
+      "coverage": 0.9997
+    },
+    "F_confidence_gate_tau0.6": {
+      "optimalSetAccuracy": 0.7045,
+      "meanRegret": 17.16,
+      "medianRegret": 0,
+      "p95Regret": 101,
+      "worstRegret": 438,
+      "parseSuccessRate": 0.9997,
+      "legalActionRate": 0.9997,
+      "illegalActionCount": 2,
+      "parseFailureCodes": {
+        "UNKNOWN_ACTION_ID": 2
+      },
+      "abstentionRate": 0,
+      "scored": 6507,
+      "cases": 6509,
+      "tau": 0.6,
+      "coverage": 0.9997
+    },
+    "F_confidence_gate_tau0.7": {
+      "optimalSetAccuracy": 0.7045,
+      "meanRegret": 17.16,
+      "medianRegret": 0,
+      "p95Regret": 101,
+      "worstRegret": 438,
+      "parseSuccessRate": 0.9997,
+      "legalActionRate": 0.9997,
+      "illegalActionCount": 2,
+      "parseFailureCodes": {
+        "UNKNOWN_ACTION_ID": 2
+      },
+      "abstentionRate": 0,
+      "scored": 6507,
+      "cases": 6509,
+      "tau": 0.7,
+      "coverage": 0.9997
+    },
+    "F_confidence_gate_tau0.8": {
+      "optimalSetAccuracy": 0.7045,
+      "meanRegret": 17.16,
+      "medianRegret": 0,
+      "p95Regret": 101,
+      "worstRegret": 438,
+      "parseSuccessRate": 0.9997,
+      "legalActionRate": 0.9997,
+      "illegalActionCount": 2,
+      "parseFailureCodes": {
+        "UNKNOWN_ACTION_ID": 2
+      },
+      "abstentionRate": 0,
+      "scored": 6507,
+      "cases": 6509,
+      "tau": 0.8,
+      "coverage": 0.9997
+    },
+    "F_confidence_gate_tau0.9": {
+      "optimalSetAccuracy": 0.7045,
+      "meanRegret": 17.16,
+      "medianRegret": 0,
+      "p95Regret": 101,
+      "worstRegret": 438,
+      "parseSuccessRate": 0.9997,
+      "legalActionRate": 0.9997,
+      "illegalActionCount": 2,
+      "parseFailureCodes": {
+        "UNKNOWN_ACTION_ID": 2
+      },
+      "abstentionRate": 0,
+      "scored": 6507,
+      "cases": 6509,
+      "tau": 0.9,
+      "coverage": 0.9997
+    },
+    "F_confidence_gate_tau0.95": {
+      "optimalSetAccuracy": 0.7045,
+      "meanRegret": 17.16,
+      "medianRegret": 0,
+      "p95Regret": 101,
+      "worstRegret": 438,
+      "parseSuccessRate": 0.9997,
+      "legalActionRate": 0.9997,
+      "illegalActionCount": 2,
+      "parseFailureCodes": {
+        "UNKNOWN_ACTION_ID": 2
+      },
+      "abstentionRate": 0,
+      "scored": 6507,
+      "cases": 6509,
+      "tau": 0.95,
+      "coverage": 0.9997
+    },
+    "F_confidence_gate_tau1": {
+      "optimalSetAccuracy": 0.7045,
+      "meanRegret": 17.16,
+      "medianRegret": 0,
+      "p95Regret": 101,
+      "worstRegret": 438,
+      "parseSuccessRate": 0.9997,
+      "legalActionRate": 0.9997,
+      "illegalActionCount": 2,
+      "parseFailureCodes": {
+        "UNKNOWN_ACTION_ID": 2
+      },
+      "abstentionRate": 0,
+      "scored": 6507,
+      "cases": 6509,
+      "tau": 1,
+      "coverage": 0.9997
+    }
+  },
+  "complementarity": {
+    "BOTH_CORRECT": 849,
+    "LEARNED_ONLY_CORRECT": 3000,
+    "NEXUS_ONLY_CORRECT": 358,
+    "BOTH_WRONG": 1285,
+    "LEARNED_LOWER_REGRET": 3463,
+    "NEXUS_LOWER_REGRET": 1029,
+    "REGRET_TIE": 1000,
+    "SELECTOR_ABSTAINED": 1015,
+    "COMPARABLE": 5492,
+    "LEARNED_UNIQUE_WIN_RATE": 0.5462
+  },
+  "byTopology": {
+    "bridge": {
+      "n": 418,
+      "learnedAcc": 0.7057,
+      "learnedRegret": 17.43,
+      "selectorAcc": 0.2007,
+      "selectorRegret": 52.31,
+      "hybridAcc": null,
+      "hybridRegret": null
+    },
+    "chain": {
+      "n": 472,
+      "learnedAcc": 0.7479,
+      "learnedRegret": 14.67,
+      "selectorAcc": 0.2099,
+      "selectorRegret": 55.33,
+      "hybridAcc": null,
+      "hybridRegret": null
+    },
+    "contested_bottleneck": {
+      "n": 454,
+      "learnedAcc": 0.7203,
+      "learnedRegret": 16.82,
+      "selectorAcc": 0.2467,
+      "selectorRegret": 49.43,
+      "hybridAcc": null,
+      "hybridRegret": null
+    },
+    "disconnected_islands": {
+      "n": 430,
+      "learnedAcc": 0.7,
+      "learnedRegret": 15.43,
+      "selectorAcc": 0.1994,
+      "selectorRegret": 54.39,
+      "hybridAcc": null,
+      "hybridRegret": null
+    },
+    "hub_and_spoke": {
+      "n": 416,
+      "learnedAcc": 0.7212,
+      "learnedRegret": 13.63,
+      "selectorAcc": 0.2546,
+      "selectorRegret": 49.79,
+      "hybridAcc": null,
+      "hybridRegret": null
+    },
+    "layered_infrastructure": {
+      "n": 428,
+      "learnedAcc": 0.6893,
+      "learnedRegret": 20.93,
+      "selectorAcc": 0.2121,
+      "selectorRegret": 52.8,
+      "hybridAcc": null,
+      "hybridRegret": null
+    },
+    "mesh": {
+      "n": 472,
+      "learnedAcc": 0.6928,
+      "learnedRegret": 18.34,
+      "selectorAcc": 0.1992,
+      "selectorRegret": 52.76,
+      "hybridAcc": null,
+      "hybridRegret": null
+    },
+    "multi_cycle": {
+      "n": 419,
+      "learnedAcc": 0.6706,
+      "learnedRegret": 18.58,
+      "selectorAcc": 0.2506,
+      "selectorRegret": 49.82,
+      "hybridAcc": null,
+      "hybridRegret": null
+    },
+    "multi_settlement": {
+      "n": 421,
+      "learnedAcc": 0.7007,
+      "learnedRegret": 19.02,
+      "selectorAcc": 0.239,
+      "selectorRegret": 50.23,
+      "hybridAcc": null,
+      "hybridRegret": null
+    },
+    "nested_dependency": {
+      "n": 438,
+      "learnedAcc": 0.6872,
+      "learnedRegret": 17.77,
+      "selectorAcc": 0.2141,
+      "selectorRegret": 54.06,
+      "hybridAcc": null,
+      "hybridRegret": null
+    },
+    "parallel_dependency": {
+      "n": 428,
+      "learnedAcc": 0.736,
+      "learnedRegret": 13.92,
+      "selectorAcc": 0.1728,
+      "selectorRegret": 54.89,
+      "hybridAcc": null,
+      "hybridRegret": null
+    },
+    "redundant_network": {
+      "n": 415,
+      "learnedAcc": 0.6867,
+      "learnedRegret": 16.91,
+      "selectorAcc": 0.2169,
+      "selectorRegret": 52.13,
+      "hybridAcc": null,
+      "hybridRegret": null
+    },
+    "ring": {
+      "n": 447,
+      "learnedAcc": 0.7025,
+      "learnedRegret": 17.19,
+      "selectorAcc": 0.2506,
+      "selectorRegret": 51.53,
+      "hybridAcc": null,
+      "hybridRegret": null
+    },
+    "star": {
+      "n": 461,
+      "learnedAcc": 0.713,
+      "learnedRegret": 16.74,
+      "selectorAcc": 0.2301,
+      "selectorRegret": 49.68,
+      "hybridAcc": null,
+      "hybridRegret": null
+    },
+    "tree": {
+      "n": 390,
+      "learnedAcc": 0.6864,
+      "learnedRegret": 20.44,
+      "selectorAcc": 0.1766,
+      "selectorRegret": 56.59,
+      "hybridAcc": null,
+      "hybridRegret": null
+    }
+  },
+  "byLevel": {
+    "0": {
+      "n": 1028,
+      "learnedAcc": 0.5764,
+      "learnedRegret": 23.45,
+      "selectorAcc": 0.2247,
+      "selectorRegret": 39.09,
+      "hybridAcc": null,
+      "hybridRegret": null
+    },
+    "1": {
+      "n": 1024,
+      "learnedAcc": 0.6357,
+      "learnedRegret": 18.65,
+      "selectorAcc": 0.2083,
+      "selectorRegret": 46.19,
+      "hybridAcc": null,
+      "hybridRegret": null
+    },
+    "2": {
+      "n": 1123,
+      "learnedAcc": 0.672,
+      "learnedRegret": 18.54,
+      "selectorAcc": 0.2355,
+      "selectorRegret": 46.84,
+      "hybridAcc": null,
+      "hybridRegret": null
+    },
+    "3": {
+      "n": 1141,
+      "learnedAcc": 0.7432,
+      "learnedRegret": 14.78,
+      "selectorAcc": 0.2183,
+      "selectorRegret": 52.1,
+      "hybridAcc": null,
+      "hybridRegret": null
+    },
+    "4": {
+      "n": 1050,
+      "learnedAcc": 0.7752,
+      "learnedRegret": 14.31,
+      "selectorAcc": 0.2315,
+      "selectorRegret": 60.46,
+      "hybridAcc": null,
+      "hybridRegret": null
+    },
+    "5": {
+      "n": 1143,
+      "learnedAcc": 0.8093,
+      "learnedRegret": 13.81,
+      "selectorAcc": 0.2008,
+      "selectorRegret": 67.68,
+      "hybridAcc": null,
+      "hybridRegret": null
+    }
+  },
+  "bySupervision": {
+    "EXACT_EQUIVALENCE": {
+      "n": 2136,
+      "learnedAcc": 0.7752,
+      "learnedRegret": 12.14,
+      "selectorAcc": 0.4943,
+      "selectorRegret": 33.94,
+      "hybridAcc": null,
+      "hybridRegret": null
+    },
+    "INSUFFICIENTLY_RESOLVED": {
+      "n": 260,
+      "learnedAcc": 0.6962,
+      "learnedRegret": 15.42,
+      "selectorAcc": 0.4886,
+      "selectorRegret": 28.05,
+      "hybridAcc": null,
+      "hybridRegret": null
+    },
+    "NEAR_TIE": {
+      "n": 101,
+      "learnedAcc": 0.2376,
+      "learnedRegret": 18.26,
+      "selectorAcc": 0.2209,
+      "selectorRegret": 26.91,
+      "hybridAcc": null,
+      "hybridRegret": null
+    },
+    "PARETO_TRADEOFF": {
+      "n": 58,
+      "learnedAcc": 0.5862,
+      "learnedRegret": 16.91,
+      "selectorAcc": 0.6458,
+      "selectorRegret": 18.08,
+      "hybridAcc": null,
+      "hybridRegret": null
+    },
+    "UNIQUE_OPTIMUM": {
+      "n": 3954,
+      "learnedAcc": 0.6805,
+      "learnedRegret": 19.96,
+      "selectorAcc": 0.0282,
+      "selectorRegret": 66.26,
+      "hybridAcc": null,
+      "hybridRegret": null
+    }
+  },
+  "byHorizonClass": {
+    "HORIZON_ALIGNED": {
+      "n": 1646,
+      "learnedAcc": 0.6389,
+      "learnedRegret": 17.28,
+      "selectorAcc": 0.8552,
+      "selectorRegret": 3.37,
+      "hybridAcc": null,
+      "hybridRegret": null
+    },
+    "HORIZON_DEPENDENT": {
+      "n": 4863,
+      "learnedAcc": 0.7267,
+      "learnedRegret": 17.12,
+      "selectorAcc": 0.0007,
+      "selectorRegret": 69.12,
+      "hybridAcc": null,
+      "hybridRegret": null
+    }
+  },
+  "byGraphSize": {
+    "a_small<=15": {
+      "n": 1219,
+      "learnedAcc": 0.6273,
+      "learnedRegret": 21.07,
+      "selectorAcc": 0.2193,
+      "selectorRegret": 42.35,
+      "hybridAcc": null,
+      "hybridRegret": null
+    },
+    "b_mid16-25": {
+      "n": 2849,
+      "learnedAcc": 0.6692,
+      "learnedRegret": 17.8,
+      "selectorAcc": 0.2278,
+      "selectorRegret": 47.42,
+      "hybridAcc": null,
+      "hybridRegret": null
+    },
+    "c_large>25": {
+      "n": 2441,
+      "learnedAcc": 0.7841,
+      "learnedRegret": 14.46,
+      "selectorAcc": 0.2108,
+      "selectorRegret": 62.74,
+      "hybridAcc": null,
+      "hybridRegret": null
+    }
+  },
+  "byRelationCount": {
+    "a<=20": {
+      "n": 3993,
+      "learnedAcc": 0.664,
+      "learnedRegret": 18.59,
+      "selectorAcc": 0.2252,
+      "selectorRegret": 46.4,
+      "hybridAcc": null,
+      "hybridRegret": null
+    },
+    "b21-35": {
+      "n": 2124,
+      "learnedAcc": 0.7665,
+      "learnedRegret": 15.05,
+      "selectorAcc": 0.2177,
+      "selectorRegret": 60.15,
+      "hybridAcc": null,
+      "hybridRegret": null
+    },
+    "c>35": {
+      "n": 392,
+      "learnedAcc": 0.7806,
+      "learnedRegret": 14,
+      "selectorAcc": 0.1862,
+      "selectorRegret": 63.29,
+      "hybridAcc": null,
+      "hybridRegret": null
+    }
+  },
+  "byLegalCount": {
+    "a<=8": {
+      "n": 5807,
+      "learnedAcc": 0.7537,
+      "learnedRegret": 13.75,
+      "selectorAcc": 0.2129,
+      "selectorRegret": 54.28,
+      "hybridAcc": null,
+      "hybridRegret": null
+    },
+    "b9-14": {
+      "n": 702,
+      "learnedAcc": 0.2957,
+      "learnedRegret": 45.41,
+      "selectorAcc": 0.2739,
+      "selectorRegret": 36.63,
+      "hybridAcc": null,
+      "hybridRegret": null
+    }
+  },
+  "byRewardGap": {
+    "a_gap0": {
+      "n": 1645,
+      "learnedAcc": 0.6393,
+      "learnedRegret": 17.28,
+      "selectorAcc": 0.8558,
+      "selectorRegret": 3.33,
+      "hybridAcc": null,
+      "hybridRegret": null
+    },
+    "b_small": {
+      "n": 497,
+      "learnedAcc": 0.5726,
+      "learnedRegret": 13.58,
+      "selectorAcc": 0.0051,
+      "selectorRegret": 14.23,
+      "hybridAcc": null,
+      "hybridRegret": null
+    },
+    "c_mid": {
+      "n": 2123,
+      "learnedAcc": 0.7635,
+      "learnedRegret": 9.68,
+      "selectorAcc": 0,
+      "selectorRegret": 43.73,
+      "hybridAcc": null,
+      "hybridRegret": null
+    },
+    "d_large": {
+      "n": 2244,
+      "learnedAcc": 0.7255,
+      "learnedRegret": 24.94,
+      "selectorAcc": 0.0005,
+      "selectorRegret": 104.04,
+      "hybridAcc": null,
+      "hybridRegret": null
+    }
+  },
+  "confidence": {
+    "1.0": {
+      "n": 6509,
+      "accuracy": 0.7043,
+      "avgConfidence": 1,
+      "meanRegret": 17.16
+    }
+  },
+  "calibrationError": 0.2957,
+  "confidencePredictsUniqueWin": {
+    "1.0": {
+      "n": 6509,
+      "uniqueWinRate": 0.4609
+    }
+  },
+  "errorTaxonomy": {
+    "dependency_omission": 624,
+    "horizon_error": 1329,
+    "overconfidence": 1923,
+    "cascading_effect_error": 145,
+    "bottleneck_error": 498,
+    "cycle_error": 271,
+    "distributed_value_error": 255,
+    "redundancy_error": 130,
+    "substitute_misvaluation": 101,
+    "illegal_action": 2
+  },
+  "deterministicErrorTaxonomy": {
+    "bottleneck_error": 1109,
+    "cycle_error": 649,
+    "dependency_omission": 1334,
+    "abstained": 1015,
+    "cascading_effect_error": 378,
+    "redundancy_error": 325,
+    "distributed_value_error": 491
+  },
+  "primeOffline": {
+    "evalSet": {
+      "version": "PRIME_EVAL_SET_V1",
+      "hash": "04e77ca0683fced38a04b9e32f9f5ac027218d23e2286491792ced02ae01165e",
+      "n": 1085,
+      "selectionRule": "DETERMINISTIC_STRIDE_OVER_SPLIT_ORDER",
+      "stride": 6,
+      "split": "VALIDATION"
+    },
+    "interpretation": "No runtime Nexus->Prime integration exists. This is a decision-substitution comparison on identical records: Prime alone versus each policy alone.",
+    "prime": {
+      "optimumRate": 0.235,
+      "scored": 1085,
+      "mismatch": 0,
+      "meanRegret": 52.12
+    },
+    "learned": {
+      "optimumRate": 0.6986,
+      "meanRegret": 18.37,
+      "beneficialChanges": 585,
+      "harmfulChanges": 82,
+      "unchangedDecisions": 418
+    },
+    "selector": {
+      "optimumRate": 0.2334,
+      "meanRegret": 53.48,
+      "beneficialChanges": 12,
+      "harmfulChanges": 182,
+      "unchangedDecisions": 891
+    },
+    "hybrid": null
+  }
+}

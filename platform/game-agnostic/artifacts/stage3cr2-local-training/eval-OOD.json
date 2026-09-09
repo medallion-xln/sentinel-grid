@@ -1,0 +1,666 @@
+{
+  "meta": {
+    "split": "OOD",
+    "records": 7144,
+    "evaluated": 7144,
+    "tau": null
+  },
+  "learned": {
+    "optimalSetAccuracy": 0.8313,
+    "meanRegret": 13.97,
+    "medianRegret": 0,
+    "p95Regret": 113,
+    "worstRegret": 444,
+    "parseSuccessRate": 1,
+    "legalActionRate": 1,
+    "illegalActionCount": 0,
+    "parseFailureCodes": {},
+    "abstentionRate": 0,
+    "scored": 7144,
+    "cases": 7144
+  },
+  "random": {
+    "optimalSetAccuracy": 0.223,
+    "meanRegret": 83.78,
+    "medianRegret": 79,
+    "p95Regret": 192,
+    "worstRegret": 525,
+    "parseSuccessRate": 1,
+    "legalActionRate": 1,
+    "illegalActionCount": 0,
+    "parseFailureCodes": {},
+    "abstentionRate": 0,
+    "scored": 7144,
+    "cases": 7144
+  },
+  "greedy": {
+    "optimalSetAccuracy": 0.2448,
+    "meanRegret": 73.69,
+    "medianRegret": 70,
+    "p95Regret": 178,
+    "worstRegret": 525,
+    "parseSuccessRate": 1,
+    "legalActionRate": 1,
+    "illegalActionCount": 0,
+    "parseFailureCodes": {},
+    "abstentionRate": 0,
+    "scored": 7144,
+    "cases": 7144
+  },
+  "selector": {
+    "optimalSetAccuracy": 0.2189,
+    "meanRegret": 76.04,
+    "medianRegret": 70,
+    "p95Regret": 178,
+    "worstRegret": 525,
+    "parseSuccessRate": 1,
+    "legalActionRate": 1,
+    "illegalActionCount": 0,
+    "parseFailureCodes": {},
+    "abstentionRate": 0.1611,
+    "scored": 5993,
+    "cases": 7144
+  },
+  "hybrids": {
+    "A_learned_alone": {
+      "optimalSetAccuracy": 0.8313,
+      "meanRegret": 13.97,
+      "medianRegret": 0,
+      "p95Regret": 113,
+      "worstRegret": 444,
+      "parseSuccessRate": 1,
+      "legalActionRate": 1,
+      "illegalActionCount": 0,
+      "parseFailureCodes": {},
+      "abstentionRate": 0,
+      "scored": 7144,
+      "cases": 7144,
+      "coverage": 1
+    },
+    "B_selector_alone": {
+      "optimalSetAccuracy": 0.2189,
+      "meanRegret": 76.04,
+      "medianRegret": 70,
+      "p95Regret": 178,
+      "worstRegret": 525,
+      "parseSuccessRate": 1,
+      "legalActionRate": 1,
+      "illegalActionCount": 0,
+      "parseFailureCodes": {},
+      "abstentionRate": 0.1611,
+      "scored": 5993,
+      "cases": 7144,
+      "coverage": 0.8389
+    },
+    "C_selector_veto": {
+      "optimalSetAccuracy": 0.3183,
+      "meanRegret": 65.89,
+      "medianRegret": 62,
+      "p95Regret": 176,
+      "worstRegret": 525,
+      "parseSuccessRate": 1,
+      "legalActionRate": 1,
+      "illegalActionCount": 0,
+      "parseFailureCodes": {},
+      "abstentionRate": 0,
+      "scored": 7144,
+      "cases": 7144,
+      "coverage": 1
+    },
+    "D_nexus_guided": {
+      "optimalSetAccuracy": 0.8191,
+      "meanRegret": 14.84,
+      "medianRegret": 0,
+      "p95Regret": 115,
+      "worstRegret": 525,
+      "parseSuccessRate": 1,
+      "legalActionRate": 1,
+      "illegalActionCount": 0,
+      "parseFailureCodes": {},
+      "abstentionRate": 0,
+      "scored": 7144,
+      "cases": 7144,
+      "coverage": 1
+    },
+    "E_agreement_only": {
+      "optimalSetAccuracy": 0.25,
+      "meanRegret": 81.5,
+      "medianRegret": 128,
+      "p95Regret": 148,
+      "worstRegret": 148,
+      "parseSuccessRate": 1,
+      "legalActionRate": 1,
+      "illegalActionCount": 0,
+      "parseFailureCodes": {},
+      "abstentionRate": 0.9994,
+      "scored": 4,
+      "cases": 7144,
+      "coverage": 0.0006
+    },
+    "F_confidence_gate_tau0.5": {
+      "optimalSetAccuracy": 0.8313,
+      "meanRegret": 13.97,
+      "medianRegret": 0,
+      "p95Regret": 113,
+      "worstRegret": 444,
+      "parseSuccessRate": 1,
+      "legalActionRate": 1,
+      "illegalActionCount": 0,
+      "parseFailureCodes": {},
+      "abstentionRate": 0,
+      "scored": 7144,
+      "cases": 7144,
+      "tau": 0.5,
+      "coverage": 1
+    },
+    "F_confidence_gate_tau0.6": {
+      "optimalSetAccuracy": 0.8313,
+      "meanRegret": 13.97,
+      "medianRegret": 0,
+      "p95Regret": 113,
+      "worstRegret": 444,
+      "parseSuccessRate": 1,
+      "legalActionRate": 1,
+      "illegalActionCount": 0,
+      "parseFailureCodes": {},
+      "abstentionRate": 0,
+      "scored": 7144,
+      "cases": 7144,
+      "tau": 0.6,
+      "coverage": 1
+    },
+    "F_confidence_gate_tau0.7": {
+      "optimalSetAccuracy": 0.8313,
+      "meanRegret": 13.97,
+      "medianRegret": 0,
+      "p95Regret": 113,
+      "worstRegret": 444,
+      "parseSuccessRate": 1,
+      "legalActionRate": 1,
+      "illegalActionCount": 0,
+      "parseFailureCodes": {},
+      "abstentionRate": 0,
+      "scored": 7144,
+      "cases": 7144,
+      "tau": 0.7,
+      "coverage": 1
+    },
+    "F_confidence_gate_tau0.8": {
+      "optimalSetAccuracy": 0.8313,
+      "meanRegret": 13.97,
+      "medianRegret": 0,
+      "p95Regret": 113,
+      "worstRegret": 444,
+      "parseSuccessRate": 1,
+      "legalActionRate": 1,
+      "illegalActionCount": 0,
+      "parseFailureCodes": {},
+      "abstentionRate": 0,
+      "scored": 7144,
+      "cases": 7144,
+      "tau": 0.8,
+      "coverage": 1
+    },
+    "F_confidence_gate_tau0.9": {
+      "optimalSetAccuracy": 0.8313,
+      "meanRegret": 13.97,
+      "medianRegret": 0,
+      "p95Regret": 113,
+      "worstRegret": 444,
+      "parseSuccessRate": 1,
+      "legalActionRate": 1,
+      "illegalActionCount": 0,
+      "parseFailureCodes": {},
+      "abstentionRate": 0,
+      "scored": 7144,
+      "cases": 7144,
+      "tau": 0.9,
+      "coverage": 1
+    },
+    "F_confidence_gate_tau0.95": {
+      "optimalSetAccuracy": 0.8313,
+      "meanRegret": 13.97,
+      "medianRegret": 0,
+      "p95Regret": 113,
+      "worstRegret": 444,
+      "parseSuccessRate": 1,
+      "legalActionRate": 1,
+      "illegalActionCount": 0,
+      "parseFailureCodes": {},
+      "abstentionRate": 0,
+      "scored": 7144,
+      "cases": 7144,
+      "tau": 0.95,
+      "coverage": 1
+    },
+    "F_confidence_gate_tau1": {
+      "optimalSetAccuracy": 0.8313,
+      "meanRegret": 13.97,
+      "medianRegret": 0,
+      "p95Regret": 113,
+      "worstRegret": 444,
+      "parseSuccessRate": 1,
+      "legalActionRate": 1,
+      "illegalActionCount": 0,
+      "parseFailureCodes": {},
+      "abstentionRate": 0,
+      "scored": 7144,
+      "cases": 7144,
+      "tau": 1,
+      "coverage": 1
+    }
+  },
+  "complementarity": {
+    "BOTH_CORRECT": 1101,
+    "LEARNED_ONLY_CORRECT": 3876,
+    "NEXUS_ONLY_CORRECT": 211,
+    "BOTH_WRONG": 805,
+    "LEARNED_LOWER_REGRET": 4047,
+    "NEXUS_LOWER_REGRET": 766,
+    "REGRET_TIE": 1180,
+    "SELECTOR_ABSTAINED": 1151,
+    "COMPARABLE": 5993,
+    "LEARNED_UNIQUE_WIN_RATE": 0.6468
+  },
+  "byTopology": {
+    "bridge": {
+      "n": 472,
+      "learnedAcc": 0.8411,
+      "learnedRegret": 15.12,
+      "selectorAcc": 0.1891,
+      "selectorRegret": 83.71,
+      "hybridAcc": null,
+      "hybridRegret": null
+    },
+    "chain": {
+      "n": 480,
+      "learnedAcc": 0.8583,
+      "learnedRegret": 11.31,
+      "selectorAcc": 0.2061,
+      "selectorRegret": 83.65,
+      "hybridAcc": null,
+      "hybridRegret": null
+    },
+    "contested_bottleneck": {
+      "n": 480,
+      "learnedAcc": 0.8333,
+      "learnedRegret": 13.59,
+      "selectorAcc": 0.2125,
+      "selectorRegret": 72.2,
+      "hybridAcc": null,
+      "hybridRegret": null
+    },
+    "disconnected_islands": {
+      "n": 480,
+      "learnedAcc": 0.8292,
+      "learnedRegret": 14.79,
+      "selectorAcc": 0.1845,
+      "selectorRegret": 82.12,
+      "hybridAcc": null,
+      "hybridRegret": null
+    },
+    "hub_and_spoke": {
+      "n": 480,
+      "learnedAcc": 0.8438,
+      "learnedRegret": 13.04,
+      "selectorAcc": 0.2183,
+      "selectorRegret": 76.78,
+      "hybridAcc": null,
+      "hybridRegret": null
+    },
+    "layered_infrastructure": {
+      "n": 460,
+      "learnedAcc": 0.8022,
+      "learnedRegret": 17.6,
+      "selectorAcc": 0.2097,
+      "selectorRegret": 76.6,
+      "hybridAcc": null,
+      "hybridRegret": null
+    },
+    "mesh": {
+      "n": 480,
+      "learnedAcc": 0.825,
+      "learnedRegret": 12.79,
+      "selectorAcc": 0.2417,
+      "selectorRegret": 73.88,
+      "hybridAcc": null,
+      "hybridRegret": null
+    },
+    "multi_cycle": {
+      "n": 480,
+      "learnedAcc": 0.8271,
+      "learnedRegret": 13.63,
+      "selectorAcc": 0.2438,
+      "selectorRegret": 73.4,
+      "hybridAcc": null,
+      "hybridRegret": null
+    },
+    "multi_settlement": {
+      "n": 480,
+      "learnedAcc": 0.8396,
+      "learnedRegret": 14.7,
+      "selectorAcc": 0.2173,
+      "selectorRegret": 73.6,
+      "hybridAcc": null,
+      "hybridRegret": null
+    },
+    "nested_dependency": {
+      "n": 480,
+      "learnedAcc": 0.8354,
+      "learnedRegret": 11.77,
+      "selectorAcc": 0.2246,
+      "selectorRegret": 77.55,
+      "hybridAcc": null,
+      "hybridRegret": null
+    },
+    "parallel_dependency": {
+      "n": 480,
+      "learnedAcc": 0.8354,
+      "learnedRegret": 14.84,
+      "selectorAcc": 0.1921,
+      "selectorRegret": 77.93,
+      "hybridAcc": null,
+      "hybridRegret": null
+    },
+    "redundant_network": {
+      "n": 480,
+      "learnedAcc": 0.7938,
+      "learnedRegret": 16.94,
+      "selectorAcc": 0.2375,
+      "selectorRegret": 73.27,
+      "hybridAcc": null,
+      "hybridRegret": null
+    },
+    "ring": {
+      "n": 480,
+      "learnedAcc": 0.8229,
+      "learnedRegret": 14.7,
+      "selectorAcc": 0.2354,
+      "selectorRegret": 71.82,
+      "hybridAcc": null,
+      "hybridRegret": null
+    },
+    "star": {
+      "n": 480,
+      "learnedAcc": 0.825,
+      "learnedRegret": 14.39,
+      "selectorAcc": 0.2446,
+      "selectorRegret": 73.27,
+      "hybridAcc": null,
+      "hybridRegret": null
+    },
+    "tree": {
+      "n": 452,
+      "learnedAcc": 0.8584,
+      "learnedRegret": 10.27,
+      "selectorAcc": 0.198,
+      "selectorRegret": 76.7,
+      "hybridAcc": null,
+      "hybridRegret": null
+    }
+  },
+  "byLevel": {
+    "6": {
+      "n": 3570,
+      "learnedAcc": 0.8165,
+      "learnedRegret": 14.37,
+      "selectorAcc": 0.2304,
+      "selectorRegret": 70.49,
+      "hybridAcc": null,
+      "hybridRegret": null
+    },
+    "7": {
+      "n": 3574,
+      "learnedAcc": 0.8461,
+      "learnedRegret": 13.57,
+      "selectorAcc": 0.2074,
+      "selectorRegret": 81.62,
+      "hybridAcc": null,
+      "hybridRegret": null
+    }
+  },
+  "bySupervision": {
+    "EXACT_EQUIVALENCE": {
+      "n": 2664,
+      "learnedAcc": 0.8551,
+      "learnedRegret": 10.06,
+      "selectorAcc": 0.4591,
+      "selectorRegret": 53.26,
+      "hybridAcc": null,
+      "hybridRegret": null
+    },
+    "INSUFFICIENTLY_RESOLVED": {
+      "n": 193,
+      "learnedAcc": 0.7824,
+      "learnedRegret": 11.98,
+      "selectorAcc": 0.8509,
+      "selectorRegret": 9.92,
+      "hybridAcc": null,
+      "hybridRegret": null
+    },
+    "NEAR_TIE": {
+      "n": 31,
+      "learnedAcc": 0.1935,
+      "learnedRegret": 20.55,
+      "selectorAcc": 0.1852,
+      "selectorRegret": 21.11,
+      "hybridAcc": null,
+      "hybridRegret": null
+    },
+    "PARETO_TRADEOFF": {
+      "n": 35,
+      "learnedAcc": 0.8286,
+      "learnedRegret": 6.31,
+      "selectorAcc": 0.8696,
+      "selectorRegret": 8.35,
+      "hybridAcc": null,
+      "hybridRegret": null
+    },
+    "UNIQUE_OPTIMUM": {
+      "n": 4221,
+      "learnedAcc": 0.8233,
+      "learnedRegret": 16.54,
+      "selectorAcc": 0.0119,
+      "selectorRegret": 96.49,
+      "hybridAcc": null,
+      "hybridRegret": null
+    }
+  },
+  "byHorizonClass": {
+    "HORIZON_ALIGNED": {
+      "n": 1749,
+      "learnedAcc": 0.7839,
+      "learnedRegret": 9.6,
+      "selectorAcc": 0.9009,
+      "selectorRegret": 2.92,
+      "hybridAcc": null,
+      "hybridRegret": null
+    },
+    "HORIZON_DEPENDENT": {
+      "n": 5395,
+      "learnedAcc": 0.8467,
+      "learnedRegret": 15.38,
+      "selectorAcc": 0.0007,
+      "selectorRegret": 99.44,
+      "hybridAcc": null,
+      "hybridRegret": null
+    }
+  },
+  "byGraphSize": {
+    "c_large>25": {
+      "n": 7144,
+      "learnedAcc": 0.8313,
+      "learnedRegret": 13.97,
+      "selectorAcc": 0.2189,
+      "selectorRegret": 76.04,
+      "hybridAcc": null,
+      "hybridRegret": null
+    }
+  },
+  "byRelationCount": {
+    "a<=20": {
+      "n": 72,
+      "learnedAcc": 0.7639,
+      "learnedRegret": 14.06,
+      "selectorAcc": 0.2222,
+      "selectorRegret": 64.56,
+      "hybridAcc": null,
+      "hybridRegret": null
+    },
+    "b21-35": {
+      "n": 5036,
+      "learnedAcc": 0.8334,
+      "learnedRegret": 13.8,
+      "selectorAcc": 0.2147,
+      "selectorRegret": 75.2,
+      "hybridAcc": null,
+      "hybridRegret": null
+    },
+    "c>35": {
+      "n": 2036,
+      "learnedAcc": 0.8286,
+      "learnedRegret": 14.37,
+      "selectorAcc": 0.2276,
+      "selectorRegret": 77.94,
+      "hybridAcc": null,
+      "hybridRegret": null
+    }
+  },
+  "byLegalCount": {
+    "a<=8": {
+      "n": 6529,
+      "learnedAcc": 0.8753,
+      "learnedRegret": 10.76,
+      "selectorAcc": 0.22,
+      "selectorRegret": 77.78,
+      "hybridAcc": null,
+      "hybridRegret": null
+    },
+    "b9-14": {
+      "n": 614,
+      "learnedAcc": 0.3648,
+      "learnedRegret": 47.89,
+      "selectorAcc": 0.2083,
+      "selectorRegret": 58.21,
+      "hybridAcc": null,
+      "hybridRegret": null
+    },
+    "c>14": {
+      "n": 1,
+      "learnedAcc": 0,
+      "learnedRegret": 122,
+      "selectorAcc": 0,
+      "selectorRegret": 76,
+      "hybridAcc": null,
+      "hybridRegret": null
+    }
+  },
+  "byRewardGap": {
+    "a_gap0": {
+      "n": 1749,
+      "learnedAcc": 0.7839,
+      "learnedRegret": 9.6,
+      "selectorAcc": 0.9009,
+      "selectorRegret": 2.92,
+      "hybridAcc": null,
+      "hybridRegret": null
+    },
+    "b_small": {
+      "n": 144,
+      "learnedAcc": 0.4861,
+      "learnedRegret": 13.5,
+      "selectorAcc": 0.0242,
+      "selectorRegret": 14.48,
+      "hybridAcc": null,
+      "hybridRegret": null
+    },
+    "c_mid": {
+      "n": 1016,
+      "learnedAcc": 0.8012,
+      "learnedRegret": 8.8,
+      "selectorAcc": 0,
+      "selectorRegret": 39.12,
+      "hybridAcc": null,
+      "hybridRegret": null
+    },
+    "d_large": {
+      "n": 4235,
+      "learnedAcc": 0.8699,
+      "learnedRegret": 17.03,
+      "selectorAcc": 0,
+      "selectorRegret": 115.18,
+      "hybridAcc": null,
+      "hybridRegret": null
+    }
+  },
+  "confidence": {
+    "1.0": {
+      "n": 7144,
+      "accuracy": 0.8313,
+      "avgConfidence": 1,
+      "meanRegret": 13.97
+    }
+  },
+  "calibrationError": 0.1687,
+  "confidencePredictsUniqueWin": {
+    "1.0": {
+      "n": 7144,
+      "uniqueWinRate": 0.5426
+    }
+  },
+  "errorTaxonomy": {
+    "cycle_error": 168,
+    "overconfidence": 1205,
+    "cascading_effect_error": 84,
+    "horizon_error": 827,
+    "bottleneck_error": 314,
+    "distributed_value_error": 159,
+    "dependency_omission": 381,
+    "redundancy_error": 99,
+    "substitute_misvaluation": 31
+  },
+  "deterministicErrorTaxonomy": {
+    "bottleneck_error": 1229,
+    "dependency_omission": 1437,
+    "cascading_effect_error": 364,
+    "cycle_error": 730,
+    "distributed_value_error": 555,
+    "abstained": 1151,
+    "redundancy_error": 366
+  },
+  "primeOffline": {
+    "evalSet": {
+      "version": "PRIME_EVAL_SET_V1",
+      "hash": "c2fdca60321a285cddcd06e86aeb083de770ba12738a40578798090ed6caca46",
+      "n": 1191,
+      "selectionRule": "DETERMINISTIC_STRIDE_OVER_SPLIT_ORDER",
+      "stride": 6,
+      "split": "OOD"
+    },
+    "interpretation": "No runtime Nexus->Prime integration exists. This is a decision-substitution comparison on identical records: Prime alone versus each policy alone.",
+    "prime": {
+      "optimumRate": 0.2259,
+      "scored": 1191,
+      "mismatch": 0,
+      "contractErrors": 0,
+      "contractErrorSamples": [],
+      "contractErrorNote": "Pre-existing repo defect: validateLegalActions rejects duplicate action descriptors. Excluded from the Prime rate only; every other policy still scored on the full set.",
+      "meanRegret": 71.54
+    },
+    "learned": {
+      "optimumRate": 0.827,
+      "meanRegret": 14.31,
+      "beneficialChanges": 759,
+      "harmfulChanges": 43,
+      "unchangedDecisions": 389
+    },
+    "selector": {
+      "optimumRate": 0.2322,
+      "meanRegret": 71.89,
+      "beneficialChanges": 12,
+      "harmfulChanges": 201,
+      "unchangedDecisions": 978
+    },
+    "hybrid": null
+  }
+}
