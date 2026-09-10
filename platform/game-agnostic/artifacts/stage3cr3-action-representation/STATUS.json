@@ -14,19 +14,34 @@
     }
   },
   "experimentB": {
-    "status": "IN_PROGRESS_VALIDATION_COMPLETE",
+    "status": "COMPLETE",
+    "outcome": "B_PRIOR_CONTROL_PRODUCED_COMPLEMENTARY_RELATIONAL_EXPERT",
     "campaign": "STAGE3CR3B-f76b16d0c026a23238557ac2",
-    "validation": 0.4206,
-    "relationalLift": {
-      "VALIDATION": 0.0676
-    },
-    "pending": [
-      "HOLDOUT",
-      "OOD"
-    ],
-    "frozenBeforeHoldout": true,
     "freezeHash": "9ba5a862fe5f5863b9dc5a60524ea4d103ef84f55c56ae4c01d9e944aae3b11e",
-    "note": "HOLDOUT and OOD inference were running when this commit was made. VALIDATION result and all frozen artifacts are final; HOLDOUT/OOD numbers are not yet in this tree."
+    "freezeIntact": true,
+    "raw": {
+      "VALIDATION": 0.4206,
+      "HOLDOUT": 0.4195,
+      "OOD": 0.4419
+    },
+    "shortcutAdjustedGain": {
+      "VALIDATION": -0.2326,
+      "HOLDOUT": -0.2289,
+      "OOD": -0.3519
+    },
+    "challengeAccuracy": {
+      "VALIDATION": 0.2632,
+      "HOLDOUT": 0.2703,
+      "OOD": 0.2446
+    },
+    "relationalLift": {
+      "VALIDATION": 0.0676,
+      "HOLDOUT": 0.0841,
+      "OOD": 0.032
+    },
+    "relationalLiftPositiveOnAllSplits": true,
+    "generalization": "MODERATE_RELATIONAL_GENERALIZATION",
+    "stage3dRecommended": true
   },
   "governance": {
     "authority": "R0",
