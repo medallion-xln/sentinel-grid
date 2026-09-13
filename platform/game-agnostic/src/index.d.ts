@@ -636,3 +636,72 @@ export function measureFixture(args: { qualificationIdentity: Record<string, any
 export function runStage2H1NegativeGates(args: { qualificationIdentity: Record<string, any>; campaignManifest: Record<string, any> }): Array<{ name: string; rejected: boolean; code: string | null }>;
 export function certifyStage2H1ActionContext(args: { campaignManifest: Record<string, any>; sessionId?: string | null; samplingIdentity?: string | null }): { certification: Readonly<Record<string, any>>; qualificationIdentity: Readonly<Record<string, any>> };
 export function buildStage2H1PortabilityDigest(args: { campaignManifest: Record<string, any> }): { digest: string; witnesses: Readonly<Record<string, any>> };
+
+export const WORLD_STATE_SCHEMA_VERSION: 1;
+export const WORLD_STATE_CONTRACT_ID: 'SENTINEL_WORLD_STATE_V1';
+export const WORLD_STATE_SECTIONS: readonly [
+  'entities', 'resources', 'objectives', 'relationships', 'spatialState',
+  'temporalState', 'constraints', 'recentEvents',
+];
+export const EpistemicCategory: Readonly<{
+  OBSERVED: 'OBSERVED'; DERIVED: 'DERIVED'; PREDICTED: 'PREDICTED'; UNKNOWN: 'UNKNOWN';
+}>;
+export const EvidenceAuthority: Readonly<{
+  AUTHORITATIVE_OBSERVATION: 'AUTHORITATIVE_OBSERVATION';
+  VALIDATED_DERIVATION: 'VALIDATED_DERIVATION';
+  CALIBRATED_PREDICTION: 'CALIBRATED_PREDICTION';
+  GENERATED_HYPOTHESIS: 'GENERATED_HYPOTHESIS';
+  UNKNOWN: 'UNKNOWN';
+}>;
+export type WorldStateEpistemicCategory = typeof EpistemicCategory[keyof typeof EpistemicCategory];
+export type WorldStateEvidenceAuthority = typeof EvidenceAuthority[keyof typeof EvidenceAuthority];
+export interface WorldStateEnvironment { identity: string; version: string }
+export interface WorldStateFact {
+  path: readonly string[];
+  category: WorldStateEpistemicCategory;
+  authority: WorldStateEvidenceAuthority;
+  value: unknown;
+  confidence: number | null;
+  uncertainty: Readonly<Record<string, unknown>>;
+  provenance: Readonly<Record<string, unknown>>;
+  factId: `sha256:${string}`;
+}
+export interface WorldStateSnapshot {
+  contractId: 'SENTINEL_WORLD_STATE_V1';
+  schemaVersion: 1;
+  environment: Readonly<WorldStateEnvironment>;
+  time: Readonly<{ logicalTime: number; timestamp: string | null; timestampStatus: 'OBSERVED' | 'UNKNOWN' }>;
+  facts: readonly Readonly<WorldStateFact>[];
+  nonAuthoritativeEvidence: readonly Readonly<WorldStateFact>[];
+  sections: Readonly<Record<string, readonly string[]>>;
+  epistemicCategories: typeof EpistemicCategory;
+  authorityPrecedence: readonly WorldStateEvidenceAuthority[];
+  authority: ExpertAuthority & Readonly<Record<string, unknown>>;
+  snapshotId: `sha256:${string}`;
+}
+export class WorldStateContractError extends Error { details?: Record<string, unknown> }
+export function createWorldStateFact(args: {
+  path: string | readonly string[];
+  category: WorldStateEpistemicCategory;
+  authority: WorldStateEvidenceAuthority;
+  value: unknown;
+  confidence: number | null;
+  uncertainty: Record<string, unknown>;
+  provenance: Record<string, unknown>;
+}): Readonly<WorldStateFact>;
+export function createUnknownWorldStateFact(args: {
+  path: string | readonly string[];
+  environment: WorldStateEnvironment;
+  sourceId: string;
+  evidenceId: string;
+  reason: string;
+}): Readonly<WorldStateFact>;
+export function createWorldStateSnapshot(args: {
+  environment: WorldStateEnvironment;
+  logicalTime: number;
+  timestamp?: string | null;
+  facts: readonly WorldStateFact[];
+}): Readonly<WorldStateSnapshot>;
+export function verifyWorldStateSnapshot(snapshot: WorldStateSnapshot): true;
+export function serializeWorldStateSnapshot(snapshot: WorldStateSnapshot): string;
+export function readWorldStateFact(snapshot: WorldStateSnapshot, path: string | readonly string[]): Readonly<WorldStateFact>;

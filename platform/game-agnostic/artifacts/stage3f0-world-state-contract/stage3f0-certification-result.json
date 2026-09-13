@@ -1,0 +1,64 @@
+{
+  "schemaVersion": 1,
+  "stage": "STAGE_3F_0_WORLD_STATE_CONTRACT_V1",
+  "status": "PASS",
+  "contract": {
+    "id": "SENTINEL_WORLD_STATE_V1",
+    "schemaVersion": 1,
+    "source": "src/stage3f/world-state-v1.js",
+    "sourceSha256": "dbc44bffa01dc58b13d94ef34fbcbd1d35815859fafdfe62b55cf428003d9380",
+    "epistemicCategories": [
+      "OBSERVED",
+      "DERIVED",
+      "PREDICTED",
+      "UNKNOWN"
+    ],
+    "authorityPrecedence": [
+      "AUTHORITATIVE_OBSERVATION",
+      "VALIDATED_DERIVATION",
+      "CALIBRATED_PREDICTION",
+      "GENERATED_HYPOTHESIS",
+      "UNKNOWN"
+    ],
+    "sections": [
+      "entities",
+      "resources",
+      "objectives",
+      "relationships",
+      "spatialState",
+      "temporalState",
+      "constraints",
+      "recentEvents"
+    ]
+  },
+  "inherited": {
+    "latestCertifiedStage": "STAGE_3E_ROUTABILITY_INTELLIGENCE",
+    "stage3eRouterFreezeHash": "5a8e22b5c6a6889df658a74d134b376ee79fa1214760204a3265fe01f27c6bd2",
+    "stage3eReplayPass": true,
+    "predecessorOwnersModified": false
+  },
+  "checks": {
+    "predecessorStage3DECanonicalizationPass": true,
+    "deterministicSerialization": true,
+    "stableSnapshotIdentity": true,
+    "snapshotVerifies": true,
+    "observedProtectedFromPrediction": true,
+    "predictionRetainedAsNonAuthoritativeEvidence": true,
+    "explicitUnknown": true,
+    "derivedProvenanceBound": true,
+    "environmentIdentityBound": true,
+    "allSectionsRepresented": true,
+    "authorityR0": true,
+    "cannotDispatch": true,
+    "cannotMutateLiveWorld": true
+  },
+  "authority": {
+    "tier": "R0",
+    "canDispatch": false,
+    "canMutateLiveWorld": false,
+    "incumbentSoleExecutor": true
+  },
+  "onlineLearningEnabled": false,
+  "nextSubstage": "STAGE_3F_1_SENTINEL_CAUSAL_TRACE_V1",
+  "certificationHash": "3b2b2a42d43a77943d98bc4b0e865dab85b106a94e06320f4593f8e1a9194582"
+}

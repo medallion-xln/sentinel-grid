@@ -238,3 +238,18 @@ export {
   certifyStage2H1ActionContext,
   buildStage2H1PortabilityDigest,
 } from './lab/stage2h1-action-context-certification.js';
+
+export {
+  WORLD_STATE_SCHEMA_VERSION,
+  WORLD_STATE_CONTRACT_ID,
+  WORLD_STATE_SECTIONS,
+  EpistemicCategory,
+  EvidenceAuthority,
+  WorldStateContractError,
+  createWorldStateFact,
+  createUnknownWorldStateFact,
+  createWorldStateSnapshot,
+  verifyWorldStateSnapshot,
+  serializeWorldStateSnapshot,
+  readWorldStateFact,
+} from './stage3f/world-state-v1.js';
