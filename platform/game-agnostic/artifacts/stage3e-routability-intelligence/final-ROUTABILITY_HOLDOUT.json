@@ -1,0 +1,56 @@
+{
+  "split": "ROUTABILITY_HOLDOUT",
+  "n": 6000,
+  "targetPrevalence": 0.2705,
+  "router": {
+    "tau": 0.9,
+    "routedN": 347,
+    "precision": 0.781,
+    "wilsonLower": 0.7345,
+    "coverage": 0.0578,
+    "falseSafeCount": 76,
+    "meetsEvidenceFloor": true
+  },
+  "policies": {
+    "GREEDY_ALONE": {
+      "acc": 0.2705,
+      "regret": 48.23
+    },
+    "V2B_ALONE": {
+      "acc": 0.4188,
+      "regret": 45.04
+    },
+    "STAGE3D_HYBRID_margin20": {
+      "acc": 0.4392,
+      "regret": 42.64,
+      "precision": 0.5371,
+      "coverage": 0.1235
+    },
+    "STAGE3E_HYBRID": {
+      "acc": 0.4347,
+      "regret": 42.27
+    },
+    "ORACLE_GREEDY_SAFE": {
+      "acc": 0.5547,
+      "regret": 33.89
+    }
+  },
+  "deltas": {
+    "hybridMinusV2B_acc": 0.0158,
+    "hybridMinusV2B_regret": -2.77,
+    "hybridMinusStage3D_acc": -0.0045
+  },
+  "falseSafeHarm": {
+    "count": 76,
+    "meanRegret": 39.16,
+    "p95Regret": 101.75,
+    "worstRegret": 134.0,
+    "v2bWouldHaveRegret": 73.62
+  },
+  "routabilityGap": {
+    "oracleAcc": 0.5547,
+    "runtimeAcc": 0.4347,
+    "accuracyGap": 0.12,
+    "regretGap": 8.38
+  }
+}

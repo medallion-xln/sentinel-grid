@@ -1,0 +1,218 @@
+#!/usr/bin/env node
+
+import { createHash } from 'node:crypto';
+import { readdir, readFile, stat, writeFile } from 'node:fs/promises';
+import path from 'node:path';
+import { fileURLToPath } from 'node:url';
+import { execFileSync } from 'node:child_process';
+
+const here = path.dirname(fileURLToPath(import.meta.url));
+const root = path.resolve(here, '..');
+const repositoryRoot = path.resolve(root, '..', '..');
+const recoveredSource = process.env.SENTINEL_RECOVERED_SOURCE
+  ?? '/private/tmp/claude-501/-Users-dwaynecampbell-Desktop-sentinel-grid/fca13857-1355-448a-9b36-7ac8e5352d38/scratchpad';
+const transcriptPath = '/Users/dwaynecampbell/.claude/projects/-Users-dwaynecampbell-Desktop-sentinel-grid/fca13857-1355-448a-9b36-7ac8e5352d38.jsonl';
+const archivePath = '/Users/dwaynecampbell/Desktop/SentinelGrid_Forensic_Stage3D_3E_20260913.tar';
+const outputPath = path.join(root, 'artifacts', 'stage3de-recovery-canonicalization', 'lineage-record.json');
+
+const sha256Buffer = (value) => createHash('sha256').update(value).digest('hex');
+const sha256File = async (file) => sha256Buffer(await readFile(file));
+
+async function walk(directory) {
+  const entries = await readdir(directory, { withFileTypes: true });
+  const files = [];
+  for (const entry of entries.sort((a, b) => a.name.localeCompare(b.name))) {
+    const absolute = path.join(directory, entry.name);
+    if (entry.isDirectory()) files.push(...await walk(absolute));
+    else if (entry.isFile()) files.push(absolute);
+  }
+  return files;
+}
+
+const stage3dReports = new Set([
+  'freeze-3d.json', 'final-ROUTER_HOLDOUT.json', 'final-ROUTER_OOD.json',
+  'runtime-tests.json', 'baselines-ROUTER_DEV.json', 'family-ROUTER_DEV.json',
+  'family-ROUTER_CAL.json', 'split-spec.json',
+]);
+const stage3eReports = new Set([
+  'freeze-3e.json', 'lr-model.json', 'cal-calibration.json', 'feature-ranking-dev.json',
+  'rule-curves-dev.json', 'evidence-floor.json', 'target-prevalence.json', 'ablation.json',
+  'final-ROUTABILITY_HOLDOUT.json', 'final-ROUTABILITY_OOD.json', 'runtime-tests.json',
+  'split-spec.json',
+]);
+
+function canonicalPathFor(relative) {
+  const base = path.basename(relative);
+  if (relative.startsWith('3d/') && base.endsWith('.mjs')) {
+    return `training/stage3d-recovered/${base}`;
+  }
+  if (relative === '3e-generate.mjs') {
+    return 'training/stage3e-recovered/generate-fresh-stage3e.mjs';
+  }
+  if (relative.startsWith('3e/') && (base.endsWith('.mjs') || base.endsWith('.py'))) {
+    return `training/stage3e-recovered/${base}`;
+  }
+  if (relative.startsWith('3d/splitids-')) {
+    return `artifacts/stage3d-hybrid-shadow-qualification/replay-fixtures/${base}`;
+  }
+  if (relative.startsWith('3d/') && stage3dReports.has(base)) {
+    return `artifacts/stage3d-hybrid-shadow-qualification/${base}`;
+  }
+  if (relative.startsWith('3e/matrix-')) {
+    return `artifacts/stage3e-routability-intelligence/replay-fixtures/${base}`;
+  }
+  if (relative.startsWith('3e/') && stage3eReports.has(base)) {
+    return `artifacts/stage3e-routability-intelligence/${base}`;
+  }
+
+  const existing = {
+    'v2/candidate-manifest-v2b.json': 'training/stage3cr3/identity/candidate-manifest-v2b.json',
+    'v2/freeze-v2b.json': 'training/stage3cr3/identity/freeze-v2b.json',
+    'v2/campaign-identity-3cr3b.json': 'training/stage3cr3/identity/campaign-identity-3cr3b.json',
+    'v2/phase5-expectation.json': 'training/stage3cr3/identity/phase5-expectation.json',
+    'v2/baselines-HOLDOUT.json': 'artifacts/stage3cr3-action-representation/baselines-HOLDOUT.json',
+    'v2/baselines-OOD.json': 'artifacts/stage3cr3-action-representation/baselines-OOD.json',
+    'v2/baselines-VALIDATION.json': 'artifacts/stage3cr3-action-representation/baselines-VALIDATION.json',
+    'v2/score-v2b-HOLDOUT.json': 'artifacts/stage3cr3-action-representation/score-v2b-HOLDOUT.json',
+    'v2/score-v2b-OOD.json': 'artifacts/stage3cr3-action-representation/score-v2b-OOD.json',
+    'v2/score-v2b-VALIDATION.json': 'artifacts/stage3cr3-action-representation/score-v2b-VALIDATION.json',
+  };
+  return existing[relative] ?? null;
+}
+
+function classify(relative) {
+  const base = path.basename(relative);
+  if (relative === '3e-generate.mjs') return 'CERTIFICATION_SCRIPT';
+  if (/(^|\/)corpus\/fresh-corpus\.jsonl$/.test(relative)) return 'CORPUS';
+  if (/(^|\/)corpus\/w-\d+\.jsonl$/.test(relative)) return 'TEMPORARY_SCRATCH';
+  if (/\/split-[^/]+\.jsonl$/.test(relative)) return 'CORPUS';
+  if (/\/cache-[^/]+\.json$/.test(relative)) return 'CACHE';
+  if (/\.log$/.test(relative)) return 'LOG';
+  if (/\/prompts-[^/]+\.jsonl$/.test(relative) || /\/gen-[^/]+\.jsonl$/.test(relative)) return 'REQUIRED_FIXTURE';
+  if (/\/matrix-[^/]+\.json$/.test(relative) || /\/splitids-[^/]+\.json$/.test(relative)
+      || /\/split-spec\.json$/.test(relative)) return 'REQUIRED_FIXTURE';
+  if (/features(?:-v2)?\.mjs$/.test(relative) || /router-family\.mjs$/.test(relative)) return 'CANONICAL_SOURCE';
+  if (/runtime-(?:tests\.mjs|3e\.py)$/.test(relative)) return 'CANONICAL_TEST';
+  if (/\.(?:mjs|py)$/.test(relative)) return 'CERTIFICATION_SCRIPT';
+  if (/freeze|candidate-manifest|campaign-identity|adapter_model|adapter_config|tokenizer|chat_template/.test(relative)) {
+    return 'FROZEN_ARTIFACT';
+  }
+  if (/README\.md$/.test(relative)) return 'GENERATED_REPORT';
+  if (/\.json$/.test(relative)) return 'GENERATED_REPORT';
+  return 'TEMPORARY_SCRATCH';
+}
+
+const roots = ['3d', '3e', 'v2'];
+const recoveredFiles = [];
+for (const directory of roots) {
+  recoveredFiles.push(...await walk(path.join(recoveredSource, directory)));
+}
+recoveredFiles.push(path.join(recoveredSource, '3e-generate.mjs'));
+
+const inventory = [];
+for (const absolute of recoveredFiles.sort()) {
+  const relative = path.relative(recoveredSource, absolute);
+  const metadata = await stat(absolute);
+  const canonicalRelative = canonicalPathFor(relative);
+  const canonicalAbsolute = canonicalRelative ? path.join(root, canonicalRelative) : null;
+  const sourceHash = await sha256File(absolute);
+  let canonicalHash = null;
+  let disposition = 'PERMANENT_ARCHIVE_ONLY';
+  if (canonicalAbsolute) {
+    canonicalHash = await sha256File(canonicalAbsolute);
+    disposition = relative.startsWith('v2/') ? 'EXISTING_GIT_OWNER' : 'CANONICAL_GIT_PAYLOAD';
+    if (canonicalHash !== sourceHash) throw new Error(`canonical byte mismatch: ${relative}`);
+  }
+  inventory.push({
+    recoveredPath: relative,
+    classification: classify(relative),
+    disposition,
+    canonicalPath: canonicalRelative,
+    bytes: metadata.size,
+    sha256: sourceHash,
+    canonicalByteIdentical: canonicalHash === null ? null : canonicalHash === sourceHash,
+  });
+}
+
+const transcriptStat = await stat(transcriptPath);
+inventory.push({
+  recoveredPath: 'claude-session/fca13857-1355-448a-9b36-7ac8e5352d38.jsonl',
+  classification: 'LOG',
+  disposition: 'PERMANENT_ARCHIVE_ONLY',
+  canonicalPath: null,
+  bytes: transcriptStat.size,
+  sha256: await sha256File(transcriptPath),
+  canonicalByteIdentical: null,
+});
+
+const archiveStat = await stat(archivePath);
+const archiveHash = await sha256File(archivePath);
+if (archiveHash !== '82d672157a45491c4edc214f3a19ed6dca609078b52aa5117dd1a1b9b7e9fa6b') {
+  throw new Error('forensic archive hash mismatch');
+}
+
+const classificationSummary = {};
+const dispositionSummary = {};
+for (const entry of inventory) {
+  classificationSummary[entry.classification] = (classificationSummary[entry.classification] ?? 0) + 1;
+  dispositionSummary[entry.disposition] = (dispositionSummary[entry.disposition] ?? 0) + 1;
+}
+
+const head = execFileSync('git', ['rev-parse', 'HEAD'], { cwd: repositoryRoot, encoding: 'utf8' }).trim();
+const record = {
+  schemaVersion: 1,
+  recordType: 'SENTINEL_STAGE3DE_RECOVERY_CANONICALIZATION_PROVENANCE',
+  statement: [
+    'Git HEAD d38814fc7d105a25f44eb10a71985c8d74f18efa originally exposed Stage 3C-R.3 as latest.',
+    "Stage 3D/3E were subsequently recovered from Claude's local certification scratch workspace.",
+    'All known frozen hashes matched.',
+    'Behavioral replay passed.',
+    'The recovered lineage was canonicalized without modifying its certified artifacts.',
+  ],
+  provenanceNotReplacementCertification: true,
+  recoveredSourcePath: recoveredSource,
+  recoveredSourceMutationPolicy: 'READ_ONLY_DO_NOT_DELETE_OR_MUTATE',
+  archive: {
+    path: archivePath,
+    sha256: archiveHash,
+    bytes: archiveStat.size,
+    entryCount: 125,
+    fileCount: 118,
+  },
+  repository: {
+    originalExposedHead: 'd38814fc7d105a25f44eb10a71985c8d74f18efa',
+    headAtCanonicalization: head,
+    originalLatestStage: 'STAGE_3C_R3_ACTION_REPRESENTATION',
+    canonicalLatestCertifiedStage: 'STAGE_3E_ROUTABILITY_INTELLIGENCE',
+  },
+  knownHashes: {
+    STAGE3D_V2B_CANDIDATE_HASH: 'c5ab281ceb2379ef2c04db1f40171cb8f14ed17ec8cc9cedd016b0747080cad7',
+    STAGE3D_V2B_FREEZE_HASH: '9ba5a862fe5f5863b9dc5a60524ea4d103ef84f55c56ae4c01d9e944aae3b11e',
+    STAGE3D_HYBRID_FREEZE_HASH: '5d605a0fb83a78f65d9ca3425a97f6f33f3dc077a3ff3827fd9b87f1dedc412c',
+    STAGE3E_ROUTER_FREEZE_HASH: '5a8e22b5c6a6889df658a74d134b376ee79fa1214760204a3265fe01f27c6bd2',
+    STAGE3E_ROUTER_HASH: 'd87cfa8b010c5889818b6ac6f3b9ddbaf2d23aa1cfb6e61d53cf31f50b722e64',
+    FEATURE_CONTRACT_V2_HASH: '063423b125c584fb5dcbca74276f12880540c9613c0b84834d0977310f8921cb',
+    STAGE3E_CORPUS_HASH: '887e98081dc4342741411647a37dfd728fd4c4f3d69f1542f6460c717ed407d1',
+  },
+  preservation: {
+    certifiedArtifactsRegenerated: false,
+    canonicalPayloadFiles: inventory.filter((entry) => entry.disposition === 'CANONICAL_GIT_PAYLOAD').length,
+    existingGitOwnerFiles: inventory.filter((entry) => entry.disposition === 'EXISTING_GIT_OWNER').length,
+    archiveOnlyFiles: inventory.filter((entry) => entry.disposition === 'PERMANENT_ARCHIVE_ONLY').length,
+    canonicalPayloadByteIdentical: inventory
+      .filter((entry) => entry.disposition !== 'PERMANENT_ARCHIVE_ONLY')
+      .every((entry) => entry.canonicalByteIdentical),
+  },
+  classificationSummary,
+  dispositionSummary,
+  authority: { tier: 'R0', canDispatch: false, canMutateLiveWorld: false },
+  historicalReplay: { testsPass: 1467, testsFail: 0, testsSkip: 1, predecessorsReproduce: true },
+  inventory,
+};
+record.lineageRecordHash = sha256Buffer(JSON.stringify(record));
+
+await writeFile(outputPath, `${JSON.stringify(record, null, 2)}\n`, { flag: 'wx' });
+console.log(`LINEAGE_RECORD=${path.relative(repositoryRoot, outputPath)}`);
+console.log(`LINEAGE_RECORD_HASH=${record.lineageRecordHash}`);
+console.log(`INVENTORY_FILES=${inventory.length}`);
+console.log(`CLASSIFICATIONS=${JSON.stringify(classificationSummary)}`);

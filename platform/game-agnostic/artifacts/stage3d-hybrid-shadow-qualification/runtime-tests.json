@@ -1,0 +1,81 @@
+{
+  "determinism": {
+    "repeatIdentical": true,
+    "cloneIsolation": true,
+    "orderingPerturbation": true,
+    "signature": "adb473cf85297a08f89c10207167d2f449bb03a7a14619d64bbf29d0ee5cd475",
+    "ROUTER_DETERMINISM_PASS": true
+  },
+  "shadow": {
+    "cases": 6000,
+    "routedToGreedyExpert": 732,
+    "routedToLearned": 5268,
+    "parseFailures": 0,
+    "illegalActions": 0,
+    "latencyMs": {
+      "feature": {
+        "mean": 7.199,
+        "p95": 13.704
+      },
+      "nexus": {
+        "mean": 7.164,
+        "p95": 13.727
+      },
+      "router": {
+        "mean": 0,
+        "p95": 0.001
+      },
+      "totalExcludingLLM": {
+        "mean": 14.364,
+        "p50": 13.043,
+        "p95": 27.489,
+        "p99": 35.213
+      }
+    },
+    "llmInferenceNote": "V2B generation measured separately at 6.4 examples/s batched (~156 ms/example amortised); it dominates hybrid latency.",
+    "deterministicReplayPass": true
+  },
+  "failureInjection": {
+    "V2B_MISSING": {
+      "route": "FAIL_CLOSED_DETERMINISTIC_INCUMBENT",
+      "reason": "adapter missing",
+      "failedClosed": true
+    },
+    "V2B_MALFORMED": {
+      "route": "FAIL_CLOSED_DETERMINISTIC_INCUMBENT",
+      "reason": "LEARNED_OUTPUT_UNUSABLE",
+      "failedClosed": true
+    },
+    "V2B_TIMEOUT": {
+      "route": "FAIL_CLOSED_DETERMINISTIC_INCUMBENT",
+      "reason": "inference timeout",
+      "failedClosed": true
+    },
+    "INVALID_INDEX": {
+      "route": "FAIL_CLOSED_DETERMINISTIC_INCUMBENT",
+      "reason": "LEARNED_OUTPUT_UNUSABLE",
+      "failedClosed": true
+    },
+    "NEXUS_EXCEPTION": {
+      "route": "FAIL_CLOSED_DETERMINISTIC_INCUMBENT",
+      "reason": "nexus failure",
+      "failedClosed": true
+    },
+    "FEATURE_MISSING": {
+      "route": "FAIL_CLOSED_DETERMINISTIC_INCUMBENT",
+      "reason": "feature absent",
+      "failedClosed": true
+    },
+    "CORRUPT_CONFIG": {
+      "route": "FAIL_CLOSED_DETERMINISTIC_INCUMBENT",
+      "reason": "router config hash mismatch",
+      "failedClosed": true
+    },
+    "UNKNOWN_STATE_VERSION": {
+      "route": "FAIL_CLOSED_DETERMINISTIC_INCUMBENT",
+      "reason": "state version unknown",
+      "failedClosed": true
+    }
+  },
+  "FAIL_CLOSED_PASS": true
+}

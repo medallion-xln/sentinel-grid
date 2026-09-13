@@ -1,0 +1,54 @@
+{
+  "determinism": {
+    "repeatIdentical": true,
+    "cloneIsolation": true,
+    "keyOrderPerturbation": true,
+    "reverseOrderStable": true,
+    "signature": "6ad0a8bec294dcf57c164984bcb835dec9686b8b0e47a853e46b0f9c7da7b26f",
+    "ROUTER_DETERMINISM_PASS": true
+  },
+  "latency": {
+    "routerOnly_ms": {
+      "mean": 0.0075,
+      "p50": 0.0072,
+      "p95": 0.0085,
+      "p99": 0.0175
+    },
+    "note": "Feature extraction (incl. Nexus) measured in Stage 3D at mean 14.36 ms / p95 27.49 ms; V2B generation ~156 ms/example amortised and dominates."
+  },
+  "failureInjection": {
+    "FEATURE_EXTRACTION_FAILURE": {
+      "route": "FAIL_CLOSED_DETERMINISTIC_INCUMBENT",
+      "failedClosed": true
+    },
+    "CLASSIFIER_MISSING": {
+      "route": "FAIL_CLOSED_DETERMINISTIC_INCUMBENT",
+      "failedClosed": true
+    },
+    "CORRUPT_ROUTER_WEIGHTS": {
+      "route": "FAIL_CLOSED_DETERMINISTIC_INCUMBENT",
+      "failedClosed": true
+    },
+    "NEXUS_EVIDENCE_FAILURE": {
+      "route": "FAIL_CLOSED_DETERMINISTIC_INCUMBENT",
+      "failedClosed": true
+    },
+    "V2B_FAILURE": {
+      "route": "FAIL_CLOSED_DETERMINISTIC_INCUMBENT",
+      "failedClosed": true
+    },
+    "GREEDY_EVAL_FAILURE": {
+      "route": "FAIL_CLOSED_DETERMINISTIC_INCUMBENT",
+      "failedClosed": true
+    },
+    "STATE_VERSION_MISMATCH": {
+      "route": "FAIL_CLOSED_DETERMINISTIC_INCUMBENT",
+      "failedClosed": true
+    },
+    "CANDIDATE_HASH_MISMATCH": {
+      "route": "FAIL_CLOSED_DETERMINISTIC_INCUMBENT",
+      "failedClosed": true
+    }
+  },
+  "FAIL_CLOSED_PASS": true
+}

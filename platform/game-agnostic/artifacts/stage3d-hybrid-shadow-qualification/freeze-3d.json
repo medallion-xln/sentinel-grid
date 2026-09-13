@@ -1,0 +1,48 @@
+{
+  "STAGE3D_HYBRID": "DETERMINISTIC_GREEDY_PLUS_LEARNED_NEXUS_V2B",
+  "V2B_CANDIDATE_HASH": "c5ab281ceb2379ef2c04db1f40171cb8f14ed17ec8cc9cedd016b0747080cad7",
+  "V2B_FREEZE_HASH": "9ba5a862fe5f5863b9dc5a60524ea4d103ef84f55c56ae4c01d9e944aae3b11e",
+  "RUNTIME_FEATURE_CONTRACT": "STAGE3D_RUNTIME_FEATURE_CONTRACT_V1",
+  "RUNTIME_FEATURE_CONTRACT_HASH": "223ec129c987a90e84b7b84fec253e90c823c4d66259841b44de632307a56f16",
+  "LABEL_LEAKAGE": false,
+  "ROUTER_RULE": {
+    "ROUTER_RULE_ID": "R1_margin_20",
+    "ROUTER_RULE": "if immediateMargin >= 20 -> greedy expert; else -> Learned Nexus V2B",
+    "architecture": "ASYMMETRIC_SELECTIVE_ALIGNED_ROUTE_WITH_V2B_FALLBACK",
+    "coverageOfRoute": 0.11,
+    "fallback": "LEARNED_NEXUS_V2B (every state receives a deterministic recommendation)",
+    "selectedOn": "ROUTER_CAL_ONLY",
+    "selectionCriterion": "best whole-distribution accuracy among rules with route coverage >= 0.01; ties to the simpler rule",
+    "calAccuracy": 0.4335,
+    "calRegret": 43.23,
+    "calAlignedPrecision": 0.5318,
+    "calWilsonLower": 0.4851,
+    "rejectedTrivialCoverage": {
+      "R1_margin_50": {
+        "prec": 1.0,
+        "coverage": 0.0003,
+        "wilsonLB": 0.2065
+      },
+      "R2_spread_30": {
+        "prec": 1.0,
+        "coverage": 0.0005,
+        "wilsonLB": 0.3424
+      },
+      "R4_spread_30_earlytick": {
+        "prec": 1.0,
+        "coverage": 0.0005,
+        "wilsonLB": 0.3424
+      },
+      "why": "1-2 routed records; precision 1.0 is an artifact, Wilson lower bound collapses"
+    },
+    "precisionTargetMet": false,
+    "precisionTarget": 0.99,
+    "precisionNote": "Measured aligned-route precision 0.5318 (Wilson LB 0.4851) is far below the 0.99 target. The router is NOT qualified at that reliability level. Threshold was not lowered to buy coverage, nor raised to buy a meaningless precision figure."
+  },
+  "ROUTER_RULE_HASH": "f650744cf5b95b1cb82a3ceb9883a9218287939fc20721d99fc591fbde241b27",
+  "corpusHash": "36ff0943c711f86c6d32de84c72296af1bf4a4dd7395158dbeed74184d4ccc3e",
+  "frozenBeforeHoldout": true,
+  "holdoutOpened": false,
+  "oodOpened": false,
+  "STAGE3D_HYBRID_FREEZE_HASH": "5d605a0fb83a78f65d9ca3425a97f6f33f3dc077a3ff3827fd9b87f1dedc412c"
+}

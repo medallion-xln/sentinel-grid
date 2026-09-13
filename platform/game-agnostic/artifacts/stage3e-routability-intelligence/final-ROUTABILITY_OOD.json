@@ -1,0 +1,56 @@
+{
+  "split": "ROUTABILITY_OOD",
+  "n": 6000,
+  "targetPrevalence": 0.2577,
+  "router": {
+    "tau": 0.9,
+    "routedN": 881,
+    "precision": 0.9103,
+    "wilsonLower": 0.8896,
+    "coverage": 0.1468,
+    "falseSafeCount": 79,
+    "meetsEvidenceFloor": true
+  },
+  "policies": {
+    "GREEDY_ALONE": {
+      "acc": 0.2577,
+      "regret": 72.7
+    },
+    "V2B_ALONE": {
+      "acc": 0.4513,
+      "regret": 62.51
+    },
+    "STAGE3D_HYBRID_margin20": {
+      "acc": 0.4622,
+      "regret": 60.62,
+      "precision": 0.4365,
+      "coverage": 0.0958
+    },
+    "STAGE3E_HYBRID": {
+      "acc": 0.5155,
+      "regret": 51.92
+    },
+    "ORACLE_GREEDY_SAFE": {
+      "acc": 0.5802,
+      "regret": 46.61
+    }
+  },
+  "deltas": {
+    "hybridMinusV2B_acc": 0.0642,
+    "hybridMinusV2B_regret": -10.59,
+    "hybridMinusStage3D_acc": 0.0533
+  },
+  "falseSafeHarm": {
+    "count": 79,
+    "meanRegret": 45.8,
+    "p95Regret": 106.5,
+    "worstRegret": 230.0,
+    "v2bWouldHaveRegret": 99.35
+  },
+  "routabilityGap": {
+    "oracleAcc": 0.5802,
+    "runtimeAcc": 0.5155,
+    "accuracyGap": 0.0647,
+    "regretGap": 5.31
+  }
+}
