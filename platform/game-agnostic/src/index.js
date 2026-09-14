@@ -310,3 +310,26 @@ export {
   verifyWorldStateCalibrationBinding,
   verifyCausalTraceCalibrationBinding,
 } from './stage3f/environment-calibration-v1.js';
+
+export {
+  COUNTERFACTUAL_VETO_LEDGER_SCHEMA_VERSION,
+  COUNTERFACTUAL_VETO_LEDGER_CONTRACT_ID,
+  COUNTERFACTUAL_VETO_LEDGER_CONTRACT,
+  COUNTERFACTUAL_VETO_LEDGER_CONTRACT_HASH,
+  LedgerActorType,
+  ActionComparisonStatus,
+  VetoDisposition,
+  VetoReasonCategory,
+  CounterfactualTiming,
+  LedgerEvaluationStatus,
+  LedgerLifecycleStatus,
+  CounterfactualVetoLedgerContractError,
+  createCounterfactualVetoLedger,
+  verifyCounterfactualVetoLedger,
+  serializeCounterfactualVetoLedger,
+  attachLedgerSelectedAction,
+  attachLedgerVeto,
+  attachLedgerCounterfactual,
+  attachLedgerActualOutcome,
+  attachLedgerEvaluation,
+} from './stage3f/counterfactual-veto-ledger-v1.js';

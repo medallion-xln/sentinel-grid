@@ -1057,3 +1057,68 @@ export function verifyWorldStateCalibrationBinding(
 export function verifyCausalTraceCalibrationBinding(
   binding: Record<string, unknown>, trace: SentinelCausalTrace, calibration: EnvironmentCalibration,
 ): true;
+
+export const COUNTERFACTUAL_VETO_LEDGER_SCHEMA_VERSION: 1;
+export const COUNTERFACTUAL_VETO_LEDGER_CONTRACT_ID: 'SENTINEL_COUNTERFACTUAL_VETO_LEDGER_V1';
+export const LedgerActorType: Readonly<{
+  SENTINEL: 'SENTINEL'; INCUMBENT: 'INCUMBENT'; HUMAN: 'HUMAN'; SYSTEM_POLICY: 'SYSTEM_POLICY'; UNKNOWN: 'UNKNOWN';
+}>;
+export const ActionComparisonStatus: Readonly<{
+  MATCH: 'MATCH'; PARTIAL_MATCH: 'PARTIAL_MATCH'; DIFFERENT_ACTION: 'DIFFERENT_ACTION';
+  NO_SENTINEL_PROPOSAL: 'NO_SENTINEL_PROPOSAL'; NO_SELECTED_ACTION: 'NO_SELECTED_ACTION'; UNKNOWN: 'UNKNOWN';
+}>;
+export const VetoDisposition: Readonly<{
+  ACCEPTED: 'ACCEPTED'; OVERRIDDEN: 'OVERRIDDEN'; VETOED: 'VETOED'; IGNORED: 'IGNORED';
+  NOT_APPLICABLE: 'NOT_APPLICABLE'; UNKNOWN: 'UNKNOWN';
+}>;
+export const VetoReasonCategory: Readonly<Record<string, string>>;
+export const CounterfactualTiming: Readonly<{ DECISION_TIME: 'DECISION_TIME'; POST_HOC_ANALYSIS: 'POST_HOC_ANALYSIS' }>;
+export const LedgerEvaluationStatus: Readonly<{
+  UNRESOLVED: 'UNRESOLVED'; SENTINEL_SUPPORTED: 'SENTINEL_SUPPORTED';
+  SELECTED_ACTION_SUPPORTED: 'SELECTED_ACTION_SUPPORTED'; BOTH_PLAUSIBLE: 'BOTH_PLAUSIBLE';
+  BOTH_POOR: 'BOTH_POOR'; INCOMPARABLE: 'INCOMPARABLE'; CONFLICTED: 'CONFLICTED'; UNKNOWN: 'UNKNOWN';
+}>;
+export const LedgerLifecycleStatus: Readonly<Record<string, string>>;
+export type LedgerActor = { type: typeof LedgerActorType[keyof typeof LedgerActorType]; id: string };
+export interface CounterfactualVetoLedger extends Record<string, unknown> {
+  contractId: 'SENTINEL_COUNTERFACTUAL_VETO_LEDGER_V1'; schemaVersion: 1; contractHash: string;
+  ledgerEntryId: `sha256:${string}`; ledgerDigest: `sha256:${string}`;
+  environment: Readonly<{ environmentId: string; environmentVersion: string; runtimeIdentity: string }>;
+  logicalTime: number; decisionEpisode: Readonly<Record<string, unknown>>;
+  attachments: readonly Readonly<Record<string, unknown>>[]; projection: Readonly<Record<string, unknown>>;
+  authority: Readonly<Record<string, unknown>> & { tier: 'R0'; canDispatch: false; canMutateLiveWorld: false };
+}
+export const COUNTERFACTUAL_VETO_LEDGER_CONTRACT: Readonly<Record<string, unknown>>;
+export const COUNTERFACTUAL_VETO_LEDGER_CONTRACT_HASH: string;
+export class CounterfactualVetoLedgerContractError extends Error { details?: Record<string, unknown> }
+export function createCounterfactualVetoLedger(args: {
+  trace: SentinelCausalTrace; calibration: EnvironmentCalibration;
+}): Readonly<CounterfactualVetoLedger>;
+export function verifyCounterfactualVetoLedger(ledger: CounterfactualVetoLedger): true;
+export function serializeCounterfactualVetoLedger(ledger: CounterfactualVetoLedger): string;
+export function attachLedgerSelectedAction(ledger: CounterfactualVetoLedger, args: {
+  selectedAction: Record<string, unknown>; selectedBy: LedgerActor; executedBy?: LedgerActor | null;
+  logicalTime: number; actionRef: string; provenance: CalibrationProvenance;
+}): Readonly<CounterfactualVetoLedger>;
+export function attachLedgerVeto(ledger: CounterfactualVetoLedger, args: {
+  disposition: typeof VetoDisposition[keyof typeof VetoDisposition]; actor: LedgerActor;
+  reason?: { category: string; description: string; epistemicCategory: WorldStateEpistemicCategory;
+    confidence: number; provenance: CalibrationProvenance } | null;
+  logicalTime: number; policyRef?: string | null; provenance: CalibrationProvenance;
+}): Readonly<CounterfactualVetoLedger>;
+export function attachLedgerCounterfactual(ledger: CounterfactualVetoLedger, args: {
+  candidateAction: Record<string, unknown>; predictionRef: string; predictionSource: { id: string; version: string };
+  predictedOutcome: unknown; predictedStateRef?: unknown; predictedValue?: unknown; predictedRisk?: unknown;
+  confidence: number; uncertainty: Record<string, unknown>;
+  timing: typeof CounterfactualTiming[keyof typeof CounterfactualTiming];
+  generatedLogicalTime: number; logicalTime: number; provenance: CalibrationProvenance;
+}): Readonly<CounterfactualVetoLedger>;
+export function attachLedgerActualOutcome(ledger: CounterfactualVetoLedger, args: {
+  trace: SentinelCausalTrace; outcomeId: string;
+}): Readonly<CounterfactualVetoLedger>;
+export function attachLedgerEvaluation(ledger: CounterfactualVetoLedger, args: {
+  calibration: EnvironmentCalibration;
+  requiredCapabilities: readonly (EnvironmentCalibrationDomain | CalibrationSufficiencyRequirement)[];
+  status: typeof LedgerEvaluationStatus[keyof typeof LedgerEvaluationStatus];
+  metrics?: readonly Record<string, unknown>[]; logicalTime: number; provenance: CalibrationProvenance;
+}): Readonly<CounterfactualVetoLedger>;
