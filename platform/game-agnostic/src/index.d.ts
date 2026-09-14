@@ -1122,3 +1122,83 @@ export function attachLedgerEvaluation(ledger: CounterfactualVetoLedger, args: {
   status: typeof LedgerEvaluationStatus[keyof typeof LedgerEvaluationStatus];
   metrics?: readonly Record<string, unknown>[]; logicalTime: number; provenance: CalibrationProvenance;
 }): Readonly<CounterfactualVetoLedger>;
+
+export const SHADOW_EXPERIENCE_SCHEMA_VERSION: 1;
+export const SHADOW_EXPERIENCE_CONTRACT_ID: 'SENTINEL_SHADOW_EXPERIENCE_V1';
+export const ExperienceValidationStatus: Readonly<{
+  RECORDED: 'RECORDED'; VALIDATED: 'VALIDATED'; INVALID: 'INVALID'; CONFLICTED: 'CONFLICTED'; INCOMPLETE: 'INCOMPLETE';
+}>;
+export const ExperienceEligibilityStatus: Readonly<{
+  ELIGIBLE: 'ELIGIBLE'; INELIGIBLE: 'INELIGIBLE'; UNRESOLVED: 'UNRESOLVED';
+}>;
+export const ExperiencePurpose: Readonly<{
+  TRANSITION_MODEL_TRAINING: 'TRANSITION_MODEL_TRAINING'; ROUTER_ANALYSIS: 'ROUTER_ANALYSIS';
+  PREDICTION_CALIBRATION: 'PREDICTION_CALIBRATION'; COUNTERFACTUAL_EVALUATION: 'COUNTERFACTUAL_EVALUATION';
+  STRATEGIC_POLICY_RESEARCH: 'STRATEGIC_POLICY_RESEARCH';
+}>;
+export const PredictionErrorStatus: Readonly<{
+  AVAILABLE: 'AVAILABLE'; INCOMPARABLE: 'INCOMPARABLE'; UNKNOWN: 'UNKNOWN'; CONFLICTED: 'CONFLICTED';
+}>;
+export const OutcomeBindingStatus: Readonly<{
+  OUTCOME_BOUND: 'OUTCOME_BOUND'; OUTCOME_UNKNOWN: 'OUTCOME_UNKNOWN'; OUTCOME_CONFLICTED: 'OUTCOME_CONFLICTED';
+}>;
+export type ExperiencePurposeValue = typeof ExperiencePurpose[keyof typeof ExperiencePurpose];
+export interface ShadowExperience extends Record<string, unknown> {
+  contractId: 'SENTINEL_SHADOW_EXPERIENCE_V1'; schemaVersion: 1; contractHash: string;
+  experienceId: `sha256:${string}`; experienceDigest: `sha256:${string}`;
+  environment: Readonly<{ environmentId: string; environmentVersion: string; runtimeIdentity: string }>;
+  logicalTime: number; episode: Readonly<Record<string, unknown>>;
+  attachments: readonly Readonly<Record<string, unknown>>[]; projection: Readonly<Record<string, unknown>>;
+  authority: Readonly<Record<string, unknown>> & { tier: 'R0'; canDispatch: false; canMutateLiveWorld: false };
+}
+export interface ShadowExperienceBuffer extends Record<string, unknown> {
+  recordType: 'SENTINEL_SHADOW_EXPERIENCE_BUFFER_V1'; schemaVersion: 1; bufferVersion: string;
+  bufferId: `sha256:${string}`; bufferDigest: `sha256:${string}`;
+  entries: readonly Readonly<ShadowExperience>[]; projection: Readonly<Record<string, unknown>>;
+}
+export interface FrozenExperienceSnapshot extends Record<string, unknown> {
+  recordType: 'SENTINEL_FROZEN_EXPERIENCE_SNAPSHOT_V1'; schemaVersion: 1;
+  snapshotId: `sha256:${string}`; snapshotDigest: `sha256:${string}`;
+  eligibilityProfile: ExperiencePurposeValue; experienceIds: readonly string[];
+}
+export const SHADOW_EXPERIENCE_CONTRACT: Readonly<Record<string, unknown>>;
+export const SHADOW_EXPERIENCE_CONTRACT_HASH: string;
+export class ShadowExperienceContractError extends Error { details?: Record<string, unknown> }
+export function createShadowExperience(args: {
+  trace: SentinelCausalTrace; ledger: CounterfactualVetoLedger; calibration: EnvironmentCalibration;
+  provenance: CalibrationProvenance;
+}): Readonly<ShadowExperience>;
+export function verifyShadowExperience(experience: ShadowExperience): true;
+export function serializeShadowExperience(experience: ShadowExperience): string;
+export function attachExecutedAction(experience: ShadowExperience, args: {
+  ledger: CounterfactualVetoLedger; selectedActionId: string;
+}): Readonly<ShadowExperience>;
+export function attachExperiencePrediction(experience: ShadowExperience, args: {
+  ledger: CounterfactualVetoLedger; counterfactualId: string;
+}): Readonly<ShadowExperience>;
+export function attachExperienceActualOutcome(experience: ShadowExperience, args: {
+  trace: SentinelCausalTrace; actualStateSnapshots: readonly WorldStateSnapshot[]; outcomeId: string;
+}): Readonly<ShadowExperience>;
+export function validateShadowExperience(experience: ShadowExperience, args: {
+  trace: SentinelCausalTrace; ledger: CounterfactualVetoLedger; calibration: EnvironmentCalibration;
+  logicalTime: number; provenance: CalibrationProvenance;
+}): Readonly<ShadowExperience>;
+export function evaluateExperienceEligibility(experience: ShadowExperience, args: {
+  purpose: ExperiencePurposeValue; calibration: EnvironmentCalibration;
+  logicalTime: number; provenance: CalibrationProvenance;
+}): Readonly<ShadowExperience>;
+export function deriveExperiencePredictionError(experience: ShadowExperience, args: {
+  calibration: EnvironmentCalibration;
+  requiredCapabilities: readonly (EnvironmentCalibrationDomain | CalibrationSufficiencyRequirement)[];
+  components?: readonly Record<string, unknown>[]; logicalTime: number; provenance: CalibrationProvenance;
+}): Readonly<ShadowExperience>;
+export function createShadowExperienceBuffer(args: { bufferVersion: string }): Readonly<ShadowExperienceBuffer>;
+export function verifyShadowExperienceBuffer(buffer: ShadowExperienceBuffer): true;
+export function appendExperienceToBuffer(
+  buffer: ShadowExperienceBuffer, experience: ShadowExperience,
+): Readonly<ShadowExperienceBuffer>;
+export function freezeExperienceSnapshot(args: {
+  buffer: ShadowExperienceBuffer; purpose: ExperiencePurposeValue;
+  calibrationConstraints?: readonly Record<string, unknown>[]; snapshotVersion?: string;
+}): Readonly<FrozenExperienceSnapshot>;
+export function verifyFrozenExperienceSnapshot(snapshot: FrozenExperienceSnapshot): true;
