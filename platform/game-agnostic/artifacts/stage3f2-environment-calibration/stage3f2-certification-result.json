@@ -1,0 +1,115 @@
+{
+  "schemaVersion": 1,
+  "stage": "STAGE_3F_2_ENVIRONMENT_CALIBRATION_CONTRACT_V1",
+  "status": "PASS",
+  "contract": {
+    "id": "SENTINEL_ENVIRONMENT_CALIBRATION_V1",
+    "schemaVersion": 1,
+    "contractHash": "a048afa33547cfd6ab3bcab34b58771b9f8399dd79331adbeac186c1dc4e2801",
+    "source": "src/stage3f/environment-calibration-v1.js",
+    "sourceSha256": "ff05ced2470c6918a5cd2d5eb7ab9591df46483cbe2d38a504046645a45ea872",
+    "testSource": "tests/stage3f2-environment-calibration-v1.test.js",
+    "testSourceSha256": "7529144aa0feae980272cc6b92e545a1e50a5a50896829aed20805ac85ada875",
+    "domains": [
+      "OBSERVATION_SEMANTICS",
+      "ACTION_SEMANTICS",
+      "RESOURCE_SEMANTICS",
+      "OBJECTIVE_SEMANTICS",
+      "FAILURE_SEMANTICS",
+      "CONSTRAINT_SEMANTICS",
+      "TEMPORAL_SEMANTICS",
+      "TRANSITION_SEMANTICS"
+    ],
+    "statuses": [
+      "CALIBRATED",
+      "PARTIALLY_CALIBRATED",
+      "INSUFFICIENT",
+      "CONFLICTED",
+      "UNKNOWN"
+    ],
+    "semanticRelations": [
+      "EQUIVALENT",
+      "PARTIALLY_EQUIVALENT",
+      "RELATED",
+      "INCOMPATIBLE",
+      "UNKNOWN"
+    ]
+  },
+  "inherited": {
+    "latestCertifiedStage": "STAGE_3F_1_SENTINEL_CAUSAL_TRACE_V1",
+    "stage3f1CertificationHash": "503298b69b5d267cb6cfcc19eb279dbac5b3c9a495b6f98f373c774d039f9ae1",
+    "stage3f1CertificationIntact": true,
+    "stage3f0CertificationHash": "3b2b2a42d43a77943d98bc4b0e865dab85b106a94e06320f4593f8e1a9194582",
+    "stage3f0CertificationIntact": true,
+    "stage3eRouterFreezeHash": "5a8e22b5c6a6889df658a74d134b376ee79fa1214760204a3265fe01f27c6bd2",
+    "stage3eReplayPass": true,
+    "predecessorOwnerFilesUnmodified": true,
+    "predecessorHashes": {
+      "worldStateSource": "dbc44bffa01dc58b13d94ef34fbcbd1d35815859fafdfe62b55cf428003d9380",
+      "causalTraceSource": "78388a00b2bedfc9689a5d9f51d0cbc04be9cf7f09774aedee762c100cd06f87",
+      "causalTraceTests": "90768bf053c79f94bc5b19af5ccc3bb4dd88c76e318593c451d799389a47324a",
+      "stage3f1CertificationScript": "2307879c8ba2a5ee347e777eebb70cee06d7ece816990d52481c147e0d7cff11",
+      "stage3f1CertificationArtifact": "96105fae1c771ac502c94d499465bcdbe27e0a5767d3278a82d02088e7cdcde0"
+    }
+  },
+  "checks": {
+    "predecessorStage3EReplayPass": true,
+    "stage3f0CertificationIntact": true,
+    "stage3f1CertificationIntact": true,
+    "predecessorOwnerFilesUnmodified": true,
+    "calibrationContractVersioned": true,
+    "contractHashBound": true,
+    "environmentIdentityBound": true,
+    "environmentVersionBound": true,
+    "calibrationVersionImmutable": true,
+    "allSemanticDomainsSupported": true,
+    "allEpistemicCategoriesSupported": true,
+    "partialCalibrationSupported": true,
+    "unknownSemanticsSupported": true,
+    "conflictedCalibrationSupported": true,
+    "taskSpecificSufficiency": true,
+    "insufficientCalibrationFailsClosed": true,
+    "sameNameDoesNotImplySameSemantics": true,
+    "semanticMappingInterface": true,
+    "unprovenMappingRemainsUnknown": true,
+    "worldStateCalibrationBinding": true,
+    "causalTraceCalibrationBinding": true,
+    "historicalCalibrationReferencePreserved": true,
+    "environmentMismatchFailsClosed": true,
+    "deterministicSerialization": true,
+    "deterministicReplay": true,
+    "keyAndArrayOrderInvariant": true,
+    "calibrationVerifies": true,
+    "authorityR0": true,
+    "cannotDispatch": true,
+    "cannotMutateLiveWorld": true,
+    "stage3f2TestsPass": true
+  },
+  "witnesses": {
+    "environmentId": "sha256:01d40dad9f3f1eab6cb0f82cf6b9def4a250c676239e6834512d2fd5c7deb9f7",
+    "calibrationId": "sha256:5ff415c3f61c295ca660022eb84d3e0144970c90d3df235b216f5d9d2dd5ff8a",
+    "calibrationDigest": "sha256:b504ed8125b8c8e727f4dd888922db1a06f38b830be7c8d3ab4185dbb981465e",
+    "worldStateCalibrationBindingId": "sha256:3117aa2ff1e8468a1c99e92e3cc81ee3dfbfb8a617dfd3160a3064edd371a476",
+    "causalTraceCalibrationBindingId": "sha256:02381851dfee6bbb209cfd8c1c27b65fbbb01bc01abd54fa84f320f3593f9e46",
+    "conflictId": "sha256:04e362fc8bcb07976c78f404255b035d7cf15eef0951497b87b506860ca93205",
+    "actionSufficiencyDigest": "sha256:b1180826b6909588df65c41f6efb7ba5c16234fe5ef6a52d327fa28ec866dfa0",
+    "planningSufficiencyDigest": "sha256:7a4ed8ca5285e14b006d8e957c46afd075b1042d2e2fe8ccd44b0bc7333d2d0a",
+    "unknownMappingId": "sha256:8c89533ffd72a2ce19c7bb68b5f0c8e16e5d11ea4f784bc42b580e7d41c1c179"
+  },
+  "tests": {
+    "total": 53,
+    "pass": 53,
+    "fail": 0,
+    "skip": 0
+  },
+  "failureInjectionPass": true,
+  "authority": {
+    "tier": "R0",
+    "canDispatch": false,
+    "canMutateLiveWorld": false,
+    "incumbentSoleExecutor": true
+  },
+  "onlineLearningEnabled": false,
+  "nextSubstage": "STAGE_3F_3_COUNTERFACTUAL_VETO_LEDGER_V1",
+  "certificationHash": "ceba5b9885e4b98ac3ccd70f63b1e6ad159198ea7e7676343d506175297b7936"
+}

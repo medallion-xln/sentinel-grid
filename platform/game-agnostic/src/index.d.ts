@@ -873,3 +873,187 @@ export function attachAttribution(trace: SentinelCausalTrace, args: {
 export function attachInstrumentationFailure(trace: SentinelCausalTrace, args: {
   failureType: string; reason: string; logicalTime: number; provenance: TraceProvenance;
 }): Readonly<SentinelCausalTrace>;
+
+export const ENVIRONMENT_CALIBRATION_SCHEMA_VERSION: 1;
+export const ENVIRONMENT_CALIBRATION_CONTRACT_ID: 'SENTINEL_ENVIRONMENT_CALIBRATION_V1';
+export const CalibrationDomain: Readonly<{
+  OBSERVATION_SEMANTICS: 'OBSERVATION_SEMANTICS'; ACTION_SEMANTICS: 'ACTION_SEMANTICS';
+  RESOURCE_SEMANTICS: 'RESOURCE_SEMANTICS'; OBJECTIVE_SEMANTICS: 'OBJECTIVE_SEMANTICS';
+  FAILURE_SEMANTICS: 'FAILURE_SEMANTICS'; CONSTRAINT_SEMANTICS: 'CONSTRAINT_SEMANTICS';
+  TEMPORAL_SEMANTICS: 'TEMPORAL_SEMANTICS'; TRANSITION_SEMANTICS: 'TRANSITION_SEMANTICS';
+}>;
+export const CalibrationStatus: Readonly<{
+  CALIBRATED: 'CALIBRATED'; PARTIALLY_CALIBRATED: 'PARTIALLY_CALIBRATED';
+  INSUFFICIENT: 'INSUFFICIENT'; CONFLICTED: 'CONFLICTED'; UNKNOWN: 'UNKNOWN';
+}>;
+export const SemanticRelationType: Readonly<{
+  EQUIVALENT: 'EQUIVALENT'; PARTIALLY_EQUIVALENT: 'PARTIALLY_EQUIVALENT'; RELATED: 'RELATED';
+  INCOMPATIBLE: 'INCOMPATIBLE'; UNKNOWN: 'UNKNOWN';
+}>;
+export const ResourceDirectionality: Readonly<{
+  INCREASE_DESIRABLE: 'INCREASE_DESIRABLE'; DECREASE_DESIRABLE: 'DECREASE_DESIRABLE';
+  CONTEXT_DEPENDENT: 'CONTEXT_DEPENDENT'; NEUTRAL: 'NEUTRAL'; UNKNOWN: 'UNKNOWN';
+}>;
+export const RewardObjectiveRelationship: Readonly<{
+  CERTIFIED_EQUIVALENT: 'CERTIFIED_EQUIVALENT'; RELATED: 'RELATED'; DISTINCT: 'DISTINCT'; UNKNOWN: 'UNKNOWN';
+}>;
+export const TransitionAssumption: Readonly<{
+  DETERMINISTIC: 'DETERMINISTIC'; STOCHASTIC: 'STOCHASTIC';
+  PARTIALLY_OBSERVABLE: 'PARTIALLY_OBSERVABLE'; ACTION_CONDITIONED: 'ACTION_CONDITIONED';
+  EXTERNALLY_INFLUENCED: 'EXTERNALLY_INFLUENCED'; DELAYED_EFFECTS_POSSIBLE: 'DELAYED_EFFECTS_POSSIBLE';
+  HIDDEN_STATE_POSSIBLE: 'HIDDEN_STATE_POSSIBLE'; NONSTATIONARY: 'NONSTATIONARY'; UNKNOWN: 'UNKNOWN';
+}>;
+export type EnvironmentCalibrationDomain = typeof CalibrationDomain[keyof typeof CalibrationDomain];
+export type EnvironmentCalibrationStatus = typeof CalibrationStatus[keyof typeof CalibrationStatus];
+export type EnvironmentSemanticRelation = typeof SemanticRelationType[keyof typeof SemanticRelationType];
+export interface CalibrationEnvironmentIdentity extends Record<string, unknown> {
+  recordType: 'SENTINEL_ENVIRONMENT_IDENTITY_V1';
+  runtimeIdentity: string;
+  environmentVersion: string;
+  environmentFamily: string;
+  environmentSchemaVersion: string;
+  structuralSemantics: Readonly<{
+    observationSchemaHash: string; actionSchemaHash: string; objectiveSchemaHash: string;
+    transitionContractVersion: string;
+  }>;
+  environmentId: `sha256:${string}`;
+}
+export interface CalibrationProvenance extends Record<string, unknown> {
+  environmentId: string;
+  environmentVersion: string;
+  sourceId: string;
+  evidenceId: string;
+}
+export interface CalibrationEvidence extends Record<string, unknown> {
+  recordType: 'SENTINEL_CALIBRATION_EVIDENCE_V1';
+  environmentId: string;
+  environmentVersion: string;
+  domain: EnvironmentCalibrationDomain;
+  claimTarget: string;
+  claimType: string;
+  claimValue: unknown;
+  sourceReference: unknown;
+  epistemicCategory: WorldStateEpistemicCategory;
+  confidence: number | null;
+  material: boolean;
+  provenance: Readonly<CalibrationProvenance>;
+  calibrationEvidenceId: `sha256:${string}`;
+}
+export interface SemanticDefinition extends Record<string, unknown> {
+  recordType: 'SENTINEL_SEMANTIC_DEFINITION_V1';
+  environmentId: string;
+  environmentVersion: string;
+  domain: EnvironmentCalibrationDomain;
+  conceptId: string;
+  conceptVersion: string;
+  semantics: Readonly<Record<string, unknown>>;
+  epistemicCategory: WorldStateEpistemicCategory;
+  confidence: number | null;
+  evidenceRefs: readonly string[];
+  provenance: Readonly<CalibrationProvenance>;
+  semanticDefinitionId: `sha256:${string}`;
+}
+export interface CalibrationDomainAssessment extends Record<string, unknown> {
+  recordType: 'SENTINEL_CALIBRATION_DOMAIN_ASSESSMENT_V1';
+  environmentId: string;
+  environmentVersion: string;
+  domain: EnvironmentCalibrationDomain;
+  status: EnvironmentCalibrationStatus;
+  confidence: number | null;
+  evidenceRefs: readonly string[];
+  provenance: Readonly<CalibrationProvenance>;
+  domainAssessmentId: `sha256:${string}`;
+}
+export interface EnvironmentCalibration extends Record<string, unknown> {
+  recordType: 'SENTINEL_ENVIRONMENT_CALIBRATION_RECORD_V1';
+  contractId: 'SENTINEL_ENVIRONMENT_CALIBRATION_V1';
+  schemaVersion: 1;
+  contractHash: string;
+  environmentIdentity: Readonly<CalibrationEnvironmentIdentity>;
+  calibrationVersion: string;
+  evidence: readonly Readonly<CalibrationEvidence>[];
+  semanticDefinitions: readonly Readonly<SemanticDefinition>[];
+  domainAssessments: readonly Readonly<CalibrationDomainAssessment>[];
+  conflicts: readonly Readonly<Record<string, unknown>>[];
+  overallStatus: EnvironmentCalibrationStatus;
+  overallConfidence: number | null;
+  structuralSimilarityImpliesSemanticEquivalence: false;
+  rewardSignalImpliesObjectiveTruth: false;
+  authority: Readonly<Record<string, unknown>> & { tier: 'R0'; canDispatch: false; canMutateLiveWorld: false };
+  calibrationId: `sha256:${string}`;
+  calibrationDigest: `sha256:${string}`;
+}
+export const ENVIRONMENT_CALIBRATION_CONTRACT: Readonly<Record<string, unknown>>;
+export const ENVIRONMENT_CALIBRATION_CONTRACT_HASH: string;
+export class EnvironmentCalibrationContractError extends Error { details?: Record<string, unknown> }
+export function createEnvironmentIdentity(args: {
+  runtimeIdentity: string; environmentVersion: string; environmentFamily: string;
+  environmentSchemaVersion: string; structuralSemantics: {
+    observationSchemaHash: string; actionSchemaHash: string; objectiveSchemaHash: string;
+    transitionContractVersion: string;
+  };
+}): Readonly<CalibrationEnvironmentIdentity>;
+export function verifyEnvironmentIdentity(identity: CalibrationEnvironmentIdentity): true;
+export function createCalibrationEvidence(args: {
+  environmentIdentity: CalibrationEnvironmentIdentity; domain: EnvironmentCalibrationDomain;
+  claimTarget: string; claimType: string; claimValue: unknown; sourceReference: unknown;
+  epistemicCategory: WorldStateEpistemicCategory; confidence: number | null; material?: boolean;
+  provenance: CalibrationProvenance;
+}): Readonly<CalibrationEvidence>;
+export function createSemanticDefinition(args: {
+  environmentIdentity: CalibrationEnvironmentIdentity; domain: EnvironmentCalibrationDomain;
+  conceptId: string; conceptVersion: string; semantics: Record<string, unknown>;
+  epistemicCategory: WorldStateEpistemicCategory; confidence: number | null;
+  evidenceRefs: readonly string[]; provenance: CalibrationProvenance;
+}): Readonly<SemanticDefinition>;
+export function createDomainAssessment(args: {
+  environmentIdentity: CalibrationEnvironmentIdentity; domain: EnvironmentCalibrationDomain;
+  status: EnvironmentCalibrationStatus; confidence: number | null;
+  evidenceRefs: readonly string[]; provenance: CalibrationProvenance;
+}): Readonly<CalibrationDomainAssessment>;
+export function createEnvironmentCalibration(args: {
+  environmentIdentity: CalibrationEnvironmentIdentity; calibrationVersion: string;
+  evidence: readonly CalibrationEvidence[]; semanticDefinitions: readonly SemanticDefinition[];
+  domainAssessments: readonly CalibrationDomainAssessment[];
+}): Readonly<EnvironmentCalibration>;
+export function verifyEnvironmentCalibration(calibration: EnvironmentCalibration): true;
+export function serializeEnvironmentCalibration(calibration: EnvironmentCalibration): string;
+export interface CalibrationSufficiencyRequirement {
+  domain: EnvironmentCalibrationDomain; allowPartial?: boolean; minimumConfidence?: number;
+}
+export interface CalibrationSufficiencyResult extends Record<string, unknown> {
+  calibrationId: string; sufficient: boolean; calibrationInsufficient: boolean;
+  domainResults: readonly Readonly<Record<string, unknown>>[]; sufficiencyDigest: `sha256:${string}`;
+}
+export function evaluateCalibrationSufficiency(
+  calibration: EnvironmentCalibration,
+  requiredCapabilities: readonly (EnvironmentCalibrationDomain | CalibrationSufficiencyRequirement)[],
+): Readonly<CalibrationSufficiencyResult>;
+export function isCalibrationSufficient(
+  calibration: EnvironmentCalibration,
+  requiredCapabilities: readonly (EnvironmentCalibrationDomain | CalibrationSufficiencyRequirement)[],
+): boolean;
+export function lookupCalibrationSemantics(calibration: EnvironmentCalibration, args: {
+  domain: EnvironmentCalibrationDomain; conceptId: string; conceptVersion?: string;
+}): Readonly<Record<string, unknown>>;
+export function createSemanticMapping(args: {
+  sourceEnvironment: CalibrationEnvironmentIdentity; targetEnvironment: CalibrationEnvironmentIdentity;
+  sourceConceptRef: string; targetConceptRef: string; relationType: EnvironmentSemanticRelation;
+  confidence: number | null; evidenceRefs: readonly string[]; provenance: Record<string, unknown>;
+}): Readonly<Record<string, unknown>>;
+export function verifySemanticMapping(
+  mapping: Record<string, unknown>, sourceEnvironment: CalibrationEnvironmentIdentity,
+  targetEnvironment: CalibrationEnvironmentIdentity,
+): true;
+export function bindWorldStateCalibration(
+  worldStateSnapshot: WorldStateSnapshot, calibration: EnvironmentCalibration,
+): Readonly<Record<string, unknown>>;
+export function bindCausalTraceCalibration(
+  trace: SentinelCausalTrace, calibration: EnvironmentCalibration,
+): Readonly<Record<string, unknown>>;
+export function verifyWorldStateCalibrationBinding(
+  binding: Record<string, unknown>, worldStateSnapshot: WorldStateSnapshot, calibration: EnvironmentCalibration,
+): true;
+export function verifyCausalTraceCalibrationBinding(
+  binding: Record<string, unknown>, trace: SentinelCausalTrace, calibration: EnvironmentCalibration,
+): true;
