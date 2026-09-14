@@ -705,3 +705,171 @@ export function createWorldStateSnapshot(args: {
 export function verifyWorldStateSnapshot(snapshot: WorldStateSnapshot): true;
 export function serializeWorldStateSnapshot(snapshot: WorldStateSnapshot): string;
 export function readWorldStateFact(snapshot: WorldStateSnapshot, path: string | readonly string[]): Readonly<WorldStateFact>;
+
+export const CAUSAL_TRACE_SCHEMA_VERSION: 1;
+export const CAUSAL_TRACE_CONTRACT_ID: 'SENTINEL_CAUSAL_TRACE_V1';
+export const TraceRelationshipType: Readonly<{
+  TEMPORAL_LINK: 'TEMPORAL_LINK'; DERIVATION_LINK: 'DERIVATION_LINK';
+  DECISION_DEPENDENCY: 'DECISION_DEPENDENCY'; ACTION_BINDING: 'ACTION_BINDING';
+  OUTCOME_BINDING: 'OUTCOME_BINDING'; CAUSAL_CLAIM: 'CAUSAL_CLAIM';
+}>;
+export const AttributionStatus: Readonly<{
+  ESTABLISHED: 'ESTABLISHED'; SUPPORTED: 'SUPPORTED'; PLAUSIBLE: 'PLAUSIBLE';
+  CONFLICTED: 'CONFLICTED'; UNKNOWN: 'UNKNOWN';
+}>;
+export const TraceLifecycleStatus: Readonly<{
+  OPEN: 'OPEN'; ACTION_BOUND: 'ACTION_BOUND'; OUTCOME_BOUND: 'OUTCOME_BOUND';
+  ATTRIBUTION_AVAILABLE: 'ATTRIBUTION_AVAILABLE'; INCOMPLETE: 'INCOMPLETE'; CONFLICTED: 'CONFLICTED';
+}>;
+export const ActionMatchStatus: Readonly<{
+  MATCH: 'MATCH'; PARTIAL_MATCH: 'PARTIAL_MATCH'; DIFFERENT_ACTION: 'DIFFERENT_ACTION';
+  NO_SENTINEL_RECOMMENDATION: 'NO_SENTINEL_RECOMMENDATION'; UNKNOWN: 'UNKNOWN';
+}>;
+export const FailureAttributionCategory: Readonly<{
+  OBSERVATION_FAILURE: 'OBSERVATION_FAILURE';
+  STATE_REPRESENTATION_FAILURE: 'STATE_REPRESENTATION_FAILURE';
+  FEATURE_DERIVATION_FAILURE: 'FEATURE_DERIVATION_FAILURE';
+  PREDICTION_FAILURE: 'PREDICTION_FAILURE'; ROUTING_FAILURE: 'ROUTING_FAILURE';
+  RECOMMENDATION_FAILURE: 'RECOMMENDATION_FAILURE'; INCUMBENT_DIVERGENCE: 'INCUMBENT_DIVERGENCE';
+  OUTCOME_ATTRIBUTION_UNCERTAIN: 'OUTCOME_ATTRIBUTION_UNCERTAIN';
+  NO_FAILURE_DETERMINED: 'NO_FAILURE_DETERMINED'; UNKNOWN: 'UNKNOWN';
+}>;
+export type TraceRelationship = typeof TraceRelationshipType[keyof typeof TraceRelationshipType];
+export type TraceAttributionStatus = typeof AttributionStatus[keyof typeof AttributionStatus];
+export type CausalTraceLifecycleStatus = typeof TraceLifecycleStatus[keyof typeof TraceLifecycleStatus];
+export type IncumbentActionMatchStatus = typeof ActionMatchStatus[keyof typeof ActionMatchStatus];
+export type TraceFailureCategory = typeof FailureAttributionCategory[keyof typeof FailureAttributionCategory];
+export interface TraceProvenance extends Record<string, unknown> {
+  environmentIdentity: string;
+  environmentVersion: string;
+  sourceId: string;
+  evidenceId: string;
+}
+export interface TraceAction extends Record<string, unknown> { actionId: string }
+export interface ObservationTraceEvidence extends Record<string, unknown> {
+  recordType: 'TRACE_OBSERVATION_EVIDENCE_V1';
+  observationId: string;
+  environment: Readonly<WorldStateEnvironment>;
+  logicalTime: number;
+  observationDigest: string;
+  provenance: Readonly<TraceProvenance>;
+  observationEvidenceId: `sha256:${string}`;
+}
+export interface FeatureDerivationTraceEvidence extends Record<string, unknown> {
+  recordType: 'TRACE_FEATURE_DERIVATION_V1';
+  environment: Readonly<WorldStateEnvironment>;
+  worldStateSnapshotId: `sha256:${string}`;
+  featureContract: Readonly<{ id: string; version: string; hash: string }>;
+  featureValues: Readonly<Record<string, unknown>> | null;
+  derivationDigest: string;
+  implementation: Readonly<{ id: string; version: string; hash: string }>;
+  provenance: Readonly<TraceProvenance>;
+  featureDerivationId: `sha256:${string}`;
+}
+export interface PredictorTraceEvidence extends Record<string, unknown> {
+  recordType: 'TRACE_PREDICTOR_EVIDENCE_V1';
+  environment: Readonly<WorldStateEnvironment>;
+  worldStateSnapshotId: `sha256:${string}`;
+  predictor: Readonly<{ id: string; version: string }>;
+  outputSummary: unknown;
+  confidence: number;
+  uncertainty: Readonly<Record<string, unknown>>;
+  epistemicCategory: 'PREDICTED';
+  provenance: Readonly<TraceProvenance>;
+  predictorEvidenceId: `sha256:${string}`;
+}
+export interface RouterEvaluationTraceEvidence extends Record<string, unknown> {
+  recordType: 'TRACE_ROUTER_EVALUATION_V1';
+  environment: Readonly<WorldStateEnvironment>;
+  featureDerivationId: `sha256:${string}`;
+  predictorEvidenceIds: readonly `sha256:${string}`[];
+  router: Readonly<{ id: string; version: string; hash: string }>;
+  score: number;
+  threshold: number;
+  selectedRoute: string;
+  fallback: Readonly<Record<string, unknown>>;
+  provenance: Readonly<TraceProvenance>;
+  routerEvaluationId: `sha256:${string}`;
+}
+export interface ShadowRecommendationTraceEvidence extends Record<string, unknown> {
+  recordType: 'TRACE_SHADOW_RECOMMENDATION_V1';
+  environment: Readonly<WorldStateEnvironment>;
+  routerEvaluationId: `sha256:${string}`;
+  proposedAction: Readonly<TraceAction> | null;
+  recommendedPath: string;
+  confidence: number | null;
+  uncertainty: Readonly<Record<string, unknown>>;
+  abstained: boolean;
+  authority: Readonly<Record<string, unknown>> & { tier: 'R0'; canDispatch: false; canMutateLiveWorld: false };
+  dispatchPermitted: false;
+  provenance: Readonly<TraceProvenance>;
+  recommendationId: `sha256:${string}`;
+}
+export interface SentinelCausalTrace extends Record<string, unknown> {
+  contractId: 'SENTINEL_CAUSAL_TRACE_V1';
+  schemaVersion: 1;
+  contractHash: string;
+  traceId: `sha256:${string}`;
+  traceDigest: `sha256:${string}`;
+  environment: Readonly<WorldStateEnvironment>;
+  logicalTime: number;
+  decisionTimeEvent: Readonly<Record<string, unknown>>;
+  attachments: readonly Readonly<Record<string, unknown>>[];
+  edges: readonly Readonly<Record<string, unknown>>[];
+  projection: Readonly<Record<string, unknown>>;
+  authority: Readonly<Record<string, unknown>> & { tier: 'R0'; canDispatch: false; canMutateLiveWorld: false };
+}
+export const CAUSAL_TRACE_CONTRACT: Readonly<Record<string, unknown>>;
+export const CAUSAL_TRACE_CONTRACT_HASH: string;
+export class CausalTraceContractError extends Error { details?: Record<string, unknown> }
+export function createObservationEvidence(args: {
+  observationId: string; environment: WorldStateEnvironment; logicalTime: number;
+  observationDigest: string; provenance: TraceProvenance;
+}): Readonly<ObservationTraceEvidence>;
+export function createFeatureDerivationEvidence(args: {
+  worldStateSnapshot: WorldStateSnapshot;
+  featureContract: { id: string; version: string; hash: string };
+  featureValues?: Record<string, unknown> | null; derivationDigest?: string | null;
+  implementation: { id: string; version: string; hash: string }; provenance: TraceProvenance;
+}): Readonly<FeatureDerivationTraceEvidence>;
+export function createPredictorEvidence(args: {
+  worldStateSnapshot: WorldStateSnapshot; predictor: { id: string; version: string };
+  outputSummary: unknown; confidence: number; uncertainty: Record<string, unknown>; provenance: TraceProvenance;
+}): Readonly<PredictorTraceEvidence>;
+export function createRouterEvaluationEvidence(args: {
+  featureDerivation: FeatureDerivationTraceEvidence; predictorEvidence?: readonly PredictorTraceEvidence[];
+  router: { id: string; version: string; hash: string }; score: number; threshold: number;
+  selectedRoute: string; fallback: Record<string, unknown>; provenance: TraceProvenance;
+}): Readonly<RouterEvaluationTraceEvidence>;
+export function createRecommendationEvidence(args: {
+  routerEvaluation: RouterEvaluationTraceEvidence; proposedAction: TraceAction | null; recommendedPath: string;
+  confidence: number | null; uncertainty: Record<string, unknown>; abstained?: boolean; provenance: TraceProvenance;
+}): Readonly<ShadowRecommendationTraceEvidence>;
+export function createTraceEdge(args: {
+  environment: WorldStateEnvironment; sourceRef: string; targetRef: string; relationshipType: TraceRelationship;
+  provenance: TraceProvenance; confidence?: number | null; attributionStatus: TraceAttributionStatus;
+  causalBasis?: { method: string; evidenceRefs: readonly string[] } | null;
+}): Readonly<Record<string, unknown>>;
+export function createDecisionTimeTrace(args: {
+  observationEvidence: ObservationTraceEvidence; worldStateSnapshot: WorldStateSnapshot;
+  featureDerivation: FeatureDerivationTraceEvidence; predictorEvidence?: readonly PredictorTraceEvidence[];
+  routerEvaluation: RouterEvaluationTraceEvidence; recommendation: ShadowRecommendationTraceEvidence;
+}): Readonly<SentinelCausalTrace>;
+export function verifyCausalTrace(trace: SentinelCausalTrace): true;
+export function serializeCausalTrace(trace: SentinelCausalTrace): string;
+export function attachIncumbentAction(trace: SentinelCausalTrace, args: {
+  selectedAction: TraceAction; logicalTime: number; provenance: TraceProvenance;
+}): Readonly<SentinelCausalTrace>;
+export function attachOutcome(trace: SentinelCausalTrace, args: {
+  actualStateSnapshot: WorldStateSnapshot; logicalTime: number; outcomeSummary: unknown;
+  observationCompleteness: 'COMPLETE' | 'PARTIAL' | 'UNKNOWN'; provenance: TraceProvenance;
+}): Readonly<SentinelCausalTrace>;
+export function attachAttribution(trace: SentinelCausalTrace, args: {
+  status: TraceAttributionStatus; failureCategory: TraceFailureCategory; explanation: string;
+  evidenceRefs: readonly string[]; confidence?: number | null;
+  causalClaim?: { sourceRef: string; targetRef: string; basis: { method: string; evidenceRefs: readonly string[] } } | null;
+  logicalTime: number; provenance: TraceProvenance;
+}): Readonly<SentinelCausalTrace>;
+export function attachInstrumentationFailure(trace: SentinelCausalTrace, args: {
+  failureType: string; reason: string; logicalTime: number; provenance: TraceProvenance;
+}): Readonly<SentinelCausalTrace>;

@@ -1,0 +1,96 @@
+{
+  "schemaVersion": 1,
+  "stage": "STAGE_3F_1_SENTINEL_CAUSAL_TRACE_V1",
+  "status": "PASS",
+  "contract": {
+    "id": "SENTINEL_CAUSAL_TRACE_V1",
+    "schemaVersion": 1,
+    "contractHash": "83060c1ba893284759b4358bb6a78a06a222d5eaa35dbb36caeb37b9fe143405",
+    "source": "src/stage3f/causal-trace-v1.js",
+    "sourceSha256": "78388a00b2bedfc9689a5d9f51d0cbc04be9cf7f09774aedee762c100cd06f87",
+    "testSource": "tests/stage3f1-causal-trace-v1.test.js",
+    "testSourceSha256": "90768bf053c79f94bc5b19af5ccc3bb4dd88c76e318593c451d799389a47324a",
+    "relationships": [
+      "TEMPORAL_LINK",
+      "DERIVATION_LINK",
+      "DECISION_DEPENDENCY",
+      "ACTION_BINDING",
+      "OUTCOME_BINDING",
+      "CAUSAL_CLAIM"
+    ],
+    "attributionStatuses": [
+      "ESTABLISHED",
+      "SUPPORTED",
+      "PLAUSIBLE",
+      "CONFLICTED",
+      "UNKNOWN"
+    ]
+  },
+  "inherited": {
+    "latestCertifiedStage": "STAGE_3F_0_WORLD_STATE_CONTRACT_V1",
+    "stage3f0CertificationHash": "3b2b2a42d43a77943d98bc4b0e865dab85b106a94e06320f4593f8e1a9194582",
+    "stage3f0CertificationIntact": true,
+    "stage3eRouterFreezeHash": "5a8e22b5c6a6889df658a74d134b376ee79fa1214760204a3265fe01f27c6bd2",
+    "stage3eReplayPass": true,
+    "predecessorOwnerFilesUnmodified": true,
+    "predecessorHashes": {
+      "worldStateSource": "dbc44bffa01dc58b13d94ef34fbcbd1d35815859fafdfe62b55cf428003d9380",
+      "worldStateTests": "d0aadb78779ac6a3fb5f8d45bcdf9c3cec6a1bf86528853e9e54b996674add5d",
+      "stage3f0CertificationScript": "e6687eeb12a7c43c10032238d01888144272b7ab3c95eecbd3948b4c3e18f0e6",
+      "stage3f0CertificationArtifact": "125d29aab44377f6f571580e2f497b223dcd5bc3dbdacfcc5ba05f9af70c3cc9"
+    }
+  },
+  "checks": {
+    "predecessorStage3EReplayPass": true,
+    "stage3f0CertificationIntact": true,
+    "predecessorOwnerFilesUnmodified": true,
+    "traceContractVersioned": true,
+    "traceContractHashBound": true,
+    "traceIdDeterministic": true,
+    "deterministicSerialization": true,
+    "deterministicReplay": true,
+    "decisionTimeEvidenceFrozen": true,
+    "appendOrientedEvidence": true,
+    "duplicateAttachmentIdempotent": true,
+    "worldStateReferenceBound": true,
+    "featureDerivationBound": true,
+    "predictorEvidenceSupported": true,
+    "routerEvidenceBound": true,
+    "recommendationBound": true,
+    "actionLateBinding": true,
+    "outcomeLateBinding": true,
+    "conflictsPreserved": true,
+    "unknownSupported": true,
+    "environmentMismatchFailsClosed": true,
+    "instrumentationFailureIsolated": true,
+    "temporalLinkSupported": true,
+    "derivationLinkSupported": true,
+    "decisionDependencySupported": true,
+    "actionBindingSupported": true,
+    "outcomeBindingSupported": true,
+    "causalClaimDistinct": true,
+    "completenessDistinctFromCausalCertainty": true,
+    "attributionStatusesSupported": true,
+    "authorityR0": true,
+    "cannotDispatch": true,
+    "cannotMutateLiveWorld": true,
+    "stage3f1TestsPass": true,
+    "traceVerifies": true
+  },
+  "tests": {
+    "total": 54,
+    "pass": 54,
+    "fail": 0,
+    "skip": 0
+  },
+  "failureInjectionPass": true,
+  "authority": {
+    "tier": "R0",
+    "canDispatch": false,
+    "canMutateLiveWorld": false,
+    "incumbentSoleExecutor": true
+  },
+  "onlineLearningEnabled": false,
+  "nextSubstage": "STAGE_3F_2_ENVIRONMENT_CALIBRATION_CONTRACT_V1",
+  "certificationHash": "503298b69b5d267cb6cfcc19eb279dbac5b3c9a495b6f98f373c774d039f9ae1"
+}
