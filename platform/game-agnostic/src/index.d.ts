@@ -1,5 +1,17 @@
 export type JsonValue = null | boolean | number | string | JsonValue[] | { [key: string]: JsonValue };
 
+export const INTEGRATED_LIVE_SHADOW_CONTRACT_ID: 'SENTINEL_INTEGRATED_LIVE_SHADOW_V1';
+export const INTEGRATED_LIVE_SHADOW_CONTRACT_HASH: string;
+export const ASCII_OBSERVATORY_CONTRACT_ID: 'SENTINEL_ASCII_OBSERVATORY_V1';
+export const ASCII_OBSERVATORY_CONTRACT_HASH: string;
+export function createForgeIntegratedCalibration(options?: { insufficient?: boolean }): Readonly<Record<string, any>>;
+export function beginIntegratedLiveShadowStep(options: Record<string, any>): Readonly<Record<string, any>>;
+export function completeIntegratedLiveShadowStep(pending: Record<string, any>, options?: Record<string, any>): Readonly<Record<string, any>>;
+export function runIntegratedLiveShadowCampaign(options?: Record<string, any>): Readonly<Record<string, any>>;
+export function createBoundedTelemetryProducer(options?: { capacity?: number }): Readonly<Record<string, any>>;
+export function createReadOnlyAsciiObservatory(producer: Record<string, any>): Readonly<Record<string, any>>;
+export function renderAsciiObservatoryFrame(frame: Record<string, any>, options?: Record<string, any>): string;
+
 export interface AdapterManifest {
   contractVersion: 1;
   gameId: string;

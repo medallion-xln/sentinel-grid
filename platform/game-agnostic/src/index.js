@@ -6,6 +6,9 @@ export {
   SNAPSHOT_CONTRACT_VERSION,
 } from './core/constants.js';
 
+export * from './stage3f/integrated-live-shadow-v1.js';
+export * from './stage3f/ascii-observatory-v1.js';
+
 export {
   SentinelGridError,
   ContractError,
