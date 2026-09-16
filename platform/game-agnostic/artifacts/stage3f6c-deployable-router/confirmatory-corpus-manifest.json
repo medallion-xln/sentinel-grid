@@ -1,0 +1,117 @@
+{
+  "schemaVersion": 1,
+  "smokeMode": false,
+  "spec": {
+    "corpusVersion": "STAGE3F6C_CONFIRMATORY_CORPUS_V1",
+    "curriculum": "FORGE_CURRICULUM_V2",
+    "recordBuilder": "FORGE_DATASET_V2/buildRecordV2",
+    "levels": [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5
+    ],
+    "seeds": [
+      401,
+      402,
+      403
+    ],
+    "oodLevels": [
+      6,
+      7
+    ],
+    "oodSeeds": [
+      411
+    ],
+    "priorSeedSpaces": {
+      "stage3b": [
+        1,
+        2,
+        3
+      ],
+      "stage3b1": [
+        1,
+        2,
+        3
+      ],
+      "stage3bOod": [
+        11
+      ],
+      "stage3eAndStage3f6": [
+        201,
+        202,
+        203
+      ],
+      "stage3f6Ood": [
+        211
+      ]
+    },
+    "seedSpaceDisjointFromPriorStages": true,
+    "targets": {
+      "DEV": 4000,
+      "CAL": 4000,
+      "HOLDOUT": 6000,
+      "OOD": 6000
+    },
+    "partitionAssignment": "SALTED_TOPOLOGY_HASH_MODULO_WEIGHTS",
+    "partitionSalt": "STAGE3F6C_PARTITION_V1",
+    "labelSource": "ORACLE_HORIZON_OPTIMAL_SET",
+    "labelDefinition": "GREEDY_SAFE = best-immediate action is a member of the authoritative horizon-optimal set",
+    "featureSource": "SENTINEL_DEPLOYABLE_FEATURE_CONTRACT_V1"
+  },
+  "effectiveTargets": {
+    "DEV": 4000,
+    "CAL": 4000,
+    "HOLDOUT": 6000,
+    "OOD": 6000
+  },
+  "deployableContractHash": "5b0a631ece4c9304d4ee8b5298dadb7a2f8a5f18ac39a358216eb14d074ec926",
+  "attempted": 21299,
+  "admitted": 20000,
+  "counts": {
+    "DEV": 4000,
+    "CAL": 4000,
+    "HOLDOUT": 6000,
+    "OOD": 6000
+  },
+  "contentHash": "28fc6369511c2eb2e59d846a7a0353817cef9e56e871a65b4f8c2b577c1b62d5",
+  "partitionHashes": {
+    "DEV": "71307cf8f5003237953b8b50c37e1995f6ae06881e6f7d6ebb33c7365548d742",
+    "CAL": "04f95c18851069f90969e48a1c6b42c337b75a9a1a1969809d6795663c9a0570",
+    "HOLDOUT": "7e5764d48d3ea2f7b2cfaa32d472c6923e7bc97356c50649450d081750db98cf",
+    "OOD": "4c50e38af40e8088415e349c5897a65a7cb7bceafb9fdeb8ee5b452f81183d62"
+  },
+  "partitionTopologyCounts": {
+    "DEV": 3915,
+    "CAL": 3914,
+    "HOLDOUT": 5843,
+    "OOD": 5947
+  },
+  "topologyOverlap": {
+    "DEV_HOLDOUT": 0,
+    "DEV_OOD": 0,
+    "CAL_HOLDOUT": 0,
+    "CAL_OOD": 0,
+    "HOLDOUT_OOD": 0,
+    "DEV_CAL": 0
+  },
+  "recordOverlap": 0,
+  "stateOverlap": 0,
+  "prevalence": {
+    "DEV": 0.26675,
+    "CAL": 0.2655,
+    "HOLDOUT": 0.25516666666666665,
+    "OOD": 0.2575
+  },
+  "rejected": {
+    "TREE_BRANCHES_ACYCLIC": 153,
+    "LAYERS": 120,
+    "ISLANDS": 47,
+    "BRIDGE_CUT_EXISTS": 28,
+    "CONTESTED_BOTTLENECK": 10
+  },
+  "featureGaps": {},
+  "generator": "scripts/generate-stage3f6c-corpus.mjs"
+}

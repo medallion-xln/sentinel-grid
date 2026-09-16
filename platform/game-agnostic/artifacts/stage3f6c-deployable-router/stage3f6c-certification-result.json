@@ -1,0 +1,1595 @@
+{
+  "schemaVersion": 1,
+  "stage": "STAGE_3F_6_C_DEPLOYABLE_ROUTER",
+  "status": "PASS",
+  "primaryResult": "DEPLOYABLE_CORE",
+  "dataset": {
+    "spec": {
+      "corpusVersion": "STAGE3F6C_CONFIRMATORY_CORPUS_V1",
+      "curriculum": "FORGE_CURRICULUM_V2",
+      "recordBuilder": "FORGE_DATASET_V2/buildRecordV2",
+      "levels": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5
+      ],
+      "seeds": [
+        401,
+        402,
+        403
+      ],
+      "oodLevels": [
+        6,
+        7
+      ],
+      "oodSeeds": [
+        411
+      ],
+      "priorSeedSpaces": {
+        "stage3b": [
+          1,
+          2,
+          3
+        ],
+        "stage3b1": [
+          1,
+          2,
+          3
+        ],
+        "stage3bOod": [
+          11
+        ],
+        "stage3eAndStage3f6": [
+          201,
+          202,
+          203
+        ],
+        "stage3f6Ood": [
+          211
+        ]
+      },
+      "seedSpaceDisjointFromPriorStages": true,
+      "targets": {
+        "DEV": 4000,
+        "CAL": 4000,
+        "HOLDOUT": 6000,
+        "OOD": 6000
+      },
+      "partitionAssignment": "SALTED_TOPOLOGY_HASH_MODULO_WEIGHTS",
+      "partitionSalt": "STAGE3F6C_PARTITION_V1",
+      "labelSource": "ORACLE_HORIZON_OPTIMAL_SET",
+      "labelDefinition": "GREEDY_SAFE = best-immediate action is a member of the authoritative horizon-optimal set",
+      "featureSource": "SENTINEL_DEPLOYABLE_FEATURE_CONTRACT_V1"
+    },
+    "counts": {
+      "DEV": 4000,
+      "CAL": 4000,
+      "HOLDOUT": 6000,
+      "OOD": 6000
+    },
+    "contentHash": "28fc6369511c2eb2e59d846a7a0353817cef9e56e871a65b4f8c2b577c1b62d5",
+    "partitionHashes": {
+      "DEV": "71307cf8f5003237953b8b50c37e1995f6ae06881e6f7d6ebb33c7365548d742",
+      "CAL": "04f95c18851069f90969e48a1c6b42c337b75a9a1a1969809d6795663c9a0570",
+      "HOLDOUT": "7e5764d48d3ea2f7b2cfaa32d472c6923e7bc97356c50649450d081750db98cf",
+      "OOD": "4c50e38af40e8088415e349c5897a65a7cb7bceafb9fdeb8ee5b452f81183d62"
+    },
+    "topologyOverlap": {
+      "DEV_HOLDOUT": 0,
+      "DEV_OOD": 0,
+      "CAL_HOLDOUT": 0,
+      "CAL_OOD": 0,
+      "HOLDOUT_OOD": 0,
+      "DEV_CAL": 0
+    },
+    "recordOverlap": 0,
+    "stateOverlap": 0,
+    "derivedVariantLeakage": 0,
+    "prevalence": {
+      "DEV": 0.26675,
+      "CAL": 0.2655,
+      "HOLDOUT": 0.25516666666666665,
+      "OOD": 0.2575
+    },
+    "rejected": {
+      "TREE_BRANCHES_ACYCLIC": 153,
+      "LAYERS": 120,
+      "ISLANDS": 47,
+      "BRIDGE_CUT_EXISTS": 28,
+      "CONTESTED_BOTTLENECK": 10
+    },
+    "partitionTopologyCounts": {
+      "DEV": 3915,
+      "CAL": 3914,
+      "HOLDOUT": 5843,
+      "OOD": 5947
+    }
+  },
+  "featureContract": {
+    "id": "SENTINEL_DEPLOYABLE_FEATURE_CONTRACT_V1",
+    "hash": "5b0a631ece4c9304d4ee8b5298dadb7a2f8a5f18ac39a358216eb14d074ec926",
+    "primaryProfile": "DEPLOYABLE_CORE",
+    "primaryFeatureCount": 30,
+    "primaryFeatureIds": [
+      "actionSurface.actionTypeEntropy",
+      "actionSurface.distinctMoveDirections",
+      "actionSurface.legalActionCount",
+      "actionSurface.moveCount",
+      "context.decisionHorizonRemaining",
+      "context.entityCount",
+      "context.objectiveCount",
+      "context.relationCount",
+      "context.tickProgress",
+      "relational.abstains",
+      "relational.actionTargetedEntityCount",
+      "relational.bottleneckCount",
+      "relational.confidence",
+      "relational.criticalDependencyCount",
+      "relational.cycleDetected",
+      "relational.cycleNodeCount",
+      "relational.edgeCount",
+      "relational.graphDensity",
+      "relational.hostileEntityCount",
+      "relational.isolatedEntityCount",
+      "relational.isolatedRatio",
+      "relational.maxCentrality",
+      "relational.maxDegree",
+      "relational.maxDependencyDepth",
+      "relational.maxDependents",
+      "relational.threatenedEntityCount",
+      "relational.uncoveredThreatenedCount",
+      "relational.unresolvedDependencyCount",
+      "relational.unsupportedThreatenedCount",
+      "resources.actorEnergy"
+    ]
+  },
+  "labelIndependence": {
+    "labelSource": "ORACLE_HORIZON_OPTIMAL_SET",
+    "labelDefinition": "GREEDY_SAFE = best-immediate action is a member of the authoritative horizon-optimal set",
+    "labelComputedFromDeployableFeatures": false,
+    "labelUsesOracleHorizonEvidence": true,
+    "coreContainsRolloutFeature": false,
+    "coreContainsSimulatorFeature": false,
+    "coreContainsV2BFeature": false,
+    "note": "The label is the membership of the best-immediate action in the authoritative horizon-optimal set. No deployable CORE feature encodes the greedy action, its value, or any horizon quantity."
+  },
+  "training": {
+    "devN": 4000,
+    "devAuroc": 0.7222831298563896,
+    "calMetrics": {
+      "n": 4000,
+      "prevalence": 0.2655,
+      "auroc": 0.7159581123507928,
+      "brier": 0.1792912206584002,
+      "ece": 0.08449925059272657
+    },
+    "calCurve": [
+      {
+        "tau": 0.5,
+        "routedN": 250,
+        "precision": 0.408,
+        "wilsonLower": 0.3489166372875682,
+        "coverage": 0.0625
+      },
+      {
+        "tau": 0.6,
+        "routedN": 95,
+        "precision": 0.47368421052631576,
+        "wilsonLower": 0.3762657187202934,
+        "coverage": 0.02375
+      },
+      {
+        "tau": 0.7,
+        "routedN": 26,
+        "precision": 0.46153846153846156,
+        "wilsonLower": 0.28755582695234905,
+        "coverage": 0.0065
+      },
+      {
+        "tau": 0.8,
+        "routedN": 8,
+        "precision": 0.625,
+        "wilsonLower": 0.3057378545838018,
+        "coverage": 0.002
+      },
+      {
+        "tau": 0.85,
+        "routedN": 3,
+        "precision": 0.6666666666666666,
+        "wilsonLower": 0.20765495512648788,
+        "coverage": 0.00075
+      },
+      {
+        "tau": 0.9,
+        "routedN": 1,
+        "precision": 1,
+        "wilsonLower": 0.20654329147389294,
+        "coverage": 0.00025
+      },
+      {
+        "tau": 0.92,
+        "routedN": 0,
+        "precision": 0,
+        "wilsonLower": 0,
+        "coverage": 0
+      },
+      {
+        "tau": 0.95,
+        "routedN": 0,
+        "precision": 0,
+        "wilsonLower": 0,
+        "coverage": 0
+      },
+      {
+        "tau": 0.97,
+        "routedN": 0,
+        "precision": 0,
+        "wilsonLower": 0,
+        "coverage": 0
+      },
+      {
+        "tau": 0.98,
+        "routedN": 0,
+        "precision": 0,
+        "wilsonLower": 0,
+        "coverage": 0
+      },
+      {
+        "tau": 0.99,
+        "routedN": 0,
+        "precision": 0,
+        "wilsonLower": 0,
+        "coverage": 0
+      },
+      {
+        "tau": 0.995,
+        "routedN": 0,
+        "precision": 0,
+        "wilsonLower": 0,
+        "coverage": 0
+      }
+    ],
+    "calTiers": {
+      "0.8": {
+        "achievable": false,
+        "reason": "no tau routes >= 200 cases at observed precision >= 0.8"
+      },
+      "0.9": {
+        "achievable": false,
+        "reason": "no tau routes >= 200 cases at observed precision >= 0.9"
+      },
+      "0.95": {
+        "achievable": false,
+        "reason": "no tau routes >= 200 cases at observed precision >= 0.95"
+      },
+      "0.975": {
+        "achievable": false,
+        "reason": "no tau routes >= 200 cases at observed precision >= 0.975"
+      },
+      "0.99": {
+        "achievable": false,
+        "reason": "no tau routes >= 200 cases at observed precision >= 0.99"
+      }
+    },
+    "operatingPointRule": {
+      "id": "HIGHEST_ACHIEVABLE_TIER_AT_EVIDENCE_FLOOR",
+      "description": "Choose the CAL tau achieving the HIGHEST reliability tier whose routed n is at or above the evidence floor (200). Among equally-high tiers prefer the larger routed n. If no tier at or above 0.80 is achievable at the floor, fall back to the Stage 3E reference tau 0.9 and mark NO_CAL_OPERATING_POINT.",
+      "evidenceFloor": 200,
+      "fallbackTau": 0.9,
+      "precisionFirst": true,
+      "mayNotBeLoweredAfterSealedExposure": true
+    },
+    "operatingPoint": {
+      "tau": 0.9,
+      "selectedTier": null,
+      "source": "NO_CAL_OPERATING_POINT"
+    },
+    "routerHash": "66e127128bf0ba181cc69091242aad3a91df618cec18375471845fcee409d1c7",
+    "hyperparameters": {
+      "learningRate": 0.1,
+      "l2": 0.001,
+      "iterations": 4000
+    }
+  },
+  "evaluationFreezeHash": "a9db1fd93ab3b33ec13f2b3d336100029adee4f05426cc0bd2f2a61f3776fb28",
+  "holdout": {
+    "n": 6000,
+    "routedN": 0,
+    "coverage": 0,
+    "precision": 0,
+    "wilsonLower": 0,
+    "falseSafe": 0,
+    "meetsEvidenceFloor": false,
+    "hybridAccuracy": 0.228,
+    "hybridRegret": 51.17933333333333,
+    "prevalence": 0.25516666666666665,
+    "auroc": 0.7253535824627717,
+    "brier": 0.17345954401231609,
+    "ece": 0.07248874758821679,
+    "policies": {
+      "ALWAYS_GREEDY": {
+        "accuracy": 0.25516666666666665,
+        "regret": 49.93716666666667
+      },
+      "ALWAYS_FALLBACK": {
+        "accuracy": 0.228,
+        "regret": 51.17933333333333
+      },
+      "DEPLOYABLE_CORE_ROUTER": {
+        "accuracy": 0.228,
+        "regret": 51.17933333333333
+      },
+      "ORACLE_GREEDY_SAFE": {
+        "accuracy": 0.2555,
+        "regret": 50.426833333333335
+      }
+    },
+    "falseSafeHarm": {
+      "n": 0,
+      "meanRegret": null,
+      "p50": null,
+      "p90": null,
+      "p95": null,
+      "p99": null,
+      "worst": null,
+      "fallbackWouldHaveRegret": null,
+      "harmVersusFallback": null
+    },
+    "highConfidenceWrong": {
+      "0.9": {
+        "n": 0,
+        "wrong": 0,
+        "rate": null,
+        "wilsonLowerOnCorrect": 0
+      },
+      "0.95": {
+        "n": 0,
+        "wrong": 0,
+        "rate": null,
+        "wilsonLowerOnCorrect": 0
+      },
+      "0.99": {
+        "n": 0,
+        "wrong": 0,
+        "rate": null,
+        "wilsonLowerOnCorrect": 0
+      }
+    },
+    "reliabilityBins": [
+      {
+        "bin": "0.0-0.1",
+        "n": 128,
+        "positives": 4,
+        "observedPrecision": 0.03125,
+        "wilsonLower": 0.012218067575115645
+      },
+      {
+        "bin": "0.1-0.2",
+        "n": 2220,
+        "positives": 190,
+        "observedPrecision": 0.08558558558558559,
+        "wilsonLower": 0.07465223011091351
+      },
+      {
+        "bin": "0.2-0.3",
+        "n": 1702,
+        "positives": 501,
+        "observedPrecision": 0.29435957696827264,
+        "wilsonLower": 0.2731896687457771
+      },
+      {
+        "bin": "0.3-0.4",
+        "n": 950,
+        "positives": 427,
+        "observedPrecision": 0.4494736842105263,
+        "wilsonLower": 0.4181076473100425
+      },
+      {
+        "bin": "0.4-0.5",
+        "n": 615,
+        "positives": 250,
+        "observedPrecision": 0.4065040650406504,
+        "wilsonLower": 0.3683804064407073
+      },
+      {
+        "bin": "0.5-0.6",
+        "n": 245,
+        "positives": 103,
+        "observedPrecision": 0.4204081632653061,
+        "wilsonLower": 0.36029200341760914
+      },
+      {
+        "bin": "0.6-0.7",
+        "n": 103,
+        "positives": 41,
+        "observedPrecision": 0.39805825242718446,
+        "wilsonLower": 0.3088324252600616
+      },
+      {
+        "bin": "0.7-0.8",
+        "n": 32,
+        "positives": 12,
+        "observedPrecision": 0.375,
+        "wilsonLower": 0.2293366846595921
+      },
+      {
+        "bin": "0.8-0.9",
+        "n": 5,
+        "positives": 3,
+        "observedPrecision": 0.6,
+        "wilsonLower": 0.23071993220883702
+      },
+      {
+        "bin": "0.9-1.0",
+        "n": 0,
+        "positives": 0,
+        "observedPrecision": null,
+        "wilsonLower": null
+      }
+    ]
+  },
+  "ood": {
+    "n": 6000,
+    "routedN": 0,
+    "coverage": 0,
+    "precision": 0,
+    "wilsonLower": 0,
+    "falseSafe": 0,
+    "meetsEvidenceFloor": false,
+    "hybridAccuracy": 0.2435,
+    "hybridRegret": 72.85516666666666,
+    "prevalence": 0.2575,
+    "auroc": 0.7161101122697671,
+    "brier": 0.17906688023350156,
+    "ece": 0.07229219132153754,
+    "policies": {
+      "ALWAYS_GREEDY": {
+        "accuracy": 0.2575,
+        "regret": 72.10366666666667
+      },
+      "ALWAYS_FALLBACK": {
+        "accuracy": 0.2435,
+        "regret": 72.85516666666666
+      },
+      "DEPLOYABLE_CORE_ROUTER": {
+        "accuracy": 0.2435,
+        "regret": 72.85516666666666
+      },
+      "ORACLE_GREEDY_SAFE": {
+        "accuracy": 0.258,
+        "regret": 72.468
+      }
+    },
+    "falseSafeHarm": {
+      "n": 0,
+      "meanRegret": null,
+      "p50": null,
+      "p90": null,
+      "p95": null,
+      "p99": null,
+      "worst": null,
+      "fallbackWouldHaveRegret": null,
+      "harmVersusFallback": null
+    },
+    "highConfidenceWrong": {
+      "0.9": {
+        "n": 0,
+        "wrong": 0,
+        "rate": null,
+        "wilsonLowerOnCorrect": 0
+      },
+      "0.95": {
+        "n": 0,
+        "wrong": 0,
+        "rate": null,
+        "wilsonLowerOnCorrect": 0
+      },
+      "0.99": {
+        "n": 0,
+        "wrong": 0,
+        "rate": null,
+        "wilsonLowerOnCorrect": 0
+      }
+    },
+    "reliabilityBins": [
+      {
+        "bin": "0.0-0.1",
+        "n": 13,
+        "positives": 0,
+        "observedPrecision": 0,
+        "wilsonLower": 0
+      },
+      {
+        "bin": "0.1-0.2",
+        "n": 1410,
+        "positives": 57,
+        "observedPrecision": 0.04042553191489362,
+        "wilsonLower": 0.031332083445394975
+      },
+      {
+        "bin": "0.2-0.3",
+        "n": 2013,
+        "positives": 458,
+        "observedPrecision": 0.2275211127670144,
+        "wilsonLower": 0.2097359940253944
+      },
+      {
+        "bin": "0.3-0.4",
+        "n": 1093,
+        "positives": 444,
+        "observedPrecision": 0.4062214089661482,
+        "wilsonLower": 0.3774825060415607
+      },
+      {
+        "bin": "0.4-0.5",
+        "n": 831,
+        "positives": 343,
+        "observedPrecision": 0.4127557160048135,
+        "wilsonLower": 0.37975757181106445
+      },
+      {
+        "bin": "0.5-0.6",
+        "n": 459,
+        "positives": 181,
+        "observedPrecision": 0.39433551198257083,
+        "wilsonLower": 0.3506804366611522
+      },
+      {
+        "bin": "0.6-0.7",
+        "n": 125,
+        "positives": 45,
+        "observedPrecision": 0.36,
+        "wilsonLower": 0.2811855308589631
+      },
+      {
+        "bin": "0.7-0.8",
+        "n": 50,
+        "positives": 16,
+        "observedPrecision": 0.32,
+        "wilsonLower": 0.207580440939994
+      },
+      {
+        "bin": "0.8-0.9",
+        "n": 6,
+        "positives": 1,
+        "observedPrecision": 0.16666666666666666,
+        "wilsonLower": 0.030052585871730285
+      },
+      {
+        "bin": "0.9-1.0",
+        "n": 0,
+        "positives": 0,
+        "observedPrecision": null,
+        "wilsonLower": null
+      }
+    ]
+  },
+  "ablations": {
+    "simulator": {
+      "available": true,
+      "routerHash": "78ee9f2895d07f8af5772240d3398ad0291fae23c9db026d7cc8bda1b1e00af7",
+      "featureCount": 43,
+      "declaredProfileFeatureCount": 46,
+      "profileFullySatisfied": false,
+      "excludedFeatures": [
+        "oneStep.bestActionObjectiveProgressDelta",
+        "oneStep.bestActionOptionValueDelta",
+        "oneStep.bestActionTerminalOutcome"
+      ],
+      "excludedReason": "The environment transition never declares these one-step reward components (Stage 3F.6-S finding RUNTIME_ONE_STEP_COMPONENTS_SILENTLY_ZERO_FILLED). They are excluded from the ablation rather than imputed, so the simulator upper bound is measured on evidence that actually exists.",
+      "operatingPoint": {
+        "tau": 0.9,
+        "selectedTier": null,
+        "source": "NO_CAL_OPERATING_POINT"
+      },
+      "tiers": {
+        "0.8": {
+          "achievable": false,
+          "reason": "no tau routes >= 200 cases at observed precision >= 0.8"
+        },
+        "0.9": {
+          "achievable": false,
+          "reason": "no tau routes >= 200 cases at observed precision >= 0.9"
+        },
+        "0.95": {
+          "achievable": false,
+          "reason": "no tau routes >= 200 cases at observed precision >= 0.95"
+        },
+        "0.975": {
+          "achievable": false,
+          "reason": "no tau routes >= 200 cases at observed precision >= 0.975"
+        },
+        "0.99": {
+          "achievable": false,
+          "reason": "no tau routes >= 200 cases at observed precision >= 0.99"
+        }
+      },
+      "holdout": {
+        "n": 6000,
+        "routedN": 0,
+        "coverage": 0,
+        "precision": 0,
+        "wilsonLower": 0,
+        "falseSafe": 0,
+        "meetsEvidenceFloor": false,
+        "hybridAccuracy": 0.228,
+        "hybridRegret": 51.17933333333333,
+        "prevalence": 0.25516666666666665,
+        "auroc": 0.746202045910583,
+        "brier": 0.16948261881923546,
+        "ece": 0.06003727573941532,
+        "policies": {
+          "ALWAYS_GREEDY": {
+            "accuracy": 0.25516666666666665,
+            "regret": 49.93716666666667
+          },
+          "ALWAYS_FALLBACK": {
+            "accuracy": 0.228,
+            "regret": 51.17933333333333
+          },
+          "DEPLOYABLE_CORE_ROUTER": {
+            "accuracy": 0.228,
+            "regret": 51.17933333333333
+          },
+          "ORACLE_GREEDY_SAFE": {
+            "accuracy": 0.2555,
+            "regret": 50.426833333333335
+          }
+        },
+        "falseSafeHarm": {
+          "n": 0,
+          "meanRegret": null,
+          "p50": null,
+          "p90": null,
+          "p95": null,
+          "p99": null,
+          "worst": null,
+          "fallbackWouldHaveRegret": null,
+          "harmVersusFallback": null
+        },
+        "highConfidenceWrong": {
+          "0.9": {
+            "n": 0,
+            "wrong": 0,
+            "rate": null,
+            "wilsonLowerOnCorrect": 0
+          },
+          "0.95": {
+            "n": 0,
+            "wrong": 0,
+            "rate": null,
+            "wilsonLowerOnCorrect": 0
+          },
+          "0.99": {
+            "n": 0,
+            "wrong": 0,
+            "rate": null,
+            "wilsonLowerOnCorrect": 0
+          }
+        },
+        "reliabilityBins": [
+          {
+            "bin": "0.0-0.1",
+            "n": 390,
+            "positives": 15,
+            "observedPrecision": 0.038461538461538464,
+            "wilsonLower": 0.0234442779906644
+          },
+          {
+            "bin": "0.1-0.2",
+            "n": 2277,
+            "positives": 232,
+            "observedPrecision": 0.10188844971453667,
+            "wilsonLower": 0.09012619307627869
+          },
+          {
+            "bin": "0.2-0.3",
+            "n": 1476,
+            "positives": 436,
+            "observedPrecision": 0.2953929539295393,
+            "wilsonLower": 0.27267344004655464
+          },
+          {
+            "bin": "0.3-0.4",
+            "n": 682,
+            "positives": 271,
+            "observedPrecision": 0.3973607038123167,
+            "wilsonLower": 0.3613071411034945
+          },
+          {
+            "bin": "0.4-0.5",
+            "n": 563,
+            "positives": 264,
+            "observedPrecision": 0.4689165186500888,
+            "wilsonLower": 0.42804437288277025
+          },
+          {
+            "bin": "0.5-0.6",
+            "n": 338,
+            "positives": 199,
+            "observedPrecision": 0.5887573964497042,
+            "wilsonLower": 0.5355876143293015
+          },
+          {
+            "bin": "0.6-0.7",
+            "n": 114,
+            "positives": 51,
+            "observedPrecision": 0.4473684210526316,
+            "wilsonLower": 0.35929241688059504
+          },
+          {
+            "bin": "0.7-0.8",
+            "n": 98,
+            "positives": 40,
+            "observedPrecision": 0.40816326530612246,
+            "wilsonLower": 0.31610683927717403
+          },
+          {
+            "bin": "0.8-0.9",
+            "n": 62,
+            "positives": 23,
+            "observedPrecision": 0.3709677419354839,
+            "wilsonLower": 0.2615698887927419
+          },
+          {
+            "bin": "0.9-1.0",
+            "n": 0,
+            "positives": 0,
+            "observedPrecision": null,
+            "wilsonLower": null
+          }
+        ]
+      },
+      "ood": {
+        "n": 6000,
+        "routedN": 1,
+        "coverage": 0.00016666666666666666,
+        "precision": 1,
+        "wilsonLower": 0.20654329147389294,
+        "falseSafe": 0,
+        "meetsEvidenceFloor": false,
+        "hybridAccuracy": 0.24366666666666667,
+        "hybridRegret": 72.8505,
+        "prevalence": 0.2575,
+        "auroc": 0.7410892818875559,
+        "brier": 0.17525435903427783,
+        "ece": 0.07427899869659464,
+        "policies": {
+          "ALWAYS_GREEDY": {
+            "accuracy": 0.2575,
+            "regret": 72.10366666666667
+          },
+          "ALWAYS_FALLBACK": {
+            "accuracy": 0.2435,
+            "regret": 72.85516666666666
+          },
+          "DEPLOYABLE_CORE_ROUTER": {
+            "accuracy": 0.24366666666666667,
+            "regret": 72.8505
+          },
+          "ORACLE_GREEDY_SAFE": {
+            "accuracy": 0.258,
+            "regret": 72.468
+          }
+        },
+        "falseSafeHarm": {
+          "n": 0,
+          "meanRegret": null,
+          "p50": null,
+          "p90": null,
+          "p95": null,
+          "p99": null,
+          "worst": null,
+          "fallbackWouldHaveRegret": null,
+          "harmVersusFallback": null
+        },
+        "highConfidenceWrong": {
+          "0.9": {
+            "n": 1,
+            "wrong": 0,
+            "rate": 0,
+            "wilsonLowerOnCorrect": 0.20654329147389294
+          },
+          "0.95": {
+            "n": 1,
+            "wrong": 0,
+            "rate": 0,
+            "wilsonLowerOnCorrect": 0.20654329147389294
+          },
+          "0.99": {
+            "n": 0,
+            "wrong": 0,
+            "rate": null,
+            "wilsonLowerOnCorrect": 0
+          }
+        },
+        "reliabilityBins": [
+          {
+            "bin": "0.0-0.1",
+            "n": 68,
+            "positives": 2,
+            "observedPrecision": 0.029411764705882353,
+            "wilsonLower": 0.008103009605045343
+          },
+          {
+            "bin": "0.1-0.2",
+            "n": 1459,
+            "positives": 74,
+            "observedPrecision": 0.05071967100753941,
+            "wilsonLower": 0.04059323453091086
+          },
+          {
+            "bin": "0.2-0.3",
+            "n": 1949,
+            "positives": 385,
+            "observedPrecision": 0.19753719856336582,
+            "wilsonLower": 0.18046344765896424
+          },
+          {
+            "bin": "0.3-0.4",
+            "n": 1008,
+            "positives": 406,
+            "observedPrecision": 0.4027777777777778,
+            "wilsonLower": 0.3729242187463546
+          },
+          {
+            "bin": "0.4-0.5",
+            "n": 642,
+            "positives": 283,
+            "observedPrecision": 0.440809968847352,
+            "wilsonLower": 0.4028692688898165
+          },
+          {
+            "bin": "0.5-0.6",
+            "n": 595,
+            "positives": 294,
+            "observedPrecision": 0.49411764705882355,
+            "wilsonLower": 0.45411112653775165
+          },
+          {
+            "bin": "0.6-0.7",
+            "n": 164,
+            "positives": 71,
+            "observedPrecision": 0.4329268292682927,
+            "wilsonLower": 0.3594856958150511
+          },
+          {
+            "bin": "0.7-0.8",
+            "n": 62,
+            "positives": 15,
+            "observedPrecision": 0.24193548387096775,
+            "wilsonLower": 0.1524576368094854
+          },
+          {
+            "bin": "0.8-0.9",
+            "n": 52,
+            "positives": 14,
+            "observedPrecision": 0.2692307692307692,
+            "wilsonLower": 0.1676881003582587
+          },
+          {
+            "bin": "0.9-1.0",
+            "n": 1,
+            "positives": 1,
+            "observedPrecision": 1,
+            "wilsonLower": 0.20654329147389294
+          }
+        ]
+      },
+      "precisionMinusCoreHoldout": 0,
+      "coverageMinusCoreHoldout": 0,
+      "interpretation": "Information value of one-step simulator evidence. NOT a statement about deployable architecture quality: the simulator capability is not available in general environments."
+    },
+    "v2b": {
+      "available": false,
+      "result": "NOT_AVAILABLE",
+      "reason": "The V2B adapter is archive-only; no runtime expert produces genuine V2B answers.",
+      "substituted": false,
+      "note": "No other model was substituted for V2B."
+    }
+  },
+  "historicalComparison": {
+    "stage3eHoldout": {
+      "precision": 0.781,
+      "coverage": 0.0578,
+      "wilsonLower": 0.7345,
+      "routedN": 347
+    },
+    "stage3eOod": {
+      "precision": 0.9103,
+      "coverage": 0.1468,
+      "wilsonLower": 0.8896,
+      "routedN": 881
+    },
+    "corePrecisionDeltaHoldout": -0.781,
+    "coreCoverageDeltaHoldout": -0.0578,
+    "corePrecisionDeltaOod": -0.9103,
+    "coreCoverageDeltaOod": -0.1468,
+    "applesToApples": false,
+    "comparabilityCaveat": "NOT apples-to-apples. The Stage 3E reference used 51 features including oracle rollout totals and genuine V2B evidence, on a different (now exposed) corpus, and its fallback arm was V2B. This result uses 30 decision-time features on a fresh corpus with a relational-selector fallback."
+  },
+  "featureImportance": {
+    "top": [
+      {
+        "key": "actionSurface.legalActionCount",
+        "weight": 0.758580816407894,
+        "absWeight": 0.758580816407894
+      },
+      {
+        "key": "context.decisionHorizonRemaining",
+        "weight": 0.7578791812355787,
+        "absWeight": 0.7578791812355787
+      },
+      {
+        "key": "relational.actionTargetedEntityCount",
+        "weight": -0.4536602363378553,
+        "absWeight": 0.4536602363378553
+      },
+      {
+        "key": "context.entityCount",
+        "weight": -0.31710920428375455,
+        "absWeight": 0.31710920428375455
+      },
+      {
+        "key": "relational.hostileEntityCount",
+        "weight": -0.26872623533733425,
+        "absWeight": 0.26872623533733425
+      },
+      {
+        "key": "actionSurface.distinctMoveDirections",
+        "weight": -0.2376080100831201,
+        "absWeight": 0.2376080100831201
+      },
+      {
+        "key": "actionSurface.moveCount",
+        "weight": -0.2376080100831201,
+        "absWeight": 0.2376080100831201
+      },
+      {
+        "key": "relational.unsupportedThreatenedCount",
+        "weight": 0.2040119970231227,
+        "absWeight": 0.2040119970231227
+      },
+      {
+        "key": "relational.isolatedEntityCount",
+        "weight": 0.10165553174309601,
+        "absWeight": 0.10165553174309601
+      },
+      {
+        "key": "relational.graphDensity",
+        "weight": 0.09937108359121234,
+        "absWeight": 0.09937108359121234
+      },
+      {
+        "key": "resources.actorEnergy",
+        "weight": 0.09820821803513524,
+        "absWeight": 0.09820821803513524
+      },
+      {
+        "key": "relational.uncoveredThreatenedCount",
+        "weight": -0.09088172523455923,
+        "absWeight": 0.09088172523455923
+      },
+      {
+        "key": "relational.maxDegree",
+        "weight": -0.06778845905038823,
+        "absWeight": 0.06778845905038823
+      },
+      {
+        "key": "relational.criticalDependencyCount",
+        "weight": -0.06778279475673744,
+        "absWeight": 0.06778279475673744
+      },
+      {
+        "key": "relational.abstains",
+        "weight": 0.0554209193963081,
+        "absWeight": 0.0554209193963081
+      }
+    ],
+    "all": [
+      {
+        "key": "actionSurface.legalActionCount",
+        "weight": 0.758580816407894,
+        "absWeight": 0.758580816407894
+      },
+      {
+        "key": "context.decisionHorizonRemaining",
+        "weight": 0.7578791812355787,
+        "absWeight": 0.7578791812355787
+      },
+      {
+        "key": "relational.actionTargetedEntityCount",
+        "weight": -0.4536602363378553,
+        "absWeight": 0.4536602363378553
+      },
+      {
+        "key": "context.entityCount",
+        "weight": -0.31710920428375455,
+        "absWeight": 0.31710920428375455
+      },
+      {
+        "key": "relational.hostileEntityCount",
+        "weight": -0.26872623533733425,
+        "absWeight": 0.26872623533733425
+      },
+      {
+        "key": "actionSurface.distinctMoveDirections",
+        "weight": -0.2376080100831201,
+        "absWeight": 0.2376080100831201
+      },
+      {
+        "key": "actionSurface.moveCount",
+        "weight": -0.2376080100831201,
+        "absWeight": 0.2376080100831201
+      },
+      {
+        "key": "relational.unsupportedThreatenedCount",
+        "weight": 0.2040119970231227,
+        "absWeight": 0.2040119970231227
+      },
+      {
+        "key": "relational.isolatedEntityCount",
+        "weight": 0.10165553174309601,
+        "absWeight": 0.10165553174309601
+      },
+      {
+        "key": "relational.graphDensity",
+        "weight": 0.09937108359121234,
+        "absWeight": 0.09937108359121234
+      },
+      {
+        "key": "resources.actorEnergy",
+        "weight": 0.09820821803513524,
+        "absWeight": 0.09820821803513524
+      },
+      {
+        "key": "relational.uncoveredThreatenedCount",
+        "weight": -0.09088172523455923,
+        "absWeight": 0.09088172523455923
+      },
+      {
+        "key": "relational.maxDegree",
+        "weight": -0.06778845905038823,
+        "absWeight": 0.06778845905038823
+      },
+      {
+        "key": "relational.criticalDependencyCount",
+        "weight": -0.06778279475673744,
+        "absWeight": 0.06778279475673744
+      },
+      {
+        "key": "relational.abstains",
+        "weight": 0.0554209193963081,
+        "absWeight": 0.0554209193963081
+      },
+      {
+        "key": "relational.cycleNodeCount",
+        "weight": -0.049279025643986056,
+        "absWeight": 0.049279025643986056
+      },
+      {
+        "key": "context.relationCount",
+        "weight": 0.04895708781032091,
+        "absWeight": 0.04895708781032091
+      },
+      {
+        "key": "relational.maxDependents",
+        "weight": 0.048604468919243866,
+        "absWeight": 0.048604468919243866
+      },
+      {
+        "key": "relational.isolatedRatio",
+        "weight": 0.04465458842480952,
+        "absWeight": 0.04465458842480952
+      },
+      {
+        "key": "actionSurface.actionTypeEntropy",
+        "weight": 0.03916043325205911,
+        "absWeight": 0.03916043325205911
+      },
+      {
+        "key": "relational.maxCentrality",
+        "weight": 0.033149627225946485,
+        "absWeight": 0.033149627225946485
+      },
+      {
+        "key": "relational.bottleneckCount",
+        "weight": 0.020116088724226277,
+        "absWeight": 0.020116088724226277
+      },
+      {
+        "key": "context.objectiveCount",
+        "weight": -0.01917771160751205,
+        "absWeight": 0.01917771160751205
+      },
+      {
+        "key": "relational.maxDependencyDepth",
+        "weight": -0.01874427881543073,
+        "absWeight": 0.01874427881543073
+      },
+      {
+        "key": "relational.edgeCount",
+        "weight": -0.013495457747954066,
+        "absWeight": 0.013495457747954066
+      },
+      {
+        "key": "context.tickProgress",
+        "weight": 0.009047144165003105,
+        "absWeight": 0.009047144165003105
+      },
+      {
+        "key": "relational.cycleDetected",
+        "weight": 0.007002740575440771,
+        "absWeight": 0.007002740575440771
+      },
+      {
+        "key": "relational.threatenedEntityCount",
+        "weight": -0.006128279716980208,
+        "absWeight": 0.006128279716980208
+      },
+      {
+        "key": "relational.confidence",
+        "weight": -0.0022715093747278665,
+        "absWeight": 0.0022715093747278665
+      },
+      {
+        "key": "relational.unresolvedDependencyCount",
+        "weight": 0,
+        "absWeight": 0
+      }
+    ],
+    "featureCountByDomain": {
+      "WORLD_STATE_DERIVED": 4,
+      "OBSERVATION_DERIVED": 6,
+      "TRACE_DERIVED": 20
+    },
+    "importanceMassByDomain": {
+      "WORLD_STATE_DERIVED": 0.30482102983588916,
+      "OBSERVATION_DERIVED": 0.2994143522784046,
+      "TRACE_DERIVED": 0.3957646178857062
+    }
+  },
+  "degradation": {
+    "REMOVE_RESOURCE_SIGNALS": {
+      "compared": 150,
+      "abstentions": 0,
+      "meanScoreDelta": -0.06147287862691903,
+      "meanAbsoluteScoreDelta": 0.06147287862691903,
+      "maxAbsoluteScoreDelta": 0.12555197263605333,
+      "p95AbsoluteScoreDelta": 0.11419177930190805,
+      "routeChangeRate": 0,
+      "falseSafeDelta": 0,
+      "observable": true
+    },
+    "HIDE_SPATIAL_INFORMATION": {
+      "compared": 150,
+      "abstentions": 0,
+      "meanScoreDelta": 0,
+      "meanAbsoluteScoreDelta": 0,
+      "maxAbsoluteScoreDelta": 0,
+      "p95AbsoluteScoreDelta": 0,
+      "routeChangeRate": 0,
+      "falseSafeDelta": 0,
+      "observable": false
+    },
+    "PARTIAL_ENTITY_SET": {
+      "compared": 150,
+      "abstentions": 0,
+      "meanScoreDelta": 0.09637237599229904,
+      "meanAbsoluteScoreDelta": 0.09716444868123236,
+      "maxAbsoluteScoreDelta": 0.3300699899564331,
+      "p95AbsoluteScoreDelta": 0.23778460906662818,
+      "routeChangeRate": 0,
+      "falseSafeDelta": 0,
+      "observable": true
+    },
+    "STALE_OBSERVATION": {
+      "compared": 150,
+      "abstentions": 0,
+      "meanScoreDelta": 0.021760887178496658,
+      "meanAbsoluteScoreDelta": 0.021760887178496658,
+      "maxAbsoluteScoreDelta": 0.031701718632630604,
+      "p95AbsoluteScoreDelta": 0.02628760087809745,
+      "routeChangeRate": 0,
+      "falseSafeDelta": null,
+      "observable": true,
+      "semantics": "previous-tick observation scored against the advanced world"
+    }
+  },
+  "actionIdentity": {
+    "runtimeActionKeyLength": 64,
+    "recordActionKeyLength": 16,
+    "canonicalRecordMapping": "runtimeKey.slice(0,16)",
+    "prefixMappingBijective": true,
+    "samplesVerified": 25,
+    "validSelectorActions": 16719,
+    "unknownActionIdFromValidSelector": 0,
+    "selectorAbstentions": 3281,
+    "fallbackScoredRows": 20000,
+    "defectRepaired": true
+  },
+  "fallbackIndependence": {
+    "whenGreedyIsSafe": {
+      "n": 150,
+      "selectorEqualsGreedy": 0.8066666666666666,
+      "selectorInOptimalSet": 0.92,
+      "greedyInOptimalSet": 1,
+      "randomLegalActionBaseline": 0.34855507455507456
+    },
+    "whenGreedyIsUnsafe": {
+      "n": 150,
+      "selectorEqualsGreedy": 0.8466666666666667,
+      "selectorInOptimalSet": 0,
+      "greedyInOptimalSet": 0,
+      "randomLegalActionBaseline": 0.19340524290524277
+    },
+    "selectorAbstentionRate": 0.16405,
+    "fallbackCorrectGivenUnsafeGreedy": 0.0005407232173031429,
+    "nearCollinearWithGreedy": true,
+    "worseThanRandomWhenGreedyUnsafe": true,
+    "interpretation": "The only deployable fallback is the relational selector, which selects the same action as the greedy policy in most cases regardless of whether that action is optimal. It therefore inherits greedy's errors instead of correcting them. A selective router can only add value when the declined arm is better on the declined cases; here it is not, which bounds the achievable benefit of ANY router on this configuration. Stage 3E did not face this limit because its fallback arm was an independent trained V2B expert."
+  },
+  "capabilityLimitation": {
+    "CORE_CAN_PREDICT_GREEDY_SAFE": true,
+    "CORE_CAN_COMPUTE_GREEDY_ACTION": false,
+    "CAPABILITY_GAP": "ACTION_COMPUTATION_GAP",
+    "abilityToPredictGreedySafety": "measured: HOLDOUT AUROC over the deployable CORE feature set",
+    "abilityToComputeGreedyAction": "absent: the immediate-best action is defined by one-step transition value, and DEPLOYABLE_CORE declares no SIMULATOR_ONE_STEP capability",
+    "consequence": "A CORE router can advise whether a greedy action proposed by another component is safe. It cannot by itself identify that action, so a good GREEDY_SAFE classification does not constitute an autonomous executable action policy for CORE."
+  },
+  "resultClassification": {
+    "applicable": [
+      "B_CORE_HAS_SIGNAL_BUT_NOT_SELECTIVE_RELIABILITY"
+    ],
+    "primaryResult": "B_CORE_HAS_SIGNAL_BUT_NOT_SELECTIVE_RELIABILITY",
+    "secondaryResult": null,
+    "evidence": {
+      "holdoutAuroc": 0.7253535824627717,
+      "oodAuroc": 0.7161101122697671,
+      "holdoutEce": 0.07248874758821679,
+      "anyCalTierAchievable": false,
+      "holdoutRoutedN": 0,
+      "holdoutWilsonLower": 0,
+      "simulatorAurocGain": 0.020848463447811327
+    },
+    "thresholds": {
+      "coreHasSignalMinAuroc": 0.65,
+      "selectiveRoutingRequiresAchievableTier": true,
+      "informationInsufficientMaxAuroc": 0.6,
+      "simulatorMaterialMinAurocGain": 0.05,
+      "calibrationLimitedMaxEce": 0.1
+    }
+  },
+  "evidenceGap": {
+    "coreFailedSelectiveReliability": true,
+    "applicableGaps": [
+      {
+        "gap": "ACTION_COMPUTATION_GAP",
+        "established": true,
+        "evidence": "DEPLOYABLE_CORE cannot compute the immediate-best action it is asked to judge; it declares no one-step simulator capability."
+      },
+      {
+        "gap": "REPRESENTATION_INFORMATION_GAP",
+        "established": true,
+        "evidence": "CORE ranks cases above chance (HOLDOUT AUROC 0.7253535824627717) but cannot reach any precision tier at the evidence floor, so the deployable features carry real but insufficient information."
+      },
+      {
+        "gap": "SPATIAL_STATE_GAP",
+        "established": true,
+        "evidence": "Hiding spatial information changes no CORE feature: the inherited Stage 3E feature set consumes no actor position. Recorded, not repaired in this stage."
+      },
+      {
+        "gap": "TEMPORAL_STATE_GAP",
+        "established": true,
+        "evidence": "A stale observation moves CORE scores but changes no routing decision at the frozen threshold."
+      },
+      {
+        "gap": "CALIBRATION_GAP",
+        "established": false,
+        "evidence": "HOLDOUT ECE 0.07248874758821679 against the frozen 0.1 bound."
+      },
+      {
+        "gap": "MODEL_CAPACITY_GAP",
+        "established": false,
+        "evidence": "NOT_ESTABLISHED. Testing capacity would require fitting a larger model, which this stage is explicitly forbidden from doing. Absence of evidence is recorded as such, not as absence of the gap."
+      }
+    ],
+    "primaryGap": "ACTION_COMPUTATION_GAP",
+    "note": "Gaps are classified only. No remediation, no added features, no representation redesign."
+  },
+  "diagnosis": {
+    "primaryLimitation": "G_INSUFFICIENT_EVIDENCE",
+    "secondaryLimitation": null,
+    "support": {
+      "routerSufficient": false,
+      "featureInformationLimited": false,
+      "simulatorMateriallyHelpful": false,
+      "v2bMateriallyHelpful": false,
+      "uncertaintyCalibrationLimited": false,
+      "insufficientEvidence": true
+    },
+    "deployableRuntimeConclusion": "DEPLOYABLE_CORE_INSUFFICIENT_FOR_SELECTIVE_ROUTING_AT_PREDECLARED_RELIABILITY"
+  },
+  "stage3gReadiness": {
+    "rule": {
+      "id": "STAGE3G_READINESS_V1",
+      "predeclaredBeforeSealedExposure": true,
+      "requirements": {
+        "minimumRoutedN": 200,
+        "minimumHoldoutPrecisionWilsonLower": 0.9,
+        "minimumCoverage": 0.05,
+        "maxHighConfidenceWrongRateAt090": 0.05,
+        "falseSafeHarmMustNotExceedFallback": true,
+        "calibratedUncertaintyMaxEce": 0.1,
+        "deterministicReplayRequired": true,
+        "zeroLeakageRequired": true,
+        "appliesToProfile": "DEPLOYABLE_CORE"
+      },
+      "note": "Stage 3G stays blocked unless the CORE profile itself satisfies every requirement. A simulator-profile result cannot unblock Stage 3G, because the simulator capability is not general."
+    },
+    "evaluation": {
+      "routedN": false,
+      "precisionWilsonLower": false,
+      "coverage": false,
+      "highConfidenceWrong": false,
+      "falseSafeHarm": true,
+      "calibration": true,
+      "leakage": true
+    },
+    "ready": false
+  },
+  "candidate": {
+    "profile": "DEPLOYABLE_CORE",
+    "architecture": "LOGISTIC_REGRESSION_STANDARDIZED_BIAS_LAST",
+    "featureContractId": "SENTINEL_DEPLOYABLE_FEATURE_CONTRACT_V1",
+    "featureContractHash": "5b0a631ece4c9304d4ee8b5298dadb7a2f8a5f18ac39a358216eb14d074ec926",
+    "featureCount": 30,
+    "routerHash": "66e127128bf0ba181cc69091242aad3a91df618cec18375471845fcee409d1c7",
+    "threshold": 0.9,
+    "weights": {
+      "keys": [
+        "actionSurface.actionTypeEntropy",
+        "actionSurface.distinctMoveDirections",
+        "actionSurface.legalActionCount",
+        "actionSurface.moveCount",
+        "context.decisionHorizonRemaining",
+        "context.entityCount",
+        "context.objectiveCount",
+        "context.relationCount",
+        "context.tickProgress",
+        "relational.abstains",
+        "relational.actionTargetedEntityCount",
+        "relational.bottleneckCount",
+        "relational.confidence",
+        "relational.criticalDependencyCount",
+        "relational.cycleDetected",
+        "relational.cycleNodeCount",
+        "relational.edgeCount",
+        "relational.graphDensity",
+        "relational.hostileEntityCount",
+        "relational.isolatedEntityCount",
+        "relational.isolatedRatio",
+        "relational.maxCentrality",
+        "relational.maxDegree",
+        "relational.maxDependencyDepth",
+        "relational.maxDependents",
+        "relational.threatenedEntityCount",
+        "relational.uncoveredThreatenedCount",
+        "relational.unresolvedDependencyCount",
+        "relational.unsupportedThreatenedCount",
+        "resources.actorEnergy"
+      ],
+      "mu": [
+        1.5782612249999917,
+        3.617749999999827,
+        6.7027500000001385,
+        3.617749999999827,
+        23.052500000000578,
+        22.48975000000045,
+        1.7379999999999058,
+        19.003000000000345,
+        0.4198709750000019,
+        0.16575000000000012,
+        1.4437499999999863,
+        1.0559999999999536,
+        761133.0634999983,
+        1.396750000000003,
+        0.2659999999999984,
+        0.8567499999999895,
+        18.97125000000034,
+        42401.93575000006,
+        0.6637499999999681,
+        5.245000000000002,
+        250401.90225000028,
+        324587.6407500005,
+        6.68700000000005,
+        4.800000000000017,
+        1.2617499999999637,
+        0.6919999999999642,
+        0.672249999999966,
+        0,
+        0.53974999999998,
+        31.98850000000041
+      ],
+      "sd": [
+        0.29130078933810144,
+        0.5564485039067084,
+        1.4238653157865357,
+        0.5564485039067084,
+        7.12886693311074,
+        7.146810123229802,
+        0.43972263985381754,
+        9.992571791085625,
+        0.16170559778513957,
+        0.37185607094681145,
+        0.6219613633498519,
+        0.9504546280596315,
+        155034.45648671503,
+        4.317040587891135,
+        0.441864232542066,
+        1.5777292028418621,
+        9.99944615653786,
+        20473.923623847026,
+        0.7454434502361817,
+        1.9481978852262487,
+        100847.25796500982,
+        211090.28979691322,
+        5.345000561272238,
+        6.3209176548979045,
+        0.6828154490783039,
+        0.7417115342233732,
+        0.7337097092856183,
+        1,
+        0.716882094559493,
+        8.557971006611263
+      ],
+      "w": [
+        0.03916043325205911,
+        -0.2376080100831201,
+        0.758580816407894,
+        -0.2376080100831201,
+        0.7578791812355787,
+        -0.31710920428375455,
+        -0.01917771160751205,
+        0.04895708781032091,
+        0.009047144165003105,
+        0.0554209193963081,
+        -0.4536602363378553,
+        0.020116088724226277,
+        -0.0022715093747278665,
+        -0.06778279475673744,
+        0.007002740575440771,
+        -0.049279025643986056,
+        -0.013495457747954066,
+        0.09937108359121234,
+        -0.26872623533733425,
+        0.10165553174309601,
+        0.04465458842480952,
+        0.033149627225946485,
+        -0.06778845905038823,
+        -0.01874427881543073,
+        0.048604468919243866,
+        -0.006128279716980208,
+        -0.09088172523455923,
+        0,
+        0.2040119970231227,
+        0.09820821803513524,
+        -1.1076082890209666
+      ]
+    },
+    "trainingCorpusHash": "28fc6369511c2eb2e59d846a7a0353817cef9e56e871a65b4f8c2b577c1b62d5",
+    "devPartitionHash": "71307cf8f5003237953b8b50c37e1995f6ae06881e6f7d6ebb33c7365548d742",
+    "calPartitionHash": "04f95c18851069f90969e48a1c6b42c337b75a9a1a1969809d6795663c9a0570",
+    "evaluationFreezeHash": "a9db1fd93ab3b33ec13f2b3d336100029adee4f05426cc0bd2f2a61f3776fb28",
+    "promotedToLiveRuntime": false,
+    "onlineLearningEnabled": false,
+    "candidateHash": "e819b0cc6c760a49aaafe52dd32acec03290cd8126c459a202f687c6c9c50459"
+  },
+  "observatory": {
+    "contractId": "SENTINEL_ASCII_OBSERVATORY_CANDIDATE_ROUTER_V1",
+    "views": [
+      "WORLD",
+      "STATE",
+      "DECISION",
+      "TRACE",
+      "COUNTERFACTUALS",
+      "EXPERIENCE",
+      "METRICS",
+      "PREDICTION",
+      "DEPLOYABLE",
+      "CANDIDATE_ROUTER"
+    ],
+    "shadowOnly": true,
+    "sampleFrameLines": 15
+  },
+  "scope": {
+    "frozenStage3EUnchanged": true,
+    "priorStage3FOwnersUnchanged": true,
+    "stage3f6sOwnersUnchanged": true,
+    "stage3f6sCertificationHash": "825084e9ef58fb5fcb27a29bee4d8a9f3b7983aed1cf0d2b1719be3b5f604b35",
+    "stage3f6rCertificationHash": "4fba8d61e09be12efb428b66d1b189c0a9b970f7e4adb4dc7d9ecbb084cb7d9f",
+    "deployableContractHashMatch": true,
+    "newOwners": [
+      "src/stage3f/deployable-router-v1.js",
+      "src/stage3f/deployable-router-observatory-v1.js",
+      "scripts/generate-stage3f6c-corpus.mjs",
+      "scripts/certify-stage3f6c-deployable-router.mjs",
+      "tests/stage3f6c-deployable-router.test.js"
+    ],
+    "existingOwnersModified": [
+      "package.json"
+    ]
+  },
+  "checks": {
+    "CORPUS_CONTENT_HASH_MATCHES": true,
+    "TOPOLOGY_OVERLAP_ZERO": true,
+    "RECORD_OVERLAP_ZERO": true,
+    "STATE_OVERLAP_ZERO": true,
+    "FRESH_SEED_SPACE_DISJOINT": true,
+    "FEATURE_CONTRACT_HASH_MATCHES_STAGE3F6S": true,
+    "CORE_USES_EXACTLY_CERTIFIED_CORE_FEATURES": true,
+    "CORE_HAS_NO_ROLLOUT_FEATURE": true,
+    "CORE_HAS_NO_SIMULATOR_FEATURE": true,
+    "CORE_HAS_NO_V2B_FEATURE": true,
+    "LABEL_INDEPENDENT_OF_FEATURES": true,
+    "THRESHOLD_SELECTED_ON_CAL_ONLY": true,
+    "SEALED_OPENED_ONLY_AFTER_FREEZE": true,
+    "EVALUATION_FREEZE_WRITTEN": true,
+    "HOLDOUT_EVALUATED": true,
+    "OOD_EVALUATED": true,
+    "SIMULATOR_ABLATION_EVALUATED": true,
+    "ACTION_IDENTITY_BINDING_PROVEN": true,
+    "CAPABILITY_LIMITATION_DECLARED": true,
+    "FALSE_SAFE_HARM_TRACKED": true,
+    "HIGH_CONFIDENCE_WRONG_TRACKED": true,
+    "DEGRADATION_MEASURED": true,
+    "SPATIAL_BLIND_SPOT_REPORTED": true,
+    "CANDIDATE_FROZEN": true,
+    "NOT_PROMOTED": true,
+    "NO_ONLINE_LEARNING": true,
+    "STAGE3F6S_INTACT": true,
+    "STAGE3F6R_INTACT": true,
+    "FROZEN_STAGE3E_UNCHANGED": true,
+    "TESTS_PASS": true
+  },
+  "tests": {
+    "pass": 28,
+    "fail": 0,
+    "skipped": 0
+  },
+  "sourceHashes": {
+    "src/stage3f/deployable-router-v1.js": "0cb3241e87cdf73c34a9973a342182d2fb5f66644abffc7acf8e6b81a0d6133e",
+    "src/stage3f/deployable-router-observatory-v1.js": "77b04f8fe587368f0543ad0927e5281a918f417b16be0a0e9fd28b302ba1894b",
+    "scripts/generate-stage3f6c-corpus.mjs": "1f36cec57774aeabbf82c91c39e042724588aa0e2f50d5f1b6789359a407eaeb",
+    "scripts/certify-stage3f6c-deployable-router.mjs": "30c25d0a841a7d5d88b6286d27e406e2699c36fb494a2508111c1d4923e70655",
+    "tests/stage3f6c-deployable-router.test.js": "cd17c977a1539a34a197ce83dc0a0ae637124599a6905faabaf60c0a3fe41340"
+  },
+  "authority": {
+    "tier": "R0",
+    "canDispatch": false,
+    "canMutateLiveWorld": false,
+    "incumbentSoleExecutor": true
+  },
+  "learning": {
+    "modelTrainingPerformed": true,
+    "trainedOn": "DEV_ONLY",
+    "offlineCandidateOnly": true,
+    "onlineLearningEnabled": false,
+    "liveRuntimeAuthorityChanged": false,
+    "promotedToLiveRuntime": false
+  },
+  "roadmap": {
+    "readyForStage3G": false,
+    "nextStage": "BLOCKED_PENDING_DEPLOYABLE_ROUTING_RELIABILITY",
+    "blockers": [
+      "STAGE3G_READINESS_UNMET:routedN",
+      "STAGE3G_READINESS_UNMET:precisionWilsonLower",
+      "STAGE3G_READINESS_UNMET:coverage",
+      "STAGE3G_READINESS_UNMET:highConfidenceWrong"
+    ]
+  },
+  "certificationHash": "40ae3b415eeca2c1774a5f4ce2e2904bb189d4d83f98f26c1614eccce5dd0051"
+}
