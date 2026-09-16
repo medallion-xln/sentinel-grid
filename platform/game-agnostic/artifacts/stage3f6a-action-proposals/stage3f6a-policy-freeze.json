@@ -1,0 +1,158 @@
+{
+  "gate": "STAGE_3F_6_A_ACTION_PROPOSALS",
+  "proposalContract": {
+    "id": "SENTINEL_DEPLOYABLE_ACTION_PROPOSAL_V1",
+    "hash": "53aaa52bf1d3ee3c06657644f8bb46496d1c6320b9fe0d961bec93d77bf65282"
+  },
+  "declaredActionCostModel": {
+    "modelId": "FORGE_DECLARED_ENERGY_COST_V1",
+    "source": "ENVIRONMENT_DECLARED_ACTION_SEMANTICS",
+    "verifiedAgainstObservedEnergyDelta": true,
+    "cost": {
+      "MOVE": 0,
+      "WAIT": 0,
+      "RETREAT": 0,
+      "COLLECT": 0,
+      "TRANSFER": 1,
+      "PROTECT": 1,
+      "RESTORE": 2,
+      "REINFORCE": 2,
+      "REPAIR": 2,
+      "ATTACK": 2,
+      "BYPASS": 3,
+      "BUILD": 4
+    },
+    "unknownCostPolicy": "ABSTAIN_RATHER_THAN_ASSUME_ZERO"
+  },
+  "producers": [
+    {
+      "id": "GREEDY",
+      "deployable": false,
+      "requiresSimulator": true,
+      "requiresV2B": false,
+      "requiresMultiStepRollout": false,
+      "requiresFutureInformation": false,
+      "availableInGeneralEnvironment": false,
+      "objective": "MAXIMIZE_IMMEDIATE_TRANSITION_VALUE"
+    },
+    {
+      "id": "NEXUS_SELECTOR",
+      "deployable": true,
+      "requiresSimulator": false,
+      "requiresV2B": false,
+      "requiresMultiStepRollout": false,
+      "requiresFutureInformation": false,
+      "availableInGeneralEnvironment": true,
+      "objective": "FOLLOW_OBSERVED_RELATIONAL_STRUCTURE"
+    },
+    {
+      "id": "RESOURCE_PRESERVING_V1",
+      "deployable": true,
+      "requiresSimulator": false,
+      "requiresV2B": false,
+      "requiresMultiStepRollout": false,
+      "requiresFutureInformation": false,
+      "availableInGeneralEnvironment": true,
+      "objective": "MINIMIZE_DECLARED_RESOURCE_COST"
+    },
+    {
+      "id": "OBJECTIVE_TARGETING_V1",
+      "deployable": true,
+      "requiresSimulator": false,
+      "requiresV2B": false,
+      "requiresMultiStepRollout": false,
+      "requiresFutureInformation": false,
+      "availableInGeneralEnvironment": true,
+      "objective": "ADVANCE_OBSERVED_OBJECTIVE_STRUCTURE"
+    },
+    {
+      "id": "THREAT_COVERING_V1",
+      "deployable": true,
+      "requiresSimulator": false,
+      "requiresV2B": false,
+      "requiresMultiStepRollout": false,
+      "requiresFutureInformation": false,
+      "availableInGeneralEnvironment": true,
+      "objective": "COVER_OBSERVED_UNSUPPORTED_THREAT"
+    },
+    {
+      "id": "RANDOM_LEGAL_V1",
+      "deployable": true,
+      "requiresSimulator": false,
+      "requiresV2B": false,
+      "requiresMultiStepRollout": false,
+      "requiresFutureInformation": false,
+      "availableInGeneralEnvironment": true,
+      "objective": "CONTROL_NO_OBJECTIVE"
+    },
+    {
+      "id": "PRIME_ROOT_PUCT",
+      "deployable": false,
+      "requiresSimulator": true,
+      "requiresV2B": false,
+      "requiresMultiStepRollout": true,
+      "requiresFutureInformation": false,
+      "availableInGeneralEnvironment": false,
+      "objective": "MAXIMIZE_SEARCHED_VALUE",
+      "evaluated": false,
+      "exclusionReason": "root-PUCT performs multi-step simulated rollouts; Stage 3F.6-A forbids adding multi-step simulator planning, so it is inventoried but not evaluated."
+    },
+    {
+      "id": "V2B",
+      "deployable": false,
+      "requiresSimulator": false,
+      "requiresV2B": true,
+      "requiresMultiStepRollout": false,
+      "requiresFutureInformation": false,
+      "availableInGeneralEnvironment": false,
+      "objective": "LEARNED_EXPERT_PREFERENCE",
+      "evaluated": false,
+      "exclusionReason": "archive-only adapter; no runtime expert produces genuine V2B answers. Never substituted."
+    }
+  ],
+  "policyDefinitions": [
+    {
+      "producerId": "RESOURCE_PRESERVING_V1",
+      "objective": "MINIMIZE_DECLARED_RESOURCE_COST"
+    },
+    {
+      "producerId": "OBJECTIVE_TARGETING_V1",
+      "objective": "ADVANCE_OBSERVED_OBJECTIVE_STRUCTURE"
+    },
+    {
+      "producerId": "THREAT_COVERING_V1",
+      "objective": "COVER_OBSERVED_UNSUPPORTED_THREAT"
+    },
+    {
+      "producerId": "RANDOM_LEGAL_V1",
+      "objective": "CONTROL_NO_OBJECTIVE"
+    }
+  ],
+  "policyParameters": "NONE — every deployable producer is a deterministic rule with no fitted parameter",
+  "decisionRules": "deterministic preference orders and declared cost minimisation; ties broken by action identity",
+  "acceptanceRule": {
+    "id": "USEFUL_INDEPENDENT_FALLBACK_V1",
+    "establishedOn": "DEV_CAL_ONLY",
+    "minimumGreedyWrongN": 200,
+    "minimumDisagreementWhenGreedyWrong": 0.5,
+    "correctnessBenchmark": "STRICTLY_BETTER_THAN_RANDOM_LEGAL_CONTROL_ON_THE_SAME_CASES",
+    "randomControlCorrectWhenGreedyWrong": 0.1836143757451882,
+    "rationale": "A fallback earns its place only by differing from greedy where greedy fails AND being right there more often than an uninformed legal choice. The bar is a measured control, not a chosen constant."
+  },
+  "minimumEvidenceFloors": {
+    "greedyWrongN": 200
+  },
+  "developmentQualification": {
+    "NEXUS_SELECTOR": false,
+    "RESOURCE_PRESERVING_V1": true,
+    "OBJECTIVE_TARGETING_V1": false,
+    "THREAT_COVERING_V1": false,
+    "RANDOM_LEGAL_V1": false
+  },
+  "proposalsContentHash": "0ab6b12b1c7940e4275d9011cce0f075a451ddc2fc7f88fa0ff79f1b28312d7a",
+  "sourceCorpusHash": "28fc6369511c2eb2e59d846a7a0353817cef9e56e871a65b4f8c2b577c1b62d5",
+  "routerTrained": false,
+  "thresholdsTuned": false,
+  "sealedPartitionsUnopenedAtFreeze": true,
+  "policyFreezeHash": "cd3910084dc59fc487ea6ae1853f78164d1814923fa3671ef16fc2f0f4355cf7"
+}

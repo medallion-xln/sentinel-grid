@@ -1,0 +1,107 @@
+{
+  "schemaVersion": 1,
+  "stage": "STAGE_3F_6_A_ACTION_PROPOSALS",
+  "sourceCorpusHash": "28fc6369511c2eb2e59d846a7a0353817cef9e56e871a65b4f8c2b577c1b62d5",
+  "proposalContract": {
+    "id": "SENTINEL_DEPLOYABLE_ACTION_PROPOSAL_V1",
+    "hash": "53aaa52bf1d3ee3c06657644f8bb46496d1c6320b9fe0d961bec93d77bf65282"
+  },
+  "producers": [
+    {
+      "id": "GREEDY",
+      "deployable": false,
+      "requiresSimulator": true,
+      "requiresV2B": false,
+      "requiresMultiStepRollout": false,
+      "requiresFutureInformation": false,
+      "availableInGeneralEnvironment": false,
+      "objective": "MAXIMIZE_IMMEDIATE_TRANSITION_VALUE"
+    },
+    {
+      "id": "NEXUS_SELECTOR",
+      "deployable": true,
+      "requiresSimulator": false,
+      "requiresV2B": false,
+      "requiresMultiStepRollout": false,
+      "requiresFutureInformation": false,
+      "availableInGeneralEnvironment": true,
+      "objective": "FOLLOW_OBSERVED_RELATIONAL_STRUCTURE"
+    },
+    {
+      "id": "RESOURCE_PRESERVING_V1",
+      "deployable": true,
+      "requiresSimulator": false,
+      "requiresV2B": false,
+      "requiresMultiStepRollout": false,
+      "requiresFutureInformation": false,
+      "availableInGeneralEnvironment": true,
+      "objective": "MINIMIZE_DECLARED_RESOURCE_COST"
+    },
+    {
+      "id": "OBJECTIVE_TARGETING_V1",
+      "deployable": true,
+      "requiresSimulator": false,
+      "requiresV2B": false,
+      "requiresMultiStepRollout": false,
+      "requiresFutureInformation": false,
+      "availableInGeneralEnvironment": true,
+      "objective": "ADVANCE_OBSERVED_OBJECTIVE_STRUCTURE"
+    },
+    {
+      "id": "THREAT_COVERING_V1",
+      "deployable": true,
+      "requiresSimulator": false,
+      "requiresV2B": false,
+      "requiresMultiStepRollout": false,
+      "requiresFutureInformation": false,
+      "availableInGeneralEnvironment": true,
+      "objective": "COVER_OBSERVED_UNSUPPORTED_THREAT"
+    },
+    {
+      "id": "RANDOM_LEGAL_V1",
+      "deployable": true,
+      "requiresSimulator": false,
+      "requiresV2B": false,
+      "requiresMultiStepRollout": false,
+      "requiresFutureInformation": false,
+      "availableInGeneralEnvironment": true,
+      "objective": "CONTROL_NO_OBJECTIVE"
+    },
+    {
+      "id": "PRIME_ROOT_PUCT",
+      "deployable": false,
+      "requiresSimulator": true,
+      "requiresV2B": false,
+      "requiresMultiStepRollout": true,
+      "requiresFutureInformation": false,
+      "availableInGeneralEnvironment": false,
+      "objective": "MAXIMIZE_SEARCHED_VALUE",
+      "evaluated": false,
+      "exclusionReason": "root-PUCT performs multi-step simulated rollouts; Stage 3F.6-A forbids adding multi-step simulator planning, so it is inventoried but not evaluated."
+    },
+    {
+      "id": "V2B",
+      "deployable": false,
+      "requiresSimulator": false,
+      "requiresV2B": true,
+      "requiresMultiStepRollout": false,
+      "requiresFutureInformation": false,
+      "availableInGeneralEnvironment": false,
+      "objective": "LEARNED_EXPERT_PREFERENCE",
+      "evaluated": false,
+      "exclusionReason": "archive-only adapter; no runtime expert produces genuine V2B answers. Never substituted."
+    }
+  ],
+  "evaluated": 20000,
+  "counts": {
+    "CAL": 4000,
+    "OOD": 6000,
+    "HOLDOUT": 6000,
+    "DEV": 4000
+  },
+  "contentHash": "0ab6b12b1c7940e4275d9011cce0f075a451ddc2fc7f88fa0ff79f1b28312d7a",
+  "skipped": {},
+  "routerTrained": false,
+  "thresholdsTuned": false,
+  "generator": "scripts/generate-stage3f6a-proposals.mjs"
+}
