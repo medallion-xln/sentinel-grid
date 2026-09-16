@@ -1,0 +1,639 @@
+{
+  "recordType": "SENTINEL_STAGE3F6_EVALUATION_FREEZE_V1",
+  "contractId": "SENTINEL_PREDICTION_RELIABILITY_BASELINE_V1",
+  "contractHash": "e0a1691b7940efa0f60f9b659e814f50b4ba7eceebd4c64eb155dbf8f5f57962",
+  "methodology": {
+    "version": "STAGE3F6_METHODOLOGY_V1",
+    "partitions": {
+      "source": "FROZEN_STAGE3E_ROUTABILITY_SPLITS_JOINED_BY_RECORD_HASH",
+      "design": [
+        "DEV",
+        "CAL"
+      ],
+      "sealed": [
+        "HOLDOUT",
+        "OOD"
+      ],
+      "derivedVariantQuarantine": "Stage 3E splits are not topology-disjoint (inherited). A case is excluded from Stage 3F.6 evaluation when its topologyHash already appears in an earlier partition in order DEV, CAL, HOLDOUT, OOD. Full Stage 3E splits are used only for the exact Stage 3E replay.",
+      "quarantineOrder": [
+        "DEV",
+        "CAL",
+        "HOLDOUT",
+        "OOD"
+      ]
+    },
+    "predictionQuality": {
+      "exact": "absolute error == 0",
+      "approximate": "absolute error <= max(1, 0.05 * |actual|) and not exact",
+      "directional": "sign of predicted change == sign of actual change, actual change != 0, not approximate",
+      "wrong": "comparable, none of the above",
+      "incomparable": "identity fact, malformed prediction, environment mismatch, non-decision-time or hindsight prediction, conflicted outcome, or calibration insufficient for the domain",
+      "unknown": "prediction or actual outcome missing",
+      "precedence": [
+        "UNKNOWN",
+        "INCOMPARABLE",
+        "EXACT",
+        "APPROXIMATELY_CORRECT",
+        "DIRECTIONALLY_CORRECT",
+        "WRONG"
+      ],
+      "approximateCountsAsExact": false
+    },
+    "confidence": {
+      "bins": 10,
+      "binning": "EQUAL_WIDTH_0_1_RIGHT_CLOSED_LAST",
+      "ece": "SUM n_b/N * |accuracy_b - meanConfidence_b|",
+      "brier": "MEAN (confidence - correct)^2",
+      "mixSemanticClasses": false
+    },
+    "highConfidenceThresholds": [
+      0.9,
+      0.95,
+      0.99
+    ],
+    "reliabilityTiers": [
+      0.8,
+      0.9,
+      0.95,
+      0.975,
+      0.99
+    ],
+    "evidenceFloor": {
+      "minTierN": 200,
+      "minBucketN": 30,
+      "wilsonZ": 1.96,
+      "source": "STAGE3E evidence-floor.json (predeclared n>=200 Wilson 95%)"
+    },
+    "tierSelection": {
+      "grid": "tau in 0.50..0.99 step 0.01",
+      "designPartition": "CAL",
+      "rule": "smallest tau with CAL routed n>=200 and CAL Wilson lower >= tier",
+      "achievable": "HOLDOUT routed n>=200 and HOLDOUT Wilson lower >= tier at the CAL-selected tau",
+      "noOperatingPoint": "NOT_ACHIEVABLE; frozen Stage 3E tau reported as reference only"
+    },
+    "stage3eFrozenTau": 0.9,
+    "novelty": {
+      "representation": "STAGE3E_CONTRACT_FEATURES_STANDARDIZED_BY_FROZEN_STAGE3E_MU_SD",
+      "distance": "EUCLIDEAN / sqrt(featureCount) to nearest DEV case",
+      "thresholdSource": "CAL nearest-DEV distance quantiles",
+      "familiarQuantile": 0.5,
+      "nearNovelQuantile": 0.95
+    },
+    "proxyFidelity": {
+      "statistic": "KENDALL_TAU_B(immediate V2 scalar, horizon total scalar) over legal branches excluding the contract greedy branch",
+      "minimumBranches": 3,
+      "high": 0.8,
+      "low": 0.5,
+      "purpose": "per-state reliability of one-step consequence evidence as a proxy for horizon consequence; excludes the greedy branch so the bucket is not the GREEDY_SAFE label"
+    },
+    "worldStateBaseline": {
+      "id": "CALIBRATION_SEMANTICS_PERSISTENCE_BASELINE_V1",
+      "sentinelCapability": false,
+      "rules": [
+        "tick + declared actionDuration (TEMPORAL_SEMANTICS)",
+        "energy - declared resourceCosts (ACTION_SEMANTICS)",
+        "entity/relationship/objective counts persist absent declared creation/destruction effects",
+        "worldHash identity not predicted"
+      ],
+      "readsSimulator": false,
+      "fitted": false
+    },
+    "degradations": [
+      "REMOVE_THREAT_INFORMATION",
+      "REMOVE_OBJECTIVE_INFORMATION",
+      "DROP_ENTITY_SUBSET",
+      "HIDE_RELATIONSHIPS",
+      "REMOVE_RESOURCE_SIGNALS",
+      "HIDE_SPATIAL_INFORMATION",
+      "STALE_OBSERVATION"
+    ],
+    "degradationDropRule": "drop non-ACTOR entity when sha256(id + \":STAGE3F6_DROP\") begins with 0-3 (25%)",
+    "calibrationVariants": [
+      "CALIBRATED",
+      "PARTIALLY_CALIBRATED",
+      "INSUFFICIENT",
+      "CONFLICTED"
+    ],
+    "routerEquations": {
+      "contractPath": "STAGE3E_CANONICAL_BIAS_LAST over frozen matrix features (must reproduce Stage 3E CAL/HOLDOUT/OOD exactly)",
+      "runtimePath": "STAGE3F5_RUNTIME_BIAS_FIRST over Stage 3F.5 runtime features (as executed by the certified runtime)",
+      "decomposition": [
+        "contract",
+        "runtime",
+        "runtimeFeaturesCanonicalEquation",
+        "derivationOnly",
+        "candidateOnly",
+        "equationOnly"
+      ],
+      "justifiedOn": "CAL"
+    },
+    "attributionPrecedence": {
+      "runtimeRouterFalseSafe": [
+        "OUTCOME_BINDING_ERROR",
+        "INHERENT_STOCHASTICITY",
+        "ROUTER_ERROR(RUNTIME_ROUTER_EQUATION_DIVERGENCE)",
+        "FEATURE_DERIVATION_ERROR",
+        "ACTION_BINDING_ERROR",
+        "STATE_REPRESENTATION_ERROR",
+        "ROUTER_ERROR(REPRESENTATION_EVIDENCES_UNSAFE_YET_ROUTED)",
+        "UNKNOWN"
+      ],
+      "contractRouterFalseSafe": [
+        "INHERENT_STOCHASTICITY",
+        "STATE_REPRESENTATION_ERROR",
+        "ROUTER_ERROR(REPRESENTATION_EVIDENCES_UNSAFE_YET_ROUTED)",
+        "UNKNOWN"
+      ],
+      "worldStateBaseline": [
+        "OBSERVATION_ERROR",
+        "CALIBRATION_ERROR",
+        "PREDICTOR_ERROR"
+      ],
+      "oneStepConsequence": [
+        "OBSERVATION_ERROR",
+        "CALIBRATION_ERROR",
+        "PREDICTOR_ERROR"
+      ],
+      "routerErrorEvidence": "runtime equation alone changed the route, or exact contract-feature signature class with >=2 members, all unsafe, yet routed",
+      "representationErrorEvidence": "exact contract-feature signature class containing both labels"
+    },
+    "correctForWrongReason": "final runtime decision correct while at least one intermediate error is present: runtime feature evidence changed the route, the runtime equation changed the route, or the runtime greedy action differs from the contract greedy action",
+    "errorCompensation": "final runtime decision correct, two or more intermediate errors present, and correcting any single present error alone makes the decision wrong",
+    "catastrophicRegret": 100,
+    "layerB": {
+      "quotas": {
+        "DEV": 100,
+        "CAL": 100,
+        "HOLDOUT": 300,
+        "OOD": 300
+      },
+      "order": "sha256(\"STAGE3F6_LAYER_B:\" + recordHash)",
+      "shardSize": 50,
+      "incumbent": "STAGE3F5 runtime HEURISTIC_GREEDY_IMMEDIATE action",
+      "snapshotPurpose": "PREDICTION_CALIBRATION",
+      "degradationQuota": 120,
+      "calibrationSensitivityQuota": 40
+    },
+    "diagnosisRules": {
+      "shares": "over contract-path HOLDOUT false-safe routes: A = HIGH fidelity share, C = MEDIUM+LOW share; B = runtime false-safes attributed FEATURE_DERIVATION or ACTION_BINDING",
+      "A": "share >= 0.2",
+      "C": "share >= 0.2",
+      "B": "share >= 0.2 or runtime/contract route disagreement >= 0.02",
+      "D": "HOLDOUT ECE >= 0.05 or HOLDOUT high-confidence-wrong(0.90) rate >= 0.10 with n >= 200",
+      "E": "multistep prediction unavailable and false-safe(H3,H4) - false-safe(H0,H1) >= 0.10 with each n >= 30",
+      "F": "any prediction output changes across calibration variants",
+      "G": "two or more of A-F supported",
+      "H": "fewer than 30 contract-path HOLDOUT false-safes",
+      "primary": "larger of A and C shares",
+      "secondary": "other of A/C if share >= 0.2 else first supported of B, E, D, F"
+    },
+    "learning": {
+      "modelTrainingPerformed": false,
+      "weightsUpdated": false,
+      "routerRetrained": false,
+      "onlineLearningEnabled": false
+    },
+    "authority": {
+      "tier": "R0",
+      "canDispatch": false,
+      "canMutateLiveWorld": false,
+      "incumbentSoleExecutor": true
+    }
+  },
+  "methodologyHash": "87e94d6e06e98811f3af5d422ec3a653ea12b1714eebf913fe3720d17ae9d08b",
+  "corpusDigest": "sha256:33f817a54fc1d8988173af83d79409d27cbaf4b7dcbcb2f1f4a12d54f5961b58",
+  "evaluationSnapshot": {
+    "snapshotId": "sha256:7e44c4d87fbc323e0a6d2201e3aac13892bd0f915090d0f49ef05a0a4d389ac1",
+    "snapshotDigest": "sha256:7cdb0b48b899c2922d88c21ad5ab916383000f4922f6afd982c2c9ac2a2827e8"
+  },
+  "partitionIdentities": {
+    "DEV": "sha256:f079daa51af9a491be27a788d9e03ef9144eac4ed7e2337ad443fb64bf29cc28",
+    "CAL": "sha256:443f66201fe1158543d9f5f907b750c404b9a69c70c993f44ff285152e764f4b",
+    "HOLDOUT": "sha256:7f4ba4a3e2b0edfeb25843824d4e76f5f5a0f629a0adf4d488bfcbc536e3f18c",
+    "OOD": "sha256:b9c9d2b3979e9c5079ac26e38331f19e0032b29aaaac843b2a2704a1e4aada9b",
+    "STAGE3E_FULL_SPLIT_REPLAY/DEV": "sha256:f079daa51af9a491be27a788d9e03ef9144eac4ed7e2337ad443fb64bf29cc28",
+    "STAGE3E_FULL_SPLIT_REPLAY/CAL": "sha256:51c4ecf4176721e4f294cef783ea06fae5a7b7f8afc6d0ba2794c2deabfdf76b",
+    "STAGE3E_FULL_SPLIT_REPLAY/HOLDOUT": "sha256:fb47613c31aef53d0d6faba5a41308a8b81990ebdbf0e371e8b41c2a7e3b7439",
+    "STAGE3E_FULL_SPLIT_REPLAY/OOD": "sha256:b9c9d2b3979e9c5079ac26e38331f19e0032b29aaaac843b2a2704a1e4aada9b"
+  },
+  "designDerived": {
+    "noveltyThresholds": {
+      "familiar": 0.38778,
+      "nearNovel": 0.655952,
+      "source": "CAL",
+      "n": 3949
+    },
+    "tierOperatingPoints": {
+      "contract": {
+        "0.8": {
+          "tau": null,
+          "calN": null,
+          "calObserved": null,
+          "calLower": null,
+          "bestEvidencedCalPoint": {
+            "tau": 0.75,
+            "n": 590,
+            "coverage": 0.149405,
+            "observed": 0.813559,
+            "lower": 0.780141,
+            "upper": 0.842921,
+            "abstentionRate": 0.850595,
+            "errorAmongNonAbstained": 0.186441,
+            "errorAvoidedByAbstention": 0.961619
+          }
+        },
+        "0.9": {
+          "tau": null,
+          "calN": null,
+          "calObserved": null,
+          "calLower": null,
+          "bestEvidencedCalPoint": {
+            "tau": 0.75,
+            "n": 590,
+            "coverage": 0.149405,
+            "observed": 0.813559,
+            "lower": 0.780141,
+            "upper": 0.842921,
+            "abstentionRate": 0.850595,
+            "errorAmongNonAbstained": 0.186441,
+            "errorAvoidedByAbstention": 0.961619
+          }
+        },
+        "0.95": {
+          "tau": null,
+          "calN": null,
+          "calObserved": null,
+          "calLower": null,
+          "bestEvidencedCalPoint": {
+            "tau": 0.75,
+            "n": 590,
+            "coverage": 0.149405,
+            "observed": 0.813559,
+            "lower": 0.780141,
+            "upper": 0.842921,
+            "abstentionRate": 0.850595,
+            "errorAmongNonAbstained": 0.186441,
+            "errorAvoidedByAbstention": 0.961619
+          }
+        },
+        "0.975": {
+          "tau": null,
+          "calN": null,
+          "calObserved": null,
+          "calLower": null,
+          "bestEvidencedCalPoint": {
+            "tau": 0.75,
+            "n": 590,
+            "coverage": 0.149405,
+            "observed": 0.813559,
+            "lower": 0.780141,
+            "upper": 0.842921,
+            "abstentionRate": 0.850595,
+            "errorAmongNonAbstained": 0.186441,
+            "errorAvoidedByAbstention": 0.961619
+          }
+        },
+        "0.99": {
+          "tau": null,
+          "calN": null,
+          "calObserved": null,
+          "calLower": null,
+          "bestEvidencedCalPoint": {
+            "tau": 0.75,
+            "n": 590,
+            "coverage": 0.149405,
+            "observed": 0.813559,
+            "lower": 0.780141,
+            "upper": 0.842921,
+            "abstentionRate": 0.850595,
+            "errorAmongNonAbstained": 0.186441,
+            "errorAvoidedByAbstention": 0.961619
+          }
+        }
+      },
+      "runtime": {
+        "0.8": {
+          "tau": null,
+          "calN": null,
+          "calObserved": null,
+          "calLower": null,
+          "bestEvidencedCalPoint": {
+            "tau": 0.53,
+            "n": 2839,
+            "coverage": 0.718916,
+            "observed": 0.256428,
+            "lower": 0.240702,
+            "upper": 0.272813,
+            "abstentionRate": 0.281084,
+            "errorAmongNonAbstained": 0.743572,
+            "errorAvoidedByAbstention": 0.26369
+          }
+        },
+        "0.9": {
+          "tau": null,
+          "calN": null,
+          "calObserved": null,
+          "calLower": null,
+          "bestEvidencedCalPoint": {
+            "tau": 0.53,
+            "n": 2839,
+            "coverage": 0.718916,
+            "observed": 0.256428,
+            "lower": 0.240702,
+            "upper": 0.272813,
+            "abstentionRate": 0.281084,
+            "errorAmongNonAbstained": 0.743572,
+            "errorAvoidedByAbstention": 0.26369
+          }
+        },
+        "0.95": {
+          "tau": null,
+          "calN": null,
+          "calObserved": null,
+          "calLower": null,
+          "bestEvidencedCalPoint": {
+            "tau": 0.53,
+            "n": 2839,
+            "coverage": 0.718916,
+            "observed": 0.256428,
+            "lower": 0.240702,
+            "upper": 0.272813,
+            "abstentionRate": 0.281084,
+            "errorAmongNonAbstained": 0.743572,
+            "errorAvoidedByAbstention": 0.26369
+          }
+        },
+        "0.975": {
+          "tau": null,
+          "calN": null,
+          "calObserved": null,
+          "calLower": null,
+          "bestEvidencedCalPoint": {
+            "tau": 0.53,
+            "n": 2839,
+            "coverage": 0.718916,
+            "observed": 0.256428,
+            "lower": 0.240702,
+            "upper": 0.272813,
+            "abstentionRate": 0.281084,
+            "errorAmongNonAbstained": 0.743572,
+            "errorAvoidedByAbstention": 0.26369
+          }
+        },
+        "0.99": {
+          "tau": null,
+          "calN": null,
+          "calObserved": null,
+          "calLower": null,
+          "bestEvidencedCalPoint": {
+            "tau": 0.53,
+            "n": 2839,
+            "coverage": 0.718916,
+            "observed": 0.256428,
+            "lower": 0.240702,
+            "upper": 0.272813,
+            "abstentionRate": 0.281084,
+            "errorAmongNonAbstained": 0.743572,
+            "errorAvoidedByAbstention": 0.26369
+          }
+        }
+      }
+    },
+    "calStage3EReplay": {
+      "routedN": 231,
+      "precision": 0.818182,
+      "wilsonLower": 0.763373,
+      "matchesStage3EFreeze": true
+    },
+    "calRuntimeEquation": {
+      "routedN": 1706,
+      "precision": 0.182884,
+      "wilsonLower": 0.165259
+    },
+    "runtimeEquationParityWithStage3F5Evaluator": true,
+    "identityLeakage": {
+      "episodeOverlap": 0,
+      "stateIdOverlap": 0,
+      "derivedVariantLeakage": 0,
+      "pairwise": {
+        "recordHash": {
+          "CAL/DEV": 0,
+          "CAL/HOLDOUT": 0,
+          "CAL/OOD": 0,
+          "DEV/HOLDOUT": 0,
+          "DEV/OOD": 0,
+          "HOLDOUT/OOD": 0
+        },
+        "worldHash": {
+          "CAL/DEV": 0,
+          "CAL/HOLDOUT": 0,
+          "CAL/OOD": 0,
+          "DEV/HOLDOUT": 0,
+          "DEV/OOD": 0,
+          "HOLDOUT/OOD": 0
+        },
+        "topologyHash": {
+          "CAL/DEV": 0,
+          "CAL/HOLDOUT": 0,
+          "CAL/OOD": 0,
+          "DEV/HOLDOUT": 0,
+          "DEV/OOD": 0,
+          "HOLDOUT/OOD": 0
+        }
+      }
+    },
+    "quarantine": {
+      "DEV": 0,
+      "CAL": 51,
+      "HOLDOUT": 164,
+      "OOD": 0
+    },
+    "inheritedStage3ELeakage": {
+      "episodeOverlap": 0,
+      "stateIdOverlap": 0,
+      "derivedVariantLeakage": 221,
+      "pairwise": {
+        "recordHash": {
+          "CAL/DEV": 0,
+          "CAL/HOLDOUT": 0,
+          "CAL/OOD": 0,
+          "DEV/HOLDOUT": 0,
+          "DEV/OOD": 0,
+          "HOLDOUT/OOD": 0
+        },
+        "worldHash": {
+          "CAL/DEV": 0,
+          "CAL/HOLDOUT": 0,
+          "CAL/OOD": 0,
+          "DEV/HOLDOUT": 0,
+          "DEV/OOD": 0,
+          "HOLDOUT/OOD": 0
+        },
+        "topologyHash": {
+          "CAL/DEV": 50,
+          "CAL/HOLDOUT": 84,
+          "CAL/OOD": 0,
+          "DEV/HOLDOUT": 87,
+          "DEV/OOD": 0,
+          "HOLDOUT/OOD": 0
+        }
+      }
+    }
+  },
+  "predictionInventory": [
+    {
+      "classId": "ROUTER_P_GREEDY_SAFE",
+      "category": "expert safety / success",
+      "availability": "AVAILABLE",
+      "producer": "STAGE3E_ROUTER frozen logistic over 51 features",
+      "inputEvidence": "Stage 3E Feature Contract v2 values",
+      "decisionTime": "integrated logicalTime (state.sequence*10) before incumbent execution",
+      "confidence": "AVAILABLE",
+      "uncertainty": "NOT_AVAILABLE (MODEL_SCORE_NOT_CAUSAL_CERTAINTY)",
+      "outcomeBinding": "GREEDY_SAFE: greedy action in authoritative Forge counterfactual horizon-optimal set",
+      "calibrationDomain": [
+        "ACTION_SEMANTICS"
+      ],
+      "sampleCount": 20000
+    },
+    {
+      "classId": "DECISION_TIME_ONE_STEP_CONSEQUENCE",
+      "category": "action consequence; resource change; risk; objective progress; temporal consequence",
+      "availability": "AVAILABLE",
+      "producer": "STAGE3F5_EXACT_STAGE3E_FEATURE_ADAPTER branch lookahead (forgeWorldAdapter.step on decision-state copies)",
+      "privilegedSimulatorAccess": true,
+      "inputEvidence": "authoritative decision state, not the observation",
+      "decisionTime": "feature derivation before execution",
+      "confidence": "NOT_AVAILABLE",
+      "uncertainty": "NOT_AVAILABLE",
+      "outcomeBinding": "executed transition reward vector",
+      "calibrationDomain": {
+        "entities": "ACTION_SEMANTICS",
+        "resources": "RESOURCE_SEMANTICS",
+        "objectives": "OBJECTIVE_SEMANTICS",
+        "relationships": "ACTION_SEMANTICS",
+        "spatialState": "OBSERVATION_SEMANTICS",
+        "constraints": "CONSTRAINT_SEMANTICS",
+        "risk": "ACTION_SEMANTICS",
+        "temporalState": "TEMPORAL_SEMANTICS"
+      },
+      "sampleCount": 800
+    },
+    {
+      "classId": "CANDIDATE_ACTION_RECOMMENDATION",
+      "category": "expert success",
+      "availability": "AVAILABLE",
+      "producer": "NEXUS_RELATIONAL_SELECTOR_V1 else HEURISTIC_GREEDY_IMMEDIATE",
+      "confidence": "DEGENERATE_CONSTANT_0.5",
+      "uncertainty": "UNQUANTIFIED",
+      "outcomeBinding": "candidate action in horizon-optimal set",
+      "calibrationDomain": [
+        "ACTION_SEMANTICS"
+      ],
+      "sampleCount": 20000
+    },
+    {
+      "classId": "SENTINEL_RECOMMENDATION",
+      "category": "routing recommendation",
+      "availability": "AVAILABLE",
+      "producer": "sentinel-shadow recommendation evidence",
+      "confidence": "router score; null when abstained",
+      "abstention": "abstains when router selects V2B without genuine V2B evidence",
+      "sampleCount": 800
+    },
+    {
+      "classId": "NEXT_WORLD_STATE",
+      "category": "next-state prediction",
+      "availability": "NOT_AVAILABLE",
+      "reason": "counterfactual predictedStateRef=UNRESOLVED_PREDICTED_STATE; lookahead states are discarded, not retained as evidence"
+    },
+    {
+      "classId": "FAILURE_PROBABILITY",
+      "category": "failure probability",
+      "availability": "NOT_AVAILABLE",
+      "reason": "no probabilistic producer; only the deterministic one-step terminalFailure component"
+    },
+    {
+      "classId": "TRANSITION_RESULT_STATE_IDENTITY",
+      "category": "transition result",
+      "availability": "NOT_AVAILABLE",
+      "reason": "resulting state identity not retained in runtime branch evidence"
+    },
+    {
+      "classId": "COUNTERFACTUAL_OUTCOME_VALUE_RISK",
+      "category": "counterfactual consequence",
+      "availability": "NOT_AVAILABLE",
+      "reason": "ledger predictedValue=null, predictedRisk=null, predictedOutcome=PREDICTED_NOT_OBSERVED"
+    },
+    {
+      "classId": "MULTISTEP_PREDICTION",
+      "category": "temporal consequence H>=2",
+      "availability": "NOT_AVAILABLE",
+      "reason": "no H2+ producer in the integrated runtime"
+    },
+    {
+      "classId": "NEXUS_STRUCTURAL_CONFIDENCE",
+      "category": "expert confidence",
+      "availability": "INSUFFICIENT_EVIDENCE",
+      "reason": "measures observed structure, not correctness; semantically incompatible with success calibration"
+    },
+    {
+      "classId": "LEARNED_NEXUS_V2B_OUTPUT",
+      "category": "expert success",
+      "availability": "NOT_AVAILABLE",
+      "reason": "no genuine V2B evidence at runtime; recommendation abstains"
+    },
+    {
+      "classId": "REFERENCE_WORLD_STATE_BASELINE",
+      "category": "next-state reference (not Sentinel)",
+      "availability": "AVAILABLE",
+      "sentinelCapability": false,
+      "producer": "CALIBRATION_SEMANTICS_PERSISTENCE_BASELINE_V1",
+      "confidence": "NOT_AVAILABLE",
+      "sampleCount": 800
+    }
+  ],
+  "sealedMetricsUsedForThresholds": false,
+  "sealedExposureDisclosures": [
+    {
+      "id": "STAGE3E_PUBLISHED_SEALED_RESULTS",
+      "description": "Stage 3E HOLDOUT/OOD router results are published Stage 3E artifacts and were read during inventory.",
+      "thresholdsOrMetricsChanged": false
+    },
+    {
+      "id": "ROUTER_EQUATION_CONVENTION_VERIFICATION",
+      "description": "While verifying the Stage 3F.5 runtime logistic equation against the frozen Stage 3E bias convention, routed n and precision at tau=0.9 were computed on CAL, HOLDOUT and OOD for both conventions before this freeze.",
+      "thresholdsOrMetricsChanged": false,
+      "designAddition": "router-equation decomposition and RUNTIME_ROUTER_EQUATION_DIVERGENCE attribution basis",
+      "justificationPartition": "CAL"
+    },
+    {
+      "id": "DEVELOPMENT_RUN_INVALIDATED_AND_RESTARTED",
+      "invalidatedFreezeHash": "157ffde40f160488f19d348372b3a81fc4284c952384eb9a25dcff93126396b3",
+      "description": "A development certification run evaluated HOLDOUT/OOD and exposed nonzero derived-variant (topologyHash) leakage inherited from the frozen Stage 3E splits. That run is invalidated. The restart adds only (1) topology quarantine of partition membership and (2) a report-only conditional false-safe concentration check beside the unchanged share-based diagnosis rule.",
+      "thresholdsOrMetricsChanged": false,
+      "diagnosisRuleChanged": false,
+      "exposedObservation": "contract false-safe rate was higher in HIGH than in LOW proxy-fidelity states while the share rule selected C_PREDICTION_LIMITED"
+    }
+  ],
+  "authority": {
+    "policyVersion": 1,
+    "tier": "R0",
+    "canObserve": true,
+    "canRecommend": true,
+    "canSimulateDetachedState": true,
+    "canDispatch": false,
+    "canMutateLiveWorld": false,
+    "canIssueAuthorityTokens": false,
+    "canChangeAuthorityPolicy": false,
+    "requiresHumanAuthorizationForExpansion": true,
+    "deniedCapabilities": [
+      "dispatch",
+      "live-world-mutation",
+      "authority-token-issuance",
+      "authority-policy-change",
+      "self-promotion"
+    ]
+  },
+  "freezeHash": "14548e37af72c02ebb554ab2841af1a870e2887aa061eaab651407883bbd5a95"
+}

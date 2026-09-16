@@ -1,0 +1,85 @@
+{
+  "recordType": "SENTINEL_CERTIFICATION_ERRATUM_V1",
+  "erratumId": "STAGE3F5-ERRATUM-001",
+  "gate": "STAGE_3F_6_R_RUNTIME_PARITY_REMEDIATION",
+  "subject": {
+    "stage": "STAGE_3F_5_INTEGRATED_LIVE_SHADOW_CERTIFICATION",
+    "artifact": "artifacts/stage3f5-integrated-live-shadow/stage3f5-certification-result.json",
+    "certificationHash": "eda3d2d67334dd904a24ff574f4e839e52fb67ec26fb01112b8f21c973b4fbe5",
+    "campaignHash": "sha256:d56ae56d1be12dbd2924c88d8645b6ff4f25c3f80a3db6bc2d126644f1d355a1",
+    "commit": "a0d7069665fc8181f11cba04e4a395274928c1d4"
+  },
+  "historicalArtifactModified": false,
+  "statusAfterErratum": "SUPERSEDED",
+  "supersededBy": "STAGE_3F_6_R_RUNTIME_PARITY_REMEDIATION",
+  "discoveredBy": {
+    "stage": "STAGE_3F_6_PREDICTION_RELIABILITY_BASELINE",
+    "certificationHash": "399f71c9cc0b2758e610133454e2f137436339a04a2117a1323a0a0bc3616a84",
+    "status": "PARTIAL"
+  },
+  "findings": [
+    {
+      "id": "ROUTER_POSITIONAL_MISBINDING",
+      "claimAffected": "The Stage 3E logistic router is evaluated from the exact 51-feature runtime contract and is bound to its frozen hash.",
+      "evidence": {
+        "frozenModelFormat": "lr-model.json {keys[51] sorted, mu[51], sd[51], w[52]}; w[i] is the weight of keys[i]; w[51] is the bias",
+        "runtimeRead": "bias = w[0]; weight of keys[i] = w[i+1]",
+        "divergentPositions": 52,
+        "firstDivergentIndex": 0,
+        "calAtTau090": { "frozen": { "routedN": 231, "precision": 0.8182 }, "misboundRuntime": { "routedN": 1714, "precision": 0.183781 } },
+        "hashBindingCoveredFileNotEquation": true
+      },
+      "correction": "bias = w[keys.length]; feature weight i = w[i]; w.length === keys.length + 1 asserted; incomplete or non-finite input fails closed with no route"
+    },
+    {
+      "id": "FEATURE_CONTRACT_DIVERGENCE",
+      "claimAffected": "Exact Stage 3E Feature Contract v2 equations, applied only to decision-time Forge evidence.",
+      "evidence": {
+        "featureCount": 51,
+        "divergentFeatures": 21,
+        "derivationDivergent": 16,
+        "candidateV2BDependent": 5,
+        "multiStepFrozenFeatures": 7,
+        "simulatorDependentFeatures": 20,
+        "casesMeasured": 19785,
+        "causes": ["reward V1 vs V2 immediate scalars", "one-step V1 vector vs frozen horizon-rollout greedy vector", "runtime candidate substituted for genuine V2B answer"]
+      },
+      "correction": "Deployable runtime features are relabeled DEPLOYABLE_RUNTIME_MODE and are not claimed as Stage 3E parity. DEPLOYABLE_STAGE3E_FEATURE_PARITY=false; DEPLOYABLE_RUNTIME_FEATURE_CONTRACT_REQUIRES_REDESIGN=true. A diagnostic REFERENCE_PARITY_MODE harness proves historical parity; it is not the runtime."
+    },
+    {
+      "id": "ABSTENTION_EVIDENCE_LOSS",
+      "claimAffected": "OBSERVATION -> WORLD_STATE -> CALIBRATION -> TRACE -> INCUMBENT -> LEDGER -> OUTCOME -> SHADOW_EXPERIENCE -> VALIDATION -> ELIGIBILITY for every step",
+      "evidence": {
+        "mechanism": "attachLedgerCounterfactual(candidateAction = null) threw in Stage 3F.3 canonicalAction; the ledger closure never assigned, experience creation in the same block never ran, and the step was reported PARTIAL_EVIDENCE",
+        "stage3f6OfferedEpisodes": 800,
+        "episodesLosingLedgerAndExperience": 238,
+        "stage3f3ContractViolated": false,
+        "stage3f4ContractViolated": false
+      },
+      "correction": "An abstained recommendation attaches no counterfactual; ledger (NO_SENTINEL_PROPOSAL), selected action, veto, experience, validation, and eligibility for every purpose are preserved; ledger evaluation is INCOMPARABLE; prediction-dependent profiles are INELIGIBLE with DECISION_TIME_PREDICTION_REQUIRED"
+    },
+    {
+      "id": "CAMPAIGN_CHECK_CONTINGENT_ON_MISBINDING",
+      "claimAffected": "disagreementPreserved",
+      "evidence": {
+        "originalDisagreementEpisode": { "family": "prime/adversarial_choice", "level": 1, "seed": 11, "misboundScore": 0.9782, "correctedScore": 0.7056, "correctedRoute": "LEARNED_NEXUS_V2B (abstain)" },
+        "calibrationFailureEpisodeCorrectedScore": 0.577,
+        "effect": "With the corrected router the original seed abstains, so the certified campaign would have produced NO_SENTINEL_RECOMMENDATION instead of DIFFERENT_ACTION and the abstention would have lost its ledger."
+      },
+      "correction": "Remediated campaign DISAGREEMENT uses seed 12, the first seed >= 11 in prime/adversarial_choice level 1 where the corrected router proposes an action (score 0.9131). The seed-11 abstention is retained as remediation evidence."
+    }
+  ],
+  "guaranteesRemainingValid": [
+    "R0_AUTHORITY",
+    "INCUMBENT_SOLE_EXECUTION",
+    "FAILURE_ISOLATION",
+    "DETERMINISTIC_EVIDENCE_BEHAVIOR",
+    "READ_ONLY_OBSERVATORY"
+  ],
+  "claimsWithdrawn": [
+    "router evaluated from the exact Stage 3E contract",
+    "exact Stage 3E Feature Contract v2 equations in the runtime feature adapter",
+    "complete evidence chain for abstained recommendations"
+  ],
+  "authority": { "tier": "R0", "canDispatch": false, "canMutateLiveWorld": false }
+}

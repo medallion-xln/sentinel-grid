@@ -1,0 +1,57 @@
+{
+  "recordType": "SENTINEL_CERTIFICATION_ERRATUM_V1",
+  "erratumId": "STAGE3E-ERRATUM-001",
+  "gate": "STAGE_3F_6_R_RUNTIME_PARITY_REMEDIATION",
+  "subject": {
+    "stage": "STAGE_3E_ROUTABILITY_INTELLIGENCE",
+    "artifacts": "artifacts/stage3e-routability-intelligence/*",
+    "routerFreezeHash": "5a8e22b5c6a6889df658a74d134b376ee79fa1214760204a3265fe01f27c6bd2",
+    "routerHash": "d87cfa8b010c5889818b6ac6f3b9ddbaf2d23aa1cfb6e61d53cf31f50b722e64",
+    "featureContractV2Hash": "063423b125c584fb5dcbca74276f12880540c9613c0b84834d0977310f8921cb",
+    "corpusHash": "887e98081dc4342741411647a37dfd728fd4c4f3d69f1542f6460c717ed407d1"
+  },
+  "historicalArtifactsModified": false,
+  "statusAfterErratum": "FROZEN_RESULTS_STAND_AS_RECORDED_WITH_ERRATUM",
+  "findings": [
+    {
+      "id": "SPLIT_OVERLAP_CLAIM_SCOPE",
+      "claim": "split-spec.json splitLeakageCount = 0",
+      "assessment": "Historically accurate under its original definition: recordHash overlap across ROUTABILITY_DEV/CAL/HOLDOUT/OOD is 0 (replayed by the recovery certifier) and worldHash overlap is also 0.",
+      "rewritten": false
+    },
+    {
+      "id": "TOPOLOGY_REUSE",
+      "evidence": {
+        "distinctCrossPartitionTopologies": 195,
+        "caseOverlapsByPartitionPair": { "CAL/DEV": 50, "CAL/HOLDOUT": 84, "DEV/HOLDOUT": 87, "OOD/any": 0 },
+        "caseOverlapTotal": 221,
+        "casesInvolved": 420,
+        "crossPartitionPairsSharingTopology": 235,
+        "pairsDifferingIn": { "horizonBand": 202, "seed": 157, "objectives": 124, "shape": 4 },
+        "pairsWithIdenticalRuntimeWorldStateV1Facts": 213,
+        "splitsIgnoreDatasetV2TopologyBuckets": true,
+        "quarantineEffectOnFrozenRouter": { "holdoutFull": { "routedN": 347, "precision": 0.781 }, "holdoutQuarantined": { "routedN": 341, "precision": 0.780059 } }
+      },
+      "classification": "NO_LEAKAGE_UNDER_OLD_CONTRACT and NEWLY_IDENTIFIED_TOPOLOGY_LEAKAGE (derived variants: same structural world under different objective composition or horizon band)"
+    },
+    {
+      "id": "MULTI_STEP_ROLLOUT_FEATURES",
+      "evidence": {
+        "features": ["greedyFuturePotential", "greedyInfraHealth", "greedyOptionValue", "greedyResourceCost", "greedyRiskExposure", "greedyTerminalOutcome", "greedyTimeCost"],
+        "source": "features-v2.mjs reads the greedy branch rewardVector; record-v2.js sets rewardVector = branch.totalRewardVector (immediate + GREEDY_CONTINUATION_V1 horizon rollout)",
+        "verifiedBranches": { "checked": 82, "rewardVectorEqualsHorizonTotal": 82, "rewardVectorEqualsImmediate": 0 },
+        "forbiddenListBansTotalScalarButNotComponentVector": true,
+        "labelAdjacent": "the label compares horizon totals; these features carry the greedy branch's horizon components",
+        "largestModelWeight": { "feature": "greedyFuturePotential", "weight": 2.452774 }
+      }
+    },
+    {
+      "id": "ONE_STEP_DESCRIPTION_PARTIALLY_INACCURATE",
+      "claim": "features-v2.mjs: 'branch.immediateScalar and its rewardVector components (greedy is itself deployable and uses exactly this)' / 'runtime-visible one-step vector'",
+      "assessment": "Partially inaccurate. immediateScalar is one-step (reward V2); the rewardVector components are horizon rollout totals. No forbidden label field is read. RUNTIME_SAFE_CLAIM = PARTIALLY_TRUE.",
+      "additionalDependencies": { "simulatorDependentFeatures": 20, "v2bDependentFeatures": 5 }
+    }
+  ],
+  "frozenRouterMetricsRewritten": false,
+  "authority": { "tier": "R0", "canDispatch": false, "canMutateLiveWorld": false }
+}

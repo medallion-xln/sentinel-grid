@@ -1,0 +1,58 @@
+{
+  "recordType": "SENTINEL_STAGE3F6_EVALUATION_CORPUS_MANIFEST_V1",
+  "corpusSpec": {
+    "corpusVersion": "STAGE3F6_EVALUATION_CORPUS_V1",
+    "curriculum": "FORGE_CURRICULUM_V2",
+    "recordBuilder": "FORGE_DATASET_V2/buildRecordV2",
+    "levels": [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5
+    ],
+    "seeds": [
+      201,
+      202,
+      203
+    ],
+    "oodLevels": [
+      6,
+      7
+    ],
+    "oodSeeds": [
+      211
+    ],
+    "sourceSplits": [
+      "ROUTABILITY_DEV",
+      "ROUTABILITY_CAL",
+      "ROUTABILITY_HOLDOUT",
+      "ROUTABILITY_OOD"
+    ],
+    "joinKey": "recordHash",
+    "branchKeyPrefixLength": 16,
+    "runtimeFeatureAdapter": "STAGE3F5_EXACT_STAGE3E_FEATURE_ADAPTER",
+    "runtimeCandidateSemantics": "NEXUS_RELATIONAL_SELECTOR_V1_ELSE_HEURISTIC_GREEDY_IMMEDIATE",
+    "labelsIncluded": false
+  },
+  "caseCount": 20000,
+  "perSplit": {
+    "ROUTABILITY_DEV": 4000,
+    "ROUTABILITY_CAL": 4000,
+    "ROUTABILITY_HOLDOUT": 6000,
+    "ROUTABILITY_OOD": 6000
+  },
+  "counts": {
+    "generated": 72000,
+    "REJECTED": 1233,
+    "NOT_IN_STAGE3E_SPLIT": 50767,
+    "MATCHED": 20000
+  },
+  "corpusDigest": "sha256:33f817a54fc1d8988173af83d79409d27cbaf4b7dcbcb2f1f4a12d54f5961b58",
+  "generatorSourceSha256": "0f7e63e71503131fc6beb75411cd53b572ac934dfe7cbe1b2f345531df247e61",
+  "corpusModuleSourceSha256": "eab1654e48f2cbf4140e79601e23715af055ca3bb62e476063206859dbefa57e",
+  "labelsIncluded": false,
+  "routerScoresIncluded": false,
+  "metricsIncluded": false
+}

@@ -206,14 +206,26 @@ function replayDeterminism(rows, model, tau) {
   };
 }
 
-function verifyAdapterBytes(lineage, expected) {
-  const source = lineage.recoveredSourcePath;
-  const adapterDirectory = path.join(source, 'v2', 'out-nexus-sft-v2b');
-  if (!existsSync(adapterDirectory)) return { present: false, hash: null, matches: null };
-  const files = readdirSync(adapterDirectory).filter((name) => name !== 'training-summary.json').sort();
-  const lines = files.map((name) => `${name}  ${sha256(readFileSync(path.join(adapterDirectory, name)))}`);
-  const hash = sha256(`${lines.join('\n')}\n`);
-  return { present: true, hash, matches: hash === expected, files };
+export const STAGE3D_V2B_ADAPTER_DIRECTORY_ENV = 'SENTINEL_STAGE3D_V2B_ADAPTER_DIRECTORY';
+
+/** Canonical candidate identity: the composite of the in-repo manifest's per-file hashes. */
+function manifestCompositeHash(manifest) {
+  const lines = Object.keys(manifest.adapterFileHashes ?? {}).filter((name) => name !== 'training-summary.json').sort()
+    .map((name) => `${name}  ${manifest.adapterFileHashes[name]}`);
+  return sha256(`${lines.join('\n')}\n`);
+}
+
+/**
+ * Optional, non-gating adapter byte verification. Canonical certification never consults ephemeral scratch state
+ * (including lineage.recoveredSourcePath); bytes are compared only when an operator explicitly points
+ * SENTINEL_STAGE3D_V2B_ADAPTER_DIRECTORY at an archived copy of the adapter files.
+ */
+function verifyAdapterBytes(manifest, expected, directory = process.env[STAGE3D_V2B_ADAPTER_DIRECTORY_ENV] ?? null) {
+  const base = { gating: false, source: directory === null ? 'NOT_REQUESTED' : 'EXPLICIT_OPT_IN', manifestCompositeHash: manifestCompositeHash(manifest) };
+  if (directory === null || !existsSync(directory)) return { ...base, status: 'NOT_VERIFIED_ARCHIVE_UNAVAILABLE', hash: null, matches: null, files: [] };
+  const files = readdirSync(directory).filter((name) => name !== 'training-summary.json').sort();
+  const hash = sha256(`${files.map((name) => `${name}  ${sha256(readFileSync(path.join(directory, name)))}`).join('\n')}\n`);
+  return { ...base, status: hash === expected ? 'ADAPTER_BYTES_VERIFIED' : 'ADAPTER_BYTES_MISMATCH', hash, matches: hash === expected, files };
 }
 
 export async function certifyRecoveredStage3DE() {
@@ -247,10 +259,10 @@ export async function certifyRecoveredStage3DE() {
   const stage3ePython = pythonHashes(path.join(stage3eArtifacts, 'freeze-3e.json'), 'stage3e');
   const v2bPython = pythonHashes(path.join(STAGE3DE_ROOT, 'training', 'stage3cr3', 'identity', 'freeze-v2b.json'), 'v2b');
   const features = await featureContractHashes(matrices.DEV);
-  const adapter = verifyAdapterBytes(lineage, known.STAGE3D_V2B_CANDIDATE_HASH);
+  const adapter = verifyAdapterBytes(v2bManifest, known.STAGE3D_V2B_CANDIDATE_HASH);
 
   check('stage3d-v2b-candidate-hash', v2bManifest.CANDIDATE_ARTIFACT_HASH === known.STAGE3D_V2B_CANDIDATE_HASH
-    && (!adapter.present || adapter.matches));
+    && adapter.manifestCompositeHash === known.STAGE3D_V2B_CANDIDATE_HASH);
   check('stage3d-v2b-freeze-hash', v2bFreeze.V2B_FREEZE_HASH === known.STAGE3D_V2B_FREEZE_HASH
     && v2bPython.freeze === known.STAGE3D_V2B_FREEZE_HASH);
   check('stage3d-feature-contract-hash', features.stage3dHash === stage3dFreeze.RUNTIME_FEATURE_CONTRACT_HASH);

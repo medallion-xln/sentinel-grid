@@ -65,6 +65,21 @@ export const INTEGRATED_LIVE_SHADOW_CONTRACT = deepFreeze({
 });
 export const INTEGRATED_LIVE_SHADOW_CONTRACT_HASH = sha256(INTEGRATED_LIVE_SHADOW_CONTRACT);
 
+/**
+ * STAGE_3F_6_R_RUNTIME_PARITY_REMEDIATION. The Stage 3F.5 certificate (eda3d2d6…) is SUPERSEDED, not rewritten.
+ * The features computed here are the DEPLOYABLE_RUNTIME_MODE features; they are not Stage 3E feature parity.
+ */
+export const INTEGRATED_RUNTIME_REMEDIATION = deepFreeze({
+  gate: 'STAGE_3F_6_R_RUNTIME_PARITY_REMEDIATION',
+  supersedesCertificationHash: 'eda3d2d67334dd904a24ff574f4e839e52fb67ec26fb01112b8f21c973b4fbe5',
+  routerEquation: 'STAGE3E_CANONICAL_BIAS_LAST',
+  incompleteRouterInput: 'FAIL_CLOSED_NO_ROUTE',
+  abstentionEvidence: 'LEDGER_AND_EXPERIENCE_PRESERVED_WITHOUT_COUNTERFACTUAL',
+  featureMode: 'DEPLOYABLE_RUNTIME_MODE',
+  deployableStage3EFeatureParity: false,
+  deployableRuntimeFeatureContractRequiresRedesign: true,
+});
+
 const runtimeEnvironment = deepFreeze({ identity: FORGE_GAME_ID, version: FORGE_WORLD_VERSION });
 const traceProvenance = (sourceId, evidenceId) => ({
   environmentIdentity: runtimeEnvironment.identity, environmentVersion: runtimeEnvironment.version, sourceId, evidenceId,
@@ -160,7 +175,11 @@ function worldFacts(world, observation, logicalTime) {
 const entropy = (counts) => { const total = counts.reduce((a, b) => a + b, 0); if (!total) return 0;
   return +(-counts.filter((c) => c > 0).reduce((sum, c) => sum + (c / total) * Math.log2(c / total), 0)).toFixed(4); };
 
-/** Exact Stage 3E Feature Contract v2 equations, applied only to decision-time Forge evidence. */
+/**
+ * DEPLOYABLE_RUNTIME_MODE feature adapter: Stage 3E Feature Contract v2 field names computed from one-step V1
+ * decision-time Forge evidence. This is NOT Stage 3E feature parity (Stage 3F.6-R): 16 derivation features diverge
+ * (V1 vs V2 immediate semantics; one-step vs horizon-rollout greedy vectors) and 5 require genuine V2B evidence.
+ */
 export function extractIntegratedStage3EFeatures(state, observation, candidateRecommendation) {
   const forgeActions = forgeLegalActions(state.world);
   const descriptors = forgeWorldAdapter.legalActions(state, FORGE_OBSERVER_ID);
@@ -219,12 +238,28 @@ export function extractIntegratedStage3EFeatures(state, observation, candidateRe
   return deepFreeze({ values, branches, greedy, nexus, selector });
 }
 
+export const STAGE3E_ROUTER_ABSTAIN_ROUTE = 'ABSTAIN_INCOMPLETE_ROUTER_INPUT';
+
+/**
+ * Frozen Stage 3E logistic router. The frozen model stores weights in `keys` order with the bias LAST
+ * (fit as hstack([standardized X, 1]) @ w): bias = w[keys.length], feature weight i = w[i].
+ * Incomplete or non-finite input fails closed: no score and no route to any expert.
+ */
 export function evaluateIntegratedStage3ERouter(featureValues, candidateRecommendation) {
   if (!candidateRecommendation || typeof candidateRecommendation.actionId !== 'string') throw new Error('STAGE3D_CANDIDATE_EVIDENCE_REQUIRED');
-  let z = STAGE3E_MODEL.w[0];
-  STAGE3E_MODEL.keys.forEach((key, index) => { z += STAGE3E_MODEL.w[index + 1] * ((featureValues[key] - STAGE3E_MODEL.mu[index]) / STAGE3E_MODEL.sd[index]); });
-  const score = 1 / (1 + Math.exp(-z));
-  return deepFreeze({ score, threshold: STAGE3E_TAU, selectedRoute: score >= STAGE3E_TAU ? 'GREEDY' : 'LEARNED_NEXUS_V2B',
+  const { keys, mu, sd, w } = STAGE3E_MODEL;
+  if (w.length !== keys.length + 1 || mu.length !== keys.length || sd.length !== keys.length) throw new Error('STAGE3E_MODEL_SHAPE_INVALID');
+  let z = w[keys.length];
+  let complete = featureValues !== null && typeof featureValues === 'object';
+  for (let index = 0; complete && index < keys.length; index += 1) {
+    const value = featureValues[keys[index]];
+    if (typeof value !== 'number' || !Number.isFinite(value)) complete = false;
+    else z += w[index] * ((value - mu[index]) / sd[index]);
+  }
+  const score = complete ? 1 / (1 + Math.exp(-z)) : null;
+  const selectedRoute = score === null || !Number.isFinite(score) ? STAGE3E_ROUTER_ABSTAIN_ROUTE
+    : score >= STAGE3E_TAU ? 'GREEDY' : 'LEARNED_NEXUS_V2B';
+  return deepFreeze({ score: selectedRoute === STAGE3E_ROUTER_ABSTAIN_ROUTE ? null : score, threshold: STAGE3E_TAU, selectedRoute,
     routerHash: STAGE3E_ROUTER_HASH, freezeHash: STAGE3E_ROUTER_FREEZE_HASH });
 }
 
@@ -270,12 +305,14 @@ export function beginIntegratedLiveShadowStep({ state, calibration = createForge
       inject(failureInjection, 'TRACE');
       features = timer(metrics, 'featureExtraction', () => extractIntegratedStage3EFeatures(state, observation, candidate));
       router = evaluateIntegratedStage3ERouter(features.values, candidate);
+      // Fail closed: the Stage 3F.1 router evidence requires a real score, so incomplete input yields no recommendation.
+      if (router.selectedRoute === STAGE3E_ROUTER_ABSTAIN_ROUTE) throw new Error('ROUTER_INPUT_INCOMPLETE_FAIL_CLOSED');
       const observationEvidence = createObservationEvidence({ observationId: `forge:${observation.sequence}:${observation.metadata.worldHash}`,
         environment: runtimeEnvironment, logicalTime, observationDigest: `sha256:${sha256(observation)}`,
         provenance: traceProvenance('forge-adapter', `observation-${observation.sequence}-${observation.metadata.worldHash}`) });
       const feature = createFeatureDerivationEvidence({ worldStateSnapshot: worldState,
         featureContract: { id: 'SENTINEL_FEATURE_CONTRACT_V2', version: '2', hash: FEATURE_CONTRACT_V2_HASH },
-        featureValues: features.values, implementation: { id: 'STAGE3F5_EXACT_STAGE3E_FEATURE_ADAPTER', version: '1', hash: `sha256:${sha256(extractIntegratedStage3EFeatures.toString())}` },
+        featureValues: features.values, implementation: { id: 'STAGE3F6R_DEPLOYABLE_RUNTIME_FEATURE_ADAPTER_NOT_STAGE3E_PARITY', version: '1', hash: `sha256:${sha256(extractIntegratedStage3EFeatures.toString())}` },
         provenance: traceProvenance('stage3f5-feature-adapter', `features-${worldState.snapshotId}`) });
       const v2bEvidenceAvailable = candidate.producerId === 'LEARNED_NEXUS_SFT_V2B';
       const chosenKey = router.selectedRoute === 'GREEDY' ? features.greedy.actionId
@@ -323,6 +360,9 @@ export function beginIntegratedLiveShadowStep({ state, calibration = createForge
           actor: { type: LedgerActorType.HUMAN, id: 'operator-1' }, logicalTime: logicalTime + 1,
           provenance: calibrationProvenance(calibration.environmentIdentity, 'operator-1', `override-${transition.info.worldHash}`) });
         const decision = trace.decisionTimeEvent.decisionTimeEvidence;
+        // An abstention is a valid Sentinel decision (NO_SENTINEL_PROPOSAL). A counterfactual requires a proposed
+        // action, so none is attached; the ledger, selected action, and any veto are still preserved.
+        if (decision.recommendation.abstained) return value;
         value = attachLedgerCounterfactual(value, { candidateAction: decision.recommendation.proposedAction,
           predictionRef: decision.predictorEvidence[0].predictorEvidenceId,
           predictionSource: decision.predictorEvidence[0].predictor, predictedOutcome: { status: 'PREDICTED_NOT_OBSERVED' },
@@ -336,7 +376,9 @@ export function beginIntegratedLiveShadowStep({ state, calibration = createForge
         let value = createShadowExperience({ trace, ledger, calibration,
           provenance: calibrationProvenance(calibration.environmentIdentity, 'stage3f5', `experience-${trace.traceId}`) });
         value = attachExecutedAction(value, { ledger, selectedActionId: ledger.projection.selectedActions[0].selectedActionId });
-        value = attachExperiencePrediction(value, { ledger, counterfactualId: ledger.projection.counterfactuals[0].counterfactualId });
+        if (ledger.projection.counterfactuals.length > 0) {
+          value = attachExperiencePrediction(value, { ledger, counterfactualId: ledger.projection.counterfactuals[0].counterfactualId });
+        }
         return value; });
     } catch (error) { failures.push({ stage: ledger === null ? 'LEDGER' : 'EXPERIENCE', reason: error.message }); }
   }
@@ -367,12 +409,15 @@ export function completeIntegratedLiveShadowStep(pending, { outcomeDelay = 1, ob
         provenance: traceProvenance('forge-adapter', `outcome-${pending.transition.info.worldHash}`) });
       if (ledger !== null) ledger = timer(metrics, 'ledger', () => {
         let value = attachLedgerActualOutcome(ledger, { trace, outcomeId: trace.projection.outcomes[0].outcomeId });
+        const counterfactual = value.projection.counterfactuals[0] ?? null;
         value = attachLedgerEvaluation(value, { calibration,
-          requiredCapabilities: [CalibrationDomain.ACTION_SEMANTICS], status: LedgerEvaluationStatus.BOTH_PLAUSIBLE,
-          metrics: [{ domain: CalibrationDomain.ACTION_SEMANTICS, metricType: 'ACTION_MATCH',
-            predictionRef: value.projection.counterfactuals[0].counterfactualId,
+          requiredCapabilities: [CalibrationDomain.ACTION_SEMANTICS],
+          // Without a Sentinel proposal there is nothing to compare against the selected action.
+          status: counterfactual ? LedgerEvaluationStatus.BOTH_PLAUSIBLE : LedgerEvaluationStatus.INCOMPARABLE,
+          metrics: counterfactual ? [{ domain: CalibrationDomain.ACTION_SEMANTICS, metricType: 'ACTION_MATCH',
+            predictionRef: counterfactual.counterfactualId,
             actualOutcomeRef: trace.projection.outcomes[0].outcomeId,
-            value: { match: trace.projection.incumbentActions[0].matchingRecommendationStatus === ActionMatchStatus.MATCH } }],
+            value: { match: trace.projection.incumbentActions[0].matchingRecommendationStatus === ActionMatchStatus.MATCH } }] : [],
           logicalTime: outcomeTime, provenance: calibrationProvenance(calibration.environmentIdentity, 'stage3f5', `ledger-evaluation-${trace.traceId}`) });
         return value;
       });
@@ -380,14 +425,18 @@ export function completeIntegratedLiveShadowStep(pending, { outcomeDelay = 1, ob
         let value = attachExperienceActualOutcome(experience, { trace, actualStateSnapshots: [actualState], outcomeId: trace.projection.outcomes[0].outcomeId });
         value = validateShadowExperience(value, { trace, ledger, calibration, logicalTime: outcomeTime,
           provenance: calibrationProvenance(calibration.environmentIdentity, 'stage3f5-validator', `validation-${trace.traceId}`) });
-        value = evaluateExperienceEligibility(value, { purpose: ExperiencePurpose.ROUTER_ANALYSIS, calibration, logicalTime: outcomeTime,
-          provenance: calibrationProvenance(calibration.environmentIdentity, 'stage3f5-eligibility', `eligibility-${trace.traceId}`) });
+        // Every purpose is evaluated, so prediction-dependent profiles are explicitly INELIGIBLE after an abstention.
+        for (const purpose of Object.values(ExperiencePurpose)) {
+          value = evaluateExperienceEligibility(value, { purpose, calibration, logicalTime: outcomeTime,
+            provenance: calibrationProvenance(calibration.environmentIdentity, 'stage3f5-eligibility', `eligibility-${purpose}-${trace.traceId}`) });
+        }
+        const prediction = value.projection.predictions[0] ?? null;
         value = deriveExperiencePredictionError(value, { calibration,
           requiredCapabilities: [CalibrationDomain.RESOURCE_SEMANTICS, CalibrationDomain.TEMPORAL_SEMANTICS],
-          components: [{ domain: CalibrationDomain.RESOURCE_SEMANTICS, metricType: 'OBSERVED_TRANSITION_AVAILABLE',
-            predictionRef: value.projection.predictions[0].predictionBindingId,
+          components: prediction ? [{ domain: CalibrationDomain.RESOURCE_SEMANTICS, metricType: 'OBSERVED_TRANSITION_AVAILABLE',
+            predictionRef: prediction.predictionBindingId,
             actualOutcomeRef: value.projection.actualOutcomes[0].actualOutcomeRef,
-            value: { compared: false, reason: 'STAGE3F5_DOES_NOT_ESTABLISH_PREDICTION_RELIABILITY' } }], logicalTime: outcomeTime,
+            value: { compared: false, reason: 'STAGE3F5_DOES_NOT_ESTABLISH_PREDICTION_RELIABILITY' } }] : [], logicalTime: outcomeTime,
           provenance: calibrationProvenance(calibration.environmentIdentity, 'stage3f5-analysis', `prediction-error-${trace.traceId}`) });
         return value;
       });
@@ -468,7 +517,9 @@ function chooseRecommendedIncumbent(state, candidate) {
 export function runIntegratedLiveShadowCampaign({ telemetrySink = null } = {}) {
   const modes = [
     { id: 'AGREEMENT', family: 'archimedes/repair_network', level: 0, seed: 3, agreement: true },
-    { id: 'DISAGREEMENT', family: 'prime/adversarial_choice', level: 1, seed: 11, disagreement: true },
+    // Stage 3F.6-R: seed 11 abstains under the corrected router (score 0.7056), so it cannot exercise disagreement.
+    // Seed 12 is the first seed >= 11 in this family/level where the corrected router proposes an action (erratum).
+    { id: 'DISAGREEMENT', family: 'prime/adversarial_choice', level: 1, seed: 12, disagreement: true },
     { id: 'DELAYED_OUTCOME', family: 'archimedes/repair_network', level: 2, seed: 4, outcomeDelay: 4 },
     { id: 'UNKNOWN_OUTCOME', family: 'archimedes/repair_network', level: 3, seed: 12, unresolved: true },
     { id: 'INVALID_INELIGIBLE', family: 'archimedes/repair_network', level: 1, seed: 8, insufficient: true },
