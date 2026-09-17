@@ -1,0 +1,828 @@
+{
+  "schemaVersion": 1,
+  "stage": "STAGE_3F_6_P_1A_NEXUS_RELATIONAL_SPATIAL_CONTEXT",
+  "phase": "DEV_FREEZE",
+  "devEvidence": {
+    "contentHash": "98b5671241a44d301b17ad2275d31dd363467cb2beb01e6ae16623342758e9b5",
+    "contentVerified": true,
+    "rows": 4000,
+    "liveSurfaceMismatches": 0
+  },
+  "preserved": {
+    "NEXUS_SELECTOR_V1": {
+      "source": "src/lab/stage3c-learned-nexus.js",
+      "sourceHash": "aae20d1d40b1cc5f93b5b46dd700f1ef1f66ea0ec44507efc4c4cfecba198574"
+    },
+    "NEXUS_SELECTOR_V2_CANDIDATE": {
+      "source": "src/stage3f/nexus-selector-v2-candidate.js",
+      "sourceHash": "965cb36f003045a5f80e0e9860c03b99db0d427bdd1768d5fc33ec72e2581577"
+    }
+  },
+  "availability": {
+    "ACTOR_POSITION": {
+      "category": "OBSERVED",
+      "source": "ObservationPacket.features[3..4] (OBSERVATION_BINDING actorX, actorY)"
+    },
+    "THREAT_POSITION": {
+      "category": "PRIVILEGED",
+      "source": "kernel world.entities[].position only; canonicalState carries no positions",
+      "partialEvidence": "a legal RETREAT exposes the one-step cell away from the NEAREST live hostile along one axis; a legal ATTACK exposes an adjacent hostile"
+    },
+    "RELATIONAL_TARGET_POSITION": {
+      "category": "PRIVILEGED",
+      "source": "kernel only",
+      "partialEvidence": "a legal targeted action (PROTECT, REINFORCE, REPAIR, RESTORE, TRANSFER, ATTACK) proves its target is within range 1; absence proves nothing"
+    },
+    "DEPENDENCY_TARGET_POSITION": {
+      "category": "PRIVILEGED",
+      "source": "kernel only",
+      "partialEvidence": "same adjacency evidence as relational targets"
+    },
+    "ADJACENCY": {
+      "category": "DERIVED_FROM_OBSERVATION",
+      "source": "legal targeted actions + declared range 1; incomplete (energy- and flag-gated)"
+    },
+    "LEGAL_MOVE_DESTINATIONS": {
+      "category": "DERIVED_FROM_OBSERVATION",
+      "source": "live MOVE parameters.direction + declared direction deltas + observed actor cell; legality proves the cell is traversable"
+    },
+    "TERRAIN_AND_HAZARDS": {
+      "category": "PRIVILEGED",
+      "source": "kernel grid only"
+    },
+    "ENTITY_VALUE": {
+      "category": "PRIVILEGED",
+      "source": "kernel entities only; canonicalState carries id, kind, hostile, critical"
+    }
+  },
+  "contract": {
+    "id": "SENTINEL_NEXUS_RELATIONAL_SPATIAL_CONTEXT_V1",
+    "hash": "0f22ffa3418035f8a94a5ecd7e0be6f8941885d767ac7f4ba671495703d00961",
+    "candidateFieldCount": 12
+  },
+  "analysis": {
+    "verification": {
+      "actorCellObservedMatchesKernel": true,
+      "canonicalStateCarriesNoPositions": true,
+      "decisionInputCarriesNoGridOrTerrain": true,
+      "everyLegalMoveDeclaresDirection": true,
+      "everyLegalRetreatIsOneStepFromActor": true,
+      "retreatLegalShare": 0.40675
+    },
+    "moveAudit": {
+      "MOVE_OPTIMAL_N": 2994,
+      "nexusProposingN": 3337,
+      "MOVE_DIRECTION_VARIANTS": {
+        "legalMoveCount": {
+          "2": 112,
+          "3": 929,
+          "4": 1953
+        },
+        "optimalOfLegal": {
+          "1/4": 1858,
+          "2/3": 29,
+          "1/2": 112,
+          "1/3": 900,
+          "2/4": 86,
+          "3/4": 9
+        }
+      },
+      "lowestIdentityDirection": {
+        "EAST": 2705,
+        "SOUTH": 268,
+        "WEST": 21
+      },
+      "perDirection": {
+        "NORTH": {
+          "legalShare": 0.9074816299265197,
+          "optimalWhenLegal": 0.06624953993375046
+        },
+        "EAST": {
+          "legalShare": 0.9034736138944556,
+          "optimalWhenLegal": 0.7756007393715342
+        },
+        "SOUTH": {
+          "legalShare": 0.9054776219104876,
+          "optimalWhenLegal": 0.0966433050534858
+        },
+        "WEST": {
+          "legalShare": 0.8984635938543755,
+          "optimalWhenLegal": 0.21821561338289963
+        }
+      },
+      "meanRegretSpreadAcrossMoves": 103.9933199732799,
+      "BASELINE_DIRECTION_ACCURACY": 0.7237808951235805,
+      "RANDOM_DIRECTION_EXPECTED_ACCURACY": 0.29712202182142383
+    },
+    "fields": [
+      {
+        "fieldId": "moveAlignsWithRetreat",
+        "group": "deployable",
+        "deployable": true,
+        "relational": true,
+        "role": "MOVE_DIRECTION",
+        "direction": {
+          "orientation": "PREFER_LOW",
+          "discriminatingRows": 1455,
+          "fieldAccuracy": 0.44604810996563576,
+          "baselineAccuracySameRows": 0.7560137457044673,
+          "delta": -0.3099656357388316,
+          "ruleAccuracyAllMoveOptimalRows": 0.5731462925851704
+        },
+        "nexusBestDirection": {
+          "orientation": "PREFER_LOW",
+          "discriminatingRows": 554,
+          "fieldAccuracy": 0.5397111913357401,
+          "baselineAccuracySameRows": 0.6119133574007221,
+          "delta": -0.07220216606498195,
+          "ruleAccuracyAllMoveOptimalRows": 0.480719794344473
+        },
+        "meetsDirectionBar": false,
+        "accepted": false,
+        "decision": "REJECTED_NO_INCREMENTAL_VALUE"
+      },
+      {
+        "fieldId": "moveOpposesRetreat",
+        "group": "deployable",
+        "deployable": true,
+        "relational": true,
+        "role": "MOVE_DIRECTION",
+        "direction": {
+          "orientation": "PREFER_LOW",
+          "discriminatingRows": 1439,
+          "fieldAccuracy": 0.44892286309937457,
+          "baselineAccuracySameRows": 0.7560806115357888,
+          "delta": -0.3071577484364142,
+          "ruleAccuracyAllMoveOptimalRows": 0.5761523046092184
+        },
+        "nexusBestDirection": {
+          "orientation": "PREFER_HIGH",
+          "discriminatingRows": 547,
+          "fieldAccuracy": 0.5722120658135283,
+          "baselineAccuracySameRows": 0.6142595978062158,
+          "delta": -0.04204753199268738,
+          "ruleAccuracyAllMoveOptimalRows": 0.4952870608397601
+        },
+        "meetsDirectionBar": false,
+        "accepted": false,
+        "decision": "REJECTED_NO_INCREMENTAL_VALUE"
+      },
+      {
+        "fieldId": "moveChangesThreatenedDistance",
+        "group": "privilegedRelational",
+        "deployable": false,
+        "relational": true,
+        "role": "MOVE_DIRECTION",
+        "direction": {
+          "orientation": "PREFER_HIGH",
+          "discriminatingRows": 1843,
+          "fieldAccuracy": 0.4584915897992404,
+          "baselineAccuracySameRows": 0.7167661421595225,
+          "delta": -0.25827455236028213,
+          "ruleAccuracyAllMoveOptimalRows": 0.5647962591850367
+        },
+        "nexusBestDirection": {
+          "orientation": "PREFER_HIGH",
+          "discriminatingRows": 763,
+          "fieldAccuracy": 0.508519003931848,
+          "baselineAccuracySameRows": 0.546526867627785,
+          "delta": -0.03800786369593709,
+          "ruleAccuracyAllMoveOptimalRows": 0.49014567266495285
+        },
+        "meetsDirectionBar": false,
+        "accepted": false,
+        "decision": "REJECTED_NOT_DEPLOYABLE"
+      },
+      {
+        "fieldId": "moveChangesHostileDistance",
+        "group": "privilegedRelational",
+        "deployable": false,
+        "relational": true,
+        "role": "MOVE_DIRECTION",
+        "direction": {
+          "orientation": "PREFER_LOW",
+          "discriminatingRows": 1720,
+          "fieldAccuracy": 0.44825581395348835,
+          "baselineAccuracySameRows": 0.7180232558139535,
+          "delta": -0.26976744186046514,
+          "ruleAccuracyAllMoveOptimalRows": 0.5688042752171009
+        },
+        "nexusBestDirection": {
+          "orientation": "PREFER_LOW",
+          "discriminatingRows": 720,
+          "fieldAccuracy": 0.5541666666666667,
+          "baselineAccuracySameRows": 0.5486111111111112,
+          "delta": 0.005555555555555556,
+          "ruleAccuracyAllMoveOptimalRows": 0.5184233076263924
+        },
+        "meetsDirectionBar": false,
+        "accepted": false,
+        "decision": "REJECTED_NOT_DEPLOYABLE"
+      },
+      {
+        "fieldId": "moveChangesDependencyHubDistance",
+        "group": "privilegedRelational",
+        "deployable": false,
+        "relational": true,
+        "role": "MOVE_DIRECTION",
+        "direction": {
+          "orientation": "PREFER_HIGH",
+          "discriminatingRows": 1199,
+          "fieldAccuracy": 0.46371976647206004,
+          "baselineAccuracySameRows": 0.7581317764804003,
+          "delta": -0.2944120100083403,
+          "ruleAccuracyAllMoveOptimalRows": 0.605878423513694
+        },
+        "nexusBestDirection": {
+          "orientation": "PREFER_HIGH",
+          "discriminatingRows": 431,
+          "fieldAccuracy": 0.4872389791183295,
+          "baselineAccuracySameRows": 0.5382830626450116,
+          "delta": -0.05104408352668213,
+          "ruleAccuracyAllMoveOptimalRows": 0.4961439588688946
+        },
+        "meetsDirectionBar": false,
+        "accepted": false,
+        "decision": "REJECTED_NOT_DEPLOYABLE"
+      },
+      {
+        "fieldId": "moveChangesCriticalDistance",
+        "group": "privilegedRelational",
+        "deployable": false,
+        "relational": true,
+        "role": "MOVE_DIRECTION",
+        "direction": {
+          "orientation": "PREFER_HIGH",
+          "discriminatingRows": 2891,
+          "fieldAccuracy": 0.46696644759598754,
+          "baselineAccuracySameRows": 0.725700449671394,
+          "delta": -0.2587340020754064,
+          "ruleAccuracyAllMoveOptimalRows": 0.47394789579158314
+        },
+        "nexusBestDirection": {
+          "orientation": "PREFER_HIGH",
+          "discriminatingRows": 1105,
+          "fieldAccuracy": 0.5909502262443439,
+          "baselineAccuracySameRows": 0.5122171945701357,
+          "delta": 0.07873303167420814,
+          "ruleAccuracyAllMoveOptimalRows": 0.5895458440445587
+        },
+        "meetsDirectionBar": false,
+        "accepted": false,
+        "decision": "REJECTED_NOT_DEPLOYABLE"
+      },
+      {
+        "fieldId": "moveInterposesThreat",
+        "group": "privilegedRelational",
+        "deployable": false,
+        "relational": true,
+        "role": "MOVE_DIRECTION",
+        "direction": {
+          "orientation": "PREFER_HIGH",
+          "discriminatingRows": 435,
+          "fieldAccuracy": 0.4298850574712644,
+          "baselineAccuracySameRows": 0.7126436781609196,
+          "delta": -0.2827586206896552,
+          "ruleAccuracyAllMoveOptimalRows": 0.6826987307949232
+        },
+        "nexusBestDirection": {
+          "orientation": "PREFER_HIGH",
+          "discriminatingRows": 162,
+          "fieldAccuracy": 0.4691358024691358,
+          "baselineAccuracySameRows": 0.5432098765432098,
+          "delta": -0.07407407407407407,
+          "ruleAccuracyAllMoveOptimalRows": 0.50471293916024
+        },
+        "meetsDirectionBar": false,
+        "accepted": false,
+        "decision": "REJECTED_NOT_DEPLOYABLE"
+      },
+      {
+        "fieldId": "moveChangesThreatenedAdjacency",
+        "group": "privilegedRelational",
+        "deployable": false,
+        "relational": true,
+        "role": "MOVE_DIRECTION",
+        "direction": {
+          "orientation": "PREFER_HIGH",
+          "discriminatingRows": 144,
+          "fieldAccuracy": 0.4375,
+          "baselineAccuracySameRows": 0.6041666666666666,
+          "delta": -0.16666666666666666,
+          "ruleAccuracyAllMoveOptimalRows": 0.7157648630594522
+        },
+        "nexusBestDirection": {
+          "orientation": "PREFER_HIGH",
+          "discriminatingRows": 41,
+          "fieldAccuracy": 0.4878048780487805,
+          "baselineAccuracySameRows": 0.34146341463414637,
+          "delta": 0.14634146341463414,
+          "ruleAccuracyAllMoveOptimalRows": 0.5201371036846615
+        },
+        "meetsDirectionBar": false,
+        "accepted": false,
+        "decision": "REJECTED_NOT_DEPLOYABLE"
+      },
+      {
+        "fieldId": "approachResource",
+        "group": "privilegedNonRelationalReference",
+        "deployable": false,
+        "relational": false,
+        "role": "MOVE_DIRECTION",
+        "direction": {
+          "orientation": "PREFER_HIGH",
+          "discriminatingRows": 2990,
+          "fieldAccuracy": 0.8632107023411372,
+          "baselineAccuracySameRows": 0.7237458193979933,
+          "delta": 0.13946488294314383,
+          "ruleAccuracyAllMoveOptimalRows": 0.863059452237809
+        },
+        "nexusBestDirection": {
+          "orientation": "PREFER_HIGH",
+          "discriminatingRows": 1167,
+          "fieldAccuracy": 0.8414738646101114,
+          "baselineAccuracySameRows": 0.5149957155098543,
+          "delta": 0.3264781491002571,
+          "ruleAccuracyAllMoveOptimalRows": 0.8414738646101114
+        },
+        "meetsDirectionBar": true,
+        "accepted": false,
+        "decision": "REFERENCE_ONLY_NOT_RELATIONAL_NOT_DEPLOYABLE"
+      },
+      {
+        "fieldId": "adjacentProtectableValue",
+        "group": "privilegedNonRelationalReference",
+        "deployable": false,
+        "relational": false,
+        "role": "MOVE_DIRECTION",
+        "direction": {
+          "orientation": "PREFER_HIGH",
+          "discriminatingRows": 2980,
+          "fieldAccuracy": 0.8399328859060403,
+          "baselineAccuracySameRows": 0.724496644295302,
+          "delta": 0.11543624161073826,
+          "ruleAccuracyAllMoveOptimalRows": 0.8386773547094188
+        },
+        "nexusBestDirection": {
+          "orientation": "PREFER_HIGH",
+          "discriminatingRows": 1160,
+          "fieldAccuracy": 0.8318965517241379,
+          "baselineAccuracySameRows": 0.5155172413793103,
+          "delta": 0.3163793103448276,
+          "ruleAccuracyAllMoveOptimalRows": 0.829477292202228
+        },
+        "meetsDirectionBar": true,
+        "accepted": false,
+        "decision": "REFERENCE_ONLY_NOT_RELATIONAL_NOT_DEPLOYABLE"
+      },
+      {
+        "fieldId": "avoidHazard",
+        "group": "privilegedNonRelationalReference",
+        "deployable": false,
+        "relational": false,
+        "role": "MOVE_DIRECTION",
+        "direction": {
+          "orientation": "PREFER_HIGH",
+          "discriminatingRows": 213,
+          "fieldAccuracy": 0.6056338028169014,
+          "baselineAccuracySameRows": 0.5211267605633803,
+          "delta": 0.08450704225352113,
+          "ruleAccuracyAllMoveOptimalRows": 0.7297929191716767
+        },
+        "nexusBestDirection": {
+          "orientation": "PREFER_HIGH",
+          "discriminatingRows": 104,
+          "fieldAccuracy": 0.47115384615384615,
+          "baselineAccuracySameRows": 0.3269230769230769,
+          "delta": 0.14423076923076922,
+          "ruleAccuracyAllMoveOptimalRows": 0.5278491859468724
+        },
+        "meetsDirectionBar": true,
+        "accepted": false,
+        "decision": "REFERENCE_ONLY_NOT_RELATIONAL_NOT_DEPLOYABLE"
+      },
+      {
+        "fieldId": "fixedDirectionEast",
+        "group": "privilegedNonRelationalReference",
+        "deployable": false,
+        "relational": false,
+        "role": "MOVE_DIRECTION",
+        "direction": {
+          "orientation": "PREFER_HIGH",
+          "discriminatingRows": 2705,
+          "fieldAccuracy": 0.7756007393715342,
+          "baselineAccuracySameRows": 0.7756007393715342,
+          "delta": 0,
+          "ruleAccuracyAllMoveOptimalRows": 0.7237808951235805
+        },
+        "nexusBestDirection": {
+          "orientation": "PREFER_HIGH",
+          "discriminatingRows": 944,
+          "fieldAccuracy": 0.614406779661017,
+          "baselineAccuracySameRows": 0.614406779661017,
+          "delta": 0,
+          "ruleAccuracyAllMoveOptimalRows": 0.5149957155098543
+        },
+        "meetsDirectionBar": false,
+        "accepted": false,
+        "decision": "REFERENCE_ONLY_NOT_RELATIONAL_NOT_DEPLOYABLE"
+      },
+      {
+        "fieldId": "adjacentThreatenedEvidence",
+        "group": "deployable",
+        "deployable": true,
+        "relational": true,
+        "role": "PROTECT_VS_MOVE",
+        "protectVsMove": {
+          "evidenceRows": 79,
+          "P_PROTECT_PREFERABLE_GIVEN_EVIDENCE": 0.5949367088607594,
+          "P_PROTECT_PREFERABLE_BASE": 0.09469583458195985,
+          "accuracyWithField": 0.6583757866347019,
+          "accuracyNoProtect": 0.6562780940964938,
+          "delta": 0.002097692538208018
+        },
+        "accepted": false,
+        "decision": "REJECTED_INSUFFICIENT_EVIDENCE"
+      },
+      {
+        "fieldId": "adjacentDependencyHubEvidence",
+        "group": "deployable",
+        "deployable": true,
+        "relational": true,
+        "role": "PROTECT_VS_MOVE",
+        "protectVsMove": {
+          "evidenceRows": 127,
+          "P_PROTECT_PREFERABLE_GIVEN_EVIDENCE": 0.4015748031496063,
+          "P_PROTECT_PREFERABLE_BASE": 0.09469583458195985,
+          "accuracyWithField": 0.6487863350314654,
+          "accuracyNoProtect": 0.6562780940964938,
+          "delta": -0.007491759065028414
+        },
+        "accepted": false,
+        "decision": "REJECTED_INSUFFICIENT_EVIDENCE"
+      },
+      {
+        "fieldId": "adjacentCriticalEvidence",
+        "group": "deployable",
+        "deployable": true,
+        "relational": true,
+        "role": "PROTECT_VS_MOVE",
+        "protectVsMove": {
+          "evidenceRows": 156,
+          "P_PROTECT_PREFERABLE_GIVEN_EVIDENCE": 0.25,
+          "P_PROTECT_PREFERABLE_BASE": 0.09469583458195985,
+          "accuracyWithField": 0.6403955648786335,
+          "accuracyNoProtect": 0.6562780940964938,
+          "delta": -0.015882529217860375
+        },
+        "accepted": false,
+        "decision": "REJECTED_INSUFFICIENT_EVIDENCE"
+      }
+    ],
+    "semantics": [
+      {
+        "effect": "APPROACH_THREATENED",
+        "movesWithEffect": 3476,
+        "movesWithoutEffect": 3401,
+        "P_OPTIMAL_WITH": 0.32681242807825084,
+        "P_OPTIMAL_WITHOUT": 0.251102616877389,
+        "lift": 1.3015094471828232,
+        "evidence": "SUPPORTED"
+      },
+      {
+        "effect": "APPROACH_UNSUPPORTED_THREATENED",
+        "movesWithEffect": 2722,
+        "movesWithoutEffect": 2637,
+        "P_OPTIMAL_WITH": 0.3299044819985305,
+        "P_OPTIMAL_WITHOUT": 0.24800910125142206,
+        "lift": 1.3302111911775611,
+        "evidence": "SUPPORTED"
+      },
+      {
+        "effect": "LEAVE_HOSTILE",
+        "movesWithEffect": 3140,
+        "movesWithoutEffect": 3299,
+        "P_OPTIMAL_WITH": 0.271656050955414,
+        "P_OPTIMAL_WITHOUT": 0.3058502576538345,
+        "lift": 0.8881995164538263,
+        "evidence": "CONTRADICTED"
+      },
+      {
+        "effect": "INTERPOSE_THREAT",
+        "movesWithEffect": 1849,
+        "movesWithoutEffect": 5028,
+        "P_OPTIMAL_WITH": 0.2861005949161709,
+        "P_OPTIMAL_WITHOUT": 0.2905727923627685,
+        "lift": 0.9846090289106826,
+        "evidence": "NO_EFFECT"
+      },
+      {
+        "effect": "PRESERVE_DEPENDENCY_HUB_ADJACENCY",
+        "movesWithEffect": 68,
+        "movesWithoutEffect": 177,
+        "P_OPTIMAL_WITH": 0.04411764705882353,
+        "P_OPTIMAL_WITHOUT": 0.3502824858757062,
+        "lift": 0.12594876660341556,
+        "evidence": "INSUFFICIENT"
+      },
+      {
+        "effect": "ALIGN_RETREAT_DEPLOYABLE",
+        "movesWithEffect": 1455,
+        "movesWithoutEffect": 4081,
+        "P_OPTIMAL_WITH": 0.4240549828178694,
+        "P_OPTIMAL_WITHOUT": 0.22396471453075226,
+        "lift": 1.8934008587305526,
+        "evidence": "SUPPORTED"
+      },
+      {
+        "effect": "APPROACH_RESOURCE_REFERENCE",
+        "movesWithEffect": 3112,
+        "movesWithoutEffect": 7711,
+        "P_OPTIMAL_WITH": 0.8486503856041131,
+        "P_OPTIMAL_WITHOUT": 0.06302684476721566,
+        "lift": 13.464903546076782,
+        "evidence": "SUPPORTED"
+      },
+      {
+        "effect": "AVOID_HAZARD_REFERENCE",
+        "movesWithEffect": 10603,
+        "movesWithoutEffect": 220,
+        "P_OPTIMAL_WITH": 0.2935018391021409,
+        "P_OPTIMAL_WITHOUT": 0.06818181818181818,
+        "lift": 4.304693640164733,
+        "evidence": "SUPPORTED"
+      }
+    ],
+    "policies": {
+      "V1": {
+        "n": 3337,
+        "accuracy": 0.22715013485166316,
+        "meanRegret": 50.246029367695535,
+        "p95Regret": 143,
+        "pRegretAbove100": 0.1486364998501648,
+        "actionTypeDistribution": {
+          "PROTECT": 0.9172909799220857,
+          "REINFORCE": 0.05064429127959245,
+          "REPAIR": 0.03206472879832185
+        },
+        "moveDirectionCorrectness": {
+          "n": 0,
+          "accuracy": null
+        },
+        "whenNexusV1Best": {
+          "n": 1448,
+          "accuracy": 0.5234806629834254,
+          "meanRegret": 29.310082872928177
+        },
+        "RESOURCE_AGREEMENT": 0,
+        "GREEDY_AGREEMENT": 0.8216961342523225,
+        "V1_AGREEMENT": 1,
+        "P_CORRECT_AND_RESOURCE_WRONG": 0.09080011986814504,
+        "oracleWith": {
+          "accuracy": 0.70225,
+          "meanRegret": 16.51125
+        }
+      },
+      "V2": {
+        "n": 3337,
+        "accuracy": 0.6583757866347019,
+        "meanRegret": 21.711117770452503,
+        "p95Regret": 122,
+        "pRegretAbove100": 0.07102187593646989,
+        "actionTypeDistribution": {
+          "ATTACK": 0.016182199580461493,
+          "MOVE": 0.8846269103985616,
+          "PROTECT": 0.01648186994306263,
+          "REINFORCE": 0.05064429127959245,
+          "REPAIR": 0.03206472879832185
+        },
+        "moveDirectionCorrectness": {
+          "n": 2816,
+          "accuracy": 0.7347301136363636
+        },
+        "whenNexusV1Best": {
+          "n": 1448,
+          "accuracy": 0.48204419889502764,
+          "meanRegret": 38.09599447513812
+        },
+        "RESOURCE_AGREEMENT": 0.7704525022475277,
+        "GREEDY_AGREEMENT": 0.04285286185196284,
+        "V1_AGREEMENT": 0.08390770152831885,
+        "P_CORRECT_AND_RESOURCE_WRONG": 0.08450704225352113,
+        "oracleWith": {
+          "accuracy": 0.692,
+          "meanRegret": 19.20675
+        }
+      },
+      "RESOURCE": {
+        "n": 3337,
+        "accuracy": 0.6092298471681151,
+        "meanRegret": 27.441714114474077,
+        "p95Regret": 137,
+        "pRegretAbove100": 0.09529517530716212,
+        "actionTypeDistribution": {
+          "MOVE": 0.8684447108181,
+          "RETREAT": 0.1315552891818999
+        },
+        "moveDirectionCorrectness": {
+          "n": 2604,
+          "accuracy": 0.7192780337941628
+        },
+        "whenNexusV1Best": {
+          "n": 1448,
+          "accuracy": 0.31422651933701656,
+          "meanRegret": 54.44129834254144
+        },
+        "RESOURCE_AGREEMENT": 1,
+        "GREEDY_AGREEMENT": 0,
+        "V1_AGREEMENT": 0,
+        "P_CORRECT_AND_RESOURCE_WRONG": 0,
+        "oracleWith": {
+          "accuracy": 0.63,
+          "meanRegret": 25.15025
+        }
+      },
+      "V2_ORACLE_DIRECTION_CEILING": {
+        "n": 3337,
+        "accuracy": 0.8822295474977525,
+        "meanRegret": 4.628109080011987,
+        "p95Regret": 32,
+        "pRegretAbove100": 0.011087803416242133,
+        "actionTypeDistribution": {
+          "ATTACK": 0.016182199580461493,
+          "MOVE": 0.8846269103985616,
+          "PROTECT": 0.01648186994306263,
+          "REINFORCE": 0.05064429127959245,
+          "REPAIR": 0.03206472879832185
+        },
+        "moveDirectionCorrectness": {
+          "n": 2816,
+          "accuracy": 1
+        },
+        "whenNexusV1Best": {
+          "n": 1448,
+          "accuracy": 0.837707182320442,
+          "meanRegret": 4.655386740331492
+        },
+        "RESOURCE_AGREEMENT": 0.5531914893617021,
+        "GREEDY_AGREEMENT": 0.04315253221456398,
+        "V1_AGREEMENT": 0.08390770152831885,
+        "P_CORRECT_AND_RESOURCE_WRONG": 0.3014683847767456,
+        "oracleWith": {
+          "accuracy": 0.873,
+          "meanRegret": 5.6435
+        }
+      }
+    },
+    "protectVsMoveBase": {
+      "P_PROTECT_PREFERABLE": 0.09469583458195985,
+      "accuracyNoProtect": 0.6562780940964938
+    }
+  },
+  "decision": {
+    "acceptedFields": [],
+    "rejectedFields": [
+      {
+        "fieldId": "moveAlignsWithRetreat",
+        "decision": "REJECTED_NO_INCREMENTAL_VALUE"
+      },
+      {
+        "fieldId": "moveOpposesRetreat",
+        "decision": "REJECTED_NO_INCREMENTAL_VALUE"
+      },
+      {
+        "fieldId": "moveChangesThreatenedDistance",
+        "decision": "REJECTED_NOT_DEPLOYABLE"
+      },
+      {
+        "fieldId": "moveChangesHostileDistance",
+        "decision": "REJECTED_NOT_DEPLOYABLE"
+      },
+      {
+        "fieldId": "moveChangesDependencyHubDistance",
+        "decision": "REJECTED_NOT_DEPLOYABLE"
+      },
+      {
+        "fieldId": "moveChangesCriticalDistance",
+        "decision": "REJECTED_NOT_DEPLOYABLE"
+      },
+      {
+        "fieldId": "moveInterposesThreat",
+        "decision": "REJECTED_NOT_DEPLOYABLE"
+      },
+      {
+        "fieldId": "moveChangesThreatenedAdjacency",
+        "decision": "REJECTED_NOT_DEPLOYABLE"
+      },
+      {
+        "fieldId": "adjacentThreatenedEvidence",
+        "decision": "REJECTED_INSUFFICIENT_EVIDENCE"
+      },
+      {
+        "fieldId": "adjacentDependencyHubEvidence",
+        "decision": "REJECTED_INSUFFICIENT_EVIDENCE"
+      },
+      {
+        "fieldId": "adjacentCriticalEvidence",
+        "decision": "REJECTED_INSUFFICIENT_EVIDENCE"
+      }
+    ],
+    "separability": {
+      "meaningful": false,
+      "MOVE_DIRECTION_BASELINE": 0.7237808951235805,
+      "MOVE_DIRECTION_WITH_RELATIONAL_SPATIAL": {
+        "fieldId": "moveOpposesRetreat",
+        "orientation": "PREFER_LOW",
+        "accuracy": 0.5761523046092184,
+        "DELTA": -0.14762859051436206
+      },
+      "MOVE_DIRECTION_WITH_PRIVILEGED_RELATIONAL": {
+        "fieldId": "moveChangesThreatenedAdjacency",
+        "orientation": "PREFER_HIGH",
+        "accuracy": 0.7157648630594522,
+        "DELTA": -0.008016032064128265
+      },
+      "MOVE_DIRECTION_WITH_NON_RELATIONAL_REFERENCE": {
+        "fieldId": "approachResource",
+        "orientation": "PREFER_HIGH",
+        "accuracy": 0.863059452237809,
+        "DELTA": 0.13927855711422854
+      },
+      "privilegedRelationalFieldsMeetingBar": [],
+      "nonRelationalReferencesMeetingBar": [
+        "approachResource",
+        "adjacentProtectableValue",
+        "avoidHazard"
+      ]
+    },
+    "candidate": {
+      "id": "NEXUS_SELECTOR_V3_SPATIAL_CANDIDATE",
+      "constructed": false,
+      "reason": "NOT CONSTRUCTED: no deployable relational field separates the correct MOVE direction on DEV"
+    },
+    "advancement": {
+      "V3_CONSTRUCTED": false,
+      "pass": false,
+      "reason": "fails the first criterion: no V3 candidate exists"
+    },
+    "calGate": {
+      "CAL_EVALUATION_AUTHORIZED": false,
+      "reason": "fails the first criterion: no V3 candidate exists"
+    },
+    "classification": {
+      "primaryResult": "D_AVAILABLE_SPATIAL_CONTEXT_INSUFFICIENT",
+      "secondaryResult": "PRIVILEGED_RELATIONAL_GEOMETRY_ALSO_ANTI_PREDICTIVE+MOVE_DIRECTION_DRIVEN_BY_NON_RELATIONAL_HIDDEN_FACTORS+LOWEST_IDENTITY_MOVE_IS_EAST_LAYOUT_ARTEFACT+MOVE_DIRECTION_IS_PRIMARY_LIMITATION",
+      "NEXUS_REMEDIATION_BLOCKED_BY_REPRESENTATION": true
+    }
+  },
+  "rules": {
+    "data": {
+      "development": "DEV only",
+      "cal": "only if CAL_EVALUATION_AUTHORIZED",
+      "exposedAndUnused": [
+        "prior HOLDOUT",
+        "prior OOD"
+      ]
+    },
+    "moveOptimalRows": "NEXUS V1 proposes, >= 2 legal MOVEs, and at least one legal MOVE is horizon-optimal",
+    "directionBaseline": "lowest action identity among legal MOVEs (the V1/V2 tie-break)",
+    "directionInformationValue": "on rows where the field separates the legal MOVEs: accuracy of the top-scored MOVE (ties by action identity) minus the baseline on the same rows; both orientations measured, the better one reported",
+    "fieldAcceptance": {
+      "MOVE_DIRECTION": "deployable AND relational AND discriminating rows >= 200 AND direction delta >= +0.05",
+      "PROTECT_VS_MOVE": "deployable AND evidence rows >= 200 AND accuracy delta >= +0.01 over the no-PROTECT mapping on NEXUS-proposing rows",
+      "PRIVILEGED": "never accepted (not deployable); its value is measured only to diagnose whether hidden geometry would suffice"
+    },
+    "separability": "meaningful only if at least one deployable relational MOVE_DIRECTION field is accepted",
+    "candidateConstruction": "NEXUS_SELECTOR_V3_SPATIAL_CANDIDATE is constructed only if separability is meaningful",
+    "advancement": [
+      "V3 constructed",
+      "standalone material over V1: mean regret delta <= -5.0 AND accuracy delta >= +0.05",
+      "ORACLE_WITH_V3 mean regret <= ORACLE_WITH_V1 mean regret",
+      "V3-RESOURCE agreement < 0.5 AND P(V3 correct AND RESOURCE wrong) >= P(V1 correct AND RESOURCE wrong)",
+      "p95 regret and P(regret > 100) not worse than V1",
+      "no privileged spatial input (static and dynamic boundary checks)"
+    ],
+    "calGate": "CAL_EVALUATION_AUTHORIZED = advancement passes on DEV",
+    "classificationPrecedence": [
+      "F_MOVE_DIRECTION_NOT_PRIMARY_LIMITATION if the V2 oracle-direction ceiling does not bring policy-set oracle regret below ORACLE_WITH_V1",
+      "A/B/C from CAL, only if CAL was authorized and evaluated",
+      "E_REQUIRED_SPATIAL_INFORMATION_NOT_DEPLOYABLE if no deployable relational direction field is accepted but a privileged RELATIONAL direction field would meet the direction bar",
+      "D_AVAILABLE_SPATIAL_CONTEXT_INSUFFICIENT if no deployable relational direction field is accepted and no privileged relational one would either",
+      "C_SPATIAL_CONTEXT_CAUSES_ROLE_COLLAPSE if V3 was constructed but fails advancement on RESOURCE agreement or policy-set value",
+      "B_RELATIONAL_SPATIAL_CONTEXT_HELPS_BUT_INSUFFICIENT otherwise"
+    ],
+    "readiness": {
+      "READY_FOR_FRESH_NEXUS_CONFIRMATION": "only A after DEV and CAL",
+      "READY_FOR_ROUTER_RETRAIN": false,
+      "READY_FOR_STAGE3G": false
+    }
+  },
+  "explorationDisclosure": [
+    "Before this freeze, DEV-only exploratory scripts (not certification inputs) measured single-feature MOVE-direction rules, direction ceilings and PROTECT-vs-MOVE splits. These rules were written after those DEV values were seen.",
+    "The exploration found that the lowest-identity MOVE is EAST whenever EAST is legal (action identities are hashes of fixed direction parameters), and that EAST is optimal in most MOVE-optimal rows."
+  ],
+  "frozenSources": {
+    "src/stage3f/nexus-relational-spatial-context-v1.js": "6a66f4d8898fee0be039a815542a9b4487ad017637998ee7785938b0b584c6c6"
+  },
+  "freezeHash": "3b2451d7fbc447bd3aab6bf3ef9bb64015ac297f81e1bb3398c241218ea1617d"
+}
