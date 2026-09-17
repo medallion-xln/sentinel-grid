@@ -1,0 +1,65 @@
+{
+  "gate": "STAGE_3F_6_P_POLICY_QUALITY",
+  "data": [
+    "DEV",
+    "CAL"
+  ],
+  "CONFIRMATORY_POLICY_QUALITY_CLAIMS": false,
+  "bestAvailable": "policy is in the minimum-regret set among the four routed policies (ties included); uniquely best reported separately",
+  "regretThresholds": {
+    "atMost": [
+      5,
+      10,
+      25
+    ],
+    "above": [
+      50,
+      100
+    ]
+  },
+  "regimes": "UNSUPPORTED_THREAT, BOTTLENECK, HIGH_HOSTILE (>= DEV median and > 0), LOW_ENERGY (<= DEV median), MULTI_OBJECTIVE (>= 2), FEW_ACTIONS (<= DEV median), NOVEL (cross-partition nearest-neighbour distance > overall q90), objectives family, roles family, topology shape",
+  "concentration": "regime n >= 200 inside the subset AND mean regret in / out >= 1.25; primary regime = largest ratio",
+  "oracleFallback": "an episode where no member of an oracle subset proposed an action uses the RANDOM_LEGAL control action",
+  "nexusActionPattern": "DOMINATED_BY_WEAK_PATTERN if top-2 chosen action types cover >= 0.8 of NEXUS selections and their mean regret >= 0.9 x NEXUS mean regret",
+  "routingVsPolicy": "NEXUS_ITSELF_CHOOSES_WEAK_ACTIONS if NEXUS mean regret when best-available >= 25, else WEAK_ROUTING_NOT_POLICY",
+  "replacementHypothesis": [
+    "BETTER_DEPENDENCY_ACTION_MAPPING if type alignment >= 0.5 and exact accuracy when best < 0.5",
+    "BETTER_RISK_RESPONSE if the primary NEXUS failure regime is threat-related",
+    "BETTER_OBJECTIVE_PLANNING if it is objective-related",
+    "BETTER_RELATIONAL_REASONING if it is dependency/bottleneck-related",
+    "OTHER otherwise"
+  ],
+  "shortcutDependence": "accuracy(RESOURCE | zero-cost optimal exists) - accuracy(RESOURCE | none): >= 0.5 HIGH, >= 0.2 MODERATE, else LOW",
+  "auxiliaryPolicyReason": [
+    "RARE_OPPORTUNITY if applicability < 0.1 and opportunity < 0.1",
+    "WEAK_DECISION_RULE if accuracy when proposing with an in-class optimal action < 0.5",
+    "OVER_STRICT_APPLICABILITY if applicability < 0.1",
+    "NOT_DETERMINED otherwise; INSUFFICIENT_OBSERVATION cannot be measured from current evidence"
+  ],
+  "policyClassification": [
+    "INSUFFICIENT_EVIDENCE if best-available n < 200",
+    "REMOVE_CANDIDATE if marginal oracle regret reduction < 0.5 and accuracy gain < 0.005",
+    "KEEP if best-available mean regret <= 15",
+    "REDESIGN_CANDIDATE if best-available mean regret > 25 and marginal regret reduction >= 2.0",
+    "KEEP_BUT_LIMIT otherwise"
+  ],
+  "primaryResult": [
+    "E_INSUFFICIENT_EVIDENCE if RESOURCE or NEXUS best-available n < 200",
+    "B_POLICY_QUALITY_IS_BINDING_LIMITATION if any REDESIGN_CANDIDATE",
+    "A_POLICY_SET_SUFFICIENT if full oracle mean regret <= 10",
+    "C_ROUTING_REMAINS_BINDING otherwise"
+  ],
+  "readiness": {
+    "READY_FOR_POLICY_REDESIGN": "primary result B",
+    "READY_FOR_ROUTER_RETRAIN": false,
+    "READY_FOR_STAGE3G": false
+  },
+  "prohibited": [
+    "router training",
+    "decision-rule tuning",
+    "new features",
+    "policy modification",
+    "sealed data"
+  ],
+  "planHash": "0d4487542ae2850b28aa1e88e8cdee58618352bf712085f5b78d8f80d7798596"
+}
