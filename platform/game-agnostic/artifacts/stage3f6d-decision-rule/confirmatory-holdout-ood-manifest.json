@@ -1,0 +1,95 @@
+{
+  "schemaVersion": 1,
+  "smokeMode": false,
+  "spec": {
+    "version": "STAGE3F6D_CONFIRMATORY_HOLDOUT_OOD_V1",
+    "curriculum": "FORGE_CURRICULUM_V2",
+    "holdout": {
+      "levels": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5
+      ],
+      "seeds": [
+        801,
+        802,
+        803
+      ]
+    },
+    "ood": {
+      "levels": [
+        6,
+        7
+      ],
+      "seeds": [
+        811
+      ]
+    },
+    "priorSeedSpaces": [
+      1,
+      2,
+      3,
+      11,
+      201,
+      202,
+      203,
+      211,
+      401,
+      402,
+      403,
+      411,
+      601,
+      602,
+      603,
+      611
+    ],
+    "priorDatasets": [
+      "artifacts/stage3f6c-deployable-router/confirmatory-corpus.jsonl.gz",
+      "artifacts/stage3f6t-policy-router/confirmatory-holdout-ood.jsonl.gz"
+    ],
+    "targets": {
+      "HOLDOUT": 6000,
+      "OOD": 6000
+    },
+    "reason": "Stage 3F.6-T HOLDOUT/OOD were opened by Stage 3F.6-T; the decision rule is designed after inspecting them"
+  },
+  "featureContractHash": "5b0a631ece4c9304d4ee8b5298dadb7a2f8a5f18ac39a358216eb14d074ec926",
+  "proposalContractHash": "53aaa52bf1d3ee3c06657644f8bb46496d1c6320b9fe0d961bec93d77bf65282",
+  "priorDatasetHashes": {
+    "artifacts/stage3f6c-deployable-router/confirmatory-corpus.jsonl.gz": "28fc6369511c2eb2e59d846a7a0353817cef9e56e871a65b4f8c2b577c1b62d5",
+    "artifacts/stage3f6t-policy-router/confirmatory-holdout-ood.jsonl.gz": "199a86724b710b13053e6c89d98e84218e92b47ab581691deadf541be704a843"
+  },
+  "attempted": 12809,
+  "admitted": 12000,
+  "counts": {
+    "HOLDOUT": 6000,
+    "OOD": 6000
+  },
+  "contentHash": "d9aa89fc27840d4fd102b7440e59920e4c629b401a90c5e3b4a349ac64a9d5e8",
+  "partitionHashes": {
+    "HOLDOUT": "b4fd06e7ee0e635cea5b56d87609e2cbaec219b62518785a306922db8a3cc734",
+    "OOD": "bd66864d988d9ef68946fc00340f1ec558f08dc6ab664f52fd906138769e4418"
+  },
+  "overlapWithPriorDatasets": {
+    "topology": 0,
+    "record": 0,
+    "state": 0
+  },
+  "internalOverlap": {
+    "HOLDOUT_OOD_topology": 0,
+    "record": 0,
+    "state": 0
+  },
+  "rejected": {
+    "TOPOLOGY_IN_PRIOR_DATASET": 653,
+    "TREE_BRANCHES_ACYCLIC": 68,
+    "LAYERS": 52,
+    "BRIDGE_CUT_EXISTS": 15,
+    "CONTESTED_BOTTLENECK": 2,
+    "ISLANDS": 19
+  },
+  "generator": "scripts/generate-stage3f6d-confirmatory.mjs"
+}

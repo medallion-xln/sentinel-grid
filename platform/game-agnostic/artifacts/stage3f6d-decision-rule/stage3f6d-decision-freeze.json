@@ -1,0 +1,452 @@
+{
+  "gate": "STAGE_3F_6_D_DECISION_RULE",
+  "routerArchitecture": "MULTINOMIAL_LOGISTIC_REGRESSION_MASKED_SOFTMAX",
+  "routerHash": "25876d1899a17b0252605982ac353123308c1f006194d1e84844a381471d8d25",
+  "featureContract": {
+    "id": "SENTINEL_DEPLOYABLE_FEATURE_CONTRACT_V1",
+    "hash": "5b0a631ece4c9304d4ee8b5298dadb7a2f8a5f18ac39a358216eb14d074ec926",
+    "featureCount": 30
+  },
+  "policySetHash": "3f1a19f788389202af79ee50c9149344fa069f407abf09c6fede876617620c79",
+  "methodology": {
+    "routerSource": "frozen Stage 3F.6-T router (weights from its evaluation freeze); not retrained",
+    "inputProfile": "DEPLOYABLE_CORE (30)",
+    "regimeDefinition": "soft best-policy membership: 1/|best set| for each policy at minimum regret",
+    "classWeights": "DEV only: w_k = 1 / max(prior_k, 1/n_dev), normalised to sum to 1 over routed policies",
+    "costMatrix": "DEV only: mean realized regret of the selected policy, weighted by soft regime membership",
+    "valueMatrix": "DEV only: mean correctness of the selected policy, weighted by soft regime membership",
+    "emptyCellPolicy": "a cost/value cell with no DEV support falls back to the selected policy's overall DEV mean (frozen, recorded)",
+    "probabilityCalibration": "temperature scaling of router probabilities; T chosen on CAL by minimum soft-target cross-entropy",
+    "temperatureGrid": [
+      0.5,
+      0.75,
+      1,
+      1.25,
+      1.5,
+      2,
+      3,
+      4
+    ],
+    "nexusThresholdGrid": [
+      0.2,
+      0.25,
+      0.3,
+      0.35,
+      0.4,
+      0.45,
+      0.5,
+      0.55,
+      0.6
+    ],
+    "nexusThresholdRule": "on CAL: minimise mean regret; ties -> higher accuracy -> higher threshold",
+    "headlineRuleSelection": "on CAL, among B/C/D/E: minimum mean regret; ties -> higher accuracy -> DecisionRule order",
+    "primaryHypothesisRule": "C_EXPECTED_REGRET_MINIMIZATION",
+    "tieBreak": "ROUTED_POLICIES order"
+  },
+  "probabilityCalibration": {
+    "temperature": 1,
+    "grid": [
+      {
+        "T": 0.5,
+        "crossEntropy": 0.5902623820583719
+      },
+      {
+        "T": 0.75,
+        "crossEntropy": 0.5419835916015024
+      },
+      {
+        "T": 1,
+        "crossEntropy": 0.5341126127737527
+      },
+      {
+        "T": 1.25,
+        "crossEntropy": 0.5363371753219908
+      },
+      {
+        "T": 1.5,
+        "crossEntropy": 0.5411626347387601
+      },
+      {
+        "T": 2,
+        "crossEntropy": 0.5513244425110744
+      },
+      {
+        "T": 3,
+        "crossEntropy": 0.5664220548351814
+      },
+      {
+        "T": 4,
+        "crossEntropy": 0.5759203864832261
+      }
+    ]
+  },
+  "classWeights": {
+    "prior": {
+      "RESOURCE_PRESERVING_V1": 0.6939583333332933,
+      "NEXUS_SELECTOR": 0.28645833333332577,
+      "OBJECTIVE_TARGETING_V1": 0.01170833333333334,
+      "THREAT_COVERING_V1": 0.007875000000000005
+    },
+    "weights": {
+      "RESOURCE_PRESERVING_V1": 0.006630653324768865,
+      "NEXUS_SELECTOR": 0.016063059072585015,
+      "OBJECTIVE_TARGETING_V1": 0.39300189012106407,
+      "THREAT_COVERING_V1": 0.5843043974815819
+    }
+  },
+  "costMatrix": {
+    "RESOURCE_PRESERVING_V1": {
+      "RESOURCE_PRESERVING_V1": 9.620714500150102,
+      "NEXUS_SELECTOR": 64.00232727272727,
+      "OBJECTIVE_TARGETING_V1": 74.66903914590746,
+      "THREAT_COVERING_V1": 84.17460317460318
+    },
+    "NEXUS_SELECTOR": {
+      "RESOURCE_PRESERVING_V1": 60.02475442043221,
+      "NEXUS_SELECTOR": 32.80581818181818,
+      "OBJECTIVE_TARGETING_V1": 41.317596566523605,
+      "THREAT_COVERING_V1": 37.26984126984127
+    },
+    "OBJECTIVE_TARGETING_V1": {
+      "RESOURCE_PRESERVING_V1": 83.09348914858099,
+      "NEXUS_SELECTOR": 54.284916201117326,
+      "OBJECTIVE_TARGETING_V1": 34.37722419928825,
+      "THREAT_COVERING_V1": 9.818181818181818
+    },
+    "THREAT_COVERING_V1": {
+      "RESOURCE_PRESERVING_V1": 48.375,
+      "NEXUS_SELECTOR": 45.642857142857146,
+      "OBJECTIVE_TARGETING_V1": 19.428571428571427,
+      "THREAT_COVERING_V1": 4.428571428571429
+    }
+  },
+  "valueMatrix": {
+    "RESOURCE_PRESERVING_V1": {
+      "RESOURCE_PRESERVING_V1": 0.8049234464124886,
+      "NEXUS_SELECTOR": 0.1984,
+      "OBJECTIVE_TARGETING_V1": 0.007117437722419927,
+      "THREAT_COVERING_V1": 0
+    },
+    "NEXUS_SELECTOR": {
+      "RESOURCE_PRESERVING_V1": 0.10719056974459723,
+      "NEXUS_SELECTOR": 0.4567272727272728,
+      "OBJECTIVE_TARGETING_V1": 0.1759656652360515,
+      "THREAT_COVERING_V1": 0.015873015873015872
+    },
+    "OBJECTIVE_TARGETING_V1": {
+      "RESOURCE_PRESERVING_V1": 0.0033388981636060105,
+      "NEXUS_SELECTOR": 0.229050279329609,
+      "OBJECTIVE_TARGETING_V1": 0.5088967971530248,
+      "THREAT_COVERING_V1": 0.36363636363636365
+    },
+    "THREAT_COVERING_V1": {
+      "RESOURCE_PRESERVING_V1": 0,
+      "NEXUS_SELECTOR": 0.07142857142857142,
+      "OBJECTIVE_TARGETING_V1": 0.5714285714285714,
+      "THREAT_COVERING_V1": 0.873015873015873
+    }
+  },
+  "costMatrixCells": {
+    "RESOURCE_PRESERVING_V1": {
+      "RESOURCE_PRESERVING_V1": {
+        "support": 2775.833333333334,
+        "meanRegret": 9.620714500150102,
+        "meanValue": 0.8049234464124886,
+        "p95Regret": 73,
+        "accuracyLoss": 0.19507655358751141
+      },
+      "NEXUS_SELECTOR": {
+        "support": 1145.8333333333333,
+        "meanRegret": 64.00232727272727,
+        "meanValue": 0.1984,
+        "p95Regret": 167,
+        "accuracyLoss": 0.8016
+      },
+      "OBJECTIVE_TARGETING_V1": {
+        "support": 46.83333333333334,
+        "meanRegret": 74.66903914590746,
+        "meanValue": 0.007117437722419927,
+        "p95Regret": 177,
+        "accuracyLoss": 0.9928825622775801
+      },
+      "THREAT_COVERING_V1": {
+        "support": 31.5,
+        "meanRegret": 84.17460317460318,
+        "meanValue": 0,
+        "p95Regret": 196,
+        "accuracyLoss": 1
+      }
+    },
+    "NEXUS_SELECTOR": {
+      "RESOURCE_PRESERVING_V1": {
+        "support": 2120.8333333333335,
+        "meanRegret": 60.02475442043221,
+        "meanValue": 0.10719056974459723,
+        "p95Regret": 148,
+        "accuracyLoss": 0.8928094302554028
+      },
+      "NEXUS_SELECTOR": {
+        "support": 1145.8333333333333,
+        "meanRegret": 32.80581818181818,
+        "meanValue": 0.4567272727272728,
+        "p95Regret": 126,
+        "accuracyLoss": 0.5432727272727271
+      },
+      "OBJECTIVE_TARGETING_V1": {
+        "support": 38.833333333333336,
+        "meanRegret": 41.317596566523605,
+        "meanValue": 0.1759656652360515,
+        "p95Regret": 161,
+        "accuracyLoss": 0.8240343347639485
+      },
+      "THREAT_COVERING_V1": {
+        "support": 31.5,
+        "meanRegret": 37.26984126984127,
+        "meanValue": 0.015873015873015872,
+        "p95Regret": 120,
+        "accuracyLoss": 0.9841269841269842
+      }
+    },
+    "OBJECTIVE_TARGETING_V1": {
+      "RESOURCE_PRESERVING_V1": {
+        "support": 99.83333333333331,
+        "meanRegret": 83.09348914858099,
+        "meanValue": 0.0033388981636060105,
+        "p95Regret": 195,
+        "accuracyLoss": 0.996661101836394
+      },
+      "NEXUS_SELECTOR": {
+        "support": 29.83333333333333,
+        "meanRegret": 54.284916201117326,
+        "meanValue": 0.229050279329609,
+        "p95Regret": 163,
+        "accuracyLoss": 0.770949720670391
+      },
+      "OBJECTIVE_TARGETING_V1": {
+        "support": 46.83333333333334,
+        "meanRegret": 34.37722419928825,
+        "meanValue": 0.5088967971530248,
+        "p95Regret": 161,
+        "accuracyLoss": 0.4911032028469752
+      },
+      "THREAT_COVERING_V1": {
+        "support": 5.5,
+        "meanRegret": 9.818181818181818,
+        "meanValue": 0.36363636363636365,
+        "p95Regret": 28,
+        "accuracyLoss": 0.6363636363636364
+      }
+    },
+    "THREAT_COVERING_V1": {
+      "RESOURCE_PRESERVING_V1": {
+        "support": 16,
+        "meanRegret": 48.375,
+        "meanValue": 0,
+        "p95Regret": 127,
+        "accuracyLoss": 1
+      },
+      "NEXUS_SELECTOR": {
+        "support": 7,
+        "meanRegret": 45.642857142857146,
+        "meanValue": 0.07142857142857142,
+        "p95Regret": 61,
+        "accuracyLoss": 0.9285714285714286
+      },
+      "OBJECTIVE_TARGETING_V1": {
+        "support": 3.5,
+        "meanRegret": 19.428571428571427,
+        "meanValue": 0.5714285714285714,
+        "p95Regret": 54,
+        "accuracyLoss": 0.4285714285714286
+      },
+      "THREAT_COVERING_V1": {
+        "support": 31.5,
+        "meanRegret": 4.428571428571429,
+        "meanValue": 0.873015873015873,
+        "p95Regret": 61,
+        "accuracyLoss": 0.12698412698412698
+      }
+    }
+  },
+  "costMatrixHash": "73cf38f64f4ac13c34f2568f78c99de6cb54010153b71fc0fda1cede2b8059d6",
+  "emptyCellFallbacks": [],
+  "decisionFormulas": {
+    "A": "argmax p",
+    "B": "argmax p_k*w_k",
+    "C": "argmin Σ_r p_r Cost[k][r]",
+    "D": "argmax Σ_r p_r Value[k][r]",
+    "E": "NEXUS if available and p_NEXUS >= tau else argmax p"
+  },
+  "thresholds": {
+    "nexusThreshold": 0.6,
+    "nexusGrid": [
+      {
+        "tau": 0.2,
+        "meanRegret": 41.95275,
+        "accuracy": 0.373
+      },
+      {
+        "tau": 0.25,
+        "meanRegret": 36.624,
+        "accuracy": 0.45025
+      },
+      {
+        "tau": 0.3,
+        "meanRegret": 32.2755,
+        "accuracy": 0.51225
+      },
+      {
+        "tau": 0.35,
+        "meanRegret": 28.88325,
+        "accuracy": 0.5575
+      },
+      {
+        "tau": 0.4,
+        "meanRegret": 26.43125,
+        "accuracy": 0.58025
+      },
+      {
+        "tau": 0.45,
+        "meanRegret": 24.89725,
+        "accuracy": 0.59775
+      },
+      {
+        "tau": 0.5,
+        "meanRegret": 24.66575,
+        "accuracy": 0.604
+      },
+      {
+        "tau": 0.55,
+        "meanRegret": 24.66575,
+        "accuracy": 0.604
+      },
+      {
+        "tau": 0.6,
+        "meanRegret": 24.66575,
+        "accuracy": 0.604
+      }
+    ]
+  },
+  "headlineRule": "D_EXPECTED_VALUE_MAXIMIZATION",
+  "calRuleMetrics": {
+    "A_ARGMAX_POLICY_PROBABILITY": {
+      "n": 4000,
+      "coveredN": 4000,
+      "coverage": 1,
+      "accuracy": 0.604,
+      "meanRegret": 24.66575,
+      "p95Regret": 127,
+      "selectionAccuracy": 0.788,
+      "selectionDistribution": {
+        "RESOURCE_PRESERVING_V1": 0.84725,
+        "THREAT_COVERING_V1": 0.01075,
+        "NEXUS_SELECTOR": 0.1315,
+        "OBJECTIVE_TARGETING_V1": 0.0105
+      }
+    },
+    "B_CLASS_WEIGHTED_ARGMAX": {
+      "n": 4000,
+      "coveredN": 4000,
+      "coverage": 1,
+      "accuracy": 0.49575,
+      "meanRegret": 33.50825,
+      "p95Regret": 136,
+      "selectionAccuracy": 0.713,
+      "selectionDistribution": {
+        "RESOURCE_PRESERVING_V1": 0.47675,
+        "THREAT_COVERING_V1": 0.01475,
+        "NEXUS_SELECTOR": 0.4615,
+        "OBJECTIVE_TARGETING_V1": 0.047
+      }
+    },
+    "C_EXPECTED_REGRET_MINIMIZATION": {
+      "n": 4000,
+      "coveredN": 4000,
+      "coverage": 1,
+      "accuracy": 0.60875,
+      "meanRegret": 24.49625,
+      "p95Regret": 125,
+      "selectionAccuracy": 0.7775,
+      "selectionDistribution": {
+        "RESOURCE_PRESERVING_V1": 0.91925,
+        "THREAT_COVERING_V1": 0.01475,
+        "NEXUS_SELECTOR": 0.06525,
+        "OBJECTIVE_TARGETING_V1": 0.00075
+      }
+    },
+    "D_EXPECTED_VALUE_MAXIMIZATION": {
+      "n": 4000,
+      "coveredN": 4000,
+      "coverage": 1,
+      "accuracy": 0.6125,
+      "meanRegret": 24.46275,
+      "p95Regret": 124,
+      "selectionAccuracy": 0.77225,
+      "selectionDistribution": {
+        "RESOURCE_PRESERVING_V1": 0.961,
+        "THREAT_COVERING_V1": 0.012,
+        "NEXUS_SELECTOR": 0.01925,
+        "OBJECTIVE_TARGETING_V1": 0.00775
+      }
+    },
+    "E_NEXUS_THRESHOLD_OVERRIDE": {
+      "n": 4000,
+      "coveredN": 4000,
+      "coverage": 1,
+      "accuracy": 0.604,
+      "meanRegret": 24.66575,
+      "p95Regret": 127,
+      "selectionAccuracy": 0.788,
+      "selectionDistribution": {
+        "RESOURCE_PRESERVING_V1": 0.84725,
+        "THREAT_COVERING_V1": 0.01075,
+        "NEXUS_SELECTOR": 0.1315,
+        "OBJECTIVE_TARGETING_V1": 0.0105
+      }
+    }
+  },
+  "criteria": {
+    "materiality": {
+      "regretReductionAtLeast": 2,
+      "regretRequiresCiUpperBelowZero": true,
+      "accuracyGainAtLeast": 0.01,
+      "accuracyRequiresCiLowerAboveZero": true,
+      "otherMetricMustNotBeSignificantlyWorse": true
+    },
+    "harm": {
+      "ruleP95RegretMaxOverResource": 2,
+      "falseSelectionP95AddedAtMostResourceP95": true,
+      "episodesWorsenedAtMostImproved": true
+    },
+    "collapse": {
+      "rawShare": 0.9,
+      "pathological": "share > 0.9 AND share > best-set share of that policy + 0.05"
+    },
+    "oodSurvival": "vs ALWAYS_RESOURCE on fresh OOD: regret CI lower <= 0 AND accuracy CI upper >= 0",
+    "stage3gReadiness": [
+      "headline rule materially beats ALWAYS_RESOURCE on fresh HOLDOUT",
+      "acceptable false-selection harm",
+      "survives fresh OOD",
+      "no pathological collapse",
+      "deterministic replay",
+      "zero leakage"
+    ],
+    "resultPrecedence": [
+      "A_DECISION_RULE_MATERIALLY_BEATS_ALWAYS_RESOURCE",
+      "D_MATERIAL_GAIN_WITH_UNACCEPTABLE_HARM",
+      "B_COST_SENSITIVE_RULE_BETTER_BUT_NOT_MATERIAL",
+      "C_NO_DECISION_RULE_IMPROVES_ON_ALWAYS_RESOURCE"
+    ],
+    "bottleneckRule": "PRIMARY_BOTTLENECK=DECISION_RULE only if result A; otherwise NOT_ESTABLISHED_AS_DECISION_RULE",
+    "capacityRule": "MODEL_CAPACITY_GAP_NOT_ESTABLISHED if A; otherwise UNRESOLVED (no larger model trained)"
+  },
+  "splitHashes": {
+    "DEV": "71307cf8f5003237953b8b50c37e1995f6ae06881e6f7d6ebb33c7365548d742",
+    "CAL": "04f95c18851069f90969e48a1c6b42c337b75a9a1a1969809d6795663c9a0570",
+    "HOLDOUT": "b4fd06e7ee0e635cea5b56d87609e2cbaec219b62518785a306922db8a3cc734",
+    "OOD": "bd66864d988d9ef68946fc00340f1ec558f08dc6ab664f52fd906138769e4418",
+    "confirmatory": "d9aa89fc27840d4fd102b7440e59920e4c629b401a90c5e3b4a349ac64a9d5e8"
+  },
+  "sealedPartitionsUnopenedAtFreeze": true,
+  "decisionFreezeHash": "f02ad9b95b78f050dc5aa28c32761e4150d3579604bebb9dc9be6d59abca1363"
+}

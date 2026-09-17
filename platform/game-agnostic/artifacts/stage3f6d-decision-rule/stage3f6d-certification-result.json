@@ -1,0 +1,1810 @@
+{
+  "schemaVersion": 1,
+  "stage": "STAGE_3F_6_D_DECISION_RULE",
+  "status": "PASS",
+  "headlineComparison": "DECISION_RULE vs ALWAYS_RESOURCE_PRESERVING_V1",
+  "inputs": {
+    "featureContract": "SENTINEL_DEPLOYABLE_FEATURE_CONTRACT_V1",
+    "featureCount": 30,
+    "policySetHash": "3f1a19f788389202af79ee50c9149344fa069f407abf09c6fede876617620c79",
+    "routerHash": "25876d1899a17b0252605982ac353123308c1f006194d1e84844a381471d8d25",
+    "routerInputs": {
+      "routerHashMatchesStage3F6T": true,
+      "featureKeysAreCore": true,
+      "featureCount": 30
+    }
+  },
+  "dataset": {
+    "DEV_N": 4000,
+    "CAL_N": 4000,
+    "HOLDOUT_N": 6000,
+    "OOD_N": 6000,
+    "RECORD_OVERLAP": 0,
+    "STATE_OVERLAP": 0,
+    "TOPOLOGY_OVERLAP": 0,
+    "seedSpaceDisjoint": true,
+    "priorDatasetsExcluded": [
+      "artifacts/stage3f6c-deployable-router/confirmatory-corpus.jsonl.gz",
+      "artifacts/stage3f6t-policy-router/confirmatory-holdout-ood.jsonl.gz"
+    ],
+    "integrity": {
+      "corpus": true,
+      "proposals": true,
+      "confirmatory": true
+    },
+    "hashes": {
+      "DEV": "71307cf8f5003237953b8b50c37e1995f6ae06881e6f7d6ebb33c7365548d742",
+      "CAL": "04f95c18851069f90969e48a1c6b42c337b75a9a1a1969809d6795663c9a0570",
+      "HOLDOUT": "b4fd06e7ee0e635cea5b56d87609e2cbaec219b62518785a306922db8a3cc734",
+      "OOD": "bd66864d988d9ef68946fc00340f1ec558f08dc6ab664f52fd906138769e4418",
+      "confirmatory": "d9aa89fc27840d4fd102b7440e59920e4c629b401a90c5e3b4a349ac64a9d5e8"
+    }
+  },
+  "decisionFreezeHash": "f02ad9b95b78f050dc5aa28c32761e4150d3579604bebb9dc9be6d59abca1363",
+  "costMatrixHash": "73cf38f64f4ac13c34f2568f78c99de6cb54010153b71fc0fda1cede2b8059d6",
+  "costMatrix": {
+    "RESOURCE_PRESERVING_V1": {
+      "RESOURCE_PRESERVING_V1": 9.620714500150102,
+      "NEXUS_SELECTOR": 64.00232727272727,
+      "OBJECTIVE_TARGETING_V1": 74.66903914590746,
+      "THREAT_COVERING_V1": 84.17460317460318
+    },
+    "NEXUS_SELECTOR": {
+      "RESOURCE_PRESERVING_V1": 60.02475442043221,
+      "NEXUS_SELECTOR": 32.80581818181818,
+      "OBJECTIVE_TARGETING_V1": 41.317596566523605,
+      "THREAT_COVERING_V1": 37.26984126984127
+    },
+    "OBJECTIVE_TARGETING_V1": {
+      "RESOURCE_PRESERVING_V1": 83.09348914858099,
+      "NEXUS_SELECTOR": 54.284916201117326,
+      "OBJECTIVE_TARGETING_V1": 34.37722419928825,
+      "THREAT_COVERING_V1": 9.818181818181818
+    },
+    "THREAT_COVERING_V1": {
+      "RESOURCE_PRESERVING_V1": 48.375,
+      "NEXUS_SELECTOR": 45.642857142857146,
+      "OBJECTIVE_TARGETING_V1": 19.428571428571427,
+      "THREAT_COVERING_V1": 4.428571428571429
+    }
+  },
+  "valueMatrix": {
+    "RESOURCE_PRESERVING_V1": {
+      "RESOURCE_PRESERVING_V1": 0.8049234464124886,
+      "NEXUS_SELECTOR": 0.1984,
+      "OBJECTIVE_TARGETING_V1": 0.007117437722419927,
+      "THREAT_COVERING_V1": 0
+    },
+    "NEXUS_SELECTOR": {
+      "RESOURCE_PRESERVING_V1": 0.10719056974459723,
+      "NEXUS_SELECTOR": 0.4567272727272728,
+      "OBJECTIVE_TARGETING_V1": 0.1759656652360515,
+      "THREAT_COVERING_V1": 0.015873015873015872
+    },
+    "OBJECTIVE_TARGETING_V1": {
+      "RESOURCE_PRESERVING_V1": 0.0033388981636060105,
+      "NEXUS_SELECTOR": 0.229050279329609,
+      "OBJECTIVE_TARGETING_V1": 0.5088967971530248,
+      "THREAT_COVERING_V1": 0.36363636363636365
+    },
+    "THREAT_COVERING_V1": {
+      "RESOURCE_PRESERVING_V1": 0,
+      "NEXUS_SELECTOR": 0.07142857142857142,
+      "OBJECTIVE_TARGETING_V1": 0.5714285714285714,
+      "THREAT_COVERING_V1": 0.873015873015873
+    }
+  },
+  "costMatrixCells": {
+    "RESOURCE_PRESERVING_V1": {
+      "RESOURCE_PRESERVING_V1": {
+        "support": 2775.833333333334,
+        "meanRegret": 9.620714500150102,
+        "meanValue": 0.8049234464124886,
+        "p95Regret": 73,
+        "accuracyLoss": 0.19507655358751141
+      },
+      "NEXUS_SELECTOR": {
+        "support": 1145.8333333333333,
+        "meanRegret": 64.00232727272727,
+        "meanValue": 0.1984,
+        "p95Regret": 167,
+        "accuracyLoss": 0.8016
+      },
+      "OBJECTIVE_TARGETING_V1": {
+        "support": 46.83333333333334,
+        "meanRegret": 74.66903914590746,
+        "meanValue": 0.007117437722419927,
+        "p95Regret": 177,
+        "accuracyLoss": 0.9928825622775801
+      },
+      "THREAT_COVERING_V1": {
+        "support": 31.5,
+        "meanRegret": 84.17460317460318,
+        "meanValue": 0,
+        "p95Regret": 196,
+        "accuracyLoss": 1
+      }
+    },
+    "NEXUS_SELECTOR": {
+      "RESOURCE_PRESERVING_V1": {
+        "support": 2120.8333333333335,
+        "meanRegret": 60.02475442043221,
+        "meanValue": 0.10719056974459723,
+        "p95Regret": 148,
+        "accuracyLoss": 0.8928094302554028
+      },
+      "NEXUS_SELECTOR": {
+        "support": 1145.8333333333333,
+        "meanRegret": 32.80581818181818,
+        "meanValue": 0.4567272727272728,
+        "p95Regret": 126,
+        "accuracyLoss": 0.5432727272727271
+      },
+      "OBJECTIVE_TARGETING_V1": {
+        "support": 38.833333333333336,
+        "meanRegret": 41.317596566523605,
+        "meanValue": 0.1759656652360515,
+        "p95Regret": 161,
+        "accuracyLoss": 0.8240343347639485
+      },
+      "THREAT_COVERING_V1": {
+        "support": 31.5,
+        "meanRegret": 37.26984126984127,
+        "meanValue": 0.015873015873015872,
+        "p95Regret": 120,
+        "accuracyLoss": 0.9841269841269842
+      }
+    },
+    "OBJECTIVE_TARGETING_V1": {
+      "RESOURCE_PRESERVING_V1": {
+        "support": 99.83333333333331,
+        "meanRegret": 83.09348914858099,
+        "meanValue": 0.0033388981636060105,
+        "p95Regret": 195,
+        "accuracyLoss": 0.996661101836394
+      },
+      "NEXUS_SELECTOR": {
+        "support": 29.83333333333333,
+        "meanRegret": 54.284916201117326,
+        "meanValue": 0.229050279329609,
+        "p95Regret": 163,
+        "accuracyLoss": 0.770949720670391
+      },
+      "OBJECTIVE_TARGETING_V1": {
+        "support": 46.83333333333334,
+        "meanRegret": 34.37722419928825,
+        "meanValue": 0.5088967971530248,
+        "p95Regret": 161,
+        "accuracyLoss": 0.4911032028469752
+      },
+      "THREAT_COVERING_V1": {
+        "support": 5.5,
+        "meanRegret": 9.818181818181818,
+        "meanValue": 0.36363636363636365,
+        "p95Regret": 28,
+        "accuracyLoss": 0.6363636363636364
+      }
+    },
+    "THREAT_COVERING_V1": {
+      "RESOURCE_PRESERVING_V1": {
+        "support": 16,
+        "meanRegret": 48.375,
+        "meanValue": 0,
+        "p95Regret": 127,
+        "accuracyLoss": 1
+      },
+      "NEXUS_SELECTOR": {
+        "support": 7,
+        "meanRegret": 45.642857142857146,
+        "meanValue": 0.07142857142857142,
+        "p95Regret": 61,
+        "accuracyLoss": 0.9285714285714286
+      },
+      "OBJECTIVE_TARGETING_V1": {
+        "support": 3.5,
+        "meanRegret": 19.428571428571427,
+        "meanValue": 0.5714285714285714,
+        "p95Regret": 54,
+        "accuracyLoss": 0.4285714285714286
+      },
+      "THREAT_COVERING_V1": {
+        "support": 31.5,
+        "meanRegret": 4.428571428571429,
+        "meanValue": 0.873015873015873,
+        "p95Regret": 61,
+        "accuracyLoss": 0.12698412698412698
+      }
+    }
+  },
+  "classWeights": {
+    "prior": {
+      "RESOURCE_PRESERVING_V1": 0.6939583333332933,
+      "NEXUS_SELECTOR": 0.28645833333332577,
+      "OBJECTIVE_TARGETING_V1": 0.01170833333333334,
+      "THREAT_COVERING_V1": 0.007875000000000005
+    },
+    "weights": {
+      "RESOURCE_PRESERVING_V1": 0.006630653324768865,
+      "NEXUS_SELECTOR": 0.016063059072585015,
+      "OBJECTIVE_TARGETING_V1": 0.39300189012106407,
+      "THREAT_COVERING_V1": 0.5843043974815819
+    }
+  },
+  "temperature": 1,
+  "nexusThreshold": 0.6,
+  "headlineRule": "D_EXPECTED_VALUE_MAXIMIZATION",
+  "criteria": {
+    "materiality": {
+      "regretReductionAtLeast": 2,
+      "regretRequiresCiUpperBelowZero": true,
+      "accuracyGainAtLeast": 0.01,
+      "accuracyRequiresCiLowerAboveZero": true,
+      "otherMetricMustNotBeSignificantlyWorse": true
+    },
+    "harm": {
+      "ruleP95RegretMaxOverResource": 2,
+      "falseSelectionP95AddedAtMostResourceP95": true,
+      "episodesWorsenedAtMostImproved": true
+    },
+    "collapse": {
+      "rawShare": 0.9,
+      "pathological": "share > 0.9 AND share > best-set share of that policy + 0.05"
+    },
+    "oodSurvival": "vs ALWAYS_RESOURCE on fresh OOD: regret CI lower <= 0 AND accuracy CI upper >= 0",
+    "stage3gReadiness": [
+      "headline rule materially beats ALWAYS_RESOURCE on fresh HOLDOUT",
+      "acceptable false-selection harm",
+      "survives fresh OOD",
+      "no pathological collapse",
+      "deterministic replay",
+      "zero leakage"
+    ],
+    "resultPrecedence": [
+      "A_DECISION_RULE_MATERIALLY_BEATS_ALWAYS_RESOURCE",
+      "D_MATERIAL_GAIN_WITH_UNACCEPTABLE_HARM",
+      "B_COST_SENSITIVE_RULE_BETTER_BUT_NOT_MATERIAL",
+      "C_NO_DECISION_RULE_IMPROVES_ON_ALWAYS_RESOURCE"
+    ],
+    "bottleneckRule": "PRIMARY_BOTTLENECK=DECISION_RULE only if result A; otherwise NOT_ESTABLISHED_AS_DECISION_RULE",
+    "capacityRule": "MODEL_CAPACITY_GAP_NOT_ESTABLISHED if A; otherwise UNRESOLVED (no larger model trained)"
+  },
+  "splits": {
+    "CAL": {
+      "n": 4000,
+      "alwaysResource": {
+        "n": 4000,
+        "coveredN": 4000,
+        "coverage": 1,
+        "accuracy": 0.60875,
+        "meanRegret": 25.50575,
+        "p95Regret": 126,
+        "selectionAccuracy": 0.76175,
+        "selectionDistribution": {
+          "RESOURCE_PRESERVING_V1": 1
+        }
+      },
+      "oracle": {
+        "n": 4000,
+        "coveredN": 4000,
+        "coverage": 1,
+        "accuracy": 0.6995,
+        "meanRegret": 15.82475,
+        "p95Regret": 92,
+        "selectionAccuracy": 1,
+        "selectionDistribution": {
+          "RESOURCE_PRESERVING_V1": 0.76175,
+          "OBJECTIVE_TARGETING_V1": 0.00975,
+          "NEXUS_SELECTOR": 0.22125,
+          "THREAT_COVERING_V1": 0.00725
+        }
+      },
+      "rules": {
+        "A_ARGMAX_POLICY_PROBABILITY": {
+          "n": 4000,
+          "coveredN": 4000,
+          "coverage": 1,
+          "accuracy": 0.604,
+          "meanRegret": 24.66575,
+          "p95Regret": 127,
+          "selectionAccuracy": 0.788,
+          "selectionDistribution": {
+            "RESOURCE_PRESERVING_V1": 0.84725,
+            "THREAT_COVERING_V1": 0.01075,
+            "NEXUS_SELECTOR": 0.1315,
+            "OBJECTIVE_TARGETING_V1": 0.0105
+          },
+          "deltaVsResource": {
+            "n": 4000,
+            "accuracyDifference": -0.00475,
+            "accuracyCi95": [
+              -0.01375,
+              0.0045
+            ],
+            "regretDifference": -0.84,
+            "regretCi95": [
+              -1.66625,
+              -0.005
+            ],
+            "episodesImproved": 332,
+            "episodesWorsened": 215
+          },
+          "deltaVsArgmax": {
+            "n": 4000,
+            "accuracyDifference": 0,
+            "accuracyCi95": [
+              0,
+              0
+            ],
+            "regretDifference": 0,
+            "regretCi95": [
+              0,
+              0
+            ],
+            "episodesImproved": 0,
+            "episodesWorsened": 0
+          },
+          "nexus": {
+            "NEXUS_BEST_N": 842,
+            "NEXUS_SELECTED_WHEN_BEST": 254,
+            "NEXUS_CAPTURE_RATE": 0.3016627078384798,
+            "NEXUS_SELECTED_N": 526,
+            "FALSE_NEXUS_SELECTION_N": 197,
+            "REGRET_SAVED_FROM_NEXUS_CAPTURE": 13898,
+            "REGRET_ADDED_FROM_FALSE_NEXUS_SELECTION": 12769,
+            "NET_REGRET_SAVED": 1129
+          },
+          "harm": {
+            "falseSelections": 848,
+            "rate": 0.212,
+            "meanAddedRegret": 41.70283018867924,
+            "p90": 121,
+            "p95": 142,
+            "p99": 189,
+            "worst": 362
+          },
+          "selectedRates": {
+            "RESOURCE_PRESERVING_V1": 0.84725,
+            "NEXUS_SELECTOR": 0.1315,
+            "OBJECTIVE_TARGETING_V1": 0.0105,
+            "THREAT_COVERING_V1": 0.01075
+          },
+          "collapse": {
+            "topPolicy": "RESOURCE_PRESERVING_V1",
+            "topShare": 0.84725,
+            "bestSetShareOfTop": 0.76175,
+            "POLICY_COLLAPSE": false,
+            "PATHOLOGICAL_COLLAPSE": false
+          }
+        },
+        "B_CLASS_WEIGHTED_ARGMAX": {
+          "n": 4000,
+          "coveredN": 4000,
+          "coverage": 1,
+          "accuracy": 0.49575,
+          "meanRegret": 33.50825,
+          "p95Regret": 136,
+          "selectionAccuracy": 0.713,
+          "selectionDistribution": {
+            "RESOURCE_PRESERVING_V1": 0.47675,
+            "THREAT_COVERING_V1": 0.01475,
+            "NEXUS_SELECTOR": 0.4615,
+            "OBJECTIVE_TARGETING_V1": 0.047
+          },
+          "deltaVsResource": {
+            "n": 4000,
+            "accuracyDifference": -0.113,
+            "accuracyCi95": [
+              -0.12925,
+              -0.0955
+            ],
+            "regretDifference": 8.0025,
+            "regretCi95": [
+              6.4515,
+              9.63325
+            ],
+            "episodesImproved": 767,
+            "episodesWorsened": 948
+          },
+          "deltaVsArgmax": {
+            "n": 4000,
+            "accuracyDifference": -0.10825,
+            "accuracyCi95": [
+              -0.12175,
+              -0.09425
+            ],
+            "regretDifference": 8.8425,
+            "regretCi95": [
+              7.49425,
+              10.15325
+            ],
+            "episodesImproved": 450,
+            "episodesWorsened": 743
+          },
+          "nexus": {
+            "NEXUS_BEST_N": 842,
+            "NEXUS_SELECTED_WHEN_BEST": 640,
+            "NEXUS_CAPTURE_RATE": 0.7600950118764845,
+            "NEXUS_SELECTED_N": 1846,
+            "FALSE_NEXUS_SELECTION_N": 840,
+            "REGRET_SAVED_FROM_NEXUS_CAPTURE": 28324,
+            "REGRET_ADDED_FROM_FALSE_NEXUS_SELECTION": 57994,
+            "NET_REGRET_SAVED": -29670
+          },
+          "harm": {
+            "falseSelections": 1148,
+            "rate": 0.287,
+            "meanAddedRegret": 61.61498257839721,
+            "p90": 132,
+            "p95": 150,
+            "p99": 228,
+            "worst": 389
+          },
+          "selectedRates": {
+            "RESOURCE_PRESERVING_V1": 0.47675,
+            "NEXUS_SELECTOR": 0.4615,
+            "OBJECTIVE_TARGETING_V1": 0.047,
+            "THREAT_COVERING_V1": 0.01475
+          },
+          "collapse": {
+            "topPolicy": "RESOURCE_PRESERVING_V1",
+            "topShare": 0.47675,
+            "bestSetShareOfTop": 0.76175,
+            "POLICY_COLLAPSE": false,
+            "PATHOLOGICAL_COLLAPSE": false
+          }
+        },
+        "C_EXPECTED_REGRET_MINIMIZATION": {
+          "n": 4000,
+          "coveredN": 4000,
+          "coverage": 1,
+          "accuracy": 0.60875,
+          "meanRegret": 24.49625,
+          "p95Regret": 125,
+          "selectionAccuracy": 0.7775,
+          "selectionDistribution": {
+            "RESOURCE_PRESERVING_V1": 0.91925,
+            "THREAT_COVERING_V1": 0.01475,
+            "NEXUS_SELECTOR": 0.06525,
+            "OBJECTIVE_TARGETING_V1": 0.00075
+          },
+          "deltaVsResource": {
+            "n": 4000,
+            "accuracyDifference": 0,
+            "accuracyCi95": [
+              -0.0065,
+              0.0065
+            ],
+            "regretDifference": -1.0095,
+            "regretCi95": [
+              -1.63725,
+              -0.3515
+            ],
+            "episodesImproved": 194,
+            "episodesWorsened": 110
+          },
+          "deltaVsArgmax": {
+            "n": 4000,
+            "accuracyDifference": 0.00475,
+            "accuracyCi95": [
+              -0.002,
+              0.011
+            ],
+            "regretDifference": -0.1695,
+            "regretCi95": [
+              -0.79675,
+              0.47025
+            ],
+            "episodesImproved": 122,
+            "episodesWorsened": 167
+          },
+          "nexus": {
+            "NEXUS_BEST_N": 842,
+            "NEXUS_SELECTED_WHEN_BEST": 116,
+            "NEXUS_CAPTURE_RATE": 0.1377672209026128,
+            "NEXUS_SELECTED_N": 261,
+            "FALSE_NEXUS_SELECTION_N": 104,
+            "REGRET_SAVED_FROM_NEXUS_CAPTURE": 7773,
+            "REGRET_ADDED_FROM_FALSE_NEXUS_SELECTION": 5583,
+            "NET_REGRET_SAVED": 2190
+          },
+          "harm": {
+            "falseSelections": 890,
+            "rate": 0.2225,
+            "meanAddedRegret": 38.97303370786517,
+            "p90": 108,
+            "p95": 136,
+            "p99": 194,
+            "worst": 362
+          },
+          "selectedRates": {
+            "RESOURCE_PRESERVING_V1": 0.91925,
+            "NEXUS_SELECTOR": 0.06525,
+            "OBJECTIVE_TARGETING_V1": 0.00075,
+            "THREAT_COVERING_V1": 0.01475
+          },
+          "collapse": {
+            "topPolicy": "RESOURCE_PRESERVING_V1",
+            "topShare": 0.91925,
+            "bestSetShareOfTop": 0.76175,
+            "POLICY_COLLAPSE": true,
+            "PATHOLOGICAL_COLLAPSE": true
+          }
+        },
+        "D_EXPECTED_VALUE_MAXIMIZATION": {
+          "n": 4000,
+          "coveredN": 4000,
+          "coverage": 1,
+          "accuracy": 0.6125,
+          "meanRegret": 24.46275,
+          "p95Regret": 124,
+          "selectionAccuracy": 0.77225,
+          "selectionDistribution": {
+            "RESOURCE_PRESERVING_V1": 0.961,
+            "THREAT_COVERING_V1": 0.012,
+            "NEXUS_SELECTOR": 0.01925,
+            "OBJECTIVE_TARGETING_V1": 0.00775
+          },
+          "deltaVsResource": {
+            "n": 4000,
+            "accuracyDifference": 0.00375,
+            "accuracyCi95": [
+              -0.0005,
+              0.00825
+            ],
+            "regretDifference": -1.043,
+            "regretCi95": [
+              -1.45975,
+              -0.605
+            ],
+            "episodesImproved": 101,
+            "episodesWorsened": 49
+          },
+          "deltaVsArgmax": {
+            "n": 4000,
+            "accuracyDifference": 0.0085,
+            "accuracyCi95": [
+              0.0005,
+              0.01625
+            ],
+            "regretDifference": -0.203,
+            "regretCi95": [
+              -0.94175,
+              0.5745
+            ],
+            "episodesImproved": 172,
+            "episodesWorsened": 235
+          },
+          "nexus": {
+            "NEXUS_BEST_N": 842,
+            "NEXUS_SELECTED_WHEN_BEST": 46,
+            "NEXUS_CAPTURE_RATE": 0.05463182897862233,
+            "NEXUS_SELECTED_N": 77,
+            "FALSE_NEXUS_SELECTION_N": 27,
+            "REGRET_SAVED_FROM_NEXUS_CAPTURE": 3380,
+            "REGRET_ADDED_FROM_FALSE_NEXUS_SELECTION": 1047,
+            "NET_REGRET_SAVED": 2333
+          },
+          "harm": {
+            "falseSelections": 911,
+            "rate": 0.22775,
+            "meanAddedRegret": 37.92755214050494,
+            "p90": 106,
+            "p95": 133,
+            "p99": 188,
+            "worst": 362
+          },
+          "selectedRates": {
+            "RESOURCE_PRESERVING_V1": 0.961,
+            "NEXUS_SELECTOR": 0.01925,
+            "OBJECTIVE_TARGETING_V1": 0.00775,
+            "THREAT_COVERING_V1": 0.012
+          },
+          "collapse": {
+            "topPolicy": "RESOURCE_PRESERVING_V1",
+            "topShare": 0.961,
+            "bestSetShareOfTop": 0.76175,
+            "POLICY_COLLAPSE": true,
+            "PATHOLOGICAL_COLLAPSE": true
+          }
+        },
+        "E_NEXUS_THRESHOLD_OVERRIDE": {
+          "n": 4000,
+          "coveredN": 4000,
+          "coverage": 1,
+          "accuracy": 0.604,
+          "meanRegret": 24.66575,
+          "p95Regret": 127,
+          "selectionAccuracy": 0.788,
+          "selectionDistribution": {
+            "RESOURCE_PRESERVING_V1": 0.84725,
+            "THREAT_COVERING_V1": 0.01075,
+            "NEXUS_SELECTOR": 0.1315,
+            "OBJECTIVE_TARGETING_V1": 0.0105
+          },
+          "deltaVsResource": {
+            "n": 4000,
+            "accuracyDifference": -0.00475,
+            "accuracyCi95": [
+              -0.01375,
+              0.0045
+            ],
+            "regretDifference": -0.84,
+            "regretCi95": [
+              -1.66625,
+              -0.005
+            ],
+            "episodesImproved": 332,
+            "episodesWorsened": 215
+          },
+          "deltaVsArgmax": {
+            "n": 4000,
+            "accuracyDifference": 0,
+            "accuracyCi95": [
+              0,
+              0
+            ],
+            "regretDifference": 0,
+            "regretCi95": [
+              0,
+              0
+            ],
+            "episodesImproved": 0,
+            "episodesWorsened": 0
+          },
+          "nexus": {
+            "NEXUS_BEST_N": 842,
+            "NEXUS_SELECTED_WHEN_BEST": 254,
+            "NEXUS_CAPTURE_RATE": 0.3016627078384798,
+            "NEXUS_SELECTED_N": 526,
+            "FALSE_NEXUS_SELECTION_N": 197,
+            "REGRET_SAVED_FROM_NEXUS_CAPTURE": 13898,
+            "REGRET_ADDED_FROM_FALSE_NEXUS_SELECTION": 12769,
+            "NET_REGRET_SAVED": 1129
+          },
+          "harm": {
+            "falseSelections": 848,
+            "rate": 0.212,
+            "meanAddedRegret": 41.70283018867924,
+            "p90": 121,
+            "p95": 142,
+            "p99": 189,
+            "worst": 362
+          },
+          "selectedRates": {
+            "RESOURCE_PRESERVING_V1": 0.84725,
+            "NEXUS_SELECTOR": 0.1315,
+            "OBJECTIVE_TARGETING_V1": 0.0105,
+            "THREAT_COVERING_V1": 0.01075
+          },
+          "collapse": {
+            "topPolicy": "RESOURCE_PRESERVING_V1",
+            "topShare": 0.84725,
+            "bestSetShareOfTop": 0.76175,
+            "POLICY_COLLAPSE": false,
+            "PATHOLOGICAL_COLLAPSE": false
+          }
+        }
+      },
+      "judgement": {
+        "A_ARGMAX_POLICY_PROBABILITY": {
+          "material": false,
+          "harmOk": false,
+          "better": true,
+          "accWorse": false,
+          "regWorse": false
+        },
+        "B_CLASS_WEIGHTED_ARGMAX": {
+          "material": false,
+          "harmOk": false,
+          "better": false,
+          "accWorse": true,
+          "regWorse": true
+        },
+        "C_EXPECTED_REGRET_MINIMIZATION": {
+          "material": false,
+          "harmOk": false,
+          "better": true,
+          "accWorse": false,
+          "regWorse": false
+        },
+        "D_EXPECTED_VALUE_MAXIMIZATION": {
+          "material": false,
+          "harmOk": false,
+          "better": true,
+          "accWorse": false,
+          "regWorse": false
+        },
+        "E_NEXUS_THRESHOLD_OVERRIDE": {
+          "material": false,
+          "harmOk": false,
+          "better": true,
+          "accWorse": false,
+          "regWorse": false
+        }
+      }
+    },
+    "HOLDOUT": {
+      "n": 6000,
+      "alwaysResource": {
+        "n": 6000,
+        "coveredN": 6000,
+        "coverage": 1,
+        "accuracy": 0.6161666666666666,
+        "meanRegret": 25.8355,
+        "p95Regret": 129,
+        "selectionAccuracy": 0.758,
+        "selectionDistribution": {
+          "RESOURCE_PRESERVING_V1": 1
+        }
+      },
+      "oracle": {
+        "n": 6000,
+        "coveredN": 6000,
+        "coverage": 1,
+        "accuracy": 0.7028333333333333,
+        "meanRegret": 15.431666666666667,
+        "p95Regret": 91,
+        "selectionAccuracy": 1,
+        "selectionDistribution": {
+          "RESOURCE_PRESERVING_V1": 0.758,
+          "NEXUS_SELECTOR": 0.22466666666666665,
+          "THREAT_COVERING_V1": 0.007833333333333333,
+          "OBJECTIVE_TARGETING_V1": 0.0095
+        }
+      },
+      "rules": {
+        "A_ARGMAX_POLICY_PROBABILITY": {
+          "n": 6000,
+          "coveredN": 6000,
+          "coverage": 1,
+          "accuracy": 0.6156666666666667,
+          "meanRegret": 24.777,
+          "p95Regret": 127,
+          "selectionAccuracy": 0.7898333333333334,
+          "selectionDistribution": {
+            "RESOURCE_PRESERVING_V1": 0.8461666666666666,
+            "NEXUS_SELECTOR": 0.13083333333333333,
+            "THREAT_COVERING_V1": 0.012666666666666666,
+            "OBJECTIVE_TARGETING_V1": 0.010333333333333333
+          },
+          "deltaVsResource": {
+            "n": 6000,
+            "accuracyDifference": -0.0005,
+            "accuracyCi95": [
+              -0.007833333333333333,
+              0.0065
+            ],
+            "regretDifference": -1.0585,
+            "regretCi95": [
+              -1.8566666666666667,
+              -0.28883333333333333
+            ],
+            "episodesImproved": 526,
+            "episodesWorsened": 313
+          },
+          "deltaVsArgmax": {
+            "n": 6000,
+            "accuracyDifference": 0,
+            "accuracyCi95": [
+              0,
+              0
+            ],
+            "regretDifference": 0,
+            "regretCi95": [
+              0,
+              0
+            ],
+            "episodesImproved": 0,
+            "episodesWorsened": 0
+          },
+          "nexus": {
+            "NEXUS_BEST_N": 1287,
+            "NEXUS_SELECTED_WHEN_BEST": 395,
+            "NEXUS_CAPTURE_RATE": 0.30691530691530694,
+            "NEXUS_SELECTED_N": 785,
+            "FALSE_NEXUS_SELECTION_N": 294,
+            "REGRET_SAVED_FROM_NEXUS_CAPTURE": 22420,
+            "REGRET_ADDED_FROM_FALSE_NEXUS_SELECTION": 20522,
+            "NET_REGRET_SAVED": 1898
+          },
+          "harm": {
+            "falseSelections": 1261,
+            "rate": 0.21016666666666667,
+            "meanAddedRegret": 44.46629659000793,
+            "p90": 122,
+            "p95": 150,
+            "p99": 212,
+            "worst": 321
+          },
+          "selectedRates": {
+            "RESOURCE_PRESERVING_V1": 0.8461666666666666,
+            "NEXUS_SELECTOR": 0.13083333333333333,
+            "OBJECTIVE_TARGETING_V1": 0.010333333333333333,
+            "THREAT_COVERING_V1": 0.012666666666666666
+          },
+          "collapse": {
+            "topPolicy": "RESOURCE_PRESERVING_V1",
+            "topShare": 0.8461666666666666,
+            "bestSetShareOfTop": 0.758,
+            "POLICY_COLLAPSE": false,
+            "PATHOLOGICAL_COLLAPSE": false
+          }
+        },
+        "B_CLASS_WEIGHTED_ARGMAX": {
+          "n": 6000,
+          "coveredN": 6000,
+          "coverage": 1,
+          "accuracy": 0.49666666666666665,
+          "meanRegret": 32.9135,
+          "p95Regret": 136,
+          "selectionAccuracy": 0.7065,
+          "selectionDistribution": {
+            "RESOURCE_PRESERVING_V1": 0.4673333333333333,
+            "NEXUS_SELECTOR": 0.4755,
+            "OBJECTIVE_TARGETING_V1": 0.041,
+            "THREAT_COVERING_V1": 0.016166666666666666
+          },
+          "deltaVsResource": {
+            "n": 6000,
+            "accuracyDifference": -0.1195,
+            "accuracyCi95": [
+              -0.13266666666666665,
+              -0.10616666666666667
+            ],
+            "regretDifference": 7.078,
+            "regretCi95": [
+              5.6946666666666665,
+              8.402
+            ],
+            "episodesImproved": 1169,
+            "episodesWorsened": 1457
+          },
+          "deltaVsArgmax": {
+            "n": 6000,
+            "accuracyDifference": -0.119,
+            "accuracyCi95": [
+              -0.13016666666666668,
+              -0.10766666666666666
+            ],
+            "regretDifference": 8.1365,
+            "regretCi95": [
+              7.156833333333333,
+              9.138
+            ],
+            "episodesImproved": 654,
+            "episodesWorsened": 1150
+          },
+          "nexus": {
+            "NEXUS_BEST_N": 1287,
+            "NEXUS_SELECTED_WHEN_BEST": 982,
+            "NEXUS_CAPTURE_RATE": 0.763014763014763,
+            "NEXUS_SELECTED_N": 2853,
+            "FALSE_NEXUS_SELECTION_N": 1312,
+            "REGRET_SAVED_FROM_NEXUS_CAPTURE": 46140,
+            "REGRET_ADDED_FROM_FALSE_NEXUS_SELECTION": 87016,
+            "NET_REGRET_SAVED": -40876
+          },
+          "harm": {
+            "falseSelections": 1761,
+            "rate": 0.2935,
+            "meanAddedRegret": 59.5633162975582,
+            "p90": 132,
+            "p95": 153,
+            "p99": 213,
+            "worst": 303
+          },
+          "selectedRates": {
+            "RESOURCE_PRESERVING_V1": 0.4673333333333333,
+            "NEXUS_SELECTOR": 0.4755,
+            "OBJECTIVE_TARGETING_V1": 0.041,
+            "THREAT_COVERING_V1": 0.016166666666666666
+          },
+          "collapse": {
+            "topPolicy": "NEXUS_SELECTOR",
+            "topShare": 0.4755,
+            "bestSetShareOfTop": 0.36083333333333334,
+            "POLICY_COLLAPSE": false,
+            "PATHOLOGICAL_COLLAPSE": false
+          }
+        },
+        "C_EXPECTED_REGRET_MINIMIZATION": {
+          "n": 6000,
+          "coveredN": 6000,
+          "coverage": 1,
+          "accuracy": 0.6215,
+          "meanRegret": 24.46216666666667,
+          "p95Regret": 128,
+          "selectionAccuracy": 0.7836666666666666,
+          "selectionDistribution": {
+            "RESOURCE_PRESERVING_V1": 0.9221666666666667,
+            "NEXUS_SELECTOR": 0.062,
+            "THREAT_COVERING_V1": 0.015833333333333335
+          },
+          "deltaVsResource": {
+            "n": 6000,
+            "accuracyDifference": 0.005333333333333333,
+            "accuracyCi95": [
+              0.00016666666666666666,
+              0.010166666666666666
+            ],
+            "regretDifference": -1.3733333333333333,
+            "regretCi95": [
+              -1.9513333333333334,
+              -0.8435
+            ],
+            "episodesImproved": 319,
+            "episodesWorsened": 133
+          },
+          "deltaVsArgmax": {
+            "n": 6000,
+            "accuracyDifference": 0.005833333333333334,
+            "accuracyCi95": [
+              0.0008333333333333334,
+              0.011166666666666667
+            ],
+            "regretDifference": -0.31483333333333335,
+            "regretCi95": [
+              -0.838,
+              0.2405
+            ],
+            "episodesImproved": 209,
+            "episodesWorsened": 246
+          },
+          "nexus": {
+            "NEXUS_BEST_N": 1287,
+            "NEXUS_SELECTED_WHEN_BEST": 190,
+            "NEXUS_CAPTURE_RATE": 0.14763014763014762,
+            "NEXUS_SELECTED_N": 372,
+            "FALSE_NEXUS_SELECTION_N": 135,
+            "REGRET_SAVED_FROM_NEXUS_CAPTURE": 13860,
+            "REGRET_ADDED_FROM_FALSE_NEXUS_SELECTION": 8677,
+            "NET_REGRET_SAVED": 5183
+          },
+          "harm": {
+            "falseSelections": 1298,
+            "rate": 0.21633333333333332,
+            "meanAddedRegret": 41.74345146379045,
+            "p90": 118,
+            "p95": 150,
+            "p99": 190,
+            "worst": 321
+          },
+          "selectedRates": {
+            "RESOURCE_PRESERVING_V1": 0.9221666666666667,
+            "NEXUS_SELECTOR": 0.062,
+            "OBJECTIVE_TARGETING_V1": 0,
+            "THREAT_COVERING_V1": 0.015833333333333335
+          },
+          "collapse": {
+            "topPolicy": "RESOURCE_PRESERVING_V1",
+            "topShare": 0.9221666666666667,
+            "bestSetShareOfTop": 0.758,
+            "POLICY_COLLAPSE": true,
+            "PATHOLOGICAL_COLLAPSE": true
+          }
+        },
+        "D_EXPECTED_VALUE_MAXIMIZATION": {
+          "n": 6000,
+          "coveredN": 6000,
+          "coverage": 1,
+          "accuracy": 0.625,
+          "meanRegret": 24.509,
+          "p95Regret": 128,
+          "selectionAccuracy": 0.778,
+          "selectionDistribution": {
+            "RESOURCE_PRESERVING_V1": 0.962,
+            "NEXUS_SELECTOR": 0.017,
+            "THREAT_COVERING_V1": 0.013166666666666667,
+            "OBJECTIVE_TARGETING_V1": 0.007833333333333333
+          },
+          "deltaVsResource": {
+            "n": 6000,
+            "accuracyDifference": 0.008833333333333334,
+            "accuracyCi95": [
+              0.005333333333333333,
+              0.012333333333333333
+            ],
+            "regretDifference": -1.3265,
+            "regretCi95": [
+              -1.7438333333333333,
+              -0.9366666666666666
+            ],
+            "episodesImproved": 181,
+            "episodesWorsened": 44
+          },
+          "deltaVsArgmax": {
+            "n": 6000,
+            "accuracyDifference": 0.009333333333333334,
+            "accuracyCi95": [
+              0.003,
+              0.015666666666666666
+            ],
+            "regretDifference": -0.268,
+            "regretCi95": [
+              -0.9476666666666667,
+              0.428
+            ],
+            "episodesImproved": 275,
+            "episodesWorsened": 346
+          },
+          "nexus": {
+            "NEXUS_BEST_N": 1287,
+            "NEXUS_SELECTED_WHEN_BEST": 68,
+            "NEXUS_CAPTURE_RATE": 0.05283605283605284,
+            "NEXUS_SELECTED_N": 102,
+            "FALSE_NEXUS_SELECTION_N": 26,
+            "REGRET_SAVED_FROM_NEXUS_CAPTURE": 5290,
+            "REGRET_ADDED_FROM_FALSE_NEXUS_SELECTION": 2003,
+            "NET_REGRET_SAVED": 3287
+          },
+          "harm": {
+            "falseSelections": 1332,
+            "rate": 0.222,
+            "meanAddedRegret": 40.888888888888886,
+            "p90": 113,
+            "p95": 144,
+            "p99": 186,
+            "worst": 321
+          },
+          "selectedRates": {
+            "RESOURCE_PRESERVING_V1": 0.962,
+            "NEXUS_SELECTOR": 0.017,
+            "OBJECTIVE_TARGETING_V1": 0.007833333333333333,
+            "THREAT_COVERING_V1": 0.013166666666666667
+          },
+          "collapse": {
+            "topPolicy": "RESOURCE_PRESERVING_V1",
+            "topShare": 0.962,
+            "bestSetShareOfTop": 0.758,
+            "POLICY_COLLAPSE": true,
+            "PATHOLOGICAL_COLLAPSE": true
+          }
+        },
+        "E_NEXUS_THRESHOLD_OVERRIDE": {
+          "n": 6000,
+          "coveredN": 6000,
+          "coverage": 1,
+          "accuracy": 0.6156666666666667,
+          "meanRegret": 24.777,
+          "p95Regret": 127,
+          "selectionAccuracy": 0.7898333333333334,
+          "selectionDistribution": {
+            "RESOURCE_PRESERVING_V1": 0.8461666666666666,
+            "NEXUS_SELECTOR": 0.13083333333333333,
+            "THREAT_COVERING_V1": 0.012666666666666666,
+            "OBJECTIVE_TARGETING_V1": 0.010333333333333333
+          },
+          "deltaVsResource": {
+            "n": 6000,
+            "accuracyDifference": -0.0005,
+            "accuracyCi95": [
+              -0.007833333333333333,
+              0.0065
+            ],
+            "regretDifference": -1.0585,
+            "regretCi95": [
+              -1.8566666666666667,
+              -0.28883333333333333
+            ],
+            "episodesImproved": 526,
+            "episodesWorsened": 313
+          },
+          "deltaVsArgmax": {
+            "n": 6000,
+            "accuracyDifference": 0,
+            "accuracyCi95": [
+              0,
+              0
+            ],
+            "regretDifference": 0,
+            "regretCi95": [
+              0,
+              0
+            ],
+            "episodesImproved": 0,
+            "episodesWorsened": 0
+          },
+          "nexus": {
+            "NEXUS_BEST_N": 1287,
+            "NEXUS_SELECTED_WHEN_BEST": 395,
+            "NEXUS_CAPTURE_RATE": 0.30691530691530694,
+            "NEXUS_SELECTED_N": 785,
+            "FALSE_NEXUS_SELECTION_N": 294,
+            "REGRET_SAVED_FROM_NEXUS_CAPTURE": 22420,
+            "REGRET_ADDED_FROM_FALSE_NEXUS_SELECTION": 20522,
+            "NET_REGRET_SAVED": 1898
+          },
+          "harm": {
+            "falseSelections": 1261,
+            "rate": 0.21016666666666667,
+            "meanAddedRegret": 44.46629659000793,
+            "p90": 122,
+            "p95": 150,
+            "p99": 212,
+            "worst": 321
+          },
+          "selectedRates": {
+            "RESOURCE_PRESERVING_V1": 0.8461666666666666,
+            "NEXUS_SELECTOR": 0.13083333333333333,
+            "OBJECTIVE_TARGETING_V1": 0.010333333333333333,
+            "THREAT_COVERING_V1": 0.012666666666666666
+          },
+          "collapse": {
+            "topPolicy": "RESOURCE_PRESERVING_V1",
+            "topShare": 0.8461666666666666,
+            "bestSetShareOfTop": 0.758,
+            "POLICY_COLLAPSE": false,
+            "PATHOLOGICAL_COLLAPSE": false
+          }
+        }
+      },
+      "judgement": {
+        "A_ARGMAX_POLICY_PROBABILITY": {
+          "material": false,
+          "harmOk": false,
+          "better": true,
+          "accWorse": false,
+          "regWorse": false
+        },
+        "B_CLASS_WEIGHTED_ARGMAX": {
+          "material": false,
+          "harmOk": false,
+          "better": false,
+          "accWorse": true,
+          "regWorse": true
+        },
+        "C_EXPECTED_REGRET_MINIMIZATION": {
+          "material": false,
+          "harmOk": false,
+          "better": true,
+          "accWorse": false,
+          "regWorse": false
+        },
+        "D_EXPECTED_VALUE_MAXIMIZATION": {
+          "material": false,
+          "harmOk": false,
+          "better": true,
+          "accWorse": false,
+          "regWorse": false
+        },
+        "E_NEXUS_THRESHOLD_OVERRIDE": {
+          "material": false,
+          "harmOk": false,
+          "better": true,
+          "accWorse": false,
+          "regWorse": false
+        }
+      }
+    },
+    "OOD": {
+      "n": 6000,
+      "alwaysResource": {
+        "n": 6000,
+        "coveredN": 6000,
+        "coverage": 1,
+        "accuracy": 0.7468333333333333,
+        "meanRegret": 24.844,
+        "p95Regret": 171,
+        "selectionAccuracy": 0.8196666666666667,
+        "selectionDistribution": {
+          "RESOURCE_PRESERVING_V1": 1
+        }
+      },
+      "oracle": {
+        "n": 6000,
+        "coveredN": 6000,
+        "coverage": 1,
+        "accuracy": 0.8091666666666667,
+        "meanRegret": 16.6505,
+        "p95Regret": 128,
+        "selectionAccuracy": 1,
+        "selectionDistribution": {
+          "RESOURCE_PRESERVING_V1": 0.8196666666666667,
+          "NEXUS_SELECTOR": 0.17766666666666667,
+          "OBJECTIVE_TARGETING_V1": 0.0011666666666666668,
+          "THREAT_COVERING_V1": 0.0015
+        }
+      },
+      "rules": {
+        "A_ARGMAX_POLICY_PROBABILITY": {
+          "n": 6000,
+          "coveredN": 6000,
+          "coverage": 1,
+          "accuracy": 0.7383333333333333,
+          "meanRegret": 25.4625,
+          "p95Regret": 170,
+          "selectionAccuracy": 0.8283333333333334,
+          "selectionDistribution": {
+            "RESOURCE_PRESERVING_V1": 0.9288333333333333,
+            "OBJECTIVE_TARGETING_V1": 0.0035,
+            "NEXUS_SELECTOR": 0.06383333333333334,
+            "THREAT_COVERING_V1": 0.003833333333333333
+          },
+          "deltaVsResource": {
+            "n": 6000,
+            "accuracyDifference": -0.0085,
+            "accuracyCi95": [
+              -0.013166666666666667,
+              -0.003833333333333333
+            ],
+            "regretDifference": 0.6185,
+            "regretCi95": [
+              0.06666666666666667,
+              1.1736666666666666
+            ],
+            "episodesImproved": 220,
+            "episodesWorsened": 167
+          },
+          "deltaVsArgmax": {
+            "n": 6000,
+            "accuracyDifference": 0,
+            "accuracyCi95": [
+              0,
+              0
+            ],
+            "regretDifference": 0,
+            "regretCi95": [
+              0,
+              0
+            ],
+            "episodesImproved": 0,
+            "episodesWorsened": 0
+          },
+          "nexus": {
+            "NEXUS_BEST_N": 1038,
+            "NEXUS_SELECTED_WHEN_BEST": 192,
+            "NEXUS_CAPTURE_RATE": 0.18497109826589594,
+            "NEXUS_SELECTED_N": 383,
+            "FALSE_NEXUS_SELECTION_N": 149,
+            "REGRET_SAVED_FROM_NEXUS_CAPTURE": 9556,
+            "REGRET_ADDED_FROM_FALSE_NEXUS_SELECTION": 12972,
+            "NET_REGRET_SAVED": -3416
+          },
+          "harm": {
+            "falseSelections": 1030,
+            "rate": 0.17166666666666666,
+            "meanAddedRegret": 51.332038834951454,
+            "p90": 154,
+            "p95": 189,
+            "p99": 246,
+            "worst": 331
+          },
+          "selectedRates": {
+            "RESOURCE_PRESERVING_V1": 0.9288333333333333,
+            "NEXUS_SELECTOR": 0.06383333333333334,
+            "OBJECTIVE_TARGETING_V1": 0.0035,
+            "THREAT_COVERING_V1": 0.003833333333333333
+          },
+          "collapse": {
+            "topPolicy": "RESOURCE_PRESERVING_V1",
+            "topShare": 0.9288333333333333,
+            "bestSetShareOfTop": 0.8196666666666667,
+            "POLICY_COLLAPSE": true,
+            "PATHOLOGICAL_COLLAPSE": true
+          }
+        },
+        "B_CLASS_WEIGHTED_ARGMAX": {
+          "n": 6000,
+          "coveredN": 6000,
+          "coverage": 1,
+          "accuracy": 0.6493333333333333,
+          "meanRegret": 35.788333333333334,
+          "p95Regret": 175,
+          "selectionAccuracy": 0.7733333333333333,
+          "selectionDistribution": {
+            "NEXUS_SELECTOR": 0.32066666666666666,
+            "RESOURCE_PRESERVING_V1": 0.6598333333333334,
+            "OBJECTIVE_TARGETING_V1": 0.0145,
+            "THREAT_COVERING_V1": 0.005
+          },
+          "deltaVsResource": {
+            "n": 6000,
+            "accuracyDifference": -0.0975,
+            "accuracyCi95": [
+              -0.10766666666666666,
+              -0.08716666666666667
+            ],
+            "regretDifference": 10.944333333333333,
+            "regretCi95": [
+              9.5435,
+              12.235833333333334
+            ],
+            "episodesImproved": 673,
+            "episodesWorsened": 951
+          },
+          "deltaVsArgmax": {
+            "n": 6000,
+            "accuracyDifference": -0.089,
+            "accuracyCi95": [
+              -0.09866666666666667,
+              -0.07966666666666666
+            ],
+            "regretDifference": 10.325833333333334,
+            "regretCi95": [
+              9.038333333333334,
+              11.566333333333333
+            ],
+            "episodesImproved": 456,
+            "episodesWorsened": 785
+          },
+          "nexus": {
+            "NEXUS_BEST_N": 1038,
+            "NEXUS_SELECTED_WHEN_BEST": 628,
+            "NEXUS_CAPTURE_RATE": 0.605009633911368,
+            "NEXUS_SELECTED_N": 1924,
+            "FALSE_NEXUS_SELECTION_N": 883,
+            "REGRET_SAVED_FROM_NEXUS_CAPTURE": 31046,
+            "REGRET_ADDED_FROM_FALSE_NEXUS_SELECTION": 91982,
+            "NET_REGRET_SAVED": -60936
+          },
+          "harm": {
+            "falseSelections": 1360,
+            "rate": 0.22666666666666666,
+            "meanAddedRegret": 84.43161764705883,
+            "p90": 178,
+            "p95": 192,
+            "p99": 274,
+            "worst": 351
+          },
+          "selectedRates": {
+            "RESOURCE_PRESERVING_V1": 0.6598333333333334,
+            "NEXUS_SELECTOR": 0.32066666666666666,
+            "OBJECTIVE_TARGETING_V1": 0.0145,
+            "THREAT_COVERING_V1": 0.005
+          },
+          "collapse": {
+            "topPolicy": "RESOURCE_PRESERVING_V1",
+            "topShare": 0.6598333333333334,
+            "bestSetShareOfTop": 0.8196666666666667,
+            "POLICY_COLLAPSE": false,
+            "PATHOLOGICAL_COLLAPSE": false
+          }
+        },
+        "C_EXPECTED_REGRET_MINIMIZATION": {
+          "n": 6000,
+          "coveredN": 6000,
+          "coverage": 1,
+          "accuracy": 0.7433333333333333,
+          "meanRegret": 24.8815,
+          "p95Regret": 170,
+          "selectionAccuracy": 0.8243333333333334,
+          "selectionDistribution": {
+            "RESOURCE_PRESERVING_V1": 0.9705,
+            "NEXUS_SELECTOR": 0.024333333333333332,
+            "THREAT_COVERING_V1": 0.005,
+            "OBJECTIVE_TARGETING_V1": 0.00016666666666666666
+          },
+          "deltaVsResource": {
+            "n": 6000,
+            "accuracyDifference": -0.0035,
+            "accuracyCi95": [
+              -0.006666666666666667,
+              -0.0003333333333333333
+            ],
+            "regretDifference": 0.0375,
+            "regretCi95": [
+              -0.333,
+              0.37916666666666665
+            ],
+            "episodesImproved": 100,
+            "episodesWorsened": 70
+          },
+          "deltaVsArgmax": {
+            "n": 6000,
+            "accuracyDifference": 0.005,
+            "accuracyCi95": [
+              0.001,
+              0.008666666666666666
+            ],
+            "regretDifference": -0.581,
+            "regretCi95": [
+              -1.0098333333333334,
+              -0.148
+            ],
+            "episodesImproved": 104,
+            "episodesWorsened": 126
+          },
+          "nexus": {
+            "NEXUS_BEST_N": 1038,
+            "NEXUS_SELECTED_WHEN_BEST": 72,
+            "NEXUS_CAPTURE_RATE": 0.06936416184971098,
+            "NEXUS_SELECTED_N": 146,
+            "FALSE_NEXUS_SELECTION_N": 57,
+            "REGRET_SAVED_FROM_NEXUS_CAPTURE": 4385,
+            "REGRET_ADDED_FROM_FALSE_NEXUS_SELECTION": 4553,
+            "NET_REGRET_SAVED": -168
+          },
+          "harm": {
+            "falseSelections": 1054,
+            "rate": 0.17566666666666667,
+            "meanAddedRegret": 46.85578747628084,
+            "p90": 146,
+            "p95": 184,
+            "p99": 241,
+            "worst": 331
+          },
+          "selectedRates": {
+            "RESOURCE_PRESERVING_V1": 0.9705,
+            "NEXUS_SELECTOR": 0.024333333333333332,
+            "OBJECTIVE_TARGETING_V1": 0.00016666666666666666,
+            "THREAT_COVERING_V1": 0.005
+          },
+          "collapse": {
+            "topPolicy": "RESOURCE_PRESERVING_V1",
+            "topShare": 0.9705,
+            "bestSetShareOfTop": 0.8196666666666667,
+            "POLICY_COLLAPSE": true,
+            "PATHOLOGICAL_COLLAPSE": true
+          }
+        },
+        "D_EXPECTED_VALUE_MAXIMIZATION": {
+          "n": 6000,
+          "coveredN": 6000,
+          "coverage": 1,
+          "accuracy": 0.7463333333333333,
+          "meanRegret": 24.746833333333335,
+          "p95Regret": 170,
+          "selectionAccuracy": 0.822,
+          "selectionDistribution": {
+            "RESOURCE_PRESERVING_V1": 0.988,
+            "THREAT_COVERING_V1": 0.004166666666666667,
+            "OBJECTIVE_TARGETING_V1": 0.0025,
+            "NEXUS_SELECTOR": 0.005333333333333333
+          },
+          "deltaVsResource": {
+            "n": 6000,
+            "accuracyDifference": -0.0005,
+            "accuracyCi95": [
+              -0.0025,
+              0.0015
+            ],
+            "regretDifference": -0.09716666666666667,
+            "regretCi95": [
+              -0.3175,
+              0.11716666666666667
+            ],
+            "episodesImproved": 43,
+            "episodesWorsened": 28
+          },
+          "deltaVsArgmax": {
+            "n": 6000,
+            "accuracyDifference": 0.008,
+            "accuracyCi95": [
+              0.0036666666666666666,
+              0.012
+            ],
+            "regretDifference": -0.7156666666666667,
+            "regretCi95": [
+              -1.2663333333333333,
+              -0.201
+            ],
+            "episodesImproved": 141,
+            "episodesWorsened": 178
+          },
+          "nexus": {
+            "NEXUS_BEST_N": 1038,
+            "NEXUS_SELECTED_WHEN_BEST": 17,
+            "NEXUS_CAPTURE_RATE": 0.016377649325626204,
+            "NEXUS_SELECTED_N": 32,
+            "FALSE_NEXUS_SELECTION_N": 14,
+            "REGRET_SAVED_FROM_NEXUS_CAPTURE": 1280,
+            "REGRET_ADDED_FROM_FALSE_NEXUS_SELECTION": 870,
+            "NET_REGRET_SAVED": 410
+          },
+          "harm": {
+            "falseSelections": 1068,
+            "rate": 0.178,
+            "meanAddedRegret": 45.48501872659176,
+            "p90": 144,
+            "p95": 178,
+            "p99": 241,
+            "worst": 331
+          },
+          "selectedRates": {
+            "RESOURCE_PRESERVING_V1": 0.988,
+            "NEXUS_SELECTOR": 0.005333333333333333,
+            "OBJECTIVE_TARGETING_V1": 0.0025,
+            "THREAT_COVERING_V1": 0.004166666666666667
+          },
+          "collapse": {
+            "topPolicy": "RESOURCE_PRESERVING_V1",
+            "topShare": 0.988,
+            "bestSetShareOfTop": 0.8196666666666667,
+            "POLICY_COLLAPSE": true,
+            "PATHOLOGICAL_COLLAPSE": true
+          }
+        },
+        "E_NEXUS_THRESHOLD_OVERRIDE": {
+          "n": 6000,
+          "coveredN": 6000,
+          "coverage": 1,
+          "accuracy": 0.7383333333333333,
+          "meanRegret": 25.4625,
+          "p95Regret": 170,
+          "selectionAccuracy": 0.8283333333333334,
+          "selectionDistribution": {
+            "RESOURCE_PRESERVING_V1": 0.9288333333333333,
+            "OBJECTIVE_TARGETING_V1": 0.0035,
+            "NEXUS_SELECTOR": 0.06383333333333334,
+            "THREAT_COVERING_V1": 0.003833333333333333
+          },
+          "deltaVsResource": {
+            "n": 6000,
+            "accuracyDifference": -0.0085,
+            "accuracyCi95": [
+              -0.013166666666666667,
+              -0.003833333333333333
+            ],
+            "regretDifference": 0.6185,
+            "regretCi95": [
+              0.06666666666666667,
+              1.1736666666666666
+            ],
+            "episodesImproved": 220,
+            "episodesWorsened": 167
+          },
+          "deltaVsArgmax": {
+            "n": 6000,
+            "accuracyDifference": 0,
+            "accuracyCi95": [
+              0,
+              0
+            ],
+            "regretDifference": 0,
+            "regretCi95": [
+              0,
+              0
+            ],
+            "episodesImproved": 0,
+            "episodesWorsened": 0
+          },
+          "nexus": {
+            "NEXUS_BEST_N": 1038,
+            "NEXUS_SELECTED_WHEN_BEST": 192,
+            "NEXUS_CAPTURE_RATE": 0.18497109826589594,
+            "NEXUS_SELECTED_N": 383,
+            "FALSE_NEXUS_SELECTION_N": 149,
+            "REGRET_SAVED_FROM_NEXUS_CAPTURE": 9556,
+            "REGRET_ADDED_FROM_FALSE_NEXUS_SELECTION": 12972,
+            "NET_REGRET_SAVED": -3416
+          },
+          "harm": {
+            "falseSelections": 1030,
+            "rate": 0.17166666666666666,
+            "meanAddedRegret": 51.332038834951454,
+            "p90": 154,
+            "p95": 189,
+            "p99": 246,
+            "worst": 331
+          },
+          "selectedRates": {
+            "RESOURCE_PRESERVING_V1": 0.9288333333333333,
+            "NEXUS_SELECTOR": 0.06383333333333334,
+            "OBJECTIVE_TARGETING_V1": 0.0035,
+            "THREAT_COVERING_V1": 0.003833333333333333
+          },
+          "collapse": {
+            "topPolicy": "RESOURCE_PRESERVING_V1",
+            "topShare": 0.9288333333333333,
+            "bestSetShareOfTop": 0.8196666666666667,
+            "POLICY_COLLAPSE": true,
+            "PATHOLOGICAL_COLLAPSE": true
+          }
+        }
+      },
+      "judgement": {
+        "A_ARGMAX_POLICY_PROBABILITY": {
+          "material": false,
+          "harmOk": false,
+          "better": false,
+          "accWorse": true,
+          "regWorse": true
+        },
+        "B_CLASS_WEIGHTED_ARGMAX": {
+          "material": false,
+          "harmOk": false,
+          "better": false,
+          "accWorse": true,
+          "regWorse": true
+        },
+        "C_EXPECTED_REGRET_MINIMIZATION": {
+          "material": false,
+          "harmOk": false,
+          "better": false,
+          "accWorse": true,
+          "regWorse": false
+        },
+        "D_EXPECTED_VALUE_MAXIMIZATION": {
+          "material": false,
+          "harmOk": false,
+          "better": false,
+          "accWorse": false,
+          "regWorse": false
+        },
+        "E_NEXUS_THRESHOLD_OVERRIDE": {
+          "material": false,
+          "harmOk": false,
+          "better": false,
+          "accWorse": true,
+          "regWorse": true
+        }
+      }
+    }
+  },
+  "calibration": {
+    "rule": "C_EXPECTED_REGRET_MINIMIZATION",
+    "split": "HOLDOUT",
+    "pearson": 0.21392208972948334,
+    "spearman": 0.24276777677058012,
+    "deciles": [
+      {
+        "decile": 1,
+        "n": 600,
+        "meanExpectedCost": 9.620714500149994,
+        "meanRealizedRegret": 17.956666666666667
+      },
+      {
+        "decile": 2,
+        "n": 600,
+        "meanExpectedCost": 14.014647670369202,
+        "meanRealizedRegret": 10.143333333333333
+      },
+      {
+        "decile": 3,
+        "n": 600,
+        "meanExpectedCost": 20.463642920987994,
+        "meanRealizedRegret": 13.973333333333333
+      },
+      {
+        "decile": 4,
+        "n": 600,
+        "meanExpectedCost": 22.833434180664863,
+        "meanRealizedRegret": 17.291666666666668
+      },
+      {
+        "decile": 5,
+        "n": 600,
+        "meanExpectedCost": 24.88564468552604,
+        "meanRealizedRegret": 18.35
+      },
+      {
+        "decile": 6,
+        "n": 600,
+        "meanExpectedCost": 27.028809566786098,
+        "meanRealizedRegret": 21.788333333333334
+      },
+      {
+        "decile": 7,
+        "n": 600,
+        "meanExpectedCost": 29.4938542939888,
+        "meanRealizedRegret": 27.276666666666667
+      },
+      {
+        "decile": 8,
+        "n": 600,
+        "meanExpectedCost": 32.56434403443604,
+        "meanRealizedRegret": 30.14
+      },
+      {
+        "decile": 9,
+        "n": 600,
+        "meanExpectedCost": 36.778726776345195,
+        "meanRealizedRegret": 44.26166666666666
+      },
+      {
+        "decile": 10,
+        "n": 600,
+        "meanExpectedCost": 41.62535078038425,
+        "meanRealizedRegret": 43.44
+      }
+    ]
+  },
+  "hypothesis": {
+    "statement": "the router under-selects NEXUS because argmax favours the RESOURCE majority",
+    "argmaxNexusCapture": 0.30691530691530694,
+    "classWeightedNexusCapture": 0.763014763014763,
+    "classWeightedRegretVsArgmax": 8.1365,
+    "expectedRegretNexusCapture": 0.14763014763014762,
+    "expectedRegretRegretVsArgmax": -0.31483333333333335,
+    "costOfFalseNexusWhenResourceBest": 60.02475442043221,
+    "costOfResourceWhenNexusBest": 64.00232727272727,
+    "nexusRegretWhenNexusBest": 32.80581818181818,
+    "resourceRegretWhenResourceBest": 9.620714500150102,
+    "supported": false
+  },
+  "diagnosis": {
+    "primaryResult": "B_COST_SENSITIVE_RULE_BETTER_BUT_NOT_MATERIAL",
+    "primaryBottleneck": "NOT_ESTABLISHED_AS_DECISION_RULE",
+    "modelCapacityGap": "UNRESOLVED",
+    "representationGap": "carried from Stage 3F.6-W: B_CURRENT_RISK_SIGNALS_INSUFFICIENT"
+  },
+  "stage3gReadiness": {
+    "criteria": [
+      "headline rule materially beats ALWAYS_RESOURCE on fresh HOLDOUT",
+      "acceptable false-selection harm",
+      "survives fresh OOD",
+      "no pathological collapse",
+      "deterministic replay",
+      "zero leakage"
+    ],
+    "evaluation": {
+      "materiallyBeatsAlwaysResource": false,
+      "acceptableFalseSelectionHarm": false,
+      "survivesFreshOod": true,
+      "noPathologicalCollapse": false,
+      "deterministicReplay": true,
+      "zeroLeakage": true
+    },
+    "ready": false
+  },
+  "scope": {
+    "priorOwnersUnchanged": true,
+    "stage3f6tHashMatchesAccepted": true,
+    "stage3f6wHashMatchesAccepted": true,
+    "originalContractIntact": true,
+    "routerSourceUnchanged": true,
+    "policyDefinitionsUnchanged": true,
+    "policySetHashMatchesStage3F6T": true,
+    "enrichedV11UsedInHeadline": false,
+    "newOwners": [
+      "src/stage3f/decision-rule-v1.js",
+      "scripts/generate-stage3f6d-confirmatory.mjs",
+      "scripts/certify-stage3f6d-decision-rule.mjs",
+      "tests/stage3f6d-decision-rule.test.js"
+    ],
+    "existingOwnersModified": [
+      "package.json",
+      ".gitignore"
+    ],
+    "featuresAdded": false,
+    "policiesAdded": false,
+    "routerRetrained": false,
+    "largerModelTrained": false
+  },
+  "checks": {
+    "STAGE3F6T_INTACT": true,
+    "STAGE3F6W_INTACT": true,
+    "ORIGINAL_CONTRACT_INTACT": true,
+    "FEATURE_COUNT_30": true,
+    "POLICY_SET_UNCHANGED": true,
+    "PRIOR_OWNERS_UNCHANGED": true,
+    "DATA_INTEGRITY": true,
+    "FRESH_SPLIT_SIZE": true,
+    "ZERO_OVERLAP": true,
+    "SEED_SPACE_DISJOINT": true,
+    "COST_MATRIX_FROM_DEV": true,
+    "CALIBRATION_FROM_CAL": true,
+    "DECISION_FREEZE_WRITTEN": true,
+    "SEALED_OPENED_ONLY_AFTER_FREEZE": true,
+    "UNAVAILABLE_NEVER_SELECTED": true,
+    "NO_LIVE_PROMOTION": true,
+    "TESTS_PASS": true
+  },
+  "tests": {
+    "pass": 20,
+    "fail": 0,
+    "skipped": 0
+  },
+  "sourceHashes": {
+    "src/stage3f/decision-rule-v1.js": "96ec25f0c4217435e23d3341e1181e50f3e0291c1879e2602cd661708fce86e5",
+    "scripts/generate-stage3f6d-confirmatory.mjs": "010cd1c4d0ffa0b2ecf8f7cd54eb4cb10167c3199af78e5671d8dc0422ce0f28",
+    "scripts/certify-stage3f6d-decision-rule.mjs": "b7b9dc18f993b87ba3303d8f45abb360e7c567d4f5ea955fa21f0d50817b32aa",
+    "tests/stage3f6d-decision-rule.test.js": "3b9174e74283213dbf6cd225a0aad90228720f5a4fc32834d08e05ab7e468d3f"
+  },
+  "authority": {
+    "tier": "R0",
+    "canDispatch": false,
+    "canMutateLiveWorld": false,
+    "onlineLearningEnabled": false,
+    "promotedToLiveRuntime": false
+  },
+  "roadmap": {
+    "readyForStage3G": false,
+    "blockers": [
+      "STAGE3G_READINESS_UNMET:materiallyBeatsAlwaysResource",
+      "STAGE3G_READINESS_UNMET:acceptableFalseSelectionHarm",
+      "STAGE3G_READINESS_UNMET:noPathologicalCollapse"
+    ]
+  },
+  "certificationHash": "f262c3477631a92007e1a40d4ba85bc03874fab6c1a68e78013378de2b909f3b"
+}
