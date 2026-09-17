@@ -1,0 +1,83 @@
+{
+  "gate": "STAGE_3F_6_W_RISK_STATE",
+  "data": {
+    "partitions": [
+      "DEV",
+      "CAL"
+    ],
+    "sealedPartitionsUsed": false
+  },
+  "primaryTarget": "binary: NEXUS_SELECTOR uniquely best (1) vs RESOURCE_PRESERVING_V1 uniquely best (0); other rows excluded",
+  "diagnosticModel": {
+    "family": "LOGISTIC_REGRESSION_STANDARDIZED_BIAS_LAST (Stage 3E family)",
+    "iterations": 2000,
+    "learningRate": 0.1,
+    "l2": 0.001
+  },
+  "multinomialDiagnostic": {
+    "family": "MULTINOMIAL_LOGISTIC_REGRESSION_MASKED_SOFTMAX",
+    "iterations": 2000,
+    "metric": "CAL soft-target cross-entropy over available policies",
+    "purpose": "information measurement only; not a router candidate"
+  },
+  "fieldSelection": {
+    "where": "DEV only, 2 folds by recordHash first hex digit parity",
+    "usableIf": "status AVAILABLE on every DEV and CAL row (no imputation)",
+    "acceptIf": "mean held-fold AUROC(CORE + field) - AUROC(CORE) >= 0.005",
+    "structuralRejectIf": "field is identical to a CORE feature, or to the CORE identity threatened - uncovered"
+  },
+  "incrementalTest": {
+    "fit": "DEV",
+    "evaluate": "CAL once",
+    "bootstrap": {
+      "resamples": 1000,
+      "seed": "6003",
+      "statistic": "paired AUROC delta over CAL rows"
+    }
+  },
+  "materiality": {
+    "minAurocDelta": 0.02,
+    "requireCiLowerAboveZero": true,
+    "minBinaryN": 500
+  },
+  "classification": {
+    "precedence": [
+      "E_INSUFFICIENT_EVIDENCE",
+      "C_DIFFERENT_REPRESENTATION_GAP_DOMINATES",
+      "A_RISK_STATE_ADDS_MATERIAL_INFORMATION",
+      "B_CURRENT_RISK_SIGNALS_INSUFFICIENT",
+      "D_NO_INCREMENTAL_INFORMATION_FOUND"
+    ],
+    "E": "DEV or CAL binary n < 500",
+    "C": "a diagnostic group (objective/spatial/temporal) is material and its delta exceeds the risk delta",
+    "A": "accepted risk fields non-empty and CORE+ACCEPTED delta material",
+    "B": "risk delta CI lower > 0 but below materiality, or accepted fields exist but CI includes zero",
+    "D": "no group or risk delta with CI lower > 0"
+  },
+  "enrichedContractRule": "create SENTINEL_DEPLOYABLE_FEATURE_CONTRACT_V1_1 only if accepted fields exist AND CAL delta CI lower > 0",
+  "forensics": {
+    "router": "frozen Stage 3F.6-T router (weights from its evaluation freeze), threshold 0, fallback RESOURCE_PRESERVING_V1",
+    "split": "CAL (out-of-sample for a DEV-trained router)",
+    "error": "selected policy outside the minimum-regret best set",
+    "conditions": [
+      "UNSUPPORTED_THREAT",
+      "UNCOVERED_THREAT",
+      "THREATENED_CRITICAL",
+      "HIGH_HOSTILE",
+      "LOW_ENERGY",
+      "LOW_ACTOR_HEALTH",
+      "MULTI_OBJECTIVE",
+      "BOTTLENECK",
+      "FEW_ACTIONS",
+      "LATE_EPISODE",
+      "NOVEL_STATE"
+    ],
+    "thresholds": "medians and novelty quantiles computed on DEV / CAL before any error is counted"
+  },
+  "readiness": {
+    "READY_FOR_STAGE3G": false,
+    "freshConfirmatoryRequiredIf": "A or C",
+    "routerRetrainReadyIf": "A"
+  },
+  "planHash": "2e2ef2685688edd7eeed37af2ff80625384a63de3b7c78d710c312d59eab7f90"
+}

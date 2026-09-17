@@ -1,0 +1,1512 @@
+{
+  "schemaVersion": 1,
+  "stage": "STAGE_3F_6_W_RISK_STATE",
+  "status": "PASS",
+  "planHash": "2e2ef2685688edd7eeed37af2ff80625384a63de3b7c78d710c312d59eab7f90",
+  "baselineEvidence": {
+    "stage3f6tHoldout": {
+      "alwaysResourceAccuracy": 0.6142,
+      "routedAccuracy": 0.6153,
+      "oracleAccuracy": 0.7063,
+      "oracleGainCapturedAccuracy": 0.012658227848101068,
+      "oracleGainCapturedRegret": 0.11462601396745323
+    }
+  },
+  "data": {
+    "DEV_N": 4000,
+    "CAL_N": 4000,
+    "devBinaryN": 3340,
+    "calBinaryN": 3335,
+    "integrity": {
+      "corpus": true,
+      "proposals": true,
+      "riskEvidence": true,
+      "riskEvidenceBoundToCorpus": true,
+      "riskEvidenceBoundToContract": true,
+      "riskEvidenceCoreRebuildMismatches": 0
+    },
+    "sealedAccess": {
+      "holdoutOrOodRowsRead": false,
+      "riskEvidencePartitions": [
+        "CAL",
+        "DEV"
+      ]
+    }
+  },
+  "forensics": {
+    "split": "CAL",
+    "thresholds": {
+      "hostileMedian": 0,
+      "energyMedian": 32,
+      "healthMedian": 100,
+      "actionMedian": 7,
+      "noveltyQ90": 2.8501381320797323
+    },
+    "anatomy": {
+      "routerErrorN": 848,
+      "calN": 4000,
+      "errorRate": 0.212,
+      "missedNexus": 588,
+      "wronglyLeftResource": 213,
+      "otherErrors": 47
+    },
+    "conditions": {
+      "UNSUPPORTED_THREAT": {
+        "nIn": 1701,
+        "nOut": 2299,
+        "errorRateIn": 0.26807760141093473,
+        "errorRateOut": 0.17050891692040018,
+        "errorRatio": 1.5722204225605585,
+        "nexusBestIn": 0.27807172251616696,
+        "nexusBestOut": 0.1605045672031318,
+        "resourceBestIn": 0.5332157554379776,
+        "resourceBestOut": 0.6898651587646802,
+        "supported": true
+      },
+      "UNCOVERED_THREAT": {
+        "nIn": 2118,
+        "nOut": 1882,
+        "errorRateIn": 0.2719546742209632,
+        "errorRateOut": 0.14452709883103082,
+        "errorRatio": 1.8816863856023998,
+        "nexusBestIn": 0.2809254013220019,
+        "nexusBestOut": 0.1312433581296493,
+        "resourceBestIn": 0.5330500472143531,
+        "resourceBestOut": 0.7247608926673751,
+        "supported": true
+      },
+      "THREATENED_CRITICAL": {
+        "nIn": 664,
+        "nOut": 3336,
+        "errorRateIn": 0.3042168674698795,
+        "errorRateOut": 0.1936450839328537,
+        "errorRatio": 1.5710022753552912,
+        "nexusBestIn": 0.30120481927710846,
+        "nexusBestOut": 0.19244604316546762,
+        "resourceBestIn": 0.5210843373493976,
+        "resourceBestOut": 0.6435851318944844,
+        "supported": true
+      },
+      "HIGH_HOSTILE": {
+        "nIn": 2034,
+        "nOut": 1966,
+        "errorRateIn": 0.28269419862340217,
+        "errorRateOut": 0.13886063072227875,
+        "errorRatio": 2.0358124340425223,
+        "nexusBestIn": 0.2885939036381514,
+        "nexusBestOut": 0.12970498474059003,
+        "resourceBestIn": 0.5196656833824975,
+        "resourceBestOut": 0.7304170905391658,
+        "supported": true
+      },
+      "LOW_ENERGY": {
+        "nIn": 2251,
+        "nOut": 1749,
+        "errorRateIn": 0.19147045757441136,
+        "errorRateOut": 0.23842195540308747,
+        "errorRatio": 0.8030739335674951,
+        "nexusBestIn": 0.1905819635717459,
+        "nexusBestOut": 0.2361349342481418,
+        "resourceBestIn": 0.6454908929364727,
+        "resourceBestOut": 0.5946255002858777,
+        "supported": true
+      },
+      "LOW_ACTOR_HEALTH": {
+        "nIn": 0,
+        "nOut": 4000,
+        "errorRateIn": null,
+        "errorRateOut": 0.212,
+        "errorRatio": null,
+        "nexusBestIn": null,
+        "nexusBestOut": 0.2105,
+        "resourceBestIn": null,
+        "resourceBestOut": 0.62325,
+        "supported": false
+      },
+      "MULTI_OBJECTIVE": {
+        "nIn": 2970,
+        "nOut": 1030,
+        "errorRateIn": 0.21548821548821548,
+        "errorRateOut": 0.20194174757281552,
+        "errorRatio": 1.067081067081067,
+        "nexusBestIn": 0.20505050505050504,
+        "nexusBestOut": 0.2262135922330097,
+        "resourceBestIn": 0.6171717171717171,
+        "resourceBestOut": 0.6407766990291263,
+        "supported": true
+      },
+      "BOTTLENECK": {
+        "nIn": 2761,
+        "nOut": 1239,
+        "errorRateIn": 0.25208257877580587,
+        "errorRateOut": 0.12267958030669895,
+        "errorRatio": 2.05480470462647,
+        "nexusBestIn": 0.2499094530967041,
+        "nexusBestOut": 0.12267958030669895,
+        "resourceBestIn": 0.558493299529156,
+        "resourceBestOut": 0.7675544794188862,
+        "supported": true
+      },
+      "FEW_ACTIONS": {
+        "nIn": 3080,
+        "nOut": 920,
+        "errorRateIn": 0.1762987012987013,
+        "errorRateOut": 0.33152173913043476,
+        "errorRatio": 0.5317862465403449,
+        "nexusBestIn": 0.1577922077922078,
+        "nexusBestOut": 0.3869565217391304,
+        "resourceBestIn": 0.6672077922077922,
+        "resourceBestOut": 0.47608695652173916,
+        "supported": true
+      },
+      "LATE_EPISODE": {
+        "nIn": 1405,
+        "nOut": 2595,
+        "errorRateIn": 0.17224199288256228,
+        "errorRateOut": 0.23352601156069364,
+        "errorRatio": 0.7375709101159227,
+        "nexusBestIn": 0.17437722419928825,
+        "nexusBestOut": 0.2300578034682081,
+        "resourceBestIn": 0.7224199288256228,
+        "resourceBestOut": 0.5695568400770713,
+        "supported": true
+      },
+      "NOVEL_STATE": {
+        "nIn": 400,
+        "nOut": 3600,
+        "errorRateIn": 0.36,
+        "errorRateOut": 0.19555555555555557,
+        "errorRatio": 1.8409090909090908,
+        "nexusBestIn": 0.4075,
+        "nexusBestOut": 0.18861111111111112,
+        "resourceBestIn": 0.3825,
+        "resourceBestOut": 0.65,
+        "supported": true
+      }
+    }
+  },
+  "riskStateContract": {
+    "id": "SENTINEL_DECISION_RISK_STATE_V1",
+    "hash": "5b4d74b30f6a29e84dcab4d7736e108d20887e8acebf8ca01a9142cc3c38d17a",
+    "contract": {
+      "contractId": "SENTINEL_DECISION_RISK_STATE_V1",
+      "schemaVersion": 1,
+      "principles": [
+        "PREDICTED_RISK != OBSERVED_FAILURE",
+        "RISK_SIGNAL != FUTURE_OUTCOME",
+        "UNKNOWN != ZERO",
+        "MISSING != SAFE",
+        "NO_THREAT_EVIDENCE != NO_THREAT"
+      ],
+      "permittedSources": [
+        "current observation packet",
+        "legal action surface at decision time",
+        "declared observation schema"
+      ],
+      "prohibitedSources": [
+        "future outcome",
+        "state_t+1",
+        "rollout",
+        "regret",
+        "optimal policy label",
+        "sealed split metadata",
+        "post-hoc trace evidence",
+        "authoritative world state not given to the observer",
+        "observation history"
+      ],
+      "observationSchema": {
+        "id": "sentinel-forge-world/observation",
+        "version": 1
+      },
+      "statuses": [
+        "AVAILABLE",
+        "UNKNOWN",
+        "UNAVAILABLE",
+        "NOT_APPLICABLE"
+      ],
+      "fields": [
+        {
+          "decisionTimeOnly": true,
+          "usesFutureOutcome": false,
+          "usesTransition": false,
+          "usesRollout": false,
+          "usesRegret": false,
+          "usesOptimalPolicyLabel": false,
+          "usesSplitMetadata": false,
+          "fieldId": "risk.threatRelationCount",
+          "candidateName": "activeThreatCount",
+          "semantic": "number of observed threatens relationships",
+          "source": "metadata.canonicalState (entities, relationships)",
+          "epistemicCategory": "OBSERVED",
+          "provenance": "observation packet",
+          "requiredCalibration": "OBSERVATION_SEMANTICS: relationship kind vocabulary",
+          "missingSemantics": "UNKNOWN when relationships are absent; 0 only when observed and empty",
+          "mayBeNotApplicable": false
+        },
+        {
+          "decisionTimeOnly": true,
+          "usesFutureOutcome": false,
+          "usesTransition": false,
+          "usesRollout": false,
+          "usesRegret": false,
+          "usesOptimalPolicyLabel": false,
+          "usesSplitMetadata": false,
+          "fieldId": "risk.hostileAliveCount",
+          "candidateName": "activeThreatCount (alive)",
+          "semantic": "observed count of living hostile entities",
+          "source": "features[10] (hostileAliveCount)",
+          "epistemicCategory": "OBSERVED",
+          "provenance": "observation packet",
+          "requiredCalibration": "OBSERVATION_SEMANTICS: vector schema binding",
+          "missingSemantics": "UNKNOWN on foreign or malformed observation schema",
+          "mayBeNotApplicable": false
+        },
+        {
+          "decisionTimeOnly": true,
+          "usesFutureOutcome": false,
+          "usesTransition": false,
+          "usesRollout": false,
+          "usesRegret": false,
+          "usesOptimalPolicyLabel": false,
+          "usesSplitMetadata": false,
+          "fieldId": "risk.maxThreatPressure",
+          "candidateName": "maxThreatSeverity",
+          "semantic": "largest number of threatens relationships converging on a single observed entity",
+          "source": "metadata.canonicalState (entities, relationships)",
+          "epistemicCategory": "DERIVED",
+          "provenance": "observation packet",
+          "requiredCalibration": "OBSERVATION_SEMANTICS: relationship kind vocabulary",
+          "missingSemantics": "UNKNOWN when relationships are absent",
+          "mayBeNotApplicable": false
+        },
+        {
+          "decisionTimeOnly": true,
+          "usesFutureOutcome": false,
+          "usesTransition": false,
+          "usesRollout": false,
+          "usesRegret": false,
+          "usesOptimalPolicyLabel": false,
+          "usesSplitMetadata": false,
+          "fieldId": "risk.coveredThreatCount",
+          "candidateName": "coveredThreatCount",
+          "semantic": "threatened observed entities that at least one legal action targets",
+          "source": "metadata.canonicalState (entities, relationships) + legal action targets",
+          "epistemicCategory": "DERIVED",
+          "provenance": "observation packet + legal action surface",
+          "requiredCalibration": "ACTION_SEMANTICS: action target identity",
+          "missingSemantics": "UNKNOWN when relationships are absent; UNAVAILABLE without a legal action surface",
+          "mayBeNotApplicable": false
+        },
+        {
+          "decisionTimeOnly": true,
+          "usesFutureOutcome": false,
+          "usesTransition": false,
+          "usesRollout": false,
+          "usesRegret": false,
+          "usesOptimalPolicyLabel": false,
+          "usesSplitMetadata": false,
+          "fieldId": "risk.threatCoverageRatio",
+          "candidateName": "threatCoverageRatio",
+          "semantic": "covered threatened entities / threatened entities",
+          "source": "metadata.canonicalState (entities, relationships) + legal action targets",
+          "epistemicCategory": "DERIVED",
+          "provenance": "observation packet + legal action surface",
+          "requiredCalibration": "ACTION_SEMANTICS: action target identity",
+          "missingSemantics": "NOT_APPLICABLE when no entity is observed as threatened — never imputed as covered or uncovered",
+          "mayBeNotApplicable": true
+        },
+        {
+          "decisionTimeOnly": true,
+          "usesFutureOutcome": false,
+          "usesTransition": false,
+          "usesRollout": false,
+          "usesRegret": false,
+          "usesOptimalPolicyLabel": false,
+          "usesSplitMetadata": false,
+          "fieldId": "risk.threatenedCriticalCount",
+          "candidateName": "objectiveExposure",
+          "semantic": "observed objective-bearing (critical) entities under threat",
+          "source": "metadata.canonicalState (entities, relationships)",
+          "epistemicCategory": "DERIVED",
+          "provenance": "observation packet",
+          "requiredCalibration": "OBJECTIVE_SEMANTICS: critical-entity flag",
+          "missingSemantics": "UNKNOWN when entities or relationships are absent",
+          "mayBeNotApplicable": false
+        },
+        {
+          "decisionTimeOnly": true,
+          "usesFutureOutcome": false,
+          "usesTransition": false,
+          "usesRollout": false,
+          "usesRegret": false,
+          "usesOptimalPolicyLabel": false,
+          "usesSplitMetadata": false,
+          "fieldId": "risk.threatenedDependencyCount",
+          "candidateName": "dependencyExposure",
+          "semantic": "threatened observed entities that at least one other entity depends on",
+          "source": "metadata.canonicalState (entities, relationships)",
+          "epistemicCategory": "DERIVED",
+          "provenance": "observation packet",
+          "requiredCalibration": "OBSERVATION_SEMANTICS: depends relationship direction",
+          "missingSemantics": "UNKNOWN when relationships are absent",
+          "mayBeNotApplicable": false
+        },
+        {
+          "decisionTimeOnly": true,
+          "usesFutureOutcome": false,
+          "usesTransition": false,
+          "usesRollout": false,
+          "usesRegret": false,
+          "usesOptimalPolicyLabel": false,
+          "usesSplitMetadata": false,
+          "fieldId": "risk.threatenedCivilianCount",
+          "candidateName": "civilianExposure",
+          "semantic": "threatened observed entities of civilian kind",
+          "source": "metadata.canonicalState (entities, relationships)",
+          "epistemicCategory": "DERIVED",
+          "provenance": "observation packet",
+          "requiredCalibration": "OBSERVATION_SEMANTICS: entity kind vocabulary",
+          "missingSemantics": "UNKNOWN when entities or relationships are absent",
+          "mayBeNotApplicable": false
+        },
+        {
+          "decisionTimeOnly": true,
+          "usesFutureOutcome": false,
+          "usesTransition": false,
+          "usesRollout": false,
+          "usesRegret": false,
+          "usesOptimalPolicyLabel": false,
+          "usesSplitMetadata": false,
+          "fieldId": "risk.actorHealth",
+          "candidateName": "resourceExposure (actor)",
+          "semantic": "observed health of the controlled actor",
+          "source": "features[5] (actorHealth)",
+          "epistemicCategory": "OBSERVED",
+          "provenance": "observation packet",
+          "requiredCalibration": "RESOURCE_SEMANTICS: health scale",
+          "missingSemantics": "UNKNOWN on foreign or malformed observation schema",
+          "mayBeNotApplicable": false
+        },
+        {
+          "decisionTimeOnly": true,
+          "usesFutureOutcome": false,
+          "usesTransition": false,
+          "usesRollout": false,
+          "usesRegret": false,
+          "usesOptimalPolicyLabel": false,
+          "usesSplitMetadata": false,
+          "fieldId": "risk.civilianHealthTotal",
+          "candidateName": "civilianExposure (health)",
+          "semantic": "observed total civilian health",
+          "source": "features[11] (civilianHealthTotal)",
+          "epistemicCategory": "OBSERVED",
+          "provenance": "observation packet",
+          "requiredCalibration": "RESOURCE_SEMANTICS: health scale",
+          "missingSemantics": "UNKNOWN on foreign or malformed observation schema",
+          "mayBeNotApplicable": false
+        },
+        {
+          "decisionTimeOnly": true,
+          "usesFutureOutcome": false,
+          "usesTransition": false,
+          "usesRollout": false,
+          "usesRegret": false,
+          "usesOptimalPolicyLabel": false,
+          "usesSplitMetadata": false,
+          "fieldId": "risk.retreatOptionCount",
+          "candidateName": "escapeOptionCount",
+          "semantic": "legal RETREAT actions available now",
+          "source": "legal action surface",
+          "epistemicCategory": "OBSERVED",
+          "provenance": "legal action surface",
+          "requiredCalibration": "ACTION_SEMANTICS: action type vocabulary",
+          "missingSemantics": "UNAVAILABLE without a legal action surface",
+          "mayBeNotApplicable": false
+        },
+        {
+          "decisionTimeOnly": true,
+          "usesFutureOutcome": false,
+          "usesTransition": false,
+          "usesRollout": false,
+          "usesRegret": false,
+          "usesOptimalPolicyLabel": false,
+          "usesSplitMetadata": false,
+          "fieldId": "risk.unavailableEntityCount",
+          "candidateName": "actionConstraintCount",
+          "semantic": "observed entities currently unavailable (disabled)",
+          "source": "features[9] (unavailableEntityCount)",
+          "epistemicCategory": "OBSERVED",
+          "provenance": "observation packet",
+          "requiredCalibration": "OBSERVATION_SEMANTICS: availability flag",
+          "missingSemantics": "UNKNOWN on foreign or malformed observation schema",
+          "mayBeNotApplicable": false
+        }
+      ],
+      "authority": {
+        "tier": "R0",
+        "canDispatch": false,
+        "canMutateLiveWorld": false
+      }
+    }
+  },
+  "fieldSeparability": {
+    "risk.threatRelationCount": {
+      "nexusVsResource": {
+        "n": 3340,
+        "positives": 846,
+        "auroc": 0.6117713244647675,
+        "separability": 0.6117713244647675,
+        "cohensD": 0.1718542282515853,
+        "mutualInformationBits": 0.03129761643262392
+      },
+      "objectiveBestVsRest": {
+        "n": 4000,
+        "positives": 23,
+        "auroc": 0.5610193394627806,
+        "separability": 0.5610193394627806,
+        "cohensD": 0.3396493879726148,
+        "mutualInformationBits": 0.0005696044583752477
+      },
+      "threatBestVsRest": {
+        "n": 4000,
+        "positives": 28,
+        "auroc": 0.8168923536181845,
+        "separability": 0.8168923536181845,
+        "cohensD": 0.977417264411958,
+        "mutualInformationBits": 0.008270142413329578
+      }
+    },
+    "risk.hostileAliveCount": {
+      "nexusVsResource": {
+        "n": 3340,
+        "positives": 846,
+        "auroc": 0.615639236294767,
+        "separability": 0.615639236294767,
+        "cohensD": 0.4244432442685755,
+        "mutualInformationBits": 0.029272337896950117
+      },
+      "objectiveBestVsRest": {
+        "n": 4000,
+        "positives": 23,
+        "auroc": 0.5194323884072548,
+        "separability": 0.5194323884072548,
+        "cohensD": 0.04304396557910367,
+        "mutualInformationBits": 0.00019752229801320184
+      },
+      "threatBestVsRest": {
+        "n": 4000,
+        "positives": 28,
+        "auroc": 0.7824683498777154,
+        "separability": 0.7824683498777154,
+        "cohensD": 1.134768241010149,
+        "mutualInformationBits": 0.006037613547094271
+      }
+    },
+    "risk.maxThreatPressure": {
+      "nexusVsResource": {
+        "n": 3340,
+        "positives": 846,
+        "auroc": 0.6125542910550332,
+        "separability": 0.6125542910550332,
+        "cohensD": 0.1554142066357185,
+        "mutualInformationBits": 0.03086825298036713
+      },
+      "objectiveBestVsRest": {
+        "n": 4000,
+        "positives": 23,
+        "auroc": 0.556788490341201,
+        "separability": 0.556788490341201,
+        "cohensD": 0.3190843037462003,
+        "mutualInformationBits": 0.00024250466394204798
+      },
+      "threatBestVsRest": {
+        "n": 4000,
+        "positives": 28,
+        "auroc": 0.772546216371745,
+        "separability": 0.772546216371745,
+        "cohensD": 0.8519763167461605,
+        "mutualInformationBits": 0.006927769110768277
+      }
+    },
+    "risk.coveredThreatCount": {
+      "nexusVsResource": {
+        "n": 3340,
+        "positives": 846,
+        "auroc": 0.503853219357664,
+        "separability": 0.503853219357664,
+        "cohensD": 0.07087930730205848,
+        "mutualInformationBits": 0.0006291945819306851
+      },
+      "objectiveBestVsRest": {
+        "n": 4000,
+        "positives": 23,
+        "auroc": 0.5775273037356102,
+        "separability": 0.5775273037356102,
+        "cohensD": 1.1183554013013561,
+        "mutualInformationBits": 0.0019957664450532845
+      },
+      "threatBestVsRest": {
+        "n": 4000,
+        "positives": 28,
+        "auroc": 0.9935800604229608,
+        "separability": 0.9935800604229608,
+        "cohensD": 8.799109227848405,
+        "mutualInformationBits": 0.041647679820050534
+      }
+    },
+    "risk.threatCoverageRatio": {
+      "nexusVsResource": {
+        "n": 1686,
+        "positives": 575,
+        "auroc": 0.5017359996869252,
+        "separability": 0.5017359996869252,
+        "cohensD": 0.0029771452257829067,
+        "mutualInformationBits": 0.0014674853506340744
+      },
+      "objectiveBestVsRest": {
+        "n": 2127,
+        "positives": 14,
+        "auroc": 0.6249070380636874,
+        "separability": 0.6249070380636874,
+        "cohensD": 1.21740093765896,
+        "mutualInformationBits": 0.003709108187465233
+      },
+      "threatBestVsRest": {
+        "n": 2127,
+        "positives": 28,
+        "auroc": 0.9865412101000477,
+        "separability": 0.9865412101000477,
+        "cohensD": 5.502508419867609,
+        "mutualInformationBits": 0.06678387643806465
+      }
+    },
+    "risk.threatenedCriticalCount": {
+      "nexusVsResource": {
+        "n": 3340,
+        "positives": 846,
+        "auroc": 0.5558200200575945,
+        "separability": 0.5558200200575945,
+        "cohensD": 0.3144825131285169,
+        "mutualInformationBits": 0.012278125792635191
+      },
+      "objectiveBestVsRest": {
+        "n": 4000,
+        "positives": 23,
+        "auroc": 0.5290091941708301,
+        "separability": 0.5290091941708301,
+        "cohensD": 0.14696544298902514,
+        "mutualInformationBits": 0.0001349223040208069
+      },
+      "threatBestVsRest": {
+        "n": 4000,
+        "positives": 28,
+        "auroc": 0.47371331463098837,
+        "separability": 0.5262866853690116,
+        "cohensD": -0.14706125525249505,
+        "mutualInformationBits": 0.0001355187112694915
+      }
+    },
+    "risk.threatenedDependencyCount": {
+      "nexusVsResource": {
+        "n": 3340,
+        "positives": 846,
+        "auroc": 0.5714146575895624,
+        "separability": 0.5714146575895624,
+        "cohensD": 0.2788508376959466,
+        "mutualInformationBits": 0.012984248816777583
+      },
+      "objectiveBestVsRest": {
+        "n": 4000,
+        "positives": 23,
+        "auroc": 0.5745372850411606,
+        "separability": 0.5745372850411606,
+        "cohensD": 0.34111125896541256,
+        "mutualInformationBits": 0.000492568250747153
+      },
+      "threatBestVsRest": {
+        "n": 4000,
+        "positives": 28,
+        "auroc": 0.8004873399510862,
+        "separability": 0.8004873399510862,
+        "cohensD": 1.343501074640299,
+        "mutualInformationBits": 0.0075011806689535224
+      }
+    },
+    "risk.threatenedCivilianCount": {
+      "nexusVsResource": {
+        "n": 3340,
+        "positives": 846,
+        "auroc": 0.5,
+        "separability": 0.5,
+        "cohensD": 0,
+        "mutualInformationBits": 0
+      },
+      "objectiveBestVsRest": {
+        "n": 4000,
+        "positives": 23,
+        "auroc": 0.5,
+        "separability": 0.5,
+        "cohensD": 0,
+        "mutualInformationBits": 0
+      },
+      "threatBestVsRest": {
+        "n": 4000,
+        "positives": 28,
+        "auroc": 0.5,
+        "separability": 0.5,
+        "cohensD": 0,
+        "mutualInformationBits": 0
+      }
+    },
+    "risk.actorHealth": {
+      "nexusVsResource": {
+        "n": 3340,
+        "positives": 846,
+        "auroc": 0.5,
+        "separability": 0.5,
+        "cohensD": 0,
+        "mutualInformationBits": 0
+      },
+      "objectiveBestVsRest": {
+        "n": 4000,
+        "positives": 23,
+        "auroc": 0.5,
+        "separability": 0.5,
+        "cohensD": 0,
+        "mutualInformationBits": 0
+      },
+      "threatBestVsRest": {
+        "n": 4000,
+        "positives": 28,
+        "auroc": 0.5,
+        "separability": 0.5,
+        "cohensD": 0,
+        "mutualInformationBits": 0
+      }
+    },
+    "risk.civilianHealthTotal": {
+      "nexusVsResource": {
+        "n": 3340,
+        "positives": 846,
+        "auroc": 0.5653021151472755,
+        "separability": 0.5653021151472755,
+        "cohensD": 0.27469947969473235,
+        "mutualInformationBits": 0.009704850939891875
+      },
+      "objectiveBestVsRest": {
+        "n": 4000,
+        "positives": 23,
+        "auroc": 0.352067868504772,
+        "separability": 0.647932131495228,
+        "cohensD": -0.4652732722202234,
+        "mutualInformationBits": 0.0014679987802624747
+      },
+      "threatBestVsRest": {
+        "n": 4000,
+        "positives": 28,
+        "auroc": 0.5841785354625234,
+        "separability": 0.5841785354625234,
+        "cohensD": 0.09489531881151757,
+        "mutualInformationBits": 0.0013672511324840074
+      }
+    },
+    "risk.retreatOptionCount": {
+      "nexusVsResource": {
+        "n": 3340,
+        "positives": 846,
+        "auroc": 0.5638364225441296,
+        "separability": 0.5638364225441296,
+        "cohensD": 0.2628460427184,
+        "mutualInformationBits": 0.009183313871157901
+      },
+      "objectiveBestVsRest": {
+        "n": 4000,
+        "positives": 23,
+        "auroc": 0.5578270708749221,
+        "separability": 0.5578270708749221,
+        "cohensD": 0.23547638527539622,
+        "mutualInformationBits": 0.0002240568184496938
+      },
+      "threatBestVsRest": {
+        "n": 4000,
+        "positives": 28,
+        "auroc": 0.6368687958567113,
+        "separability": 0.6368687958567113,
+        "cohensD": 0.5578545831824492,
+        "mutualInformationBits": 0.0015287871518514635
+      }
+    },
+    "risk.unavailableEntityCount": {
+      "nexusVsResource": {
+        "n": 3340,
+        "positives": 846,
+        "auroc": 0.4629022182789522,
+        "separability": 0.5370977817210478,
+        "cohensD": -0.1312765779227329,
+        "mutualInformationBits": 0.002855058343232016
+      },
+      "objectiveBestVsRest": {
+        "n": 4000,
+        "positives": 23,
+        "auroc": 0.45637961758371504,
+        "separability": 0.543620382416285,
+        "cohensD": -0.19679488007093096,
+        "mutualInformationBits": 0.0011622277341640079
+      },
+      "threatBestVsRest": {
+        "n": 4000,
+        "positives": 28,
+        "auroc": 0.4142299669112358,
+        "separability": 0.5857700330887642,
+        "cohensD": -0.2707604537624825,
+        "mutualInformationBits": 0.0016532909324625791
+      }
+    },
+    "objective.shortfall": {
+      "nexusVsResource": {
+        "n": 3340,
+        "positives": 846,
+        "auroc": 0.4677201643281938,
+        "separability": 0.5322798356718061,
+        "cohensD": -0.11746098466108984,
+        "mutualInformationBits": 0.004143938936634542
+      },
+      "objectiveBestVsRest": {
+        "n": 4000,
+        "positives": 23,
+        "auroc": 0.5213346306479649,
+        "separability": 0.5213346306479649,
+        "cohensD": 0.07855656100841049,
+        "mutualInformationBits": 0.002726599642571101
+      },
+      "threatBestVsRest": {
+        "n": 4000,
+        "positives": 28,
+        "auroc": 0.42760034527406127,
+        "separability": 0.5723996547259387,
+        "cohensD": -0.2651410411980075,
+        "mutualInformationBits": 0.000927473400604499
+      }
+    },
+    "objective.criticalEntityCount": {
+      "nexusVsResource": {
+        "n": 3340,
+        "positives": 846,
+        "auroc": 0.5005625795052334,
+        "separability": 0.5005625795052334,
+        "cohensD": 0.0025368623203258544,
+        "mutualInformationBits": 8.784169150131472e-7
+      },
+      "objectiveBestVsRest": {
+        "n": 4000,
+        "positives": 23,
+        "auroc": 0.5661630462113675,
+        "separability": 0.5661630462113675,
+        "cohensD": 0.3010087446242508,
+        "mutualInformationBits": 0.0004308345008094425
+      },
+      "threatBestVsRest": {
+        "n": 4000,
+        "positives": 28,
+        "auroc": 0.5060422960725075,
+        "separability": 0.5060422960725075,
+        "cohensD": 0.02748237814363604,
+        "mutualInformationBits": 0.000003825094248299159
+      }
+    },
+    "spatial.actorX": {
+      "nexusVsResource": {
+        "n": 3340,
+        "positives": 846,
+        "auroc": 0.5199718094111446,
+        "separability": 0.5199718094111446,
+        "cohensD": 0.09787406389670825,
+        "mutualInformationBits": 0.00480458942679125
+      },
+      "objectiveBestVsRest": {
+        "n": 4000,
+        "positives": 23,
+        "auroc": 0.541707207748904,
+        "separability": 0.541707207748904,
+        "cohensD": 0.14210413971280292,
+        "mutualInformationBits": 0.00147878201711528
+      },
+      "threatBestVsRest": {
+        "n": 4000,
+        "positives": 28,
+        "auroc": 0.4296549057689541,
+        "separability": 0.570345094231046,
+        "cohensD": -0.23096142159589747,
+        "mutualInformationBits": 0.001955220872281484
+      }
+    },
+    "spatial.actorY": {
+      "nexusVsResource": {
+        "n": 3340,
+        "positives": 846,
+        "auroc": 0.46693032545248075,
+        "separability": 0.5330696745475192,
+        "cohensD": -0.12869330654308703,
+        "mutualInformationBits": 0.005895594786758123
+      },
+      "objectiveBestVsRest": {
+        "n": 4000,
+        "positives": 23,
+        "auroc": 0.45861529883788305,
+        "separability": 0.5413847011621169,
+        "cohensD": -0.16375316993007655,
+        "mutualInformationBits": 0.0019384235826297096
+      },
+      "threatBestVsRest": {
+        "n": 4000,
+        "positives": 28,
+        "auroc": 0.42139170622931954,
+        "separability": 0.5786082937706805,
+        "cohensD": -0.252947053647477,
+        "mutualInformationBits": 0.0008952404928805202
+      }
+    },
+    "temporal.historyLength": {
+      "nexusVsResource": {
+        "n": 3285,
+        "positives": 833,
+        "auroc": 0.39012913485133044,
+        "separability": 0.6098708651486695,
+        "cohensD": -0.33161936078043797,
+        "mutualInformationBits": 0.02929611208285992
+      },
+      "objectiveBestVsRest": {
+        "n": 3909,
+        "positives": 20,
+        "auroc": 0.4718436616096683,
+        "separability": 0.5281563383903317,
+        "cohensD": -0.10010649884247115,
+        "mutualInformationBits": 0.00003931989686758404
+      },
+      "threatBestVsRest": {
+        "n": 3909,
+        "positives": 8,
+        "auroc": 0.10397974878236349,
+        "separability": 0.8960202512176365,
+        "cohensD": -1.716991713946552,
+        "mutualInformationBits": 0.0044715846536868935
+      }
+    },
+    "temporal.primaryNetChange": {
+      "nexusVsResource": {
+        "n": 3285,
+        "positives": 833,
+        "auroc": 0.4798784929958933,
+        "separability": 0.5201215070041068,
+        "cohensD": -0.05172730262604584,
+        "mutualInformationBits": 0.007885872951104817
+      },
+      "objectiveBestVsRest": {
+        "n": 3909,
+        "positives": 20,
+        "auroc": 0.4915273849318591,
+        "separability": 0.5084726150681409,
+        "cohensD": -0.03182458839458988,
+        "mutualInformationBits": 0.001015061809860992
+      },
+      "threatBestVsRest": {
+        "n": 3909,
+        "positives": 8,
+        "auroc": 0.6317290438349141,
+        "separability": 0.6317290438349141,
+        "cohensD": 0.48944320384593615,
+        "mutualInformationBits": 0.0022542249913574948
+      }
+    },
+    "temporal.primaryRecentChange": {
+      "nexusVsResource": {
+        "n": 3285,
+        "positives": 833,
+        "auroc": 0.45974254302047085,
+        "separability": 0.5402574569795291,
+        "cohensD": -0.18263736262210734,
+        "mutualInformationBits": 0.007694065951930153
+      },
+      "objectiveBestVsRest": {
+        "n": 3909,
+        "positives": 20,
+        "auroc": 0.49591154538441756,
+        "separability": 0.5040884546155824,
+        "cohensD": 0.04906068843144854,
+        "mutualInformationBits": 0.0012756668267449134
+      },
+      "threatBestVsRest": {
+        "n": 3909,
+        "positives": 8,
+        "auroc": 0.4739489874391182,
+        "separability": 0.5260510125608818,
+        "cohensD": 0.12775101437860684,
+        "mutualInformationBits": 0.0007499548803955173
+      }
+    },
+    "temporal.primaryMeanAbsChange": {
+      "nexusVsResource": {
+        "n": 3285,
+        "positives": 833,
+        "auroc": 0.4918272366042665,
+        "separability": 0.5081727633957335,
+        "cohensD": -0.05762802559308279,
+        "mutualInformationBits": 0.007788803055110547
+      },
+      "objectiveBestVsRest": {
+        "n": 3909,
+        "positives": 20,
+        "auroc": 0.5455194137310363,
+        "separability": 0.5455194137310363,
+        "cohensD": 0.18046306632409914,
+        "mutualInformationBits": 0.000632325015794332
+      },
+      "threatBestVsRest": {
+        "n": 3909,
+        "positives": 8,
+        "auroc": 0.5073378620866444,
+        "separability": 0.5073378620866444,
+        "cohensD": 0.08141076546549293,
+        "mutualInformationBits": 0.002679532260045186
+      }
+    }
+  },
+  "fieldSelection": [
+    {
+      "fieldId": "risk.threatRelationCount",
+      "candidateName": "activeThreatCount",
+      "accepted": false,
+      "reason": "NO_MEASURABLE_INCREMENT_ON_DEV",
+      "foldDeltas": [
+        -0.00007041846624977754,
+        -0.0001216108452950504
+      ],
+      "meanDelta": -0.00009601465577241397
+    },
+    {
+      "fieldId": "risk.hostileAliveCount",
+      "candidateName": "activeThreatCount (alive)",
+      "accepted": false,
+      "reason": "STRUCTURALLY_REDUNDANT",
+      "detail": "identical to CORE feature relational.hostileEntityCount"
+    },
+    {
+      "fieldId": "risk.maxThreatPressure",
+      "candidateName": "maxThreatSeverity",
+      "accepted": false,
+      "reason": "NO_MEASURABLE_INCREMENT_ON_DEV",
+      "foldDeltas": [
+        0.00002347282208314816,
+        -0.0004904306220095966
+      ],
+      "meanDelta": -0.00023347889996322424
+    },
+    {
+      "fieldId": "risk.coveredThreatCount",
+      "candidateName": "coveredThreatCount",
+      "accepted": false,
+      "reason": "STRUCTURALLY_REDUNDANT",
+      "detail": "identical to the CORE identity relational.threatenedEntityCount - relational.uncoveredThreatenedCount"
+    },
+    {
+      "fieldId": "risk.threatCoverageRatio",
+      "candidateName": "threatCoverageRatio",
+      "accepted": false,
+      "reason": "NOT_USABLE_WITHOUT_IMPUTATION",
+      "statuses": [
+        "AVAILABLE",
+        "NOT_APPLICABLE"
+      ]
+    },
+    {
+      "fieldId": "risk.threatenedCriticalCount",
+      "candidateName": "objectiveExposure",
+      "accepted": false,
+      "reason": "NO_MEASURABLE_INCREMENT_ON_DEV",
+      "foldDeltas": [
+        -0.0008071039593234852,
+        0.0008811802232854271
+      ],
+      "meanDelta": 0.000037038131980970945
+    },
+    {
+      "fieldId": "risk.threatenedDependencyCount",
+      "candidateName": "dependencyExposure",
+      "accepted": false,
+      "reason": "NO_MEASURABLE_INCREMENT_ON_DEV",
+      "foldDeltas": [
+        -0.001448092562365555,
+        -0.0024142743221691187
+      ],
+      "meanDelta": -0.0019311834422673368
+    },
+    {
+      "fieldId": "risk.threatenedCivilianCount",
+      "candidateName": "civilianExposure",
+      "accepted": false,
+      "reason": "STRUCTURALLY_REDUNDANT",
+      "detail": "identical to CORE feature relational.unresolvedDependencyCount"
+    },
+    {
+      "fieldId": "risk.actorHealth",
+      "candidateName": "resourceExposure (actor)",
+      "accepted": false,
+      "reason": "NO_MEASURABLE_INCREMENT_ON_DEV",
+      "foldDeltas": [
+        0.00004333444076898285,
+        0.000019936204146753234
+      ],
+      "meanDelta": 0.00003163532245786804
+    },
+    {
+      "fieldId": "risk.civilianHealthTotal",
+      "candidateName": "civilianExposure (health)",
+      "accepted": false,
+      "reason": "NO_MEASURABLE_INCREMENT_ON_DEV",
+      "foldDeltas": [
+        -0.0019933842753759867,
+        0.0007216905901116233
+      ],
+      "meanDelta": -0.0006358468426321817
+    },
+    {
+      "fieldId": "risk.retreatOptionCount",
+      "candidateName": "escapeOptionCount",
+      "accepted": true,
+      "reason": "INCREMENTAL_INFORMATION_ON_DEV",
+      "foldDeltas": [
+        0.004306360051423486,
+        0.013582535885167446
+      ],
+      "meanDelta": 0.008944447968295466
+    },
+    {
+      "fieldId": "risk.unavailableEntityCount",
+      "candidateName": "actionConstraintCount",
+      "accepted": false,
+      "reason": "NO_MEASURABLE_INCREMENT_ON_DEV",
+      "foldDeltas": [
+        -0.0012332259602190199,
+        -0.0023763955342902543
+      ],
+      "meanDelta": -0.001804810747254637
+    }
+  ],
+  "acceptedFields": [
+    "risk.retreatOptionCount"
+  ],
+  "rejectedFields": [
+    {
+      "fieldId": "risk.threatRelationCount",
+      "candidateName": "activeThreatCount",
+      "accepted": false,
+      "reason": "NO_MEASURABLE_INCREMENT_ON_DEV",
+      "foldDeltas": [
+        -0.00007041846624977754,
+        -0.0001216108452950504
+      ],
+      "meanDelta": -0.00009601465577241397
+    },
+    {
+      "fieldId": "risk.hostileAliveCount",
+      "candidateName": "activeThreatCount (alive)",
+      "accepted": false,
+      "reason": "STRUCTURALLY_REDUNDANT",
+      "detail": "identical to CORE feature relational.hostileEntityCount"
+    },
+    {
+      "fieldId": "risk.maxThreatPressure",
+      "candidateName": "maxThreatSeverity",
+      "accepted": false,
+      "reason": "NO_MEASURABLE_INCREMENT_ON_DEV",
+      "foldDeltas": [
+        0.00002347282208314816,
+        -0.0004904306220095966
+      ],
+      "meanDelta": -0.00023347889996322424
+    },
+    {
+      "fieldId": "risk.coveredThreatCount",
+      "candidateName": "coveredThreatCount",
+      "accepted": false,
+      "reason": "STRUCTURALLY_REDUNDANT",
+      "detail": "identical to the CORE identity relational.threatenedEntityCount - relational.uncoveredThreatenedCount"
+    },
+    {
+      "fieldId": "risk.threatCoverageRatio",
+      "candidateName": "threatCoverageRatio",
+      "accepted": false,
+      "reason": "NOT_USABLE_WITHOUT_IMPUTATION",
+      "statuses": [
+        "AVAILABLE",
+        "NOT_APPLICABLE"
+      ]
+    },
+    {
+      "fieldId": "risk.threatenedCriticalCount",
+      "candidateName": "objectiveExposure",
+      "accepted": false,
+      "reason": "NO_MEASURABLE_INCREMENT_ON_DEV",
+      "foldDeltas": [
+        -0.0008071039593234852,
+        0.0008811802232854271
+      ],
+      "meanDelta": 0.000037038131980970945
+    },
+    {
+      "fieldId": "risk.threatenedDependencyCount",
+      "candidateName": "dependencyExposure",
+      "accepted": false,
+      "reason": "NO_MEASURABLE_INCREMENT_ON_DEV",
+      "foldDeltas": [
+        -0.001448092562365555,
+        -0.0024142743221691187
+      ],
+      "meanDelta": -0.0019311834422673368
+    },
+    {
+      "fieldId": "risk.threatenedCivilianCount",
+      "candidateName": "civilianExposure",
+      "accepted": false,
+      "reason": "STRUCTURALLY_REDUNDANT",
+      "detail": "identical to CORE feature relational.unresolvedDependencyCount"
+    },
+    {
+      "fieldId": "risk.actorHealth",
+      "candidateName": "resourceExposure (actor)",
+      "accepted": false,
+      "reason": "NO_MEASURABLE_INCREMENT_ON_DEV",
+      "foldDeltas": [
+        0.00004333444076898285,
+        0.000019936204146753234
+      ],
+      "meanDelta": 0.00003163532245786804
+    },
+    {
+      "fieldId": "risk.civilianHealthTotal",
+      "candidateName": "civilianExposure (health)",
+      "accepted": false,
+      "reason": "NO_MEASURABLE_INCREMENT_ON_DEV",
+      "foldDeltas": [
+        -0.0019933842753759867,
+        0.0007216905901116233
+      ],
+      "meanDelta": -0.0006358468426321817
+    },
+    {
+      "fieldId": "risk.unavailableEntityCount",
+      "candidateName": "actionConstraintCount",
+      "accepted": false,
+      "reason": "NO_MEASURABLE_INCREMENT_ON_DEV",
+      "foldDeltas": [
+        -0.0012332259602190199,
+        -0.0023763955342902543
+      ],
+      "meanDelta": -0.001804810747254637
+    }
+  ],
+  "informationGain": {
+    "riskAccepted": {
+      "label": "CORE_PLUS_ACCEPTED_RISK",
+      "keys": [
+        "risk.retreatOptionCount"
+      ],
+      "usableKeys": [
+        "risk.retreatOptionCount"
+      ],
+      "evaluated": true,
+      "coreAuroc": 0.7877918027960474,
+      "enrichedAuroc": 0.7981181036117281,
+      "delta": 0.010326300815680645,
+      "ci95": [
+        0.0045329087151030345,
+        0.016056159787305457
+      ],
+      "coreLogloss": 0.45626783790216496,
+      "enrichedLogloss": 0.449015013443906,
+      "significant": true,
+      "material": false
+    },
+    "riskAllUsable": {
+      "label": "CORE_PLUS_ALL_USABLE_RISK",
+      "keys": [
+        "risk.threatRelationCount",
+        "risk.maxThreatPressure",
+        "risk.threatenedCriticalCount",
+        "risk.threatenedDependencyCount",
+        "risk.actorHealth",
+        "risk.civilianHealthTotal",
+        "risk.retreatOptionCount",
+        "risk.unavailableEntityCount"
+      ],
+      "usableKeys": [
+        "risk.threatRelationCount",
+        "risk.maxThreatPressure",
+        "risk.threatenedCriticalCount",
+        "risk.threatenedDependencyCount",
+        "risk.actorHealth",
+        "risk.civilianHealthTotal",
+        "risk.retreatOptionCount",
+        "risk.unavailableEntityCount"
+      ],
+      "evaluated": true,
+      "coreAuroc": 0.7877918027960474,
+      "enrichedAuroc": 0.7942385949065935,
+      "delta": 0.006446792110546107,
+      "ci95": [
+        0.000163441953733523,
+        0.01314891140959118
+      ],
+      "coreLogloss": 0.45626783790216496,
+      "enrichedLogloss": 0.4505060776501319,
+      "significant": true,
+      "material": false
+    },
+    "groups": {
+      "OBJECTIVE": {
+        "label": "CORE_PLUS_OBJECTIVE",
+        "keys": [
+          "objective.shortfall",
+          "objective.criticalEntityCount"
+        ],
+        "usableKeys": [
+          "objective.shortfall",
+          "objective.criticalEntityCount"
+        ],
+        "evaluated": true,
+        "coreAuroc": 0.7877918027960474,
+        "enrichedAuroc": 0.7875507477945373,
+        "delta": -0.0002410550015101709,
+        "ci95": [
+          -0.0015889707532640296,
+          0.0009700353087126468
+        ],
+        "coreLogloss": 0.45626783790216496,
+        "enrichedLogloss": 0.4566752402695268,
+        "significant": false,
+        "material": false
+      },
+      "SPATIAL": {
+        "label": "CORE_PLUS_SPATIAL",
+        "keys": [
+          "spatial.actorX",
+          "spatial.actorY"
+        ],
+        "usableKeys": [
+          "spatial.actorX",
+          "spatial.actorY"
+        ],
+        "evaluated": true,
+        "coreAuroc": 0.7877918027960474,
+        "enrichedAuroc": 0.7939013084617927,
+        "delta": 0.006109505665745307,
+        "ci95": [
+          0.0017508982035927545,
+          0.009845222582429924
+        ],
+        "coreLogloss": 0.45626783790216496,
+        "enrichedLogloss": 0.45364540836432987,
+        "significant": true,
+        "material": false
+      },
+      "TEMPORAL": {
+        "label": "CORE_PLUS_TEMPORAL",
+        "keys": [
+          "temporal.historyLength",
+          "temporal.primaryNetChange",
+          "temporal.primaryRecentChange",
+          "temporal.primaryMeanAbsChange"
+        ],
+        "usableKeys": [],
+        "evaluated": false,
+        "reason": "no usable field without imputation"
+      }
+    },
+    "multinomial": {
+      "riskKeysUsed": "ACCEPTED",
+      "coreCalLoss": 0.5341126127737527,
+      "enrichedCalLoss": 0.5280967474550243,
+      "promoted": false,
+      "isRouterCandidate": false,
+      "delta": -0.006015865318728331
+    }
+  },
+  "representation": {
+    "RISK_STATE_GAP": "INFORMATION_PRESENT_BUT_NOT_MATERIAL",
+    "SPATIAL_STATE_GAP": {
+      "DO_POLICY_ERRORS_DEPEND_ON_SPATIAL_CONFIGURATION": "ACTOR_POSITION_ADDS_INFORMATION",
+      "entityLayout": "SPATIAL_STATE_EVIDENCE_UNAVAILABLE — the governed observation exposes only actor position, not entity positions",
+      "subsystemAdded": false
+    },
+    "TEMPORAL_INFORMATION_LIKELY_REQUIRED": "UNKNOWN",
+    "temporalHistoryCoverage": 0.976875,
+    "OBJECTIVE_STRUCTURE_GAP": {
+      "independentInformation": "NOT_SUPPORTED",
+      "errorConcentrationMultiObjective": 1.067081067081067
+    }
+  },
+  "enrichedContract": {
+    "contractId": "SENTINEL_DEPLOYABLE_FEATURE_CONTRACT_V1_1",
+    "extends": {
+      "id": "SENTINEL_DEPLOYABLE_FEATURE_CONTRACT_V1",
+      "hash": "5b0a631ece4c9304d4ee8b5298dadb7a2f8a5f18ac39a358216eb14d074ec926",
+      "modified": false
+    },
+    "riskStateContract": {
+      "id": "SENTINEL_DECISION_RISK_STATE_V1",
+      "hash": "5b4d74b30f6a29e84dcab4d7736e108d20887e8acebf8ca01a9142cc3c38d17a"
+    },
+    "delta": {
+      "added": [
+        "risk.retreatOptionCount"
+      ],
+      "removed": [],
+      "coreFeaturesUnchanged": 30
+    },
+    "featureIds": [
+      "actionSurface.actionTypeEntropy",
+      "actionSurface.distinctMoveDirections",
+      "actionSurface.legalActionCount",
+      "actionSurface.moveCount",
+      "context.decisionHorizonRemaining",
+      "context.entityCount",
+      "context.objectiveCount",
+      "context.relationCount",
+      "context.tickProgress",
+      "relational.abstains",
+      "relational.actionTargetedEntityCount",
+      "relational.bottleneckCount",
+      "relational.confidence",
+      "relational.criticalDependencyCount",
+      "relational.cycleDetected",
+      "relational.cycleNodeCount",
+      "relational.edgeCount",
+      "relational.graphDensity",
+      "relational.hostileEntityCount",
+      "relational.isolatedEntityCount",
+      "relational.isolatedRatio",
+      "relational.maxCentrality",
+      "relational.maxDegree",
+      "relational.maxDependencyDepth",
+      "relational.maxDependents",
+      "relational.threatenedEntityCount",
+      "relational.uncoveredThreatenedCount",
+      "relational.unresolvedDependencyCount",
+      "relational.unsupportedThreatenedCount",
+      "resources.actorEnergy",
+      "risk.retreatOptionCount"
+    ],
+    "featureCount": 31,
+    "status": "CANDIDATE_REQUIRES_FRESH_CONFIRMATION",
+    "hash": "673df1d184a3897ed3fef56221d998b1d0bc16d38b08f2d4caf77a977f976634"
+  },
+  "leakage": {
+    "static": {
+      "FUTURE_OUTCOME": [],
+      "LABEL": [],
+      "REGRET": [],
+      "SEALED_SPLIT": [],
+      "HIDDEN_WORLD_STATE": []
+    },
+    "dynamic": {
+      "sampled": 24,
+      "futureOutcomeInvariant": true,
+      "hiddenWorldStateBypass": false,
+      "degradationEligible": 15,
+      "degradationVisible": 15,
+      "observationDegradationVisible": true,
+      "absentRelationshipsYieldUnknown": true
+    },
+    "auditCorrection": {
+      "removedPattern": "/state_t\\+1/",
+      "reason": "matched documentation string in prohibitedSources, not code access",
+      "addedPatterns": [
+        "/\\bnextState\\b/",
+        "/\\.resultingStateHash\\b/",
+        "/\\.transition\\(/"
+      ],
+      "contractModified": false
+    }
+  },
+  "classification": {
+    "applicable": [
+      "B_CURRENT_RISK_SIGNALS_INSUFFICIENT"
+    ],
+    "primaryResult": "B_CURRENT_RISK_SIGNALS_INSUFFICIENT",
+    "secondaryResult": null
+  },
+  "scope": {
+    "priorOwnersUnchanged": true,
+    "stage3f6aHashMatchesAccepted": true,
+    "stage3f6tHashMatchesAccepted": true,
+    "coreContractSourceUnchanged": true,
+    "coreContractHashUnchanged": true,
+    "stage3f6tRouterSourceUnchanged": true,
+    "newOwners": [
+      "src/stage3f/decision-risk-state-v1.js",
+      "scripts/generate-stage3f6w-risk-evidence.mjs",
+      "scripts/certify-stage3f6w-risk-state.mjs",
+      "tests/stage3f6w-risk-state.test.js"
+    ],
+    "existingOwnersModified": [
+      "package.json",
+      ".gitignore"
+    ],
+    "policiesAdded": false,
+    "routerTuned": false,
+    "largerModelTrained": false,
+    "worldStateExpanded": false
+  },
+  "checks": {
+    "STAGE3F6A_INTACT": true,
+    "STAGE3F6T_INTACT": true,
+    "PRIOR_OWNERS_UNCHANGED": true,
+    "CORE_CONTRACT_UNCHANGED": true,
+    "DATA_INTEGRITY": true,
+    "NO_SEALED_SPLIT_ACCESS": true,
+    "RISK_CONTRACT_DETERMINISTIC": true,
+    "NO_FUTURE_OUTCOME_ACCESS": true,
+    "NO_LABEL_ACCESS": true,
+    "NO_REGRET_ACCESS": true,
+    "NO_SEALED_METADATA_ACCESS": true,
+    "NO_HIDDEN_WORLD_STATE_ACCESS": true,
+    "FUTURE_OUTCOME_INVARIANT": true,
+    "OBSERVATION_DEGRADATION_VISIBLE": true,
+    "MISSING_IS_NOT_ZERO": true,
+    "PLAN_WRITTEN_BEFORE_METRICS": true,
+    "INCREMENTAL_TEST_DETERMINISTIC": true,
+    "REJECTED_FIELDS_RECORDED": true,
+    "FORENSICS_ON_FROZEN_ROUTER": true,
+    "NO_ROUTER_PROMOTION": true,
+    "TESTS_PASS": true
+  },
+  "tests": {
+    "pass": 17,
+    "fail": 0,
+    "skipped": 0
+  },
+  "sourceHashes": {
+    "src/stage3f/decision-risk-state-v1.js": "97e6f73b312e2d5428ccdee6e4a3c3853d1f38ff1922a2126ded398907af0792",
+    "scripts/generate-stage3f6w-risk-evidence.mjs": "659b37746ad06d4c64a18d7f4f1a01a829c26cbd73e3e350fcd7dce7383a5e5f",
+    "scripts/certify-stage3f6w-risk-state.mjs": "f66d17089e746f5fce8c802893dbd58f63b6f68ef3d458a844238b48b0ac689b",
+    "tests/stage3f6w-risk-state.test.js": "84b2c797916218637b4f8ba5afd581d99a687befb6ff65fdfb40375017a91537"
+  },
+  "authority": {
+    "tier": "R0",
+    "canDispatch": false,
+    "canMutateLiveWorld": false,
+    "onlineLearningEnabled": false
+  },
+  "learning": {
+    "diagnosticModelsOnly": true,
+    "routerCandidatePromoted": false,
+    "largerModelTrained": false,
+    "onlineLearningEnabled": false
+  },
+  "roadmap": {
+    "FRESH_CONFIRMATORY_SPLITS_REQUIRED": false,
+    "READY_FOR_ROUTER_RETRAIN": false,
+    "READY_FOR_STAGE3G": false
+  },
+  "certificationHash": "7c5db9fbdd1d02bbee76ee12a0a5bf8a6e98c5a53adb510b0ed7e57ebd295fb6"
+}
