@@ -1,0 +1,675 @@
+{
+  "schemaVersion": 1,
+  "stage": "STAGE_3F_6_P_1_NEXUS_RISK_RESPONSE_REMEDIATION",
+  "phase": "CANDIDATE_FREEZE",
+  "devEvidence": {
+    "contentHash": "c8ceec2ed7bcac4323097fe65a0427bfa7054208b215612e8dd195b65c4fb0a4",
+    "contentVerified": true,
+    "rows": 4000,
+    "v1FidelityMismatches": 0
+  },
+  "historicalV1": {
+    "id": "NEXUS_SELECTOR_V1",
+    "source": "src/lab/stage3c-learned-nexus.js",
+    "sourceHash": "aae20d1d40b1cc5f93b5b46dd700f1ef1f66ea0ec44507efc4c4cfecba198574",
+    "modified": false
+  },
+  "candidate": {
+    "id": "NEXUS_SELECTOR_V2_CANDIDATE",
+    "source": "src/stage3f/nexus-selector-v2-candidate.js",
+    "sourceHash": "965cb36f003045a5f80e0e9860c03b99db0d427bdd1768d5fc33ec72e2581577",
+    "candidateHash": "8c658bfa41c5e84137bd78de6f70a6f802c3754936ffbc995ce866da9e22a900",
+    "remediation": {
+      "candidateId": "NEXUS_SELECTOR_V2_CANDIDATE",
+      "basedOn": "NEXUS_SELECTOR_V1",
+      "hypothesis": "NEXUS_ACTION_TYPE_MAPPING_IS_TOO_PROTECT_BIASED",
+      "change": "PROTECT is admissible only when its target has at least one observed threatens edge; inadmissible PROTECT actions are removed before the unchanged V1 ranking",
+      "unchanged": [
+        "Nexus relational diagnosis (evaluateNexus over the full legal surface)",
+        "abstention rule",
+        "threat-driven and structure-driven type orders",
+        "action-identity tie-break",
+        "confidence formula"
+      ],
+      "derivedFrom": "DEV only: PROTECT on an observed-threatened target is optimal far more often than PROTECT on an unthreatened one",
+      "decisionTimeInputs": [
+        "canonicalState.entities[id,kind,hostile,critical]",
+        "canonicalState.relationships[from,to,kind]",
+        "legalActions[actionId,actionType,targetEntityId]"
+      ],
+      "prohibited": [
+        "simulator",
+        "rollout",
+        "future state",
+        "outcome",
+        "regret",
+        "optimal set",
+        "labels",
+        "new features"
+      ],
+      "authority": {
+        "tier": "R0",
+        "canDispatch": false,
+        "canMutateLiveWorld": false,
+        "promotedToLiveRuntime": false,
+        "candidateOnly": true
+      }
+    },
+    "gateDisabledEquivalenceMismatchesOnDev": 0
+  },
+  "primaryHypothesis": "NEXUS_ACTION_TYPE_MAPPING_IS_TOO_PROTECT_BIASED",
+  "devAudit": {
+    "decisionTable": [
+      {
+        "branch": "V1-0",
+        "RELATIONAL_SIGNAL": "any",
+        "THREAT_SIGNAL": "any",
+        "DEPENDENCY_SIGNAL": "any",
+        "TARGET_TYPE": "not considered",
+        "ACTION_TYPE_SELECTED": "none",
+        "TIE_BREAK_RULE": "n/a",
+        "ABSTENTION_RULE": "ABSTAIN NO_LEGAL_ACTIONS when the legal action surface is empty"
+      },
+      {
+        "branch": "V1-1",
+        "RELATIONAL_SIGNAL": "no structural code (CRITICAL_DEPENDENCY, BOTTLENECK, UNSUPPORTED_THREAT, CYCLE_DETECTED), or NO_RELATIONSHIPS, or EMPTY_GRAPH",
+        "THREAT_SIGNAL": "any",
+        "DEPENDENCY_SIGNAL": "any",
+        "TARGET_TYPE": "not considered",
+        "ACTION_TYPE_SELECTED": "none",
+        "TIE_BREAK_RULE": "n/a",
+        "ABSTENTION_RULE": "ABSTAIN NO_RELATIONAL_STRUCTURE_TO_READ"
+      },
+      {
+        "branch": "V1-2 THREAT_DRIVEN",
+        "RELATIONAL_SIGNAL": "structural code present",
+        "THREAT_SIGNAL": "UNSUPPORTED_THREAT or UNCOVERED_THREAT present",
+        "DEPENDENCY_SIGNAL": "not consulted beyond the structural gate",
+        "TARGET_TYPE": "not considered: any legal target, threatened or not",
+        "ACTION_TYPE_SELECTED": "first legal type in REINFORCE > PROTECT > REPAIR > SUBSTITUTE > ATTACK > TRANSFER > COLLECT > MOVE > RETREAT > WAIT; unlisted types (RESTORE, BYPASS, BUILD) rank last",
+        "TIE_BREAK_RULE": "lexicographically smallest action identity within the type",
+        "ABSTENTION_RULE": "never abstains past V1-1"
+      },
+      {
+        "branch": "V1-3 STRUCTURE_DRIVEN",
+        "RELATIONAL_SIGNAL": "structural code present",
+        "THREAT_SIGNAL": "no UNSUPPORTED/UNCOVERED threat",
+        "DEPENDENCY_SIGNAL": "not consulted beyond the structural gate",
+        "TARGET_TYPE": "not considered",
+        "ACTION_TYPE_SELECTED": "first legal type in REPAIR > SUBSTITUTE > REINFORCE > TRANSFER > COLLECT > PROTECT > MOVE > ATTACK > RETREAT > WAIT; unlisted types (RESTORE, BYPASS, BUILD) rank last",
+        "TIE_BREAK_RULE": "lexicographically smallest action identity within the type",
+        "ABSTENTION_RULE": "never abstains past V1-1"
+      }
+    ],
+    "decisionPaths": {
+      "THREAT_DRIVEN_PREFERENCE": 2113,
+      "STRUCTURE_DRIVEN_PREFERENCE": 1224,
+      "NO_RELATIONAL_STRUCTURE_TO_READ": 663
+    },
+    "legalTypeAvailability": {
+      "MOVE": 1,
+      "PROTECT": 1,
+      "RETREAT": 0.40675,
+      "WAIT": 1,
+      "RESTORE": 0.048,
+      "BYPASS": 0.0135,
+      "ATTACK": 0.01525,
+      "REINFORCE": 0.0805,
+      "REPAIR": 0.0805
+    },
+    "protectDominance": {
+      "explanation": "PROTECT is legal whenever energy >= 1 and any non-hostile unprotected entity is adjacent (legal in every DEV row). The only types ranked above it (REINFORCE in the threat order; REPAIR, SUBSTITUTE, REINFORCE, TRANSFER, COLLECT in the structure order) are rarely legal, SUBSTITUTE is not a Forge action type at all, and the target is never consulted, so the first legal PROTECT by action identity wins.",
+      "v1ProtectRate": 0.9172909799220857,
+      "protectShareOfV1Regret": 0.9523113716742907,
+      "protectTargetEvidence": {
+        "threatenedTarget": {
+          "n": 79,
+          "pOptimal": 0.4810126582278481,
+          "meanRegret": 25.341772151898734
+        },
+        "unthreatenedTarget": {
+          "n": 4674,
+          "pOptimal": 0.1735130509199829,
+          "meanRegret": 53.78754813863928
+        }
+      }
+    },
+    "confusion": {
+      "rows": "V1 selected type",
+      "columns": "primary optimal type (most optimal branches, ties alphabetical)",
+      "matrix": {
+        "PROTECT": {
+          "MOVE": 2888,
+          "PROTECT": 130,
+          "TRANSFER": 0,
+          "BUILD": 0,
+          "COLLECT": 0,
+          "RETREAT": 0,
+          "REINFORCE": 0,
+          "REPAIR": 0,
+          "RESTORE": 31,
+          "BYPASS": 12,
+          "ATTACK": 0,
+          "WAIT": 0,
+          "OTHER": 0
+        },
+        "REINFORCE": {
+          "MOVE": 53,
+          "PROTECT": 42,
+          "TRANSFER": 0,
+          "BUILD": 0,
+          "COLLECT": 0,
+          "RETREAT": 0,
+          "REINFORCE": 25,
+          "REPAIR": 48,
+          "RESTORE": 1,
+          "BYPASS": 0,
+          "ATTACK": 0,
+          "WAIT": 0,
+          "OTHER": 0
+        },
+        "REPAIR": {
+          "MOVE": 41,
+          "PROTECT": 23,
+          "TRANSFER": 0,
+          "BUILD": 0,
+          "COLLECT": 0,
+          "RETREAT": 0,
+          "REINFORCE": 23,
+          "REPAIR": 19,
+          "RESTORE": 0,
+          "BYPASS": 1,
+          "ATTACK": 0,
+          "WAIT": 0,
+          "OTHER": 0
+        }
+      }
+    },
+    "actionTypeTable": {
+      "MOVE": {
+        "count": 0,
+        "precision": null,
+        "recall": 0,
+        "meanRegret": null,
+        "optimalPresentShare": 0.8972130656278094
+      },
+      "PROTECT": {
+        "count": 3061,
+        "precision": 0.2306435805292388,
+        "recall": 0.9121447028423773,
+        "meanRegret": 52.16432538386148,
+        "optimalPresentShare": 0.2319448606532814
+      },
+      "TRANSFER": {
+        "count": 0,
+        "precision": null,
+        "recall": null,
+        "meanRegret": null,
+        "optimalPresentShare": 0
+      },
+      "BUILD": {
+        "count": 0,
+        "precision": null,
+        "recall": null,
+        "meanRegret": null,
+        "optimalPresentShare": 0
+      },
+      "COLLECT": {
+        "count": 0,
+        "precision": null,
+        "recall": null,
+        "meanRegret": null,
+        "optimalPresentShare": 0
+      },
+      "RETREAT": {
+        "count": 0,
+        "precision": null,
+        "recall": 0,
+        "meanRegret": null,
+        "optimalPresentShare": 0.1848966137249026
+      },
+      "REINFORCE": {
+        "count": 169,
+        "precision": 0.23076923076923078,
+        "recall": 0.5342465753424658,
+        "meanRegret": 31.83431952662722,
+        "optimalPresentShare": 0.021875936469883128
+      },
+      "REPAIR": {
+        "count": 107,
+        "precision": 0.6074766355140186,
+        "recall": 0.38922155688622756,
+        "meanRegret": 24.44859813084112,
+        "optimalPresentShare": 0.05004495055439017
+      },
+      "RESTORE": {
+        "count": 0,
+        "precision": null,
+        "recall": 0,
+        "meanRegret": null,
+        "optimalPresentShare": 0.012586155229247827
+      },
+      "BYPASS": {
+        "count": 0,
+        "precision": null,
+        "recall": 0,
+        "meanRegret": null,
+        "optimalPresentShare": 0.003895714713814804
+      },
+      "ATTACK": {
+        "count": 0,
+        "precision": null,
+        "recall": null,
+        "meanRegret": null,
+        "optimalPresentShare": 0
+      },
+      "WAIT": {
+        "count": 0,
+        "precision": null,
+        "recall": 0,
+        "meanRegret": null,
+        "optimalPresentShare": 0.02427329937069224
+      },
+      "OTHER": {
+        "count": 0,
+        "precision": null,
+        "recall": null,
+        "meanRegret": null,
+        "optimalPresentShare": 0
+      }
+    },
+    "targetMapping": {
+      "P_CORRECT_TARGET_GIVEN_CORRECT_TYPE": 0.9358024691358025,
+      "correctTypeN": 810,
+      "typeAlignment": 0.2427329937069224,
+      "exactAccuracy": 0.22715013485166316,
+      "whereProtectOnThreatenedTargetIsLegal": {
+        "correctTypeN": 25,
+        "P_CORRECT_TARGET_GIVEN_CORRECT_TYPE": 0.04
+      }
+    },
+    "regimes": [
+      {
+        "regime": "NO_HOSTILE",
+        "n": 1349,
+        "optimalTypeShare": {
+          "MOVE": 0.9021497405485545,
+          "PROTECT": 0.22312824314306895,
+          "RETREAT": 0,
+          "REPAIR": 0.05263157894736842,
+          "REINFORCE": 0.026686434395848776
+        },
+        "v1": {
+          "accuracy": 0.24388435878428466,
+          "meanRegret": 50.005930318754636,
+          "protectRate": 0.9147516679021498
+        },
+        "v2": {
+          "accuracy": 0.6938472942920682,
+          "meanRegret": 19.45218680504077
+        }
+      },
+      {
+        "regime": "HOSTILE_PRESENT",
+        "n": 1988,
+        "optimalTypeShare": {
+          "MOVE": 0.8938631790744467,
+          "PROTECT": 0.23792756539235413,
+          "RETREAT": 0.3103621730382294,
+          "REPAIR": 0.0482897384305835,
+          "REINFORCE": 0.018611670020120725
+        },
+        "v1": {
+          "accuracy": 0.21579476861167002,
+          "meanRegret": 50.408953722334005,
+          "protectRate": 0.9190140845070423
+        },
+        "v2": {
+          "accuracy": 0.6343058350100603,
+          "meanRegret": 23.243963782696177
+        }
+      },
+      {
+        "regime": "UNSUPPORTED_THREATENED_ENTITY",
+        "n": 1661,
+        "optimalTypeShare": {
+          "MOVE": 0.8910295003010235,
+          "PROTECT": 0.24443106562311862,
+          "RETREAT": 0.27874774232390126,
+          "REPAIR": 0.051173991571342566,
+          "REINFORCE": 0.018663455749548464
+        },
+        "v1": {
+          "accuracy": 0.22335942203491874,
+          "meanRegret": 49.335942203491875,
+          "protectRate": 0.9163154726068633
+        },
+        "v2": {
+          "accuracy": 0.6435881998795906,
+          "meanRegret": 22.98735701384708
+        }
+      },
+      {
+        "regime": "SUPPORTED_THREATENED_ENTITY",
+        "n": 531,
+        "optimalTypeShare": {
+          "MOVE": 0.8945386064030132,
+          "PROTECT": 0.2297551789077213,
+          "RETREAT": 0.3258003766478343,
+          "REPAIR": 0.03954802259887006,
+          "REINFORCE": 0.02071563088512241
+        },
+        "v1": {
+          "accuracy": 0.2033898305084746,
+          "meanRegret": 52.89453860640301,
+          "protectRate": 0.9227871939736346
+        },
+        "v2": {
+          "accuracy": 0.591337099811676,
+          "meanRegret": 24.406779661016948
+        }
+      },
+      {
+        "regime": "DEPENDENCY_BOTTLENECK",
+        "n": 2720,
+        "optimalTypeShare": {
+          "MOVE": 0.8966911764705883,
+          "PROTECT": 0.2349264705882353,
+          "RETREAT": 0.18823529411764706,
+          "REPAIR": 0.04926470588235294,
+          "REINFORCE": 0.02022058823529412
+        },
+        "v1": {
+          "accuracy": 0.2286764705882353,
+          "meanRegret": 50.454779411764704,
+          "protectRate": 0.9165441176470588
+        },
+        "v2": {
+          "accuracy": 0.6558823529411765,
+          "meanRegret": 21.590441176470588
+        }
+      },
+      {
+        "regime": "CRITICAL_ENTITY_THREATENED",
+        "n": 634,
+        "optimalTypeShare": {
+          "MOVE": 0.8927444794952681,
+          "PROTECT": 0.22712933753943218,
+          "RETREAT": 0.2555205047318612,
+          "REPAIR": 0.04889589905362776,
+          "REINFORCE": 0.014195583596214511
+        },
+        "v1": {
+          "accuracy": 0.19242902208201892,
+          "meanRegret": 47.07413249211356,
+          "protectRate": 0.9211356466876972
+        },
+        "v2": {
+          "accuracy": 0.5457413249211357,
+          "meanRegret": 31.167192429022084
+        }
+      },
+      {
+        "regime": "ACTOR_DIRECTLY_THREATENED",
+        "n": 0,
+        "optimalTypeShare": {
+          "MOVE": null,
+          "PROTECT": null,
+          "RETREAT": null,
+          "REPAIR": null,
+          "REINFORCE": null
+        },
+        "v1": {
+          "accuracy": null,
+          "meanRegret": null,
+          "protectRate": null
+        },
+        "v2": {
+          "accuracy": null,
+          "meanRegret": null
+        }
+      },
+      {
+        "regime": "PROTECT_ON_THREATENED_TARGET_LEGAL",
+        "n": 79,
+        "optimalTypeShare": {
+          "MOVE": 0.379746835443038,
+          "PROTECT": 0.5063291139240507,
+          "RETREAT": 0.1518987341772152,
+          "REPAIR": 0.10126582278481013,
+          "REINFORCE": 0
+        },
+        "v1": {
+          "accuracy": 0.012658227848101266,
+          "meanRegret": 44.43037974683544,
+          "protectRate": 0.6962025316455697
+        },
+        "v2": {
+          "accuracy": 0.31645569620253167,
+          "meanRegret": 29.227848101265824
+        }
+      }
+    ],
+    "HOSTILE_REGIME_EFFECT": {
+      "HOSTILE_PRESENT": 50.408953722334005,
+      "NO_HOSTILE": 50.005930318754636,
+      "delta": 0.4030234035793683
+    },
+    "DEPENDENCY_REGIME_EFFECT": {
+      "DEPENDENCY_BOTTLENECK": 50.454779411764704,
+      "NO_BOTTLENECK": 49.3257698541329,
+      "delta": 1.1290095576318038
+    },
+    "representationAudit": {
+      "relationalTargetedActionCeiling": {
+        "meanRegret": 48.109979023074615,
+        "accuracy": 0.2783937668564579,
+        "improvementOverV1": 2.1360503446209194
+      },
+      "moveOptimalShare": 0.8972130656278094,
+      "moveDirectionRegretSpread": 101.93527120167815,
+      "allMoveDirectionsEquivalentShare": 0,
+      "nexusInputsCarryPosition": false,
+      "HOLDS": true
+    }
+  },
+  "devComparison": {
+    "n": 4000,
+    "nexusProposingN": 3337,
+    "coverageMismatch": 0,
+    "V1": {
+      "n": 3337,
+      "accuracy": 0.22715013485166316,
+      "meanRegret": 50.246029367695535,
+      "medianRegret": 44,
+      "p95Regret": 143,
+      "p99Regret": 203,
+      "worstRegret": 434,
+      "pRegretAbove100": 0.1486364998501648,
+      "coverage": 0.83425,
+      "PROTECT_RATE": 0.9172909799220857,
+      "MOVE_RATE": 0
+    },
+    "V2": {
+      "n": 3337,
+      "accuracy": 0.6583757866347019,
+      "meanRegret": 21.711117770452503,
+      "medianRegret": 0,
+      "p95Regret": 122,
+      "p99Regret": 196,
+      "worstRegret": 434,
+      "pRegretAbove100": 0.07102187593646989,
+      "coverage": 0.83425,
+      "PROTECT_RATE": 0.01648186994306263,
+      "MOVE_RATE": 0.8846269103985616
+    },
+    "bootstrap": {
+      "n": 3337,
+      "accuracyDifference": 0.4312256517830387,
+      "accuracyCi95": [
+        0.4111477374887624,
+        0.45040455498951154
+      ],
+      "regretDifference": -28.53491159724303,
+      "regretCi95": [
+        -30.505543901708123,
+        -26.649086005394068
+      ],
+      "episodesImproved": 1869,
+      "episodesWorsened": 604
+    },
+    "materiality": {
+      "regretDelta": -28.53491159724303,
+      "accuracyDelta": 0.43122565178303873,
+      "regretCi95": [
+        -30.505543901708123,
+        -26.649086005394068
+      ],
+      "accuracyCi95": [
+        0.4111477374887624,
+        0.45040455498951154
+      ],
+      "regretOk": true,
+      "accuracyOk": true,
+      "ciOk": true,
+      "p95Ok": true,
+      "tailOk": true,
+      "MATERIAL": true
+    },
+    "whenV1Best": {
+      "n": 1448,
+      "V1": {
+        "n": 1448,
+        "accuracy": 0.5234806629834254,
+        "meanRegret": 29.310082872928177,
+        "medianRegret": 0,
+        "p95Regret": 126,
+        "p99Regret": 186,
+        "worstRegret": 434,
+        "pRegretAbove100": 0.08632596685082873
+      },
+      "V2": {
+        "n": 1448,
+        "accuracy": 0.48204419889502764,
+        "meanRegret": 38.09599447513812,
+        "medianRegret": 4,
+        "p95Regret": 156,
+        "p99Regret": 250,
+        "worstRegret": 434,
+        "pRegretAbove100": 0.13466850828729282
+      }
+    },
+    "whenV2Best": {
+      "n": 3121,
+      "V2": {
+        "n": 3121,
+        "accuracy": 0.7039410445370073,
+        "meanRegret": 18.649150913168857,
+        "medianRegret": 0,
+        "p95Regret": 114,
+        "p99Regret": 189,
+        "worstRegret": 434,
+        "pRegretAbove100": 0.06151874399231016
+      },
+      "absolute": {
+        "n": 3121,
+        "P_LE_5": 0.7209227811598846,
+        "P_LE_10": 0.7475168215315604,
+        "P_LE_25": 0.7965395706504326,
+        "P_GT_50": 0.13777635373277797,
+        "P_GT_100": 0.06151874399231016
+      }
+    },
+    "distinctiveness": {
+      "V2_RESOURCE_AGREEMENT": 0.7704525022475277,
+      "V2_GREEDY_AGREEMENT": 0.04285286185196284,
+      "V1_RESOURCE_AGREEMENT": 0,
+      "V1_GREEDY_AGREEMENT": 0.8216961342523225,
+      "V1_V2_AGREEMENT": 0.08390770152831885,
+      "HIGH_RESOURCE_COLLINEARITY": true,
+      "POLICY_COLLAPSE": false
+    },
+    "policySet": {
+      "ORACLE_WITH_V1": {
+        "accuracy": 0.70225,
+        "meanRegret": 16.51125
+      },
+      "ORACLE_WITH_V2": {
+        "accuracy": 0.692,
+        "meanRegret": 19.20675
+      },
+      "ORACLE_WITHOUT_NEXUS": {
+        "accuracy": 0.63,
+        "meanRegret": 25.15025
+      },
+      "ORACLE_REGRET_DELTA": 2.695499999999999,
+      "ORACLE_ACCURACY_DELTA": -0.010250000000000092,
+      "VALUE_PRESERVED": false
+    }
+  },
+  "evaluationPlan": {
+    "data": {
+      "design": "DEV only",
+      "evaluation": "CAL exactly once, after this freeze",
+      "exposedAndUnused": [
+        "prior HOLDOUT",
+        "prior OOD"
+      ]
+    },
+    "comparisonBasis": "paired over episodes where NEXUS V1 proposes; V2 keeps V1 abstention so coverage is identical",
+    "bestAvailable": "minimum-regret set among RESOURCE, NEXUS, OBJECTIVE, THREAT (ties kept); V1-best uses V1 in the set, V2-best uses V2",
+    "oracle": "minimum regret among proposing members of the policy set; RANDOM_LEGAL control action when none proposes",
+    "bootstrap": {
+      "resamples": 1000,
+      "seed": "3647",
+      "method": "paired, policy-router-v1#pairedBootstrap"
+    },
+    "materiality": {
+      "meanRegretDeltaAtMost": -5,
+      "accuracyDeltaAtLeast": 0.05,
+      "regretCiUpperBelow": 0,
+      "accuracyCiLowerAbove": 0,
+      "p95NotWorse": true,
+      "pRegretAbove100NotWorse": true
+    },
+    "distinctiveness": {
+      "highResourceCollinearityAtLeast": 0.5,
+      "policyCollapseAtLeast": 0.8,
+      "rolePreserved": "V2-RESOURCE agreement < 0.5 (V2 must not make the same decision as RESOURCE on most of its decisions)"
+    },
+    "policySetValue": {
+      "preserved": "ORACLE_WITH_V2 mean regret <= ORACLE_WITH_V1 mean regret"
+    },
+    "absoluteQuality": {
+      "keepGradeWhenBestMeanRegretAtMost": 15,
+      "source": "Stage 3F.6-P KEEP bar"
+    },
+    "representationAudit": {
+      "relationalCeilingImprovementBelow": 5,
+      "moveOptimalShareAtLeast": 0.5,
+      "moveDirectionSpreadAtLeast": 25,
+      "meaning": "even perfect choice among entity-targeted actions is not material, and the available gain lies in MOVE, whose value depends on a direction NEXUS inputs cannot observe"
+    },
+    "classificationPrecedence": [
+      "F_INSUFFICIENT_EVIDENCE if CAL NEXUS-proposing n < 200",
+      "C_PROTECT_BIAS_NOT_PRIMARY_CAUSE if PROTECT carries < 0.5 of V1 DEV regret",
+      "A_NEXUS_ACTION_MAPPING_MATERIALLY_IMPROVED if CAL material AND role preserved AND policy-set value preserved AND V2-best mean regret <= 15",
+      "B_NEXUS_IMPROVED_BUT_STILL_ABSOLUTELY_WEAK if CAL material AND role preserved AND policy-set value preserved",
+      "D_REMEDIATION_REQUIRES_MISSING_REPRESENTATION if the DEV representation audit holds",
+      "E_NO_SAFE_MINIMAL_REMEDIATION_FOUND otherwise"
+    ],
+    "readiness": {
+      "READY_FOR_FRESH_NEXUS_CONFIRMATION": "primary result A or B",
+      "NEXUS_REMEDIATION_BLOCKED_BY_REPRESENTATION": "primary result D",
+      "READY_FOR_ROUTER_RETRAIN": false,
+      "READY_FOR_STAGE3G": false
+    }
+  },
+  "explorationDisclosure": [
+    "Before this freeze, DEV-only exploratory scripts (not certification inputs) screened six gate/fallback variants: PROTECT/REINFORCE/REPAIR gated on threatened targets with MOVE fallback; the same gated on threatened-or-critical-or-dependency targets; RETREAT-first fallback under hostiles; WAIT fallback; and PROTECT-only gating.",
+    "Every variant that cut PROTECT improved standalone DEV accuracy and regret, and every one raised RESOURCE agreement (0.60-0.80) and worsened the DEV policy-set oracle. WAIT and RETREAT fallbacks were worse standalone.",
+    "The frozen candidate is the most literal minimal change: V1 ranking unchanged, PROTECT admissible only on an observed-threatened target.",
+    "The distinctiveness and policy-set-value rules below were written after these DEV values were seen; CAL is the first evaluation of them."
+  ],
+  "freezeHash": "fb649ba894f5f51b1e9acb7523ea23c7b6feb1dbe00673fe6ab147df11550369"
+}
