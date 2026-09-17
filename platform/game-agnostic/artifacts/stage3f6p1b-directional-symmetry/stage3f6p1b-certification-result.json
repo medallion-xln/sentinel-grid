@@ -1,0 +1,1834 @@
+{
+  "schemaVersion": 1,
+  "stage": "STAGE_3F_6_P_1B_FORGE_DIRECTIONAL_SYMMETRY_AUDIT",
+  "status": "PASS",
+  "planHash": "bfd852968c8f286d9789d8c25456ca89668fa9be5894dc8382c6c735adcaa467",
+  "transformContractHash": "003d6b3a8af8aa14209234d7d98e0ec2d6ae7c694ab6777153347680093dff25",
+  "CONFIRMATORY_CLAIMS": false,
+  "integrity": {
+    "planFileMatchesPlan": true,
+    "evidenceBoundToPlan": true,
+    "symmetryEvidence": true,
+    "spatialEvidenceReadOnly": true,
+    "corpusSource": true,
+    "allDevEvaluated": true,
+    "devOnly": true
+  },
+  "vocabulary": {
+    "directions": {
+      "EAST": {
+        "delta": [
+          1,
+          0
+        ],
+        "actionKey": "3491a81feab1f17f0aac1fa3b0fc2b69cd8595cc9a5f635d58e2e57e613720fd",
+        "identityRule": "forgeActionKey = sha256(stableStringify([actionType, actorId, target, parameters]))",
+        "actionIdConstruction": "descriptor { actionId: \"forge/move\", actionType: \"MOVE\", actorId: \"actor\", target: null, parameters: { direction: \"EAST\" } }"
+      },
+      "NORTH": {
+        "delta": [
+          0,
+          -1
+        ],
+        "actionKey": "c5c63c2235923e69b9a51ba0d68ff02723836f9a261af5f24a9e641f7d5b92f3",
+        "identityRule": "forgeActionKey = sha256(stableStringify([actionType, actorId, target, parameters]))",
+        "actionIdConstruction": "descriptor { actionId: \"forge/move\", actionType: \"MOVE\", actorId: \"actor\", target: null, parameters: { direction: \"NORTH\" } }"
+      },
+      "SOUTH": {
+        "delta": [
+          0,
+          1
+        ],
+        "actionKey": "821eee491a4c63c483194165489b380b0d5fe37168db0463542da02b9728e915",
+        "identityRule": "forgeActionKey = sha256(stableStringify([actionType, actorId, target, parameters]))",
+        "actionIdConstruction": "descriptor { actionId: \"forge/move\", actionType: \"MOVE\", actorId: \"actor\", target: null, parameters: { direction: \"SOUTH\" } }"
+      },
+      "WEST": {
+        "delta": [
+          -1,
+          0
+        ],
+        "actionKey": "ba6697ebb6faae60f0eaa3d9559267c8982dda584ecbccca9a83021ee56c131b",
+        "identityRule": "forgeActionKey = sha256(stableStringify([actionType, actorId, target, parameters]))",
+        "actionIdConstruction": "descriptor { actionId: \"forge/move\", actionType: \"MOVE\", actorId: \"actor\", target: null, parameters: { direction: \"WEST\" } }"
+      }
+    },
+    "enumerationOrder": "kernel legalActions iterates Object.keys(FORGE_MOVE_DIRECTIONS).sort() = EAST, NORTH, SOUTH, WEST, and only if the cell is unblocked",
+    "legalActionInsertionOrder": "MOVE, RESTORE, PROTECT, REINFORCE/REPAIR, BYPASS, BUILD, TRANSFER, COLLECT, ATTACK, RETREAT, WAIT; then the whole list is re-sorted by action key",
+    "hashOrderInteraction": "every consumer that breaks ties by action identity sees MOVE keys in hash order, which is fixed across worlds because the key depends only on type, actor id (\"actor\"), null target and direction name",
+    "keyOrder": [
+      "EAST",
+      "SOUTH",
+      "WEST",
+      "NORTH"
+    ],
+    "actorIdAlwaysActor": true,
+    "LOWEST_IDENTITY_MOVE_IS_EAST_WHEN_LEGAL": true,
+    "proof": "sha256 key order EAST < SOUTH < WEST < NORTH holds for every world (actor id is always \"actor\"); every DEV row's lowest-identity MOVE is the first legal direction in that order"
+  },
+  "distributions": {
+    "energyBandCuts": [
+      28,
+      36
+    ],
+    "overall": {
+      "rows": 4000,
+      "moveOptimalRows": 3599,
+      "P_OPTIMAL_ALL_ROWS": {
+        "EAST": 0.62875,
+        "NORTH": 0.053,
+        "SOUTH": 0.07575,
+        "WEST": 0.18
+      },
+      "P_OPTIMAL_MOVE_OPTIMAL_ROWS": {
+        "EAST": 0.6988052236732426,
+        "NORTH": 0.05890525145873854,
+        "SOUTH": 0.08419005279244235,
+        "WEST": 0.2000555709919422
+      },
+      "P_LEGAL": {
+        "EAST": 0.90225,
+        "NORTH": 0.90725,
+        "SOUTH": 0.9085,
+        "WEST": 0.89975
+      },
+      "P_OPTIMAL_GIVEN_LEGAL": {
+        "EAST": 0.6968689387642006,
+        "NORTH": 0.058418297051529344,
+        "SOUTH": 0.08337919647771051,
+        "WEST": 0.2000555709919422
+      },
+      "optimalMoveDirectionCountPerMoveOptimalRow": {
+        "1": 3458,
+        "2": 131,
+        "3": 10
+      },
+      "coOptimalDirectionSets": {
+        "SOUTH+WEST": 31,
+        "NORTH+WEST": 36,
+        "EAST+SOUTH": 15,
+        "EAST+WEST": 32,
+        "EAST+SOUTH+WEST": 6,
+        "EAST+NORTH": 17,
+        "EAST+NORTH+WEST": 4
+      },
+      "P_MULTIPLE_DIRECTIONS_OPTIMAL": 0.03917754931925535
+    },
+    "byGroup": {
+      "scenarioFamily_roles": {
+        "bare": {
+          "rows": 680,
+          "moveOptimalRows": 615,
+          "P_OPTIMAL_MOVE_OPTIMAL_ROWS": {
+            "EAST": 0.7333333333333333,
+            "NORTH": 0.05040650406504065,
+            "SOUTH": 0.05203252032520325,
+            "WEST": 0.19349593495934958
+          },
+          "P_OPTIMAL_GIVEN_LEGAL": {
+            "EAST": 0.7529215358931552,
+            "NORTH": 0.05057096247960848,
+            "SOUTH": 0.051036682615629984,
+            "WEST": 0.1925566343042071
+          }
+        },
+        "defended": {
+          "rows": 665,
+          "moveOptimalRows": 598,
+          "P_OPTIMAL_MOVE_OPTIMAL_ROWS": {
+            "EAST": 0.705685618729097,
+            "NORTH": 0.07023411371237458,
+            "SOUTH": 0.07525083612040134,
+            "WEST": 0.20234113712374582
+          },
+          "P_OPTIMAL_GIVEN_LEGAL": {
+            "EAST": 0.6895424836601307,
+            "NORTH": 0.06818181818181818,
+            "SOUTH": 0.07364975450081833,
+            "WEST": 0.20166666666666666
+          }
+        },
+        "industrial": {
+          "rows": 636,
+          "moveOptimalRows": 582,
+          "P_OPTIMAL_MOVE_OPTIMAL_ROWS": {
+            "EAST": 0.6838487972508591,
+            "NORTH": 0.05154639175257732,
+            "SOUTH": 0.0979381443298969,
+            "WEST": 0.21305841924398625
+          },
+          "P_OPTIMAL_GIVEN_LEGAL": {
+            "EAST": 0.6958041958041958,
+            "NORTH": 0.05244755244755245,
+            "SOUTH": 0.10178571428571428,
+            "WEST": 0.21908127208480566
+          }
+        },
+        "populated": {
+          "rows": 683,
+          "moveOptimalRows": 602,
+          "P_OPTIMAL_MOVE_OPTIMAL_ROWS": {
+            "EAST": 0.6910299003322259,
+            "NORTH": 0.08139534883720931,
+            "SOUTH": 0.09634551495016612,
+            "WEST": 0.17940199335548174
+          },
+          "P_OPTIMAL_GIVEN_LEGAL": {
+            "EAST": 0.6656,
+            "NORTH": 0.07980456026058631,
+            "SOUTH": 0.0932475884244373,
+            "WEST": 0.18030050083472454
+          }
+        },
+        "redundant": {
+          "rows": 694,
+          "moveOptimalRows": 623,
+          "P_OPTIMAL_MOVE_OPTIMAL_ROWS": {
+            "EAST": 0.6918138041733547,
+            "NORTH": 0.03691813804173355,
+            "SOUTH": 0.08346709470304976,
+            "WEST": 0.22150882825040127
+          },
+          "P_OPTIMAL_GIVEN_LEGAL": {
+            "EAST": 0.6962843295638126,
+            "NORTH": 0.03685897435897436,
+            "SOUTH": 0.0804953560371517,
+            "WEST": 0.2169811320754717
+          }
+        },
+        "scarce": {
+          "rows": 642,
+          "moveOptimalRows": 579,
+          "P_OPTIMAL_MOVE_OPTIMAL_ROWS": {
+            "EAST": 0.6856649395509499,
+            "NORTH": 0.06390328151986183,
+            "SOUTH": 0.10189982728842832,
+            "WEST": 0.18998272884283246
+          },
+          "P_OPTIMAL_GIVEN_LEGAL": {
+            "EAST": 0.6821305841924399,
+            "NORTH": 0.06271186440677966,
+            "SOUTH": 0.10387323943661972,
+            "WEST": 0.1896551724137931
+          }
+        }
+      },
+      "level": {
+        "0": {
+          "rows": 675,
+          "moveOptimalRows": 587,
+          "P_OPTIMAL_MOVE_OPTIMAL_ROWS": {
+            "EAST": 0.565587734241908,
+            "NORTH": 0.10221465076660988,
+            "SOUTH": 0.13458262350936967,
+            "WEST": 0.2606473594548552
+          },
+          "P_OPTIMAL_GIVEN_LEGAL": {
+            "EAST": 0.5804195804195804,
+            "NORTH": 0.10327022375215146,
+            "SOUTH": 0.1359724612736661,
+            "WEST": 0.26153846153846155
+          }
+        },
+        "1": {
+          "rows": 644,
+          "moveOptimalRows": 558,
+          "P_OPTIMAL_MOVE_OPTIMAL_ROWS": {
+            "EAST": 0.5985663082437276,
+            "NORTH": 0.10215053763440861,
+            "SOUTH": 0.12724014336917563,
+            "WEST": 0.22401433691756273
+          },
+          "P_OPTIMAL_GIVEN_LEGAL": {
+            "EAST": 0.5788561525129983,
+            "NORTH": 0.09844559585492228,
+            "SOUTH": 0.12283737024221453,
+            "WEST": 0.22361359570661896
+          }
+        },
+        "2": {
+          "rows": 678,
+          "moveOptimalRows": 609,
+          "P_OPTIMAL_MOVE_OPTIMAL_ROWS": {
+            "EAST": 0.6962233169129721,
+            "NORTH": 0.06896551724137931,
+            "SOUTH": 0.09359605911330049,
+            "WEST": 0.18719211822660098
+          },
+          "P_OPTIMAL_GIVEN_LEGAL": {
+            "EAST": 0.6871961102106969,
+            "NORTH": 0.06885245901639345,
+            "SOUTH": 0.09076433121019108,
+            "WEST": 0.1859706362153344
+          }
+        },
+        "3": {
+          "rows": 649,
+          "moveOptimalRows": 587,
+          "P_OPTIMAL_MOVE_OPTIMAL_ROWS": {
+            "EAST": 0.737649063032368,
+            "NORTH": 0.04258943781942078,
+            "SOUTH": 0.07666098807495741,
+            "WEST": 0.1890971039182283
+          },
+          "P_OPTIMAL_GIVEN_LEGAL": {
+            "EAST": 0.7240802675585284,
+            "NORTH": 0.04194630872483222,
+            "SOUTH": 0.07575757575757576,
+            "WEST": 0.18561872909698995
+          }
+        },
+        "4": {
+          "rows": 693,
+          "moveOptimalRows": 642,
+          "P_OPTIMAL_MOVE_OPTIMAL_ROWS": {
+            "EAST": 0.7772585669781932,
+            "NORTH": 0.028037383177570093,
+            "SOUTH": 0.045171339563862926,
+            "WEST": 0.16978193146417445
+          },
+          "P_OPTIMAL_GIVEN_LEGAL": {
+            "EAST": 0.7908082408874801,
+            "NORTH": 0.028125,
+            "SOUTH": 0.04538341158059468,
+            "WEST": 0.17165354330708663
+          }
+        },
+        "5": {
+          "rows": 661,
+          "moveOptimalRows": 616,
+          "P_OPTIMAL_MOVE_OPTIMAL_ROWS": {
+            "EAST": 0.8003246753246753,
+            "NORTH": 0.016233766233766232,
+            "SOUTH": 0.03571428571428571,
+            "WEST": 0.17532467532467533
+          },
+          "P_OPTIMAL_GIVEN_LEGAL": {
+            "EAST": 0.8029315960912052,
+            "NORTH": 0.016051364365971106,
+            "SOUTH": 0.035830618892508145,
+            "WEST": 0.17733990147783252
+          }
+        }
+      },
+      "topology": {
+        "bridge": {
+          "rows": 249,
+          "moveOptimalRows": 224,
+          "P_OPTIMAL_MOVE_OPTIMAL_ROWS": {
+            "EAST": 0.6473214285714286,
+            "NORTH": 0.07142857142857142,
+            "SOUTH": 0.12053571428571429,
+            "WEST": 0.20089285714285715
+          },
+          "P_OPTIMAL_GIVEN_LEGAL": {
+            "EAST": 0.6473214285714286,
+            "NORTH": 0.06986899563318777,
+            "SOUTH": 0.12217194570135746,
+            "WEST": 0.20179372197309417
+          }
+        },
+        "chain": {
+          "rows": 260,
+          "moveOptimalRows": 234,
+          "P_OPTIMAL_MOVE_OPTIMAL_ROWS": {
+            "EAST": 0.7307692307692307,
+            "NORTH": 0.06837606837606838,
+            "SOUTH": 0.0811965811965812,
+            "WEST": 0.16666666666666666
+          },
+          "P_OPTIMAL_GIVEN_LEGAL": {
+            "EAST": 0.7339055793991416,
+            "NORTH": 0.06926406926406926,
+            "SOUTH": 0.0811965811965812,
+            "WEST": 0.16810344827586207
+          }
+        },
+        "contested_bottleneck": {
+          "rows": 267,
+          "moveOptimalRows": 238,
+          "P_OPTIMAL_MOVE_OPTIMAL_ROWS": {
+            "EAST": 0.6722689075630253,
+            "NORTH": 0.07563025210084033,
+            "SOUTH": 0.08823529411764706,
+            "WEST": 0.226890756302521
+          },
+          "P_OPTIMAL_GIVEN_LEGAL": {
+            "EAST": 0.6837606837606838,
+            "NORTH": 0.07627118644067797,
+            "SOUTH": 0.0846774193548387,
+            "WEST": 0.22040816326530613
+          }
+        },
+        "disconnected_islands": {
+          "rows": 244,
+          "moveOptimalRows": 212,
+          "P_OPTIMAL_MOVE_OPTIMAL_ROWS": {
+            "EAST": 0.6745283018867925,
+            "NORTH": 0.0660377358490566,
+            "SOUTH": 0.08018867924528301,
+            "WEST": 0.22641509433962265
+          },
+          "P_OPTIMAL_GIVEN_LEGAL": {
+            "EAST": 0.6620370370370371,
+            "NORTH": 0.06451612903225806,
+            "SOUTH": 0.07488986784140969,
+            "WEST": 0.22119815668202766
+          }
+        },
+        "hub_and_spoke": {
+          "rows": 268,
+          "moveOptimalRows": 242,
+          "P_OPTIMAL_MOVE_OPTIMAL_ROWS": {
+            "EAST": 0.6859504132231405,
+            "NORTH": 0.07851239669421488,
+            "SOUTH": 0.08677685950413223,
+            "WEST": 0.2024793388429752
+          },
+          "P_OPTIMAL_GIVEN_LEGAL": {
+            "EAST": 0.6720647773279352,
+            "NORTH": 0.07661290322580645,
+            "SOUTH": 0.08433734939759036,
+            "WEST": 0.20416666666666666
+          }
+        },
+        "layered_infrastructure": {
+          "rows": 257,
+          "moveOptimalRows": 231,
+          "P_OPTIMAL_MOVE_OPTIMAL_ROWS": {
+            "EAST": 0.7316017316017316,
+            "NORTH": 0.05627705627705628,
+            "SOUTH": 0.0735930735930736,
+            "WEST": 0.17316017316017315
+          },
+          "P_OPTIMAL_GIVEN_LEGAL": {
+            "EAST": 0.728448275862069,
+            "NORTH": 0.05508474576271186,
+            "SOUTH": 0.07296137339055794,
+            "WEST": 0.17391304347826086
+          }
+        },
+        "mesh": {
+          "rows": 286,
+          "moveOptimalRows": 250,
+          "P_OPTIMAL_MOVE_OPTIMAL_ROWS": {
+            "EAST": 0.74,
+            "NORTH": 0.04,
+            "SOUTH": 0.076,
+            "WEST": 0.168
+          },
+          "P_OPTIMAL_GIVEN_LEGAL": {
+            "EAST": 0.6826568265682657,
+            "NORTH": 0.038314176245210725,
+            "SOUTH": 0.07392996108949416,
+            "WEST": 0.16342412451361868
+          }
+        },
+        "multi_cycle": {
+          "rows": 300,
+          "moveOptimalRows": 267,
+          "P_OPTIMAL_MOVE_OPTIMAL_ROWS": {
+            "EAST": 0.704119850187266,
+            "NORTH": 0.052434456928838954,
+            "SOUTH": 0.07116104868913857,
+            "WEST": 0.20973782771535582
+          },
+          "P_OPTIMAL_GIVEN_LEGAL": {
+            "EAST": 0.7121212121212122,
+            "NORTH": 0.05166051660516605,
+            "SOUTH": 0.07011070110701106,
+            "WEST": 0.20216606498194944
+          }
+        },
+        "multi_settlement": {
+          "rows": 263,
+          "moveOptimalRows": 233,
+          "P_OPTIMAL_MOVE_OPTIMAL_ROWS": {
+            "EAST": 0.6609442060085837,
+            "NORTH": 0.03862660944206009,
+            "SOUTH": 0.0815450643776824,
+            "WEST": 0.2532188841201717
+          },
+          "P_OPTIMAL_GIVEN_LEGAL": {
+            "EAST": 0.6581196581196581,
+            "NORTH": 0.036885245901639344,
+            "SOUTH": 0.0794979079497908,
+            "WEST": 0.24481327800829875
+          }
+        },
+        "nested_dependency": {
+          "rows": 253,
+          "moveOptimalRows": 232,
+          "P_OPTIMAL_MOVE_OPTIMAL_ROWS": {
+            "EAST": 0.6982758620689655,
+            "NORTH": 0.04741379310344827,
+            "SOUTH": 0.1206896551724138,
+            "WEST": 0.1810344827586207
+          },
+          "P_OPTIMAL_GIVEN_LEGAL": {
+            "EAST": 0.7136563876651982,
+            "NORTH": 0.04741379310344827,
+            "SOUTH": 0.12612612612612611,
+            "WEST": 0.1891891891891892
+          }
+        },
+        "parallel_dependency": {
+          "rows": 300,
+          "moveOptimalRows": 276,
+          "P_OPTIMAL_MOVE_OPTIMAL_ROWS": {
+            "EAST": 0.6485507246376812,
+            "NORTH": 0.06521739130434782,
+            "SOUTH": 0.10507246376811594,
+            "WEST": 0.22826086956521738
+          },
+          "P_OPTIMAL_GIVEN_LEGAL": {
+            "EAST": 0.6754716981132075,
+            "NORTH": 0.06451612903225806,
+            "SOUTH": 0.10820895522388059,
+            "WEST": 0.23684210526315788
+          }
+        },
+        "redundant_network": {
+          "rows": 287,
+          "moveOptimalRows": 266,
+          "P_OPTIMAL_MOVE_OPTIMAL_ROWS": {
+            "EAST": 0.7142857142857143,
+            "NORTH": 0.06015037593984962,
+            "SOUTH": 0.07142857142857142,
+            "WEST": 0.18421052631578946
+          },
+          "P_OPTIMAL_GIVEN_LEGAL": {
+            "EAST": 0.7307692307692307,
+            "NORTH": 0.0622568093385214,
+            "SOUTH": 0.07364341085271318,
+            "WEST": 0.18773946360153257
+          }
+        },
+        "ring": {
+          "rows": 265,
+          "moveOptimalRows": 245,
+          "P_OPTIMAL_MOVE_OPTIMAL_ROWS": {
+            "EAST": 0.7183673469387755,
+            "NORTH": 0.04897959183673469,
+            "SOUTH": 0.07346938775510205,
+            "WEST": 0.18775510204081633
+          },
+          "P_OPTIMAL_GIVEN_LEGAL": {
+            "EAST": 0.7521367521367521,
+            "NORTH": 0.05106382978723404,
+            "SOUTH": 0.07258064516129033,
+            "WEST": 0.18775510204081633
+          }
+        },
+        "star": {
+          "rows": 266,
+          "moveOptimalRows": 246,
+          "P_OPTIMAL_MOVE_OPTIMAL_ROWS": {
+            "EAST": 0.7113821138211383,
+            "NORTH": 0.052845528455284556,
+            "SOUTH": 0.06504065040650407,
+            "WEST": 0.21951219512195122
+          },
+          "P_OPTIMAL_GIVEN_LEGAL": {
+            "EAST": 0.7142857142857143,
+            "NORTH": 0.05439330543933055,
+            "SOUTH": 0.06751054852320675,
+            "WEST": 0.225
+          }
+        },
+        "tree": {
+          "rows": 235,
+          "moveOptimalRows": 203,
+          "P_OPTIMAL_MOVE_OPTIMAL_ROWS": {
+            "EAST": 0.7487684729064039,
+            "NORTH": 0.06403940886699508,
+            "SOUTH": 0.06896551724137931,
+            "WEST": 0.16748768472906403
+          },
+          "P_OPTIMAL_GIVEN_LEGAL": {
+            "EAST": 0.6816143497757847,
+            "NORTH": 0.06074766355140187,
+            "SOUTH": 0.06306306306306306,
+            "WEST": 0.16748768472906403
+          }
+        }
+      },
+      "objective": {
+        "multi_target_delivery": {
+          "rows": 492,
+          "moveOptimalRows": 454,
+          "P_OPTIMAL_MOVE_OPTIMAL_ROWS": {
+            "EAST": 0.724669603524229,
+            "NORTH": 0.05506607929515418,
+            "SOUTH": 0.06828193832599119,
+            "WEST": 0.19823788546255505
+          },
+          "P_OPTIMAL_GIVEN_LEGAL": {
+            "EAST": 0.732739420935412,
+            "NORTH": 0.05605381165919283,
+            "SOUTH": 0.06950672645739911,
+            "WEST": 0.2073732718894009
+          }
+        },
+        "protect_civilians": {
+          "rows": 506,
+          "moveOptimalRows": 461,
+          "P_OPTIMAL_MOVE_OPTIMAL_ROWS": {
+            "EAST": 0.7114967462039046,
+            "NORTH": 0.04121475054229935,
+            "SOUTH": 0.08459869848156182,
+            "WEST": 0.19739696312364424
+          },
+          "P_OPTIMAL_GIVEN_LEGAL": {
+            "EAST": 0.7084233261339092,
+            "NORTH": 0.04086021505376344,
+            "SOUTH": 0.08496732026143791,
+            "WEST": 0.2
+          }
+        },
+        "reach_target": {
+          "rows": 516,
+          "moveOptimalRows": 455,
+          "P_OPTIMAL_MOVE_OPTIMAL_ROWS": {
+            "EAST": 0.676923076923077,
+            "NORTH": 0.07032967032967033,
+            "SOUTH": 0.10989010989010989,
+            "WEST": 0.17142857142857143
+          },
+          "P_OPTIMAL_GIVEN_LEGAL": {
+            "EAST": 0.6553191489361702,
+            "NORTH": 0.06866952789699571,
+            "SOUTH": 0.10775862068965517,
+            "WEST": 0.16666666666666666
+          }
+        },
+        "repair_and_maintain_redundancy": {
+          "rows": 484,
+          "moveOptimalRows": 437,
+          "P_OPTIMAL_MOVE_OPTIMAL_ROWS": {
+            "EAST": 0.7254004576659039,
+            "NORTH": 0.05034324942791762,
+            "SOUTH": 0.08009153318077804,
+            "WEST": 0.18077803203661327
+          },
+          "P_OPTIMAL_GIVEN_LEGAL": {
+            "EAST": 0.713963963963964,
+            "NORTH": 0.049886621315192746,
+            "SOUTH": 0.07972665148063782,
+            "WEST": 0.18329466357308585
+          }
+        },
+        "restore_and_conserve": {
+          "rows": 472,
+          "moveOptimalRows": 421,
+          "P_OPTIMAL_MOVE_OPTIMAL_ROWS": {
+            "EAST": 0.7387173396674585,
+            "NORTH": 0.0332541567695962,
+            "SOUTH": 0.06413301662707839,
+            "WEST": 0.2042755344418052
+          },
+          "P_OPTIMAL_GIVEN_LEGAL": {
+            "EAST": 0.7334905660377359,
+            "NORTH": 0.0330188679245283,
+            "SOUTH": 0.06338028169014084,
+            "WEST": 0.20093457943925233
+          }
+        },
+        "restore_and_protect": {
+          "rows": 507,
+          "moveOptimalRows": 451,
+          "P_OPTIMAL_MOVE_OPTIMAL_ROWS": {
+            "EAST": 0.6829268292682927,
+            "NORTH": 0.04656319290465632,
+            "SOUTH": 0.09534368070953436,
+            "WEST": 0.2017738359201774
+          },
+          "P_OPTIMAL_GIVEN_LEGAL": {
+            "EAST": 0.6799116997792495,
+            "NORTH": 0.046357615894039736,
+            "SOUTH": 0.09148936170212765,
+            "WEST": 0.19912472647702406
+          }
+        },
+        "restore_infrastructure": {
+          "rows": 491,
+          "moveOptimalRows": 444,
+          "P_OPTIMAL_MOVE_OPTIMAL_ROWS": {
+            "EAST": 0.7184684684684685,
+            "NORTH": 0.060810810810810814,
+            "SOUTH": 0.07657657657657657,
+            "WEST": 0.19369369369369369
+          },
+          "P_OPTIMAL_GIVEN_LEGAL": {
+            "EAST": 0.7152466367713004,
+            "NORTH": 0.060267857142857144,
+            "SOUTH": 0.07657657657657657,
+            "WEST": 0.19724770642201836
+          }
+        },
+        "supply_and_defend": {
+          "rows": 532,
+          "moveOptimalRows": 476,
+          "P_OPTIMAL_MOVE_OPTIMAL_ROWS": {
+            "EAST": 0.6197478991596639,
+            "NORTH": 0.1092436974789916,
+            "SOUTH": 0.09243697478991597,
+            "WEST": 0.25
+          },
+          "P_OPTIMAL_GIVEN_LEGAL": {
+            "EAST": 0.6413043478260869,
+            "NORTH": 0.10699588477366255,
+            "SOUTH": 0.09053497942386832,
+            "WEST": 0.24285714285714285
+          }
+        }
+      },
+      "horizonBand": {
+        "H0": {
+          "rows": 844,
+          "moveOptimalRows": 749,
+          "P_OPTIMAL_MOVE_OPTIMAL_ROWS": {
+            "EAST": 0.7289719626168224,
+            "NORTH": 0.05740987983978638,
+            "SOUTH": 0.06675567423230974,
+            "WEST": 0.1855807743658211
+          },
+          "P_OPTIMAL_GIVEN_LEGAL": {
+            "EAST": 0.7174770039421814,
+            "NORTH": 0.05613577023498695,
+            "SOUTH": 0.06535947712418301,
+            "WEST": 0.18051948051948052
+          }
+        },
+        "H1": {
+          "rows": 780,
+          "moveOptimalRows": 695,
+          "P_OPTIMAL_MOVE_OPTIMAL_ROWS": {
+            "EAST": 0.7266187050359713,
+            "NORTH": 0.051798561151079135,
+            "SOUTH": 0.06762589928057554,
+            "WEST": 0.19280575539568345
+          },
+          "P_OPTIMAL_GIVEN_LEGAL": {
+            "EAST": 0.7173295454545454,
+            "NORTH": 0.05113636363636364,
+            "SOUTH": 0.06545961002785515,
+            "WEST": 0.18873239436619718
+          }
+        },
+        "H2": {
+          "rows": 806,
+          "moveOptimalRows": 754,
+          "P_OPTIMAL_MOVE_OPTIMAL_ROWS": {
+            "EAST": 0.7320954907161804,
+            "NORTH": 0.04907161803713528,
+            "SOUTH": 0.07692307692307693,
+            "WEST": 0.16710875331564987
+          },
+          "P_OPTIMAL_GIVEN_LEGAL": {
+            "EAST": 0.757201646090535,
+            "NORTH": 0.04986522911051213,
+            "SOUTH": 0.07848443843031123,
+            "WEST": 0.17696629213483145
+          }
+        },
+        "H3": {
+          "rows": 771,
+          "moveOptimalRows": 678,
+          "P_OPTIMAL_MOVE_OPTIMAL_ROWS": {
+            "EAST": 0.6887905604719764,
+            "NORTH": 0.06047197640117994,
+            "SOUTH": 0.08849557522123894,
+            "WEST": 0.21238938053097345
+          },
+          "P_OPTIMAL_GIVEN_LEGAL": {
+            "EAST": 0.6729106628242075,
+            "NORTH": 0.059593023255813955,
+            "SOUTH": 0.08595988538681948,
+            "WEST": 0.20719424460431654
+          }
+        },
+        "H4": {
+          "rows": 799,
+          "moveOptimalRows": 723,
+          "P_OPTIMAL_MOVE_OPTIMAL_ROWS": {
+            "EAST": 0.6154910096818811,
+            "NORTH": 0.07607192254495158,
+            "SOUTH": 0.12171507607192254,
+            "WEST": 0.24481327800829875
+          },
+          "P_OPTIMAL_GIVEN_LEGAL": {
+            "EAST": 0.6171983356449375,
+            "NORTH": 0.07544581618655692,
+            "SOUTH": 0.12324929971988796,
+            "WEST": 0.24859550561797752
+          }
+        }
+      },
+      "resourcePressureBand": {
+        "HIGH_ENERGY": {
+          "rows": 1166,
+          "moveOptimalRows": 1014,
+          "P_OPTIMAL_MOVE_OPTIMAL_ROWS": {
+            "EAST": 0.5779092702169625,
+            "NORTH": 0.10552268244575937,
+            "SOUTH": 0.1341222879684418,
+            "WEST": 0.2445759368836292
+          },
+          "P_OPTIMAL_GIVEN_LEGAL": {
+            "EAST": 0.5745098039215686,
+            "NORTH": 0.10388349514563107,
+            "SOUTH": 0.13216715257531583,
+            "WEST": 0.24530168150346193
+          }
+        },
+        "LOW_ENERGY": {
+          "rows": 1655,
+          "moveOptimalRows": 1521,
+          "P_OPTIMAL_MOVE_OPTIMAL_ROWS": {
+            "EAST": 0.7705456936226167,
+            "NORTH": 0.02564102564102564,
+            "SOUTH": 0.04865220249835635,
+            "WEST": 0.1814595660749507
+          },
+          "P_OPTIMAL_GIVEN_LEGAL": {
+            "EAST": 0.776158940397351,
+            "NORTH": 0.025540275049115914,
+            "SOUTH": 0.04884488448844884,
+            "WEST": 0.18229854689564068
+          }
+        },
+        "MID_ENERGY": {
+          "rows": 1179,
+          "moveOptimalRows": 1064,
+          "P_OPTIMAL_MOVE_OPTIMAL_ROWS": {
+            "EAST": 0.7114661654135338,
+            "NORTH": 0.06203007518796992,
+            "SOUTH": 0.08740601503759399,
+            "WEST": 0.18421052631578946
+          },
+          "P_OPTIMAL_GIVEN_LEGAL": {
+            "EAST": 0.7015755329008341,
+            "NORTH": 0.061567164179104475,
+            "SOUTH": 0.0853211009174312,
+            "WEST": 0.1824953445065177
+          }
+        }
+      },
+      "actorStartRegion": {
+        "MIDDLE_CENTER": {
+          "rows": 452,
+          "moveOptimalRows": 408,
+          "P_OPTIMAL_MOVE_OPTIMAL_ROWS": {
+            "EAST": 0.7083333333333334,
+            "NORTH": 0.056372549019607844,
+            "SOUTH": 0.09068627450980392,
+            "WEST": 0.21323529411764705
+          },
+          "P_OPTIMAL_GIVEN_LEGAL": {
+            "EAST": 0.647982062780269,
+            "NORTH": 0.051224944320712694,
+            "SOUTH": 0.08295964125560538,
+            "WEST": 0.19506726457399104
+          }
+        },
+        "MIDDLE_EAST": {
+          "rows": 413,
+          "moveOptimalRows": 362,
+          "P_OPTIMAL_MOVE_OPTIMAL_ROWS": {
+            "EAST": 0.5303867403314917,
+            "NORTH": 0.07734806629834254,
+            "SOUTH": 0.09668508287292818,
+            "WEST": 0.3425414364640884
+          },
+          "P_OPTIMAL_GIVEN_LEGAL": {
+            "EAST": 0.6530612244897959,
+            "NORTH": 0.0691358024691358,
+            "SOUTH": 0.0851581508515815,
+            "WEST": 0.3069306930693069
+          }
+        },
+        "MIDDLE_WEST": {
+          "rows": 496,
+          "moveOptimalRows": 456,
+          "P_OPTIMAL_MOVE_OPTIMAL_ROWS": {
+            "EAST": 0.7785087719298246,
+            "NORTH": 0.06798245614035088,
+            "SOUTH": 0.11403508771929824,
+            "WEST": 0.08114035087719298
+          },
+          "P_OPTIMAL_GIVEN_LEGAL": {
+            "EAST": 0.7215447154471545,
+            "NORTH": 0.06262626262626263,
+            "SOUTH": 0.10590631364562118,
+            "WEST": 0.09973045822102426
+          }
+        },
+        "NORTH_CENTER": {
+          "rows": 461,
+          "moveOptimalRows": 419,
+          "P_OPTIMAL_MOVE_OPTIMAL_ROWS": {
+            "EAST": 0.766109785202864,
+            "NORTH": 0.026252983293556086,
+            "SOUTH": 0.06921241050119331,
+            "WEST": 0.17422434367541767
+          },
+          "P_OPTIMAL_GIVEN_LEGAL": {
+            "EAST": 0.7054945054945055,
+            "NORTH": 0.031073446327683617,
+            "SOUTH": 0.06430155210643015,
+            "WEST": 0.1600877192982456
+          }
+        },
+        "NORTH_EAST": {
+          "rows": 457,
+          "moveOptimalRows": 401,
+          "P_OPTIMAL_MOVE_OPTIMAL_ROWS": {
+            "EAST": 0.5411471321695761,
+            "NORTH": 0.02493765586034913,
+            "SOUTH": 0.10723192019950124,
+            "WEST": 0.3516209476309227
+          },
+          "P_OPTIMAL_GIVEN_LEGAL": {
+            "EAST": 0.6739130434782609,
+            "NORTH": 0.028328611898016998,
+            "SOUTH": 0.09513274336283185,
+            "WEST": 0.31473214285714285
+          }
+        },
+        "NORTH_WEST": {
+          "rows": 528,
+          "moveOptimalRows": 470,
+          "P_OPTIMAL_MOVE_OPTIMAL_ROWS": {
+            "EAST": 0.7829787234042553,
+            "NORTH": 0.0425531914893617,
+            "SOUTH": 0.10425531914893617,
+            "WEST": 0.11063829787234042
+          },
+          "P_OPTIMAL_GIVEN_LEGAL": {
+            "EAST": 0.700952380952381,
+            "NORTH": 0.05181347150259067,
+            "SOUTH": 0.09404990403071017,
+            "WEST": 0.13164556962025317
+          }
+        },
+        "SOUTH_CENTER": {
+          "rows": 378,
+          "moveOptimalRows": 340,
+          "P_OPTIMAL_MOVE_OPTIMAL_ROWS": {
+            "EAST": 0.75,
+            "NORTH": 0.07058823529411765,
+            "SOUTH": 0.05588235294117647,
+            "WEST": 0.17352941176470588
+          },
+          "P_OPTIMAL_GIVEN_LEGAL": {
+            "EAST": 0.6836461126005362,
+            "NORTH": 0.064,
+            "SOUTH": 0.0695970695970696,
+            "WEST": 0.15733333333333333
+          }
+        },
+        "SOUTH_EAST": {
+          "rows": 367,
+          "moveOptimalRows": 342,
+          "P_OPTIMAL_MOVE_OPTIMAL_ROWS": {
+            "EAST": 0.5701754385964912,
+            "NORTH": 0.08771929824561403,
+            "SOUTH": 0.05847953216374269,
+            "WEST": 0.3216374269005848
+          },
+          "P_OPTIMAL_GIVEN_LEGAL": {
+            "EAST": 0.7587548638132295,
+            "NORTH": 0.0821917808219178,
+            "SOUTH": 0.07352941176470588,
+            "WEST": 0.3047091412742382
+          }
+        },
+        "SOUTH_WEST": {
+          "rows": 448,
+          "moveOptimalRows": 401,
+          "P_OPTIMAL_MOVE_OPTIMAL_ROWS": {
+            "EAST": 0.8054862842892768,
+            "NORTH": 0.08728179551122195,
+            "SOUTH": 0.04738154613466334,
+            "WEST": 0.09226932668329177
+          },
+          "P_OPTIMAL_GIVEN_LEGAL": {
+            "EAST": 0.7258426966292135,
+            "NORTH": 0.07829977628635347,
+            "SOUTH": 0.05993690851735016,
+            "WEST": 0.10787172011661808
+          }
+        }
+      }
+    }
+  },
+  "placement": {
+    "groups": {
+      "BARRIER": {
+        "n": 1278,
+        "P_EAST_OF_ACTOR": 0.460093896713615,
+        "P_WEST_OF_ACTOR": 0.4522691705790297,
+        "P_SAME_COLUMN": 0.08763693270735524,
+        "P_SOUTH_OF_ACTOR": 0.47183098591549294,
+        "P_NORTH_OF_ACTOR": 0.4522691705790297,
+        "P_SAME_ROW": 0.07589984350547731,
+        "meanDx": 0.04460093896713615,
+        "meanDy": 0.03129890453834116,
+        "EAST_MINUS_WEST": 0.007824726134585291,
+        "SOUTH_MINUS_NORTH": 0.01956181533646323,
+        "adjacentShare": {
+          "EAST": 0.006259780907668232,
+          "NORTH": 0.005477308294209703,
+          "SOUTH": 0.010172143974960876,
+          "WEST": 0.006259780907668232
+        },
+        "ASYMMETRIC": false
+      },
+      "BLOCKED_TERRAIN_CELL": {
+        "n": 6493,
+        "P_EAST_OF_ACTOR": 0.47451101185892497,
+        "P_WEST_OF_ACTOR": 0.4689665793931927,
+        "P_SAME_COLUMN": 0.056522408747882336,
+        "P_SOUTH_OF_ACTOR": 0.4695826274449407,
+        "P_NORTH_OF_ACTOR": 0.4708147235484368,
+        "P_SAME_ROW": 0.059602649006622516,
+        "meanDx": 0.1033420606807331,
+        "meanDy": -0.05051594024333898,
+        "EAST_MINUS_WEST": 0.005544432465732274,
+        "SOUTH_MINUS_NORTH": -0.001232096103496061,
+        "adjacentShare": {
+          "EAST": 0.0041583243492992455,
+          "NORTH": 0.0030802402587401818,
+          "SOUTH": 0.004774372401047282,
+          "WEST": 0.006006468504543354
+        },
+        "ASYMMETRIC": false
+      },
+      "CIVILIAN": {
+        "n": 4033,
+        "P_EAST_OF_ACTOR": 0.4716092239028019,
+        "P_WEST_OF_ACTOR": 0.4559880981899331,
+        "P_SAME_COLUMN": 0.07240267790726507,
+        "P_SOUTH_OF_ACTOR": 0.4594594594594595,
+        "P_NORTH_OF_ACTOR": 0.4634267294817754,
+        "P_SAME_ROW": 0.07711381105876519,
+        "meanDx": 0.16885693032482024,
+        "meanDy": 0.021572030746342674,
+        "EAST_MINUS_WEST": 0.015621125712868833,
+        "SOUTH_MINUS_NORTH": -0.003967270022315894,
+        "adjacentShare": {
+          "EAST": 0.005702950657079098,
+          "NORTH": 0.005702950657079098,
+          "SOUTH": 0.007438631291842301,
+          "WEST": 0.004959087527894868
+        },
+        "ASYMMETRIC": false
+      },
+      "DEPENDENCY_HUB": {
+        "n": 5669,
+        "P_EAST_OF_ACTOR": 0.4663961898041983,
+        "P_WEST_OF_ACTOR": 0.4618098430058211,
+        "P_SAME_COLUMN": 0.0717939671899806,
+        "P_SOUTH_OF_ACTOR": 0.47133533251014287,
+        "P_NORTH_OF_ACTOR": 0.4619862409596049,
+        "P_SAME_ROW": 0.06667842653025224,
+        "meanDx": 0.02416651966837185,
+        "meanDy": 0.1700476274475216,
+        "EAST_MINUS_WEST": 0.004586346798377161,
+        "SOUTH_MINUS_NORTH": 0.00934909155053798,
+        "adjacentShare": {
+          "EAST": 0.006703122243781972,
+          "NORTH": 0.0049391427059446115,
+          "SOUTH": 0.0063503263362145,
+          "WEST": 0.0063503263362145
+        },
+        "ASYMMETRIC": false
+      },
+      "HAZARD_CELL": {
+        "n": 13193,
+        "P_EAST_OF_ACTOR": 0.4810126582278481,
+        "P_WEST_OF_ACTOR": 0.45706056241946486,
+        "P_SAME_COLUMN": 0.061926779352687034,
+        "P_SOUTH_OF_ACTOR": 0.4638065640870158,
+        "P_NORTH_OF_ACTOR": 0.46850602592283785,
+        "P_SAME_ROW": 0.06768740999014629,
+        "meanDx": 0.1253695141362844,
+        "meanDy": -0.054725991055862955,
+        "EAST_MINUS_WEST": 0.023952095808383256,
+        "SOUTH_MINUS_NORTH": -0.004699461835822039,
+        "adjacentShare": {
+          "EAST": 0.005988023952095809,
+          "NORTH": 0.00462366406427651,
+          "SOUTH": 0.005381641779731676,
+          "WEST": 0.00439627074963996
+        },
+        "ASYMMETRIC": false
+      },
+      "HOSTILE": {
+        "n": 2655,
+        "P_EAST_OF_ACTOR": 0.4704331450094162,
+        "P_WEST_OF_ACTOR": 0.45235404896421844,
+        "P_SAME_COLUMN": 0.07721280602636535,
+        "P_SOUTH_OF_ACTOR": 0.4651600753295669,
+        "P_NORTH_OF_ACTOR": 0.46365348399246703,
+        "P_SAME_ROW": 0.0711864406779661,
+        "meanDx": 0.19887005649717515,
+        "meanDy": 0.047080979284369114,
+        "EAST_MINUS_WEST": 0.01807909604519775,
+        "SOUTH_MINUS_NORTH": 0.0015065913370998496,
+        "adjacentShare": {
+          "EAST": 0.004896421845574388,
+          "NORTH": 0.006779661016949152,
+          "SOUTH": 0.005649717514124294,
+          "WEST": 0.005649717514124294
+        },
+        "ASYMMETRIC": false
+      },
+      "OBJECTIVE_CRITICAL": {
+        "n": 6952,
+        "P_EAST_OF_ACTOR": 0.46130609896432684,
+        "P_WEST_OF_ACTOR": 0.4673475258918297,
+        "P_SAME_COLUMN": 0.0713463751438435,
+        "P_SOUTH_OF_ACTOR": 0.46677215189873417,
+        "P_NORTH_OF_ACTOR": 0.4571346375143843,
+        "P_SAME_ROW": 0.07609321058688147,
+        "meanDx": 0.004602991944764097,
+        "meanDy": 0.04042002301495973,
+        "EAST_MINUS_WEST": -0.006041426927502869,
+        "SOUTH_MINUS_NORTH": 0.009637514384349843,
+        "adjacentShare": {
+          "EAST": 0.006185270425776755,
+          "NORTH": 0.005178365937859608,
+          "SOUTH": 0.008486766398158803,
+          "WEST": 0.006616800920598389
+        },
+        "ASYMMETRIC": false
+      },
+      "RESOURCE_MATERIAL_NEAR_ACTOR": {
+        "n": 4000,
+        "P_EAST_OF_ACTOR": 0.7805,
+        "P_WEST_OF_ACTOR": 0.173,
+        "P_SAME_COLUMN": 0.0465,
+        "P_SOUTH_OF_ACTOR": 0.0395,
+        "P_NORTH_OF_ACTOR": 0.0085,
+        "P_SAME_ROW": 0.952,
+        "meanDx": 0.6085,
+        "meanDy": 0.02975,
+        "EAST_MINUS_WEST": 0.6074999999999999,
+        "SOUTH_MINUS_NORTH": 0.031,
+        "adjacentShare": {
+          "EAST": 0.77975,
+          "NORTH": 0.008,
+          "SOUTH": 0.0385,
+          "WEST": 0.17225
+        },
+        "ASYMMETRIC": true
+      },
+      "RESOURCE_OTHER": {
+        "n": 6649,
+        "P_EAST_OF_ACTOR": 0.46518273424575124,
+        "P_WEST_OF_ACTOR": 0.45976838622349225,
+        "P_SAME_COLUMN": 0.07504887953075651,
+        "P_SOUTH_OF_ACTOR": 0.46428034290870807,
+        "P_NORTH_OF_ACTOR": 0.466536321251316,
+        "P_SAME_ROW": 0.06918333583997593,
+        "meanDx": 0.0861783726876222,
+        "meanDy": -0.036246052037900434,
+        "EAST_MINUS_WEST": 0.005414348022258986,
+        "SOUTH_MINUS_NORTH": -0.002255978342607934,
+        "adjacentShare": {
+          "EAST": 0.0046623552413896825,
+          "NORTH": 0.006617536471649872,
+          "SOUTH": 0.005564746578432847,
+          "WEST": 0.00616634080312829
+        },
+        "ASYMMETRIC": false
+      },
+      "STRUCTURAL_TOPOLOGY_NODE": {
+        "n": 62665,
+        "P_EAST_OF_ACTOR": 0.47149126306550704,
+        "P_WEST_OF_ACTOR": 0.4610069416739807,
+        "P_SAME_COLUMN": 0.06750179526051225,
+        "P_SOUTH_OF_ACTOR": 0.4675496688741722,
+        "P_NORTH_OF_ACTOR": 0.46496449373653553,
+        "P_SAME_ROW": 0.06748583738929227,
+        "meanDx": 0.07437963775632331,
+        "meanDy": 0.011617330248144897,
+        "EAST_MINUS_WEST": 0.01048432139152633,
+        "SOUTH_MINUS_NORTH": 0.002585175137636675,
+        "adjacentShare": {
+          "EAST": 0.004994813691853507,
+          "NORTH": 0.005042687305513444,
+          "SOUTH": 0.005521423442112822,
+          "WEST": 0.005218223888933216
+        },
+        "ASYMMETRIC": false
+      },
+      "SUBSTITUTE": {
+        "n": 4679,
+        "P_EAST_OF_ACTOR": 0.45907245137849967,
+        "P_WEST_OF_ACTOR": 0.46633896131652064,
+        "P_SAME_COLUMN": 0.07458858730497969,
+        "P_SOUTH_OF_ACTOR": 0.47403291301560163,
+        "P_NORTH_OF_ACTOR": 0.4409061765334473,
+        "P_SAME_ROW": 0.08506091045095106,
+        "meanDx": -0.06048300918999786,
+        "meanDy": 0.15195554605684974,
+        "EAST_MINUS_WEST": -0.007266509938020971,
+        "SOUTH_MINUS_NORTH": 0.033126736482154306,
+        "adjacentShare": {
+          "EAST": 0.006625347296430861,
+          "NORTH": 0.006411626415900834,
+          "SOUTH": 0.007266509938020945,
+          "WEST": 0.008121393460141057
+        },
+        "ASYMMETRIC": false
+      }
+    },
+    "actorSpawn": {
+      "n": 4000,
+      "meanXNormalised": 0.49808413090177867,
+      "meanYNormalised": 0.4976545291309996,
+      "meanDistanceToEastEdge": 6.0435,
+      "meanDistanceToWestEdge": 5.9685,
+      "meanDistanceToNorthEdge": 5.997,
+      "meanDistanceToSouthEdge": 6.015,
+      "regions": {
+        "MIDDLE_CENTER": 452,
+        "MIDDLE_EAST": 413,
+        "MIDDLE_WEST": 496,
+        "NORTH_CENTER": 461,
+        "NORTH_EAST": 457,
+        "NORTH_WEST": 528,
+        "SOUTH_CENTER": 378,
+        "SOUTH_EAST": 367,
+        "SOUTH_WEST": 448
+      }
+    },
+    "positionsAtDecisionEqualSpawn": "warm-up plays only WAIT and is truncated at any task change, which includes positions (warmup.js taskSignature)"
+  },
+  "sourceAudit": {
+    "findings": [
+      {
+        "id": "EAST_FIRST_ADJACENT_PLACEMENT",
+        "owner": "src/forge/scenarios-v2.js",
+        "line": 162,
+        "found": true,
+        "directional": true,
+        "category": "OBJECTIVE_RESOURCE_PLACEMENT",
+        "lookFor": "east-first fallback / fixed positive-x offset",
+        "note": "placeNear tries x+1 (EAST), x-1 (WEST), y+1 (SOUTH), y-1 (NORTH) and takes candidates[0]; used for the \"material\" RESOURCE beside the actor"
+      },
+      {
+        "id": "EAST_FIRST_CANDIDATE_SELECTION",
+        "owner": "src/forge/scenarios-v2.js",
+        "line": 168,
+        "found": true,
+        "directional": true,
+        "category": "OBJECTIVE_RESOURCE_PLACEMENT",
+        "lookFor": "array insertion order",
+        "note": "first free candidate wins, so EAST whenever that cell is free"
+      },
+      {
+        "id": "MATERIAL_PLACED_NEAR_ACTOR",
+        "owner": "src/forge/scenarios-v2.js",
+        "line": 257,
+        "found": true,
+        "directional": true,
+        "category": "OBJECTIVE_RESOURCE_PLACEMENT",
+        "lookFor": "objective/resource placement bias",
+        "note": "declared intent is reachability (\"Material the actor can reach\"), not orientation"
+      },
+      {
+        "id": "ROW_MAJOR_FREE_CELL_SCAN",
+        "owner": "src/forge/scenarios-v2.js",
+        "line": 137,
+        "found": true,
+        "directional": false,
+        "category": "ITERATION_ORDER",
+        "lookFor": "sorted-cell selection / iteration-order placement",
+        "note": "row-major list, but the index is drawn uniformly, so no directional preference is expected (measured)"
+      },
+      {
+        "id": "SYMMETRIC_INTERIOR_TERRAIN",
+        "owner": "src/forge/scenarios-v2.js",
+        "line": 125,
+        "found": true,
+        "directional": false,
+        "category": "TERRAIN",
+        "lookFor": "fixed spawn corners / terrain boundaries",
+        "note": "hazards drawn uniformly over the symmetric interior; square grid"
+      },
+      {
+        "id": "MOVE_ENUMERATION_SORTED_NAMES",
+        "owner": "src/forge/kernel.js",
+        "line": 252,
+        "found": true,
+        "directional": false,
+        "category": "ACTION_ORDER",
+        "lookFor": "canonical orientation / enumeration order",
+        "note": "insertion order EAST, NORTH, SOUTH, WEST; erased by the final key sort"
+      },
+      {
+        "id": "LEGAL_ACTIONS_SORTED_BY_HASH",
+        "owner": "src/forge/kernel.js",
+        "line": 328,
+        "found": true,
+        "directional": true,
+        "category": "ACTION_IDENTITY_ORDERING",
+        "lookFor": "hash-order dependence",
+        "note": "MOVE keys in fixed hash order EAST < SOUTH < WEST < NORTH"
+      },
+      {
+        "id": "RETREAT_X_AXIS_FIRST",
+        "owner": "src/forge/kernel.js",
+        "line": 318,
+        "found": true,
+        "directional": true,
+        "category": "KERNEL_AXIS_ORDER",
+        "lookFor": "canonical orientation",
+        "note": "RETREAT steps along x whenever the nearest hostile differs in x; not equivariant under 90-degree rotations"
+      },
+      {
+        "id": "CONTINUATION_TIE_BREAK_BY_KEY",
+        "owner": "src/forge/counterfactual-v2.js",
+        "line": 81,
+        "found": true,
+        "directional": true,
+        "category": "ACTION_IDENTITY_ORDERING",
+        "lookFor": "hash-order dependence in labels",
+        "note": "greedy continuation breaks rank ties by action key, so rollouts (and optimal sets) can depend on orientation"
+      },
+      {
+        "id": "HORIZON_LABEL_KEY_SORT",
+        "owner": "src/forge/counterfactual-v2.js",
+        "line": 257,
+        "found": true,
+        "directional": true,
+        "category": "ACTION_IDENTITY_ORDERING",
+        "lookFor": "hash-order dependence in labels",
+        "note": "greedyRegret label uses the lowest-key immediate optimum"
+      },
+      {
+        "id": "GREEDY_BASELINE_TIE_BREAK_BY_KEY",
+        "owner": "src/lab/stage3c-learned-nexus.js",
+        "line": 434,
+        "found": true,
+        "directional": true,
+        "category": "ACTION_IDENTITY_ORDERING",
+        "lookFor": "hash-order dependence in labels and policy",
+        "note": "GREEDY and GREEDY_SAFE break immediate ties by key"
+      },
+      {
+        "id": "RESOURCE_TIE_BREAK_BY_KEY",
+        "owner": "src/stage3f/deployable-action-proposal-v1.js",
+        "line": 125,
+        "found": true,
+        "directional": true,
+        "category": "ACTION_IDENTITY_ORDERING",
+        "lookFor": "hash-order dependence in policy",
+        "note": "cheapest action by key: EAST among zero-cost MOVEs"
+      },
+      {
+        "id": "NEXUS_V2_TIE_BREAK_BY_KEY",
+        "owner": "src/stage3f/nexus-selector-v2-candidate.js",
+        "line": 91,
+        "found": true,
+        "directional": true,
+        "category": "ACTION_IDENTITY_ORDERING",
+        "lookFor": "hash-order dependence in policy",
+        "note": "V2 MOVE fallback takes the lowest key: EAST"
+      },
+      {
+        "id": "WARMUP_WAIT_ONLY",
+        "owner": "src/forge/warmup.js",
+        "line": 269,
+        "found": true,
+        "directional": false,
+        "category": "NONE",
+        "lookFor": "topology traversal / spawn drift",
+        "note": "warm-up never moves anything"
+      }
+    ],
+    "topologyHasNoGeometry": true,
+    "documentedDirectionalIntent": false
+  },
+  "equivariance": {
+    "perTransform": {
+      "IDENTITY": {
+        "n": 4000,
+        "TRANSFORMATION_VALID_RATE": 1,
+        "LEGAL_SURFACE_EQUIVARIANT_RATE": 1,
+        "legalMismatchActionTypes": {},
+        "OPTIMAL_SET_EQUIVARIANT_RATE": 1,
+        "OPTIMAL_SET_EQUIVARIANT_RATE_WHERE_LEGAL_EQUIVARIANT": 1,
+        "REGRET_EQUIVARIANT_RATE": 1,
+        "regretActionPairsCompared": 26810,
+        "regretActionPairMismatches": 0,
+        "maxAbsRegretDiff": 0,
+        "attribution": {
+          "notEquivariant": 0,
+          "TIE_BREAK_ARTIFACT": 0,
+          "LEGAL_SURFACE_ARTIFACT": 0,
+          "UNEXPLAINED": 0
+        },
+        "FRAME_CONSISTENT_REPLICA_EQUIVARIANT_RATE": 1,
+        "replicaFidelityT": {
+          "sampled": 0,
+          "exact": 0
+        },
+        "labels": {
+          "GREEDY_SAFE_EQUIVARIANT_RATE": 1,
+          "GREEDY_SAFE_DISAGREEMENTS": 0,
+          "HORIZON_CLASS_EQUIVARIANT_RATE": 1,
+          "HORIZON_CLASS_DISAGREEMENTS": 0
+        }
+      },
+      "ROTATE_90": {
+        "n": 4000,
+        "TRANSFORMATION_VALID_RATE": 1,
+        "LEGAL_SURFACE_EQUIVARIANT_RATE": 0.605,
+        "legalMismatchActionTypes": {
+          "RETREAT": 2684
+        },
+        "OPTIMAL_SET_EQUIVARIANT_RATE": 0.7235,
+        "OPTIMAL_SET_EQUIVARIANT_RATE_WHERE_LEGAL_EQUIVARIANT": 0.8644628099173554,
+        "REGRET_EQUIVARIANT_RATE": 0.6885,
+        "regretActionPairsCompared": 25477,
+        "regretActionPairMismatches": 4482,
+        "maxAbsRegretDiff": 367,
+        "attribution": {
+          "notEquivariant": 1106,
+          "TIE_BREAK_ARTIFACT": 441,
+          "LEGAL_SURFACE_ARTIFACT": 662,
+          "UNEXPLAINED": 3
+        },
+        "FRAME_CONSISTENT_REPLICA_EQUIVARIANT_RATE": 0.83375,
+        "replicaFidelityT": {
+          "sampled": 400,
+          "exact": 400
+        },
+        "labels": {
+          "GREEDY_SAFE_EQUIVARIANT_RATE": 0.892,
+          "GREEDY_SAFE_DISAGREEMENTS": 432,
+          "HORIZON_CLASS_EQUIVARIANT_RATE": 0.892,
+          "HORIZON_CLASS_DISAGREEMENTS": 432
+        }
+      },
+      "ROTATE_180": {
+        "n": 4000,
+        "TRANSFORMATION_VALID_RATE": 1,
+        "LEGAL_SURFACE_EQUIVARIANT_RATE": 1,
+        "legalMismatchActionTypes": {},
+        "OPTIMAL_SET_EQUIVARIANT_RATE": 0.862,
+        "OPTIMAL_SET_EQUIVARIANT_RATE_WHERE_LEGAL_EQUIVARIANT": 0.862,
+        "REGRET_EQUIVARIANT_RATE": 0.6855,
+        "regretActionPairsCompared": 26810,
+        "regretActionPairMismatches": 4764,
+        "maxAbsRegretDiff": 424,
+        "attribution": {
+          "notEquivariant": 552,
+          "TIE_BREAK_ARTIFACT": 552,
+          "LEGAL_SURFACE_ARTIFACT": 0,
+          "UNEXPLAINED": 0
+        },
+        "FRAME_CONSISTENT_REPLICA_EQUIVARIANT_RATE": 1,
+        "replicaFidelityT": {
+          "sampled": 400,
+          "exact": 400
+        },
+        "labels": {
+          "GREEDY_SAFE_EQUIVARIANT_RATE": 0.89275,
+          "GREEDY_SAFE_DISAGREEMENTS": 429,
+          "HORIZON_CLASS_EQUIVARIANT_RATE": 0.89275,
+          "HORIZON_CLASS_DISAGREEMENTS": 429
+        }
+      },
+      "ROTATE_270": {
+        "n": 4000,
+        "TRANSFORMATION_VALID_RATE": 1,
+        "LEGAL_SURFACE_EQUIVARIANT_RATE": 0.605,
+        "legalMismatchActionTypes": {
+          "RETREAT": 2684
+        },
+        "OPTIMAL_SET_EQUIVARIANT_RATE": 0.70525,
+        "OPTIMAL_SET_EQUIVARIANT_RATE_WHERE_LEGAL_EQUIVARIANT": 0.8454545454545455,
+        "REGRET_EQUIVARIANT_RATE": 0.689,
+        "regretActionPairsCompared": 25477,
+        "regretActionPairMismatches": 4595,
+        "maxAbsRegretDiff": 424,
+        "attribution": {
+          "notEquivariant": 1179,
+          "TIE_BREAK_ARTIFACT": 515,
+          "LEGAL_SURFACE_ARTIFACT": 663,
+          "UNEXPLAINED": 1
+        },
+        "FRAME_CONSISTENT_REPLICA_EQUIVARIANT_RATE": 0.834,
+        "replicaFidelityT": {
+          "sampled": 400,
+          "exact": 400
+        },
+        "labels": {
+          "GREEDY_SAFE_EQUIVARIANT_RATE": 0.868,
+          "GREEDY_SAFE_DISAGREEMENTS": 528,
+          "HORIZON_CLASS_EQUIVARIANT_RATE": 0.868,
+          "HORIZON_CLASS_DISAGREEMENTS": 528
+        }
+      },
+      "REFLECT_X": {
+        "n": 4000,
+        "TRANSFORMATION_VALID_RATE": 1,
+        "LEGAL_SURFACE_EQUIVARIANT_RATE": 1,
+        "legalMismatchActionTypes": {},
+        "OPTIMAL_SET_EQUIVARIANT_RATE": 0.87125,
+        "OPTIMAL_SET_EQUIVARIANT_RATE_WHERE_LEGAL_EQUIVARIANT": 0.87125,
+        "REGRET_EQUIVARIANT_RATE": 0.70175,
+        "regretActionPairsCompared": 26810,
+        "regretActionPairMismatches": 4508,
+        "maxAbsRegretDiff": 424,
+        "attribution": {
+          "notEquivariant": 515,
+          "TIE_BREAK_ARTIFACT": 515,
+          "LEGAL_SURFACE_ARTIFACT": 0,
+          "UNEXPLAINED": 0
+        },
+        "FRAME_CONSISTENT_REPLICA_EQUIVARIANT_RATE": 1,
+        "replicaFidelityT": {
+          "sampled": 400,
+          "exact": 400
+        },
+        "labels": {
+          "GREEDY_SAFE_EQUIVARIANT_RATE": 0.8995,
+          "GREEDY_SAFE_DISAGREEMENTS": 402,
+          "HORIZON_CLASS_EQUIVARIANT_RATE": 0.8995,
+          "HORIZON_CLASS_DISAGREEMENTS": 402
+        }
+      },
+      "REFLECT_Y": {
+        "n": 4000,
+        "TRANSFORMATION_VALID_RATE": 1,
+        "LEGAL_SURFACE_EQUIVARIANT_RATE": 1,
+        "legalMismatchActionTypes": {},
+        "OPTIMAL_SET_EQUIVARIANT_RATE": 0.92675,
+        "OPTIMAL_SET_EQUIVARIANT_RATE_WHERE_LEGAL_EQUIVARIANT": 0.92675,
+        "REGRET_EQUIVARIANT_RATE": 0.76725,
+        "regretActionPairsCompared": 26810,
+        "regretActionPairMismatches": 3210,
+        "maxAbsRegretDiff": 314,
+        "attribution": {
+          "notEquivariant": 293,
+          "TIE_BREAK_ARTIFACT": 293,
+          "LEGAL_SURFACE_ARTIFACT": 0,
+          "UNEXPLAINED": 0
+        },
+        "FRAME_CONSISTENT_REPLICA_EQUIVARIANT_RATE": 1,
+        "replicaFidelityT": {
+          "sampled": 400,
+          "exact": 400
+        },
+        "labels": {
+          "GREEDY_SAFE_EQUIVARIANT_RATE": 0.952,
+          "GREEDY_SAFE_DISAGREEMENTS": 192,
+          "HORIZON_CLASS_EQUIVARIANT_RATE": 0.952,
+          "HORIZON_CLASS_DISAGREEMENTS": 192
+        }
+      }
+    },
+    "controls": {
+      "IDENTITY_REPRODUCES_RECORDS": true,
+      "GREEDY_SAFE_MATCHES_CORPUS_LABEL": true,
+      "REPLICA_FIDELITY_W": {
+        "sampled": 400,
+        "exact": 400
+      },
+      "REPLICA_FIDELITY_T_ALL_EXACT": true,
+      "REPLICA_FIDELITY_EXACT": true
+    },
+    "summary": {
+      "TRANSFORMATION_VALID": true,
+      "OPTIMAL_SET_EQUIVARIANT": false,
+      "REGRET_EQUIVARIANT": false,
+      "LEGAL_SURFACE_EQUIVARIANT": false,
+      "FRAME_CONSISTENT_ENVIRONMENT_EQUIVARIANT_AXIS_PRESERVING": true,
+      "TIE_BREAK_ARTIFACT_SHARE_AXIS_PRESERVING": 0.11333333333333333,
+      "UNEXPLAINED_TOTAL": 4
+    }
+  },
+  "policyEquivariance": {
+    "GREEDY": {
+      "byTransform": {
+        "ROTATE_90": 1,
+        "ROTATE_180": 1,
+        "ROTATE_270": 1,
+        "REFLECT_X": 1,
+        "REFLECT_Y": 1
+      },
+      "IDENTITY": 1,
+      "minimum": 1,
+      "DIRECTIONALLY_BIASED": false
+    },
+    "RESOURCE_PRESERVING_V1": {
+      "byTransform": {
+        "ROTATE_90": 0.086,
+        "ROTATE_180": 0.04225,
+        "ROTATE_270": 0.09475,
+        "REFLECT_X": 0.03975,
+        "REFLECT_Y": 0.74675
+      },
+      "IDENTITY": 1,
+      "minimum": 0.03975,
+      "DIRECTIONALLY_BIASED": true
+    },
+    "NEXUS_SELECTOR_V1": {
+      "byTransform": {
+        "ROTATE_90": 1,
+        "ROTATE_180": 1,
+        "ROTATE_270": 1,
+        "REFLECT_X": 1,
+        "REFLECT_Y": 1
+      },
+      "IDENTITY": 1,
+      "minimum": 1,
+      "DIRECTIONALLY_BIASED": false
+    },
+    "NEXUS_SELECTOR_V2_CANDIDATE": {
+      "byTransform": {
+        "ROTATE_90": 0.33025,
+        "ROTATE_180": 0.27225,
+        "ROTATE_270": 0.3355,
+        "REFLECT_X": 0.27725,
+        "REFLECT_Y": 0.9265
+      },
+      "IDENTITY": 1,
+      "minimum": 0.27225,
+      "DIRECTIONALLY_BIASED": true
+    },
+    "OBJECTIVE_TARGETING_V1": {
+      "byTransform": {
+        "ROTATE_90": 1,
+        "ROTATE_180": 1,
+        "ROTATE_270": 1,
+        "REFLECT_X": 1,
+        "REFLECT_Y": 1
+      },
+      "IDENTITY": 1,
+      "minimum": 1,
+      "DIRECTIONALLY_BIASED": false
+    },
+    "THREAT_COVERING_V1": {
+      "byTransform": {
+        "ROTATE_90": 1,
+        "ROTATE_180": 1,
+        "ROTATE_270": 1,
+        "REFLECT_X": 1,
+        "REFLECT_Y": 1
+      },
+      "IDENTITY": 1,
+      "minimum": 1,
+      "DIRECTIONALLY_BIASED": false
+    }
+  },
+  "eastRotation": {
+    "identityBaseline": {
+      "moveOptimalRows": 3599,
+      "LOWEST_IDENTITY_MOVE_ACCURACY": 0.7213114754098361
+    },
+    "byTransform": {
+      "ROTATE_90": {
+        "eastOptimalInW": 2515,
+        "EAST_MAPS_TO": "SOUTH",
+        "P_MAPPED_DIRECTION_OPTIMAL_IN_TW": 0.9789264413518887,
+        "P_EAST_STILL_OPTIMAL_IN_TW": 0.013518886679920477,
+        "DIRECTION_ROTATES_WITH_WORLD": true,
+        "rotatedCorpus": {
+          "moveOptimalRows": 3610,
+          "LOWEST_IDENTITY_MOVE_ACCURACY": 0.12326869806094183,
+          "lowestIdentityDirection": {
+            "EAST": 0.9066481994459834,
+            "NORTH": 0,
+            "SOUTH": 0.08448753462603878,
+            "WEST": 0.00886426592797784
+          },
+          "P_OPTIMAL_MOVE_OPTIMAL_ROWS": {
+            "EAST": 0.054293628808864264,
+            "NORTH": 0.19833795013850417,
+            "SOUTH": 0.7033240997229917,
+            "WEST": 0.07922437673130193
+          }
+        }
+      },
+      "ROTATE_180": {
+        "eastOptimalInW": 2515,
+        "EAST_MAPS_TO": "WEST",
+        "P_MAPPED_DIRECTION_OPTIMAL_IN_TW": 0.9785288270377733,
+        "P_EAST_STILL_OPTIMAL_IN_TW": 0.011928429423459244,
+        "DIRECTION_ROTATES_WITH_WORLD": true,
+        "rotatedCorpus": {
+          "moveOptimalRows": 3604,
+          "LOWEST_IDENTITY_MOVE_ACCURACY": 0.20172031076581576,
+          "lowestIdentityDirection": {
+            "EAST": 0.8992785793562708,
+            "NORTH": 0,
+            "SOUTH": 0.0932297447280799,
+            "WEST": 0.007491675915649278
+          },
+          "P_OPTIMAL_MOVE_OPTIMAL_ROWS": {
+            "EAST": 0.18784683684794673,
+            "NORTH": 0.08129855715871254,
+            "SOUTH": 0.05854605993340733,
+            "WEST": 0.7081021087680355
+          }
+        }
+      },
+      "ROTATE_270": {
+        "eastOptimalInW": 2515,
+        "EAST_MAPS_TO": "NORTH",
+        "P_MAPPED_DIRECTION_OPTIMAL_IN_TW": 0.9813121272365806,
+        "P_EAST_STILL_OPTIMAL_IN_TW": 0.009145129224652087,
+        "DIRECTION_ROTATES_WITH_WORLD": true,
+        "rotatedCorpus": {
+          "moveOptimalRows": 3618,
+          "LOWEST_IDENTITY_MOVE_ACCURACY": 0.0978441127694859,
+          "lowestIdentityDirection": {
+            "EAST": 0.9051962410171366,
+            "NORTH": 0,
+            "SOUTH": 0.0845771144278607,
+            "WEST": 0.010226644555002764
+          },
+          "P_OPTIMAL_MOVE_OPTIMAL_ROWS": {
+            "EAST": 0.0779436152570481,
+            "NORTH": 0.7097844112769486,
+            "SOUTH": 0.1904367053620785,
+            "WEST": 0.056108347153123274
+          }
+        }
+      },
+      "REFLECT_X": {
+        "eastOptimalInW": 2515,
+        "EAST_MAPS_TO": "WEST",
+        "P_MAPPED_DIRECTION_OPTIMAL_IN_TW": 0.9840954274353877,
+        "P_EAST_STILL_OPTIMAL_IN_TW": 0.01073558648111332,
+        "DIRECTION_ROTATES_WITH_WORLD": true,
+        "rotatedCorpus": {
+          "moveOptimalRows": 3610,
+          "LOWEST_IDENTITY_MOVE_ACCURACY": 0.20969529085872576,
+          "lowestIdentityDirection": {
+            "EAST": 0.8983379501385041,
+            "NORTH": 0,
+            "SOUTH": 0.09058171745152355,
+            "WEST": 0.0110803324099723
+          },
+          "P_OPTIMAL_MOVE_OPTIMAL_ROWS": {
+            "EAST": 0.18393351800554017,
+            "NORTH": 0.060110803324099724,
+            "SOUTH": 0.08254847645429363,
+            "WEST": 0.7102493074792243
+          }
+        }
+      },
+      "REFLECT_Y": {
+        "eastOptimalInW": 2515,
+        "EAST_MAPS_TO": "EAST",
+        "P_MAPPED_DIRECTION_OPTIMAL_IN_TW": 0.9829025844930418,
+        "P_EAST_STILL_OPTIMAL_IN_TW": 0.9829025844930418,
+        "DIRECTION_ROTATES_WITH_WORLD": null,
+        "rotatedCorpus": {
+          "moveOptimalRows": 3598,
+          "LOWEST_IDENTITY_MOVE_ACCURACY": 0.7128960533629795,
+          "lowestIdentityDirection": {
+            "EAST": 0.9021678710394664,
+            "NORTH": 0,
+            "SOUTH": 0.08893829905503058,
+            "WEST": 0.008893829905503057
+          },
+          "P_OPTIMAL_MOVE_OPTIMAL_ROWS": {
+            "EAST": 0.6984435797665369,
+            "NORTH": 0.08532518065591996,
+            "SOUTH": 0.05892162312395775,
+            "WEST": 0.20066703724291274
+          }
+        }
+      }
+    },
+    "EAST_OPTIMALITY_ROTATES_WITH_WORLD": true
+  },
+  "diagnosis": {
+    "components": {
+      "A_INTENTIONAL_TASK_PROPERTY": false,
+      "B_ACCIDENTAL_SCENARIO_GENERATION_ASYMMETRY": true,
+      "C_ACTION_IDENTITY_ORDERING_ARTIFACT": true,
+      "D_TOPOLOGY_ORIENTATION_ARTIFACT": false,
+      "E_OBJECTIVE_RESOURCE_PLACEMENT_ARTIFACT": true
+    },
+    "primaryResult": "F_MIXTURE",
+    "componentsHeld": [
+      "B_ACCIDENTAL_SCENARIO_GENERATION_ASYMMETRY",
+      "C_ACTION_IDENTITY_ORDERING_ARTIFACT",
+      "E_OBJECTIVE_RESOURCE_PLACEMENT_ARTIFACT"
+    ],
+    "eastOptimalitySource": "SCENARIO_PLACEMENT (rotates with the world)",
+    "eastBaselineSource": "ACTION_IDENTITY_ORDERING (lowest key = EAST, fixed across worlds)"
+  },
+  "truncatedMissionNote": "the stage mission text was received only through Section 11; later sections, including the required report template, were not received",
+  "scope": {
+    "stage3f6pIntact": true,
+    "stage3f6p1Intact": true,
+    "stage3f6p1aIntact": true,
+    "stage3f6aIntact": true,
+    "historicalOwnersGitClean": true,
+    "policySetHashUnchanged": true,
+    "newOwners": [
+      "src/stage3f/forge-symmetry-transform-v1.js",
+      "scripts/stage3f6p1b-analysis-plan.mjs",
+      "scripts/generate-stage3f6p1b-symmetry-evidence.mjs",
+      "scripts/certify-stage3f6p1b-directional-symmetry.mjs",
+      "tests/stage3f6p1b-directional-symmetry.test.js"
+    ],
+    "existingOwnersModified": [
+      "package.json",
+      ".gitignore"
+    ],
+    "nexusModified": false,
+    "routerTrained": false,
+    "spatialFeaturesAdded": false,
+    "generatorsModified": false,
+    "historicalEvidenceModified": false
+  },
+  "checks": {
+    "PREDECESSORS_INTACT": true,
+    "HISTORICAL_OWNERS_UNCHANGED": true,
+    "PLAN_BEFORE_EVIDENCE": true,
+    "DATA_INTEGRITY": true,
+    "SOURCE_FINDINGS_LOCATED": true,
+    "DIRECTION_IDENTITY_PROVEN": true,
+    "IDENTITY_CONTROL": true,
+    "REPLICA_FIDELITY": true,
+    "TESTS_PASS": true
+  },
+  "tests": {
+    "pass": 15,
+    "fail": 0,
+    "skipped": 0
+  },
+  "sourceHashes": {
+    "src/stage3f/forge-symmetry-transform-v1.js": "99900148a2a7923cde6358115678b4cf7ced114fa1183dcf97d6eb1aa9d32bde",
+    "scripts/stage3f6p1b-analysis-plan.mjs": "a30ed1c2248f64141ed3fd5262f9904a66d6ae18486c8016704fe90d8ebbcc83",
+    "scripts/generate-stage3f6p1b-symmetry-evidence.mjs": "330c7d525c8134341d0d8aebbab1613d674f62e8f02e8fe75e9c36274646e2a2",
+    "scripts/certify-stage3f6p1b-directional-symmetry.mjs": "4c0f5acbdbc43323dd4b21f86983823758db9924aab5817904972cec41d2b814",
+    "tests/stage3f6p1b-directional-symmetry.test.js": "45e35fbcd64d3c17e5078ee74cdcb36b11654acc8a05043cdb3ac93f7bb57081"
+  },
+  "authority": {
+    "tier": "R0",
+    "canDispatch": false,
+    "canMutateLiveWorld": false,
+    "onlineLearningEnabled": false,
+    "promotedToLiveRuntime": false
+  },
+  "roadmap": {
+    "READY_FOR_FRESH_NEXUS_CONFIRMATION": false,
+    "READY_FOR_ROUTER_RETRAIN": false,
+    "READY_FOR_STAGE3G": false
+  },
+  "certificationHash": "120e7649a2912447d149e8a1b4c1a24c6a1af6bd64d5b6b5efd1b6dfe4ddfbdb"
+}
