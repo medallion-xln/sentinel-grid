@@ -1,0 +1,2962 @@
+{
+  "schemaVersion": 1,
+  "stage": "STAGE_3F_6_T_POLICY_ROUTER",
+  "status": "PASS",
+  "headlineComparison": "ROUTED_POLICY_SET vs ALWAYS_RESOURCE_PRESERVING_V1",
+  "policySet": {
+    "hash": "3f1a19f788389202af79ee50c9149344fa069f407abf09c6fede876617620c79",
+    "definition": {
+      "policySetId": "STAGE3F6T_FROZEN_DEPLOYABLE_POLICY_SET_V1",
+      "frozenFromStage": "STAGE_3F_6_A",
+      "routedPolicies": [
+        "RESOURCE_PRESERVING_V1",
+        "NEXUS_SELECTOR",
+        "OBJECTIVE_TARGETING_V1",
+        "THREAT_COVERING_V1"
+      ],
+      "controlPolicy": "RANDOM_LEGAL_V1",
+      "nonDeployableReference": "GREEDY",
+      "proposalContract": {
+        "id": "SENTINEL_DEPLOYABLE_ACTION_PROPOSAL_V1",
+        "hash": "53aaa52bf1d3ee3c06657644f8bb46496d1c6320b9fe0d961bec93d77bf65282"
+      },
+      "producerObjectives": [
+        {
+          "producerId": "RESOURCE_PRESERVING_V1",
+          "objective": "MINIMIZE_DECLARED_RESOURCE_COST"
+        },
+        {
+          "producerId": "OBJECTIVE_TARGETING_V1",
+          "objective": "ADVANCE_OBSERVED_OBJECTIVE_STRUCTURE"
+        },
+        {
+          "producerId": "THREAT_COVERING_V1",
+          "objective": "COVER_OBSERVED_UNSUPPORTED_THREAT"
+        },
+        {
+          "producerId": "RANDOM_LEGAL_V1",
+          "objective": "CONTROL_NO_OBJECTIVE"
+        }
+      ],
+      "nexusSelector": {
+        "source": "src/lab/stage3c-learned-nexus.js#nexusRelationalSelector",
+        "modified": false
+      },
+      "policiesModified": false,
+      "policiesAdded": false
+    },
+    "count": 4
+  },
+  "dataset": {
+    "DEV_N": 4000,
+    "CAL_N": 4000,
+    "HOLDOUT_N": 6000,
+    "OOD_N": 6000,
+    "RECORD_OVERLAP": 0,
+    "STATE_OVERLAP": 0,
+    "TOPOLOGY_OVERLAP": 0,
+    "overlapWithAllPriorStage3F6CRows": {
+      "topology": 0,
+      "record": 0,
+      "state": 0
+    },
+    "confirmatoryInternalOverlap": {
+      "HOLDOUT_OOD_topology": 0,
+      "record": 0,
+      "state": 0
+    },
+    "confirmatorySeedSpace": {
+      "version": "STAGE3F6T_CONFIRMATORY_HOLDOUT_OOD_V1",
+      "curriculum": "FORGE_CURRICULUM_V2",
+      "holdout": {
+        "levels": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5
+        ],
+        "seeds": [
+          601,
+          602,
+          603
+        ]
+      },
+      "ood": {
+        "levels": [
+          6,
+          7
+        ],
+        "seeds": [
+          611
+        ]
+      },
+      "priorSeedSpaces": [
+        1,
+        2,
+        3,
+        11,
+        201,
+        202,
+        203,
+        211,
+        401,
+        402,
+        403,
+        411
+      ],
+      "targets": {
+        "HOLDOUT": 6000,
+        "OOD": 6000
+      },
+      "excludes": "every topologyHash, recordHash and worldHash present in the Stage 3F.6-C corpus",
+      "reason": "Stage 3F.6-C HOLDOUT/OOD were exposed by Stage 3F.6-A sealed policy evaluation"
+    },
+    "trainingIntegrity": {
+      "corpusHashMatches": true,
+      "proposalsHashMatches": true,
+      "proposalsBoundToCorpus": true
+    },
+    "confirmatoryHashMatches": true,
+    "hashes": {
+      "DEV": "71307cf8f5003237953b8b50c37e1995f6ae06881e6f7d6ebb33c7365548d742",
+      "CAL": "04f95c18851069f90969e48a1c6b42c337b75a9a1a1969809d6795663c9a0570",
+      "HOLDOUT": "135e4f094dfc1bf9787889c8fe155ea5d9e7db301f679863b37460ebcb82d244",
+      "OOD": "833c1cd9785123a28d27e759fe311b85863b4e95299e836870b55469c7645468",
+      "trainingCorpus": "28fc6369511c2eb2e59d846a7a0353817cef9e56e871a65b4f8c2b577c1b62d5",
+      "trainingProposals": "0ab6b12b1c7940e4275d9011cce0f075a451ddc2fc7f88fa0ff79f1b28312d7a",
+      "confirmatory": "199a86724b710b13053e6c89d98e84218e92b47ab581691deadf541be704a843"
+    },
+    "exposureDecision": "Stage 3F.6-C HOLDOUT/OOD were exposed by Stage 3F.6-A sealed evaluation, so fresh confirmatory HOLDOUT/OOD were generated on seeds 601-603 / 611, disjoint from every prior seed space and excluding every prior topology, record and world state."
+  },
+  "featureContract": {
+    "profile": "DEPLOYABLE_CORE",
+    "hash": "5b0a631ece4c9304d4ee8b5298dadb7a2f8a5f18ac39a358216eb14d074ec926",
+    "featureCount": 30,
+    "audit": {
+      "featureCount": 30,
+      "noSimulatorFeature": true,
+      "noV2BFeature": true,
+      "noRolloutFeature": true
+    }
+  },
+  "router": {
+    "family": "MULTINOMIAL_LOGISTIC_REGRESSION_MASKED_SOFTMAX",
+    "routerHash": "25876d1899a17b0252605982ac353123308c1f006194d1e84844a381471d8d25",
+    "replayHash": "25876d1899a17b0252605982ac353123308c1f006194d1e84844a381471d8d25",
+    "threshold": 0,
+    "fallbackPolicy": "RESOURCE_PRESERVING_V1",
+    "bestSingleSelection": [
+      {
+        "policy": "RESOURCE_PRESERVING_V1",
+        "n": 8000,
+        "coveredN": 8000,
+        "coverage": 1,
+        "accuracy": 0.612125,
+        "meanRegret": 26.026625,
+        "p95Regret": 130,
+        "selectionAccuracy": 0.763375,
+        "selectionDistribution": {
+          "RESOURCE_PRESERVING_V1": 1
+        }
+      }
+    ],
+    "calibrationGrid": [
+      {
+        "threshold": 0,
+        "routedShare": 1,
+        "accuracy": 0.604,
+        "meanRegret": 24.66575,
+        "selectionAccuracy": 0.788
+      },
+      {
+        "threshold": 0.35,
+        "routedShare": 0.9985,
+        "accuracy": 0.603,
+        "meanRegret": 24.7865,
+        "selectionAccuracy": 0.787
+      },
+      {
+        "threshold": 0.4,
+        "routedShare": 0.99175,
+        "accuracy": 0.602,
+        "meanRegret": 24.902,
+        "selectionAccuracy": 0.78475
+      },
+      {
+        "threshold": 0.45,
+        "routedShare": 0.9845,
+        "accuracy": 0.60225,
+        "meanRegret": 24.87125,
+        "selectionAccuracy": 0.78325
+      },
+      {
+        "threshold": 0.5,
+        "routedShare": 0.97025,
+        "accuracy": 0.603,
+        "meanRegret": 24.7335,
+        "selectionAccuracy": 0.784
+      },
+      {
+        "threshold": 0.55,
+        "routedShare": 0.87375,
+        "accuracy": 0.6065,
+        "meanRegret": 24.85875,
+        "selectionAccuracy": 0.77975
+      },
+      {
+        "threshold": 0.6,
+        "routedShare": 0.76975,
+        "accuracy": 0.607,
+        "meanRegret": 24.9545,
+        "selectionAccuracy": 0.7745
+      },
+      {
+        "threshold": 0.65,
+        "routedShare": 0.6605,
+        "accuracy": 0.60875,
+        "meanRegret": 24.79775,
+        "selectionAccuracy": 0.7735
+      },
+      {
+        "threshold": 0.7,
+        "routedShare": 0.5305,
+        "accuracy": 0.60925,
+        "meanRegret": 24.9035,
+        "selectionAccuracy": 0.76925
+      },
+      {
+        "threshold": 0.75,
+        "routedShare": 0.3865,
+        "accuracy": 0.61025,
+        "meanRegret": 25.06375,
+        "selectionAccuracy": 0.767
+      },
+      {
+        "threshold": 0.8,
+        "routedShare": 0.26025,
+        "accuracy": 0.60925,
+        "meanRegret": 25.20325,
+        "selectionAccuracy": 0.764
+      },
+      {
+        "threshold": 0.85,
+        "routedShare": 0.17275,
+        "accuracy": 0.6095,
+        "meanRegret": 25.3185,
+        "selectionAccuracy": 0.76375
+      },
+      {
+        "threshold": 0.9,
+        "routedShare": 0.1505,
+        "accuracy": 0.60875,
+        "meanRegret": 25.424,
+        "selectionAccuracy": 0.76225
+      },
+      {
+        "threshold": 0.95,
+        "routedShare": 0.14875,
+        "accuracy": 0.60875,
+        "meanRegret": 25.4745,
+        "selectionAccuracy": 0.762
+      }
+    ],
+    "selectionAccuracy": {
+      "DEV": 0.79675,
+      "CAL": 0.788,
+      "HOLDOUT": 0.789,
+      "OOD": 0.8295
+    }
+  },
+  "evaluationFreezeHash": "665a29e3b8b1b16e6c65a20f45a2458ab1d10cee5ac3f42d23a60871600356fc",
+  "splits": {
+    "DEV": {
+      "label": "DEV",
+      "n": 4000,
+      "strategies": {
+        "ALWAYS_GREEDY": {
+          "n": 4000,
+          "coveredN": 4000,
+          "coverage": 1,
+          "accuracy": 0.26675,
+          "meanRegret": 48.26575,
+          "p95Regret": 142,
+          "selectionAccuracy": 0,
+          "selectionDistribution": {
+            "GREEDY": 1
+          }
+        },
+        "ALWAYS_RESOURCE_PRESERVING": {
+          "n": 4000,
+          "coveredN": 4000,
+          "coverage": 1,
+          "accuracy": 0.6155,
+          "meanRegret": 26.5475,
+          "p95Regret": 134,
+          "selectionAccuracy": 0.765,
+          "selectionDistribution": {
+            "RESOURCE_PRESERVING_V1": 1
+          }
+        },
+        "ALWAYS_NEXUS_SELECTOR": {
+          "n": 4000,
+          "coveredN": 3337,
+          "coverage": 0.83425,
+          "accuracy": 0.22715013485166316,
+          "meanRegret": 50.246029367695535,
+          "p95Regret": 143,
+          "selectionAccuracy": 0.43392268504644893,
+          "selectionDistribution": {
+            "NEXUS_SELECTOR": 1
+          }
+        },
+        "ALWAYS_OBJECTIVE_TARGETING": {
+          "n": 4000,
+          "coveredN": 182,
+          "coverage": 0.0455,
+          "accuracy": 0.1813186813186813,
+          "meanRegret": 63.620879120879124,
+          "p95Regret": 182,
+          "selectionAccuracy": 0.4010989010989011,
+          "selectionDistribution": {
+            "OBJECTIVE_TARGETING_V1": 1
+          }
+        },
+        "ALWAYS_THREAT_COVERING": {
+          "n": 4000,
+          "coveredN": 58,
+          "coverage": 0.0145,
+          "accuracy": 0.5172413793103449,
+          "meanRegret": 22.43103448275862,
+          "p95Regret": 80,
+          "selectionAccuracy": 0.603448275862069,
+          "selectionDistribution": {
+            "THREAT_COVERING_V1": 1
+          }
+        },
+        "RANDOM_LEGAL_CONTROL": {
+          "n": 4000,
+          "coveredN": 4000,
+          "coverage": 1,
+          "accuracy": 0.234,
+          "meanRegret": 57.72125,
+          "p95Regret": 159,
+          "selectionAccuracy": 0,
+          "selectionDistribution": {
+            "RANDOM_LEGAL_V1": 1
+          }
+        },
+        "ROUTED_POLICY_SET": {
+          "n": 4000,
+          "coveredN": 4000,
+          "coverage": 1,
+          "accuracy": 0.61475,
+          "meanRegret": 25.489,
+          "p95Regret": 130,
+          "selectionAccuracy": 0.79675,
+          "selectionDistribution": {
+            "RESOURCE_PRESERVING_V1": 0.85575,
+            "NEXUS_SELECTOR": 0.1245,
+            "THREAT_COVERING_V1": 0.012,
+            "OBJECTIVE_TARGETING_V1": 0.00775
+          }
+        },
+        "ROUTED_POLICY_SET_FULL_COVERAGE": {
+          "n": 4000,
+          "coveredN": 4000,
+          "coverage": 1,
+          "accuracy": 0.61475,
+          "meanRegret": 25.489,
+          "p95Regret": 130,
+          "selectionAccuracy": 0.79675,
+          "selectionDistribution": {
+            "RESOURCE_PRESERVING_V1": 0.85575,
+            "NEXUS_SELECTOR": 0.1245,
+            "THREAT_COVERING_V1": 0.012,
+            "OBJECTIVE_TARGETING_V1": 0.00775
+          }
+        },
+        "ORACLE_POLICY_SET": {
+          "n": 4000,
+          "coveredN": 4000,
+          "coverage": 1,
+          "accuracy": 0.70225,
+          "meanRegret": 16.51125,
+          "p95Regret": 98,
+          "selectionAccuracy": 1,
+          "selectionDistribution": {
+            "RESOURCE_PRESERVING_V1": 0.765,
+            "NEXUS_SELECTOR": 0.221,
+            "THREAT_COVERING_V1": 0.007,
+            "OBJECTIVE_TARGETING_V1": 0.007
+          }
+        }
+      },
+      "routerCoverage": 1,
+      "routerMinusBestSingle": {
+        "accuracy": -0.0007500000000000284,
+        "meanRegret": -1.0584999999999987,
+        "bootstrap": {
+          "n": 4000,
+          "accuracyDifference": -0.00075,
+          "accuracyCi95": [
+            -0.009,
+            0.00825
+          ],
+          "regretDifference": -1.0585,
+          "regretCi95": [
+            -1.8965,
+            -0.2285
+          ],
+          "episodesImproved": 321,
+          "episodesWorsened": 190
+        }
+      },
+      "oracleGainCaptured": {
+        "accuracy": -0.008645533141210703,
+        "regret": 0.10546767966122793,
+        "accuracyDenominator": 0.08675,
+        "regretDenominator": 10.036249999999999
+      },
+      "collapse": {
+        "topPolicy": "RESOURCE_PRESERVING_V1",
+        "topShare": 0.85575,
+        "optimalShareOfTopPolicy": 0.765,
+        "POLICY_COLLAPSE": false,
+        "rawOver90": false,
+        "policiesSelectedOnAtLeast5Percent": 2
+      },
+      "confusion": {
+        "matrix": {
+          "RESOURCE_PRESERVING_V1": {
+            "RESOURCE_PRESERVING_V1": 2305,
+            "NEXUS_SELECTOR": 171,
+            "OBJECTIVE_TARGETING_V1": 7,
+            "THREAT_COVERING_V1": 11
+          },
+          "TIE": {
+            "RESOURCE_PRESERVING_V1": 519,
+            "NEXUS_SELECTOR": 77,
+            "OBJECTIVE_TARGETING_V1": 8,
+            "THREAT_COVERING_V1": 5
+          },
+          "NEXUS_SELECTOR": {
+            "NEXUS_SELECTOR": 250,
+            "RESOURCE_PRESERVING_V1": 591,
+            "OBJECTIVE_TARGETING_V1": 2,
+            "THREAT_COVERING_V1": 3
+          },
+          "THREAT_COVERING_V1": {
+            "THREAT_COVERING_V1": 28
+          },
+          "OBJECTIVE_TARGETING_V1": {
+            "OBJECTIVE_TARGETING_V1": 14,
+            "RESOURCE_PRESERVING_V1": 8,
+            "THREAT_COVERING_V1": 1
+          }
+        },
+        "recall": {
+          "RESOURCE_PRESERVING_V1": {
+            "uniquelyBestN": 2494,
+            "selectedWhenUniquelyBest": 0.9242181234963913,
+            "inBestSetN": 3060,
+            "selectedWhenInBestSet": 0.9166666666666666
+          },
+          "NEXUS_SELECTOR": {
+            "uniquelyBestN": 846,
+            "selectedWhenUniquelyBest": 0.29550827423167847,
+            "inBestSetN": 1448,
+            "selectedWhenInBestSet": 0.22582872928176795
+          },
+          "OBJECTIVE_TARGETING_V1": {
+            "uniquelyBestN": 23,
+            "selectedWhenUniquelyBest": 0.6086956521739131,
+            "inBestSetN": 73,
+            "selectedWhenInBestSet": 0.3013698630136986
+          },
+          "THREAT_COVERING_V1": {
+            "uniquelyBestN": 28,
+            "selectedWhenUniquelyBest": 1,
+            "inBestSetN": 35,
+            "selectedWhenInBestSet": 0.9428571428571428
+          }
+        }
+      },
+      "opportunity": {
+        "NONE_AVAILABLE": 0,
+        "TIE": 0.15225,
+        "RESOURCE_PRESERVING_V1": 0.6235,
+        "NEXUS_SELECTOR": 0.2115,
+        "OBJECTIVE_TARGETING_V1": 0.00575,
+        "THREAT_COVERING_V1": 0.007,
+        "GREEDY_AT_LEAST_AS_GOOD_AS_BEST_DEPLOYABLE": 0.4535,
+        "GREEDY_STRICTLY_BETTER_THAN_BEST_DEPLOYABLE": 0.073
+      },
+      "falseSelectionHarm": {
+        "falseSelections": 813,
+        "rate": 0.20325,
+        "meanAddedRegret": 44.170971709717094,
+        "p90": 122,
+        "p95": 148,
+        "p99": 208,
+        "worst": 360
+      },
+      "bestSingleP95Regret": 134
+    },
+    "CAL": {
+      "label": "CAL",
+      "n": 4000,
+      "strategies": {
+        "ALWAYS_GREEDY": {
+          "n": 4000,
+          "coveredN": 4000,
+          "coverage": 1,
+          "accuracy": 0.2655,
+          "meanRegret": 49.676,
+          "p95Regret": 142,
+          "selectionAccuracy": 0,
+          "selectionDistribution": {
+            "GREEDY": 1
+          }
+        },
+        "ALWAYS_RESOURCE_PRESERVING": {
+          "n": 4000,
+          "coveredN": 4000,
+          "coverage": 1,
+          "accuracy": 0.60875,
+          "meanRegret": 25.50575,
+          "p95Regret": 126,
+          "selectionAccuracy": 0.76175,
+          "selectionDistribution": {
+            "RESOURCE_PRESERVING_V1": 1
+          }
+        },
+        "ALWAYS_NEXUS_SELECTOR": {
+          "n": 4000,
+          "coveredN": 3370,
+          "coverage": 0.8425,
+          "accuracy": 0.22225519287833828,
+          "meanRegret": 52.092284866468844,
+          "p95Regret": 147,
+          "selectionAccuracy": 0.4261127596439169,
+          "selectionDistribution": {
+            "NEXUS_SELECTOR": 1
+          }
+        },
+        "ALWAYS_OBJECTIVE_TARGETING": {
+          "n": 4000,
+          "coveredN": 200,
+          "coverage": 0.05,
+          "accuracy": 0.215,
+          "meanRegret": 64.265,
+          "p95Regret": 193,
+          "selectionAccuracy": 0.465,
+          "selectionDistribution": {
+            "OBJECTIVE_TARGETING_V1": 1
+          }
+        },
+        "ALWAYS_THREAT_COVERING": {
+          "n": 4000,
+          "coveredN": 60,
+          "coverage": 0.015,
+          "accuracy": 0.4,
+          "meanRegret": 25.05,
+          "p95Regret": 82,
+          "selectionAccuracy": 0.55,
+          "selectionDistribution": {
+            "THREAT_COVERING_V1": 1
+          }
+        },
+        "RANDOM_LEGAL_CONTROL": {
+          "n": 4000,
+          "coveredN": 4000,
+          "coverage": 1,
+          "accuracy": 0.21775,
+          "meanRegret": 58.12575,
+          "p95Regret": 156,
+          "selectionAccuracy": 0,
+          "selectionDistribution": {
+            "RANDOM_LEGAL_V1": 1
+          }
+        },
+        "ROUTED_POLICY_SET": {
+          "n": 4000,
+          "coveredN": 4000,
+          "coverage": 1,
+          "accuracy": 0.604,
+          "meanRegret": 24.66575,
+          "p95Regret": 127,
+          "selectionAccuracy": 0.788,
+          "selectionDistribution": {
+            "RESOURCE_PRESERVING_V1": 0.84725,
+            "THREAT_COVERING_V1": 0.01075,
+            "NEXUS_SELECTOR": 0.1315,
+            "OBJECTIVE_TARGETING_V1": 0.0105
+          }
+        },
+        "ROUTED_POLICY_SET_FULL_COVERAGE": {
+          "n": 4000,
+          "coveredN": 4000,
+          "coverage": 1,
+          "accuracy": 0.604,
+          "meanRegret": 24.66575,
+          "p95Regret": 127,
+          "selectionAccuracy": 0.788,
+          "selectionDistribution": {
+            "RESOURCE_PRESERVING_V1": 0.84725,
+            "THREAT_COVERING_V1": 0.01075,
+            "NEXUS_SELECTOR": 0.1315,
+            "OBJECTIVE_TARGETING_V1": 0.0105
+          }
+        },
+        "ORACLE_POLICY_SET": {
+          "n": 4000,
+          "coveredN": 4000,
+          "coverage": 1,
+          "accuracy": 0.6995,
+          "meanRegret": 15.82475,
+          "p95Regret": 92,
+          "selectionAccuracy": 1,
+          "selectionDistribution": {
+            "RESOURCE_PRESERVING_V1": 0.76175,
+            "OBJECTIVE_TARGETING_V1": 0.00975,
+            "NEXUS_SELECTOR": 0.22125,
+            "THREAT_COVERING_V1": 0.00725
+          }
+        }
+      },
+      "routerCoverage": 1,
+      "routerMinusBestSingle": {
+        "accuracy": -0.004750000000000032,
+        "meanRegret": -0.8399999999999999,
+        "bootstrap": {
+          "n": 4000,
+          "accuracyDifference": -0.00475,
+          "accuracyCi95": [
+            -0.01375,
+            0.0045
+          ],
+          "regretDifference": -0.84,
+          "regretCi95": [
+            -1.66625,
+            -0.005
+          ],
+          "episodesImproved": 332,
+          "episodesWorsened": 215
+        }
+      },
+      "oracleGainCaptured": {
+        "accuracy": -0.052341597796143606,
+        "regret": 0.08676789587852494,
+        "accuracyDenominator": 0.09075,
+        "regretDenominator": 9.681
+      },
+      "collapse": {
+        "topPolicy": "RESOURCE_PRESERVING_V1",
+        "topShare": 0.84725,
+        "optimalShareOfTopPolicy": 0.76175,
+        "POLICY_COLLAPSE": false,
+        "rawOver90": false,
+        "policiesSelectedOnAtLeast5Percent": 2
+      },
+      "confusion": {
+        "matrix": {
+          "RESOURCE_PRESERVING_V1": {
+            "RESOURCE_PRESERVING_V1": 2280,
+            "OBJECTIVE_TARGETING_V1": 12,
+            "THREAT_COVERING_V1": 14,
+            "NEXUS_SELECTOR": 187
+          },
+          "TIE": {
+            "THREAT_COVERING_V1": 3,
+            "NEXUS_SELECTOR": 76,
+            "RESOURCE_PRESERVING_V1": 508,
+            "OBJECTIVE_TARGETING_V1": 13
+          },
+          "NEXUS_SELECTOR": {
+            "NEXUS_SELECTOR": 254,
+            "RESOURCE_PRESERVING_V1": 584,
+            "THREAT_COVERING_V1": 4
+          },
+          "THREAT_COVERING_V1": {
+            "THREAT_COVERING_V1": 22,
+            "NEXUS_SELECTOR": 2,
+            "RESOURCE_PRESERVING_V1": 4,
+            "OBJECTIVE_TARGETING_V1": 1
+          },
+          "OBJECTIVE_TARGETING_V1": {
+            "OBJECTIVE_TARGETING_V1": 16,
+            "RESOURCE_PRESERVING_V1": 13,
+            "NEXUS_SELECTOR": 7
+          }
+        },
+        "recall": {
+          "RESOURCE_PRESERVING_V1": {
+            "uniquelyBestN": 2493,
+            "selectedWhenUniquelyBest": 0.914560770156438,
+            "inBestSetN": 3047,
+            "selectedWhenInBestSet": 0.9087627174269773
+          },
+          "NEXUS_SELECTOR": {
+            "uniquelyBestN": 842,
+            "selectedWhenUniquelyBest": 0.3016627078384798,
+            "inBestSetN": 1436,
+            "selectedWhenInBestSet": 0.22910863509749305
+          },
+          "OBJECTIVE_TARGETING_V1": {
+            "uniquelyBestN": 36,
+            "selectedWhenUniquelyBest": 0.4444444444444444,
+            "inBestSetN": 93,
+            "selectedWhenInBestSet": 0.3118279569892473
+          },
+          "THREAT_COVERING_V1": {
+            "uniquelyBestN": 29,
+            "selectedWhenUniquelyBest": 0.7586206896551724,
+            "inBestSetN": 33,
+            "selectedWhenInBestSet": 0.7575757575757576
+          }
+        }
+      },
+      "opportunity": {
+        "NONE_AVAILABLE": 0,
+        "TIE": 0.15,
+        "RESOURCE_PRESERVING_V1": 0.62325,
+        "NEXUS_SELECTOR": 0.2105,
+        "OBJECTIVE_TARGETING_V1": 0.009,
+        "THREAT_COVERING_V1": 0.00725,
+        "GREEDY_AT_LEAST_AS_GOOD_AS_BEST_DEPLOYABLE": 0.442,
+        "GREEDY_STRICTLY_BETTER_THAN_BEST_DEPLOYABLE": 0.07025
+      },
+      "falseSelectionHarm": {
+        "falseSelections": 848,
+        "rate": 0.212,
+        "meanAddedRegret": 41.70283018867924,
+        "p90": 121,
+        "p95": 142,
+        "p99": 189,
+        "worst": 362
+      },
+      "bestSingleP95Regret": 126
+    },
+    "HOLDOUT": {
+      "label": "HOLDOUT",
+      "n": 6000,
+      "strategies": {
+        "ALWAYS_GREEDY": {
+          "n": 6000,
+          "coveredN": 6000,
+          "coverage": 1,
+          "accuracy": 0.26966666666666667,
+          "meanRegret": 49.14116666666666,
+          "p95Regret": 141,
+          "selectionAccuracy": 0,
+          "selectionDistribution": {
+            "GREEDY": 1
+          }
+        },
+        "ALWAYS_RESOURCE_PRESERVING": {
+          "n": 6000,
+          "coveredN": 6000,
+          "coverage": 1,
+          "accuracy": 0.6141666666666666,
+          "meanRegret": 25.964,
+          "p95Regret": 127,
+          "selectionAccuracy": 0.7565,
+          "selectionDistribution": {
+            "RESOURCE_PRESERVING_V1": 1
+          }
+        },
+        "ALWAYS_NEXUS_SELECTOR": {
+          "n": 6000,
+          "coveredN": 5107,
+          "coverage": 0.8511666666666666,
+          "accuracy": 0.2289015077344821,
+          "meanRegret": 51.58351282553358,
+          "p95Regret": 142,
+          "selectionAccuracy": 0.4276483258272959,
+          "selectionDistribution": {
+            "NEXUS_SELECTOR": 1
+          }
+        },
+        "ALWAYS_OBJECTIVE_TARGETING": {
+          "n": 6000,
+          "coveredN": 284,
+          "coverage": 0.04733333333333333,
+          "accuracy": 0.27816901408450706,
+          "meanRegret": 59.95070422535211,
+          "p95Regret": 175,
+          "selectionAccuracy": 0.5070422535211268,
+          "selectionDistribution": {
+            "OBJECTIVE_TARGETING_V1": 1
+          }
+        },
+        "ALWAYS_THREAT_COVERING": {
+          "n": 6000,
+          "coveredN": 99,
+          "coverage": 0.0165,
+          "accuracy": 0.36363636363636365,
+          "meanRegret": 32.91919191919192,
+          "p95Regret": 128,
+          "selectionAccuracy": 0.5858585858585859,
+          "selectionDistribution": {
+            "THREAT_COVERING_V1": 1
+          }
+        },
+        "RANDOM_LEGAL_CONTROL": {
+          "n": 6000,
+          "coveredN": 6000,
+          "coverage": 1,
+          "accuracy": 0.2275,
+          "meanRegret": 58.29816666666667,
+          "p95Regret": 159,
+          "selectionAccuracy": 0,
+          "selectionDistribution": {
+            "RANDOM_LEGAL_V1": 1
+          }
+        },
+        "ROUTED_POLICY_SET": {
+          "n": 6000,
+          "coveredN": 6000,
+          "coverage": 1,
+          "accuracy": 0.6153333333333333,
+          "meanRegret": 24.812333333333335,
+          "p95Regret": 125,
+          "selectionAccuracy": 0.789,
+          "selectionDistribution": {
+            "NEXUS_SELECTOR": 0.1275,
+            "OBJECTIVE_TARGETING_V1": 0.010666666666666666,
+            "RESOURCE_PRESERVING_V1": 0.848,
+            "THREAT_COVERING_V1": 0.013833333333333333
+          }
+        },
+        "ROUTED_POLICY_SET_FULL_COVERAGE": {
+          "n": 6000,
+          "coveredN": 6000,
+          "coverage": 1,
+          "accuracy": 0.6153333333333333,
+          "meanRegret": 24.812333333333335,
+          "p95Regret": 125,
+          "selectionAccuracy": 0.789,
+          "selectionDistribution": {
+            "NEXUS_SELECTOR": 0.1275,
+            "OBJECTIVE_TARGETING_V1": 0.010666666666666666,
+            "RESOURCE_PRESERVING_V1": 0.848,
+            "THREAT_COVERING_V1": 0.013833333333333333
+          }
+        },
+        "ORACLE_POLICY_SET": {
+          "n": 6000,
+          "coveredN": 6000,
+          "coverage": 1,
+          "accuracy": 0.7063333333333334,
+          "meanRegret": 15.916833333333333,
+          "p95Regret": 93,
+          "selectionAccuracy": 1,
+          "selectionDistribution": {
+            "RESOURCE_PRESERVING_V1": 0.7565,
+            "OBJECTIVE_TARGETING_V1": 0.009166666666666667,
+            "NEXUS_SELECTOR": 0.227,
+            "THREAT_COVERING_V1": 0.007333333333333333
+          }
+        }
+      },
+      "routerCoverage": 1,
+      "routerMinusBestSingle": {
+        "accuracy": 0.0011666666666666492,
+        "meanRegret": -1.1516666666666637,
+        "bootstrap": {
+          "n": 6000,
+          "accuracyDifference": 0.0011666666666666668,
+          "accuracyCi95": [
+            -0.005833333333333334,
+            0.0085
+          ],
+          "regretDifference": -1.1516666666666666,
+          "regretCi95": [
+            -1.8641666666666667,
+            -0.38383333333333336
+          ],
+          "episodesImproved": 516,
+          "episodesWorsened": 298
+        }
+      },
+      "oracleGainCaptured": {
+        "accuracy": 0.012658227848101068,
+        "regret": 0.11462601396745323,
+        "accuracyDenominator": 0.09216666666666673,
+        "regretDenominator": 10.047166666666666
+      },
+      "collapse": {
+        "topPolicy": "RESOURCE_PRESERVING_V1",
+        "topShare": 0.848,
+        "optimalShareOfTopPolicy": 0.7565,
+        "POLICY_COLLAPSE": false,
+        "rawOver90": false,
+        "policiesSelectedOnAtLeast5Percent": 2
+      },
+      "confusion": {
+        "matrix": {
+          "TIE": {
+            "NEXUS_SELECTOR": 116,
+            "RESOURCE_PRESERVING_V1": 757,
+            "OBJECTIVE_TARGETING_V1": 27,
+            "THREAT_COVERING_V1": 11
+          },
+          "OBJECTIVE_TARGETING_V1": {
+            "OBJECTIVE_TARGETING_V1": 20,
+            "RESOURCE_PRESERVING_V1": 12,
+            "NEXUS_SELECTOR": 10,
+            "THREAT_COVERING_V1": 3
+          },
+          "RESOURCE_PRESERVING_V1": {
+            "RESOURCE_PRESERVING_V1": 3414,
+            "OBJECTIVE_TARGETING_V1": 13,
+            "NEXUS_SELECTOR": 259,
+            "THREAT_COVERING_V1": 24
+          },
+          "NEXUS_SELECTOR": {
+            "NEXUS_SELECTOR": 378,
+            "RESOURCE_PRESERVING_V1": 904,
+            "THREAT_COVERING_V1": 6,
+            "OBJECTIVE_TARGETING_V1": 2
+          },
+          "THREAT_COVERING_V1": {
+            "THREAT_COVERING_V1": 39,
+            "OBJECTIVE_TARGETING_V1": 2,
+            "NEXUS_SELECTOR": 2,
+            "RESOURCE_PRESERVING_V1": 1
+          }
+        },
+        "recall": {
+          "RESOURCE_PRESERVING_V1": {
+            "uniquelyBestN": 3710,
+            "selectedWhenUniquelyBest": 0.9202156334231806,
+            "inBestSetN": 4539,
+            "selectedWhenInBestSet": 0.9129764265256665
+          },
+          "NEXUS_SELECTOR": {
+            "uniquelyBestN": 1290,
+            "selectedWhenUniquelyBest": 0.2930232558139535,
+            "inBestSetN": 2184,
+            "selectedWhenInBestSet": 0.22573260073260074
+          },
+          "OBJECTIVE_TARGETING_V1": {
+            "uniquelyBestN": 45,
+            "selectedWhenUniquelyBest": 0.4444444444444444,
+            "inBestSetN": 144,
+            "selectedWhenInBestSet": 0.3263888888888889
+          },
+          "THREAT_COVERING_V1": {
+            "uniquelyBestN": 44,
+            "selectedWhenUniquelyBest": 0.8863636363636364,
+            "inBestSetN": 58,
+            "selectedWhenInBestSet": 0.8620689655172413
+          }
+        }
+      },
+      "opportunity": {
+        "NONE_AVAILABLE": 0,
+        "TIE": 0.15183333333333332,
+        "RESOURCE_PRESERVING_V1": 0.6183333333333333,
+        "NEXUS_SELECTOR": 0.215,
+        "OBJECTIVE_TARGETING_V1": 0.0075,
+        "THREAT_COVERING_V1": 0.007333333333333333,
+        "GREEDY_AT_LEAST_AS_GOOD_AS_BEST_DEPLOYABLE": 0.44916666666666666,
+        "GREEDY_STRICTLY_BETTER_THAN_BEST_DEPLOYABLE": 0.07033333333333333
+      },
+      "falseSelectionHarm": {
+        "falseSelections": 1266,
+        "rate": 0.211,
+        "meanAddedRegret": 42.15876777251185,
+        "p90": 119,
+        "p95": 144,
+        "p99": 204,
+        "worst": 260
+      },
+      "bestSingleP95Regret": 127
+    },
+    "OOD": {
+      "label": "OOD",
+      "n": 6000,
+      "strategies": {
+        "ALWAYS_GREEDY": {
+          "n": 6000,
+          "coveredN": 6000,
+          "coverage": 1,
+          "accuracy": 0.2728333333333333,
+          "meanRegret": 69.42,
+          "p95Regret": 176,
+          "selectionAccuracy": 0,
+          "selectionDistribution": {
+            "GREEDY": 1
+          }
+        },
+        "ALWAYS_RESOURCE_PRESERVING": {
+          "n": 6000,
+          "coveredN": 6000,
+          "coverage": 1,
+          "accuracy": 0.7515,
+          "meanRegret": 24.267,
+          "p95Regret": 168,
+          "selectionAccuracy": 0.8193333333333334,
+          "selectionDistribution": {
+            "RESOURCE_PRESERVING_V1": 1
+          }
+        },
+        "ALWAYS_NEXUS_SELECTOR": {
+          "n": 6000,
+          "coveredN": 5065,
+          "coverage": 0.8441666666666666,
+          "accuracy": 0.2458045409674235,
+          "meanRegret": 72.05883514313919,
+          "p95Regret": 178,
+          "selectionAccuracy": 0.4080947680157947,
+          "selectionDistribution": {
+            "NEXUS_SELECTOR": 1
+          }
+        },
+        "ALWAYS_OBJECTIVE_TARGETING": {
+          "n": 6000,
+          "coveredN": 100,
+          "coverage": 0.016666666666666666,
+          "accuracy": 0.17,
+          "meanRegret": 105.66,
+          "p95Regret": 263,
+          "selectionAccuracy": 0.44,
+          "selectionDistribution": {
+            "OBJECTIVE_TARGETING_V1": 1
+          }
+        },
+        "ALWAYS_THREAT_COVERING": {
+          "n": 6000,
+          "coveredN": 28,
+          "coverage": 0.004666666666666667,
+          "accuracy": 0.21428571428571427,
+          "meanRegret": 54.142857142857146,
+          "p95Regret": 135,
+          "selectionAccuracy": 0.4642857142857143,
+          "selectionDistribution": {
+            "THREAT_COVERING_V1": 1
+          }
+        },
+        "RANDOM_LEGAL_CONTROL": {
+          "n": 6000,
+          "coveredN": 6000,
+          "coverage": 1,
+          "accuracy": 0.2245,
+          "meanRegret": 81.99716666666667,
+          "p95Regret": 192,
+          "selectionAccuracy": 0,
+          "selectionDistribution": {
+            "RANDOM_LEGAL_V1": 1
+          }
+        },
+        "ROUTED_POLICY_SET": {
+          "n": 6000,
+          "coveredN": 6000,
+          "coverage": 1,
+          "accuracy": 0.7413333333333333,
+          "meanRegret": 24.750166666666665,
+          "p95Regret": 167,
+          "selectionAccuracy": 0.8295,
+          "selectionDistribution": {
+            "RESOURCE_PRESERVING_V1": 0.9311666666666667,
+            "NEXUS_SELECTOR": 0.06166666666666667,
+            "OBJECTIVE_TARGETING_V1": 0.0045,
+            "THREAT_COVERING_V1": 0.0026666666666666666
+          }
+        },
+        "ROUTED_POLICY_SET_FULL_COVERAGE": {
+          "n": 6000,
+          "coveredN": 6000,
+          "coverage": 1,
+          "accuracy": 0.7413333333333333,
+          "meanRegret": 24.750166666666665,
+          "p95Regret": 167,
+          "selectionAccuracy": 0.8295,
+          "selectionDistribution": {
+            "RESOURCE_PRESERVING_V1": 0.9311666666666667,
+            "NEXUS_SELECTOR": 0.06166666666666667,
+            "OBJECTIVE_TARGETING_V1": 0.0045,
+            "THREAT_COVERING_V1": 0.0026666666666666666
+          }
+        },
+        "ORACLE_POLICY_SET": {
+          "n": 6000,
+          "coveredN": 6000,
+          "coverage": 1,
+          "accuracy": 0.807,
+          "meanRegret": 16.105333333333334,
+          "p95Regret": 117,
+          "selectionAccuracy": 1,
+          "selectionDistribution": {
+            "NEXUS_SELECTOR": 0.17733333333333334,
+            "RESOURCE_PRESERVING_V1": 0.8193333333333334,
+            "THREAT_COVERING_V1": 0.0013333333333333333,
+            "OBJECTIVE_TARGETING_V1": 0.002
+          }
+        }
+      },
+      "routerCoverage": 1,
+      "routerMinusBestSingle": {
+        "accuracy": -0.010166666666666657,
+        "meanRegret": 0.48316666666666563,
+        "bootstrap": {
+          "n": 6000,
+          "accuracyDifference": -0.010166666666666666,
+          "accuracyCi95": [
+            -0.015333333333333332,
+            -0.005333333333333333
+          ],
+          "regretDifference": 0.4831666666666667,
+          "regretCi95": [
+            -0.0985,
+            1.1156666666666666
+          ],
+          "episodesImproved": 218,
+          "episodesWorsened": 154
+        }
+      },
+      "oracleGainCaptured": {
+        "accuracy": -0.18318318318318266,
+        "regret": -0.05919950990402276,
+        "accuracyDenominator": 0.055500000000000105,
+        "regretDenominator": 8.161666666666665
+      },
+      "collapse": {
+        "topPolicy": "RESOURCE_PRESERVING_V1",
+        "topShare": 0.9311666666666667,
+        "optimalShareOfTopPolicy": 0.8193333333333334,
+        "POLICY_COLLAPSE": true,
+        "rawOver90": true,
+        "policiesSelectedOnAtLeast5Percent": 2
+      },
+      "confusion": {
+        "matrix": {
+          "NEXUS_SELECTOR": {
+            "RESOURCE_PRESERVING_V1": 840,
+            "NEXUS_SELECTOR": 188,
+            "THREAT_COVERING_V1": 2,
+            "OBJECTIVE_TARGETING_V1": 4
+          },
+          "RESOURCE_PRESERVING_V1": {
+            "RESOURCE_PRESERVING_V1": 3760,
+            "NEXUS_SELECTOR": 137,
+            "OBJECTIVE_TARGETING_V1": 8,
+            "THREAT_COVERING_V1": 7
+          },
+          "TIE": {
+            "RESOURCE_PRESERVING_V1": 981,
+            "OBJECTIVE_TARGETING_V1": 8,
+            "NEXUS_SELECTOR": 43,
+            "THREAT_COVERING_V1": 3
+          },
+          "THREAT_COVERING_V1": {
+            "NEXUS_SELECTOR": 2,
+            "THREAT_COVERING_V1": 4,
+            "RESOURCE_PRESERVING_V1": 2
+          },
+          "OBJECTIVE_TARGETING_V1": {
+            "OBJECTIVE_TARGETING_V1": 7,
+            "RESOURCE_PRESERVING_V1": 4
+          }
+        },
+        "recall": {
+          "RESOURCE_PRESERVING_V1": {
+            "uniquelyBestN": 3912,
+            "selectedWhenUniquelyBest": 0.9611451942740287,
+            "inBestSetN": 4916,
+            "selectedWhenInBestSet": 0.9609438567941416
+          },
+          "NEXUS_SELECTOR": {
+            "uniquelyBestN": 1034,
+            "selectedWhenUniquelyBest": 0.18181818181818182,
+            "inBestSetN": 2067,
+            "selectedWhenInBestSet": 0.11175616835994194
+          },
+          "OBJECTIVE_TARGETING_V1": {
+            "uniquelyBestN": 11,
+            "selectedWhenUniquelyBest": 0.6363636363636364,
+            "inBestSetN": 44,
+            "selectedWhenInBestSet": 0.3409090909090909
+          },
+          "THREAT_COVERING_V1": {
+            "uniquelyBestN": 8,
+            "selectedWhenUniquelyBest": 0.5,
+            "inBestSetN": 13,
+            "selectedWhenInBestSet": 0.5384615384615384
+          }
+        }
+      },
+      "opportunity": {
+        "NONE_AVAILABLE": 0,
+        "TIE": 0.1725,
+        "RESOURCE_PRESERVING_V1": 0.652,
+        "NEXUS_SELECTOR": 0.17233333333333334,
+        "OBJECTIVE_TARGETING_V1": 0.0018333333333333333,
+        "THREAT_COVERING_V1": 0.0013333333333333333,
+        "GREEDY_AT_LEAST_AS_GOOD_AS_BEST_DEPLOYABLE": 0.4141666666666667,
+        "GREEDY_STRICTLY_BETTER_THAN_BEST_DEPLOYABLE": 0.05366666666666667
+      },
+      "falseSelectionHarm": {
+        "falseSelections": 1023,
+        "rate": 0.1705,
+        "meanAddedRegret": 50.70283479960899,
+        "p90": 162,
+        "p95": 184,
+        "p99": 244,
+        "worst": 386
+      },
+      "bestSingleP95Regret": 168
+    }
+  },
+  "regimes": {
+    "HOLDOUT": {
+      "RESOURCE_PRESSURE": {
+        "HIGH_ENERGY": {
+          "n": 2560,
+          "supported": true,
+          "routerAccuracy": 0.553125,
+          "routerRegret": 25.514453125,
+          "bestSingleAccuracy": 0.545703125,
+          "bestSingleRegret": 28.288671875,
+          "oracleAccuracy": 0.654296875,
+          "oracleRegret": 16.457421875,
+          "routerMinusBestSingleRegret": -2.7742187499999993,
+          "resourceUniquelyBest": 0.6046875,
+          "nexusUniquelyBest": 0.2265625,
+          "threatUniquelyBest": 0.0109375,
+          "objectiveUniquelyBest": 0.0125,
+          "tie": 0.1453125,
+          "routerSelection": {
+            "NEXUS_SELECTOR": 0.148828125,
+            "RESOURCE_PRESERVING_V1": 0.814453125,
+            "THREAT_COVERING_V1": 0.023828125,
+            "OBJECTIVE_TARGETING_V1": 0.012890625
+          }
+        },
+        "LOW_ENERGY": {
+          "n": 3440,
+          "supported": true,
+          "routerAccuracy": 0.6616279069767442,
+          "routerRegret": 24.28982558139535,
+          "bestSingleAccuracy": 0.6651162790697674,
+          "bestSingleRegret": 24.234011627906977,
+          "oracleAccuracy": 0.7450581395348838,
+          "oracleRegret": 15.51453488372093,
+          "routerMinusBestSingleRegret": 0.05581395348837148,
+          "resourceUniquelyBest": 0.6284883720930232,
+          "nexusUniquelyBest": 0.2063953488372093,
+          "threatUniquelyBest": 0.004651162790697674,
+          "objectiveUniquelyBest": 0.0037790697674418604,
+          "tie": 0.1566860465116279,
+          "routerSelection": {
+            "OBJECTIVE_TARGETING_V1": 0.009011627906976745,
+            "RESOURCE_PRESERVING_V1": 0.8729651162790698,
+            "NEXUS_SELECTOR": 0.11162790697674418,
+            "THREAT_COVERING_V1": 0.006395348837209302
+          }
+        }
+      },
+      "OBJECTIVE_PRESSURE": {
+        "MULTI_OBJECTIVE": {
+          "n": 4595,
+          "supported": true,
+          "routerAccuracy": 0.6235038084874864,
+          "routerRegret": 25.242437431991295,
+          "bestSingleAccuracy": 0.620892274211099,
+          "bestSingleRegret": 26.456800870511426,
+          "oracleAccuracy": 0.7155603917301414,
+          "oracleRegret": 16.084657236126223,
+          "routerMinusBestSingleRegret": -1.214363438520131,
+          "resourceUniquelyBest": 0.6071817192600653,
+          "nexusUniquelyBest": 0.21741022850924918,
+          "threatUniquelyBest": 0.006746463547334059,
+          "objectiveUniquelyBest": 0.007834602829162133,
+          "tie": 0.16082698585418934,
+          "routerSelection": {
+            "NEXUS_SELECTOR": 0.1133841131664853,
+            "OBJECTIVE_TARGETING_V1": 0.011099020674646356,
+            "RESOURCE_PRESERVING_V1": 0.8624591947769314,
+            "THREAT_COVERING_V1": 0.013057671381936888
+          }
+        },
+        "SINGLE_OBJECTIVE": {
+          "n": 1405,
+          "supported": true,
+          "routerAccuracy": 0.5886120996441281,
+          "routerRegret": 23.405693950177938,
+          "bestSingleAccuracy": 0.592170818505338,
+          "bestSingleRegret": 24.352313167259787,
+          "oracleAccuracy": 0.6761565836298933,
+          "oracleRegret": 15.367971530249111,
+          "routerMinusBestSingleRegret": -0.9466192170818495,
+          "resourceUniquelyBest": 0.6548042704626335,
+          "nexusUniquelyBest": 0.20711743772241992,
+          "threatUniquelyBest": 0.009252669039145907,
+          "objectiveUniquelyBest": 0.006405693950177936,
+          "tie": 0.12241992882562278,
+          "routerSelection": {
+            "RESOURCE_PRESERVING_V1": 0.800711743772242,
+            "NEXUS_SELECTOR": 0.17366548042704627,
+            "OBJECTIVE_TARGETING_V1": 0.009252669039145907,
+            "THREAT_COVERING_V1": 0.016370106761565837
+          }
+        }
+      },
+      "THREAT_PRESSURE": {
+        "NO_UNSUPPORTED_THREAT": {
+          "n": 3355,
+          "supported": true,
+          "routerAccuracy": 0.6476900149031296,
+          "routerRegret": 22.47719821162444,
+          "bestSingleAccuracy": 0.6414307004470939,
+          "bestSingleRegret": 22.836363636363636,
+          "oracleAccuracy": 0.7245901639344262,
+          "oracleRegret": 15.249180327868853,
+          "routerMinusBestSingleRegret": -0.35916542473919577,
+          "resourceUniquelyBest": 0.681371087928465,
+          "nexusUniquelyBest": 0.17168405365126677,
+          "threatUniquelyBest": 0,
+          "objectiveUniquelyBest": 0.0062593144560357675,
+          "tie": 0.1406855439642325,
+          "routerSelection": {
+            "OBJECTIVE_TARGETING_V1": 0.011326378539493294,
+            "RESOURCE_PRESERVING_V1": 0.9040238450074516,
+            "NEXUS_SELECTOR": 0.08464977645305514
+          }
+        },
+        "UNSUPPORTED_THREAT": {
+          "n": 2645,
+          "supported": true,
+          "routerAccuracy": 0.5742911153119092,
+          "routerRegret": 27.77429111531191,
+          "bestSingleAccuracy": 0.5795841209829867,
+          "bestSingleRegret": 29.931190926275992,
+          "oracleAccuracy": 0.6831758034026465,
+          "oracleRegret": 16.763705103969755,
+          "routerMinusBestSingleRegret": -2.156899810964081,
+          "resourceUniquelyBest": 0.5383742911153119,
+          "nexusUniquelyBest": 0.26994328922495275,
+          "threatUniquelyBest": 0.0166351606805293,
+          "objectiveUniquelyBest": 0.009073724007561436,
+          "tie": 0.1659735349716446,
+          "routerSelection": {
+            "NEXUS_SELECTOR": 0.18185255198487713,
+            "RESOURCE_PRESERVING_V1": 0.776937618147448,
+            "OBJECTIVE_TARGETING_V1": 0.009829867674858222,
+            "THREAT_COVERING_V1": 0.031379962192816635
+          }
+        }
+      },
+      "DEPENDENCY_STRUCTURE": {
+        "CRITICAL_DEPENDENCY": {
+          "n": 2025,
+          "supported": true,
+          "routerAccuracy": 0.6217283950617284,
+          "routerRegret": 24.702716049382715,
+          "bestSingleAccuracy": 0.6158024691358025,
+          "bestSingleRegret": 26.572345679012347,
+          "oracleAccuracy": 0.7204938271604938,
+          "oracleRegret": 14.992098765432099,
+          "routerMinusBestSingleRegret": -1.8696296296296318,
+          "resourceUniquelyBest": 0.5525925925925926,
+          "nexusUniquelyBest": 0.2474074074074074,
+          "threatUniquelyBest": 0.008888888888888889,
+          "objectiveUniquelyBest": 0.0034567901234567903,
+          "tie": 0.18765432098765433,
+          "routerSelection": {
+            "NEXUS_SELECTOR": 0.1259259259259259,
+            "RESOURCE_PRESERVING_V1": 0.8523456790123457,
+            "THREAT_COVERING_V1": 0.012839506172839505,
+            "OBJECTIVE_TARGETING_V1": 0.008888888888888889
+          }
+        },
+        "NO_CRITICAL_DEPENDENCY": {
+          "n": 3975,
+          "supported": true,
+          "routerAccuracy": 0.6120754716981132,
+          "routerRegret": 24.86817610062893,
+          "bestSingleAccuracy": 0.6133333333333333,
+          "bestSingleRegret": 25.654088050314467,
+          "oracleAccuracy": 0.6991194968553459,
+          "oracleRegret": 16.387924528301888,
+          "routerMinusBestSingleRegret": -0.7859119496855378,
+          "resourceUniquelyBest": 0.6518238993710692,
+          "nexusUniquelyBest": 0.19849056603773585,
+          "threatUniquelyBest": 0.006540880503144654,
+          "objectiveUniquelyBest": 0.009559748427672956,
+          "tie": 0.13358490566037737,
+          "routerSelection": {
+            "NEXUS_SELECTOR": 0.12830188679245283,
+            "OBJECTIVE_TARGETING_V1": 0.011572327044025157,
+            "RESOURCE_PRESERVING_V1": 0.8457861635220125,
+            "THREAT_COVERING_V1": 0.014339622641509434
+          }
+        }
+      },
+      "STATE_NOVELTY": {
+        "FAMILIAR": {
+          "n": 2985,
+          "supported": true,
+          "routerAccuracy": 0.7135678391959799,
+          "routerRegret": 18.619430485762145,
+          "bestSingleAccuracy": 0.7142378559463987,
+          "bestSingleRegret": 18.585929648241205,
+          "oracleAccuracy": 0.770854271356784,
+          "oracleRegret": 12.838860971524289,
+          "routerMinusBestSingleRegret": 0.0335008375209398,
+          "resourceUniquelyBest": 0.7078726968174205,
+          "nexusUniquelyBest": 0.1443886097152429,
+          "threatUniquelyBest": 0.00033500837520938025,
+          "objectiveUniquelyBest": 0.0016750418760469012,
+          "tie": 0.1457286432160804,
+          "routerSelection": {
+            "NEXUS_SELECTOR": 0.03785594639865997,
+            "RESOURCE_PRESERVING_V1": 0.9577889447236181,
+            "OBJECTIVE_TARGETING_V1": 0.004020100502512563,
+            "THREAT_COVERING_V1": 0.00033500837520938025
+          }
+        },
+        "MODERATE": {
+          "n": 2416,
+          "supported": true,
+          "routerAccuracy": 0.5434602649006622,
+          "routerRegret": 29.681705298013245,
+          "bestSingleAccuracy": 0.5380794701986755,
+          "bestSingleRegret": 30.360099337748345,
+          "oracleAccuracy": 0.6519039735099338,
+          "oracleRegret": 18.323675496688743,
+          "routerMinusBestSingleRegret": -0.6783940397350996,
+          "resourceUniquelyBest": 0.5550496688741722,
+          "nexusUniquelyBest": 0.2706953642384106,
+          "threatUniquelyBest": 0.00869205298013245,
+          "objectiveUniquelyBest": 0.009933774834437087,
+          "tie": 0.15562913907284767,
+          "routerSelection": {
+            "OBJECTIVE_TARGETING_V1": 0.012003311258278146,
+            "NEXUS_SELECTOR": 0.16846026490066227,
+            "RESOURCE_PRESERVING_V1": 0.8042218543046358,
+            "THREAT_COVERING_V1": 0.015314569536423841
+          }
+        },
+        "NOVEL": {
+          "n": 599,
+          "supported": true,
+          "routerAccuracy": 0.41569282136894825,
+          "routerRegret": 36.03338898163606,
+          "bestSingleAccuracy": 0.42237061769616024,
+          "bestSingleRegret": 45,
+          "oracleAccuracy": 0.6043405676126878,
+          "oracleRegret": 21.547579298831387,
+          "routerMinusBestSingleRegret": -8.966611018363942,
+          "resourceUniquelyBest": 0.4273789649415693,
+          "nexusUniquelyBest": 0.34223706176961605,
+          "threatUniquelyBest": 0.03672787979966611,
+          "objectiveUniquelyBest": 0.02671118530884808,
+          "tie": 0.1669449081803005,
+          "routerSelection": {
+            "RESOURCE_PRESERVING_V1": 0.4774624373956594,
+            "NEXUS_SELECTOR": 0.4090150250417362,
+            "OBJECTIVE_TARGETING_V1": 0.038397328881469114,
+            "THREAT_COVERING_V1": 0.07512520868113523
+          }
+        }
+      },
+      "ENVIRONMENT_SHAPE": {
+        "shape:bridge": {
+          "n": 362,
+          "supported": true,
+          "routerAccuracy": 0.6104972375690608,
+          "routerRegret": 27.049723756906076,
+          "bestSingleAccuracy": 0.6077348066298343,
+          "bestSingleRegret": 26.69889502762431,
+          "oracleAccuracy": 0.6878453038674033,
+          "oracleRegret": 18.314917127071823,
+          "routerMinusBestSingleRegret": 0.35082872928176556,
+          "resourceUniquelyBest": 0.643646408839779,
+          "nexusUniquelyBest": 0.20165745856353592,
+          "threatUniquelyBest": 0.0027624309392265192,
+          "objectiveUniquelyBest": 0.011049723756906077,
+          "tie": 0.1408839779005525,
+          "routerSelection": {
+            "OBJECTIVE_TARGETING_V1": 0.022099447513812154,
+            "RESOURCE_PRESERVING_V1": 0.8480662983425414,
+            "NEXUS_SELECTOR": 0.12430939226519337,
+            "THREAT_COVERING_V1": 0.0055248618784530384
+          }
+        },
+        "shape:chain": {
+          "n": 420,
+          "supported": true,
+          "routerAccuracy": 0.6404761904761904,
+          "routerRegret": 26.44047619047619,
+          "bestSingleAccuracy": 0.638095238095238,
+          "bestSingleRegret": 27.29047619047619,
+          "oracleAccuracy": 0.7238095238095238,
+          "oracleRegret": 18.973809523809525,
+          "routerMinusBestSingleRegret": -0.8500000000000014,
+          "resourceUniquelyBest": 0.6595238095238095,
+          "nexusUniquelyBest": 0.17857142857142858,
+          "threatUniquelyBest": 0.007142857142857143,
+          "objectiveUniquelyBest": 0.009523809523809525,
+          "tie": 0.14523809523809525,
+          "routerSelection": {
+            "NEXUS_SELECTOR": 0.12380952380952381,
+            "RESOURCE_PRESERVING_V1": 0.8571428571428571,
+            "OBJECTIVE_TARGETING_V1": 0.009523809523809525,
+            "THREAT_COVERING_V1": 0.009523809523809525
+          }
+        },
+        "shape:contested_bottleneck": {
+          "n": 416,
+          "supported": true,
+          "routerAccuracy": 0.6129807692307693,
+          "routerRegret": 22.915865384615383,
+          "bestSingleAccuracy": 0.6225961538461539,
+          "bestSingleRegret": 25.5,
+          "oracleAccuracy": 0.7235576923076923,
+          "oracleRegret": 14.004807692307692,
+          "routerMinusBestSingleRegret": -2.5841346153846168,
+          "resourceUniquelyBest": 0.5865384615384616,
+          "nexusUniquelyBest": 0.2091346153846154,
+          "threatUniquelyBest": 0.02403846153846154,
+          "objectiveUniquelyBest": 0.014423076923076924,
+          "tie": 0.1658653846153846,
+          "routerSelection": {
+            "NEXUS_SELECTOR": 0.15144230769230768,
+            "RESOURCE_PRESERVING_V1": 0.7980769230769231,
+            "OBJECTIVE_TARGETING_V1": 0.009615384615384616,
+            "THREAT_COVERING_V1": 0.040865384615384616
+          }
+        },
+        "shape:disconnected_islands": {
+          "n": 395,
+          "supported": true,
+          "routerAccuracy": 0.6430379746835443,
+          "routerRegret": 22.787341772151898,
+          "bestSingleAccuracy": 0.640506329113924,
+          "bestSingleRegret": 21.58481012658228,
+          "oracleAccuracy": 0.7291139240506329,
+          "oracleRegret": 13.90379746835443,
+          "routerMinusBestSingleRegret": 1.2025316455696178,
+          "resourceUniquelyBest": 0.6987341772151898,
+          "nexusUniquelyBest": 0.15949367088607594,
+          "threatUniquelyBest": 0.007594936708860759,
+          "objectiveUniquelyBest": 0.010126582278481013,
+          "tie": 0.1240506329113924,
+          "routerSelection": {
+            "RESOURCE_PRESERVING_V1": 0.8911392405063291,
+            "THREAT_COVERING_V1": 0.012658227848101266,
+            "NEXUS_SELECTOR": 0.08860759493670886,
+            "OBJECTIVE_TARGETING_V1": 0.007594936708860759
+          }
+        },
+        "shape:hub_and_spoke": {
+          "n": 417,
+          "supported": true,
+          "routerAccuracy": 0.6115107913669064,
+          "routerRegret": 25.841726618705035,
+          "bestSingleAccuracy": 0.6067146282973621,
+          "bestSingleRegret": 28.01199040767386,
+          "oracleAccuracy": 0.6762589928057554,
+          "oracleRegret": 17.489208633093526,
+          "routerMinusBestSingleRegret": -2.1702637889688248,
+          "resourceUniquelyBest": 0.6546762589928058,
+          "nexusUniquelyBest": 0.2038369304556355,
+          "threatUniquelyBest": 0.004796163069544364,
+          "objectiveUniquelyBest": 0.004796163069544364,
+          "tie": 0.13189448441247004,
+          "routerSelection": {
+            "NEXUS_SELECTOR": 0.12709832134292565,
+            "RESOURCE_PRESERVING_V1": 0.8561151079136691,
+            "THREAT_COVERING_V1": 0.009592326139088728,
+            "OBJECTIVE_TARGETING_V1": 0.007194244604316547
+          }
+        },
+        "shape:layered_infrastructure": {
+          "n": 343,
+          "supported": true,
+          "routerAccuracy": 0.6180758017492711,
+          "routerRegret": 24.38483965014577,
+          "bestSingleAccuracy": 0.6064139941690962,
+          "bestSingleRegret": 24.77259475218659,
+          "oracleAccuracy": 0.6880466472303207,
+          "oracleRegret": 16.50728862973761,
+          "routerMinusBestSingleRegret": -0.387755102040817,
+          "resourceUniquelyBest": 0.685131195335277,
+          "nexusUniquelyBest": 0.20699708454810495,
+          "threatUniquelyBest": 0.0058309037900874635,
+          "objectiveUniquelyBest": 0,
+          "tie": 0.10204081632653061,
+          "routerSelection": {
+            "RESOURCE_PRESERVING_V1": 0.8775510204081632,
+            "NEXUS_SELECTOR": 0.10204081632653061,
+            "THREAT_COVERING_V1": 0.01749271137026239,
+            "OBJECTIVE_TARGETING_V1": 0.0029154518950437317
+          }
+        },
+        "shape:mesh": {
+          "n": 374,
+          "supported": true,
+          "routerAccuracy": 0.5748663101604278,
+          "routerRegret": 25.919786096256683,
+          "bestSingleAccuracy": 0.56951871657754,
+          "bestSingleRegret": 27.33957219251337,
+          "oracleAccuracy": 0.6737967914438503,
+          "oracleRegret": 16.32620320855615,
+          "routerMinusBestSingleRegret": -1.4197860962566864,
+          "resourceUniquelyBest": 0.5721925133689839,
+          "nexusUniquelyBest": 0.2620320855614973,
+          "threatUniquelyBest": 0.0053475935828877,
+          "objectiveUniquelyBest": 0.00267379679144385,
+          "tie": 0.15775401069518716,
+          "routerSelection": {
+            "RESOURCE_PRESERVING_V1": 0.8609625668449198,
+            "NEXUS_SELECTOR": 0.12834224598930483,
+            "OBJECTIVE_TARGETING_V1": 0.008021390374331552,
+            "THREAT_COVERING_V1": 0.00267379679144385
+          }
+        },
+        "shape:multi_cycle": {
+          "n": 388,
+          "supported": true,
+          "routerAccuracy": 0.6365979381443299,
+          "routerRegret": 23.484536082474225,
+          "bestSingleAccuracy": 0.6082474226804123,
+          "bestSingleRegret": 27.007731958762886,
+          "oracleAccuracy": 0.7036082474226805,
+          "oracleRegret": 16.891752577319586,
+          "routerMinusBestSingleRegret": -3.5231958762886606,
+          "resourceUniquelyBest": 0.5489690721649485,
+          "nexusUniquelyBest": 0.25773195876288657,
+          "threatUniquelyBest": 0.010309278350515464,
+          "objectiveUniquelyBest": 0,
+          "tie": 0.18298969072164947,
+          "routerSelection": {
+            "NEXUS_SELECTOR": 0.12371134020618557,
+            "RESOURCE_PRESERVING_V1": 0.8634020618556701,
+            "THREAT_COVERING_V1": 0.01288659793814433
+          }
+        },
+        "shape:multi_settlement": {
+          "n": 431,
+          "supported": true,
+          "routerAccuracy": 0.5916473317865429,
+          "routerRegret": 28.19721577726218,
+          "bestSingleAccuracy": 0.5846867749419954,
+          "bestSingleRegret": 29.308584686774942,
+          "oracleAccuracy": 0.679814385150812,
+          "oracleRegret": 18.468677494199536,
+          "routerMinusBestSingleRegret": -1.1113689095127626,
+          "resourceUniquelyBest": 0.6310904872389791,
+          "nexusUniquelyBest": 0.22041763341067286,
+          "threatUniquelyBest": 0.0069605568445475635,
+          "objectiveUniquelyBest": 0.009280742459396751,
+          "tie": 0.13225058004640372,
+          "routerSelection": {
+            "RESOURCE_PRESERVING_V1": 0.8422273781902552,
+            "NEXUS_SELECTOR": 0.12529002320185614,
+            "OBJECTIVE_TARGETING_V1": 0.013921113689095127,
+            "THREAT_COVERING_V1": 0.018561484918793503
+          }
+        },
+        "shape:nested_dependency": {
+          "n": 427,
+          "supported": true,
+          "routerAccuracy": 0.6088992974238876,
+          "routerRegret": 26.97423887587822,
+          "bestSingleAccuracy": 0.6252927400468384,
+          "bestSingleRegret": 25.770491803278688,
+          "oracleAccuracy": 0.7213114754098361,
+          "oracleRegret": 14.765807962529275,
+          "routerMinusBestSingleRegret": 1.2037470725995334,
+          "resourceUniquelyBest": 0.6065573770491803,
+          "nexusUniquelyBest": 0.1990632318501171,
+          "threatUniquelyBest": 0.00702576112412178,
+          "objectiveUniquelyBest": 0.00468384074941452,
+          "tie": 0.18266978922716628,
+          "routerSelection": {
+            "RESOURCE_PRESERVING_V1": 0.8313817330210773,
+            "NEXUS_SELECTOR": 0.14285714285714285,
+            "THREAT_COVERING_V1": 0.01639344262295082,
+            "OBJECTIVE_TARGETING_V1": 0.00936768149882904
+          }
+        },
+        "shape:parallel_dependency": {
+          "n": 404,
+          "supported": true,
+          "routerAccuracy": 0.6064356435643564,
+          "routerRegret": 27.455445544554454,
+          "bestSingleAccuracy": 0.6163366336633663,
+          "bestSingleRegret": 26.997524752475247,
+          "oracleAccuracy": 0.6806930693069307,
+          "oracleRegret": 18.178217821782177,
+          "routerMinusBestSingleRegret": 0.4579207920792072,
+          "resourceUniquelyBest": 0.6782178217821783,
+          "nexusUniquelyBest": 0.1905940594059406,
+          "threatUniquelyBest": 0.0049504950495049506,
+          "objectiveUniquelyBest": 0.01485148514851485,
+          "tie": 0.11138613861386139,
+          "routerSelection": {
+            "RESOURCE_PRESERVING_V1": 0.8787128712871287,
+            "NEXUS_SELECTOR": 0.09900990099009901,
+            "THREAT_COVERING_V1": 0.0049504950495049506,
+            "OBJECTIVE_TARGETING_V1": 0.017326732673267328
+          }
+        },
+        "shape:redundant_network": {
+          "n": 386,
+          "supported": true,
+          "routerAccuracy": 0.6010362694300518,
+          "routerRegret": 24.89119170984456,
+          "bestSingleAccuracy": 0.6113989637305699,
+          "bestSingleRegret": 24.746113989637305,
+          "oracleAccuracy": 0.7435233160621761,
+          "oracleRegret": 12.134715025906736,
+          "routerMinusBestSingleRegret": 0.1450777202072544,
+          "resourceUniquelyBest": 0.5310880829015544,
+          "nexusUniquelyBest": 0.26424870466321243,
+          "threatUniquelyBest": 0,
+          "objectiveUniquelyBest": 0.007772020725388601,
+          "tie": 0.19689119170984457,
+          "routerSelection": {
+            "RESOURCE_PRESERVING_V1": 0.8601036269430051,
+            "NEXUS_SELECTOR": 0.13212435233160622,
+            "OBJECTIVE_TARGETING_V1": 0.007772020725388601
+          }
+        },
+        "shape:ring": {
+          "n": 401,
+          "supported": true,
+          "routerAccuracy": 0.5910224438902744,
+          "routerRegret": 22.703241895261847,
+          "bestSingleAccuracy": 0.600997506234414,
+          "bestSingleRegret": 26.074812967581046,
+          "oracleAccuracy": 0.7007481296758105,
+          "oracleRegret": 14,
+          "routerMinusBestSingleRegret": -3.371571072319199,
+          "resourceUniquelyBest": 0.5660847880299252,
+          "nexusUniquelyBest": 0.26683291770573564,
+          "threatUniquelyBest": 0.004987531172069825,
+          "objectiveUniquelyBest": 0.0024937655860349127,
+          "tie": 0.1596009975062344,
+          "routerSelection": {
+            "RESOURCE_PRESERVING_V1": 0.830423940149626,
+            "NEXUS_SELECTOR": 0.13466334164588528,
+            "THREAT_COVERING_V1": 0.017456359102244388,
+            "OBJECTIVE_TARGETING_V1": 0.017456359102244388
+          }
+        },
+        "shape:star": {
+          "n": 442,
+          "supported": true,
+          "routerAccuracy": 0.6221719457013575,
+          "routerRegret": 21.805429864253394,
+          "bestSingleAccuracy": 0.6176470588235294,
+          "bestSingleRegret": 24.033936651583712,
+          "oracleAccuracy": 0.7104072398190046,
+          "oracleRegret": 14.300904977375566,
+          "routerMinusBestSingleRegret": -2.2285067873303177,
+          "resourceUniquelyBest": 0.6085972850678733,
+          "nexusUniquelyBest": 0.2239819004524887,
+          "threatUniquelyBest": 0.004524886877828055,
+          "objectiveUniquelyBest": 0.013574660633484163,
+          "tie": 0.1493212669683258,
+          "routerSelection": {
+            "RESOURCE_PRESERVING_V1": 0.8552036199095022,
+            "NEXUS_SELECTOR": 0.11312217194570136,
+            "THREAT_COVERING_V1": 0.02262443438914027,
+            "OBJECTIVE_TARGETING_V1": 0.00904977375565611
+          }
+        },
+        "shape:tree": {
+          "n": 394,
+          "supported": true,
+          "routerAccuracy": 0.6598984771573604,
+          "routerRegret": 21.279187817258883,
+          "bestSingleAccuracy": 0.6522842639593909,
+          "bestSingleRegret": 24.027918781725887,
+          "oracleAccuracy": 0.748730964467005,
+          "oracleRegret": 14.571065989847716,
+          "routerMinusBestSingleRegret": -2.748730964467004,
+          "resourceUniquelyBest": 0.6065989847715736,
+          "nexusUniquelyBest": 0.18527918781725888,
+          "threatUniquelyBest": 0.012690355329949238,
+          "objectiveUniquelyBest": 0.005076142131979695,
+          "tie": 0.19035532994923857,
+          "routerSelection": {
+            "NEXUS_SELECTOR": 0.19289340101522842,
+            "RESOURCE_PRESERVING_V1": 0.7766497461928934,
+            "OBJECTIVE_TARGETING_V1": 0.017766497461928935,
+            "THREAT_COVERING_V1": 0.012690355329949238
+          }
+        }
+      },
+      "ENVIRONMENT_OBJECTIVES": {
+        "objectives:multi_target_delivery": {
+          "n": 722,
+          "supported": true,
+          "routerAccuracy": 0.6357340720221607,
+          "routerRegret": 24.736842105263158,
+          "bestSingleAccuracy": 0.6329639889196675,
+          "bestSingleRegret": 25.070637119113574,
+          "oracleAccuracy": 0.7119113573407202,
+          "oracleRegret": 17.484764542936286,
+          "routerMinusBestSingleRegret": -0.3337950138504162,
+          "resourceUniquelyBest": 0.6551246537396122,
+          "nexusUniquelyBest": 0.18698060941828254,
+          "threatUniquelyBest": 0.006925207756232687,
+          "objectiveUniquelyBest": 0.0110803324099723,
+          "tie": 0.13988919667590027,
+          "routerSelection": {
+            "RESOURCE_PRESERVING_V1": 0.8781163434903048,
+            "NEXUS_SELECTOR": 0.09279778393351801,
+            "THREAT_COVERING_V1": 0.01662049861495845,
+            "OBJECTIVE_TARGETING_V1": 0.012465373961218837
+          }
+        },
+        "objectives:protect_civilians": {
+          "n": 770,
+          "supported": true,
+          "routerAccuracy": 0.6545454545454545,
+          "routerRegret": 23.693506493506494,
+          "bestSingleAccuracy": 0.6454545454545455,
+          "bestSingleRegret": 24.912987012987013,
+          "oracleAccuracy": 0.7246753246753247,
+          "oracleRegret": 16.712987012987014,
+          "routerMinusBestSingleRegret": -1.2194805194805198,
+          "resourceUniquelyBest": 0.6714285714285714,
+          "nexusUniquelyBest": 0.18051948051948052,
+          "threatUniquelyBest": 0.005194805194805195,
+          "objectiveUniquelyBest": 0.00909090909090909,
+          "tie": 0.13376623376623376,
+          "routerSelection": {
+            "NEXUS_SELECTOR": 0.0987012987012987,
+            "OBJECTIVE_TARGETING_V1": 0.00909090909090909,
+            "RESOURCE_PRESERVING_V1": 0.8792207792207792,
+            "THREAT_COVERING_V1": 0.012987012987012988
+          }
+        },
+        "objectives:reach_target": {
+          "n": 719,
+          "supported": true,
+          "routerAccuracy": 0.6022253129346314,
+          "routerRegret": 20.74269819193324,
+          "bestSingleAccuracy": 0.6008344923504868,
+          "bestSingleRegret": 22.140472878998608,
+          "oracleAccuracy": 0.6968011126564673,
+          "oracleRegret": 13.64116828929068,
+          "routerMinusBestSingleRegret": -1.3977746870653682,
+          "resourceUniquelyBest": 0.6731571627260083,
+          "nexusUniquelyBest": 0.20305980528511822,
+          "threatUniquelyBest": 0.015299026425591099,
+          "objectiveUniquelyBest": 0.005563282336578581,
+          "tie": 0.10292072322670376,
+          "routerSelection": {
+            "RESOURCE_PRESERVING_V1": 0.8108484005563282,
+            "NEXUS_SELECTOR": 0.1599443671766342,
+            "THREAT_COVERING_V1": 0.02086230876216968,
+            "OBJECTIVE_TARGETING_V1": 0.008344923504867872
+          }
+        },
+        "objectives:repair_and_maintain_redundancy": {
+          "n": 804,
+          "supported": true,
+          "routerAccuracy": 0.6194029850746269,
+          "routerRegret": 26.04726368159204,
+          "bestSingleAccuracy": 0.6218905472636815,
+          "bestSingleRegret": 26.59452736318408,
+          "oracleAccuracy": 0.7238805970149254,
+          "oracleRegret": 14.164179104477611,
+          "routerMinusBestSingleRegret": -0.5472636815920424,
+          "resourceUniquelyBest": 0.5696517412935324,
+          "nexusUniquelyBest": 0.23507462686567165,
+          "threatUniquelyBest": 0.006218905472636816,
+          "objectiveUniquelyBest": 0.009950248756218905,
+          "tie": 0.1791044776119403,
+          "routerSelection": {
+            "RESOURCE_PRESERVING_V1": 0.8296019900497512,
+            "NEXUS_SELECTOR": 0.15547263681592038,
+            "THREAT_COVERING_V1": 0.008706467661691543,
+            "OBJECTIVE_TARGETING_V1": 0.006218905472636816
+          }
+        },
+        "objectives:restore_and_conserve": {
+          "n": 772,
+          "supported": true,
+          "routerAccuracy": 0.6152849740932642,
+          "routerRegret": 26.43782383419689,
+          "bestSingleAccuracy": 0.6101036269430051,
+          "bestSingleRegret": 28.076424870466322,
+          "oracleAccuracy": 0.7059585492227979,
+          "oracleRegret": 17.177461139896373,
+          "routerMinusBestSingleRegret": -1.6386010362694314,
+          "resourceUniquelyBest": 0.5712435233160622,
+          "nexusUniquelyBest": 0.23575129533678757,
+          "threatUniquelyBest": 0.006476683937823834,
+          "objectiveUniquelyBest": 0.0025906735751295338,
+          "tie": 0.18393782383419688,
+          "routerSelection": {
+            "RESOURCE_PRESERVING_V1": 0.8795336787564767,
+            "OBJECTIVE_TARGETING_V1": 0.014248704663212436,
+            "NEXUS_SELECTOR": 0.09585492227979274,
+            "THREAT_COVERING_V1": 0.010362694300518135
+          }
+        },
+        "objectives:restore_and_protect": {
+          "n": 754,
+          "supported": true,
+          "routerAccuracy": 0.6140583554376657,
+          "routerRegret": 24.989389920424404,
+          "bestSingleAccuracy": 0.6087533156498673,
+          "bestSingleRegret": 26.628647214854112,
+          "oracleAccuracy": 0.7122015915119363,
+          "oracleRegret": 15.854111405835544,
+          "routerMinusBestSingleRegret": -1.639257294429708,
+          "resourceUniquelyBest": 0.5862068965517241,
+          "nexusUniquelyBest": 0.23872679045092837,
+          "threatUniquelyBest": 0.007957559681697613,
+          "objectiveUniquelyBest": 0.003978779840848806,
+          "tie": 0.16312997347480107,
+          "routerSelection": {
+            "NEXUS_SELECTOR": 0.09814323607427056,
+            "RESOURCE_PRESERVING_V1": 0.876657824933687,
+            "OBJECTIVE_TARGETING_V1": 0.011936339522546418,
+            "THREAT_COVERING_V1": 0.013262599469496022
+          }
+        },
+        "objectives:restore_infrastructure": {
+          "n": 773,
+          "supported": true,
+          "routerAccuracy": 0.6028460543337646,
+          "routerRegret": 25.47347994825356,
+          "bestSingleAccuracy": 0.6067270375161707,
+          "bestSingleRegret": 27.360931435963778,
+          "oracleAccuracy": 0.7141009055627425,
+          "oracleRegret": 15.282018111254851,
+          "routerMinusBestSingleRegret": -1.8874514877102193,
+          "resourceUniquelyBest": 0.5937904269081501,
+          "nexusUniquelyBest": 0.22509702457956016,
+          "threatUniquelyBest": 0.007761966364812419,
+          "objectiveUniquelyBest": 0.01034928848641656,
+          "tie": 0.1630012936610608,
+          "routerSelection": {
+            "NEXUS_SELECTOR": 0.13583441138421734,
+            "RESOURCE_PRESERVING_V1": 0.8344113842173351,
+            "THREAT_COVERING_V1": 0.016817593790426907,
+            "OBJECTIVE_TARGETING_V1": 0.0129366106080207
+          }
+        },
+        "objectives:supply_and_defend": {
+          "n": 686,
+          "supported": true,
+          "routerAccuracy": 0.5743440233236151,
+          "routerRegret": 26.196793002915452,
+          "bestSingleAccuracy": 0.5830903790087464,
+          "bestSingleRegret": 26.67055393586006,
+          "oracleAccuracy": 0.6545189504373178,
+          "oracleRegret": 17.17784256559767,
+          "routerMinusBestSingleRegret": -0.4737609329446073,
+          "resourceUniquelyBest": 0.6355685131195336,
+          "nexusUniquelyBest": 0.21137026239067055,
+          "threatUniquelyBest": 0.0029154518950437317,
+          "objectiveUniquelyBest": 0.007288629737609329,
+          "tie": 0.14285714285714285,
+          "routerSelection": {
+            "RESOURCE_PRESERVING_V1": 0.7900874635568513,
+            "NEXUS_SELECTOR": 0.1880466472303207,
+            "OBJECTIVE_TARGETING_V1": 0.01020408163265306,
+            "THREAT_COVERING_V1": 0.011661807580174927
+          }
+        }
+      }
+    },
+    "OOD": {
+      "RESOURCE_PRESSURE": {
+        "LOW_ENERGY": {
+          "n": 6000,
+          "supported": true,
+          "routerAccuracy": 0.7413333333333333,
+          "routerRegret": 24.750166666666665,
+          "bestSingleAccuracy": 0.7515,
+          "bestSingleRegret": 24.267,
+          "oracleAccuracy": 0.807,
+          "oracleRegret": 16.105333333333334,
+          "routerMinusBestSingleRegret": 0.48316666666666563,
+          "resourceUniquelyBest": 0.652,
+          "nexusUniquelyBest": 0.17233333333333334,
+          "threatUniquelyBest": 0.0013333333333333333,
+          "objectiveUniquelyBest": 0.0018333333333333333,
+          "tie": 0.1725,
+          "routerSelection": {
+            "RESOURCE_PRESERVING_V1": 0.9311666666666667,
+            "NEXUS_SELECTOR": 0.06166666666666667,
+            "OBJECTIVE_TARGETING_V1": 0.0045,
+            "THREAT_COVERING_V1": 0.0026666666666666666
+          }
+        }
+      },
+      "OBJECTIVE_PRESSURE": {
+        "MULTI_OBJECTIVE": {
+          "n": 4524,
+          "supported": true,
+          "routerAccuracy": 0.7539787798408488,
+          "routerRegret": 25.932802829354554,
+          "bestSingleAccuracy": 0.7652519893899205,
+          "bestSingleRegret": 25.21242263483643,
+          "oracleAccuracy": 0.8174182139699381,
+          "oracleRegret": 17.01215738284704,
+          "routerMinusBestSingleRegret": 0.7203801945181247,
+          "resourceUniquelyBest": 0.6436781609195402,
+          "nexusUniquelyBest": 0.17064544650751548,
+          "threatUniquelyBest": 0.001326259946949602,
+          "objectiveUniquelyBest": 0.001989389920424403,
+          "tie": 0.1823607427055703,
+          "routerSelection": {
+            "RESOURCE_PRESERVING_V1": 0.9394341290893015,
+            "NEXUS_SELECTOR": 0.05282935455349248,
+            "OBJECTIVE_TARGETING_V1": 0.005305039787798408,
+            "THREAT_COVERING_V1": 0.002431476569407604
+          }
+        },
+        "SINGLE_OBJECTIVE": {
+          "n": 1476,
+          "supported": true,
+          "routerAccuracy": 0.7025745257452575,
+          "routerRegret": 21.125338753387535,
+          "bestSingleAccuracy": 0.709349593495935,
+          "bestSingleRegret": 21.369241192411923,
+          "oracleAccuracy": 0.7750677506775068,
+          "oracleRegret": 13.325880758807589,
+          "routerMinusBestSingleRegret": -0.24390243902438868,
+          "resourceUniquelyBest": 0.6775067750677507,
+          "nexusUniquelyBest": 0.17750677506775067,
+          "threatUniquelyBest": 0.0013550135501355014,
+          "objectiveUniquelyBest": 0.0013550135501355014,
+          "tie": 0.14227642276422764,
+          "routerSelection": {
+            "RESOURCE_PRESERVING_V1": 0.9058265582655827,
+            "NEXUS_SELECTOR": 0.08875338753387534,
+            "THREAT_COVERING_V1": 0.0033875338753387536,
+            "OBJECTIVE_TARGETING_V1": 0.0020325203252032522
+          }
+        }
+      },
+      "THREAT_PRESSURE": {
+        "NO_UNSUPPORTED_THREAT": {
+          "n": 3461,
+          "supported": true,
+          "routerAccuracy": 0.778387749205432,
+          "routerRegret": 20.772031204854088,
+          "bestSingleAccuracy": 0.7766541462005201,
+          "bestSingleRegret": 21.120485408841375,
+          "oracleAccuracy": 0.8228835596648367,
+          "oracleRegret": 15.242704420687662,
+          "routerMinusBestSingleRegret": -0.34845420398728777,
+          "resourceUniquelyBest": 0.7087546951748049,
+          "nexusUniquelyBest": 0.13290956370991044,
+          "threatUniquelyBest": 0,
+          "objectiveUniquelyBest": 0.0023114706732158337,
+          "tie": 0.15602427044206876,
+          "routerSelection": {
+            "RESOURCE_PRESERVING_V1": 0.9627275353943947,
+            "NEXUS_SELECTOR": 0.03236058942502167,
+            "OBJECTIVE_TARGETING_V1": 0.004911875180583647
+          }
+        },
+        "UNSUPPORTED_THREAT": {
+          "n": 2539,
+          "supported": true,
+          "routerAccuracy": 0.6908231587239071,
+          "routerRegret": 30.172902717605357,
+          "bestSingleAccuracy": 0.7172115005907838,
+          "bestSingleRegret": 28.55612445844821,
+          "oracleAccuracy": 0.785348562426152,
+          "oracleRegret": 17.28121307601418,
+          "routerMinusBestSingleRegret": 1.6167782591571473,
+          "resourceUniquelyBest": 0.5746356833398976,
+          "nexusUniquelyBest": 0.22607325718786925,
+          "threatUniquelyBest": 0.0031508467900748325,
+          "objectiveUniquelyBest": 0.0011815675462780622,
+          "tie": 0.19495864513588027,
+          "routerSelection": {
+            "RESOURCE_PRESERVING_V1": 0.8881449389523435,
+            "OBJECTIVE_TARGETING_V1": 0.003938558487593541,
+            "NEXUS_SELECTOR": 0.10161480897991335,
+            "THREAT_COVERING_V1": 0.006301693580149665
+          }
+        }
+      },
+      "DEPENDENCY_STRUCTURE": {
+        "CRITICAL_DEPENDENCY": {
+          "n": 2182,
+          "supported": true,
+          "routerAccuracy": 0.7438130155820348,
+          "routerRegret": 25.7057745187901,
+          "bestSingleAccuracy": 0.7525206232813932,
+          "bestSingleRegret": 25.781393217231898,
+          "oracleAccuracy": 0.8139321723189734,
+          "oracleRegret": 15.833180568285977,
+          "routerMinusBestSingleRegret": -0.07561869844179725,
+          "resourceUniquelyBest": 0.6040329972502292,
+          "nexusUniquelyBest": 0.19477543538038497,
+          "threatUniquelyBest": 0.00229147571035747,
+          "objectiveUniquelyBest": 0.00045829514207149406,
+          "tie": 0.19844179651695693,
+          "routerSelection": {
+            "RESOURCE_PRESERVING_V1": 0.9358386801099908,
+            "NEXUS_SELECTOR": 0.05728689275893675,
+            "THREAT_COVERING_V1": 0.0018331805682859762,
+            "OBJECTIVE_TARGETING_V1": 0.005041246562786435
+          }
+        },
+        "NO_CRITICAL_DEPENDENCY": {
+          "n": 3818,
+          "supported": true,
+          "routerAccuracy": 0.7399161864850707,
+          "routerRegret": 24.204033525405972,
+          "bestSingleAccuracy": 0.750916710319539,
+          "bestSingleRegret": 23.401519119958092,
+          "oracleAccuracy": 0.8030382399161865,
+          "oracleRegret": 16.26086956521739,
+          "routerMinusBestSingleRegret": 0.8025144054478801,
+          "resourceUniquelyBest": 0.679413305395495,
+          "nexusUniquelyBest": 0.15950759559979047,
+          "threatUniquelyBest": 0.000785751702462022,
+          "objectiveUniquelyBest": 0.0026191723415400735,
+          "tie": 0.15767417496071243,
+          "routerSelection": {
+            "RESOURCE_PRESERVING_V1": 0.9284965950759559,
+            "NEXUS_SELECTOR": 0.0641697223677318,
+            "OBJECTIVE_TARGETING_V1": 0.0041906757464641176,
+            "THREAT_COVERING_V1": 0.003143006809848088
+          }
+        }
+      },
+      "STATE_NOVELTY": {
+        "FAMILIAR": {
+          "n": 1189,
+          "supported": true,
+          "routerAccuracy": 0.8502943650126157,
+          "routerRegret": 14.455004205214466,
+          "bestSingleAccuracy": 0.8494533221194281,
+          "bestSingleRegret": 14.33305298570227,
+          "oracleAccuracy": 0.8738435660218671,
+          "oracleRegret": 10.65601345668629,
+          "routerMinusBestSingleRegret": 0.12195121951219612,
+          "resourceUniquelyBest": 0.7426408746846089,
+          "nexusUniquelyBest": 0.0941968040370059,
+          "threatUniquelyBest": 0,
+          "objectiveUniquelyBest": 0,
+          "tie": 0.1631623212783852,
+          "routerSelection": {
+            "RESOURCE_PRESERVING_V1": 0.9899074852817493,
+            "NEXUS_SELECTOR": 0.010092514718250631
+          }
+        },
+        "MODERATE": {
+          "n": 3022,
+          "supported": true,
+          "routerAccuracy": 0.7663798808735937,
+          "routerRegret": 22.098279285241563,
+          "bestSingleAccuracy": 0.7723362011912641,
+          "bestSingleRegret": 21.512905360688286,
+          "oracleAccuracy": 0.8226340172071476,
+          "oracleRegret": 14.872270019854401,
+          "routerMinusBestSingleRegret": 0.5853739245532772,
+          "resourceUniquelyBest": 0.671740569159497,
+          "nexusUniquelyBest": 0.1532097948378557,
+          "threatUniquelyBest": 0,
+          "objectiveUniquelyBest": 0.0016545334215751159,
+          "tie": 0.17339510258107213,
+          "routerSelection": {
+            "RESOURCE_PRESERVING_V1": 0.9629384513567174,
+            "NEXUS_SELECTOR": 0.032759761747187296,
+            "OBJECTIVE_TARGETING_V1": 0.0033090668431502318,
+            "THREAT_COVERING_V1": 0.0009927200529450694
+          }
+        },
+        "NOVEL": {
+          "n": 1789,
+          "supported": true,
+          "routerAccuracy": 0.626607043040805,
+          "routerRegret": 36.07210732252655,
+          "bestSingleAccuracy": 0.6512017887087759,
+          "bestSingleRegret": 35.52152040245947,
+          "oracleAccuracy": 0.7361654555617664,
+          "oracleRegret": 21.80994969256568,
+          "routerMinusBestSingleRegret": 0.5505869200670759,
+          "resourceUniquelyBest": 0.558412520961431,
+          "nexusUniquelyBest": 0.25656791503633314,
+          "threatUniquelyBest": 0.004471771939631079,
+          "objectiveUniquelyBest": 0.003353828954723309,
+          "tie": 0.1771939631078815,
+          "routerSelection": {
+            "RESOURCE_PRESERVING_V1": 0.8384572386808273,
+            "NEXUS_SELECTOR": 0.14477361654555618,
+            "THREAT_COVERING_V1": 0.0072666294019005035,
+            "OBJECTIVE_TARGETING_V1": 0.009502515371716043
+          }
+        }
+      },
+      "ENVIRONMENT_SHAPE": {
+        "shape:bridge": {
+          "n": 390,
+          "supported": true,
+          "routerAccuracy": 0.7564102564102564,
+          "routerRegret": 23.04871794871795,
+          "bestSingleAccuracy": 0.7666666666666667,
+          "bestSingleRegret": 21.964102564102564,
+          "oracleAccuracy": 0.7974358974358975,
+          "oracleRegret": 16.81282051282051,
+          "routerMinusBestSingleRegret": 1.084615384615386,
+          "resourceUniquelyBest": 0.6820512820512821,
+          "nexusUniquelyBest": 0.13333333333333333,
+          "threatUniquelyBest": 0,
+          "objectiveUniquelyBest": 0.002564102564102564,
+          "tie": 0.18205128205128204,
+          "routerSelection": {
+            "RESOURCE_PRESERVING_V1": 0.9435897435897436,
+            "NEXUS_SELECTOR": 0.05128205128205128,
+            "OBJECTIVE_TARGETING_V1": 0.005128205128205128
+          }
+        },
+        "shape:chain": {
+          "n": 412,
+          "supported": true,
+          "routerAccuracy": 0.7742718446601942,
+          "routerRegret": 24.03640776699029,
+          "bestSingleAccuracy": 0.7912621359223301,
+          "bestSingleRegret": 22.980582524271846,
+          "oracleAccuracy": 0.8300970873786407,
+          "oracleRegret": 16.385922330097088,
+          "routerMinusBestSingleRegret": 1.055825242718445,
+          "resourceUniquelyBest": 0.7111650485436893,
+          "nexusUniquelyBest": 0.12864077669902912,
+          "threatUniquelyBest": 0,
+          "objectiveUniquelyBest": 0.0024271844660194173,
+          "tie": 0.15776699029126215,
+          "routerSelection": {
+            "RESOURCE_PRESERVING_V1": 0.9538834951456311,
+            "NEXUS_SELECTOR": 0.0412621359223301,
+            "OBJECTIVE_TARGETING_V1": 0.0024271844660194173,
+            "THREAT_COVERING_V1": 0.0024271844660194173
+          }
+        },
+        "shape:contested_bottleneck": {
+          "n": 396,
+          "supported": true,
+          "routerAccuracy": 0.7095959595959596,
+          "routerRegret": 25.68686868686869,
+          "bestSingleAccuracy": 0.7171717171717171,
+          "bestSingleRegret": 26.494949494949495,
+          "oracleAccuracy": 0.797979797979798,
+          "oracleRegret": 15.91161616161616,
+          "routerMinusBestSingleRegret": -0.8080808080808062,
+          "resourceUniquelyBest": 0.5782828282828283,
+          "nexusUniquelyBest": 0.24494949494949494,
+          "threatUniquelyBest": 0.005050505050505051,
+          "objectiveUniquelyBest": 0,
+          "tie": 0.1717171717171717,
+          "routerSelection": {
+            "RESOURCE_PRESERVING_V1": 0.9242424242424242,
+            "OBJECTIVE_TARGETING_V1": 0.005050505050505051,
+            "NEXUS_SELECTOR": 0.06313131313131314,
+            "THREAT_COVERING_V1": 0.007575757575757576
+          }
+        },
+        "shape:disconnected_islands": {
+          "n": 405,
+          "supported": true,
+          "routerAccuracy": 0.7530864197530864,
+          "routerRegret": 25.14074074074074,
+          "bestSingleAccuracy": 0.7679012345679013,
+          "bestSingleRegret": 24.353086419753087,
+          "oracleAccuracy": 0.8123456790123457,
+          "oracleRegret": 16.037037037037038,
+          "routerMinusBestSingleRegret": 0.7876543209876523,
+          "resourceUniquelyBest": 0.7234567901234568,
+          "nexusUniquelyBest": 0.15555555555555556,
+          "threatUniquelyBest": 0,
+          "objectiveUniquelyBest": 0.0024691358024691358,
+          "tie": 0.11851851851851852,
+          "routerSelection": {
+            "RESOURCE_PRESERVING_V1": 0.9160493827160494,
+            "NEXUS_SELECTOR": 0.07654320987654321,
+            "THREAT_COVERING_V1": 0.0049382716049382715,
+            "OBJECTIVE_TARGETING_V1": 0.0024691358024691358
+          }
+        },
+        "shape:hub_and_spoke": {
+          "n": 393,
+          "supported": true,
+          "routerAccuracy": 0.7582697201017812,
+          "routerRegret": 20.638676844783713,
+          "bestSingleAccuracy": 0.7582697201017812,
+          "bestSingleRegret": 21.267175572519083,
+          "oracleAccuracy": 0.7938931297709924,
+          "oracleRegret": 15.694656488549619,
+          "routerMinusBestSingleRegret": -0.6284987277353693,
+          "resourceUniquelyBest": 0.6870229007633588,
+          "nexusUniquelyBest": 0.1297709923664122,
+          "threatUniquelyBest": 0.002544529262086514,
+          "objectiveUniquelyBest": 0.002544529262086514,
+          "tie": 0.178117048346056,
+          "routerSelection": {
+            "RESOURCE_PRESERVING_V1": 0.9567430025445293,
+            "NEXUS_SELECTOR": 0.03307888040712468,
+            "THREAT_COVERING_V1": 0.005089058524173028,
+            "OBJECTIVE_TARGETING_V1": 0.005089058524173028
+          }
+        },
+        "shape:layered_infrastructure": {
+          "n": 384,
+          "supported": true,
+          "routerAccuracy": 0.7213541666666666,
+          "routerRegret": 24.872395833333332,
+          "bestSingleAccuracy": 0.7395833333333334,
+          "bestSingleRegret": 24.424479166666668,
+          "oracleAccuracy": 0.7864583333333334,
+          "oracleRegret": 18.260416666666668,
+          "routerMinusBestSingleRegret": 0.4479166666666643,
+          "resourceUniquelyBest": 0.7161458333333334,
+          "nexusUniquelyBest": 0.13802083333333334,
+          "threatUniquelyBest": 0,
+          "objectiveUniquelyBest": 0.0026041666666666665,
+          "tie": 0.14322916666666666,
+          "routerSelection": {
+            "RESOURCE_PRESERVING_V1": 0.90625,
+            "NEXUS_SELECTOR": 0.09114583333333333,
+            "OBJECTIVE_TARGETING_V1": 0.0026041666666666665
+          }
+        },
+        "shape:mesh": {
+          "n": 403,
+          "supported": true,
+          "routerAccuracy": 0.7220843672456576,
+          "routerRegret": 24.607940446650122,
+          "bestSingleAccuracy": 0.739454094292804,
+          "bestSingleRegret": 24.677419354838708,
+          "oracleAccuracy": 0.8089330024813896,
+          "oracleRegret": 13.245657568238213,
+          "routerMinusBestSingleRegret": -0.06947890818858582,
+          "resourceUniquelyBest": 0.5831265508684863,
+          "nexusUniquelyBest": 0.20099255583126552,
+          "threatUniquelyBest": 0.004962779156327543,
+          "objectiveUniquelyBest": 0,
+          "tie": 0.2109181141439206,
+          "routerSelection": {
+            "RESOURCE_PRESERVING_V1": 0.9503722084367245,
+            "NEXUS_SELECTOR": 0.04714640198511166,
+            "OBJECTIVE_TARGETING_V1": 0.0024813895781637717
+          }
+        },
+        "shape:multi_cycle": {
+          "n": 418,
+          "supported": true,
+          "routerAccuracy": 0.7535885167464115,
+          "routerRegret": 23.576555023923444,
+          "bestSingleAccuracy": 0.7511961722488039,
+          "bestSingleRegret": 23.188995215311003,
+          "oracleAccuracy": 0.8229665071770335,
+          "oracleRegret": 14.440191387559809,
+          "routerMinusBestSingleRegret": 0.38755980861244055,
+          "resourceUniquelyBest": 0.6076555023923444,
+          "nexusUniquelyBest": 0.19617224880382775,
+          "threatUniquelyBest": 0,
+          "objectiveUniquelyBest": 0,
+          "tie": 0.19617224880382775,
+          "routerSelection": {
+            "RESOURCE_PRESERVING_V1": 0.9497607655502392,
+            "NEXUS_SELECTOR": 0.0430622009569378,
+            "THREAT_COVERING_V1": 0.0023923444976076554,
+            "OBJECTIVE_TARGETING_V1": 0.004784688995215311
+          }
+        },
+        "shape:multi_settlement": {
+          "n": 394,
+          "supported": true,
+          "routerAccuracy": 0.748730964467005,
+          "routerRegret": 24.901015228426395,
+          "bestSingleAccuracy": 0.7690355329949239,
+          "bestSingleRegret": 21.54568527918782,
+          "oracleAccuracy": 0.8096446700507615,
+          "oracleRegret": 15.794416243654823,
+          "routerMinusBestSingleRegret": 3.355329949238577,
+          "resourceUniquelyBest": 0.7208121827411168,
+          "nexusUniquelyBest": 0.116751269035533,
+          "threatUniquelyBest": 0,
+          "objectiveUniquelyBest": 0.007614213197969543,
+          "tie": 0.1548223350253807,
+          "routerSelection": {
+            "RESOURCE_PRESERVING_V1": 0.9238578680203046,
+            "NEXUS_SELECTOR": 0.07106598984771574,
+            "THREAT_COVERING_V1": 0.0025380710659898475,
+            "OBJECTIVE_TARGETING_V1": 0.0025380710659898475
+          }
+        },
+        "shape:nested_dependency": {
+          "n": 407,
+          "supported": true,
+          "routerAccuracy": 0.7469287469287469,
+          "routerRegret": 23.53071253071253,
+          "bestSingleAccuracy": 0.7616707616707616,
+          "bestSingleRegret": 23.69041769041769,
+          "oracleAccuracy": 0.8230958230958231,
+          "oracleRegret": 15.01965601965602,
+          "routerMinusBestSingleRegret": -0.1597051597051582,
+          "resourceUniquelyBest": 0.6805896805896806,
+          "nexusUniquelyBest": 0.16461916461916462,
+          "threatUniquelyBest": 0,
+          "objectiveUniquelyBest": 0,
+          "tie": 0.1547911547911548,
+          "routerSelection": {
+            "RESOURCE_PRESERVING_V1": 0.9090909090909091,
+            "OBJECTIVE_TARGETING_V1": 0.009828009828009828,
+            "NEXUS_SELECTOR": 0.08108108108108109
+          }
+        },
+        "shape:parallel_dependency": {
+          "n": 413,
+          "supported": true,
+          "routerAccuracy": 0.7433414043583535,
+          "routerRegret": 28.7409200968523,
+          "bestSingleAccuracy": 0.7506053268765133,
+          "bestSingleRegret": 27.343825665859566,
+          "oracleAccuracy": 0.7990314769975787,
+          "oracleRegret": 18.84261501210654,
+          "routerMinusBestSingleRegret": 1.397094430992734,
+          "resourceUniquelyBest": 0.6513317191283293,
+          "nexusUniquelyBest": 0.1791767554479419,
+          "threatUniquelyBest": 0,
+          "objectiveUniquelyBest": 0,
+          "tie": 0.1694915254237288,
+          "routerSelection": {
+            "NEXUS_SELECTOR": 0.07506053268765134,
+            "RESOURCE_PRESERVING_V1": 0.9225181598062954,
+            "OBJECTIVE_TARGETING_V1": 0.002421307506053269
+          }
+        },
+        "shape:redundant_network": {
+          "n": 415,
+          "supported": true,
+          "routerAccuracy": 0.7301204819277108,
+          "routerRegret": 23.725301204819278,
+          "bestSingleAccuracy": 0.7301204819277108,
+          "bestSingleRegret": 24.87710843373494,
+          "oracleAccuracy": 0.8024096385542169,
+          "oracleRegret": 16.510843373493977,
+          "routerMinusBestSingleRegret": -1.1518072289156613,
+          "resourceUniquelyBest": 0.5879518072289157,
+          "nexusUniquelyBest": 0.21686746987951808,
+          "threatUniquelyBest": 0,
+          "objectiveUniquelyBest": 0.0024096385542168677,
+          "tie": 0.1927710843373494,
+          "routerSelection": {
+            "RESOURCE_PRESERVING_V1": 0.9710843373493976,
+            "NEXUS_SELECTOR": 0.024096385542168676,
+            "OBJECTIVE_TARGETING_V1": 0.004819277108433735
+          }
+        },
+        "shape:ring": {
+          "n": 380,
+          "supported": true,
+          "routerAccuracy": 0.7,
+          "routerRegret": 30.107894736842105,
+          "bestSingleAccuracy": 0.7052631578947368,
+          "bestSingleRegret": 29.63157894736842,
+          "oracleAccuracy": 0.7789473684210526,
+          "oracleRegret": 18.99473684210526,
+          "routerMinusBestSingleRegret": 0.47631578947368425,
+          "resourceUniquelyBest": 0.5947368421052631,
+          "nexusUniquelyBest": 0.2236842105263158,
+          "threatUniquelyBest": 0.007894736842105263,
+          "objectiveUniquelyBest": 0,
+          "tie": 0.1736842105263158,
+          "routerSelection": {
+            "RESOURCE_PRESERVING_V1": 0.8947368421052632,
+            "NEXUS_SELECTOR": 0.09210526315789473,
+            "THREAT_COVERING_V1": 0.013157894736842105
+          }
+        },
+        "shape:star": {
+          "n": 411,
+          "supported": true,
+          "routerAccuracy": 0.7591240875912408,
+          "routerRegret": 24.632603406326034,
+          "bestSingleAccuracy": 0.7615571776155717,
+          "bestSingleRegret": 24.739659367396595,
+          "oracleAccuracy": 0.8199513381995134,
+          "oracleRegret": 15.885644768856448,
+          "routerMinusBestSingleRegret": -0.10705596107056081,
+          "resourceUniquelyBest": 0.6690997566909975,
+          "nexusUniquelyBest": 0.17761557177615572,
+          "threatUniquelyBest": 0,
+          "objectiveUniquelyBest": 0.0024330900243309003,
+          "tie": 0.15085158150851583,
+          "routerSelection": {
+            "RESOURCE_PRESERVING_V1": 0.9416058394160584,
+            "NEXUS_SELECTOR": 0.043795620437956206,
+            "OBJECTIVE_TARGETING_V1": 0.014598540145985401
+          }
+        },
+        "shape:tree": {
+          "n": 379,
+          "supported": true,
+          "routerAccuracy": 0.7387862796833773,
+          "routerRegret": 24.147757255936675,
+          "bestSingleAccuracy": 0.7598944591029023,
+          "bestSingleRegret": 22.854881266490764,
+          "oracleAccuracy": 0.8179419525065963,
+          "oracleRegret": 13.870712401055409,
+          "routerMinusBestSingleRegret": 1.2928759894459105,
+          "resourceUniquelyBest": 0.5857519788918206,
+          "nexusUniquelyBest": 0.17678100263852242,
+          "threatUniquelyBest": 0,
+          "objectiveUniquelyBest": 0.002638522427440633,
+          "tie": 0.23482849604221637,
+          "routerSelection": {
+            "RESOURCE_PRESERVING_V1": 0.8970976253298153,
+            "NEXUS_SELECTOR": 0.09762532981530343,
+            "THREAT_COVERING_V1": 0.002638522427440633,
+            "OBJECTIVE_TARGETING_V1": 0.002638522427440633
+          }
+        }
+      },
+      "ENVIRONMENT_OBJECTIVES": {
+        "objectives:multi_target_delivery": {
+          "n": 743,
+          "supported": true,
+          "routerAccuracy": 0.7819650067294751,
+          "routerRegret": 24.173620457604308,
+          "bestSingleAccuracy": 0.7954239569313594,
+          "bestSingleRegret": 22.473755047106327,
+          "oracleAccuracy": 0.8358008075370121,
+          "oracleRegret": 16.629878869448184,
+          "routerMinusBestSingleRegret": 1.6998654104979813,
+          "resourceUniquelyBest": 0.6985195154777928,
+          "nexusUniquelyBest": 0.14131897711978467,
+          "threatUniquelyBest": 0,
+          "objectiveUniquelyBest": 0.0013458950201884253,
+          "tie": 0.15881561238223418,
+          "routerSelection": {
+            "RESOURCE_PRESERVING_V1": 0.9488559892328399,
+            "OBJECTIVE_TARGETING_V1": 0.004037685060565276,
+            "THREAT_COVERING_V1": 0.004037685060565276,
+            "NEXUS_SELECTOR": 0.04306864064602961
+          }
+        },
+        "objectives:protect_civilians": {
+          "n": 737,
+          "supported": true,
+          "routerAccuracy": 0.7327001356852103,
+          "routerRegret": 29.49932157394844,
+          "bestSingleAccuracy": 0.7544097693351425,
+          "bestSingleRegret": 26.96879240162822,
+          "oracleAccuracy": 0.8005427408412483,
+          "oracleRegret": 19.07598371777476,
+          "routerMinusBestSingleRegret": 2.530529172320218,
+          "resourceUniquelyBest": 0.6865671641791045,
+          "nexusUniquelyBest": 0.15739484396200815,
+          "threatUniquelyBest": 0.0013568521031207597,
+          "objectiveUniquelyBest": 0.004070556309362279,
+          "tie": 0.15061058344640435,
+          "routerSelection": {
+            "NEXUS_SELECTOR": 0.04613297150610583,
+            "RESOURCE_PRESERVING_V1": 0.9443690637720489,
+            "OBJECTIVE_TARGETING_V1": 0.0067842605156037995,
+            "THREAT_COVERING_V1": 0.0027137042062415195
+          }
+        },
+        "objectives:reach_target": {
+          "n": 745,
+          "supported": true,
+          "routerAccuracy": 0.7046979865771812,
+          "routerRegret": 20.5006711409396,
+          "bestSingleAccuracy": 0.702013422818792,
+          "bestSingleRegret": 21.71275167785235,
+          "oracleAccuracy": 0.7718120805369127,
+          "oracleRegret": 13.021476510067114,
+          "routerMinusBestSingleRegret": -1.212080536912751,
+          "resourceUniquelyBest": 0.6590604026845638,
+          "nexusUniquelyBest": 0.1906040268456376,
+          "threatUniquelyBest": 0.0013422818791946308,
+          "objectiveUniquelyBest": 0.0026845637583892616,
+          "tie": 0.14630872483221477,
+          "routerSelection": {
+            "RESOURCE_PRESERVING_V1": 0.9140939597315436,
+            "NEXUS_SELECTOR": 0.08053691275167785,
+            "THREAT_COVERING_V1": 0.0026845637583892616,
+            "OBJECTIVE_TARGETING_V1": 0.0026845637583892616
+          }
+        },
+        "objectives:repair_and_maintain_redundancy": {
+          "n": 768,
+          "supported": true,
+          "routerAccuracy": 0.7486979166666666,
+          "routerRegret": 26.059895833333332,
+          "bestSingleAccuracy": 0.74609375,
+          "bestSingleRegret": 27.0390625,
+          "oracleAccuracy": 0.8216145833333334,
+          "oracleRegret": 16.46484375,
+          "routerMinusBestSingleRegret": -0.9791666666666679,
+          "resourceUniquelyBest": 0.5911458333333334,
+          "nexusUniquelyBest": 0.21614583333333334,
+          "threatUniquelyBest": 0,
+          "objectiveUniquelyBest": 0,
+          "tie": 0.19270833333333334,
+          "routerSelection": {
+            "RESOURCE_PRESERVING_V1": 0.9348958333333334,
+            "NEXUS_SELECTOR": 0.057291666666666664,
+            "THREAT_COVERING_V1": 0.0013020833333333333,
+            "OBJECTIVE_TARGETING_V1": 0.006510416666666667
+          }
+        },
+        "objectives:restore_and_conserve": {
+          "n": 753,
+          "supported": true,
+          "routerAccuracy": 0.7529880478087649,
+          "routerRegret": 26.335989375830014,
+          "bestSingleAccuracy": 0.7715803452855245,
+          "bestSingleRegret": 25.628154050464808,
+          "oracleAccuracy": 0.8167330677290837,
+          "oracleRegret": 17.686586985391767,
+          "routerMinusBestSingleRegret": 0.7078353253652061,
+          "resourceUniquelyBest": 0.6374501992031872,
+          "nexusUniquelyBest": 0.16069057104913678,
+          "threatUniquelyBest": 0.0013280212483399733,
+          "objectiveUniquelyBest": 0.0013280212483399733,
+          "tie": 0.199203187250996,
+          "routerSelection": {
+            "RESOURCE_PRESERVING_V1": 0.9309428950863213,
+            "OBJECTIVE_TARGETING_V1": 0.00796812749003984,
+            "NEXUS_SELECTOR": 0.05843293492695883,
+            "THREAT_COVERING_V1": 0.0026560424966799467
+          }
+        },
+        "objectives:restore_and_protect": {
+          "n": 761,
+          "supported": true,
+          "routerAccuracy": 0.7687253613666228,
+          "routerRegret": 24.053876478318003,
+          "bestSingleAccuracy": 0.7687253613666228,
+          "bestSingleRegret": 24.412614980289092,
+          "oracleAccuracy": 0.8147174770039421,
+          "oracleRegret": 16.342969776609724,
+          "routerMinusBestSingleRegret": -0.35873850197108936,
+          "resourceUniquelyBest": 0.6268068331143233,
+          "nexusUniquelyBest": 0.16951379763469118,
+          "threatUniquelyBest": 0.002628120893561104,
+          "objectiveUniquelyBest": 0.001314060446780552,
+          "tie": 0.19973718791064388,
+          "routerSelection": {
+            "RESOURCE_PRESERVING_V1": 0.9448094612352168,
+            "NEXUS_SELECTOR": 0.051248357424441525,
+            "OBJECTIVE_TARGETING_V1": 0.002628120893561104,
+            "THREAT_COVERING_V1": 0.001314060446780552
+          }
+        },
+        "objectives:restore_infrastructure": {
+          "n": 762,
+          "supported": true,
+          "routerAccuracy": 0.7388451443569554,
+          "routerRegret": 25.548556430446194,
+          "bestSingleAccuracy": 0.7559055118110236,
+          "bestSingleRegret": 24.730971128608925,
+          "oracleAccuracy": 0.8149606299212598,
+          "oracleRegret": 15.94225721784777,
+          "routerMinusBestSingleRegret": 0.8175853018372692,
+          "resourceUniquelyBest": 0.6246719160104987,
+          "nexusUniquelyBest": 0.17716535433070865,
+          "threatUniquelyBest": 0.0026246719160104987,
+          "objectiveUniquelyBest": 0.003937007874015748,
+          "tie": 0.19160104986876642,
+          "routerSelection": {
+            "RESOURCE_PRESERVING_V1": 0.9330708661417323,
+            "NEXUS_SELECTOR": 0.06036745406824147,
+            "THREAT_COVERING_V1": 0.0026246719160104987,
+            "OBJECTIVE_TARGETING_V1": 0.003937007874015748
+          }
+        },
+        "objectives:supply_and_defend": {
+          "n": 731,
+          "supported": true,
+          "routerAccuracy": 0.7004103967168263,
+          "routerRegret": 21.761969904240765,
+          "bestSingleAccuracy": 0.7168262653898769,
+          "bestSingleRegret": 21.019151846785224,
+          "oracleAccuracy": 0.7783857729138167,
+          "oracleRegret": 13.63611491108071,
+          "routerMinusBestSingleRegret": 0.7428180574555405,
+          "resourceUniquelyBest": 0.6963064295485636,
+          "nexusUniquelyBest": 0.16415868673050615,
+          "threatUniquelyBest": 0.0013679890560875513,
+          "objectiveUniquelyBest": 0,
+          "tie": 0.1381668946648427,
+          "routerSelection": {
+            "RESOURCE_PRESERVING_V1": 0.8974008207934336,
+            "NEXUS_SELECTOR": 0.09712722298221614,
+            "THREAT_COVERING_V1": 0.004103967168262654,
+            "OBJECTIVE_TARGETING_V1": 0.0013679890560875513
+          }
+        }
+      }
+    }
+  },
+  "representationGaps": {
+    "RISK_STATE_GAP": {
+      "HOLDOUT": {
+        "regimeN": 2645,
+        "falseSelectionRateInRegime": 0.26389413988657845,
+        "falseSelectionRateOverall": 0.211,
+        "concentrationRatio": 1.2506831274245425,
+        "concentrated": true
+      },
+      "OOD": {
+        "regimeN": 2539,
+        "falseSelectionRateInRegime": 0.22922410397794407,
+        "falseSelectionRateOverall": 0.1705,
+        "concentrationRatio": 1.3444228972313435,
+        "concentrated": true
+      }
+    },
+    "OBJECTIVE_STRUCTURE_GAP": {
+      "HOLDOUT": {
+        "regimeN": 4595,
+        "falseSelectionRateInRegime": 0.21806311207834603,
+        "falseSelectionRateOverall": 0.211,
+        "concentrationRatio": 1.0334744648262846,
+        "concentrated": false
+      },
+      "OOD": {
+        "regimeN": 4524,
+        "falseSelectionRateInRegime": 0.1755083996463307,
+        "falseSelectionRateOverall": 0.1705,
+        "concentrationRatio": 1.029374777984344,
+        "concentrated": false
+      }
+    },
+    "TEMPORAL_STATE_GAP": {
+      "proxy": "context.tickProgress >= 0.5 (late episode); no history feature exists in CORE",
+      "HOLDOUT": {
+        "regimeN": 2058,
+        "falseSelectionRateInRegime": 0.18172983479105928,
+        "falseSelectionRateOverall": 0.211,
+        "concentrationRatio": 0.8612788378723188,
+        "concentrated": false
+      },
+      "OOD": {
+        "regimeN": 0,
+        "falseSelectionRateInRegime": null,
+        "falseSelectionRateOverall": 0.1705,
+        "concentrationRatio": null,
+        "concentrated": false
+      }
+    },
+    "SPATIAL_STATE_GAP": {
+      "measurable": false,
+      "reason": "DEPLOYABLE_CORE contains no spatial evidence, so no spatial regime can be defined from router input; the Stage 3F.6-S spatial blind spot is carried forward unchanged and unmeasured here."
+    },
+    "fixedInThisStage": false
+  },
+  "capacityDiagnosis": {
+    "flags": {
+      "POLICY_SET_LIMITED": false,
+      "INFORMATION_LIMITED": false,
+      "CLASS_IMBALANCE_LIMITED": false,
+      "CALIBRATION_LIMITED": false,
+      "MODEL_CAPACITY_LIMITED": false
+    },
+    "primary": "UNDETERMINED",
+    "evidence": {
+      "maxUnivariateSeparability": 0.6886582170732216,
+      "topSeparatingFeatures": [
+        {
+          "key": "actionSurface.actionTypeEntropy",
+          "auroc": 0.6886582170732216,
+          "separability": 0.6886582170732216
+        },
+        {
+          "key": "relational.abstains",
+          "auroc": 0.3688853247794707,
+          "separability": 0.6311146752205292
+        },
+        {
+          "key": "relational.hostileEntityCount",
+          "auroc": 0.615639236294767,
+          "separability": 0.615639236294767
+        },
+        {
+          "key": "relational.threatenedEntityCount",
+          "auroc": 0.6145519933419403,
+          "separability": 0.6145519933419403
+        },
+        {
+          "key": "relational.uncoveredThreatenedCount",
+          "auroc": 0.6126523988541768,
+          "separability": 0.6126523988541768
+        }
+      ],
+      "devCalSelectionGap": 0.008749999999999925,
+      "minorityNexusRecallOnCal": 0.3016627078384798,
+      "selectionEceCal": 0.06473417544787921,
+      "calOracleRegretGain": 9.681,
+      "calTopSelectedShare": 0.84725
+    },
+    "largerModelTrained": false
+  },
+  "classification": {
+    "HOLDOUT": {
+      "result": "B_ROUTING_STATISTICALLY_BETTER_BUT_NOT_MATERIAL",
+      "value": "LOW",
+      "material": false,
+      "accBetter": false,
+      "accWorse": false,
+      "regBetter": true,
+      "regWorse": false
+    },
+    "OOD": {
+      "result": "C_ROUTING_EQUIVALENT_TO_BEST_SINGLE_POLICY",
+      "value": "LOW",
+      "material": false,
+      "accBetter": false,
+      "accWorse": true,
+      "regBetter": false,
+      "regWorse": false
+    },
+    "primaryResult": "B_ROUTING_STATISTICALLY_BETTER_BUT_NOT_MATERIAL",
+    "secondaryResult": "LOW_ORACLE_GAIN_CAPTURE",
+    "routerValueConclusion": "LOW"
+  },
+  "stage3gReadiness": {
+    "rule": {
+      "id": "STAGE3G_READINESS_V2_POLICY_ROUTING",
+      "predeclaredBeforeSealedExposure": true,
+      "requirements": {
+        "materialImprovementOverBestSinglePolicyOnHoldout": true,
+        "oodNotSignificantlyWorseThanBestSinglePolicy": true,
+        "minimumHoldoutN": 2000,
+        "deterministicReplay": true,
+        "zeroLeakage": true,
+        "acceptableFalseSelectionHarm": "episodes worsened <= episodes improved AND false-selection p95 added regret <= best single policy p95 regret",
+        "nonTrivialPolicyDiversity": "no policy collapse AND at least two policies each selected on >= 5% of episodes"
+      }
+    },
+    "evaluation": {
+      "materialImprovementOverBestSinglePolicyOnHoldout": false,
+      "oodNotSignificantlyWorseThanBestSinglePolicy": true,
+      "minimumHoldoutN": true,
+      "deterministicReplay": true,
+      "zeroLeakage": true,
+      "acceptableFalseSelectionHarm": false,
+      "nonTrivialPolicyDiversity": true
+    },
+    "ready": false
+  },
+  "candidate": {
+    "architecture": "MULTINOMIAL_LOGISTIC_REGRESSION_MASKED_SOFTMAX",
+    "routerHash": "25876d1899a17b0252605982ac353123308c1f006194d1e84844a381471d8d25",
+    "policySetHash": "3f1a19f788389202af79ee50c9149344fa069f407abf09c6fede876617620c79",
+    "featureContractHash": "5b0a631ece4c9304d4ee8b5298dadb7a2f8a5f18ac39a358216eb14d074ec926",
+    "threshold": 0,
+    "fallbackPolicy": "RESOURCE_PRESERVING_V1",
+    "trainingSplitHashes": {
+      "DEV": "71307cf8f5003237953b8b50c37e1995f6ae06881e6f7d6ebb33c7365548d742",
+      "CAL": "04f95c18851069f90969e48a1c6b42c337b75a9a1a1969809d6795663c9a0570"
+    },
+    "evaluationFreezeHash": "665a29e3b8b1b16e6c65a20f45a2458ab1d10cee5ac3f42d23a60871600356fc",
+    "promotedToLiveRuntime": false,
+    "onlineLearningEnabled": false,
+    "candidateHash": "f889b069b115401123c046958225625210d68842e8da087450c6727cc4132c44",
+    "frozen": true
+  },
+  "scope": {
+    "frozenStage3EUnchanged": true,
+    "priorOwnersUnchanged": true,
+    "stage3f6aHashMatchesAccepted": true,
+    "stage3f6cHashMatchesAccepted": true,
+    "policyDefinitionsUnchanged": true,
+    "featureContractHashMatchesStage3F6S": true,
+    "newOwners": [
+      "src/stage3f/policy-router-v1.js",
+      "scripts/generate-stage3f6t-confirmatory.mjs",
+      "scripts/certify-stage3f6t-policy-router.mjs",
+      "tests/stage3f6t-policy-router.test.js"
+    ],
+    "existingOwnersModified": [
+      "package.json",
+      ".gitignore"
+    ],
+    "policiesAdded": false,
+    "policiesModified": false,
+    "worldStateExpanded": false
+  },
+  "checks": {
+    "POLICY_DEFINITIONS_UNCHANGED": true,
+    "FEATURE_CONTRACT_HASH_MATCHES": true,
+    "CORE_HAS_NO_SIMULATOR_FEATURE": true,
+    "CORE_HAS_NO_V2B_FEATURE": true,
+    "CORE_HAS_NO_ROLLOUT_FEATURE": true,
+    "CORE_FEATURE_COUNT_30": true,
+    "TRAINING_INTEGRITY": true,
+    "CONFIRMATORY_HASH_MATCHES": true,
+    "FRESH_CONFIRMATORY_SIZE": true,
+    "RECORD_OVERLAP_ZERO": true,
+    "STATE_OVERLAP_ZERO": true,
+    "TOPOLOGY_OVERLAP_ZERO": true,
+    "NO_OVERLAP_WITH_EXPOSED_SPLITS": true,
+    "THRESHOLD_FROM_CAL": true,
+    "EVALUATION_FREEZE_WRITTEN": true,
+    "SEALED_OPENED_ONLY_AFTER_FREEZE": true,
+    "DETERMINISTIC_TRAINING": true,
+    "BEST_SINGLE_POLICY_COMPARISON_COMPUTED": true,
+    "ORACLE_GAIN_FRACTION_COMPUTED": true,
+    "POLICY_COLLAPSE_COMPUTED": true,
+    "FALSE_SELECTION_HARM_COMPUTED": true,
+    "UNAVAILABLE_NEVER_SELECTED": true,
+    "STAGE3F6A_INTACT": true,
+    "STAGE3F6C_INTACT": true,
+    "PRIOR_OWNERS_UNCHANGED": true,
+    "FROZEN_STAGE3E_UNCHANGED": true,
+    "NO_LIVE_PROMOTION": true,
+    "NO_ONLINE_LEARNING": true,
+    "TESTS_PASS": true
+  },
+  "tests": {
+    "pass": 21,
+    "fail": 0,
+    "skipped": 0
+  },
+  "sourceHashes": {
+    "src/stage3f/policy-router-v1.js": "ab23d2333d11da690a57dccfbc077944a1a68237db952dd158e8d9362a68a7a7",
+    "scripts/generate-stage3f6t-confirmatory.mjs": "fa4e9de0d035392f157b076deda77c1bf81c650e5aa0272bc20c39fef2fe3778",
+    "scripts/certify-stage3f6t-policy-router.mjs": "504dfe17e5e2d5acf8fae7c40ac48b55453bce9255e24cae9f44921992e198c1",
+    "tests/stage3f6t-policy-router.test.js": "55024761567d86c548e29bf037b8d130d275f8df90f187e63fb9756f2b4d2406"
+  },
+  "authority": {
+    "tier": "R0",
+    "canDispatch": false,
+    "canMutateLiveWorld": false,
+    "shadowOnly": true,
+    "incumbentSoleExecutor": true
+  },
+  "learning": {
+    "modelTrainingPerformed": true,
+    "trainedOn": "DEV_ONLY",
+    "calibratedOn": "CAL_ONLY",
+    "offlineCandidateOnly": true,
+    "largerModelTrained": false,
+    "onlineLearningEnabled": false,
+    "promotedToLiveRuntime": false
+  },
+  "roadmap": {
+    "readyForStage3G": false,
+    "blockers": [
+      "STAGE3G_READINESS_UNMET:materialImprovementOverBestSinglePolicyOnHoldout",
+      "STAGE3G_READINESS_UNMET:acceptableFalseSelectionHarm"
+    ]
+  },
+  "certificationHash": "5d6910dd39405ee9f9fc2868f1309ff84998d30f7128e7a60b36644ca9056582"
+}

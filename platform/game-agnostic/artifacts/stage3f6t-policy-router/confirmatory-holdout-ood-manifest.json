@@ -1,0 +1,85 @@
+{
+  "schemaVersion": 1,
+  "smokeMode": false,
+  "spec": {
+    "version": "STAGE3F6T_CONFIRMATORY_HOLDOUT_OOD_V1",
+    "curriculum": "FORGE_CURRICULUM_V2",
+    "holdout": {
+      "levels": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5
+      ],
+      "seeds": [
+        601,
+        602,
+        603
+      ]
+    },
+    "ood": {
+      "levels": [
+        6,
+        7
+      ],
+      "seeds": [
+        611
+      ]
+    },
+    "priorSeedSpaces": [
+      1,
+      2,
+      3,
+      11,
+      201,
+      202,
+      203,
+      211,
+      401,
+      402,
+      403,
+      411
+    ],
+    "targets": {
+      "HOLDOUT": 6000,
+      "OOD": 6000
+    },
+    "excludes": "every topologyHash, recordHash and worldHash present in the Stage 3F.6-C corpus",
+    "reason": "Stage 3F.6-C HOLDOUT/OOD were exposed by Stage 3F.6-A sealed policy evaluation"
+  },
+  "featureContractHash": "5b0a631ece4c9304d4ee8b5298dadb7a2f8a5f18ac39a358216eb14d074ec926",
+  "proposalContractHash": "53aaa52bf1d3ee3c06657644f8bb46496d1c6320b9fe0d961bec93d77bf65282",
+  "priorCorpusHash": "28fc6369511c2eb2e59d846a7a0353817cef9e56e871a65b4f8c2b577c1b62d5",
+  "attempted": 12605,
+  "admitted": 12000,
+  "counts": {
+    "HOLDOUT": 6000,
+    "OOD": 6000
+  },
+  "contentHash": "199a86724b710b13053e6c89d98e84218e92b47ab581691deadf541be704a843",
+  "partitionHashes": {
+    "HOLDOUT": "135e4f094dfc1bf9787889c8fe155ea5d9e7db301f679863b37460ebcb82d244",
+    "OOD": "833c1cd9785123a28d27e759fe311b85863b4e95299e836870b55469c7645468"
+  },
+  "overlapWithPriorCorpus": {
+    "topology": 0,
+    "record": 0,
+    "state": 0
+  },
+  "internalOverlap": {
+    "HOLDOUT_OOD_topology": 0,
+    "record": 0,
+    "state": 0
+  },
+  "rejected": {
+    "ISLANDS": 15,
+    "TOPOLOGY_IN_PRIOR_CORPUS": 445,
+    "TREE_BRANCHES_ACYCLIC": 75,
+    "BRIDGE_CUT_EXISTS": 17,
+    "LAYERS": 50,
+    "CONTESTED_BOTTLENECK": 3
+  },
+  "generator": "scripts/generate-stage3f6t-confirmatory.mjs"
+}
