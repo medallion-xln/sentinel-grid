@@ -1,0 +1,632 @@
+{
+  "schemaVersion": 1,
+  "stage": "STAGE_3F_6_P_1C_FORGE_SYMMETRY_REMEDIATION",
+  "status": "PASS",
+  "planHash": "91b1c3eebf9a4ced0e043f2e4a35d1276bf7241d72570022e201ec3aae7ffa86",
+  "CONFIRMATORY_CLAIMS": false,
+  "integrity": {
+    "planFileMatchesPlan": true,
+    "evidenceBoundToPlan": true,
+    "evidenceContent": true,
+    "freshSeedSpace": true,
+    "historicalCorporaRead": true,
+    "sampleSize": 1200,
+    "allAdmitted": true
+  },
+  "preservation": {
+    "FORGE_V1_UNCHANGED": true,
+    "POLICIES_UNCHANGED": true,
+    "HISTORICAL_CORPORA_UNCHANGED": true,
+    "HISTORICAL_RECORD_REPRODUCTION": {
+      "sampled": 20,
+      "reproduced": 20
+    },
+    "HISTORICAL_CERTIFICATES": {
+      "stage3f6a": true,
+      "stage3f6p": true,
+      "stage3f6p1": true,
+      "stage3f6p1a": true,
+      "stage3f6p1b": true
+    },
+    "POLICY_SET_HASH_UNCHANGED": true,
+    "TRANSFORM_GATE_UNCHANGED": true
+  },
+  "benchmark": {
+    "BENCHMARK_ID": "FORGE_SYMMETRIC_V2",
+    "GENERATOR_ID": "FORGE_SCENARIO_GENERATOR_SYMMETRIC_V1",
+    "GENERATOR_CONTRACT_HASH": "92be1b7d3255a7e373a06c20d8e68abf533b52e234a131df31bf116ff64b0d74",
+    "GENERATOR_SOURCE_HASH": "3274b434ab6ab6f55d04cd964e94e8056322b1ea8b818adffa8348d6a514035e",
+    "ORACLE_ID": "FORGE_COUNTERFACTUAL_SYMMETRIC_V1",
+    "ORACLE_CONTRACT_HASH": "eb4aedab02c2e9fdf0a2e90e34545ead832b0d327a101a62396e2c698090bf24",
+    "ORACLE_SOURCE_HASH": "4f7fe3d8fd011b97021328747345526aa744adf988e2300b5fde122677ce8fa7",
+    "SURFACE_ID": "FORGE_ACTION_SURFACE_SYMMETRIC_V1",
+    "SURFACE_CONTRACT_HASH": "e083913e8506e2c5994ac829f6a84a30fa47b5d392e90741fdaf78f736a81e9c",
+    "SURFACE_SOURCE_HASH": "a446d8e690a659674e0da3ec9346f3ec2fb38adddd2aaac529b8fdf77258eb62",
+    "ORIENTATION_ID": "FORGE_ORIENTATION_SYMMETRIC_V1",
+    "ORIENTATION_CONTRACT_HASH": "bd9c83a316bd14371a6fc65dcfc4a4d99a71eeedd698a8d3e4d4d9b96cdff4b7",
+    "ORIENTATION_SOURCE_HASH": "3fd13729bfb0db4e2a09f48ceba39cce30b03b398e6bec7e6570182be028c5b1",
+    "LABEL_ID": "FORGE_GREEDY_SAFE_SYMMETRIC_V1",
+    "distinctFromHistorical": true
+  },
+  "remediatedDefects": {
+    "EAST_FIRST_PLACEMENT_FIXED": true,
+    "ACTION_ID_TIE_BREAK_FIXED": true,
+    "RETREAT_AXIS_BIAS_FIXED": true,
+    "LABELS_FIXED": true,
+    "defects": {
+      "DEFECT_1": "material placement used a fixed EAST-first candidate order (scenarios-v2.js placeNear) — repaired by a seed-bound D4 orientation of the whole scenario after canonical generation",
+      "DEFECT_2": "continuation tie-breaking used world-independent action-key ordering (counterfactual-v2.js) — repaired by tie-breaking on the action identity in the canonical frame of the root world",
+      "DEFECT_3": "RETREAT resolved direction with a global x-before-y preference (kernel.js) — repaired by choosing the reachable neighbour furthest from the nearest live hostile, canonical-frame tie-break",
+      "DEFECT_4": "GREEDY_SAFE and horizon labels inherited the above — repaired as a consequence, under a new label identity"
+    }
+  },
+  "directionDistribution": {
+    "rows": 1200,
+    "moveOptimalRows": 1020,
+    "P_LEGAL": {
+      "EAST": 0.8683333333333333,
+      "NORTH": 0.8725,
+      "SOUTH": 0.8833333333333333,
+      "WEST": 0.8858333333333334
+    },
+    "P_OPTIMAL_GIVEN_LEGAL": {
+      "EAST": 0.2667946257197697,
+      "NORTH": 0.2148997134670487,
+      "SOUTH": 0.27264150943396226,
+      "WEST": 0.2850423330197554
+    },
+    "P_OPTIMAL_MOVE_OPTIMAL_ROWS": {
+      "EAST": 0.2725490196078431,
+      "NORTH": 0.22058823529411764,
+      "SOUTH": 0.2833333333333333,
+      "WEST": 0.29705882352941176
+    },
+    "orientationDistribution": {
+      "MA": 143,
+      "MD": 154,
+      "MX": 155,
+      "MY": 135,
+      "R0": 154,
+      "R180": 171,
+      "R270": 146,
+      "R90": 142
+    },
+    "meanOptimalGivenLegal": 0.259844545410134,
+    "maxDeviationFromMean": 0.04494483194308532,
+    "BALANCED": true
+  },
+  "placement": {
+    "n": 1200,
+    "adjacent": {
+      "EAST": 0.24083333333333334,
+      "NORTH": 0.22333333333333333,
+      "SOUTH": 0.2575,
+      "WEST": 0.27416666666666667
+    },
+    "beyondAdjacent": {
+      "EAST_FAR": 0.0016666666666666668,
+      "WEST_FAR": 0.0025,
+      "SOUTH_FAR": 0,
+      "NORTH_FAR": 0
+    },
+    "historical": {
+      "EAST": 0.78,
+      "WEST": 0.17,
+      "SOUTH": 0.04,
+      "NORTH": 0.01
+    },
+    "maxAdjacentShare": 0.27416666666666667,
+    "EAST_FIRST_ELIMINATED": true
+  },
+  "equivariance": {
+    "exceptionRows": 0,
+    "exception": "DIHEDRAL_SELF_SYMMETRIC_WORLD",
+    "scoredRows": 1200,
+    "perTransform": {
+      "ROTATE_90": {
+        "n": 1200,
+        "LEGAL_SURFACE_EQUIVARIANCE": 1,
+        "OPTIMAL_SET_EQUIVARIANCE": 1,
+        "REGRET_EQUIVARIANCE": 1,
+        "LABEL_EQUIVARIANCE": 1,
+        "RETREAT_EQUIVARIANCE": 1,
+        "retreatRows": 601,
+        "regretActionPairsCompared": 8295,
+        "regretActionPairMismatches": 0,
+        "MAPPED_OPTIMAL_DIRECTION_PRESERVED": 1,
+        "FIXED_EAST_PERSISTENCE": 0.06115107913669065
+      },
+      "ROTATE_180": {
+        "n": 1200,
+        "LEGAL_SURFACE_EQUIVARIANCE": 1,
+        "OPTIMAL_SET_EQUIVARIANCE": 1,
+        "REGRET_EQUIVARIANCE": 1,
+        "LABEL_EQUIVARIANCE": 1,
+        "RETREAT_EQUIVARIANCE": 1,
+        "retreatRows": 601,
+        "regretActionPairsCompared": 8295,
+        "regretActionPairMismatches": 0,
+        "MAPPED_OPTIMAL_DIRECTION_PRESERVED": 1,
+        "FIXED_EAST_PERSISTENCE": 0.01079136690647482
+      },
+      "ROTATE_270": {
+        "n": 1200,
+        "LEGAL_SURFACE_EQUIVARIANCE": 1,
+        "OPTIMAL_SET_EQUIVARIANCE": 1,
+        "REGRET_EQUIVARIANCE": 1,
+        "LABEL_EQUIVARIANCE": 1,
+        "RETREAT_EQUIVARIANCE": 1,
+        "retreatRows": 601,
+        "regretActionPairsCompared": 8295,
+        "regretActionPairMismatches": 0,
+        "MAPPED_OPTIMAL_DIRECTION_PRESERVED": 1,
+        "FIXED_EAST_PERSISTENCE": 0.06115107913669065
+      },
+      "REFLECT_X": {
+        "n": 1200,
+        "LEGAL_SURFACE_EQUIVARIANCE": 1,
+        "OPTIMAL_SET_EQUIVARIANCE": 1,
+        "REGRET_EQUIVARIANCE": 1,
+        "LABEL_EQUIVARIANCE": 1,
+        "RETREAT_EQUIVARIANCE": 1,
+        "retreatRows": 601,
+        "regretActionPairsCompared": 8295,
+        "regretActionPairMismatches": 0,
+        "MAPPED_OPTIMAL_DIRECTION_PRESERVED": 1,
+        "FIXED_EAST_PERSISTENCE": 0.01079136690647482
+      },
+      "REFLECT_Y": {
+        "n": 1200,
+        "LEGAL_SURFACE_EQUIVARIANCE": 1,
+        "OPTIMAL_SET_EQUIVARIANCE": 1,
+        "REGRET_EQUIVARIANCE": 1,
+        "LABEL_EQUIVARIANCE": 1,
+        "RETREAT_EQUIVARIANCE": 1,
+        "retreatRows": 601,
+        "regretActionPairsCompared": 8295,
+        "regretActionPairMismatches": 0,
+        "MAPPED_OPTIMAL_DIRECTION_PRESERVED": 1,
+        "FIXED_EAST_PERSISTENCE": 1
+      }
+    },
+    "LEGAL_SURFACE_EQUIVARIANCE": 1,
+    "OPTIMAL_SET_EQUIVARIANCE": 1,
+    "REGRET_EQUIVARIANCE": 1,
+    "LABEL_EQUIVARIANCE": 1,
+    "RETREAT_EQUIVARIANCE": 1,
+    "SYMMETRIC_GREEDY_SAFE_EQUIVARIANCE": 1,
+    "SUCCESSOR_STATE_COVERAGE": 1,
+    "TARGETS_MET": true
+  },
+  "fixedBaselines": {
+    "FIXED_EAST": 0.31662870159453305,
+    "FIXED_NORTH": 0.2542372881355932,
+    "FIXED_SOUTH": 0.321826280623608,
+    "FIXED_WEST": 0.3377926421404682,
+    "LOWEST_ID_MOVE": 0.31666666666666665,
+    "DETERMINISTIC_RANDOM_MOVE": 0.3186274509803914,
+    "lowestIdentityDirectionShare": {
+      "EAST": 0.8683333333333333,
+      "SOUTH": 0.115,
+      "WEST": 0.016666666666666666
+    },
+    "fixedSpread": 0.08355535400487502,
+    "lowestIdVersusRandom": -0.0019607843137247616,
+    "NO_UNEXPLAINED_FIXED_DIRECTION_ADVANTAGE": true
+  },
+  "policyDiagnostic": {
+    "overall": {
+      "RESOURCE_PRESERVING_V1": {
+        "coverage": 1,
+        "n": 1200,
+        "accuracy": 0.265,
+        "meanRegret": 31.863333333333333,
+        "moveRate": 0.8166666666666667,
+        "resourceAgreement": 1
+      },
+      "NEXUS_SELECTOR_V1": {
+        "coverage": 0.8316666666666667,
+        "n": 998,
+        "accuracy": 0.08316633266533066,
+        "meanRegret": 31.389779559118235,
+        "moveRate": 0,
+        "resourceAgreement": 0
+      },
+      "NEXUS_SELECTOR_V2_CANDIDATE": {
+        "coverage": 0.8316666666666667,
+        "n": 998,
+        "accuracy": 0.30561122244488975,
+        "meanRegret": 26.516032064128257,
+        "moveRate": 0.8256513026052105,
+        "resourceAgreement": 0.6513026052104208
+      },
+      "OBJECTIVE_TARGETING_V1": {
+        "coverage": 0.10166666666666667,
+        "n": 122,
+        "accuracy": 0.4016393442622951,
+        "meanRegret": 19.68032786885246,
+        "moveRate": 0,
+        "resourceAgreement": 0
+      },
+      "THREAT_COVERING_V1": {
+        "coverage": 0.035833333333333335,
+        "n": 43,
+        "accuracy": 0.2558139534883721,
+        "meanRegret": 22.325581395348838,
+        "moveRate": 0,
+        "resourceAgreement": 0
+      },
+      "GREEDY": {
+        "coverage": 1,
+        "n": 1200,
+        "accuracy": 0.14416666666666667,
+        "meanRegret": 28.928333333333335,
+        "moveRate": 0.0008333333333333334,
+        "resourceAgreement": 0.0008333333333333334
+      }
+    },
+    "onNexusProposingRows": {
+      "RESOURCE_PRESERVING_V1": {
+        "coverage": 1,
+        "n": 998,
+        "accuracy": 0.26452905811623245,
+        "meanRegret": 31.922845691382765,
+        "moveRate": 0.7805611222444889,
+        "resourceAgreement": 1
+      },
+      "NEXUS_SELECTOR_V1": {
+        "coverage": 1,
+        "n": 998,
+        "accuracy": 0.08316633266533066,
+        "meanRegret": 31.389779559118235,
+        "moveRate": 0,
+        "resourceAgreement": 0
+      },
+      "NEXUS_SELECTOR_V2_CANDIDATE": {
+        "coverage": 1,
+        "n": 998,
+        "accuracy": 0.30561122244488975,
+        "meanRegret": 26.516032064128257,
+        "moveRate": 0.8256513026052105,
+        "resourceAgreement": 0.6513026052104208
+      },
+      "OBJECTIVE_TARGETING_V1": {
+        "coverage": 0.1062124248496994,
+        "n": 106,
+        "accuracy": 0.41509433962264153,
+        "meanRegret": 19.433962264150942,
+        "moveRate": 0,
+        "resourceAgreement": 0
+      },
+      "THREAT_COVERING_V1": {
+        "coverage": 0.04308617234468938,
+        "n": 43,
+        "accuracy": 0.2558139534883721,
+        "meanRegret": 22.325581395348838,
+        "moveRate": 0,
+        "resourceAgreement": 0
+      },
+      "GREEDY": {
+        "coverage": 1,
+        "n": 998,
+        "accuracy": 0.1432865731462926,
+        "meanRegret": 29.45991983967936,
+        "moveRate": 0.001002004008016032,
+        "resourceAgreement": 0.001002004008016032
+      }
+    },
+    "nexusProposingRows": 998,
+    "deltas": {
+      "RESOURCE_PRESERVING_V1": {
+        "historical": {
+          "accuracy": 0.6092298471681151,
+          "meanRegret": 27.441714114474077
+        },
+        "symmetric": {
+          "accuracy": 0.26452905811623245,
+          "meanRegret": 31.922845691382765
+        },
+        "accuracyDelta": -0.3447007890518827,
+        "regretDelta": 4.4811315769086875,
+        "exceedsThreshold": true
+      },
+      "NEXUS_SELECTOR_V1": {
+        "historical": {
+          "accuracy": 0.22715013485166316,
+          "meanRegret": 50.246029367695535
+        },
+        "symmetric": {
+          "accuracy": 0.08316633266533066,
+          "meanRegret": 31.389779559118235
+        },
+        "accuracyDelta": -0.1439838021863325,
+        "regretDelta": -18.8562498085773,
+        "exceedsThreshold": true
+      },
+      "NEXUS_SELECTOR_V2_CANDIDATE": {
+        "historical": {
+          "accuracy": 0.6583757866347019,
+          "meanRegret": 21.711117770452503
+        },
+        "symmetric": {
+          "accuracy": 0.30561122244488975,
+          "meanRegret": 26.516032064128257
+        },
+        "accuracyDelta": -0.3527645641898121,
+        "regretDelta": 4.804914293675754,
+        "exceedsThreshold": true
+      }
+    },
+    "resourceShortcut": {
+      "P_ZERO_COST_ACTION_OPTIMAL": 0.85,
+      "P_RESOURCE_CORRECT_GIVEN_ZERO_COST_OPTIMAL": 0.31176470588235294,
+      "P_RESOURCE_CORRECT_OTHERWISE": 0,
+      "RESOURCE_MOVE_DIRECTION_SHARE": {
+        "EAST": 873,
+        "SOUTH": 93,
+        "WEST": 14
+      },
+      "separation": "the resource-cost shortcut is P(zero-cost optimal) and RESOURCE accuracy conditioned on it; the directional shortcut is the fixed-direction baseline table"
+    },
+    "status": "read-only diagnostic; no policy is trained, tuned or modified; this is not a new policy-quality claim"
+  },
+  "historicalImpact": [
+    {
+      "stage": "3F.6-C",
+      "headline": "CORE features predict GREEDY_SAFE; the deployable fallback lacks action computation",
+      "dependsOn": [
+        "LABELS"
+      ],
+      "impact": "MINOR_NUMERICAL_CONFOUND"
+    },
+    {
+      "stage": "3F.6-A",
+      "headline": "the deployable proposal contract: producers are distinct, decision-time and simulator-free",
+      "dependsOn": [
+        "STRUCTURAL"
+      ],
+      "impact": "UNAFFECTED"
+    },
+    {
+      "stage": "3F.6-T",
+      "headline": "no trained router materially beats ALWAYS_RESOURCE_PRESERVING_V1",
+      "dependsOn": [
+        "POLICY_COMPARISON",
+        "LABELS"
+      ],
+      "impact": "REQUIRES_RERUN"
+    },
+    {
+      "stage": "3F.6-W",
+      "headline": "risk-state enrichment adds little to predicting which policy is best",
+      "dependsOn": [
+        "POLICY_COMPARISON",
+        "LABELS"
+      ],
+      "impact": "REQUIRES_RERUN"
+    },
+    {
+      "stage": "3F.6-D",
+      "headline": "cost-sensitive decision rules beat argmax only marginally and collapse toward RESOURCE",
+      "dependsOn": [
+        "POLICY_COMPARISON",
+        "LABELS"
+      ],
+      "impact": "REQUIRES_RERUN"
+    },
+    {
+      "stage": "3F.6-P",
+      "headline": "policy quality is the binding limitation; RESOURCE KEEP, NEXUS REDESIGN_CANDIDATE",
+      "dependsOn": [
+        "POLICY_COMPARISON",
+        "LABELS"
+      ],
+      "impact": "REQUIRES_RERUN"
+    },
+    {
+      "stage": "3F.6-P.1",
+      "headline": "gating reflexive PROTECT improves NEXUS standalone but collapses onto RESOURCE and lowers policy-set value",
+      "dependsOn": [
+        "POLICY_COMPARISON",
+        "MOVE_DIRECTION"
+      ],
+      "impact": "REQUIRES_RERUN"
+    },
+    {
+      "stage": "3F.6-P.1A",
+      "headline": "available relational spatial context cannot predict MOVE direction (baseline 0.724)",
+      "dependsOn": [
+        "MOVE_DIRECTION"
+      ],
+      "impact": "REQUIRES_RERUN"
+    }
+  ],
+  "diagnosis": {
+    "primaryResult": "A_SYMMETRIC_BENCHMARK_CANDIDATE_CERTIFIED",
+    "benchmarkConclusion": "FORGE_SYMMETRIC_V2 is direction-neutral on a fresh DEV sample: material adjacency max 27.4% (was 78%), the four directions are optimal at 27/21/27/29%, and legal surfaces, optimal sets, regrets and labels are exactly equivariant under all five transforms.",
+    "historicalPerformanceDependence": "on the symmetric benchmark RESOURCE accuracy moves -0.345 and NEXUS V2 -0.353 against their Stage 3F.6-P.1A values"
+  },
+  "plan": {
+    "stage": "STAGE_3F_6_P_1C_FORGE_SYMMETRY_REMEDIATION",
+    "benchmark": {
+      "id": "FORGE_SYMMETRIC_V2",
+      "generator": "FORGE_SCENARIO_GENERATOR_SYMMETRIC_V1",
+      "surface": "FORGE_ACTION_SURFACE_SYMMETRIC_V1",
+      "oracle": "FORGE_COUNTERFACTUAL_SYMMETRIC_V1",
+      "label": "FORGE_GREEDY_SAFE_SYMMETRIC_V1",
+      "orientation": "FORGE_ORIENTATION_SYMMETRIC_V1",
+      "historicalUnchanged": [
+        "scenarios-v2.js",
+        "scenarios-v3.js",
+        "kernel.js",
+        "counterfactual-v2.js",
+        "record-v2.js",
+        "reward-v2.js",
+        "warmup.js",
+        "topology.js"
+      ]
+    },
+    "remediatedDefects": {
+      "DEFECT_1": "material placement used a fixed EAST-first candidate order (scenarios-v2.js placeNear) — repaired by a seed-bound D4 orientation of the whole scenario after canonical generation",
+      "DEFECT_2": "continuation tie-breaking used world-independent action-key ordering (counterfactual-v2.js) — repaired by tie-breaking on the action identity in the canonical frame of the root world",
+      "DEFECT_3": "RETREAT resolved direction with a global x-before-y preference (kernel.js) — repaired by choosing the reachable neighbour furthest from the nearest live hostile, canonical-frame tie-break",
+      "DEFECT_4": "GREEDY_SAFE and horizon labels inherited the above — repaired as a consequence, under a new label identity"
+    },
+    "sample": {
+      "partition": "fresh DEV diagnostic only",
+      "seedSpace": [
+        1001,
+        1002,
+        1003,
+        1011
+      ],
+      "disjointFrom": "every prior Forge seed space (1,2,3,11,201-211,401-411,601-611,801-811)",
+      "target": 1200,
+      "enumeration": "deterministic sweep of shape x roles x objectives x horizonBand x level x seed, in canonical order, admitted worlds only",
+      "note": "a bounded fresh DEV sample is sufficient for remediation certification; no confirmatory corpus is generated in this stage"
+    },
+    "transformsTested": [
+      "ROTATE_90",
+      "ROTATE_180",
+      "ROTATE_270",
+      "REFLECT_X",
+      "REFLECT_Y"
+    ],
+    "equivarianceTargets": {
+      "LEGAL_SURFACE_EQUIVARIANCE": 1,
+      "OPTIMAL_SET_EQUIVARIANCE": 1,
+      "REGRET_EQUIVARIANCE": 1,
+      "LABEL_EQUIVARIANCE": 1,
+      "RETREAT_EQUIVARIANCE": 1,
+      "SYMMETRIC_GREEDY_SAFE_EQUIVARIANCE": 1
+    },
+    "declaredExceptionBeforeEvaluation": {
+      "id": "DIHEDRAL_SELF_SYMMETRIC_WORLD",
+      "statement": "a world whose geometry digest is identical under two distinct D4 elements has no unique canonical frame; the declared orientation order resolves it, and such a world may tie-break differently from its transformed twin",
+      "handling": "counted and reported separately; rows flagged canonicalFrameDigestTied are excluded from the 1.0 targets and reported as a named exception, never as a lowered target"
+    },
+    "directionBalance": {
+      "optimalGivenLegalMaxDeviation": 0.15,
+      "comment": "no direction may exceed the four-direction mean by more than 0.15 absolute; exact uniformity is not required because grid edges and terrain differ per direction",
+      "materialPlacementMaxShare": 0.4,
+      "historicalMaterialShare": {
+        "EAST": 0.78,
+        "WEST": 0.17,
+        "SOUTH": 0.04,
+        "NORTH": 0.01
+      },
+      "fixedBaselineSpread": 0.15,
+      "lowestIdVersusRandomMax": 0.1
+    },
+    "policyDiagnostic": {
+      "policies": [
+        "RESOURCE_PRESERVING_V1",
+        "NEXUS_SELECTOR_V1",
+        "NEXUS_SELECTOR_V2_CANDIDATE",
+        "OBJECTIVE_TARGETING_V1",
+        "THREAT_COVERING_V1",
+        "GREEDY"
+      ],
+      "status": "read-only diagnostic; no policy is trained, tuned or modified; this is not a new policy-quality claim",
+      "shortcutSeparation": "resource-cost shortcut measured as P(a zero-declared-cost action is optimal) and P(RESOURCE correct | zero-cost optimal exists); directional shortcut measured as the fixed-direction baselines"
+    },
+    "historicalImpactRules": {
+      "thresholds": {
+        "policyAccuracyDelta": 0.1,
+        "policyRegretDelta": 5
+      },
+      "UNAFFECTED": "the stage claim is structural or contractual and does not depend on optimal-action labels or MOVE direction",
+      "MINOR_NUMERICAL_CONFOUND": "the claim depends on labels carrying orientation noise, but no measured policy delta exceeds a threshold and the qualitative conclusion is unchanged",
+      "MATERIAL_CONFOUND": "a measured policy delta exceeds a threshold and the stage reports those numbers, but the stage conclusion does not rest on comparing the affected policies",
+      "REQUIRES_RERUN": "the stage headline is a comparison among policies whose measured deltas exceed a threshold, or it rests on MOVE-direction choice"
+    },
+    "passConditions": [
+      "historical Forge V1 byte-identical and historical certificates reproducible",
+      "new benchmark identities distinct and hashed",
+      "direction-neutral placement established",
+      "tie-break equivariant",
+      "RETREAT equivariant",
+      "legal surface, optimal set, regret and labels equivariant at target",
+      "no policy, router or Sentinel architecture modification"
+    ],
+    "prohibited": [
+      "modifying historical Forge V1, corpora or certificates",
+      "modifying NEXUS, RESOURCE, router or any policy",
+      "training",
+      "generating the next full corpus",
+      "Stage 3G"
+    ],
+    "authority": {
+      "tier": "R0",
+      "canDispatch": false,
+      "canMutateLiveWorld": false,
+      "onlineLearningEnabled": false,
+      "promotedToLiveRuntime": false
+    }
+  },
+  "scope": {
+    "newOwners": [
+      "src/forge-symmetric/orientation-symmetric-v1.js",
+      "src/forge-symmetric/action-surface-symmetric-v1.js",
+      "src/forge-symmetric/counterfactual-symmetric-v1.js",
+      "src/forge-symmetric/scenarios-symmetric-v1.js",
+      "scripts/stage3f6p1c-analysis-plan.mjs",
+      "scripts/generate-stage3f6p1c-symmetric-evidence.mjs",
+      "scripts/certify-stage3f6p1c-symmetric-benchmark.mjs",
+      "tests/stage3f6p1c-symmetric-benchmark.test.js"
+    ],
+    "existingOwnersModified": [
+      "package.json",
+      ".gitignore"
+    ],
+    "policiesModified": false,
+    "routerTrained": false,
+    "sentinelArchitectureModified": false,
+    "corpusGenerated": false
+  },
+  "checks": {
+    "PLAN_BEFORE_EVIDENCE": true,
+    "DATA_INTEGRITY": true,
+    "FORGE_V1_UNCHANGED": true,
+    "POLICIES_UNCHANGED": true,
+    "HISTORICAL_CORPORA_UNCHANGED": true,
+    "HISTORICAL_RECORDS_REPRODUCE": true,
+    "HISTORICAL_CERTIFICATES_INTACT": true,
+    "NEW_IDENTITIES_DISTINCT": true,
+    "EAST_FIRST_PLACEMENT_FIXED": true,
+    "DIRECTION_BALANCED": true,
+    "EQUIVARIANCE_TARGETS_MET": true,
+    "NO_FIXED_DIRECTION_ADVANTAGE": true,
+    "TESTS_PASS": true
+  },
+  "tests": {
+    "pass": 19,
+    "fail": 0,
+    "skipped": 0
+  },
+  "sourceHashes": {
+    "src/forge-symmetric/orientation-symmetric-v1.js": "3fd13729bfb0db4e2a09f48ceba39cce30b03b398e6bec7e6570182be028c5b1",
+    "src/forge-symmetric/action-surface-symmetric-v1.js": "a446d8e690a659674e0da3ec9346f3ec2fb38adddd2aaac529b8fdf77258eb62",
+    "src/forge-symmetric/counterfactual-symmetric-v1.js": "4f7fe3d8fd011b97021328747345526aa744adf988e2300b5fde122677ce8fa7",
+    "src/forge-symmetric/scenarios-symmetric-v1.js": "3274b434ab6ab6f55d04cd964e94e8056322b1ea8b818adffa8348d6a514035e",
+    "scripts/stage3f6p1c-analysis-plan.mjs": "57d64637d9052368ccc395357a0ed8937bda446b0ff100ca455cc68005305159",
+    "scripts/generate-stage3f6p1c-symmetric-evidence.mjs": "72592ce85bc413ceab3122526a5f187a4a945da6e54040476448c294c69db2d4",
+    "scripts/certify-stage3f6p1c-symmetric-benchmark.mjs": "d302f98fb3d5e519c4a2182f5c56a28701d733314d92f14c55edb0430cb2b96a",
+    "tests/stage3f6p1c-symmetric-benchmark.test.js": "062f55e22272612895375a29d567eeed2f4fb104f0f98f5970e3a2f6ee6f4a92"
+  },
+  "authority": {
+    "tier": "R0",
+    "canDispatch": false,
+    "canMutateLiveWorld": false,
+    "onlineLearningEnabled": false,
+    "promotedToLiveRuntime": false
+  },
+  "roadmap": {
+    "NEW_CORPUS_LINEAGE_REQUIRED": true,
+    "READY_FOR_SYMMETRIC_CORPUS": true,
+    "READY_FOR_NEXUS_REEVALUATION": "AFTER_SYMMETRIC_CORPUS",
+    "READY_FOR_ROUTER_RETRAIN": false,
+    "READY_FOR_STAGE3G": false
+  },
+  "certificationHash": "81586cbe068885596d7f8b5c78d6f6d5d72e53425289f850386e0c43ddff702d"
+}
