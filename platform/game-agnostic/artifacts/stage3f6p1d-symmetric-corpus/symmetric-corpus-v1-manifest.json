@@ -1,0 +1,126 @@
+{
+  "schemaVersion": 1,
+  "corpusId": "FORGE_SYMMETRIC_V2_ROUTABILITY_CORPUS_V1",
+  "planHash": "840c866a65420574b136b9968984ca4e85c3cc325b9c69722aedc15c1cc41a69",
+  "benchmark": {
+    "BENCHMARK_ID": "FORGE_SYMMETRIC_V2",
+    "GENERATOR_ID": "FORGE_SCENARIO_GENERATOR_SYMMETRIC_V1",
+    "ORACLE_ID": "FORGE_COUNTERFACTUAL_SYMMETRIC_V1",
+    "SURFACE_ID": "FORGE_ACTION_SURFACE_SYMMETRIC_V1",
+    "ORIENTATION_ID": "FORGE_ORIENTATION_SYMMETRIC_V1",
+    "LABEL_ID": "FORGE_GREEDY_SAFE_SYMMETRIC_V1",
+    "GENERATOR_CONTRACT_HASH": "92be1b7d3255a7e373a06c20d8e68abf533b52e234a131df31bf116ff64b0d74",
+    "ORACLE_CONTRACT_HASH": "eb4aedab02c2e9fdf0a2e90e34545ead832b0d327a101a62396e2c698090bf24",
+    "SURFACE_CONTRACT_HASH": "e083913e8506e2c5994ac829f6a84a30fa47b5d392e90741fdaf78f736a81e9c",
+    "ORIENTATION_CONTRACT_HASH": "bd9c83a316bd14371a6fc65dcfc4a4d99a71eeedd698a8d3e4d4d9b96cdff4b7",
+    "featureContract": "SENTINEL_DEPLOYABLE_FEATURE_CONTRACT_V1",
+    "featureCount": 30,
+    "stage3f6p1cCertification": "81586cbe068885596d7f8b5c78d6f6d5d72e53425289f850386e0c43ddff702d"
+  },
+  "seeds": {
+    "priorConsumed": [
+      1,
+      2,
+      3,
+      11,
+      201,
+      202,
+      203,
+      211,
+      401,
+      402,
+      403,
+      411,
+      601,
+      602,
+      603,
+      611,
+      801,
+      802,
+      803,
+      811,
+      1001,
+      1002,
+      1003,
+      1011
+    ],
+    "DEV": [
+      2001,
+      2002,
+      2003
+    ],
+    "CAL": [
+      2011,
+      2012,
+      2013
+    ],
+    "HOLDOUT": [
+      2021,
+      2022,
+      2023
+    ],
+    "OOD": [
+      2031,
+      2032,
+      2033
+    ],
+    "disjointnessProof": "every new seed is checked against the enumerated prior list and against the other partitions, not inferred from naming"
+  },
+  "targets": {
+    "DEV": 4000,
+    "CAL": 4000,
+    "HOLDOUT": 6000,
+    "OOD": 6000,
+    "TOTAL": 20000,
+    "levels": {
+      "DEV": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5
+      ],
+      "CAL": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5
+      ],
+      "HOLDOUT": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5
+      ],
+      "OOD": [
+        6,
+        7
+      ]
+    }
+  },
+  "counts": {
+    "DEV": 4000,
+    "CAL": 4000,
+    "HOLDOUT": 6000,
+    "OOD": 6000
+  },
+  "attempted": 26000,
+  "admitted": 20000,
+  "rejectedAtMerge": {
+    "TOPOLOGY_HASH_CLAIMED": 2476
+  },
+  "oodCriteria": "curriculum levels 6 and 7 only, on their own seed space",
+  "sealed": [
+    "HOLDOUT",
+    "OOD"
+  ],
+  "historicalCorporaRead": false,
+  "contentHash": "4de383eb0c6e9836706e87c6626de53ccb54853fb527f368cfaf599617e6c75e",
+  "generator": "scripts/generate-stage3f6p1d-symmetric-corpus.mjs",
+  "workers": 8
+}

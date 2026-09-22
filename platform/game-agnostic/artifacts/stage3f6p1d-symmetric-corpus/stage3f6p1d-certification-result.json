@@ -1,0 +1,917 @@
+{
+  "schemaVersion": 1,
+  "stage": "STAGE_3F_6_P_1D_FORGE_SYMMETRIC_V2_CORPUS_LINEAGE",
+  "status": "PASS",
+  "planHash": "840c866a65420574b136b9968984ca4e85c3cc325b9c69722aedc15c1cc41a69",
+  "corpusId": "FORGE_SYMMETRIC_V2_ROUTABILITY_CORPUS_V1",
+  "CONFIRMATORY_CLAIMS": false,
+  "benchmark": {
+    "BENCHMARK_ID": "FORGE_SYMMETRIC_V2",
+    "GENERATOR_ID": "FORGE_SCENARIO_GENERATOR_SYMMETRIC_V1",
+    "ORACLE_ID": "FORGE_COUNTERFACTUAL_SYMMETRIC_V1",
+    "SURFACE_ID": "FORGE_ACTION_SURFACE_SYMMETRIC_V1",
+    "ORIENTATION_ID": "FORGE_ORIENTATION_SYMMETRIC_V1",
+    "LABEL_ID": "FORGE_GREEDY_SAFE_SYMMETRIC_V1",
+    "GENERATOR_CONTRACT_HASH": "92be1b7d3255a7e373a06c20d8e68abf533b52e234a131df31bf116ff64b0d74",
+    "ORACLE_CONTRACT_HASH": "eb4aedab02c2e9fdf0a2e90e34545ead832b0d327a101a62396e2c698090bf24",
+    "SURFACE_CONTRACT_HASH": "e083913e8506e2c5994ac829f6a84a30fa47b5d392e90741fdaf78f736a81e9c",
+    "ORIENTATION_CONTRACT_HASH": "bd9c83a316bd14371a6fc65dcfc4a4d99a71eeedd698a8d3e4d4d9b96cdff4b7",
+    "featureContract": "SENTINEL_DEPLOYABLE_FEATURE_CONTRACT_V1",
+    "featureCount": 30,
+    "stage3f6p1cCertification": "81586cbe068885596d7f8b5c78d6f6d5d72e53425289f850386e0c43ddff702d"
+  },
+  "corpus": {
+    "contentHash": "4de383eb0c6e9836706e87c6626de53ccb54853fb527f368cfaf599617e6c75e",
+    "counts": {
+      "DEV": 4000,
+      "CAL": 4000,
+      "HOLDOUT": 6000,
+      "OOD": 6000
+    },
+    "total": 20000,
+    "attempted": 26000,
+    "rejectedAtMerge": {
+      "TOPOLOGY_HASH_CLAIMED": 2476
+    },
+    "workers": 8,
+    "oodCriteria": {
+      "OOD_CRITERIA": "curriculum levels 6 and 7 only, on their own seed space",
+      "boundTo": "environment parameters fixed by the frozen curriculum: topologyNodes 28-32, gridSize 20-22, energy 20-16, hazardDensity 6-7, valueSpread 7-8, maxTicksBase 28-31",
+      "declaredBefore": "generation; OOD is never defined by inspecting any policy or model behaviour"
+    }
+  },
+  "integrity": {
+    "planFileMatchesPlan": true,
+    "corpusBoundToPlan": true,
+    "contentHash": true,
+    "benchmarkBinding": true,
+    "counts": {
+      "DEV": 4000,
+      "CAL": 4000,
+      "HOLDOUT": 6000,
+      "OOD": 6000
+    },
+    "targetsMet": true,
+    "total": 20000,
+    "attemptedCandidates": 26000,
+    "rejectedAtMerge": {
+      "TOPOLOGY_HASH_CLAIMED": 2476
+    },
+    "workers": 8,
+    "historicalCorporaRead": true,
+    "oodLevelsOnly": true,
+    "inDistributionLevels": true
+  },
+  "preservation": {
+    "FORGE_V1_GENERATOR_UNCHANGED": true,
+    "SYMMETRIC_BENCHMARK_UNCHANGED": true,
+    "FORGE_V1_CORPUS_UNCHANGED": true,
+    "V1_RECORD_REPRODUCTION": {
+      "sampled": 10,
+      "reproduced": 10
+    },
+    "HISTORICAL_CERTIFICATES": {
+      "stage3f6p1b": true,
+      "stage3f6p1c": true,
+      "stage3f6p": true
+    },
+    "POLICY_SET_HASH_UNCHANGED": true,
+    "NEW_LINEAGE_IDENTITY_DISTINCT": true
+  },
+  "seedAudit": {
+    "priorConsumed": [
+      1,
+      2,
+      3,
+      11,
+      201,
+      202,
+      203,
+      211,
+      401,
+      402,
+      403,
+      411,
+      601,
+      602,
+      603,
+      611,
+      801,
+      802,
+      803,
+      811,
+      1001,
+      1002,
+      1003,
+      1011
+    ],
+    "used": {
+      "DEV": [
+        2001
+      ],
+      "CAL": [
+        2011
+      ],
+      "HOLDOUT": [
+        2021
+      ],
+      "OOD": [
+        2031
+      ]
+    },
+    "overlapWithPrior": {
+      "DEV": [],
+      "CAL": [],
+      "HOLDOUT": [],
+      "OOD": []
+    },
+    "crossPartitionOverlap": {
+      "DEV/CAL": 0,
+      "DEV/HOLDOUT": 0,
+      "DEV/OOD": 0,
+      "CAL/HOLDOUT": 0,
+      "CAL/OOD": 0,
+      "HOLDOUT/OOD": 0
+    },
+    "declaredMatchesUsed": true,
+    "SEED_OVERLAP": 0
+  },
+  "splitHygiene": {
+    "RECORD_OVERLAP": {
+      "DEV/CAL": 0,
+      "DEV/HOLDOUT": 0,
+      "DEV/OOD": 0,
+      "CAL/HOLDOUT": 0,
+      "CAL/OOD": 0,
+      "HOLDOUT/OOD": 0
+    },
+    "STATE_OVERLAP": {
+      "DEV/CAL": 0,
+      "DEV/HOLDOUT": 0,
+      "DEV/OOD": 0,
+      "CAL/HOLDOUT": 0,
+      "CAL/OOD": 0,
+      "HOLDOUT/OOD": 0
+    },
+    "TOPOLOGY_OVERLAP": {
+      "DEV/CAL": 0,
+      "DEV/HOLDOUT": 0,
+      "DEV/OOD": 0,
+      "CAL/HOLDOUT": 0,
+      "CAL/OOD": 0,
+      "HOLDOUT/OOD": 0
+    },
+    "duplicateRecordHashes": 0,
+    "duplicateWorldHashes": 0,
+    "duplicateTopologyHashes": 0,
+    "DERIVED_VARIANT_LEAKAGE": 0,
+    "ALL_ZERO": true
+  },
+  "symmetry": {
+    "DEV": {
+      "orientation": {
+        "R0": 0.12525,
+        "R90": 0.12675,
+        "R180": 0.12175,
+        "R270": 0.12325,
+        "MX": 0.127,
+        "MY": 0.12025,
+        "MD": 0.13425,
+        "MA": 0.1215
+      },
+      "orientationMaxDeviation": 0.009250000000000008,
+      "orientationBalanced": true,
+      "material": {
+        "EAST": 0.25275,
+        "NORTH": 0.24875,
+        "SOUTH": 0.259,
+        "WEST": 0.23425,
+        "BEYOND_ADJACENT": 0.00525
+      },
+      "materialMaxShare": 0.259,
+      "legal": {
+        "EAST": 0.8675,
+        "NORTH": 0.86725,
+        "SOUTH": 0.884,
+        "WEST": 0.86925
+      },
+      "optimalGivenLegal": {
+        "EAST": 0.27262247838616716,
+        "NORTH": 0.24963966560968578,
+        "SOUTH": 0.2587669683257919,
+        "WEST": 0.2525165372447512
+      },
+      "meanOptimalGivenLegal": 0.258386412391599,
+      "optimalMaxDeviation": 0.01423606599456817,
+      "balanced": true
+    },
+    "CAL": {
+      "orientation": {
+        "R0": 0.11625,
+        "R90": 0.128,
+        "R180": 0.12825,
+        "R270": 0.12375,
+        "MX": 0.12975,
+        "MY": 0.126,
+        "MD": 0.12475,
+        "MA": 0.12325
+      },
+      "orientationMaxDeviation": 0.008749999999999994,
+      "orientationBalanced": true,
+      "material": {
+        "EAST": 0.24875,
+        "NORTH": 0.2465,
+        "SOUTH": 0.24725,
+        "WEST": 0.255,
+        "BEYOND_ADJACENT": 0.0025
+      },
+      "materialMaxShare": 0.255,
+      "legal": {
+        "EAST": 0.8775,
+        "NORTH": 0.8845,
+        "SOUTH": 0.87675,
+        "WEST": 0.88
+      },
+      "optimalGivenLegal": {
+        "EAST": 0.26125356125356125,
+        "NORTH": 0.25805539853024306,
+        "SOUTH": 0.25092671799258626,
+        "WEST": 0.26392045454545454
+      },
+      "meanOptimalGivenLegal": 0.2585390330804613,
+      "optimalMaxDeviation": 0.007612315087875021,
+      "balanced": true
+    },
+    "HOLDOUT": {
+      "orientation": {
+        "R0": 0.12483333333333334,
+        "R90": 0.12033333333333333,
+        "R180": 0.12783333333333333,
+        "R270": 0.122,
+        "MX": 0.12416666666666666,
+        "MY": 0.13383333333333333,
+        "MD": 0.12466666666666666,
+        "MA": 0.12233333333333334
+      },
+      "orientationMaxDeviation": 0.008833333333333332,
+      "orientationBalanced": true,
+      "material": {
+        "EAST": 0.25483333333333336,
+        "NORTH": 0.24966666666666668,
+        "SOUTH": 0.24566666666666667,
+        "WEST": 0.24616666666666667,
+        "BEYOND_ADJACENT": 0.0036666666666666666
+      },
+      "materialMaxShare": 0.25483333333333336,
+      "legal": {
+        "EAST": 0.8845,
+        "NORTH": 0.8848333333333334,
+        "SOUTH": 0.8848333333333334,
+        "WEST": 0.8755
+      },
+      "optimalGivenLegal": {
+        "EAST": 0.25513472771810813,
+        "NORTH": 0.2565454887926163,
+        "SOUTH": 0.2584290826897721,
+        "WEST": 0.2625166571482962
+      },
+      "meanOptimalGivenLegal": 0.2581564890871982,
+      "optimalMaxDeviation": 0.004360168061098013,
+      "balanced": true
+    },
+    "OOD": {
+      "orientation": {
+        "R0": 0.11833333333333333,
+        "R90": 0.126,
+        "R180": 0.12833333333333333,
+        "R270": 0.1255,
+        "MX": 0.12966666666666668,
+        "MY": 0.128,
+        "MD": 0.12416666666666666,
+        "MA": 0.12
+      },
+      "orientationMaxDeviation": 0.006666666666666668,
+      "orientationBalanced": true,
+      "material": {
+        "EAST": 0.24666666666666667,
+        "NORTH": 0.24283333333333335,
+        "SOUTH": 0.2515,
+        "WEST": 0.25866666666666666,
+        "BEYOND_ADJACENT": 0.0003333333333333333
+      },
+      "materialMaxShare": 0.25866666666666666,
+      "legal": {
+        "EAST": 0.9396666666666667,
+        "NORTH": 0.9365,
+        "SOUTH": 0.9393333333333334,
+        "WEST": 0.938
+      },
+      "optimalGivenLegal": {
+        "EAST": 0.2506207875133026,
+        "NORTH": 0.2530699412706887,
+        "SOUTH": 0.25745209368346345,
+        "WEST": 0.26332622601279315
+      },
+      "meanOptimalGivenLegal": 0.256117262120062,
+      "optimalMaxDeviation": 0.0072089638927311794,
+      "balanced": true
+    }
+  },
+  "equivarianceGate": {
+    "DEV": {
+      "sampledRows": 164,
+      "transformChecks": 820,
+      "LEGAL_SURFACE_EQUIVARIANCE": 1,
+      "OPTIMAL_SET_EQUIVARIANCE": 1,
+      "REGRET_EQUIVARIANCE": 1,
+      "LABEL_EQUIVARIANCE": 1,
+      "CORE_FEATURE_INVARIANCE": 1
+    },
+    "CAL": {
+      "sampledRows": 168,
+      "transformChecks": 840,
+      "LEGAL_SURFACE_EQUIVARIANCE": 1,
+      "OPTIMAL_SET_EQUIVARIANCE": 1,
+      "REGRET_EQUIVARIANCE": 1,
+      "LABEL_EQUIVARIANCE": 1,
+      "CORE_FEATURE_INVARIANCE": 1
+    },
+    "HOLDOUT": {
+      "sampledRows": 246,
+      "transformChecks": 1230,
+      "LEGAL_SURFACE_EQUIVARIANCE": 1,
+      "OPTIMAL_SET_EQUIVARIANCE": 1,
+      "REGRET_EQUIVARIANCE": 1,
+      "LABEL_EQUIVARIANCE": 1,
+      "CORE_FEATURE_INVARIANCE": 1
+    },
+    "OOD": {
+      "sampledRows": 242,
+      "transformChecks": 1210,
+      "LEGAL_SURFACE_EQUIVARIANCE": 1,
+      "OPTIMAL_SET_EQUIVARIANCE": 1,
+      "REGRET_EQUIVARIANCE": 1,
+      "LABEL_EQUIVARIANCE": 1,
+      "CORE_FEATURE_INVARIANCE": 1
+    },
+    "totalSampledRows": 820,
+    "LEGAL_SURFACE_EQUIVARIANCE": 1,
+    "OPTIMAL_SET_EQUIVARIANCE": 1,
+    "REGRET_EQUIVARIANCE": 1,
+    "LABEL_EQUIVARIANCE": 1,
+    "CORE_FEATURE_INVARIANCE": 1,
+    "PASS": true
+  },
+  "shortcut": {
+    "DEV": {
+      "FIXED_EAST": 0.3228668941979522,
+      "FIXED_NORTH": 0.29759450171821306,
+      "FIXED_SOUTH": 0.3081845739306164,
+      "FIXED_WEST": 0.3010973936899863,
+      "LOWEST_ID_MOVE_ACCURACY": 0.3295824696476162,
+      "RANDOM_MOVE_ACCURACY": 0.3199585430855828,
+      "fixedSpread": 0.02527239247973917,
+      "lowestIdVersusRandom": 0.009623926562033425,
+      "P_ZERO_COST_OPTIMAL_EXISTS": 0.84825,
+      "P_RESOURCE_CORRECT_GIVEN_ZERO_COST": 0.3212496315944592,
+      "P_RESOURCE_CORRECT_OTHERWISE": 0,
+      "DIRECTIONAL_SHORTCUT_ABSENT": true
+    },
+    "CAL": {
+      "FIXED_EAST": 0.30658642594450014,
+      "FIXED_NORTH": 0.30312084993359895,
+      "FIXED_SOUTH": 0.2955003357958361,
+      "FIXED_WEST": 0.31059846205282515,
+      "LOWEST_ID_MOVE_ACCURACY": 0.3091334894613583,
+      "RANDOM_MOVE_ACCURACY": 0.31476873536300126,
+      "fixedSpread": 0.01509812625698903,
+      "lowestIdVersusRandom": -0.005635245901642938,
+      "P_ZERO_COST_OPTIMAL_EXISTS": 0.85675,
+      "P_RESOURCE_CORRECT_GIVEN_ZERO_COST": 0.30434782608695654,
+      "P_RESOURCE_CORRECT_OTHERWISE": 0,
+      "DIRECTIONAL_SHORTCUT_ABSENT": true
+    },
+    "HOLDOUT": {
+      "FIXED_EAST": 0.29595628415300546,
+      "FIXED_NORTH": 0.2982264068316181,
+      "FIXED_SOUTH": 0.2989758117236871,
+      "FIXED_WEST": 0.3050884955752212,
+      "LOWEST_ID_MOVE_ACCURACY": 0.305052063247204,
+      "RANDOM_MOVE_ACCURACY": 0.3103548013883473,
+      "fixedSpread": 0.009132211422215764,
+      "lowestIdVersusRandom": -0.005302738141143293,
+      "P_ZERO_COST_OPTIMAL_EXISTS": 0.869,
+      "P_RESOURCE_CORRECT_GIVEN_ZERO_COST": 0.2940161104718067,
+      "P_RESOURCE_CORRECT_OTHERWISE": 0,
+      "DIRECTIONAL_SHORTCUT_ABSENT": true
+    },
+    "OOD": {
+      "FIXED_EAST": 0.26475548060708265,
+      "FIXED_NORTH": 0.26759503199096724,
+      "FIXED_SOUTH": 0.27202849643794524,
+      "FIXED_WEST": 0.27815315315315314,
+      "LOWEST_ID_MOVE_ACCURACY": 0.2684729064039409,
+      "RANDOM_MOVE_ACCURACY": 0.2759207131128274,
+      "fixedSpread": 0.013397672546070494,
+      "lowestIdVersusRandom": -0.007447806708886506,
+      "P_ZERO_COST_OPTIMAL_EXISTS": 0.9476666666666667,
+      "P_RESOURCE_CORRECT_GIVEN_ZERO_COST": 0.2696095673584242,
+      "P_RESOURCE_CORRECT_OTHERWISE": 0,
+      "DIRECTIONAL_SHORTCUT_ABSENT": true
+    }
+  },
+  "labels": {
+    "DEV": {
+      "n": 4000,
+      "positive": 856,
+      "negative": 3144,
+      "positiveRate": 0.214,
+      "horizonDependentRate": 0.786,
+      "meanOptimalSetSize": 1.366,
+      "labelIdCorrect": true
+    },
+    "CAL": {
+      "n": 4000,
+      "positive": 759,
+      "negative": 3241,
+      "positiveRate": 0.18975,
+      "horizonDependentRate": 0.81025,
+      "meanOptimalSetSize": 1.3535,
+      "labelIdCorrect": true
+    },
+    "HOLDOUT": {
+      "n": 6000,
+      "positive": 1278,
+      "negative": 4722,
+      "positiveRate": 0.213,
+      "horizonDependentRate": 0.7866666666666666,
+      "meanOptimalSetSize": 1.3871666666666667,
+      "labelIdCorrect": true
+    },
+    "OOD": {
+      "n": 6000,
+      "positive": 981,
+      "negative": 5019,
+      "positiveRate": 0.1635,
+      "horizonDependentRate": 0.8365,
+      "meanOptimalSetSize": 1.297,
+      "labelIdCorrect": true
+    },
+    "historicalForgeV1Descriptive": {
+      "DEV": 0.26675,
+      "CAL": 0.2655,
+      "HOLDOUT": 0.25516666666666665,
+      "OOD": 0.2575
+    }
+  },
+  "featureAudit": {
+    "contract": "SENTINEL_DEPLOYABLE_FEATURE_CONTRACT_V1",
+    "profile": "DEPLOYABLE_CORE",
+    "featureCount": 30,
+    "contractMatchesPlan": true,
+    "everyRowComplete": true,
+    "UNKNOWN_RATE": 0,
+    "UNAVAILABLE_RATE": 0,
+    "noZeroFill": true,
+    "ORIENTATION_TOKEN_IN_FEATURE_IDS": false,
+    "ORIENTATION_TOKEN_IN_ROW_FIELDS": false,
+    "perOrientationFeatureDrift": {
+      "worstStandardisedDrift": 0.0849555769845395,
+      "worstFeature": "relational.unsupportedThreatenedCount@R90",
+      "bar": 0.25
+    },
+    "ORIENTATION_TOKEN_LEAKAGE": false
+  },
+  "benchmarkProperties": {
+    "DUPLICATE_ACTION_KEYS": {
+      "rowsAffected": 26,
+      "rowRate": 0.0013,
+      "maxPerRow": 1,
+      "cause": "the frozen Stage 3B generator can add a dependsOn edge that duplicates a topology edge, and the frozen kernel then offers two identical BYPASS actions with the same action key",
+      "inherited": "present in Forge V1 and carried by the symmetric wrapper, which does not modify the frozen generator or kernel",
+      "handling": "identity-based comparisons (optimal sets, per-action maps) are taken over DISTINCT action keys; the duplicate is the same action offered twice, so no transition is lost or double-counted"
+    }
+  },
+  "admissionAudit": {
+    "attempted": 100,
+    "admitted": 100,
+    "reasons": {},
+    "note": "sampled re-admission of stored rows; generation-time rejection reasons are not individually counted"
+  },
+  "determinism": {
+    "sliceRows": 1000,
+    "identical": 1000,
+    "GENERATOR_REPRODUCIBLE": true,
+    "MULTIWORKER_REPRODUCIBLE": true,
+    "note": "the slice spans all 8 shards; a single-worker rebuild reproduces every stored row byte for byte"
+  },
+  "policyDescriptive": {
+    "DEV": {
+      "GREEDY": {
+        "coverage": 1,
+        "accuracy": 0.214,
+        "meanRegret": 39.43175,
+        "moveRate": 0
+      },
+      "RESOURCE_PRESERVING_V1": {
+        "coverage": 1,
+        "accuracy": 0.2725,
+        "meanRegret": 44.918,
+        "moveRate": 0.82875
+      },
+      "NEXUS_SELECTOR_V1": {
+        "coverage": 0.85725,
+        "accuracy": 0.1609798775153106,
+        "meanRegret": 42.06095071449402,
+        "moveRate": 0
+      },
+      "NEXUS_SELECTOR_V2_CANDIDATE": {
+        "coverage": 0.85725,
+        "accuracy": 0.31437736949547973,
+        "meanRegret": 40.423447069116364,
+        "moveRate": 0.8291046952464275
+      },
+      "OBJECTIVE_TARGETING_V1": {
+        "coverage": 0.0955,
+        "accuracy": 0.306282722513089,
+        "meanRegret": 45.67801047120419,
+        "moveRate": 0
+      },
+      "THREAT_COVERING_V1": {
+        "coverage": 0.03,
+        "accuracy": 0.4583333333333333,
+        "meanRegret": 25.991666666666667,
+        "moveRate": 0
+      },
+      "RANDOM_LEGAL_V1": {
+        "coverage": 1,
+        "accuracy": 0.211,
+        "meanRegret": 45.281,
+        "moveRate": 0.518
+      }
+    },
+    "CAL": {
+      "GREEDY": {
+        "coverage": 1,
+        "accuracy": 0.18975,
+        "meanRegret": 39.76875,
+        "moveRate": 0
+      },
+      "RESOURCE_PRESERVING_V1": {
+        "coverage": 1,
+        "accuracy": 0.26075,
+        "meanRegret": 44.647,
+        "moveRate": 0.8205
+      },
+      "NEXUS_SELECTOR_V1": {
+        "coverage": 0.88325,
+        "accuracy": 0.1505802434191905,
+        "meanRegret": 41.9623549391452,
+        "moveRate": 0
+      },
+      "NEXUS_SELECTOR_V2_CANDIDATE": {
+        "coverage": 0.88325,
+        "accuracy": 0.30399094254174924,
+        "meanRegret": 39.82309651853949,
+        "moveRate": 0.8431927540333993
+      },
+      "OBJECTIVE_TARGETING_V1": {
+        "coverage": 0.08525,
+        "accuracy": 0.3225806451612903,
+        "meanRegret": 46.21114369501466,
+        "moveRate": 0
+      },
+      "THREAT_COVERING_V1": {
+        "coverage": 0.02525,
+        "accuracy": 0.3465346534653465,
+        "meanRegret": 27.564356435643564,
+        "moveRate": 0
+      },
+      "RANDOM_LEGAL_V1": {
+        "coverage": 1,
+        "accuracy": 0.208,
+        "meanRegret": 44.091,
+        "moveRate": 0.5165
+      }
+    },
+    "sealedPartitions": {
+      "HOLDOUT": "sealed: only the frozen integrity diagnostics were computed",
+      "OOD": "sealed: only the frozen integrity diagnostics were computed"
+    }
+  },
+  "requalification": {
+    "requiresRerun": [
+      "3F.6-T",
+      "3F.6-W",
+      "3F.6-D",
+      "3F.6-P",
+      "3F.6-P.1",
+      "3F.6-P.1A"
+    ],
+    "dependencies": {
+      "3F.6-P": [],
+      "3F.6-P.1": [
+        "3F.6-P"
+      ],
+      "3F.6-P.1A": [
+        "3F.6-P.1"
+      ],
+      "3F.6-T": [
+        "3F.6-P"
+      ],
+      "3F.6-W": [
+        "3F.6-T"
+      ],
+      "3F.6-D": [
+        "3F.6-T",
+        "3F.6-W"
+      ]
+    },
+    "MINIMAL_REQUALIFICATION_SEQUENCE": [
+      "3F.6-P",
+      "3F.6-P.1",
+      "3F.6-T",
+      "3F.6-P.1A",
+      "3F.6-W",
+      "3F.6-D"
+    ],
+    "unaffected": [
+      "3F.6-A"
+    ],
+    "minorOnly": [
+      "3F.6-C"
+    ]
+  },
+  "sealing": {
+    "DEV": "development",
+    "CAL": "calibration",
+    "HOLDOUT": "sealed",
+    "OOD": "sealed",
+    "rule": "no policy performance is reported on HOLDOUT or OOD beyond the frozen integrity diagnostics above"
+  },
+  "diagnosis": {
+    "primaryResult": "A_SYMMETRIC_CORPUS_LINEAGE_CERTIFIED",
+    "corpusConclusion": "FORGE_SYMMETRIC_V2_ROUTABILITY_CORPUS_V1 is a new, independent lineage: 20000 records on fresh seeds, zero record, state and topology overlap, orientation balanced within 0.009 of uniform, and every sampled equivariance invariant at 1.000."
+  },
+  "disclosures": {
+    "EQUIVARIANCE_COMPARISON_CORRECTION": "the first corpus build compared optimal-key array length against a mapped SET, which flagged 3 of 820 sampled rows whose optimal set contains the same duplicated BYPASS action twice; the comparison now uses distinct keys on both sides. The benchmark was not changed and its semantics, hashes and Stage 3F.6-P.1C binding are untouched.",
+    "SEALED_PARTITIONS": "descriptive policy performance is reported for DEV and CAL only; HOLDOUT and OOD received only the integrity diagnostics the plan froze before generation",
+    "ADMISSION_AUDIT_IS_SAMPLED": "generation-time rejection reasons were not counted per reason; the audit re-admits a deterministic sample of stored rows instead"
+  },
+  "plan": {
+    "stage": "STAGE_3F_6_P_1D_FORGE_SYMMETRIC_V2_CORPUS_LINEAGE",
+    "corpusId": "FORGE_SYMMETRIC_V2_ROUTABILITY_CORPUS_V1",
+    "benchmark": {
+      "BENCHMARK_ID": "FORGE_SYMMETRIC_V2",
+      "GENERATOR_ID": "FORGE_SCENARIO_GENERATOR_SYMMETRIC_V1",
+      "ORACLE_ID": "FORGE_COUNTERFACTUAL_SYMMETRIC_V1",
+      "SURFACE_ID": "FORGE_ACTION_SURFACE_SYMMETRIC_V1",
+      "ORIENTATION_ID": "FORGE_ORIENTATION_SYMMETRIC_V1",
+      "LABEL_ID": "FORGE_GREEDY_SAFE_SYMMETRIC_V1",
+      "binding": "the generator refuses to run unless every contract hash matches the Stage 3F.6-P.1C certification",
+      "stage3f6p1cCertification": "81586cbe068885596d7f8b5c78d6f6d5d72e53425289f850386e0c43ddff702d"
+    },
+    "featureContract": {
+      "id": "SENTINEL_DEPLOYABLE_FEATURE_CONTRACT_V1",
+      "profile": "DEPLOYABLE_CORE",
+      "featureCount": 30,
+      "missingSemantics": "a CORE feature that is not AVAILABLE disqualifies the row; nothing is imputed and nothing is zero-filled"
+    },
+    "seeds": {
+      "priorConsumed": [
+        1,
+        2,
+        3,
+        11,
+        201,
+        202,
+        203,
+        211,
+        401,
+        402,
+        403,
+        411,
+        601,
+        602,
+        603,
+        611,
+        801,
+        802,
+        803,
+        811,
+        1001,
+        1002,
+        1003,
+        1011
+      ],
+      "DEV": [
+        2001,
+        2002,
+        2003
+      ],
+      "CAL": [
+        2011,
+        2012,
+        2013
+      ],
+      "HOLDOUT": [
+        2021,
+        2022,
+        2023
+      ],
+      "OOD": [
+        2031,
+        2032,
+        2033
+      ],
+      "disjointnessProof": "every new seed is checked against the enumerated prior list and against the other partitions, not inferred from naming"
+    },
+    "splits": {
+      "DEV": 4000,
+      "CAL": 4000,
+      "HOLDOUT": 6000,
+      "OOD": 6000,
+      "TOTAL": 20000,
+      "levels": {
+        "DEV": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5
+        ],
+        "CAL": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5
+        ],
+        "HOLDOUT": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5
+        ],
+        "OOD": [
+          6,
+          7
+        ]
+      }
+    },
+    "oodCriteria": {
+      "OOD_CRITERIA": "curriculum levels 6 and 7 only, on their own seed space",
+      "boundTo": "environment parameters fixed by the frozen curriculum: topologyNodes 28-32, gridSize 20-22, energy 20-16, hazardDensity 6-7, valueSpread 7-8, maxTicksBase 28-31",
+      "declaredBefore": "generation; OOD is never defined by inspecting any policy or model behaviour"
+    },
+    "admission": [
+      "warm-up history valid and unclamped",
+      "validateScenarioV2 passes",
+      "at least one legal action",
+      "every DEPLOYABLE_CORE feature AVAILABLE (no imputation)",
+      "record, world and topology hashes unused anywhere else in the lineage"
+    ],
+    "splitHygiene": {
+      "recordOverlap": 0,
+      "worldStateOverlap": 0,
+      "topologyOverlap": 0,
+      "seedOverlap": 0,
+      "method": "candidates are admitted in one canonical order across the whole lineage; any candidate whose record, world or topology hash is already claimed is rejected and counted"
+    },
+    "symmetryBalance": {
+      "orientationMaxDeviationFromUniform": 0.05,
+      "materialDirectionMaxShare": 0.4,
+      "optimalDirectionMaxDeviationFromMean": 0.15,
+      "note": "exact uniformity is not required; grid edges and task structure differ per direction"
+    },
+    "equivarianceGate": {
+      "sampling": "every candidate whose combination index is divisible by 25, in every partition",
+      "targets": {
+        "LEGAL_SURFACE_EQUIVARIANCE": 1,
+        "OPTIMAL_SET_EQUIVARIANCE": 1,
+        "REGRET_EQUIVARIANCE": 1,
+        "LABEL_EQUIVARIANCE": 1
+      },
+      "transforms": [
+        "ROTATE_90",
+        "ROTATE_180",
+        "ROTATE_270",
+        "REFLECT_X",
+        "REFLECT_Y"
+      ],
+      "blocking": "any failure blocks corpus certification"
+    },
+    "orientationLeakage": {
+      "exactInvariance": "the DEPLOYABLE_CORE vector of a world must be identical to that of every transformed twin (sampled rows)",
+      "tokenAudit": "no CORE feature id or value, and no label field, may carry an orientation, rotation, reflection or transform token",
+      "statistical": "per-orientation CORE feature means must stay within 0.25 standard deviations of the pooled mean"
+    },
+    "labels": {
+      "report": "GREEDY_SAFE prevalence with positive and negative counts per partition",
+      "prohibition": "partition membership is never adjusted to equalise labels; comparison with Forge V1 is descriptive only"
+    },
+    "policyEvidence": {
+      "stored": "policy proposals, availability, action identity, per-action regret and optimal-set membership are stored for every partition so later stages can evaluate offline without regenerating",
+      "descriptiveReporting": "descriptive policy performance is reported for DEV and CAL only",
+      "frozenIntegrityDiagnostics": "these bounded checks are declared here and computed on all four partitions because they are corpus-integrity checks, not policy claims: P(zero-cost optimal exists), P(RESOURCE correct | zero-cost optimal), the four fixed-direction accuracies, lowest-identity MOVE accuracy and deterministic random MOVE accuracy",
+      "prohibition": "no tuning, no training, no policy modification; this is not the Stage 3F.6-P rerun"
+    },
+    "determinism": {
+      "generation": "sharded workers over a canonical combination order",
+      "reproduction": "a deterministic 1000-record slice (the first 250 admitted rows of each partition) regenerated single-worker must be byte-identical"
+    },
+    "sealing": {
+      "DEV": "development",
+      "CAL": "calibration",
+      "HOLDOUT": "sealed",
+      "OOD": "sealed",
+      "rule": "no policy performance is reported on HOLDOUT or OOD beyond the frozen integrity diagnostics above"
+    },
+    "storage": "generator, plan, manifest, content hash, tests and documentation are committed; the payload is a deterministic build product and is gitignored",
+    "requalificationDerivation": "rerun only the stages Stage 3F.6-P.1C classified REQUIRES_RERUN, ordered so that a stage is rerun only after every stage whose output it consumes",
+    "prohibited": [
+      "modifying FORGE_SYMMETRIC_V2 semantics",
+      "modifying Sentinel policies",
+      "router training",
+      "Stage 3G",
+      "replacing or reusing the Forge V1 corpus identity"
+    ],
+    "authority": {
+      "tier": "R0",
+      "canDispatch": false,
+      "canMutateLiveWorld": false,
+      "onlineLearningEnabled": false,
+      "promotedToLiveRuntime": false
+    }
+  },
+  "scope": {
+    "newOwners": [
+      "scripts/stage3f6p1d-corpus-plan.mjs",
+      "scripts/generate-stage3f6p1d-symmetric-corpus.mjs",
+      "scripts/certify-stage3f6p1d-symmetric-corpus.mjs",
+      "tests/stage3f6p1d-symmetric-corpus.test.js"
+    ],
+    "existingOwnersModified": [
+      "package.json",
+      ".gitignore"
+    ],
+    "benchmarkSemanticsModified": false,
+    "policiesModified": false,
+    "routerTrained": false,
+    "stage3gStarted": false
+  },
+  "checks": {
+    "PLAN_BEFORE_CORPUS": true,
+    "BENCHMARK_BINDING_EXACT": true,
+    "CORPUS_INTEGRITY": true,
+    "HISTORICAL_PRESERVED": true,
+    "SEED_DISJOINT": true,
+    "SPLIT_HYGIENE": true,
+    "SYMMETRY_BALANCED": true,
+    "EQUIVARIANCE_GATE": true,
+    "DIRECTIONAL_SHORTCUT_ABSENT": true,
+    "FEATURES_COMPLETE": true,
+    "NO_ORIENTATION_TOKEN_LEAKAGE": true,
+    "LABEL_IDENTITY": true,
+    "DETERMINISTIC_REPRODUCTION": true,
+    "TESTS_PASS": true
+  },
+  "tests": {
+    "pass": 14,
+    "fail": 0,
+    "skipped": 0
+  },
+  "sourceHashes": {
+    "scripts/stage3f6p1d-corpus-plan.mjs": "80bf6c1098a42ba0386fc4822018c4ff0bb71bb52dea8d1061f979ac9c956116",
+    "scripts/generate-stage3f6p1d-symmetric-corpus.mjs": "5a3c666f773d4a1e1fb9168ad1b89cfdce8da5d098b2bc4c5d04170f3cd3d434",
+    "scripts/certify-stage3f6p1d-symmetric-corpus.mjs": "47cb47942d3f35df3967ac800772c7d96d26918bd9931d1b716852e03e8da12b",
+    "tests/stage3f6p1d-symmetric-corpus.test.js": "f0eb42234741ce9cac4ad34cc125f51074b146f0394218dcefe3fb92e844ce45"
+  },
+  "authority": {
+    "tier": "R0",
+    "canDispatch": false,
+    "canMutateLiveWorld": false,
+    "onlineLearningEnabled": false,
+    "promotedToLiveRuntime": false
+  },
+  "roadmap": {
+    "SYMMETRIC_CORPUS_CERTIFIED": true,
+    "READY_FOR_POLICY_REQUALIFICATION": true,
+    "READY_FOR_NEXUS_REEVALUATION": "AFTER_POLICY_REQUALIFICATION",
+    "READY_FOR_ROUTER_RETRAIN": false,
+    "READY_FOR_STAGE3G": false,
+    "MINIMAL_REQUALIFICATION_SEQUENCE": [
+      "3F.6-P",
+      "3F.6-P.1",
+      "3F.6-T",
+      "3F.6-P.1A",
+      "3F.6-W",
+      "3F.6-D"
+    ]
+  },
+  "certificationHash": "afd0d6e6057f497e9e1d3666cf553518e134b0c4d09f783601b393c081ae7073"
+}
