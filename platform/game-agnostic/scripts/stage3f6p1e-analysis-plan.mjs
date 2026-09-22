@@ -1,0 +1,212 @@
+#!/usr/bin/env node
+/* STAGE_3F_6_P_1E — analysis plan for SYMMETRIC POLICY REQUALIFICATION.
+ *
+ * Written, hashed and committed BEFORE any HOLDOUT or OOD policy evidence is generated or any sealed policy metric is
+ * computed. Every policy, metric, slice, comparison, threshold, classification rule and acceptance criterion is fixed
+ * here. The only data-derived cut points come from DEV (regime medians) or CAL (selections) in the open phase, and the
+ * sealed phase is bound to them through the open-phase report hash.
+ *
+ * Measurement, not remediation: no policy is modified, tuned, added or trained.
+ */
+import { createHash } from 'node:crypto';
+import { readFileSync } from 'node:fs';
+import { mkdir, writeFile } from 'node:fs/promises';
+import path from 'node:path';
+import { fileURLToPath, pathToFileURL } from 'node:url';
+import { deepFreeze, sha256 } from '../src/core/determinism.js';
+import { POLICY_SET_HASH } from '../src/stage3f/policy-router-v1.js';
+import { DEPLOYABLE_ACTION_PROPOSAL_CONTRACT_HASH, DECLARED_ACTION_COST_MODEL } from '../src/stage3f/deployable-action-proposal-v1.js';
+import { NEXUS_V2_CANDIDATE_HASH } from '../src/stage3f/nexus-selector-v2-candidate.js';
+import { STAGE3F6_METHODOLOGY } from '../src/stage3f/prediction-reliability-v1.js';
+
+const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
+const fileHash = (r) => createHash('sha256').update(readFileSync(path.join(root, r))).digest('hex');
+
+/* ------------------------------------------------------------ policy set */
+/** Every source whose bytes can change which action a requalified policy chooses. */
+export const STAGE3F6P1E_POLICY_SOURCES = deepFreeze([
+  'src/stage3f/deployable-action-proposal-v1.js', 'src/lab/stage3c-learned-nexus.js', 'src/experts/nexus.js',
+  'src/stage3f/nexus-selector-v2-candidate.js', 'src/stage3f/policy-router-v1.js',
+]);
+
+export const STAGE3F6P1E_POLICY_SET = deepFreeze({
+  policySetId: 'STAGE3F6P1E_SYMMETRIC_REQUALIFICATION_POLICY_SET_V1',
+  categories: {
+    DEPLOYABLE: ['RESOURCE_PRESERVING_V1', 'NEXUS_SELECTOR_V1', 'NEXUS_SELECTOR_V2_CANDIDATE', 'OBJECTIVE_TARGETING_V1', 'THREAT_COVERING_V1'],
+    DIAGNOSTIC: ['CHEAPEST_CLASS_UNIFORM', 'ID_REVERSED(<deployable>)', 'ID_PERMUTED_MEAN(<deployable>)'],
+    ORACLE_REFERENCE: ['GREEDY', 'PERFECT_SELECTOR(<set>)'],
+    CONTROL: ['RANDOM_LEGAL_V1', 'UNIFORM_LEGAL_EXPECTATION'],
+  },
+  definitions: {
+    RESOURCE_PRESERVING_V1: 'frozen Stage 3F.6-A producer: minimum declared cost, ties by action identity',
+    NEXUS_SELECTOR_V1: 'frozen Stage 3C nexusRelationalSelector; the routed NEXUS_SELECTOR of Stage 3F.6-T/3F.6-P',
+    NEXUS_SELECTOR_V2_CANDIDATE: 'Stage 3F.6-P.1 candidate (PROTECT gate on V1); candidate-only, never promoted',
+    OBJECTIVE_TARGETING_V1: 'frozen Stage 3F.6-A producer; abstains unless a legal action targets an observed critical entity',
+    THREAT_COVERING_V1: 'frozen Stage 3F.6-A producer; abstains unless a legal action covers an observed unsupported threat',
+    CHEAPEST_CLASS_UNIFORM: 'exact expectation of a uniform choice among the minimum-declared-cost legal actions (distinct keys); '
+      + 'decision-time computable; the matched artifact baseline for RESOURCE (the cost prior with no tie information)',
+    'ID_REVERSED(<deployable>)': 'the unmodified policy re-run with action identities relabelled so their lexicographic order is reversed; '
+      + 'the choice is mapped back to the true action. Isolates the identity tie-break.',
+    'ID_PERMUTED_MEAN(<deployable>)': 'mean over 8 seeded random identity relabellings of the unmodified policy (tie-randomised policy)',
+    GREEDY: 'non-deployable reference: best immediate transition value, canonical-frame tie-break (uses the simulator)',
+    'PERFECT_SELECTOR(<set>)': 'non-deployable diagnostic ceiling: per episode, the proposing member with minimum regret',
+    RANDOM_LEGAL_V1: 'frozen deterministic control seeded by the observed world digest',
+    UNIFORM_LEGAL_EXPECTATION: 'exact expectation of a uniform legal choice (distinct keys)',
+  },
+  historicalAlias: { NEXUS_SELECTOR: 'NEXUS_SELECTOR_V1' },
+  notEvaluated: [{ id: 'PRIME_ROOT_PUCT', reason: 'Stage 3F.6-A non-deployable simulator-search reference; not stored in the symmetric corpus and requires the simulator at decision time' }],
+  prime: 'no Prime or synthesis baseline consumes these policies in the symmetric lineage; nothing to requalify',
+  contracts: { stage3f6tPolicySetHash: POLICY_SET_HASH, deployableProposalContractHash: DEPLOYABLE_ACTION_PROPOSAL_CONTRACT_HASH,
+    nexusV2CandidateHash: NEXUS_V2_CANDIDATE_HASH, declaredCostModel: DECLARED_ACTION_COST_MODEL.modelId },
+  sourceSha256: Object.fromEntries(STAGE3F6P1E_POLICY_SOURCES.map((f) => [f, fileHash(f)])),
+});
+export const STAGE3F6P1E_POLICY_SET_HASH = sha256(STAGE3F6P1E_POLICY_SET);
+
+/* -------------------------------------------------------------------- plan */
+export const STAGE3F6P1E_PLAN = deepFreeze({
+  stage: 'STAGE_3F_6_P_1E_SYMMETRIC_POLICY_REQUALIFICATION',
+  question: 'After removing the benchmark directional confound, what genuine policy competence and complementarity remain?',
+  role: 'MEASUREMENT_NOT_REMEDIATION',
+  requalifies: 'Stage 3F.6-P (first stage of the Stage 3F.6-P.1D MINIMAL_REQUALIFICATION_SEQUENCE)',
+  corpus: {
+    corpusId: 'FORGE_SYMMETRIC_V2_ROUTABILITY_CORPUS_V1', benchmarkId: 'FORGE_SYMMETRIC_V2',
+    contentHash: '4de383eb0c6e9836706e87c6626de53ccb54853fb527f368cfaf599617e6c75e',
+    corpusPlanHash: '840c866a65420574b136b9968984ca4e85c3cc325b9c69722aedc15c1cc41a69',
+    stage3f6p1dCertification: 'afd0d6e6057f497e9e1d3666cf553518e134b0c4d09f783601b393c081ae7073',
+    stage3f6p1cCertification: '81586cbe068885596d7f8b5c78d6f6d5d72e53425289f850386e0c43ddff702d',
+    historicalStage3f6pCertification: '3cd670113c2ffd3ad40e1113b77d492943b226bfcdb1730c3b60a15de679a585',
+  },
+  policySetHash: STAGE3F6P1E_POLICY_SET_HASH,
+  partitions: {
+    order: ['DEV', 'CAL', 'HOLDOUT', 'OOD'],
+    roles: { DEV: 'exploratory; regime medians', CAL: 'selection (strongest regime, best single policy, cascade order)',
+      HOLDOUT: 'sealed; primary confirmatory', OOD: 'sealed; robustness (curriculum levels 6-7)' },
+    sealing: 'HOLDOUT and OOD policy evidence is generated only after this plan and the open-phase report are committed',
+    holdoutSupportedSlice: 'HOLDOUT is also reported restricted to curriculum levels present in DEV or CAL, because DEV/CAL contain levels 0-1 only while HOLDOUT contains 0-2',
+    priorExposure: 'the Stage 3F.6-P.1D frozen integrity diagnostics published P(zero-cost optimal) and P(RESOURCE correct | zero-cost optimal) on HOLDOUT and OOD, which implies RESOURCE accuracy there; no other sealed policy quantity was computed before this plan',
+  },
+  evidence: {
+    source: 'every stored corpus row is rebuilt from its combination with the frozen symmetric generator; the policy surface is the '
+      + 'symmetric legal surface in canonical-frame order, exactly as Stage 3F.6-P.1D presented it',
+    fidelity: 'world hash, distinct action keys and every deployable/control choice must equal the stored corpus row (tolerance 0)',
+    captured: ['choice', 'confidence', 'abstain reason', 'NEXUS preference reason', 'V2 PROTECT exclusions', 'ID_REVERSED choice', 'ID_PERMUTED choices (8 seeds)',
+      'D4 twin choices on the corpus equivariance sample (combination index divisible by 25; 5 transforms)'],
+    greedy: 'GREEDY is read from the corpus (it requires the simulator); it is a reference, not requalified',
+  },
+  metrics: {
+    accuracy: 'chosen action is in the horizon-optimal set (regret 0); over proposing episodes; Wilson 95% interval',
+    coverage: 'proposing episodes / partition episodes; abstention = 1 - coverage, with abstain reasons',
+    regret: 'raw regret: mean, median, p90, p95, max (nearest-rank); mean has a bootstrap 95% interval',
+    normalizedRegret: 'regret / max regret over the legal surface of that episode (0 when every action is optimal); scale-free, comparable across partitions',
+    catastrophic: `raw regret >= ${STAGE3F6_METHODOLOGY.catastrophicRegret} (Stage 3F.6 contract catastrophicRegret); raw-scale caveat applies`,
+    severeNormalized: 'normalized regret >= 0.5 (secondary, scale-free)',
+    actionTypeDistribution: 'share of chosen action types', costDistribution: 'share of chosen declared costs',
+    confidence: 'mean confidence; accuracy by fixed bins [0,0.2),[0.2,0.4),[0.4,0.6),[0.6,0.8),[0.8,1]; ECE over those bins; AUROC of confidence for correctness. '
+      + 'RESOURCE confidence is declared cost spread, not a probability; ECE is descriptive only; constant-confidence policies report NOT_APPLICABLE',
+    aboveChance: 'accuracy minus UNIFORM_LEGAL_EXPECTATION on the same proposing episodes; paired bootstrap 95% interval',
+    strongestRegime: 'on CAL, the binary regime (either side) with the highest policy accuracy among regimes with at least 200 proposing CAL episodes; that regime is then reported on HOLDOUT and OOD',
+    bootstrap: { resamples: 1000, generator: 'mulberry32 seeded by sha256("STAGE3F6P1E_BOOTSTRAP:" + partition + ":" + slice)', interval: 'nearest-rank 2.5% / 97.5%', paired: 'differences resample the same episodes' },
+  },
+  regimes: {
+    binary: {
+      HOSTILE_PRESENT: 'relational.hostileEntityCount > 0', UNSUPPORTED_THREAT: 'relational.unsupportedThreatenedCount > 0',
+      BOTTLENECK: 'relational.bottleneckCount > 0', CRITICAL_DEPENDENCY: 'relational.criticalDependencyCount > 0',
+      LOW_ENERGY: 'resources.actorEnergy <= DEV median', MULTI_OBJECTIVE: 'context.objectiveCount >= 2',
+      SPARSE_SURFACE: 'actionSurface.legalActionCount <= DEV median', LONG_HORIZON: 'combination.horizonBand in {H3, H4}',
+      ZERO_COST_AVAILABLE: 'some legal action has declared cost 0',
+      ZERO_COST_OPTIMAL: 'some optimal action has declared cost 0 (oracle-derived; slice only, never a decision input)',
+      HORIZON_DEPENDENT: 'label.horizonClass = HORIZON_DEPENDENT (oracle-derived; slice only)',
+    },
+    categorical: ['orientation', 'level', 'horizonBand', 'objectives', 'roles', 'shape', 'surfaceQuartile (DEV quartiles of legal action count)'],
+    competenceMatrixAxes: {
+      temporal: ['LONG_HORIZON', 'HORIZON_DEPENDENT'], relational: ['BOTTLENECK', 'CRITICAL_DEPENDENCY'], resource: ['LOW_ENERGY'],
+      objective: ['MULTI_OBJECTIVE'], threat: ['UNSUPPORTED_THREAT'], hostile: ['HOSTILE_PRESENT', 'NOT HOSTILE_PRESENT'],
+      cost: ['ZERO_COST_OPTIMAL (low-cost)', 'NOT ZERO_COST_OPTIMAL (high-cost)'], surface: ['SPARSE_SURFACE', 'NOT SPARSE_SURFACE (dense)'], ood: ['OOD partition'],
+    },
+    matrixValues: 'accuracy of the policy inside the regime (proposing episodes), its share of the regime where it is uniquely best, and n; every value is computed, none assigned',
+  },
+  shortcutAudit: {
+    nuisanceFactors: {
+      ORIENTATION: 'accuracy by D4 orientation (8 levels)',
+      ABSOLUTE_DIRECTION: 'accuracy by chosen MOVE direction (4 levels); the chosen-direction share is reported as a behavioural preference, not a shortcut',
+      ACTION_ID_ORDER: 'accuracy of the policy vs ID_PERMUTED_MEAN and vs ID_REVERSED on the same episodes (paired)',
+      D4_TWIN: 'on the equivariance sample: choice equivariance rate and accuracy on transformed twins vs the original episodes (paired)',
+      SEED_FAMILY: 'NOT_IDENTIFIABLE: exactly one seed was used per partition, so seed family is confounded with partition; reported as the partition comparison',
+    },
+    nuisanceFlag: 'a categorical factor flags when (max - min) accuracy over levels with >= 100 proposing episodes exceeds max(0.08, 3 * SE of that difference); '
+      + 'a paired factor (ID order, D4 twin) flags when |difference| exceeds max(0.03, 3 * paired SE). NUISANCE_DEPENDENCE requires the flag on BOTH CAL and HOLDOUT.',
+    taskFactors: ['ZERO_COST_AVAILABLE', 'ZERO_COST_OPTIMAL', 'shape', 'level', 'LOW_ENERGY', 'HOSTILE_PRESENT', 'surfaceQuartile'],
+    taskFlag: 'same numeric rule; replicated flags are reported as REGIME_DEPENDENT (expected for task structure, never by itself a shortcut)',
+    declaredArtifactBaselines: { RESOURCE_PRESERVING_V1: 'CHEAPEST_CLASS_UNIFORM' },
+    artifactRule: 'COST_PRIOR_EXPLAINS when the HOLDOUT paired 95% upper bound of (accuracy - artifact baseline accuracy) is < 0.05; '
+      + 'REASONING_BEYOND_COST_PRIOR when its lower bound is > 0',
+  },
+  complementarity: {
+    sets: {
+      HISTORICAL_ROUTED: ['RESOURCE_PRESERVING_V1', 'NEXUS_SELECTOR_V1', 'OBJECTIVE_TARGETING_V1', 'THREAT_COVERING_V1'],
+      CANDIDATE_ROUTED: ['RESOURCE_PRESERVING_V1', 'NEXUS_SELECTOR_V2_CANDIDATE', 'OBJECTIVE_TARGETING_V1', 'THREAT_COVERING_V1'],
+      ALL_DEPLOYABLE: ['RESOURCE_PRESERVING_V1', 'NEXUS_SELECTOR_V1', 'NEXUS_SELECTOR_V2_CANDIDATE', 'OBJECTIVE_TARGETING_V1', 'THREAT_COVERING_V1'],
+    },
+    primarySet: 'HISTORICAL_ROUTED (the Stage 3F.6-T frozen routed set, so the result is comparable to Stage 3F.6-P)',
+    marginalSet: { RESOURCE_PRESERVING_V1: 'HISTORICAL_ROUTED', NEXUS_SELECTOR_V1: 'HISTORICAL_ROUTED', NEXUS_SELECTOR_V2_CANDIDATE: 'CANDIDATE_ROUTED',
+      OBJECTIVE_TARGETING_V1: 'HISTORICAL_ROUTED', THREAT_COVERING_V1: 'HISTORICAL_ROUTED' },
+    best: 'proposing members at the minimum regret (ties kept); uniquely best = sole member of that set',
+    perPolicy: ['uniquely best n', 'tied best n', 'accuracy / mean regret when best', 'regret avoided vs always-RESOURCE (per episode, uniquely-best episodes)',
+      'regret introduced when mis-selected (mean excess over the best member, episodes where the policy proposes but is not best)',
+      'Jaccard overlap of best-episode sets', 'regime lift of uniquely-best episodes (P(regime | uniquely best) / P(regime))'],
+    oracleFallback: 'an episode where no member proposes uses the RANDOM_LEGAL_V1 control action',
+    bestSingle: 'on CAL: the deployable policy with coverage >= 0.99 and minimum mean regret (ties: higher accuracy)',
+    deterministicBaselines: ['RANDOM_LEGAL_V1', 'UNIFORM_LEGAL_EXPECTATION', 'CHEAPEST_CLASS_UNIFORM', 'GREEDY (reference)',
+      'FIXED_PRIORITY_CASCADE: abstaining specialists (OBJECTIVE, THREAT, NEXUS V1, NEXUS V2) whose CAL accuracy-when-proposing exceeds the best single, '
+        + 'tried in descending CAL accuracy, then the best single; untrained, not a router, not a candidate'],
+    headroom: 'THEORETICAL_ROUTING_HEADROOM = PERFECT_SELECTOR(set) minus best single (accuracy, mean regret, mean normalized regret), paired bootstrap 95% intervals, HOLDOUT primary, OOD robustness',
+    materialHeadroom: 'ROUTING_HEADROOM_MATERIAL when the HOLDOUT accuracy headroom lower bound >= 0.05 for the primary set',
+  },
+  classification: {
+    appliedOn: 'HOLDOUT; CAL shown alongside; OOD annotates',
+    rules: [
+      'INSUFFICIENT_EVIDENCE if HOLDOUT proposing n < 200',
+      'SHORTCUT_DEPENDENT if any NUISANCE_DEPENDENCE flag, or the declared artifact baseline explains the accuracy (COST_PRIOR_EXPLAINS)',
+      'REDUNDANT if, in its marginal set, marginal oracle accuracy gain < 0.005 and marginal mean normalized-regret reduction < 0.005',
+      'KEEP if ABOVE_CHANCE (paired lower bound > 0) and accuracy when best-available >= 0.75 and marginal accuracy gain >= 0.02',
+      'REDESIGN_CANDIDATE if marginal accuracy gain >= 0.02 and accuracy when best-available < 0.50',
+      'WEAK_BUT_DISTINCT if marginal accuracy gain >= 0.02',
+      'KEEP_BUT_LIMIT if ABOVE_CHANCE',
+      'REDESIGN_CANDIDATE otherwise',
+    ],
+    firstMatchWins: true,
+    annotations: ['OOD_DEGRADES if OOD accuracy - HOLDOUT accuracy <= -0.10, else OOD_HOLDS', 'LOW_COVERAGE if HOLDOUT coverage < 0.10'],
+    resourceQuestion: 'RESOURCE is GENUINE_RESOURCE_REASONING only if REASONING_BEYOND_COST_PRIOR; ZERO_COST_PRIOR_ONLY if COST_PRIOR_EXPLAINS; '
+      + 'otherwise MIXED; any replicated nuisance flag adds ANOTHER_ARTIFACT',
+    nexusQuestion: 'NEXUS status is re-derived from these rules; the Stage 3F.6-P REDESIGN_CANDIDATE is not carried forward',
+    historical: 'a Stage 3F.6-P conclusion SURVIVES when the new class equals the historical class; accuracy comparisons with Forge V1 are descriptive only (different worlds, different regret scale)',
+  },
+  acceptance: {
+    PASS: 'every integrity check holds; a negative policy result is a valid PASS',
+    FAIL: ['corpus contamination', 'broken symmetry', 'evaluation leakage (sealed evidence generated before the plan freeze commit)', 'predecessor corruption',
+      'non-reproducibility (evidence fidelity < 1 or certification not byte-identical on --check)', 'post-HOLDOUT tuning (plan or policy source changed after the freeze commit)',
+      'invalid metric computation (verification identities fail)', 'authority violation'],
+    readiness: {
+      SYMMETRY_CERTIFIED: 'P.1C and P.1D certificates intact and the corpus equivariance flags all 1.0',
+      CORPUS_LINEAGE_CLEAN: 'content hash bound and zero overlap/duplicate/leakage',
+      POLICY_RESULTS_REPRODUCIBLE: 'evidence fidelity 1.0 and deterministic evidence replay',
+      AFFECTED_POLICIES_REQUALIFIED: 'every deployable policy has a class',
+      EXPERT_DIVERSITY_READY: 'stage PASS and the competence matrix is computed (the separate expert-diversity audit may begin)',
+      ROUTER_VALUE_AUDIT_READY: 'stage PASS and headroom is computed (the separate Router-value audit may begin)',
+      READY_FOR_STAGE3G: 'false by construction in this stage',
+    },
+  },
+  notChanged: ['FORGE_SYMMETRIC_V2 semantics', 'the symmetric corpus', 'any policy source', 'Nexus design', 'RESOURCE', 'router (no training, no retraining)',
+    'decision rules', 'feature contract', 'promotion criteria', 'authority', 'Stage 3G (not begun)', 'JEPA / neural world models (none)'],
+  authority: { tier: 'R0', canDispatch: false, canMutateLiveWorld: false, onlineLearningEnabled: false, promotedToLiveRuntime: false },
+});
+export const STAGE3F6P1E_PLAN_HASH = sha256(STAGE3F6P1E_PLAN);
+export const STAGE3F6P1E_OUT = 'artifacts/stage3f6p1e-policy-requalification';
+export const STAGE3F6P1E_PLAN_PATH = `${STAGE3F6P1E_OUT}/stage3f6p1e-analysis-plan.json`;
+
+if (process.argv[1] && import.meta.url === pathToFileURL(process.argv[1]).href) {
+  await mkdir(path.join(root, STAGE3F6P1E_OUT), { recursive: true });
+  await writeFile(path.join(root, STAGE3F6P1E_PLAN_PATH), `${JSON.stringify({ ...STAGE3F6P1E_PLAN, planHash: STAGE3F6P1E_PLAN_HASH,
+    policySet: STAGE3F6P1E_POLICY_SET }, null, 2)}\n`);
+  console.log(JSON.stringify({ planHash: STAGE3F6P1E_PLAN_HASH, policySetHash: STAGE3F6P1E_POLICY_SET_HASH }));
+}
