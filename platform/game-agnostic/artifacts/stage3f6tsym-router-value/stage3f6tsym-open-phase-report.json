@@ -2,7 +2,7 @@
   "schemaVersion": 1,
   "stage": "STAGE_3F_6_T_SYM_ROUTER_VALUE_REQUALIFICATION",
   "phase": "OPEN",
-  "planHash": "642336d950dcc01ae61c94104eaefead041d67d81ec29b72e64d984c71d0cb79",
+  "planHash": "6ef5e2360f5034e9a00666acd98d51fb03ea13c78e872a4a092c1c5cd25d519f",
   "featureSetHash": "838c141991c4e74a627d1b1a906c6b5dd114281888519b505a113a86088b3d76",
   "partitions": [
     "DEV",
@@ -1737,6 +1737,16 @@
       "ORACLE": {
         "accuracy": 0.41175,
         "meanRegret": 27.2255
+      },
+      "ROUTER_SELECTION": {
+        "selectionDistribution": {
+          "RESOURCE_PRESERVING_V1": 0.232,
+          "NEXUS_SELECTOR": 0.70675,
+          "OBJECTIVE_TARGETING_V1": 0.037,
+          "THREAT_COVERING_V1": 0.02425
+        },
+        "routedShare": 0.98375,
+        "abstainedShare": 0.01625
       }
     },
     "CAL": {
@@ -1751,9 +1761,373 @@
       "ORACLE": {
         "accuracy": 0.39725,
         "meanRegret": 26.82925
+      },
+      "ROUTER_SELECTION": {
+        "selectionDistribution": {
+          "RESOURCE_PRESERVING_V1": 0.2005,
+          "NEXUS_SELECTOR": 0.74375,
+          "OBJECTIVE_TARGETING_V1": 0.0355,
+          "THREAT_COVERING_V1": 0.02025
+        },
+        "routedShare": 0.9855,
+        "abstainedShare": 0.0145
+      }
+    }
+  },
+  "amendment001": {
+    "regimeMetrics": {
+      "DEV": {
+        "COSTLY_ACTION_OPTIMAL": {
+          "status": "EVALUATED",
+          "n": 4000,
+          "positives": 607,
+          "baseRate": 0.15175,
+          "AUROC": 0.880858,
+          "AUPRC": 0.709872,
+          "BRIER": 0.070313,
+          "BRIER_SKILL": 0.453757,
+          "ECE": 0.016008,
+          "atCalThreshold": {
+            "threshold": 0.42,
+            "predictedPositive": 524,
+            "precision": 0.73855,
+            "recall": 0.637562,
+            "f1": 0.68435
+          },
+          "identifiability": "REGIME_IDENTIFIABLE"
+        },
+        "FREE_ACTION_OPTIMAL": {
+          "status": "EVALUATED",
+          "n": 4000,
+          "positives": 3393,
+          "baseRate": 0.84825,
+          "AUROC": 0.880858,
+          "AUPRC": 0.96719,
+          "BRIER": 0.070313,
+          "BRIER_SKILL": 0.453757,
+          "ECE": 0.016008,
+          "atCalThreshold": {
+            "threshold": 0.47,
+            "predictedPositive": 3534,
+            "precision": 0.932088,
+            "recall": 0.970822,
+            "f1": 0.951061
+          },
+          "identifiability": "REGIME_IDENTIFIABLE"
+        },
+        "HORIZON_DEPENDENT": {
+          "status": "EVALUATED",
+          "n": 4000,
+          "positives": 3144,
+          "baseRate": 0.786,
+          "AUROC": 0.779003,
+          "AUPRC": 0.920561,
+          "BRIER": 0.140166,
+          "BRIER_SKILL": 0.166691,
+          "ECE": 0.042077,
+          "atCalThreshold": {
+            "threshold": 0.63,
+            "predictedPositive": 3423,
+            "precision": 0.851884,
+            "recall": 0.927481,
+            "f1": 0.888077
+          },
+          "identifiability": "REGIME_IDENTIFIABLE"
+        },
+        "NEXUS_V1_BEATS_RESOURCE": {
+          "status": "EVALUATED",
+          "n": 3429,
+          "positives": 2022,
+          "baseRate": 0.589676,
+          "AUROC": 0.621283,
+          "AUPRC": 0.719183,
+          "BRIER": 0.229285,
+          "BRIER_SKILL": 0.052379,
+          "ECE": 0.01663,
+          "atCalThreshold": {
+            "threshold": 0.37,
+            "predictedPositive": 3400,
+            "precision": 0.591765,
+            "recall": 0.995054,
+            "f1": 0.742162
+          },
+          "identifiability": "NOT_IDENTIFIABLE"
+        },
+        "OBJECTIVE_APPLICABLE": {
+          "status": "EVALUATED",
+          "n": 382,
+          "positives": 255,
+          "baseRate": 0.667539,
+          "AUROC": 0.775421,
+          "AUPRC": 0.873074,
+          "BRIER": 0.177074,
+          "BRIER_SKILL": 0.202122,
+          "ECE": 0.058579,
+          "atCalThreshold": {
+            "threshold": 0.33,
+            "predictedPositive": 352,
+            "precision": 0.707386,
+            "recall": 0.976471,
+            "f1": 0.820428
+          },
+          "identifiability": "REGIME_IDENTIFIABLE"
+        },
+        "THREAT_APPLICABLE": {
+          "status": "INSUFFICIENT_EVIDENCE"
+        }
+      },
+      "CAL": {
+        "COSTLY_ACTION_OPTIMAL": {
+          "status": "EVALUATED",
+          "n": 4000,
+          "positives": 573,
+          "baseRate": 0.14325,
+          "AUROC": 0.887246,
+          "AUPRC": 0.73511,
+          "BRIER": 0.061387,
+          "BRIER_SKILL": 0.500112,
+          "ECE": 0.018003,
+          "atCalThreshold": {
+            "threshold": 0.42,
+            "predictedPositive": 499,
+            "precision": 0.779559,
+            "recall": 0.678883,
+            "f1": 0.725746
+          },
+          "identifiability": "REGIME_IDENTIFIABLE"
+        },
+        "FREE_ACTION_OPTIMAL": {
+          "status": "EVALUATED",
+          "n": 4000,
+          "positives": 3427,
+          "baseRate": 0.85675,
+          "AUROC": 0.887246,
+          "AUPRC": 0.964187,
+          "BRIER": 0.061387,
+          "BRIER_SKILL": 0.500112,
+          "ECE": 0.018003,
+          "atCalThreshold": {
+            "threshold": 0.47,
+            "predictedPositive": 3554,
+            "precision": 0.942319,
+            "recall": 0.97724,
+            "f1": 0.959461
+          },
+          "identifiability": "REGIME_IDENTIFIABLE"
+        },
+        "HORIZON_DEPENDENT": {
+          "status": "EVALUATED",
+          "n": 4000,
+          "positives": 3241,
+          "baseRate": 0.81025,
+          "AUROC": 0.813344,
+          "AUPRC": 0.942364,
+          "BRIER": 0.120505,
+          "BRIER_SKILL": 0.219191,
+          "ECE": 0.047985,
+          "atCalThreshold": {
+            "threshold": 0.63,
+            "predictedPositive": 3470,
+            "precision": 0.880692,
+            "recall": 0.942919,
+            "f1": 0.910744
+          },
+          "identifiability": "REGIME_IDENTIFIABLE"
+        },
+        "NEXUS_V1_BEATS_RESOURCE": {
+          "status": "EVALUATED",
+          "n": 3533,
+          "positives": 2157,
+          "baseRate": 0.610529,
+          "AUROC": 0.604684,
+          "AUPRC": 0.726166,
+          "BRIER": 0.227513,
+          "BRIER_SKILL": 0.04494,
+          "ECE": 0.039538,
+          "atCalThreshold": {
+            "threshold": 0.37,
+            "predictedPositive": 3516,
+            "precision": 0.612059,
+            "recall": 0.997682,
+            "f1": 0.758681
+          },
+          "identifiability": "NOT_IDENTIFIABLE"
+        },
+        "OBJECTIVE_APPLICABLE": {
+          "status": "EVALUATED",
+          "n": 341,
+          "positives": 224,
+          "baseRate": 0.656891,
+          "AUROC": 0.740308,
+          "AUPRC": 0.847248,
+          "BRIER": 0.193348,
+          "BRIER_SKILL": 0.142574,
+          "ECE": 0.064711,
+          "atCalThreshold": {
+            "threshold": 0.33,
+            "predictedPositive": 308,
+            "precision": 0.691558,
+            "recall": 0.950893,
+            "f1": 0.800752
+          },
+          "identifiability": "WEAKLY_IDENTIFIABLE"
+        },
+        "THREAT_APPLICABLE": {
+          "status": "INSUFFICIENT_EVIDENCE"
+        }
+      }
+    },
+    "policyByRegime": {
+      "DEV": {
+        "COSTLY_OPTIMAL": {
+          "n": 607,
+          "share": 0.15175,
+          "strategies": {
+            "RESOURCE_PRESERVING_V1": {
+              "coverage": 1,
+              "accuracy": 0,
+              "meanRegret": 66.060956,
+              "meanNormalizedRegret": 0.661458
+            },
+            "NEXUS_SELECTOR": {
+              "coverage": 0.856672,
+              "accuracy": 0.55,
+              "meanRegret": 14.123077,
+              "meanNormalizedRegret": 0.135659
+            },
+            "OBJECTIVE_TARGETING_V1": {
+              "coverage": 0.217463,
+              "accuracy": 0.765152,
+              "meanRegret": 14.651515,
+              "meanNormalizedRegret": 0.08725
+            },
+            "THREAT_COVERING_V1": {
+              "coverage": 0.116969,
+              "accuracy": 0.746479,
+              "meanRegret": 17.887324,
+              "meanNormalizedRegret": 0.10668
+            },
+            "ROUTER_SYMMETRIC": {
+              "coverage": 1,
+              "accuracy": 0.578254,
+              "meanRegret": 17.70346,
+              "meanNormalizedRegret": 0.180824
+            }
+          }
+        },
+        "FREE_OPTIMAL": {
+          "n": 3393,
+          "share": 0.84825,
+          "strategies": {
+            "RESOURCE_PRESERVING_V1": {
+              "coverage": 1,
+              "accuracy": 0.32125,
+              "meanRegret": 41.135573,
+              "meanNormalizedRegret": 0.533725
+            },
+            "NEXUS_SELECTOR": {
+              "coverage": 0.857353,
+              "accuracy": 0.09144,
+              "meanRegret": 47.055002,
+              "meanNormalizedRegret": 0.621542
+            },
+            "OBJECTIVE_TARGETING_V1": {
+              "coverage": 0.073681,
+              "accuracy": 0.064,
+              "meanRegret": 62.06,
+              "meanNormalizedRegret": 0.64791
+            },
+            "THREAT_COVERING_V1": {
+              "coverage": 0.014441,
+              "accuracy": 0.040816,
+              "meanRegret": 37.734694,
+              "meanNormalizedRegret": 0.437046
+            },
+            "ROUTER_SYMMETRIC": {
+              "coverage": 1,
+              "accuracy": 0.166814,
+              "meanRegret": 43.548482,
+              "meanNormalizedRegret": 0.581166
+            }
+          }
+        }
+      },
+      "CAL": {
+        "COSTLY_OPTIMAL": {
+          "n": 573,
+          "share": 0.14325,
+          "strategies": {
+            "RESOURCE_PRESERVING_V1": {
+              "coverage": 1,
+              "accuracy": 0,
+              "meanRegret": 68.797557,
+              "meanNormalizedRegret": 0.655115
+            },
+            "NEXUS_SELECTOR": {
+              "coverage": 0.917976,
+              "accuracy": 0.598859,
+              "meanRegret": 14.055133,
+              "meanNormalizedRegret": 0.121137
+            },
+            "OBJECTIVE_TARGETING_V1": {
+              "coverage": 0.225131,
+              "accuracy": 0.775194,
+              "meanRegret": 18.395349,
+              "meanNormalizedRegret": 0.098075
+            },
+            "THREAT_COVERING_V1": {
+              "coverage": 0.099476,
+              "accuracy": 0.596491,
+              "meanRegret": 22.614035,
+              "meanNormalizedRegret": 0.134088
+            },
+            "ROUTER_SYMMETRIC": {
+              "coverage": 1,
+              "accuracy": 0.621291,
+              "meanRegret": 15.862129,
+              "meanNormalizedRegret": 0.155224
+            }
+          }
+        },
+        "FREE_OPTIMAL": {
+          "n": 3427,
+          "share": 0.85675,
+          "strategies": {
+            "RESOURCE_PRESERVING_V1": {
+              "coverage": 1,
+              "accuracy": 0.304348,
+              "meanRegret": 40.608987,
+              "meanNormalizedRegret": 0.558912
+            },
+            "NEXUS_SELECTOR": {
+              "coverage": 0.877444,
+              "accuracy": 0.072165,
+              "meanRegret": 46.844031,
+              "meanNormalizedRegret": 0.645188
+            },
+            "OBJECTIVE_TARGETING_V1": {
+              "coverage": 0.061862,
+              "accuracy": 0.04717,
+              "meanRegret": 63.136792,
+              "meanNormalizedRegret": 0.674536
+            },
+            "THREAT_COVERING_V1": {
+              "coverage": 0.012839,
+              "accuracy": 0.022727,
+              "meanRegret": 33.977273,
+              "meanNormalizedRegret": 0.412495
+            },
+            "ROUTER_SYMMETRIC": {
+              "coverage": 1,
+              "accuracy": 0.133936,
+              "meanRegret": 43.754304,
+              "meanNormalizedRegret": 0.612077
+            }
+          }
+        }
       }
     }
   },
   "noSealedRowScored": true,
-  "reportHash": "ed77f3fc0e3fce25b6005f3baba1c01b44f4dc1dc3a5cddfa9f16dffb65a4a29"
+  "reportHash": "47538d7b841972b6df7bfbd67638384c7b99f5a7696202d0469946bdb56ad19b"
 }

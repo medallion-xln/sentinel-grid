@@ -211,6 +211,8 @@
     "EXPERT_COMPLEMENTARITY_ROUTABLE": "ROUTER_VALUE_MATERIAL and HEADROOM_CAPTURED_ACCURACY >= 0.2 on FRESH_HOLDOUT",
     "ROUTER_2_0_JUSTIFIED": "primary conclusion ROUTER_VALUE_CONFIRMED (complementarity exists, deployable features identify it, material downstream value beyond the untrained cascade)",
     "EXPERT_REPAIR_REQUIRED": "not ROUTER_2_0_JUSTIFIED, or perfect-selector accuracy on FRESH_HOLDOUT < 0.5",
+    "EXPERT_COMPLEMENTARITY_EXISTS": "see amendments[0].additions",
+    "POLICY_QUALITY_REMAINS_PRIMARY_BOTTLENECK": "see amendments[0].additions",
     "READY_FOR_3F_FREEZE": "false: 3F.6-P.1, 3F.6-P.1A, 3F.6-W and 3F.6-D requalifications remain",
     "READY_FOR_STAGE3G": "false by construction"
   },
@@ -226,6 +228,33 @@
     "authority",
     "Stage 3G (not begun)"
   ],
+  "amendments": [
+    {
+      "id": "STAGE3F6TSYM-PLAN-AMENDMENT-001",
+      "amends": "freeze commit 8bcff515ffc4371078849ae0a9e212e1261aaf05 (plan 642336d950dcc01ae61c94104eaefead041d67d81ec29b72e64d984c71d0cb79)",
+      "timing": "after the open phase (DEV/CAL only) and before any fresh confirmatory row existed or any router result on a HOLDOUT or OOD partition was computed",
+      "reason": "the stage brief requires roadmap fields and reports the first freeze did not define; defining them now avoids choosing them after sealed evaluation",
+      "unchanged": [
+        "policy set",
+        "feature set and audit rules",
+        "router methodology, threshold grid and CAL rule",
+        "regime targets, model and identifiability bars",
+        "materiality bars and corrections",
+        "conclusion labels and precedence",
+        "every roadmap rule declared above",
+        "partitions and fresh seeds"
+      ],
+      "additions": {
+        "EXPERT_COMPLEMENTARITY_EXISTS": "FRESH_HOLDOUT accuracy headroom (perfect selector minus best single) has 95% CI lower bound >= 0.05, the bar already used by EXPERT_COMPLEMENTARITY_NOT_ROUTABLE",
+        "POLICY_QUALITY_REMAINS_PRIMARY_BOTTLENECK": "on FRESH_HOLDOUT the accuracy lost to the policy set (1 - perfect selector accuracy) exceeds the accuracy lost to selection (perfect selector accuracy - max(router, best single) accuracy)",
+        "SELECTION_DISTRIBUTION_DEV_CAL": "router selection distribution and routed (non-abstained) share on DEV and CAL are recorded in the open-phase report, so the collapse audit covers DEV, CAL, HOLDOUT and OOD",
+        "REGIME_METRICS_DEV_CAL": "regime predictor metrics are also reported on DEV (in-sample, fit partition) and CAL (selection partition) in the open-phase report",
+        "SPECIALIST_VALUE_DETAIL": "per specialist: correct selections (selected policy in the best set) and false selections (not in the best set), plus the benefit/harm accounting stratified by the oracle COSTLY_ACTION_OPTIMAL label (stratification for reporting only; never a router input)",
+        "POLICY_BY_REGIME": "accuracy, mean regret and mean normalized regret of every headline policy and of the router on costly-optimal and free-optimal rows (descriptive)",
+        "GENERATION_PROVENANCE": "the fresh manifest records the HEAD commit at generation; certification requires that commit to contain this amendment and the plan, open report, generator, certifier and router-value module to be byte-identical between that commit and certification"
+      }
+    }
+  ],
   "authority": {
     "tier": "R0",
     "canDispatch": false,
@@ -233,7 +262,7 @@
     "onlineLearningEnabled": false,
     "promotedToLiveRuntime": false
   },
-  "planHash": "642336d950dcc01ae61c94104eaefead041d67d81ec29b72e64d984c71d0cb79",
+  "planHash": "6ef5e2360f5034e9a00666acd98d51fb03ea13c78e872a4a092c1c5cd25d519f",
   "featureSet": {
     "featureSetId": "STAGE3F6TSYM_DEPLOYABLE_CORE_V1",
     "contract": {

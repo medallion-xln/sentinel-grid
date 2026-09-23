@@ -19,7 +19,7 @@ import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 
 import { STAGE3F6TSYM_FEATURE_SET, STAGE3F6TSYM_FEATURE_SET_HASH, STAGE3F6TSYM_OUT, STAGE3F6TSYM_PLAN, STAGE3F6TSYM_PLAN_HASH, STAGE3F6TSYM_PLAN_PATH } from './stage3f6tsym-analysis-plan.mjs';
-import { FRESH_MANIFEST_PATH, FRESH_PATH, FRESH_SPEC, OPEN_REPORT_PATH, seedAudit } from './generate-stage3f6tsym-confirmatory.mjs';
+import { EVALUATION_FILES, FRESH_MANIFEST_PATH, FRESH_PATH, FRESH_SPEC, OPEN_REPORT_PATH, seedAudit } from './generate-stage3f6tsym-confirmatory.mjs';
 import { readCorpus } from './generate-stage3f6p1e-policy-evidence.mjs';
 import {
   POLICY_SET_HASH, ROUTED_POLICIES, bestPolicySet, evaluateStrategy, falseSelectionHarm, fitPolicyRouter, oracleGainCaptured, pairedBootstrap,
@@ -108,6 +108,21 @@ function regimeMetrics(fits, rows) {
   }));
 }
 
+/** Amendment 001: descriptive policy performance on oracle-stratified regimes (the label stratifies; it is never an input). */
+const REGIME_STRATA = { COSTLY_OPTIMAL: (r) => !r.zeroCostOptimal, FREE_OPTIMAL: (r) => r.zeroCostOptimal };
+function byRegime(rows, choosers) {
+  return Object.fromEntries(Object.entries(REGIME_STRATA).map(([stratum, inStratum]) => {
+    const sub = rows.filter(inStratum);
+    return [stratum, { n: sub.length, share: rows.length ? sub.length / rows.length : null, strategies: Object.fromEntries(Object.entries(choosers).map(([k, fn]) => {
+      const e = evaluateStrategy(sub, fn);
+      const acting = sub.filter((row) => { const p = fn(row); return p !== null && row.chosen[p] !== null; });
+      return [k, { coverage: e.coverage, accuracy: e.accuracy, meanRegret: e.meanRegret, meanNormalizedRegret: mean(acting.map((row) => nr(row, fn(row)))) }];
+    })) }];
+  }));
+}
+const inBest = (row, p) => bestPolicySet(row).best.includes(p);
+const policyChoosers = Object.fromEntries(ROUTED_POLICIES.map((p) => [p, () => p]));
+
 /* ================================================================ open phase */
 const bestSingleOf = () => {
   const devCal = [...DEV, ...CAL];
@@ -160,14 +175,22 @@ function openPhase() {
     cascades: { P1E: p1eOpen.calSelections.cascadeOrder, HEADLINE: [...headlineCascade, best.policy], calAccuracy: Object.fromEntries(ROUTED_POLICIES.map((p) => [p, calAcc(p).accuracy])) },
     regimes: Object.fromEntries(Object.entries(fits).map(([k, v]) => [k, v.status === 'FITTED' ? { ...v, model: { mu: v.model.mu, sd: v.model.sd, w: v.model.w } } : v])),
     descriptive: { DEV: pickStrategies(DEV, model, cal.threshold, best.policy), CAL: pickStrategies(CAL, model, cal.threshold, best.policy) },
+    amendment001: {
+      regimeMetrics: { DEV: regimeMetrics(fits, DEV), CAL: regimeMetrics(fits, CAL) },
+      policyByRegime: Object.fromEntries([['DEV', DEV], ['CAL', CAL]].map(([k, rows]) => [k, byRegime(rows, { ...policyChoosers,
+        ROUTER_SYMMETRIC: (row) => routeEpisode(model, row, { threshold: cal.threshold, fallbackPolicy: best.policy }).selectedPolicy })])),
+    },
     noSealedRowScored: true,
   });
   return { report, model, model2, fits };
 }
 function pickStrategies(rows, model, threshold, fallbackPolicy) {
   const e = (fn) => { const x = evaluateStrategy(rows, fn); return { accuracy: x.accuracy, meanRegret: x.meanRegret }; };
-  return { ALWAYS_RESOURCE: e(() => RES), ROUTER: e((row) => routeEpisode(model, row, { threshold, fallbackPolicy }).selectedPolicy),
-    ORACLE: e((row) => bestPolicySet(row).best[0] ?? null) };
+  const route = (row) => routeEpisode(model, row, { threshold, fallbackPolicy });
+  const routerEval = evaluateStrategy(rows, (row) => route(row).selectedPolicy);
+  return { ALWAYS_RESOURCE: e(() => RES), ROUTER: e((row) => route(row).selectedPolicy),
+    ORACLE: e((row) => bestPolicySet(row).best[0] ?? null),
+    ROUTER_SELECTION: { selectionDistribution: routerEval.selectionDistribution, routedShare: rate(rows, (row) => route(row).routed), abstainedShare: rate(rows, (row) => !route(row).routed) } };
 }
 
 const open = openPhase();
@@ -297,11 +320,14 @@ for (const [name, rows] of Object.entries(ROWS)) {
     routerVsCascadeP1E: vsP1E,
     gateVsBestSingle: compare(rows, gatedChoice, () => BEST, `${name}:gate-best`),
     cascadeHeadlineVsBestSingle: compare(rows, cascadeHeadline, () => BEST, `${name}:cascade-best`),
-    abstention: { routedShare: rate(rows, (row) => routeEpisode(model, row, { threshold: THRESHOLD, fallbackPolicy: BEST }).routed), threshold: THRESHOLD },
+    abstention: { routedShare: rate(rows, (row) => routeEpisode(model, row, { threshold: THRESHOLD, fallbackPolicy: BEST }).routed),
+      abstainedShare: rate(rows, (row) => !routeEpisode(model, row, { threshold: THRESHOLD, fallbackPolicy: BEST }).routed), threshold: THRESHOLD },
     collapse: collapse(rows, routerChoose),
     historicalHarm: { ...harm, bestSingleP95Regret: bestRegrets.length ? bestRegrets[Math.max(0, Math.ceil(0.95 * bestRegrets.length) - 1)] : null,
       acceptable: rvb.episodesWorsened <= rvb.episodesImproved && (harm.p95 ?? 0) <= (bestRegrets.length ? bestRegrets[Math.max(0, Math.ceil(0.95 * bestRegrets.length) - 1)] : 0) },
-    specialistValue: specialistValue(rows, routerChoose, { reference: RES, specialists: SPECIALISTS, normalized: nr }),
+    specialistValue: specialistValue(rows, routerChoose, { reference: RES, specialists: SPECIALISTS, normalized: nr, inBest }),
+    specialistValueByRegime: Object.fromEntries(Object.entries(REGIME_STRATA).map(([k, f]) => [k, specialistValue(rows.filter(f), routerChoose, { reference: RES, specialists: SPECIALISTS, normalized: nr, inBest })])),
+    policyByRegime: byRegime(rows, { ...policyChoosers, ROUTER_SYMMETRIC: routerChoose, PERFECT_POLICY_SELECTOR: STRATEGIES.PERFECT_POLICY_SELECTOR }),
     specialistValueGate: specialistValue(rows, gatedChoice, { reference: RES, specialists: SPECIALISTS, normalized: nr }),
     confusionRecall: selectionConfusion(rows, routerChoose).recall,
     regimePrediction: regimeMetrics(fits, rows),
@@ -322,17 +348,31 @@ const ROUTER_2_0_JUSTIFIED = conclusion.primary === 'ROUTER_VALUE_CONFIRMED';
 /* ================================================================ integrity */
 const headBytesHash = (r) => { const g = spawnSync('git', ['-C', repositoryRoot, 'show', `HEAD:platform/game-agnostic/${r}`], { encoding: 'buffer' }); return g.status === 0 ? hex(g.stdout) : null; };
 const git = (...a) => spawnSync('git', ['-C', repositoryRoot, ...a], { encoding: 'utf8' });
+/**
+ * The freeze is the LAST commit that wrote the plan file (the original freeze, then amendment 001). Every commit that
+ * wrote it must carry the open-phase report and no fresh payload/manifest or certificate, and the fresh manifest must
+ * have been generated at a commit descending from the effective freeze with the evaluation files byte-identical
+ * between that commit and the working tree being certified.
+ */
 const freeze = (() => {
-  const planRepo = `platform/game-agnostic/${STAGE3F6TSYM_PLAN_PATH}`;
-  const commits = git('log', '--diff-filter=A', '--format=%H', '--', planRepo).stdout.trim().split('\n').filter(Boolean);
-  const commit = commits[commits.length - 1] ?? null;
-  const files = commit ? git('show', '--name-only', '--format=', commit).stdout.trim().split('\n').filter(Boolean) : [];
-  const changed = commit ? git('diff', '--name-only', commit, 'HEAD', '--', planRepo, `platform/game-agnostic/${OPEN_REPORT_PATH}`, 'platform/game-agnostic/scripts/stage3f6tsym-analysis-plan.mjs').stdout.trim() : 'NO_FREEZE_COMMIT';
-  const out = { freezeCommit: commit, filesInFreezeCommit: files,
-    planAndOpenReportInFreezeCommit: files.includes(planRepo) && files.includes(`platform/game-agnostic/${OPEN_REPORT_PATH}`),
-    noFreshOrResultInFreezeCommit: !files.some((f) => /fresh-confirmatory|stage3f6tsym-certification-result/.test(f)),
-    planUnchangedSinceFreeze: changed === '', planAndOpenReportAtHead: [STAGE3F6TSYM_PLAN_PATH, OPEN_REPORT_PATH].every((f) => headBytesHash(f) === hex(readFileSync(at(f)))) };
-  out.FROZEN_BEFORE_FRESH_AND_SEALED = commit !== null && out.planAndOpenReportInFreezeCommit && out.noFreshOrResultInFreezeCommit && out.planUnchangedSinceFreeze && out.planAndOpenReportAtHead;
+  const g = (r) => `platform/game-agnostic/${r}`;
+  const planRepo = g(STAGE3F6TSYM_PLAN_PATH);
+  const commits = git('log', '--format=%H', '--', planRepo).stdout.trim().split('\n').filter(Boolean);
+  const commit = commits[0] ?? null;
+  const filesOf = (c) => git('show', '--name-only', '--format=', c).stdout.trim().split('\n').filter(Boolean);
+  const history = [...commits].reverse().map((c) => { const files = filesOf(c); return { commit: c, files,
+    planAndOpenReport: files.includes(planRepo) && files.includes(g(OPEN_REPORT_PATH)), noFreshOrResult: !files.some((f) => /fresh-confirmatory|stage3f6tsym-certification-result/.test(f)) }; });
+  const changed = commit ? git('diff', '--name-only', commit, 'HEAD', '--', planRepo, g(OPEN_REPORT_PATH), g('scripts/stage3f6tsym-analysis-plan.mjs')).stdout.trim() : 'NO_FREEZE_COMMIT';
+  const generatedAt = freshManifest.generatedAtHead ?? null;
+  const descends = generatedAt !== null && commit !== null && git('merge-base', '--is-ancestor', commit, generatedAt).status === 0;
+  const evalChanged = generatedAt === null ? 'NO_GENERATION_COMMIT' : git('diff', '--name-only', generatedAt, '--', ...EVALUATION_FILES.map(g)).stdout.trim();
+  const out = { originalFreezeCommit: history[0]?.commit ?? null, freezeCommit: commit, history,
+    planAndOpenReportInFreezeCommits: history.length > 0 && history.every((h) => h.planAndOpenReport),
+    noFreshOrResultInFreezeCommits: history.every((h) => h.noFreshOrResult),
+    planUnchangedSinceFreeze: changed === '', planAndOpenReportAtHead: [STAGE3F6TSYM_PLAN_PATH, OPEN_REPORT_PATH].every((f) => headBytesHash(f) === hex(readFileSync(at(f)))),
+    freshGeneratedAtHead: generatedAt, freshGeneratedAfterFreeze: descends, evaluationFilesUnchangedSinceGeneration: evalChanged === '' };
+  out.FROZEN_BEFORE_FRESH_AND_SEALED = commit !== null && out.planAndOpenReportInFreezeCommits && out.noFreshOrResultInFreezeCommits && out.planUnchangedSinceFreeze
+    && out.planAndOpenReportAtHead && out.freshGeneratedAfterFreeze && out.evaluationFilesUnchangedSinceGeneration;
   return out;
 })();
 const lineageSets = { record: new Set(corpus.map((r) => r.recordHash)), world: new Set(corpus.map((r) => r.worldHash)), topology: new Set(corpus.map((r) => r.topologyHash)) };
@@ -402,6 +442,11 @@ const status = Object.values(checks).every(Boolean) ? 'PASS' : 'FAIL';
 const roadmap = {
   ROUTER_VALUE_MEASURED: status === 'PASS', ROUTER_VALUE_MATERIAL, EXPERT_COMPLEMENTARITY_ROUTABLE: ROUTER_VALUE_MATERIAL && (FH.captured.accuracy ?? 0) >= 0.2,
   ROUTER_2_0_JUSTIFIED, EXPERT_REPAIR_REQUIRED: !ROUTER_2_0_JUSTIFIED || FH.strategies.PERFECT_POLICY_SELECTOR.accuracy < 0.5,
+  EXPERT_COMPLEMENTARITY_EXISTS: FH.headroom.accuracy95[0] >= 0.05,
+  POLICY_QUALITY_REMAINS_PRIMARY_BOTTLENECK: (1 - FH.strategies.PERFECT_POLICY_SELECTOR.accuracy)
+    > (FH.strategies.PERFECT_POLICY_SELECTOR.accuracy - Math.max(FH.strategies.ROUTER_SYMMETRIC.accuracy, FH.strategies.BEST_SINGLE_POLICY.accuracy)),
+  bottleneckDecomposition: { policySetAccuracyLoss: 1 - FH.strategies.PERFECT_POLICY_SELECTOR.accuracy,
+    selectionAccuracyLoss: FH.strategies.PERFECT_POLICY_SELECTOR.accuracy - Math.max(FH.strategies.ROUTER_SYMMETRIC.accuracy, FH.strategies.BEST_SINGLE_POLICY.accuracy) },
   READY_FOR_3F_FREEZE: false, READY_FOR_STAGE3G: false, STAGE3F_STATUS: 'OPEN (requalification 2 of 6: 3F.6-P.1, P.1A, W, D remain)',
 };
 const payload = roundDeep({
@@ -417,6 +462,7 @@ const payload = roundDeep({
   disclosures: {
     EXPOSED_PARTITIONS: plan.partitions.EXPOSED_HOLDOUT,
     MATERIALITY_CORRECTIONS: plan.materiality.correctionsDeclaredBeforeSealedEvaluation,
+    PLAN_AMENDMENT_001: plan.amendments[0].timing,
     LATENCY: plan.metrics.latency,
     P1E_CASCADE_USES_V2: 'FIXED_PRIORITY_CASCADE_P1E contains the diagnostic NEXUS V2 exactly as P.1E froze it; FIXED_PRIORITY_CASCADE_HEADLINE is the headline-set comparator',
     LEVEL_COVERAGE: 'the fresh partitions follow the same canonical admission order as P.1D, so FRESH_HOLDOUT is dominated by low curriculum levels (see data.fresh.levels)',

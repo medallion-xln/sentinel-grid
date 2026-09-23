@@ -106,14 +106,16 @@ export function f1Threshold(p, y) {
 
 /**
  * For each specialist the chooser selects instead of the reference policy: regret saved where it is strictly better,
- * regret added where it is strictly worse (raw and normalized), per partition episode.
+ * regret added where it is strictly worse (raw and normalized), per partition episode. With `inBest`, selections are
+ * also counted as correct (the specialist is in the episode's best set) or false (it is not).
  */
-export function specialistValue(rows, choose, { reference, specialists, normalized }) {
+export function specialistValue(rows, choose, { reference, specialists, normalized, inBest = null }) {
   const out = {};
   for (const s of specialists) {
     const sel = rows.filter((r) => choose(r) === s && r.chosen[s] !== null && r.chosen[reference] !== null);
-    let saved = 0; let added = 0; let savedN = 0; let addedN = 0; let improved = 0; let worsened = 0;
+    let saved = 0; let added = 0; let savedN = 0; let addedN = 0; let improved = 0; let worsened = 0; let inBestN = 0;
     for (const r of sel) {
+      if (inBest !== null && inBest(r, s)) inBestN += 1;
       const d = r.regret[reference] - r.regret[s];
       const dn = normalized(r, reference) - normalized(r, s);
       if (d > 0) { saved += d; improved += 1; } else if (d < 0) { added += -d; worsened += 1; }
@@ -121,6 +123,7 @@ export function specialistValue(rows, choose, { reference, specialists, normaliz
     }
     const n = rows.length;
     out[s] = { selectedN: sel.length, improvedN: improved, worsenedN: worsened, unchangedN: sel.length - improved - worsened,
+      ...(inBest === null ? {} : { correctSelectionsN: inBestN, falseSelectionsN: sel.length - inBestN }),
       BENEFIT_SAVED: n ? saved / n : null, FALSE_SELECTION_HARM: n ? added / n : null, NET: n ? (saved - added) / n : null,
       BENEFIT_SAVED_NORMALIZED: n ? savedN / n : null, FALSE_SELECTION_HARM_NORMALIZED: n ? addedN / n : null,
       NET_NORMALIZED: n ? (savedN - addedN) / n : null, benefitExceedsHarm: saved > added };

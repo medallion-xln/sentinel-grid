@@ -1,6 +1,7 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import { createHash } from 'node:crypto';
+import { spawnSync } from 'node:child_process';
 import { readFileSync } from 'node:fs';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
@@ -145,4 +146,31 @@ test('12. no hidden temporary paths, no larger model, R0 intact', () => {
     assert.ok(!/from '[^']*(jepa|neural|tensorflow|onnx|world-model)/i.test(s), f);
   }
   assert.deepEqual(STAGE3F6TSYM_PLAN.authority, { tier: 'R0', canDispatch: false, canMutateLiveWorld: false, onlineLearningEnabled: false, promotedToLiveRuntime: false });
+});
+
+test('13. plan amendment 001 is additive: every field of the original freeze is unchanged', () => {
+  const g = spawnSync('git', ['-C', path.resolve(root, '..', '..'), 'show', `8bcff515ffc4371078849ae0a9e212e1261aaf05:platform/game-agnostic/${STAGE3F6TSYM_PLAN_PATH}`], { encoding: 'utf8' });
+  assert.equal(g.status, 0);
+  const original = JSON.parse(g.stdout);
+  assert.equal(original.planHash, '642336d950dcc01ae61c94104eaefead041d67d81ec29b72e64d984c71d0cb79');
+  const current = json(STAGE3F6TSYM_PLAN_PATH);
+  const strip = (p) => { const c = structuredClone(p); delete c.planHash; delete c.amendments; delete c.roadmap.EXPERT_COMPLEMENTARITY_EXISTS; delete c.roadmap.POLICY_QUALITY_REMAINS_PRIMARY_BOTTLENECK; return c; };
+  assert.deepEqual(strip(current), strip(original));
+  assert.equal(current.amendments.length, 1);
+  assert.equal(current.amendments[0].id, 'STAGE3F6TSYM-PLAN-AMENDMENT-001');
+  const open = json(OPEN_REPORT_PATH);
+  for (const p of ['DEV', 'CAL']) {
+    const s = open.descriptive[p].ROUTER_SELECTION;
+    assert.ok(Math.abs(Object.values(s.selectionDistribution).reduce((a, b) => a + b, 0) - 1) < 1e-5);
+    assert.ok(Math.abs(s.routedShare + s.abstainedShare - 1) < 1e-9);
+  }
+});
+
+test('14. specialist value counts correct (best-set) and false selections when a best-set oracle is supplied', () => {
+  const row = (rRes, rS, best) => ({ chosen: { R: 'a', S: 'b' }, regret: { R: rRes, S: rS }, maxRegret: 10, best });
+  const rows = [row(10, 0, ['S']), row(0, 4, ['R']), row(5, 5, ['R', 'S'])];
+  const nrm = (r, p) => r.regret[p] / r.maxRegret;
+  const v = specialistValue(rows, () => 'S', { reference: 'R', specialists: ['S'], normalized: nrm, inBest: (r, p) => r.best.includes(p) }).S;
+  assert.equal(v.correctSelectionsN, 2); assert.equal(v.falseSelectionsN, 1);
+  assert.equal(specialistValue(rows, () => 'S', { reference: 'R', specialists: ['S'], normalized: nrm }).S.correctSelectionsN, undefined);
 });

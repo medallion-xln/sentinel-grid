@@ -7,7 +7,9 @@
  * builder, in canonical combination order. A candidate whose record, world or topology hash is claimed anywhere in the
  * 20000-row lineage, or earlier in the fresh set, is rejected.
  *
- * Refuses to run unless the analysis plan and the open-phase report are committed unchanged at HEAD.
+ * Refuses to run unless the analysis plan, the open-phase report and the evaluation code are committed unchanged at
+ * HEAD. The manifest records that HEAD. `--verify` rebuilds the partitions from committed state and requires the
+ * manifest content hash; it rewrites the payload but never the manifest.
  */
 import { createHash } from 'node:crypto';
 import { spawnSync } from 'node:child_process';
@@ -28,6 +30,9 @@ const hex = (v) => createHash('sha256').update(v).digest('hex');
 export const OPEN_REPORT_PATH = `${STAGE3F6TSYM_OUT}/stage3f6tsym-open-phase-report.json`;
 export const FRESH_PATH = `${STAGE3F6TSYM_OUT}/fresh-confirmatory.jsonl.gz`;
 export const FRESH_MANIFEST_PATH = `${STAGE3F6TSYM_OUT}/fresh-confirmatory-manifest.json`;
+/** Files that must be committed unchanged at HEAD before generation, and unchanged from generation to certification. */
+export const EVALUATION_FILES = Object.freeze([STAGE3F6TSYM_PLAN_PATH, OPEN_REPORT_PATH, 'scripts/stage3f6tsym-analysis-plan.mjs',
+  'scripts/generate-stage3f6tsym-confirmatory.mjs', 'scripts/certify-stage3f6tsym-router-value.mjs', 'src/stage3f/router-value-v1.js']);
 /** Declared-but-unused seeds of the P.1D plan; levels follow the declared partition. */
 export const FRESH_SPEC = Object.freeze({
   FRESH_HOLDOUT: { source: 'HOLDOUT', seed: 2022, n: 6000 },
@@ -37,7 +42,7 @@ export const FRESH_SPEC = Object.freeze({
 const headBytesHash = (r) => { const g = spawnSync('git', ['-C', repositoryRoot, 'show', `HEAD:platform/game-agnostic/${r}`], { encoding: 'buffer' }); return g.status === 0 ? hex(g.stdout) : null; };
 export function freshGate() {
   const failures = [];
-  for (const f of [STAGE3F6TSYM_PLAN_PATH, OPEN_REPORT_PATH, 'scripts/stage3f6tsym-analysis-plan.mjs', 'scripts/generate-stage3f6tsym-confirmatory.mjs']) {
+  for (const f of EVALUATION_FILES) {
     if (headBytesHash(f) !== hex(readFileSync(path.join(root, f)))) failures.push(`${f} is not committed unchanged at HEAD`);
   }
   if (JSON.parse(readFileSync(path.join(root, STAGE3F6TSYM_PLAN_PATH), 'utf8')).planHash !== STAGE3F6TSYM_PLAN_HASH) failures.push('plan file differs from the plan module');
@@ -53,9 +58,10 @@ export function seedAudit(lineage) {
     inPriorConsumed: STAGE3F6P1D_PLAN.seeds.priorConsumed.includes(s.seed) }]));
 }
 
-async function main() {
+async function main({ verify }) {
   const failures = freshGate();
   if (failures.length) throw new Error(`FRESH_GATE_CLOSED: ${failures.join('; ')}`);
+  const head = spawnSync('git', ['-C', repositoryRoot, 'rev-parse', 'HEAD'], { encoding: 'utf8' }).stdout.trim();
   const binding = benchmarkBinding();
   const lineage = readCorpus();
   const claimed = { record: new Set(lineage.map((r) => r.recordHash)), world: new Set(lineage.map((r) => r.worldHash)), topology: new Set(lineage.map((r) => r.topologyHash)) };
@@ -77,7 +83,15 @@ async function main() {
     stats[partition] = s;
   }
   const content = `${admitted.map((r) => JSON.stringify(r)).join('\n')}\n`;
-  const manifest = { schemaVersion: 1, extensionOf: STAGE3F6P1D_PLAN.corpusId, planHash: STAGE3F6TSYM_PLAN_HASH, benchmark: binding,
+  if (verify) {
+    const stored = JSON.parse(readFileSync(path.join(root, FRESH_MANIFEST_PATH), 'utf8'));
+    const reproduced = stored.contentHash === hex(content) && JSON.stringify(stored.stats) === JSON.stringify(stats);
+    if (reproduced) await writeFile(path.join(root, FRESH_PATH), gzipSync(Buffer.from(content, 'utf8'), { level: 9 }));
+    console.log(JSON.stringify({ verify: true, reproduced, contentHash: hex(content), storedContentHash: stored.contentHash, generatedAtHead: stored.generatedAtHead, head }, null, 2));
+    if (!reproduced) process.exitCode = 1;
+    return;
+  }
+  const manifest = { schemaVersion: 1, extensionOf: STAGE3F6P1D_PLAN.corpusId, planHash: STAGE3F6TSYM_PLAN_HASH, generatedAtHead: head, benchmark: binding,
     spec: FRESH_SPEC, seedAudit: seedAudit(lineage), stats, rows: admitted.length, contentHash: hex(content),
     generator: 'scripts/generate-stage3f6tsym-confirmatory.mjs', recordBuilder: 'scripts/generate-stage3f6p1d-symmetric-corpus.mjs#corpusRecord (unmodified)' };
   await writeFile(path.join(root, FRESH_PATH), gzipSync(Buffer.from(content, 'utf8'), { level: 9 }));
@@ -86,5 +100,5 @@ async function main() {
 }
 
 if (process.argv[1] && import.meta.url === pathToFileURL(process.argv[1]).href) {
-  await main();
+  await main({ verify: process.argv.includes('--verify') });
 }
