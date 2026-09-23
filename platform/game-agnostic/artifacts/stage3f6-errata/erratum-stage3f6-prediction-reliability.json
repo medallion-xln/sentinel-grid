@@ -1,0 +1,73 @@
+{
+  "recordType": "SENTINEL_CERTIFICATION_ERRATUM_V1",
+  "erratumId": "STAGE3F6-ERRATUM-001",
+  "recordedOn": "2026-09-22",
+  "subject": {
+    "stage": "STAGE_3F_6_PREDICTION_RELIABILITY_BASELINE",
+    "artifact": "artifacts/stage3f6-prediction-reliability/stage3f6-certification-result.json",
+    "certificationHash": "399f71c9cc0b2758e610133454e2f137436339a04a2117a1323a0a0bc3616a84",
+    "certifiedStatus": "PARTIAL",
+    "evaluationFreezeHash": "14548e37af72c02ebb554ab2841af1a870e2887aa061eaab651407883bbd5a95",
+    "commit": "2ee28987f123c8d543b03341199738c6de40c5b8 (committed together with Stage 3F.6-R in the same commit)"
+  },
+  "historicalArtifactModified": false,
+  "statusAfterErratum": "SUPERSEDED_NOT_REPRODUCIBLE_AT_ANY_COMMIT",
+  "supersededBy": {
+    "stage": "STAGE_3F_6_R_RUNTIME_PARITY_REMEDIATION",
+    "certificationHash": "4fba8d61e09be12efb428b66d1b189c0a9b970f7e4adb4dc7d9ecbb084cb7d9f",
+    "status": "PASS",
+    "alreadyRecordedThere": "the Stage 3F.6-R certificate field `stage3f6` records originalPartialCertificateUnchanged=true and confirmatoryRerunRequired=true, but no erratum file or current-validity status existed; this erratum supplies them"
+  },
+  "why": "Stage 3F.6 measured the Stage 3F.5 integrated live-shadow runtime, including the runtime-binding defects it discovered. Stage 3F.6-R then corrected that runtime and rewrote the Stage 3D/3E recovery canonicalization, and edited the Stage 3F.6 certifier and test file, before both stages were committed together in 2ee28987f123c8d543b03341199738c6de40c5b8. No committed state therefore contains the runtime, certifier and test bytes that produced certificate 399f71c9, so `certify-stage3f6-prediction-reliability.mjs --check` cannot reproduce it.",
+  "causedBy": {
+    "commit": "2ee28987f123c8d543b03341199738c6de40c5b8",
+    "runtimeFilesChanged": [
+      "src/stage3f/integrated-live-shadow-v1.js (router bias-last equation, fail-closed incomplete input, abstention evidence preserved, DISAGREEMENT campaign seed 11 -> 12)",
+      "src/lab/stage3de-recovery-canonicalization.js (repository-only candidate identity; ephemeral scratch path no longer consulted)",
+      "scripts/canonicalize-stage3de-recovery.mjs"
+    ],
+    "certifierAndTestsEdited": {
+      "scripts/certify-stage3f6-prediction-reliability.mjs": { "hashRecordedInCertificate": "af1fe9d1ecf6588713673f4a2d8b95596e54a560e979484438ec1bfbcb76ad51", "committedHash": "0c338f94867c4cd95b3449f364285a2bb3d9fd205d7482bd2e65f8a2de2c411b" },
+      "tests/stage3f6-prediction-reliability-v1.test.js": { "hashRecordedInCertificate": "58d368b15b3d586e19c4aa7c4c6aad9aff38c224e2c9c1c8fc56ff6ba3cc0976", "committedHash": "1b3ded09406aa0327cb5aa9daaabea5059292085970e9a9256317ea964f1b1da" }
+    },
+    "laterCommitsTouchingThoseFiles": 0
+  },
+  "verification": {
+    "method": "non-writing recomputation of the committed certifier compared field by field with the stored certificate, (a) at HEAD and (b) in a temporary worktree at HEAD with only the three runtime/recovery files above restored to their pre-2ee28987f123c8d543b03341199738c6de40c5b8 bytes",
+    "atHead": {
+      "reproduced": false, "recomputedStatus": "FAIL", "freezeReproduced": false, "differingFields": 806,
+      "concentratedIn": ["layerB.byPartition", "degradation.router", "evaluationSnapshot.shards", "layerB.sealed", "degradation.worldStateBaseline", "calibrationRelationship.variants"]
+    },
+    "withPreRemediationRuntime": {
+      "reproduced": false, "freezeReproduced": true, "differingFields": 17,
+      "everyMeasurementSectionIdentical": true,
+      "remainingDifferences": [
+        "status and environmentDiagnosis/blockers: the stored PARTIAL came from predecessor checks failing on the foreign scratch adapter directory (EPHEMERAL_FOREIGN_SCRATCH_ADAPTER_DIRECTORY_PRESENT_WITHOUT_WEIGHT_FILES), a diagnosis the committed certifier no longer produces",
+        "tests 104/106: the two failures are tests added by Stage 3F.6-R for the corrected runtime ('remediated runtime router score equals the canonical Stage 3E equation exactly'; 'certified Stage 3F.5 observatory sources are unchanged; its runtime is superseded by the remediation gate')",
+        "sourceHashes of the certifier and test file (see causedBy)"
+      ]
+    },
+    "conclusion": "the recorded Stage 3F.6 measurements are faithful to the pre-remediation runtime they measured; the certificate is not reproducible because the certified 3F.6-R remediation (and same-commit edits to the certifier and tests) changed its inputs, not because its evidence was corrupted"
+  },
+  "symmetricChainContamination": {
+    "contaminated": false,
+    "chain": ["3F.6-A", "3F.6-T", "3F.6-W", "3F.6-D", "3F.6-P", "3F.6-P.1", "3F.6-P.1A", "3F.6-P.1B", "3F.6-P.1C", "3F.6-P.1D", "3F.6-P.1E"],
+    "evidence": [
+      "every chain stage was certified after 2ee28987f123c8d543b03341199738c6de40c5b8 and reproduces on --check (verified 2026-09-22)",
+      "no chain stage runs or requires the Stage 3F.6 --check or consumes the 3F.6 certificate's measurements",
+      "3F.6-A and 3F.6-C list the live-shadow runtime and artifacts/stage3f6-prediction-reliability only as owners that must stay git-unchanged",
+      "3F.6-C and 3F.6-W import only the pure degradeObservation function, and 3F.6-P.1E only the STAGE3F6_METHODOLOGY.catastrophicRegret constant, from src/stage3f/prediction-reliability-v1.js, which is unchanged since 2ee28987f123c8d543b03341199738c6de40c5b8"
+    ]
+  },
+  "claimsWithdrawn": [
+    "the Stage 3F.6 certificate reproduces from the repository",
+    "Stage 3F.6 runtime (Layer B) reliability figures describe the current, remediated runtime"
+  ],
+  "guaranteesRemainingValid": [
+    "the Stage 3F.6 measurements as a record of the pre-remediation runtime",
+    "the runtime-binding defects Stage 3F.6 discovered (recorded and corrected in Stage 3F.6-R)",
+    "R0_AUTHORITY"
+  ],
+  "confirmatoryRerun": "still required, as Stage 3F.6-R already states: new HOLDOUT and OOD splits on a disjoint seed space against the remediated runtime",
+  "authority": { "tier": "R0", "canDispatch": false, "canMutateLiveWorld": false, "onlineLearningEnabled": false, "promotedToLiveRuntime": false }
+}
