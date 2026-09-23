@@ -1,0 +1,3939 @@
+{
+  "schemaVersion": 1,
+  "stage": "STAGE_3F_6_T_SYM_ROUTER_VALUE_REQUALIFICATION",
+  "status": "PASS",
+  "planHash": "6ef5e2360f5034e9a00666acd98d51fb03ea13c78e872a4a092c1c5cd25d519f",
+  "featureSetHash": "838c141991c4e74a627d1b1a906c6b5dd114281888519b505a113a86088b3d76",
+  "policySetHash": "3f1a19f788389202af79ee50c9149344fa069f407abf09c6fede876617620c79",
+  "openPhaseReportHash": "47538d7b841972b6df7bfbd67638384c7b99f5a7696202d0469946bdb56ad19b",
+  "freeze": {
+    "originalFreezeCommit": "8bcff515ffc4371078849ae0a9e212e1261aaf05",
+    "freezeCommit": "f42a50285ff7fe4140716374bff4ae939696a629",
+    "history": [
+      {
+        "commit": "8bcff515ffc4371078849ae0a9e212e1261aaf05",
+        "files": [
+          ".gitignore",
+          "platform/game-agnostic/artifacts/stage3f6tsym-router-value/stage3f6tsym-analysis-plan.json",
+          "platform/game-agnostic/artifacts/stage3f6tsym-router-value/stage3f6tsym-open-phase-report.json",
+          "platform/game-agnostic/package.json",
+          "platform/game-agnostic/scripts/certify-stage3f6tsym-router-value.mjs",
+          "platform/game-agnostic/scripts/generate-stage3f6tsym-confirmatory.mjs",
+          "platform/game-agnostic/scripts/stage3f6tsym-analysis-plan.mjs",
+          "platform/game-agnostic/src/stage3f/router-value-v1.js",
+          "platform/game-agnostic/tests/stage3f6tsym-router-value.test.js"
+        ],
+        "planAndOpenReport": true,
+        "noFreshOrResult": true
+      },
+      {
+        "commit": "f42a50285ff7fe4140716374bff4ae939696a629",
+        "files": [
+          "platform/game-agnostic/artifacts/stage3f6tsym-router-value/stage3f6tsym-analysis-plan.json",
+          "platform/game-agnostic/artifacts/stage3f6tsym-router-value/stage3f6tsym-open-phase-report.json",
+          "platform/game-agnostic/package.json",
+          "platform/game-agnostic/scripts/certify-stage3f6tsym-router-value.mjs",
+          "platform/game-agnostic/scripts/generate-stage3f6tsym-confirmatory.mjs",
+          "platform/game-agnostic/scripts/stage3f6tsym-analysis-plan.mjs",
+          "platform/game-agnostic/src/stage3f/router-value-v1.js",
+          "platform/game-agnostic/tests/stage3f6tsym-router-value.test.js"
+        ],
+        "planAndOpenReport": true,
+        "noFreshOrResult": true
+      }
+    ],
+    "planAndOpenReportInFreezeCommits": true,
+    "noFreshOrResultInFreezeCommits": true,
+    "planUnchangedSinceFreeze": true,
+    "planAndOpenReportAtHead": true,
+    "freshGeneratedAtHead": "f42a50285ff7fe4140716374bff4ae939696a629",
+    "freshGeneratedAfterFreeze": true,
+    "evaluationFilesUnchangedSinceGeneration": true,
+    "FROZEN_BEFORE_FRESH_AND_SEALED": true
+  },
+  "predecessorChecks": {
+    "stage3f6p1c": true,
+    "stage3f6p1d": true,
+    "stage3f6p1e": true,
+    "stage3f6t": true
+  },
+  "data": {
+    "benchmarkId": "FORGE_SYMMETRIC_V2",
+    "corpusId": "FORGE_SYMMETRIC_V2_ROUTABILITY_CORPUS_V1",
+    "corpusContentHash": "4de383eb0c6e9836706e87c6626de53ccb54853fb527f368cfaf599617e6c75e",
+    "fresh": {
+      "contentHash": "2921adb7e933c274ed692d0f38ccc58a6d1553a60194d01d14b75105c92ff6e8",
+      "contentBound": true,
+      "planBound": true,
+      "counts": {
+        "FRESH_HOLDOUT": 6000,
+        "FRESH_OOD": 6000
+      },
+      "stats": {
+        "FRESH_HOLDOUT": {
+          "attempted": 7885,
+          "admitted": 6000,
+          "rejected": {
+            "TOPOLOGY_HASH_CLAIMED": 1678,
+            "ISLANDS": 62,
+            "LAYERS": 53,
+            "TREE_BRANCHES_ACYCLIC": 67,
+            "CONTESTED_BOTTLENECK": 14,
+            "BRIDGE_CUT_EXISTS": 11
+          },
+          "combinationsAvailable": 21600
+        },
+        "FRESH_OOD": {
+          "attempted": 6220,
+          "admitted": 6000,
+          "rejected": {
+            "TOPOLOGY_HASH_CLAIMED": 175,
+            "TREE_BRANCHES_ACYCLIC": 26,
+            "BRIDGE_CUT_EXISTS": 7,
+            "LAYERS": 12
+          },
+          "combinationsAvailable": 7200
+        }
+      },
+      "seedAudit": {
+        "FRESH_HOLDOUT": {
+          "seed": 2022,
+          "declaredForPartition": true,
+          "usedByLineage": false,
+          "inPriorConsumed": false
+        },
+        "FRESH_OOD": {
+          "seed": 2032,
+          "declaredForPartition": true,
+          "usedByLineage": false,
+          "inPriorConsumed": false
+        }
+      },
+      "seedsUsed": {
+        "FRESH_HOLDOUT": [
+          2022
+        ],
+        "FRESH_OOD": [
+          2032
+        ]
+      },
+      "overlapWithLineage": {
+        "record": 0,
+        "world": 0,
+        "topology": 0
+      },
+      "internalDuplicates": {
+        "record": 0,
+        "world": 0,
+        "topology": 0
+      },
+      "levels": {
+        "FRESH_HOLDOUT": [
+          0,
+          1,
+          2
+        ],
+        "FRESH_OOD": [
+          6,
+          7
+        ]
+      },
+      "equivarianceChecks": 2440,
+      "SYMMETRY_CHECKS": {
+        "legal": 1,
+        "optimal": 1,
+        "regret": 1,
+        "label": 1,
+        "coreFeatureInvariant": 1
+      },
+      "coreComplete": true,
+      "benchmarkBound": true
+    }
+  },
+  "featureAudit": {
+    "actionSurface.actionTypeEntropy": {
+      "class": "DEPLOYABLE",
+      "flags": {
+        "NON_DEPLOYABLE": false,
+        "LEAKED": false,
+        "REQUIRES_ROLLOUT": false,
+        "REQUIRES_FUTURE_STATE": false,
+        "REQUIRES_ORACLE": false,
+        "DIVERGENT": false,
+        "UNAVAILABLE": false
+      },
+      "requiredCapabilities": [
+        "LEGAL_ACTION_SURFACE"
+      ]
+    },
+    "actionSurface.distinctMoveDirections": {
+      "class": "DEPLOYABLE",
+      "flags": {
+        "NON_DEPLOYABLE": false,
+        "LEAKED": false,
+        "REQUIRES_ROLLOUT": false,
+        "REQUIRES_FUTURE_STATE": false,
+        "REQUIRES_ORACLE": false,
+        "DIVERGENT": false,
+        "UNAVAILABLE": false
+      },
+      "requiredCapabilities": [
+        "LEGAL_ACTION_SURFACE"
+      ]
+    },
+    "actionSurface.legalActionCount": {
+      "class": "DEPLOYABLE",
+      "flags": {
+        "NON_DEPLOYABLE": false,
+        "LEAKED": false,
+        "REQUIRES_ROLLOUT": false,
+        "REQUIRES_FUTURE_STATE": false,
+        "REQUIRES_ORACLE": false,
+        "DIVERGENT": false,
+        "UNAVAILABLE": false
+      },
+      "requiredCapabilities": [
+        "LEGAL_ACTION_SURFACE"
+      ]
+    },
+    "actionSurface.moveCount": {
+      "class": "DEPLOYABLE",
+      "flags": {
+        "NON_DEPLOYABLE": false,
+        "LEAKED": false,
+        "REQUIRES_ROLLOUT": false,
+        "REQUIRES_FUTURE_STATE": false,
+        "REQUIRES_ORACLE": false,
+        "DIVERGENT": false,
+        "UNAVAILABLE": false
+      },
+      "requiredCapabilities": [
+        "LEGAL_ACTION_SURFACE"
+      ]
+    },
+    "context.decisionHorizonRemaining": {
+      "class": "DEPLOYABLE",
+      "flags": {
+        "NON_DEPLOYABLE": false,
+        "LEAKED": false,
+        "REQUIRES_ROLLOUT": false,
+        "REQUIRES_FUTURE_STATE": false,
+        "REQUIRES_ORACLE": false,
+        "DIVERGENT": false,
+        "UNAVAILABLE": false
+      },
+      "requiredCapabilities": [
+        "OBSERVATION_SCHEMA_BOUND"
+      ]
+    },
+    "context.entityCount": {
+      "class": "DEPLOYABLE",
+      "flags": {
+        "NON_DEPLOYABLE": false,
+        "LEAKED": false,
+        "REQUIRES_ROLLOUT": false,
+        "REQUIRES_FUTURE_STATE": false,
+        "REQUIRES_ORACLE": false,
+        "DIVERGENT": false,
+        "UNAVAILABLE": false
+      },
+      "requiredCapabilities": [
+        "OBSERVATION_SCHEMA_BOUND"
+      ]
+    },
+    "context.objectiveCount": {
+      "class": "DEPLOYABLE",
+      "flags": {
+        "NON_DEPLOYABLE": false,
+        "LEAKED": false,
+        "REQUIRES_ROLLOUT": false,
+        "REQUIRES_FUTURE_STATE": false,
+        "REQUIRES_ORACLE": false,
+        "DIVERGENT": false,
+        "UNAVAILABLE": false
+      },
+      "requiredCapabilities": [
+        "OBSERVATION_SCHEMA_BOUND"
+      ]
+    },
+    "context.relationCount": {
+      "class": "DEPLOYABLE",
+      "flags": {
+        "NON_DEPLOYABLE": false,
+        "LEAKED": false,
+        "REQUIRES_ROLLOUT": false,
+        "REQUIRES_FUTURE_STATE": false,
+        "REQUIRES_ORACLE": false,
+        "DIVERGENT": false,
+        "UNAVAILABLE": false
+      },
+      "requiredCapabilities": [
+        "OBSERVATION_SCHEMA_BOUND"
+      ]
+    },
+    "context.tickProgress": {
+      "class": "DEPLOYABLE",
+      "flags": {
+        "NON_DEPLOYABLE": false,
+        "LEAKED": false,
+        "REQUIRES_ROLLOUT": false,
+        "REQUIRES_FUTURE_STATE": false,
+        "REQUIRES_ORACLE": false,
+        "DIVERGENT": false,
+        "UNAVAILABLE": false
+      },
+      "requiredCapabilities": [
+        "OBSERVATION_SCHEMA_BOUND"
+      ]
+    },
+    "relational.abstains": {
+      "class": "DEPLOYABLE",
+      "flags": {
+        "NON_DEPLOYABLE": false,
+        "LEAKED": false,
+        "REQUIRES_ROLLOUT": false,
+        "REQUIRES_FUTURE_STATE": false,
+        "REQUIRES_ORACLE": false,
+        "DIVERGENT": false,
+        "UNAVAILABLE": false
+      },
+      "requiredCapabilities": [
+        "LEGAL_ACTION_SURFACE",
+        "OBSERVATION_SCHEMA_BOUND",
+        "RELATIONAL_EXPERT"
+      ]
+    },
+    "relational.actionTargetedEntityCount": {
+      "class": "DEPLOYABLE",
+      "flags": {
+        "NON_DEPLOYABLE": false,
+        "LEAKED": false,
+        "REQUIRES_ROLLOUT": false,
+        "REQUIRES_FUTURE_STATE": false,
+        "REQUIRES_ORACLE": false,
+        "DIVERGENT": false,
+        "UNAVAILABLE": false
+      },
+      "requiredCapabilities": [
+        "LEGAL_ACTION_SURFACE",
+        "OBSERVATION_SCHEMA_BOUND",
+        "RELATIONAL_EXPERT"
+      ]
+    },
+    "relational.bottleneckCount": {
+      "class": "DEPLOYABLE",
+      "flags": {
+        "NON_DEPLOYABLE": false,
+        "LEAKED": false,
+        "REQUIRES_ROLLOUT": false,
+        "REQUIRES_FUTURE_STATE": false,
+        "REQUIRES_ORACLE": false,
+        "DIVERGENT": false,
+        "UNAVAILABLE": false
+      },
+      "requiredCapabilities": [
+        "OBSERVATION_SCHEMA_BOUND",
+        "RELATIONAL_EXPERT"
+      ]
+    },
+    "relational.confidence": {
+      "class": "DEPLOYABLE",
+      "flags": {
+        "NON_DEPLOYABLE": false,
+        "LEAKED": false,
+        "REQUIRES_ROLLOUT": false,
+        "REQUIRES_FUTURE_STATE": false,
+        "REQUIRES_ORACLE": false,
+        "DIVERGENT": false,
+        "UNAVAILABLE": false
+      },
+      "requiredCapabilities": [
+        "OBSERVATION_SCHEMA_BOUND",
+        "RELATIONAL_EXPERT"
+      ]
+    },
+    "relational.criticalDependencyCount": {
+      "class": "DEPLOYABLE",
+      "flags": {
+        "NON_DEPLOYABLE": false,
+        "LEAKED": false,
+        "REQUIRES_ROLLOUT": false,
+        "REQUIRES_FUTURE_STATE": false,
+        "REQUIRES_ORACLE": false,
+        "DIVERGENT": false,
+        "UNAVAILABLE": false
+      },
+      "requiredCapabilities": [
+        "OBSERVATION_SCHEMA_BOUND",
+        "RELATIONAL_EXPERT"
+      ]
+    },
+    "relational.cycleDetected": {
+      "class": "DEPLOYABLE",
+      "flags": {
+        "NON_DEPLOYABLE": false,
+        "LEAKED": false,
+        "REQUIRES_ROLLOUT": false,
+        "REQUIRES_FUTURE_STATE": false,
+        "REQUIRES_ORACLE": false,
+        "DIVERGENT": false,
+        "UNAVAILABLE": false
+      },
+      "requiredCapabilities": [
+        "OBSERVATION_SCHEMA_BOUND",
+        "RELATIONAL_EXPERT"
+      ]
+    },
+    "relational.cycleNodeCount": {
+      "class": "DEPLOYABLE",
+      "flags": {
+        "NON_DEPLOYABLE": false,
+        "LEAKED": false,
+        "REQUIRES_ROLLOUT": false,
+        "REQUIRES_FUTURE_STATE": false,
+        "REQUIRES_ORACLE": false,
+        "DIVERGENT": false,
+        "UNAVAILABLE": false
+      },
+      "requiredCapabilities": [
+        "OBSERVATION_SCHEMA_BOUND",
+        "RELATIONAL_EXPERT"
+      ]
+    },
+    "relational.edgeCount": {
+      "class": "DEPLOYABLE",
+      "flags": {
+        "NON_DEPLOYABLE": false,
+        "LEAKED": false,
+        "REQUIRES_ROLLOUT": false,
+        "REQUIRES_FUTURE_STATE": false,
+        "REQUIRES_ORACLE": false,
+        "DIVERGENT": false,
+        "UNAVAILABLE": false
+      },
+      "requiredCapabilities": [
+        "OBSERVATION_SCHEMA_BOUND",
+        "RELATIONAL_EXPERT"
+      ]
+    },
+    "relational.graphDensity": {
+      "class": "DEPLOYABLE",
+      "flags": {
+        "NON_DEPLOYABLE": false,
+        "LEAKED": false,
+        "REQUIRES_ROLLOUT": false,
+        "REQUIRES_FUTURE_STATE": false,
+        "REQUIRES_ORACLE": false,
+        "DIVERGENT": false,
+        "UNAVAILABLE": false
+      },
+      "requiredCapabilities": [
+        "OBSERVATION_SCHEMA_BOUND",
+        "RELATIONAL_EXPERT"
+      ]
+    },
+    "relational.hostileEntityCount": {
+      "class": "DEPLOYABLE",
+      "flags": {
+        "NON_DEPLOYABLE": false,
+        "LEAKED": false,
+        "REQUIRES_ROLLOUT": false,
+        "REQUIRES_FUTURE_STATE": false,
+        "REQUIRES_ORACLE": false,
+        "DIVERGENT": false,
+        "UNAVAILABLE": false
+      },
+      "requiredCapabilities": [
+        "OBSERVATION_SCHEMA_BOUND",
+        "RELATIONAL_EXPERT"
+      ]
+    },
+    "relational.isolatedEntityCount": {
+      "class": "DEPLOYABLE",
+      "flags": {
+        "NON_DEPLOYABLE": false,
+        "LEAKED": false,
+        "REQUIRES_ROLLOUT": false,
+        "REQUIRES_FUTURE_STATE": false,
+        "REQUIRES_ORACLE": false,
+        "DIVERGENT": false,
+        "UNAVAILABLE": false
+      },
+      "requiredCapabilities": [
+        "OBSERVATION_SCHEMA_BOUND",
+        "RELATIONAL_EXPERT"
+      ]
+    },
+    "relational.isolatedRatio": {
+      "class": "DEPLOYABLE",
+      "flags": {
+        "NON_DEPLOYABLE": false,
+        "LEAKED": false,
+        "REQUIRES_ROLLOUT": false,
+        "REQUIRES_FUTURE_STATE": false,
+        "REQUIRES_ORACLE": false,
+        "DIVERGENT": false,
+        "UNAVAILABLE": false
+      },
+      "requiredCapabilities": [
+        "OBSERVATION_SCHEMA_BOUND",
+        "RELATIONAL_EXPERT"
+      ]
+    },
+    "relational.maxCentrality": {
+      "class": "DEPLOYABLE",
+      "flags": {
+        "NON_DEPLOYABLE": false,
+        "LEAKED": false,
+        "REQUIRES_ROLLOUT": false,
+        "REQUIRES_FUTURE_STATE": false,
+        "REQUIRES_ORACLE": false,
+        "DIVERGENT": false,
+        "UNAVAILABLE": false
+      },
+      "requiredCapabilities": [
+        "OBSERVATION_SCHEMA_BOUND",
+        "RELATIONAL_EXPERT"
+      ]
+    },
+    "relational.maxDegree": {
+      "class": "DEPLOYABLE",
+      "flags": {
+        "NON_DEPLOYABLE": false,
+        "LEAKED": false,
+        "REQUIRES_ROLLOUT": false,
+        "REQUIRES_FUTURE_STATE": false,
+        "REQUIRES_ORACLE": false,
+        "DIVERGENT": false,
+        "UNAVAILABLE": false
+      },
+      "requiredCapabilities": [
+        "OBSERVATION_SCHEMA_BOUND",
+        "RELATIONAL_EXPERT"
+      ]
+    },
+    "relational.maxDependencyDepth": {
+      "class": "DEPLOYABLE",
+      "flags": {
+        "NON_DEPLOYABLE": false,
+        "LEAKED": false,
+        "REQUIRES_ROLLOUT": false,
+        "REQUIRES_FUTURE_STATE": false,
+        "REQUIRES_ORACLE": false,
+        "DIVERGENT": false,
+        "UNAVAILABLE": false
+      },
+      "requiredCapabilities": [
+        "OBSERVATION_SCHEMA_BOUND",
+        "RELATIONAL_EXPERT"
+      ]
+    },
+    "relational.maxDependents": {
+      "class": "DEPLOYABLE",
+      "flags": {
+        "NON_DEPLOYABLE": false,
+        "LEAKED": false,
+        "REQUIRES_ROLLOUT": false,
+        "REQUIRES_FUTURE_STATE": false,
+        "REQUIRES_ORACLE": false,
+        "DIVERGENT": false,
+        "UNAVAILABLE": false
+      },
+      "requiredCapabilities": [
+        "OBSERVATION_SCHEMA_BOUND",
+        "RELATIONAL_EXPERT"
+      ]
+    },
+    "relational.threatenedEntityCount": {
+      "class": "DEPLOYABLE",
+      "flags": {
+        "NON_DEPLOYABLE": false,
+        "LEAKED": false,
+        "REQUIRES_ROLLOUT": false,
+        "REQUIRES_FUTURE_STATE": false,
+        "REQUIRES_ORACLE": false,
+        "DIVERGENT": false,
+        "UNAVAILABLE": false
+      },
+      "requiredCapabilities": [
+        "OBSERVATION_SCHEMA_BOUND",
+        "RELATIONAL_EXPERT"
+      ]
+    },
+    "relational.uncoveredThreatenedCount": {
+      "class": "DEPLOYABLE",
+      "flags": {
+        "NON_DEPLOYABLE": false,
+        "LEAKED": false,
+        "REQUIRES_ROLLOUT": false,
+        "REQUIRES_FUTURE_STATE": false,
+        "REQUIRES_ORACLE": false,
+        "DIVERGENT": false,
+        "UNAVAILABLE": false
+      },
+      "requiredCapabilities": [
+        "LEGAL_ACTION_SURFACE",
+        "OBSERVATION_SCHEMA_BOUND",
+        "RELATIONAL_EXPERT"
+      ]
+    },
+    "relational.unresolvedDependencyCount": {
+      "class": "DEPLOYABLE",
+      "flags": {
+        "NON_DEPLOYABLE": false,
+        "LEAKED": false,
+        "REQUIRES_ROLLOUT": false,
+        "REQUIRES_FUTURE_STATE": false,
+        "REQUIRES_ORACLE": false,
+        "DIVERGENT": false,
+        "UNAVAILABLE": false
+      },
+      "requiredCapabilities": [
+        "OBSERVATION_SCHEMA_BOUND",
+        "RELATIONAL_EXPERT"
+      ]
+    },
+    "relational.unsupportedThreatenedCount": {
+      "class": "DEPLOYABLE",
+      "flags": {
+        "NON_DEPLOYABLE": false,
+        "LEAKED": false,
+        "REQUIRES_ROLLOUT": false,
+        "REQUIRES_FUTURE_STATE": false,
+        "REQUIRES_ORACLE": false,
+        "DIVERGENT": false,
+        "UNAVAILABLE": false
+      },
+      "requiredCapabilities": [
+        "OBSERVATION_SCHEMA_BOUND",
+        "RELATIONAL_EXPERT"
+      ]
+    },
+    "resources.actorEnergy": {
+      "class": "DEPLOYABLE",
+      "flags": {
+        "NON_DEPLOYABLE": false,
+        "LEAKED": false,
+        "REQUIRES_ROLLOUT": false,
+        "REQUIRES_FUTURE_STATE": false,
+        "REQUIRES_ORACLE": false,
+        "DIVERGENT": false,
+        "UNAVAILABLE": false
+      },
+      "requiredCapabilities": [
+        "OBSERVATION_SCHEMA_BOUND"
+      ]
+    }
+  },
+  "router": {
+    "type": "MULTINOMIAL_LOGISTIC_REGRESSION_MASKED_SOFTMAX",
+    "routerHash": "e9c123db9c0ac2dbada7b01bebe2035a3c0b4e39b8f013e754c8f2bb99208d88",
+    "trainingPartition": "DEV",
+    "calibrationPartition": "CAL",
+    "threshold": 0.4,
+    "bestSingle": "RESOURCE_PRESERVING_V1",
+    "historicalRouterHash": "25876d1899a17b0252605982ac353123308c1f006194d1e84844a381471d8d25",
+    "candidateRouterV2Hash": "a8c2b12ace2751f2344866c7d846dfd369682e03f3be5ffbb6b0a3eedfbef366",
+    "candidateThreshold": 0.35,
+    "computeCostMultiplyAddsPerDecision": 154
+  },
+  "cascades": {
+    "P1E": [
+      "THREAT_COVERING_V1",
+      "OBJECTIVE_TARGETING_V1",
+      "NEXUS_SELECTOR_V2_CANDIDATE",
+      "RESOURCE_PRESERVING_V1"
+    ],
+    "HEADLINE": [
+      "THREAT_COVERING_V1",
+      "OBJECTIVE_TARGETING_V1",
+      "RESOURCE_PRESERVING_V1"
+    ],
+    "calAccuracy": {
+      "RESOURCE_PRESERVING_V1": 0.26075,
+      "NEXUS_SELECTOR": 0.15058,
+      "OBJECTIVE_TARGETING_V1": 0.322581,
+      "THREAT_COVERING_V1": 0.346535
+    }
+  },
+  "regimeModels": {
+    "COSTLY_ACTION_OPTIMAL": {
+      "status": "FITTED",
+      "modelHash": "a2503babec31aec4d861809fdb83282dc9df6edcd597296b26f1849410fa9bd1",
+      "calThreshold": 0.42,
+      "calAuroc": 0.887246,
+      "bestUnivariate": {
+        "feature": "actionSurface.legalActionCount",
+        "separability": 0.851284
+      }
+    },
+    "FREE_ACTION_OPTIMAL": {
+      "status": "FITTED",
+      "modelHash": "2839fe576770401afd3cd4e8b1d1806bbf34c1c194c755452f90a5c79fb7e2bf",
+      "calThreshold": 0.47,
+      "calAuroc": 0.887246,
+      "bestUnivariate": {
+        "feature": "actionSurface.legalActionCount",
+        "separability": 0.851284
+      }
+    },
+    "HORIZON_DEPENDENT": {
+      "status": "FITTED",
+      "modelHash": "840cd55cde10e153493900438f0fd5cf7ca44969136df1b628c8ec29c99a7d59",
+      "calThreshold": 0.63,
+      "calAuroc": 0.813344,
+      "bestUnivariate": {
+        "feature": "actionSurface.actionTypeEntropy",
+        "separability": 0.696257
+      }
+    },
+    "NEXUS_V1_BEATS_RESOURCE": {
+      "status": "FITTED",
+      "modelHash": "8c0241390f3e4eb917288b78dc2b43713e9e8866dcb34402cb1e8c7c0b36b528",
+      "calThreshold": 0.37,
+      "calAuroc": 0.604684,
+      "bestUnivariate": {
+        "feature": "actionSurface.legalActionCount",
+        "separability": 0.586246
+      }
+    },
+    "OBJECTIVE_APPLICABLE": {
+      "status": "FITTED",
+      "modelHash": "2e77bbcd176248e336e624c64b44af32e90f01d5102dbf737165f5056bc56fc2",
+      "calThreshold": 0.33,
+      "calAuroc": 0.740308,
+      "bestUnivariate": {
+        "feature": "context.decisionHorizonRemaining",
+        "separability": 0.650332
+      }
+    },
+    "THREAT_APPLICABLE": {
+      "status": "INSUFFICIENT_EVIDENCE"
+    }
+  },
+  "partitions": {
+    "FRESH_HOLDOUT": {
+      "n": 6000,
+      "strategies": {
+        "ALWAYS_RESOURCE": {
+          "n": 6000,
+          "coverage": 1,
+          "accuracy": 0.263167,
+          "meanRegret": 50.329667,
+          "p95Regret": 145,
+          "meanNormalizedRegret": 0.567925,
+          "catastrophicRate": 0.153333,
+          "selectionAccuracy": 0.462667,
+          "selectionDistribution": {
+            "RESOURCE_PRESERVING_V1": 1
+          }
+        },
+        "BEST_SINGLE_POLICY": {
+          "n": 6000,
+          "coverage": 1,
+          "accuracy": 0.263167,
+          "meanRegret": 50.329667,
+          "p95Regret": 145,
+          "meanNormalizedRegret": 0.567925,
+          "catastrophicRate": 0.153333,
+          "selectionAccuracy": 0.462667,
+          "selectionDistribution": {
+            "RESOURCE_PRESERVING_V1": 1
+          }
+        },
+        "FIXED_PRIORITY_CASCADE_HEADLINE": {
+          "n": 6000,
+          "coverage": 1,
+          "accuracy": 0.269,
+          "meanRegret": 48.771333,
+          "p95Regret": 144,
+          "meanNormalizedRegret": 0.554791,
+          "catastrophicRate": 0.1455,
+          "selectionAccuracy": 0.490667,
+          "selectionDistribution": {
+            "RESOURCE_PRESERVING_V1": 0.901167,
+            "OBJECTIVE_TARGETING_V1": 0.0715,
+            "THREAT_COVERING_V1": 0.027333
+          }
+        },
+        "HISTORICAL_3F6T_ROUTER_FROZEN": {
+          "n": 6000,
+          "coverage": 1,
+          "accuracy": 0.196167,
+          "meanRegret": 46.346667,
+          "p95Regret": 128,
+          "meanNormalizedRegret": 0.549758,
+          "catastrophicRate": 0.099333,
+          "selectionAccuracy": 0.685,
+          "selectionDistribution": {
+            "RESOURCE_PRESERVING_V1": 0.130167,
+            "NEXUS_SELECTOR": 0.831833,
+            "OBJECTIVE_TARGETING_V1": 0.017167,
+            "THREAT_COVERING_V1": 0.020833
+          }
+        },
+        "ROUTER_SYMMETRIC": {
+          "n": 6000,
+          "coverage": 1,
+          "accuracy": 0.205333,
+          "meanRegret": 45.750833,
+          "p95Regret": 128,
+          "meanNormalizedRegret": 0.542606,
+          "catastrophicRate": 0.0995,
+          "selectionAccuracy": 0.689167,
+          "selectionDistribution": {
+            "RESOURCE_PRESERVING_V1": 0.1735,
+            "NEXUS_SELECTOR": 0.7725,
+            "OBJECTIVE_TARGETING_V1": 0.0325,
+            "THREAT_COVERING_V1": 0.0215
+          }
+        },
+        "ROUTER_SYMMETRIC_FULL_COVERAGE": {
+          "n": 6000,
+          "coverage": 1,
+          "accuracy": 0.202667,
+          "meanRegret": 45.867833,
+          "p95Regret": 128,
+          "meanNormalizedRegret": 0.543794,
+          "catastrophicRate": 0.1,
+          "selectionAccuracy": 0.688833,
+          "selectionDistribution": {
+            "RESOURCE_PRESERVING_V1": 0.1655,
+            "NEXUS_SELECTOR": 0.778333,
+            "OBJECTIVE_TARGETING_V1": 0.0345,
+            "THREAT_COVERING_V1": 0.021667
+          }
+        },
+        "REGIME_GATED_SWITCH": {
+          "n": 6000,
+          "coverage": 1,
+          "accuracy": 0.288833,
+          "meanRegret": 45.654167,
+          "p95Regret": 140,
+          "meanNormalizedRegret": 0.529008,
+          "catastrophicRate": 0.130167,
+          "selectionAccuracy": 0.519833,
+          "selectionDistribution": {
+            "RESOURCE_PRESERVING_V1": 0.887333,
+            "NEXUS_SELECTOR": 0.109167,
+            "OBJECTIVE_TARGETING_V1": 0.0035
+          }
+        },
+        "COSTLY_ORACLE_SWITCH": {
+          "n": 6000,
+          "coverage": 1,
+          "accuracy": 0.333333,
+          "meanRegret": 44.031,
+          "p95Regret": 140,
+          "meanNormalizedRegret": 0.508451,
+          "catastrophicRate": 0.1265,
+          "selectionAccuracy": 0.558167,
+          "selectionDistribution": {
+            "RESOURCE_PRESERVING_V1": 0.881167,
+            "NEXUS_SELECTOR": 0.1165,
+            "OBJECTIVE_TARGETING_V1": 0.002333
+          }
+        },
+        "PERFECT_POLICY_SELECTOR": {
+          "n": 6000,
+          "coverage": 1,
+          "accuracy": 0.400167,
+          "meanRegret": 31.452667,
+          "p95Regret": 108,
+          "meanNormalizedRegret": 0.372963,
+          "catastrophicRate": 0.0655,
+          "selectionAccuracy": 1,
+          "selectionDistribution": {
+            "RESOURCE_PRESERVING_V1": 0.462667,
+            "NEXUS_SELECTOR": 0.504333,
+            "OBJECTIVE_TARGETING_V1": 0.020667,
+            "THREAT_COVERING_V1": 0.012333
+          }
+        },
+        "FIXED_PRIORITY_CASCADE_P1E": {
+          "n": 6000,
+          "coverage": 1,
+          "accuracy": 0.283667,
+          "meanRegret": 45.965333,
+          "p95Regret": 141,
+          "meanNormalizedRegret": 0.531176,
+          "catastrophicRate": 0.131,
+          "selectionAccuracy": 0.8985,
+          "selectionDistribution": {
+            "RESOURCE_PRESERVING_V1": 0.106333,
+            "NEXUS_SELECTOR": 0.794833,
+            "OBJECTIVE_TARGETING_V1": 0.0715,
+            "THREAT_COVERING_V1": 0.027333
+          }
+        },
+        "CANDIDATE_ROUTER_V2": {
+          "n": 6000,
+          "coverage": 1,
+          "accuracy": 0.291667,
+          "meanRegret": 45.349833,
+          "p95Regret": 140,
+          "meanNormalizedRegret": 0.524434,
+          "catastrophicRate": 0.13,
+          "selectionAccuracy": 0.911,
+          "selectionDistribution": {
+            "RESOURCE_PRESERVING_V1": 0.401833,
+            "NEXUS_SELECTOR": 0.52,
+            "OBJECTIVE_TARGETING_V1": 0.0665,
+            "THREAT_COVERING_V1": 0.011667
+          }
+        },
+        "RANDOM_VALID_POLICY": {
+          "n": 6000,
+          "accuracy": 0.22425,
+          "meanRegret": 48.279097,
+          "meanNormalizedRegret": 0.560009,
+          "note": "exact expectation of a uniform choice among proposing headline policies"
+        }
+      },
+      "headroom": {
+        "HEADROOM_AVAILABLE_ACCURACY": 0.137,
+        "accuracy95": [
+          0.128667,
+          0.145667
+        ],
+        "HEADROOM_AVAILABLE_REGRET": 18.877,
+        "HEADROOM_AVAILABLE_NORMALIZED_REGRET": 0.194961
+      },
+      "captured": {
+        "accuracy": -0.422141,
+        "regret": 0.242561,
+        "accuracyDenominator": 0.137,
+        "regretDenominator": 18.877
+      },
+      "capturedByGate": {
+        "accuracy": 0.187348,
+        "regret": 0.247682,
+        "accuracyDenominator": 0.137,
+        "regretDenominator": 18.877
+      },
+      "routerVsBestSingle": {
+        "n": 6000,
+        "accuracyDifference": -0.057833,
+        "accuracyCi95": [
+          -0.071333,
+          -0.044333
+        ],
+        "regretDifference": -4.578833,
+        "regretCi95": [
+          -5.8155,
+          -3.372333
+        ],
+        "normalizedRegretDifference": -0.025319,
+        "normalizedRegretCi95": [
+          -0.037059,
+          -0.013637
+        ],
+        "episodesImproved": 3027,
+        "episodesWorsened": 1634,
+        "MATERIAL": false,
+        "accuracyMaterial": false,
+        "normalizedRegretMaterial": false,
+        "HISTORICAL_RAW_RULE_MATERIAL": true,
+        "MIXED_ACCURACY_REGRET_TRADEOFF": true,
+        "statisticallyBetter": false,
+        "ACCURACY_WORSE": true,
+        "NORMALIZED_REGRET_WORSE": false
+      },
+      "routerVsResource": {
+        "n": 6000,
+        "accuracyDifference": -0.057833,
+        "accuracyCi95": [
+          -0.071333,
+          -0.044333
+        ],
+        "regretDifference": -4.578833,
+        "regretCi95": [
+          -5.8155,
+          -3.372333
+        ],
+        "normalizedRegretDifference": -0.025319,
+        "normalizedRegretCi95": [
+          -0.037346,
+          -0.012333
+        ],
+        "episodesImproved": 3027,
+        "episodesWorsened": 1634,
+        "MATERIAL": false,
+        "accuracyMaterial": false,
+        "normalizedRegretMaterial": false,
+        "HISTORICAL_RAW_RULE_MATERIAL": true,
+        "MIXED_ACCURACY_REGRET_TRADEOFF": true,
+        "statisticallyBetter": false,
+        "ACCURACY_WORSE": true,
+        "NORMALIZED_REGRET_WORSE": false
+      },
+      "routerVsCascadeHeadline": {
+        "n": 6000,
+        "accuracyDifference": -0.063667,
+        "accuracyCi95": [
+          -0.076833,
+          -0.050667
+        ],
+        "regretDifference": -3.0205,
+        "regretCi95": [
+          -4.144167,
+          -1.883833
+        ],
+        "normalizedRegretDifference": -0.012185,
+        "normalizedRegretCi95": [
+          -0.02401,
+          -0.000664
+        ],
+        "episodesImproved": 2750,
+        "episodesWorsened": 1571,
+        "MATERIAL": false,
+        "accuracyMaterial": false,
+        "normalizedRegretMaterial": false,
+        "HISTORICAL_RAW_RULE_MATERIAL": true,
+        "MIXED_ACCURACY_REGRET_TRADEOFF": true,
+        "statisticallyBetter": false,
+        "ACCURACY_WORSE": true,
+        "NORMALIZED_REGRET_WORSE": false
+      },
+      "routerVsCascadeP1E": {
+        "n": 6000,
+        "accuracyDifference": -0.078333,
+        "accuracyCi95": [
+          -0.090333,
+          -0.066333
+        ],
+        "regretDifference": -0.2145,
+        "regretCi95": [
+          -1.2515,
+          0.822333
+        ],
+        "normalizedRegretDifference": 0.011431,
+        "normalizedRegretCi95": [
+          0.000934,
+          0.021539
+        ],
+        "MATERIAL": false,
+        "accuracyMaterial": false,
+        "normalizedRegretMaterial": false,
+        "HISTORICAL_RAW_RULE_MATERIAL": false,
+        "MIXED_ACCURACY_REGRET_TRADEOFF": false,
+        "statisticallyBetter": false,
+        "ACCURACY_WORSE": true,
+        "NORMALIZED_REGRET_WORSE": true,
+        "bootstrap": "paired mulberry32 (accuracy, regret, normalized regret)"
+      },
+      "gateVsBestSingle": {
+        "n": 6000,
+        "accuracyDifference": 0.025667,
+        "accuracyCi95": [
+          0.020333,
+          0.030833
+        ],
+        "regretDifference": -4.6755,
+        "regretCi95": [
+          -5.306833,
+          -4.033833
+        ],
+        "normalizedRegretDifference": -0.038917,
+        "normalizedRegretCi95": [
+          -0.04396,
+          -0.033736
+        ],
+        "episodesImproved": 539,
+        "episodesWorsened": 123,
+        "MATERIAL": true,
+        "accuracyMaterial": true,
+        "normalizedRegretMaterial": true,
+        "HISTORICAL_RAW_RULE_MATERIAL": true,
+        "MIXED_ACCURACY_REGRET_TRADEOFF": false,
+        "statisticallyBetter": true,
+        "ACCURACY_WORSE": false,
+        "NORMALIZED_REGRET_WORSE": false
+      },
+      "cascadeHeadlineVsBestSingle": {
+        "n": 6000,
+        "accuracyDifference": 0.005833,
+        "accuracyCi95": [
+          0.000667,
+          0.011
+        ],
+        "regretDifference": -1.558333,
+        "regretCi95": [
+          -2.091,
+          -1.042333
+        ],
+        "normalizedRegretDifference": -0.013133,
+        "normalizedRegretCi95": [
+          -0.017474,
+          -0.008781
+        ],
+        "episodesImproved": 383,
+        "episodesWorsened": 171,
+        "MATERIAL": false,
+        "accuracyMaterial": false,
+        "normalizedRegretMaterial": false,
+        "HISTORICAL_RAW_RULE_MATERIAL": false,
+        "MIXED_ACCURACY_REGRET_TRADEOFF": false,
+        "statisticallyBetter": true,
+        "ACCURACY_WORSE": false,
+        "NORMALIZED_REGRET_WORSE": false
+      },
+      "abstention": {
+        "routedShare": 0.989667,
+        "abstainedShare": 0.010333,
+        "threshold": 0.4
+      },
+      "collapse": {
+        "topPolicy": "NEXUS_SELECTOR",
+        "topShare": 0.7725,
+        "optimalShareOfTopPolicy": 0.5585,
+        "POLICY_COLLAPSE": false,
+        "policiesSelectedOnAtLeast5Percent": 2
+      },
+      "historicalHarm": {
+        "falseSelections": 1865,
+        "rate": 0.310833,
+        "meanAddedRegret": 45.999464,
+        "p90": 92,
+        "p95": 113,
+        "p99": 177,
+        "worst": 339,
+        "bestSingleP95Regret": 145,
+        "acceptable": true
+      },
+      "specialistValue": {
+        "NEXUS_SELECTOR": {
+          "selectedN": 4635,
+          "improvedN": 2793,
+          "worsenedN": 1553,
+          "unchangedN": 289,
+          "correctSelectionsN": 3064,
+          "falseSelectionsN": 1571,
+          "BENEFIT_SAVED": 15.852333,
+          "FALSE_SELECTION_HARM": 12.716333,
+          "NET": 3.136,
+          "BENEFIT_SAVED_NORMALIZED": 0.16458,
+          "FALSE_SELECTION_HARM_NORMALIZED": 0.151569,
+          "NET_NORMALIZED": 0.013011,
+          "benefitExceedsHarm": true
+        },
+        "OBJECTIVE_TARGETING_V1": {
+          "selectedN": 195,
+          "improvedN": 141,
+          "worsenedN": 45,
+          "unchangedN": 9,
+          "correctSelectionsN": 132,
+          "falseSelectionsN": 63,
+          "BENEFIT_SAVED": 1.162667,
+          "FALSE_SELECTION_HARM": 0.348,
+          "NET": 0.814667,
+          "BENEFIT_SAVED_NORMALIZED": 0.01113,
+          "FALSE_SELECTION_HARM_NORMALIZED": 0.004256,
+          "NET_NORMALIZED": 0.006874,
+          "benefitExceedsHarm": true
+        },
+        "THREAT_COVERING_V1": {
+          "selectedN": 129,
+          "improvedN": 93,
+          "worsenedN": 36,
+          "unchangedN": 0,
+          "correctSelectionsN": 87,
+          "falseSelectionsN": 42,
+          "BENEFIT_SAVED": 0.953167,
+          "FALSE_SELECTION_HARM": 0.325,
+          "NET": 0.628167,
+          "BENEFIT_SAVED_NORMALIZED": 0.008412,
+          "FALSE_SELECTION_HARM_NORMALIZED": 0.002978,
+          "NET_NORMALIZED": 0.005434,
+          "benefitExceedsHarm": true
+        }
+      },
+      "specialistValueByRegime": {
+        "COSTLY_OPTIMAL": {
+          "NEXUS_SELECTOR": {
+            "selectedN": 545,
+            "improvedN": 523,
+            "worsenedN": 19,
+            "unchangedN": 3,
+            "correctSelectionsN": 516,
+            "falseSelectionsN": 29,
+            "BENEFIT_SAVED": 37.732824,
+            "FALSE_SELECTION_HARM": 0.531807,
+            "NET": 37.201018,
+            "BENEFIT_SAVED_NORMALIZED": 0.362876,
+            "FALSE_SELECTION_HARM_NORMALIZED": 0.006649,
+            "NET_NORMALIZED": 0.356227,
+            "benefitExceedsHarm": true
+          },
+          "OBJECTIVE_TARGETING_V1": {
+            "selectedN": 92,
+            "improvedN": 86,
+            "worsenedN": 4,
+            "unchangedN": 2,
+            "correctSelectionsN": 75,
+            "falseSelectionsN": 17,
+            "BENEFIT_SAVED": 7.651399,
+            "FALSE_SELECTION_HARM": 0.272265,
+            "NET": 7.379135,
+            "BENEFIT_SAVED_NORMALIZED": 0.065139,
+            "FALSE_SELECTION_HARM_NORMALIZED": 0.001712,
+            "NET_NORMALIZED": 0.063428,
+            "benefitExceedsHarm": true
+          },
+          "THREAT_COVERING_V1": {
+            "selectedN": 50,
+            "improvedN": 48,
+            "worsenedN": 2,
+            "unchangedN": 0,
+            "correctSelectionsN": 42,
+            "falseSelectionsN": 8,
+            "BENEFIT_SAVED": 4.951654,
+            "FALSE_SELECTION_HARM": 0.478372,
+            "NET": 4.473282,
+            "BENEFIT_SAVED_NORMALIZED": 0.037731,
+            "FALSE_SELECTION_HARM_NORMALIZED": 0.001948,
+            "NET_NORMALIZED": 0.035783,
+            "benefitExceedsHarm": true
+          }
+        },
+        "FREE_OPTIMAL": {
+          "NEXUS_SELECTOR": {
+            "selectedN": 4090,
+            "improvedN": 2270,
+            "worsenedN": 1534,
+            "unchangedN": 286,
+            "correctSelectionsN": 2548,
+            "falseSelectionsN": 1542,
+            "BENEFIT_SAVED": 12.553893,
+            "FALSE_SELECTION_HARM": 14.553126,
+            "NET": -1.999233,
+            "BENEFIT_SAVED_NORMALIZED": 0.134688,
+            "FALSE_SELECTION_HARM_NORMALIZED": 0.173416,
+            "NET_NORMALIZED": -0.038728,
+            "benefitExceedsHarm": false
+          },
+          "OBJECTIVE_TARGETING_V1": {
+            "selectedN": 103,
+            "improvedN": 55,
+            "worsenedN": 41,
+            "unchangedN": 7,
+            "correctSelectionsN": 57,
+            "falseSelectionsN": 46,
+            "BENEFIT_SAVED": 0.184503,
+            "FALSE_SELECTION_HARM": 0.359417,
+            "NET": -0.174914,
+            "BENEFIT_SAVED_NORMALIZED": 0.002988,
+            "FALSE_SELECTION_HARM_NORMALIZED": 0.00464,
+            "NET_NORMALIZED": -0.001652,
+            "benefitExceedsHarm": false
+          },
+          "THREAT_COVERING_V1": {
+            "selectedN": 79,
+            "improvedN": 45,
+            "worsenedN": 34,
+            "unchangedN": 0,
+            "correctSelectionsN": 45,
+            "falseSelectionsN": 34,
+            "BENEFIT_SAVED": 0.350403,
+            "FALSE_SELECTION_HARM": 0.30188,
+            "NET": 0.048523,
+            "BENEFIT_SAVED_NORMALIZED": 0.003993,
+            "FALSE_SELECTION_HARM_NORMALIZED": 0.003134,
+            "NET_NORMALIZED": 0.000859,
+            "benefitExceedsHarm": true
+          }
+        }
+      },
+      "policyByRegime": {
+        "COSTLY_OPTIMAL": {
+          "n": 786,
+          "share": 0.131,
+          "strategies": {
+            "RESOURCE_PRESERVING_V1": {
+              "coverage": 1,
+              "accuracy": 0,
+              "meanRegret": 65.648855,
+              "meanNormalizedRegret": 0.611324
+            },
+            "NEXUS_SELECTOR": {
+              "coverage": 0.889313,
+              "accuracy": 0.585122,
+              "meanRegret": 12.281831,
+              "meanNormalizedRegret": 0.108657
+            },
+            "OBJECTIVE_TARGETING_V1": {
+              "coverage": 0.197201,
+              "accuracy": 0.729032,
+              "meanRegret": 16.032258,
+              "meanNormalizedRegret": 0.100436
+            },
+            "THREAT_COVERING_V1": {
+              "coverage": 0.096692,
+              "accuracy": 0.631579,
+              "meanRegret": 23.881579,
+              "meanNormalizedRegret": 0.139184
+            },
+            "ROUTER_SYMMETRIC": {
+              "coverage": 1,
+              "accuracy": 0.589059,
+              "meanRegret": 16.59542,
+              "meanNormalizedRegret": 0.155887
+            },
+            "PERFECT_POLICY_SELECTOR": {
+              "coverage": 1,
+              "accuracy": 0.641221,
+              "meanRegret": 13.192112,
+              "meanNormalizedRegret": 0.120507
+            }
+          }
+        },
+        "FREE_OPTIMAL": {
+          "n": 5214,
+          "share": 0.869,
+          "strategies": {
+            "RESOURCE_PRESERVING_V1": {
+              "coverage": 1,
+              "accuracy": 0.302839,
+              "meanRegret": 48.02033,
+              "meanNormalizedRegret": 0.561382
+            },
+            "NEXUS_SELECTOR": {
+              "coverage": 0.884158,
+              "accuracy": 0.106074,
+              "meanRegret": 51.65705,
+              "meanNormalizedRegret": 0.620194
+            },
+            "OBJECTIVE_TARGETING_V1": {
+              "coverage": 0.06425,
+              "accuracy": 0.041791,
+              "meanRegret": 62.579104,
+              "meanNormalizedRegret": 0.648025
+            },
+            "THREAT_COVERING_V1": {
+              "coverage": 0.016878,
+              "accuracy": 0,
+              "meanRegret": 40.079545,
+              "meanNormalizedRegret": 0.454986
+            },
+            "ROUTER_SYMMETRIC": {
+              "coverage": 1,
+              "accuracy": 0.147488,
+              "meanRegret": 50.145953,
+              "meanNormalizedRegret": 0.600903
+            },
+            "PERFECT_POLICY_SELECTOR": {
+              "coverage": 1,
+              "accuracy": 0.363828,
+              "meanRegret": 34.205409,
+              "meanNormalizedRegret": 0.411021
+            }
+          }
+        }
+      },
+      "specialistValueGate": {
+        "NEXUS_SELECTOR": {
+          "selectedN": 655,
+          "improvedN": 520,
+          "worsenedN": 121,
+          "unchangedN": 14,
+          "BENEFIT_SAVED": 5.4505,
+          "FALSE_SELECTION_HARM": 0.885667,
+          "NET": 4.564833,
+          "BENEFIT_SAVED_NORMALIZED": 0.046786,
+          "FALSE_SELECTION_HARM_NORMALIZED": 0.008954,
+          "NET_NORMALIZED": 0.037833,
+          "benefitExceedsHarm": true
+        },
+        "OBJECTIVE_TARGETING_V1": {
+          "selectedN": 21,
+          "improvedN": 19,
+          "worsenedN": 2,
+          "unchangedN": 0,
+          "BENEFIT_SAVED": 0.132833,
+          "FALSE_SELECTION_HARM": 0.022167,
+          "NET": 0.110667,
+          "BENEFIT_SAVED_NORMALIZED": 0.001393,
+          "FALSE_SELECTION_HARM_NORMALIZED": 0.000309,
+          "NET_NORMALIZED": 0.001084,
+          "benefitExceedsHarm": true
+        },
+        "THREAT_COVERING_V1": {
+          "selectedN": 0,
+          "improvedN": 0,
+          "worsenedN": 0,
+          "unchangedN": 0,
+          "BENEFIT_SAVED": 0,
+          "FALSE_SELECTION_HARM": 0,
+          "NET": 0,
+          "BENEFIT_SAVED_NORMALIZED": 0,
+          "FALSE_SELECTION_HARM_NORMALIZED": 0,
+          "NET_NORMALIZED": 0,
+          "benefitExceedsHarm": false
+        }
+      },
+      "confusionRecall": {
+        "RESOURCE_PRESERVING_V1": {
+          "uniquelyBestN": 2447,
+          "selectedWhenUniquelyBest": 0.335104,
+          "inBestSetN": 2776,
+          "selectedWhenInBestSet": 0.306916
+        },
+        "NEXUS_SELECTOR": {
+          "uniquelyBestN": 2883,
+          "selectedWhenUniquelyBest": 0.937912,
+          "inBestSetN": 3351,
+          "selectedWhenInBestSet": 0.914354
+        },
+        "OBJECTIVE_TARGETING_V1": {
+          "uniquelyBestN": 101,
+          "selectedWhenUniquelyBest": 0.752475,
+          "inBestSetN": 302,
+          "selectedWhenInBestSet": 0.437086
+        },
+        "THREAT_COVERING_V1": {
+          "uniquelyBestN": 74,
+          "selectedWhenUniquelyBest": 0.905405,
+          "inBestSetN": 100,
+          "selectedWhenInBestSet": 0.87
+        }
+      },
+      "regimePrediction": {
+        "COSTLY_ACTION_OPTIMAL": {
+          "status": "EVALUATED",
+          "n": 6000,
+          "positives": 786,
+          "baseRate": 0.131,
+          "AUROC": 0.863193,
+          "AUPRC": 0.64832,
+          "BRIER": 0.06885,
+          "BRIER_SKILL": 0.397475,
+          "ECE": 0.013437,
+          "atCalThreshold": {
+            "threshold": 0.42,
+            "predictedPositive": 751,
+            "precision": 0.660453,
+            "recall": 0.631043,
+            "f1": 0.645413
+          },
+          "identifiability": "REGIME_IDENTIFIABLE"
+        },
+        "FREE_ACTION_OPTIMAL": {
+          "status": "EVALUATED",
+          "n": 6000,
+          "positives": 5214,
+          "baseRate": 0.869,
+          "AUROC": 0.863193,
+          "AUPRC": 0.962537,
+          "BRIER": 0.06885,
+          "BRIER_SKILL": 0.397475,
+          "ECE": 0.013437,
+          "atCalThreshold": {
+            "threshold": 0.47,
+            "predictedPositive": 5335,
+            "precision": 0.939269,
+            "recall": 0.961066,
+            "f1": 0.950043
+          },
+          "identifiability": "REGIME_IDENTIFIABLE"
+        },
+        "HORIZON_DEPENDENT": {
+          "status": "EVALUATED",
+          "n": 6000,
+          "positives": 4718,
+          "baseRate": 0.786333,
+          "AUROC": 0.758826,
+          "AUPRC": 0.911896,
+          "BRIER": 0.145296,
+          "BRIER_SKILL": 0.135212,
+          "ECE": 0.04002,
+          "atCalThreshold": {
+            "threshold": 0.63,
+            "predictedPositive": 5152,
+            "precision": 0.842585,
+            "recall": 0.920093,
+            "f1": 0.879635
+          },
+          "identifiability": "REGIME_IDENTIFIABLE"
+        },
+        "NEXUS_V1_BEATS_RESOURCE": {
+          "status": "EVALUATED",
+          "n": 5309,
+          "positives": 3169,
+          "baseRate": 0.596911,
+          "AUROC": 0.595763,
+          "AUPRC": 0.697514,
+          "BRIER": 0.232816,
+          "BRIER_SKILL": 0.032597,
+          "ECE": 0.024806,
+          "atCalThreshold": {
+            "threshold": 0.37,
+            "predictedPositive": 5282,
+            "precision": 0.598448,
+            "recall": 0.997476,
+            "f1": 0.748077
+          },
+          "identifiability": "NOT_IDENTIFIABLE"
+        },
+        "OBJECTIVE_APPLICABLE": {
+          "status": "EVALUATED",
+          "n": 490,
+          "positives": 303,
+          "baseRate": 0.618367,
+          "AUROC": 0.72932,
+          "AUPRC": 0.80295,
+          "BRIER": 0.206336,
+          "BRIER_SKILL": 0.134523,
+          "ECE": 0.070994,
+          "atCalThreshold": {
+            "threshold": 0.33,
+            "predictedPositive": 425,
+            "precision": 0.668235,
+            "recall": 0.937294,
+            "f1": 0.78022
+          },
+          "identifiability": "WEAKLY_IDENTIFIABLE"
+        },
+        "THREAT_APPLICABLE": {
+          "status": "INSUFFICIENT_EVIDENCE"
+        }
+      }
+    },
+    "FRESH_OOD": {
+      "n": 6000,
+      "strategies": {
+        "ALWAYS_RESOURCE": {
+          "n": 6000,
+          "coverage": 1,
+          "accuracy": 0.257667,
+          "meanRegret": 86.503167,
+          "p95Regret": 193,
+          "meanNormalizedRegret": 0.636703,
+          "catastrophicRate": 0.404333,
+          "selectionAccuracy": 0.4335,
+          "selectionDistribution": {
+            "RESOURCE_PRESERVING_V1": 1
+          }
+        },
+        "BEST_SINGLE_POLICY": {
+          "n": 6000,
+          "coverage": 1,
+          "accuracy": 0.257667,
+          "meanRegret": 86.503167,
+          "p95Regret": 193,
+          "meanNormalizedRegret": 0.636703,
+          "catastrophicRate": 0.404333,
+          "selectionAccuracy": 0.4335,
+          "selectionDistribution": {
+            "RESOURCE_PRESERVING_V1": 1
+          }
+        },
+        "FIXED_PRIORITY_CASCADE_HEADLINE": {
+          "n": 6000,
+          "coverage": 1,
+          "accuracy": 0.254667,
+          "meanRegret": 86.5725,
+          "p95Regret": 193,
+          "meanNormalizedRegret": 0.636172,
+          "catastrophicRate": 0.403833,
+          "selectionAccuracy": 0.438167,
+          "selectionDistribution": {
+            "RESOURCE_PRESERVING_V1": 0.98,
+            "OBJECTIVE_TARGETING_V1": 0.015333,
+            "THREAT_COVERING_V1": 0.004667
+          }
+        },
+        "HISTORICAL_3F6T_ROUTER_FROZEN": {
+          "n": 6000,
+          "coverage": 1,
+          "accuracy": 0.195833,
+          "meanRegret": 82.159167,
+          "p95Regret": 184,
+          "meanNormalizedRegret": 0.616315,
+          "catastrophicRate": 0.342,
+          "selectionAccuracy": 0.700167,
+          "selectionDistribution": {
+            "NEXUS_SELECTOR": 0.6955,
+            "RESOURCE_PRESERVING_V1": 0.295667,
+            "OBJECTIVE_TARGETING_V1": 0.005833,
+            "THREAT_COVERING_V1": 0.003
+          }
+        },
+        "ROUTER_SYMMETRIC": {
+          "n": 6000,
+          "coverage": 1,
+          "accuracy": 0.168667,
+          "meanRegret": 82.431,
+          "p95Regret": 178,
+          "meanNormalizedRegret": 0.622304,
+          "catastrophicRate": 0.3185,
+          "selectionAccuracy": 0.755,
+          "selectionDistribution": {
+            "NEXUS_SELECTOR": 0.840333,
+            "RESOURCE_PRESERVING_V1": 0.154167,
+            "OBJECTIVE_TARGETING_V1": 0.002,
+            "THREAT_COVERING_V1": 0.0035
+          }
+        },
+        "ROUTER_SYMMETRIC_FULL_COVERAGE": {
+          "n": 6000,
+          "coverage": 1,
+          "accuracy": 0.1685,
+          "meanRegret": 82.469833,
+          "p95Regret": 178,
+          "meanNormalizedRegret": 0.622468,
+          "catastrophicRate": 0.318667,
+          "selectionAccuracy": 0.754833,
+          "selectionDistribution": {
+            "NEXUS_SELECTOR": 0.8405,
+            "RESOURCE_PRESERVING_V1": 0.154,
+            "OBJECTIVE_TARGETING_V1": 0.002,
+            "THREAT_COVERING_V1": 0.0035
+          }
+        },
+        "REGIME_GATED_SWITCH": {
+          "n": 6000,
+          "coverage": 1,
+          "accuracy": 0.263333,
+          "meanRegret": 84.702167,
+          "p95Regret": 193,
+          "meanNormalizedRegret": 0.622547,
+          "catastrophicRate": 0.392833,
+          "selectionAccuracy": 0.461333,
+          "selectionDistribution": {
+            "RESOURCE_PRESERVING_V1": 0.943,
+            "NEXUS_SELECTOR": 0.056833,
+            "OBJECTIVE_TARGETING_V1": 0.000167
+          }
+        },
+        "COSTLY_ORACLE_SWITCH": {
+          "n": 6000,
+          "coverage": 1,
+          "accuracy": 0.281667,
+          "meanRegret": 83.896667,
+          "p95Regret": 193,
+          "meanNormalizedRegret": 0.617321,
+          "catastrophicRate": 0.392,
+          "selectionAccuracy": 0.466833,
+          "selectionDistribution": {
+            "RESOURCE_PRESERVING_V1": 0.964167,
+            "NEXUS_SELECTOR": 0.035833
+          }
+        },
+        "PERFECT_POLICY_SELECTOR": {
+          "n": 6000,
+          "coverage": 1,
+          "accuracy": 0.359333,
+          "meanRegret": 62.035833,
+          "p95Regret": 176,
+          "meanNormalizedRegret": 0.465836,
+          "catastrophicRate": 0.241167,
+          "selectionAccuracy": 1,
+          "selectionDistribution": {
+            "NEXUS_SELECTOR": 0.562,
+            "RESOURCE_PRESERVING_V1": 0.4335,
+            "OBJECTIVE_TARGETING_V1": 0.002667,
+            "THREAT_COVERING_V1": 0.001833
+          }
+        },
+        "FIXED_PRIORITY_CASCADE_P1E": {
+          "n": 6000,
+          "coverage": 1,
+          "accuracy": 0.262,
+          "meanRegret": 83.8625,
+          "p95Regret": 193,
+          "meanNormalizedRegret": 0.619202,
+          "catastrophicRate": 0.3845,
+          "selectionAccuracy": 0.94,
+          "selectionDistribution": {
+            "NEXUS_SELECTOR": 0.831833,
+            "RESOURCE_PRESERVING_V1": 0.148167,
+            "OBJECTIVE_TARGETING_V1": 0.015333,
+            "THREAT_COVERING_V1": 0.004667
+          }
+        },
+        "CANDIDATE_ROUTER_V2": {
+          "n": 6000,
+          "coverage": 1,
+          "accuracy": 0.2635,
+          "meanRegret": 83.928167,
+          "p95Regret": 193,
+          "meanNormalizedRegret": 0.618867,
+          "catastrophicRate": 0.3855,
+          "selectionAccuracy": 0.939667,
+          "selectionDistribution": {
+            "NEXUS_SELECTOR": 0.738833,
+            "RESOURCE_PRESERVING_V1": 0.244167,
+            "OBJECTIVE_TARGETING_V1": 0.0145,
+            "THREAT_COVERING_V1": 0.0025
+          }
+        },
+        "RANDOM_VALID_POLICY": {
+          "n": 6000,
+          "accuracy": 0.211847,
+          "meanRegret": 84.578333,
+          "meanNormalizedRegret": 0.630082,
+          "note": "exact expectation of a uniform choice among proposing headline policies"
+        }
+      },
+      "headroom": {
+        "HEADROOM_AVAILABLE_ACCURACY": 0.101667,
+        "accuracy95": [
+          0.094,
+          0.109167
+        ],
+        "HEADROOM_AVAILABLE_REGRET": 24.467333,
+        "HEADROOM_AVAILABLE_NORMALIZED_REGRET": 0.170868
+      },
+      "captured": {
+        "accuracy": -0.87541,
+        "regret": 0.166433,
+        "accuracyDenominator": 0.101667,
+        "regretDenominator": 24.467333
+      },
+      "capturedByGate": {
+        "accuracy": 0.055738,
+        "regret": 0.073608,
+        "accuracyDenominator": 0.101667,
+        "regretDenominator": 24.467333
+      },
+      "routerVsBestSingle": {
+        "n": 6000,
+        "accuracyDifference": -0.089,
+        "accuracyCi95": [
+          -0.102167,
+          -0.0755
+        ],
+        "regretDifference": -4.072167,
+        "regretCi95": [
+          -5.765333,
+          -2.261333
+        ],
+        "normalizedRegretDifference": -0.0144,
+        "normalizedRegretCi95": [
+          -0.026555,
+          -0.002509
+        ],
+        "episodesImproved": 3381,
+        "episodesWorsened": 1446,
+        "MATERIAL": false,
+        "accuracyMaterial": false,
+        "normalizedRegretMaterial": false,
+        "HISTORICAL_RAW_RULE_MATERIAL": true,
+        "MIXED_ACCURACY_REGRET_TRADEOFF": true,
+        "statisticallyBetter": false,
+        "ACCURACY_WORSE": true,
+        "NORMALIZED_REGRET_WORSE": false
+      },
+      "routerVsResource": {
+        "n": 6000,
+        "accuracyDifference": -0.089,
+        "accuracyCi95": [
+          -0.102167,
+          -0.0755
+        ],
+        "regretDifference": -4.072167,
+        "regretCi95": [
+          -5.765333,
+          -2.261333
+        ],
+        "normalizedRegretDifference": -0.0144,
+        "normalizedRegretCi95": [
+          -0.02591,
+          -0.003083
+        ],
+        "episodesImproved": 3381,
+        "episodesWorsened": 1446,
+        "MATERIAL": false,
+        "accuracyMaterial": false,
+        "normalizedRegretMaterial": false,
+        "HISTORICAL_RAW_RULE_MATERIAL": true,
+        "MIXED_ACCURACY_REGRET_TRADEOFF": true,
+        "statisticallyBetter": false,
+        "ACCURACY_WORSE": true,
+        "NORMALIZED_REGRET_WORSE": false
+      },
+      "routerVsCascadeHeadline": {
+        "n": 6000,
+        "accuracyDifference": -0.086,
+        "accuracyCi95": [
+          -0.099167,
+          -0.073
+        ],
+        "regretDifference": -4.1415,
+        "regretCi95": [
+          -5.793333,
+          -2.3325
+        ],
+        "normalizedRegretDifference": -0.013868,
+        "normalizedRegretCi95": [
+          -0.024665,
+          -0.002629
+        ],
+        "episodesImproved": 3317,
+        "episodesWorsened": 1421,
+        "MATERIAL": false,
+        "accuracyMaterial": false,
+        "normalizedRegretMaterial": false,
+        "HISTORICAL_RAW_RULE_MATERIAL": true,
+        "MIXED_ACCURACY_REGRET_TRADEOFF": true,
+        "statisticallyBetter": false,
+        "ACCURACY_WORSE": true,
+        "NORMALIZED_REGRET_WORSE": false
+      },
+      "routerVsCascadeP1E": {
+        "n": 6000,
+        "accuracyDifference": -0.093333,
+        "accuracyCi95": [
+          -0.1065,
+          -0.081167
+        ],
+        "regretDifference": -1.4315,
+        "regretCi95": [
+          -3.111167,
+          0.364833
+        ],
+        "normalizedRegretDifference": 0.003102,
+        "normalizedRegretCi95": [
+          -0.00763,
+          0.014636
+        ],
+        "MATERIAL": false,
+        "accuracyMaterial": false,
+        "normalizedRegretMaterial": false,
+        "HISTORICAL_RAW_RULE_MATERIAL": false,
+        "MIXED_ACCURACY_REGRET_TRADEOFF": false,
+        "statisticallyBetter": false,
+        "ACCURACY_WORSE": true,
+        "NORMALIZED_REGRET_WORSE": false,
+        "bootstrap": "paired mulberry32 (accuracy, regret, normalized regret)"
+      },
+      "gateVsBestSingle": {
+        "n": 6000,
+        "accuracyDifference": 0.005667,
+        "accuracyCi95": [
+          0.001667,
+          0.009333
+        ],
+        "regretDifference": -1.801,
+        "regretCi95": [
+          -2.282333,
+          -1.251333
+        ],
+        "normalizedRegretDifference": -0.014157,
+        "normalizedRegretCi95": [
+          -0.017364,
+          -0.010828
+        ],
+        "episodesImproved": 256,
+        "episodesWorsened": 81,
+        "MATERIAL": false,
+        "accuracyMaterial": false,
+        "normalizedRegretMaterial": false,
+        "HISTORICAL_RAW_RULE_MATERIAL": false,
+        "MIXED_ACCURACY_REGRET_TRADEOFF": false,
+        "statisticallyBetter": true,
+        "ACCURACY_WORSE": false,
+        "NORMALIZED_REGRET_WORSE": false
+      },
+      "cascadeHeadlineVsBestSingle": {
+        "n": 6000,
+        "accuracyDifference": -0.003,
+        "accuracyCi95": [
+          -0.005,
+          -0.001
+        ],
+        "regretDifference": 0.069333,
+        "regretCi95": [
+          -0.201167,
+          0.333833
+        ],
+        "normalizedRegretDifference": -0.000532,
+        "normalizedRegretCi95": [
+          -0.00234,
+          0.001215
+        ],
+        "episodesImproved": 71,
+        "episodesWorsened": 40,
+        "MATERIAL": false,
+        "accuracyMaterial": false,
+        "normalizedRegretMaterial": false,
+        "HISTORICAL_RAW_RULE_MATERIAL": false,
+        "MIXED_ACCURACY_REGRET_TRADEOFF": false,
+        "statisticallyBetter": false,
+        "ACCURACY_WORSE": true,
+        "NORMALIZED_REGRET_WORSE": false
+      },
+      "abstention": {
+        "routedShare": 0.999833,
+        "abstainedShare": 0.000167,
+        "threshold": 0.4
+      },
+      "collapse": {
+        "topPolicy": "NEXUS_SELECTOR",
+        "topShare": 0.840333,
+        "optimalShareOfTopPolicy": 0.6035,
+        "POLICY_COLLAPSE": false,
+        "policiesSelectedOnAtLeast5Percent": 2
+      },
+      "historicalHarm": {
+        "falseSelections": 1470,
+        "rate": 0.245,
+        "meanAddedRegret": 83.245578,
+        "p90": 162,
+        "p95": 177,
+        "p99": 224,
+        "worst": 383,
+        "bestSingleP95Regret": 193,
+        "acceptable": true
+      },
+      "specialistValue": {
+        "NEXUS_SELECTOR": {
+          "selectedN": 5042,
+          "improvedN": 3358,
+          "worsenedN": 1437,
+          "unchangedN": 247,
+          "correctSelectionsN": 3599,
+          "falseSelectionsN": 1443,
+          "BENEFIT_SAVED": 24.149833,
+          "FALSE_SELECTION_HARM": 20.187,
+          "NET": 3.962833,
+          "BENEFIT_SAVED_NORMALIZED": 0.16845,
+          "FALSE_SELECTION_HARM_NORMALIZED": 0.154947,
+          "NET_NORMALIZED": 0.013503,
+          "benefitExceedsHarm": true
+        },
+        "OBJECTIVE_TARGETING_V1": {
+          "selectedN": 12,
+          "improvedN": 8,
+          "worsenedN": 3,
+          "unchangedN": 1,
+          "correctSelectionsN": 9,
+          "falseSelectionsN": 3,
+          "BENEFIT_SAVED": 0.038333,
+          "FALSE_SELECTION_HARM": 0.021833,
+          "NET": 0.0165,
+          "BENEFIT_SAVED_NORMALIZED": 0.000475,
+          "FALSE_SELECTION_HARM_NORMALIZED": 0.000245,
+          "NET_NORMALIZED": 0.00023,
+          "benefitExceedsHarm": true
+        },
+        "THREAT_COVERING_V1": {
+          "selectedN": 21,
+          "improvedN": 15,
+          "worsenedN": 6,
+          "unchangedN": 0,
+          "correctSelectionsN": 15,
+          "falseSelectionsN": 6,
+          "BENEFIT_SAVED": 0.177333,
+          "FALSE_SELECTION_HARM": 0.0845,
+          "NET": 0.092833,
+          "BENEFIT_SAVED_NORMALIZED": 0.001153,
+          "FALSE_SELECTION_HARM_NORMALIZED": 0.000487,
+          "NET_NORMALIZED": 0.000667,
+          "benefitExceedsHarm": true
+        }
+      },
+      "specialistValueByRegime": {
+        "COSTLY_OPTIMAL": {
+          "NEXUS_SELECTOR": {
+            "selectedN": 210,
+            "improvedN": 205,
+            "worsenedN": 4,
+            "unchangedN": 1,
+            "correctSelectionsN": 204,
+            "falseSelectionsN": 6,
+            "BENEFIT_SAVED": 60.175781,
+            "FALSE_SELECTION_HARM": 0.335938,
+            "NET": 59.839844,
+            "BENEFIT_SAVED_NORMALIZED": 0.450514,
+            "FALSE_SELECTION_HARM_NORMALIZED": 0.002498,
+            "NET_NORMALIZED": 0.448016,
+            "benefitExceedsHarm": true
+          },
+          "OBJECTIVE_TARGETING_V1": {
+            "selectedN": 0,
+            "improvedN": 0,
+            "worsenedN": 0,
+            "unchangedN": 0,
+            "correctSelectionsN": 0,
+            "falseSelectionsN": 0,
+            "BENEFIT_SAVED": 0,
+            "FALSE_SELECTION_HARM": 0,
+            "NET": 0,
+            "BENEFIT_SAVED_NORMALIZED": 0,
+            "FALSE_SELECTION_HARM_NORMALIZED": 0,
+            "NET_NORMALIZED": 0,
+            "benefitExceedsHarm": false
+          },
+          "THREAT_COVERING_V1": {
+            "selectedN": 4,
+            "improvedN": 4,
+            "worsenedN": 0,
+            "unchangedN": 0,
+            "correctSelectionsN": 4,
+            "falseSelectionsN": 0,
+            "BENEFIT_SAVED": 2.257813,
+            "FALSE_SELECTION_HARM": 0,
+            "NET": 2.257813,
+            "BENEFIT_SAVED_NORMALIZED": 0.010597,
+            "FALSE_SELECTION_HARM_NORMALIZED": 0,
+            "NET_NORMALIZED": 0.010597,
+            "benefitExceedsHarm": true
+          }
+        },
+        "FREE_OPTIMAL": {
+          "NEXUS_SELECTOR": {
+            "selectedN": 4832,
+            "improvedN": 3153,
+            "worsenedN": 1433,
+            "unchangedN": 246,
+            "correctSelectionsN": 3395,
+            "falseSelectionsN": 1437,
+            "BENEFIT_SAVED": 22.54422,
+            "FALSE_SELECTION_HARM": 21.071727,
+            "NET": 1.472493,
+            "BENEFIT_SAVED_NORMALIZED": 0.155879,
+            "FALSE_SELECTION_HARM_NORMALIZED": 0.161741,
+            "NET_NORMALIZED": -0.005863,
+            "benefitExceedsHarm": true
+          },
+          "OBJECTIVE_TARGETING_V1": {
+            "selectedN": 12,
+            "improvedN": 8,
+            "worsenedN": 3,
+            "unchangedN": 1,
+            "correctSelectionsN": 9,
+            "falseSelectionsN": 3,
+            "BENEFIT_SAVED": 0.040042,
+            "FALSE_SELECTION_HARM": 0.022806,
+            "NET": 0.017235,
+            "BENEFIT_SAVED_NORMALIZED": 0.000496,
+            "FALSE_SELECTION_HARM_NORMALIZED": 0.000256,
+            "NET_NORMALIZED": 0.00024,
+            "benefitExceedsHarm": true
+          },
+          "THREAT_COVERING_V1": {
+            "selectedN": 17,
+            "improvedN": 11,
+            "worsenedN": 6,
+            "unchangedN": 0,
+            "correctSelectionsN": 11,
+            "falseSelectionsN": 6,
+            "BENEFIT_SAVED": 0.08461,
+            "FALSE_SELECTION_HARM": 0.088266,
+            "NET": -0.003656,
+            "BENEFIT_SAVED_NORMALIZED": 0.000733,
+            "FALSE_SELECTION_HARM_NORMALIZED": 0.000509,
+            "NET_NORMALIZED": 0.000224,
+            "benefitExceedsHarm": false
+          }
+        }
+      },
+      "policyByRegime": {
+        "COSTLY_OPTIMAL": {
+          "n": 256,
+          "share": 0.042667,
+          "strategies": {
+            "RESOURCE_PRESERVING_V1": {
+              "coverage": 1,
+              "accuracy": 0,
+              "meanRegret": 81.925781,
+              "meanNormalizedRegret": 0.613485
+            },
+            "NEXUS_SELECTOR": {
+              "coverage": 0.839844,
+              "accuracy": 0.669767,
+              "meanRegret": 7.804651,
+              "meanNormalizedRegret": 0.057693
+            },
+            "OBJECTIVE_TARGETING_V1": {
+              "coverage": 0.039063,
+              "accuracy": 1,
+              "meanRegret": 0,
+              "meanNormalizedRegret": 0
+            },
+            "THREAT_COVERING_V1": {
+              "coverage": 0.019531,
+              "accuracy": 0.8,
+              "meanRegret": 9.6,
+              "meanNormalizedRegret": 0.08
+            },
+            "ROUTER_SYMMETRIC": {
+              "coverage": 1,
+              "accuracy": 0.574219,
+              "meanRegret": 19.828125,
+              "meanNormalizedRegret": 0.154872
+            },
+            "PERFECT_POLICY_SELECTOR": {
+              "coverage": 1,
+              "accuracy": 0.585938,
+              "meanRegret": 19.273438,
+              "meanNormalizedRegret": 0.149497
+            }
+          }
+        },
+        "FREE_OPTIMAL": {
+          "n": 5744,
+          "share": 0.957333,
+          "strategies": {
+            "RESOURCE_PRESERVING_V1": {
+              "coverage": 1,
+              "accuracy": 0.26915,
+              "meanRegret": 86.707173,
+              "meanNormalizedRegret": 0.637738
+            },
+            "NEXUS_SELECTOR": {
+              "coverage": 0.849756,
+              "accuracy": 0.127023,
+              "meanRegret": 86.252612,
+              "meanNormalizedRegret": 0.646822
+            },
+            "OBJECTIVE_TARGETING_V1": {
+              "coverage": 0.014972,
+              "accuracy": 0.023256,
+              "meanRegret": 107.767442,
+              "meanNormalizedRegret": 0.672998
+            },
+            "THREAT_COVERING_V1": {
+              "coverage": 0.004004,
+              "accuracy": 0,
+              "meanRegret": 73.565217,
+              "meanNormalizedRegret": 0.529325
+            },
+            "ROUTER_SYMMETRIC": {
+              "coverage": 1,
+              "accuracy": 0.150592,
+              "meanRegret": 85.2211,
+              "meanNormalizedRegret": 0.643136
+            },
+            "PERFECT_POLICY_SELECTOR": {
+              "coverage": 1,
+              "accuracy": 0.349234,
+              "meanRegret": 63.941678,
+              "meanNormalizedRegret": 0.479935
+            }
+          }
+        }
+      },
+      "specialistValueGate": {
+        "NEXUS_SELECTOR": {
+          "selectedN": 341,
+          "improvedN": 256,
+          "worsenedN": 81,
+          "unchangedN": 4,
+          "BENEFIT_SAVED": 2.7335,
+          "FALSE_SELECTION_HARM": 0.9325,
+          "NET": 1.801,
+          "BENEFIT_SAVED_NORMALIZED": 0.020376,
+          "FALSE_SELECTION_HARM_NORMALIZED": 0.006219,
+          "NET_NORMALIZED": 0.014157,
+          "benefitExceedsHarm": true
+        },
+        "OBJECTIVE_TARGETING_V1": {
+          "selectedN": 1,
+          "improvedN": 0,
+          "worsenedN": 0,
+          "unchangedN": 1,
+          "BENEFIT_SAVED": 0,
+          "FALSE_SELECTION_HARM": 0,
+          "NET": 0,
+          "BENEFIT_SAVED_NORMALIZED": 0,
+          "FALSE_SELECTION_HARM_NORMALIZED": 0,
+          "NET_NORMALIZED": 0,
+          "benefitExceedsHarm": false
+        },
+        "THREAT_COVERING_V1": {
+          "selectedN": 0,
+          "improvedN": 0,
+          "worsenedN": 0,
+          "unchangedN": 0,
+          "BENEFIT_SAVED": 0,
+          "FALSE_SELECTION_HARM": 0,
+          "NET": 0,
+          "BENEFIT_SAVED_NORMALIZED": 0,
+          "FALSE_SELECTION_HARM_NORMALIZED": 0,
+          "NET_NORMALIZED": 0,
+          "benefitExceedsHarm": false
+        }
+      },
+      "confusionRecall": {
+        "RESOURCE_PRESERVING_V1": {
+          "uniquelyBestN": 2349,
+          "selectedWhenUniquelyBest": 0.384419,
+          "inBestSetN": 2601,
+          "selectedWhenInBestSet": 0.348712
+        },
+        "NEXUS_SELECTOR": {
+          "uniquelyBestN": 3331,
+          "selectedWhenUniquelyBest": 0.994896,
+          "inBestSetN": 3621,
+          "selectedWhenInBestSet": 0.993924
+        },
+        "OBJECTIVE_TARGETING_V1": {
+          "uniquelyBestN": 14,
+          "selectedWhenUniquelyBest": 0.571429,
+          "inBestSetN": 62,
+          "selectedWhenInBestSet": 0.145161
+        },
+        "THREAT_COVERING_V1": {
+          "uniquelyBestN": 11,
+          "selectedWhenUniquelyBest": 0.909091,
+          "inBestSetN": 18,
+          "selectedWhenInBestSet": 0.833333
+        }
+      },
+      "regimePrediction": {
+        "COSTLY_ACTION_OPTIMAL": {
+          "status": "EVALUATED",
+          "n": 6000,
+          "positives": 256,
+          "baseRate": 0.042667,
+          "AUROC": 0.921345,
+          "AUPRC": 0.421866,
+          "BRIER": 0.035823,
+          "BRIER_SKILL": 0.320841,
+          "ECE": 0.051818,
+          "atCalThreshold": {
+            "threshold": 0.42,
+            "predictedPositive": 411,
+            "precision": 0.428224,
+            "recall": 0.6875,
+            "f1": 0.527736
+          },
+          "identifiability": "REGIME_IDENTIFIABLE"
+        },
+        "FREE_ACTION_OPTIMAL": {
+          "status": "EVALUATED",
+          "n": 6000,
+          "positives": 5744,
+          "baseRate": 0.957333,
+          "AUROC": 0.921345,
+          "AUPRC": 0.994627,
+          "BRIER": 0.035823,
+          "BRIER_SKILL": 0.320841,
+          "ECE": 0.051818,
+          "atCalThreshold": {
+            "threshold": 0.47,
+            "predictedPositive": 5680,
+            "precision": 0.979754,
+            "recall": 0.968837,
+            "f1": 0.974265
+          },
+          "identifiability": "REGIME_IDENTIFIABLE"
+        },
+        "HORIZON_DEPENDENT": {
+          "status": "EVALUATED",
+          "n": 6000,
+          "positives": 5005,
+          "baseRate": 0.834167,
+          "AUROC": 0.661155,
+          "AUPRC": 0.898338,
+          "BRIER": 0.13466,
+          "BRIER_SKILL": 0.042604,
+          "ECE": 0.039999,
+          "atCalThreshold": {
+            "threshold": 0.63,
+            "predictedPositive": 5561,
+            "precision": 0.853264,
+            "recall": 0.948052,
+            "f1": 0.898164
+          },
+          "identifiability": "WEAKLY_IDENTIFIABLE"
+        },
+        "NEXUS_V1_BEATS_RESOURCE": {
+          "status": "EVALUATED",
+          "n": 5096,
+          "positives": 3390,
+          "baseRate": 0.665228,
+          "AUROC": 0.531605,
+          "AUPRC": 0.699951,
+          "BRIER": 0.230565,
+          "BRIER_SKILL": -0.009446,
+          "ECE": 0.079549,
+          "atCalThreshold": {
+            "threshold": 0.37,
+            "predictedPositive": 5086,
+            "precision": 0.665552,
+            "recall": 0.998525,
+            "f1": 0.798726
+          },
+          "identifiability": "NOT_IDENTIFIABLE"
+        },
+        "OBJECTIVE_APPLICABLE": {
+          "status": "INSUFFICIENT_EVIDENCE",
+          "n": 96,
+          "positives": 55
+        },
+        "THREAT_APPLICABLE": {
+          "status": "INSUFFICIENT_EVIDENCE"
+        }
+      }
+    },
+    "EXPOSED_HOLDOUT": {
+      "n": 6000,
+      "strategies": {
+        "ALWAYS_RESOURCE": {
+          "n": 6000,
+          "coverage": 1,
+          "accuracy": 0.2555,
+          "meanRegret": 51.856,
+          "p95Regret": 152,
+          "meanNormalizedRegret": 0.567398,
+          "catastrophicRate": 0.169167,
+          "selectionAccuracy": 0.469167,
+          "selectionDistribution": {
+            "RESOURCE_PRESERVING_V1": 1
+          }
+        },
+        "BEST_SINGLE_POLICY": {
+          "n": 6000,
+          "coverage": 1,
+          "accuracy": 0.2555,
+          "meanRegret": 51.856,
+          "p95Regret": 152,
+          "meanNormalizedRegret": 0.567398,
+          "catastrophicRate": 0.169167,
+          "selectionAccuracy": 0.469167,
+          "selectionDistribution": {
+            "RESOURCE_PRESERVING_V1": 1
+          }
+        },
+        "FIXED_PRIORITY_CASCADE_HEADLINE": {
+          "n": 6000,
+          "coverage": 1,
+          "accuracy": 0.266333,
+          "meanRegret": 50.267833,
+          "p95Regret": 150,
+          "meanNormalizedRegret": 0.55301,
+          "catastrophicRate": 0.159333,
+          "selectionAccuracy": 0.4995,
+          "selectionDistribution": {
+            "OBJECTIVE_TARGETING_V1": 0.0695,
+            "RESOURCE_PRESERVING_V1": 0.904167,
+            "THREAT_COVERING_V1": 0.026333
+          }
+        },
+        "HISTORICAL_3F6T_ROUTER_FROZEN": {
+          "n": 6000,
+          "coverage": 1,
+          "accuracy": 0.198,
+          "meanRegret": 46.845,
+          "p95Regret": 131,
+          "meanNormalizedRegret": 0.541255,
+          "catastrophicRate": 0.104667,
+          "selectionAccuracy": 0.691333,
+          "selectionDistribution": {
+            "OBJECTIVE_TARGETING_V1": 0.0155,
+            "RESOURCE_PRESERVING_V1": 0.140167,
+            "NEXUS_SELECTOR": 0.8235,
+            "THREAT_COVERING_V1": 0.020833
+          }
+        },
+        "ROUTER_SYMMETRIC": {
+          "n": 6000,
+          "coverage": 1,
+          "accuracy": 0.208167,
+          "meanRegret": 46.644833,
+          "p95Regret": 132,
+          "meanNormalizedRegret": 0.537033,
+          "catastrophicRate": 0.107333,
+          "selectionAccuracy": 0.6925,
+          "selectionDistribution": {
+            "OBJECTIVE_TARGETING_V1": 0.027167,
+            "RESOURCE_PRESERVING_V1": 0.196,
+            "NEXUS_SELECTOR": 0.754833,
+            "THREAT_COVERING_V1": 0.022
+          }
+        },
+        "ROUTER_SYMMETRIC_FULL_COVERAGE": {
+          "n": 6000,
+          "coverage": 1,
+          "accuracy": 0.207167,
+          "meanRegret": 46.655167,
+          "p95Regret": 132,
+          "meanNormalizedRegret": 0.537213,
+          "catastrophicRate": 0.107333,
+          "selectionAccuracy": 0.6935,
+          "selectionDistribution": {
+            "OBJECTIVE_TARGETING_V1": 0.029833,
+            "RESOURCE_PRESERVING_V1": 0.186167,
+            "NEXUS_SELECTOR": 0.761667,
+            "THREAT_COVERING_V1": 0.022333
+          }
+        },
+        "REGIME_GATED_SWITCH": {
+          "n": 6000,
+          "coverage": 1,
+          "accuracy": 0.282333,
+          "meanRegret": 47.5205,
+          "p95Regret": 148,
+          "meanNormalizedRegret": 0.529301,
+          "catastrophicRate": 0.146,
+          "selectionAccuracy": 0.525167,
+          "selectionDistribution": {
+            "OBJECTIVE_TARGETING_V1": 0.002,
+            "RESOURCE_PRESERVING_V1": 0.893667,
+            "NEXUS_SELECTOR": 0.104333
+          }
+        },
+        "COSTLY_ORACLE_SWITCH": {
+          "n": 6000,
+          "coverage": 1,
+          "accuracy": 0.324167,
+          "meanRegret": 45.6645,
+          "p95Regret": 147,
+          "meanNormalizedRegret": 0.508637,
+          "catastrophicRate": 0.140667,
+          "selectionAccuracy": 0.563667,
+          "selectionDistribution": {
+            "OBJECTIVE_TARGETING_V1": 0.001667,
+            "RESOURCE_PRESERVING_V1": 0.880833,
+            "NEXUS_SELECTOR": 0.1175
+          }
+        },
+        "PERFECT_POLICY_SELECTOR": {
+          "n": 6000,
+          "coverage": 1,
+          "accuracy": 0.397,
+          "meanRegret": 32.400833,
+          "p95Regret": 113,
+          "meanNormalizedRegret": 0.370951,
+          "catastrophicRate": 0.0735,
+          "selectionAccuracy": 1,
+          "selectionDistribution": {
+            "OBJECTIVE_TARGETING_V1": 0.018167,
+            "RESOURCE_PRESERVING_V1": 0.469167,
+            "NEXUS_SELECTOR": 0.499667,
+            "THREAT_COVERING_V1": 0.013
+          }
+        },
+        "FIXED_PRIORITY_CASCADE_P1E": {
+          "n": 6000,
+          "coverage": 1,
+          "accuracy": 0.286667,
+          "meanRegret": 47.563,
+          "p95Regret": 149,
+          "meanNormalizedRegret": 0.529868,
+          "catastrophicRate": 0.1445,
+          "selectionAccuracy": 0.899667,
+          "selectionDistribution": {
+            "OBJECTIVE_TARGETING_V1": 0.0695,
+            "RESOURCE_PRESERVING_V1": 0.118333,
+            "NEXUS_SELECTOR": 0.785833,
+            "THREAT_COVERING_V1": 0.026333
+          }
+        },
+        "CANDIDATE_ROUTER_V2": {
+          "n": 6000,
+          "coverage": 1,
+          "accuracy": 0.287667,
+          "meanRegret": 47.360333,
+          "p95Regret": 149,
+          "meanNormalizedRegret": 0.526294,
+          "catastrophicRate": 0.145167,
+          "selectionAccuracy": 0.906333,
+          "selectionDistribution": {
+            "OBJECTIVE_TARGETING_V1": 0.062,
+            "RESOURCE_PRESERVING_V1": 0.432333,
+            "NEXUS_SELECTOR": 0.491667,
+            "THREAT_COVERING_V1": 0.014
+          }
+        },
+        "RANDOM_VALID_POLICY": {
+          "n": 6000,
+          "accuracy": 0.223403,
+          "meanRegret": 49.311458,
+          "meanNormalizedRegret": 0.554918,
+          "note": "exact expectation of a uniform choice among proposing headline policies"
+        }
+      },
+      "headroom": {
+        "HEADROOM_AVAILABLE_ACCURACY": 0.1415,
+        "accuracy95": [
+          0.132833,
+          0.150333
+        ],
+        "HEADROOM_AVAILABLE_REGRET": 19.455167,
+        "HEADROOM_AVAILABLE_NORMALIZED_REGRET": 0.196448
+      },
+      "captured": {
+        "accuracy": -0.334511,
+        "regret": 0.267855,
+        "accuracyDenominator": 0.1415,
+        "regretDenominator": 19.455167
+      },
+      "capturedByGate": {
+        "accuracy": 0.189635,
+        "regret": 0.222846,
+        "accuracyDenominator": 0.1415,
+        "regretDenominator": 19.455167
+      },
+      "routerVsBestSingle": {
+        "n": 6000,
+        "accuracyDifference": -0.047333,
+        "accuracyCi95": [
+          -0.062,
+          -0.033167
+        ],
+        "regretDifference": -5.211167,
+        "regretCi95": [
+          -6.523667,
+          -3.9305
+        ],
+        "normalizedRegretDifference": -0.030365,
+        "normalizedRegretCi95": [
+          -0.043648,
+          -0.018836
+        ],
+        "episodesImproved": 2948,
+        "episodesWorsened": 1571,
+        "MATERIAL": false,
+        "accuracyMaterial": false,
+        "normalizedRegretMaterial": false,
+        "HISTORICAL_RAW_RULE_MATERIAL": true,
+        "MIXED_ACCURACY_REGRET_TRADEOFF": true,
+        "statisticallyBetter": false,
+        "ACCURACY_WORSE": true,
+        "NORMALIZED_REGRET_WORSE": false
+      },
+      "routerVsResource": {
+        "n": 6000,
+        "accuracyDifference": -0.047333,
+        "accuracyCi95": [
+          -0.062,
+          -0.033167
+        ],
+        "regretDifference": -5.211167,
+        "regretCi95": [
+          -6.523667,
+          -3.9305
+        ],
+        "normalizedRegretDifference": -0.030365,
+        "normalizedRegretCi95": [
+          -0.041969,
+          -0.018
+        ],
+        "episodesImproved": 2948,
+        "episodesWorsened": 1571,
+        "MATERIAL": false,
+        "accuracyMaterial": false,
+        "normalizedRegretMaterial": false,
+        "HISTORICAL_RAW_RULE_MATERIAL": true,
+        "MIXED_ACCURACY_REGRET_TRADEOFF": true,
+        "statisticallyBetter": false,
+        "ACCURACY_WORSE": true,
+        "NORMALIZED_REGRET_WORSE": false
+      },
+      "routerVsCascadeHeadline": {
+        "n": 6000,
+        "accuracyDifference": -0.058167,
+        "accuracyCi95": [
+          -0.072,
+          -0.044333
+        ],
+        "regretDifference": -3.623,
+        "regretCi95": [
+          -4.869667,
+          -2.406667
+        ],
+        "normalizedRegretDifference": -0.015977,
+        "normalizedRegretCi95": [
+          -0.02731,
+          -0.003842
+        ],
+        "episodesImproved": 2687,
+        "episodesWorsened": 1527,
+        "MATERIAL": false,
+        "accuracyMaterial": false,
+        "normalizedRegretMaterial": false,
+        "HISTORICAL_RAW_RULE_MATERIAL": true,
+        "MIXED_ACCURACY_REGRET_TRADEOFF": true,
+        "statisticallyBetter": false,
+        "ACCURACY_WORSE": true,
+        "NORMALIZED_REGRET_WORSE": false
+      },
+      "routerVsCascadeP1E": {
+        "n": 6000,
+        "accuracyDifference": -0.0785,
+        "accuracyCi95": [
+          -0.092167,
+          -0.0655
+        ],
+        "regretDifference": -0.918167,
+        "regretCi95": [
+          -2.078333,
+          0.296833
+        ],
+        "normalizedRegretDifference": 0.007165,
+        "normalizedRegretCi95": [
+          -0.004432,
+          0.018274
+        ],
+        "MATERIAL": false,
+        "accuracyMaterial": false,
+        "normalizedRegretMaterial": false,
+        "HISTORICAL_RAW_RULE_MATERIAL": false,
+        "MIXED_ACCURACY_REGRET_TRADEOFF": false,
+        "statisticallyBetter": false,
+        "ACCURACY_WORSE": true,
+        "NORMALIZED_REGRET_WORSE": false,
+        "bootstrap": "paired mulberry32 (accuracy, regret, normalized regret)"
+      },
+      "gateVsBestSingle": {
+        "n": 6000,
+        "accuracyDifference": 0.026833,
+        "accuracyCi95": [
+          0.021167,
+          0.032167
+        ],
+        "regretDifference": -4.3355,
+        "regretCi95": [
+          -4.899167,
+          -3.774833
+        ],
+        "normalizedRegretDifference": -0.038097,
+        "normalizedRegretCi95": [
+          -0.043045,
+          -0.033063
+        ],
+        "episodesImproved": 513,
+        "episodesWorsened": 115,
+        "MATERIAL": true,
+        "accuracyMaterial": true,
+        "normalizedRegretMaterial": true,
+        "HISTORICAL_RAW_RULE_MATERIAL": true,
+        "MIXED_ACCURACY_REGRET_TRADEOFF": false,
+        "statisticallyBetter": true,
+        "ACCURACY_WORSE": false,
+        "NORMALIZED_REGRET_WORSE": false
+      },
+      "cascadeHeadlineVsBestSingle": {
+        "n": 6000,
+        "accuracyDifference": 0.010833,
+        "accuracyCi95": [
+          0.005667,
+          0.016167
+        ],
+        "regretDifference": -1.588167,
+        "regretCi95": [
+          -2.101167,
+          -1.081833
+        ],
+        "normalizedRegretDifference": -0.014388,
+        "normalizedRegretCi95": [
+          -0.018882,
+          -0.009846
+        ],
+        "episodesImproved": 377,
+        "episodesWorsened": 156,
+        "MATERIAL": false,
+        "accuracyMaterial": false,
+        "normalizedRegretMaterial": false,
+        "HISTORICAL_RAW_RULE_MATERIAL": false,
+        "MIXED_ACCURACY_REGRET_TRADEOFF": false,
+        "statisticallyBetter": true,
+        "ACCURACY_WORSE": false,
+        "NORMALIZED_REGRET_WORSE": false
+      },
+      "abstention": {
+        "routedShare": 0.989,
+        "abstainedShare": 0.011,
+        "threshold": 0.4
+      },
+      "collapse": {
+        "topPolicy": "NEXUS_SELECTOR",
+        "topShare": 0.754833,
+        "optimalShareOfTopPolicy": 0.556167,
+        "POLICY_COLLAPSE": false,
+        "policiesSelectedOnAtLeast5Percent": 2
+      },
+      "historicalHarm": {
+        "falseSelections": 1845,
+        "rate": 0.3075,
+        "meanAddedRegret": 46.321951,
+        "p90": 92,
+        "p95": 117,
+        "p99": 186,
+        "worst": 500,
+        "bestSingleP95Regret": 152,
+        "acceptable": true
+      },
+      "specialistValue": {
+        "NEXUS_SELECTOR": {
+          "selectedN": 4529,
+          "improvedN": 2732,
+          "worsenedN": 1500,
+          "unchangedN": 297,
+          "correctSelectionsN": 3007,
+          "falseSelectionsN": 1522,
+          "BENEFIT_SAVED": 16.4375,
+          "FALSE_SELECTION_HARM": 12.561667,
+          "NET": 3.875833,
+          "BENEFIT_SAVED_NORMALIZED": 0.163966,
+          "FALSE_SELECTION_HARM_NORMALIZED": 0.146111,
+          "NET_NORMALIZED": 0.017855,
+          "benefitExceedsHarm": true
+        },
+        "OBJECTIVE_TARGETING_V1": {
+          "selectedN": 163,
+          "improvedN": 114,
+          "worsenedN": 42,
+          "unchangedN": 7,
+          "correctSelectionsN": 106,
+          "falseSelectionsN": 57,
+          "BENEFIT_SAVED": 0.9215,
+          "FALSE_SELECTION_HARM": 0.355333,
+          "NET": 0.566167,
+          "BENEFIT_SAVED_NORMALIZED": 0.009801,
+          "FALSE_SELECTION_HARM_NORMALIZED": 0.004198,
+          "NET_NORMALIZED": 0.005603,
+          "benefitExceedsHarm": true
+        },
+        "THREAT_COVERING_V1": {
+          "selectedN": 132,
+          "improvedN": 102,
+          "worsenedN": 29,
+          "unchangedN": 1,
+          "correctSelectionsN": 97,
+          "falseSelectionsN": 35,
+          "BENEFIT_SAVED": 0.951667,
+          "FALSE_SELECTION_HARM": 0.1825,
+          "NET": 0.769167,
+          "BENEFIT_SAVED_NORMALIZED": 0.00882,
+          "FALSE_SELECTION_HARM_NORMALIZED": 0.001912,
+          "NET_NORMALIZED": 0.006907,
+          "benefitExceedsHarm": true
+        }
+      },
+      "specialistValueByRegime": {
+        "COSTLY_OPTIMAL": {
+          "NEXUS_SELECTOR": {
+            "selectedN": 542,
+            "improvedN": 521,
+            "worsenedN": 21,
+            "unchangedN": 0,
+            "correctSelectionsN": 504,
+            "falseSelectionsN": 38,
+            "BENEFIT_SAVED": 37.120865,
+            "FALSE_SELECTION_HARM": 0.820611,
+            "NET": 36.300254,
+            "BENEFIT_SAVED_NORMALIZED": 0.354223,
+            "FALSE_SELECTION_HARM_NORMALIZED": 0.00819,
+            "NET_NORMALIZED": 0.346034,
+            "benefitExceedsHarm": true
+          },
+          "OBJECTIVE_TARGETING_V1": {
+            "selectedN": 83,
+            "improvedN": 77,
+            "worsenedN": 5,
+            "unchangedN": 1,
+            "correctSelectionsN": 68,
+            "falseSelectionsN": 15,
+            "BENEFIT_SAVED": 6.292621,
+            "FALSE_SELECTION_HARM": 0.132316,
+            "NET": 6.160305,
+            "BENEFIT_SAVED_NORMALIZED": 0.061558,
+            "FALSE_SELECTION_HARM_NORMALIZED": 0.001225,
+            "NET_NORMALIZED": 0.060332,
+            "benefitExceedsHarm": true
+          },
+          "THREAT_COVERING_V1": {
+            "selectedN": 52,
+            "improvedN": 51,
+            "worsenedN": 1,
+            "unchangedN": 0,
+            "correctSelectionsN": 45,
+            "falseSelectionsN": 7,
+            "BENEFIT_SAVED": 5.129771,
+            "FALSE_SELECTION_HARM": 0.37659,
+            "NET": 4.753181,
+            "BENEFIT_SAVED_NORMALIZED": 0.038341,
+            "FALSE_SELECTION_HARM_NORMALIZED": 0.000973,
+            "NET_NORMALIZED": 0.037368,
+            "benefitExceedsHarm": true
+          }
+        },
+        "FREE_OPTIMAL": {
+          "NEXUS_SELECTOR": {
+            "selectedN": 3987,
+            "improvedN": 2211,
+            "worsenedN": 1479,
+            "unchangedN": 297,
+            "correctSelectionsN": 2503,
+            "falseSelectionsN": 1484,
+            "BENEFIT_SAVED": 13.319524,
+            "FALSE_SELECTION_HARM": 14.331607,
+            "NET": -1.012083,
+            "BENEFIT_SAVED_NORMALIZED": 0.135286,
+            "FALSE_SELECTION_HARM_NORMALIZED": 0.166903,
+            "NET_NORMALIZED": -0.031617,
+            "benefitExceedsHarm": false
+          },
+          "OBJECTIVE_TARGETING_V1": {
+            "selectedN": 80,
+            "improvedN": 37,
+            "worsenedN": 37,
+            "unchangedN": 6,
+            "correctSelectionsN": 38,
+            "falseSelectionsN": 42,
+            "BENEFIT_SAVED": 0.111814,
+            "FALSE_SELECTION_HARM": 0.388953,
+            "NET": -0.277138,
+            "BENEFIT_SAVED_NORMALIZED": 0.001998,
+            "FALSE_SELECTION_HARM_NORMALIZED": 0.004646,
+            "NET_NORMALIZED": -0.002648,
+            "benefitExceedsHarm": false
+          },
+          "THREAT_COVERING_V1": {
+            "selectedN": 80,
+            "improvedN": 51,
+            "worsenedN": 28,
+            "unchangedN": 1,
+            "correctSelectionsN": 52,
+            "falseSelectionsN": 28,
+            "BENEFIT_SAVED": 0.321826,
+            "FALSE_SELECTION_HARM": 0.153241,
+            "NET": 0.168585,
+            "BENEFIT_SAVED_NORMALIZED": 0.004369,
+            "FALSE_SELECTION_HARM_NORMALIZED": 0.002054,
+            "NET_NORMALIZED": 0.002315,
+            "benefitExceedsHarm": true
+          }
+        }
+      },
+      "policyByRegime": {
+        "COSTLY_OPTIMAL": {
+          "n": 786,
+          "share": 0.131,
+          "strategies": {
+            "RESOURCE_PRESERVING_V1": {
+              "coverage": 1,
+              "accuracy": 0,
+              "meanRegret": 65.165394,
+              "meanNormalizedRegret": 0.611436
+            },
+            "NEXUS_SELECTOR": {
+              "coverage": 0.896947,
+              "accuracy": 0.571631,
+              "meanRegret": 13.374468,
+              "meanNormalizedRegret": 0.116417
+            },
+            "OBJECTIVE_TARGETING_V1": {
+              "coverage": 0.180662,
+              "accuracy": 0.753521,
+              "meanRegret": 13.802817,
+              "meanNormalizedRegret": 0.092387
+            },
+            "THREAT_COVERING_V1": {
+              "coverage": 0.096692,
+              "accuracy": 0.75,
+              "meanRegret": 16.039474,
+              "meanNormalizedRegret": 0.095022
+            },
+            "ROUTER_SYMMETRIC": {
+              "coverage": 1,
+              "accuracy": 0.573791,
+              "meanRegret": 17.951654,
+              "meanNormalizedRegret": 0.167702
+            },
+            "PERFECT_POLICY_SELECTOR": {
+              "coverage": 1,
+              "accuracy": 0.650127,
+              "meanRegret": 13.582697,
+              "meanNormalizedRegret": 0.126744
+            }
+          }
+        },
+        "FREE_OPTIMAL": {
+          "n": 5214,
+          "share": 0.869,
+          "strategies": {
+            "RESOURCE_PRESERVING_V1": {
+              "coverage": 1,
+              "accuracy": 0.294016,
+              "meanRegret": 49.849636,
+              "meanNormalizedRegret": 0.56076
+            },
+            "NEXUS_SELECTOR": {
+              "coverage": 0.870541,
+              "accuracy": 0.107072,
+              "meanRegret": 52.218991,
+              "meanNormalizedRegret": 0.610663
+            },
+            "OBJECTIVE_TARGETING_V1": {
+              "coverage": 0.063483,
+              "accuracy": 0.060423,
+              "meanRegret": 69.456193,
+              "meanNormalizedRegret": 0.677373
+            },
+            "THREAT_COVERING_V1": {
+              "coverage": 0.015727,
+              "accuracy": 0.012195,
+              "meanRegret": 35.463415,
+              "meanNormalizedRegret": 0.442095
+            },
+            "ROUTER_SYMMETRIC": {
+              "coverage": 1,
+              "accuracy": 0.153049,
+              "meanRegret": 50.970272,
+              "meanNormalizedRegret": 0.592709
+            },
+            "PERFECT_POLICY_SELECTOR": {
+              "coverage": 1,
+              "accuracy": 0.358842,
+              "meanRegret": 35.237629,
+              "meanNormalizedRegret": 0.407764
+            }
+          }
+        }
+      },
+      "specialistValueGate": {
+        "NEXUS_SELECTOR": {
+          "selectedN": 626,
+          "improvedN": 502,
+          "worsenedN": 114,
+          "unchangedN": 10,
+          "BENEFIT_SAVED": 5.076667,
+          "FALSE_SELECTION_HARM": 0.825333,
+          "NET": 4.251333,
+          "BENEFIT_SAVED_NORMALIZED": 0.04442,
+          "FALSE_SELECTION_HARM_NORMALIZED": 0.007447,
+          "NET_NORMALIZED": 0.036973,
+          "benefitExceedsHarm": true
+        },
+        "OBJECTIVE_TARGETING_V1": {
+          "selectedN": 12,
+          "improvedN": 11,
+          "worsenedN": 1,
+          "unchangedN": 0,
+          "BENEFIT_SAVED": 0.1115,
+          "FALSE_SELECTION_HARM": 0.027333,
+          "NET": 0.084167,
+          "BENEFIT_SAVED_NORMALIZED": 0.001277,
+          "FALSE_SELECTION_HARM_NORMALIZED": 0.000153,
+          "NET_NORMALIZED": 0.001124,
+          "benefitExceedsHarm": true
+        },
+        "THREAT_COVERING_V1": {
+          "selectedN": 0,
+          "improvedN": 0,
+          "worsenedN": 0,
+          "unchangedN": 0,
+          "BENEFIT_SAVED": 0,
+          "FALSE_SELECTION_HARM": 0,
+          "NET": 0,
+          "BENEFIT_SAVED_NORMALIZED": 0,
+          "FALSE_SELECTION_HARM_NORMALIZED": 0,
+          "NET_NORMALIZED": 0,
+          "benefitExceedsHarm": false
+        }
+      },
+      "confusionRecall": {
+        "RESOURCE_PRESERVING_V1": {
+          "uniquelyBestN": 2465,
+          "selectedWhenUniquelyBest": 0.366734,
+          "inBestSetN": 2815,
+          "selectedWhenInBestSet": 0.335702
+        },
+        "NEXUS_SELECTOR": {
+          "uniquelyBestN": 2845,
+          "selectedWhenUniquelyBest": 0.928647,
+          "inBestSetN": 3337,
+          "selectedWhenInBestSet": 0.901109
+        },
+        "OBJECTIVE_TARGETING_V1": {
+          "uniquelyBestN": 83,
+          "selectedWhenUniquelyBest": 0.686747,
+          "inBestSetN": 297,
+          "selectedWhenInBestSet": 0.356902
+        },
+        "THREAT_COVERING_V1": {
+          "uniquelyBestN": 78,
+          "selectedWhenUniquelyBest": 0.846154,
+          "inBestSetN": 109,
+          "selectedWhenInBestSet": 0.889908
+        }
+      },
+      "regimePrediction": {
+        "COSTLY_ACTION_OPTIMAL": {
+          "status": "EVALUATED",
+          "n": 6000,
+          "positives": 786,
+          "baseRate": 0.131,
+          "AUROC": 0.85965,
+          "AUPRC": 0.648487,
+          "BRIER": 0.067913,
+          "BRIER_SKILL": 0.405675,
+          "ECE": 0.010286,
+          "atCalThreshold": {
+            "threshold": 0.42,
+            "predictedPositive": 701,
+            "precision": 0.689016,
+            "recall": 0.614504,
+            "f1": 0.64963
+          },
+          "identifiability": "REGIME_IDENTIFIABLE"
+        },
+        "FREE_ACTION_OPTIMAL": {
+          "status": "EVALUATED",
+          "n": 6000,
+          "positives": 5214,
+          "baseRate": 0.869,
+          "AUROC": 0.85965,
+          "AUPRC": 0.963354,
+          "BRIER": 0.067913,
+          "BRIER_SKILL": 0.405675,
+          "ECE": 0.010286,
+          "atCalThreshold": {
+            "threshold": 0.47,
+            "predictedPositive": 5386,
+            "precision": 0.937059,
+            "recall": 0.967971,
+            "f1": 0.952264
+          },
+          "identifiability": "REGIME_IDENTIFIABLE"
+        },
+        "HORIZON_DEPENDENT": {
+          "status": "EVALUATED",
+          "n": 6000,
+          "positives": 4720,
+          "baseRate": 0.786667,
+          "AUROC": 0.745876,
+          "AUPRC": 0.904447,
+          "BRIER": 0.144329,
+          "BRIER_SKILL": 0.139989,
+          "ECE": 0.026422,
+          "atCalThreshold": {
+            "threshold": 0.63,
+            "predictedPositive": 5179,
+            "precision": 0.84553,
+            "recall": 0.927754,
+            "f1": 0.884736
+          },
+          "identifiability": "WEAKLY_IDENTIFIABLE"
+        },
+        "NEXUS_V1_BEATS_RESOURCE": {
+          "status": "EVALUATED",
+          "n": 5244,
+          "positives": 3139,
+          "baseRate": 0.598589,
+          "AUROC": 0.592813,
+          "AUPRC": 0.695557,
+          "BRIER": 0.23286,
+          "BRIER_SKILL": 0.031202,
+          "ECE": 0.023696,
+          "atCalThreshold": {
+            "threshold": 0.37,
+            "predictedPositive": 5211,
+            "precision": 0.600461,
+            "recall": 0.996814,
+            "f1": 0.749461
+          },
+          "identifiability": "NOT_IDENTIFIABLE"
+        },
+        "OBJECTIVE_APPLICABLE": {
+          "status": "EVALUATED",
+          "n": 473,
+          "positives": 292,
+          "baseRate": 0.617336,
+          "AUROC": 0.64219,
+          "AUPRC": 0.73968,
+          "BRIER": 0.238143,
+          "BRIER_SKILL": 0.002553,
+          "ECE": 0.104454,
+          "atCalThreshold": {
+            "threshold": 0.33,
+            "predictedPositive": 408,
+            "precision": 0.642157,
+            "recall": 0.89726,
+            "f1": 0.748571
+          },
+          "identifiability": "NOT_IDENTIFIABLE"
+        },
+        "THREAT_APPLICABLE": {
+          "status": "INSUFFICIENT_EVIDENCE"
+        }
+      }
+    },
+    "EXPOSED_OOD": {
+      "n": 6000,
+      "strategies": {
+        "ALWAYS_RESOURCE": {
+          "n": 6000,
+          "coverage": 1,
+          "accuracy": 0.2555,
+          "meanRegret": 84.1845,
+          "p95Regret": 192,
+          "meanNormalizedRegret": 0.633938,
+          "catastrophicRate": 0.392333,
+          "selectionAccuracy": 0.446167,
+          "selectionDistribution": {
+            "RESOURCE_PRESERVING_V1": 1
+          }
+        },
+        "BEST_SINGLE_POLICY": {
+          "n": 6000,
+          "coverage": 1,
+          "accuracy": 0.2555,
+          "meanRegret": 84.1845,
+          "p95Regret": 192,
+          "meanNormalizedRegret": 0.633938,
+          "catastrophicRate": 0.392333,
+          "selectionAccuracy": 0.446167,
+          "selectionDistribution": {
+            "RESOURCE_PRESERVING_V1": 1
+          }
+        },
+        "FIXED_PRIORITY_CASCADE_HEADLINE": {
+          "n": 6000,
+          "coverage": 1,
+          "accuracy": 0.255167,
+          "meanRegret": 83.946167,
+          "p95Regret": 192,
+          "meanNormalizedRegret": 0.631678,
+          "catastrophicRate": 0.391667,
+          "selectionAccuracy": 0.455,
+          "selectionDistribution": {
+            "RESOURCE_PRESERVING_V1": 0.981,
+            "OBJECTIVE_TARGETING_V1": 0.014,
+            "THREAT_COVERING_V1": 0.005
+          }
+        },
+        "HISTORICAL_3F6T_ROUTER_FROZEN": {
+          "n": 6000,
+          "coverage": 1,
+          "accuracy": 0.1865,
+          "meanRegret": 81.549167,
+          "p95Regret": 184,
+          "meanNormalizedRegret": 0.618372,
+          "catastrophicRate": 0.339667,
+          "selectionAccuracy": 0.697167,
+          "selectionDistribution": {
+            "RESOURCE_PRESERVING_V1": 0.3065,
+            "NEXUS_SELECTOR": 0.6855,
+            "OBJECTIVE_TARGETING_V1": 0.0045,
+            "THREAT_COVERING_V1": 0.0035
+          }
+        },
+        "ROUTER_SYMMETRIC": {
+          "n": 6000,
+          "coverage": 1,
+          "accuracy": 0.158333,
+          "meanRegret": 82.044,
+          "p95Regret": 178,
+          "meanNormalizedRegret": 0.626519,
+          "catastrophicRate": 0.314833,
+          "selectionAccuracy": 0.748833,
+          "selectionDistribution": {
+            "RESOURCE_PRESERVING_V1": 0.164333,
+            "NEXUS_SELECTOR": 0.83,
+            "THREAT_COVERING_V1": 0.003833,
+            "OBJECTIVE_TARGETING_V1": 0.001833
+          }
+        },
+        "ROUTER_SYMMETRIC_FULL_COVERAGE": {
+          "n": 6000,
+          "coverage": 1,
+          "accuracy": 0.158333,
+          "meanRegret": 82.044,
+          "p95Regret": 178,
+          "meanNormalizedRegret": 0.626519,
+          "catastrophicRate": 0.314833,
+          "selectionAccuracy": 0.748833,
+          "selectionDistribution": {
+            "RESOURCE_PRESERVING_V1": 0.164333,
+            "NEXUS_SELECTOR": 0.83,
+            "THREAT_COVERING_V1": 0.003833,
+            "OBJECTIVE_TARGETING_V1": 0.001833
+          }
+        },
+        "REGIME_GATED_SWITCH": {
+          "n": 6000,
+          "coverage": 1,
+          "accuracy": 0.2625,
+          "meanRegret": 81.943667,
+          "p95Regret": 192,
+          "meanNormalizedRegret": 0.617153,
+          "catastrophicRate": 0.377833,
+          "selectionAccuracy": 0.4805,
+          "selectionDistribution": {
+            "RESOURCE_PRESERVING_V1": 0.9415,
+            "NEXUS_SELECTOR": 0.057833,
+            "OBJECTIVE_TARGETING_V1": 0.000667
+          }
+        },
+        "COSTLY_ORACLE_SWITCH": {
+          "n": 6000,
+          "coverage": 1,
+          "accuracy": 0.281833,
+          "meanRegret": 80.896667,
+          "p95Regret": 192,
+          "meanNormalizedRegret": 0.609274,
+          "catastrophicRate": 0.3745,
+          "selectionAccuracy": 0.4865,
+          "selectionDistribution": {
+            "RESOURCE_PRESERVING_V1": 0.955667,
+            "NEXUS_SELECTOR": 0.043833,
+            "OBJECTIVE_TARGETING_V1": 0.0005
+          }
+        },
+        "PERFECT_POLICY_SELECTOR": {
+          "n": 6000,
+          "coverage": 1,
+          "accuracy": 0.348667,
+          "meanRegret": 60.843,
+          "p95Regret": 176,
+          "meanNormalizedRegret": 0.465514,
+          "catastrophicRate": 0.232333,
+          "selectionAccuracy": 1,
+          "selectionDistribution": {
+            "RESOURCE_PRESERVING_V1": 0.446167,
+            "NEXUS_SELECTOR": 0.548,
+            "OBJECTIVE_TARGETING_V1": 0.003167,
+            "THREAT_COVERING_V1": 0.002667
+          }
+        },
+        "FIXED_PRIORITY_CASCADE_P1E": {
+          "n": 6000,
+          "coverage": 1,
+          "accuracy": 0.2645,
+          "meanRegret": 81.640667,
+          "p95Regret": 192,
+          "meanNormalizedRegret": 0.613614,
+          "catastrophicRate": 0.3735,
+          "selectionAccuracy": 0.948333,
+          "selectionDistribution": {
+            "RESOURCE_PRESERVING_V1": 0.158333,
+            "NEXUS_SELECTOR": 0.822667,
+            "OBJECTIVE_TARGETING_V1": 0.014,
+            "THREAT_COVERING_V1": 0.005
+          }
+        },
+        "CANDIDATE_ROUTER_V2": {
+          "n": 6000,
+          "coverage": 1,
+          "accuracy": 0.265,
+          "meanRegret": 81.646833,
+          "p95Regret": 192,
+          "meanNormalizedRegret": 0.613617,
+          "catastrophicRate": 0.373333,
+          "selectionAccuracy": 0.946,
+          "selectionDistribution": {
+            "RESOURCE_PRESERVING_V1": 0.252,
+            "NEXUS_SELECTOR": 0.732333,
+            "OBJECTIVE_TARGETING_V1": 0.012333,
+            "THREAT_COVERING_V1": 0.003333
+          }
+        },
+        "RANDOM_VALID_POLICY": {
+          "n": 6000,
+          "accuracy": 0.205972,
+          "meanRegret": 83.1225,
+          "meanNormalizedRegret": 0.630155,
+          "note": "exact expectation of a uniform choice among proposing headline policies"
+        }
+      },
+      "headroom": {
+        "HEADROOM_AVAILABLE_ACCURACY": 0.093167,
+        "accuracy95": [
+          0.085333,
+          0.100833
+        ],
+        "HEADROOM_AVAILABLE_REGRET": 23.3415,
+        "HEADROOM_AVAILABLE_NORMALIZED_REGRET": 0.168424
+      },
+      "captured": {
+        "accuracy": -1.042934,
+        "regret": 0.091704,
+        "accuracyDenominator": 0.093167,
+        "regretDenominator": 23.3415
+      },
+      "capturedByGate": {
+        "accuracy": 0.075134,
+        "regret": 0.096002,
+        "accuracyDenominator": 0.093167,
+        "regretDenominator": 23.3415
+      },
+      "routerVsBestSingle": {
+        "n": 6000,
+        "accuracyDifference": -0.097167,
+        "accuracyCi95": [
+          -0.11,
+          -0.083333
+        ],
+        "regretDifference": -2.1405,
+        "regretCi95": [
+          -3.848,
+          -0.451833
+        ],
+        "normalizedRegretDifference": -0.007419,
+        "normalizedRegretCi95": [
+          -0.018901,
+          0.004277
+        ],
+        "episodesImproved": 3302,
+        "episodesWorsened": 1480,
+        "MATERIAL": false,
+        "accuracyMaterial": false,
+        "normalizedRegretMaterial": false,
+        "HISTORICAL_RAW_RULE_MATERIAL": true,
+        "MIXED_ACCURACY_REGRET_TRADEOFF": false,
+        "statisticallyBetter": false,
+        "ACCURACY_WORSE": true,
+        "NORMALIZED_REGRET_WORSE": false
+      },
+      "routerVsResource": {
+        "n": 6000,
+        "accuracyDifference": -0.097167,
+        "accuracyCi95": [
+          -0.11,
+          -0.083333
+        ],
+        "regretDifference": -2.1405,
+        "regretCi95": [
+          -3.848,
+          -0.451833
+        ],
+        "normalizedRegretDifference": -0.007419,
+        "normalizedRegretCi95": [
+          -0.019335,
+          0.003946
+        ],
+        "episodesImproved": 3302,
+        "episodesWorsened": 1480,
+        "MATERIAL": false,
+        "accuracyMaterial": false,
+        "normalizedRegretMaterial": false,
+        "HISTORICAL_RAW_RULE_MATERIAL": true,
+        "MIXED_ACCURACY_REGRET_TRADEOFF": false,
+        "statisticallyBetter": false,
+        "ACCURACY_WORSE": true,
+        "NORMALIZED_REGRET_WORSE": false
+      },
+      "routerVsCascadeHeadline": {
+        "n": 6000,
+        "accuracyDifference": -0.096833,
+        "accuracyCi95": [
+          -0.109833,
+          -0.083333
+        ],
+        "regretDifference": -1.902167,
+        "regretCi95": [
+          -3.590167,
+          -0.201667
+        ],
+        "normalizedRegretDifference": -0.005159,
+        "normalizedRegretCi95": [
+          -0.017479,
+          0.006208
+        ],
+        "episodesImproved": 3229,
+        "episodesWorsened": 1467,
+        "MATERIAL": false,
+        "accuracyMaterial": false,
+        "normalizedRegretMaterial": false,
+        "HISTORICAL_RAW_RULE_MATERIAL": false,
+        "MIXED_ACCURACY_REGRET_TRADEOFF": false,
+        "statisticallyBetter": false,
+        "ACCURACY_WORSE": true,
+        "NORMALIZED_REGRET_WORSE": false
+      },
+      "routerVsCascadeP1E": {
+        "n": 6000,
+        "accuracyDifference": -0.106167,
+        "accuracyCi95": [
+          -0.119167,
+          -0.093833
+        ],
+        "regretDifference": 0.403333,
+        "regretCi95": [
+          -1.3255,
+          2.033667
+        ],
+        "normalizedRegretDifference": 0.012905,
+        "normalizedRegretCi95": [
+          0.00201,
+          0.023953
+        ],
+        "MATERIAL": false,
+        "accuracyMaterial": false,
+        "normalizedRegretMaterial": false,
+        "HISTORICAL_RAW_RULE_MATERIAL": false,
+        "MIXED_ACCURACY_REGRET_TRADEOFF": false,
+        "statisticallyBetter": false,
+        "ACCURACY_WORSE": true,
+        "NORMALIZED_REGRET_WORSE": true,
+        "bootstrap": "paired mulberry32 (accuracy, regret, normalized regret)"
+      },
+      "gateVsBestSingle": {
+        "n": 6000,
+        "accuracyDifference": 0.007,
+        "accuracyCi95": [
+          0.002833,
+          0.011
+        ],
+        "regretDifference": -2.240833,
+        "regretCi95": [
+          -2.725,
+          -1.794667
+        ],
+        "normalizedRegretDifference": -0.016785,
+        "normalizedRegretCi95": [
+          -0.02021,
+          -0.013482
+        ],
+        "episodesImproved": 281,
+        "episodesWorsened": 67,
+        "MATERIAL": false,
+        "accuracyMaterial": false,
+        "normalizedRegretMaterial": false,
+        "HISTORICAL_RAW_RULE_MATERIAL": true,
+        "MIXED_ACCURACY_REGRET_TRADEOFF": false,
+        "statisticallyBetter": true,
+        "ACCURACY_WORSE": false,
+        "NORMALIZED_REGRET_WORSE": false
+      },
+      "cascadeHeadlineVsBestSingle": {
+        "n": 6000,
+        "accuracyDifference": -0.000333,
+        "accuracyCi95": [
+          -0.0025,
+          0.001833
+        ],
+        "regretDifference": -0.238333,
+        "regretCi95": [
+          -0.528333,
+          0.056333
+        ],
+        "normalizedRegretDifference": -0.00226,
+        "normalizedRegretCi95": [
+          -0.003913,
+          -0.000486
+        ],
+        "episodesImproved": 83,
+        "episodesWorsened": 26,
+        "MATERIAL": false,
+        "accuracyMaterial": false,
+        "normalizedRegretMaterial": false,
+        "HISTORICAL_RAW_RULE_MATERIAL": false,
+        "MIXED_ACCURACY_REGRET_TRADEOFF": false,
+        "statisticallyBetter": true,
+        "ACCURACY_WORSE": false,
+        "NORMALIZED_REGRET_WORSE": false
+      },
+      "abstention": {
+        "routedShare": 1,
+        "abstainedShare": 0,
+        "threshold": 0.4
+      },
+      "collapse": {
+        "topPolicy": "NEXUS_SELECTOR",
+        "topShare": 0.83,
+        "optimalShareOfTopPolicy": 0.5875,
+        "POLICY_COLLAPSE": false,
+        "policiesSelectedOnAtLeast5Percent": 2
+      },
+      "historicalHarm": {
+        "falseSelections": 1507,
+        "rate": 0.251167,
+        "meanAddedRegret": 84.410086,
+        "p90": 162,
+        "p95": 178,
+        "p99": 240,
+        "worst": 345,
+        "bestSingleP95Regret": 192,
+        "acceptable": true
+      },
+      "specialistValue": {
+        "NEXUS_SELECTOR": {
+          "selectedN": 4980,
+          "improvedN": 3275,
+          "worsenedN": 1473,
+          "unchangedN": 232,
+          "correctSelectionsN": 3499,
+          "falseSelectionsN": 1481,
+          "BENEFIT_SAVED": 22.826,
+          "FALSE_SELECTION_HARM": 20.909167,
+          "NET": 1.916833,
+          "BENEFIT_SAVED_NORMALIZED": 0.164826,
+          "FALSE_SELECTION_HARM_NORMALIZED": 0.159075,
+          "NET_NORMALIZED": 0.005752,
+          "benefitExceedsHarm": true
+        },
+        "OBJECTIVE_TARGETING_V1": {
+          "selectedN": 11,
+          "improvedN": 9,
+          "worsenedN": 2,
+          "unchangedN": 0,
+          "correctSelectionsN": 9,
+          "falseSelectionsN": 2,
+          "BENEFIT_SAVED": 0.0825,
+          "FALSE_SELECTION_HARM": 0.0355,
+          "NET": 0.047,
+          "BENEFIT_SAVED_NORMALIZED": 0.000695,
+          "FALSE_SELECTION_HARM_NORMALIZED": 0.000281,
+          "NET_NORMALIZED": 0.000415,
+          "benefitExceedsHarm": true
+        },
+        "THREAT_COVERING_V1": {
+          "selectedN": 23,
+          "improvedN": 18,
+          "worsenedN": 5,
+          "unchangedN": 0,
+          "correctSelectionsN": 18,
+          "falseSelectionsN": 5,
+          "BENEFIT_SAVED": 0.248167,
+          "FALSE_SELECTION_HARM": 0.0715,
+          "NET": 0.176667,
+          "BENEFIT_SAVED_NORMALIZED": 0.001642,
+          "FALSE_SELECTION_HARM_NORMALIZED": 0.000389,
+          "NET_NORMALIZED": 0.001253,
+          "benefitExceedsHarm": true
+        }
+      },
+      "specialistValueByRegime": {
+        "COSTLY_OPTIMAL": {
+          "NEXUS_SELECTOR": {
+            "selectedN": 254,
+            "improvedN": 246,
+            "worsenedN": 6,
+            "unchangedN": 2,
+            "correctSelectionsN": 245,
+            "falseSelectionsN": 9,
+            "BENEFIT_SAVED": 61.012739,
+            "FALSE_SELECTION_HARM": 0.694268,
+            "NET": 60.318471,
+            "BENEFIT_SAVED_NORMALIZED": 0.459735,
+            "FALSE_SELECTION_HARM_NORMALIZED": 0.003977,
+            "NET_NORMALIZED": 0.455758,
+            "benefitExceedsHarm": true
+          },
+          "OBJECTIVE_TARGETING_V1": {
+            "selectedN": 3,
+            "improvedN": 3,
+            "worsenedN": 0,
+            "unchangedN": 0,
+            "correctSelectionsN": 3,
+            "falseSelectionsN": 0,
+            "BENEFIT_SAVED": 0.888535,
+            "FALSE_SELECTION_HARM": 0,
+            "NET": 0.888535,
+            "BENEFIT_SAVED_NORMALIZED": 0.007251,
+            "FALSE_SELECTION_HARM_NORMALIZED": 0,
+            "NET_NORMALIZED": 0.007251,
+            "benefitExceedsHarm": true
+          },
+          "THREAT_COVERING_V1": {
+            "selectedN": 9,
+            "improvedN": 9,
+            "worsenedN": 0,
+            "unchangedN": 0,
+            "correctSelectionsN": 9,
+            "falseSelectionsN": 0,
+            "BENEFIT_SAVED": 3.328025,
+            "FALSE_SELECTION_HARM": 0,
+            "NET": 3.328025,
+            "BENEFIT_SAVED_NORMALIZED": 0.017815,
+            "FALSE_SELECTION_HARM_NORMALIZED": 0,
+            "NET_NORMALIZED": 0.017815,
+            "benefitExceedsHarm": true
+          }
+        },
+        "FREE_OPTIMAL": {
+          "NEXUS_SELECTOR": {
+            "selectedN": 4726,
+            "improvedN": 3029,
+            "worsenedN": 1467,
+            "unchangedN": 230,
+            "correctSelectionsN": 3254,
+            "falseSelectionsN": 1472,
+            "BENEFIT_SAVED": 20.7172,
+            "FALSE_SELECTION_HARM": 22.025501,
+            "NET": -1.308301,
+            "BENEFIT_SAVED_NORMALIZED": 0.14854,
+            "FALSE_SELECTION_HARM_NORMALIZED": 0.16764,
+            "NET_NORMALIZED": -0.019099,
+            "benefitExceedsHarm": false
+          },
+          "OBJECTIVE_TARGETING_V1": {
+            "selectedN": 8,
+            "improvedN": 6,
+            "worsenedN": 2,
+            "unchangedN": 0,
+            "correctSelectionsN": 6,
+            "falseSelectionsN": 2,
+            "BENEFIT_SAVED": 0.037988,
+            "FALSE_SELECTION_HARM": 0.03746,
+            "NET": 0.000528,
+            "BENEFIT_SAVED_NORMALIZED": 0.000333,
+            "FALSE_SELECTION_HARM_NORMALIZED": 0.000296,
+            "NET_NORMALIZED": 0.000037,
+            "benefitExceedsHarm": true
+          },
+          "THREAT_COVERING_V1": {
+            "selectedN": 14,
+            "improvedN": 9,
+            "worsenedN": 5,
+            "unchangedN": 0,
+            "correctSelectionsN": 9,
+            "falseSelectionsN": 5,
+            "BENEFIT_SAVED": 0.078087,
+            "FALSE_SELECTION_HARM": 0.075448,
+            "NET": 0.002638,
+            "BENEFIT_SAVED_NORMALIZED": 0.000749,
+            "FALSE_SELECTION_HARM_NORMALIZED": 0.00041,
+            "NET_NORMALIZED": 0.000339,
+            "benefitExceedsHarm": true
+          }
+        }
+      },
+      "policyByRegime": {
+        "COSTLY_OPTIMAL": {
+          "n": 314,
+          "share": 0.052333,
+          "strategies": {
+            "RESOURCE_PRESERVING_V1": {
+              "coverage": 1,
+              "accuracy": 0,
+              "meanRegret": 82.681529,
+              "meanNormalizedRegret": 0.619384
+            },
+            "NEXUS_SELECTOR": {
+              "coverage": 0.83758,
+              "accuracy": 0.596958,
+              "meanRegret": 9.874525,
+              "meanNormalizedRegret": 0.068499
+            },
+            "OBJECTIVE_TARGETING_V1": {
+              "coverage": 0.044586,
+              "accuracy": 0.714286,
+              "meanRegret": 9.714286,
+              "meanNormalizedRegret": 0.095471
+            },
+            "THREAT_COVERING_V1": {
+              "coverage": 0.031847,
+              "accuracy": 1,
+              "meanRegret": 0,
+              "meanNormalizedRegret": 0
+            },
+            "ROUTER_SYMMETRIC": {
+              "coverage": 1,
+              "accuracy": 0.531847,
+              "meanRegret": 18.146497,
+              "meanNormalizedRegret": 0.138559
+            },
+            "PERFECT_POLICY_SELECTOR": {
+              "coverage": 1,
+              "accuracy": 0.544586,
+              "meanRegret": 17.038217,
+              "meanNormalizedRegret": 0.132536
+            }
+          }
+        },
+        "FREE_OPTIMAL": {
+          "n": 5686,
+          "share": 0.947667,
+          "strategies": {
+            "RESOURCE_PRESERVING_V1": {
+              "coverage": 1,
+              "accuracy": 0.26961,
+              "meanRegret": 84.267499,
+              "meanNormalizedRegret": 0.634742
+            },
+            "NEXUS_SELECTOR": {
+              "coverage": 0.839254,
+              "accuracy": 0.113789,
+              "meanRegret": 87.196144,
+              "meanNormalizedRegret": 0.657026
+            },
+            "OBJECTIVE_TARGETING_V1": {
+              "coverage": 0.013014,
+              "accuracy": 0.013514,
+              "meanRegret": 119.972973,
+              "meanNormalizedRegret": 0.720211
+            },
+            "THREAT_COVERING_V1": {
+              "coverage": 0.003517,
+              "accuracy": 0,
+              "meanRegret": 71.65,
+              "meanNormalizedRegret": 0.494708
+            },
+            "ROUTER_SYMMETRIC": {
+              "coverage": 1,
+              "accuracy": 0.137707,
+              "meanRegret": 85.572635,
+              "meanNormalizedRegret": 0.653465
+            },
+            "PERFECT_POLICY_SELECTOR": {
+              "coverage": 1,
+              "accuracy": 0.337847,
+              "meanRegret": 63.262047,
+              "meanNormalizedRegret": 0.483902
+            }
+          }
+        }
+      },
+      "specialistValueGate": {
+        "NEXUS_SELECTOR": {
+          "selectedN": 347,
+          "improvedN": 278,
+          "worsenedN": 66,
+          "unchangedN": 3,
+          "BENEFIT_SAVED": 2.948167,
+          "FALSE_SELECTION_HARM": 0.73,
+          "NET": 2.218167,
+          "BENEFIT_SAVED_NORMALIZED": 0.021873,
+          "FALSE_SELECTION_HARM_NORMALIZED": 0.00532,
+          "NET_NORMALIZED": 0.016554,
+          "benefitExceedsHarm": true
+        },
+        "OBJECTIVE_TARGETING_V1": {
+          "selectedN": 4,
+          "improvedN": 3,
+          "worsenedN": 1,
+          "unchangedN": 0,
+          "BENEFIT_SAVED": 0.0465,
+          "FALSE_SELECTION_HARM": 0.023833,
+          "NET": 0.022667,
+          "BENEFIT_SAVED_NORMALIZED": 0.000379,
+          "FALSE_SELECTION_HARM_NORMALIZED": 0.000148,
+          "NET_NORMALIZED": 0.000231,
+          "benefitExceedsHarm": true
+        },
+        "THREAT_COVERING_V1": {
+          "selectedN": 0,
+          "improvedN": 0,
+          "worsenedN": 0,
+          "unchangedN": 0,
+          "BENEFIT_SAVED": 0,
+          "FALSE_SELECTION_HARM": 0,
+          "NET": 0,
+          "BENEFIT_SAVED_NORMALIZED": 0,
+          "FALSE_SELECTION_HARM_NORMALIZED": 0,
+          "NET_NORMALIZED": 0,
+          "benefitExceedsHarm": false
+        }
+      },
+      "confusionRecall": {
+        "RESOURCE_PRESERVING_V1": {
+          "uniquelyBestN": 2440,
+          "selectedWhenUniquelyBest": 0.394262,
+          "inBestSetN": 2677,
+          "selectedWhenInBestSet": 0.361225
+        },
+        "NEXUS_SELECTOR": {
+          "uniquelyBestN": 3244,
+          "selectedWhenUniquelyBest": 0.99476,
+          "inBestSetN": 3525,
+          "selectedWhenInBestSet": 0.992624
+        },
+        "OBJECTIVE_TARGETING_V1": {
+          "uniquelyBestN": 17,
+          "selectedWhenUniquelyBest": 0.529412,
+          "inBestSetN": 62,
+          "selectedWhenInBestSet": 0.145161
+        },
+        "THREAT_COVERING_V1": {
+          "uniquelyBestN": 16,
+          "selectedWhenUniquelyBest": 0.75,
+          "inBestSetN": 24,
+          "selectedWhenInBestSet": 0.75
+        }
+      },
+      "regimePrediction": {
+        "COSTLY_ACTION_OPTIMAL": {
+          "status": "EVALUATED",
+          "n": 6000,
+          "positives": 314,
+          "baseRate": 0.052333,
+          "AUROC": 0.908326,
+          "AUPRC": 0.477721,
+          "BRIER": 0.038949,
+          "BRIER_SKILL": 0.345158,
+          "ECE": 0.045888,
+          "atCalThreshold": {
+            "threshold": 0.42,
+            "predictedPositive": 433,
+            "precision": 0.482679,
+            "recall": 0.665605,
+            "f1": 0.559572
+          },
+          "identifiability": "REGIME_IDENTIFIABLE"
+        },
+        "FREE_ACTION_OPTIMAL": {
+          "status": "EVALUATED",
+          "n": 6000,
+          "positives": 5686,
+          "baseRate": 0.947667,
+          "AUROC": 0.908326,
+          "AUPRC": 0.991745,
+          "BRIER": 0.038949,
+          "BRIER_SKILL": 0.345158,
+          "ECE": 0.045888,
+          "atCalThreshold": {
+            "threshold": 0.47,
+            "predictedPositive": 5659,
+            "precision": 0.9742,
+            "recall": 0.969574,
+            "f1": 0.971882
+          },
+          "identifiability": "REGIME_IDENTIFIABLE"
+        },
+        "HORIZON_DEPENDENT": {
+          "status": "EVALUATED",
+          "n": 6000,
+          "positives": 5019,
+          "baseRate": 0.8365,
+          "AUROC": 0.678129,
+          "AUPRC": 0.901895,
+          "BRIER": 0.128843,
+          "BRIER_SKILL": 0.075188,
+          "ECE": 0.02693,
+          "atCalThreshold": {
+            "threshold": 0.63,
+            "predictedPositive": 5531,
+            "precision": 0.861508,
+            "recall": 0.949392,
+            "f1": 0.903318
+          },
+          "identifiability": "WEAKLY_IDENTIFIABLE"
+        },
+        "NEXUS_V1_BEATS_RESOURCE": {
+          "status": "EVALUATED",
+          "n": 5035,
+          "positives": 3310,
+          "baseRate": 0.657398,
+          "AUROC": 0.539268,
+          "AUPRC": 0.703813,
+          "BRIER": 0.232387,
+          "BRIER_SKILL": -0.011204,
+          "ECE": 0.079523,
+          "atCalThreshold": {
+            "threshold": 0.37,
+            "predictedPositive": 5025,
+            "precision": 0.657512,
+            "recall": 0.998187,
+            "f1": 0.792801
+          },
+          "identifiability": "NOT_IDENTIFIABLE"
+        },
+        "OBJECTIVE_APPLICABLE": {
+          "status": "INSUFFICIENT_EVIDENCE",
+          "n": 88,
+          "positives": 62
+        },
+        "THREAT_APPLICABLE": {
+          "status": "INSUFFICIENT_EVIDENCE"
+        }
+      }
+    }
+  },
+  "conclusion": {
+    "primary": "EXPERT_COMPLEMENTARITY_NOT_ROUTABLE",
+    "secondary": [
+      "ROUTER_VALUE_NOT_MATERIAL",
+      "MIXED_ACCURACY_REGRET_TRADEOFF"
+    ],
+    "holds": {
+      "INSUFFICIENT_EVIDENCE": false,
+      "ROUTER_VALUE_CONFIRMED": false,
+      "ROUTER_COLLAPSES_TO_SINGLE_POLICY": false,
+      "ROUTER_VALUE_SMALL": false,
+      "DEPLOYABLE_FEATURES_INSUFFICIENT": false,
+      "EXPERT_COMPLEMENTARITY_NOT_ROUTABLE": true
+    }
+  },
+  "roadmap": {
+    "ROUTER_VALUE_MEASURED": true,
+    "ROUTER_VALUE_MATERIAL": false,
+    "EXPERT_COMPLEMENTARITY_ROUTABLE": false,
+    "ROUTER_2_0_JUSTIFIED": false,
+    "EXPERT_REPAIR_REQUIRED": true,
+    "EXPERT_COMPLEMENTARITY_EXISTS": true,
+    "POLICY_QUALITY_REMAINS_PRIMARY_BOTTLENECK": true,
+    "bottleneckDecomposition": {
+      "policySetAccuracyLoss": 0.599833,
+      "selectionAccuracyLoss": 0.137
+    },
+    "READY_FOR_3F_FREEZE": false,
+    "READY_FOR_STAGE3G": false,
+    "STAGE3F_STATUS": "OPEN (requalification 2 of 6: 3F.6-P.1, P.1A, W, D remain)"
+  },
+  "metricVerification": {
+    "oracleNeverWorse": true,
+    "normalizedBounded": true,
+    "resourceAlwaysAvailable": true,
+    "routerSelectsOnlyAvailable": true,
+    "costlyImpliesResourceWrong": true
+  },
+  "staticAudit": {
+    "ROUTER_FIT_ON_DEV_ONLY": true,
+    "NO_DEEP_OR_WORLD_MODEL": true,
+    "NO_POLICY_WRITE": true
+  },
+  "disclosures": {
+    "EXPOSED_PARTITIONS": "SECONDARY: the P.1D/P.1E HOLDOUT; its policy outcomes were fully evaluated by P.1E and the costly-action hypothesis was formed on it",
+    "MATERIALITY_CORRECTIONS": [
+      "ACCURACY_WORSE case added: the historical Stage 3F.6-T documented that its rules lacked an accuracy-only \"worse\" outcome; here accuracy CI upper < 0 is ROUTER_WORSE",
+      "SCALE: the raw regret bar (2.0) was calibrated where always-RESOURCE mean regret was ~26; on the symmetric corpus it is ~52 (HOLDOUT) and ~84 (OOD), halving the bar in relative terms. The headline regret criterion is therefore normalized: mean normalized-regret reduction >= 0.02 with CI upper < 0. The historical raw rule is still reported."
+    ],
+    "PLAN_AMENDMENT_001": "after the open phase (DEV/CAL only) and before any fresh confirmatory row existed or any router result on a HOLDOUT or OOD partition was computed",
+    "LATENCY": "wall-clock scoring latency is measured and reported in the console and documentation only; it is not deterministic and is excluded from the certificate hash",
+    "P1E_CASCADE_USES_V2": "FIXED_PRIORITY_CASCADE_P1E contains the diagnostic NEXUS V2 exactly as P.1E froze it; FIXED_PRIORITY_CASCADE_HEADLINE is the headline-set comparator",
+    "LEVEL_COVERAGE": "the fresh partitions follow the same canonical admission order as P.1D, so FRESH_HOLDOUT is dominated by low curriculum levels (see data.fresh.levels)"
+  },
+  "checks": {
+    "PREDECESSORS_REPRODUCE": true,
+    "CORPUS_BOUND": true,
+    "POLICY_SET_BOUND": true,
+    "FEATURE_SET_BOUND": true,
+    "PLAN_BOUND": true,
+    "FROZEN_BEFORE_FRESH_AND_SEALED": true,
+    "OPEN_PHASE_REPRODUCED": true,
+    "ROUTER_DETERMINISTIC": true,
+    "HEADLINE_FEATURES_ALL_DEPLOYABLE": true,
+    "FRESH_INTEGRITY": true,
+    "FRESH_SYMMETRY_INTACT": true,
+    "METRICS_VERIFIED": true,
+    "NO_SEALED_TUNING_OR_LARGER_MODEL": true,
+    "AUTHORITY_R0": true,
+    "TESTS_PASS": true
+  },
+  "tests": {
+    "pass": 14,
+    "fail": 0,
+    "skipped": 0
+  },
+  "authority": {
+    "tier": "R0",
+    "canDispatch": false,
+    "canMutateLiveWorld": false,
+    "onlineLearningEnabled": false,
+    "promotedToLiveRuntime": false
+  },
+  "scope": {
+    "newOwners": [
+      "scripts/stage3f6tsym-analysis-plan.mjs",
+      "scripts/generate-stage3f6tsym-confirmatory.mjs",
+      "scripts/certify-stage3f6tsym-router-value.mjs",
+      "src/stage3f/router-value-v1.js",
+      "tests/stage3f6tsym-router-value.test.js"
+    ],
+    "existingOwnersModified": [
+      "package.json",
+      ".gitignore"
+    ],
+    "policiesModified": false,
+    "expertsAdded": false,
+    "routerMethodologyModified": false,
+    "stage3gStarted": false
+  },
+  "sourceHashes": {
+    "scripts/stage3f6tsym-analysis-plan.mjs": "fae74d2b9d246c3d6b8ae5070289a398225f96940523ad1b9a800e0b58e27405",
+    "scripts/generate-stage3f6tsym-confirmatory.mjs": "cb02d54b80d7de33afe0a86a7b78166a4a4f6259ff7731d29a1c6914bc2a6cd8",
+    "scripts/certify-stage3f6tsym-router-value.mjs": "c04633aa272064238680111030ec7b1f20d8c35482b17d96e365b2c15c8694c6",
+    "src/stage3f/router-value-v1.js": "8680baeca77528915f4adbab217a7337a8a26438d8e86651a6562059ea38514b",
+    "tests/stage3f6tsym-router-value.test.js": "45e34c6451ad01f413d1214071003828ee0572f628c96cc37067d920fb411f6a"
+  },
+  "certificationHash": "edd46e40fc2c6ddc611f9f78a432f723f0ae4e66facc1b2ca84183fa4d896f4e"
+}
