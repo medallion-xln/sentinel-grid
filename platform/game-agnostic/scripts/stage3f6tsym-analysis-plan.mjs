@@ -1,0 +1,171 @@
+#!/usr/bin/env node
+/* STAGE_3F_6_T_SYM — analysis plan for SYMMETRIC ROUTER-VALUE REQUALIFICATION.
+ *
+ * Written, hashed and committed BEFORE the fresh confirmatory partitions exist and before any router result on a
+ * sealed or exposed partition is computed. It fixes the policy set, the feature set, the router methodology (the
+ * frozen Stage 3F.6-T methodology, unchanged), the regime targets, every baseline, metric, materiality bar,
+ * statistical comparison and conclusion rule.
+ *
+ * The question is not "can we build a better router" but "can decision-time deployable features identify regimes in
+ * which selecting a specialist improves the final decision enough to justify routing".
+ */
+import { mkdir, writeFile } from 'node:fs/promises';
+import path from 'node:path';
+import { fileURLToPath, pathToFileURL } from 'node:url';
+import { deepFreeze, sha256 } from '../src/core/determinism.js';
+import { DEPLOYABLE_FEATURE_CONTRACT_HASH, DEPLOYABLE_FEATURE_CONTRACT_ID, DeployableProfile, DEPLOYABLE_PROFILES } from '../src/stage3f/deployable-feature-contract-v1.js';
+import { POLICY_SET_HASH, ROUTED_POLICIES, STAGE3F6T_METHODOLOGY } from '../src/stage3f/policy-router-v1.js';
+import { STAGE3F6P1E_PLAN_HASH, STAGE3F6P1E_POLICY_SET_HASH } from './stage3f6p1e-analysis-plan.mjs';
+
+const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
+
+/* ------------------------------------------------------------ feature set */
+export const STAGE3F6TSYM_FEATURE_SET = deepFreeze({
+  featureSetId: 'STAGE3F6TSYM_DEPLOYABLE_CORE_V1',
+  contract: { id: DEPLOYABLE_FEATURE_CONTRACT_ID, hash: DEPLOYABLE_FEATURE_CONTRACT_HASH, profile: DeployableProfile.DEPLOYABLE_CORE },
+  featureIds: [...DEPLOYABLE_PROFILES[DeployableProfile.DEPLOYABLE_CORE].featureIds].sort(),
+  standardization: STAGE3F6T_METHODOLOGY.standardization,
+  source: 'identical to the historical Stage 3F.6-T router input (sorted DEPLOYABLE_CORE ids); nothing added, removed or replaced',
+});
+export const STAGE3F6TSYM_FEATURE_SET_HASH = sha256(STAGE3F6TSYM_FEATURE_SET);
+
+/* -------------------------------------------------------------------- plan */
+export const STAGE3F6TSYM_PLAN = deepFreeze({
+  stage: 'STAGE_3F_6_T_SYM_ROUTER_VALUE_REQUALIFICATION',
+  question: 'Can decision-time observable features reliably identify regimes in which selecting a specialist policy improves the final decision enough to justify routing?',
+  role: 'EVALUATION_ONLY',
+  requalifies: 'Stage 3F.6-T (5d6910dd…6582) on the FORGE_SYMMETRIC_V2 lineage',
+  predecessors: {
+    stage3f6p1eCertification: '11dcf65b79679ae8748eed0f5f9f3fdef38223524308aaa353c5b482eed8a031', stage3f6p1ePlanHash: STAGE3F6P1E_PLAN_HASH,
+    stage3f6p1dCertification: 'afd0d6e6057f497e9e1d3666cf553518e134b0c4d09f783601b393c081ae7073',
+    stage3f6p1cCertification: '81586cbe068885596d7f8b5c78d6f6d5d72e53425289f850386e0c43ddff702d',
+    historicalStage3f6tCertification: '5d6910dd39405ee9f9fc2868f1309ff84998d30f7128e7a60b36644ca9056582',
+    corpusContentHash: '4de383eb0c6e9836706e87c6626de53ccb54853fb527f368cfaf599617e6c75e',
+  },
+  policySet: {
+    headline: ROUTED_POLICIES, headlineAliases: { NEXUS_SELECTOR: 'NEXUS_SELECTOR_V1' },
+    stage3f6tPolicySetHash: POLICY_SET_HASH, stage3f6p1ePolicySetHash: STAGE3F6P1E_POLICY_SET_HASH,
+    diagnosticOnly: { CANDIDATE_ROUTER: 'the same methodology with NEXUS_SELECTOR_V2_CANDIDATE in the NEXUS slot; reported separately, never headline (P.1E: SHORTCUT_DEPENDENT)' },
+    choicesSource: 'the stored corpus choices, which Stage 3F.6-P.1E reproduced 20000/20000; fresh partitions store them the same way',
+  },
+  featureSetHash: STAGE3F6TSYM_FEATURE_SET_HASH,
+  featureAudit: {
+    classes: ['DEPLOYABLE', 'NON_DEPLOYABLE', 'LEAKED', 'REQUIRES_ROLLOUT', 'REQUIRES_FUTURE_STATE', 'REQUIRES_ORACLE', 'DIVERGENT', 'UNAVAILABLE'],
+    rules: {
+      NON_DEPLOYABLE: 'contract decisionTimeAvailable is false, or a SIMULATOR_* / EXPERT_V2B capability is required',
+      LEAKED: 'contract labelDerived is true, OR (empirical) single-feature DEV AUROC >= 0.99 for any regime target or best-policy target',
+      REQUIRES_ROLLOUT: 'contract multiStepRollout is true', REQUIRES_FUTURE_STATE: 'contract futureLeaking is true',
+      REQUIRES_ORACLE: 'the feature is computed from counterfactual outcomes (none of the contract evidence paths may reference the oracle)',
+      DIVERGENT: 'the stored feature differs from its value on any D4 twin on the corpus equivariance sample (P.1D flag) or on the fresh sample',
+      UNAVAILABLE: 'the feature is missing or non-finite on any row',
+      DEPLOYABLE: 'none of the above',
+    },
+    headlineRule: 'the headline router uses DEPLOYABLE features only; a feature failing the audit is reported and dropped, never silently replaced',
+  },
+  partitions: {
+    DEV: 'fit (router, regime predictors, standardization)', CAL: 'selection (router threshold, regime thresholds, best single, cascade order)',
+    FRESH_HOLDOUT: 'PRIMARY confirmatory: 6000 new records from the declared, unused HOLDOUT seed 2022 (curriculum levels 0-5 in canonical order)',
+    FRESH_OOD: 'PRIMARY robustness: 6000 new records from the declared, unused OOD seed 2032 (levels 6-7)',
+    EXPOSED_HOLDOUT: 'SECONDARY: the P.1D/P.1E HOLDOUT; its policy outcomes were fully evaluated by P.1E and the costly-action hypothesis was formed on it',
+    EXPOSED_OOD: 'SECONDARY: the P.1D/P.1E OOD, likewise exposed',
+    exposureDecision: 'mirrors the historical Stage 3F.6-T decision: exposed partitions are not used for primary claims',
+    freshAdmission: 'P.1D corpusRecord (unchanged, benchmark-bound) in canonical combination order; a candidate whose record, world or topology hash is already claimed anywhere in the 20000-row lineage or earlier in the fresh set is rejected; equivariance sampled every 25th combination',
+    freshGeneration: 'only after this plan and the open-phase report are committed unchanged at HEAD',
+  },
+  router: {
+    methodology: STAGE3F6T_METHODOLOGY,
+    implementation: 'src/stage3f/policy-router-v1.js fitPolicyRouter / routeEpisode, unmodified',
+    bestSingle: 'deployable policy with coverage 1 on DEV+CAL and minimum mean regret (historical rule)',
+    threshold: 'historical CAL rule over the historical grid: minimise mean regret; ties -> higher accuracy -> lower threshold',
+    complexity: 'no larger model; no deep network; no world model; no non-deployable feature',
+  },
+  regimeTargets: {
+    definitions: {
+      COSTLY_ACTION_OPTIMAL: 'no optimal action has declared cost 0 (P.1E definition); RESOURCE, which always selects a zero-cost action, is then necessarily wrong',
+      FREE_ACTION_OPTIMAL: 'complement of COSTLY_ACTION_OPTIMAL; reported for completeness, identical discrimination by construction',
+      HORIZON_DEPENDENT: 'label.horizonClass = HORIZON_DEPENDENT',
+      NEXUS_V1_BEATS_RESOURCE: 'NEXUS V1 proposes and its regret is strictly below RESOURCE (evaluated on V1-proposing rows)',
+      OBJECTIVE_APPLICABLE: 'OBJECTIVE proposes and its regret is strictly below RESOURCE (evaluated on OBJECTIVE-proposing rows)',
+      THREAT_APPLICABLE: 'THREAT proposes and its regret is strictly below RESOURCE (evaluated on THREAT-proposing rows)',
+    },
+    oracleOnly: 'every target is oracle-derived; targets are never router inputs',
+    model: 'binary logistic regression with the Stage 3F.6-T optimiser settings (DEV standardisation, zeros init, lr 0.1, l2 1e-3 excl. bias, 2000 full-batch iterations), fitted on DEV',
+    metrics: ['AUROC', 'AUPRC (average precision) vs base rate', 'Brier score and Brier skill vs DEV base rate', 'ECE (10 equal-width bins)',
+      'precision / recall / F1 at the CAL threshold that maximises F1 on a 0.01 grid (ties -> lower threshold)', 'best single-feature DEV AUROC (separability)'],
+    minPositives: 'a target with fewer than 50 positives in DEV or in the evaluated partition is reported INSUFFICIENT_EVIDENCE for that partition',
+    identifiable: 'REGIME_IDENTIFIABLE when FRESH_HOLDOUT AUROC >= 0.75; WEAKLY_IDENTIFIABLE when >= 0.65; else NOT_IDENTIFIABLE',
+  },
+  baselines: {
+    ALWAYS_RESOURCE: 'RESOURCE_PRESERVING_V1 on every episode',
+    BEST_SINGLE_POLICY: 'router.bestSingle (expected RESOURCE; recorded as selected)',
+    RANDOM_VALID_POLICY: 'uniform over proposing headline policies, reported as exact expectation',
+    FIXED_PRIORITY_CASCADE_P1E: 'the P.1E frozen cascade THREAT -> OBJECTIVE -> NEXUS_V2 -> RESOURCE (includes the diagnostic V2)',
+    FIXED_PRIORITY_CASCADE_HEADLINE: 'the same CAL rule restricted to headline specialists: those whose CAL accuracy-when-proposing exceeds the best single, in descending CAL accuracy, then the best single',
+    HISTORICAL_3F6T_ROUTER_FROZEN: 'the historical Stage 3F.6-T router weights (trained on Forge V1), applied unchanged at their frozen threshold and fallback',
+    ROUTER_SYMMETRIC: 'the historical methodology refitted on symmetric DEV (the stage router)',
+    PERFECT_POLICY_SELECTOR: 'oracle reference: minimum-regret proposing headline policy',
+    diagnostics: {
+      CANDIDATE_ROUTER_V2: 'see policySet.diagnosticOnly',
+      REGIME_GATED_SWITCH: 'predeclared diagnostic of the central hypothesis: if the DEV-fitted COSTLY_ACTION_OPTIMAL predictor exceeds its CAL threshold, select NEXUS V1 when it proposes (else THREAT, else OBJECTIVE, else RESOURCE); otherwise RESOURCE. Linear, untrained beyond the regime predictor.',
+      COSTLY_ORACLE_SWITCH: 'oracle reference for the gate: the same switch driven by the TRUE costly label (upper bound of the gated approach)',
+    },
+  },
+  metrics: {
+    downstream: ['ROUTED_ACTION_ACCURACY', 'REGRET', 'NORMALIZED_REGRET (regret / max regret of the episode surface)', 'CATASTROPHIC_ERROR_RATE (raw regret >= 100, Stage 3F.6 contract; raw-scale caveat)',
+      'POLICY_SELECTION_ACCURACY (selected policy in the best set)', 'ABSTENTION (router below threshold, fallback used)', 'COMPUTE_COST (multiply-adds per decision, deterministic)'],
+    relative: ['ROUTER_MINUS_RESOURCE / BEST_SINGLE / CASCADE: accuracy, regret, normalized regret, paired bootstrap 95%'],
+    headroom: 'HEADROOM_AVAILABLE = perfect selector minus best single; HEADROOM_CAPTURED_ACCURACY = (router - best single) / (oracle - best single); HEADROOM_CAPTURED_REGRET likewise when the denominator > 0',
+    collapse: 'selection distribution per partition; historical rule: POLICY_COLLAPSE when the top share > 0.9 and exceeds that policy\'s best-set share by > 0.05',
+    specialistValue: 'for each specialist the router selects instead of RESOURCE: BENEFIT_SAVED = sum over such episodes of max(0, r_RESOURCE - r_S), FALSE_SELECTION_HARM = sum of max(0, r_S - r_RESOURCE), both per partition episode (raw and normalized); NET = benefit - harm',
+    historicalHarm: 'historical rule: acceptable when episodes worsened <= improved AND false-selection p95 added regret <= best single p95 regret',
+    bootstrap: 'accuracy and raw regret: the historical pairedBootstrap (1000 resamples, seed 3647); normalized regret: 1000 paired resamples, mulberry32 seeded by sha256(label)',
+    latency: 'wall-clock scoring latency is measured and reported in the console and documentation only; it is not deterministic and is excluded from the certificate hash',
+  },
+  materiality: {
+    historical: { minAccuracyGain: 0.02, minRegretReduction: 2.0, minEvidenceN: 2000, rule: 'accuracy gain >= 0.02 with CI lower > 0, OR raw regret reduction >= 2.0 with CI upper < 0' },
+    correctionsDeclaredBeforeSealedEvaluation: [
+      'ACCURACY_WORSE case added: the historical Stage 3F.6-T documented that its rules lacked an accuracy-only "worse" outcome; here accuracy CI upper < 0 is ROUTER_WORSE',
+      'SCALE: the raw regret bar (2.0) was calibrated where always-RESOURCE mean regret was ~26; on the symmetric corpus it is ~52 (HOLDOUT) and ~84 (OOD), halving the bar in relative terms. The headline regret criterion is therefore normalized: mean normalized-regret reduction >= 0.02 with CI upper < 0. The historical raw rule is still reported.',
+    ],
+    headline: 'MATERIAL = (accuracy gain >= 0.02 AND CI lower > 0 AND normalized regret not significantly worse) OR (normalized-regret reduction >= 0.02 AND CI upper < 0 AND accuracy not significantly worse)',
+    mixedTradeoff: 'MIXED_ACCURACY_REGRET_TRADEOFF when one metric is significantly better and the other significantly worse; never MATERIAL, never statistically better',
+    mixedGuardDisclosure: 'the mixed-tradeoff guard was added after the open phase showed, on CAL only, that the historical methodology trades accuracy for regret (CAL: regret 44.6 -> 39.8, accuracy 0.261 -> 0.204); it only makes the bar stricter',
+    comparators: ['BEST_SINGLE_POLICY (primary)', 'FIXED_PRIORITY_CASCADE_P1E', 'FIXED_PRIORITY_CASCADE_HEADLINE'],
+    oodNotWorse: 'on FRESH_OOD the router is not significantly worse than the best single on accuracy (CI upper >= 0) nor on normalized regret (CI lower <= 0)',
+  },
+  conclusions: {
+    labels: ['ROUTER_VALUE_CONFIRMED', 'ROUTER_VALUE_SMALL', 'ROUTER_VALUE_NOT_MATERIAL', 'ROUTER_COLLAPSES_TO_SINGLE_POLICY', 'DEPLOYABLE_FEATURES_INSUFFICIENT',
+      'EXPERT_COMPLEMENTARITY_NOT_ROUTABLE', 'INSUFFICIENT_EVIDENCE'],
+    primaryPrecedence: [
+      'INSUFFICIENT_EVIDENCE if FRESH_HOLDOUT n < 2000',
+      'ROUTER_VALUE_CONFIRMED if MATERIAL vs best single AND MATERIAL vs FIXED_PRIORITY_CASCADE_HEADLINE on FRESH_HOLDOUT AND oodNotWorse AND no collapse AND historical harm acceptable',
+      'ROUTER_COLLAPSES_TO_SINGLE_POLICY if POLICY_COLLAPSE on FRESH_HOLDOUT and not MATERIAL vs best single',
+      'ROUTER_VALUE_SMALL if statistically better than best single (one metric significantly better, the other not significantly worse) but not CONFIRMED',
+      'DEPLOYABLE_FEATURES_INSUFFICIENT if COSTLY_ACTION_OPTIMAL and NEXUS_V1_BEATS_RESOURCE are both NOT_IDENTIFIABLE on FRESH_HOLDOUT',
+      'EXPERT_COMPLEMENTARITY_NOT_ROUTABLE if the FRESH_HOLDOUT accuracy headroom lower bound >= 0.05 but HEADROOM_CAPTURED_ACCURACY < 0.2',
+      'ROUTER_VALUE_NOT_MATERIAL otherwise',
+    ],
+    secondary: 'every label whose own condition holds is also listed, plus MIXED_ACCURACY_REGRET_TRADEOFF when it holds vs the best single on FRESH_HOLDOUT',
+  },
+  roadmap: {
+    ROUTER_VALUE_MEASURED: 'stage PASS',
+    ROUTER_VALUE_MATERIAL: 'MATERIAL vs best single on FRESH_HOLDOUT and oodNotWorse',
+    EXPERT_COMPLEMENTARITY_ROUTABLE: 'ROUTER_VALUE_MATERIAL and HEADROOM_CAPTURED_ACCURACY >= 0.2 on FRESH_HOLDOUT',
+    ROUTER_2_0_JUSTIFIED: 'primary conclusion ROUTER_VALUE_CONFIRMED (complementarity exists, deployable features identify it, material downstream value beyond the untrained cascade)',
+    EXPERT_REPAIR_REQUIRED: 'not ROUTER_2_0_JUSTIFIED, or perfect-selector accuracy on FRESH_HOLDOUT < 0.5',
+    READY_FOR_3F_FREEZE: 'false: 3F.6-P.1, 3F.6-P.1A, 3F.6-W and 3F.6-D requalifications remain',
+    READY_FOR_STAGE3G: 'false by construction',
+  },
+  notChanged: ['experts', 'policies', 'Nexus', 'RESOURCE', 'FORGE_SYMMETRIC_V2 semantics', 'the 20000-row corpus', 'the feature contract', 'the router methodology', 'authority', 'Stage 3G (not begun)'],
+  authority: { tier: 'R0', canDispatch: false, canMutateLiveWorld: false, onlineLearningEnabled: false, promotedToLiveRuntime: false },
+});
+export const STAGE3F6TSYM_PLAN_HASH = sha256(STAGE3F6TSYM_PLAN);
+export const STAGE3F6TSYM_OUT = 'artifacts/stage3f6tsym-router-value';
+export const STAGE3F6TSYM_PLAN_PATH = `${STAGE3F6TSYM_OUT}/stage3f6tsym-analysis-plan.json`;
+
+if (process.argv[1] && import.meta.url === pathToFileURL(process.argv[1]).href) {
+  await mkdir(path.join(root, STAGE3F6TSYM_OUT), { recursive: true });
+  await writeFile(path.join(root, STAGE3F6TSYM_PLAN_PATH), `${JSON.stringify({ ...STAGE3F6TSYM_PLAN, planHash: STAGE3F6TSYM_PLAN_HASH,
+    featureSet: STAGE3F6TSYM_FEATURE_SET }, null, 2)}\n`);
+  console.log(JSON.stringify({ planHash: STAGE3F6TSYM_PLAN_HASH, featureSetHash: STAGE3F6TSYM_FEATURE_SET_HASH }));
+}
