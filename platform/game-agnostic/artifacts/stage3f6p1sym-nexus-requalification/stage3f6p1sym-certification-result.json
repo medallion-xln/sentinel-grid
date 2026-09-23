@@ -1,0 +1,5312 @@
+{
+  "schemaVersion": 1,
+  "stage": "STAGE_3F_6_P_1_SYM_NEXUS_REMEDIATION_SYMMETRIC_REQUALIFICATION",
+  "status": "PASS",
+  "planHash": "b7c69812be75d8ef9bf8157d84db76becd292119e5f6f79f781fda1ecc0c95c9",
+  "seedPlanHash": "5571364b9c3b4fad4109399b607dbdea031a8842ef54856fd9d2bcfc3efd1f3b",
+  "policyHash": "77d73cea1886cb55be7fe2a806e6377f27be82a157db4da193a79f673c61a1cb",
+  "candidateSchemaHash": "631af2fc5eb75a6e28e51192f735e7a80f1b32c90c7d737a60152e67c2eef82d",
+  "openPhaseReportHash": "b8c15f2fa18692f955f411dabb7aecb851de5b61ca8f2811cd2ec60695b09fa3",
+  "freeze": {
+    "freezeCommit": "8656f3dd419f78e8ac10fea3b015b61c183710a5",
+    "planAndOpenReportInFreezeCommit": true,
+    "evaluationFilesInFreezeCommit": true,
+    "noFreshOrResultInFreezeCommit": true,
+    "freshGeneratedAtHead": "8656f3dd419f78e8ac10fea3b015b61c183710a5",
+    "freshGeneratedAfterFreeze": true,
+    "evaluationFilesUnchangedSinceGeneration": true,
+    "FROZEN_BEFORE_SEALED_DATA": true
+  },
+  "predecessorChecks": {
+    "stage3f6p1asym_transitive": true,
+    "note": "P.1A-SYM --check requires P.1C, P.1D, P.1E and 3F.6-T-SYM to reproduce byte for byte"
+  },
+  "data": {
+    "benchmarkId": "FORGE_SYMMETRIC_V2",
+    "corpusContentHash": "4de383eb0c6e9836706e87c6626de53ccb54853fb527f368cfaf599617e6c75e",
+    "fresh": {
+      "contentHash": "fee73d23f3cf55d89d9ba9c6c11c9bc86012db497e783f35235de88badbd8523",
+      "contentBound": true,
+      "planBound": true,
+      "seedPlanBound": true,
+      "seedAudit": {
+        "declared": {
+          "HOLDOUT": [
+            3021,
+            3022,
+            3023
+          ],
+          "OOD": [
+            3031,
+            3032,
+            3033
+          ]
+        },
+        "overlapWithPriorSeeds": [],
+        "usedByPriorRows": [],
+        "holdoutOodOverlap": [],
+        "duplicates": 0
+      },
+      "seedsUsed": {
+        "P1SYM_HOLDOUT": [
+          3021
+        ],
+        "P1SYM_OOD": [
+          3031
+        ]
+      },
+      "counts": {
+        "P1SYM_HOLDOUT": 6000,
+        "P1SYM_OOD": 6000
+      },
+      "stats": {
+        "P1SYM_HOLDOUT": {
+          "attempted": 8504,
+          "admitted": 6000,
+          "rejected": {
+            "TOPOLOGY_HASH_CLAIMED": 2282,
+            "ISLANDS": 52,
+            "LAYERS": 65,
+            "TREE_BRANCHES_ACYCLIC": 81,
+            "CONTESTED_BOTTLENECK": 17,
+            "BRIDGE_CUT_EXISTS": 7
+          },
+          "seedsUsed": [
+            3021
+          ],
+          "combinationsAvailable": 64800
+        },
+        "P1SYM_OOD": {
+          "attempted": 6418,
+          "admitted": 6000,
+          "rejected": {
+            "TOPOLOGY_HASH_CLAIMED": 355,
+            "TREE_BRANCHES_ACYCLIC": 28,
+            "BRIDGE_CUT_EXISTS": 12,
+            "LAYERS": 23
+          },
+          "seedsUsed": [
+            3031
+          ],
+          "combinationsAvailable": 21600
+        }
+      },
+      "priorLineage": [
+        {
+          "name": "P.1D",
+          "rows": 20000,
+          "verified": true
+        },
+        {
+          "name": "T-SYM",
+          "rows": 12000,
+          "verified": true
+        },
+        {
+          "name": "P.1A-SYM",
+          "rows": 12000,
+          "verified": true
+        }
+      ],
+      "RECORD_OVERLAP": 0,
+      "STATE_OVERLAP": 0,
+      "TOPOLOGY_OVERLAP": 0,
+      "DERIVED_VARIANT_LEAKAGE": 0,
+      "DUPLICATE_HASHES": 0,
+      "levels": {
+        "P1SYM_HOLDOUT": [
+          0,
+          1,
+          2
+        ],
+        "P1SYM_OOD": [
+          6,
+          7
+        ]
+      },
+      "equivarianceChecks": 2415,
+      "SYMMETRY": {
+        "legal": 1,
+        "optimal": 1,
+        "regret": 1,
+        "label": 1,
+        "coreFeatureInvariant": 1
+      },
+      "benchmarkBound": true
+    }
+  },
+  "policies": {
+    "baseline": {
+      "id": "NEXUS_SELECTOR_V1",
+      "source": "src/lab/stage3c-learned-nexus.js#nexusRelationalSelector",
+      "diagnosis": "src/experts/nexus.js#evaluateNexus"
+    },
+    "remediated": {
+      "id": "NEXUS_SELECTOR_V2_CANDIDATE",
+      "source": "src/stage3f/nexus-selector-v2-candidate.js",
+      "candidateHash": "8c658bfa41c5e84137bd78de6f70a6f802c3754936ffbc995ce866da9e22a900",
+      "historicalCandidateHash": "8c658bfa41c5e84137bd78de6f70a6f802c3754936ffbc995ce866da9e22a900",
+      "historicalSourceHash": "965cb36f003045a5f80e0e9860c03b99db0d427bdd1768d5fc33ec72e2581577"
+    },
+    "controls": [
+      "RESOURCE_PRESERVING_V1",
+      "RANDOM_LEGAL_V1",
+      "UNIFORM_LEGAL_EXPECTATION"
+    ],
+    "references": [
+      "OBJECTIVE_TARGETING_V1",
+      "THREAT_COVERING_V1",
+      "GREEDY (simulator reference)",
+      "PERFECT_SELECTOR over {RESOURCE, NEXUS, OBJECTIVE, THREAT} with V1 or V2 in the NEXUS slot"
+    ],
+    "sourceSha256": {
+      "src/lab/stage3c-learned-nexus.js": "aae20d1d40b1cc5f93b5b46dd700f1ef1f66ea0ec44507efc4c4cfecba198574",
+      "src/experts/nexus.js": "7a6e194b1b97221fc9e2a15cc9f1885c0858ab50d784bdf81e5cbc58de70a144",
+      "src/stage3f/nexus-selector-v2-candidate.js": "965cb36f003045a5f80e0e9860c03b99db0d427bdd1768d5fc33ec72e2581577",
+      "src/stage3f/deployable-action-proposal-v1.js": "b20b7d04e797f53412a64da4e68da519045d39d0524b96cc900888dc669f58c4"
+    },
+    "historicalStage3f6p1Certification": "48462a169c88337a9f27315c3e10b83f615e077a8ba2dc6751fdf437351d31e4"
+  },
+  "scorers": {
+    "NX_RELATIONAL_ONLY": {
+      "modelHash": "5116f3bcf15c3600c15bbb0e26e5fe69db37aa953d473101aa144b1b898cadb9",
+      "columns": 46,
+      "trainedGroups": 4000
+    },
+    "NX_DEPLOYABLE": {
+      "modelHash": "af5899dd83816211fb426cc3639eb9e828d781fb4d52b58541d98160a4b94c77",
+      "columns": 54,
+      "trainedGroups": 4000
+    },
+    "NX_PRIVILEGED": {
+      "modelHash": "1a33d0a9c0ce77bc6a0d0770b4779bb5831cb309b55e33087016b0e686309435",
+      "columns": 65,
+      "trainedGroups": 4000
+    },
+    "NX_PRIV_MOVEMENT_ONLY": {
+      "modelHash": "5288cf09ee10edfb1f41f6643f2b45c6cce8cbe382d926c1fd5319ad803d285d",
+      "columns": 61,
+      "trainedGroups": 4000
+    },
+    "NX_PRIV_TARGET_ONLY": {
+      "modelHash": "0265fdc17cf0c20f1ded5f77280b49b9b97f962988a6143dbb7d9556e325f6bf",
+      "columns": 58,
+      "trainedGroups": 4000
+    },
+    "NX_DEPLOYABLE_ONESTEP": {
+      "modelHash": "a8f568257765fedb4e1f40d6576920d466fdca8f4a8d7a53b844ddb6c710ed9d",
+      "columns": 55,
+      "trainedGroups": 4000
+    },
+    "NX_PRIVILEGED_ONESTEP": {
+      "modelHash": "5ce3dfacd65900574f4180e8638b2ae7fc4be12864b61e8baeeae6def0766934",
+      "columns": 66,
+      "trainedGroups": 4000
+    }
+  },
+  "results": {
+    "P1SYM_HOLDOUT": {
+      "n": 6000,
+      "strategies": {
+        "NEXUS_SELECTOR_V1": {
+          "n": 6000,
+          "proposingN": 5366,
+          "coverage": 0.894333,
+          "top1": 0.153746,
+          "meanRegret": 45.729035,
+          "normalizedRegret": 0.560519,
+          "catastrophicRate": 0.085352,
+          "actionTypes": {
+            "PROTECT": 0.903653,
+            "REINFORCE": 0.067275,
+            "REPAIR": 0.029072
+          }
+        },
+        "NEXUS_SELECTOR_V2_CANDIDATE": {
+          "n": 6000,
+          "proposingN": 5366,
+          "coverage": 0.894333,
+          "top1": 0.294447,
+          "meanRegret": 43.774693,
+          "normalizedRegret": 0.521476,
+          "catastrophicRate": 0.120015,
+          "actionTypes": {
+            "MOVE": 0.846254,
+            "REINFORCE": 0.067275,
+            "ATTACK": 0.030563,
+            "REPAIR": 0.029072,
+            "PROTECT": 0.026836
+          }
+        },
+        "RESOURCE_PRESERVING_V1": {
+          "n": 6000,
+          "proposingN": 6000,
+          "coverage": 1,
+          "top1": 0.264333,
+          "meanRegret": 48.684167,
+          "normalizedRegret": 0.567201,
+          "catastrophicRate": 0.145167,
+          "actionTypes": {
+            "MOVE": 0.821333,
+            "RETREAT": 0.178333,
+            "WAIT": 0.000333
+          }
+        },
+        "OBJECTIVE_TARGETING_V1": {
+          "n": 6000,
+          "proposingN": 427,
+          "coverage": 0.071167,
+          "top1": 0.262295,
+          "meanRegret": 52.351288,
+          "normalizedRegret": 0.491961,
+          "catastrophicRate": 0.206089,
+          "actionTypes": {
+            "PROTECT": 0.676815,
+            "REPAIR": 0.269321,
+            "RESTORE": 0.053864
+          }
+        },
+        "THREAT_COVERING_V1": {
+          "n": 6000,
+          "proposingN": 149,
+          "coverage": 0.024833,
+          "top1": 0.328859,
+          "meanRegret": 32.389262,
+          "normalizedRegret": 0.31722,
+          "catastrophicRate": 0.067114,
+          "actionTypes": {
+            "PROTECT": 1
+          }
+        },
+        "RANDOM_LEGAL_V1": {
+          "n": 6000,
+          "proposingN": 6000,
+          "coverage": 1,
+          "top1": 0.2005,
+          "meanRegret": 49.589,
+          "normalizedRegret": 0.593251,
+          "catastrophicRate": 0.126667,
+          "actionTypes": {
+            "MOVE": 0.507833,
+            "PROTECT": 0.217833,
+            "WAIT": 0.158667,
+            "RETREAT": 0.083667,
+            "REPAIR": 0.010333,
+            "REINFORCE": 0.01,
+            "ATTACK": 0.004,
+            "RESTORE": 0.004,
+            "BYPASS": 0.003667
+          }
+        },
+        "GREEDY": {
+          "n": 6000,
+          "proposingN": 6000,
+          "coverage": 1,
+          "top1": 0.200333,
+          "meanRegret": 43.5465,
+          "normalizedRegret": 0.540711,
+          "catastrophicRate": 0.079667,
+          "actionTypes": {
+            "PROTECT": 0.864833,
+            "REPAIR": 0.095333,
+            "RESTORE": 0.022667,
+            "BYPASS": 0.017,
+            "MOVE": 0.000167
+          }
+        },
+        "UNIFORM_LEGAL_EXPECTATION": {
+          "n": 6000,
+          "proposingN": 6000,
+          "coverage": 1,
+          "top1": 0.204028,
+          "meanRegret": null,
+          "normalizedRegret": 0.586533,
+          "catastrophicRate": 0,
+          "actionTypes": null
+        },
+        "NX_RELATIONAL_ONLY": {
+          "n": 6000,
+          "proposingN": 6000,
+          "coverage": 1,
+          "top1": 0.343417,
+          "meanRegret": 40.462958,
+          "normalizedRegret": 0.488437,
+          "catastrophicRate": 0.109208,
+          "actionTypes": {
+            "MOVE": 0.8065,
+            "REPAIR": 0.094667,
+            "PROTECT": 0.061,
+            "RESTORE": 0.027833,
+            "BYPASS": 0.01
+          }
+        },
+        "NX_DEPLOYABLE": {
+          "n": 6000,
+          "proposingN": 6000,
+          "coverage": 1,
+          "top1": 0.385861,
+          "meanRegret": 35.5135,
+          "normalizedRegret": 0.435981,
+          "catastrophicRate": 0.087333,
+          "actionTypes": {
+            "MOVE": 0.808167,
+            "REPAIR": 0.094667,
+            "PROTECT": 0.061,
+            "RESTORE": 0.026167,
+            "BYPASS": 0.01
+          }
+        },
+        "NX_PRIVILEGED": {
+          "n": 6000,
+          "proposingN": 6000,
+          "coverage": 1,
+          "top1": 0.754528,
+          "meanRegret": 10.12975,
+          "normalizedRegret": 0.099133,
+          "catastrophicRate": 0.021333,
+          "actionTypes": {
+            "MOVE": 0.853167,
+            "REPAIR": 0.094667,
+            "PROTECT": 0.027667,
+            "RESTORE": 0.0185,
+            "BYPASS": 0.006
+          }
+        },
+        "NX_PRIV_MOVEMENT_ONLY": {
+          "n": 6000,
+          "proposingN": 6000,
+          "coverage": 1,
+          "top1": 0.755361,
+          "meanRegret": 10.108833,
+          "normalizedRegret": 0.09868,
+          "catastrophicRate": 0.021333,
+          "actionTypes": {
+            "MOVE": 0.852333,
+            "REPAIR": 0.094667,
+            "PROTECT": 0.028333,
+            "RESTORE": 0.0185,
+            "BYPASS": 0.006167
+          }
+        },
+        "NX_PRIV_TARGET_ONLY": {
+          "n": 6000,
+          "proposingN": 6000,
+          "coverage": 1,
+          "top1": 0.385861,
+          "meanRegret": 35.5135,
+          "normalizedRegret": 0.435981,
+          "catastrophicRate": 0.087333,
+          "actionTypes": {
+            "MOVE": 0.808167,
+            "REPAIR": 0.094667,
+            "PROTECT": 0.061,
+            "RESTORE": 0.026167,
+            "BYPASS": 0.01
+          }
+        },
+        "NX_DEPLOYABLE_ONESTEP": {
+          "n": 6000,
+          "proposingN": 6000,
+          "coverage": 1,
+          "top1": 0.409,
+          "meanRegret": 32.926417,
+          "normalizedRegret": 0.408078,
+          "catastrophicRate": 0.081083,
+          "actionTypes": {
+            "MOVE": 0.810667,
+            "REPAIR": 0.094667,
+            "PROTECT": 0.061167,
+            "RESTORE": 0.021833,
+            "BYPASS": 0.011667
+          }
+        },
+        "NX_PRIVILEGED_ONESTEP": {
+          "n": 6000,
+          "proposingN": 6000,
+          "coverage": 1,
+          "top1": 0.757,
+          "meanRegret": 10.0145,
+          "normalizedRegret": 0.098056,
+          "catastrophicRate": 0.021167,
+          "actionTypes": {
+            "MOVE": 0.852667,
+            "REPAIR": 0.094667,
+            "PROTECT": 0.027667,
+            "RESTORE": 0.015333,
+            "BYPASS": 0.009667
+          }
+        }
+      },
+      "calibration": {
+        "NX_RELATIONAL_ONLY": {
+          "brier": 0.208887,
+          "crossEntropy": 1.27937,
+          "ece": 0.026202
+        },
+        "NX_DEPLOYABLE": {
+          "brier": 0.219143,
+          "crossEntropy": 1.265492,
+          "ece": 0.013595
+        },
+        "NX_PRIVILEGED": {
+          "brier": 0.181839,
+          "crossEntropy": 0.781701,
+          "ece": 0.058144
+        },
+        "NX_PRIV_MOVEMENT_ONLY": {
+          "brier": 0.182587,
+          "crossEntropy": 0.781762,
+          "ece": 0.061504
+        },
+        "NX_PRIV_TARGET_ONLY": {
+          "brier": 0.219112,
+          "crossEntropy": 1.265558,
+          "ece": 0.014159
+        },
+        "NX_DEPLOYABLE_ONESTEP": {
+          "brier": 0.228005,
+          "crossEntropy": 1.25931,
+          "ece": 0.020035
+        },
+        "NX_PRIVILEGED_ONESTEP": {
+          "brier": 0.181957,
+          "crossEntropy": 0.7786,
+          "ece": 0.057694
+        }
+      },
+      "comparisons": {
+        "V2_vs_V1": {
+          "n": 5366,
+          "top1Difference": 0.140701,
+          "top1Ci95": [
+            0.125815,
+            0.156308
+          ],
+          "nregDifference": -0.039044,
+          "nregCi95": [
+            -0.052519,
+            -0.025353
+          ],
+          "MATERIAL": true,
+          "statisticallyBetter": true,
+          "NREG_WORSE": false
+        },
+        "V2_vs_V1_TIE_RANDOMISED": {
+          "n": 5366,
+          "top1Difference": 0.138418,
+          "top1Ci95": [
+            0.128321,
+            0.148727
+          ],
+          "nregDifference": -0.042149,
+          "nregCi95": [
+            -0.051256,
+            -0.032976
+          ],
+          "MATERIAL": true,
+          "statisticallyBetter": true,
+          "NREG_WORSE": false
+        },
+        "V1_vs_UNIFORM": {
+          "n": 5366,
+          "top1Difference": -0.049969,
+          "top1Ci95": [
+            -0.058599,
+            -0.041302
+          ],
+          "nregDifference": -0.025725,
+          "nregCi95": [
+            -0.031439,
+            -0.019339
+          ],
+          "MATERIAL": false,
+          "statisticallyBetter": false,
+          "NREG_WORSE": false
+        },
+        "V2_vs_UNIFORM": {
+          "n": 5366,
+          "top1Difference": 0.090732,
+          "top1Ci95": [
+            0.078233,
+            0.102828
+          ],
+          "nregDifference": -0.064769,
+          "nregCi95": [
+            -0.075662,
+            -0.053519
+          ],
+          "MATERIAL": true,
+          "statisticallyBetter": true,
+          "NREG_WORSE": false
+        },
+        "V1_vs_RESOURCE": {
+          "n": 5366,
+          "top1Difference": -0.106597,
+          "top1Ci95": [
+            -0.121556,
+            -0.090943
+          ],
+          "nregDifference": -0.008888,
+          "nregCi95": [
+            -0.022688,
+            0.005207
+          ],
+          "MATERIAL": false,
+          "statisticallyBetter": false,
+          "NREG_WORSE": false
+        },
+        "V2_vs_RESOURCE": {
+          "n": 5366,
+          "top1Difference": 0.034104,
+          "top1Ci95": [
+            0.024372,
+            0.043413
+          ],
+          "nregDifference": -0.047931,
+          "nregCi95": [
+            -0.057214,
+            -0.038823
+          ],
+          "MATERIAL": false,
+          "statisticallyBetter": true,
+          "NREG_WORSE": false
+        },
+        "NX_DEPLOYABLE_vs_V1": {
+          "n": 5366,
+          "top1Difference": 0.229345,
+          "top1Ci95": [
+            0.21498,
+            0.24418
+          ],
+          "nregDifference": -0.125044,
+          "nregCi95": [
+            -0.136517,
+            -0.114102
+          ],
+          "MATERIAL": true,
+          "statisticallyBetter": true,
+          "NREG_WORSE": false
+        },
+        "NX_DEPLOYABLE_vs_V2": {
+          "n": 5366,
+          "top1Difference": 0.088645,
+          "top1Ci95": [
+            0.072241,
+            0.106975
+          ],
+          "nregDifference": -0.086,
+          "nregCi95": [
+            -0.101094,
+            -0.072775
+          ],
+          "MATERIAL": true,
+          "statisticallyBetter": true,
+          "NREG_WORSE": false
+        },
+        "NX_RELATIONAL_ONLY_vs_V1": {
+          "n": 5366,
+          "top1Difference": 0.189775,
+          "top1Ci95": [
+            0.179112,
+            0.19963
+          ],
+          "nregDifference": -0.074916,
+          "nregCi95": [
+            -0.082458,
+            -0.067405
+          ],
+          "MATERIAL": true,
+          "statisticallyBetter": true,
+          "NREG_WORSE": false
+        },
+        "NX_RELATIONAL_ONLY_vs_V2": {
+          "n": 5366,
+          "top1Difference": 0.049074,
+          "top1Ci95": [
+            0.03673,
+            0.061458
+          ],
+          "nregDifference": -0.035872,
+          "nregCi95": [
+            -0.046268,
+            -0.025721
+          ],
+          "MATERIAL": false,
+          "statisticallyBetter": true,
+          "NREG_WORSE": false
+        },
+        "NX_RELATIONAL_ONLY_vs_RESOURCE": {
+          "n": 6000,
+          "top1Difference": 0.079083,
+          "top1Ci95": [
+            0.064972,
+            0.091153
+          ],
+          "nregDifference": -0.078765,
+          "nregCi95": [
+            -0.090371,
+            -0.067699
+          ],
+          "MATERIAL": true,
+          "statisticallyBetter": true,
+          "NREG_WORSE": false
+        },
+        "NX_DEPLOYABLE_vs_NX_RELATIONAL_ONLY": {
+          "n": 6000,
+          "top1Difference": 0.042444,
+          "top1Ci95": [
+            0.032083,
+            0.052333
+          ],
+          "nregDifference": -0.052456,
+          "nregCi95": [
+            -0.060746,
+            -0.044398
+          ],
+          "MATERIAL": false,
+          "statisticallyBetter": true,
+          "NREG_WORSE": false
+        },
+        "NX_DEPLOYABLE_vs_RESOURCE": {
+          "n": 6000,
+          "top1Difference": 0.121528,
+          "top1Ci95": [
+            0.103472,
+            0.139694
+          ],
+          "nregDifference": -0.131221,
+          "nregCi95": [
+            -0.14585,
+            -0.116095
+          ],
+          "MATERIAL": true,
+          "statisticallyBetter": true,
+          "NREG_WORSE": false
+        },
+        "NX_DEPLOYABLE_vs_UNIFORM": {
+          "n": 6000,
+          "top1Difference": 0.181833,
+          "top1Ci95": [
+            0.170088,
+            0.193706
+          ],
+          "nregDifference": -0.150552,
+          "nregCi95": [
+            -0.159949,
+            -0.140587
+          ],
+          "MATERIAL": true,
+          "statisticallyBetter": true,
+          "NREG_WORSE": false
+        },
+        "NX_PRIVILEGED_vs_NX_DEPLOYABLE": {
+          "n": 6000,
+          "top1Difference": 0.368667,
+          "top1Ci95": [
+            0.354333,
+            0.383167
+          ],
+          "nregDifference": -0.336847,
+          "nregCi95": [
+            -0.347865,
+            -0.326371
+          ],
+          "MATERIAL": true,
+          "statisticallyBetter": true,
+          "NREG_WORSE": false
+        },
+        "NX_PRIVILEGED_vs_V1": {
+          "n": 5366,
+          "top1Difference": 0.597869,
+          "top1Ci95": [
+            0.583457,
+            0.612553
+          ],
+          "nregDifference": -0.459941,
+          "nregCi95": [
+            -0.47038,
+            -0.449239
+          ],
+          "MATERIAL": true,
+          "statisticallyBetter": true,
+          "NREG_WORSE": false
+        },
+        "NX_PRIV_MOVEMENT_ONLY_vs_NX_DEPLOYABLE": {
+          "n": 6000,
+          "top1Difference": 0.3695,
+          "top1Ci95": [
+            0.353667,
+            0.384833
+          ],
+          "nregDifference": -0.3373,
+          "nregCi95": [
+            -0.348674,
+            -0.325287
+          ],
+          "MATERIAL": true,
+          "statisticallyBetter": true,
+          "NREG_WORSE": false
+        },
+        "NX_PRIV_TARGET_ONLY_vs_NX_DEPLOYABLE": {
+          "n": 6000,
+          "top1Difference": 0,
+          "top1Ci95": [
+            0,
+            0
+          ],
+          "nregDifference": 0,
+          "nregCi95": [
+            0,
+            0
+          ],
+          "MATERIAL": false,
+          "statisticallyBetter": false,
+          "NREG_WORSE": false
+        },
+        "NX_DEPLOYABLE_ONESTEP_vs_NX_DEPLOYABLE": {
+          "n": 6000,
+          "top1Difference": 0.023139,
+          "top1Ci95": [
+            0.01425,
+            0.0315
+          ],
+          "nregDifference": -0.027903,
+          "nregCi95": [
+            -0.034865,
+            -0.020436
+          ],
+          "MATERIAL": false,
+          "statisticallyBetter": true,
+          "NREG_WORSE": false
+        },
+        "NX_PRIVILEGED_ONESTEP_vs_NX_PRIVILEGED": {
+          "n": 6000,
+          "top1Difference": 0.002472,
+          "top1Ci95": [
+            0,
+            0.004861
+          ],
+          "nregDifference": -0.001077,
+          "nregCi95": [
+            -0.002207,
+            -0.000047
+          ],
+          "MATERIAL": false,
+          "statisticallyBetter": false,
+          "NREG_WORSE": false
+        }
+      },
+      "special": {
+        "ORACLE_SET_V2_vs_V1": {
+          "n": 6000,
+          "top1Difference": -0.045667,
+          "top1Ci95": [
+            -0.053333,
+            -0.037667
+          ],
+          "nregDifference": 0.09984,
+          "nregCi95": [
+            0.092841,
+            0.106986
+          ],
+          "MATERIAL": false,
+          "statisticallyBetter": false,
+          "NREG_WORSE": true
+        },
+        "V2_vs_V1_WHERE_V1_BEST": {
+          "n": 3374,
+          "top1Difference": -0.102549,
+          "top1Ci95": [
+            -0.116775,
+            -0.088322
+          ],
+          "nregDifference": 0.205996,
+          "nregCi95": [
+            0.193892,
+            0.217819
+          ],
+          "MATERIAL": false,
+          "statisticallyBetter": false,
+          "NREG_WORSE": true
+        },
+        "BEST_TARGETED_vs_V1": {
+          "n": 5366,
+          "top1Difference": 0.062616,
+          "top1Ci95": [
+            0.056467,
+            0.069139
+          ],
+          "nregDifference": -0.025382,
+          "nregCi95": [
+            -0.028328,
+            -0.02291
+          ],
+          "MATERIAL": true,
+          "statisticallyBetter": true,
+          "NREG_WORSE": false
+        },
+        "oracleTop1": {
+          "withV1": 0.396833,
+          "withV2": 0.351167
+        }
+      },
+      "behaviour": {
+        "NEXUS_SELECTOR_V1": {
+          "proposingN": 5366,
+          "typeAccuracy": 0.166418,
+          "targetAccuracyGivenCorrectType": 0.923852,
+          "actionTypes": {
+            "PROTECT": 0.903653,
+            "REINFORCE": 0.067275,
+            "REPAIR": 0.029072
+          },
+          "targetKinds": {
+            "RESOURCE": 0.868245,
+            "INFRASTRUCTURE": 0.063362,
+            "POWER_SOURCE": 0.035035,
+            "REPAIR_TARGET": 0.01994,
+            "BARRIER": 0.012859,
+            "SUBSTITUTE": 0.000373,
+            "DEPOT": 0.000186
+          },
+          "protect": {
+            "selectionRate": 0.903653,
+            "precision": 0.124562,
+            "optimalRate": 0.148528
+          },
+          "retreat": {
+            "selectionRate": 0,
+            "precision": null
+          },
+          "zeroCostChoiceRate": 0,
+          "zeroCostOptimalRate": 0.865449,
+          "moveDirectionShare": {},
+          "protectRegretShare": 0.952837,
+          "agreementWith": {
+            "RESOURCE_PRESERVING_V1": 0,
+            "GREEDY": 0.774693,
+            "NEXUS_SELECTOR_V2_CANDIDATE": 0.098025
+          }
+        },
+        "NEXUS_SELECTOR_V2_CANDIDATE": {
+          "proposingN": 5366,
+          "typeAccuracy": 0.836936,
+          "targetAccuracyGivenCorrectType": 0.351815,
+          "actionTypes": {
+            "MOVE": 0.846254,
+            "REINFORCE": 0.067275,
+            "ATTACK": 0.030563,
+            "REPAIR": 0.029072,
+            "PROTECT": 0.026836
+          },
+          "targetKinds": {
+            "NONE": 0.846254,
+            "INFRASTRUCTURE": 0.068953,
+            "POWER_SOURCE": 0.036526,
+            "HOSTILE": 0.030563,
+            "REPAIR_TARGET": 0.014163,
+            "DEPOT": 0.003541
+          },
+          "protect": {
+            "selectionRate": 0.026836,
+            "precision": 0.236111,
+            "optimalRate": 0.148528
+          },
+          "retreat": {
+            "selectionRate": 0,
+            "precision": null
+          },
+          "zeroCostChoiceRate": 0.846254,
+          "zeroCostOptimalRate": 0.865449,
+          "moveDirectionShare": {
+            "EAST": 0.884387,
+            "SOUTH": 0.101079,
+            "WEST": 0.014094,
+            "NORTH": 0.00044
+          },
+          "protectRegretShare": 0.02009,
+          "agreementWith": {
+            "RESOURCE_PRESERVING_V1": 0.682818,
+            "GREEDY": 0.049385,
+            "NEXUS_SELECTOR_V1": 0.098025
+          }
+        },
+        "RESOURCE_PRESERVING_V1": {
+          "proposingN": 6000,
+          "typeAccuracy": 0.758667,
+          "targetAccuracyGivenCorrectType": 0.348418,
+          "actionTypes": {
+            "MOVE": 0.821333,
+            "RETREAT": 0.178333,
+            "WAIT": 0.000333
+          },
+          "targetKinds": {
+            "NONE": 1
+          },
+          "protect": {
+            "selectionRate": 0,
+            "precision": null,
+            "optimalRate": 0.148333
+          },
+          "retreat": {
+            "selectionRate": 0.178333,
+            "precision": 0.268224
+          },
+          "zeroCostChoiceRate": 1,
+          "zeroCostOptimalRate": 0.869667,
+          "moveDirectionShare": {
+            "EAST": 0.911729,
+            "SOUTH": 0.079545,
+            "WEST": 0.008726
+          },
+          "protectRegretShare": 0,
+          "agreementWith": {
+            "GREEDY": 0,
+            "NEXUS_SELECTOR_V1": 0,
+            "NEXUS_SELECTOR_V2_CANDIDATE": 0.610667
+          }
+        }
+      },
+      "shortcut": {
+        "NEXUS_SELECTOR_V1": {
+          "ORIENTATION": {
+            "levels": {
+              "MA": {
+                "n": 656,
+                "accuracy": 0.14939
+              },
+              "MD": {
+                "n": 700,
+                "accuracy": 0.152857
+              },
+              "MX": {
+                "n": 640,
+                "accuracy": 0.15625
+              },
+              "MY": {
+                "n": 656,
+                "accuracy": 0.170732
+              },
+              "R0": {
+                "n": 692,
+                "accuracy": 0.169075
+              },
+              "R180": {
+                "n": 705,
+                "accuracy": 0.123404
+              },
+              "R270": {
+                "n": 647,
+                "accuracy": 0.157651
+              },
+              "R90": {
+                "n": 670,
+                "accuracy": 0.152239
+              }
+            },
+            "usableLevels": 8,
+            "lowest": "R180",
+            "highest": "MY",
+            "gap": 0.047327,
+            "threshold": 0.08,
+            "flag": false
+          },
+          "ABSOLUTE_DIRECTION": {
+            "levels": {},
+            "usableLevels": 0,
+            "gap": null,
+            "threshold": null,
+            "flag": false
+          },
+          "ACTION_ID_ORDER": {
+            "accuracy": 0.153746,
+            "permutedMeanAccuracy": 0.151533,
+            "reversedAccuracy": 0.149646,
+            "ACTION_ID_PERMUTATION_DELTA": 0.002213,
+            "choiceChangedByAnyPermutation": 0.335818,
+            "versusPermuted": {
+              "n": 5366,
+              "meanDifference": 0.002213,
+              "threshold": 0.03,
+              "flag": false
+            },
+            "versusReversed": {
+              "n": 5366,
+              "meanDifference": 0.0041,
+              "threshold": 0.03,
+              "flag": false
+            },
+            "flag": false
+          },
+          "TARGET_ID_ORDER": {
+            "targetedChoices": 5366,
+            "targetChangedByPermutation": 0.335818
+          },
+          "D4_TWIN": {
+            "rows": 226,
+            "pairs": 1130,
+            "TOP1_EQUIVARIANCE": 1,
+            "TARGET_EQUIVARIANCE": 1,
+            "paired": {
+              "n": 226,
+              "meanDifference": 0,
+              "threshold": 0.03,
+              "flag": false
+            },
+            "flag": false
+          },
+          "CANDIDATE_SHUFFLE": {
+            "changedRate": 0
+          }
+        },
+        "NEXUS_SELECTOR_V2_CANDIDATE": {
+          "ORIENTATION": {
+            "levels": {
+              "MA": {
+                "n": 656,
+                "accuracy": 0.14939
+              },
+              "MD": {
+                "n": 700,
+                "accuracy": 0.224286
+              },
+              "MX": {
+                "n": 640,
+                "accuracy": 0.242188
+              },
+              "MY": {
+                "n": 656,
+                "accuracy": 0.570122
+              },
+              "R0": {
+                "n": 692,
+                "accuracy": 0.559249
+              },
+              "R180": {
+                "n": 705,
+                "accuracy": 0.249645
+              },
+              "R270": {
+                "n": 647,
+                "accuracy": 0.170015
+              },
+              "R90": {
+                "n": 670,
+                "accuracy": 0.183582
+              }
+            },
+            "usableLevels": 8,
+            "lowest": "MA",
+            "highest": "MY",
+            "gap": 0.420732,
+            "threshold": 0.08,
+            "flag": true
+          },
+          "ABSOLUTE_DIRECTION": {
+            "levels": {
+              "EAST": {
+                "n": 4016,
+                "accuracy": 0.287351
+              },
+              "NORTH": {
+                "n": 2,
+                "accuracy": 1
+              },
+              "SOUTH": {
+                "n": 459,
+                "accuracy": 0.300654
+              },
+              "WEST": {
+                "n": 64,
+                "accuracy": 0.484375
+              }
+            },
+            "usableLevels": 2,
+            "lowest": "EAST",
+            "highest": "SOUTH",
+            "gap": 0.013303,
+            "threshold": 0.08,
+            "flag": false
+          },
+          "ACTION_ID_ORDER": {
+            "accuracy": 0.294447,
+            "permutedMeanAccuracy": 0.289951,
+            "reversedAccuracy": 0.282333,
+            "ACTION_ID_PERMUTATION_DELTA": 0.004496,
+            "choiceChangedByAnyPermutation": 0.847,
+            "versusPermuted": {
+              "n": 5366,
+              "meanDifference": 0.004496,
+              "threshold": 0.03,
+              "flag": false
+            },
+            "versusReversed": {
+              "n": 5366,
+              "meanDifference": 0.012113,
+              "threshold": 0.03,
+              "flag": false
+            },
+            "flag": false
+          },
+          "TARGET_ID_ORDER": {
+            "targetedChoices": 825,
+            "targetChangedByPermutation": 0.012121
+          },
+          "D4_TWIN": {
+            "rows": 226,
+            "pairs": 1130,
+            "TOP1_EQUIVARIANCE": 0.340708,
+            "TARGET_EQUIVARIANCE": 1,
+            "paired": {
+              "n": 226,
+              "meanDifference": 0.028319,
+              "threshold": 0.090053,
+              "flag": false
+            },
+            "flag": false
+          },
+          "CANDIDATE_SHUFFLE": {
+            "changedRate": 0
+          }
+        }
+      },
+      "marginal": {
+        "NEXUS_SELECTOR_V1": {
+          "oracleTop1": 0.396833,
+          "oracleWithoutTop1": 0.289667,
+          "marginalAccuracyGain": 0.107167,
+          "accuracyWhenBest": 0.244517,
+          "bestN": 3374
+        },
+        "NEXUS_SELECTOR_V2_CANDIDATE": {
+          "oracleTop1": 0.351167,
+          "oracleWithoutTop1": 0.289667,
+          "marginalAccuracyGain": 0.0615,
+          "accuracyWhenBest": 0.334392,
+          "bestN": 4725
+        }
+      },
+      "regimes": {
+        "HOSTILE_PRESENT": {
+          "kind": "observed",
+          "n": 3562,
+          "uniform": 0.206737,
+          "policies": {
+            "NEXUS_SELECTOR_V1": {
+              "n": 3557,
+              "top1": 0.141974
+            },
+            "NEXUS_SELECTOR_V2_CANDIDATE": {
+              "n": 3557,
+              "top1": 0.280292
+            },
+            "RESOURCE_PRESERVING_V1": {
+              "n": 3562,
+              "top1": 0.259966
+            },
+            "OBJECTIVE_TARGETING_V1": {
+              "n": 266,
+              "top1": 0.24812
+            },
+            "THREAT_COVERING_V1": {
+              "n": 145,
+              "top1": 0.310345
+            }
+          },
+          "scorers": {
+            "NX_RELATIONAL_ONLY": 0.344072,
+            "NX_DEPLOYABLE": 0.383258,
+            "NX_PRIVILEGED": 0.730535
+          },
+          "relational": {
+            "NEXUS_SELECTOR_V1": {
+              "vsUniform": {
+                "n": 3557,
+                "top1Difference": -0.064853,
+                "top1Ci95": [
+                  -0.074908,
+                  -0.054066
+                ],
+                "nregDifference": -0.027464,
+                "nregCi95": [
+                  -0.036127,
+                  -0.019749
+                ],
+                "MATERIAL": false,
+                "statisticallyBetter": false,
+                "NREG_WORSE": false
+              },
+              "vsResource": {
+                "n": 3557,
+                "top1Difference": -0.118077,
+                "top1Ci95": [
+                  -0.137398,
+                  -0.097863
+                ],
+                "nregDifference": -0.011512,
+                "nregCi95": [
+                  -0.030611,
+                  0.005217
+                ],
+                "MATERIAL": false,
+                "statisticallyBetter": false,
+                "NREG_WORSE": false
+              }
+            },
+            "NEXUS_SELECTOR_V2_CANDIDATE": {
+              "vsUniform": {
+                "n": 3557,
+                "top1Difference": 0.073465,
+                "top1Ci95": [
+                  0.058812,
+                  0.087687
+                ],
+                "nregDifference": -0.063787,
+                "nregCi95": [
+                  -0.076872,
+                  -0.050423
+                ],
+                "MATERIAL": true,
+                "statisticallyBetter": true,
+                "NREG_WORSE": false
+              },
+              "vsResource": {
+                "n": 3557,
+                "top1Difference": 0.020242,
+                "top1Ci95": [
+                  0.006187,
+                  0.033727
+                ],
+                "nregDifference": -0.047835,
+                "nregCi95": [
+                  -0.061225,
+                  -0.034942
+                ],
+                "MATERIAL": false,
+                "statisticallyBetter": true,
+                "NREG_WORSE": false
+              }
+            }
+          }
+        },
+        "UNSUPPORTED_THREAT": {
+          "kind": "observed",
+          "n": 2876,
+          "uniform": 0.208005,
+          "policies": {
+            "NEXUS_SELECTOR_V1": {
+              "n": 2876,
+              "top1": 0.140125
+            },
+            "NEXUS_SELECTOR_V2_CANDIDATE": {
+              "n": 2876,
+              "top1": 0.284423
+            },
+            "RESOURCE_PRESERVING_V1": {
+              "n": 2876,
+              "top1": 0.258345
+            },
+            "OBJECTIVE_TARGETING_V1": {
+              "n": 211,
+              "top1": 0.265403
+            },
+            "THREAT_COVERING_V1": {
+              "n": 149,
+              "top1": 0.328859
+            }
+          },
+          "scorers": {
+            "NX_RELATIONAL_ONLY": 0.351356,
+            "NX_DEPLOYABLE": 0.385489,
+            "NX_PRIVILEGED": 0.739975
+          },
+          "relational": {
+            "NEXUS_SELECTOR_V1": {
+              "vsUniform": {
+                "n": 2876,
+                "top1Difference": -0.06788,
+                "top1Ci95": [
+                  -0.079035,
+                  -0.05636
+                ],
+                "nregDifference": -0.025325,
+                "nregCi95": [
+                  -0.034163,
+                  -0.016943
+                ],
+                "MATERIAL": false,
+                "statisticallyBetter": false,
+                "NREG_WORSE": false
+              },
+              "vsResource": {
+                "n": 2876,
+                "top1Difference": -0.11822,
+                "top1Ci95": [
+                  -0.13943,
+                  -0.095967
+                ],
+                "nregDifference": -0.010273,
+                "nregCi95": [
+                  -0.030761,
+                  0.008283
+                ],
+                "MATERIAL": false,
+                "statisticallyBetter": false,
+                "NREG_WORSE": false
+              }
+            },
+            "NEXUS_SELECTOR_V2_CANDIDATE": {
+              "vsUniform": {
+                "n": 2876,
+                "top1Difference": 0.076418,
+                "top1Ci95": [
+                  0.060698,
+                  0.092364
+                ],
+                "nregDifference": -0.068215,
+                "nregCi95": [
+                  -0.083027,
+                  -0.053643
+                ],
+                "MATERIAL": true,
+                "statisticallyBetter": true,
+                "NREG_WORSE": false
+              },
+              "vsResource": {
+                "n": 2876,
+                "top1Difference": 0.026078,
+                "top1Ci95": [
+                  0.011127,
+                  0.040682
+                ],
+                "nregDifference": -0.053163,
+                "nregCi95": [
+                  -0.06802,
+                  -0.040299
+                ],
+                "MATERIAL": false,
+                "statisticallyBetter": true,
+                "NREG_WORSE": false
+              }
+            }
+          }
+        },
+        "DEPENDENCY": {
+          "kind": "observed",
+          "n": 2097,
+          "uniform": 0.200849,
+          "policies": {
+            "NEXUS_SELECTOR_V1": {
+              "n": 2097,
+              "top1": 0.144492
+            },
+            "NEXUS_SELECTOR_V2_CANDIDATE": {
+              "n": 2097,
+              "top1": 0.30329
+            },
+            "RESOURCE_PRESERVING_V1": {
+              "n": 2097,
+              "top1": 0.267048
+            },
+            "OBJECTIVE_TARGETING_V1": {
+              "n": 172,
+              "top1": 0.215116
+            },
+            "THREAT_COVERING_V1": {
+              "n": 48,
+              "top1": 0.291667
+            }
+          },
+          "scorers": {
+            "NX_RELATIONAL_ONLY": 0.350064,
+            "NX_DEPLOYABLE": 0.384915,
+            "NX_PRIVILEGED": 0.783103
+          },
+          "relational": {
+            "NEXUS_SELECTOR_V1": {
+              "vsUniform": {
+                "n": 2097,
+                "top1Difference": -0.056357,
+                "top1Ci95": [
+                  -0.070445,
+                  -0.042513
+                ],
+                "nregDifference": -0.016429,
+                "nregCi95": [
+                  -0.026797,
+                  -0.006042
+                ],
+                "MATERIAL": false,
+                "statisticallyBetter": false,
+                "NREG_WORSE": false
+              },
+              "vsResource": {
+                "n": 2097,
+                "top1Difference": -0.122556,
+                "top1Ci95": [
+                  -0.149261,
+                  -0.098712
+                ],
+                "nregDifference": 0.011044,
+                "nregCi95": [
+                  -0.01031,
+                  0.035153
+                ],
+                "MATERIAL": false,
+                "statisticallyBetter": false,
+                "NREG_WORSE": false
+              }
+            },
+            "NEXUS_SELECTOR_V2_CANDIDATE": {
+              "vsUniform": {
+                "n": 2097,
+                "top1Difference": 0.102442,
+                "top1Ci95": [
+                  0.08223,
+                  0.122715
+                ],
+                "nregDifference": -0.072504,
+                "nregCi95": [
+                  -0.091408,
+                  -0.054864
+                ],
+                "MATERIAL": true,
+                "statisticallyBetter": true,
+                "NREG_WORSE": false
+              },
+              "vsResource": {
+                "n": 2097,
+                "top1Difference": 0.036242,
+                "top1Ci95": [
+                  0.020982,
+                  0.050548
+                ],
+                "nregDifference": -0.045031,
+                "nregCi95": [
+                  -0.058129,
+                  -0.031582
+                ],
+                "MATERIAL": false,
+                "statisticallyBetter": true,
+                "NREG_WORSE": false
+              }
+            }
+          }
+        },
+        "MULTI_ENTITY_DEPENDENCY": {
+          "kind": "observed",
+          "n": 2097,
+          "uniform": 0.200849,
+          "policies": {
+            "NEXUS_SELECTOR_V1": {
+              "n": 2097,
+              "top1": 0.144492
+            },
+            "NEXUS_SELECTOR_V2_CANDIDATE": {
+              "n": 2097,
+              "top1": 0.30329
+            },
+            "RESOURCE_PRESERVING_V1": {
+              "n": 2097,
+              "top1": 0.267048
+            },
+            "OBJECTIVE_TARGETING_V1": {
+              "n": 172,
+              "top1": 0.215116
+            },
+            "THREAT_COVERING_V1": {
+              "n": 48,
+              "top1": 0.291667
+            }
+          },
+          "scorers": {
+            "NX_RELATIONAL_ONLY": 0.350064,
+            "NX_DEPLOYABLE": 0.384915,
+            "NX_PRIVILEGED": 0.783103
+          },
+          "relational": {
+            "NEXUS_SELECTOR_V1": {
+              "vsUniform": {
+                "n": 2097,
+                "top1Difference": -0.056357,
+                "top1Ci95": [
+                  -0.07039,
+                  -0.04379
+                ],
+                "nregDifference": -0.016429,
+                "nregCi95": [
+                  -0.025605,
+                  -0.006978
+                ],
+                "MATERIAL": false,
+                "statisticallyBetter": false,
+                "NREG_WORSE": false
+              },
+              "vsResource": {
+                "n": 2097,
+                "top1Difference": -0.122556,
+                "top1Ci95": [
+                  -0.148307,
+                  -0.097759
+                ],
+                "nregDifference": 0.011044,
+                "nregCi95": [
+                  -0.011299,
+                  0.034475
+                ],
+                "MATERIAL": false,
+                "statisticallyBetter": false,
+                "NREG_WORSE": false
+              }
+            },
+            "NEXUS_SELECTOR_V2_CANDIDATE": {
+              "vsUniform": {
+                "n": 2097,
+                "top1Difference": 0.102442,
+                "top1Ci95": [
+                  0.082337,
+                  0.121148
+                ],
+                "nregDifference": -0.072504,
+                "nregCi95": [
+                  -0.090597,
+                  -0.054039
+                ],
+                "MATERIAL": true,
+                "statisticallyBetter": true,
+                "NREG_WORSE": false
+              },
+              "vsResource": {
+                "n": 2097,
+                "top1Difference": 0.036242,
+                "top1Ci95": [
+                  0.020505,
+                  0.052456
+                ],
+                "nregDifference": -0.045031,
+                "nregCi95": [
+                  -0.059174,
+                  -0.031794
+                ],
+                "MATERIAL": false,
+                "statisticallyBetter": true,
+                "NREG_WORSE": false
+              }
+            }
+          }
+        },
+        "DENSE_RELATIONAL": {
+          "kind": "observed",
+          "n": 2149,
+          "uniform": 0.206476,
+          "policies": {
+            "NEXUS_SELECTOR_V1": {
+              "n": 2068,
+              "top1": 0.166344
+            },
+            "NEXUS_SELECTOR_V2_CANDIDATE": {
+              "n": 2068,
+              "top1": 0.290619
+            },
+            "RESOURCE_PRESERVING_V1": {
+              "n": 2149,
+              "top1": 0.253606
+            },
+            "OBJECTIVE_TARGETING_V1": {
+              "n": 180,
+              "top1": 0.25
+            },
+            "THREAT_COVERING_V1": {
+              "n": 56,
+              "top1": 0.25
+            }
+          },
+          "scorers": {
+            "NX_RELATIONAL_ONLY": 0.343571,
+            "NX_DEPLOYABLE": 0.383046,
+            "NX_PRIVILEGED": 0.761595
+          },
+          "relational": {
+            "NEXUS_SELECTOR_V1": {
+              "vsUniform": {
+                "n": 2068,
+                "top1Difference": -0.038513,
+                "top1Ci95": [
+                  -0.053687,
+                  -0.023276
+                ],
+                "nregDifference": -0.030988,
+                "nregCi95": [
+                  -0.041081,
+                  -0.020859
+                ],
+                "MATERIAL": false,
+                "statisticallyBetter": false,
+                "NREG_WORSE": false
+              },
+              "vsResource": {
+                "n": 2068,
+                "top1Difference": -0.084139,
+                "top1Ci95": [
+                  -0.109927,
+                  -0.059392
+                ],
+                "nregDifference": -0.02624,
+                "nregCi95": [
+                  -0.048098,
+                  -0.003814
+                ],
+                "MATERIAL": false,
+                "statisticallyBetter": false,
+                "NREG_WORSE": false
+              }
+            },
+            "NEXUS_SELECTOR_V2_CANDIDATE": {
+              "vsUniform": {
+                "n": 2068,
+                "top1Difference": 0.085762,
+                "top1Ci95": [
+                  0.066829,
+                  0.103886
+                ],
+                "nregDifference": -0.057221,
+                "nregCi95": [
+                  -0.074467,
+                  -0.040205
+                ],
+                "MATERIAL": true,
+                "statisticallyBetter": true,
+                "NREG_WORSE": false
+              },
+              "vsResource": {
+                "n": 2068,
+                "top1Difference": 0.040135,
+                "top1Ci95": [
+                  0.024237,
+                  0.055152
+                ],
+                "nregDifference": -0.052474,
+                "nregCi95": [
+                  -0.066939,
+                  -0.038627
+                ],
+                "MATERIAL": false,
+                "statisticallyBetter": true,
+                "NREG_WORSE": false
+              }
+            }
+          }
+        },
+        "SPARSE_RELATIONAL": {
+          "kind": "observed",
+          "n": 3851,
+          "uniform": 0.202662,
+          "policies": {
+            "NEXUS_SELECTOR_V1": {
+              "n": 3298,
+              "top1": 0.145846
+            },
+            "NEXUS_SELECTOR_V2_CANDIDATE": {
+              "n": 3298,
+              "top1": 0.296847
+            },
+            "RESOURCE_PRESERVING_V1": {
+              "n": 3851,
+              "top1": 0.270319
+            },
+            "OBJECTIVE_TARGETING_V1": {
+              "n": 247,
+              "top1": 0.271255
+            },
+            "THREAT_COVERING_V1": {
+              "n": 93,
+              "top1": 0.376344
+            }
+          },
+          "scorers": {
+            "NX_RELATIONAL_ONLY": 0.343331,
+            "NX_DEPLOYABLE": 0.387432,
+            "NX_PRIVILEGED": 0.750584
+          },
+          "relational": {
+            "NEXUS_SELECTOR_V1": {
+              "vsUniform": {
+                "n": 3298,
+                "top1Difference": -0.057152,
+                "top1Ci95": [
+                  -0.067618,
+                  -0.046421
+                ],
+                "nregDifference": -0.022425,
+                "nregCi95": [
+                  -0.03011,
+                  -0.015239
+                ],
+                "MATERIAL": false,
+                "statisticallyBetter": false,
+                "NREG_WORSE": false
+              },
+              "vsResource": {
+                "n": 3298,
+                "top1Difference": -0.120679,
+                "top1Ci95": [
+                  -0.140164,
+                  -0.100122
+                ],
+                "nregDifference": 0.001993,
+                "nregCi95": [
+                  -0.016125,
+                  0.020839
+                ],
+                "MATERIAL": false,
+                "statisticallyBetter": false,
+                "NREG_WORSE": false
+              }
+            },
+            "NEXUS_SELECTOR_V2_CANDIDATE": {
+              "vsUniform": {
+                "n": 3298,
+                "top1Difference": 0.093848,
+                "top1Ci95": [
+                  0.078504,
+                  0.108487
+                ],
+                "nregDifference": -0.069501,
+                "nregCi95": [
+                  -0.083895,
+                  -0.055348
+                ],
+                "MATERIAL": true,
+                "statisticallyBetter": true,
+                "NREG_WORSE": false
+              },
+              "vsResource": {
+                "n": 3298,
+                "top1Difference": 0.030321,
+                "top1Ci95": [
+                  0.017825,
+                  0.043161
+                ],
+                "nregDifference": -0.045083,
+                "nregCi95": [
+                  -0.056832,
+                  -0.033981
+                ],
+                "MATERIAL": false,
+                "statisticallyBetter": true,
+                "NREG_WORSE": false
+              }
+            }
+          }
+        },
+        "OBJECTIVE_RELATION": {
+          "kind": "observed",
+          "n": 427,
+          "uniform": 0.170603,
+          "policies": {
+            "NEXUS_SELECTOR_V1": {
+              "n": 400,
+              "top1": 0.155
+            },
+            "NEXUS_SELECTOR_V2_CANDIDATE": {
+              "n": 400,
+              "top1": 0.28
+            },
+            "RESOURCE_PRESERVING_V1": {
+              "n": 427,
+              "top1": 0.18267
+            },
+            "OBJECTIVE_TARGETING_V1": {
+              "n": 427,
+              "top1": 0.262295
+            },
+            "THREAT_COVERING_V1": {
+              "n": 47,
+              "top1": 0.255319
+            }
+          },
+          "scorers": {
+            "NX_RELATIONAL_ONLY": 0.410812,
+            "NX_DEPLOYABLE": 0.419204,
+            "NX_PRIVILEGED": 0.716628
+          },
+          "relational": {
+            "NEXUS_SELECTOR_V1": {
+              "vsUniform": {
+                "n": 400,
+                "top1Difference": -0.012304,
+                "top1Ci95": [
+                  -0.043267,
+                  0.020709
+                ],
+                "nregDifference": -0.06112,
+                "nregCi95": [
+                  -0.082477,
+                  -0.040465
+                ],
+                "MATERIAL": false,
+                "statisticallyBetter": false,
+                "NREG_WORSE": false
+              },
+              "vsResource": {
+                "n": 400,
+                "top1Difference": -0.02,
+                "top1Ci95": [
+                  -0.072319,
+                  0.035176
+                ],
+                "nregDifference": -0.1225,
+                "nregCi95": [
+                  -0.176692,
+                  -0.073801
+                ],
+                "MATERIAL": false,
+                "statisticallyBetter": false,
+                "NREG_WORSE": false
+              }
+            },
+            "NEXUS_SELECTOR_V2_CANDIDATE": {
+              "vsUniform": {
+                "n": 400,
+                "top1Difference": 0.112696,
+                "top1Ci95": [
+                  0.068643,
+                  0.155701
+                ],
+                "nregDifference": -0.095795,
+                "nregCi95": [
+                  -0.133115,
+                  -0.061534
+                ],
+                "MATERIAL": true,
+                "statisticallyBetter": true,
+                "NREG_WORSE": false
+              },
+              "vsResource": {
+                "n": 400,
+                "top1Difference": 0.105,
+                "top1Ci95": [
+                  0.06,
+                  0.150246
+                ],
+                "nregDifference": -0.157176,
+                "nregCi95": [
+                  -0.198654,
+                  -0.116852
+                ],
+                "MATERIAL": true,
+                "statisticallyBetter": true,
+                "NREG_WORSE": false
+              }
+            }
+          }
+        },
+        "RESOURCE_RELATION": {
+          "kind": "observed",
+          "n": 5990,
+          "uniform": 0.203898,
+          "policies": {
+            "NEXUS_SELECTOR_V1": {
+              "n": 5357,
+              "top1": 0.153444
+            },
+            "NEXUS_SELECTOR_V2_CANDIDATE": {
+              "n": 5357,
+              "top1": 0.294381
+            },
+            "RESOURCE_PRESERVING_V1": {
+              "n": 5990,
+              "top1": 0.264274
+            },
+            "OBJECTIVE_TARGETING_V1": {
+              "n": 421,
+              "top1": 0.256532
+            },
+            "THREAT_COVERING_V1": {
+              "n": 147,
+              "top1": 0.319728
+            }
+          },
+          "scorers": {
+            "NX_RELATIONAL_ONLY": 0.342849,
+            "NX_DEPLOYABLE": 0.385504,
+            "NX_PRIVILEGED": 0.75512
+          },
+          "relational": {
+            "NEXUS_SELECTOR_V1": {
+              "vsUniform": {
+                "n": 5357,
+                "top1Difference": -0.05011,
+                "top1Ci95": [
+                  -0.058234,
+                  -0.041349
+                ],
+                "nregDifference": -0.02568,
+                "nregCi95": [
+                  -0.031713,
+                  -0.020178
+                ],
+                "MATERIAL": false,
+                "statisticallyBetter": false,
+                "NREG_WORSE": false
+              },
+              "vsResource": {
+                "n": 5357,
+                "top1Difference": -0.106776,
+                "top1Ci95": [
+                  -0.123876,
+                  -0.091452
+                ],
+                "nregDifference": -0.008629,
+                "nregCi95": [
+                  -0.023593,
+                  0.006072
+                ],
+                "MATERIAL": false,
+                "statisticallyBetter": false,
+                "NREG_WORSE": false
+              }
+            },
+            "NEXUS_SELECTOR_V2_CANDIDATE": {
+              "vsUniform": {
+                "n": 5357,
+                "top1Difference": 0.090827,
+                "top1Ci95": [
+                  0.079474,
+                  0.10398
+                ],
+                "nregDifference": -0.064897,
+                "nregCi95": [
+                  -0.076354,
+                  -0.054612
+                ],
+                "MATERIAL": true,
+                "statisticallyBetter": true,
+                "NREG_WORSE": false
+              },
+              "vsResource": {
+                "n": 5357,
+                "top1Difference": 0.034161,
+                "top1Ci95": [
+                  0.024245,
+                  0.043688
+                ],
+                "nregDifference": -0.047845,
+                "nregCi95": [
+                  -0.057049,
+                  -0.038911
+                ],
+                "MATERIAL": false,
+                "statisticallyBetter": true,
+                "NREG_WORSE": false
+              }
+            }
+          }
+        },
+        "PROTECT_LEGAL": {
+          "kind": "observed",
+          "n": 6000,
+          "uniform": 0.204028,
+          "policies": {
+            "NEXUS_SELECTOR_V1": {
+              "n": 5366,
+              "top1": 0.153746
+            },
+            "NEXUS_SELECTOR_V2_CANDIDATE": {
+              "n": 5366,
+              "top1": 0.294447
+            },
+            "RESOURCE_PRESERVING_V1": {
+              "n": 6000,
+              "top1": 0.264333
+            },
+            "OBJECTIVE_TARGETING_V1": {
+              "n": 427,
+              "top1": 0.262295
+            },
+            "THREAT_COVERING_V1": {
+              "n": 149,
+              "top1": 0.328859
+            }
+          },
+          "scorers": {
+            "NX_RELATIONAL_ONLY": 0.343417,
+            "NX_DEPLOYABLE": 0.385861,
+            "NX_PRIVILEGED": 0.754528
+          },
+          "relational": {
+            "NEXUS_SELECTOR_V1": {
+              "vsUniform": {
+                "n": 5366,
+                "top1Difference": -0.049969,
+                "top1Ci95": [
+                  -0.058541,
+                  -0.041432
+                ],
+                "nregDifference": -0.025725,
+                "nregCi95": [
+                  -0.031809,
+                  -0.019422
+                ],
+                "MATERIAL": false,
+                "statisticallyBetter": false,
+                "NREG_WORSE": false
+              },
+              "vsResource": {
+                "n": 5366,
+                "top1Difference": -0.106597,
+                "top1Ci95": [
+                  -0.122963,
+                  -0.090858
+                ],
+                "nregDifference": -0.008888,
+                "nregCi95": [
+                  -0.022877,
+                  0.005686
+                ],
+                "MATERIAL": false,
+                "statisticallyBetter": false,
+                "NREG_WORSE": false
+              }
+            },
+            "NEXUS_SELECTOR_V2_CANDIDATE": {
+              "vsUniform": {
+                "n": 5366,
+                "top1Difference": 0.090732,
+                "top1Ci95": [
+                  0.077703,
+                  0.103353
+                ],
+                "nregDifference": -0.064769,
+                "nregCi95": [
+                  -0.075401,
+                  -0.052463
+                ],
+                "MATERIAL": true,
+                "statisticallyBetter": true,
+                "NREG_WORSE": false
+              },
+              "vsResource": {
+                "n": 5366,
+                "top1Difference": 0.034104,
+                "top1Ci95": [
+                  0.024552,
+                  0.043364
+                ],
+                "nregDifference": -0.047931,
+                "nregCi95": [
+                  -0.055991,
+                  -0.039255
+                ],
+                "MATERIAL": false,
+                "statisticallyBetter": true,
+                "NREG_WORSE": false
+              }
+            }
+          }
+        },
+        "THREAT_DRIVEN": {
+          "kind": "observed",
+          "n": 3663,
+          "uniform": 0.206936,
+          "policies": {
+            "NEXUS_SELECTOR_V1": {
+              "n": 3663,
+              "top1": 0.142233
+            },
+            "NEXUS_SELECTOR_V2_CANDIDATE": {
+              "n": 3663,
+              "top1": 0.282555
+            },
+            "RESOURCE_PRESERVING_V1": {
+              "n": 3663,
+              "top1": 0.259623
+            },
+            "OBJECTIVE_TARGETING_V1": {
+              "n": 268,
+              "top1": 0.25
+            },
+            "THREAT_COVERING_V1": {
+              "n": 149,
+              "top1": 0.328859
+            }
+          },
+          "scorers": {
+            "NX_RELATIONAL_ONLY": 0.34869,
+            "NX_DEPLOYABLE": 0.38716,
+            "NX_PRIVILEGED": 0.736873
+          },
+          "relational": {
+            "NEXUS_SELECTOR_V1": {
+              "vsUniform": {
+                "n": 3663,
+                "top1Difference": -0.064703,
+                "top1Ci95": [
+                  -0.074932,
+                  -0.054186
+                ],
+                "nregDifference": -0.026025,
+                "nregCi95": [
+                  -0.03373,
+                  -0.018256
+                ],
+                "MATERIAL": false,
+                "statisticallyBetter": false,
+                "NREG_WORSE": false
+              },
+              "vsResource": {
+                "n": 3663,
+                "top1Difference": -0.11739,
+                "top1Ci95": [
+                  -0.135135,
+                  -0.099099
+                ],
+                "nregDifference": -0.009746,
+                "nregCi95": [
+                  -0.026655,
+                  0.006616
+                ],
+                "MATERIAL": false,
+                "statisticallyBetter": false,
+                "NREG_WORSE": false
+              }
+            },
+            "NEXUS_SELECTOR_V2_CANDIDATE": {
+              "vsUniform": {
+                "n": 3663,
+                "top1Difference": 0.075619,
+                "top1Ci95": [
+                  0.061352,
+                  0.089675
+                ],
+                "nregDifference": -0.063042,
+                "nregCi95": [
+                  -0.076266,
+                  -0.050067
+                ],
+                "MATERIAL": true,
+                "statisticallyBetter": true,
+                "NREG_WORSE": false
+              },
+              "vsResource": {
+                "n": 3663,
+                "top1Difference": 0.022932,
+                "top1Ci95": [
+                  0.01092,
+                  0.035763
+                ],
+                "nregDifference": -0.046764,
+                "nregCi95": [
+                  -0.059205,
+                  -0.035603
+                ],
+                "MATERIAL": false,
+                "statisticallyBetter": true,
+                "NREG_WORSE": false
+              }
+            }
+          }
+        },
+        "COSTLY_ACTION_OPTIMAL": {
+          "kind": "oracle",
+          "n": 782,
+          "uniform": 0.183485,
+          "policies": {
+            "NEXUS_SELECTOR_V1": {
+              "n": 722,
+              "top1": 0.565097
+            },
+            "NEXUS_SELECTOR_V2_CANDIDATE": {
+              "n": 722,
+              "top1": 0.333795
+            },
+            "RESOURCE_PRESERVING_V1": {
+              "n": 782,
+              "top1": 0
+            },
+            "OBJECTIVE_TARGETING_V1": {
+              "n": 131,
+              "top1": 0.770992
+            },
+            "THREAT_COVERING_V1": {
+              "n": 67,
+              "top1": 0.716418
+            }
+          },
+          "scorers": {
+            "NX_RELATIONAL_ONLY": 0.736786,
+            "NX_DEPLOYABLE": 0.734228,
+            "NX_PRIVILEGED": 0.652387
+          },
+          "relational": {
+            "NEXUS_SELECTOR_V1": {
+              "vsUniform": {
+                "n": 722,
+                "top1Difference": 0.383722,
+                "top1Ci95": [
+                  0.350786,
+                  0.413428
+                ],
+                "nregDifference": -0.301272,
+                "nregCi95": [
+                  -0.314148,
+                  -0.287646
+                ],
+                "MATERIAL": true,
+                "statisticallyBetter": true,
+                "NREG_WORSE": false
+              },
+              "vsResource": {
+                "n": 722,
+                "top1Difference": 0.565097,
+                "top1Ci95": [
+                  0.530324,
+                  0.60218
+                ],
+                "nregDifference": -0.516631,
+                "nregCi95": [
+                  -0.543234,
+                  -0.490338
+                ],
+                "MATERIAL": true,
+                "statisticallyBetter": true,
+                "NREG_WORSE": false
+              }
+            },
+            "NEXUS_SELECTOR_V2_CANDIDATE": {
+              "vsUniform": {
+                "n": 722,
+                "top1Difference": 0.15242,
+                "top1Ci95": [
+                  0.118746,
+                  0.186528
+                ],
+                "nregDifference": -0.138273,
+                "nregCi95": [
+                  -0.164015,
+                  -0.11212
+                ],
+                "MATERIAL": true,
+                "statisticallyBetter": true,
+                "NREG_WORSE": false
+              },
+              "vsResource": {
+                "n": 722,
+                "top1Difference": 0.333795,
+                "top1Ci95": [
+                  0.296245,
+                  0.368056
+                ],
+                "nregDifference": -0.353632,
+                "nregCi95": [
+                  -0.384663,
+                  -0.323481
+                ],
+                "MATERIAL": true,
+                "statisticallyBetter": true,
+                "NREG_WORSE": false
+              }
+            }
+          }
+        },
+        "PROTECT_OPTIMAL": {
+          "kind": "oracle",
+          "n": 890,
+          "uniform": 0.32599,
+          "policies": {
+            "NEXUS_SELECTOR_V1": {
+              "n": 797,
+              "top1": 0.828105
+            },
+            "NEXUS_SELECTOR_V2_CANDIDATE": {
+              "n": 797,
+              "top1": 0.269762
+            },
+            "RESOURCE_PRESERVING_V1": {
+              "n": 890,
+              "top1": 0.175281
+            },
+            "OBJECTIVE_TARGETING_V1": {
+              "n": 57,
+              "top1": 0.719298
+            },
+            "THREAT_COVERING_V1": {
+              "n": 52,
+              "top1": 0.942308
+            }
+          },
+          "scorers": {
+            "NX_RELATIONAL_ONLY": 0.443446,
+            "NX_DEPLOYABLE": 0.538764,
+            "NX_PRIVILEGED": 0.693258
+          },
+          "relational": {
+            "NEXUS_SELECTOR_V1": {
+              "vsUniform": {
+                "n": 797,
+                "top1Difference": 0.506033,
+                "top1Ci95": [
+                  0.480172,
+                  0.529383
+                ],
+                "nregDifference": -0.330506,
+                "nregCi95": [
+                  -0.341895,
+                  -0.318642
+                ],
+                "MATERIAL": true,
+                "statisticallyBetter": true,
+                "NREG_WORSE": false
+              },
+              "vsResource": {
+                "n": 797,
+                "top1Difference": 0.663739,
+                "top1Ci95": [
+                  0.62612,
+                  0.696091
+                ],
+                "nregDifference": -0.510225,
+                "nregCi95": [
+                  -0.54143,
+                  -0.478621
+                ],
+                "MATERIAL": true,
+                "statisticallyBetter": true,
+                "NREG_WORSE": false
+              }
+            },
+            "NEXUS_SELECTOR_V2_CANDIDATE": {
+              "vsUniform": {
+                "n": 797,
+                "top1Difference": -0.052311,
+                "top1Ci95": [
+                  -0.082997,
+                  -0.020966
+                ],
+                "nregDifference": 0.067442,
+                "nregCi95": [
+                  0.039848,
+                  0.095165
+                ],
+                "MATERIAL": false,
+                "statisticallyBetter": false,
+                "NREG_WORSE": true
+              },
+              "vsResource": {
+                "n": 797,
+                "top1Difference": 0.105395,
+                "top1Ci95": [
+                  0.077301,
+                  0.134689
+                ],
+                "nregDifference": -0.112277,
+                "nregCi95": [
+                  -0.138279,
+                  -0.088376
+                ],
+                "MATERIAL": true,
+                "statisticallyBetter": true,
+                "NREG_WORSE": false
+              }
+            }
+          }
+        },
+        "TARGETED_ACTION_OPTIMAL": {
+          "kind": "oracle",
+          "n": 1285,
+          "uniform": 0.270915,
+          "policies": {
+            "NEXUS_SELECTOR_V1": {
+              "n": 1161,
+              "top1": 0.710594
+            },
+            "NEXUS_SELECTOR_V2_CANDIDATE": {
+              "n": 1161,
+              "top1": 0.327304
+            },
+            "RESOURCE_PRESERVING_V1": {
+              "n": 1285,
+              "top1": 0.121401
+            },
+            "OBJECTIVE_TARGETING_V1": {
+              "n": 144,
+              "top1": 0.777778
+            },
+            "THREAT_COVERING_V1": {
+              "n": 68,
+              "top1": 0.720588
+            }
+          },
+          "scorers": {
+            "NX_RELATIONAL_ONLY": 0.590532,
+            "NX_DEPLOYABLE": 0.654994,
+            "NX_PRIVILEGED": 0.758106
+          },
+          "relational": {
+            "NEXUS_SELECTOR_V1": {
+              "vsUniform": {
+                "n": 1161,
+                "top1Difference": 0.443809,
+                "top1Ci95": [
+                  0.419769,
+                  0.467948
+                ],
+                "nregDifference": -0.324308,
+                "nregCi95": [
+                  -0.334231,
+                  -0.314038
+                ],
+                "MATERIAL": true,
+                "statisticallyBetter": true,
+                "NREG_WORSE": false
+              },
+              "vsResource": {
+                "n": 1161,
+                "top1Difference": 0.597761,
+                "top1Ci95": [
+                  0.565665,
+                  0.627768
+                ],
+                "nregDifference": -0.520414,
+                "nregCi95": [
+                  -0.544888,
+                  -0.497334
+                ],
+                "MATERIAL": true,
+                "statisticallyBetter": true,
+                "NREG_WORSE": false
+              }
+            },
+            "NEXUS_SELECTOR_V2_CANDIDATE": {
+              "vsUniform": {
+                "n": 1161,
+                "top1Difference": 0.060518,
+                "top1Ci95": [
+                  0.033896,
+                  0.08665
+                ],
+                "nregDifference": -0.036009,
+                "nregCi95": [
+                  -0.058792,
+                  -0.012316
+                ],
+                "MATERIAL": true,
+                "statisticallyBetter": true,
+                "NREG_WORSE": false
+              },
+              "vsResource": {
+                "n": 1161,
+                "top1Difference": 0.21447,
+                "top1Ci95": [
+                  0.187337,
+                  0.240693
+                ],
+                "nregDifference": -0.232115,
+                "nregCi95": [
+                  -0.257494,
+                  -0.208454
+                ],
+                "MATERIAL": true,
+                "statisticallyBetter": true,
+                "NREG_WORSE": false
+              }
+            }
+          }
+        }
+      },
+      "hostileGap": {
+        "NEXUS_SELECTOR_V1": {
+          "levels": {
+            "no": {
+              "n": 1809,
+              "accuracy": 0.176893
+            },
+            "yes": {
+              "n": 3557,
+              "accuracy": 0.141974
+            }
+          },
+          "usableLevels": 2,
+          "lowest": "yes",
+          "highest": "no",
+          "gap": 0.03492,
+          "threshold": 0.08,
+          "flag": false
+        },
+        "NEXUS_SELECTOR_V2_CANDIDATE": {
+          "levels": {
+            "no": {
+              "n": 1809,
+              "accuracy": 0.322278
+            },
+            "yes": {
+              "n": 3557,
+              "accuracy": 0.280292
+            }
+          },
+          "usableLevels": 2,
+          "lowest": "yes",
+          "highest": "no",
+          "gap": 0.041985,
+          "threshold": 0.08,
+          "flag": false
+        }
+      },
+      "fidelity": {
+        "world": 1,
+        "surface": 1,
+        "choices": 1,
+        "candidateSet": 1,
+        "twinRows": 243,
+        "deployableFeatureEquivariance": 1,
+        "privilegedFeatureEquivariance": 1,
+        "nexusReasonEquivariance": 1
+      }
+    },
+    "P1SYM_OOD": {
+      "n": 6000,
+      "strategies": {
+        "NEXUS_SELECTOR_V1": {
+          "n": 6000,
+          "proposingN": 5147,
+          "coverage": 0.857833,
+          "top1": 0.142219,
+          "meanRegret": 84.496017,
+          "normalizedRegret": 0.623825,
+          "catastrophicRate": 0.321352,
+          "actionTypes": {
+            "PROTECT": 0.932388,
+            "REINFORCE": 0.044103,
+            "REPAIR": 0.023509
+          }
+        },
+        "NEXUS_SELECTOR_V2_CANDIDATE": {
+          "n": 6000,
+          "proposingN": 5147,
+          "coverage": 0.857833,
+          "top1": 0.269089,
+          "meanRegret": 84.363901,
+          "normalizedRegret": 0.612098,
+          "catastrophicRate": 0.389159,
+          "actionTypes": {
+            "MOVE": 0.921119,
+            "REINFORCE": 0.044103,
+            "REPAIR": 0.023509,
+            "ATTACK": 0.006217,
+            "PROTECT": 0.005051
+          }
+        },
+        "RESOURCE_PRESERVING_V1": {
+          "n": 6000,
+          "proposingN": 6000,
+          "coverage": 1,
+          "top1": 0.259,
+          "meanRegret": 85.862,
+          "normalizedRegret": 0.633511,
+          "catastrophicRate": 0.405333,
+          "actionTypes": {
+            "MOVE": 0.857,
+            "RETREAT": 0.143
+          }
+        },
+        "OBJECTIVE_TARGETING_V1": {
+          "n": 6000,
+          "proposingN": 87,
+          "coverage": 0.0145,
+          "top1": 0.218391,
+          "meanRegret": 95.137931,
+          "normalizedRegret": 0.555792,
+          "catastrophicRate": 0.367816,
+          "actionTypes": {
+            "PROTECT": 0.689655,
+            "REPAIR": 0.298851,
+            "RESTORE": 0.011494
+          }
+        },
+        "THREAT_COVERING_V1": {
+          "n": 6000,
+          "proposingN": 26,
+          "coverage": 0.004333,
+          "top1": 0.153846,
+          "meanRegret": 56.807692,
+          "normalizedRegret": 0.394279,
+          "catastrophicRate": 0.230769,
+          "actionTypes": {
+            "PROTECT": 1
+          }
+        },
+        "RANDOM_LEGAL_V1": {
+          "n": 6000,
+          "proposingN": 6000,
+          "coverage": 1,
+          "top1": 0.203333,
+          "meanRegret": 85.221,
+          "normalizedRegret": 0.634876,
+          "catastrophicRate": 0.363333,
+          "actionTypes": {
+            "MOVE": 0.564,
+            "PROTECT": 0.186167,
+            "WAIT": 0.152333,
+            "RETREAT": 0.076,
+            "REPAIR": 0.0095,
+            "REINFORCE": 0.007,
+            "RESTORE": 0.003667,
+            "ATTACK": 0.000833,
+            "BYPASS": 0.0005
+          }
+        },
+        "GREEDY": {
+          "n": 6000,
+          "proposingN": 6000,
+          "coverage": 1,
+          "top1": 0.166167,
+          "meanRegret": 81.726,
+          "normalizedRegret": 0.612145,
+          "catastrophicRate": 0.316167,
+          "actionTypes": {
+            "PROTECT": 0.898833,
+            "REPAIR": 0.068333,
+            "RESTORE": 0.0305,
+            "BYPASS": 0.002167,
+            "MOVE": 0.000167
+          }
+        },
+        "UNIFORM_LEGAL_EXPECTATION": {
+          "n": 6000,
+          "proposingN": 6000,
+          "coverage": 1,
+          "top1": 0.198823,
+          "meanRegret": null,
+          "normalizedRegret": 0.640707,
+          "catastrophicRate": 0,
+          "actionTypes": null
+        },
+        "NX_RELATIONAL_ONLY": {
+          "n": 6000,
+          "proposingN": 6000,
+          "coverage": 1,
+          "top1": 0.283736,
+          "meanRegret": 81.287569,
+          "normalizedRegret": 0.596977,
+          "catastrophicRate": 0.373569,
+          "actionTypes": {
+            "MOVE": 0.879667,
+            "REPAIR": 0.068333,
+            "RESTORE": 0.035,
+            "PROTECT": 0.015167,
+            "BYPASS": 0.001833
+          }
+        },
+        "NX_DEPLOYABLE": {
+          "n": 6000,
+          "proposingN": 6000,
+          "coverage": 1,
+          "top1": 0.30875,
+          "meanRegret": 75.739083,
+          "normalizedRegret": 0.560754,
+          "catastrophicRate": 0.322583,
+          "actionTypes": {
+            "MOVE": 0.880167,
+            "REPAIR": 0.068333,
+            "RESTORE": 0.034333,
+            "PROTECT": 0.015333,
+            "BYPASS": 0.001833
+          }
+        },
+        "NX_PRIVILEGED": {
+          "n": 6000,
+          "proposingN": 6000,
+          "coverage": 1,
+          "top1": 0.9025,
+          "meanRegret": 6.1295,
+          "normalizedRegret": 0.040627,
+          "catastrophicRate": 0.022,
+          "actionTypes": {
+            "MOVE": 0.9005,
+            "REPAIR": 0.064167,
+            "RESTORE": 0.0275,
+            "PROTECT": 0.007,
+            "BYPASS": 0.000833
+          }
+        },
+        "NX_PRIV_MOVEMENT_ONLY": {
+          "n": 6000,
+          "proposingN": 6000,
+          "coverage": 1,
+          "top1": 0.903667,
+          "meanRegret": 6.047333,
+          "normalizedRegret": 0.039953,
+          "catastrophicRate": 0.021667,
+          "actionTypes": {
+            "MOVE": 0.902,
+            "REPAIR": 0.063833,
+            "RESTORE": 0.027167,
+            "PROTECT": 0.006333,
+            "BYPASS": 0.000667
+          }
+        },
+        "NX_PRIV_TARGET_ONLY": {
+          "n": 6000,
+          "proposingN": 6000,
+          "coverage": 1,
+          "top1": 0.30875,
+          "meanRegret": 75.739917,
+          "normalizedRegret": 0.560762,
+          "catastrophicRate": 0.322583,
+          "actionTypes": {
+            "MOVE": 0.880167,
+            "REPAIR": 0.068333,
+            "RESTORE": 0.034333,
+            "PROTECT": 0.015333,
+            "BYPASS": 0.001833
+          }
+        },
+        "NX_DEPLOYABLE_ONESTEP": {
+          "n": 6000,
+          "proposingN": 6000,
+          "coverage": 1,
+          "top1": 0.3055,
+          "meanRegret": 74.71025,
+          "normalizedRegret": 0.553965,
+          "catastrophicRate": 0.309167,
+          "actionTypes": {
+            "MOVE": 0.879333,
+            "REPAIR": 0.068167,
+            "RESTORE": 0.0365,
+            "PROTECT": 0.015,
+            "BYPASS": 0.001
+          }
+        },
+        "NX_PRIVILEGED_ONESTEP": {
+          "n": 6000,
+          "proposingN": 6000,
+          "coverage": 1,
+          "top1": 0.901,
+          "meanRegret": 6.271667,
+          "normalizedRegret": 0.041763,
+          "catastrophicRate": 0.0225,
+          "actionTypes": {
+            "MOVE": 0.896,
+            "REPAIR": 0.064667,
+            "RESTORE": 0.0315,
+            "PROTECT": 0.006833,
+            "BYPASS": 0.001
+          }
+        }
+      },
+      "calibration": {
+        "NX_RELATIONAL_ONLY": {
+          "brier": 0.206487,
+          "crossEntropy": 1.378463,
+          "ece": 0.03321
+        },
+        "NX_DEPLOYABLE": {
+          "brier": 0.212901,
+          "crossEntropy": 1.380652,
+          "ece": 0.037041
+        },
+        "NX_PRIVILEGED": {
+          "brier": 0.122671,
+          "crossEntropy": 0.458591,
+          "ece": 0.183994
+        },
+        "NX_PRIV_MOVEMENT_ONLY": {
+          "brier": 0.123258,
+          "crossEntropy": 0.456514,
+          "ece": 0.186697
+        },
+        "NX_PRIV_TARGET_ONLY": {
+          "brier": 0.213236,
+          "crossEntropy": 1.382194,
+          "ece": 0.037895
+        },
+        "NX_DEPLOYABLE_ONESTEP": {
+          "brier": 0.217678,
+          "crossEntropy": 1.407021,
+          "ece": 0.059101
+        },
+        "NX_PRIVILEGED_ONESTEP": {
+          "brier": 0.127971,
+          "crossEntropy": 0.471589,
+          "ece": 0.183459
+        }
+      },
+      "comparisons": {
+        "V2_vs_V1": {
+          "n": 5147,
+          "top1Difference": 0.12687,
+          "top1Ci95": [
+            0.112122,
+            0.142103
+          ],
+          "nregDifference": -0.011728,
+          "nregCi95": [
+            -0.025234,
+            0.001247
+          ],
+          "MATERIAL": true,
+          "statisticallyBetter": true,
+          "NREG_WORSE": false
+        },
+        "V2_vs_V1_TIE_RANDOMISED": {
+          "n": 5147,
+          "top1Difference": 0.13061,
+          "top1Ci95": [
+            0.119581,
+            0.140555
+          ],
+          "nregDifference": -0.015468,
+          "nregCi95": [
+            -0.02384,
+            -0.006807
+          ],
+          "MATERIAL": true,
+          "statisticallyBetter": true,
+          "NREG_WORSE": false
+        },
+        "V1_vs_UNIFORM": {
+          "n": 5147,
+          "top1Difference": -0.057286,
+          "top1Ci95": [
+            -0.065559,
+            -0.049168
+          ],
+          "nregDifference": -0.017993,
+          "nregCi95": [
+            -0.023811,
+            -0.012232
+          ],
+          "MATERIAL": false,
+          "statisticallyBetter": false,
+          "NREG_WORSE": false
+        },
+        "V2_vs_UNIFORM": {
+          "n": 5147,
+          "top1Difference": 0.069584,
+          "top1Ci95": [
+            0.057914,
+            0.082455
+          ],
+          "nregDifference": -0.029721,
+          "nregCi95": [
+            -0.041363,
+            -0.018554
+          ],
+          "MATERIAL": true,
+          "statisticallyBetter": true,
+          "NREG_WORSE": false
+        },
+        "V1_vs_RESOURCE": {
+          "n": 5147,
+          "top1Difference": -0.119293,
+          "top1Ci95": [
+            -0.134967,
+            -0.103866
+          ],
+          "nregDifference": -0.008122,
+          "nregCi95": [
+            -0.022926,
+            0.005978
+          ],
+          "MATERIAL": false,
+          "statisticallyBetter": false,
+          "NREG_WORSE": false
+        },
+        "V2_vs_RESOURCE": {
+          "n": 5147,
+          "top1Difference": 0.007577,
+          "top1Ci95": [
+            -0.001156,
+            0.015879
+          ],
+          "nregDifference": -0.01985,
+          "nregCi95": [
+            -0.02744,
+            -0.012249
+          ],
+          "MATERIAL": false,
+          "statisticallyBetter": false,
+          "NREG_WORSE": false
+        },
+        "NX_DEPLOYABLE_vs_V1": {
+          "n": 5147,
+          "top1Difference": 0.164562,
+          "top1Ci95": [
+            0.150565,
+            0.178558
+          ],
+          "nregDifference": -0.063043,
+          "nregCi95": [
+            -0.075708,
+            -0.051654
+          ],
+          "MATERIAL": true,
+          "statisticallyBetter": true,
+          "NREG_WORSE": false
+        },
+        "NX_DEPLOYABLE_vs_V2": {
+          "n": 5147,
+          "top1Difference": 0.037692,
+          "top1Ci95": [
+            0.02012,
+            0.055129
+          ],
+          "nregDifference": -0.051315,
+          "nregCi95": [
+            -0.067616,
+            -0.03515
+          ],
+          "MATERIAL": false,
+          "statisticallyBetter": true,
+          "NREG_WORSE": false
+        },
+        "NX_RELATIONAL_ONLY_vs_V1": {
+          "n": 5147,
+          "top1Difference": 0.140956,
+          "top1Ci95": [
+            0.131471,
+            0.150185
+          ],
+          "nregDifference": -0.02688,
+          "nregCi95": [
+            -0.034231,
+            -0.019934
+          ],
+          "MATERIAL": true,
+          "statisticallyBetter": true,
+          "NREG_WORSE": false
+        },
+        "NX_RELATIONAL_ONLY_vs_V2": {
+          "n": 5147,
+          "top1Difference": 0.014086,
+          "top1Ci95": [
+            0.001208,
+            0.026934
+          ],
+          "nregDifference": -0.015152,
+          "nregCi95": [
+            -0.026586,
+            -0.003463
+          ],
+          "MATERIAL": false,
+          "statisticallyBetter": true,
+          "NREG_WORSE": false
+        },
+        "NX_RELATIONAL_ONLY_vs_RESOURCE": {
+          "n": 6000,
+          "top1Difference": 0.024736,
+          "top1Ci95": [
+            0.012403,
+            0.036917
+          ],
+          "nregDifference": -0.036533,
+          "nregCi95": [
+            -0.04751,
+            -0.025804
+          ],
+          "MATERIAL": false,
+          "statisticallyBetter": true,
+          "NREG_WORSE": false
+        },
+        "NX_DEPLOYABLE_vs_NX_RELATIONAL_ONLY": {
+          "n": 6000,
+          "top1Difference": 0.025014,
+          "top1Ci95": [
+            0.014875,
+            0.034653
+          ],
+          "nregDifference": -0.036223,
+          "nregCi95": [
+            -0.045794,
+            -0.027202
+          ],
+          "MATERIAL": false,
+          "statisticallyBetter": true,
+          "NREG_WORSE": false
+        },
+        "NX_DEPLOYABLE_vs_RESOURCE": {
+          "n": 6000,
+          "top1Difference": 0.04975,
+          "top1Ci95": [
+            0.0315,
+            0.06525
+          ],
+          "nregDifference": -0.072757,
+          "nregCi95": [
+            -0.087934,
+            -0.056186
+          ],
+          "MATERIAL": false,
+          "statisticallyBetter": true,
+          "NREG_WORSE": false
+        },
+        "NX_DEPLOYABLE_vs_UNIFORM": {
+          "n": 6000,
+          "top1Difference": 0.109927,
+          "top1Ci95": [
+            0.097852,
+            0.122073
+          ],
+          "nregDifference": -0.079953,
+          "nregCi95": [
+            -0.090625,
+            -0.069591
+          ],
+          "MATERIAL": true,
+          "statisticallyBetter": true,
+          "NREG_WORSE": false
+        },
+        "NX_PRIVILEGED_vs_NX_DEPLOYABLE": {
+          "n": 6000,
+          "top1Difference": 0.59375,
+          "top1Ci95": [
+            0.580417,
+            0.605583
+          ],
+          "nregDifference": -0.520126,
+          "nregCi95": [
+            -0.530814,
+            -0.508352
+          ],
+          "MATERIAL": true,
+          "statisticallyBetter": true,
+          "NREG_WORSE": false
+        },
+        "NX_PRIVILEGED_vs_V1": {
+          "n": 5147,
+          "top1Difference": 0.760249,
+          "top1Ci95": [
+            0.747129,
+            0.773476
+          ],
+          "nregDifference": -0.58234,
+          "nregCi95": [
+            -0.59187,
+            -0.572141
+          ],
+          "MATERIAL": true,
+          "statisticallyBetter": true,
+          "NREG_WORSE": false
+        },
+        "NX_PRIV_MOVEMENT_ONLY_vs_NX_DEPLOYABLE": {
+          "n": 6000,
+          "top1Difference": 0.594917,
+          "top1Ci95": [
+            0.581833,
+            0.60775
+          ],
+          "nregDifference": -0.520801,
+          "nregCi95": [
+            -0.532239,
+            -0.509259
+          ],
+          "MATERIAL": true,
+          "statisticallyBetter": true,
+          "NREG_WORSE": false
+        },
+        "NX_PRIV_TARGET_ONLY_vs_NX_DEPLOYABLE": {
+          "n": 6000,
+          "top1Difference": 0,
+          "top1Ci95": [
+            0,
+            0
+          ],
+          "nregDifference": 0.000008,
+          "nregCi95": [
+            0,
+            0.000032
+          ],
+          "MATERIAL": false,
+          "statisticallyBetter": false,
+          "NREG_WORSE": false
+        },
+        "NX_DEPLOYABLE_ONESTEP_vs_NX_DEPLOYABLE": {
+          "n": 6000,
+          "top1Difference": -0.00325,
+          "top1Ci95": [
+            -0.01225,
+            0.00625
+          ],
+          "nregDifference": -0.006789,
+          "nregCi95": [
+            -0.015517,
+            0.001898
+          ],
+          "MATERIAL": false,
+          "statisticallyBetter": false,
+          "NREG_WORSE": false
+        },
+        "NX_PRIVILEGED_ONESTEP_vs_NX_PRIVILEGED": {
+          "n": 6000,
+          "top1Difference": -0.0015,
+          "top1Ci95": [
+            -0.0035,
+            0.0005
+          ],
+          "nregDifference": 0.001135,
+          "nregCi95": [
+            0.000178,
+            0.002254
+          ],
+          "MATERIAL": false,
+          "statisticallyBetter": false,
+          "NREG_WORSE": true
+        }
+      },
+      "special": {
+        "ORACLE_SET_V2_vs_V1": {
+          "n": 6000,
+          "top1Difference": -0.052333,
+          "top1Ci95": [
+            -0.0605,
+            -0.0445
+          ],
+          "nregDifference": 0.119939,
+          "nregCi95": [
+            0.113324,
+            0.127142
+          ],
+          "MATERIAL": false,
+          "statisticallyBetter": false,
+          "NREG_WORSE": true
+        },
+        "V2_vs_V1_WHERE_V1_BEST": {
+          "n": 3605,
+          "top1Difference": -0.095978,
+          "top1Ci95": [
+            -0.107906,
+            -0.083218
+          ],
+          "nregDifference": 0.211244,
+          "nregCi95": [
+            0.200586,
+            0.222086
+          ],
+          "MATERIAL": false,
+          "statisticallyBetter": false,
+          "NREG_WORSE": true
+        },
+        "BEST_TARGETED_vs_V1": {
+          "n": 5147,
+          "top1Difference": 0.022926,
+          "top1Ci95": [
+            0.01904,
+            0.026812
+          ],
+          "nregDifference": -0.008882,
+          "nregCi95": [
+            -0.010254,
+            -0.007527
+          ],
+          "MATERIAL": false,
+          "statisticallyBetter": true,
+          "NREG_WORSE": false
+        },
+        "oracleTop1": {
+          "withV1": 0.3555,
+          "withV2": 0.303167
+        }
+      },
+      "behaviour": {
+        "NEXUS_SELECTOR_V1": {
+          "proposingN": 5147,
+          "typeAccuracy": 0.14999,
+          "targetAccuracyGivenCorrectType": 0.948187,
+          "actionTypes": {
+            "PROTECT": 0.932388,
+            "REINFORCE": 0.044103,
+            "REPAIR": 0.023509
+          },
+          "targetKinds": {
+            "RESOURCE": 0.873519,
+            "INFRASTRUCTURE": 0.043909,
+            "REPAIR_TARGET": 0.031475,
+            "DEPOT": 0.02584,
+            "POWER_SOURCE": 0.021177,
+            "BARRIER": 0.00408
+          },
+          "protect": {
+            "selectionRate": 0.932388,
+            "precision": 0.132111,
+            "optimalRate": 0.136196
+          },
+          "retreat": {
+            "selectionRate": 0,
+            "precision": null
+          },
+          "zeroCostChoiceRate": 0,
+          "zeroCostOptimalRate": 0.952788,
+          "moveDirectionShare": {},
+          "protectRegretShare": 0.966181,
+          "agreementWith": {
+            "RESOURCE_PRESERVING_V1": 0,
+            "GREEDY": 0.847095,
+            "NEXUS_SELECTOR_V2_CANDIDATE": 0.068389
+          }
+        },
+        "NEXUS_SELECTOR_V2_CANDIDATE": {
+          "proposingN": 5147,
+          "typeAccuracy": 0.926171,
+          "targetAccuracyGivenCorrectType": 0.290539,
+          "actionTypes": {
+            "MOVE": 0.921119,
+            "REINFORCE": 0.044103,
+            "REPAIR": 0.023509,
+            "ATTACK": 0.006217,
+            "PROTECT": 0.005051
+          },
+          "targetKinds": {
+            "NONE": 0.921119,
+            "INFRASTRUCTURE": 0.034,
+            "REPAIR_TARGET": 0.017292,
+            "POWER_SOURCE": 0.013017,
+            "DEPOT": 0.008354,
+            "HOSTILE": 0.006217
+          },
+          "protect": {
+            "selectionRate": 0.005051,
+            "precision": 0.192308,
+            "optimalRate": 0.136196
+          },
+          "retreat": {
+            "selectionRate": 0,
+            "precision": null
+          },
+          "zeroCostChoiceRate": 0.921119,
+          "zeroCostOptimalRate": 0.952788,
+          "moveDirectionShare": {
+            "EAST": 0.932293,
+            "SOUTH": 0.064965,
+            "WEST": 0.002742
+          },
+          "protectRegretShare": 0.004185,
+          "agreementWith": {
+            "RESOURCE_PRESERVING_V1": 0.768992,
+            "GREEDY": 0.02584,
+            "NEXUS_SELECTOR_V1": 0.068389
+          }
+        },
+        "RESOURCE_PRESERVING_V1": {
+          "proposingN": 6000,
+          "typeAccuracy": 0.8525,
+          "targetAccuracyGivenCorrectType": 0.303812,
+          "actionTypes": {
+            "MOVE": 0.857,
+            "RETREAT": 0.143
+          },
+          "targetKinds": {
+            "NONE": 1
+          },
+          "protect": {
+            "selectionRate": 0,
+            "precision": null,
+            "optimalRate": 0.138667
+          },
+          "retreat": {
+            "selectionRate": 0.143,
+            "precision": 0.262238
+          },
+          "zeroCostChoiceRate": 1,
+          "zeroCostOptimalRate": 0.951333,
+          "moveDirectionShare": {
+            "EAST": 0.943213,
+            "SOUTH": 0.05562,
+            "WEST": 0.001167
+          },
+          "protectRegretShare": 0,
+          "agreementWith": {
+            "GREEDY": 0,
+            "NEXUS_SELECTOR_V1": 0,
+            "NEXUS_SELECTOR_V2_CANDIDATE": 0.659667
+          }
+        }
+      },
+      "shortcut": {
+        "NEXUS_SELECTOR_V1": {
+          "ORIENTATION": {
+            "levels": {
+              "MA": {
+                "n": 617,
+                "accuracy": 0.145867
+              },
+              "MD": {
+                "n": 637,
+                "accuracy": 0.147567
+              },
+              "MX": {
+                "n": 639,
+                "accuracy": 0.156495
+              },
+              "MY": {
+                "n": 656,
+                "accuracy": 0.157012
+              },
+              "R0": {
+                "n": 652,
+                "accuracy": 0.138037
+              },
+              "R180": {
+                "n": 661,
+                "accuracy": 0.11649
+              },
+              "R270": {
+                "n": 645,
+                "accuracy": 0.124031
+              },
+              "R90": {
+                "n": 640,
+                "accuracy": 0.153125
+              }
+            },
+            "usableLevels": 8,
+            "lowest": "R180",
+            "highest": "MY",
+            "gap": 0.040522,
+            "threshold": 0.08,
+            "flag": false
+          },
+          "ABSOLUTE_DIRECTION": {
+            "levels": {},
+            "usableLevels": 0,
+            "gap": null,
+            "threshold": null,
+            "flag": false
+          },
+          "ACTION_ID_ORDER": {
+            "accuracy": 0.142219,
+            "permutedMeanAccuracy": 0.141102,
+            "reversedAccuracy": 0.139887,
+            "ACTION_ID_PERMUTATION_DELTA": 0.001117,
+            "choiceChangedByAnyPermutation": 0.204002,
+            "versusPermuted": {
+              "n": 5147,
+              "meanDifference": 0.001117,
+              "threshold": 0.03,
+              "flag": false
+            },
+            "versusReversed": {
+              "n": 5147,
+              "meanDifference": 0.002331,
+              "threshold": 0.03,
+              "flag": false
+            },
+            "flag": false
+          },
+          "TARGET_ID_ORDER": {
+            "targetedChoices": 5147,
+            "targetChangedByPermutation": 0.204002
+          },
+          "D4_TWIN": {
+            "rows": 204,
+            "pairs": 1020,
+            "TOP1_EQUIVARIANCE": 1,
+            "TARGET_EQUIVARIANCE": 1,
+            "paired": {
+              "n": 204,
+              "meanDifference": 0,
+              "threshold": 0.03,
+              "flag": false
+            },
+            "flag": false
+          },
+          "CANDIDATE_SHUFFLE": {
+            "changedRate": 0
+          }
+        },
+        "NEXUS_SELECTOR_V2_CANDIDATE": {
+          "ORIENTATION": {
+            "levels": {
+              "MA": {
+                "n": 617,
+                "accuracy": 0.042139
+              },
+              "MD": {
+                "n": 637,
+                "accuracy": 0.089482
+              },
+              "MX": {
+                "n": 639,
+                "accuracy": 0.15493
+              },
+              "MY": {
+                "n": 656,
+                "accuracy": 0.786585
+              },
+              "R0": {
+                "n": 652,
+                "accuracy": 0.788344
+              },
+              "R180": {
+                "n": 661,
+                "accuracy": 0.118003
+              },
+              "R270": {
+                "n": 645,
+                "accuracy": 0.051163
+              },
+              "R90": {
+                "n": 640,
+                "accuracy": 0.096875
+              }
+            },
+            "usableLevels": 8,
+            "lowest": "MA",
+            "highest": "R0",
+            "gap": 0.746204,
+            "threshold": 0.08,
+            "flag": true
+          },
+          "ABSOLUTE_DIRECTION": {
+            "levels": {
+              "EAST": {
+                "n": 4420,
+                "accuracy": 0.267195
+              },
+              "SOUTH": {
+                "n": 308,
+                "accuracy": 0.308442
+              },
+              "WEST": {
+                "n": 13,
+                "accuracy": 0.461538
+              }
+            },
+            "usableLevels": 2,
+            "lowest": "EAST",
+            "highest": "SOUTH",
+            "gap": 0.041247,
+            "threshold": 0.081435,
+            "flag": false
+          },
+          "ACTION_ID_ORDER": {
+            "accuracy": 0.269089,
+            "permutedMeanAccuracy": 0.271712,
+            "reversedAccuracy": 0.259957,
+            "ACTION_ID_PERMUTATION_DELTA": -0.002623,
+            "choiceChangedByAnyPermutation": 0.922285,
+            "versusPermuted": {
+              "n": 5147,
+              "meanDifference": -0.002623,
+              "threshold": 0.03,
+              "flag": false
+            },
+            "versusReversed": {
+              "n": 5147,
+              "meanDifference": 0.009132,
+              "threshold": 0.03,
+              "flag": false
+            },
+            "flag": false
+          },
+          "TARGET_ID_ORDER": {
+            "targetedChoices": 406,
+            "targetChangedByPermutation": 0.017241
+          },
+          "D4_TWIN": {
+            "rows": 204,
+            "pairs": 1020,
+            "TOP1_EQUIVARIANCE": 0.255882,
+            "TARGET_EQUIVARIANCE": 1,
+            "paired": {
+              "n": 204,
+              "meanDifference": 0.021569,
+              "threshold": 0.101779,
+              "flag": false
+            },
+            "flag": false
+          },
+          "CANDIDATE_SHUFFLE": {
+            "changedRate": 0
+          }
+        }
+      },
+      "marginal": {
+        "NEXUS_SELECTOR_V1": {
+          "oracleTop1": 0.3555,
+          "oracleWithoutTop1": 0.262833,
+          "marginalAccuracyGain": 0.092667,
+          "accuracyWhenBest": 0.203051,
+          "bestN": 3605
+        },
+        "NEXUS_SELECTOR_V2_CANDIDATE": {
+          "oracleTop1": 0.303167,
+          "oracleWithoutTop1": 0.262833,
+          "marginalAccuracyGain": 0.040333,
+          "accuracyWhenBest": 0.2906,
+          "bestN": 4766
+        }
+      },
+      "regimes": {
+        "HOSTILE_PRESENT": {
+          "kind": "observed",
+          "n": 3133,
+          "uniform": 0.203669,
+          "policies": {
+            "NEXUS_SELECTOR_V1": {
+              "n": 3128,
+              "top1": 0.133632
+            },
+            "NEXUS_SELECTOR_V2_CANDIDATE": {
+              "n": 3128,
+              "top1": 0.258632
+            },
+            "RESOURCE_PRESERVING_V1": {
+              "n": 3133,
+              "top1": 0.258857
+            },
+            "OBJECTIVE_TARGETING_V1": {
+              "n": 42,
+              "top1": 0.261905
+            },
+            "THREAT_COVERING_V1": {
+              "n": 24,
+              "top1": 0.083333
+            }
+          },
+          "scorers": {
+            "NX_RELATIONAL_ONLY": 0.28535,
+            "NX_DEPLOYABLE": 0.309927,
+            "NX_PRIVILEGED": 0.902968
+          },
+          "relational": {
+            "NEXUS_SELECTOR_V1": {
+              "vsUniform": {
+                "n": 3128,
+                "top1Difference": -0.070042,
+                "top1Ci95": [
+                  -0.079659,
+                  -0.059401
+                ],
+                "nregDifference": -0.015941,
+                "nregCi95": [
+                  -0.023978,
+                  -0.00843
+                ],
+                "MATERIAL": false,
+                "statisticallyBetter": false,
+                "NREG_WORSE": false
+              },
+              "vsResource": {
+                "n": 3128,
+                "top1Difference": -0.12532,
+                "top1Ci95": [
+                  -0.144821,
+                  -0.105785
+                ],
+                "nregDifference": -0.009611,
+                "nregCi95": [
+                  -0.027649,
+                  0.008032
+                ],
+                "MATERIAL": false,
+                "statisticallyBetter": false,
+                "NREG_WORSE": false
+              }
+            },
+            "NEXUS_SELECTOR_V2_CANDIDATE": {
+              "vsUniform": {
+                "n": 3128,
+                "top1Difference": 0.054958,
+                "top1Ci95": [
+                  0.038831,
+                  0.071024
+                ],
+                "nregDifference": -0.02383,
+                "nregCi95": [
+                  -0.038404,
+                  -0.009183
+                ],
+                "MATERIAL": true,
+                "statisticallyBetter": true,
+                "NREG_WORSE": false
+              },
+              "vsResource": {
+                "n": 3128,
+                "top1Difference": -0.00032,
+                "top1Ci95": [
+                  -0.011821,
+                  0.011836
+                ],
+                "nregDifference": -0.017499,
+                "nregCi95": [
+                  -0.029033,
+                  -0.006363
+                ],
+                "MATERIAL": false,
+                "statisticallyBetter": false,
+                "NREG_WORSE": false
+              }
+            }
+          }
+        },
+        "UNSUPPORTED_THREAT": {
+          "kind": "observed",
+          "n": 2627,
+          "uniform": 0.202655,
+          "policies": {
+            "NEXUS_SELECTOR_V1": {
+              "n": 2627,
+              "top1": 0.127903
+            },
+            "NEXUS_SELECTOR_V2_CANDIDATE": {
+              "n": 2627,
+              "top1": 0.261515
+            },
+            "RESOURCE_PRESERVING_V1": {
+              "n": 2627,
+              "top1": 0.261896
+            },
+            "OBJECTIVE_TARGETING_V1": {
+              "n": 37,
+              "top1": 0.243243
+            },
+            "THREAT_COVERING_V1": {
+              "n": 26,
+              "top1": 0.153846
+            }
+          },
+          "scorers": {
+            "NX_RELATIONAL_ONLY": 0.282705,
+            "NX_DEPLOYABLE": 0.307385,
+            "NX_PRIVILEGED": 0.905976
+          },
+          "relational": {
+            "NEXUS_SELECTOR_V1": {
+              "vsUniform": {
+                "n": 2627,
+                "top1Difference": -0.074752,
+                "top1Ci95": [
+                  -0.086316,
+                  -0.063823
+                ],
+                "nregDifference": -0.012885,
+                "nregCi95": [
+                  -0.021476,
+                  -0.004752
+                ],
+                "MATERIAL": false,
+                "statisticallyBetter": false,
+                "NREG_WORSE": false
+              },
+              "vsResource": {
+                "n": 2627,
+                "top1Difference": -0.133993,
+                "top1Ci95": [
+                  -0.15493,
+                  -0.110773
+                ],
+                "nregDifference": -0.003139,
+                "nregCi95": [
+                  -0.021979,
+                  0.016279
+                ],
+                "MATERIAL": false,
+                "statisticallyBetter": false,
+                "NREG_WORSE": false
+              }
+            },
+            "NEXUS_SELECTOR_V2_CANDIDATE": {
+              "vsUniform": {
+                "n": 2627,
+                "top1Difference": 0.05886,
+                "top1Ci95": [
+                  0.041613,
+                  0.074856
+                ],
+                "nregDifference": -0.027889,
+                "nregCi95": [
+                  -0.044199,
+                  -0.011719
+                ],
+                "MATERIAL": true,
+                "statisticallyBetter": true,
+                "NREG_WORSE": false
+              },
+              "vsResource": {
+                "n": 2627,
+                "top1Difference": -0.000381,
+                "top1Ci95": [
+                  -0.013704,
+                  0.012181
+                ],
+                "nregDifference": -0.018142,
+                "nregCi95": [
+                  -0.030161,
+                  -0.005133
+                ],
+                "MATERIAL": false,
+                "statisticallyBetter": false,
+                "NREG_WORSE": false
+              }
+            }
+          }
+        },
+        "DEPENDENCY": {
+          "kind": "observed",
+          "n": 2246,
+          "uniform": 0.197449,
+          "policies": {
+            "NEXUS_SELECTOR_V1": {
+              "n": 2246,
+              "top1": 0.14114
+            },
+            "NEXUS_SELECTOR_V2_CANDIDATE": {
+              "n": 2246,
+              "top1": 0.268923
+            },
+            "RESOURCE_PRESERVING_V1": {
+              "n": 2246,
+              "top1": 0.261799
+            },
+            "OBJECTIVE_TARGETING_V1": {
+              "n": 31,
+              "top1": 0.225806
+            },
+            "THREAT_COVERING_V1": {
+              "n": 11,
+              "top1": 0.090909
+            }
+          },
+          "scorers": {
+            "NX_RELATIONAL_ONLY": 0.280536,
+            "NX_DEPLOYABLE": 0.302983,
+            "NX_PRIVILEGED": 0.906055
+          },
+          "relational": {
+            "NEXUS_SELECTOR_V1": {
+              "vsUniform": {
+                "n": 2246,
+                "top1Difference": -0.056309,
+                "top1Ci95": [
+                  -0.068829,
+                  -0.043732
+                ],
+                "nregDifference": -0.010527,
+                "nregCi95": [
+                  -0.018508,
+                  -0.001582
+                ],
+                "MATERIAL": false,
+                "statisticallyBetter": false,
+                "NREG_WORSE": false
+              },
+              "vsResource": {
+                "n": 2246,
+                "top1Difference": -0.120659,
+                "top1Ci95": [
+                  -0.143366,
+                  -0.098397
+                ],
+                "nregDifference": 0.002277,
+                "nregCi95": [
+                  -0.018453,
+                  0.021595
+                ],
+                "MATERIAL": false,
+                "statisticallyBetter": false,
+                "NREG_WORSE": false
+              }
+            },
+            "NEXUS_SELECTOR_V2_CANDIDATE": {
+              "vsUniform": {
+                "n": 2246,
+                "top1Difference": 0.071474,
+                "top1Ci95": [
+                  0.054376,
+                  0.090527
+                ],
+                "nregDifference": -0.031657,
+                "nregCi95": [
+                  -0.048472,
+                  -0.015169
+                ],
+                "MATERIAL": true,
+                "statisticallyBetter": true,
+                "NREG_WORSE": false
+              },
+              "vsResource": {
+                "n": 2246,
+                "top1Difference": 0.007124,
+                "top1Ci95": [
+                  -0.004898,
+                  0.019145
+                ],
+                "nregDifference": -0.018854,
+                "nregCi95": [
+                  -0.029318,
+                  -0.008637
+                ],
+                "MATERIAL": false,
+                "statisticallyBetter": false,
+                "NREG_WORSE": false
+              }
+            }
+          }
+        },
+        "MULTI_ENTITY_DEPENDENCY": {
+          "kind": "observed",
+          "n": 2246,
+          "uniform": 0.197449,
+          "policies": {
+            "NEXUS_SELECTOR_V1": {
+              "n": 2246,
+              "top1": 0.14114
+            },
+            "NEXUS_SELECTOR_V2_CANDIDATE": {
+              "n": 2246,
+              "top1": 0.268923
+            },
+            "RESOURCE_PRESERVING_V1": {
+              "n": 2246,
+              "top1": 0.261799
+            },
+            "OBJECTIVE_TARGETING_V1": {
+              "n": 31,
+              "top1": 0.225806
+            },
+            "THREAT_COVERING_V1": {
+              "n": 11,
+              "top1": 0.090909
+            }
+          },
+          "scorers": {
+            "NX_RELATIONAL_ONLY": 0.280536,
+            "NX_DEPLOYABLE": 0.302983,
+            "NX_PRIVILEGED": 0.906055
+          },
+          "relational": {
+            "NEXUS_SELECTOR_V1": {
+              "vsUniform": {
+                "n": 2246,
+                "top1Difference": -0.056309,
+                "top1Ci95": [
+                  -0.06815,
+                  -0.043204
+                ],
+                "nregDifference": -0.010527,
+                "nregCi95": [
+                  -0.018857,
+                  -0.002097
+                ],
+                "MATERIAL": false,
+                "statisticallyBetter": false,
+                "NREG_WORSE": false
+              },
+              "vsResource": {
+                "n": 2246,
+                "top1Difference": -0.120659,
+                "top1Ci95": [
+                  -0.145592,
+                  -0.098397
+                ],
+                "nregDifference": 0.002277,
+                "nregCi95": [
+                  -0.018225,
+                  0.023902
+                ],
+                "MATERIAL": false,
+                "statisticallyBetter": false,
+                "NREG_WORSE": false
+              }
+            },
+            "NEXUS_SELECTOR_V2_CANDIDATE": {
+              "vsUniform": {
+                "n": 2246,
+                "top1Difference": 0.071474,
+                "top1Ci95": [
+                  0.053265,
+                  0.089911
+                ],
+                "nregDifference": -0.031657,
+                "nregCi95": [
+                  -0.04891,
+                  -0.013929
+                ],
+                "MATERIAL": true,
+                "statisticallyBetter": true,
+                "NREG_WORSE": false
+              },
+              "vsResource": {
+                "n": 2246,
+                "top1Difference": 0.007124,
+                "top1Ci95": [
+                  -0.004452,
+                  0.0187
+                ],
+                "nregDifference": -0.018854,
+                "nregCi95": [
+                  -0.028727,
+                  -0.007617
+                ],
+                "MATERIAL": false,
+                "statisticallyBetter": false,
+                "NREG_WORSE": false
+              }
+            }
+          }
+        },
+        "DENSE_RELATIONAL": {
+          "kind": "observed",
+          "n": 85,
+          "uniform": 0.197157,
+          "policies": {
+            "NEXUS_SELECTOR_V1": {
+              "n": 85,
+              "top1": 0.176471
+            },
+            "NEXUS_SELECTOR_V2_CANDIDATE": {
+              "n": 85,
+              "top1": 0.294118
+            },
+            "RESOURCE_PRESERVING_V1": {
+              "n": 85,
+              "top1": 0.247059
+            },
+            "OBJECTIVE_TARGETING_V1": {
+              "n": 0,
+              "top1": null
+            },
+            "THREAT_COVERING_V1": {
+              "n": 0,
+              "top1": null
+            }
+          },
+          "scorers": {
+            "NX_RELATIONAL_ONLY": 0.293137,
+            "NX_DEPLOYABLE": 0.3,
+            "NX_PRIVILEGED": 0.894118
+          },
+          "relational": {
+            "NEXUS_SELECTOR_V1": {
+              "vsUniform": {
+                "n": 85,
+                "top1Difference": -0.020686,
+                "top1Ci95": [
+                  -0.087993,
+                  0.044827
+                ],
+                "nregDifference": -0.052318,
+                "nregCi95": [
+                  -0.095677,
+                  -0.013962
+                ],
+                "MATERIAL": false,
+                "statisticallyBetter": false,
+                "NREG_WORSE": false
+              },
+              "vsResource": {
+                "n": 85,
+                "top1Difference": -0.070588,
+                "top1Ci95": [
+                  -0.188235,
+                  0.047059
+                ],
+                "nregDifference": -0.092773,
+                "nregCi95": [
+                  -0.202907,
+                  0.023344
+                ],
+                "MATERIAL": false,
+                "statisticallyBetter": false,
+                "NREG_WORSE": false
+              }
+            },
+            "NEXUS_SELECTOR_V2_CANDIDATE": {
+              "vsUniform": {
+                "n": 85,
+                "top1Difference": 0.096961,
+                "top1Ci95": [
+                  0.003534,
+                  0.200738
+                ],
+                "nregDifference": -0.014043,
+                "nregCi95": [
+                  -0.107691,
+                  0.071737
+                ],
+                "MATERIAL": true,
+                "statisticallyBetter": true,
+                "NREG_WORSE": false
+              },
+              "vsResource": {
+                "n": 85,
+                "top1Difference": 0.047059,
+                "top1Ci95": [
+                  0.011765,
+                  0.094118
+                ],
+                "nregDifference": -0.054497,
+                "nregCi95": [
+                  -0.102557,
+                  -0.013738
+                ],
+                "MATERIAL": false,
+                "statisticallyBetter": true,
+                "NREG_WORSE": false
+              }
+            }
+          }
+        },
+        "SPARSE_RELATIONAL": {
+          "kind": "observed",
+          "n": 5915,
+          "uniform": 0.198847,
+          "policies": {
+            "NEXUS_SELECTOR_V1": {
+              "n": 5062,
+              "top1": 0.141644
+            },
+            "NEXUS_SELECTOR_V2_CANDIDATE": {
+              "n": 5062,
+              "top1": 0.268669
+            },
+            "RESOURCE_PRESERVING_V1": {
+              "n": 5915,
+              "top1": 0.259172
+            },
+            "OBJECTIVE_TARGETING_V1": {
+              "n": 87,
+              "top1": 0.218391
+            },
+            "THREAT_COVERING_V1": {
+              "n": 26,
+              "top1": 0.153846
+            }
+          },
+          "scorers": {
+            "NX_RELATIONAL_ONLY": 0.283601,
+            "NX_DEPLOYABLE": 0.308876,
+            "NX_PRIVILEGED": 0.90262
+          },
+          "relational": {
+            "NEXUS_SELECTOR_V1": {
+              "vsUniform": {
+                "n": 5062,
+                "top1Difference": -0.057901,
+                "top1Ci95": [
+                  -0.065663,
+                  -0.04891
+                ],
+                "nregDifference": -0.017417,
+                "nregCi95": [
+                  -0.023465,
+                  -0.012275
+                ],
+                "MATERIAL": false,
+                "statisticallyBetter": false,
+                "NREG_WORSE": false
+              },
+              "vsResource": {
+                "n": 5062,
+                "top1Difference": -0.120111,
+                "top1Ci95": [
+                  -0.137049,
+                  -0.105702
+                ],
+                "nregDifference": -0.006701,
+                "nregCi95": [
+                  -0.019649,
+                  0.008413
+                ],
+                "MATERIAL": false,
+                "statisticallyBetter": false,
+                "NREG_WORSE": false
+              }
+            },
+            "NEXUS_SELECTOR_V2_CANDIDATE": {
+              "vsUniform": {
+                "n": 5062,
+                "top1Difference": 0.069124,
+                "top1Ci95": [
+                  0.056579,
+                  0.081031
+                ],
+                "nregDifference": -0.029984,
+                "nregCi95": [
+                  -0.040654,
+                  -0.018906
+                ],
+                "MATERIAL": true,
+                "statisticallyBetter": true,
+                "NREG_WORSE": false
+              },
+              "vsResource": {
+                "n": 5062,
+                "top1Difference": 0.006914,
+                "top1Ci95": [
+                  -0.001782,
+                  0.015038
+                ],
+                "nregDifference": -0.019268,
+                "nregCi95": [
+                  -0.026506,
+                  -0.012234
+                ],
+                "MATERIAL": false,
+                "statisticallyBetter": false,
+                "NREG_WORSE": false
+              }
+            }
+          }
+        },
+        "OBJECTIVE_RELATION": {
+          "kind": "observed",
+          "n": 87,
+          "uniform": 0.150894,
+          "policies": {
+            "NEXUS_SELECTOR_V1": {
+              "n": 74,
+              "top1": 0.081081
+            },
+            "NEXUS_SELECTOR_V2_CANDIDATE": {
+              "n": 74,
+              "top1": 0.27027
+            },
+            "RESOURCE_PRESERVING_V1": {
+              "n": 87,
+              "top1": 0.241379
+            },
+            "OBJECTIVE_TARGETING_V1": {
+              "n": 87,
+              "top1": 0.218391
+            },
+            "THREAT_COVERING_V1": {
+              "n": 5,
+              "top1": 0
+            }
+          },
+          "scorers": {
+            "NX_RELATIONAL_ONLY": 0.350575,
+            "NX_DEPLOYABLE": 0.316092,
+            "NX_PRIVILEGED": 0.735632
+          },
+          "relational": {
+            "NEXUS_SELECTOR_V1": {
+              "vsUniform": {
+                "n": 74,
+                "top1Difference": -0.070796,
+                "top1Ci95": [
+                  -0.128331,
+                  -0.004924
+                ],
+                "nregDifference": -0.051926,
+                "nregCi95": [
+                  -0.096757,
+                  -0.007383
+                ],
+                "MATERIAL": false,
+                "statisticallyBetter": false,
+                "NREG_WORSE": false
+              },
+              "vsResource": {
+                "n": 74,
+                "top1Difference": -0.148649,
+                "top1Ci95": [
+                  -0.266667,
+                  -0.027397
+                ],
+                "nregDifference": -0.07402,
+                "nregCi95": [
+                  -0.203686,
+                  0.053301
+                ],
+                "MATERIAL": false,
+                "statisticallyBetter": false,
+                "NREG_WORSE": false
+              }
+            },
+            "NEXUS_SELECTOR_V2_CANDIDATE": {
+              "vsUniform": {
+                "n": 74,
+                "top1Difference": 0.118394,
+                "top1Ci95": [
+                  0.020089,
+                  0.231596
+                ],
+                "nregDifference": -0.128901,
+                "nregCi95": [
+                  -0.221427,
+                  -0.046577
+                ],
+                "MATERIAL": true,
+                "statisticallyBetter": true,
+                "NREG_WORSE": false
+              },
+              "vsResource": {
+                "n": 74,
+                "top1Difference": 0.040541,
+                "top1Ci95": [
+                  -0.04,
+                  0.128571
+                ],
+                "nregDifference": -0.150995,
+                "nregCi95": [
+                  -0.243987,
+                  -0.069335
+                ],
+                "MATERIAL": false,
+                "statisticallyBetter": false,
+                "NREG_WORSE": false
+              }
+            }
+          }
+        },
+        "RESOURCE_RELATION": {
+          "kind": "observed",
+          "n": 5996,
+          "uniform": 0.198793,
+          "policies": {
+            "NEXUS_SELECTOR_V1": {
+              "n": 5143,
+              "top1": 0.141941
+            },
+            "NEXUS_SELECTOR_V2_CANDIDATE": {
+              "n": 5143,
+              "top1": 0.268909
+            },
+            "RESOURCE_PRESERVING_V1": {
+              "n": 5996,
+              "top1": 0.259173
+            },
+            "OBJECTIVE_TARGETING_V1": {
+              "n": 86,
+              "top1": 0.209302
+            },
+            "THREAT_COVERING_V1": {
+              "n": 26,
+              "top1": 0.153846
+            }
+          },
+          "scorers": {
+            "NX_RELATIONAL_ONLY": 0.283369,
+            "NX_DEPLOYABLE": 0.308456,
+            "NX_PRIVILEGED": 0.902602
+          },
+          "relational": {
+            "NEXUS_SELECTOR_V1": {
+              "vsUniform": {
+                "n": 5143,
+                "top1Difference": -0.057529,
+                "top1Ci95": [
+                  -0.065612,
+                  -0.048883
+                ],
+                "nregDifference": -0.017677,
+                "nregCi95": [
+                  -0.023391,
+                  -0.01204
+                ],
+                "MATERIAL": false,
+                "statisticallyBetter": false,
+                "NREG_WORSE": false
+              },
+              "vsResource": {
+                "n": 5143,
+                "top1Difference": -0.119774,
+                "top1Ci95": [
+                  -0.136133,
+                  -0.104329
+                ],
+                "nregDifference": -0.007578,
+                "nregCi95": [
+                  -0.022385,
+                  0.006917
+                ],
+                "MATERIAL": false,
+                "statisticallyBetter": false,
+                "NREG_WORSE": false
+              }
+            },
+            "NEXUS_SELECTOR_V2_CANDIDATE": {
+              "vsUniform": {
+                "n": 5143,
+                "top1Difference": 0.069439,
+                "top1Ci95": [
+                  0.057274,
+                  0.081705
+                ],
+                "nregDifference": -0.029548,
+                "nregCi95": [
+                  -0.041482,
+                  -0.018913
+                ],
+                "MATERIAL": true,
+                "statisticallyBetter": true,
+                "NREG_WORSE": false
+              },
+              "vsResource": {
+                "n": 5143,
+                "top1Difference": 0.007194,
+                "top1Ci95": [
+                  -0.000975,
+                  0.015355
+                ],
+                "nregDifference": -0.019448,
+                "nregCi95": [
+                  -0.026753,
+                  -0.011773
+                ],
+                "MATERIAL": false,
+                "statisticallyBetter": false,
+                "NREG_WORSE": false
+              }
+            }
+          }
+        },
+        "PROTECT_LEGAL": {
+          "kind": "observed",
+          "n": 6000,
+          "uniform": 0.198823,
+          "policies": {
+            "NEXUS_SELECTOR_V1": {
+              "n": 5147,
+              "top1": 0.142219
+            },
+            "NEXUS_SELECTOR_V2_CANDIDATE": {
+              "n": 5147,
+              "top1": 0.269089
+            },
+            "RESOURCE_PRESERVING_V1": {
+              "n": 6000,
+              "top1": 0.259
+            },
+            "OBJECTIVE_TARGETING_V1": {
+              "n": 87,
+              "top1": 0.218391
+            },
+            "THREAT_COVERING_V1": {
+              "n": 26,
+              "top1": 0.153846
+            }
+          },
+          "scorers": {
+            "NX_RELATIONAL_ONLY": 0.283736,
+            "NX_DEPLOYABLE": 0.30875,
+            "NX_PRIVILEGED": 0.9025
+          },
+          "relational": {
+            "NEXUS_SELECTOR_V1": {
+              "vsUniform": {
+                "n": 5147,
+                "top1Difference": -0.057286,
+                "top1Ci95": [
+                  -0.06539,
+                  -0.049002
+                ],
+                "nregDifference": -0.017993,
+                "nregCi95": [
+                  -0.023948,
+                  -0.01254
+                ],
+                "MATERIAL": false,
+                "statisticallyBetter": false,
+                "NREG_WORSE": false
+              },
+              "vsResource": {
+                "n": 5147,
+                "top1Difference": -0.119293,
+                "top1Ci95": [
+                  -0.135398,
+                  -0.104466
+                ],
+                "nregDifference": -0.008122,
+                "nregCi95": [
+                  -0.021587,
+                  0.006601
+                ],
+                "MATERIAL": false,
+                "statisticallyBetter": false,
+                "NREG_WORSE": false
+              }
+            },
+            "NEXUS_SELECTOR_V2_CANDIDATE": {
+              "vsUniform": {
+                "n": 5147,
+                "top1Difference": 0.069584,
+                "top1Ci95": [
+                  0.056443,
+                  0.081863
+                ],
+                "nregDifference": -0.029721,
+                "nregCi95": [
+                  -0.040873,
+                  -0.018053
+                ],
+                "MATERIAL": true,
+                "statisticallyBetter": true,
+                "NREG_WORSE": false
+              },
+              "vsResource": {
+                "n": 5147,
+                "top1Difference": 0.007577,
+                "top1Ci95": [
+                  -0.000775,
+                  0.015891
+                ],
+                "nregDifference": -0.01985,
+                "nregCi95": [
+                  -0.027528,
+                  -0.011993
+                ],
+                "MATERIAL": false,
+                "statisticallyBetter": false,
+                "NREG_WORSE": false
+              }
+            }
+          }
+        },
+        "THREAT_DRIVEN": {
+          "kind": "observed",
+          "n": 3317,
+          "uniform": 0.203149,
+          "policies": {
+            "NEXUS_SELECTOR_V1": {
+              "n": 3317,
+              "top1": 0.134157
+            },
+            "NEXUS_SELECTOR_V2_CANDIDATE": {
+              "n": 3317,
+              "top1": 0.25927
+            },
+            "RESOURCE_PRESERVING_V1": {
+              "n": 3317,
+              "top1": 0.258969
+            },
+            "OBJECTIVE_TARGETING_V1": {
+              "n": 44,
+              "top1": 0.25
+            },
+            "THREAT_COVERING_V1": {
+              "n": 26,
+              "top1": 0.153846
+            }
+          },
+          "scorers": {
+            "NX_RELATIONAL_ONLY": 0.286102,
+            "NX_DEPLOYABLE": 0.31233,
+            "NX_PRIVILEGED": 0.904432
+          },
+          "relational": {
+            "NEXUS_SELECTOR_V1": {
+              "vsUniform": {
+                "n": 3317,
+                "top1Difference": -0.068992,
+                "top1Ci95": [
+                  -0.0788,
+                  -0.059197
+                ],
+                "nregDifference": -0.016546,
+                "nregCi95": [
+                  -0.023178,
+                  -0.009358
+                ],
+                "MATERIAL": false,
+                "statisticallyBetter": false,
+                "NREG_WORSE": false
+              },
+              "vsResource": {
+                "n": 3317,
+                "top1Difference": -0.124812,
+                "top1Ci95": [
+                  -0.142599,
+                  -0.105517
+                ],
+                "nregDifference": -0.010125,
+                "nregCi95": [
+                  -0.028348,
+                  0.006531
+                ],
+                "MATERIAL": false,
+                "statisticallyBetter": false,
+                "NREG_WORSE": false
+              }
+            },
+            "NEXUS_SELECTOR_V2_CANDIDATE": {
+              "vsUniform": {
+                "n": 3317,
+                "top1Difference": 0.056121,
+                "top1Ci95": [
+                  0.040702,
+                  0.07079
+                ],
+                "nregDifference": -0.024177,
+                "nregCi95": [
+                  -0.038257,
+                  -0.009277
+                ],
+                "MATERIAL": true,
+                "statisticallyBetter": true,
+                "NREG_WORSE": false
+              },
+              "vsResource": {
+                "n": 3317,
+                "top1Difference": 0.000301,
+                "top1Ci95": [
+                  -0.011155,
+                  0.012059
+                ],
+                "nregDifference": -0.017756,
+                "nregCi95": [
+                  -0.029292,
+                  -0.00665
+                ],
+                "MATERIAL": false,
+                "statisticallyBetter": false,
+                "NREG_WORSE": false
+              }
+            }
+          }
+        },
+        "COSTLY_ACTION_OPTIMAL": {
+          "kind": "oracle",
+          "n": 292,
+          "uniform": 0.19108,
+          "policies": {
+            "NEXUS_SELECTOR_V1": {
+              "n": 243,
+              "top1": 0.617284
+            },
+            "NEXUS_SELECTOR_V2_CANDIDATE": {
+              "n": 243,
+              "top1": 0.403292
+            },
+            "RESOURCE_PRESERVING_V1": {
+              "n": 292,
+              "top1": 0
+            },
+            "OBJECTIVE_TARGETING_V1": {
+              "n": 19,
+              "top1": 1
+            },
+            "THREAT_COVERING_V1": {
+              "n": 7,
+              "top1": 0.571429
+            }
+          },
+          "scorers": {
+            "NX_RELATIONAL_ONLY": 0.835616,
+            "NX_DEPLOYABLE": 0.828767,
+            "NX_PRIVILEGED": 0.736301
+          },
+          "relational": {
+            "NEXUS_SELECTOR_V1": {
+              "vsUniform": {
+                "n": 243,
+                "top1Difference": 0.433374,
+                "top1Ci95": [
+                  0.375815,
+                  0.490595
+                ],
+                "nregDifference": -0.328553,
+                "nregCi95": [
+                  -0.341982,
+                  -0.314444
+                ],
+                "MATERIAL": true,
+                "statisticallyBetter": true,
+                "NREG_WORSE": false
+              },
+              "vsResource": {
+                "n": 243,
+                "top1Difference": 0.617284,
+                "top1Ci95": [
+                  0.556452,
+                  0.679487
+                ],
+                "nregDifference": -0.54539,
+                "nregCi95": [
+                  -0.588592,
+                  -0.501229
+                ],
+                "MATERIAL": true,
+                "statisticallyBetter": true,
+                "NREG_WORSE": false
+              }
+            },
+            "NEXUS_SELECTOR_V2_CANDIDATE": {
+              "vsUniform": {
+                "n": 243,
+                "top1Difference": 0.219382,
+                "top1Ci95": [
+                  0.15556,
+                  0.280635
+                ],
+                "nregDifference": -0.17285,
+                "nregCi95": [
+                  -0.213912,
+                  -0.126191
+                ],
+                "MATERIAL": true,
+                "statisticallyBetter": true,
+                "NREG_WORSE": false
+              },
+              "vsResource": {
+                "n": 243,
+                "top1Difference": 0.403292,
+                "top1Ci95": [
+                  0.34,
+                  0.465649
+                ],
+                "nregDifference": -0.389687,
+                "nregCi95": [
+                  -0.441405,
+                  -0.33448
+                ],
+                "MATERIAL": true,
+                "statisticallyBetter": true,
+                "NREG_WORSE": false
+              }
+            }
+          }
+        },
+        "PROTECT_OPTIMAL": {
+          "kind": "oracle",
+          "n": 832,
+          "uniform": 0.354739,
+          "policies": {
+            "NEXUS_SELECTOR_V1": {
+              "n": 701,
+              "top1": 0.921541
+            },
+            "NEXUS_SELECTOR_V2_CANDIDATE": {
+              "n": 701,
+              "top1": 0.281027
+            },
+            "RESOURCE_PRESERVING_V1": {
+              "n": 832,
+              "top1": 0.246394
+            },
+            "OBJECTIVE_TARGETING_V1": {
+              "n": 5,
+              "top1": 1
+            },
+            "THREAT_COVERING_V1": {
+              "n": 4,
+              "top1": 1
+            }
+          },
+          "scorers": {
+            "NX_RELATIONAL_ONLY": 0.347756,
+            "NX_DEPLOYABLE": 0.536659,
+            "NX_PRIVILEGED": 0.915865
+          },
+          "relational": {
+            "NEXUS_SELECTOR_V1": {
+              "vsUniform": {
+                "n": 701,
+                "top1Difference": 0.565362,
+                "top1Ci95": [
+                  0.545244,
+                  0.585798
+                ],
+                "nregDifference": -0.386746,
+                "nregCi95": [
+                  -0.398806,
+                  -0.375828
+                ],
+                "MATERIAL": true,
+                "statisticallyBetter": true,
+                "NREG_WORSE": false
+              },
+              "vsResource": {
+                "n": 701,
+                "top1Difference": 0.669044,
+                "top1Ci95": [
+                  0.629213,
+                  0.708571
+                ],
+                "nregDifference": -0.544585,
+                "nregCi95": [
+                  -0.581263,
+                  -0.512901
+                ],
+                "MATERIAL": true,
+                "statisticallyBetter": true,
+                "NREG_WORSE": false
+              }
+            },
+            "NEXUS_SELECTOR_V2_CANDIDATE": {
+              "vsUniform": {
+                "n": 701,
+                "top1Difference": -0.075151,
+                "top1Ci95": [
+                  -0.108605,
+                  -0.044173
+                ],
+                "nregDifference": 0.133308,
+                "nregCi95": [
+                  0.102056,
+                  0.165322
+                ],
+                "MATERIAL": false,
+                "statisticallyBetter": false,
+                "NREG_WORSE": true
+              },
+              "vsResource": {
+                "n": 701,
+                "top1Difference": 0.028531,
+                "top1Ci95": [
+                  0.008523,
+                  0.050072
+                ],
+                "nregDifference": -0.024531,
+                "nregCi95": [
+                  -0.045012,
+                  -0.004914
+                ],
+                "MATERIAL": false,
+                "statisticallyBetter": true,
+                "NREG_WORSE": false
+              }
+            }
+          }
+        },
+        "TARGETED_ACTION_OPTIMAL": {
+          "kind": "oracle",
+          "n": 1007,
+          "uniform": 0.319853,
+          "policies": {
+            "NEXUS_SELECTOR_V1": {
+              "n": 850,
+              "top1": 0.861176
+            },
+            "NEXUS_SELECTOR_V2_CANDIDATE": {
+              "n": 850,
+              "top1": 0.334118
+            },
+            "RESOURCE_PRESERVING_V1": {
+              "n": 1007,
+              "top1": 0.204568
+            },
+            "OBJECTIVE_TARGETING_V1": {
+              "n": 19,
+              "top1": 1
+            },
+            "THREAT_COVERING_V1": {
+              "n": 7,
+              "top1": 0.571429
+            }
+          },
+          "scorers": {
+            "NX_RELATIONAL_ONLY": 0.460113,
+            "NX_DEPLOYABLE": 0.616187,
+            "NX_PRIVILEGED": 0.91857
+          },
+          "relational": {
+            "NEXUS_SELECTOR_V1": {
+              "vsUniform": {
+                "n": 850,
+                "top1Difference": 0.541084,
+                "top1Ci95": [
+                  0.52013,
+                  0.563066
+                ],
+                "nregDifference": -0.379244,
+                "nregCi95": [
+                  -0.389533,
+                  -0.369238
+                ],
+                "MATERIAL": true,
+                "statisticallyBetter": true,
+                "NREG_WORSE": false
+              },
+              "vsResource": {
+                "n": 850,
+                "top1Difference": 0.651765,
+                "top1Ci95": [
+                  0.618654,
+                  0.681764
+                ],
+                "nregDifference": -0.548086,
+                "nregCi95": [
+                  -0.57845,
+                  -0.520629
+                ],
+                "MATERIAL": true,
+                "statisticallyBetter": true,
+                "NREG_WORSE": false
+              }
+            },
+            "NEXUS_SELECTOR_V2_CANDIDATE": {
+              "vsUniform": {
+                "n": 850,
+                "top1Difference": 0.014026,
+                "top1Ci95": [
+                  -0.018789,
+                  0.047583
+                ],
+                "nregDifference": 0.051713,
+                "nregCi95": [
+                  0.020983,
+                  0.078754
+                ],
+                "MATERIAL": false,
+                "statisticallyBetter": false,
+                "NREG_WORSE": true
+              },
+              "vsResource": {
+                "n": 850,
+                "top1Difference": 0.124706,
+                "top1Ci95": [
+                  0.097788,
+                  0.150943
+                ],
+                "nregDifference": -0.117129,
+                "nregCi95": [
+                  -0.141475,
+                  -0.09246
+                ],
+                "MATERIAL": true,
+                "statisticallyBetter": true,
+                "NREG_WORSE": false
+              }
+            }
+          }
+        }
+      },
+      "hostileGap": {
+        "NEXUS_SELECTOR_V1": {
+          "levels": {
+            "no": {
+              "n": 2019,
+              "accuracy": 0.155523
+            },
+            "yes": {
+              "n": 3128,
+              "accuracy": 0.133632
+            }
+          },
+          "usableLevels": 2,
+          "lowest": "yes",
+          "highest": "no",
+          "gap": 0.021891,
+          "threshold": 0.08,
+          "flag": false
+        },
+        "NEXUS_SELECTOR_V2_CANDIDATE": {
+          "levels": {
+            "no": {
+              "n": 2019,
+              "accuracy": 0.28529
+            },
+            "yes": {
+              "n": 3128,
+              "accuracy": 0.258632
+            }
+          },
+          "usableLevels": 2,
+          "lowest": "yes",
+          "highest": "no",
+          "gap": 0.026658,
+          "threshold": 0.08,
+          "flag": false
+        }
+      },
+      "fidelity": {
+        "world": 1,
+        "surface": 1,
+        "choices": 1,
+        "candidateSet": 1,
+        "twinRows": 240,
+        "deployableFeatureEquivariance": 1,
+        "privilegedFeatureEquivariance": 1,
+        "nexusReasonEquivariance": 1
+      }
+    }
+  },
+  "claims": {
+    "C1_PROTECT_BIAS_MAIN_CAUSE": {
+      "evidence": {
+        "protectSelection": 0.903653,
+        "protectRegretShare": 0.952837
+      },
+      "verdict": "SURVIVES"
+    },
+    "C2_TARGET_NOT_MAIN_DEFECT": {
+      "evidence": {
+        "targetAccuracyGivenCorrectType": 0.923852,
+        "typeAccuracy": 0.166418
+      },
+      "verdict": "SURVIVES"
+    },
+    "C3_V2_STANDALONE_MATERIAL_IMPROVEMENT": {
+      "evidence": {
+        "raw": {
+          "holdout": {
+            "n": 5366,
+            "top1Difference": 0.140701,
+            "top1Ci95": [
+              0.125815,
+              0.156308
+            ],
+            "nregDifference": -0.039044,
+            "nregCi95": [
+              -0.052519,
+              -0.025353
+            ],
+            "MATERIAL": true,
+            "statisticallyBetter": true,
+            "NREG_WORSE": false
+          },
+          "ood": {
+            "n": 5147,
+            "top1Difference": 0.12687,
+            "top1Ci95": [
+              0.112122,
+              0.142103
+            ],
+            "nregDifference": -0.011728,
+            "nregCi95": [
+              -0.025234,
+              0.001247
+            ],
+            "MATERIAL": true,
+            "statisticallyBetter": true,
+            "NREG_WORSE": false
+          }
+        },
+        "tieRandomised": {
+          "holdout": {
+            "n": 5366,
+            "top1Difference": 0.138418,
+            "top1Ci95": [
+              0.128321,
+              0.148727
+            ],
+            "nregDifference": -0.042149,
+            "nregCi95": [
+              -0.051256,
+              -0.032976
+            ],
+            "MATERIAL": true,
+            "statisticallyBetter": true,
+            "NREG_WORSE": false
+          },
+          "ood": {
+            "n": 5147,
+            "top1Difference": 0.13061,
+            "top1Ci95": [
+              0.119581,
+              0.140555
+            ],
+            "nregDifference": -0.015468,
+            "nregCi95": [
+              -0.02384,
+              -0.006807
+            ],
+            "MATERIAL": true,
+            "statisticallyBetter": true,
+            "NREG_WORSE": false
+          }
+        }
+      },
+      "verdict": "SURVIVES"
+    },
+    "C4_V2_GAIN_FROM_MOVE_RESOURCE_COLLINEAR": {
+      "evidence": {
+        "v2MoveShare": 0.846254,
+        "v2AgreementWithResource": 0.682818
+      },
+      "verdict": "SURVIVES"
+    },
+    "C5_V2_REDUCES_POLICY_SET_VALUE": {
+      "evidence": {
+        "oracleTop1": {
+          "withV1": 0.396833,
+          "withV2": 0.351167
+        },
+        "diff": {
+          "n": 6000,
+          "top1Difference": -0.045667,
+          "top1Ci95": [
+            -0.053333,
+            -0.037667
+          ],
+          "nregDifference": 0.09984,
+          "nregCi95": [
+            0.092841,
+            0.106986
+          ],
+          "MATERIAL": false,
+          "statisticallyBetter": false,
+          "NREG_WORSE": true
+        }
+      },
+      "verdict": "SURVIVES"
+    },
+    "C6_V2_WORSE_WHERE_V1_BEST": {
+      "evidence": {
+        "n": 3374,
+        "top1Difference": -0.102549,
+        "top1Ci95": [
+          -0.116775,
+          -0.088322
+        ],
+        "nregDifference": 0.205996,
+        "nregCi95": [
+          0.193892,
+          0.217819
+        ],
+        "MATERIAL": false,
+        "statisticallyBetter": false,
+        "NREG_WORSE": true
+      },
+      "verdict": "SURVIVES"
+    },
+    "C7_V1_VALUE_FROM_GREEDY_COLLINEARITY": {
+      "evidence": {
+        "v1AgreementWithGreedy": 0.774693
+      },
+      "verdict": "SURVIVES"
+    },
+    "C8_REMEDIATION_REQUIRES_MISSING_REPRESENTATION": {
+      "evidence": {
+        "holdout": {
+          "n": 6000,
+          "top1Difference": 0.368667,
+          "top1Ci95": [
+            0.354333,
+            0.383167
+          ],
+          "nregDifference": -0.336847,
+          "nregCi95": [
+            -0.347865,
+            -0.326371
+          ],
+          "MATERIAL": true,
+          "statisticallyBetter": true,
+          "NREG_WORSE": false
+        },
+        "ood": {
+          "n": 6000,
+          "top1Difference": 0.59375,
+          "top1Ci95": [
+            0.580417,
+            0.605583
+          ],
+          "nregDifference": -0.520126,
+          "nregCi95": [
+            -0.530814,
+            -0.508352
+          ],
+          "MATERIAL": true,
+          "statisticallyBetter": true,
+          "NREG_WORSE": false
+        }
+      },
+      "verdict": "SURVIVES"
+    },
+    "C9_V1_THREAT_REGIME_INSENSITIVE": {
+      "evidence": {
+        "levels": {
+          "no": {
+            "n": 1809,
+            "accuracy": 0.176893
+          },
+          "yes": {
+            "n": 3557,
+            "accuracy": 0.141974
+          }
+        },
+        "usableLevels": 2,
+        "lowest": "yes",
+        "highest": "no",
+        "gap": 0.03492,
+        "threshold": 0.08,
+        "flag": false
+      },
+      "verdict": "SURVIVES"
+    },
+    "C10_ENTITY_TARGETED_ORACLE_NOT_MATERIAL": {
+      "evidence": {
+        "n": 5366,
+        "top1Difference": 0.062616,
+        "top1Ci95": [
+          0.056467,
+          0.069139
+        ],
+        "nregDifference": -0.025382,
+        "nregCi95": [
+          -0.028328,
+          -0.02291
+        ],
+        "MATERIAL": true,
+        "statisticallyBetter": true,
+        "NREG_WORSE": false
+      },
+      "verdict": "INVALIDATED"
+    },
+    "C11_V2_SIMULATOR_FREE": {
+      "evidence": {
+        "candidateHash": "8c658bfa41c5e84137bd78de6f70a6f802c3754936ffbc995ce866da9e22a900",
+        "sourceHash": "965cb36f003045a5f80e0e9860c03b99db0d427bdd1768d5fc33ec72e2581577"
+      },
+      "verdict": "SURVIVES"
+    },
+    "C12_V1_PRESERVED": {
+      "evidence": {
+        "holdoutChoiceFidelity": 1,
+        "oodChoiceFidelity": 1
+      },
+      "verdict": "SURVIVES"
+    }
+  },
+  "nexusClassification": {
+    "NEXUS_SELECTOR_V1": {
+      "inputs": {
+        "proposingN": 5366,
+        "nuisanceDependence": false,
+        "replicatedNuisance": [],
+        "genuineRelational": false,
+        "genuineRegimes": [],
+        "representationBlocked": true,
+        "policyLogicLimited": true,
+        "marginalAccuracyGain": 0.107167,
+        "accuracyWhenBest": 0.244517
+      },
+      "primary": "REPRESENTATION_BLOCKED",
+      "labels": [
+        "REPRESENTATION_BLOCKED",
+        "POLICY_LOGIC_LIMITED",
+        "REDESIGN_CANDIDATE",
+        "WEAK_BUT_DISTINCT"
+      ],
+      "holds": {
+        "INSUFFICIENT_EVIDENCE": false,
+        "SHORTCUT_DEPENDENT": false,
+        "GENUINE_RELATIONAL_COMPETENCE": false,
+        "REPRESENTATION_BLOCKED": true,
+        "POLICY_LOGIC_LIMITED": true,
+        "REDESIGN_CANDIDATE": true,
+        "WEAK_BUT_DISTINCT": true,
+        "REDUNDANT": false
+      }
+    },
+    "NEXUS_SELECTOR_V2_CANDIDATE": {
+      "inputs": {
+        "proposingN": 5366,
+        "nuisanceDependence": true,
+        "replicatedNuisance": [
+          "ORIENTATION"
+        ],
+        "genuineRelational": false,
+        "genuineRegimes": [],
+        "representationBlocked": true,
+        "policyLogicLimited": false,
+        "marginalAccuracyGain": 0.0615,
+        "accuracyWhenBest": 0.334392
+      },
+      "primary": "SHORTCUT_DEPENDENT",
+      "labels": [
+        "SHORTCUT_DEPENDENT",
+        "REPRESENTATION_BLOCKED",
+        "REDESIGN_CANDIDATE",
+        "WEAK_BUT_DISTINCT"
+      ],
+      "holds": {
+        "INSUFFICIENT_EVIDENCE": false,
+        "SHORTCUT_DEPENDENT": true,
+        "GENUINE_RELATIONAL_COMPETENCE": false,
+        "REPRESENTATION_BLOCKED": true,
+        "POLICY_LOGIC_LIMITED": false,
+        "REDESIGN_CANDIDATE": true,
+        "WEAK_BUT_DISTINCT": true,
+        "REDUNDANT": false
+      }
+    }
+  },
+  "architecture": {
+    "OBSERVATION_INFRASTRUCTURE": true,
+    "NEXUS": false,
+    "ACTION_SEMANTICS_INFRASTRUCTURE": true,
+    "ARCHIMEDES": false,
+    "ORACLE": "NOT_ASSESSED",
+    "EXPERT_10": false
+  },
+  "roadmap": {
+    "NEXUS_REQUALIFIED": true,
+    "HISTORICAL_P1_SURVIVES": "PARTIAL",
+    "GENUINE_RELATIONAL_VALUE_MEASURED": false,
+    "NEXUS_POLICY_REPAIR_JUSTIFIED": false,
+    "NEXUS_REPRESENTATION_BLOCKED": true,
+    "SPATIAL_STATE_REQUIRED": true,
+    "ACTION_SEMANTICS_REQUIRED": true,
+    "TRANSITION_PREDICTION_REQUIRED": false,
+    "ROUTER_2_0_JUSTIFIED": false,
+    "READY_FOR_STAGE3F6W_REQUALIFICATION": true,
+    "READY_FOR_STAGE3F6D_REQUALIFICATION": false,
+    "READY_FOR_3F_FREEZE": false,
+    "READY_FOR_STAGE3G": false,
+    "STAGE3F_STATUS": "OPEN (requalifications remaining: 3F.6-W, 3F.6-D)"
+  },
+  "disclosures": {
+    "PRIVILEGED_DIAGNOSTIC_ONLY": "NX_PRIVILEGED* scorers read kernel entity positions no interface exposes; they are upper references, never deployable and never a repair",
+    "SCORERS_ARE_NOT_NEXUS": "the NX_* scorers test what the inputs can support; they are not Nexus versions and were not promoted",
+    "C11_STATIC_ONLY": "the historical dynamic poison probe was not re-run; the claim is re-verified statically by source and candidate hash",
+    "TRANSITIVE_PREDECESSORS": "P.1A-SYM --check reproduces byte for byte only when P.1C, P.1D, P.1E and 3F.6-T-SYM do"
+  },
+  "checks": {
+    "PREDECESSORS_REPRODUCE": true,
+    "PLAN_BOUND": true,
+    "FROZEN_BEFORE_SEALED_DATA": true,
+    "OPEN_PHASE_REPRODUCED": true,
+    "FIT_DETERMINISTIC": true,
+    "SEED_DECLARATION_CLEAN": true,
+    "FRESH_LINEAGE_CLEAN": true,
+    "FRESH_SYMMETRY_INTACT": true,
+    "POLICY_DEFINITIONS_UNCHANGED": true,
+    "EVIDENCE_FIDELITY_AND_FEATURE_EQUIVARIANCE": true,
+    "STATIC_AUDIT": true,
+    "AUTHORITY_R0": true,
+    "TESTS_PASS": true
+  },
+  "tests": {
+    "pass": 11,
+    "fail": 0,
+    "skipped": 0
+  },
+  "policyIntegrity": {
+    "sourcesMatchPlan": true,
+    "sourcesMatchHead": true,
+    "v2CandidateHash": true
+  },
+  "staticAudit": {
+    "DEPLOYABLE_SCORERS_USE_DEPLOYABLE_BLOCKS_ONLY": true,
+    "DEPLOYABLE_DERIVATION_READS_NO_KERNEL_STATE": true,
+    "FITS_ON_DEV_ONLY": true,
+    "NO_DEEP_OR_WORLD_MODEL": true
+  },
+  "authority": {
+    "tier": "R0",
+    "canDispatch": false,
+    "canMutateLiveWorld": false,
+    "onlineLearningEnabled": false,
+    "promotedToLiveRuntime": false
+  },
+  "scope": {
+    "newOwners": [
+      "scripts/stage3f6p1sym-analysis-plan.mjs",
+      "scripts/generate-stage3f6p1sym-confirmatory.mjs",
+      "scripts/stage3f6p1sym-evidence.mjs",
+      "scripts/certify-stage3f6p1sym-nexus.mjs",
+      "src/stage3f/nexus-requalification-v1.js",
+      "tests/stage3f6p1sym-nexus.test.js"
+    ],
+    "existingOwnersModified": [
+      "package.json",
+      ".gitignore"
+    ],
+    "nexusModified": false,
+    "policiesTrained": false,
+    "stage3gStarted": false
+  },
+  "sourceHashes": {
+    "scripts/stage3f6p1sym-analysis-plan.mjs": "06cd9f8252019367160b96208e6b2410d031eee1ed5bfc80cb57aa710eb5fd0a",
+    "scripts/generate-stage3f6p1sym-confirmatory.mjs": "b952e671359bad1f33c6ad64914c4620a0d1a30210d25b7fc7e06b941e32ec45",
+    "scripts/stage3f6p1sym-evidence.mjs": "f422541890eea19b406ae6ce84c3ab03a3b7baaccaf7e8817be86eaf4c4fbb28",
+    "scripts/certify-stage3f6p1sym-nexus.mjs": "bbe7dec383571bb7e3971d5385ff49b6423e5a0b3cc299e0692a8ef761eb794c",
+    "src/stage3f/nexus-requalification-v1.js": "a5985fcc36f6500d8f56e340b8dd9e77ac98586b1a54b6bce82ebdbd8c386390",
+    "tests/stage3f6p1sym-nexus.test.js": "468176fa5cde06214b588d6e2655c429c8abc393547cdd2ab1ab5ff1253b4403"
+  },
+  "certificationHash": "afcdceb18df34b05bb60613e302a762c3de196d764b34dfbe50e1978d3f80cf8"
+}
