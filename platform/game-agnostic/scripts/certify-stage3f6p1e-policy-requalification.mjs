@@ -266,17 +266,30 @@ function shortcutAudit(partition, p) {
   };
   nuisance.ACTION_ID_ORDER.flag = nuisance.ACTION_ID_ORDER.versusPermuted.flag || nuisance.ACTION_ID_ORDER.versusReversed.flag;
   nuisance.D4_TWIN.flag = nuisance.D4_TWIN.paired.flag;
+  return { proposingN: acting.length, nuisance, task: taskFactors(part, p) };
+}
+/* The control picks by identity order by construction, and relabel/twin re-runs exist only for deployable policies. */
+function controlAudit(partition, p) {
+  const part = rows[partition];
+  const orientation = accuracyByLevel(part, p, (r) => r.orientation);
+  const direction = accuracyByLevel(part, p, (r, k) => (r.actions[k].t === 'MOVE' ? r.actions[k].dir : null));
+  const notApplicable = { status: 'NOT_APPLICABLE_CONTROL_SELECTS_BY_IDENTITY_ORDER', flag: false };
+  return { proposingN: part.filter((r) => pick(r, p) !== null).length, task: taskFactors(part, p), nuisance: {
+    ORIENTATION: { levels: orientation, ...factorGap(orientation) }, ABSOLUTE_DIRECTION: { levels: direction, ...factorGap(direction) },
+    ACTION_ID_ORDER: notApplicable, D4_TWIN: notApplicable, SEED_FAMILY: { status: 'NOT_IDENTIFIABLE' } } };
+}
+function taskFactors(part, p) {
   const task = {};
   for (const name of ['ZERO_COST_AVAILABLE', 'ZERO_COST_OPTIMAL', 'LOW_ENERGY', 'HOSTILE_PRESENT']) {
     const levels = accuracyByLevel(part, p, (r) => (BINARY[name](r) ? 'yes' : 'no'));
     task[name] = { levels, ...factorGap(levels) };
   }
   for (const name of ['shape', 'level', 'surfaceQuartile']) { const levels = accuracyByLevel(part, p, CATEGORICAL[name]); task[name] = { levels, ...factorGap(levels) }; }
-  return { proposingN: acting.length, nuisance, task };
+  return task;
 }
 const NUISANCE_KEYS = ['ORIENTATION', 'ABSOLUTE_DIRECTION', 'ACTION_ID_ORDER', 'D4_TWIN'];
 const TASK_KEYS = ['ZERO_COST_AVAILABLE', 'ZERO_COST_OPTIMAL', 'shape', 'level', 'LOW_ENERGY', 'HOSTILE_PRESENT', 'surfaceQuartile'];
-const shortcut = Object.fromEntries(ALL.map((partition) => [partition, Object.fromEntries([...DEPLOYABLE, CONTROL].map((p) => [p, shortcutAudit(partition, p)]))]));
+const shortcut = Object.fromEntries(ALL.map((partition) => [partition, Object.fromEntries([...DEPLOYABLE, CONTROL].map((p) => [p, p === CONTROL ? controlAudit(partition, p) : shortcutAudit(partition, p)]))]));
 const replicated = Object.fromEntries([...DEPLOYABLE, CONTROL].map((p) => [p, {
   NUISANCE_DEPENDENCE: Object.fromEntries(NUISANCE_KEYS.map((k) => [k, shortcut.CAL[p].nuisance[k].flag && shortcut.HOLDOUT[p].nuisance[k].flag])),
   REGIME_DEPENDENT: Object.fromEntries(TASK_KEYS.map((k) => [k, shortcut.CAL[p].task[k].flag && shortcut.HOLDOUT[p].task[k].flag])),
@@ -557,6 +570,12 @@ const payload = roundDeep({
     SEED_FAMILY: plan.shortcutAudit.nuisanceFactors.SEED_FAMILY,
     ORACLE_FALLBACK: plan.complementarity.oracleFallback,
     RAW_REGRET_SCALE: 'raw regret and the catastrophic bar (100) come from a different corpus scale; normalized regret and accuracy are the comparable quantities',
+    POST_FREEZE_CODE_CORRECTION: 'after the freeze commit the first sealed run crashed: the shortcut audit read ID-relabel and D4-twin evidence for the RANDOM_LEGAL control, '
+      + 'which the plan captures for deployable policies only. The control now reports ACTION_ID_ORDER and D4_TWIN as NOT_APPLICABLE (it selects by identity order by construction). '
+      + 'No metric, threshold, rule or deployable-policy computation changed; the diff against the freeze commit is limited to that function.',
+    RESOURCE_VERDICT_READING: 'the pre-registered verdict is mechanical. REASONING_BEYOND_COST_PRIOR compares RESOURCE with CHEAPEST_CLASS_UNIFORM, while '
+      + 'shortcut.<partition>.RESOURCE_PRESERVING_V1.nuisance.ACTION_ID_ORDER.permutedMeanAccuracy is the same policy with its identity tie-break randomised; '
+      + 'when those two agree, the whole excess over the cost prior is carried by the identity tie-break (chosenDirectionShare shows it is a fixed absolute MOVE direction), not by resource reasoning.',
     PREDECESSOR_STAGE3F5_STAGE3F6: 'Stage 3F.5 (documented SUPERSEDED by 3F.6-R) and Stage 3F.6 prediction reliability do not reproduce on --check because 3F.6-R changed the runtime they certified; Stage 3F.6 has no erratum. Neither is an input to this stage.',
   },
   scope: { newOwners: ['scripts/stage3f6p1e-analysis-plan.mjs', 'scripts/generate-stage3f6p1e-policy-evidence.mjs', 'scripts/certify-stage3f6p1e-policy-requalification.mjs',
