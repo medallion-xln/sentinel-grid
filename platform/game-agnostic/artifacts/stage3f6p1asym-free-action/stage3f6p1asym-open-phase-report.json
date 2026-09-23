@@ -1,0 +1,1224 @@
+{
+  "schemaVersion": 1,
+  "stage": "STAGE_3F_6_P_1A_SYM_FREE_ACTION_DECISION_SUFFICIENCY",
+  "phase": "OPEN",
+  "planHash": "407bb1c9b1648c15520f283d0fff7af930280aeccc634c34731a4c704a6021c5",
+  "representationHash": "ebf51671814598490b56623d3d4b9afa251a48a5766eb3e4f1e32beb141106ee",
+  "stateFeaturesHash": "34b5d5c36ded31aee71f379fd17c7b3ebcea836d5cef79d036b211b7aa55d9e4",
+  "partitions": [
+    "DEV",
+    "CAL"
+  ],
+  "population": {
+    "DEV": {
+      "rows": 4000,
+      "eligible": 3393,
+      "eligibleShare": 0.84825,
+      "UNIQUE_OPTIMAL_ZERO_COST": 2721,
+      "MULTIPLE_OPTIMAL_ZERO_COST": 672,
+      "MIXED_OPTIMAL_SET": 320,
+      "meanZeroCostCandidates": 4.993811,
+      "candidateTypes": {
+        "MOVE": 11784,
+        "RETREAT": 1767,
+        "WAIT": 3393
+      },
+      "candidateCount": {
+        "2": 2,
+        "3": 124,
+        "4": 749,
+        "5": 1536,
+        "6": 982
+      },
+      "orientation": {
+        "MA": 411,
+        "MD": 455,
+        "MX": 429,
+        "MY": 414,
+        "R0": 430,
+        "R180": 418,
+        "R270": 404,
+        "R90": 432
+      },
+      "optimalTypes": {
+        "MOVE+RETREAT+WAIT": 7,
+        "MOVE+RETREAT": 495,
+        "MOVE+WAIT": 11,
+        "MOVE": 2864,
+        "WAIT": 16
+      },
+      "costStructure": {
+        "MULTIPLE_OPTIMAL_ZERO_COST": 672,
+        "UNIQUE_OPTIMAL_ZERO_COST": 2721
+      },
+      "mixedOptimalSet": {
+        "MIXED": 320,
+        "ZERO_COST_ONLY": 3073
+      },
+      "horizonClass": {
+        "HORIZON_ALIGNED": 319,
+        "HORIZON_DEPENDENT": 3074
+      },
+      "level": {
+        "0": 2664,
+        "1": 729
+      },
+      "topology": {
+        "bridge": 215,
+        "chain": 240,
+        "contested_bottleneck": 205,
+        "disconnected_islands": 196,
+        "hub_and_spoke": 234,
+        "layered_infrastructure": 213,
+        "mesh": 241,
+        "multi_cycle": 228,
+        "multi_settlement": 231,
+        "nested_dependency": 220,
+        "parallel_dependency": 244,
+        "redundant_network": 245,
+        "ring": 244,
+        "star": 243,
+        "tree": 194
+      }
+    },
+    "CAL": {
+      "rows": 4000,
+      "eligible": 3427,
+      "eligibleShare": 0.85675,
+      "UNIQUE_OPTIMAL_ZERO_COST": 2730,
+      "MULTIPLE_OPTIMAL_ZERO_COST": 697,
+      "MIXED_OPTIMAL_SET": 251,
+      "meanZeroCostCandidates": 5.061862,
+      "candidateTypes": {
+        "MOVE": 12016,
+        "RETREAT": 1904,
+        "WAIT": 3427
+      },
+      "candidateCount": {
+        "2": 3,
+        "3": 80,
+        "4": 686,
+        "5": 1591,
+        "6": 1067
+      },
+      "orientation": {
+        "MA": 418,
+        "MD": 422,
+        "MX": 436,
+        "MY": 431,
+        "R0": 406,
+        "R180": 440,
+        "R270": 422,
+        "R90": 452
+      },
+      "optimalTypes": {
+        "MOVE+RETREAT+WAIT": 5,
+        "MOVE+RETREAT": 534,
+        "MOVE+WAIT": 12,
+        "MOVE": 2865,
+        "WAIT": 11
+      },
+      "costStructure": {
+        "MULTIPLE_OPTIMAL_ZERO_COST": 697,
+        "UNIQUE_OPTIMAL_ZERO_COST": 2730
+      },
+      "mixedOptimalSet": {
+        "MIXED": 251,
+        "ZERO_COST_ONLY": 3176
+      },
+      "horizonClass": {
+        "HORIZON_ALIGNED": 251,
+        "HORIZON_DEPENDENT": 3176
+      },
+      "level": {
+        "0": 2293,
+        "1": 1134
+      },
+      "topology": {
+        "bridge": 222,
+        "chain": 263,
+        "contested_bottleneck": 187,
+        "disconnected_islands": 195,
+        "hub_and_spoke": 230,
+        "layered_infrastructure": 192,
+        "mesh": 253,
+        "multi_cycle": 215,
+        "multi_settlement": 218,
+        "nested_dependency": 228,
+        "parallel_dependency": 249,
+        "redundant_network": 254,
+        "ring": 262,
+        "star": 242,
+        "tree": 217
+      }
+    }
+  },
+  "featureAudit": {
+    "type.WAIT": {
+      "declared": "DEPLOYABLE",
+      "class": "DEPLOYABLE",
+      "block": "TYPE",
+      "source": "live legal action actionType",
+      "devSeparability": 0.627075,
+      "flags": {
+        "NON_EQUIVARIANT": false,
+        "LEAKED": false,
+        "UNAVAILABLE": false
+      }
+    },
+    "type.RETREAT": {
+      "declared": "DEPLOYABLE",
+      "class": "DEPLOYABLE",
+      "block": "TYPE",
+      "source": "live legal action actionType",
+      "devSeparability": 0.511211,
+      "flags": {
+        "NON_EQUIVARIANT": false,
+        "LEAKED": false,
+        "UNAVAILABLE": false
+      }
+    },
+    "type.COLLECT": {
+      "declared": "DEPLOYABLE",
+      "class": "DEPLOYABLE",
+      "block": "TYPE",
+      "source": "live legal action actionType",
+      "devSeparability": 0.5,
+      "flags": {
+        "NON_EQUIVARIANT": false,
+        "LEAKED": false,
+        "UNAVAILABLE": false
+      }
+    },
+    "declaredCost": {
+      "declared": "DEPLOYABLE",
+      "class": "DEPLOYABLE",
+      "block": "NONE",
+      "source": "DECLARED_ACTION_COST_MODEL"
+    },
+    "cand.moveAlignsWithRetreat": {
+      "declared": "DEPLOYABLE",
+      "class": "DEPLOYABLE",
+      "block": "CANDIDATE",
+      "source": "observed actor cell + live RETREAT parameters + declared deltas (P.1A contract field)",
+      "devSeparability": 0.511211,
+      "flags": {
+        "NON_EQUIVARIANT": false,
+        "LEAKED": false,
+        "UNAVAILABLE": false
+      }
+    },
+    "cand.moveOpposesRetreat": {
+      "declared": "DEPLOYABLE",
+      "class": "DEPLOYABLE",
+      "block": "CANDIDATE",
+      "source": "observed actor cell + live RETREAT parameters + declared deltas (P.1A contract field)",
+      "devSeparability": 0.513138,
+      "flags": {
+        "NON_EQUIVARIANT": false,
+        "LEAKED": false,
+        "UNAVAILABLE": false
+      }
+    },
+    "cand.moveWithHostileGeometry": {
+      "declared": "DEPLOYABLE",
+      "class": "DEPLOYABLE",
+      "block": "CANDIDATE",
+      "source": "a legal RETREAT exists (hostile geometry partially revealed), on MOVE candidates",
+      "devSeparability": 0.560283,
+      "flags": {
+        "NON_EQUIVARIANT": false,
+        "LEAKED": false,
+        "UNAVAILABLE": false
+      }
+    },
+    "cand.reverseMoveLegal": {
+      "declared": "DEPLOYABLE",
+      "class": "DEPLOYABLE",
+      "block": "CANDIDATE",
+      "source": "live legal MOVE directions (relative: the opposite MOVE is legal)",
+      "devSeparability": 0.546927,
+      "flags": {
+        "NON_EQUIVARIANT": false,
+        "LEAKED": false,
+        "UNAVAILABLE": false
+      }
+    },
+    "cand.perpendicularMovesLegal": {
+      "declared": "DEPLOYABLE",
+      "class": "DEPLOYABLE",
+      "block": "CANDIDATE",
+      "source": "live legal MOVE directions (relative: count of legal perpendicular MOVEs, 0-2)",
+      "devSeparability": 0.608201,
+      "flags": {
+        "NON_EQUIVARIANT": false,
+        "LEAKED": false,
+        "UNAVAILABLE": false
+      }
+    },
+    "geom.deltaCentreDistance": {
+      "declared": "DEPLOYABLE",
+      "class": "DEPLOYABLE",
+      "block": "GEOMETRY",
+      "source": "observed actor cell + declared gridSize(scenarioLevel) + declared deltas",
+      "devSeparability": 0.571324,
+      "flags": {
+        "NON_EQUIVARIANT": false,
+        "LEAKED": false,
+        "UNAVAILABLE": false
+      }
+    },
+    "geom.destinationOnBorder": {
+      "declared": "DEPLOYABLE",
+      "class": "DEPLOYABLE",
+      "block": "GEOMETRY",
+      "source": "observed actor cell + declared gridSize(scenarioLevel) + declared deltas",
+      "devSeparability": 0.539107,
+      "flags": {
+        "NON_EQUIVARIANT": false,
+        "LEAKED": false,
+        "UNAVAILABLE": false
+      }
+    },
+    "geom.deltaBorderDistance": {
+      "declared": "DEPLOYABLE",
+      "class": "DEPLOYABLE",
+      "block": "GEOMETRY",
+      "source": "observed actor cell + declared gridSize(scenarioLevel) + declared deltas",
+      "devSeparability": 0.555996,
+      "flags": {
+        "NON_EQUIVARIANT": false,
+        "LEAKED": false,
+        "UNAVAILABLE": false
+      }
+    },
+    "diag.absoluteDirection": {
+      "declared": "NON_EQUIVARIANT",
+      "class": "NON_EQUIVARIANT",
+      "block": "ABSOLUTE_DIRECTION",
+      "source": "MOVE parameters.direction in the presented frame; changes under every non-identity D4 transform"
+    },
+    "diag.actionIdentityRank": {
+      "declared": "NON_EQUIVARIANT",
+      "class": "NON_EQUIVARIANT",
+      "block": "NONE",
+      "source": "rank of the action identity (forgeActionKey); used only by the LOWEST/HIGHEST_ID controls"
+    },
+    "diag.canonicalFrameDirection": {
+      "declared": "LEAKED",
+      "class": "LEAKED",
+      "block": "CANONICAL_FRAME",
+      "source": "direction in the canonical frame, which minimises a digest of the FULL kernel geometry (privileged positions)"
+    },
+    "diag.hiddenOrientationDirection": {
+      "declared": "ORACLE_ONLY",
+      "class": "ORACLE_ONLY",
+      "block": "HIDDEN_ORIENTATION",
+      "source": "direction in the generator base frame, i.e. the hidden benchmark orientation label"
+    },
+    "diag.privilegedRelations": {
+      "declared": "UNAVAILABLE",
+      "class": "UNAVAILABLE",
+      "block": "PRIVILEGED",
+      "source": "kernel entity positions (objective, material, resources, hostiles, threatened, critical, hubs); not exposed by the live interfaces"
+    },
+    "diag.oneStepImmediate": {
+      "declared": "FUTURE_STATE_REQUIRED",
+      "class": "FUTURE_STATE_REQUIRED",
+      "block": "ONE_STEP",
+      "source": "immediateScalar of the simulated successor state"
+    },
+    "diag.horizonTotal": {
+      "declared": "ROLLOUT_REQUIRED",
+      "class": "ROLLOUT_REQUIRED",
+      "block": "NONE",
+      "source": "totalScalar of the horizon rollout; determines regret exactly, so also LEAKED; never a column"
+    },
+    "oracle.regret": {
+      "declared": "ORACLE_ONLY",
+      "class": "ORACLE_ONLY",
+      "block": "NONE",
+      "source": "counterfactual regret; target side only"
+    },
+    "oracle.optimal": {
+      "declared": "ORACLE_ONLY",
+      "class": "ORACLE_ONLY",
+      "block": "NONE",
+      "source": "optimal-set membership; the target"
+    },
+    "row.materialDirection": {
+      "declared": "UNAVAILABLE",
+      "class": "UNAVAILABLE",
+      "block": "NONE",
+      "source": "kernel material position relative to the actor; never a column"
+    }
+  },
+  "models": {
+    "STATE_ONLY": {
+      "modelHash": "fa3e76963d50bd1ee9dce16275b6b6f4d7d2e33a681dabf6d206de2689708524",
+      "columns": 93,
+      "spec": {
+        "main": [
+          "TYPE"
+        ],
+        "interact": [
+          "TYPE"
+        ],
+        "role": "HEADLINE_STATE_ONLY"
+      },
+      "trainedGroups": 3393
+    },
+    "SC_CANDIDATE_MAIN": {
+      "modelHash": "feb8d87e1383adb024bb64bea8bc97812d9b9ac7e6ffbf79d60068e21878e7e5",
+      "columns": 98,
+      "spec": {
+        "main": [
+          "TYPE",
+          "CANDIDATE"
+        ],
+        "interact": [
+          "TYPE"
+        ],
+        "role": "HEADLINE_CANDIDATE_VARIANT"
+      },
+      "trainedGroups": 3393
+    },
+    "SC_CANDIDATE_INTERACT": {
+      "modelHash": "f2014a49fc3793344a76fc4ccdb7c738b55f85446d065079646d8322126c1797",
+      "columns": 248,
+      "spec": {
+        "main": [
+          "TYPE",
+          "CANDIDATE"
+        ],
+        "interact": [
+          "TYPE",
+          "CANDIDATE"
+        ],
+        "role": "HEADLINE_CANDIDATE_VARIANT"
+      },
+      "trainedGroups": 3393
+    },
+    "SC_GEOMETRY_MAIN": {
+      "modelHash": "db686ef85afc2be57f21eb3ebca088517b2a16e6f3bf6cee7dbc00faa842374d",
+      "columns": 101,
+      "spec": {
+        "main": [
+          "TYPE",
+          "CANDIDATE",
+          "GEOMETRY"
+        ],
+        "interact": [
+          "TYPE"
+        ],
+        "role": "HEADLINE_CANDIDATE_VARIANT"
+      },
+      "trainedGroups": 3393
+    },
+    "SC_GEOMETRY_INTERACT": {
+      "modelHash": "8037bb4d57163fc6ea51ec40292f218ba11edfd8b782522d2001c605159fef6d",
+      "columns": 341,
+      "spec": {
+        "main": [
+          "TYPE",
+          "CANDIDATE",
+          "GEOMETRY"
+        ],
+        "interact": [
+          "TYPE",
+          "CANDIDATE",
+          "GEOMETRY"
+        ],
+        "role": "HEADLINE_CANDIDATE_VARIANT"
+      },
+      "trainedGroups": 3393
+    },
+    "D_ABSOLUTE_DIRECTION": {
+      "modelHash": "9d52f831d51cb153cdcc77109cdc14c2d014ae1f14d205bd8495fef9c98e8963",
+      "columns": 105,
+      "spec": {
+        "main": [
+          "TYPE",
+          "CANDIDATE",
+          "GEOMETRY",
+          "ABS"
+        ],
+        "interact": [
+          "TYPE"
+        ]
+      },
+      "trainedGroups": 3393
+    },
+    "D_CANONICAL_FRAME": {
+      "modelHash": "709f6be3addfdd32de4c944e9fe47926410760e6863493a0c3ca068599df8933",
+      "columns": 105,
+      "spec": {
+        "main": [
+          "TYPE",
+          "CANDIDATE",
+          "GEOMETRY",
+          "CANON"
+        ],
+        "interact": [
+          "TYPE"
+        ]
+      },
+      "trainedGroups": 3393
+    },
+    "D_HIDDEN_ORIENTATION": {
+      "modelHash": "d30809c76c2e47dcc28f1c6de16da7814646c95ba9626ca11af7b4878abfcd69",
+      "columns": 105,
+      "spec": {
+        "main": [
+          "TYPE",
+          "CANDIDATE",
+          "GEOMETRY",
+          "HIDDEN"
+        ],
+        "interact": [
+          "TYPE"
+        ]
+      },
+      "trainedGroups": 3393
+    },
+    "D_PRIVILEGED_RELATIONS": {
+      "modelHash": "206857de49aba3bef982c886283f37cd99f88d862135daad81688dbde8748de6",
+      "columns": 108,
+      "spec": {
+        "main": [
+          "TYPE",
+          "CANDIDATE",
+          "GEOMETRY",
+          "PRIV"
+        ],
+        "interact": [
+          "TYPE"
+        ]
+      },
+      "trainedGroups": 3393
+    },
+    "D_ONE_STEP": {
+      "modelHash": "8d406a96c4eb9068d6ee3620a8daa57f801e65a55c4ecfcb8e60b1fe1ba3980a",
+      "columns": 103,
+      "spec": {
+        "main": [
+          "TYPE",
+          "CANDIDATE",
+          "GEOMETRY",
+          "ONESTEP"
+        ],
+        "interact": [
+          "TYPE"
+        ]
+      },
+      "trainedGroups": 3393
+    },
+    "D_PRIVILEGED_ONE_STEP": {
+      "modelHash": "e747b75dd3e4ba394018b9952b9fc4018a339261f39a5a546a1ba7c5a94c2fc7",
+      "columns": 110,
+      "spec": {
+        "main": [
+          "TYPE",
+          "CANDIDATE",
+          "GEOMETRY",
+          "PRIV",
+          "ONESTEP"
+        ],
+        "interact": [
+          "TYPE"
+        ]
+      },
+      "trainedGroups": 3393
+    }
+  },
+  "calSelection": {
+    "rule": "the headline STATE+CANDIDATE model is the SC_* variant with the highest CAL top-1 accuracy; ties within 1e-9 -> fewer columns",
+    "ranking": [
+      {
+        "k": "SC_GEOMETRY_MAIN",
+        "top1": 0.375401,
+        "cols": 101
+      },
+      {
+        "k": "SC_CANDIDATE_INTERACT",
+        "top1": 0.357747,
+        "cols": 248
+      },
+      {
+        "k": "SC_CANDIDATE_MAIN",
+        "top1": 0.354975,
+        "cols": 98
+      },
+      {
+        "k": "SC_GEOMETRY_INTERACT",
+        "top1": 0.285527,
+        "cols": 341
+      }
+    ],
+    "selected": "SC_GEOMETRY_MAIN",
+    "replayHash": "db686ef85afc2be57f21eb3ebca088517b2a16e6f3bf6cee7dbc00faa842374d",
+    "deterministic": true
+  },
+  "evidenceFidelity": {
+    "rows": 6820,
+    "world": 1,
+    "candidateSet": 1,
+    "twinRows": 280
+  },
+  "results": {
+    "DEV": {
+      "UNIFORM_AMONG_ZERO_COST": {
+        "n": 3393,
+        "coverage": 1,
+        "top1": 0.249371,
+        "regret": 45.123259,
+        "normalizedRegret": 0.59456,
+        "catastrophicRate": 0.096689
+      },
+      "LOWEST_ACTION_ID": {
+        "n": 3393,
+        "coverage": 1,
+        "top1": 0.32125,
+        "regret": 41.135573,
+        "normalizedRegret": 0.533725,
+        "catastrophicRate": 0.088712
+      },
+      "HIGHEST_ACTION_ID": {
+        "n": 3393,
+        "coverage": 1,
+        "top1": 0.258473,
+        "regret": 44.703802,
+        "normalizedRegret": 0.591039,
+        "catastrophicRate": 0.094312
+      },
+      "FIXED_DIRECTION_EAST": {
+        "n": 3393,
+        "coverage": 1,
+        "top1": 0.318263,
+        "regret": 41.319118,
+        "normalizedRegret": 0.536931,
+        "catastrophicRate": 0.087474
+      },
+      "FIXED_DIRECTION_NORTH": {
+        "n": 3393,
+        "coverage": 1,
+        "top1": 0.297308,
+        "regret": 42.152628,
+        "normalizedRegret": 0.558487,
+        "catastrophicRate": 0.089228
+      },
+      "FIXED_DIRECTION_SOUTH": {
+        "n": 3393,
+        "coverage": 1,
+        "top1": 0.305732,
+        "regret": 42.106563,
+        "normalizedRegret": 0.546932,
+        "catastrophicRate": 0.095741
+      },
+      "FIXED_DIRECTION_WEST": {
+        "n": 3393,
+        "coverage": 1,
+        "top1": 0.299695,
+        "regret": 41.765188,
+        "normalizedRegret": 0.556689,
+        "catastrophicRate": 0.090692
+      },
+      "HIDDEN_BASE_EAST": {
+        "n": 3393,
+        "coverage": 1,
+        "top1": 0.612914,
+        "regret": 20.881314,
+        "normalizedRegret": 0.236986,
+        "catastrophicRate": 0.047677
+      },
+      "RESOURCE_PRESERVING_V1": {
+        "n": 3393,
+        "coverage": 1,
+        "top1": 0.32125,
+        "regret": 41.135573,
+        "normalizedRegret": 0.533725,
+        "catastrophicRate": 0.088712
+      },
+      "RESOURCE_ID_REVERSED": {
+        "n": 3393,
+        "coverage": 1,
+        "top1": 0.258473,
+        "regret": 44.703802,
+        "normalizedRegret": 0.591039,
+        "catastrophicRate": 0.094312
+      },
+      "NEXUS_SELECTOR_V1": {
+        "n": 3393,
+        "coverage": 0.857353,
+        "top1": 0.09144,
+        "regret": 47.055002,
+        "normalizedRegret": 0.621542,
+        "catastrophicRate": 0.076659
+      },
+      "GREEDY": {
+        "n": 3393,
+        "coverage": 1,
+        "top1": 0.094017,
+        "regret": 45.712349,
+        "normalizedRegret": 0.612875,
+        "catastrophicRate": 0.072797
+      },
+      "ONE_STEP_ZERO_COST": {
+        "n": 3393,
+        "coverage": 1,
+        "top1": 0.384827,
+        "regret": 33.678947,
+        "normalizedRegret": 0.451001,
+        "catastrophicRate": 0.075616
+      },
+      "NON_WAIT_UNIFORM": {
+        "n": 3393,
+        "coverage": 1,
+        "top1": 0.314736,
+        "regret": 41.497357,
+        "normalizedRegret": 0.542396,
+        "catastrophicRate": 0.09105
+      },
+      "RETREAT_ALIGNED": {
+        "n": 3393,
+        "coverage": 1,
+        "top1": 0.300914,
+        "regret": 42.83294,
+        "normalizedRegret": 0.556035,
+        "catastrophicRate": 0.095392
+      },
+      "TOWARD_CENTRE": {
+        "n": 3393,
+        "coverage": 1,
+        "top1": 0.359068,
+        "regret": 36.274934,
+        "normalizedRegret": 0.484992,
+        "catastrophicRate": 0.078731
+      },
+      "STATE_ONLY": {
+        "n": 3393,
+        "coverage": 1,
+        "top1": 0.31845,
+        "regret": 41.116883,
+        "normalizedRegret": 0.538592,
+        "catastrophicRate": 0.089842,
+        "pOptimalSet": 0.316857,
+        "crossEntropy": 1.200993,
+        "brier": 0.212311,
+        "ece": 0.019752,
+        "meanConfidence": 0.298697
+      },
+      "SC_CANDIDATE_MAIN": {
+        "n": 3393,
+        "coverage": 1,
+        "top1": 0.373563,
+        "regret": 35.98379,
+        "normalizedRegret": 0.482339,
+        "catastrophicRate": 0.078249,
+        "pOptimalSet": 0.3281,
+        "crossEntropy": 1.184012,
+        "brier": 0.224677,
+        "ece": 0.022122,
+        "meanConfidence": 0.351924
+      },
+      "SC_CANDIDATE_INTERACT": {
+        "n": 3393,
+        "coverage": 1,
+        "top1": 0.371648,
+        "regret": 36.859416,
+        "normalizedRegret": 0.485975,
+        "catastrophicRate": 0.081197,
+        "pOptimalSet": 0.336635,
+        "crossEntropy": 1.318747,
+        "brier": 0.221022,
+        "ece": 0.035128,
+        "meanConfidence": 0.402192
+      },
+      "SC_GEOMETRY_MAIN": {
+        "n": 3393,
+        "coverage": 1,
+        "top1": 0.386384,
+        "regret": 34.332302,
+        "normalizedRegret": 0.460178,
+        "catastrophicRate": 0.074565,
+        "pOptimalSet": 0.331614,
+        "crossEntropy": 1.177377,
+        "brier": 0.228717,
+        "ece": 0.01814,
+        "meanConfidence": 0.368244
+      },
+      "SC_GEOMETRY_INTERACT": {
+        "n": 3393,
+        "coverage": 1,
+        "top1": 0.299293,
+        "regret": 44.350133,
+        "normalizedRegret": 0.569559,
+        "catastrophicRate": 0.097406,
+        "pOptimalSet": 0.292972,
+        "crossEntropy": 2.344914,
+        "brier": 0.309246,
+        "ece": 0.281714,
+        "meanConfidence": 0.581007
+      },
+      "D_ABSOLUTE_DIRECTION": {
+        "n": 3393,
+        "coverage": 1,
+        "top1": 0.398762,
+        "regret": 33.672561,
+        "normalizedRegret": 0.45145,
+        "catastrophicRate": 0.073386,
+        "pOptimalSet": 0.331778,
+        "crossEntropy": 1.177087,
+        "brier": 0.232816,
+        "ece": 0.029539,
+        "meanConfidence": 0.369223
+      },
+      "D_CANONICAL_FRAME": {
+        "n": 3393,
+        "coverage": 1,
+        "top1": 0.391099,
+        "regret": 34.148246,
+        "normalizedRegret": 0.457353,
+        "catastrophicRate": 0.077513,
+        "pOptimalSet": 0.332047,
+        "crossEntropy": 1.176618,
+        "brier": 0.230575,
+        "ece": 0.021408,
+        "meanConfidence": 0.37005
+      },
+      "D_HIDDEN_ORIENTATION": {
+        "n": 3393,
+        "coverage": 1,
+        "top1": 0.673151,
+        "regret": 16.911583,
+        "normalizedRegret": 0.181916,
+        "catastrophicRate": 0.039788,
+        "pOptimalSet": 0.512461,
+        "crossEntropy": 0.887308,
+        "brier": 0.217151,
+        "ece": 0.047001,
+        "meanConfidence": 0.64372
+      },
+      "D_PRIVILEGED_RELATIONS": {
+        "n": 3393,
+        "coverage": 1,
+        "top1": 0.78102,
+        "regret": 10.320071,
+        "normalizedRegret": 0.093752,
+        "catastrophicRate": 0.023283,
+        "pOptimalSet": 0.646655,
+        "crossEntropy": 0.673498,
+        "brier": 0.16717,
+        "ece": 0.045686,
+        "meanConfidence": 0.737249
+      },
+      "D_ONE_STEP": {
+        "n": 3393,
+        "coverage": 1,
+        "top1": 0.413498,
+        "regret": 31.823313,
+        "normalizedRegret": 0.43141,
+        "catastrophicRate": 0.072502,
+        "pOptimalSet": 0.339069,
+        "crossEntropy": 1.165163,
+        "brier": 0.23794,
+        "ece": 0.030285,
+        "meanConfidence": 0.383616
+      },
+      "D_PRIVILEGED_ONE_STEP": {
+        "n": 3393,
+        "coverage": 1,
+        "top1": 0.782493,
+        "regret": 10.297082,
+        "normalizedRegret": 0.093322,
+        "catastrophicRate": 0.023283,
+        "pOptimalSet": 0.647553,
+        "crossEntropy": 0.671518,
+        "brier": 0.167263,
+        "ece": 0.047128,
+        "meanConfidence": 0.73748
+      }
+    },
+    "CAL": {
+      "UNIFORM_AMONG_ZERO_COST": {
+        "n": 3427,
+        "coverage": 1,
+        "top1": 0.246425,
+        "regret": 43.93826,
+        "normalizedRegret": 0.604578,
+        "catastrophicRate": 0.083256
+      },
+      "LOWEST_ACTION_ID": {
+        "n": 3427,
+        "coverage": 1,
+        "top1": 0.304348,
+        "regret": 40.608987,
+        "normalizedRegret": 0.558912,
+        "catastrophicRate": 0.081996
+      },
+      "HIGHEST_ACTION_ID": {
+        "n": 3427,
+        "coverage": 1,
+        "top1": 0.268456,
+        "regret": 42.69361,
+        "normalizedRegret": 0.588539,
+        "catastrophicRate": 0.078786
+      },
+      "FIXED_DIRECTION_EAST": {
+        "n": 3427,
+        "coverage": 1,
+        "top1": 0.303404,
+        "regret": 40.910276,
+        "normalizedRegret": 0.562342,
+        "catastrophicRate": 0.082502
+      },
+      "FIXED_DIRECTION_NORTH": {
+        "n": 3427,
+        "coverage": 1,
+        "top1": 0.300919,
+        "regret": 40.448444,
+        "normalizedRegret": 0.558186,
+        "catastrophicRate": 0.076058
+      },
+      "FIXED_DIRECTION_SOUTH": {
+        "n": 3427,
+        "coverage": 1,
+        "top1": 0.295287,
+        "regret": 40.732711,
+        "normalizedRegret": 0.559712,
+        "catastrophicRate": 0.079613
+      },
+      "FIXED_DIRECTION_WEST": {
+        "n": 3427,
+        "coverage": 1,
+        "top1": 0.306614,
+        "regret": 40.756809,
+        "normalizedRegret": 0.556424,
+        "catastrophicRate": 0.078509
+      },
+      "HIDDEN_BASE_EAST": {
+        "n": 3427,
+        "coverage": 1,
+        "top1": 0.638858,
+        "regret": 18.401931,
+        "normalizedRegret": 0.221114,
+        "catastrophicRate": 0.036105
+      },
+      "RESOURCE_PRESERVING_V1": {
+        "n": 3427,
+        "coverage": 1,
+        "top1": 0.304348,
+        "regret": 40.608987,
+        "normalizedRegret": 0.558912,
+        "catastrophicRate": 0.081996
+      },
+      "RESOURCE_ID_REVERSED": {
+        "n": 3427,
+        "coverage": 1,
+        "top1": 0.268456,
+        "regret": 42.69361,
+        "normalizedRegret": 0.588539,
+        "catastrophicRate": 0.078786
+      },
+      "NEXUS_SELECTOR_V1": {
+        "n": 3427,
+        "coverage": 0.877444,
+        "top1": 0.072165,
+        "regret": 46.844031,
+        "normalizedRegret": 0.645188,
+        "catastrophicRate": 0.063518
+      },
+      "GREEDY": {
+        "n": 3427,
+        "coverage": 1,
+        "top1": 0.073242,
+        "regret": 45.57368,
+        "normalizedRegret": 0.637343,
+        "catastrophicRate": 0.060986
+      },
+      "ONE_STEP_ZERO_COST": {
+        "n": 3427,
+        "coverage": 1,
+        "top1": 0.38042,
+        "regret": 32.74271,
+        "normalizedRegret": 0.46213,
+        "catastrophicRate": 0.065188
+      },
+      "NON_WAIT_UNIFORM": {
+        "n": 3427,
+        "coverage": 1,
+        "top1": 0.309736,
+        "regret": 40.354961,
+        "normalizedRegret": 0.552296,
+        "catastrophicRate": 0.078835
+      },
+      "RETREAT_ALIGNED": {
+        "n": 3427,
+        "coverage": 1,
+        "top1": 0.295934,
+        "regret": 41.320907,
+        "normalizedRegret": 0.564276,
+        "catastrophicRate": 0.079054
+      },
+      "TOWARD_CENTRE": {
+        "n": 3427,
+        "coverage": 1,
+        "top1": 0.360213,
+        "regret": 35.871428,
+        "normalizedRegret": 0.493837,
+        "catastrophicRate": 0.073913
+      },
+      "STATE_ONLY": {
+        "n": 3427,
+        "coverage": 1,
+        "top1": 0.313758,
+        "regret": 40.073266,
+        "normalizedRegret": 0.548797,
+        "catastrophicRate": 0.078665,
+        "pOptimalSet": 0.312228,
+        "crossEntropy": 1.209494,
+        "brier": 0.211165,
+        "ece": 0.019093,
+        "meanConfidence": 0.294665
+      },
+      "SC_CANDIDATE_MAIN": {
+        "n": 3427,
+        "coverage": 1,
+        "top1": 0.354975,
+        "regret": 36.801795,
+        "normalizedRegret": 0.502978,
+        "catastrophicRate": 0.076962,
+        "pOptimalSet": 0.320761,
+        "crossEntropy": 1.201726,
+        "brier": 0.218993,
+        "ece": 0.010422,
+        "meanConfidence": 0.349078
+      },
+      "SC_CANDIDATE_INTERACT": {
+        "n": 3427,
+        "coverage": 1,
+        "top1": 0.357747,
+        "regret": 35.960534,
+        "normalizedRegret": 0.500645,
+        "catastrophicRate": 0.06923,
+        "pOptimalSet": 0.328255,
+        "crossEntropy": 1.357631,
+        "brier": 0.225084,
+        "ece": 0.055346,
+        "meanConfidence": 0.402218
+      },
+      "SC_GEOMETRY_MAIN": {
+        "n": 3427,
+        "coverage": 1,
+        "top1": 0.375401,
+        "regret": 34.746134,
+        "normalizedRegret": 0.476985,
+        "catastrophicRate": 0.073096,
+        "pOptimalSet": 0.324136,
+        "crossEntropy": 1.197124,
+        "brier": 0.226003,
+        "ece": 0.017144,
+        "meanConfidence": 0.365686
+      },
+      "SC_GEOMETRY_INTERACT": {
+        "n": 3427,
+        "coverage": 1,
+        "top1": 0.285527,
+        "regret": 43.125912,
+        "normalizedRegret": 0.590302,
+        "catastrophicRate": 0.083601,
+        "pOptimalSet": 0.280295,
+        "crossEntropy": 2.505383,
+        "brier": 0.323511,
+        "ece": 0.308281,
+        "meanConfidence": 0.593807
+      },
+      "D_ABSOLUTE_DIRECTION": {
+        "n": 3427,
+        "coverage": 1,
+        "top1": 0.377006,
+        "regret": 34.653925,
+        "normalizedRegret": 0.477504,
+        "catastrophicRate": 0.07295,
+        "pOptimalSet": 0.324115,
+        "crossEntropy": 1.197325,
+        "brier": 0.226223,
+        "ece": 0.013441,
+        "meanConfidence": 0.366293
+      },
+      "D_CANONICAL_FRAME": {
+        "n": 3427,
+        "coverage": 1,
+        "top1": 0.373796,
+        "regret": 34.581558,
+        "normalizedRegret": 0.478721,
+        "catastrophicRate": 0.071783,
+        "pOptimalSet": 0.324143,
+        "crossEntropy": 1.197754,
+        "brier": 0.22551,
+        "ece": 0.007412,
+        "meanConfidence": 0.367381
+      },
+      "D_HIDDEN_ORIENTATION": {
+        "n": 3427,
+        "coverage": 1,
+        "top1": 0.70499,
+        "regret": 14.341698,
+        "normalizedRegret": 0.162786,
+        "catastrophicRate": 0.030347,
+        "pOptimalSet": 0.521816,
+        "crossEntropy": 0.860312,
+        "brier": 0.211484,
+        "ece": 0.076763,
+        "meanConfidence": 0.640587
+      },
+      "D_PRIVILEGED_RELATIONS": {
+        "n": 3427,
+        "coverage": 1,
+        "top1": 0.792822,
+        "regret": 8.963233,
+        "normalizedRegret": 0.085856,
+        "catastrophicRate": 0.0178,
+        "pOptimalSet": 0.651042,
+        "crossEntropy": 0.652541,
+        "brier": 0.167196,
+        "ece": 0.063192,
+        "meanConfidence": 0.732161
+      },
+      "D_ONE_STEP": {
+        "n": 3427,
+        "coverage": 1,
+        "top1": 0.39787,
+        "regret": 31.464692,
+        "normalizedRegret": 0.446677,
+        "catastrophicRate": 0.062591,
+        "pOptimalSet": 0.33186,
+        "crossEntropy": 1.183748,
+        "brier": 0.234465,
+        "ece": 0.021341,
+        "meanConfidence": 0.381293
+      },
+      "D_PRIVILEGED_ONE_STEP": {
+        "n": 3427,
+        "coverage": 1,
+        "top1": 0.791655,
+        "regret": 8.972279,
+        "normalizedRegret": 0.086917,
+        "catastrophicRate": 0.017508,
+        "pOptimalSet": 0.652016,
+        "crossEntropy": 0.650565,
+        "brier": 0.166279,
+        "ece": 0.060212,
+        "meanConfidence": 0.732707
+      }
+    }
+  },
+  "equivariance": {
+    "DEV": {
+      "featurePairs": 3500,
+      "FEATURE_EQUIVARIANCE": 1,
+      "nonEquivariantColumns": [],
+      "ID_PERMUTATION_INVARIANCE": 1,
+      "PREDICTION_EQUIVARIANCE": {
+        "STATE_ONLY": {
+          "twins": 700,
+          "rate": 1
+        },
+        "SC_CANDIDATE_MAIN": {
+          "twins": 700,
+          "rate": 1
+        },
+        "SC_CANDIDATE_INTERACT": {
+          "twins": 700,
+          "rate": 1
+        },
+        "SC_GEOMETRY_MAIN": {
+          "twins": 700,
+          "rate": 1
+        },
+        "SC_GEOMETRY_INTERACT": {
+          "twins": 700,
+          "rate": 1
+        },
+        "D_ABSOLUTE_DIRECTION": {
+          "twins": 700,
+          "rate": 0.798571
+        },
+        "D_CANONICAL_FRAME": {
+          "twins": 700,
+          "rate": 1
+        },
+        "D_HIDDEN_ORIENTATION": {
+          "twins": 700,
+          "rate": 1
+        },
+        "D_PRIVILEGED_RELATIONS": {
+          "twins": 700,
+          "rate": 1
+        },
+        "D_ONE_STEP": {
+          "twins": 700,
+          "rate": 1
+        },
+        "D_PRIVILEGED_ONE_STEP": {
+          "twins": 700,
+          "rate": 1
+        }
+      }
+    },
+    "CAL": {
+      "featurePairs": 3470,
+      "FEATURE_EQUIVARIANCE": 1,
+      "nonEquivariantColumns": [],
+      "ID_PERMUTATION_INVARIANCE": 1,
+      "PREDICTION_EQUIVARIANCE": {
+        "STATE_ONLY": {
+          "twins": 700,
+          "rate": 1
+        },
+        "SC_CANDIDATE_MAIN": {
+          "twins": 700,
+          "rate": 1
+        },
+        "SC_CANDIDATE_INTERACT": {
+          "twins": 700,
+          "rate": 1
+        },
+        "SC_GEOMETRY_MAIN": {
+          "twins": 700,
+          "rate": 1
+        },
+        "SC_GEOMETRY_INTERACT": {
+          "twins": 700,
+          "rate": 1
+        },
+        "D_ABSOLUTE_DIRECTION": {
+          "twins": 700,
+          "rate": 0.88
+        },
+        "D_CANONICAL_FRAME": {
+          "twins": 700,
+          "rate": 1
+        },
+        "D_HIDDEN_ORIENTATION": {
+          "twins": 700,
+          "rate": 1
+        },
+        "D_PRIVILEGED_RELATIONS": {
+          "twins": 700,
+          "rate": 1
+        },
+        "D_ONE_STEP": {
+          "twins": 700,
+          "rate": 1
+        },
+        "D_PRIVILEGED_ONE_STEP": {
+          "twins": 700,
+          "rate": 1
+        }
+      }
+    }
+  },
+  "noSealedRowScored": true,
+  "reportHash": "c7d6a0eb666b4cc66edb04f1ee8a05c6364342a12ef7a699be706822e89abae8"
+}
