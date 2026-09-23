@@ -1,0 +1,524 @@
+{
+  "stage": "STAGE_3F_6_P_1_SYM_NEXUS_REMEDIATION_SYMMETRIC_REQUALIFICATION",
+  "questions": [
+    "Does the historical Nexus remediation retain genuine relational competence?",
+    "Did it improve Nexus for the reason originally claimed?",
+    "Which gains were caused by nuisance direction / action-ID behaviour?",
+    "Is Nexus limited by policy logic, missing relational/spatial state, or both?",
+    "Is any existing Nexus remediation worth preserving?"
+  ],
+  "role": "REQUALIFICATION_ONLY: no Nexus redesign, no policy training, no deployable use of privileged features",
+  "predecessors": {
+    "stage3f6p1cCertification": "81586cbe068885596d7f8b5c78d6f6d5d72e53425289f850386e0c43ddff702d",
+    "stage3f6p1dCertification": "afd0d6e6057f497e9e1d3666cf553518e134b0c4d09f783601b393c081ae7073",
+    "stage3f6p1eCertification": "11dcf65b79679ae8748eed0f5f9f3fdef38223524308aaa353c5b482eed8a031",
+    "stage3f6tsymCertification": "edd46e40fc2c6ddc611f9f78a432f723f0ae4e66facc1b2ca84183fa4d896f4e",
+    "stage3f6p1asymCertification": "84770670baeb1502142e12d24a12d03763c0a97c22e80acc53013ecb98871fbb",
+    "corpusContentHash": "4de383eb0c6e9836706e87c6626de53ccb54853fb527f368cfaf599617e6c75e",
+    "tsymFreshContentHash": "2921adb7e933c274ed692d0f38ccc58a6d1553a60194d01d14b75105c92ff6e8",
+    "p1asymFreshContentHash": "8fde1f1245849e88b941044788d3a7cebe6b930837dce2e7b074a1c461c63840"
+  },
+  "seedPlanHash": "5571364b9c3b4fad4109399b607dbdea031a8842ef54856fd9d2bcfc3efd1f3b",
+  "policyHash": "77d73cea1886cb55be7fe2a806e6377f27be82a157db4da193a79f673c61a1cb",
+  "candidateSchemaHash": "631af2fc5eb75a6e28e51192f735e7a80f1b32c90c7d737a60152e67c2eef82d",
+  "candidateSchema": {
+    "schemaId": "STAGE3F6P1SYM_NEXUS_CANDIDATE_REPRESENTATION_V1",
+    "blocks": {
+      "TYPE": {
+        "columns": [
+          "type.ATTACK",
+          "type.BUILD",
+          "type.BYPASS",
+          "type.COLLECT",
+          "type.MOVE",
+          "type.PROTECT",
+          "type.REINFORCE",
+          "type.REPAIR",
+          "type.RESTORE",
+          "type.RETREAT",
+          "type.TRANSFER",
+          "type.WAIT"
+        ],
+        "source": "legal action actionType",
+        "class": "DEPLOYABLE"
+      },
+      "COST": {
+        "columns": [
+          "declaredCost"
+        ],
+        "source": "DECLARED_ACTION_COST_MODEL",
+        "class": "DEPLOYABLE"
+      },
+      "TARGET": {
+        "columns": [
+          "target.present",
+          "target.kind.ACTOR",
+          "target.kind.BARRIER",
+          "target.kind.CIVILIAN",
+          "target.kind.CRITICAL_TARGET",
+          "target.kind.DEPOT",
+          "target.kind.HAZARD",
+          "target.kind.HOSTILE",
+          "target.kind.INFRASTRUCTURE",
+          "target.kind.POWER_SOURCE",
+          "target.kind.REPAIR_TARGET",
+          "target.kind.RESOURCE",
+          "target.kind.SUBSTITUTE",
+          "target.hostile",
+          "target.critical",
+          "target.threatenedBy",
+          "target.supportedBy",
+          "target.dependents",
+          "target.unsupportedThreatened"
+        ],
+        "source": "observed canonical state (entity kind/hostile/critical, observed relationship edges)",
+        "class": "DEPLOYABLE"
+      },
+      "NEXUS": {
+        "columns": [
+          "nexus.v1TypeRank",
+          "nexus.v2Admissible"
+        ],
+        "source": "Nexus diagnosis over the observed state (the rank of the action type in the active V1 preference order; the V2 PROTECT gate)",
+        "class": "DEPLOYABLE"
+      },
+      "GEOMETRY": {
+        "columns": [
+          "cand.moveAlignsWithRetreat",
+          "cand.moveOpposesRetreat",
+          "cand.moveWithHostileGeometry",
+          "cand.reverseMoveLegal",
+          "cand.perpendicularMovesLegal",
+          "geom.deltaCentreDistance",
+          "geom.destinationOnBorder",
+          "geom.deltaBorderDistance"
+        ],
+        "source": "Stage 3F.6-P.1A-SYM deployable candidate fields (zeros for actions that do not move the actor)",
+        "class": "DEPLOYABLE"
+      },
+      "REASON_X_TYPE": {
+        "columns": [
+          "threatDriven*type.ATTACK",
+          "threatDriven*type.BUILD",
+          "threatDriven*type.BYPASS",
+          "threatDriven*type.COLLECT",
+          "threatDriven*type.MOVE",
+          "threatDriven*type.PROTECT",
+          "threatDriven*type.REINFORCE",
+          "threatDriven*type.REPAIR",
+          "threatDriven*type.RESTORE",
+          "threatDriven*type.RETREAT",
+          "threatDriven*type.TRANSFER",
+          "threatDriven*type.WAIT"
+        ],
+        "source": "observed Nexus threat-driven flag multiplied by TYPE",
+        "class": "DEPLOYABLE"
+      },
+      "PRIV_MOVEMENT": {
+        "columns": [
+          "priv.move.deltaNearest.OBJECTIVE",
+          "priv.move.deltaNearest.MATERIAL",
+          "priv.move.deltaNearest.RESOURCE",
+          "priv.move.deltaNearest.HOSTILE",
+          "priv.move.deltaNearest.THREATENED",
+          "priv.move.deltaNearest.CRITICAL",
+          "priv.move.deltaNearest.HUB"
+        ],
+        "source": "kernel entity positions: change of nearest distance from the actor to each entity class if the action moves the actor (P.1A-SYM privilegedRelations)",
+        "class": "UNAVAILABLE"
+      },
+      "PRIV_TARGET": {
+        "columns": [
+          "priv.target.distanceFromActor",
+          "priv.target.distanceToNearestHostile",
+          "priv.target.isObjectiveEntity",
+          "priv.target.isMaterial"
+        ],
+        "source": "kernel entity positions and objective membership for the targeted entity",
+        "class": "UNAVAILABLE"
+      },
+      "ONESTEP": {
+        "columns": [
+          "onestep.immediateScalar"
+        ],
+        "source": "one-step successor reward (simulator)",
+        "class": "FUTURE_STATE_REQUIRED"
+      }
+    },
+    "forbidden": [
+      "action identity or its ordering",
+      "absolute MOVE direction",
+      "hidden or canonical orientation",
+      "regret",
+      "optimal-set membership",
+      "successor state (except the declared ONESTEP diagnostic)",
+      "rollout totals"
+    ]
+  },
+  "partitions": {
+    "DEV": "P.1D DEV: fits the diagnostic scorers and fixes the regime cut points (medians)",
+    "CAL": "P.1D CAL: descriptive only (no selection is needed: every scorer specification is fixed here)",
+    "FRESH_HOLDOUT": "PRIMARY confirmatory: 6000 rows from the newly declared HOLDOUT seed space",
+    "FRESH_OOD": "PRIMARY robustness: 6000 rows from the newly declared OOD seed space (levels 6-7)",
+    "generation": "only after this plan, the open-phase report and every evaluation file are committed unchanged at HEAD"
+  },
+  "scorers": {
+    "specs": {
+      "NX_RELATIONAL_ONLY": {
+        "blocks": [
+          "TYPE",
+          "COST",
+          "TARGET",
+          "NEXUS",
+          "REASON_X_TYPE"
+        ],
+        "class": "DEPLOYABLE",
+        "question": "can Nexus's own relational inputs (no actor geometry) support a better decision than Nexus's fixed rule? (the Nexus-scope repair test)"
+      },
+      "NX_DEPLOYABLE": {
+        "blocks": [
+          "TYPE",
+          "COST",
+          "TARGET",
+          "NEXUS",
+          "GEOMETRY",
+          "REASON_X_TYPE"
+        ],
+        "class": "DEPLOYABLE",
+        "question": "what can every deployable input, including the P.1A-SYM actor geometry Nexus never reads, support? (deployable ceiling)"
+      },
+      "NX_PRIVILEGED": {
+        "blocks": [
+          "TYPE",
+          "COST",
+          "TARGET",
+          "NEXUS",
+          "GEOMETRY",
+          "REASON_X_TYPE",
+          "PRIV_MOVEMENT",
+          "PRIV_TARGET"
+        ],
+        "class": "DIAGNOSTIC_UNAVAILABLE",
+        "question": "does kernel entity geometry unlock the decision?"
+      },
+      "NX_PRIV_MOVEMENT_ONLY": {
+        "blocks": [
+          "TYPE",
+          "COST",
+          "TARGET",
+          "NEXUS",
+          "GEOMETRY",
+          "REASON_X_TYPE",
+          "PRIV_MOVEMENT"
+        ],
+        "class": "DIAGNOSTIC_UNAVAILABLE",
+        "question": "is the gain in where movement leads (action semantics relative to entities)?"
+      },
+      "NX_PRIV_TARGET_ONLY": {
+        "blocks": [
+          "TYPE",
+          "COST",
+          "TARGET",
+          "NEXUS",
+          "GEOMETRY",
+          "REASON_X_TYPE",
+          "PRIV_TARGET"
+        ],
+        "class": "DIAGNOSTIC_UNAVAILABLE",
+        "question": "is the gain in where targeted entities are (relational spatial context)?"
+      },
+      "NX_DEPLOYABLE_ONESTEP": {
+        "blocks": [
+          "TYPE",
+          "COST",
+          "TARGET",
+          "NEXUS",
+          "GEOMETRY",
+          "REASON_X_TYPE",
+          "ONESTEP"
+        ],
+        "class": "DIAGNOSTIC_FUTURE_STATE",
+        "question": "does a one-step successor reward suffice?"
+      },
+      "NX_PRIVILEGED_ONESTEP": {
+        "blocks": [
+          "TYPE",
+          "COST",
+          "TARGET",
+          "NEXUS",
+          "GEOMETRY",
+          "REASON_X_TYPE",
+          "PRIV_MOVEMENT",
+          "PRIV_TARGET",
+          "ONESTEP"
+        ],
+        "class": "DIAGNOSTIC_FUTURE_STATE",
+        "question": "does one-step information add to entity geometry?"
+      }
+    },
+    "model": "Stage 3F.6-P.1A-SYM conditional logit (fitCandidateLogit, unchanged): set-valued optimal target, DEV standardisation, lr 0.1, l2 1e-3, 2000 iterations; candidates = every distinct legal action",
+    "choice": "highest score; ties uniform",
+    "roleOfPrivileged": "upper-bound diagnostics only; never a deployable result"
+  },
+  "metrics": {
+    "perStrategy": [
+      "coverage / abstention",
+      "top-1 accuracy (chosen action in the optimal set; uniform over score ties)",
+      "mean regret",
+      "mean normalized regret",
+      "catastrophic rate (regret >= 100, raw-scale caveat)",
+      "action-type distribution",
+      "target-kind distribution",
+      "chosen MOVE direction share",
+      "accuracy by hidden orientation",
+      "type accuracy (chosen type is an optimal type)",
+      "target accuracy (chosen action optimal given its type is an optimal type)",
+      "PROTECT selection rate, PROTECT precision, PROTECT-optimal rate",
+      "RETREAT selection rate and precision",
+      "confidence calibration where the policy emits non-constant confidence; scorer Brier / ECE"
+    ],
+    "comparisons": "paired on identical episodes (policy-proposing rows for policy comparisons): top-1 and normalized-regret differences with 1000-resample bootstrap 95% CIs",
+    "materiality": "MATERIAL = top-1 gain >= 0.05 with CI lower > 0 and normalized regret not significantly worse (P.1A-SYM materialGain, unchanged)"
+  },
+  "regimes": {
+    "observed": {
+      "HOSTILE_PRESENT": "relational.hostileEntityCount > 0",
+      "UNSUPPORTED_THREAT": "relational.unsupportedThreatenedCount > 0",
+      "DEPENDENCY": "relational.criticalDependencyCount > 0 or relational.unresolvedDependencyCount > 0",
+      "MULTI_ENTITY_DEPENDENCY": "relational.maxDependents >= 2",
+      "DENSE_RELATIONAL": "relational.graphDensity > DEV median",
+      "SPARSE_RELATIONAL": "relational.graphDensity <= DEV median",
+      "OBJECTIVE_RELATION": "a legal action targets an observed critical entity",
+      "RESOURCE_RELATION": "a legal action targets an observed RESOURCE-kind entity",
+      "PROTECT_LEGAL": "a PROTECT action is legal",
+      "THREAT_DRIVEN": "the observed Nexus diagnosis is threat-driven"
+    },
+    "oracleDiagnostic": {
+      "COSTLY_ACTION_OPTIMAL": "no optimal action has declared cost 0",
+      "PROTECT_OPTIMAL": "a PROTECT action is optimal",
+      "TARGETED_ACTION_OPTIMAL": "an entity-targeted action is optimal"
+    },
+    "minN": 200
+  },
+  "relationalValue": {
+    "rule": "GENUINE_RELATIONAL_VALUE for a Nexus policy when, in at least one OBSERVED regime with >= 200 proposing rows on FRESH_HOLDOUT, its top-1 exceeds BOTH the uniform-legal expectation and RESOURCE by a MATERIAL margin, the same comparison has CI lower > 0 on FRESH_OOD, and the policy has no replicated nuisance dependence",
+    "oracleRegimes": "reported as conditional competence (where Nexus is right when the oracle says a relational action is optimal); never sufficient on their own, because they are not observable"
+  },
+  "shortcutAudit": {
+    "tests": [
+      "D4 twins (choice and target equivariance)",
+      "action-ID permutation (8 seeds) and reversal (P.1E evidence, unchanged)",
+      "candidate-order shuffle",
+      "accuracy by hidden orientation",
+      "chosen MOVE direction share and accuracy by chosen direction",
+      "zero-cost preference",
+      "PROTECT over-selection",
+      "target-ID ordering (targeted choices changed by identity relabelling)"
+    ],
+    "flags": "P.1E factorGap (orientation, direction) and pairedFlag (ID order vs permuted mean, D4 twin); NUISANCE_DEPENDENCE requires the flag on BOTH FRESH_HOLDOUT and FRESH_OOD",
+    "candidateShuffle": "any choice change under a pure order shuffle is an ordering defect and is reported"
+  },
+  "historicalClaims": {
+    "C1_PROTECT_BIAS_MAIN_CAUSE": "SURVIVES if V1 PROTECT selection share >= 0.8 AND PROTECT carries >= 0.8 of V1 regret on FRESH_HOLDOUT; PARTIALLY if one holds; else INVALIDATED",
+    "C2_TARGET_NOT_MAIN_DEFECT": "SURVIVES if P(V1 choice optimal | chosen type is an optimal type) >= 0.9; PARTIALLY if >= 0.7; else INVALIDATED",
+    "C3_V2_STANDALONE_MATERIAL_IMPROVEMENT": "SURVIVES if V2 - V1 is MATERIAL on FRESH_HOLDOUT and FRESH_OOD both raw AND with both policies tie-randomised (ID-permuted means); PARTIALLY if material raw on FRESH_HOLDOUT but not tie-randomised or not on OOD; else INVALIDATED",
+    "C4_V2_GAIN_FROM_MOVE_RESOURCE_COLLINEAR": "SURVIVES if V2 MOVE share >= 0.5 AND V2 agreement with RESOURCE >= 0.5 on FRESH_HOLDOUT; PARTIALLY if one; else INVALIDATED",
+    "C5_V2_REDUCES_POLICY_SET_VALUE": "SURVIVES if oracle{RES,V2,OBJ,THR} top-1 < oracle{RES,V1,OBJ,THR} top-1 with paired CI upper < 0 on FRESH_HOLDOUT; else INVALIDATED",
+    "C6_V2_WORSE_WHERE_V1_BEST": "SURVIVES if on rows where V1 is in the best set of {RES,V1,OBJ,THR}, V2 top-1 < V1 top-1 with CI upper < 0 on FRESH_HOLDOUT; else INVALIDATED",
+    "C7_V1_VALUE_FROM_GREEDY_COLLINEARITY": "SURVIVES if V1 agreement with GREEDY >= 0.5 on FRESH_HOLDOUT; PARTIALLY if >= 0.25; else INVALIDATED",
+    "C8_REMEDIATION_REQUIRES_MISSING_REPRESENTATION": "SURVIVES if NX_PRIVILEGED - NX_DEPLOYABLE is MATERIAL on FRESH_HOLDOUT and FRESH_OOD; PARTIALLY if on one; else INVALIDATED",
+    "C9_V1_THREAT_REGIME_INSENSITIVE": "SURVIVES if the V1 top-1 gap between HOSTILE_PRESENT and not does not flag (factorGap) on FRESH_HOLDOUT; else INVALIDATED",
+    "C10_ENTITY_TARGETED_ORACLE_NOT_MATERIAL": "SURVIVES if, on rows with any legal entity-targeted action, the best entity-targeted action minus V1 is not MATERIAL on FRESH_HOLDOUT; else INVALIDATED",
+    "C11_V2_SIMULATOR_FREE": "SURVIVES if the V2 source and candidate hashes equal the historically certified ones (static re-verification; the dynamic poison probe is not re-run)",
+    "C12_V1_PRESERVED": "SURVIVES if the V1 source is unchanged and reproduces every stored choice (fidelity 1.0)"
+  },
+  "classification": {
+    "labels": [
+      "INSUFFICIENT_EVIDENCE (proposing n < 200)",
+      "SHORTCUT_DEPENDENT (replicated nuisance dependence)",
+      "GENUINE_RELATIONAL_COMPETENCE (relationalValue rule)",
+      "REPRESENTATION_BLOCKED (NX_PRIVILEGED - NX_DEPLOYABLE MATERIAL on both fresh partitions)",
+      "POLICY_LOGIC_LIMITED (NX_RELATIONAL_ONLY - policy MATERIAL on both fresh partitions, policy-proposing rows)",
+      "REDESIGN_CANDIDATE (marginal oracle top-1 gain >= 0.02 and top-1 when best-available < 0.5; P.1E rule)",
+      "WEAK_BUT_DISTINCT (marginal oracle top-1 gain >= 0.02)",
+      "REDUNDANT (marginal oracle top-1 gain < 0.02)"
+    ],
+    "marginalSet": "{RESOURCE, OBJECTIVE, THREAT} plus the policy, on FRESH_HOLDOUT",
+    "primary": "first holding label in the order above; every holding label is reported",
+    "appliedTo": [
+      "NEXUS_SELECTOR_V1 (the routed Nexus; headline)",
+      "NEXUS_SELECTOR_V2_CANDIDATE"
+    ]
+  },
+  "architecture": {
+    "rule": "OBSERVATION_INFRASTRUCTURE when REPRESENTATION_BLOCKED (the missing inputs are kernel observations no interface exposes); NEXUS co-owns when NX_PRIV_TARGET_ONLY - NX_DEPLOYABLE is MATERIAL (relational spatial context of targets); ACTION_SEMANTICS_INFRASTRUCTURE when NX_PRIV_MOVEMENT_ONLY - NX_DEPLOYABLE is MATERIAL (what an action does relative to entities); ARCHIMEDES when NX_PRIVILEGED_ONESTEP - NX_PRIVILEGED is MATERIAL (mechanistic effect); ORACLE is not assessed (no temporal diagnostic)",
+    "expert10": "not considered unless an orthogonal capability fits no existing boundary; nine experts assumed"
+  },
+  "roadmap": {
+    "NEXUS_REQUALIFIED": "stage PASS",
+    "HISTORICAL_P1_SURVIVES": "true if every testable claim SURVIVES, false if none does, else PARTIAL",
+    "GENUINE_RELATIONAL_VALUE_MEASURED": "relationalValue holds for V1 or V2",
+    "NEXUS_POLICY_REPAIR_JUSTIFIED": "NX_RELATIONAL_ONLY is MATERIAL over V1 on both fresh partitions AND MATERIAL over RESOURCE on both (a repair within Nexus's relational inputs exists); neither a privileged gain nor a gain that needs actor geometry sets this",
+    "NEXUS_REPRESENTATION_BLOCKED": "V1 REPRESENTATION_BLOCKED",
+    "SPATIAL_STATE_REQUIRED": "NX_PRIVILEGED - NX_DEPLOYABLE MATERIAL on both fresh partitions",
+    "ACTION_SEMANTICS_REQUIRED": "NX_PRIV_MOVEMENT_ONLY - NX_DEPLOYABLE MATERIAL on FRESH_HOLDOUT, or carried true from P.1A-SYM",
+    "TRANSITION_PREDICTION_REQUIRED": "NX_PRIVILEGED_ONESTEP - NX_PRIVILEGED MATERIAL on both fresh partitions, or NX_DEPLOYABLE_ONESTEP - NX_DEPLOYABLE MATERIAL on both",
+    "ROUTER_2_0_JUSTIFIED": "false (Stage 3F.6-T-SYM; not reopened)",
+    "READY_FOR_STAGE3F6W_REQUALIFICATION": "stage PASS (W consumes 3F.6-T, which is requalified)",
+    "READY_FOR_STAGE3F6D_REQUALIFICATION": "false until 3F.6-W is requalified",
+    "READY_FOR_3F_FREEZE": "false (W and D remain)",
+    "READY_FOR_STAGE3G": "false by construction"
+  },
+  "preFreezeRevisions": [
+    {
+      "id": "P1SYM-PRE-FREEZE-001",
+      "when": "after a dry run of the confirmatory code on CAL rows standing in for sealed data; no fresh row existed",
+      "observed": "on CAL, NX_DEPLOYABLE (which includes the P.1A-SYM actor geometry) beat V1 and RESOURCE, which would have set NEXUS_POLICY_REPAIR_JUSTIFIED",
+      "problem": "actor geometry is not a Nexus input and is not relational; a repair that needs it would make Nexus a movement policy, which is the role loss historical P.1 identified",
+      "change": "added the deployable NX_RELATIONAL_ONLY scorer (Nexus relational inputs only) and based POLICY_LOGIC_LIMITED and NEXUS_POLICY_REPAIR_JUSTIFIED on it; NX_DEPLOYABLE is reported as the deployable ceiling including actor geometry",
+      "effect": "makes the repair verdict stricter and closer to the question; no threshold changed"
+    }
+  ],
+  "acceptance": {
+    "PASS": "every integrity check holds; a negative Nexus result is a valid PASS",
+    "FAIL": [
+      "seed overlap",
+      "sealed data before the freeze commit",
+      "lineage contamination",
+      "broken symmetry",
+      "policy source change",
+      "non-reproducibility",
+      "post-freeze rule change",
+      "authority violation"
+    ]
+  },
+  "notChanged": [
+    "Nexus V1",
+    "Nexus V2 candidate",
+    "every other policy",
+    "FORGE_SYMMETRIC_V2",
+    "every prior corpus and certificate",
+    "router (not reopened)",
+    "authority",
+    "Stage 3G (not begun)"
+  ],
+  "authority": {
+    "tier": "R0",
+    "canDispatch": false,
+    "canMutateLiveWorld": false,
+    "onlineLearningEnabled": false,
+    "promotedToLiveRuntime": false
+  },
+  "planHash": "b7c69812be75d8ef9bf8157d84db76becd292119e5f6f79f781fda1ecc0c95c9",
+  "seedPlan": {
+    "seedPlanId": "STAGE3F6P1SYM_SEALED_SEED_DECLARATION_V1",
+    "declared": {
+      "HOLDOUT": [
+        3021,
+        3022,
+        3023
+      ],
+      "OOD": [
+        3031,
+        3032,
+        3033
+      ]
+    },
+    "use": "the first declared seed of each space, in canonical combination order; later seeds only if the first cannot fill 6000 admitted rows",
+    "levels": {
+      "HOLDOUT": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5
+      ],
+      "OOD": [
+        6,
+        7
+      ]
+    },
+    "sizes": {
+      "HOLDOUT": 6000,
+      "OOD": 6000
+    },
+    "priorSeeds": [
+      1,
+      2,
+      3,
+      11,
+      201,
+      202,
+      203,
+      211,
+      401,
+      402,
+      403,
+      411,
+      601,
+      602,
+      603,
+      611,
+      801,
+      802,
+      803,
+      811,
+      1001,
+      1002,
+      1003,
+      1011,
+      2001,
+      2002,
+      2003,
+      2011,
+      2012,
+      2013,
+      2021,
+      2022,
+      2023,
+      2031,
+      2032,
+      2033
+    ],
+    "priorSources": [
+      "P.1D corpus plan priorConsumed (Stages 3B, 3F.6-C/-R/-T/-D, P.1C)",
+      "P.1D declared DEV 2001-2003, CAL 2011-2013, HOLDOUT 2021-2023, OOD 2031-2033 (HOLDOUT/OOD all consumed by P.1D, 3F.6-T-SYM and P.1A-SYM)"
+    ],
+    "spareDevCalSeeds": "P.1D DEV/CAL spares (2002, 2003, 2012, 2013) are DEV/CAL seeds and are not used as sealed seeds",
+    "declaredBefore": "any partition from these seeds exists; chosen as the next unused decade block, not from any outcome",
+    "exclusion": "a candidate whose record, world or topology hash is claimed anywhere in the P.1D corpus, the 3F.6-T-SYM fresh partitions or the P.1A-SYM fresh partitions, or earlier in this set, is rejected"
+  },
+  "policies": {
+    "baseline": {
+      "id": "NEXUS_SELECTOR_V1",
+      "source": "src/lab/stage3c-learned-nexus.js#nexusRelationalSelector",
+      "diagnosis": "src/experts/nexus.js#evaluateNexus"
+    },
+    "remediated": {
+      "id": "NEXUS_SELECTOR_V2_CANDIDATE",
+      "source": "src/stage3f/nexus-selector-v2-candidate.js",
+      "candidateHash": "8c658bfa41c5e84137bd78de6f70a6f802c3754936ffbc995ce866da9e22a900",
+      "historicalCandidateHash": "8c658bfa41c5e84137bd78de6f70a6f802c3754936ffbc995ce866da9e22a900",
+      "historicalSourceHash": "965cb36f003045a5f80e0e9860c03b99db0d427bdd1768d5fc33ec72e2581577"
+    },
+    "controls": [
+      "RESOURCE_PRESERVING_V1",
+      "RANDOM_LEGAL_V1",
+      "UNIFORM_LEGAL_EXPECTATION"
+    ],
+    "references": [
+      "OBJECTIVE_TARGETING_V1",
+      "THREAT_COVERING_V1",
+      "GREEDY (simulator reference)",
+      "PERFECT_SELECTOR over {RESOURCE, NEXUS, OBJECTIVE, THREAT} with V1 or V2 in the NEXUS slot"
+    ],
+    "sourceSha256": {
+      "src/lab/stage3c-learned-nexus.js": "aae20d1d40b1cc5f93b5b46dd700f1ef1f66ea0ec44507efc4c4cfecba198574",
+      "src/experts/nexus.js": "7a6e194b1b97221fc9e2a15cc9f1885c0858ab50d784bdf81e5cbc58de70a144",
+      "src/stage3f/nexus-selector-v2-candidate.js": "965cb36f003045a5f80e0e9860c03b99db0d427bdd1768d5fc33ec72e2581577",
+      "src/stage3f/deployable-action-proposal-v1.js": "b20b7d04e797f53412a64da4e68da519045d39d0524b96cc900888dc669f58c4"
+    },
+    "historicalStage3f6p1Certification": "48462a169c88337a9f27315c3e10b83f615e077a8ba2dc6751fdf437351d31e4"
+  }
+}

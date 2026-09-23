@@ -1,0 +1,222 @@
+{
+  "schemaVersion": 1,
+  "stage": "STAGE_3F_6_P_1_SYM_NEXUS_REMEDIATION_SYMMETRIC_REQUALIFICATION",
+  "phase": "OPEN",
+  "planHash": "b7c69812be75d8ef9bf8157d84db76becd292119e5f6f79f781fda1ecc0c95c9",
+  "seedPlanHash": "5571364b9c3b4fad4109399b607dbdea031a8842ef54856fd9d2bcfc3efd1f3b",
+  "policyHash": "77d73cea1886cb55be7fe2a806e6377f27be82a157db4da193a79f673c61a1cb",
+  "candidateSchemaHash": "631af2fc5eb75a6e28e51192f735e7a80f1b32c90c7d737a60152e67c2eef82d",
+  "partitions": [
+    "DEV",
+    "CAL"
+  ],
+  "devThresholds": {
+    "graphDensityMedian": 53030
+  },
+  "scorers": {
+    "NX_RELATIONAL_ONLY": {
+      "modelHash": "5116f3bcf15c3600c15bbb0e26e5fe69db37aa953d473101aa144b1b898cadb9",
+      "columns": 46,
+      "trainedGroups": 4000
+    },
+    "NX_DEPLOYABLE": {
+      "modelHash": "af5899dd83816211fb426cc3639eb9e828d781fb4d52b58541d98160a4b94c77",
+      "columns": 54,
+      "trainedGroups": 4000
+    },
+    "NX_PRIVILEGED": {
+      "modelHash": "1a33d0a9c0ce77bc6a0d0770b4779bb5831cb309b55e33087016b0e686309435",
+      "columns": 65,
+      "trainedGroups": 4000
+    },
+    "NX_PRIV_MOVEMENT_ONLY": {
+      "modelHash": "5288cf09ee10edfb1f41f6643f2b45c6cce8cbe382d926c1fd5319ad803d285d",
+      "columns": 61,
+      "trainedGroups": 4000
+    },
+    "NX_PRIV_TARGET_ONLY": {
+      "modelHash": "0265fdc17cf0c20f1ded5f77280b49b9b97f962988a6143dbb7d9556e325f6bf",
+      "columns": 58,
+      "trainedGroups": 4000
+    },
+    "NX_DEPLOYABLE_ONESTEP": {
+      "modelHash": "a8f568257765fedb4e1f40d6576920d466fdca8f4a8d7a53b844ddb6c710ed9d",
+      "columns": 55,
+      "trainedGroups": 4000
+    },
+    "NX_PRIVILEGED_ONESTEP": {
+      "modelHash": "5ce3dfacd65900574f4180e8638b2ae7fc4be12864b61e8baeeae6def0766934",
+      "columns": 66,
+      "trainedGroups": 4000
+    }
+  },
+  "fitDeterministic": true,
+  "evidenceFidelity": {
+    "world": 1,
+    "surface": 1,
+    "choices": 1,
+    "candidateSet": 1,
+    "twinRows": 332,
+    "deployableFeatureEquivariance": 1,
+    "privilegedFeatureEquivariance": 1,
+    "nexusReasonEquivariance": 1
+  },
+  "descriptive": {
+    "DEV": {
+      "policies": {
+        "NEXUS_SELECTOR_V1": {
+          "n": 3429,
+          "top1": 0.16098,
+          "nreg": 0.547859
+        },
+        "NEXUS_SELECTOR_V2_CANDIDATE": {
+          "n": 3429,
+          "top1": 0.314377,
+          "nreg": 0.505109
+        },
+        "RESOURCE_PRESERVING_V1": {
+          "n": 4000,
+          "top1": 0.2725,
+          "nreg": 0.553108
+        },
+        "OBJECTIVE_TARGETING_V1": {
+          "n": 382,
+          "top1": 0.306283,
+          "nreg": 0.454174
+        },
+        "THREAT_COVERING_V1": {
+          "n": 120,
+          "top1": 0.458333,
+          "nreg": 0.241579
+        },
+        "RANDOM_LEGAL_V1": {
+          "n": 4000,
+          "top1": 0.211,
+          "nreg": 0.573921
+        },
+        "GREEDY": {
+          "n": 4000,
+          "top1": 0.214,
+          "nreg": 0.524571
+        }
+      },
+      "scorers": {
+        "NX_RELATIONAL_ONLY": {
+          "n": 4000,
+          "top1": 0.365792,
+          "nreg": 0.468511
+        },
+        "NX_DEPLOYABLE": {
+          "n": 4000,
+          "top1": 0.416917,
+          "nreg": 0.40297
+        },
+        "NX_PRIVILEGED": {
+          "n": 4000,
+          "top1": 0.734042,
+          "nreg": 0.11484
+        },
+        "NX_PRIV_MOVEMENT_ONLY": {
+          "n": 4000,
+          "top1": 0.734042,
+          "nreg": 0.11504
+        },
+        "NX_PRIV_TARGET_ONLY": {
+          "n": 4000,
+          "top1": 0.416917,
+          "nreg": 0.40297
+        },
+        "NX_DEPLOYABLE_ONESTEP": {
+          "n": 4000,
+          "top1": 0.432875,
+          "nreg": 0.381091
+        },
+        "NX_PRIVILEGED_ONESTEP": {
+          "n": 4000,
+          "top1": 0.73325,
+          "nreg": 0.113962
+        }
+      },
+      "uniform": 0.20431
+    },
+    "CAL": {
+      "policies": {
+        "NEXUS_SELECTOR_V1": {
+          "n": 3533,
+          "top1": 0.15058,
+          "nreg": 0.567166
+        },
+        "NEXUS_SELECTOR_V2_CANDIDATE": {
+          "n": 3533,
+          "top1": 0.303991,
+          "nreg": 0.523605
+        },
+        "RESOURCE_PRESERVING_V1": {
+          "n": 4000,
+          "top1": 0.26075,
+          "nreg": 0.572693
+        },
+        "OBJECTIVE_TARGETING_V1": {
+          "n": 341,
+          "top1": 0.322581,
+          "nreg": 0.456461
+        },
+        "THREAT_COVERING_V1": {
+          "n": 101,
+          "top1": 0.346535,
+          "nreg": 0.255374
+        },
+        "RANDOM_LEGAL_V1": {
+          "n": 4000,
+          "top1": 0.208,
+          "nreg": 0.582565
+        },
+        "GREEDY": {
+          "n": 4000,
+          "top1": 0.18975,
+          "nreg": 0.550874
+        }
+      },
+      "scorers": {
+        "NX_RELATIONAL_ONLY": {
+          "n": 4000,
+          "top1": 0.361333,
+          "nreg": 0.480626
+        },
+        "NX_DEPLOYABLE": {
+          "n": 4000,
+          "top1": 0.41475,
+          "nreg": 0.415466
+        },
+        "NX_PRIVILEGED": {
+          "n": 4000,
+          "top1": 0.758625,
+          "nreg": 0.097899
+        },
+        "NX_PRIV_MOVEMENT_ONLY": {
+          "n": 4000,
+          "top1": 0.758875,
+          "nreg": 0.097919
+        },
+        "NX_PRIV_TARGET_ONLY": {
+          "n": 4000,
+          "top1": 0.41475,
+          "nreg": 0.415466
+        },
+        "NX_DEPLOYABLE_ONESTEP": {
+          "n": 4000,
+          "top1": 0.436125,
+          "nreg": 0.384798
+        },
+        "NX_PRIVILEGED_ONESTEP": {
+          "n": 4000,
+          "top1": 0.7585,
+          "nreg": 0.096708
+        }
+      },
+      "uniform": 0.20082
+    }
+  },
+  "noSealedRowScored": true,
+  "reportHash": "b8c15f2fa18692f955f411dabb7aecb851de5b61ca8f2811cd2ec60695b09fa3"
+}
