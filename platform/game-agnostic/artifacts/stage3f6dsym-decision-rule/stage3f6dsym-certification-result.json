@@ -1,0 +1,2804 @@
+{
+  "schemaVersion": 1,
+  "stage": "STAGE_3F_6_D_SYM_DECISION_RULE_SYMMETRIC_REQUALIFICATION",
+  "status": "PASS",
+  "planHash": "1c90d172408faf47b4ff98014c1b8a4fe57bb5a26e6ffcfc6d7db71e7125db1d",
+  "seedPlanHash": "de039fd8b5f929860b649bdbe46ef28f2e27cc36a2f7f89b42724af2fdd64f20",
+  "analysisFreezeHash": "4d7313b6151e329c2dc454ad72edd7fceca6a0557901fb750f8746b1400ead47",
+  "headlinePolicySetHash": "34f0f3ddf7a3a508061e5c6fb716e67e28cc4919c70f8a724beb11e990d60c44",
+  "diagnosticPolicySetHash": "d9495b444280e65107c63cffb15be85386e80550bcaa4921a71892dc6bc10f81",
+  "decisionRuleHash": "e76eca19a2c136082394087a8e492b13bafc76467ec116027d1756bd8c1ebbb2",
+  "modelHash": "e9c123db9c0ac2dbada7b01bebe2035a3c0b4e39b8f013e754c8f2bb99208d88",
+  "data": {
+    "contentHash": "8aa1672a1acdfe62251458b8e986b2f79b4f0eb1cc794596315f92ba7ccbac9c",
+    "generatedAtHead": "226ea9f2a3c97f52775391fc5dfa35d6105c817f",
+    "stats": {
+      "HOLDOUT": {
+        "attempted": 9082,
+        "admitted": 6000,
+        "rejected": {
+          "TOPOLOGY_HASH_CLAIMED": 2824,
+          "TREE_BRANCHES_ACYCLIC": 110,
+          "ISLANDS": 59,
+          "LAYERS": 61,
+          "CONTESTED_BOTTLENECK": 14,
+          "BRIDGE_CUT_EXISTS": 14
+        },
+        "seedsUsed": [
+          3023
+        ],
+        "combinationsAvailable": 21600
+      },
+      "OOD": {
+        "attempted": 6690,
+        "admitted": 6000,
+        "rejected": {
+          "TOPOLOGY_HASH_CLAIMED": 631,
+          "TREE_BRANCHES_ACYCLIC": 31,
+          "LAYERS": 16,
+          "BRIDGE_CUT_EXISTS": 12
+        },
+        "seedsUsed": [
+          3033
+        ],
+        "combinationsAvailable": 7200
+      }
+    },
+    "seedAudit": {
+      "declared": {
+        "HOLDOUT": [
+          3023
+        ],
+        "OOD": [
+          3033
+        ]
+      },
+      "priorSeedOverlap": [],
+      "priorRowOverlap": [],
+      "partitionOverlap": [],
+      "duplicateCount": 0
+    },
+    "priorLineage": [
+      {
+        "name": "P.1D",
+        "rows": 20000,
+        "verified": true
+      },
+      {
+        "name": "T-SYM",
+        "rows": 12000,
+        "verified": true
+      },
+      {
+        "name": "P.1A-SYM",
+        "rows": 12000,
+        "verified": true
+      },
+      {
+        "name": "P.1-SYM",
+        "rows": 12000,
+        "verified": true
+      },
+      {
+        "name": "W-SYM",
+        "rows": 12000,
+        "verified": true,
+        "contentHash": "2c8f73fbd550460e82691616fdddac7d36d09f9c339a19679b2c9cef1f40f14d"
+      }
+    ]
+  },
+  "freeze": {
+    "costMatrixHash": "2ee12bb89dc0c05cbac750d322e571dcd8dff5d4773ff599c5b7250f04eb41e4",
+    "temperature": 1,
+    "nexusThreshold": 0.6,
+    "bestSingle": "RESOURCE_PRESERVING_V1",
+    "cascade": [
+      "THREAT_COVERING_V1",
+      "OBJECTIVE_TARGETING_V1",
+      "RESOURCE_PRESERVING_V1"
+    ],
+    "headlineRule": "EXPECTED_VALUE_ROUTER"
+  },
+  "evaluations": {
+    "HOLDOUT": {
+      "ruleMetrics": {
+        "BEST_SINGLE_POLICY": {
+          "n": 6000,
+          "actionAccuracy": 0.266333,
+          "meanRegret": 50.700333,
+          "p95Regret": 140,
+          "normalizedRegret": 0.573683,
+          "catastrophicErrorRate": 0.164,
+          "abstention": 0,
+          "selectionDistribution": {
+            "RESOURCE_PRESERVING_V1": 1,
+            "NEXUS_SELECTOR": 0,
+            "OBJECTIVE_TARGETING_V1": 0,
+            "THREAT_COVERING_V1": 0,
+            "ABSTAIN": 0
+          },
+          "topPolicy": "RESOURCE_PRESERVING_V1",
+          "topShare": 1,
+          "topPolicyBestSetShare": 0.447333,
+          "collapsed": true,
+          "pathologicalCollapse": true
+        },
+        "SIMPLE_CASCADE": {
+          "n": 6000,
+          "actionAccuracy": 0.275333,
+          "meanRegret": 48.862333,
+          "p95Regret": 139,
+          "normalizedRegret": 0.556486,
+          "catastrophicErrorRate": 0.153333,
+          "abstention": 0,
+          "selectionDistribution": {
+            "RESOURCE_PRESERVING_V1": 0.913,
+            "NEXUS_SELECTOR": 0,
+            "OBJECTIVE_TARGETING_V1": 0.058,
+            "THREAT_COVERING_V1": 0.029,
+            "ABSTAIN": 0
+          },
+          "topPolicy": "RESOURCE_PRESERVING_V1",
+          "topShare": 0.913,
+          "topPolicyBestSetShare": 0.447333,
+          "collapsed": true,
+          "pathologicalCollapse": true
+        },
+        "ARGMAX_ROUTER": {
+          "n": 6000,
+          "actionAccuracy": 0.1885,
+          "meanRegret": 45.8825,
+          "p95Regret": 119,
+          "normalizedRegret": 0.548929,
+          "catastrophicErrorRate": 0.092333,
+          "abstention": 0,
+          "selectionDistribution": {
+            "RESOURCE_PRESERVING_V1": 0.1455,
+            "NEXUS_SELECTOR": 0.806333,
+            "OBJECTIVE_TARGETING_V1": 0.026833,
+            "THREAT_COVERING_V1": 0.021333,
+            "ABSTAIN": 0
+          },
+          "topPolicy": "NEXUS_SELECTOR",
+          "topShare": 0.806333,
+          "topPolicyBestSetShare": 0.570667,
+          "collapsed": false,
+          "pathologicalCollapse": false
+        },
+        "EXPECTED_REGRET_ROUTER": {
+          "n": 6000,
+          "actionAccuracy": 0.1965,
+          "meanRegret": 45.7235,
+          "p95Regret": 121,
+          "normalizedRegret": 0.545627,
+          "catastrophicErrorRate": 0.093833,
+          "abstention": 0,
+          "selectionDistribution": {
+            "RESOURCE_PRESERVING_V1": 0.196333,
+            "NEXUS_SELECTOR": 0.7665,
+            "OBJECTIVE_TARGETING_V1": 0.010833,
+            "THREAT_COVERING_V1": 0.026333,
+            "ABSTAIN": 0
+          },
+          "topPolicy": "NEXUS_SELECTOR",
+          "topShare": 0.7665,
+          "topPolicyBestSetShare": 0.570667,
+          "collapsed": false,
+          "pathologicalCollapse": false
+        },
+        "CLASS_WEIGHTED_ROUTER": {
+          "n": 6000,
+          "actionAccuracy": 0.197667,
+          "meanRegret": 45.808667,
+          "p95Regret": 120,
+          "normalizedRegret": 0.546918,
+          "catastrophicErrorRate": 0.094,
+          "abstention": 0,
+          "selectionDistribution": {
+            "RESOURCE_PRESERVING_V1": 0.168833,
+            "NEXUS_SELECTOR": 0.744167,
+            "OBJECTIVE_TARGETING_V1": 0.06,
+            "THREAT_COVERING_V1": 0.027,
+            "ABSTAIN": 0
+          },
+          "topPolicy": "NEXUS_SELECTOR",
+          "topShare": 0.744167,
+          "topPolicyBestSetShare": 0.570667,
+          "collapsed": false,
+          "pathologicalCollapse": false
+        },
+        "EXPECTED_VALUE_ROUTER": {
+          "n": 6000,
+          "actionAccuracy": 0.2855,
+          "meanRegret": 45.851,
+          "p95Regret": 134,
+          "normalizedRegret": 0.531682,
+          "catastrophicErrorRate": 0.1335,
+          "abstention": 0,
+          "selectionDistribution": {
+            "RESOURCE_PRESERVING_V1": 0.785,
+            "NEXUS_SELECTOR": 0.132667,
+            "OBJECTIVE_TARGETING_V1": 0.055667,
+            "THREAT_COVERING_V1": 0.026667,
+            "ABSTAIN": 0
+          },
+          "topPolicy": "RESOURCE_PRESERVING_V1",
+          "topShare": 0.785,
+          "topPolicyBestSetShare": 0.447333,
+          "collapsed": false,
+          "pathologicalCollapse": false
+        },
+        "NEXUS_THRESHOLD_ROUTER": {
+          "n": 6000,
+          "actionAccuracy": 0.1885,
+          "meanRegret": 45.8825,
+          "p95Regret": 119,
+          "normalizedRegret": 0.548929,
+          "catastrophicErrorRate": 0.092333,
+          "abstention": 0,
+          "selectionDistribution": {
+            "RESOURCE_PRESERVING_V1": 0.1455,
+            "NEXUS_SELECTOR": 0.806333,
+            "OBJECTIVE_TARGETING_V1": 0.026833,
+            "THREAT_COVERING_V1": 0.021333,
+            "ABSTAIN": 0
+          },
+          "topPolicy": "NEXUS_SELECTOR",
+          "topShare": 0.806333,
+          "topPolicyBestSetShare": 0.570667,
+          "collapsed": false,
+          "pathologicalCollapse": false
+        },
+        "PERFECT_SELECTOR_REFERENCE": {
+          "n": 6000,
+          "actionAccuracy": 0.397333,
+          "meanRegret": 30.659833,
+          "p95Regret": 105,
+          "normalizedRegret": 0.36777,
+          "catastrophicErrorRate": 0.057,
+          "abstention": 0,
+          "selectionDistribution": {
+            "RESOURCE_PRESERVING_V1": 0.447333,
+            "NEXUS_SELECTOR": 0.520667,
+            "OBJECTIVE_TARGETING_V1": 0.018333,
+            "THREAT_COVERING_V1": 0.013667,
+            "ABSTAIN": 0
+          },
+          "topPolicy": "NEXUS_SELECTOR",
+          "topShare": 0.520667,
+          "topPolicyBestSetShare": 0.570667,
+          "collapsed": false,
+          "pathologicalCollapse": false
+        }
+      },
+      "comparisons": {
+        "SIMPLE_CASCADE": {
+          "vsBestSingle": {
+            "n": 6000,
+            "delta": {
+              "accuracy": 0.009,
+              "regret": -1.838,
+              "normalizedRegret": -0.017197,
+              "catastrophic": -0.010667
+            },
+            "ci95": {
+              "accuracy": [
+                0.003667,
+                0.013833
+              ],
+              "regret": [
+                -2.377667,
+                -1.296333
+              ],
+              "normalizedRegret": [
+                -0.021549,
+                -0.012287
+              ],
+              "catastrophic": [
+                -0.014333,
+                -0.007333
+              ]
+            },
+            "episodesImproved": 373,
+            "episodesWorsened": 125
+          },
+          "vsCascade": {
+            "n": 6000,
+            "delta": {
+              "accuracy": 0,
+              "regret": 0,
+              "normalizedRegret": 0,
+              "catastrophic": 0
+            },
+            "ci95": {
+              "accuracy": [
+                0,
+                0
+              ],
+              "regret": [
+                0,
+                0
+              ],
+              "normalizedRegret": [
+                0,
+                0
+              ],
+              "catastrophic": [
+                0,
+                0
+              ]
+            },
+            "episodesImproved": 0,
+            "episodesWorsened": 0
+          }
+        },
+        "ARGMAX_ROUTER": {
+          "vsBestSingle": {
+            "n": 6000,
+            "delta": {
+              "accuracy": -0.077833,
+              "regret": -4.817833,
+              "normalizedRegret": -0.024754,
+              "catastrophic": -0.071667
+            },
+            "ci95": {
+              "accuracy": [
+                -0.092167,
+                -0.063
+              ],
+              "regret": [
+                -6.185167,
+                -3.618333
+              ],
+              "normalizedRegret": [
+                -0.03797,
+                -0.01229
+              ],
+              "catastrophic": [
+                -0.081167,
+                -0.063
+              ]
+            },
+            "episodesImproved": 3155,
+            "episodesWorsened": 1703
+          },
+          "vsCascade": {
+            "n": 6000,
+            "delta": {
+              "accuracy": -0.086833,
+              "regret": -2.979833,
+              "normalizedRegret": -0.007557,
+              "catastrophic": -0.061
+            },
+            "ci95": {
+              "accuracy": [
+                -0.099333,
+                -0.072833
+              ],
+              "regret": [
+                -4.2165,
+                -1.804
+              ],
+              "normalizedRegret": [
+                -0.020762,
+                0.004051
+              ],
+              "catastrophic": [
+                -0.069333,
+                -0.052167
+              ]
+            },
+            "episodesImproved": 2849,
+            "episodesWorsened": 1639
+          }
+        },
+        "EXPECTED_REGRET_ROUTER": {
+          "vsBestSingle": {
+            "n": 6000,
+            "delta": {
+              "accuracy": -0.069833,
+              "regret": -4.976833,
+              "normalizedRegret": -0.028056,
+              "catastrophic": -0.070167
+            },
+            "ci95": {
+              "accuracy": [
+                -0.082667,
+                -0.055167
+              ],
+              "regret": [
+                -6.202333,
+                -3.7045
+              ],
+              "normalizedRegret": [
+                -0.040129,
+                -0.016065
+              ],
+              "catastrophic": [
+                -0.079,
+                -0.062
+              ]
+            },
+            "episodesImproved": 2991,
+            "episodesWorsened": 1581
+          },
+          "vsCascade": {
+            "n": 6000,
+            "delta": {
+              "accuracy": -0.078833,
+              "regret": -3.138833,
+              "normalizedRegret": -0.010859,
+              "catastrophic": -0.0595
+            },
+            "ci95": {
+              "accuracy": [
+                -0.091667,
+                -0.0655
+              ],
+              "regret": [
+                -4.376833,
+                -1.970333
+              ],
+              "normalizedRegret": [
+                -0.022428,
+                0.000145
+              ],
+              "catastrophic": [
+                -0.068167,
+                -0.051833
+              ]
+            },
+            "episodesImproved": 2669,
+            "episodesWorsened": 1507
+          }
+        },
+        "CLASS_WEIGHTED_ROUTER": {
+          "vsBestSingle": {
+            "n": 6000,
+            "delta": {
+              "accuracy": -0.068667,
+              "regret": -4.891667,
+              "normalizedRegret": -0.026765,
+              "catastrophic": -0.07
+            },
+            "ci95": {
+              "accuracy": [
+                -0.083167,
+                -0.055
+              ],
+              "regret": [
+                -6.228333,
+                -3.599167
+              ],
+              "normalizedRegret": [
+                -0.039098,
+                -0.014448
+              ],
+              "catastrophic": [
+                -0.078667,
+                -0.060833
+              ]
+            },
+            "episodesImproved": 3083,
+            "episodesWorsened": 1638
+          },
+          "vsCascade": {
+            "n": 6000,
+            "delta": {
+              "accuracy": -0.077667,
+              "regret": -3.053667,
+              "normalizedRegret": -0.009568,
+              "catastrophic": -0.059333
+            },
+            "ci95": {
+              "accuracy": [
+                -0.0905,
+                -0.0655
+              ],
+              "regret": [
+                -4.315333,
+                -1.810167
+              ],
+              "normalizedRegret": [
+                -0.020294,
+                0.002253
+              ],
+              "catastrophic": [
+                -0.067667,
+                -0.051167
+              ]
+            },
+            "episodesImproved": 2716,
+            "episodesWorsened": 1519
+          }
+        },
+        "EXPECTED_VALUE_ROUTER": {
+          "vsBestSingle": {
+            "n": 6000,
+            "delta": {
+              "accuracy": 0.019167,
+              "regret": -4.849333,
+              "normalizedRegret": -0.042001,
+              "catastrophic": -0.0305
+            },
+            "ci95": {
+              "accuracy": [
+                0.011667,
+                0.027167
+              ],
+              "regret": [
+                -5.738167,
+                -4.097667
+              ],
+              "normalizedRegret": [
+                -0.04917,
+                -0.03564
+              ],
+              "catastrophic": [
+                -0.036333,
+                -0.025167
+              ]
+            },
+            "episodesImproved": 924,
+            "episodesWorsened": 327
+          },
+          "vsCascade": {
+            "n": 6000,
+            "delta": {
+              "accuracy": 0.010167,
+              "regret": -3.011333,
+              "normalizedRegret": -0.024804,
+              "catastrophic": -0.019833
+            },
+            "ci95": {
+              "accuracy": [
+                0.004,
+                0.016333
+              ],
+              "regret": [
+                -3.641,
+                -2.354
+              ],
+              "normalizedRegret": [
+                -0.030088,
+                -0.01956
+              ],
+              "catastrophic": [
+                -0.024167,
+                -0.0155
+              ]
+            },
+            "episodesImproved": 581,
+            "episodesWorsened": 234
+          }
+        },
+        "NEXUS_THRESHOLD_ROUTER": {
+          "vsBestSingle": {
+            "n": 6000,
+            "delta": {
+              "accuracy": -0.077833,
+              "regret": -4.817833,
+              "normalizedRegret": -0.024754,
+              "catastrophic": -0.071667
+            },
+            "ci95": {
+              "accuracy": [
+                -0.091833,
+                -0.064667
+              ],
+              "regret": [
+                -6.1365,
+                -3.462833
+              ],
+              "normalizedRegret": [
+                -0.037069,
+                -0.012034
+              ],
+              "catastrophic": [
+                -0.080667,
+                -0.0625
+              ]
+            },
+            "episodesImproved": 3155,
+            "episodesWorsened": 1703
+          },
+          "vsCascade": {
+            "n": 6000,
+            "delta": {
+              "accuracy": -0.086833,
+              "regret": -2.979833,
+              "normalizedRegret": -0.007557,
+              "catastrophic": -0.061
+            },
+            "ci95": {
+              "accuracy": [
+                -0.1005,
+                -0.073833
+              ],
+              "regret": [
+                -4.172833,
+                -1.741833
+              ],
+              "normalizedRegret": [
+                -0.019442,
+                0.004813
+              ],
+              "catastrophic": [
+                -0.069333,
+                -0.0525
+              ]
+            },
+            "episodesImproved": 2849,
+            "episodesWorsened": 1639
+          }
+        }
+      },
+      "harm": {
+        "SIMPLE_CASCADE": {
+          "NEXUS_SELECTOR": {
+            "selected": 0,
+            "regretSavedWhenCorrectlySelected": 0,
+            "regretSavedByPartialImprovement": 0,
+            "regretAddedWhenIncorrectlySelected": 0,
+            "netValue": 0,
+            "falseSelectionRate": null,
+            "falseSelectionP95Added": null,
+            "episodesImproved": 0,
+            "episodesWorsened": 0
+          },
+          "OBJECTIVE_TARGETING_V1": {
+            "selected": 348,
+            "regretSavedWhenCorrectlySelected": 8971,
+            "regretSavedByPartialImprovement": 417,
+            "regretAddedWhenIncorrectlySelected": 6496,
+            "netValue": 2892,
+            "falseSelectionRate": 0.347701,
+            "falseSelectionP95Added": 157,
+            "episodesImproved": 227,
+            "episodesWorsened": 97
+          },
+          "THREAT_COVERING_V1": {
+            "selected": 174,
+            "regretSavedWhenCorrectlySelected": 7047,
+            "regretSavedByPartialImprovement": 2279,
+            "regretAddedWhenIncorrectlySelected": 1190,
+            "netValue": 8136,
+            "falseSelectionRate": 0.356322,
+            "falseSelectionP95Added": 73,
+            "episodesImproved": 146,
+            "episodesWorsened": 28
+          }
+        },
+        "ARGMAX_ROUTER": {
+          "NEXUS_SELECTOR": {
+            "selected": 4838,
+            "regretSavedWhenCorrectlySelected": 100863,
+            "regretSavedByPartialImprovement": 1844,
+            "regretAddedWhenIncorrectlySelected": 83659,
+            "netValue": 19048,
+            "falseSelectionRate": 0.345597,
+            "falseSelectionP95Added": 115,
+            "episodesImproved": 2931,
+            "episodesWorsened": 1643
+          },
+          "OBJECTIVE_TARGETING_V1": {
+            "selected": 161,
+            "regretSavedWhenCorrectlySelected": 5550,
+            "regretSavedByPartialImprovement": 728,
+            "regretAddedWhenIncorrectlySelected": 1593,
+            "netValue": 4685,
+            "falseSelectionRate": 0.310559,
+            "falseSelectionP95Added": 98,
+            "episodesImproved": 119,
+            "episodesWorsened": 37
+          },
+          "THREAT_COVERING_V1": {
+            "selected": 128,
+            "regretSavedWhenCorrectlySelected": 5448,
+            "regretSavedByPartialImprovement": 776,
+            "regretAddedWhenIncorrectlySelected": 1050,
+            "netValue": 5174,
+            "falseSelectionRate": 0.257813,
+            "falseSelectionP95Added": 100,
+            "episodesImproved": 105,
+            "episodesWorsened": 23
+          }
+        },
+        "EXPECTED_REGRET_ROUTER": {
+          "NEXUS_SELECTOR": {
+            "selected": 4599,
+            "regretSavedWhenCorrectlySelected": 97048,
+            "regretSavedByPartialImprovement": 2160,
+            "regretAddedWhenIncorrectlySelected": 78806,
+            "netValue": 20402,
+            "falseSelectionRate": 0.344858,
+            "falseSelectionP95Added": 115,
+            "episodesImproved": 2805,
+            "episodesWorsened": 1545
+          },
+          "OBJECTIVE_TARGETING_V1": {
+            "selected": 65,
+            "regretSavedWhenCorrectlySelected": 2654,
+            "regretSavedByPartialImprovement": 0,
+            "regretAddedWhenIncorrectlySelected": 569,
+            "netValue": 2085,
+            "falseSelectionRate": 0.169231,
+            "falseSelectionP95Added": 94,
+            "episodesImproved": 53,
+            "episodesWorsened": 11
+          },
+          "THREAT_COVERING_V1": {
+            "selected": 158,
+            "regretSavedWhenCorrectlySelected": 6750,
+            "regretSavedByPartialImprovement": 1768,
+            "regretAddedWhenIncorrectlySelected": 1144,
+            "netValue": 7374,
+            "falseSelectionRate": 0.310127,
+            "falseSelectionP95Added": 75,
+            "episodesImproved": 133,
+            "episodesWorsened": 25
+          }
+        },
+        "CLASS_WEIGHTED_ROUTER": {
+          "NEXUS_SELECTOR": {
+            "selected": 4465,
+            "regretSavedWhenCorrectlySelected": 94270,
+            "regretSavedByPartialImprovement": 0,
+            "regretAddedWhenIncorrectlySelected": 75986,
+            "netValue": 18284,
+            "falseSelectionRate": 0.338634,
+            "falseSelectionP95Added": 108,
+            "episodesImproved": 2711,
+            "episodesWorsened": 1512
+          },
+          "OBJECTIVE_TARGETING_V1": {
+            "selected": 360,
+            "regretSavedWhenCorrectlySelected": 9654,
+            "regretSavedByPartialImprovement": 818,
+            "regretAddedWhenIncorrectlySelected": 6622,
+            "netValue": 3850,
+            "falseSelectionRate": 0.355556,
+            "falseSelectionP95Added": 157,
+            "episodesImproved": 237,
+            "episodesWorsened": 99
+          },
+          "THREAT_COVERING_V1": {
+            "selected": 162,
+            "regretSavedWhenCorrectlySelected": 6634,
+            "regretSavedByPartialImprovement": 1699,
+            "regretAddedWhenIncorrectlySelected": 1117,
+            "netValue": 7216,
+            "falseSelectionRate": 0.333333,
+            "falseSelectionP95Added": 75,
+            "episodesImproved": 135,
+            "episodesWorsened": 27
+          }
+        },
+        "EXPECTED_VALUE_ROUTER": {
+          "NEXUS_SELECTOR": {
+            "selected": 796,
+            "regretSavedWhenCorrectlySelected": 28403,
+            "regretSavedByPartialImprovement": 0,
+            "regretAddedWhenIncorrectlySelected": 10851,
+            "netValue": 17552,
+            "falseSelectionRate": 0.266332,
+            "falseSelectionP95Added": 118,
+            "episodesImproved": 565,
+            "episodesWorsened": 212
+          },
+          "OBJECTIVE_TARGETING_V1": {
+            "selected": 334,
+            "regretSavedWhenCorrectlySelected": 9408,
+            "regretSavedByPartialImprovement": 1027,
+            "regretAddedWhenIncorrectlySelected": 5746,
+            "netValue": 4689,
+            "falseSelectionRate": 0.350299,
+            "falseSelectionP95Added": 158,
+            "episodesImproved": 226,
+            "episodesWorsened": 88
+          },
+          "THREAT_COVERING_V1": {
+            "selected": 160,
+            "regretSavedWhenCorrectlySelected": 6273,
+            "regretSavedByPartialImprovement": 1699,
+            "regretAddedWhenIncorrectlySelected": 1117,
+            "netValue": 6855,
+            "falseSelectionRate": 0.3375,
+            "falseSelectionP95Added": 75,
+            "episodesImproved": 133,
+            "episodesWorsened": 27
+          }
+        },
+        "NEXUS_THRESHOLD_ROUTER": {
+          "NEXUS_SELECTOR": {
+            "selected": 4838,
+            "regretSavedWhenCorrectlySelected": 100863,
+            "regretSavedByPartialImprovement": 1844,
+            "regretAddedWhenIncorrectlySelected": 83659,
+            "netValue": 19048,
+            "falseSelectionRate": 0.345597,
+            "falseSelectionP95Added": 115,
+            "episodesImproved": 2931,
+            "episodesWorsened": 1643
+          },
+          "OBJECTIVE_TARGETING_V1": {
+            "selected": 161,
+            "regretSavedWhenCorrectlySelected": 5550,
+            "regretSavedByPartialImprovement": 728,
+            "regretAddedWhenIncorrectlySelected": 1593,
+            "netValue": 4685,
+            "falseSelectionRate": 0.310559,
+            "falseSelectionP95Added": 98,
+            "episodesImproved": 119,
+            "episodesWorsened": 37
+          },
+          "THREAT_COVERING_V1": {
+            "selected": 128,
+            "regretSavedWhenCorrectlySelected": 5448,
+            "regretSavedByPartialImprovement": 776,
+            "regretAddedWhenIncorrectlySelected": 1050,
+            "netValue": 5174,
+            "falseSelectionRate": 0.257813,
+            "falseSelectionP95Added": 100,
+            "episodesImproved": 105,
+            "episodesWorsened": 23
+          }
+        }
+      },
+      "orientationSlices": {
+        "MA": {
+          "BEST_SINGLE_POLICY": {
+            "n": 711,
+            "actionAccuracy": 0.125176,
+            "meanRegret": 62.329114
+          },
+          "SIMPLE_CASCADE": {
+            "n": 711,
+            "actionAccuracy": 0.140647,
+            "meanRegret": 59.945148
+          },
+          "ARGMAX_ROUTER": {
+            "n": 711,
+            "actionAccuracy": 0.151899,
+            "meanRegret": 49.153305
+          },
+          "EXPECTED_REGRET_ROUTER": {
+            "n": 711,
+            "actionAccuracy": 0.151899,
+            "meanRegret": 49.558368
+          },
+          "CLASS_WEIGHTED_ROUTER": {
+            "n": 711,
+            "actionAccuracy": 0.156118,
+            "meanRegret": 49.462729
+          },
+          "EXPECTED_VALUE_ROUTER": {
+            "n": 711,
+            "actionAccuracy": 0.156118,
+            "meanRegret": 55.71308
+          },
+          "NEXUS_THRESHOLD_ROUTER": {
+            "n": 711,
+            "actionAccuracy": 0.151899,
+            "meanRegret": 49.153305
+          }
+        },
+        "MD": {
+          "BEST_SINGLE_POLICY": {
+            "n": 772,
+            "actionAccuracy": 0.176166,
+            "meanRegret": 58.111399
+          },
+          "SIMPLE_CASCADE": {
+            "n": 772,
+            "actionAccuracy": 0.196891,
+            "meanRegret": 55.159326
+          },
+          "ARGMAX_ROUTER": {
+            "n": 772,
+            "actionAccuracy": 0.169689,
+            "meanRegret": 46.115285
+          },
+          "EXPECTED_REGRET_ROUTER": {
+            "n": 772,
+            "actionAccuracy": 0.178756,
+            "meanRegret": 46.187824
+          },
+          "CLASS_WEIGHTED_ROUTER": {
+            "n": 772,
+            "actionAccuracy": 0.180052,
+            "meanRegret": 46.34456
+          },
+          "EXPECTED_VALUE_ROUTER": {
+            "n": 772,
+            "actionAccuracy": 0.215026,
+            "meanRegret": 51.30829
+          },
+          "NEXUS_THRESHOLD_ROUTER": {
+            "n": 772,
+            "actionAccuracy": 0.169689,
+            "meanRegret": 46.115285
+          }
+        },
+        "MX": {
+          "BEST_SINGLE_POLICY": {
+            "n": 773,
+            "actionAccuracy": 0.239327,
+            "meanRegret": 53.152652
+          },
+          "SIMPLE_CASCADE": {
+            "n": 773,
+            "actionAccuracy": 0.238034,
+            "meanRegret": 52.5511
+          },
+          "ARGMAX_ROUTER": {
+            "n": 773,
+            "actionAccuracy": 0.182406,
+            "meanRegret": 46.672704
+          },
+          "EXPECTED_REGRET_ROUTER": {
+            "n": 773,
+            "actionAccuracy": 0.196636,
+            "meanRegret": 46.271669
+          },
+          "CLASS_WEIGHTED_ROUTER": {
+            "n": 773,
+            "actionAccuracy": 0.192755,
+            "meanRegret": 46.401035
+          },
+          "EXPECTED_VALUE_ROUTER": {
+            "n": 773,
+            "actionAccuracy": 0.253558,
+            "meanRegret": 48.584735
+          },
+          "NEXUS_THRESHOLD_ROUTER": {
+            "n": 773,
+            "actionAccuracy": 0.182406,
+            "meanRegret": 46.672704
+          }
+        },
+        "MY": {
+          "BEST_SINGLE_POLICY": {
+            "n": 764,
+            "actionAccuracy": 0.52356,
+            "meanRegret": 28.647906
+          },
+          "SIMPLE_CASCADE": {
+            "n": 764,
+            "actionAccuracy": 0.530105,
+            "meanRegret": 27.827225
+          },
+          "ARGMAX_ROUTER": {
+            "n": 764,
+            "actionAccuracy": 0.22644,
+            "meanRegret": 42.565445
+          },
+          "EXPECTED_REGRET_ROUTER": {
+            "n": 764,
+            "actionAccuracy": 0.246073,
+            "meanRegret": 41.363874
+          },
+          "CLASS_WEIGHTED_ROUTER": {
+            "n": 764,
+            "actionAccuracy": 0.240838,
+            "meanRegret": 42.018325
+          },
+          "EXPECTED_VALUE_ROUTER": {
+            "n": 764,
+            "actionAccuracy": 0.519634,
+            "meanRegret": 27.836387
+          },
+          "NEXUS_THRESHOLD_ROUTER": {
+            "n": 764,
+            "actionAccuracy": 0.22644,
+            "meanRegret": 42.565445
+          }
+        },
+        "R0": {
+          "BEST_SINGLE_POLICY": {
+            "n": 720,
+            "actionAccuracy": 0.529167,
+            "meanRegret": 28.031944
+          },
+          "SIMPLE_CASCADE": {
+            "n": 720,
+            "actionAccuracy": 0.523611,
+            "meanRegret": 28.584722
+          },
+          "ARGMAX_ROUTER": {
+            "n": 720,
+            "actionAccuracy": 0.233333,
+            "meanRegret": 44.291667
+          },
+          "EXPECTED_REGRET_ROUTER": {
+            "n": 720,
+            "actionAccuracy": 0.243056,
+            "meanRegret": 43.920833
+          },
+          "CLASS_WEIGHTED_ROUTER": {
+            "n": 720,
+            "actionAccuracy": 0.245833,
+            "meanRegret": 44.027778
+          },
+          "EXPECTED_VALUE_ROUTER": {
+            "n": 720,
+            "actionAccuracy": 0.520833,
+            "meanRegret": 28.148611
+          },
+          "NEXUS_THRESHOLD_ROUTER": {
+            "n": 720,
+            "actionAccuracy": 0.233333,
+            "meanRegret": 44.291667
+          }
+        },
+        "R180": {
+          "BEST_SINGLE_POLICY": {
+            "n": 767,
+            "actionAccuracy": 0.215124,
+            "meanRegret": 54.735332
+          },
+          "SIMPLE_CASCADE": {
+            "n": 767,
+            "actionAccuracy": 0.211213,
+            "meanRegret": 52.902216
+          },
+          "ARGMAX_ROUTER": {
+            "n": 767,
+            "actionAccuracy": 0.182529,
+            "meanRegret": 45.865711
+          },
+          "EXPECTED_REGRET_ROUTER": {
+            "n": 767,
+            "actionAccuracy": 0.187744,
+            "meanRegret": 45.769231
+          },
+          "CLASS_WEIGHTED_ROUTER": {
+            "n": 767,
+            "actionAccuracy": 0.189048,
+            "meanRegret": 45.984355
+          },
+          "EXPECTED_VALUE_ROUTER": {
+            "n": 767,
+            "actionAccuracy": 0.226858,
+            "meanRegret": 49.259452
+          },
+          "NEXUS_THRESHOLD_ROUTER": {
+            "n": 767,
+            "actionAccuracy": 0.182529,
+            "meanRegret": 45.865711
+          }
+        },
+        "R270": {
+          "BEST_SINGLE_POLICY": {
+            "n": 724,
+            "actionAccuracy": 0.13674,
+            "meanRegret": 62.440608
+          },
+          "SIMPLE_CASCADE": {
+            "n": 724,
+            "actionAccuracy": 0.164365,
+            "meanRegret": 58.337017
+          },
+          "ARGMAX_ROUTER": {
+            "n": 724,
+            "actionAccuracy": 0.172652,
+            "meanRegret": 47.650552
+          },
+          "EXPECTED_REGRET_ROUTER": {
+            "n": 724,
+            "actionAccuracy": 0.172652,
+            "meanRegret": 48.337017
+          },
+          "CLASS_WEIGHTED_ROUTER": {
+            "n": 724,
+            "actionAccuracy": 0.180939,
+            "meanRegret": 47.947514
+          },
+          "EXPECTED_VALUE_ROUTER": {
+            "n": 724,
+            "actionAccuracy": 0.176796,
+            "meanRegret": 54.505525
+          },
+          "NEXUS_THRESHOLD_ROUTER": {
+            "n": 724,
+            "actionAccuracy": 0.172652,
+            "meanRegret": 47.650552
+          }
+        },
+        "R90": {
+          "BEST_SINGLE_POLICY": {
+            "n": 769,
+            "actionAccuracy": 0.185956,
+            "meanRegret": 58.09883
+          },
+          "SIMPLE_CASCADE": {
+            "n": 769,
+            "actionAccuracy": 0.19896,
+            "meanRegret": 55.520156
+          },
+          "ARGMAX_ROUTER": {
+            "n": 769,
+            "actionAccuracy": 0.188557,
+            "meanRegret": 44.96749
+          },
+          "EXPECTED_REGRET_ROUTER": {
+            "n": 769,
+            "actionAccuracy": 0.193758,
+            "meanRegret": 44.673602
+          },
+          "CLASS_WEIGHTED_ROUTER": {
+            "n": 769,
+            "actionAccuracy": 0.195059,
+            "meanRegret": 44.540962
+          },
+          "EXPECTED_VALUE_ROUTER": {
+            "n": 769,
+            "actionAccuracy": 0.215865,
+            "meanRegret": 51.430429
+          },
+          "NEXUS_THRESHOLD_ROUTER": {
+            "n": 769,
+            "actionAccuracy": 0.188557,
+            "meanRegret": 44.96749
+          }
+        }
+      },
+      "curriculumSlices": {
+        "0": {
+          "BEST_SINGLE_POLICY": {
+            "n": 1785,
+            "actionAccuracy": 0.256583,
+            "meanRegret": 51.006162
+          },
+          "SIMPLE_CASCADE": {
+            "n": 1785,
+            "actionAccuracy": 0.27563,
+            "meanRegret": 47.888515
+          },
+          "ARGMAX_ROUTER": {
+            "n": 1785,
+            "actionAccuracy": 0.217367,
+            "meanRegret": 42.407843
+          },
+          "EXPECTED_REGRET_ROUTER": {
+            "n": 1785,
+            "actionAccuracy": 0.220168,
+            "meanRegret": 42.684594
+          },
+          "CLASS_WEIGHTED_ROUTER": {
+            "n": 1785,
+            "actionAccuracy": 0.22521,
+            "meanRegret": 42.608964
+          },
+          "EXPECTED_VALUE_ROUTER": {
+            "n": 1785,
+            "actionAccuracy": 0.294118,
+            "meanRegret": 45.242577
+          },
+          "NEXUS_THRESHOLD_ROUTER": {
+            "n": 1785,
+            "actionAccuracy": 0.217367,
+            "meanRegret": 42.407843
+          }
+        },
+        "1": {
+          "BEST_SINGLE_POLICY": {
+            "n": 2524,
+            "actionAccuracy": 0.277734,
+            "meanRegret": 52.486529
+          },
+          "SIMPLE_CASCADE": {
+            "n": 2524,
+            "actionAccuracy": 0.282884,
+            "meanRegret": 51.431854
+          },
+          "ARGMAX_ROUTER": {
+            "n": 2524,
+            "actionAccuracy": 0.199287,
+            "meanRegret": 49.994849
+          },
+          "EXPECTED_REGRET_ROUTER": {
+            "n": 2524,
+            "actionAccuracy": 0.209984,
+            "meanRegret": 49.719889
+          },
+          "CLASS_WEIGHTED_ROUTER": {
+            "n": 2524,
+            "actionAccuracy": 0.211569,
+            "meanRegret": 49.78645
+          },
+          "EXPECTED_VALUE_ROUTER": {
+            "n": 2524,
+            "actionAccuracy": 0.293978,
+            "meanRegret": 48.473059
+          },
+          "NEXUS_THRESHOLD_ROUTER": {
+            "n": 2524,
+            "actionAccuracy": 0.199287,
+            "meanRegret": 49.994849
+          }
+        },
+        "2": {
+          "BEST_SINGLE_POLICY": {
+            "n": 1691,
+            "actionAccuracy": 0.25961,
+            "meanRegret": 47.711413
+          },
+          "SIMPLE_CASCADE": {
+            "n": 1691,
+            "actionAccuracy": 0.263749,
+            "meanRegret": 46.054997
+          },
+          "ARGMAX_ROUTER": {
+            "n": 1691,
+            "actionAccuracy": 0.141928,
+            "meanRegret": 43.412182
+          },
+          "EXPECTED_REGRET_ROUTER": {
+            "n": 1691,
+            "actionAccuracy": 0.15139,
+            "meanRegret": 42.966292
+          },
+          "CLASS_WEIGHTED_ROUTER": {
+            "n": 1691,
+            "actionAccuracy": 0.147842,
+            "meanRegret": 43.248965
+          },
+          "EXPECTED_VALUE_ROUTER": {
+            "n": 1691,
+            "actionAccuracy": 0.263749,
+            "meanRegret": 42.579539
+          },
+          "NEXUS_THRESHOLD_ROUTER": {
+            "n": 1691,
+            "actionAccuracy": 0.141928,
+            "meanRegret": 43.412182
+          }
+        }
+      }
+    },
+    "OOD": {
+      "ruleMetrics": {
+        "BEST_SINGLE_POLICY": {
+          "n": 6000,
+          "actionAccuracy": 0.254167,
+          "meanRegret": 87.772,
+          "p95Regret": 196,
+          "normalizedRegret": 0.631861,
+          "catastrophicErrorRate": 0.405667,
+          "abstention": 0,
+          "selectionDistribution": {
+            "RESOURCE_PRESERVING_V1": 1,
+            "NEXUS_SELECTOR": 0,
+            "OBJECTIVE_TARGETING_V1": 0,
+            "THREAT_COVERING_V1": 0,
+            "ABSTAIN": 0
+          },
+          "topPolicy": "RESOURCE_PRESERVING_V1",
+          "topShare": 1,
+          "topPolicyBestSetShare": 0.425167,
+          "collapsed": true,
+          "pathologicalCollapse": true
+        },
+        "SIMPLE_CASCADE": {
+          "n": 6000,
+          "actionAccuracy": 0.253167,
+          "meanRegret": 87.530167,
+          "p95Regret": 196,
+          "normalizedRegret": 0.629564,
+          "catastrophicErrorRate": 0.402667,
+          "abstention": 0,
+          "selectionDistribution": {
+            "RESOURCE_PRESERVING_V1": 0.978,
+            "NEXUS_SELECTOR": 0,
+            "OBJECTIVE_TARGETING_V1": 0.015833,
+            "THREAT_COVERING_V1": 0.006167,
+            "ABSTAIN": 0
+          },
+          "topPolicy": "RESOURCE_PRESERVING_V1",
+          "topShare": 0.978,
+          "topPolicyBestSetShare": 0.425167,
+          "collapsed": true,
+          "pathologicalCollapse": true
+        },
+        "ARGMAX_ROUTER": {
+          "n": 6000,
+          "actionAccuracy": 0.168167,
+          "meanRegret": 84.5185,
+          "p95Regret": 184,
+          "normalizedRegret": 0.620106,
+          "catastrophicErrorRate": 0.3325,
+          "abstention": 0,
+          "selectionDistribution": {
+            "RESOURCE_PRESERVING_V1": 0.1345,
+            "NEXUS_SELECTOR": 0.860167,
+            "OBJECTIVE_TARGETING_V1": 0.001667,
+            "THREAT_COVERING_V1": 0.003667,
+            "ABSTAIN": 0
+          },
+          "topPolicy": "NEXUS_SELECTOR",
+          "topShare": 0.860167,
+          "topPolicyBestSetShare": 0.618167,
+          "collapsed": false,
+          "pathologicalCollapse": false
+        },
+        "EXPECTED_REGRET_ROUTER": {
+          "n": 6000,
+          "actionAccuracy": 0.169,
+          "meanRegret": 84.512333,
+          "p95Regret": 184,
+          "normalizedRegret": 0.619916,
+          "catastrophicErrorRate": 0.333,
+          "abstention": 0,
+          "selectionDistribution": {
+            "RESOURCE_PRESERVING_V1": 0.140833,
+            "NEXUS_SELECTOR": 0.853167,
+            "OBJECTIVE_TARGETING_V1": 0.0015,
+            "THREAT_COVERING_V1": 0.0045,
+            "ABSTAIN": 0
+          },
+          "topPolicy": "NEXUS_SELECTOR",
+          "topShare": 0.853167,
+          "topPolicyBestSetShare": 0.618167,
+          "collapsed": false,
+          "pathologicalCollapse": false
+        },
+        "CLASS_WEIGHTED_ROUTER": {
+          "n": 6000,
+          "actionAccuracy": 0.169,
+          "meanRegret": 84.571667,
+          "p95Regret": 184,
+          "normalizedRegret": 0.620178,
+          "catastrophicErrorRate": 0.333,
+          "abstention": 0,
+          "selectionDistribution": {
+            "RESOURCE_PRESERVING_V1": 0.137,
+            "NEXUS_SELECTOR": 0.842167,
+            "OBJECTIVE_TARGETING_V1": 0.014667,
+            "THREAT_COVERING_V1": 0.006167,
+            "ABSTAIN": 0
+          },
+          "topPolicy": "NEXUS_SELECTOR",
+          "topShare": 0.842167,
+          "topPolicyBestSetShare": 0.618167,
+          "collapsed": false,
+          "pathologicalCollapse": false
+        },
+        "EXPECTED_VALUE_ROUTER": {
+          "n": 6000,
+          "actionAccuracy": 0.186667,
+          "meanRegret": 84.709833,
+          "p95Regret": 187,
+          "normalizedRegret": 0.618722,
+          "catastrophicErrorRate": 0.343833,
+          "abstention": 0,
+          "selectionDistribution": {
+            "RESOURCE_PRESERVING_V1": 0.291667,
+            "NEXUS_SELECTOR": 0.689,
+            "OBJECTIVE_TARGETING_V1": 0.014667,
+            "THREAT_COVERING_V1": 0.004667,
+            "ABSTAIN": 0
+          },
+          "topPolicy": "NEXUS_SELECTOR",
+          "topShare": 0.689,
+          "topPolicyBestSetShare": 0.618167,
+          "collapsed": false,
+          "pathologicalCollapse": false
+        },
+        "NEXUS_THRESHOLD_ROUTER": {
+          "n": 6000,
+          "actionAccuracy": 0.168167,
+          "meanRegret": 84.5185,
+          "p95Regret": 184,
+          "normalizedRegret": 0.620106,
+          "catastrophicErrorRate": 0.3325,
+          "abstention": 0,
+          "selectionDistribution": {
+            "RESOURCE_PRESERVING_V1": 0.1345,
+            "NEXUS_SELECTOR": 0.860167,
+            "OBJECTIVE_TARGETING_V1": 0.001667,
+            "THREAT_COVERING_V1": 0.003667,
+            "ABSTAIN": 0
+          },
+          "topPolicy": "NEXUS_SELECTOR",
+          "topShare": 0.860167,
+          "topPolicyBestSetShare": 0.618167,
+          "collapsed": false,
+          "pathologicalCollapse": false
+        },
+        "PERFECT_SELECTOR_REFERENCE": {
+          "n": 6000,
+          "actionAccuracy": 0.359333,
+          "meanRegret": 62.326667,
+          "p95Regret": 178,
+          "normalizedRegret": 0.456896,
+          "catastrophicErrorRate": 0.239667,
+          "abstention": 0,
+          "selectionDistribution": {
+            "RESOURCE_PRESERVING_V1": 0.425167,
+            "NEXUS_SELECTOR": 0.570167,
+            "OBJECTIVE_TARGETING_V1": 0.002,
+            "THREAT_COVERING_V1": 0.002667,
+            "ABSTAIN": 0
+          },
+          "topPolicy": "NEXUS_SELECTOR",
+          "topShare": 0.570167,
+          "topPolicyBestSetShare": 0.618167,
+          "collapsed": false,
+          "pathologicalCollapse": false
+        }
+      },
+      "comparisons": {
+        "SIMPLE_CASCADE": {
+          "vsBestSingle": {
+            "n": 6000,
+            "delta": {
+              "accuracy": -0.001,
+              "regret": -0.241833,
+              "normalizedRegret": -0.002297,
+              "catastrophic": -0.003
+            },
+            "ci95": {
+              "accuracy": [
+                -0.003333,
+                0.001167
+              ],
+              "regret": [
+                -0.555333,
+                0.082
+              ],
+              "normalizedRegret": [
+                -0.004235,
+                -0.000171
+              ],
+              "catastrophic": [
+                -0.005167,
+                -0.000833
+              ]
+            },
+            "episodesImproved": 86,
+            "episodesWorsened": 40
+          },
+          "vsCascade": {
+            "n": 6000,
+            "delta": {
+              "accuracy": 0,
+              "regret": 0,
+              "normalizedRegret": 0,
+              "catastrophic": 0
+            },
+            "ci95": {
+              "accuracy": [
+                0,
+                0
+              ],
+              "regret": [
+                0,
+                0
+              ],
+              "normalizedRegret": [
+                0,
+                0
+              ],
+              "catastrophic": [
+                0,
+                0
+              ]
+            },
+            "episodesImproved": 0,
+            "episodesWorsened": 0
+          }
+        },
+        "ARGMAX_ROUTER": {
+          "vsBestSingle": {
+            "n": 6000,
+            "delta": {
+              "accuracy": -0.086,
+              "regret": -3.2535,
+              "normalizedRegret": -0.011755,
+              "catastrophic": -0.073167
+            },
+            "ci95": {
+              "accuracy": [
+                -0.099333,
+                -0.072333
+              ],
+              "regret": [
+                -5.124833,
+                -1.474
+              ],
+              "normalizedRegret": [
+                -0.024246,
+                -0.000071
+              ],
+              "catastrophic": [
+                -0.0865,
+                -0.060833
+              ]
+            },
+            "episodesImproved": 3428,
+            "episodesWorsened": 1480
+          },
+          "vsCascade": {
+            "n": 6000,
+            "delta": {
+              "accuracy": -0.085,
+              "regret": -3.011667,
+              "normalizedRegret": -0.009458,
+              "catastrophic": -0.070167
+            },
+            "ci95": {
+              "accuracy": [
+                -0.098667,
+                -0.071833
+              ],
+              "regret": [
+                -4.9435,
+                -1.174
+              ],
+              "normalizedRegret": [
+                -0.021769,
+                0.002738
+              ],
+              "catastrophic": [
+                -0.083,
+                -0.058833
+              ]
+            },
+            "episodesImproved": 3355,
+            "episodesWorsened": 1461
+          }
+        },
+        "EXPECTED_REGRET_ROUTER": {
+          "vsBestSingle": {
+            "n": 6000,
+            "delta": {
+              "accuracy": -0.085167,
+              "regret": -3.259667,
+              "normalizedRegret": -0.011945,
+              "catastrophic": -0.072667
+            },
+            "ci95": {
+              "accuracy": [
+                -0.099167,
+                -0.071833
+              ],
+              "regret": [
+                -5.118167,
+                -1.400167
+              ],
+              "normalizedRegret": [
+                -0.024474,
+                -0.000068
+              ],
+              "catastrophic": [
+                -0.085333,
+                -0.06
+              ]
+            },
+            "episodesImproved": 3401,
+            "episodesWorsened": 1470
+          },
+          "vsCascade": {
+            "n": 6000,
+            "delta": {
+              "accuracy": -0.084167,
+              "regret": -3.017833,
+              "normalizedRegret": -0.009648,
+              "catastrophic": -0.069667
+            },
+            "ci95": {
+              "accuracy": [
+                -0.097,
+                -0.070833
+              ],
+              "regret": [
+                -4.882667,
+                -1.11
+              ],
+              "normalizedRegret": [
+                -0.021789,
+                0.002864
+              ],
+              "catastrophic": [
+                -0.082,
+                -0.056
+              ]
+            },
+            "episodesImproved": 3327,
+            "episodesWorsened": 1447
+          }
+        },
+        "CLASS_WEIGHTED_ROUTER": {
+          "vsBestSingle": {
+            "n": 6000,
+            "delta": {
+              "accuracy": -0.085167,
+              "regret": -3.200333,
+              "normalizedRegret": -0.011683,
+              "catastrophic": -0.072667
+            },
+            "ci95": {
+              "accuracy": [
+                -0.099333,
+                -0.072333
+              ],
+              "regret": [
+                -4.942667,
+                -1.116833
+              ],
+              "normalizedRegret": [
+                -0.02283,
+                0.001542
+              ],
+              "catastrophic": [
+                -0.0855,
+                -0.059833
+              ]
+            },
+            "episodesImproved": 3414,
+            "episodesWorsened": 1479
+          },
+          "vsCascade": {
+            "n": 6000,
+            "delta": {
+              "accuracy": -0.084167,
+              "regret": -2.9585,
+              "normalizedRegret": -0.009387,
+              "catastrophic": -0.069667
+            },
+            "ci95": {
+              "accuracy": [
+                -0.097833,
+                -0.070667
+              ],
+              "regret": [
+                -4.721833,
+                -0.995833
+              ],
+              "normalizedRegret": [
+                -0.020624,
+                0.003333
+              ],
+              "catastrophic": [
+                -0.081833,
+                -0.0575
+              ]
+            },
+            "episodesImproved": 3328,
+            "episodesWorsened": 1439
+          }
+        },
+        "EXPECTED_VALUE_ROUTER": {
+          "vsBestSingle": {
+            "n": 6000,
+            "delta": {
+              "accuracy": -0.0675,
+              "regret": -3.062167,
+              "normalizedRegret": -0.013139,
+              "catastrophic": -0.061833
+            },
+            "ci95": {
+              "accuracy": [
+                -0.079833,
+                -0.054833
+              ],
+              "regret": [
+                -4.821,
+                -1.349
+              ],
+              "normalizedRegret": [
+                -0.024398,
+                -0.002601
+              ],
+              "catastrophic": [
+                -0.073167,
+                -0.051
+              ]
+            },
+            "episodesImproved": 2806,
+            "episodesWorsened": 1212
+          },
+          "vsCascade": {
+            "n": 6000,
+            "delta": {
+              "accuracy": -0.0665,
+              "regret": -2.820333,
+              "normalizedRegret": -0.010843,
+              "catastrophic": -0.058833
+            },
+            "ci95": {
+              "accuracy": [
+                -0.078,
+                -0.053
+              ],
+              "regret": [
+                -4.6745,
+                -1.150833
+              ],
+              "normalizedRegret": [
+                -0.022723,
+                -0.00041
+              ],
+              "catastrophic": [
+                -0.070667,
+                -0.048333
+              ]
+            },
+            "episodesImproved": 2735,
+            "episodesWorsened": 1185
+          }
+        },
+        "NEXUS_THRESHOLD_ROUTER": {
+          "vsBestSingle": {
+            "n": 6000,
+            "delta": {
+              "accuracy": -0.086,
+              "regret": -3.2535,
+              "normalizedRegret": -0.011755,
+              "catastrophic": -0.073167
+            },
+            "ci95": {
+              "accuracy": [
+                -0.099167,
+                -0.071833
+              ],
+              "regret": [
+                -5.331667,
+                -1.297167
+              ],
+              "normalizedRegret": [
+                -0.025394,
+                0.000873
+              ],
+              "catastrophic": [
+                -0.087333,
+                -0.059667
+              ]
+            },
+            "episodesImproved": 3428,
+            "episodesWorsened": 1480
+          },
+          "vsCascade": {
+            "n": 6000,
+            "delta": {
+              "accuracy": -0.085,
+              "regret": -3.011667,
+              "normalizedRegret": -0.009458,
+              "catastrophic": -0.070167
+            },
+            "ci95": {
+              "accuracy": [
+                -0.099,
+                -0.0715
+              ],
+              "regret": [
+                -4.880167,
+                -1.153667
+              ],
+              "normalizedRegret": [
+                -0.021588,
+                0.002467
+              ],
+              "catastrophic": [
+                -0.083833,
+                -0.057667
+              ]
+            },
+            "episodesImproved": 3355,
+            "episodesWorsened": 1461
+          }
+        }
+      },
+      "harm": {
+        "SIMPLE_CASCADE": {
+          "NEXUS_SELECTOR": {
+            "selected": 0,
+            "regretSavedWhenCorrectlySelected": 0,
+            "regretSavedByPartialImprovement": 0,
+            "regretAddedWhenIncorrectlySelected": 0,
+            "netValue": 0,
+            "falseSelectionRate": null,
+            "falseSelectionP95Added": null,
+            "episodesImproved": 0,
+            "episodesWorsened": 0
+          },
+          "OBJECTIVE_TARGETING_V1": {
+            "selected": 95,
+            "regretSavedWhenCorrectlySelected": 2614,
+            "regretSavedByPartialImprovement": 10,
+            "regretAddedWhenIncorrectlySelected": 3142,
+            "netValue": -518,
+            "falseSelectionRate": 0.368421,
+            "falseSelectionP95Added": 241,
+            "episodesImproved": 56,
+            "episodesWorsened": 34
+          },
+          "THREAT_COVERING_V1": {
+            "selected": 37,
+            "regretSavedWhenCorrectlySelected": 1775,
+            "regretSavedByPartialImprovement": 715,
+            "regretAddedWhenIncorrectlySelected": 521,
+            "netValue": 1969,
+            "falseSelectionRate": 0.378378,
+            "falseSelectionP95Added": 195,
+            "episodesImproved": 30,
+            "episodesWorsened": 6
+          }
+        },
+        "ARGMAX_ROUTER": {
+          "NEXUS_SELECTOR": {
+            "selected": 5161,
+            "regretSavedWhenCorrectlySelected": 148438,
+            "regretSavedByPartialImprovement": 877,
+            "regretAddedWhenIncorrectlySelected": 131128,
+            "netValue": 18187,
+            "falseSelectionRate": 0.287541,
+            "falseSelectionP95Added": 178,
+            "episodesImproved": 3404,
+            "episodesWorsened": 1473
+          },
+          "OBJECTIVE_TARGETING_V1": {
+            "selected": 10,
+            "regretSavedWhenCorrectlySelected": 480,
+            "regretSavedByPartialImprovement": 0,
+            "regretAddedWhenIncorrectlySelected": 340,
+            "netValue": 140,
+            "falseSelectionRate": 0.4,
+            "falseSelectionP95Added": 141,
+            "episodesImproved": 6,
+            "episodesWorsened": 4
+          },
+          "THREAT_COVERING_V1": {
+            "selected": 22,
+            "regretSavedWhenCorrectlySelected": 1193,
+            "regretSavedByPartialImprovement": 252,
+            "regretAddedWhenIncorrectlySelected": 251,
+            "netValue": 1194,
+            "falseSelectionRate": 0.272727,
+            "falseSelectionP95Added": 140,
+            "episodesImproved": 18,
+            "episodesWorsened": 3
+          }
+        },
+        "EXPECTED_REGRET_ROUTER": {
+          "NEXUS_SELECTOR": {
+            "selected": 5119,
+            "regretSavedWhenCorrectlySelected": 147473,
+            "regretSavedByPartialImprovement": 583,
+            "regretAddedWhenIncorrectlySelected": 130167,
+            "netValue": 17889,
+            "falseSelectionRate": 0.287165,
+            "falseSelectionP95Added": 178,
+            "episodesImproved": 3373,
+            "episodesWorsened": 1463
+          },
+          "OBJECTIVE_TARGETING_V1": {
+            "selected": 9,
+            "regretSavedWhenCorrectlySelected": 480,
+            "regretSavedByPartialImprovement": 0,
+            "regretAddedWhenIncorrectlySelected": 267,
+            "netValue": 213,
+            "falseSelectionRate": 0.333333,
+            "falseSelectionP95Added": 141,
+            "episodesImproved": 6,
+            "episodesWorsened": 3
+          },
+          "THREAT_COVERING_V1": {
+            "selected": 27,
+            "regretSavedWhenCorrectlySelected": 1381,
+            "regretSavedByPartialImprovement": 346,
+            "regretAddedWhenIncorrectlySelected": 271,
+            "netValue": 1456,
+            "falseSelectionRate": 0.296296,
+            "falseSelectionP95Added": 140,
+            "episodesImproved": 22,
+            "episodesWorsened": 4
+          }
+        },
+        "CLASS_WEIGHTED_ROUTER": {
+          "NEXUS_SELECTOR": {
+            "selected": 5053,
+            "regretSavedWhenCorrectlySelected": 145754,
+            "regretSavedByPartialImprovement": 0,
+            "regretAddedWhenIncorrectlySelected": 127942,
+            "netValue": 17812,
+            "falseSelectionRate": 0.284979,
+            "falseSelectionP95Added": 178,
+            "episodesImproved": 3331,
+            "episodesWorsened": 1440
+          },
+          "OBJECTIVE_TARGETING_V1": {
+            "selected": 88,
+            "regretSavedWhenCorrectlySelected": 2537,
+            "regretSavedByPartialImprovement": 10,
+            "regretAddedWhenIncorrectlySelected": 3126,
+            "netValue": -579,
+            "falseSelectionRate": 0.386364,
+            "falseSelectionP95Added": 241,
+            "episodesImproved": 53,
+            "episodesWorsened": 33
+          },
+          "THREAT_COVERING_V1": {
+            "selected": 37,
+            "regretSavedWhenCorrectlySelected": 1775,
+            "regretSavedByPartialImprovement": 715,
+            "regretAddedWhenIncorrectlySelected": 521,
+            "netValue": 1969,
+            "falseSelectionRate": 0.378378,
+            "falseSelectionP95Added": 195,
+            "episodesImproved": 30,
+            "episodesWorsened": 6
+          }
+        },
+        "EXPECTED_VALUE_ROUTER": {
+          "NEXUS_SELECTOR": {
+            "selected": 4134,
+            "regretSavedWhenCorrectlySelected": 120751,
+            "regretSavedByPartialImprovement": 150,
+            "regretAddedWhenIncorrectlySelected": 103767,
+            "netValue": 17134,
+            "falseSelectionRate": 0.285196,
+            "falseSelectionP95Added": 178,
+            "episodesImproved": 2729,
+            "episodesWorsened": 1178
+          },
+          "OBJECTIVE_TARGETING_V1": {
+            "selected": 88,
+            "regretSavedWhenCorrectlySelected": 2553,
+            "regretSavedByPartialImprovement": 46,
+            "regretAddedWhenIncorrectlySelected": 2738,
+            "netValue": -139,
+            "falseSelectionRate": 0.352273,
+            "falseSelectionP95Added": 241,
+            "episodesImproved": 55,
+            "episodesWorsened": 29
+          },
+          "THREAT_COVERING_V1": {
+            "selected": 28,
+            "regretSavedWhenCorrectlySelected": 1452,
+            "regretSavedByPartialImprovement": 252,
+            "regretAddedWhenIncorrectlySelected": 326,
+            "netValue": 1378,
+            "falseSelectionRate": 0.285714,
+            "falseSelectionP95Added": 140,
+            "episodesImproved": 22,
+            "episodesWorsened": 5
+          }
+        },
+        "NEXUS_THRESHOLD_ROUTER": {
+          "NEXUS_SELECTOR": {
+            "selected": 5161,
+            "regretSavedWhenCorrectlySelected": 148438,
+            "regretSavedByPartialImprovement": 877,
+            "regretAddedWhenIncorrectlySelected": 131128,
+            "netValue": 18187,
+            "falseSelectionRate": 0.287541,
+            "falseSelectionP95Added": 178,
+            "episodesImproved": 3404,
+            "episodesWorsened": 1473
+          },
+          "OBJECTIVE_TARGETING_V1": {
+            "selected": 10,
+            "regretSavedWhenCorrectlySelected": 480,
+            "regretSavedByPartialImprovement": 0,
+            "regretAddedWhenIncorrectlySelected": 340,
+            "netValue": 140,
+            "falseSelectionRate": 0.4,
+            "falseSelectionP95Added": 141,
+            "episodesImproved": 6,
+            "episodesWorsened": 4
+          },
+          "THREAT_COVERING_V1": {
+            "selected": 22,
+            "regretSavedWhenCorrectlySelected": 1193,
+            "regretSavedByPartialImprovement": 252,
+            "regretAddedWhenIncorrectlySelected": 251,
+            "netValue": 1194,
+            "falseSelectionRate": 0.272727,
+            "falseSelectionP95Added": 140,
+            "episodesImproved": 18,
+            "episodesWorsened": 3
+          }
+        }
+      },
+      "orientationSlices": {
+        "MA": {
+          "BEST_SINGLE_POLICY": {
+            "n": 729,
+            "actionAccuracy": 0.057613,
+            "meanRegret": 114.196159
+          },
+          "SIMPLE_CASCADE": {
+            "n": 729,
+            "actionAccuracy": 0.061728,
+            "meanRegret": 113.311385
+          },
+          "ARGMAX_ROUTER": {
+            "n": 729,
+            "actionAccuracy": 0.127572,
+            "meanRegret": 92.475995
+          },
+          "EXPECTED_REGRET_ROUTER": {
+            "n": 729,
+            "actionAccuracy": 0.127572,
+            "meanRegret": 92.371742
+          },
+          "CLASS_WEIGHTED_ROUTER": {
+            "n": 729,
+            "actionAccuracy": 0.127572,
+            "meanRegret": 92.392318
+          },
+          "EXPECTED_VALUE_ROUTER": {
+            "n": 729,
+            "actionAccuracy": 0.116598,
+            "meanRegret": 95.834019
+          },
+          "NEXUS_THRESHOLD_ROUTER": {
+            "n": 729,
+            "actionAccuracy": 0.127572,
+            "meanRegret": 92.475995
+          }
+        },
+        "MD": {
+          "BEST_SINGLE_POLICY": {
+            "n": 688,
+            "actionAccuracy": 0.084302,
+            "meanRegret": 111.034884
+          },
+          "SIMPLE_CASCADE": {
+            "n": 688,
+            "actionAccuracy": 0.088663,
+            "meanRegret": 110.127907
+          },
+          "ARGMAX_ROUTER": {
+            "n": 688,
+            "actionAccuracy": 0.140988,
+            "meanRegret": 89.530523
+          },
+          "EXPECTED_REGRET_ROUTER": {
+            "n": 688,
+            "actionAccuracy": 0.139535,
+            "meanRegret": 89.805233
+          },
+          "CLASS_WEIGHTED_ROUTER": {
+            "n": 688,
+            "actionAccuracy": 0.139535,
+            "meanRegret": 89.81686
+          },
+          "EXPECTED_VALUE_ROUTER": {
+            "n": 688,
+            "actionAccuracy": 0.12936,
+            "meanRegret": 93.944767
+          },
+          "NEXUS_THRESHOLD_ROUTER": {
+            "n": 688,
+            "actionAccuracy": 0.140988,
+            "meanRegret": 89.530523
+          }
+        },
+        "MX": {
+          "BEST_SINGLE_POLICY": {
+            "n": 764,
+            "actionAccuracy": 0.145288,
+            "meanRegret": 96.790576
+          },
+          "SIMPLE_CASCADE": {
+            "n": 764,
+            "actionAccuracy": 0.145288,
+            "meanRegret": 96.600785
+          },
+          "ARGMAX_ROUTER": {
+            "n": 764,
+            "actionAccuracy": 0.16623,
+            "meanRegret": 86.022251
+          },
+          "EXPECTED_REGRET_ROUTER": {
+            "n": 764,
+            "actionAccuracy": 0.167539,
+            "meanRegret": 86.096859
+          },
+          "CLASS_WEIGHTED_ROUTER": {
+            "n": 764,
+            "actionAccuracy": 0.16623,
+            "meanRegret": 86.094241
+          },
+          "EXPECTED_VALUE_ROUTER": {
+            "n": 764,
+            "actionAccuracy": 0.170157,
+            "meanRegret": 86.878272
+          },
+          "NEXUS_THRESHOLD_ROUTER": {
+            "n": 764,
+            "actionAccuracy": 0.16623,
+            "meanRegret": 86.022251
+          }
+        },
+        "MY": {
+          "BEST_SINGLE_POLICY": {
+            "n": 729,
+            "actionAccuracy": 0.740741,
+            "meanRegret": 27.241427
+          },
+          "SIMPLE_CASCADE": {
+            "n": 729,
+            "actionAccuracy": 0.735254,
+            "meanRegret": 27.600823
+          },
+          "ARGMAX_ROUTER": {
+            "n": 729,
+            "actionAccuracy": 0.240055,
+            "meanRegret": 75.42524
+          },
+          "EXPECTED_REGRET_ROUTER": {
+            "n": 729,
+            "actionAccuracy": 0.241427,
+            "meanRegret": 75.352538
+          },
+          "CLASS_WEIGHTED_ROUTER": {
+            "n": 729,
+            "actionAccuracy": 0.240055,
+            "meanRegret": 75.51166
+          },
+          "EXPECTED_VALUE_ROUTER": {
+            "n": 729,
+            "actionAccuracy": 0.322359,
+            "meanRegret": 67.316872
+          },
+          "NEXUS_THRESHOLD_ROUTER": {
+            "n": 729,
+            "actionAccuracy": 0.240055,
+            "meanRegret": 75.42524
+          }
+        },
+        "R0": {
+          "BEST_SINGLE_POLICY": {
+            "n": 804,
+            "actionAccuracy": 0.702736,
+            "meanRegret": 29.983831
+          },
+          "SIMPLE_CASCADE": {
+            "n": 804,
+            "actionAccuracy": 0.696517,
+            "meanRegret": 30.567164
+          },
+          "ARGMAX_ROUTER": {
+            "n": 804,
+            "actionAccuracy": 0.242537,
+            "meanRegret": 73.526119
+          },
+          "EXPECTED_REGRET_ROUTER": {
+            "n": 804,
+            "actionAccuracy": 0.247512,
+            "meanRegret": 73.177861
+          },
+          "CLASS_WEIGHTED_ROUTER": {
+            "n": 804,
+            "actionAccuracy": 0.246269,
+            "meanRegret": 73.548507
+          },
+          "EXPECTED_VALUE_ROUTER": {
+            "n": 804,
+            "actionAccuracy": 0.345771,
+            "meanRegret": 64.514925
+          },
+          "NEXUS_THRESHOLD_ROUTER": {
+            "n": 804,
+            "actionAccuracy": 0.242537,
+            "meanRegret": 73.526119
+          }
+        },
+        "R180": {
+          "BEST_SINGLE_POLICY": {
+            "n": 762,
+            "actionAccuracy": 0.141732,
+            "meanRegret": 99.290026
+          },
+          "SIMPLE_CASCADE": {
+            "n": 762,
+            "actionAccuracy": 0.139108,
+            "meanRegret": 99.545932
+          },
+          "ARGMAX_ROUTER": {
+            "n": 762,
+            "actionAccuracy": 0.141732,
+            "meanRegret": 85.503937
+          },
+          "EXPECTED_REGRET_ROUTER": {
+            "n": 762,
+            "actionAccuracy": 0.141732,
+            "meanRegret": 85.582677
+          },
+          "CLASS_WEIGHTED_ROUTER": {
+            "n": 762,
+            "actionAccuracy": 0.144357,
+            "meanRegret": 85.519685
+          },
+          "EXPECTED_VALUE_ROUTER": {
+            "n": 762,
+            "actionAccuracy": 0.141732,
+            "meanRegret": 88.051181
+          },
+          "NEXUS_THRESHOLD_ROUTER": {
+            "n": 762,
+            "actionAccuracy": 0.141732,
+            "meanRegret": 85.503937
+          }
+        },
+        "R270": {
+          "BEST_SINGLE_POLICY": {
+            "n": 742,
+            "actionAccuracy": 0.045822,
+            "meanRegret": 116.122642
+          },
+          "SIMPLE_CASCADE": {
+            "n": 742,
+            "actionAccuracy": 0.043127,
+            "meanRegret": 115.772237
+          },
+          "ARGMAX_ROUTER": {
+            "n": 742,
+            "actionAccuracy": 0.130728,
+            "meanRegret": 87.742588
+          },
+          "EXPECTED_REGRET_ROUTER": {
+            "n": 742,
+            "actionAccuracy": 0.130728,
+            "meanRegret": 87.796496
+          },
+          "CLASS_WEIGHTED_ROUTER": {
+            "n": 742,
+            "actionAccuracy": 0.130728,
+            "meanRegret": 87.743935
+          },
+          "EXPECTED_VALUE_ROUTER": {
+            "n": 742,
+            "actionAccuracy": 0.115903,
+            "meanRegret": 92.215633
+          },
+          "NEXUS_THRESHOLD_ROUTER": {
+            "n": 742,
+            "actionAccuracy": 0.130728,
+            "meanRegret": 87.742588
+          }
+        },
+        "R90": {
+          "BEST_SINGLE_POLICY": {
+            "n": 782,
+            "actionAccuracy": 0.085678,
+            "meanRegret": 111.579284
+          },
+          "SIMPLE_CASCADE": {
+            "n": 782,
+            "actionAccuracy": 0.086957,
+            "meanRegret": 110.680307
+          },
+          "ARGMAX_ROUTER": {
+            "n": 782,
+            "actionAccuracy": 0.149616,
+            "meanRegret": 86.980818
+          },
+          "EXPECTED_REGRET_ROUTER": {
+            "n": 782,
+            "actionAccuracy": 0.149616,
+            "meanRegret": 87.014066
+          },
+          "CLASS_WEIGHTED_ROUTER": {
+            "n": 782,
+            "actionAccuracy": 0.150895,
+            "meanRegret": 87.024297
+          },
+          "EXPECTED_VALUE_ROUTER": {
+            "n": 782,
+            "actionAccuracy": 0.139386,
+            "meanRegret": 90.695652
+          },
+          "NEXUS_THRESHOLD_ROUTER": {
+            "n": 782,
+            "actionAccuracy": 0.149616,
+            "meanRegret": 86.980818
+          }
+        }
+      },
+      "curriculumSlices": {
+        "6": {
+          "BEST_SINGLE_POLICY": {
+            "n": 3173,
+            "actionAccuracy": 0.24803,
+            "meanRegret": 87.001261
+          },
+          "SIMPLE_CASCADE": {
+            "n": 3173,
+            "actionAccuracy": 0.24803,
+            "meanRegret": 86.608572
+          },
+          "ARGMAX_ROUTER": {
+            "n": 3173,
+            "actionAccuracy": 0.176174,
+            "meanRegret": 81.836748
+          },
+          "EXPECTED_REGRET_ROUTER": {
+            "n": 3173,
+            "actionAccuracy": 0.177435,
+            "meanRegret": 81.924992
+          },
+          "CLASS_WEIGHTED_ROUTER": {
+            "n": 3173,
+            "actionAccuracy": 0.178065,
+            "meanRegret": 81.851875
+          },
+          "EXPECTED_VALUE_ROUTER": {
+            "n": 3173,
+            "actionAccuracy": 0.193508,
+            "meanRegret": 82.212732
+          },
+          "NEXUS_THRESHOLD_ROUTER": {
+            "n": 3173,
+            "actionAccuracy": 0.176174,
+            "meanRegret": 81.836748
+          }
+        },
+        "7": {
+          "BEST_SINGLE_POLICY": {
+            "n": 2827,
+            "actionAccuracy": 0.261054,
+            "meanRegret": 88.637071
+          },
+          "SIMPLE_CASCADE": {
+            "n": 2827,
+            "actionAccuracy": 0.258932,
+            "meanRegret": 88.564556
+          },
+          "ARGMAX_ROUTER": {
+            "n": 2827,
+            "actionAccuracy": 0.159179,
+            "meanRegret": 87.528475
+          },
+          "EXPECTED_REGRET_ROUTER": {
+            "n": 2827,
+            "actionAccuracy": 0.159533,
+            "meanRegret": 87.416342
+          },
+          "CLASS_WEIGHTED_ROUTER": {
+            "n": 2827,
+            "actionAccuracy": 0.158826,
+            "meanRegret": 87.624337
+          },
+          "EXPECTED_VALUE_ROUTER": {
+            "n": 2827,
+            "actionAccuracy": 0.178988,
+            "meanRegret": 87.512557
+          },
+          "NEXUS_THRESHOLD_ROUTER": {
+            "n": 2827,
+            "actionAccuracy": 0.159179,
+            "meanRegret": 87.528475
+          }
+        }
+      }
+    }
+  },
+  "symmetry": {
+    "HOLDOUT": {
+      "BEST_SINGLE_POLICY": {
+        "sampled": 64,
+        "D4DecisionEquivariance": 1,
+        "D4ActionEquivariance": 0.19375,
+        "D4ActionAccuracyDelta": -0.034375,
+        "idPermutationDecisionAgreement": 1,
+        "idPermutationActionAgreement": 0.185547,
+        "idPermutationAccuracyDelta": -0.074219,
+        "candidateOrderDecisionAgreement": 1,
+        "coreD4Invariant": 1
+      },
+      "SIMPLE_CASCADE": {
+        "sampled": 64,
+        "D4DecisionEquivariance": 1,
+        "D4ActionEquivariance": 0.25,
+        "D4ActionAccuracyDelta": -0.025,
+        "idPermutationDecisionAgreement": 1,
+        "idPermutationActionAgreement": 0.240234,
+        "idPermutationAccuracyDelta": -0.066406,
+        "candidateOrderDecisionAgreement": 1,
+        "coreD4Invariant": 1
+      },
+      "ARGMAX_ROUTER": {
+        "sampled": 64,
+        "D4DecisionEquivariance": 1,
+        "D4ActionEquivariance": 0.884375,
+        "D4ActionAccuracyDelta": 0.00625,
+        "idPermutationDecisionAgreement": 1,
+        "idPermutationActionAgreement": 0.730469,
+        "idPermutationAccuracyDelta": -0.035156,
+        "candidateOrderDecisionAgreement": 1,
+        "coreD4Invariant": 1
+      },
+      "EXPECTED_REGRET_ROUTER": {
+        "sampled": 64,
+        "D4DecisionEquivariance": 1,
+        "D4ActionEquivariance": 0.825,
+        "D4ActionAccuracyDelta": 0.0125,
+        "idPermutationDecisionAgreement": 1,
+        "idPermutationActionAgreement": 0.6875,
+        "idPermutationAccuracyDelta": -0.023437,
+        "candidateOrderDecisionAgreement": 1,
+        "coreD4Invariant": 1
+      },
+      "CLASS_WEIGHTED_ROUTER": {
+        "sampled": 64,
+        "D4DecisionEquivariance": 1,
+        "D4ActionEquivariance": 0.853125,
+        "D4ActionAccuracyDelta": 0.0125,
+        "idPermutationDecisionAgreement": 1,
+        "idPermutationActionAgreement": 0.720703,
+        "idPermutationAccuracyDelta": -0.041016,
+        "candidateOrderDecisionAgreement": 1,
+        "coreD4Invariant": 1
+      },
+      "EXPECTED_VALUE_ROUTER": {
+        "sampled": 64,
+        "D4DecisionEquivariance": 1,
+        "D4ActionEquivariance": 0.346875,
+        "D4ActionAccuracyDelta": -0.0125,
+        "idPermutationDecisionAgreement": 1,
+        "idPermutationActionAgreement": 0.308594,
+        "idPermutationAccuracyDelta": -0.058594,
+        "candidateOrderDecisionAgreement": 1,
+        "coreD4Invariant": 1
+      },
+      "NEXUS_THRESHOLD_ROUTER": {
+        "sampled": 64,
+        "D4DecisionEquivariance": 1,
+        "D4ActionEquivariance": 0.884375,
+        "D4ActionAccuracyDelta": 0.00625,
+        "idPermutationDecisionAgreement": 1,
+        "idPermutationActionAgreement": 0.730469,
+        "idPermutationAccuracyDelta": -0.035156,
+        "candidateOrderDecisionAgreement": 1,
+        "coreD4Invariant": 1
+      }
+    },
+    "OOD": {
+      "BEST_SINGLE_POLICY": {
+        "sampled": 64,
+        "D4DecisionEquivariance": 1,
+        "D4ActionEquivariance": 0.196875,
+        "D4ActionAccuracyDelta": 0.009375,
+        "idPermutationDecisionAgreement": 1,
+        "idPermutationActionAgreement": 0.199219,
+        "idPermutationAccuracyDelta": -0.042969,
+        "candidateOrderDecisionAgreement": 1,
+        "coreD4Invariant": 1
+      },
+      "SIMPLE_CASCADE": {
+        "sampled": 64,
+        "D4DecisionEquivariance": 1,
+        "D4ActionEquivariance": 0.209375,
+        "D4ActionAccuracyDelta": 0.00625,
+        "idPermutationDecisionAgreement": 1,
+        "idPermutationActionAgreement": 0.210938,
+        "idPermutationAccuracyDelta": -0.044922,
+        "candidateOrderDecisionAgreement": 1,
+        "coreD4Invariant": 1
+      },
+      "ARGMAX_ROUTER": {
+        "sampled": 64,
+        "D4DecisionEquivariance": 1,
+        "D4ActionEquivariance": 0.903125,
+        "D4ActionAccuracyDelta": 0.00625,
+        "idPermutationDecisionAgreement": 1,
+        "idPermutationActionAgreement": 0.736328,
+        "idPermutationAccuracyDelta": 0.003906,
+        "candidateOrderDecisionAgreement": 1,
+        "coreD4Invariant": 1
+      },
+      "EXPECTED_REGRET_ROUTER": {
+        "sampled": 64,
+        "D4DecisionEquivariance": 1,
+        "D4ActionEquivariance": 0.903125,
+        "D4ActionAccuracyDelta": 0.00625,
+        "idPermutationDecisionAgreement": 1,
+        "idPermutationActionAgreement": 0.736328,
+        "idPermutationAccuracyDelta": 0.003906,
+        "candidateOrderDecisionAgreement": 1,
+        "coreD4Invariant": 1
+      },
+      "CLASS_WEIGHTED_ROUTER": {
+        "sampled": 64,
+        "D4DecisionEquivariance": 1,
+        "D4ActionEquivariance": 0.903125,
+        "D4ActionAccuracyDelta": 0.00625,
+        "idPermutationDecisionAgreement": 1,
+        "idPermutationActionAgreement": 0.748047,
+        "idPermutationAccuracyDelta": 0.003906,
+        "candidateOrderDecisionAgreement": 1,
+        "coreD4Invariant": 1
+      },
+      "EXPECTED_VALUE_ROUTER": {
+        "sampled": 64,
+        "D4DecisionEquivariance": 1,
+        "D4ActionEquivariance": 0.78125,
+        "D4ActionAccuracyDelta": -0.028125,
+        "idPermutationDecisionAgreement": 1,
+        "idPermutationActionAgreement": 0.640625,
+        "idPermutationAccuracyDelta": -0.041016,
+        "candidateOrderDecisionAgreement": 1,
+        "coreD4Invariant": 1
+      },
+      "NEXUS_THRESHOLD_ROUTER": {
+        "sampled": 64,
+        "D4DecisionEquivariance": 1,
+        "D4ActionEquivariance": 0.903125,
+        "D4ActionAccuracyDelta": 0.00625,
+        "idPermutationDecisionAgreement": 1,
+        "idPermutationActionAgreement": 0.736328,
+        "idPermutationAccuracyDelta": 0.003906,
+        "candidateOrderDecisionAgreement": 1,
+        "coreD4Invariant": 1
+      }
+    }
+  },
+  "orientationGap": {
+    "HOLDOUT": {
+      "BEST_SINGLE_POLICY": 0.403991,
+      "SIMPLE_CASCADE": 0.389458,
+      "ARGMAX_ROUTER": 0.081435,
+      "EXPECTED_REGRET_ROUTER": 0.094175,
+      "CLASS_WEIGHTED_ROUTER": 0.089715,
+      "EXPECTED_VALUE_ROUTER": 0.364715,
+      "NEXUS_THRESHOLD_ROUTER": 0.081435
+    },
+    "OOD": {
+      "BEST_SINGLE_POLICY": 0.694919,
+      "SIMPLE_CASCADE": 0.692127,
+      "ARGMAX_ROUTER": 0.114965,
+      "EXPECTED_REGRET_ROUTER": 0.11994,
+      "CLASS_WEIGHTED_ROUTER": 0.118697,
+      "EXPECTED_VALUE_ROUTER": 0.229868,
+      "NEXUS_THRESHOLD_ROUTER": 0.114965
+    }
+  },
+  "judgments": {
+    "EXPECTED_VALUE_ROUTER": {
+      "holdoutVsBest": {
+        "accPositive": false,
+        "regretPositive": true,
+        "material": true,
+        "tradeoff": false,
+        "catastrophicWorse": false
+      },
+      "holdoutVsCascade": {
+        "accPositive": false,
+        "regretPositive": true,
+        "material": true,
+        "tradeoff": false,
+        "catastrophicWorse": false
+      },
+      "oodVsBest": {
+        "accPositive": false,
+        "regretPositive": false,
+        "material": false,
+        "tradeoff": true,
+        "catastrophicWorse": false
+      },
+      "oodVsCascade": {
+        "accPositive": false,
+        "regretPositive": false,
+        "material": false,
+        "tradeoff": true,
+        "catastrophicWorse": false
+      },
+      "ood": "REVERSES",
+      "collapsedHoldout": false,
+      "collapsedOOD": false
+    },
+    "ARGMAX_ROUTER": {
+      "holdoutVsBest": {
+        "accPositive": false,
+        "regretPositive": false,
+        "material": false,
+        "tradeoff": true,
+        "catastrophicWorse": false
+      },
+      "holdoutVsCascade": {
+        "accPositive": false,
+        "regretPositive": false,
+        "material": false,
+        "tradeoff": false,
+        "catastrophicWorse": false
+      },
+      "oodVsBest": {
+        "accPositive": false,
+        "regretPositive": false,
+        "material": false,
+        "tradeoff": true,
+        "catastrophicWorse": false
+      },
+      "oodVsCascade": {
+        "accPositive": false,
+        "regretPositive": false,
+        "material": false,
+        "tradeoff": false,
+        "catastrophicWorse": false
+      },
+      "ood": "REVERSES",
+      "collapsedHoldout": false,
+      "collapsedOOD": false
+    },
+    "NEXUS_THRESHOLD_ROUTER": {
+      "holdoutVsBest": {
+        "accPositive": false,
+        "regretPositive": false,
+        "material": false,
+        "tradeoff": true,
+        "catastrophicWorse": false
+      },
+      "holdoutVsCascade": {
+        "accPositive": false,
+        "regretPositive": false,
+        "material": false,
+        "tradeoff": false,
+        "catastrophicWorse": false
+      },
+      "oodVsBest": {
+        "accPositive": false,
+        "regretPositive": false,
+        "material": false,
+        "tradeoff": false,
+        "catastrophicWorse": false
+      },
+      "oodVsCascade": {
+        "accPositive": false,
+        "regretPositive": false,
+        "material": false,
+        "tradeoff": false,
+        "catastrophicWorse": false
+      },
+      "ood": "REVERSES",
+      "collapsedHoldout": false,
+      "collapsedOOD": false
+    },
+    "EXPECTED_REGRET_ROUTER": {
+      "holdoutVsBest": {
+        "accPositive": false,
+        "regretPositive": false,
+        "material": false,
+        "tradeoff": true,
+        "catastrophicWorse": false
+      },
+      "holdoutVsCascade": {
+        "accPositive": false,
+        "regretPositive": false,
+        "material": false,
+        "tradeoff": false,
+        "catastrophicWorse": false
+      },
+      "oodVsBest": {
+        "accPositive": false,
+        "regretPositive": false,
+        "material": false,
+        "tradeoff": true,
+        "catastrophicWorse": false
+      },
+      "oodVsCascade": {
+        "accPositive": false,
+        "regretPositive": false,
+        "material": false,
+        "tradeoff": false,
+        "catastrophicWorse": false
+      },
+      "ood": "REVERSES",
+      "collapsedHoldout": false,
+      "collapsedOOD": false
+    },
+    "CLASS_WEIGHTED_ROUTER": {
+      "holdoutVsBest": {
+        "accPositive": false,
+        "regretPositive": false,
+        "material": false,
+        "tradeoff": true,
+        "catastrophicWorse": false
+      },
+      "holdoutVsCascade": {
+        "accPositive": false,
+        "regretPositive": false,
+        "material": false,
+        "tradeoff": false,
+        "catastrophicWorse": false
+      },
+      "oodVsBest": {
+        "accPositive": false,
+        "regretPositive": false,
+        "material": false,
+        "tradeoff": false,
+        "catastrophicWorse": false
+      },
+      "oodVsCascade": {
+        "accPositive": false,
+        "regretPositive": false,
+        "material": false,
+        "tradeoff": false,
+        "catastrophicWorse": false
+      },
+      "ood": "REVERSES",
+      "collapsedHoldout": false,
+      "collapsedOOD": false
+    }
+  },
+  "historicalClaims": {
+    "expectedRegretAdvantage": "PARTIALLY_SURVIVES",
+    "classWeightingEffect": "INVALIDATED",
+    "nexusCapture": "SURVIVES",
+    "falseSelectionHarm": "PARTIALLY_SURVIVES",
+    "resourceBaselineDominance": "INVALIDATED",
+    "oodSurvival": "INVALIDATED",
+    "materiality": "SURVIVES",
+    "collapse": "INVALIDATED"
+  },
+  "diagnostics": {
+    "W_ENRICHED_ROUTER": {
+      "status": "NOT_APPLICABLE",
+      "reason": "W-SYM valid risk signal is uncalibrated and OOD-unstable; fitting an enriched router here would add a new routing intervention outside decision-rule requalification"
+    }
+  },
+  "conclusion": {
+    "primary": "DECISION_RULE_VALUE_NOT_MATERIAL",
+    "D_REQUALIFIED": true,
+    "DECISION_RULE_VALUE_MEASURED": true,
+    "DECISION_RULE_VALUE_MATERIAL": false,
+    "DECISION_RULE_ACCURACY_POSITIVE": false,
+    "DECISION_RULE_REGRET_POSITIVE": true,
+    "DECISION_RULE_OOD_STABLE": false,
+    "DECISION_RULE_COLLAPSES": false,
+    "FALSE_SELECTION_HARM_ACCEPTABLE": false,
+    "NUISANCE_VALUE_STABLE": false,
+    "POLICY_SET_COMPETENT": false,
+    "DECISION_RULE_LOGIC_USEFUL_FOR_3G": false,
+    "ROUTER_2_0_JUSTIFIED": false,
+    "READY_FOR_3F_CONFIRMATORY_RERUN": true,
+    "READY_FOR_3F_FREEZE": false,
+    "READY_FOR_STAGE3G": false
+  },
+  "integrity": {
+    "planBound": true,
+    "freezeReproduced": true,
+    "freezeHashBound": true,
+    "seedBound": true,
+    "policyBound": true,
+    "decisionRuleBound": true,
+    "contentBound": true,
+    "countBound": true,
+    "seedDisjoint": true,
+    "usedSeedsBound": true,
+    "priorDisjoint": true,
+    "internalDisjoint": true,
+    "freshGate": true,
+    "generatedAfterFreeze": true,
+    "predecessorBound": true,
+    "stage3f6ErratumPresent": true,
+    "modelBound": true,
+    "allAvailable": true,
+    "benchmarkSymmetric": true,
+    "benchmarkBound": true,
+    "R0": true
+  },
+  "tests": {
+    "passed": true,
+    "count": 3
+  },
+  "authority": {
+    "tier": "R0",
+    "canDispatch": false,
+    "canMutateLiveWorld": false,
+    "onlineLearningEnabled": false,
+    "promotedToLiveRuntime": false
+  },
+  "sourceHashes": {
+    "scripts/stage3f6dsym-analysis-plan.mjs": "351991a4c4678ad053a70aab7a5a71062d786a60cfaa59e0791d307aeb31f6dd",
+    "scripts/stage3f6dsym-freeze.mjs": "fa1a55b74b5b183d96069c9b52ab135846a95a54c6d8cef1b2d1c39b855754d1",
+    "scripts/generate-stage3f6dsym-confirmatory.mjs": "4569349d4e675d9f55f515f1d73d9900c757061d2b9c9da3f59f8d6a3c6fe533",
+    "scripts/certify-stage3f6dsym-decision-rule.mjs": "8e087e651c2dd4c60862da23f70483730760033964682d05377b5c70f92188d7",
+    "tests/stage3f6dsym-decision-rule.test.js": "37f6c08155a58b7e25942d256ebc248fa47fe5f868aed2ce2682976e97d37f7d"
+  },
+  "certificationHash": "65e507b76bbfb9b3a4ae867f73c9d2bc056575ef9b7743359bcfc28b2bb90680"
+}

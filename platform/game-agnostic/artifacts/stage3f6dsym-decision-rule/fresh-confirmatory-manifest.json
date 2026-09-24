@@ -1,0 +1,102 @@
+{
+  "schemaVersion": 1,
+  "stage": "STAGE_3F_6_D_SYM",
+  "planHash": "1c90d172408faf47b4ff98014c1b8a4fe57bb5a26e6ffcfc6d7db71e7125db1d",
+  "analysisFreezeHash": "4d7313b6151e329c2dc454ad72edd7fceca6a0557901fb750f8746b1400ead47",
+  "seedPlanHash": "de039fd8b5f929860b649bdbe46ef28f2e27cc36a2f7f89b42724af2fdd64f20",
+  "headlinePolicySetHash": "34f0f3ddf7a3a508061e5c6fb716e67e28cc4919c70f8a724beb11e990d60c44",
+  "decisionRuleHash": "e76eca19a2c136082394087a8e492b13bafc76467ec116027d1756bd8c1ebbb2",
+  "generatedAtHead": "226ea9f2a3c97f52775391fc5dfa35d6105c817f",
+  "benchmark": {
+    "BENCHMARK_ID": "FORGE_SYMMETRIC_V2",
+    "GENERATOR_ID": "FORGE_SCENARIO_GENERATOR_SYMMETRIC_V1",
+    "ORACLE_ID": "FORGE_COUNTERFACTUAL_SYMMETRIC_V1",
+    "SURFACE_ID": "FORGE_ACTION_SURFACE_SYMMETRIC_V1",
+    "ORIENTATION_ID": "FORGE_ORIENTATION_SYMMETRIC_V1",
+    "LABEL_ID": "FORGE_GREEDY_SAFE_SYMMETRIC_V1",
+    "GENERATOR_CONTRACT_HASH": "92be1b7d3255a7e373a06c20d8e68abf533b52e234a131df31bf116ff64b0d74",
+    "ORACLE_CONTRACT_HASH": "eb4aedab02c2e9fdf0a2e90e34545ead832b0d327a101a62396e2c698090bf24",
+    "SURFACE_CONTRACT_HASH": "e083913e8506e2c5994ac829f6a84a30fa47b5d392e90741fdaf78f736a81e9c",
+    "ORIENTATION_CONTRACT_HASH": "bd9c83a316bd14371a6fc65dcfc4a4d99a71eeedd698a8d3e4d4d9b96cdff4b7",
+    "featureContract": "SENTINEL_DEPLOYABLE_FEATURE_CONTRACT_V1",
+    "featureCount": 30,
+    "stage3f6p1cCertification": "81586cbe068885596d7f8b5c78d6f6d5d72e53425289f850386e0c43ddff702d"
+  },
+  "priorLineage": [
+    {
+      "name": "P.1D",
+      "rows": 20000,
+      "verified": true
+    },
+    {
+      "name": "T-SYM",
+      "rows": 12000,
+      "verified": true
+    },
+    {
+      "name": "P.1A-SYM",
+      "rows": 12000,
+      "verified": true
+    },
+    {
+      "name": "P.1-SYM",
+      "rows": 12000,
+      "verified": true
+    },
+    {
+      "name": "W-SYM",
+      "rows": 12000,
+      "verified": true,
+      "contentHash": "2c8f73fbd550460e82691616fdddac7d36d09f9c339a19679b2c9cef1f40f14d"
+    }
+  ],
+  "seedAudit": {
+    "declared": {
+      "HOLDOUT": [
+        3023
+      ],
+      "OOD": [
+        3033
+      ]
+    },
+    "priorSeedOverlap": [],
+    "priorRowOverlap": [],
+    "partitionOverlap": [],
+    "duplicateCount": 0
+  },
+  "stats": {
+    "HOLDOUT": {
+      "attempted": 9082,
+      "admitted": 6000,
+      "rejected": {
+        "TOPOLOGY_HASH_CLAIMED": 2824,
+        "TREE_BRANCHES_ACYCLIC": 110,
+        "ISLANDS": 59,
+        "LAYERS": 61,
+        "CONTESTED_BOTTLENECK": 14,
+        "BRIDGE_CUT_EXISTS": 14
+      },
+      "seedsUsed": [
+        3023
+      ],
+      "combinationsAvailable": 21600
+    },
+    "OOD": {
+      "attempted": 6690,
+      "admitted": 6000,
+      "rejected": {
+        "TOPOLOGY_HASH_CLAIMED": 631,
+        "TREE_BRANCHES_ACYCLIC": 31,
+        "LAYERS": 16,
+        "BRIDGE_CUT_EXISTS": 12
+      },
+      "seedsUsed": [
+        3033
+      ],
+      "combinationsAvailable": 7200
+    }
+  },
+  "rows": 12000,
+  "contentHash": "8aa1672a1acdfe62251458b8e986b2f79b4f0eb1cc794596315f92ba7ccbac9c",
+  "generator": "scripts/generate-stage3f6dsym-confirmatory.mjs"
+}
