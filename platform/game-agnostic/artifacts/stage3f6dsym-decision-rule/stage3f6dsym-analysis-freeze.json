@@ -1,0 +1,700 @@
+{
+  "schemaVersion": 1,
+  "stage": "STAGE_3F_6_D_SYM_DECISION_RULE_SYMMETRIC_REQUALIFICATION",
+  "planHash": "1c90d172408faf47b4ff98014c1b8a4fe57bb5a26e6ffcfc6d7db71e7125db1d",
+  "seedPlanHash": "de039fd8b5f929860b649bdbe46ef28f2e27cc36a2f7f89b42724af2fdd64f20",
+  "headlinePolicySetHash": "34f0f3ddf7a3a508061e5c6fb716e67e28cc4919c70f8a724beb11e990d60c44",
+  "diagnosticPolicySetHash": "d9495b444280e65107c63cffb15be85386e80550bcaa4921a71892dc6bc10f81",
+  "decisionRuleHash": "e76eca19a2c136082394087a8e492b13bafc76467ec116027d1756bd8c1ebbb2",
+  "corpusHash": "4de383eb0c6e9836706e87c6626de53ccb54853fb527f368cfaf599617e6c75e",
+  "devN": 4000,
+  "calN": 4000,
+  "model": {
+    "routerHash": "e9c123db9c0ac2dbada7b01bebe2035a3c0b4e39b8f013e754c8f2bb99208d88",
+    "featureKeys": [
+      "actionSurface.actionTypeEntropy",
+      "actionSurface.distinctMoveDirections",
+      "actionSurface.legalActionCount",
+      "actionSurface.moveCount",
+      "context.decisionHorizonRemaining",
+      "context.entityCount",
+      "context.objectiveCount",
+      "context.relationCount",
+      "context.tickProgress",
+      "relational.abstains",
+      "relational.actionTargetedEntityCount",
+      "relational.bottleneckCount",
+      "relational.confidence",
+      "relational.criticalDependencyCount",
+      "relational.cycleDetected",
+      "relational.cycleNodeCount",
+      "relational.edgeCount",
+      "relational.graphDensity",
+      "relational.hostileEntityCount",
+      "relational.isolatedEntityCount",
+      "relational.isolatedRatio",
+      "relational.maxCentrality",
+      "relational.maxDegree",
+      "relational.maxDependencyDepth",
+      "relational.maxDependents",
+      "relational.threatenedEntityCount",
+      "relational.uncoveredThreatenedCount",
+      "relational.unresolvedDependencyCount",
+      "relational.unsupportedThreatenedCount",
+      "resources.actorEnergy"
+    ],
+    "mu": [
+      1.671083500000001,
+      0.9999999999999176,
+      6.9085000000001155,
+      3.4879999999998645,
+      14.872999999999857,
+      13.7632500000003,
+      1.7429999999999108,
+      9.301000000000142,
+      0.5148179000000208,
+      0.1427500000000001,
+      1.6032499999999856,
+      1.1247499999999586,
+      660644.5080000019,
+      0.7232499999999821,
+      0.3079999999999938,
+      0.8732499999999855,
+      9.241500000000142,
+      57082.14525000061,
+      0.7034999999999644,
+      5.14024999999995,
+      368430.1375000007,
+      371296.9309999998,
+      4.586500000000037,
+      2.41349999999998,
+      1.2364999999999604,
+      0.7164999999999615,
+      0.6762499999999652,
+      0,
+      0.5392499999999798,
+      40.59099999999756
+    ],
+    "sd": [
+      0.31587354419569563,
+      8.237854842718669e-14,
+      1.520074915917006,
+      0.6263832692529412,
+      4.421353978138341,
+      2.811174031877045,
+      0.43697940454901213,
+      3.2915648254288072,
+      0.17024149157766877,
+      0.34981772039164294,
+      0.694506614439324,
+      0.9059180081552604,
+      172013.01908065198,
+      1.7316637772673837,
+      0.46166654632970855,
+      1.5027256694087399,
+      3.2785176147154975,
+      26314.976632226928,
+      0.7500584977186712,
+      1.8736541669955824,
+      86162.91234885018,
+      142700.48756792286,
+      1.690715159333476,
+      2.063375329405674,
+      0.6637527777719807,
+      0.7311824327758384,
+      0.7172418960852595,
+      1,
+      0.7010416802872809,
+      7.103852405561076
+    ],
+    "W": [
+      [
+        -0.05212156592325407,
+        -0.1709902600471922,
+        -0.469345115119773,
+        0.15417522962866823,
+        0.039370554153324494,
+        -0.056793381833899016,
+        0.12637580169117438,
+        0.0021660592375672633,
+        0.19913330288200573,
+        -0.14290997423241536,
+        0.2930754482600258,
+        -0.0022761099889329643,
+        -0.0006521196297078226,
+        -0.012895817325084984,
+        0.03440352436595431,
+        0.03972668167961911,
+        0.024715685294905053,
+        -0.027020158808437698,
+        0.01380969604882364,
+        0.12245348222835593,
+        0.011031069285601342,
+        -0.09032930395402054,
+        0.002141078435106104,
+        -0.0021433997868443157,
+        -0.011772585550477579,
+        0.05623030232123786,
+        0.05579481535135088,
+        0,
+        0.05510794531363925,
+        0.023691249771625192,
+        -0.20421751817068634
+      ],
+      [
+        -0.08192229695686958,
+        0.0556241715347963,
+        0.39670812966506463,
+        -0.043662769035607084,
+        0.08659973362037972,
+        0.15681077095580442,
+        0.09643823149949281,
+        -0.02817498707849135,
+        0.2179082967691996,
+        -0.0226985370486733,
+        -0.23428133983362942,
+        0.004817022536447643,
+        0.04259545519729591,
+        -0.005609190301634884,
+        0.05341964212007191,
+        -0.02156570371692551,
+        -0.01204854816624074,
+        0.010972251499877933,
+        -0.012730925416033654,
+        -0.04107194095801062,
+        0.011233913855636803,
+        0.054984315816640754,
+        -0.07036067244599879,
+        -0.06245707771665436,
+        -0.008901745893380709,
+        -0.15348928349919125,
+        0.13013196163855698,
+        0,
+        0.005688406517145324,
+        0.03963805614599472,
+        0.0675705152051459
+      ],
+      [
+        0.27687421821366703,
+        0.062221682736358135,
+        0.14639409493318795,
+        -0.06797209402710888,
+        -0.2978026083719676,
+        0.01859233252873566,
+        -0.0921798493416965,
+        0.009643904601390765,
+        -0.11493755678836329,
+        0.18729513114710417,
+        -0.14967411554033605,
+        0.03756212736601472,
+        -0.09694755362837297,
+        -0.053016074776587624,
+        -0.025007499961913468,
+        -0.008699828860822587,
+        -0.004370052689232481,
+        -0.07042286137735224,
+        -0.02791882542109728,
+        -0.05250271136181106,
+        -0.0730359708193254,
+        -0.030028990679708028,
+        0.024173567228247237,
+        -0.007529766692024177,
+        0.12407720528550387,
+        0.09342397747079631,
+        -0.11872315103563288,
+        0,
+        -0.06611523834913079,
+        0.00014963527074935345,
+        0.07299597641399103
+      ],
+      [
+        -0.14283035533354277,
+        0.05314440577603792,
+        -0.07375710947848016,
+        -0.04254036656595216,
+        0.17183232059826356,
+        -0.11860972165064065,
+        -0.13063418384897094,
+        0.016365023239533344,
+        -0.3021040428628423,
+        -0.021686619866014816,
+        0.09088000711393983,
+        -0.040103039913529384,
+        0.05500421806078491,
+        0.07152108240330748,
+        -0.06281566652411294,
+        -0.009461149101871003,
+        -0.00829708443943196,
+        0.08647076868591189,
+        0.02684005478830736,
+        -0.028878829908534197,
+        0.05077098767808701,
+        0.06537397881708788,
+        0.044046026782645395,
+        0.0721302441955227,
+        -0.10340287384164547,
+        0.003835003707157469,
+        -0.06720362595427506,
+        0,
+        0.0053188865183463946,
+        -0.0634789411883693,
+        0.06365102655154875
+      ]
+    ],
+    "family": "MULTINOMIAL_LOGISTIC_REGRESSION_MASKED_SOFTMAX"
+  },
+  "costMatrix": {
+    "RESOURCE_PRESERVING_V1": {
+      "RESOURCE_PRESERVING_V1": 19.937563218390814,
+      "NEXUS_SELECTOR": 65.00272456364414,
+      "OBJECTIVE_TARGETING_V1": 75.52426160337556,
+      "THREAT_COVERING_V1": 60.548611111111114
+    },
+    "NEXUS_SELECTOR": {
+      "RESOURCE_PRESERVING_V1": 54.75936806371587,
+      "NEXUS_SELECTOR": 34.35955725840786,
+      "OBJECTIVE_TARGETING_V1": 38.81571815718161,
+      "THREAT_COVERING_V1": 31.854166666666668
+    },
+    "OBJECTIVE_TARGETING_V1": {
+      "RESOURCE_PRESERVING_V1": 77.17065390749605,
+      "NEXUS_SELECTOR": 41.22673434856178,
+      "OBJECTIVE_TARGETING_V1": 29.479957805907187,
+      "THREAT_COVERING_V1": 31.714285714285715
+    },
+    "THREAT_COVERING_V1": {
+      "RESOURCE_PRESERVING_V1": 64.23529411764706,
+      "NEXUS_SELECTOR": 48.074074074074076,
+      "OBJECTIVE_TARGETING_V1": 30.257142857142856,
+      "THREAT_COVERING_V1": 11.784722222222221
+    }
+  },
+  "valueMatrix": {
+    "RESOURCE_PRESERVING_V1": {
+      "RESOURCE_PRESERVING_V1": 0.5754482758620694,
+      "NEXUS_SELECTOR": 0.023243933588761187,
+      "OBJECTIVE_TARGETING_V1": 0.006329113924050635,
+      "THREAT_COVERING_V1": 0.006944444444444444
+    },
+    "NEXUS_SELECTOR": {
+      "RESOURCE_PRESERVING_V1": 0.03564433999216606,
+      "NEXUS_SELECTOR": 0.24418901660280984,
+      "OBJECTIVE_TARGETING_V1": 0.22764227642276436,
+      "THREAT_COVERING_V1": 0.006944444444444444
+    },
+    "OBJECTIVE_TARGETING_V1": {
+      "RESOURCE_PRESERVING_V1": 0.009569377990430625,
+      "NEXUS_SELECTOR": 0.2842639593908631,
+      "OBJECTIVE_TARGETING_V1": 0.5063291139240508,
+      "THREAT_COVERING_V1": 0.38095238095238093
+    },
+    "THREAT_COVERING_V1": {
+      "RESOURCE_PRESERVING_V1": 0.029411764705882353,
+      "NEXUS_SELECTOR": 0.037037037037037035,
+      "OBJECTIVE_TARGETING_V1": 0.45714285714285713,
+      "THREAT_COVERING_V1": 0.6388888888888888
+    }
+  },
+  "costMatrixCells": {
+    "RESOURCE_PRESERVING_V1": {
+      "RESOURCE_PRESERVING_V1": {
+        "support": 1812.4999999999989,
+        "meanRegret": 19.937563218390814,
+        "meanValue": 0.5754482758620694,
+        "p95Regret": 102,
+        "accuracyLoss": 0.42455172413793063
+      },
+      "NEXUS_SELECTOR": {
+        "support": 1957.4999999999989,
+        "meanRegret": 65.00272456364414,
+        "meanValue": 0.023243933588761187,
+        "p95Regret": 154,
+        "accuracyLoss": 0.9767560664112388
+      },
+      "OBJECTIVE_TARGETING_V1": {
+        "support": 157.99999999999994,
+        "meanRegret": 75.52426160337556,
+        "meanValue": 0.006329113924050635,
+        "p95Regret": 164,
+        "accuracyLoss": 0.9936708860759493
+      },
+      "THREAT_COVERING_V1": {
+        "support": 72,
+        "meanRegret": 60.548611111111114,
+        "meanValue": 0.006944444444444444,
+        "p95Regret": 153,
+        "accuracyLoss": 0.9930555555555556
+      }
+    },
+    "NEXUS_SELECTOR": {
+      "RESOURCE_PRESERVING_V1": {
+        "support": 1276.5000000000007,
+        "meanRegret": 54.75936806371587,
+        "meanValue": 0.03564433999216606,
+        "p95Regret": 145,
+        "accuracyLoss": 0.9643556600078339
+      },
+      "NEXUS_SELECTOR": {
+        "support": 1957.4999999999989,
+        "meanRegret": 34.35955725840786,
+        "meanValue": 0.24418901660280984,
+        "p95Regret": 104,
+        "accuracyLoss": 0.7558109833971902
+      },
+      "OBJECTIVE_TARGETING_V1": {
+        "support": 122.99999999999993,
+        "meanRegret": 38.81571815718161,
+        "meanValue": 0.22764227642276436,
+        "p95Regret": 153,
+        "accuracyLoss": 0.7723577235772356
+      },
+      "THREAT_COVERING_V1": {
+        "support": 72,
+        "meanRegret": 31.854166666666668,
+        "meanValue": 0.006944444444444444,
+        "p95Regret": 101,
+        "accuracyLoss": 0.9930555555555556
+      }
+    },
+    "OBJECTIVE_TARGETING_V1": {
+      "RESOURCE_PRESERVING_V1": {
+        "support": 104.49999999999996,
+        "meanRegret": 77.17065390749605,
+        "meanValue": 0.009569377990430625,
+        "p95Regret": 184,
+        "accuracyLoss": 0.9904306220095693
+      },
+      "NEXUS_SELECTOR": {
+        "support": 98.49999999999996,
+        "meanRegret": 41.22673434856178,
+        "meanValue": 0.2842639593908631,
+        "p95Regret": 153,
+        "accuracyLoss": 0.7157360406091369
+      },
+      "OBJECTIVE_TARGETING_V1": {
+        "support": 157.99999999999994,
+        "meanRegret": 29.479957805907187,
+        "meanValue": 0.5063291139240508,
+        "p95Regret": 149,
+        "accuracyLoss": 0.4936708860759492
+      },
+      "THREAT_COVERING_V1": {
+        "support": 21,
+        "meanRegret": 31.714285714285715,
+        "meanValue": 0.38095238095238093,
+        "p95Regret": 113,
+        "accuracyLoss": 0.6190476190476191
+      }
+    },
+    "THREAT_COVERING_V1": {
+      "RESOURCE_PRESERVING_V1": {
+        "support": 17,
+        "meanRegret": 64.23529411764706,
+        "meanValue": 0.029411764705882353,
+        "p95Regret": 324,
+        "accuracyLoss": 0.9705882352941176
+      },
+      "NEXUS_SELECTOR": {
+        "support": 13.5,
+        "meanRegret": 48.074074074074076,
+        "meanValue": 0.037037037037037035,
+        "p95Regret": 54,
+        "accuracyLoss": 0.962962962962963
+      },
+      "OBJECTIVE_TARGETING_V1": {
+        "support": 17.5,
+        "meanRegret": 30.257142857142856,
+        "meanValue": 0.45714285714285713,
+        "p95Regret": 105,
+        "accuracyLoss": 0.5428571428571429
+      },
+      "THREAT_COVERING_V1": {
+        "support": 72,
+        "meanRegret": 11.784722222222221,
+        "meanValue": 0.6388888888888888,
+        "p95Regret": 88,
+        "accuracyLoss": 0.36111111111111116
+      }
+    }
+  },
+  "costMatrixHash": "2ee12bb89dc0c05cbac750d322e571dcd8dff5d4773ff599c5b7250f04eb41e4",
+  "classWeights": {
+    "prior": {
+      "RESOURCE_PRESERVING_V1": 0.4531249999999767,
+      "NEXUS_SELECTOR": 0.48937499999997247,
+      "OBJECTIVE_TARGETING_V1": 0.03950000000000004,
+      "THREAT_COVERING_V1": 0.018000000000000013
+    },
+    "weights": {
+      "RESOURCE_PRESERVING_V1": 0.02592617633719959,
+      "NEXUS_SELECTOR": 0.024005718830740475,
+      "OBJECTIVE_TARGETING_V1": 0.2974126241213404,
+      "THREAT_COVERING_V1": 0.6526554807107194
+    }
+  },
+  "cal": {
+    "temperature": 1,
+    "temperatureGrid": [
+      {
+        "T": 0.5,
+        "crossEntropy": 0.6393250986157567
+      },
+      {
+        "T": 0.75,
+        "crossEntropy": 0.6123793383657176
+      },
+      {
+        "T": 1,
+        "crossEntropy": 0.6089193223493414
+      },
+      {
+        "T": 1.25,
+        "crossEntropy": 0.6109445355493663
+      },
+      {
+        "T": 1.5,
+        "crossEntropy": 0.614244410850495
+      },
+      {
+        "T": 2,
+        "crossEntropy": 0.6207689114923415
+      },
+      {
+        "T": 3,
+        "crossEntropy": 0.6301588231484412
+      },
+      {
+        "T": 4,
+        "crossEntropy": 0.6359861479900575
+      }
+    ],
+    "nexusThreshold": 0.6,
+    "nexusGrid": [
+      {
+        "tau": 0.2,
+        "meanRegret": 41.114,
+        "accuracy": 0.174
+      },
+      {
+        "tau": 0.25,
+        "meanRegret": 41.071,
+        "accuracy": 0.17525
+      },
+      {
+        "tau": 0.3,
+        "meanRegret": 41.0515,
+        "accuracy": 0.1775
+      },
+      {
+        "tau": 0.35,
+        "meanRegret": 40.95525,
+        "accuracy": 0.18025
+      },
+      {
+        "tau": 0.4,
+        "meanRegret": 40.7295,
+        "accuracy": 0.1835
+      },
+      {
+        "tau": 0.45,
+        "meanRegret": 40.49225,
+        "accuracy": 0.18725
+      },
+      {
+        "tau": 0.5,
+        "meanRegret": 39.8785,
+        "accuracy": 0.20125
+      },
+      {
+        "tau": 0.55,
+        "meanRegret": 39.8785,
+        "accuracy": 0.20125
+      },
+      {
+        "tau": 0.6,
+        "meanRegret": 39.8785,
+        "accuracy": 0.20125
+      }
+    ],
+    "bestSingle": "RESOURCE_PRESERVING_V1",
+    "cascade": [
+      "THREAT_COVERING_V1",
+      "OBJECTIVE_TARGETING_V1",
+      "RESOURCE_PRESERVING_V1"
+    ],
+    "confidenceGrid": [
+      {
+        "threshold": 0,
+        "accuracy": 0.20125,
+        "meanRegret": 39.8785,
+        "routedShare": 1
+      },
+      {
+        "threshold": 0.35,
+        "accuracy": 0.2015,
+        "meanRegret": 39.79075,
+        "routedShare": 0.99825
+      },
+      {
+        "threshold": 0.4,
+        "accuracy": 0.20375,
+        "meanRegret": 39.75875,
+        "routedShare": 0.9855
+      },
+      {
+        "threshold": 0.45,
+        "accuracy": 0.20625,
+        "meanRegret": 39.8215,
+        "routedShare": 0.96675
+      },
+      {
+        "threshold": 0.5,
+        "accuracy": 0.20175,
+        "meanRegret": 40.31325,
+        "routedShare": 0.94975
+      },
+      {
+        "threshold": 0.55,
+        "accuracy": 0.21375,
+        "meanRegret": 40.748,
+        "routedShare": 0.76025
+      },
+      {
+        "threshold": 0.6,
+        "accuracy": 0.2365,
+        "meanRegret": 41.0575,
+        "routedShare": 0.54575
+      },
+      {
+        "threshold": 0.65,
+        "accuracy": 0.2755,
+        "meanRegret": 39.972,
+        "routedShare": 0.33925
+      },
+      {
+        "threshold": 0.7,
+        "accuracy": 0.2885,
+        "meanRegret": 40.0845,
+        "routedShare": 0.2225
+      },
+      {
+        "threshold": 0.75,
+        "accuracy": 0.2865,
+        "meanRegret": 40.817,
+        "routedShare": 0.17575
+      },
+      {
+        "threshold": 0.8,
+        "accuracy": 0.275,
+        "meanRegret": 42.5225,
+        "routedShare": 0.1435
+      },
+      {
+        "threshold": 0.85,
+        "accuracy": 0.26525,
+        "meanRegret": 43.80875,
+        "routedShare": 0.1205
+      },
+      {
+        "threshold": 0.9,
+        "accuracy": 0.26225,
+        "meanRegret": 44.40775,
+        "routedShare": 0.1115
+      },
+      {
+        "threshold": 0.95,
+        "accuracy": 0.261,
+        "meanRegret": 44.628,
+        "routedShare": 0.10875
+      }
+    ],
+    "threshold": 0.4,
+    "calRules": {
+      "A_ARGMAX_POLICY_PROBABILITY": {
+        "n": 4000,
+        "coveredN": 4000,
+        "coverage": 1,
+        "accuracy": 0.20125,
+        "meanRegret": 39.8785,
+        "p95Regret": 107,
+        "selectionAccuracy": 0.6945,
+        "selectionDistribution": {
+          "RESOURCE_PRESERVING_V1": 0.18925,
+          "NEXUS_SELECTOR": 0.7525,
+          "OBJECTIVE_TARGETING_V1": 0.038,
+          "THREAT_COVERING_V1": 0.02025
+        }
+      },
+      "B_CLASS_WEIGHTED_ARGMAX": {
+        "n": 4000,
+        "coveredN": 4000,
+        "coverage": 1,
+        "accuracy": 0.2035,
+        "meanRegret": 40.1695,
+        "p95Regret": 109,
+        "selectionAccuracy": 0.68225,
+        "selectionDistribution": {
+          "RESOURCE_PRESERVING_V1": 0.2195,
+          "NEXUS_SELECTOR": 0.68025,
+          "OBJECTIVE_TARGETING_V1": 0.07775,
+          "THREAT_COVERING_V1": 0.0225
+        }
+      },
+      "C_EXPECTED_REGRET_MINIMIZATION": {
+        "n": 4000,
+        "coveredN": 4000,
+        "coverage": 1,
+        "accuracy": 0.2045,
+        "meanRegret": 40.01825,
+        "p95Regret": 108,
+        "selectionAccuracy": 0.67425,
+        "selectionDistribution": {
+          "RESOURCE_PRESERVING_V1": 0.25225,
+          "NEXUS_SELECTOR": 0.70525,
+          "OBJECTIVE_TARGETING_V1": 0.0175,
+          "THREAT_COVERING_V1": 0.025
+        }
+      },
+      "D_EXPECTED_VALUE_MAXIMIZATION": {
+        "n": 4000,
+        "coveredN": 4000,
+        "coverage": 1,
+        "accuracy": 0.29975,
+        "meanRegret": 38.92025,
+        "p95Regret": 126,
+        "selectionAccuracy": 0.551,
+        "selectionDistribution": {
+          "RESOURCE_PRESERVING_V1": 0.8165,
+          "OBJECTIVE_TARGETING_V1": 0.072,
+          "NEXUS_SELECTOR": 0.0895,
+          "THREAT_COVERING_V1": 0.022
+        }
+      },
+      "E_NEXUS_THRESHOLD_OVERRIDE": {
+        "n": 4000,
+        "coveredN": 4000,
+        "coverage": 1,
+        "accuracy": 0.20125,
+        "meanRegret": 39.8785,
+        "p95Regret": 107,
+        "selectionAccuracy": 0.6945,
+        "selectionDistribution": {
+          "RESOURCE_PRESERVING_V1": 0.18925,
+          "NEXUS_SELECTOR": 0.7525,
+          "OBJECTIVE_TARGETING_V1": 0.038,
+          "THREAT_COVERING_V1": 0.02025
+        }
+      }
+    },
+    "headlineChoice": "D_EXPECTED_VALUE_MAXIMIZATION"
+  },
+  "sealedUnopenedAtFreeze": true,
+  "authority": {
+    "tier": "R0",
+    "canDispatch": false,
+    "canMutateLiveWorld": false,
+    "onlineLearningEnabled": false,
+    "promotedToLiveRuntime": false
+  },
+  "analysisFreezeHash": "4d7313b6151e329c2dc454ad72edd7fceca6a0557901fb750f8746b1400ead47"
+}
