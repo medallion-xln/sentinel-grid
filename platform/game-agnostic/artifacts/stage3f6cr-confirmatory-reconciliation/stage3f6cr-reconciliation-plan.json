@@ -1,0 +1,946 @@
+{
+  "schemaVersion": 1,
+  "stage": "STAGE_3F_6_CR_CONFIRMATORY_RECONCILIATION",
+  "measurementStage": false,
+  "authority": {
+    "tier": "R0",
+    "canDispatch": false,
+    "canMutateLiveWorld": false,
+    "onlineLearningEnabled": false,
+    "promotedToLiveRuntime": false
+  },
+  "question": "What do we now know with high confidence, and what exactly should Stage 3G inherit?",
+  "predecessorChain": [
+    "3F6P1C",
+    "3F6P1D",
+    "3F6P1E",
+    "T_SYM",
+    "P1A_SYM",
+    "P1_SYM",
+    "W_SYM",
+    "D_SYM_FREEZE",
+    "D_SYM"
+  ],
+  "historical3F6": {
+    "HISTORICAL_3F6_CERTIFICATE_HASH": "399f71c9cc0b2758e610133454e2f137436339a04a2117a1323a0a0bc3616a84",
+    "HISTORICAL_3F6_STATUS": "PARTIAL",
+    "HISTORICAL_3F6_RUNTIME": {
+      "identity": "Stage 3F.5 integrated live-shadow runtime before the Stage 3F.6-R remediation (the transient pre-2ee28987 state the erratum identifies)",
+      "stage3f5CertificationHash": "eda3d2d67334dd904a24ff574f4e839e52fb67ec26fb01112b8f21c973b4fbe5",
+      "stage3eRouterFreezeHash": "5a8e22b5c6a6889df658a74d134b376ee79fa1214760204a3265fe01f27c6bd2",
+      "preRemediationRuntimeFileHashes": {
+        "platform/game-agnostic/src/stage3f/integrated-live-shadow-v1.js": "2dd0645b403281edbffc166d302f95cf0733c56bf5a75202e8521f13e0cec8d6",
+        "platform/game-agnostic/src/lab/stage3de-recovery-canonicalization.js": "cb3b854f2197fcfbf29a243db7cedf8cc00a23f3584eaa511db4d51e86e7910c",
+        "platform/game-agnostic/scripts/canonicalize-stage3de-recovery.mjs": "b85fda3f32cbc85327daece7ad07c2ae529dd1ced2a2a8b39be4b58cb1c1aa76"
+      },
+      "HISTORICAL_3F6_RUNTIME_HASH": "35c83e1a57711267a640e4d18c448779101012ccfccaf6caea24c3fed0890210",
+      "note": "The certifier and test bytes that produced the certificate exist in no commit (erratum causedBy); the runtime files above are the pre-remediation bytes the erratum restores to reproduce every measurement section."
+    },
+    "HISTORICAL_3F6_POLICY_SET": {
+      "evaluated": "The integrated runtime recommendation path only: the incumbent runtime greedy action (sole executor) and the frozen Stage 3E router (P(GREEDY_SAFE), logistic over 51 features) routing between GREEDY and the learned Nexus route. No deployable specialist policy set was evaluated; policy sets begin at Stage 3F.6-A."
+    },
+    "HISTORICAL_3F6_FEATURE_SET": {
+      "contract": "SENTINEL_PREDICTION_RELIABILITY_BASELINE_V1",
+      "contractHash": "e0a1691b7940efa0f60f9b659e814f50b4ba7eceebd4c64eb155dbf8f5f57962",
+      "methodologyHash": "87e94d6e06e98811f3af5d422ec3a653ea12b1714eebf913fe3720d17ae9d08b",
+      "router": "Stage 3E Feature Contract v2 (51 features, including horizon-rollout information — later classified non-deployable by Stage 3F.6-S)",
+      "worldState": "World State v1"
+    },
+    "HISTORICAL_3F6_CLAIMS": [
+      {
+        "id": "H01",
+        "topic": "prediction reliability",
+        "claim": "Contract-path router (canonical Stage 3E equation) replays Stage 3E exactly; HOLDOUT precision at tau 0.9 is 0.780 (Wilson lower 0.733, coverage 0.058; HOLDOUT quarantined), OOD 0.910.",
+        "evidence": {
+          "certificate": "artifacts/stage3f6-prediction-reliability/stage3f6-certification-result.json",
+          "certificationHash": "399f71c9cc0b2758e610133454e2f137436339a04a2117a1323a0a0bc3616a84",
+          "path": ".exitCriteria.STAGE3E_CONTRACT_REPLAY_EXACT",
+          "expect": true
+        }
+      },
+      {
+        "id": "H02",
+        "topic": "Router / runtime",
+        "claim": "Runtime-path router precision 0.245 on HOLDOUT, ECE 0.575; 99.5% of runtime false-safes attributed to RUNTIME_ROUTER_EQUATION_DIVERGENCE (bias read from w[0]).",
+        "evidence": {
+          "certificate": "artifacts/stage3f6-prediction-reliability/stage3f6-certification-result.json",
+          "certificationHash": "399f71c9cc0b2758e610133454e2f137436339a04a2117a1323a0a0bc3616a84",
+          "path": ".diagnosis.runtimeFalseSafeTotal",
+          "expect": 2990
+        }
+      },
+      {
+        "id": "H03",
+        "topic": "prediction reliability",
+        "claim": "No reliability tier is evidence-supported on any path (no CAL operating point reaches Wilson lower >= 0.80 at n >= 200).",
+        "evidence": {
+          "certificate": "artifacts/stage3f6-prediction-reliability/stage3f6-certification-result.json",
+          "certificationHash": "399f71c9cc0b2758e610133454e2f137436339a04a2117a1323a0a0bc3616a84",
+          "path": ".roadmap.blockers[6]",
+          "expect": "NO_EVIDENCED_RELIABILITY_TIER_ON_HOLDOUT"
+        }
+      },
+      {
+        "id": "H04",
+        "topic": "prediction reliability",
+        "claim": "Decision-time one-step consequence predictions are exact (1.000), by construction: they read the authoritative simulator (privileged).",
+        "evidence": {
+          "certificate": "artifacts/stage3f6-prediction-reliability/stage3f6-certification-result.json",
+          "certificationHash": "399f71c9cc0b2758e610133454e2f137436339a04a2117a1323a0a0bc3616a84",
+          "path": ".exitCriteria.ONE_STEP_RELIABILITY_MEASURED",
+          "expect": true
+        }
+      },
+      {
+        "id": "H05",
+        "topic": "prediction reliability",
+        "claim": "No non-privileged next-state, failure, transition, counterfactual or multistep predictor exists.",
+        "evidence": {
+          "certificate": "artifacts/stage3f6-prediction-reliability/stage3f6-certification-result.json",
+          "certificationHash": "399f71c9cc0b2758e610133454e2f137436339a04a2117a1323a0a0bc3616a84",
+          "path": ".roadmap.blockers[5]",
+          "expect": "NO_NON_PRIVILEGED_NEXT_STATE_OR_MULTISTEP_PREDICTOR"
+        }
+      },
+      {
+        "id": "H06",
+        "topic": "prediction reliability",
+        "claim": "Reference World State baseline: exact 0.80 on non-identity facts, approximate-or-better 0.992; energy errors are calibration errors.",
+        "evidence": {
+          "certificate": "artifacts/stage3f6-prediction-reliability/stage3f6-certification-result.json",
+          "certificationHash": "399f71c9cc0b2758e610133454e2f137436339a04a2117a1323a0a0bc3616a84",
+          "path": ".layerB.sealed.worldStateBaseline.overallNonIdentity.exactAccuracy",
+          "expect": 0.8
+        }
+      },
+      {
+        "id": "H07",
+        "topic": "OOD / novelty",
+        "claim": "Contract reliability falls with novelty while confidence rises (false-safe 0.098 familiar -> 0.203 strongly novel).",
+        "evidence": {
+          "certificate": "artifacts/stage3f6-prediction-reliability/stage3f6-certification-result.json",
+          "certificationHash": "399f71c9cc0b2758e610133454e2f137436339a04a2117a1323a0a0bc3616a84",
+          "path": ".exitCriteria.NOVEL_STATE_RELIABILITY_MEASURED",
+          "expect": true
+        }
+      },
+      {
+        "id": "H08",
+        "topic": "Nexus",
+        "claim": "Nexus confidence: insufficient evidence — it measures observed structure, not correctness.",
+        "evidence": {
+          "certificate": "artifacts/stage3f6-prediction-reliability/stage3f6-certification-result.json",
+          "certificationHash": "399f71c9cc0b2758e610133454e2f137436339a04a2117a1323a0a0bc3616a84",
+          "path": ".predictionInventory[9].availability",
+          "expect": "INSUFFICIENT_EVIDENCE"
+        }
+      },
+      {
+        "id": "H09",
+        "topic": "representation",
+        "claim": "World State v1 is an information subset of the Stage 3E features and is 92% ambiguous; the full world state determines the label.",
+        "evidence": {
+          "certificate": "artifacts/stage3f6-prediction-reliability/stage3f6-certification-result.json",
+          "certificationHash": "399f71c9cc0b2758e610133454e2f137436339a04a2117a1323a0a0bc3616a84",
+          "path": ".diagnosis.supported.B_STATE_REPRESENTATION_LIMITED.supported",
+          "expect": true
+        }
+      },
+      {
+        "id": "H10",
+        "topic": "diagnosis",
+        "claim": "Recorded share-rule diagnosis: primary C_PREDICTION_LIMITED, secondary A_ROUTER_LIMITED (later corrected prospectively to G_MIXED_LIMITATION_RUNTIME_PARITY_CONFOUNDED).",
+        "evidence": {
+          "certificate": "artifacts/stage3f6-prediction-reliability/stage3f6-certification-result.json",
+          "certificationHash": "399f71c9cc0b2758e610133454e2f137436339a04a2117a1323a0a0bc3616a84",
+          "path": ".diagnosis.primary",
+          "expect": "C_PREDICTION_LIMITED"
+        }
+      },
+      {
+        "id": "H11",
+        "topic": "regret / router",
+        "claim": "Contract false-safe total 75 versus runtime false-safe total 2990 on the measured partitions.",
+        "evidence": {
+          "certificate": "artifacts/stage3f6-prediction-reliability/stage3f6-certification-result.json",
+          "certificationHash": "399f71c9cc0b2758e610133454e2f137436339a04a2117a1323a0a0bc3616a84",
+          "path": ".diagnosis.contractFalseSafeTotal",
+          "expect": 75
+        }
+      },
+      {
+        "id": "H12",
+        "topic": "reproducibility",
+        "claim": "The certificate reproduces from the repository (--check).",
+        "evidence": {
+          "certificate": "artifacts/stage3f6-errata/erratum-stage3f6-prediction-reliability.json",
+          "certificationHash": "399817665bebda660ec73dc46ee9314764173d5b193efc0e3a500a1cfa19dbc9",
+          "path": ".claimsWithdrawn[0]",
+          "expect": "the Stage 3F.6 certificate reproduces from the repository"
+        }
+      },
+      {
+        "id": "H13",
+        "topic": "authority",
+        "claim": "R0; non-dispatching; incumbent sole executor; no training.",
+        "evidence": {
+          "certificate": "artifacts/stage3f6-prediction-reliability/stage3f6-certification-result.json",
+          "certificationHash": "399f71c9cc0b2758e610133454e2f137436339a04a2117a1323a0a0bc3616a84",
+          "path": ".authority.tier",
+          "expect": "R0"
+        }
+      },
+      {
+        "id": "H14",
+        "topic": "policy competence / RESOURCE",
+        "claim": "NOT_CLAIMED: Stage 3F.6 evaluated no specialist policy, no RESOURCE policy and no regret of a policy set.",
+        "evidence": null
+      }
+    ]
+  },
+  "erratumReconciliation": {
+    "erratumId": "STAGE3F6-ERRATUM-001",
+    "erratumFile": "artifacts/stage3f6-errata/erratum-stage3f6-prediction-reliability.json",
+    "erratumSha256": "399817665bebda660ec73dc46ee9314764173d5b193efc0e3a500a1cfa19dbc9",
+    "erratumModified": false,
+    "reverification": {
+      "file": "artifacts/stage3f6cr-confirmatory-reconciliation/stage3f6cr-erratum-reverification.json",
+      "sha256": "0346970b94f8b93647582984531b9307514f341ef5998ce68224bc46d67a785f",
+      "findings": {
+        "NOT_REPRODUCIBLE_AT_HEAD": true,
+        "MEASUREMENTS_DIFFER_AT_HEAD": true,
+        "MEASUREMENTS_FAITHFUL_TO_PRE_REMEDIATION_RUNTIME": true,
+        "PRE_REMEDIATION_RESIDUAL_SECTIONS": [
+          "status",
+          "inherited",
+          "tests",
+          "exitCriteria",
+          "sourceHashes",
+          "roadmap"
+        ],
+        "PRE_REMEDIATION_RESIDUALS_WITHIN_ERRATUM_DISCLOSURE": true,
+        "ERRATUM_RECORDED_AT_HEAD_DIFFERING_FIELDS": 806,
+        "ERRATUM_RECORDED_PRE_REMEDIATION_DIFFERING_FIELDS": 17
+      }
+    },
+    "provenanceFindings": {
+      "PRODUCED_BY_TRANSIENT_RUNTIME_STATE": {
+        "reconfirmed": true,
+        "evidence": "recomputation at HEAD differs; with only the three pre-2ee28987 runtime files restored every measurement section is identical"
+      },
+      "NO_COMMIT_CONTAINS_PRODUCER_CERTIFIER_COMBINATION": {
+        "reconfirmed": true,
+        "evidence": "with the pre-remediation runtime restored the certificate still differs, and only in the fields the erratum discloses (status, predecessor environment diagnosis and blockers, tests 104/106 and the exit criteria they drive, certifier/test source hashes). Leaf counts differ by diff tool (erratum 17, this re-verification counts each predecessor flag, diagnosis field and shifted blocker index); the categories match."
+      },
+      "AT_HEAD_DIFFERENCE_MATCHES_ERRATUM": {
+        "reconfirmed": true,
+        "evidence": "the recomputation at HEAD differs from the stored certificate in exactly the number of fields the erratum recorded"
+      },
+      "MEASUREMENTS_FAITHFUL_TO_TRANSIENT_RUNTIME": {
+        "reconfirmed": true,
+        "evidence": "every measurement section identical under the pre-remediation runtime"
+      },
+      "REPRODUCIBILITY_AND_CURRENT_RUNTIME_CLAIMS_WITHDRAWN": {
+        "reconfirmed": true,
+        "evidence": {
+          "certificate": "artifacts/stage3f6-errata/erratum-stage3f6-prediction-reliability.json",
+          "certificationHash": "399817665bebda660ec73dc46ee9314764173d5b193efc0e3a500a1cfa19dbc9",
+          "path": ".claimsWithdrawn[1]",
+          "expect": "Stage 3F.6 runtime (Layer B) reliability figures describe the current, remediated runtime"
+        }
+      },
+      "LATER_SYMMETRIC_CHAIN_NOT_CONTAMINATED": {
+        "reconfirmed": true,
+        "evidence": "the erratum covered 3F.6-A..P.1E; for T-SYM, P.1A-SYM, P.1-SYM, W-SYM and D-SYM (certified later) no stage runs the Stage 3F.6 --check or consumes its measurements: T-SYM and W-SYM import only STAGE3F6_METHODOLOGY.catastrophicRegret from src/stage3f/prediction-reliability-v1.js (unchanged since 2ee28987), and D-SYM only checks the erratum is present"
+      }
+    },
+    "claims": [
+      {
+        "id": "E1",
+        "erratumText": "withdrawn: the Stage 3F.6 certificate reproduces from the repository",
+        "classification": "STILL_APPLIES",
+        "reason": "Stage 3F.6 --check is NOT_REPRODUCED in every Stage 3F-RP run (documented before remediation) and in this re-verification; the withdrawal stands.",
+        "evidence": {
+          "certificate": "artifacts/stage3frp-reproducibility-portability/stage3frp-certification-result.json",
+          "certificationHash": "30f4fd3478da7097d309390dd64438026fe536a94ba18a07f9fe31e176d49b5a",
+          "path": ".requalification.3F6.canonicalStatus",
+          "expect": "NOT_REPRODUCED_DOCUMENTED_BEFORE_REMEDIATION"
+        }
+      },
+      {
+        "id": "E2",
+        "erratumText": "withdrawn: Layer B runtime reliability figures describe the current, remediated runtime",
+        "classification": "STILL_APPLIES",
+        "reason": "The runtime changed in 3F.6-R; the Layer B figures describe only the pre-remediation runtime.",
+        "evidence": {
+          "certificate": "artifacts/stage3f6r-runtime-parity-remediation/stage3f6r-certification-result.json",
+          "certificationHash": "4fba8d61e09be12efb428b66d1b189c0a9b970f7e4adb4dc7d9ecbb084cb7d9f",
+          "path": ".status",
+          "expect": "PASS"
+        }
+      },
+      {
+        "id": "E3",
+        "erratumText": "valid: the Stage 3F.6 measurements as a record of the pre-remediation runtime",
+        "classification": "STILL_APPLIES",
+        "reason": "Independently re-verified in this stage (every measurement section identical under the restored pre-remediation runtime).",
+        "evidence": null
+      },
+      {
+        "id": "E4",
+        "erratumText": "valid: the runtime-binding defects Stage 3F.6 discovered",
+        "classification": "RESOLVED",
+        "reason": "Corrected and certified by Stage 3F.6-R (router, feature and abstention parity), which reproduces byte for byte.",
+        "evidence": {
+          "certificate": "artifacts/stage3frp-reproducibility-portability/stage3frp-certification-result.json",
+          "certificationHash": "30f4fd3478da7097d309390dd64438026fe536a94ba18a07f9fe31e176d49b5a",
+          "path": ".requalification.3F6R.canonicalStatus",
+          "expect": "BYTE_EXACT"
+        }
+      },
+      {
+        "id": "E5",
+        "erratumText": "valid: R0 authority",
+        "classification": "STILL_APPLIES",
+        "reason": "R0 intact in every Stage 3F certificate.",
+        "evidence": {
+          "certificate": "artifacts/stage3f6dsym-decision-rule/stage3f6dsym-certification-result.json",
+          "certificationHash": "65e507b76bbfb9b3a4ae867f73c9d2bc056575ef9b7743359bcfc28b2bb90680",
+          "path": ".authority.tier",
+          "expect": "R0"
+        }
+      },
+      {
+        "id": "E6",
+        "erratumText": "symmetric chain not contaminated",
+        "classification": "STILL_APPLIES",
+        "reason": "Extended here to the five SYM stages certified after the erratum (see provenanceFindings).",
+        "evidence": {
+          "certificate": "artifacts/stage3f6-errata/erratum-stage3f6-prediction-reliability.json",
+          "certificationHash": "399817665bebda660ec73dc46ee9314764173d5b193efc0e3a500a1cfa19dbc9",
+          "path": ".symmetricChainContamination.contaminated",
+          "expect": false
+        }
+      },
+      {
+        "id": "E7",
+        "erratumText": "confirmatory rerun still required: new HOLDOUT/OOD on a disjoint seed space against the remediated runtime",
+        "classification": "SUPERSEDED",
+        "reason": "The object that rerun would have re-measured — the privileged Stage 3E router inside the integrated runtime — was classified non-deployable by Stage 3F.6-S. The question was re-asked on the deployable contract with fresh, seed-disjoint, topology-excluding data by Stage 3F.6-C (seeds 401-403/411) and 3F.6-T (601-603/611), and on the independent symmetric lineage (P.1D) with sealed fresh partitions through D-SYM. No Stage 3G input depends on the privileged runtime router. Explicitly NOT re-measured: the privileged runtime router and the reference World State baseline on fresh splits (not inherited).",
+        "evidence": {
+          "certificate": "artifacts/stage3f6c-deployable-router/stage3f6c-certification-result.json",
+          "certificationHash": "40ae3b415eeca2c1774a5f4ce2e2904bb189d4d83f98f26c1614eccce5dd0051",
+          "path": ".dataset.spec.seedSpaceDisjointFromPriorStages",
+          "expect": true
+        }
+      },
+      {
+        "id": "E8",
+        "erratumText": "recorded diagnosis C_PREDICTION_LIMITED (corrected prospectively to G_MIXED_LIMITATION_RUNTIME_PARITY_CONFOUNDED / H_INSUFFICIENT_EVIDENCE)",
+        "classification": "INVALIDATED_BY_NEW_EVIDENCE",
+        "reason": "Router-vs-representation is no longer insufficient evidence: P.1A-SYM and P.1-SYM show the binding limitation is partial observability of task-entity positions and missing action semantics (H2), while one-step successor prediction adds only +0.013 / +0.002; prediction is not the primary limit.",
+        "evidence": {
+          "certificate": "artifacts/stage3f6p1asym-free-action/stage3f6p1asym-certification-result.json",
+          "certificationHash": "84770670baeb1502142e12d24a12d03763c0a97c22e80acc53013ecb98871fbb",
+          "path": ".roadmap.TRANSITION_PREDICTION_REQUIRED",
+          "expect": false
+        }
+      }
+    ]
+  },
+  "claimMap": {
+    "file": "artifacts/stage3f6cr-confirmatory-reconciliation/stage3f6cr-claim-map.json",
+    "claimMapHash": "97e556f502ea42d818f1764e17314ef6cc6f435214ba52fd3a9680e897026350"
+  },
+  "decisionEvaluationContract": {
+    "file": "artifacts/stage3f6cr-confirmatory-reconciliation/sentinel-decision-evaluation-contract-v1.json",
+    "contractId": "SENTINEL_DECISION_EVALUATION_CONTRACT_V1",
+    "contractHash": "10c301884539c5cfb21d95795191217b98762a98aacfab8eab4207c87cbec90e"
+  },
+  "inheritedRequirements": {
+    "candidateId": "STAGE3G_INHERITED_REQUIREMENTS_CANDIDATE_V1",
+    "frozenHere": true,
+    "adoptedBy3G": false,
+    "requirements": [
+      {
+        "id": "EPISTEMIC_PROVENANCE",
+        "status": "REQUIRED_PRINCIPLE_LEVELS_UNDEFINED",
+        "basis": "Every Stage 3F result turned on separating deployable, privileged (simulator) and oracle information (3F.6-S contract; privileged one-step predictions; oracle labels). The E0-E5 level scale is not defined anywhere in the repository; Stage 3G must define it before use.",
+        "evidence": [
+          {
+            "certificate": "artifacts/stage3f6s-deployable-feature-contract/stage3f6s-certification-result.json",
+            "certificationHash": "825084e9ef58fb5fcb27a29bee4d8a9f3b7983aed1cf0d2b1719be3b5f604b35",
+            "path": ".status",
+            "expect": "PASS"
+          }
+        ]
+      },
+      {
+        "id": "OBSERVABLE_ENTITY_STATE",
+        "status": "REQUIRED",
+        "basis": "The free-action decision is limited by partial observability of task-entity positions (P.1A-SYM H2).",
+        "evidence": [
+          {
+            "certificate": "artifacts/stage3f6p1asym-free-action/stage3f6p1asym-certification-result.json",
+            "certificationHash": "84770670baeb1502142e12d24a12d03763c0a97c22e80acc53013ecb98871fbb",
+            "path": ".roadmap.DEPLOYABLE_STATE_SUFFICIENT",
+            "expect": false
+          }
+        ]
+      },
+      {
+        "id": "ACTOR_AND_ACTION_RELATIVE_SPATIAL_REPRESENTATION",
+        "status": "REQUIRED",
+        "basis": "The recoverable gain is where movement leads relative to the task entities (P.1-SYM, W-SYM privileged geometry).",
+        "evidence": [
+          {
+            "certificate": "artifacts/stage3f6p1sym-nexus-requalification/stage3f6p1sym-certification-result.json",
+            "certificationHash": "afcdceb18df34b05bb60613e302a762c3de196d764b34dfbe50e1978d3f80cf8",
+            "path": ".roadmap.SPATIAL_STATE_REQUIRED",
+            "expect": true
+          }
+        ]
+      },
+      {
+        "id": "STRUCTURED_ACTION_SEMANTICS",
+        "status": "REQUIRED",
+        "basis": "Missing capability is observation and action-semantics infrastructure (P.1A-SYM, P.1-SYM).",
+        "evidence": [
+          {
+            "certificate": "artifacts/stage3f6p1asym-free-action/stage3f6p1asym-certification-result.json",
+            "certificationHash": "84770670baeb1502142e12d24a12d03763c0a97c22e80acc53013ecb98871fbb",
+            "path": ".roadmap.ACTION_SEMANTICS_REQUIRED",
+            "expect": true
+          }
+        ]
+      },
+      {
+        "id": "PREDICTION_LIFECYCLE",
+        "status": "REQUIRED",
+        "basis": "FPE requires predictions recorded at decision time and bound to outcomes; Stage 3F.6 found most prediction classes unavailable or with placeholder confidence.",
+        "evidence": [
+          {
+            "certificate": "artifacts/stage3f6-prediction-reliability/stage3f6-certification-result.json",
+            "certificationHash": "399f71c9cc0b2758e610133454e2f137436339a04a2117a1323a0a0bc3616a84",
+            "path": ".roadmap.blockers[5]",
+            "expect": "NO_NON_PRIVILEGED_NEXT_STATE_OR_MULTISTEP_PREDICTOR"
+          }
+        ]
+      },
+      {
+        "id": "COUNTERFACTUAL_DISCRIMINATION",
+        "status": "REQUIRED",
+        "basis": "Policies fail to discriminate among equal-cost candidates (87-95% of states have an optimal zero-cost action).",
+        "evidence": [
+          {
+            "certificate": "artifacts/stage3f6p1asym-free-action/stage3f6p1asym-certification-result.json",
+            "certificationHash": "84770670baeb1502142e12d24a12d03763c0a97c22e80acc53013ecb98871fbb",
+            "path": ".roadmap.FREE_ACTION_DECISION_MEASURED",
+            "expect": true
+          }
+        ]
+      },
+      {
+        "id": "COUNTERFACTUAL_REGRET",
+        "status": "REQUIRED",
+        "basis": "Every Stage 3F verdict is regret-based; accuracy and regret diverge (T-SYM mixed trade-off).",
+        "evidence": [
+          {
+            "certificate": "artifacts/stage3f6tsym-router-value/stage3f6tsym-certification-result.json",
+            "certificationHash": "edd46e40fc2c6ddc611f9f78a432f723f0ae4e66facc1b2ca84183fa4d896f4e",
+            "path": ".conclusion.primary",
+            "expect": "EXPERT_COMPLEMENTARITY_NOT_ROUTABLE"
+          }
+        ]
+      },
+      {
+        "id": "DOWNSTREAM_DECISION_VALUE",
+        "status": "REQUIRED",
+        "basis": "Component gains did not become decision value: W router gain was threshold not information; decision-rule gains reversed on OOD.",
+        "evidence": [
+          {
+            "certificate": "artifacts/stage3f6wsym-risk-requalification/stage3f6wsym-certification-result.json",
+            "certificationHash": "26e77c5d18c89774e3106295ec3868a2fcf2a83d251bab6173fc20510044f4b0",
+            "path": ".roadmap.RISK_SIGNAL_IMPROVES_DECISIONS",
+            "expect": false
+          },
+          {
+            "certificate": "artifacts/stage3f6dsym-decision-rule/stage3f6dsym-certification-result.json",
+            "certificationHash": "65e507b76bbfb9b3a4ae867f73c9d2bc056575ef9b7743359bcfc28b2bb90680",
+            "path": ".conclusion.DECISION_RULE_OOD_STABLE",
+            "expect": false
+          }
+        ]
+      },
+      {
+        "id": "WORLD_MODEL_TRUST_GATE",
+        "status": "PLANNED",
+        "basis": "False-selection harm is unacceptable and confidence rose with novelty in Stage 3F.6; a gate is needed before any predictive component influences recommendations. Not specified here.",
+        "evidence": [
+          {
+            "certificate": "artifacts/stage3f6dsym-decision-rule/stage3f6dsym-certification-result.json",
+            "certificationHash": "65e507b76bbfb9b3a4ae867f73c9d2bc056575ef9b7743359bcfc28b2bb90680",
+            "path": ".conclusion.FALSE_SELECTION_HARM_ACCEPTABLE",
+            "expect": false
+          }
+        ]
+      },
+      {
+        "id": "TASK_STATE_CONTAMINATION_TRACKING",
+        "status": "PLANNED",
+        "basis": "Direction, identity-order and layout shortcuts contaminated Forge V1 results until the symmetric lineage; contamination must be tracked, not rediscovered.",
+        "evidence": [
+          {
+            "certificate": "artifacts/stage3f6p1c-symmetric-benchmark/stage3f6p1c-certification-result.json",
+            "certificationHash": "81586cbe068885596d7f8b5c78d6f6d5d72e53425289f850386e0c43ddff702d",
+            "path": ".diagnosis.primaryResult",
+            "expect": "A_SYMMETRIC_BENCHMARK_CANDIDATE_CERTIFIED"
+          }
+        ]
+      },
+      {
+        "id": "STAGE_WISE_FAILURE_ATTRIBUTION",
+        "status": "REQUIRED",
+        "basis": "Stage 3F only became diagnosable by separating feature derivation, equation, binding (3F.6), action type versus target (P.1-SYM) and threshold versus information (W-SYM).",
+        "evidence": [
+          {
+            "certificate": "artifacts/stage3f6r-runtime-parity-remediation/stage3f6r-certification-result.json",
+            "certificationHash": "4fba8d61e09be12efb428b66d1b189c0a9b970f7e4adb4dc7d9ecbb084cb7d9f",
+            "path": ".status",
+            "expect": "PASS"
+          }
+        ]
+      }
+    ],
+    "notEvidenceSupported": {
+      "LARGE_LEARNED_WORLD_MODEL": "no Stage 3F evidence; transition prediction is not the first bottleneck",
+      "JEPA_DEPLOYMENT": "no Stage 3F evidence",
+      "GENERATIVE_WORLD_MODEL": "no Stage 3F evidence",
+      "ROUTER_2_0": "ROUTER_2_0_JUSTIFIED=false in T-SYM, P.1A-SYM, P.1-SYM, W-SYM and D-SYM",
+      "EXPERT_10": "no Stage 3F evidence",
+      "AUTHORITY_INCREASE": "R0 is required; nothing supports an increase",
+      "note": "These stay outside the Stage 3F inherited-fact set."
+    }
+  },
+  "exitCriteria": {
+    "SYMMETRY_CERTIFIED": [
+      {
+        "certificate": "artifacts/stage3f6p1c-symmetric-benchmark/stage3f6p1c-certification-result.json",
+        "certificationHash": "81586cbe068885596d7f8b5c78d6f6d5d72e53425289f850386e0c43ddff702d",
+        "path": ".diagnosis.primaryResult",
+        "expect": "A_SYMMETRIC_BENCHMARK_CANDIDATE_CERTIFIED"
+      },
+      {
+        "certificate": "artifacts/stage3f6p1e-policy-requalification/stage3f6p1e-certification-result.json",
+        "certificationHash": "11dcf65b79679ae8748eed0f5f9f3fdef38223524308aaa353c5b482eed8a031",
+        "path": ".roadmap.SYMMETRY_CERTIFIED",
+        "expect": true
+      }
+    ],
+    "CORPUS_CLEAN": [
+      {
+        "certificate": "artifacts/stage3f6p1d-symmetric-corpus/stage3f6p1d-certification-result.json",
+        "certificationHash": "afd0d6e6057f497e9e1d3666cf553518e134b0c4d09f783601b393c081ae7073",
+        "path": ".diagnosis.primaryResult",
+        "expect": "A_SYMMETRIC_CORPUS_LINEAGE_CERTIFIED"
+      },
+      {
+        "certificate": "artifacts/stage3f6p1e-policy-requalification/stage3f6p1e-certification-result.json",
+        "certificationHash": "11dcf65b79679ae8748eed0f5f9f3fdef38223524308aaa353c5b482eed8a031",
+        "path": ".roadmap.CORPUS_LINEAGE_CLEAN",
+        "expect": true
+      }
+    ],
+    "CORPUS_SEALED": [
+      {
+        "certificate": "artifacts/stage3f6dsym-decision-rule/stage3f6dsym-analysis-freeze.json",
+        "certificationHash": "4d7313b6151e329c2dc454ad72edd7fceca6a0557901fb750f8746b1400ead47",
+        "path": ".sealedUnopenedAtFreeze",
+        "expect": true
+      },
+      {
+        "certificate": "artifacts/stage3f6p1d-symmetric-corpus/stage3f6p1d-certification-result.json",
+        "certificationHash": "afd0d6e6057f497e9e1d3666cf553518e134b0c4d09f783601b393c081ae7073",
+        "path": ".roadmap.SYMMETRIC_CORPUS_CERTIFIED",
+        "expect": true
+      }
+    ],
+    "POLICY_RESULTS_REPRODUCIBLE": [
+      {
+        "certificate": "artifacts/stage3f6p1e-policy-requalification/stage3f6p1e-certification-result.json",
+        "certificationHash": "11dcf65b79679ae8748eed0f5f9f3fdef38223524308aaa353c5b482eed8a031",
+        "path": ".roadmap.POLICY_RESULTS_REPRODUCIBLE",
+        "expect": true
+      },
+      {
+        "certificate": "artifacts/stage3frp-reproducibility-portability/stage3frp-certification-result.json",
+        "certificationHash": "30f4fd3478da7097d309390dd64438026fe536a94ba18a07f9fe31e176d49b5a",
+        "path": ".conclusions.BYTE_REPRODUCIBILITY_PORTABLE",
+        "expect": true
+      }
+    ],
+    "EXPERT_DIVERSITY_MEASURED": [
+      {
+        "certificate": "artifacts/stage3f6p1e-policy-requalification/stage3f6p1e-certification-result.json",
+        "certificationHash": "11dcf65b79679ae8748eed0f5f9f3fdef38223524308aaa353c5b482eed8a031",
+        "path": ".roadmap.EXPERT_DIVERSITY_READY",
+        "expect": true
+      },
+      {
+        "certificate": "artifacts/stage3f6tsym-router-value/stage3f6tsym-certification-result.json",
+        "certificationHash": "edd46e40fc2c6ddc611f9f78a432f723f0ae4e66facc1b2ca84183fa4d896f4e",
+        "path": ".roadmap.EXPERT_COMPLEMENTARITY_EXISTS",
+        "expect": true
+      }
+    ],
+    "ROUTER_VALUE_MEASURED": [
+      {
+        "certificate": "artifacts/stage3f6tsym-router-value/stage3f6tsym-certification-result.json",
+        "certificationHash": "edd46e40fc2c6ddc611f9f78a432f723f0ae4e66facc1b2ca84183fa4d896f4e",
+        "path": ".roadmap.ROUTER_VALUE_MEASURED",
+        "expect": true
+      }
+    ],
+    "RISK_SIGNAL_VALUE_MEASURED": [
+      {
+        "certificate": "artifacts/stage3f6wsym-risk-requalification/stage3f6wsym-certification-result.json",
+        "certificationHash": "26e77c5d18c89774e3106295ec3868a2fcf2a83d251bab6173fc20510044f4b0",
+        "path": ".roadmap.W_REQUALIFIED",
+        "expect": true
+      }
+    ],
+    "DECISION_RULE_VALUE_MEASURED": [
+      {
+        "certificate": "artifacts/stage3f6dsym-decision-rule/stage3f6dsym-certification-result.json",
+        "certificationHash": "65e507b76bbfb9b3a4ae867f73c9d2bc056575ef9b7743359bcfc28b2bb90680",
+        "path": ".conclusion.DECISION_RULE_VALUE_MEASURED",
+        "expect": true
+      }
+    ],
+    "SHORTCUTS_AUDITED": [
+      {
+        "certificate": "artifacts/stage3f6p1b-directional-symmetry/stage3f6p1b-certification-result.json",
+        "certificationHash": "120e7649a2912447d149e8a1b4c1a24c6a1af6bd64d5b6b5efd1b6dfe4ddfbdb",
+        "path": ".diagnosis.primaryResult",
+        "expect": "F_MIXTURE"
+      },
+      {
+        "certificate": "artifacts/stage3f6p1asym-free-action/stage3f6p1asym-certification-result.json",
+        "certificationHash": "84770670baeb1502142e12d24a12d03763c0a97c22e80acc53013ecb98871fbb",
+        "path": ".roadmap.CURRENT_POLICY_SHORTCUT_CONFIRMED",
+        "expect": true
+      },
+      {
+        "certificate": "artifacts/stage3f6p1sym-nexus-requalification/stage3f6p1sym-certification-result.json",
+        "certificationHash": "afcdceb18df34b05bb60613e302a762c3de196d764b34dfbe50e1978d3f80cf8",
+        "path": ".nexusClassification.NEXUS_SELECTOR_V2_CANDIDATE.holds.SHORTCUT_DEPENDENT",
+        "expect": true
+      }
+    ],
+    "REPRESENTATION_GAP_MEASURED": [
+      {
+        "certificate": "artifacts/stage3f6p1asym-free-action/stage3f6p1asym-certification-result.json",
+        "certificationHash": "84770670baeb1502142e12d24a12d03763c0a97c22e80acc53013ecb98871fbb",
+        "path": ".roadmap.FREE_ACTION_DECISION_MEASURED",
+        "expect": true
+      },
+      {
+        "certificate": "artifacts/stage3f6p1sym-nexus-requalification/stage3f6p1sym-certification-result.json",
+        "certificationHash": "afcdceb18df34b05bb60613e302a762c3de196d764b34dfbe50e1978d3f80cf8",
+        "path": ".roadmap.NEXUS_REPRESENTATION_BLOCKED",
+        "expect": true
+      }
+    ],
+    "STAGE3F_REPRODUCIBILITY_PORTABLE": [
+      {
+        "certificate": "artifacts/stage3frp-reproducibility-portability/stage3frp-certification-result.json",
+        "certificationHash": "30f4fd3478da7097d309390dd64438026fe536a94ba18a07f9fe31e176d49b5a",
+        "path": ".conclusions.STAGE3F_REPRODUCIBILITY_BLOCKER_RESOLVED",
+        "expect": true
+      }
+    ],
+    "R0_INTACT": [
+      {
+        "certificate": "artifacts/stage3f6dsym-decision-rule/stage3f6dsym-certification-result.json",
+        "certificationHash": "65e507b76bbfb9b3a4ae867f73c9d2bc056575ef9b7743359bcfc28b2bb90680",
+        "path": ".authority.tier",
+        "expect": "R0"
+      },
+      {
+        "certificate": "artifacts/stage3f6wsym-risk-requalification/stage3f6wsym-certification-result.json",
+        "certificationHash": "26e77c5d18c89774e3106295ec3868a2fcf2a83d251bab6173fc20510044f4b0",
+        "path": ".authority.tier",
+        "expect": "R0"
+      },
+      {
+        "certificate": "artifacts/stage3f6p1sym-nexus-requalification/stage3f6p1sym-certification-result.json",
+        "certificationHash": "afcdceb18df34b05bb60613e302a762c3de196d764b34dfbe50e1978d3f80cf8",
+        "path": ".authority.tier",
+        "expect": "R0"
+      },
+      {
+        "certificate": "artifacts/stage3f6p1asym-free-action/stage3f6p1asym-certification-result.json",
+        "certificationHash": "84770670baeb1502142e12d24a12d03763c0a97c22e80acc53013ecb98871fbb",
+        "path": ".authority.tier",
+        "expect": "R0"
+      },
+      {
+        "certificate": "artifacts/stage3f6tsym-router-value/stage3f6tsym-certification-result.json",
+        "certificationHash": "edd46e40fc2c6ddc611f9f78a432f723f0ae4e66facc1b2ca84183fa4d896f4e",
+        "path": ".authority.tier",
+        "expect": "R0"
+      }
+    ]
+  },
+  "immutableFactsCandidate": {
+    "RESOURCE_SHORTCUT_DEPENDENT": {
+      "value": true,
+      "evidence": [
+        {
+          "certificate": "artifacts/stage3f6p1e-policy-requalification/stage3f6p1e-certification-result.json",
+          "certificationHash": "11dcf65b79679ae8748eed0f5f9f3fdef38223524308aaa353c5b482eed8a031",
+          "path": ".classification.RESOURCE_PRESERVING_V1.class",
+          "expect": "SHORTCUT_DEPENDENT"
+        },
+        {
+          "certificate": "artifacts/stage3f6p1asym-free-action/stage3f6p1asym-certification-result.json",
+          "certificationHash": "84770670baeb1502142e12d24a12d03763c0a97c22e80acc53013ecb98871fbb",
+          "path": ".roadmap.CURRENT_POLICY_SHORTCUT_CONFIRMED",
+          "expect": true
+        }
+      ]
+    },
+    "NEXUS_V1_REPRESENTATION_BLOCKED": {
+      "value": true,
+      "evidence": [
+        {
+          "certificate": "artifacts/stage3f6p1sym-nexus-requalification/stage3f6p1sym-certification-result.json",
+          "certificationHash": "afcdceb18df34b05bb60613e302a762c3de196d764b34dfbe50e1978d3f80cf8",
+          "path": ".nexusClassification.NEXUS_SELECTOR_V1.holds.REPRESENTATION_BLOCKED",
+          "expect": true
+        }
+      ]
+    },
+    "NEXUS_V1_POLICY_LIMITED": {
+      "value": true,
+      "evidence": [
+        {
+          "certificate": "artifacts/stage3f6p1sym-nexus-requalification/stage3f6p1sym-certification-result.json",
+          "certificationHash": "afcdceb18df34b05bb60613e302a762c3de196d764b34dfbe50e1978d3f80cf8",
+          "path": ".nexusClassification.NEXUS_SELECTOR_V1.holds.POLICY_LOGIC_LIMITED",
+          "expect": true
+        }
+      ]
+    },
+    "NEXUS_V2_SHORTCUT_DEPENDENT": {
+      "value": true,
+      "evidence": [
+        {
+          "certificate": "artifacts/stage3f6p1sym-nexus-requalification/stage3f6p1sym-certification-result.json",
+          "certificationHash": "afcdceb18df34b05bb60613e302a762c3de196d764b34dfbe50e1978d3f80cf8",
+          "path": ".nexusClassification.NEXUS_SELECTOR_V2_CANDIDATE.holds.SHORTCUT_DEPENDENT",
+          "expect": true
+        },
+        {
+          "certificate": "artifacts/stage3f6p1e-policy-requalification/stage3f6p1e-certification-result.json",
+          "certificationHash": "11dcf65b79679ae8748eed0f5f9f3fdef38223524308aaa353c5b482eed8a031",
+          "path": ".classification.NEXUS_SELECTOR_V2_CANDIDATE.class",
+          "expect": "SHORTCUT_DEPENDENT"
+        }
+      ]
+    },
+    "GENUINE_RELATIONAL_VALUE_MEASURED": {
+      "value": false,
+      "evidence": [
+        {
+          "certificate": "artifacts/stage3f6p1sym-nexus-requalification/stage3f6p1sym-certification-result.json",
+          "certificationHash": "afcdceb18df34b05bb60613e302a762c3de196d764b34dfbe50e1978d3f80cf8",
+          "path": ".roadmap.GENUINE_RELATIONAL_VALUE_MEASURED",
+          "expect": false
+        }
+      ]
+    },
+    "EXPERT_COMPLEMENTARITY_EXISTS": {
+      "value": true,
+      "evidence": [
+        {
+          "certificate": "artifacts/stage3f6tsym-router-value/stage3f6tsym-certification-result.json",
+          "certificationHash": "edd46e40fc2c6ddc611f9f78a432f723f0ae4e66facc1b2ca84183fa4d896f4e",
+          "path": ".roadmap.EXPERT_COMPLEMENTARITY_EXISTS",
+          "expect": true
+        }
+      ]
+    },
+    "EXPERT_COMPLEMENTARITY_ROUTABLE": {
+      "value": false,
+      "evidence": [
+        {
+          "certificate": "artifacts/stage3f6tsym-router-value/stage3f6tsym-certification-result.json",
+          "certificationHash": "edd46e40fc2c6ddc611f9f78a432f723f0ae4e66facc1b2ca84183fa4d896f4e",
+          "path": ".roadmap.EXPERT_COMPLEMENTARITY_ROUTABLE",
+          "expect": false
+        }
+      ]
+    },
+    "ROUTER_VALUE_MATERIAL": {
+      "value": false,
+      "evidence": [
+        {
+          "certificate": "artifacts/stage3f6tsym-router-value/stage3f6tsym-certification-result.json",
+          "certificationHash": "edd46e40fc2c6ddc611f9f78a432f723f0ae4e66facc1b2ca84183fa4d896f4e",
+          "path": ".roadmap.ROUTER_VALUE_MATERIAL",
+          "expect": false
+        }
+      ]
+    },
+    "ROUTER_2_0_JUSTIFIED": {
+      "value": false,
+      "evidence": [
+        {
+          "certificate": "artifacts/stage3f6tsym-router-value/stage3f6tsym-certification-result.json",
+          "certificationHash": "edd46e40fc2c6ddc611f9f78a432f723f0ae4e66facc1b2ca84183fa4d896f4e",
+          "path": ".roadmap.ROUTER_2_0_JUSTIFIED",
+          "expect": false
+        },
+        {
+          "certificate": "artifacts/stage3f6dsym-decision-rule/stage3f6dsym-certification-result.json",
+          "certificationHash": "65e507b76bbfb9b3a4ae867f73c9d2bc056575ef9b7743359bcfc28b2bb90680",
+          "path": ".conclusion.ROUTER_2_0_JUSTIFIED",
+          "expect": false
+        }
+      ]
+    },
+    "RISK_SIGNAL_VALUE_MATERIAL": {
+      "value": false,
+      "evidence": [
+        {
+          "certificate": "artifacts/stage3f6wsym-risk-requalification/stage3f6wsym-certification-result.json",
+          "certificationHash": "26e77c5d18c89774e3106295ec3868a2fcf2a83d251bab6173fc20510044f4b0",
+          "path": ".classification.primary",
+          "expect": "RISK_SIGNAL_WEAK"
+        },
+        {
+          "certificate": "artifacts/stage3f6wsym-risk-requalification/stage3f6wsym-certification-result.json",
+          "certificationHash": "26e77c5d18c89774e3106295ec3868a2fcf2a83d251bab6173fc20510044f4b0",
+          "path": ".roadmap.RISK_SIGNAL_IMPROVES_DECISIONS",
+          "expect": false
+        }
+      ]
+    },
+    "DECISION_RULE_VALUE_MATERIAL": {
+      "value": false,
+      "evidence": [
+        {
+          "certificate": "artifacts/stage3f6dsym-decision-rule/stage3f6dsym-certification-result.json",
+          "certificationHash": "65e507b76bbfb9b3a4ae867f73c9d2bc056575ef9b7743359bcfc28b2bb90680",
+          "path": ".conclusion.DECISION_RULE_VALUE_MATERIAL",
+          "expect": false
+        }
+      ]
+    },
+    "STATE_REPRESENTATION_SUFFICIENT": {
+      "value": false,
+      "evidence": [
+        {
+          "certificate": "artifacts/stage3f6p1asym-free-action/stage3f6p1asym-certification-result.json",
+          "certificationHash": "84770670baeb1502142e12d24a12d03763c0a97c22e80acc53013ecb98871fbb",
+          "path": ".roadmap.DEPLOYABLE_STATE_SUFFICIENT",
+          "expect": false
+        }
+      ]
+    },
+    "SPATIAL_STATE_REQUIRED": {
+      "value": true,
+      "evidence": [
+        {
+          "certificate": "artifacts/stage3f6p1sym-nexus-requalification/stage3f6p1sym-certification-result.json",
+          "certificationHash": "afcdceb18df34b05bb60613e302a762c3de196d764b34dfbe50e1978d3f80cf8",
+          "path": ".roadmap.SPATIAL_STATE_REQUIRED",
+          "expect": true
+        }
+      ]
+    },
+    "ACTION_SEMANTICS_REQUIRED": {
+      "value": true,
+      "evidence": [
+        {
+          "certificate": "artifacts/stage3f6p1asym-free-action/stage3f6p1asym-certification-result.json",
+          "certificationHash": "84770670baeb1502142e12d24a12d03763c0a97c22e80acc53013ecb98871fbb",
+          "path": ".roadmap.ACTION_SEMANTICS_REQUIRED",
+          "expect": true
+        },
+        {
+          "certificate": "artifacts/stage3f6p1sym-nexus-requalification/stage3f6p1sym-certification-result.json",
+          "certificationHash": "afcdceb18df34b05bb60613e302a762c3de196d764b34dfbe50e1978d3f80cf8",
+          "path": ".roadmap.ACTION_SEMANTICS_REQUIRED",
+          "expect": true
+        }
+      ]
+    },
+    "TRANSITION_PREDICTION_REQUIRED": {
+      "value": false,
+      "evidence": [
+        {
+          "certificate": "artifacts/stage3f6p1asym-free-action/stage3f6p1asym-certification-result.json",
+          "certificationHash": "84770670baeb1502142e12d24a12d03763c0a97c22e80acc53013ecb98871fbb",
+          "path": ".roadmap.TRANSITION_PREDICTION_REQUIRED",
+          "expect": false
+        },
+        {
+          "certificate": "artifacts/stage3f6p1sym-nexus-requalification/stage3f6p1sym-certification-result.json",
+          "certificationHash": "afcdceb18df34b05bb60613e302a762c3de196d764b34dfbe50e1978d3f80cf8",
+          "path": ".roadmap.TRANSITION_PREDICTION_REQUIRED",
+          "expect": false
+        }
+      ]
+    },
+    "POLICY_QUALITY_PRIMARY_BOTTLENECK": {
+      "value": true,
+      "evidence": [
+        {
+          "certificate": "artifacts/stage3f6tsym-router-value/stage3f6tsym-certification-result.json",
+          "certificationHash": "edd46e40fc2c6ddc611f9f78a432f723f0ae4e66facc1b2ca84183fa4d896f4e",
+          "path": ".roadmap.POLICY_QUALITY_REMAINS_PRIMARY_BOTTLENECK",
+          "expect": true
+        },
+        {
+          "certificate": "artifacts/stage3f6dsym-decision-rule/stage3f6dsym-certification-result.json",
+          "certificationHash": "65e507b76bbfb9b3a4ae867f73c9d2bc056575ef9b7743359bcfc28b2bb90680",
+          "path": ".conclusion.POLICY_SET_COMPETENT",
+          "expect": false
+        }
+      ]
+    },
+    "FALSE_SELECTION_HARM_ACCEPTABLE": {
+      "value": false,
+      "evidence": [
+        {
+          "certificate": "artifacts/stage3f6dsym-decision-rule/stage3f6dsym-certification-result.json",
+          "certificationHash": "65e507b76bbfb9b3a4ae867f73c9d2bc056575ef9b7743359bcfc28b2bb90680",
+          "path": ".conclusion.FALSE_SELECTION_HARM_ACCEPTABLE",
+          "expect": false
+        }
+      ]
+    },
+    "AUTHORITY": {
+      "value": "R0",
+      "evidence": [
+        {
+          "certificate": "artifacts/stage3f6dsym-decision-rule/stage3f6dsym-certification-result.json",
+          "certificationHash": "65e507b76bbfb9b3a4ae867f73c9d2bc056575ef9b7743359bcfc28b2bb90680",
+          "path": ".authority.tier",
+          "expect": "R0"
+        }
+      ]
+    },
+    "qualification": {
+      "TRANSITION_PREDICTION_REQUIRED": "as the first bottleneck; only single-step successors were measured",
+      "POLICY_QUALITY_PRIMARY_BOTTLENECK": "relative to selection; the policies are themselves limited by representation (H2)"
+    }
+  },
+  "rules": {
+    "freezeReadiness": "READY_FOR_3F_FREEZE requires every exit criterion, every evidence binding, the full predecessor chain reproducing byte for byte, and the erratum reconciled. Weak policies and negative Router results do not block measurement-integrity completion.",
+    "stage3g": "READY_FOR_STAGE3G stays false until the separate formal Stage 3F freeze commit exists."
+  },
+  "planHash": "c39db9ff1182720a2e39e216f433ea5755be4e050e3f7b24bf241735506b5e6e"
+}

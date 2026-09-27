@@ -1,0 +1,543 @@
+{
+  "schemaVersion": 1,
+  "claimMapId": "STAGE3F_CANONICAL_CLAIM_MAP_V1",
+  "classifications": [
+    "SURVIVES",
+    "PARTIALLY_SURVIVES",
+    "INVALIDATED",
+    "SUPERSEDED",
+    "NOT_RETESTABLE",
+    "INSUFFICIENT_EVIDENCE"
+  ],
+  "claims": [
+    {
+      "id": "RESOURCE_COMPETENCE",
+      "historical": "Stage 3F.6-P: RESOURCE_PRESERVING_V1 KEEP (Forge V1 accuracy 0.612)",
+      "classification": "INVALIDATED",
+      "current": "SHORTCUT_DEPENDENT: HOLDOUT 0.256 (+0.050 over uniform) is the zero-cost prior plus a fixed absolute-direction tie-break; RESOURCE is exactly the lowest-identity zero-cost action.",
+      "evidence": [
+        {
+          "certificate": "artifacts/stage3f6p-policy-quality/stage3f6p-certification-result.json",
+          "certificationHash": "3cd670113c2ffd3ad40e1113b77d492943b226bfcdb1730c3b60a15de679a585",
+          "path": ".classification.RESOURCE_PRESERVING_V1",
+          "expect": "KEEP"
+        },
+        {
+          "certificate": "artifacts/stage3f6p1e-policy-requalification/stage3f6p1e-certification-result.json",
+          "certificationHash": "11dcf65b79679ae8748eed0f5f9f3fdef38223524308aaa353c5b482eed8a031",
+          "path": ".historicalComparison.RESOURCE_PRESERVING_V1.conclusion",
+          "expect": "INVALIDATED"
+        },
+        {
+          "certificate": "artifacts/stage3f6p1e-policy-requalification/stage3f6p1e-certification-result.json",
+          "certificationHash": "11dcf65b79679ae8748eed0f5f9f3fdef38223524308aaa353c5b482eed8a031",
+          "path": ".classification.RESOURCE_PRESERVING_V1.class",
+          "expect": "SHORTCUT_DEPENDENT"
+        }
+      ]
+    },
+    {
+      "id": "RESOURCE_SHORTCUT_DEPENDENCE",
+      "historical": "Stage 3F.6-P: RESOURCE_FORGE_SHORTCUT_DEPENDENT",
+      "classification": "SURVIVES",
+      "current": "Confirmed on the symmetric benchmark and on fresh sealed partitions: accuracy 0.303 vs 0.252 with identities reversed; +0.39 in the orientations that keep EAST as EAST.",
+      "evidence": [
+        {
+          "certificate": "artifacts/stage3f6p-policy-quality/stage3f6p-certification-result.json",
+          "certificationHash": "3cd670113c2ffd3ad40e1113b77d492943b226bfcdb1730c3b60a15de679a585",
+          "path": ".diagnosis.secondaryResult",
+          "expect": "RESOURCE_FORGE_SHORTCUT_DEPENDENT+ORACLE_CEILING_LIMITED"
+        },
+        {
+          "certificate": "artifacts/stage3f6p1asym-free-action/stage3f6p1asym-certification-result.json",
+          "certificationHash": "84770670baeb1502142e12d24a12d03763c0a97c22e80acc53013ecb98871fbb",
+          "path": ".roadmap.CURRENT_POLICY_SHORTCUT_CONFIRMED",
+          "expect": true
+        }
+      ]
+    },
+    {
+      "id": "NEXUS_V1_COMPETENCE",
+      "historical": "Stage 3F.6-P: NEXUS_SELECTOR REDESIGN_CANDIDATE",
+      "classification": "SURVIVES",
+      "current": "REDESIGN_CANDIDATE: below chance overall (0.170, -0.037 vs uniform) but uniquely right when a costly action is optimal; REPRESENTATION_BLOCKED and POLICY_LOGIC_LIMITED (PROTECT in 90% of decisions, type right 17%).",
+      "evidence": [
+        {
+          "certificate": "artifacts/stage3f6p1e-policy-requalification/stage3f6p1e-certification-result.json",
+          "certificationHash": "11dcf65b79679ae8748eed0f5f9f3fdef38223524308aaa353c5b482eed8a031",
+          "path": ".historicalComparison.NEXUS_SELECTOR_V1.conclusion",
+          "expect": "SURVIVES"
+        },
+        {
+          "certificate": "artifacts/stage3f6p1sym-nexus-requalification/stage3f6p1sym-certification-result.json",
+          "certificationHash": "afcdceb18df34b05bb60613e302a762c3de196d764b34dfbe50e1978d3f80cf8",
+          "path": ".nexusClassification.NEXUS_SELECTOR_V1.holds.REPRESENTATION_BLOCKED",
+          "expect": true
+        },
+        {
+          "certificate": "artifacts/stage3f6p1sym-nexus-requalification/stage3f6p1sym-certification-result.json",
+          "certificationHash": "afcdceb18df34b05bb60613e302a762c3de196d764b34dfbe50e1978d3f80cf8",
+          "path": ".nexusClassification.NEXUS_SELECTOR_V1.holds.POLICY_LOGIC_LIMITED",
+          "expect": true
+        }
+      ]
+    },
+    {
+      "id": "NEXUS_V2_COMPETENCE",
+      "historical": "Stage 3F.6-P.1: V2 candidate materially improves NEXUS standalone (D_REMEDIATION_REQUIRES_MISSING_REPRESENTATION)",
+      "classification": "PARTIALLY_SURVIVES",
+      "current": "The standalone gain over V1 is real with tie-breaks randomised (+0.138 HOLDOUT) but comes from choosing MOVE with a fixed-EAST direction shortcut; V2 is SHORTCUT_DEPENDENT and lowers the policy-set ceiling 0.397 -> 0.351. The representation diagnosis survives.",
+      "evidence": [
+        {
+          "certificate": "artifacts/stage3f6p1sym-nexus-requalification/stage3f6p1sym-certification-result.json",
+          "certificationHash": "afcdceb18df34b05bb60613e302a762c3de196d764b34dfbe50e1978d3f80cf8",
+          "path": ".roadmap.HISTORICAL_P1_SURVIVES",
+          "expect": "PARTIAL"
+        },
+        {
+          "certificate": "artifacts/stage3f6p1sym-nexus-requalification/stage3f6p1sym-certification-result.json",
+          "certificationHash": "afcdceb18df34b05bb60613e302a762c3de196d764b34dfbe50e1978d3f80cf8",
+          "path": ".nexusClassification.NEXUS_SELECTOR_V2_CANDIDATE.holds.SHORTCUT_DEPENDENT",
+          "expect": true
+        },
+        {
+          "certificate": "artifacts/stage3f6p1e-policy-requalification/stage3f6p1e-certification-result.json",
+          "certificationHash": "11dcf65b79679ae8748eed0f5f9f3fdef38223524308aaa353c5b482eed8a031",
+          "path": ".classification.NEXUS_SELECTOR_V2_CANDIDATE.class",
+          "expect": "SHORTCUT_DEPENDENT"
+        }
+      ]
+    },
+    {
+      "id": "OBJECTIVE_COMPETENCE",
+      "historical": "Stage 3F.6-P: OBJECTIVE_TARGETING_V1 INSUFFICIENT_EVIDENCE",
+      "classification": "SUPERSEDED",
+      "current": "KEEP_BUT_LIMIT: 0.268 accuracy at 0.079 coverage (+0.088 vs uniform), LOW_COVERAGE and OOD_DEGRADES (0.125 on OOD); on OOD its specialist selections add more regret than they save.",
+      "evidence": [
+        {
+          "certificate": "artifacts/stage3f6p-policy-quality/stage3f6p-certification-result.json",
+          "certificationHash": "3cd670113c2ffd3ad40e1113b77d492943b226bfcdb1730c3b60a15de679a585",
+          "path": ".classification.OBJECTIVE_TARGETING_V1",
+          "expect": "INSUFFICIENT_EVIDENCE"
+        },
+        {
+          "certificate": "artifacts/stage3f6p1e-policy-requalification/stage3f6p1e-certification-result.json",
+          "certificationHash": "11dcf65b79679ae8748eed0f5f9f3fdef38223524308aaa353c5b482eed8a031",
+          "path": ".classification.OBJECTIVE_TARGETING_V1.class",
+          "expect": "KEEP_BUT_LIMIT"
+        }
+      ]
+    },
+    {
+      "id": "THREAT_COMPETENCE",
+      "historical": "Stage 3F.6-P: THREAT_COVERING_V1 INSUFFICIENT_EVIDENCE",
+      "classification": "INSUFFICIENT_EVIDENCE",
+      "current": "Still INSUFFICIENT_EVIDENCE (n = 158 proposing on HOLDOUT, coverage 0.026); where it proposes it is accurate (0.367) but the evidence floor is not met.",
+      "evidence": [
+        {
+          "certificate": "artifacts/stage3f6p1e-policy-requalification/stage3f6p1e-certification-result.json",
+          "certificationHash": "11dcf65b79679ae8748eed0f5f9f3fdef38223524308aaa353c5b482eed8a031",
+          "path": ".classification.THREAT_COVERING_V1.class",
+          "expect": "INSUFFICIENT_EVIDENCE"
+        },
+        {
+          "certificate": "artifacts/stage3f6p1e-policy-requalification/stage3f6p1e-certification-result.json",
+          "certificationHash": "11dcf65b79679ae8748eed0f5f9f3fdef38223524308aaa353c5b482eed8a031",
+          "path": ".historicalComparison.THREAT_COVERING_V1.conclusion",
+          "expect": "SURVIVES"
+        }
+      ]
+    },
+    {
+      "id": "EXPERT_COMPLEMENTARITY",
+      "historical": "Stage 3F.6-A: policy set sufficient; oracle bound shows recoverable value",
+      "classification": "SURVIVES",
+      "current": "EXPERT_COMPLEMENTARITY_EXISTS: a perfect selector beats RESOURCE by +0.137 accuracy on fresh sealed HOLDOUT (95% CI 0.129-0.146).",
+      "evidence": [
+        {
+          "certificate": "artifacts/stage3f6tsym-router-value/stage3f6tsym-certification-result.json",
+          "certificationHash": "edd46e40fc2c6ddc611f9f78a432f723f0ae4e66facc1b2ca84183fa4d896f4e",
+          "path": ".roadmap.EXPERT_COMPLEMENTARITY_EXISTS",
+          "expect": true
+        },
+        {
+          "certificate": "artifacts/stage3f6tsym-router-value/stage3f6tsym-certification-result.json",
+          "certificationHash": "edd46e40fc2c6ddc611f9f78a432f723f0ae4e66facc1b2ca84183fa4d896f4e",
+          "path": ".partitions.FRESH_HOLDOUT.headroom.HEADROOM_AVAILABLE_ACCURACY",
+          "expect": 0.137
+        }
+      ]
+    },
+    {
+      "id": "COMPLEMENTARITY_ROUTABILITY",
+      "historical": "Stage 3F.6-A: ready for router retrain over the deployable set",
+      "classification": "INVALIDATED",
+      "current": "EXPERT_COMPLEMENTARITY_NOT_ROUTABLE: deployable features predict when RESOURCE is structurally wrong (AUROC 0.863 / 0.921) but not when NEXUS V1 beats RESOURCE in general (0.596 / 0.532).",
+      "evidence": [
+        {
+          "certificate": "artifacts/stage3f6a-action-proposals/stage3f6a-certification-result.json",
+          "certificationHash": "2753335e7d97e77758dd90f71d9eb22274cba23cd187485c2338cd857eedb6ca",
+          "path": ".roadmap.readyForRouterRetrain",
+          "expect": true
+        },
+        {
+          "certificate": "artifacts/stage3f6tsym-router-value/stage3f6tsym-certification-result.json",
+          "certificationHash": "edd46e40fc2c6ddc611f9f78a432f723f0ae4e66facc1b2ca84183fa4d896f4e",
+          "path": ".conclusion.primary",
+          "expect": "EXPERT_COMPLEMENTARITY_NOT_ROUTABLE"
+        },
+        {
+          "certificate": "artifacts/stage3f6tsym-router-value/stage3f6tsym-certification-result.json",
+          "certificationHash": "edd46e40fc2c6ddc611f9f78a432f723f0ae4e66facc1b2ca84183fa4d896f4e",
+          "path": ".roadmap.EXPERT_COMPLEMENTARITY_ROUTABLE",
+          "expect": false
+        }
+      ]
+    },
+    {
+      "id": "ROUTER_VALUE",
+      "historical": "Stage 3F.6-T: B_ROUTING_STATISTICALLY_BETTER_BUT_NOT_MATERIAL, LOW oracle-gain capture",
+      "classification": "SURVIVES",
+      "current": "ROUTER_VALUE_MATERIAL=false: the refitted historical router routes 77% to NEXUS V1, lowering regret (-4.6) but costing -0.058 accuracy; it captures -42% of the accuracy headroom. ROUTER_2_0_JUSTIFIED=false.",
+      "evidence": [
+        {
+          "certificate": "artifacts/stage3f6t-policy-router/stage3f6t-certification-result.json",
+          "certificationHash": "5d6910dd39405ee9f9fc2868f1309ff84998d30f7128e7a60b36644ca9056582",
+          "path": ".classification.routerValueConclusion",
+          "expect": "LOW"
+        },
+        {
+          "certificate": "artifacts/stage3f6tsym-router-value/stage3f6tsym-certification-result.json",
+          "certificationHash": "edd46e40fc2c6ddc611f9f78a432f723f0ae4e66facc1b2ca84183fa4d896f4e",
+          "path": ".roadmap.ROUTER_VALUE_MATERIAL",
+          "expect": false
+        },
+        {
+          "certificate": "artifacts/stage3f6tsym-router-value/stage3f6tsym-certification-result.json",
+          "certificationHash": "edd46e40fc2c6ddc611f9f78a432f723f0ae4e66facc1b2ca84183fa4d896f4e",
+          "path": ".roadmap.ROUTER_2_0_JUSTIFIED",
+          "expect": false
+        }
+      ]
+    },
+    {
+      "id": "RISK_STATE_VALUE",
+      "historical": "Stage 3F.6-W: B_CURRENT_RISK_SIGNALS_INSUFFICIENT",
+      "classification": "PARTIALLY_SURVIVES",
+      "current": "RISK_SIGNAL_WEAK, SHORTCUT_CORRELATED, OOD_UNSTABLE, PROXY_OF_HIDDEN_GEOMETRY; headline B reproduces exactly and 10 of 13 retestable claims survive; the W router gain is threshold, not information. No genuine risk signal measured.",
+      "evidence": [
+        {
+          "certificate": "artifacts/stage3f6w-risk-state/stage3f6w-certification-result.json",
+          "certificationHash": "7c5db9fbdd1d02bbee76ee12a0a5bf8a6e98c5a53adb510b0ed7e57ebd295fb6",
+          "path": ".classification.primaryResult",
+          "expect": "B_CURRENT_RISK_SIGNALS_INSUFFICIENT"
+        },
+        {
+          "certificate": "artifacts/stage3f6wsym-risk-requalification/stage3f6wsym-certification-result.json",
+          "certificationHash": "26e77c5d18c89774e3106295ec3868a2fcf2a83d251bab6173fc20510044f4b0",
+          "path": ".roadmap.HISTORICAL_W_SURVIVES",
+          "expect": "PARTIAL"
+        },
+        {
+          "certificate": "artifacts/stage3f6wsym-risk-requalification/stage3f6wsym-certification-result.json",
+          "certificationHash": "26e77c5d18c89774e3106295ec3868a2fcf2a83d251bab6173fc20510044f4b0",
+          "path": ".classification.primary",
+          "expect": "RISK_SIGNAL_WEAK"
+        },
+        {
+          "certificate": "artifacts/stage3f6wsym-risk-requalification/stage3f6wsym-certification-result.json",
+          "certificationHash": "26e77c5d18c89774e3106295ec3868a2fcf2a83d251bab6173fc20510044f4b0",
+          "path": ".roadmap.RISK_SIGNAL_IMPROVES_DECISIONS",
+          "expect": false
+        }
+      ]
+    },
+    {
+      "id": "DECISION_RULE_VALUE",
+      "historical": "Stage 3F.6-D: B_COST_SENSITIVE_RULE_BETTER_BUT_NOT_MATERIAL",
+      "classification": "PARTIALLY_SURVIVES",
+      "current": "DECISION_RULE_VALUE_MATERIAL=false survives; the historical OOD survival and class-weighting effect are invalidated (the CAL-selected rule reverses on OOD: -0.0675 accuracy).",
+      "evidence": [
+        {
+          "certificate": "artifacts/stage3f6d-decision-rule/stage3f6d-certification-result.json",
+          "certificationHash": "f262c3477631a92007e1a40d4ba85bc03874fab6c1a68e78013378de2b909f3b",
+          "path": ".diagnosis.primaryResult",
+          "expect": "B_COST_SENSITIVE_RULE_BETTER_BUT_NOT_MATERIAL"
+        },
+        {
+          "certificate": "artifacts/stage3f6dsym-decision-rule/stage3f6dsym-certification-result.json",
+          "certificationHash": "65e507b76bbfb9b3a4ae867f73c9d2bc056575ef9b7743359bcfc28b2bb90680",
+          "path": ".conclusion.DECISION_RULE_VALUE_MATERIAL",
+          "expect": false
+        },
+        {
+          "certificate": "artifacts/stage3f6dsym-decision-rule/stage3f6dsym-certification-result.json",
+          "certificationHash": "65e507b76bbfb9b3a4ae867f73c9d2bc056575ef9b7743359bcfc28b2bb90680",
+          "path": ".conclusion.DECISION_RULE_OOD_STABLE",
+          "expect": false
+        }
+      ]
+    },
+    {
+      "id": "POLICY_SET_CEILING",
+      "historical": "Stage 3F.6-P: a perfect router over the Forge V1 set reaches only 16.17 mean regret",
+      "classification": "SUPERSEDED",
+      "current": "On the symmetric lineage a perfect selector reaches 0.397 accuracy on HOLDOUT (0.400 fresh HOLDOUT) and 0.359 on OOD; the policy set is not competent (POLICY_SET_COMPETENT=false). V2 lowers the ceiling to 0.351.",
+      "evidence": [
+        {
+          "certificate": "artifacts/stage3f6p1e-policy-requalification/stage3f6p1e-certification-result.json",
+          "certificationHash": "11dcf65b79679ae8748eed0f5f9f3fdef38223524308aaa353c5b482eed8a031",
+          "path": ".complementarity.HOLDOUT.HISTORICAL_ROUTED.oracle.accuracy",
+          "expect": 0.397
+        },
+        {
+          "certificate": "artifacts/stage3f6tsym-router-value/stage3f6tsym-certification-result.json",
+          "certificationHash": "edd46e40fc2c6ddc611f9f78a432f723f0ae4e66facc1b2ca84183fa4d896f4e",
+          "path": ".partitions.FRESH_HOLDOUT.strategies.PERFECT_POLICY_SELECTOR.accuracy",
+          "expect": 0.400167
+        },
+        {
+          "certificate": "artifacts/stage3f6dsym-decision-rule/stage3f6dsym-certification-result.json",
+          "certificationHash": "65e507b76bbfb9b3a4ae867f73c9d2bc056575ef9b7743359bcfc28b2bb90680",
+          "path": ".conclusion.POLICY_SET_COMPETENT",
+          "expect": false
+        }
+      ]
+    },
+    {
+      "id": "FALSE_SELECTION_HARM",
+      "historical": "Stage 3F.6-D: specialist false selections add material regret",
+      "classification": "PARTIALLY_SURVIVES",
+      "current": "FALSE_SELECTION_HARM_ACCEPTABLE=false: large harm remains (OOD NEXUS false picks add 103,767 regret against a 120,901 saving; OOD OBJECTIVE is net harmful), though some specialists are net positive.",
+      "evidence": [
+        {
+          "certificate": "artifacts/stage3f6dsym-decision-rule/stage3f6dsym-certification-result.json",
+          "certificationHash": "65e507b76bbfb9b3a4ae867f73c9d2bc056575ef9b7743359bcfc28b2bb90680",
+          "path": ".conclusion.FALSE_SELECTION_HARM_ACCEPTABLE",
+          "expect": false
+        }
+      ]
+    },
+    {
+      "id": "OOD_STABILITY",
+      "historical": "Stage 3F.6: contract-path OOD precision 0.910 (privileged Stage 3E features)",
+      "classification": "SUPERSEDED",
+      "current": "No Stage 3F routing, risk or decision-rule gain is OOD-stable: the decision rule reverses on OOD, the risk signal is OOD_UNSTABLE, the best deployable candidate scorer is OOD_UNSTABLE, the W router is worse than best single on OOD; single-policy accuracies replicate except OBJECTIVE (OOD_DEGRADES). The historical OOD precision used non-deployable features.",
+      "evidence": [
+        {
+          "certificate": "artifacts/stage3f6dsym-decision-rule/stage3f6dsym-certification-result.json",
+          "certificationHash": "65e507b76bbfb9b3a4ae867f73c9d2bc056575ef9b7743359bcfc28b2bb90680",
+          "path": ".conclusion.DECISION_RULE_OOD_STABLE",
+          "expect": false
+        },
+        {
+          "certificate": "artifacts/stage3f6wsym-risk-requalification/stage3f6wsym-certification-result.json",
+          "certificationHash": "26e77c5d18c89774e3106295ec3868a2fcf2a83d251bab6173fc20510044f4b0",
+          "path": ".roadmap.RISK_SIGNAL_OOD_STABLE",
+          "expect": false
+        },
+        {
+          "certificate": "artifacts/stage3f6s-deployable-feature-contract/stage3f6s-certification-result.json",
+          "certificationHash": "825084e9ef58fb5fcb27a29bee4d8a9f3b7983aed1cf0d2b1719be3b5f604b35",
+          "path": ".status",
+          "expect": "PASS"
+        }
+      ]
+    },
+    {
+      "id": "STATE_REPRESENTATION_SUFFICIENCY",
+      "historical": "Stage 3F.6: World State v1 92% ambiguous; router-vs-representation H_INSUFFICIENT_EVIDENCE",
+      "classification": "SUPERSEDED",
+      "current": "STATE_REPRESENTATION_SUFFICIENT=false, now decided: deployable state and state+candidate representations are REPRESENTATION_INSUFFICIENT; the same scorer with privileged task-entity positions reaches 0.806 / 0.915.",
+      "evidence": [
+        {
+          "certificate": "artifacts/stage3f6-prediction-reliability/stage3f6-certification-result.json",
+          "certificationHash": "399f71c9cc0b2758e610133454e2f137436339a04a2117a1323a0a0bc3616a84",
+          "path": ".diagnosis.supported.B_STATE_REPRESENTATION_LIMITED.supported",
+          "expect": true
+        },
+        {
+          "certificate": "artifacts/stage3f6p1asym-free-action/stage3f6p1asym-certification-result.json",
+          "certificationHash": "84770670baeb1502142e12d24a12d03763c0a97c22e80acc53013ecb98871fbb",
+          "path": ".roadmap.DEPLOYABLE_STATE_SUFFICIENT",
+          "expect": false
+        },
+        {
+          "certificate": "artifacts/stage3f6p1asym-free-action/stage3f6p1asym-certification-result.json",
+          "certificationHash": "84770670baeb1502142e12d24a12d03763c0a97c22e80acc53013ecb98871fbb",
+          "path": ".roadmap.DEPLOYABLE_CANDIDATE_REPRESENTATION_SUFFICIENT",
+          "expect": false
+        }
+      ]
+    },
+    {
+      "id": "SPATIAL_OBSERVABILITY",
+      "historical": "Stage 3F.6: relationships and spatial state carry no predictions; spatial observation changes invisible to features",
+      "classification": "SURVIVES",
+      "current": "SPATIAL_STATE_REQUIRED=true: 98-99% of remaining free-action errors are separated by where the objective entity or materials are; privileged geometry of where movement leads relative to task entities lifts accuracy to 0.755 / 0.902 and risk AUROC by +0.21 to +0.43.",
+      "evidence": [
+        {
+          "certificate": "artifacts/stage3f6p1sym-nexus-requalification/stage3f6p1sym-certification-result.json",
+          "certificationHash": "afcdceb18df34b05bb60613e302a762c3de196d764b34dfbe50e1978d3f80cf8",
+          "path": ".roadmap.SPATIAL_STATE_REQUIRED",
+          "expect": true
+        },
+        {
+          "certificate": "artifacts/stage3f6p1asym-free-action/stage3f6p1asym-certification-result.json",
+          "certificationHash": "84770670baeb1502142e12d24a12d03763c0a97c22e80acc53013ecb98871fbb",
+          "path": ".roadmap.PREDICTIVE_REPRESENTATION_REQUIRED",
+          "expect": true
+        }
+      ]
+    },
+    {
+      "id": "ACTION_SEMANTICS",
+      "historical": "not measured before the symmetric chain",
+      "classification": "SURVIVES",
+      "current": "ACTION_SEMANTICS_REQUIRED=true: the missing capability belongs to observation and action-semantics infrastructure (what a MOVE does relative to task entities), not to Nexus relational scope.",
+      "evidence": [
+        {
+          "certificate": "artifacts/stage3f6p1asym-free-action/stage3f6p1asym-certification-result.json",
+          "certificationHash": "84770670baeb1502142e12d24a12d03763c0a97c22e80acc53013ecb98871fbb",
+          "path": ".roadmap.ACTION_SEMANTICS_REQUIRED",
+          "expect": true
+        },
+        {
+          "certificate": "artifacts/stage3f6p1sym-nexus-requalification/stage3f6p1sym-certification-result.json",
+          "certificationHash": "afcdceb18df34b05bb60613e302a762c3de196d764b34dfbe50e1978d3f80cf8",
+          "path": ".roadmap.ACTION_SEMANTICS_REQUIRED",
+          "expect": true
+        }
+      ]
+    },
+    {
+      "id": "TRANSITION_PREDICTION_NEED",
+      "historical": "Stage 3F.6: recorded primary diagnosis C_PREDICTION_LIMITED",
+      "classification": "INVALIDATED",
+      "current": "TRANSITION_PREDICTION_REQUIRED=false as the first bottleneck: one-step successor information adds +0.013 (free action) and +0.002 (Nexus). Only single-step successors were tested; multistep prediction was not measured.",
+      "evidence": [
+        {
+          "certificate": "artifacts/stage3f6-prediction-reliability/stage3f6-certification-result.json",
+          "certificationHash": "399f71c9cc0b2758e610133454e2f137436339a04a2117a1323a0a0bc3616a84",
+          "path": ".diagnosis.primary",
+          "expect": "C_PREDICTION_LIMITED"
+        },
+        {
+          "certificate": "artifacts/stage3f6p1asym-free-action/stage3f6p1asym-certification-result.json",
+          "certificationHash": "84770670baeb1502142e12d24a12d03763c0a97c22e80acc53013ecb98871fbb",
+          "path": ".roadmap.TRANSITION_PREDICTION_REQUIRED",
+          "expect": false
+        },
+        {
+          "certificate": "artifacts/stage3f6p1sym-nexus-requalification/stage3f6p1sym-certification-result.json",
+          "certificationHash": "afcdceb18df34b05bb60613e302a762c3de196d764b34dfbe50e1978d3f80cf8",
+          "path": ".roadmap.TRANSITION_PREDICTION_REQUIRED",
+          "expect": false
+        }
+      ]
+    },
+    {
+      "id": "PREDICTION_RELIABILITY",
+      "historical": "Stage 3F.6: no evidence-supported reliability tier; runtime-path figures (precision 0.245, ECE 0.575)",
+      "classification": "PARTIALLY_SURVIVES",
+      "current": "No evidence-grounded reliability tier survives on the deployable contract with fresh seeds (3F.6-C: B_CORE_HAS_SIGNAL_BUT_NOT_SELECTIVE_RELIABILITY, NO_CAL_OPERATING_POINT). The runtime-path figures are superseded by the 3F.6-R remediation; one-step predictions remain simulator-exact and privileged (no non-privileged consequence predictor exists).",
+      "evidence": [
+        {
+          "certificate": "artifacts/stage3f6-prediction-reliability/stage3f6-certification-result.json",
+          "certificationHash": "399f71c9cc0b2758e610133454e2f137436339a04a2117a1323a0a0bc3616a84",
+          "path": ".roadmap.blockers[6]",
+          "expect": "NO_EVIDENCED_RELIABILITY_TIER_ON_HOLDOUT"
+        },
+        {
+          "certificate": "artifacts/stage3f6c-deployable-router/stage3f6c-certification-result.json",
+          "certificationHash": "40ae3b415eeca2c1774a5f4ce2e2904bb189d4d83f98f26c1614eccce5dd0051",
+          "path": ".resultClassification.primaryResult",
+          "expect": "B_CORE_HAS_SIGNAL_BUT_NOT_SELECTIVE_RELIABILITY"
+        }
+      ]
+    },
+    {
+      "id": "NON_PRIVILEGED_PREDICTOR_GAP",
+      "historical": "Stage 3F.6: CAPABILITY_GAP=NO_NON_PRIVILEGED_CONSEQUENCE_PREDICTOR",
+      "classification": "SURVIVES",
+      "current": "No non-privileged consequence predictor was built or measured in Stage 3F; the gap stands and is the object of the Decision Evaluation Contract.",
+      "evidence": [
+        {
+          "certificate": "artifacts/stage3f6r-runtime-parity-remediation/stage3f6r-certification-result.json",
+          "certificationHash": "4fba8d61e09be12efb428b66d1b189c0a9b970f7e4adb4dc7d9ecbb084cb7d9f",
+          "path": ".stage3f6.currentDiagnosis.CAPABILITY_GAP",
+          "expect": "NO_NON_PRIVILEGED_CONSEQUENCE_PREDICTOR"
+        }
+      ]
+    },
+    {
+      "id": "POLICY_QUALITY_BOTTLENECK",
+      "historical": "Stage 3F.6-P: B_POLICY_QUALITY_IS_BINDING_LIMITATION",
+      "classification": "SURVIVES",
+      "current": "POLICY_QUALITY_PRIMARY_BOTTLENECK=true relative to selection: the policy set loses 0.600 accuracy even under perfect selection, imperfect selection only 0.137. The policies are limited by missing observable spatial state and action semantics (H2), not by policy logic, except NEXUS V1 policy logic.",
+      "evidence": [
+        {
+          "certificate": "artifacts/stage3f6p-policy-quality/stage3f6p-certification-result.json",
+          "certificationHash": "3cd670113c2ffd3ad40e1113b77d492943b226bfcdb1730c3b60a15de679a585",
+          "path": ".diagnosis.primaryResult",
+          "expect": "B_POLICY_QUALITY_IS_BINDING_LIMITATION"
+        },
+        {
+          "certificate": "artifacts/stage3f6tsym-router-value/stage3f6tsym-certification-result.json",
+          "certificationHash": "edd46e40fc2c6ddc611f9f78a432f723f0ae4e66facc1b2ca84183fa4d896f4e",
+          "path": ".roadmap.POLICY_QUALITY_REMAINS_PRIMARY_BOTTLENECK",
+          "expect": true
+        }
+      ]
+    },
+    {
+      "id": "GENUINE_RELATIONAL_VALUE",
+      "historical": "Stage 3F.6-P.1 / P.1A: no entity-targeted relational action closes the gap",
+      "classification": "SURVIVES",
+      "current": "GENUINE_RELATIONAL_VALUE_MEASURED=false: no observable relational regime shows V1 or V2 beating both uniform and RESOURCE; where targeted entities are adds 0.000.",
+      "evidence": [
+        {
+          "certificate": "artifacts/stage3f6p1sym-nexus-requalification/stage3f6p1sym-certification-result.json",
+          "certificationHash": "afcdceb18df34b05bb60613e302a762c3de196d764b34dfbe50e1978d3f80cf8",
+          "path": ".roadmap.GENUINE_RELATIONAL_VALUE_MEASURED",
+          "expect": false
+        }
+      ]
+    },
+    {
+      "id": "HISTORICAL_RUNTIME_ROUTER_RELIABILITY",
+      "historical": "Stage 3F.6 Layer B runtime-path reliability of the Stage 3F.5 integrated runtime",
+      "classification": "NOT_RETESTABLE",
+      "current": "The measured runtime no longer exists (remediated in 3F.6-R); its figures remain a faithful record of the pre-remediation runtime only.",
+      "evidence": [
+        {
+          "certificate": "artifacts/stage3f6-errata/erratum-stage3f6-prediction-reliability.json",
+          "certificationHash": "399817665bebda660ec73dc46ee9314764173d5b193efc0e3a500a1cfa19dbc9",
+          "path": ".claimsWithdrawn[1]",
+          "expect": "Stage 3F.6 runtime (Layer B) reliability figures describe the current, remediated runtime"
+        }
+      ]
+    },
+    {
+      "id": "AUTHORITY",
+      "historical": "R0 throughout",
+      "classification": "SURVIVES",
+      "current": "R0, non-dispatching, no live-world mutation, no online learning, no runtime promotion.",
+      "evidence": [
+        {
+          "certificate": "artifacts/stage3f6dsym-decision-rule/stage3f6dsym-certification-result.json",
+          "certificationHash": "65e507b76bbfb9b3a4ae867f73c9d2bc056575ef9b7743359bcfc28b2bb90680",
+          "path": ".authority.tier",
+          "expect": "R0"
+        },
+        {
+          "certificate": "artifacts/stage3f6tsym-router-value/stage3f6tsym-certification-result.json",
+          "certificationHash": "edd46e40fc2c6ddc611f9f78a432f723f0ae4e66facc1b2ca84183fa4d896f4e",
+          "path": ".authority.tier",
+          "expect": "R0"
+        }
+      ]
+    }
+  ],
+  "claimMapHash": "97e556f502ea42d818f1764e17314ef6cc6f435214ba52fd3a9680e897026350"
+}

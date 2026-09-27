@@ -1,0 +1,59 @@
+{
+  "schemaVersion": 1,
+  "contractId": "SENTINEL_DECISION_EVALUATION_CONTRACT_V1",
+  "status": "SPECIFICATION_ONLY",
+  "implementsWorldModel": false,
+  "purpose": "Fix, before any world model exists, how a predictive component will be judged in Stage 3G-3I: by the decisions it improves, not by how well it reconstructs the world.",
+  "canonicalRule": "LOWER FACTUAL PREDICTION LOSS DOES NOT IMPLY BETTER DECISION VALUE.",
+  "tournamentRule": "No learned world model may win the Stage 3I tournament solely because it has the lowest reconstruction, latent, or next-state prediction loss. Ranking is by DDV on sealed HOLDOUT and OOD, then TCA, then CR; FPE and CAD are reported diagnostics and never decide a ranking on their own.",
+  "metrics": {
+    "FPE": {
+      "name": "FACTUAL_PREDICTION_ERROR",
+      "question": "How accurately did Sentinel predict what actually happened after the executed action?",
+      "scope": "Executed action only, at decision points where a prediction was recorded before execution.",
+      "measurement": "Per predicted field: the Stage 3F.6 quality categories (EXACT, APPROXIMATELY_CORRECT, DIRECTIONALLY_CORRECT, WRONG, INCOMPARABLE, UNKNOWN) and a normalised error; aggregated per partition with Wilson intervals. INCOMPARABLE/UNKNOWN are counted, never scored.",
+      "guards": [
+        "prediction must be recorded at decision time and bound to its outcome (no post-decision information)",
+        "privileged (simulator-derived) predictions are reported separately and never counted as learned prediction"
+      ]
+    },
+    "CAD": {
+      "name": "COUNTERFACTUAL_ACTION_DISCRIMINATION",
+      "question": "Can Sentinel distinguish the predicted consequences of available alternative actions?",
+      "scope": "Every legal action at decision points with authoritative counterfactual evaluation (oracle used only as ground truth, never as input).",
+      "measurement": "Pairwise ordering concordance of predicted action values against authoritative counterfactual values (ties as ties); top-1 hit of the authoritative optimal set; AUROC of optimal versus non-optimal actions. Reported overall and within equal-cost candidate sets (the Stage 3F free-action regime)."
+    },
+    "CR": {
+      "name": "COUNTERFACTUAL_REGRET",
+      "question": "How much decision value was lost because Sentinel ranked alternative futures incorrectly?",
+      "measurement": "Authoritative value of the best action minus that of the action the component ranks first (uniform over tied top ranks): mean, normalised, p95 and catastrophic rate (regret >= STAGE3F6_METHODOLOGY.catastrophicRegret)."
+    },
+    "DDV": {
+      "name": "DOWNSTREAM_DECISION_VALUE",
+      "question": "Did using the predictive component improve Prime's final governed recommendation?",
+      "measurement": "Paired ablation on sealed partitions: Prime with versus without the component. Action accuracy, normalised regret, catastrophic rate and false-selection harm, each with a paired 95% bootstrap interval.",
+      "materiality": "Inherited Stage 3F bar: accuracy gain >= 0.02 or normalised-regret reduction >= 0.02 with the paired interval beyond zero and no significant worsening of the other; must hold on OOD; nuisance (D4, identity, candidate order) dependence of the increment <= 0.02; false-selection harm within its predeclared bound."
+    },
+    "TCA": {
+      "name": "TRUST_CONDITIONED_ADVANTAGE",
+      "question": "How much realized decision value is gained specifically on cases admitted by a future World-Model Trust Gate?",
+      "measurement": "DDV restricted to cases the (future) World-Model Trust Gate admits, reported with admission coverage, plus the coverage-weighted advantage and the harm on admitted cases. Gate thresholds are frozen on CAL before any sealed exposure.",
+      "dependsOn": "WORLD_MODEL_TRUST_GATE (planned, not specified here)"
+    }
+  },
+  "evaluationDiscipline": [
+    "DEV fit, CAL selection, sealed HOLDOUT/OOD confirmation, predeclared before sealed exposure",
+    "D4, identity-permutation and candidate-order nuisance audits on every headline number (Stage 3F shortcut lesson)",
+    "deployable versus privileged versus oracle provenance declared for every input and prediction",
+    "accuracy and regret always reported separately",
+    "computed under SENTINEL_CANONICAL_NUMERICS_V1 and verified read-only (Stage 3F-RP)"
+  ],
+  "authority": {
+    "tier": "R0",
+    "canDispatch": false,
+    "canMutateLiveWorld": false,
+    "onlineLearningEnabled": false,
+    "promotedToLiveRuntime": false
+  },
+  "contractHash": "10c301884539c5cfb21d95795191217b98762a98aacfab8eab4207c87cbec90e"
+}

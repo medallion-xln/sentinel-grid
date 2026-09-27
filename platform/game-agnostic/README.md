@@ -50,3 +50,7 @@ npm run stage3frp:check            # Stage 3F-RP reproducibility portability cer
 ```
 
 See `docs/STAGE3FRP_REPRODUCIBILITY_PORTABILITY.md`.
+
+Stage 3F.6-CR reconciles the historical Stage 3F.6 claims, its erratum and the symmetric chain into one canonical claim
+map and freezes `SENTINEL_DECISION_EVALUATION_CONTRACT_V1` (specification only): `npm run stage3f6cr:check`. See
+`docs/STAGE3F6CR_CONFIRMATORY_RECONCILIATION.md`.
