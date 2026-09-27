@@ -1,0 +1,238 @@
+{
+  "schemaVersion": 1,
+  "label": "linux-x64-node22-pure-canonical-3f6d",
+  "procedure": "STAGE3F_CANONICAL_REPRODUCIBILITY_PROCEDURE_V1",
+  "mode": "canonical",
+  "numericsProfile": "SENTINEL_CANONICAL_NUMERICS_V1",
+  "pureCanonical": true,
+  "head": "94ebcfdcadbee4d16285591863a921e1d50d1740",
+  "host": {
+    "platform": "linux",
+    "arch": "x64",
+    "node": "v22.22.2",
+    "v8": "12.4.254.21-node.39",
+    "cpuModel": "Intel(R) Xeon(R) Processor @ 2.10GHz"
+  },
+  "trackedTreeUnchanged": true,
+  "pass": false,
+  "evidence": [],
+  "checks": [
+    {
+      "id": "3F6D",
+      "profile": null,
+      "status": "NOT_REPRODUCED",
+      "storedHash": "f262c3477631a92007e1a40d4ba85bc03874fab6c1a68e78013378de2b909f3b",
+      "recomputedHash": "e6095c16447052a1213825a7c44f63e69e5c8ace54c0a20e4e6952ecef286003",
+      "exitCode": 1,
+      "ownCheckModeTrackedWrites": [
+        {
+          "event": "TRACKED_MUTATION_BLOCKED",
+          "file": "platform/game-agnostic/artifacts/stage3f6d-decision-rule/stage3f6d-decision-freeze.json"
+        }
+      ],
+      "trackedMutationsBlocked": [
+        "platform/game-agnostic/artifacts/stage3f6d-decision-rule/stage3f6d-decision-freeze.json"
+      ]
+    }
+  ],
+  "certificateDiff": {
+    "3F6D": {
+      "artifacts/stage3f6d-decision-rule/stage3f6d-decision-freeze.json": {
+        "paired": true,
+        "source": "BLOCKED_CHECK_MODE_WRITE",
+        "differingLeaves": 2,
+        "byteIdentical": false,
+        "categories": {
+          "DATA_HASH_DIFFERENCE": {
+            "count": 0,
+            "maxAbsDiff": null,
+            "maxRelDiff": null,
+            "maxUlpDiff": null,
+            "examples": []
+          },
+          "MODEL_PARAMETER_DIFFERENCE": {
+            "count": 0,
+            "maxAbsDiff": null,
+            "maxRelDiff": null,
+            "maxUlpDiff": null,
+            "examples": []
+          },
+          "MODEL_HASH_DIFFERENCE": {
+            "count": 1,
+            "maxAbsDiff": null,
+            "maxRelDiff": null,
+            "maxUlpDiff": null,
+            "examples": [
+              {
+                "path": ".decisionFreezeHash",
+                "stored": "f02ad9b95b78f050dc5aa28c32761e4150d3579604bebb9dc9be6d59abca1363",
+                "recomputed": "7438b2334e554619c4c5f1a8a1ca048b5fab65dc25c0c1f7d592dfe6ab2ebce0"
+              }
+            ]
+          },
+          "METRIC_DIFFERENCE": {
+            "count": 1,
+            "maxAbsDiff": 1.1102230246251565e-16,
+            "maxRelDiff": 2.0700094561944776e-16,
+            "maxUlpDiff": 1,
+            "examples": [
+              {
+                "path": ".probabilityCalibration.grid[3].crossEntropy",
+                "stored": 0.5363371753219908,
+                "recomputed": 0.5363371753219909,
+                "absDiff": 1.1102230246251565e-16,
+                "relDiff": 2.0700094561944776e-16,
+                "ulpDiff": 1
+              }
+            ]
+          },
+          "CLASSIFICATION_DIFFERENCE": {
+            "count": 0,
+            "maxAbsDiff": null,
+            "maxRelDiff": null,
+            "maxUlpDiff": null,
+            "examples": []
+          },
+          "CONCLUSION_DIFFERENCE": {
+            "count": 0,
+            "maxAbsDiff": null,
+            "maxRelDiff": null,
+            "maxUlpDiff": null,
+            "examples": []
+          },
+          "PREDECESSOR_HASH_DIFFERENCE": {
+            "count": 0,
+            "maxAbsDiff": null,
+            "maxRelDiff": null,
+            "maxUlpDiff": null,
+            "examples": []
+          },
+          "OPEN_REPORT_HASH_DIFFERENCE": {
+            "count": 0,
+            "maxAbsDiff": null,
+            "maxRelDiff": null,
+            "maxUlpDiff": null,
+            "examples": []
+          },
+          "CERTIFICATE_HASH_DIFFERENCE": {
+            "count": 0,
+            "maxAbsDiff": null,
+            "maxRelDiff": null,
+            "maxUlpDiff": null,
+            "examples": []
+          },
+          "INTEGRITY_GATE_DIFFERENCE": {
+            "count": 0,
+            "maxAbsDiff": null,
+            "maxRelDiff": null,
+            "maxUlpDiff": null,
+            "examples": []
+          },
+          "GATE_CONSEQUENCE_DIFFERENCE": {
+            "count": 0,
+            "maxAbsDiff": null,
+            "maxRelDiff": null,
+            "maxUlpDiff": null,
+            "examples": []
+          }
+        }
+      },
+      "artifacts/stage3f6d-decision-rule/stage3f6d-certification-result.json": {
+        "paired": true,
+        "differingLeaves": 2,
+        "byteIdentical": false,
+        "categories": {
+          "DATA_HASH_DIFFERENCE": {
+            "count": 0,
+            "maxAbsDiff": null,
+            "maxRelDiff": null,
+            "maxUlpDiff": null,
+            "examples": []
+          },
+          "MODEL_PARAMETER_DIFFERENCE": {
+            "count": 0,
+            "maxAbsDiff": null,
+            "maxRelDiff": null,
+            "maxUlpDiff": null,
+            "examples": []
+          },
+          "MODEL_HASH_DIFFERENCE": {
+            "count": 1,
+            "maxAbsDiff": null,
+            "maxRelDiff": null,
+            "maxUlpDiff": null,
+            "examples": [
+              {
+                "path": ".decisionFreezeHash",
+                "stored": "f02ad9b95b78f050dc5aa28c32761e4150d3579604bebb9dc9be6d59abca1363",
+                "recomputed": "7438b2334e554619c4c5f1a8a1ca048b5fab65dc25c0c1f7d592dfe6ab2ebce0"
+              }
+            ]
+          },
+          "METRIC_DIFFERENCE": {
+            "count": 0,
+            "maxAbsDiff": null,
+            "maxRelDiff": null,
+            "maxUlpDiff": null,
+            "examples": []
+          },
+          "CLASSIFICATION_DIFFERENCE": {
+            "count": 0,
+            "maxAbsDiff": null,
+            "maxRelDiff": null,
+            "maxUlpDiff": null,
+            "examples": []
+          },
+          "CONCLUSION_DIFFERENCE": {
+            "count": 0,
+            "maxAbsDiff": null,
+            "maxRelDiff": null,
+            "maxUlpDiff": null,
+            "examples": []
+          },
+          "PREDECESSOR_HASH_DIFFERENCE": {
+            "count": 0,
+            "maxAbsDiff": null,
+            "maxRelDiff": null,
+            "maxUlpDiff": null,
+            "examples": []
+          },
+          "OPEN_REPORT_HASH_DIFFERENCE": {
+            "count": 0,
+            "maxAbsDiff": null,
+            "maxRelDiff": null,
+            "maxUlpDiff": null,
+            "examples": []
+          },
+          "CERTIFICATE_HASH_DIFFERENCE": {
+            "count": 1,
+            "maxAbsDiff": null,
+            "maxRelDiff": null,
+            "maxUlpDiff": null,
+            "examples": [
+              {
+                "path": ".certificationHash",
+                "stored": "f262c3477631a92007e1a40d4ba85bc03874fab6c1a68e78013378de2b909f3b",
+                "recomputed": "e6095c16447052a1213825a7c44f63e69e5c8ace54c0a20e4e6952ecef286003"
+              }
+            ]
+          },
+          "INTEGRITY_GATE_DIFFERENCE": {
+            "count": 0,
+            "maxAbsDiff": null,
+            "maxRelDiff": null,
+            "maxUlpDiff": null,
+            "examples": []
+          },
+          "GATE_CONSEQUENCE_DIFFERENCE": {
+            "count": 0,
+            "maxAbsDiff": null,
+            "maxRelDiff": null,
+            "maxUlpDiff": null,
+            "examples": []
+          }
+        }
+      }
+    }
+  }
+}

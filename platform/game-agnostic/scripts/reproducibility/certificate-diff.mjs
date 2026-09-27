@@ -20,6 +20,10 @@ const ordinal = (x) => { dv.setFloat64(0, x); const b = dv.getBigInt64(0); retur
 export const ulpDistance = (a, b) => Number(ordinal(b) - ordinal(a));
 
 const NUMBER_TOKEN = /-?\d+(?:\.\d+)?(?:e[-+]?\d+)?/gi;
+/* Boolean leaves that only compare fitted-model hashes for identity (reviewed individually, not by pattern). */
+export const IDENTITY_COMPARISON_LEAVES = Object.freeze({
+  '.routers.baseRouterIsTsymRouter': 'scripts/certify-stage3f6wsym-risk.mjs: BASE_ROUTER.routerHash === T-SYM routerHash && equal thresholds (thresholds are compared as their own leaves)',
+});
 /** Category of one differing leaf; `path` is a dotted JSON path. */
 export function classify(leafPath, a, b) {
   const p = leafPath.toLowerCase();
@@ -30,6 +34,7 @@ export function classify(leafPath, a, b) {
   if (/^\.checks\.[A-Z0-9_]*REPRODUC/.test(leafPath)) return 'INTEGRITY_GATE_DIFFERENCE';
   if (/reporthash|openreport|openphase/.test(p)) return 'OPEN_REPORT_HASH_DIFFERENCE';
   if (/predecessor|certificationhash|upstream/.test(p)) return 'PREDECESSOR_HASH_DIFFERENCE';
+  if (leafPath in IDENTITY_COMPARISON_LEAVES) return 'MODEL_HASH_DIFFERENCE';
   if (/routerhash|modelhash|freezehash|replayhash|candidatehash|fithash|analysisfreeze/.test(p)) return 'MODEL_HASH_DIFFERENCE';
   if (/\.(w|W|mu|sd)\[|(^|\.)(weights|coreweights|classweights)(\.|\[|$)|featureimportance|\.weight$|\.model\.|\.models\./.test(leafPath)) return 'MODEL_PARAMETER_DIFFERENCE';
   if (/contenthash|partitionhash|payloadhash|corpushash/.test(p)) return 'DATA_HASH_DIFFERENCE';

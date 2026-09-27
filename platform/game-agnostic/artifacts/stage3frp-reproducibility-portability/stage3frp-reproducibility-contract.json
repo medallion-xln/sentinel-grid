@@ -1,0 +1,76 @@
+{
+  "schemaVersion": 1,
+  "contractId": "STAGE3F_REPRODUCIBILITY_CONTRACT_V1",
+  "levels": {
+    "LEVEL_A_SCIENTIFIC_REPRODUCIBILITY": "Identical dataset / corpus content hashes; identical discrete outputs (policy and action selections, routing decisions, thresholds and tiers chosen, rankings, classifications, conclusions, roadmap flags); continuous metrics within the frozen output tolerance.",
+    "LEVEL_B_NUMERICAL_REPRODUCIBILITY": "Level A, and every fitted coefficient within the frozen relative coefficient tolerance and every prediction / continuous metric within the frozen output tolerance.",
+    "LEVEL_C_BYTE_REPRODUCIBILITY": "Identical serialised artifacts and hashes, computed under SENTINEL_CANONICAL_NUMERICS_V1."
+  },
+  "requiredLevel": {
+    "RAW_EVIDENCE_PAYLOADS": "LEVEL_C",
+    "SEALED_CORPORA_AND_PARTITIONS": "LEVEL_C",
+    "DETERMINISTIC_POLICIES": "LEVEL_C",
+    "TRAINED_DIAGNOSTIC_MODELS": "LEVEL_C",
+    "CERTIFICATES": "LEVEL_C",
+    "FINAL_STAGE3F_FREEZE": "LEVEL_C",
+    "note": "Every class keeps the byte-level requirement it had; it is strengthened from \"on the certifying host\" to \"on every host\", by computing under SENTINEL_CANONICAL_NUMERICS_V1. Level B and Level A are diagnostic comparisons for runs under host-native numerics; they never certify."
+  },
+  "numericsProfile": {
+    "id": "SENTINEL_CANONICAL_NUMERICS_V1",
+    "module": "src/core/canonical-numerics-v1.js",
+    "moduleSha256": "e1f22049ab3e9aee0e1f83033cc8e885a2e347810bead3c5010b7e7554f77cf4",
+    "functions": {
+      "exp": "fdlibm e_exp, reduction and polynomial with single-rounding fused multiply-add where clang -ffp-contract=on fuses (the arithmetic of record)",
+      "log": "fdlibm e_log, separately rounded",
+      "log2": "fdlibm e_log2, separately rounded",
+      "pow": "correctly rounded, ECMAScript special cases, V8 y=2 and y=0.5 shortcuts"
+    },
+    "implementedWith": "IEEE-754 +, -, *, /, Math.sqrt, integer bit operations and BigInt only (all exactly specified by ECMAScript)",
+    "goldenVectors": 40,
+    "goldenSha256": "6324eba0c2bc4ac1027befdcbb1fb9c6b02419b1d93e55ecca434f57b5f03cb0",
+    "runtime": "scripts/reproducibility/canonical-runtime.mjs (preload through NODE_OPTIONS; inherited by every child process)",
+    "runtimeEnvironment": "NODE_OPTIONS also carries --test-reporter=tap: historical certifiers parse TAP summaries from `node --test`, and Node >= 23 defaults to the spec reporter, which would otherwise change recorded test counts on newer runtimes.",
+    "exponentiation": {
+      "guard": "scripts/reproducibility/exponentiation-guard.mjs",
+      "pinnedRewrites": {
+        "src/stage3f/decision-rule-v1.js": {
+          "sha256": "96ec25f0c4217435e23d3341e1181e50f3e0291c1879e2602cd661708fce86e5",
+          "from": "probabilities[p] ** (1 / temperature)",
+          "to": "globalThis.__SENTINEL_CANONICAL_POW__(probabilities[p], (1 / temperature))",
+          "occurrences": 1
+        }
+      },
+      "rule": "`x ** 2` and integer-literal ** integer-literal are exact everywhere; the pinned site is rewritten in memory to canonical pow; any other `**` fails the load. File bytes are never changed."
+    },
+    "otherTranscendentals": "No other engine-approximated Math function reaches a Stage 3F digest (Math.sin appears once, multiplied by zero, in the Forge V2 scenario generator)."
+  },
+  "tolerances": {
+    "coefficientRelative": 1e-10,
+    "outputAbsolute": 1e-9,
+    "rule": "coefficientRelative = largest power of ten <= sqrt(observed platform noise * smallest decision-relevant perturbation); outputAbsolute = smallest power of ten >= the largest score / probability / metric shift the sensitivity study measured at that coefficient perturbation.",
+    "observedPlatformNoiseMaxRel": 1.1502441504607477e-13,
+    "smallestDecisionRelevantEps": 1e-7,
+    "marginBelowDecision": 999.9999999999999,
+    "marginAbovePlatformNoise": 869.3806437524024,
+    "usedFor": "LEVEL_B classification of host-native runs only. No tolerance was used to accept any certificate."
+  },
+  "optionsEvaluated": {
+    "A_PLATFORM_PINNED_CERTIFICATION": {
+      "adopted": false,
+      "reason": "Not portable, and demonstrably insufficient: the same OS and CPU give different pow results under Node 22 (fdlibm) and Node 26 (std::pow), so a pin would have to fix the exact runtime build and C library. Host metadata is recorded as provenance, not as a requirement."
+    },
+    "B_NUMERICAL_CANONICALIZATION_BEFORE_HASHING": {
+      "adopted": false,
+      "reason": "Rounding to any grid cannot guarantee equal hashes (two values one ULP apart can straddle a rounding boundary), would require editing sealed certifiers, and would weaken byte identity to tolerance. Retained only as the Level B diagnostic comparison."
+    },
+    "C_DETERMINISTIC_NUMERICAL_FITTING": {
+      "adopted": true,
+      "reason": "A single platform-independent numerical profile, implemented with exactly specified operations and injected at runtime, restores byte identity on every host with no change to any sealed file, fitting procedure, objective, threshold or conclusion; it also reproduces every stored historical hash."
+    },
+    "D_DUAL_HASHING": {
+      "adopted": false,
+      "reason": "Sealed certificates cannot gain fields. Under the canonical profile the raw hash already is the canonical hash, so a second hash would add nothing; future certificates record the profile id instead."
+    }
+  },
+  "contractHash": "af068d9b1bcf376e2bb84a697f22058d13c4545fc04123bf7eaba638b9fc34da"
+}

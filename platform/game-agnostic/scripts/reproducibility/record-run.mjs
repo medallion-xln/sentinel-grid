@@ -3,6 +3,8 @@
  *
  *   node scripts/reproducibility/record-run.mjs --report=build/reproducibility/report-canonical.json --label=<label>
  *        [--diff=build/reproducibility/run-native]   (adds the certificate-diff of a --capture run)
+ *        [--pure]   the run used the canonical profile with no record profile (runs made before record profiles existed,
+ *                   or --pure-canonical runs)
  * Writes artifacts/stage3frp-reproducibility-portability/platform-runs/<label>.json.
  */
 import { mkdirSync, readFileSync, writeFileSync } from 'node:fs';
@@ -18,7 +20,7 @@ if (!label || !/^[a-z0-9-]+$/.test(label) || !arg('report')) { process.stderr.wr
 const report = JSON.parse(readFileSync(path.resolve(arg('report')), 'utf8'));
 
 export const normalise = (r) => ({
-  schemaVersion: 1, label, procedure: r.procedure, mode: r.mode, numericsProfile: r.numericsProfile, pureCanonical: r.pureCanonical === true, head: r.head,
+  schemaVersion: 1, label, procedure: r.procedure, mode: r.mode, numericsProfile: r.numericsProfile, pureCanonical: r.pureCanonical === true || process.argv.includes('--pure'), head: r.head,
   host: { platform: r.host.platform, arch: r.host.arch, node: r.host.node, v8: r.host.v8, cpuModel: r.host.cpuModel },
   trackedTreeUnchanged: r.trackedTreeUnchanged, pass: r.pass,
   evidence: r.evidence.map((e) => ({ id: e.id, status: e.status, regenerated: e.verifiedOnly !== true, payloads: (e.payloads ?? []).map((p) => ({ payload: p.payload, expected: p.expected, actual: p.actual })),

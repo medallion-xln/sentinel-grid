@@ -1,0 +1,396 @@
+{
+  "schemaVersion": 1,
+  "study": "STAGE3F_DECISION_SENSITIVITY_V1",
+  "numericsProfile": "SENTINEL_CANONICAL_NUMERICS_V1",
+  "epsilons": [
+    0,
+    1e-16,
+    1e-15,
+    1e-14,
+    1e-13,
+    1e-12,
+    1e-11,
+    1e-10,
+    1e-9,
+    1e-8,
+    1e-7,
+    0.000001,
+    0.00001,
+    0.0001,
+    0.001
+  ],
+  "trialsPerEpsilon": 32,
+  "perturbation": "every fitted coefficient multiplied independently by (1 + eps*u), u ~ U[-1,1], seeded; mu/sd (pure IEEE arithmetic, platform-invariant) held fixed",
+  "models": {
+    "STAGE3F6C_CORE_LOGISTIC": {
+      "coefficients": 31,
+      "operatingTau": 0.9,
+      "rows": 20000,
+      "analyticMargins": {
+        "minAbsScoreMinusOperatingTau": 0.0031703197096392133,
+        "minAbsScoreMinusAnyGridTau": 0.0000011691026775562108,
+        "minRelativeGapBetweenDistinctScores": 1.9831418567050615e-8
+      },
+      "byEpsilon": [
+        {
+          "eps": 0,
+          "maxAbsDeltaScore": 0,
+          "routedFlips": 0,
+          "gridCrossings": 0,
+          "aurocChanged": 0,
+          "maxAbsDeltaAuroc": 0,
+          "maxAbsDeltaBrier": 0,
+          "maxAbsDeltaEce": 0,
+          "tierSelectionChanged": 0,
+          "routedCountChanged": 0
+        },
+        {
+          "eps": 1e-16,
+          "maxAbsDeltaScore": 3.3306690738754696e-16,
+          "routedFlips": 0,
+          "gridCrossings": 0,
+          "aurocChanged": 0,
+          "maxAbsDeltaAuroc": 0,
+          "maxAbsDeltaBrier": 8.326672684688674e-17,
+          "maxAbsDeltaEce": 5.551115123125783e-17,
+          "tierSelectionChanged": 0,
+          "routedCountChanged": 0
+        },
+        {
+          "eps": 1e-15,
+          "maxAbsDeltaScore": 1.2212453270876722e-15,
+          "routedFlips": 0,
+          "gridCrossings": 0,
+          "aurocChanged": 0,
+          "maxAbsDeltaAuroc": 0,
+          "maxAbsDeltaBrier": 1.3877787807814457e-16,
+          "maxAbsDeltaEce": 1.8041124150158794e-16,
+          "tierSelectionChanged": 0,
+          "routedCountChanged": 0
+        },
+        {
+          "eps": 1e-14,
+          "maxAbsDeltaScore": 1.0436096431476471e-14,
+          "routedFlips": 0,
+          "gridCrossings": 0,
+          "aurocChanged": 0,
+          "maxAbsDeltaAuroc": 0,
+          "maxAbsDeltaBrier": 5.828670879282072e-16,
+          "maxAbsDeltaEce": 1.942890293094024e-15,
+          "tierSelectionChanged": 0,
+          "routedCountChanged": 0
+        },
+        {
+          "eps": 1e-13,
+          "maxAbsDeltaScore": 1.0347278589506459e-13,
+          "routedFlips": 0,
+          "gridCrossings": 0,
+          "aurocChanged": 0,
+          "maxAbsDeltaAuroc": 0,
+          "maxAbsDeltaBrier": 3.164135620181696e-15,
+          "maxAbsDeltaEce": 2.123301534595612e-14,
+          "tierSelectionChanged": 0,
+          "routedCountChanged": 0
+        },
+        {
+          "eps": 1e-12,
+          "maxAbsDeltaScore": 1.0369483049998962e-12,
+          "routedFlips": 0,
+          "gridCrossings": 0,
+          "aurocChanged": 0,
+          "maxAbsDeltaAuroc": 0,
+          "maxAbsDeltaBrier": 3.2807090377673376e-14,
+          "maxAbsDeltaEce": 2.1613266731890235e-13,
+          "tierSelectionChanged": 0,
+          "routedCountChanged": 0
+        },
+        {
+          "eps": 1e-11,
+          "maxAbsDeltaScore": 1.037159247374575e-11,
+          "routedFlips": 0,
+          "gridCrossings": 0,
+          "aurocChanged": 0,
+          "maxAbsDeltaAuroc": 0,
+          "maxAbsDeltaBrier": 3.295419492843621e-13,
+          "maxAbsDeltaEce": 2.1626589408185737e-12,
+          "tierSelectionChanged": 0,
+          "routedCountChanged": 0
+        },
+        {
+          "eps": 1e-10,
+          "maxAbsDeltaScore": 1.037141483806181e-10,
+          "routedFlips": 0,
+          "gridCrossings": 0,
+          "aurocChanged": 0,
+          "maxAbsDeltaAuroc": 0,
+          "maxAbsDeltaBrier": 3.2916447345598954e-12,
+          "maxAbsDeltaEce": 2.1628074331481173e-11,
+          "tierSelectionChanged": 0,
+          "routedCountChanged": 0
+        },
+        {
+          "eps": 1e-9,
+          "maxAbsDeltaScore": 1.0371408176723662e-9,
+          "routedFlips": 0,
+          "gridCrossings": 0,
+          "aurocChanged": 0,
+          "maxAbsDeltaAuroc": 0,
+          "maxAbsDeltaBrier": 3.2915864478511025e-11,
+          "maxAbsDeltaEce": 2.162822698714706e-10,
+          "tierSelectionChanged": 0,
+          "routedCountChanged": 0
+        },
+        {
+          "eps": 1e-8,
+          "maxAbsDeltaScore": 1.0371409508991292e-8,
+          "routedFlips": 0,
+          "gridCrossings": 0,
+          "aurocChanged": 0,
+          "maxAbsDeltaAuroc": 0,
+          "maxAbsDeltaBrier": 3.2915653536136347e-10,
+          "maxAbsDeltaEce": 2.16282615428387e-9,
+          "tierSelectionChanged": 0,
+          "routedCountChanged": 0
+        },
+        {
+          "eps": 1e-7,
+          "maxAbsDeltaScore": 1.0371409542297982e-7,
+          "routedFlips": 0,
+          "gridCrossings": 0,
+          "aurocChanged": 22,
+          "maxAbsDeltaAuroc": 1.4615526167105486e-7,
+          "maxAbsDeltaBrier": 3.2915673242595034e-9,
+          "maxAbsDeltaEce": 2.162826287510633e-8,
+          "tierSelectionChanged": 0,
+          "routedCountChanged": 0
+        },
+        {
+          "eps": 0.000001,
+          "maxAbsDeltaScore": 0.0000010371406450326859,
+          "routedFlips": 0,
+          "gridCrossings": 0,
+          "aurocChanged": 58,
+          "maxAbsDeltaAuroc": 7.307763080222074e-7,
+          "maxAbsDeltaBrier": 3.291577563291348e-8,
+          "maxAbsDeltaEce": 2.162825831070192e-7,
+          "tierSelectionChanged": 0,
+          "routedCountChanged": 0
+        },
+        {
+          "eps": 0.00001,
+          "maxAbsDeltaScore": 0.000010371375499418356,
+          "routedFlips": 0,
+          "gridCrossings": 77,
+          "aurocChanged": 112,
+          "maxAbsDeltaAuroc": 0.000003514926133818541,
+          "maxAbsDeltaBrier": 3.291684759210156e-7,
+          "maxAbsDeltaEce": 0.00010080507465627664,
+          "tierSelectionChanged": 0,
+          "routedCountChanged": 0
+        },
+        {
+          "eps": 0.0001,
+          "maxAbsDeltaScore": 0.00010371065854053452,
+          "routedFlips": 0,
+          "gridCrossings": 625,
+          "aurocChanged": 122,
+          "maxAbsDeltaAuroc": 0.00001153788464425265,
+          "maxAbsDeltaBrier": 0.0000032927568822949116,
+          "maxAbsDeltaEce": 0.00020028737067191715,
+          "tierSelectionChanged": 0,
+          "routedCountChanged": 0
+        },
+        {
+          "eps": 0.001,
+          "maxAbsDeltaScore": 0.0010367956504405695,
+          "routedFlips": 0,
+          "gridCrossings": 5850,
+          "aurocChanged": 127,
+          "maxAbsDeltaAuroc": 0.00006217637836047896,
+          "maxAbsDeltaBrier": 0.0000330347835360012,
+          "maxAbsDeltaEce": 0.0007024658216849555,
+          "tierSelectionChanged": 0,
+          "routedCountChanged": 0
+        }
+      ]
+    },
+    "SYMMETRIC_POLICY_ROUTER": {
+      "coefficients": 124,
+      "threshold": 0.4,
+      "fallbackPolicy": "RESOURCE_PRESERVING_V1",
+      "rows": 20000,
+      "partitions": [
+        "DEV",
+        "CAL",
+        "HOLDOUT",
+        "OOD"
+      ],
+      "analyticMargins": {
+        "minTop1MinusTop2Probability": 0.00009668342485591452,
+        "minAbsConfidenceMinusThreshold": 0.0000023775133212167177
+      },
+      "byEpsilon": [
+        {
+          "eps": 0,
+          "maxAbsDeltaProbability": 0,
+          "argmaxFlips": 0,
+          "rankingChanges": 0,
+          "routedFlips": 0,
+          "selectedPolicyFlips": 0,
+          "maxAbsDeltaAccuracy": 0,
+          "maxAbsDeltaMeanRegret": 0
+        },
+        {
+          "eps": 1e-16,
+          "maxAbsDeltaProbability": 3.3306690738754696e-16,
+          "argmaxFlips": 0,
+          "rankingChanges": 0,
+          "routedFlips": 0,
+          "selectedPolicyFlips": 0,
+          "maxAbsDeltaAccuracy": 0,
+          "maxAbsDeltaMeanRegret": 0
+        },
+        {
+          "eps": 1e-15,
+          "maxAbsDeltaProbability": 1.1657341758564144e-15,
+          "argmaxFlips": 0,
+          "rankingChanges": 0,
+          "routedFlips": 0,
+          "selectedPolicyFlips": 0,
+          "maxAbsDeltaAccuracy": 0,
+          "maxAbsDeltaMeanRegret": 0
+        },
+        {
+          "eps": 1e-14,
+          "maxAbsDeltaProbability": 1.0325074129013956e-14,
+          "argmaxFlips": 0,
+          "rankingChanges": 0,
+          "routedFlips": 0,
+          "selectedPolicyFlips": 0,
+          "maxAbsDeltaAccuracy": 0,
+          "maxAbsDeltaMeanRegret": 0
+        },
+        {
+          "eps": 1e-13,
+          "maxAbsDeltaProbability": 1.0369483049998962e-13,
+          "argmaxFlips": 0,
+          "rankingChanges": 0,
+          "routedFlips": 0,
+          "selectedPolicyFlips": 0,
+          "maxAbsDeltaAccuracy": 0,
+          "maxAbsDeltaMeanRegret": 0
+        },
+        {
+          "eps": 1e-12,
+          "maxAbsDeltaProbability": 1.0365597269412774e-12,
+          "argmaxFlips": 0,
+          "rankingChanges": 0,
+          "routedFlips": 0,
+          "selectedPolicyFlips": 0,
+          "maxAbsDeltaAccuracy": 0,
+          "maxAbsDeltaMeanRegret": 0
+        },
+        {
+          "eps": 1e-11,
+          "maxAbsDeltaProbability": 1.0366152380925087e-11,
+          "argmaxFlips": 0,
+          "rankingChanges": 0,
+          "routedFlips": 0,
+          "selectedPolicyFlips": 0,
+          "maxAbsDeltaAccuracy": 0,
+          "maxAbsDeltaMeanRegret": 0
+        },
+        {
+          "eps": 1e-10,
+          "maxAbsDeltaProbability": 1.0366263403227549e-10,
+          "argmaxFlips": 0,
+          "rankingChanges": 0,
+          "routedFlips": 0,
+          "selectedPolicyFlips": 0,
+          "maxAbsDeltaAccuracy": 0,
+          "maxAbsDeltaMeanRegret": 0
+        },
+        {
+          "eps": 1e-9,
+          "maxAbsDeltaProbability": 1.0366241753878569e-9,
+          "argmaxFlips": 0,
+          "rankingChanges": 0,
+          "routedFlips": 0,
+          "selectedPolicyFlips": 0,
+          "maxAbsDeltaAccuracy": 0,
+          "maxAbsDeltaMeanRegret": 0
+        },
+        {
+          "eps": 1e-8,
+          "maxAbsDeltaProbability": 1.0366240088544032e-8,
+          "argmaxFlips": 0,
+          "rankingChanges": 0,
+          "routedFlips": 0,
+          "selectedPolicyFlips": 0,
+          "maxAbsDeltaAccuracy": 0,
+          "maxAbsDeltaMeanRegret": 0
+        },
+        {
+          "eps": 1e-7,
+          "maxAbsDeltaProbability": 1.0366239527881405e-7,
+          "argmaxFlips": 0,
+          "rankingChanges": 0,
+          "routedFlips": 0,
+          "selectedPolicyFlips": 0,
+          "maxAbsDeltaAccuracy": 0,
+          "maxAbsDeltaMeanRegret": 0
+        },
+        {
+          "eps": 0.000001,
+          "maxAbsDeltaProbability": 0.0000010366235005943025,
+          "argmaxFlips": 0,
+          "rankingChanges": 0,
+          "routedFlips": 0,
+          "selectedPolicyFlips": 0,
+          "maxAbsDeltaAccuracy": 0,
+          "maxAbsDeltaMeanRegret": 0
+        },
+        {
+          "eps": 0.00001,
+          "maxAbsDeltaProbability": 0.000010366189693633565,
+          "argmaxFlips": 0,
+          "rankingChanges": 0,
+          "routedFlips": 0,
+          "selectedPolicyFlips": 0,
+          "maxAbsDeltaAccuracy": 0,
+          "maxAbsDeltaMeanRegret": 0
+        },
+        {
+          "eps": 0.0001,
+          "maxAbsDeltaProbability": 0.00010365736445566709,
+          "argmaxFlips": 0,
+          "rankingChanges": 12,
+          "routedFlips": 13,
+          "selectedPolicyFlips": 13,
+          "maxAbsDeltaAccuracy": 0.0002500000000000002,
+          "maxAbsDeltaMeanRegret": 0.0072499999999990905
+        },
+        {
+          "eps": 0.001,
+          "maxAbsDeltaProbability": 0.0010361191508112544,
+          "argmaxFlips": 79,
+          "rankingChanges": 116,
+          "routedFlips": 31,
+          "selectedPolicyFlips": 107,
+          "maxAbsDeltaAccuracy": 0.0010000000000000009,
+          "maxAbsDeltaMeanRegret": 0.042999999999992156
+        }
+      ]
+    }
+  },
+  "summary": {
+    "STAGE3F6C_CORE_LOGISTIC": {
+      "firstEpsAnyDecisionQuantityChanged": 1e-7,
+      "firstEpsRoutingDecisionChanged": 0.00001
+    },
+    "SYMMETRIC_POLICY_ROUTER": {
+      "firstEpsAnyDecisionQuantityChanged": 0.0001
+    },
+    "smallestDecisionRelevantEps": 1e-7
+  }
+}

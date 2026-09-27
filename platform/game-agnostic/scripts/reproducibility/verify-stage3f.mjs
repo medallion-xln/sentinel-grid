@@ -173,6 +173,9 @@ if (doCheck) {
     if (!entry.reproduced) entry.stdoutTail = r.stdout.slice(-800);
     report.checks.push(entry);
     log(`${entry.status.padEnd(44)} ${c.id} (${r.seconds.toFixed(0)}s)`);
+    // Persist progress after every check: an interrupted run keeps every completed result (marked incomplete).
+    mkdirSync(path.dirname(reportPath), { recursive: true });
+    writeFileSync(reportPath, `${JSON.stringify({ ...report, complete: false }, null, 2)}\n`);
   }
 }
 
@@ -183,6 +186,7 @@ report.summary = {
   checks: Object.fromEntries([...new Set(report.checks.map((c) => c.status))].map((s) => [s, report.checks.filter((c) => c.status === s).length])),
   trackedMutationsBlocked: [...report.evidence, ...report.checks].reduce((a, x) => a + (x.trackedMutationsBlocked?.length ?? 0), 0),
 };
+report.complete = true;
 report.pass = report.trackedTreeUnchanged && report.evidence.every((e) => e.status === 'BYTE_EXACT')
   && report.checks.every((c) => c.status === 'BYTE_EXACT' || c.status === 'NOT_REPRODUCED_DOCUMENTED_BEFORE_REMEDIATION');
 mkdirSync(path.dirname(reportPath), { recursive: true });

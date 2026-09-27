@@ -133,7 +133,13 @@ const levelOf = (run, id) => {
   if (c === null) return null;
   if (c.status === 'BYTE_EXACT') return c.profile && c.profile.startsWith('CANONICAL+') ? 'BYTE_EXACT_UNDER_RECORD_PROFILE' : 'BYTE_EXACT';
   if (c.status === 'NOT_REPRODUCED_DOCUMENTED_BEFORE_REMEDIATION') return c.status;
-  const artifacts = Object.values(run.certificateDiff?.[id] ?? {});
+  const declared = CHECKS.find((x) => x.id === id);
+  if (run.numericsProfile === 'HOST_NATIVE' && declared?.hostNativeFailClosed && c.recomputedHash === null) return 'NOT_ASSESSABLE_UNDER_HOST_NATIVE_FAIL_CLOSED';
+  // A run without a leaf diff for this stage may use another run's diff only if both recomputed the identical
+  // certificate hash (identical bytes, hence an identical diff).
+  const donor = run.certificateDiff?.[id] ? run
+    : runs.find((r) => r.certificateDiff?.[id] && c.recomputedHash && statusOf(r, id)?.recomputedHash === c.recomputedHash);
+  const artifacts = Object.values(donor?.certificateDiff?.[id] ?? {});
   if (!artifacts.length || artifacts.some((a) => !a.paired)) return 'NOT_REPRODUCED';
   const count = (cat) => artifacts.reduce((s, a) => s + a.categories[cat].count, 0);
   const max = (cat, k) => Math.max(0, ...artifacts.map((a) => a.categories[cat][k] ?? 0));
@@ -145,9 +151,9 @@ const levelOf = (run, id) => {
 };
 const requalification = Object.fromEntries(CHECKS.map((c) => {
   const stored = readJson(c.result);
-  const canonical = Object.fromEntries(canonicalRuns.map((r) => [r.label, levelOf(r, c.id) ?? 'NOT_RUN']));
+  const canonical = Object.fromEntries(canonicalRuns.filter((r) => statusOf(r, c.id)).map((r) => [r.label, levelOf(r, c.id)]));
   const pure = Object.fromEntries(pureCanonicalRuns.filter((r) => statusOf(r, c.id)).map((r) => [r.label, levelOf(r, c.id)]));
-  const native = Object.fromEntries(nativeRuns.map((r) => [r.label, levelOf(r, c.id) ?? 'NOT_RUN']));
+  const native = Object.fromEntries(nativeRuns.filter((r) => statusOf(r, c.id)).map((r) => [r.label, levelOf(r, c.id)]));
   const nativeDetail = Object.fromEntries([...nativeRuns, ...pureCanonicalRuns].filter((r) => r.certificateDiff?.[c.id]).map((r) => [r.label,
     Object.fromEntries(Object.entries(r.certificateDiff[c.id]).map(([f, a]) => [f, a.paired ? Object.fromEntries(Object.entries(a.categories).filter(([, v]) => v.count)
       .map(([k, v]) => [k, { count: v.count, maxAbsDiff: v.maxAbsDiff, maxRelDiff: v.maxRelDiff, maxUlpDiff: v.maxUlpDiff }])) : 'UNPAIRED']))]));
@@ -165,18 +171,18 @@ const requalification = Object.fromEntries(CHECKS.map((c) => {
 /* ----------------------------------------------------------- check-mode audit */
 const certifierOf = (c) => c.run.split(' ')[1];
 const checkModeAudit = Object.fromEntries(CHECKS.map((c) => {
-  const own = canonicalRuns.flatMap((r) => statusOf(r, c.id)?.ownCheckModeTrackedWrites ?? []);
+  const own = [...canonicalRuns, ...pureCanonicalRuns, ...nativeRuns].flatMap((r) => statusOf(r, c.id)?.ownCheckModeTrackedWrites ?? []);
   const files = [...new Set(own.map((e) => e.file))].sort();
   return [certifierOf(c), { CHECK_MODE_WRITES_TRACKED_FILES: files.length > 0, filesWritten: files,
     underGuard: files.length ? 'identical rewrites skipped; differing rewrites blocked and reported (never reach the file)' : 'no tracked write attempted' }];
 }));
 
 /* ------------------------------------------------------------ fresh clone */
-const evidenceRuns = canonicalRuns.filter((r) => r.evidence.length);
+const evidenceRuns = [...canonicalRuns, ...pureCanonicalRuns].filter((r) => r.evidence.length);
 const freshClone = {
   procedure: ['git clone <repository>', 'cd platform/game-agnostic', 'node scripts/reproducibility/verify-stage3f.mjs --rebuild-evidence',
     'node scripts/reproducibility/verify-stage3f.mjs --check', 'node scripts/certify-stage3frp-reproducibility-portability.mjs --check'],
-  environment: 'Node.js >= 20 (tested 20, 22, 26 on linux-x64) and git. No network, no hidden local state; build/ holds only derived output.',
+  environment: 'Node.js >= 20 and git; full chains recorded on Node 22 and 26 (linux-x64), Node 20 golden vectors / tests / D-SYM freeze only. No network, no hidden local state; build/ holds only derived output.',
   evidence: Object.fromEntries(EVIDENCE.map((e) => [e.id, Object.fromEntries(evidenceRuns.map((r) => { const x = r.evidence.find((v) => v.id === e.id);
     return [r.label, x ? { status: x.status, regenerated: x.regenerated, payloadHashes: x.payloads.map((p) => p.actual) } : 'NOT_RUN']; }))])),
 };
@@ -208,7 +214,9 @@ erratum.erratumHash = hex(JSON.stringify(erratum));
 
 /* ---------------------------------------------------------------- checks */
 const required = Object.fromEntries(REQUIRED_STAGES.map((id) => [id, requalification[id]?.canonicalStatus ?? 'NOT_RUN']));
-const nodeMajors = [...new Set(canonicalRuns.map((r) => r.host.node.split('.')[0]))].sort();
+/* No required stage has a record profile, so a pure-canonical run computes them exactly as a canonical run does. */
+const nodeMajors = [...new Set([...canonicalRuns, ...pureCanonicalRuns].filter((r) => REQUIRED_STAGES.every((id) => statusOf(r, id)?.status === 'BYTE_EXACT'))
+  .map((r) => r.host.node.split('.')[0]))].sort();
 const scientific = Object.fromEntries(REQUIRED_STAGES.map((id) => [id, Object.values(requalification[id]?.underHostNativeNumerics ?? {})]));
 const REPRODUCED = new Set(['BYTE_EXACT', 'BYTE_EXACT_UNDER_RECORD_PROFILE']);
 const tests = spawnSync(process.execPath, ['--test', '--test-reporter=tap', 'tests/stage3frp-reproducibility-portability.test.js'], { cwd: root, encoding: 'utf8' });
@@ -223,7 +231,10 @@ const checks = {
   EXPONENTIATION_GUARD_CLEAN: guardFailures.length === 0,
   REQUIRED_STAGES_BYTE_EXACT_UNDER_CANONICAL: REQUIRED_STAGES.every((id) => required[id] === 'BYTE_EXACT'),
   CANONICAL_ON_AT_LEAST_TWO_NODE_MAJORS: nodeMajors.length >= 2,
-  NATIVE_SCIENCE_REPRODUCES: REQUIRED_STAGES.every((id) => scientific[id].length > 0 && scientific[id].every((s) => ['BYTE_EXACT', 'CANONICALLY_EQUIVALENT', 'SCIENTIFICALLY_EQUIVALENT'].includes(s))),
+  // Host-native numerics are diagnostic. Every required stage that can run under them must reproduce at Level A; a
+  // stage that refuses to run without byte-identical models (declared fail-closed) is reported, never counted as passed.
+  NATIVE_SCIENCE_REPRODUCES_WHERE_ASSESSABLE: REQUIRED_STAGES.every((id) => scientific[id].length > 0 && scientific[id].every((s) => ['BYTE_EXACT', 'CANONICALLY_EQUIVALENT', 'SCIENTIFICALLY_EQUIVALENT', 'NOT_ASSESSABLE_UNDER_HOST_NATIVE_FAIL_CLOSED'].includes(s)))
+    && REQUIRED_STAGES.some((id) => scientific[id].some((s) => s !== 'NOT_ASSESSABLE_UNDER_HOST_NATIVE_FAIL_CLOSED')),
   ALL_CHAIN_CHECKS_ACCOUNTED: Object.values(requalification).every((v) => (REPRODUCED.has(v.canonicalStatus) && (v.canonicalStatus === 'BYTE_EXACT') === (v.recordProfile === null))
     || (v.historicalStatus && v.canonicalStatus === 'NOT_REPRODUCED_DOCUMENTED_BEFORE_REMEDIATION')),
   RECORD_PROFILE_STAGES_EQUIVALENT_UNDER_PURE_CANONICAL: Object.values(requalification).filter((v) => v.recordProfile)
@@ -252,14 +263,15 @@ const payload = {
   requalification, requiredStages: required, checkModeAudit, freshClone,
   platformMatrix: runs.map((r) => ({ label: r.label, host: r.host, mode: r.mode, numericsProfile: r.numericsProfile, pureCanonical: r.pureCanonical, head: r.head, pass: r.pass,
     checksRun: r.checks.length, evidenceRun: r.evidence.length, trackedTreeUnchanged: r.trackedTreeUnchanged })),
-  platformMatrixLimitation: 'Physical hosts available: linux-x64 only (Node 20, 22, 26). The arm64 arithmetic of record is reproduced by exact emulation (fused fdlibm exp) and verified against every stored hash; no arm64 or macOS host was run.',
+  platformMatrixLimitation: 'Physical hosts available: linux-x64 only. Full chains ran on Node 22 (fresh GitHub clone, evidence regenerated from nothing) and Node 26; a Node 20 chain was interrupted by a container restart and is not recorded (Node 20 golden vectors, tests and a direct D-SYM freeze reproduction passed). The arm64 arithmetic of record is reproduced by exact emulation (fused fdlibm exp) and verified against every stored hash; no arm64 or macOS host was run.',
   historicalArtifacts: { modified: false, erratum: ERRATUM_PATH, erratumHash: erratum.erratumHash },
   guard: { exponentiationGuardFailures: guardFailures, pinnedRewrites: Object.keys(PINNED_REWRITES) },
   checks, tests: { pass: testCount('pass'), fail: testCount('fail') },
   conclusions: {
     CROSS_PLATFORM_REPRODUCIBILITY_MEASURED: runs.length >= 2,
     ROOT_CAUSE_CONFIRMED: checks.ROOT_CAUSE_EXP_DEMONSTRATED && checks.ROOT_CAUSE_POW_DEMONSTRATED,
-    SCIENTIFIC_RESULTS_REPRODUCE: checks.NATIVE_SCIENCE_REPRODUCES,
+    SCIENTIFIC_RESULTS_REPRODUCE: checks.REQUIRED_STAGES_BYTE_EXACT_UNDER_CANONICAL && checks.CANONICAL_ON_AT_LEAST_TWO_NODE_MAJORS && checks.NATIVE_SCIENCE_REPRODUCES_WHERE_ASSESSABLE,
+    NOT_ASSESSABLE_UNDER_HOST_NATIVE: REQUIRED_STAGES.filter((id) => scientific[id].includes('NOT_ASSESSABLE_UNDER_HOST_NATIVE_FAIL_CLOSED')),
     BYTE_REPRODUCIBILITY_PORTABLE: checks.REQUIRED_STAGES_BYTE_EXACT_UNDER_CANONICAL && checks.CANONICAL_ON_AT_LEAST_TWO_NODE_MAJORS,
     BYTE_REPRODUCIBILITY_PORTABLE_UNDER_HOST_NATIVE_MATH: false,
     NUMERICAL_CANONICALIZATION_REQUIRED: false,

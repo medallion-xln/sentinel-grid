@@ -128,6 +128,19 @@ payloads for `scripts/reproducibility/certificate-diff.mjs`.
 Stage 3F.5 and Stage 3F.6 (prediction reliability) remain `NOT_REPRODUCED` exactly as documented before this stage
 (3F.6-R erratum and `STAGE3F6-ERRATUM-001`); this stage does not change that.
 
+## Results
+
+`stage3frp-certification-result.json` records every stage under each run. Summary:
+
+- Canonical profile: all 25 reproducible Stage 3F checks BYTE_EXACT on Node 22 (a fresh GitHub clone that
+  regenerated all 20 payloads from nothing) and Node 26; 3F.6-D byte-exact under its record profile; 3F.5 and 3F.6
+  unchanged from their pre-existing errata.
+- Host-native x86-64 numerics (diagnostic): 3F.6-C, -T, -W, T-SYM, P.1A-SYM, P.1-SYM, W-SYM CANONICALLY_EQUIVALENT
+  (coefficients ≤ 1.15e-13 relative, metrics ≤ 2e-16; no data, decision, classification or conclusion changes — the
+  SYM certificates differ only in their own open-phase byte-identity gate and the status it alone decides);
+  3F.6-D, -P, P.1E byte-exact. D-SYM cannot run under host-native numerics: its code refuses to proceed unless the
+  refitted router is byte-identical to T-SYM's stored router, so it is reported NOT_ASSESSABLE rather than passed.
+
 ## Limits
 
 Only linux-x64 hosts were available (Node 20, 22, 26). The arm64 arithmetic of record is reproduced by exact

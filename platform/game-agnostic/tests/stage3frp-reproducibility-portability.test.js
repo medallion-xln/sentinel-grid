@@ -236,5 +236,11 @@ test('certificate diff: categories and ULP distance', () => {
   assert.equal(classify('.classification.primaryResult', 'A', 'B'), 'CLASSIFICATION_DIFFERENCE');
   assert.equal(classify('.roadmap.readyForStage3G', true, false), 'CONCLUSION_DIFFERENCE');
   assert.equal(classify('.certificationHash', 'a', 'b'), 'CERTIFICATE_HASH_DIFFERENCE');
+  assert.equal(classify('.routers.baseRouterIsTsymRouter', true, false), 'MODEL_HASH_DIFFERENCE');
+  assert.equal(classify('.checks.OPEN_PHASE_REPRODUCED', true, false), 'INTEGRITY_GATE_DIFFERENCE');
+  const gated = diffLeaves({ status: 'PASS', checks: { OPEN_PHASE_REPRODUCED: true, OTHER: true } }, { status: 'FAIL', checks: { OPEN_PHASE_REPRODUCED: false, OTHER: true } });
+  assert.deepEqual(gated.map((l) => l.category).sort(), ['GATE_CONSEQUENCE_DIFFERENCE', 'INTEGRITY_GATE_DIFFERENCE']);
+  const notOnlyGate = diffLeaves({ status: 'PASS', checks: { OPEN_PHASE_REPRODUCED: true, OTHER: true } }, { status: 'FAIL', checks: { OPEN_PHASE_REPRODUCED: false, OTHER: false } });
+  assert.ok(notOnlyGate.some((l) => l.path === '.status' && l.category === 'CONCLUSION_DIFFERENCE'));
   assert.equal(diffLeaves({ a: [1, 2], b: 'x' }, { a: [1, 2], b: 'x' }).length, 0);
 });

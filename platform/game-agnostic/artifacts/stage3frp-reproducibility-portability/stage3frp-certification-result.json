@@ -1,0 +1,1547 @@
+{
+  "schemaVersion": 1,
+  "stage": "STAGE_3F_RP_REPRODUCIBILITY_PORTABILITY",
+  "status": "PASS",
+  "baseline": {
+    "commit": "156f0ecdb3b3b90a06bf0dc4ea97b18e13c2410a",
+    "stage": "STAGE_3F_6_D_SYM",
+    "certificationHash": "65e507b76bbfb9b3a4ae867f73c9d2bc056575ef9b7743359bcfc28b2bb90680"
+  },
+  "question": "Why were valid Sentinel certificates containing fitted numerical models not byte-reproducible across hosts, and what deterministic certification contract makes them so?",
+  "rootCause": {
+    "exp": "V8 evaluates Math.exp with a C++ port of fdlibm. Clang contracts a*b+c in it into fused multiply-add on arm64 but not on x86-64; results differ by 1 ULP on ~0.05% of inputs; full-batch gradient descent turns that into coefficient differences of up to hundreds of ULP, hence different model and certificate hashes.",
+    "pow": "From V8 14 (Node >= 25) `**` / Math.pow call the C library std::pow (use_std_math_pow, default on); V8 12 (Node 22) uses fdlibm pow. The D-SYM temperature grid therefore depends on the Node major version, not only on the CPU.",
+    "certificationDesign": "Stage 3F.6-C onwards let engine-approximated Math.exp / `**` results reach certificate digests, contrary to the Stage 2G determinism doctrine (src/experts/expert-contract.js), and no certificate recorded the platform.",
+    "notCauses": "Summation order, iteration order, object-key order, candidate order, stopping rules, JSON serialisation and hashing are fixed-order and exact: mean/standardisation vectors and all corpora reproduce bit for bit on every host.",
+    "experiments": [
+      {
+        "file": "artifacts/stage3frp-reproducibility-portability/root-cause/linux-x64-node22.json",
+        "host": {
+          "platform": "linux",
+          "arch": "x64",
+          "node": "v22.22.2",
+          "v8": "12.4.254.21-node.39",
+          "v8FlagUseStdMathPow": false
+        },
+        "exp": "Stored fitted-model hashes are reproduced bit for bit by fdlibm exp evaluated with fused multiply-add, and by nothing else tested.",
+        "pow": "The stored D-SYM temperature grid is reproduced by correctly rounded pow; fdlibm pow (V8 <= 13) does not reproduce it.",
+        "stage3f6cNative": {
+          "bitIdentical": false,
+          "maxUlp": 26,
+          "maxAbs": 1.1102230246251565e-16,
+          "maxRel": 4.963969208887836e-15
+        },
+        "symmetricNative": {
+          "bitIdentical": false,
+          "maxUlp": 635,
+          "maxAbs": 3.3306690738754696e-16,
+          "maxRel": 1.1502441504607477e-13
+        },
+        "fusedVsSeparateExpRate": 0.00046666666666666666
+      },
+      {
+        "file": "artifacts/stage3frp-reproducibility-portability/root-cause/linux-x64-node26.json",
+        "host": {
+          "platform": "linux",
+          "arch": "x64",
+          "node": "v26.10.0",
+          "v8": "14.6.202.34-node.34",
+          "v8FlagUseStdMathPow": true
+        },
+        "exp": "Stored fitted-model hashes are reproduced bit for bit by fdlibm exp evaluated with fused multiply-add, and by nothing else tested.",
+        "pow": "The stored D-SYM temperature grid is reproduced by correctly rounded pow; fdlibm pow (V8 <= 13) does not reproduce it.",
+        "stage3f6cNative": {
+          "bitIdentical": false,
+          "maxUlp": 26,
+          "maxAbs": 1.1102230246251565e-16,
+          "maxRel": 4.963969208887836e-15
+        },
+        "symmetricNative": {
+          "bitIdentical": false,
+          "maxUlp": 635,
+          "maxAbs": 3.3306690738754696e-16,
+          "maxRel": 1.1502441504607477e-13
+        },
+        "fusedVsSeparateExpRate": 0.00046666666666666666
+      }
+    ]
+  },
+  "decisionSensitivity": {
+    "summary": {
+      "STAGE3F6C_CORE_LOGISTIC": {
+        "firstEpsAnyDecisionQuantityChanged": 1e-7,
+        "firstEpsRoutingDecisionChanged": 0.00001
+      },
+      "SYMMETRIC_POLICY_ROUTER": {
+        "firstEpsAnyDecisionQuantityChanged": 0.0001
+      },
+      "smallestDecisionRelevantEps": 1e-7
+    },
+    "analyticMargins": {
+      "STAGE3F6C_CORE_LOGISTIC": {
+        "minAbsScoreMinusOperatingTau": 0.0031703197096392133,
+        "minAbsScoreMinusAnyGridTau": 0.0000011691026775562108,
+        "minRelativeGapBetweenDistinctScores": 1.9831418567050615e-8
+      },
+      "SYMMETRIC_POLICY_ROUTER": {
+        "minTop1MinusTop2Probability": 0.00009668342485591452,
+        "minAbsConfidenceMinusThreshold": 0.0000023775133212167177
+      }
+    }
+  },
+  "contract": {
+    "contractId": "STAGE3F_REPRODUCIBILITY_CONTRACT_V1",
+    "contractHash": "af068d9b1bcf376e2bb84a697f22058d13c4545fc04123bf7eaba638b9fc34da",
+    "tolerances": {
+      "coefficientRelative": 1e-10,
+      "outputAbsolute": 1e-9,
+      "rule": "coefficientRelative = largest power of ten <= sqrt(observed platform noise * smallest decision-relevant perturbation); outputAbsolute = smallest power of ten >= the largest score / probability / metric shift the sensitivity study measured at that coefficient perturbation.",
+      "observedPlatformNoiseMaxRel": 1.1502441504607477e-13,
+      "smallestDecisionRelevantEps": 1e-7,
+      "marginBelowDecision": 999.9999999999999,
+      "marginAbovePlatformNoise": 869.3806437524024,
+      "usedFor": "LEVEL_B classification of host-native runs only. No tolerance was used to accept any certificate."
+    },
+    "requiredLevel": {
+      "RAW_EVIDENCE_PAYLOADS": "LEVEL_C",
+      "SEALED_CORPORA_AND_PARTITIONS": "LEVEL_C",
+      "DETERMINISTIC_POLICIES": "LEVEL_C",
+      "TRAINED_DIAGNOSTIC_MODELS": "LEVEL_C",
+      "CERTIFICATES": "LEVEL_C",
+      "FINAL_STAGE3F_FREEZE": "LEVEL_C",
+      "note": "Every class keeps the byte-level requirement it had; it is strengthened from \"on the certifying host\" to \"on every host\", by computing under SENTINEL_CANONICAL_NUMERICS_V1. Level B and Level A are diagnostic comparisons for runs under host-native numerics; they never certify."
+    }
+  },
+  "requalification": {
+    "3F0": {
+      "storedHash": "3b2b2a42d43a77943d98bc4b0e865dab85b106a94e06320f4593f8e1a9194582",
+      "fittedModels": false,
+      "historicalStatus": null,
+      "recordProfile": null,
+      "underCanonicalProfile": {
+        "linux-x64-node26-canonical": "BYTE_EXACT"
+      },
+      "canonicalStatus": "BYTE_EXACT",
+      "underPureCanonicalProfile": {
+        "linux-x64-node22-fresh-clone-rebuild": "BYTE_EXACT"
+      },
+      "underHostNativeNumerics": {},
+      "differencesFromStored": {}
+    },
+    "3F1": {
+      "storedHash": "503298b69b5d267cb6cfcc19eb279dbac5b3c9a495b6f98f373c774d039f9ae1",
+      "fittedModels": false,
+      "historicalStatus": null,
+      "recordProfile": null,
+      "underCanonicalProfile": {
+        "linux-x64-node26-canonical": "BYTE_EXACT"
+      },
+      "canonicalStatus": "BYTE_EXACT",
+      "underPureCanonicalProfile": {
+        "linux-x64-node22-fresh-clone-rebuild": "BYTE_EXACT"
+      },
+      "underHostNativeNumerics": {},
+      "differencesFromStored": {}
+    },
+    "3F2": {
+      "storedHash": "ceba5b9885e4b98ac3ccd70f63b1e6ad159198ea7e7676343d506175297b7936",
+      "fittedModels": false,
+      "historicalStatus": null,
+      "recordProfile": null,
+      "underCanonicalProfile": {
+        "linux-x64-node26-canonical": "BYTE_EXACT"
+      },
+      "canonicalStatus": "BYTE_EXACT",
+      "underPureCanonicalProfile": {
+        "linux-x64-node22-fresh-clone-rebuild": "BYTE_EXACT"
+      },
+      "underHostNativeNumerics": {},
+      "differencesFromStored": {}
+    },
+    "3F3": {
+      "storedHash": "cf3011836041554e074aafdc8dcf79bc5887bdf1b2b2a1100383b57a1ddca0b9",
+      "fittedModels": false,
+      "historicalStatus": null,
+      "recordProfile": null,
+      "underCanonicalProfile": {
+        "linux-x64-node26-canonical": "BYTE_EXACT"
+      },
+      "canonicalStatus": "BYTE_EXACT",
+      "underPureCanonicalProfile": {
+        "linux-x64-node22-fresh-clone-rebuild": "BYTE_EXACT"
+      },
+      "underHostNativeNumerics": {},
+      "differencesFromStored": {}
+    },
+    "3F4": {
+      "storedHash": "e99e10a49930487a53d2635e9d3c6dba242d06128ff2692ad2f0997cbd12fbf0",
+      "fittedModels": false,
+      "historicalStatus": null,
+      "recordProfile": null,
+      "underCanonicalProfile": {
+        "linux-x64-node26-canonical": "BYTE_EXACT"
+      },
+      "canonicalStatus": "BYTE_EXACT",
+      "underPureCanonicalProfile": {
+        "linux-x64-node22-fresh-clone-rebuild": "BYTE_EXACT"
+      },
+      "underHostNativeNumerics": {},
+      "differencesFromStored": {}
+    },
+    "3F5": {
+      "storedHash": "eda3d2d67334dd904a24ff574f4e839e52fb67ec26fb01112b8f21c973b4fbe5",
+      "fittedModels": false,
+      "historicalStatus": "SUPERSEDED_BY_3F6R (artifacts/stage3f6r-runtime-parity-remediation/erratum-stage3f5-integrated-live-shadow.json)",
+      "recordProfile": null,
+      "underCanonicalProfile": {
+        "linux-x64-node26-canonical": "NOT_REPRODUCED_DOCUMENTED_BEFORE_REMEDIATION"
+      },
+      "canonicalStatus": "NOT_REPRODUCED_DOCUMENTED_BEFORE_REMEDIATION",
+      "underPureCanonicalProfile": {
+        "linux-x64-node22-fresh-clone-rebuild": "NOT_REPRODUCED_DOCUMENTED_BEFORE_REMEDIATION"
+      },
+      "underHostNativeNumerics": {},
+      "differencesFromStored": {}
+    },
+    "3F6": {
+      "storedHash": "399f71c9cc0b2758e610133454e2f137436339a04a2117a1323a0a0bc3616a84",
+      "fittedModels": false,
+      "historicalStatus": "SUPERSEDED_NOT_REPRODUCIBLE_AT_ANY_COMMIT (artifacts/stage3f6-errata/erratum-stage3f6-prediction-reliability.json)",
+      "recordProfile": null,
+      "underCanonicalProfile": {
+        "linux-x64-node26-canonical": "NOT_REPRODUCED_DOCUMENTED_BEFORE_REMEDIATION"
+      },
+      "canonicalStatus": "NOT_REPRODUCED_DOCUMENTED_BEFORE_REMEDIATION",
+      "underPureCanonicalProfile": {
+        "linux-x64-node22-fresh-clone-rebuild": "NOT_REPRODUCED_DOCUMENTED_BEFORE_REMEDIATION"
+      },
+      "underHostNativeNumerics": {},
+      "differencesFromStored": {}
+    },
+    "3F6R": {
+      "storedHash": "4fba8d61e09be12efb428b66d1b189c0a9b970f7e4adb4dc7d9ecbb084cb7d9f",
+      "fittedModels": false,
+      "historicalStatus": null,
+      "recordProfile": null,
+      "underCanonicalProfile": {
+        "linux-x64-node26-canonical": "BYTE_EXACT"
+      },
+      "canonicalStatus": "BYTE_EXACT",
+      "underPureCanonicalProfile": {
+        "linux-x64-node22-fresh-clone-rebuild": "BYTE_EXACT"
+      },
+      "underHostNativeNumerics": {},
+      "differencesFromStored": {}
+    },
+    "3F6S": {
+      "storedHash": "825084e9ef58fb5fcb27a29bee4d8a9f3b7983aed1cf0d2b1719be3b5f604b35",
+      "fittedModels": false,
+      "historicalStatus": null,
+      "recordProfile": null,
+      "underCanonicalProfile": {
+        "linux-x64-node26-canonical": "BYTE_EXACT"
+      },
+      "canonicalStatus": "BYTE_EXACT",
+      "underPureCanonicalProfile": {
+        "linux-x64-node22-fresh-clone-rebuild": "BYTE_EXACT"
+      },
+      "underHostNativeNumerics": {},
+      "differencesFromStored": {}
+    },
+    "3F6C": {
+      "storedHash": "40ae3b415eeca2c1774a5f4ce2e2904bb189d4d83f98f26c1614eccce5dd0051",
+      "fittedModels": true,
+      "historicalStatus": null,
+      "recordProfile": null,
+      "underCanonicalProfile": {
+        "linux-x64-node26-canonical": "BYTE_EXACT"
+      },
+      "canonicalStatus": "BYTE_EXACT",
+      "underPureCanonicalProfile": {
+        "linux-x64-node22-fresh-clone-rebuild": "BYTE_EXACT"
+      },
+      "underHostNativeNumerics": {
+        "linux-x64-node22-host-native-a": "CANONICALLY_EQUIVALENT"
+      },
+      "differencesFromStored": {
+        "linux-x64-node22-host-native-a": {
+          "artifacts/stage3f6c-deployable-router/stage3f6c-evaluation-freeze.json": {
+            "MODEL_PARAMETER_DIFFERENCE": {
+              "count": 20,
+              "maxAbsDiff": 1.1102230246251565e-16,
+              "maxRelDiff": 4.963969208887836e-15,
+              "maxUlpDiff": 26
+            },
+            "MODEL_HASH_DIFFERENCE": {
+              "count": 3,
+              "maxAbsDiff": null,
+              "maxRelDiff": null,
+              "maxUlpDiff": null
+            },
+            "METRIC_DIFFERENCE": {
+              "count": 1,
+              "maxAbsDiff": 2.7755575615628914e-17,
+              "maxRelDiff": 3.284712636021652e-16,
+              "maxUlpDiff": 2
+            }
+          },
+          "artifacts/stage3f6c-deployable-router/stage3f6c-certification-result.json": {
+            "MODEL_PARAMETER_DIFFERENCE": {
+              "count": 48,
+              "maxAbsDiff": 1.1102230246251565e-16,
+              "maxRelDiff": 4.963969208887836e-15,
+              "maxUlpDiff": 26
+            },
+            "MODEL_HASH_DIFFERENCE": {
+              "count": 6,
+              "maxAbsDiff": null,
+              "maxRelDiff": null,
+              "maxUlpDiff": null
+            },
+            "METRIC_DIFFERENCE": {
+              "count": 43,
+              "maxAbsDiff": 1.6653345369377348e-16,
+              "maxRelDiff": 5.2531364505380345e-15,
+              "maxUlpDiff": 26
+            },
+            "CERTIFICATE_HASH_DIFFERENCE": {
+              "count": 1,
+              "maxAbsDiff": null,
+              "maxRelDiff": null,
+              "maxUlpDiff": null
+            }
+          }
+        }
+      }
+    },
+    "3F6A": {
+      "storedHash": "2753335e7d97e77758dd90f71d9eb22274cba23cd187485c2338cd857eedb6ca",
+      "fittedModels": false,
+      "historicalStatus": null,
+      "recordProfile": null,
+      "underCanonicalProfile": {
+        "linux-x64-node26-canonical": "BYTE_EXACT"
+      },
+      "canonicalStatus": "BYTE_EXACT",
+      "underPureCanonicalProfile": {
+        "linux-x64-node22-fresh-clone-rebuild": "BYTE_EXACT"
+      },
+      "underHostNativeNumerics": {},
+      "differencesFromStored": {}
+    },
+    "3F6T": {
+      "storedHash": "5d6910dd39405ee9f9fc2868f1309ff84998d30f7128e7a60b36644ca9056582",
+      "fittedModels": true,
+      "historicalStatus": null,
+      "recordProfile": null,
+      "underCanonicalProfile": {
+        "linux-x64-node26-canonical": "BYTE_EXACT"
+      },
+      "canonicalStatus": "BYTE_EXACT",
+      "underPureCanonicalProfile": {
+        "linux-x64-node22-fresh-clone-rebuild": "BYTE_EXACT"
+      },
+      "underHostNativeNumerics": {
+        "linux-x64-node22-host-native-a": "CANONICALLY_EQUIVALENT"
+      },
+      "differencesFromStored": {
+        "linux-x64-node22-host-native-a": {
+          "artifacts/stage3f6t-policy-router/stage3f6t-evaluation-freeze.json": {
+            "MODEL_PARAMETER_DIFFERENCE": {
+              "count": 102,
+              "maxAbsDiff": 2.220446049250313e-16,
+              "maxRelDiff": 1.1847335119065676e-13,
+              "maxUlpDiff": 611
+            },
+            "MODEL_HASH_DIFFERENCE": {
+              "count": 2,
+              "maxAbsDiff": null,
+              "maxRelDiff": null,
+              "maxUlpDiff": null
+            }
+          },
+          "artifacts/stage3f6t-policy-router/stage3f6t-certification-result.json": {
+            "MODEL_HASH_DIFFERENCE": {
+              "count": 6,
+              "maxAbsDiff": null,
+              "maxRelDiff": null,
+              "maxUlpDiff": null
+            },
+            "METRIC_DIFFERENCE": {
+              "count": 1,
+              "maxAbsDiff": 1.3877787807814457e-17,
+              "maxRelDiff": 2.1438116283705772e-16,
+              "maxUlpDiff": 1
+            },
+            "CERTIFICATE_HASH_DIFFERENCE": {
+              "count": 1,
+              "maxAbsDiff": null,
+              "maxRelDiff": null,
+              "maxUlpDiff": null
+            }
+          }
+        }
+      }
+    },
+    "3F6W": {
+      "storedHash": "7c5db9fbdd1d02bbee76ee12a0a5bf8a6e98c5a53adb510b0ed7e57ebd295fb6",
+      "fittedModels": true,
+      "historicalStatus": null,
+      "recordProfile": null,
+      "underCanonicalProfile": {
+        "linux-x64-node26-canonical": "BYTE_EXACT"
+      },
+      "canonicalStatus": "BYTE_EXACT",
+      "underPureCanonicalProfile": {
+        "linux-x64-node22-fresh-clone-rebuild": "BYTE_EXACT"
+      },
+      "underHostNativeNumerics": {
+        "linux-x64-node22-host-native-a": "CANONICALLY_EQUIVALENT"
+      },
+      "differencesFromStored": {
+        "linux-x64-node22-host-native-a": {
+          "artifacts/stage3f6w-risk-state/stage3f6w-certification-result.json": {
+            "METRIC_DIFFERENCE": {
+              "count": 7,
+              "maxAbsDiff": 1.1102230246251565e-16,
+              "maxRelDiff": 2.4725743936930804e-16,
+              "maxUlpDiff": 2
+            },
+            "CERTIFICATE_HASH_DIFFERENCE": {
+              "count": 1,
+              "maxAbsDiff": null,
+              "maxRelDiff": null,
+              "maxUlpDiff": null
+            }
+          }
+        }
+      }
+    },
+    "3F6D": {
+      "storedHash": "f262c3477631a92007e1a40d4ba85bc03874fab6c1a68e78013378de2b909f3b",
+      "fittedModels": true,
+      "historicalStatus": null,
+      "recordProfile": {
+        "powModel": "FDLIBM_FUSED",
+        "reason": "certified under V8 <= 13 (fdlibm pow); canonical correctly rounded pow differs by 1 ULP in one temperature-grid cross-entropy"
+      },
+      "underCanonicalProfile": {
+        "linux-x64-node26-canonical": "BYTE_EXACT_UNDER_RECORD_PROFILE"
+      },
+      "canonicalStatus": "BYTE_EXACT_UNDER_RECORD_PROFILE",
+      "underPureCanonicalProfile": {
+        "linux-x64-node22-fresh-clone-rebuild": "CANONICALLY_EQUIVALENT",
+        "linux-x64-node22-pure-canonical-3f6d": "CANONICALLY_EQUIVALENT"
+      },
+      "underHostNativeNumerics": {
+        "linux-x64-node22-host-native-a": "BYTE_EXACT"
+      },
+      "differencesFromStored": {
+        "linux-x64-node22-host-native-a": {
+          "artifacts/stage3f6d-decision-rule/stage3f6d-certification-result.json": {}
+        },
+        "linux-x64-node22-pure-canonical-3f6d": {
+          "artifacts/stage3f6d-decision-rule/stage3f6d-decision-freeze.json": {
+            "MODEL_HASH_DIFFERENCE": {
+              "count": 1,
+              "maxAbsDiff": null,
+              "maxRelDiff": null,
+              "maxUlpDiff": null
+            },
+            "METRIC_DIFFERENCE": {
+              "count": 1,
+              "maxAbsDiff": 1.1102230246251565e-16,
+              "maxRelDiff": 2.0700094561944776e-16,
+              "maxUlpDiff": 1
+            }
+          },
+          "artifacts/stage3f6d-decision-rule/stage3f6d-certification-result.json": {
+            "MODEL_HASH_DIFFERENCE": {
+              "count": 1,
+              "maxAbsDiff": null,
+              "maxRelDiff": null,
+              "maxUlpDiff": null
+            },
+            "CERTIFICATE_HASH_DIFFERENCE": {
+              "count": 1,
+              "maxAbsDiff": null,
+              "maxRelDiff": null,
+              "maxUlpDiff": null
+            }
+          }
+        }
+      }
+    },
+    "3F6P": {
+      "storedHash": "3cd670113c2ffd3ad40e1113b77d492943b226bfcdb1730c3b60a15de679a585",
+      "fittedModels": true,
+      "historicalStatus": null,
+      "recordProfile": null,
+      "underCanonicalProfile": {
+        "linux-x64-node26-canonical": "BYTE_EXACT"
+      },
+      "canonicalStatus": "BYTE_EXACT",
+      "underPureCanonicalProfile": {
+        "linux-x64-node22-fresh-clone-rebuild": "BYTE_EXACT"
+      },
+      "underHostNativeNumerics": {
+        "linux-x64-node22-host-native-a": "BYTE_EXACT"
+      },
+      "differencesFromStored": {
+        "linux-x64-node22-host-native-a": {
+          "artifacts/stage3f6p-policy-quality/stage3f6p-certification-result.json": {}
+        }
+      }
+    },
+    "3F6P1": {
+      "storedHash": "48462a169c88337a9f27315c3e10b83f615e077a8ba2dc6751fdf437351d31e4",
+      "fittedModels": false,
+      "historicalStatus": null,
+      "recordProfile": null,
+      "underCanonicalProfile": {
+        "linux-x64-node26-canonical": "BYTE_EXACT"
+      },
+      "canonicalStatus": "BYTE_EXACT",
+      "underPureCanonicalProfile": {
+        "linux-x64-node22-fresh-clone-rebuild": "BYTE_EXACT"
+      },
+      "underHostNativeNumerics": {},
+      "differencesFromStored": {}
+    },
+    "3F6P1A": {
+      "storedHash": "c4029ff96e617341b448ae5d4f1853f6d21186134a64ce6162acc755394f40be",
+      "fittedModels": false,
+      "historicalStatus": null,
+      "recordProfile": null,
+      "underCanonicalProfile": {
+        "linux-x64-node26-canonical": "BYTE_EXACT"
+      },
+      "canonicalStatus": "BYTE_EXACT",
+      "underPureCanonicalProfile": {
+        "linux-x64-node22-fresh-clone-rebuild": "BYTE_EXACT"
+      },
+      "underHostNativeNumerics": {},
+      "differencesFromStored": {}
+    },
+    "3F6P1B": {
+      "storedHash": "120e7649a2912447d149e8a1b4c1a24c6a1af6bd64d5b6b5efd1b6dfe4ddfbdb",
+      "fittedModels": false,
+      "historicalStatus": null,
+      "recordProfile": null,
+      "underCanonicalProfile": {
+        "linux-x64-node26-canonical": "BYTE_EXACT"
+      },
+      "canonicalStatus": "BYTE_EXACT",
+      "underPureCanonicalProfile": {
+        "linux-x64-node22-fresh-clone-rebuild": "BYTE_EXACT"
+      },
+      "underHostNativeNumerics": {},
+      "differencesFromStored": {}
+    },
+    "3F6P1C": {
+      "storedHash": "81586cbe068885596d7f8b5c78d6f6d5d72e53425289f850386e0c43ddff702d",
+      "fittedModels": false,
+      "historicalStatus": null,
+      "recordProfile": null,
+      "underCanonicalProfile": {
+        "linux-x64-node26-canonical": "BYTE_EXACT"
+      },
+      "canonicalStatus": "BYTE_EXACT",
+      "underPureCanonicalProfile": {
+        "linux-x64-node22-fresh-clone-rebuild": "BYTE_EXACT"
+      },
+      "underHostNativeNumerics": {},
+      "differencesFromStored": {}
+    },
+    "3F6P1D": {
+      "storedHash": "afd0d6e6057f497e9e1d3666cf553518e134b0c4d09f783601b393c081ae7073",
+      "fittedModels": false,
+      "historicalStatus": null,
+      "recordProfile": null,
+      "underCanonicalProfile": {
+        "linux-x64-node26-canonical": "BYTE_EXACT"
+      },
+      "canonicalStatus": "BYTE_EXACT",
+      "underPureCanonicalProfile": {
+        "linux-x64-node22-fresh-clone-rebuild": "BYTE_EXACT"
+      },
+      "underHostNativeNumerics": {},
+      "differencesFromStored": {}
+    },
+    "3F6P1E": {
+      "storedHash": "11dcf65b79679ae8748eed0f5f9f3fdef38223524308aaa353c5b482eed8a031",
+      "fittedModels": true,
+      "historicalStatus": null,
+      "recordProfile": null,
+      "underCanonicalProfile": {
+        "linux-x64-node26-canonical": "BYTE_EXACT"
+      },
+      "canonicalStatus": "BYTE_EXACT",
+      "underPureCanonicalProfile": {
+        "linux-x64-node22-fresh-clone-rebuild": "BYTE_EXACT"
+      },
+      "underHostNativeNumerics": {
+        "linux-x64-node22-host-native-a": "BYTE_EXACT"
+      },
+      "differencesFromStored": {
+        "linux-x64-node22-host-native-a": {
+          "artifacts/stage3f6p1e-policy-requalification/stage3f6p1e-certification-result.json": {}
+        }
+      }
+    },
+    "T_SYM": {
+      "storedHash": "edd46e40fc2c6ddc611f9f78a432f723f0ae4e66facc1b2ca84183fa4d896f4e",
+      "fittedModels": true,
+      "historicalStatus": null,
+      "recordProfile": null,
+      "underCanonicalProfile": {
+        "linux-x64-node26-canonical": "BYTE_EXACT"
+      },
+      "canonicalStatus": "BYTE_EXACT",
+      "underPureCanonicalProfile": {
+        "linux-x64-node22-fresh-clone-rebuild": "BYTE_EXACT"
+      },
+      "underHostNativeNumerics": {
+        "linux-x64-node22-host-native-a": "CANONICALLY_EQUIVALENT"
+      },
+      "differencesFromStored": {
+        "linux-x64-node22-host-native-a": {
+          "artifacts/stage3f6tsym-router-value/stage3f6tsym-certification-result.json": {
+            "CERTIFICATE_HASH_DIFFERENCE": {
+              "count": 1,
+              "maxAbsDiff": null,
+              "maxRelDiff": null,
+              "maxUlpDiff": null
+            },
+            "INTEGRITY_GATE_DIFFERENCE": {
+              "count": 1,
+              "maxAbsDiff": null,
+              "maxRelDiff": null,
+              "maxUlpDiff": null
+            },
+            "GATE_CONSEQUENCE_DIFFERENCE": {
+              "count": 2,
+              "maxAbsDiff": null,
+              "maxRelDiff": null,
+              "maxUlpDiff": null
+            }
+          },
+          "artifacts/stage3f6tsym-router-value/stage3f6tsym-open-phase-report.json": {
+            "MODEL_HASH_DIFFERENCE": {
+              "count": 8,
+              "maxAbsDiff": null,
+              "maxRelDiff": null,
+              "maxUlpDiff": null
+            },
+            "OPEN_REPORT_HASH_DIFFERENCE": {
+              "count": 1,
+              "maxAbsDiff": null,
+              "maxRelDiff": null,
+              "maxUlpDiff": null
+            }
+          }
+        }
+      }
+    },
+    "P1A_SYM": {
+      "storedHash": "84770670baeb1502142e12d24a12d03763c0a97c22e80acc53013ecb98871fbb",
+      "fittedModels": true,
+      "historicalStatus": null,
+      "recordProfile": null,
+      "underCanonicalProfile": {
+        "linux-x64-node26-canonical": "BYTE_EXACT"
+      },
+      "canonicalStatus": "BYTE_EXACT",
+      "underPureCanonicalProfile": {
+        "linux-x64-node22-fresh-clone-rebuild": "BYTE_EXACT"
+      },
+      "underHostNativeNumerics": {
+        "linux-x64-node22-host-native-a": "CANONICALLY_EQUIVALENT"
+      },
+      "differencesFromStored": {
+        "linux-x64-node22-host-native-a": {
+          "artifacts/stage3f6p1asym-free-action/stage3f6p1asym-certification-result.json": {
+            "CERTIFICATE_HASH_DIFFERENCE": {
+              "count": 1,
+              "maxAbsDiff": null,
+              "maxRelDiff": null,
+              "maxUlpDiff": null
+            },
+            "INTEGRITY_GATE_DIFFERENCE": {
+              "count": 1,
+              "maxAbsDiff": null,
+              "maxRelDiff": null,
+              "maxUlpDiff": null
+            },
+            "GATE_CONSEQUENCE_DIFFERENCE": {
+              "count": 2,
+              "maxAbsDiff": null,
+              "maxRelDiff": null,
+              "maxUlpDiff": null
+            }
+          },
+          "artifacts/stage3f6p1asym-free-action/stage3f6p1asym-open-phase-report.json": {
+            "MODEL_HASH_DIFFERENCE": {
+              "count": 12,
+              "maxAbsDiff": null,
+              "maxRelDiff": null,
+              "maxUlpDiff": null
+            },
+            "OPEN_REPORT_HASH_DIFFERENCE": {
+              "count": 1,
+              "maxAbsDiff": null,
+              "maxRelDiff": null,
+              "maxUlpDiff": null
+            }
+          }
+        }
+      }
+    },
+    "P1_SYM": {
+      "storedHash": "afcdceb18df34b05bb60613e302a762c3de196d764b34dfbe50e1978d3f80cf8",
+      "fittedModels": true,
+      "historicalStatus": null,
+      "recordProfile": null,
+      "underCanonicalProfile": {
+        "linux-x64-node26-canonical": "BYTE_EXACT"
+      },
+      "canonicalStatus": "BYTE_EXACT",
+      "underPureCanonicalProfile": {
+        "linux-x64-node22-fresh-clone-rebuild": "BYTE_EXACT"
+      },
+      "underHostNativeNumerics": {
+        "linux-x64-node22-host-native-a": "CANONICALLY_EQUIVALENT"
+      },
+      "differencesFromStored": {
+        "linux-x64-node22-host-native-a": {
+          "artifacts/stage3f6p1sym-nexus-requalification/stage3f6p1sym-certification-result.json": {
+            "CERTIFICATE_HASH_DIFFERENCE": {
+              "count": 1,
+              "maxAbsDiff": null,
+              "maxRelDiff": null,
+              "maxUlpDiff": null
+            },
+            "INTEGRITY_GATE_DIFFERENCE": {
+              "count": 1,
+              "maxAbsDiff": null,
+              "maxRelDiff": null,
+              "maxUlpDiff": null
+            },
+            "GATE_CONSEQUENCE_DIFFERENCE": {
+              "count": 3,
+              "maxAbsDiff": null,
+              "maxRelDiff": null,
+              "maxUlpDiff": null
+            }
+          },
+          "artifacts/stage3f6p1sym-nexus-requalification/stage3f6p1sym-open-phase-report.json": {
+            "MODEL_HASH_DIFFERENCE": {
+              "count": 7,
+              "maxAbsDiff": null,
+              "maxRelDiff": null,
+              "maxUlpDiff": null
+            },
+            "OPEN_REPORT_HASH_DIFFERENCE": {
+              "count": 1,
+              "maxAbsDiff": null,
+              "maxRelDiff": null,
+              "maxUlpDiff": null
+            }
+          }
+        }
+      }
+    },
+    "W_SYM": {
+      "storedHash": "26e77c5d18c89774e3106295ec3868a2fcf2a83d251bab6173fc20510044f4b0",
+      "fittedModels": true,
+      "historicalStatus": null,
+      "recordProfile": null,
+      "underCanonicalProfile": {
+        "linux-x64-node26-canonical": "BYTE_EXACT"
+      },
+      "canonicalStatus": "BYTE_EXACT",
+      "underPureCanonicalProfile": {
+        "linux-x64-node22-fresh-clone-rebuild": "BYTE_EXACT"
+      },
+      "underHostNativeNumerics": {
+        "linux-x64-node22-host-native-b": "CANONICALLY_EQUIVALENT"
+      },
+      "differencesFromStored": {
+        "linux-x64-node22-host-native-b": {
+          "artifacts/stage3f6wsym-risk-requalification/stage3f6wsym-certification-result.json": {
+            "CERTIFICATE_HASH_DIFFERENCE": {
+              "count": 1,
+              "maxAbsDiff": null,
+              "maxRelDiff": null,
+              "maxUlpDiff": null
+            },
+            "INTEGRITY_GATE_DIFFERENCE": {
+              "count": 1,
+              "maxAbsDiff": null,
+              "maxRelDiff": null,
+              "maxUlpDiff": null
+            },
+            "GATE_CONSEQUENCE_DIFFERENCE": {
+              "count": 3,
+              "maxAbsDiff": null,
+              "maxRelDiff": null,
+              "maxUlpDiff": null
+            }
+          },
+          "artifacts/stage3f6wsym-risk-requalification/stage3f6wsym-open-phase-report.json": {
+            "MODEL_HASH_DIFFERENCE": {
+              "count": 87,
+              "maxAbsDiff": null,
+              "maxRelDiff": null,
+              "maxUlpDiff": null
+            },
+            "OPEN_REPORT_HASH_DIFFERENCE": {
+              "count": 1,
+              "maxAbsDiff": null,
+              "maxRelDiff": null,
+              "maxUlpDiff": null
+            }
+          }
+        }
+      }
+    },
+    "D_SYM_FREEZE": {
+      "storedHash": "4d7313b6151e329c2dc454ad72edd7fceca6a0557901fb750f8746b1400ead47",
+      "fittedModels": true,
+      "historicalStatus": null,
+      "recordProfile": null,
+      "underCanonicalProfile": {
+        "linux-x64-node26-canonical": "BYTE_EXACT"
+      },
+      "canonicalStatus": "BYTE_EXACT",
+      "underPureCanonicalProfile": {
+        "linux-x64-node22-fresh-clone-rebuild": "BYTE_EXACT"
+      },
+      "underHostNativeNumerics": {
+        "linux-x64-node22-host-native-b": "NOT_ASSESSABLE_UNDER_HOST_NATIVE_FAIL_CLOSED"
+      },
+      "differencesFromStored": {
+        "linux-x64-node22-host-native-b": {
+          "artifacts/stage3f6dsym-decision-rule/stage3f6dsym-analysis-freeze.json": "UNPAIRED"
+        }
+      }
+    },
+    "D_SYM": {
+      "storedHash": "65e507b76bbfb9b3a4ae867f73c9d2bc056575ef9b7743359bcfc28b2bb90680",
+      "fittedModels": true,
+      "historicalStatus": null,
+      "recordProfile": null,
+      "underCanonicalProfile": {
+        "linux-x64-node26-canonical": "BYTE_EXACT"
+      },
+      "canonicalStatus": "BYTE_EXACT",
+      "underPureCanonicalProfile": {
+        "linux-x64-node22-fresh-clone-rebuild": "BYTE_EXACT"
+      },
+      "underHostNativeNumerics": {
+        "linux-x64-node22-host-native-b": "NOT_ASSESSABLE_UNDER_HOST_NATIVE_FAIL_CLOSED"
+      },
+      "differencesFromStored": {
+        "linux-x64-node22-host-native-b": {
+          "artifacts/stage3f6dsym-decision-rule/stage3f6dsym-certification-result.json": "UNPAIRED"
+        }
+      }
+    }
+  },
+  "requiredStages": {
+    "3F6C": "BYTE_EXACT",
+    "3F6T": "BYTE_EXACT",
+    "T_SYM": "BYTE_EXACT",
+    "P1A_SYM": "BYTE_EXACT",
+    "P1_SYM": "BYTE_EXACT",
+    "W_SYM": "BYTE_EXACT",
+    "D_SYM": "BYTE_EXACT"
+  },
+  "checkModeAudit": {
+    "scripts/certify-stage3f0-world-state-contract.mjs": {
+      "CHECK_MODE_WRITES_TRACKED_FILES": false,
+      "filesWritten": [],
+      "underGuard": "no tracked write attempted"
+    },
+    "scripts/certify-stage3f1-causal-trace.mjs": {
+      "CHECK_MODE_WRITES_TRACKED_FILES": false,
+      "filesWritten": [],
+      "underGuard": "no tracked write attempted"
+    },
+    "scripts/certify-stage3f2-environment-calibration.mjs": {
+      "CHECK_MODE_WRITES_TRACKED_FILES": false,
+      "filesWritten": [],
+      "underGuard": "no tracked write attempted"
+    },
+    "scripts/certify-stage3f3-counterfactual-veto-ledger.mjs": {
+      "CHECK_MODE_WRITES_TRACKED_FILES": false,
+      "filesWritten": [],
+      "underGuard": "no tracked write attempted"
+    },
+    "scripts/certify-stage3f4-shadow-experience-buffer.mjs": {
+      "CHECK_MODE_WRITES_TRACKED_FILES": false,
+      "filesWritten": [],
+      "underGuard": "no tracked write attempted"
+    },
+    "scripts/certify-stage3f5-integrated-live-shadow.mjs": {
+      "CHECK_MODE_WRITES_TRACKED_FILES": false,
+      "filesWritten": [],
+      "underGuard": "no tracked write attempted"
+    },
+    "scripts/certify-stage3f6-prediction-reliability.mjs": {
+      "CHECK_MODE_WRITES_TRACKED_FILES": false,
+      "filesWritten": [],
+      "underGuard": "no tracked write attempted"
+    },
+    "scripts/certify-stage3f6r-runtime-parity.mjs": {
+      "CHECK_MODE_WRITES_TRACKED_FILES": false,
+      "filesWritten": [],
+      "underGuard": "no tracked write attempted"
+    },
+    "scripts/certify-stage3f6s-deployable-feature-contract.mjs": {
+      "CHECK_MODE_WRITES_TRACKED_FILES": false,
+      "filesWritten": [],
+      "underGuard": "no tracked write attempted"
+    },
+    "scripts/certify-stage3f6c-deployable-router.mjs": {
+      "CHECK_MODE_WRITES_TRACKED_FILES": true,
+      "filesWritten": [
+        "platform/game-agnostic/artifacts/stage3f6c-deployable-router/stage3f6c-evaluation-freeze.json"
+      ],
+      "underGuard": "identical rewrites skipped; differing rewrites blocked and reported (never reach the file)"
+    },
+    "scripts/certify-stage3f6a-action-proposals.mjs": {
+      "CHECK_MODE_WRITES_TRACKED_FILES": true,
+      "filesWritten": [
+        "platform/game-agnostic/artifacts/stage3f6a-action-proposals/stage3f6a-policy-freeze.json"
+      ],
+      "underGuard": "identical rewrites skipped; differing rewrites blocked and reported (never reach the file)"
+    },
+    "scripts/certify-stage3f6t-policy-router.mjs": {
+      "CHECK_MODE_WRITES_TRACKED_FILES": true,
+      "filesWritten": [
+        "platform/game-agnostic/artifacts/stage3f6t-policy-router/stage3f6t-evaluation-freeze.json"
+      ],
+      "underGuard": "identical rewrites skipped; differing rewrites blocked and reported (never reach the file)"
+    },
+    "scripts/certify-stage3f6w-risk-state.mjs": {
+      "CHECK_MODE_WRITES_TRACKED_FILES": true,
+      "filesWritten": [
+        "platform/game-agnostic/artifacts/stage3f6w-risk-state/stage3f6w-analysis-plan.json"
+      ],
+      "underGuard": "identical rewrites skipped; differing rewrites blocked and reported (never reach the file)"
+    },
+    "scripts/certify-stage3f6d-decision-rule.mjs": {
+      "CHECK_MODE_WRITES_TRACKED_FILES": true,
+      "filesWritten": [
+        "platform/game-agnostic/artifacts/stage3f6d-decision-rule/stage3f6d-decision-freeze.json"
+      ],
+      "underGuard": "identical rewrites skipped; differing rewrites blocked and reported (never reach the file)"
+    },
+    "scripts/certify-stage3f6p-policy-quality.mjs": {
+      "CHECK_MODE_WRITES_TRACKED_FILES": true,
+      "filesWritten": [
+        "platform/game-agnostic/artifacts/stage3f6p-policy-quality/stage3f6p-analysis-plan.json"
+      ],
+      "underGuard": "identical rewrites skipped; differing rewrites blocked and reported (never reach the file)"
+    },
+    "scripts/certify-stage3f6p1-nexus-remediation.mjs": {
+      "CHECK_MODE_WRITES_TRACKED_FILES": false,
+      "filesWritten": [],
+      "underGuard": "no tracked write attempted"
+    },
+    "scripts/certify-stage3f6p1a-nexus-spatial.mjs": {
+      "CHECK_MODE_WRITES_TRACKED_FILES": false,
+      "filesWritten": [],
+      "underGuard": "no tracked write attempted"
+    },
+    "scripts/certify-stage3f6p1b-directional-symmetry.mjs": {
+      "CHECK_MODE_WRITES_TRACKED_FILES": false,
+      "filesWritten": [],
+      "underGuard": "no tracked write attempted"
+    },
+    "scripts/certify-stage3f6p1c-symmetric-benchmark.mjs": {
+      "CHECK_MODE_WRITES_TRACKED_FILES": false,
+      "filesWritten": [],
+      "underGuard": "no tracked write attempted"
+    },
+    "scripts/certify-stage3f6p1d-symmetric-corpus.mjs": {
+      "CHECK_MODE_WRITES_TRACKED_FILES": false,
+      "filesWritten": [],
+      "underGuard": "no tracked write attempted"
+    },
+    "scripts/certify-stage3f6p1e-policy-requalification.mjs": {
+      "CHECK_MODE_WRITES_TRACKED_FILES": false,
+      "filesWritten": [],
+      "underGuard": "no tracked write attempted"
+    },
+    "scripts/certify-stage3f6tsym-router-value.mjs": {
+      "CHECK_MODE_WRITES_TRACKED_FILES": false,
+      "filesWritten": [],
+      "underGuard": "no tracked write attempted"
+    },
+    "scripts/certify-stage3f6p1asym-free-action.mjs": {
+      "CHECK_MODE_WRITES_TRACKED_FILES": false,
+      "filesWritten": [],
+      "underGuard": "no tracked write attempted"
+    },
+    "scripts/certify-stage3f6p1sym-nexus.mjs": {
+      "CHECK_MODE_WRITES_TRACKED_FILES": false,
+      "filesWritten": [],
+      "underGuard": "no tracked write attempted"
+    },
+    "scripts/certify-stage3f6wsym-risk.mjs": {
+      "CHECK_MODE_WRITES_TRACKED_FILES": false,
+      "filesWritten": [],
+      "underGuard": "no tracked write attempted"
+    },
+    "scripts/stage3f6dsym-freeze.mjs": {
+      "CHECK_MODE_WRITES_TRACKED_FILES": false,
+      "filesWritten": [],
+      "underGuard": "no tracked write attempted"
+    },
+    "scripts/certify-stage3f6dsym-decision-rule.mjs": {
+      "CHECK_MODE_WRITES_TRACKED_FILES": false,
+      "filesWritten": [],
+      "underGuard": "no tracked write attempted"
+    }
+  },
+  "freshClone": {
+    "procedure": [
+      "git clone <repository>",
+      "cd platform/game-agnostic",
+      "node scripts/reproducibility/verify-stage3f.mjs --rebuild-evidence",
+      "node scripts/reproducibility/verify-stage3f.mjs --check",
+      "node scripts/certify-stage3frp-reproducibility-portability.mjs --check"
+    ],
+    "environment": "Node.js >= 20 and git; full chains recorded on Node 22 and 26 (linux-x64), Node 20 golden vectors / tests / D-SYM freeze only. No network, no hidden local state; build/ holds only derived output.",
+    "evidence": {
+      "3F6_EVALUATION_CORPUS": {
+        "linux-x64-node22-fresh-clone-attest": {
+          "status": "BYTE_EXACT",
+          "regenerated": false,
+          "payloadHashes": [
+            "33f817a54fc1d8988173af83d79409d27cbaf4b7dcbcb2f1f4a12d54f5961b58"
+          ]
+        },
+        "linux-x64-node22-fresh-clone-rebuild": {
+          "status": "NOT_REPRODUCED",
+          "regenerated": true,
+          "payloadHashes": [
+            "33f817a54fc1d8988173af83d79409d27cbaf4b7dcbcb2f1f4a12d54f5961b58"
+          ]
+        }
+      },
+      "3F6C_CORPUS": {
+        "linux-x64-node22-fresh-clone-attest": {
+          "status": "BYTE_EXACT",
+          "regenerated": false,
+          "payloadHashes": [
+            "28fc6369511c2eb2e59d846a7a0353817cef9e56e871a65b4f8c2b577c1b62d5"
+          ]
+        },
+        "linux-x64-node22-fresh-clone-rebuild": {
+          "status": "BYTE_EXACT",
+          "regenerated": true,
+          "payloadHashes": [
+            "28fc6369511c2eb2e59d846a7a0353817cef9e56e871a65b4f8c2b577c1b62d5"
+          ]
+        }
+      },
+      "3F6A_PROPOSALS": {
+        "linux-x64-node22-fresh-clone-attest": {
+          "status": "BYTE_EXACT",
+          "regenerated": false,
+          "payloadHashes": [
+            "0ab6b12b1c7940e4275d9011cce0f075a451ddc2fc7f88fa0ff79f1b28312d7a"
+          ]
+        },
+        "linux-x64-node22-fresh-clone-rebuild": {
+          "status": "BYTE_EXACT",
+          "regenerated": true,
+          "payloadHashes": [
+            "0ab6b12b1c7940e4275d9011cce0f075a451ddc2fc7f88fa0ff79f1b28312d7a"
+          ]
+        }
+      },
+      "3F6T_CONFIRMATORY": {
+        "linux-x64-node22-fresh-clone-attest": {
+          "status": "BYTE_EXACT",
+          "regenerated": false,
+          "payloadHashes": [
+            "199a86724b710b13053e6c89d98e84218e92b47ab581691deadf541be704a843"
+          ]
+        },
+        "linux-x64-node22-fresh-clone-rebuild": {
+          "status": "BYTE_EXACT",
+          "regenerated": true,
+          "payloadHashes": [
+            "199a86724b710b13053e6c89d98e84218e92b47ab581691deadf541be704a843"
+          ]
+        }
+      },
+      "3F6W_RISK_EVIDENCE": {
+        "linux-x64-node22-fresh-clone-attest": {
+          "status": "BYTE_EXACT",
+          "regenerated": false,
+          "payloadHashes": [
+            "c3cd7ef000f0531fc89d63c3d838da227f260c3327267550802317814fbf96b0"
+          ]
+        },
+        "linux-x64-node22-fresh-clone-rebuild": {
+          "status": "BYTE_EXACT",
+          "regenerated": true,
+          "payloadHashes": [
+            "c3cd7ef000f0531fc89d63c3d838da227f260c3327267550802317814fbf96b0"
+          ]
+        }
+      },
+      "3F6D_CONFIRMATORY": {
+        "linux-x64-node22-fresh-clone-attest": {
+          "status": "BYTE_EXACT",
+          "regenerated": false,
+          "payloadHashes": [
+            "d9aa89fc27840d4fd102b7440e59920e4c629b401a90c5e3b4a349ac64a9d5e8"
+          ]
+        },
+        "linux-x64-node22-fresh-clone-rebuild": {
+          "status": "BYTE_EXACT",
+          "regenerated": true,
+          "payloadHashes": [
+            "d9aa89fc27840d4fd102b7440e59920e4c629b401a90c5e3b4a349ac64a9d5e8"
+          ]
+        }
+      },
+      "3F6P_POLICY_EVIDENCE": {
+        "linux-x64-node22-fresh-clone-attest": {
+          "status": "BYTE_EXACT",
+          "regenerated": false,
+          "payloadHashes": [
+            "f79e0d9ecc66466e4ea6d4085ef5087e518380e26b0b66f6cfacf8b1e753a601"
+          ]
+        },
+        "linux-x64-node22-fresh-clone-rebuild": {
+          "status": "BYTE_EXACT",
+          "regenerated": true,
+          "payloadHashes": [
+            "f79e0d9ecc66466e4ea6d4085ef5087e518380e26b0b66f6cfacf8b1e753a601"
+          ]
+        }
+      },
+      "3F6P1_NEXUS_DEV": {
+        "linux-x64-node22-fresh-clone-attest": {
+          "status": "BYTE_EXACT",
+          "regenerated": false,
+          "payloadHashes": [
+            "c8ceec2ed7bcac4323097fe65a0427bfa7054208b215612e8dd195b65c4fb0a4"
+          ]
+        },
+        "linux-x64-node22-fresh-clone-rebuild": {
+          "status": "BYTE_EXACT",
+          "regenerated": true,
+          "payloadHashes": [
+            "c8ceec2ed7bcac4323097fe65a0427bfa7054208b215612e8dd195b65c4fb0a4"
+          ]
+        }
+      },
+      "3F6P1_NEXUS_CAL": {
+        "linux-x64-node22-fresh-clone-attest": {
+          "status": "BYTE_EXACT",
+          "regenerated": false,
+          "payloadHashes": [
+            "4b73c7d7c9be57f4e7fc37ee313ca564f9bc628e94980f1e3b36cb9a5f363feb"
+          ]
+        },
+        "linux-x64-node22-fresh-clone-rebuild": {
+          "status": "BYTE_EXACT",
+          "regenerated": true,
+          "payloadHashes": [
+            "4b73c7d7c9be57f4e7fc37ee313ca564f9bc628e94980f1e3b36cb9a5f363feb"
+          ]
+        }
+      },
+      "3F6P1A_SPATIAL_DEV": {
+        "linux-x64-node22-fresh-clone-attest": {
+          "status": "BYTE_EXACT",
+          "regenerated": false,
+          "payloadHashes": [
+            "98b5671241a44d301b17ad2275d31dd363467cb2beb01e6ae16623342758e9b5"
+          ]
+        },
+        "linux-x64-node22-fresh-clone-rebuild": {
+          "status": "BYTE_EXACT",
+          "regenerated": true,
+          "payloadHashes": [
+            "98b5671241a44d301b17ad2275d31dd363467cb2beb01e6ae16623342758e9b5"
+          ]
+        }
+      },
+      "3F6P1B_SYMMETRY": {
+        "linux-x64-node22-fresh-clone-attest": {
+          "status": "BYTE_EXACT",
+          "regenerated": false,
+          "payloadHashes": [
+            "7c7895c80427bfa412b3602365d7b020972127c1499d0c081441f7fc759a368d"
+          ]
+        },
+        "linux-x64-node22-fresh-clone-rebuild": {
+          "status": "BYTE_EXACT",
+          "regenerated": true,
+          "payloadHashes": [
+            "7c7895c80427bfa412b3602365d7b020972127c1499d0c081441f7fc759a368d"
+          ]
+        }
+      },
+      "3F6P1C_SYMMETRIC_DEV": {
+        "linux-x64-node22-fresh-clone-attest": {
+          "status": "BYTE_EXACT",
+          "regenerated": false,
+          "payloadHashes": [
+            "c802aefd40df11e82ffd8c02410cd3bb52eb7d1403c46b3f0db98c9ff7ecc50a"
+          ]
+        },
+        "linux-x64-node22-fresh-clone-rebuild": {
+          "status": "BYTE_EXACT",
+          "regenerated": true,
+          "payloadHashes": [
+            "c802aefd40df11e82ffd8c02410cd3bb52eb7d1403c46b3f0db98c9ff7ecc50a"
+          ]
+        }
+      },
+      "3F6P1D_SYMMETRIC_CORPUS": {
+        "linux-x64-node22-fresh-clone-attest": {
+          "status": "BYTE_EXACT",
+          "regenerated": false,
+          "payloadHashes": [
+            "4de383eb0c6e9836706e87c6626de53ccb54853fb527f368cfaf599617e6c75e"
+          ]
+        },
+        "linux-x64-node22-fresh-clone-rebuild": {
+          "status": "BYTE_EXACT",
+          "regenerated": true,
+          "payloadHashes": [
+            "4de383eb0c6e9836706e87c6626de53ccb54853fb527f368cfaf599617e6c75e"
+          ]
+        }
+      },
+      "3F6P1E_POLICY_OPEN": {
+        "linux-x64-node22-fresh-clone-attest": {
+          "status": "BYTE_EXACT",
+          "regenerated": false,
+          "payloadHashes": [
+            "f320668b58409170d225800321d87aab47fa942b6cd8a57a73803a8dad73e371"
+          ]
+        },
+        "linux-x64-node22-fresh-clone-rebuild": {
+          "status": "BYTE_EXACT",
+          "regenerated": true,
+          "payloadHashes": [
+            "f320668b58409170d225800321d87aab47fa942b6cd8a57a73803a8dad73e371"
+          ]
+        }
+      },
+      "3F6P1E_POLICY_SEALED": {
+        "linux-x64-node22-fresh-clone-attest": {
+          "status": "BYTE_EXACT",
+          "regenerated": false,
+          "payloadHashes": [
+            "5931367b4dffa422d3487e3d77f831b8bb93a8c6d3e7530ae457e686eb8127a3"
+          ]
+        },
+        "linux-x64-node22-fresh-clone-rebuild": {
+          "status": "BYTE_EXACT",
+          "regenerated": true,
+          "payloadHashes": [
+            "5931367b4dffa422d3487e3d77f831b8bb93a8c6d3e7530ae457e686eb8127a3"
+          ]
+        }
+      },
+      "3F6TSYM_FRESH": {
+        "linux-x64-node22-fresh-clone-attest": {
+          "status": "BYTE_EXACT",
+          "regenerated": false,
+          "payloadHashes": [
+            "2921adb7e933c274ed692d0f38ccc58a6d1553a60194d01d14b75105c92ff6e8"
+          ]
+        },
+        "linux-x64-node22-fresh-clone-rebuild": {
+          "status": "BYTE_EXACT",
+          "regenerated": true,
+          "payloadHashes": [
+            "2921adb7e933c274ed692d0f38ccc58a6d1553a60194d01d14b75105c92ff6e8"
+          ]
+        }
+      },
+      "3F6P1ASYM_FRESH": {
+        "linux-x64-node22-fresh-clone-attest": {
+          "status": "BYTE_EXACT",
+          "regenerated": false,
+          "payloadHashes": [
+            "8fde1f1245849e88b941044788d3a7cebe6b930837dce2e7b074a1c461c63840"
+          ]
+        },
+        "linux-x64-node22-fresh-clone-rebuild": {
+          "status": "BYTE_EXACT",
+          "regenerated": true,
+          "payloadHashes": [
+            "8fde1f1245849e88b941044788d3a7cebe6b930837dce2e7b074a1c461c63840"
+          ]
+        }
+      },
+      "3F6P1SYM_FRESH": {
+        "linux-x64-node22-fresh-clone-attest": {
+          "status": "BYTE_EXACT",
+          "regenerated": false,
+          "payloadHashes": [
+            "fee73d23f3cf55d89d9ba9c6c11c9bc86012db497e783f35235de88badbd8523"
+          ]
+        },
+        "linux-x64-node22-fresh-clone-rebuild": {
+          "status": "BYTE_EXACT",
+          "regenerated": true,
+          "payloadHashes": [
+            "fee73d23f3cf55d89d9ba9c6c11c9bc86012db497e783f35235de88badbd8523"
+          ]
+        }
+      },
+      "3F6WSYM_FRESH": {
+        "linux-x64-node22-fresh-clone-attest": {
+          "status": "BYTE_EXACT",
+          "regenerated": false,
+          "payloadHashes": [
+            "2c8f73fbd550460e82691616fdddac7d36d09f9c339a19679b2c9cef1f40f14d"
+          ]
+        },
+        "linux-x64-node22-fresh-clone-rebuild": {
+          "status": "BYTE_EXACT",
+          "regenerated": true,
+          "payloadHashes": [
+            "2c8f73fbd550460e82691616fdddac7d36d09f9c339a19679b2c9cef1f40f14d"
+          ]
+        }
+      },
+      "3F6DSYM_FRESH": {
+        "linux-x64-node22-fresh-clone-attest": {
+          "status": "BYTE_EXACT",
+          "regenerated": false,
+          "payloadHashes": [
+            "8aa1672a1acdfe62251458b8e986b2f79b4f0eb1cc794596315f92ba7ccbac9c"
+          ]
+        },
+        "linux-x64-node22-fresh-clone-rebuild": {
+          "status": "BYTE_EXACT",
+          "regenerated": true,
+          "payloadHashes": [
+            "8aa1672a1acdfe62251458b8e986b2f79b4f0eb1cc794596315f92ba7ccbac9c"
+          ]
+        }
+      }
+    },
+    "allEvidenceByteExact": true
+  },
+  "platformMatrix": [
+    {
+      "label": "linux-x64-node22-fresh-clone-attest",
+      "host": {
+        "platform": "linux",
+        "arch": "x64",
+        "node": "v22.22.2",
+        "v8": "12.4.254.21-node.39",
+        "cpuModel": "Intel(R) Xeon(R) Processor @ 2.10GHz"
+      },
+      "mode": "canonical",
+      "numericsProfile": "SENTINEL_CANONICAL_NUMERICS_V1",
+      "pureCanonical": false,
+      "head": "23d3458149da41d24439c828ba137c6e4155a8e8",
+      "pass": true,
+      "checksRun": 0,
+      "evidenceRun": 20,
+      "trackedTreeUnchanged": true
+    },
+    {
+      "label": "linux-x64-node22-fresh-clone-rebuild",
+      "host": {
+        "platform": "linux",
+        "arch": "x64",
+        "node": "v22.22.2",
+        "v8": "12.4.254.21-node.39",
+        "cpuModel": "Intel(R) Xeon(R) Processor @ 2.10GHz"
+      },
+      "mode": "canonical",
+      "numericsProfile": "SENTINEL_CANONICAL_NUMERICS_V1",
+      "pureCanonical": true,
+      "head": "94ebcfdcadbee4d16285591863a921e1d50d1740",
+      "pass": false,
+      "checksRun": 27,
+      "evidenceRun": 20,
+      "trackedTreeUnchanged": true
+    },
+    {
+      "label": "linux-x64-node22-host-native-a",
+      "host": {
+        "platform": "linux",
+        "arch": "x64",
+        "node": "v22.22.2",
+        "v8": "12.4.254.21-node.39",
+        "cpuModel": "Intel(R) Xeon(R) Processor @ 2.10GHz"
+      },
+      "mode": "native",
+      "numericsProfile": "HOST_NATIVE",
+      "pureCanonical": false,
+      "head": "94ebcfdcadbee4d16285591863a921e1d50d1740",
+      "pass": false,
+      "checksRun": 9,
+      "evidenceRun": 0,
+      "trackedTreeUnchanged": true
+    },
+    {
+      "label": "linux-x64-node22-host-native-b",
+      "host": {
+        "platform": "linux",
+        "arch": "x64",
+        "node": "v22.22.2",
+        "v8": "12.4.254.21-node.39",
+        "cpuModel": "Intel(R) Xeon(R) Processor @ 2.10GHz"
+      },
+      "mode": "native",
+      "numericsProfile": "HOST_NATIVE",
+      "pureCanonical": false,
+      "head": "23d3458149da41d24439c828ba137c6e4155a8e8",
+      "pass": false,
+      "checksRun": 3,
+      "evidenceRun": 0,
+      "trackedTreeUnchanged": true
+    },
+    {
+      "label": "linux-x64-node22-pure-canonical-3f6d",
+      "host": {
+        "platform": "linux",
+        "arch": "x64",
+        "node": "v22.22.2",
+        "v8": "12.4.254.21-node.39",
+        "cpuModel": "Intel(R) Xeon(R) Processor @ 2.10GHz"
+      },
+      "mode": "canonical",
+      "numericsProfile": "SENTINEL_CANONICAL_NUMERICS_V1",
+      "pureCanonical": true,
+      "head": "94ebcfdcadbee4d16285591863a921e1d50d1740",
+      "pass": false,
+      "checksRun": 1,
+      "evidenceRun": 0,
+      "trackedTreeUnchanged": true
+    },
+    {
+      "label": "linux-x64-node26-canonical",
+      "host": {
+        "platform": "linux",
+        "arch": "x64",
+        "node": "v26.10.0",
+        "v8": "14.6.202.34-node.34",
+        "cpuModel": "Intel(R) Xeon(R) Processor @ 2.10GHz"
+      },
+      "mode": "canonical",
+      "numericsProfile": "SENTINEL_CANONICAL_NUMERICS_V1",
+      "pureCanonical": false,
+      "head": "23d3458149da41d24439c828ba137c6e4155a8e8",
+      "pass": true,
+      "checksRun": 27,
+      "evidenceRun": 0,
+      "trackedTreeUnchanged": true
+    }
+  ],
+  "platformMatrixLimitation": "Physical hosts available: linux-x64 only. Full chains ran on Node 22 (fresh GitHub clone, evidence regenerated from nothing) and Node 26; a Node 20 chain was interrupted by a container restart and is not recorded (Node 20 golden vectors, tests and a direct D-SYM freeze reproduction passed). The arm64 arithmetic of record is reproduced by exact emulation (fused fdlibm exp) and verified against every stored hash; no arm64 or macOS host was run.",
+  "historicalArtifacts": {
+    "modified": false,
+    "erratum": "artifacts/stage3frp-reproducibility-portability/erratum-stage3f-portability.json",
+    "erratumHash": "182eee78d49098140527343a3047f61285b30cbe437d2dd219a0222fc9a85d38"
+  },
+  "guard": {
+    "exponentiationGuardFailures": [],
+    "pinnedRewrites": [
+      "src/stage3f/decision-rule-v1.js"
+    ]
+  },
+  "checks": {
+    "GOLDEN_VECTORS_REPRODUCE_ON_THIS_HOST": true,
+    "ROOT_CAUSE_EXP_DEMONSTRATED": true,
+    "ROOT_CAUSE_POW_DEMONSTRATED": true,
+    "TOLERANCE_RULE_MARGINS": true,
+    "EXPONENTIATION_GUARD_CLEAN": true,
+    "REQUIRED_STAGES_BYTE_EXACT_UNDER_CANONICAL": true,
+    "CANONICAL_ON_AT_LEAST_TWO_NODE_MAJORS": true,
+    "NATIVE_SCIENCE_REPRODUCES_WHERE_ASSESSABLE": true,
+    "ALL_CHAIN_CHECKS_ACCOUNTED": true,
+    "RECORD_PROFILE_STAGES_EQUIVALENT_UNDER_PURE_CANONICAL": true,
+    "TRACKED_TREE_UNCHANGED_IN_EVERY_RUN": true,
+    "FRESH_CLONE_EVIDENCE_BYTE_EXACT": true,
+    "RUNS_AT_BASELINE_LINEAGE": true,
+    "TESTS_PASS": true
+  },
+  "tests": {
+    "pass": 19,
+    "fail": 0
+  },
+  "conclusions": {
+    "CROSS_PLATFORM_REPRODUCIBILITY_MEASURED": true,
+    "ROOT_CAUSE_CONFIRMED": true,
+    "SCIENTIFIC_RESULTS_REPRODUCE": true,
+    "NOT_ASSESSABLE_UNDER_HOST_NATIVE": [
+      "D_SYM"
+    ],
+    "BYTE_REPRODUCIBILITY_PORTABLE": true,
+    "BYTE_REPRODUCIBILITY_PORTABLE_UNDER_HOST_NATIVE_MATH": false,
+    "NUMERICAL_CANONICALIZATION_REQUIRED": false,
+    "CANONICAL_NUMERICS_PROFILE_REQUIRED": true,
+    "PLATFORM_PINNING_REQUIRED": false,
+    "CHECK_MODE_READ_ONLY": true,
+    "FRESH_CLONE_CERTIFIABLE": true,
+    "HISTORICAL_CERTIFICATES_PRESERVED": true,
+    "STAGE3F_REPRODUCIBILITY_BLOCKER_RESOLVED": true
+  },
+  "authority": {
+    "authority": "R0",
+    "canDispatch": false,
+    "canMutateLiveWorld": false,
+    "onlineLearningEnabled": false,
+    "promotedToLiveRuntime": false
+  },
+  "roadmap": {
+    "READY_FOR_3F_CONFIRMATORY_RERUN": true,
+    "READY_FOR_3F_FREEZE": false,
+    "READY_FOR_STAGE3G": false,
+    "nextRecommendedAction": "Run the separately planned Stage 3F.6 confirmatory rerun under the canonical profile (verify-stage3f.mjs runtime), recording numericsProfile in its certificate.",
+    "blockers": [
+      "STAGE3F6_CONFIRMATORY_RERUN_NOT_RUN",
+      "STAGE3F6_ERRATUM_001_RECONCILIATION_PENDING",
+      "FORMAL_3F_FREEZE_DECISION_PENDING"
+    ]
+  },
+  "recordHashes": {
+    "artifacts/stage3frp-reproducibility-portability/root-cause/linux-x64-node22.json": "4bdef04f9e11c65ca575701e48e28eba149b31be1120b8a989a3259ce3ec4f69",
+    "artifacts/stage3frp-reproducibility-portability/root-cause/linux-x64-node26.json": "27fb896f2027990b665a872d3fe26950a1a52266bca4b3dfa87cffb558a6b5d7",
+    "artifacts/stage3frp-reproducibility-portability/decision-sensitivity.json": "95799687f96d4dac5c76a2c4993ab0411ccb03a09a37fa875813e2f32bb6197f",
+    "artifacts/stage3frp-reproducibility-portability/platform-runs/linux-x64-node22-fresh-clone-attest.json": "003a3223d56c33732fdf1e71dec270f6f49f88edd132a25c84a6a103c128a752",
+    "artifacts/stage3frp-reproducibility-portability/platform-runs/linux-x64-node22-fresh-clone-rebuild.json": "4a6ccf6b3046387bcfe9aef61dd2517734d9150071ab9b524fb219cb5c70c26e",
+    "artifacts/stage3frp-reproducibility-portability/platform-runs/linux-x64-node22-host-native-a.json": "1c7835bae8bff53a0d682773d6bf1b2d7fc9108d1cc7a0393b94f3f1bd4aa1e1",
+    "artifacts/stage3frp-reproducibility-portability/platform-runs/linux-x64-node22-host-native-b.json": "8a065c153d451666257256f3b144b5e0c6d4ca55fca8d6545e9b1f1dfbe363ad",
+    "artifacts/stage3frp-reproducibility-portability/platform-runs/linux-x64-node22-pure-canonical-3f6d.json": "698aba797270c590afa8ba216bad98b748e4010959c4eb98af6028d762285ef5",
+    "artifacts/stage3frp-reproducibility-portability/platform-runs/linux-x64-node26-canonical.json": "dbd3a8539305d028481f51574d38d50d4fdd69f85e96a53e91a3d6774d342057"
+  },
+  "contractFile": "artifacts/stage3frp-reproducibility-portability/stage3frp-reproducibility-contract.json",
+  "sourceHashes": {
+    "src/core/canonical-numerics-v1.js": "e1f22049ab3e9aee0e1f83033cc8e885a2e347810bead3c5010b7e7554f77cf4",
+    "scripts/reproducibility/canonical-runtime.mjs": "d3ba6df586424ff84bca525da2a32f767d7f8b09a246b94602889066fe26d026",
+    "scripts/reproducibility/canonical-source-hooks.mjs": "e054c9be5ec90f530ea2794f8ab490f2fd0331341813a9b7d440e26d0ce5bd85",
+    "scripts/reproducibility/exponentiation-guard.mjs": "8a82c9cbeb0a90f3109e42f09c176d6aed2f8bc637b9b040fe81b3d3c70e051f",
+    "scripts/reproducibility/verify-stage3f.mjs": "70771a0486062f6bb4dace5e705275eabfb0e90bf9ac76b94480cb8b3ca8e1e7",
+    "scripts/reproducibility/stage3f-chain.mjs": "a8f1f08548f540f042c2828fcc4ea3138aa4b002c2ea27452f0252428deec1ec",
+    "scripts/reproducibility/certificate-diff.mjs": "a75961531c7797fdf5a9bf5752f840b906c7e8688ec4bee92f0dbffeddde224a",
+    "scripts/reproducibility/record-run.mjs": "4354e22bcce20288ca1f2539a9c9c49be5cd7ddb6d120a86b46507a8cffcc229",
+    "scripts/reproducibility/root-cause-experiments.mjs": "789bf1bb7ec19110238832819ab0373b1226770a4d570cb318493753f3e29c3b",
+    "scripts/reproducibility/decision-sensitivity.mjs": "81d6c6f145e983365cbc85cf696c0bf0cf241a6e21026d2e39b80a12e338a08e",
+    "scripts/reproducibility/fdlibm-variants.mjs": "20afdfe58d99e5e985b0fe036949d24437bd52d8d92df998fc519a5c3ffecd2c",
+    "scripts/certify-stage3frp-reproducibility-portability.mjs": "472b9f654b094442f122dc6c3b1abd18b476cd31c2db7c5886a218552c49e214",
+    "tests/stage3frp-reproducibility-portability.test.js": "130df1c912e135fea844a923278776119e63bb1798537c6d8ed92abaa4de6259"
+  },
+  "certificationHash": "30f4fd3478da7097d309390dd64438026fe536a94ba18a07f9fe31e176d49b5a"
+}

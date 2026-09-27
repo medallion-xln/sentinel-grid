@@ -1,0 +1,314 @@
+{
+  "schemaVersion": 1,
+  "experiment": "STAGE3F_REPRODUCIBILITY_ROOT_CAUSE_V1",
+  "host": {
+    "platform": "linux",
+    "arch": "x64",
+    "node": "v22.22.2",
+    "v8": "12.4.254.21-node.39",
+    "v8FlagUseStdMathPow": false
+  },
+  "E1_EXP_CONFORMANCE": {
+    "inputs": 300000,
+    "separatePortVsHostMathExpMismatches": 0,
+    "fusedVsSeparateDifferences": 140,
+    "fusedVsSeparateRate": 0.00046666666666666666,
+    "fusedVsSeparateMaxUlp": 1,
+    "reading": "this host evaluates Math.exp exactly as separately rounded fdlibm"
+  },
+  "E2_STAGE3F6C_ROUTER_REFIT": {
+    "storedCoreRouterHash": "66e127128bf0ba181cc69091242aad3a91df618cec18375471845fcee409d1c7",
+    "fits": {
+      "HOST_NATIVE": {
+        "routerHash": "bfffd07c11efeaed4bd98db28f008bfa56ae82401d4b468b458dd02ff73f394d",
+        "matchesStored": false,
+        "standardisationIdentical": true,
+        "coefficients": {
+          "bitIdentical": false,
+          "maxUlp": 26,
+          "maxAbs": 1.1102230246251565e-16,
+          "maxRel": 4.963969208887836e-15
+        }
+      },
+      "FDLIBM_SEPARATE": {
+        "routerHash": "bfffd07c11efeaed4bd98db28f008bfa56ae82401d4b468b458dd02ff73f394d",
+        "matchesStored": false,
+        "standardisationIdentical": true,
+        "coefficients": {
+          "bitIdentical": false,
+          "maxUlp": 26,
+          "maxAbs": 1.1102230246251565e-16,
+          "maxRel": 4.963969208887836e-15
+        }
+      },
+      "FDLIBM_FUSED_CANONICAL": {
+        "routerHash": "66e127128bf0ba181cc69091242aad3a91df618cec18375471845fcee409d1c7",
+        "matchesStored": true,
+        "standardisationIdentical": true,
+        "coefficients": {
+          "bitIdentical": true,
+          "maxUlp": 0,
+          "maxAbs": 0,
+          "maxRel": 0
+        }
+      }
+    }
+  },
+  "E3_SYMMETRIC_ROUTER_REFIT": {
+    "storedTSymRouterHash": "e9c123db9c0ac2dbada7b01bebe2035a3c0b4e39b8f013e754c8f2bb99208d88",
+    "fits": {
+      "HOST_NATIVE": {
+        "routerHash": "a3d8d007d3777d71771dbc8e208422ed053858ad868640eb31e340e78cbb658b",
+        "matchesStored": false,
+        "coefficients": {
+          "bitIdentical": false,
+          "maxUlp": 635,
+          "maxAbs": 3.3306690738754696e-16,
+          "maxRel": 1.1502441504607477e-13
+        }
+      },
+      "FDLIBM_SEPARATE": {
+        "routerHash": "a3d8d007d3777d71771dbc8e208422ed053858ad868640eb31e340e78cbb658b",
+        "matchesStored": false,
+        "coefficients": {
+          "bitIdentical": false,
+          "maxUlp": 635,
+          "maxAbs": 3.3306690738754696e-16,
+          "maxRel": 1.1502441504607477e-13
+        }
+      },
+      "FDLIBM_FUSED_CANONICAL": {
+        "routerHash": "e9c123db9c0ac2dbada7b01bebe2035a3c0b4e39b8f013e754c8f2bb99208d88",
+        "matchesStored": true,
+        "coefficients": {
+          "bitIdentical": true,
+          "maxUlp": 0,
+          "maxAbs": 0,
+          "maxRel": 0
+        }
+      }
+    }
+  },
+  "E4_DSYM_TEMPERATURE_GRID": {
+    "storedGrid": [
+      {
+        "T": 0.5,
+        "crossEntropy": 0.6393250986157567
+      },
+      {
+        "T": 0.75,
+        "crossEntropy": 0.6123793383657176
+      },
+      {
+        "T": 1,
+        "crossEntropy": 0.6089193223493414
+      },
+      {
+        "T": 1.25,
+        "crossEntropy": 0.6109445355493663
+      },
+      {
+        "T": 1.5,
+        "crossEntropy": 0.614244410850495
+      },
+      {
+        "T": 2,
+        "crossEntropy": 0.6207689114923415
+      },
+      {
+        "T": 3,
+        "crossEntropy": 0.6301588231484412
+      },
+      {
+        "T": 4,
+        "crossEntropy": 0.6359861479900575
+      }
+    ],
+    "powModels": {
+      "FDLIBM_SEPARATE_V8_12": {
+        "allEightReproduced": false,
+        "grid": [
+          {
+            "T": 0.5,
+            "reproduced": true,
+            "ulpFromStored": 0
+          },
+          {
+            "T": 0.75,
+            "reproduced": true,
+            "ulpFromStored": 0
+          },
+          {
+            "T": 1,
+            "reproduced": true,
+            "ulpFromStored": 0
+          },
+          {
+            "T": 1.25,
+            "reproduced": true,
+            "ulpFromStored": 0
+          },
+          {
+            "T": 1.5,
+            "reproduced": false,
+            "ulpFromStored": -1
+          },
+          {
+            "T": 2,
+            "reproduced": true,
+            "ulpFromStored": 0
+          },
+          {
+            "T": 3,
+            "reproduced": true,
+            "ulpFromStored": 0
+          },
+          {
+            "T": 4,
+            "reproduced": true,
+            "ulpFromStored": 0
+          }
+        ]
+      },
+      "FDLIBM_FUSED": {
+        "allEightReproduced": false,
+        "grid": [
+          {
+            "T": 0.5,
+            "reproduced": true,
+            "ulpFromStored": 0
+          },
+          {
+            "T": 0.75,
+            "reproduced": true,
+            "ulpFromStored": 0
+          },
+          {
+            "T": 1,
+            "reproduced": true,
+            "ulpFromStored": 0
+          },
+          {
+            "T": 1.25,
+            "reproduced": true,
+            "ulpFromStored": 0
+          },
+          {
+            "T": 1.5,
+            "reproduced": false,
+            "ulpFromStored": -1
+          },
+          {
+            "T": 2,
+            "reproduced": true,
+            "ulpFromStored": 0
+          },
+          {
+            "T": 3,
+            "reproduced": true,
+            "ulpFromStored": 0
+          },
+          {
+            "T": 4,
+            "reproduced": true,
+            "ulpFromStored": 0
+          }
+        ]
+      },
+      "CORRECTLY_ROUNDED_CANONICAL": {
+        "allEightReproduced": true,
+        "grid": [
+          {
+            "T": 0.5,
+            "reproduced": true,
+            "ulpFromStored": 0
+          },
+          {
+            "T": 0.75,
+            "reproduced": true,
+            "ulpFromStored": 0
+          },
+          {
+            "T": 1,
+            "reproduced": true,
+            "ulpFromStored": 0
+          },
+          {
+            "T": 1.25,
+            "reproduced": true,
+            "ulpFromStored": 0
+          },
+          {
+            "T": 1.5,
+            "reproduced": true,
+            "ulpFromStored": 0
+          },
+          {
+            "T": 2,
+            "reproduced": true,
+            "ulpFromStored": 0
+          },
+          {
+            "T": 3,
+            "reproduced": true,
+            "ulpFromStored": 0
+          },
+          {
+            "T": 4,
+            "reproduced": true,
+            "ulpFromStored": 0
+          }
+        ]
+      },
+      "HOST_STAR_STAR": {
+        "allEightReproduced": false,
+        "grid": [
+          {
+            "T": 0.5,
+            "reproduced": true,
+            "ulpFromStored": 0
+          },
+          {
+            "T": 0.75,
+            "reproduced": true,
+            "ulpFromStored": 0
+          },
+          {
+            "T": 1,
+            "reproduced": true,
+            "ulpFromStored": 0
+          },
+          {
+            "T": 1.25,
+            "reproduced": true,
+            "ulpFromStored": 0
+          },
+          {
+            "T": 1.5,
+            "reproduced": false,
+            "ulpFromStored": -1
+          },
+          {
+            "T": 2,
+            "reproduced": true,
+            "ulpFromStored": 0
+          },
+          {
+            "T": 3,
+            "reproduced": true,
+            "ulpFromStored": 0
+          },
+          {
+            "T": 4,
+            "reproduced": true,
+            "ulpFromStored": 0
+          }
+        ]
+      }
+    }
+  },
+  "conclusion": {
+    "exp": "Stored fitted-model hashes are reproduced bit for bit by fdlibm exp evaluated with fused multiply-add, and by nothing else tested.",
+    "pow": "The stored D-SYM temperature grid is reproduced by correctly rounded pow; fdlibm pow (V8 <= 13) does not reproduce it."
+  }
+}

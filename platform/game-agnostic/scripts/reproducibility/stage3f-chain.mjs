@@ -37,6 +37,8 @@ export const EVIDENCE = Object.freeze([
  * Only one stage needs it: Stage 3F.6-D was certified before its host moved to V8 14, so its temperature grid used
  * fdlibm pow (Stage 3F.6-D-SYM, certified later, used the C library's pow, which correct rounding reproduces). The
  * declaration was established experimentally (root-cause records); it is used only to verify that sealed record.
+ * `hostNativeFailClosed` marks a stage whose code refuses to run unless a fitted model is byte-identical to a stored
+ * one: under host-native numerics it stops before producing any output, so it cannot be compared at Level A/B.
  */
 export const CHECKS = Object.freeze([
   { id: '3F0', run: 'node scripts/certify-stage3f0-world-state-contract.mjs --check', result: 'artifacts/stage3f0-world-state-contract/stage3f0-certification-result.json' },
@@ -67,6 +69,8 @@ export const CHECKS = Object.freeze([
   { id: 'P1A_SYM', run: 'node scripts/certify-stage3f6p1asym-free-action.mjs --check', result: 'artifacts/stage3f6p1asym-free-action/stage3f6p1asym-certification-result.json', fittedModels: true },
   { id: 'P1_SYM', run: 'node scripts/certify-stage3f6p1sym-nexus.mjs --check', result: 'artifacts/stage3f6p1sym-nexus-requalification/stage3f6p1sym-certification-result.json', fittedModels: true },
   { id: 'W_SYM', run: 'node scripts/certify-stage3f6wsym-risk.mjs --check', result: 'artifacts/stage3f6wsym-risk-requalification/stage3f6wsym-certification-result.json', fittedModels: true },
-  { id: 'D_SYM_FREEZE', run: 'node scripts/stage3f6dsym-freeze.mjs --check', result: 'artifacts/stage3f6dsym-decision-rule/stage3f6dsym-analysis-freeze.json', fittedModels: true },
-  { id: 'D_SYM', run: 'node scripts/certify-stage3f6dsym-decision-rule.mjs --check', result: 'artifacts/stage3f6dsym-decision-rule/stage3f6dsym-certification-result.json', fittedModels: true },
+  { id: 'D_SYM_FREEZE', run: 'node scripts/stage3f6dsym-freeze.mjs --check', result: 'artifacts/stage3f6dsym-decision-rule/stage3f6dsym-analysis-freeze.json', fittedModels: true,
+    hostNativeFailClosed: 'buildFreeze() asserts the refitted DEV router is byte-identical to the stored T-SYM routerHash (scripts/stage3f6dsym-freeze.mjs:39) and throws otherwise' },
+  { id: 'D_SYM', run: 'node scripts/certify-stage3f6dsym-decision-rule.mjs --check', result: 'artifacts/stage3f6dsym-decision-rule/stage3f6dsym-certification-result.json', fittedModels: true,
+    hostNativeFailClosed: 'buildFreeze() asserts the refitted DEV router is byte-identical to the stored T-SYM routerHash (scripts/stage3f6dsym-freeze.mjs:39) and throws otherwise' },
 ]);
