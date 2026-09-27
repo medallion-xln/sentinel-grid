@@ -137,6 +137,8 @@ const levelOf = (run, id) => {
   if (!artifacts.length || artifacts.some((a) => !a.paired)) return 'NOT_REPRODUCED';
   const count = (cat) => artifacts.reduce((s, a) => s + a.categories[cat].count, 0);
   const max = (cat, k) => Math.max(0, ...artifacts.map((a) => a.categories[cat][k] ?? 0));
+  // Level A: no data, predecessor, classification or conclusion difference. A certificate's own byte-identity gate
+  // (and the status it alone decides) is not science: it is exactly what host-native numerics cannot satisfy.
   if (count('CLASSIFICATION_DIFFERENCE') + count('CONCLUSION_DIFFERENCE') + count('DATA_HASH_DIFFERENCE') + count('PREDECESSOR_HASH_DIFFERENCE') > 0) return 'NOT_REPRODUCED';
   const withinB = max('MODEL_PARAMETER_DIFFERENCE', 'maxRelDiff') <= coefficientRelativeTolerance && max('METRIC_DIFFERENCE', 'maxAbsDiff') <= outputAbsoluteTolerance;
   return withinB ? 'CANONICALLY_EQUIVALENT' : 'SCIENTIFICALLY_EQUIVALENT';

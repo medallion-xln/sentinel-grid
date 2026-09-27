@@ -11,7 +11,8 @@ import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 
 export const CATEGORIES = Object.freeze(['DATA_HASH_DIFFERENCE', 'MODEL_PARAMETER_DIFFERENCE', 'MODEL_HASH_DIFFERENCE', 'METRIC_DIFFERENCE',
-  'CLASSIFICATION_DIFFERENCE', 'CONCLUSION_DIFFERENCE', 'PREDECESSOR_HASH_DIFFERENCE', 'OPEN_REPORT_HASH_DIFFERENCE', 'CERTIFICATE_HASH_DIFFERENCE']);
+  'CLASSIFICATION_DIFFERENCE', 'CONCLUSION_DIFFERENCE', 'PREDECESSOR_HASH_DIFFERENCE', 'OPEN_REPORT_HASH_DIFFERENCE', 'CERTIFICATE_HASH_DIFFERENCE',
+  'INTEGRITY_GATE_DIFFERENCE', 'GATE_CONSEQUENCE_DIFFERENCE']);
 
 const dv = new DataView(new ArrayBuffer(8));
 const ordinal = (x) => { dv.setFloat64(0, x); const b = dv.getBigInt64(0); return b < 0n ? -(b & 0x7fffffffffffffffn) : b; };
@@ -25,6 +26,8 @@ export function classify(leafPath, a, b) {
   const parent = leafPath.slice(0, leafPath.lastIndexOf('.'));
   const last = leafPath.split('.').pop().replace(/\[\d+\]$/, '');
   if (last === 'certificationHash' && parent === '') return 'CERTIFICATE_HASH_DIFFERENCE';
+  // A certificate's own byte-identity gates (e.g. checks.OPEN_PHASE_REPRODUCED) test reproduction, not science.
+  if (/^\.checks\.[A-Z0-9_]*REPRODUC/.test(leafPath)) return 'INTEGRITY_GATE_DIFFERENCE';
   if (/reporthash|openreport|openphase/.test(p)) return 'OPEN_REPORT_HASH_DIFFERENCE';
   if (/predecessor|certificationhash|upstream/.test(p)) return 'PREDECESSOR_HASH_DIFFERENCE';
   if (/routerhash|modelhash|freezehash|replayhash|candidatehash|fithash|analysisfreeze/.test(p)) return 'MODEL_HASH_DIFFERENCE';
@@ -53,6 +56,11 @@ export function diffLeaves(stored, recomputed) {
     out.push({ path: at, category: classify(at, a, b), stored: a ?? null, recomputed: b ?? null });
   };
   walk(stored, recomputed, '');
+  // status / roadmap / conclusion flips are consequences of a failed reproduction gate only when that gate is the
+  // sole differing check; otherwise they stay CONCLUSION_DIFFERENCE.
+  const gateOnly = out.some((l) => l.category === 'INTEGRITY_GATE_DIFFERENCE')
+    && !out.some((l) => l.path.startsWith('.checks.') && l.category !== 'INTEGRITY_GATE_DIFFERENCE');
+  if (gateOnly) for (const l of out) if (l.category === 'CONCLUSION_DIFFERENCE' && /^\.(status|roadmap\.|conclusions?\.)/.test(l.path)) l.category = 'GATE_CONSEQUENCE_DIFFERENCE';
   return out;
 }
 
@@ -86,7 +94,10 @@ export function pair(stored, payloads) {
     const shared = keys.filter((k) => k in candidate).length;
     if (shared < keys.length * 0.8 || Object.keys(candidate).length > keys.length + 2) continue;
     const leaves = diffLeaves(stored, candidate);
-    if (best === null || leaves.length < best.leaves.length) best = { leaves, candidate };
+    // A check may also re-serialise the stored artifact it compares against; that echo is identical by definition.
+    // When a differing candidate of the same shape exists, it is the recomputation, so it takes precedence.
+    const rank = (x) => (x.leaves.length === 0 ? Infinity : x.leaves.length);
+    if (best === null || rank({ leaves }) < rank(best)) best = { leaves, candidate };
   }
   return best;
 }
