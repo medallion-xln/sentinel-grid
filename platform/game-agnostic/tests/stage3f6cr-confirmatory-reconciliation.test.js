@@ -1,7 +1,7 @@
 import assert from 'node:assert/strict';
 import { createHash } from 'node:crypto';
 import { spawnSync } from 'node:child_process';
-import { existsSync, readFileSync } from 'node:fs';
+import { existsSync, readFileSync, readdirSync } from 'node:fs';
 import path from 'node:path';
 import test from 'node:test';
 import { fileURLToPath } from 'node:url';
@@ -127,8 +127,18 @@ test('the certificate, when present, never marks Stage 3G ready and keeps R0', (
 });
 
 test('reconciliation sources contain no nondeterminism and no world-model code', () => {
-  for (const f of ['scripts/stage3f6cr-plan.mjs', 'scripts/certify-stage3f6cr-confirmatory-reconciliation.mjs']) {
+  for (const f of ['scripts/stage3f6cr-plan.mjs', 'scripts/stage3f6cr-certify.mjs']) {
     const s = readFileSync(at(f), 'utf8');
     assert.doesNotMatch(s, /Math\.random|Date\.now|new Date\(|performance\.now/, f);
   }
+});
+
+test('meta-certifier stays outside the chain while every measurement certifier stays inside it', () => {
+  const scripts = readdirSync(at('scripts'));
+  assert.ok(!scripts.some((f) => /^certify-stage3f(\d|6[a-z0-9]*)?-.*\.mjs$/.test(f) && f.includes('stage3f6cr')), 'the 3F.6-CR meta-certifier runs the chain and is not a link in it');
+  const measurement = scripts.filter((f) => /^certify-stage3f(\d|6[a-z0-9]*)?-.*\.mjs$/.test(f) && !f.includes('stage3frp'));
+  assert.ok(measurement.length >= 25);
+  for (const f of measurement) assert.ok(CHECKS.some((c) => c.run.includes(`scripts/${f}`)), `chain misses measurement certifier ${f}`);
+  const certifier = readFileSync(at('scripts/stage3f6cr-certify.mjs'), 'utf8');
+  for (const id of ['W_SYM', 'D_SYM_FREEZE', 'D_SYM']) assert.ok(certifier.includes(id) && CHECKS.some((c) => c.id === id), id);
 });

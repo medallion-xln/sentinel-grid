@@ -1,0 +1,518 @@
+{
+  "schemaVersion": 1,
+  "stage": "STAGE_3F_6_CR_CONFIRMATORY_RECONCILIATION",
+  "status": "PASS",
+  "measurementStage": false,
+  "baseline": {
+    "predecessorChain": [
+      "3F6P1C",
+      "3F6P1D",
+      "3F6P1E",
+      "T_SYM",
+      "P1A_SYM",
+      "P1_SYM",
+      "W_SYM",
+      "D_SYM_FREEZE",
+      "D_SYM"
+    ],
+    "stage3fdsymCertificationHash": "65e507b76bbfb9b3a4ae867f73c9d2bc056575ef9b7743359bcfc28b2bb90680"
+  },
+  "plan": {
+    "planHash": "c39db9ff1182720a2e39e216f433ea5755be4e050e3f7b24bf241735506b5e6e",
+    "freezeCommit": "890aa208ee08dec402f208629042fca7af1336c7",
+    "planArtifactsReproduce": true,
+    "frozenFilesCommittedAtHead": true,
+    "frozenFilesUnchangedSinceFreeze": true
+  },
+  "historical3F6": {
+    "HISTORICAL_3F6_CERTIFICATE_HASH": "399f71c9cc0b2758e610133454e2f137436339a04a2117a1323a0a0bc3616a84",
+    "HISTORICAL_3F6_STATUS": "PARTIAL",
+    "HISTORICAL_3F6_RUNTIME": {
+      "identity": "Stage 3F.5 integrated live-shadow runtime before the Stage 3F.6-R remediation (the transient pre-2ee28987 state the erratum identifies)",
+      "stage3f5CertificationHash": "eda3d2d67334dd904a24ff574f4e839e52fb67ec26fb01112b8f21c973b4fbe5",
+      "stage3eRouterFreezeHash": "5a8e22b5c6a6889df658a74d134b376ee79fa1214760204a3265fe01f27c6bd2",
+      "preRemediationRuntimeFileHashes": {
+        "platform/game-agnostic/src/stage3f/integrated-live-shadow-v1.js": "2dd0645b403281edbffc166d302f95cf0733c56bf5a75202e8521f13e0cec8d6",
+        "platform/game-agnostic/src/lab/stage3de-recovery-canonicalization.js": "cb3b854f2197fcfbf29a243db7cedf8cc00a23f3584eaa511db4d51e86e7910c",
+        "platform/game-agnostic/scripts/canonicalize-stage3de-recovery.mjs": "b85fda3f32cbc85327daece7ad07c2ae529dd1ced2a2a8b39be4b58cb1c1aa76"
+      },
+      "HISTORICAL_3F6_RUNTIME_HASH": "35c83e1a57711267a640e4d18c448779101012ccfccaf6caea24c3fed0890210",
+      "note": "The certifier and test bytes that produced the certificate exist in no commit (erratum causedBy); the runtime files above are the pre-remediation bytes the erratum restores to reproduce every measurement section."
+    },
+    "HISTORICAL_3F6_POLICY_SET": {
+      "evaluated": "The integrated runtime recommendation path only: the incumbent runtime greedy action (sole executor) and the frozen Stage 3E router (P(GREEDY_SAFE), logistic over 51 features) routing between GREEDY and the learned Nexus route. No deployable specialist policy set was evaluated; policy sets begin at Stage 3F.6-A."
+    },
+    "HISTORICAL_3F6_FEATURE_SET": {
+      "contract": "SENTINEL_PREDICTION_RELIABILITY_BASELINE_V1",
+      "contractHash": "e0a1691b7940efa0f60f9b659e814f50b4ba7eceebd4c64eb155dbf8f5f57962",
+      "methodologyHash": "87e94d6e06e98811f3af5d422ec3a653ea12b1714eebf913fe3720d17ae9d08b",
+      "router": "Stage 3E Feature Contract v2 (51 features, including horizon-rollout information — later classified non-deployable by Stage 3F.6-S)",
+      "worldState": "World State v1"
+    },
+    "HISTORICAL_3F6_CLAIMS": [
+      {
+        "id": "H01",
+        "topic": "prediction reliability",
+        "claim": "Contract-path router (canonical Stage 3E equation) replays Stage 3E exactly; HOLDOUT precision at tau 0.9 is 0.780 (Wilson lower 0.733, coverage 0.058; HOLDOUT quarantined), OOD 0.910.",
+        "evidence": {
+          "certificate": "artifacts/stage3f6-prediction-reliability/stage3f6-certification-result.json",
+          "certificationHash": "399f71c9cc0b2758e610133454e2f137436339a04a2117a1323a0a0bc3616a84",
+          "path": ".exitCriteria.STAGE3E_CONTRACT_REPLAY_EXACT",
+          "expect": true
+        }
+      },
+      {
+        "id": "H02",
+        "topic": "Router / runtime",
+        "claim": "Runtime-path router precision 0.245 on HOLDOUT, ECE 0.575; 99.5% of runtime false-safes attributed to RUNTIME_ROUTER_EQUATION_DIVERGENCE (bias read from w[0]).",
+        "evidence": {
+          "certificate": "artifacts/stage3f6-prediction-reliability/stage3f6-certification-result.json",
+          "certificationHash": "399f71c9cc0b2758e610133454e2f137436339a04a2117a1323a0a0bc3616a84",
+          "path": ".diagnosis.runtimeFalseSafeTotal",
+          "expect": 2990
+        }
+      },
+      {
+        "id": "H03",
+        "topic": "prediction reliability",
+        "claim": "No reliability tier is evidence-supported on any path (no CAL operating point reaches Wilson lower >= 0.80 at n >= 200).",
+        "evidence": {
+          "certificate": "artifacts/stage3f6-prediction-reliability/stage3f6-certification-result.json",
+          "certificationHash": "399f71c9cc0b2758e610133454e2f137436339a04a2117a1323a0a0bc3616a84",
+          "path": ".roadmap.blockers[6]",
+          "expect": "NO_EVIDENCED_RELIABILITY_TIER_ON_HOLDOUT"
+        }
+      },
+      {
+        "id": "H04",
+        "topic": "prediction reliability",
+        "claim": "Decision-time one-step consequence predictions are exact (1.000), by construction: they read the authoritative simulator (privileged).",
+        "evidence": {
+          "certificate": "artifacts/stage3f6-prediction-reliability/stage3f6-certification-result.json",
+          "certificationHash": "399f71c9cc0b2758e610133454e2f137436339a04a2117a1323a0a0bc3616a84",
+          "path": ".exitCriteria.ONE_STEP_RELIABILITY_MEASURED",
+          "expect": true
+        }
+      },
+      {
+        "id": "H05",
+        "topic": "prediction reliability",
+        "claim": "No non-privileged next-state, failure, transition, counterfactual or multistep predictor exists.",
+        "evidence": {
+          "certificate": "artifacts/stage3f6-prediction-reliability/stage3f6-certification-result.json",
+          "certificationHash": "399f71c9cc0b2758e610133454e2f137436339a04a2117a1323a0a0bc3616a84",
+          "path": ".roadmap.blockers[5]",
+          "expect": "NO_NON_PRIVILEGED_NEXT_STATE_OR_MULTISTEP_PREDICTOR"
+        }
+      },
+      {
+        "id": "H06",
+        "topic": "prediction reliability",
+        "claim": "Reference World State baseline: exact 0.80 on non-identity facts, approximate-or-better 0.992; energy errors are calibration errors.",
+        "evidence": {
+          "certificate": "artifacts/stage3f6-prediction-reliability/stage3f6-certification-result.json",
+          "certificationHash": "399f71c9cc0b2758e610133454e2f137436339a04a2117a1323a0a0bc3616a84",
+          "path": ".layerB.sealed.worldStateBaseline.overallNonIdentity.exactAccuracy",
+          "expect": 0.8
+        }
+      },
+      {
+        "id": "H07",
+        "topic": "OOD / novelty",
+        "claim": "Contract reliability falls with novelty while confidence rises (false-safe 0.098 familiar -> 0.203 strongly novel).",
+        "evidence": {
+          "certificate": "artifacts/stage3f6-prediction-reliability/stage3f6-certification-result.json",
+          "certificationHash": "399f71c9cc0b2758e610133454e2f137436339a04a2117a1323a0a0bc3616a84",
+          "path": ".exitCriteria.NOVEL_STATE_RELIABILITY_MEASURED",
+          "expect": true
+        }
+      },
+      {
+        "id": "H08",
+        "topic": "Nexus",
+        "claim": "Nexus confidence: insufficient evidence — it measures observed structure, not correctness.",
+        "evidence": {
+          "certificate": "artifacts/stage3f6-prediction-reliability/stage3f6-certification-result.json",
+          "certificationHash": "399f71c9cc0b2758e610133454e2f137436339a04a2117a1323a0a0bc3616a84",
+          "path": ".predictionInventory[9].availability",
+          "expect": "INSUFFICIENT_EVIDENCE"
+        }
+      },
+      {
+        "id": "H09",
+        "topic": "representation",
+        "claim": "World State v1 is an information subset of the Stage 3E features and is 92% ambiguous; the full world state determines the label.",
+        "evidence": {
+          "certificate": "artifacts/stage3f6-prediction-reliability/stage3f6-certification-result.json",
+          "certificationHash": "399f71c9cc0b2758e610133454e2f137436339a04a2117a1323a0a0bc3616a84",
+          "path": ".diagnosis.supported.B_STATE_REPRESENTATION_LIMITED.supported",
+          "expect": true
+        }
+      },
+      {
+        "id": "H10",
+        "topic": "diagnosis",
+        "claim": "Recorded share-rule diagnosis: primary C_PREDICTION_LIMITED, secondary A_ROUTER_LIMITED (later corrected prospectively to G_MIXED_LIMITATION_RUNTIME_PARITY_CONFOUNDED).",
+        "evidence": {
+          "certificate": "artifacts/stage3f6-prediction-reliability/stage3f6-certification-result.json",
+          "certificationHash": "399f71c9cc0b2758e610133454e2f137436339a04a2117a1323a0a0bc3616a84",
+          "path": ".diagnosis.primary",
+          "expect": "C_PREDICTION_LIMITED"
+        }
+      },
+      {
+        "id": "H11",
+        "topic": "regret / router",
+        "claim": "Contract false-safe total 75 versus runtime false-safe total 2990 on the measured partitions.",
+        "evidence": {
+          "certificate": "artifacts/stage3f6-prediction-reliability/stage3f6-certification-result.json",
+          "certificationHash": "399f71c9cc0b2758e610133454e2f137436339a04a2117a1323a0a0bc3616a84",
+          "path": ".diagnosis.contractFalseSafeTotal",
+          "expect": 75
+        }
+      },
+      {
+        "id": "H12",
+        "topic": "reproducibility",
+        "claim": "The certificate reproduces from the repository (--check).",
+        "evidence": {
+          "certificate": "artifacts/stage3f6-errata/erratum-stage3f6-prediction-reliability.json",
+          "certificationHash": "399817665bebda660ec73dc46ee9314764173d5b193efc0e3a500a1cfa19dbc9",
+          "path": ".claimsWithdrawn[0]",
+          "expect": "the Stage 3F.6 certificate reproduces from the repository"
+        }
+      },
+      {
+        "id": "H13",
+        "topic": "authority",
+        "claim": "R0; non-dispatching; incumbent sole executor; no training.",
+        "evidence": {
+          "certificate": "artifacts/stage3f6-prediction-reliability/stage3f6-certification-result.json",
+          "certificationHash": "399f71c9cc0b2758e610133454e2f137436339a04a2117a1323a0a0bc3616a84",
+          "path": ".authority.tier",
+          "expect": "R0"
+        }
+      },
+      {
+        "id": "H14",
+        "topic": "policy competence / RESOURCE",
+        "claim": "NOT_CLAIMED: Stage 3F.6 evaluated no specialist policy, no RESOURCE policy and no regret of a policy set.",
+        "evidence": null
+      }
+    ]
+  },
+  "erratumReconciliation": {
+    "ERRATUM_PRESENT_AND_UNMODIFIED": true,
+    "EVERY_CLAIM_CLASSIFIED": true,
+    "PROVENANCE_RECONFIRMED": true,
+    "REVERIFICATION_BOUND": true,
+    "ERRATUM_RECONCILED": true,
+    "classifications": {
+      "E1": "STILL_APPLIES",
+      "E2": "STILL_APPLIES",
+      "E3": "STILL_APPLIES",
+      "E4": "RESOLVED",
+      "E5": "STILL_APPLIES",
+      "E6": "STILL_APPLIES",
+      "E7": "SUPERSEDED",
+      "E8": "INVALIDATED_BY_NEW_EVIDENCE"
+    }
+  },
+  "claimMap": {
+    "claimMapHash": "97e556f502ea42d818f1764e17314ef6cc6f435214ba52fd3a9680e897026350",
+    "byClaim": {
+      "RESOURCE_COMPETENCE": "INVALIDATED",
+      "RESOURCE_SHORTCUT_DEPENDENCE": "SURVIVES",
+      "NEXUS_V1_COMPETENCE": "SURVIVES",
+      "NEXUS_V2_COMPETENCE": "PARTIALLY_SURVIVES",
+      "OBJECTIVE_COMPETENCE": "SUPERSEDED",
+      "THREAT_COMPETENCE": "INSUFFICIENT_EVIDENCE",
+      "EXPERT_COMPLEMENTARITY": "SURVIVES",
+      "COMPLEMENTARITY_ROUTABILITY": "INVALIDATED",
+      "ROUTER_VALUE": "SURVIVES",
+      "RISK_STATE_VALUE": "PARTIALLY_SURVIVES",
+      "DECISION_RULE_VALUE": "PARTIALLY_SURVIVES",
+      "POLICY_SET_CEILING": "SUPERSEDED",
+      "FALSE_SELECTION_HARM": "PARTIALLY_SURVIVES",
+      "OOD_STABILITY": "SUPERSEDED",
+      "STATE_REPRESENTATION_SUFFICIENCY": "SUPERSEDED",
+      "SPATIAL_OBSERVABILITY": "SURVIVES",
+      "ACTION_SEMANTICS": "SURVIVES",
+      "TRANSITION_PREDICTION_NEED": "INVALIDATED",
+      "PREDICTION_RELIABILITY": "PARTIALLY_SURVIVES",
+      "NON_PRIVILEGED_PREDICTOR_GAP": "SURVIVES",
+      "POLICY_QUALITY_BOTTLENECK": "SURVIVES",
+      "GENUINE_RELATIONAL_VALUE": "SURVIVES",
+      "HISTORICAL_RUNTIME_ROUTER_RELIABILITY": "NOT_RETESTABLE",
+      "AUTHORITY": "SURVIVES"
+    },
+    "headline": {
+      "RESOURCE": "INVALIDATED",
+      "NEXUS_V1": "SURVIVES",
+      "NEXUS_V2": "PARTIALLY_SURVIVES",
+      "OBJECTIVE": "SUPERSEDED",
+      "THREAT": "INSUFFICIENT_EVIDENCE",
+      "COMPLEMENTARITY": "SURVIVES",
+      "ROUTER": "SURVIVES",
+      "RISK_STATE": "PARTIALLY_SURVIVES",
+      "DECISION_RULE": "PARTIALLY_SURVIVES",
+      "REPRESENTATION": "SUPERSEDED",
+      "SPATIAL_STATE": "SURVIVES",
+      "ACTION_SEMANTICS": "SURVIVES",
+      "TRANSITION_PREDICTION": "INVALIDATED",
+      "OOD": "SUPERSEDED",
+      "FALSE_SELECTION_HARM": "PARTIALLY_SURVIVES"
+    }
+  },
+  "decisionEvaluationContract": {
+    "contractId": "SENTINEL_DECISION_EVALUATION_CONTRACT_V1",
+    "contractHash": "10c301884539c5cfb21d95795191217b98762a98aacfab8eab4207c87cbec90e",
+    "fileSha256": "32ce0312dc8bc09360d78c6153eedc045825c3e6fa8c814d30e763ad38f13599",
+    "frozenAtFreezeCommit": true,
+    "specificationOnly": true
+  },
+  "inheritedRequirements": {
+    "EPISTEMIC_PROVENANCE": "REQUIRED_PRINCIPLE_LEVELS_UNDEFINED",
+    "OBSERVABLE_ENTITY_STATE": "REQUIRED",
+    "ACTOR_AND_ACTION_RELATIVE_SPATIAL_REPRESENTATION": "REQUIRED",
+    "STRUCTURED_ACTION_SEMANTICS": "REQUIRED",
+    "PREDICTION_LIFECYCLE": "REQUIRED",
+    "COUNTERFACTUAL_DISCRIMINATION": "REQUIRED",
+    "COUNTERFACTUAL_REGRET": "REQUIRED",
+    "DOWNSTREAM_DECISION_VALUE": "REQUIRED",
+    "WORLD_MODEL_TRUST_GATE": "PLANNED",
+    "TASK_STATE_CONTAMINATION_TRACKING": "PLANNED",
+    "STAGE_WISE_FAILURE_ATTRIBUTION": "REQUIRED"
+  },
+  "notEvidenceSupported": [
+    "LARGE_LEARNED_WORLD_MODEL",
+    "JEPA_DEPLOYMENT",
+    "GENERATIVE_WORLD_MODEL",
+    "ROUTER_2_0",
+    "EXPERT_10",
+    "AUTHORITY_INCREASE"
+  ],
+  "immutableFactsCandidate": {
+    "RESOURCE_SHORTCUT_DEPENDENT": {
+      "value": true,
+      "supported": true
+    },
+    "NEXUS_V1_REPRESENTATION_BLOCKED": {
+      "value": true,
+      "supported": true
+    },
+    "NEXUS_V1_POLICY_LIMITED": {
+      "value": true,
+      "supported": true
+    },
+    "NEXUS_V2_SHORTCUT_DEPENDENT": {
+      "value": true,
+      "supported": true
+    },
+    "GENUINE_RELATIONAL_VALUE_MEASURED": {
+      "value": false,
+      "supported": true
+    },
+    "EXPERT_COMPLEMENTARITY_EXISTS": {
+      "value": true,
+      "supported": true
+    },
+    "EXPERT_COMPLEMENTARITY_ROUTABLE": {
+      "value": false,
+      "supported": true
+    },
+    "ROUTER_VALUE_MATERIAL": {
+      "value": false,
+      "supported": true
+    },
+    "ROUTER_2_0_JUSTIFIED": {
+      "value": false,
+      "supported": true
+    },
+    "RISK_SIGNAL_VALUE_MATERIAL": {
+      "value": false,
+      "supported": true
+    },
+    "DECISION_RULE_VALUE_MATERIAL": {
+      "value": false,
+      "supported": true
+    },
+    "STATE_REPRESENTATION_SUFFICIENT": {
+      "value": false,
+      "supported": true
+    },
+    "SPATIAL_STATE_REQUIRED": {
+      "value": true,
+      "supported": true
+    },
+    "ACTION_SEMANTICS_REQUIRED": {
+      "value": true,
+      "supported": true
+    },
+    "TRANSITION_PREDICTION_REQUIRED": {
+      "value": false,
+      "supported": true
+    },
+    "POLICY_QUALITY_PRIMARY_BOTTLENECK": {
+      "value": true,
+      "supported": true
+    },
+    "FALSE_SELECTION_HARM_ACCEPTABLE": {
+      "value": false,
+      "supported": true
+    },
+    "AUTHORITY": {
+      "value": "R0",
+      "supported": true
+    }
+  },
+  "exitCriteria": {
+    "SYMMETRY_CERTIFIED": true,
+    "CORPUS_CLEAN": true,
+    "CORPUS_SEALED": true,
+    "POLICY_RESULTS_REPRODUCIBLE": true,
+    "EXPERT_DIVERSITY_MEASURED": true,
+    "ROUTER_VALUE_MEASURED": true,
+    "RISK_SIGNAL_VALUE_MEASURED": true,
+    "DECISION_RULE_VALUE_MEASURED": true,
+    "SHORTCUTS_AUDITED": true,
+    "REPRESENTATION_GAP_MEASURED": true,
+    "ERRATUM_RECONCILED": true,
+    "DECISION_EVALUATION_CONTRACT_FROZEN": true,
+    "STAGE3F_REPRODUCIBILITY_PORTABLE": true,
+    "R0_INTACT": true
+  },
+  "predecessors": {
+    "ran": true,
+    "complete": true,
+    "trackedTreeUnchanged": true,
+    "checks": [
+      {
+        "id": "W_SYM",
+        "status": "BYTE_EXACT",
+        "storedHash": "26e77c5d18c89774e3106295ec3868a2fcf2a83d251bab6173fc20510044f4b0",
+        "recomputedHash": "26e77c5d18c89774e3106295ec3868a2fcf2a83d251bab6173fc20510044f4b0"
+      },
+      {
+        "id": "D_SYM_FREEZE",
+        "status": "BYTE_EXACT",
+        "storedHash": "4d7313b6151e329c2dc454ad72edd7fceca6a0557901fb750f8746b1400ead47",
+        "recomputedHash": "4d7313b6151e329c2dc454ad72edd7fceca6a0557901fb750f8746b1400ead47"
+      },
+      {
+        "id": "D_SYM",
+        "status": "BYTE_EXACT",
+        "storedHash": "65e507b76bbfb9b3a4ae867f73c9d2bc056575ef9b7743359bcfc28b2bb90680",
+        "recomputedHash": "65e507b76bbfb9b3a4ae867f73c9d2bc056575ef9b7743359bcfc28b2bb90680"
+      }
+    ]
+  },
+  "bindings": {
+    "total": 138,
+    "holding": 138,
+    "failing": []
+  },
+  "runtimeBinding": {
+    "remediatedIntegratedRuntimeSha256": "9116f231c6dc27f353f0d2fcc6b8c4396c3b1266d46d811c6f5aa37a5fba2419",
+    "stage3f6rCertificationHash": "4fba8d61e09be12efb428b66d1b189c0a9b970f7e4adb4dc7d9ecbb084cb7d9f",
+    "canonicalNumerics": {
+      "id": "SENTINEL_CANONICAL_NUMERICS_V1",
+      "moduleSha256": "e1f22049ab3e9aee0e1f83033cc8e885a2e347810bead3c5010b7e7554f77cf4",
+      "runtimeSha256": "d3ba6df586424ff84bca525da2a32f767d7f8b09a246b94602889066fe26d026",
+      "stage3frpCertificationHash": "30f4fd3478da7097d309390dd64438026fe536a94ba18a07f9fe31e176d49b5a"
+    },
+    "note": "This certifier computes no floating-point measurement; every predecessor recomputation runs through scripts/reproducibility/verify-stage3f.mjs, which always installs SENTINEL_CANONICAL_NUMERICS_V1 and the read-only guard."
+  },
+  "artifactHashes": {
+    "artifacts/stage3f6cr-confirmatory-reconciliation/stage3f6cr-reconciliation-plan.json": "ec968eb09bda30be114eb0d8e8273a98eb201116b47999db070bfbaaa7443c0e",
+    "artifacts/stage3f6cr-confirmatory-reconciliation/stage3f6cr-claim-map.json": "2bb6907bb6b86c6e79d37cfb10ec0335613a73ddc5f19d373196ccd32f4600e2",
+    "artifacts/stage3f6cr-confirmatory-reconciliation/sentinel-decision-evaluation-contract-v1.json": "32ce0312dc8bc09360d78c6153eedc045825c3e6fa8c814d30e763ad38f13599",
+    "artifacts/stage3f6cr-confirmatory-reconciliation/stage3f6cr-erratum-reverification.json": "0346970b94f8b93647582984531b9307514f341ef5998ce68224bc46d67a785f",
+    "scripts/stage3f6cr-plan.mjs": "989c41e3a9c003959d81c377828c21d2ea7b3f34abb85ef6f08f3fcd54b47ac0",
+    "scripts/stage3f6cr-erratum-reverification.mjs": "35839011063fb0ece3ef494a750b3288005d62268ece133855fe58aa9013f9e3",
+    "artifacts/stage3f6cr-confirmatory-reconciliation/stage3f6cr-full-suite.json": "6cdf73101d09f68f32a859acaacd7138d62bbcebd83424c8731e10f70b503b89"
+  },
+  "fullSuite": {
+    "schemaVersion": 1,
+    "stage": "STAGE_3F_6_CR_CONFIRMATORY_RECONCILIATION",
+    "nodeMajor": 22,
+    "platform": {
+      "command": "node --test --test-reporter=tap",
+      "cwd": "platform/game-agnostic",
+      "exitCode": 0,
+      "tests": 2266,
+      "pass": 2265,
+      "fail": 0,
+      "skipped": 1,
+      "todo": 0,
+      "cancelled": 0
+    },
+    "disclosed": {
+      "sgridLab": {
+        "command": "node --test --test-reporter=tap tests/*.test.js",
+        "cwd": "sgrid-lab",
+        "gating": false,
+        "files": 40,
+        "exitCode": 1,
+        "tests": 40,
+        "pass": 33,
+        "fail": 7,
+        "skipped": 0,
+        "todo": 0,
+        "cancelled": 0
+      },
+      "rootOverlay": {
+        "command": "node tests/run-node-tests.js",
+        "cwd": ".",
+        "gating": false,
+        "exitCode": 0,
+        "pass": 23,
+        "fail": 0,
+        "cause": null
+      },
+      "note": "Outside Stage 3F; disclosed, not gating, and not altered here."
+    }
+  },
+  "checks": {
+    "PLAN_ARTIFACTS_REPRODUCE": true,
+    "FROZEN_FILES_COMMITTED_AND_UNCHANGED": true,
+    "EVERY_EVIDENCE_BINDING_HOLDS": true,
+    "PREDECESSORS_REPRODUCE_BYTE_FOR_BYTE": true,
+    "ERRATUM_RECONCILED": true,
+    "DECISION_EVALUATION_CONTRACT_BOUND": true,
+    "FULL_SUITE_RECORDED_AND_PASSING": true,
+    "TESTS_PASS": true,
+    "AUTHORITY_R0": true
+  },
+  "tests": {
+    "pass": 11,
+    "fail": 0,
+    "skipped": 0
+  },
+  "conclusion": {
+    "STAGE3F_SCIENTIFIC_COMPLETE": true,
+    "READY_FOR_3F_FREEZE": true,
+    "READY_FOR_STAGE3G": false,
+    "note": "READY_FOR_STAGE3G stays false until the separate formal Stage 3F freeze commit exists. The formal freeze is not performed here."
+  },
+  "authority": {
+    "tier": "R0",
+    "canDispatch": false,
+    "canMutateLiveWorld": false,
+    "onlineLearningEnabled": false,
+    "promotedToLiveRuntime": false
+  },
+  "roadmap": {
+    "NEXT_RECOMMENDED_ACTION": "Perform the separate, formal Stage 3F freeze commit binding this certificate, the claim map, the Decision Evaluation Contract and the inherited-requirements candidate.",
+    "BLOCKERS": [
+      "FORMAL_3F_FREEZE_COMMIT_NOT_YET_MADE"
+    ]
+  },
+  "sourceHashes": {
+    "scripts/stage3f6cr-certify.mjs": "47c0198946b91fa79fa36d978f0210a14890d251e5afad820b25d98855e3050f",
+    "scripts/stage3f6cr-plan.mjs": "989c41e3a9c003959d81c377828c21d2ea7b3f34abb85ef6f08f3fcd54b47ac0",
+    "scripts/stage3f6cr-erratum-reverification.mjs": "35839011063fb0ece3ef494a750b3288005d62268ece133855fe58aa9013f9e3",
+    "tests/stage3f6cr-confirmatory-reconciliation.test.js": "dd2d9847f489d141d90f4ce0224af22b9aed9c818394f5b76580bde02a740ee3"
+  },
+  "certificationHash": "d78186b8b828171635d47ac5757d5ac6aa113aa1058c490e98395730c7cfb7e2"
+}

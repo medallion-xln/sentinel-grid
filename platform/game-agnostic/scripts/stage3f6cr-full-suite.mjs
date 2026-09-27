@@ -5,11 +5,11 @@
  *
  * Gating: the platform suite (`npm test` in platform/game-agnostic = `node --test`), run with the TAP reporter so its
  * summary can be parsed on every Node major. Disclosed, not gating (same convention as Stage 3F.6-D-SYM): the root AZL
- * overlay suite, which needs the absent sibling public_html/azl tree, and sgrid-lab's node tests, which carry older
- * frozen-status/hash assertion failures unrelated to Stage 3F. Only counts are recorded, so the record is stable.
+ * overlay suite and sgrid-lab's node tests (older frozen-status/hash assertions unrelated to Stage 3F). Only counts are
+ * recorded, so the record is stable.
  */
 import { spawnSync } from 'node:child_process';
-import { writeFileSync } from 'node:fs';
+import { readdirSync, writeFileSync } from 'node:fs';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 
@@ -28,10 +28,12 @@ function tap(cwd, args) {
 process.stderr.write('[stage3f6cr] platform suite (node --test)\n');
 const platform = { command: 'node --test --test-reporter=tap', cwd: 'platform/game-agnostic', ...tap(root, []) };
 process.stderr.write('[stage3f6cr] disclosed: sgrid-lab node tests\n');
-const sgridLab = { command: 'node --test --test-reporter=tap tests/', cwd: 'sgrid-lab', gating: false, ...tap(path.join(top, 'sgrid-lab'), ['tests/']) };
+const labTests = readdirSync(path.join(top, 'sgrid-lab', 'tests')).filter((f) => f.endsWith('.test.js')).sort().map((f) => `tests/${f}`);
+const sgridLab = { command: 'node --test --test-reporter=tap tests/*.test.js', cwd: 'sgrid-lab', gating: false, files: labTests.length, ...tap(path.join(top, 'sgrid-lab'), labTests) };
 process.stderr.write('[stage3f6cr] disclosed: root AZL overlay suite\n');
 const overlay = spawnSync(process.execPath, ['tests/run-node-tests.js'], { cwd: top, env, encoding: 'utf8', maxBuffer: 1 << 28 });
 const rootOverlay = { command: 'node tests/run-node-tests.js', cwd: '.', gating: false, exitCode: overlay.status,
+  pass: (overlay.stdout ?? '').split('\n').filter((l) => l.startsWith('ok   ')).length, fail: (overlay.stdout ?? '').split('\n').filter((l) => l.startsWith('FAIL ')).length,
   cause: /Cannot find module/.test(overlay.stderr ?? '') ? 'MISSING_SIBLING_PUBLIC_HTML_AZL_TREE' : null };
 
 const record = {

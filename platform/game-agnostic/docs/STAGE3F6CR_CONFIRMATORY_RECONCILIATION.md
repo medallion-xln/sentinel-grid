@@ -17,7 +17,7 @@ the formal Stage 3F freeze. Authority stays R0: `canDispatch=false`, `canMutateL
 | `npm run stage3f6cr:reverify-erratum` | Re-runs the erratum's provenance experiment from committed state and records the result. |
 | `npm run stage3f6cr:plan` / `stage3f6cr:plan:check` | Builds, or byte-checks, the plan, claim map and Decision Evaluation Contract. |
 | `npm run stage3f6cr:full-suite` | Runs the full platform test suite (TAP reporter) and records the counts. |
-| `npm run stage3f6cr:certify` / `stage3f6cr:check` | Certifies, or byte-checks, the reconciliation (the check never writes). |
+| `npm run stage3f6cr:certify` / `stage3f6cr:check` | Certifies, or byte-checks, the reconciliation with `scripts/stage3f6cr-certify.mjs` (the check never writes). |
 | `npm run test:stage3f6cr` | Runs the stage's own tests. |
 
 `stage3f6cr:reverify-erratum` needs the Stage 3F.6 evaluation-corpus payload
@@ -152,6 +152,38 @@ Weak policies and negative Router results do not block measurement-integrity com
 
 `READY_FOR_STAGE3G` is always `false` here. It becomes eligible only after the separate formal Stage 3F freeze commit.
 
+## Result
+
+Certificate: `artifacts/stage3f6cr-confirmatory-reconciliation/stage3f6cr-certification-result.json`, status `PASS`.
+
+Evidence and reproduction:
+
+- All 138 evidence bindings hold.
+- Every exit criterion holds, including ERRATUM_RECONCILED and DECISION_EVALUATION_CONTRACT_FROZEN.
+- Predecessor reproduction:
+  - Phase 0 ran all nine checks one at a time under the canonical runtime, and all were `BYTE_EXACT`: P.1C, P.1D,
+    P.1E, T-SYM, P.1A-SYM, P.1-SYM, W-SYM, the D-SYM freeze and D-SYM.
+  - The certifier's own clean-tree run reproduced W-SYM (the transitive gate), the D-SYM freeze and D-SYM
+    `BYTE_EXACT`.
+- Full platform suite: 2,265 passed, 0 failed, 1 skipped.
+
+Conclusions:
+
+- `STAGE3F_SCIENTIFIC_COMPLETE=true`.
+- `READY_FOR_3F_FREEZE=true`.
+- `READY_FOR_STAGE3G=false`.
+
+The only remaining roadmap blocker is `FORMAL_3F_FREEZE_COMMIT_NOT_YET_MADE`.
+
+Frozen hashes:
+
+| Artifact | Hash |
+| --- | --- |
+| Plan | `c39db9ff1182720a2e39e216f433ea5755be4e050e3f7b24bf241735506b5e6e` |
+| Claim map | `97e556f502ea42d818f1764e17314ef6cc6f435214ba52fd3a9680e897026350` |
+| Decision Evaluation Contract v1 | `10c301884539c5cfb21d95795191217b98762a98aacfab8eab4207c87cbec90e` |
+| Freeze commit | `890aa208ee08dec402f208629042fca7af1336c7` |
+
 ## Disclosed limitations
 
 - The historical Stage 3F.6 certificate remains unreproducible from any commit: its certifier and test bytes were never
@@ -160,5 +192,13 @@ Weak policies and negative Router results do not block measurement-integrity com
   Neither is inherited by Stage 3G.
 - Multistep prediction was never measured. "Transition prediction is not required" means it is not the first
   bottleneck.
-- The root AZL overlay suite needs an absent sibling tree, and `sgrid-lab` has older frozen-status/hash assertion
-  failures. Both are recorded in the full-suite record as disclosed and non-gating, as in D-SYM.
+- The root AZL overlay suite and `sgrid-lab`'s node tests are outside Stage 3F. Their counts are recorded in the
+  full-suite record as disclosed and non-gating, as in D-SYM.
+- `scripts/stage3f6cr-certify.mjs` is a meta-certifier: it runs the Stage 3F chain (W-SYM, the D-SYM freeze, D-SYM), so
+  it cannot also be a link in the chain.
+  - Stage 3F-RP seals `scripts/reproducibility/stage3f-chain.mjs` and its chain-coverage test by hash. That test
+    enumerates `certify-stage3f*` measurement certifiers and excludes the 3F-RP meta-certifier.
+  - Registering 3F.6-CR in the chain would therefore break `stage3frp:check`. The certifier is instead named outside
+    that pattern.
+  - This stage's own tests assert that every measurement certifier remains covered by the chain.
+  - The formal Stage 3F freeze should state the meta-certifier rule explicitly.

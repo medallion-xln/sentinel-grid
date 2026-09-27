@@ -12,6 +12,11 @@
  * not perform the formal Stage 3F freeze. Predecessors are reproduced by re-running their own --check commands: W-SYM's
  * check requires P.1-SYM, P.1A-SYM, T-SYM, P.1C, P.1D, P.1E and 3F.6-T to reproduce byte for byte (its transitive gate);
  * D-SYM's freeze and certificate are checked after it.
+ *
+ * Like the Stage 3F-RP certifier, this is a meta-certifier: it runs the Stage 3F chain, so it cannot be a link in it
+ * (scripts/reproducibility/stage3f-chain.mjs, which Stage 3F-RP seals by hash). It is therefore named outside the
+ * certify-stage3f* measurement-certifier pattern that Stage 3F-RP's chain-coverage test enumerates; its own tests assert
+ * that every measurement certifier remains covered by the chain.
  */
 import { createHash } from 'node:crypto';
 import { spawnSync } from 'node:child_process';
@@ -58,7 +63,7 @@ const bindingSummary = { total: bindings.length, holding: bindings.filter((b) =>
 function reproduce() {
   const report = at('build/stage3f6cr/predecessors-report.json');
   const r = spawnSync(process.execPath, ['scripts/reproducibility/verify-stage3f.mjs', '--check', '--only=W_SYM,D_SYM_FREEZE,D_SYM', '--label=stage3f6cr-predecessors', `--report=${report}`],
-    { cwd: root, encoding: 'utf8', maxBuffer: 1 << 26 });
+    { cwd: root, encoding: 'utf8', maxBuffer: 1 << 26, env: { ...process.env, NODE_OPTIONS: '' } });
   if (!existsSync(report)) return { ran: false, exitCode: r.status };
   const rep = JSON.parse(readFileSync(report, 'utf8'));
   return { ran: true, complete: rep.complete === true, trackedTreeUnchanged: rep.trackedTreeUnchanged,
@@ -104,7 +109,8 @@ const exitCriteria = {
 };
 
 /* 7. tests */
-const tests = spawnSync(process.execPath, ['--test', '--test-reporter=tap', 'tests/stage3f6cr-confirmatory-reconciliation.test.js'], { cwd: root, encoding: 'utf8', maxBuffer: 1 << 26 });
+const tests = spawnSync(process.execPath, ['--test', '--test-reporter=tap', 'tests/stage3f6cr-confirmatory-reconciliation.test.js'],
+  { cwd: root, encoding: 'utf8', maxBuffer: 1 << 26, env: { ...process.env, NODE_OPTIONS: '' } }); // as Stage 3F.6-D-SYM: the reporter is set here, once
 const count = (k) => Number(new RegExp(`^# ${k} (\\d+)$`, 'm').exec(tests.stdout ?? '')?.[1] ?? -1);
 const testMetrics = { pass: count('pass'), fail: count('fail'), skipped: count('skipped') };
 
@@ -149,7 +155,7 @@ const payload = {
   authority: AUTHORITY,
   roadmap: { NEXT_RECOMMENDED_ACTION: READY_FOR_3F_FREEZE ? 'Perform the separate, formal Stage 3F freeze commit binding this certificate, the claim map, the Decision Evaluation Contract and the inherited-requirements candidate.' : 'Resolve the listed blockers, then re-certify.',
     BLOCKERS: [...Object.entries(checks).filter(([, v]) => !v).map(([k]) => k), ...Object.entries(exitCriteria).filter(([, v]) => !v).map(([k]) => `EXIT_CRITERION:${k}`), ...(READY_FOR_3F_FREEZE ? ['FORMAL_3F_FREEZE_COMMIT_NOT_YET_MADE'] : [])] },
-  sourceHashes: Object.fromEntries(['scripts/certify-stage3f6cr-confirmatory-reconciliation.mjs', 'scripts/stage3f6cr-plan.mjs', 'scripts/stage3f6cr-erratum-reverification.mjs',
+  sourceHashes: Object.fromEntries(['scripts/stage3f6cr-certify.mjs', 'scripts/stage3f6cr-plan.mjs', 'scripts/stage3f6cr-erratum-reverification.mjs',
     'tests/stage3f6cr-confirmatory-reconciliation.test.js'].map((f) => [f, fileHash(f)])),
 };
 payload.certificationHash = hex(JSON.stringify(payload));

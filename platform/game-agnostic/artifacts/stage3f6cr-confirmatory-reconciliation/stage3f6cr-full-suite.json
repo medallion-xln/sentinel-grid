@@ -1,0 +1,41 @@
+{
+  "schemaVersion": 1,
+  "stage": "STAGE_3F_6_CR_CONFIRMATORY_RECONCILIATION",
+  "nodeMajor": 22,
+  "platform": {
+    "command": "node --test --test-reporter=tap",
+    "cwd": "platform/game-agnostic",
+    "exitCode": 0,
+    "tests": 2266,
+    "pass": 2265,
+    "fail": 0,
+    "skipped": 1,
+    "todo": 0,
+    "cancelled": 0
+  },
+  "disclosed": {
+    "sgridLab": {
+      "command": "node --test --test-reporter=tap tests/*.test.js",
+      "cwd": "sgrid-lab",
+      "gating": false,
+      "files": 40,
+      "exitCode": 1,
+      "tests": 40,
+      "pass": 33,
+      "fail": 7,
+      "skipped": 0,
+      "todo": 0,
+      "cancelled": 0
+    },
+    "rootOverlay": {
+      "command": "node tests/run-node-tests.js",
+      "cwd": ".",
+      "gating": false,
+      "exitCode": 0,
+      "pass": 23,
+      "fail": 0,
+      "cause": null
+    },
+    "note": "Outside Stage 3F; disclosed, not gating, and not altered here."
+  }
+}
