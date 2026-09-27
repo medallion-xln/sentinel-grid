@@ -37,3 +37,16 @@ npm run shadow:zeknova:stage2f:campaign -- \
 ```
 
 Only records with `source.kind = "live-runtime"`, `productionEligible = true`, valid build/repository hashes, and matching self-hashed session manifests count toward the production campaign. Replay or synthetic records are quarantined. Candidate evaluation can recommend only controlled R0 shadow review; it cannot execute, dispatch, mutate the world, or authorize a higher authority tier.
+
+## Stage 3F reproducibility
+
+Stage 3F certificates are byte-reproducible on every host under `SENTINEL_CANONICAL_NUMERICS_V1`, and every
+verification is read-only. From a clean clone (Node.js ≥ 20, git):
+
+```bash
+npm run stage3f:evidence:rebuild   # rebuild every gitignored Stage 3F payload and verify its manifest hash
+npm run stage3f:verify             # run every Stage 3F certifier --check under the canonical runtime
+npm run stage3frp:check            # Stage 3F-RP reproducibility portability certificate
+```
+
+See `docs/STAGE3FRP_REPRODUCIBILITY_PORTABILITY.md`.

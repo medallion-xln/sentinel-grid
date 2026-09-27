@@ -83,6 +83,16 @@ Why not the others: platform pinning is not portable and is insufficient (Node m
 rounding before hashing cannot guarantee equal hashes at grid boundaries and would need edits to sealed certifiers;
 dual hashing cannot be added to sealed certificates and is redundant once raw = canonical.
 
+## Record profile for one historical stage
+
+The historical record is not arithmetically uniform. Stage 3F.6-D was certified while its host still ran V8 ≤ 13, so
+its temperature grid used fdlibm `pow`; Stage 3F.6-D-SYM was certified after the host moved to V8 14 (`std::pow`,
+reproduced by correct rounding). No single `pow` reproduces both. The canonical profile (correctly rounded `pow`) is
+the certification profile for every stage and for all future work; `stage3f-chain.mjs` declares one **record
+profile** (`3F6D`: `pow = FDLIBM_FUSED`, fused `exp` as everywhere) used only to verify that sealed certificate byte
+for byte. Under the pure canonical profile 3F.6-D differs in exactly one leaf — one temperature-grid cross-entropy,
+1 ULP — with every decision identical (`CANONICALLY_EQUIVALENT`); `verify-stage3f.mjs --pure-canonical` shows it.
+
 ## Check-mode audit
 
 Six historical certifiers rewrite a tracked freeze or plan file during `--check` (3F.6-A, -C, -D, -T freezes;

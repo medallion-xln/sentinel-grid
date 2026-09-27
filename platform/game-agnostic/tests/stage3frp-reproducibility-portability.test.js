@@ -193,6 +193,23 @@ test('the chain covers every Stage 3F certifier and every gitignored Stage 3F pa
   for (const e of EVIDENCE) for (const a of e.after) assert.ok(ids.has(a), `${e.id} depends on unknown ${a}`);
 });
 
+test('record profiles are rare, explicit and limited to known pow models', () => {
+  const declared = CHECKS.filter((c) => c.recordProfile);
+  assert.deepEqual(declared.map((c) => c.id), ['3F6D']);
+  for (const c of declared) {
+    assert.ok(['FDLIBM_FUSED', 'FDLIBM_SEPARATE'].includes(c.recordProfile.powModel));
+    assert.ok(c.recordProfile.reason.length > 20);
+  }
+});
+
+test('runtime honours a declared record pow model and rejects unknown ones', () => {
+  const ok = runChild('console.log(Math.pow(0.010950210769842927, 0.6666666666666666))', { SENTINEL_POW_MODEL: 'FDLIBM_SEPARATE' });
+  assert.equal(ok.status, 0, ok.stderr);
+  assert.equal(Number(ok.stdout.trim()), 0.04931151198618232); // fdlibm, not the correctly rounded 0.049311511986182326
+  const bad = runChild('console.log(1)', { SENTINEL_POW_MODEL: 'LIBM' });
+  assert.equal(bad.status, 72);
+});
+
 test('certificate diff: categories and ULP distance', () => {
   assert.equal(ulpDistance(1, 1 + Number.EPSILON), 1);
   assert.equal(ulpDistance(-0, 0), 0);

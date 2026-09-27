@@ -33,6 +33,10 @@ export const EVIDENCE = Object.freeze([
 /**
  * Certification checks, in lineage order. `result` is the stored certificate the check reproduces.
  * `historicalStatus` records a status that was documented before this remediation (never inferred here).
+ * `recordProfile` declares where a historical certificate's arithmetic of record differs from the canonical profile.
+ * Only one stage needs it: Stage 3F.6-D was certified before its host moved to V8 14, so its temperature grid used
+ * fdlibm pow (Stage 3F.6-D-SYM, certified later, used the C library's pow, which correct rounding reproduces). The
+ * declaration was established experimentally (root-cause records); it is used only to verify that sealed record.
  */
 export const CHECKS = Object.freeze([
   { id: '3F0', run: 'node scripts/certify-stage3f0-world-state-contract.mjs --check', result: 'artifacts/stage3f0-world-state-contract/stage3f0-certification-result.json' },
@@ -50,7 +54,8 @@ export const CHECKS = Object.freeze([
   { id: '3F6A', run: 'node scripts/certify-stage3f6a-action-proposals.mjs --check', result: 'artifacts/stage3f6a-action-proposals/stage3f6a-certification-result.json' },
   { id: '3F6T', run: 'node scripts/certify-stage3f6t-policy-router.mjs --check', result: 'artifacts/stage3f6t-policy-router/stage3f6t-certification-result.json', fittedModels: true },
   { id: '3F6W', run: 'node scripts/certify-stage3f6w-risk-state.mjs --check', result: 'artifacts/stage3f6w-risk-state/stage3f6w-certification-result.json', fittedModels: true },
-  { id: '3F6D', run: 'node scripts/certify-stage3f6d-decision-rule.mjs --check', result: 'artifacts/stage3f6d-decision-rule/stage3f6d-certification-result.json', fittedModels: true },
+  { id: '3F6D', run: 'node scripts/certify-stage3f6d-decision-rule.mjs --check', result: 'artifacts/stage3f6d-decision-rule/stage3f6d-certification-result.json', fittedModels: true,
+    recordProfile: { powModel: 'FDLIBM_FUSED', reason: 'certified under V8 <= 13 (fdlibm pow); canonical correctly rounded pow differs by 1 ULP in one temperature-grid cross-entropy' } },
   { id: '3F6P', run: 'node scripts/certify-stage3f6p-policy-quality.mjs --check', result: 'artifacts/stage3f6p-policy-quality/stage3f6p-certification-result.json', fittedModels: true },
   { id: '3F6P1', run: 'node scripts/certify-stage3f6p1-nexus-remediation.mjs --check', result: 'artifacts/stage3f6p1-nexus-remediation/stage3f6p1-certification-result.json' },
   { id: '3F6P1A', run: 'node scripts/certify-stage3f6p1a-nexus-spatial.mjs --check', result: 'artifacts/stage3f6p1a-nexus-spatial/stage3f6p1a-certification-result.json' },

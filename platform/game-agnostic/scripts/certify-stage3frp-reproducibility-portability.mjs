@@ -52,7 +52,8 @@ const sensitivity = readJson(`${OUT}/decision-sensitivity.json`);
 const runs = listJson(`${OUT}/platform-runs`).map((f) => ({ file: f, ...readJson(f) }));
 const recordHashes = Object.fromEntries([...rootCause.map((r) => r.file), `${OUT}/decision-sensitivity.json`, ...runs.map((r) => r.file)]
   .map((f) => [f, hex(readFileSync(at(f)))]));
-const canonicalRuns = runs.filter((r) => r.numericsProfile === numerics.CANONICAL_NUMERICS_ID);
+const canonicalRuns = runs.filter((r) => r.numericsProfile === numerics.CANONICAL_NUMERICS_ID && !r.pureCanonical);
+const pureCanonicalRuns = runs.filter((r) => r.numericsProfile === numerics.CANONICAL_NUMERICS_ID && r.pureCanonical);
 const nativeRuns = runs.filter((r) => r.numericsProfile === 'HOST_NATIVE');
 
 /* ------------------------------------------------------- measured quantities */
@@ -125,10 +126,13 @@ for (const f of [...walk('src'), ...walk('scripts'), ...walk('tests')].sort()) {
 
 /* ------------------------------------------------------ requalification table */
 const statusOf = (run, id) => run.checks.find((c) => c.id === id) ?? null;
-const levelOfNative = (run, id) => {
+/* One (run, stage) outcome: BYTE_EXACT, BYTE_EXACT_UNDER_RECORD_PROFILE, or — from the leaf diff of a --capture run —
+ * CANONICALLY_EQUIVALENT (Level B), SCIENTIFICALLY_EQUIVALENT (Level A only) or NOT_REPRODUCED. */
+const levelOf = (run, id) => {
   const c = statusOf(run, id);
   if (c === null) return null;
-  if (c.status === 'BYTE_EXACT') return 'BYTE_EXACT';
+  if (c.status === 'BYTE_EXACT') return c.profile && c.profile.startsWith('CANONICAL+') ? 'BYTE_EXACT_UNDER_RECORD_PROFILE' : 'BYTE_EXACT';
+  if (c.status === 'NOT_REPRODUCED_DOCUMENTED_BEFORE_REMEDIATION') return c.status;
   const artifacts = Object.values(run.certificateDiff?.[id] ?? {});
   if (!artifacts.length || artifacts.some((a) => !a.paired)) return 'NOT_REPRODUCED';
   const count = (cat) => artifacts.reduce((s, a) => s + a.categories[cat].count, 0);
@@ -139,18 +143,20 @@ const levelOfNative = (run, id) => {
 };
 const requalification = Object.fromEntries(CHECKS.map((c) => {
   const stored = readJson(c.result);
-  const canonical = Object.fromEntries(canonicalRuns.map((r) => [r.label, statusOf(r, c.id)?.status ?? 'NOT_RUN']));
-  const native = Object.fromEntries(nativeRuns.map((r) => [r.label, levelOfNative(r, c.id) ?? 'NOT_RUN']));
-  const nativeDetail = Object.fromEntries(nativeRuns.filter((r) => r.certificateDiff?.[c.id]).map((r) => [r.label,
+  const canonical = Object.fromEntries(canonicalRuns.map((r) => [r.label, levelOf(r, c.id) ?? 'NOT_RUN']));
+  const pure = Object.fromEntries(pureCanonicalRuns.filter((r) => statusOf(r, c.id)).map((r) => [r.label, levelOf(r, c.id)]));
+  const native = Object.fromEntries(nativeRuns.map((r) => [r.label, levelOf(r, c.id) ?? 'NOT_RUN']));
+  const nativeDetail = Object.fromEntries([...nativeRuns, ...pureCanonicalRuns].filter((r) => r.certificateDiff?.[c.id]).map((r) => [r.label,
     Object.fromEntries(Object.entries(r.certificateDiff[c.id]).map(([f, a]) => [f, a.paired ? Object.fromEntries(Object.entries(a.categories).filter(([, v]) => v.count)
       .map(([k, v]) => [k, { count: v.count, maxAbsDiff: v.maxAbsDiff, maxRelDiff: v.maxRelDiff, maxUlpDiff: v.maxUlpDiff }])) : 'UNPAIRED']))]));
   const canonicalStatuses = Object.values(canonical);
+  const unanimous = canonicalStatuses.length > 0 && canonicalStatuses.every((v) => v === canonicalStatuses[0]) ? canonicalStatuses[0] : 'NOT_REPRODUCED';
   return [c.id, {
     storedHash: stored.certificationHash ?? stored.analysisFreezeHash, fittedModels: c.fittedModels === true, historicalStatus: c.historicalStatus ?? null,
-    underCanonicalProfile: canonical,
-    canonicalStatus: canonicalStatuses.length && canonicalStatuses.every((s) => s === 'BYTE_EXACT') ? 'BYTE_EXACT'
-      : canonicalStatuses.every((s) => s === 'NOT_REPRODUCED_DOCUMENTED_BEFORE_REMEDIATION') ? 'NOT_REPRODUCED_DOCUMENTED_BEFORE_REMEDIATION' : 'NOT_REPRODUCED',
-    underHostNativeNumerics: native, hostNativeDifferences: nativeDetail,
+    recordProfile: c.recordProfile ?? null,
+    underCanonicalProfile: canonical, canonicalStatus: unanimous,
+    underPureCanonicalProfile: pure,
+    underHostNativeNumerics: native, differencesFromStored: nativeDetail,
   }];
 }));
 
@@ -169,19 +175,29 @@ const freshClone = {
   procedure: ['git clone <repository>', 'cd platform/game-agnostic', 'node scripts/reproducibility/verify-stage3f.mjs --rebuild-evidence',
     'node scripts/reproducibility/verify-stage3f.mjs --check', 'node scripts/certify-stage3frp-reproducibility-portability.mjs --check'],
   environment: 'Node.js >= 20 (tested 20, 22, 26 on linux-x64) and git. No network, no hidden local state; build/ holds only derived output.',
-  evidence: Object.fromEntries(EVIDENCE.map((e) => [e.id, Object.fromEntries(evidenceRuns.map((r) => [r.label, r.evidence.find((x) => x.id === e.id)?.status ?? 'NOT_RUN']))])),
+  evidence: Object.fromEntries(EVIDENCE.map((e) => [e.id, Object.fromEntries(evidenceRuns.map((r) => { const x = r.evidence.find((v) => v.id === e.id);
+    return [r.label, x ? { status: x.status, regenerated: x.regenerated, payloadHashes: x.payloads.map((p) => p.actual) } : 'NOT_RUN']; }))])),
 };
-freshClone.allEvidenceByteExact = evidenceRuns.length > 0 && EVIDENCE.every((e) => evidenceRuns.some((r) => r.evidence.find((x) => x.id === e.id)?.status === 'BYTE_EXACT'));
+/* Every payload must have been regenerated in a fresh clone and match its committed manifest hash. A payload whose
+ * regeneration run could not read its manifest's hash field is accepted only when a verify-only pass over the same
+ * clone attests the same bytes. */
+freshClone.allEvidenceByteExact = evidenceRuns.length > 0 && EVIDENCE.every((e) => {
+  const regenerated = evidenceRuns.map((r) => r.evidence.find((x) => x.id === e.id)).filter((x) => x && x.regenerated);
+  const attested = evidenceRuns.map((r) => r.evidence.find((x) => x.id === e.id)).filter((x) => x && x.status === 'BYTE_EXACT');
+  return regenerated.length > 0 && attested.length > 0
+    && regenerated.every((g) => g.payloads.every((p, i) => attested.some((a) => a.payloads[i]?.actual === p.actual)));
+});
 
 /* ----------------------------------------------------------------- erratum */
 const erratum = {
   recordType: 'SENTINEL_CERTIFICATION_ERRATUM_V1', erratumId: 'STAGE3F-ERRATUM-002-PORTABILITY', historicalArtifactModified: false,
   subject: 'Byte reproducibility of Stage 3F.6 certificates whose digests contain floating-point values from Math.exp and `**`',
   finding: 'Every affected certificate was produced under host-native math: fdlibm exp evaluated with fused multiply-add (arm64 build of V8) and, from V8 14, the C library pow. Its bytes therefore reproduced only on hosts with that arithmetic. The platform was never recorded in any certificate; the D-SYM report records a "Node 26 host" only.',
-  originalPlatform: 'NOT_RECORDED. Inferred, not recorded: an arm64 V8 build (fused fdlibm exp) with V8 >= 14 std::pow for the D-SYM stage — consistent with Apple-silicon macOS and Node 26.',
+  originalPlatform: 'NOT_RECORDED. Inferred from exact reproduction, not recorded: an arm64 V8 build (fused fdlibm exp) throughout; fdlibm pow (V8 <= 13) at Stage 3F.6-D and the C library pow (V8 >= 14) at Stage 3F.6-D-SYM — i.e. the certifying host changed Node major version between those stages, consistent with Apple-silicon macOS and Node 26 at D-SYM.',
   scientificStatus: 'Unchanged. Under the canonical profile every affected certificate reproduces byte for byte on every tested host; under host-native x86-64 numerics every affected stage reproduces its data, decisions, classifications and conclusions, with coefficient and metric differences at the last-bits level.',
   certificates: Object.fromEntries(Object.entries(requalification).filter(([, v]) => v.fittedModels).map(([id, v]) => [id, {
-    originalHash: v.storedHash, underCanonicalProfile: v.canonicalStatus, underHostNativeNumerics: v.underHostNativeNumerics,
+    originalHash: v.storedHash, underCanonicalProfile: v.canonicalStatus, recordProfile: v.recordProfile, underPureCanonicalProfile: v.underPureCanonicalProfile,
+    underHostNativeNumerics: v.underHostNativeNumerics,
     historicalByteReproducibilityWasPlatformBound: Object.values(v.underHostNativeNumerics).some((s) => s !== 'BYTE_EXACT'),
   }])),
   supersedes: null, contractHash: contract.contractHash,
@@ -192,6 +208,7 @@ erratum.erratumHash = hex(JSON.stringify(erratum));
 const required = Object.fromEntries(REQUIRED_STAGES.map((id) => [id, requalification[id]?.canonicalStatus ?? 'NOT_RUN']));
 const nodeMajors = [...new Set(canonicalRuns.map((r) => r.host.node.split('.')[0]))].sort();
 const scientific = Object.fromEntries(REQUIRED_STAGES.map((id) => [id, Object.values(requalification[id]?.underHostNativeNumerics ?? {})]));
+const REPRODUCED = new Set(['BYTE_EXACT', 'BYTE_EXACT_UNDER_RECORD_PROFILE']);
 const tests = spawnSync(process.execPath, ['--test', '--test-reporter=tap', 'tests/stage3frp-reproducibility-portability.test.js'], { cwd: root, encoding: 'utf8' });
 const testCount = (k) => Number(tests.stdout.match(new RegExp(`^# ${k} (\\d+)`, 'm'))?.[1] ?? -1);
 const checks = {
@@ -205,7 +222,10 @@ const checks = {
   REQUIRED_STAGES_BYTE_EXACT_UNDER_CANONICAL: REQUIRED_STAGES.every((id) => required[id] === 'BYTE_EXACT'),
   CANONICAL_ON_AT_LEAST_TWO_NODE_MAJORS: nodeMajors.length >= 2,
   NATIVE_SCIENCE_REPRODUCES: REQUIRED_STAGES.every((id) => scientific[id].length > 0 && scientific[id].every((s) => ['BYTE_EXACT', 'CANONICALLY_EQUIVALENT', 'SCIENTIFICALLY_EQUIVALENT'].includes(s))),
-  ALL_CHAIN_CHECKS_ACCOUNTED: Object.values(requalification).every((v) => v.canonicalStatus === 'BYTE_EXACT' || (v.historicalStatus && v.canonicalStatus === 'NOT_REPRODUCED_DOCUMENTED_BEFORE_REMEDIATION')),
+  ALL_CHAIN_CHECKS_ACCOUNTED: Object.values(requalification).every((v) => (REPRODUCED.has(v.canonicalStatus) && (v.canonicalStatus === 'BYTE_EXACT') === (v.recordProfile === null))
+    || (v.historicalStatus && v.canonicalStatus === 'NOT_REPRODUCED_DOCUMENTED_BEFORE_REMEDIATION')),
+  RECORD_PROFILE_STAGES_EQUIVALENT_UNDER_PURE_CANONICAL: Object.values(requalification).filter((v) => v.recordProfile)
+    .every((v) => Object.values(v.underPureCanonicalProfile).length > 0 && Object.values(v.underPureCanonicalProfile).every((x) => ['BYTE_EXACT', 'CANONICALLY_EQUIVALENT'].includes(x))),
   TRACKED_TREE_UNCHANGED_IN_EVERY_RUN: runs.every((r) => r.trackedTreeUnchanged),
   FRESH_CLONE_EVIDENCE_BYTE_EXACT: freshClone.allEvidenceByteExact,
   RUNS_AT_BASELINE_LINEAGE: runs.every((r) => spawnSync('git', ['-C', root, 'merge-base', '--is-ancestor', BASELINE.commit, r.head], { encoding: 'utf8' }).status === 0),
@@ -228,7 +248,7 @@ const payload = {
   decisionSensitivity: { summary: sensitivity.summary, analyticMargins: Object.fromEntries(Object.entries(sensitivity.models).map(([k, m]) => [k, m.analyticMargins])) },
   contract: { contractId: contract.contractId, contractHash: contract.contractHash, tolerances: contract.tolerances, requiredLevel: contract.requiredLevel },
   requalification, requiredStages: required, checkModeAudit, freshClone,
-  platformMatrix: runs.map((r) => ({ label: r.label, host: r.host, mode: r.mode, numericsProfile: r.numericsProfile, head: r.head, pass: r.pass,
+  platformMatrix: runs.map((r) => ({ label: r.label, host: r.host, mode: r.mode, numericsProfile: r.numericsProfile, pureCanonical: r.pureCanonical, head: r.head, pass: r.pass,
     checksRun: r.checks.length, evidenceRun: r.evidence.length, trackedTreeUnchanged: r.trackedTreeUnchanged })),
   platformMatrixLimitation: 'Physical hosts available: linux-x64 only (Node 20, 22, 26). The arm64 arithmetic of record is reproduced by exact emulation (fused fdlibm exp) and verified against every stored hash; no arm64 or macOS host was run.',
   historicalArtifacts: { modified: false, erratum: ERRATUM_PATH, erratumHash: erratum.erratumHash },

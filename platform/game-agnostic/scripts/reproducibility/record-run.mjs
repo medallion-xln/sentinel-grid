@@ -18,12 +18,12 @@ if (!label || !/^[a-z0-9-]+$/.test(label) || !arg('report')) { process.stderr.wr
 const report = JSON.parse(readFileSync(path.resolve(arg('report')), 'utf8'));
 
 export const normalise = (r) => ({
-  schemaVersion: 1, label, procedure: r.procedure, mode: r.mode, numericsProfile: r.numericsProfile, head: r.head,
+  schemaVersion: 1, label, procedure: r.procedure, mode: r.mode, numericsProfile: r.numericsProfile, pureCanonical: r.pureCanonical === true, head: r.head,
   host: { platform: r.host.platform, arch: r.host.arch, node: r.host.node, v8: r.host.v8, cpuModel: r.host.cpuModel },
   trackedTreeUnchanged: r.trackedTreeUnchanged, pass: r.pass,
-  evidence: r.evidence.map((e) => ({ id: e.id, status: e.status, payloads: (e.payloads ?? []).map((p) => ({ payload: p.payload, expected: p.expected, actual: p.actual })),
+  evidence: r.evidence.map((e) => ({ id: e.id, status: e.status, regenerated: e.verifiedOnly !== true, payloads: (e.payloads ?? []).map((p) => ({ payload: p.payload, expected: p.expected, actual: p.actual })),
     trackedMutationsBlocked: (e.trackedMutationsBlocked ?? []).map((b) => b.file) })),
-  checks: r.checks.map((c) => ({ id: c.id, status: c.status, storedHash: c.storedHash, recomputedHash: c.recomputedHash, exitCode: c.exitCode,
+  checks: r.checks.map((c) => ({ id: c.id, profile: c.profile ?? null, status: c.status, storedHash: c.storedHash, recomputedHash: c.recomputedHash, exitCode: c.exitCode,
     ownCheckModeTrackedWrites: c.ownCheckModeTrackedWrites ?? [], trackedMutationsBlocked: (c.trackedMutationsBlocked ?? []).map((b) => b.file) })),
 });
 const record = normalise(report);

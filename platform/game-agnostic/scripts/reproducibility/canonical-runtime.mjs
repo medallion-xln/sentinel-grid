@@ -41,14 +41,23 @@ if (golden.failures.length) {
   process.stderr.write(`SENTINEL_CANONICAL_NUMERICS: golden vectors failed on this host: ${JSON.stringify(golden.failures.slice(0, 3))}\n`);
   process.exit(70);
 }
+/* SENTINEL_POW_MODEL selects the pow of a historical record profile (verification of pre-remediation certificates
+ * only; see stage3f-chain.mjs `recordProfile`). The canonical profile uses CORRECTLY_ROUNDED. */
+const POW_MODELS = { CORRECTLY_ROUNDED: numerics.pow };
+const powModel = process.env.SENTINEL_POW_MODEL ?? 'CORRECTLY_ROUNDED';
+if (powModel === 'FDLIBM_FUSED' || powModel === 'FDLIBM_SEPARATE') {
+  const variants = await import('./fdlibm-variants.mjs');
+  POW_MODELS.FDLIBM_FUSED = variants.powFused; POW_MODELS.FDLIBM_SEPARATE = variants.pow;
+}
+if (!(powModel in POW_MODELS)) { process.stderr.write(`SENTINEL_POW_MODEL: unknown model ${powModel}\n`); process.exit(72); }
 if (!nativeNumerics) {
   Math.exp = numerics.exp;
   Math.log = numerics.log;
   Math.log2 = numerics.log2;
-  Math.pow = numerics.pow;
-  Object.defineProperty(globalThis, CANONICAL_POW_GLOBAL, { value: numerics.pow, enumerable: false, configurable: false, writable: false });
+  Math.pow = POW_MODELS[powModel];
+  Object.defineProperty(globalThis, CANONICAL_POW_GLOBAL, { value: POW_MODELS[powModel], enumerable: false, configurable: false, writable: false });
 }
-const profile = nativeNumerics ? 'HOST_NATIVE' : numerics.CANONICAL_NUMERICS_ID;
+const profile = nativeNumerics ? 'HOST_NATIVE' : powModel === 'CORRECTLY_ROUNDED' ? numerics.CANONICAL_NUMERICS_ID : `${numerics.CANONICAL_NUMERICS_ID}+POW_${powModel}`;
 
 /* 2. `**` guard */
 if (nativeNumerics) { /* host `**` left untouched */ } else if (typeof nodeModule.registerHooks === 'function') nodeModule.registerHooks({ load: (url, context, nextLoad) => transform(url, nextLoad(url, context)) });

@@ -4,6 +4,7 @@
  *   node scripts/reproducibility/verify-stage3f.mjs --rebuild-evidence   rebuild every gitignored payload, verify hashes
  *   node scripts/reproducibility/verify-stage3f.mjs --check              run every Stage 3F certifier --check
  *   node scripts/reproducibility/verify-stage3f.mjs --all                both, in that order
+ *   node scripts/reproducibility/verify-stage3f.mjs --verify-evidence    hash-verify existing payloads only (no rebuild)
  * Options:
  *   --native          run each check under the host's own Math (diagnostic; not the certification profile). The
  *                     check's own process uses host Math; its predecessor checks and tests run canonically, so
@@ -12,6 +13,7 @@
  *   --only=ID,ID      restrict to these evidence / check ids
  *   --jobs=N          parallel evidence steps (default: min(4, CPUs))
  *   --capture         record certificate payloads serialised by each check (for stored-vs-recomputed diffs)
+ *   --pure-canonical  ignore declared record profiles: run every check under the canonical profile exactly
  *   --label=NAME      name for this run's log directory and report (default: the mode)
  *   --report=PATH     where to write the JSON report (default build/reproducibility/report-<label>.json)
  *
@@ -35,8 +37,9 @@ const native = flag('native');
 const only = arg('only')?.split(',').filter(Boolean) ?? null;
 const jobs = Number(arg('jobs') ?? Math.min(4, os.cpus().length));
 const doRebuild = flag('rebuild-evidence') || flag('all');
+const verifyOnly = flag('verify-evidence');
 const doCheck = flag('check') || flag('all');
-if (!doRebuild && !doCheck) { process.stderr.write('usage: --rebuild-evidence | --check | --all  [--native] [--only=..] [--jobs=N] [--capture]\n'); process.exit(2); }
+if (!doRebuild && !doCheck && !verifyOnly) { process.stderr.write('usage: --rebuild-evidence | --check | --all  [--native] [--only=..] [--jobs=N] [--capture]\n'); process.exit(2); }
 const mode = native ? 'native' : 'canonical';
 const label = arg('label') ?? mode;
 if (!/^[a-z0-9-]+$/.test(label)) { process.stderr.write('--label must match [a-z0-9-]+\n'); process.exit(2); }
@@ -52,8 +55,9 @@ const statusBefore = git('status', '--porcelain', '--untracked-files=no').stdout
 const head = git('rev-parse', 'HEAD').stdout.trim();
 
 const runtimeUrl = pathToFileURL(path.join(here, 'canonical-runtime.mjs')).href;
-function childEnv(logDir, topOnly = false) {
+function childEnv(logDir, topOnly = false, powModel = null) {
   const env = { ...process.env, SENTINEL_READONLY: '1', SENTINEL_GA_ROOT: root, SENTINEL_REPRO_LOG: logDir };
+  if (powModel) env.SENTINEL_POW_MODEL = powModel; else delete env.SENTINEL_POW_MODEL;
   if (flag('capture')) env.SENTINEL_REPRO_CAPTURE = '1';
   const options = (env.NODE_OPTIONS ?? '').split(/\s+/).filter((o) => o && !o.includes('canonical-runtime.mjs'));
   options.push(`--import=${runtimeUrl}`); // always: the read-only guard applies in every mode
@@ -63,10 +67,10 @@ function childEnv(logDir, topOnly = false) {
   env.NODE_OPTIONS = options.join(' ');
   return env;
 }
-function exec(command, logDir, topOnly = false) {
+function exec(command, logDir, topOnly = false, powModel = null) {
   return new Promise((resolve) => {
     const started = Date.now();
-    const child = spawn(command, { cwd: root, shell: true, env: childEnv(logDir, topOnly) });
+    const child = spawn(command, { cwd: root, shell: true, env: childEnv(logDir, topOnly, powModel) });
     let stdout = ''; let stderr = '';
     child.stdout.on('data', (d) => { stdout += d; });
     child.stderr.on('data', (d) => { stderr += d; });
@@ -98,14 +102,14 @@ function events(logDir, ownScript = null) {
 function payloadStatus(payload) {
   const manifestPath = payload.replace(/\.jsonl\.gz$/, '-manifest.json');
   const manifest = JSON.parse(readFileSync(path.join(root, manifestPath), 'utf8'));
-  const expected = String(manifest.contentHash).replace(/^sha256:/, '');
+  const expected = String(manifest.contentHash ?? manifest.corpusDigest).replace(/^sha256:/, ''); // 3F.6 names it corpusDigest
   if (!existsSync(path.join(root, payload))) return { payload, manifest: manifestPath, expected, actual: null, reproduced: false };
   const actual = hex(gunzipSync(readFileSync(path.join(root, payload))));
   return { payload, manifest: manifestPath, expected, actual, reproduced: actual === expected };
 }
 
 const report = { schemaVersion: 1, procedure: 'STAGE3F_CANONICAL_REPRODUCIBILITY_PROCEDURE_V1', mode, head,
-  numericsProfile: native ? 'HOST_NATIVE' : 'SENTINEL_CANONICAL_NUMERICS_V1',
+  numericsProfile: native ? 'HOST_NATIVE' : 'SENTINEL_CANONICAL_NUMERICS_V1', pureCanonical: !native && flag('pure-canonical'),
   host: { platform: process.platform, arch: process.arch, node: process.version, v8: process.versions.v8, cpus: os.cpus().length, cpuModel: os.cpus()[0]?.model ?? null },
   evidence: [], checks: [] };
 
@@ -136,16 +140,26 @@ if (doRebuild) {
   report.evidence = steps.map((s) => done.get(s.id) ?? { id: s.id, status: 'NOT_RUN' });
 }
 
+if (verifyOnly) {
+  report.evidence = EVIDENCE.filter((s) => only === null || only.includes(s.id)).map((s) => {
+    const payloads = s.payloads.map(payloadStatus);
+    const ok = payloads.every((p) => p.reproduced);
+    log(`${ok ? 'OK  ' : 'FAIL'} evidence ${s.id} (verify only)`);
+    return { id: s.id, status: ok ? 'BYTE_EXACT' : 'NOT_REPRODUCED', verifiedOnly: true, payloads, trackedMutationsBlocked: [] };
+  });
+}
+
 /* ---------------------------------------------------------------- checks */
 if (doCheck) {
   for (const c of CHECKS.filter((x) => only === null || only.includes(x.id))) {
     const logDir = path.join(runDir, 'checks', c.id);
-    const r = await exec(c.run, logDir, true);
+    const powModel = !native && !flag('pure-canonical') ? (c.recordProfile?.powModel ?? null) : null;
+    const r = await exec(c.run, logDir, true, powModel);
     const out = lastJson(r.stdout);
     const ev = events(logDir, c.run.split(' ')[1]);
     const stored = JSON.parse(readFileSync(path.join(root, c.result), 'utf8'));
     const reproduced = r.code === 0 && out?.reproduced === true; // every Stage 3F check prints { reproduced: boolean }
-    const entry = { id: c.id, command: c.run, exitCode: r.code, seconds: r.seconds, reproduced: reproduced && ev.blocked.length === 0,
+    const entry = { id: c.id, command: c.run, profile: native ? 'HOST_NATIVE' : powModel ? `CANONICAL+POW_${powModel}` : 'CANONICAL', exitCode: r.code, seconds: r.seconds, reproduced: reproduced && ev.blocked.length === 0,
       storedHash: stored.certificationHash ?? stored.analysisFreezeHash ?? null,
       recomputedHash: out?.recomputedHash ?? out?.certificationHash ?? out?.analysisFreezeHash ?? null,
       status: reproduced && ev.blocked.length === 0 ? 'BYTE_EXACT' : (c.historicalStatus ? 'NOT_REPRODUCED_DOCUMENTED_BEFORE_REMEDIATION' : 'NOT_REPRODUCED'),
