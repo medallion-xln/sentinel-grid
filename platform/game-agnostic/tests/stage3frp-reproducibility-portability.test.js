@@ -1,6 +1,6 @@
 import assert from 'node:assert/strict';
 import { spawnSync } from 'node:child_process';
-import { existsSync, readFileSync, readdirSync, rmSync } from 'node:fs';
+import { existsSync, mkdirSync, readFileSync, readdirSync, rmSync, writeFileSync } from 'node:fs';
 import path from 'node:path';
 import test from 'node:test';
 import { fileURLToPath, pathToFileURL } from 'node:url';
@@ -191,6 +191,22 @@ test('the chain covers every Stage 3F certifier and every gitignored Stage 3F pa
   for (const payload of gitignore) assert.ok(EVIDENCE.some((e) => e.payloads.includes(payload)), `missing evidence ${payload}`);
   const ids = new Set(EVIDENCE.map((e) => e.id));
   for (const e of EVIDENCE) for (const a of e.after) assert.ok(ids.has(a), `${e.id} depends on unknown ${a}`);
+});
+
+test('runner pins every child process to the runner Node binary', () => {
+  const dir = path.join(root, 'build', 'reproducibility', 'test-node-pin');
+  rmSync(dir, { recursive: true, force: true });
+  // A decoy `node` first on PATH: any child resolved by name instead of pinned would fail.
+  mkdirSync(path.join(dir, 'bin'), { recursive: true });
+  writeFileSync(path.join(dir, 'bin', 'node'), '#!/bin/sh\nexit 99\n', { mode: 0o755 });
+  const r = spawnSync(process.execPath, [path.join(root, 'scripts/reproducibility/verify-stage3f.mjs'), '--check', '--only=3F0', '--label=test-node-pin', `--report=${path.join(dir, 'r.json')}`],
+    { cwd: root, encoding: 'utf8', env: { ...process.env, PATH: `${path.join(dir, 'bin')}${path.delimiter}${process.env.PATH}`, SENTINEL_GA_ROOT: root } });
+  assert.equal(r.status, 0, r.stderr);
+  const report = JSON.parse(readFileSync(path.join(dir, 'r.json'), 'utf8'));
+  assert.equal(report.checks[0].status, 'BYTE_EXACT');
+  assert.equal(report.trackedTreeUnchanged, true);
+  rmSync(dir, { recursive: true, force: true });
+  rmSync(path.join(root, 'build', 'reproducibility', 'run-test-node-pin'), { recursive: true, force: true });
 });
 
 test('record profiles are rare, explicit and limited to known pow models', () => {

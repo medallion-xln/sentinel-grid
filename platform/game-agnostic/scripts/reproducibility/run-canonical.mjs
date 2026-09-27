@@ -21,6 +21,6 @@ const options = (process.env.NODE_OPTIONS ?? '').split(/\s+/).filter((o) => o &&
 options.push(`--import=${pathToFileURL(path.join(here, 'canonical-runtime.mjs')).href}`);
 if (!options.some((o) => o.startsWith('--test-reporter'))) options.push('--test-reporter=tap'); // certifiers parse TAP summaries
 const run = spawnSync(process.execPath, [script, ...args], { cwd: root, stdio: 'inherit',
-  env: { ...process.env, NODE_OPTIONS: options.join(' '), SENTINEL_READONLY: '1', SENTINEL_GA_ROOT: root } });
+  env: { ...process.env, PATH: `${path.dirname(process.execPath)}${path.delimiter}${process.env.PATH ?? ''}`, NODE_OPTIONS: options.join(' '), SENTINEL_READONLY: '1', SENTINEL_GA_ROOT: root } });
 if (status() !== before) { process.stderr.write('[run-canonical] tracked files changed during a read-only run\n'); process.exit(3); }
 process.exit(run.status ?? 1);

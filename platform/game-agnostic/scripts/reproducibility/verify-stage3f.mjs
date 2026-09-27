@@ -57,6 +57,8 @@ const head = git('rev-parse', 'HEAD').stdout.trim();
 const runtimeUrl = pathToFileURL(path.join(here, 'canonical-runtime.mjs')).href;
 function childEnv(logDir, topOnly = false, powModel = null) {
   const env = { ...process.env, SENTINEL_READONLY: '1', SENTINEL_GA_ROOT: root, SENTINEL_REPRO_LOG: logDir };
+  // Every process in the run uses this runner's Node: certifiers that spawn `node` by name resolve it from PATH.
+  env.PATH = `${path.dirname(process.execPath)}${path.delimiter}${env.PATH ?? ''}`;
   if (powModel) env.SENTINEL_POW_MODEL = powModel; else delete env.SENTINEL_POW_MODEL;
   if (flag('capture')) env.SENTINEL_REPRO_CAPTURE = '1';
   const options = (env.NODE_OPTIONS ?? '').split(/\s+/).filter((o) => o && !o.includes('canonical-runtime.mjs'));
@@ -70,7 +72,8 @@ function childEnv(logDir, topOnly = false, powModel = null) {
 function exec(command, logDir, topOnly = false, powModel = null) {
   return new Promise((resolve) => {
     const started = Date.now();
-    const child = spawn(command, { cwd: root, shell: true, env: childEnv(logDir, topOnly, powModel) });
+    const pinned = command.replace(/^node /, `${JSON.stringify(process.execPath)} `);
+    const child = spawn(pinned, { cwd: root, shell: true, env: childEnv(logDir, topOnly, powModel) });
     let stdout = ''; let stderr = '';
     child.stdout.on('data', (d) => { stdout += d; });
     child.stderr.on('data', (d) => { stderr += d; });
