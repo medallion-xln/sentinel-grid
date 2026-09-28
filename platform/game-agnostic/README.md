@@ -54,3 +54,8 @@ See `docs/STAGE3FRP_REPRODUCIBILITY_PORTABILITY.md`.
 Stage 3F.6-CR reconciles the historical Stage 3F.6 claims, its erratum and the symmetric chain into one canonical claim
 map and freezes `SENTINEL_DECISION_EVALUATION_CONTRACT_V1` (specification only): `npm run stage3f6cr:check`. See
 `docs/STAGE3F6CR_CONFIRMATORY_RECONCILIATION.md`.
+
+The formal Stage 3F freeze (`artifacts/stage3f-freeze/`) binds that record by hash as the immutable inheritance boundary
+for Stage 3G: the immutable facts, Decision Evaluation Contract v1, the reproducibility contract, the Stage 3G entry
+requirements, the nine-expert roster and R0 authority. `npm run stage3f-freeze:check` re-verifies it read-only. See
+`docs/STAGE3F_FORMAL_FREEZE.md`.
