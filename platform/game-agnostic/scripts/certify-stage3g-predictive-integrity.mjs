@@ -234,6 +234,13 @@ if (phaseOpen) {
 
 /* ================================================================== sealed evaluation */
 const openStored = readJson(OPEN_REPORT_PATH);
+/* Declared post-generation amendments (artifacts/stage3g-predictive-integrity/stage3g-amendment-*.json). */
+const AMENDMENT_PATH = 'artifacts/stage3g-predictive-integrity/stage3g-amendment-001.json';
+const AMENDMENT = existsSync(at(AMENDMENT_PATH)) ? readJson(AMENDMENT_PATH) : null;
+const AMENDMENTS = AMENDMENT === null ? [] : AMENDMENT.changes;
+/** The scientific content of a certificate: what an amendment of the harness may not move. */
+const scientificSections = (c) => ({ models: c.models, calSelection: c.calSelection, headline: c.headline, partitions: c.partitions, representation: c.representation,
+  oldReproduced: c.oldReproduced, data: c.data, schemaHashes: c.schemaHashes, planHash: c.planHash, openPhaseReportHash: c.openPhaseReportHash, numericsProfile: c.numericsProfile });
 const openRecomputed = { ...open.report, reportHash: hex(JSON.stringify(open.report)) };
 const OPEN_PHASE_REPRODUCED = JSON.stringify(openStored) === JSON.stringify(openRecomputed);
 const sealedManifest = readJson(SEALED_MANIFEST_PATH);
@@ -307,9 +314,12 @@ const headBlob = (f) => { const g = spawnSync('git', ['-C', repo, 'show', `HEAD:
 const selfHash = (doc, field) => { const { [field]: h, ...body } = doc; return hex(JSON.stringify(body)) === h; };
 const stage3f = (() => {
   const inh = STAGE3F_INHERITANCE; const freeze = readJson(inh.FREEZE_FILE); const cert = readJson(inh.CERTIFICATE_FILE);
-  const changedSince = git('diff', '--name-only', inh.FREEZE_CERTIFICATION_COMMIT, 'HEAD').stdout.trim().split('\n').filter(Boolean);
-  const stage3gOwned = (f) => /^platform\/game-agnostic\/(src\/stage3g\/|scripts\/stage3g|scripts\/stage3g\/|scripts\/(certify|generate)-stage3g|tests\/stage3g|docs\/STAGE3G|artifacts\/stage3g)/.test(f)
-    || ['platform/game-agnostic/package.json', 'platform/game-agnostic/README.md', '.gitignore'].includes(f);
+  /* Amendment 001 (second defect): only Stage 3F-protected paths are diffed, so later commits elsewhere cannot move this
+   * certificate. Protected: every Stage 3F artifact, doc, script, source module and test, and the frozen infrastructure
+   * Stage 3F certified against (core, Forge, symmetric Forge, reproducibility and check-mode tooling). */
+  const PROTECTED = ['artifacts/stage3f*/**', 'docs/STAGE3F*', 'scripts/*stage3f*', 'scripts/reproducibility/**', 'scripts/certification/**',
+    'src/stage3f/**', 'src/core/**', 'src/forge/**', 'src/forge-symmetric/**', 'tests/*stage3f*'].map((p) => `:(glob)platform/game-agnostic/${p}`);
+  const protectedChanges = git('diff', '--name-only', inh.FREEZE_CERTIFICATION_COMMIT, 'HEAD', '--', ...PROTECTED).stdout.trim().split('\n').filter(Boolean);
   const facts = freeze.sections.immutableFacts.values;
   return {
     FREEZE_HASH_BOUND: freeze.freezeHash === inh.STAGE3F_FREEZE_HASH && selfHash(freeze, 'freezeHash'),
@@ -319,7 +329,7 @@ const stage3f = (() => {
     IMMUTABLE_FACTS_HASH_BOUND: hex(JSON.stringify(freeze.sections.immutableFacts)) === inh.IMMUTABLE_FACTS_HASH && freeze.bound.IMMUTABLE_FACTS_HASH === inh.IMMUTABLE_FACTS_HASH,
     FACTS_UNCHANGED: JSON.stringify(facts) === JSON.stringify(inh.FACTS),
     FREEZE_COMMITS_ANCESTORS: git('merge-base', '--is-ancestor', inh.FREEZE_COMMIT, 'HEAD').status === 0 && git('merge-base', '--is-ancestor', inh.FREEZE_CERTIFICATION_COMMIT, 'HEAD').status === 0,
-    NO_STAGE3F_FILE_CHANGED: changedSince.every(stage3gOwned), changedSinceFreeze: changedSince,
+    NO_STAGE3F_FILE_CHANGED: protectedChanges.length === 0, stage3fProtectedChangesSinceFreeze: protectedChanges, protectedPaths: PROTECTED,
     AUTHORITY_R0: freeze.authority.tier === 'R0' && freeze.authority.canDispatch === false && freeze.authority.canMutateLiveWorld === false,
   };
 })();
@@ -337,12 +347,17 @@ const freezeDiscipline = (() => {
   const files = commit ? git('show', '--name-only', '--format=', commit).stdout.trim().split('\n').filter(Boolean) : [];
   const generatedAt = sealedManifest.generatedAtHead ?? null;
   const evalChanged = generatedAt === null ? 'NO_GENERATION_COMMIT' : git('diff', '--name-only', generatedAt, '--', ...EVALUATION_FILES.map(g)).stdout.trim();
+  /* A declared amendment may change a listed evaluation file after generation only from its recorded pre-amendment bytes
+   * (at the generation commit) to its recorded post-amendment bytes; anything else still fails. */
+  const blobAt = (c, f) => { const b = spawnSync('git', ['-C', repo, 'show', `${c}:${g(f)}`], { encoding: 'buffer', maxBuffer: 1 << 28 }); return b.status === 0 ? hex(b.stdout) : null; };
+  const amended = generatedAt === null ? [] : evalChanged.split('\n').filter(Boolean);
+  const amendmentCovers = amended.every((f) => AMENDMENTS.some((a) => g(a.file) === f && blobAt(generatedAt, a.file) === a.beforeSha256 && hex(readFileSync(at(a.file))) === a.afterSha256));
   const out = { freezeCommit: commit, planAndOpenReportInFreezeCommit: files.includes(g(PLAN_PATH)) && files.includes(g(OPEN_REPORT_PATH)),
     noSealedOrResultInFreezeCommit: !files.some((f) => /stage3g-predictive-integrity\/(sealed-partitions|stage3g-certification-result)/.test(f)),
     evaluationFilesAtHead: EVALUATION_FILES.every((f) => headBlob(f) === hex(readFileSync(at(f)))),
     sealedGeneratedAtHead: generatedAt, sealedGeneratedAfterFreeze: generatedAt !== null && commit !== null && git('merge-base', '--is-ancestor', commit, generatedAt).status === 0,
-    evaluationFilesUnchangedSinceGeneration: evalChanged === '' };
-  out.FROZEN_BEFORE_SEALED = commit !== null && Object.entries(out).filter(([k]) => !['freezeCommit', 'sealedGeneratedAtHead'].includes(k)).every(([, v]) => v === true);
+    evaluationFilesUnchangedSinceGeneration: evalChanged === '' || amendmentCovers, amendedAfterGeneration: amended.map((f) => f.replace('platform/game-agnostic/', '')) };
+  out.FROZEN_BEFORE_SEALED = commit !== null && Object.entries(out).filter(([k]) => !['freezeCommit', 'sealedGeneratedAtHead', 'amendedAfterGeneration'].includes(k)).every(([, v]) => v === true);
   return out;
 })();
 const lineage = stage3fLineage();
@@ -380,7 +395,9 @@ const staticAudit = {
 let testMetrics = { pass: 0, fail: 0, skipped: 0 }; let testsStatus = 0;
 if (!skipTests) {
   log('running Stage 3G tests');
-  const r = spawnSync(process.execPath, ['--test', '--test-reporter=tap', 'tests/stage3g-epistemic-integrity.test.js', 'tests/stage3g-observable-state.test.js'],
+  /* Amendment 001: the canonical runner already sets --test-reporter=tap in NODE_OPTIONS; a second one makes node --test refuse to start. */
+  const reporter = /--test-reporter(=|\s)/.test(process.env.NODE_OPTIONS ?? '') ? [] : ['--test-reporter=tap'];
+  const r = spawnSync(process.execPath, ['--test', ...reporter, 'tests/stage3g-epistemic-integrity.test.js', 'tests/stage3g-observable-state.test.js'],
     { cwd: root, encoding: 'utf8', env: process.env, maxBuffer: 1 << 28 });
   testsStatus = r.status ?? 1;
   const read = (l) => Number(new RegExp(`^# ${l} (\\d+)$`, 'm').exec(r.stdout ?? '')?.[1] ?? 0);
@@ -388,7 +405,7 @@ if (!skipTests) {
 }
 const checks = {
   CANONICAL_NUMERICS: CANONICAL_NUMERICS_ACTIVE && openStored.numericsProfile === numerics.CANONICAL_NUMERICS_ID,
-  STAGE3F_INHERITANCE_INTACT: Object.entries(stage3f).filter(([k]) => k !== 'changedSinceFreeze').every(([, v]) => v === true),
+  STAGE3F_INHERITANCE_INTACT: Object.entries(stage3f).filter(([k]) => !['stage3fProtectedChangesSinceFreeze', 'protectedPaths'].includes(k)).every(([, v]) => v === true),
   STAGE3G_SCHEMAS_BOUND: Object.values(schemaBinding).every(Boolean),
   OPEN_PHASE_REPRODUCED, FIT_DETERMINISTIC: openStored.calSelection.deterministic === true,
   OLD_REPRESENTATION_REPRODUCED: Object.values(oldReproduced).filter((v) => typeof v === 'boolean').every(Boolean),
@@ -403,13 +420,28 @@ const checks = {
   AUTHORITY_R0: PLAN.authority.tier === 'R0' && !PLAN.authority.canDispatch && !PLAN.authority.canMutateLiveWorld && !PLAN.authority.onlineLearningEnabled && !PLAN.authority.promotedToLiveRuntime,
   TESTS_PASS: skipTests || (testsStatus === 0 && testMetrics.fail === 0 && testMetrics.pass > 0),
 };
+/* Amendment 001: the recomputed scientific sections must equal those of the preserved first sealed run exactly. */
+const amendmentVerification = (() => {
+  if (AMENDMENT === null) return null;
+  const first = readJson(AMENDMENT.firstRun.file);
+  const draft = roundDeep({ models: openStored.models, calSelection: openStored.calSelection, headline: { OLD: 'OLD (P.1A-SYM SC_GEOMETRY_MAIN)', NEW }, partitions, representation,
+    oldReproduced, data, schemaHashes: { epistemic: EPISTEMIC_SCHEMA_HASH, observableEntityState: OBSERVABLE_ENTITY_STATE_SCHEMA_HASH, actionSemantics: ACTION_SEMANTICS_SCHEMA_HASH },
+    planHash: PLAN_HASH, openPhaseReportHash: openStored.reportHash, numericsProfile: CANONICAL_NUMERICS_ACTIVE ? numerics.CANONICAL_NUMERICS_ID : 'HOST_NATIVE' });
+  const { certificationHash: fh, ...fb } = first;
+  return { amendmentId: AMENDMENT.amendmentId, amendmentFileSha256: hex(readFileSync(at(AMENDMENT_PATH))),
+    FIRST_RUN_CERTIFICATE_INTACT: hex(JSON.stringify(fb)) === fh && fh === AMENDMENT.firstRun.certificationHash && first.status === 'FAIL'
+      && JSON.stringify(Object.entries(first.checks).filter(([, v]) => !v).map(([k]) => k)) === JSON.stringify(AMENDMENT.firstRun.failedChecks),
+    firstRunScientificHash: hex(JSON.stringify(scientificSections(first))), recomputedScientificHash: hex(JSON.stringify(scientificSections(draft))),
+    SCIENTIFIC_RESULT_UNCHANGED: hex(JSON.stringify(scientificSections(first))) === hex(JSON.stringify(scientificSections(draft))) && hex(JSON.stringify(scientificSections(first))) === AMENDMENT.firstRun.scientificHash };
+})();
+if (amendmentVerification !== null) checks.AMENDMENT_001_SCIENTIFIC_INVARIANCE = amendmentVerification.FIRST_RUN_CERTIFICATE_INTACT && amendmentVerification.SCIENTIFIC_RESULT_UNCHANGED;
 const status = Object.values(checks).every(Boolean) ? 'PASS' : 'FAIL';
 const payload = roundDeep({
   schemaVersion: 1, stage: PLAN.stage, status, numericsProfile: CANONICAL_NUMERICS_ACTIVE ? numerics.CANONICAL_NUMERICS_ID : 'HOST_NATIVE', planHash: PLAN_HASH, openPhaseReportHash: openStored.reportHash, seedPlanHash: SEED_PLAN_HASH,
   schemaHashes: { epistemic: EPISTEMIC_SCHEMA_HASH, observableEntityState: OBSERVABLE_ENTITY_STATE_SCHEMA_HASH, actionSemantics: ACTION_SEMANTICS_SCHEMA_HASH },
   stage3fInheritance: { ...STAGE3F_INHERITANCE, verification: stage3f }, schemaBinding, freeze: freezeDiscipline, data, oldReproduced,
   models: openStored.models, calSelection: openStored.calSelection, headline: { OLD: 'OLD (P.1A-SYM SC_GEOMETRY_MAIN)', NEW }, partitions, representation,
-  staticAudit, checks, tests: testMetrics, authority: PLAN.authority,
+  staticAudit, amendments: amendmentVerification, checks, tests: testMetrics, authority: PLAN.authority,
   disclosures: {
     OBSERVABILITY: 'entity positions are exposed because Forge declares perfect information and renders every entity; this is an environment declaration, not a general claim about other games',
     SURFACE_RETREAT_TIE_BREAK: 'the frozen Stage 3F symmetric RETREAT breaks distance ties with the canonical frame, whose digest reads entity id strings; renaming entities inside the world can move RETREAT (rate reported per partition as SURFACE_RETREAT_ID_DEPENDENT_RATE). The Stage 3G representation is invariant to identities for a fixed offered action set.',

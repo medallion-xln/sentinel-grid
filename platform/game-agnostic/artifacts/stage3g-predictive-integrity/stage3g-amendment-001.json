@@ -1,0 +1,28 @@
+{
+  "schemaVersion": 1,
+  "amendmentId": "STAGE3G_AMENDMENT_001",
+  "stage": "STAGE_3G_1_3G_2_EPISTEMIC_INTEGRITY_AND_OBSERVABLE_ENTITY_STATE",
+  "kind": "HARNESS_DEFECTS_AFTER_SEALED_RUN",
+  "defect": "(1) The certifier spawned the Stage 3G tests with an explicit --test-reporter=tap while the canonical runner already puts --test-reporter=tap in NODE_OPTIONS; node --test refused two reporters without matching destinations (ERR_INVALID_ARG_VALUE), so the tests never started: TESTS_PASS=false with 0 pass / 0 fail. Run standalone under the same runtime the same tests pass 24/24. (2) Found while preparing the certification commit: the Stage 3F inheritance section recorded the full list of files changed since the Stage 3F freeze certification commit, so every later commit would change the certificate and no --check could reproduce it after Stage 3G.3 began.",
+  "fix": "(1) pass --test-reporter=tap only when NODE_OPTIONS does not already carry one; (2) diff only Stage 3F-protected paths (Stage 3F artifacts, docs, scripts, modules, tests, and the core / Forge / symmetric Forge / reproducibility / check-mode infrastructure) and record only protected changes; the freeze-discipline check accepts a post-generation change to a listed evaluation file only from the recorded before bytes to the recorded after bytes; the certifier requires the recomputed scientific sections to equal the preserved first run exactly (AMENDMENT_001_SCIENTIFIC_INVARIANCE).",
+  "scope": "test-runner invocation and amendment verification only; no measurement, model, plan, threshold, rule, seed, partition or evaluation code path changed",
+  "changes": [
+    {
+      "file": "scripts/certify-stage3g-predictive-integrity.mjs",
+      "beforeSha256": "2c675edd6f4db461e1072e1d49a893b68a2d34bce7669b18ed9f7b65b9767ea4",
+      "afterSha256": "40be17ad29153f3c9a231f06102fcb03a97982a7f4ddd707c369ebcf62d350cb"
+    }
+  ],
+  "firstRun": {
+    "file": "artifacts/stage3g-predictive-integrity/stage3g-certification-result.first-run.json",
+    "certificationHash": "b41c802755864370312042f20d04ec36328c6bd5bd2c6f3af1dd56c8f6dadecf",
+    "status": "FAIL",
+    "failedChecks": [
+      "TESTS_PASS"
+    ],
+    "scientificHash": "0cca066639f93aad93bc8a6f8e36d6702b6912b376894f42bf9ac3ca2b795a64",
+    "sealedRunCount": 1
+  },
+  "sealedDataTouchedByAmendment": false,
+  "rulesChangedAfterSealed": false
+}
