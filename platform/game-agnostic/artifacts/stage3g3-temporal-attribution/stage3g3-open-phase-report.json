@@ -1,0 +1,315 @@
+{
+  "schemaVersion": 1,
+  "stage": "STAGE_3G_3_PREDICTION_LIFECYCLE_AND_MULTI_STEP_RESIDUAL_ATTRIBUTION",
+  "phase": "OPEN",
+  "planHash": "ce5c45b8249184f31992a89855d58ef4e31e45a4b383a861b199489f9f67f4c3",
+  "numericsProfile": "SENTINEL_CANONICAL_NUMERICS_V1",
+  "lifecycleSchemaHash": "6160752cc0cab68332daca8ffeb8504e57d8dc1b2200136926c1573885cde0a8",
+  "eligible": {
+    "DEV": 3393,
+    "CAL": 3427
+  },
+  "modelHashes": {
+    "NEW_LINEAR": "2e868e3acbe4594a1f82a01956d64f27c3e30dab3942335078901634103189dd",
+    "NEW_INTERACTION": "ebc319c5500b98d057cda8ad8db5c39860ea6962bd38f69c72f1cf65ebcc8972",
+    "NEW_NONLINEAR": "72536afd4079e41be82366bffd09a35c17a6b45ec60082cd05740583adf7e392",
+    "D_ONE_STEP": "aa58b4ea4b908c137c28982dd26ab502a1c601dd3962c9899e3d2713edf31b80",
+    "D_H2": "e3e6dc981eed37a2495a8971114589ff1789f22d296d50769744b0e748edd95d",
+    "D_H3": "fe8040bac01b9126e06d0ae08b7265b4182390ed24a3be58ff8d841ee403af13",
+    "D_H4": "d4ea26d7c3f9e2d89f51fde58ffec66ab0d2535b38549364ff4fa89fa7e7032a",
+    "D_OPTION": "507bcb815c606e52380682489a17c897ee5c9b9ed68983b1fb9d7bc17cdd32a2",
+    "D_TEMPORAL_FEATURES": "390d2caa6bbb50553c993e97faab50c3a071d59a1fc340c606c4af9077c994ba",
+    "D_PRIVILEGED_RELATIONS": "bd9881958640b8a49b105b4dd0691e4da7fa3c78558bde5ba75196333775cda0"
+  },
+  "newLinearBinding": {
+    "modelHash": "2e868e3acbe4594a1f82a01956d64f27c3e30dab3942335078901634103189dd",
+    "stage3g12": "2e868e3acbe4594a1f82a01956d64f27c3e30dab3942335078901634103189dd",
+    "REPRODUCED": true,
+    "replayDeterministic": true
+  },
+  "calSelection": {
+    "mlp": {
+      "8": {
+        "hash": "72536afd4079e41be82366bffd09a35c17a6b45ec60082cd05740583adf7e392",
+        "calTop1": 0.764371
+      },
+      "16": {
+        "hash": "748234029183835d405972fe0d58ddd13b3996a48919ae5e477c2106d4c70ee5",
+        "calTop1": 0.737526
+      },
+      "32": {
+        "hash": "82999f30ac0d438c651b99ffaed5b0512ed4855c6561a7ce7afd86c4a95ec395",
+        "calTop1": 0.655676
+      }
+    },
+    "mlpWidth": 8,
+    "capacity": {
+      "NEW_INTERACTION": 0.785381,
+      "NEW_NONLINEAR": 0.764371
+    },
+    "BEST_CAPACITY": "NEW_INTERACTION",
+    "rule": "whichever of NEW_INTERACTION / NEW_NONLINEAR has the higher CAL top-1 (ties within 1e-9 -> NEW_INTERACTION); the capacity-controlled comparator"
+  },
+  "partialCounts": {
+    "DEV": {
+      "2": 1534,
+      "3": 1534,
+      "4": 1006
+    },
+    "CAL": {
+      "2": 1349,
+      "3": 1349,
+      "4": 875
+    }
+  },
+  "results": {
+    "DEV": {
+      "NEW_LINEAR": {
+        "n": 3393,
+        "OPTIMAL_SET_HIT": 0.782199,
+        "TOP1_EXACT": 0.715591,
+        "REGRET": 10.270557,
+        "NORMALIZED_REGRET": 0.094621,
+        "catastrophicRate": 0.023578,
+        "pOptimalSet": 0.645629,
+        "ece": 0.051444,
+        "NEAR_TIE_SHARE_OF_RESIDUAL": 0.060893
+      },
+      "NEW_INTERACTION": {
+        "n": 3393,
+        "OPTIMAL_SET_HIT": 0.786914,
+        "TOP1_EXACT": 0.724433,
+        "REGRET": 10.033893,
+        "NORMALIZED_REGRET": 0.093199,
+        "catastrophicRate": 0.022104,
+        "pOptimalSet": 0.659245,
+        "ece": 0.043917,
+        "NEAR_TIE_SHARE_OF_RESIDUAL": 0.059474
+      },
+      "NEW_NONLINEAR": {
+        "n": 3393,
+        "OPTIMAL_SET_HIT": 0.795167,
+        "TOP1_EXACT": 0.720601,
+        "REGRET": 9.308576,
+        "NORMALIZED_REGRET": 0.092225,
+        "catastrophicRate": 0.019157,
+        "pOptimalSet": 0.688859,
+        "ece": 0.033866,
+        "NEAR_TIE_SHARE_OF_RESIDUAL": 0.058993
+      },
+      "BEST_CAPACITY": {
+        "n": 3393,
+        "OPTIMAL_SET_HIT": 0.786914,
+        "TOP1_EXACT": 0.724433,
+        "REGRET": 10.033893,
+        "NORMALIZED_REGRET": 0.093199,
+        "catastrophicRate": 0.022104,
+        "pOptimalSet": 0.659245,
+        "ece": 0.043917,
+        "NEAR_TIE_SHARE_OF_RESIDUAL": 0.059474
+      },
+      "D_ONE_STEP": {
+        "n": 3393,
+        "OPTIMAL_SET_HIT": 0.785146,
+        "TOP1_EXACT": 0.718243,
+        "REGRET": 10.276157,
+        "NORMALIZED_REGRET": 0.094318,
+        "catastrophicRate": 0.022989,
+        "pOptimalSet": 0.646587,
+        "ece": 0.053977,
+        "NEAR_TIE_SHARE_OF_RESIDUAL": 0.057613
+      },
+      "D_H2": {
+        "n": 3393,
+        "OPTIMAL_SET_HIT": 0.81285,
+        "TOP1_EXACT": 0.741527,
+        "REGRET": 8.265841,
+        "NORMALIZED_REGRET": 0.077136,
+        "catastrophicRate": 0.019747,
+        "pOptimalSet": 0.665512,
+        "ece": 0.10007,
+        "NEAR_TIE_SHARE_OF_RESIDUAL": 0.067717
+      },
+      "D_H3": {
+        "n": 3393,
+        "OPTIMAL_SET_HIT": 0.837902,
+        "TOP1_EXACT": 0.762747,
+        "REGRET": 6.831123,
+        "NORMALIZED_REGRET": 0.065423,
+        "catastrophicRate": 0.01621,
+        "pOptimalSet": 0.705434,
+        "ece": 0.09441,
+        "NEAR_TIE_SHARE_OF_RESIDUAL": 0.074545
+      },
+      "D_H4": {
+        "n": 3393,
+        "OPTIMAL_SET_HIT": 0.819039,
+        "TOP1_EXACT": 0.742263,
+        "REGRET": 6.857059,
+        "NORMALIZED_REGRET": 0.079235,
+        "catastrophicRate": 0.012968,
+        "pOptimalSet": 0.670507,
+        "ece": 0.105078,
+        "NEAR_TIE_SHARE_OF_RESIDUAL": 0.061889
+      },
+      "D_OPTION": {
+        "n": 3393,
+        "OPTIMAL_SET_HIT": 0.808134,
+        "TOP1_EXACT": 0.737253,
+        "REGRET": 8.68214,
+        "NORMALIZED_REGRET": 0.081552,
+        "catastrophicRate": 0.020631,
+        "pOptimalSet": 0.70505,
+        "ece": 0.052603,
+        "NEAR_TIE_SHARE_OF_RESIDUAL": 0.066052
+      },
+      "D_TEMPORAL_FEATURES": {
+        "n": 3393,
+        "OPTIMAL_SET_HIT": 0.820365,
+        "TOP1_EXACT": 0.748453,
+        "REGRET": 8.230032,
+        "NORMALIZED_REGRET": 0.07806,
+        "catastrophicRate": 0.022399,
+        "pOptimalSet": 0.721392,
+        "ece": 0.054238,
+        "NEAR_TIE_SHARE_OF_RESIDUAL": 0.07055
+      },
+      "D_PRIVILEGED_RELATIONS": {
+        "n": 3393,
+        "OPTIMAL_SET_HIT": 0.780725,
+        "TOP1_EXACT": 0.715738,
+        "REGRET": 10.324492,
+        "NORMALIZED_REGRET": 0.093985,
+        "catastrophicRate": 0.023283,
+        "pOptimalSet": 0.646833,
+        "ece": 0.04534,
+        "NEAR_TIE_SHARE_OF_RESIDUAL": 0.060484
+      }
+    },
+    "CAL": {
+      "NEW_LINEAR": {
+        "n": 3427,
+        "OPTIMAL_SET_HIT": 0.793259,
+        "TOP1_EXACT": 0.714911,
+        "REGRET": 9.078203,
+        "NORMALIZED_REGRET": 0.087481,
+        "catastrophicRate": 0.0178,
+        "pOptimalSet": 0.650643,
+        "ece": 0.066324,
+        "NEAR_TIE_SHARE_OF_RESIDUAL": 0.060692
+      },
+      "NEW_INTERACTION": {
+        "n": 3427,
+        "OPTIMAL_SET_HIT": 0.785381,
+        "TOP1_EXACT": 0.708491,
+        "REGRET": 9.329443,
+        "NORMALIZED_REGRET": 0.091479,
+        "catastrophicRate": 0.018675,
+        "pOptimalSet": 0.65559,
+        "ece": 0.057255,
+        "NEAR_TIE_SHARE_OF_RESIDUAL": 0.058464
+      },
+      "NEW_NONLINEAR": {
+        "n": 3427,
+        "OPTIMAL_SET_HIT": 0.764371,
+        "TOP1_EXACT": 0.696819,
+        "REGRET": 10.855559,
+        "NORMALIZED_REGRET": 0.111387,
+        "catastrophicRate": 0.023928,
+        "pOptimalSet": 0.663107,
+        "ece": 0.047219,
+        "NEAR_TIE_SHARE_OF_RESIDUAL": 0.048297
+      },
+      "BEST_CAPACITY": {
+        "n": 3427,
+        "OPTIMAL_SET_HIT": 0.785381,
+        "TOP1_EXACT": 0.708491,
+        "REGRET": 9.329443,
+        "NORMALIZED_REGRET": 0.091479,
+        "catastrophicRate": 0.018675,
+        "pOptimalSet": 0.65559,
+        "ece": 0.057255,
+        "NEAR_TIE_SHARE_OF_RESIDUAL": 0.058464
+      },
+      "D_ONE_STEP": {
+        "n": 3427,
+        "OPTIMAL_SET_HIT": 0.795156,
+        "TOP1_EXACT": 0.715641,
+        "REGRET": 9.075868,
+        "NORMALIZED_REGRET": 0.087762,
+        "catastrophicRate": 0.0178,
+        "pOptimalSet": 0.651645,
+        "ece": 0.067527,
+        "NEAR_TIE_SHARE_OF_RESIDUAL": 0.059829
+      },
+      "D_H2": {
+        "n": 3427,
+        "OPTIMAL_SET_HIT": 0.825795,
+        "TOP1_EXACT": 0.741465,
+        "REGRET": 7.164284,
+        "NORMALIZED_REGRET": 0.069751,
+        "catastrophicRate": 0.01459,
+        "pOptimalSet": 0.675777,
+        "ece": 0.106447,
+        "NEAR_TIE_SHARE_OF_RESIDUAL": 0.067002
+      },
+      "D_H3": {
+        "n": 3427,
+        "OPTIMAL_SET_HIT": 0.843887,
+        "TOP1_EXACT": 0.755471,
+        "REGRET": 6.220309,
+        "NORMALIZED_REGRET": 0.063331,
+        "catastrophicRate": 0.013423,
+        "pOptimalSet": 0.715002,
+        "ece": 0.094336,
+        "NEAR_TIE_SHARE_OF_RESIDUAL": 0.071028
+      },
+      "D_H4": {
+        "n": 3427,
+        "OPTIMAL_SET_HIT": 0.819959,
+        "TOP1_EXACT": 0.732419,
+        "REGRET": 6.411147,
+        "NORMALIZED_REGRET": 0.076903,
+        "catastrophicRate": 0.010797,
+        "pOptimalSet": 0.677406,
+        "ece": 0.099699,
+        "NEAR_TIE_SHARE_OF_RESIDUAL": 0.059968
+      },
+      "D_OPTION": {
+        "n": 3427,
+        "OPTIMAL_SET_HIT": 0.809454,
+        "TOP1_EXACT": 0.728188,
+        "REGRET": 8.00073,
+        "NORMALIZED_REGRET": 0.080796,
+        "catastrophicRate": 0.016341,
+        "pOptimalSet": 0.712293,
+        "ece": 0.049902,
+        "NEAR_TIE_SHARE_OF_RESIDUAL": 0.06585
+      },
+      "D_TEMPORAL_FEATURES": {
+        "n": 3427,
+        "OPTIMAL_SET_HIT": 0.82171,
+        "TOP1_EXACT": 0.739568,
+        "REGRET": 7.584184,
+        "NORMALIZED_REGRET": 0.07867,
+        "catastrophicRate": 0.016341,
+        "pOptimalSet": 0.730544,
+        "ece": 0.052073,
+        "NEAR_TIE_SHARE_OF_RESIDUAL": 0.070376
+      },
+      "D_PRIVILEGED_RELATIONS": {
+        "n": 3427,
+        "OPTIMAL_SET_HIT": 0.79253,
+        "TOP1_EXACT": 0.712868,
+        "REGRET": 9,
+        "NORMALIZED_REGRET": 0.086595,
+        "catastrophicRate": 0.0178,
+        "pOptimalSet": 0.651297,
+        "ece": 0.061986,
+        "NEAR_TIE_SHARE_OF_RESIDUAL": 0.059072
+      }
+    }
+  },
+  "noSealedRowScored": true,
+  "reportHash": "682e8dc3b62bf5c37126d2a6c5219ef7150c88dc82e55f8cc62ee44e2089f28e"
+}

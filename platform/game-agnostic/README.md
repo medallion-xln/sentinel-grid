@@ -65,3 +65,8 @@ with promotion rules and task-state contamination diagnostics), the observable e
 (`SENTINEL_OBSERVABLE_ENTITY_STATE_V1`) and `ACTION_SEMANTICS_V1`. It then rechecks free-action representation
 sufficiency against the Stage 3F representation. `npm run stage3g:check` re-verifies it read-only. See
 `docs/STAGE3G_EPISTEMIC_INTEGRITY_AND_OBSERVABLE_STATE.md`.
+
+Stage 3G.3 adds the prediction lifecycle (`SENTINEL_PREDICTION_LIFECYCLE_V1`). It also attributes the remaining
+free-action residual across multi-step temporal information, ranking capacity, option preservation, retreat logic and
+label structure. All temporal quantities are privileged upper bounds. `npm run stage3g3:check` re-verifies it read-only.
+See `docs/STAGE3G3_PREDICTION_LIFECYCLE_AND_TEMPORAL_ATTRIBUTION.md`.
