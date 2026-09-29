@@ -326,7 +326,7 @@ const headBlob = (f) => { const g = spawnSync('git', ['-C', repo, 'show', `HEAD:
 const selfHash = (doc, field) => { const { [field]: h, ...body } = doc; return hex(JSON.stringify(body)) === h; };
 const glob = (paths) => paths.map((p) => `:(glob)platform/game-agnostic/${p}`);
 const inheritance = (() => {
-  const f = P.STAGE3F_INHERITANCE; const freeze = readJson(f.FREEZE_FILE); const cert = readJson(f.CERTIFICATE_FILE);
+  const f = P.PLAN.inheritance.stage3f; const freeze = readJson(f.FREEZE_FILE); const cert = readJson(f.CERTIFICATE_FILE);
   const PROTECTED3F = glob(['artifacts/stage3f*/**', 'docs/STAGE3F*', 'scripts/*stage3f*', 'scripts/reproducibility/**', 'scripts/certification/**', 'src/stage3f/**', 'src/core/**', 'src/forge/**', 'src/forge-symmetric/**', 'tests/*stage3f*']);
   const g = P.STAGE3G12_INHERITANCE; const g12 = readJson(g.CERTIFICATE_FILE);
   const changed3f = git('diff', '--name-only', f.FREEZE_CERTIFICATION_COMMIT, 'HEAD', '--', ...PROTECTED3F).stdout.trim().split('\n').filter(Boolean);
@@ -381,7 +381,7 @@ const staticAudit = {
   LIFECYCLE_NO_WALL_CLOCK: !/Date\.|performance\.now|process\.hrtime|Math\.random/.test(lifecycleSource),
   LIFECYCLE_NO_SIMULATOR: ![...lifecycleSource.matchAll(/from '([^']+)'/g)].some((m) => /forge|counterfactual|oracle|stage3g3/.test(m[1])),
   RUNTIME_CONTRACTS_DO_NOT_IMPORT_ROLLOUTS: ['src/stage3g/observable-entity-state-v1.js', 'src/stage3g/action-semantics-v1.js', 'src/stage3g/prediction-lifecycle-v1.js']
-    .every((f) => !/stage3g3|counterfactual|reward-v2/.test(readFileSync(at(f), 'utf8'))),
+    .every((f) => ![...readFileSync(at(f), 'utf8').matchAll(/from '([^']+)'/g)].some((m) => /stage3g3|counterfactual|reward-v2/.test(m[1]))), /* amendment 001: imports only */
   FITS_ON_DEV_ONLY: [...readFileSync(at('scripts/stage3g3/certify.mjs'), 'utf8').matchAll(/fit(?:Logit|Mlp)\(([A-Za-z]+)/g)].every((m) => ['DEV', 'rows', 'groupsOf'].includes(m[1])),
 };
 let tests = { pass: 0, fail: 0, skipped: 0 }; let testsStatus = 1;
@@ -415,13 +415,22 @@ const draft = roundDeep({ planHash: P.PLAN_HASH, openPhaseReportHash: openStored
   lifecycleSchemaHash: PREDICTION_LIFECYCLE_SCHEMA_HASH, modelHashes: openStored.modelHashes, calSelection: openStored.calSelection, partitions, conclusions, data });
 let amendments = null;
 if (AMENDMENTS.length) {
-  const firstRun = readJson(AMENDMENTS[0].firstRun.file); const { certificationHash: fh, ...fb } = firstRun;
+  /* A first sealed run that produced a certificate must be matched exactly; one that crashed before emitting anything is
+   * recorded as such (nothing was observed, so nothing could have been tuned on it). */
+  const first = AMENDMENTS[0].firstRun;
   const recomputed = hex(JSON.stringify(scientific(draft)));
-  amendments = { ids: AMENDMENTS.map((a) => a.amendmentId), files: Object.fromEntries(AMENDMENTS.map((a) => [a.file, hex(readFileSync(at(`${P.OUT}/${a.file}`)))])),
-    FIRST_RUN_CERTIFICATE_INTACT: hex(JSON.stringify(fb)) === fh && fh === AMENDMENTS[0].firstRun.certificationHash,
-    firstRunScientificHash: hex(JSON.stringify(scientific(firstRun))), recomputedScientificHash: recomputed,
-    SCIENTIFIC_RESULT_UNCHANGED: recomputed === hex(JSON.stringify(scientific(firstRun))) && recomputed === AMENDMENTS[0].firstRun.scientificHash };
-  checks.AMENDMENT_SCIENTIFIC_INVARIANCE = amendments.FIRST_RUN_CERTIFICATE_INTACT && amendments.SCIENTIFIC_RESULT_UNCHANGED;
+  if (first.producedCertificate === false) {
+    amendments = { ids: AMENDMENTS.map((a) => a.amendmentId), files: Object.fromEntries(AMENDMENTS.map((a) => [a.file, hex(readFileSync(at(`${P.OUT}/${a.file}`)))])),
+      FIRST_RUN_PRODUCED_NO_RESULT: true, firstRunFailure: first.failure, recomputedScientificHash: recomputed, SCIENTIFIC_RESULT_UNCHANGED: null };
+    checks.AMENDMENT_FIRST_RUN_UNOBSERVED = first.scientificOutputObserved === false && first.certificateWritten === false;
+  } else {
+    const firstRun = readJson(first.file); const { certificationHash: fh, ...fb } = firstRun;
+    amendments = { ids: AMENDMENTS.map((a) => a.amendmentId), files: Object.fromEntries(AMENDMENTS.map((a) => [a.file, hex(readFileSync(at(`${P.OUT}/${a.file}`)))])),
+      FIRST_RUN_CERTIFICATE_INTACT: hex(JSON.stringify(fb)) === fh && fh === first.certificationHash,
+      firstRunScientificHash: hex(JSON.stringify(scientific(firstRun))), recomputedScientificHash: recomputed,
+      SCIENTIFIC_RESULT_UNCHANGED: recomputed === hex(JSON.stringify(scientific(firstRun))) && recomputed === first.scientificHash };
+    checks.AMENDMENT_SCIENTIFIC_INVARIANCE = amendments.FIRST_RUN_CERTIFICATE_INTACT && amendments.SCIENTIFIC_RESULT_UNCHANGED;
+  }
 }
 const status = Object.values(checks).every(Boolean) ? 'PASS' : 'FAIL';
 const OWNERS = ['src/stage3g/prediction-lifecycle-v1.js', 'scripts/stage3g3/plan.mjs', 'scripts/stage3g3/evidence.mjs', 'scripts/stage3g3/scorers.mjs', 'scripts/stage3g3/plan-cli.mjs',

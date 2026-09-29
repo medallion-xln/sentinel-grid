@@ -1,0 +1,38 @@
+{
+  "schemaVersion": 1,
+  "amendmentId": "STAGE3G3_AMENDMENT_001",
+  "stage": "STAGE_3G_3_PREDICTION_LIFECYCLE_AND_MULTI_STEP_RESIDUAL_ATTRIBUTION",
+  "kind": "HARNESS_DEFECTS_AFTER_SEALED_RUN",
+  "defects": [
+    "The one sealed run evaluated both sealed partitions, then crashed in the inheritance-binding section: the certifier referenced P.STAGE3F_INHERITANCE, which scripts/stage3g3/plan.mjs does not export (the Stage 3F inheritance is PLAN.inheritance.stage3f). TypeError: Cannot read properties of undefined (reading FREEZE_FILE) at scripts/stage3g3/certify.mjs:329. The process exited before printing anything to stdout and before writing a certificate, so no sealed scientific result was produced, printed or read.",
+    "A dry run of the corrected certifier on DEV/CAL stand-in rows (no sealed row scored; written only to the session scratchpad) then showed a static-audit false positive: RUNTIME_CONTRACTS_DO_NOT_IMPORT_ROLLOUTS matched the word counterfactual in comments of src/stage3g/prediction-lifecycle-v1.js (which describe E4 counterfactual predictions); its intent, and tests/stage3g3-temporal-attribution.test.js test 8, concern imports only."
+  ],
+  "fix": [
+    "reference P.PLAN.inheritance.stage3f",
+    "restrict the static audit to import specifiers",
+    "amendment verification also accepts a first run that produced no certificate (recorded as unobserved; nothing could have been tuned on it)"
+  ],
+  "scope": "harness only; no measurement, model, plan, threshold, rule, seed, partition or evaluation code path before the crash point changed",
+  "changes": [
+    {
+      "file": "scripts/stage3g3/certify.mjs",
+      "beforeSha256": "d8411a9e3be313a015c224eb31d607087133eb38b5b344be341311ecb7afe0b7",
+      "afterSha256": "cd7dd8849c6dd7220ae2a4894d1d9f1493b60d7cd3fc4d086ebbf910a5ac140a"
+    }
+  ],
+  "firstRun": {
+    "producedCertificate": false,
+    "certificateWritten": false,
+    "scientificOutputObserved": false,
+    "stdout": "",
+    "failure": "TypeError at certify.mjs:329 after evaluating STAGE3G3_HOLDOUT and STAGE3G3_OOD",
+    "sealedRunCount": 1
+  },
+  "dryRun": {
+    "partitions": "DEV every 8th row, CAL every 12th row; CAL rows stood in for the sealed partitions",
+    "sealedRowsScored": 0,
+    "outputLocation": "session scratchpad (not committed)"
+  },
+  "sealedDataTouchedByAmendment": false,
+  "rulesChangedAfterSealed": false
+}
