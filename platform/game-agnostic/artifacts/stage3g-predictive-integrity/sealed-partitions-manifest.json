@@ -1,0 +1,116 @@
+{
+  "schemaVersion": 1,
+  "stage": "STAGE_3G_1_3G_2",
+  "planHash": "d6acc0c48741cd08e117f4e5a56bda59c514b04879659ddaa5a3537d3c7bcc42",
+  "seedPlanHash": "2ff7faf104eeaf8e1eff7c27e4b8f7cd4c343260343b38aeb43a1f6793b2a817",
+  "generatedAtHead": "dac250187f2f459c3ed691d3a8ff22ef8a313647",
+  "benchmark": {
+    "BENCHMARK_ID": "FORGE_SYMMETRIC_V2",
+    "GENERATOR_ID": "FORGE_SCENARIO_GENERATOR_SYMMETRIC_V1",
+    "ORACLE_ID": "FORGE_COUNTERFACTUAL_SYMMETRIC_V1",
+    "SURFACE_ID": "FORGE_ACTION_SURFACE_SYMMETRIC_V1",
+    "ORIENTATION_ID": "FORGE_ORIENTATION_SYMMETRIC_V1",
+    "LABEL_ID": "FORGE_GREEDY_SAFE_SYMMETRIC_V1",
+    "GENERATOR_CONTRACT_HASH": "92be1b7d3255a7e373a06c20d8e68abf533b52e234a131df31bf116ff64b0d74",
+    "ORACLE_CONTRACT_HASH": "eb4aedab02c2e9fdf0a2e90e34545ead832b0d327a101a62396e2c698090bf24",
+    "SURFACE_CONTRACT_HASH": "e083913e8506e2c5994ac829f6a84a30fa47b5d392e90741fdaf78f736a81e9c",
+    "ORIENTATION_CONTRACT_HASH": "bd9c83a316bd14371a6fc65dcfc4a4d99a71eeedd698a8d3e4d4d9b96cdff4b7",
+    "featureContract": "SENTINEL_DEPLOYABLE_FEATURE_CONTRACT_V1",
+    "featureCount": 30,
+    "stage3f6p1cCertification": "81586cbe068885596d7f8b5c78d6f6d5d72e53425289f850386e0c43ddff702d"
+  },
+  "priorLineage": [
+    {
+      "name": "P.1D",
+      "rows": 20000,
+      "verified": true
+    },
+    {
+      "name": "T-SYM",
+      "rows": 12000,
+      "verified": true
+    },
+    {
+      "name": "P.1A-SYM",
+      "rows": 12000,
+      "verified": true
+    },
+    {
+      "name": "P.1-SYM",
+      "rows": 12000,
+      "verified": true
+    },
+    {
+      "name": "W-SYM",
+      "rows": 12000,
+      "verified": true,
+      "contentHash": "2c8f73fbd550460e82691616fdddac7d36d09f9c339a19679b2c9cef1f40f14d"
+    },
+    {
+      "name": "D-SYM",
+      "rows": 12000,
+      "verified": true,
+      "contentHash": "8aa1672a1acdfe62251458b8e986b2f79b4f0eb1cc794596315f92ba7ccbac9c"
+    }
+  ],
+  "seedAudit": {
+    "declared": {
+      "HOLDOUT": [
+        4021
+      ],
+      "OOD": [
+        4031
+      ]
+    },
+    "reserved": {
+      "HOLDOUT": [
+        4022,
+        4023
+      ],
+      "OOD": [
+        4032,
+        4033
+      ]
+    },
+    "priorSeedOverlap": [],
+    "priorRowOverlap": [],
+    "partitionOverlap": [],
+    "duplicateCount": 0
+  },
+  "stats": {
+    "HOLDOUT": {
+      "attempted": 9231,
+      "admitted": 6000,
+      "rejected": {
+        "TOPOLOGY_HASH_CLAIMED": 2999,
+        "ISLANDS": 71,
+        "LAYERS": 56,
+        "TREE_BRANCHES_ACYCLIC": 83,
+        "CONTESTED_BOTTLENECK": 12,
+        "BRIDGE_CUT_EXISTS": 10
+      },
+      "seedsUsed": [
+        4021
+      ],
+      "combinationsAvailable": 21600
+    },
+    "OOD": {
+      "attempted": 6812,
+      "admitted": 6000,
+      "rejected": {
+        "TOPOLOGY_HASH_CLAIMED": 751,
+        "LAYERS": 23,
+        "TREE_BRANCHES_ACYCLIC": 33,
+        "BRIDGE_CUT_EXISTS": 5
+      },
+      "seedsUsed": [
+        4031
+      ],
+      "combinationsAvailable": 7200
+    }
+  },
+  "rows": 12000,
+  "contentHash": "2a7c042ee826a5a73d575c6c9576889e2c7173ed8f1ccc98337373ec16935d8d",
+  "generator": "scripts/generate-stage3g-sealed.mjs",
+  "recordBuilder": "scripts/generate-stage3f6p1d-symmetric-corpus.mjs#corpusRecord (unmodified)"
+}
