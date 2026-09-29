@@ -1,0 +1,721 @@
+{
+  "schemaVersion": 1,
+  "stage": "STAGE_3G_1_3G_2_EPISTEMIC_INTEGRITY_AND_OBSERVABLE_ENTITY_STATE",
+  "phase": "OPEN",
+  "planHash": "d6acc0c48741cd08e117f4e5a56bda59c514b04879659ddaa5a3537d3c7bcc42",
+  "numericsProfile": "SENTINEL_CANONICAL_NUMERICS_V1",
+  "schemaHashes": {
+    "epistemic": "59d2df5c0e7801e694a12d1a5480cd17ae065b232ee7fc8dfc2b2f6cadb38890",
+    "observableEntityState": "d405b652703898dbd602cb2225db8f68eb725f382236a5371442e0d169bf78a6",
+    "actionSemantics": "f6a7ba565e3193703454a5a55c816388841b15ff250e4aa63fdb0d010abcf944"
+  },
+  "partitions": [
+    "DEV",
+    "CAL"
+  ],
+  "eligible": {
+    "DEV": 3393,
+    "CAL": 3427
+  },
+  "models": {
+    "OLD": {
+      "modelHash": "db686ef85afc2be57f21eb3ebca088517b2a16e6f3bf6cee7dbc00faa842374d",
+      "columns": 101,
+      "spec": {
+        "main": [
+          "TYPE",
+          "CANDIDATE",
+          "GEOMETRY"
+        ],
+        "interact": [
+          "TYPE"
+        ],
+        "role": "HEADLINE_CANDIDATE_VARIANT"
+      },
+      "trainedGroups": 3393
+    },
+    "OLD_PRIVILEGED": {
+      "modelHash": "206857de49aba3bef982c886283f37cd99f88d862135daad81688dbde8748de6",
+      "columns": 108,
+      "spec": {
+        "main": [
+          "TYPE",
+          "CANDIDATE",
+          "GEOMETRY",
+          "PRIV"
+        ],
+        "interact": [
+          "TYPE"
+        ],
+        "class": "UNAVAILABLE",
+        "role": "GAP_REFERENCE (Stage 3F D_PRIVILEGED_RELATIONS)"
+      },
+      "trainedGroups": 3393
+    },
+    "OLD_ONE_STEP": {
+      "modelHash": "8d406a96c4eb9068d6ee3620a8daa57f801e65a55c4ecfcb8e60b1fe1ba3980a",
+      "columns": 103,
+      "spec": {
+        "main": [
+          "TYPE",
+          "CANDIDATE",
+          "GEOMETRY",
+          "ONESTEP"
+        ],
+        "interact": [
+          "TYPE"
+        ],
+        "class": "FUTURE_STATE_REQUIRED",
+        "role": "Stage 3F D_ONE_STEP"
+      },
+      "trainedGroups": 3393
+    },
+    "G_MANHATTAN_MAIN": {
+      "modelHash": "54852b16d5bf7c8603d7b4070248d5140c127cffb74882c4435e4abe1795c744",
+      "columns": 110,
+      "spec": {
+        "main": [
+          "TYPE",
+          "CANDIDATE",
+          "GEOMETRY",
+          "GM"
+        ],
+        "interact": [
+          "TYPE"
+        ],
+        "role": "NEW_VARIANT"
+      },
+      "trainedGroups": 3393
+    },
+    "G_PATH_MAIN": {
+      "modelHash": "2e868e3acbe4594a1f82a01956d64f27c3e30dab3942335078901634103189dd",
+      "columns": 110,
+      "spec": {
+        "main": [
+          "TYPE",
+          "CANDIDATE",
+          "GEOMETRY",
+          "GP"
+        ],
+        "interact": [
+          "TYPE"
+        ],
+        "role": "NEW_VARIANT"
+      },
+      "trainedGroups": 3393
+    },
+    "G_PATH_INTERACT": {
+      "modelHash": "3b61cc5bad05d0d80bb4b310d17006af6543912570fb806faf5d96acd88ca5cb",
+      "columns": 380,
+      "spec": {
+        "main": [
+          "TYPE",
+          "CANDIDATE",
+          "GEOMETRY",
+          "GP"
+        ],
+        "interact": [
+          "TYPE",
+          "GP"
+        ],
+        "role": "NEW_VARIANT"
+      },
+      "trainedGroups": 3393
+    },
+    "D_NEW_PLUS_PRIVILEGED": {
+      "modelHash": "bd9881958640b8a49b105b4dd0691e4da7fa3c78558bde5ba75196333775cda0",
+      "columns": 117,
+      "spec": {
+        "main": [
+          "TYPE",
+          "CANDIDATE",
+          "GEOMETRY",
+          "GP",
+          "PRIV"
+        ],
+        "interact": [
+          "TYPE"
+        ]
+      },
+      "trainedGroups": 3393
+    },
+    "D_NEW_PLUS_ONE_STEP": {
+      "modelHash": "aa58b4ea4b908c137c28982dd26ab502a1c601dd3962c9899e3d2713edf31b80",
+      "columns": 112,
+      "spec": {
+        "main": [
+          "TYPE",
+          "CANDIDATE",
+          "GEOMETRY",
+          "GP",
+          "ONESTEP"
+        ],
+        "interact": [
+          "TYPE"
+        ]
+      },
+      "trainedGroups": 3393
+    },
+    "D_NEW_PLUS_PRIVILEGED_ONE_STEP": {
+      "modelHash": "2780c2a0e1508bc8ba174d88a8752143e7b5f7fbcd6f117d82079964b5c71107",
+      "columns": 119,
+      "spec": {
+        "main": [
+          "TYPE",
+          "CANDIDATE",
+          "GEOMETRY",
+          "GP",
+          "PRIV",
+          "ONESTEP"
+        ],
+        "interact": [
+          "TYPE"
+        ]
+      },
+      "trainedGroups": 3393
+    },
+    "D_NEW_PLUS_ABSOLUTE_DIRECTION": {
+      "modelHash": "3236b078f7722e332599ddc8459f6f0a61e2d2b732504204010c78b4f276719a",
+      "columns": 114,
+      "spec": {
+        "main": [
+          "TYPE",
+          "CANDIDATE",
+          "GEOMETRY",
+          "GP",
+          "ABS"
+        ],
+        "interact": [
+          "TYPE"
+        ]
+      },
+      "trainedGroups": 3393
+    },
+    "D_NEW_PLUS_HIDDEN_ORIENTATION": {
+      "modelHash": "ddd926b0594806beb62f1bc03bcb5e60094f145d061cdd41eeef47323f12f6e0",
+      "columns": 114,
+      "spec": {
+        "main": [
+          "TYPE",
+          "CANDIDATE",
+          "GEOMETRY",
+          "GP",
+          "HIDDEN"
+        ],
+        "interact": [
+          "TYPE"
+        ]
+      },
+      "trainedGroups": 3393
+    }
+  },
+  "oldBinding": {
+    "modelHash": "db686ef85afc2be57f21eb3ebca088517b2a16e6f3bf6cee7dbc00faa842374d",
+    "certified": "db686ef85afc2be57f21eb3ebca088517b2a16e6f3bf6cee7dbc00faa842374d",
+    "OLD_MODEL_REPRODUCED": true,
+    "privilegedModelHash": "206857de49aba3bef982c886283f37cd99f88d862135daad81688dbde8748de6",
+    "certifiedPrivileged": "206857de49aba3bef982c886283f37cd99f88d862135daad81688dbde8748de6",
+    "OLD_PRIVILEGED_MODEL_REPRODUCED": true
+  },
+  "calSelection": {
+    "rule": "the NEW variant with the highest CAL top-1; ties within 1e-9 -> fewer columns",
+    "ranking": [
+      {
+        "k": "G_PATH_MAIN",
+        "top1": 0.793259,
+        "cols": 110
+      },
+      {
+        "k": "G_MANHATTAN_MAIN",
+        "top1": 0.792676,
+        "cols": 110
+      },
+      {
+        "k": "G_PATH_INTERACT",
+        "top1": 0.788882,
+        "cols": 380
+      }
+    ],
+    "selected": "G_PATH_MAIN",
+    "replayHash": "2e868e3acbe4594a1f82a01956d64f27c3e30dab3942335078901634103189dd",
+    "deterministic": true
+  },
+  "results": {
+    "DEV": {
+      "UNIFORM_AMONG_ZERO_COST": {
+        "n": 3393,
+        "coverage": 1,
+        "FREE_ACTION_TOP1": 0.249371,
+        "REGRET": 45.123259,
+        "NORMALIZED_REGRET": 0.59456,
+        "catastrophicRate": 0.096689
+      },
+      "LOWEST_ACTION_ID": {
+        "n": 3393,
+        "coverage": 1,
+        "FREE_ACTION_TOP1": 0.32125,
+        "REGRET": 41.135573,
+        "NORMALIZED_REGRET": 0.533725,
+        "catastrophicRate": 0.088712
+      },
+      "FIXED_DIRECTION_EAST": {
+        "n": 3393,
+        "coverage": 1,
+        "FREE_ACTION_TOP1": 0.318263,
+        "REGRET": 41.319118,
+        "NORMALIZED_REGRET": 0.536931,
+        "catastrophicRate": 0.087474
+      },
+      "HIDDEN_BASE_EAST": {
+        "n": 3393,
+        "coverage": 1,
+        "FREE_ACTION_TOP1": 0.612914,
+        "REGRET": 20.881314,
+        "NORMALIZED_REGRET": 0.236986,
+        "catastrophicRate": 0.047677
+      },
+      "RESOURCE_PRESERVING_V1": {
+        "n": 3393,
+        "coverage": 1,
+        "FREE_ACTION_TOP1": 0.32125,
+        "REGRET": 41.135573,
+        "NORMALIZED_REGRET": 0.533725,
+        "catastrophicRate": 0.088712
+      },
+      "ONE_STEP_ZERO_COST": {
+        "n": 3393,
+        "coverage": 1,
+        "FREE_ACTION_TOP1": 0.384827,
+        "REGRET": 33.678947,
+        "NORMALIZED_REGRET": 0.451001,
+        "catastrophicRate": 0.075616
+      },
+      "OLD": {
+        "n": 3393,
+        "coverage": 1,
+        "FREE_ACTION_TOP1": 0.386384,
+        "REGRET": 34.332302,
+        "NORMALIZED_REGRET": 0.460178,
+        "catastrophicRate": 0.074565,
+        "OPTIMAL_SET_HIT_RATE": 0.331614,
+        "crossEntropy": 1.177377,
+        "brier": 0.228717,
+        "ece": 0.01814
+      },
+      "OLD_PRIVILEGED": {
+        "n": 3393,
+        "coverage": 1,
+        "FREE_ACTION_TOP1": 0.78102,
+        "REGRET": 10.320071,
+        "NORMALIZED_REGRET": 0.093752,
+        "catastrophicRate": 0.023283,
+        "OPTIMAL_SET_HIT_RATE": 0.646655,
+        "crossEntropy": 0.673498,
+        "brier": 0.16717,
+        "ece": 0.045686
+      },
+      "OLD_ONE_STEP": {
+        "n": 3393,
+        "coverage": 1,
+        "FREE_ACTION_TOP1": 0.413498,
+        "REGRET": 31.823313,
+        "NORMALIZED_REGRET": 0.43141,
+        "catastrophicRate": 0.072502,
+        "OPTIMAL_SET_HIT_RATE": 0.339069,
+        "crossEntropy": 1.165163,
+        "brier": 0.23794,
+        "ece": 0.030285
+      },
+      "G_MANHATTAN_MAIN": {
+        "n": 3393,
+        "coverage": 1,
+        "FREE_ACTION_TOP1": 0.782199,
+        "REGRET": 10.270557,
+        "NORMALIZED_REGRET": 0.094621,
+        "catastrophicRate": 0.023578,
+        "OPTIMAL_SET_HIT_RATE": 0.645708,
+        "crossEntropy": 0.675494,
+        "brier": 0.166943,
+        "ece": 0.050827
+      },
+      "G_PATH_MAIN": {
+        "n": 3393,
+        "coverage": 1,
+        "FREE_ACTION_TOP1": 0.782199,
+        "REGRET": 10.270557,
+        "NORMALIZED_REGRET": 0.094621,
+        "catastrophicRate": 0.023578,
+        "OPTIMAL_SET_HIT_RATE": 0.645629,
+        "crossEntropy": 0.6756,
+        "brier": 0.16704,
+        "ece": 0.051444
+      },
+      "G_PATH_INTERACT": {
+        "n": 3393,
+        "coverage": 1,
+        "FREE_ACTION_TOP1": 0.782788,
+        "REGRET": 10.037135,
+        "NORMALIZED_REGRET": 0.093489,
+        "catastrophicRate": 0.022989,
+        "OPTIMAL_SET_HIT_RATE": 0.735247,
+        "crossEntropy": 0.798869,
+        "brier": 0.173227,
+        "ece": 0.100806
+      },
+      "D_NEW_PLUS_PRIVILEGED": {
+        "n": 3393,
+        "coverage": 1,
+        "FREE_ACTION_TOP1": 0.780725,
+        "REGRET": 10.324492,
+        "NORMALIZED_REGRET": 0.093985,
+        "catastrophicRate": 0.023283,
+        "OPTIMAL_SET_HIT_RATE": 0.646833,
+        "crossEntropy": 0.673289,
+        "brier": 0.167021,
+        "ece": 0.04534
+      },
+      "D_NEW_PLUS_ONE_STEP": {
+        "n": 3393,
+        "coverage": 1,
+        "FREE_ACTION_TOP1": 0.785146,
+        "REGRET": 10.276157,
+        "NORMALIZED_REGRET": 0.094318,
+        "catastrophicRate": 0.022989,
+        "OPTIMAL_SET_HIT_RATE": 0.646587,
+        "crossEntropy": 0.673598,
+        "brier": 0.167518,
+        "ece": 0.053977
+      },
+      "D_NEW_PLUS_PRIVILEGED_ONE_STEP": {
+        "n": 3393,
+        "coverage": 1,
+        "FREE_ACTION_TOP1": 0.782493,
+        "REGRET": 10.273504,
+        "NORMALIZED_REGRET": 0.09332,
+        "catastrophicRate": 0.022989,
+        "OPTIMAL_SET_HIT_RATE": 0.647744,
+        "crossEntropy": 0.671303,
+        "brier": 0.167208,
+        "ece": 0.046264
+      },
+      "D_NEW_PLUS_ABSOLUTE_DIRECTION": {
+        "n": 3393,
+        "coverage": 1,
+        "FREE_ACTION_TOP1": 0.781314,
+        "REGRET": 10.40613,
+        "NORMALIZED_REGRET": 0.095945,
+        "catastrophicRate": 0.023873,
+        "OPTIMAL_SET_HIT_RATE": 0.645659,
+        "crossEntropy": 0.675386,
+        "brier": 0.167552,
+        "ece": 0.052053
+      },
+      "D_NEW_PLUS_HIDDEN_ORIENTATION": {
+        "n": 3393,
+        "coverage": 1,
+        "FREE_ACTION_TOP1": 0.783083,
+        "REGRET": 10.274978,
+        "NORMALIZED_REGRET": 0.094446,
+        "catastrophicRate": 0.023578,
+        "OPTIMAL_SET_HIT_RATE": 0.646074,
+        "crossEntropy": 0.674696,
+        "brier": 0.166809,
+        "ece": 0.049588
+      }
+    },
+    "CAL": {
+      "UNIFORM_AMONG_ZERO_COST": {
+        "n": 3427,
+        "coverage": 1,
+        "FREE_ACTION_TOP1": 0.246425,
+        "REGRET": 43.93826,
+        "NORMALIZED_REGRET": 0.604578,
+        "catastrophicRate": 0.083256
+      },
+      "LOWEST_ACTION_ID": {
+        "n": 3427,
+        "coverage": 1,
+        "FREE_ACTION_TOP1": 0.304348,
+        "REGRET": 40.608987,
+        "NORMALIZED_REGRET": 0.558912,
+        "catastrophicRate": 0.081996
+      },
+      "FIXED_DIRECTION_EAST": {
+        "n": 3427,
+        "coverage": 1,
+        "FREE_ACTION_TOP1": 0.303404,
+        "REGRET": 40.910276,
+        "NORMALIZED_REGRET": 0.562342,
+        "catastrophicRate": 0.082502
+      },
+      "HIDDEN_BASE_EAST": {
+        "n": 3427,
+        "coverage": 1,
+        "FREE_ACTION_TOP1": 0.638858,
+        "REGRET": 18.401931,
+        "NORMALIZED_REGRET": 0.221114,
+        "catastrophicRate": 0.036105
+      },
+      "RESOURCE_PRESERVING_V1": {
+        "n": 3427,
+        "coverage": 1,
+        "FREE_ACTION_TOP1": 0.304348,
+        "REGRET": 40.608987,
+        "NORMALIZED_REGRET": 0.558912,
+        "catastrophicRate": 0.081996
+      },
+      "ONE_STEP_ZERO_COST": {
+        "n": 3427,
+        "coverage": 1,
+        "FREE_ACTION_TOP1": 0.38042,
+        "REGRET": 32.74271,
+        "NORMALIZED_REGRET": 0.46213,
+        "catastrophicRate": 0.065188
+      },
+      "OLD": {
+        "n": 3427,
+        "coverage": 1,
+        "FREE_ACTION_TOP1": 0.375401,
+        "REGRET": 34.746134,
+        "NORMALIZED_REGRET": 0.476985,
+        "catastrophicRate": 0.073096,
+        "OPTIMAL_SET_HIT_RATE": 0.324136,
+        "crossEntropy": 1.197124,
+        "brier": 0.226003,
+        "ece": 0.017144
+      },
+      "OLD_PRIVILEGED": {
+        "n": 3427,
+        "coverage": 1,
+        "FREE_ACTION_TOP1": 0.792822,
+        "REGRET": 8.963233,
+        "NORMALIZED_REGRET": 0.085856,
+        "catastrophicRate": 0.0178,
+        "OPTIMAL_SET_HIT_RATE": 0.651042,
+        "crossEntropy": 0.652541,
+        "brier": 0.167196,
+        "ece": 0.063192
+      },
+      "OLD_ONE_STEP": {
+        "n": 3427,
+        "coverage": 1,
+        "FREE_ACTION_TOP1": 0.39787,
+        "REGRET": 31.464692,
+        "NORMALIZED_REGRET": 0.446677,
+        "catastrophicRate": 0.062591,
+        "OPTIMAL_SET_HIT_RATE": 0.33186,
+        "crossEntropy": 1.183748,
+        "brier": 0.234465,
+        "ece": 0.021341
+      },
+      "G_MANHATTAN_MAIN": {
+        "n": 3427,
+        "coverage": 1,
+        "FREE_ACTION_TOP1": 0.792676,
+        "REGRET": 9.083747,
+        "NORMALIZED_REGRET": 0.087532,
+        "catastrophicRate": 0.0178,
+        "OPTIMAL_SET_HIT_RATE": 0.650589,
+        "crossEntropy": 0.654232,
+        "brier": 0.16662,
+        "ece": 0.065459
+      },
+      "G_PATH_MAIN": {
+        "n": 3427,
+        "coverage": 1,
+        "FREE_ACTION_TOP1": 0.793259,
+        "REGRET": 9.078203,
+        "NORMALIZED_REGRET": 0.087481,
+        "catastrophicRate": 0.0178,
+        "OPTIMAL_SET_HIT_RATE": 0.650643,
+        "crossEntropy": 0.653723,
+        "brier": 0.166736,
+        "ece": 0.066324
+      },
+      "G_PATH_INTERACT": {
+        "n": 3427,
+        "coverage": 1,
+        "FREE_ACTION_TOP1": 0.788882,
+        "REGRET": 9.096002,
+        "NORMALIZED_REGRET": 0.087242,
+        "catastrophicRate": 0.019842,
+        "OPTIMAL_SET_HIT_RATE": 0.739417,
+        "crossEntropy": 0.83896,
+        "brier": 0.175195,
+        "ece": 0.113326
+      },
+      "D_NEW_PLUS_PRIVILEGED": {
+        "n": 3427,
+        "coverage": 1,
+        "FREE_ACTION_TOP1": 0.79253,
+        "REGRET": 9,
+        "NORMALIZED_REGRET": 0.086595,
+        "catastrophicRate": 0.0178,
+        "OPTIMAL_SET_HIT_RATE": 0.651297,
+        "crossEntropy": 0.652717,
+        "brier": 0.167034,
+        "ece": 0.061986
+      },
+      "D_NEW_PLUS_ONE_STEP": {
+        "n": 3427,
+        "coverage": 1,
+        "FREE_ACTION_TOP1": 0.795156,
+        "REGRET": 9.075868,
+        "NORMALIZED_REGRET": 0.087762,
+        "catastrophicRate": 0.0178,
+        "OPTIMAL_SET_HIT_RATE": 0.651645,
+        "crossEntropy": 0.652035,
+        "brier": 0.166743,
+        "ece": 0.067527
+      },
+      "D_NEW_PLUS_PRIVILEGED_ONE_STEP": {
+        "n": 3427,
+        "coverage": 1,
+        "FREE_ACTION_TOP1": 0.791363,
+        "REGRET": 9.038518,
+        "NORMALIZED_REGRET": 0.087269,
+        "catastrophicRate": 0.0178,
+        "OPTIMAL_SET_HIT_RATE": 0.652274,
+        "crossEntropy": 0.650793,
+        "brier": 0.166205,
+        "ece": 0.061113
+      },
+      "D_NEW_PLUS_ABSOLUTE_DIRECTION": {
+        "n": 3427,
+        "coverage": 1,
+        "FREE_ACTION_TOP1": 0.792822,
+        "REGRET": 9.086957,
+        "NORMALIZED_REGRET": 0.087601,
+        "catastrophicRate": 0.018092,
+        "OPTIMAL_SET_HIT_RATE": 0.65073,
+        "crossEntropy": 0.653609,
+        "brier": 0.167979,
+        "ece": 0.067499
+      },
+      "D_NEW_PLUS_HIDDEN_ORIENTATION": {
+        "n": 3427,
+        "coverage": 1,
+        "FREE_ACTION_TOP1": 0.793114,
+        "REGRET": 8.975197,
+        "NORMALIZED_REGRET": 0.087088,
+        "catastrophicRate": 0.017508,
+        "OPTIMAL_SET_HIT_RATE": 0.651208,
+        "crossEntropy": 0.653082,
+        "brier": 0.166156,
+        "ece": 0.061324
+      }
+    }
+  },
+  "integrity": {
+    "DEV": {
+      "twinRows": 140,
+      "featurePairs": 3500,
+      "D4_FEATURE_EQUIVARIANCE": 1,
+      "D4_PREDICTION_EQUIVARIANCE": {
+        "OLD": {
+          "twins": 700,
+          "rate": 1
+        },
+        "NEW": {
+          "twins": 700,
+          "rate": 1
+        }
+      },
+      "ID_PERMUTATION_INVARIANCE": 1,
+      "OLD_ID_PERMUTATION_INVARIANCE": 1,
+      "CANDIDATE_ORDER_INVARIANCE": 1,
+      "PRIVILEGED_KEY_SCAN_HITS": 0,
+      "POISON_PROBE_INVARIANCE": 1,
+      "RENDER_AGREEMENT": 1,
+      "renderCells": 10148,
+      "stackedEntities": 0,
+      "E1_EFFECT_FIDELITY": {
+        "displacement": {
+          "n": 13551,
+          "rate": 1
+        },
+        "energy": {
+          "n": 18932,
+          "rate": 1
+        },
+        "tick": {
+          "n": 22325,
+          "rate": 1
+        },
+        "service": {
+          "n": 0,
+          "rate": null
+        },
+        "protected": {
+          "n": 4938,
+          "rate": 1
+        },
+        "carried": {
+          "n": 0,
+          "rate": null
+        },
+        "delivery": {
+          "n": 0,
+          "rate": null
+        }
+      },
+      "SURFACE_RETREAT_ID_DEPENDENT_RATE": 0.164286
+    },
+    "CAL": {
+      "twinRows": 140,
+      "featurePairs": 3470,
+      "D4_FEATURE_EQUIVARIANCE": 1,
+      "D4_PREDICTION_EQUIVARIANCE": {
+        "OLD": {
+          "twins": 700,
+          "rate": 1
+        },
+        "NEW": {
+          "twins": 700,
+          "rate": 1
+        }
+      },
+      "ID_PERMUTATION_INVARIANCE": 1,
+      "OLD_ID_PERMUTATION_INVARIANCE": 1,
+      "CANDIDATE_ORDER_INVARIANCE": 1,
+      "PRIVILEGED_KEY_SCAN_HITS": 0,
+      "POISON_PROBE_INVARIANCE": 1,
+      "RENDER_AGREEMENT": 1,
+      "renderCells": 10616,
+      "stackedEntities": 0,
+      "E1_EFFECT_FIDELITY": {
+        "displacement": {
+          "n": 13920,
+          "rate": 1
+        },
+        "energy": {
+          "n": 19150,
+          "rate": 1
+        },
+        "tick": {
+          "n": 22577,
+          "rate": 1
+        },
+        "service": {
+          "n": 0,
+          "rate": null
+        },
+        "protected": {
+          "n": 4875,
+          "rate": 1
+        },
+        "carried": {
+          "n": 0,
+          "rate": null
+        },
+        "delivery": {
+          "n": 0,
+          "rate": null
+        }
+      },
+      "SURFACE_RETREAT_ID_DEPENDENT_RATE": 0.228571
+    }
+  },
+  "noSealedRowScored": true,
+  "reportHash": "6621c882ae85c7b0f7045c561726df7fff5738c5c58c43f350772f1902eba598"
+}

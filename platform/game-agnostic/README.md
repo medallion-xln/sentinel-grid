@@ -59,3 +59,9 @@ The formal Stage 3F freeze (`artifacts/stage3f-freeze/`) binds that record by ha
 for Stage 3G: the immutable facts, Decision Evaluation Contract v1, the reproducibility contract, the Stage 3G entry
 requirements, the nine-expert roster and R0 authority. `npm run stage3f-freeze:check` re-verifies it read-only. See
 `docs/STAGE3F_FORMAL_FREEZE.md`.
+
+Stage 3G.1/3G.2 defines the canonical epistemic provenance schema (`SENTINEL_EPISTEMIC_PROVENANCE_V1`: E0–E5 plus EU,
+with promotion rules and task-state contamination diagnostics), the observable entity state
+(`SENTINEL_OBSERVABLE_ENTITY_STATE_V1`) and `ACTION_SEMANTICS_V1`. It then rechecks free-action representation
+sufficiency against the Stage 3F representation. `npm run stage3g:check` re-verifies it read-only. See
+`docs/STAGE3G_EPISTEMIC_INTEGRITY_AND_OBSERVABLE_STATE.md`.
