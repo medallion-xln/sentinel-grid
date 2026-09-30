@@ -1,0 +1,99 @@
+{
+  "inheritance": {
+    "stage3g5": {
+      "exitCode": 0,
+      "reproduced": true,
+      "script": "scripts/stage3g5/certify.mjs"
+    },
+    "stage3g12": {
+      "exitCode": 0,
+      "reproduced": true,
+      "script": "scripts/certify-stage3g-predictive-integrity.mjs"
+    },
+    "stage3g3": {
+      "exitCode": 0,
+      "reproduced": true,
+      "script": "scripts/stage3g3/certify.mjs"
+    },
+    "stage3f": {
+      "exitCode": 0,
+      "reproduced": true,
+      "script": "scripts/stage3f-freeze-certify.mjs"
+    },
+    "stage3g4": {
+      "exitCode": 0,
+      "reproduced": true,
+      "script": "scripts/stage3g4/certify.mjs"
+    }
+  },
+  "platform": {
+    "exitCode": 0,
+    "pass": 2352,
+    "fail": 0,
+    "skipped": 1,
+    "failedTests": []
+  },
+  "lab": {
+    "exitCode": 1,
+    "pass": 33,
+    "fail": 7,
+    "skipped": 0,
+    "failedTests": [
+      "tests/stage1az1-recovered-lineage-certification.test.js",
+      "tests/stage1az1-sentinel-prime-policy-evaluation-contract.frozen.test.js",
+      "tests/w0af-forest-defensive-action-contract.test.js",
+      "tests/w0p-live-parity-contract.test.js",
+      "tests/w0p1-forest-defensive-command-contract.test.js",
+      "tests/w0p2-forest-defensive-command-contract.test.js",
+      "tests/w0p3-live-parity-closure-contract.test.js"
+    ]
+  },
+  "overlay": {
+    "exitCode": 0,
+    "pass": 23,
+    "fail": 0
+  },
+  "legacy": {
+    "sameFailureSet": true,
+    "labTreeUnchanged": true,
+    "classifications": [
+      {
+        "file": "tests/stage1az1-recovered-lineage-certification.test.js",
+        "classification": "PRE_EXISTING_NON_BLOCKING",
+        "evidence": "Same assertion failures as hash-bound Stage3G5 disclosure; tracked lab tree unchanged; no audited stage surface dependency."
+      },
+      {
+        "file": "tests/stage1az1-sentinel-prime-policy-evaluation-contract.frozen.test.js",
+        "classification": "PRE_EXISTING_NON_BLOCKING",
+        "evidence": "Same assertion failures as hash-bound Stage3G5 disclosure; tracked lab tree unchanged; no audited stage surface dependency."
+      },
+      {
+        "file": "tests/w0af-forest-defensive-action-contract.test.js",
+        "classification": "PRE_EXISTING_NON_BLOCKING",
+        "evidence": "Same assertion failures as hash-bound Stage3G5 disclosure; tracked lab tree unchanged; no audited stage surface dependency."
+      },
+      {
+        "file": "tests/w0p-live-parity-contract.test.js",
+        "classification": "PRE_EXISTING_NON_BLOCKING",
+        "evidence": "Same assertion failures as hash-bound Stage3G5 disclosure; tracked lab tree unchanged; no audited stage surface dependency."
+      },
+      {
+        "file": "tests/w0p1-forest-defensive-command-contract.test.js",
+        "classification": "PRE_EXISTING_NON_BLOCKING",
+        "evidence": "Same assertion failures as hash-bound Stage3G5 disclosure; tracked lab tree unchanged; no audited stage surface dependency."
+      },
+      {
+        "file": "tests/w0p2-forest-defensive-command-contract.test.js",
+        "classification": "PRE_EXISTING_NON_BLOCKING",
+        "evidence": "Same assertion failures as hash-bound Stage3G5 disclosure; tracked lab tree unchanged; no audited stage surface dependency."
+      },
+      {
+        "file": "tests/w0p3-live-parity-closure-contract.test.js",
+        "classification": "PRE_EXISTING_NON_BLOCKING",
+        "evidence": "Same assertion failures as hash-bound Stage3G5 disclosure; tracked lab tree unchanged; no audited stage surface dependency."
+      }
+    ],
+    "priorLogHash": "8b7328590d9577bbb21af9a585bb5370f64bf4e53129407d37d47fe25829db1d"
+  },
+  "policy": "Platform, overlay and all inherited checks gate; legacy lab only non-gating if unchanged and exact same seven failures. Any new or relevant unresolved regression blocks."
+}

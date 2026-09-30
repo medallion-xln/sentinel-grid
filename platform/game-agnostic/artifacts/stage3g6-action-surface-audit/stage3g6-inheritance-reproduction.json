@@ -1,0 +1,65 @@
+{
+  "stage": "STAGE3G6",
+  "operation": "COMPLETED_READ_ONLY_INHERITED_REPRODUCTIONS",
+  "inheritance": {
+    "stage3g5": {
+      "exitCode": 0,
+      "reproduced": true,
+      "script": "scripts/stage3g5/certify.mjs"
+    },
+    "stage3g12": {
+      "exitCode": 0,
+      "reproduced": true,
+      "script": "scripts/certify-stage3g-predictive-integrity.mjs"
+    },
+    "stage3g3": {
+      "exitCode": 0,
+      "reproduced": true,
+      "script": "scripts/stage3g3/certify.mjs"
+    },
+    "stage3f": {
+      "exitCode": 0,
+      "reproduced": true,
+      "script": "scripts/stage3f-freeze-certify.mjs"
+    },
+    "stage3g4": {
+      "exitCode": 0,
+      "reproduced": true,
+      "script": "scripts/stage3g4/certify.mjs"
+    }
+  },
+  "commandProofs": {
+    "stage3g5": {
+      "command": "node scripts/reproducibility/run-canonical.mjs scripts/stage3g5/certify.mjs --check",
+      "sourceSha256": "404f03a9783ca2bf2ff7bcc2c240b2377a0adb948e345642e3331a249ae4a300",
+      "logSha256": "b9de71d2c4bb412be4f6681da67015b623debfbea335b77bead3b9ba297cb5cd",
+      "logPath": "/tmp/stage3g6-logs/inherit-stage3g5.log"
+    },
+    "stage3g12": {
+      "command": "node scripts/reproducibility/run-canonical.mjs scripts/certify-stage3g-predictive-integrity.mjs --check",
+      "sourceSha256": "40be17ad29153f3c9a231f06102fcb03a97982a7f4ddd707c369ebcf62d350cb",
+      "logSha256": "c679db48b5f76b8cac1f433f9342591d30ef8fcef072490d3c3599630e8a7691",
+      "logPath": "/tmp/stage3g6-logs/inherit-stage3g12.log"
+    },
+    "stage3g3": {
+      "command": "node scripts/reproducibility/run-canonical.mjs scripts/stage3g3/certify.mjs --check",
+      "sourceSha256": "cd7dd8849c6dd7220ae2a4894d1d9f1493b60d7cd3fc4d086ebbf910a5ac140a",
+      "logSha256": "6bdeb6ce09f387e71111669017f1f8686436d9d8b261bd4d41c292415c6646e6",
+      "logPath": "/tmp/stage3g6-logs/inherit-stage3g3.log"
+    },
+    "stage3f": {
+      "command": "node scripts/reproducibility/run-canonical.mjs scripts/stage3f-freeze-certify.mjs --check",
+      "sourceSha256": "004e6a634cbca7851d8273ff4d296a77cdfffe8c2cb9dc2ba5a66fa230d4e29d",
+      "logSha256": "90b5ea64fe945dfec1c89dc53e2805f2b0ceaaec8c18e33423da849c3f9b442e",
+      "logPath": "/tmp/stage3g6-logs/inherit-stage3f.log"
+    },
+    "stage3g4": {
+      "command": "node scripts/reproducibility/run-canonical.mjs scripts/stage3g4/certify.mjs --check",
+      "sourceSha256": "37a2ac7f808adb8d1ab4a28a8323fe496bdaff2fd87ea5a2f2b4c0a009d9421a",
+      "logSha256": "15c01f12b59673773aa165d6e58dd0f747db22a343e4a5a8ca077c16c9704c38",
+      "logPath": "/tmp/stage3g6-logs/inherit-stage3g4.log"
+    }
+  },
+  "trackedStateChangedByChecks": false,
+  "harnessDisclosure": "Each completed frozen canonical inherited command is persisted immediately; all five successful checks gate the separately frozen full platform/lab/overlay suite runner."
+}
