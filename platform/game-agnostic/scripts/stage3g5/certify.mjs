@@ -169,7 +169,8 @@ if(!dryRun){
  freeze={generationCommit:gen,planOpenFitAtGeneration:drift.length===0,drift,FROZEN_BEFORE_SEALED:drift.length===0&&frozenGate().length===0};
 }
 const suitePath=`${P.OUT}/stage3g5-full-suite.json`;const suite=existsSync(at(suitePath))?json(suitePath):null;
-const testRun=spawnSync(process.execPath,['--test','--test-reporter=tap','tests/stage3g5-observable-model-search.test.js'],{cwd:root,encoding:'utf8',maxBuffer:1<<26});
+const reporter=/--test-reporter(=|\s)/.test(process.env.NODE_OPTIONS??'')?[]:['--test-reporter=tap'];
+const testRun=spawnSync(process.execPath,['--test',...reporter,'tests/stage3g5-observable-model-search.test.js'],{cwd:root,encoding:'utf8',maxBuffer:1<<26});
 const n=k=>Number(new RegExp(`^# ${k} (\\d+)$`,'m').exec(testRun.stdout??'')?.[1]??-1);
 const tests={exitCode:testRun.status,pass:n('pass'),fail:n('fail')};if(testRun.status!==0)log(testRun.stdout+testRun.stderr);
 const checks={CANONICAL_NUMERICS:true,INHERITANCE_BOUND:Object.values(inheritance).every(x=>x.bound)&&inheritedConclusions&&protectedChanges==='',
