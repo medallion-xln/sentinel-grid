@@ -1,0 +1,25 @@
+{
+  "stage": "STAGE3G5",
+  "suite": "FULL_LEGACY_LAB",
+  "runtime": "SENTINEL_CANONICAL_NUMERICS_V1",
+  "exitCode": 1,
+  "pass": 33,
+  "fail": 7,
+  "failedTests": [
+    "tests/stage1az1-recovered-lineage-certification.test.js",
+    "tests/stage1az1-sentinel-prime-policy-evaluation-contract.frozen.test.js",
+    "tests/w0af-forest-defensive-action-contract.test.js",
+    "tests/w0p-live-parity-contract.test.js",
+    "tests/w0p1-forest-defensive-command-contract.test.js",
+    "tests/w0p2-forest-defensive-command-contract.test.js",
+    "tests/w0p3-live-parity-closure-contract.test.js"
+  ],
+  "causes": {
+    "recoveredLineage": "Stored ZekNova digest differs: actual fa89f8c19aec17243ba2ed34b1aaa42b5e6039b5303d0303375e72279d966446, expected 01ca569dc542adf9e31a8d74b69750107f4cbf7da35d85a6109fbe71f0f9b517",
+    "otherSix": "Frozen versus provisional-linux-only manifest status expectations"
+  },
+  "inheritedLabTreeUnchangedSinceStage3G4": true,
+  "baselineCommit": "78de734ca5a3d3e52ade9af415ac6c44177efeb7",
+  "logSha256": "8b7328590d9577bbb21af9a585bb5370f64bf4e53129407d37d47fe25829db1d",
+  "disclosure": "These failures are non-gating under the frozen pre-seal suite policy. No inherited lab source, manifest or test was changed."
+}

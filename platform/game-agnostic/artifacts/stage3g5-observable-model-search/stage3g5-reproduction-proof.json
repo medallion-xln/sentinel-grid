@@ -1,0 +1,136 @@
+{
+  "stage": "STAGE3G5",
+  "certificationHash": "d472f04f00560229f20020f030722fdf3981f91155424d0a7a2004662be768da",
+  "certificationReproduced": true,
+  "localChecks": [
+    {
+      "command": "node scripts/reproducibility/run-canonical.mjs scripts/stage3g5/certify.mjs --check",
+      "exitCode": 0,
+      "reproduced": true,
+      "status": "PASS",
+      "storedHash": "d472f04f00560229f20020f030722fdf3981f91155424d0a7a2004662be768da",
+      "recomputedHash": "d472f04f00560229f20020f030722fdf3981f91155424d0a7a2004662be768da",
+      "tests": {
+        "exitCode": 0,
+        "pass": 6,
+        "fail": 0
+      },
+      "trackedFingerprintBefore": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "trackedFingerprintAfter": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "trackedStateUnchanged": true,
+      "stdoutSha256": "77d363fead42908aeece7a1d59e6ae65bdae261b3f86fadf424139179716df3e"
+    },
+    {
+      "command": "node scripts/reproducibility/run-canonical.mjs scripts/stage3g5/certify.mjs --check",
+      "exitCode": 0,
+      "reproduced": true,
+      "status": "PASS",
+      "storedHash": "d472f04f00560229f20020f030722fdf3981f91155424d0a7a2004662be768da",
+      "recomputedHash": "d472f04f00560229f20020f030722fdf3981f91155424d0a7a2004662be768da",
+      "tests": {
+        "exitCode": 0,
+        "pass": 6,
+        "fail": 0
+      },
+      "trackedFingerprintBefore": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "trackedFingerprintAfter": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "trackedStateUnchanged": true,
+      "stdoutSha256": "77d363fead42908aeece7a1d59e6ae65bdae261b3f86fadf424139179716df3e"
+    }
+  ],
+  "freshClone": {
+    "path": "/tmp/sentinel-grid-stage3g5-reproduction",
+    "method": "git clone --no-hardlinks; import only hash-bound ancestor inputs; independently rebuild G5 fit, OPEN models, sealed corpus and all sealed evidence",
+    "ancestorImports": {
+      "method": "Import only earlier-stage deterministic input payloads; manifests verified by inherited readers. Stage3G5 fit/sealed/evidence are rebuilt from scratch.",
+      "files": [
+        "stage3f6p1b-directional-symmetry/symmetry-evidence-dev.jsonl.gz",
+        "stage3g3-temporal-attribution/sealed-partitions.jsonl.gz",
+        "stage3f6p-policy-quality/policy-evidence.jsonl.gz",
+        "stage3f6d-decision-rule/confirmatory-holdout-ood.jsonl.gz",
+        "stage3f6wsym-risk-requalification/fresh-confirmatory.jsonl.gz",
+        "stage3f6p1d-symmetric-corpus/symmetric-corpus-v1.jsonl.gz",
+        "stage3f6p1a-nexus-spatial/spatial-evidence-dev.jsonl.gz",
+        "stage3f6-prediction-reliability/evaluation-corpus.jsonl.gz",
+        "stage3f6t-policy-router/confirmatory-holdout-ood.jsonl.gz",
+        "stage3g4-level-replication/sealed-partitions.jsonl.gz",
+        "stage3g4-level-replication/fit-set.jsonl.gz",
+        "stage3f6p1-nexus-remediation/nexus-evidence-dev.jsonl.gz",
+        "stage3f6p1-nexus-remediation/nexus-evidence-cal.jsonl.gz",
+        "stage3f6p1sym-nexus-requalification/fresh-confirmatory.jsonl.gz",
+        "stage3f6p1e-policy-requalification/policy-evidence-sealed.jsonl.gz",
+        "stage3f6p1e-policy-requalification/policy-evidence-open.jsonl.gz",
+        "stage3f6tsym-router-value/fresh-confirmatory.jsonl.gz",
+        "stage3f6w-risk-state/risk-evidence.jsonl.gz",
+        "stage3f6p1c-symmetric-benchmark/symmetric-dev-evidence.jsonl.gz",
+        "stage3f6dsym-decision-rule/fresh-confirmatory.jsonl.gz",
+        "stage3f6c-deployable-router/confirmatory-corpus.jsonl.gz",
+        "stage3g-predictive-integrity/sealed-partitions.jsonl.gz",
+        "stage3f6p1asym-free-action/fresh-confirmatory.jsonl.gz",
+        "stage3f6a-action-proposals/action-proposals.jsonl.gz"
+      ]
+    },
+    "independentOpenReportSha256": "e9abed0a14d790ad3af6e7dd3c65578e4c17a5b343791522ceec38762c53b0f3",
+    "openReportBytesIdentical": true,
+    "openCacheNamespaceProof": [
+      {
+        "label": "DEV",
+        "from": "85fe9393932162015a6eeca95037665a0c9f39ac60b83ec2ba3a26c43924dd5f-DEV-cfaf3056b3bddbd24b04a8f6fdc20604c6d2843502590e6fd959ad5b7c3fa010.json.gz",
+        "to": "9fac488d8a7977ef8588618098022eca91dcb72698a0827e4f48f442699bcef9-DEV-cfaf3056b3bddbd24b04a8f6fdc20604c6d2843502590e6fd959ad5b7c3fa010.json.gz",
+        "rawEvidenceHash": "0384035b48e6b66cbdcc306dd12d20f032fae8022e729f0b5f0ff0d0b57b64e0",
+        "compressedBytesIdentical": true,
+        "method": "Same clone independently generated OPEN evidence, metadata-only namespace correction before sealing; no original cache imported"
+      },
+      {
+        "label": "FIT",
+        "from": "85fe9393932162015a6eeca95037665a0c9f39ac60b83ec2ba3a26c43924dd5f-FIT-52525f144c4c71c224a65d9c3bdb4a89580af2b4f65c3f8fd5191ad1918bd743.json.gz",
+        "to": "9fac488d8a7977ef8588618098022eca91dcb72698a0827e4f48f442699bcef9-FIT-52525f144c4c71c224a65d9c3bdb4a89580af2b4f65c3f8fd5191ad1918bd743.json.gz",
+        "rawEvidenceHash": "edd908151be62ac974387e50c704e3f4bc26bc4350501db1651ed796fc931100",
+        "compressedBytesIdentical": true,
+        "method": "Same clone independently generated OPEN evidence, metadata-only namespace correction before sealing; no original cache imported"
+      }
+    ],
+    "sealedGeneration": {
+      "verify": true,
+      "fit": false,
+      "reproduced": true,
+      "contentHash": "2430e1f03b965600469016f8e9ec332c34f4642952f70b9d195957816d4e5d57",
+      "storedContentHash": "2430e1f03b965600469016f8e9ec332c34f4642952f70b9d195957816d4e5d57",
+      "generatedAtHead": "b3d4c06b48ccf173cbd0e9afc1b08e75095d30f0",
+      "head": "112cd728fe13402165b36d6e3afceef1bd0ae683"
+    },
+    "evidence": {
+      "A": {
+        "rows": 6905,
+        "inputHash": "6bce6aee04be729c505034ab846ecdc4be018ffc92c7c5d784c85db7e17fd510",
+        "evidenceHash": "e357254a75ad7acd48a0e59d262c3fec86c5e24fbcdd71ce4becf3c48108132b"
+      },
+      "B": {
+        "rows": 6929,
+        "inputHash": "63251a02d7ca027809b8945d670c2dd11b82c33ca6155f1ed34864fe53f73249",
+        "evidenceHash": "ddfafefc7a96e975c4065d9bd37e94e8d39766a89898704d048944efe5bf075f"
+      }
+    },
+    "certificateCheck": {
+      "reproduced": true,
+      "status": "PASS",
+      "storedHash": "d472f04f00560229f20020f030722fdf3981f91155424d0a7a2004662be768da",
+      "recomputedHash": "d472f04f00560229f20020f030722fdf3981f91155424d0a7a2004662be768da",
+      "tests": {
+        "exitCode": 0,
+        "pass": 6,
+        "fail": 0
+      }
+    }
+  },
+  "execution": {
+    "parallelHelperSha256": "c632584d88b0ba803d88fe2727d406544e3f4daff2000e643d639b49a01a65d6",
+    "rowOrderPreserved": true,
+    "registeredDepth3SamplePreserved": true,
+    "checkpoints": "Ignored execution-only checkpoints; frozen row evidence function unchanged. Interrupted partial computations never selected policies or computed scientific conclusions.",
+    "performanceEvaluations": 1,
+    "sourceChangedAfterSealing": false
+  },
+  "CHECK_MODE_MAY_NOT_MUTATE_TRACKED_STATE": true,
+  "proofHash": "2359437358fc6e54555fbd9ead0a26535dbc9eafc6dedde1b08ac56cf2f45e7d"
+}
