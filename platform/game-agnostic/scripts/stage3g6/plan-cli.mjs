@@ -1,0 +1,1 @@
+import {writeFileSync} from 'node:fs';import {PLAN,PLAN_HASH,PLAN_PATH} from './plan.mjs';import {ACTION_SURFACE_HASH} from '../../src/stage3g/observable-action-surface-v1.js';writeFileSync(PLAN_PATH,JSON.stringify({planHash:PLAN_HASH,plan:PLAN},null,2)+'\n');console.log(JSON.stringify({planHash:PLAN_HASH,actionSurfaceHash:ACTION_SURFACE_HASH}));
