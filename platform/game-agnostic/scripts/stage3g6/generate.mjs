@@ -1,14 +1,8 @@
 #!/usr/bin/env node
-/* STAGE_3G_6 — level-balanced partitions.
- *
- *   --fit           the OPEN fit set (seed 6012, levels 0-7 x bands H0-H4, 60 per cell); allowed before the freeze
- *   --verify-fit    rebuild it from committed state and require the manifest content hash (never writes a tracked file)
- *   (default)       the SEALED seed families A (7021) and B (7031), levels 0-7 x bands H0-H4, 190 per cell; refuses unless
- *                   the plan, open report, fit manifest, specification and every evaluation file are committed at HEAD
- *   --verify        rebuild the sealed payload and require the manifest content hash (never writes a tracked file)
- * Unmodified, benchmark-bound P.1D corpusRecord; per (seed, level, band) cell, combinations in canonical objectives > roles >
- * shape order until the quota is admitted. Any record / world / topology hash claimed by the 121,600-row prior lineage, the
- * fit set (for sealed rows) or an earlier admission is rejected.
+/* STAGE_3G_6: unmodified corpusRecord, balanced objective/level/horizon quotas.
+ * OPEN uses seed6013; sealed A/B traverse preregistered fixed eight-seed panels.
+ * --verify-fit/--verify independently rebuild without tracked writes.
+ * Default generation requires all evaluation files committed unchanged.
  */
 import { createHash } from 'node:crypto';
 import { spawnSync } from 'node:child_process';
@@ -47,7 +41,7 @@ export function readFitRows() {
   return rows;
 }
 export function seedAudit(prior) {
-  const seeds = [SEED_PLAN.families.A, SEED_PLAN.families.B, SEED_PLAN.fit]; const used = new Set(prior.map((r) => r.combination.seed));
+  const seeds = [...SEED_PLAN.familySeedPanels.A, ...SEED_PLAN.familySeedPanels.B, SEED_PLAN.fit]; const used = new Set(prior.map((r) => r.combination.seed));
   return { seeds, priorRowOverlap: seeds.filter((s) => used.has(s)), stillReservedTouched: seeds.filter((s) => SEED_PLAN.reservedUntouched.includes(s)),
     fitInPriorSeedSpaces: SEED_PLAN.priorSeedSpaces.includes(SEED_PLAN.fit), familiesDistinct: new Set(seeds).size === seeds.length };
 }
@@ -68,7 +62,7 @@ function build(partitions, quota, claimed) {
   for (const [partition, seed] of partitions) {
     const s = { cells: {}, attempted: 0, admitted: 0 }; let index = 0;
     for (const level of LEVELS) for (const band of HORIZON_BANDS) {
-      const combos = cellCombos(seed, level, band); const cell = { attempted: 0, admitted: 0, rejected: {}, available: combos.length };
+      const panel=partition==='STAGE3G6_FIT'?[seed]:SEED_PLAN.familySeedPanels[partition.slice(-1)]; const combos = panel.flatMap(candidateSeed=>cellCombos(candidateSeed, level, band)); const cell = { attempted: 0, admitted: 0, rejected: {}, available: combos.length };
       for (let i = 0; i < combos.length && cell.admitted < quota; i += 1) {
         cell.attempted += 1; s.attempted += 1;
         const stored=savedRows[savedIndex]; const row=stored&&stored.partition===partition&&stored.combinationIndex===index?stored:corpusRecord(partition, combos[i], index, { withEquivariance: index % 25 === 0 }); index += 1;

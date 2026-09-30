@@ -1,5 +1,5 @@
 {
-  "planHash": "66f4156499e7354859456e7e174163442085e81268c69afb3730b9d9f1b576db",
+  "planHash": "ec8106983a135117e81cf69a403a07a0047b22cc0629fd8e335cf5590589daa0",
   "plan": {
     "stage": "STAGE3G6_OBSERVABLE_PLANNING_ACTION_SURFACE_AUDIT",
     "inheritance": {
@@ -718,6 +718,28 @@
         "A": 7041,
         "B": 7051
       },
+      "familySeedPanels": {
+        "A": [
+          7041,
+          17041,
+          27041,
+          37041,
+          47041,
+          57041,
+          67041,
+          77041
+        ],
+        "B": [
+          7051,
+          17051,
+          27051,
+          37051,
+          47051,
+          57051,
+          67051,
+          77051
+        ]
+      },
       "quotas": {
         "fitPerLevelBand": 24,
         "sealedPerFamilyLevelBand": 96
@@ -785,7 +807,7 @@
         7031
       ],
       "ood": "B is independent seeds within known compositions. STRUCTURAL_OOD=NOT_TESTED; no unseen-mechanism assertion.",
-      "admission": "Unchanged full-root corpusRecord; round-robin all eight objectives, role/shape permutation per objective; equal level/horizon quotas and exact objective quotas (3 OPEN,12 sealed per cell). No outcome/action-target oversampling. All admitted rows including those without a zero-cost optimal action; unit weights."
+      "admission": "Unchanged full-root corpusRecord; round-robin all eight objectives, role/shape permutation per objective; equal level/horizon quotas and exact objective quotas (3 OPEN,12 sealed per cell). Sealed candidates traverse the eight fixed seeds per family in panel order; stop at the unchanged objective/cell quotas. Sampling-only amendment after candidate exhaustion, before any sealed performance evaluation. No outcome/action-target oversampling. All admitted rows including those without a zero-cost optimal action; unit weights."
     },
     "depths": [
       0,
