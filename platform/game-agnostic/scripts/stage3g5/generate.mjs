@@ -1,13 +1,13 @@
 #!/usr/bin/env node
 /* STAGE_3G_5 — level-balanced partitions.
  *
- *   --fit           the OPEN fit set (seed 6011, levels 0-7 x bands H0-H4, 60 per cell); allowed before the freeze
+ *   --fit           the OPEN fit set (seed 6012, levels 0-7 x bands H0-H4, 60 per cell); allowed before the freeze
  *   --verify-fit    rebuild it from committed state and require the manifest content hash (never writes a tracked file)
- *   (default)       the SEALED seed families A (5022) and B (5032), levels 0-7 x bands H0-H4, 190 per cell; refuses unless
+ *   (default)       the SEALED seed families A (7021) and B (7031), levels 0-7 x bands H0-H4, 190 per cell; refuses unless
  *                   the plan, open report, fit manifest, specification and every evaluation file are committed at HEAD
  *   --verify        rebuild the sealed payload and require the manifest content hash (never writes a tracked file)
  * Unmodified, benchmark-bound P.1D corpusRecord; per (seed, level, band) cell, combinations in canonical objectives > roles >
- * shape order until the quota is admitted. Any record / world / topology hash claimed by the 104,000-row prior lineage, the
+ * shape order until the quota is admitted. Any record / world / topology hash claimed by the 121,600-row prior lineage, the
  * fit set (for sealed rows) or an earlier admission is rejected.
  */
 import { createHash } from 'node:crypto';
@@ -35,11 +35,11 @@ export const G3_SEALED_CONTENT_HASH = '025d7e25222f36c3766682bd760ec4f7c254adef8
 export const EVALUATION_FILES = Object.freeze([PLAN_PATH, OPEN_REPORT_PATH, FIT_MANIFEST_PATH, SPEC_PATH, 'package.json', 'scripts/stage3g5/plan.mjs', 'scripts/stage3g5/evidence.mjs', 'scripts/stage3g5/privileged.mjs', 'scripts/stage3g5/plan-cli.mjs', 'scripts/stage3g5/generate.mjs', 'scripts/stage3g5/certify.mjs', 'scripts/stage3g5/full-suite.mjs', 'src/stage3g/deployable-action-model-v1.js', 'tests/stage3g5-observable-model-search.test.js']);
 
 const readGzRows = (f) => { const t = gunzipSync(readFileSync(at(f))).toString('utf8'); return { text: t, rows: t.split('\n').filter(Boolean).map((l) => JSON.parse(l)) }; };
-/** The 104,000-row prior lineage: Stage 3F (80,000) + Stage 3G.1/3G.2 sealed (12,000) + Stage 3G.3 sealed (12,000), content-hash verified. */
+/** The 121,600-row prior lineage: Stage 3F (80,000) + Stage 3G.1/3G.2 sealed (12,000) + Stage 3G.3 sealed (12,000), content-hash verified. */
 export function priorLineage() {
   const p = g3PriorLineage(); const m = JSON.parse(readFileSync(at(G3_MANIFEST), 'utf8')); const { text, rows } = readGzRows(G3_SEALED);
   if (hex(text) !== m.contentHash || m.contentHash !== G3_SEALED_CONTENT_HASH) throw new Error('Stage 3G.3 sealed payload does not match its manifest and the Stage 3G.4 binding');
-  return { rows: [...p.rows, ...g4FitRows(), ...rows], sources: [...p.sources, { name: 'STAGE3G4_PLUS_OPEN_FIT', rows: rows.length, verified: true, contentHash: m.contentHash }] };
+  return { rows: [...p.rows, ...g4FitRows(), ...rows], sources: [...p.sources, { name: 'STAGE3G4_PLUS_OPEN_FIT', rows: rows.length + g4FitRows().length, verified: true, contentHash: m.contentHash, fitContentHash: JSON.parse(readFileSync(at('artifacts/stage3g4-level-replication/fit-set-manifest.json'), 'utf8')).contentHash }] };
 }
 export function readFitRows() {
   const m = JSON.parse(readFileSync(at(FIT_MANIFEST_PATH), 'utf8')); const { text, rows } = readGzRows(FIT_PATH);
