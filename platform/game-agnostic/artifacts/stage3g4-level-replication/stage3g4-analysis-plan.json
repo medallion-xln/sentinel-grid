@@ -1,0 +1,536 @@
+{
+  "schemaVersion": 1,
+  "planHash": "a3c98074228260df8cf1fb35bc62eab73e8d4193de3c4241076bfe9709cbaad9",
+  "seedPlanHash": "1f15fa3e2ff18cd6b556a67d32ebe43c8901e71fc8c597f6f5f3417e70ae983e",
+  "plan": {
+    "stage": "STAGE_3G_4_LEVEL_STRATIFIED_TEMPORAL_REPLICATION",
+    "specification": "docs/STAGE3G4_SPECIFICATION.md",
+    "question": "Does decision-relevant temporal value increase with curriculum level, independent of partition identity?",
+    "role": "REPLICATION_AND_STRATIFICATION_ONLY",
+    "notInScope": [
+      "learned world model",
+      "world-model tournament",
+      "Router / Nexus / Oracle / Prime redesign",
+      "Expert #10",
+      "authority change",
+      "retreat repair",
+      "changes to Stage 3F, 3G.1/3G.2 or 3G.3"
+    ],
+    "inheritance": {
+      "stage3f": {
+        "STAGE3F_STATUS": "FROZEN",
+        "FREEZE_FILE": "artifacts/stage3f-freeze/stage3f-freeze.json",
+        "CERTIFICATE_FILE": "artifacts/stage3f-freeze/stage3f-freeze-certification-result.json",
+        "STAGE3F_FREEZE_HASH": "41748ff68ff16e6a137b53b72eb7203cb62aa0e761bf15c19f7a13b73d4b79a9",
+        "STAGE3F_CERTIFICATION_HASH": "0fe5d3e24f71015b76f5997771f2474712d2764bc049fc2e90e0144f8d2a08ce",
+        "IMMUTABLE_FACTS_HASH": "ab4d7f315f1de1b2a3fce7b6196880bddaf11444ed72274ae7b695e886e91a5b",
+        "FREEZE_COMMIT": "b68a46f3d03e16a8caf7dceb611111cf10fbdce2",
+        "FREEZE_CERTIFICATION_COMMIT": "7600e1fe9e5ff9a69f2070bd4d931e816b52922f",
+        "FACTS": {
+          "RESOURCE_SHORTCUT_DEPENDENT": true,
+          "NEXUS_V1_REPRESENTATION_BLOCKED": true,
+          "NEXUS_V1_POLICY_LIMITED": true,
+          "NEXUS_V2_SHORTCUT_DEPENDENT": true,
+          "GENUINE_RELATIONAL_VALUE_MEASURED": false,
+          "EXPERT_COMPLEMENTARITY_EXISTS": true,
+          "EXPERT_COMPLEMENTARITY_ROUTABLE": false,
+          "ROUTER_VALUE_MATERIAL": false,
+          "ROUTER_2_0_JUSTIFIED": false,
+          "RISK_SIGNAL_VALUE_MATERIAL": false,
+          "DECISION_RULE_VALUE_MATERIAL": false,
+          "STATE_REPRESENTATION_SUFFICIENT": false,
+          "SPATIAL_STATE_REQUIRED": true,
+          "ACTION_SEMANTICS_REQUIRED": true,
+          "TRANSITION_PREDICTION_REQUIRED": false,
+          "POLICY_QUALITY_PRIMARY_BOTTLENECK": true,
+          "FALSE_SELECTION_HARM_ACCEPTABLE": false,
+          "AUTHORITY": "R0"
+        },
+        "rule": "Stage 3G reads these; it never rewrites a Stage 3F artifact, certificate, hash, fact, the Decision Evaluation Contract, authority or the expert roster. A Stage 3G result that bears on a frozen fact is reported as new Stage 3G evidence, never as an edit of the fact."
+      },
+      "stage3g12": {
+        "CERTIFICATE_FILE": "artifacts/stage3g-predictive-integrity/stage3g-certification-result.json",
+        "CERTIFICATION_HASH": "7f39253507a4219dac0a0c4a83cfe7d14b2d37fa1498ebb2767560bdea695100",
+        "CERTIFICATION_COMMIT": "46d6d2d9b86ee227ad18c19c243fd4fce2a52b26",
+        "FREEZE_COMMIT": "dac250187f2f459c3ed691d3a8ff22ef8a313647",
+        "REPRESENTATION_GAP_CLOSED": true,
+        "TRANSITION_PREDICTION_NOW_JUSTIFIED": false,
+        "NEW_SELECTED": "G_PATH_MAIN",
+        "NEW_MODEL_HASH": "2e868e3acbe4594a1f82a01956d64f27c3e30dab3942335078901634103189dd",
+        "certifiedTop1": {
+          "STAGE3G_HOLDOUT": 0.812844,
+          "STAGE3G_OOD": 0.911552
+        },
+        "PROTECTED_PATHS": [
+          "artifacts/stage3g-predictive-integrity/**",
+          "docs/STAGE3G_*",
+          "scripts/stage3g/**",
+          "scripts/stage3g-plan.mjs",
+          "scripts/generate-stage3g-sealed.mjs",
+          "scripts/certify-stage3g-predictive-integrity.mjs",
+          "src/stage3g/epistemic-provenance-v1.js",
+          "src/stage3g/observable-entity-state-v1.js",
+          "src/stage3g/action-semantics-v1.js",
+          "tests/stage3g-epistemic-integrity.test.js",
+          "tests/stage3g-observable-state.test.js"
+        ]
+      },
+      "stage3g3": {
+        "CERTIFICATE_FILE": "artifacts/stage3g3-temporal-attribution/stage3g3-certification-result.json",
+        "OPEN_REPORT_FILE": "artifacts/stage3g3-temporal-attribution/stage3g3-open-phase-report.json",
+        "CERTIFICATION_HASH": "6f58040133deae625e61c636f881b9283da62458581387b0dbe9afee6b4a8c69",
+        "CERTIFICATION_COMMIT": "3a878c1",
+        "FREEZE_COMMIT": "20e8bba",
+        "AMENDMENT_COMMIT": "f606f80",
+        "PREDICTION_LIFECYCLE_IMPLEMENTED": true,
+        "TRANSITION_PREDICTION_NOW_JUSTIFIED": false,
+        "WORLD_MODEL_WORK_NOW_JUSTIFIED": false,
+        "LIFECYCLE_SCHEMA_HASH": "6160752cc0cab68332daca8ffeb8504e57d8dc1b2200136926c1573885cde0a8",
+        "PROTECTED_PATHS": [
+          "artifacts/stage3g3-temporal-attribution/**",
+          "docs/STAGE3G3_*",
+          "scripts/stage3g3/**",
+          "src/stage3g/prediction-lifecycle-v1.js",
+          "tests/stage3g3-*"
+        ]
+      }
+    },
+    "hypotheses": {
+      "H1_LEVEL_SCALING": "multi-step temporal value increases with curriculum level",
+      "H2_THRESHOLD_EFFECT": "temporal value becomes material only above a complexity threshold",
+      "H3_PARTITION_ARTIFACT": "the Stage 3G.3 OOD gain is partition-specific, not a level effect",
+      "H4_RETREAT_LEVEL_INTERACTION": "the retreat residual becomes more temporal / option-dependent at higher levels",
+      "H5_NO_STABLE_TEMPORAL_EFFECT": "temporal gains do not replicate after level balancing"
+    },
+    "frozenDiagnostics": "ONE_STEP, H2, H3, H4, privileged OPTION and BEST_CAPACITY exactly as Stage 3G.3 (definitions, rollout semantics, scalarisation, materiality, label-leak guard, fitted weights)",
+    "observableOptionFeatures": {
+      "schemaHash": "299c1ae180d9f35d28f85fdcc88d9356e6da4f3c8ba569db24e4d800443d7831",
+      "columns": [
+        {
+          "id": "destMoveCount",
+          "class": "DETERMINISTICALLY_DERIVED",
+          "definition": "in-bounds, traversable, unblocked 4-neighbours of the destination (the MOVEs open at t+1)"
+        },
+        {
+          "id": "destSafeMoveCount",
+          "class": "DETERMINISTICALLY_DERIVED",
+          "definition": "of those, neighbours that are not hazard terrain and not Manhattan-adjacent to an in-service visible hostile"
+        },
+        {
+          "id": "destRetreatGain",
+          "class": "DETERMINISTICALLY_DERIVED",
+          "definition": "max over open neighbours of (distance to nearest in-service hostile) minus that distance at the destination; 0 with no hostile"
+        },
+        {
+          "id": "destBorderMobility",
+          "class": "DETERMINISTICALLY_DERIVED",
+          "definition": "in-bounds 4-neighbours of the destination (4 minus adjacent grid edges)"
+        },
+        {
+          "id": "destOnHazard",
+          "class": "DETERMINISTICALLY_DERIVED",
+          "definition": "1 if the destination is ENVIRONMENTAL_HAZARD terrain"
+        },
+        {
+          "id": "destNonHazardExits",
+          "class": "DETERMINISTICALLY_DERIVED",
+          "definition": "open neighbours of the destination that are not hazard terrain (hazard escape options)"
+        }
+      ]
+    },
+    "boundedSearch": {
+      "definition": "exhaustive known-model search: candidate immediate scalar + max cumulative FORGE_REWARD_V2 scalar over all sequences of d further legal symmetric-surface actions; PRIVILEGED",
+      "depthsAll": 2,
+      "depthSubsample": 3
+    },
+    "models": {
+      "primary": {
+        "reused": {
+          "NEW_LINEAR": {
+            "main": [
+              "TYPE",
+              "CANDIDATE",
+              "GEOMETRY",
+              "GP"
+            ],
+            "interact": [
+              "TYPE"
+            ],
+            "role": "NEW_VARIANT"
+          },
+          "NEW_INTERACTION": {
+            "main": [
+              "TYPE",
+              "CANDIDATE",
+              "GEOMETRY",
+              "GP",
+              "PAIRS"
+            ],
+            "interact": [
+              "TYPE"
+            ]
+          },
+          "D_ONE_STEP": {
+            "spec": {
+              "main": [
+                "TYPE",
+                "CANDIDATE",
+                "GEOMETRY",
+                "GP",
+                "ONESTEP"
+              ],
+              "interact": [
+                "TYPE"
+              ]
+            },
+            "fitRows": "DEV all",
+            "class": "PRIVILEGED_UPPER_BOUND"
+          },
+          "D_H2": {
+            "spec": {
+              "main": [
+                "TYPE",
+                "CANDIDATE",
+                "GEOMETRY",
+                "GP",
+                "H2"
+              ],
+              "interact": [
+                "TYPE"
+              ]
+            },
+            "k": 2,
+            "fitRows": "DEV PARTIAL_2",
+            "class": "PRIVILEGED_UPPER_BOUND"
+          },
+          "D_H3": {
+            "spec": {
+              "main": [
+                "TYPE",
+                "CANDIDATE",
+                "GEOMETRY",
+                "GP",
+                "H3"
+              ],
+              "interact": [
+                "TYPE"
+              ]
+            },
+            "k": 3,
+            "fitRows": "DEV PARTIAL_3",
+            "class": "PRIVILEGED_UPPER_BOUND"
+          },
+          "D_H4": {
+            "spec": {
+              "main": [
+                "TYPE",
+                "CANDIDATE",
+                "GEOMETRY",
+                "GP",
+                "H4"
+              ],
+              "interact": [
+                "TYPE"
+              ]
+            },
+            "k": 4,
+            "fitRows": "DEV PARTIAL_4",
+            "class": "PRIVILEGED_UPPER_BOUND"
+          },
+          "D_OPTION": {
+            "spec": {
+              "main": [
+                "TYPE",
+                "CANDIDATE",
+                "GEOMETRY",
+                "GP",
+                "OPTION"
+              ],
+              "interact": [
+                "TYPE"
+              ]
+            },
+            "fitRows": "DEV all",
+            "class": "PRIVILEGED_UPPER_BOUND"
+          },
+          "rule": "refitted deterministically on the Stage 3G.3 DEV rows; each must reproduce its Stage 3G.3 model hash (the Stage 3G.3 fitted models, byte for byte)"
+        },
+        "new": {
+          "D_OBS_OPTION": {
+            "spec": {
+              "main": [
+                "TYPE",
+                "CANDIDATE",
+                "GEOMETRY",
+                "GP",
+                "OBS_OPTION"
+              ],
+              "interact": [
+                "TYPE"
+              ]
+            },
+            "fitRows": "Stage 3G.3 DEV (all)",
+            "class": "DEPLOYABLE (E1 observable option features)"
+          },
+          "D_SEARCH_D1": {
+            "spec": {
+              "main": [
+                "TYPE",
+                "CANDIDATE",
+                "GEOMETRY",
+                "GP",
+                "SEARCH1"
+              ],
+              "interact": [
+                "TYPE"
+              ]
+            },
+            "fitRows": "Stage 3G.3 DEV PARTIAL_2",
+            "class": "PRIVILEGED (known-model bounded search, depth 1)"
+          },
+          "D_SEARCH_D2": {
+            "spec": {
+              "main": [
+                "TYPE",
+                "CANDIDATE",
+                "GEOMETRY",
+                "GP",
+                "SEARCH2"
+              ],
+              "interact": [
+                "TYPE"
+              ]
+            },
+            "fitRows": "Stage 3G.3 DEV PARTIAL_3",
+            "class": "PRIVILEGED (known-model bounded search, depth 2)"
+          }
+        },
+        "planners": {
+          "PLANNER_D0": "argmax over candidates of search[0] (immediate scalar), uniform over ties; no fitting",
+          "PLANNER_D1": "argmax of search[1]",
+          "PLANNER_D2": "argmax of search[2]",
+          "PLANNER_D3": "argmax of search[3], depth-3 subsample only"
+        },
+        "primaryHorizon": "H3 (the best Stage 3G.3 horizon); H2 and H4 reported and eligible for the transition rule"
+      },
+      "secondary": {
+        "NEW_LINEAR_LB": {
+          "spec": {
+            "main": [
+              "TYPE",
+              "CANDIDATE",
+              "GEOMETRY",
+              "GP"
+            ],
+            "interact": [
+              "TYPE"
+            ],
+            "role": "NEW_VARIANT"
+          },
+          "fitRows": "fit set (seed 6011, levels 0-7) all"
+        },
+        "D_H3_LB": {
+          "spec": {
+            "main": [
+              "TYPE",
+              "CANDIDATE",
+              "GEOMETRY",
+              "GP",
+              "H3"
+            ],
+            "interact": [
+              "TYPE"
+            ]
+          },
+          "fitRows": "fit set PARTIAL_3"
+        },
+        "D_OBS_OPTION_LB": {
+          "spec": {
+            "main": [
+              "TYPE",
+              "CANDIDATE",
+              "GEOMETRY",
+              "GP",
+              "OBS_OPTION"
+            ],
+            "interact": [
+              "TYPE"
+            ]
+          },
+          "fitRows": "fit set all"
+        },
+        "role": "SECONDARY: separates level scaling from level-0/1 extrapolation; never decides a primary conclusion"
+      }
+    },
+    "seeds": {
+      "plan": {
+        "id": "STAGE3G4_LEVEL_BALANCED_SEEDS_V1",
+        "families": {
+          "A": 5022,
+          "B": 5032
+        },
+        "fit": 6011,
+        "stillReserved": {
+          "stage3g3": [
+            5023,
+            5033
+          ]
+        },
+        "provenance": "Stage 3G.3 reserved 5022-5023 (HOLDOUT) and 5032-5033 (OOD) \"for later Stage 3G\"; Stage 3G.4 re-declares 5022 and 5032 as seed families covering every level, so partition identity = seed family, crossed with level. 6011 is a new open fit seed.",
+        "quotas": {
+          "sealedPerFamilyLevelBand": 190,
+          "fitPerLevelBand": 60
+        },
+        "levels": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7
+        ],
+        "horizonBands": [
+          "H0",
+          "H1",
+          "H2",
+          "H3",
+          "H4"
+        ],
+        "priorSeedSpaces": [
+          1,
+          2,
+          3,
+          11,
+          201,
+          202,
+          203,
+          211,
+          401,
+          402,
+          403,
+          411,
+          601,
+          602,
+          603,
+          611,
+          801,
+          802,
+          803,
+          811,
+          1001,
+          1002,
+          1003,
+          1011,
+          2001,
+          2002,
+          2003,
+          2011,
+          2012,
+          2013,
+          2021,
+          2022,
+          2023,
+          2031,
+          2032,
+          2033,
+          3021,
+          3022,
+          3023,
+          3031,
+          3032,
+          3033,
+          4021,
+          4031,
+          4022,
+          4023,
+          4032,
+          4033,
+          5021,
+          5031
+        ],
+        "exclusion": "reject any record, world or topology hash claimed by the 80,000-row Stage 3F lineage, the 12,000 Stage 3G.1/3G.2 sealed rows, the 12,000 Stage 3G.3 sealed rows, the fit set (for sealed rows), or earlier admissions",
+        "admission": "P.1D benchmark-bound corpusRecord; for each (seed, level, horizon band) cell, combinations in canonical objectives > roles > shape order until the quota is admitted; every 25th candidate carries D4 evidence",
+        "depth3Subsample": "every 16th eligible row of each sealed partition (in stored order)"
+      },
+      "hash": "1f15fa3e2ff18cd6b556a67d32ebe43c8901e71fc8c597f6f5f3417e70ae983e"
+    },
+    "levels": [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7
+    ],
+    "bands": {
+      "LOW": [
+        0,
+        1,
+        2
+      ],
+      "MID": [
+        3,
+        4,
+        5
+      ],
+      "HIGH": [
+        6,
+        7
+      ]
+    },
+    "rules": {
+      "MATERIAL": "difference >= 0.05, bootstrap 95% CI lower bound > 0, normalised regret not worse (the frozen materialGain rule)",
+      "PARTIAL": "a D_Hk / D_SEARCH / PLANNER comparison at total depth k uses only rows with label horizon h where h + 1 > k (Stage 3G.3 label-leak guard)",
+      "PER_LEVEL": "descriptive, independent bootstrap CIs per level per family and pooled",
+      "SLOPE": "primary trend statistic: n-weighted least-squares slope over levels 0-7 of the pooled (both families) per-level gain D_H3 - NEW_LINEAR on PARTIAL_3 rows; 95% CI from 2000 deterministic bootstrap resamples drawn within each level",
+      "SCALING": {
+        "MONOTONICALLY_INCREASES": "slope CI lower bound > 0 and pooled band gains LOW <= MID <= HIGH",
+        "HAS_THRESHOLD": "some band is MATERIAL in both families while every lower band is not; THRESHOLD = the lowest such band",
+        "IS_NON_MONOTONIC": "some band is MATERIAL in both families while a higher band is not, or the pooled band gains are not ordered and the slope CI contains 0",
+        "IS_LEVEL_INDEPENDENT": "slope CI contains 0 and the pooled band gains lie within 0.02 of each other",
+        "INSUFFICIENT_EVIDENCE": "none of the above",
+        "order": [
+          "MONOTONICALLY_INCREASES",
+          "HAS_THRESHOLD",
+          "IS_NON_MONOTONIC",
+          "IS_LEVEL_INDEPENDENT",
+          "INSUFFICIENT_EVIDENCE"
+        ]
+      },
+      "PARTITION_EFFECT": "family A - family B difference in the primary gain (unpaired bootstrap CI), per level, at HIGH, and pooled over levels; MATERIAL if |difference| >= 0.05 and the CI excludes 0. LEVEL_EFFECT_MEASURED = slope estimated with a CI; PARTITION_EFFECT_MEASURED = the family difference estimated at every level (the design crosses family with level, so both are identified)",
+      "H1_LEVEL_SCALING": "SCALING includes MONOTONICALLY_INCREASES",
+      "H2_THRESHOLD_EFFECT": "SCALING includes HAS_THRESHOLD",
+      "H3_PARTITION_ARTIFACT": "the HIGH-band gain is MATERIAL in family B and not in family A, or the pooled / HIGH partition effect is MATERIAL",
+      "H4_RETREAT_LEVEL_INTERACTION": "the bootstrap slope over levels of the retreat-optimal temporal gain (D_H3 - NEW_LINEAR on retreat-optimal PARTIAL_3 rows) or of the retreat-optimal privileged option gain has a CI lower bound > 0",
+      "H5_NO_STABLE_TEMPORAL_EFFECT": "no band has D_H3 - NEW_LINEAR MATERIAL in both families",
+      "TRANSITION_PREDICTION_NOW_JUSTIFIED": "exists k in {2,3,4} with ALL of: (1) D_Hk - NEW_LINEAR MATERIAL on PARTIAL_k rows in MID and HIGH (2) in both families (3) partition effect of D_Hk not MATERIAL at HIGH nor pooled (4) every integrity check = 1 (5) D_Hk - D_OBS_OPTION MATERIAL in MID and HIGH in both families (6) relative regret reduction >= 0.20 with normalised-regret difference CI upper bound < 0, in MID and HIGH in both families",
+      "OBSERVABLE_OPTION_FEATURES_SUFFICIENT": "in every (MID/HIGH, family) cell where some D_Hk - NEW_LINEAR is MATERIAL, D_Hk - D_OBS_OPTION is not MATERIAL; false if D_OBS_OPTION captures none of them; NOT_TESTABLE when no such cell exists",
+      "DETERMINISTIC_BOUNDED_SEARCH_SUFFICIENT": "in every (MID/HIGH, family) cell where D_H2 or D_H3 - NEW_LINEAR is MATERIAL, D_H2 - D_SEARCH_D1 (resp. D_H3 - D_SEARCH_D2) is not MATERIAL; NOT_TESTABLE when no such cell exists. PLANNER_D0..D3 reported alongside (D3 on the subsample)",
+      "WORLD_MODEL_WORK_NOW_JUSTIFIED": "TRANSITION_PREDICTION_NOW_JUSTIFIED and OBSERVABLE_OPTION_FEATURES_SUFFICIENT is not true and DETERMINISTIC_BOUNDED_SEARCH_SUFFICIENT is not true",
+      "READY_FOR_3G_COUNTERFACTUAL_PREDICTION": "TRANSITION_PREDICTION_NOW_JUSTIFIED",
+      "TEMPORAL_VALUE_MATERIAL_MID_LEVEL": "some k: D_Hk - NEW_LINEAR MATERIAL on PARTIAL_k MID rows in both families",
+      "TEMPORAL_VALUE_MATERIAL_HIGH_LEVEL": "likewise for HIGH",
+      "TEMPORAL_VALUE_REPLICATED": "some band has D_H3 - NEW_LINEAR MATERIAL in both families",
+      "PARTITION_CONFOUND_RESOLVED": "LEVEL_EFFECT_MEASURED and PARTITION_EFFECT_MEASURED (identification, whatever the sign)",
+      "ORACLE_CRITICAL_PATH": "answered as: does the evidence put temporal modelling on the critical path? true only if TRANSITION_PREDICTION_NOW_JUSTIFIED"
+    },
+    "dryRun": "certify.mjs --dry-run --out=<path outside the repository> runs every code path with the open fit rows standing in for the sealed families (alternate rows -> A / B, so every level is exercised in both); no sealed row is read; required before the sealed run; never writes a tracked file",
+    "amendmentProcess": "a harness-only defect after the sealed run is fixed by a disclosed amendment binding the certifier's before/after bytes; if the first run produced a certificate its scientific sections must be reproduced exactly",
+    "reproducibility": {
+      "numerics": "SENTINEL_CANONICAL_NUMERICS_V1 via scripts/reproducibility/run-canonical.mjs",
+      "checkMode": "CHECK_MODE_MAY_NOT_MUTATE_TRACKED_STATE",
+      "reproductions": "2 x --check and a fresh-clone reproduction"
+    },
+    "authority": {
+      "tier": "R0",
+      "canDispatch": false,
+      "canMutateLiveWorld": false,
+      "onlineLearningEnabled": false,
+      "promotedToLiveRuntime": false
+    }
+  }
+}

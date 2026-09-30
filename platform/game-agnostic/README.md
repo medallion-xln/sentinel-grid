@@ -70,3 +70,8 @@ Stage 3G.3 adds the prediction lifecycle (`SENTINEL_PREDICTION_LIFECYCLE_V1`). I
 free-action residual across multi-step temporal information, ranking capacity, option preservation, retreat logic and
 label structure. All temporal quantities are privileged upper bounds. `npm run stage3g3:check` re-verifies it read-only.
 See `docs/STAGE3G3_PREDICTION_LIFECYCLE_AND_TEMPORAL_ATTRIBUTION.md`.
+
+Stage 3G.4 replicates the Stage 3G.3 temporal diagnostics across curriculum levels 0–7, with two seed families crossed
+with level. That separates the level effect from the partition effect. It adds observable (E1) option-preservation
+features and a known-model bounded-search control. `npm run stage3g4:check` re-verifies it read-only. See
+`docs/STAGE3G4_LEVEL_STRATIFIED_TEMPORAL_REPLICATION.md` and `docs/STAGE3G4_SPECIFICATION.md`.
