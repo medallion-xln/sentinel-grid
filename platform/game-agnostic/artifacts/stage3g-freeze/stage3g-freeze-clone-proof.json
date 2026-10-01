@@ -1,0 +1,50 @@
+{
+  "stage": "STAGE3G_FREEZE",
+  "head": "da7d1ceff7b34c0b7eaf7168598a0cabd8dbb556",
+  "cloneHead": "da7d1ceff7b34c0b7eaf7168598a0cabd8dbb556",
+  "storedCertificationHash": "38c5b1b2a89f1da27f367055009879dbc1c7b1e032b757a82f6a032e3abda58a",
+  "steps": [
+    {
+      "command": [
+        "node",
+        "scripts/reproducibility/run-canonical.mjs",
+        "stage3g-freeze/freeze.mjs",
+        "--verify"
+      ],
+      "exitCode": 0,
+      "runtimeSeconds": 1.3149349170000004,
+      "logSha256": "a5fee1fe3f754729f2f9a0c8f540bcfaf9222ee5f6ac5646279b09161bb38a19",
+      "tail": "{\"FREEZE_REBUILT_BYTE_IDENTICAL\":true,\"freezeHash\":\"686805d655e94e4ecc24a98d965a4e2f33ed8c51c69e746fc11e96022b64f2f5\"}\n"
+    },
+    {
+      "command": [
+        "node",
+        "scripts/reproducibility/run-canonical.mjs",
+        "stage3g-freeze/certify.mjs",
+        "--check"
+      ],
+      "exitCode": 0,
+      "runtimeSeconds": 2.383338041,
+      "logSha256": "8d82cd87ce8f667f941fc56dcbc745b9f9808d9a60a16be61a1056341426ccc4",
+      "tail": "{\n  \"check\": \"STAGE3G_FREEZE_CERTIFICATION\",\n  \"CERTIFICATION_REPRODUCED\": true,\n  \"status\": \"PASS\",\n  \"storedHash\": \"38c5b1b2a89f1da27f367055009879dbc1c7b1e032b757a82f6a032e3abda58a\",\n  \"recomputedHash\": \"38c5b1b2a89f1da27f367055009879dbc1c7b1e032b757a82f6a032e3abda58a\",\n  \"freezeHash\": \"686805d655e94e4ecc24a98d965a4e2f33ed8c51c69e746fc11e96022b64f2f5\"\n}\n"
+    },
+    {
+      "command": [
+        "node",
+        "--test",
+        "--test-reporter=tap",
+        "tests/stage3g-freeze.test.js"
+      ],
+      "exitCode": 0,
+      "runtimeSeconds": 0.74765575,
+      "logSha256": "c5538206b0e40dfc9c751036372fa34963d28997989568aa95cbbd9a4269f13f",
+      "tail": "imitations and scoped harmful result\n  ---\n  duration_ms: 0.149\n  type: 'test'\n  ...\n# Subtest: Stage 3G freeze inherits the decision contract, roster and authority unchanged\nok 5 - Stage 3G freeze inherits the decision contract, roster and authority unchanged\n  ---\n  duration_ms: 0.17575\n  type: 'test'\n  ...\n# Subtest: Stage 3H entry is bound but not begun and forbids Router 2.0, Expert \\#10 and reflexive world-model training\nok 6 - Stage 3H entry is bound but not begun and forbids Router 2.0, Expert \\#10 and reflexive world-model training\n  ---\n  duration_ms: 0.417542\n  type: 'test'\n  ...\n1..6\n# tests 6\n# suites 0\n# pass 6\n# fail 0\n# cancelled 0\n# skipped 0\n# todo 0\n# duration_ms 705.7865\n"
+    }
+  ],
+  "FREEZE_REBUILT": true,
+  "CERTIFICATION_REPRODUCED": true,
+  "TESTS_PASS": true,
+  "trackedStateUnchanged": true,
+  "scope": "Fresh clone reproduces the freeze artifact and certificate from committed history; the nine inherited certificate checks were reproduced in the canonical checkout (stage3g-freeze-reproduction.json).",
+  "FRESH_CLONE_REPRODUCED": true
+}
