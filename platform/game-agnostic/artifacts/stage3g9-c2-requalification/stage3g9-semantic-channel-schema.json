@@ -1,0 +1,36 @@
+{
+  "schemaHash": "e749a5f2333f4cfaa7b985f96fe81301c97f757291bab3133ee2405e0533d99a",
+  "schema": {
+    "schemaId": "TYPED_RELATION_SEMANTIC_CHANNEL_V1",
+    "schemaVersion": 1,
+    "authority": "R0",
+    "status": "OFFLINE_SEMANTIC_ONLY",
+    "runtimeApproved": false,
+    "liveAdapterChanged": false,
+    "input": {
+      "disclosure": "TYPED_RELATION_DISCLOSURE_CANDIDATE_V1 (prospective, audit-only), verified as an exact refinement of the delivered coarse relations",
+      "disclosureSchemaHash": "28a8e8ed587c8356b1853e8ba6ca61ca663e4c5a5630ba71e309916b01907588",
+      "observed": "in-service bit and positions from the observable view"
+    },
+    "mayAlter": [
+      "BYPASS substitute resolution",
+      "dependency rewiring in the conditional ledger",
+      "conditional continuation branch semantics (which BYPASS branches exist)"
+    ],
+    "mustNotAlter": [
+      "the 36 root-state scoring columns",
+      "objective-progress columns",
+      "state interactions",
+      "learned model dimensionality",
+      "training data",
+      "trained coefficients"
+    ],
+    "rules": {
+      "rootSubstitute": "Root BYPASS at t0: lexically lowest typed substitute of the failed target whose source is observed in service (= available && health>0, the kernel substituteFor predicate). Exact.",
+      "continuationSubstitute": "Continuation BYPASS: if exactly one typed substitutes edge enters the failed target, the substitute is that source conditional on the branch being legal; otherwise UNKNOWN. Future liveness is never asserted.",
+      "rewiring": "Every BYPASS removes the (dependent -> failed) dependsOn edges from the ledger graph (exact: the kernel removes them); when the substitute is known the (dependent -> substitute) edge is added.",
+      "branches": "A continuation BYPASS exists only for a ledger dependsOn edge into a target with at least one typed substitutes edge. Relations change only by BYPASS rewiring, so absence is exact current structure.",
+      "unknown": "Every continuation branch keeps UNKNOWN legality/survival/terminal status; guaranteedFutureBranches=0."
+    }
+  }
+}

@@ -1,0 +1,492 @@
+{
+  "planHash": "b78873e965dcd9172eeb33be4749c475156d7a03bed09dafe7f697a07252639f",
+  "plan": {
+    "stage": "STAGE3G9",
+    "title": "C2 observable-state sufficiency requalification",
+    "inheritance": {
+      "checks": {
+        "stage3f": {
+          "script": "scripts/stage3f-freeze-certify.mjs",
+          "certificate": "artifacts/stage3f-freeze/stage3f-freeze-certification-result.json",
+          "hash": "0fe5d3e24f71015b76f5997771f2474712d2764bc049fc2e90e0144f8d2a08ce",
+          "expectedSeconds": 3550
+        },
+        "stage3g12": {
+          "script": "scripts/certify-stage3g-predictive-integrity.mjs",
+          "certificate": "artifacts/stage3g-predictive-integrity/stage3g-certification-result.json",
+          "hash": "7f39253507a4219dac0a0c4a83cfe7d14b2d37fa1498ebb2767560bdea695100",
+          "expectedSeconds": 1577
+        },
+        "stage3g3": {
+          "script": "scripts/stage3g3/certify.mjs",
+          "certificate": "artifacts/stage3g3-temporal-attribution/stage3g3-certification-result.json",
+          "hash": "6f58040133deae625e61c636f881b9283da62458581387b0dbe9afee6b4a8c69",
+          "expectedSeconds": 1966
+        },
+        "stage3g4": {
+          "script": "scripts/stage3g4/certify.mjs",
+          "certificate": "artifacts/stage3g4-level-replication/stage3g4-certification-result.json",
+          "hash": "259195ba9c2d223010d8302579c665c67fd20b666f43b35c9ae539e6e70cb4c8",
+          "expectedSeconds": 3869
+        },
+        "stage3g5": {
+          "script": "scripts/stage3g5/certify.mjs",
+          "certificate": "artifacts/stage3g5-observable-model-search/stage3g5-certification-result.json",
+          "hash": "d472f04f00560229f20020f030722fdf3981f91155424d0a7a2004662be768da",
+          "expectedSeconds": 30
+        },
+        "stage3g6": {
+          "script": "scripts/stage3g6/certify.mjs",
+          "certificate": "artifacts/stage3g6-action-surface-audit/stage3g6-certification-result.json",
+          "hash": "291e8ac8f681cb6b38983ff1abcd25cd0352b6a4ebeda0c8aab8442b9929d766",
+          "expectedSeconds": 45
+        },
+        "stage3g7": {
+          "script": "scripts/stage3g7/certify.mjs",
+          "certificate": "artifacts/stage3g7-target-contract/stage3g7-certification-result.json",
+          "hash": "ec5ae9c1d2f011791ed93f6bfa2879756905647a4098fcb9c4a9cd42e87e79b6",
+          "expectedSeconds": 15
+        },
+        "stage3g8": {
+          "script": "stage3g8/certify.mjs",
+          "certificate": "artifacts/stage3g8-projection-disclosure/stage3g8-certification-result.json",
+          "hash": "0e91ab6c21137fdd0cb29ca258bdf076fc8bbeaa52d0c017de61f1983c78e2e7",
+          "expectedSeconds": 120
+        }
+      },
+      "STAGE3G8_CERTIFICATION_HASH": "0e91ab6c21137fdd0cb29ca258bdf076fc8bbeaa52d0c017de61f1983c78e2e7",
+      "inheritedConclusions": {
+        "OBJECTIVE_PROJECTION_COMPLETE": true,
+        "OBJECTIVE_PROGRESS_VALUE_MATERIAL": false,
+        "DEPENDENCY_COLLISION_RESOLVED_PROSPECTIVELY": true,
+        "TYPED_RELATION_DISCLOSURE_PRIVILEGE_SAFE": true,
+        "TYPED_RELATION_DISCLOSURE_JUSTIFIED": false,
+        "TYPED_RELATION_SCHEMA_SUPPORT_JUSTIFIED": true,
+        "CURRENT_RUNTIME_SUFFICIENT": false,
+        "SCIENTIFICALLY_SUFFICIENT_WITH_DISCLOSURE": false,
+        "STAGE3G_SCIENTIFICALLY_COMPLETE": false,
+        "REMAINING_3G_BLOCKER": "C2_OBSERVABLE_STATE_SUFFICIENT_FOR_DEMONSTRATED_TASKS",
+        "READY_FOR_3G_COUNTERFACTUAL_PREDICTION": false,
+        "WORLD_MODEL_WORK_NOW_JUSTIFIED": false,
+        "AUTHORITY": "R0"
+      }
+    },
+    "semanticChannel": "e749a5f2333f4cfaa7b985f96fe81301c97f757291bab3133ee2405e0533d99a",
+    "frozenHeads": {
+      "S0": {
+        "head": "OBJECTIVE_PROGRESS_ONLY",
+        "modelHash": "30a72416b8a7f0079155cd25908acbe8a2f69750759d106cf71609d77e1e8937",
+        "dimension": 60
+      },
+      "S1": {
+        "head": "RUNTIME_PLUS_CURRENT_PRIVATE",
+        "modelHash": "a79653d23b09a4873249ef84bb70f8c4d4bf2344947acdb58f554c4f4645f0ab",
+        "dimension": 66
+      },
+      "S3": {
+        "head": "OBJECTIVE_PROGRESS_PLUS_TYPED_RELATION",
+        "modelHash": "60e480dca22271f35524176b8ea894d381c96800fe822b528eb7b9c769fddbe6",
+        "dimension": 87
+      }
+    },
+    "variants": {
+      "S0_CURRENT_RUNTIME": {
+        "model": "S0",
+        "columns": "G7 54 (coarse search) + OBJECTIVE_PROGRESS 6",
+        "role": "current runtime"
+      },
+      "S2_SEMANTIC_TYPED_RELATION_ONLY": {
+        "model": "S0",
+        "columns": "G7 54 with the semantic channel in the search layer + OBJECTIVE_PROGRESS 6",
+        "role": "PRIMARY: identical frozen scorer, identical coefficients and dimensionality; typed relations only in search semantics"
+      },
+      "S1_HIDDEN_CURRENT_STATE_CONTROL": {
+        "model": "S1",
+        "columns": "semantic G7 54 + OP 6 + 6 hidden current target facts",
+        "role": "REQUIRED CONTROL (audit-only): frozen Stage 3G.8 hidden-current-state head on the same semantic search"
+      },
+      "S1R_HIDDEN_CURRENT_STATE_REFIT": {
+        "model": "REFIT",
+        "columns": "semantic G7 54 + OP 6 + hidden 6",
+        "role": "diagnostic: hidden-state head refit on the reused OPEN rows with semantic search columns"
+      },
+      "S0H_RUNTIME_HIDDEN_CONTROL": {
+        "model": "S1",
+        "columns": "coarse G7 54 + OP 6 + hidden 6",
+        "role": "Phase 7 runtime decision control (replicates Stage 3G.8 S1)"
+      },
+      "S3_FULL_TYPED_RELATION_LEARNED_CONTROL": {
+        "model": "S3",
+        "columns": "Stage 3G.8 typed search 54 + OP 6 + learned typed root columns 27",
+        "role": "diagnostic only; never promoted"
+      }
+    },
+    "niEndpoints": {
+      "PRIMARY_S2_VS_HIDDEN": [
+        "S1_HIDDEN_CURRENT_STATE_CONTROL",
+        "S2_SEMANTIC_TYPED_RELATION_ONLY"
+      ],
+      "PRIMARY_S2_VS_RUNTIME": [
+        "S0_CURRENT_RUNTIME",
+        "S2_SEMANTIC_TYPED_RELATION_ONLY"
+      ],
+      "RUNTIME_VS_HIDDEN": [
+        "S0H_RUNTIME_HIDDEN_CONTROL",
+        "S0_CURRENT_RUNTIME"
+      ],
+      "RUNTIME_VS_SEMANTIC": [
+        "S2_SEMANTIC_TYPED_RELATION_ONLY",
+        "S0_CURRENT_RUNTIME"
+      ],
+      "S2_VS_HIDDEN_REFIT": [
+        "S1R_HIDDEN_CURRENT_STATE_REFIT",
+        "S2_SEMANTIC_TYPED_RELATION_ONLY"
+      ]
+    },
+    "requiredNi": [
+      "PRIMARY_S2_VS_HIDDEN",
+      "PRIMARY_S2_VS_RUNTIME"
+    ],
+    "comparisons": {
+      "HIDDEN_OVER_S2": [
+        "S1_HIDDEN_CURRENT_STATE_CONTROL",
+        "S2_SEMANTIC_TYPED_RELATION_ONLY"
+      ],
+      "HIDDEN_REFIT_OVER_S2": [
+        "S1R_HIDDEN_CURRENT_STATE_REFIT",
+        "S2_SEMANTIC_TYPED_RELATION_ONLY"
+      ],
+      "HIDDEN_OVER_RUNTIME": [
+        "S0H_RUNTIME_HIDDEN_CONTROL",
+        "S0_CURRENT_RUNTIME"
+      ],
+      "SEMANTIC_VALUE": [
+        "S2_SEMANTIC_TYPED_RELATION_ONLY",
+        "S0_CURRENT_RUNTIME"
+      ],
+      "LEARNED_FEATURE_VALUE": [
+        "S3_FULL_TYPED_RELATION_LEARNED_CONTROL",
+        "S0_CURRENT_RUNTIME"
+      ],
+      "LEARNED_OVER_SEMANTIC": [
+        "S3_FULL_TYPED_RELATION_LEARNED_CONTROL",
+        "S2_SEMANTIC_TYPED_RELATION_ONLY"
+      ]
+    },
+    "strata": {
+      "required": [
+        "ALL",
+        "LOW",
+        "MID",
+        "HIGH",
+        "RETREAT",
+        "HORIZON_DEPENDENT",
+        "TARGET_BEARING",
+        "BYPASS"
+      ],
+      "reported": [
+        "ALL",
+        "LOW",
+        "MID",
+        "HIGH",
+        "RETREAT",
+        "HORIZON_DEPENDENT"
+      ],
+      "cohort": [
+        "ALL"
+      ],
+      "definitions": {
+        "ALL": "horizon>2",
+        "LOW": "level 0-2",
+        "MID": "level 3-5",
+        "HIGH": "level 6-7",
+        "RETREAT": "a RETREAT root is in the optimal set (Stage 3G.7 definition)",
+        "HORIZON_DEPENDENT": "label.horizonClass = HORIZON_DEPENDENT",
+        "TARGET_BEARING": "offered menu contains a targeted root other than PROTECT (observable, pre-decision)",
+        "BYPASS": "offered menu contains BYPASS",
+        "OOD": "sealed rows with level>=4 and horizon>2 for heads fit on OPEN level<=3"
+      },
+      "note": "The frozen Stage 3G.8 C2 contract evaluates noninferiority on ALL and hidden-state materiality over the Stage 3G.8 population strata (ALL, LOW, MID, HIGH, RETREAT, HORIZON_DEPENDENT, TARGET_BEARING, BYPASS). No stratum is added. Per-stratum noninferiority is reported, not required."
+    },
+    "statistics": {
+      "resamples": 40000,
+      "descriptiveResamples": 2000,
+      "alpha": 0.05,
+      "niEndpointFamily": 10,
+      "hitMargin": 0.05,
+      "nregMargin": 0.01,
+      "minN": 100,
+      "material": "Stage 3G.7 rule: mean hit gain >= .05, paired 95% percentile lower bound > 0 and normalized regret not worse. A claim requires both families (replication); n<100 in either family is NOT_TESTABLE. HARMFUL is the mirror rule.",
+      "noninferiority": "One-sided, Bonferroni over the registered NI family, deterministic paired percentile bootstrap with 40,000 resamples: PASS iff hit-deficit upper < .05 and nreg-excess upper < .01; FAIL iff a lower bound reaches a margin; else NOT_TESTABLE.",
+      "bootstrap": "deterministic paired percentile, unit row weights, seed STAGE3G8:<key>",
+      "stratumNi": "reported with the same per-endpoint alpha; not required",
+      "note": "Margins (.05 hit, .01 normalized regret), minN 100, 40,000 paired deterministic resamples, Stage 3G.7 materiality rule, seeds STAGE3G9:<key>. Ten registered NI endpoints -> alpha .005 per endpoint (Stage 3G.8: .00625)."
+    },
+    "seeds": {
+      "fit": {
+        "source": "Stage 3G.7 OPEN fit set (seed 8013, 320 rows) reused unchanged, hash-verified. Frozen Stage 3G.8 heads are reused; only the diagnostic refit control is fit, on the same rows.",
+        "seed": 8013
+      },
+      "families": {
+        "A": [
+          9101,
+          19101,
+          29101,
+          39101,
+          49101,
+          59101,
+          69101,
+          79101,
+          89101,
+          99101,
+          109101,
+          119101,
+          129101,
+          139101,
+          149101,
+          159101
+        ],
+        "B": [
+          9111,
+          19111,
+          29111,
+          39111,
+          49111,
+          59111,
+          69111,
+          79111,
+          89111,
+          99111,
+          109111,
+          119111,
+          129111,
+          139111,
+          149111,
+          159111
+        ]
+      },
+      "cohorts": {
+        "BYPASS_A": [
+          9121,
+          19121,
+          29121,
+          39121,
+          49121,
+          59121,
+          69121,
+          79121,
+          89121,
+          99121,
+          109121,
+          119121,
+          129121,
+          139121,
+          149121,
+          159121
+        ],
+        "BYPASS_B": [
+          9131,
+          19131,
+          29131,
+          39131,
+          49131,
+          59131,
+          69131,
+          79131,
+          89131,
+          99131,
+          109131,
+          119131,
+          129131,
+          139131,
+          149131,
+          159131
+        ]
+      },
+      "quotas": {
+        "sealedPerFamilyLevelBand": 192,
+        "objectivePerFamilyLevelBand": 24,
+        "cohortPerLevelBand": 18
+      },
+      "sizes": {
+        "familyRows": 7680,
+        "familyInferentialRows": 4608,
+        "cohortTargetRows": 432
+      },
+      "reservedUntouched": [
+        5023,
+        5033
+      ],
+      "priorSeedSpaces": [
+        1,
+        2,
+        3,
+        11,
+        201,
+        202,
+        203,
+        211,
+        401,
+        402,
+        403,
+        411,
+        601,
+        602,
+        603,
+        611,
+        801,
+        802,
+        803,
+        811,
+        1001,
+        1002,
+        1003,
+        1011,
+        2001,
+        2002,
+        2003,
+        2011,
+        2012,
+        2013,
+        2021,
+        2022,
+        2023,
+        2031,
+        2032,
+        2033,
+        3021,
+        3022,
+        3023,
+        3031,
+        3032,
+        3033,
+        4021,
+        4031,
+        4022,
+        4023,
+        4032,
+        4033,
+        5021,
+        5031,
+        5022,
+        5032,
+        6011,
+        6012,
+        7021,
+        7031,
+        6013,
+        7041,
+        17041,
+        27041,
+        37041,
+        47041,
+        57041,
+        67041,
+        77041,
+        7051,
+        17051,
+        27051,
+        37051,
+        47051,
+        57051,
+        67051,
+        77051,
+        8013,
+        9041,
+        19041,
+        29041,
+        39041,
+        49041,
+        59041,
+        69041,
+        79041,
+        9051,
+        19051,
+        29051,
+        39051,
+        49051,
+        59051,
+        69051,
+        79051,
+        9061,
+        19061,
+        29061,
+        39061,
+        49061,
+        59061,
+        69061,
+        79061,
+        9071,
+        19071,
+        29071,
+        39071,
+        49071,
+        59071,
+        69071,
+        79071,
+        9081,
+        19081,
+        29081,
+        39081,
+        49081,
+        59081,
+        69081,
+        79081,
+        9091,
+        19091,
+        29091,
+        39091,
+        49091,
+        59091,
+        69091,
+        79091
+      ],
+      "admission": "Unmodified corpusRecord. Families A/B: equal level x horizon-band x objective quotas over fixed sixteen-seed panels in the Stage 3G.7/3G.8 canonical combination order; quota is checked before a record is built; unit weights; no action or outcome oversampling. Cohorts BYPASS_A/B: bands H2-H4, admitted iff the offered t0 menu contains BYPASS, quota 18 per level x band, shortfalls recorded, population weight 0. Record/world/topology hashes disjoint from all prior lineage (through Stage 3G.8 sealed) and across partitions, claimed in partition order A, B, BYPASS_A, BYPASS_B.",
+      "index": "combinationIndex = position in the full canonical enumeration of the partition (cell-major, seed, round, objective), independent of admissions; withEquivariance iff combinationIndex % 25 = 0. Parallel workers only pre-compute pure records into a cache; the single canonical admission pass decides every row, so the payload is identical with or without the cache.",
+      "precision": "Stage 3G.8 family B S2 normalized-regret bound was .0104 at 2304 inferential rows. Population quota doubles to 192 per cell (4608 inferential rows per family). Margins, minimum n, materiality rule and resampling are unchanged; the per-endpoint alpha is not larger than Stage 3G.8 (.00625)."
+    },
+    "decisionRules": {
+      "ROOT_SCORER_HASH_UNCHANGED": "S2 scores with the frozen Stage 3G.8 S0 model whose hash equals the OPEN-report hash; a refit of S0 on the reused OPEN rows reproduces it",
+      "ROOT_FEATURE_DIMENSION_UNCHANGED": "S2 and S0 column vectors have equal length (60); the 36 root-state columns and 6 objective columns are identical for every sealed candidate; only the 18 search columns may differ",
+      "BYPASS_EXACTNESS": "Typed semantic substitute equals the kernel substitute and the rewired ledger dependsOn graph equals the kernel successor dependsOn graph, for every natural BYPASS root and every fixture; coarse substitute identifiability is re-measured",
+      "C2_OBSERVABLE_STATE_SUFFICIENT_FOR_DEMONSTRATED_TASKS": [
+        "1 PRIMARY_S2_VS_HIDDEN and PRIMARY_S2_VS_RUNTIME NI PASS in A and B (ALL)",
+        "2 no replicated MATERIAL HIDDEN_OVER_S2 or HIDDEN_REFIT_OVER_S2 in any required population stratum",
+        "3 environment-dynamics value non-material (Stage 3G.8 C5, reproduced)",
+        "4 semantic exactness 1.0 without privileged information (disclosure safety, hidden-health collision preserved under S2 features, poison invariance)",
+        "5 UNKNOWN boundaries intact",
+        "6 no replicated MATERIAL advantage of any audit-only channel (hidden state or learned typed columns) over S2 in any required population stratum"
+      ],
+      "CURRENT_RUNTIME_DECISION_NONINFERIOR": "RUNTIME_VS_HIDDEN and RUNTIME_VS_SEMANTIC NI PASS in A and B",
+      "SEMANTICALLY_EXACT_RUNTIME_POSSIBLE": "semantic exactness 1.0 and disclosure privilege-safe",
+      "CURRENT_RUNTIME_SEMANTICALLY_EXACT": "coarse substitute identifiable for every natural BYPASS root",
+      "RELATION_INFORMATION_USEFUL_FOR_SEMANTICS_NOT_SCORING": "exactness 1.0 AND PRIMARY_S2_VS_RUNTIME PASS in A and B AND SEMANTIC_VALUE never replicated HARMFUL AND LEARNED_OVER_SEMANTIC replicated HARMFUL in a required stratum or in both BYPASS cohorts",
+      "STAGE3G_CLOSURE": "C1, C3-C8 as certified in Stage 3G.8 and re-verified here (integrity, UNKNOWN safety); C2 from this stage. If C2 fails, the single blocker is C2 with the failing condition named."
+    },
+    "fixtures": "Stage 3G.7/3G.8 BYPASS collision pair, multi-substitute lexical rename and hidden-health collision under CURRENT_COARSE_RELATION vs SEMANTIC channel; S2 feature vectors must be identical across the hidden-health pair. Population weight 0.",
+    "integrity": "Every evidence row: frozen G7 parity, semantic-off parity, root-column identity, UNKNOWN safety. Every 25th row: D4, order-preserving rename with reversed candidate order, poisoning, determinism and privileged key scan for S2 vectors.",
+    "feasibility": {
+      "maxSecondsPerRow": 120,
+      "evidenceParts": 8,
+      "generationWorkers": 8,
+      "limitOutcome": "UNRESOLVED; no post-seal tuning"
+    },
+    "authority": {
+      "AUTHORITY": "R0",
+      "CAN_DISPATCH": false,
+      "CAN_MUTATE_LIVE_WORLD": false,
+      "ONLINE_LEARNING_ENABLED": false,
+      "PROMOTED_TO_LIVE_RUNTIME": false
+    },
+    "scope": {
+      "liveAdapterChanged": false,
+      "learnedWorldModel": false,
+      "counterfactualPrediction": false,
+      "stage3H": "not begun",
+      "oracleRouterNexusPrimeRedesign": false,
+      "expert10": false,
+      "learnedTypedFeaturesPromoted": false
+    },
+    "codeLocation": "stage3g9/ (outside src/ and scripts/, which the frozen Stage 3G.7 source hash scans)"
+  }
+}
