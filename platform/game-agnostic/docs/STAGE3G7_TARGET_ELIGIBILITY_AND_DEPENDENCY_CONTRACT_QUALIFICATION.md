@@ -24,6 +24,8 @@ OPEN: 320 rows. Each sealed family: 960 rows, 576 with horizon>2 for primary inf
 
 Contract hash: `192e15e305ed886f6e5984ebae1380439a7f390628f23b413218c68960e4b2dd`. Provenance and effect certainty are separate. Offered complete-menu membership establishes current legality; it does not reconstruct hidden predicates. Every actual future branch remains UNKNOWN for existence, survival, terminal status, and target state/position. Conditional reference geometry supports descriptors, never guaranteed execution.
 
+Existing entity-state schema hash: `d405b652703898dbd602cb2225db8f68eb725f382236a5371442e0d169bf78a6`. Current field/provenance-map digest: `1e84816e6e6ee3e8208955bddcbf250372a1714faf274c75ec0ecaed6bc368ec`. Prospective extension-description digest: `ea70776f51e667e461e36afbdbbc199eac73d019b9365c170efb34f6806a898e`; this binds the unimplemented proposal description, not a qualified live wire schema.
+
 The existing packet contains coarse relationships only. `substitutes`, `supplies`, and `protects` map to `supports` before adapter delivery. The BYPASS subtype distinction is **INFORMATION_UNAVAILABLE_AT_ADAPTER_OUTPUT**, not legitimate observable schema loss. An offline typed-relation diagnostic separates the collision; it requires a prospective disclosure and is not qualified for the current interface.
 
 A different, genuine projection loss exists: `metadata.objectives` already carries per-objective required/delivered amounts, but the entity state keeps only `objectiveFlag`. Preserving these amounts requires no new disclosure. Their decision value was not tested in this stage, and remains a current-information/scoring confound.
@@ -43,6 +45,8 @@ Individual nonactor availability, health, protected/planned/acceptsMaterial flag
 | ATTACK | Offered menu: known | UNKNOWN | energy>=2; range<=1; kind=HOSTILE; health>0 (availability not required) |
 | BYPASS | Offered menu: known | UNKNOWN | energy>=3; range<=1; available=false; dependsOn(dependent,target); typed substitutes(candidate,target); candidate available && health>0; lexical lowest identity |
 | BUILD | Offered menu: known | UNKNOWN | energy>=4; range<=1; planned=true; available=false |
+
+MOVE, RETREAT, and WAIT also have exact offered-menu current eligibility. Actual future eligibility remains UNKNOWN: MOVE uses conditional observed-map geometry, RETREAT additionally needs future live-hostile context, and all three require a nonterminal surviving actor.
 
 ## Collision and composition evidence
 
@@ -104,6 +108,8 @@ Paired materiality requires ≥5 percentage points of hit gain, a positive 95% l
 | BUILD | NOT_TESTABLE | NOT_TESTABLE | NOT_TESTABLE |
 | BYPASS | NOT_TESTABLE | NOT_TESTABLE | NOT_TESTABLE |
 
+The new LOW raw-known hit gains are 5.48 percentage points in A and 1.47 in B, so this stage does not replicate its material-gap gate. This does not erase Stage 3G.6's earlier exploratory LOW result or establish equivalence. No stratum passed the replicated environment material-value gate.
+
 ## Positive noninferiority and cap qualification
 
 180 one-sided noninferiority endpoints control familywise alpha .05. Separate 95% materiality and sensitivity intervals are diagnostic and do not independently pass readiness. Margins: hit deficit <.05, normalized-regret excess <.01; n≥100. Paired deterministic 40,000-resample intervals. A NOT_TESTABLE interval does not establish equivalence or a deficit. Sparse target cells stay NOT_TESTABLE.
@@ -156,6 +162,8 @@ Paired materiality requires ≥5 percentage points of hit gain, a positive 95% l
 | depth3/B/1024 | 8 | 87.50% | 0.03750 | 0.00% | 85.71% |
 | depth3/B/2048 | 8 | 100.00% | 0.00000 | 12.50% | 39.29% |
 
+Caps 1,024 and 2,048 completed conditional D2 layers on every tested root; primary cap 512 truncated 2.17%/2.86% of roots in A/B. Positive NI against both larger caps passed in ALL and LOW in both families. MID/HIGH/RETREAT precision and absent/sparse target-action cells prevent full-domain qualification. Completion of this conditional reference is distinct from coverage of actual future legality.
+
 The exhaustive cohort is selected by a fixed hash rule, uses cap 65,536, and is exhaustive only for completed layers with no truncation. D3 uses a separate fixed hash cohort and the unchanged D2 head; its scores are descriptive sensitivity, not a newly qualified D3 policy. Generated counts after truncation are lower bounds. Neither sparse exhaustive/D3 samples nor small decision sensitivity retire full-domain coverage uncertainty.
 
 ## Genuine information ablations
@@ -176,7 +184,7 @@ Relationship ablation removes root count, threat/hub, derived BYPASS summaries, 
 | NO_SERVICE_STATE | [0.10764, 0.18229] | [0.09311, 0.15161] | [0.12847, 0.19792] | [0.10647, 0.16082] |
 | NO_ACCESSIBILITY | [-0.01302, 0.02778] | [-0.00439, 0.02116] | [0.00955, 0.05208] | [0.00477, 0.03410] |
 
-These are frozen-weight sensitivities. They do not prove information necessity, planning sufficiency, or causal depth benefit. Full paired intervals, strata and decision/regret results are in the certificate.
+Removing current service information reduced ALL hit by 14.41/16.32 percentage points in A/B; both descriptive 95% intervals exclude zero. Removing relationships changed 3.47%/6.60% of decisions, but its hit-loss intervals include zero and its point estimates improve hit slightly. These are frozen-weight sensitivities. They do not prove information necessity, planning sufficiency, or causal depth benefit. Full paired intervals, strata and decision/regret results are in the certificate.
 
 ## Scientific conclusion and roadmap
 
@@ -203,7 +211,7 @@ The smallest supported next step is to qualify preservation of already-visible o
 
 Platform: 2367 passed, zero failures, 1 skipped. Overlay: 23 passed. Lab: 33 passed and the same seven legacy failures. Assertion causes and raw source-byte fingerprints match Stage 3G.6; no age-based obsolescence claim and no unrelated repair.
 
-Canonical inherited checks, contract tests, poison/order/D4 samples, two read-only checks, and independent fresh-clone reproduction are required. Their completed command/hash/fingerprint proofs are stored alongside the certificate. The clone rebuilds new OPEN/sealed rows, OPEN fitting and stage evidence; no G7 raw input or evidence cache is copied. Read-only checks may rebuild ignored caches but must leave tracked state unchanged.
+Canonical inherited checks, contract tests, poison/order/D4 samples, two read-only checks, and independent fresh-clone reproduction are required. Their completed command/hash/fingerprint proofs are stored alongside the certificate. Both original read-only checks and the clone certificate check reproduced the same certificate hash, with tracked byte fingerprints unchanged. Independent cold OPEN and sealed feature rebuilds preceded the final clone check. The clone rebuilds new OPEN/sealed rows, OPEN fitting and stage evidence; no G7 raw input or evidence cache is copied. Read-only checks may rebuild ignored caches but must leave tracked state unchanged.
 
 A transport-only amendment normalized IEEE signed zero before evidence caching and hashing, preserving seeds, labels, features, policy dimensions, fitted coefficients, caps, and scoring. Undefined/nonfinite values are rejected and UNKNOWN is preserved. The fresh clone independently rebuilt the corrected evidence; no Stage 3G.7 raw corpus or evidence cache was copied. A second verification-only amendment corrected the manifest guard to use raw UTF8 SHA256 rather than canonically framed string hashing. The initial SEALED_DRIFT rejection happened before aggregate performance and was not classified as legacy failure; the original and clone payloads already matched. The harness disclosure also records a corrected preload-path failure and a missing inherited-input setup retry. Neither is classified as a legacy test failure.
 
