@@ -1,0 +1,40 @@
+{
+  "kind": "TRANSPORT_ONLY_REPRODUCIBILITY_CORRECTION",
+  "frozenProtocolHead": "4d682cc2351c667c0351a17d591a9724fedcd892",
+  "sealedPerformanceEvaluated": false,
+  "cause": "Cold historical G6 geometry features contained IEEE -0; JSON reloading converts it to 0, while stableStringify hashes them distinctly.",
+  "correction": "Normalize signed zero before caching/hashing; reject undefined/nonfinite values. No UNKNOWN coercion.",
+  "unchanged": [
+    "planHash",
+    "seeds",
+    "quotas",
+    "caps",
+    "policy variants",
+    "feature dimensions",
+    "OPEN fitted coefficients and model hashes",
+    "input rows",
+    "labels",
+    "scoring rules"
+  ],
+  "originalOpenReportHash": "a38e5837138be9065698b03c9e09d506e652990b83043fbcac19f9e3615ce398",
+  "correctedOpenReportHash": "b06a97ed3b0ccf6da99354430ff4d95275c9a8bff6d5b39b77b29cf518067a58",
+  "originalSourceHash": "45956e3eb6150ca7416d5d80bb79a3498f2e4cd2ccc5e56ef5b8e8b1088d5a41",
+  "correctedSourceHash": "5abdbce0547fab90b02c907fe5719538b97f2522f8488dca03acd4567d624349",
+  "oldFeatureSourceHash": "f4d8d557513f04adce9f9c86a5b0b83647238fd39d831c9e42b08df6765a4ff0",
+  "newFeatureSourceHash": "ac1bafe4ef3a7976205cdb825568070870a2b0f8dbb24139d0d8feed5b477bd2",
+  "modelHashes": {
+    "QUALIFIED_512": "382d454d9cdd7e5d5e9219aa8a4ff9a29009bdcc2bc395edbd625ccfae69e2f6",
+    "D0": "73483245b2d1350b3580d4e10e3ba9ca281ae0daa448f4ceff6f80f1d9a0b721",
+    "MATCHED_KNOWN": "8b3d0dfd7497080fff66aee16653f817918e22f16030a8bdcde4c4c691392722",
+    "MATCHED_CURRENT_PRIVATE": "09cf36887475ad0e275421226f2ab7e67ee6c17a7197324ddcc07a0024b5d530"
+  },
+  "migration": {
+    "OPEN": {
+      "oldKey": "230f66daf1a6484971c27739b5f847aa4356959223a1e64a4f50a01b8131cb17",
+      "newKey": "410bdda0f62bafbcf1a6597b083776f5bd2ff0b0573279abfa700bb5ec0b837b",
+      "transportedContentUnchanged": true,
+      "evidenceHash": "2022825fb61eccc7282deb98f7f2de1dacc44f5ad4aa35eb4cb13ff06c91a645"
+    }
+  },
+  "requiresIndependentColdCloneRebuild": true
+}
