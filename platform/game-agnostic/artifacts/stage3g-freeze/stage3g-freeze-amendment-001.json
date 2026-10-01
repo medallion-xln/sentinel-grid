@@ -1,0 +1,21 @@
+{
+  "amendmentId": "STAGE3G-FREEZE-AMENDMENT-001",
+  "kind": "VERIFICATION_HARNESS_ONLY",
+  "file": "stage3g-freeze/certify.mjs",
+  "previousRawSha256": "e6bf48b97ca97ec240ab151153fdbe1b4722de942cc63feb59833b42dd9afc99",
+  "correctedRawSha256": "0fa962f375207b3b0ae570b3543b44727651d8cb4c970a90bb284fb12ccd8c65",
+  "defect": "The certifier always passed --test-reporter=tap to its freeze-test subprocess. Under scripts/reproducibility/run-canonical.mjs, NODE_OPTIONS already carries --test-reporter=tap, so node --test aborted with ERR_INVALID_ARG_VALUE (two reporters, no destinations). The first two read-only --check runs therefore recomputed TESTS_PASS=false and reported CERTIFICATION_REPRODUCED=false, although the freeze rebuilt byte-identically and the tests pass.",
+  "correction": "Add --test-reporter=tap only when NODE_OPTIONS does not already set a reporter (the rule the Stage 3G.6/3G.7 suite runners already use).",
+  "unchanged": {
+    "STAGE3G_FREEZE_HASH": "686805d655e94e4ecc24a98d965a4e2f33ed8c51c69e746fc11e96022b64f2f5",
+    "freezeArtifact": "artifacts/stage3g-freeze/stage3g-freeze.json (byte-identical; not re-written)",
+    "CERTIFICATION_HASH": "38c5b1b2a89f1da27f367055009879dbc1c7b1e032b757a82f6a032e3abda58a",
+    "certificate": "not re-written; the corrected --check recomputes it byte-identically",
+    "bindings": "no bound value, conclusion, hash or criterion changed"
+  },
+  "failedPreAmendmentChecks": {
+    "twoChecks": "both exit 1, CERTIFICATION_REPRODUCED=false, recomputed 3e6e888137371d50d325885ff0da589d569865099875dc6e2fa607d1d6fdb488 (TESTS_PASS=false)",
+    "freshClone": "FREEZE_REBUILT=true, TESTS_PASS=true (run outside run-canonical), CERTIFICATION_REPRODUCED=false for the same harness cause"
+  },
+  "classification": "Disclosed verification-harness amendment; not a scientific amendment and not a legacy test failure."
+}
