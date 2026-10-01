@@ -1,0 +1,151 @@
+{
+  "checks": {
+    "stage3f": {
+      "command": [
+        "node",
+        "scripts/reproducibility/run-canonical.mjs",
+        "scripts/stage3f-freeze-certify.mjs",
+        "--check"
+      ],
+      "exitCode": 0,
+      "runtimeSeconds": 3549.3697623750195,
+      "sourceSha256": "004e6a634cbca7851d8273ff4d296a77cdfffe8c2cb9dc2ba5a66fa230d4e29d",
+      "logSha256": "90b5ea64fe945dfec1c89dc53e2805f2b0ceaaec8c18e33423da849c3f9b442e",
+      "logPath": "/tmp/stage3g7-logs/stage3f.log",
+      "tail": "[stage3f-freeze] reproducing Stage 3F-RP\n[stage3f-freeze] reproducing Stage 3F.6-CR (runs the symmetric chain)\n[stage3f-freeze] running freeze tests\n{\n  \"check\": \"STAGE3F_FREEZE_CERTIFICATION\",\n  \"reproduced\": true,\n  \"status\": \"PASS\",\n  \"storedHash\": \"0fe5d3e24f71015b76f5997771f2474712d2764bc049fc2e90e0144f8d2a08ce\",\n  \"recomputedHash\": \"0fe5d3e24f71015b76f5997771f2474712d2764bc049fc2e90e0144f8d2a08ce\",\n  \"trackedWriteAttempts\": 0,\n  \"blockers\": [],\n  \"tests\": {\n    \"pass\": 20,\n    \"fail\": 0,\n    \"skipped\": 0\n  }\n}\n",
+      "reproduced": true,
+      "certificatePath": "artifacts/stage3f-freeze/stage3f-freeze-certification-result.json",
+      "certificationHash": "0fe5d3e24f71015b76f5997771f2474712d2764bc049fc2e90e0144f8d2a08ce",
+      "certificateSelfHashVerified": true,
+      "readOnlyCanonicalGuardPassed": true
+    },
+    "stage3g12": {
+      "command": [
+        "node",
+        "scripts/reproducibility/run-canonical.mjs",
+        "scripts/certify-stage3g-predictive-integrity.mjs",
+        "--check"
+      ],
+      "exitCode": 0,
+      "runtimeSeconds": 1576.627706834115,
+      "sourceSha256": "40be17ad29153f3c9a231f06102fcb03a97982a7f4ddd707c369ebcf62d350cb",
+      "logSha256": "c679db48b5f76b8cac1f433f9342591d30ef8fcef072490d3c3599630e8a7691",
+      "logPath": "/tmp/stage3g7-logs/stage3g12.log",
+      "tail": "[stage3g] preparing DEV and CAL evidence\n[stage3g] DEV 2000/3393\n[stage3g] CAL 2000/3427\n[stage3g] fit G_MANHATTAN_MAIN\n[stage3g] fit G_PATH_MAIN\n[stage3g] fit G_PATH_INTERACT\n[stage3g] fit D_NEW_PLUS_PRIVILEGED\n[stage3g] fit D_NEW_PLUS_ONE_STEP\n[stage3g] fit D_NEW_PLUS_PRIVILEGED_ONE_STEP\n[stage3g] fit D_NEW_PLUS_ABSOLUTE_DIRECTION\n[stage3g] fit D_NEW_PLUS_HIDDEN_ORIENTATION\n[stage3g] preparing STAGE3G_HOLDOUT\n[stage3g] STAGE3G_HOLDOUT 2000/5271\n[stage3g] STAGE3G_HOLDOUT 4000/5271\n[stage3g] preparing STAGE3G_OOD\n[stage3g] STAGE3G_OOD 2000/5670\n[stage3g] STAGE3G_OOD 4000/5670\n[stage3g] preparing P1ASYM_HOLDOUT\n[stage3g] P1ASYM_HOLDOUT 2000/5211\n[stage3g] P1ASYM_HOLDOUT 4000/5211\n[stage3g] preparing P1ASYM_OOD\n[stage3g] P1ASYM_OOD 2000/5704\n[stage3g] P1ASYM_OOD 4000/5704\n[stage3g] evaluating STAGE3G_HOLDOUT\n[stage3g] evaluating STAGE3G_OOD\n[stage3g] evaluating P1ASYM_HOLDOUT\n[stage3g] evaluating P1ASYM_OOD\n[stage3g] running Stage 3G tests\n{\n  \"check\": \"STAGE3G_CERTIFICATION\",\n  \"reproduced\": true,\n  \"status\": \"PASS\",\n  \"storedHash\": \"7f39253507a4219dac0a0c4a83cfe7d14b2d37fa1498ebb2767560bdea695100\",\n  \"recomputedHash\": \"7f39253507a4219dac0a0c4a83cfe7d14b2d37fa1498ebb2767560bdea695100\",\n  \"tests\": {\n    \"pass\": 24,\n    \"fail\": 0,\n    \"skipped\": 0\n  }\n}\n",
+      "reproduced": true,
+      "certificatePath": "artifacts/stage3g-predictive-integrity/stage3g-certification-result.json",
+      "certificationHash": "7f39253507a4219dac0a0c4a83cfe7d14b2d37fa1498ebb2767560bdea695100",
+      "certificateSelfHashVerified": true,
+      "readOnlyCanonicalGuardPassed": true
+    },
+    "stage3g3": {
+      "command": [
+        "node",
+        "scripts/reproducibility/run-canonical.mjs",
+        "scripts/stage3g3/certify.mjs",
+        "--check"
+      ],
+      "exitCode": 0,
+      "runtimeSeconds": 1966.2475658331532,
+      "sourceSha256": "cd7dd8849c6dd7220ae2a4894d1d9f1493b60d7cd3fc4d086ebbf910a5ac140a",
+      "logSha256": "6bdeb6ce09f387e71111669017f1f8686436d9d8b261bd4d41c292415c6646e6",
+      "logPath": "/tmp/stage3g7-logs/stage3g3.log",
+      "tail": "[stage3g3] preparing DEV and CAL evidence\n[stage3g3] DEV 2000/3393\n[stage3g3] CAL 2000/3427\n[stage3g3] fit NEW_LINEAR\n[stage3g3] fit NEW_INTERACTION\n[stage3g3] fit MLP 8\n[stage3g3] fit MLP 16\n[stage3g3] fit MLP 32\n[stage3g3] fit D_ONE_STEP\n[stage3g3] fit D_H2\n[stage3g3] fit D_H3\n[stage3g3] fit D_H4\n[stage3g3] fit D_OPTION\n[stage3g3] fit D_TEMPORAL_FEATURES\n[stage3g3] fit D_PRIVILEGED_RELATIONS\n[stage3g3] preparing STAGE3G3_HOLDOUT\n[stage3g3] STAGE3G3_HOLDOUT 2000/5266\n[stage3g3] STAGE3G3_HOLDOUT 4000/5266\n[stage3g3] preparing STAGE3G3_OOD\n[stage3g3] STAGE3G3_OOD 2000/5673\n[stage3g3] STAGE3G3_OOD 4000/5673\n[stage3g3] evaluating STAGE3G3_HOLDOUT\n[stage3g3] evaluating STAGE3G3_OOD\n[stage3g3] running Stage 3G.3 tests\n{\n  \"check\": \"STAGE3G3_CERTIFICATION\",\n  \"reproduced\": true,\n  \"status\": \"PASS\",\n  \"storedHash\": \"6f58040133deae625e61c636f881b9283da62458581387b0dbe9afee6b4a8c69\",\n  \"recomputedHash\": \"6f58040133deae625e61c636f881b9283da62458581387b0dbe9afee6b4a8c69\",\n  \"tests\": {\n    \"pass\": 15,\n    \"fail\": 0,\n    \"skipped\": 0\n  }\n}\n",
+      "reproduced": true,
+      "certificatePath": "artifacts/stage3g3-temporal-attribution/stage3g3-certification-result.json",
+      "certificationHash": "6f58040133deae625e61c636f881b9283da62458581387b0dbe9afee6b4a8c69",
+      "certificateSelfHashVerified": true,
+      "readOnlyCanonicalGuardPassed": true
+    },
+    "stage3g4": {
+      "command": [
+        "/Users/dwaynecampbell/.nvm/versions/node/v22.22.2/bin/node",
+        "scripts/reproducibility/run-canonical.mjs",
+        "scripts/stage3g4/certify.mjs",
+        "--check"
+      ],
+      "exitCode": 0,
+      "runtimeSeconds": 3868.946129542077,
+      "sourceSha256": "37a2ac7f808adb8d1ab4a28a8323fe496bdaff2fd87ea5a2f2b4c0a009d9421a",
+      "logSha256": "15c01f12b59673773aa165d6e58dd0f747db22a343e4a5a8ca077c16c9704c38",
+      "logPath": "/tmp/stage3g7-logs/stage3g4-overlap.log",
+      "tail": "[stage3g4] preparing Stage 3G.3 DEV rows and the open fit set\n[stage3g4] DEV 1000/3393\n[stage3g4] DEV 2000/3393\n[stage3g4] DEV 3000/3393\n[stage3g4] FIT 1000/2125\n[stage3g4] FIT 2000/2125\n[stage3g4] fit NEW_LINEAR\n[stage3g4] fit NEW_INTERACTION\n[stage3g4] fit D_ONE_STEP\n[stage3g4] fit D_H2\n[stage3g4] fit D_H3\n[stage3g4] fit D_H4\n[stage3g4] fit D_OPTION\n[stage3g4] fit D_OBS_OPTION\n[stage3g4] fit D_SEARCH_D1\n[stage3g4] fit D_SEARCH_D2\n[stage3g4] fit NEW_LINEAR_LB\n[stage3g4] fit D_H3_LB\n[stage3g4] fit D_OBS_OPTION_LB\n[stage3g4] preparing family A\n[stage3g4] A 1000/6873\n[stage3g4] A 2000/6873\n[stage3g4] A 3000/6873\n[stage3g4] A 4000/6873\n[stage3g4] A 5000/6873\n[stage3g4] A 6000/6873\n[stage3g4] preparing family B\n[stage3g4] B 1000/6880\n[stage3g4] B 2000/6880\n[stage3g4] B 3000/6880\n[stage3g4] B 4000/6880\n[stage3g4] B 5000/6880\n[stage3g4] B 6000/6880\n[stage3g4] scoring\n[stage3g4] per-level and band reports\n[stage3g4] integrity\n[stage3g4] running Stage 3G.4 tests\n{\n  \"check\": \"STAGE3G4_CERTIFICATION\",\n  \"reproduced\": true,\n  \"status\": \"PASS\",\n  \"storedHash\": \"259195ba9c2d223010d8302579c665c67fd20b666f43b35c9ae539e6e70cb4c8\",\n  \"recomputedHash\": \"259195ba9c2d223010d8302579c665c67fd20b666f43b35c9ae539e6e70cb4c8\",\n  \"tests\": {\n    \"pass\": 7,\n    \"fail\": 0,\n    \"skipped\": 0\n  }\n}\n",
+      "beforeFingerprint": "997569772898623cbb9d9ef3b2b49b051b642d94f03aeaa7e58d9627c8583122",
+      "afterFingerprint": "997569772898623cbb9d9ef3b2b49b051b642d94f03aeaa7e58d9627c8583122",
+      "trackedStateUnchanged": true,
+      "reproduced": true,
+      "certificatePath": "artifacts/stage3g4-level-replication/stage3g4-certification-result.json",
+      "certificationHash": "259195ba9c2d223010d8302579c665c67fd20b666f43b35c9ae539e6e70cb4c8",
+      "certificateSelfHashVerified": true,
+      "readOnlyCanonicalGuardPassed": true
+    },
+    "stage3g5": {
+      "command": [
+        "/Users/dwaynecampbell/.nvm/versions/node/v22.22.2/bin/node",
+        "scripts/reproducibility/run-canonical.mjs",
+        "scripts/stage3g5/certify.mjs",
+        "--check"
+      ],
+      "exitCode": 0,
+      "runtimeSeconds": 29.795897499890998,
+      "sourceSha256": "404f03a9783ca2bf2ff7bcc2c240b2377a0adb948e345642e3331a249ae4a300",
+      "logSha256": "b9de71d2c4bb412be4f6681da67015b623debfbea335b77bead3b9ba297cb5cd",
+      "logPath": "/tmp/stage3g7-logs/stage3g5-overlap.log",
+      "tail": "ge3g5] evaluate A L0\n[stage3g5] evaluate A L1\n[stage3g5] evaluate A L2\n[stage3g5] evaluate A L3\n[stage3g5] evaluate A L4\n[stage3g5] evaluate A L5\n[stage3g5] evaluate A L6\n[stage3g5] evaluate A L7\n[stage3g5] evaluate A RETREAT_OPTIMAL\n[stage3g5] evaluate A NON_RETREAT\n[stage3g5] evaluate A HORIZON_DEPENDENT\n[stage3g5] evaluate B ALL\n[stage3g5] evaluate B LOW\n[stage3g5] evaluate B MID\n[stage3g5] evaluate B HIGH\n[stage3g5] evaluate B L0\n[stage3g5] evaluate B L1\n[stage3g5] evaluate B L2\n[stage3g5] evaluate B L3\n[stage3g5] evaluate B L4\n[stage3g5] evaluate B L5\n[stage3g5] evaluate B L6\n[stage3g5] evaluate B L7\n[stage3g5] evaluate B RETREAT_OPTIMAL\n[stage3g5] evaluate B NON_RETREAT\n[stage3g5] evaluate B HORIZON_DEPENDENT\n[stage3g5] evaluate POOLED ALL\n[stage3g5] evaluate POOLED LOW\n[stage3g5] evaluate POOLED MID\n[stage3g5] evaluate POOLED HIGH\n[stage3g5] evaluate POOLED L0\n[stage3g5] evaluate POOLED L1\n[stage3g5] evaluate POOLED L2\n[stage3g5] evaluate POOLED L3\n[stage3g5] evaluate POOLED L4\n[stage3g5] evaluate POOLED L5\n[stage3g5] evaluate POOLED L6\n[stage3g5] evaluate POOLED L7\n[stage3g5] evaluate POOLED RETREAT_OPTIMAL\n[stage3g5] evaluate POOLED NON_RETREAT\n[stage3g5] evaluate POOLED HORIZON_DEPENDENT\n{\n  \"reproduced\": true,\n  \"status\": \"PASS\",\n  \"storedHash\": \"d472f04f00560229f20020f030722fdf3981f91155424d0a7a2004662be768da\",\n  \"recomputedHash\": \"d472f04f00560229f20020f030722fdf3981f91155424d0a7a2004662be768da\",\n  \"tests\": {\n    \"exitCode\": 0,\n    \"pass\": 6,\n    \"fail\": 0\n  }\n}\n",
+      "beforeFingerprint": "997569772898623cbb9d9ef3b2b49b051b642d94f03aeaa7e58d9627c8583122",
+      "afterFingerprint": "997569772898623cbb9d9ef3b2b49b051b642d94f03aeaa7e58d9627c8583122",
+      "trackedStateUnchanged": true,
+      "reproduced": true,
+      "certificatePath": "artifacts/stage3g5-observable-model-search/stage3g5-certification-result.json",
+      "certificationHash": "d472f04f00560229f20020f030722fdf3981f91155424d0a7a2004662be768da",
+      "certificateSelfHashVerified": true,
+      "readOnlyCanonicalGuardPassed": true
+    },
+    "stage3g6": {
+      "command": [
+        "/Users/dwaynecampbell/.nvm/versions/node/v22.22.2/bin/node",
+        "scripts/reproducibility/run-canonical.mjs",
+        "scripts/stage3g6/certify.mjs",
+        "--check"
+      ],
+      "exitCode": 0,
+      "runtimeSeconds": 44.86092370888218,
+      "sourceSha256": "09d3d94d90af00ceb81b2c35cac35c3d2e5879f2ea3e963340f1134f86751cba",
+      "logSha256": "861e715e144dc370833d3e8b0d24991056c3f3d0c32a289ac84aaec472d7fc5d",
+      "logPath": "/tmp/stage3g7-logs/stage3g6-overlap.log",
+      "tail": "TREAT\n[stage3g6 evaluate] A ACTION_WAIT\n[stage3g6 evaluate] A ACTION_COLLECT\n[stage3g6 evaluate] A ACTION_TRANSFER\n[stage3g6 evaluate] A ACTION_PROTECT\n[stage3g6 evaluate] A ACTION_RESTORE\n[stage3g6 evaluate] A ACTION_REINFORCE\n[stage3g6 evaluate] A ACTION_REPAIR\n[stage3g6 evaluate] A ACTION_ATTACK\n[stage3g6 evaluate] A ACTION_BYPASS\n[stage3g6 evaluate] A ACTION_BUILD\n[stage3g6 evaluate] B ALL\n[stage3g6 evaluate] B LOW\n[stage3g6 evaluate] B MID\n[stage3g6 evaluate] B HIGH\n[stage3g6 evaluate] B RETREAT\n[stage3g6 evaluate] B NON_RETREAT\n[stage3g6 evaluate] B HORIZON_DEPENDENT\n[stage3g6 evaluate] B L0\n[stage3g6 evaluate] B L1\n[stage3g6 evaluate] B L2\n[stage3g6 evaluate] B L3\n[stage3g6 evaluate] B L4\n[stage3g6 evaluate] B L5\n[stage3g6 evaluate] B L6\n[stage3g6 evaluate] B L7\n[stage3g6 evaluate] B ACTION_MOVE\n[stage3g6 evaluate] B ACTION_RETREAT\n[stage3g6 evaluate] B ACTION_WAIT\n[stage3g6 evaluate] B ACTION_COLLECT\n[stage3g6 evaluate] B ACTION_TRANSFER\n[stage3g6 evaluate] B ACTION_PROTECT\n[stage3g6 evaluate] B ACTION_RESTORE\n[stage3g6 evaluate] B ACTION_REINFORCE\n[stage3g6 evaluate] B ACTION_REPAIR\n[stage3g6 evaluate] B ACTION_ATTACK\n[stage3g6 evaluate] B ACTION_BYPASS\n[stage3g6 evaluate] B ACTION_BUILD\n{\n  \"reproduced\": true,\n  \"status\": \"PASS\",\n  \"storedHash\": \"291e8ac8f681cb6b38983ff1abcd25cd0352b6a4ebeda0c8aab8442b9929d766\",\n  \"recomputedHash\": \"291e8ac8f681cb6b38983ff1abcd25cd0352b6a4ebeda0c8aab8442b9929d766\",\n  \"tests\": {\n    \"exitCode\": 0,\n    \"pass\": 15,\n    \"fail\": 0\n  }\n}\n",
+      "beforeFingerprint": "997569772898623cbb9d9ef3b2b49b051b642d94f03aeaa7e58d9627c8583122",
+      "afterFingerprint": "997569772898623cbb9d9ef3b2b49b051b642d94f03aeaa7e58d9627c8583122",
+      "trackedStateUnchanged": true,
+      "reproduced": true,
+      "certificatePath": "artifacts/stage3g6-action-surface-audit/stage3g6-certification-result.json",
+      "certificationHash": "291e8ac8f681cb6b38983ff1abcd25cd0352b6a4ebeda0c8aab8442b9929d766",
+      "certificateSelfHashVerified": true,
+      "readOnlyCanonicalGuardPassed": true
+    }
+  },
+  "INHERITANCE_INTACT": true,
+  "orchestration": {
+    "reason": "Run independent remaining checks alongside the long Stage3G3 check. Stop original sequential runner only after its actual Stage3G3 exit/status is recorded, before redundant Stage3G4 computation proceeds.",
+    "capturedOriginalChecks": [
+      "stage3f",
+      "stage3g12",
+      "stage3g3"
+    ],
+    "stoppedOriginalRunnerPid": 93799,
+    "possibleRedundantNextWrapperPids": [
+      31084
+    ],
+    "scope": "Orchestration interruption, not an assertion failure or scientific amendment."
+  },
+  "trackedState": {
+    "baselineCommit": "9977f3952de32215df1205a87531a2291c0e2d28",
+    "files": 2144,
+    "beforeFingerprint": "3fa7cbe86c5f9356f57e694bc0231442093cc74ff2de83bff39e7f41dcc97816",
+    "afterFingerprint": "3fa7cbe86c5f9356f57e694bc0231442093cc74ff2de83bff39e7f41dcc97816",
+    "bytesUnchanged": true,
+    "changedFiles": []
+  },
+  "fingerprintScope": "All files tracked at the inherited Stage3G6 baseline; Stage3G7 additions excluded. Before bytes are reconstructed from that immutable Git commit, not represented as a timed capture for each predecessor invocation.",
+  "runtime": "Node.js 22.22.2 with SENTINEL_CANONICAL_NUMERICS_V1; existing ancestor sources and criteria unchanged."
+}

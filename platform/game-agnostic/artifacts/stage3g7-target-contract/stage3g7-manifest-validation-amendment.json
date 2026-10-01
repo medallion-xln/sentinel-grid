@@ -1,0 +1,42 @@
+{
+  "kind": "MANIFEST_DIGEST_VERIFICATION_CORRECTION",
+  "sealedPerformanceEvaluated": false,
+  "previousSourceHash": "f36d1b93e7f05a6a5b8fe3f25f2fb51d39dc76d188c54791d02779cdcb3d11eb",
+  "correctedSourceHash": "5e82950a9022a1dc705d86737bfec805c8dd103ece4ec762936a3470891725ca",
+  "previousOpenReportHash": "e1160a524f692241e9d8b6524fac7ade64f95fad6c3cc2f1bde544b67977ced1",
+  "correctedOpenReportHash": "e641dc0ff04091ec8fd0ab12442621141526e048ffb3fbc48962f8bfcc10bcd8",
+  "featureSourceHash": "ac1bafe4ef3a7976205cdb825568070870a2b0f8dbb24139d0d8feed5b477bd2",
+  "modelHashes": {
+    "QUALIFIED_512": "382d454d9cdd7e5d5e9219aa8a4ff9a29009bdcc2bc395edbd625ccfae69e2f6",
+    "D0": "73483245b2d1350b3580d4e10e3ba9ca281ae0daa448f4ceff6f80f1d9a0b721",
+    "MATCHED_KNOWN": "8b3d0dfd7497080fff66aee16653f817918e22f16030a8bdcde4c4c691392722",
+    "MATCHED_CURRENT_PRIVATE": "09cf36887475ad0e275421226f2ab7e67ee6c17a7197324ddcc07a0024b5d530"
+  },
+  "sealedContentHash": "7f2859eb9e78a221632d339ed262c8b8ffbdffa8abf72b86a3fc8cf365e3aa53",
+  "rawDigestVerified": true,
+  "modifiedPayloadRejected": true,
+  "incorrectFramedDigest": "f6014f6c5a255eeb9036d6c98a922afc0cc024bb259bb78e709620042bb64b5c",
+  "cause": "Generator contentHash is SHA256 over raw UTF8 JSONL; determinism.sha256(string) hashes JSON-framed text instead. The first run stopped at this guard before aggregate sealed performance.",
+  "correction": "Use node:crypto SHA256 over the exact uncompressed UTF8 payload; retain canonical object hashing for structured evidence and certificates.",
+  "unchanged": [
+    "input rows and content hash",
+    "feature evidence and source hash",
+    "all model coefficients/model hashes",
+    "seed plan",
+    "caps/cohorts",
+    "variants",
+    "fitting",
+    "labels and global denominators",
+    "endpoints/margins/multiplicity"
+  ],
+  "failureLogSha256": "d5fad7e3a5abb104a9bf3eb12cde0fb5a2e974dd5dff7879966af09ef869321c",
+  "validation": {
+    "OPEN_REPRODUCED": true,
+    "targetContractTests": {
+      "pass": 15,
+      "fail": 0
+    },
+    "openVerificationLogSha256": "100eb059b744ef480564f4ca3b65f6401eab23e8fa9fa7c0035ed01f87a8569e",
+    "unitLogSha256": "17eefaf050c1ba361b7349c3567afee9cbaabdc504ff251eb29b40bb3c5421ad"
+  }
+}
