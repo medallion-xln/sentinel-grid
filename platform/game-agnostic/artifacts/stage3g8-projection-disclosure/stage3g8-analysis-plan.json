@@ -1,0 +1,436 @@
+{
+  "planHash": "0796e717b0524776764fd030f5356e01c4e5546e180f3fed73a114adbb2e8b0e",
+  "plan": {
+    "stage": "STAGE3G8",
+    "title": "Existing-observation projection and prospective disclosure value qualification",
+    "inheritance": {
+      "checks": {
+        "stage3f": {
+          "script": "scripts/stage3f-freeze-certify.mjs",
+          "certificate": "artifacts/stage3f-freeze/stage3f-freeze-certification-result.json",
+          "hash": "0fe5d3e24f71015b76f5997771f2474712d2764bc049fc2e90e0144f8d2a08ce",
+          "expectedSeconds": 3550
+        },
+        "stage3g12": {
+          "script": "scripts/certify-stage3g-predictive-integrity.mjs",
+          "certificate": "artifacts/stage3g-predictive-integrity/stage3g-certification-result.json",
+          "hash": "7f39253507a4219dac0a0c4a83cfe7d14b2d37fa1498ebb2767560bdea695100",
+          "expectedSeconds": 1577
+        },
+        "stage3g3": {
+          "script": "scripts/stage3g3/certify.mjs",
+          "certificate": "artifacts/stage3g3-temporal-attribution/stage3g3-certification-result.json",
+          "hash": "6f58040133deae625e61c636f881b9283da62458581387b0dbe9afee6b4a8c69",
+          "expectedSeconds": 1966
+        },
+        "stage3g4": {
+          "script": "scripts/stage3g4/certify.mjs",
+          "certificate": "artifacts/stage3g4-level-replication/stage3g4-certification-result.json",
+          "hash": "259195ba9c2d223010d8302579c665c67fd20b666f43b35c9ae539e6e70cb4c8",
+          "expectedSeconds": 3869
+        },
+        "stage3g5": {
+          "script": "scripts/stage3g5/certify.mjs",
+          "certificate": "artifacts/stage3g5-observable-model-search/stage3g5-certification-result.json",
+          "hash": "d472f04f00560229f20020f030722fdf3981f91155424d0a7a2004662be768da",
+          "expectedSeconds": 30
+        },
+        "stage3g6": {
+          "script": "scripts/stage3g6/certify.mjs",
+          "certificate": "artifacts/stage3g6-action-surface-audit/stage3g6-certification-result.json",
+          "hash": "291e8ac8f681cb6b38983ff1abcd25cd0352b6a4ebeda0c8aab8442b9929d766",
+          "expectedSeconds": 45
+        },
+        "stage3g7": {
+          "script": "scripts/stage3g7/certify.mjs",
+          "certificate": "artifacts/stage3g7-target-contract/stage3g7-certification-result.json",
+          "hash": "ec5ae9c1d2f011791ed93f6bfa2879756905647a4098fcb9c4a9cd42e87e79b6",
+          "expectedSeconds": 15
+        }
+      },
+      "STAGE3G7_CERTIFICATION_HASH": "ec5ae9c1d2f011791ed93f6bfa2879756905647a4098fcb9c4a9cd42e87e79b6",
+      "inheritedConclusions": {
+        "TARGET_ELIGIBILITY_OBSERVABLE": "OFFERED_CURRENT_LEGALITY_PASS_HIDDEN_PREDICATES_PARTIAL",
+        "DEPENDENCY_SUBTYPE_OBSERVABLE": false,
+        "BYPASS_EXACT_SUBSTITUTE_IDENTIFIABLE": "NOT_IDENTIFIABLE_UNDER_CURRENT_CONTRACT",
+        "FUTURE_TARGET_ELIGIBILITY_COMPLETE": false,
+        "TARGET_SEMANTICS_SUFFICIENT": false,
+        "DEPENDENCY_SEMANTICS_SUFFICIENT": false,
+        "SEARCH_BUDGET_SUFFICIENT": "NOT_TESTABLE_ON_FULL_REQUIRED_DOMAIN",
+        "ACTION_SURFACE_SUFFICIENT": false,
+        "DEPLOYABLE_PLANNING_SUFFICIENT": false,
+        "READY_FOR_3G_COUNTERFACTUAL_PREDICTION": false,
+        "WORLD_MODEL_WORK_NOW_JUSTIFIED": false,
+        "AUTHORITY": "R0"
+      }
+    },
+    "schemas": {
+      "OBJECTIVE_PROGRESS_V1": "1302aeea48be7c50bf8e90cdebfe9e35c6cc1b7475d83c73c02cf8b3cf46944f",
+      "TYPED_RELATION_DISCLOSURE_CANDIDATE_V1": "28a8e8ed587c8356b1853e8ba6ca61ca663e4c5a5630ba71e309916b01907588",
+      "CURRENT_OBSERVATION_BOUNDARY_V2": "dc2ad7ab5e74d68376d77f53be5692b2d0ff0dde9eeec37ee7dbffedc878ad62"
+    },
+    "g7": {
+      "planHash": "bound at OPEN phase from artifacts/stage3g7-target-contract/stage3g7-analysis-plan.json",
+      "primary": "QUALIFIED_512",
+      "fitting": {
+        "iterations": 2000,
+        "learningRate": 0.1,
+        "l2": 0.001,
+        "linearOnly": true
+      },
+      "depth": "D2=root+2 continuations; inferential horizon>2. D0 capacity-matched columns with continuation descriptor zeroed.",
+      "searchCaps": [
+        512
+      ]
+    },
+    "seeds": {
+      "fit": {
+        "source": "Stage 3G.7 OPEN fit set (seed 8013, 320 rows), hash-verified by its committed manifest; reused unchanged so BASELINE_G7 is the certified Stage 3G.7 head. No Stage 3G.8 OPEN rows are generated.",
+        "seed": 8013
+      },
+      "families": {
+        "A": [
+          9061,
+          19061,
+          29061,
+          39061,
+          49061,
+          59061,
+          69061,
+          79061
+        ],
+        "B": [
+          9071,
+          19071,
+          29071,
+          39071,
+          49071,
+          59071,
+          69071,
+          79071
+        ]
+      },
+      "cohorts": {
+        "BYPASS_A": [
+          9081,
+          19081,
+          29081,
+          39081,
+          49081,
+          59081,
+          69081,
+          79081
+        ],
+        "BYPASS_B": [
+          9091,
+          19091,
+          29091,
+          39091,
+          49091,
+          59091,
+          69091,
+          79091
+        ]
+      },
+      "quotas": {
+        "sealedPerFamilyLevelBand": 96,
+        "objectivePerFamilyLevelBand": 12,
+        "cohortPerLevelBand": 9
+      },
+      "reservedUntouched": [
+        5023,
+        5033
+      ],
+      "priorSeedSpaces": [
+        1,
+        2,
+        3,
+        11,
+        201,
+        202,
+        203,
+        211,
+        401,
+        402,
+        403,
+        411,
+        601,
+        602,
+        603,
+        611,
+        801,
+        802,
+        803,
+        811,
+        1001,
+        1002,
+        1003,
+        1011,
+        2001,
+        2002,
+        2003,
+        2011,
+        2012,
+        2013,
+        2021,
+        2022,
+        2023,
+        2031,
+        2032,
+        2033,
+        3021,
+        3022,
+        3023,
+        3031,
+        3032,
+        3033,
+        4021,
+        4031,
+        4022,
+        4023,
+        4032,
+        4033,
+        5021,
+        5031,
+        5022,
+        5032,
+        6011,
+        6012,
+        7021,
+        7031,
+        6013,
+        7041,
+        17041,
+        27041,
+        37041,
+        47041,
+        57041,
+        67041,
+        77041,
+        7051,
+        17051,
+        27051,
+        37051,
+        47051,
+        57051,
+        67051,
+        77051,
+        8013,
+        9041,
+        19041,
+        29041,
+        39041,
+        49041,
+        59041,
+        69041,
+        79041,
+        9051,
+        19051,
+        29051,
+        39051,
+        49051,
+        59051,
+        69051,
+        79051
+      ],
+      "admission": "Unmodified corpusRecord. Families A/B: equal level x horizon-band x objective quotas over fixed eight-seed panels in canonical combination order (Stage 3G.7 traversal), unit weights, no action or outcome oversampling; quota is checked before a record is built. Cohorts BYPASS_A/B: horizon bands H2-H4 only, admitted iff the offered menu contains BYPASS (screened on the rebuilt t0 world before labels), level x band quota 9, canonical order, shortfalls recorded; conditional descriptive cohorts with population weight 0. Record/world/topology hashes disjoint from all prior lineage and across partitions.",
+      "precision": "Population quota is 96 per family x level x band (Stage 3G.7 used 24) so that the registered noninferiority endpoints can resolve; methodology, margins and resampling are otherwise unchanged."
+    },
+    "heads": {
+      "BASELINE_G7": {
+        "columns": "G7 QUALIFIED_512 (54)",
+        "n": 54,
+        "fit": "FROZEN: Stage 3G.7 OPEN QUALIFIED_512 weights; refit on reused OPEN evidence must reproduce its model hash"
+      },
+      "OBJECTIVE_PROGRESS_ONLY": {
+        "columns": "G7 54 + OBJECTIVE_PROGRESS 6",
+        "n": 60,
+        "fit": "OPEN horizon>2"
+      },
+      "TYPED_RELATION_ONLY": {
+        "columns": "G7 54 with typed continuation pruning + TYPED_RELATION 27",
+        "n": 81,
+        "fit": "OPEN horizon>2"
+      },
+      "OBJECTIVE_PROGRESS_PLUS_TYPED_RELATION": {
+        "columns": "typed G7 54 + 6 + 27",
+        "n": 87,
+        "fit": "OPEN horizon>2"
+      },
+      "TYPED_SEARCH_ONLY": {
+        "columns": "G7 54 with typed continuation pruning only",
+        "n": 54,
+        "fit": "OPEN horizon>2",
+        "role": "descriptive decomposition of TYPED_RELATION_ONLY"
+      },
+      "RUNTIME_PLUS_CURRENT_PRIVATE": {
+        "columns": "OBJECTIVE_PROGRESS_ONLY + 6 hidden current target facts",
+        "n": 66,
+        "fit": "OPEN horizon>2",
+        "role": "AUDIT_ONLY diagnostic: individual health, available, planned, acceptsMaterial, protected, value/quantity of the root target"
+      },
+      "DISCLOSURE_PLUS_CURRENT_PRIVATE": {
+        "columns": "OBJECTIVE_PROGRESS_PLUS_TYPED_RELATION + 6 hidden current target facts",
+        "n": 93,
+        "fit": "OPEN horizon>2",
+        "role": "AUDIT_ONLY diagnostic"
+      },
+      "BASELINE_LEVEL_FIT": {
+        "columns": "G7 54",
+        "n": 54,
+        "fit": "OPEN horizon>2 and level<=3",
+        "role": "OOD probe"
+      },
+      "OBJECTIVE_PROGRESS_LEVEL_FIT": {
+        "columns": "G7 54 + 6",
+        "n": 60,
+        "fit": "OPEN horizon>2 and level<=3",
+        "role": "OOD probe"
+      }
+    },
+    "strata": {
+      "population": [
+        "ALL",
+        "LOW",
+        "MID",
+        "HIGH",
+        "RETREAT",
+        "HORIZON_DEPENDENT",
+        "TARGET_BEARING",
+        "BYPASS"
+      ],
+      "cohort": [
+        "ALL"
+      ],
+      "definitions": {
+        "ALL": "horizon>2",
+        "LOW": "level 0-2",
+        "MID": "level 3-5",
+        "HIGH": "level 6-7",
+        "RETREAT": "a RETREAT root is in the optimal set (Stage 3G.7 definition)",
+        "HORIZON_DEPENDENT": "label.horizonClass = HORIZON_DEPENDENT",
+        "TARGET_BEARING": "offered menu contains a targeted root other than PROTECT (observable, pre-decision)",
+        "BYPASS": "offered menu contains BYPASS",
+        "OOD": "sealed rows with level>=4 and horizon>2 for heads fit on OPEN level<=3"
+      }
+    },
+    "comparisons": {
+      "C1_OBJECTIVE_PROGRESS": [
+        "OBJECTIVE_PROGRESS_ONLY",
+        "BASELINE_G7"
+      ],
+      "C2_TYPED_RELATION": [
+        "TYPED_RELATION_ONLY",
+        "BASELINE_G7"
+      ],
+      "C3_BOTH": [
+        "OBJECTIVE_PROGRESS_PLUS_TYPED_RELATION",
+        "BASELINE_G7"
+      ],
+      "C4_DISCLOSURE_INCREMENT": [
+        "OBJECTIVE_PROGRESS_PLUS_TYPED_RELATION",
+        "OBJECTIVE_PROGRESS_ONLY"
+      ],
+      "C5_TYPED_SEARCH": [
+        "TYPED_SEARCH_ONLY",
+        "BASELINE_G7"
+      ],
+      "C6_RUNTIME_PRIVATE_GAP": [
+        "RUNTIME_PLUS_CURRENT_PRIVATE",
+        "OBJECTIVE_PROGRESS_ONLY"
+      ],
+      "C7_DISCLOSURE_PRIVATE_GAP": [
+        "DISCLOSURE_PLUS_CURRENT_PRIVATE",
+        "OBJECTIVE_PROGRESS_PLUS_TYPED_RELATION"
+      ]
+    },
+    "niEndpoints": {
+      "S1_RUNTIME_VS_PRIVATE": [
+        "RUNTIME_PLUS_CURRENT_PRIVATE",
+        "OBJECTIVE_PROGRESS_ONLY",
+        "ALL"
+      ],
+      "S2_DISCLOSURE_VS_PRIVATE": [
+        "DISCLOSURE_PLUS_CURRENT_PRIVATE",
+        "OBJECTIVE_PROGRESS_PLUS_TYPED_RELATION",
+        "ALL"
+      ],
+      "S3_RUNTIME_VS_DISCLOSURE": [
+        "OBJECTIVE_PROGRESS_PLUS_TYPED_RELATION",
+        "OBJECTIVE_PROGRESS_ONLY",
+        "ALL"
+      ],
+      "OOD_OBJECTIVE_PROGRESS": [
+        "BASELINE_LEVEL_FIT",
+        "OBJECTIVE_PROGRESS_LEVEL_FIT",
+        "OOD"
+      ]
+    },
+    "statistics": {
+      "resamples": 40000,
+      "descriptiveResamples": 2000,
+      "alpha": 0.05,
+      "niEndpointFamily": 8,
+      "hitMargin": 0.05,
+      "nregMargin": 0.01,
+      "minN": 100,
+      "material": "Stage 3G.7 rule: mean hit gain >= .05, paired 95% percentile lower bound > 0 and normalized regret not worse. A claim requires both families (replication); n<100 in either family is NOT_TESTABLE. HARMFUL is the mirror rule.",
+      "noninferiority": "One-sided, Bonferroni over the registered NI family, deterministic paired percentile bootstrap with 40,000 resamples: PASS iff hit-deficit upper < .05 and nreg-excess upper < .01; FAIL iff a lower bound reaches a margin; else NOT_TESTABLE.",
+      "bootstrap": "deterministic paired percentile, unit row weights, seed STAGE3G8:<key>"
+    },
+    "audits": {
+      "objectiveFidelity": "Per row: packet metadata.objectives equals kernel world.objectives (audit read); reconstructObjectives(project(packet)) equals the packet exactly; summed remaining equals packet feature[12].",
+      "bypass": "Per offered BYPASS root on every row: coarse identifiability (exactly one in-service supports source), typed t0 prediction, and the actual kernel rewiring from symmetricStep (audit only).",
+      "subtypeVOI": "Oracle value-of-information audit, audit-only: permute canonical types within each coarse collapse group (multiset preserving, seeded by record hash, at most 8 attempts); accept the first permutation that changes a type and leaves the delivered observation (features, canonicalState, objectives, history, visible map) and the offered menu identical. Evaluate the unchanged frozen counterfactual oracle on that world. decisionRelevant = optimal set differs; misbeliefHitLoss = 1 - mean actual optimality of the alternative optimal set. Rows with no consistent alternative contribute 0.",
+      "materiallyRelevantPath": "In both population families: share of inferential rows with BYPASS offered and coarse-ambiguous substitute >= .05, OR mean subtype misbelief hit loss >= .05 with paired 95% lower > 0.",
+      "integrity": "Every 25th row (stored equivariance sample): D4 twins, order-preserving identity renaming with reversed candidate order, Stage 3G.7-style non-monotone renaming for identity-independent columns, privileged poisoning, recomputation determinism, privileged key scan; and frozen Stage 3G.7 observableColumns parity on every row and candidate."
+    },
+    "decisionRules": {
+      "OBJECTIVE_PROGRESS_VALUE_MATERIAL": "C1 MATERIAL replicated in A and B on ALL",
+      "OBJECTIVE_PROGRESS_OOD_STABLE": "OOD_OBJECTIVE_PROGRESS NI PASS in A and B -> true; FAIL in either -> false; otherwise NOT_TESTABLE",
+      "TYPED_RELATION_DECISION_VALUE_MATERIAL": "C2 or C4 MATERIAL replicated on ALL or TARGET_BEARING, or in both BYPASS cohorts",
+      "TYPED_RELATION_DISCLOSURE_JUSTIFIED": "eligible safety audit AND real collision (fixture pair + natural coarse-ambiguous BYPASS > 0) AND (decision value material OR (exact semantics required AND materially relevant path)) AND no leakage AND replication",
+      "TYPED_RELATION_SCHEMA_SUPPORT_JUSTIFIED": "eligible safety audit AND real collision AND typed prediction exact on every natural and fixture BYPASS AND no leakage (mechanistic; not decision value)",
+      "TARGET_SEMANTICS_SUFFICIENT": "objective projection complete AND every unavailable target predicate explicitly UNKNOWN with zero false certainty AND S1 NI PASS in A and B AND no replicated material C6 gap in any testable population stratum. Sufficiency is relative to the environment observation boundary and the demonstrated population; absent action cells are reported NOT_DEMONSTRATED.",
+      "DEPENDENCY_SEMANTICS_SUFFICIENT": "Exact dependency effect identifiable on the surface (Stage 3G.7 meaning). Current runtime: requires coarse identifiability on every natural BYPASS. With disclosure: typed prediction exact on every natural and fixture BYPASS.",
+      "SCIENTIFICALLY_SUFFICIENT_WITH_DISCLOSURE": "TARGET_SEMANTICS_SUFFICIENT AND DEPENDENCY_SEMANTICS_SUFFICIENT_WITH_DISCLOSURE AND S2 NI PASS in A and B AND no replicated material C7 gap AND root legality parity AND UNKNOWN safety",
+      "CURRENT_RUNTIME_SUFFICIENT": "TARGET_SEMANTICS_SUFFICIENT AND current-runtime DEPENDENCY_SEMANTICS_SUFFICIENT AND S1 NI PASS AND root legality parity AND UNKNOWN safety. Audit-only fields never make it true.",
+      "ACTION_SURFACE_SUFFICIENT": "= CURRENT_RUNTIME_SUFFICIENT",
+      "DEPLOYABLE_PLANNING_SUFFICIENT": "ACTION_SURFACE_SUFFICIENT AND inherited SEARCH_BUDGET_SUFFICIENT passes on the full domain (inherited NOT_TESTABLE_ON_FULL_REQUIRED_DOMAIN; not re-tested here)",
+      "STAGE3G_CLOSURE": [
+        "C1 epistemic integrity certified (3G.1/3G.2 reproduced; Stage 3G.8 integrity all pass)",
+        "C2 observable current state sufficient for demonstrated tasks = SCIENTIFICALLY_SUFFICIENT_WITH_DISCLOSURE",
+        "C3 remaining unavailable fields explicitly UNKNOWN (boundary V2 audit)",
+        "C4 prediction lifecycle safe (3G.3 reproduced)",
+        "C5 environment-dynamics value non-material (Stage 3G.7 replicated environment gate false in every testable stratum; reproduced)",
+        "C6 no learned world model justified (C5 and C8)",
+        "C7 remaining adapter-contract improvements understood and scoped (typed disclosure eligible, collision resolved prospectively, its decision value measured; objective projection complete)",
+        "C8 no unresolved issue requires counterfactual prediction (hidden-health collision is current information; C5)"
+      ],
+      "blocker": "If closure fails, name exactly the first failing condition in C1..C8 order."
+    },
+    "fixtures": "Stage 3G.7 BYPASS collision pair, multi-substitute lexical renaming and hidden-health collision re-run under CURRENT_COARSE_RELATION and PROSPECTIVE_TYPED_RELATION; reachable COLLECT->TRANSFER trajectory for nonzero delivered objective fidelity and replay. Population weight 0.",
+    "feasibility": {
+      "maxSecondsPerRow": 120,
+      "evidenceParts": 8,
+      "limitOutcome": "UNRESOLVED; no post-seal tuning"
+    },
+    "authority": {
+      "AUTHORITY": "R0",
+      "CAN_DISPATCH": false,
+      "CAN_MUTATE_LIVE_WORLD": false,
+      "ONLINE_LEARNING_ENABLED": false,
+      "PROMOTED_TO_LIVE_RUNTIME": false
+    },
+    "scope": {
+      "liveAdapterChanged": false,
+      "learnedWorldModel": false,
+      "environmentPredictor": false,
+      "stage3I": false,
+      "oracleOrRouterRedesign": false,
+      "expert10": false,
+      "stage3H": "not begun"
+    },
+    "codeLocation": "Stage-local code lives in stage3g8/ because the frozen Stage 3G.7 source hash scans every .js/.mjs under src/ and scripts/; adding files there would invalidate its reproduction."
+  }
+}

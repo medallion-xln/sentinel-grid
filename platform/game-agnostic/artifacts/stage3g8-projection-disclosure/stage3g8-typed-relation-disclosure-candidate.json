@@ -1,0 +1,128 @@
+{
+  "schemaHash": "28a8e8ed587c8356b1853e8ba6ca61ca663e4c5a5630ba71e309916b01907588",
+  "sourceWhitelist": [
+    "world.relations[].from",
+    "world.relations[].to",
+    "world.relations[].type"
+  ],
+  "schema": {
+    "schemaId": "TYPED_RELATION_DISCLOSURE_CANDIDATE_V1",
+    "schemaVersion": 1,
+    "status": "PROSPECTIVE_AUDIT_ONLY",
+    "runtimeApproved": false,
+    "liveAdapterChanged": false,
+    "authority": "R0",
+    "record": {
+      "from": "opaque entity handle",
+      "to": "opaque entity handle",
+      "type": "canonical Forge relation type (FORGE_RELATION_TYPE_NAMES)"
+    },
+    "canonicalTypes": [
+      "attacks",
+      "blocks",
+      "controls",
+      "dependsOn",
+      "powers",
+      "protects",
+      "repairs",
+      "requires",
+      "substitutes",
+      "supplies",
+      "supports"
+    ],
+    "collapseGroups": {
+      "depends": [
+        "controls",
+        "dependsOn",
+        "requires"
+      ],
+      "supports": [
+        "powers",
+        "protects",
+        "repairs",
+        "substitutes",
+        "supplies",
+        "supports"
+      ],
+      "threatens": [
+        "attacks",
+        "blocks"
+      ]
+    },
+    "rule": "Exactly the current world.relations, with type retained. Mapping every record through FORGE_RELATION_TYPES[type].nexusKind must reproduce the delivered canonicalState.relationships multiset exactly; otherwise the candidate is rejected. Nothing is invented and no relation is added or removed.",
+    "fieldAudit": [
+      {
+        "field": "relation.from",
+        "IS_CURRENTLY_OBSERVABLE_IN_ENVIRONMENT": true,
+        "IS_CURRENTLY_DROPPED_BEFORE_ADAPTER_OUTPUT": false,
+        "IS_PRIVILEGED": false,
+        "DOES_IT_REVEAL_HIDDEN_HEALTH": false,
+        "DOES_IT_REVEAL_FUTURE_STATE": false,
+        "DOES_IT_REVEAL_ORACLE_INFORMATION": false,
+        "basis": "canonicalState.relationships[].from is already delivered"
+      },
+      {
+        "field": "relation.to",
+        "IS_CURRENTLY_OBSERVABLE_IN_ENVIRONMENT": true,
+        "IS_CURRENTLY_DROPPED_BEFORE_ADAPTER_OUTPUT": false,
+        "IS_PRIVILEGED": false,
+        "DOES_IT_REVEAL_HIDDEN_HEALTH": false,
+        "DOES_IT_REVEAL_FUTURE_STATE": false,
+        "DOES_IT_REVEAL_ORACLE_INFORMATION": false,
+        "basis": "canonicalState.relationships[].to is already delivered"
+      },
+      {
+        "field": "relation.type",
+        "IS_CURRENTLY_OBSERVABLE_IN_ENVIRONMENT": true,
+        "IS_CURRENTLY_DROPPED_BEFORE_ADAPTER_OUTPUT": true,
+        "IS_PRIVILEGED": false,
+        "DOES_IT_REVEAL_HIDDEN_HEALTH": false,
+        "DOES_IT_REVEAL_FUTURE_STATE": false,
+        "DOES_IT_REVEAL_ORACLE_INFORMATION": false,
+        "basis": "Forge world.relations[].type is current structural state; the Forge presentation layer renders it (render.js renderRelations: \"from --type--> to\"); kernel observe() maps it to FORGE_RELATION_TYPES[type].nexusKind before the packet. Relations change only by BYPASS dependsOn rewiring of the current state; no value/health/flag/channel/oracle field is read."
+      }
+    ],
+    "columns": [
+      "in:attacks",
+      "in:blocks",
+      "in:controls",
+      "in:dependsOn",
+      "in:powers",
+      "in:protects",
+      "in:repairs",
+      "in:requires",
+      "in:substitutes",
+      "in:supplies",
+      "in:supports",
+      "out:attacks",
+      "out:blocks",
+      "out:controls",
+      "out:dependsOn",
+      "out:powers",
+      "out:protects",
+      "out:repairs",
+      "out:requires",
+      "out:substitutes",
+      "out:supplies",
+      "out:supports",
+      "liveTypedSubstitutesIn",
+      "bypassSubstituteResolved",
+      "bypassSubstituteThreatened",
+      "bypassSubstituteCritical",
+      "bypassSubstituteDependentsAfter"
+    ],
+    "bypassRule": "Kernel substituteFor: substitutes edges into the failed target whose source is available && health>0, lexically lowest identity. available && health>0 is exactly the rendered in-service bit already observed, so typed edges plus observed service identify the substitute at t0.",
+    "searchRule": "Continuation BYPASS is generated only from typed dependsOn edges and only where a substitutes edge into the failed target exists. Relations change only by BYPASS rewiring dependsOn, so absence of a substitutes edge is exact current structure, not a prediction. Substitute liveness after t0 stays UNKNOWN.",
+    "notDisclosed": [
+      "individual health",
+      "available flag",
+      "planned flag",
+      "acceptsMaterial",
+      "protected flag",
+      "resource quantity/value",
+      "future survival",
+      "future eligibility",
+      "terminal state"
+    ]
+  }
+}

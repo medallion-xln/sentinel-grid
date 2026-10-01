@@ -1,0 +1,78 @@
+{
+  "schemaHash": "1302aeea48be7c50bf8e90cdebfe9e35c6cc1b7475d83c73c02cf8b3cf46944f",
+  "schema": {
+    "schemaId": "OBJECTIVE_PROGRESS_V1",
+    "schemaVersion": 1,
+    "authority": "R0",
+    "input": "ObservationPacket.metadata.objectives only: the packet the live adapter already delivers. No new disclosure.",
+    "fields": [
+      {
+        "field": "OBJECTIVE_HANDLE",
+        "provenance": "E0",
+        "source": "ObservationPacket.metadata.objectives[].id (opaque handle; no derivation reads its characters)",
+        "derivation": null
+      },
+      {
+        "field": "OBJECTIVE_ENTITY",
+        "provenance": "E0",
+        "source": "ObservationPacket.metadata.objectives[].entityId (opaque handle)",
+        "derivation": null
+      },
+      {
+        "field": "OBJECTIVE_REQUIRED_AMOUNT",
+        "provenance": "E0",
+        "source": "ObservationPacket.metadata.objectives[].requiredValue",
+        "derivation": null
+      },
+      {
+        "field": "OBJECTIVE_DELIVERED_AMOUNT",
+        "provenance": "E0",
+        "source": "ObservationPacket.metadata.objectives[].deliveredValue",
+        "derivation": null
+      },
+      {
+        "field": "OBJECTIVE_REMAINING_AMOUNT",
+        "provenance": "E1",
+        "source": "required - min(required, delivered)",
+        "derivation": [
+          "OBJECTIVE_REQUIRED_AMOUNT",
+          "OBJECTIVE_DELIVERED_AMOUNT"
+        ]
+      },
+      {
+        "field": "OBJECTIVE_COMPLETION_FRACTION",
+        "provenance": "E1",
+        "source": "min(required, delivered) / required; 1 when required <= 0",
+        "derivation": [
+          "OBJECTIVE_REQUIRED_AMOUNT",
+          "OBJECTIVE_DELIVERED_AMOUNT"
+        ]
+      },
+      {
+        "field": "OBJECTIVE_COMPLETE",
+        "provenance": "E1",
+        "source": "remaining = 0",
+        "derivation": [
+          "OBJECTIVE_REMAINING_AMOUNT"
+        ]
+      }
+    ],
+    "columns": [
+      "targetRequired",
+      "targetDelivered",
+      "targetRemaining",
+      "targetCompletionFraction",
+      "targetRemainingShare",
+      "targetIncompleteObjective"
+    ],
+    "perEntity": "Objectives are aggregated by entity handle: required, delivered and remaining sum; completion = min(required,delivered) summed over required summed.",
+    "notInferred": [
+      "future delivery",
+      "collected quantity",
+      "delivery success of any future action",
+      "objective completion at any future tick"
+    ],
+    "replaces": "Stage 3G.7 entity projection kept only objectiveFlag. Every metadata.objectives field is now projected; reconstructObjectives() is its exact inverse.",
+    "equivariance": "Invariant under the D4 presentation transforms and consistent identity renaming; independent of candidate order."
+  }
+}

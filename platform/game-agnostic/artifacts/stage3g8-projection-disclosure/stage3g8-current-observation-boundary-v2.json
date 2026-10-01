@@ -1,0 +1,84 @@
+{
+  "boundaryHash": "dc2ad7ab5e74d68376d77f53be5692b2d0ff0dde9eeec37ee7dbffedc878ad62",
+  "boundary": {
+    "boundaryId": "CURRENT_OBSERVATION_BOUNDARY_V2",
+    "supersedes": "Stage 3G.7 contract field map for the projection only; inherited conclusions unchanged",
+    "authority": "R0",
+    "OBSERVED": [
+      "entity identity handle",
+      "entity kind",
+      "entity presented position",
+      "entity in-service bit (= available && health>0, rendered glyph case)",
+      "hostile flag",
+      "critical flag",
+      "coarse relationship kind/from/to",
+      "actor energy, health, carried material, ticks remaining, cell, terrain",
+      "tick",
+      "objective handle and entity",
+      "OBJECTIVE_REQUIRED_AMOUNT",
+      "OBJECTIVE_DELIVERED_AMOUNT",
+      "complete offered action menu"
+    ],
+    "DERIVED": [
+      "relative position, Manhattan and observed-map path distance, direction",
+      "resource/objective/threatened/hub flags",
+      "OBJECTIVE_REMAINING_AMOUNT",
+      "OBJECTIVE_COMPLETION_FRACTION",
+      "OBJECTIVE_COMPLETE",
+      "t0 offered-legality predicates (protected/damaged/planned/acceptsMaterial positive only, at t0)",
+      "declared-cost E1 ledger (energy, tick, position, carried emptying)"
+    ],
+    "PROSPECTIVE_AUDIT_ONLY": [
+      "canonical relation type (TYPED_RELATION_DISCLOSURE_CANDIDATE_V1): observable in the environment presentation, dropped before adapter output, not runtime-approved"
+    ],
+    "UNKNOWN": [
+      "individual non-actor health",
+      "available flag (service=false does not separate available=false from health=0)",
+      "planned flag (except positive offered BUILD at t0)",
+      "acceptsMaterial (except positive offered TRANSFER at t0)",
+      "protected flag (except offered PROTECT / ledger PROTECT)",
+      "resource quantity / entity value",
+      "BYPASS substitute identity under the coarse contract",
+      "future survival",
+      "future target eligibility",
+      "future entity state and position",
+      "terminal state of any future branch"
+    ],
+    "PRIVILEGED": [
+      "KERNEL_PRIVATE_GEOMETRY: base-frame (pre-orientation) positions",
+      "KERNEL_PRIVATE_GEOMETRY: geometry digest",
+      "KERNEL_PRIVATE_GEOMETRY: canonical frame (argmin of a digest over the full kernel geometry)",
+      "HIDDEN_ORIENTATION: the seed-bound D4 orientation of the scenario",
+      "HIDDEN_ORIENTATION: base-frame direction of any action",
+      "ORACLE_OPTIMAL_ACTIONS: optimal-set membership",
+      "ORACLE_OPTIMAL_ACTIONS: oracle best action",
+      "ORACLE_OPTIMAL_ACTIONS: greedy-safe label",
+      "REGRET: counterfactual regret",
+      "REGRET: normalised regret",
+      "FUTURE_STATE: successor state",
+      "FUTURE_STATE: one-step immediate scalar",
+      "FUTURE_STATE: temporal channel values beyond the current tick",
+      "ROLLOUT_RESULTS: horizon rollout totals",
+      "ROLLOUT_RESULTS: terminal outcome of any branch",
+      "SYNTHETIC_LABELS: labels produced by the corpus generator",
+      "SYNTHETIC_LABELS: warm-up provenance",
+      "SYNTHETIC_LABELS: benchmark generator identity",
+      "KERNEL_DIGESTS_AND_INTERNALS: ObservationPacket.metadata.worldHash (digest of privileged state)",
+      "KERNEL_DIGESTS_AND_INTERNALS: scenario seed",
+      "KERNEL_DIGESTS_AND_INTERNALS: entity value / cost / risk / non-actor health / resources / private flags"
+    ],
+    "exposedThisStage": {
+      "newObservedProjection": [
+        "OBJECTIVE_REQUIRED_AMOUNT",
+        "OBJECTIVE_DELIVERED_AMOUNT"
+      ],
+      "newDerived": [
+        "OBJECTIVE_REMAINING_AMOUNT",
+        "OBJECTIVE_COMPLETION_FRACTION",
+        "OBJECTIVE_COMPLETE"
+      ],
+      "hiddenCurrentStateExposed": [],
+      "futureStateExposed": []
+    }
+  }
+}
