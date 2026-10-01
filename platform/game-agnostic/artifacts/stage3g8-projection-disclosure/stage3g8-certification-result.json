@@ -1,0 +1,4934 @@
+{
+  "stage": "STAGE3G8",
+  "status": "PASS",
+  "planHash": "0796e717b0524776764fd030f5356e01c4e5546e180f3fed73a114adbb2e8b0e",
+  "seedPlanHash": "1d495e72f054530f8b543c05a9468e360106803e58725ab76f82906694da8b5d",
+  "sourceHash": "cbdc19acd84cfc70c593671c7add92e6da53ff58d237760254cd9ae6bf82a486",
+  "evidenceSourceHash": "349bc86c9d8f60276da5093b9f873fe0faac21d2dd019995a8eaf43849d48bbf",
+  "openReportHash": "4e3d0320d85eefd5b60a0398b871fa5f3dd566d9d74e5bb41fadd4e80accbb02",
+  "sealedContentHash": "4e319fa7235820b24e94b3ea9f8231eacdebecf44c919d0348f5e195229bd88f",
+  "openEvidenceHash": "c4a5e0453cc6a7017e8590a66f819da25d49ad755baada534b039fcb74cca88f",
+  "sealedEvidenceHash": "75110c886551bdbc35d2c84c019f31e5572cec1084ef8f551d28f8594cf557ed",
+  "schemas": {
+    "OBJECTIVE_PROGRESS_V1": "1302aeea48be7c50bf8e90cdebfe9e35c6cc1b7475d83c73c02cf8b3cf46944f",
+    "TYPED_RELATION_DISCLOSURE_CANDIDATE_V1": "28a8e8ed587c8356b1853e8ba6ca61ca663e4c5a5630ba71e309916b01907588",
+    "CURRENT_OBSERVATION_BOUNDARY_V2": "dc2ad7ab5e74d68376d77f53be5692b2d0ff0dde9eeec37ee7dbffedc878ad62"
+  },
+  "modelHashes": {
+    "BASELINE_G7": "382d454d9cdd7e5d5e9219aa8a4ff9a29009bdcc2bc395edbd625ccfae69e2f6",
+    "OBJECTIVE_PROGRESS_ONLY": "30a72416b8a7f0079155cd25908acbe8a2f69750759d106cf71609d77e1e8937",
+    "TYPED_RELATION_ONLY": "0896d3d775ee44cef3432ad06085b13b174a08277aeb35a8a9517595703364fc",
+    "OBJECTIVE_PROGRESS_PLUS_TYPED_RELATION": "60e480dca22271f35524176b8ea894d381c96800fe822b528eb7b9c769fddbe6",
+    "TYPED_SEARCH_ONLY": "4dbbb9ea9414230c227772a5a7b341da0e1309d99259feb40b8f7f2db71d073a",
+    "RUNTIME_PLUS_CURRENT_PRIVATE": "a79653d23b09a4873249ef84bb70f8c4d4bf2344947acdb58f554c4f4645f0ab",
+    "DISCLOSURE_PLUS_CURRENT_PRIVATE": "cacaa930c809117720f05e256b49861595f90bacc5d791ae6db863217fe14892",
+    "BASELINE_LEVEL_FIT": "93e319f5148f3596222292156706a846e5a41920a0065b44224b193c887c2e5c",
+    "OBJECTIVE_PROGRESS_LEVEL_FIT": "8c2be31406fd4027395f92365da205f226d8f32eb742fa69e77c1518273f8339"
+  },
+  "inheritance": {
+    "stage": "STAGE3G8",
+    "checks": {
+      "stage3f": {
+        "command": [
+          "node",
+          "scripts/reproducibility/run-canonical.mjs",
+          "scripts/stage3f-freeze-certify.mjs",
+          "--check"
+        ],
+        "exitCode": 0,
+        "runtimeSeconds": 4218.562414208,
+        "scriptSha256": "004e6a634cbca7851d8273ff4d296a77cdfffe8c2cb9dc2ba5a66fa230d4e29d",
+        "logSha256": "90b5ea64fe945dfec1c89dc53e2805f2b0ceaaec8c18e33423da849c3f9b442e",
+        "logPath": "build/stage3g8/inherit-logs/stage3f.log",
+        "beforeFingerprint": "2662e8da0b69d36537d40d13664eb2a6aa49a7be1e718f971f7e060ff3f0a743",
+        "afterFingerprint": "2662e8da0b69d36537d40d13664eb2a6aa49a7be1e718f971f7e060ff3f0a743",
+        "trackedStateUnchanged": true,
+        "certificatePath": "artifacts/stage3f-freeze/stage3f-freeze-certification-result.json",
+        "certificateFileSha256": "475fc1877ce7707281f4c538f0c601ac7984931021c8d66ec51a8039fcccb2d4",
+        "storedCertificationHash": "0fe5d3e24f71015b76f5997771f2474712d2764bc049fc2e90e0144f8d2a08ce",
+        "expectedCertificationHash": "0fe5d3e24f71015b76f5997771f2474712d2764bc049fc2e90e0144f8d2a08ce",
+        "storedMatchesExpected": true,
+        "hashInOutput": true,
+        "reproducedFlag": true,
+        "tail": "[stage3f-freeze] reproducing Stage 3F-RP\n[stage3f-freeze] reproducing Stage 3F.6-CR (runs the symmetric chain)\n[stage3f-freeze] running freeze tests\n{\n  \"check\": \"STAGE3F_FREEZE_CERTIFICATION\",\n  \"reproduced\": true,\n  \"status\": \"PASS\",\n  \"storedHash\": \"0fe5d3e24f71015b76f5997771f2474712d2764bc049fc2e90e0144f8d2a08ce\",\n  \"recomputedHash\": \"0fe5d3e24f71015b76f5997771f2474712d2764bc049fc2e90e0144f8d2a08ce\",\n  \"trackedWriteAttempts\": 0,\n  \"blockers\": [],\n  \"tests\": {\n    \"pass\": 20,\n    \"fail\": 0,\n    \"skipped\": 0\n  }\n}\n",
+        "reproduced": true
+      },
+      "stage3g12": {
+        "command": [
+          "node",
+          "scripts/reproducibility/run-canonical.mjs",
+          "scripts/certify-stage3g-predictive-integrity.mjs",
+          "--check"
+        ],
+        "exitCode": 0,
+        "runtimeSeconds": 1966.5633500000001,
+        "scriptSha256": "40be17ad29153f3c9a231f06102fcb03a97982a7f4ddd707c369ebcf62d350cb",
+        "logSha256": "c679db48b5f76b8cac1f433f9342591d30ef8fcef072490d3c3599630e8a7691",
+        "logPath": "build/stage3g8/inherit-logs/stage3g12.log",
+        "beforeFingerprint": "2662e8da0b69d36537d40d13664eb2a6aa49a7be1e718f971f7e060ff3f0a743",
+        "afterFingerprint": "2662e8da0b69d36537d40d13664eb2a6aa49a7be1e718f971f7e060ff3f0a743",
+        "trackedStateUnchanged": true,
+        "certificatePath": "artifacts/stage3g-predictive-integrity/stage3g-certification-result.json",
+        "certificateFileSha256": "74e2d4ca66008fffe509e327c2072287cf7db7f83c2db5a5d26a6a9164507b6a",
+        "storedCertificationHash": "7f39253507a4219dac0a0c4a83cfe7d14b2d37fa1498ebb2767560bdea695100",
+        "expectedCertificationHash": "7f39253507a4219dac0a0c4a83cfe7d14b2d37fa1498ebb2767560bdea695100",
+        "storedMatchesExpected": true,
+        "hashInOutput": true,
+        "reproducedFlag": true,
+        "tail": "3g] CAL 2000/3427\n[stage3g] fit G_MANHATTAN_MAIN\n[stage3g] fit G_PATH_MAIN\n[stage3g] fit G_PATH_INTERACT\n[stage3g] fit D_NEW_PLUS_PRIVILEGED\n[stage3g] fit D_NEW_PLUS_ONE_STEP\n[stage3g] fit D_NEW_PLUS_PRIVILEGED_ONE_STEP\n[stage3g] fit D_NEW_PLUS_ABSOLUTE_DIRECTION\n[stage3g] fit D_NEW_PLUS_HIDDEN_ORIENTATION\n[stage3g] preparing STAGE3G_HOLDOUT\n[stage3g] STAGE3G_HOLDOUT 2000/5271\n[stage3g] STAGE3G_HOLDOUT 4000/5271\n[stage3g] preparing STAGE3G_OOD\n[stage3g] STAGE3G_OOD 2000/5670\n[stage3g] STAGE3G_OOD 4000/5670\n[stage3g] preparing P1ASYM_HOLDOUT\n[stage3g] P1ASYM_HOLDOUT 2000/5211\n[stage3g] P1ASYM_HOLDOUT 4000/5211\n[stage3g] preparing P1ASYM_OOD\n[stage3g] P1ASYM_OOD 2000/5704\n[stage3g] P1ASYM_OOD 4000/5704\n[stage3g] evaluating STAGE3G_HOLDOUT\n[stage3g] evaluating STAGE3G_OOD\n[stage3g] evaluating P1ASYM_HOLDOUT\n[stage3g] evaluating P1ASYM_OOD\n[stage3g] running Stage 3G tests\n{\n  \"check\": \"STAGE3G_CERTIFICATION\",\n  \"reproduced\": true,\n  \"status\": \"PASS\",\n  \"storedHash\": \"7f39253507a4219dac0a0c4a83cfe7d14b2d37fa1498ebb2767560bdea695100\",\n  \"recomputedHash\": \"7f39253507a4219dac0a0c4a83cfe7d14b2d37fa1498ebb2767560bdea695100\",\n  \"tests\": {\n    \"pass\": 24,\n    \"fail\": 0,\n    \"skipped\": 0\n  }\n}\n",
+        "reproduced": true
+      },
+      "stage3g3": {
+        "command": [
+          "node",
+          "scripts/reproducibility/run-canonical.mjs",
+          "scripts/stage3g3/certify.mjs",
+          "--check"
+        ],
+        "exitCode": 0,
+        "runtimeSeconds": 2552.9006535,
+        "scriptSha256": "cd7dd8849c6dd7220ae2a4894d1d9f1493b60d7cd3fc4d086ebbf910a5ac140a",
+        "logSha256": "6bdeb6ce09f387e71111669017f1f8686436d9d8b261bd4d41c292415c6646e6",
+        "logPath": "build/stage3g8/inherit-logs/stage3g3.log",
+        "beforeFingerprint": "2662e8da0b69d36537d40d13664eb2a6aa49a7be1e718f971f7e060ff3f0a743",
+        "afterFingerprint": "2662e8da0b69d36537d40d13664eb2a6aa49a7be1e718f971f7e060ff3f0a743",
+        "trackedStateUnchanged": true,
+        "certificatePath": "artifacts/stage3g3-temporal-attribution/stage3g3-certification-result.json",
+        "certificateFileSha256": "e8604c511a5657b2d67339ff4f718ae26d543ea424c870cfd2486e6fcc1b85cd",
+        "storedCertificationHash": "6f58040133deae625e61c636f881b9283da62458581387b0dbe9afee6b4a8c69",
+        "expectedCertificationHash": "6f58040133deae625e61c636f881b9283da62458581387b0dbe9afee6b4a8c69",
+        "storedMatchesExpected": true,
+        "hashInOutput": true,
+        "reproducedFlag": true,
+        "tail": "[stage3g3] preparing DEV and CAL evidence\n[stage3g3] DEV 2000/3393\n[stage3g3] CAL 2000/3427\n[stage3g3] fit NEW_LINEAR\n[stage3g3] fit NEW_INTERACTION\n[stage3g3] fit MLP 8\n[stage3g3] fit MLP 16\n[stage3g3] fit MLP 32\n[stage3g3] fit D_ONE_STEP\n[stage3g3] fit D_H2\n[stage3g3] fit D_H3\n[stage3g3] fit D_H4\n[stage3g3] fit D_OPTION\n[stage3g3] fit D_TEMPORAL_FEATURES\n[stage3g3] fit D_PRIVILEGED_RELATIONS\n[stage3g3] preparing STAGE3G3_HOLDOUT\n[stage3g3] STAGE3G3_HOLDOUT 2000/5266\n[stage3g3] STAGE3G3_HOLDOUT 4000/5266\n[stage3g3] preparing STAGE3G3_OOD\n[stage3g3] STAGE3G3_OOD 2000/5673\n[stage3g3] STAGE3G3_OOD 4000/5673\n[stage3g3] evaluating STAGE3G3_HOLDOUT\n[stage3g3] evaluating STAGE3G3_OOD\n[stage3g3] running Stage 3G.3 tests\n{\n  \"check\": \"STAGE3G3_CERTIFICATION\",\n  \"reproduced\": true,\n  \"status\": \"PASS\",\n  \"storedHash\": \"6f58040133deae625e61c636f881b9283da62458581387b0dbe9afee6b4a8c69\",\n  \"recomputedHash\": \"6f58040133deae625e61c636f881b9283da62458581387b0dbe9afee6b4a8c69\",\n  \"tests\": {\n    \"pass\": 15,\n    \"fail\": 0,\n    \"skipped\": 0\n  }\n}\n",
+        "reproduced": true
+      },
+      "stage3g4": {
+        "command": [
+          "node",
+          "scripts/reproducibility/run-canonical.mjs",
+          "scripts/stage3g4/certify.mjs",
+          "--check"
+        ],
+        "exitCode": 0,
+        "runtimeSeconds": 4740.765315541,
+        "scriptSha256": "37a2ac7f808adb8d1ab4a28a8323fe496bdaff2fd87ea5a2f2b4c0a009d9421a",
+        "logSha256": "15c01f12b59673773aa165d6e58dd0f747db22a343e4a5a8ca077c16c9704c38",
+        "logPath": "build/stage3g8/inherit-logs/stage3g4.log",
+        "beforeFingerprint": "2662e8da0b69d36537d40d13664eb2a6aa49a7be1e718f971f7e060ff3f0a743",
+        "afterFingerprint": "2662e8da0b69d36537d40d13664eb2a6aa49a7be1e718f971f7e060ff3f0a743",
+        "trackedStateUnchanged": true,
+        "certificatePath": "artifacts/stage3g4-level-replication/stage3g4-certification-result.json",
+        "certificateFileSha256": "6fabc44f63e17ca400007b608e492605e47bfe84662dbfd145e079ad77d93b2f",
+        "storedCertificationHash": "259195ba9c2d223010d8302579c665c67fd20b666f43b35c9ae539e6e70cb4c8",
+        "expectedCertificationHash": "259195ba9c2d223010d8302579c665c67fd20b666f43b35c9ae539e6e70cb4c8",
+        "storedMatchesExpected": true,
+        "hashInOutput": true,
+        "reproducedFlag": true,
+        "tail": "stage3g4] DEV 2000/3393\n[stage3g4] DEV 3000/3393\n[stage3g4] FIT 1000/2125\n[stage3g4] FIT 2000/2125\n[stage3g4] fit NEW_LINEAR\n[stage3g4] fit NEW_INTERACTION\n[stage3g4] fit D_ONE_STEP\n[stage3g4] fit D_H2\n[stage3g4] fit D_H3\n[stage3g4] fit D_H4\n[stage3g4] fit D_OPTION\n[stage3g4] fit D_OBS_OPTION\n[stage3g4] fit D_SEARCH_D1\n[stage3g4] fit D_SEARCH_D2\n[stage3g4] fit NEW_LINEAR_LB\n[stage3g4] fit D_H3_LB\n[stage3g4] fit D_OBS_OPTION_LB\n[stage3g4] preparing family A\n[stage3g4] A 1000/6873\n[stage3g4] A 2000/6873\n[stage3g4] A 3000/6873\n[stage3g4] A 4000/6873\n[stage3g4] A 5000/6873\n[stage3g4] A 6000/6873\n[stage3g4] preparing family B\n[stage3g4] B 1000/6880\n[stage3g4] B 2000/6880\n[stage3g4] B 3000/6880\n[stage3g4] B 4000/6880\n[stage3g4] B 5000/6880\n[stage3g4] B 6000/6880\n[stage3g4] scoring\n[stage3g4] per-level and band reports\n[stage3g4] integrity\n[stage3g4] running Stage 3G.4 tests\n{\n  \"check\": \"STAGE3G4_CERTIFICATION\",\n  \"reproduced\": true,\n  \"status\": \"PASS\",\n  \"storedHash\": \"259195ba9c2d223010d8302579c665c67fd20b666f43b35c9ae539e6e70cb4c8\",\n  \"recomputedHash\": \"259195ba9c2d223010d8302579c665c67fd20b666f43b35c9ae539e6e70cb4c8\",\n  \"tests\": {\n    \"pass\": 7,\n    \"fail\": 0,\n    \"skipped\": 0\n  }\n}\n",
+        "reproduced": true
+      },
+      "stage3g5": {
+        "command": [
+          "node",
+          "scripts/reproducibility/run-canonical.mjs",
+          "scripts/stage3g5/certify.mjs",
+          "--check"
+        ],
+        "exitCode": 0,
+        "runtimeSeconds": 45.79935212499998,
+        "scriptSha256": "404f03a9783ca2bf2ff7bcc2c240b2377a0adb948e345642e3331a249ae4a300",
+        "logSha256": "b9de71d2c4bb412be4f6681da67015b623debfbea335b77bead3b9ba297cb5cd",
+        "logPath": "build/stage3g8/inherit-logs/stage3g5.log",
+        "beforeFingerprint": "2662e8da0b69d36537d40d13664eb2a6aa49a7be1e718f971f7e060ff3f0a743",
+        "afterFingerprint": "2662e8da0b69d36537d40d13664eb2a6aa49a7be1e718f971f7e060ff3f0a743",
+        "trackedStateUnchanged": true,
+        "certificatePath": "artifacts/stage3g5-observable-model-search/stage3g5-certification-result.json",
+        "certificateFileSha256": "8d73b9dedcdad0b2ce101d9422fbe604ab0804571b468a01e2233d31f79a9a1b",
+        "storedCertificationHash": "d472f04f00560229f20020f030722fdf3981f91155424d0a7a2004662be768da",
+        "expectedCertificationHash": "d472f04f00560229f20020f030722fdf3981f91155424d0a7a2004662be768da",
+        "storedMatchesExpected": true,
+        "hashInOutput": true,
+        "reproducedFlag": true,
+        "tail": "PENDENT\n[stage3g5] evaluate B ALL\n[stage3g5] evaluate B LOW\n[stage3g5] evaluate B MID\n[stage3g5] evaluate B HIGH\n[stage3g5] evaluate B L0\n[stage3g5] evaluate B L1\n[stage3g5] evaluate B L2\n[stage3g5] evaluate B L3\n[stage3g5] evaluate B L4\n[stage3g5] evaluate B L5\n[stage3g5] evaluate B L6\n[stage3g5] evaluate B L7\n[stage3g5] evaluate B RETREAT_OPTIMAL\n[stage3g5] evaluate B NON_RETREAT\n[stage3g5] evaluate B HORIZON_DEPENDENT\n[stage3g5] evaluate POOLED ALL\n[stage3g5] evaluate POOLED LOW\n[stage3g5] evaluate POOLED MID\n[stage3g5] evaluate POOLED HIGH\n[stage3g5] evaluate POOLED L0\n[stage3g5] evaluate POOLED L1\n[stage3g5] evaluate POOLED L2\n[stage3g5] evaluate POOLED L3\n[stage3g5] evaluate POOLED L4\n[stage3g5] evaluate POOLED L5\n[stage3g5] evaluate POOLED L6\n[stage3g5] evaluate POOLED L7\n[stage3g5] evaluate POOLED RETREAT_OPTIMAL\n[stage3g5] evaluate POOLED NON_RETREAT\n[stage3g5] evaluate POOLED HORIZON_DEPENDENT\n{\n  \"reproduced\": true,\n  \"status\": \"PASS\",\n  \"storedHash\": \"d472f04f00560229f20020f030722fdf3981f91155424d0a7a2004662be768da\",\n  \"recomputedHash\": \"d472f04f00560229f20020f030722fdf3981f91155424d0a7a2004662be768da\",\n  \"tests\": {\n    \"exitCode\": 0,\n    \"pass\": 6,\n    \"fail\": 0\n  }\n}\n",
+        "reproduced": true
+      },
+      "stage3g6": {
+        "command": [
+          "node",
+          "scripts/reproducibility/run-canonical.mjs",
+          "scripts/stage3g6/certify.mjs",
+          "--check"
+        ],
+        "exitCode": 0,
+        "runtimeSeconds": 55.549622208999935,
+        "scriptSha256": "09d3d94d90af00ceb81b2c35cac35c3d2e5879f2ea3e963340f1134f86751cba",
+        "logSha256": "861e715e144dc370833d3e8b0d24991056c3f3d0c32a289ac84aaec472d7fc5d",
+        "logPath": "build/stage3g8/inherit-logs/stage3g6.log",
+        "beforeFingerprint": "2662e8da0b69d36537d40d13664eb2a6aa49a7be1e718f971f7e060ff3f0a743",
+        "afterFingerprint": "2662e8da0b69d36537d40d13664eb2a6aa49a7be1e718f971f7e060ff3f0a743",
+        "trackedStateUnchanged": true,
+        "certificatePath": "artifacts/stage3g6-action-surface-audit/stage3g6-certification-result.json",
+        "certificateFileSha256": "594b2fac7d29d6e39e66bb4d2aaf4b45ff70db713920e9615d29984e2feb2cd2",
+        "storedCertificationHash": "291e8ac8f681cb6b38983ff1abcd25cd0352b6a4ebeda0c8aab8442b9929d766",
+        "expectedCertificationHash": "291e8ac8f681cb6b38983ff1abcd25cd0352b6a4ebeda0c8aab8442b9929d766",
+        "storedMatchesExpected": true,
+        "hashInOutput": true,
+        "reproducedFlag": true,
+        "tail": "[stage3g6 evaluate] A ACTION_BYPASS\n[stage3g6 evaluate] A ACTION_BUILD\n[stage3g6 evaluate] B ALL\n[stage3g6 evaluate] B LOW\n[stage3g6 evaluate] B MID\n[stage3g6 evaluate] B HIGH\n[stage3g6 evaluate] B RETREAT\n[stage3g6 evaluate] B NON_RETREAT\n[stage3g6 evaluate] B HORIZON_DEPENDENT\n[stage3g6 evaluate] B L0\n[stage3g6 evaluate] B L1\n[stage3g6 evaluate] B L2\n[stage3g6 evaluate] B L3\n[stage3g6 evaluate] B L4\n[stage3g6 evaluate] B L5\n[stage3g6 evaluate] B L6\n[stage3g6 evaluate] B L7\n[stage3g6 evaluate] B ACTION_MOVE\n[stage3g6 evaluate] B ACTION_RETREAT\n[stage3g6 evaluate] B ACTION_WAIT\n[stage3g6 evaluate] B ACTION_COLLECT\n[stage3g6 evaluate] B ACTION_TRANSFER\n[stage3g6 evaluate] B ACTION_PROTECT\n[stage3g6 evaluate] B ACTION_RESTORE\n[stage3g6 evaluate] B ACTION_REINFORCE\n[stage3g6 evaluate] B ACTION_REPAIR\n[stage3g6 evaluate] B ACTION_ATTACK\n[stage3g6 evaluate] B ACTION_BYPASS\n[stage3g6 evaluate] B ACTION_BUILD\n{\n  \"reproduced\": true,\n  \"status\": \"PASS\",\n  \"storedHash\": \"291e8ac8f681cb6b38983ff1abcd25cd0352b6a4ebeda0c8aab8442b9929d766\",\n  \"recomputedHash\": \"291e8ac8f681cb6b38983ff1abcd25cd0352b6a4ebeda0c8aab8442b9929d766\",\n  \"tests\": {\n    \"exitCode\": 0,\n    \"pass\": 15,\n    \"fail\": 0\n  }\n}\n",
+        "reproduced": true
+      },
+      "stage3g7": {
+        "command": [
+          "node",
+          "scripts/reproducibility/run-canonical.mjs",
+          "scripts/stage3g7/certify.mjs",
+          "--check"
+        ],
+        "exitCode": 0,
+        "runtimeSeconds": 19.05560220900015,
+        "scriptSha256": "73f9ab652d5e23bfbfef81ffb16d421469f6b9a08000173322a9e475717b3e68",
+        "logSha256": "7eb9cb658a4a50643fff386d818f8de3563e691323b579f9cc068ecd92eb677c",
+        "logPath": "build/stage3g8/inherit-logs/stage3g7.log",
+        "beforeFingerprint": "2662e8da0b69d36537d40d13664eb2a6aa49a7be1e718f971f7e060ff3f0a743",
+        "afterFingerprint": "2662e8da0b69d36537d40d13664eb2a6aa49a7be1e718f971f7e060ff3f0a743",
+        "trackedStateUnchanged": true,
+        "certificatePath": "artifacts/stage3g7-target-contract/stage3g7-certification-result.json",
+        "certificateFileSha256": "da5ba4b65939a153947fd9e911e3d200044ec5e74391cd77755fc0ddc7df84a0",
+        "storedCertificationHash": "ec5ae9c1d2f011791ed93f6bfa2879756905647a4098fcb9c4a9cd42e87e79b6",
+        "expectedCertificationHash": "ec5ae9c1d2f011791ed93f6bfa2879756905647a4098fcb9c4a9cd42e87e79b6",
+        "storedMatchesExpected": true,
+        "hashInOutput": true,
+        "reproducedFlag": true,
+        "tail": "\n  },\n  \"science\": {\n    \"TARGET_ELIGIBILITY_OBSERVABLE\": \"OFFERED_CURRENT_LEGALITY_PASS_HIDDEN_PREDICATES_PARTIAL\",\n    \"DEPENDENCY_SUBTYPE_OBSERVABLE\": false,\n    \"BYPASS_EXACT_SUBSTITUTE_IDENTIFIABLE\": \"NOT_IDENTIFIABLE_UNDER_CURRENT_CONTRACT\",\n    \"FUTURE_TARGET_ELIGIBILITY_COMPLETE\": false,\n    \"TARGET_SEMANTICS_SUFFICIENT\": false,\n    \"DEPENDENCY_SEMANTICS_SUFFICIENT\": false,\n    \"SEARCH_BUDGET_SUFFICIENT\": \"NOT_TESTABLE_ON_FULL_REQUIRED_DOMAIN\",\n    \"ACTION_SURFACE_SUFFICIENT\": false,\n    \"DEPLOYABLE_PLANNING_SUFFICIENT\": false,\n    \"KNOWN_MODEL_GAP_MATERIAL\": {\n      \"ALL\": false,\n      \"LOW\": false,\n      \"MID\": false,\n      \"HIGH\": false,\n      \"RETREAT\": false,\n      \"COLLECT\": \"NOT_TESTABLE\",\n      \"TRANSFER\": \"NOT_TESTABLE\",\n      \"BUILD\": \"NOT_TESTABLE\",\n      \"BYPASS\": \"NOT_TESTABLE\"\n    },\n    \"READY_FOR_3G_COUNTERFACTUAL_PREDICTION\": false,\n    \"WORLD_MODEL_WORK_NOW_JUSTIFIED\": false,\n    \"STRUCTURAL_OOD\": \"NOT_TESTED\",\n    \"NEXT_RECOMMENDED_ACTION\": \"Stage 3G.8 — Existing-observation projection and prospective disclosure value qualification; preserve already-visible objective progress first, qualify typed relation disclosure offline, keep runtime unchanged\"\n  }\n}\n",
+        "reproduced": true
+      }
+    },
+    "INHERITANCE_INTACT": true,
+    "STAGE3G7_CERTIFICATION_HASH": "ec5ae9c1d2f011791ed93f6bfa2879756905647a4098fcb9c4a9cd42e87e79b6",
+    "trackedState": {
+      "head": "9e07c35782f297cf95fd1d13a90d78cbf2bea948",
+      "headAfter": "9e07c35782f297cf95fd1d13a90d78cbf2bea948",
+      "beforeFingerprint": "2662e8da0b69d36537d40d13664eb2a6aa49a7be1e718f971f7e060ff3f0a743",
+      "afterFingerprint": "2662e8da0b69d36537d40d13664eb2a6aa49a7be1e718f971f7e060ff3f0a743",
+      "unchanged": true
+    },
+    "orchestration": {
+      "parallel": 4,
+      "note": "Concurrent execution of independent read-only checks; criteria unchanged. Untracked Stage 3G.8 files may exist during the run; ancestors never scan the stage3g8 directory."
+    },
+    "runtime": "Node.js 22.22.2 with SENTINEL_CANONICAL_NUMERICS_V1 via run-canonical"
+  },
+  "STAGE3G7_CERTIFICATION_HASH": "ec5ae9c1d2f011791ed93f6bfa2879756905647a4098fcb9c4a9cd42e87e79b6",
+  "INHERITANCE_INTACT": true,
+  "seedAudit": {
+    "seeds": [
+      9061,
+      19061,
+      29061,
+      39061,
+      49061,
+      59061,
+      69061,
+      79061,
+      9071,
+      19071,
+      29071,
+      39071,
+      49071,
+      59071,
+      69071,
+      79071,
+      9081,
+      19081,
+      29081,
+      39081,
+      49081,
+      59081,
+      69081,
+      79081,
+      9091,
+      19091,
+      29091,
+      39091,
+      49091,
+      59091,
+      69091,
+      79091
+    ],
+    "priorRowOverlap": [],
+    "priorSeedSpaceOverlap": [],
+    "stillReservedTouched": [],
+    "partitionsDistinct": true
+  },
+  "dataIntegrity": {
+    "overlaps": {
+      "recordHash": 0,
+      "worldHash": 0,
+      "topologyHash": 0
+    },
+    "duplicates": {
+      "recordHash": 0,
+      "worldHash": 0,
+      "topologyHash": 0
+    },
+    "populationBalanced": true,
+    "partitions": {
+      "STAGE3G8_A": 3840,
+      "STAGE3G8_B": 3840,
+      "STAGE3G8_BYPASS_A": 216,
+      "STAGE3G8_BYPASS_B": 214
+    },
+    "cohortShortfall": {
+      "STAGE3G8_BYPASS_A": 0,
+      "STAGE3G8_BYPASS_B": 2
+    }
+  },
+  "integrity": {
+    "world": true,
+    "labelComplete": true,
+    "frozenG7Parity": true,
+    "integritySample": true,
+    "integrityRows": 329,
+    "unknownSafe": true
+  },
+  "objectiveAudit": {
+    "rows": 8430,
+    "packetEqualsWorld": true,
+    "noProjectionLoss": true,
+    "remainingMatchesPacketFeature": true,
+    "populationRowsWithNonzeroDelivered": 0,
+    "populationRows": 7680,
+    "requiredValueRange": [
+      5,
+      15
+    ],
+    "trajectory": {
+      "steps": [
+        {
+          "packetEqualsWorld": true,
+          "noLoss": true,
+          "roundTrip": true,
+          "remainingMatchesFeature": true,
+          "delivered": 0,
+          "remaining": 17,
+          "completion": 0
+        },
+        {
+          "packetEqualsWorld": true,
+          "noLoss": true,
+          "roundTrip": true,
+          "remainingMatchesFeature": true,
+          "delivered": 0,
+          "remaining": 17,
+          "completion": 0
+        },
+        {
+          "packetEqualsWorld": true,
+          "noLoss": true,
+          "roundTrip": true,
+          "remainingMatchesFeature": true,
+          "delivered": 7,
+          "remaining": 10,
+          "completion": 0.4117647058823529
+        }
+      ],
+      "replayDeterministic": true,
+      "deliveredAfterTransfer": 7,
+      "exact": true
+    }
+  },
+  "bypassAudit": {
+    "naturalRoots": 684,
+    "naturalRows": 514,
+    "typedExact": 684,
+    "coarseIdentifiable": 373,
+    "coarseExact": 373,
+    "coarseAmbiguous": 311,
+    "runtimeLedgerUnknown": true,
+    "typedLedgerExact": true,
+    "fixture": {
+      "CURRENT_COARSE_RELATION": {
+        "currentObservableEqual": true,
+        "currentOfferedMenuEqual": true,
+        "outcomesDiffer": true,
+        "coarseSubstitute": [
+          "UNKNOWN",
+          "UNKNOWN"
+        ],
+        "runtimeLedgerSubstitute": [
+          "UNKNOWN",
+          "UNKNOWN"
+        ],
+        "identifiable": false
+      },
+      "PROSPECTIVE_TYPED_RELATION": {
+        "consistent": [
+          true,
+          true
+        ],
+        "disclosuresDiffer": true,
+        "predicted": [
+          "g7-sub-a",
+          "g7-sub-b"
+        ],
+        "outcomes": [
+          "g7-sub-a",
+          "g7-sub-b"
+        ],
+        "bypassColumnsDiffer": false,
+        "ledgerSubstitute": [
+          "g7-sub-a",
+          "g7-sub-b"
+        ],
+        "identifiable": true
+      }
+    }
+  },
+  "safety": {
+    "fieldAudit": [
+      {
+        "field": "relation.from",
+        "IS_CURRENTLY_OBSERVABLE_IN_ENVIRONMENT": true,
+        "IS_CURRENTLY_DROPPED_BEFORE_ADAPTER_OUTPUT": false,
+        "IS_PRIVILEGED": false,
+        "DOES_IT_REVEAL_HIDDEN_HEALTH": false,
+        "DOES_IT_REVEAL_FUTURE_STATE": false,
+        "DOES_IT_REVEAL_ORACLE_INFORMATION": false,
+        "basis": "canonicalState.relationships[].from is already delivered"
+      },
+      {
+        "field": "relation.to",
+        "IS_CURRENTLY_OBSERVABLE_IN_ENVIRONMENT": true,
+        "IS_CURRENTLY_DROPPED_BEFORE_ADAPTER_OUTPUT": false,
+        "IS_PRIVILEGED": false,
+        "DOES_IT_REVEAL_HIDDEN_HEALTH": false,
+        "DOES_IT_REVEAL_FUTURE_STATE": false,
+        "DOES_IT_REVEAL_ORACLE_INFORMATION": false,
+        "basis": "canonicalState.relationships[].to is already delivered"
+      },
+      {
+        "field": "relation.type",
+        "IS_CURRENTLY_OBSERVABLE_IN_ENVIRONMENT": true,
+        "IS_CURRENTLY_DROPPED_BEFORE_ADAPTER_OUTPUT": true,
+        "IS_PRIVILEGED": false,
+        "DOES_IT_REVEAL_HIDDEN_HEALTH": false,
+        "DOES_IT_REVEAL_FUTURE_STATE": false,
+        "DOES_IT_REVEAL_ORACLE_INFORMATION": false,
+        "basis": "Forge world.relations[].type is current structural state; the Forge presentation layer renders it (render.js renderRelations: \"from --type--> to\"); kernel observe() maps it to FORGE_RELATION_TYPES[type].nexusKind before the packet. Relations change only by BYPASS dependsOn rewiring of the current state; no value/health/flag/channel/oracle field is read."
+      }
+    ],
+    "sourceWhitelist": [
+      "world.relations[].from",
+      "world.relations[].to",
+      "world.relations[].type"
+    ],
+    "disclosureConsistentEveryRow": true,
+    "poisonInvariant": true,
+    "healthCollisionNotSeparated": true,
+    "presentationRendersTypes": true,
+    "kernelCollapses": true,
+    "relationTypesObserved": {
+      "dependsOn": 137689,
+      "substitutes": 9335,
+      "attacks": 7208,
+      "supplies": 50686,
+      "supports": 2164
+    },
+    "ELIGIBLE": true
+  },
+  "fixtures": {
+    "schemas": {
+      "objectiveProgress": "1302aeea48be7c50bf8e90cdebfe9e35c6cc1b7475d83c73c02cf8b3cf46944f",
+      "typedRelation": "28a8e8ed587c8356b1853e8ba6ca61ca663e4c5a5630ba71e309916b01907588"
+    },
+    "bypassCollision": {
+      "CURRENT_COARSE_RELATION": {
+        "currentObservableEqual": true,
+        "currentOfferedMenuEqual": true,
+        "outcomesDiffer": true,
+        "coarseSubstitute": [
+          "UNKNOWN",
+          "UNKNOWN"
+        ],
+        "runtimeLedgerSubstitute": [
+          "UNKNOWN",
+          "UNKNOWN"
+        ],
+        "identifiable": false
+      },
+      "PROSPECTIVE_TYPED_RELATION": {
+        "consistent": [
+          true,
+          true
+        ],
+        "disclosuresDiffer": true,
+        "predicted": [
+          "g7-sub-a",
+          "g7-sub-b"
+        ],
+        "outcomes": [
+          "g7-sub-a",
+          "g7-sub-b"
+        ],
+        "bypassColumnsDiffer": false,
+        "ledgerSubstitute": [
+          "g7-sub-a",
+          "g7-sub-b"
+        ],
+        "identifiable": true
+      }
+    },
+    "identitySensitiveLexicalRule": {
+      "before": "g7-sub-a",
+      "after": "aa",
+      "typedBefore": "g7-sub-a",
+      "typedAfter": "aa",
+      "typedFollowsKernel": true
+    },
+    "healthCollision": {
+      "currentObservableEqual": true,
+      "typedDisclosureEqual": true,
+      "afterAttackService": [
+        false,
+        true
+      ],
+      "stillCollidedWithDisclosure": true,
+      "cause": "UNAVAILABLE_CURRENT_INDIVIDUAL_HEALTH_ACTION_INDUCED_OUTCOME",
+      "futureDynamicsRequired": false
+    },
+    "disclosurePoisonInvariant": true,
+    "objectiveTrajectory": {
+      "steps": [
+        {
+          "packetEqualsWorld": true,
+          "noLoss": true,
+          "roundTrip": true,
+          "remainingMatchesFeature": true,
+          "delivered": 0,
+          "remaining": 17,
+          "completion": 0
+        },
+        {
+          "packetEqualsWorld": true,
+          "noLoss": true,
+          "roundTrip": true,
+          "remainingMatchesFeature": true,
+          "delivered": 0,
+          "remaining": 17,
+          "completion": 0
+        },
+        {
+          "packetEqualsWorld": true,
+          "noLoss": true,
+          "roundTrip": true,
+          "remainingMatchesFeature": true,
+          "delivered": 7,
+          "remaining": 10,
+          "completion": 0.4117647058823529
+        }
+      ],
+      "replayDeterministic": true,
+      "deliveredAfterTransfer": 7,
+      "exact": true
+    },
+    "populationWeight": 0,
+    "scope": "Mechanism fixtures, not population or decision-value evidence",
+    "evidenceHash": "0314e08a043636eb314aa3d5bf59fde6ca90f74f16bab2803261d1e2fb4d4a89"
+  },
+  "families": {
+    "A": {
+      "rows": 3840,
+      "strata": {
+        "ALL": {
+          "n": 2304,
+          "metrics": {
+            "BASELINE_G7": {
+              "n": 2304,
+              "hit": 0.7931857638888888,
+              "regret": 12.331597222222221,
+              "nreg": 0.08888663221536355,
+              "catastrophic": 0.037760416666666664
+            },
+            "OBJECTIVE_PROGRESS_ONLY": {
+              "n": 2304,
+              "hit": 0.7905815972222222,
+              "regret": 12.701822916666666,
+              "nreg": 0.09144936128175342,
+              "catastrophic": 0.039496527777777776
+            },
+            "TYPED_RELATION_ONLY": {
+              "n": 2304,
+              "hit": 0.7934027777777778,
+              "regret": 12.04079861111111,
+              "nreg": 0.08840674167278888,
+              "catastrophic": 0.03602430555555555
+            },
+            "OBJECTIVE_PROGRESS_PLUS_TYPED_RELATION": {
+              "n": 2304,
+              "hit": 0.7877604166666666,
+              "regret": 12.92599826388889,
+              "nreg": 0.09298860222158445,
+              "catastrophic": 0.040364583333333336
+            },
+            "TYPED_SEARCH_ONLY": {
+              "n": 2304,
+              "hit": 0.7947048611111112,
+              "regret": 12.23415798611111,
+              "nreg": 0.08837692043503775,
+              "catastrophic": 0.037760416666666664
+            },
+            "RUNTIME_PLUS_CURRENT_PRIVATE": {
+              "n": 2304,
+              "hit": 0.7951388888888888,
+              "regret": 12.272135416666666,
+              "nreg": 0.0885823077135644,
+              "catastrophic": 0.037760416666666664
+            },
+            "DISCLOSURE_PLUS_CURRENT_PRIVATE": {
+              "n": 2304,
+              "hit": 0.7916666666666666,
+              "regret": 12.671006944444445,
+              "nreg": 0.09066487021157826,
+              "catastrophic": 0.040364583333333336
+            }
+          },
+          "comparisons": {
+            "C1_OBJECTIVE_PROGRESS": {
+              "n": 2304,
+              "hitGain": -0.0026041666666666665,
+              "hitGainCi95": [
+                -0.005642361111111111,
+                0
+              ],
+              "nregExcess": -0.0025627290663898534,
+              "nregExcessCi95": [
+                -0.004847608857964979,
+                -0.0005357505754913439
+              ],
+              "flipRate": 0.007378472222222222,
+              "catastrophicChange": 0.001736111111111111,
+              "MATERIAL": false,
+              "HARMFUL": false
+            },
+            "C2_TYPED_RELATION": {
+              "n": 2304,
+              "hitGain": 0.00021701388888888888,
+              "hitGainCi95": [
+                -0.007595486111111111,
+                0.007378472222222222
+              ],
+              "nregExcess": 0.0004798905425747199,
+              "nregExcessCi95": [
+                -0.0042300837441025755,
+                0.004940267678936256
+              ],
+              "flipRate": 0.044270833333333336,
+              "catastrophicChange": -0.001736111111111111,
+              "MATERIAL": false,
+              "HARMFUL": false
+            },
+            "C3_BOTH": {
+              "n": 2304,
+              "hitGain": -0.005425347222222222,
+              "hitGainCi95": [
+                -0.013454861111111112,
+                0.002170138888888889
+              ],
+              "nregExcess": -0.004101970006220866,
+              "nregExcessCi95": [
+                -0.009513373253099434,
+                0.0011428908686439284
+              ],
+              "flipRate": 0.05078125,
+              "catastrophicChange": 0.0026041666666666665,
+              "MATERIAL": false,
+              "HARMFUL": false
+            },
+            "C4_DISCLOSURE_INCREMENT": {
+              "n": 2304,
+              "hitGain": -0.0028211805555555555,
+              "hitGainCi95": [
+                -0.010633680555555556,
+                0.004774305555555556
+              ],
+              "nregExcess": -0.0015392409398310128,
+              "nregExcessCi95": [
+                -0.006969377564275878,
+                0.003683647673868624
+              ],
+              "flipRate": 0.04774305555555555,
+              "catastrophicChange": 0.0008680555555555555,
+              "MATERIAL": false,
+              "HARMFUL": false
+            },
+            "C5_TYPED_SEARCH": {
+              "n": 2304,
+              "hitGain": 0.0015190972222222222,
+              "hitGainCi95": [
+                -0.0030381944444444445,
+                0.006293402777777778
+              ],
+              "nregExcess": 0.0005097117803258297,
+              "nregExcessCi95": [
+                -0.0019955040189251557,
+                0.00303193177329522
+              ],
+              "flipRate": 0.013020833333333334,
+              "catastrophicChange": 0,
+              "MATERIAL": false,
+              "HARMFUL": false
+            },
+            "C6_RUNTIME_PRIVATE_GAP": {
+              "n": 2304,
+              "hitGain": 0.004557291666666667,
+              "hitGainCi95": [
+                -0.00021701388888888888,
+                0.009548611111111112
+              ],
+              "nregExcess": 0.002867053568189046,
+              "nregExcessCi95": [
+                -0.00016917260138914767,
+                0.005973264869030293
+              ],
+              "flipRate": 0.017361111111111112,
+              "catastrophicChange": -0.001736111111111111,
+              "MATERIAL": false,
+              "HARMFUL": false
+            },
+            "C7_DISCLOSURE_PRIVATE_GAP": {
+              "n": 2304,
+              "hitGain": 0.00390625,
+              "hitGainCi95": [
+                -0.0008680555555555555,
+                0.008246527777777778
+              ],
+              "nregExcess": 0.0023237320100062157,
+              "nregExcessCi95": [
+                -0.00041162816352982,
+                0.005158746757223599
+              ],
+              "flipRate": 0.018663194444444444,
+              "catastrophicChange": 0,
+              "MATERIAL": false,
+              "HARMFUL": false
+            }
+          }
+        },
+        "LOW": {
+          "n": 864,
+          "metrics": {
+            "BASELINE_G7": {
+              "n": 864,
+              "hit": 0.6736111111111112,
+              "regret": 19.341435185185187,
+              "nreg": 0.15582770746555866,
+              "catastrophic": 0.059027777777777776
+            },
+            "OBJECTIVE_PROGRESS_ONLY": {
+              "n": 864,
+              "hit": 0.6724537037037037,
+              "regret": 19.775462962962962,
+              "nreg": 0.15863466443010982,
+              "catastrophic": 0.061342592592592594
+            },
+            "TYPED_RELATION_ONLY": {
+              "n": 864,
+              "hit": 0.6701388888888888,
+              "regret": 19.00925925925926,
+              "nreg": 0.15389107597667667,
+              "catastrophic": 0.056712962962962965
+            },
+            "OBJECTIVE_PROGRESS_PLUS_TYPED_RELATION": {
+              "n": 864,
+              "hit": 0.6689814814814815,
+              "regret": 19.43287037037037,
+              "nreg": 0.15635324162347683,
+              "catastrophic": 0.06018518518518518
+            },
+            "TYPED_SEARCH_ONLY": {
+              "n": 864,
+              "hit": 0.6747685185185185,
+              "regret": 19.23148148148148,
+              "nreg": 0.15457457839772062,
+              "catastrophic": 0.059027777777777776
+            },
+            "RUNTIME_PLUS_CURRENT_PRIVATE": {
+              "n": 864,
+              "hit": 0.6759259259259259,
+              "regret": 19.212962962962962,
+              "nreg": 0.15398718765361036,
+              "catastrophic": 0.06018518518518518
+            },
+            "DISCLOSURE_PLUS_CURRENT_PRIVATE": {
+              "n": 864,
+              "hit": 0.6701388888888888,
+              "regret": 19.372685185185187,
+              "nreg": 0.1556765077139213,
+              "catastrophic": 0.0625
+            }
+          },
+          "comparisons": {
+            "C1_OBJECTIVE_PROGRESS": {
+              "n": 864,
+              "hitGain": -0.0011574074074074073,
+              "hitGainCi95": [
+                -0.006944444444444444,
+                0.003472222222222222
+              ],
+              "nregExcess": -0.0028069569645511206,
+              "nregExcessCi95": [
+                -0.007643058834966139,
+                0.0017088589095937629
+              ],
+              "flipRate": 0.011574074074074073,
+              "catastrophicChange": 0.0023148148148148147,
+              "MATERIAL": false,
+              "HARMFUL": false
+            },
+            "C2_TYPED_RELATION": {
+              "n": 864,
+              "hitGain": -0.003472222222222222,
+              "hitGainCi95": [
+                -0.017361111111111112,
+                0.010416666666666666
+              ],
+              "nregExcess": 0.0019366314888820046,
+              "nregExcessCi95": [
+                -0.006492841661006941,
+                0.010294173497575622
+              ],
+              "flipRate": 0.0625,
+              "catastrophicChange": -0.0023148148148148147,
+              "MATERIAL": false,
+              "HARMFUL": false
+            },
+            "C3_BOTH": {
+              "n": 864,
+              "hitGain": -0.004629629629629629,
+              "hitGainCi95": [
+                -0.018518518518518517,
+                0.009259259259259259
+              ],
+              "nregExcess": -0.0005255341579181878,
+              "nregExcessCi95": [
+                -0.009793260521597343,
+                0.008527708162825082
+              ],
+              "flipRate": 0.06712962962962964,
+              "catastrophicChange": 0.0011574074074074073,
+              "MATERIAL": false,
+              "HARMFUL": false
+            },
+            "C4_DISCLOSURE_INCREMENT": {
+              "n": 864,
+              "hitGain": -0.003472222222222222,
+              "hitGainCi95": [
+                -0.017361111111111112,
+                0.011574074074074073
+              ],
+              "nregExcess": 0.002281422806632933,
+              "nregExcessCi95": [
+                -0.0064418875481909495,
+                0.011580898998485814
+              ],
+              "flipRate": 0.0625,
+              "catastrophicChange": -0.0011574074074074073,
+              "MATERIAL": false,
+              "HARMFUL": false
+            },
+            "C5_TYPED_SEARCH": {
+              "n": 864,
+              "hitGain": 0.0011574074074074073,
+              "hitGainCi95": [
+                -0.009259259259259259,
+                0.011574074074074073
+              ],
+              "nregExcess": 0.0012531290678380435,
+              "nregExcessCi95": [
+                -0.003851730489282193,
+                0.007067572831230083
+              ],
+              "flipRate": 0.023148148148148147,
+              "catastrophicChange": 0,
+              "MATERIAL": false,
+              "HARMFUL": false
+            },
+            "C6_RUNTIME_PRIVATE_GAP": {
+              "n": 864,
+              "hitGain": 0.003472222222222222,
+              "hitGainCi95": [
+                -0.004629629629629629,
+                0.011574074074074073
+              ],
+              "nregExcess": 0.004647476776499449,
+              "nregExcessCi95": [
+                -0.0004628983097506707,
+                0.010346731236457761
+              ],
+              "flipRate": 0.019675925925925927,
+              "catastrophicChange": -0.0011574074074074073,
+              "MATERIAL": false,
+              "HARMFUL": false
+            },
+            "C7_DISCLOSURE_PRIVATE_GAP": {
+              "n": 864,
+              "hitGain": 0.0011574074074074073,
+              "hitGainCi95": [
+                -0.005787037037037037,
+                0.008101851851851851
+              ],
+              "nregExcess": 0.0006767339095555645,
+              "nregExcessCi95": [
+                -0.003548963515537828,
+                0.004631328915126837
+              ],
+              "flipRate": 0.017361111111111112,
+              "catastrophicChange": 0.0023148148148148147,
+              "MATERIAL": false,
+              "HARMFUL": false
+            }
+          }
+        },
+        "MID": {
+          "n": 864,
+          "metrics": {
+            "BASELINE_G7": {
+              "n": 864,
+              "hit": 0.8350694444444444,
+              "regret": 9.224537037037036,
+              "nreg": 0.05964745325544397,
+              "catastrophic": 0.03009259259259259
+            },
+            "OBJECTIVE_PROGRESS_ONLY": {
+              "n": 864,
+              "hit": 0.8304398148148148,
+              "regret": 9.65162037037037,
+              "nreg": 0.06268107505527572,
+              "catastrophic": 0.03125
+            },
+            "TYPED_RELATION_ONLY": {
+              "n": 864,
+              "hit": 0.8368055555555556,
+              "regret": 8.864583333333334,
+              "nreg": 0.061088720025819165,
+              "catastrophic": 0.02546296296296296
+            },
+            "OBJECTIVE_PROGRESS_PLUS_TYPED_RELATION": {
+              "n": 864,
+              "hit": 0.8252314814814815,
+              "regret": 10.08275462962963,
+              "nreg": 0.06845501292734137,
+              "catastrophic": 0.03009259259259259
+            },
+            "TYPED_SEARCH_ONLY": {
+              "n": 864,
+              "hit": 0.8344907407407407,
+              "regret": 9.405671296296296,
+              "nreg": 0.06146872316264343,
+              "catastrophic": 0.03125
+            },
+            "RUNTIME_PLUS_CURRENT_PRIVATE": {
+              "n": 864,
+              "hit": 0.8344907407407407,
+              "regret": 9.797453703703704,
+              "nreg": 0.06363519014910292,
+              "catastrophic": 0.03009259259259259
+            },
+            "DISCLOSURE_PLUS_CURRENT_PRIVATE": {
+              "n": 864,
+              "hit": 0.8344907407407407,
+              "regret": 9.748842592592593,
+              "nreg": 0.06308477156213843,
+              "catastrophic": 0.03009259259259259
+            }
+          },
+          "comparisons": {
+            "C1_OBJECTIVE_PROGRESS": {
+              "n": 864,
+              "hitGain": -0.004629629629629629,
+              "hitGainCi95": [
+                -0.010416666666666666,
+                0.0011574074074074073
+              ],
+              "nregExcess": -0.0030336217998317362,
+              "nregExcessCi95": [
+                -0.006666856894931237,
+                -0.0003440260179410293
+              ],
+              "flipRate": 0.006944444444444444,
+              "catastrophicChange": 0.0011574074074074073,
+              "MATERIAL": false,
+              "HARMFUL": false
+            },
+            "C2_TYPED_RELATION": {
+              "n": 864,
+              "hitGain": 0.001736111111111111,
+              "hitGainCi95": [
+                -0.009259259259259259,
+                0.012152777777777778
+              ],
+              "nregExcess": -0.0014412667703751878,
+              "nregExcessCi95": [
+                -0.009246680214745536,
+                0.006103167261212973
+              ],
+              "flipRate": 0.037037037037037035,
+              "catastrophicChange": -0.004629629629629629,
+              "MATERIAL": false,
+              "HARMFUL": false
+            },
+            "C3_BOTH": {
+              "n": 864,
+              "hitGain": -0.009837962962962963,
+              "hitGainCi95": [
+                -0.02199074074074074,
+                0.0023148148148148147
+              ],
+              "nregExcess": -0.008807559671897402,
+              "nregExcessCi95": [
+                -0.017297367016870763,
+                -0.0006562518817867189
+              ],
+              "flipRate": 0.04282407407407408,
+              "catastrophicChange": 0,
+              "MATERIAL": false,
+              "HARMFUL": false
+            },
+            "C4_DISCLOSURE_INCREMENT": {
+              "n": 864,
+              "hitGain": -0.005208333333333333,
+              "hitGainCi95": [
+                -0.016203703703703703,
+                0.00636574074074074
+              ],
+              "nregExcess": -0.005773937872065667,
+              "nregExcessCi95": [
+                -0.013927884529776427,
+                0.0017731951884097348
+              ],
+              "flipRate": 0.04050925925925926,
+              "catastrophicChange": -0.0011574074074074073,
+              "MATERIAL": false,
+              "HARMFUL": false
+            },
+            "C5_TYPED_SEARCH": {
+              "n": 864,
+              "hitGain": -0.0005787037037037037,
+              "hitGainCi95": [
+                -0.005208333333333333,
+                0.004629629629629629
+              ],
+              "nregExcess": -0.0018212699071994656,
+              "nregExcessCi95": [
+                -0.005519496657503119,
+                0.001196172248803828
+              ],
+              "flipRate": 0.005787037037037037,
+              "catastrophicChange": 0.0011574074074074073,
+              "MATERIAL": false,
+              "HARMFUL": false
+            },
+            "C6_RUNTIME_PRIVATE_GAP": {
+              "n": 864,
+              "hitGain": 0.004050925925925926,
+              "hitGainCi95": [
+                -0.004629629629629629,
+                0.01273148148148148
+              ],
+              "nregExcess": -0.000954115093827213,
+              "nregExcessCi95": [
+                -0.005456145698686181,
+                0.003559342797343532
+              ],
+              "flipRate": 0.017361111111111112,
+              "catastrophicChange": -0.0011574074074074073,
+              "MATERIAL": false,
+              "HARMFUL": false
+            },
+            "C7_DISCLOSURE_PRIVATE_GAP": {
+              "n": 864,
+              "hitGain": 0.009259259259259259,
+              "hitGainCi95": [
+                0.0011574074074074073,
+                0.018518518518518517
+              ],
+              "nregExcess": 0.005370241365202953,
+              "nregExcessCi95": [
+                0.0009137162438737647,
+                0.010792218789426093
+              ],
+              "flipRate": 0.02199074074074074,
+              "catastrophicChange": 0,
+              "MATERIAL": false,
+              "HARMFUL": false
+            }
+          }
+        },
+        "HIGH": {
+          "n": 576,
+          "metrics": {
+            "BASELINE_G7": {
+              "n": 576,
+              "hit": 0.9097222222222222,
+              "regret": 6.477430555555555,
+              "nreg": 0.03233378777995034,
+              "catastrophic": 0.017361111111111112
+            },
+            "OBJECTIVE_PROGRESS_ONLY": {
+              "n": 576,
+              "hit": 0.9079861111111112,
+              "regret": 6.666666666666667,
+              "nreg": 0.03382383589893547,
+              "catastrophic": 0.019097222222222224
+            },
+            "TYPED_RELATION_ONLY": {
+              "n": 576,
+              "hit": 0.9131944444444444,
+              "regret": 6.352430555555555,
+              "nreg": 0.03115727268741168,
+              "catastrophic": 0.020833333333333332
+            },
+            "OBJECTIVE_PROGRESS_PLUS_TYPED_RELATION": {
+              "n": 576,
+              "hit": 0.9097222222222222,
+              "regret": 7.430555555555555,
+              "nreg": 0.03474202706011042,
+              "catastrophic": 0.026041666666666668
+            },
+            "TYPED_SEARCH_ONLY": {
+              "n": 576,
+              "hit": 0.9149305555555556,
+              "regret": 5.980902777777778,
+              "nreg": 0.029442729399604888,
+              "catastrophic": 0.015625
+            },
+            "RUNTIME_PLUS_CURRENT_PRIVATE": {
+              "n": 576,
+              "hit": 0.9149305555555556,
+              "regret": 5.572916666666667,
+              "nreg": 0.02789566415018764,
+              "catastrophic": 0.015625
+            },
+            "DISCLOSURE_PLUS_CURRENT_PRIVATE": {
+              "n": 576,
+              "hit": 0.9097222222222222,
+              "regret": 7.001736111111111,
+              "nreg": 0.034517561932223335,
+              "catastrophic": 0.022569444444444444
+            }
+          },
+          "comparisons": {
+            "C1_OBJECTIVE_PROGRESS": {
+              "n": 576,
+              "hitGain": -0.001736111111111111,
+              "hitGainCi95": [
+                -0.005208333333333333,
+                0
+              ],
+              "nregExcess": -0.001490048118985127,
+              "nregExcessCi95": [
+                -0.004470144356955381,
+                0
+              ],
+              "flipRate": 0.001736111111111111,
+              "catastrophicChange": 0.001736111111111111,
+              "MATERIAL": false,
+              "HARMFUL": false
+            },
+            "C2_TYPED_RELATION": {
+              "n": 576,
+              "hitGain": 0.003472222222222222,
+              "hitGainCi95": [
+                -0.010416666666666666,
+                0.019097222222222224
+              ],
+              "nregExcess": 0.0011765150925386533,
+              "nregExcessCi95": [
+                -0.007012116435595257,
+                0.010341285633366898
+              ],
+              "flipRate": 0.027777777777777776,
+              "catastrophicChange": 0.003472222222222222,
+              "MATERIAL": false,
+              "HARMFUL": false
+            },
+            "C3_BOTH": {
+              "n": 576,
+              "hitGain": 0,
+              "hitGainCi95": [
+                -0.015625,
+                0.015625
+              ],
+              "nregExcess": -0.0024082392801600804,
+              "nregExcessCi95": [
+                -0.014083149444055788,
+                0.008183821292399926
+              ],
+              "flipRate": 0.03819444444444445,
+              "catastrophicChange": 0.008680555555555556,
+              "MATERIAL": false,
+              "HARMFUL": false
+            },
+            "C4_DISCLOSURE_INCREMENT": {
+              "n": 576,
+              "hitGain": 0.001736111111111111,
+              "hitGainCi95": [
+                -0.013888888888888888,
+                0.017361111111111112
+              ],
+              "nregExcess": -0.0009181911611749529,
+              "nregExcessCi95": [
+                -0.011963699658278907,
+                0.010049959746203742
+              ],
+              "flipRate": 0.036458333333333336,
+              "catastrophicChange": 0.006944444444444444,
+              "MATERIAL": false,
+              "HARMFUL": false
+            },
+            "C5_TYPED_SEARCH": {
+              "n": 576,
+              "hitGain": 0.005208333333333333,
+              "hitGainCi95": [
+                -0.001736111111111111,
+                0.012152777777777778
+              ],
+              "nregExcess": 0.002891058380345452,
+              "nregExcessCi95": [
+                -0.00015181454069200778,
+                0.007327782467017297
+              ],
+              "flipRate": 0.008680555555555556,
+              "catastrophicChange": -0.001736111111111111,
+              "MATERIAL": false,
+              "HARMFUL": false
+            },
+            "C6_RUNTIME_PRIVATE_GAP": {
+              "n": 576,
+              "hitGain": 0.006944444444444444,
+              "hitGainCi95": [
+                0,
+                0.015625
+              ],
+              "nregExcess": 0.005928171748747828,
+              "nregExcessCi95": [
+                0.0005230033327621047,
+                0.012239246268956963
+              ],
+              "flipRate": 0.013888888888888888,
+              "catastrophicChange": -0.003472222222222222,
+              "MATERIAL": false,
+              "HARMFUL": false
+            },
+            "C7_DISCLOSURE_PRIVATE_GAP": {
+              "n": 576,
+              "hitGain": 0,
+              "hitGainCi95": [
+                -0.010416666666666666,
+                0.010416666666666666
+              ],
+              "nregExcess": 0.00022446512788708834,
+              "nregExcessCi95": [
+                -0.00520797445633821,
+                0.006402893912194507
+              ],
+              "flipRate": 0.015625,
+              "catastrophicChange": -0.003472222222222222,
+              "MATERIAL": false,
+              "HARMFUL": false
+            }
+          }
+        },
+        "RETREAT": {
+          "n": 364,
+          "metrics": {
+            "BASELINE_G7": {
+              "n": 364,
+              "hit": 0.8131868131868132,
+              "regret": 17.38736263736264,
+              "nreg": 0.10114595583191471,
+              "catastrophic": 0.06043956043956044
+            },
+            "OBJECTIVE_PROGRESS_ONLY": {
+              "n": 364,
+              "hit": 0.8104395604395604,
+              "regret": 17.813186813186814,
+              "nreg": 0.10374244470889141,
+              "catastrophic": 0.06318681318681318
+            },
+            "TYPED_RELATION_ONLY": {
+              "n": 364,
+              "hit": 0.8214285714285714,
+              "regret": 15.343406593406593,
+              "nreg": 0.08939479974829947,
+              "catastrophic": 0.054945054945054944
+            },
+            "OBJECTIVE_PROGRESS_PLUS_TYPED_RELATION": {
+              "n": 364,
+              "hit": 0.8131868131868132,
+              "regret": 16.578296703296704,
+              "nreg": 0.09691266884880163,
+              "catastrophic": 0.06318681318681318
+            },
+            "TYPED_SEARCH_ONLY": {
+              "n": 364,
+              "hit": 0.8131868131868132,
+              "regret": 17.429945054945055,
+              "nreg": 0.10106105945475904,
+              "catastrophic": 0.06593406593406594
+            },
+            "RUNTIME_PLUS_CURRENT_PRIVATE": {
+              "n": 364,
+              "hit": 0.8214285714285714,
+              "regret": 17.434065934065934,
+              "nreg": 0.09632537164093075,
+              "catastrophic": 0.06318681318681318
+            },
+            "DISCLOSURE_PLUS_CURRENT_PRIVATE": {
+              "n": 364,
+              "hit": 0.8214285714285714,
+              "regret": 16.71153846153846,
+              "nreg": 0.09126656611708651,
+              "catastrophic": 0.06593406593406594
+            }
+          },
+          "comparisons": {
+            "C1_OBJECTIVE_PROGRESS": {
+              "n": 364,
+              "hitGain": -0.0027472527472527475,
+              "hitGainCi95": [
+                -0.008241758241758242,
+                0
+              ],
+              "nregExcess": -0.002596488876976682,
+              "nregExcessCi95": [
+                -0.007789466630930044,
+                0
+              ],
+              "flipRate": 0.0027472527472527475,
+              "catastrophicChange": 0.0027472527472527475,
+              "MATERIAL": false,
+              "HARMFUL": false
+            },
+            "C2_TYPED_RELATION": {
+              "n": 364,
+              "hitGain": 0.008241758241758242,
+              "hitGainCi95": [
+                -0.013736263736263736,
+                0.027472527472527472
+              ],
+              "nregExcess": 0.011751156083615242,
+              "nregExcessCi95": [
+                -0.00000756656628764382,
+                0.024598162654408354
+              ],
+              "flipRate": 0.046703296703296704,
+              "catastrophicChange": -0.005494505494505495,
+              "MATERIAL": false,
+              "HARMFUL": false
+            },
+            "C3_BOTH": {
+              "n": 364,
+              "hitGain": 0,
+              "hitGainCi95": [
+                -0.02197802197802198,
+                0.019230769230769232
+              ],
+              "nregExcess": 0.0042332869831130885,
+              "nregExcessCi95": [
+                -0.008995241502570629,
+                0.01689480731693348
+              ],
+              "flipRate": 0.04945054945054945,
+              "catastrophicChange": 0.0027472527472527475,
+              "MATERIAL": false,
+              "HARMFUL": false
+            },
+            "C4_DISCLOSURE_INCREMENT": {
+              "n": 364,
+              "hitGain": 0.0027472527472527475,
+              "hitGainCi95": [
+                -0.019230769230769232,
+                0.024725274725274724
+              ],
+              "nregExcess": 0.006829775860089771,
+              "nregExcessCi95": [
+                -0.007119369487251823,
+                0.020936682936800295
+              ],
+              "flipRate": 0.0521978021978022,
+              "catastrophicChange": 0,
+              "MATERIAL": false,
+              "HARMFUL": false
+            },
+            "C5_TYPED_SEARCH": {
+              "n": 364,
+              "hitGain": 0,
+              "hitGainCi95": [
+                -0.013736263736263736,
+                0.013736263736263736
+              ],
+              "nregExcess": 0.0000848963771556761,
+              "nregExcessCi95": [
+                -0.008271274123916955,
+                0.008284208915511524
+              ],
+              "flipRate": 0.016483516483516484,
+              "catastrophicChange": 0.005494505494505495,
+              "MATERIAL": false,
+              "HARMFUL": false
+            },
+            "C6_RUNTIME_PRIVATE_GAP": {
+              "n": 364,
+              "hitGain": 0.01098901098901099,
+              "hitGainCi95": [
+                -0.0027472527472527475,
+                0.027472527472527472
+              ],
+              "nregExcess": 0.007417073067960665,
+              "nregExcessCi95": [
+                -0.0008652614279745771,
+                0.016968262191579847
+              ],
+              "flipRate": 0.02197802197802198,
+              "catastrophicChange": 0,
+              "MATERIAL": false,
+              "HARMFUL": false
+            },
+            "C7_DISCLOSURE_PRIVATE_GAP": {
+              "n": 364,
+              "hitGain": 0.008241758241758242,
+              "hitGainCi95": [
+                -0.0027472527472527475,
+                0.02197802197802198
+              ],
+              "nregExcess": 0.005646102731715105,
+              "nregExcessCi95": [
+                -0.0019015972028476767,
+                0.015141609990833207
+              ],
+              "flipRate": 0.02197802197802198,
+              "catastrophicChange": 0.0027472527472527475,
+              "MATERIAL": false,
+              "HARMFUL": false
+            }
+          }
+        },
+        "HORIZON_DEPENDENT": {
+          "n": 1676,
+          "metrics": {
+            "BASELINE_G7": {
+              "n": 1676,
+              "hit": 0.8048926014319809,
+              "regret": 13.437947494033413,
+              "nreg": 0.08321729260059876,
+              "catastrophic": 0.045942720763723154
+            },
+            "OBJECTIVE_PROGRESS_ONLY": {
+              "n": 1676,
+              "hit": 0.8013126491646778,
+              "regret": 13.955250596658711,
+              "nreg": 0.0869312113171633,
+              "catastrophic": 0.04832935560859188
+            },
+            "TYPED_RELATION_ONLY": {
+              "n": 1676,
+              "hit": 0.8060859188544153,
+              "regret": 13.115751789976134,
+              "nreg": 0.08304809590711135,
+              "catastrophic": 0.0441527446300716
+            },
+            "OBJECTIVE_PROGRESS_PLUS_TYPED_RELATION": {
+              "n": 1676,
+              "hit": 0.798926014319809,
+              "regret": 14.289081145584726,
+              "nreg": 0.08961860293407121,
+              "catastrophic": 0.049522673031026254
+            },
+            "TYPED_SEARCH_ONLY": {
+              "n": 1676,
+              "hit": 0.8090692124105012,
+              "regret": 13.20793556085919,
+              "nreg": 0.0818614630666001,
+              "catastrophic": 0.045942720763723154
+            },
+            "RUNTIME_PLUS_CURRENT_PRIVATE": {
+              "n": 1676,
+              "hit": 0.8036992840095465,
+              "regret": 13.579952267303103,
+              "nreg": 0.08419227251363243,
+              "catastrophic": 0.045942720763723154
+            },
+            "DISCLOSURE_PLUS_CURRENT_PRIVATE": {
+              "n": 1676,
+              "hit": 0.8013126491646778,
+              "regret": 13.95346062052506,
+              "nreg": 0.0861493969100445,
+              "catastrophic": 0.04892601431980907
+            }
+          },
+          "comparisons": {
+            "C1_OBJECTIVE_PROGRESS": {
+              "n": 1676,
+              "hitGain": -0.003579952267303103,
+              "hitGainCi95": [
+                -0.007756563245823389,
+                0
+              ],
+              "nregExcess": -0.0037139187165645703,
+              "nregExcessCi95": [
+                -0.006700508967975879,
+                -0.0013435696344221398
+              ],
+              "flipRate": 0.008949880668257757,
+              "catastrophicChange": 0.002386634844868735,
+              "MATERIAL": false,
+              "HARMFUL": false
+            },
+            "C2_TYPED_RELATION": {
+              "n": 1676,
+              "hitGain": 0.0011933174224343676,
+              "hitGainCi95": [
+                -0.008353221957040573,
+                0.010143198090692125
+              ],
+              "nregExcess": 0.0001691966934873829,
+              "nregExcessCi95": [
+                -0.006027918115182512,
+                0.0058566178509829375
+              ],
+              "flipRate": 0.05071599045346062,
+              "catastrophicChange": -0.0017899761336515514,
+              "MATERIAL": false,
+              "HARMFUL": false
+            },
+            "C3_BOTH": {
+              "n": 1676,
+              "hitGain": -0.0059665871121718375,
+              "hitGainCi95": [
+                -0.016109785202863963,
+                0.004176610978520286
+              ],
+              "nregExcess": -0.006401310333472481,
+              "nregExcessCi95": [
+                -0.0138937891845982,
+                0.0001535768246696442
+              ],
+              "flipRate": 0.05906921241050119,
+              "catastrophicChange": 0.003579952267303103,
+              "MATERIAL": false,
+              "HARMFUL": false
+            },
+            "C4_DISCLOSURE_INCREMENT": {
+              "n": 1676,
+              "hitGain": -0.002386634844868735,
+              "hitGainCi95": [
+                -0.013126491646778043,
+                0.007756563245823389
+              ],
+              "nregExcess": -0.002687391616907909,
+              "nregExcessCi95": [
+                -0.009538176328400868,
+                0.004222726279397635
+              ],
+              "flipRate": 0.05608591885441527,
+              "catastrophicChange": 0.0011933174224343676,
+              "MATERIAL": false,
+              "HARMFUL": false
+            },
+            "C5_TYPED_SEARCH": {
+              "n": 1676,
+              "hitGain": 0.004176610978520286,
+              "hitGainCi95": [
+                -0.0011933174224343676,
+                0.010143198090692125
+              ],
+              "nregExcess": 0.0013558295339986188,
+              "nregExcessCi95": [
+                -0.00203510411372229,
+                0.004792872191675313
+              ],
+              "flipRate": 0.015513126491646777,
+              "catastrophicChange": 0,
+              "MATERIAL": false,
+              "HARMFUL": false
+            },
+            "C6_RUNTIME_PRIVATE_GAP": {
+              "n": 1676,
+              "hitGain": 0.002386634844868735,
+              "hitGainCi95": [
+                -0.0029832935560859188,
+                0.007756563245823389
+              ],
+              "nregExcess": 0.002738938803530902,
+              "nregExcessCi95": [
+                -0.0005756650360859856,
+                0.006430828288289854
+              ],
+              "flipRate": 0.016109785202863963,
+              "catastrophicChange": -0.002386634844868735,
+              "MATERIAL": false,
+              "HARMFUL": false
+            },
+            "C7_DISCLOSURE_PRIVATE_GAP": {
+              "n": 1676,
+              "hitGain": 0.002386634844868735,
+              "hitGainCi95": [
+                -0.002386634844868735,
+                0.007756563245823389
+              ],
+              "nregExcess": 0.003469206024026732,
+              "nregExcessCi95": [
+                -0.00013352064092380002,
+                0.007095385649320896
+              ],
+              "flipRate": 0.018496420047732696,
+              "catastrophicChange": -0.0005966587112171838,
+              "MATERIAL": false,
+              "HARMFUL": false
+            }
+          }
+        },
+        "TARGET_BEARING": {
+          "n": 328,
+          "metrics": {
+            "BASELINE_G7": {
+              "n": 328,
+              "hit": 0.4695121951219512,
+              "regret": 33.073170731707314,
+              "nreg": 0.24044699919212623,
+              "catastrophic": 0.10670731707317073
+            },
+            "OBJECTIVE_PROGRESS_ONLY": {
+              "n": 328,
+              "hit": 0.4634146341463415,
+              "regret": 33.78658536585366,
+              "nreg": 0.24543237089561912,
+              "catastrophic": 0.10975609756097561
+            },
+            "TYPED_RELATION_ONLY": {
+              "n": 328,
+              "hit": 0.4969512195121951,
+              "regret": 28.847560975609756,
+              "nreg": 0.2205673150111394,
+              "catastrophic": 0.07926829268292683
+            },
+            "OBJECTIVE_PROGRESS_PLUS_TYPED_RELATION": {
+              "n": 328,
+              "hit": 0.4817073170731707,
+              "regret": 30.391768292682926,
+              "nreg": 0.22922201157000668,
+              "catastrophic": 0.08841463414634146
+            },
+            "TYPED_SEARCH_ONLY": {
+              "n": 328,
+              "hit": 0.47865853658536583,
+              "regret": 32.79420731707317,
+              "nreg": 0.2374942749251653,
+              "catastrophic": 0.10670731707317073
+            },
+            "RUNTIME_PLUS_CURRENT_PRIVATE": {
+              "n": 328,
+              "hit": 0.5091463414634146,
+              "regret": 29.695121951219512,
+              "nreg": 0.2198505292644635,
+              "catastrophic": 0.09451219512195122
+            },
+            "DISCLOSURE_PLUS_CURRENT_PRIVATE": {
+              "n": 328,
+              "hit": 0.5060975609756098,
+              "regret": 29.704268292682926,
+              "nreg": 0.21755478131382605,
+              "catastrophic": 0.09146341463414634
+            }
+          },
+          "comparisons": {
+            "C1_OBJECTIVE_PROGRESS": {
+              "n": 328,
+              "hitGain": -0.006097560975609756,
+              "hitGainCi95": [
+                -0.021341463414634148,
+                0.009146341463414634
+              ],
+              "nregExcess": -0.004985371703492895,
+              "nregExcessCi95": [
+                -0.016239140591399814,
+                0.006005421837666175
+              ],
+              "flipRate": 0.03048780487804878,
+              "catastrophicChange": 0.003048780487804878,
+              "MATERIAL": false,
+              "HARMFUL": false
+            },
+            "C2_TYPED_RELATION": {
+              "n": 328,
+              "hitGain": 0.027439024390243903,
+              "hitGainCi95": [
+                -0.01524390243902439,
+                0.0701219512195122
+              ],
+              "nregExcess": 0.0198796841809869,
+              "nregExcessCi95": [
+                -0.00616374912713108,
+                0.04717869879981044
+              ],
+              "flipRate": 0.21036585365853658,
+              "catastrophicChange": -0.027439024390243903,
+              "MATERIAL": false,
+              "HARMFUL": false
+            },
+            "C3_BOTH": {
+              "n": 328,
+              "hitGain": 0.012195121951219513,
+              "hitGainCi95": [
+                -0.03048780487804878,
+                0.057926829268292686
+              ],
+              "nregExcess": 0.011224987622119577,
+              "nregExcessCi95": [
+                -0.01754922181603564,
+                0.042067646191829886
+              ],
+              "flipRate": 0.23170731707317074,
+              "catastrophicChange": -0.018292682926829267,
+              "MATERIAL": false,
+              "HARMFUL": false
+            },
+            "C4_DISCLOSURE_INCREMENT": {
+              "n": 328,
+              "hitGain": 0.018292682926829267,
+              "hitGainCi95": [
+                -0.024390243902439025,
+                0.06402439024390244
+              ],
+              "nregExcess": 0.016210359325612468,
+              "nregExcessCi95": [
+                -0.010229005103630782,
+                0.04494591884283649
+              ],
+              "flipRate": 0.21951219512195122,
+              "catastrophicChange": -0.021341463414634148,
+              "MATERIAL": false,
+              "HARMFUL": false
+            },
+            "C5_TYPED_SEARCH": {
+              "n": 328,
+              "hitGain": 0.009146341463414634,
+              "hitGainCi95": [
+                -0.01524390243902439,
+                0.03353658536585366
+              ],
+              "nregExcess": 0.0029527242669609008,
+              "nregExcessCi95": [
+                -0.00812685816033168,
+                0.014738178473544241
+              ],
+              "flipRate": 0.04878048780487805,
+              "catastrophicChange": 0,
+              "MATERIAL": false,
+              "HARMFUL": false
+            },
+            "C6_RUNTIME_PRIVATE_GAP": {
+              "n": 328,
+              "hitGain": 0.04573170731707317,
+              "hitGainCi95": [
+                0.018292682926829267,
+                0.07621951219512195
+              ],
+              "nregExcess": 0.025581841631155663,
+              "nregExcessCi95": [
+                0.006914307849836452,
+                0.045309036864435534
+              ],
+              "flipRate": 0.10670731707317073,
+              "catastrophicChange": -0.01524390243902439,
+              "MATERIAL": false,
+              "HARMFUL": false
+            },
+            "C7_DISCLOSURE_PRIVATE_GAP": {
+              "n": 328,
+              "hitGain": 0.024390243902439025,
+              "hitGainCi95": [
+                -0.006097560975609756,
+                0.054878048780487805
+              ],
+              "nregExcess": 0.011667230256180777,
+              "nregExcessCi95": [
+                -0.006777393187380351,
+                0.029609856425753395
+              ],
+              "flipRate": 0.12195121951219512,
+              "catastrophicChange": 0.003048780487804878,
+              "MATERIAL": false,
+              "HARMFUL": false
+            }
+          }
+        },
+        "BYPASS": {
+          "n": 21,
+          "metrics": {
+            "BASELINE_G7": {
+              "n": 21,
+              "hit": 0.2857142857142857,
+              "regret": 51.42857142857143,
+              "nreg": 0.3220040796169557,
+              "catastrophic": 0.14285714285714285
+            },
+            "OBJECTIVE_PROGRESS_ONLY": {
+              "n": 21,
+              "hit": 0.2857142857142857,
+              "regret": 51.42857142857143,
+              "nreg": 0.3220040796169557,
+              "catastrophic": 0.14285714285714285
+            },
+            "TYPED_RELATION_ONLY": {
+              "n": 21,
+              "hit": 0.09523809523809523,
+              "regret": 69.85714285714286,
+              "nreg": 0.4536235049513575,
+              "catastrophic": 0.2857142857142857
+            },
+            "OBJECTIVE_PROGRESS_PLUS_TYPED_RELATION": {
+              "n": 21,
+              "hit": 0.09523809523809523,
+              "regret": 68.9047619047619,
+              "nreg": 0.4473578407909565,
+              "catastrophic": 0.2857142857142857
+            },
+            "TYPED_SEARCH_ONLY": {
+              "n": 21,
+              "hit": 0.2857142857142857,
+              "regret": 54.714285714285715,
+              "nreg": 0.33064137346551714,
+              "catastrophic": 0.19047619047619047
+            },
+            "RUNTIME_PLUS_CURRENT_PRIVATE": {
+              "n": 21,
+              "hit": 0.38095238095238093,
+              "regret": 48.095238095238095,
+              "nreg": 0.28514747435420545,
+              "catastrophic": 0.19047619047619047
+            },
+            "DISCLOSURE_PLUS_CURRENT_PRIVATE": {
+              "n": 21,
+              "hit": 0.2857142857142857,
+              "regret": 54.38095238095238,
+              "nreg": 0.3158698992611625,
+              "catastrophic": 0.23809523809523808
+            }
+          },
+          "comparisons": {
+            "C1_OBJECTIVE_PROGRESS": {
+              "n": 21,
+              "hitGain": 0,
+              "hitGainCi95": [
+                0,
+                0
+              ],
+              "nregExcess": 0,
+              "nregExcessCi95": [
+                0,
+                0
+              ],
+              "flipRate": 0,
+              "catastrophicChange": 0,
+              "MATERIAL": false,
+              "HARMFUL": false
+            },
+            "C2_TYPED_RELATION": {
+              "n": 21,
+              "hitGain": -0.19047619047619047,
+              "hitGainCi95": [
+                -0.38095238095238093,
+                -0.047619047619047616
+              ],
+              "nregExcess": -0.13161942533440185,
+              "nregExcessCi95": [
+                -0.30053648931199956,
+                0.007682977026068804
+              ],
+              "flipRate": 0.38095238095238093,
+              "catastrophicChange": 0.14285714285714285,
+              "MATERIAL": false,
+              "HARMFUL": true
+            },
+            "C3_BOTH": {
+              "n": 21,
+              "hitGain": -0.19047619047619047,
+              "hitGainCi95": [
+                -0.38095238095238093,
+                -0.047619047619047616
+              ],
+              "nregExcess": -0.12535376117400082,
+              "nregExcessCi95": [
+                -0.29271616361234826,
+                0.02110225155162419
+              ],
+              "flipRate": 0.42857142857142855,
+              "catastrophicChange": 0.14285714285714285,
+              "MATERIAL": false,
+              "HARMFUL": true
+            },
+            "C4_DISCLOSURE_INCREMENT": {
+              "n": 21,
+              "hitGain": -0.19047619047619047,
+              "hitGainCi95": [
+                -0.38095238095238093,
+                -0.047619047619047616
+              ],
+              "nregExcess": -0.12535376117400082,
+              "nregExcessCi95": [
+                -0.2891542521556999,
+                0.02695152861786254
+              ],
+              "flipRate": 0.42857142857142855,
+              "catastrophicChange": 0.14285714285714285,
+              "MATERIAL": false,
+              "HARMFUL": true
+            },
+            "C5_TYPED_SEARCH": {
+              "n": 21,
+              "hitGain": 0,
+              "hitGainCi95": [
+                -0.14285714285714285,
+                0.14285714285714285
+              ],
+              "nregExcess": -0.008637293848561454,
+              "nregExcessCi95": [
+                -0.09432234432234432,
+                0.06841046277665995
+              ],
+              "flipRate": 0.09523809523809523,
+              "catastrophicChange": 0.047619047619047616,
+              "MATERIAL": false,
+              "HARMFUL": false
+            },
+            "C6_RUNTIME_PRIVATE_GAP": {
+              "n": 21,
+              "hitGain": 0.09523809523809523,
+              "hitGainCi95": [
+                0,
+                0.23809523809523808
+              ],
+              "nregExcess": 0.03685660526275029,
+              "nregExcessCi95": [
+                -0.008174943797261395,
+                0.10060417001635125
+              ],
+              "flipRate": 0.14285714285714285,
+              "catastrophicChange": 0.047619047619047616,
+              "MATERIAL": false,
+              "HARMFUL": false
+            },
+            "C7_DISCLOSURE_PRIVATE_GAP": {
+              "n": 21,
+              "hitGain": 0.19047619047619047,
+              "hitGainCi95": [
+                0.047619047619047616,
+                0.38095238095238093
+              ],
+              "nregExcess": 0.13148794152979407,
+              "nregExcessCi95": [
+                -0.0013584836755151626,
+                0.29103889492398016
+              ],
+              "flipRate": 0.47619047619047616,
+              "catastrophicChange": -0.047619047619047616,
+              "MATERIAL": true,
+              "HARMFUL": false
+            }
+          }
+        }
+      },
+      "ni": {
+        "S1_RUNTIME_VS_PRIVATE": {
+          "stratum": "ALL",
+          "n": 2304,
+          "hitGain": 0.004557291666666667,
+          "hitGainCi95": [
+            -0.00021701388888888888,
+            0.009331597222222222
+          ],
+          "nregExcess": 0.002867053568189046,
+          "nregExcessCi95": [
+            -0.00003806589090157632,
+            0.005879655813214195
+          ],
+          "flipRate": 0.017361111111111112,
+          "catastrophicChange": -0.001736111111111111,
+          "MATERIAL": false,
+          "HARMFUL": false,
+          "alphaPerEndpoint": 0.00625,
+          "hitDeficitBounds": [
+            -0.0015190972222222222,
+            0.010850694444444444
+          ],
+          "nregExcessBounds": [
+            -0.0008185895330952429,
+            0.006736280722202918
+          ],
+          "NONINFERIOR": "PASS"
+        },
+        "S2_DISCLOSURE_VS_PRIVATE": {
+          "stratum": "ALL",
+          "n": 2304,
+          "hitGain": 0.00390625,
+          "hitGainCi95": [
+            -0.0008680555555555555,
+            0.008680555555555556
+          ],
+          "nregExcess": 0.0023237320100062157,
+          "nregExcessCi95": [
+            -0.00047910357104740645,
+            0.005179367728344032
+          ],
+          "flipRate": 0.018663194444444444,
+          "catastrophicChange": 0,
+          "MATERIAL": false,
+          "HARMFUL": false,
+          "alphaPerEndpoint": 0.00625,
+          "hitDeficitBounds": [
+            -0.001736111111111111,
+            0.009982638888888888
+          ],
+          "nregExcessBounds": [
+            -0.0012091504449810856,
+            0.006020685453454102
+          ],
+          "NONINFERIOR": "PASS"
+        },
+        "S3_RUNTIME_VS_DISCLOSURE": {
+          "stratum": "ALL",
+          "n": 2304,
+          "hitGain": -0.0028211805555555555,
+          "hitGainCi95": [
+            -0.010850694444444444,
+            0.005208333333333333
+          ],
+          "nregExcess": -0.0015392409398310128,
+          "nregExcessCi95": [
+            -0.006758232329869374,
+            0.0036228095204251013
+          ],
+          "flipRate": 0.04774305555555555,
+          "catastrophicChange": 0.0008680555555555555,
+          "MATERIAL": false,
+          "HARMFUL": false,
+          "alphaPerEndpoint": 0.00625,
+          "hitDeficitBounds": [
+            -0.013020833333333334,
+            0.007378472222222222
+          ],
+          "nregExcessBounds": [
+            -0.008219473980066207,
+            0.004995362088830218
+          ],
+          "NONINFERIOR": "PASS"
+        },
+        "OOD_OBJECTIVE_PROGRESS": {
+          "stratum": "OOD",
+          "n": 1152,
+          "hitGain": 0.006076388888888889,
+          "hitGainCi95": [
+            0.0008680555555555555,
+            0.012152777777777778
+          ],
+          "nregExcess": 0.004803105292526293,
+          "nregExcessCi95": [
+            0.00047308712709803584,
+            0.009565774308660567
+          ],
+          "flipRate": 0.009548611111111112,
+          "catastrophicChange": -0.003472222222222222,
+          "MATERIAL": false,
+          "HARMFUL": false,
+          "alphaPerEndpoint": 0.00625,
+          "hitDeficitBounds": [
+            -0.0008680555555555555,
+            0.013888888888888888
+          ],
+          "nregExcessBounds": [
+            -0.0006332362769741346,
+            0.011077503185202163
+          ],
+          "NONINFERIOR": "NOT_TESTABLE",
+          "metrics": {
+            "BASELINE_LEVEL_FIT": {
+              "n": 1152,
+              "hit": 0.8784722222222222,
+              "regret": 7.666666666666667,
+              "nreg": 0.04365898129453268,
+              "catastrophic": 0.025173611111111112
+            },
+            "OBJECTIVE_PROGRESS_LEVEL_FIT": {
+              "n": 1152,
+              "hit": 0.8723958333333334,
+              "regret": 8.472222222222221,
+              "nreg": 0.048462086587058986,
+              "catastrophic": 0.028645833333333332
+            }
+          }
+        }
+      },
+      "voi": {
+        "rows": 2304,
+        "status": {
+          "NO_ALTERNATIVE": 1694,
+          "ALTERNATIVE_EVALUATED": 608,
+          "NO_CONSISTENT_ALTERNATIVE": 2
+        },
+        "decisionRelevant": {
+          "n": 2304,
+          "mean": 0.002170138888888889,
+          "ci95": [
+            0.00043402777777777775,
+            0.004340277777777778
+          ]
+        },
+        "misbeliefHitLoss": {
+          "n": 2304,
+          "mean": 0.0016637731481481482,
+          "ci95": [
+            0.0002893518518518519,
+            0.003399884259259259
+          ]
+        },
+        "misbeliefNregLoss": {
+          "n": 2304,
+          "mean": 0.00030073730494635677,
+          "ci95": [
+            0.000008680555555555556,
+            0.0007766544467363458
+          ]
+        }
+      },
+      "bypassPath": {
+        "inferentialRows": 2304,
+        "bypassOfferedRows": 21,
+        "coarseAmbiguousRows": 8,
+        "bypassOfferedShare": 0.009114583333333334,
+        "coarseAmbiguousShare": 0.003472222222222222
+      },
+      "search": {
+        "roots": 26513,
+        "typedChangesSearch": 0.4317127446912835,
+        "g7Truncation": 0.021762908761739523,
+        "typedTruncation": 0.011918681401576585,
+        "prunedBypassBranchesPerRoot": 5.097423905254026
+      },
+      "rootCoverage": {
+        "MOVE": {
+          "rows": 3840,
+          "roots": 14011
+        },
+        "RETREAT": {
+          "rows": 2308,
+          "roots": 2308
+        },
+        "WAIT": {
+          "rows": 3840,
+          "roots": 3840
+        },
+        "COLLECT": {
+          "rows": 0,
+          "roots": 0
+        },
+        "TRANSFER": {
+          "rows": 0,
+          "roots": 0
+        },
+        "PROTECT": {
+          "rows": 3840,
+          "roots": 5379
+        },
+        "RESTORE": {
+          "rows": 168,
+          "roots": 169
+        },
+        "REINFORCE": {
+          "rows": 327,
+          "roots": 335
+        },
+        "REPAIR": {
+          "rows": 327,
+          "roots": 335
+        },
+        "ATTACK": {
+          "rows": 86,
+          "roots": 87
+        },
+        "BYPASS": {
+          "rows": 37,
+          "roots": 49
+        },
+        "BUILD": {
+          "rows": 0,
+          "roots": 0
+        }
+      }
+    },
+    "B": {
+      "rows": 3840,
+      "strata": {
+        "ALL": {
+          "n": 2304,
+          "metrics": {
+            "BASELINE_G7": {
+              "n": 2304,
+              "hit": 0.783203125,
+              "regret": 12.19552951388889,
+              "nreg": 0.08956843038685983,
+              "catastrophic": 0.03211805555555555
+            },
+            "OBJECTIVE_PROGRESS_ONLY": {
+              "n": 2304,
+              "hit": 0.7805989583333334,
+              "regret": 12.510633680555555,
+              "nreg": 0.09082873783718576,
+              "catastrophic": 0.03342013888888889
+            },
+            "TYPED_RELATION_ONLY": {
+              "n": 2304,
+              "hit": 0.7845052083333334,
+              "regret": 12.154296875,
+              "nreg": 0.08977502840029876,
+              "catastrophic": 0.03428819444444445
+            },
+            "OBJECTIVE_PROGRESS_PLUS_TYPED_RELATION": {
+              "n": 2304,
+              "hit": 0.783203125,
+              "regret": 12.576171875,
+              "nreg": 0.09124667477809788,
+              "catastrophic": 0.03689236111111111
+            },
+            "TYPED_SEARCH_ONLY": {
+              "n": 2304,
+              "hit": 0.7866753472222222,
+              "regret": 12.040147569444445,
+              "nreg": 0.08860310197799551,
+              "catastrophic": 0.032552083333333336
+            },
+            "RUNTIME_PLUS_CURRENT_PRIVATE": {
+              "n": 2304,
+              "hit": 0.7884114583333334,
+              "regret": 11.960286458333334,
+              "nreg": 0.08572734932874163,
+              "catastrophic": 0.03211805555555555
+            },
+            "DISCLOSURE_PLUS_CURRENT_PRIVATE": {
+              "n": 2304,
+              "hit": 0.791015625,
+              "regret": 11.731119791666666,
+              "nreg": 0.08528692075774658,
+              "catastrophic": 0.03211805555555555
+            }
+          },
+          "comparisons": {
+            "C1_OBJECTIVE_PROGRESS": {
+              "n": 2304,
+              "hitGain": -0.0026041666666666665,
+              "hitGainCi95": [
+                -0.005642361111111111,
+                0.00043402777777777775
+              ],
+              "nregExcess": -0.0012603074503259096,
+              "nregExcessCi95": [
+                -0.004020400857057063,
+                0.0015462145512804212
+              ],
+              "flipRate": 0.007378472222222222,
+              "catastrophicChange": 0.0013020833333333333,
+              "MATERIAL": false,
+              "HARMFUL": false
+            },
+            "C2_TYPED_RELATION": {
+              "n": 2304,
+              "hitGain": 0.0013020833333333333,
+              "hitGainCi95": [
+                -0.006076388888888889,
+                0.009114583333333334
+              ],
+              "nregExcess": -0.00020659801343893668,
+              "nregExcessCi95": [
+                -0.005230289988948717,
+                0.004723417301302829
+              ],
+              "flipRate": 0.044270833333333336,
+              "catastrophicChange": 0.002170138888888889,
+              "MATERIAL": false,
+              "HARMFUL": false
+            },
+            "C3_BOTH": {
+              "n": 2304,
+              "hitGain": 0,
+              "hitGainCi95": [
+                -0.008246527777777778,
+                0.008246527777777778
+              ],
+              "nregExcess": -0.001678244391238063,
+              "nregExcessCi95": [
+                -0.007331914168447186,
+                0.0035869638123383913
+              ],
+              "flipRate": 0.04991319444444445,
+              "catastrophicChange": 0.004774305555555556,
+              "MATERIAL": false,
+              "HARMFUL": false
+            },
+            "C4_DISCLOSURE_INCREMENT": {
+              "n": 2304,
+              "hitGain": 0.0026041666666666665,
+              "hitGainCi95": [
+                -0.005208333333333333,
+                0.009982638888888888
+              ],
+              "nregExcess": -0.00041793694091215347,
+              "nregExcessCi95": [
+                -0.005456561055201408,
+                0.004830876318999896
+              ],
+              "flipRate": 0.047309027777777776,
+              "catastrophicChange": 0.003472222222222222,
+              "MATERIAL": false,
+              "HARMFUL": false
+            },
+            "C5_TYPED_SEARCH": {
+              "n": 2304,
+              "hitGain": 0.003472222222222222,
+              "hitGainCi95": [
+                0,
+                0.006944444444444444
+              ],
+              "nregExcess": 0.0009653284088643285,
+              "nregExcessCi95": [
+                -0.0014394361939032286,
+                0.003428416091424985
+              ],
+              "flipRate": 0.009548611111111112,
+              "catastrophicChange": 0.00043402777777777775,
+              "MATERIAL": false,
+              "HARMFUL": false
+            },
+            "C6_RUNTIME_PRIVATE_GAP": {
+              "n": 2304,
+              "hitGain": 0.0078125,
+              "hitGainCi95": [
+                0.00390625,
+                0.012152777777777778
+              ],
+              "nregExcess": 0.005101388508444143,
+              "nregExcessCi95": [
+                0.0026622951577266077,
+                0.007780038043453793
+              ],
+              "flipRate": 0.013020833333333334,
+              "catastrophicChange": -0.0013020833333333333,
+              "MATERIAL": false,
+              "HARMFUL": false
+            },
+            "C7_DISCLOSURE_PRIVATE_GAP": {
+              "n": 2304,
+              "hitGain": 0.0078125,
+              "hitGainCi95": [
+                0.003472222222222222,
+                0.012586805555555556
+              ],
+              "nregExcess": 0.005959754020351335,
+              "nregExcessCi95": [
+                0.002917600777246705,
+                0.009175464804213551
+              ],
+              "flipRate": 0.017795138888888888,
+              "catastrophicChange": -0.004774305555555556,
+              "MATERIAL": false,
+              "HARMFUL": false
+            }
+          }
+        },
+        "LOW": {
+          "n": 864,
+          "metrics": {
+            "BASELINE_G7": {
+              "n": 864,
+              "hit": 0.6608796296296297,
+              "regret": 18.32175925925926,
+              "nreg": 0.14461157560264495,
+              "catastrophic": 0.04398148148148148
+            },
+            "OBJECTIVE_PROGRESS_ONLY": {
+              "n": 864,
+              "hit": 0.6608796296296297,
+              "regret": 18.322916666666668,
+              "nreg": 0.14330883138213754,
+              "catastrophic": 0.04398148148148148
+            },
+            "TYPED_RELATION_ONLY": {
+              "n": 864,
+              "hit": 0.6597222222222222,
+              "regret": 18.74074074074074,
+              "nreg": 0.1452958661427196,
+              "catastrophic": 0.05092592592592592
+            },
+            "OBJECTIVE_PROGRESS_PLUS_TYPED_RELATION": {
+              "n": 864,
+              "hit": 0.6608796296296297,
+              "regret": 18.66550925925926,
+              "nreg": 0.14366978361496244,
+              "catastrophic": 0.05092592592592592
+            },
+            "TYPED_SEARCH_ONLY": {
+              "n": 864,
+              "hit": 0.6631944444444444,
+              "regret": 18.41435185185185,
+              "nreg": 0.14483649018265432,
+              "catastrophic": 0.046296296296296294
+            },
+            "RUNTIME_PLUS_CURRENT_PRIVATE": {
+              "n": 864,
+              "hit": 0.6736111111111112,
+              "regret": 17.50115740740741,
+              "nreg": 0.1358283673152304,
+              "catastrophic": 0.04398148148148148
+            },
+            "DISCLOSURE_PLUS_CURRENT_PRIVATE": {
+              "n": 864,
+              "hit": 0.6666666666666666,
+              "regret": 18.13773148148148,
+              "nreg": 0.1399236675468471,
+              "catastrophic": 0.04861111111111111
+            }
+          },
+          "comparisons": {
+            "C1_OBJECTIVE_PROGRESS": {
+              "n": 864,
+              "hitGain": 0,
+              "hitGainCi95": [
+                -0.004629629629629629,
+                0.004629629629629629
+              ],
+              "nregExcess": 0.0013027442205074333,
+              "nregExcessCi95": [
+                -0.003183077939848026,
+                0.00611003445305771
+              ],
+              "flipRate": 0.008101851851851851,
+              "catastrophicChange": 0,
+              "MATERIAL": false,
+              "HARMFUL": false
+            },
+            "C2_TYPED_RELATION": {
+              "n": 864,
+              "hitGain": -0.0011574074074074073,
+              "hitGainCi95": [
+                -0.015046296296296295,
+                0.01273148148148148
+              ],
+              "nregExcess": -0.0006842905400746938,
+              "nregExcessCi95": [
+                -0.010338252657621361,
+                0.009116950709156737
+              ],
+              "flipRate": 0.06597222222222222,
+              "catastrophicChange": 0.006944444444444444,
+              "MATERIAL": false,
+              "HARMFUL": false
+            },
+            "C3_BOTH": {
+              "n": 864,
+              "hitGain": 0,
+              "hitGainCi95": [
+                -0.015046296296296295,
+                0.015046296296296295
+              ],
+              "nregExcess": 0.0009417919876824972,
+              "nregExcessCi95": [
+                -0.009756672146474544,
+                0.011021035164513361
+              ],
+              "flipRate": 0.06597222222222222,
+              "catastrophicChange": 0.006944444444444444,
+              "MATERIAL": false,
+              "HARMFUL": false
+            },
+            "C4_DISCLOSURE_INCREMENT": {
+              "n": 864,
+              "hitGain": 0,
+              "hitGainCi95": [
+                -0.013888888888888888,
+                0.013888888888888888
+              ],
+              "nregExcess": -0.00036095223282493684,
+              "nregExcessCi95": [
+                -0.009658546651364817,
+                0.00952864352671761
+              ],
+              "flipRate": 0.061342592592592594,
+              "catastrophicChange": 0.006944444444444444,
+              "MATERIAL": false,
+              "HARMFUL": false
+            },
+            "C5_TYPED_SEARCH": {
+              "n": 864,
+              "hitGain": 0.0023148148148148147,
+              "hitGainCi95": [
+                -0.004629629629629629,
+                0.009259259259259259
+              ],
+              "nregExcess": -0.00022491458000937597,
+              "nregExcessCi95": [
+                -0.005733326537606981,
+                0.005046722000056256
+              ],
+              "flipRate": 0.013888888888888888,
+              "catastrophicChange": 0.0023148148148148147,
+              "MATERIAL": false,
+              "HARMFUL": false
+            },
+            "C6_RUNTIME_PRIVATE_GAP": {
+              "n": 864,
+              "hitGain": 0.01273148148148148,
+              "hitGainCi95": [
+                0.005787037037037037,
+                0.020833333333333332
+              ],
+              "nregExcess": 0.007480464066907138,
+              "nregExcessCi95": [
+                0.003352529204454472,
+                0.012514318632407827
+              ],
+              "flipRate": 0.016203703703703703,
+              "catastrophicChange": 0,
+              "MATERIAL": false,
+              "HARMFUL": false
+            },
+            "C7_DISCLOSURE_PRIVATE_GAP": {
+              "n": 864,
+              "hitGain": 0.005787037037037037,
+              "hitGainCi95": [
+                -0.0011574074074074073,
+                0.013888888888888888
+              ],
+              "nregExcess": 0.0037461160681153405,
+              "nregExcessCi95": [
+                -0.0016197334658296309,
+                0.009615007819889077
+              ],
+              "flipRate": 0.018518518518518517,
+              "catastrophicChange": -0.0023148148148148147,
+              "MATERIAL": false,
+              "HARMFUL": false
+            }
+          }
+        },
+        "MID": {
+          "n": 864,
+          "metrics": {
+            "BASELINE_G7": {
+              "n": 864,
+              "hit": 0.8165509259259259,
+              "regret": 10.359375,
+              "nreg": 0.07321355286820738,
+              "catastrophic": 0.03009259259259259
+            },
+            "OBJECTIVE_PROGRESS_ONLY": {
+              "n": 864,
+              "hit": 0.8142361111111112,
+              "regret": 10.589699074074074,
+              "nreg": 0.07431921998448389,
+              "catastrophic": 0.03009259259259259
+            },
+            "TYPED_RELATION_ONLY": {
+              "n": 864,
+              "hit": 0.8200231481481481,
+              "regret": 9.68576388888889,
+              "nreg": 0.0715295580462409,
+              "catastrophic": 0.02546296296296296
+            },
+            "OBJECTIVE_PROGRESS_PLUS_TYPED_RELATION": {
+              "n": 864,
+              "hit": 0.8200231481481481,
+              "regret": 10.101273148148149,
+              "nreg": 0.07356190027356949,
+              "catastrophic": 0.028935185185185185
+            },
+            "TYPED_SEARCH_ONLY": {
+              "n": 864,
+              "hit": 0.8188657407407407,
+              "regret": 10.124421296296296,
+              "nreg": 0.07221286001832007,
+              "catastrophic": 0.028935185185185185
+            },
+            "RUNTIME_PLUS_CURRENT_PRIVATE": {
+              "n": 864,
+              "hit": 0.8211805555555556,
+              "regret": 10.155671296296296,
+              "nreg": 0.07063444932964093,
+              "catastrophic": 0.027777777777777776
+            },
+            "DISCLOSURE_PLUS_CURRENT_PRIVATE": {
+              "n": 864,
+              "hit": 0.8304398148148148,
+              "regret": 9.127893518518519,
+              "nreg": 0.06630315433269873,
+              "catastrophic": 0.023148148148148147
+            }
+          },
+          "comparisons": {
+            "C1_OBJECTIVE_PROGRESS": {
+              "n": 864,
+              "hitGain": -0.0023148148148148147,
+              "hitGainCi95": [
+                -0.008101851851851851,
+                0.003472222222222222
+              ],
+              "nregExcess": -0.0011056671162764976,
+              "nregExcessCi95": [
+                -0.00548587602668324,
+                0.0036665530166572315
+              ],
+              "flipRate": 0.006944444444444444,
+              "catastrophicChange": 0,
+              "MATERIAL": false,
+              "HARMFUL": false
+            },
+            "C2_TYPED_RELATION": {
+              "n": 864,
+              "hitGain": 0.003472222222222222,
+              "hitGainCi95": [
+                -0.006944444444444444,
+                0.015046296296296295
+              ],
+              "nregExcess": 0.0016839948219664947,
+              "nregExcessCi95": [
+                -0.004928253972086084,
+                0.00850760073684968
+              ],
+              "flipRate": 0.032407407407407406,
+              "catastrophicChange": -0.004629629629629629,
+              "MATERIAL": false,
+              "HARMFUL": false
+            },
+            "C3_BOTH": {
+              "n": 864,
+              "hitGain": 0.003472222222222222,
+              "hitGainCi95": [
+                -0.009259259259259259,
+                0.016203703703703703
+              ],
+              "nregExcess": -0.00034834740536209653,
+              "nregExcessCi95": [
+                -0.008549850974344849,
+                0.00769706888609779
+              ],
+              "flipRate": 0.04050925925925926,
+              "catastrophicChange": -0.0011574074074074073,
+              "MATERIAL": false,
+              "HARMFUL": false
+            },
+            "C4_DISCLOSURE_INCREMENT": {
+              "n": 864,
+              "hitGain": 0.005787037037037037,
+              "hitGainCi95": [
+                -0.005787037037037037,
+                0.017361111111111112
+              ],
+              "nregExcess": 0.0007573197109144021,
+              "nregExcessCi95": [
+                -0.007267960553103114,
+                0.008338496392733815
+              ],
+              "flipRate": 0.04050925925925926,
+              "catastrophicChange": -0.0011574074074074073,
+              "MATERIAL": false,
+              "HARMFUL": false
+            },
+            "C5_TYPED_SEARCH": {
+              "n": 864,
+              "hitGain": 0.0023148148148148147,
+              "hitGainCi95": [
+                -0.0023148148148148147,
+                0.006944444444444444
+              ],
+              "nregExcess": 0.0010006928498873123,
+              "nregExcessCi95": [
+                -0.0023544851011270654,
+                0.0047139222234478684
+              ],
+              "flipRate": 0.006944444444444444,
+              "catastrophicChange": -0.0011574074074074073,
+              "MATERIAL": false,
+              "HARMFUL": false
+            },
+            "C6_RUNTIME_PRIVATE_GAP": {
+              "n": 864,
+              "hitGain": 0.006944444444444444,
+              "hitGainCi95": [
+                0.0011574074074074073,
+                0.013888888888888888
+              ],
+              "nregExcess": 0.0036847706548429654,
+              "nregExcessCi95": [
+                -0.000438236455541563,
+                0.00844104322445559
+              ],
+              "flipRate": 0.010416666666666666,
+              "catastrophicChange": -0.0023148148148148147,
+              "MATERIAL": false,
+              "HARMFUL": false
+            },
+            "C7_DISCLOSURE_PRIVATE_GAP": {
+              "n": 864,
+              "hitGain": 0.010416666666666666,
+              "hitGainCi95": [
+                0.003472222222222222,
+                0.018518518518518517
+              ],
+              "nregExcess": 0.007258745940870764,
+              "nregExcessCi95": [
+                0.002233256677954574,
+                0.012991445151560265
+              ],
+              "flipRate": 0.019675925925925927,
+              "catastrophicChange": -0.005787037037037037,
+              "MATERIAL": false,
+              "HARMFUL": false
+            }
+          }
+        },
+        "HIGH": {
+          "n": 576,
+          "metrics": {
+            "BASELINE_G7": {
+              "n": 576,
+              "hit": 0.9166666666666666,
+              "regret": 5.760416666666667,
+              "nreg": 0.031536028841160677,
+              "catastrophic": 0.017361111111111112
+            },
+            "OBJECTIVE_PROGRESS_ONLY": {
+              "n": 576,
+              "hit": 0.9097222222222222,
+              "regret": 6.673611111111111,
+              "nreg": 0.036872874298810705,
+              "catastrophic": 0.022569444444444444
+            },
+            "TYPED_RELATION_ONLY": {
+              "n": 576,
+              "hit": 0.9184027777777778,
+              "regret": 5.977430555555555,
+              "nreg": 0.03386197731775412,
+              "catastrophic": 0.022569444444444444
+            },
+            "OBJECTIVE_PROGRESS_PLUS_TYPED_RELATION": {
+              "n": 576,
+              "hit": 0.9114583333333334,
+              "regret": 7.154513888888889,
+              "nreg": 0.03913917327959353,
+              "catastrophic": 0.027777777777777776
+            },
+            "TYPED_SEARCH_ONLY": {
+              "n": 576,
+              "hit": 0.9236111111111112,
+              "regret": 5.352430555555555,
+              "nreg": 0.028838382610520265,
+              "catastrophic": 0.017361111111111112
+            },
+            "RUNTIME_PLUS_CURRENT_PRIVATE": {
+              "n": 576,
+              "hit": 0.9114583333333334,
+              "regret": 6.355902777777778,
+              "nreg": 0.033215172347659305,
+              "catastrophic": 0.020833333333333332
+            },
+            "DISCLOSURE_PLUS_CURRENT_PRIVATE": {
+              "n": 576,
+              "hit": 0.9184027777777778,
+              "regret": 6.026041666666667,
+              "nreg": 0.03180745021166734,
+              "catastrophic": 0.020833333333333332
+            }
+          },
+          "comparisons": {
+            "C1_OBJECTIVE_PROGRESS": {
+              "n": 576,
+              "hitGain": -0.006944444444444444,
+              "hitGainCi95": [
+                -0.013888888888888888,
+                -0.001736111111111111
+              ],
+              "nregExcess": -0.005336845457650041,
+              "nregExcessCi95": [
+                -0.01107660810762396,
+                -0.000925925925925926
+              ],
+              "flipRate": 0.006944444444444444,
+              "catastrophicChange": 0.005208333333333333,
+              "MATERIAL": false,
+              "HARMFUL": false
+            },
+            "C2_TYPED_RELATION": {
+              "n": 576,
+              "hitGain": 0.001736111111111111,
+              "hitGainCi95": [
+                -0.012152777777777778,
+                0.015625
+              ],
+              "nregExcess": -0.0023259484765934487,
+              "nregExcessCi95": [
+                -0.010156046670343673,
+                0.004699485242278365
+              ],
+              "flipRate": 0.029513888888888888,
+              "catastrophicChange": 0.005208333333333333,
+              "MATERIAL": false,
+              "HARMFUL": false
+            },
+            "C3_BOTH": {
+              "n": 576,
+              "hitGain": -0.005208333333333333,
+              "hitGainCi95": [
+                -0.020833333333333332,
+                0.010416666666666666
+              ],
+              "nregExcess": -0.007603144438432852,
+              "nregExcessCi95": [
+                -0.018225670308003948,
+                0.0017439421672958669
+              ],
+              "flipRate": 0.03993055555555555,
+              "catastrophicChange": 0.010416666666666666,
+              "MATERIAL": false,
+              "HARMFUL": false
+            },
+            "C4_DISCLOSURE_INCREMENT": {
+              "n": 576,
+              "hitGain": 0.001736111111111111,
+              "hitGainCi95": [
+                -0.012152777777777778,
+                0.017361111111111112
+              ],
+              "nregExcess": -0.002266298980782809,
+              "nregExcessCi95": [
+                -0.011937678348186702,
+                0.00705268664681212
+              ],
+              "flipRate": 0.036458333333333336,
+              "catastrophicChange": 0.005208333333333333,
+              "MATERIAL": false,
+              "HARMFUL": false
+            },
+            "C5_TYPED_SEARCH": {
+              "n": 576,
+              "hitGain": 0.006944444444444444,
+              "hitGainCi95": [
+                0.001736111111111111,
+                0.013888888888888888
+              ],
+              "nregExcess": 0.0026976462306404093,
+              "nregExcessCi95": [
+                0.00033602150537634406,
+                0.005642507165508358
+              ],
+              "flipRate": 0.006944444444444444,
+              "catastrophicChange": 0,
+              "MATERIAL": false,
+              "HARMFUL": false
+            },
+            "C6_RUNTIME_PRIVATE_GAP": {
+              "n": 576,
+              "hitGain": 0.001736111111111111,
+              "hitGainCi95": [
+                -0.006944444444444444,
+                0.010416666666666666
+              ],
+              "nregExcess": 0.0036577019511514156,
+              "nregExcessCi95": [
+                -0.00044621101364522423,
+                0.008978408291284799
+              ],
+              "flipRate": 0.012152777777777778,
+              "catastrophicChange": -0.001736111111111111,
+              "MATERIAL": false,
+              "HARMFUL": false
+            },
+            "C7_DISCLOSURE_PRIVATE_GAP": {
+              "n": 576,
+              "hitGain": 0.006944444444444444,
+              "hitGainCi95": [
+                -0.001736111111111111,
+                0.017361111111111112
+              ],
+              "nregExcess": 0.007331723067926189,
+              "nregExcessCi95": [
+                0.001544427122920771,
+                0.01422664685968528
+              ],
+              "flipRate": 0.013888888888888888,
+              "catastrophicChange": -0.006944444444444444,
+              "MATERIAL": false,
+              "HARMFUL": false
+            }
+          }
+        },
+        "RETREAT": {
+          "n": 365,
+          "metrics": {
+            "BASELINE_G7": {
+              "n": 365,
+              "hit": 0.8123287671232877,
+              "regret": 14.072602739726028,
+              "nreg": 0.08838692690414639,
+              "catastrophic": 0.038356164383561646
+            },
+            "OBJECTIVE_PROGRESS_ONLY": {
+              "n": 365,
+              "hit": 0.8013698630136986,
+              "regret": 15.393150684931507,
+              "nreg": 0.09607177944868152,
+              "catastrophic": 0.043835616438356165
+            },
+            "TYPED_RELATION_ONLY": {
+              "n": 365,
+              "hit": 0.8123287671232877,
+              "regret": 14.212328767123287,
+              "nreg": 0.08736162461387187,
+              "catastrophic": 0.038356164383561646
+            },
+            "OBJECTIVE_PROGRESS_PLUS_TYPED_RELATION": {
+              "n": 365,
+              "hit": 0.8123287671232877,
+              "regret": 15.154794520547945,
+              "nreg": 0.09062679698797127,
+              "catastrophic": 0.043835616438356165
+            },
+            "TYPED_SEARCH_ONLY": {
+              "n": 365,
+              "hit": 0.815068493150685,
+              "regret": 13.954794520547946,
+              "nreg": 0.08732559159623572,
+              "catastrophic": 0.038356164383561646
+            },
+            "RUNTIME_PLUS_CURRENT_PRIVATE": {
+              "n": 365,
+              "hit": 0.8068493150684931,
+              "regret": 14.771232876712329,
+              "nreg": 0.09035635153018741,
+              "catastrophic": 0.0410958904109589
+            },
+            "DISCLOSURE_PLUS_CURRENT_PRIVATE": {
+              "n": 365,
+              "hit": 0.8095890410958904,
+              "regret": 15.143835616438356,
+              "nreg": 0.09060485540881937,
+              "catastrophic": 0.043835616438356165
+            }
+          },
+          "comparisons": {
+            "C1_OBJECTIVE_PROGRESS": {
+              "n": 365,
+              "hitGain": -0.010958904109589041,
+              "hitGainCi95": [
+                -0.021917808219178082,
+                -0.0027397260273972603
+              ],
+              "nregExcess": -0.007684852544535118,
+              "nregExcessCi95": [
+                -0.016885841165111184,
+                -0.000835282325425994
+              ],
+              "flipRate": 0.010958904109589041,
+              "catastrophicChange": 0.005479452054794521,
+              "MATERIAL": false,
+              "HARMFUL": false
+            },
+            "C2_TYPED_RELATION": {
+              "n": 365,
+              "hitGain": 0,
+              "hitGainCi95": [
+                -0.0136986301369863,
+                0.0136986301369863
+              ],
+              "nregExcess": 0.0010253022902744968,
+              "nregExcessCi95": [
+                -0.006852170123725321,
+                0.009459322641966491
+              ],
+              "flipRate": 0.024657534246575342,
+              "catastrophicChange": 0,
+              "MATERIAL": false,
+              "HARMFUL": false
+            },
+            "C3_BOTH": {
+              "n": 365,
+              "hitGain": 0,
+              "hitGainCi95": [
+                -0.01643835616438356,
+                0.01643835616438356
+              ],
+              "nregExcess": -0.002239870083824893,
+              "nregExcessCi95": [
+                -0.013422932927212177,
+                0.008200982558290661
+              ],
+              "flipRate": 0.03287671232876712,
+              "catastrophicChange": 0.005479452054794521,
+              "MATERIAL": false,
+              "HARMFUL": false
+            },
+            "C4_DISCLOSURE_INCREMENT": {
+              "n": 365,
+              "hitGain": 0.010958904109589041,
+              "hitGainCi95": [
+                -0.0027397260273972603,
+                0.0273972602739726
+              ],
+              "nregExcess": 0.005444982460710225,
+              "nregExcessCi95": [
+                -0.00108801604604959,
+                0.014030129376357595
+              ],
+              "flipRate": 0.0273972602739726,
+              "catastrophicChange": 0,
+              "MATERIAL": false,
+              "HARMFUL": false
+            },
+            "C5_TYPED_SEARCH": {
+              "n": 365,
+              "hitGain": 0.0027397260273972603,
+              "hitGainCi95": [
+                0,
+                0.00821917808219178
+              ],
+              "nregExcess": 0.0010613353079106504,
+              "nregExcessCi95": [
+                0,
+                0.003184005923731951
+              ],
+              "flipRate": 0.0027397260273972603,
+              "catastrophicChange": 0,
+              "MATERIAL": false,
+              "HARMFUL": false
+            },
+            "C6_RUNTIME_PRIVATE_GAP": {
+              "n": 365,
+              "hitGain": 0.005479452054794521,
+              "hitGainCi95": [
+                -0.005479452054794521,
+                0.019178082191780823
+              ],
+              "nregExcess": 0.005715427918494102,
+              "nregExcessCi95": [
+                -0.00007663569307404923,
+                0.013429432010631282
+              ],
+              "flipRate": 0.019178082191780823,
+              "catastrophicChange": -0.0027397260273972603,
+              "MATERIAL": false,
+              "HARMFUL": false
+            },
+            "C7_DISCLOSURE_PRIVATE_GAP": {
+              "n": 365,
+              "hitGain": -0.0027397260273972603,
+              "hitGainCi95": [
+                -0.0136986301369863,
+                0.005479452054794521
+              ],
+              "nregExcess": 0.000021941579151922518,
+              "nregExcessCi95": [
+                -0.0019123521502757265,
+                0.002472977771754257
+              ],
+              "flipRate": 0.010958904109589041,
+              "catastrophicChange": 0,
+              "MATERIAL": false,
+              "HARMFUL": false
+            }
+          }
+        },
+        "HORIZON_DEPENDENT": {
+          "n": 1749,
+          "metrics": {
+            "BASELINE_G7": {
+              "n": 1749,
+              "hit": 0.7973127501429388,
+              "regret": 12.786449399656947,
+              "nreg": 0.08361304575331571,
+              "catastrophic": 0.03544882790165809
+            },
+            "OBJECTIVE_PROGRESS_ONLY": {
+              "n": 1749,
+              "hit": 0.792166952544311,
+              "regret": 13.277015437392796,
+              "nreg": 0.08698854510468847,
+              "catastrophic": 0.037164093767867355
+            },
+            "TYPED_RELATION_ONLY": {
+              "n": 1749,
+              "hit": 0.7990280160091481,
+              "regret": 12.628644939965694,
+              "nreg": 0.08370325379854494,
+              "catastrophic": 0.037164093767867355
+            },
+            "OBJECTIVE_PROGRESS_PLUS_TYPED_RELATION": {
+              "n": 1749,
+              "hit": 0.7973127501429388,
+              "regret": 13.243281875357347,
+              "nreg": 0.08618298367210002,
+              "catastrophic": 0.04059462550028588
+            },
+            "TYPED_SEARCH_ONLY": {
+              "n": 1749,
+              "hit": 0.8018867924528302,
+              "regret": 12.55889079473985,
+              "nreg": 0.08259587597125677,
+              "catastrophic": 0.036020583190394515
+            },
+            "RUNTIME_PLUS_CURRENT_PRIVATE": {
+              "n": 1749,
+              "hit": 0.7973127501429388,
+              "regret": 12.775586049170954,
+              "nreg": 0.08302857052027975,
+              "catastrophic": 0.03544882790165809
+            },
+            "DISCLOSURE_PLUS_CURRENT_PRIVATE": {
+              "n": 1749,
+              "hit": 0.8041738136077758,
+              "regret": 12.376500857632934,
+              "nreg": 0.08031938833475542,
+              "catastrophic": 0.03487707261292167
+            }
+          },
+          "comparisons": {
+            "C1_OBJECTIVE_PROGRESS": {
+              "n": 1749,
+              "hitGain": -0.005145797598627788,
+              "hitGainCi95": [
+                -0.009148084619782733,
+                -0.0017152658662092624
+              ],
+              "nregExcess": -0.003375499351372725,
+              "nregExcessCi95": [
+                -0.0067015448880319494,
+                -0.0003958529403527138
+              ],
+              "flipRate": 0.008004574042309892,
+              "catastrophicChange": 0.0017152658662092624,
+              "MATERIAL": false,
+              "HARMFUL": false
+            },
+            "C2_TYPED_RELATION": {
+              "n": 1749,
+              "hitGain": 0.0017152658662092624,
+              "hitGainCi95": [
+                -0.00686106346483705,
+                0.010291595197255575
+              ],
+              "nregExcess": -0.00009020804522924022,
+              "nregExcessCi95": [
+                -0.005462037129851779,
+                0.0054001004928871735
+              ],
+              "flipRate": 0.0440251572327044,
+              "catastrophicChange": 0.0017152658662092624,
+              "MATERIAL": false,
+              "HARMFUL": false
+            },
+            "C3_BOTH": {
+              "n": 1749,
+              "hitGain": 0,
+              "hitGainCi95": [
+                -0.009148084619782733,
+                0.009148084619782733
+              ],
+              "nregExcess": -0.002569937918784298,
+              "nregExcessCi95": [
+                -0.008755964879087195,
+                0.0035266814467329603
+              ],
+              "flipRate": 0.05088622069754145,
+              "catastrophicChange": 0.005145797598627788,
+              "MATERIAL": false,
+              "HARMFUL": false
+            },
+            "C4_DISCLOSURE_INCREMENT": {
+              "n": 1749,
+              "hitGain": 0.005145797598627788,
+              "hitGainCi95": [
+                -0.004002287021154946,
+                0.01429388221841052
+              ],
+              "nregExcess": 0.0008055614325884263,
+              "nregExcessCi95": [
+                -0.005026600161221337,
+                0.0067552672719168975
+              ],
+              "flipRate": 0.048027444253859346,
+              "catastrophicChange": 0.003430531732418525,
+              "MATERIAL": false,
+              "HARMFUL": false
+            },
+            "C5_TYPED_SEARCH": {
+              "n": 1749,
+              "hitGain": 0.004574042309891366,
+              "hitGainCi95": [
+                0,
+                0.009148084619782733
+              ],
+              "nregExcess": 0.0010171697820589483,
+              "nregExcessCi95": [
+                -0.0018969638022786638,
+                0.003931836353820809
+              ],
+              "flipRate": 0.011435105774728416,
+              "catastrophicChange": 0.0005717552887364208,
+              "MATERIAL": false,
+              "HARMFUL": false
+            },
+            "C6_RUNTIME_PRIVATE_GAP": {
+              "n": 1749,
+              "hitGain": 0.005145797598627788,
+              "hitGainCi95": [
+                0.0005717552887364208,
+                0.009719839908519153
+              ],
+              "nregExcess": 0.00395997458440871,
+              "nregExcessCi95": [
+                0.001344711449946849,
+                0.006589760294562294
+              ],
+              "flipRate": 0.012006861063464836,
+              "catastrophicChange": -0.0017152658662092624,
+              "MATERIAL": false,
+              "HARMFUL": false
+            },
+            "C7_DISCLOSURE_PRIVATE_GAP": {
+              "n": 1749,
+              "hitGain": 0.00686106346483705,
+              "hitGainCi95": [
+                0.0017152658662092624,
+                0.012006861063464836
+              ],
+              "nregExcess": 0.005863595337344567,
+              "nregExcessCi95": [
+                0.0024116837552015853,
+                0.009510412574171317
+              ],
+              "flipRate": 0.016580903373356205,
+              "catastrophicChange": -0.005717552887364208,
+              "MATERIAL": false,
+              "HARMFUL": false
+            }
+          }
+        },
+        "TARGET_BEARING": {
+          "n": 339,
+          "metrics": {
+            "BASELINE_G7": {
+              "n": 339,
+              "hit": 0.4778761061946903,
+              "regret": 37.80530973451327,
+              "nreg": 0.25299797359649173,
+              "catastrophic": 0.13274336283185842
+            },
+            "OBJECTIVE_PROGRESS_ONLY": {
+              "n": 339,
+              "hit": 0.4749262536873156,
+              "regret": 37.69911504424779,
+              "nreg": 0.2480460916735593,
+              "catastrophic": 0.12979351032448377
+            },
+            "TYPED_RELATION_ONLY": {
+              "n": 339,
+              "hit": 0.49262536873156343,
+              "regret": 37.31268436578171,
+              "nreg": 0.24922896932531705,
+              "catastrophic": 0.14454277286135694
+            },
+            "OBJECTIVE_PROGRESS_PLUS_TYPED_RELATION": {
+              "n": 339,
+              "hit": 0.49557522123893805,
+              "regret": 37.26253687315634,
+              "nreg": 0.24563701617865005,
+              "catastrophic": 0.14454277286135694
+            },
+            "TYPED_SEARCH_ONLY": {
+              "n": 339,
+              "hit": 0.5014749262536873,
+              "regret": 36.04719764011799,
+              "nreg": 0.2403128762961241,
+              "catastrophic": 0.12684365781710916
+            },
+            "RUNTIME_PLUS_CURRENT_PRIVATE": {
+              "n": 339,
+              "hit": 0.5250737463126843,
+              "regret": 34.37758112094395,
+              "nreg": 0.21668290509475122,
+              "catastrophic": 0.12389380530973451
+            },
+            "DISCLOSURE_PLUS_CURRENT_PRIVATE": {
+              "n": 339,
+              "hit": 0.5486725663716814,
+              "regret": 31.690265486725664,
+              "nreg": 0.20654867943335967,
+              "catastrophic": 0.11209439528023599
+            }
+          },
+          "comparisons": {
+            "C1_OBJECTIVE_PROGRESS": {
+              "n": 339,
+              "hitGain": -0.0029498525073746312,
+              "hitGainCi95": [
+                -0.02064896755162242,
+                0.014749262536873156
+              ],
+              "nregExcess": 0.0049518819229324666,
+              "nregExcessCi95": [
+                -0.010317051944410096,
+                0.020665330434746606
+              ],
+              "flipRate": 0.032448377581120944,
+              "catastrophicChange": -0.0029498525073746312,
+              "MATERIAL": false,
+              "HARMFUL": false
+            },
+            "C2_TYPED_RELATION": {
+              "n": 339,
+              "hitGain": 0.014749262536873156,
+              "hitGainCi95": [
+                -0.029498525073746312,
+                0.058997050147492625
+              ],
+              "nregExcess": 0.003769004271174638,
+              "nregExcessCi95": [
+                -0.025504107192021327,
+                0.03193590919610485
+              ],
+              "flipRate": 0.23303834808259588,
+              "catastrophicChange": 0.011799410029498525,
+              "MATERIAL": false,
+              "HARMFUL": false
+            },
+            "C3_BOTH": {
+              "n": 339,
+              "hitGain": 0.017699115044247787,
+              "hitGainCi95": [
+                -0.032448377581120944,
+                0.06489675516224189
+              ],
+              "nregExcess": 0.00736095741784163,
+              "nregExcessCi95": [
+                -0.02641227698436985,
+                0.04015934969605324
+              ],
+              "flipRate": 0.25663716814159293,
+              "catastrophicChange": 0.011799410029498525,
+              "MATERIAL": false,
+              "HARMFUL": false
+            },
+            "C4_DISCLOSURE_INCREMENT": {
+              "n": 339,
+              "hitGain": 0.02064896755162242,
+              "hitGainCi95": [
+                -0.02654867256637168,
+                0.06489675516224189
+              ],
+              "nregExcess": 0.002409075494909163,
+              "nregExcessCi95": [
+                -0.028617914142152763,
+                0.033133780093381617
+              ],
+              "flipRate": 0.24778761061946902,
+              "catastrophicChange": 0.014749262536873156,
+              "MATERIAL": false,
+              "HARMFUL": false
+            },
+            "C5_TYPED_SEARCH": {
+              "n": 339,
+              "hitGain": 0.02359882005899705,
+              "hitGainCi95": [
+                0.0058997050147492625,
+                0.04424778761061947
+              ],
+              "nregExcess": 0.01268509730036761,
+              "nregExcessCi95": [
+                0.00036833873081956877,
+                0.026071305154979952
+              ],
+              "flipRate": 0.038348082595870206,
+              "catastrophicChange": -0.0058997050147492625,
+              "MATERIAL": false,
+              "HARMFUL": false
+            },
+            "C6_RUNTIME_PRIVATE_GAP": {
+              "n": 339,
+              "hitGain": 0.05014749262536873,
+              "hitGainCi95": [
+                0.02359882005899705,
+                0.07964601769911504
+              ],
+              "nregExcess": 0.03136318657880787,
+              "nregExcessCi95": [
+                0.014429303162412355,
+                0.0487208196183627
+              ],
+              "flipRate": 0.08259587020648967,
+              "catastrophicChange": -0.0058997050147492625,
+              "MATERIAL": true,
+              "HARMFUL": false
+            },
+            "C7_DISCLOSURE_PRIVATE_GAP": {
+              "n": 339,
+              "hitGain": 0.05309734513274336,
+              "hitGainCi95": [
+                0.02064896755162242,
+                0.0855457227138643
+              ],
+              "nregExcess": 0.03908833674529027,
+              "nregExcessCi95": [
+                0.01668956618963644,
+                0.062100415845436636
+              ],
+              "flipRate": 0.11209439528023599,
+              "catastrophicChange": -0.032448377581120944,
+              "MATERIAL": true,
+              "HARMFUL": false
+            }
+          }
+        },
+        "BYPASS": {
+          "n": 22,
+          "metrics": {
+            "BASELINE_G7": {
+              "n": 22,
+              "hit": 0.22727272727272727,
+              "regret": 64.5,
+              "nreg": 0.4138582803654577,
+              "catastrophic": 0.2727272727272727
+            },
+            "OBJECTIVE_PROGRESS_ONLY": {
+              "n": 22,
+              "hit": 0.2727272727272727,
+              "regret": 57.90909090909091,
+              "nreg": 0.3750882268895219,
+              "catastrophic": 0.22727272727272727
+            },
+            "TYPED_RELATION_ONLY": {
+              "n": 22,
+              "hit": 0.13636363636363635,
+              "regret": 80.72727272727273,
+              "nreg": 0.5218726674955066,
+              "catastrophic": 0.45454545454545453
+            },
+            "OBJECTIVE_PROGRESS_PLUS_TYPED_RELATION": {
+              "n": 22,
+              "hit": 0.18181818181818182,
+              "regret": 66.22727272727273,
+              "nreg": 0.439024154888906,
+              "catastrophic": 0.3181818181818182
+            },
+            "TYPED_SEARCH_ONLY": {
+              "n": 22,
+              "hit": 0.2727272727272727,
+              "regret": 57.90909090909091,
+              "nreg": 0.3750882268895219,
+              "catastrophic": 0.22727272727272727
+            },
+            "RUNTIME_PLUS_CURRENT_PRIVATE": {
+              "n": 22,
+              "hit": 0.36363636363636365,
+              "regret": 42.40909090909091,
+              "nreg": 0.27372498681660434,
+              "catastrophic": 0.09090909090909091
+            },
+            "DISCLOSURE_PLUS_CURRENT_PRIVATE": {
+              "n": 22,
+              "hit": 0.2727272727272727,
+              "regret": 52.04545454545455,
+              "nreg": 0.3500966196434398,
+              "catastrophic": 0.22727272727272727
+            }
+          },
+          "comparisons": {
+            "C1_OBJECTIVE_PROGRESS": {
+              "n": 22,
+              "hitGain": 0.045454545454545456,
+              "hitGainCi95": [
+                0,
+                0.13636363636363635
+              ],
+              "nregExcess": 0.038770053475935824,
+              "nregExcessCi95": [
+                0,
+                0.11631016042780748
+              ],
+              "flipRate": 0.045454545454545456,
+              "catastrophicChange": -0.045454545454545456,
+              "MATERIAL": false,
+              "HARMFUL": false
+            },
+            "C2_TYPED_RELATION": {
+              "n": 22,
+              "hitGain": -0.09090909090909091,
+              "hitGainCi95": [
+                -0.2727272727272727,
+                0.09090909090909091
+              ],
+              "nregExcess": -0.10801438713004892,
+              "nregExcessCi95": [
+                -0.24673344759700094,
+                0.02026618269812462
+              ],
+              "flipRate": 0.4090909090909091,
+              "catastrophicChange": 0.18181818181818182,
+              "MATERIAL": false,
+              "HARMFUL": false
+            },
+            "C3_BOTH": {
+              "n": 22,
+              "hitGain": -0.045454545454545456,
+              "hitGainCi95": [
+                -0.18181818181818182,
+                0.09090909090909091
+              ],
+              "nregExcess": -0.025165874523448307,
+              "nregExcessCi95": [
+                -0.1452209100105972,
+                0.0887098400355273
+              ],
+              "flipRate": 0.36363636363636365,
+              "catastrophicChange": 0.045454545454545456,
+              "MATERIAL": false,
+              "HARMFUL": false
+            },
+            "C4_DISCLOSURE_INCREMENT": {
+              "n": 22,
+              "hitGain": -0.09090909090909091,
+              "hitGainCi95": [
+                -0.2727272727272727,
+                0.09090909090909091
+              ],
+              "nregExcess": -0.06393592799938413,
+              "nregExcessCi95": [
+                -0.21010879702483204,
+                0.06846578206593221
+              ],
+              "flipRate": 0.4090909090909091,
+              "catastrophicChange": 0.09090909090909091,
+              "MATERIAL": false,
+              "HARMFUL": false
+            },
+            "C5_TYPED_SEARCH": {
+              "n": 22,
+              "hitGain": 0.045454545454545456,
+              "hitGainCi95": [
+                0,
+                0.13636363636363635
+              ],
+              "nregExcess": 0.038770053475935824,
+              "nregExcessCi95": [
+                0,
+                0.11631016042780748
+              ],
+              "flipRate": 0.045454545454545456,
+              "catastrophicChange": -0.045454545454545456,
+              "MATERIAL": false,
+              "HARMFUL": false
+            },
+            "C6_RUNTIME_PRIVATE_GAP": {
+              "n": 22,
+              "hitGain": 0.09090909090909091,
+              "hitGainCi95": [
+                0,
+                0.22727272727272727
+              ],
+              "nregExcess": 0.1013632400729175,
+              "nregExcessCi95": [
+                0,
+                0.23087104700007924
+              ],
+              "flipRate": 0.13636363636363635,
+              "catastrophicChange": -0.13636363636363635,
+              "MATERIAL": false,
+              "HARMFUL": false
+            },
+            "C7_DISCLOSURE_PRIVATE_GAP": {
+              "n": 22,
+              "hitGain": 0.09090909090909091,
+              "hitGainCi95": [
+                -0.13636363636363635,
+                0.3181818181818182
+              ],
+              "nregExcess": 0.08892753524546614,
+              "nregExcessCi95": [
+                -0.05631032072729691,
+                0.24170624327373183
+              ],
+              "flipRate": 0.5,
+              "catastrophicChange": -0.09090909090909091,
+              "MATERIAL": false,
+              "HARMFUL": false
+            }
+          }
+        }
+      },
+      "ni": {
+        "S1_RUNTIME_VS_PRIVATE": {
+          "stratum": "ALL",
+          "n": 2304,
+          "hitGain": 0.0078125,
+          "hitGainCi95": [
+            0.003472222222222222,
+            0.012152777777777778
+          ],
+          "nregExcess": 0.005101388508444143,
+          "nregExcessCi95": [
+            0.0025935832283233494,
+            0.007855008965349634
+          ],
+          "flipRate": 0.013020833333333334,
+          "catastrophicChange": -0.0013020833333333333,
+          "MATERIAL": false,
+          "HARMFUL": false,
+          "alphaPerEndpoint": 0.00625,
+          "hitDeficitBounds": [
+            0.0026041666666666665,
+            0.013454861111111112
+          ],
+          "nregExcessBounds": [
+            0.001973258156864513,
+            0.008685672741817661
+          ],
+          "NONINFERIOR": "PASS"
+        },
+        "S2_DISCLOSURE_VS_PRIVATE": {
+          "stratum": "ALL",
+          "n": 2304,
+          "hitGain": 0.0078125,
+          "hitGainCi95": [
+            0.003472222222222222,
+            0.012586805555555556
+          ],
+          "nregExcess": 0.005959754020351335,
+          "nregExcessCi95": [
+            0.002771988457828678,
+            0.00931745512434653
+          ],
+          "flipRate": 0.017795138888888888,
+          "catastrophicChange": -0.004774305555555556,
+          "MATERIAL": false,
+          "HARMFUL": false,
+          "alphaPerEndpoint": 0.00625,
+          "hitDeficitBounds": [
+            0.002170138888888889,
+            0.013888888888888888
+          ],
+          "nregExcessBounds": [
+            0.001955253168686436,
+            0.01036733241889763
+          ],
+          "NONINFERIOR": "NOT_TESTABLE"
+        },
+        "S3_RUNTIME_VS_DISCLOSURE": {
+          "stratum": "ALL",
+          "n": 2304,
+          "hitGain": 0.0026041666666666665,
+          "hitGainCi95": [
+            -0.005208333333333333,
+            0.010416666666666666
+          ],
+          "nregExcess": -0.00041793694091215347,
+          "nregExcessCi95": [
+            -0.005558524342424607,
+            0.004654104796651643
+          ],
+          "flipRate": 0.047309027777777776,
+          "catastrophicChange": 0.003472222222222222,
+          "MATERIAL": false,
+          "HARMFUL": false,
+          "alphaPerEndpoint": 0.00625,
+          "hitDeficitBounds": [
+            -0.007378472222222222,
+            0.012586805555555556
+          ],
+          "nregExcessBounds": [
+            -0.007133263284114514,
+            0.006055624336048412
+          ],
+          "NONINFERIOR": "PASS"
+        },
+        "OOD_OBJECTIVE_PROGRESS": {
+          "stratum": "OOD",
+          "n": 1152,
+          "hitGain": 0.006944444444444444,
+          "hitGainCi95": [
+            0.001736111111111111,
+            0.013020833333333334
+          ],
+          "nregExcess": 0.005142647043830361,
+          "nregExcessCi95": [
+            0.0016680727531205254,
+            0.009299990535964532
+          ],
+          "flipRate": 0.008680555555555556,
+          "catastrophicChange": -0.004340277777777778,
+          "MATERIAL": false,
+          "HARMFUL": false,
+          "alphaPerEndpoint": 0.00625,
+          "hitDeficitBounds": [
+            0.0008680555555555555,
+            0.014756944444444444
+          ],
+          "nregExcessBounds": [
+            0.0008741195010880052,
+            0.010578785390253876
+          ],
+          "NONINFERIOR": "NOT_TESTABLE",
+          "metrics": {
+            "BASELINE_LEVEL_FIT": {
+              "n": 1152,
+              "hit": 0.8806423611111112,
+              "regret": 7.858940972222222,
+              "nreg": 0.0499601476389117,
+              "catastrophic": 0.025173611111111112
+            },
+            "OBJECTIVE_PROGRESS_LEVEL_FIT": {
+              "n": 1152,
+              "hit": 0.8736979166666666,
+              "regret": 8.69314236111111,
+              "nreg": 0.055102794682742054,
+              "catastrophic": 0.029513888888888888
+            }
+          }
+        }
+      },
+      "voi": {
+        "rows": 2304,
+        "status": {
+          "NO_ALTERNATIVE": 1687,
+          "ALTERNATIVE_EVALUATED": 617
+        },
+        "decisionRelevant": {
+          "n": 2304,
+          "mean": 0.002170138888888889,
+          "ci95": [
+            0.00043402777777777775,
+            0.004340277777777778
+          ]
+        },
+        "misbeliefHitLoss": {
+          "n": 2304,
+          "mean": 0.0020254629629629633,
+          "ci95": [
+            0.00043402777777777775,
+            0.004050925925925927
+          ]
+        },
+        "misbeliefNregLoss": {
+          "n": 2304,
+          "mean": 0.0001731729317172361,
+          "ci95": [
+            0.000019617074701820466,
+            0.00038140698281627643
+          ]
+        }
+      },
+      "bypassPath": {
+        "inferentialRows": 2304,
+        "bypassOfferedRows": 22,
+        "coarseAmbiguousRows": 11,
+        "bypassOfferedShare": 0.009548611111111112,
+        "coarseAmbiguousShare": 0.004774305555555556
+      },
+      "search": {
+        "roots": 26578,
+        "typedChangesSearch": 0.4311836857551358,
+        "g7Truncation": 0.01956505380389796,
+        "typedTruncation": 0.0093686507637896,
+        "prunedBypassBranchesPerRoot": 5.183046128376853
+      },
+      "rootCoverage": {
+        "MOVE": {
+          "rows": 3840,
+          "roots": 14093
+        },
+        "RETREAT": {
+          "rows": 2330,
+          "roots": 2330
+        },
+        "WAIT": {
+          "rows": 3840,
+          "roots": 3840
+        },
+        "COLLECT": {
+          "rows": 0,
+          "roots": 0
+        },
+        "TRANSFER": {
+          "rows": 0,
+          "roots": 0
+        },
+        "PROTECT": {
+          "rows": 3840,
+          "roots": 5394
+        },
+        "RESTORE": {
+          "rows": 182,
+          "roots": 183
+        },
+        "REINFORCE": {
+          "rows": 301,
+          "roots": 302
+        },
+        "REPAIR": {
+          "rows": 301,
+          "roots": 302
+        },
+        "ATTACK": {
+          "rows": 78,
+          "roots": 78
+        },
+        "BYPASS": {
+          "rows": 41,
+          "roots": 56
+        },
+        "BUILD": {
+          "rows": 0,
+          "roots": 0
+        }
+      }
+    }
+  },
+  "cohorts": {
+    "BYPASS_A": {
+      "rows": 216,
+      "strata": {
+        "ALL": {
+          "n": 216,
+          "metrics": {
+            "BASELINE_G7": {
+              "n": 216,
+              "hit": 0.41203703703703703,
+              "regret": 46.55555555555556,
+              "nreg": 0.28357606383671724,
+              "catastrophic": 0.19444444444444445
+            },
+            "OBJECTIVE_PROGRESS_ONLY": {
+              "n": 216,
+              "hit": 0.4027777777777778,
+              "regret": 48.148148148148145,
+              "nreg": 0.29022916536523513,
+              "catastrophic": 0.2037037037037037
+            },
+            "TYPED_RELATION_ONLY": {
+              "n": 216,
+              "hit": 0.19907407407407407,
+              "regret": 75.88425925925925,
+              "nreg": 0.47591816119593816,
+              "catastrophic": 0.36574074074074076
+            },
+            "OBJECTIVE_PROGRESS_PLUS_TYPED_RELATION": {
+              "n": 216,
+              "hit": 0.20833333333333334,
+              "regret": 75.125,
+              "nreg": 0.4736543607525427,
+              "catastrophic": 0.35648148148148145
+            },
+            "TYPED_SEARCH_ONLY": {
+              "n": 216,
+              "hit": 0.41203703703703703,
+              "regret": 47.6712962962963,
+              "nreg": 0.2875568800320034,
+              "catastrophic": 0.18981481481481483
+            },
+            "RUNTIME_PLUS_CURRENT_PRIVATE": {
+              "n": 216,
+              "hit": 0.5092592592592593,
+              "regret": 35.824074074074076,
+              "nreg": 0.206652193722515,
+              "catastrophic": 0.12962962962962962
+            },
+            "DISCLOSURE_PLUS_CURRENT_PRIVATE": {
+              "n": 216,
+              "hit": 0.46296296296296297,
+              "regret": 40.90277777777778,
+              "nreg": 0.24045230384458308,
+              "catastrophic": 0.1388888888888889
+            }
+          },
+          "comparisons": {
+            "C1_OBJECTIVE_PROGRESS": {
+              "n": 216,
+              "hitGain": -0.009259259259259259,
+              "hitGainCi95": [
+                -0.023148148148148147,
+                0
+              ],
+              "nregExcess": -0.006653101528517933,
+              "nregExcessCi95": [
+                -0.0170697681951846,
+                0
+              ],
+              "flipRate": 0.013888888888888888,
+              "catastrophicChange": 0.009259259259259259,
+              "MATERIAL": false,
+              "HARMFUL": false
+            },
+            "C2_TYPED_RELATION": {
+              "n": 216,
+              "hitGain": -0.21296296296296297,
+              "hitGainCi95": [
+                -0.2777777777777778,
+                -0.14814814814814814
+              ],
+              "nregExcess": -0.19234209735922111,
+              "nregExcessCi95": [
+                -0.24112374796132358,
+                -0.14207965103425949
+              ],
+              "flipRate": 0.4027777777777778,
+              "catastrophicChange": 0.1712962962962963,
+              "MATERIAL": false,
+              "HARMFUL": true
+            },
+            "C3_BOTH": {
+              "n": 216,
+              "hitGain": -0.2037037037037037,
+              "hitGainCi95": [
+                -0.26851851851851855,
+                -0.14351851851851852
+              ],
+              "nregExcess": -0.19007829691582573,
+              "nregExcessCi95": [
+                -0.24263096428871245,
+                -0.13922333864442776
+              ],
+              "flipRate": 0.42592592592592593,
+              "catastrophicChange": 0.16203703703703703,
+              "MATERIAL": false,
+              "HARMFUL": true
+            },
+            "C4_DISCLOSURE_INCREMENT": {
+              "n": 216,
+              "hitGain": -0.19444444444444445,
+              "hitGainCi95": [
+                -0.25925925925925924,
+                -0.125
+              ],
+              "nregExcess": -0.18342519538730778,
+              "nregExcessCi95": [
+                -0.23538843341322946,
+                -0.12825776511493295
+              ],
+              "flipRate": 0.4305555555555556,
+              "catastrophicChange": 0.1527777777777778,
+              "MATERIAL": false,
+              "HARMFUL": true
+            },
+            "C5_TYPED_SEARCH": {
+              "n": 216,
+              "hitGain": 0,
+              "hitGainCi95": [
+                -0.032407407407407406,
+                0.032407407407407406
+              ],
+              "nregExcess": -0.003980816195286295,
+              "nregExcessCi95": [
+                -0.027994519546513434,
+                0.02190353570798871
+              ],
+              "flipRate": 0.08333333333333333,
+              "catastrophicChange": -0.004629629629629629,
+              "MATERIAL": false,
+              "HARMFUL": false
+            },
+            "C6_RUNTIME_PRIVATE_GAP": {
+              "n": 216,
+              "hitGain": 0.10648148148148148,
+              "hitGainCi95": [
+                0.06018518518518518,
+                0.1527777777777778
+              ],
+              "nregExcess": 0.0835769716427201,
+              "nregExcessCi95": [
+                0.045115576522362026,
+                0.12317380591212647
+              ],
+              "flipRate": 0.1712962962962963,
+              "catastrophicChange": -0.07407407407407407,
+              "MATERIAL": true,
+              "HARMFUL": false
+            },
+            "C7_DISCLOSURE_PRIVATE_GAP": {
+              "n": 216,
+              "hitGain": 0.25462962962962965,
+              "hitGainCi95": [
+                0.18055555555555555,
+                0.3287037037037037
+              ],
+              "nregExcess": 0.23320205690795975,
+              "nregExcessCi95": [
+                0.1762266379102021,
+                0.2904673555584499
+              ],
+              "flipRate": 0.5277777777777778,
+              "catastrophicChange": -0.2175925925925926,
+              "MATERIAL": true,
+              "HARMFUL": false
+            }
+          }
+        }
+      },
+      "ni": {
+        "S1_RUNTIME_VS_PRIVATE": {
+          "stratum": "ALL",
+          "n": 216,
+          "hitGain": 0.10648148148148148,
+          "hitGainCi95": [
+            0.06481481481481481,
+            0.1527777777777778
+          ],
+          "nregExcess": 0.0835769716427201,
+          "nregExcessCi95": [
+            0.047668599734843886,
+            0.12315030217125786
+          ],
+          "flipRate": 0.1712962962962963,
+          "catastrophicChange": -0.07407407407407407,
+          "MATERIAL": true,
+          "HARMFUL": false,
+          "alphaPerEndpoint": 0.00625,
+          "hitDeficitBounds": [
+            0.05092592592592592,
+            0.16666666666666666
+          ],
+          "nregExcessBounds": [
+            0.03821421213184785,
+            0.13560207136381813
+          ],
+          "NONINFERIOR": "FAIL"
+        },
+        "S2_DISCLOSURE_VS_PRIVATE": {
+          "stratum": "ALL",
+          "n": 216,
+          "hitGain": 0.25462962962962965,
+          "hitGainCi95": [
+            0.18518518518518517,
+            0.32407407407407407
+          ],
+          "nregExcess": 0.23320205690795975,
+          "nregExcessCi95": [
+            0.17717742296285477,
+            0.2901566084724243
+          ],
+          "flipRate": 0.5277777777777778,
+          "catastrophicChange": -0.2175925925925926,
+          "MATERIAL": true,
+          "HARMFUL": false,
+          "alphaPerEndpoint": 0.00625,
+          "hitDeficitBounds": [
+            0.16666666666666666,
+            0.3425925925925926
+          ],
+          "nregExcessBounds": [
+            0.16235172258696226,
+            0.30719137029018995
+          ],
+          "NONINFERIOR": "FAIL"
+        },
+        "S3_RUNTIME_VS_DISCLOSURE": {
+          "stratum": "ALL",
+          "n": 216,
+          "hitGain": -0.19444444444444445,
+          "hitGainCi95": [
+            -0.25925925925925924,
+            -0.12962962962962962
+          ],
+          "nregExcess": -0.18342519538730778,
+          "nregExcessCi95": [
+            -0.2358706654786355,
+            -0.1316259439443068
+          ],
+          "flipRate": 0.4305555555555556,
+          "catastrophicChange": 0.1527777777777778,
+          "MATERIAL": false,
+          "HARMFUL": true,
+          "alphaPerEndpoint": 0.00625,
+          "hitDeficitBounds": [
+            -0.2824074074074074,
+            -0.1111111111111111
+          ],
+          "nregExcessBounds": [
+            -0.2515485948206201,
+            -0.1179755549921423
+          ],
+          "NONINFERIOR": "PASS"
+        },
+        "OOD_OBJECTIVE_PROGRESS": {
+          "stratum": "OOD",
+          "n": 108,
+          "hitGain": -0.027777777777777776,
+          "hitGainCi95": [
+            -0.06481481481481481,
+            0
+          ],
+          "nregExcess": -0.01998248215598795,
+          "nregExcessCi95": [
+            -0.039948819134540396,
+            -0.004447360746573345
+          ],
+          "flipRate": 0.046296296296296294,
+          "catastrophicChange": 0.037037037037037035,
+          "MATERIAL": false,
+          "HARMFUL": false,
+          "alphaPerEndpoint": 0.00625,
+          "hitDeficitBounds": [
+            -0.07407407407407407,
+            0
+          ],
+          "nregExcessBounds": [
+            -0.04625351092310316,
+            -0.0029417438271604943
+          ],
+          "NONINFERIOR": "PASS",
+          "metrics": {
+            "BASELINE_LEVEL_FIT": {
+              "n": 108,
+              "hit": 0.39814814814814814,
+              "regret": 54.7962962962963,
+              "nreg": 0.3221620655720797,
+              "catastrophic": 0.25
+            },
+            "OBJECTIVE_PROGRESS_LEVEL_FIT": {
+              "n": 108,
+              "hit": 0.42592592592592593,
+              "regret": 51.01851851851852,
+              "nreg": 0.3021795834160917,
+              "catastrophic": 0.21296296296296297
+            }
+          }
+        }
+      },
+      "voi": {
+        "rows": 216,
+        "status": {
+          "NO_CONSISTENT_ALTERNATIVE": 32,
+          "NO_ALTERNATIVE": 149,
+          "ALTERNATIVE_EVALUATED": 35
+        },
+        "decisionRelevant": {
+          "n": 216,
+          "mean": 0.013888888888888888,
+          "ci95": [
+            0,
+            0.032407407407407406
+          ]
+        },
+        "misbeliefHitLoss": {
+          "n": 216,
+          "mean": 0.01080246913580247,
+          "ci95": [
+            0,
+            0.02469135802469136
+          ]
+        },
+        "misbeliefNregLoss": {
+          "n": 216,
+          "mean": 0.001416286315181037,
+          "ci95": [
+            0,
+            0.0035434134423081637
+          ]
+        }
+      },
+      "bypassPath": {
+        "inferentialRows": 216,
+        "bypassOfferedRows": 216,
+        "coarseAmbiguousRows": 109,
+        "bypassOfferedShare": 1,
+        "coarseAmbiguousShare": 0.5046296296296297
+      },
+      "search": {
+        "roots": 2163,
+        "typedChangesSearch": 0.4031437817845585,
+        "g7Truncation": 0.09939898289412853,
+        "typedTruncation": 0.08321775312066575,
+        "prunedBypassBranchesPerRoot": 4.590383726306056
+      },
+      "rootCoverage": {
+        "MOVE": {
+          "rows": 216,
+          "roots": 803
+        },
+        "RETREAT": {
+          "rows": 124,
+          "roots": 124
+        },
+        "WAIT": {
+          "rows": 216,
+          "roots": 216
+        },
+        "COLLECT": {
+          "rows": 0,
+          "roots": 0
+        },
+        "TRANSFER": {
+          "rows": 0,
+          "roots": 0
+        },
+        "PROTECT": {
+          "rows": 216,
+          "roots": 493
+        },
+        "RESTORE": {
+          "rows": 216,
+          "roots": 222
+        },
+        "REINFORCE": {
+          "rows": 12,
+          "roots": 12
+        },
+        "REPAIR": {
+          "rows": 12,
+          "roots": 12
+        },
+        "ATTACK": {
+          "rows": 4,
+          "roots": 4
+        },
+        "BYPASS": {
+          "rows": 216,
+          "roots": 277
+        },
+        "BUILD": {
+          "rows": 0,
+          "roots": 0
+        }
+      }
+    },
+    "BYPASS_B": {
+      "rows": 214,
+      "strata": {
+        "ALL": {
+          "n": 214,
+          "metrics": {
+            "BASELINE_G7": {
+              "n": 214,
+              "hit": 0.3878504672897196,
+              "regret": 54.5,
+              "nreg": 0.34476830640693845,
+              "catastrophic": 0.22897196261682243
+            },
+            "OBJECTIVE_PROGRESS_ONLY": {
+              "n": 214,
+              "hit": 0.3878504672897196,
+              "regret": 54.626168224299064,
+              "nreg": 0.34345128872807634,
+              "catastrophic": 0.2336448598130841
+            },
+            "TYPED_RELATION_ONLY": {
+              "n": 214,
+              "hit": 0.205607476635514,
+              "regret": 71.99065420560747,
+              "nreg": 0.47449669431166863,
+              "catastrophic": 0.2897196261682243
+            },
+            "OBJECTIVE_PROGRESS_PLUS_TYPED_RELATION": {
+              "n": 214,
+              "hit": 0.205607476635514,
+              "regret": 71.92056074766356,
+              "nreg": 0.47670187372184125,
+              "catastrophic": 0.2897196261682243
+            },
+            "TYPED_SEARCH_ONLY": {
+              "n": 214,
+              "hit": 0.3925233644859813,
+              "regret": 53.11214953271028,
+              "nreg": 0.33600486321802064,
+              "catastrophic": 0.22429906542056074
+            },
+            "RUNTIME_PLUS_CURRENT_PRIVATE": {
+              "n": 214,
+              "hit": 0.5560747663551402,
+              "regret": 35.700934579439256,
+              "nreg": 0.2096214589865851,
+              "catastrophic": 0.13551401869158877
+            },
+            "DISCLOSURE_PLUS_CURRENT_PRIVATE": {
+              "n": 214,
+              "hit": 0.46261682242990654,
+              "regret": 45.59345794392523,
+              "nreg": 0.2750006399248329,
+              "catastrophic": 0.17289719626168223
+            }
+          },
+          "comparisons": {
+            "C1_OBJECTIVE_PROGRESS": {
+              "n": 214,
+              "hitGain": 0,
+              "hitGainCi95": [
+                -0.014018691588785047,
+                0.014018691588785047
+              ],
+              "nregExcess": 0.0013170176788621663,
+              "nregExcessCi95": [
+                -0.006997591501942593,
+                0.010480997836687777
+              ],
+              "flipRate": 0.02336448598130841,
+              "catastrophicChange": 0.004672897196261682,
+              "MATERIAL": false,
+              "HARMFUL": false
+            },
+            "C2_TYPED_RELATION": {
+              "n": 214,
+              "hitGain": -0.1822429906542056,
+              "hitGainCi95": [
+                -0.2383177570093458,
+                -0.1261682242990654
+              ],
+              "nregExcess": -0.1297283879047303,
+              "nregExcessCi95": [
+                -0.17515268740448822,
+                -0.08385021718540647
+              ],
+              "flipRate": 0.3644859813084112,
+              "catastrophicChange": 0.06074766355140187,
+              "MATERIAL": false,
+              "HARMFUL": true
+            },
+            "C3_BOTH": {
+              "n": 214,
+              "hitGain": -0.1822429906542056,
+              "hitGainCi95": [
+                -0.24299065420560748,
+                -0.12149532710280374
+              ],
+              "nregExcess": -0.13193356731490297,
+              "nregExcessCi95": [
+                -0.17908118583031318,
+                -0.08598964106503784
+              ],
+              "flipRate": 0.37850467289719625,
+              "catastrophicChange": 0.06074766355140187,
+              "MATERIAL": false,
+              "HARMFUL": true
+            },
+            "C4_DISCLOSURE_INCREMENT": {
+              "n": 214,
+              "hitGain": -0.1822429906542056,
+              "hitGainCi95": [
+                -0.24299065420560748,
+                -0.12149532710280374
+              ],
+              "nregExcess": -0.13325058499376513,
+              "nregExcessCi95": [
+                -0.18167533518906806,
+                -0.08916547642524074
+              ],
+              "flipRate": 0.38317757009345793,
+              "catastrophicChange": 0.056074766355140186,
+              "MATERIAL": false,
+              "HARMFUL": true
+            },
+            "C5_TYPED_SEARCH": {
+              "n": 214,
+              "hitGain": 0.004672897196261682,
+              "hitGainCi95": [
+                -0.018691588785046728,
+                0.03271028037383177
+              ],
+              "nregExcess": 0.008763443188917844,
+              "nregExcessCi95": [
+                -0.008404787768740422,
+                0.02939029839362239
+              ],
+              "flipRate": 0.06542056074766354,
+              "catastrophicChange": -0.004672897196261682,
+              "MATERIAL": false,
+              "HARMFUL": false
+            },
+            "C6_RUNTIME_PRIVATE_GAP": {
+              "n": 214,
+              "hitGain": 0.16822429906542055,
+              "hitGainCi95": [
+                0.11682242990654206,
+                0.22429906542056074
+              ],
+              "nregExcess": 0.13382982974149124,
+              "nregExcessCi95": [
+                0.09342549676812528,
+                0.1784767490835785
+              ],
+              "flipRate": 0.2336448598130841,
+              "catastrophicChange": -0.09813084112149532,
+              "MATERIAL": true,
+              "HARMFUL": false
+            },
+            "C7_DISCLOSURE_PRIVATE_GAP": {
+              "n": 214,
+              "hitGain": 0.2570093457943925,
+              "hitGainCi95": [
+                0.1822429906542056,
+                0.3317757009345794
+              ],
+              "nregExcess": 0.20170123379700847,
+              "nregExcessCi95": [
+                0.145829120700933,
+                0.25483884434048004
+              ],
+              "flipRate": 0.5280373831775701,
+              "catastrophicChange": -0.11682242990654206,
+              "MATERIAL": true,
+              "HARMFUL": false
+            }
+          }
+        }
+      },
+      "ni": {
+        "S1_RUNTIME_VS_PRIVATE": {
+          "stratum": "ALL",
+          "n": 214,
+          "hitGain": 0.16822429906542055,
+          "hitGainCi95": [
+            0.11682242990654206,
+            0.22429906542056074
+          ],
+          "nregExcess": 0.13382982974149124,
+          "nregExcessCi95": [
+            0.0922466160109251,
+            0.17674596646888688
+          ],
+          "flipRate": 0.2336448598130841,
+          "catastrophicChange": -0.09813084112149532,
+          "MATERIAL": true,
+          "HARMFUL": false,
+          "alphaPerEndpoint": 0.00625,
+          "hitDeficitBounds": [
+            0.102803738317757,
+            0.2383177570093458
+          ],
+          "nregExcessBounds": [
+            0.081546946409717,
+            0.18915915764071473
+          ],
+          "NONINFERIOR": "FAIL"
+        },
+        "S2_DISCLOSURE_VS_PRIVATE": {
+          "stratum": "ALL",
+          "n": 214,
+          "hitGain": 0.2570093457943925,
+          "hitGainCi95": [
+            0.1822429906542056,
+            0.3317757009345794
+          ],
+          "nregExcess": 0.20170123379700847,
+          "nregExcessCi95": [
+            0.14595888967271978,
+            0.2586005806002085
+          ],
+          "flipRate": 0.5280373831775701,
+          "catastrophicChange": -0.11682242990654206,
+          "MATERIAL": true,
+          "HARMFUL": false,
+          "alphaPerEndpoint": 0.00625,
+          "hitDeficitBounds": [
+            0.16355140186915887,
+            0.35514018691588783
+          ],
+          "nregExcessBounds": [
+            0.13100540136752947,
+            0.2737390281271301
+          ],
+          "NONINFERIOR": "FAIL"
+        },
+        "S3_RUNTIME_VS_DISCLOSURE": {
+          "stratum": "ALL",
+          "n": 214,
+          "hitGain": -0.1822429906542056,
+          "hitGainCi95": [
+            -0.24299065420560748,
+            -0.12149532710280374
+          ],
+          "nregExcess": -0.13325058499376513,
+          "nregExcessCi95": [
+            -0.18145960451822402,
+            -0.08720468079862669
+          ],
+          "flipRate": 0.38317757009345793,
+          "catastrophicChange": 0.056074766355140186,
+          "MATERIAL": false,
+          "HARMFUL": true,
+          "alphaPerEndpoint": 0.00625,
+          "hitDeficitBounds": [
+            -0.2616822429906542,
+            -0.102803738317757
+          ],
+          "nregExcessBounds": [
+            -0.19496600087879318,
+            -0.07550671819534241
+          ],
+          "NONINFERIOR": "PASS"
+        },
+        "OOD_OBJECTIVE_PROGRESS": {
+          "stratum": "OOD",
+          "n": 106,
+          "hitGain": -0.009433962264150943,
+          "hitGainCi95": [
+            -0.02830188679245283,
+            0
+          ],
+          "nregExcess": -0.006252742430890741,
+          "nregExcessCi95": [
+            -0.018758227292672226,
+            0
+          ],
+          "flipRate": 0.018867924528301886,
+          "catastrophicChange": 0.009433962264150943,
+          "MATERIAL": false,
+          "HARMFUL": false,
+          "alphaPerEndpoint": 0.00625,
+          "hitDeficitBounds": [
+            -0.03773584905660377,
+            0
+          ],
+          "nregExcessBounds": [
+            -0.025010969723562964,
+            0
+          ],
+          "NONINFERIOR": "PASS",
+          "metrics": {
+            "BASELINE_LEVEL_FIT": {
+              "n": 106,
+              "hit": 0.44339622641509435,
+              "regret": 53.45283018867924,
+              "nreg": 0.33488108079685824,
+              "catastrophic": 0.22641509433962265
+            },
+            "OBJECTIVE_PROGRESS_LEVEL_FIT": {
+              "n": 106,
+              "hit": 0.4528301886792453,
+              "regret": 52.37735849056604,
+              "nreg": 0.32862833836596744,
+              "catastrophic": 0.2169811320754717
+            }
+          }
+        }
+      },
+      "voi": {
+        "rows": 214,
+        "status": {
+          "ALTERNATIVE_EVALUATED": 59,
+          "NO_CONSISTENT_ALTERNATIVE": 26,
+          "NO_ALTERNATIVE": 129
+        },
+        "decisionRelevant": {
+          "n": 214,
+          "mean": 0.009345794392523364,
+          "ci95": [
+            0,
+            0.02336448598130841
+          ]
+        },
+        "misbeliefHitLoss": {
+          "n": 214,
+          "mean": 0,
+          "ci95": [
+            0,
+            0
+          ]
+        },
+        "misbeliefNregLoss": {
+          "n": 214,
+          "mean": 0,
+          "ci95": [
+            0,
+            0
+          ]
+        }
+      },
+      "bypassPath": {
+        "inferentialRows": 214,
+        "bypassOfferedRows": 214,
+        "coarseAmbiguousRows": 97,
+        "bypassOfferedShare": 1,
+        "coarseAmbiguousShare": 0.4532710280373832
+      },
+      "search": {
+        "roots": 2180,
+        "typedChangesSearch": 0.3821100917431193,
+        "g7Truncation": 0.11192660550458716,
+        "typedTruncation": 0.09724770642201835,
+        "prunedBypassBranchesPerRoot": 4.531192660550459
+      },
+      "rootCoverage": {
+        "MOVE": {
+          "rows": 214,
+          "roots": 806
+        },
+        "RETREAT": {
+          "rows": 131,
+          "roots": 131
+        },
+        "WAIT": {
+          "rows": 214,
+          "roots": 214
+        },
+        "COLLECT": {
+          "rows": 0,
+          "roots": 0
+        },
+        "TRANSFER": {
+          "rows": 0,
+          "roots": 0
+        },
+        "PROTECT": {
+          "rows": 214,
+          "roots": 498
+        },
+        "RESTORE": {
+          "rows": 214,
+          "roots": 217
+        },
+        "REINFORCE": {
+          "rows": 17,
+          "roots": 17
+        },
+        "REPAIR": {
+          "rows": 17,
+          "roots": 17
+        },
+        "ATTACK": {
+          "rows": 2,
+          "roots": 2
+        },
+        "BYPASS": {
+          "rows": 214,
+          "roots": 278
+        },
+        "BUILD": {
+          "rows": 0,
+          "roots": 0
+        }
+      }
+    }
+  },
+  "suite": {
+    "platform": {
+      "exitCode": 0,
+      "pass": 2379,
+      "fail": 0,
+      "skipped": 1,
+      "failedTests": [],
+      "logHash": "cacbd3bea1c491241a3b13ec27b221cf1be9acf0fac2ede6e4c9686ecdfce79c"
+    },
+    "lab": {
+      "exitCode": 1,
+      "pass": 33,
+      "fail": 7,
+      "skipped": 0,
+      "failedTests": [
+        "tests/stage1az1-recovered-lineage-certification.test.js",
+        "tests/stage1az1-sentinel-prime-policy-evaluation-contract.frozen.test.js",
+        "tests/w0af-forest-defensive-action-contract.test.js",
+        "tests/w0p-live-parity-contract.test.js",
+        "tests/w0p1-forest-defensive-command-contract.test.js",
+        "tests/w0p2-forest-defensive-command-contract.test.js",
+        "tests/w0p3-live-parity-closure-contract.test.js"
+      ],
+      "logHash": "fedd51cd64b345b20a5eab8d4ed901485df27fd42642318c7fb87436598ed25e"
+    },
+    "overlay": {
+      "exitCode": 0,
+      "pass": 23,
+      "fail": 0,
+      "logHash": "daaee1d90357f00027eaa1789b217dd1e8dc5a353472aa09615bbdad4ee3726f"
+    },
+    "legacy": {
+      "assertions": [
+        {
+          "file": "tests/stage1az1-recovered-lineage-certification.test.js",
+          "line": 221,
+          "actual": "fa89f8c19aec17243ba2ed34b1aaa42b5e6039b5303d0303375e72279d966446",
+          "expected": "01ca569dc542adf9e31a8d74b69750107f4cbf7da35d85a6109fbe71f0f9b517",
+          "classification": "PRE_EXISTING_NON_BLOCKING",
+          "testSha256": "881b161b572af8c521c49809a663c43429ef0d41ccce16fc49ac89c365d2d2af",
+          "testBytesMatchInheritedG5": true,
+          "evidence": "Same previously disclosed digest/status assertion, unchanged lab tree, no G6 module import",
+          "currentTestSha256": "881b161b572af8c521c49809a663c43429ef0d41ccce16fc49ac89c365d2d2af"
+        },
+        {
+          "file": "tests/stage1az1-sentinel-prime-policy-evaluation-contract.frozen.test.js",
+          "line": 9,
+          "actual": "provisional-linux-only",
+          "expected": "frozen",
+          "classification": "PRE_EXISTING_NON_BLOCKING",
+          "testSha256": "a0cf602c70377b3fcfdbfacc4f71fca5e01e8e6a652f1ec374a0da2fddc4a886",
+          "testBytesMatchInheritedG5": true,
+          "evidence": "Same previously disclosed digest/status assertion, unchanged lab tree, no G6 module import",
+          "currentTestSha256": "a0cf602c70377b3fcfdbfacc4f71fca5e01e8e6a652f1ec374a0da2fddc4a886"
+        },
+        {
+          "file": "tests/w0af-forest-defensive-action-contract.test.js",
+          "line": 48,
+          "actual": "frozen",
+          "expected": "provisional-linux-only",
+          "classification": "PRE_EXISTING_NON_BLOCKING",
+          "testSha256": "d1e1622ba9aff989bf930290be84f2b54442b9ac261c10b336b3485a00c5a691",
+          "testBytesMatchInheritedG5": true,
+          "evidence": "Same previously disclosed digest/status assertion, unchanged lab tree, no G6 module import",
+          "currentTestSha256": "d1e1622ba9aff989bf930290be84f2b54442b9ac261c10b336b3485a00c5a691"
+        },
+        {
+          "file": "tests/w0p-live-parity-contract.test.js",
+          "line": 12,
+          "actual": "frozen",
+          "expected": "provisional-linux-only",
+          "classification": "PRE_EXISTING_NON_BLOCKING",
+          "testSha256": "bb3567eed8497bdeb233636aca05382d0854ffd8e2cd499e7a6f12e16d49543c",
+          "testBytesMatchInheritedG5": true,
+          "evidence": "Same previously disclosed digest/status assertion, unchanged lab tree, no G6 module import",
+          "currentTestSha256": "bb3567eed8497bdeb233636aca05382d0854ffd8e2cd499e7a6f12e16d49543c"
+        },
+        {
+          "file": "tests/w0p1-forest-defensive-command-contract.test.js",
+          "line": 123,
+          "actual": "frozen",
+          "expected": "provisional-linux-only",
+          "classification": "PRE_EXISTING_NON_BLOCKING",
+          "testSha256": "42704497ccb99ae0a1e6ccba0638b39a572b4e2a031ae16aa3393f8ba58e6706",
+          "testBytesMatchInheritedG5": true,
+          "evidence": "Same previously disclosed digest/status assertion, unchanged lab tree, no G6 module import",
+          "currentTestSha256": "42704497ccb99ae0a1e6ccba0638b39a572b4e2a031ae16aa3393f8ba58e6706"
+        },
+        {
+          "file": "tests/w0p2-forest-defensive-command-contract.test.js",
+          "line": 30,
+          "actual": "frozen",
+          "expected": "provisional-linux-only",
+          "classification": "PRE_EXISTING_NON_BLOCKING",
+          "testSha256": "a90babec0ffa3b41cd620aa70ee3168341f8b42bc9450d59c20dc50a480eafa0",
+          "testBytesMatchInheritedG5": true,
+          "evidence": "Same previously disclosed digest/status assertion, unchanged lab tree, no G6 module import",
+          "currentTestSha256": "a90babec0ffa3b41cd620aa70ee3168341f8b42bc9450d59c20dc50a480eafa0"
+        },
+        {
+          "file": "tests/w0p3-live-parity-closure-contract.test.js",
+          "line": 79,
+          "actual": "frozen",
+          "expected": "provisional-linux-only",
+          "classification": "PRE_EXISTING_NON_BLOCKING",
+          "testSha256": "1732b79acc99fcb13bd3ce39bc688325884269c540e77949feebce08041e9b30",
+          "testBytesMatchInheritedG5": true,
+          "evidence": "Same previously disclosed digest/status assertion, unchanged lab tree, no G6 module import",
+          "currentTestSha256": "1732b79acc99fcb13bd3ce39bc688325884269c540e77949feebce08041e9b30"
+        }
+      ],
+      "causesMatch": true,
+      "sameFailureSet": true,
+      "labTreeUnchanged": true,
+      "reference": "artifacts/stage3g7-target-contract/stage3g7-full-suite.json",
+      "ageUsedAsObsolescenceEvidence": false
+    },
+    "stage3g8Tests": {
+      "count": 12,
+      "allPass": true
+    },
+    "acceptable": true
+  },
+  "boundary": {
+    "hash": "dc2ad7ab5e74d68376d77f53be5692b2d0ff0dde9eeec37ee7dbffedc878ad62",
+    "boundary": {
+      "boundaryId": "CURRENT_OBSERVATION_BOUNDARY_V2",
+      "supersedes": "Stage 3G.7 contract field map for the projection only; inherited conclusions unchanged",
+      "authority": "R0",
+      "OBSERVED": [
+        "entity identity handle",
+        "entity kind",
+        "entity presented position",
+        "entity in-service bit (= available && health>0, rendered glyph case)",
+        "hostile flag",
+        "critical flag",
+        "coarse relationship kind/from/to",
+        "actor energy, health, carried material, ticks remaining, cell, terrain",
+        "tick",
+        "objective handle and entity",
+        "OBJECTIVE_REQUIRED_AMOUNT",
+        "OBJECTIVE_DELIVERED_AMOUNT",
+        "complete offered action menu"
+      ],
+      "DERIVED": [
+        "relative position, Manhattan and observed-map path distance, direction",
+        "resource/objective/threatened/hub flags",
+        "OBJECTIVE_REMAINING_AMOUNT",
+        "OBJECTIVE_COMPLETION_FRACTION",
+        "OBJECTIVE_COMPLETE",
+        "t0 offered-legality predicates (protected/damaged/planned/acceptsMaterial positive only, at t0)",
+        "declared-cost E1 ledger (energy, tick, position, carried emptying)"
+      ],
+      "PROSPECTIVE_AUDIT_ONLY": [
+        "canonical relation type (TYPED_RELATION_DISCLOSURE_CANDIDATE_V1): observable in the environment presentation, dropped before adapter output, not runtime-approved"
+      ],
+      "UNKNOWN": [
+        "individual non-actor health",
+        "available flag (service=false does not separate available=false from health=0)",
+        "planned flag (except positive offered BUILD at t0)",
+        "acceptsMaterial (except positive offered TRANSFER at t0)",
+        "protected flag (except offered PROTECT / ledger PROTECT)",
+        "resource quantity / entity value",
+        "BYPASS substitute identity under the coarse contract",
+        "future survival",
+        "future target eligibility",
+        "future entity state and position",
+        "terminal state of any future branch"
+      ],
+      "PRIVILEGED": [
+        "KERNEL_PRIVATE_GEOMETRY: base-frame (pre-orientation) positions",
+        "KERNEL_PRIVATE_GEOMETRY: geometry digest",
+        "KERNEL_PRIVATE_GEOMETRY: canonical frame (argmin of a digest over the full kernel geometry)",
+        "HIDDEN_ORIENTATION: the seed-bound D4 orientation of the scenario",
+        "HIDDEN_ORIENTATION: base-frame direction of any action",
+        "ORACLE_OPTIMAL_ACTIONS: optimal-set membership",
+        "ORACLE_OPTIMAL_ACTIONS: oracle best action",
+        "ORACLE_OPTIMAL_ACTIONS: greedy-safe label",
+        "REGRET: counterfactual regret",
+        "REGRET: normalised regret",
+        "FUTURE_STATE: successor state",
+        "FUTURE_STATE: one-step immediate scalar",
+        "FUTURE_STATE: temporal channel values beyond the current tick",
+        "ROLLOUT_RESULTS: horizon rollout totals",
+        "ROLLOUT_RESULTS: terminal outcome of any branch",
+        "SYNTHETIC_LABELS: labels produced by the corpus generator",
+        "SYNTHETIC_LABELS: warm-up provenance",
+        "SYNTHETIC_LABELS: benchmark generator identity",
+        "KERNEL_DIGESTS_AND_INTERNALS: ObservationPacket.metadata.worldHash (digest of privileged state)",
+        "KERNEL_DIGESTS_AND_INTERNALS: scenario seed",
+        "KERNEL_DIGESTS_AND_INTERNALS: entity value / cost / risk / non-actor health / resources / private flags"
+      ],
+      "exposedThisStage": {
+        "newObservedProjection": [
+          "OBJECTIVE_REQUIRED_AMOUNT",
+          "OBJECTIVE_DELIVERED_AMOUNT"
+        ],
+        "newDerived": [
+          "OBJECTIVE_REMAINING_AMOUNT",
+          "OBJECTIVE_COMPLETION_FRACTION",
+          "OBJECTIVE_COMPLETE"
+        ],
+        "hiddenCurrentStateExposed": [],
+        "futureStateExposed": []
+      }
+    }
+  },
+  "science": {
+    "VALUE": {
+      "ALL": "NOT_MATERIAL",
+      "LOW": "NOT_MATERIAL",
+      "MID": "NOT_MATERIAL",
+      "HIGH": "NOT_MATERIAL",
+      "RETREAT": "NOT_MATERIAL",
+      "HORIZON_DEPENDENT": "NOT_MATERIAL"
+    },
+    "OBJECTIVE_PROGRESS_VALUE_MEASURED": true,
+    "OBJECTIVE_PROGRESS_VALUE_MATERIAL": false,
+    "OBJECTIVE_PROGRESS_OOD_STABLE": "NOT_TESTABLE",
+    "OBJECTIVE_PROGRESS_PROJECTION_LOSS": false,
+    "PROJECTION_FIDELITY": "EXACT",
+    "TYPED_RELATION": {
+      "COLLISION_REAL": true,
+      "FIXTURE_COLLISION": true,
+      "NATURAL_COARSE_AMBIGUOUS_ROOTS": 311,
+      "EXACT_SEMANTICS_REQUIRED": true,
+      "MATERIALLY_RELEVANT_PATH": false,
+      "BYPASS_PRIVILEGE_LEAKAGE": false,
+      "PRIVILEGE_SAFE": true,
+      "BYPASS_EXACT_SUBSTITUTE_IDENTIFIABLE_CURRENT": "NOT_IDENTIFIABLE_UNDER_CURRENT_CONTRACT",
+      "BYPASS_EXACT_SUBSTITUTE_IDENTIFIABLE_WITH_DISCLOSURE": true,
+      "BYPASS_RELATION_COLLISION_RESOLVED": true,
+      "TYPED_RELATION_SCHEMA_SUPPORT_JUSTIFIED": true,
+      "TYPED_RELATION_DISCLOSURE_JUSTIFIED": false
+    },
+    "DISCLOSURE_VALUE": {
+      "ALL": {
+        "TYPED_RELATION_ONLY": "NOT_MATERIAL",
+        "INCREMENT_OVER_OBJECTIVE_PROGRESS": "NOT_MATERIAL",
+        "BOTH_VS_BASELINE": "NOT_MATERIAL",
+        "TYPED_SEARCH_ONLY": "NOT_MATERIAL"
+      },
+      "TARGET_BEARING": {
+        "TYPED_RELATION_ONLY": "NOT_MATERIAL",
+        "INCREMENT_OVER_OBJECTIVE_PROGRESS": "NOT_MATERIAL"
+      },
+      "BYPASS": {
+        "POPULATION_STRATUM": "NOT_TESTABLE",
+        "CONDITIONAL_COHORTS_TYPED_RELATION_ONLY": "HARMFUL",
+        "CONDITIONAL_COHORTS_INCREMENT": "HARMFUL"
+      },
+      "LOW": "NOT_MATERIAL",
+      "MID": "NOT_MATERIAL",
+      "HIGH": "NOT_MATERIAL",
+      "TYPED_RELATION_DECISION_VALUE_MATERIAL": false
+    },
+    "ACTION_SURFACE": {
+      "OBJECTIVE_PROJECTION_COMPLETE": true,
+      "DEPENDENCY_COLLISION_RESOLVED_PROSPECTIVELY": true,
+      "UNKNOWN_SAFE": true,
+      "ROOT_LEGALITY_PARITY": true,
+      "S1_RUNTIME_VS_PRIVATE": "PASS",
+      "S2_DISCLOSURE_VS_PRIVATE": "NOT_TESTABLE",
+      "S3_RUNTIME_VS_DISCLOSURE": "PASS",
+      "RUNTIME_PRIVATE_GAP_NOT_MATERIAL": true,
+      "DISCLOSURE_PRIVATE_GAP_NOT_MATERIAL": true,
+      "TARGET_SEMANTICS_EXACT": false,
+      "NOT_DEMONSTRATED_ACTION_CELLS": [
+        "COLLECT",
+        "TRANSFER",
+        "BUILD"
+      ],
+      "TARGET_SEMANTICS_SUFFICIENT": true,
+      "DEPENDENCY_SEMANTICS_SUFFICIENT": false,
+      "DEPENDENCY_SEMANTICS_SUFFICIENT_WITH_DISCLOSURE": true,
+      "SCIENTIFICALLY_SUFFICIENT_WITH_DISCLOSURE": false,
+      "CURRENT_RUNTIME_SUFFICIENT": false,
+      "ACTION_SURFACE_SUFFICIENT": false,
+      "SEARCH_BUDGET_SUFFICIENT": "NOT_TESTABLE_ON_FULL_REQUIRED_DOMAIN (inherited; not re-tested)",
+      "DEPLOYABLE_PLANNING_SUFFICIENT": false
+    },
+    "CLOSURE": {
+      "conditions": {
+        "C1_EPISTEMIC_INTEGRITY": true,
+        "C2_OBSERVABLE_STATE_SUFFICIENT_FOR_DEMONSTRATED_TASKS": false,
+        "C3_UNAVAILABLE_EXPLICITLY_UNKNOWN": true,
+        "C4_PREDICTION_LIFECYCLE_SAFE": true,
+        "C5_ENVIRONMENT_DYNAMICS_NON_MATERIAL": true,
+        "C6_NO_LEARNED_WORLD_MODEL_JUSTIFIED": true,
+        "C7_ADAPTER_IMPROVEMENTS_UNDERSTOOD_AND_SCOPED": true,
+        "C8_NO_ISSUE_REQUIRES_COUNTERFACTUAL_PREDICTION": true
+      },
+      "STAGE3G_SCIENTIFICALLY_COMPLETE": false,
+      "REMAINING_3G_BLOCKER": "C2_OBSERVABLE_STATE_SUFFICIENT_FOR_DEMONSTRATED_TASKS"
+    },
+    "READY_FOR_3G_COUNTERFACTUAL_PREDICTION": false,
+    "WORLD_MODEL_WORK_NOW_JUSTIFIED": false,
+    "STRUCTURAL_OOD": "NOT_TESTED",
+    "STAGE3G_STATUS": "STAGE3G8_COMPLETE_STAGE3G_OPEN",
+    "NEXT_RECOMMENDED_ACTION": "Resolve C2_OBSERVABLE_STATE_SUFFICIENT_FOR_DEMONSTRATED_TASKS (single remaining Stage 3G blocker)"
+  },
+  "authority": {
+    "AUTHORITY": "R0",
+    "CAN_DISPATCH": false,
+    "CAN_MUTATE_LIVE_WORLD": false,
+    "ONLINE_LEARNING_ENABLED": false,
+    "PROMOTED_TO_LIVE_RUNTIME": false
+  },
+  "limits": {
+    "population": "Balanced known-composition benchmark; unit weights, not natural prevalence.",
+    "cohorts": "BYPASS cohorts are conditional on BYPASS being offered; population weight 0.",
+    "fixtures": "Population weight 0.",
+    "heads": "Linear heads fit on the reused Stage 3G.7 OPEN set (horizon>2); BYPASS is rare in OPEN, so learned typed-relation weights have little BYPASS training signal; the oracle VOI audit is the head-independent measure.",
+    "voi": "One coarse-consistent multiset-preserving retyping per row; descriptive oracle bound, not a deployable policy.",
+    "structuralOOD": "NOT_TESTED",
+    "search": "Caps 1024/2048 and depth 3 not re-tested; inherited."
+  },
+  "certificationHash": "0e91ab6c21137fdd0cb29ca258bdf076fc8bbeaa52d0c017de61f1983c78e2e7"
+}
