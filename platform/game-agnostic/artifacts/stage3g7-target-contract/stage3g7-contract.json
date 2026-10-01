@@ -1,0 +1,123 @@
+{
+  "contractHash": "192e15e305ed886f6e5984ebae1380439a7f390628f23b413218c68960e4b2dd",
+  "contract": {
+    "id": "TARGET_ELIGIBILITY_CONTRACT_V1",
+    "authority": "R0",
+    "provenance": [
+      "OBSERVED",
+      "OFFERED_LEGALITY",
+      "CERTIFIED_CONTRACT",
+      "PRIVILEGED_AUDIT_ONLY",
+      "UNAVAILABLE"
+    ],
+    "effectStatus": [
+      "EXACT",
+      "UNKNOWN"
+    ],
+    "current": "Exact membership in complete offered menu; absent descriptors are INELIGIBLE only at t0. This is not hidden-predicate reconstruction.",
+    "future": "UNKNOWN actual existence/survival/terminal/service/movement. Conditional reference geometry and ledger never guarantee future execution.",
+    "fields": {
+      "existence": [
+        "OBSERVED",
+        "visibleMap.entities + canonicalState.entities"
+      ],
+      "kind": [
+        "OBSERVED",
+        "canonicalState.entities.kind"
+      ],
+      "service": [
+        "OBSERVED",
+        "rendered glyph case / visibleMap.inService = available && health>0"
+      ],
+      "position": [
+        "OBSERVED",
+        "visibleMap.position"
+      ],
+      "distance": [
+        "CERTIFIED_CONTRACT",
+        "Manhattan and observed-map BFS"
+      ],
+      "role": [
+        "OBSERVED",
+        "metadata.objectives entityId"
+      ],
+      "criticality": [
+        "OBSERVED",
+        "canonicalState.entities.critical"
+      ],
+      "hostility": [
+        "OBSERVED",
+        "canonicalState.entities.hostile = kind hostility OR hostile faction"
+      ],
+      "relationship": [
+        "OBSERVED",
+        "canonicalState.relationships.kind/from/to"
+      ],
+      "protected": [
+        "OFFERED_LEGALITY",
+        "positive PROTECT implies unprotected at t0; ledger PROTECT makes protected exact"
+      ],
+      "damaged": [
+        "OFFERED_LEGALITY",
+        "positive REPAIR/REINFORCE implies 0<health<100 at t0"
+      ],
+      "planned": [
+        "OFFERED_LEGALITY",
+        "positive BUILD implies planned && !available at t0"
+      ],
+      "acceptsMaterial": [
+        "OFFERED_LEGALITY",
+        "positive TRANSFER implies acceptsMaterial at t0"
+      ],
+      "availability": [
+        "UNAVAILABLE",
+        "service=false does not identify available=false versus health=0"
+      ],
+      "health": [
+        "UNAVAILABLE",
+        "individual nonactor health omitted; aggregate features do not identify per-entity health"
+      ],
+      "quantity": [
+        "UNAVAILABLE",
+        "resource value omitted"
+      ],
+      "relationSubtype": [
+        "UNAVAILABLE",
+        "substitutes/supplies/protects all map to supports before packet delivery"
+      ],
+      "survival": [
+        "UNAVAILABLE",
+        "future survival and terminal status"
+      ],
+      "futurePosition": [
+        "UNAVAILABLE",
+        "actual future entity positions"
+      ]
+    },
+    "extension": {
+      "status": "PROPOSED_ADAPTER_CONTRACT_EXTENSION",
+      "fields": [
+        "typed relation endpoints",
+        "individual availability",
+        "protected/planned/acceptsMaterial flags",
+        "individual health"
+      ],
+      "implementedLive": false,
+      "currentDeployableQualified": false
+    },
+    "rules": {
+      "TRANSFER": "No energy eligibility gate in frozen legalActions; declared cost still subtracted.",
+      "COLLECT": "Requires available RESOURCE co-location, not health>0.",
+      "RESTORE": "Requires !available and non-HOSTILE kind; service=false alone insufficient.",
+      "ATTACK": "Requires HOSTILE kind and health>0, not available=true.",
+      "BYPASS": "Requires dependsOn edge, failed !available, live typed substitute; lexical lowest eligible substitute."
+    },
+    "ablations": [
+      "NO_TARGET_RELATIONSHIPS",
+      "NO_TARGET_ELIGIBILITY_STATE",
+      "NO_DEPENDENCY_SUBTYPE",
+      "NO_SERVICE_STATE",
+      "NO_ACCESSIBILITY"
+    ]
+  }
+}

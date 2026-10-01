@@ -1,0 +1,174 @@
+{
+  "actionByAction": [
+    {
+      "action": "COLLECT",
+      "currentEligibility": "KNOWN_FROM_OFFERED_MENU",
+      "hiddenPredicateReconstruction": "PARTIAL",
+      "actualFutureEligibility": "UNKNOWN",
+      "currentPredicates": [
+        "RESOURCE kind",
+        "same cell",
+        "available=true (not equivalent to inService)"
+      ],
+      "futureUnknownCauses": [
+        "existence/survival/terminal",
+        "actual future target position/state",
+        "unexposed individual predicates"
+      ],
+      "provenance": "OFFERED_LEGALITY for membership; OBSERVED/CERTIFIED_CONTRACT for range/energy/kind; UNAVAILABLE for omitted individual fields"
+    },
+    {
+      "action": "TRANSFER",
+      "currentEligibility": "KNOWN_FROM_OFFERED_MENU",
+      "hiddenPredicateReconstruction": "PARTIAL",
+      "actualFutureEligibility": "UNKNOWN",
+      "currentPredicates": [
+        "carried material>0",
+        "range<=1",
+        "acceptsMaterial=true (no energy admission gate)"
+      ],
+      "futureUnknownCauses": [
+        "existence/survival/terminal",
+        "actual future target position/state",
+        "unexposed individual predicates"
+      ],
+      "provenance": "OFFERED_LEGALITY for membership; OBSERVED/CERTIFIED_CONTRACT for range/energy/kind; UNAVAILABLE for omitted individual fields"
+    },
+    {
+      "action": "PROTECT",
+      "currentEligibility": "KNOWN_FROM_OFFERED_MENU",
+      "hiddenPredicateReconstruction": "PARTIAL",
+      "actualFutureEligibility": "UNKNOWN",
+      "currentPredicates": [
+        "energy>=1",
+        "range<=1",
+        "faction!=hostile",
+        "protected!=true"
+      ],
+      "futureUnknownCauses": [
+        "existence/survival/terminal",
+        "actual future target position/state",
+        "unexposed individual predicates"
+      ],
+      "provenance": "OFFERED_LEGALITY for membership; OBSERVED/CERTIFIED_CONTRACT for range/energy/kind; UNAVAILABLE for omitted individual fields"
+    },
+    {
+      "action": "RESTORE",
+      "currentEligibility": "KNOWN_FROM_OFFERED_MENU",
+      "hiddenPredicateReconstruction": "PARTIAL",
+      "actualFutureEligibility": "UNKNOWN",
+      "currentPredicates": [
+        "energy>=2",
+        "range<=1",
+        "available=false",
+        "kind!=HOSTILE"
+      ],
+      "futureUnknownCauses": [
+        "existence/survival/terminal",
+        "actual future target position/state",
+        "unexposed individual predicates"
+      ],
+      "provenance": "OFFERED_LEGALITY for membership; OBSERVED/CERTIFIED_CONTRACT for range/energy/kind; UNAVAILABLE for omitted individual fields"
+    },
+    {
+      "action": "REINFORCE",
+      "currentEligibility": "KNOWN_FROM_OFFERED_MENU",
+      "hiddenPredicateReconstruction": "PARTIAL",
+      "actualFutureEligibility": "UNKNOWN",
+      "currentPredicates": [
+        "energy>=2",
+        "range<=1",
+        "0<health<100",
+        "faction!=hostile"
+      ],
+      "futureUnknownCauses": [
+        "existence/survival/terminal",
+        "actual future target position/state",
+        "unexposed individual predicates"
+      ],
+      "provenance": "OFFERED_LEGALITY for membership; OBSERVED/CERTIFIED_CONTRACT for range/energy/kind; UNAVAILABLE for omitted individual fields"
+    },
+    {
+      "action": "REPAIR",
+      "currentEligibility": "KNOWN_FROM_OFFERED_MENU",
+      "hiddenPredicateReconstruction": "PARTIAL",
+      "actualFutureEligibility": "UNKNOWN",
+      "currentPredicates": [
+        "energy>=2",
+        "range<=1",
+        "0<health<100",
+        "faction!=hostile"
+      ],
+      "futureUnknownCauses": [
+        "existence/survival/terminal",
+        "actual future target position/state",
+        "unexposed individual predicates"
+      ],
+      "provenance": "OFFERED_LEGALITY for membership; OBSERVED/CERTIFIED_CONTRACT for range/energy/kind; UNAVAILABLE for omitted individual fields"
+    },
+    {
+      "action": "ATTACK",
+      "currentEligibility": "KNOWN_FROM_OFFERED_MENU",
+      "hiddenPredicateReconstruction": "PARTIAL",
+      "actualFutureEligibility": "UNKNOWN",
+      "currentPredicates": [
+        "energy>=2",
+        "range<=1",
+        "kind=HOSTILE",
+        "health>0 (availability not required)"
+      ],
+      "futureUnknownCauses": [
+        "existence/survival/terminal",
+        "actual future target position/state",
+        "unexposed individual predicates"
+      ],
+      "provenance": "OFFERED_LEGALITY for membership; OBSERVED/CERTIFIED_CONTRACT for range/energy/kind; UNAVAILABLE for omitted individual fields"
+    },
+    {
+      "action": "BYPASS",
+      "currentEligibility": "KNOWN_FROM_OFFERED_MENU",
+      "hiddenPredicateReconstruction": "PARTIAL",
+      "actualFutureEligibility": "UNKNOWN",
+      "currentPredicates": [
+        "energy>=3",
+        "range<=1",
+        "available=false",
+        "dependsOn(dependent,target)",
+        "typed substitutes(candidate,target)",
+        "candidate available && health>0; lexical lowest identity"
+      ],
+      "futureUnknownCauses": [
+        "existence/survival/terminal",
+        "actual future target position/state",
+        "unexposed individual predicates"
+      ],
+      "provenance": "OFFERED_LEGALITY for membership; OBSERVED/CERTIFIED_CONTRACT for range/energy/kind; UNAVAILABLE for omitted individual fields"
+    },
+    {
+      "action": "BUILD",
+      "currentEligibility": "KNOWN_FROM_OFFERED_MENU",
+      "hiddenPredicateReconstruction": "PARTIAL",
+      "actualFutureEligibility": "UNKNOWN",
+      "currentPredicates": [
+        "energy>=4",
+        "range<=1",
+        "planned=true",
+        "available=false"
+      ],
+      "futureUnknownCauses": [
+        "existence/survival/terminal",
+        "actual future target position/state",
+        "unexposed individual predicates"
+      ],
+      "provenance": "OFFERED_LEGALITY for membership; OBSERVED/CERTIFIED_CONTRACT for range/energy/kind; UNAVAILABLE for omitted individual fields"
+    }
+  ],
+  "nonTargetActions": [
+    "MOVE",
+    "RETREAT",
+    "WAIT"
+  ],
+  "terminalCondition": "All kernel actions require a nonterminal state; future status remains UNKNOWN",
+  "source": "src/forge/kernel.js#legalActions and symmetric action surface; source hash bound in observation audit",
+  "criticalityAndObjectiveRole": "Observed target context; not a generic legality requirement for the listed actions"
+}
