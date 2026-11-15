@@ -1,0 +1,42 @@
+=== SENTINEL R0 DECISION INSPECTION (synthetic fixture, draft record V1) ===
+request   STAGE3H_PUBLIC_DECISION_INFORMATION_V1 · 7 lawful actions · request 80463e899bde…
+owner     HUMAN_OWNER — Authority is R0 everywhere; no component can dispatch. The certified Prime/Arbiter path is not bound to this observation contract, so no certified component owns a decision here.
+selected  none (inspection only)
+
+ADVISORY EVIDENCE
+  S0 top                    MOVE
+  NEXUS                     PROTECT (THREAT_DRIVEN_PREFERENCE)
+  experts agree on type     false
+
+COMPONENTS (kept separate; no combined output)
+  SK1 [FROZEN_R0_RECOMMENDATION]  RECOMMEND MOVE · SELECTED_LOWEST_RISK_TIER
+                            certification: NOT_QUALIFIED
+                            source: 5588744316bf… · model: b479972a3445…
+  H-DISC-1 [UNTRAINED_CANDIDATE_SHADOW]  ABSTAIN · DISCRIMINATOR_NOT_TRAINED
+                            certification: NOT_TRAINED
+                            source: 83dbd6125f13… · model: none
+  PRIME [NOT_APPLICABLE_TO_THIS_REQUEST]  ROOT-PUCT needs known-simulator successors; no binding over this public projection
+  ARBITER [NOT_CONNECTED_TO_THIS_REQUEST]  The certified Arbiter arbitrates NEXUS/ORACLE attestations inside the Stage 2 ZekNova shadow path; it has no binding to the Forge public projection or to SK1/H-DISC outputs.
+                            certification: certified STAGE2L10_ARBITER_CORRECTNESS_CALIBRATION_AND_SELECTIVE_DELEGATION (shadow only)
+
+SK1 RANKING (frozen, NOT_QUALIFIED; risk is an empirical estimate)
+  1. [4] MOVE               risk 12.2% · upper 15.5%
+  2. [2] MOVE               risk 18.0% · upper 22.6%
+  3. [6] PROTECT            risk 36.8% · upper 41.7%
+  4. [0] PROTECT            risk 52.6% · upper 58.1%
+  5. [5] RETREAT            risk 70.2% · upper 75.8%
+  6. [1] MOVE               risk 72.1% · upper 76.9%
+  7. [3] WAIT               risk 77.4% · upper 80.6%
+
+NINE-EXPERT ROSTER (for this request)
+  Prime                     NOT_APPLICABLE — ROOT-PUCT needs known-simulator successors; no binding over this public projection
+  Vanguard                  NOT_APPLICABLE — colony-codec only; checkpoint untrained (3H.16)
+  Oracle                    NOT_PRESENT — temporal advisory only; not part of SK1_ADVISORY_EVIDENCE_V1; Oracle action contract closed as not testable
+  Nexus                     PRESENT_AS_ADVISORY_EVIDENCE — recommends type PROTECT; enters SK1 as features only
+  Horizon                   NOT_APPLICABLE — colony-codec only
+  Archimedes                NOT_IMPLEMENTED — NO_IMPLEMENTATION_FOUND (3H.2-R)
+  Alexandria                NOT_APPLICABLE — no retrieval task
+  Picasso                   NOT_APPLICABLE — no image task
+  Forge                     NOT_APPLICABLE — coding/RSI expert; no engineering task in a decision
+
+authority R0 · canDispatch=false · canMutateLiveWorld=false · recordHash 2575d9ab0902d6b6…
