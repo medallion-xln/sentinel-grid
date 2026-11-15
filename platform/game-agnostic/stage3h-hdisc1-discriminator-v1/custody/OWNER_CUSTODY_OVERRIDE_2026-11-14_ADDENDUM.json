@@ -1,0 +1,17 @@
+{
+ "schema": "SENTINEL_OWNER_CUSTODY_OVERRIDE_ADDENDUM_V1",
+ "recordedAt": "2026-11-15T06:39:25.633Z",
+ "amends": "OWNER_CUSTODY_OVERRIDE_2026-11-14.json (unchanged)",
+ "transferPerformed": false,
+ "nothingPushed": true,
+ "reason": "The GitHub route cannot carry this history. The branch is 69 commits ahead of origin/main, and HEAD tracks six files over GitHub's 100 MB limit (up to 312 MB; evaluator-only branch files and open-validation rows), added in commit 7a25f064. Removing them would rewrite history and change the commit ids that the freeze (aa170d67), the bundle base (1ad0ea5a) and the import cut (17318b03) bind. The HEAD tree is 9.82 GB.",
+ "verifiedBeforeStopping": {
+  "archive": "35244b40e08d1930fdc20bb9ff8c195c626b0b61f246dc4673f2350bffb95fc9 (343 files)",
+  "roundTripInScratchClone": "EVIDENCE_BUNDLE_VERIFIED, SK2F_REPRO_STATUS_VERIFY_PASS, SK1_CHECK_PASS, gate 4/7",
+  "negativeControls": "wrong key, one altered byte and a missing key each refused",
+  "protectedBlobsInTheBranchPush": "0 of 31"
+ },
+ "localState": "The unpushed branch claude/stage3h-cloud-run and its temporary worktree were deleted. The ciphertext stayed in a scratch directory and the key in ~/.sentinel-grid/cloud-run.key; neither is in the repository.",
+ "viableCloudRoute": "A cloud machine the owner provisions and reaches over SSH, ideally macOS on Apple Silicon to match the runtime pin. Transfer by SSH: an encrypted git bundle of this branch only (history intact, no custody refs) plus the encrypted overlay. This still needs the owner records for G3/G4 and, for G4, a validator amendment.",
+ "recordSha256": "28eedd8eefd25382005558bba138b0b6dbe7fd411501ef410ec5b74f7ed5d91a"
+}

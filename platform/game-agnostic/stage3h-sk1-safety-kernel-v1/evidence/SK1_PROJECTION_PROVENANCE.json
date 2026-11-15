@@ -1,0 +1,106 @@
+{
+ "schema": "SK1_PROJECTION_PROVENANCE_V1",
+ "authority": "R0",
+ "repoHead": "966f6eb38a1049e40fa57b1c23329384a6b385a3",
+ "sourceFile": "platform/game-agnostic/stage3h-hw1-dev-v1/public-projection.mjs",
+ "sourceSha256": {
+  "workingTree": "c4f9532e0771e025513122052128b0d14185e4abcde3ace9de9de5d77db6c099",
+  "committedHead": "2d1e70611b26005179cc50e21a9d6ec5eae59704d7db36e722bb28b53eacb9ca"
+ },
+ "derivedSha256": {
+  "fromWorkingTree": "e2a050b2f25dfe6937cd9194ee0fafa4cc3a421bb894cb3e9c3bf94b91069f1d",
+  "fromCommittedHead": "e2a050b2f25dfe6937cd9194ee0fafa4cc3a421bb894cb3e9c3bf94b91069f1d"
+ },
+ "identicalFromBothRevisions": true,
+ "removedLines": {
+  "workingTree": [
+   "import { orientDirection, DIRECTION_DELTAS, ORIENTATIONS } from '../src/forge-symmetric/orientation-symmetric-v1.js';",
+   "const D4_ELEMENTS = ORIENTATIONS; // 8 dihedral labels; identity with transforms.mjs D4_ELEMENTS, imported from its definition site"
+  ],
+  "committedHead": [
+   "import { orientDirection, DIRECTION_DELTAS } from '../src/forge-symmetric/orientation-symmetric-v1.js';",
+   "import { D4_ELEMENTS } from './transforms.mjs';"
+  ]
+ },
+ "embeddedTables": {
+  "ORIENTATIONS": [
+   "R0",
+   "R90",
+   "R180",
+   "R270",
+   "MX",
+   "MY",
+   "MD",
+   "MA"
+  ],
+  "DIRECTION_DELTAS": {
+   "NORTH": [
+    0,
+    -1
+   ],
+   "EAST": [
+    1,
+    0
+   ],
+   "SOUTH": [
+    0,
+    1
+   ],
+   "WEST": [
+    -1,
+    0
+   ]
+  },
+  "ORIENT_TABLE": {
+   "R0": {
+    "NORTH": "NORTH",
+    "EAST": "EAST",
+    "SOUTH": "SOUTH",
+    "WEST": "WEST"
+   },
+   "R90": {
+    "NORTH": "EAST",
+    "EAST": "SOUTH",
+    "SOUTH": "WEST",
+    "WEST": "NORTH"
+   },
+   "R180": {
+    "NORTH": "SOUTH",
+    "EAST": "WEST",
+    "SOUTH": "NORTH",
+    "WEST": "EAST"
+   },
+   "R270": {
+    "NORTH": "WEST",
+    "EAST": "NORTH",
+    "SOUTH": "EAST",
+    "WEST": "SOUTH"
+   },
+   "MX": {
+    "NORTH": "NORTH",
+    "EAST": "WEST",
+    "SOUTH": "SOUTH",
+    "WEST": "EAST"
+   },
+   "MY": {
+    "NORTH": "SOUTH",
+    "EAST": "EAST",
+    "SOUTH": "NORTH",
+    "WEST": "WEST"
+   },
+   "MD": {
+    "NORTH": "WEST",
+    "EAST": "SOUTH",
+    "SOUTH": "EAST",
+    "WEST": "NORTH"
+   },
+   "MA": {
+    "NORTH": "EAST",
+    "EAST": "NORTH",
+    "SOUTH": "WEST",
+    "WEST": "SOUTH"
+   }
+  }
+ },
+ "statement": "The H-W1 source file was not modified. The committed H-W4 static-import failure at HEAD is NOT repaired by this derivation; it remains as recorded. This file gives the NEW kernel an evaluator-free projection only."
+}

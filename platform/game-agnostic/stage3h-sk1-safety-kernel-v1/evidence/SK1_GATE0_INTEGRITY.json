@@ -1,0 +1,121 @@
+{
+ "schema": "SK1_GATE0_INTEGRITY_V1",
+ "authority": "R0",
+ "stage": "STAGE3H-SK1 Gate 0",
+ "verifiedAt": "2026-11-11T20:01:36.814Z",
+ "node": "v26.7.0",
+ "commitVerified": "8e4095365683d49525d4207b5d27c88517b4de69",
+ "cleanExport": {
+  "method": "git archive of the commit into a temporary directory",
+  "paths": [
+   "platform/game-agnostic/stage3h-sk1-safety-kernel-v1",
+   "platform/game-agnostic/package.json",
+   "platform/game-agnostic/src/core",
+   "platform/game-agnostic/src/sdk",
+   "platform/game-agnostic/src/adapters/reference-rescue"
+  ],
+  "laneFiles": 42,
+  "blobMismatch": [],
+  "inferenceGraph": {
+   "fileCount": 12,
+   "files": [
+    "adapters/forge/evidence.mjs",
+    "adapters/forge/features.mjs",
+    "adapters/forge/projection.mjs",
+    "adapters/rescue/adapter.mjs",
+    "api/host.mjs",
+    "api/recommend.mjs",
+    "kernel/contract.mjs",
+    "kernel/index.mjs",
+    "kernel/ranking.mjs",
+    "kernel/record.mjs",
+    "kernel/risk.mjs",
+    "kernel/semantics.mjs"
+   ],
+   "closureSha256": "8a7e39abf1ffa25a4094fd9067681c91cdc7d6d58ea4a47e3146efbd8765117b",
+   "violations": [],
+   "evaluatorFree": true
+  },
+  "tests": {
+   "kernelAndGraph": {
+    "tests": 18,
+    "pass": 18,
+    "fail": 0,
+    "skipped": 0,
+    "exit": 0
+   },
+   "secondGame": {
+    "tests": 3,
+    "pass": 3,
+    "fail": 0,
+    "skipped": 0,
+    "exit": 0
+   },
+   "privilegedRunnerControls": {
+    "tests": 4,
+    "pass": 0,
+    "fail": 0,
+    "skipped": 4,
+    "exit": 0
+   }
+  }
+ },
+ "workingLane": {
+  "tests": {
+   "tests": 36,
+   "pass": 36,
+   "fail": 0,
+   "skipped": 0
+  },
+  "exit": 0,
+  "uncommittedLaneChanges": []
+ },
+ "retiredAndSpentBlocks": {
+  "901": "FORBIDDEN_BLOCK_901:SPENT_HW4B_SCREENED_OBSERVATIONAL",
+  "902": "FORBIDDEN_BLOCK_902:SPENT_HW4B_SCREENED_OBSERVATIONAL",
+  "903": "FORBIDDEN_BLOCK_903:SPENT_HW4B_SCREENED_OBSERVATIONAL",
+  "904": "FORBIDDEN_BLOCK_904:SPENT_HW4B_SCREENED_OBSERVATIONAL",
+  "905": "FORBIDDEN_BLOCK_905:SPENT_HW4B_SCREENED_OBSERVATIONAL",
+  "906": "FORBIDDEN_BLOCK_906:SPENT_HW4B_SCREENED_OBSERVATIONAL",
+  "907": "FORBIDDEN_BLOCK_907:SPENT_HW4B_SCREENED_OBSERVATIONAL",
+  "908": "FORBIDDEN_BLOCK_908:SPENT_HW4B_SCREENED_OBSERVATIONAL",
+  "909": "FORBIDDEN_BLOCK_909:SPENT_HW4B_SCREENED_OBSERVATIONAL",
+  "910": "FORBIDDEN_BLOCK_910:SPENT_HW4B_SCREENED_OBSERVATIONAL",
+  "911": "FORBIDDEN_BLOCK_911:RETIRED_HW4B_RESERVE_NEVER_GENERATED",
+  "912": "FORBIDDEN_BLOCK_912:RETIRED_HW4B_RESERVE_NEVER_GENERATED",
+  "913": "FORBIDDEN_BLOCK_913:RETIRED_HW4B_RESERVE_NEVER_GENERATED",
+  "914": "FORBIDDEN_BLOCK_914:RETIRED_HW4B_RESERVE_NEVER_GENERATED"
+ },
+ "exclusionRegistryHash": "1073b1e5ebee6583fd2c946e4fb663804c25c2202461b388a6934957d95e48dc",
+ "sealedRegistries": 7,
+ "custodyManifestSha256": "321da973d4114e195e858c819d9da9195c13cefd38509a22a4f5379e88a95dfe",
+ "checks": {
+  "EXCLUSION_REGISTRY_LOADS_FAIL_CLOSED": true,
+  "EVERY_BLOCK_901_914_REJECTED": true,
+  "CLEAN_EXPORT_EQUALS_COMMITTED_BLOBS": true,
+  "CLEAN_EXPORT_HAS_NO_PRIVILEGED_DATA": true,
+  "INFERENCE_GRAPH_EVALUATOR_FREE_IN_CLEAN_EXPORT": true,
+  "KERNEL_TESTS_PASS_IN_CLEAN_EXPORT": true,
+  "SECOND_GAME_TESTS_PASS_IN_CLEAN_EXPORT": true,
+  "PRIVILEGED_TESTS_SKIP_NOT_FAIL_IN_CLEAN_EXPORT": true,
+  "FULL_SUITE_PASSES_IN_WORKING_LANE": true,
+  "LANE_CODE_COMMITTED_AND_UNMODIFIED": true,
+  "CUSTODY_GUARDS_INTACT": true,
+  "PROTECTED_OVERLAY_MATCHES_RECORDED_IDENTITIES": true
+ },
+ "gate0": "PASS",
+ "cleanCheckoutReproducibility": {
+  "kernelInferenceAndDecisionReplay": "YES",
+  "kernelAndSecondGameTests": "YES",
+  "populationGenerationAndEvaluation": "NO — requires the custody-protected comparator overlay and privileged local data",
+  "statement": "CLEAN_CHECKOUT_REPRODUCIBLE applies to the kernel inference graph, its tests and decision replay. It does not apply to regenerating populations or re-running the evaluation."
+ },
+ "notRepairedByThisGate": "The static-import boundary of the frozen H-W1 / H-W4 policies at committed HEAD remains FAIL as recorded in the H-W4B closure. The uncommitted import cut in stage3h-hw1-dev-v1/public-projection.mjs is neither committed nor reverted; it was verified to be identity-preserving (tests/projection.test.mjs).",
+ "independentBackup": {
+  "externalVolumes": [],
+  "timeMachine": "NO_DESTINATION_CONFIGURED",
+  "available": false,
+  "remotePushAuthorized": false,
+  "statement": "NO INDEPENDENT BACKUP IS AVAILABLE. No external volume is mounted and no Time Machine destination is configured. Commits, the protected overlay and all privileged working data exist on this one internal disk only. Independent recoverability is NOT claimed."
+ }
+}

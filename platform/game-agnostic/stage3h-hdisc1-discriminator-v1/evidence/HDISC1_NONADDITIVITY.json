@@ -1,0 +1,206 @@
+{
+ "schema": "HDISC1_NONADDITIVITY_GATE_V1",
+ "authority": "R0",
+ "stage": "STAGE3H-H-DISC-1",
+ "labels": [
+  "REPRESENTATION_TEST",
+  "SYNTHETIC_MATHEMATICAL_WITNESSES",
+  "NO_LEARNED_PARAMETERS",
+  "NOT_A_SAFETY_OR_PERFORMANCE_RESULT"
+ ],
+ "source": {
+  "gateSha256": "57c65d10e3d38ec81a003a031d50eac9f179ffb37e0dd53eccedeb257b176bd6",
+  "witnessSha256": "a0cc3630bd52c9f0fc08d54e9ce3528df1a218c063bc84d227bed2df73f42bf1",
+  "pairModelSha256": "d19c1893eb59b06c10c4492db19b521b0d06161f8825de3df12ab5a52d81b65a"
+ },
+ "gate": "PASS",
+ "NONADDITIVE_COMPARATOR": "ESTABLISHED_AS_A_REPRESENTATION_PROPERTY",
+ "checks": {
+  "1_additiveScorerIsRestricted": {
+   "pass": true,
+   "additiveScorersEnumerated": 256,
+   "L1_maxCocycleResidual": 0,
+   "L1_maxDistanceFromAnAdditiveFit": 0,
+   "L2_scorersWithAMajorityCycle": 0,
+   "L3_orderOfTwoActionsChangedByAThirdAction": 0,
+   "sameScorerWrittenInThePairFamily": {
+    "logitMismatches": 0,
+    "crossActionPaths": 0,
+    "reading": "the pair family contains the additive family; an additive member has no cross-action path and is reported as such"
+   }
+  },
+  "2_comparatorExpressesANonAdditivePairInteraction": {
+   "pass": true,
+   "cycle": {
+    "pass": true,
+    "cocycleResidual": 6,
+    "majorityCycle": [
+     0,
+     1,
+     2,
+     0
+    ],
+    "distanceFromTheBestAdditiveFit": 2,
+    "crossAction": {
+     "value": true,
+     "crossActionPath": true,
+     "relationSplit": false,
+     "crossActionPaths": 9,
+     "relationSplits": 0
+    },
+    "throughTheDiscriminator": {
+     "decision": "TOP_SET",
+     "topSetSize": 3,
+     "flags": [
+      "TOP_SET_IN_A_COMPARISON_CYCLE",
+      "INDISTINGUISHABLE_DISTINCT_ACTIONS",
+      "SINGLE_BAG_NO_DISAGREEMENT_ESTIMATE"
+     ]
+    },
+    "why": "L2: an additive scorer orders actions by one number each, so its majority relation can never contain a cycle"
+   },
+   "dependenceOnOtherAlternatives": {
+    "pass": true,
+    "directComparisonOfAandB": 0.598688,
+    "menuWithX": {
+     "third": 2,
+     "rankOfA": 2,
+     "rankOfB": 0,
+     "safetyA": 0.323057,
+     "safetyB": 0.676943,
+     "top": [
+      "suit:1"
+     ]
+    },
+    "menuWithY": {
+     "third": 3,
+     "rankOfA": 0,
+     "rankOfB": 1,
+     "safetyA": 0.749469,
+     "safetyB": 0.650781,
+     "top": [
+      "suit:0"
+     ]
+    },
+    "why": "L3: with per-action scores, whether a ranks above b cannot depend on a third action. Here a is preferred to b directly, ranks above b beside y, and below b beside x"
+   },
+   "pairRelation": {
+    "pass": true,
+    "identicalComparedInputsOfBothActions": true,
+    "sameCell": 0.817574,
+    "differentCell": 0.182426,
+    "crossAction": {
+     "value": true,
+     "crossActionPath": true,
+     "relationSplit": true,
+     "crossActionPaths": 8,
+     "relationSplits": 1
+    },
+    "why": "L4: the model reads u of each action and the relation between them. u is identical in both menus, so any per-action scorer of u must give the same comparison; the comparator reverses it"
+   },
+   "contextDependentInteraction": {
+    "pass": true,
+    "contextZero": {
+     "cycles": 0,
+     "topSetSize": 1
+    },
+    "contextOne": {
+     "cycles": 1,
+     "topSetSize": 3
+    }
+   },
+   "capacity": {
+    "cycleWitness": {
+     "family": "HDISC_ANTISYMMETRISED_PAIR_TREE_ENSEMBLE_V1",
+     "bags": 1,
+     "treesPerBag": 1,
+     "maxDepth": 4,
+     "totalNodes": 17,
+     "totalLeaves": 9,
+     "inputWidth": 2
+    },
+    "relationWitness": {
+     "family": "HDISC_ANTISYMMETRISED_PAIR_TREE_ENSEMBLE_V1",
+     "bags": 1,
+     "treesPerBag": 1,
+     "maxDepth": 3,
+     "totalNodes": 15,
+     "totalLeaves": 8,
+     "inputWidth": 3
+    }
+   }
+  },
+  "3_pairReversalConsistency": {
+   "pass": true,
+   "orderedPairsChecked": 62,
+   "maxDeviationFromOne": 2.220446049250313e-16,
+   "logitsExactlyNegated": 62,
+   "identicalActionsAtOneHalf": 15
+  },
+  "4_opaqueIdentityRelabelling": {
+   "pass": true,
+   "relabelledMenus": 16,
+   "identicalDecisionDigestTopSetAndMatrix": 16
+  },
+  "5_menuOrderPermutation": {
+   "pass": true,
+   "permutedMenus": 78,
+   "bitIdenticalRanksScoresAndDigest": 78
+  },
+  "6_geometricTransformations": {
+   "pass": true,
+   "witness": {
+    "parametersHash": "631297cfa2a4ae861b6ed3b49844006545ac317056b3bacff877c217810c8a64",
+    "capacity": {
+     "family": "HDISC_ANTISYMMETRISED_PAIR_TREE_ENSEMBLE_V1",
+     "bags": 2,
+     "treesPerBag": 5,
+     "maxDepth": 3,
+     "totalNodes": 55,
+     "totalLeaves": 32,
+     "inputWidth": 12
+    },
+    "crossAction": {
+     "value": true,
+     "crossActionPath": true,
+     "relationSplit": true,
+     "crossActionPaths": 20,
+     "relationSplits": 4
+    }
+   },
+   "fixtures": [
+    {
+     "fixture": "forge-request-recommend.json",
+     "menuSize": 7,
+     "decision": "TOP_SET",
+     "comparisonsThatAreNotOneHalf": 42,
+     "d4Frames": "8/8",
+     "entityRelabellings": "5/5",
+     "menuOrders": "6/6",
+     "decisionDigest": "0ae9627cbf6befe7bdaadd3a03f925ebc6e8aae3e6871bf5c74dcfd62b18f4a7",
+     "pass": true
+    },
+    {
+     "fixture": "forge-request-abstain.json",
+     "menuSize": 10,
+     "decision": "TOP_SET",
+     "comparisonsThatAreNotOneHalf": 90,
+     "d4Frames": "8/8",
+     "entityRelabellings": "5/5",
+     "menuOrders": "4/4",
+     "decisionDigest": "7e2397c9c0c29befb8ccfa039ff63b1030937b7d1ea10e78fabeb56b386876c5",
+     "pass": true
+    }
+   ],
+   "negativeControl": {
+    "frameDependentInputDetected": true,
+    "distinctTopActionsAcrossFrames": 3
+   }
+  }
+ },
+ "whatThisDoesNotShow": [
+  "that a trained comparator will use a cross-action interaction",
+  "that using one improves safety",
+  "anything about any native world, label or policy outcome"
+ ]
+}

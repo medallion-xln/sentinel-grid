@@ -1,0 +1,51 @@
+=== SENTINEL GRID STAGE 3H OWNER REGISTRATION ===
+
+STATUS=REGISTRATION_ACTIVE; STOPPED_BEFORE_FIRST_SEALED_WORLD
+CLASSIFICATION=OWNER_GOVERNED_PROSPECTIVE_REGISTRATION_ACTIVE_NOT_EXECUTED
+
+AUTHORITY=R0
+CANDIDATE_SHA256=f1ba57b46ceedc3ab22a859d51245ed353b1aaa570ec914ebaa3f8fec4c3e984
+
+INHERITANCE_VERIFIED=true (V1 41ed9a7e, closure a2c79617, V3 320a07da unchanged, 13 milestones, Oracle closed, nine-expert roster)
+PROTECTED_FILES_UNCHANGED=true (14447; V3 check.py PASS with 40 synthetic tests)
+FROZEN_SELECTOR_UNCHANGED=true (H0 -> NEXUS_ELSE_S0, H2 -> S0; hash c53826da...)
+
+O2R_ALL_GATES_PASS=true (evidence/o2r1-gate.json: 10/10 points)
+O2R_DEVELOPMENT_WITNESSES=288/288 (no failure, no dropped case)
+ACTION_ID_BIJECTION=true (opaque, bijective, no original handle anywhere; semantics[].ACTION_ID equals the surface handle)
+NATIVE_WORLD_UNCHANGED=true (288/288; original-world truth authoritative)
+
+TEST_INTEGRITY_VERDICT=NOT_INTEGRITY_BLOCKED (intermittent failure preserved in evidence/flake-audit.json; cause identified by elimination as the frozen 1,000 ms lock assertion, not reproduced; fail-closed; O-5 preflight mitigates availability)
+O3_MIN_ACCEPTED_PER_CELL=2
+ADMISSION_FLOORS_VALID=true (0.9 population and per-horizon, Kish effective-N 2100, fixed cell weights, no replacement, no outcome filtering)
+CATASTROPHE_VETO_VALID=true (unchanged; sparse cells can only block a positive result)
+
+OWNER_SCOPE_APPROVED=true (registration/OWNER_APPROVAL_f1ba57b4.json; no gate waivers)
+OWNER_APPROVAL_REFERENCE=SESSION_OWNER_AUTHORIZATION, 2026-10-20 ("Final Corrected Candidate f1ba57b4"); not a cryptographic signature
+INDEPENDENT_METHOD_REVIEW=false
+
+OWNER_GOVERNED_LANE_COMMITTED=true
+OWNER_GOVERNED_COMMIT_HASH=15da78b74a0d709ca26dfa996dad9f5bfc385dbe (activation tooling 3d18a0dee3dc1153f146b6551f5004bc4cef0191)
+
+REGISTRATION_ACTIVE=true
+REGISTRATION_COMMIT=e009344c2c973a329a4b88582f90b9e58e15abce
+REGISTRATION_SHA256=0364164cb05e140da6265c89d830388b84dafed7ef5f3abf47ad6afb2833b01f
+
+A_B_NAMESPACE_DISJOINT=true (A 731000000000+k, B 732000000000+k, k < 12,768; schedule hashes 93c9e80a... / f4fea1d6...)
+PRIOR_WORLD_EXCLUSIONS_VALID=true (9,407 world hashes; seed-level disjointness verified; world-level exclusion enforced at execution, never replaced)
+CLEAN_CLONE_REPRODUCIBLE=true (evidence/activation-f1ba57b4/clean-clone-verification.json; 30 policy-protected sources overlaid from an uncommitted local package)
+
+SEALED_WORLDS_GENERATED=false
+SEALED_OUTCOMES_ACCESSED=false
+CAMPAIGN_EXECUTED=false
+
+BOUNDED_SELECTOR_QUALIFIED=false
+FULL_STAGE3H_CERTIFIED=false
+STAGE3I_STARTED=false
+
+CAN_DISPATCH=false
+CAN_MUTATE_LIVE_WORLD=false
+
+NEXT_EXACT_EXECUTION_AUTHORIZATION=Separate owner instruction authorizing the once-only A/B campaign for registration 0364164cb05e140da6265c89d830388b84dafed7ef5f3abf47ad6afb2833b01f (commit e009344c). It is recorded as registration/EXECUTION_AUTHORIZATION_V3.json {type: EXECUTE_ONCE, registrationHash, replications: [A, B], ownerIdentity, date, signatureOrTrustedApprovalReference}, then run on an idle machine: node campaign-v3.mjs run A; node campaign-v3.mjs run B; node campaign-v3.mjs analyse.
+
+LIMITATIONS: owner-governed (same person designs, holds custody and executes; blinding procedural); TCA and incumbent Prime not testable; result cannot certify Stage 3H canonically or establish MoE gain; a replication aborted by the 1,000 ms assertion is lost under the once-only rule.

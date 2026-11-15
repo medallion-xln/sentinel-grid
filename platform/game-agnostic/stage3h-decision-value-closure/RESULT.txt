@@ -1,0 +1,72 @@
+*** CORRECTION NOTICE (CORRECTION_V1.json, derived by correct.mjs) ***
+The seed-invariance analysis below was wrong. It compared initial states with w.seed stripped, but the v32 factory
+transition reads w.seed: at tiers 2-3 the failed node at each fixed failure tick is production[(seed+tick) % L],
+L = 4 (tier 2) and 9 (tier 3) (ascii-suite/v32/strategic-extension.mjs line 97). Corrected figures:
+  distinct worlds per topology/sensor class = 1 + 4 + 9 = 14; campaign = 70 distinct worlds (not 15), 150x per replication
+  HOLDOUT overlaps development on 7 of 14 distinct worlds (not 3 of 3)
+  replication B covers exactly the same 14-world sets as A (still duplicates A)
+  development: 35 distinct worlds (not 15); STRONGEST 35/35; SENTINEL_V31 0/35 (= ablation 35/35)
+  Nexus changed 6 of 1,948 distinct decisions in 6 worlds; 0 success changes
+  sensor OOD strata still confounded with relay topology
+The V1 counts (45/45, 6/2192) were mostly distinct worlds; only the 5 tier-1 cells were triplicates.
+The decision ASCII_CAMPAIGN_LOW_INFORMATION_VALUE stands, for the corrected reasons. Text below is the original record.
+*** END CORRECTION NOTICE ***
+
+=== SENTINEL GRID STAGE 3H DECISION-VALUE CLOSURE ===
+
+STATUS=COMPLETE_EVIDENCE_CLOSURE_NO_NEW_CAMPAIGN
+CLASSIFICATION=ASCII_CAMPAIGN_LOW_INFORMATION_VALUE; PROTOCOL_9737339C_MUST_NOT_BE_REGISTERED_AS_WRITTEN
+
+AUTHORITY=R0
+PROTECTED_FILES_UNCHANGED=true (14447 canonical; ASCII sources; V1 lane clean since commit; V3 check.py PASS)
+
+ASCII_V1_COMMITTED=true
+ASCII_V1_COMMIT_HASH=41ed9a7e45af74753b96035ce2ce590c113a41c2
+ASCII_PROTOCOL_REGISTERED=false
+
+NEXUS_INTERVENTION_RATE=2 of 734 distinct decisions (0.27%); 2 of 15 distinct worlds; 0 of the 3 HOLDOUT-class worlds
+EFFECTIVE_WORLD_INFORMATION=15 distinct deterministic factory worlds behind 21,000 scheduled pairs (pseudo-replication factor 700); the 9,000 HOLDOUT pairs are 3 worlds already evaluated in development; replication B reproduces A exactly
+EXPECTED_CAMPAIGN_PRECISION=nominal worst-case 95% half-width 0.029 would be false precision; valid analysis is an exact census of 15 worlds with no basis for generalization
+CAMPAIGN_COMPUTE_COST=~44 h single-process for factory (84,000 arm-episodes x 1.88 s), ~58 h with the competence family; the equivalent census is 60 arm-episodes (~2 min)
+CAMPAIGN_INFORMATION_VALUE=LOW
+
+NEXUS_CAUSED_SENTINEL_FAILURE=false
+FALLBACK_PLANNER_FAILURE_ATTRIBUTION=v3 bounded planner on v32 factory: 8,405 of 8,550 actions are WAIT, it never issues CONNECT or SET_PRODUCTION, built links stay 0, delivers 0 of the required units, DEADLINE_FAILURE on 15/15 distinct worlds; with no built links the public graph has no relationships, so the Nexus selector abstained on all 75 REPAIR-offered ticks and fired 0 times; V31 trajectory equals its ablation on 15/15
+
+FORGE_WORLD_EVIDENCE_PRESERVED=true (3H.1-D/F confirmations, V1-V3 contracts and handoff unchanged)
+ASCII_EVIDENCE_PRESERVED=true (V1 lane committed unchanged; this closure is additive)
+
+CANONICAL_3H_DIMENSIONS_COVERED=Track A (Forge World, V3 contract): expert marginal value, complementarity (Nexus/S0 by horizon), horizon competence, regime competence (proposed scope), ablation, false-selection harm, all designed but CONTRACT_BLOCKED pending scope approval and registration. Track B (ASCII): structurally marginal value, ablation and harm for a different claim (Nexus repair choice in factory), evaluable only as a 15-world census
+CANONICAL_3H_DIMENSIONS_BLOCKED=Prime synthesis in both tracks (no matched incumbent interface); TCA (no CAL-frozen World-Model Trust Gate); in ASCII also complementarity, horizon and regime competence
+
+ASCII_CAMPAIGN_DECISION=ASCII_CAMPAIGN_LOW_INFORMATION_VALUE
+BOUNDED_SELECTOR_QUALIFICATION_PATH=Track A only: owner decisions on review and custody governance plus the five scope dispositions bound to V3 amendment 525a0047, then registration authorization, native replay preflight, one sealed A/B execution of the 25,536-world design, then adjudication
+FULL_STAGE3H_EXIT_REQUIREMENTS=sealed Track A results; owner dispositions for all seven dimensions (Prime and TCA can only be APPROVED_NOT_TESTABLE or CONTRACT_BLOCKED); an explicit owner decision on whether bounded selector qualification suffices for Stage 3H exit
+
+NEW_PERFORMANCE_CAMPAIGN=false
+FRESH_SEEDS_ALLOCATED=false
+
+CANONICAL_MOE_GAIN=NOT_ESTABLISHED
+STAGE3H_CERTIFIED=false
+STAGE3I_STARTED=false
+
+CAN_DISPATCH=false
+CAN_MUTATE_LIVE_WORLD=false
+
+NEXT_EXACT_SCIENTIFIC_ACTION=Project owner decides the Track A governance and scope packet: (1) obtain an external methodological reviewer and custodian, or adopt a versioned owner-only governance amendment under which every result is labeled NOT_INDEPENDENTLY_REVIEWED; (2) sign SCOPE-DDV, SCOPE-TCA, SCOPE-PRIME, SCOPE-REGIME and SCOPE-THRESHOLDS against amendment 525a0047; (3) then separately authorize registration of the V3 sealed design
+
+ATTRIBUTION (verified by deterministic re-derivation of every recorded development trace; 60/60 action hashes match):
+A. Strong native controller performs well: STRONGEST_NATIVE succeeds on 15/15 distinct factory worlds.
+B. Nexus shows no observed incremental benefit: 2 changed decisions, 0 success changes. DELAYED tier 3: Nexus repaired L1-cutter 2 ticks before the strongest controller did. MISSING tier 3: Nexus added a late L1-cutter repair the strongest controller never made (action cost 48 vs 46).
+C. The existing Sentinel path fails because its fallback planner fails (see attribution above); Nexus is inactive there.
+
+PROTOCOL DEFECTS FOUND (V1 self-errata; the V1 lane is preserved unchanged):
+1. The seed is not a sampling unit for factory: configureFactory(w,tier,family) takes no seed and uses no RNG (ascii-suite/v32/strategic-extension.mjs line 30).
+2. HOLDOUT is not unseen: family 'S3H_ASCII_HOLDOUT' triggers neither MIRROR (line 35) nor relay (line 40), so its worlds equal the DEV_NORMAL worlds.
+3. The sensor OOD strata are confounded: family 'S3H_ASCII_OOD_SENSOR' contains 'OOD', which also switches on relay topology (line 40).
+4. V1 counts such as 45/45 and 6/2192 are three identical copies of 15 distinct worlds; distinct counts are 15/15 and 2/734.
+5. A 200-seed initial-state probe found Platformer, Fighter, Roguelike and Rescue at most 2 distinct public starting observations per level. This was disclosed: it built initial states only, recorded no outcomes and used none of the proposed namespaces. The competence family therefore also needs a distinct-world sampling unit.
+
+WHAT A VALID FUTURE FACTORY EXPERIMENT WOULD NEED (separately versioned proposal only, not started): enumerate the finite set of native factory world classes (tier x {plain, MIRROR} x {no relay, relay} x sensor mode, at most 60) as a deterministic census, report exact per-world effects, and make no population-level inferential claim. Expected value remains low: the Nexus selector can only reorder offered REPAIRs that the strongest controller already performs or would not need.
+
+WITHOUT EXTERNAL METHODOLOGICAL REVIEW, it can be concluded: preregistered, reproducible, self-governed evidence about the frozen rule on the registered populations. It cannot be concluded: that the methodology was independently validated, or that custody was independent. Neither can be manufactured; the owner decides whether self-governed evidence suffices for certification.

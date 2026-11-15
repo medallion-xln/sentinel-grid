@@ -1,0 +1,641 @@
+{
+  "id": "SENTINEL_ASCII_EXTREME_CURRICULUM_V1",
+  "candidates": [
+    {
+      "MODEL_ID": "EXPERIMENTAL_V32_RESCUE_ACTION_V2",
+      "MODEL_VERSION": 1,
+      "TRAINING_LINEAGE": "V32_TRAIN_RECTILINEAR",
+      "WEIGHT_HASH": "bab5ea5ea0b8544eefafc7766763973269061cba235d5ff094213f4d1ee5304f",
+      "TRAINING_ENVIRONMENTS": [
+        "rescue"
+      ],
+      "TRAINING_STEPS": 495,
+      "OPTIMIZER_EPOCHS": 80,
+      "CURRICULUM_LEVEL": "ADVANCED",
+      "FAILURE_CATEGORY": "NO_INCREMENTAL_ACTION_VALUE",
+      "TRAINING_LOSS": [
+        {
+          "epoch": 0,
+          "meanLoss": 2.2046064468206086
+        },
+        {
+          "epoch": 10,
+          "meanLoss": 1.8736464139470126
+        },
+        {
+          "epoch": 20,
+          "meanLoss": 1.7309184808758886
+        },
+        {
+          "epoch": 30,
+          "meanLoss": 1.6582329550295771
+        },
+        {
+          "epoch": 40,
+          "meanLoss": 1.6153024701258254
+        },
+        {
+          "epoch": 50,
+          "meanLoss": 1.5869725569844004
+        },
+        {
+          "epoch": 60,
+          "meanLoss": 1.5666861230992877
+        },
+        {
+          "epoch": 70,
+          "meanLoss": 1.5512466067647233
+        },
+        {
+          "epoch": 79,
+          "meanLoss": 1.5400618424122858
+        }
+      ],
+      "VALIDATION_SCORE": {
+        "episodes": 8,
+        "successes": 8,
+        "catastrophes": 0,
+        "successRate": 1,
+        "meanEpisodeReturn": 43.13749999999996,
+        "meanTicks": 168.625,
+        "meanRepeatedFailures": 0,
+        "actualChangedActions": 0,
+        "modelInvocations": 1349,
+        "canonicalExpertInvocations": 0,
+        "computePerDecisionMean": 77.20432871793518,
+        "latencyP95MeanOfEpisodeP95Ms": 1.0338437500001874,
+        "latencyP50P95P99PerEpisode": [
+          {
+            "id": "rescue-OPEN_VALIDATION_A-0-V2_CANDIDATE",
+            "p50": 0.30674999999973807,
+            "p95": 0.7641249999996944,
+            "p99": 0.8988330000001952
+          },
+          {
+            "id": "rescue-OPEN_VALIDATION_A-1-V2_CANDIDATE",
+            "p50": 0.7220409999990807,
+            "p95": 1.1153329999997368,
+            "p99": 1.4053750000002765
+          },
+          {
+            "id": "rescue-OPEN_VALIDATION_A-2-V2_CANDIDATE",
+            "p50": 0.5175419999995938,
+            "p95": 0.9122500000012224,
+            "p99": 1.1596249999984138
+          },
+          {
+            "id": "rescue-OPEN_VALIDATION_A-3-V2_CANDIDATE",
+            "p50": 0.8630000000011933,
+            "p95": 1.3965410000000702,
+            "p99": 1.619542000000365
+          },
+          {
+            "id": "rescue-OPEN_VALIDATION_B-0-V2_CANDIDATE",
+            "p50": 0.7975000000005821,
+            "p95": 1.1728340000008757,
+            "p99": 1.4374160000006668
+          },
+          {
+            "id": "rescue-OPEN_VALIDATION_B-1-V2_CANDIDATE",
+            "p50": 0.7651250000017171,
+            "p95": 1.1854590000002645,
+            "p99": 1.4411669999972219
+          },
+          {
+            "id": "rescue-OPEN_VALIDATION_B-2-V2_CANDIDATE",
+            "p50": 0.4577079999980924,
+            "p95": 0.72454099999959,
+            "p99": 1.0610409999972035
+          },
+          {
+            "id": "rescue-OPEN_VALIDATION_B-3-V2_CANDIDATE",
+            "p50": 0.6809580000008282,
+            "p95": 0.9996670000000449,
+            "p99": 1.1349589999990712
+          }
+        ]
+      },
+      "RISK_GATE_STATUS": "REJECTED_NOT_QUALIFIED",
+      "TRANSFER_SCORE": null,
+      "NUMERICALLY_VALID": true,
+      "ACTIVE": false,
+      "teacher": "Unqualified public-planner imitation, not optimal demonstrations or regret",
+      "curriculumDecision": {
+        "curriculumLevel": "ADVANCED",
+        "riskGateStatus": "REJECTED",
+        "advance": false,
+        "reason": "DIAGNOSE_FAILURE_BEFORE_MORE_COMPUTE"
+      }
+    },
+    {
+      "MODEL_ID": "EXPERIMENTAL_V32_CARDS_ACTION_V2",
+      "MODEL_VERSION": 1,
+      "TRAINING_LINEAGE": "V32_TRAIN_RECTILINEAR",
+      "WEIGHT_HASH": "e3e42897d4f83ebe9428feb8b89806b3c551f683d05c399f71ec5814726304b1",
+      "TRAINING_ENVIRONMENTS": [
+        "cards"
+      ],
+      "TRAINING_STEPS": 97,
+      "OPTIMIZER_EPOCHS": 80,
+      "CURRICULUM_LEVEL": "ADVANCED",
+      "FAILURE_CATEGORY": "POOR_LONG_HORIZON_PLAN",
+      "TRAINING_LOSS": [
+        {
+          "epoch": 0,
+          "meanLoss": 2.2309038294762495
+        },
+        {
+          "epoch": 10,
+          "meanLoss": 2.1247020412331232
+        },
+        {
+          "epoch": 20,
+          "meanLoss": 2.0801890044732465
+        },
+        {
+          "epoch": 30,
+          "meanLoss": 2.0572802726641664
+        },
+        {
+          "epoch": 40,
+          "meanLoss": 2.04310982057894
+        },
+        {
+          "epoch": 50,
+          "meanLoss": 2.0331159018195573
+        },
+        {
+          "epoch": 60,
+          "meanLoss": 2.02547737902843
+        },
+        {
+          "epoch": 70,
+          "meanLoss": 2.0193689398530066
+        },
+        {
+          "epoch": 79,
+          "meanLoss": 2.014821168465978
+        }
+      ],
+      "VALIDATION_SCORE": {
+        "episodes": 8,
+        "successes": 0,
+        "catastrophes": 0,
+        "successRate": 0,
+        "meanEpisodeReturn": 7.1625,
+        "meanTicks": 31.75,
+        "meanRepeatedFailures": 0,
+        "actualChangedActions": 0,
+        "modelInvocations": 130,
+        "canonicalExpertInvocations": 0,
+        "computePerDecisionMean": 26.9525719000248,
+        "latencyP95MeanOfEpisodeP95Ms": 0.07444249999980457,
+        "latencyP50P95P99PerEpisode": [
+          {
+            "id": "cards-OPEN_VALIDATION_A-0-V2_CANDIDATE",
+            "p50": 0.03712499999892316,
+            "p95": 0.09391599999798927,
+            "p99": 0.6777919999985897
+          },
+          {
+            "id": "cards-OPEN_VALIDATION_A-1-V2_CANDIDATE",
+            "p50": 0.027207999999518506,
+            "p95": 0.06833300000289455,
+            "p99": 0.07125000000087311
+          },
+          {
+            "id": "cards-OPEN_VALIDATION_A-2-V2_CANDIDATE",
+            "p50": 0.02312499999970896,
+            "p95": 0.07595799999762676,
+            "p99": 0.07604200000059791
+          },
+          {
+            "id": "cards-OPEN_VALIDATION_A-3-V2_CANDIDATE",
+            "p50": 0.03104200000234414,
+            "p95": 0.08670799999890733,
+            "p99": 0.10099999999874854
+          },
+          {
+            "id": "cards-OPEN_VALIDATION_B-0-V2_CANDIDATE",
+            "p50": 0.024541999999200925,
+            "p95": 0.05479200000263518,
+            "p99": 0.0692079999971611
+          },
+          {
+            "id": "cards-OPEN_VALIDATION_B-1-V2_CANDIDATE",
+            "p50": 0.03412499999831198,
+            "p95": 0.07354100000156905,
+            "p99": 0.19029200000295532
+          },
+          {
+            "id": "cards-OPEN_VALIDATION_B-2-V2_CANDIDATE",
+            "p50": 0.025584000002709217,
+            "p95": 0.07454199999847333,
+            "p99": 0.07787499999903957
+          },
+          {
+            "id": "cards-OPEN_VALIDATION_B-3-V2_CANDIDATE",
+            "p50": 0.022916999998415122,
+            "p95": 0.06774999999834108,
+            "p99": 0.07012499999837019
+          }
+        ]
+      },
+      "RISK_GATE_STATUS": "REJECTED_NOT_QUALIFIED",
+      "TRANSFER_SCORE": null,
+      "NUMERICALLY_VALID": true,
+      "ACTIVE": false,
+      "teacher": "Unqualified public-planner imitation, not optimal demonstrations or regret",
+      "curriculumDecision": {
+        "curriculumLevel": "ADVANCED",
+        "riskGateStatus": "REJECTED",
+        "advance": false,
+        "reason": "DIAGNOSE_FAILURE_BEFORE_MORE_COMPUTE"
+      }
+    },
+    {
+      "MODEL_ID": "EXPERIMENTAL_V32_FACTORY_ACTION_V2",
+      "MODEL_VERSION": 1,
+      "TRAINING_LINEAGE": "V32_TRAIN_RECTILINEAR",
+      "WEIGHT_HASH": "caebfc54ab05cfd9a3aba60c954cd89f038c5b42997b07475ba7e45c2c34e4f9",
+      "TRAINING_ENVIRONMENTS": [
+        "factory"
+      ],
+      "TRAINING_STEPS": 72,
+      "OPTIMIZER_EPOCHS": 80,
+      "CURRICULUM_LEVEL": "ADVANCED",
+      "FAILURE_CATEGORY": "CATASTROPHIC_RISK",
+      "TRAINING_LOSS": [
+        {
+          "epoch": 0,
+          "meanLoss": 3.757413758773537
+        },
+        {
+          "epoch": 10,
+          "meanLoss": 3.033176009813481
+        },
+        {
+          "epoch": 20,
+          "meanLoss": 2.4791633016403005
+        },
+        {
+          "epoch": 30,
+          "meanLoss": 2.0913629486134746
+        },
+        {
+          "epoch": 40,
+          "meanLoss": 1.8497036156819304
+        },
+        {
+          "epoch": 50,
+          "meanLoss": 1.7055116082889983
+        },
+        {
+          "epoch": 60,
+          "meanLoss": 1.614563456949648
+        },
+        {
+          "epoch": 70,
+          "meanLoss": 1.5506506222701482
+        },
+        {
+          "epoch": 79,
+          "meanLoss": 1.505331043520638
+        }
+      ],
+      "VALIDATION_SCORE": {
+        "episodes": 8,
+        "successes": 0,
+        "catastrophes": 8,
+        "successRate": 0,
+        "meanEpisodeReturn": -48.000000000000405,
+        "meanTicks": 480,
+        "meanRepeatedFailures": 0,
+        "actualChangedActions": 3840,
+        "modelInvocations": 3840,
+        "canonicalExpertInvocations": 0,
+        "computePerDecisionMean": 4.5,
+        "latencyP95MeanOfEpisodeP95Ms": 0.19237987500082454,
+        "latencyP50P95P99PerEpisode": [
+          {
+            "id": "factory-OPEN_VALIDATION_A-0-V2_CANDIDATE",
+            "p50": 0.11729200000263518,
+            "p95": 0.17262500000288128,
+            "p99": 0.587083000002167
+          },
+          {
+            "id": "factory-OPEN_VALIDATION_A-1-V2_CANDIDATE",
+            "p50": 0.1202080000002752,
+            "p95": 0.2011659999989206,
+            "p99": 0.6126670000012382
+          },
+          {
+            "id": "factory-OPEN_VALIDATION_A-2-V2_CANDIDATE",
+            "p50": 0.11208299999998417,
+            "p95": 0.16550000000279397,
+            "p99": 0.528042000001733
+          },
+          {
+            "id": "factory-OPEN_VALIDATION_A-3-V2_CANDIDATE",
+            "p50": 0.11241599999993923,
+            "p95": 0.17345800000111922,
+            "p99": 0.5081659999996191
+          },
+          {
+            "id": "factory-OPEN_VALIDATION_B-0-V2_CANDIDATE",
+            "p50": 0.13562499999898137,
+            "p95": 0.26854099999764003,
+            "p99": 0.6424579999984417
+          },
+          {
+            "id": "factory-OPEN_VALIDATION_B-1-V2_CANDIDATE",
+            "p50": 0.1288749999985157,
+            "p95": 0.1865410000027623,
+            "p99": 0.6042919999999867
+          },
+          {
+            "id": "factory-OPEN_VALIDATION_B-2-V2_CANDIDATE",
+            "p50": 0.12495899999703397,
+            "p95": 0.17683300000135205,
+            "p99": 0.643207999997685
+          },
+          {
+            "id": "factory-OPEN_VALIDATION_B-3-V2_CANDIDATE",
+            "p50": 0.12591600000450853,
+            "p95": 0.19437499999912689,
+            "p99": 0.5792919999948936
+          }
+        ]
+      },
+      "RISK_GATE_STATUS": "REJECTED_NOT_QUALIFIED",
+      "TRANSFER_SCORE": null,
+      "NUMERICALLY_VALID": true,
+      "ACTIVE": false,
+      "teacher": "Unqualified public-planner imitation, not optimal demonstrations or regret",
+      "curriculumDecision": {
+        "curriculumLevel": "ADVANCED",
+        "riskGateStatus": "REJECTED",
+        "advance": false,
+        "reason": "DIAGNOSE_FAILURE_BEFORE_MORE_COMPUTE"
+      }
+    },
+    {
+      "MODEL_ID": "EXPERIMENTAL_V32_ROGUELIKE_ACTION_V2",
+      "MODEL_VERSION": 1,
+      "TRAINING_LINEAGE": "V32_TRAIN_RECTILINEAR",
+      "WEIGHT_HASH": "0518321c291fbefc7e495adbd6c9b970d67691505ab22d20f7f665d779329012",
+      "TRAINING_ENVIRONMENTS": [
+        "roguelike"
+      ],
+      "TRAINING_STEPS": 669,
+      "OPTIMIZER_EPOCHS": 80,
+      "CURRICULUM_LEVEL": "ADVANCED",
+      "FAILURE_CATEGORY": "POOR_LONG_HORIZON_PLAN",
+      "TRAINING_LOSS": [
+        {
+          "epoch": 0,
+          "meanLoss": 2.1780206693179593
+        },
+        {
+          "epoch": 10,
+          "meanLoss": 1.8912661384588627
+        },
+        {
+          "epoch": 20,
+          "meanLoss": 1.7513785200342995
+        },
+        {
+          "epoch": 30,
+          "meanLoss": 1.6758804172607595
+        },
+        {
+          "epoch": 40,
+          "meanLoss": 1.6304903735385616
+        },
+        {
+          "epoch": 50,
+          "meanLoss": 1.600358115189986
+        },
+        {
+          "epoch": 60,
+          "meanLoss": 1.5785439988110122
+        },
+        {
+          "epoch": 70,
+          "meanLoss": 1.561570388000019
+        },
+        {
+          "epoch": 79,
+          "meanLoss": 1.5488824250524214
+        }
+      ],
+      "VALIDATION_SCORE": {
+        "episodes": 8,
+        "successes": 3,
+        "catastrophes": 0,
+        "successRate": 0.375,
+        "meanEpisodeReturn": -59.11249999999934,
+        "meanTicks": 763.875,
+        "meanRepeatedFailures": 0,
+        "actualChangedActions": 2842,
+        "modelInvocations": 6111,
+        "canonicalExpertInvocations": 0,
+        "computePerDecisionMean": 49.4014363306522,
+        "latencyP95MeanOfEpisodeP95Ms": 0.5772344999995767,
+        "latencyP50P95P99PerEpisode": [
+          {
+            "id": "roguelike-OPEN_VALIDATION_A-0-V2_CANDIDATE",
+            "p50": 0.1201669999936712,
+            "p95": 0.1852500000022701,
+            "p99": 0.2383750000008149
+          },
+          {
+            "id": "roguelike-OPEN_VALIDATION_A-1-V2_CANDIDATE",
+            "p50": 0.11704199999803677,
+            "p95": 0.1792910000003758,
+            "p99": 0.23545899999589892
+          },
+          {
+            "id": "roguelike-OPEN_VALIDATION_A-2-V2_CANDIDATE",
+            "p50": 0.20258300000568852,
+            "p95": 0.3129590000025928,
+            "p99": 0.6193750000020373
+          },
+          {
+            "id": "roguelike-OPEN_VALIDATION_A-3-V2_CANDIDATE",
+            "p50": 0.19904099999985192,
+            "p95": 0.3187499999985448,
+            "p99": 0.6299589999980526
+          },
+          {
+            "id": "roguelike-OPEN_VALIDATION_B-0-V2_CANDIDATE",
+            "p50": 0.5694159999984549,
+            "p95": 0.8792089999988093,
+            "p99": 1.086749999994936
+          },
+          {
+            "id": "roguelike-OPEN_VALIDATION_B-1-V2_CANDIDATE",
+            "p50": 0.11149999999906868,
+            "p95": 0.7294170000022859,
+            "p99": 0.9430419999989681
+          },
+          {
+            "id": "roguelike-OPEN_VALIDATION_B-2-V2_CANDIDATE",
+            "p50": 0.7442919999884907,
+            "p95": 1.089124999998603,
+            "p99": 1.4262500000040745
+          },
+          {
+            "id": "roguelike-OPEN_VALIDATION_B-3-V2_CANDIDATE",
+            "p50": 0.4877919999998994,
+            "p95": 0.9238749999931315,
+            "p99": 1.1167080000013812
+          }
+        ]
+      },
+      "RISK_GATE_STATUS": "REJECTED_NOT_QUALIFIED",
+      "TRANSFER_SCORE": null,
+      "NUMERICALLY_VALID": true,
+      "ACTIVE": false,
+      "teacher": "Unqualified public-planner imitation, not optimal demonstrations or regret",
+      "curriculumDecision": {
+        "curriculumLevel": "ADVANCED",
+        "riskGateStatus": "REJECTED",
+        "advance": false,
+        "reason": "DIAGNOSE_FAILURE_BEFORE_MORE_COMPUTE"
+      }
+    },
+    {
+      "MODEL_ID": "EXPERIMENTAL_FACTORY_RELATIONAL_ACTION_V1",
+      "MODEL_VERSION": 1,
+      "TRAINING_LINEAGE": "V32_TRAIN_RECTILINEAR",
+      "WEIGHT_HASH": "0bd04a8559c5d9ae9802e19dbd10f7ae741385b198f863287714435bdc81bf38",
+      "TRAINING_ENVIRONMENTS": [
+        "factory"
+      ],
+      "TRAINING_STEPS": 143,
+      "OPTIMIZER_EPOCHS": 80,
+      "CURRICULUM_LEVEL": "ADVANCED_EXPERT_EXTREME_DIAGNOSTIC",
+      "FAILURE_CATEGORY": "INVALID_NUMERIC_FEATURES",
+      "TRAINING_LOSS": [
+        {
+          "epoch": 0,
+          "meanLoss": null
+        },
+        {
+          "epoch": 10,
+          "meanLoss": null
+        },
+        {
+          "epoch": 20,
+          "meanLoss": null
+        },
+        {
+          "epoch": 30,
+          "meanLoss": null
+        },
+        {
+          "epoch": 40,
+          "meanLoss": null
+        },
+        {
+          "epoch": 50,
+          "meanLoss": null
+        },
+        {
+          "epoch": 60,
+          "meanLoss": null
+        },
+        {
+          "epoch": 70,
+          "meanLoss": null
+        },
+        {
+          "epoch": 79,
+          "meanLoss": null
+        }
+      ],
+      "VALIDATION_SCORE": {
+        "episodes": 8,
+        "successes": 0,
+        "catastrophes": 8,
+        "successRate": 0,
+        "meanEpisodeReturn": -54.75000000000047,
+        "meanTicks": 547.5,
+        "meanRepeatedFailures": 0,
+        "actualChangedActions": 4380,
+        "modelInvocations": 4380,
+        "canonicalExpertInvocations": 0,
+        "computePerDecisionMean": 10.125,
+        "latencyP95MeanOfEpisodeP95Ms": 0.5884688749999896,
+        "latencyP50P95P99PerEpisode": [
+          {
+            "id": "factory-OPEN_VALIDATION_A-0-V2_CANDIDATE",
+            "p50": 0.135834000000159,
+            "p95": 0.17466700000022684,
+            "p99": 0.2075830000003407
+          },
+          {
+            "id": "factory-OPEN_VALIDATION_A-1-V2_CANDIDATE",
+            "p50": 0.29487500000050204,
+            "p95": 0.4024170000002414,
+            "p99": 0.6937079999997877
+          },
+          {
+            "id": "factory-OPEN_VALIDATION_A-2-V2_CANDIDATE",
+            "p50": 0.9434160000000702,
+            "p95": 1.3195419999992737,
+            "p99": 1.4902920000004087
+          },
+          {
+            "id": "factory-OPEN_VALIDATION_A-3-V2_CANDIDATE",
+            "p50": 0.1324590000003809,
+            "p95": 0.43970900000203983,
+            "p99": 0.48870899999747053
+          },
+          {
+            "id": "factory-OPEN_VALIDATION_B-0-V2_CANDIDATE",
+            "p50": 0.16941699999733828,
+            "p95": 0.4770410000019183,
+            "p99": 0.6364170000015292
+          },
+          {
+            "id": "factory-OPEN_VALIDATION_B-1-V2_CANDIDATE",
+            "p50": 0.3438339999993332,
+            "p95": 0.4251250000015716,
+            "p99": 0.7097909999974945
+          },
+          {
+            "id": "factory-OPEN_VALIDATION_B-2-V2_CANDIDATE",
+            "p50": 1.086457999997947,
+            "p95": 1.2666249999965657,
+            "p99": 1.5177919999987353
+          },
+          {
+            "id": "factory-OPEN_VALIDATION_B-3-V2_CANDIDATE",
+            "p50": 0.1468749999985448,
+            "p95": 0.20262499999807915,
+            "p99": 0.47504200000548735
+          }
+        ]
+      },
+      "RISK_GATE_STATUS": "REJECTED_NOT_QUALIFIED",
+      "TRANSFER_SCORE": null,
+      "NUMERICALLY_VALID": false,
+      "ACTIVE": false,
+      "teacher": "Unqualified public-planner imitation, not optimal demonstrations or regret",
+      "curriculumDecision": {
+        "curriculumLevel": "ADVANCED",
+        "riskGateStatus": "REJECTED",
+        "advance": false,
+        "reason": "DIAGNOSE_FAILURE_BEFORE_MORE_COMPUTE"
+      }
+    }
+  ],
+  "managerImplemented": true,
+  "automatedAdaptiveTrainingLoop": false,
+  "advancedCandidates": 0,
+  "broaderTrainingGate": "STOPPED_AFTER_PRIORITY_EXPERIMENTS_FAILED",
+  "trainDevOnly": true,
+  "validationUpdatesWeights": false
+}

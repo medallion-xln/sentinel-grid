@@ -1,0 +1,706 @@
+{
+ "note": "PUBLIC request only: observation, legal menu, canonical advisory evidence. From an SK1 EXPLORATION (development) class; carries no identity.",
+ "state": {
+  "observationContract": {
+   "id": "STAGE3H_PUBLIC_DECISION_INFORMATION_V1",
+   "version": "HW1_PUBLIC_PROJECTION_V1"
+  },
+  "projection": {
+   "version": "HW1_PUBLIC_PROJECTION_V1",
+   "tick": 0,
+   "grid": {
+    "width": 10,
+    "height": 10
+   },
+   "actor": {
+    "energy": 40,
+    "health": 100,
+    "carried": 0,
+    "ticksRemaining": 17,
+    "terrain": "TRAVERSABLE",
+    "borderDistance": 0
+   },
+   "history": {
+    "n": 1,
+    "channels": [
+     [
+      "primary",
+      88,
+      88,
+      88
+     ]
+    ]
+   },
+   "terrainCounts": {
+    "ENVIRONMENTAL_HAZARD": 2,
+    "TRAVERSABLE": 98
+   },
+   "nodes": [
+    {
+     "kind": "CIVILIAN",
+     "rel": {
+      "dx": -6,
+      "dy": 2
+     },
+     "dist": {
+      "manhattan": 8,
+      "path": 8
+     },
+     "dir": {
+      "sx": -1,
+      "sy": 1
+     },
+     "flags": {
+      "hostile": false,
+      "critical": false,
+      "resource": false,
+      "objective": false,
+      "inService": true,
+      "threatened": false,
+      "hub": false
+     },
+     "rels": [],
+     "obj": []
+    },
+    {
+     "kind": "HOSTILE",
+     "rel": {
+      "dx": -8,
+      "dy": -1
+     },
+     "dist": {
+      "manhattan": 9,
+      "path": 9
+     },
+     "dir": {
+      "sx": -1,
+      "sy": -1
+     },
+     "flags": {
+      "hostile": true,
+      "critical": false,
+      "resource": false,
+      "objective": false,
+      "inService": true,
+      "threatened": false,
+      "hub": false
+     },
+     "rels": [
+      {
+       "kind": "threatens",
+       "role": "FROM",
+       "to": 5
+      }
+     ],
+     "obj": []
+    },
+    {
+     "kind": "HOSTILE",
+     "rel": {
+      "dx": -9,
+      "dy": -3
+     },
+     "dist": {
+      "manhattan": 12,
+      "path": 12
+     },
+     "dir": {
+      "sx": -1,
+      "sy": -1
+     },
+     "flags": {
+      "hostile": true,
+      "critical": false,
+      "resource": false,
+      "objective": false,
+      "inService": true,
+      "threatened": false,
+      "hub": false
+     },
+     "rels": [
+      {
+       "kind": "threatens",
+       "role": "FROM",
+       "to": 11
+      }
+     ],
+     "obj": []
+    },
+    {
+     "kind": "RESOURCE",
+     "rel": {
+      "dx": 0,
+      "dy": -1
+     },
+     "dist": {
+      "manhattan": 1,
+      "path": 1
+     },
+     "dir": {
+      "sx": 0,
+      "sy": -1
+     },
+     "flags": {
+      "hostile": false,
+      "critical": false,
+      "resource": true,
+      "objective": false,
+      "inService": true,
+      "threatened": false,
+      "hub": false
+     },
+     "rels": [],
+     "obj": []
+    },
+    {
+     "kind": "POWER_SOURCE",
+     "rel": {
+      "dx": -1,
+      "dy": 1
+     },
+     "dist": {
+      "manhattan": 2,
+      "path": 2
+     },
+     "dir": {
+      "sx": -1,
+      "sy": 1
+     },
+     "flags": {
+      "hostile": false,
+      "critical": false,
+      "resource": false,
+      "objective": false,
+      "inService": true,
+      "threatened": false,
+      "hub": false
+     },
+     "rels": [
+      {
+       "kind": "depends",
+       "role": "FROM",
+       "to": 5
+      },
+      {
+       "kind": "depends",
+       "role": "FROM",
+       "to": 6
+      },
+      {
+       "kind": "depends",
+       "role": "FROM",
+       "to": 7
+      },
+      {
+       "kind": "depends",
+       "role": "FROM",
+       "to": 8
+      },
+      {
+       "kind": "depends",
+       "role": "FROM",
+       "to": 9
+      },
+      {
+       "kind": "depends",
+       "role": "FROM",
+       "to": 10
+      },
+      {
+       "kind": "depends",
+       "role": "FROM",
+       "to": 11
+      }
+     ],
+     "obj": []
+    },
+    {
+     "kind": "INFRASTRUCTURE",
+     "rel": {
+      "dx": -3,
+      "dy": -5
+     },
+     "dist": {
+      "manhattan": 8,
+      "path": 8
+     },
+     "dir": {
+      "sx": -1,
+      "sy": -1
+     },
+     "flags": {
+      "hostile": false,
+      "critical": true,
+      "resource": false,
+      "objective": true,
+      "inService": true,
+      "threatened": true,
+      "hub": false
+     },
+     "rels": [
+      {
+       "kind": "depends",
+       "role": "TO",
+       "to": 4
+      },
+      {
+       "kind": "threatens",
+       "role": "TO",
+       "to": 1
+      }
+     ],
+     "obj": [
+      [
+       6,
+       0
+      ]
+     ]
+    },
+    {
+     "kind": "INFRASTRUCTURE",
+     "rel": {
+      "dx": -7,
+      "dy": 1
+     },
+     "dist": {
+      "manhattan": 8,
+      "path": 8
+     },
+     "dir": {
+      "sx": -1,
+      "sy": 1
+     },
+     "flags": {
+      "hostile": false,
+      "critical": false,
+      "resource": false,
+      "objective": false,
+      "inService": true,
+      "threatened": false,
+      "hub": false
+     },
+     "rels": [
+      {
+       "kind": "depends",
+       "role": "TO",
+       "to": 4
+      }
+     ],
+     "obj": []
+    },
+    {
+     "kind": "REPAIR_TARGET",
+     "rel": {
+      "dx": -2,
+      "dy": -3
+     },
+     "dist": {
+      "manhattan": 5,
+      "path": 5
+     },
+     "dir": {
+      "sx": -1,
+      "sy": -1
+     },
+     "flags": {
+      "hostile": false,
+      "critical": false,
+      "resource": false,
+      "objective": false,
+      "inService": false,
+      "threatened": false,
+      "hub": true
+     },
+     "rels": [
+      {
+       "kind": "depends",
+       "role": "TO",
+       "to": 4
+      },
+      {
+       "kind": "depends",
+       "role": "TO",
+       "to": 9
+      }
+     ],
+     "obj": []
+    },
+    {
+     "kind": "INFRASTRUCTURE",
+     "rel": {
+      "dx": -2,
+      "dy": 2
+     },
+     "dist": {
+      "manhattan": 4,
+      "path": 4
+     },
+     "dir": {
+      "sx": -1,
+      "sy": 1
+     },
+     "flags": {
+      "hostile": false,
+      "critical": false,
+      "resource": false,
+      "objective": false,
+      "inService": true,
+      "threatened": false,
+      "hub": false
+     },
+     "rels": [
+      {
+       "kind": "depends",
+       "role": "TO",
+       "to": 4
+      }
+     ],
+     "obj": []
+    },
+    {
+     "kind": "DEPOT",
+     "rel": {
+      "dx": -6,
+      "dy": 3
+     },
+     "dist": {
+      "manhattan": 9,
+      "path": 9
+     },
+     "dir": {
+      "sx": -1,
+      "sy": 1
+     },
+     "flags": {
+      "hostile": false,
+      "critical": true,
+      "resource": false,
+      "objective": true,
+      "inService": true,
+      "threatened": false,
+      "hub": false
+     },
+     "rels": [
+      {
+       "kind": "depends",
+       "role": "FROM",
+       "to": 7
+      },
+      {
+       "kind": "depends",
+       "role": "TO",
+       "to": 4
+      }
+     ],
+     "obj": [
+      [
+       9,
+       0
+      ]
+     ]
+    },
+    {
+     "kind": "REPAIR_TARGET",
+     "rel": {
+      "dx": -5,
+      "dy": -2
+     },
+     "dist": {
+      "manhattan": 7,
+      "path": 7
+     },
+     "dir": {
+      "sx": -1,
+      "sy": -1
+     },
+     "flags": {
+      "hostile": false,
+      "critical": false,
+      "resource": false,
+      "objective": false,
+      "inService": true,
+      "threatened": false,
+      "hub": false
+     },
+     "rels": [
+      {
+       "kind": "depends",
+       "role": "TO",
+       "to": 4
+      }
+     ],
+     "obj": []
+    },
+    {
+     "kind": "POWER_SOURCE",
+     "rel": {
+      "dx": -1,
+      "dy": 0
+     },
+     "dist": {
+      "manhattan": 1,
+      "path": 1
+     },
+     "dir": {
+      "sx": -1,
+      "sy": 0
+     },
+     "flags": {
+      "hostile": false,
+      "critical": false,
+      "resource": false,
+      "objective": false,
+      "inService": true,
+      "threatened": true,
+      "hub": false
+     },
+     "rels": [
+      {
+       "kind": "depends",
+       "role": "TO",
+       "to": 4
+      },
+      {
+       "kind": "threatens",
+       "role": "TO",
+       "to": 2
+      }
+     ],
+     "obj": []
+    },
+    {
+     "kind": "RESOURCE",
+     "rel": {
+      "dx": 0,
+      "dy": -6
+     },
+     "dist": {
+      "manhattan": 6,
+      "path": 6
+     },
+     "dir": {
+      "sx": 0,
+      "sy": -1
+     },
+     "flags": {
+      "hostile": false,
+      "critical": false,
+      "resource": true,
+      "objective": false,
+      "inService": true,
+      "threatened": false,
+      "hub": false
+     },
+     "rels": [],
+     "obj": []
+    }
+   ],
+   "frame": "R0"
+  }
+ },
+ "legalActions": [
+  {
+   "type": "PROTECT",
+   "params": {},
+   "target": 3,
+   "dependent": null,
+   "disp": null,
+   "toRel": null,
+   "cost": 1,
+   "pre": [
+    "ENERGY_AT_LEAST_COST:SATISFIED_OBSERVED",
+    "TARGET_IN_RANGE_1:SATISFIED_OBSERVED",
+    "TARGET_NOT_HOSTILE:SATISFIED_OBSERVED",
+    "TARGET_NOT_PROTECTED:IMPLIED_BY_LEGALITY"
+   ],
+   "eff": [
+    "ENERGY_DELTA:E1",
+    "TARGET_PROTECTED:E1",
+    "TICK_ADVANCE:E1"
+   ],
+   "energyAfter": 39,
+   "destTerrain": null
+  },
+  {
+   "type": "MOVE",
+   "params": {
+    "direction": "SOUTH"
+   },
+   "target": null,
+   "dependent": null,
+   "disp": {
+    "dx": 0,
+    "dy": 1
+   },
+   "toRel": null,
+   "cost": 0,
+   "pre": [
+    "DESTINATION_IN_BOUNDS:SATISFIED_OBSERVED",
+    "DESTINATION_TRAVERSABLE:SATISFIED_OBSERVED",
+    "DESTINATION_UNBLOCKED:SATISFIED_OBSERVED",
+    "NOT_TERMINAL:IMPLIED_BY_LEGALITY"
+   ],
+   "eff": [
+    "ACTOR_DISPLACEMENT:E1",
+    "ENERGY_DELTA:E1",
+    "TICK_ADVANCE:E1"
+   ],
+   "energyAfter": 40,
+   "destTerrain": "TRAVERSABLE"
+  },
+  {
+   "type": "MOVE",
+   "params": {
+    "direction": "WEST"
+   },
+   "target": null,
+   "dependent": null,
+   "disp": {
+    "dx": -1,
+    "dy": 0
+   },
+   "toRel": null,
+   "cost": 0,
+   "pre": [
+    "DESTINATION_IN_BOUNDS:SATISFIED_OBSERVED",
+    "DESTINATION_TRAVERSABLE:SATISFIED_OBSERVED",
+    "DESTINATION_UNBLOCKED:SATISFIED_OBSERVED",
+    "NOT_TERMINAL:IMPLIED_BY_LEGALITY"
+   ],
+   "eff": [
+    "ACTOR_DISPLACEMENT:E1",
+    "ENERGY_DELTA:E1",
+    "TICK_ADVANCE:E1"
+   ],
+   "energyAfter": 40,
+   "destTerrain": "TRAVERSABLE"
+  },
+  {
+   "type": "WAIT",
+   "params": {},
+   "target": null,
+   "dependent": null,
+   "disp": null,
+   "toRel": null,
+   "cost": 0,
+   "pre": [
+    "NOT_TERMINAL:IMPLIED_BY_LEGALITY"
+   ],
+   "eff": [
+    "TICK_ADVANCE:E1"
+   ],
+   "energyAfter": null,
+   "destTerrain": null
+  },
+  {
+   "type": "MOVE",
+   "params": {
+    "direction": "NORTH"
+   },
+   "target": null,
+   "dependent": null,
+   "disp": {
+    "dx": 0,
+    "dy": -1
+   },
+   "toRel": null,
+   "cost": 0,
+   "pre": [
+    "DESTINATION_IN_BOUNDS:SATISFIED_OBSERVED",
+    "DESTINATION_TRAVERSABLE:SATISFIED_OBSERVED",
+    "DESTINATION_UNBLOCKED:SATISFIED_OBSERVED",
+    "NOT_TERMINAL:IMPLIED_BY_LEGALITY"
+   ],
+   "eff": [
+    "ACTOR_DISPLACEMENT:E1",
+    "ENERGY_DELTA:E1",
+    "TICK_ADVANCE:E1"
+   ],
+   "energyAfter": 40,
+   "destTerrain": "TRAVERSABLE"
+  },
+  {
+   "type": "RETREAT",
+   "params": {},
+   "target": null,
+   "dependent": null,
+   "disp": {
+    "dx": 0,
+    "dy": 1
+   },
+   "toRel": {
+    "dx": 0,
+    "dy": 1
+   },
+   "cost": 0,
+   "pre": [
+    "DESTINATION_ADJACENT:SATISFIED_OBSERVED",
+    "DESTINATION_TRAVERSABLE:SATISFIED_OBSERVED",
+    "DESTINATION_UNBLOCKED:SATISFIED_OBSERVED",
+    "LIVE_HOSTILE_PRESENT:SATISFIED_OBSERVED",
+    "STEP_AWAY_FROM_NEAREST_HOSTILE:SATISFIED_OBSERVED"
+   ],
+   "eff": [
+    "ACTOR_DISPLACEMENT:E1",
+    "ENERGY_DELTA:E1",
+    "TICK_ADVANCE:E1"
+   ],
+   "energyAfter": 40,
+   "destTerrain": "TRAVERSABLE"
+  },
+  {
+   "type": "PROTECT",
+   "params": {},
+   "target": 11,
+   "dependent": null,
+   "disp": null,
+   "toRel": null,
+   "cost": 1,
+   "pre": [
+    "ENERGY_AT_LEAST_COST:SATISFIED_OBSERVED",
+    "TARGET_IN_RANGE_1:SATISFIED_OBSERVED",
+    "TARGET_NOT_HOSTILE:SATISFIED_OBSERVED",
+    "TARGET_NOT_PROTECTED:IMPLIED_BY_LEGALITY"
+   ],
+   "eff": [
+    "ENERGY_DELTA:E1",
+    "TARGET_PROTECTED:E1",
+    "TICK_ADVANCE:E1"
+   ],
+   "energyAfter": 39,
+   "destTerrain": null
+  }
+ ],
+ "advisoryEvidence": {
+  "contract": "SK1_ADVISORY_EVIDENCE_V1",
+  "experts": {
+   "S0": {
+    "kind": "PUBLIC_SCORE",
+    "scores": [
+     -0.051327248,
+     0.974946378,
+     2.643555981,
+     -2.825733516,
+     4.201987147,
+     -2.842046984,
+     1.18426349
+    ],
+    "topSet": [
+     4
+    ]
+   },
+   "NEXUS": {
+    "kind": "RECOMMENDATION_PROJECTION",
+    "abstain": false,
+    "recommendedType": "PROTECT",
+    "rationaleCodes": [
+     "NEXUS_CRITICAL_DEPENDENCY",
+     "NEXUS_ISOLATED_ENTITY",
+     "NEXUS_UNCOVERED_THREAT",
+     "NEXUS_UNSUPPORTED_THREAT"
+    ],
+    "reason": "THREAT_DRIVEN_PREFERENCE"
+   }
+  }
+ }
+}

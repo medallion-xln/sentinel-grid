@@ -1,0 +1,2765 @@
+{
+ "schema": "STAGE3H_SAFETY_CLOSURE_ALTERNATIVE_ACTIONS_V1",
+ "authority": "R0",
+ "classes": 10,
+ "validClasses": 9,
+ "validPairsWithCommonSafeOutsideArms": 9,
+ "validClassesWithClassWideCommonSafeOutsideArms": 9,
+ "validClassesWithNoCommonSafeAction": 0,
+ "semanticsStableUnderIdentityRelabelling": true,
+ "alternativesIdentifiableWithoutHandles": true,
+ "outcome": "COMMON_SAFE_ACTIONS_OBSERVED (on 9 tested witness classes only; not a claim that any wider policy is safe)",
+ "perClass": [
+  {
+   "set": "FRESH_EXPLORE",
+   "idx": 2283,
+   "cell": "bridge/defended/reach_target/H2/3",
+   "validWitness": true,
+   "commonLegalMenu": [
+    {
+     "index": 0,
+     "type": "MOVE",
+     "semanticKeyUniqueInMenu": true,
+     "semanticKey": {
+      "type": "MOVE",
+      "displacement": {
+       "dx": -1,
+       "dy": 0
+      },
+      "target": null,
+      "parameters": {
+       "direction": "WEST"
+      }
+     }
+    },
+    {
+     "index": 1,
+     "type": "PROTECT",
+     "semanticKeyUniqueInMenu": true,
+     "semanticKey": {
+      "type": "PROTECT",
+      "displacement": null,
+      "target": {
+       "kind": "RESOURCE",
+       "rel": {
+        "dx": 1,
+        "dy": 0
+       },
+       "flags": [
+        false,
+        false,
+        false,
+        false,
+        true,
+        false
+       ],
+       "relationships": []
+      },
+      "parameters": null
+     }
+    },
+    {
+     "index": 2,
+     "type": "REINFORCE",
+     "semanticKeyUniqueInMenu": true,
+     "semanticKey": {
+      "type": "REINFORCE",
+      "displacement": null,
+      "target": {
+       "kind": "INFRASTRUCTURE",
+       "rel": {
+        "dx": 0,
+        "dy": 1
+       },
+       "flags": [
+        false,
+        false,
+        false,
+        false,
+        true,
+        false
+       ],
+       "relationships": [
+        [
+         "supports",
+         "FROM"
+        ],
+        [
+         "supports",
+         "TO"
+        ]
+       ]
+      },
+      "parameters": null
+     }
+    },
+    {
+     "index": 3,
+     "type": "PROTECT",
+     "semanticKeyUniqueInMenu": true,
+     "semanticKey": {
+      "type": "PROTECT",
+      "displacement": null,
+      "target": {
+       "kind": "INFRASTRUCTURE",
+       "rel": {
+        "dx": 0,
+        "dy": 1
+       },
+       "flags": [
+        false,
+        false,
+        false,
+        false,
+        true,
+        false
+       ],
+       "relationships": [
+        [
+         "supports",
+         "FROM"
+        ],
+        [
+         "supports",
+         "TO"
+        ]
+       ]
+      },
+      "parameters": null
+     }
+    },
+    {
+     "index": 4,
+     "type": "MOVE",
+     "semanticKeyUniqueInMenu": true,
+     "semanticKey": {
+      "type": "MOVE",
+      "displacement": {
+       "dx": 1,
+       "dy": 0
+      },
+      "target": null,
+      "parameters": {
+       "direction": "EAST"
+      }
+     }
+    },
+    {
+     "index": 5,
+     "type": "WAIT",
+     "semanticKeyUniqueInMenu": true,
+     "semanticKey": {
+      "type": "WAIT",
+      "displacement": null,
+      "target": null,
+      "parameters": null
+     }
+    },
+    {
+     "index": 6,
+     "type": "MOVE",
+     "semanticKeyUniqueInMenu": true,
+     "semanticKey": {
+      "type": "MOVE",
+      "displacement": {
+       "dx": 0,
+       "dy": 1
+      },
+      "target": null,
+      "parameters": {
+       "direction": "SOUTH"
+      }
+     }
+    },
+    {
+     "index": 7,
+     "type": "RETREAT",
+     "semanticKeyUniqueInMenu": true,
+     "semanticKey": {
+      "type": "RETREAT",
+      "displacement": {
+       "dx": -1,
+       "dy": 0
+      },
+      "target": null,
+      "parameters": {
+       "toX": 0,
+       "toY": 0
+      }
+     }
+    },
+    {
+     "index": 8,
+     "type": "REPAIR",
+     "semanticKeyUniqueInMenu": true,
+     "semanticKey": {
+      "type": "REPAIR",
+      "displacement": null,
+      "target": {
+       "kind": "INFRASTRUCTURE",
+       "rel": {
+        "dx": 0,
+        "dy": 1
+       },
+       "flags": [
+        false,
+        false,
+        false,
+        false,
+        true,
+        false
+       ],
+       "relationships": [
+        [
+         "supports",
+         "FROM"
+        ],
+        [
+         "supports",
+         "TO"
+        ]
+       ]
+      },
+      "parameters": null
+     }
+    }
+   ],
+   "semanticsStableUnderIdentityRelabelling": true,
+   "arms": {
+    "B": [
+     4
+    ],
+    "N": [
+     2
+    ]
+   },
+   "safeSets": {
+    "w1": [
+     4,
+     6
+    ],
+    "w2": [
+     0,
+     1,
+     2,
+     3,
+     5,
+     6,
+     7,
+     8
+    ]
+   },
+   "pairCommonSafe": [
+    6
+   ],
+   "pairCommonSafeOutsideArms": [
+    6
+   ],
+   "classWide": {
+    "testedEquivalentWorlds": 83,
+    "commonSafe": [
+     6
+    ],
+    "commonSafeOutsideArms": [
+     6
+    ],
+    "source": "evidence/assumption-check.json (same deterministic family)"
+   },
+   "alternativeIdentifiableWithoutHandles": true,
+   "safetyLawfullyComputable": "NOT_UNDER_CURRENT_CONTRACT: the action is non-catastrophic in every tested equivalent world, so on the tested family its safety does not depend on the hidden state; but establishing that requires native rollouts over the hidden-state support, and the decision contract forbids simulator and evaluator access (publicSimulatorCalls 0). Offline discovery is not a deployable safety policy."
+  },
+  {
+   "set": "FRESH_CHECK",
+   "idx": 9055,
+   "cell": "star/defended/supply_and_defend/H2/3",
+   "validWitness": true,
+   "commonLegalMenu": [
+    {
+     "index": 0,
+     "type": "RETREAT",
+     "semanticKeyUniqueInMenu": true,
+     "semanticKey": {
+      "type": "RETREAT",
+      "displacement": {
+       "dx": -1,
+       "dy": 0
+      },
+      "target": null,
+      "parameters": {
+       "toX": 5,
+       "toY": 12
+      }
+     }
+    },
+    {
+     "index": 1,
+     "type": "MOVE",
+     "semanticKeyUniqueInMenu": true,
+     "semanticKey": {
+      "type": "MOVE",
+      "displacement": {
+       "dx": 1,
+       "dy": 0
+      },
+      "target": null,
+      "parameters": {
+       "direction": "EAST"
+      }
+     }
+    },
+    {
+     "index": 2,
+     "type": "PROTECT",
+     "semanticKeyUniqueInMenu": true,
+     "semanticKey": {
+      "type": "PROTECT",
+      "displacement": null,
+      "target": {
+       "kind": "RESOURCE",
+       "rel": {
+        "dx": -1,
+        "dy": 0
+       },
+       "flags": [
+        false,
+        false,
+        false,
+        false,
+        true,
+        false
+       ],
+       "relationships": []
+      },
+      "parameters": null
+     }
+    },
+    {
+     "index": 3,
+     "type": "REINFORCE",
+     "semanticKeyUniqueInMenu": true,
+     "semanticKey": {
+      "type": "REINFORCE",
+      "displacement": null,
+      "target": {
+       "kind": "INFRASTRUCTURE",
+       "rel": {
+        "dx": 0,
+        "dy": -1
+       },
+       "flags": [
+        false,
+        false,
+        false,
+        false,
+        true,
+        false
+       ],
+       "relationships": [
+        [
+         "depends",
+         "TO"
+        ]
+       ]
+      },
+      "parameters": null
+     }
+    },
+    {
+     "index": 4,
+     "type": "PROTECT",
+     "semanticKeyUniqueInMenu": true,
+     "semanticKey": {
+      "type": "PROTECT",
+      "displacement": null,
+      "target": {
+       "kind": "INFRASTRUCTURE",
+       "rel": {
+        "dx": 0,
+        "dy": -1
+       },
+       "flags": [
+        false,
+        false,
+        false,
+        false,
+        true,
+        false
+       ],
+       "relationships": [
+        [
+         "depends",
+         "TO"
+        ]
+       ]
+      },
+      "parameters": null
+     }
+    },
+    {
+     "index": 5,
+     "type": "MOVE",
+     "semanticKeyUniqueInMenu": true,
+     "semanticKey": {
+      "type": "MOVE",
+      "displacement": {
+       "dx": 0,
+       "dy": -1
+      },
+      "target": null,
+      "parameters": {
+       "direction": "NORTH"
+      }
+     }
+    },
+    {
+     "index": 6,
+     "type": "MOVE",
+     "semanticKeyUniqueInMenu": true,
+     "semanticKey": {
+      "type": "MOVE",
+      "displacement": {
+       "dx": -1,
+       "dy": 0
+      },
+      "target": null,
+      "parameters": {
+       "direction": "WEST"
+      }
+     }
+    },
+    {
+     "index": 7,
+     "type": "WAIT",
+     "semanticKeyUniqueInMenu": true,
+     "semanticKey": {
+      "type": "WAIT",
+      "displacement": null,
+      "target": null,
+      "parameters": null
+     }
+    },
+    {
+     "index": 8,
+     "type": "MOVE",
+     "semanticKeyUniqueInMenu": true,
+     "semanticKey": {
+      "type": "MOVE",
+      "displacement": {
+       "dx": 0,
+       "dy": 1
+      },
+      "target": null,
+      "parameters": {
+       "direction": "SOUTH"
+      }
+     }
+    },
+    {
+     "index": 9,
+     "type": "REPAIR",
+     "semanticKeyUniqueInMenu": true,
+     "semanticKey": {
+      "type": "REPAIR",
+      "displacement": null,
+      "target": {
+       "kind": "INFRASTRUCTURE",
+       "rel": {
+        "dx": 0,
+        "dy": -1
+       },
+       "flags": [
+        false,
+        false,
+        false,
+        false,
+        true,
+        false
+       ],
+       "relationships": [
+        [
+         "depends",
+         "TO"
+        ]
+       ]
+      },
+      "parameters": null
+     }
+    }
+   ],
+   "semanticsStableUnderIdentityRelabelling": true,
+   "arms": {
+    "B": [
+     6
+    ],
+    "N": [
+     3
+    ]
+   },
+   "safeSets": {
+    "w1": [
+     0,
+     5,
+     6
+    ],
+    "w2": [
+     1,
+     2,
+     3,
+     4,
+     5,
+     7,
+     8,
+     9
+    ]
+   },
+   "pairCommonSafe": [
+    5
+   ],
+   "pairCommonSafeOutsideArms": [
+    5
+   ],
+   "classWide": {
+    "testedEquivalentWorlds": 89,
+    "commonSafe": [
+     5
+    ],
+    "commonSafeOutsideArms": [
+     5
+    ],
+    "source": "evidence/assumption-check.json (same deterministic family)"
+   },
+   "alternativeIdentifiableWithoutHandles": true,
+   "safetyLawfullyComputable": "NOT_UNDER_CURRENT_CONTRACT: the action is non-catastrophic in every tested equivalent world, so on the tested family its safety does not depend on the hidden state; but establishing that requires native rollouts over the hidden-state support, and the decision contract forbids simulator and evaluator access (publicSimulatorCalls 0). Offline discovery is not a deployable safety policy."
+  },
+  {
+   "set": "FRESH_EXPLORE",
+   "idx": 9839,
+   "cell": "bridge/defended/restore_and_conserve/H2/1",
+   "validWitness": true,
+   "commonLegalMenu": [
+    {
+     "index": 0,
+     "type": "RETREAT",
+     "semanticKeyUniqueInMenu": true,
+     "semanticKey": {
+      "type": "RETREAT",
+      "displacement": {
+       "dx": 0,
+       "dy": -1
+      },
+      "target": null,
+      "parameters": {
+       "toX": 7,
+       "toY": 3
+      }
+     }
+    },
+    {
+     "index": 1,
+     "type": "MOVE",
+     "semanticKeyUniqueInMenu": true,
+     "semanticKey": {
+      "type": "MOVE",
+      "displacement": {
+       "dx": -1,
+       "dy": 0
+      },
+      "target": null,
+      "parameters": {
+       "direction": "WEST"
+      }
+     }
+    },
+    {
+     "index": 2,
+     "type": "PROTECT",
+     "semanticKeyUniqueInMenu": true,
+     "semanticKey": {
+      "type": "PROTECT",
+      "displacement": null,
+      "target": {
+       "kind": "RESOURCE",
+       "rel": {
+        "dx": 0,
+        "dy": 1
+       },
+       "flags": [
+        false,
+        false,
+        false,
+        false,
+        true,
+        false
+       ],
+       "relationships": []
+      },
+      "parameters": null
+     }
+    },
+    {
+     "index": 3,
+     "type": "REINFORCE",
+     "semanticKeyUniqueInMenu": true,
+     "semanticKey": {
+      "type": "REINFORCE",
+      "displacement": null,
+      "target": {
+       "kind": "INFRASTRUCTURE",
+       "rel": {
+        "dx": 0,
+        "dy": -1
+       },
+       "flags": [
+        false,
+        false,
+        false,
+        false,
+        true,
+        false
+       ],
+       "relationships": [
+        [
+         "depends",
+         "TO"
+        ],
+        [
+         "supports",
+         "FROM"
+        ]
+       ]
+      },
+      "parameters": null
+     }
+    },
+    {
+     "index": 4,
+     "type": "PROTECT",
+     "semanticKeyUniqueInMenu": true,
+     "semanticKey": {
+      "type": "PROTECT",
+      "displacement": null,
+      "target": {
+       "kind": "INFRASTRUCTURE",
+       "rel": {
+        "dx": 0,
+        "dy": -1
+       },
+       "flags": [
+        false,
+        false,
+        false,
+        false,
+        true,
+        false
+       ],
+       "relationships": [
+        [
+         "depends",
+         "TO"
+        ],
+        [
+         "supports",
+         "FROM"
+        ]
+       ]
+      },
+      "parameters": null
+     }
+    },
+    {
+     "index": 5,
+     "type": "MOVE",
+     "semanticKeyUniqueInMenu": true,
+     "semanticKey": {
+      "type": "MOVE",
+      "displacement": {
+       "dx": 0,
+       "dy": -1
+      },
+      "target": null,
+      "parameters": {
+       "direction": "NORTH"
+      }
+     }
+    },
+    {
+     "index": 6,
+     "type": "MOVE",
+     "semanticKeyUniqueInMenu": true,
+     "semanticKey": {
+      "type": "MOVE",
+      "displacement": {
+       "dx": 1,
+       "dy": 0
+      },
+      "target": null,
+      "parameters": {
+       "direction": "EAST"
+      }
+     }
+    },
+    {
+     "index": 7,
+     "type": "WAIT",
+     "semanticKeyUniqueInMenu": true,
+     "semanticKey": {
+      "type": "WAIT",
+      "displacement": null,
+      "target": null,
+      "parameters": null
+     }
+    },
+    {
+     "index": 8,
+     "type": "MOVE",
+     "semanticKeyUniqueInMenu": true,
+     "semanticKey": {
+      "type": "MOVE",
+      "displacement": {
+       "dx": 0,
+       "dy": 1
+      },
+      "target": null,
+      "parameters": {
+       "direction": "SOUTH"
+      }
+     }
+    },
+    {
+     "index": 9,
+     "type": "REPAIR",
+     "semanticKeyUniqueInMenu": true,
+     "semanticKey": {
+      "type": "REPAIR",
+      "displacement": null,
+      "target": {
+       "kind": "INFRASTRUCTURE",
+       "rel": {
+        "dx": 0,
+        "dy": -1
+       },
+       "flags": [
+        false,
+        false,
+        false,
+        false,
+        true,
+        false
+       ],
+       "relationships": [
+        [
+         "depends",
+         "TO"
+        ],
+        [
+         "supports",
+         "FROM"
+        ]
+       ]
+      },
+      "parameters": null
+     }
+    }
+   ],
+   "semanticsStableUnderIdentityRelabelling": true,
+   "arms": {
+    "B": [
+     8
+    ],
+    "N": [
+     3
+    ]
+   },
+   "safeSets": {
+    "w1": [
+     0,
+     1,
+     5,
+     8
+    ],
+    "w2": [
+     0,
+     1,
+     2,
+     3,
+     4,
+     5,
+     6,
+     7,
+     9
+    ]
+   },
+   "pairCommonSafe": [
+    0,
+    1,
+    5
+   ],
+   "pairCommonSafeOutsideArms": [
+    0,
+    1,
+    5
+   ],
+   "classWide": {
+    "testedEquivalentWorlds": 65,
+    "commonSafe": [
+     0,
+     5
+    ],
+    "commonSafeOutsideArms": [
+     0,
+     5
+    ],
+    "source": "evidence/assumption-check.json (same deterministic family)"
+   },
+   "alternativeIdentifiableWithoutHandles": true,
+   "safetyLawfullyComputable": "NOT_UNDER_CURRENT_CONTRACT: the action is non-catastrophic in every tested equivalent world, so on the tested family its safety does not depend on the hidden state; but establishing that requires native rollouts over the hidden-state support, and the decision contract forbids simulator and evaluator access (publicSimulatorCalls 0). Offline discovery is not a deployable safety policy."
+  },
+  {
+   "set": "FRESH_EXPLORE",
+   "idx": 7445,
+   "cell": "bridge/industrial/restore_and_protect/H2/1",
+   "validWitness": true,
+   "commonLegalMenu": [
+    {
+     "index": 0,
+     "type": "MOVE",
+     "semanticKeyUniqueInMenu": true,
+     "semanticKey": {
+      "type": "MOVE",
+      "displacement": {
+       "dx": 0,
+       "dy": -1
+      },
+      "target": null,
+      "parameters": {
+       "direction": "NORTH"
+      }
+     }
+    },
+    {
+     "index": 1,
+     "type": "PROTECT",
+     "semanticKeyUniqueInMenu": true,
+     "semanticKey": {
+      "type": "PROTECT",
+      "displacement": null,
+      "target": {
+       "kind": "RESOURCE",
+       "rel": {
+        "dx": -1,
+        "dy": 0
+       },
+       "flags": [
+        false,
+        false,
+        false,
+        false,
+        true,
+        false
+       ],
+       "relationships": []
+      },
+      "parameters": null
+     }
+    },
+    {
+     "index": 2,
+     "type": "RESTORE",
+     "semanticKeyUniqueInMenu": true,
+     "semanticKey": {
+      "type": "RESTORE",
+      "displacement": null,
+      "target": {
+       "kind": "POWER_SOURCE",
+       "rel": {
+        "dx": 1,
+        "dy": 0
+       },
+       "flags": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+       ],
+       "relationships": [
+        [
+         "depends",
+         "TO"
+        ],
+        [
+         "supports",
+         "FROM"
+        ],
+        [
+         "supports",
+         "TO"
+        ],
+        [
+         "supports",
+         "TO"
+        ]
+       ]
+      },
+      "parameters": null
+     }
+    },
+    {
+     "index": 3,
+     "type": "PROTECT",
+     "semanticKeyUniqueInMenu": true,
+     "semanticKey": {
+      "type": "PROTECT",
+      "displacement": null,
+      "target": {
+       "kind": "POWER_SOURCE",
+       "rel": {
+        "dx": 1,
+        "dy": 0
+       },
+       "flags": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+       ],
+       "relationships": [
+        [
+         "depends",
+         "TO"
+        ],
+        [
+         "supports",
+         "FROM"
+        ],
+        [
+         "supports",
+         "TO"
+        ],
+        [
+         "supports",
+         "TO"
+        ]
+       ]
+      },
+      "parameters": null
+     }
+    },
+    {
+     "index": 4,
+     "type": "MOVE",
+     "semanticKeyUniqueInMenu": true,
+     "semanticKey": {
+      "type": "MOVE",
+      "displacement": {
+       "dx": 1,
+       "dy": 0
+      },
+      "target": null,
+      "parameters": {
+       "direction": "EAST"
+      }
+     }
+    },
+    {
+     "index": 5,
+     "type": "BYPASS",
+     "semanticKeyUniqueInMenu": true,
+     "semanticKey": {
+      "type": "BYPASS",
+      "displacement": null,
+      "target": {
+       "kind": "POWER_SOURCE",
+       "rel": {
+        "dx": 1,
+        "dy": 0
+       },
+       "flags": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+       ],
+       "relationships": [
+        [
+         "depends",
+         "TO"
+        ],
+        [
+         "supports",
+         "FROM"
+        ],
+        [
+         "supports",
+         "TO"
+        ],
+        [
+         "supports",
+         "TO"
+        ]
+       ]
+      },
+      "parameters": null
+     }
+    },
+    {
+     "index": 6,
+     "type": "MOVE",
+     "semanticKeyUniqueInMenu": true,
+     "semanticKey": {
+      "type": "MOVE",
+      "displacement": {
+       "dx": 0,
+       "dy": 1
+      },
+      "target": null,
+      "parameters": {
+       "direction": "SOUTH"
+      }
+     }
+    },
+    {
+     "index": 7,
+     "type": "WAIT",
+     "semanticKeyUniqueInMenu": true,
+     "semanticKey": {
+      "type": "WAIT",
+      "displacement": null,
+      "target": null,
+      "parameters": null
+     }
+    },
+    {
+     "index": 8,
+     "type": "MOVE",
+     "semanticKeyUniqueInMenu": true,
+     "semanticKey": {
+      "type": "MOVE",
+      "displacement": {
+       "dx": -1,
+       "dy": 0
+      },
+      "target": null,
+      "parameters": {
+       "direction": "WEST"
+      }
+     }
+    }
+   ],
+   "semanticsStableUnderIdentityRelabelling": true,
+   "arms": {
+    "B": [
+     8
+    ],
+    "N": [
+     1
+    ]
+   },
+   "safeSets": {
+    "w1": [
+     2,
+     8
+    ],
+    "w2": [
+     1,
+     2,
+     3,
+     4,
+     5,
+     7
+    ]
+   },
+   "pairCommonSafe": [
+    2
+   ],
+   "pairCommonSafeOutsideArms": [
+    2
+   ],
+   "classWide": {
+    "testedEquivalentWorlds": 64,
+    "commonSafe": [
+     2
+    ],
+    "commonSafeOutsideArms": [
+     2
+    ],
+    "source": "evidence/assumption-check.json (same deterministic family)"
+   },
+   "alternativeIdentifiableWithoutHandles": true,
+   "safetyLawfullyComputable": "NOT_UNDER_CURRENT_CONTRACT: the action is non-catastrophic in every tested equivalent world, so on the tested family its safety does not depend on the hidden state; but establishing that requires native rollouts over the hidden-state support, and the decision contract forbids simulator and evaluator access (publicSimulatorCalls 0). Offline discovery is not a deployable safety policy."
+  },
+  {
+   "set": "FRESH_EXPLORE",
+   "idx": 10798,
+   "cell": "multi_cycle/bare/reach_target/H2/3",
+   "validWitness": true,
+   "commonLegalMenu": [
+    {
+     "index": 0,
+     "type": "MOVE",
+     "semanticKeyUniqueInMenu": true,
+     "semanticKey": {
+      "type": "MOVE",
+      "displacement": {
+       "dx": 1,
+       "dy": 0
+      },
+      "target": null,
+      "parameters": {
+       "direction": "EAST"
+      }
+     }
+    },
+    {
+     "index": 1,
+     "type": "PROTECT",
+     "semanticKeyUniqueInMenu": true,
+     "semanticKey": {
+      "type": "PROTECT",
+      "displacement": null,
+      "target": {
+       "kind": "RESOURCE",
+       "rel": {
+        "dx": -1,
+        "dy": 0
+       },
+       "flags": [
+        false,
+        false,
+        false,
+        false,
+        true,
+        false
+       ],
+       "relationships": []
+      },
+      "parameters": null
+     }
+    },
+    {
+     "index": 2,
+     "type": "MOVE",
+     "semanticKeyUniqueInMenu": true,
+     "semanticKey": {
+      "type": "MOVE",
+      "displacement": {
+       "dx": 0,
+       "dy": 1
+      },
+      "target": null,
+      "parameters": {
+       "direction": "SOUTH"
+      }
+     }
+    },
+    {
+     "index": 3,
+     "type": "MOVE",
+     "semanticKeyUniqueInMenu": true,
+     "semanticKey": {
+      "type": "MOVE",
+      "displacement": {
+       "dx": -1,
+       "dy": 0
+      },
+      "target": null,
+      "parameters": {
+       "direction": "WEST"
+      }
+     }
+    },
+    {
+     "index": 4,
+     "type": "WAIT",
+     "semanticKeyUniqueInMenu": true,
+     "semanticKey": {
+      "type": "WAIT",
+      "displacement": null,
+      "target": null,
+      "parameters": null
+     }
+    },
+    {
+     "index": 5,
+     "type": "MOVE",
+     "semanticKeyUniqueInMenu": true,
+     "semanticKey": {
+      "type": "MOVE",
+      "displacement": {
+       "dx": 0,
+       "dy": -1
+      },
+      "target": null,
+      "parameters": {
+       "direction": "NORTH"
+      }
+     }
+    },
+    {
+     "index": 6,
+     "type": "PROTECT",
+     "semanticKeyUniqueInMenu": true,
+     "semanticKey": {
+      "type": "PROTECT",
+      "displacement": null,
+      "target": {
+       "kind": "POWER_SOURCE",
+       "rel": {
+        "dx": 0,
+        "dy": 1
+       },
+       "flags": [
+        false,
+        false,
+        false,
+        false,
+        true,
+        false
+       ],
+       "relationships": [
+        [
+         "depends",
+         "FROM"
+        ],
+        [
+         "depends",
+         "TO"
+        ]
+       ]
+      },
+      "parameters": null
+     }
+    }
+   ],
+   "semanticsStableUnderIdentityRelabelling": true,
+   "arms": {
+    "B": [
+     3
+    ],
+    "N": [
+     1
+    ]
+   },
+   "safeSets": {
+    "w1": [
+     0,
+     2,
+     3
+    ],
+    "w2": [
+     0,
+     1,
+     2
+    ]
+   },
+   "pairCommonSafe": [
+    0,
+    2
+   ],
+   "pairCommonSafeOutsideArms": [
+    0,
+    2
+   ],
+   "classWide": {
+    "testedEquivalentWorlds": 89,
+    "commonSafe": [
+     2
+    ],
+    "commonSafeOutsideArms": [
+     2
+    ],
+    "source": "evidence/assumption-check.json (same deterministic family)"
+   },
+   "alternativeIdentifiableWithoutHandles": true,
+   "safetyLawfullyComputable": "NOT_UNDER_CURRENT_CONTRACT: the action is non-catastrophic in every tested equivalent world, so on the tested family its safety does not depend on the hidden state; but establishing that requires native rollouts over the hidden-state support, and the decision contract forbids simulator and evaluator access (publicSimulatorCalls 0). Offline discovery is not a deployable safety policy."
+  },
+  {
+   "set": "FRESH_CHECK",
+   "idx": 1655,
+   "cell": "star/defended/restore_and_protect/H2/3",
+   "validWitness": false,
+   "commonLegalMenu": [
+    {
+     "index": 0,
+     "type": "RETREAT",
+     "semanticKeyUniqueInMenu": true,
+     "semanticKey": {
+      "type": "RETREAT",
+      "displacement": {
+       "dx": 1,
+       "dy": 0
+      },
+      "target": null,
+      "parameters": {
+       "toX": 10,
+       "toY": 4
+      }
+     }
+    },
+    {
+     "index": 1,
+     "type": "MOVE",
+     "semanticKeyUniqueInMenu": true,
+     "semanticKey": {
+      "type": "MOVE",
+      "displacement": {
+       "dx": 0,
+       "dy": 1
+      },
+      "target": null,
+      "parameters": {
+       "direction": "SOUTH"
+      }
+     }
+    },
+    {
+     "index": 2,
+     "type": "PROTECT",
+     "semanticKeyUniqueInMenu": true,
+     "semanticKey": {
+      "type": "PROTECT",
+      "displacement": null,
+      "target": {
+       "kind": "RESOURCE",
+       "rel": {
+        "dx": 1,
+        "dy": 0
+       },
+       "flags": [
+        false,
+        false,
+        false,
+        false,
+        true,
+        false
+       ],
+       "relationships": []
+      },
+      "parameters": null
+     }
+    },
+    {
+     "index": 3,
+     "type": "RESTORE",
+     "semanticKeyUniqueInMenu": true,
+     "semanticKey": {
+      "type": "RESTORE",
+      "displacement": null,
+      "target": {
+       "kind": "DEPOT",
+       "rel": {
+        "dx": -1,
+        "dy": 0
+       },
+       "flags": [
+        false,
+        false,
+        false,
+        true,
+        false,
+        false
+       ],
+       "relationships": [
+        [
+         "depends",
+         "TO"
+        ],
+        [
+         "threatens",
+         "TO"
+        ]
+       ]
+      },
+      "parameters": null
+     }
+    },
+    {
+     "index": 4,
+     "type": "MOVE",
+     "semanticKeyUniqueInMenu": true,
+     "semanticKey": {
+      "type": "MOVE",
+      "displacement": {
+       "dx": 1,
+       "dy": 0
+      },
+      "target": null,
+      "parameters": {
+       "direction": "EAST"
+      }
+     }
+    },
+    {
+     "index": 5,
+     "type": "RESTORE",
+     "semanticKeyUniqueInMenu": true,
+     "semanticKey": {
+      "type": "RESTORE",
+      "displacement": null,
+      "target": {
+       "kind": "INFRASTRUCTURE",
+       "rel": {
+        "dx": 0,
+        "dy": 1
+       },
+       "flags": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        true
+       ],
+       "relationships": [
+        [
+         "depends",
+         "TO"
+        ],
+        [
+         "depends",
+         "TO"
+        ]
+       ]
+      },
+      "parameters": null
+     }
+    },
+    {
+     "index": 6,
+     "type": "PROTECT",
+     "semanticKeyUniqueInMenu": true,
+     "semanticKey": {
+      "type": "PROTECT",
+      "displacement": null,
+      "target": {
+       "kind": "DEPOT",
+       "rel": {
+        "dx": -1,
+        "dy": 0
+       },
+       "flags": [
+        false,
+        false,
+        false,
+        true,
+        false,
+        false
+       ],
+       "relationships": [
+        [
+         "depends",
+         "TO"
+        ],
+        [
+         "threatens",
+         "TO"
+        ]
+       ]
+      },
+      "parameters": null
+     }
+    },
+    {
+     "index": 7,
+     "type": "MOVE",
+     "semanticKeyUniqueInMenu": true,
+     "semanticKey": {
+      "type": "MOVE",
+      "displacement": {
+       "dx": 0,
+       "dy": -1
+      },
+      "target": null,
+      "parameters": {
+       "direction": "NORTH"
+      }
+     }
+    },
+    {
+     "index": 8,
+     "type": "WAIT",
+     "semanticKeyUniqueInMenu": true,
+     "semanticKey": {
+      "type": "WAIT",
+      "displacement": null,
+      "target": null,
+      "parameters": null
+     }
+    },
+    {
+     "index": 9,
+     "type": "MOVE",
+     "semanticKeyUniqueInMenu": true,
+     "semanticKey": {
+      "type": "MOVE",
+      "displacement": {
+       "dx": -1,
+       "dy": 0
+      },
+      "target": null,
+      "parameters": {
+       "direction": "WEST"
+      }
+     }
+    },
+    {
+     "index": 10,
+     "type": "PROTECT",
+     "semanticKeyUniqueInMenu": true,
+     "semanticKey": {
+      "type": "PROTECT",
+      "displacement": null,
+      "target": {
+       "kind": "INFRASTRUCTURE",
+       "rel": {
+        "dx": 0,
+        "dy": 1
+       },
+       "flags": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        true
+       ],
+       "relationships": [
+        [
+         "depends",
+         "TO"
+        ],
+        [
+         "depends",
+         "TO"
+        ]
+       ]
+      },
+      "parameters": null
+     }
+    }
+   ],
+   "semanticsStableUnderIdentityRelabelling": true,
+   "arms": {
+    "B": [
+     3,
+     5
+    ],
+    "N": [
+     2
+    ]
+   },
+   "safeSets": {
+    "w1": [
+     0,
+     1,
+     4,
+     5,
+     6,
+     9
+    ],
+    "w2": [
+     0,
+     1,
+     2,
+     4,
+     5,
+     6,
+     9
+    ]
+   },
+   "pairCommonSafe": [
+    0,
+    1,
+    4,
+    5,
+    6,
+    9
+   ],
+   "pairCommonSafeOutsideArms": [
+    0,
+    1,
+    4,
+    6,
+    9
+   ],
+   "classWide": {
+    "status": "NOT_COMPUTED (invalid witness; assumption-check covered valid witnesses only)"
+   },
+   "alternativeIdentifiableWithoutHandles": true,
+   "safetyLawfullyComputable": "NOT_UNDER_CURRENT_CONTRACT: the action is non-catastrophic in every tested equivalent world, so on the tested family its safety does not depend on the hidden state; but establishing that requires native rollouts over the hidden-state support, and the decision contract forbids simulator and evaluator access (publicSimulatorCalls 0). Offline discovery is not a deployable safety policy."
+  },
+  {
+   "set": "FRESH_EXPLORE",
+   "idx": 1193,
+   "cell": "star/bare/restore_and_protect/H2/1",
+   "validWitness": true,
+   "commonLegalMenu": [
+    {
+     "index": 0,
+     "type": "REPAIR",
+     "semanticKeyUniqueInMenu": true,
+     "semanticKey": {
+      "type": "REPAIR",
+      "displacement": null,
+      "target": {
+       "kind": "INFRASTRUCTURE",
+       "rel": {
+        "dx": 0,
+        "dy": -1
+       },
+       "flags": [
+        false,
+        false,
+        false,
+        false,
+        true,
+        false
+       ],
+       "relationships": [
+        [
+         "depends",
+         "TO"
+        ]
+       ]
+      },
+      "parameters": null
+     }
+    },
+    {
+     "index": 1,
+     "type": "MOVE",
+     "semanticKeyUniqueInMenu": true,
+     "semanticKey": {
+      "type": "MOVE",
+      "displacement": {
+       "dx": 1,
+       "dy": 0
+      },
+      "target": null,
+      "parameters": {
+       "direction": "EAST"
+      }
+     }
+    },
+    {
+     "index": 2,
+     "type": "PROTECT",
+     "semanticKeyUniqueInMenu": true,
+     "semanticKey": {
+      "type": "PROTECT",
+      "displacement": null,
+      "target": {
+       "kind": "RESOURCE",
+       "rel": {
+        "dx": -1,
+        "dy": 0
+       },
+       "flags": [
+        false,
+        false,
+        false,
+        false,
+        true,
+        false
+       ],
+       "relationships": []
+      },
+      "parameters": null
+     }
+    },
+    {
+     "index": 3,
+     "type": "RESTORE",
+     "semanticKeyUniqueInMenu": true,
+     "semanticKey": {
+      "type": "RESTORE",
+      "displacement": null,
+      "target": {
+       "kind": "DEPOT",
+       "rel": {
+        "dx": 1,
+        "dy": 0
+       },
+       "flags": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+       ],
+       "relationships": [
+        [
+         "depends",
+         "TO"
+        ]
+       ]
+      },
+      "parameters": null
+     }
+    },
+    {
+     "index": 4,
+     "type": "PROTECT",
+     "semanticKeyUniqueInMenu": true,
+     "semanticKey": {
+      "type": "PROTECT",
+      "displacement": null,
+      "target": {
+       "kind": "INFRASTRUCTURE",
+       "rel": {
+        "dx": 0,
+        "dy": -1
+       },
+       "flags": [
+        false,
+        false,
+        false,
+        false,
+        true,
+        false
+       ],
+       "relationships": [
+        [
+         "depends",
+         "TO"
+        ]
+       ]
+      },
+      "parameters": null
+     }
+    },
+    {
+     "index": 5,
+     "type": "REINFORCE",
+     "semanticKeyUniqueInMenu": true,
+     "semanticKey": {
+      "type": "REINFORCE",
+      "displacement": null,
+      "target": {
+       "kind": "INFRASTRUCTURE",
+       "rel": {
+        "dx": 0,
+        "dy": -1
+       },
+       "flags": [
+        false,
+        false,
+        false,
+        false,
+        true,
+        false
+       ],
+       "relationships": [
+        [
+         "depends",
+         "TO"
+        ]
+       ]
+      },
+      "parameters": null
+     }
+    },
+    {
+     "index": 6,
+     "type": "MOVE",
+     "semanticKeyUniqueInMenu": true,
+     "semanticKey": {
+      "type": "MOVE",
+      "displacement": {
+       "dx": 0,
+       "dy": -1
+      },
+      "target": null,
+      "parameters": {
+       "direction": "NORTH"
+      }
+     }
+    },
+    {
+     "index": 7,
+     "type": "PROTECT",
+     "semanticKeyUniqueInMenu": true,
+     "semanticKey": {
+      "type": "PROTECT",
+      "displacement": null,
+      "target": {
+       "kind": "DEPOT",
+       "rel": {
+        "dx": 1,
+        "dy": 0
+       },
+       "flags": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+       ],
+       "relationships": [
+        [
+         "depends",
+         "TO"
+        ]
+       ]
+      },
+      "parameters": null
+     }
+    },
+    {
+     "index": 8,
+     "type": "MOVE",
+     "semanticKeyUniqueInMenu": true,
+     "semanticKey": {
+      "type": "MOVE",
+      "displacement": {
+       "dx": -1,
+       "dy": 0
+      },
+      "target": null,
+      "parameters": {
+       "direction": "WEST"
+      }
+     }
+    },
+    {
+     "index": 9,
+     "type": "WAIT",
+     "semanticKeyUniqueInMenu": true,
+     "semanticKey": {
+      "type": "WAIT",
+      "displacement": null,
+      "target": null,
+      "parameters": null
+     }
+    },
+    {
+     "index": 10,
+     "type": "MOVE",
+     "semanticKeyUniqueInMenu": true,
+     "semanticKey": {
+      "type": "MOVE",
+      "displacement": {
+       "dx": 0,
+       "dy": 1
+      },
+      "target": null,
+      "parameters": {
+       "direction": "SOUTH"
+      }
+     }
+    }
+   ],
+   "semanticsStableUnderIdentityRelabelling": true,
+   "arms": {
+    "B": [
+     8
+    ],
+    "N": [
+     0
+    ]
+   },
+   "safeSets": {
+    "w1": [
+     1,
+     6,
+     8
+    ],
+    "w2": [
+     0,
+     1,
+     2,
+     3,
+     4,
+     5,
+     6,
+     7,
+     9,
+     10
+    ]
+   },
+   "pairCommonSafe": [
+    1,
+    6
+   ],
+   "pairCommonSafeOutsideArms": [
+    1,
+    6
+   ],
+   "classWide": {
+    "testedEquivalentWorlds": 65,
+    "commonSafe": [
+     6
+    ],
+    "commonSafeOutsideArms": [
+     6
+    ],
+    "source": "evidence/assumption-check.json (same deterministic family)"
+   },
+   "alternativeIdentifiableWithoutHandles": true,
+   "safetyLawfullyComputable": "NOT_UNDER_CURRENT_CONTRACT: the action is non-catastrophic in every tested equivalent world, so on the tested family its safety does not depend on the hidden state; but establishing that requires native rollouts over the hidden-state support, and the decision contract forbids simulator and evaluator access (publicSimulatorCalls 0). Offline discovery is not a deployable safety policy."
+  },
+  {
+   "set": "FRESH_CHECK",
+   "idx": 9837,
+   "cell": "bridge/defended/restore_and_conserve/H2/1",
+   "validWitness": true,
+   "commonLegalMenu": [
+    {
+     "index": 0,
+     "type": "MOVE",
+     "semanticKeyUniqueInMenu": true,
+     "semanticKey": {
+      "type": "MOVE",
+      "displacement": {
+       "dx": 1,
+       "dy": 0
+      },
+      "target": null,
+      "parameters": {
+       "direction": "EAST"
+      }
+     }
+    },
+    {
+     "index": 1,
+     "type": "RETREAT",
+     "semanticKeyUniqueInMenu": true,
+     "semanticKey": {
+      "type": "RETREAT",
+      "displacement": {
+       "dx": 0,
+       "dy": 1
+      },
+      "target": null,
+      "parameters": {
+       "toX": 0,
+       "toY": 9
+      }
+     }
+    },
+    {
+     "index": 2,
+     "type": "PROTECT",
+     "semanticKeyUniqueInMenu": true,
+     "semanticKey": {
+      "type": "PROTECT",
+      "displacement": null,
+      "target": {
+       "kind": "RESOURCE",
+       "rel": {
+        "dx": 0,
+        "dy": -1
+       },
+       "flags": [
+        false,
+        false,
+        false,
+        false,
+        true,
+        false
+       ],
+       "relationships": []
+      },
+      "parameters": null
+     }
+    },
+    {
+     "index": 3,
+     "type": "PROTECT",
+     "semanticKeyUniqueInMenu": true,
+     "semanticKey": {
+      "type": "PROTECT",
+      "displacement": null,
+      "target": {
+       "kind": "POWER_SOURCE",
+       "rel": {
+        "dx": 1,
+        "dy": 0
+       },
+       "flags": [
+        false,
+        false,
+        false,
+        false,
+        true,
+        false
+       ],
+       "relationships": [
+        [
+         "supports",
+         "FROM"
+        ]
+       ]
+      },
+      "parameters": null
+     }
+    },
+    {
+     "index": 4,
+     "type": "MOVE",
+     "semanticKeyUniqueInMenu": true,
+     "semanticKey": {
+      "type": "MOVE",
+      "displacement": {
+       "dx": 0,
+       "dy": -1
+      },
+      "target": null,
+      "parameters": {
+       "direction": "NORTH"
+      }
+     }
+    },
+    {
+     "index": 5,
+     "type": "REPAIR",
+     "semanticKeyUniqueInMenu": true,
+     "semanticKey": {
+      "type": "REPAIR",
+      "displacement": null,
+      "target": {
+       "kind": "POWER_SOURCE",
+       "rel": {
+        "dx": 1,
+        "dy": 0
+       },
+       "flags": [
+        false,
+        false,
+        false,
+        false,
+        true,
+        false
+       ],
+       "relationships": [
+        [
+         "supports",
+         "FROM"
+        ]
+       ]
+      },
+      "parameters": null
+     }
+    },
+    {
+     "index": 6,
+     "type": "WAIT",
+     "semanticKeyUniqueInMenu": true,
+     "semanticKey": {
+      "type": "WAIT",
+      "displacement": null,
+      "target": null,
+      "parameters": null
+     }
+    },
+    {
+     "index": 7,
+     "type": "MOVE",
+     "semanticKeyUniqueInMenu": true,
+     "semanticKey": {
+      "type": "MOVE",
+      "displacement": {
+       "dx": 0,
+       "dy": 1
+      },
+      "target": null,
+      "parameters": {
+       "direction": "SOUTH"
+      }
+     }
+    },
+    {
+     "index": 8,
+     "type": "REINFORCE",
+     "semanticKeyUniqueInMenu": true,
+     "semanticKey": {
+      "type": "REINFORCE",
+      "displacement": null,
+      "target": {
+       "kind": "POWER_SOURCE",
+       "rel": {
+        "dx": 1,
+        "dy": 0
+       },
+       "flags": [
+        false,
+        false,
+        false,
+        false,
+        true,
+        false
+       ],
+       "relationships": [
+        [
+         "supports",
+         "FROM"
+        ]
+       ]
+      },
+      "parameters": null
+     }
+    }
+   ],
+   "semanticsStableUnderIdentityRelabelling": true,
+   "arms": {
+    "B": [
+     4
+    ],
+    "N": [
+     8
+    ]
+   },
+   "safeSets": {
+    "w1": [
+     0,
+     4
+    ],
+    "w2": [
+     0,
+     1,
+     2,
+     3,
+     5,
+     6,
+     7,
+     8
+    ]
+   },
+   "pairCommonSafe": [
+    0
+   ],
+   "pairCommonSafeOutsideArms": [
+    0
+   ],
+   "classWide": {
+    "testedEquivalentWorlds": 71,
+    "commonSafe": [
+     0
+    ],
+    "commonSafeOutsideArms": [
+     0
+    ],
+    "source": "evidence/assumption-check.json (same deterministic family)"
+   },
+   "alternativeIdentifiableWithoutHandles": true,
+   "safetyLawfullyComputable": "NOT_UNDER_CURRENT_CONTRACT: the action is non-catastrophic in every tested equivalent world, so on the tested family its safety does not depend on the hidden state; but establishing that requires native rollouts over the hidden-state support, and the decision contract forbids simulator and evaluator access (publicSimulatorCalls 0). Offline discovery is not a deployable safety policy."
+  },
+  {
+   "set": "FRESH_CHECK",
+   "idx": 7456,
+   "cell": "bridge/industrial/restore_and_protect/H2/1",
+   "validWitness": true,
+   "commonLegalMenu": [
+    {
+     "index": 0,
+     "type": "PROTECT",
+     "semanticKeyUniqueInMenu": true,
+     "semanticKey": {
+      "type": "PROTECT",
+      "displacement": null,
+      "target": {
+       "kind": "RESOURCE",
+       "rel": {
+        "dx": -1,
+        "dy": 0
+       },
+       "flags": [
+        false,
+        false,
+        false,
+        false,
+        true,
+        false
+       ],
+       "relationships": []
+      },
+      "parameters": null
+     }
+    },
+    {
+     "index": 1,
+     "type": "BYPASS",
+     "semanticKeyUniqueInMenu": true,
+     "semanticKey": {
+      "type": "BYPASS",
+      "displacement": null,
+      "target": {
+       "kind": "REPAIR_TARGET",
+       "rel": {
+        "dx": 0,
+        "dy": -1
+       },
+       "flags": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+       ],
+       "relationships": [
+        [
+         "depends",
+         "FROM"
+        ],
+        [
+         "depends",
+         "TO"
+        ],
+        [
+         "supports",
+         "TO"
+        ],
+        [
+         "supports",
+         "TO"
+        ],
+        [
+         "supports",
+         "TO"
+        ]
+       ]
+      },
+      "parameters": null
+     }
+    },
+    {
+     "index": 2,
+     "type": "MOVE",
+     "semanticKeyUniqueInMenu": true,
+     "semanticKey": {
+      "type": "MOVE",
+      "displacement": {
+       "dx": 1,
+       "dy": 0
+      },
+      "target": null,
+      "parameters": {
+       "direction": "EAST"
+      }
+     }
+    },
+    {
+     "index": 3,
+     "type": "PROTECT",
+     "semanticKeyUniqueInMenu": true,
+     "semanticKey": {
+      "type": "PROTECT",
+      "displacement": null,
+      "target": {
+       "kind": "REPAIR_TARGET",
+       "rel": {
+        "dx": 0,
+        "dy": -1
+       },
+       "flags": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+       ],
+       "relationships": [
+        [
+         "depends",
+         "FROM"
+        ],
+        [
+         "depends",
+         "TO"
+        ],
+        [
+         "supports",
+         "TO"
+        ],
+        [
+         "supports",
+         "TO"
+        ],
+        [
+         "supports",
+         "TO"
+        ]
+       ]
+      },
+      "parameters": null
+     }
+    },
+    {
+     "index": 4,
+     "type": "MOVE",
+     "semanticKeyUniqueInMenu": true,
+     "semanticKey": {
+      "type": "MOVE",
+      "displacement": {
+       "dx": 0,
+       "dy": -1
+      },
+      "target": null,
+      "parameters": {
+       "direction": "NORTH"
+      }
+     }
+    },
+    {
+     "index": 5,
+     "type": "WAIT",
+     "semanticKeyUniqueInMenu": true,
+     "semanticKey": {
+      "type": "WAIT",
+      "displacement": null,
+      "target": null,
+      "parameters": null
+     }
+    },
+    {
+     "index": 6,
+     "type": "MOVE",
+     "semanticKeyUniqueInMenu": true,
+     "semanticKey": {
+      "type": "MOVE",
+      "displacement": {
+       "dx": -1,
+       "dy": 0
+      },
+      "target": null,
+      "parameters": {
+       "direction": "WEST"
+      }
+     }
+    },
+    {
+     "index": 7,
+     "type": "RESTORE",
+     "semanticKeyUniqueInMenu": true,
+     "semanticKey": {
+      "type": "RESTORE",
+      "displacement": null,
+      "target": {
+       "kind": "REPAIR_TARGET",
+       "rel": {
+        "dx": 0,
+        "dy": -1
+       },
+       "flags": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+       ],
+       "relationships": [
+        [
+         "depends",
+         "FROM"
+        ],
+        [
+         "depends",
+         "TO"
+        ],
+        [
+         "supports",
+         "TO"
+        ],
+        [
+         "supports",
+         "TO"
+        ],
+        [
+         "supports",
+         "TO"
+        ]
+       ]
+      },
+      "parameters": null
+     }
+    }
+   ],
+   "semanticsStableUnderIdentityRelabelling": true,
+   "arms": {
+    "B": [
+     6
+    ],
+    "N": [
+     0
+    ]
+   },
+   "safeSets": {
+    "w1": [
+     6,
+     7
+    ],
+    "w2": [
+     0,
+     1,
+     3,
+     4,
+     5,
+     7
+    ]
+   },
+   "pairCommonSafe": [
+    7
+   ],
+   "pairCommonSafeOutsideArms": [
+    7
+   ],
+   "classWide": {
+    "testedEquivalentWorlds": 62,
+    "commonSafe": [
+     7
+    ],
+    "commonSafeOutsideArms": [
+     7
+    ],
+    "source": "evidence/assumption-check.json (same deterministic family)"
+   },
+   "alternativeIdentifiableWithoutHandles": true,
+   "safetyLawfullyComputable": "NOT_UNDER_CURRENT_CONTRACT: the action is non-catastrophic in every tested equivalent world, so on the tested family its safety does not depend on the hidden state; but establishing that requires native rollouts over the hidden-state support, and the decision contract forbids simulator and evaluator access (publicSimulatorCalls 0). Offline discovery is not a deployable safety policy."
+  },
+  {
+   "set": "FRESH_EXPLORE",
+   "idx": 5819,
+   "cell": "chain/industrial/restore_and_protect/H2/3",
+   "validWitness": true,
+   "commonLegalMenu": [
+    {
+     "index": 0,
+     "type": "RESTORE",
+     "semanticKeyUniqueInMenu": true,
+     "semanticKey": {
+      "type": "RESTORE",
+      "displacement": null,
+      "target": {
+       "kind": "POWER_SOURCE",
+       "rel": {
+        "dx": 0,
+        "dy": -1
+       },
+       "flags": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        true
+       ],
+       "relationships": [
+        [
+         "depends",
+         "FROM"
+        ],
+        [
+         "depends",
+         "TO"
+        ],
+        [
+         "depends",
+         "TO"
+        ]
+       ]
+      },
+      "parameters": null
+     }
+    },
+    {
+     "index": 1,
+     "type": "REPAIR",
+     "semanticKeyUniqueInMenu": true,
+     "semanticKey": {
+      "type": "REPAIR",
+      "displacement": null,
+      "target": {
+       "kind": "INFRASTRUCTURE",
+       "rel": {
+        "dx": 0,
+        "dy": 1
+       },
+       "flags": [
+        true,
+        true,
+        false,
+        false,
+        true,
+        false
+       ],
+       "relationships": [
+        [
+         "depends",
+         "FROM"
+        ],
+        [
+         "depends",
+         "TO"
+        ]
+       ]
+      },
+      "parameters": null
+     }
+    },
+    {
+     "index": 2,
+     "type": "MOVE",
+     "semanticKeyUniqueInMenu": true,
+     "semanticKey": {
+      "type": "MOVE",
+      "displacement": {
+       "dx": 0,
+       "dy": -1
+      },
+      "target": null,
+      "parameters": {
+       "direction": "NORTH"
+      }
+     }
+    },
+    {
+     "index": 3,
+     "type": "PROTECT",
+     "semanticKeyUniqueInMenu": true,
+     "semanticKey": {
+      "type": "PROTECT",
+      "displacement": null,
+      "target": {
+       "kind": "POWER_SOURCE",
+       "rel": {
+        "dx": 0,
+        "dy": -1
+       },
+       "flags": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        true
+       ],
+       "relationships": [
+        [
+         "depends",
+         "FROM"
+        ],
+        [
+         "depends",
+         "TO"
+        ],
+        [
+         "depends",
+         "TO"
+        ]
+       ]
+      },
+      "parameters": null
+     }
+    },
+    {
+     "index": 4,
+     "type": "PROTECT",
+     "semanticKeyUniqueInMenu": true,
+     "semanticKey": {
+      "type": "PROTECT",
+      "displacement": null,
+      "target": {
+       "kind": "RESOURCE",
+       "rel": {
+        "dx": 1,
+        "dy": 0
+       },
+       "flags": [
+        false,
+        false,
+        false,
+        false,
+        true,
+        false
+       ],
+       "relationships": []
+      },
+      "parameters": null
+     }
+    },
+    {
+     "index": 5,
+     "type": "PROTECT",
+     "semanticKeyUniqueInMenu": true,
+     "semanticKey": {
+      "type": "PROTECT",
+      "displacement": null,
+      "target": {
+       "kind": "INFRASTRUCTURE",
+       "rel": {
+        "dx": 0,
+        "dy": 1
+       },
+       "flags": [
+        true,
+        true,
+        false,
+        false,
+        true,
+        false
+       ],
+       "relationships": [
+        [
+         "depends",
+         "FROM"
+        ],
+        [
+         "depends",
+         "TO"
+        ]
+       ]
+      },
+      "parameters": null
+     }
+    },
+    {
+     "index": 6,
+     "type": "REINFORCE",
+     "semanticKeyUniqueInMenu": true,
+     "semanticKey": {
+      "type": "REINFORCE",
+      "displacement": null,
+      "target": {
+       "kind": "INFRASTRUCTURE",
+       "rel": {
+        "dx": 0,
+        "dy": 1
+       },
+       "flags": [
+        true,
+        true,
+        false,
+        false,
+        true,
+        false
+       ],
+       "relationships": [
+        [
+         "depends",
+         "FROM"
+        ],
+        [
+         "depends",
+         "TO"
+        ]
+       ]
+      },
+      "parameters": null
+     }
+    },
+    {
+     "index": 7,
+     "type": "MOVE",
+     "semanticKeyUniqueInMenu": true,
+     "semanticKey": {
+      "type": "MOVE",
+      "displacement": {
+       "dx": 1,
+       "dy": 0
+      },
+      "target": null,
+      "parameters": {
+       "direction": "EAST"
+      }
+     }
+    },
+    {
+     "index": 8,
+     "type": "MOVE",
+     "semanticKeyUniqueInMenu": true,
+     "semanticKey": {
+      "type": "MOVE",
+      "displacement": {
+       "dx": 0,
+       "dy": 1
+      },
+      "target": null,
+      "parameters": {
+       "direction": "SOUTH"
+      }
+     }
+    },
+    {
+     "index": 9,
+     "type": "WAIT",
+     "semanticKeyUniqueInMenu": true,
+     "semanticKey": {
+      "type": "WAIT",
+      "displacement": null,
+      "target": null,
+      "parameters": null
+     }
+    },
+    {
+     "index": 10,
+     "type": "MOVE",
+     "semanticKeyUniqueInMenu": true,
+     "semanticKey": {
+      "type": "MOVE",
+      "displacement": {
+       "dx": -1,
+       "dy": 0
+      },
+      "target": null,
+      "parameters": {
+       "direction": "WEST"
+      }
+     }
+    }
+   ],
+   "semanticsStableUnderIdentityRelabelling": true,
+   "arms": {
+    "B": [
+     7
+    ],
+    "N": [
+     1
+    ]
+   },
+   "safeSets": {
+    "w1": [
+     0,
+     7
+    ],
+    "w2": [
+     0,
+     1,
+     2,
+     3,
+     4,
+     5,
+     6,
+     9
+    ]
+   },
+   "pairCommonSafe": [
+    0
+   ],
+   "pairCommonSafeOutsideArms": [
+    0
+   ],
+   "classWide": {
+    "testedEquivalentWorlds": 91,
+    "commonSafe": [
+     0
+    ],
+    "commonSafeOutsideArms": [
+     0
+    ],
+    "source": "evidence/assumption-check.json (same deterministic family)"
+   },
+   "alternativeIdentifiableWithoutHandles": true,
+   "safetyLawfullyComputable": "NOT_UNDER_CURRENT_CONTRACT: the action is non-catastrophic in every tested equivalent world, so on the tested family its safety does not depend on the hidden state; but establishing that requires native rollouts over the hidden-state support, and the decision contract forbids simulator and evaluator access (publicSimulatorCalls 0). Offline discovery is not a deployable safety policy."
+  }
+ ]
+}

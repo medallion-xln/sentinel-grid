@@ -1,0 +1,56 @@
+=== SENTINEL GRID STAGE 3H V4 REGISTRATION ACTIVATION ===
+
+STATUS=REGISTRATION_ACTIVE; STOPPED_BEFORE_FIRST_SEALED_WORLD
+CLASSIFICATION=OWNER_GOVERNED_SUCCESSOR_REGISTRATION_ACTIVE_NOT_EXECUTED
+
+AUTHORITY=R0
+
+APPROVED_CANDIDATE_SHA256=d8a44ebd19f6dc5b833462435385680dcf2c3541a543a0e18f3fb81067307aad
+
+SEVEN_OWNER_DECISIONS_RECORDED=true (registration/OWNER_APPROVAL_d8a44ebd.json, sha256 e4863a12...; SCOPE-DDV, SCOPE-TCA, SCOPE-PRIME, SCOPE-REGIME, SCOPE-THRESHOLDS, AMENDMENT-O6-NATIVE-MENU-VALIDITY, SUCCESSOR-EXECUTION-SEMANTICS; owner conditions recorded per decision; no gate waivers)
+OWNER_APPROVAL_REFERENCE=SESSION_OWNER_AUTHORIZATION, 2026-10-21 ("SENTINEL GRID - STAGE 3H SUCCESSOR V4 REGISTRATION ACTIVATION"); not a cryptographic signature
+INDEPENDENT_REVIEW=false
+
+CANDIDATE_HASH_VALID=true (recomputed; committed in 5f54f234; Phase 0 evidence/activation-d8a44ebd/identity-check.json: CANDIDATE_IDENTITY_VALID, 11/11)
+BOUND_LOG_IDENTITY_VALID=true (bound register-candidate.stdout.log = empty file e3b0c442..., equal to the committed git object at 5f54f234 and HEAD and to the working tree; all 30 bound logs committed exactly; populated log only in evidence/successor-v4-preflight/, outside the bound closure; identity does not depend on any reset during or after activation)
+SOURCE_CLOSURE_VALID=true (237 bound sources: 207 tracked, equal to committed objects at the candidate commit and HEAD; 30 policy-protected untracked, equal to the local package ecfc7016...)
+PROTECTED_FILES_UNCHANGED=true (14,447; nine-expert roster preserved)
+NATIVE_ENGINE_UNCHANGED=true (57 bound src/ sources byte-identical to 0364164c; src working tree clean)
+FROZEN_SELECTOR_UNCHANGED=true (rule hash c53826da...: H0 -> NEXUS_ELSE_S0, H2 -> S0; R/B/N arms frozen)
+
+V4_MENU_VALIDITY_APPROVED=true (O-6 STAGE3H_NATIVE_MENU_VALIDITY_V1, bound unchanged; menuValidity.ownerApproved=true)
+O3_ADMISSION_RULES_PRESERVED=true (MIN_ACCEPTED_PER_CELL=2; 0.9 population and per-horizon floors; effective-N >= 2100; fixed weights; no replacement)
+NUMERICAL_ANALYSIS_UNCHANGED=true (analysis, runner, contract and admission sources byte-identical to 0364164c; analysisLabel unchanged)
+CATASTROPHE_VETO_UNCHANGED=true (zeroIntroductionUpper(cells, 40) <= 0.02 and the false-selection veto)
+
+FRESH_A_NAMESPACE=733000000000 (+k, k < 12,768; schedule hash 688e9148...)
+FRESH_B_NAMESPACE=734000000000 (+k, k < 12,768; schedule hash 0f5e6798...)
+A_B_DISJOINT=true (different 10^9 blocks; schedules recomputed; no shared seed)
+PRIOR_EXCLUSIONS_VALID=true (9,407 world hashes enforced at execution; 122 prior and OPEN seeds absent from both ranges; blocks 731 and 732 excluded; allocation re-verified at activation: no failures)
+
+ACTIVE_REGISTRATION=stage3h-owner-governed-v1/registration/ACTIVE_REGISTRATION_V4.json
+REGISTRATION_COMMIT=01d4cc34cdee7f498f413396708f14acf13e2d33
+REGISTRATION_SHA256=7c41ba89c5c63489b4b4b6351716889460996b688e8ab897197a64a6fb7014cc
+CLEAN_CLONE_REPRODUCIBLE=true (clone of 01d4cc34 + 30 protected files: registration and candidate hashes recomputed, 237/237 sources, approval and allocation records, both schedules, runner acceptance, witness rejection; no execution authorization, no run directory)
+
+SEALED_WORLDS_GENERATED=false
+REPLICATION_A_EXECUTED=false
+REPLICATION_B_EXECUTED=false
+SEALED_OUTCOMES_ACCESSED=false
+
+BOUNDED_SELECTOR_QUALIFIED=false
+FULL_STAGE3H_CERTIFIED=false
+
+STAGE3I_STARTED=false
+CAN_DISPATCH=false
+CAN_MUTATE_LIVE_WORLD=false
+
+NEXT_EXACT_EXECUTION_AUTHORIZATION=Separate owner instruction authorizing the once-only A/B campaign for registration 7c41ba89c5c63489b4b4b6351716889460996b688e8ab897197a64a6fb7014cc (commit 01d4cc34cdee7f498f413396708f14acf13e2d33), recorded as registration/EXECUTION_AUTHORIZATION_V4.json {type: EXECUTE_ONCE, registrationHash, replications: [A, B], ownerIdentity, date, signatureOrTrustedApprovalReference}, then on an idle machine (load <= 25% of cores, no concurrent stage or test process, AC power, sleep inhibited, plain node, full logs): node campaign-v4.mjs run A; node campaign-v4.mjs run B only after A is locked without an abort record; node campaign-v4.mjs analyse.
+
+PREDECESSOR=0364164c preserved: A consumed and aborted (runs/0364164cb05e140d/A exists and is empty), B not started, not continued; all its records committed and unchanged.
+
+DISCLOSURES:
+ 1. Prospective exclusion reporting (owner condition, decision O-6): the bound runner records per-cell accepted and rejected counts but not the rejection reason. The registration declares before execution (prospectiveExclusionReporting) that the sealed analysis will state total exclusion rates from the locked admission files, and will obtain the NATIVE_MENU_INVALID breakdown by an outcome-blind deterministic recount (generation, V3 pre-policy gates and O-6 only) whose per-cell totals must equal the locked counts.
+ 2. Label imprecision (mine): activationRecheck.repositoryTextHitsInAllocatedRanges=11 counts hits in the whole re-scanned span; none lies inside either allocated range (recheck failures empty). See evidence/activation-d8a44ebd/ACTIVATION_NOTES.md.
+
+LIMITATIONS: owner-governed (same person designs, holds custody and executes; blinding procedural; no independent review or custody); claims restricted to valid-menu worlds; TCA and incumbent Prime not testable; the 1,000 ms lock-time abort risk is unchanged (O-5 preflight mitigates a marginal start only); the result cannot certify Stage 3H canonically or establish MoE gain.

@@ -1,0 +1,103 @@
+{
+  "schema": "STAGE3H_H_W1_RESEARCH_CONTRACT_V1",
+  "authority": "R0",
+  "date": "2026-10-30",
+  "status": "DEFINITION_ONLY_NOT_IMPLEMENTED",
+  "policyIdentity": "STAGE3H_WIDER_ACTION_POLICY_W1",
+  "note": "A research artifact name only. It is not a tenth expert. The nine canonical experts (Prime, Vanguard, Oracle, Nexus, Horizon, Archimedes, Alexandria, Picasso, Forge) are unchanged and Forge's coding/RSI role is not redefined.",
+  "ownerDecisions": {
+    "CUSTODY_A4B": "ACCEPTED_AS_LOCALLY_COMPLETE",
+    "CURRENT_MAIN": "2d26176ae55f59009796c546fd42f2635e7da5bb",
+    "CODEX_CHECKPOINT_REF": "RETAIN_LOCAL",
+    "RECOVERY_REFS": "RETAIN_LOCAL",
+    "ALL_REFS_PUBLICATION": "PROHIBITED",
+    "REMOTE_PUSH": "NOT_AUTHORIZED",
+    "A5_PURGE": "DEFERRED",
+    "INDEPENDENT_BACKUP": "NOT_ESTABLISHED",
+    "H_W1_DEV_RESEARCH_CONTRACT": "APPROVED_FOR_DEFINITION",
+    "NEW_SELECTOR_IMPLEMENTATION": "NOT_AUTHORIZED_YET"
+  },
+  "hypothesis": {
+    "statement": "An identity-invariant, public-only, deterministic policy over the complete native legal-action menu achieves zero observed catastrophe introductions against both frozen comparators (S0 and Nexus-else-S0) and lowers mean normalized regret by at least 0.02 relative to each, on genuinely fresh, exclusion-aware DEV populations.",
+    "thresholds": {
+      "introductionsVsS0": 0,
+      "introductionsVsNexusElseS0": 0,
+      "meanNregReductionVsEachComparatorMin": 0.02,
+      "regretEvidenceRule": "point estimate of delta <= -0.02 AND one-sided 95% cluster-bootstrap upper bound of delta < 0, for each comparator separately (delta = policy minus comparator, class-paired)",
+      "unchanged": "the zero-introduction and 0.02 regret thresholds are the originals; nothing is relaxed or re-derived"
+    },
+    "catastrophe": "frozen evaluator regret >= 100 (FORGE_COUNTERFACTUAL_SYMMETRIC_V1)",
+    "introduction": "runner-design potentialIntroduction({a}, comparator): a is catastrophic in a world where the comparator's action set contains a non-catastrophic action",
+    "regret": "nreg = regret / menu utility spread",
+    "policyClass": "deterministic map from the public decision view to exactly one legal menu action; no abstention; no randomization"
+  },
+  "inputs": {
+    "permitted": [
+      "public observation history (complete ObservationPacket sequence, STAGE3H_PUBLIC_DECISION_INFORMATION_V1)",
+      "the complete native legal-action menu (FORGE_ACTION_SURFACE_SYMMETRIC_V1)",
+      "public action semantics (deriveActionSemantics records)",
+      "lawfully observable entity attributes and relations (public view only)",
+      "frozen S0 top set and frozen Nexus recommendation/rationale codes, each recomputed on whatever view the policy is shown"
+    ],
+    "forbidden": [
+      "hidden node health or value, cost, risk, resource quantity, relation subtype",
+      "native evaluator regret or catastrophe labels, at decision time or as a lookup keyed by public content",
+      "recovered or inferred generator seeds, generator random state",
+      "privileged native rollouts or any native simulator call at decision time (publicSimulatorCalls must be 0)",
+      "offline oracle recommendations or any quantity computed from them",
+      "integrity digests (worldHash, sourceStateHash, provenance digests)",
+      "entity ids, action handles, handle order, menu list position, lexical order of any identifier"
+    ],
+    "comparatorInputRule": "S0 and Nexus are re-run on the transformed view. A comparator output enters only as an identity-free projection (membership of an action key in the S0 top set; the key of the Nexus recommendation; rationale codes). A projection that is not stable under relabelling counts against the policy in the invariance test."
+  },
+  "actionIdentity": {
+    "keyV1": "type, displacement, target block {kind, rel, flags[critical, objective, hostile, threatened, inService, hub], relationships[[kind, role]] sorted}, params excluding dependent, toX, toY",
+    "keyV2": "keyV1 plus, for any action carrying a dependent entity, that dependent's public attribute block {kind, relative position, relative distance, direction, flags incl. resourceFlag, sorted relationships}; plus toX/toY expressed actor-relative",
+    "fieldAuditRequired": ["resourceFlag", "observationTimestamp", "provenance", "sequence"],
+    "residualDuplicates": "action keys still equal after keyV2 form a symmetric orbit. The policy selects the orbit; evaluator scores catastrophe as worst case over the orbit and regret as uniform expectation (worst case also reported). No lexical order is used to break the tie.",
+    "knownCollisionsResolved": "3 BYPASS groups (idx 6236, 5593, 6198): dependents differ in public kind, relative position, flags and relationships in every group"
+  },
+  "frames": {
+    "primary": "arm-stressed: classes admitted by the feasibility lane's selection rule (H2, Nexus applicable, N != B, and S0 introducing or both regrets in [40,160]). The rule text is located in the lane's selection source and hashed at I-0; it is not paraphrased here.",
+    "secondary": "no-harm, unselected: classes the generator emits in the block with no arm-stress filter; zero introductions is required (owner-adjustable to report-only), regret is report-only with no threshold"
+  },
+  "populations": {
+    "exploration": { "role": "policy development and training", "minClasses": 1000, "twinDraws": 40 },
+    "validation": { "role": "candidate selection, each candidate evaluated once", "minClasses": 300, "targetClasses": 600, "twinDraws": 40, "maxCandidates": 20 },
+    "holdout": { "role": "frozen one-time assessment", "minClasses": 300, "targetClasses": 600, "twinDraws": "40 standard plus 120 extra from an independently salted stream plus up to 64 corner settings of hiddenSupport; used once", "generatedOnlyAfterFreeze": true },
+    "disjointness": "pairwise disjoint seed blocks, disjoint base-world lineages, disjoint public-class digests (coarse digest), and disjoint from the 341 inspected classes and from every spent source",
+    "inspectedClasses": "the 341 classes (DEV288 3, block 951 153, block 952 185) may serve only as development fixtures/smoke tests. They are excluded from training, validation and holdout statistics. 'FRESH_*' labels on them are legacy and wrong; they are spent.",
+    "originFamilyCap": "no topology x resource x objective family may exceed 5% of the classes of a population",
+    "familyDisjointStressHoldout": "secondary, non-gating; evaluable only if at least 20 origin families are absent from exploration and validation"
+  },
+  "exclusion": {
+    "layer1": "stage3h-wider-action-feasibility-v1/exclusion/strict-index.mjs: loadStrictIndex, preflightNamespace({base,count}), preflightWorlds(hashes); fail-closed; replaces the closure validateSeedRange endpoint-only check",
+    "layer2": "public-class digest (PCD), built at I-2: relabel-invariant (equivalent views always give equal digests; collisions between non-equivalent views are accepted and over-exclude), D4-canonical (minimum over the 8 transforms), menu-order-canonical (menu sorted by keyV2, handles removed), digest fields stripped. Exclusion uses the coarse form (menu key multiset, comparator projections, public aggregates; sequence and timestamps dropped).",
+    "spentSourceCoverage": "regenerate-and-digest only DEV and diagnostic sources whose public views are already unsealed; every sealed or otherwise non-regenerable source is excluded at whole-seed-block level and is never regenerated. V4 sealed worlds and their labels are never used. Coverage percentage is reported.",
+    "mutual": "each H-W1 population registers its PCDs before the next population is generated"
+  },
+  "claims": {
+    "C1": "observed zero introductions on finite DEV data (counts only)",
+    "C2": "one-sided 95% upper bound on the class-level catastrophe-introduction rate: 1 - 0.05^(1/n) at zero events; the cluster-level bound over origin families is reported beside it and the larger is the headline",
+    "C3": "universal guarantee over admissible native states: NOT CLAIMED; requires a separate proof over the admissible hidden-state domain",
+    "C4": "generalization to the seeded generator population: limited to the stated frame, generator version, rule hash and seed namespace"
+  },
+  "boundsTable": { "n299": 0.00997, "n300": 0.00994, "n341": 0.00875, "n600": 0.00498, "perClassTwins67": 0.0437, "perClassTwins161": 0.0184 },
+  "evaluation": {
+    "invariance": { "relabel": "O-2R.1 identityViewTwinV2 plus 5 random relabellings per class, comparators recomputed; chosen key must be equal", "menuOrder": "5 random permutations plus reverse; chosen key equal", "d4": "7 non-identity transforms; chosen key must be the transformed key; claimed only if evaluator labels are first shown D4-equivariant on a sample (I-0)", "publicOnly": "twins of a class must give bit-identical output; policy runs with hidden accessors made to throw; negative-control policies (handle-order dependent, hidden-state dependent) must be detected", "tolerance": 0, "populations": ["exploration", "validation", "holdout"] },
+    "legality": "chosen action is in the native menu and accepted by the native legality check; zero illegal selections; no abstention",
+    "catastrophe": "per world and per class, vs S0 and vs Nexus-else-S0, over base plus twins; base-world-only count reported separately; both must be zero",
+    "regret": "class-level nreg is the equal-weight mean over the twin family (as in the feasibility lane); base-world-only and worst-case reported; delta vs each comparator, class-paired, cluster bootstrap over origin families (10000 resamples, seeded)",
+    "computeBudget": { "nativeSimulatorCallsAtDecision": 0, "decisionTimeMedianMs": 100, "decisionTimeMaxMs": 1000, "maxLabelledWorldsTotal": 300000, "maxWorkDiskGiB": 2, "minFreeDiskGiBToStart": 8, "network": "none" },
+    "reproducibility": "deterministic seeds derived by hash from registered labels; single-threaded deterministic aggregation; node version recorded; no wall clock in any decision; write-once evidence (writeExclusive); two independent runs must give byte-identical per-class decisions and aggregate digests; freeze record binds policy artifact hash, code hashes, contract hash, population plan hash"
+  },
+  "stopConditions": {
+    "invalidateRun": ["exclusion preflight failure or ambiguity", "forbidden input detected statically or dynamically", "any illegal action", "any access to sealed worlds or V4 labels", "reproducibility mismatch", "custody audit not passing at the start of a phase"],
+    "rejectCandidate": ["any introduction on validation", "any invariance violation", "regret evidence rule unmet on validation"],
+    "refuteOnHoldout": ["any introduction vs either comparator on the frozen policy (final; holdout spent)"],
+    "notSupported": ["holdout regret evidence rule unmet", "all candidates rejected", "population below minimum after the allocated namespace is exhausted (INSUFFICIENT_POPULATION; the rule and minimum n are not relaxed)", "budget exceeded (partial results exploratory only)"]
+  },
+  "notDone": {
+    "NEW_SELECTOR_IMPLEMENTED": false, "MODEL_TRAINED": false, "NEW_REGISTRATION": false, "SEALED_CAMPAIGN_EXECUTED": false, "REMOTE_PUSH": false, "A5_AUTHORIZED": false, "FULL_STAGE3H_CERTIFIED": false, "STAGE3I_STARTED": false, "CAN_DISPATCH": false, "CAN_MUTATE_LIVE_WORLD": false
+  }
+}

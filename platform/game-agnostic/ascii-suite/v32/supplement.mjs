@@ -1,0 +1,19 @@
+import {resolve} from 'node:path';import {DIR,verifyLocal} from './inheritance.mjs';import {PLAN} from './plan.mjs';import {manifest,digest,save,read,writer,checkManifest} from '../training-dev-v1/io.mjs';import {create,packet,step,terminal,metrics,replay,verifyReplay} from './kernel.mjs';import {createPolicy} from './policy.mjs';import {transferPolicy} from './transfer-policy.mjs';import {episode} from './runner.mjs';import {hash} from '../v3/common.mjs';
+const out=resolve(DIR,'runs','memory-transfer-pilot-001'),source=manifest(DIR,p=>/\.(mjs|html|js|css)$/.test(p)),old=resolve(DIR,'../training-dev-v1/runs/ascii3-offline-dev-001/models'),memory=read(resolve(old,'ROGUE_EPISODIC_ACTION_HEAD_V1.json')).model,occupancy=read(resolve(old,'RESCUE_HOSTILE_OCCUPANCY_V1.json')).model;
+save(resolve(out,'registration.json'),{source,sourceHash:digest(source),protected:verifyLocal(),beforeOutcomes:true,oldMemoryWeightHash:digest(memory.weights),transferWeightHash:digest(occupancy.weights),samples:2,sensors:['NORMAL','DELAYED','STALE'],retraining:false,qualification:'DEV_DESCRIPTIVE_ONLY; new catastrophes veto regardless of average return',inheritedNegative:'Prior Rescue→Rogue zero gain and Rogue V1 delayed/stale new catastrophes remain unchanged'});
+const results=[];
+for(const tier of [1,2,3])for(const sensor of ['NORMAL','DELAYED','STALE'])for(let i=0;i<2;i++){
+ const seed=(0xa6710000+tier*100003+i*7919)>>>0;
+ for(const policy of ['STRONG','NO_MEMORY','EPISODIC_MEMORY','EXPERIMENTAL_TRAINED_MEMORY','RESCUE_OCCUPANCY_ZERO_SHOT']){
+  const spec={id:'ROGUE-'+tier+'-'+sensor+'-'+i+'-'+policy,game:'roguelike',tier,seed,family:'V32_DEV_OFFSET',sensor,policy};let result;
+  if(policy!=='RESCUE_OCCUPANCY_ZERO_SHOT')result=episode(spec,{model:policy==='EXPERIMENTAL_TRAINED_MEMORY'?memory:null,out,verify:true});
+  else{
+   let w=create(spec.game,seed,tier,{family:spec.family,sensor}),p=transferPolicy(createPolicy('roguelike'),occupancy);const actions=[],hashes=[hash(w.inner)],publicLog=writer(resolve(out,'public',spec.id+'.jsonl'));let changes=0,ops=0;
+   while(!terminal(w)){const q=packet(w),d=p.decide(q);publicLog.push({packet:q,decision:d});changes+=+(d.contribution?.changed??false);ops+=d.work??0;actions.push(d.action);w=step(w,q,d.action);hashes.push(hash(w.inner));}
+   const r={schema:'V32_EVALUATOR_ONLY_REPLAY_V1',initial:{game:spec.game,seed,tier,family:spec.family,sensor},actions,hashes,final:metrics(w)},status=verifyReplay(r);save(resolve(out,'evaluator',spec.id+'.replay.json'),r);result={id:spec.id,spec,status:'COMPLETED',ticks:w.inner.tick,outcome:w.inner.result,metrics:metrics(w),actionChanges:changes,replay:status,public:publicLog.close(),retrainingOccurred:false,sourceWorld:'rescue',destinationWorld:'roguelike',modelId:occupancy.id,canonicalExpertInvocations:0,computePerDecision:ops/actions.length};save(resolve(out,'evaluator',spec.id+'.result.json'),result);
+  }
+  results.push(result);console.log(JSON.stringify({id:spec.id,success:result.metrics.success,cat:result.metrics.catastrophic,changes:result.actionChanges}));
+ }
+}
+for(const tier of [1,2,3])for(let i=0;i<2;i++)for(const policy of ['STRONG','PONG_FILTER_ONLY']){const spec={id:'PONG-SHOT-'+tier+'-'+i+'-'+policy,game:'pong',tier,seed:(0xa6820000+tier*100003+i*7919)>>>0,family:'V32_DEV_OFFSET',sensor:'NORMAL',policy};const r=episode(spec,{out,verify:true});results.push(r);console.log(JSON.stringify({id:spec.id,win:r.metrics.success,return:r.metrics.episodeReturn}));}
+save(resolve(out,'results.json'),{results,qualified:false,crossEpisodeLearning:'NOT_IMPLEMENTED_OR_QUALIFIED',otherTransferMappings:'NOT_SUPPORTED_BY_TRAINED_TARGETS; do not substitute action-head portability for shared intelligence',structuralOODStatus:'NOT_QUALIFIED'});save(resolve(out,'postflight.json'),{source:checkManifest(DIR,source),protected:verifyLocal()});

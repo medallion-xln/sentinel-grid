@@ -1,0 +1,217 @@
+{
+ "schema": "STAGE3H_HW1_I2_ALLOCATOR_TESTS_V1",
+ "authority": "R0",
+ "checkedAt": "2026-10-31T06:58:37.258Z",
+ "allocationSource": "FROZEN_FILE",
+ "allocationHash": "cc127b3ada27bf9d48a6c6718e19e1057599e4706e57d62e7f9efb4c64ce8b02",
+ "registrySeals": [
+  {
+   "name": "STUDIED_341",
+   "count": 341,
+   "seal": "449e2850b01106b2fe81564fbe24a5e94fc7371350a3ffe007884e7049d8fef6"
+  },
+  {
+   "name": "DEV_H2_BASE_WORLDS",
+   "count": 12844,
+   "seal": "8b612a00e0d6e2d0bbc15226350e050cf46c8e6a7dac3e78eef819611c109f72"
+  }
+ ],
+ "sourceHashes": {
+  "i2-allocator.mjs": "cf1cdbd35b0e5e601e8428cf7ff515b8867f47a30ccdc927e6695286d61596fd",
+  "i2-allocator-tests.mjs": "fd24c8127ebacd2d468663969f7c464de94d93f212f2b2d36960510ea191ea66",
+  "i2-registry.mjs": "103f1c54f82ae924e8dcdf25d55d97c4c6adb5b5c9f486c0ca27ac75c1b3fd6f"
+ },
+ "gates": [
+  {
+   "name": "FORBIDDEN_BLOCKS_731_734_951_952_REJECTED_BY_BOTH_LAYERS",
+   "pass": true,
+   "detail": {
+    "731": {
+     "failures": 2,
+     "forbiddenList": true,
+     "strictIndex": true
+    },
+    "732": {
+     "failures": 2,
+     "forbiddenList": true,
+     "strictIndex": true
+    },
+    "733": {
+     "failures": 12698,
+     "forbiddenList": true,
+     "strictIndex": true
+    },
+    "734": {
+     "failures": 12683,
+     "forbiddenList": true,
+     "strictIndex": true
+    },
+    "951": {
+     "failures": 2,
+     "forbiddenList": true,
+     "strictIndex": true
+    },
+    "952": {
+     "failures": 2,
+     "forbiddenList": true,
+     "strictIndex": true
+    }
+   }
+  },
+  {
+   "name": "A_RECORD_LISTING_A_FORBIDDEN_BLOCK_STILL_CANNOT_SCHEDULE_IT",
+   "pass": true,
+   "detail": {
+    "731": "OK",
+    "732": "OK",
+    "733": "OK",
+    "734": "OK",
+    "951": "OK",
+    "952": "OK"
+   }
+  },
+  {
+   "name": "PLANNING_AN_ALLOCATION_WITH_A_FORBIDDEN_BLOCK_THROWS",
+   "pass": true,
+   "detail": null
+  },
+  {
+   "name": "RANGE_TOUCHING_AN_EXCLUDED_BLOCK_IS_REJECTED",
+   "pass": true,
+   "detail": {
+    "INTO_731": "EXCLUDED_BLOCK_731:REGISTRATION_0364164C_BLOCK",
+    "INTO_951_FROM_950": "EXCLUDED_BLOCK_951:SPENT_DEV_BLOCK",
+    "OUT_OF_952": "EXCLUDED_BLOCK_952:SPENT_DEV_BLOCK"
+   }
+  },
+  {
+   "name": "RANGE_CONTAINING_RECORDED_OPEN_SEEDS_IS_REJECTED",
+   "pass": true,
+   "detail": {
+    "openSeeds": 6,
+    "failures": 6
+   }
+  },
+  {
+   "name": "RANGE_CONTAINING_A_V4_SEALED_SEED_IS_REJECTED",
+   "pass": true,
+   "detail": {
+    "seed": 733000000000
+   }
+  },
+  {
+   "name": "MALFORMED_RANGES_ARE_REJECTED",
+   "pass": true,
+   "detail": null
+  },
+  {
+   "name": "REPOSITORY_TEXT_HITS_REJECT_A_BLOCK",
+   "pass": true,
+   "detail": {
+    "hits": [
+     "983:983000000007",
+     "967:967000000004"
+    ]
+   }
+  },
+  {
+   "name": "TAMPERED_ALLOCATION_RECORDS_FAIL_CLOSED",
+   "pass": true,
+   "detail": {
+    "BLOCK_ADDED": "OK",
+    "BLOCK_MOVED_ACROSS_POPULATIONS": "OK",
+    "HOLDOUT_FLIPPED": "OK",
+    "FORBIDDEN_BLOCK_ADDED_AND_REHASHED": "OK",
+    "HOLDOUT_FLIPPED_AND_REHASHED": "OK",
+    "SCHEDULE_HASH_CHANGED": "OK",
+    "HASH_REMOVED": "OK"
+   }
+  },
+  {
+   "name": "MISSING_ALLOCATION_RECORD_FAILS_CLOSED",
+   "pass": true,
+   "detail": null
+  },
+  {
+   "name": "SCHEDULE_HASH_MISMATCH_IS_DETECTED_AT_SCHEDULING",
+   "pass": true,
+   "detail": null
+  },
+  {
+   "name": "UNALLOCATED_BLOCK_AND_WRONG_POPULATION_ARE_REFUSED",
+   "pass": true,
+   "detail": null
+  },
+  {
+   "name": "HOLDOUT_CANNOT_BE_SCHEDULED_AND_IS_NOT_ALLOCATED",
+   "pass": true,
+   "detail": null
+  },
+  {
+   "name": "OVERLAPPING_POPULATIONS_ARE_REJECTED",
+   "pass": true,
+   "detail": null
+  },
+  {
+   "name": "SCHEDULED_SEEDS_ARE_UNIQUE_INSIDE_THEIR_BLOCK_AND_DISJOINT_ACROSS_POPULATIONS",
+   "pass": true,
+   "detail": {
+    "blocks": 26,
+    "scheduledH2Worlds": 165984,
+    "dup": 0,
+    "outside": 0,
+    "nonH2": 0
+   }
+  },
+  {
+   "name": "NO_SCHEDULED_SEED_IS_AN_EXCLUDED_SEED",
+   "pass": true,
+   "detail": {
+    "checked": 165984,
+    "hits": 0
+   }
+  },
+  {
+   "name": "ADMISSION_REJECTS_SPENT_NONCANONICAL_AND_PCD_MATCHES_AND_ACCEPTS_CLEAN",
+   "pass": true,
+   "detail": {
+    "SPENT_WORLD_HASH": "STRICT_WORLD_INDEX",
+    "NON_CANONICAL_HASH": "STRICT_WORLD_INDEX",
+    "PCD_FINE_MATCH": "PCD_FINE_MATCH",
+    "PCD_COARSE_MATCH": "PCD_COARSE_MATCH",
+    "CLEAN": "ADMIT"
+   }
+  },
+  {
+   "name": "EVERY_ONE_OF_THE_109082_EXCLUDED_WORLDS_IS_REJECTED_BY_ADMISSION",
+   "pass": true,
+   "detail": {
+    "worlds": 109082
+   }
+  },
+  {
+   "name": "STRUCTURED_EXCLUSIONS_ARE_THE_EXPECTED_SET",
+   "pass": true,
+   "detail": {
+    "priorWorlds": 9407,
+    "priorSeeds": 116,
+    "v4SealedWorlds": 25377,
+    "devBaseWorlds": 25676,
+    "diagnosticConstructedWorlds": 48910,
+    "devOpenSeeds": 6,
+    "excludedBlocks": [
+     731,
+     732,
+     733,
+     734,
+     951,
+     952
+    ],
+    "distinctExcludedWorlds": 109082,
+    "excludedSeeds": 25499,
+    "multiSourceWorlds": 288
+   }
+  }
+ ],
+ "allPass": true
+}

@@ -1,0 +1,166 @@
+{
+ "schema": "STAGE3H_OWNER_GOVERNED_FLAKE_AUDIT_V1",
+ "inheritanceHead": "a2c7961767926a86752e940ca9b604040c4f62c0",
+ "originalFailureRecord": {
+  "date": "2026-10-20",
+  "test": "tests.mjs test 3: native rows reproduce the frozen confirmation core (selections and R/B/N scores) on development worlds",
+  "observed": "not ok 3; # pass 10; # fail 1",
+  "command": "node --test --test-reporter=tap tests-v2.mjs | grep ...; node --test --test-reporter=tap tests.mjs | grep -E \"^(not ok|# (pass|fail))\"",
+  "errorText": "NOT_CAPTURED: the grep filter excluded the error lines",
+  "context": "ran immediately after tests-v2.mjs in the same shell command; other desktop applications were running",
+  "subsequentPasses": "later runs passed; they do not erase or explain the failure and are not used as evidence of absence"
+ },
+ "staticScan": {
+  "modulesScanned": 72,
+  "nondeterminismSites": [
+   {
+    "file": "src/stage3f/prediction-reliability-v1.js",
+    "line": 910,
+    "source": "performance.now(",
+    "text": "const start = performance.now(); const value = fn(); return { value, ms: performance.now() - start };",
+    "class": "LATENCY_HELPER_RETURNS_MS_NO_ASSERTION"
+   },
+   {
+    "file": "src/stage3f/prediction-reliability-v1.js",
+    "line": 910,
+    "source": "performance.now(",
+    "text": "const start = performance.now(); const value = fn(); return { value, ms: performance.now() - start };",
+    "class": "LATENCY_HELPER_RETURNS_MS_NO_ASSERTION"
+   },
+   {
+    "file": "src/stage3f/world-state-v1.js",
+    "line": 75,
+    "source": "new Date(",
+    "text": "const parsed = new Date(value);",
+    "class": "DETERMINISTIC_PARSE_OF_GIVEN_STRING_NOT_A_CLOCK_READ"
+   },
+   {
+    "file": "stage3h-canonical-v1/adapters.mjs",
+    "line": 36,
+    "source": "performance.now(",
+    "text": "const start = performance.now();",
+    "class": "LATENCY_RECORDED_NOT_ASSERTED"
+   },
+   {
+    "file": "stage3h-canonical-v1/adapters.mjs",
+    "line": 44,
+    "source": "performance.now(",
+    "text": "payload: { raw, selected }, latency: { milliseconds: performance.now()-start, status:'DIAGNOSTIC' } }, packet.legalActions.map(a=>a.actionId));",
+    "class": "LATENCY_RECORDED_NOT_ASSERTED"
+   },
+   {
+    "file": "stage3h-canonical-v1/adapters.mjs",
+    "line": 47,
+    "source": "performance.now(",
+    "text": "const start = performance.now();",
+    "class": "LATENCY_RECORDED_NOT_ASSERTED"
+   },
+   {
+    "file": "stage3h-canonical-v1/adapters.mjs",
+    "line": 54,
+    "source": "performance.now(",
+    "text": "latency: { milliseconds: performance.now()-start, status:'DIAGNOSTIC' } }, packet.legalActions.map(a=>a.actionId));",
+    "class": "LATENCY_RECORDED_NOT_ASSERTED"
+   },
+   {
+    "file": "stage3h-canonical-v1/baseline.mjs",
+    "line": 10,
+    "source": "performance.now(",
+    "text": "export function currentBaseline(view){const t=performance.now(),progress=projectObjectiveProgress(view.observation),features=view.surface.map(e=>[...observableC",
+    "class": "LATENCY_RECORDED_NOT_ASSERTED"
+   },
+   {
+    "file": "stage3h-canonical-v1/baseline.mjs",
+    "line": 11,
+    "source": "performance.now(",
+    "text": "return {selected:topSet(scores).map(i=>view.surface[i].actionId),modelHash:S0_HASH,latencyMs:performance.now()-t,candidatesScored:features.length,columns:60,con",
+    "class": "LATENCY_RECORDED_NOT_ASSERTED"
+   },
+   {
+    "file": "stage3h-final-review-handoff/amendments/v3/runner.mjs",
+    "line": 23,
+    "source": "performance.now(",
+    "text": "const started = performance.now();",
+    "class": "CLOCK_ASSERTION_NOT_IN_TEST3_PATH (V3 lockFrozenPolicies; used by test 2)"
+   },
+   {
+    "file": "stage3h-final-review-handoff/amendments/v3/runner.mjs",
+    "line": 25,
+    "source": "performance.now(",
+    "text": "const nexus = invokeNexus(packet), baseline = currentBaseline(view), elapsedMs = performance.now() - started;",
+    "class": "CLOCK_ASSERTION_NOT_IN_TEST3_PATH (V3 lockFrozenPolicies; used by test 2)"
+   },
+   {
+    "file": "stage3h-owner-governed-v1/connector.mjs",
+    "line": 36,
+    "source": "performance.now(",
+    "text": "const started = performance.now();",
+    "class": "CLOCK_ASSERTION_THROWS_IN_TEST3_PATH (nativeLock ok(elapsedMs <= 1000))"
+   },
+   {
+    "file": "stage3h-owner-governed-v1/connector.mjs",
+    "line": 37,
+    "source": "performance.now(",
+    "text": "const nexus = invokeNexus(packet), baseline = currentBaseline(view), elapsedMs = performance.now() - started;",
+    "class": "CLOCK_ASSERTION_THROWS_IN_TEST3_PATH (nativeLock ok(elapsedMs <= 1000))"
+   }
+  ],
+  "unclassified": 0,
+  "throwCapableInTest3Path": [
+   "stage3h-owner-governed-v1/connector.mjs:36",
+   "stage3h-owner-governed-v1/connector.mjs:37"
+  ]
+ },
+ "classification": "Every nondeterminism site in test 3's 72-module path is classified; the only one that can turn a clock reading into a failure is stage3h-owner-governed-v1/connector.mjs:36, stage3h-owner-governed-v1/connector.mjs:37 (the frozen 1,000 ms S0+Nexus lock assertion). All other test 3 assertions compare deterministic functions of fixed inputs.",
+ "reproduction": {
+  "cores": 10,
+  "totalMemGiB": 16,
+  "loadAverageDuringInducedLoad": [
+   9.203125,
+   8.00537109375,
+   8.55517578125
+  ],
+  "idle": {
+   "label": "NO_INDUCED_LOAD",
+   "runs": 48,
+   "errors": [],
+   "mismatches": 48,
+   "lockMsMax": 103.11275000000023,
+   "lockMsP50": 20.3020419999998
+  },
+  "loaded": {
+   "label": "INDUCED_LOAD_30_BUSY_PROCESSES",
+   "runs": 48,
+   "errors": [],
+   "mismatches": 48,
+   "lockMsMax": 321.42795899999965,
+   "lockMsP50": 96.54658300000119
+  },
+  "computeLimitErrorsUnderLoad": 0,
+  "nonTimingErrorsAnyCondition": []
+ },
+ "rootCause": "NOT_REPRODUCED_UNDER_INDUCED_LOAD: the only clock-dependent throw site remains the 1,000 ms assertion, but the mechanism was not demonstrated",
+ "impact": {
+  "sourceIntegrity": "NONE (bound hashes verified independently)",
+  "actionLegality": "NONE (assertion precedes no action; legality checks are deterministic)",
+  "deterministicReplay": "NONE for decisions, truth and metrics; rows record wall-clock compute.elapsedMs, so row-file bytes are not reproducible and replay must exclude timing fields",
+  "numericalAnalysis": "NONE (analysis never reads timing fields)",
+  "nuisanceBijection": "NONE",
+  "runtimeTiming": "YES: an exceedance aborts the replication; its output directory already exists, so the once-only rule forbids a rerun and that replication is lost",
+  "registrationValidity": "NONE"
+ },
+ "integrityVerdict": "INTEGRITY_UNRESOLVED",
+ "timingLimitMs": 1000,
+ "timingLimitChanged": false,
+ "permittedExecutionEnvironment": {
+  "runtime": "exactly the registration-bound Node binary, versions, platform and launch flags (plain `node campaign-*.mjs`, no flags)",
+  "host": "the owner workstation that produced the bound runtime identity",
+  "load": "no other CPU-intensive process; 1-minute load average below 25% of logical cores at start; no concurrent node test or stage writer",
+  "power": "on AC power with sleep inhibited for the run (caffeinate)",
+  "process": "single process, replications A then B sequentially",
+  "memory": "analysis ceiling 1 GiB RSS and 30 min per replication (V3)",
+  "network": "not required",
+  "preflight": "runner preflight on development worlds must show S0+Nexus lock time p99 <= 250 ms and max <= 500 ms before any registered world is generated"
+ },
+ "authority": "R0"
+}

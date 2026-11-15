@@ -1,0 +1,65 @@
+{
+  "schema": "ASCII_WORLDS_2_PREREGISTRATION_V1",
+  "registeredOn": "2026-10-08",
+  "registeredBefore": "any run on the held-out seeds below",
+  "scope": "Bounded diagnostic evaluation of the ASCII Worlds 2.0 game suite. Not a Stage 3H experiment, not a competence certificate, not evidence of general intelligence. R0 local simulation only; frozen Stage 3F/3G artifacts untouched.",
+  "developmentSeedsUsedDuringTuning": {
+    "all games": [1, 2, 3, 4, 5, 6, 7, 9, 11, 12, 13, 21, 22, 23, 31, 42],
+    "platformer level-generator solvability scans": "0-299 (generator tuning) and 400-439 (test)",
+    "test placeholder for UNSEEN_SEED": [99001]
+  },
+  "heldOutSeeds": [81001, 81002, 81003, 81004, 81005, 81006, 81007, 81008, 81009, 81010],
+  "incumbentHeldOutSeeds": [81001, 81002, 81003],
+  "phase5Seeds": [81001, 81002, 81003, 81004, 81005],
+  "phase5UnseenSeedOffset": 100,
+  "difficultyTiers": { "pong": [1, 2, 3, 4, 5], "platformer": [1, 3, 5], "fighter": [1, 3, 5], "racing": [1, 3, 5] },
+  "phase5BaseDifficulty": { "pong": 3, "platformer": 3, "fighter": 3, "racing": 3 },
+  "fighterArchetypes": ["AGGRESSIVE", "DEFENSIVE", "COUNTER_ATTACKER", "ADAPTIVE"],
+  "controllers": {
+    "pong": { "incumbent": "INCUMBENT_ROOT_PUCT", "baselines": ["REACTIVE", "ANALYTIC_INTERCEPT", "UNIFORM_RANDOM"], "sentinel": ["SENTINEL", "SENTINEL_FILTER_ONLY"] },
+    "platformer": { "incumbent": "INCUMBENT_ROOT_PUCT", "baselines": ["RULE_BASELINE", "UNIFORM_RANDOM"], "sentinel": ["SENTINEL", "SENTINEL_NO_MEMORY"] },
+    "fighter": { "incumbent": "INCUMBENT_ROOT_PUCT", "baselines": ["RULE_BASELINE", "UNIFORM_RANDOM"], "sentinel": ["SENTINEL"] },
+    "racing": { "incumbent": "INCUMBENT_ROOT_PUCT", "baselines": ["CONSTANT_SPEED", "REACTIVE", "RULE_BASED", "UNIFORM_RANDOM"], "sentinel": ["SENTINEL", "SENTINEL_NO_MEMORY"] }
+  },
+  "computeBudgets": {
+    "INCUMBENT_ROOT_PUCT": "src/prime/root-puct.js unchanged; 96 simulations; one-step horizon; KNOWN_SIMULATOR_DIAGNOSTIC access; tick caps pong 5000, platformer 1500, fighter 900, racing 1500 (runs beyond are CENSORED_BY_EVALUATION_BUDGET)",
+    "pong SENTINEL": "least-squares flight fit over <=18 observations; 1 projection per tick; horizon = ticks to intercept",
+    "platformer SENTINEL": "<=101 complete-trajectory rollouts x 45 ticks per decision when an obstacle is within 26 units; otherwise one 20-tick safety rollout",
+    "fighter SENTINEL": "<=35 macro options (14 when airborne) x <=5 opponent hypotheses x 28 ticks per actionable decision",
+    "racing SENTINEL": "16 plans (4 aggression x 4 lateral) x 40 ticks per decision",
+    "baselines": "single rule evaluation per tick"
+  },
+  "metrics": {
+    "SUCCESS_RATE": "pong WIN share; platformer WIN (exit reached) share; fighter round WIN share; racing share finishing 1st",
+    "REWARD": "mean episode sum of the explicit local shaped reward (not DDV, not comparable across games)",
+    "REGRET": "one-step shaped-reward regret proxy sampled every 10 ticks; valid only as a one-step diagnostic, not as multi-step competence regret",
+    "DECISION_LATENCY": "mean and p95 wall-clock ms per decision (diagnostic)",
+    "REPEATED_FAILURE_RATE": "platformer: deaths/damage at an already-seen (checkpoint, section, cause) key over all damage; other games: share of episodes with a repeated identical failure class",
+    "ADAPTATION_RESPONSE": "per Phase 5 condition: change relative to FIRST_ENCOUNTER, with the trigger types that explain it",
+    "DIFFICULTY_SCALING": "success/primary metric by difficulty tier",
+    "OPPONENT_ROBUSTNESS": "fighter win rate per archetype; pong score differential vs adaptive opponent; racing placement vs changed rivals",
+    "UNSEEN_SEED_PERFORMANCE": "held-out seed results (all main tables use held-out seeds only)"
+  },
+  "phase5Conditions": ["FIRST_ENCOUNTER", "REPEATED_SIMILAR", "CHANGED_INITIAL_STATE", "CHANGED_OPPONENT", "UNSEEN_SEED", "INCREASED_DIFFICULTY", "DELAYED_OBSERVATION"],
+  "capabilityClasses": ["REACTIVE_CONTROL", "DETERMINISTIC_PLANNING", "WITHIN_EPISODE_ADAPTATION", "CROSS_ATTEMPT_ADAPTATION", "LEARNED_POLICY_ADAPTATION"],
+  "classificationRules": [
+    "Identical replays of a deterministic controller are DETERMINISTIC_REPETITION, never learning.",
+    "Behaviour change after failure counts as adaptation only when traceable to a logged trigger (failure signature, residual estimate, opponent-model shift, corner memory).",
+    "No controller in this suite updates weights; LEARNED_POLICY_ADAPTATION is not claimed for any controller.",
+    "The incumbent's KNOWN_SIMULATOR access is privileged diagnostic access, not deployable planning."
+  ],
+  "hypotheses": [
+    { "id": "H-PLAT-1", "claim": "Explicit failure memory reduces repeated deaths on unmodelled crosswind gaps.", "data": "held-out, difficulty 5", "success": "SENTINEL repeatedDeathRate <= 0.2 AND SENTINEL completion >= SENTINEL_NO_MEMORY completion + 0.3", "failure": "either condition not met" },
+    { "id": "H-PLAT-2", "claim": "Complete-trajectory planning outperforms the incumbent and the rule baseline.", "data": "held-out, difficulty 3", "success": "SENTINEL completion >= max(RULE_BASELINE, INCUMBENT_ROOT_PUCT) + 0.3", "failure": "otherwise" },
+    { "id": "H-PONG-1", "claim": "Long-range prediction adds return-rate value beyond the analytic baseline only under delayed/noisy observation.", "data": "held-out, all bands", "success": "SENTINEL_FILTER_ONLY returnRate - ANALYTIC_INTERCEPT >= 0.10 in bands 4 and 5 AND |difference| <= 0.03 in bands 1 and 2", "failure": "otherwise" },
+    { "id": "H-PONG-2", "claim": "Bounded shot selection improves score differential against the adaptive opponent.", "data": "held-out, band 5", "success": "SENTINEL scoreDifference - SENTINEL_FILTER_ONLY scoreDifference >= 0.5", "failure": "otherwise (development runs suggested this may fail)" },
+    { "id": "H-PONG-3", "claim": "Reported intercept uncertainty is calibrated.", "data": "held-out, bands 3-5, SENTINEL_FILTER_ONLY", "success": "mean 2-sigma coverage in [0.85, 0.99] and 1-sigma coverage in [0.55, 0.85]", "failure": "otherwise" },
+    { "id": "H-FIGHT-1", "claim": "Option rollouts beat the rule baseline across archetypes.", "data": "held-out, difficulty 5, all archetypes", "success": "SENTINEL round-win rate >= RULE_BASELINE + 0.2 AND higher mean damage efficiency for every archetype", "failure": "otherwise" },
+    { "id": "H-FIGHT-2", "claim": "Sentinel does not tie guard, attack and movement; the one-step incumbent does.", "data": "held-out, difficulty 3", "success": "SENTINEL crossCategoryTieRate <= 0.05 AND INCUMBENT crossCategoryTieRate >= 0.5", "failure": "otherwise" },
+    { "id": "H-FIGHT-3", "claim": "The fighter advantage is not only reaction speed.", "data": "Phase 5 DELAYED_OBSERVATION (3-tick delay, 10% stale), difficulty 3", "success": "SENTINEL win rate >= 0.5 under delayed observation", "failure": "otherwise" },
+    { "id": "H-RACE-1", "claim": "Rivals are comparably paced (no structural deficit).", "data": "held-out, difficulty 3, RULE_BASED player", "success": "mean finish spread (last car minus first car, ticks) <= 10% of the winner's race time AND RULE_BASED win share in [0.1, 0.6]", "failure": "otherwise" },
+    { "id": "H-RACE-2", "claim": "MPC with the vehicle model beats the rule-based racer.", "data": "held-out, difficulties 3 and 5", "success": "SENTINEL mean placement <= RULE_BASED - 0.3 AND SENTINEL off-track ticks <= RULE_BASED in both tiers", "failure": "otherwise" },
+    { "id": "H-RACE-3", "claim": "Lap-to-lap corner memory reduces off-track time on wet tracks.", "data": "held-out, difficulty 5", "success": "SENTINEL mean off-track ticks < SENTINEL_NO_MEMORY mean off-track ticks", "failure": "otherwise" }
+  ],
+  "analysisPlan": "Report every controller separately per game and tier; no cross-game pooling; report failed hypotheses unchanged; no post-hoc criterion changes. Any later criterion change requires a new registration file and must be disclosed."
+}

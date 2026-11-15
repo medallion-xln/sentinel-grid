@@ -1,0 +1,63 @@
+{
+ "schema": "STAGE3H_EXECUTION_PREFLIGHT_REFUSAL_V1",
+ "registration": "0364164cb05e140da6265c89d830388b84dafed7ef5f3abf47ad6afb2833b01f",
+ "registrationCommit": "e009344c2c973a329a4b88582f90b9e58e15abce",
+ "authorizationCommit": "885f803bff3779d63c0c27ca9c5296d971dc268a",
+ "date": "2026-10-21",
+ "verdict": "PREFLIGHT_REFUSED",
+ "reason": "MACHINE_NOT_IDLE: registered O-5 preflight requires 1-minute load average <= 25% of logical cores (2.5 on 10 cores)",
+ "runnerRefusal": "PREFLIGHT_LOAD_TOO_HIGH:6.55/10",
+ "runnerStage": "preflight() before the replication directory is created",
+ "loadWatch20min": [
+  "00:11:38 load1=6.25",
+  "00:12:38 load1=5.94",
+  "00:13:38 load1=7.03",
+  "00:14:38 load1=6.93",
+  "00:15:38 load1=11.21",
+  "00:16:38 load1=9.81",
+  "00:17:38 load1=7.13",
+  "00:18:38 load1=6.66",
+  "00:19:38 load1=5.82",
+  "00:20:38 load1=6.84",
+  "00:21:38 load1=4.92",
+  "00:22:38 load1=5.45",
+  "00:23:38 load1=5.22",
+  "00:24:38 load1=8.14",
+  "00:25:38 load1=7.54",
+  "00:26:38 load1=5.69",
+  "00:27:38 load1=8.30",
+  "00:28:38 load1=6.85",
+  "00:29:38 load1=7.31",
+  "00:30:39 load1=6.55"
+ ],
+ "loadRange": [
+  4.92,
+  11.21
+ ],
+ "topProcessesObserved": [
+  "Google Chrome Helper ~85% CPU",
+  "LingCode up to ~44%",
+  "kernel_task 28-48% (possibly thermal management)",
+  "WindowServer ~16-21%",
+  "Codex Service/Renderer ~12-15% each",
+  "WebKit ~22%",
+  "Docker / Virtualization VM"
+ ],
+ "otherChecksPassedBeforeRefusal": [
+  "registration commit and hash exact",
+  "133 bound sources",
+  "runtime identity",
+  "inheritance and 14,447 protected files",
+  "owner approval and execution authorization",
+  "no prior consumption, no partial campaign",
+  "A/B namespaces and 9,407 exclusions",
+  "clean clone at 885f803b reproducible",
+  "OOD connector dry run: 0 aborts in 480 spent cells",
+  "AC power"
+ ],
+ "replicationA": "NOT_STARTED_NOT_CONSUMED",
+ "replicationB": "NOT_ATTEMPTED",
+ "registeredWorldsGenerated": 0,
+ "thresholdChanged": false,
+ "authority": "R0"
+}

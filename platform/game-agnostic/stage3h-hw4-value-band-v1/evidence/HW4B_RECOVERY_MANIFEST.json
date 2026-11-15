@@ -1,0 +1,134 @@
+{
+ "schema": "STAGE3H_HW4B_RECOVERY_MANIFEST_V1",
+ "authority": "R0",
+ "stage": "H-W4B Phase 1",
+ "generatedAt": "2026-11-11T18:32:05.181Z",
+ "repoHead": "9175a5558eff2de537a610af7c1d4da15e9cc1c4",
+ "importCut": {
+  "file": "platform/game-agnostic/stage3h-hw1-dev-v1/public-projection.mjs",
+  "committedHeadSha256": "2d1e70611b26005179cc50e21a9d6ec5eae59704d7db36e722bb28b53eacb9ca",
+  "workingTreeSha256": "c4f9532e0771e025513122052128b0d14185e4abcde3ace9de9de5d77db6c099",
+  "status": "UNCOMMITTED_WORKING_TREE_MODIFICATION",
+  "unifiedDiffSha256": "93c0b22fe8ca59d4c329c5180008cf17880dae2d0fe718e0b3ff3ef44edc3653",
+  "unifiedDiff": "diff --git a/platform/game-agnostic/stage3h-hw1-dev-v1/public-projection.mjs b/platform/game-agnostic/stage3h-hw1-dev-v1/public-projection.mjs\nindex 88f89808..8e149f13 100644\n--- a/platform/game-agnostic/stage3h-hw1-dev-v1/public-projection.mjs\n+++ b/platform/game-agnostic/stage3h-hw1-dev-v1/public-projection.mjs\n@@ -9,8 +9,9 @@\n //   canonicalFrame          the D4 frame whose identity-free structure digest is minimal; canonicalActionKey orders actions in that frame\n //   traceReads              Proxy wrapper that records which view paths a function actually read (allowlist enforcement)\n import { createHash } from 'node:crypto';\n-import { orientDirection, DIRECTION_DELTAS } from '../src/forge-symmetric/orientation-symmetric-v1.js';\n-import { D4_ELEMENTS } from './transforms.mjs';\n+import { orientDirection, DIRECTION_DELTAS, ORIENTATIONS } from '../src/forge-symmetric/orientation-symmetric-v1.js';\n+\n+const D4_ELEMENTS = ORIENTATIONS; // 8 dihedral labels; identity with transforms.mjs D4_ELEMENTS, imported from its definition site\n \n export const PROJECTION_VERSION = 'HW1_PUBLIC_PROJECTION_V1';\n export const KEY_VERSION = 'HW1_ACTION_KEY_V2';\n",
+  "note": "Code only (one import line replaced by its definition-site constant). The diff is embedded so the exact evaluated revision is recoverable from HEAD + this record. Committing it remains an owner decision."
+ },
+ "uncommittedPopulationManifests": [
+  {
+   "file": "evidence/HW4_POPULATION_EXPLORATION.json",
+   "sha256": "5af97e58e4840a5fb8ae2c928ff53fb23125ee1ad03730db746c3d70651aef14",
+   "bytes": 643397,
+   "tracked": false,
+   "classCount": 1000,
+   "classListDigest": "b09a015b84af74eea8b980b46c02688ab90fc0a2682039bb972e034e3f5fe6ff",
+   "registrySeal": "902070377d1b05446c429a9131c8331b53a5fa0b31590360aa7fff9053e3f824",
+   "registrySha256": "327ca410de87cf1183c867ab0e6baa700696d7bcfdc84c97411f352439c205d7",
+   "dataFiles": [
+    {
+     "file": "range-0-1000-shard-0-of-9.json",
+     "sha256": "3345fd292674dbf527da71615146befebe606719b2c13c40d6fd2beaac04c94f",
+     "bytes": 5942813
+    },
+    {
+     "file": "range-0-1000-shard-1-of-9.json",
+     "sha256": "52efc277e7d3dc8dc5a8327af185032b21212f11280a6f30589602ebe7ac953a",
+     "bytes": 5974565
+    },
+    {
+     "file": "range-0-1000-shard-2-of-9.json",
+     "sha256": "79ea5d7bfa0a8a32a29ca9adce0dd482ad5706b24a2a85048472b47a0bcc3b9d",
+     "bytes": 5837694
+    },
+    {
+     "file": "range-0-1000-shard-3-of-9.json",
+     "sha256": "1fe711d62097cb7481da1f49c999bae60d00454ebeb04f35a8479c8ca53a97ce",
+     "bytes": 5543050
+    },
+    {
+     "file": "range-0-1000-shard-4-of-9.json",
+     "sha256": "6d7b90090e5e655d90ffa82197a4f7eb8c780fda1c836ba6f5d6ce744e557a61",
+     "bytes": 5850551
+    },
+    {
+     "file": "range-0-1000-shard-5-of-9.json",
+     "sha256": "eeb81d1f836443648e20eb2c2be60e6002897149443fe215b4c052cf424a92b2",
+     "bytes": 5806311
+    },
+    {
+     "file": "range-0-1000-shard-6-of-9.json",
+     "sha256": "9fdd14ca07fece089b53cb58c78fb44759efaf6f11c3d4d4ca609e60a5a7efe2",
+     "bytes": 5796809
+    },
+    {
+     "file": "range-0-1000-shard-7-of-9.json",
+     "sha256": "23eefe67fbabf57f53b56a8a710896b4d2b2199736362ea41b8a1ecd892b1d42",
+     "bytes": 6014820
+    },
+    {
+     "file": "range-0-1000-shard-8-of-9.json",
+     "sha256": "974d83bb4f7c9d27793f62b49eadd9a773cbbf6c3ed1f5f2d7b581c059b244d2",
+     "bytes": 5792926
+    }
+   ],
+   "contentEmbedded": false
+  },
+  {
+   "file": "evidence/HW4_POPULATION_VALIDATION.json",
+   "sha256": "2779c2c568d2fb1d2d4fe652a0064c8ca2c1672c4dc2630b9c459985cd62a286",
+   "bytes": 386906,
+   "tracked": false,
+   "classCount": 600,
+   "classListDigest": "4e9ba62bd9cb20019f5157f32ab64e5dc8bab3af19e453630231cb491bc5f418",
+   "registrySeal": "388921b4ee0b0ef3cfc86cb949d1221a87ac37c520fd86d971bc8e510c124e65",
+   "registrySha256": "7c030fd42d5fe76c92cec05780408d028c7a18e4b23da1b2914e2c277af83422",
+   "dataFiles": [
+    {
+     "file": "range-0-600-shard-0-of-8.json",
+     "sha256": "86fd3661c12a92d91b0d6421fa9a22aaec906e7f8e5e653923a8680bb4967dd1",
+     "bytes": 3954882
+    },
+    {
+     "file": "range-0-600-shard-1-of-8.json",
+     "sha256": "aac70bcca18f71f644a26eb8697134f488a5481e3f00ff412699dba047eecdba",
+     "bytes": 3945168
+    },
+    {
+     "file": "range-0-600-shard-2-of-8.json",
+     "sha256": "31d4fcd569be44a7b9515900f2e1465241415bcb838202cdf87b6816923c43e7",
+     "bytes": 3938633
+    },
+    {
+     "file": "range-0-600-shard-3-of-8.json",
+     "sha256": "d4e9de82ae471e06ac8c9fd75bfcd67fe4ab1a668ffa2aac474e5ddaffc28e3a",
+     "bytes": 3967453
+    },
+    {
+     "file": "range-0-600-shard-4-of-8.json",
+     "sha256": "47eb321b05195fe267b7c05ddbf67704dc4185ffb63346eec98b3ddbea230ca8",
+     "bytes": 3997258
+    },
+    {
+     "file": "range-0-600-shard-5-of-8.json",
+     "sha256": "4cbc32bc6db0cc926823c1b0526312ff4aaf5ae226d05b97e64e4f4f3415dc03",
+     "bytes": 3952322
+    },
+    {
+     "file": "range-0-600-shard-6-of-8.json",
+     "sha256": "35bcba2df998613d5563d42c7f518956dcbe46b293f8c5da8803bf940b984a40",
+     "bytes": 3954689
+    },
+    {
+     "file": "range-0-600-shard-7-of-8.json",
+     "sha256": "8259f780c2a695dab1f5c050e35526c042774a958447f5b78737fb0f59c923a2",
+     "bytes": 4020053
+    }
+   ],
+   "contentEmbedded": false
+  }
+ ],
+ "protectedMaterialNote": "Population manifests carry seeds and world hashes and are recorded by identity only (hash, size, digests). Their class data files (gitignored work/classes) carry evaluator truth and are likewise recorded by hash only. No protected content is reproduced here.",
+ "privilegedDataFilesPresentAndMatching": {
+  "EXPLORATION": true,
+  "VALIDATION": true
+ }
+}

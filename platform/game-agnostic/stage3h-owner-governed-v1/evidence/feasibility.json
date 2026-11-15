@@ -1,0 +1,188 @@
+{
+ "schema": "STAGE3H_OWNER_GOVERNED_FEASIBILITY_V1",
+ "design": {
+  "proposedWorlds": 25536,
+  "perReplication": 12768,
+  "independentUnits": "every scheduled world is a distinct seeded unit; twins are not counted (verified: 9,119 executed and 288 development worlds all semantically distinct)"
+ },
+ "runtime": {
+  "msPerWorldWithTwins": 388.1488624131946,
+  "nativeMinutesTotal": 165.1961558430556,
+  "nativeMinutesPerReplication": 82.5980779215278,
+  "analysisMinutesPerPanelAt20000": 1.3734866250000002,
+  "analysisMinutesPerReplication": 6.867433125000001,
+  "v3AnalysisCeilingMinutesPerReplication": 30,
+  "analysisWithinCeiling": true,
+  "measuredOn": "synthetic 48x52 panel at 1,000 resamples, linear extrapolation to 20,000"
+ },
+ "power": {
+  "alphaOneSidedPerPrimary": 0.00125,
+  "power": 0.9,
+  "planningSds": {
+   "known": 0.3397015,
+   "OOD": 0.5591355
+  },
+  "planningSdSource": "Algebra only; inherited published unsealed planning SDs; no game rows opened",
+  "table": {
+   "HOLDOUT_KNOWN_COMPOSITION": {
+    "planningSd": 0.3397015,
+    "nPerBand": 1248,
+    "nFull": 2496,
+    "mde90_A_or_B_band": 0.04139544289791329,
+    "mde90_C_or_D_full": 0.029270998383335,
+    "impliedLocalEffectForFullMateriality": "C = A/2 and D = B/2: full-population point <= -0.02 requires a local effect <= -0.04"
+   },
+   "OOD_LEVEL": {
+    "planningSd": 0.5591355,
+    "nPerBand": 1248,
+    "nFull": 2496,
+    "mde90_A_or_B_band": 0.06813529425818314,
+    "mde90_C_or_D_full": 0.048178928608102134,
+    "impliedLocalEffectForFullMateriality": "C = A/2 and D = B/2: full-population point <= -0.02 requires a local effect <= -0.04"
+   },
+   "OOD_ROLES": {
+    "planningSd": 0.5591355,
+    "nPerBand": 1248,
+    "nFull": 2496,
+    "mde90_A_or_B_band": 0.06813529425818314,
+    "mde90_C_or_D_full": 0.048178928608102134,
+    "impliedLocalEffectForFullMateriality": "C = A/2 and D = B/2: full-population point <= -0.02 requires a local effect <= -0.04"
+   },
+   "OOD_OBJECTIVES": {
+    "planningSd": 0.5591355,
+    "nPerBand": 1296,
+    "nFull": 2592,
+    "mde90_A_or_B_band": 0.0668616250494616,
+    "mde90_C_or_D_full": 0.04727830847362662,
+    "impliedLocalEffectForFullMateriality": "C = A/2 and D = B/2: full-population point <= -0.02 requires a local effect <= -0.04"
+   },
+   "OOD_SHAPES": {
+    "planningSd": 0.5591355,
+    "nPerBand": 1344,
+    "nFull": 2688,
+    "mde90_A_or_B_band": 0.0656568124021957,
+    "mde90_C_or_D_full": 0.04642637728068559,
+    "impliedLocalEffectForFullMateriality": "C = A/2 and D = B/2: full-population point <= -0.02 requires a local effect <= -0.04"
+   }
+  },
+  "caveat": "Planning SDs are pooled inherited unsealed planning values, not estimates of the band-local R-B or R-N SDs (V2 power review limits). No prior outcome effect size is used."
+ },
+ "admission": {
+  "source": "rejection metadata of executed 3H.1-F panels (identity fields only); plug-in Jeffreys rate per cell",
+  "populations": {
+   "OOD_LEVEL": {
+    "v3RepetitionsPerCell": 52,
+    "cellAdmissionFloor": 26,
+    "observedRejectionRate": 0,
+    "expectedAccepted": 2496,
+    "effectiveNFloor": 2100,
+    "probabilityAnyCellBelowFloorPerReplication": 0,
+    "worstCell": {
+     "cell": "chain/bare/reach_target/H0/6",
+     "observedRejected": 0,
+     "observedScheduled": 38,
+     "plugInRejectionRate": 0.01282051282051282,
+     "pFail": 2.8670129842486094e-37
+    }
+   },
+   "OOD_ROLES": {
+    "v3RepetitionsPerCell": 26,
+    "cellAdmissionFloor": 13,
+    "observedRejectionRate": 0,
+    "expectedAccepted": 2496,
+    "effectiveNFloor": 2100,
+    "probabilityAnyCellBelowFloorPerReplication": 2.1316282072803006e-14,
+    "worstCell": {
+     "cell": "chain/redundant/reach_target/H0/1",
+     "observedRejected": 0,
+     "observedScheduled": 19,
+     "plugInRejectionRate": 0.025,
+     "pFail": 2.7105903921423654e-16
+    }
+   },
+   "OOD_OBJECTIVES": {
+    "v3RepetitionsPerCell": 18,
+    "cellAdmissionFloor": 9,
+    "observedRejectionRate": 0.009081196581196582,
+    "expectedAccepted": 2568,
+    "effectiveNFloor": 2100,
+    "probabilityAnyCellBelowFloorPerReplication": 0.07709722361195992,
+    "worstCell": {
+     "cell": "bridge/bare/repair_and_maintain_redundancy/H2/3",
+     "observedRejected": 4,
+     "observedScheduled": 13,
+     "plugInRejectionRate": 0.32142857142857145,
+     "pFail": 0.03391234685203211
+    }
+   },
+   "OOD_SHAPES": {
+    "v3RepetitionsPerCell": 14,
+    "cellAdmissionFloor": 7,
+    "observedRejectionRate": 0.016145833333333335,
+    "expectedAccepted": 2645,
+    "effectiveNFloor": 2100,
+    "probabilityAnyCellBelowFloorPerReplication": 0.4088871579326465,
+    "worstCell": {
+     "cell": "tree/defended/restore_and_protect/H0/1",
+     "observedRejected": 4,
+     "observedScheduled": 10,
+     "plugInRejectionRate": 0.4090909090909091,
+     "pFail": 0.1674026325079014
+    }
+   },
+   "HOLDOUT_KNOWN_COMPOSITION": {
+    "v3RepetitionsPerCell": 52,
+    "cellAdmissionFloor": 26,
+    "observedRejectionRate": 0,
+    "expectedAccepted": 2496,
+    "effectiveNFloor": 2100,
+    "probabilityAnyCellBelowFloorPerReplication": 0,
+    "worstCell": {
+     "cell": "chain/bare/reach_target/H0/1",
+     "observedRejected": 0,
+     "observedScheduled": 12,
+     "plugInRejectionRate": 0.038461538461538464,
+     "pFail": 1.1605319542135635e-24
+    }
+   }
+  }
+ },
+ "catastropheBound": {
+  "zeroIntroductionUpperAtFamily40": {
+   "HOLDOUT_KNOWN_COMPOSITION": {
+    "H0band": 0.005341940216960106,
+    "full": 0.0026745467085280694
+   },
+   "OOD_LEVEL": {
+    "H0band": 0.005341940216960106,
+    "full": 0.0026745467085280694
+   },
+   "OOD_ROLES": {
+    "H0band": 0.005341940216960106,
+    "full": 0.0026745467085280694
+   },
+   "OOD_OBJECTIVES": {
+    "H0band": 0.005144600399781041,
+    "full": 0.0025756171016175777
+   },
+   "OOD_SHAPES": {
+    "H0band": 0.004961321226838233,
+    "full": 0.002483745108300628
+   }
+  },
+  "required": 0.02,
+  "potentialIntroductionsAllowed": 0
+ },
+ "resolution": {
+  "tailQuantile": 0.00125,
+  "drawsInTailAt20000": 25,
+  "note": "nearest-rank percentile; 25 draws define each adjusted primary bound"
+ },
+ "inconclusiveRisks": [
+  "full-population C/D materiality needs local effects <= -0.04",
+  "B_H2_AVOIDANCE has no planning effect size without reading prior outcomes",
+  "any single introduced catastrophe vetoes",
+  "every one of 40 primaries in 10 panels must pass",
+  "per-cell admission floor in sparse OOD cells"
+ ]
+}

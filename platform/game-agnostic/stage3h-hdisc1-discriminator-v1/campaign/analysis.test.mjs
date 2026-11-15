@@ -1,0 +1,5 @@
+import test from 'node:test';import assert from 'node:assert/strict';
+import {signTest,paired,holm,interval} from './analysis.mjs';
+test('exact one-sided discordance probabilities match analytical cases',()=>{assert.equal(signTest(0,0),1);assert.ok(Math.abs(signTest(5,0)-1/32)<1e-14);assert.equal(signTest(0,5),1);assert.ok(signTest(900,0)>0);assert.ok(signTest(900,0)<1e-200);assert.throws(()=>signTest(-1,2));});
+test('paired and clustered criteria agree for uniformly beneficial data',()=>{const a=Array(40).fill(0),b=Array(40).fill(1),f=a.map((_,i)=>'f'+i);const r=paired(a,b,f);assert.equal(r.delta.point,-1);assert.equal(r.delta.upper95,-1);assert.equal(r.reject,true);assert.equal(r.relativeReduction,1);assert.deepEqual(r,paired(a,b,f));});
+test('null and one-family evidence cannot become a qualified improvement',()=>{const a=Array(30).fill(0);const r=paired(a,a,a.map((_,i)=>'f'+i));assert.equal(r.reject,false);assert.equal(r.relativeReduction,null);assert.throws(()=>interval([1,2],['one','one']),/MULTIPLE_FAMILIES/);assert.deepEqual(holm({a:.01,b:.03,c:.2}),{a:.03,b:.06,c:.2});});

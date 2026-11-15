@@ -1,0 +1,243 @@
+{
+ "schema": "STAGE3H_SUCCESSOR_DEFECT_REPRODUCTION_V1",
+ "predecessorRegistration": "0364164cb05e140da6265c89d830388b84dafed7ef5f3abf47ad6afb2833b01f",
+ "inheritanceHead": "af2244718ea74a9909af2d8a0a17752d446ee776",
+ "witness": {
+  "source": "stage3h1f-development/results/OOD_ROLES (spent; in the 9,407-world prior exclusion record)",
+  "seed": 202610203007,
+  "cell": "star/industrial/restore_and_protect/H2/1",
+  "registeredWorld": false
+ },
+ "sealedAWorldIdentified": false,
+ "sealedAWorldInferred": false,
+ "reproduced": true,
+ "generation": {
+  "generatorChain": "generateScenarioSymmetricV1 -> generateScenarioV3 -> generateScenarioV2 (src/forge/scenarios-v2.js)",
+  "topologyShape": "star",
+  "topologyNodeCount": 9,
+  "topologyEdgeCount": 8,
+  "dependsOnInConfig": 9,
+  "nonTopologyDependsOn": 1,
+  "primaryObjectiveEntity": "n0",
+  "failedStructuralNodes": [
+   "n5"
+  ],
+  "substitutesFor": [
+   "substitutes substitute-0 n5",
+   "substitutes substitute-1 n5"
+  ],
+  "duplicatedRelations": {
+   "config": [
+    {
+     "id": "dependsOn n0 n5",
+     "n": 2
+    }
+   ],
+   "initialWorld": [
+    {
+     "id": "dependsOn n0 n5",
+     "n": 2
+    }
+   ],
+   "afterWarmup": [
+    {
+     "id": "dependsOn n0 n5",
+     "n": 2
+    }
+   ]
+  },
+  "validatorValid": true,
+  "warmupTicks": 24,
+  "taskPreserved": true,
+  "sourceSites": {
+   "topologyDedup": "src/forge/topology.js generateTopology add(): skips an edge already present; star = add(dependsOn, n0, n_i) for every leaf",
+   "restorePush": "src/forge/scenarios-v2.js:218-222: if goals include 'restore', failed = random structural node; relations.push({type:'dependsOn', from: primaryNode.id, to: failed.id}) with NO existence check",
+   "bypassEnumeration": "src/forge/kernel.js:277-288 legalActions: one BYPASS per dependsOn relation whose target is failed, in range (1) and has a live substitute, energy >= 3; no uniqueness check",
+   "warmup": "src/forge/warmup.js runTemporalWarmup steps WAIT only, so warm-up neither creates nor removes the duplicate"
+  }
+ },
+ "menus": {
+  "kernelLegalActions": {
+   "size": 10,
+   "distinct": 9,
+   "duplicated": [
+    {
+     "id": "614c143e61ea92283a9a55533001eeb347484e625bc927d229d7233e7457fb5e",
+     "n": 2
+    }
+   ]
+  },
+  "symmetricSurface": {
+   "size": 10,
+   "distinct": 9,
+   "duplicated": [
+    {
+     "id": "614c143e61ea92283a9a55533001eeb347484e625bc927d229d7233e7457fb5e",
+     "n": 2
+    }
+   ]
+  },
+  "publicViewSurface": {
+   "size": 10,
+   "distinct": 9,
+   "duplicated": [
+    {
+     "id": "614c143e61ea92283a9a55533001eeb347484e625bc927d229d7233e7457fb5e",
+     "n": 2
+    }
+   ]
+  },
+  "decisionPacket": {
+   "size": 10,
+   "distinct": 9,
+   "duplicated": [
+    {
+     "id": "614c143e61ea92283a9a55533001eeb347484e625bc927d229d7233e7457fb5e",
+     "n": 2
+    }
+   ]
+  },
+  "duplicatedDescriptor": [
+   {
+    "actionId": "forge/bypass",
+    "actionType": "BYPASS",
+    "actorId": "actor",
+    "target": {
+     "kind": "entity",
+     "id": "n5"
+    },
+    "parameters": {
+     "dependent": "n0"
+    }
+   }
+  ],
+  "duplicatedDescriptorsDeepEqual": true,
+  "predecessorNativeLockError": "NATIVE_MENU_MISMATCH",
+  "policyInvoked": false
+ },
+ "semantics": {
+  "copies": 2,
+  "childWorldHashes": [
+   "cb07f1287196e96ed38177e722b34026cb5474767849a94e17e42b13838f11c4",
+   "cb07f1287196e96ed38177e722b34026cb5474767849a94e17e42b13838f11c4"
+  ],
+  "identicalTransition": true,
+  "childDuplicatedRelations": [],
+  "childDependsOnN0ToN5": 0,
+  "kernelRule": "src/forge/kernel.js:440-459 BYPASS: filters out ALL dependsOn dependent->target relations, pushes one dependent->substitute"
+ },
+ "twinViews": {
+  "D4:R0": "10/9",
+  "D4:R90": "10/9",
+  "D4:R180": "10/9",
+  "D4:R270": "10/9",
+  "D4:MX": "10/9",
+  "D4:MY": "10/9",
+  "D4:MD": "10/9",
+  "D4:MA": "10/9",
+  "IDENTITY": "10/9",
+  "ORDER": "10/9"
+ },
+ "historical": {
+  "record": {
+   "stage": "3H.1-F",
+   "population": "OOD_ROLES",
+   "recordId": "b819556e1dc0c7494040c55d9c2a09266228b6adcbdcf03e9ba838a35c2dd926",
+   "worldHash": "09c6e25fe3ebf76ff4106cfa775e4db46f0b26984be3d74bd9ffc0290af8552c",
+   "worldHashReproduced": true,
+   "menuSize": 10
+  },
+  "admittedAndScored": true,
+  "uniquenessCheckInConfirmCore": false,
+  "biasedFields": {
+   "optimalActionKeys": [
+    "614c143e61ea92283a9a55533001eeb347484e625bc927d229d7233e7457fb5e",
+    "614c143e61ea92283a9a55533001eeb347484e625bc927d229d7233e7457fb5e"
+   ],
+   "tieCount": 2,
+   "tieCountDistinct": 1,
+   "uniformRandomHitRecorded": 0.2,
+   "uniformRandomHitOverDistinct": 0.1111111111111111
+  },
+  "deterministicArmsAffectedByDuplicateInScoring": false,
+  "why": "scoreSet takes max/min utility and the first truth entry per selected id; a duplicated identical branch changes neither, so R/B/N regret, hit and catastrophe are unchanged by the duplicate entry. Whether S0/Nexus would have SELECTED differently on a 9-entry menu is not testable without deduplicating native actions (prohibited) and is not tested.",
+  "oodRolesPrimaryContrast": {
+   "published": {
+    "n": 1824,
+    "deltaNormalizedRegret": -0.20950272933559252,
+    "sign": {
+     "better": 641,
+     "worse": 27,
+     "ties": 1156
+    },
+    "catastrophes": {
+     "S0": 3,
+     "routed": 3
+    }
+   },
+   "witnessRowContrast": 0,
+   "withoutWitness": {
+    "n": 1823,
+    "deltaNormalizedRegret": -0.20961765129353854,
+    "sign": {
+     "better": 641,
+     "worse": 27,
+     "ties": 1155
+    },
+    "catastrophes": {
+     "S0": 3,
+     "routed": 3
+    }
+   },
+   "note": "At H2 the frozen rule selects S0, so the witness row contributes exactly 0 to routed-minus-S0; excluding it changes the mean by 1.1e-4, removes one tie, and changes no catastrophe count. STRUCTURAL_OOD_CONFIRMED is unaffected."
+  }
+ },
+ "roleTable": [
+  {
+   "id": "bare",
+   "substitutes": 0
+  },
+  {
+   "id": "defended",
+   "substitutes": 0
+  },
+  {
+   "id": "redundant",
+   "substitutes": 3
+  },
+  {
+   "id": "scarce",
+   "substitutes": 1
+  },
+  {
+   "id": "populated",
+   "substitutes": 1
+  },
+  {
+   "id": "industrial",
+   "substitutes": 2
+  }
+ ],
+ "bypassCapableRolesByRegisteredPopulation": {
+  "HOLDOUT_KNOWN_COMPOSITION": [],
+  "OOD_LEVEL": [],
+  "OOD_ROLES": [
+   "redundant",
+   "scarce",
+   "populated",
+   "industrial"
+  ],
+  "OOD_OBJECTIVES": [],
+  "OOD_SHAPES": []
+ },
+ "answers": {
+  "Q1_cause": "Generator defect, not kernel or policy: for a restore objective scenarios-v2 appends dependsOn(primary -> failed) without checking that the topology already contains that edge. In this star world primary = hub n0 and failed = leaf n5, and the star topology already has n0 -> n5, so the relation exists twice. The kernel enumerates BYPASS once per dependsOn relation (n5 failed, in range 1, two live substitutes, energy 40), producing two identical BYPASS(n5, dependent n0) descriptors. Warm-up (WAIT-only), the symmetric surface, the public view and the decision packet each carry the list 1:1, so the menu has 10 entries and 9 distinct ids; the predecessor nativeLock assertion reproduces NATIVE_MENU_MISMATCH before any policy call.",
+  "Q2_semantics": "The two entries are one action listed twice: identical type, actor, target and parameters, identical id, and executing either yields the identical child world (both relation copies are removed and one dependent -> substitute edge is added). They are not two distinct actions that happen to share an id.",
+  "Q3_identity": "Action identity is forgeActionKey = sha256(stableStringify([actionType, actorId, target, parameters])) (key-order invariant); the public surface actionId is canonicalActionKey('R0', action) = the same key. The descriptor label actionId ('forge/bypass') is not identity. Two entries are the same action iff their ids are equal; legitimately distinct actions always differ in type, actor, target or parameters (e.g. REINFORCE vs REPAIR of one target, BYPASS with different dependents). Twin handles: D4 = key of the oriented action; IDENTITY = opaque handle, bijective on distinct originals (both copies of a duplicate receive the same opaque handle); ORDER = original handles.",
+  "Q4_emptyMenus": "Not observed (0/9,456) and not producible for an admitted world: the kernel always appends WAIT when a controlled actor exists and the world is non-terminal, and terminal-after-warm-up worlds are rejected earlier. The rule still covers EMPTY_MENU defensively.",
+  "Q5_laterStepMenus": "No later policy-facing menu exists: every Forge world in this protocol is exactly one decision; all policy-facing menus (original + 8 D4 + IDENTITY + ORDER) are built from the post-warm-up world before any policy call. Evaluator-internal continuation menus (H2 greedy steps) are not policy-facing; a duplicate there is decision-inert because the continuation replaces its incumbent only on a strictly higher rank or strictly smaller key (src/forge-symmetric/counterfactual-symmetric-v1.js:42-51), and an empty continuation menu simply ends the continuation. The rule therefore validates policy-facing menus only and never inspects evaluator internals (which would not be outcome-blind).",
+  "Q6_silentAdmission": "Yes. 3H.1-D/F confirm-core has no menu-uniqueness check (its only uniqueness guard is DUPLICATE_WORLD_HASH). This world was admitted and scored in 3H.1-F OOD_ROLES; its recorded truth lists the duplicated optimal id twice (tieCount 2, true 1) and the UNIFORM_RANDOM expectation counted 10 entries (hit 0.2, distinct-menu value 1/9). 3H.1-D (1,152 worlds), the 3H.1-F control and other OOD strata, and the 288 development worlds contain no malformed menu. The predecessor connector was the first component to check and it aborted rather than admitting.",
+  "Q7_historicalImpact": "None on any conclusion. One of 9,456 spent worlds; its routed-minus-S0 contrast is exactly 0 (H2: rule = S0); excluding it moves OOD_ROLES delta-nreg from -0.20950 to -0.20962, sign 641/27/1156 -> 641/27/1155, catastrophes 3/3 unchanged. Diagnostic fields of that one row (tie count, uniform-random expectation) were biased. Registration 0364164c produced no results, so nothing there is affected."
+ },
+ "authority": "R0"
+}

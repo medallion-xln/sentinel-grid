@@ -1,0 +1,3706 @@
+{
+ "schema": "STAGE3H_HW1_I1_PUBLIC_INPUT_AUDIT_V1",
+ "authority": "R0",
+ "checkedAt": "2026-10-31T06:38:25.117Z",
+ "head": "31ab466b98236df00853b9df97b4564406e5a182",
+ "note": "DEV fixtures only: the 341 spent classes are not independent evidence.",
+ "projectionVersion": "HW1_PUBLIC_PROJECTION_V1",
+ "keyVersion": "HW1_ACTION_KEY_V2",
+ "classes": 341,
+ "actions": 2698,
+ "sourceHashes": {
+  "public-projection.mjs": "2d1e70611b26005179cc50e21a9d6ec5eae59704d7db36e722bb28b53eacb9ca",
+  "transforms.mjs": "556dde4c2af3b3e8e1bcb45857e3419d1279bb21a3d93d96faf7f175d3c0d016",
+  "i1-audit-checks.mjs": "c91e872e4d2fddfe4b3061fb333d17a2855864f8ab4048a5ac2862b83a4aedf8",
+  "i1-audit-class.mjs": "6761ac680f1aa704e9ef3de971c1a1183ec3fc66e3286b461c84bf0d4c8c5d05",
+  "i1-audit-comparators.mjs": "9b31cb1fba5cbf0bd6416a2b9bb2eaba13ca1e9762afc0b5b8031c4c653c0d26",
+  "i1-audit-synthetic.mjs": "2d323bacf35e626e11ca5f86c75d02353139571d5a8b5f5db802c9723f6efcd7",
+  "i1-public-input-audit.mjs": "52e19cd79343fcbb96f62ac275c529bbca35d63d36cf732c20b931e346ec08d3"
+ },
+ "excludedFields": {
+  "state.sourceStateHash": "integrity digest",
+  "state.entities[].provenance": "integrity digest + constants",
+  "semantics[].provenance": "integrity digest + constants",
+  "observation.metadata.worldHash": "integrity digest",
+  "observation.sequence": "constant counter",
+  "observation.features": "opaque positional encoding (D4-variant); same content is carried by the allowlisted fields",
+  "observation.metadata.canonicalState": "identity-bearing entity ids",
+  "observation.observerId": "identity",
+  "surface[].actionId": "action handle",
+  "semantics[].ACTION_ID": "action handle",
+  "state.entities[].observedPosition": "absolute position (D4-variant; relative position carries the information)"
+ },
+ "fields": {
+  "resourceFlag": {
+   "valuesByKind": {
+    "CIVILIAN": [
+     "false"
+    ],
+    "DEPOT": [
+     "false"
+    ],
+    "HOSTILE": [
+     "false"
+    ],
+    "INFRASTRUCTURE": [
+     "false"
+    ],
+    "POWER_SOURCE": [
+     "false"
+    ],
+    "REPAIR_TARGET": [
+     "false"
+    ],
+    "RESOURCE": [
+     "true"
+    ],
+    "BARRIER": [
+     "false"
+    ],
+    "SUBSTITUTE": [
+     "false"
+    ]
+   },
+   "functionOfEntityKind": true,
+   "relabelInvariant": true
+  },
+  "observationTimestamp": {
+   "equalsObservationTick": true,
+   "distinctValuesAcrossClasses": [
+    0,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7,
+    8,
+    9,
+    12,
+    19,
+    24
+   ]
+  },
+  "provenance": {
+   "logicalTimeEqualsTick": true,
+   "digestIsStateHashOfView": true,
+   "constantFieldsDistinct": 1,
+   "digestDiffersAcrossHiddenTwins": 0,
+   "hiddenTwins": 1364,
+   "digestDiffersUnderD4": true
+  },
+  "sequence": {
+   "distinctValues": [
+    0
+   ],
+   "observerIdValues": [
+    "sentinel"
+   ]
+  }
+ },
+ "keyInvariance": {
+  "RELABEL": {
+   "twins": 2046,
+   "pairs": 16188,
+   "realFailures": 0
+  },
+  "MENU": {
+   "twins": 2046,
+   "pairs": 16188,
+   "realFailures": 0
+  },
+  "D4": {
+   "twins": 2387,
+   "pairs": 18886,
+   "realFailures": 0
+  },
+  "HIDDEN": {
+   "twins": 1364,
+   "pairs": 10792,
+   "realFailures": 0
+  }
+ },
+ "negativeControls": {
+  "leaks": {
+   "RAW_ENTITY_ID": {
+    "RELABEL": 4980,
+    "MENU": 0,
+    "D4": 0,
+    "HIDDEN": 0
+   },
+   "ENTITY_ID_RANK": {
+    "RELABEL": 4642,
+    "MENU": 0,
+    "D4": 0,
+    "HIDDEN": 0
+   },
+   "ACTION_HANDLE": {
+    "RELABEL": 16188,
+    "MENU": 0,
+    "D4": 9368,
+    "HIDDEN": 0
+   },
+   "MENU_POSITION": {
+    "RELABEL": 0,
+    "MENU": 14292,
+    "D4": 0,
+    "HIDDEN": 0
+   },
+   "SOURCE_STATE_HASH": {
+    "RELABEL": 0,
+    "MENU": 0,
+    "D4": 18886,
+    "HIDDEN": 0
+   },
+   "HIDDEN_HEALTH": {
+    "RELABEL": 0,
+    "MENU": 0,
+    "D4": 0,
+    "HIDDEN": 69
+   },
+   "ABSOLUTE_POSITION": {
+    "RELABEL": 0,
+    "MENU": 0,
+    "D4": 5669,
+    "HIDDEN": 0
+   }
+  },
+  "naiveSelectors": {
+   "LEXICAL_KEYV2/CONSTANT": {
+    "RELABEL": {
+     "n": 2046,
+     "bad": 0
+    },
+    "MENU": {
+     "n": 2046,
+     "bad": 0
+    },
+    "D4": {
+     "n": 2387,
+     "bad": 1844
+    },
+    "HIDDEN": {
+     "n": 1364,
+     "bad": 0
+    }
+   },
+   "LEXICAL_KEYV2/TYPE": {
+    "RELABEL": {
+     "n": 2046,
+     "bad": 0
+    },
+    "MENU": {
+     "n": 2046,
+     "bad": 0
+    },
+    "D4": {
+     "n": 2387,
+     "bad": 132
+    },
+    "HIDDEN": {
+     "n": 1364,
+     "bad": 0
+    }
+   },
+   "LEXICAL_KEYV2/COST": {
+    "RELABEL": {
+     "n": 2046,
+     "bad": 0
+    },
+    "MENU": {
+     "n": 2046,
+     "bad": 0
+    },
+    "D4": {
+     "n": 2387,
+     "bad": 96
+    },
+    "HIDDEN": {
+     "n": 1364,
+     "bad": 0
+    }
+   },
+   "MENU_FIRST/CONSTANT": {
+    "RELABEL": {
+     "n": 2046,
+     "bad": 0
+    },
+    "MENU": {
+     "n": 2046,
+     "bad": 1805
+    },
+    "D4": {
+     "n": 2387,
+     "bad": 0
+    },
+    "HIDDEN": {
+     "n": 1364,
+     "bad": 0
+    }
+   },
+   "MENU_FIRST/TYPE": {
+    "RELABEL": {
+     "n": 2046,
+     "bad": 0
+    },
+    "MENU": {
+     "n": 2046,
+     "bad": 701
+    },
+    "D4": {
+     "n": 2387,
+     "bad": 0
+    },
+    "HIDDEN": {
+     "n": 1364,
+     "bad": 0
+    }
+   },
+   "MENU_FIRST/COST": {
+    "RELABEL": {
+     "n": 2046,
+     "bad": 0
+    },
+    "MENU": {
+     "n": 2046,
+     "bad": 544
+    },
+    "D4": {
+     "n": 2387,
+     "bad": 0
+    },
+    "HIDDEN": {
+     "n": 1364,
+     "bad": 0
+    }
+   },
+   "HANDLE_ALPHABETICAL/CONSTANT": {
+    "RELABEL": {
+     "n": 2046,
+     "bad": 1793
+    },
+    "MENU": {
+     "n": 2046,
+     "bad": 0
+    },
+    "D4": {
+     "n": 2387,
+     "bad": 1725
+    },
+    "HIDDEN": {
+     "n": 1364,
+     "bad": 0
+    }
+   },
+   "HANDLE_ALPHABETICAL/TYPE": {
+    "RELABEL": {
+     "n": 2046,
+     "bad": 714
+    },
+    "MENU": {
+     "n": 2046,
+     "bad": 0
+    },
+    "D4": {
+     "n": 2387,
+     "bad": 0
+    },
+    "HIDDEN": {
+     "n": 1364,
+     "bad": 0
+    }
+   },
+   "HANDLE_ALPHABETICAL/COST": {
+    "RELABEL": {
+     "n": 2046,
+     "bad": 537
+    },
+    "MENU": {
+     "n": 2046,
+     "bad": 0
+    },
+    "D4": {
+     "n": 2387,
+     "bad": 0
+    },
+    "HIDDEN": {
+     "n": 1364,
+     "bad": 0
+    }
+   }
+  }
+ },
+ "symmetry": {
+  "classes": 341,
+  "symmetric": 0,
+  "nontrivialStabiliser": 0,
+  "nontrivialOrbitClasses": 0,
+  "nodeColoursNotDiscrete": 0,
+  "waitFixedEverywhere": true,
+  "isoFailed": 0,
+  "fixedActionsMin": 5,
+  "tieRates": {
+   "CONSTANT": 1,
+   "TYPE": 188,
+   "COST": 151
+  }
+ },
+ "synthetic": {
+  "MIRROR_PAIR": {
+   "name": "MIRROR_PAIR",
+   "stabiliser": [
+    "R0",
+    "MY"
+   ],
+   "orbitSizes": [
+    2,
+    2,
+    1,
+    1
+   ],
+   "fixed": [
+    "WAIT",
+    "MOVE"
+   ],
+   "waitFixed": true,
+   "expectedStabiliser": 2,
+   "expectedOrbits": [
+    2,
+    2,
+    1,
+    1
+   ],
+   "structureAsExpected": true,
+   "selectors": {
+    "EQUIVARIANT/TYPE": {
+     "chosen": "MOVE",
+     "chosenIsFixed": true,
+     "d4Bad": 0,
+     "d4N": 8,
+     "permBad": 0,
+     "permN": 5
+    },
+    "EQUIVARIANT/CONSTANT": {
+     "chosen": "MOVE",
+     "chosenIsFixed": true,
+     "d4Bad": 0,
+     "d4N": 8,
+     "permBad": 0,
+     "permN": 5
+    },
+    "MENU_FIRST/TYPE": {
+     "chosen": "ATTACK",
+     "chosenIsFixed": false,
+     "d4Bad": 0,
+     "d4N": 8,
+     "permBad": 2,
+     "permN": 5
+    },
+    "MENU_FIRST/CONSTANT": {
+     "chosen": "WAIT",
+     "chosenIsFixed": true,
+     "d4Bad": 0,
+     "d4N": 8,
+     "permBad": 3,
+     "permN": 5
+    },
+    "LEXICAL_KEYV2/TYPE": {
+     "chosen": "ATTACK",
+     "chosenIsFixed": false,
+     "d4Bad": 4,
+     "d4N": 8,
+     "permBad": 0,
+     "permN": 5
+    },
+    "LEXICAL_KEYV2/CONSTANT": {
+     "chosen": "ATTACK",
+     "chosenIsFixed": false,
+     "d4Bad": 4,
+     "d4N": 8,
+     "permBad": 0,
+     "permN": 5
+    }
+   },
+   "preferredInNontrivialOrbit": true,
+   "keyV2DistinctWithinMenu": true
+  },
+  "FOUR_FOLD": {
+   "name": "FOUR_FOLD",
+   "stabiliser": [
+    "R0",
+    "R180",
+    "MX",
+    "MY"
+   ],
+   "orbitSizes": [
+    4,
+    2,
+    2,
+    1
+   ],
+   "fixed": [
+    "WAIT"
+   ],
+   "waitFixed": true,
+   "expectedStabiliser": 4,
+   "expectedOrbits": [
+    4,
+    2,
+    2,
+    1
+   ],
+   "structureAsExpected": true,
+   "selectors": {
+    "EQUIVARIANT/TYPE": {
+     "chosen": "WAIT",
+     "chosenIsFixed": true,
+     "d4Bad": 0,
+     "d4N": 8,
+     "permBad": 0,
+     "permN": 5
+    },
+    "EQUIVARIANT/CONSTANT": {
+     "chosen": "WAIT",
+     "chosenIsFixed": true,
+     "d4Bad": 0,
+     "d4N": 8,
+     "permBad": 0,
+     "permN": 5
+    },
+    "MENU_FIRST/TYPE": {
+     "chosen": "ATTACK",
+     "chosenIsFixed": false,
+     "d4Bad": 0,
+     "d4N": 8,
+     "permBad": 5,
+     "permN": 5
+    },
+    "MENU_FIRST/CONSTANT": {
+     "chosen": "WAIT",
+     "chosenIsFixed": true,
+     "d4Bad": 0,
+     "d4N": 8,
+     "permBad": 4,
+     "permN": 5
+    },
+    "LEXICAL_KEYV2/TYPE": {
+     "chosen": "ATTACK",
+     "chosenIsFixed": false,
+     "d4Bad": 6,
+     "d4N": 8,
+     "permBad": 0,
+     "permN": 5
+    },
+    "LEXICAL_KEYV2/CONSTANT": {
+     "chosen": "ATTACK",
+     "chosenIsFixed": false,
+     "d4Bad": 6,
+     "d4N": 8,
+     "permBad": 0,
+     "permN": 5
+    }
+   },
+   "preferredInNontrivialOrbit": true,
+   "keyV2DistinctWithinMenu": true
+  },
+  "COLOCATED_PAIR": {
+   "name": "COLOCATED_PAIR",
+   "stabiliser": [
+    "R0"
+   ],
+   "orbitSizes": [
+    2,
+    1,
+    1
+   ],
+   "fixed": [
+    "WAIT",
+    "MOVE"
+   ],
+   "waitFixed": true,
+   "expectedStabiliser": 1,
+   "expectedOrbits": [
+    2,
+    1,
+    1
+   ],
+   "structureAsExpected": true,
+   "selectors": {
+    "EQUIVARIANT/TYPE": {
+     "chosen": "MOVE",
+     "chosenIsFixed": true,
+     "d4Bad": 0,
+     "d4N": 8,
+     "permBad": 0,
+     "permN": 5
+    },
+    "EQUIVARIANT/CONSTANT": {
+     "chosen": "MOVE",
+     "chosenIsFixed": true,
+     "d4Bad": 0,
+     "d4N": 8,
+     "permBad": 0,
+     "permN": 5
+    },
+    "MENU_FIRST/TYPE": {
+     "chosen": "ATTACK",
+     "chosenIsFixed": false,
+     "d4Bad": 0,
+     "d4N": 8,
+     "permBad": 4,
+     "permN": 5
+    },
+    "MENU_FIRST/CONSTANT": {
+     "chosen": "WAIT",
+     "chosenIsFixed": true,
+     "d4Bad": 0,
+     "d4N": 8,
+     "permBad": 3,
+     "permN": 5
+    },
+    "LEXICAL_KEYV2/TYPE": {
+     "chosen": "ATTACK",
+     "chosenIsFixed": false,
+     "d4Bad": 0,
+     "d4N": 8,
+     "permBad": 4,
+     "permN": 5
+    },
+    "LEXICAL_KEYV2/CONSTANT": {
+     "chosen": "ATTACK",
+     "chosenIsFixed": false,
+     "d4Bad": 0,
+     "d4N": 8,
+     "permBad": 4,
+     "permN": 5
+    }
+   },
+   "preferredInNontrivialOrbit": true,
+   "keyV2DistinctWithinMenu": false
+  },
+  "ASYMMETRIC": {
+   "name": "ASYMMETRIC",
+   "stabiliser": [
+    "R0"
+   ],
+   "orbitSizes": [
+    1,
+    1,
+    1,
+    1
+   ],
+   "fixed": [
+    "WAIT",
+    "MOVE",
+    "ATTACK",
+    "ATTACK"
+   ],
+   "waitFixed": true,
+   "expectedStabiliser": 1,
+   "expectedOrbits": [
+    1,
+    1,
+    1,
+    1
+   ],
+   "structureAsExpected": true,
+   "selectors": {
+    "EQUIVARIANT/TYPE": {
+     "chosen": "ATTACK",
+     "chosenIsFixed": true,
+     "d4Bad": 0,
+     "d4N": 8,
+     "permBad": 0,
+     "permN": 5
+    },
+    "EQUIVARIANT/CONSTANT": {
+     "chosen": "ATTACK",
+     "chosenIsFixed": true,
+     "d4Bad": 0,
+     "d4N": 8,
+     "permBad": 0,
+     "permN": 5
+    },
+    "MENU_FIRST/TYPE": {
+     "chosen": "ATTACK",
+     "chosenIsFixed": true,
+     "d4Bad": 0,
+     "d4N": 8,
+     "permBad": 4,
+     "permN": 5
+    },
+    "MENU_FIRST/CONSTANT": {
+     "chosen": "WAIT",
+     "chosenIsFixed": true,
+     "d4Bad": 0,
+     "d4N": 8,
+     "permBad": 4,
+     "permN": 5
+    },
+    "LEXICAL_KEYV2/TYPE": {
+     "chosen": "ATTACK",
+     "chosenIsFixed": true,
+     "d4Bad": 2,
+     "d4N": 8,
+     "permBad": 0,
+     "permN": 5
+    },
+    "LEXICAL_KEYV2/CONSTANT": {
+     "chosen": "ATTACK",
+     "chosenIsFixed": true,
+     "d4Bad": 2,
+     "d4N": 8,
+     "permBad": 0,
+     "permN": 5
+    }
+   },
+   "preferredInNontrivialOrbit": false,
+   "keyV2DistinctWithinMenu": true
+  }
+ },
+ "comparators": {
+  "totals": {
+   "RELABEL": {
+    "n": 682,
+    "maxScoreDiff": 0,
+    "s0TopSet": 682,
+    "s0ScoresExact": 682,
+    "selB": 682,
+    "selN": 457,
+    "nexusAbstain": 682,
+    "nexusCodes": 682,
+    "nexusReason": 682,
+    "nexusPickExact": 457,
+    "nexusPickKeyV2": 457
+   },
+   "MENU": {
+    "n": 682,
+    "maxScoreDiff": 0,
+    "s0TopSet": 682,
+    "s0ScoresExact": 682,
+    "selB": 682,
+    "selN": 682,
+    "nexusAbstain": 682,
+    "nexusCodes": 682,
+    "nexusReason": 682,
+    "nexusPickExact": 682,
+    "nexusPickKeyV2": 682
+   },
+   "D4": {
+    "n": 2387,
+    "maxScoreDiff": 0,
+    "s0TopSet": 2387,
+    "s0ScoresExact": 2387,
+    "selB": 2387,
+    "selN": 2387,
+    "nexusAbstain": 2387,
+    "nexusCodes": 2387,
+    "nexusReason": 2387,
+    "nexusPickExact": 2387,
+    "nexusPickKeyV2": 2387
+   },
+   "HIDDEN": {
+    "n": 1364,
+    "maxScoreDiff": 0,
+    "s0TopSet": 1364,
+    "s0ScoresExact": 1364,
+    "selB": 1364,
+    "selN": 1364,
+    "nexusAbstain": 1364,
+    "nexusCodes": 1364,
+    "nexusReason": 1364,
+    "nexusPickExact": 1364,
+    "nexusPickKeyV2": 1364
+   }
+  },
+  "nexus": {
+   "pickStableUnderEveryTransform": false,
+   "pickKeyV2StableUnderEveryTransform": false,
+   "selNStable": false,
+   "byTransform": {
+    "RELABEL": {
+     "n": 682,
+     "exact": 457,
+     "keyV2": 457
+    },
+    "MENU": {
+     "n": 682,
+     "exact": 682,
+     "keyV2": 682
+    },
+    "D4": {
+     "n": 2387,
+     "exact": 2387,
+     "keyV2": 2387
+    },
+    "HIDDEN": {
+     "n": 1364,
+     "exact": 1364,
+     "keyV2": 1364
+    }
+   }
+  },
+  "verdict": "NEXUS_EXACT_PICK_INADMISSIBLE_AS_FEATURE"
+ },
+ "gates": [
+  {
+   "name": "RESOURCEFLAG_IS_FUNCTION_OF_KIND_AND_RELABEL_INVARIANT",
+   "pass": true,
+   "detail": {
+    "valuesByKind": {
+     "CIVILIAN": [
+      "false"
+     ],
+     "DEPOT": [
+      "false"
+     ],
+     "HOSTILE": [
+      "false"
+     ],
+     "INFRASTRUCTURE": [
+      "false"
+     ],
+     "POWER_SOURCE": [
+      "false"
+     ],
+     "REPAIR_TARGET": [
+      "false"
+     ],
+     "RESOURCE": [
+      "true"
+     ],
+     "BARRIER": [
+      "false"
+     ],
+     "SUBSTITUTE": [
+      "false"
+     ]
+    },
+    "functionOfEntityKind": true,
+    "relabelInvariant": true
+   }
+  },
+  {
+   "name": "OBSERVATION_TIMESTAMP_IS_THE_TICK_CLOCK",
+   "pass": true,
+   "detail": {
+    "equalsObservationTick": true,
+    "distinctValuesAcrossClasses": [
+     0,
+     2,
+     3,
+     4,
+     5,
+     6,
+     7,
+     8,
+     9,
+     12,
+     19,
+     24
+    ]
+   }
+  },
+  {
+   "name": "PROVENANCE_IS_DIGEST_PLUS_CONSTANTS",
+   "pass": true,
+   "detail": {
+    "logicalTimeEqualsTick": true,
+    "digestIsStateHashOfView": true,
+    "constantFieldsDistinct": 1,
+    "digestDiffersAcrossHiddenTwins": 0,
+    "hiddenTwins": 1364,
+    "digestDiffersUnderD4": true
+   }
+  },
+  {
+   "name": "SEQUENCE_IS_CONSTANT",
+   "pass": true,
+   "detail": {
+    "distinctValues": [
+     0
+    ],
+    "observerIdValues": [
+     "sentinel"
+    ]
+   }
+  },
+  {
+   "name": "PROJECTION_READS_ONLY_ALLOWLIST",
+   "pass": true,
+   "detail": {
+    "allowlistPaths": 47,
+    "classes": 341
+   }
+  },
+  {
+   "name": "KEYV1_EQUALS_SEMANTICKEY_BYTES",
+   "pass": true,
+   "detail": {
+    "actions": 2698
+   }
+  },
+  {
+   "name": "KEYV2_RESOLVES_ALL_THREE_BYPASS_COLLISIONS",
+   "pass": true,
+   "detail": [
+    {
+     "set": "FRESH_CHECK",
+     "idx": 6236,
+     "keyV1Groups": [
+      {
+       "actions": [
+        6,
+        8
+       ],
+       "type": "BYPASS",
+       "dependents": [
+        "POWER_SOURCE:false",
+        "DEPOT:false"
+       ]
+      }
+     ],
+     "keyV2Groups": 0,
+     "keyV2Distinct": true
+    },
+    {
+     "set": "FRESH_EXPLORE",
+     "idx": 5593,
+     "keyV1Groups": [
+      {
+       "actions": [
+        0,
+        8
+       ],
+       "type": "BYPASS",
+       "dependents": [
+        "INFRASTRUCTURE:false",
+        "INFRASTRUCTURE:false"
+       ]
+      }
+     ],
+     "keyV2Groups": 0,
+     "keyV2Distinct": true
+    },
+    {
+     "set": "FRESH_CHECK",
+     "idx": 6198,
+     "keyV1Groups": [
+      {
+       "actions": [
+        4,
+        7
+       ],
+       "type": "BYPASS",
+       "dependents": [
+        "POWER_SOURCE:false",
+        "REPAIR_TARGET:false"
+       ]
+      }
+     ],
+     "keyV2Groups": 0,
+     "keyV2Distinct": true
+    }
+   ]
+  },
+  {
+   "name": "KEYV1_COLLIDING_CLASSES_ARE_EXACTLY_THE_THREE",
+   "pass": true,
+   "detail": {
+    "keyV1CollidingClasses": [
+     "FRESH_EXPLORE:5593",
+     "FRESH_CHECK:6236",
+     "FRESH_CHECK:6198"
+    ]
+   }
+  },
+  {
+   "name": "KEYV2_UNIQUE_WITHIN_EVERY_SPENT_MENU",
+   "pass": true,
+   "detail": {
+    "classes": 341
+   }
+  },
+  {
+   "name": "KEYV2_INVARIANT_UNDER_RELABEL",
+   "pass": true,
+   "detail": {
+    "twins": 2046,
+    "pairs": 16188,
+    "realFailures": 0
+   }
+  },
+  {
+   "name": "KEYV2_INVARIANT_UNDER_MENU",
+   "pass": true,
+   "detail": {
+    "twins": 2046,
+    "pairs": 16188,
+    "realFailures": 0
+   }
+  },
+  {
+   "name": "KEYV2_INVARIANT_UNDER_D4",
+   "pass": true,
+   "detail": {
+    "twins": 2387,
+    "pairs": 18886,
+    "realFailures": 0
+   }
+  },
+  {
+   "name": "KEYV2_INVARIANT_UNDER_HIDDEN",
+   "pass": true,
+   "detail": {
+    "twins": 1364,
+    "pairs": 10792,
+    "realFailures": 0
+   }
+  },
+  {
+   "name": "PROJECTION_IDENTICAL_UNDER_RELABEL_AND_HIDDEN_TWINS",
+   "pass": true,
+   "detail": {
+    "relabelTwins": 2046,
+    "hiddenTwins": 1364,
+    "hiddenNonEquivalentSkipped": 129
+   }
+  },
+  {
+   "name": "D4_TWINS_ALL_LAWFUL_ON_AUDITED_CLASSES",
+   "pass": true,
+   "detail": {
+    "lawfulTwins": 2387,
+    "unlawfulTwins": 0
+   }
+  },
+  {
+   "name": "CANONICAL_FRAME_AND_ORBITS_INVARIANT",
+   "pass": true,
+   "detail": {
+    "comparisons": 6479,
+    "failures": 0
+   }
+  },
+  {
+   "name": "EVERY_IDENTITY_NEGATIVE_CONTROL_DETECTED",
+   "pass": true,
+   "detail": {
+    "detectedBy": {
+     "RAW_ENTITY_ID": [
+      "RELABEL"
+     ],
+     "ENTITY_ID_RANK": [
+      "RELABEL"
+     ],
+     "ACTION_HANDLE": [
+      "RELABEL",
+      "D4"
+     ],
+     "MENU_POSITION": [
+      "MENU"
+     ],
+     "SOURCE_STATE_HASH": [
+      "D4"
+     ],
+     "HIDDEN_HEALTH": [
+      "HIDDEN"
+     ],
+     "ABSOLUTE_POSITION": [
+      "D4"
+     ]
+    },
+    "failures": {
+     "RAW_ENTITY_ID": {
+      "RELABEL": 4980,
+      "MENU": 0,
+      "D4": 0,
+      "HIDDEN": 0
+     },
+     "ENTITY_ID_RANK": {
+      "RELABEL": 4642,
+      "MENU": 0,
+      "D4": 0,
+      "HIDDEN": 0
+     },
+     "ACTION_HANDLE": {
+      "RELABEL": 16188,
+      "MENU": 0,
+      "D4": 9368,
+      "HIDDEN": 0
+     },
+     "MENU_POSITION": {
+      "RELABEL": 0,
+      "MENU": 14292,
+      "D4": 0,
+      "HIDDEN": 0
+     },
+     "SOURCE_STATE_HASH": {
+      "RELABEL": 0,
+      "MENU": 0,
+      "D4": 18886,
+      "HIDDEN": 0
+     },
+     "HIDDEN_HEALTH": {
+      "RELABEL": 0,
+      "MENU": 0,
+      "D4": 0,
+      "HIDDEN": 69
+     },
+     "ABSOLUTE_POSITION": {
+      "RELABEL": 0,
+      "MENU": 0,
+      "D4": 5669,
+      "HIDDEN": 0
+     }
+    }
+   }
+  },
+  {
+   "name": "EQUIVARIANT_SELECTOR_HAS_ZERO_FAILURES",
+   "pass": true,
+   "detail": {
+    "totals": {
+     "EQUIVARIANT/CONSTANT": {
+      "RELABEL": {
+       "n": 2046,
+       "bad": 0
+      },
+      "MENU": {
+       "n": 2046,
+       "bad": 0
+      },
+      "D4": {
+       "n": 2387,
+       "bad": 0
+      },
+      "HIDDEN": {
+       "n": 1364,
+       "bad": 0
+      }
+     },
+     "EQUIVARIANT/TYPE": {
+      "RELABEL": {
+       "n": 2046,
+       "bad": 0
+      },
+      "MENU": {
+       "n": 2046,
+       "bad": 0
+      },
+      "D4": {
+       "n": 2387,
+       "bad": 0
+      },
+      "HIDDEN": {
+       "n": 1364,
+       "bad": 0
+      }
+     },
+     "EQUIVARIANT/COST": {
+      "RELABEL": {
+       "n": 2046,
+       "bad": 0
+      },
+      "MENU": {
+       "n": 2046,
+       "bad": 0
+      },
+      "D4": {
+       "n": 2387,
+       "bad": 0
+      },
+      "HIDDEN": {
+       "n": 1364,
+       "bad": 0
+      }
+     }
+    }
+   }
+  },
+  {
+   "name": "NAIVE_TIEBREAKS_DETECTED",
+   "pass": true,
+   "detail": {
+    "lexicalKeyV2": 2072,
+    "menuFirst": 3050,
+    "handleAlphabetical": 4769
+   }
+  },
+  {
+   "name": "SYMMETRY_SEARCH_COMPLETE_AND_WAIT_ALWAYS_FIXED",
+   "pass": true,
+   "detail": {
+    "classes": 341,
+    "symmetric": 0,
+    "nontrivialStabiliser": 0,
+    "nontrivialOrbitClasses": 0,
+    "nodeColoursNotDiscrete": 0,
+    "waitFixedEverywhere": true,
+    "isoFailed": 0,
+    "fixedActionsMin": 5,
+    "tieRates": {
+     "CONSTANT": 1,
+     "TYPE": 188,
+     "COST": 151
+    }
+   }
+  },
+  {
+   "name": "SYNTHETIC_SYMMETRIC_ORBITS_SELECT_ONE_FIXED_ACTION_EQUIVARIANTLY",
+   "pass": true,
+   "detail": {
+    "MIRROR_PAIR": {
+     "stabiliser": [
+      "R0",
+      "MY"
+     ],
+     "orbitSizes": [
+      2,
+      2,
+      1,
+      1
+     ],
+     "fixed": [
+      "WAIT",
+      "MOVE"
+     ],
+     "equivariantChoice": "MOVE",
+     "preferredActionInNontrivialOrbit": true
+    },
+    "FOUR_FOLD": {
+     "stabiliser": [
+      "R0",
+      "R180",
+      "MX",
+      "MY"
+     ],
+     "orbitSizes": [
+      4,
+      2,
+      2,
+      1
+     ],
+     "fixed": [
+      "WAIT"
+     ],
+     "equivariantChoice": "WAIT",
+     "preferredActionInNontrivialOrbit": true
+    },
+    "COLOCATED_PAIR": {
+     "stabiliser": [
+      "R0"
+     ],
+     "orbitSizes": [
+      2,
+      1,
+      1
+     ],
+     "fixed": [
+      "WAIT",
+      "MOVE"
+     ],
+     "equivariantChoice": "MOVE",
+     "preferredActionInNontrivialOrbit": true
+    },
+    "ASYMMETRIC": {
+     "stabiliser": [
+      "R0"
+     ],
+     "orbitSizes": [
+      1,
+      1,
+      1,
+      1
+     ],
+     "fixed": [
+      "WAIT",
+      "MOVE",
+      "ATTACK",
+      "ATTACK"
+     ],
+     "equivariantChoice": "ATTACK",
+     "preferredActionInNontrivialOrbit": false
+    }
+   }
+  },
+  {
+   "name": "SYNTHETIC_NAIVE_SELECTORS_CAUGHT",
+   "pass": true,
+   "detail": {
+    "MIRROR_PAIR": {
+     "MENU_FIRST/TYPE": "fixed=false d4=0/8 perm=2/5",
+     "MENU_FIRST/CONSTANT": "fixed=true d4=0/8 perm=3/5",
+     "LEXICAL_KEYV2/TYPE": "fixed=false d4=4/8 perm=0/5",
+     "LEXICAL_KEYV2/CONSTANT": "fixed=false d4=4/8 perm=0/5"
+    },
+    "FOUR_FOLD": {
+     "MENU_FIRST/TYPE": "fixed=false d4=0/8 perm=5/5",
+     "MENU_FIRST/CONSTANT": "fixed=true d4=0/8 perm=4/5",
+     "LEXICAL_KEYV2/TYPE": "fixed=false d4=6/8 perm=0/5",
+     "LEXICAL_KEYV2/CONSTANT": "fixed=false d4=6/8 perm=0/5"
+    },
+    "COLOCATED_PAIR": {
+     "MENU_FIRST/TYPE": "fixed=false d4=0/8 perm=4/5",
+     "MENU_FIRST/CONSTANT": "fixed=true d4=0/8 perm=3/5",
+     "LEXICAL_KEYV2/TYPE": "fixed=false d4=0/8 perm=4/5",
+     "LEXICAL_KEYV2/CONSTANT": "fixed=false d4=0/8 perm=4/5"
+    },
+    "ASYMMETRIC": {
+     "MENU_FIRST/TYPE": "fixed=true d4=0/8 perm=4/5",
+     "MENU_FIRST/CONSTANT": "fixed=true d4=0/8 perm=4/5",
+     "LEXICAL_KEYV2/TYPE": "fixed=true d4=2/8 perm=0/5",
+     "LEXICAL_KEYV2/CONSTANT": "fixed=true d4=2/8 perm=0/5"
+    }
+   }
+  },
+  {
+   "name": "S0_AND_NEXUS_ABSTENTION_AND_CODES_STABLE_AT_KEY_LEVEL",
+   "pass": true,
+   "detail": {
+    "RELABEL": {
+     "n": 682,
+     "maxScoreDiff": 0,
+     "s0TopSet": 682,
+     "s0ScoresExact": 682,
+     "selB": 682,
+     "selN": 457,
+     "nexusAbstain": 682,
+     "nexusCodes": 682,
+     "nexusReason": 682,
+     "nexusPickExact": 457,
+     "nexusPickKeyV2": 457
+    },
+    "MENU": {
+     "n": 682,
+     "maxScoreDiff": 0,
+     "s0TopSet": 682,
+     "s0ScoresExact": 682,
+     "selB": 682,
+     "selN": 682,
+     "nexusAbstain": 682,
+     "nexusCodes": 682,
+     "nexusReason": 682,
+     "nexusPickExact": 682,
+     "nexusPickKeyV2": 682
+    },
+    "D4": {
+     "n": 2387,
+     "maxScoreDiff": 0,
+     "s0TopSet": 2387,
+     "s0ScoresExact": 2387,
+     "selB": 2387,
+     "selN": 2387,
+     "nexusAbstain": 2387,
+     "nexusCodes": 2387,
+     "nexusReason": 2387,
+     "nexusPickExact": 2387,
+     "nexusPickKeyV2": 2387
+    },
+    "HIDDEN": {
+     "n": 1364,
+     "maxScoreDiff": 0,
+     "s0TopSet": 1364,
+     "s0ScoresExact": 1364,
+     "selB": 1364,
+     "selN": 1364,
+     "nexusAbstain": 1364,
+     "nexusCodes": 1364,
+     "nexusReason": 1364,
+     "nexusPickExact": 1364,
+     "nexusPickKeyV2": 1364
+    }
+   }
+  }
+ ],
+ "allPass": true,
+ "classTable": [
+  [
+   "DEV288",
+   174,
+   7,
+   13,
+   0
+  ],
+  [
+   "DEV288",
+   186,
+   7,
+   16,
+   0
+  ],
+  [
+   "DEV288",
+   286,
+   7,
+   13,
+   0
+  ],
+  [
+   "FRESH_EXPLORE",
+   525,
+   7,
+   15,
+   0
+  ],
+  [
+   "FRESH_EXPLORE",
+   540,
+   9,
+   13,
+   0
+  ],
+  [
+   "FRESH_EXPLORE",
+   1570,
+   10,
+   16,
+   0
+  ],
+  [
+   "FRESH_EXPLORE",
+   1580,
+   10,
+   14,
+   0
+  ],
+  [
+   "FRESH_EXPLORE",
+   1645,
+   7,
+   22,
+   0
+  ],
+  [
+   "FRESH_EXPLORE",
+   2235,
+   6,
+   16,
+   0
+  ],
+  [
+   "FRESH_EXPLORE",
+   3925,
+   8,
+   40,
+   0
+  ],
+  [
+   "FRESH_EXPLORE",
+   6920,
+   8,
+   13,
+   0
+  ],
+  [
+   "FRESH_EXPLORE",
+   7270,
+   9,
+   28,
+   0
+  ],
+  [
+   "FRESH_EXPLORE",
+   7445,
+   9,
+   17,
+   0
+  ],
+  [
+   "FRESH_EXPLORE",
+   7480,
+   9,
+   26,
+   0
+  ],
+  [
+   "FRESH_EXPLORE",
+   8180,
+   10,
+   16,
+   0
+  ],
+  [
+   "FRESH_EXPLORE",
+   8185,
+   6,
+   13,
+   0
+  ],
+  [
+   "FRESH_EXPLORE",
+   8685,
+   7,
+   12,
+   0
+  ],
+  [
+   "FRESH_EXPLORE",
+   9140,
+   7,
+   23,
+   0
+  ],
+  [
+   "FRESH_EXPLORE",
+   9255,
+   5,
+   10,
+   0
+  ],
+  [
+   "FRESH_EXPLORE",
+   9540,
+   7,
+   10,
+   0
+  ],
+  [
+   "FRESH_EXPLORE",
+   10340,
+   5,
+   11,
+   0
+  ],
+  [
+   "FRESH_EXPLORE",
+   10355,
+   7,
+   18,
+   0
+  ],
+  [
+   "FRESH_EXPLORE",
+   10455,
+   9,
+   15,
+   0
+  ],
+  [
+   "FRESH_EXPLORE",
+   10560,
+   6,
+   12,
+   0
+  ],
+  [
+   "FRESH_EXPLORE",
+   10680,
+   7,
+   14,
+   0
+  ],
+  [
+   "FRESH_EXPLORE",
+   11125,
+   8,
+   16,
+   0
+  ],
+  [
+   "FRESH_EXPLORE",
+   11565,
+   7,
+   16,
+   0
+  ],
+  [
+   "FRESH_EXPLORE",
+   11620,
+   8,
+   14,
+   0
+  ],
+  [
+   "FRESH_EXPLORE",
+   12035,
+   9,
+   21,
+   0
+  ],
+  [
+   "FRESH_EXPLORE",
+   12180,
+   7,
+   13,
+   0
+  ],
+  [
+   "FRESH_EXPLORE",
+   12245,
+   8,
+   14,
+   0
+  ],
+  [
+   "FRESH_EXPLORE",
+   12295,
+   7,
+   13,
+   0
+  ],
+  [
+   "FRESH_EXPLORE",
+   351,
+   5,
+   10,
+   0
+  ],
+  [
+   "FRESH_EXPLORE",
+   571,
+   8,
+   16,
+   0
+  ],
+  [
+   "FRESH_EXPLORE",
+   616,
+   7,
+   21,
+   0
+  ],
+  [
+   "FRESH_EXPLORE",
+   1186,
+   7,
+   13,
+   0
+  ],
+  [
+   "FRESH_EXPLORE",
+   1401,
+   9,
+   15,
+   0
+  ],
+  [
+   "FRESH_EXPLORE",
+   2191,
+   7,
+   14,
+   0
+  ],
+  [
+   "FRESH_EXPLORE",
+   2401,
+   7,
+   16,
+   0
+  ],
+  [
+   "FRESH_EXPLORE",
+   3091,
+   8,
+   39,
+   0
+  ],
+  [
+   "FRESH_EXPLORE",
+   4701,
+   11,
+   33,
+   0
+  ],
+  [
+   "FRESH_EXPLORE",
+   5681,
+   6,
+   17,
+   0
+  ],
+  [
+   "FRESH_EXPLORE",
+   6201,
+   9,
+   16,
+   0
+  ],
+  [
+   "FRESH_EXPLORE",
+   6341,
+   7,
+   26,
+   0
+  ],
+  [
+   "FRESH_EXPLORE",
+   7686,
+   6,
+   21,
+   0
+  ],
+  [
+   "FRESH_EXPLORE",
+   7956,
+   8,
+   16,
+   0
+  ],
+  [
+   "FRESH_EXPLORE",
+   8111,
+   7,
+   14,
+   0
+  ],
+  [
+   "FRESH_EXPLORE",
+   8331,
+   10,
+   16,
+   0
+  ],
+  [
+   "FRESH_EXPLORE",
+   8826,
+   10,
+   13,
+   0
+  ],
+  [
+   "FRESH_EXPLORE",
+   9411,
+   6,
+   13,
+   0
+  ],
+  [
+   "FRESH_EXPLORE",
+   10566,
+   8,
+   10,
+   0
+  ],
+  [
+   "FRESH_EXPLORE",
+   10671,
+   7,
+   16,
+   0
+  ],
+  [
+   "FRESH_EXPLORE",
+   10786,
+   5,
+   11,
+   0
+  ],
+  [
+   "FRESH_EXPLORE",
+   11066,
+   9,
+   13,
+   0
+  ],
+  [
+   "FRESH_EXPLORE",
+   11346,
+   7,
+   14,
+   0
+  ],
+  [
+   "FRESH_EXPLORE",
+   11361,
+   7,
+   22,
+   0
+  ],
+  [
+   "FRESH_EXPLORE",
+   12071,
+   8,
+   14,
+   0
+  ],
+  [
+   "FRESH_EXPLORE",
+   12521,
+   5,
+   15,
+   0
+  ],
+  [
+   "FRESH_EXPLORE",
+   332,
+   6,
+   10,
+   0
+  ],
+  [
+   "FRESH_EXPLORE",
+   337,
+   8,
+   13,
+   0
+  ],
+  [
+   "FRESH_EXPLORE",
+   557,
+   6,
+   14,
+   0
+  ],
+  [
+   "FRESH_EXPLORE",
+   1182,
+   6,
+   11,
+   0
+  ],
+  [
+   "FRESH_EXPLORE",
+   1407,
+   11,
+   23,
+   0
+  ],
+  [
+   "FRESH_EXPLORE",
+   2432,
+   8,
+   14,
+   0
+  ],
+  [
+   "FRESH_EXPLORE",
+   5187,
+   7,
+   25,
+   0
+  ],
+  [
+   "FRESH_EXPLORE",
+   5257,
+   7,
+   16,
+   0
+  ],
+  [
+   "FRESH_EXPLORE",
+   5277,
+   8,
+   16,
+   0
+  ],
+  [
+   "FRESH_EXPLORE",
+   5292,
+   7,
+   22,
+   0
+  ],
+  [
+   "FRESH_EXPLORE",
+   6087,
+   11,
+   14,
+   0
+  ],
+  [
+   "FRESH_EXPLORE",
+   6192,
+   6,
+   13,
+   0
+  ],
+  [
+   "FRESH_EXPLORE",
+   7042,
+   10,
+   14,
+   0
+  ],
+  [
+   "FRESH_EXPLORE",
+   7252,
+   7,
+   17,
+   0
+  ],
+  [
+   "FRESH_EXPLORE",
+   8177,
+   9,
+   16,
+   0
+  ],
+  [
+   "FRESH_EXPLORE",
+   8247,
+   6,
+   16,
+   0
+  ],
+  [
+   "FRESH_EXPLORE",
+   8267,
+   10,
+   21,
+   0
+  ],
+  [
+   "FRESH_EXPLORE",
+   8972,
+   7,
+   15,
+   0
+  ],
+  [
+   "FRESH_EXPLORE",
+   9042,
+   8,
+   16,
+   0
+  ],
+  [
+   "FRESH_EXPLORE",
+   9907,
+   8,
+   14,
+   0
+  ],
+  [
+   "FRESH_EXPLORE",
+   10227,
+   10,
+   15,
+   0
+  ],
+  [
+   "FRESH_EXPLORE",
+   10457,
+   9,
+   16,
+   0
+  ],
+  [
+   "FRESH_EXPLORE",
+   10902,
+   8,
+   16,
+   0
+  ],
+  [
+   "FRESH_EXPLORE",
+   11632,
+   8,
+   14,
+   0
+  ],
+  [
+   "FRESH_EXPLORE",
+   11867,
+   9,
+   22,
+   0
+  ],
+  [
+   "FRESH_EXPLORE",
+   12467,
+   8,
+   15,
+   0
+  ],
+  [
+   "FRESH_EXPLORE",
+   12517,
+   13,
+   14,
+   0
+  ],
+  [
+   "FRESH_EXPLORE",
+   533,
+   7,
+   16,
+   0
+  ],
+  [
+   "FRESH_EXPLORE",
+   768,
+   7,
+   14,
+   0
+  ],
+  [
+   "FRESH_EXPLORE",
+   1193,
+   11,
+   11,
+   0
+  ],
+  [
+   "FRESH_EXPLORE",
+   1393,
+   7,
+   16,
+   0
+  ],
+  [
+   "FRESH_EXPLORE",
+   2003,
+   6,
+   11,
+   0
+  ],
+  [
+   "FRESH_EXPLORE",
+   2283,
+   9,
+   22,
+   0
+  ],
+  [
+   "FRESH_EXPLORE",
+   3248,
+   10,
+   36,
+   0
+  ],
+  [
+   "FRESH_EXPLORE",
+   3263,
+   11,
+   36,
+   0
+  ],
+  [
+   "FRESH_EXPLORE",
+   3303,
+   10,
+   40,
+   0
+  ],
+  [
+   "FRESH_EXPLORE",
+   5593,
+   9,
+   26,
+   0
+  ],
+  [
+   "FRESH_EXPLORE",
+   6198,
+   6,
+   14,
+   0
+  ],
+  [
+   "FRESH_EXPLORE",
+   6303,
+   10,
+   20,
+   0
+  ],
+  [
+   "FRESH_EXPLORE",
+   7243,
+   8,
+   18,
+   0
+  ],
+  [
+   "FRESH_EXPLORE",
+   7538,
+   8,
+   13,
+   0
+  ],
+  [
+   "FRESH_EXPLORE",
+   7973,
+   7,
+   15,
+   0
+  ],
+  [
+   "FRESH_EXPLORE",
+   8108,
+   8,
+   13,
+   0
+  ],
+  [
+   "FRESH_EXPLORE",
+   8193,
+   9,
+   23,
+   0
+  ],
+  [
+   "FRESH_EXPLORE",
+   8198,
+   6,
+   23,
+   0
+  ],
+  [
+   "FRESH_EXPLORE",
+   8203,
+   7,
+   23,
+   0
+  ],
+  [
+   "FRESH_EXPLORE",
+   8418,
+   6,
+   20,
+   0
+  ],
+  [
+   "FRESH_EXPLORE",
+   8848,
+   8,
+   22,
+   0
+  ],
+  [
+   "FRESH_EXPLORE",
+   9038,
+   7,
+   13,
+   0
+  ],
+  [
+   "FRESH_EXPLORE",
+   9258,
+   6,
+   13,
+   0
+  ],
+  [
+   "FRESH_EXPLORE",
+   9763,
+   11,
+   14,
+   0
+  ],
+  [
+   "FRESH_EXPLORE",
+   10128,
+   6,
+   20,
+   0
+  ],
+  [
+   "FRESH_EXPLORE",
+   10173,
+   9,
+   10,
+   0
+  ],
+  [
+   "FRESH_EXPLORE",
+   10518,
+   9,
+   23,
+   0
+  ],
+  [
+   "FRESH_EXPLORE",
+   10798,
+   7,
+   21,
+   0
+  ],
+  [
+   "FRESH_EXPLORE",
+   11183,
+   7,
+   16,
+   0
+  ],
+  [
+   "FRESH_EXPLORE",
+   11508,
+   5,
+   13,
+   0
+  ],
+  [
+   "FRESH_EXPLORE",
+   11513,
+   8,
+   11,
+   0
+  ],
+  [
+   "FRESH_EXPLORE",
+   11578,
+   7,
+   24,
+   0
+  ],
+  [
+   "FRESH_EXPLORE",
+   11798,
+   7,
+   13,
+   0
+  ],
+  [
+   "FRESH_EXPLORE",
+   12238,
+   7,
+   14,
+   0
+  ],
+  [
+   "FRESH_EXPLORE",
+   12313,
+   7,
+   21,
+   0
+  ],
+  [
+   "FRESH_EXPLORE",
+   12348,
+   6,
+   12,
+   0
+  ],
+  [
+   "FRESH_EXPLORE",
+   12413,
+   6,
+   11,
+   0
+  ],
+  [
+   "FRESH_EXPLORE",
+   12703,
+   10,
+   23,
+   0
+  ],
+  [
+   "FRESH_EXPLORE",
+   12753,
+   9,
+   13,
+   0
+  ],
+  [
+   "FRESH_EXPLORE",
+   529,
+   7,
+   15,
+   0
+  ],
+  [
+   "FRESH_EXPLORE",
+   2839,
+   7,
+   32,
+   0
+  ],
+  [
+   "FRESH_EXPLORE",
+   5379,
+   7,
+   15,
+   0
+  ],
+  [
+   "FRESH_EXPLORE",
+   5509,
+   11,
+   28,
+   0
+  ],
+  [
+   "FRESH_EXPLORE",
+   5804,
+   6,
+   27,
+   0
+  ],
+  [
+   "FRESH_EXPLORE",
+   5819,
+   11,
+   27,
+   0
+  ],
+  [
+   "FRESH_EXPLORE",
+   6104,
+   7,
+   16,
+   0
+  ],
+  [
+   "FRESH_EXPLORE",
+   6854,
+   7,
+   22,
+   0
+  ],
+  [
+   "FRESH_EXPLORE",
+   7259,
+   10,
+   28,
+   0
+  ],
+  [
+   "FRESH_EXPLORE",
+   7699,
+   7,
+   19,
+   0
+  ],
+  [
+   "FRESH_EXPLORE",
+   7819,
+   12,
+   13,
+   0
+  ],
+  [
+   "FRESH_EXPLORE",
+   8259,
+   11,
+   14,
+   0
+  ],
+  [
+   "FRESH_EXPLORE",
+   8549,
+   8,
+   12,
+   0
+  ],
+  [
+   "FRESH_EXPLORE",
+   8684,
+   7,
+   10,
+   0
+  ],
+  [
+   "FRESH_EXPLORE",
+   9044,
+   7,
+   16,
+   0
+  ],
+  [
+   "FRESH_EXPLORE",
+   9049,
+   7,
+   13,
+   0
+  ],
+  [
+   "FRESH_EXPLORE",
+   9684,
+   11,
+   13,
+   0
+  ],
+  [
+   "FRESH_EXPLORE",
+   9839,
+   10,
+   13,
+   0
+  ],
+  [
+   "FRESH_EXPLORE",
+   9904,
+   6,
+   16,
+   0
+  ],
+  [
+   "FRESH_EXPLORE",
+   9914,
+   7,
+   16,
+   0
+  ],
+  [
+   "FRESH_EXPLORE",
+   9929,
+   7,
+   24,
+   0
+  ],
+  [
+   "FRESH_EXPLORE",
+   10414,
+   6,
+   21,
+   0
+  ],
+  [
+   "FRESH_EXPLORE",
+   10959,
+   8,
+   14,
+   0
+  ],
+  [
+   "FRESH_EXPLORE",
+   11139,
+   7,
+   23,
+   0
+  ],
+  [
+   "FRESH_EXPLORE",
+   11194,
+   9,
+   21,
+   0
+  ],
+  [
+   "FRESH_EXPLORE",
+   11294,
+   5,
+   11,
+   0
+  ],
+  [
+   "FRESH_EXPLORE",
+   11454,
+   6,
+   11,
+   0
+  ],
+  [
+   "FRESH_EXPLORE",
+   11574,
+   7,
+   14,
+   0
+  ],
+  [
+   "FRESH_EXPLORE",
+   11684,
+   6,
+   13,
+   0
+  ],
+  [
+   "FRESH_EXPLORE",
+   12239,
+   8,
+   16,
+   0
+  ],
+  [
+   "FRESH_EXPLORE",
+   12259,
+   7,
+   24,
+   0
+  ],
+  [
+   "FRESH_EXPLORE",
+   12404,
+   7,
+   10,
+   0
+  ],
+  [
+   "FRESH_CHECK",
+   340,
+   6,
+   12,
+   0
+  ],
+  [
+   "FRESH_CHECK",
+   590,
+   8,
+   21,
+   0
+  ],
+  [
+   "FRESH_CHECK",
+   735,
+   8,
+   16,
+   0
+  ],
+  [
+   "FRESH_CHECK",
+   805,
+   10,
+   21,
+   0
+  ],
+  [
+   "FRESH_CHECK",
+   1145,
+   11,
+   13,
+   0
+  ],
+  [
+   "FRESH_CHECK",
+   1595,
+   6,
+   14,
+   0
+  ],
+  [
+   "FRESH_CHECK",
+   1630,
+   7,
+   23,
+   0
+  ],
+  [
+   "FRESH_CHECK",
+   1655,
+   11,
+   21,
+   0
+  ],
+  [
+   "FRESH_CHECK",
+   2195,
+   7,
+   13,
+   0
+  ],
+  [
+   "FRESH_CHECK",
+   2485,
+   8,
+   21,
+   0
+  ],
+  [
+   "FRESH_CHECK",
+   2490,
+   9,
+   24,
+   0
+  ],
+  [
+   "FRESH_CHECK",
+   3315,
+   13,
+   40,
+   0
+  ],
+  [
+   "FRESH_CHECK",
+   5265,
+   8,
+   16,
+   0
+  ],
+  [
+   "FRESH_CHECK",
+   5385,
+   10,
+   22,
+   0
+  ],
+  [
+   "FRESH_CHECK",
+   5500,
+   7,
+   27,
+   0
+  ],
+  [
+   "FRESH_CHECK",
+   5985,
+   6,
+   15,
+   0
+  ],
+  [
+   "FRESH_CHECK",
+   6205,
+   7,
+   14,
+   0
+  ],
+  [
+   "FRESH_CHECK",
+   6440,
+   11,
+   26,
+   0
+  ],
+  [
+   "FRESH_CHECK",
+   6925,
+   6,
+   15,
+   0
+  ],
+  [
+   "FRESH_CHECK",
+   7235,
+   10,
+   18,
+   0
+  ],
+  [
+   "FRESH_CHECK",
+   7250,
+   11,
+   19,
+   0
+  ],
+  [
+   "FRESH_CHECK",
+   8035,
+   6,
+   14,
+   0
+  ],
+  [
+   "FRESH_CHECK",
+   8990,
+   9,
+   24,
+   0
+  ],
+  [
+   "FRESH_CHECK",
+   9050,
+   7,
+   16,
+   0
+  ],
+  [
+   "FRESH_CHECK",
+   9055,
+   10,
+   23,
+   0
+  ],
+  [
+   "FRESH_CHECK",
+   9065,
+   7,
+   24,
+   0
+  ],
+  [
+   "FRESH_CHECK",
+   9900,
+   7,
+   13,
+   0
+  ],
+  [
+   "FRESH_CHECK",
+   9920,
+   6,
+   21,
+   0
+  ],
+  [
+   "FRESH_CHECK",
+   10165,
+   7,
+   10,
+   0
+  ],
+  [
+   "FRESH_CHECK",
+   10400,
+   6,
+   11,
+   0
+  ],
+  [
+   "FRESH_CHECK",
+   10445,
+   7,
+   16,
+   0
+  ],
+  [
+   "FRESH_CHECK",
+   10465,
+   10,
+   24,
+   0
+  ],
+  [
+   "FRESH_CHECK",
+   10470,
+   11,
+   23,
+   0
+  ],
+  [
+   "FRESH_CHECK",
+   10525,
+   9,
+   24,
+   0
+  ],
+  [
+   "FRESH_CHECK",
+   11800,
+   7,
+   16,
+   0
+  ],
+  [
+   "FRESH_CHECK",
+   12015,
+   7,
+   15,
+   0
+  ],
+  [
+   "FRESH_CHECK",
+   12305,
+   7,
+   16,
+   0
+  ],
+  [
+   "FRESH_CHECK",
+   346,
+   9,
+   13,
+   0
+  ],
+  [
+   "FRESH_CHECK",
+   801,
+   10,
+   24,
+   0
+  ],
+  [
+   "FRESH_CHECK",
+   1166,
+   6,
+   12,
+   0
+  ],
+  [
+   "FRESH_CHECK",
+   1366,
+   10,
+   13,
+   0
+  ],
+  [
+   "FRESH_CHECK",
+   1576,
+   13,
+   14,
+   0
+  ],
+  [
+   "FRESH_CHECK",
+   2031,
+   8,
+   20,
+   0
+  ],
+  [
+   "FRESH_CHECK",
+   2191,
+   8,
+   16,
+   0
+  ],
+  [
+   "FRESH_CHECK",
+   2201,
+   10,
+   13,
+   0
+  ],
+  [
+   "FRESH_CHECK",
+   2396,
+   7,
+   14,
+   0
+  ],
+  [
+   "FRESH_CHECK",
+   2401,
+   10,
+   16,
+   0
+  ],
+  [
+   "FRESH_CHECK",
+   2451,
+   7,
+   21,
+   0
+  ],
+  [
+   "FRESH_CHECK",
+   4061,
+   11,
+   33,
+   0
+  ],
+  [
+   "FRESH_CHECK",
+   4121,
+   11,
+   40,
+   0
+  ],
+  [
+   "FRESH_CHECK",
+   4151,
+   10,
+   37,
+   0
+  ],
+  [
+   "FRESH_CHECK",
+   4491,
+   9,
+   32,
+   0
+  ],
+  [
+   "FRESH_CHECK",
+   5366,
+   9,
+   16,
+   0
+  ],
+  [
+   "FRESH_CHECK",
+   5406,
+   7,
+   24,
+   0
+  ],
+  [
+   "FRESH_CHECK",
+   5461,
+   5,
+   19,
+   0
+  ],
+  [
+   "FRESH_CHECK",
+   5566,
+   11,
+   19,
+   0
+  ],
+  [
+   "FRESH_CHECK",
+   6106,
+   10,
+   14,
+   0
+  ],
+  [
+   "FRESH_CHECK",
+   6236,
+   10,
+   21,
+   0
+  ],
+  [
+   "FRESH_CHECK",
+   6301,
+   8,
+   18,
+   0
+  ],
+  [
+   "FRESH_CHECK",
+   6306,
+   8,
+   18,
+   0
+  ],
+  [
+   "FRESH_CHECK",
+   6826,
+   6,
+   16,
+   0
+  ],
+  [
+   "FRESH_CHECK",
+   7036,
+   9,
+   13,
+   0
+  ],
+  [
+   "FRESH_CHECK",
+   7456,
+   8,
+   16,
+   0
+  ],
+  [
+   "FRESH_CHECK",
+   8256,
+   9,
+   15,
+   0
+  ],
+  [
+   "FRESH_CHECK",
+   8261,
+   8,
+   16,
+   0
+  ],
+  [
+   "FRESH_CHECK",
+   9541,
+   6,
+   12,
+   0
+  ],
+  [
+   "FRESH_CHECK",
+   10911,
+   11,
+   23,
+   0
+  ],
+  [
+   "FRESH_CHECK",
+   11361,
+   8,
+   21,
+   0
+  ],
+  [
+   "FRESH_CHECK",
+   12021,
+   7,
+   13,
+   0
+  ],
+  [
+   "FRESH_CHECK",
+   342,
+   7,
+   10,
+   0
+  ],
+  [
+   "FRESH_CHECK",
+   387,
+   9,
+   19,
+   0
+  ],
+  [
+   "FRESH_CHECK",
+   622,
+   8,
+   22,
+   0
+  ],
+  [
+   "FRESH_CHECK",
+   1397,
+   7,
+   13,
+   0
+  ],
+  [
+   "FRESH_CHECK",
+   1402,
+   7,
+   14,
+   0
+  ],
+  [
+   "FRESH_CHECK",
+   1647,
+   10,
+   23,
+   0
+  ],
+  [
+   "FRESH_CHECK",
+   2192,
+   6,
+   13,
+   0
+  ],
+  [
+   "FRESH_CHECK",
+   2412,
+   8,
+   16,
+   0
+  ],
+  [
+   "FRESH_CHECK",
+   2417,
+   6,
+   13,
+   0
+  ],
+  [
+   "FRESH_CHECK",
+   3282,
+   10,
+   38,
+   0
+  ],
+  [
+   "FRESH_CHECK",
+   3892,
+   11,
+   33,
+   0
+  ],
+  [
+   "FRESH_CHECK",
+   5192,
+   8,
+   23,
+   0
+  ],
+  [
+   "FRESH_CHECK",
+   5587,
+   13,
+   19,
+   0
+  ],
+  [
+   "FRESH_CHECK",
+   6627,
+   6,
+   17,
+   0
+  ],
+  [
+   "FRESH_CHECK",
+   7167,
+   7,
+   25,
+   0
+  ],
+  [
+   "FRESH_CHECK",
+   7467,
+   5,
+   27,
+   0
+  ],
+  [
+   "FRESH_CHECK",
+   7977,
+   10,
+   21,
+   0
+  ],
+  [
+   "FRESH_CHECK",
+   8132,
+   10,
+   21,
+   0
+  ],
+  [
+   "FRESH_CHECK",
+   8402,
+   7,
+   10,
+   0
+  ],
+  [
+   "FRESH_CHECK",
+   8682,
+   7,
+   12,
+   0
+  ],
+  [
+   "FRESH_CHECK",
+   9122,
+   10,
+   13,
+   0
+  ],
+  [
+   "FRESH_CHECK",
+   9757,
+   10,
+   15,
+   0
+  ],
+  [
+   "FRESH_CHECK",
+   9837,
+   9,
+   16,
+   0
+  ],
+  [
+   "FRESH_CHECK",
+   9907,
+   7,
+   13,
+   0
+  ],
+  [
+   "FRESH_CHECK",
+   9997,
+   9,
+   21,
+   0
+  ],
+  [
+   "FRESH_CHECK",
+   10517,
+   9,
+   24,
+   0
+  ],
+  [
+   "FRESH_CHECK",
+   10787,
+   6,
+   10,
+   0
+  ],
+  [
+   "FRESH_CHECK",
+   11182,
+   6,
+   14,
+   0
+  ],
+  [
+   "FRESH_CHECK",
+   11347,
+   8,
+   16,
+   0
+  ],
+  [
+   "FRESH_CHECK",
+   12012,
+   7,
+   15,
+   0
+  ],
+  [
+   "FRESH_CHECK",
+   12022,
+   7,
+   15,
+   0
+  ],
+  [
+   "FRESH_CHECK",
+   12247,
+   7,
+   13,
+   0
+  ],
+  [
+   "FRESH_CHECK",
+   12257,
+   7,
+   24,
+   0
+  ],
+  [
+   "FRESH_CHECK",
+   12467,
+   6,
+   16,
+   0
+  ],
+  [
+   "FRESH_CHECK",
+   318,
+   6,
+   11,
+   0
+  ],
+  [
+   "FRESH_CHECK",
+   338,
+   9,
+   12,
+   0
+  ],
+  [
+   "FRESH_CHECK",
+   353,
+   10,
+   13,
+   0
+  ],
+  [
+   "FRESH_CHECK",
+   523,
+   9,
+   14,
+   0
+  ],
+  [
+   "FRESH_CHECK",
+   578,
+   10,
+   24,
+   0
+  ],
+  [
+   "FRESH_CHECK",
+   603,
+   11,
+   22,
+   0
+  ],
+  [
+   "FRESH_CHECK",
+   1188,
+   6,
+   12,
+   0
+  ],
+  [
+   "FRESH_CHECK",
+   1383,
+   6,
+   15,
+   0
+  ],
+  [
+   "FRESH_CHECK",
+   1603,
+   6,
+   14,
+   0
+  ],
+  [
+   "FRESH_CHECK",
+   2023,
+   6,
+   12,
+   0
+  ],
+  [
+   "FRESH_CHECK",
+   2253,
+   8,
+   24,
+   0
+  ],
+  [
+   "FRESH_CHECK",
+   2438,
+   6,
+   14,
+   0
+  ],
+  [
+   "FRESH_CHECK",
+   3053,
+   8,
+   34,
+   0
+  ],
+  [
+   "FRESH_CHECK",
+   3863,
+   7,
+   36,
+   0
+  ],
+  [
+   "FRESH_CHECK",
+   5173,
+   8,
+   15,
+   0
+  ],
+  [
+   "FRESH_CHECK",
+   5263,
+   6,
+   16,
+   0
+  ],
+  [
+   "FRESH_CHECK",
+   5293,
+   8,
+   24,
+   0
+  ],
+  [
+   "FRESH_CHECK",
+   5363,
+   6,
+   16,
+   0
+  ],
+  [
+   "FRESH_CHECK",
+   6198,
+   10,
+   13,
+   0
+  ],
+  [
+   "FRESH_CHECK",
+   6928,
+   7,
+   14,
+   0
+  ],
+  [
+   "FRESH_CHECK",
+   6938,
+   9,
+   16,
+   0
+  ],
+  [
+   "FRESH_CHECK",
+   7068,
+   6,
+   23,
+   0
+  ],
+  [
+   "FRESH_CHECK",
+   7173,
+   10,
+   27,
+   0
+  ],
+  [
+   "FRESH_CHECK",
+   7553,
+   9,
+   19,
+   0
+  ],
+  [
+   "FRESH_CHECK",
+   7673,
+   11,
+   12,
+   0
+  ],
+  [
+   "FRESH_CHECK",
+   8113,
+   6,
+   14,
+   0
+  ],
+  [
+   "FRESH_CHECK",
+   8188,
+   7,
+   16,
+   0
+  ],
+  [
+   "FRESH_CHECK",
+   8203,
+   7,
+   23,
+   0
+  ],
+  [
+   "FRESH_CHECK",
+   9403,
+   6,
+   10,
+   0
+  ],
+  [
+   "FRESH_CHECK",
+   9688,
+   8,
+   14,
+   0
+  ],
+  [
+   "FRESH_CHECK",
+   10678,
+   7,
+   14,
+   0
+  ],
+  [
+   "FRESH_CHECK",
+   11418,
+   10,
+   21,
+   0
+  ],
+  [
+   "FRESH_CHECK",
+   11793,
+   7,
+   13,
+   0
+  ],
+  [
+   "FRESH_CHECK",
+   12018,
+   7,
+   13,
+   0
+  ],
+  [
+   "FRESH_CHECK",
+   12468,
+   6,
+   15,
+   0
+  ],
+  [
+   "FRESH_CHECK",
+   324,
+   6,
+   13,
+   0
+  ],
+  [
+   "FRESH_CHECK",
+   329,
+   8,
+   10,
+   0
+  ],
+  [
+   "FRESH_CHECK",
+   349,
+   9,
+   13,
+   0
+  ],
+  [
+   "FRESH_CHECK",
+   559,
+   8,
+   16,
+   0
+  ],
+  [
+   "FRESH_CHECK",
+   734,
+   7,
+   16,
+   0
+  ],
+  [
+   "FRESH_CHECK",
+   749,
+   7,
+   15,
+   0
+  ],
+  [
+   "FRESH_CHECK",
+   779,
+   10,
+   15,
+   0
+  ],
+  [
+   "FRESH_CHECK",
+   1354,
+   7,
+   14,
+   0
+  ],
+  [
+   "FRESH_CHECK",
+   1399,
+   6,
+   16,
+   0
+  ],
+  [
+   "FRESH_CHECK",
+   2079,
+   9,
+   19,
+   0
+  ],
+  [
+   "FRESH_CHECK",
+   2224,
+   7,
+   13,
+   0
+  ],
+  [
+   "FRESH_CHECK",
+   2439,
+   7,
+   16,
+   0
+  ],
+  [
+   "FRESH_CHECK",
+   3059,
+   8,
+   33,
+   0
+  ],
+  [
+   "FRESH_CHECK",
+   3234,
+   11,
+   35,
+   0
+  ],
+  [
+   "FRESH_CHECK",
+   3294,
+   8,
+   37,
+   0
+  ],
+  [
+   "FRESH_CHECK",
+   4749,
+   10,
+   37,
+   0
+  ],
+  [
+   "FRESH_CHECK",
+   5499,
+   10,
+   28,
+   0
+  ],
+  [
+   "FRESH_CHECK",
+   5984,
+   5,
+   15,
+   0
+  ],
+  [
+   "FRESH_CHECK",
+   6824,
+   6,
+   15,
+   0
+  ],
+  [
+   "FRESH_CHECK",
+   6839,
+   6,
+   24,
+   0
+  ],
+  [
+   "FRESH_CHECK",
+   7029,
+   7,
+   14,
+   0
+  ],
+  [
+   "FRESH_CHECK",
+   7034,
+   6,
+   16,
+   0
+  ],
+  [
+   "FRESH_CHECK",
+   7134,
+   10,
+   20,
+   0
+  ],
+  [
+   "FRESH_CHECK",
+   7229,
+   10,
+   20,
+   0
+  ],
+  [
+   "FRESH_CHECK",
+   7454,
+   8,
+   17,
+   0
+  ],
+  [
+   "FRESH_CHECK",
+   7964,
+   9,
+   15,
+   0
+  ],
+  [
+   "FRESH_CHECK",
+   7979,
+   8,
+   21,
+   0
+  ],
+  [
+   "FRESH_CHECK",
+   8104,
+   8,
+   15,
+   0
+  ],
+  [
+   "FRESH_CHECK",
+   8114,
+   7,
+   16,
+   0
+  ],
+  [
+   "FRESH_CHECK",
+   8249,
+   10,
+   13,
+   0
+  ],
+  [
+   "FRESH_CHECK",
+   8259,
+   6,
+   15,
+   0
+  ],
+  [
+   "FRESH_CHECK",
+   8474,
+   7,
+   10,
+   0
+  ],
+  [
+   "FRESH_CHECK",
+   8539,
+   9,
+   10,
+   0
+  ],
+  [
+   "FRESH_CHECK",
+   8834,
+   9,
+   13,
+   0
+  ],
+  [
+   "FRESH_CHECK",
+   9039,
+   7,
+   14,
+   0
+  ],
+  [
+   "FRESH_CHECK",
+   9069,
+   9,
+   22,
+   0
+  ],
+  [
+   "FRESH_CHECK",
+   9119,
+   9,
+   14,
+   0
+  ],
+  [
+   "FRESH_CHECK",
+   9974,
+   6,
+   15,
+   0
+  ],
+  [
+   "FRESH_CHECK",
+   10509,
+   7,
+   15,
+   0
+  ],
+  [
+   "FRESH_CHECK",
+   10514,
+   10,
+   21,
+   0
+  ],
+  [
+   "FRESH_CHECK",
+   10619,
+   6,
+   10,
+   0
+  ],
+  [
+   "FRESH_CHECK",
+   11359,
+   6,
+   21,
+   0
+  ],
+  [
+   "FRESH_CHECK",
+   11564,
+   7,
+   14,
+   0
+  ],
+  [
+   "FRESH_CHECK",
+   11859,
+   6,
+   24,
+   0
+  ],
+  [
+   "FRESH_CHECK",
+   11969,
+   9,
+   11,
+   0
+  ],
+  [
+   "FRESH_CHECK",
+   12409,
+   8,
+   11,
+   0
+  ],
+  [
+   "FRESH_CHECK",
+   12689,
+   7,
+   14,
+   0
+  ]
+ ]
+}

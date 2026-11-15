@@ -1,0 +1,745 @@
+{
+ "schema": "HDISC0_DESIGN_EVIDENCE_V1",
+ "authority": "R0",
+ "stage": "STAGE3H-H-DISC-0",
+ "labels": [
+  "READ_ONLY_DESIGN_ANALYSIS",
+  "EXISTING_EVIDENCE_ONLY",
+  "NO_TRAINING",
+  "NO_NEW_POPULATION",
+  "PLANNING_ASSUMPTIONS_NOT_RESULTS",
+  "NOT_AN_H_DISC_PERFORMANCE_RESULT"
+ ],
+ "source": {
+  "validationMatrixSha256": "f3013d0d5d756c68303d583a9abf8da0136a4ef903f0f69492fff905afa123e6",
+  "explorationMatrixSha256": "3c361ac1dc82f1fd85df37728d9aaca549ab5e00b1dd7e7e943d1e20be00b1d6",
+  "sk2fFeasibilitySha256": "22194b2a9169a1e10b3f174303792b30b4f2296265caecaf0a4053202e766108",
+  "modelHash": "b479972a3445ccb9d3cf42ac9821aee2f69431e4101b6dbdfdcd76e777968c6b",
+  "analyzerSha256": "28e59dedf96f73bd56a29a1e21c99c480509287491d62df24760a10a380b711a"
+ },
+ "reconciliation": {
+  "exact": true,
+  "issues": []
+ },
+ "evidenceKinds": {
+  "OBSERVATION": "what the frozen policy did",
+  "OFFLINE_EVALUATOR_FACT": "an outcome computed by the frozen evaluator on sampled member worlds; not available at inference",
+  "LEARNED_MODEL_ERROR": "a disagreement between the frozen model's ordering and evaluator facts",
+  "PUBLIC_IDENTIFIABILITY": "whether a public-information rule can recover the evaluator fact on unseen classes",
+  "CAUSAL_EXPLANATION": "why the error occurs"
+ },
+ "attribution": {
+  "validationForcedChoiceFailures": 39,
+  "validationWithinMenuOrdering": 34,
+  "validationRankingContract": 5,
+  "validationNoSafeAlternative": 0,
+  "uniqueAcceptedValidationFailures": 2,
+  "acceptedValidationFailuresThatAreOrderingErrors": 2,
+  "explorationOutOfBagFailures": 55,
+  "explorationOutOfBagOrdering": 48,
+  "explorationOutOfBagRankingContract": 7,
+  "validationClassesWithAnEvaluatorSafeLegalAction": 600,
+  "validationClasses": 600,
+  "explorationClassesWithAnEvaluatorSafeLegalAction": 1000,
+  "explorationClasses": 1000
+ },
+ "topChoice": {
+  "definition": "the first-ranked decision set at full coverage (the forced choice); unsafe = introduces against S0 or Nexus-else-S0 in at least one member world",
+  "historicalValidation": {
+   "classes": 600,
+   "topChoiceUnsafe": 39,
+   "rate": 0.065,
+   "topChoiceCatastrophic": 52,
+   "catastropheRate": 0.086667,
+   "vsS0": 28,
+   "vsNexus": 37,
+   "meanNreg": 0.2203
+  },
+  "explorationOutOfBag": {
+   "classes": 875,
+   "topChoiceUnsafe": 55,
+   "rate": 0.062857,
+   "topChoiceCatastrophic": 66,
+   "catastropheRate": 0.075429
+  },
+  "explorationOutOfFoldReference": {
+   "classes": 1000,
+   "topChoiceUnsafe": 73,
+   "rate": 0.073
+  },
+  "comparatorsOnHistoricalValidation": {
+   "S0": {
+    "unsafeAgainstNexus": 97,
+    "meanNreg": 0.5611
+   },
+   "NEXUS": {
+    "unsafeAgainstS0": 193,
+    "meanNreg": 0.6244
+   },
+   "C10": {
+    "unsafe": 84,
+    "meanNreg": 0.3834
+   }
+  }
+ },
+ "pairBaseline": {
+  "definition": "for every menu, every (safe, unsafe) action pair; correctly ordered when the frozen estimate of the safe action is strictly lower; equal estimates count one half",
+  "note": "SK1 was never trained on pairs or on the introduction label. These are the frozen-policy baselines a discriminator would have to beat.",
+  "introductionLabel": {
+   "historicalValidation": {
+    "menusWithASafeAndAnUnsafeAction": 493,
+    "menusWithASameTypeSafeUnsafePair": 467,
+    "pooled": {
+     "pairs": 8174,
+     "correctlyOrdered": 0.8013
+    },
+    "sameActionType": {
+     "pairs": 1661,
+     "correctlyOrdered": 0.8462
+    },
+    "differentActionType": {
+     "pairs": 6513,
+     "correctlyOrdered": 0.7898
+    },
+    "meanOverMenus": 0.8132,
+    "menusWithEveryPairCorrect": 177,
+    "safeUnsafePairsPerMenuMean": 16.5801
+   },
+   "explorationOutOfBag": {
+    "menusWithASafeAndAnUnsafeAction": 762,
+    "menusWithASameTypeSafeUnsafePair": 717,
+    "pooled": {
+     "pairs": 12849,
+     "correctlyOrdered": 0.8499
+    },
+    "sameActionType": {
+     "pairs": 2523,
+     "correctlyOrdered": 0.8718
+    },
+    "differentActionType": {
+     "pairs": 10326,
+     "correctlyOrdered": 0.8446
+    },
+    "meanOverMenus": 0.8517,
+    "menusWithEveryPairCorrect": 326,
+    "safeUnsafePairsPerMenuMean": 16.8622
+   },
+   "explorationInSample_optimistic": {
+    "menusWithASafeAndAnUnsafeAction": 876,
+    "menusWithASameTypeSafeUnsafePair": 821,
+    "pooled": {
+     "pairs": 14717,
+     "correctlyOrdered": 0.8624
+    },
+    "sameActionType": {
+     "pairs": 2879,
+     "correctlyOrdered": 0.8835
+    },
+    "differentActionType": {
+     "pairs": 11838,
+     "correctlyOrdered": 0.8572
+    },
+    "meanOverMenus": 0.8636,
+    "menusWithEveryPairCorrect": 394,
+    "safeUnsafePairsPerMenuMean": 16.8002
+   }
+  },
+  "catastropheLabel": {
+   "historicalValidation": {
+    "menusWithASafeAndAnUnsafeAction": 529,
+    "menusWithASameTypeSafeUnsafePair": 503,
+    "pooled": {
+     "pairs": 7951,
+     "correctlyOrdered": 0.8224
+    },
+    "sameActionType": {
+     "pairs": 1726,
+     "correctlyOrdered": 0.8401
+    },
+    "differentActionType": {
+     "pairs": 6225,
+     "correctlyOrdered": 0.8175
+    },
+    "meanOverMenus": 0.8346,
+    "menusWithEveryPairCorrect": 229,
+    "safeUnsafePairsPerMenuMean": 15.0302
+   },
+   "explorationOutOfBag": {
+    "menusWithASafeAndAnUnsafeAction": 809,
+    "menusWithASameTypeSafeUnsafePair": 763,
+    "pooled": {
+     "pairs": 12386,
+     "correctlyOrdered": 0.8698
+    },
+    "sameActionType": {
+     "pairs": 2573,
+     "correctlyOrdered": 0.8686
+    },
+    "differentActionType": {
+     "pairs": 9813,
+     "correctlyOrdered": 0.8701
+    },
+    "meanOverMenus": 0.8715,
+    "menusWithEveryPairCorrect": 400,
+    "safeUnsafePairsPerMenuMean": 15.3103
+   }
+  }
+ },
+ "explanations": {
+  "A_incorrectRiskDifferencesBetweenLegalActions": {
+   "status": "SUPPORTED",
+   "kind": "LEARNED_MODEL_ERROR (observed against OFFLINE_EVALUATOR_FACT labels)",
+   "evidence": {
+    "orderingErrorsValidation": "34 of 39",
+    "orderingErrorsExplorationOutOfBag": "48 of 55",
+    "pairwiseCorrectlyOrderedValidation": 0.8013,
+    "pairwiseCorrectlyOrderedSameTypeValidation": 0.8462
+   },
+   "reading": "The frozen estimate assigns a lower risk to an unsafe action than to every safe alternative in most failing menus. This is an observation about the model, not an explanation of why."
+  },
+  "B_sharedModellingBiasAmongBags": {
+   "status": "SUPPORTED_AS_COMMON_MODE_ERROR; CAUSE_NOT_IDENTIFIED",
+   "kind": "OBSERVATION about the ensemble",
+   "evidence": {
+    "validationOrderingErrorsByBagsOf10PreferringTheSafeAlternative": {
+     "0": 17,
+     "1": 5,
+     "2": 2,
+     "3": 2,
+     "4": 2,
+     "5": 4,
+     "6": 1,
+     "7": 1
+    },
+    "validationUnanimous": 17,
+    "validationAtMost2Of10": 24,
+    "validationMajorityOfBagsPreferTheSafeAlternative": 2,
+    "explorationOutOfBagUnanimousAmongBagsUsed": 31,
+    "explorationOutOfBagOrderingErrors": 48,
+    "explorationMedianBoundGapInSpreads": 2.6046
+   },
+   "reading": "The bags share one learner, one feature set, one label and overlapping families, so their agreement does not make an estimate more likely to be right. Common-mode error is established. Whether its source is the learner and objective (correctable) or the features (not correctable by any learner on them) is NOT distinguishable from existing evidence."
+  },
+  "C_publicObservationEquivalenceHidingSafetyRelevantDifferences": {
+   "status": "ESTABLISHED_FOR_OUTCOMES_OF_SINGLE_WORLDS; NOT_ESTABLISHED_FOR_CHOOSING_A_ROBUSTLY_SAFE_ACTION",
+   "kind": "OFFLINE_EVALUATOR_FACT for the outcome dependence; PUBLIC_IDENTIFIABILITY unresolved",
+   "evidence": {
+    "validationFailingChoiceCatastrophicInSomeMembersOnly": 33,
+    "validationFailingChoiceCatastrophicInEveryMember": 6,
+    "validationFailuresOnTwinWorldsOnly": 19,
+    "validationFailuresOnTheBaseWorld": 20,
+    "explorationOutOfBagFailingChoiceCatastrophicInSomeMembersOnly": 41,
+    "explorationOutOfBagFailuresOnTwinWorldsOnly": 18,
+    "allActionsValidation": {
+     "actions": 5304,
+     "neverCatastrophic": 2715,
+     "catastrophicInSomeMembersOnly": 1653,
+     "catastrophicInEveryMember": 936,
+     "shareOfCatastrophicActionsThatAreHiddenStateDependent": 0.6385
+    },
+    "allActionsExploration": {
+     "actions": 8895,
+     "neverCatastrophic": 4337,
+     "catastrophicInSomeMembersOnly": 2862,
+     "catastrophicInEveryMember": 1696,
+     "shareOfCatastrophicActionsThatAreHiddenStateDependent": 0.6279
+    },
+    "menusWithIdenticalFeatureRowsAndDifferentIntroductionOutcome": 4,
+    "explorationMenus": 1000,
+    "crossClassIdenticalRows": 0,
+    "classesWithARobustlySafeAction": "600 of 600 validation; 1000 of 1000 exploration"
+   },
+   "reading": "Hidden state decides the outcome of a given action in a given world: most catastrophic actions are catastrophic in some public-equivalent worlds and not others. That makes the per-world outcome publicly unpredictable. It does not by itself make the robust question unanswerable: every class contains an action that is safe in all sampled members. Whether that action can be told apart from public information is the open question. A demonstrated limit exists only for the few menus whose actions have identical feature rows."
+  },
+  "distinguishability": {
+   "A_from_B": "not separate hypotheses: B describes how the errors in A are distributed across the ensemble",
+   "B_from_C": "NOT_DISTINGUISHABLE_FROM_EXISTING_EVIDENCE. Both predict confident, unanimous, wrong within-menu orderings. Separating them needs a different learner evaluated on fresh classes (B predicts it can improve; a strict C predicts a ceiling) and a twin-consistency measurement.",
+   "whatExistingEvidenceCannotDo": "show that an evaluator-safe action is publicly identifiable; show that it is not"
+  }
+ },
+ "planningInputs": {
+  "note": "measured on spent or development data; PLANNING ASSUMPTIONS only",
+  "failureCoOccurrenceOfTwoPublicPolicies": {
+   "pair": "frozen C10 (reference) and frozen SK1 forced choice (candidate), historical validation",
+   "bothFail": 22,
+   "onlyC10Fails": 62,
+   "onlySk1Fails": 17,
+   "neitherFails": 499,
+   "phi": 0.3223,
+   "reading": "failures of two different public policies on the same classes are positively associated; independence is therefore a conservative planning assumption for a paired test"
+  },
+  "clustering": {
+   "forcedChoiceFailureValidation": {
+    "clusters": 46,
+    "meanClusterSize": 13.0435,
+    "largestCluster": 26,
+    "icc": 0.009172,
+    "designEffect": 1.1457
+   },
+   "forcedChoiceFailureExplorationOutOfBag": {
+    "clusters": 51,
+    "meanClusterSize": 17.1569,
+    "largestCluster": 49,
+    "icc": 0.011494,
+    "designEffect": 1.3051
+   },
+   "pairedDifferenceC10MinusSk1Validation": {
+    "clusters": 46,
+    "meanClusterSize": 13.0435,
+    "largestCluster": 26,
+    "icc": 0.029158,
+    "designEffect": 1.4633
+   },
+   "planningDesignEffect": 1.5,
+   "planningDesignEffectBasis": "the design effect of a PAIRED failure difference between two public policies on the same classes (C10 minus SK1) estimates to about 1.46; the single-policy failure indicator gives 1.15 to 1.31. 1.5 is used for planning; 1.11 (the earlier SK1.1 figure, from a formula that ignores unequal family sizes) is shown as the optimistic case",
+   "sensitivity": [
+    1,
+    1.11,
+    1.5,
+    2
+   ]
+  },
+  "baselineTopChoiceUnsafeRate": {
+   "historicalValidation": 0.065,
+   "explorationOutOfBag": 0.062857,
+   "explorationOutOfFold": 0.073,
+   "planningValue": 0.065
+  },
+  "originFamilies": {
+   "exploration": 57,
+   "validation": 46,
+   "total": 103
+  }
+ },
+ "power": {
+  "plan": {
+   "explorationClasses": 1000,
+   "validationClasses": 600,
+   "holdoutClasses": 0,
+   "alpha": 0.05,
+   "power": 0.8,
+   "status": "PLANNING_VALUES_NOT_AN_ALLOCATION"
+  },
+  "primaryTest": "paired, one-sided exact sign (McNemar) test on discordant classes: H0 the candidate's top-choice unsafe rate is not lower than frozen SK1's; alpha 0.05. The pre-registered interval is the origin-family cluster bootstrap of the paired difference; the exact test is the power model.",
+  "assumptions": {
+   "baselineTopChoiceUnsafeRate": 0.065,
+   "clustering": "effective classes = classes / design effect",
+   "associationModels": {
+    "INDEPENDENT": "the two policies fail independently (conservative)",
+    "EMPIRICAL_ASSOCIATION": "failures associated with phi = 0.3223, as observed between C10 and SK1",
+    "NESTED": "the candidate fails only where SK1 fails (most favourable; an upper limit on power)"
+   }
+  },
+  "powerAt600ValidationClasses": {
+   "INDEPENDENT": {
+    "designEffect_1": {
+     "reduction_0.3": 0.3868,
+     "reduction_0.4": 0.6063,
+     "reduction_0.5": 0.8086,
+     "reduction_0.6": 0.9379,
+     "reduction_0.7": 0.989
+    },
+    "designEffect_1.11": {
+     "reduction_0.3": 0.3565,
+     "reduction_0.4": 0.5631,
+     "reduction_0.5": 0.767,
+     "reduction_0.6": 0.913,
+     "reduction_0.7": 0.9811
+    },
+    "designEffect_1.5": {
+     "reduction_0.3": 0.2804,
+     "reduction_0.4": 0.449,
+     "reduction_0.5": 0.6419,
+     "reduction_0.6": 0.8171,
+     "reduction_0.7": 0.9349
+    },
+    "designEffect_2": {
+     "reduction_0.3": 0.2234,
+     "reduction_0.4": 0.3543,
+     "reduction_0.5": 0.518,
+     "reduction_0.6": 0.694,
+     "reduction_0.7": 0.8491
+    }
+   },
+   "EMPIRICAL_ASSOCIATION": {
+    "designEffect_1": {
+     "reduction_0.3": 0.5042,
+     "reduction_0.4": 0.7555,
+     "reduction_0.5": 0.9245,
+     "reduction_0.6": 0.9882,
+     "reduction_0.7": 0.9994
+    },
+    "designEffect_1.11": {
+     "reduction_0.3": 0.4657,
+     "reduction_0.4": 0.7119,
+     "reduction_0.5": 0.8965,
+     "reduction_0.6": 0.9795,
+     "reduction_0.7": 0.9984
+    },
+    "designEffect_1.5": {
+     "reduction_0.3": 0.3631,
+     "reduction_0.4": 0.5787,
+     "reduction_0.5": 0.7877,
+     "reduction_0.6": 0.9292,
+     "reduction_0.7": 0.9878
+    },
+    "designEffect_2": {
+     "reduction_0.3": 0.2816,
+     "reduction_0.4": 0.4591,
+     "reduction_0.5": 0.6611,
+     "reduction_0.6": 0.8392,
+     "reduction_0.7": 0.9505
+    }
+   },
+   "NESTED": {
+    "designEffect_1": {
+     "reduction_0.3": 0.9911,
+     "reduction_0.4": 0.9995,
+     "reduction_0.5": 1,
+     "reduction_0.6": 1,
+     "reduction_0.7": 1
+    },
+    "designEffect_1.11": {
+     "reduction_0.3": 0.9802,
+     "reduction_0.4": 0.9984,
+     "reduction_0.5": 0.9999,
+     "reduction_0.6": 1,
+     "reduction_0.7": 1
+    },
+    "designEffect_1.5": {
+     "reduction_0.3": 0.8907,
+     "reduction_0.4": 0.9787,
+     "reduction_0.5": 0.9966,
+     "reduction_0.6": 0.9995,
+     "reduction_0.7": 0.9999
+    },
+    "designEffect_2": {
+     "reduction_0.3": 0.6969,
+     "reduction_0.4": 0.8915,
+     "reduction_0.5": 0.9677,
+     "reduction_0.6": 0.9916,
+     "reduction_0.7": 0.998
+    }
+   }
+  },
+  "powerByValidationSize_designEffect1_11": {
+   "300": {
+    "reduction_0.3": {
+     "independent": 0.2042,
+     "empiricalAssociation": 0.2569
+    },
+    "reduction_0.4": {
+     "independent": 0.3225,
+     "empiricalAssociation": 0.4192
+    },
+    "reduction_0.5": {
+     "independent": 0.4747,
+     "empiricalAssociation": 0.6118
+    },
+    "reduction_0.6": {
+     "independent": 0.6464,
+     "empiricalAssociation": 0.7951
+    },
+    "reduction_0.7": {
+     "independent": 0.8091,
+     "empiricalAssociation": 0.9251
+    }
+   },
+   "400": {
+    "reduction_0.3": {
+     "independent": 0.2586,
+     "empiricalAssociation": 0.3305
+    },
+    "reduction_0.4": {
+     "independent": 0.4134,
+     "empiricalAssociation": 0.5328
+    },
+    "reduction_0.5": {
+     "independent": 0.5967,
+     "empiricalAssociation": 0.7428
+    },
+    "reduction_0.6": {
+     "independent": 0.7746,
+     "empiricalAssociation": 0.9013
+    },
+    "reduction_0.7": {
+     "independent": 0.9081,
+     "empiricalAssociation": 0.9786
+    }
+   },
+   "500": {
+    "reduction_0.3": {
+     "independent": 0.3076,
+     "empiricalAssociation": 0.4022
+    },
+    "reduction_0.4": {
+     "independent": 0.4911,
+     "empiricalAssociation": 0.6317
+    },
+    "reduction_0.5": {
+     "independent": 0.6914,
+     "empiricalAssociation": 0.8347
+    },
+    "reduction_0.6": {
+     "independent": 0.8592,
+     "empiricalAssociation": 0.9539
+    },
+    "reduction_0.7": {
+     "independent": 0.9581,
+     "empiricalAssociation": 0.994
+    }
+   },
+   "600": {
+    "reduction_0.3": {
+     "independent": 0.3565,
+     "empiricalAssociation": 0.4657
+    },
+    "reduction_0.4": {
+     "independent": 0.5631,
+     "empiricalAssociation": 0.7119
+    },
+    "reduction_0.5": {
+     "independent": 0.767,
+     "empiricalAssociation": 0.8965
+    },
+    "reduction_0.6": {
+     "independent": 0.913,
+     "empiricalAssociation": 0.9795
+    },
+    "reduction_0.7": {
+     "independent": 0.9811,
+     "empiricalAssociation": 0.9984
+    }
+   },
+   "800": {
+    "reduction_0.3": {
+     "independent": 0.4437,
+     "empiricalAssociation": 0.5768
+    },
+    "reduction_0.4": {
+     "independent": 0.6806,
+     "empiricalAssociation": 0.8261
+    },
+    "reduction_0.5": {
+     "independent": 0.8715,
+     "empiricalAssociation": 0.9603
+    },
+    "reduction_0.6": {
+     "independent": 0.969,
+     "empiricalAssociation": 0.9962
+    },
+    "reduction_0.7": {
+     "independent": 0.9965,
+     "empiricalAssociation": 0.9999
+    }
+   },
+   "1000": {
+    "reduction_0.3": {
+     "independent": 0.5249,
+     "empiricalAssociation": 0.6695
+    },
+    "reduction_0.4": {
+     "independent": 0.7717,
+     "empiricalAssociation": 0.8989
+    },
+    "reduction_0.5": {
+     "independent": 0.9312,
+     "empiricalAssociation": 0.9857
+    },
+    "reduction_0.6": {
+     "independent": 0.9893,
+     "empiricalAssociation": 0.9993
+    },
+    "reduction_0.7": {
+     "independent": 0.9994,
+     "empiricalAssociation": 1
+    }
+   },
+   "1500": {
+    "reduction_0.3": {
+     "independent": 0.6895,
+     "empiricalAssociation": 0.83
+    },
+    "reduction_0.4": {
+     "independent": 0.9086,
+     "empiricalAssociation": 0.9761
+    },
+    "reduction_0.5": {
+     "independent": 0.9875,
+     "empiricalAssociation": 0.999
+    },
+    "reduction_0.6": {
+     "independent": 0.9994,
+     "empiricalAssociation": 1
+    },
+    "reduction_0.7": {
+     "independent": 1,
+     "empiricalAssociation": 1
+    }
+   }
+  },
+  "validationClassesFor80PercentPower": {
+   "reduction_0.3": {
+    "INDEPENDENT": {
+     "effectiveClasses": 1786,
+     "classesAtDesignEffect1_11": 1983,
+     "classesAtDesignEffect1_5": 2679
+    },
+    "EMPIRICAL_ASSOCIATION": {
+     "effectiveClasses": 1246,
+     "classesAtDesignEffect1_11": 1384,
+     "classesAtDesignEffect1_5": 1869
+    },
+    "NESTED": {
+     "effectiveClasses": 344,
+     "classesAtDesignEffect1_11": 382,
+     "classesAtDesignEffect1_5": 516
+    }
+   },
+   "reduction_0.4": {
+    "INDEPENDENT": {
+     "effectiveClasses": 968,
+     "classesAtDesignEffect1_11": 1075,
+     "classesAtDesignEffect1_5": 1452
+    },
+    "EMPIRICAL_ASSOCIATION": {
+     "effectiveClasses": 672,
+     "classesAtDesignEffect1_11": 746,
+     "classesAtDesignEffect1_5": 1008
+    },
+    "NESTED": {
+     "effectiveClasses": 258,
+     "classesAtDesignEffect1_11": 287,
+     "classesAtDesignEffect1_5": 387
+    }
+   },
+   "reduction_0.5": {
+    "INDEPENDENT": {
+     "effectiveClasses": 587,
+     "classesAtDesignEffect1_11": 652,
+     "classesAtDesignEffect1_5": 881
+    },
+    "EMPIRICAL_ASSOCIATION": {
+     "effectiveClasses": 413,
+     "classesAtDesignEffect1_11": 459,
+     "classesAtDesignEffect1_5": 620
+    },
+    "NESTED": {
+     "effectiveClasses": 206,
+     "classesAtDesignEffect1_11": 229,
+     "classesAtDesignEffect1_5": 309
+    }
+   },
+   "reduction_0.6": {
+    "INDEPENDENT": {
+     "effectiveClasses": 383,
+     "classesAtDesignEffect1_11": 426,
+     "classesAtDesignEffect1_5": 575
+    },
+    "EMPIRICAL_ASSOCIATION": {
+     "effectiveClasses": 274,
+     "classesAtDesignEffect1_11": 305,
+     "classesAtDesignEffect1_5": 411
+    },
+    "NESTED": {
+     "effectiveClasses": 171,
+     "classesAtDesignEffect1_11": 190,
+     "classesAtDesignEffect1_5": 257
+    }
+   },
+   "reduction_0.7": {
+    "INDEPENDENT": {
+     "effectiveClasses": 264,
+     "classesAtDesignEffect1_11": 294,
+     "classesAtDesignEffect1_5": 396
+    },
+    "EMPIRICAL_ASSOCIATION": {
+     "effectiveClasses": 196,
+     "classesAtDesignEffect1_11": 218,
+     "classesAtDesignEffect1_5": 294
+    },
+    "NESTED": {
+     "effectiveClasses": 147,
+     "classesAtDesignEffect1_11": 164,
+     "classesAtDesignEffect1_5": 221
+    }
+   }
+  },
+  "smallestDetectableRelativeReductionAt600": {
+   "independent_designEffect1_11": 0.5187,
+   "empiricalAssociation_designEffect1_11": 0.4413,
+   "independent_designEffect1_5": 0.589
+  },
+  "theHalvingClaimExamined": {
+   "claim": "600 fresh validation classes detect a halving of the top-choice unsafe rate",
+   "effectiveClasses": 540,
+   "discordanceUnderIndependence": {
+    "pb": 0.062888,
+    "pc": 0.030388
+   },
+   "expectedDiscordantClasses": 50.3685,
+   "exactPowerIndependent": 0.767,
+   "exactPowerEmpiricalAssociation": 0.8965,
+   "exactPowerNested": 0.9999,
+   "exactPowerIndependentAtDesignEffect1_5": 0.6419,
+   "sensitivityToBaseline_independent": {
+    "0.055": 0.6948,
+    "0.065": 0.767,
+    "0.073": 0.8148
+   },
+   "verdict": "NOT_SUPPORTED_UNDER_CONSERVATIVE_ASSUMPTIONS: 600 classes reach 80% only with small clustering AND positively associated failures",
+   "atPlanningDesignEffect": {
+    "designEffect": 1.5,
+    "effectiveClasses": 400,
+    "exactPowerIndependent": 0.6419,
+    "exactPowerEmpiricalAssociation": 0.7877
+   }
+  },
+  "relativeImprovementIsNotQualification": {
+   "note": "Contract A requires ZERO introductions on every class. The probability of observing zero union introductions in 600 classes, by true top-choice unsafe rate:",
+   "probabilityOfZeroIntroductionsIn600": {
+    "0.065": 0,
+    "0.0325": 0,
+    "0.01": 0.002405,
+    "0.005": 0.049414,
+    "0.002": 0.300833,
+    "0.001": 0.548647,
+    "0.0005": 0.740763
+   },
+   "rateNeededForEvenOddsOfZero": 0.001155,
+   "rateNeededFor80PercentChanceOfZero": 0.000372
+  },
+  "expectedCounts": {
+   "formerSk1FailureClassesIn600": 39,
+   "safeUnsafePairsIn600Menus": 8174
+  },
+  "recommendedPlan": {
+   "status": "PLANNING_RECOMMENDATION_NOT_AN_ALLOCATION",
+   "rule": "smallest validation size, rounded up to 50, with at least 80% exact power for a halving under independent failures at the planning design effect",
+   "planningDesignEffect": 1.5,
+   "effectiveClassesNeeded": 587,
+   "recommendedValidationClasses": 900,
+   "powerAtRecommended": {
+    "halving_independent": 0.8086,
+    "halving_empiricalAssociation": 0.9245,
+    "reduction40_independent": 0.6063,
+    "reduction40_empiricalAssociation": 0.7555,
+    "reduction60_independent": 0.9379
+   },
+   "powerAtTheProposed600": {
+    "halving_independent": 0.6419,
+    "halving_empiricalAssociation": 0.7877,
+    "reduction60_independent": 0.8171,
+    "smallestDetectableReduction_independent": 0.589,
+    "smallestDetectableReduction_empiricalAssociation": 0.5068
+   },
+   "totalClasses": {
+    "exploration": 1000,
+    "validation": 900,
+    "holdout": 0,
+    "total": 1900,
+    "sk1AdmittedFrom26Blocks": 2298
+   }
+  }
+ }
+}

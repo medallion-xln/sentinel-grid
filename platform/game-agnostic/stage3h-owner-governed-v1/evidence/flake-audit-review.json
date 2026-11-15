@@ -1,0 +1,199 @@
+{
+ "schema": "STAGE3H_OWNER_GOVERNED_FLAKE_AUDIT_REVIEW_V1",
+ "reviews": "evidence/flake-audit.json (preserved)",
+ "inheritanceHead": "a2c7961767926a86752e940ca9b604040c4f62c0",
+ "correction1_parityRecount": {
+  "compared": 48,
+  "mismatches": 0,
+  "method": "node:util isDeepStrictEqual (key-order-insensitive, as assert.deepEqual in tests.mjs)",
+  "priorValueWasArtifact": true
+ },
+ "wideningScan": {
+  "modulesScanned": 73,
+  "primitives": "WeakRef|FinalizationRegistry|process\\.memoryUsage|process\\.uptime|process\\.cpuUsage|process\\.pid|\\bos\\.|from ['\"]node:os['\"]|statSync|lstatSync|mtime|worker_threads|Atomics\\.|SharedArrayBuffer|randomInt|crypto\\.random|Intl\\.|toLocale|readdirSync|import\\(",
+  "hits": [
+   {
+    "file": "src/core/determinism.js",
+    "line": 116,
+    "match": "randomInt",
+    "text": "export function randomInt(random, minInclusive, maxExclusive) {"
+   },
+   {
+    "file": "src/core/determinism.js",
+    "line": 119,
+    "match": "randomInt",
+    "text": "throw new ContractError('randomInt requires an integer range where maxExclusive > minInclusive');"
+   },
+   {
+    "file": "src/forge/scenarios-v2.js",
+    "line": 18,
+    "match": "randomInt",
+    "text": "import { createSeededRandom, deriveSeed, randomInt } from '../core/determinism.js';"
+   },
+   {
+    "file": "src/forge/scenarios-v2.js",
+    "line": 119,
+    "match": "randomInt",
+    "text": "const nodeCount = params.topologyNodes + randomInt(random, 0, 4);"
+   },
+   {
+    "file": "src/forge/scenarios-v2.js",
+    "line": 125,
+    "match": "randomInt",
+    "text": "cells[randomInt(random, 1, size - 1) * size + randomInt(random, 1, size - 1)] = 2;"
+   },
+   {
+    "file": "src/forge/scenarios-v2.js",
+    "line": 125,
+    "match": "randomInt",
+    "text": "cells[randomInt(random, 1, size - 1) * size + randomInt(random, 1, size - 1)] = 2;"
+   },
+   {
+    "file": "src/forge/scenarios-v2.js",
+    "line": 128,
+    "match": "randomInt",
+    "text": "const at = randomInt(random, 1, size - 1) * size + randomInt(random, 1, size - 1);"
+   },
+   {
+    "file": "src/forge/scenarios-v2.js",
+    "line": 128,
+    "match": "randomInt",
+    "text": "const at = randomInt(random, 1, size - 1) * size + randomInt(random, 1, size - 1);"
+   },
+   {
+    "file": "src/forge/scenarios-v2.js",
+    "line": 149,
+    "match": "randomInt",
+    "text": "const cell = free[randomInt(random, 0, free.length)];"
+   },
+   {
+    "file": "src/forge/scenarios-v2.js",
+    "line": 190,
+    "match": "randomInt",
+    "text": "value: 2 + randomInt(random, 0, params.valueSpread + 2),"
+   },
+   {
+    "file": "src/forge/scenarios-v2.js",
+    "line": 191,
+    "match": "randomInt",
+    "text": "health: index % 4 === 0 ? 20 + randomInt(random, 0, 30) : 100,"
+   },
+   {
+    "file": "src/forge/scenarios-v2.js",
+    "line": 202,
+    "match": "randomInt",
+    "text": "const primaryNode = structural[randomInt(random, 0, structural.length)];"
+   },
+   {
+    "file": "src/forge/scenarios-v2.js",
+    "line": 219,
+    "match": "randomInt",
+    "text": "const failed = structural[randomInt(random, 0, structural.length)];"
+   },
+   {
+    "file": "src/forge/scenarios-v2.js",
+    "line": 245,
+    "match": "randomInt",
+    "text": "const victim = objectiveSpec.goals.includes('defend') ? primaryNode : structural[randomInt(random, 0, structural.length)];"
+   },
+   {
+    "file": "src/forge/scenarios-v2.js",
+    "line": 249,
+    "match": "randomInt",
+    "text": "const failed = structural.find((entity) => !entity.available) ?? structural[randomInt(random, 0, structural.length)];"
+   },
+   {
+    "file": "src/forge/scenarios-v2.js",
+    "line": 267,
+    "match": "randomInt",
+    "text": "const channelKind = randomInt(random, 0, 5);"
+   },
+   {
+    "file": "src/forge/scenarios-v3.js",
+    "line": 33,
+    "match": "randomInt",
+    "text": "import { createSeededRandom, deepFreeze, deriveSeed, randomInt } from '../core/determinism.js';"
+   },
+   {
+    "file": "src/forge/scenarios-v3.js",
+    "line": 158,
+    "match": "randomInt",
+    "text": "const family = FORGE_TEMPORAL_FAMILY_IDS[randomInt(random, 0, FORGE_TEMPORAL_FAMILY_IDS.length)];"
+   },
+   {
+    "file": "src/forge/scenarios.js",
+    "line": 14,
+    "match": "randomInt",
+    "text": "import { createSeededRandom, deriveSeed, randomInt } from '../core/determinism.js';"
+   },
+   {
+    "file": "src/forge/scenarios.js",
+    "line": 98,
+    "match": "randomInt",
+    "text": "const x = randomInt(random, 1, size - 1);"
+   },
+   {
+    "file": "src/forge/scenarios.js",
+    "line": 99,
+    "match": "randomInt",
+    "text": "const y = randomInt(random, 1, size - 1);"
+   },
+   {
+    "file": "src/forge/scenarios.js",
+    "line": 103,
+    "match": "randomInt",
+    "text": "const x = randomInt(random, 1, size - 1);"
+   },
+   {
+    "file": "src/forge/scenarios.js",
+    "line": 104,
+    "match": "randomInt",
+    "text": "const y = randomInt(random, 1, size - 1);"
+   },
+   {
+    "file": "src/forge/scenarios.js",
+    "line": 151,
+    "match": "randomInt",
+    "text": "return () => (amplitude === 0 ? 0 : randomInt(random, -amplitude, amplitude + 1));"
+   },
+   {
+    "file": "src/forge/scenarios.js",
+    "line": 243,
+    "match": "randomInt",
+    "text": "const cell = free[randomInt(random, 0, free.length)];"
+   },
+   {
+    "file": "src/forge/topology.js",
+    "line": 18,
+    "match": "randomInt",
+    "text": "import { createSeededRandom, deriveSeed, randomInt } from '../core/determinism.js';"
+   },
+   {
+    "file": "src/forge/topology.js",
+    "line": 69,
+    "match": "randomInt",
+    "text": "const branching = randomInt(random, 2, 4);"
+   },
+   {
+    "file": "stage3h-owner-governed-v1/tests.mjs",
+    "line": 6,
+    "match": "from 'node:os'",
+    "text": "import { tmpdir } from 'node:os';"
+   }
+  ]
+ },
+ "eliminationArgument": [
+  "Test 3 failed once (not ok 3, 10 pass, 1 fail); later runs of the same code with the same inputs passed. A failure that does not recur under identical inputs needs a nondeterministic cause.",
+  "Bound files and the S0 model artifact were hash-verified unchanged throughout, so inputs did not change.",
+  "Every nondeterminism site in the 72-module path is classified (flake-audit.json staticScan); the widened scan lists every further primitive found (wideningScan.hits) for review.",
+  "Only one site converts nondeterminism into a failure: the frozen 1,000 ms S0+Nexus lock assertion in connector.mjs nativeLock (COMPUTE_LIMIT_OR_SOURCE_MISMATCH), which aborts and never alters a selection, truth or metric.",
+  "An induced-load experiment (30 busy processes on 10 cores) raised the maximum lock time to 321 ms but did not exceed 1,000 ms: the mechanism is NOT reproduced."
+ ],
+ "rootCause": "IDENTIFIED_BY_ELIMINATION_NOT_REPRODUCED: the frozen 1,000 ms lock-time assertion, triggered by a transient stall larger than induced CPU contention produced (cause of the stall unknown; the error text was not captured)",
+ "canItCompromiseScientificCorrectness": "NO under the elimination argument: the assertion can only abort a run; it cannot change any recorded decision, truth, metric or analysis value",
+ "testIntegrityVerdict": "NOT_INTEGRITY_BLOCKED_BY_ELIMINATION; RESIDUAL_RISK_IS_AVAILABILITY (a replication aborted mid-run is lost under the once-only rule)",
+ "requiredMitigation": "runner preflight on development worlds before any registered world (lock time p99 <= 250 ms, max <= 500 ms, load average below 25% of cores), and capture of full error text in every log",
+ "timingLimitMs": 1000,
+ "timingLimitChanged": false,
+ "authority": "R0"
+}

@@ -1,0 +1,188 @@
+{
+ "schema": "STAGE3H_DECISION_VALUE_CLOSURE_CORRECTION_V1",
+ "corrects": {
+  "file": "DECISION.json",
+  "sha256": "d90badf038774e8176549b57a7c75b75c484c5f8f4bfc6420df4f9f7ad61eaef",
+  "preservedUnchanged": true
+ },
+ "error": "DECISION.json and RESULT.txt claimed factory worlds are seed-invariant (15 distinct, HOLDOUT = 3 development worlds, B reproduces A exactly). The analysis stripped w.seed and compared initial states only; the transition reads w.seed at failure ticks.",
+ "source": {
+  "file": "ascii-suite/v32/strategic-extension.mjs",
+  "sha256": "db36e408c8bbb016",
+  "failureRuleLine": 97,
+  "failureTicksLine": 96,
+  "rule": "tier>=2 failures at ticks {15,45} (+{90,145,210,290} at tier 3); failed node = production[(seed + tick) % L]",
+  "L": {
+   "1": null,
+   "2": 4,
+   "3": 9
+  }
+ },
+ "recordedConsistency": {
+  "DEV_NORMAL:t1": {
+   "predictedDistinct": 1,
+   "recordedDistinctStrongestTrajectories": 1,
+   "consistent": true
+  },
+  "DEV_NORMAL:t2": {
+   "predictedDistinct": 3,
+   "recordedDistinctStrongestTrajectories": 3,
+   "consistent": true
+  },
+  "DEV_NORMAL:t3": {
+   "predictedDistinct": 3,
+   "recordedDistinctStrongestTrajectories": 3,
+   "consistent": true
+  },
+  "DEV_FACTORY_DELAYED:t1": {
+   "predictedDistinct": 1,
+   "recordedDistinctStrongestTrajectories": 1,
+   "consistent": true
+  },
+  "DEV_FACTORY_DELAYED:t2": {
+   "predictedDistinct": 3,
+   "recordedDistinctStrongestTrajectories": 3,
+   "consistent": true
+  },
+  "DEV_FACTORY_DELAYED:t3": {
+   "predictedDistinct": 3,
+   "recordedDistinctStrongestTrajectories": 3,
+   "consistent": true
+  },
+  "DEV_FACTORY_PARTIAL:t1": {
+   "predictedDistinct": 1,
+   "recordedDistinctStrongestTrajectories": 1,
+   "consistent": true
+  },
+  "DEV_FACTORY_PARTIAL:t2": {
+   "predictedDistinct": 3,
+   "recordedDistinctStrongestTrajectories": 3,
+   "consistent": true
+  },
+  "DEV_FACTORY_PARTIAL:t3": {
+   "predictedDistinct": 3,
+   "recordedDistinctStrongestTrajectories": 3,
+   "consistent": true
+  },
+  "DEV_FACTORY_MISSING:t1": {
+   "predictedDistinct": 1,
+   "recordedDistinctStrongestTrajectories": 1,
+   "consistent": true
+  },
+  "DEV_FACTORY_MISSING:t2": {
+   "predictedDistinct": 3,
+   "recordedDistinctStrongestTrajectories": 3,
+   "consistent": true
+  },
+  "DEV_FACTORY_MISSING:t3": {
+   "predictedDistinct": 3,
+   "recordedDistinctStrongestTrajectories": 3,
+   "consistent": true
+  },
+  "DEV_FACTORY_MIRRORED:t1": {
+   "predictedDistinct": 1,
+   "recordedDistinctStrongestTrajectories": 1,
+   "consistent": true
+  },
+  "DEV_FACTORY_MIRRORED:t2": {
+   "predictedDistinct": 3,
+   "recordedDistinctStrongestTrajectories": 3,
+   "consistent": true
+  },
+  "DEV_FACTORY_MIRRORED:t3": {
+   "predictedDistinct": 3,
+   "recordedDistinctStrongestTrajectories": 3,
+   "consistent": true
+  }
+ },
+ "corrected": {
+  "development": {
+   "distinctWorlds": 35,
+   "strongestSuccess": 35,
+   "v31Success": 0,
+   "v31EqualsAblation": 35,
+   "nexusChangedDecisions": 6,
+   "nexusDecisions": 1948,
+   "worldsWithNexusChange": 6,
+   "successChangedByNexus": 0,
+   "devNormalDistinct": 7
+  },
+  "campaign": {
+   "strata": [
+    {
+     "id": "HOLDOUT",
+     "family": "S3H_ASCII_HOLDOUT",
+     "sensor": "NORMAL",
+     "perTier": 1500,
+     "distinctWorldsA": 14,
+     "distinctWorldsB": 14,
+     "aAndBCoverIdenticalWorldSet": true
+    },
+    {
+     "id": "OOD_MIRRORED_GEOMETRY",
+     "family": "S3H_ASCII_OOD_MIRRORED",
+     "sensor": "NORMAL",
+     "perTier": 500,
+     "distinctWorldsA": 14,
+     "distinctWorldsB": 14,
+     "aAndBCoverIdenticalWorldSet": true
+    },
+    {
+     "id": "OOD_SENSOR_DELAYED",
+     "family": "S3H_ASCII_OOD_SENSOR",
+     "sensor": "DELAYED",
+     "perTier": 500,
+     "distinctWorldsA": 14,
+     "distinctWorldsB": 14,
+     "aAndBCoverIdenticalWorldSet": true
+    },
+    {
+     "id": "OOD_SENSOR_PARTIAL",
+     "family": "S3H_ASCII_OOD_SENSOR",
+     "sensor": "PARTIAL",
+     "perTier": 500,
+     "distinctWorldsA": 14,
+     "distinctWorldsB": 14,
+     "aAndBCoverIdenticalWorldSet": true
+    },
+    {
+     "id": "OOD_SENSOR_MISSING",
+     "family": "S3H_ASCII_OOD_SENSOR",
+     "sensor": "MISSING",
+     "perTier": 500,
+     "distinctWorldsA": 14,
+     "distinctWorldsB": 14,
+     "aAndBCoverIdenticalWorldSet": true
+    }
+   ],
+   "distinctWorldsPerClass": 14,
+   "distinctFactoryWorldsInCampaign": 70,
+   "scheduledPairsPerReplication": 10500,
+   "pseudoReplicationFactorPerReplication": 150,
+   "replicationBDuplicatesA": true,
+   "holdoutWorldsAlreadyEvaluatedInDevelopment": "7 of 14",
+   "oodSensorConfoundStands": "3 sensor strata also switch on relay topology"
+  }
+ },
+ "decisionStillHolds": "ASCII_CAMPAIGN_LOW_INFORMATION_VALUE",
+ "authority": "R0",
+ "newWorldsCreated": false,
+ "inheritance": {
+  "head": "41ed9a7e45af74753b96035ce2ce590c113a41c2",
+  "protectedCount": 14447,
+  "asciiSourcesUnchanged": true,
+  "extraSourcesUnchanged": true,
+  "milestonesAncestors": true,
+  "frozenRuleHashMatches": true,
+  "oraclePath": "CLOSED_CONTRACT_NOT_TESTABLE",
+  "rosterPreserved": true,
+  "v1Commit": "41ed9a7e45af74753b96035ce2ce590c113a41c2",
+  "v1CommitAncestorOfHead": true,
+  "v1LaneCleanSinceCommit": true,
+  "v1LaneClosureMatches": true,
+  "protocolHashMatches": true,
+  "protocolStatus": "PROPOSED_NOT_REGISTERED",
+  "v1EvidenceHashesMatch": true,
+  "authority": "R0"
+ }
+}

@@ -1,0 +1,3636 @@
+{
+ "schema": "STAGE3H_FAILURE_DIAGNOSIS_H2_MECHANISM_V1",
+ "set": "DEV288",
+ "h2Worlds": 144,
+ "introTotal": 1,
+ "reverseTotal": 28,
+ "summary": {
+  "INTRO": {
+   "worlds": 1,
+   "withPublicEquivalentTwins": 1,
+   "BcatFlipWorlds": 1,
+   "NcatFlipWorlds": 0,
+   "conflictWitnessWorlds": 0,
+   "worldsWithRobustSafeAction": 1,
+   "s0TieSets": 0,
+   "topComponentsB": {
+    "restoredDependencyValue": 1
+   },
+   "topComponentsN": {},
+   "catTerminalB": {
+    "NONE": 1
+   },
+   "catTerminalN": {},
+   "typesB": {
+    "MOVE": 1
+   },
+   "typesN": {
+    "PROTECT": 1
+   },
+   "regimes": {
+    "OBSERVED_THREAT": 1
+   },
+   "nexusReasons": {
+    "THREAT_DRIVEN_PREFERENCE": 1
+   }
+  },
+  "REVERSE": {
+   "worlds": 28,
+   "withPublicEquivalentTwins": 28,
+   "BcatFlipWorlds": 0,
+   "NcatFlipWorlds": 8,
+   "conflictWitnessWorlds": 0,
+   "worldsWithRobustSafeAction": 28,
+   "s0TieSets": 0,
+   "topComponentsB": {},
+   "topComponentsN": {
+    "futureObjectivePotential": 27,
+    "infrastructureHealth": 1
+   },
+   "catTerminalB": {},
+   "catTerminalN": {
+    "NONE": 28
+   },
+   "typesB": {
+    "MOVE": 28
+   },
+   "typesN": {
+    "PROTECT": 28
+   },
+   "regimes": {
+    "NO_OBSERVED_THREAT": 14,
+    "OBSERVED_THREAT": 14
+   },
+   "nexusReasons": {
+    "STRUCTURE_DRIVEN_PREFERENCE": 14,
+    "THREAT_DRIVEN_PREFERENCE": 14
+   }
+  },
+  "CONTROL": {
+   "worlds": 40,
+   "withPublicEquivalentTwins": 40,
+   "BcatFlipWorlds": 0,
+   "NcatFlipWorlds": 3,
+   "conflictWitnessWorlds": 0,
+   "worldsWithRobustSafeAction": 40,
+   "s0TieSets": 0,
+   "topComponentsB": {},
+   "topComponentsN": {},
+   "catTerminalB": {},
+   "catTerminalN": {},
+   "typesB": {
+    "MOVE": 39,
+    "REPAIR": 1
+   },
+   "typesN": {
+    "PROTECT": 36,
+    "REINFORCE": 4
+   },
+   "regimes": {
+    "NO_OBSERVED_THREAT": 12,
+    "OBSERVED_THREAT": 28
+   },
+   "nexusReasons": {
+    "STRUCTURE_DRIVEN_PREFERENCE": 12,
+    "THREAT_DRIVEN_PREFERENCE": 28
+   }
+  }
+ },
+ "probes": {
+  "INTRO": [
+   {
+    "idx": 174,
+    "population": "DEV288",
+    "cell": "star/defended/restore_and_protect/H2/1",
+    "regime": "OBSERVED_THREAT",
+    "menuSize": 7,
+    "types": {
+     "B": [
+      "MOVE"
+     ],
+     "N": [
+      "PROTECT"
+     ]
+    },
+    "s0SetSize": 1,
+    "nexusReason": "THREAT_DRIVEN_PREFERENCE",
+    "original": {
+     "introN": true,
+     "introB": false,
+     "Bcat": true,
+     "Ncat": false,
+     "safeActions": 2
+    },
+    "causesB": [
+     {
+      "regret": 127,
+      "topComponent": "restoredDependencyValue",
+      "contributions": {
+       "futureObjectivePotential": -44,
+       "restoredDependencyValue": 99,
+       "preservedValue": 87,
+       "infrastructureHealth": -6,
+       "optionValue": -6,
+       "resourceCost": -3
+      },
+      "catOutcome": null,
+      "catTerminalReason": null,
+      "catPath": [
+       "MOVE",
+       "COLLECT",
+       "RESTORE",
+       "PROTECT"
+      ],
+      "bestPath": [
+       "MOVE",
+       "RESTORE",
+       "RESTORE",
+       "RESTORE"
+      ],
+      "catActorHealthEnd": 100,
+      "bestOutcome": null
+     }
+    ],
+    "causesN": [],
+    "twins": {
+     "attempted": 39,
+     "publicEquivalent": 36,
+     "BcatFlips": 3,
+     "NcatFlips": 0,
+     "introNInTwins": 33,
+     "introBInTwins": 0,
+     "conflictWitness": false,
+     "robustSafeActions": 2,
+     "robustSafeIncludesB": false,
+     "robustSafeIncludesN": true,
+     "flippingEntities": [
+      "INFRASTRUCTURE+10",
+      "INFRASTRUCTURE+20",
+      "INFRASTRUCTURE+5"
+     ]
+    }
+   }
+  ],
+  "REVERSE": [
+   {
+    "idx": 7,
+    "population": "DEV288",
+    "cell": "chain/bare/restore_and_protect/H2/3",
+    "regime": "NO_OBSERVED_THREAT",
+    "menuSize": 5,
+    "types": {
+     "B": [
+      "MOVE"
+     ],
+     "N": [
+      "PROTECT"
+     ]
+    },
+    "s0SetSize": 1,
+    "nexusReason": "STRUCTURE_DRIVEN_PREFERENCE",
+    "original": {
+     "introN": false,
+     "introB": true,
+     "Bcat": false,
+     "Ncat": true,
+     "safeActions": 1
+    },
+    "causesB": [],
+    "causesN": [
+     {
+      "regret": 112,
+      "topComponent": "futureObjectivePotential",
+      "contributions": {
+       "futureObjectivePotential": 52,
+       "restoredDependencyValue": 33,
+       "preservedValue": 33,
+       "optionValue": -4,
+       "resourceCost": -2
+      },
+      "catOutcome": null,
+      "catTerminalReason": null,
+      "catPath": [
+       "PROTECT",
+       "MOVE",
+       "MOVE",
+       "MOVE"
+      ],
+      "bestPath": [
+       "MOVE",
+       "COLLECT",
+       "RESTORE",
+       "PROTECT"
+      ],
+      "catActorHealthEnd": 100,
+      "bestOutcome": null
+     }
+    ],
+    "twins": {
+     "attempted": 58,
+     "publicEquivalent": 55,
+     "BcatFlips": 0,
+     "NcatFlips": 0,
+     "introNInTwins": 0,
+     "introBInTwins": 55,
+     "conflictWitness": false,
+     "robustSafeActions": 1,
+     "robustSafeIncludesB": true,
+     "robustSafeIncludesN": false,
+     "flippingEntities": []
+    }
+   },
+   {
+    "idx": 23,
+    "population": "DEV288",
+    "cell": "star/bare/restore_and_protect/H2/3",
+    "regime": "NO_OBSERVED_THREAT",
+    "menuSize": 8,
+    "types": {
+     "B": [
+      "MOVE"
+     ],
+     "N": [
+      "PROTECT"
+     ]
+    },
+    "s0SetSize": 1,
+    "nexusReason": "STRUCTURE_DRIVEN_PREFERENCE",
+    "original": {
+     "introN": false,
+     "introB": true,
+     "Bcat": false,
+     "Ncat": true,
+     "safeActions": 1
+    },
+    "causesB": [],
+    "causesN": [
+     {
+      "regret": 108,
+      "topComponent": "futureObjectivePotential",
+      "contributions": {
+       "futureObjectivePotential": 60,
+       "restoredDependencyValue": 24,
+       "preservedValue": 24
+      },
+      "catOutcome": null,
+      "catTerminalReason": null,
+      "catPath": [
+       "PROTECT",
+       "RESTORE",
+       "MOVE",
+       "MOVE"
+      ],
+      "bestPath": [
+       "MOVE",
+       "COLLECT",
+       "RESTORE",
+       "PROTECT"
+      ],
+      "catActorHealthEnd": 100,
+      "bestOutcome": null
+     }
+    ],
+    "twins": {
+     "attempted": 66,
+     "publicEquivalent": 57,
+     "BcatFlips": 0,
+     "NcatFlips": 0,
+     "introNInTwins": 0,
+     "introBInTwins": 57,
+     "conflictWitness": false,
+     "robustSafeActions": 1,
+     "robustSafeIncludesB": true,
+     "robustSafeIncludesN": false,
+     "flippingEntities": []
+    }
+   },
+   {
+    "idx": 31,
+    "population": "DEV288",
+    "cell": "star/defended/restore_and_protect/H2/3",
+    "regime": "OBSERVED_THREAT",
+    "menuSize": 10,
+    "types": {
+     "B": [
+      "MOVE"
+     ],
+     "N": [
+      "PROTECT"
+     ]
+    },
+    "s0SetSize": 1,
+    "nexusReason": "THREAT_DRIVEN_PREFERENCE",
+    "original": {
+     "introN": false,
+     "introB": true,
+     "Bcat": false,
+     "Ncat": true,
+     "safeActions": 2
+    },
+    "causesB": [],
+    "causesN": [
+     {
+      "regret": 106,
+      "topComponent": "futureObjectivePotential",
+      "contributions": {
+       "futureObjectivePotential": 52,
+       "restoredDependencyValue": 27,
+       "preservedValue": 27
+      },
+      "catOutcome": null,
+      "catTerminalReason": null,
+      "catPath": [
+       "PROTECT",
+       "MOVE",
+       "MOVE",
+       "RESTORE"
+      ],
+      "bestPath": [
+       "RETREAT",
+       "COLLECT",
+       "RESTORE",
+       "PROTECT"
+      ],
+      "catActorHealthEnd": 100,
+      "bestOutcome": null
+     }
+    ],
+    "twins": {
+     "attempted": 66,
+     "publicEquivalent": 57,
+     "BcatFlips": 0,
+     "NcatFlips": 0,
+     "introNInTwins": 0,
+     "introBInTwins": 57,
+     "conflictWitness": false,
+     "robustSafeActions": 2,
+     "robustSafeIncludesB": true,
+     "robustSafeIncludesN": false,
+     "flippingEntities": []
+    }
+   },
+   {
+    "idx": 39,
+    "population": "DEV288",
+    "cell": "bridge/bare/restore_and_protect/H2/3",
+    "regime": "NO_OBSERVED_THREAT",
+    "menuSize": 6,
+    "types": {
+     "B": [
+      "MOVE"
+     ],
+     "N": [
+      "PROTECT"
+     ]
+    },
+    "s0SetSize": 1,
+    "nexusReason": "STRUCTURE_DRIVEN_PREFERENCE",
+    "original": {
+     "introN": false,
+     "introB": true,
+     "Bcat": false,
+     "Ncat": true,
+     "safeActions": 1
+    },
+    "causesB": [],
+    "causesN": [
+     {
+      "regret": 136,
+      "topComponent": "futureObjectivePotential",
+      "contributions": {
+       "futureObjectivePotential": 76,
+       "restoredDependencyValue": 33,
+       "preservedValue": 33,
+       "optionValue": -4,
+       "resourceCost": -2
+      },
+      "catOutcome": null,
+      "catTerminalReason": null,
+      "catPath": [
+       "PROTECT",
+       "MOVE",
+       "MOVE",
+       "MOVE"
+      ],
+      "bestPath": [
+       "MOVE",
+       "COLLECT",
+       "RESTORE",
+       "PROTECT"
+      ],
+      "catActorHealthEnd": 100,
+      "bestOutcome": null
+     }
+    ],
+    "twins": {
+     "attempted": 69,
+     "publicEquivalent": 63,
+     "BcatFlips": 0,
+     "NcatFlips": 0,
+     "introNInTwins": 0,
+     "introBInTwins": 63,
+     "conflictWitness": false,
+     "robustSafeActions": 1,
+     "robustSafeIncludesB": true,
+     "robustSafeIncludesN": false,
+     "flippingEntities": []
+    }
+   },
+   {
+    "idx": 62,
+    "population": "DEV288",
+    "cell": "chain/defended/restore_and_protect/H2/1",
+    "regime": "OBSERVED_THREAT",
+    "menuSize": 7,
+    "types": {
+     "B": [
+      "MOVE"
+     ],
+     "N": [
+      "PROTECT"
+     ]
+    },
+    "s0SetSize": 1,
+    "nexusReason": "THREAT_DRIVEN_PREFERENCE",
+    "original": {
+     "introN": false,
+     "introB": true,
+     "Bcat": false,
+     "Ncat": true,
+     "safeActions": 1
+    },
+    "causesB": [],
+    "causesN": [
+     {
+      "regret": 100,
+      "topComponent": "futureObjectivePotential",
+      "contributions": {
+       "futureObjectivePotential": 52,
+       "restoredDependencyValue": 27,
+       "preservedValue": 27,
+       "optionValue": -4,
+       "resourceCost": -2
+      },
+      "catOutcome": null,
+      "catTerminalReason": null,
+      "catPath": [
+       "PROTECT",
+       "MOVE",
+       "RETREAT",
+       "RETREAT"
+      ],
+      "bestPath": [
+       "MOVE",
+       "COLLECT",
+       "RESTORE",
+       "PROTECT"
+      ],
+      "catActorHealthEnd": 100,
+      "bestOutcome": null
+     }
+    ],
+    "twins": {
+     "attempted": 51,
+     "publicEquivalent": 48,
+     "BcatFlips": 0,
+     "NcatFlips": 0,
+     "introNInTwins": 0,
+     "introBInTwins": 48,
+     "conflictWitness": false,
+     "robustSafeActions": 1,
+     "robustSafeIncludesB": true,
+     "robustSafeIncludesN": false,
+     "flippingEntities": []
+    }
+   },
+   {
+    "idx": 63,
+    "population": "DEV288",
+    "cell": "chain/defended/restore_and_protect/H2/3",
+    "regime": "OBSERVED_THREAT",
+    "menuSize": 7,
+    "types": {
+     "B": [
+      "MOVE"
+     ],
+     "N": [
+      "PROTECT"
+     ]
+    },
+    "s0SetSize": 1,
+    "nexusReason": "THREAT_DRIVEN_PREFERENCE",
+    "original": {
+     "introN": false,
+     "introB": true,
+     "Bcat": false,
+     "Ncat": true,
+     "safeActions": 1
+    },
+    "causesB": [],
+    "causesN": [
+     {
+      "regret": 120,
+      "topComponent": "futureObjectivePotential",
+      "contributions": {
+       "futureObjectivePotential": 60,
+       "restoredDependencyValue": 33,
+       "preservedValue": 33,
+       "optionValue": -4,
+       "resourceCost": -2
+      },
+      "catOutcome": null,
+      "catTerminalReason": null,
+      "catPath": [
+       "PROTECT",
+       "MOVE",
+       "MOVE",
+       "MOVE"
+      ],
+      "bestPath": [
+       "MOVE",
+       "COLLECT",
+       "RESTORE",
+       "PROTECT"
+      ],
+      "catActorHealthEnd": 100,
+      "bestOutcome": null
+     }
+    ],
+    "twins": {
+     "attempted": 72,
+     "publicEquivalent": 66,
+     "BcatFlips": 0,
+     "NcatFlips": 0,
+     "introNInTwins": 0,
+     "introBInTwins": 66,
+     "conflictWitness": false,
+     "robustSafeActions": 1,
+     "robustSafeIncludesB": true,
+     "robustSafeIncludesN": false,
+     "flippingEntities": []
+    }
+   },
+   {
+    "idx": 70,
+    "population": "DEV288",
+    "cell": "star/bare/restore_and_protect/H2/1",
+    "regime": "NO_OBSERVED_THREAT",
+    "menuSize": 6,
+    "types": {
+     "B": [
+      "MOVE"
+     ],
+     "N": [
+      "PROTECT"
+     ]
+    },
+    "s0SetSize": 1,
+    "nexusReason": "STRUCTURE_DRIVEN_PREFERENCE",
+    "original": {
+     "introN": false,
+     "introB": true,
+     "Bcat": false,
+     "Ncat": true,
+     "safeActions": 2
+    },
+    "causesB": [],
+    "causesN": [
+     {
+      "regret": 108,
+      "topComponent": "futureObjectivePotential",
+      "contributions": {
+       "futureObjectivePotential": 60,
+       "restoredDependencyValue": 27,
+       "preservedValue": 27,
+       "optionValue": -4,
+       "resourceCost": -2
+      },
+      "catOutcome": null,
+      "catTerminalReason": null,
+      "catPath": [
+       "PROTECT",
+       "MOVE",
+       "MOVE",
+       "MOVE"
+      ],
+      "bestPath": [
+       "MOVE",
+       "COLLECT",
+       "RESTORE",
+       "PROTECT"
+      ],
+      "catActorHealthEnd": 100,
+      "bestOutcome": null
+     }
+    ],
+    "twins": {
+     "attempted": 36,
+     "publicEquivalent": 33,
+     "BcatFlips": 0,
+     "NcatFlips": 0,
+     "introNInTwins": 0,
+     "introBInTwins": 33,
+     "conflictWitness": false,
+     "robustSafeActions": 2,
+     "robustSafeIncludesB": true,
+     "robustSafeIncludesN": false,
+     "flippingEntities": []
+    }
+   },
+   {
+    "idx": 79,
+    "population": "DEV288",
+    "cell": "star/defended/restore_and_protect/H2/3",
+    "regime": "OBSERVED_THREAT",
+    "menuSize": 7,
+    "types": {
+     "B": [
+      "MOVE"
+     ],
+     "N": [
+      "PROTECT"
+     ]
+    },
+    "s0SetSize": 1,
+    "nexusReason": "THREAT_DRIVEN_PREFERENCE",
+    "original": {
+     "introN": false,
+     "introB": true,
+     "Bcat": false,
+     "Ncat": true,
+     "safeActions": 2
+    },
+    "causesB": [],
+    "causesN": [
+     {
+      "regret": 112,
+      "topComponent": "futureObjectivePotential",
+      "contributions": {
+       "futureObjectivePotential": 52,
+       "restoredDependencyValue": 33,
+       "preservedValue": 33,
+       "optionValue": -4,
+       "resourceCost": -2
+      },
+      "catOutcome": null,
+      "catTerminalReason": null,
+      "catPath": [
+       "PROTECT",
+       "MOVE",
+       "MOVE",
+       "MOVE"
+      ],
+      "bestPath": [
+       "MOVE",
+       "COLLECT",
+       "RESTORE",
+       "PROTECT"
+      ],
+      "catActorHealthEnd": 100,
+      "bestOutcome": null
+     }
+    ],
+    "twins": {
+     "attempted": 69,
+     "publicEquivalent": 66,
+     "BcatFlips": 0,
+     "NcatFlips": 1,
+     "introNInTwins": 0,
+     "introBInTwins": 65,
+     "conflictWitness": false,
+     "robustSafeActions": 2,
+     "robustSafeIncludesB": true,
+     "robustSafeIncludesN": false,
+     "flippingEntities": [
+      "REPAIR_TARGET-20"
+     ]
+    }
+   },
+   {
+    "idx": 103,
+    "population": "DEV288",
+    "cell": "chain/bare/restore_and_protect/H2/3",
+    "regime": "NO_OBSERVED_THREAT",
+    "menuSize": 6,
+    "types": {
+     "B": [
+      "MOVE"
+     ],
+     "N": [
+      "PROTECT"
+     ]
+    },
+    "s0SetSize": 1,
+    "nexusReason": "STRUCTURE_DRIVEN_PREFERENCE",
+    "original": {
+     "introN": false,
+     "introB": true,
+     "Bcat": false,
+     "Ncat": true,
+     "safeActions": 1
+    },
+    "causesB": [],
+    "causesN": [
+     {
+      "regret": 136,
+      "topComponent": "futureObjectivePotential",
+      "contributions": {
+       "futureObjectivePotential": 76,
+       "restoredDependencyValue": 33,
+       "preservedValue": 30,
+       "optionValue": -2,
+       "resourceCost": -1
+      },
+      "catOutcome": null,
+      "catTerminalReason": null,
+      "catPath": [
+       "PROTECT",
+       "PROTECT",
+       "MOVE",
+       "MOVE"
+      ],
+      "bestPath": [
+       "MOVE",
+       "COLLECT",
+       "RESTORE",
+       "PROTECT"
+      ],
+      "catActorHealthEnd": 100,
+      "bestOutcome": null
+     }
+    ],
+    "twins": {
+     "attempted": 69,
+     "publicEquivalent": 63,
+     "BcatFlips": 0,
+     "NcatFlips": 0,
+     "introNInTwins": 0,
+     "introBInTwins": 63,
+     "conflictWitness": false,
+     "robustSafeActions": 1,
+     "robustSafeIncludesB": true,
+     "robustSafeIncludesN": false,
+     "flippingEntities": []
+    }
+   },
+   {
+    "idx": 127,
+    "population": "DEV288",
+    "cell": "star/defended/restore_and_protect/H2/3",
+    "regime": "OBSERVED_THREAT",
+    "menuSize": 7,
+    "types": {
+     "B": [
+      "MOVE"
+     ],
+     "N": [
+      "PROTECT"
+     ]
+    },
+    "s0SetSize": 1,
+    "nexusReason": "THREAT_DRIVEN_PREFERENCE",
+    "original": {
+     "introN": false,
+     "introB": true,
+     "Bcat": false,
+     "Ncat": true,
+     "safeActions": 1
+    },
+    "causesB": [],
+    "causesN": [
+     {
+      "regret": 130,
+      "topComponent": "futureObjectivePotential",
+      "contributions": {
+       "futureObjectivePotential": 76,
+       "restoredDependencyValue": 33,
+       "preservedValue": 24,
+       "optionValue": -2,
+       "resourceCost": -1
+      },
+      "catOutcome": null,
+      "catTerminalReason": null,
+      "catPath": [
+       "PROTECT",
+       "RETREAT",
+       "PROTECT",
+       "MOVE"
+      ],
+      "bestPath": [
+       "MOVE",
+       "COLLECT",
+       "RESTORE",
+       "PROTECT"
+      ],
+      "catActorHealthEnd": 100,
+      "bestOutcome": null
+     }
+    ],
+    "twins": {
+     "attempted": 72,
+     "publicEquivalent": 69,
+     "BcatFlips": 0,
+     "NcatFlips": 1,
+     "introNInTwins": 0,
+     "introBInTwins": 68,
+     "conflictWitness": false,
+     "robustSafeActions": 1,
+     "robustSafeIncludesB": true,
+     "robustSafeIncludesN": false,
+     "flippingEntities": [
+      "REPAIR_TARGET-20"
+     ]
+    }
+   },
+   {
+    "idx": 134,
+    "population": "DEV288",
+    "cell": "bridge/bare/restore_and_protect/H2/1",
+    "regime": "NO_OBSERVED_THREAT",
+    "menuSize": 7,
+    "types": {
+     "B": [
+      "MOVE"
+     ],
+     "N": [
+      "PROTECT"
+     ]
+    },
+    "s0SetSize": 1,
+    "nexusReason": "STRUCTURE_DRIVEN_PREFERENCE",
+    "original": {
+     "introN": false,
+     "introB": true,
+     "Bcat": false,
+     "Ncat": true,
+     "safeActions": 3
+    },
+    "causesB": [],
+    "causesN": [
+     {
+      "regret": 100,
+      "topComponent": "futureObjectivePotential",
+      "contributions": {
+       "futureObjectivePotential": 52,
+       "restoredDependencyValue": 27,
+       "preservedValue": 24,
+       "optionValue": -2,
+       "resourceCost": -1
+      },
+      "catOutcome": null,
+      "catTerminalReason": null,
+      "catPath": [
+       "PROTECT",
+       "MOVE",
+       "PROTECT",
+       "MOVE"
+      ],
+      "bestPath": [
+       "MOVE",
+       "COLLECT",
+       "RESTORE",
+       "PROTECT"
+      ],
+      "catActorHealthEnd": 100,
+      "bestOutcome": null
+     }
+    ],
+    "twins": {
+     "attempted": 45,
+     "publicEquivalent": 39,
+     "BcatFlips": 0,
+     "NcatFlips": 0,
+     "introNInTwins": 0,
+     "introBInTwins": 39,
+     "conflictWitness": false,
+     "robustSafeActions": 3,
+     "robustSafeIncludesB": true,
+     "robustSafeIncludesN": false,
+     "flippingEntities": []
+    }
+   },
+   {
+    "idx": 135,
+    "population": "DEV288",
+    "cell": "bridge/bare/restore_and_protect/H2/3",
+    "regime": "NO_OBSERVED_THREAT",
+    "menuSize": 6,
+    "types": {
+     "B": [
+      "MOVE"
+     ],
+     "N": [
+      "PROTECT"
+     ]
+    },
+    "s0SetSize": 1,
+    "nexusReason": "STRUCTURE_DRIVEN_PREFERENCE",
+    "original": {
+     "introN": false,
+     "introB": true,
+     "Bcat": false,
+     "Ncat": true,
+     "safeActions": 1
+    },
+    "causesB": [],
+    "causesN": [
+     {
+      "regret": 104,
+      "topComponent": "futureObjectivePotential",
+      "contributions": {
+       "futureObjectivePotential": 44,
+       "restoredDependencyValue": 33,
+       "preservedValue": 33,
+       "optionValue": -4,
+       "resourceCost": -2
+      },
+      "catOutcome": null,
+      "catTerminalReason": null,
+      "catPath": [
+       "PROTECT",
+       "MOVE",
+       "MOVE",
+       "MOVE"
+      ],
+      "bestPath": [
+       "MOVE",
+       "COLLECT",
+       "RESTORE",
+       "PROTECT"
+      ],
+      "catActorHealthEnd": 100,
+      "bestOutcome": null
+     }
+    ],
+    "twins": {
+     "attempted": 72,
+     "publicEquivalent": 66,
+     "BcatFlips": 0,
+     "NcatFlips": 0,
+     "introNInTwins": 0,
+     "introBInTwins": 66,
+     "conflictWitness": false,
+     "robustSafeActions": 1,
+     "robustSafeIncludesB": true,
+     "robustSafeIncludesN": false,
+     "flippingEntities": []
+    }
+   },
+   {
+    "idx": 151,
+    "population": "DEV288",
+    "cell": "chain/bare/restore_and_protect/H2/3",
+    "regime": "NO_OBSERVED_THREAT",
+    "menuSize": 6,
+    "types": {
+     "B": [
+      "MOVE"
+     ],
+     "N": [
+      "PROTECT"
+     ]
+    },
+    "s0SetSize": 1,
+    "nexusReason": "STRUCTURE_DRIVEN_PREFERENCE",
+    "original": {
+     "introN": false,
+     "introB": true,
+     "Bcat": false,
+     "Ncat": true,
+     "safeActions": 1
+    },
+    "causesB": [],
+    "causesN": [
+     {
+      "regret": 104,
+      "topComponent": "futureObjectivePotential",
+      "contributions": {
+       "futureObjectivePotential": 44,
+       "restoredDependencyValue": 33,
+       "preservedValue": 33,
+       "optionValue": -4,
+       "resourceCost": -2
+      },
+      "catOutcome": null,
+      "catTerminalReason": null,
+      "catPath": [
+       "PROTECT",
+       "MOVE",
+       "MOVE",
+       "MOVE"
+      ],
+      "bestPath": [
+       "MOVE",
+       "COLLECT",
+       "RESTORE",
+       "PROTECT"
+      ],
+      "catActorHealthEnd": 100,
+      "bestOutcome": null
+     }
+    ],
+    "twins": {
+     "attempted": 69,
+     "publicEquivalent": 66,
+     "BcatFlips": 0,
+     "NcatFlips": 0,
+     "introNInTwins": 0,
+     "introBInTwins": 66,
+     "conflictWitness": false,
+     "robustSafeActions": 1,
+     "robustSafeIncludesB": true,
+     "robustSafeIncludesN": false,
+     "flippingEntities": []
+    }
+   },
+   {
+    "idx": 159,
+    "population": "DEV288",
+    "cell": "chain/defended/restore_and_protect/H2/3",
+    "regime": "OBSERVED_THREAT",
+    "menuSize": 7,
+    "types": {
+     "B": [
+      "MOVE"
+     ],
+     "N": [
+      "PROTECT"
+     ]
+    },
+    "s0SetSize": 1,
+    "nexusReason": "THREAT_DRIVEN_PREFERENCE",
+    "original": {
+     "introN": false,
+     "introB": true,
+     "Bcat": false,
+     "Ncat": true,
+     "safeActions": 1
+    },
+    "causesB": [],
+    "causesN": [
+     {
+      "regret": 102,
+      "topComponent": "futureObjectivePotential",
+      "contributions": {
+       "futureObjectivePotential": 52,
+       "restoredDependencyValue": 24,
+       "preservedValue": 24,
+       "infrastructureHealth": 2
+      },
+      "catOutcome": null,
+      "catTerminalReason": null,
+      "catPath": [
+       "PROTECT",
+       "MOVE",
+       "MOVE",
+       "RESTORE"
+      ],
+      "bestPath": [
+       "MOVE",
+       "COLLECT",
+       "RESTORE",
+       "PROTECT"
+      ],
+      "catActorHealthEnd": 100,
+      "bestOutcome": null
+     }
+    ],
+    "twins": {
+     "attempted": 69,
+     "publicEquivalent": 66,
+     "BcatFlips": 0,
+     "NcatFlips": 1,
+     "introNInTwins": 0,
+     "introBInTwins": 65,
+     "conflictWitness": false,
+     "robustSafeActions": 1,
+     "robustSafeIncludesB": true,
+     "robustSafeIncludesN": false,
+     "flippingEntities": [
+      "INFRASTRUCTURE+20"
+     ]
+    }
+   },
+   {
+    "idx": 175,
+    "population": "DEV288",
+    "cell": "star/defended/restore_and_protect/H2/3",
+    "regime": "OBSERVED_THREAT",
+    "menuSize": 7,
+    "types": {
+     "B": [
+      "MOVE"
+     ],
+     "N": [
+      "PROTECT"
+     ]
+    },
+    "s0SetSize": 1,
+    "nexusReason": "THREAT_DRIVEN_PREFERENCE",
+    "original": {
+     "introN": false,
+     "introB": true,
+     "Bcat": false,
+     "Ncat": true,
+     "safeActions": 1
+    },
+    "causesB": [],
+    "causesN": [
+     {
+      "regret": 120,
+      "topComponent": "futureObjectivePotential",
+      "contributions": {
+       "futureObjectivePotential": 60,
+       "restoredDependencyValue": 33,
+       "preservedValue": 33,
+       "optionValue": -4,
+       "resourceCost": -2
+      },
+      "catOutcome": null,
+      "catTerminalReason": null,
+      "catPath": [
+       "PROTECT",
+       "RETREAT",
+       "RETREAT",
+       "MOVE"
+      ],
+      "bestPath": [
+       "MOVE",
+       "COLLECT",
+       "RESTORE",
+       "PROTECT"
+      ],
+      "catActorHealthEnd": 100,
+      "bestOutcome": null
+     }
+    ],
+    "twins": {
+     "attempted": 81,
+     "publicEquivalent": 78,
+     "BcatFlips": 0,
+     "NcatFlips": 0,
+     "introNInTwins": 0,
+     "introBInTwins": 78,
+     "conflictWitness": false,
+     "robustSafeActions": 1,
+     "robustSafeIncludesB": true,
+     "robustSafeIncludesN": false,
+     "flippingEntities": []
+    }
+   },
+   {
+    "idx": 183,
+    "population": "DEV288",
+    "cell": "bridge/bare/restore_and_protect/H2/3",
+    "regime": "NO_OBSERVED_THREAT",
+    "menuSize": 6,
+    "types": {
+     "B": [
+      "MOVE"
+     ],
+     "N": [
+      "PROTECT"
+     ]
+    },
+    "s0SetSize": 1,
+    "nexusReason": "STRUCTURE_DRIVEN_PREFERENCE",
+    "original": {
+     "introN": false,
+     "introB": true,
+     "Bcat": false,
+     "Ncat": true,
+     "safeActions": 1
+    },
+    "causesB": [],
+    "causesN": [
+     {
+      "regret": 112,
+      "topComponent": "futureObjectivePotential",
+      "contributions": {
+       "futureObjectivePotential": 60,
+       "restoredDependencyValue": 27,
+       "preservedValue": 27,
+       "optionValue": -2
+      },
+      "catOutcome": null,
+      "catTerminalReason": null,
+      "catPath": [
+       "PROTECT",
+       "MOVE",
+       "MOVE",
+       "RESTORE"
+      ],
+      "bestPath": [
+       "MOVE",
+       "COLLECT",
+       "RESTORE",
+       "PROTECT"
+      ],
+      "catActorHealthEnd": 100,
+      "bestOutcome": null
+     }
+    ],
+    "twins": {
+     "attempted": 69,
+     "publicEquivalent": 66,
+     "BcatFlips": 0,
+     "NcatFlips": 1,
+     "introNInTwins": 0,
+     "introBInTwins": 65,
+     "conflictWitness": false,
+     "robustSafeActions": 1,
+     "robustSafeIncludesB": true,
+     "robustSafeIncludesN": false,
+     "flippingEntities": [
+      "INFRASTRUCTURE-20"
+     ]
+    }
+   },
+   {
+    "idx": 186,
+    "population": "DEV288",
+    "cell": "bridge/defended/reach_target/H2/1",
+    "regime": "OBSERVED_THREAT",
+    "menuSize": 7,
+    "types": {
+     "B": [
+      "MOVE"
+     ],
+     "N": [
+      "PROTECT"
+     ]
+    },
+    "s0SetSize": 1,
+    "nexusReason": "THREAT_DRIVEN_PREFERENCE",
+    "original": {
+     "introN": false,
+     "introB": true,
+     "Bcat": false,
+     "Ncat": true,
+     "safeActions": 3
+    },
+    "causesB": [],
+    "causesN": [
+     {
+      "regret": 119,
+      "topComponent": "infrastructureHealth",
+      "contributions": {
+       "futureObjectivePotential": -12,
+       "preservedValue": -12,
+       "infrastructureHealth": 152,
+       "optionValue": -6,
+       "resourceCost": -3
+      },
+      "catOutcome": null,
+      "catTerminalReason": null,
+      "catPath": [
+       "PROTECT",
+       "MOVE",
+       "MOVE",
+       "MOVE"
+      ],
+      "bestPath": [
+       "RETREAT",
+       "REPAIR",
+       "REPAIR",
+       "MOVE"
+      ],
+      "catActorHealthEnd": 100,
+      "bestOutcome": null
+     }
+    ],
+    "twins": {
+     "attempted": 54,
+     "publicEquivalent": 51,
+     "BcatFlips": 0,
+     "NcatFlips": 2,
+     "introNInTwins": 0,
+     "introBInTwins": 49,
+     "conflictWitness": false,
+     "robustSafeActions": 3,
+     "robustSafeIncludesB": true,
+     "robustSafeIncludesN": false,
+     "flippingEntities": [
+      "INFRASTRUCTURE+10",
+      "INFRASTRUCTURE+20"
+     ]
+    }
+   },
+   {
+    "idx": 191,
+    "population": "DEV288",
+    "cell": "bridge/defended/restore_and_protect/H2/3",
+    "regime": "OBSERVED_THREAT",
+    "menuSize": 7,
+    "types": {
+     "B": [
+      "MOVE"
+     ],
+     "N": [
+      "PROTECT"
+     ]
+    },
+    "s0SetSize": 1,
+    "nexusReason": "THREAT_DRIVEN_PREFERENCE",
+    "original": {
+     "introN": false,
+     "introB": true,
+     "Bcat": false,
+     "Ncat": true,
+     "safeActions": 2
+    },
+    "causesB": [],
+    "causesN": [
+     {
+      "regret": 104,
+      "topComponent": "futureObjectivePotential",
+      "contributions": {
+       "futureObjectivePotential": 44,
+       "restoredDependencyValue": 33,
+       "preservedValue": 33,
+       "optionValue": -4,
+       "resourceCost": -2
+      },
+      "catOutcome": null,
+      "catTerminalReason": null,
+      "catPath": [
+       "PROTECT",
+       "MOVE",
+       "MOVE",
+       "MOVE"
+      ],
+      "bestPath": [
+       "RETREAT",
+       "COLLECT",
+       "RESTORE",
+       "PROTECT"
+      ],
+      "catActorHealthEnd": 100,
+      "bestOutcome": null
+     }
+    ],
+    "twins": {
+     "attempted": 79,
+     "publicEquivalent": 76,
+     "BcatFlips": 0,
+     "NcatFlips": 0,
+     "introNInTwins": 0,
+     "introBInTwins": 76,
+     "conflictWitness": false,
+     "robustSafeActions": 2,
+     "robustSafeIncludesB": true,
+     "robustSafeIncludesN": false,
+     "flippingEntities": []
+    }
+   },
+   {
+    "idx": 199,
+    "population": "DEV288",
+    "cell": "chain/bare/restore_and_protect/H2/3",
+    "regime": "NO_OBSERVED_THREAT",
+    "menuSize": 5,
+    "types": {
+     "B": [
+      "MOVE"
+     ],
+     "N": [
+      "PROTECT"
+     ]
+    },
+    "s0SetSize": 1,
+    "nexusReason": "STRUCTURE_DRIVEN_PREFERENCE",
+    "original": {
+     "introN": false,
+     "introB": true,
+     "Bcat": false,
+     "Ncat": true,
+     "safeActions": 1
+    },
+    "causesB": [],
+    "causesN": [
+     {
+      "regret": 122,
+      "topComponent": "futureObjectivePotential",
+      "contributions": {
+       "futureObjectivePotential": 68,
+       "restoredDependencyValue": 33,
+       "preservedValue": 24,
+       "optionValue": -2,
+       "resourceCost": -1
+      },
+      "catOutcome": null,
+      "catTerminalReason": null,
+      "catPath": [
+       "PROTECT",
+       "MOVE",
+       "PROTECT",
+       "MOVE"
+      ],
+      "bestPath": [
+       "MOVE",
+       "COLLECT",
+       "RESTORE",
+       "PROTECT"
+      ],
+      "catActorHealthEnd": 96,
+      "bestOutcome": null
+     }
+    ],
+    "twins": {
+     "attempted": 75,
+     "publicEquivalent": 72,
+     "BcatFlips": 0,
+     "NcatFlips": 0,
+     "introNInTwins": 0,
+     "introBInTwins": 72,
+     "conflictWitness": false,
+     "robustSafeActions": 1,
+     "robustSafeIncludesB": true,
+     "robustSafeIncludesN": false,
+     "flippingEntities": []
+    }
+   },
+   {
+    "idx": 207,
+    "population": "DEV288",
+    "cell": "chain/defended/restore_and_protect/H2/3",
+    "regime": "OBSERVED_THREAT",
+    "menuSize": 7,
+    "types": {
+     "B": [
+      "MOVE"
+     ],
+     "N": [
+      "PROTECT"
+     ]
+    },
+    "s0SetSize": 1,
+    "nexusReason": "THREAT_DRIVEN_PREFERENCE",
+    "original": {
+     "introN": false,
+     "introB": true,
+     "Bcat": false,
+     "Ncat": true,
+     "safeActions": 5
+    },
+    "causesB": [],
+    "causesN": [
+     {
+      "regret": 110,
+      "topComponent": "futureObjectivePotential",
+      "contributions": {
+       "futureObjectivePotential": 68,
+       "restoredDependencyValue": 33,
+       "preservedValue": 9
+      },
+      "catOutcome": null,
+      "catTerminalReason": null,
+      "catPath": [
+       "PROTECT",
+       "PROTECT",
+       "MOVE",
+       "RESTORE"
+      ],
+      "bestPath": [
+       "MOVE",
+       "COLLECT",
+       "RESTORE",
+       "RESTORE"
+      ],
+      "catActorHealthEnd": 100,
+      "bestOutcome": null
+     }
+    ],
+    "twins": {
+     "attempted": 81,
+     "publicEquivalent": 75,
+     "BcatFlips": 0,
+     "NcatFlips": 0,
+     "introNInTwins": 0,
+     "introBInTwins": 75,
+     "conflictWitness": false,
+     "robustSafeActions": 5,
+     "robustSafeIncludesB": true,
+     "robustSafeIncludesN": false,
+     "flippingEntities": []
+    }
+   },
+   {
+    "idx": 215,
+    "population": "DEV288",
+    "cell": "star/bare/restore_and_protect/H2/3",
+    "regime": "NO_OBSERVED_THREAT",
+    "menuSize": 6,
+    "types": {
+     "B": [
+      "MOVE"
+     ],
+     "N": [
+      "PROTECT"
+     ]
+    },
+    "s0SetSize": 1,
+    "nexusReason": "STRUCTURE_DRIVEN_PREFERENCE",
+    "original": {
+     "introN": false,
+     "introB": true,
+     "Bcat": false,
+     "Ncat": true,
+     "safeActions": 1
+    },
+    "causesB": [],
+    "causesN": [
+     {
+      "regret": 120,
+      "topComponent": "futureObjectivePotential",
+      "contributions": {
+       "futureObjectivePotential": 60,
+       "restoredDependencyValue": 33,
+       "preservedValue": 33,
+       "optionValue": -4,
+       "resourceCost": -2
+      },
+      "catOutcome": null,
+      "catTerminalReason": null,
+      "catPath": [
+       "PROTECT",
+       "MOVE",
+       "MOVE",
+       "MOVE"
+      ],
+      "bestPath": [
+       "MOVE",
+       "COLLECT",
+       "RESTORE",
+       "PROTECT"
+      ],
+      "catActorHealthEnd": 100,
+      "bestOutcome": null
+     }
+    ],
+    "twins": {
+     "attempted": 72,
+     "publicEquivalent": 69,
+     "BcatFlips": 0,
+     "NcatFlips": 0,
+     "introNInTwins": 0,
+     "introBInTwins": 69,
+     "conflictWitness": false,
+     "robustSafeActions": 1,
+     "robustSafeIncludesB": true,
+     "robustSafeIncludesN": false,
+     "flippingEntities": []
+    }
+   },
+   {
+    "idx": 223,
+    "population": "DEV288",
+    "cell": "star/defended/restore_and_protect/H2/3",
+    "regime": "OBSERVED_THREAT",
+    "menuSize": 6,
+    "types": {
+     "B": [
+      "MOVE"
+     ],
+     "N": [
+      "PROTECT"
+     ]
+    },
+    "s0SetSize": 1,
+    "nexusReason": "THREAT_DRIVEN_PREFERENCE",
+    "original": {
+     "introN": false,
+     "introB": true,
+     "Bcat": false,
+     "Ncat": true,
+     "safeActions": 3
+    },
+    "causesB": [],
+    "causesN": [
+     {
+      "regret": 104,
+      "topComponent": "futureObjectivePotential",
+      "contributions": {
+       "futureObjectivePotential": 44,
+       "restoredDependencyValue": 33,
+       "preservedValue": 33,
+       "optionValue": -4,
+       "resourceCost": -2
+      },
+      "catOutcome": null,
+      "catTerminalReason": null,
+      "catPath": [
+       "PROTECT",
+       "MOVE",
+       "MOVE",
+       "MOVE"
+      ],
+      "bestPath": [
+       "RETREAT",
+       "COLLECT",
+       "RESTORE",
+       "PROTECT"
+      ],
+      "catActorHealthEnd": 100,
+      "bestOutcome": null
+     }
+    ],
+    "twins": {
+     "attempted": 87,
+     "publicEquivalent": 84,
+     "BcatFlips": 0,
+     "NcatFlips": 0,
+     "introNInTwins": 0,
+     "introBInTwins": 84,
+     "conflictWitness": false,
+     "robustSafeActions": 3,
+     "robustSafeIncludesB": true,
+     "robustSafeIncludesN": false,
+     "flippingEntities": []
+    }
+   },
+   {
+    "idx": 231,
+    "population": "DEV288",
+    "cell": "bridge/bare/restore_and_protect/H2/3",
+    "regime": "NO_OBSERVED_THREAT",
+    "menuSize": 6,
+    "types": {
+     "B": [
+      "MOVE"
+     ],
+     "N": [
+      "PROTECT"
+     ]
+    },
+    "s0SetSize": 1,
+    "nexusReason": "STRUCTURE_DRIVEN_PREFERENCE",
+    "original": {
+     "introN": false,
+     "introB": true,
+     "Bcat": false,
+     "Ncat": true,
+     "safeActions": 1
+    },
+    "causesB": [],
+    "causesN": [
+     {
+      "regret": 104,
+      "topComponent": "futureObjectivePotential",
+      "contributions": {
+       "futureObjectivePotential": 44,
+       "restoredDependencyValue": 33,
+       "preservedValue": 33,
+       "optionValue": -4,
+       "resourceCost": -2
+      },
+      "catOutcome": null,
+      "catTerminalReason": null,
+      "catPath": [
+       "PROTECT",
+       "MOVE",
+       "MOVE",
+       "MOVE"
+      ],
+      "bestPath": [
+       "MOVE",
+       "COLLECT",
+       "RESTORE",
+       "PROTECT"
+      ],
+      "catActorHealthEnd": 100,
+      "bestOutcome": null
+     }
+    ],
+    "twins": {
+     "attempted": 72,
+     "publicEquivalent": 69,
+     "BcatFlips": 0,
+     "NcatFlips": 0,
+     "introNInTwins": 0,
+     "introBInTwins": 69,
+     "conflictWitness": false,
+     "robustSafeActions": 1,
+     "robustSafeIncludesB": true,
+     "robustSafeIncludesN": false,
+     "flippingEntities": []
+    }
+   },
+   {
+    "idx": 255,
+    "population": "DEV288",
+    "cell": "chain/defended/restore_and_protect/H2/3",
+    "regime": "OBSERVED_THREAT",
+    "menuSize": 7,
+    "types": {
+     "B": [
+      "MOVE"
+     ],
+     "N": [
+      "PROTECT"
+     ]
+    },
+    "s0SetSize": 1,
+    "nexusReason": "THREAT_DRIVEN_PREFERENCE",
+    "original": {
+     "introN": false,
+     "introB": true,
+     "Bcat": false,
+     "Ncat": true,
+     "safeActions": 1
+    },
+    "causesB": [],
+    "causesN": [
+     {
+      "regret": 112,
+      "topComponent": "futureObjectivePotential",
+      "contributions": {
+       "futureObjectivePotential": 52,
+       "restoredDependencyValue": 33,
+       "preservedValue": 33,
+       "optionValue": -4,
+       "resourceCost": -2
+      },
+      "catOutcome": null,
+      "catTerminalReason": null,
+      "catPath": [
+       "PROTECT",
+       "MOVE",
+       "MOVE",
+       "MOVE"
+      ],
+      "bestPath": [
+       "MOVE",
+       "COLLECT",
+       "RESTORE",
+       "PROTECT"
+      ],
+      "catActorHealthEnd": 100,
+      "bestOutcome": null
+     }
+    ],
+    "twins": {
+     "attempted": 72,
+     "publicEquivalent": 69,
+     "BcatFlips": 0,
+     "NcatFlips": 1,
+     "introNInTwins": 0,
+     "introBInTwins": 68,
+     "conflictWitness": false,
+     "robustSafeActions": 1,
+     "robustSafeIncludesB": true,
+     "robustSafeIncludesN": false,
+     "flippingEntities": [
+      "REPAIR_TARGET-20"
+     ]
+    }
+   },
+   {
+    "idx": 263,
+    "population": "DEV288",
+    "cell": "star/bare/restore_and_protect/H2/3",
+    "regime": "NO_OBSERVED_THREAT",
+    "menuSize": 6,
+    "types": {
+     "B": [
+      "MOVE"
+     ],
+     "N": [
+      "PROTECT"
+     ]
+    },
+    "s0SetSize": 1,
+    "nexusReason": "STRUCTURE_DRIVEN_PREFERENCE",
+    "original": {
+     "introN": false,
+     "introB": true,
+     "Bcat": false,
+     "Ncat": true,
+     "safeActions": 2
+    },
+    "causesB": [],
+    "causesN": [
+     {
+      "regret": 104,
+      "topComponent": "futureObjectivePotential",
+      "contributions": {
+       "futureObjectivePotential": 44,
+       "restoredDependencyValue": 33,
+       "preservedValue": 33,
+       "optionValue": -4,
+       "resourceCost": -2
+      },
+      "catOutcome": null,
+      "catTerminalReason": null,
+      "catPath": [
+       "PROTECT",
+       "MOVE",
+       "MOVE",
+       "MOVE"
+      ],
+      "bestPath": [
+       "MOVE",
+       "COLLECT",
+       "RESTORE",
+       "PROTECT"
+      ],
+      "catActorHealthEnd": 98,
+      "bestOutcome": null
+     }
+    ],
+    "twins": {
+     "attempted": 63,
+     "publicEquivalent": 60,
+     "BcatFlips": 0,
+     "NcatFlips": 2,
+     "introNInTwins": 0,
+     "introBInTwins": 58,
+     "conflictWitness": false,
+     "robustSafeActions": 1,
+     "robustSafeIncludesB": true,
+     "robustSafeIncludesN": false,
+     "flippingEntities": [
+      "RESOURCE-10",
+      "RESOURCE-20"
+     ]
+    }
+   },
+   {
+    "idx": 271,
+    "population": "DEV288",
+    "cell": "star/defended/restore_and_protect/H2/3",
+    "regime": "OBSERVED_THREAT",
+    "menuSize": 6,
+    "types": {
+     "B": [
+      "MOVE"
+     ],
+     "N": [
+      "PROTECT"
+     ]
+    },
+    "s0SetSize": 1,
+    "nexusReason": "THREAT_DRIVEN_PREFERENCE",
+    "original": {
+     "introN": false,
+     "introB": true,
+     "Bcat": false,
+     "Ncat": true,
+     "safeActions": 1
+    },
+    "causesB": [],
+    "causesN": [
+     {
+      "regret": 120,
+      "topComponent": "futureObjectivePotential",
+      "contributions": {
+       "futureObjectivePotential": 60,
+       "restoredDependencyValue": 33,
+       "preservedValue": 33,
+       "optionValue": -4,
+       "resourceCost": -2
+      },
+      "catOutcome": null,
+      "catTerminalReason": null,
+      "catPath": [
+       "PROTECT",
+       "MOVE",
+       "MOVE",
+       "MOVE"
+      ],
+      "bestPath": [
+       "MOVE",
+       "COLLECT",
+       "RESTORE",
+       "PROTECT"
+      ],
+      "catActorHealthEnd": 100,
+      "bestOutcome": null
+     }
+    ],
+    "twins": {
+     "attempted": 78,
+     "publicEquivalent": 75,
+     "BcatFlips": 0,
+     "NcatFlips": 0,
+     "introNInTwins": 0,
+     "introBInTwins": 75,
+     "conflictWitness": false,
+     "robustSafeActions": 1,
+     "robustSafeIncludesB": true,
+     "robustSafeIncludesN": false,
+     "flippingEntities": []
+    }
+   },
+   {
+    "idx": 279,
+    "population": "DEV288",
+    "cell": "bridge/bare/restore_and_protect/H2/3",
+    "regime": "NO_OBSERVED_THREAT",
+    "menuSize": 5,
+    "types": {
+     "B": [
+      "MOVE"
+     ],
+     "N": [
+      "PROTECT"
+     ]
+    },
+    "s0SetSize": 1,
+    "nexusReason": "STRUCTURE_DRIVEN_PREFERENCE",
+    "original": {
+     "introN": false,
+     "introB": true,
+     "Bcat": false,
+     "Ncat": true,
+     "safeActions": 1
+    },
+    "causesB": [],
+    "causesN": [
+     {
+      "regret": 138,
+      "topComponent": "futureObjectivePotential",
+      "contributions": {
+       "futureObjectivePotential": 60,
+       "restoredDependencyValue": 51,
+       "preservedValue": 36,
+       "optionValue": -6,
+       "resourceCost": -3
+      },
+      "catOutcome": null,
+      "catTerminalReason": null,
+      "catPath": [
+       "PROTECT",
+       "MOVE",
+       "MOVE",
+       "MOVE"
+      ],
+      "bestPath": [
+       "MOVE",
+       "COLLECT",
+       "RESTORE",
+       "RESTORE"
+      ],
+      "catActorHealthEnd": 100,
+      "bestOutcome": null
+     }
+    ],
+    "twins": {
+     "attempted": 69,
+     "publicEquivalent": 66,
+     "BcatFlips": 0,
+     "NcatFlips": 0,
+     "introNInTwins": 0,
+     "introBInTwins": 66,
+     "conflictWitness": false,
+     "robustSafeActions": 1,
+     "robustSafeIncludesB": true,
+     "robustSafeIncludesN": false,
+     "flippingEntities": []
+    }
+   },
+   {
+    "idx": 287,
+    "population": "DEV288",
+    "cell": "bridge/defended/restore_and_protect/H2/3",
+    "regime": "OBSERVED_THREAT",
+    "menuSize": 7,
+    "types": {
+     "B": [
+      "MOVE"
+     ],
+     "N": [
+      "PROTECT"
+     ]
+    },
+    "s0SetSize": 1,
+    "nexusReason": "THREAT_DRIVEN_PREFERENCE",
+    "original": {
+     "introN": false,
+     "introB": true,
+     "Bcat": false,
+     "Ncat": true,
+     "safeActions": 1
+    },
+    "causesB": [],
+    "causesN": [
+     {
+      "regret": 107,
+      "topComponent": "futureObjectivePotential",
+      "contributions": {
+       "futureObjectivePotential": 68,
+       "restoredDependencyValue": 33,
+       "preservedValue": 9,
+       "optionValue": -2,
+       "resourceCost": -1
+      },
+      "catOutcome": null,
+      "catTerminalReason": null,
+      "catPath": [
+       "PROTECT",
+       "RETREAT",
+       "MOVE",
+       "PROTECT"
+      ],
+      "bestPath": [
+       "MOVE",
+       "COLLECT",
+       "RESTORE",
+       "PROTECT"
+      ],
+      "catActorHealthEnd": 100,
+      "bestOutcome": null
+     }
+    ],
+    "twins": {
+     "attempted": 75,
+     "publicEquivalent": 72,
+     "BcatFlips": 0,
+     "NcatFlips": 1,
+     "introNInTwins": 0,
+     "introBInTwins": 71,
+     "conflictWitness": false,
+     "robustSafeActions": 1,
+     "robustSafeIncludesB": true,
+     "robustSafeIncludesN": false,
+     "flippingEntities": [
+      "INFRASTRUCTURE-20"
+     ]
+    }
+   }
+  ],
+  "CONTROL": [
+   {
+    "idx": 6,
+    "population": "DEV288",
+    "cell": "chain/bare/restore_and_protect/H2/1",
+    "regime": "NO_OBSERVED_THREAT",
+    "menuSize": 6,
+    "types": {
+     "B": [
+      "MOVE"
+     ],
+     "N": [
+      "PROTECT"
+     ]
+    },
+    "s0SetSize": 1,
+    "nexusReason": "STRUCTURE_DRIVEN_PREFERENCE",
+    "original": {
+     "introN": false,
+     "introB": false,
+     "Bcat": false,
+     "Ncat": false,
+     "safeActions": 4
+    },
+    "causesB": [],
+    "causesN": [],
+    "twins": {
+     "attempted": 39,
+     "publicEquivalent": 33,
+     "BcatFlips": 0,
+     "NcatFlips": 0,
+     "introNInTwins": 0,
+     "introBInTwins": 0,
+     "conflictWitness": false,
+     "robustSafeActions": 4,
+     "robustSafeIncludesB": true,
+     "robustSafeIncludesN": true,
+     "flippingEntities": []
+    }
+   },
+   {
+    "idx": 10,
+    "population": "DEV288",
+    "cell": "chain/defended/reach_target/H2/1",
+    "regime": "OBSERVED_THREAT",
+    "menuSize": 7,
+    "types": {
+     "B": [
+      "MOVE"
+     ],
+     "N": [
+      "PROTECT"
+     ]
+    },
+    "s0SetSize": 1,
+    "nexusReason": "THREAT_DRIVEN_PREFERENCE",
+    "original": {
+     "introN": false,
+     "introB": false,
+     "Bcat": false,
+     "Ncat": false,
+     "safeActions": 7
+    },
+    "causesB": [],
+    "causesN": [],
+    "twins": {
+     "attempted": 45,
+     "publicEquivalent": 42,
+     "BcatFlips": 0,
+     "NcatFlips": 2,
+     "introNInTwins": 0,
+     "introBInTwins": 2,
+     "conflictWitness": false,
+     "robustSafeActions": 1,
+     "robustSafeIncludesB": true,
+     "robustSafeIncludesN": false,
+     "flippingEntities": [
+      "INFRASTRUCTURE+10",
+      "INFRASTRUCTURE+20"
+     ]
+    }
+   },
+   {
+    "idx": 11,
+    "population": "DEV288",
+    "cell": "chain/defended/reach_target/H2/3",
+    "regime": "OBSERVED_THREAT",
+    "menuSize": 7,
+    "types": {
+     "B": [
+      "MOVE"
+     ],
+     "N": [
+      "PROTECT"
+     ]
+    },
+    "s0SetSize": 1,
+    "nexusReason": "THREAT_DRIVEN_PREFERENCE",
+    "original": {
+     "introN": false,
+     "introB": false,
+     "Bcat": false,
+     "Ncat": false,
+     "safeActions": 7
+    },
+    "causesB": [],
+    "causesN": [],
+    "twins": {
+     "attempted": 84,
+     "publicEquivalent": 81,
+     "BcatFlips": 0,
+     "NcatFlips": 0,
+     "introNInTwins": 0,
+     "introBInTwins": 0,
+     "conflictWitness": false,
+     "robustSafeActions": 7,
+     "robustSafeIncludesB": true,
+     "robustSafeIncludesN": true,
+     "flippingEntities": []
+    }
+   },
+   {
+    "idx": 14,
+    "population": "DEV288",
+    "cell": "chain/defended/restore_and_protect/H2/1",
+    "regime": "OBSERVED_THREAT",
+    "menuSize": 7,
+    "types": {
+     "B": [
+      "MOVE"
+     ],
+     "N": [
+      "PROTECT"
+     ]
+    },
+    "s0SetSize": 1,
+    "nexusReason": "THREAT_DRIVEN_PREFERENCE",
+    "original": {
+     "introN": false,
+     "introB": false,
+     "Bcat": false,
+     "Ncat": false,
+     "safeActions": 6
+    },
+    "causesB": [],
+    "causesN": [],
+    "twins": {
+     "attempted": 48,
+     "publicEquivalent": 45,
+     "BcatFlips": 0,
+     "NcatFlips": 0,
+     "introNInTwins": 0,
+     "introBInTwins": 0,
+     "conflictWitness": false,
+     "robustSafeActions": 6,
+     "robustSafeIncludesB": true,
+     "robustSafeIncludesN": true,
+     "flippingEntities": []
+    }
+   },
+   {
+    "idx": 15,
+    "population": "DEV288",
+    "cell": "chain/defended/restore_and_protect/H2/3",
+    "regime": "OBSERVED_THREAT",
+    "menuSize": 7,
+    "types": {
+     "B": [
+      "MOVE"
+     ],
+     "N": [
+      "PROTECT"
+     ]
+    },
+    "s0SetSize": 1,
+    "nexusReason": "THREAT_DRIVEN_PREFERENCE",
+    "original": {
+     "introN": false,
+     "introB": false,
+     "Bcat": false,
+     "Ncat": false,
+     "safeActions": 5
+    },
+    "causesB": [],
+    "causesN": [],
+    "twins": {
+     "attempted": 78,
+     "publicEquivalent": 75,
+     "BcatFlips": 0,
+     "NcatFlips": 0,
+     "introNInTwins": 0,
+     "introBInTwins": 0,
+     "conflictWitness": false,
+     "robustSafeActions": 5,
+     "robustSafeIncludesB": true,
+     "robustSafeIncludesN": true,
+     "flippingEntities": []
+    }
+   },
+   {
+    "idx": 22,
+    "population": "DEV288",
+    "cell": "star/bare/restore_and_protect/H2/1",
+    "regime": "NO_OBSERVED_THREAT",
+    "menuSize": 5,
+    "types": {
+     "B": [
+      "MOVE"
+     ],
+     "N": [
+      "PROTECT"
+     ]
+    },
+    "s0SetSize": 1,
+    "nexusReason": "STRUCTURE_DRIVEN_PREFERENCE",
+    "original": {
+     "introN": false,
+     "introB": false,
+     "Bcat": false,
+     "Ncat": false,
+     "safeActions": 4
+    },
+    "causesB": [],
+    "causesN": [],
+    "twins": {
+     "attempted": 39,
+     "publicEquivalent": 36,
+     "BcatFlips": 0,
+     "NcatFlips": 0,
+     "introNInTwins": 0,
+     "introBInTwins": 0,
+     "conflictWitness": false,
+     "robustSafeActions": 4,
+     "robustSafeIncludesB": true,
+     "robustSafeIncludesN": true,
+     "flippingEntities": []
+    }
+   },
+   {
+    "idx": 26,
+    "population": "DEV288",
+    "cell": "star/defended/reach_target/H2/1",
+    "regime": "OBSERVED_THREAT",
+    "menuSize": 8,
+    "types": {
+     "B": [
+      "MOVE"
+     ],
+     "N": [
+      "PROTECT"
+     ]
+    },
+    "s0SetSize": 1,
+    "nexusReason": "THREAT_DRIVEN_PREFERENCE",
+    "original": {
+     "introN": false,
+     "introB": false,
+     "Bcat": false,
+     "Ncat": false,
+     "safeActions": 8
+    },
+    "causesB": [],
+    "causesN": [],
+    "twins": {
+     "attempted": 51,
+     "publicEquivalent": 48,
+     "BcatFlips": 0,
+     "NcatFlips": 1,
+     "introNInTwins": 0,
+     "introBInTwins": 1,
+     "conflictWitness": false,
+     "robustSafeActions": 2,
+     "robustSafeIncludesB": true,
+     "robustSafeIncludesN": false,
+     "flippingEntities": [
+      "INFRASTRUCTURE+10"
+     ]
+    }
+   },
+   {
+    "idx": 27,
+    "population": "DEV288",
+    "cell": "star/defended/reach_target/H2/3",
+    "regime": "OBSERVED_THREAT",
+    "menuSize": 7,
+    "types": {
+     "B": [
+      "MOVE"
+     ],
+     "N": [
+      "PROTECT"
+     ]
+    },
+    "s0SetSize": 1,
+    "nexusReason": "THREAT_DRIVEN_PREFERENCE",
+    "original": {
+     "introN": false,
+     "introB": false,
+     "Bcat": false,
+     "Ncat": false,
+     "safeActions": 7
+    },
+    "causesB": [],
+    "causesN": [],
+    "twins": {
+     "attempted": 81,
+     "publicEquivalent": 78,
+     "BcatFlips": 0,
+     "NcatFlips": 0,
+     "introNInTwins": 0,
+     "introBInTwins": 0,
+     "conflictWitness": false,
+     "robustSafeActions": 7,
+     "robustSafeIncludesB": true,
+     "robustSafeIncludesN": true,
+     "flippingEntities": []
+    }
+   },
+   {
+    "idx": 30,
+    "population": "DEV288",
+    "cell": "star/defended/restore_and_protect/H2/1",
+    "regime": "OBSERVED_THREAT",
+    "menuSize": 6,
+    "types": {
+     "B": [
+      "MOVE"
+     ],
+     "N": [
+      "PROTECT"
+     ]
+    },
+    "s0SetSize": 1,
+    "nexusReason": "THREAT_DRIVEN_PREFERENCE",
+    "original": {
+     "introN": false,
+     "introB": false,
+     "Bcat": false,
+     "Ncat": false,
+     "safeActions": 4
+    },
+    "causesB": [],
+    "causesN": [],
+    "twins": {
+     "attempted": 48,
+     "publicEquivalent": 45,
+     "BcatFlips": 0,
+     "NcatFlips": 0,
+     "introNInTwins": 0,
+     "introBInTwins": 0,
+     "conflictWitness": false,
+     "robustSafeActions": 4,
+     "robustSafeIncludesB": true,
+     "robustSafeIncludesN": true,
+     "flippingEntities": []
+    }
+   },
+   {
+    "idx": 38,
+    "population": "DEV288",
+    "cell": "bridge/bare/restore_and_protect/H2/1",
+    "regime": "NO_OBSERVED_THREAT",
+    "menuSize": 7,
+    "types": {
+     "B": [
+      "MOVE"
+     ],
+     "N": [
+      "PROTECT"
+     ]
+    },
+    "s0SetSize": 1,
+    "nexusReason": "STRUCTURE_DRIVEN_PREFERENCE",
+    "original": {
+     "introN": false,
+     "introB": false,
+     "Bcat": false,
+     "Ncat": false,
+     "safeActions": 7
+    },
+    "causesB": [],
+    "causesN": [],
+    "twins": {
+     "attempted": 33,
+     "publicEquivalent": 27,
+     "BcatFlips": 0,
+     "NcatFlips": 0,
+     "introNInTwins": 0,
+     "introBInTwins": 0,
+     "conflictWitness": false,
+     "robustSafeActions": 7,
+     "robustSafeIncludesB": true,
+     "robustSafeIncludesN": true,
+     "flippingEntities": []
+    }
+   },
+   {
+    "idx": 42,
+    "population": "DEV288",
+    "cell": "bridge/defended/reach_target/H2/1",
+    "regime": "OBSERVED_THREAT",
+    "menuSize": 10,
+    "types": {
+     "B": [
+      "MOVE"
+     ],
+     "N": [
+      "REINFORCE"
+     ]
+    },
+    "s0SetSize": 1,
+    "nexusReason": "THREAT_DRIVEN_PREFERENCE",
+    "original": {
+     "introN": false,
+     "introB": false,
+     "Bcat": false,
+     "Ncat": false,
+     "safeActions": 9
+    },
+    "causesB": [],
+    "causesN": [],
+    "twins": {
+     "attempted": 42,
+     "publicEquivalent": 39,
+     "BcatFlips": 0,
+     "NcatFlips": 0,
+     "introNInTwins": 0,
+     "introBInTwins": 0,
+     "conflictWitness": false,
+     "robustSafeActions": 9,
+     "robustSafeIncludesB": true,
+     "robustSafeIncludesN": true,
+     "flippingEntities": []
+    }
+   },
+   {
+    "idx": 43,
+    "population": "DEV288",
+    "cell": "bridge/defended/reach_target/H2/3",
+    "regime": "OBSERVED_THREAT",
+    "menuSize": 10,
+    "types": {
+     "B": [
+      "MOVE"
+     ],
+     "N": [
+      "REINFORCE"
+     ]
+    },
+    "s0SetSize": 1,
+    "nexusReason": "THREAT_DRIVEN_PREFERENCE",
+    "original": {
+     "introN": false,
+     "introB": false,
+     "Bcat": false,
+     "Ncat": false,
+     "safeActions": 10
+    },
+    "causesB": [],
+    "causesN": [],
+    "twins": {
+     "attempted": 78,
+     "publicEquivalent": 75,
+     "BcatFlips": 0,
+     "NcatFlips": 0,
+     "introNInTwins": 0,
+     "introBInTwins": 0,
+     "conflictWitness": false,
+     "robustSafeActions": 10,
+     "robustSafeIncludesB": true,
+     "robustSafeIncludesN": true,
+     "flippingEntities": []
+    }
+   },
+   {
+    "idx": 46,
+    "population": "DEV288",
+    "cell": "bridge/defended/restore_and_protect/H2/1",
+    "regime": "OBSERVED_THREAT",
+    "menuSize": 6,
+    "types": {
+     "B": [
+      "MOVE"
+     ],
+     "N": [
+      "PROTECT"
+     ]
+    },
+    "s0SetSize": 1,
+    "nexusReason": "THREAT_DRIVEN_PREFERENCE",
+    "original": {
+     "introN": false,
+     "introB": false,
+     "Bcat": false,
+     "Ncat": false,
+     "safeActions": 4
+    },
+    "causesB": [],
+    "causesN": [],
+    "twins": {
+     "attempted": 39,
+     "publicEquivalent": 36,
+     "BcatFlips": 0,
+     "NcatFlips": 0,
+     "introNInTwins": 0,
+     "introBInTwins": 0,
+     "conflictWitness": false,
+     "robustSafeActions": 3,
+     "robustSafeIncludesB": true,
+     "robustSafeIncludesN": true,
+     "flippingEntities": []
+    }
+   },
+   {
+    "idx": 47,
+    "population": "DEV288",
+    "cell": "bridge/defended/restore_and_protect/H2/3",
+    "regime": "OBSERVED_THREAT",
+    "menuSize": 6,
+    "types": {
+     "B": [
+      "MOVE"
+     ],
+     "N": [
+      "PROTECT"
+     ]
+    },
+    "s0SetSize": 1,
+    "nexusReason": "THREAT_DRIVEN_PREFERENCE",
+    "original": {
+     "introN": false,
+     "introB": false,
+     "Bcat": false,
+     "Ncat": false,
+     "safeActions": 6
+    },
+    "causesB": [],
+    "causesN": [],
+    "twins": {
+     "attempted": 81,
+     "publicEquivalent": 78,
+     "BcatFlips": 0,
+     "NcatFlips": 0,
+     "introNInTwins": 0,
+     "introBInTwins": 0,
+     "conflictWitness": false,
+     "robustSafeActions": 6,
+     "robustSafeIncludesB": true,
+     "robustSafeIncludesN": true,
+     "flippingEntities": []
+    }
+   },
+   {
+    "idx": 54,
+    "population": "DEV288",
+    "cell": "chain/bare/restore_and_protect/H2/1",
+    "regime": "NO_OBSERVED_THREAT",
+    "menuSize": 7,
+    "types": {
+     "B": [
+      "MOVE"
+     ],
+     "N": [
+      "PROTECT"
+     ]
+    },
+    "s0SetSize": 1,
+    "nexusReason": "STRUCTURE_DRIVEN_PREFERENCE",
+    "original": {
+     "introN": false,
+     "introB": false,
+     "Bcat": false,
+     "Ncat": false,
+     "safeActions": 3
+    },
+    "causesB": [],
+    "causesN": [],
+    "twins": {
+     "attempted": 42,
+     "publicEquivalent": 36,
+     "BcatFlips": 0,
+     "NcatFlips": 0,
+     "introNInTwins": 0,
+     "introBInTwins": 0,
+     "conflictWitness": false,
+     "robustSafeActions": 3,
+     "robustSafeIncludesB": true,
+     "robustSafeIncludesN": true,
+     "flippingEntities": []
+    }
+   },
+   {
+    "idx": 55,
+    "population": "DEV288",
+    "cell": "chain/bare/restore_and_protect/H2/3",
+    "regime": "NO_OBSERVED_THREAT",
+    "menuSize": 5,
+    "types": {
+     "B": [
+      "MOVE"
+     ],
+     "N": [
+      "PROTECT"
+     ]
+    },
+    "s0SetSize": 1,
+    "nexusReason": "STRUCTURE_DRIVEN_PREFERENCE",
+    "original": {
+     "introN": false,
+     "introB": false,
+     "Bcat": false,
+     "Ncat": false,
+     "safeActions": 4
+    },
+    "causesB": [],
+    "causesN": [],
+    "twins": {
+     "attempted": 68,
+     "publicEquivalent": 65,
+     "BcatFlips": 0,
+     "NcatFlips": 0,
+     "introNInTwins": 0,
+     "introBInTwins": 0,
+     "conflictWitness": false,
+     "robustSafeActions": 4,
+     "robustSafeIncludesB": true,
+     "robustSafeIncludesN": true,
+     "flippingEntities": []
+    }
+   },
+   {
+    "idx": 58,
+    "population": "DEV288",
+    "cell": "chain/defended/reach_target/H2/1",
+    "regime": "OBSERVED_THREAT",
+    "menuSize": 7,
+    "types": {
+     "B": [
+      "MOVE"
+     ],
+     "N": [
+      "PROTECT"
+     ]
+    },
+    "s0SetSize": 1,
+    "nexusReason": "THREAT_DRIVEN_PREFERENCE",
+    "original": {
+     "introN": false,
+     "introB": false,
+     "Bcat": false,
+     "Ncat": false,
+     "safeActions": 7
+    },
+    "causesB": [],
+    "causesN": [],
+    "twins": {
+     "attempted": 54,
+     "publicEquivalent": 51,
+     "BcatFlips": 0,
+     "NcatFlips": 0,
+     "introNInTwins": 0,
+     "introBInTwins": 0,
+     "conflictWitness": false,
+     "robustSafeActions": 7,
+     "robustSafeIncludesB": true,
+     "robustSafeIncludesN": true,
+     "flippingEntities": []
+    }
+   },
+   {
+    "idx": 59,
+    "population": "DEV288",
+    "cell": "chain/defended/reach_target/H2/3",
+    "regime": "OBSERVED_THREAT",
+    "menuSize": 6,
+    "types": {
+     "B": [
+      "MOVE"
+     ],
+     "N": [
+      "PROTECT"
+     ]
+    },
+    "s0SetSize": 1,
+    "nexusReason": "THREAT_DRIVEN_PREFERENCE",
+    "original": {
+     "introN": false,
+     "introB": false,
+     "Bcat": false,
+     "Ncat": false,
+     "safeActions": 4
+    },
+    "causesB": [],
+    "causesN": [],
+    "twins": {
+     "attempted": 71,
+     "publicEquivalent": 68,
+     "BcatFlips": 0,
+     "NcatFlips": 0,
+     "introNInTwins": 0,
+     "introBInTwins": 0,
+     "conflictWitness": false,
+     "robustSafeActions": 4,
+     "robustSafeIncludesB": true,
+     "robustSafeIncludesN": true,
+     "flippingEntities": []
+    }
+   },
+   {
+    "idx": 67,
+    "population": "DEV288",
+    "cell": "star/bare/reach_target/H2/3",
+    "regime": "NO_OBSERVED_THREAT",
+    "menuSize": 5,
+    "types": {
+     "B": [
+      "MOVE"
+     ],
+     "N": [
+      "PROTECT"
+     ]
+    },
+    "s0SetSize": 1,
+    "nexusReason": "STRUCTURE_DRIVEN_PREFERENCE",
+    "original": {
+     "introN": false,
+     "introB": false,
+     "Bcat": false,
+     "Ncat": false,
+     "safeActions": 5
+    },
+    "causesB": [],
+    "causesN": [],
+    "twins": {
+     "attempted": 74,
+     "publicEquivalent": 71,
+     "BcatFlips": 0,
+     "NcatFlips": 0,
+     "introNInTwins": 0,
+     "introBInTwins": 0,
+     "conflictWitness": false,
+     "robustSafeActions": 5,
+     "robustSafeIncludesB": true,
+     "robustSafeIncludesN": true,
+     "flippingEntities": []
+    }
+   },
+   {
+    "idx": 71,
+    "population": "DEV288",
+    "cell": "star/bare/restore_and_protect/H2/3",
+    "regime": "NO_OBSERVED_THREAT",
+    "menuSize": 5,
+    "types": {
+     "B": [
+      "MOVE"
+     ],
+     "N": [
+      "PROTECT"
+     ]
+    },
+    "s0SetSize": 1,
+    "nexusReason": "STRUCTURE_DRIVEN_PREFERENCE",
+    "original": {
+     "introN": false,
+     "introB": false,
+     "Bcat": false,
+     "Ncat": false,
+     "safeActions": 3
+    },
+    "causesB": [],
+    "causesN": [],
+    "twins": {
+     "attempted": 69,
+     "publicEquivalent": 66,
+     "BcatFlips": 0,
+     "NcatFlips": 0,
+     "introNInTwins": 0,
+     "introBInTwins": 0,
+     "conflictWitness": false,
+     "robustSafeActions": 3,
+     "robustSafeIncludesB": true,
+     "robustSafeIncludesN": true,
+     "flippingEntities": []
+    }
+   },
+   {
+    "idx": 74,
+    "population": "DEV288",
+    "cell": "star/defended/reach_target/H2/1",
+    "regime": "OBSERVED_THREAT",
+    "menuSize": 6,
+    "types": {
+     "B": [
+      "MOVE"
+     ],
+     "N": [
+      "PROTECT"
+     ]
+    },
+    "s0SetSize": 1,
+    "nexusReason": "THREAT_DRIVEN_PREFERENCE",
+    "original": {
+     "introN": false,
+     "introB": false,
+     "Bcat": false,
+     "Ncat": false,
+     "safeActions": 6
+    },
+    "causesB": [],
+    "causesN": [],
+    "twins": {
+     "attempted": 55,
+     "publicEquivalent": 52,
+     "BcatFlips": 0,
+     "NcatFlips": 0,
+     "introNInTwins": 0,
+     "introBInTwins": 0,
+     "conflictWitness": false,
+     "robustSafeActions": 5,
+     "robustSafeIncludesB": true,
+     "robustSafeIncludesN": true,
+     "flippingEntities": []
+    }
+   },
+   {
+    "idx": 75,
+    "population": "DEV288",
+    "cell": "star/defended/reach_target/H2/3",
+    "regime": "OBSERVED_THREAT",
+    "menuSize": 7,
+    "types": {
+     "B": [
+      "MOVE"
+     ],
+     "N": [
+      "PROTECT"
+     ]
+    },
+    "s0SetSize": 1,
+    "nexusReason": "THREAT_DRIVEN_PREFERENCE",
+    "original": {
+     "introN": false,
+     "introB": false,
+     "Bcat": false,
+     "Ncat": false,
+     "safeActions": 7
+    },
+    "causesB": [],
+    "causesN": [],
+    "twins": {
+     "attempted": 75,
+     "publicEquivalent": 72,
+     "BcatFlips": 0,
+     "NcatFlips": 0,
+     "introNInTwins": 0,
+     "introBInTwins": 0,
+     "conflictWitness": false,
+     "robustSafeActions": 7,
+     "robustSafeIncludesB": true,
+     "robustSafeIncludesN": true,
+     "flippingEntities": []
+    }
+   },
+   {
+    "idx": 78,
+    "population": "DEV288",
+    "cell": "star/defended/restore_and_protect/H2/1",
+    "regime": "OBSERVED_THREAT",
+    "menuSize": 6,
+    "types": {
+     "B": [
+      "MOVE"
+     ],
+     "N": [
+      "PROTECT"
+     ]
+    },
+    "s0SetSize": 1,
+    "nexusReason": "THREAT_DRIVEN_PREFERENCE",
+    "original": {
+     "introN": false,
+     "introB": false,
+     "Bcat": false,
+     "Ncat": false,
+     "safeActions": 3
+    },
+    "causesB": [],
+    "causesN": [],
+    "twins": {
+     "attempted": 39,
+     "publicEquivalent": 36,
+     "BcatFlips": 0,
+     "NcatFlips": 0,
+     "introNInTwins": 0,
+     "introBInTwins": 0,
+     "conflictWitness": false,
+     "robustSafeActions": 3,
+     "robustSafeIncludesB": true,
+     "robustSafeIncludesN": true,
+     "flippingEntities": []
+    }
+   },
+   {
+    "idx": 86,
+    "population": "DEV288",
+    "cell": "bridge/bare/restore_and_protect/H2/1",
+    "regime": "NO_OBSERVED_THREAT",
+    "menuSize": 6,
+    "types": {
+     "B": [
+      "MOVE"
+     ],
+     "N": [
+      "PROTECT"
+     ]
+    },
+    "s0SetSize": 1,
+    "nexusReason": "STRUCTURE_DRIVEN_PREFERENCE",
+    "original": {
+     "introN": false,
+     "introB": false,
+     "Bcat": false,
+     "Ncat": false,
+     "safeActions": 2
+    },
+    "causesB": [],
+    "causesN": [],
+    "twins": {
+     "attempted": 35,
+     "publicEquivalent": 32,
+     "BcatFlips": 0,
+     "NcatFlips": 0,
+     "introNInTwins": 0,
+     "introBInTwins": 0,
+     "conflictWitness": false,
+     "robustSafeActions": 2,
+     "robustSafeIncludesB": true,
+     "robustSafeIncludesN": true,
+     "flippingEntities": []
+    }
+   },
+   {
+    "idx": 87,
+    "population": "DEV288",
+    "cell": "bridge/bare/restore_and_protect/H2/3",
+    "regime": "NO_OBSERVED_THREAT",
+    "menuSize": 6,
+    "types": {
+     "B": [
+      "MOVE"
+     ],
+     "N": [
+      "PROTECT"
+     ]
+    },
+    "s0SetSize": 1,
+    "nexusReason": "STRUCTURE_DRIVEN_PREFERENCE",
+    "original": {
+     "introN": false,
+     "introB": false,
+     "Bcat": false,
+     "Ncat": false,
+     "safeActions": 3
+    },
+    "causesB": [],
+    "causesN": [],
+    "twins": {
+     "attempted": 66,
+     "publicEquivalent": 63,
+     "BcatFlips": 0,
+     "NcatFlips": 0,
+     "introNInTwins": 0,
+     "introBInTwins": 0,
+     "conflictWitness": false,
+     "robustSafeActions": 3,
+     "robustSafeIncludesB": true,
+     "robustSafeIncludesN": true,
+     "flippingEntities": []
+    }
+   },
+   {
+    "idx": 90,
+    "population": "DEV288",
+    "cell": "bridge/defended/reach_target/H2/1",
+    "regime": "OBSERVED_THREAT",
+    "menuSize": 10,
+    "types": {
+     "B": [
+      "REPAIR"
+     ],
+     "N": [
+      "REINFORCE"
+     ]
+    },
+    "s0SetSize": 1,
+    "nexusReason": "THREAT_DRIVEN_PREFERENCE",
+    "original": {
+     "introN": false,
+     "introB": false,
+     "Bcat": false,
+     "Ncat": false,
+     "safeActions": 10
+    },
+    "causesB": [],
+    "causesN": [],
+    "twins": {
+     "attempted": 51,
+     "publicEquivalent": 48,
+     "BcatFlips": 0,
+     "NcatFlips": 0,
+     "introNInTwins": 0,
+     "introBInTwins": 0,
+     "conflictWitness": false,
+     "robustSafeActions": 10,
+     "robustSafeIncludesB": true,
+     "robustSafeIncludesN": true,
+     "flippingEntities": []
+    }
+   },
+   {
+    "idx": 91,
+    "population": "DEV288",
+    "cell": "bridge/defended/reach_target/H2/3",
+    "regime": "OBSERVED_THREAT",
+    "menuSize": 6,
+    "types": {
+     "B": [
+      "MOVE"
+     ],
+     "N": [
+      "PROTECT"
+     ]
+    },
+    "s0SetSize": 1,
+    "nexusReason": "THREAT_DRIVEN_PREFERENCE",
+    "original": {
+     "introN": false,
+     "introB": false,
+     "Bcat": false,
+     "Ncat": false,
+     "safeActions": 4
+    },
+    "causesB": [],
+    "causesN": [],
+    "twins": {
+     "attempted": 72,
+     "publicEquivalent": 66,
+     "BcatFlips": 0,
+     "NcatFlips": 0,
+     "introNInTwins": 0,
+     "introBInTwins": 0,
+     "conflictWitness": false,
+     "robustSafeActions": 4,
+     "robustSafeIncludesB": true,
+     "robustSafeIncludesN": true,
+     "flippingEntities": []
+    }
+   },
+   {
+    "idx": 94,
+    "population": "DEV288",
+    "cell": "bridge/defended/restore_and_protect/H2/1",
+    "regime": "OBSERVED_THREAT",
+    "menuSize": 10,
+    "types": {
+     "B": [
+      "MOVE"
+     ],
+     "N": [
+      "REINFORCE"
+     ]
+    },
+    "s0SetSize": 1,
+    "nexusReason": "THREAT_DRIVEN_PREFERENCE",
+    "original": {
+     "introN": false,
+     "introB": false,
+     "Bcat": false,
+     "Ncat": false,
+     "safeActions": 9
+    },
+    "causesB": [],
+    "causesN": [],
+    "twins": {
+     "attempted": 50,
+     "publicEquivalent": 47,
+     "BcatFlips": 0,
+     "NcatFlips": 0,
+     "introNInTwins": 0,
+     "introBInTwins": 0,
+     "conflictWitness": false,
+     "robustSafeActions": 9,
+     "robustSafeIncludesB": true,
+     "robustSafeIncludesN": true,
+     "flippingEntities": []
+    }
+   },
+   {
+    "idx": 95,
+    "population": "DEV288",
+    "cell": "bridge/defended/restore_and_protect/H2/3",
+    "regime": "OBSERVED_THREAT",
+    "menuSize": 8,
+    "types": {
+     "B": [
+      "MOVE"
+     ],
+     "N": [
+      "PROTECT"
+     ]
+    },
+    "s0SetSize": 1,
+    "nexusReason": "THREAT_DRIVEN_PREFERENCE",
+    "original": {
+     "introN": false,
+     "introB": false,
+     "Bcat": false,
+     "Ncat": false,
+     "safeActions": 6
+    },
+    "causesB": [],
+    "causesN": [],
+    "twins": {
+     "attempted": 72,
+     "publicEquivalent": 66,
+     "BcatFlips": 0,
+     "NcatFlips": 2,
+     "introNInTwins": 0,
+     "introBInTwins": 2,
+     "conflictWitness": false,
+     "robustSafeActions": 4,
+     "robustSafeIncludesB": true,
+     "robustSafeIncludesN": false,
+     "flippingEntities": [
+      "REPAIR_TARGET-10",
+      "REPAIR_TARGET-20"
+     ]
+    }
+   },
+   {
+    "idx": 102,
+    "population": "DEV288",
+    "cell": "chain/bare/restore_and_protect/H2/1",
+    "regime": "NO_OBSERVED_THREAT",
+    "menuSize": 6,
+    "types": {
+     "B": [
+      "MOVE"
+     ],
+     "N": [
+      "PROTECT"
+     ]
+    },
+    "s0SetSize": 1,
+    "nexusReason": "STRUCTURE_DRIVEN_PREFERENCE",
+    "original": {
+     "introN": false,
+     "introB": false,
+     "Bcat": false,
+     "Ncat": false,
+     "safeActions": 6
+    },
+    "causesB": [],
+    "causesN": [],
+    "twins": {
+     "attempted": 39,
+     "publicEquivalent": 33,
+     "BcatFlips": 0,
+     "NcatFlips": 0,
+     "introNInTwins": 0,
+     "introBInTwins": 0,
+     "conflictWitness": false,
+     "robustSafeActions": 6,
+     "robustSafeIncludesB": true,
+     "robustSafeIncludesN": true,
+     "flippingEntities": []
+    }
+   },
+   {
+    "idx": 106,
+    "population": "DEV288",
+    "cell": "chain/defended/reach_target/H2/1",
+    "regime": "OBSERVED_THREAT",
+    "menuSize": 9,
+    "types": {
+     "B": [
+      "MOVE"
+     ],
+     "N": [
+      "PROTECT"
+     ]
+    },
+    "s0SetSize": 1,
+    "nexusReason": "THREAT_DRIVEN_PREFERENCE",
+    "original": {
+     "introN": false,
+     "introB": false,
+     "Bcat": false,
+     "Ncat": false,
+     "safeActions": 5
+    },
+    "causesB": [],
+    "causesN": [],
+    "twins": {
+     "attempted": 48,
+     "publicEquivalent": 42,
+     "BcatFlips": 0,
+     "NcatFlips": 0,
+     "introNInTwins": 0,
+     "introBInTwins": 0,
+     "conflictWitness": false,
+     "robustSafeActions": 5,
+     "robustSafeIncludesB": true,
+     "robustSafeIncludesN": true,
+     "flippingEntities": []
+    }
+   },
+   {
+    "idx": 107,
+    "population": "DEV288",
+    "cell": "chain/defended/reach_target/H2/3",
+    "regime": "OBSERVED_THREAT",
+    "menuSize": 6,
+    "types": {
+     "B": [
+      "MOVE"
+     ],
+     "N": [
+      "PROTECT"
+     ]
+    },
+    "s0SetSize": 1,
+    "nexusReason": "THREAT_DRIVEN_PREFERENCE",
+    "original": {
+     "introN": false,
+     "introB": false,
+     "Bcat": false,
+     "Ncat": false,
+     "safeActions": 5
+    },
+    "causesB": [],
+    "causesN": [],
+    "twins": {
+     "attempted": 78,
+     "publicEquivalent": 75,
+     "BcatFlips": 0,
+     "NcatFlips": 0,
+     "introNInTwins": 0,
+     "introBInTwins": 0,
+     "conflictWitness": false,
+     "robustSafeActions": 5,
+     "robustSafeIncludesB": true,
+     "robustSafeIncludesN": true,
+     "flippingEntities": []
+    }
+   },
+   {
+    "idx": 110,
+    "population": "DEV288",
+    "cell": "chain/defended/restore_and_protect/H2/1",
+    "regime": "OBSERVED_THREAT",
+    "menuSize": 7,
+    "types": {
+     "B": [
+      "MOVE"
+     ],
+     "N": [
+      "PROTECT"
+     ]
+    },
+    "s0SetSize": 1,
+    "nexusReason": "THREAT_DRIVEN_PREFERENCE",
+    "original": {
+     "introN": false,
+     "introB": false,
+     "Bcat": false,
+     "Ncat": false,
+     "safeActions": 7
+    },
+    "causesB": [],
+    "causesN": [],
+    "twins": {
+     "attempted": 39,
+     "publicEquivalent": 36,
+     "BcatFlips": 0,
+     "NcatFlips": 0,
+     "introNInTwins": 0,
+     "introBInTwins": 0,
+     "conflictWitness": false,
+     "robustSafeActions": 7,
+     "robustSafeIncludesB": true,
+     "robustSafeIncludesN": true,
+     "flippingEntities": []
+    }
+   },
+   {
+    "idx": 111,
+    "population": "DEV288",
+    "cell": "chain/defended/restore_and_protect/H2/3",
+    "regime": "OBSERVED_THREAT",
+    "menuSize": 8,
+    "types": {
+     "B": [
+      "MOVE"
+     ],
+     "N": [
+      "PROTECT"
+     ]
+    },
+    "s0SetSize": 1,
+    "nexusReason": "THREAT_DRIVEN_PREFERENCE",
+    "original": {
+     "introN": false,
+     "introB": false,
+     "Bcat": false,
+     "Ncat": false,
+     "safeActions": 2
+    },
+    "causesB": [],
+    "causesN": [],
+    "twins": {
+     "attempted": 81,
+     "publicEquivalent": 75,
+     "BcatFlips": 0,
+     "NcatFlips": 0,
+     "introNInTwins": 0,
+     "introBInTwins": 0,
+     "conflictWitness": false,
+     "robustSafeActions": 2,
+     "robustSafeIncludesB": true,
+     "robustSafeIncludesN": true,
+     "flippingEntities": []
+    }
+   },
+   {
+    "idx": 118,
+    "population": "DEV288",
+    "cell": "star/bare/restore_and_protect/H2/1",
+    "regime": "NO_OBSERVED_THREAT",
+    "menuSize": 5,
+    "types": {
+     "B": [
+      "MOVE"
+     ],
+     "N": [
+      "PROTECT"
+     ]
+    },
+    "s0SetSize": 1,
+    "nexusReason": "STRUCTURE_DRIVEN_PREFERENCE",
+    "original": {
+     "introN": false,
+     "introB": false,
+     "Bcat": false,
+     "Ncat": false,
+     "safeActions": 4
+    },
+    "causesB": [],
+    "causesN": [],
+    "twins": {
+     "attempted": 33,
+     "publicEquivalent": 30,
+     "BcatFlips": 0,
+     "NcatFlips": 0,
+     "introNInTwins": 0,
+     "introBInTwins": 0,
+     "conflictWitness": false,
+     "robustSafeActions": 4,
+     "robustSafeIncludesB": true,
+     "robustSafeIncludesN": true,
+     "flippingEntities": []
+    }
+   },
+   {
+    "idx": 119,
+    "population": "DEV288",
+    "cell": "star/bare/restore_and_protect/H2/3",
+    "regime": "NO_OBSERVED_THREAT",
+    "menuSize": 5,
+    "types": {
+     "B": [
+      "MOVE"
+     ],
+     "N": [
+      "PROTECT"
+     ]
+    },
+    "s0SetSize": 1,
+    "nexusReason": "STRUCTURE_DRIVEN_PREFERENCE",
+    "original": {
+     "introN": false,
+     "introB": false,
+     "Bcat": false,
+     "Ncat": false,
+     "safeActions": 4
+    },
+    "causesB": [],
+    "causesN": [],
+    "twins": {
+     "attempted": 75,
+     "publicEquivalent": 72,
+     "BcatFlips": 0,
+     "NcatFlips": 0,
+     "introNInTwins": 0,
+     "introBInTwins": 0,
+     "conflictWitness": false,
+     "robustSafeActions": 4,
+     "robustSafeIncludesB": true,
+     "robustSafeIncludesN": true,
+     "flippingEntities": []
+    }
+   },
+   {
+    "idx": 122,
+    "population": "DEV288",
+    "cell": "star/defended/reach_target/H2/1",
+    "regime": "OBSERVED_THREAT",
+    "menuSize": 8,
+    "types": {
+     "B": [
+      "MOVE"
+     ],
+     "N": [
+      "PROTECT"
+     ]
+    },
+    "s0SetSize": 1,
+    "nexusReason": "THREAT_DRIVEN_PREFERENCE",
+    "original": {
+     "introN": false,
+     "introB": false,
+     "Bcat": false,
+     "Ncat": false,
+     "safeActions": 8
+    },
+    "causesB": [],
+    "causesN": [],
+    "twins": {
+     "attempted": 47,
+     "publicEquivalent": 41,
+     "BcatFlips": 0,
+     "NcatFlips": 0,
+     "introNInTwins": 0,
+     "introBInTwins": 0,
+     "conflictWitness": false,
+     "robustSafeActions": 8,
+     "robustSafeIncludesB": true,
+     "robustSafeIncludesN": true,
+     "flippingEntities": []
+    }
+   },
+   {
+    "idx": 123,
+    "population": "DEV288",
+    "cell": "star/defended/reach_target/H2/3",
+    "regime": "OBSERVED_THREAT",
+    "menuSize": 6,
+    "types": {
+     "B": [
+      "MOVE"
+     ],
+     "N": [
+      "PROTECT"
+     ]
+    },
+    "s0SetSize": 1,
+    "nexusReason": "THREAT_DRIVEN_PREFERENCE",
+    "original": {
+     "introN": false,
+     "introB": false,
+     "Bcat": false,
+     "Ncat": false,
+     "safeActions": 6
+    },
+    "causesB": [],
+    "causesN": [],
+    "twins": {
+     "attempted": 81,
+     "publicEquivalent": 78,
+     "BcatFlips": 0,
+     "NcatFlips": 0,
+     "introNInTwins": 0,
+     "introBInTwins": 0,
+     "conflictWitness": false,
+     "robustSafeActions": 5,
+     "robustSafeIncludesB": true,
+     "robustSafeIncludesN": true,
+     "flippingEntities": []
+    }
+   },
+   {
+    "idx": 126,
+    "population": "DEV288",
+    "cell": "star/defended/restore_and_protect/H2/1",
+    "regime": "OBSERVED_THREAT",
+    "menuSize": 6,
+    "types": {
+     "B": [
+      "MOVE"
+     ],
+     "N": [
+      "PROTECT"
+     ]
+    },
+    "s0SetSize": 1,
+    "nexusReason": "THREAT_DRIVEN_PREFERENCE",
+    "original": {
+     "introN": false,
+     "introB": false,
+     "Bcat": false,
+     "Ncat": false,
+     "safeActions": 6
+    },
+    "causesB": [],
+    "causesN": [],
+    "twins": {
+     "attempted": 36,
+     "publicEquivalent": 33,
+     "BcatFlips": 0,
+     "NcatFlips": 0,
+     "introNInTwins": 0,
+     "introBInTwins": 0,
+     "conflictWitness": false,
+     "robustSafeActions": 6,
+     "robustSafeIncludesB": true,
+     "robustSafeIncludesN": true,
+     "flippingEntities": []
+    }
+   },
+   {
+    "idx": 138,
+    "population": "DEV288",
+    "cell": "bridge/defended/reach_target/H2/1",
+    "regime": "OBSERVED_THREAT",
+    "menuSize": 8,
+    "types": {
+     "B": [
+      "MOVE"
+     ],
+     "N": [
+      "PROTECT"
+     ]
+    },
+    "s0SetSize": 1,
+    "nexusReason": "THREAT_DRIVEN_PREFERENCE",
+    "original": {
+     "introN": false,
+     "introB": false,
+     "Bcat": false,
+     "Ncat": false,
+     "safeActions": 8
+    },
+    "causesB": [],
+    "causesN": [],
+    "twins": {
+     "attempted": 48,
+     "publicEquivalent": 42,
+     "BcatFlips": 0,
+     "NcatFlips": 0,
+     "introNInTwins": 0,
+     "introBInTwins": 0,
+     "conflictWitness": false,
+     "robustSafeActions": 8,
+     "robustSafeIncludesB": true,
+     "robustSafeIncludesN": true,
+     "flippingEntities": []
+    }
+   }
+  ]
+ },
+ "seconds": 348.659,
+ "authority": "R0",
+ "v4RowsRead": false
+}

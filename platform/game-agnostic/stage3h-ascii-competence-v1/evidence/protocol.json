@@ -1,0 +1,491 @@
+{
+ "protocol": {
+  "id": "STAGE3H_ASCII_COMPETENCE_BENCHMARK_V1_PROSPECTIVE_PROTOCOL",
+  "status": "PROPOSED_NOT_REGISTERED",
+  "authority": "R0",
+  "governance": {
+   "scientificAuthority": "Human project owner (sole scientific reviewer)",
+   "externalIndependentReview": "NOT_AVAILABLE",
+   "statement": "This protocol is self-governed and has not been externally independently reviewed. Results under it are reproducible automated evidence, not independent confirmation.",
+   "relationToForgeWorldContract": "Separate. The frozen Forge World sealed-qualification proposal (V3, 320a07da) stays inactive and is not completed, replaced or relabeled by this benchmark."
+  },
+  "scientificQuestion": "Do existing Sentinel experts improve decisions and gameplay outcomes over the strongest native controllers under identical public information and legal actions?",
+  "splits": {
+   "DEVELOPMENT": {
+    "seeds": [
+     1580859392,
+     1580867311,
+     1580875230
+    ],
+    "status": "USED_IN_THIS_TASK_SPENT",
+    "disclosedPreDesignProbes": [
+     2080374784,
+     1580859392
+    ],
+    "use": "harness validation only"
+   },
+   "CALIBRATION": {
+    "A": 3071279104,
+    "B": 3071803392,
+    "family": "S3H_ASCII_CALIBRATION",
+    "use": "variance description and runtime budgeting only; cannot change any N, margin or hypothesis",
+    "perTier": 50,
+    "games": [
+     "factory"
+    ]
+   },
+   "HOLDOUT": {
+    "A": 3072327680,
+    "B": 3072851968,
+    "family": "S3H_ASCII_HOLDOUT",
+    "use": "in-distribution confirmatory",
+    "perTierFactory": 1500,
+    "perTierCompetence": 100,
+    "games": [
+     "pong",
+     "platformer",
+     "fighter",
+     "racing",
+     "rescue",
+     "cards",
+     "factory",
+     "roguelike"
+    ]
+   },
+   "STRUCTURAL_OOD": {
+    "strata": [
+     {
+      "id": "OOD_MIRRORED_GEOMETRY",
+      "A": 3073376256,
+      "B": 3073900544,
+      "family": "S3H_ASCII_OOD_MIRRORED",
+      "use": "factory only: native MIRROR layout reflection (family string contains MIRROR)",
+      "perTier": 500,
+      "game": "factory"
+     },
+     {
+      "id": "OOD_SENSOR_DELAYED",
+      "A": 3074424832,
+      "B": 3074949120,
+      "family": "S3H_ASCII_OOD_SENSOR",
+      "sensor": "DELAYED",
+      "use": "native observation-channel shift",
+      "perTier": 500,
+      "game": "factory"
+     },
+     {
+      "id": "OOD_SENSOR_PARTIAL",
+      "A": 3075473408,
+      "B": 3075997696,
+      "family": "S3H_ASCII_OOD_SENSOR",
+      "sensor": "PARTIAL",
+      "use": "native observation-channel shift",
+      "perTier": 500,
+      "game": "factory"
+     },
+     {
+      "id": "OOD_SENSOR_MISSING",
+      "A": 3076521984,
+      "B": 3077046272,
+      "family": "S3H_ASCII_OOD_SENSOR",
+      "sensor": "MISSING",
+      "use": "native observation-channel shift",
+      "perTier": 500,
+      "game": "factory"
+     }
+    ],
+    "limitation": "Only factory has a native structural generator variation (MIRROR layout). The sensor strata are native observation-channel shifts, not structural composition shifts; they are labeled as such."
+   }
+  },
+  "seedRule": {
+   "derivation": "seed_i = base + i, 0 <= i < count (consecutive inside a 0x80000-wide namespace)",
+   "namespaceSpan": 524288,
+   "namespacesDisjointFromPriorAndDev": true,
+   "priorDenySets": [
+    "v32Splits",
+    "v33Seeds",
+    "v331FreshDev",
+    "v331Acceptance",
+    "asciiWorlds2Holdout"
+   ],
+   "materialized": false,
+   "status": "PROPOSED_NOT_ALLOCATED_NOT_MATERIALIZED"
+  },
+  "samplingUnit": "One world = (game, tier, seed, family, sensor). All arms are evaluated on every scheduled world (paired). Worlds are never replaced.",
+  "levels": "All 24 ADVANCED_1..3 levels (catalog ASCII_WORLDS_3_2_EXTENSION_V1); equal weight per tier within a game; games are never pooled.",
+  "controllers": {
+   "STRONGEST_NATIVE": {
+    "role": "BASELINE_STRONGEST",
+    "games": [
+     "pong",
+     "platformer",
+     "fighter",
+     "racing",
+     "rescue",
+     "cards",
+     "factory",
+     "roguelike"
+    ],
+    "source": "ascii-quality-v33_1/policy-v33_1.mjs (platformer/rescue) else ascii-suite/v32/policy.mjs STRONG",
+    "expertsInvoked": []
+   },
+   "INCUMBENT_STRONG_V32": {
+    "role": "BASELINE_INCUMBENT",
+    "games": [
+     "pong",
+     "platformer",
+     "fighter",
+     "racing",
+     "rescue",
+     "cards",
+     "factory",
+     "roguelike"
+    ],
+    "source": "ascii-suite/v32/policy.mjs STRONG",
+    "expertsInvoked": []
+   },
+   "RULE_V32": {
+    "role": "BASELINE_REFERENCE_RULE",
+    "games": [
+     "pong",
+     "platformer",
+     "fighter",
+     "racing",
+     "rescue",
+     "cards",
+     "factory",
+     "roguelike"
+    ],
+    "source": "ascii-suite/v32/policy.mjs RULE",
+    "expertsInvoked": []
+   },
+   "FIXED_WAIT": {
+    "role": "FLOOR_NONADAPTIVE",
+    "games": [
+     "pong",
+     "platformer",
+     "fighter",
+     "racing",
+     "rescue",
+     "cards",
+     "factory",
+     "roguelike"
+    ],
+    "source": "ascii-suite/v32/policy.mjs WAIT",
+    "expertsInvoked": []
+   },
+   "UNIFORM_RANDOM": {
+    "role": "FLOOR_RANDOM_LEGAL",
+    "games": [
+     "pong",
+     "platformer",
+     "fighter",
+     "racing",
+     "rescue",
+     "cards",
+     "factory",
+     "roguelike"
+    ],
+    "source": "ascii-suite/v32/policy.mjs RANDOM",
+    "expertsInvoked": []
+   },
+   "SENTINEL_V31_AS_IS": {
+    "role": "SENTINEL_EXISTING_BINDING",
+    "games": [
+     "rescue",
+     "cards",
+     "factory",
+     "roguelike"
+    ],
+    "source": "ascii-suite/v31/sentinel.mjs#sentinelDecide",
+    "expertsInvoked": [
+     "Nexus",
+     "Oracle"
+    ]
+   },
+   "V31_FALLBACK_ABLATION": {
+    "role": "ABLATION_OF_SENTINEL_V31",
+    "games": [
+     "rescue",
+     "cards",
+     "factory",
+     "roguelike"
+    ],
+    "source": "ascii-suite/v3/controllers.mjs#decide BOUNDED_PLANNER",
+    "expertsInvoked": []
+   },
+   "NEXUS_REPAIR_OVER_STRONGEST_V1": {
+    "role": "SENTINEL_DECLARED_ADAPTER",
+    "games": [
+     "factory"
+    ],
+    "source": "this file; v31 publicGraph + nexus-selector-v1-port, unchanged",
+    "expertsInvoked": [
+     "Nexus"
+    ]
+   },
+   "SHADOW_SENTINEL_READONLY": {
+    "role": "NONINTERFERENCE_CONTROL",
+    "games": [
+     "pong",
+     "platformer",
+     "fighter",
+     "racing",
+     "rescue",
+     "cards",
+     "factory",
+     "roguelike"
+    ],
+    "source": "strongest native + v31 nativeEvidence-equivalent advisory calls",
+    "expertsInvoked": [
+     "Nexus",
+     "Oracle"
+    ]
+   }
+  },
+  "eligibility": "Every scheduled world is eligible. Exclusion only for an invalid status (illegal action, null action, policy exception, state mutation, replay failure) of any arm on that world; the world is excluded from that comparison for all arms, counted, never replaced.",
+  "metricOrientation": {
+   "pong": {
+    "primary": {
+     "field": "scoreDifference",
+     "orientation": 1,
+     "unit": "points"
+    },
+    "secondary": [
+     [
+      "success",
+      1
+     ],
+     [
+      "returns",
+      1
+     ],
+     [
+      "misses",
+      -1
+     ]
+    ]
+   },
+   "platformer": {
+    "primary": {
+     "field": "success",
+     "orientation": 1,
+     "unit": "episode win"
+    },
+    "secondary": [
+     [
+      "progress",
+      1
+     ],
+     [
+      "deaths",
+      -1
+     ],
+     [
+      "damage",
+      -1
+     ]
+    ]
+   },
+   "fighter": {
+    "primary": {
+     "field": "success",
+     "orientation": 1,
+     "unit": "match win"
+    },
+    "secondary": [
+     [
+      "damageDealt",
+      1
+     ],
+     [
+      "damageTaken",
+      -1
+     ]
+    ]
+   },
+   "racing": {
+    "primary": {
+     "field": "placement",
+     "orientation": -1,
+     "unit": "finishing place"
+    },
+    "secondary": [
+     [
+      "success",
+      1
+     ],
+     [
+      "barrierHits",
+      -1
+     ],
+     [
+      "offTrackTicks",
+      -1
+     ]
+    ]
+   },
+   "rescue": {
+    "primary": {
+     "field": "success",
+     "orientation": 1,
+     "unit": "mission success"
+    },
+    "secondary": [
+     [
+      "civiliansExtracted",
+      1
+     ],
+     [
+      "teamCasualties",
+      -1
+     ],
+     [
+      "civilianDeaths",
+      -1
+     ],
+     [
+      "missionDuration",
+      -1
+     ]
+    ]
+   },
+   "cards": {
+    "primary": {
+     "field": "teamScore",
+     "orientation": 1,
+     "unit": "cards played"
+    },
+    "secondary": [
+     [
+      "success",
+      1
+     ],
+     [
+      "criticalCardLosses",
+      -1
+     ],
+     [
+      "errorsUsed",
+      -1
+     ]
+    ]
+   },
+   "factory": {
+    "primary": {
+     "field": "success",
+     "orientation": 1,
+     "unit": "quota met"
+    },
+    "secondary": [
+     [
+      "finalThroughput",
+      1
+     ],
+     [
+      "timeToObjective",
+      -1
+     ],
+     [
+      "resourceWaste",
+      -1
+     ],
+     [
+      "constraintViolations",
+      -1
+     ]
+    ]
+   },
+   "roguelike": {
+    "primary": {
+     "field": "success",
+     "orientation": 1,
+     "unit": "campaign success"
+    },
+    "secondary": [
+     [
+      "levelsCompleted",
+      1
+     ],
+     [
+      "damageTaken",
+      -1
+     ],
+     [
+      "trapsHit",
+      -1
+     ]
+    ]
+   }
+  },
+  "normalizedRegret": {
+   "status": "NOT_DEFINED",
+   "reason": "No native counterfactual evaluator or optimal-value oracle in the v32 ASCII kernels; constructive witnesses are existence proofs only"
+  },
+  "integrityControls": [
+   "SHADOW_SENTINEL_READONLY trajectory IDENTICAL to STRONGEST_NATIVE on 100% of worlds",
+   "SENTINEL_V31_AS_IS IDENTICAL to V31_FALLBACK_ABLATION on every world where Nexus never fires, and on 100% of rescue/cards/roguelike worlds (no action authority by source)",
+   "NEXUS_REPAIR_OVER_STRONGEST_V1 IDENTICAL to STRONGEST_NATIVE on every world where Nexus changes no action",
+   "every episode replays byte-identically (per-step native state hashes)",
+   "zero unoffered actions executed"
+  ],
+  "primaryFamily": {
+   "game": "factory",
+   "population": "HOLDOUT, replication A and B separately",
+   "alphaOneSidedPerHypothesis": 0.025,
+   "multiplicity": "Holm across P1-P3 within each replication; a claim requires the same conclusion in A and B independently",
+   "endpoint": "success (native quota met), paired; exact McNemar for superiority; paired bootstrap (B=20000, percentile, seed 0x5eed5eed) for the difference in success rate",
+   "hypotheses": {
+    "P1_EXPERT_MARGINAL_VALUE": "NEXUS_REPAIR_OVER_STRONGEST_V1 vs STRONGEST_NATIVE",
+    "P2_ABLATION_VALUE": "SENTINEL_V31_AS_IS vs V31_FALLBACK_ABLATION",
+    "P3_SENTINEL_PATH_VS_STRONGEST": "SENTINEL_V31_AS_IS vs STRONGEST_NATIVE"
+   },
+   "decisionRules": {
+    "QUALIFIED_POSITIVE": "Holm-adjusted one-sided superiority in A and in B, point difference >= +0.02, and catastrophe veto not triggered",
+    "QUALIFIED_NEGATIVE_NO_MATERIAL_VALUE": "strict TOST equivalence within +/-0.05 (two one-sided 0.025 tests) in A and in B; or exact trajectory identity on every valid world in A and B (the expert was invoked on every decision and changed none)",
+    "QUALIFIED_NEGATIVE_HARM": "Holm-adjusted one-sided inferiority in A and in B, or catastrophe veto triggered in both",
+    "INCONCLUSIVE": "anything else, including disagreement between A and B; nonsignificance is never equivalence"
+   },
+   "decisionCoverage": "reported first: fraction of P0 decisions where Nexus changed the action; by observable regime and observable time-remaining band (descriptive)",
+   "power": {
+    "worstCasePairedSd": 1,
+    "nPairsPerReplication": 4500,
+    "mdeSuperiority80": 0.041763566627334006,
+    "tostPowerAtZeroEffect": 0.8367239465273144,
+    "note": "worst case (SD of a paired binary difference <= 1). If Nexus rarely changes actions the true SD is far smaller; that cannot be used to shrink N."
+   }
+  },
+  "secondaryFamilies": {
+   "S1_STRUCTURAL_OOD": "P1-P3 in each of the 4 factory OOD strata; Holm across 12 tests per replication; descriptive unless both replications agree",
+   "S2_FACTORY_SECONDARY_METRICS": "timeToObjective, finalThroughput, resourceWaste, constraintViolations: paired bootstrap, Holm across metrics; descriptive",
+   "S3_CONTROLLER_COMPETENCE": "STRONGEST_NATIVE vs RULE_V32, vs UNIFORM_RANDOM, vs FIXED_WAIT per game and tier on HOLDOUT (100 worlds per tier per replication); validates benchmark discrimination; NOT expert evidence",
+   "S4_COMPUTE": "per-decision latency p50/p95/max and total, and expert calls per decision, per arm; overhead = adapter minus strongest"
+  },
+  "catastropheVeto": {
+   "field": "metrics().catastrophic (native)",
+   "rule": "any catastrophe introduced by a Sentinel arm on a world where its comparator had none vetoes QUALIFIED_POSITIVE; additionally the one-sided 95% Clopper-Pearson upper bound on the introduction rate must be <= 0.02",
+   "zeroEvents": "zero observed introductions establish only the upper bound"
+  },
+  "invalidAndTimeout": {
+   "perDecisionLatencyFlagMs": 2000,
+   "perEpisodeDecisionLimit": 6000,
+   "rule": "INCOMPLETE_DECISION_BUDGET is a valid outcome scored as non-success; invalid statuses exclude the world from that comparison; invalid rate > 1% in any replication makes that replication INCONCLUSIVE"
+  },
+  "stopRules": "No interim analysis and no efficacy stopping. Execute the complete A then B schedules once. Abort only on an integrity-control failure (classification CAMPAIGN_INVALID, all results reported). No rerun, retry or seed substitution after any outcome is seen.",
+  "independentReplay": "Every episode replayed during the run; after both replications lock, replay a fixed deterministic 5% subset (worlds with seed index % 20 == 7) in a fresh process and compare actionHash/finalStateHash.",
+  "stage3hMapping": "See evidence/exit-matrix.json. A positive ASCII result qualifies only the bounded claim named in its hypothesis; it does not complete Forge World qualification, establish canonical MoE gain, or certify Stage 3H.",
+  "prohibited": [
+   "changing game rules or controllers",
+   "tuning arms after any holdout outcome",
+   "resizing samples",
+   "reusing development or prior seeds",
+   "pooling games",
+   "Oracle reopening",
+   "Router 2.0",
+   "training",
+   "tenth expert"
+  ]
+ },
+ "protocolSha256": "9737339c0f9c5ff1f30146b2239821e43f9eefb2d2e6e5967a0827d2455a1b6f",
+ "laneClosure": "4155596f518db636a9e07a3ebd0b751190f98c7d44b7a01e2fe407ef35eef79d"
+}

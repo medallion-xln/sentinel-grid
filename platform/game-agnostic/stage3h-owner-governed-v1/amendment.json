@@ -1,0 +1,53 @@
+{
+ "id": "STAGE3H_OWNER_GOVERNED_QUALIFICATION_V1",
+ "status": "PROPOSED_PENDING_OWNER_APPROVAL",
+ "authority": "R0",
+ "scientificAuthority": "Human project owner (sole scientific authority)",
+ "evidenceLabels": {
+  "REVIEW_MODE": "OWNER_GOVERNED",
+  "INDEPENDENT_METHOD_REVIEW": false,
+  "EXTERNAL_INDEPENDENT_CUSTODY": false
+ },
+ "relationToV3": {
+  "v3Commit": "320a07da6de6385dceb054e9c1d6b1048916bfa6",
+  "v3AmendmentHash": "525a00476892ca62414ae55ddea6401a6ee9da86db1f8f4537de3c3e9cd14a5c",
+  "v3Status": "PRESERVED_UNCHANGED_AS_SEPARATE_INACTIVE_EXTERNALLY_REVIEWED_STANDARD",
+  "externalReviewRequirementsBackfilledDeletedOrRelabeled": false,
+  "ownerGovernedEvidenceSatisfiesCanonicalIndependentReview": false
+ },
+ "inheritedUnchanged": [
+  "frozen rule H0 -> NEXUS_ELSE_S0, H2 -> S0 (hash c53826da...)",
+  "arms R, B (frozen S0 30a72416...), N",
+  "exact controls H0 R=N and H2 R=B",
+  "V3 primary estimands A/B/C/D, P40, REGIME40, SAFETY30, NUISANCE120",
+  "materiality 0.02, 20,000 paired resamples, tails, strict TOST boundary proposal",
+  "25,536-world population design, cells and repetitions",
+  "catastrophe threshold 100, zero potential introductions, 0.02 upper limits",
+  "admission population/band floor 0.9 and effective-N floor 2100; no replacement; no outcome filtering",
+  "1,000 ms public compute envelope; 30 min / 1 GiB analysis ceiling"
+ ],
+ "prospectiveAmendments": {
+  "O-1_NATIVE_ANALYSIS": "V3 analyseSyntheticPanel refuses non-synthetic rows. analysis-native.mjs is a verbatim copy with a native-provenance validator and an OWNER_GOVERNED decision label; numerically identical to V3 (tests.mjs).",
+  "O-2_IDENTITY_NUISANCE": "Native replay shows D4 and ORDER twins keep native truth exactly, but entity renaming changes native truth (88/288 development worlds) and the offered RETREAT destination (66/288). IDENTITY nuisance is therefore measured with the original truth held fixed, mapping every action by renamed canonical key and RETREAT to the twin's unique RETREAT. Equals V3 wherever native truth is identity-invariant (tests.mjs).",
+  "O-3_CELL_ADMISSION_FLOOR": {
+   "status": "OWNER_CHOICE_REQUIRED",
+   "evidence": "Using 3H.1-F rejection metadata only, the V3 per-cell floor (accepted >= half) fails in at least one OOD_SHAPES cell with probability ~0.41 per replication (OOD_OBJECTIVES ~0.08); more repetitions do not remove it because several cells have validator rejection rates near one half. A failed floor makes the whole campaign UNMEASURED.",
+   "options": {
+    "KEEP_V3_HALF_PER_CELL": "unchanged V3 rule; estimated ~70% probability that at least one of the four affected panels fails admission",
+    "MIN_TWO_PER_CELL": "per-cell floor of 2 accepted worlds (keeps equal cell weights defined); population, band and effective-N floors unchanged; estimated failure probability < 0.001"
+   }
+  },
+  "O-4_DISPOSITION": "ownerGovernedDisposition: POSITIVE only if every panel passes all V3 numeric criteria; HARM if any primary shows the harm direction or any catastrophe is introduced; NO_MATERIAL_VALUE only if all 40 primaries meet strict equivalence; otherwise INCONCLUSIVE. It can never return canonical certification."
+ },
+ "connector": "connector.mjs (native generation, warmup, admission, frozen-policy lock, truth after lock, native twins); parity with the frozen 3H.1-D confirmation core and V3 lockFrozenPolicies tested on development worlds",
+ "custodyAndBlinding": {
+  "custodian": "the project owner's local workstation; same person designs and executes",
+  "procedure": "runner prints only counts and hashes; per-replication outputs are written once and made read-only; analysis refuses until both A and B are locked",
+  "limitation": "blinding is procedural, not technically enforceable against the owner; this is recorded on every result"
+ },
+ "intendedOutcomeOptions": {
+  "BOUNDED_OWNER_GOVERNED_SELECTOR_QUALIFICATION": "achievable under this amendment",
+  "FULL_CANONICAL_STAGE3H_CERTIFICATION": "not achievable under this amendment: V3 requires independent methodological review; choosing it leaves the campaign CONTRACT_BLOCKED"
+ },
+ "prohibited": ["changing the frozen rule, experts, S0 or environment", "post-result threshold or sample changes", "replacing rejected worlds", "rerunning a replication", "opening row files before both locks", "Oracle reopening", "Router 2.0", "training", "Stage 3I"]
+}

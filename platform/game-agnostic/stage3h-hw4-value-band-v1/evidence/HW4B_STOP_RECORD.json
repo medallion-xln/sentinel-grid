@@ -1,0 +1,397 @@
+{
+ "schema": "STAGE3H_HW4B_STOP_RECORD_V1",
+ "authority": "R0",
+ "stage": "H-W4B",
+ "generatedAt": "2026-11-11T18:34:58.322Z",
+ "repoHead": "9175a5558eff2de537a610af7c1d4da15e9cc1c4",
+ "status": "H_W4B_BLOCKED_AT_PHASE_2",
+ "classification": "D",
+ "classificationLabel": "H_W4B_INVALID_OR_BLOCKED",
+ "reason": "Directive Phase 2 stop rule: on the permitted synthetic fixtures, no lawful value-band configuration changes the frozen V2 C11 final ranking or final action selection. Phases 3-5 were not executed; no fresh class was built or admitted.",
+ "phases": {
+  "0": "COMPLETE — H-W4 action-family report reconciled (additive erratum; frozen CSV correct)",
+  "1": "PASS — 10/10 reproducibility items (static boundary PASS for the UNCOMMITTED import cut only)",
+  "2": "STOP — band is feature-, risk-score- and risk-order-sensitive; NOT tau-crossing, NOT final-ranking, NOT selection sensitive under any lawful configuration",
+  "3": "NOT_EXECUTED (the 2026-11-04 protocol freeze pre-exists and is unmodified)",
+  "4": "NOT_EXECUTED (no class built, no admission frozen)",
+  "5": "NOT_EXECUTED",
+  "6": "D",
+  "7": "report prepared; nothing committed"
+ },
+ "phase1": {
+  "result": "MODEL_REPRODUCIBILITY_PASS",
+  "items": {
+   "1_WEIGHTS_AND_PARAMETERS_EXIST": true,
+   "2_TRAINING_INPUTS_FROZEN": true,
+   "3_IDENTICAL_ARCHITECTURE_AND_OBJECTIVES": true,
+   "4_MATCHED_PUBLIC_INFORMATION_EXCEPT_BAND": true,
+   "5_BAND_FEATURE_CONNECTED": true,
+   "6_NO_PRIVILEGED_EVALUATOR_INFORMATION_AT_INFERENCE": true,
+   "7_NO_HIDDEN_VALUE_BEYOND_THE_BAND": true,
+   "8_NO_STATIC_EVALUATOR_CAPABLE_DEPENDENCY": true,
+   "9_IDENTITY_AND_D4_INVARIANCE": true,
+   "10_DETERMINISTIC_DECISIONS_IN_SOURCE_ENVIRONMENT": true
+  },
+  "c11DecisionDigest": {
+   "V1_PUBLIC_ONLY": "c47195e3834f3f9f00adf698e067bd24e08007b55cf8765149e8bec0376c4b9f",
+   "V2_PUBLIC_PLUS_VALUE_BAND": "ae8c731c1d7ec907fe0ee645aa5cf7b7be0d328d3e1c06604e2a0cda33991147"
+  },
+  "frozenGateFailures": [
+   "G8_P2R_BAND_ROUND_TRIP:no reconstructed world with specFlat+bandKey found"
+  ]
+ },
+ "phase2": {
+  "verdict": {
+   "BAND_FEATURE_SENSITIVE": true,
+   "BAND_SCORE_SENSITIVE": true,
+   "BAND_RISK_HEAD_ORDER_SENSITIVE": true,
+   "BAND_TAU_THRESHOLD_CROSSING": false,
+   "BAND_RANKING_SENSITIVE": false,
+   "BAND_DECISION_SENSITIVE": false,
+   "stopRule": "If no lawful tested band configuration changes the final selection, report the limitation and stop before any class is built or any population is frozen.",
+   "proceed": false
+  },
+  "lawfulDomainValidation": {
+   "population": "H-W4 EXPLORATION (training), 1,000 base projections; structure only",
+   "structuralNodes": 14270,
+   "bandCounts": {
+    "1": 10397,
+    "2": 2243,
+    "P": 1630
+   },
+   "bandV0Observed": 0,
+   "valueSpreads": {
+    "2": 581,
+    "4": 318,
+    "7": 63,
+    "8": 38
+   },
+   "bandP_withPublicObjectiveFlag": 1630,
+   "bandP_withoutPublicObjectiveFlag": 0,
+   "publicObjectiveFlag_withoutBandP": 0,
+   "bandPIsPublicInformation": true,
+   "v2RiskHeadOverTau": {
+    "allActions": 568,
+    "noAction": 0,
+    "mixed": 432
+   },
+   "reading": "Band P coincides exactly with the PUBLIC objective flag, so P carries no information beyond V1. Band V0 never occurs. The only non-public content of the band is V1 vs V2 (value at the top of its range) on non-objective structural nodes. In the classes where every action exceeds tau the SAFE_FIRST threshold is saturated and selection reduces to the nreg head."
+  },
+  "earlierGridSelectionChangesByIngredient": {
+   "F1_HW4_GATES_FIXTURE": {
+    "OBJECTIVE_PRESENT_WITH_V0": {
+     "bandConfigs": 5,
+     "selectionDiffersFromLawful": 0
+    },
+    "OBJECTIVE_REMOVED_WITH_V0": {
+     "bandConfigs": 19,
+     "selectionDiffersFromLawful": 0
+    },
+    "LAWFUL_SHAPE_OBJECTIVE_PRESENT_NO_V0": {
+     "bandConfigs": 4,
+     "selectionDiffersFromLawful": 0
+    },
+    "OBJECTIVE_REMOVED_NO_V0": {
+     "bandConfigs": 8,
+     "selectionDiffersFromLawful": 0
+    }
+   },
+   "F2_FIVE_ACTION_EXTENSION": {
+    "OBJECTIVE_PRESENT_WITH_V0": {
+     "bandConfigs": 5,
+     "selectionDiffersFromLawful": 0
+    },
+    "OBJECTIVE_REMOVED_WITH_V0": {
+     "bandConfigs": 19,
+     "selectionDiffersFromLawful": 5
+    },
+    "LAWFUL_SHAPE_OBJECTIVE_PRESENT_NO_V0": {
+     "bandConfigs": 4,
+     "selectionDiffersFromLawful": 0
+    },
+    "OBJECTIVE_REMOVED_NO_V0": {
+     "bandConfigs": 8,
+     "selectionDiffersFromLawful": 4
+    }
+   }
+  }
+ },
+ "limitationContext": {
+  "population": "H-W4 EXPLORATION (training) base projections; structure only, no outcome read",
+  "classes": 1000,
+  "perArm": {
+   "V1_PUBLIC_ONLY": {
+    "tau": 0.02,
+    "riskHeadOverTau": {
+     "allActions": 913,
+     "noAction": 0,
+     "mixed": 87
+    },
+    "choiceEqualsPureNregArgmin": 987
+   },
+   "V2_PUBLIC_PLUS_VALUE_BAND": {
+    "tau": 0.2,
+    "riskHeadOverTau": {
+     "allActions": 568,
+     "noAction": 0,
+     "mixed": 432
+    },
+    "choiceEqualsPureNregArgmin": 964
+   }
+  },
+  "frozenOofTuningC11": {
+   "V1": [
+    {
+     "tau": 0.02,
+     "introVsS0": 61,
+     "introVsNexus": 108
+    },
+    {
+     "tau": 0.05,
+     "introVsS0": 61,
+     "introVsNexus": 108
+    },
+    {
+     "tau": 0.1,
+     "introVsS0": 61,
+     "introVsNexus": 108
+    },
+    {
+     "tau": 0.2,
+     "introVsS0": 58,
+     "introVsNexus": 112
+    },
+    {
+     "tau": 0.3,
+     "introVsS0": 57,
+     "introVsNexus": 115
+    },
+    {
+     "tau": 0.5,
+     "introVsS0": 57,
+     "introVsNexus": 115
+    },
+    {
+     "tau": 0.75,
+     "introVsS0": 61,
+     "introVsNexus": 108
+    }
+   ],
+   "V2": [
+    {
+     "tau": 0.02,
+     "introVsS0": 59,
+     "introVsNexus": 107
+    },
+    {
+     "tau": 0.05,
+     "introVsS0": 59,
+     "introVsNexus": 107
+    },
+    {
+     "tau": 0.1,
+     "introVsS0": 59,
+     "introVsNexus": 107
+    },
+    {
+     "tau": 0.2,
+     "introVsS0": 55,
+     "introVsNexus": 110
+    },
+    {
+     "tau": 0.3,
+     "introVsS0": 57,
+     "introVsNexus": 116
+    },
+    {
+     "tau": 0.5,
+     "introVsS0": 56,
+     "introVsNexus": 116
+    },
+    {
+     "tau": 0.75,
+     "introVsS0": 59,
+     "introVsNexus": 107
+    }
+   ]
+  },
+  "reading": "Both frozen C11 policies choose the pure nreg-head argmin in almost every training class; the SAFE_FIRST risk threshold decides the choice in a small minority. The band acts mainly on the risk head (about +0.09 for V1->V2 on a target) and almost not at all on the nreg head for targets (-0.0016), so its route to a different decision is narrow. The frozen pair also differs by an independently tuned tau (0.02 vs 0.2): the H_W4.md hint \"55 vs 61\" compares different taus; at matched tau the out-of-fold counts are 55 vs 58 (tau 0.2) and 59 vs 61 (tau 0.02)."
+ },
+ "noOutcomeArtifacts": {
+  "evidence/HW4B_POPULATION_DEV.json": true,
+  "evidence/HW4B_REGISTRY_DEV.json": true,
+  "evidence/HW4B_CANDIDATE_FREEZE.json": true,
+  "evidence/HW4B_VALIDATION_RESULTS.json": true,
+  "work4b/classes": true,
+  "work4b/val": true
+ },
+ "screening": {
+  "performedBy": "earlier H-W4B session (2026-11-04T08:3x-08:41Z), interrupted after pool aggregation; NOT performed in this session",
+  "allocatedBlocks": [
+   901,
+   902,
+   903,
+   904,
+   905,
+   906,
+   907,
+   908,
+   909,
+   910,
+   911,
+   912,
+   913,
+   914
+  ],
+  "allocationHash": "23a0a16feba4d1f555ec655de9044c4b8cb2054e4b27a4c03f096ff320808a8b",
+  "screenedBlocks": [
+   901,
+   902,
+   903,
+   904,
+   905,
+   906,
+   907,
+   908,
+   909,
+   910
+  ],
+  "unscreenedReserve": [
+   911,
+   912,
+   913,
+   914
+  ],
+  "shardFiles": 90,
+  "shardSetSha256": "be91cb4bdc097d227237c2e627e7f18e3cd4392c0862a808f3e46d29b3e8ac72",
+  "poolSha256": "3244b9276bcfe8ba4da6d87095bb7787cc22dc8cd5674d04bd04e5747d6ede5d",
+  "poolSize": 837,
+  "admittedRaw": 885,
+  "dropped": {
+   "COARSE_DUPLICATE_WITHIN_POPULATION": 7,
+   "FAMILY_CAP": 41
+  },
+  "poolFamilies": 97,
+  "maxFamilyCount": 30,
+  "funnelCounts": {
+   "EXCLUDED_PCD_COARSE_MATCH": 41301,
+   "NEXUS_ABSTAIN": 4564,
+   "NOT_STRESS": 16366,
+   "B_EQUALS_N": 314,
+   "ADMITTED": 885,
+   "REJECTED_VALIDATOR_INVALID": 402,
+   "REJECTED_NATIVE_MENU_INVALID": 8
+  },
+  "sequencing": "protocol frozenAt 2026-11-04T08:31:44.269Z (frozenBeforeAnyWorldGenerated=true); newest screening shard mtime 2026-11-04T08:41:03.099Z",
+  "whatScreeningRead": "the frozen comparator arm-stress rule (S0 / Nexus outcomes) on generated worlds; NO candidate (C11) decision or outcome was ever computed on any H-W4B world",
+  "status": "Blocks 901-910 have had their worlds generated and are therefore SPENT for screening. No class was built, no admission was frozen, no population exists."
+ },
+ "exclusionTamperCheck": {
+  "pass": true,
+  "registries": [
+   {
+    "seal": "449e2850b01106b2fe81564fbe24a5e94fc7371350a3ffe007884e7049d8fef6",
+    "entries": 341,
+    "fineRejected": true,
+    "coarseRejected": true
+   },
+   {
+    "seal": "8b612a00e0d6e2d0bbc15226350e050cf46c8e6a7dac3e78eef819611c109f72",
+    "entries": 12844,
+    "fineRejected": true,
+    "coarseRejected": true
+   },
+   {
+    "seal": "232b902903abf1898fe9d63055235a028ccffa09b215c7e0e517823bd215b4ea",
+    "entries": 1000,
+    "fineRejected": true,
+    "coarseRejected": true
+   },
+   {
+    "seal": "34b3b121e7a183db46bd7d338dc0200ee9d86795d33d2f4071e4a57941703b56",
+    "entries": 300,
+    "fineRejected": true,
+    "coarseRejected": true
+   },
+   {
+    "seal": "902070377d1b05446c429a9131c8331b53a5fa0b31590360aa7fff9053e3f824",
+    "entries": 1000,
+    "fineRejected": true,
+    "coarseRejected": true
+   },
+   {
+    "seal": "388921b4ee0b0ef3cfc86cb949d1221a87ac37c520fd86d971bc8e510c124e65",
+    "entries": 600,
+    "fineRejected": true,
+    "coarseRejected": true
+   }
+  ],
+  "strictIndexCounts": {
+   "priorWorlds": 9407,
+   "priorSeeds": 116,
+   "v4SealedWorlds": 25377,
+   "devBaseWorlds": 25676,
+   "diagnosticConstructedWorlds": 48910,
+   "devOpenSeeds": 6,
+   "excludedBlocks": [
+    731,
+    732,
+    733,
+    734,
+    951,
+    952
+   ],
+   "distinctExcludedWorlds": 109082,
+   "excludedSeeds": 25499,
+   "multiSourceWorlds": 288
+  }
+ },
+ "preExistingRunnerDefectsNotExecuted": [
+  "hw4b-validate.mjs (and frozen hw4-validate.mjs) pass c.valueSpread from MANIFEST entries, which do not carry that field: the identity audit ran the V2 arm with hi = NaN, so band V2 could never be produced. Harmless for the band-free C10 audited in H-W4; it would have mis-audited the band-consuming C11.",
+  "hw4b-validate.mjs band-ablation \"flips\" compare the ablated V2 model against V1 decisions, not against V2's own decisions.",
+  "hw4b-validate.mjs introducedActionTypes repeats the positional mislabelling documented in erratum E1.",
+  "hw4b-validate.mjs has no paired introduction-rate endpoint with origin-family-clustered intervals (the directive's primary endpoints), and the frozen classification rule B (\"strictly fewer introductions in total\") requires no statistical support.",
+  "hw4b-repro-band.mjs judged decision sensitivity on a grid containing natively unreachable states; under lawful states the answer is negative (this record)."
+ ],
+ "artifacts": {
+  "evidence/HW4B_PROTOCOL_FREEZE.json": "93c013eb98c3c3c3a83396ee93b3fb5688726c56e092cf6492c85263d5daff30",
+  "evidence/HW4B_NAMESPACE_ALLOCATION.json": "370302e0b277f65054dd509d70d595e0d21fb9fc1858f88042bb197e06c6789d",
+  "evidence/HW4_INTRODUCTION_AUDIT_ERRATUM_1.md": "7f87f3a4c61724c25f1df69a2ec532f8cc38f3d6fe5dce207562d396ffc2b21e",
+  "evidence/HW4_INTRODUCTION_AUDIT_ERRATUM_1.json": "ebcf8737d93c73218d1976f3eceba555945ec3a14b171dc66c4648a26fd459a9",
+  "evidence/HW4B_PHASE1_REPRODUCIBILITY.json": "a241bcc3860b7696f64a58655fc1d987b397759a0fb17f5160509ef9248c75c7",
+  "evidence/HW4B_RECOVERY_MANIFEST.json": "be2489760be9676c2ed7e15db8544c68510a64f455b4e9bb049741a6189823ef",
+  "evidence/HW4B_PHASE2_BAND_SENSITIVITY.json": "ccfc8c5317b03ae014fa8634d1485d04296b35ec864b39a63f440ee431896009",
+  "hw4b-phase0-reconcile.mjs": "3bd9f5ceabfdab7c18c60077d0da52a1cef27d3f2ac17595d3c848c357e7c6cc",
+  "hw4b-phase12.mjs": "ee5d7d0f2dd2a967376e82b1c18a9347683c57fddbdc0359a99544c8f6db88c2",
+  "hw4b-lib.mjs": "b6424f32cc5b3bb7a251c4c7d0570dd79bac753063d3d3104436e4161e1e040a",
+  "hw4b-allocator.mjs": "ca091dde4803864469e65754e2ce2625235a3df43478a1715c47a7ae7b9c86f6",
+  "hw4b-exclusion-check.mjs": "a691a2ab54296093c9a6960b383c7a608ceb80c8ed752352bb5c4f7c868f8c31",
+  "hw4b-screen.mjs": "521c9d05d48204e0f27879d3c5757ca6ef508aa6a2c68cc5ea41c28079a03ba4",
+  "hw4b-aggregate.mjs": "f7bcea16450772a0ce9cb88f18d05125b6620d3c6ba62df65a27304b0e8697d9",
+  "hw4b-population.mjs": "98999867f6515af9c2f334907e9c5158e404a6fe86e4933cb17b3135348d38db",
+  "hw4b-build-class.mjs": "c95160ec6c1785f0e11a280794b3579f54f33477e9a5bd9add2481297d5fedab",
+  "hw4b-freeze.mjs": "87b3706cc2e008c8497514146cace8760155594136483015397edb4d9777d2da",
+  "hw4b-repro-band.mjs": "03ea0d57f17f5ba9236728d8469d94aac03a2c2133ff83c2c54016936475f241",
+  "hw4b-validate.mjs": "83a7a0a57c839fafbcea11fddf2640514c17ecdbdce0cd13cfc06a148c8a30a0"
+ },
+ "thisScriptSha256": "8d00bc203ba828cf542443f41b52f7b1281d030456cbd6384ad0ab26761a1f6a",
+ "frozenH4ArtifactsUnchanged": {
+  "evidence/HW4_VALIDATION_RESULTS.json": "f24878df4c444635f6edcfa8ac8feed7a70fa4bb9e4f377bec7c618bea2df6c0",
+  "evidence/HW4_INTRODUCTION_CLASSES.csv": "e7e8cfad9cdbcf1400f56568915123f217e99744007e392d4cbd539e84c8c840",
+  "evidence/HW4_INTRODUCTION_AUDIT.md": "144db753de176d7302a3fc5a10e679efbbb4e7e9be7b2966973952362780a11e"
+ },
+ "trackedFilesModifiedInLane": 0,
+ "flags": {
+  "NEW_MODEL_TRAINED": false,
+  "FRESH_CLASSES_BUILT": 0,
+  "POPULATION_FROZEN": false,
+  "C11_DECISIONS_ON_HW4B_WORLDS": 0,
+  "C11_DECISIONS_ON_SPENT_HW4_VALIDATION": 0,
+  "HOLDOUT_WORLDS": 0,
+  "SEALED_CAMPAIGN_EXECUTED": false,
+  "HELDOUT_EXECUTED": false,
+  "REMOTE_PUSH": false,
+  "COMMITTED": false,
+  "H_W4_VALIDATION_REEXECUTED": false
+ }
+}

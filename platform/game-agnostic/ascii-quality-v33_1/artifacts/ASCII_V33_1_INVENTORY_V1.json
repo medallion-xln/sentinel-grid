@@ -1,0 +1,3000 @@
+{
+ "schema": "ASCII_V33_1_INVENTORY_V1",
+ "catalogVersion": "ASCII_WORLDS_3_2_EXTENSION_V1",
+ "games": [
+  "pong",
+  "platformer",
+  "fighter",
+  "racing",
+  "rescue",
+  "cards",
+  "factory",
+  "roguelike"
+ ],
+ "gameCount": 8,
+ "levelCount": 24,
+ "legacyGames": [
+  "pong",
+  "platformer",
+  "fighter",
+  "racing"
+ ],
+ "populations": {
+  "v33Seed": 271828,
+  "freshDev": [
+   2080374784,
+   2080382691,
+   2080390598
+  ]
+ },
+ "sourceClosure": "b923132e86ff143b4f3ebe59898379f5d14b3eb2fd9d44379b9e960ed6d7b5b3",
+ "levels": [
+  {
+   "GAME": "pong",
+   "LEVEL": "PONG_ADVANCED_1",
+   "TIER": 1,
+   "LABEL": "Advanced",
+   "NAME": "Spin Rebound",
+   "VERSION": "ASCII_WORLDS_3_2_EXTENSION_V1",
+   "DEMAND": "interception with acceleration and spin",
+   "BASELINE_DIFFICULTY": 3,
+   "CATALOG_STATUS": "IMPLEMENTATION_REQUIRES_SOLVABILITY_QUALIFICATION",
+   "WORLD_SOURCE": "ascii-suite/worlds/pong.mjs",
+   "WORLD_DIMENSIONS": "96x30 canvas; field y 1..30, paddles x=3/92",
+   "INITIAL_CONDITIONS": {
+    "seed": 271828,
+    "family": "V32_DEV_OFFSET",
+    "innerHash": "257d574f87511fe8",
+    "balls": 1,
+    "points": [
+     0,
+     0
+    ],
+    "limit": 5000
+   },
+   "TICK_LIMIT": 5000,
+   "VALID_ACTIONS_T0": [
+    "UP",
+    "DOWN",
+    "HOLD"
+   ],
+   "OBSERVATION_SCHEMA": "LEGACY_OBSERVE",
+   "OBSERVATION_KEYS": [
+    "authority",
+    "ball",
+    "balls",
+    "band",
+    "bandName",
+    "enemyY",
+    "events",
+    "field",
+    "game",
+    "lastContact",
+    "lastCrossing",
+    "legalActions",
+    "paddleHalf",
+    "playerY",
+    "result",
+    "scenario",
+    "score",
+    "sensor",
+    "terminal",
+    "tick",
+    "tier",
+    "trainingStatus",
+    "version"
+   ],
+   "STEP_FUNCTION": {
+    "file": "ascii-suite/v32/legacy-extension.mjs",
+    "line": 69,
+    "sha256": "09f940b1594afea2"
+   },
+   "TERMINAL_CONDITIONS": {
+    "file": "ascii-suite/v32/legacy-extension.mjs",
+    "line": 81,
+    "sha256": "09f940b1594afea2"
+   },
+   "WIN_LOGIC": "first to 7 points; WIN if player points > opponent points",
+   "LOSS_LOGIC": "opponent reaches 7 first",
+   "TIMEOUT_LOGIC": {
+    "file": "ascii-suite/v32/legacy-extension.mjs",
+    "line": 103,
+    "sha256": "09f940b1594afea2"
+   },
+   "CONTROLLERS": {
+    "v32": [
+     "STRONG",
+     "RULE",
+     "RANDOM",
+     "WAIT",
+     "SPAM",
+     "NO_MEMORY",
+     "EPISODIC_MEMORY",
+     "EXPERIMENTAL_TRAINED_MEMORY",
+     "V2_CANDIDATE",
+     "FACTORY_RELATIONAL",
+     "FACTORY_NONRELATIONAL",
+     "PONG_FILTER_ONLY"
+    ],
+    "legacyRegistry": [
+     "SENTINEL",
+     "SENTINEL_FILTER_ONLY",
+     "ANALYTIC_INTERCEPT",
+     "REACTIVE",
+     "INCUMBENT_ROOT_PUCT",
+     "UNIFORM_RANDOM"
+    ],
+    "v33_1Candidates": []
+   },
+   "RENDERING": "ascii-suite/v32/render.mjs (pong branch)",
+   "SEED_CONTRACT": "uint32 seed; family V32_DEV_OFFSET (offset geometry); deterministic LCG per world; replay = create(game,seed,tier,{family,sensor}) + exact action sequence (kernel.replay/verifyReplay)",
+   "RUNTIME_ENTRYPOINTS": [
+    "ascii-suite/v32/server.mjs (http://127.0.0.1:4178, v32 presentation)",
+    "ascii-quality-v33/server.mjs (http://127.0.0.1:4185, v33 presentation)",
+    "ascii-quality-v33_1/observatory/server.mjs (game-health overlay, this lane)"
+   ],
+   "TESTS": [
+    "ascii-suite/v32/tests.mjs (252 software tests)",
+    "ascii-quality-v33/acceptance.mjs (110 gameplay acceptance; writes evidence — frozen, not rerun)",
+    "ascii-quality-v33/server-tests.mjs (79)",
+    "ascii-quality-v33_1/tests.mjs (this lane)"
+   ],
+   "KNOWN_REGRESSIONS": [
+    "v32 smoke: STRONG 0/2, no privileged constructive witness; not admitted as a win benchmark"
+   ]
+  },
+  {
+   "GAME": "pong",
+   "LEVEL": "PONG_ADVANCED_2",
+   "TIER": 2,
+   "LABEL": "Expert",
+   "NAME": "Multi-Threat Pong",
+   "VERSION": "ASCII_WORLDS_3_2_EXTENSION_V1",
+   "DEMAND": "competing independently moving threats",
+   "BASELINE_DIFFICULTY": 4,
+   "CATALOG_STATUS": "IMPLEMENTATION_REQUIRES_SOLVABILITY_QUALIFICATION",
+   "WORLD_SOURCE": "ascii-suite/worlds/pong.mjs",
+   "WORLD_DIMENSIONS": "96x30 canvas; field y 1..30, paddles x=3/92",
+   "INITIAL_CONDITIONS": {
+    "seed": 271828,
+    "family": "V32_DEV_OFFSET",
+    "innerHash": "139c1dc0fde6ef58",
+    "balls": 2,
+    "points": [
+     0,
+     0
+    ],
+    "limit": 5000
+   },
+   "TICK_LIMIT": 5000,
+   "VALID_ACTIONS_T0": [
+    "UP",
+    "DOWN",
+    "HOLD"
+   ],
+   "OBSERVATION_SCHEMA": "LEGACY_OBSERVE",
+   "OBSERVATION_KEYS": [
+    "authority",
+    "ball",
+    "balls",
+    "band",
+    "bandName",
+    "enemyY",
+    "events",
+    "field",
+    "game",
+    "lastContact",
+    "lastCrossing",
+    "legalActions",
+    "paddleHalf",
+    "playerY",
+    "result",
+    "scenario",
+    "score",
+    "sensor",
+    "terminal",
+    "tick",
+    "tier",
+    "trainingStatus",
+    "version"
+   ],
+   "STEP_FUNCTION": {
+    "file": "ascii-suite/v32/legacy-extension.mjs",
+    "line": 69,
+    "sha256": "09f940b1594afea2"
+   },
+   "TERMINAL_CONDITIONS": {
+    "file": "ascii-suite/v32/legacy-extension.mjs",
+    "line": 81,
+    "sha256": "09f940b1594afea2"
+   },
+   "WIN_LOGIC": "first to 7 points; WIN if player points > opponent points",
+   "LOSS_LOGIC": "opponent reaches 7 first",
+   "TIMEOUT_LOGIC": {
+    "file": "ascii-suite/v32/legacy-extension.mjs",
+    "line": 103,
+    "sha256": "09f940b1594afea2"
+   },
+   "CONTROLLERS": {
+    "v32": [
+     "STRONG",
+     "RULE",
+     "RANDOM",
+     "WAIT",
+     "SPAM",
+     "NO_MEMORY",
+     "EPISODIC_MEMORY",
+     "EXPERIMENTAL_TRAINED_MEMORY",
+     "V2_CANDIDATE",
+     "FACTORY_RELATIONAL",
+     "FACTORY_NONRELATIONAL",
+     "PONG_FILTER_ONLY"
+    ],
+    "legacyRegistry": [
+     "SENTINEL",
+     "SENTINEL_FILTER_ONLY",
+     "ANALYTIC_INTERCEPT",
+     "REACTIVE",
+     "INCUMBENT_ROOT_PUCT",
+     "UNIFORM_RANDOM"
+    ],
+    "v33_1Candidates": []
+   },
+   "RENDERING": "ascii-suite/v32/render.mjs (pong branch)",
+   "SEED_CONTRACT": "uint32 seed; family V32_DEV_OFFSET (offset geometry); deterministic LCG per world; replay = create(game,seed,tier,{family,sensor}) + exact action sequence (kernel.replay/verifyReplay)",
+   "RUNTIME_ENTRYPOINTS": [
+    "ascii-suite/v32/server.mjs (http://127.0.0.1:4178, v32 presentation)",
+    "ascii-quality-v33/server.mjs (http://127.0.0.1:4185, v33 presentation)",
+    "ascii-quality-v33_1/observatory/server.mjs (game-health overlay, this lane)"
+   ],
+   "TESTS": [
+    "ascii-suite/v32/tests.mjs (252 software tests)",
+    "ascii-quality-v33/acceptance.mjs (110 gameplay acceptance; writes evidence — frozen, not rerun)",
+    "ascii-quality-v33/server-tests.mjs (79)",
+    "ascii-quality-v33_1/tests.mjs (this lane)"
+   ],
+   "KNOWN_REGRESSIONS": [
+    "v32 smoke: STRONG 0/2; no witness"
+   ]
+  },
+  {
+   "GAME": "pong",
+   "LEVEL": "PONG_ADVANCED_3",
+   "TIER": 3,
+   "LABEL": "Extreme",
+   "NAME": "Adaptive Adversarial Pong",
+   "VERSION": "ASCII_WORLDS_3_2_EXTENSION_V1",
+   "DEMAND": "public-history opponent adaptation and strategic shots",
+   "BASELINE_DIFFICULTY": 5,
+   "CATALOG_STATUS": "IMPLEMENTATION_REQUIRES_SOLVABILITY_QUALIFICATION",
+   "WORLD_SOURCE": "ascii-suite/worlds/pong.mjs",
+   "WORLD_DIMENSIONS": "96x30 canvas; field y 1..30, paddles x=3/92",
+   "INITIAL_CONDITIONS": {
+    "seed": 271828,
+    "family": "V32_DEV_OFFSET",
+    "innerHash": "b44e1c9ff5c0f1a9",
+    "balls": 1,
+    "points": [
+     0,
+     0
+    ],
+    "limit": 5000
+   },
+   "TICK_LIMIT": 5000,
+   "VALID_ACTIONS_T0": [
+    "UP",
+    "DOWN",
+    "HOLD"
+   ],
+   "OBSERVATION_SCHEMA": "LEGACY_OBSERVE",
+   "OBSERVATION_KEYS": [
+    "authority",
+    "ball",
+    "balls",
+    "band",
+    "bandName",
+    "enemyY",
+    "events",
+    "field",
+    "game",
+    "lastContact",
+    "lastCrossing",
+    "legalActions",
+    "paddleHalf",
+    "playerY",
+    "result",
+    "scenario",
+    "score",
+    "sensor",
+    "terminal",
+    "tick",
+    "tier",
+    "trainingStatus",
+    "version"
+   ],
+   "STEP_FUNCTION": {
+    "file": "ascii-suite/v32/legacy-extension.mjs",
+    "line": 69,
+    "sha256": "09f940b1594afea2"
+   },
+   "TERMINAL_CONDITIONS": {
+    "file": "ascii-suite/v32/legacy-extension.mjs",
+    "line": 81,
+    "sha256": "09f940b1594afea2"
+   },
+   "WIN_LOGIC": "first to 7 points; WIN if player points > opponent points",
+   "LOSS_LOGIC": "opponent reaches 7 first",
+   "TIMEOUT_LOGIC": {
+    "file": "ascii-suite/v32/legacy-extension.mjs",
+    "line": 103,
+    "sha256": "09f940b1594afea2"
+   },
+   "CONTROLLERS": {
+    "v32": [
+     "STRONG",
+     "RULE",
+     "RANDOM",
+     "WAIT",
+     "SPAM",
+     "NO_MEMORY",
+     "EPISODIC_MEMORY",
+     "EXPERIMENTAL_TRAINED_MEMORY",
+     "V2_CANDIDATE",
+     "FACTORY_RELATIONAL",
+     "FACTORY_NONRELATIONAL",
+     "PONG_FILTER_ONLY"
+    ],
+    "legacyRegistry": [
+     "SENTINEL",
+     "SENTINEL_FILTER_ONLY",
+     "ANALYTIC_INTERCEPT",
+     "REACTIVE",
+     "INCUMBENT_ROOT_PUCT",
+     "UNIFORM_RANDOM"
+    ],
+    "v33_1Candidates": []
+   },
+   "RENDERING": "ascii-suite/v32/render.mjs (pong branch)",
+   "SEED_CONTRACT": "uint32 seed; family V32_DEV_OFFSET (offset geometry); deterministic LCG per world; replay = create(game,seed,tier,{family,sensor}) + exact action sequence (kernel.replay/verifyReplay)",
+   "RUNTIME_ENTRYPOINTS": [
+    "ascii-suite/v32/server.mjs (http://127.0.0.1:4178, v32 presentation)",
+    "ascii-quality-v33/server.mjs (http://127.0.0.1:4185, v33 presentation)",
+    "ascii-quality-v33_1/observatory/server.mjs (game-health overlay, this lane)"
+   ],
+   "TESTS": [
+    "ascii-suite/v32/tests.mjs (252 software tests)",
+    "ascii-quality-v33/acceptance.mjs (110 gameplay acceptance; writes evidence — frozen, not rerun)",
+    "ascii-quality-v33/server-tests.mjs (79)",
+    "ascii-quality-v33_1/tests.mjs (this lane)"
+   ],
+   "KNOWN_REGRESSIONS": [
+    "v32 smoke: STRONG 0/2; no witness"
+   ]
+  },
+  {
+   "GAME": "platformer",
+   "LEVEL": "PLATFORMER_ADVANCED_1",
+   "TIER": 1,
+   "LABEL": "Advanced",
+   "NAME": "Moving-Hazard Gauntlet",
+   "VERSION": "ASCII_WORLDS_3_2_EXTENSION_V1",
+   "DEMAND": "phase-dependent moving platforms and hazards",
+   "BASELINE_DIFFICULTY": 3,
+   "CATALOG_STATUS": "IMPLEMENTATION_REQUIRES_SOLVABILITY_QUALIFICATION",
+   "WORLD_SOURCE": "ascii-suite/worlds/platformer.mjs",
+   "WORLD_DIMENSIONS": "width = exit+10 columns, floor row 28, deathY 34",
+   "INITIAL_CONDITIONS": {
+    "seed": 271828,
+    "family": "V32_DEV_OFFSET",
+    "innerHash": "40c1caaa9ce3e12a",
+    "health": 4,
+    "exit": 160,
+    "gaps": [
+     [
+      42,
+      48
+     ],
+     [
+      85,
+      92
+     ],
+     [
+      133,
+      138
+     ]
+    ],
+    "platforms": [
+     [
+      43,
+      47,
+      25
+     ],
+     [
+      86,
+      90,
+      25
+     ],
+     [
+      117,
+      129,
+      24
+     ]
+    ],
+    "checkpoints": [
+     4,
+     69,
+     116
+    ],
+    "gateOpen": true,
+    "key": 27,
+    "switch": 102,
+    "stages": 1,
+    "wind": []
+   },
+   "TICK_LIMIT": 1500,
+   "VALID_ACTIONS_T0": [
+    "MOVE_LEFT",
+    "MOVE_RIGHT",
+    "JUMP",
+    "JUMP_LEFT",
+    "JUMP_RIGHT",
+    "CROUCH",
+    "WAIT"
+   ],
+   "OBSERVATION_SCHEMA": "LEGACY_OBSERVE",
+   "OBSERVATION_KEYS": [
+    "authority",
+    "body",
+    "checkpoint",
+    "dependencies",
+    "enemies",
+    "events",
+    "exit",
+    "finalObjective",
+    "game",
+    "hazardPhase",
+    "health",
+    "invulnerable",
+    "lastDeath",
+    "legalActions",
+    "movingPlatforms",
+    "result",
+    "scenario",
+    "sections",
+    "spikes",
+    "stage",
+    "stages",
+    "terminal",
+    "terrain",
+    "tick",
+    "tier",
+    "trainingStatus",
+    "version",
+    "view",
+    "width",
+    "windZones"
+   ],
+   "STEP_FUNCTION": {
+    "file": "ascii-suite/worlds/platformer.mjs",
+    "line": 158,
+    "sha256": "5c869ab10bf14dcd"
+   },
+   "TERMINAL_CONDITIONS": {
+    "file": "ascii-suite/worlds/platformer.mjs",
+    "line": 189,
+    "sha256": "5c869ab10bf14dcd"
+   },
+   "WIN_LOGIC": "x >= exit (tier>=2 also requires key AND switch: gate.open); tier 3 = three stages",
+   "LOSS_LOGIC": {
+    "file": "ascii-suite/worlds/platformer.mjs",
+    "line": 155,
+    "sha256": "5c869ab10bf14dcd"
+   },
+   "TIMEOUT_LOGIC": {
+    "file": "ascii-suite/v32/legacy-extension.mjs",
+    "line": 103,
+    "sha256": "09f940b1594afea2"
+   },
+   "CONTROLLERS": {
+    "v32": [
+     "STRONG",
+     "RULE",
+     "RANDOM",
+     "WAIT",
+     "SPAM",
+     "NO_MEMORY",
+     "EPISODIC_MEMORY",
+     "EXPERIMENTAL_TRAINED_MEMORY",
+     "V2_CANDIDATE",
+     "FACTORY_RELATIONAL",
+     "FACTORY_NONRELATIONAL",
+     "PONG_FILTER_ONLY"
+    ],
+    "legacyRegistry": [
+     "SENTINEL",
+     "SENTINEL_NO_MEMORY",
+     "RULE_BASELINE",
+     "INCUMBENT_ROOT_PUCT",
+     "UNIFORM_RANDOM"
+    ],
+    "v33_1Candidates": [
+     "STRONG_V33_1",
+     "STRONG_V1COPY"
+    ]
+   },
+   "RENDERING": "ascii-quality-v33/render-v33.mjs (platformer, feet-row transform) over ascii-suite/v32/render.mjs",
+   "SEED_CONTRACT": "uint32 seed; family V32_DEV_OFFSET (offset geometry); deterministic LCG per world; replay = create(game,seed,tier,{family,sensor}) + exact action sequence (kernel.replay/verifyReplay)",
+   "RUNTIME_ENTRYPOINTS": [
+    "ascii-suite/v32/server.mjs (http://127.0.0.1:4178, v32 presentation)",
+    "ascii-quality-v33/server.mjs (http://127.0.0.1:4185, v33 presentation)",
+    "ascii-quality-v33_1/observatory/server.mjs (game-health overlay, this lane)"
+   ],
+   "TESTS": [
+    "ascii-suite/v32/tests.mjs (252 software tests)",
+    "ascii-quality-v33/acceptance.mjs (110 gameplay acceptance; writes evidence — frozen, not rerun)",
+    "ascii-quality-v33/server-tests.mjs (79)",
+    "ascii-quality-v33_1/tests.mjs (this lane)"
+   ],
+   "KNOWN_REGRESSIONS": [
+    "STRONG softlock: receding-horizon oscillation around x 104.75-108.75 targeting GAP@133, TIMEOUT 12/12 (ascii-quality-v33 RESULT.json); world solvable (scripted witness WIN t169)"
+   ]
+  },
+  {
+   "GAME": "platformer",
+   "LEVEL": "PLATFORMER_ADVANCED_2",
+   "TIER": 2,
+   "LABEL": "Expert",
+   "NAME": "Multi-Route Dependency Run",
+   "VERSION": "ASCII_WORLDS_3_2_EXTENSION_V1",
+   "DEMAND": "key/switch/gate dependencies and backtracking",
+   "BASELINE_DIFFICULTY": 4,
+   "CATALOG_STATUS": "IMPLEMENTATION_REQUIRES_SOLVABILITY_QUALIFICATION",
+   "WORLD_SOURCE": "ascii-suite/worlds/platformer.mjs",
+   "WORLD_DIMENSIONS": "width = exit+10 columns, floor row 28, deathY 34",
+   "INITIAL_CONDITIONS": {
+    "seed": 271828,
+    "family": "V32_DEV_OFFSET",
+    "innerHash": "f041700d324d5fa3",
+    "health": 3,
+    "exit": 160,
+    "gaps": [
+     [
+      42,
+      48
+     ],
+     [
+      85,
+      92
+     ],
+     [
+      133,
+      138
+     ]
+    ],
+    "platforms": [
+     [
+      43,
+      47,
+      25
+     ],
+     [
+      86,
+      90,
+      25
+     ],
+     [
+      117,
+      129,
+      24
+     ]
+    ],
+    "checkpoints": [
+     4,
+     69,
+     116
+    ],
+    "gateOpen": false,
+    "key": 27,
+    "switch": 102,
+    "stages": 1,
+    "wind": []
+   },
+   "TICK_LIMIT": 1500,
+   "VALID_ACTIONS_T0": [
+    "MOVE_LEFT",
+    "MOVE_RIGHT",
+    "JUMP",
+    "JUMP_LEFT",
+    "JUMP_RIGHT",
+    "CROUCH",
+    "WAIT"
+   ],
+   "OBSERVATION_SCHEMA": "LEGACY_OBSERVE",
+   "OBSERVATION_KEYS": [
+    "authority",
+    "body",
+    "checkpoint",
+    "dependencies",
+    "enemies",
+    "events",
+    "exit",
+    "finalObjective",
+    "game",
+    "hazardPhase",
+    "health",
+    "invulnerable",
+    "lastDeath",
+    "legalActions",
+    "movingPlatforms",
+    "result",
+    "scenario",
+    "sections",
+    "spikes",
+    "stage",
+    "stages",
+    "terminal",
+    "terrain",
+    "tick",
+    "tier",
+    "trainingStatus",
+    "version",
+    "view",
+    "width",
+    "windZones"
+   ],
+   "STEP_FUNCTION": {
+    "file": "ascii-suite/worlds/platformer.mjs",
+    "line": 158,
+    "sha256": "5c869ab10bf14dcd"
+   },
+   "TERMINAL_CONDITIONS": {
+    "file": "ascii-suite/worlds/platformer.mjs",
+    "line": 189,
+    "sha256": "5c869ab10bf14dcd"
+   },
+   "WIN_LOGIC": "x >= exit (tier>=2 also requires key AND switch: gate.open); tier 3 = three stages",
+   "LOSS_LOGIC": {
+    "file": "ascii-suite/worlds/platformer.mjs",
+    "line": 155,
+    "sha256": "5c869ab10bf14dcd"
+   },
+   "TIMEOUT_LOGIC": {
+    "file": "ascii-suite/v32/legacy-extension.mjs",
+    "line": 103,
+    "sha256": "09f940b1594afea2"
+   },
+   "CONTROLLERS": {
+    "v32": [
+     "STRONG",
+     "RULE",
+     "RANDOM",
+     "WAIT",
+     "SPAM",
+     "NO_MEMORY",
+     "EPISODIC_MEMORY",
+     "EXPERIMENTAL_TRAINED_MEMORY",
+     "V2_CANDIDATE",
+     "FACTORY_RELATIONAL",
+     "FACTORY_NONRELATIONAL",
+     "PONG_FILTER_ONLY"
+    ],
+    "legacyRegistry": [
+     "SENTINEL",
+     "SENTINEL_NO_MEMORY",
+     "RULE_BASELINE",
+     "INCUMBENT_ROOT_PUCT",
+     "UNIFORM_RANDOM"
+    ],
+    "v33_1Candidates": [
+     "STRONG_V33_1",
+     "STRONG_V1COPY"
+    ]
+   },
+   "RENDERING": "ascii-quality-v33/render-v33.mjs (platformer, feet-row transform) over ascii-suite/v32/render.mjs",
+   "SEED_CONTRACT": "uint32 seed; family V32_DEV_OFFSET (offset geometry); deterministic LCG per world; replay = create(game,seed,tier,{family,sensor}) + exact action sequence (kernel.replay/verifyReplay)",
+   "RUNTIME_ENTRYPOINTS": [
+    "ascii-suite/v32/server.mjs (http://127.0.0.1:4178, v32 presentation)",
+    "ascii-quality-v33/server.mjs (http://127.0.0.1:4185, v33 presentation)",
+    "ascii-quality-v33_1/observatory/server.mjs (game-health overlay, this lane)"
+   ],
+   "TESTS": [
+    "ascii-suite/v32/tests.mjs (252 software tests)",
+    "ascii-quality-v33/acceptance.mjs (110 gameplay acceptance; writes evidence — frozen, not rerun)",
+    "ascii-quality-v33/server-tests.mjs (79)",
+    "ascii-quality-v33_1/tests.mjs (this lane)"
+   ],
+   "KNOWN_REGRESSIONS": [
+    "none recorded beyond shallow smoke (reset + planner steps)"
+   ]
+  },
+  {
+   "GAME": "platformer",
+   "LEVEL": "PLATFORMER_ADVANCED_3",
+   "TIER": 3,
+   "LABEL": "Extreme",
+   "NAME": "Extreme Expedition",
+   "VERSION": "ASCII_WORLDS_3_2_EXTENSION_V1",
+   "DEMAND": "multi-stage resource conservation and wind",
+   "BASELINE_DIFFICULTY": 5,
+   "CATALOG_STATUS": "IMPLEMENTATION_REQUIRES_SOLVABILITY_QUALIFICATION",
+   "WORLD_SOURCE": "ascii-suite/worlds/platformer.mjs",
+   "WORLD_DIMENSIONS": "width = exit+10 columns, floor row 28, deathY 34",
+   "INITIAL_CONDITIONS": {
+    "seed": 271828,
+    "family": "V32_DEV_OFFSET",
+    "innerHash": "fa0816a761770eea",
+    "health": 3,
+    "exit": 160,
+    "gaps": [
+     [
+      42,
+      48
+     ],
+     [
+      85,
+      92
+     ],
+     [
+      133,
+      138
+     ]
+    ],
+    "platforms": [
+     [
+      43,
+      47,
+      25
+     ],
+     [
+      86,
+      90,
+      25
+     ],
+     [
+      117,
+      129,
+      24
+     ]
+    ],
+    "checkpoints": [
+     4,
+     70
+    ],
+    "gateOpen": false,
+    "key": 27,
+    "switch": 102,
+    "stages": 3,
+    "wind": [
+     {
+      "x0": 84,
+      "x1": 95,
+      "strength": 0.18
+     }
+    ]
+   },
+   "TICK_LIMIT": 4500,
+   "VALID_ACTIONS_T0": [
+    "MOVE_LEFT",
+    "MOVE_RIGHT",
+    "JUMP",
+    "JUMP_LEFT",
+    "JUMP_RIGHT",
+    "CROUCH",
+    "WAIT"
+   ],
+   "OBSERVATION_SCHEMA": "LEGACY_OBSERVE",
+   "OBSERVATION_KEYS": [
+    "authority",
+    "body",
+    "checkpoint",
+    "dependencies",
+    "enemies",
+    "events",
+    "exit",
+    "finalObjective",
+    "game",
+    "hazardPhase",
+    "health",
+    "invulnerable",
+    "lastDeath",
+    "legalActions",
+    "movingPlatforms",
+    "result",
+    "scenario",
+    "sections",
+    "spikes",
+    "stage",
+    "stages",
+    "terminal",
+    "terrain",
+    "tick",
+    "tier",
+    "trainingStatus",
+    "version",
+    "view",
+    "width",
+    "windZones"
+   ],
+   "STEP_FUNCTION": {
+    "file": "ascii-suite/worlds/platformer.mjs",
+    "line": 158,
+    "sha256": "5c869ab10bf14dcd"
+   },
+   "TERMINAL_CONDITIONS": {
+    "file": "ascii-suite/worlds/platformer.mjs",
+    "line": 189,
+    "sha256": "5c869ab10bf14dcd"
+   },
+   "WIN_LOGIC": "x >= exit (tier>=2 also requires key AND switch: gate.open); tier 3 = three stages",
+   "LOSS_LOGIC": {
+    "file": "ascii-suite/worlds/platformer.mjs",
+    "line": 155,
+    "sha256": "5c869ab10bf14dcd"
+   },
+   "TIMEOUT_LOGIC": {
+    "file": "ascii-suite/v32/legacy-extension.mjs",
+    "line": 103,
+    "sha256": "09f940b1594afea2"
+   },
+   "CONTROLLERS": {
+    "v32": [
+     "STRONG",
+     "RULE",
+     "RANDOM",
+     "WAIT",
+     "SPAM",
+     "NO_MEMORY",
+     "EPISODIC_MEMORY",
+     "EXPERIMENTAL_TRAINED_MEMORY",
+     "V2_CANDIDATE",
+     "FACTORY_RELATIONAL",
+     "FACTORY_NONRELATIONAL",
+     "PONG_FILTER_ONLY"
+    ],
+    "legacyRegistry": [
+     "SENTINEL",
+     "SENTINEL_NO_MEMORY",
+     "RULE_BASELINE",
+     "INCUMBENT_ROOT_PUCT",
+     "UNIFORM_RANDOM"
+    ],
+    "v33_1Candidates": [
+     "STRONG_V33_1",
+     "STRONG_V1COPY"
+    ]
+   },
+   "RENDERING": "ascii-quality-v33/render-v33.mjs (platformer, feet-row transform) over ascii-suite/v32/render.mjs",
+   "SEED_CONTRACT": "uint32 seed; family V32_DEV_OFFSET (offset geometry); deterministic LCG per world; replay = create(game,seed,tier,{family,sensor}) + exact action sequence (kernel.replay/verifyReplay)",
+   "RUNTIME_ENTRYPOINTS": [
+    "ascii-suite/v32/server.mjs (http://127.0.0.1:4178, v32 presentation)",
+    "ascii-quality-v33/server.mjs (http://127.0.0.1:4185, v33 presentation)",
+    "ascii-quality-v33_1/observatory/server.mjs (game-health overlay, this lane)"
+   ],
+   "TESTS": [
+    "ascii-suite/v32/tests.mjs (252 software tests)",
+    "ascii-quality-v33/acceptance.mjs (110 gameplay acceptance; writes evidence — frozen, not rerun)",
+    "ascii-quality-v33/server-tests.mjs (79)",
+    "ascii-quality-v33_1/tests.mjs (this lane)"
+   ],
+   "KNOWN_REGRESSIONS": [
+    "none recorded beyond shallow smoke (reset + planner steps)"
+   ]
+  },
+  {
+   "GAME": "fighter",
+   "LEVEL": "FIGHTER_ADVANCED_1",
+   "TIER": 1,
+   "LABEL": "Advanced",
+   "NAME": "Defensive Counter Specialist",
+   "VERSION": "ASCII_WORLDS_3_2_EXTENSION_V1",
+   "DEMAND": "spacing, countering and repeat-move punishment",
+   "BASELINE_DIFFICULTY": 3,
+   "CATALOG_STATUS": "IMPLEMENTATION_REQUIRES_SOLVABILITY_QUALIFICATION",
+   "WORLD_SOURCE": "ascii-suite/worlds/fighter.mjs",
+   "WORLD_DIMENSIONS": "96 columns, 8-row fighters, floor row 29 (v33)",
+   "INITIAL_CONDITIONS": {
+    "seed": 271828,
+    "family": "V32_DEV_OFFSET",
+    "innerHash": "87a33292ee3ce7e3",
+    "rounds": 1,
+    "styles": [
+     "AGGRESSIVE",
+     "TURTLE",
+     "COUNTER",
+     "ANTI_AIR",
+     "ADAPTIVE",
+     "MIRROR"
+    ],
+    "reaction": 2
+   },
+   "TICK_LIMIT": 900,
+   "VALID_ACTIONS_T0": [
+    "WAIT",
+    "WALK_FORWARD",
+    "WALK_BACK",
+    "JUMP_UP",
+    "JUMP_FORWARD",
+    "JUMP_BACK",
+    "CROUCH",
+    "BLOCK_HIGH",
+    "BLOCK_LOW",
+    "LIGHT_ATTACK",
+    "HEAVY_ATTACK",
+    "LOW_ATTACK"
+   ],
+   "OBSERVATION_SCHEMA": "LEGACY_OBSERVE",
+   "OBSERVATION_KEYS": [
+    "authority",
+    "distance",
+    "events",
+    "game",
+    "legalActions",
+    "me",
+    "opponent",
+    "opponentCapabilities",
+    "result",
+    "round",
+    "rounds",
+    "scenario",
+    "terminal",
+    "tick",
+    "tier",
+    "timeLeft",
+    "trainingStatus",
+    "version"
+   ],
+   "STEP_FUNCTION": {
+    "file": "ascii-suite/v32/legacy-extension.mjs",
+    "line": 63,
+    "sha256": "09f940b1594afea2"
+   },
+   "TERMINAL_CONDITIONS": {
+    "file": "ascii-suite/v32/legacy-extension.mjs",
+    "line": 67,
+    "sha256": "09f940b1594afea2"
+   },
+   "WIN_LOGIC": "win every round (1/6/12 rounds); round won when opponent KO or higher health at 900 ticks",
+   "LOSS_LOGIC": "any round lost ends the tournament with LOSS",
+   "TIMEOUT_LOGIC": "per-round 900 ticks decides by health; episode limit 900*rounds",
+   "CONTROLLERS": {
+    "v32": [
+     "STRONG",
+     "RULE",
+     "RANDOM",
+     "WAIT",
+     "SPAM",
+     "NO_MEMORY",
+     "EPISODIC_MEMORY",
+     "EXPERIMENTAL_TRAINED_MEMORY",
+     "V2_CANDIDATE",
+     "FACTORY_RELATIONAL",
+     "FACTORY_NONRELATIONAL",
+     "PONG_FILTER_ONLY"
+    ],
+    "legacyRegistry": [
+     "SENTINEL",
+     "RULE_BASELINE",
+     "INCUMBENT_ROOT_PUCT",
+     "UNIFORM_RANDOM"
+    ],
+    "v33_1Candidates": []
+   },
+   "RENDERING": "ascii-quality-v33/render-v33.mjs (fighter sprites) over ascii-suite/v32/render.mjs",
+   "SEED_CONTRACT": "uint32 seed; family V32_DEV_OFFSET (offset geometry); deterministic LCG per world; replay = create(game,seed,tier,{family,sensor}) + exact action sequence (kernel.replay/verifyReplay)",
+   "RUNTIME_ENTRYPOINTS": [
+    "ascii-suite/v32/server.mjs (http://127.0.0.1:4178, v32 presentation)",
+    "ascii-quality-v33/server.mjs (http://127.0.0.1:4185, v33 presentation)",
+    "ascii-quality-v33_1/observatory/server.mjs (game-health overlay, this lane)"
+   ],
+   "TESTS": [
+    "ascii-suite/v32/tests.mjs (252 software tests)",
+    "ascii-quality-v33/acceptance.mjs (110 gameplay acceptance; writes evidence — frozen, not rerun)",
+    "ascii-quality-v33/server-tests.mjs (79)",
+    "ascii-quality-v33_1/tests.mjs (this lane)"
+   ],
+   "KNOWN_REGRESSIONS": [
+    "v32 smoke: STRONG/DELAYED and /STALE lose (sensor sweep, expected degradation)"
+   ]
+  },
+  {
+   "GAME": "fighter",
+   "LEVEL": "FIGHTER_ADVANCED_2",
+   "TIER": 2,
+   "LABEL": "Expert",
+   "NAME": "Tournament of Styles",
+   "VERSION": "ASCII_WORLDS_3_2_EXTENSION_V1",
+   "DEMAND": "six public-behavior opponent styles",
+   "BASELINE_DIFFICULTY": 4,
+   "CATALOG_STATUS": "IMPLEMENTATION_REQUIRES_SOLVABILITY_QUALIFICATION",
+   "WORLD_SOURCE": "ascii-suite/worlds/fighter.mjs",
+   "WORLD_DIMENSIONS": "96 columns, 8-row fighters, floor row 29 (v33)",
+   "INITIAL_CONDITIONS": {
+    "seed": 271828,
+    "family": "V32_DEV_OFFSET",
+    "innerHash": "695c389805d4b55d",
+    "rounds": 6,
+    "styles": [
+     "AGGRESSIVE",
+     "TURTLE",
+     "COUNTER",
+     "ANTI_AIR",
+     "ADAPTIVE",
+     "MIRROR"
+    ],
+    "reaction": 2
+   },
+   "TICK_LIMIT": 5400,
+   "VALID_ACTIONS_T0": [
+    "WAIT",
+    "WALK_FORWARD",
+    "WALK_BACK",
+    "JUMP_UP",
+    "JUMP_FORWARD",
+    "JUMP_BACK",
+    "CROUCH",
+    "BLOCK_HIGH",
+    "BLOCK_LOW",
+    "LIGHT_ATTACK",
+    "HEAVY_ATTACK",
+    "LOW_ATTACK"
+   ],
+   "OBSERVATION_SCHEMA": "LEGACY_OBSERVE",
+   "OBSERVATION_KEYS": [
+    "authority",
+    "distance",
+    "events",
+    "game",
+    "legalActions",
+    "me",
+    "opponent",
+    "opponentCapabilities",
+    "result",
+    "round",
+    "rounds",
+    "scenario",
+    "terminal",
+    "tick",
+    "tier",
+    "timeLeft",
+    "trainingStatus",
+    "version"
+   ],
+   "STEP_FUNCTION": {
+    "file": "ascii-suite/v32/legacy-extension.mjs",
+    "line": 63,
+    "sha256": "09f940b1594afea2"
+   },
+   "TERMINAL_CONDITIONS": {
+    "file": "ascii-suite/v32/legacy-extension.mjs",
+    "line": 67,
+    "sha256": "09f940b1594afea2"
+   },
+   "WIN_LOGIC": "win every round (1/6/12 rounds); round won when opponent KO or higher health at 900 ticks",
+   "LOSS_LOGIC": "any round lost ends the tournament with LOSS",
+   "TIMEOUT_LOGIC": "per-round 900 ticks decides by health; episode limit 900*rounds",
+   "CONTROLLERS": {
+    "v32": [
+     "STRONG",
+     "RULE",
+     "RANDOM",
+     "WAIT",
+     "SPAM",
+     "NO_MEMORY",
+     "EPISODIC_MEMORY",
+     "EXPERIMENTAL_TRAINED_MEMORY",
+     "V2_CANDIDATE",
+     "FACTORY_RELATIONAL",
+     "FACTORY_NONRELATIONAL",
+     "PONG_FILTER_ONLY"
+    ],
+    "legacyRegistry": [
+     "SENTINEL",
+     "RULE_BASELINE",
+     "INCUMBENT_ROOT_PUCT",
+     "UNIFORM_RANDOM"
+    ],
+    "v33_1Candidates": []
+   },
+   "RENDERING": "ascii-quality-v33/render-v33.mjs (fighter sprites) over ascii-suite/v32/render.mjs",
+   "SEED_CONTRACT": "uint32 seed; family V32_DEV_OFFSET (offset geometry); deterministic LCG per world; replay = create(game,seed,tier,{family,sensor}) + exact action sequence (kernel.replay/verifyReplay)",
+   "RUNTIME_ENTRYPOINTS": [
+    "ascii-suite/v32/server.mjs (http://127.0.0.1:4178, v32 presentation)",
+    "ascii-quality-v33/server.mjs (http://127.0.0.1:4185, v33 presentation)",
+    "ascii-quality-v33_1/observatory/server.mjs (game-health overlay, this lane)"
+   ],
+   "TESTS": [
+    "ascii-suite/v32/tests.mjs (252 software tests)",
+    "ascii-quality-v33/acceptance.mjs (110 gameplay acceptance; writes evidence — frozen, not rerun)",
+    "ascii-quality-v33/server-tests.mjs (79)",
+    "ascii-quality-v33_1/tests.mjs (this lane)"
+   ],
+   "KNOWN_REGRESSIONS": [
+    "none recorded beyond shallow smoke (reset + planner steps)"
+   ]
+  },
+  {
+   "GAME": "fighter",
+   "LEVEL": "FIGHTER_ADVANCED_3",
+   "TIER": 3,
+   "LABEL": "Extreme",
+   "NAME": "Adaptive Championship",
+   "VERSION": "ASCII_WORLDS_3_2_EXTENSION_V1",
+   "DEMAND": "multi-round equal-latency adaptation",
+   "BASELINE_DIFFICULTY": 5,
+   "CATALOG_STATUS": "IMPLEMENTATION_REQUIRES_SOLVABILITY_QUALIFICATION",
+   "WORLD_SOURCE": "ascii-suite/worlds/fighter.mjs",
+   "WORLD_DIMENSIONS": "96 columns, 8-row fighters, floor row 29 (v33)",
+   "INITIAL_CONDITIONS": {
+    "seed": 271828,
+    "family": "V32_DEV_OFFSET",
+    "innerHash": "d60cfde2376d4be9",
+    "rounds": 12,
+    "styles": [
+     "AGGRESSIVE",
+     "TURTLE",
+     "COUNTER",
+     "ANTI_AIR",
+     "ADAPTIVE",
+     "MIRROR"
+    ],
+    "reaction": 2
+   },
+   "TICK_LIMIT": 10800,
+   "VALID_ACTIONS_T0": [
+    "WAIT",
+    "WALK_FORWARD",
+    "WALK_BACK",
+    "JUMP_UP",
+    "JUMP_FORWARD",
+    "JUMP_BACK",
+    "CROUCH",
+    "BLOCK_HIGH",
+    "BLOCK_LOW",
+    "LIGHT_ATTACK",
+    "HEAVY_ATTACK",
+    "LOW_ATTACK"
+   ],
+   "OBSERVATION_SCHEMA": "LEGACY_OBSERVE",
+   "OBSERVATION_KEYS": [
+    "authority",
+    "distance",
+    "events",
+    "game",
+    "legalActions",
+    "me",
+    "opponent",
+    "opponentCapabilities",
+    "result",
+    "round",
+    "rounds",
+    "scenario",
+    "terminal",
+    "tick",
+    "tier",
+    "timeLeft",
+    "trainingStatus",
+    "version"
+   ],
+   "STEP_FUNCTION": {
+    "file": "ascii-suite/v32/legacy-extension.mjs",
+    "line": 63,
+    "sha256": "09f940b1594afea2"
+   },
+   "TERMINAL_CONDITIONS": {
+    "file": "ascii-suite/v32/legacy-extension.mjs",
+    "line": 67,
+    "sha256": "09f940b1594afea2"
+   },
+   "WIN_LOGIC": "win every round (1/6/12 rounds); round won when opponent KO or higher health at 900 ticks",
+   "LOSS_LOGIC": "any round lost ends the tournament with LOSS",
+   "TIMEOUT_LOGIC": "per-round 900 ticks decides by health; episode limit 900*rounds",
+   "CONTROLLERS": {
+    "v32": [
+     "STRONG",
+     "RULE",
+     "RANDOM",
+     "WAIT",
+     "SPAM",
+     "NO_MEMORY",
+     "EPISODIC_MEMORY",
+     "EXPERIMENTAL_TRAINED_MEMORY",
+     "V2_CANDIDATE",
+     "FACTORY_RELATIONAL",
+     "FACTORY_NONRELATIONAL",
+     "PONG_FILTER_ONLY"
+    ],
+    "legacyRegistry": [
+     "SENTINEL",
+     "RULE_BASELINE",
+     "INCUMBENT_ROOT_PUCT",
+     "UNIFORM_RANDOM"
+    ],
+    "v33_1Candidates": []
+   },
+   "RENDERING": "ascii-quality-v33/render-v33.mjs (fighter sprites) over ascii-suite/v32/render.mjs",
+   "SEED_CONTRACT": "uint32 seed; family V32_DEV_OFFSET (offset geometry); deterministic LCG per world; replay = create(game,seed,tier,{family,sensor}) + exact action sequence (kernel.replay/verifyReplay)",
+   "RUNTIME_ENTRYPOINTS": [
+    "ascii-suite/v32/server.mjs (http://127.0.0.1:4178, v32 presentation)",
+    "ascii-quality-v33/server.mjs (http://127.0.0.1:4185, v33 presentation)",
+    "ascii-quality-v33_1/observatory/server.mjs (game-health overlay, this lane)"
+   ],
+   "TESTS": [
+    "ascii-suite/v32/tests.mjs (252 software tests)",
+    "ascii-quality-v33/acceptance.mjs (110 gameplay acceptance; writes evidence — frozen, not rerun)",
+    "ascii-quality-v33/server-tests.mjs (79)",
+    "ascii-quality-v33_1/tests.mjs (this lane)"
+   ],
+   "KNOWN_REGRESSIONS": [
+    "none recorded beyond shallow smoke (reset + planner steps)"
+   ]
+  },
+  {
+   "GAME": "racing",
+   "LEVEL": "RACING_ADVANCED_1",
+   "TIER": 1,
+   "LABEL": "Advanced",
+   "NAME": "Technical Circuit",
+   "VERSION": "ASCII_WORLDS_3_2_EXTENSION_V1",
+   "DEMAND": "hairpin/chicane traffic and rotated starting grids",
+   "BASELINE_DIFFICULTY": 3,
+   "CATALOG_STATUS": "IMPLEMENTATION_REQUIRES_SOLVABILITY_QUALIFICATION",
+   "WORLD_SOURCE": "ascii-suite/worlds/racing.mjs",
+   "WORLD_DIMENSIONS": "curvilinear track, road 18 columns, 3 laps",
+   "INITIAL_CONDITIONS": {
+    "seed": 271828,
+    "family": "V32_DEV_OFFSET",
+    "innerHash": "4d2f384b81d90800",
+    "races": 1,
+    "segments": 12,
+    "lapLength": 660,
+    "startGrid": 0
+   },
+   "TICK_LIMIT": 6000,
+   "VALID_ACTIONS_T0": [
+    "ACCELERATE",
+    "BRAKE",
+    "TURN_LEFT",
+    "TURN_RIGHT",
+    "HOLD"
+   ],
+   "OBSERVATION_SCHEMA": "LEGACY_OBSERVE",
+   "OBSERVATION_KEYS": [
+    "authority",
+    "cars",
+    "events",
+    "game",
+    "gridSlot",
+    "lapLength",
+    "laps",
+    "legalActions",
+    "me",
+    "preview",
+    "race",
+    "races",
+    "result",
+    "road",
+    "scenario",
+    "standings",
+    "terminal",
+    "tick",
+    "tier",
+    "trainingStatus",
+    "version",
+    "weather"
+   ],
+   "STEP_FUNCTION": {
+    "file": "ascii-suite/worlds/racing.mjs",
+    "line": 122,
+    "sha256": "b9fa9b45e6e1fa57"
+   },
+   "TERMINAL_CONDITIONS": {
+    "file": "ascii-suite/worlds/racing.mjs",
+    "line": 153,
+    "sha256": "b9fa9b45e6e1fa57"
+   },
+   "WIN_LOGIC": "success = FINISH_PLACE_1 in every race (tier 3: three races)",
+   "LOSS_LOGIC": "any placement other than first is not success (no LOSS result; FINISH_PLACE_n)",
+   "TIMEOUT_LOGIC": {
+    "file": "ascii-suite/v32/legacy-extension.mjs",
+    "line": 103,
+    "sha256": "09f940b1594afea2"
+   },
+   "CONTROLLERS": {
+    "v32": [
+     "STRONG",
+     "RULE",
+     "RANDOM",
+     "WAIT",
+     "SPAM",
+     "NO_MEMORY",
+     "EPISODIC_MEMORY",
+     "EXPERIMENTAL_TRAINED_MEMORY",
+     "V2_CANDIDATE",
+     "FACTORY_RELATIONAL",
+     "FACTORY_NONRELATIONAL",
+     "PONG_FILTER_ONLY"
+    ],
+    "legacyRegistry": [
+     "SENTINEL",
+     "SENTINEL_NO_MEMORY",
+     "RULE_BASED",
+     "REACTIVE",
+     "CONSTANT_SPEED",
+     "INCUMBENT_ROOT_PUCT",
+     "UNIFORM_RANDOM"
+    ],
+    "v33_1Candidates": []
+   },
+   "RENDERING": "ascii-suite/v32/render.mjs (racing branch)",
+   "SEED_CONTRACT": "uint32 seed; family V32_DEV_OFFSET (offset geometry); deterministic LCG per world; replay = create(game,seed,tier,{family,sensor}) + exact action sequence (kernel.replay/verifyReplay)",
+   "RUNTIME_ENTRYPOINTS": [
+    "ascii-suite/v32/server.mjs (http://127.0.0.1:4178, v32 presentation)",
+    "ascii-quality-v33/server.mjs (http://127.0.0.1:4185, v33 presentation)",
+    "ascii-quality-v33_1/observatory/server.mjs (game-health overlay, this lane)"
+   ],
+   "TESTS": [
+    "ascii-suite/v32/tests.mjs (252 software tests)",
+    "ascii-quality-v33/acceptance.mjs (110 gameplay acceptance; writes evidence — frozen, not rerun)",
+    "ascii-quality-v33/server-tests.mjs (79)",
+    "ascii-quality-v33_1/tests.mjs (this lane)"
+   ],
+   "KNOWN_REGRESSIONS": [
+    "v32 smoke: STRONG never first; no first-place witness"
+   ]
+  },
+  {
+   "GAME": "racing",
+   "LEVEL": "RACING_ADVANCED_2",
+   "TIER": 2,
+   "LABEL": "Expert",
+   "NAME": "Variable-Grip Endurance",
+   "VERSION": "ASCII_WORLDS_3_2_EXTENSION_V1",
+   "DEMAND": "public weather transitions and grip estimation",
+   "BASELINE_DIFFICULTY": 4,
+   "CATALOG_STATUS": "IMPLEMENTATION_REQUIRES_SOLVABILITY_QUALIFICATION",
+   "WORLD_SOURCE": "ascii-suite/worlds/racing.mjs",
+   "WORLD_DIMENSIONS": "curvilinear track, road 18 columns, 3 laps",
+   "INITIAL_CONDITIONS": {
+    "seed": 271828,
+    "family": "V32_DEV_OFFSET",
+    "innerHash": "d0c5fd71e5d1d329",
+    "races": 1,
+    "segments": 13,
+    "lapLength": 669,
+    "startGrid": 0
+   },
+   "TICK_LIMIT": 6000,
+   "VALID_ACTIONS_T0": [
+    "ACCELERATE",
+    "BRAKE",
+    "TURN_LEFT",
+    "TURN_RIGHT",
+    "HOLD"
+   ],
+   "OBSERVATION_SCHEMA": "LEGACY_OBSERVE",
+   "OBSERVATION_KEYS": [
+    "authority",
+    "cars",
+    "events",
+    "game",
+    "gridSlot",
+    "lapLength",
+    "laps",
+    "legalActions",
+    "me",
+    "preview",
+    "race",
+    "races",
+    "result",
+    "road",
+    "scenario",
+    "standings",
+    "terminal",
+    "tick",
+    "tier",
+    "trainingStatus",
+    "version",
+    "weather"
+   ],
+   "STEP_FUNCTION": {
+    "file": "ascii-suite/worlds/racing.mjs",
+    "line": 122,
+    "sha256": "b9fa9b45e6e1fa57"
+   },
+   "TERMINAL_CONDITIONS": {
+    "file": "ascii-suite/worlds/racing.mjs",
+    "line": 153,
+    "sha256": "b9fa9b45e6e1fa57"
+   },
+   "WIN_LOGIC": "success = FINISH_PLACE_1 in every race (tier 3: three races)",
+   "LOSS_LOGIC": "any placement other than first is not success (no LOSS result; FINISH_PLACE_n)",
+   "TIMEOUT_LOGIC": {
+    "file": "ascii-suite/v32/legacy-extension.mjs",
+    "line": 103,
+    "sha256": "09f940b1594afea2"
+   },
+   "CONTROLLERS": {
+    "v32": [
+     "STRONG",
+     "RULE",
+     "RANDOM",
+     "WAIT",
+     "SPAM",
+     "NO_MEMORY",
+     "EPISODIC_MEMORY",
+     "EXPERIMENTAL_TRAINED_MEMORY",
+     "V2_CANDIDATE",
+     "FACTORY_RELATIONAL",
+     "FACTORY_NONRELATIONAL",
+     "PONG_FILTER_ONLY"
+    ],
+    "legacyRegistry": [
+     "SENTINEL",
+     "SENTINEL_NO_MEMORY",
+     "RULE_BASED",
+     "REACTIVE",
+     "CONSTANT_SPEED",
+     "INCUMBENT_ROOT_PUCT",
+     "UNIFORM_RANDOM"
+    ],
+    "v33_1Candidates": []
+   },
+   "RENDERING": "ascii-suite/v32/render.mjs (racing branch)",
+   "SEED_CONTRACT": "uint32 seed; family V32_DEV_OFFSET (offset geometry); deterministic LCG per world; replay = create(game,seed,tier,{family,sensor}) + exact action sequence (kernel.replay/verifyReplay)",
+   "RUNTIME_ENTRYPOINTS": [
+    "ascii-suite/v32/server.mjs (http://127.0.0.1:4178, v32 presentation)",
+    "ascii-quality-v33/server.mjs (http://127.0.0.1:4185, v33 presentation)",
+    "ascii-quality-v33_1/observatory/server.mjs (game-health overlay, this lane)"
+   ],
+   "TESTS": [
+    "ascii-suite/v32/tests.mjs (252 software tests)",
+    "ascii-quality-v33/acceptance.mjs (110 gameplay acceptance; writes evidence — frozen, not rerun)",
+    "ascii-quality-v33/server-tests.mjs (79)",
+    "ascii-quality-v33_1/tests.mjs (this lane)"
+   ],
+   "KNOWN_REGRESSIONS": [
+    "v32 smoke: STRONG never first; no witness"
+   ]
+  },
+  {
+   "GAME": "racing",
+   "LEVEL": "RACING_ADVANCED_3",
+   "TIER": 3,
+   "LABEL": "Extreme",
+   "NAME": "Extreme Racing Championship",
+   "VERSION": "ASCII_WORLDS_3_2_EXTENSION_V1",
+   "DEMAND": "multi-race risk-aware placement",
+   "BASELINE_DIFFICULTY": 5,
+   "CATALOG_STATUS": "IMPLEMENTATION_REQUIRES_SOLVABILITY_QUALIFICATION",
+   "WORLD_SOURCE": "ascii-suite/worlds/racing.mjs",
+   "WORLD_DIMENSIONS": "curvilinear track, road 18 columns, 3 laps",
+   "INITIAL_CONDITIONS": {
+    "seed": 271828,
+    "family": "V32_DEV_OFFSET",
+    "innerHash": "dfa46ced82a2fd70",
+    "races": 3,
+    "segments": 16,
+    "lapLength": 716,
+    "startGrid": 0
+   },
+   "TICK_LIMIT": 18000,
+   "VALID_ACTIONS_T0": [
+    "ACCELERATE",
+    "BRAKE",
+    "TURN_LEFT",
+    "TURN_RIGHT",
+    "HOLD"
+   ],
+   "OBSERVATION_SCHEMA": "LEGACY_OBSERVE",
+   "OBSERVATION_KEYS": [
+    "authority",
+    "cars",
+    "events",
+    "game",
+    "gridSlot",
+    "lapLength",
+    "laps",
+    "legalActions",
+    "me",
+    "preview",
+    "race",
+    "races",
+    "result",
+    "road",
+    "scenario",
+    "standings",
+    "terminal",
+    "tick",
+    "tier",
+    "trainingStatus",
+    "version",
+    "weather"
+   ],
+   "STEP_FUNCTION": {
+    "file": "ascii-suite/worlds/racing.mjs",
+    "line": 122,
+    "sha256": "b9fa9b45e6e1fa57"
+   },
+   "TERMINAL_CONDITIONS": {
+    "file": "ascii-suite/worlds/racing.mjs",
+    "line": 153,
+    "sha256": "b9fa9b45e6e1fa57"
+   },
+   "WIN_LOGIC": "success = FINISH_PLACE_1 in every race (tier 3: three races)",
+   "LOSS_LOGIC": "any placement other than first is not success (no LOSS result; FINISH_PLACE_n)",
+   "TIMEOUT_LOGIC": {
+    "file": "ascii-suite/v32/legacy-extension.mjs",
+    "line": 103,
+    "sha256": "09f940b1594afea2"
+   },
+   "CONTROLLERS": {
+    "v32": [
+     "STRONG",
+     "RULE",
+     "RANDOM",
+     "WAIT",
+     "SPAM",
+     "NO_MEMORY",
+     "EPISODIC_MEMORY",
+     "EXPERIMENTAL_TRAINED_MEMORY",
+     "V2_CANDIDATE",
+     "FACTORY_RELATIONAL",
+     "FACTORY_NONRELATIONAL",
+     "PONG_FILTER_ONLY"
+    ],
+    "legacyRegistry": [
+     "SENTINEL",
+     "SENTINEL_NO_MEMORY",
+     "RULE_BASED",
+     "REACTIVE",
+     "CONSTANT_SPEED",
+     "INCUMBENT_ROOT_PUCT",
+     "UNIFORM_RANDOM"
+    ],
+    "v33_1Candidates": []
+   },
+   "RENDERING": "ascii-suite/v32/render.mjs (racing branch)",
+   "SEED_CONTRACT": "uint32 seed; family V32_DEV_OFFSET (offset geometry); deterministic LCG per world; replay = create(game,seed,tier,{family,sensor}) + exact action sequence (kernel.replay/verifyReplay)",
+   "RUNTIME_ENTRYPOINTS": [
+    "ascii-suite/v32/server.mjs (http://127.0.0.1:4178, v32 presentation)",
+    "ascii-quality-v33/server.mjs (http://127.0.0.1:4185, v33 presentation)",
+    "ascii-quality-v33_1/observatory/server.mjs (game-health overlay, this lane)"
+   ],
+   "TESTS": [
+    "ascii-suite/v32/tests.mjs (252 software tests)",
+    "ascii-quality-v33/acceptance.mjs (110 gameplay acceptance; writes evidence — frozen, not rerun)",
+    "ascii-quality-v33/server-tests.mjs (79)",
+    "ascii-quality-v33_1/tests.mjs (this lane)"
+   ],
+   "KNOWN_REGRESSIONS": [
+    "v32 smoke: STRONG never first; no witness"
+   ]
+  },
+  {
+   "GAME": "rescue",
+   "LEVEL": "RESCUE_ADVANCED_1",
+   "TIER": 1,
+   "LABEL": "Advanced",
+   "NAME": "Unknown Threats",
+   "VERSION": "ASCII_WORLDS_3_2_EXTENSION_V1",
+   "DEMAND": "scouting, deadlines and extraction",
+   "BASELINE_DIFFICULTY": 3,
+   "CATALOG_STATUS": "IMPLEMENTATION_REQUIRES_SOLVABILITY_QUALIFICATION",
+   "WORLD_SOURCE": "ascii-suite/v3/worlds/rescue.mjs",
+   "WORLD_DIMENSIONS": "grid (25+4*tier) x (15+2*tier)",
+   "INITIAL_CONDITIONS": {
+    "seed": 271828,
+    "family": "V32_DEV_OFFSET",
+    "innerHash": "2922f176ed5e392f",
+    "civilians": 2,
+    "required": 2,
+    "supplies": 8,
+    "extractions": 1,
+    "limit": 600
+   },
+   "TICK_LIMIT": 600,
+   "VALID_ACTIONS_T0": [
+    "MOVE_NORTH",
+    "MOVE_SOUTH",
+    "MOVE_EAST",
+    "MOVE_WEST",
+    "WAIT",
+    "SCOUT",
+    "SECURE_AREA",
+    "SELECT_UNIT"
+   ],
+   "OBSERVATION_SCHEMA": "RESCUE_OBSERVATION_V1",
+   "OBSERVATION_KEYS": [
+    "actor",
+    "authority",
+    "civilians",
+    "credential",
+    "difficulty",
+    "doors",
+    "enemies",
+    "events",
+    "extracted",
+    "extraction",
+    "extractions",
+    "game",
+    "haveKey",
+    "hazards",
+    "height",
+    "intel",
+    "publicMetrics",
+    "required",
+    "result",
+    "scenario",
+    "schema",
+    "supplies",
+    "terminal",
+    "tick",
+    "ticksRemaining",
+    "tier",
+    "tiles",
+    "trainingStatus",
+    "units",
+    "version",
+    "width"
+   ],
+   "STEP_FUNCTION": {
+    "file": "ascii-suite/v3/worlds/rescue.mjs",
+    "line": 13,
+    "sha256": "221e9454601feef8"
+   },
+   "TERMINAL_CONDITIONS": {
+    "file": "ascii-suite/v3/worlds/rescue.mjs",
+    "line": 28,
+    "sha256": "221e9454601feef8"
+   },
+   "WIN_LOGIC": "extracted >= required civilians",
+   "LOSS_LOGIC": "all units dead or too few civilians alive → FAILURE",
+   "TIMEOUT_LOGIC": "tick >= limit (480+tier*120 via v32) → TIMEOUT",
+   "CONTROLLERS": {
+    "v32": [
+     "STRONG",
+     "RULE",
+     "RANDOM",
+     "WAIT",
+     "SPAM",
+     "NO_MEMORY",
+     "EPISODIC_MEMORY",
+     "EXPERIMENTAL_TRAINED_MEMORY",
+     "V2_CANDIDATE",
+     "FACTORY_RELATIONAL",
+     "FACTORY_NONRELATIONAL",
+     "PONG_FILTER_ONLY"
+    ],
+    "legacyRegistry": null,
+    "v33_1Candidates": [
+     "STRONG_RESCUE_V33_1"
+    ]
+   },
+   "RENDERING": "ascii-suite/v31/render.mjs via v32/render.mjs",
+   "SEED_CONTRACT": "uint32 seed; family V32_DEV_OFFSET (offset geometry); deterministic LCG per world; replay = create(game,seed,tier,{family,sensor}) + exact action sequence (kernel.replay/verifyReplay)",
+   "RUNTIME_ENTRYPOINTS": [
+    "ascii-suite/v32/server.mjs (http://127.0.0.1:4178, v32 presentation)",
+    "ascii-quality-v33/server.mjs (http://127.0.0.1:4185, v33 presentation)",
+    "ascii-quality-v33_1/observatory/server.mjs (game-health overlay, this lane)"
+   ],
+   "TESTS": [
+    "ascii-suite/v32/tests.mjs (252 software tests)",
+    "ascii-quality-v33/acceptance.mjs (110 gameplay acceptance; writes evidence — frozen, not rerun)",
+    "ascii-quality-v33/server-tests.mjs (79)",
+    "ascii-quality-v33_1/tests.mjs (this lane)"
+   ],
+   "KNOWN_REGRESSIONS": [
+    "none recorded beyond shallow smoke (reset + planner steps)"
+   ]
+  },
+  {
+   "GAME": "rescue",
+   "LEVEL": "RESCUE_ADVANCED_2",
+   "TIER": 2,
+   "LABEL": "Expert",
+   "NAME": "Conflicting Intelligence",
+   "VERSION": "ASCII_WORLDS_3_2_EXTENSION_V1",
+   "DEMAND": "moving civilians and timestamped uncertain intel",
+   "BASELINE_DIFFICULTY": 4,
+   "CATALOG_STATUS": "IMPLEMENTATION_REQUIRES_SOLVABILITY_QUALIFICATION",
+   "WORLD_SOURCE": "ascii-suite/v3/worlds/rescue.mjs",
+   "WORLD_DIMENSIONS": "grid (25+4*tier) x (15+2*tier)",
+   "INITIAL_CONDITIONS": {
+    "seed": 271828,
+    "family": "V32_DEV_OFFSET",
+    "innerHash": "5b4ffab2f1bd0122",
+    "civilians": 3,
+    "required": 3,
+    "supplies": 9,
+    "extractions": 2,
+    "limit": 720
+   },
+   "TICK_LIMIT": 720,
+   "VALID_ACTIONS_T0": [
+    "MOVE_NORTH",
+    "MOVE_SOUTH",
+    "MOVE_EAST",
+    "MOVE_WEST",
+    "WAIT",
+    "SCOUT",
+    "SECURE_AREA",
+    "SELECT_UNIT"
+   ],
+   "OBSERVATION_SCHEMA": "RESCUE_OBSERVATION_V1",
+   "OBSERVATION_KEYS": [
+    "actor",
+    "authority",
+    "civilians",
+    "credential",
+    "difficulty",
+    "doors",
+    "enemies",
+    "events",
+    "extracted",
+    "extraction",
+    "extractions",
+    "game",
+    "haveKey",
+    "hazards",
+    "height",
+    "intel",
+    "publicMetrics",
+    "required",
+    "result",
+    "scenario",
+    "schema",
+    "supplies",
+    "terminal",
+    "tick",
+    "ticksRemaining",
+    "tier",
+    "tiles",
+    "trainingStatus",
+    "units",
+    "version",
+    "width"
+   ],
+   "STEP_FUNCTION": {
+    "file": "ascii-suite/v3/worlds/rescue.mjs",
+    "line": 13,
+    "sha256": "221e9454601feef8"
+   },
+   "TERMINAL_CONDITIONS": {
+    "file": "ascii-suite/v3/worlds/rescue.mjs",
+    "line": 28,
+    "sha256": "221e9454601feef8"
+   },
+   "WIN_LOGIC": "extracted >= required civilians",
+   "LOSS_LOGIC": "all units dead or too few civilians alive → FAILURE",
+   "TIMEOUT_LOGIC": "tick >= limit (480+tier*120 via v32) → TIMEOUT",
+   "CONTROLLERS": {
+    "v32": [
+     "STRONG",
+     "RULE",
+     "RANDOM",
+     "WAIT",
+     "SPAM",
+     "NO_MEMORY",
+     "EPISODIC_MEMORY",
+     "EXPERIMENTAL_TRAINED_MEMORY",
+     "V2_CANDIDATE",
+     "FACTORY_RELATIONAL",
+     "FACTORY_NONRELATIONAL",
+     "PONG_FILTER_ONLY"
+    ],
+    "legacyRegistry": null,
+    "v33_1Candidates": [
+     "STRONG_RESCUE_V33_1"
+    ]
+   },
+   "RENDERING": "ascii-suite/v31/render.mjs via v32/render.mjs",
+   "SEED_CONTRACT": "uint32 seed; family V32_DEV_OFFSET (offset geometry); deterministic LCG per world; replay = create(game,seed,tier,{family,sensor}) + exact action sequence (kernel.replay/verifyReplay)",
+   "RUNTIME_ENTRYPOINTS": [
+    "ascii-suite/v32/server.mjs (http://127.0.0.1:4178, v32 presentation)",
+    "ascii-quality-v33/server.mjs (http://127.0.0.1:4185, v33 presentation)",
+    "ascii-quality-v33_1/observatory/server.mjs (game-health overlay, this lane)"
+   ],
+   "TESTS": [
+    "ascii-suite/v32/tests.mjs (252 software tests)",
+    "ascii-quality-v33/acceptance.mjs (110 gameplay acceptance; writes evidence — frozen, not rerun)",
+    "ascii-quality-v33/server-tests.mjs (79)",
+    "ascii-quality-v33_1/tests.mjs (this lane)"
+   ],
+   "KNOWN_REGRESSIONS": [
+    "none recorded beyond shallow smoke (reset + planner steps)"
+   ]
+  },
+  {
+   "GAME": "rescue",
+   "LEVEL": "RESCUE_ADVANCED_3",
+   "TIER": 3,
+   "LABEL": "Extreme",
+   "NAME": "Multi-Objective Emergency",
+   "VERSION": "ASCII_WORLDS_3_2_EXTENSION_V1",
+   "DEMAND": "priority triage, multiple extraction sites and closures",
+   "BASELINE_DIFFICULTY": 5,
+   "CATALOG_STATUS": "IMPLEMENTATION_REQUIRES_SOLVABILITY_QUALIFICATION",
+   "WORLD_SOURCE": "ascii-suite/v3/worlds/rescue.mjs",
+   "WORLD_DIMENSIONS": "grid (25+4*tier) x (15+2*tier)",
+   "INITIAL_CONDITIONS": {
+    "seed": 271828,
+    "family": "V32_DEV_OFFSET",
+    "innerHash": "f6f74efd9a911319",
+    "civilians": 4,
+    "required": 4,
+    "supplies": 10,
+    "extractions": 2,
+    "limit": 840
+   },
+   "TICK_LIMIT": 840,
+   "VALID_ACTIONS_T0": [
+    "MOVE_NORTH",
+    "MOVE_SOUTH",
+    "MOVE_EAST",
+    "MOVE_WEST",
+    "WAIT",
+    "SCOUT",
+    "SECURE_AREA",
+    "SELECT_UNIT"
+   ],
+   "OBSERVATION_SCHEMA": "RESCUE_OBSERVATION_V1",
+   "OBSERVATION_KEYS": [
+    "actor",
+    "authority",
+    "civilians",
+    "credential",
+    "difficulty",
+    "doors",
+    "enemies",
+    "events",
+    "extracted",
+    "extraction",
+    "extractions",
+    "game",
+    "haveKey",
+    "hazards",
+    "height",
+    "intel",
+    "publicMetrics",
+    "required",
+    "result",
+    "scenario",
+    "schema",
+    "supplies",
+    "terminal",
+    "tick",
+    "ticksRemaining",
+    "tier",
+    "tiles",
+    "trainingStatus",
+    "units",
+    "version",
+    "width"
+   ],
+   "STEP_FUNCTION": {
+    "file": "ascii-suite/v3/worlds/rescue.mjs",
+    "line": 13,
+    "sha256": "221e9454601feef8"
+   },
+   "TERMINAL_CONDITIONS": {
+    "file": "ascii-suite/v3/worlds/rescue.mjs",
+    "line": 28,
+    "sha256": "221e9454601feef8"
+   },
+   "WIN_LOGIC": "extracted >= required civilians",
+   "LOSS_LOGIC": "all units dead or too few civilians alive → FAILURE",
+   "TIMEOUT_LOGIC": "tick >= limit (480+tier*120 via v32) → TIMEOUT",
+   "CONTROLLERS": {
+    "v32": [
+     "STRONG",
+     "RULE",
+     "RANDOM",
+     "WAIT",
+     "SPAM",
+     "NO_MEMORY",
+     "EPISODIC_MEMORY",
+     "EXPERIMENTAL_TRAINED_MEMORY",
+     "V2_CANDIDATE",
+     "FACTORY_RELATIONAL",
+     "FACTORY_NONRELATIONAL",
+     "PONG_FILTER_ONLY"
+    ],
+    "legacyRegistry": null,
+    "v33_1Candidates": [
+     "STRONG_RESCUE_V33_1"
+    ]
+   },
+   "RENDERING": "ascii-suite/v31/render.mjs via v32/render.mjs",
+   "SEED_CONTRACT": "uint32 seed; family V32_DEV_OFFSET (offset geometry); deterministic LCG per world; replay = create(game,seed,tier,{family,sensor}) + exact action sequence (kernel.replay/verifyReplay)",
+   "RUNTIME_ENTRYPOINTS": [
+    "ascii-suite/v32/server.mjs (http://127.0.0.1:4178, v32 presentation)",
+    "ascii-quality-v33/server.mjs (http://127.0.0.1:4185, v33 presentation)",
+    "ascii-quality-v33_1/observatory/server.mjs (game-health overlay, this lane)"
+   ],
+   "TESTS": [
+    "ascii-suite/v32/tests.mjs (252 software tests)",
+    "ascii-quality-v33/acceptance.mjs (110 gameplay acceptance; writes evidence — frozen, not rerun)",
+    "ascii-quality-v33/server-tests.mjs (79)",
+    "ascii-quality-v33_1/tests.mjs (this lane)"
+   ],
+   "KNOWN_REGRESSIONS": [
+    "v32 smoke: STRONG/STALE threw PUBLIC_CONTROLLER_EXCEPTION_ABSTAIN (reading injured of undefined) 7 times; STRONG/NORMAL 1/2"
+   ]
+  },
+  {
+   "GAME": "cards",
+   "LEVEL": "CARDS_ADVANCED_1",
+   "TIER": 1,
+   "LABEL": "Advanced",
+   "NAME": "Limited-Communication Cooperation",
+   "VERSION": "ASCII_WORLDS_3_2_EXTENSION_V1",
+   "DEMAND": "hidden-hand inference and scarce clues",
+   "BASELINE_DIFFICULTY": 3,
+   "CATALOG_STATUS": "IMPLEMENTATION_REQUIRES_SOLVABILITY_QUALIFICATION",
+   "WORLD_SOURCE": "ascii-suite/v3/worlds/cards.mjs",
+   "WORLD_DIMENSIONS": "hand of 4 per player; 2 players (tier 1) or 3 (tiers 2-3)",
+   "INITIAL_CONDITIONS": {
+    "seed": 271828,
+    "family": "V32_DEV_OFFSET",
+    "innerHash": "ad71c4cce26fd4b5",
+    "players": 2,
+    "target": 10,
+    "clues": 3,
+    "errors": 2,
+    "rounds": 1,
+    "partnerStyle": "CATEGORY_FIRST"
+   },
+   "TICK_LIMIT": 160,
+   "VALID_ACTIONS_T0": [
+    "PLAY_CARD",
+    "DISCARD_CARD",
+    "GIVE_CATEGORY_CLUE",
+    "GIVE_RANK_CLUE"
+   ],
+   "OBSERVATION_SCHEMA": "SIGNAL_CARDS_OBSERVATION_V1",
+   "OBSERVATION_KEYS": [
+    "actor",
+    "authority",
+    "categories",
+    "clueMax",
+    "clues",
+    "deckRemaining",
+    "difficulty",
+    "discard",
+    "errors",
+    "events",
+    "finalTurns",
+    "game",
+    "hands",
+    "multiplicity",
+    "partnerStyle",
+    "players",
+    "progress",
+    "publicMetrics",
+    "ranks",
+    "result",
+    "round",
+    "roundScores",
+    "rounds",
+    "scenario",
+    "schema",
+    "score",
+    "target",
+    "terminal",
+    "tick",
+    "tier",
+    "trainingStatus",
+    "turn",
+    "version",
+    "viewer"
+   ],
+   "STEP_FUNCTION": {
+    "file": "ascii-suite/v3/worlds/cards.mjs",
+    "line": 7,
+    "sha256": "57f23a49e859853d"
+   },
+   "TERMINAL_CONDITIONS": {
+    "file": "ascii-suite/v3/worlds/cards.mjs",
+    "line": 9,
+    "sha256": "57f23a49e859853d"
+   },
+   "WIN_LOGIC": "team score >= target (ceil(categories*ranks*0.8))",
+   "LOSS_LOGIC": "errors exhausted (2), final turns over after the deck empties, or no cards → FAILURE",
+   "TIMEOUT_LOGIC": "tick >= 160*rounds",
+   "CONTROLLERS": {
+    "v32": [
+     "STRONG",
+     "RULE",
+     "RANDOM",
+     "WAIT",
+     "SPAM",
+     "NO_MEMORY",
+     "EPISODIC_MEMORY",
+     "EXPERIMENTAL_TRAINED_MEMORY",
+     "V2_CANDIDATE",
+     "FACTORY_RELATIONAL",
+     "FACTORY_NONRELATIONAL",
+     "PONG_FILTER_ONLY"
+    ],
+    "legacyRegistry": null,
+    "v33_1Candidates": []
+   },
+   "RENDERING": "ascii-suite/v31/render.mjs via v32/render.mjs",
+   "SEED_CONTRACT": "uint32 seed; family V32_DEV_OFFSET (offset geometry); deterministic LCG per world; replay = create(game,seed,tier,{family,sensor}) + exact action sequence (kernel.replay/verifyReplay)",
+   "RUNTIME_ENTRYPOINTS": [
+    "ascii-suite/v32/server.mjs (http://127.0.0.1:4178, v32 presentation)",
+    "ascii-quality-v33/server.mjs (http://127.0.0.1:4185, v33 presentation)",
+    "ascii-quality-v33_1/observatory/server.mjs (game-health overlay, this lane)"
+   ],
+   "TESTS": [
+    "ascii-suite/v32/tests.mjs (252 software tests)",
+    "ascii-quality-v33/acceptance.mjs (110 gameplay acceptance; writes evidence — frozen, not rerun)",
+    "ascii-quality-v33/server-tests.mjs (79)",
+    "ascii-quality-v33_1/tests.mjs (this lane)"
+   ],
+   "KNOWN_REGRESSIONS": [
+    "v32 smoke: every public policy FAILURE within 33 ticks; privileged full-information witness SUCCESS"
+   ]
+  },
+  {
+   "GAME": "cards",
+   "LEVEL": "CARDS_ADVANCED_2",
+   "TIER": 2,
+   "LABEL": "Expert",
+   "NAME": "Partner-Style Adaptation",
+   "VERSION": "ASCII_WORLDS_3_2_EXTENSION_V1",
+   "DEMAND": "inference of partner communication priorities",
+   "BASELINE_DIFFICULTY": 4,
+   "CATALOG_STATUS": "IMPLEMENTATION_REQUIRES_SOLVABILITY_QUALIFICATION",
+   "WORLD_SOURCE": "ascii-suite/v3/worlds/cards.mjs",
+   "WORLD_DIMENSIONS": "hand of 4 per player; 2 players (tier 1) or 3 (tiers 2-3)",
+   "INITIAL_CONDITIONS": {
+    "seed": 271828,
+    "family": "V32_DEV_OFFSET",
+    "innerHash": "66d24577b21ca9e3",
+    "players": 3,
+    "target": 16,
+    "clues": 3,
+    "errors": 2,
+    "rounds": 1,
+    "partnerStyle": "CATEGORY_FIRST"
+   },
+   "TICK_LIMIT": 160,
+   "VALID_ACTIONS_T0": [
+    "PLAY_CARD",
+    "DISCARD_CARD",
+    "GIVE_CATEGORY_CLUE",
+    "GIVE_RANK_CLUE"
+   ],
+   "OBSERVATION_SCHEMA": "SIGNAL_CARDS_OBSERVATION_V1",
+   "OBSERVATION_KEYS": [
+    "actor",
+    "authority",
+    "categories",
+    "clueMax",
+    "clues",
+    "deckRemaining",
+    "difficulty",
+    "discard",
+    "errors",
+    "events",
+    "finalTurns",
+    "game",
+    "hands",
+    "multiplicity",
+    "partnerStyle",
+    "players",
+    "progress",
+    "publicMetrics",
+    "ranks",
+    "result",
+    "round",
+    "roundScores",
+    "rounds",
+    "scenario",
+    "schema",
+    "score",
+    "target",
+    "terminal",
+    "tick",
+    "tier",
+    "trainingStatus",
+    "turn",
+    "version",
+    "viewer"
+   ],
+   "STEP_FUNCTION": {
+    "file": "ascii-suite/v3/worlds/cards.mjs",
+    "line": 7,
+    "sha256": "57f23a49e859853d"
+   },
+   "TERMINAL_CONDITIONS": {
+    "file": "ascii-suite/v3/worlds/cards.mjs",
+    "line": 9,
+    "sha256": "57f23a49e859853d"
+   },
+   "WIN_LOGIC": "team score >= target (ceil(categories*ranks*0.8))",
+   "LOSS_LOGIC": "errors exhausted (2), final turns over after the deck empties, or no cards → FAILURE",
+   "TIMEOUT_LOGIC": "tick >= 160*rounds",
+   "CONTROLLERS": {
+    "v32": [
+     "STRONG",
+     "RULE",
+     "RANDOM",
+     "WAIT",
+     "SPAM",
+     "NO_MEMORY",
+     "EPISODIC_MEMORY",
+     "EXPERIMENTAL_TRAINED_MEMORY",
+     "V2_CANDIDATE",
+     "FACTORY_RELATIONAL",
+     "FACTORY_NONRELATIONAL",
+     "PONG_FILTER_ONLY"
+    ],
+    "legacyRegistry": null,
+    "v33_1Candidates": []
+   },
+   "RENDERING": "ascii-suite/v31/render.mjs via v32/render.mjs",
+   "SEED_CONTRACT": "uint32 seed; family V32_DEV_OFFSET (offset geometry); deterministic LCG per world; replay = create(game,seed,tier,{family,sensor}) + exact action sequence (kernel.replay/verifyReplay)",
+   "RUNTIME_ENTRYPOINTS": [
+    "ascii-suite/v32/server.mjs (http://127.0.0.1:4178, v32 presentation)",
+    "ascii-quality-v33/server.mjs (http://127.0.0.1:4185, v33 presentation)",
+    "ascii-quality-v33_1/observatory/server.mjs (game-health overlay, this lane)"
+   ],
+   "TESTS": [
+    "ascii-suite/v32/tests.mjs (252 software tests)",
+    "ascii-quality-v33/acceptance.mjs (110 gameplay acceptance; writes evidence — frozen, not rerun)",
+    "ascii-quality-v33/server-tests.mjs (79)",
+    "ascii-quality-v33_1/tests.mjs (this lane)"
+   ],
+   "KNOWN_REGRESSIONS": [
+    "v32 smoke: every public policy FAILURE within 58 ticks"
+   ]
+  },
+  {
+   "GAME": "cards",
+   "LEVEL": "CARDS_ADVANCED_3",
+   "TIER": 3,
+   "LABEL": "Extreme",
+   "NAME": "Extreme Cooperative Tournament",
+   "VERSION": "ASCII_WORLDS_3_2_EXTENSION_V1",
+   "DEMAND": "round-persistent planning with changing private partner styles",
+   "BASELINE_DIFFICULTY": 5,
+   "CATALOG_STATUS": "IMPLEMENTATION_REQUIRES_SOLVABILITY_QUALIFICATION",
+   "WORLD_SOURCE": "ascii-suite/v3/worlds/cards.mjs",
+   "WORLD_DIMENSIONS": "hand of 4 per player; 2 players (tier 1) or 3 (tiers 2-3)",
+   "INITIAL_CONDITIONS": {
+    "seed": 271828,
+    "family": "V32_DEV_OFFSET",
+    "innerHash": "154ddbf10368f099",
+    "players": 3,
+    "target": 16,
+    "clues": 2,
+    "errors": 2,
+    "rounds": 3,
+    "partnerStyle": "CATEGORY_FIRST"
+   },
+   "TICK_LIMIT": 480,
+   "VALID_ACTIONS_T0": [
+    "PLAY_CARD",
+    "DISCARD_CARD",
+    "GIVE_CATEGORY_CLUE",
+    "GIVE_RANK_CLUE"
+   ],
+   "OBSERVATION_SCHEMA": "SIGNAL_CARDS_OBSERVATION_V1",
+   "OBSERVATION_KEYS": [
+    "actor",
+    "authority",
+    "categories",
+    "clueMax",
+    "clues",
+    "deckRemaining",
+    "difficulty",
+    "discard",
+    "errors",
+    "events",
+    "finalTurns",
+    "game",
+    "hands",
+    "multiplicity",
+    "partnerStyle",
+    "players",
+    "progress",
+    "publicMetrics",
+    "ranks",
+    "result",
+    "round",
+    "roundScores",
+    "rounds",
+    "scenario",
+    "schema",
+    "score",
+    "target",
+    "terminal",
+    "tick",
+    "tier",
+    "trainingStatus",
+    "turn",
+    "version",
+    "viewer"
+   ],
+   "STEP_FUNCTION": {
+    "file": "ascii-suite/v3/worlds/cards.mjs",
+    "line": 7,
+    "sha256": "57f23a49e859853d"
+   },
+   "TERMINAL_CONDITIONS": {
+    "file": "ascii-suite/v3/worlds/cards.mjs",
+    "line": 9,
+    "sha256": "57f23a49e859853d"
+   },
+   "WIN_LOGIC": "team score >= target (ceil(categories*ranks*0.8))",
+   "LOSS_LOGIC": "errors exhausted (2), final turns over after the deck empties, or no cards → FAILURE",
+   "TIMEOUT_LOGIC": "tick >= 160*rounds",
+   "CONTROLLERS": {
+    "v32": [
+     "STRONG",
+     "RULE",
+     "RANDOM",
+     "WAIT",
+     "SPAM",
+     "NO_MEMORY",
+     "EPISODIC_MEMORY",
+     "EXPERIMENTAL_TRAINED_MEMORY",
+     "V2_CANDIDATE",
+     "FACTORY_RELATIONAL",
+     "FACTORY_NONRELATIONAL",
+     "PONG_FILTER_ONLY"
+    ],
+    "legacyRegistry": null,
+    "v33_1Candidates": []
+   },
+   "RENDERING": "ascii-suite/v31/render.mjs via v32/render.mjs",
+   "SEED_CONTRACT": "uint32 seed; family V32_DEV_OFFSET (offset geometry); deterministic LCG per world; replay = create(game,seed,tier,{family,sensor}) + exact action sequence (kernel.replay/verifyReplay)",
+   "RUNTIME_ENTRYPOINTS": [
+    "ascii-suite/v32/server.mjs (http://127.0.0.1:4178, v32 presentation)",
+    "ascii-quality-v33/server.mjs (http://127.0.0.1:4185, v33 presentation)",
+    "ascii-quality-v33_1/observatory/server.mjs (game-health overlay, this lane)"
+   ],
+   "TESTS": [
+    "ascii-suite/v32/tests.mjs (252 software tests)",
+    "ascii-quality-v33/acceptance.mjs (110 gameplay acceptance; writes evidence — frozen, not rerun)",
+    "ascii-quality-v33/server-tests.mjs (79)",
+    "ascii-quality-v33_1/tests.mjs (this lane)"
+   ],
+   "KNOWN_REGRESSIONS": [
+    "v32 smoke: every public policy FAILURE within 57 ticks"
+   ]
+  },
+  {
+   "GAME": "factory",
+   "LEVEL": "FACTORY_ADVANCED_1",
+   "TIER": 1,
+   "LABEL": "Advanced",
+   "NAME": "Broken Production Chain",
+   "VERSION": "ASCII_WORLDS_3_2_EXTENSION_V1",
+   "DEMAND": "repair/connect/power under construction budgets",
+   "BASELINE_DIFFICULTY": 3,
+   "CATALOG_STATUS": "IMPLEMENTATION_REQUIRES_SOLVABILITY_QUALIFICATION",
+   "WORLD_SOURCE": "ascii-suite/v3/worlds/factory.mjs + ascii-suite/v32/factory-flow.mjs",
+   "WORLD_DIMENSIONS": "25x20 node grid",
+   "INITIAL_CONDITIONS": {
+    "seed": 271828,
+    "family": "V32_DEV_OFFSET",
+    "innerHash": "b1334acd5c820f23",
+    "orders": [
+     {
+      "id": "ORDER-0",
+      "required": 8,
+      "deadline": 480
+     }
+    ],
+    "credits": 45,
+    "ore": 56,
+    "limit": 480
+   },
+   "TICK_LIMIT": 480,
+   "VALID_ACTIONS_T0": [
+    "MOVE_NORTH",
+    "MOVE_SOUTH",
+    "MOVE_EAST",
+    "MOVE_WEST",
+    "WAIT",
+    "UPGRADE",
+    "ALLOCATE_POWER",
+    "SET_PRODUCTION",
+    "REPAIR",
+    "CONNECT",
+    "BUILD"
+   ],
+   "OBSERVATION_SCHEMA": "FACTORY_OBSERVATION_V1",
+   "OBSERVATION_KEYS": [
+    "actor",
+    "authority",
+    "credits",
+    "delivered",
+    "difficulty",
+    "edges",
+    "events",
+    "extracted",
+    "flowVersion",
+    "game",
+    "height",
+    "initialOre",
+    "mineRemaining",
+    "nodes",
+    "orders",
+    "pending",
+    "productWeight",
+    "publicMetrics",
+    "relations",
+    "required",
+    "result",
+    "scenario",
+    "schema",
+    "sharedResources",
+    "terminal",
+    "tick",
+    "ticksRemaining",
+    "tier",
+    "trainingStatus",
+    "version",
+    "width"
+   ],
+   "STEP_FUNCTION": {
+    "file": "ascii-suite/v32/factory-flow.mjs",
+    "line": 5,
+    "sha256": "4a6b5fd265f8906e"
+   },
+   "TERMINAL_CONDITIONS": {
+    "file": "ascii-suite/v32/strategic-extension.mjs",
+    "line": 100,
+    "sha256": "db36e408c8bbb016"
+   },
+   "WIN_LOGIC": "every order delivered >= required",
+   "LOSS_LOGIC": "any order past its deadline → DEADLINE_FAILURE",
+   "TIMEOUT_LOGIC": "limit 360+tier*120 (orders carry deadlines)",
+   "CONTROLLERS": {
+    "v32": [
+     "STRONG",
+     "RULE",
+     "RANDOM",
+     "WAIT",
+     "SPAM",
+     "NO_MEMORY",
+     "EPISODIC_MEMORY",
+     "EXPERIMENTAL_TRAINED_MEMORY",
+     "V2_CANDIDATE",
+     "FACTORY_RELATIONAL",
+     "FACTORY_NONRELATIONAL",
+     "PONG_FILTER_ONLY"
+    ],
+    "legacyRegistry": null,
+    "v33_1Candidates": []
+   },
+   "RENDERING": "ascii-suite/v31/render.mjs via v32/render.mjs (+ORDERS line)",
+   "SEED_CONTRACT": "uint32 seed; family V32_DEV_OFFSET (offset geometry); deterministic LCG per world; replay = create(game,seed,tier,{family,sensor}) + exact action sequence (kernel.replay/verifyReplay)",
+   "RUNTIME_ENTRYPOINTS": [
+    "ascii-suite/v32/server.mjs (http://127.0.0.1:4178, v32 presentation)",
+    "ascii-quality-v33/server.mjs (http://127.0.0.1:4185, v33 presentation)",
+    "ascii-quality-v33_1/observatory/server.mjs (game-health overlay, this lane)"
+   ],
+   "TESTS": [
+    "ascii-suite/v32/tests.mjs (252 software tests)",
+    "ascii-quality-v33/acceptance.mjs (110 gameplay acceptance; writes evidence — frozen, not rerun)",
+    "ascii-quality-v33/server-tests.mjs (79)",
+    "ascii-quality-v33_1/tests.mjs (this lane)"
+   ],
+   "KNOWN_REGRESSIONS": [
+    "none recorded beyond shallow smoke (reset + planner steps)"
+   ]
+  },
+  {
+   "GAME": "factory",
+   "LEVEL": "FACTORY_ADVANCED_2",
+   "TIER": 2,
+   "LABEL": "Expert",
+   "NAME": "Coupled Dependency Network",
+   "VERSION": "ASCII_WORLDS_3_2_EXTENSION_V1",
+   "DEMAND": "shared ore/power between dependent production lines",
+   "BASELINE_DIFFICULTY": 4,
+   "CATALOG_STATUS": "IMPLEMENTATION_REQUIRES_SOLVABILITY_QUALIFICATION",
+   "WORLD_SOURCE": "ascii-suite/v3/worlds/factory.mjs + ascii-suite/v32/factory-flow.mjs",
+   "WORLD_DIMENSIONS": "25x20 node grid",
+   "INITIAL_CONDITIONS": {
+    "seed": 271828,
+    "family": "V32_DEV_OFFSET",
+    "innerHash": "c105365ae565bfb5",
+    "orders": [
+     {
+      "id": "ORDER-0",
+      "required": 10,
+      "deadline": 600
+     },
+     {
+      "id": "ORDER-1",
+      "required": 10,
+      "deadline": 570
+     }
+    ],
+    "credits": 63,
+    "ore": 80,
+    "limit": 600
+   },
+   "TICK_LIMIT": 600,
+   "VALID_ACTIONS_T0": [
+    "MOVE_NORTH",
+    "MOVE_SOUTH",
+    "MOVE_EAST",
+    "MOVE_WEST",
+    "WAIT",
+    "UPGRADE",
+    "ALLOCATE_POWER",
+    "SET_PRODUCTION",
+    "REPAIR",
+    "CONNECT",
+    "BUILD"
+   ],
+   "OBSERVATION_SCHEMA": "FACTORY_OBSERVATION_V1",
+   "OBSERVATION_KEYS": [
+    "actor",
+    "authority",
+    "credits",
+    "delivered",
+    "difficulty",
+    "edges",
+    "events",
+    "extracted",
+    "flowVersion",
+    "game",
+    "height",
+    "initialOre",
+    "mineRemaining",
+    "nodes",
+    "orders",
+    "pending",
+    "productWeight",
+    "publicMetrics",
+    "relations",
+    "required",
+    "result",
+    "scenario",
+    "schema",
+    "sharedResources",
+    "terminal",
+    "tick",
+    "ticksRemaining",
+    "tier",
+    "trainingStatus",
+    "version",
+    "width"
+   ],
+   "STEP_FUNCTION": {
+    "file": "ascii-suite/v32/factory-flow.mjs",
+    "line": 5,
+    "sha256": "4a6b5fd265f8906e"
+   },
+   "TERMINAL_CONDITIONS": {
+    "file": "ascii-suite/v32/strategic-extension.mjs",
+    "line": 100,
+    "sha256": "db36e408c8bbb016"
+   },
+   "WIN_LOGIC": "every order delivered >= required",
+   "LOSS_LOGIC": "any order past its deadline → DEADLINE_FAILURE",
+   "TIMEOUT_LOGIC": "limit 360+tier*120 (orders carry deadlines)",
+   "CONTROLLERS": {
+    "v32": [
+     "STRONG",
+     "RULE",
+     "RANDOM",
+     "WAIT",
+     "SPAM",
+     "NO_MEMORY",
+     "EPISODIC_MEMORY",
+     "EXPERIMENTAL_TRAINED_MEMORY",
+     "V2_CANDIDATE",
+     "FACTORY_RELATIONAL",
+     "FACTORY_NONRELATIONAL",
+     "PONG_FILTER_ONLY"
+    ],
+    "legacyRegistry": null,
+    "v33_1Candidates": []
+   },
+   "RENDERING": "ascii-suite/v31/render.mjs via v32/render.mjs (+ORDERS line)",
+   "SEED_CONTRACT": "uint32 seed; family V32_DEV_OFFSET (offset geometry); deterministic LCG per world; replay = create(game,seed,tier,{family,sensor}) + exact action sequence (kernel.replay/verifyReplay)",
+   "RUNTIME_ENTRYPOINTS": [
+    "ascii-suite/v32/server.mjs (http://127.0.0.1:4178, v32 presentation)",
+    "ascii-quality-v33/server.mjs (http://127.0.0.1:4185, v33 presentation)",
+    "ascii-quality-v33_1/observatory/server.mjs (game-health overlay, this lane)"
+   ],
+   "TESTS": [
+    "ascii-suite/v32/tests.mjs (252 software tests)",
+    "ascii-quality-v33/acceptance.mjs (110 gameplay acceptance; writes evidence — frozen, not rerun)",
+    "ascii-quality-v33/server-tests.mjs (79)",
+    "ascii-quality-v33_1/tests.mjs (this lane)"
+   ],
+   "KNOWN_REGRESSIONS": [
+    "none recorded beyond shallow smoke (reset + planner steps)"
+   ]
+  },
+  {
+   "GAME": "factory",
+   "LEVEL": "FACTORY_ADVANCED_3",
+   "TIER": 3,
+   "LABEL": "Extreme",
+   "NAME": "Industrial Crisis",
+   "VERSION": "ASCII_WORLDS_3_2_EXTENSION_V1",
+   "DEMAND": "multiple quotas/deadlines with disruptive equipment failures",
+   "BASELINE_DIFFICULTY": 5,
+   "CATALOG_STATUS": "IMPLEMENTATION_REQUIRES_SOLVABILITY_QUALIFICATION",
+   "WORLD_SOURCE": "ascii-suite/v3/worlds/factory.mjs + ascii-suite/v32/factory-flow.mjs",
+   "WORLD_DIMENSIONS": "25x20 node grid",
+   "INITIAL_CONDITIONS": {
+    "seed": 271828,
+    "family": "V32_DEV_OFFSET",
+    "innerHash": "6d1471870db586f3",
+    "orders": [
+     {
+      "id": "ORDER-0",
+      "required": 12,
+      "deadline": 720
+     },
+     {
+      "id": "ORDER-1",
+      "required": 12,
+      "deadline": 690
+     },
+     {
+      "id": "ORDER-2",
+      "required": 12,
+      "deadline": 660
+     }
+    ],
+    "credits": 81,
+    "ore": 148,
+    "limit": 720
+   },
+   "TICK_LIMIT": 720,
+   "VALID_ACTIONS_T0": [
+    "MOVE_NORTH",
+    "MOVE_SOUTH",
+    "MOVE_EAST",
+    "MOVE_WEST",
+    "WAIT",
+    "UPGRADE",
+    "ALLOCATE_POWER",
+    "SET_PRODUCTION",
+    "REPAIR",
+    "CONNECT",
+    "BUILD"
+   ],
+   "OBSERVATION_SCHEMA": "FACTORY_OBSERVATION_V1",
+   "OBSERVATION_KEYS": [
+    "actor",
+    "authority",
+    "credits",
+    "delivered",
+    "difficulty",
+    "edges",
+    "events",
+    "extracted",
+    "flowVersion",
+    "game",
+    "height",
+    "initialOre",
+    "mineRemaining",
+    "nodes",
+    "orders",
+    "pending",
+    "productWeight",
+    "publicMetrics",
+    "relations",
+    "required",
+    "result",
+    "scenario",
+    "schema",
+    "sharedResources",
+    "terminal",
+    "tick",
+    "ticksRemaining",
+    "tier",
+    "trainingStatus",
+    "version",
+    "width"
+   ],
+   "STEP_FUNCTION": {
+    "file": "ascii-suite/v32/factory-flow.mjs",
+    "line": 5,
+    "sha256": "4a6b5fd265f8906e"
+   },
+   "TERMINAL_CONDITIONS": {
+    "file": "ascii-suite/v32/strategic-extension.mjs",
+    "line": 100,
+    "sha256": "db36e408c8bbb016"
+   },
+   "WIN_LOGIC": "every order delivered >= required",
+   "LOSS_LOGIC": "any order past its deadline → DEADLINE_FAILURE",
+   "TIMEOUT_LOGIC": "limit 360+tier*120 (orders carry deadlines)",
+   "CONTROLLERS": {
+    "v32": [
+     "STRONG",
+     "RULE",
+     "RANDOM",
+     "WAIT",
+     "SPAM",
+     "NO_MEMORY",
+     "EPISODIC_MEMORY",
+     "EXPERIMENTAL_TRAINED_MEMORY",
+     "V2_CANDIDATE",
+     "FACTORY_RELATIONAL",
+     "FACTORY_NONRELATIONAL",
+     "PONG_FILTER_ONLY"
+    ],
+    "legacyRegistry": null,
+    "v33_1Candidates": []
+   },
+   "RENDERING": "ascii-suite/v31/render.mjs via v32/render.mjs (+ORDERS line)",
+   "SEED_CONTRACT": "uint32 seed; family V32_DEV_OFFSET (offset geometry); deterministic LCG per world; replay = create(game,seed,tier,{family,sensor}) + exact action sequence (kernel.replay/verifyReplay)",
+   "RUNTIME_ENTRYPOINTS": [
+    "ascii-suite/v32/server.mjs (http://127.0.0.1:4178, v32 presentation)",
+    "ascii-quality-v33/server.mjs (http://127.0.0.1:4185, v33 presentation)",
+    "ascii-quality-v33_1/observatory/server.mjs (game-health overlay, this lane)"
+   ],
+   "TESTS": [
+    "ascii-suite/v32/tests.mjs (252 software tests)",
+    "ascii-quality-v33/acceptance.mjs (110 gameplay acceptance; writes evidence — frozen, not rerun)",
+    "ascii-quality-v33/server-tests.mjs (79)",
+    "ascii-quality-v33_1/tests.mjs (this lane)"
+   ],
+   "KNOWN_REGRESSIONS": [
+    "none recorded beyond shallow smoke (reset + planner steps)"
+   ]
+  },
+  {
+   "GAME": "roguelike",
+   "LEVEL": "ROGUE_ADVANCED_1",
+   "TIER": 1,
+   "LABEL": "Advanced",
+   "NAME": "Resource-Constrained Dungeon",
+   "VERSION": "ASCII_WORLDS_3_2_EXTENSION_V1",
+   "DEMAND": "unknown geometry, traps, retreats and scarce healing",
+   "BASELINE_DIFFICULTY": 3,
+   "CATALOG_STATUS": "IMPLEMENTATION_REQUIRES_SOLVABILITY_QUALIFICATION",
+   "WORLD_SOURCE": "ascii-suite/v3/worlds/roguelike.mjs",
+   "WORLD_DIMENSIONS": "grid (25+4*tier) x (15+2*tier) per floor",
+   "INITIAL_CONDITIONS": {
+    "seed": 271828,
+    "family": "V32_DEV_OFFSET",
+    "innerHash": "d61512798b887b78",
+    "floors": 2,
+    "potions": 2,
+    "limit": 1000,
+    "grid": [
+     29,
+     17
+    ]
+   },
+   "TICK_LIMIT": 1000,
+   "VALID_ACTIONS_T0": [
+    "MOVE_NORTH",
+    "MOVE_SOUTH",
+    "MOVE_EAST",
+    "MOVE_WEST",
+    "WAIT",
+    "DEFEND",
+    "INSPECT",
+    "REST"
+   ],
+   "OBSERVATION_SCHEMA": "ROGUELIKE_OBSERVATION_V1",
+   "OBSERVATION_KEYS": [
+    "actor",
+    "authority",
+    "cyclicHazards",
+    "difficulty",
+    "doors",
+    "enemies",
+    "events",
+    "exit",
+    "finalArtifact",
+    "finalObjective",
+    "game",
+    "height",
+    "inventory",
+    "level",
+    "levelsTotal",
+    "objects",
+    "publicMetrics",
+    "result",
+    "scenario",
+    "schema",
+    "terminal",
+    "tick",
+    "ticksRemaining",
+    "tier",
+    "tiles",
+    "trainingStatus",
+    "traps",
+    "version",
+    "width"
+   ],
+   "STEP_FUNCTION": {
+    "file": "ascii-suite/v3/worlds/roguelike.mjs",
+    "line": 7,
+    "sha256": "cb14dab6b3401856"
+   },
+   "TERMINAL_CONDITIONS": {
+    "file": "ascii-suite/v3/worlds/roguelike.mjs",
+    "line": 17,
+    "sha256": "cb14dab6b3401856"
+   },
+   "WIN_LOGIC": "DESCEND on the last floor (2/4/5 floors; tier 3 requires the final artifact first)",
+   "LOSS_LOGIC": "health 0 → FAILURE",
+   "TIMEOUT_LOGIC": "tick >= 600+tier*400 → TIMEOUT",
+   "CONTROLLERS": {
+    "v32": [
+     "STRONG",
+     "RULE",
+     "RANDOM",
+     "WAIT",
+     "SPAM",
+     "NO_MEMORY",
+     "EPISODIC_MEMORY",
+     "EXPERIMENTAL_TRAINED_MEMORY",
+     "V2_CANDIDATE",
+     "FACTORY_RELATIONAL",
+     "FACTORY_NONRELATIONAL",
+     "PONG_FILTER_ONLY"
+    ],
+    "legacyRegistry": null,
+    "v33_1Candidates": []
+   },
+   "RENDERING": "ascii-suite/v31/render.mjs via v32/render.mjs",
+   "SEED_CONTRACT": "uint32 seed; family V32_DEV_OFFSET (offset geometry); deterministic LCG per world; replay = create(game,seed,tier,{family,sensor}) + exact action sequence (kernel.replay/verifyReplay)",
+   "RUNTIME_ENTRYPOINTS": [
+    "ascii-suite/v32/server.mjs (http://127.0.0.1:4178, v32 presentation)",
+    "ascii-quality-v33/server.mjs (http://127.0.0.1:4185, v33 presentation)",
+    "ascii-quality-v33_1/observatory/server.mjs (game-health overlay, this lane)"
+   ],
+   "TESTS": [
+    "ascii-suite/v32/tests.mjs (252 software tests)",
+    "ascii-quality-v33/acceptance.mjs (110 gameplay acceptance; writes evidence — frozen, not rerun)",
+    "ascii-quality-v33/server-tests.mjs (79)",
+    "ascii-quality-v33_1/tests.mjs (this lane)"
+   ],
+   "KNOWN_REGRESSIONS": [
+    "none recorded beyond shallow smoke (reset + planner steps)"
+   ]
+  },
+  {
+   "GAME": "roguelike",
+   "LEVEL": "ROGUE_ADVANCED_2",
+   "TIER": 2,
+   "LABEL": "Expert",
+   "NAME": "Multi-Floor Expedition",
+   "VERSION": "ASCII_WORLDS_3_2_EXTENSION_V1",
+   "DEMAND": "key/gate navigation across four floors",
+   "BASELINE_DIFFICULTY": 4,
+   "CATALOG_STATUS": "IMPLEMENTATION_REQUIRES_SOLVABILITY_QUALIFICATION",
+   "WORLD_SOURCE": "ascii-suite/v3/worlds/roguelike.mjs",
+   "WORLD_DIMENSIONS": "grid (25+4*tier) x (15+2*tier) per floor",
+   "INITIAL_CONDITIONS": {
+    "seed": 271828,
+    "family": "V32_DEV_OFFSET",
+    "innerHash": "f19f6694f8110b26",
+    "floors": 4,
+    "potions": 1,
+    "limit": 1400,
+    "grid": [
+     33,
+     19
+    ]
+   },
+   "TICK_LIMIT": 1400,
+   "VALID_ACTIONS_T0": [
+    "MOVE_NORTH",
+    "MOVE_SOUTH",
+    "MOVE_EAST",
+    "MOVE_WEST",
+    "WAIT",
+    "DEFEND",
+    "INSPECT",
+    "REST"
+   ],
+   "OBSERVATION_SCHEMA": "ROGUELIKE_OBSERVATION_V1",
+   "OBSERVATION_KEYS": [
+    "actor",
+    "authority",
+    "cyclicHazards",
+    "difficulty",
+    "doors",
+    "enemies",
+    "events",
+    "exit",
+    "finalArtifact",
+    "finalObjective",
+    "game",
+    "height",
+    "inventory",
+    "level",
+    "levelsTotal",
+    "objects",
+    "publicMetrics",
+    "result",
+    "scenario",
+    "schema",
+    "terminal",
+    "tick",
+    "ticksRemaining",
+    "tier",
+    "tiles",
+    "trainingStatus",
+    "traps",
+    "version",
+    "width"
+   ],
+   "STEP_FUNCTION": {
+    "file": "ascii-suite/v3/worlds/roguelike.mjs",
+    "line": 7,
+    "sha256": "cb14dab6b3401856"
+   },
+   "TERMINAL_CONDITIONS": {
+    "file": "ascii-suite/v3/worlds/roguelike.mjs",
+    "line": 17,
+    "sha256": "cb14dab6b3401856"
+   },
+   "WIN_LOGIC": "DESCEND on the last floor (2/4/5 floors; tier 3 requires the final artifact first)",
+   "LOSS_LOGIC": "health 0 → FAILURE",
+   "TIMEOUT_LOGIC": "tick >= 600+tier*400 → TIMEOUT",
+   "CONTROLLERS": {
+    "v32": [
+     "STRONG",
+     "RULE",
+     "RANDOM",
+     "WAIT",
+     "SPAM",
+     "NO_MEMORY",
+     "EPISODIC_MEMORY",
+     "EXPERIMENTAL_TRAINED_MEMORY",
+     "V2_CANDIDATE",
+     "FACTORY_RELATIONAL",
+     "FACTORY_NONRELATIONAL",
+     "PONG_FILTER_ONLY"
+    ],
+    "legacyRegistry": null,
+    "v33_1Candidates": []
+   },
+   "RENDERING": "ascii-suite/v31/render.mjs via v32/render.mjs",
+   "SEED_CONTRACT": "uint32 seed; family V32_DEV_OFFSET (offset geometry); deterministic LCG per world; replay = create(game,seed,tier,{family,sensor}) + exact action sequence (kernel.replay/verifyReplay)",
+   "RUNTIME_ENTRYPOINTS": [
+    "ascii-suite/v32/server.mjs (http://127.0.0.1:4178, v32 presentation)",
+    "ascii-quality-v33/server.mjs (http://127.0.0.1:4185, v33 presentation)",
+    "ascii-quality-v33_1/observatory/server.mjs (game-health overlay, this lane)"
+   ],
+   "TESTS": [
+    "ascii-suite/v32/tests.mjs (252 software tests)",
+    "ascii-quality-v33/acceptance.mjs (110 gameplay acceptance; writes evidence — frozen, not rerun)",
+    "ascii-quality-v33/server-tests.mjs (79)",
+    "ascii-quality-v33_1/tests.mjs (this lane)"
+   ],
+   "KNOWN_REGRESSIONS": [
+    "v32 smoke: STRONG FAILURE (death) 2/2"
+   ]
+  },
+  {
+   "GAME": "roguelike",
+   "LEVEL": "ROGUE_ADVANCED_3",
+   "TIER": 3,
+   "LABEL": "Extreme",
+   "NAME": "Extreme Survival Campaign",
+   "VERSION": "ASCII_WORLDS_3_2_EXTENSION_V1",
+   "DEMAND": "five-floor survival with telegraphed cyclic hazards and final artifact",
+   "BASELINE_DIFFICULTY": 5,
+   "CATALOG_STATUS": "IMPLEMENTATION_REQUIRES_SOLVABILITY_QUALIFICATION",
+   "WORLD_SOURCE": "ascii-suite/v3/worlds/roguelike.mjs",
+   "WORLD_DIMENSIONS": "grid (25+4*tier) x (15+2*tier) per floor",
+   "INITIAL_CONDITIONS": {
+    "seed": 271828,
+    "family": "V32_DEV_OFFSET",
+    "innerHash": "eaa835a60b850f25",
+    "floors": 5,
+    "potions": 1,
+    "limit": 1800,
+    "grid": [
+     37,
+     21
+    ]
+   },
+   "TICK_LIMIT": 1800,
+   "VALID_ACTIONS_T0": [
+    "MOVE_NORTH",
+    "MOVE_SOUTH",
+    "MOVE_EAST",
+    "MOVE_WEST",
+    "WAIT",
+    "DEFEND",
+    "INSPECT",
+    "REST"
+   ],
+   "OBSERVATION_SCHEMA": "ROGUELIKE_OBSERVATION_V1",
+   "OBSERVATION_KEYS": [
+    "actor",
+    "authority",
+    "cyclicHazards",
+    "difficulty",
+    "doors",
+    "enemies",
+    "events",
+    "exit",
+    "finalArtifact",
+    "finalObjective",
+    "game",
+    "height",
+    "inventory",
+    "level",
+    "levelsTotal",
+    "objects",
+    "publicMetrics",
+    "result",
+    "scenario",
+    "schema",
+    "terminal",
+    "tick",
+    "ticksRemaining",
+    "tier",
+    "tiles",
+    "trainingStatus",
+    "traps",
+    "version",
+    "width"
+   ],
+   "STEP_FUNCTION": {
+    "file": "ascii-suite/v3/worlds/roguelike.mjs",
+    "line": 7,
+    "sha256": "cb14dab6b3401856"
+   },
+   "TERMINAL_CONDITIONS": {
+    "file": "ascii-suite/v3/worlds/roguelike.mjs",
+    "line": 17,
+    "sha256": "cb14dab6b3401856"
+   },
+   "WIN_LOGIC": "DESCEND on the last floor (2/4/5 floors; tier 3 requires the final artifact first)",
+   "LOSS_LOGIC": "health 0 → FAILURE",
+   "TIMEOUT_LOGIC": "tick >= 600+tier*400 → TIMEOUT",
+   "CONTROLLERS": {
+    "v32": [
+     "STRONG",
+     "RULE",
+     "RANDOM",
+     "WAIT",
+     "SPAM",
+     "NO_MEMORY",
+     "EPISODIC_MEMORY",
+     "EXPERIMENTAL_TRAINED_MEMORY",
+     "V2_CANDIDATE",
+     "FACTORY_RELATIONAL",
+     "FACTORY_NONRELATIONAL",
+     "PONG_FILTER_ONLY"
+    ],
+    "legacyRegistry": null,
+    "v33_1Candidates": []
+   },
+   "RENDERING": "ascii-suite/v31/render.mjs via v32/render.mjs",
+   "SEED_CONTRACT": "uint32 seed; family V32_DEV_OFFSET (offset geometry); deterministic LCG per world; replay = create(game,seed,tier,{family,sensor}) + exact action sequence (kernel.replay/verifyReplay)",
+   "RUNTIME_ENTRYPOINTS": [
+    "ascii-suite/v32/server.mjs (http://127.0.0.1:4178, v32 presentation)",
+    "ascii-quality-v33/server.mjs (http://127.0.0.1:4185, v33 presentation)",
+    "ascii-quality-v33_1/observatory/server.mjs (game-health overlay, this lane)"
+   ],
+   "TESTS": [
+    "ascii-suite/v32/tests.mjs (252 software tests)",
+    "ascii-quality-v33/acceptance.mjs (110 gameplay acceptance; writes evidence — frozen, not rerun)",
+    "ascii-quality-v33/server-tests.mjs (79)",
+    "ascii-quality-v33_1/tests.mjs (this lane)"
+   ],
+   "KNOWN_REGRESSIONS": [
+    "v32 smoke: STRONG FAILURE 2/2; one seed without privileged witness"
+   ]
+  }
+ ],
+ "authority": "R0"
+}

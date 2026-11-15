@@ -1,0 +1,52 @@
+{
+ "schema": "H_W1_DEV_PHASE0_CUSTODY_AND_COMMITS_V1",
+ "authority": "R0",
+ "checkedAt": "2026-10-31T04:32:48.170Z",
+ "baseMain": "2937efb720f00e12875cfc0a13a678277b187be4",
+ "originalBaseline": "2d26176ae55f59009796c546fd42f2635e7da5bb",
+ "commitsOnMain": 164,
+ "evidenceCommits": {
+  "custodyAuditLane": "0fa84a77",
+  "widerActionLane": "2937efb7"
+ },
+ "filesAddedSinceBaseline": 53,
+ "nonAdditionsSinceBaseline": 0,
+ "protectedIdentities": 30,
+ "protectedBlobsReachable": {
+  "main": 0,
+  "codexCheckpointRef": 30,
+  "preRemediationMain": 30
+ },
+ "refCount": 12,
+ "refSnapshotSha256": "8cf321e75d40f453611f49e285b6d973969b1a33807116c72fbc888d3243720a",
+ "originMain": "e7fe50fd8a9bd2274d7b90a602b92ef793832b10",
+ "hooksSha256Prefix": {
+  "pre-commit": "48b0a8fe",
+  "pre-merge-commit": "16addf3f",
+  "pre-push": "36e70802"
+ },
+ "freeDiskGiB": 27,
+ "fsck": {
+  "ok": true,
+  "out": ""
+ },
+ "checks": {
+  "mainIsBase": true,
+  "baselineIsAncestor": true,
+  "evidenceCommitsOnMain": true,
+  "evidenceCommitsAdditionsOnlyInTwoLanes": true,
+  "protectedBlobsReachableFromMain0": true,
+  "protectedBlobsStillOnRetainedRefs": true,
+  "twelveRefs": true,
+  "hooksUnchanged": true,
+  "originMainUnchanged": true,
+  "fsckClean": true,
+  "freeDiskAtLeast8GiB": true
+ },
+ "pass": true,
+ "notes": [
+  "The 30 protected blobs stay reachable from the retained refs only. Nothing was pushed, purged or garbage-collected (A5 not authorised).",
+  "The overlay (31 files) is untracked and excluded via .git/info/exclude and is never staged.",
+  "R0 runtime-identity drift is a separate open finding and is neither measured nor claimed closed here."
+ ]
+}

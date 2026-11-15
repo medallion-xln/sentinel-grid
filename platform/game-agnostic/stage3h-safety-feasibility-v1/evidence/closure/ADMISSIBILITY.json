@@ -1,0 +1,230 @@
+{
+ "schema": "STAGE3H_SAFETY_CLOSURE_ADMISSIBILITY_V1",
+ "authority": "R0",
+ "concepts": {
+  "GENERATOR_RANGE_VALID": "each hidden value in its scenarios-v2.js range",
+  "NATIVE_STATE_ADMISSIBLE": "kernel validateWorld at every state, validateScenarioV2, frozen warm-up replay, legal native transitions, O-6 menu, native surface, E1-faithful semantics",
+  "SEEDED_GENERATOR_REACHABLE": "produced by the actual seeded generator under its seed contract"
+ },
+ "jointCombinationGrounding": {
+  "source": "src/forge/scenarios-v2.js",
+  "sha256": "c50c380eae9c37c0ee8d1a00e5e9736ae2f5dfaab814e1e8ec0d048d4e0c314a",
+  "finding": "each structural node draws value = 2 + randomInt(0, valueSpread + 2) and health = index % 4 === 0 ? 20 + randomInt(0, 30) : 100 independently, with no rejection sampling and no cross-node constraint; only the primary objective value and the failed restore node health are overridden afterwards. Under the documented sampling contract (independent uniform randomInt draws) the joint support is the product of the individual ranges. The concrete SplitMix64 stream couples these draws to the public placement draws, which is the separate SEEDED_GENERATOR_REACHABLE question."
+ },
+ "policyIdentities": {
+  "S0": "30a72416b8a7f0079155cd25908acbe8a2f69750759d106cf71609d77e1e8937",
+  "Nexus": {
+   "id": "sentinel-nexus-relational-v1+NEXUS_RELATIONAL_SELECTOR_V1",
+   "owner": "src/lab/stage3c-learned-nexus.js#nexusRelationalSelector",
+   "modelVersion": "engine-v1/selector-v1/adapter-v1"
+  },
+  "nexusSelectorPortSha256": "22d6e83d41d953bac8a9bcc3176580015b055b9b178deb6049a01ac81ac50490",
+  "digestFieldsExcluded": [
+   "worldHash",
+   "sourceStateHash",
+   "provenance"
+  ]
+ },
+ "witnesses": 10,
+ "validWitnesses": 9,
+ "perWitness": [
+  {
+   "set": "FRESH_EXPLORE",
+   "idx": 2283,
+   "cell": "bridge/defended/reach_target/H2/3",
+   "validInSearch": true,
+   "generatorRangeValid": true,
+   "nativeStateAdmissible": true,
+   "publicHistoryIdentical": true,
+   "decisionsIdentical": true,
+   "labelsReproduce": true,
+   "deterministicImpossible": true,
+   "randomizedZeroRiskImpossible": true,
+   "seeded": {
+    "w1": "NOT_ESTABLISHED",
+    "w2": "SEEDED_GENERATOR_REACHABLE"
+   },
+   "publicBitsLowerBound": 170.8,
+   "failedAdmissibilityChecks": []
+  },
+  {
+   "set": "FRESH_CHECK",
+   "idx": 9055,
+   "cell": "star/defended/supply_and_defend/H2/3",
+   "validInSearch": true,
+   "generatorRangeValid": true,
+   "nativeStateAdmissible": true,
+   "publicHistoryIdentical": true,
+   "decisionsIdentical": true,
+   "labelsReproduce": true,
+   "deterministicImpossible": true,
+   "randomizedZeroRiskImpossible": true,
+   "seeded": {
+    "w1": "NOT_ESTABLISHED",
+    "w2": "NOT_ESTABLISHED"
+   },
+   "publicBitsLowerBound": 178.3,
+   "failedAdmissibilityChecks": []
+  },
+  {
+   "set": "FRESH_EXPLORE",
+   "idx": 9839,
+   "cell": "bridge/defended/restore_and_conserve/H2/1",
+   "validInSearch": true,
+   "generatorRangeValid": true,
+   "nativeStateAdmissible": true,
+   "publicHistoryIdentical": true,
+   "decisionsIdentical": true,
+   "labelsReproduce": true,
+   "deterministicImpossible": true,
+   "randomizedZeroRiskImpossible": true,
+   "seeded": {
+    "w1": "NOT_ESTABLISHED",
+    "w2": "SEEDED_GENERATOR_REACHABLE"
+   },
+   "publicBitsLowerBound": 89.8,
+   "failedAdmissibilityChecks": []
+  },
+  {
+   "set": "FRESH_EXPLORE",
+   "idx": 7445,
+   "cell": "bridge/industrial/restore_and_protect/H2/1",
+   "validInSearch": true,
+   "generatorRangeValid": true,
+   "nativeStateAdmissible": true,
+   "publicHistoryIdentical": true,
+   "decisionsIdentical": true,
+   "labelsReproduce": true,
+   "deterministicImpossible": true,
+   "randomizedZeroRiskImpossible": true,
+   "seeded": {
+    "w1": "NOT_ESTABLISHED",
+    "w2": "SEEDED_GENERATOR_REACHABLE"
+   },
+   "publicBitsLowerBound": 115.5,
+   "failedAdmissibilityChecks": []
+  },
+  {
+   "set": "FRESH_EXPLORE",
+   "idx": 10798,
+   "cell": "multi_cycle/bare/reach_target/H2/3",
+   "validInSearch": true,
+   "generatorRangeValid": true,
+   "nativeStateAdmissible": true,
+   "publicHistoryIdentical": true,
+   "decisionsIdentical": true,
+   "labelsReproduce": true,
+   "deterministicImpossible": true,
+   "randomizedZeroRiskImpossible": true,
+   "seeded": {
+    "w1": "NOT_ESTABLISHED",
+    "w2": "NOT_ESTABLISHED"
+   },
+   "publicBitsLowerBound": 163.7,
+   "failedAdmissibilityChecks": []
+  },
+  {
+   "set": "FRESH_CHECK",
+   "idx": 1655,
+   "cell": "star/defended/restore_and_protect/H2/3",
+   "validInSearch": false,
+   "generatorRangeValid": true,
+   "nativeStateAdmissible": true,
+   "publicHistoryIdentical": true,
+   "decisionsIdentical": true,
+   "labelsReproduce": false,
+   "deterministicImpossible": false,
+   "randomizedZeroRiskImpossible": true,
+   "seeded": {
+    "w1": "NOT_ESTABLISHED",
+    "w2": "NOT_ESTABLISHED"
+   },
+   "publicBitsLowerBound": 163.3,
+   "failedAdmissibilityChecks": []
+  },
+  {
+   "set": "FRESH_EXPLORE",
+   "idx": 1193,
+   "cell": "star/bare/restore_and_protect/H2/1",
+   "validInSearch": true,
+   "generatorRangeValid": true,
+   "nativeStateAdmissible": true,
+   "publicHistoryIdentical": true,
+   "decisionsIdentical": true,
+   "labelsReproduce": true,
+   "deterministicImpossible": true,
+   "randomizedZeroRiskImpossible": true,
+   "seeded": {
+    "w1": "NOT_ESTABLISHED",
+    "w2": "NOT_ESTABLISHED"
+   },
+   "publicBitsLowerBound": 77.3,
+   "failedAdmissibilityChecks": []
+  },
+  {
+   "set": "FRESH_CHECK",
+   "idx": 9837,
+   "cell": "bridge/defended/restore_and_conserve/H2/1",
+   "validInSearch": true,
+   "generatorRangeValid": true,
+   "nativeStateAdmissible": true,
+   "publicHistoryIdentical": true,
+   "decisionsIdentical": true,
+   "labelsReproduce": true,
+   "deterministicImpossible": true,
+   "randomizedZeroRiskImpossible": true,
+   "seeded": {
+    "w1": "NOT_ESTABLISHED",
+    "w2": "NOT_ESTABLISHED"
+   },
+   "publicBitsLowerBound": 109.4,
+   "failedAdmissibilityChecks": []
+  },
+  {
+   "set": "FRESH_CHECK",
+   "idx": 7456,
+   "cell": "bridge/industrial/restore_and_protect/H2/1",
+   "validInSearch": true,
+   "generatorRangeValid": true,
+   "nativeStateAdmissible": true,
+   "publicHistoryIdentical": true,
+   "decisionsIdentical": true,
+   "labelsReproduce": true,
+   "deterministicImpossible": true,
+   "randomizedZeroRiskImpossible": true,
+   "seeded": {
+    "w1": "SEEDED_GENERATOR_REACHABLE",
+    "w2": "NOT_ESTABLISHED"
+   },
+   "publicBitsLowerBound": 109,
+   "failedAdmissibilityChecks": []
+  },
+  {
+   "set": "FRESH_EXPLORE",
+   "idx": 5819,
+   "cell": "chain/industrial/restore_and_protect/H2/3",
+   "validInSearch": true,
+   "generatorRangeValid": true,
+   "nativeStateAdmissible": true,
+   "publicHistoryIdentical": true,
+   "decisionsIdentical": true,
+   "labelsReproduce": true,
+   "deterministicImpossible": true,
+   "randomizedZeroRiskImpossible": true,
+   "seeded": {
+    "w1": "NOT_ESTABLISHED",
+    "w2": "SEEDED_GENERATOR_REACHABLE"
+   },
+   "publicBitsLowerBound": 207.8,
+   "failedAdmissibilityChecks": []
+  }
+ ],
+ "allValidWitnessesAdmissible": true,
+ "seededReachability": {
+  "worldsChecked": 18,
+  "seededReachable": 5,
+  "notEstablished": 13,
+  "pairsWithBothSeeded": 0,
+  "minPublicBits": 77.2614132032138
+ }
+}

@@ -1,0 +1,17 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Sentinel ASCII Worlds 2.0</title><link rel="stylesheet" href="/style.css"></head>
+<body>
+<header><strong>SENTINEL GRID / ASCII WORLDS 2.0</strong><span>R0 LOCAL SIM ONLY / DIAGNOSTIC / NO CERTIFICATE / NOT A STAGE 3H COMPETENCE RESULT</span></header>
+<nav aria-label="Games"><button data-game="pong">1 PONG</button><button data-game="platformer">2 SIDE SCROLLER</button><button data-game="fighter">3 FIGHTER</button><button data-game="racing">4 RACING</button></nav>
+<section class="controls" aria-label="Simulation controls">
+<label>CONTROL <select id="mode"><option value="sentinel" selected>SENTINEL TEST PLANNER</option><option value="prime">ROOT-PUCT (ONE-STEP, INCUMBENT)</option><option value="baseline">RULE BASELINE</option><option value="manual">MANUAL</option></select></label>
+<label>SEED <input id="seed" type="number" value="1" min="0" max="4294967295"></label>
+<label>DIFFICULTY <select id="difficulty"><option>1</option><option>2</option><option selected>3</option><option>4</option><option>5</option></select></label>
+<label>FIGHTER OPPONENT <select id="style"><option value="ADAPTIVE">ADAPTIVE</option><option value="AGGRESSIVE">AGGRESSIVE</option><option value="DEFENSIVE">DEFENSIVE</option><option value="COUNTER_ATTACKER">COUNTER ATTACKER</option></select></label>
+<label>TICKS/S <select id="speed"><option>5</option><option selected>10</option><option>20</option><option>40</option></select></label>
+<button id="play">RUN</button><button id="step">STEP</button><button id="reset">RESET</button><button id="fullscreen">FULL SCREEN</button><button id="export">EXPORT REPLAY</button>
+</section>
+<main><section id="world-section"><h1 id="title">WORLD</h1><pre id="world" aria-label="ASCII game field"></pre></section>
+<aside><section><h2>DIAGNOSTIC</h2><pre id="diagnostic"></pre></section><section><h2>STATE</h2><pre id="state"></pre></section><section><h2>DECISION / ACTIONS</h2><pre id="decision"></pre><div id="actions"></div></section><section><h2>TRACE</h2><pre id="trace"></pre></section><section><h2>METRICS / DIAGNOSTIC</h2><pre id="metrics"></pre></section></aside></main>
+<footer><div id="legend"></div><div id="keys"></div><div id="status" role="status">STARTING / no calibrated confidence available</div></footer>
+<script type="module" src="/app.mjs"></script></body></html>

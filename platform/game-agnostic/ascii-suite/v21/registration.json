@@ -1,0 +1,378 @@
+{
+  "schema": "ASCII_WORLDS_2_1_PREREGISTRATION_V1",
+  "registeredAt": "2026-10-09T06:52:40.877Z",
+  "registeredBefore": "first access to fresh heldout families A/B",
+  "plan": {
+    "schema": "ASCII_WORLDS_2_1_PREREGISTRATION_V1",
+    "evidenceStatus": "BOUNDED_DIAGNOSTIC_NOT_STAGE3H_CERTIFICATION",
+    "authority": "R0",
+    "canDispatch": false,
+    "canMutateLiveWorld": false,
+    "onlineLearningEnabled": false,
+    "promotedToLiveRuntime": false,
+    "developmentSeeds": [
+      111001,
+      111002,
+      111003,
+      111004,
+      111005,
+      111006,
+      111007,
+      111008
+    ],
+    "softwareTestSeeds": [
+      112001,
+      112002,
+      112003,
+      112004
+    ],
+    "heldoutFamilies": {
+      "A": [
+        151001,
+        151002,
+        151003,
+        151004,
+        151005,
+        151006,
+        151007,
+        151008,
+        151009,
+        151010,
+        151011,
+        151012,
+        151013,
+        151014,
+        151015,
+        151016
+      ],
+      "B": [
+        161001,
+        161002,
+        161003,
+        161004,
+        161005,
+        161006,
+        161007,
+        161008,
+        161009,
+        161010,
+        161011,
+        161012,
+        161013,
+        161014,
+        161015,
+        161016
+      ]
+    },
+    "untouchedFutureReserve": [
+      141001,
+      141002,
+      141003,
+      141004,
+      141005,
+      141006,
+      141007,
+      141008,
+      141009,
+      141010,
+      141011,
+      141012,
+      141013,
+      141014,
+      141015,
+      141016,
+      141017,
+      141018,
+      141019,
+      141020,
+      141021,
+      141022,
+      141023,
+      141024,
+      141025,
+      141026,
+      141027,
+      141028,
+      141029,
+      141030,
+      141031,
+      141032
+    ],
+    "priorInspectedSeedsForbiddenForConfirmation": "81001-81010; explicitly used only for Phase 0 reproduction",
+    "controllerVersions": {
+      "V2": "frozen original controllers",
+      "V3": "3.0.1_APPLIED_ACTION_FEEDBACK_FAIRNESS_REPAIR",
+      "shot": "3.0.1 DIAGNOSTIC_NOT_DEFAULT"
+    },
+    "retiredAttempt": {
+      "seeds": "121001-121016, 131001-131016",
+      "status": "ABORTED_INFORMATION_FAIRNESS_CONTRACT_FAILURE",
+      "selection": "no outcome summaries inspected or used for tuning; criteria unchanged; source and complete partial records retained"
+    },
+    "main": {
+      "games": [
+        "platformer",
+        "pong",
+        "fighter",
+        "racing"
+      ],
+      "difficulty": 5,
+      "conditions": [
+        "NORMAL",
+        "DELAY3",
+        "JITTER"
+      ],
+      "variants": [
+        "V2",
+        "V3",
+        "RULE"
+      ],
+      "stressConditions": [
+        "STALE_REPEAT",
+        "MISSING",
+        "PARTIAL"
+      ],
+      "stressSeedsPerFamily": 8,
+      "normalPongBands": [
+        1,
+        2,
+        3,
+        4
+      ],
+      "additionalDifficulty": 3
+    },
+    "fighter": {
+      "adversaries": [
+        "AGGRESSIVE_PRESSURE",
+        "DEFENSIVE_TURTLE",
+        "COUNTER_PUNISHER",
+        "ANTI_AIR_SPECIALIST",
+        "ADAPTIVE_MIXUP",
+        "MIRROR_V2"
+      ],
+      "latencies": [
+        0,
+        1,
+        3,
+        5
+      ],
+      "seedsPerFamily": 8,
+      "variants": [
+        "RULE",
+        "V2",
+        "V3"
+      ],
+      "startingGeometry": "seeded spacing and mirrored side; same public physics, hitboxes, health, simultaneous tick, actions, score",
+      "grappling": "NOT_APPLICABLE_NO_MECHANIC"
+    },
+    "racing": {
+      "rotatedSlots": [
+        0,
+        1,
+        2,
+        3
+      ],
+      "seedsPerFamily": 8,
+      "conditions": [
+        "NORMAL",
+        "DELAY3"
+      ],
+      "variants": [
+        "RULE",
+        "V2",
+        "V3"
+      ]
+    },
+    "ablations": {
+      "seedsPerFamily": 8,
+      "condition": "DELAY3",
+      "difficulty": 5,
+      "variants": {
+        "platformer": [
+          "V3",
+          "RAW_LATEST_OBSERVATION",
+          "AGE_AWARE_ESTIMATION",
+          "AGE_AWARE_ESTIMATION_WITH_UNCERTAINTY",
+          "AGE_AWARE_ESTIMATION_WITH_ACTION_HISTORY",
+          "NO_UNCERTAINTY",
+          "NO_ACTION_HISTORY",
+          "NO_MEMORY",
+          "SHORT_HORIZON"
+        ],
+        "pong": [
+          "V3",
+          "RAW_LATEST_OBSERVATION",
+          "AGE_AWARE_ESTIMATION",
+          "AGE_AWARE_ESTIMATION_WITH_UNCERTAINTY",
+          "AGE_AWARE_ESTIMATION_WITH_ACTION_HISTORY",
+          "NO_UNCERTAINTY",
+          "NO_ACTION_HISTORY",
+          "SHOT_PLANNER"
+        ],
+        "fighter": [
+          "V3",
+          "RAW_LATEST_OBSERVATION",
+          "AGE_AWARE_ESTIMATION",
+          "AGE_AWARE_ESTIMATION_WITH_UNCERTAINTY",
+          "AGE_AWARE_ESTIMATION_WITH_ACTION_HISTORY",
+          "NO_UNCERTAINTY",
+          "NO_ACTION_HISTORY",
+          "NO_OPPONENT_MODEL",
+          "SHORT_HORIZON"
+        ],
+        "racing": [
+          "V3",
+          "RAW_LATEST_OBSERVATION",
+          "AGE_AWARE_ESTIMATION",
+          "AGE_AWARE_ESTIMATION_WITH_UNCERTAINTY",
+          "AGE_AWARE_ESTIMATION_WITH_ACTION_HISTORY",
+          "NO_UNCERTAINTY",
+          "NO_ACTION_HISTORY",
+          "NO_MEMORY",
+          "SHORT_HORIZON",
+          "NO_STRATEGIC_ACTION"
+        ]
+      }
+    },
+    "scenarios": {
+      "seedsPerFamily": 8,
+      "variants": [
+        "V2",
+        "V3",
+        "NO_MEMORY"
+      ],
+      "conditions": [
+        "NORMAL",
+        "DELAY3"
+      ],
+      "cases": {
+        "platformer": [
+          "WIND_SHIFT",
+          "FAST_PATROL"
+        ],
+        "pong": [
+          "ADAPTIVE_PONG"
+        ],
+        "racing": [
+          "WET_GRIP_LOW",
+          "WET_GRIP_HIGH",
+          "SEEDED_GRIP_CHANGE"
+        ]
+      },
+      "parameters": {
+        "windStrength": [
+          0.38,
+          0.42
+        ],
+        "patrolSpeedMultiplier": [
+          1,
+          1.15
+        ],
+        "wetGripFraction": [
+          0.55,
+          0.8
+        ],
+        "laterLapGripFraction": 0.62
+      },
+      "structuralOOD": "NOT_RUN; fresh generator seeds and bounded physical distribution shifts are not structural OOD"
+    },
+    "budgets": {
+      "tickLimits": {
+        "pong": 5000,
+        "platformer": 1500,
+        "fighter": 900,
+        "racing": 4000
+      },
+      "estimatorMaxAge": 12,
+      "observedActionHistoryTicks": 64,
+      "platformer": "101 plans * up to 3 position hypotheses * 45 ticks; repeated-failure comparison up to 6 strategies, measured separately",
+      "fighter": "up to 35 options * 5 opponent hypotheses * 28 ticks; equal budget for mirror, styles",
+      "racing": "16 plans * 40 ticks + 20 HUD prediction ticks",
+      "pong": "18 unique sightings, one degree <=2 fit and intercept projection; no simulation lookahead",
+      "reactionTimeClaims": "Wall times diagnostic; no real-time guarantee or causal speedup claim; paired order alternates by seed to reduce drift"
+    },
+    "materiality": {
+      "platformerDelayedCompletionGain": 0.2,
+      "normalCompletionNoninferiority": -0.1,
+      "pongDelayedReturnGain": 0.1,
+      "pongNormalReturnNoninferiority": -0.02,
+      "shotScoreGain": 0.5,
+      "shotReturnNoninferiority": -0.02,
+      "fighterDelayedWinGain": 0.15,
+      "racingDelayPlacementGain": 0.3,
+      "racingRulePlacementGain": 0.3,
+      "catastropheIncreaseLimit": 0.05,
+      "repeatedFailureIncreaseLimit": 0.05
+    },
+    "statistics": {
+      "primaryComparison": "paired V3 minus V2, d5 DELAY3, seed is sampling unit, no game pooling",
+      "primaryMetrics": {
+        "platformer": "success",
+        "pong": "metrics.returnRate",
+        "fighter": "success",
+        "racing": "negative metrics.placement"
+      },
+      "intervals": "deterministic paired seed-cluster percentile bootstrap, 4000 resamples; two-sided 98.75% for four primary tests (Bonferroni), 95% secondary/exploratory; degenerate bootstrap disclosed with separate marginal Wilson rate intervals",
+      "independentReplication": "primary materiality mean met separately in A and B, pooled lower interval strictly above zero; safety/regression limits assessed separately and can veto acceptance",
+      "normalNoninferiority": "95% paired lower interval above declared noninferiority bound; positive estimator accuracy alone not accepted",
+      "grid": "average four rotated positions within seed before intervals; no fictitious n=slots*seeds",
+      "fighter": "within-seed average styles/latencies reported separately; heterogeneous opponent-relative outcome, not true counterfactual regret",
+      "secondaryClaims": "descriptive and exploratory, not globally multiplicity-controlled",
+      "ablation": "paired V3-with minus component-off success/return/latency/catastrophe; no canonical expert attribution"
+    },
+    "metrics": {
+      "REGRET_ONE_STEP_PROXY": "NOT_COMPUTED_NEW_RUN; old proxy name corrected, not true regret",
+      "DDV": "NOT_TESTABLE_UNQUALIFIED_SCIENTIFIC_TARGET",
+      "EPISODE_DECISION_VALUE": "within-world diagnostic episode return/success, not inherited DDV",
+      "allocation": "net heap change only; total allocation NOT_MEASURED; GC/JIT uncontrollable",
+      "simulationCounts": "instrumented V3 planner counts; V2 count upper bound only; estimate branching upper bounds separately, not a learned model"
+    },
+    "claimCriteria": "No certification/promotion/router/world-model/Expert10. Shot selection stays disabled unless frozen score and return criteria pass; corner memory material only if measurable paired episode gain; failures and inconclusive results retained without retuning."
+  },
+  "planHash": "6b8f8bedb8de2ec69f8b23ebb774ef10bee447cbf01f2101a68e12f01858e5a7",
+  "source": {
+    "files": {
+      "ascii-suite/v21/adversaries.mjs": "d73a6cf529a75ffb90865f40c5fd63d1fb3e14612b376b078d18576b0f10931b",
+      "ascii-suite/v21/baseline-freeze.json": "863c1a1bf8e04fefae0049bb5d51eb668c63174e8f052e657c4edac993688154",
+      "ascii-suite/v21/controller.mjs": "16a4f7d54b860091ae82ee38ce6bd248588339f5805386daf9a372b10d1fea76",
+      "ascii-suite/v21/controllers/fighter.mjs": "bf0ac90f3ddb963e88cc6f640b799404bb9e31498c161cd8fc4ad4639abfc864",
+      "ascii-suite/v21/controllers/platformer.mjs": "1b521ec469befa8497cfc53ce3d482eb828fad1c0041f8024471d4c2d2efca2c",
+      "ascii-suite/v21/controllers/pong.mjs": "3ab45650d6515775728b4dfa061f02f8eca646417b188973491bdb5f9a336f49",
+      "ascii-suite/v21/controllers/racing.mjs": "257be2dca71873e80e65c32806c4781a09ab0212bcaf822c350e08c7f25b9257",
+      "ascii-suite/v21/dev.mjs": "b78a6b75750333e43e8d2e4b3b9623ad125b1ed39dc4c43b8a5e349394f40a98",
+      "ascii-suite/v21/estimator.mjs": "20dc8ecd8853379fcf781e08e54d1bcf9802dfa46d489f7a14087e5a4f0c29a5",
+      "ascii-suite/v21/evaluate.mjs": "325860011609e715297ae5f9993d40469f6450c730d49dee09387560436e9a89",
+      "ascii-suite/v21/freeze.mjs": "59b191c3c3c964db46e187f081ae2e8257e12b095475a6d58ec651be4a483ab4",
+      "ascii-suite/v21/harness.mjs": "6c0fc1dd6720a18d420299592536ee01d13e31ababf6ce882b950ae14b980135",
+      "ascii-suite/v21/phase0.mjs": "11f9daa1df2153467c1ca51d9b6dbba1f11dd2a3513e6696c5416caeefcd0dd4",
+      "ascii-suite/v21/plan.mjs": "b85c06c45ce71c74cf77f2cb5cbb5fb1b2ba541ad62f9f8b5388cd8727e2a3a9",
+      "ascii-suite/v21/register.mjs": "7e1dac50fcaa97e4d14f9f8472ee64ba22fd44c26838ba101e51787da919e5d0",
+      "ascii-suite/v21/replay.mjs": "144b7df1cb5fec916b4e7a1d66f54fc0ed20b75eff3eb3c0aaee2a28b573e34d",
+      "ascii-suite/v21/report.mjs": "c93c5a1b66f5db2b76908dbd16828a8394948f6a00009589fa68aaa69f046610",
+      "ascii-suite/v21/scenarios.mjs": "e1e51c9d80e1e78a2733ec78b35ba30f1511eee5c7bd9ad6889fb9a6c17ab743",
+      "ascii-suite/v21/server.mjs": "968c1921840a50ca5edbe224d67476104e80d01a85276dcb8d11e88b32de1382",
+      "ascii-suite/v21/server.test.mjs": "622d0b3d4e94947723319f5b3bff3e8ad2c62e22dcd87f4eceba8004164cba2c",
+      "ascii-suite/v21/statistics.mjs": "ca14f91d0dfadadc2443c729d21e41e3adc8a73709952a5e2525ebc694a6a826",
+      "ascii-suite/v21/temporal.mjs": "0471b2d93defd0a1bf21fd5e27cecb68faa31cd1351e5fc96e39d68d1b2ce69f",
+      "ascii-suite/v21/temporal.test.mjs": "d18975e564d433cadf66cec857eefbff70ade14f46b1adf0e6b4875a2894ed02",
+      "ascii-suite/v21/web/app.mjs": "93d80b290386f737f8e082bd99874d185cf2cc0bde456bb45e852fbd26f02a36",
+      "ascii-suite/v21/web/index.html": "63f93c5fd379fd1f40049c06e169d010a427cee1df771a184dd784a232152d97",
+      "ascii-suite/v21/web/style.css": "e104447826acc08e91961fb4af862fc4579532994cc72649ede25c7a757687d8"
+    },
+    "sourceHash": "6558b0f7d4a5a1e5965e8b7baa6599bc121246e877ae9335a15c058b3d7db902"
+  },
+  "protected": {
+    "frozenPathsUnchanged": true,
+    "baselineHash": "ec6193fcf73a74c4e83cecc974154e7ba64c56bbfc8a291482feb47ee76295ef",
+    "stage3f": "41748ff68ff16e6a137b53b72eb7203cb62aa0e761bf15c19f7a13b73d4b79a9",
+    "stage3g": "686805d655e94e4ecc24a98d965a4e2f33ed8c51c69e746fc11e96022b64f2f5"
+  },
+  "developmentEpisodes": 192,
+  "inheritedVerification": {
+    "gameplayTests": "44/44 PASS",
+    "stage3gBoundaryTests": "6/6 PASS",
+    "stage3gCertificate": "EXACT_CANONICAL_REPRODUCTION_PASS",
+    "stage3fFreshReproduction": "PASS; 20/20 tests; trackedWriteAttempts=0"
+  },
+  "preregistrationHash": "66d3fb3d299b788ee486e74eeac5d696a3a1588924971ef713505334695832df"
+}

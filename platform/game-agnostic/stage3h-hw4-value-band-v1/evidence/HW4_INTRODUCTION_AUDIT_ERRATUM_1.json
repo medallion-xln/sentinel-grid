@@ -1,0 +1,218 @@
+{
+ "schema": "STAGE3H_HW4_INTRODUCTION_AUDIT_ERRATUM_V1",
+ "authority": "R0",
+ "stage": "H-W4B Phase 0",
+ "labels": [
+  "RESEARCH_ONLY",
+  "NOT_POLICY_INPUT",
+  "ADDITIVE_ERRATUM"
+ ],
+ "generatedAt": "2026-11-11T18:12:14.099Z",
+ "statement": "The frozen class CSV is CORRECT and is the authoritative record. Two frozen summaries were wrong or incomplete (E1, E2). No frozen file was edited; no validation was re-executed; the H-W4 verdict and counts are unchanged.",
+ "frozenIdentities": {
+  "csv": "e7e8cfad9cdbcf1400f56568915123f217e99744007e392d4cbd539e84c8c840",
+  "md": "144db753de176d7302a3fc5a10e679efbbb4e7e9be7b2966973952362780a11e",
+  "manifest": "67edbc71345397f258f9967fe6038a0b71fbd3fb78aa57790ffb96fda59344cf",
+  "validationResults": "f24878df4c444635f6edcfa8ac8feed7a70fa4bb9e4f377bec7c618bea2df6c0",
+  "script": "1c0b08b5f065c042f5df6790075d6c608c0887c38d9351cb65c5c6e6b0006629"
+ },
+ "setArithmetic": {
+  "S0": 32,
+  "NEXUS": 65,
+  "S0_ONLY": 18,
+  "NEXUS_ONLY": 51,
+  "BOTH": 14,
+  "UNIQUE_FAILURE_CLASSES": 83,
+  "PASS_BOTH": 517
+ },
+ "bySelectedC10ActionType": {
+  "vsS0": {
+   "BYPASS": 3,
+   "MOVE": 8,
+   "REPAIR": 5,
+   "RESTORE": 7,
+   "RETREAT": 9
+  },
+  "vsNexus": {
+   "BYPASS": 2,
+   "MOVE": 46,
+   "RESTORE": 3,
+   "RETREAT": 14
+  },
+  "union": {
+   "BYPASS": 4,
+   "MOVE": 47,
+   "REPAIR": 5,
+   "RESTORE": 10,
+   "RETREAT": 17
+  },
+  "S0_ONLY": {
+   "BYPASS": 2,
+   "MOVE": 1,
+   "REPAIR": 5,
+   "RESTORE": 7,
+   "RETREAT": 3
+  },
+  "NEXUS_ONLY": {
+   "BYPASS": 1,
+   "MOVE": 39,
+   "RESTORE": 3,
+   "RETREAT": 8
+  },
+  "BOTH": {
+   "BYPASS": 1,
+   "MOVE": 7,
+   "RETREAT": 6
+  }
+ },
+ "byEffectiveComparatorActionType": {
+  "vsS0": {
+   "MOVE": 23,
+   "REPAIR": 8,
+   "RESTORE": 1
+  },
+  "vsNexus": {
+   "PROTECT": 25,
+   "REINFORCE": 32,
+   "REPAIR": 8
+  },
+  "crossS0": {
+   "BYPASS->MOVE": 3,
+   "MOVE->MOVE": 3,
+   "MOVE->REPAIR": 4,
+   "MOVE->RESTORE": 1,
+   "REPAIR->MOVE": 5,
+   "RESTORE->MOVE": 7,
+   "RETREAT->MOVE": 5,
+   "RETREAT->REPAIR": 4
+  },
+  "crossNexus": {
+   "BYPASS->PROTECT": 2,
+   "MOVE->PROTECT": 14,
+   "MOVE->REINFORCE": 24,
+   "MOVE->REPAIR": 8,
+   "RESTORE->PROTECT": 3,
+   "RETREAT->PROTECT": 6,
+   "RETREAT->REINFORCE": 8
+  },
+  "nexusOrbitEqualsS0OrbitAmongNexusFailures": 0
+ },
+ "originalActionFamilyClassification": {
+  "frozen": {
+   "BYPASS": 47,
+   "RESTORE": 4,
+   "UNKNOWN": 32
+  },
+  "reproduced": {
+   "BYPASS": 47,
+   "RESTORE": 4,
+   "UNKNOWN": 32
+  },
+  "mechanism": {
+   "hardcodedNames": [
+    "MOVE",
+    "PROTECT",
+    "RESTORE",
+    "RETREAT",
+    "BYPASS",
+    "REPAIR"
+   ],
+   "actualFirstSixOneHotColumns": [
+    "ATTACK",
+    "BUILD",
+    "BYPASS",
+    "COLLECT",
+    "MOVE",
+    "PROTECT"
+   ],
+   "allActionTypes": [
+    "ATTACK",
+    "BUILD",
+    "BYPASS",
+    "COLLECT",
+    "MOVE",
+    "PROTECT",
+    "REINFORCE",
+    "REPAIR",
+    "RESTORE",
+    "RETREAT",
+    "TRANSFER",
+    "WAIT"
+   ]
+  },
+  "originalLabelFromTrueType": {
+   "BYPASS<=MOVE": 47,
+   "RESTORE<=BYPASS": 4,
+   "UNKNOWN<=REPAIR": 5,
+   "UNKNOWN<=RESTORE": 10,
+   "UNKNOWN<=RETREAT": 17
+  }
+ },
+ "baseVsTwin": {
+  "vsS0": {
+   "base": 16,
+   "twinOnly": 16
+  },
+  "vsNexus": {
+   "base": 38,
+   "twinOnly": 27
+  }
+ },
+ "tableABaseLabel": {
+  "tableA_label_base_by_chosenCatBase": 17,
+  "introductionOnBaseVsS0": 16,
+  "rowsWhereLabelDiffers": [
+   "HW4-VAL-486"
+  ]
+ },
+ "manifestListedSubtotals": {
+  "vsS0": 27,
+  "vsNexus": 65
+ },
+ "findings": [
+  {
+   "id": "E1",
+   "where": "HW4_VALIDATION_RESULTS.json candidates[].introducedActionTypes (frozen; NOT edited)",
+   "status": "INCORRECT_LABELS",
+   "detail": "The histogram {\"BYPASS\":47,\"RESTORE\":4,\"UNKNOWN\":32} was computed as hardcoded[rows[chosen].slice(0,6).indexOf(1)] with hardcoded=[\"MOVE\",\"PROTECT\",\"RESTORE\",\"RETREAT\",\"BYPASS\",\"REPAIR\"], but the feature one-hot columns follow FORGE_ACTION_TYPE_NAMES (alphabetical): first six = [\"ATTACK\",\"BUILD\",\"BYPASS\",\"COLLECT\",\"MOVE\",\"PROTECT\"] of 12 types. The labels are therefore a positional mislabelling over the UNION of 83 failing classes, not per-comparator counts. True mapping (original<=true): {\"BYPASS<=MOVE\":47,\"RESTORE<=BYPASS\":4,\"UNKNOWN<=REPAIR\":5,\"UNKNOWN<=RESTORE\":10,\"UNKNOWN<=RETREAT\":17}."
+  },
+  {
+   "id": "E2",
+   "where": "HW4_INTRODUCTION_AUDIT_MANIFEST.json counts (frozen; NOT edited)",
+   "status": "INCOMPLETE",
+   "detail": "The manifest lists MOVE/PROTECT/RESTORE/RETREAT/BYPASS per comparator but omits REPAIR. Listed S0 subtotals sum to 27 (not 32): the missing 5 are REPAIR (vs S0 = 5, vs Nexus = 0). Listed Nexus subtotals sum to 65. Every listed value is individually correct."
+  },
+  {
+   "id": "E3",
+   "where": "HW4_INTRODUCTION_AUDIT.md Table D (frozen; NOT edited)",
+   "status": "CORRECT",
+   "detail": "Table D chosen-action family counts equal the independent CSV aggregation and sum to 32 / 65."
+  },
+  {
+   "id": "E4",
+   "where": "HW4_INTRODUCTION_AUDIT.md Table A column \"base/twin\" (frozen; NOT edited)",
+   "status": "LABEL_USES_DIFFERENT_PREDICATE",
+   "detail": "Table A labels a row \"base\" when the chosen action is catastrophic on the base world (chosen_catastrophe_base), whereas the Table D / manifest base counts use introduction-on-base (intro_on_base_s0). Rows where the two predicates differ: 1 (HW4-VAL-486). The authoritative base/twin split is the CSV intro_on_base_* columns."
+  }
+ ],
+ "checks": {
+  "SELECTED_VS_S0_SUMS_TO_32": true,
+  "SELECTED_VS_NEXUS_SUMS_TO_65": true,
+  "SELECTED_UNION_SUMS_TO_83": true,
+  "PARTITION_SUMS": true,
+  "COMPARATOR_VS_S0_SUMS_TO_32": true,
+  "COMPARATOR_VS_NEXUS_SUMS_TO_65": true,
+  "ORIGINAL_HISTOGRAM_REPRODUCED_EXACTLY": true,
+  "ORIGINAL_HISTOGRAM_SUMS_TO_83": true,
+  "CSV_MATCHES_SOURCE_SELECTED_ACTIONS": true,
+  "V1_V2_IDENTICAL_DECISIONS": true
+ },
+ "reconciled": true,
+ "verdictPreserved": {
+  "H_W4_CLASSIFICATION": "C",
+  "H_W4_V2_DEV_QUALIFIED": false,
+  "V1_V2_SAFETY_EFFECT": 0,
+  "V1_V2_DECISION_FLIPS": 0
+ },
+ "markdownSha256": "7f87f3a4c61724c25f1df69a2ec532f8cc38f3d6fe5dce207562d396ffc2b21e"
+}

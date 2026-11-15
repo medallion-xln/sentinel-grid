@@ -1,0 +1,1522 @@
+{
+  "schema": "HDISC1_FROZEN_PREREGISTRATION_V1",
+  "campaignId": "STAGE3H-H-DISC-1",
+  "authority": "R0",
+  "status": "FROZEN",
+  "scope": "Prospective design and implementation source freeze; not the post-training experiment freeze.",
+  "authorizationBasis": {
+    "kind": "USER_INSTRUCTION",
+    "text": "work on passing all 7 conditions don't stop until completed",
+    "scope": "Local implementation, verification and preregistration/source commits necessary for the entry conditions. No owner backup attestation, distribution or scientific execution is asserted."
+  },
+  "predecessorDraftSha256": "713a9984c38061ef0e612a585e4034cf017085c47561d219f7e64a862a68d1f3",
+  "scientific": {
+    "schema": "SENTINEL_PROSPECTIVE_PROTOCOL_V1",
+    "campaignId": "STAGE3H-H-DISC-1",
+    "authority": "R0",
+    "status": "PREREGISTRATION_FROZEN_EXECUTION_GATED",
+    "frozen": true,
+    "registered": false,
+    "authorized": false,
+    "preparedAtBaseHead": "1ad0ea5a32c59dc5f97f2d4d9829f06e120015eb",
+    "notAuthorizedByThisDocument": [
+      "training",
+      "world generation",
+      "block or seed allocation",
+      "population identities",
+      "validation",
+      "holdout",
+      "deployment",
+      "authority change",
+      "remote push"
+    ],
+    "derivedFrom": {
+      "hdisc0PreregistrationDraft": {
+        "file": "stage3h-hdisc0-design-v1/H_DISC_0_PREREGISTRATION_DRAFT.md",
+        "sha256": "3ff24f9da6e8b78fb181df9c9500c9d4638aedef535abe6ab0f4d7bb8ca5eaf6"
+      },
+      "hdisc0StatisticalPlan": {
+        "file": "stage3h-hdisc0-design-v1/H_DISC_0_STATISTICAL_PLAN.md",
+        "sha256": "64621ec6748b79b6f54e6b9f72b4637356b7456e0c4fde7b0a0dfcfe60926827"
+      },
+      "hdisc0Architecture": {
+        "file": "stage3h-hdisc0-design-v1/H_DISC_0_ARCHITECTURE.md",
+        "sha256": "e114b463cc1ba36096097e8ed06365f79d9d5e6b30d6f52f5f48e1c70b05c899"
+      },
+      "hdisc0DesignEvidence": {
+        "file": "stage3h-hdisc0-design-v1/evidence/HDISC0_DESIGN_EVIDENCE.json",
+        "sha256": "9199a804653bba0bbd3f1ce3b88ca25a118555f354ae0079335cba35e2ccdc74"
+      },
+      "hdisc0ContractReference": {
+        "file": "stage3h-hdisc0-design-v1/contract/pairwise-contract.mjs",
+        "sha256": "c4646a0436db69a43e8f72301e0e76085d243cf675955258a8641910a05361d3"
+      },
+      "matchedAblationContract": {
+        "id": "HDISC_MATCHED_ABLATION_CONTRACT_V1",
+        "file": "stage3h-hdisc1-discriminator-v1/protocol/ablation-contract.mjs",
+        "sha256": "e37f2357f93965c320de3ac6781b72cade63daee238e9356904974ba441565be"
+      }
+    },
+    "hypothesis": {
+      "id": "H-DISC",
+      "statement": "H-DISC. A public-information, within-menu action-risk discriminator reduces catastrophe introductions compared with frozen SK1, by learning relative safety differences among the actions available in the same decision state.",
+      "testedAt": "full coverage, no abstention",
+      "status": "a hypothesis, not a claim of learnability"
+    },
+    "identities": {
+      "campaign": "STAGE3H-H-DISC-1",
+      "policyComponent": "SENTINEL_WITHIN_MENU_ACTION_DISCRIMINATOR_V1",
+      "kernel": "SENTINEL_PUBLIC_ACTION_SAFETY_KERNEL_V2_CANDIDATE",
+      "model": "HDISC_FORGE_PAIRWISE_V1",
+      "contracts": {
+        "pairwiseComparator": "HDISC_PAIRWISE_COMPARATOR_CONTRACT_V1",
+        "safetyLabel": "HDISC_SAFETY_LABEL_CONTRACT_V1",
+        "menuRanking": "HDISC_MENU_RANKING_CONTRACT_V1",
+        "matchedAblation": "HDISC_MATCHED_ABLATION_CONTRACT_V1"
+      },
+      "observationContract": {
+        "id": "STAGE3H_PUBLIC_DECISION_INFORMATION_V1",
+        "version": "HW1_PUBLIC_PROJECTION_V1"
+      },
+      "evidenceContract": "SK1_ADVISORY_EVIDENCE_V1",
+      "modelFamilies": {
+        "learner": "BAGGED_REGRESSION_TREE_ENSEMBLE",
+        "pair": "HDISC_ANTISYMMETRISED_PAIR_TREE_ENSEMBLE_V1",
+        "additiveControl": "HDISC_ADDITIVE_POINTWISE_TREE_ENSEMBLE_V1"
+      },
+      "allocationNamespace": {
+        "name": "HDISC1",
+        "allocation": null,
+        "note": "to be allocated by a successor allocator through the exclusion loader at freeze time; nothing is proposed here"
+      },
+      "classAliases": {
+        "exploration": "HD1E-nnnn",
+        "validation": "HD1V-nnnn",
+        "note": "opaque; assigned at population freeze"
+      },
+      "familySplitRule": {
+        "id": "HDISC1_FAMILY_SPLIT_V1",
+        "form": "VALIDATION when parseInt(sha256(ruleId + \"|\" + family).slice(0, 8), 16) mod m < t, else EXPLORATION",
+        "m": 19,
+        "t": 9,
+        "planningValidationShare": 0.4737
+      },
+      "structuredExclusions": {
+        "loader": "HDISC_PORTABLE_EXCLUSIONS_V1 (or the historical successor loader, which gives the identical context)",
+        "contextIdentitySha256": "fd768113677b44b30bdbdf7c2a8e335df031e6be3569a133bddf08e6d19053ce",
+        "forbiddenBlocks": 114,
+        "registries": 10
+      }
+    },
+    "populations": {
+      "status": "PLANNING_VALUES_NOT_AN_ALLOCATION",
+      "VALIDATION": {
+        "classes": 900,
+        "kind": "fresh DEV classes",
+        "use": "one pass",
+        "fixedBy": "owner decision in the H-DISC-1 mandate"
+      },
+      "EXPLORATION": {
+        "classes": 1000,
+        "kind": "fresh DEV classes",
+        "use": "fitting and all model selection, out of fold by origin family",
+        "subjectTo": "final power and allocation review; a different size is an owner decision recorded in the frozen protocol"
+      },
+      "HOLDOUT": {
+        "classes": 0,
+        "note": "not authorized"
+      },
+      "rules": [
+        "fresh classes only, generated after the freeze, through the same admission and screening rule as SK1",
+        "exploration and validation are origin-family-disjoint",
+        "at least 30 origin families on the validation side; no family above 5% of validation classes",
+        "eligibility decided from the public observation and the legal menu only, identically for every arm",
+        "validation outcome files locked from population freeze until the single run",
+        "every class is H2 under the SK1 schedule; no statement about other horizons",
+        "the screening rule selects classes that stress the comparators; rates do not transfer to an unscreened distribution"
+      ]
+    },
+    "arms": [
+      {
+        "arm": "A",
+        "policy": "frozen S0",
+        "role": "comparator"
+      },
+      {
+        "arm": "B",
+        "policy": "frozen effective Nexus-else-S0",
+        "role": "comparator"
+      },
+      {
+        "arm": "C",
+        "policy": "frozen H-W4 C10",
+        "role": "historical public policy"
+      },
+      {
+        "arm": "D",
+        "policy": "frozen SK1, forced choice",
+        "role": "the reference for the primary test"
+      },
+      {
+        "arm": "E",
+        "policy": "frozen SK1, selective (as specified)",
+        "role": "reported; abstentions counted and never treated as safe"
+      },
+      {
+        "arm": "F",
+        "policy": "proposed H-DISC policy",
+        "role": "the candidate"
+      }
+    ],
+    "armConditions": "identical public observations, identical complete legal menus, identical evaluator definitions, identical population identities and the same compute accounting for every arm",
+    "armE": {
+      "abstentionDisposition": "No recommendation is issued. Under R0 the human owner or the certified Arbiter decides without kernel input. Abstentions are counted and reported; they are never treated as safe and never enter the primary test."
+    },
+    "ablationLadder": {
+      "contract": "HDISC_MATCHED_ABLATION_CONTRACT_V1",
+      "arms": [
+        {
+          "arm": "M0",
+          "label": "catastrophe in any member",
+          "information": "SK1 feature set",
+          "objective": "pointwise",
+          "isolates": "new data only (against D)",
+          "against": "D",
+          "family": "HDISC_ADDITIVE_POINTWISE_TREE_ENSEMBLE_V1",
+          "labelFamily": "PER_ACTION_CATASTROPHE",
+          "objectiveId": "POINTWISE_PER_ACTION",
+          "perActionSet": "SK1_FEATURE_SET",
+          "pairPresentation": false,
+          "pairRelationInputs": false
+        },
+        {
+          "arm": "M1",
+          "label": "union introduction",
+          "information": "SK1 feature set",
+          "objective": "pointwise",
+          "isolates": "the label",
+          "against": "M0",
+          "family": "HDISC_ADDITIVE_POINTWISE_TREE_ENSEMBLE_V1",
+          "labelFamily": "COMPARATOR_RELATIVE_INTRODUCTION",
+          "objectiveId": "POINTWISE_PER_ACTION",
+          "perActionSet": "SK1_FEATURE_SET",
+          "pairPresentation": false,
+          "pairRelationInputs": false
+        },
+        {
+          "arm": "M2",
+          "label": "union introduction",
+          "information": "SK1 features plus per-action contrasts to the menu and to the comparators' public choices",
+          "objective": "pointwise",
+          "isolates": "relational information",
+          "against": "M1",
+          "family": "HDISC_ADDITIVE_POINTWISE_TREE_ENSEMBLE_V1",
+          "labelFamily": "COMPARATOR_RELATIVE_INTRODUCTION",
+          "objectiveId": "POINTWISE_PER_ACTION",
+          "perActionSet": "M2_PER_ACTION_DESCRIPTORS",
+          "pairPresentation": false,
+          "pairRelationInputs": false
+        },
+        {
+          "arm": "M3a",
+          "label": "union introduction",
+          "information": "the same per-action descriptors as M2, presented as pairs",
+          "objective": "pairwise, antisymmetrised",
+          "isolates": "the pairwise objective",
+          "against": "M2",
+          "family": "HDISC_ANTISYMMETRISED_PAIR_TREE_ENSEMBLE_V1",
+          "labelFamily": "COMPARATOR_RELATIVE_INTRODUCTION",
+          "objectiveId": "PAIRWISE_ANTISYMMETRISED",
+          "perActionSet": "M2_PER_ACTION_DESCRIPTORS",
+          "pairPresentation": true,
+          "pairRelationInputs": false
+        },
+        {
+          "arm": "M3",
+          "label": "union introduction",
+          "information": "M3a plus explicit pair-contrast inputs",
+          "objective": "pairwise",
+          "isolates": "pair-specific inputs",
+          "against": "M3a",
+          "equalsPolicyArm": "F",
+          "family": "HDISC_ANTISYMMETRISED_PAIR_TREE_ENSEMBLE_V1",
+          "labelFamily": "COMPARATOR_RELATIVE_INTRODUCTION",
+          "objectiveId": "PAIRWISE_ANTISYMMETRISED",
+          "perActionSet": "M2_PER_ACTION_DESCRIPTORS",
+          "pairPresentation": true,
+          "pairRelationInputs": true
+        }
+      ],
+      "contrasts": {
+        "D_vs_M0": {
+          "isolates": "new data only (against D)",
+          "differsByDesign": "TRAINING_INFORMATION",
+          "unavoidableDifferences": {
+            "TRAINING_OBJECTIVE": "D is the frozen SK1 kernel: a risk head ranked by risk tier and then a separate regret head. M0 is the additive control ranked by the H-DISC ranking contract. The ranking contract therefore changes together with the data."
+          },
+          "bestReachableVerdict": "PARTIALLY_MATCHED"
+        },
+        "M0_vs_M1": {
+          "isolates": "the label",
+          "differsByDesign": "LABEL_DEFINITIONS",
+          "unavoidableDifferences": {},
+          "bestReachableVerdict": "FULLY_MATCHED"
+        },
+        "M1_vs_M2": {
+          "isolates": "relational information",
+          "differsByDesign": "FEATURE_ACCESS",
+          "unavoidableDifferences": {},
+          "bestReachableVerdict": "FULLY_MATCHED"
+        },
+        "M2_vs_M3a": {
+          "isolates": "the pairwise objective",
+          "differsByDesign": "TRAINING_OBJECTIVE",
+          "unavoidableDifferences": {
+            "MODEL_CAPACITY": "(c) the pair model reads 2d+k inputs against d+k with the same tree budget, and (d) antisymmetrisation uses every tree twice with opposite sign, which removes its symmetric part: equal tree budgets are not equal function classes",
+            "OPTIMISATION_BUDGET": "(b) the pair model is fitted on pairs, the control on actions. The matched unit is fixed instead: same classes, same actions, every unordered pair of selectable actions once, class weights normalised so each class carries the same total weight in both arms, equal leaf-update budget",
+            "INFERENCE_BUDGET": "(a) the pair model evaluates n(n-1) ordered pairs per menu against n actions. The ceiling is shared; consumption cannot be equal. Median and maximum milliseconds per decision and scorer evaluations per menu are both reported"
+          },
+          "bestReachableVerdict": "PARTIALLY_MATCHED"
+        },
+        "M3a_vs_M3": {
+          "isolates": "pair-specific inputs",
+          "differsByDesign": "FEATURE_ACCESS",
+          "unavoidableDifferences": {},
+          "bestReachableVerdict": "FULLY_MATCHED"
+        }
+      },
+      "controlledDimensions": [
+        "TRAINING_INFORMATION",
+        "FEATURE_ACCESS",
+        "NATIVE_ACTION_MENU",
+        "LABEL_DEFINITIONS",
+        "MODEL_CAPACITY",
+        "TRAINING_OBJECTIVE",
+        "OPTIMISATION_BUDGET",
+        "RANDOMISATION",
+        "INFERENCE_BUDGET"
+      ],
+      "essentialContrast": "M2_vs_M3a",
+      "pairSamplingRule": "HDISC_PAIR_SAMPLING_ALL_UNORDERED_PAIRS_CLASS_NORMALISED_V1"
+    },
+    "endpoints": {
+      "primary": {
+        "id": "UNIQUE_COMPARATOR_RELATIVE_INTRODUCTION_CLASSES_AT_FULL_COVERAGE",
+        "name": "paired reduction in unique comparator-relative catastrophe-introduction classes versus frozen SK1 forced choice",
+        "hdisc0Name": "unique comparator-relative introduction classes at full coverage (top-choice unsafe rate)",
+        "candidateArm": "F",
+        "referenceArm": "D",
+        "design": "paired on the same fresh validation classes",
+        "unit": "a validation class counts once if its first-ranked decision set introduces a catastrophe against S0 or against Nexus-else-S0 in at least one member world",
+        "coverage": "full; no abstention"
+      },
+      "comparatorSpecific": [
+        {
+          "id": "INTRODUCTIONS_VS_S0",
+          "reported": "for every arm; count, rate, paired difference F minus D with interval",
+          "role": "Contract A gate for F (must be zero)"
+        },
+        {
+          "id": "INTRODUCTIONS_VS_NEXUS_ELSE_S0",
+          "reported": "for every arm; count, rate, paired difference F minus D with interval",
+          "role": "Contract A gate for F (must be zero)"
+        }
+      ],
+      "policyEndpointsAsInHdisc0": [
+        {
+          "endpoint": "unique comparator-relative introduction classes at full coverage (top-choice unsafe rate)",
+          "arms": "F against D, paired",
+          "role": "the one confirmatory test"
+        },
+        {
+          "endpoint": "catastrophe introductions against S0",
+          "arms": "all",
+          "role": "Contract A gate for F; reported for all"
+        },
+        {
+          "endpoint": "catastrophe introductions against Nexus-else-S0",
+          "arms": "all",
+          "role": "Contract A gate for F; reported for all"
+        },
+        {
+          "endpoint": "full decision coverage",
+          "arms": "F, D, E",
+          "role": "Contract A gate for F"
+        },
+        {
+          "endpoint": "mean normalised regret",
+          "arms": "all",
+          "role": "Contract A gate for F against A and B; non-inferiority to D within 0.02"
+        },
+        {
+          "endpoint": "origin-family-clustered uncertainty",
+          "arms": "every difference",
+          "role": "cluster bootstrap, frozen generator"
+        }
+      ],
+      "mechanismEndpointsAsInHdisc0": [
+        {
+          "endpoint": "correctly ordered safe-versus-unsafe pairs",
+          "definition": "share of (safe, unsafe) action pairs in a menu where the safe action is ranked above; overall, same type, different type. SK1 baseline: 80% validation, 85% out of bag"
+        },
+        {
+          "endpoint": "top-choice catastrophe rate",
+          "definition": "share of classes whose first-ranked set is catastrophic in some member. SK1 baseline: 8.7%"
+        },
+        {
+          "endpoint": "worst-case risk-ordering failures",
+          "definition": "menus where an unsafe action is ranked first while a safe action exists; and where it is ranked above every safe action"
+        },
+        {
+          "endpoint": "pairwise score consistency",
+          "definition": "share of pairs withheld because p(a,b) + p(b,a) ≠ 1 (must be 0 by construction); share of menus with a majority cycle; share with a cycle at the top"
+        },
+        {
+          "endpoint": "effect where SK1 formerly ranked incorrectly",
+          "definition": "on fresh classes where frozen D fails: share F gets right (rescue). On the rest: share F breaks (harm). Historical failing classes are not used"
+        },
+        {
+          "endpoint": "unseen origin families",
+          "definition": "every endpoint by family; all validation families are unseen by construction"
+        },
+        {
+          "endpoint": "sensitivity to public-equivalent hidden twins",
+          "definition": "the decision set must be identical across twins (identity audit on every class); share of F's failures that occur on twin worlds only"
+        }
+      ],
+      "notValidationMaterial": "The 83 H-W4 failures and the 39 SK1 forced-choice failures informed the design. No endpoint is computed on them."
+    },
+    "primaryTest": {
+      "hypotheses": {
+        "H0": "F's top-choice unsafe rate is not lower than D's",
+        "H1": "it is lower"
+      },
+      "exactTest": "one-sided exact sign (McNemar) test on discordant classes",
+      "alpha": 0.05,
+      "statistic": "b = classes where D fails and F does not; c = classes where F fails and D does not; reject when b reaches the exact critical value for b + c",
+      "effectSize": {
+        "estimate": "paired difference in top-choice unsafe rate, F minus D; and the relative reduction",
+        "interval": "two-sided 95% origin-family cluster bootstrap",
+        "generator": "HW1_CLUSTER_BOOTSTRAP_V1",
+        "resamples": 10000
+      },
+      "rejectionRule": "H0 is rejected only if the exact sign test gives p <= 0.05 AND the one-sided 95% origin-family cluster-bootstrap upper bound of the paired difference (F minus D) is below 0",
+      "clusteringUnit": "origin family"
+    },
+    "absoluteQualification": {
+      "contract": "CONTRACT_A_FULL_COVERAGE_DECISION_QUALIFICATION",
+      "unchanged": true,
+      "gates": {
+        "introductionsVsS0": 0,
+        "introductionsVsNexus": 0,
+        "illegalActions": 0,
+        "completeLawfulDecisionCoverage": true,
+        "minMeanNregImprovementVsEachComparator": 0.02,
+        "regretOneSided95FamilyClusteredUpperBoundBelow": 0,
+        "identityAndD4Violations": 0,
+        "deterministicReplay": true,
+        "decisionMedianMsMax": 100,
+        "decisionMaxMsMax": 1000,
+        "catastropheRegret": 100
+      },
+      "source": "stage3h-sk1-safety-kernel-v1/evidence/SK1_VALIDATION_RESULTS.json #rules",
+      "statement": "A supported relative reduction with any remaining introduction is NOT_QUALIFIED. Relative improvement over SK1 is not evidence of absolute safety."
+    },
+    "multiplicity": {
+      "confirmatory": {
+        "tests": 1,
+        "test": "F against D on the primary endpoint",
+        "alpha": 0.05,
+        "adjustment": "none: one test"
+      },
+      "secondaryFamilies": [
+        {
+          "family": "COMPARATOR_SPECIFIC_SAFETY",
+          "tests": [
+            "introductions against S0, F against D, paired",
+            "introductions against Nexus-else-S0, F against D, paired",
+            "top-choice catastrophe rate, F against D, paired"
+          ],
+          "adjustment": "Holm, family alpha 0.05"
+        },
+        {
+          "family": "REGRET",
+          "tests": [
+            "mean normalised regret, F against C",
+            "non-inferiority of F to D within 0.02"
+          ],
+          "adjustment": "Holm, family alpha 0.05",
+          "note": "the Contract A regret gates against A and B are fixed gates, not members of a multiplicity family"
+        },
+        {
+          "family": "PAIRWISE_ORDERING",
+          "tests": [
+            "share of safe-unsafe pairs correctly ordered, F against D: overall; same action type; different action type"
+          ],
+          "adjustment": "Holm, family alpha 0.05"
+        }
+      ],
+      "mechanismFamily": {
+        "family": "H_DISC_MECHANISM_QUALIFICATION",
+        "tests": [
+          "D_vs_M0",
+          "M0_vs_M1",
+          "M1_vs_M2",
+          "M2_vs_M3a",
+          "M3a_vs_M3"
+        ],
+        "adjustment": "Holm, family alpha 0.05, separate from every policy family"
+      },
+      "gatekeeping": "Secondary and mechanism families are interpreted inferentially only if the confirmatory test rejects. Otherwise they are reported as descriptive.",
+      "descriptiveOnly": [
+        "every endpoint by origin family",
+        "rescue and harm rates",
+        "consistency: withheld pairs, majority cycles, cycles at the top",
+        "twin sensitivity"
+      ]
+    },
+    "mechanismQualification": {
+      "label": "H_DISC_MECHANISM_QUALIFICATION",
+      "separateFromPolicyQualification": true,
+      "statement": "This analysis asks WHY a difference arises. It never changes the policy classification, and the policy classification never depends on it.",
+      "essentialContrast": "M2_vs_M3a",
+      "test": "the primary paired test and interval, applied to the lower arm against the upper arm of each ladder contrast",
+      "precondition": "the contrast verdict from assertMatchedContrast is FULLY_MATCHED or PARTIALLY_MATCHED and the trained pair arm passes the structural check",
+      "outcomes": [
+        "SUPPORTED",
+        "NOT_SUPPORTED",
+        "UNRESOLVED",
+        "NOT_TESTABLE",
+        "NOT_APPLICABLE_NO_TOTAL_EFFECT"
+      ],
+      "licensedClaims": {
+        "SUPPORTED": "On fresh classes, with the same label, the same per-action information, the same tree budget and the same tuning effort, replacing the pointwise objective by the antisymmetrised pairwise objective lowered the top-choice unsafe rate. If the contrast is PARTIALLY_MATCHED the claim must list the unavoidable differences beside it.",
+        "NOT_SUPPORTED": "The pairwise objective, with the same information, did not lower the top-choice unsafe rate, and a contribution as large as half of the total F-against-D effect is excluded. Any F-against-D gain is then attributed to the other rungs or left unattributed.",
+        "UNRESOLVED": "The contrast cannot tell no contribution from a contribution of half the total effect. This is not a negative finding and not a positive one.",
+        "NOT_TESTABLE": "No statement about the pairwise objective may be made: the arms were not matched, could not be built, or the trained pair model has no path that splits on both actions and is therefore an additive ranker in pair form.",
+        "NOT_APPLICABLE_NO_TOTAL_EFFECT": "F did not improve on D, so there is no effect to attribute."
+      },
+      "neverLicensed": "An improvement of F over D, however large, never licenses the statement that pairwise learning caused it. F differs from D in data, label, information, objective and pair-specific inputs at once. Only the matched M2-against-M3a contrast speaks to the pairwise objective, and only at the strength its verdict allows.",
+      "classification": {
+        "H_DISC_MECHANISM_SUPPORTED": "M2_vs_M3a is SUPPORTED",
+        "H_DISC_MECHANISM_NOT_SUPPORTED": "M2_vs_M3a is NOT_SUPPORTED",
+        "H_DISC_MECHANISM_UNRESOLVED": "M2_vs_M3a is UNRESOLVED",
+        "H_DISC_MECHANISM_NOT_TESTABLE": "M2_vs_M3a is NOT_TESTABLE, including a vacuous M3a",
+        "H_DISC_MECHANISM_NOT_APPLICABLE": "F did not improve on D"
+      },
+      "expectedPower": "adjacent contrasts are powered only for large effects at 900 classes; UNRESOLVED is the likely outcome for a modest contribution and is not a negative finding"
+    },
+    "decisionRule": {
+      "exactlyOne": [
+        {
+          "classification": "H_DISC_DEV_QUALIFIED",
+          "condition": "F meets every Contract A gate: zero introductions against S0 and against Nexus, zero illegal actions, complete coverage, regret gates against both comparators, invariance, replay, compute"
+        },
+        {
+          "classification": "H_DISC_MATERIAL_IMPROVEMENT_NOT_QUALIFIED",
+          "condition": "the primary paired test rejects H0 and F passes the regret, legality, invariance, replay and compute gates, but Contract A is not met"
+        },
+        {
+          "classification": "H_DISC_NO_SUPPORTED_ADVANTAGE",
+          "condition": "the primary test does not reject H0"
+        },
+        {
+          "classification": "H_DISC_EXPERIMENT_BLOCKED_OR_INVALID",
+          "condition": "an execution-validity, provenance or integrity gate fails"
+        }
+      ],
+      "statedInAdvance": [
+        "A supported reduction with any remaining introduction is NOT_QUALIFIED.",
+        "Relative improvement over SK1 is not evidence of absolute safety.",
+        "No result grants execution authority. The component stays R0.",
+        "A negative result does not authorize another campaign."
+      ]
+    },
+    "learnerConfiguration": {
+      "status": "FIXED_BY_PREREGISTRATION",
+      "learnerFamily": "BAGGED_REGRESSION_TREE_ENSEMBLE",
+      "reference": {
+        "sk1TrainerConfiguration": {
+          "bags": 10,
+          "trees": 100,
+          "depth": 3,
+          "lr": 0.1,
+          "minLeaf": 20,
+          "lambda": 1,
+          "maxBins": 32
+        },
+        "source": "stage3h-sk1-safety-kernel-v1/models/SK1_MODEL.json #estimator.config"
+      },
+      "grid": {
+        "id": "HDISC1_CONFIGURATION_GRID_V1",
+        "bags": [
+          10
+        ],
+        "treesPerBag": [
+          50,
+          100,
+          200
+        ],
+        "maxDepth": [
+          2,
+          3,
+          4
+        ],
+        "learningRate": [
+          0.05,
+          0.1
+        ],
+        "minLeaf": [
+          20
+        ],
+        "lambda": [
+          1
+        ],
+        "maxBins": [
+          32
+        ],
+        "configurations": 18
+      },
+      "sharedConfigurationRule": {
+        "id": "HDISC1_SHARED_CONFIGURATION_RULE_V1",
+        "rule": "Every ladder arm is fitted at every grid configuration, out of fold over five origin-family folds. ONE configuration is selected for all arms: the one minimising the sum over the five ladder arms of out-of-fold top-choice unsafe classes. Ties: smaller treesPerBag x maxDepth, then smaller learningRate.",
+        "consequence": "equal tree budget and equal tuning effort for every arm by construction; no arm is tuned on its own",
+        "noteOnDvsM0": "the D-to-M0 step is capacity-matched only if the selected configuration equals the SK1 risk-head budget; otherwise that step is NOT_TESTABLE and is reported so"
+      },
+      "folds": {
+        "rule": "HDISC1_FAMILY_FOLDS_V1",
+        "count": 5,
+        "unit": "origin family"
+      },
+      "randomisation": {
+        "scheme": "every pseudo-random stream is derived from a text label HDISC1|<arm>|<stage>|<head>; no numeric seed is stored or chosen",
+        "bagBootstrap": "ORIGIN_FAMILY_BOOTSTRAP"
+      },
+      "featureSubset": "none: every declared input is available to the learner; no feature selection step exists",
+      "tieRule": "exact ties in the ranking contract are returned as a set; no tie band or margin exists. Introducing one would be a protocol change and needs a new freeze",
+      "pairTraining": {
+        "samplingRule": "HDISC_PAIR_SAMPLING_ALL_UNORDERED_PAIRS_CLASS_NORMALISED_V1",
+        "definition": "every unordered pair of selectable actions of each class once; pair weights normalised so each class carries the same total weight as in the pointwise arms"
+      }
+    },
+    "developmentRules": [
+      "out-of-fold evaluation by origin-family folds for every choice",
+      "every tunable is chosen by a rule in the frozen protocol, applied to exploration data only",
+      "baseline rate, design effect and the association between F and D failures are re-estimated out of fold on exploration and reported before validation classes are generated",
+      "the validation size stays 900: re-estimated power is reported, it does not resize the campaign",
+      "evaluator labels are used for training and offline evaluation only; they never reach inference"
+    ],
+    "stopRules": [
+      {
+        "id": "STOP_ENTRY_GATE",
+        "when": "before any step",
+        "condition": "the campaign-entry gate does not return GO on all seven conditions",
+        "consequence": "nothing begins: no allocation, no generation, no training",
+        "result": "CAMPAIGN_READINESS=NO_GO"
+      },
+      {
+        "id": "STOP_SUPPLY",
+        "when": "final allocation review; again at each population freeze",
+        "condition": "the allocated namespace cannot supply 1,000 exploration and 900 validation classes that are family-disjoint, with at least 30 validation families and no family above 5% of validation",
+        "consequence": "stop before training (exploration) or before opening outcomes (validation); a smaller campaign needs a new owner decision and a new freeze",
+        "result": "H_DISC_EXPERIMENT_BLOCKED_OR_INVALID"
+      },
+      {
+        "id": "STOP_DEVELOPMENT",
+        "when": "after training, before validation classes are generated",
+        "condition": "F's out-of-fold top-choice unsafe count on the exploration classes is not strictly below frozen D's count on the same classes",
+        "consequence": "the campaign stops before validation and is reported as a development-stage negative",
+        "result": "H_DISC_NO_SUPPORTED_ADVANTAGE (development stop; validation not run)"
+      },
+      {
+        "id": "STOP_VACUOUS_PAIR_MODEL",
+        "when": "after training",
+        "condition": "the trained M3a has no root-to-leaf path that splits on both actions",
+        "consequence": "the mechanism analysis is NOT_TESTABLE; the policy campaign may continue, and the report must say that F was not shown to be a non-additive model in substance",
+        "result": "H_DISC_MECHANISM_NOT_TESTABLE"
+      },
+      {
+        "id": "STOP_EXECUTION_VALIDITY",
+        "when": "identity audit and the validation pass",
+        "condition": "any execution-validity gate fails, a privileged read is detected, replay is not deterministic, or a frozen identity does not match",
+        "consequence": "the result is invalid; outcomes are not interpreted",
+        "result": "H_DISC_EXPERIMENT_BLOCKED_OR_INVALID"
+      },
+      {
+        "id": "NO_INTERIM_LOOK",
+        "when": "always",
+        "condition": "one validation pass; a start marker; an exclusive result file",
+        "consequence": "no interim analysis, no candidate replacement, no change of threshold, feature or rule after the experiment freeze",
+        "result": "a second run is refused"
+      }
+    ],
+    "negativeResultRules": {
+      "wellPoweredNull": "If the confirmatory test does not reject and the power re-estimated on exploration for a halving is at least 0.8, the result is recorded as evidence for a public-information limit at that effect size in these menus.",
+      "underPoweredNull": "If re-estimated power is below 0.8 the non-rejection is recorded as inconclusive, not as evidence for a limit.",
+      "noAutomaticFollowUp": "No result, positive or negative, authorizes another campaign, a larger sample, a changed target or a changed model.",
+      "noSoftening": "The decision class is assigned by the rule fixed here. Post hoc subgroups, alternative endpoints and alternative thresholds are labelled exploratory and change nothing."
+    },
+    "executionValidity": [
+      "allow-listed reads only",
+      "a poisoned privileged view gives identical decisions",
+      "zero illegal actions in the audit",
+      "features invariant under D4",
+      "every identity test exercised on every validation class",
+      "negative controls for handle order, menu position and hidden health all detected",
+      "the inference closure passes an evaluator-free graph audit from committed source",
+      "deterministic replay across two passes",
+      "a check mode that recomputes and writes nothing"
+    ],
+    "onePassProtocol": [
+      {
+        "step": 1,
+        "action": "campaign-entry gate returns GO",
+        "boundBy": "readiness/campaign-entry-gate.mjs"
+      },
+      {
+        "step": 2,
+        "action": "freeze this pre-registration: hypotheses, arms, endpoints, decision rule, tuning rules, analysis code",
+        "boundBy": "committed, hash-bound record"
+      },
+      {
+        "step": 3,
+        "action": "allocate the HDISC1 namespace through the exclusion loader; preflight every block",
+        "boundBy": "allocation record"
+      },
+      {
+        "step": 4,
+        "action": "generate and admit EXPLORATION; register identities under opaque aliases",
+        "boundBy": "population summary and registry"
+      },
+      {
+        "step": 5,
+        "action": "develop and train all arms on EXPLORATION only",
+        "boundBy": "training record with model hashes"
+      },
+      {
+        "step": 6,
+        "action": "generate VALIDATION; lock outcomes; register identities",
+        "boundBy": "population summary and registry"
+      },
+      {
+        "step": 7,
+        "action": "freeze the experiment: code, models, populations, rules; all committed at HEAD; no uncommitted dependency",
+        "boundBy": "experiment freeze"
+      },
+      {
+        "step": 8,
+        "action": "identity audit on every validation class, without reading outcomes",
+        "boundBy": "audit shards"
+      },
+      {
+        "step": 9,
+        "action": "one validation pass; start marker; exclusive result file",
+        "boundBy": "result record"
+      },
+      {
+        "step": 10,
+        "action": "check mode; spend ledger; successor exclusions updated",
+        "boundBy": "ledger and loader"
+      }
+    ],
+    "afterStep7": "No interim look. No candidate replacement. No change of threshold, feature or rule after step 7.",
+    "power": {
+      "planningInputs": {
+        "source": "stage3h-hdisc0-design-v1/evidence/HDISC0_DESIGN_EVIDENCE.json",
+        "baselineTopChoiceUnsafeRate": 0.065,
+        "associationPhi": 0.3223,
+        "measuredOn": "spent or development data; planning assumptions to be re-estimated on fresh exploration",
+        "sk1ForcedChoiceOnHistoricalValidation": {
+          "introVsS0": 28,
+          "introVsNexus": 37,
+          "classes": 600
+        }
+      },
+      "at900": {
+        "validationClasses": 900,
+        "test": "one-sided exact sign (McNemar) test on discordant classes, alpha 0.05; effective classes = classes / design effect",
+        "baselineTopChoiceUnsafeRate": 0.065,
+        "associationPhi": 0.3223,
+        "planningDesignEffect": 1.5,
+        "power": {
+          "INDEPENDENT": {
+            "designEffect_1": {
+              "reduction_0.4": 0.7717,
+              "reduction_0.5": 0.9312,
+              "reduction_0.6": 0.9893
+            },
+            "designEffect_1.5": {
+              "reduction_0.4": 0.6063,
+              "reduction_0.5": 0.8086,
+              "reduction_0.6": 0.9379
+            },
+            "designEffect_2": {
+              "reduction_0.4": 0.4911,
+              "reduction_0.5": 0.6914,
+              "reduction_0.6": 0.8592
+            }
+          },
+          "EMPIRICAL_ASSOCIATION": {
+            "designEffect_1": {
+              "reduction_0.4": 0.8989,
+              "reduction_0.5": 0.9857,
+              "reduction_0.6": 0.9993
+            },
+            "designEffect_1.5": {
+              "reduction_0.4": 0.7555,
+              "reduction_0.5": 0.9245,
+              "reduction_0.6": 0.9882
+            },
+            "designEffect_2": {
+              "reduction_0.4": 0.6317,
+              "reduction_0.5": 0.8347,
+              "reduction_0.6": 0.9539
+            }
+          }
+        },
+        "smallestDetectableRelativeReductionAt80PercentPower": {
+          "INDEPENDENT": {
+            "designEffect_1": 0.4136,
+            "designEffect_1.5": 0.495,
+            "designEffect_2": 0.5606
+          },
+          "EMPIRICAL_ASSOCIATION": {
+            "designEffect_1": 0.3492,
+            "designEffect_1.5": 0.4209,
+            "designEffect_2": 0.4802
+          }
+        },
+        "pairedEffectSizeInterval": {
+          "note": "expected half-width of the two-sided 95% interval for the paired difference in top-choice unsafe rate (F minus D), normal approximation on effective classes, for a true halving; the reported interval is the origin-family cluster bootstrap",
+          "halving": {
+            "INDEPENDENT": {
+              "designEffect_1": {
+                "expectedDifference": -0.0325,
+                "halfWidth95": 0.01984,
+                "oneSidedUpper95Offset": 0.01665,
+                "expectedDiscordantClasses": 83.9475
+              },
+              "designEffect_1.5": {
+                "expectedDifference": -0.0325,
+                "halfWidth95": 0.024299,
+                "oneSidedUpper95Offset": 0.020392,
+                "expectedDiscordantClasses": 55.965
+              },
+              "designEffect_2": {
+                "expectedDifference": -0.0325,
+                "halfWidth95": 0.028058,
+                "oneSidedUpper95Offset": 0.023547,
+                "expectedDiscordantClasses": 41.9737
+              }
+            },
+            "EMPIRICAL_ASSOCIATION": {
+              "designEffect_1": {
+                "expectedDifference": -0.0325,
+                "halfWidth95": 0.016533,
+                "oneSidedUpper95Offset": 0.013875,
+                "expectedDiscordantClasses": 58.5867
+              },
+              "designEffect_1.5": {
+                "expectedDifference": -0.0325,
+                "halfWidth95": 0.020249,
+                "oneSidedUpper95Offset": 0.016993,
+                "expectedDiscordantClasses": 39.0578
+              },
+              "designEffect_2": {
+                "expectedDifference": -0.0325,
+                "halfWidth95": 0.023381,
+                "oneSidedUpper95Offset": 0.019622,
+                "expectedDiscordantClasses": 29.2934
+              }
+            }
+          }
+        },
+        "expectedCounts": {
+          "sk1FailureClasses": 58.5,
+          "hdiscFailureClassesUnderAHalving": 29.25
+        },
+        "absoluteQualificationIsNotMadeLikely": {
+          "statement": "Nine hundred classes improve the power to detect a relative effect. They do not make absolute qualification likely: Contract A requires zero introductions, and more classes make zero harder to observe, not easier.",
+          "probabilityOfZeroIntroductionsIn900": {
+            "0.065": 0,
+            "0.0325": 0,
+            "0.01": 0.000118,
+            "0.005": 0.010984,
+            "0.002": 0.165001,
+            "0.001": 0.406387,
+            "0.0005": 0.637556
+          },
+          "rateNeededForEvenOddsOfZero": 0.00077,
+          "rateNeededFor80PercentChanceOfZero": 0.000248
+        }
+      }
+    },
+    "sharpenings": [
+      {
+        "id": "S1",
+        "label": "SHARPENED_NOT_CHANGED",
+        "topic": "rejection rule of the primary test",
+        "hdisc0": "test: one-sided exact sign (McNemar) test on discordant classes, alpha = 0.05; reported interval: origin-family cluster bootstrap of the paired difference",
+        "here": "H0 is rejected only if the exact sign test gives p <= 0.05 AND the one-sided 95% origin-family cluster-bootstrap upper bound of the paired difference is below 0",
+        "why": "the H-DISC-0 power model already divides classes by a design effect, which presumes a decision that respects clustering; the added condition can only make rejection harder"
+      },
+      {
+        "id": "S2",
+        "label": "SHARPENED_NOT_CHANGED",
+        "topic": "what \"matched\" means for M2 against M3a",
+        "hdisc0": "same label, same information, same learner family, same capacity budget, same compute budget; only the objective differs",
+        "here": "equal tree budget and a shared compute ceiling; the objective differs by design; three differences cannot be removed (input width and antisymmetrisation; pairs as the training unit; quadratic pair evaluations) and are declared, so the best reachable verdict is PARTIALLY_MATCHED",
+        "why": "H-DISC-0 itself says a contrast whose capacity or compute cannot be equalised is PARTIALLY_MATCHED"
+      },
+      {
+        "id": "S3",
+        "label": "SHARPENED_NOT_CHANGED",
+        "topic": "the D-to-M0 step",
+        "hdisc0": "M0 isolates new data only (against D)",
+        "here": "under the fixed model-family interface M0 is ranked by the H-DISC ranking contract while D ranks by risk tier and a separate regret head, so the ranking contract changes together with the data; the step is PARTIALLY_MATCHED at best",
+        "why": "the definition of M0 is unchanged; the attribution strength is stated honestly"
+      },
+      {
+        "id": "S4",
+        "label": "SHARPENED_NOT_CHANGED",
+        "topic": "development stop rule",
+        "hdisc0": "if out-of-fold evidence on exploration does not show F's top-choice unsafe rate below D's on the same classes, the campaign stops before validation",
+        "here": "F's out-of-fold top-choice unsafe COUNT must be strictly below frozen D's count on the same exploration classes; no significance requirement; D is applied frozen",
+        "why": "makes the rule mechanical"
+      },
+      {
+        "id": "S5",
+        "label": "SHARPENED_NOT_CHANGED",
+        "topic": "attribution outcomes",
+        "hdisc0": "SUPPORTED, NOT_SUPPORTED, or UNRESOLVED when the interval includes both zero and half the total effect",
+        "here": "SUPPORTED: the test rejects and the clustered interval lies below zero. UNRESOLVED: the interval includes zero and half the total effect. NOT_SUPPORTED: it includes zero and excludes half the total effect. Two labels added for cases H-DISC-0 named in prose: NOT_TESTABLE and NOT_APPLICABLE_NO_TOTAL_EFFECT",
+        "why": "makes the three outcomes computable"
+      },
+      {
+        "id": "S6",
+        "label": "SHARPENED_NOT_CHANGED",
+        "topic": "equal capacity and equal tuning effort",
+        "hdisc0": "an equal capacity budget; equal tuning effort: the same number of configurations tried by the same pre-registered rule",
+        "here": "one configuration shared by all ladder arms, selected by a rule that sums out-of-fold failures over the arms",
+        "why": "separate tuning per arm would let capacities differ and would break the matching"
+      },
+      {
+        "id": "R1",
+        "label": "RESOLVED_BY_OWNER_MANDATE",
+        "topic": "validation size",
+        "hdisc0": "900 recommended; 600 only with a pre-registered 60% effect",
+        "here": "900 fresh DEV classes",
+        "why": "fixed in the H-DISC-1 owner mandate; the 600-class alternative is dropped"
+      }
+    ],
+    "mustBeFrozenBeforeExecution": [
+      {
+        "item": "observation contract",
+        "status": "KNOWN_NOW",
+        "value": {
+          "id": "STAGE3H_PUBLIC_DECISION_INFORMATION_V1",
+          "version": "HW1_PUBLIC_PROJECTION_V1"
+        },
+        "source": "stage3h-sk1-safety-kernel-v1/models/SK1_MODEL.json #observationContract"
+      },
+      {
+        "item": "advisory evidence contract",
+        "status": "KNOWN_NOW",
+        "value": "SK1_ADVISORY_EVIDENCE_V1",
+        "source": "stage3h-sk1-safety-kernel-v1/models/SK1_MODEL.json #evidenceContract"
+      },
+      {
+        "item": "discriminator identity",
+        "status": "KNOWN_NOW",
+        "value": "SENTINEL_WITHIN_MENU_ACTION_DISCRIMINATOR_V1",
+        "source": "stage3h-hdisc0-design-v1/contract/pairwise-contract.mjs #IDS.discriminator"
+      },
+      {
+        "item": "pairwise comparator contract",
+        "status": "KNOWN_NOW",
+        "value": "HDISC_PAIRWISE_COMPARATOR_CONTRACT_V1",
+        "source": "stage3h-hdisc0-design-v1/contract/pairwise-contract.mjs #IDS.pairContract"
+      },
+      {
+        "item": "safety label contract",
+        "status": "KNOWN_NOW",
+        "value": "HDISC_SAFETY_LABEL_CONTRACT_V1",
+        "source": "stage3h-hdisc0-design-v1/contract/pairwise-contract.mjs #IDS.labelContract"
+      },
+      {
+        "item": "menu ranking contract",
+        "status": "KNOWN_NOW",
+        "value": "HDISC_MENU_RANKING_CONTRACT_V1",
+        "source": "stage3h-hdisc0-design-v1/contract/pairwise-contract.mjs #IDS.rankingContract"
+      },
+      {
+        "item": "H-DISC-0 contract reference, source sha256",
+        "status": "KNOWN_NOW",
+        "value": "c4646a0436db69a43e8f72301e0e76085d243cf675955258a8641910a05361d3",
+        "source": "sha256 of stage3h-hdisc0-design-v1/contract/pairwise-contract.mjs"
+      },
+      {
+        "item": "H-DISC-0 pre-registration draft, sha256",
+        "status": "KNOWN_NOW",
+        "value": "3ff24f9da6e8b78fb181df9c9500c9d4638aedef535abe6ab0f4d7bb8ca5eaf6",
+        "source": "sha256 of stage3h-hdisc0-design-v1/H_DISC_0_PREREGISTRATION_DRAFT.md"
+      },
+      {
+        "item": "H-DISC-0 statistical plan, sha256",
+        "status": "KNOWN_NOW",
+        "value": "64621ec6748b79b6f54e6b9f72b4637356b7456e0c4fde7b0a0dfcfe60926827",
+        "source": "sha256 of stage3h-hdisc0-design-v1/H_DISC_0_STATISTICAL_PLAN.md"
+      },
+      {
+        "item": "H-DISC-0 design evidence, sha256",
+        "status": "KNOWN_NOW",
+        "value": "9199a804653bba0bbd3f1ce3b88ca25a118555f354ae0079335cba35e2ccdc74",
+        "source": "sha256 of stage3h-hdisc0-design-v1/evidence/HDISC0_DESIGN_EVIDENCE.json"
+      },
+      {
+        "item": "arm D and E: frozen SK1 model hash",
+        "status": "KNOWN_NOW",
+        "value": "b479972a3445ccb9d3cf42ac9821aee2f69431e4101b6dbdfdcd76e777968c6b",
+        "source": "stage3h-sk1-safety-kernel-v1/evidence/SK1_EXPERIMENT_FREEZE.json #models.SK1.modelHash"
+      },
+      {
+        "item": "arm D and E: frozen SK1 model file sha256",
+        "status": "KNOWN_NOW",
+        "value": "683ce6e09c374e7c3a628a53e39f9875d6b8122b6eca8a4b72d58087a0c9efa0",
+        "source": "stage3h-sk1-safety-kernel-v1/evidence/SK1_EXPERIMENT_FREEZE.json #models.SK1.sha256"
+      },
+      {
+        "item": "arm D and E: frozen SK1 ranking parameters",
+        "status": "KNOWN_NOW",
+        "value": {
+          "contract": "SK1_TIERED_RISK_THEN_REGRET_V1",
+          "z": 1,
+          "tierWidth": 0.1,
+          "tau": 0.2,
+          "oodPenalty": 0.05,
+          "requireEvidence": true
+        },
+        "source": "stage3h-sk1-safety-kernel-v1/evidence/SK1_EXPERIMENT_FREEZE.json #models.SK1.ranking"
+      },
+      {
+        "item": "arm D and E: frozen SK1 kernel source hash",
+        "status": "KNOWN_NOW",
+        "value": "5588744316bf27efaabdc72b86b886f6e31d868c13f3a783bc75ca19a3bc7cb5",
+        "source": "stage3h-sk1-safety-kernel-v1/evidence/SK1_DEMO_RECORD.json #decisions[0].kernelSourceHash"
+      },
+      {
+        "item": "arm D and E: frozen SK1 Forge adapter source hash",
+        "status": "KNOWN_NOW",
+        "value": "948352b6497dfa4aea28144bc889cdd6c561a821bef5dba43a4e324b3661582d",
+        "source": "stage3h-sk1-safety-kernel-v1/evidence/SK1_DEMO_RECORD.json #decisions[0].adapterSourceHash"
+      },
+      {
+        "item": "arm D provenance: SK1 experiment freeze sha256",
+        "status": "KNOWN_NOW",
+        "value": "d22be2c4766324db1794d511b3bbd79917d3771c28cfa1c7087ba4c6c0663794",
+        "source": "sha256 of stage3h-sk1-safety-kernel-v1/evidence/SK1_EXPERIMENT_FREEZE.json"
+      },
+      {
+        "item": "arm D provenance: SK1 validation results sha256",
+        "status": "KNOWN_NOW",
+        "value": "239c16bc210adef28e7cdef40ecd14298625ee26e08c13f45ad146988a3622b1",
+        "source": "sha256 of stage3h-sk1-safety-kernel-v1/evidence/SK1_VALIDATION_RESULTS.json"
+      },
+      {
+        "item": "arm C: frozen H-W4 C10 model sha256",
+        "status": "KNOWN_NOW",
+        "value": "41ce761cbeeb2c110a1564cc0f28aa7c773f53587045fc5b04fd72d192d5858e",
+        "source": "stage3h-sk1-safety-kernel-v1/evidence/SK1_EXPERIMENT_FREEZE.json #models.C10.sha256"
+      },
+      {
+        "item": "arms A and B: frozen comparator source closure (29 custody-protected files; identity only)",
+        "status": "KNOWN_NOW",
+        "value": "be7dc481437c3d49b39c4fdffa4e4355345dd375ef958dbd965cca3c940d0ced",
+        "source": "stage3h-sk1-1-assurance-v1/evidence/SK1_1_REPRO_INVENTORY.json #core.sourceIdentities.frozenComparators.closureSha256",
+        "note": "the files are outside git; to be re-verified against an issued evidence bundle at freeze"
+      },
+      {
+        "item": "frozen evaluator definitions, source closure",
+        "status": "KNOWN_NOW",
+        "value": "8908c9e4d94154473128092e5bfe009b30b17c2b52e260d605249ece6ff40146",
+        "source": "stage3h-sk1-1-assurance-v1/evidence/SK1_1_REPRO_INVENTORY.json #core.sourceIdentities.frozenEvaluatorDefinitions.closureSha256",
+        "note": "measured at 179922dd; to be re-measured at freeze"
+      },
+      {
+        "item": "SK1 feature set (ladder arms M0 and M1), schema id",
+        "status": "KNOWN_NOW",
+        "value": "SK1_FORGE_FEATURES_V1:b9a58e3101529c7a",
+        "source": "stage3h-sk1-safety-kernel-v1/models/SK1_MODEL.json #schema.id"
+      },
+      {
+        "item": "Contract A gate constants",
+        "status": "KNOWN_NOW",
+        "value": {
+          "introductionsVsS0": 0,
+          "introductionsVsNexus": 0,
+          "illegalActions": 0,
+          "identityViolations": 0,
+          "minMeanNregImprovement": 0.02,
+          "regretUpper95Below": 0,
+          "resamples": 10000,
+          "bootstrapSeed": "HW1_CLUSTER_BOOTSTRAP_V1",
+          "decisionMedianMsMax": 100,
+          "decisionMaxMsMax": 1000,
+          "completeCoverage": true,
+          "catastropheRegret": 100
+        },
+        "source": "stage3h-sk1-safety-kernel-v1/evidence/SK1_VALIDATION_RESULTS.json #rules"
+      },
+      {
+        "item": "cluster-bootstrap generator and resamples",
+        "status": "KNOWN_NOW",
+        "value": {
+          "bootstrapSeed": "HW1_CLUSTER_BOOTSTRAP_V1",
+          "resamples": 10000
+        },
+        "source": "stage3h-sk1-safety-kernel-v1/evidence/SK1_VALIDATION_RESULTS.json #rules"
+      },
+      {
+        "item": "portable exclusion loader pins, file sha256",
+        "status": "KNOWN_NOW",
+        "value": "8e409c032f67668df1448205b00bd77ae662841fa68ea3e0e614d8cd6f4855ed",
+        "source": "sha256 of stage3h-hdisc0-design-v1/readiness/exclusions/input-pins.json"
+      },
+      {
+        "item": "portable exclusion loader and self-check, source sha256",
+        "status": "KNOWN_NOW",
+        "value": {
+          "portable-exclusions.mjs": "8444c3ab90e54c1b3e243371684a2d5503f35ab282399869fa07d80e3e280511",
+          "selfcheck.mjs": "b8a27a81f6e6240fffe304cba82d14d6fe58522ae01c1b182bb680f0693bef67"
+        },
+        "source": "stage3h-hdisc0-design-v1/readiness/exclusions/input-pins.json #loaderSource"
+      },
+      {
+        "item": "exclusion context identity",
+        "status": "KNOWN_NOW",
+        "value": "fd768113677b44b30bdbdf7c2a8e335df031e6be3569a133bddf08e6d19053ce",
+        "source": "stage3h-hdisc0-design-v1/readiness/exclusions/input-pins.json #contextIdentitySha256"
+      },
+      {
+        "item": "forbidden blocks in the exclusion context (count)",
+        "status": "KNOWN_NOW",
+        "value": 114,
+        "source": "stage3h-hdisc0-design-v1/readiness/exclusions/input-pins.json #forbiddenBlocks"
+      },
+      {
+        "item": "SK1 exclusion registry file sha256",
+        "status": "KNOWN_NOW",
+        "value": "dc801e25bf737f5aa94938f67e536d5d1eccf0717a405f9a7cd986a07f1539ce",
+        "source": "stage3h-sk1-safety-kernel-v1/evidence/SK1_EXPERIMENT_FREEZE.json #exclusionRegistrySha256"
+      },
+      {
+        "item": "SK1 spend ledger sha256",
+        "status": "KNOWN_NOW",
+        "value": "27de0c25828858ec7a82bed6e538801c010c9f8dcf352ea46672dcac22203175",
+        "source": "sha256 of stage3h-sk1-safety-kernel-v1/evidence/SK1_SPEND_LEDGER.json"
+      },
+      {
+        "item": "SK1 custody manifest sha256",
+        "status": "KNOWN_NOW",
+        "value": "321da973d4114e195e858c819d9da9195c13cefd38509a22a4f5379e88a95dfe",
+        "source": "sha256 of stage3h-sk1-safety-kernel-v1/evidence/SK1_CUSTODY_MANIFEST.json"
+      },
+      {
+        "item": "runtime: node version",
+        "status": "KNOWN_NOW",
+        "value": "v26.7.0",
+        "source": "stage3h-sk1-safety-kernel-v1/evidence/SK1_VALIDATION_RESULTS.json #node",
+        "note": "the only runtime SK1 results were produced and observed on"
+      },
+      {
+        "item": "runtime: platform",
+        "status": "KNOWN_NOW",
+        "value": "darwin-arm64",
+        "source": "stage3h-sk1-1-assurance-v1/evidence/SK1_1_REPRO_INVENTORY.json #platform"
+      },
+      {
+        "item": "discriminator inference closure: entry point, file list and source sha256 (H_DISC_1_SOURCE_HASH)",
+        "status": "TO_BE_BOUND_AT_FREEZE",
+        "boundBy": "H-DISC-1 implementation, committed; audited from committed source"
+      },
+      {
+        "item": "public decision-state encoder: M2 per-action descriptor schema id",
+        "status": "TO_BE_BOUND_AT_FREEZE",
+        "boundBy": "H-DISC-1 implementation",
+        "requires": "public-only inputs; invariant to relabelling, menu order and D4; the four-menu feature collision removed"
+      },
+      {
+        "item": "public decision-state encoder: pair-relation (rho) schema id",
+        "status": "TO_BE_BOUND_AT_FREEZE",
+        "boundBy": "H-DISC-1 implementation"
+      },
+      {
+        "item": "public decision-state encoder: menu-context schema id",
+        "status": "TO_BE_BOUND_AT_FREEZE",
+        "boundBy": "H-DISC-1 implementation"
+      },
+      {
+        "item": "pair model family implementation",
+        "status": "TO_BE_BOUND_AT_FREEZE",
+        "boundBy": "H-DISC-1 implementation",
+        "expectedIdentifier": "HDISC_ANTISYMMETRISED_PAIR_TREE_ENSEMBLE_V1"
+      },
+      {
+        "item": "additive control family implementation",
+        "status": "TO_BE_BOUND_AT_FREEZE",
+        "boundBy": "H-DISC-1 implementation",
+        "expectedIdentifier": "HDISC_ADDITIVE_POINTWISE_TREE_ENSEMBLE_V1"
+      },
+      {
+        "item": "matched ablation contract, source sha256",
+        "status": "TO_BE_BOUND_AT_FREEZE",
+        "boundBy": "this lane, once committed",
+        "expectedIdentifier": "HDISC_MATCHED_ABLATION_CONTRACT_V1",
+        "currentSha256": "e37f2357f93965c320de3ac6781b72cade63daee238e9356904974ba441565be"
+      },
+      {
+        "item": "this protocol, protocolSha256",
+        "status": "TO_BE_BOUND_AT_FREEZE",
+        "boundBy": "the freeze record"
+      },
+      {
+        "item": "kernel identity and source hash",
+        "status": "TO_BE_BOUND_AT_FREEZE",
+        "boundBy": "implementation of the kernel candidate",
+        "expectedIdentifier": "SENTINEL_PUBLIC_ACTION_SAFETY_KERNEL_V2_CANDIDATE"
+      },
+      {
+        "item": "learner configuration: grid, shared-configuration rule and the configuration it selects",
+        "status": "TO_BE_BOUND_AT_FREEZE",
+        "boundBy": "owner confirmation of the proposed rule; then the training record"
+      },
+      {
+        "item": "trained model hashes: M0, M1, M2, M3a, M3 (= F)",
+        "status": "TO_BE_BOUND_AT_FREEZE",
+        "boundBy": "training record, exploration only",
+        "expectedIdentifier": "HDISC_FORGE_PAIRWISE_V1 for F"
+      },
+      {
+        "item": "capacity record and structural check of every trained arm",
+        "status": "TO_BE_BOUND_AT_FREEZE",
+        "boundBy": "training record"
+      },
+      {
+        "item": "training and tuning code, source sha256",
+        "status": "TO_BE_BOUND_AT_FREEZE",
+        "boundBy": "campaign infrastructure, not yet built"
+      },
+      {
+        "item": "campaign evaluation runner, source closure sha256",
+        "status": "TO_BE_BOUND_AT_FREEZE",
+        "boundBy": "campaign infrastructure, not yet built"
+      },
+      {
+        "item": "identity-audit code, source sha256",
+        "status": "TO_BE_BOUND_AT_FREEZE",
+        "boundBy": "campaign infrastructure, not yet built"
+      },
+      {
+        "item": "analysis code for the primary test, intervals and attribution, source sha256",
+        "status": "TO_BE_BOUND_AT_FREEZE",
+        "boundBy": "campaign infrastructure, not yet built"
+      },
+      {
+        "item": "allocation record for the HDISC1 namespace",
+        "status": "TO_BE_BOUND_AT_FREEZE",
+        "boundBy": "successor allocator through the exclusion loader, after authorisation",
+        "note": "no block is proposed or implied here"
+      },
+      {
+        "item": "family split rule parameters",
+        "status": "TO_BE_BOUND_AT_FREEZE",
+        "boundBy": "final allocation review",
+        "expectedIdentifier": "HDISC1_FAMILY_SPLIT_V1"
+      },
+      {
+        "item": "EXPLORATION population summary, registry and class-list digest",
+        "status": "TO_BE_BOUND_AT_FREEZE",
+        "boundBy": "population freeze"
+      },
+      {
+        "item": "VALIDATION population summary, registry and class-list digest",
+        "status": "TO_BE_BOUND_AT_FREEZE",
+        "boundBy": "population freeze; outcomes locked"
+      },
+      {
+        "item": "re-estimated planning inputs (baseline, design effect, failure association)",
+        "status": "TO_BE_BOUND_AT_FREEZE",
+        "boundBy": "exploration, out of fold, before validation classes are generated"
+      },
+      {
+        "item": "evidence-bundle manifest sha256",
+        "status": "TO_BE_BOUND_AT_FREEZE",
+        "boundBy": "OWNER: issue a bundle on approved offline storage"
+      },
+      {
+        "item": "backup acceptance record sha256",
+        "status": "TO_BE_BOUND_AT_FREEZE",
+        "boundBy": "OWNER: restore-verified backup on a different device"
+      },
+      {
+        "item": "campaign declaration and campaign-entry gate record (GO)",
+        "status": "TO_BE_BOUND_AT_FREEZE",
+        "boundBy": "campaign-entry gate"
+      },
+      {
+        "item": "experiment freeze record",
+        "status": "TO_BE_BOUND_AT_FREEZE",
+        "boundBy": "step 7 of the one-pass protocol"
+      }
+    ],
+    "openItemsBeforeFreeze": [
+      {
+        "item": "implementation identities: discriminator inference closure, encoder schemas, model families",
+        "owner": "H-DISC-1 implementation"
+      },
+      {
+        "item": "kernel candidate, training code, evaluation runner, identity audit and analysis code",
+        "owner": "campaign infrastructure, not yet built"
+      },
+      {
+        "item": "confirmation of the proposed learner grid and shared-configuration rule",
+        "owner": "OWNER"
+      },
+      {
+        "item": "final power and allocation review: exploration size, family-split parameters, block and family supply",
+        "owner": "OWNER with the allocator; no allocation is made here"
+      },
+      {
+        "item": "an issued evidence bundle and a restore-verified backup",
+        "owner": "OWNER"
+      },
+      {
+        "item": "a GO from the campaign-entry gate",
+        "owner": "gate"
+      },
+      {
+        "item": "authorization to freeze, and separately to run",
+        "owner": "OWNER"
+      }
+    ],
+    "readiness": {
+      "PREREGISTRATION_READY": true,
+      "basis": "every design element is specified; what remains are identities to be bound at freeze, owner confirmations and owner authorization",
+      "PREREGISTRATION_FROZEN": true,
+      "PREREGISTRATION_REGISTERED": false,
+      "CAMPAIGN_AUTHORIZED": false,
+      "mustFreezeEntries": 57,
+      "knownNow": 32,
+      "toBeBoundAtFreeze": 25
+    },
+    "protocolSha256": "859346d338cc4a37a33ed74d25e8045af61335ef0191f8d0e1c53b61692af0b5"
+  },
+  "sourceEntryPoints": [
+    "platform/game-agnostic/stage3h-hdisc1-discriminator-v1/campaign/learner.mjs",
+    "platform/game-agnostic/stage3h-hdisc1-discriminator-v1/campaign/dataset.mjs",
+    "platform/game-agnostic/stage3h-hdisc1-discriminator-v1/campaign/train.mjs",
+    "platform/game-agnostic/stage3h-hdisc1-discriminator-v1/campaign/analysis.mjs",
+    "platform/game-agnostic/stage3h-hdisc1-discriminator-v1/campaign/evaluate.mjs",
+    "platform/game-agnostic/stage3h-hdisc1-discriminator-v1/campaign/native.mjs",
+    "platform/game-agnostic/stage3h-hdisc1-discriminator-v1/campaign/runner.mjs",
+    "platform/game-agnostic/stage3h-hdisc1-discriminator-v1/campaign/population.mjs",
+    "platform/game-agnostic/stage3h-hdisc1-discriminator-v1/api/discriminator-api.mjs",
+    "platform/game-agnostic/stage3h-hdisc1-discriminator-v1/api/candidate-kernel.mjs",
+    "platform/game-agnostic/stage3h-hdisc1-discriminator-v1/readiness/campaign-entry-gate.mjs",
+    "platform/game-agnostic/stage3h-hdisc1-discriminator-v1/readiness/preregistration-freeze.mjs"
+  ],
+  "sourceHashes": {
+    "platform/game-agnostic/ascii-quality-v33_1/controllers-v33_1.mjs": "90c874781905a27a6971a307626e7d9cd4e59596649a06d442540fa95e2d9e85",
+    "platform/game-agnostic/ascii-quality-v33_1/guard.mjs": "2993e9058dbfe5b18ce1a7c7efb08ebaeb2f4af9bd4715ea0ed69a90cbcf5919",
+    "platform/game-agnostic/ascii-quality-v33_1/platformer-planner-v2.mjs": "a2e444ca1ac834abc10084838485418435b4375102380d88a94eaca062c63084",
+    "platform/game-agnostic/ascii-quality-v33_1/policy-v33_1.mjs": "b184201921495c033ec802b819d2b9c4ec362e9e6bb9e2bbf9788798a4e3cc8c",
+    "platform/game-agnostic/ascii-suite/controllers/fighter.mjs": "c676a49330eeffb28c8294c9b4246c80b29d159c4e81671a8392e9541448512e",
+    "platform/game-agnostic/ascii-suite/controllers/index.mjs": "5b7af1517ccaf6a448d593cc85a21e3957f77cb908972b3b69a9e2c939505af9",
+    "platform/game-agnostic/ascii-suite/controllers/platformer.mjs": "1682bdea63d2dd90d8c209da6c8ddc0e728708416c1a3a08922a0828e433cdbe",
+    "platform/game-agnostic/ascii-suite/controllers/pong.mjs": "8ec08a2d9b0a4728d0e0e1378c51d66481e5eed0f372894da611ef5883f56256",
+    "platform/game-agnostic/ascii-suite/controllers/racing.mjs": "b5e691377a060bc93077b9486604a45d7337233e8f6908674e382bd9a4c2c288",
+    "platform/game-agnostic/ascii-suite/games.mjs": "b952d1f7f1ffe6d3177c2a9459bf5f07e623a957789ebc0580d0b804a78c638d",
+    "platform/game-agnostic/ascii-suite/prime.mjs": "4876767179fcd5d6f0b7d377e4411a8fe134741dff5bd1b49559bd01627201a9",
+    "platform/game-agnostic/ascii-suite/training-dev-v1/candidate-v2/action-codec.mjs": "6a96692de6ca5d6db9e3e0ba04726ec33a1cdcba5f9235b751380e0d507869d8",
+    "platform/game-agnostic/ascii-suite/training-dev-v1/features.mjs": "2d1e481f071ecb72420fb852ce3f191d1e4d2f1ae9666020557510942aa9f169",
+    "platform/game-agnostic/ascii-suite/training-dev-v1/model.mjs": "3f588f2ce3bf8a437985850646f36b39bde245052078934b857b6ee9e3c9fa9c",
+    "platform/game-agnostic/ascii-suite/v21/freeze.mjs": "59b191c3c3c964db46e187f081ae2e8257e12b095475a6d58ec651be4a483ab4",
+    "platform/game-agnostic/ascii-suite/v3/common.mjs": "78497f78da83932973cd25564d97d32601473a7314c257b4683385975ba7858c",
+    "platform/game-agnostic/ascii-suite/v3/controllers.mjs": "1b10a927f2647b4a7119753a9eae3d8bbc31b20f22feff76eac7946ec0c19cce",
+    "platform/game-agnostic/ascii-suite/v3/factory-model.mjs": "7352c2e3ad90a8f6d65f586ca3199e4850dc68d7f739ab208ebb2e84ae54c4a6",
+    "platform/game-agnostic/ascii-suite/v31/sentinel.mjs": "d6db5c666238f4c4626493a067cbb41e3aa9af71e3e0cc3cbd730b9926c82917",
+    "platform/game-agnostic/ascii-suite/v32/codec-v2.mjs": "f7da0aba597b8e0ef5c8ca5c10be23b1dc5d8df7e99b08c63744b0683a8e0191",
+    "platform/game-agnostic/ascii-suite/v32/policy.mjs": "45f0a333db8cbccaa00a69337f4c94ea388ad9c49ef264580eba86e59cc3f60e",
+    "platform/game-agnostic/ascii-suite/v32/relational-features.mjs": "d9bedde42eac731947a70fd52fb445784a81f5592e715a69dd39d52672886fcf",
+    "platform/game-agnostic/ascii-suite/worlds/common.mjs": "1b9280830c99fe30397c8e0c3860589e092a79aec5188e4c84f1634c2b437236",
+    "platform/game-agnostic/ascii-suite/worlds/fighter.mjs": "9367f528ab66add0aaa2389a7e8c86980a8c42d9d601d25857d0ac8d7c5f3af5",
+    "platform/game-agnostic/ascii-suite/worlds/platformer.mjs": "5c869ab10bf14dcd48bc188d73b747b5b765823c464d782479f42f4d6d5dc909",
+    "platform/game-agnostic/ascii-suite/worlds/pong.mjs": "35d1c991d5e478101aa4f614f12574d054eeac629d498f33ea947f29b6ad79ec",
+    "platform/game-agnostic/ascii-suite/worlds/racing.mjs": "b9fa9b45e6e1fa575dcd833b692ec8ed25868a0b4a08e9ab020976f6f1464fd7",
+    "platform/game-agnostic/scripts/generate-stage3f6p1e-policy-evidence.mjs": "2932759e703fa2d9f67ab82b64861daab025b0fddb91a02fce18962b870c365f",
+    "platform/game-agnostic/scripts/stage3f6p1asym-evidence.mjs": "64008f4ce72492448561eee9eaad42af210c6ad00c8d366f7d6354018fc93bc6",
+    "platform/game-agnostic/scripts/stage3f6p1e-analysis-plan.mjs": "fc79c7ac581bbd045f5b5d0ab9e5b79012f3adb16a5ae2d4693734d4e8f238bd",
+    "platform/game-agnostic/scripts/stage3g/evidence.mjs": "02513b4973b738760ae0c651284d1f1afdefd64fff57cdd3b27483bc81ae5f4c",
+    "platform/game-agnostic/src/core/authority.js": "fa622b39e80fd8808aefa41b4f4525d28bc778f7c3c19db046ee72648e1f2ee8",
+    "platform/game-agnostic/src/core/constants.js": "e0e274626586c4c250249f6c7ea0f7ad743637baf37f44f393ae158ed4da5eb4",
+    "platform/game-agnostic/src/core/contracts.js": "1215a623f553c7c155d60978387a5f9cf42c450733afb9c4dce44b7180df001a",
+    "platform/game-agnostic/src/core/determinism.js": "06bba4bb8c1018097a684961921eea1c8ed0d7e011252d55fb2705eb3f503bc5",
+    "platform/game-agnostic/src/core/errors.js": "cf512a3659125dc877c721bd295c8f67ef01e9eac5e12cfd59bf234bc09e8c59",
+    "platform/game-agnostic/src/core/recommendation.js": "20cf8d3033d9dc9a75be947ec20ab51b1f722cc29f998d23a00e7095c4d2b4af",
+    "platform/game-agnostic/src/experts/expert-action-context.js": "ae5f5c2a06551274c3b76d0e07e22d1b77c3a106737ffd1545b7204dfcf616c3",
+    "platform/game-agnostic/src/experts/expert-context.js": "1a8e0f967533145e0e9e4abde0a90ac539c9f3cd9583c8c16bd9b7a18e9020ff",
+    "platform/game-agnostic/src/experts/expert-contract.js": "2d1c9da6e383744f4a23204bf9f210b3a879765630d170d9b4e25d3375c2ce7a",
+    "platform/game-agnostic/src/experts/nexus.js": "7a6e194b1b97221fc9e2a15cc9f1885c0858ab50d784bdf81e5cbc58de70a144",
+    "platform/game-agnostic/src/experts/oracle.js": "ce50bcc3a9d5c56f5c3d9986710609af5bc2c5e4ece9b73fc739a65f87b8373a",
+    "platform/game-agnostic/src/forge-symmetric/action-surface-symmetric-v1.js": "a446d8e690a659674e0da3ec9346f3ec2fb38adddd2aaac529b8fdf77258eb62",
+    "platform/game-agnostic/src/forge-symmetric/counterfactual-symmetric-v1.js": "4f7fe3d8fd011b97021328747345526aa744adf988e2300b5fde122677ce8fa7",
+    "platform/game-agnostic/src/forge-symmetric/orientation-symmetric-v1.js": "3fd13729bfb0db4e2a09f48ceba39cce30b03b398e6bec7e6570182be028c5b1",
+    "platform/game-agnostic/src/forge-symmetric/scenarios-symmetric-v1.js": "3274b434ab6ab6f55d04cd964e94e8056322b1ea8b818adffa8348d6a514035e",
+    "platform/game-agnostic/src/forge/adapter.js": "9185c56147357435a46d4df77eefe969bc3753a97f73b5490dd9689bf53b3ba0",
+    "platform/game-agnostic/src/forge/contract.js": "07b4bc10a6daca7509b39e4cad1cbc39ef2d10031cf08d1b91d31234bae801d6",
+    "platform/game-agnostic/src/forge/counterfactual-v2.js": "3eb25964dd1088ce8c67e116176221eae9d438ded20db608ffe6a5121b0a0b1e",
+    "platform/game-agnostic/src/forge/counterfactual.js": "e90af5e76cf48315aae0f64f337c809991906864034facb229508d1bd92a46d7",
+    "platform/game-agnostic/src/forge/dataset-v2.js": "2017051859bdda719ce33e2f1143cb4c814a2ee8b16aa1617e48a0d87f5b48cf",
+    "platform/game-agnostic/src/forge/dataset.js": "0769d596f9a4b3fd44a9ab6af2d172894a2bff4c1c518e8014d9d7a19cc52e49",
+    "platform/game-agnostic/src/forge/export.js": "c4f0d6277f367c5f309a67a68eb277c57ed596c915ccfa5a2950ca80da460180",
+    "platform/game-agnostic/src/forge/kernel.js": "f9c807ebed80ff1c2e2a47115b62525f9dac94b6c41af9d66e1903c3b7b209b7",
+    "platform/game-agnostic/src/forge/oracle-surface.js": "6fa79d5eec209895f950e04a25fd9d8e9f370d12033b52a06724138ff0557a35",
+    "platform/game-agnostic/src/forge/render.js": "823318dc6abbfa867a32582805d3f5eac6b28c67660d0fea9e67022c2604df4e",
+    "platform/game-agnostic/src/forge/replay.js": "7ddd38d0b93c0f91c8f87acdae6408f3f7b611e0c4f624524c72097bb3f91158",
+    "platform/game-agnostic/src/forge/reward-v2.js": "8e31eb360c51837868132827b9c02e512ddd6ac1c892612242b1ed383feb74c0",
+    "platform/game-agnostic/src/forge/scenarios-v2.js": "c50c380eae9c37c0ee8d1a00e5e9736ae2f5dfaab814e1e8ec0d048d4e0c314a",
+    "platform/game-agnostic/src/forge/scenarios-v3.js": "f990f2249c2390305cec7b690b4ea3ae1dd0bb11622d4d1cd37e33fa99c337e8",
+    "platform/game-agnostic/src/forge/scenarios.js": "e5549cad32da129dcd37bdd8d9fd5226029a9f0b165220227b3307061e481e5f",
+    "platform/game-agnostic/src/forge/soup-bridge.js": "b892f85ac2e8f21cd3c2b4c8e368aab57808e3c60578045099a2cbdb1947b00b",
+    "platform/game-agnostic/src/forge/supervision.js": "0a21ecf9eb757f26c1c7932c4c38494561b2f6db1f3a3e9c2e58dca55a07025d",
+    "platform/game-agnostic/src/forge/topology.js": "364c07720d9393abdc530bce5b97a3014f8c27aa5813188268cb4ea1176af311",
+    "platform/game-agnostic/src/forge/validators-v2.js": "8dfb8c507887a3f3b996b8aca23c23248aaba0a2d8467c3bc0097d4639b747d9",
+    "platform/game-agnostic/src/forge/validators.js": "bb388403ea8e8b873788a15a9e85b3b419237c197e8acd2aa68f47392174a6db",
+    "platform/game-agnostic/src/forge/warmup.js": "d6fc447a263de423f09ebcf1b5806e71d3af7df642df1dd9e0ade77206b82d97",
+    "platform/game-agnostic/src/lab/stage3c-learned-nexus.js": "aae20d1d40b1cc5f93b5b46dd700f1ef1f66ea0ec44507efc4c4cfecba198574",
+    "platform/game-agnostic/src/prime/root-puct.js": "93b62027a77088690027201d3ed05ead8f8f50f77e44a37bca6237070e2148fc",
+    "platform/game-agnostic/src/sdk/define-adapter.js": "f5da872fa40214713b417ff40e8a5df648b52e869d9bd58bf7c0e0744239b9be",
+    "platform/game-agnostic/src/stage3f/causal-trace-v1.js": "78388a00b2bedfc9689a5d9f51d0cbc04be9cf7f09774aedee762c100cd06f87",
+    "platform/game-agnostic/src/stage3f/counterfactual-veto-ledger-v1.js": "ce0dd3927cb3a89abeadfd501bc6294e02fdebf40f051f72b0bf9153475cf373",
+    "platform/game-agnostic/src/stage3f/deployable-action-proposal-v1.js": "b20b7d04e797f53412a64da4e68da519045d39d0524b96cc900888dc669f58c4",
+    "platform/game-agnostic/src/stage3f/environment-calibration-v1.js": "ff05ced2470c6918a5cd2d5eb7ab9591df46483cbe2d38a504046645a45ea872",
+    "platform/game-agnostic/src/stage3f/free-action-sufficiency-v1.js": "e4e57840e0f1a9abc0d5c8e0e91bce767761620063b2fc6f6eb14d2de924d5b7",
+    "platform/game-agnostic/src/stage3f/nexus-relational-spatial-context-v1.js": "6a66f4d8898fee0be039a815542a9b4487ad017637998ee7785938b0b584c6c6",
+    "platform/game-agnostic/src/stage3f/nexus-selector-v2-candidate.js": "965cb36f003045a5f80e0e9860c03b99db0d427bdd1768d5fc33ec72e2581577",
+    "platform/game-agnostic/src/stage3f/policy-requalification-v1.js": "44d216fe933dd15b31b6611684af776f2318e9ba2b08cadb518bd4fe832ceae0",
+    "platform/game-agnostic/src/stage3f/policy-router-v1.js": "ab23d2333d11da690a57dccfbc077944a1a68237db952dd158e8d9362a68a7a7",
+    "platform/game-agnostic/src/stage3f/prediction-reliability-corpus-v1.js": "eab1654e48f2cbf4140e79601e23715af055ca3bb62e476063206859dbefa57e",
+    "platform/game-agnostic/src/stage3f/prediction-reliability-v1.js": "8ed40e8e166e074bd0333142977f35f8fd44886114c78a577ffbbddc64e90848",
+    "platform/game-agnostic/src/stage3f/world-state-v1.js": "dbc44bffa01dc58b13d94ef34fbcbd1d35815859fafdfe62b55cf428003d9380",
+    "platform/game-agnostic/src/stage3g/action-semantics-v1.js": "edfbff80e683a71ef1ba7a6bc87350a2f1c9a378526c311779806f856e4ab03e",
+    "platform/game-agnostic/src/stage3g/deployable-action-model-v1.js": "755dfad99bdf7fe0dfc11607f91ea22b833f43b1b96a5f0bdd3bd0f089eb7597",
+    "platform/game-agnostic/src/stage3g/epistemic-provenance-v1.js": "a7301b542bb91ee6002936a8914cb3a40c7bf810d788e0f4dc001d3085121395",
+    "platform/game-agnostic/src/stage3g/observable-action-surface-v1.js": "cd24822a6ec6d5e0b6f0322d8b4d511c2a0b31ce57d573d237bad3b3f80f2e43",
+    "platform/game-agnostic/src/stage3g/observable-entity-state-v1.js": "6441710879d5b0dcf603c9811fd37cbdf76ee78e4cfbf7ad45bc2e613e868cca",
+    "platform/game-agnostic/src/stage3g7/target-eligibility-contract-v1.js": "0bd72759a5ca8024a4302d894f6e825666f6772d9ecd9d42c396093be0e16bdc",
+    "platform/game-agnostic/stage3g8/objective-progress-v1.mjs": "91d651f8406e1a0d3b3d51d922d5b0ddd5799e6c1d4bc4cd089505e837bd50a1",
+    "platform/game-agnostic/stage3h-activation-readiness-v2/runner-design.mjs": "acdfd7e2293b6af8c85656d3c6de1adfd5646c7dc9e3295b3422717b5d3aa13c",
+    "platform/game-agnostic/stage3h-ascii-competence-v1/arms.mjs": "4999e58a3c854e4945a6862346e800132c545ee36071e1f0b10182bad40227a9",
+    "platform/game-agnostic/stage3h-ascii-competence-v1/guard.mjs": "f802d63a5485a29d6351e0ba83dccdd38022d79a51e7d1d092b3efa14c3f1df5",
+    "platform/game-agnostic/stage3h-ascii-competence-v1/metrics.mjs": "e03826f3c1828ebabb8a7eebba94917e6fa324a3624d4cf972310837c801eeb6",
+    "platform/game-agnostic/stage3h-ascii-competence-v1/population.mjs": "e9b25efd41e8f25186f012cc2204fe9f96671b1612483ee2fd30e064c5615af8",
+    "platform/game-agnostic/stage3h-ascii-competence-v1/protocol.mjs": "c3affb9c5806797f3c6ff35be191d1095de210546196ca3dbc07fa4519e1b419",
+    "platform/game-agnostic/stage3h-canonical-v1/adapters.mjs": "28ec69650b65b2365c2382eee6f2fe73e42ee0fb343cda9e96f73c9679c50501",
+    "platform/game-agnostic/stage3h-canonical-v1/baseline.mjs": "7c6471ca9d7eac93dc5334bb01bb2b1f248ca8adb0ed8c1239e7e2629f98caeb",
+    "platform/game-agnostic/stage3h-canonical-v1/evidence.mjs": "2dff64e7bdb14bf95f67bd25e563be109b39a9ac78c4a6f5577588a83cf0618a",
+    "platform/game-agnostic/stage3h-canonical-v1/guard.mjs": "4f86edba7b0814a6b5f3edd54ec4642df0a6037b5b803a767ddd98a0dae72163",
+    "platform/game-agnostic/stage3h-canonical-v1/metrics.mjs": "a018938eed4f6b11fa383674d41f098304a2bd39441de5516a26345ebf396ecc",
+    "platform/game-agnostic/stage3h-canonical-v1/nexus-selector-v1-port.mjs": "22d6e83d41d953bac8a9bcc3176580015b055b9b178deb6049a01ac81ac50490",
+    "platform/game-agnostic/stage3h-decision-value-closure/inherit.mjs": "07665a3ae8d27a1faa21fd25ecc0ac25804563e2ba3794c32ca2a63623bb3dab",
+    "platform/game-agnostic/stage3h-failure-diagnosis-v1/h2-mechanism.mjs": "5f254809e91c2eb692defe11e5eeb945fd5d0711bbaa18ca2b78c7cc6cdca367",
+    "platform/game-agnostic/stage3h-failure-diagnosis-v1/lib.mjs": "ba19b5fae7567106cb5ffbfee20ee723e69ca223a20ef41425ed42d7ce4b117b",
+    "platform/game-agnostic/stage3h-final-review-handoff/amendments/v3/runner.mjs": "a3960a332f67bf20ce90922b4843cba29d7e075bb6bb51cad6192f6b2b3139ce",
+    "platform/game-agnostic/stage3h-hdisc0-design-v1/analysis/design-evidence.mjs": "28e59dedf96f73bd56a29a1e21c99c480509287491d62df24760a10a380b711a",
+    "platform/game-agnostic/stage3h-hdisc0-design-v1/contract/pairwise-contract.mjs": "c4646a0436db69a43e8f72301e0e76085d243cf675955258a8641910a05361d3",
+    "platform/game-agnostic/stage3h-hdisc0-design-v1/readiness/backup/acceptance-record.mjs": "4d6c96223c7fb000da47f123b6e05ea7dafffb8f851ee10363dd36db21138959",
+    "platform/game-agnostic/stage3h-hdisc0-design-v1/readiness/bundle/evidence-bundle.mjs": "72aa85874b8da40f234660ace61bb69e49cd844b80e486c5c31d7f494a2bb3f8",
+    "platform/game-agnostic/stage3h-hdisc0-design-v1/readiness/campaign-entry-gate.mjs": "0751b2440f1b4041960c2b016518511338d0e919b147939a10e6d8bc696cf614",
+    "platform/game-agnostic/stage3h-hdisc0-design-v1/readiness/exclusions/clean-checkout.mjs": "40386a92336d76082e10735d0610bb9def986784d88acd9e8af22a3bcb1e2d8f",
+    "platform/game-agnostic/stage3h-hdisc0-design-v1/readiness/exclusions/equivalence.mjs": "0e09619ae299c3d0c6c8a741dba1b6407f7fce498c952b03961690b1aaed9c3a",
+    "platform/game-agnostic/stage3h-hdisc0-design-v1/readiness/exclusions/pin-inputs.mjs": "76ff6cd8457ff3e712d2d3ddddf88bef98c40aafebdde7f2d736568426fbffe1",
+    "platform/game-agnostic/stage3h-hdisc0-design-v1/readiness/exclusions/portable-exclusions.mjs": "8444c3ab90e54c1b3e243371684a2d5503f35ab282399869fa07d80e3e280511",
+    "platform/game-agnostic/stage3h-hdisc0-design-v1/readiness/exclusions/selfcheck.mjs": "b8a27a81f6e6240fffe304cba82d14d6fe58522ae01c1b182bb680f0693bef67",
+    "platform/game-agnostic/stage3h-hdisc1-discriminator-v1/api/candidate-kernel.mjs": "fce91c075cf5e29f8506b736858bb04224c6359c0d2e0a34303a8a34e74ad525",
+    "platform/game-agnostic/stage3h-hdisc1-discriminator-v1/api/discriminator-api.mjs": "e671b3e4016d3be823bee3774aaec24d84430f59ddfb0546a9f4181e9827408f",
+    "platform/game-agnostic/stage3h-hdisc1-discriminator-v1/api/host.mjs": "320a172a2c97c89cab1a74b31e5e6c49c695751e2099bac7a87149f32d545567",
+    "platform/game-agnostic/stage3h-hdisc1-discriminator-v1/audit/inference-graph-audit.mjs": "c5bed33e6c92abe5d44748ce8014246830107e02f54b3eaa466015d5d52b4da6",
+    "platform/game-agnostic/stage3h-hdisc1-discriminator-v1/campaign/analysis.mjs": "26015ebc3eb03a1b9bb3d6e7c7cf8aedc0423186ae8155fb24b437cbb7dd2e4c",
+    "platform/game-agnostic/stage3h-hdisc1-discriminator-v1/campaign/dataset.mjs": "d2d905f688fb082520da2f6fa6758ff75bfe705939168dcb9b70efacf4d73635",
+    "platform/game-agnostic/stage3h-hdisc1-discriminator-v1/campaign/evaluate.mjs": "3ceee117c92b6e85ff64262adb420212337f3c933569ec3d86eb6cfd302f8363",
+    "platform/game-agnostic/stage3h-hdisc1-discriminator-v1/campaign/learner.mjs": "18956d8ab64c2740aaf0ec185bdd4dd0abb523e7992d58f1d9378236bb84c3c3",
+    "platform/game-agnostic/stage3h-hdisc1-discriminator-v1/campaign/native.mjs": "c231df5ee78454121561f864ca4ce2919d6407f77a81af07adae38ab0f457b4e",
+    "platform/game-agnostic/stage3h-hdisc1-discriminator-v1/campaign/population.mjs": "662afb33bf799499b73c958a018bc577b28e02c1a3515285a9d682a7a5243de7",
+    "platform/game-agnostic/stage3h-hdisc1-discriminator-v1/campaign/runner.mjs": "40a8088bc64cd69fe6197e99b019dd8e6e0dc95d91720cdf8a24112b8832beb8",
+    "platform/game-agnostic/stage3h-hdisc1-discriminator-v1/campaign/train.mjs": "209fb278049df80ee19f438847d68bf2b8f8f9d186bba597517e41e7f189ecec",
+    "platform/game-agnostic/stage3h-hdisc1-discriminator-v1/discriminator/canonical.mjs": "e1b9b4ea3ccee12b8f570a2e678749dcff9d65907f0d4585b2ae642afe6b841c",
+    "platform/game-agnostic/stage3h-hdisc1-discriminator-v1/discriminator/contract.mjs": "e00d3822dce68be264a99af9d117341c9bee5bd54b85aff8a804bcba3a536d77",
+    "platform/game-agnostic/stage3h-hdisc1-discriminator-v1/discriminator/encoder.mjs": "4c8b44482a93a393d5a8f2e1e9c6f195149f9ae0f69817789922b64c7a1c0f65",
+    "platform/game-agnostic/stage3h-hdisc1-discriminator-v1/discriminator/forge-base/features.mjs": "7c5165ef2a6c1340a30f0df74149d9b062391d75fb87fe6f86b7851615083bf5",
+    "platform/game-agnostic/stage3h-hdisc1-discriminator-v1/discriminator/forge-base/projection-keys.mjs": "75cea29fc8c3a1abea4d9e76e67a3023fa2b8fe28a001c17cb56fd05f70f2055",
+    "platform/game-agnostic/stage3h-hdisc1-discriminator-v1/discriminator/forge-encoder.mjs": "7b6a4b6968372ada3bde858d74f39f4f23e96cfa25be1916292bb2dc95bff5e2",
+    "platform/game-agnostic/stage3h-hdisc1-discriminator-v1/discriminator/index.mjs": "692158ba1a6b8179fc1457041a25ab297008ebf9245bef6f6bc2762ea9e45e57",
+    "platform/game-agnostic/stage3h-hdisc1-discriminator-v1/discriminator/pair-model.mjs": "74195d775680798998c065ef061561623326639c38173e3cb1df9c01cc46ed57",
+    "platform/game-agnostic/stage3h-hdisc1-discriminator-v1/protocol/ablation-contract.mjs": "e37f2357f93965c320de3ac6781b72cade63daee238e9356904974ba441565be",
+    "platform/game-agnostic/stage3h-hdisc1-discriminator-v1/protocol/protocol.mjs": "1e372d6c31278e569374f3841c5ccc8a0e70906742b2bf30b6aeaed82ab2a557",
+    "platform/game-agnostic/stage3h-hdisc1-discriminator-v1/readiness/campaign-entry-gate.mjs": "9ca1ff7055da37b87237db1fd9cd8ae29b23893be4b97ce029fbde8f20b54735",
+    "platform/game-agnostic/stage3h-hdisc1-discriminator-v1/readiness/evidence-bundle-manifest.mjs": "343119f764def76cd738925a18ca01f9202358a6115301b67901f5cc29d0328c",
+    "platform/game-agnostic/stage3h-hdisc1-discriminator-v1/readiness/lib.mjs": "a37a154dcafe60ce78b6acf9832a51ea1f424b350d32eafe9a72e6e1f92366d1",
+    "platform/game-agnostic/stage3h-hdisc1-discriminator-v1/readiness/preregistration-freeze.mjs": "0e9586bfe3b7c7b570917991256147a9132d1161b087dc9f2f0994b3d114a435",
+    "platform/game-agnostic/stage3h-hw1-dev-v1/hw1-eval.mjs": "a91947ae45e55d4901c8598522f953ff49a9b83994aba78bb82c94efc09b214e",
+    "platform/game-agnostic/stage3h-hw1-dev-v1/i2-allocator.mjs": "cf1cdbd35b0e5e601e8428cf7ff515b8867f47a30ccdc927e6695286d61596fd",
+    "platform/game-agnostic/stage3h-hw1-dev-v1/i2-build-class.mjs": "071b1d4f9b908a52e4414a3280cd5b10e086d59f0645187fed5e7d7da6649eb4",
+    "platform/game-agnostic/stage3h-hw1-dev-v1/i2-pcd.mjs": "922b42541c2d1aa999e692bf24db8f1789026a454f82643721b656ab1653a75f",
+    "platform/game-agnostic/stage3h-hw1-dev-v1/i2-registry.mjs": "103f1c54f82ae924e8dcdf25d55d97c4c6adb5b5c9f486c0ca27ac75c1b3fd6f",
+    "platform/game-agnostic/stage3h-hw1-dev-v1/i2-screen.mjs": "6ae1b11635ac27cd7e6f372c9b7a6016942943f1cb60a0a71f4ec7734591c3f7",
+    "platform/game-agnostic/stage3h-hw1-dev-v1/i3-audit-class.mjs": "776a2d66bc633c77568ccd28d2cd5e193351669d9f23e2adc15778e955d72d87",
+    "platform/game-agnostic/stage3h-hw1-dev-v1/i3-features.mjs": "4f6da6af69020c9a4b9ef548541d93b473a56d0f3aba8e486a75101b8537cb50",
+    "platform/game-agnostic/stage3h-hw1-dev-v1/public-projection.mjs": "c4f9532e0771e025513122052128b0d14185e4abcde3ace9de9de5d77db6c099",
+    "platform/game-agnostic/stage3h-hw1-dev-v1/transforms.mjs": "556dde4c2af3b3e8e1bcb45857e3419d1279bb21a3d93d96faf7f175d3c0d016",
+    "platform/game-agnostic/stage3h-hw4-value-band-v1/hw4-contract-v2.mjs": "94fe0b51ef4e86a37e1545f29c2743a25c31208dd491698cc1f8f1bf37a344de",
+    "platform/game-agnostic/stage3h-hw4-value-band-v1/hw4-features.mjs": "43c21ae939d5262ecedb31d74c296f72d826403802ecc6540c5da7e02dbb36c0",
+    "platform/game-agnostic/stage3h-hw4-value-band-v1/hw4-policy.mjs": "f0ba4b815bf12ba919342db8d67595a9cf44cbe86447261dd45566171d4056f0",
+    "platform/game-agnostic/stage3h-owner-governed-v1/allocate-namespaces-v4.mjs": "ebbc99b5877a03dcaee817abaf61eaf3f16e31f052436fedb35eb4789dc940e3",
+    "platform/game-agnostic/stage3h-owner-governed-v1/connector.mjs": "a5f71f2291cb35652424baae3919e55118827d1da51f65a60e9479f1a48041b0",
+    "platform/game-agnostic/stage3h-owner-governed-v1/inherit.mjs": "59289dfa21b191da1d1c3ab6caf1ad4cc7c32dd70467f0247b00c7c63d07614e",
+    "platform/game-agnostic/stage3h-owner-governed-v1/nuisance.mjs": "550ccd519894c3fdade26036cc1368ebcc84c9a5131d164851f518c7ad3a9263",
+    "platform/game-agnostic/stage3h-safety-feasibility-v1/closure/exclusions.mjs": "0637b8ea3920969686c65abe19fca6e6337b7d8caf3ae60d50377333c11c7f4c",
+    "platform/game-agnostic/stage3h-safety-feasibility-v1/contract.mjs": "584216391274ad659e6778ed55ca0524fdc46a69db14ddc05c0e1131a26ab523",
+    "platform/game-agnostic/stage3h-safety-feasibility-v1/search.mjs": "71ea481a74ffa1051d894e93462e5c226e7e4dab2f99fa9f3ce36917c50877d2",
+    "platform/game-agnostic/stage3h-safety-feasibility-v1/twins.mjs": "0d1218c130c716735f5e0b454b7ce4d2bf1bad0dd4e983f5e7e3341b4de5d4cb",
+    "platform/game-agnostic/stage3h-sk1-safety-kernel-v1/adapters/forge/evidence.mjs": "caa3c2577c9269ed27d19fdca2878011ff337400be0dcb067db5d51396e95cb9",
+    "platform/game-agnostic/stage3h-sk1-safety-kernel-v1/adapters/forge/features.mjs": "d8077bed1cd55885fdf237db19414ebe0fcf347504dcaca8d9df98e707ff4d84",
+    "platform/game-agnostic/stage3h-sk1-safety-kernel-v1/adapters/forge/projection.mjs": "e2a050b2f25dfe6937cd9194ee0fafa4cc3a421bb894cb3e9c3bf94b91069f1d",
+    "platform/game-agnostic/stage3h-sk1-safety-kernel-v1/adapters/rescue/adapter.mjs": "61e10391fa5a48fe3a6f16d5bcdc182295c74b7fbc490bda674ea9c5d365ef8a",
+    "platform/game-agnostic/stage3h-sk1-safety-kernel-v1/api/host.mjs": "9dfb89914ab66905aa05f5f17562bb32cc7cb91aedf0b47431fa255837128bc2",
+    "platform/game-agnostic/stage3h-sk1-safety-kernel-v1/infra/allocator.mjs": "5d229c57ca84036c665db63051247f6bac370a73e8ba092e1863e69cdc2a803f",
+    "platform/game-agnostic/stage3h-sk1-safety-kernel-v1/infra/audit-class.mjs": "526eb5f60150805a12666c8db0703e91aed438065ac2c80250e407278bfcdf8a",
+    "platform/game-agnostic/stage3h-sk1-safety-kernel-v1/infra/common.mjs": "234c8d0da36e1a353321e4744b66ef976fd908d2fb221ef87d94af6e4ab71f25",
+    "platform/game-agnostic/stage3h-sk1-safety-kernel-v1/infra/evidence-source.mjs": "149eaa172e672d364e1cc6160c9ee0580aa536653575d51ef106e5fbb517c011",
+    "platform/game-agnostic/stage3h-sk1-safety-kernel-v1/infra/exclusions.mjs": "fbfa75285fb38af6c604dc5478c03583ea12f21b93ea1355f9519a8151781cb6",
+    "platform/game-agnostic/stage3h-sk1-safety-kernel-v1/infra/gbdt.mjs": "cb34b457c678d6677ddb5d35bfe4a956668f9fe50721a1c5923125de055294ee",
+    "platform/game-agnostic/stage3h-sk1-safety-kernel-v1/kernel/contract.mjs": "fbd57bce5d404fbca372531b1124aa753ccb0b400eb380a619e3431610654427",
+    "platform/game-agnostic/stage3h-sk1-safety-kernel-v1/kernel/index.mjs": "a6b96ec1fa288c553d73ab4e03747dd0a6e6e1e6f7afe78ca2104794f58bff2f",
+    "platform/game-agnostic/stage3h-sk1-safety-kernel-v1/kernel/ranking.mjs": "3f8a7adb6cd18ebb6ef07e2f06a4ebbf021ddbe0d0d39853ec2f6f3195dbf27a",
+    "platform/game-agnostic/stage3h-sk1-safety-kernel-v1/kernel/record.mjs": "e529ecc09dc647b80997450b98b1d991b559171ab5e649e1d3152fa17ae6761c",
+    "platform/game-agnostic/stage3h-sk1-safety-kernel-v1/kernel/risk.mjs": "94a8b3ed5b6504c9e8f378ba1ffc8e0016e030684aed24f26743f3f203752996",
+    "platform/game-agnostic/stage3h-sk1-safety-kernel-v1/kernel/semantics.mjs": "9441a984946443ecbfc1f5d48f8302826ec7aa938f78b2ff20d1bffc46d1db44",
+    "platform/game-agnostic/stage3h-wider-action-feasibility-v1/exclusion/strict-index.mjs": "1b064fdf7dcb20aa5b1647b19013c83699581e8dd69e71f26299aa0d32345c62"
+  },
+  "resolution": {
+    "familySplit": {
+      "m": 19,
+      "t": 9,
+      "basis": "Matches the fixed validation/exploration planning ratio 900/1900. No family outcome was inspected to select these values."
+    },
+    "sharedConfiguration": "The existing 18-configuration grid and joint five-arm selection rule are fixed unchanged."
+  },
+  "experimentFreezeRequired": true,
+  "executionAuthorized": false,
+  "delegationEnabled": false,
+  "fullStage3HCertified": false
+}

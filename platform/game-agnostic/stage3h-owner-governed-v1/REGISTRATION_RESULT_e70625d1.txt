@@ -1,0 +1,59 @@
+=== SENTINEL GRID STAGE 3H OWNER REGISTRATION ===
+
+STATUS=NUISANCE_CONTRACT_BLOCKED; ACTIVATION_NOT_PERFORMED
+CLASSIFICATION=CANDIDATE_e70625d1_REJECTED_AT_PHASE_1_POINT_5; CORRECTED_CANDIDATE_f1ba57b4_GATE_PASSED_PENDING_OWNER_APPROVAL
+
+AUTHORITY=R0
+PROTECTED_FILES_UNCHANGED=true (14447; V3 check.py PASS; candidates 18ff522c and e70625d1 bound files byte-identical)
+FROZEN_SELECTOR_UNCHANGED=true
+
+CANDIDATE_SHA256=e70625d137a93c5321dd96b53b59ec99b960811cbe67d2f699a01e7a5ed1f720
+
+O2R_PUBLIC_VIEW_NUISANCE_VALID=false for e70625d1: original action handles survive in semantics[].ACTION_ID in 288/288 worlds (decision-inert, but handles not opaque)
+O2R_NATIVE_WORLD_UNCHANGED=true (288/288)
+O2R_ACTION_BIJECTION=surface bijective 288/288; NOT opaque (handle leak); corrected O-2R.1 passes 288/288
+O2R_DEVELOPMENT_WITNESSES=0/288 under the ten-point gate for e70625d1 (points 4 and 5); 288/288 for the O-2R.1 correction (evidence/o2r1-gate.json)
+
+INTERMITTENT_TEST_ROOT_CAUSE=IDENTIFIED_BY_ELIMINATION_NOT_REPRODUCED (frozen 1,000 ms S0+Nexus lock-time assertion; induced load reached 321 ms)
+TEST_INTEGRITY_VERDICT=NOT_INTEGRITY_BLOCKED_BY_ELIMINATION; availability risk mitigated by O-5 preflight in f1ba57b4
+TIMING_LIMIT_UNCHANGED=true
+
+O3_MIN_ACCEPTED_PER_CELL=2
+ADMISSION_FLOORS_VALID=true (0.9 population and per-horizon, Kish effective-N 2100, fixed cell weights, no replacement, no outcome filtering)
+CATASTROPHE_VETO_VALID=true (unchanged; a sparse cell lifts the bound and blocks a positive result; evidence/o3-acceptance.json)
+
+OWNER_SCOPE_APPROVED=CONDITIONAL_FOR_e70625d1_NOT_EFFECTIVE (registration/OWNER_CONDITIONAL_APPROVAL_e70625d1.json)
+OWNER_APPROVAL_REFERENCE=explicit conversation instruction of 2026-10-20 (not a cryptographic signature)
+INDEPENDENT_METHOD_REVIEW=false
+
+OWNER_GOVERNED_LANE_COMMITTED=false
+OWNER_GOVERNED_COMMIT_HASH=NONE
+
+REGISTRATION_ACTIVE=false
+REGISTRATION_COMMIT=NONE
+REGISTRATION_SHA256=NONE
+
+A_B_NAMESPACE_DISJOINT=true
+PRIOR_WORLD_EXCLUSIONS_VALID=true (9,407; seed-level disjointness verified; world-level exclusion enforced at execution)
+
+SEALED_WORLDS_GENERATED=false
+SEALED_OUTCOMES_ACCESSED=false
+CAMPAIGN_EXECUTED=false
+
+BOUNDED_SELECTOR_QUALIFIED=false
+FULL_STAGE3H_CERTIFIED=false
+
+CANONICAL_MOE_GAIN=NOT_ESTABLISHED
+STAGE3I_STARTED=false
+
+CAN_DISPATCH=false
+CAN_MUTATE_LIVE_WORLD=false
+
+NEXT_EXACT_EXECUTION_AUTHORIZATION=NONE_YET. Required first: owner approval of candidate f1ba57b46ceedc3ab22a859d51245ed353b1aaa570ec914ebaa3f8fec4c3e984 (amendment revision 3: O-2R.1 opaque handles everywhere; O-5 fail-closed preflight; O-3 MIN_ACCEPTED_PER_CELL=2; all else unchanged).
+
+EVIDENCE (all write-once; earlier failing records preserved):
+ evidence/o2r-gate.json (FAIL), evidence/o2r-gate-diagnosis.json, evidence/o2r1-gate.json (PASS),
+ evidence/flake-audit.json, evidence/flake-audit-review.json, evidence/o3-acceptance.json,
+ tests.mjs 11/11, tests-v2.mjs 4/4, tests-v3.mjs 5/5 (full TAP logs captured).
+CHECK-SPECIFICATION ERRORS OF MINE, CORRECTED ADDITIVELY: o2r-gate point 4 counted precondition codes as entity ids;
+ flake-audit parity compared key-ordered JSON strings ("48 mismatches"; true value 0/48).

@@ -1,0 +1,591 @@
+{
+ "schema": "STAGE3H_SAFETY_FEASIBILITY_WITNESS_V1",
+ "authority": "R0",
+ "definitions": {
+  "PUBLIC_DECISION_INFORMATION": {
+   "id": "STAGE3H_PUBLIC_DECISION_INFORMATION_V1",
+   "includes": {
+    "horizon": "declared horizon band and evaluation steps (packet horizon; observation features maxTicks - tick)",
+    "observationValues": "the complete ObservationPacket: contractVersion, gameId, schemaId, schemaVersion, observerId, sequence, features (incl. aggregate civilian health, unavailable count, live hostiles), featureShape, metadata.tick/scenarioFamily/scenarioLevel/objectives",
+    "entityRelations": "metadata.canonicalState entities (id, kind, hostile, critical) and relationships (kind, from, to); Stage 3G observable entity state; visible map",
+    "legalActions": "the complete offered menu: handles, types, targets, full action objects",
+    "actionSemantics": "every deriveActionSemantics record (preconditions, deterministic immediate effects, spatial effects)",
+    "observableHistory": "metadata.observationHistory AND, for witness verification, the complete public view at every warm-up tick",
+    "uncertaintySignals": "any function of the above, e.g. Nexus rationale codes/confidence and S0 scores; nothing else"
+   },
+   "excludes": {
+    "digests": [
+     "worldHash",
+     "sourceStateHash",
+     "provenance"
+    ],
+    "privileged": "seed, generator random state, entity health (non-actor), value, cost, risk, resource quantity, relation subtype, native simulator and evaluator access (decision packet contract; publicSimulatorCalls 0)"
+   },
+   "identity": "equivalence is modulo a bijection of entity identifiers and action handles; worlds built here share identifiers, so the bijection is the identity and equivalence also holds literally"
+  },
+  "POLICY_CLASS": {
+   "id": "TWO_ARM_PUBLIC_ONLY_V1",
+   "arms": {
+    "S0": "frozen S0 (B): stage3h-canonical-v1/baseline.mjs currentBaseline, its full top set",
+    "NEXUS": "frozen Nexus-else-S0 (N): invokeNexus recommendation, S0 fallback on abstention; lexical tie-break unchanged"
+   },
+   "deterministic": "sigma: public decision information -> {S0, NEXUS}; output R = B or R = N",
+   "randomized": "sigma: public decision information -> distribution over {S0, NEXUS}",
+   "setValued": "also covered: any nonempty subset of B union N",
+   "noThirdAction": "no action outside B union N and no safety override exists in this class",
+   "lawful": "sigma reads only public decision information; no seed, generator state, simulator, evaluator or privileged field"
+  },
+  "CATASTROPHE": {
+   "evaluator": "FORGE_COUNTERFACTUAL_SYMMETRIC_V1 (evaluateCounterfactualsSymmetricV1), GREEDY_CONTINUATION_V1, FORGE_REWARD_V2, horizon = declared decision horizon",
+   "catastrophic": "regret = optimal totalScalar - action totalScalar >= 100 (stage3h-canonical-v1/metrics.mjs score)",
+   "introduction": "runner-design.mjs potentialIntroduction(candidate, comparator, truth): candidate != comparator as sets, candidate contains a catastrophic action, comparator contains a non-catastrophic action",
+   "introVsB": "potentialIntroduction(R, B)",
+   "introVsN": "potentialIntroduction(R, N)"
+  }
+ },
+ "selectionRule": "primary = witness with the largest smallest-decisive-regret margin from the 100 threshold; ties by (set, idx); fixed before verification",
+ "witnessesFound": 10,
+ "witnessesValid": 9,
+ "marginsOfValidWitnesses": [
+  5,
+  4,
+  4,
+  4,
+  3,
+  2,
+  2,
+  1,
+  0
+ ],
+ "primary": {
+  "set": "FRESH_CHECK",
+  "idx": 9837,
+  "seed": 952000009837,
+  "cell": "bridge/defended/restore_and_conserve/H2/1",
+  "margin": 5,
+  "valid": true,
+  "checks": {
+   "hashesReproduced": true,
+   "generatorSupport": true,
+   "configDifferencesOnlyHidden": true,
+   "configDiffW1W2": [
+    "$.entities.1.health",
+    "$.entities.1.value",
+    "$.entities.2.value",
+    "$.entities.3.value",
+    "$.entities.5.health",
+    "$.entities.6.value",
+    "$.entities.7.value",
+    "$.entities.9.health",
+    "$.entities.11.value"
+   ],
+   "sameSeedAndAxes": true,
+   "sameWarmupTicks": true,
+   "decisionPointPublicContentIdentical": true,
+   "replayReachesWorlds": true,
+   "fullPublicHistoryIdentical": true,
+   "publicHistoryTicks": 20,
+   "hiddenStateDiffers": true,
+   "decisionsIdentical": true,
+   "frozenLockMatchesLaneLock": true,
+   "nexusApplicableBoth": true,
+   "armsDiffer": true,
+   "evaluatorDeterministic": true,
+   "w1ChoosingNIntroducesVsB": true,
+   "w2ChoosingBIntroducesVsN": true
+  },
+  "hiddenDifference": {
+   "w1": [
+    {
+     "id": "n0",
+     "field": "value",
+     "value": 2
+    },
+    {
+     "id": "n0",
+     "field": "health",
+     "value": 46
+    },
+    {
+     "id": "n1",
+     "field": "value",
+     "value": 5
+    },
+    {
+     "id": "n2",
+     "field": "value",
+     "value": 4
+    },
+    {
+     "id": "n3",
+     "field": "value",
+     "value": 4
+    },
+    {
+     "id": "n4",
+     "field": "health",
+     "value": 45
+    },
+    {
+     "id": "n5",
+     "field": "value",
+     "value": 2
+    },
+    {
+     "id": "n6",
+     "field": "value",
+     "value": 5
+    },
+    {
+     "id": "n7",
+     "field": "value",
+     "value": 4
+    },
+    {
+     "id": "n8",
+     "field": "value",
+     "value": 4
+    },
+    {
+     "id": "n8",
+     "field": "health",
+     "value": 26
+    },
+    {
+     "id": "n9",
+     "field": "value",
+     "value": 2
+    },
+    {
+     "id": "n10",
+     "field": "value",
+     "value": 3
+    }
+   ],
+   "w2": [
+    {
+     "id": "n0",
+     "field": "health",
+     "value": 20
+    },
+    {
+     "id": "n4",
+     "field": "health",
+     "value": 20
+    },
+    {
+     "id": "n8",
+     "field": "health",
+     "value": 20
+    }
+   ],
+   "w1vsw2ConfigPaths": [
+    "$.entities.1.health",
+    "$.entities.1.value",
+    "$.entities.2.value",
+    "$.entities.3.value",
+    "$.entities.5.health",
+    "$.entities.6.value",
+    "$.entities.7.value",
+    "$.entities.9.health",
+    "$.entities.11.value"
+   ]
+  },
+  "menu": [
+   {
+    "index": 0,
+    "type": "MOVE",
+    "handle": "3491a81feab1f17f0aac1fa3b0fc2b69cd8595cc9a5f635d58e2e57e613720fd"
+   },
+   {
+    "index": 1,
+    "type": "RETREAT",
+    "handle": "3d5f1f9853efd6e3c7f6eb75753d2e0b30b2c188d3be8ccf7e04dc1b6f82b62e"
+   },
+   {
+    "index": 2,
+    "type": "PROTECT",
+    "handle": "45812aad297e05b89275d31e4b8e1637ea54acbe46e5f61591d1f948364631eb"
+   },
+   {
+    "index": 3,
+    "type": "PROTECT",
+    "handle": "5c883fa1c5875252c8b846653aa0e429e7ae9ad5bb7637ccbfff36a2d87d114a"
+   },
+   {
+    "index": 4,
+    "type": "MOVE",
+    "handle": "c5c63c2235923e69b9a51ba0d68ff02723836f9a261af5f24a9e641f7d5b92f3"
+   },
+   {
+    "index": 5,
+    "type": "REPAIR",
+    "handle": "af8d117860ef3cf3267c49339f77839215e62dff000c390858bee5e66273593b"
+   },
+   {
+    "index": 6,
+    "type": "WAIT",
+    "handle": "bf310f0b8cc6e163fe7a8cad394725e37913c7fd4d72c503084c23d48e4d4292"
+   },
+   {
+    "index": 7,
+    "type": "MOVE",
+    "handle": "821eee491a4c63c483194165489b380b0d5fe37168db0463542da02b9728e915"
+   },
+   {
+    "index": 8,
+    "type": "REINFORCE",
+    "handle": "e593f1f0096be5c9548fbf49321ab57a8837ab2251359399f4fc17e8103f96fb"
+   }
+  ],
+  "B": [
+   4
+  ],
+  "N": [
+   8
+  ],
+  "nexusCodes": [
+   "NEXUS_BOTTLENECK",
+   "NEXUS_ISOLATED_ENTITY",
+   "NEXUS_UNCOVERED_THREAT"
+  ],
+  "w1": {
+   "worldHash": "456e0e2feae5f10130a2e79e4401de6aec7c8fb8df989d5dd5d7a5117cb5fca8",
+   "regretB": 93,
+   "regretN": 105,
+   "utilities": [
+    182,
+    60,
+    77,
+    69,
+    89,
+    77,
+    69,
+    60,
+    77
+   ],
+   "decomposition": [
+    {
+     "action": 4,
+     "total": 89,
+     "regret": 93,
+     "path": [
+      "MOVE",
+      "COLLECT",
+      "RESTORE",
+      "PROTECT"
+     ],
+     "bestPath": [
+      "MOVE",
+      "REPAIR",
+      "REPAIR",
+      "REPAIR"
+     ],
+     "deficitByComponent": {
+      "futureObjectivePotential": -60,
+      "restoredDependencyValue": -27,
+      "preservedValue": -39,
+      "infrastructureHealth": 228,
+      "optionValue": -6,
+      "resourceCost": -3
+     }
+    },
+    {
+     "action": 8,
+     "total": 77,
+     "regret": 105,
+     "path": [
+      "REINFORCE",
+      "REPAIR",
+      "PROTECT",
+      "MOVE"
+     ],
+     "bestPath": [
+      "MOVE",
+      "REPAIR",
+      "REPAIR",
+      "REPAIR"
+     ],
+     "deficitByComponent": {
+      "preservedValue": -12,
+      "infrastructureHealth": 120,
+      "optionValue": -2,
+      "resourceCost": -1
+     }
+    }
+   ]
+  },
+  "w2": {
+   "worldHash": "fcdc4ad0f261cb8ee1b592d979ef65ce342e3a430916bf2b51741c8afbb57680",
+   "regretB": 105,
+   "regretN": 79,
+   "utilities": [
+    194,
+    112,
+    129,
+    124,
+    89,
+    129,
+    121,
+    112,
+    115
+   ],
+   "decomposition": [
+    {
+     "action": 4,
+     "total": 89,
+     "regret": 105,
+     "path": [
+      "MOVE",
+      "COLLECT",
+      "RESTORE",
+      "PROTECT"
+     ],
+     "bestPath": [
+      "MOVE",
+      "REPAIR",
+      "REPAIR",
+      "REPAIR"
+     ],
+     "deficitByComponent": {
+      "futureObjectivePotential": -60,
+      "restoredDependencyValue": -27,
+      "preservedValue": -39,
+      "infrastructureHealth": 240,
+      "optionValue": -6,
+      "resourceCost": -3
+     }
+    },
+    {
+     "action": 8,
+     "total": 115,
+     "regret": 79,
+     "path": [
+      "REINFORCE",
+      "REPAIR",
+      "REPAIR",
+      "PROTECT"
+     ],
+     "bestPath": [
+      "MOVE",
+      "REPAIR",
+      "REPAIR",
+      "REPAIR"
+     ],
+     "deficitByComponent": {
+      "futureObjectivePotential": 8,
+      "preservedValue": -12,
+      "infrastructureHealth": 80,
+      "optionValue": 2,
+      "resourceCost": 1
+     }
+    }
+   ]
+  },
+  "publicContentSha": "80bdeb7be3f8cfb78a5acd084f585f37726e6b31de40681e3f3fe01f8135722d",
+  "classVerdict": {
+   "worlds": 2,
+   "deterministicS0Safe": false,
+   "deterministicNexusSafe": false,
+   "subsetsTested": 3,
+   "subsetsSafeEverywhere": 0,
+   "randomizedMinWorstCaseIntroductionProbability": 0.5,
+   "anyClassMemberSafe": false
+  },
+  "identityFree": {
+   "preferredType": "REINFORCE",
+   "tieClass": [
+    8
+   ],
+   "tieClassSize": 1,
+   "TYPE_SET": {
+    "w1": {
+     "Bcat": false,
+     "Bsafe": true,
+     "Ncat": true,
+     "Nsafe": false,
+     "choosingNIntroducesVsB": true,
+     "choosingBIntroducesVsN": false,
+     "regretB": 93,
+     "regretN": 105
+    },
+    "w2": {
+     "Bcat": true,
+     "Bsafe": false,
+     "Ncat": false,
+     "Nsafe": true,
+     "choosingNIntroducesVsB": false,
+     "choosingBIntroducesVsN": true,
+     "regretB": 105,
+     "regretN": 79
+    }
+   },
+   "contradictionSurvivesWithTypeSet": true,
+   "note": "Nexus preferred-type class has one member: an identity-invariant tie-break cannot change N here, so the contradiction is independent of the lexical-handle defect."
+  }
+ },
+ "others": [
+  {
+   "set": "FRESH_CHECK",
+   "idx": 9055,
+   "cell": "star/defended/supply_and_defend/H2/3",
+   "margin": 4,
+   "valid": true,
+   "w1": {
+    "regretB": 92,
+    "regretN": 104
+   },
+   "w2": {
+    "regretB": 106,
+    "regretN": 72
+   },
+   "tieClassSize": 1,
+   "survivesTypeSet": true,
+   "failedChecks": []
+  },
+  {
+   "set": "FRESH_EXPLORE",
+   "idx": 5819,
+   "cell": "chain/industrial/restore_and_protect/H2/3",
+   "margin": 4,
+   "valid": true,
+   "w1": {
+    "regretB": 80,
+    "regretN": 118
+   },
+   "w2": {
+    "regretB": 104,
+    "regretN": 10
+   },
+   "tieClassSize": 1,
+   "survivesTypeSet": true,
+   "failedChecks": []
+  },
+  {
+   "set": "FRESH_EXPLORE",
+   "idx": 10798,
+   "cell": "multi_cycle/bare/reach_target/H2/3",
+   "margin": 4,
+   "valid": true,
+   "w1": {
+    "regretB": 96,
+    "regretN": 112
+   },
+   "w2": {
+    "regretB": 114,
+    "regretN": 62
+   },
+   "tieClassSize": 2,
+   "survivesTypeSet": true,
+   "failedChecks": []
+  },
+  {
+   "set": "FRESH_EXPLORE",
+   "idx": 9839,
+   "cell": "bridge/defended/restore_and_conserve/H2/1",
+   "margin": 3,
+   "valid": true,
+   "w1": {
+    "regretB": 93,
+    "regretN": 103
+   },
+   "w2": {
+    "regretB": 103,
+    "regretN": 71
+   },
+   "tieClassSize": 1,
+   "survivesTypeSet": true,
+   "failedChecks": []
+  },
+  {
+   "set": "FRESH_CHECK",
+   "idx": 7456,
+   "cell": "bridge/industrial/restore_and_protect/H2/1",
+   "margin": 2,
+   "valid": true,
+   "w1": {
+    "regretB": 71,
+    "regretN": 102
+   },
+   "w2": {
+    "regretB": 118,
+    "regretN": 65
+   },
+   "tieClassSize": 2,
+   "survivesTypeSet": true,
+   "failedChecks": []
+  },
+  {
+   "set": "FRESH_EXPLORE",
+   "idx": 2283,
+   "cell": "bridge/defended/reach_target/H2/3",
+   "margin": 2,
+   "valid": true,
+   "w1": {
+    "regretB": 94,
+    "regretN": 102
+   },
+   "w2": {
+    "regretB": 102,
+    "regretN": 80
+   },
+   "tieClassSize": 1,
+   "survivesTypeSet": true,
+   "failedChecks": []
+  },
+  {
+   "set": "FRESH_EXPLORE",
+   "idx": 1193,
+   "cell": "star/bare/restore_and_protect/H2/1",
+   "margin": 1,
+   "valid": true,
+   "w1": {
+    "regretB": 99,
+    "regretN": 105
+   },
+   "w2": {
+    "regretB": 105,
+    "regretN": 49
+   },
+   "tieClassSize": 1,
+   "survivesTypeSet": true,
+   "failedChecks": []
+  },
+  {
+   "set": "FRESH_EXPLORE",
+   "idx": 7445,
+   "cell": "bridge/industrial/restore_and_protect/H2/1",
+   "margin": 0,
+   "valid": true,
+   "w1": {
+    "regretB": 77,
+    "regretN": 100
+   },
+   "w2": {
+    "regretB": 124,
+    "regretN": 65
+   },
+   "tieClassSize": 2,
+   "survivesTypeSet": true,
+   "failedChecks": []
+  },
+  {
+   "set": "FRESH_CHECK",
+   "idx": 1655,
+   "cell": "star/defended/restore_and_protect/H2/3",
+   "margin": -84,
+   "valid": false,
+   "w1": {
+    "regretB": 184,
+    "regretN": 102
+   },
+   "w2": {
+    "regretB": 146,
+    "regretN": 64
+   },
+   "tieClassSize": 3,
+   "survivesTypeSet": true,
+   "failedChecks": []
+  }
+ ]
+}

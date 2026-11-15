@@ -1,0 +1,829 @@
+{
+  "schema": "HDISC1_CURRENT_READINESS_V1",
+  "observedAt": "2026-11-15T02:51:38.909Z",
+  "head": "1ad0ea5a32c59dc5f97f2d4d9829f06e120015eb",
+  "authority": "R0",
+  "fullStage3HCertified": false,
+  "status": "CAMPAIGN_BLOCKED",
+  "delegationEnabled": false,
+  "protocol": {
+    "status": "REGISTRATION_READY_NOT_FROZEN_NOT_REGISTERED_NOT_AUTHORIZED",
+    "valid": true,
+    "byteReproduced": true,
+    "protocolSha256": "905539c3ab6a261888994be635d91bcca47d37fdc758ad4187cc295600d991b6"
+  },
+  "inference": {
+    "workingTree": "PASS",
+    "committedSource": "FAIL_CLOSURE_NOT_COMMITTED_AT_HEAD",
+    "sourceHash": "16a7e939efc9e1f01ec9ba44cd58c510253bcbced64e6e38ed2146fc982d5609",
+    "files": 12,
+    "violations": [],
+    "notCommitted": [
+      "stage3h-hdisc1-discriminator-v1/api/discriminator-api.mjs",
+      "stage3h-hdisc1-discriminator-v1/api/host.mjs",
+      "stage3h-hdisc1-discriminator-v1/discriminator/canonical.mjs",
+      "stage3h-hdisc1-discriminator-v1/discriminator/contract.mjs",
+      "stage3h-hdisc1-discriminator-v1/discriminator/encoder.mjs",
+      "stage3h-hdisc1-discriminator-v1/discriminator/forge-base/features.mjs",
+      "stage3h-hdisc1-discriminator-v1/discriminator/forge-base/projection-keys.mjs",
+      "stage3h-hdisc1-discriminator-v1/discriminator/forge-encoder.mjs",
+      "stage3h-hdisc1-discriminator-v1/discriminator/index.mjs",
+      "stage3h-hdisc1-discriminator-v1/discriminator/pair-model.mjs"
+    ]
+  },
+  "representation": {
+    "gate": "PASS",
+    "checks": {
+      "1_additiveScorerIsRestricted": true,
+      "2_comparatorExpressesANonAdditivePairInteraction": true,
+      "3_pairReversalConsistency": true,
+      "4_opaqueIdentityRelabelling": true,
+      "5_menuOrderPermutation": true,
+      "6_geometricTransformations": true
+    },
+    "performanceEvidence": false
+  },
+  "bundle": {
+    "status": "DRAFT_NOT_ISSUED",
+    "entries": 57,
+    "counts": {
+      "PROTECTED_SOURCE": 31,
+      "LOCAL_SCIENTIFIC_DATA": 19,
+      "CUSTODY_CONTROL": 7
+    },
+    "entriesSha256": "1396abe13795691581bd61d05d269e1843184722ecc9cbe72ee1847338ae522d",
+    "inPlaceVerified": true,
+    "issued": false
+  },
+  "campaignGate": {
+    "decision": "NO_GO",
+    "passed": 2,
+    "of": 7,
+    "failing": [
+      "G3_REPRODUCIBLE_EVALUATION_ENVIRONMENT",
+      "G4_INDEPENDENTLY_RECOVERABLE_EVIDENCE",
+      "G5_FROZEN_SCIENTIFIC_PROTOCOL",
+      "G6_NO_UNCOMMITTED_SOURCE_DEPENDENCY",
+      "G7_NO_PRIVILEGED_INFERENCE_LEAKAGE"
+    ],
+    "conditions": {
+      "G1_VERIFIED_SOURCE_CUSTODY": {
+        "status": "PASS",
+        "reasons": [],
+        "evidence": {
+          "listReadable": true,
+          "identities": 31,
+          "present": 31,
+          "matching": 31,
+          "tracked": 0,
+          "guardManifestIntact": true,
+          "guardFiles": 5
+        }
+      },
+      "G2_VERIFIED_EXCLUDED_POPULATION_ENFORCEMENT": {
+        "status": "PASS",
+        "reasons": [],
+        "evidence": {
+          "loader": "HDISC_PORTABLE_EXCLUSIONS_V1",
+          "loaded": true,
+          "pinsPresent": true,
+          "pinProblems": [],
+          "contextIdentitySha256": "fd768113677b44b30bdbdf7c2a8e335df031e6be3569a133bddf08e6d19053ce",
+          "forbiddenBlocks": 114,
+          "registries": [
+            {
+              "name": "STUDIED_341",
+              "count": 341,
+              "seal": "449e2850b01106b2fe81564fbe24a5e94fc7371350a3ffe007884e7049d8fef6"
+            },
+            {
+              "name": "DEV_H2_BASE_WORLDS",
+              "count": 12844,
+              "seal": "8b612a00e0d6e2d0bbc15226350e050cf46c8e6a7dac3e78eef819611c109f72"
+            },
+            {
+              "name": "HW1_EXPLORATION",
+              "count": 1000,
+              "seal": "232b902903abf1898fe9d63055235a028ccffa09b215c7e0e517823bd215b4ea"
+            },
+            {
+              "name": "HW1_VALIDATION",
+              "count": 300,
+              "seal": "34b3b121e7a183db46bd7d338dc0200ee9d86795d33d2f4071e4a57941703b56"
+            },
+            {
+              "name": "HW4_EXPLORATION",
+              "count": 1000,
+              "seal": "902070377d1b05446c429a9131c8331b53a5fa0b31590360aa7fff9053e3f824"
+            },
+            {
+              "name": "HW4_VALIDATION",
+              "count": 600,
+              "seal": "388921b4ee0b0ef3cfc86cb949d1221a87ac37c520fd86d971bc8e510c124e65"
+            },
+            {
+              "name": "HW4B_SCREENED_DEV",
+              "count": 885,
+              "seal": "a9ccaf762145bd177e33e3996128bdd6ddc26a57892230e758c1849e5dbda121"
+            },
+            {
+              "name": "SK1_EXPLORATION",
+              "count": 1000,
+              "seal": "c4df98bc060962bc976977ad0f5fcae731f77e61a2786fb3796c554f216d25fe"
+            },
+            {
+              "name": "SK1_VALIDATION",
+              "count": 600,
+              "seal": "5361b8b036eb901431c13366479072926328b9df4327ca865bbce7b8668353a0"
+            },
+            {
+              "name": "SK1_SCREENED_UNUSED",
+              "count": 698,
+              "seal": "daac1884783c4471dbab506b721a4a0f20fad89a8690d1c02aa0301ed4804871"
+            }
+          ],
+          "strictCounts": {
+            "priorWorlds": 9407,
+            "priorSeeds": 116,
+            "v4SealedWorlds": 25377,
+            "devBaseWorlds": 25676,
+            "diagnosticConstructedWorlds": 48910,
+            "devOpenSeeds": 6,
+            "excludedBlocks": [
+              731,
+              732,
+              733,
+              734,
+              951,
+              952
+            ],
+            "distinctExcludedWorlds": 109082,
+            "excludedSeeds": 25499,
+            "multiSourceWorlds": 288
+          },
+          "inputs": 26,
+          "blocksNotRejectedByTheContext": {
+            "count": 786,
+            "ranges": [
+              [
+                100,
+                730
+              ],
+              [
+                735,
+                800
+              ],
+              [
+                838,
+                900
+              ],
+              [
+                915,
+                940
+              ]
+            ],
+            "of": 900,
+            "note": "Blocks 100-999 that this exclusion context does not reject. NOT an allocation and NOT a statement that they are unused: only a future, authorized allocator may reserve a namespace, after its own preflight."
+          },
+          "selfcheck": {
+            "ok": true,
+            "positiveOk": true,
+            "positive": {
+              "candidateClasses": 12,
+              "synthetic": true
+            },
+            "negativeTotal": 163,
+            "negativePassed": 163,
+            "byGroup": {
+              "BLOCK": {
+                "controls": 40,
+                "rejectedAsExpected": 40
+              },
+              "WORLD": {
+                "controls": 13,
+                "rejectedAsExpected": 13
+              },
+              "IDENTITY": {
+                "controls": 70,
+                "rejectedAsExpected": 70
+              },
+              "RECORD": {
+                "controls": 40,
+                "rejectedAsExpected": 40
+              }
+            },
+            "failed": []
+          },
+          "equivalence": {
+            "available": true,
+            "identical": true,
+            "constantsEqual": true,
+            "contextIdentityEqual": true,
+            "probeVectors": 2056,
+            "probeMismatches": 0,
+            "byGroup": {
+              "BLOCK": {
+                "probes": 927,
+                "mismatches": 0
+              },
+              "SEED_BLOCK": {
+                "probes": 3,
+                "mismatches": 0
+              },
+              "WORLD": {
+                "probes": 300,
+                "mismatches": 0
+              },
+              "IDENTITY_COARSE": {
+                "probes": 410,
+                "mismatches": 0
+              },
+              "IDENTITY_FINE": {
+                "probes": 410,
+                "mismatches": 0
+              },
+              "CLEAN_OR_MALFORMED": {
+                "probes": 5,
+                "mismatches": 0
+              },
+              "POPULATION": {
+                "probes": 1,
+                "mismatches": 0
+              }
+            },
+            "historicalIdentitySha256": "fd768113677b44b30bdbdf7c2a8e335df031e6be3569a133bddf08e6d19053ce"
+          }
+        }
+      },
+      "G3_REPRODUCIBLE_EVALUATION_ENVIRONMENT": {
+        "status": "FAIL",
+        "reasons": [
+          "NO_ISSUED_EVIDENCE_BUNDLE_MANIFEST",
+          "BUNDLE_MANIFEST_NOT_BOUND_BY_A_CAMPAIGN_DECLARATION",
+          "EVIDENCE_BUNDLE_NOT_VERIFIED"
+        ],
+        "evidence": {
+          "issuedManifest": false,
+          "manifestBoundByDeclaration": false,
+          "runtimePinned": true,
+          "runtimeMatches": true,
+          "pinnedRuntime": {
+            "node": "v26.7.0",
+            "platform": "darwin-arm64"
+          },
+          "currentRuntime": {
+            "node": "v26.7.0",
+            "platform": "darwin-arm64"
+          },
+          "verify": null,
+          "informationalLocalScope": {
+            "note": "computed in memory from this working tree; NOT an issued, owner-held bundle",
+            "counts": {
+              "PROTECTED_SOURCE": 31,
+              "LOCAL_SCIENTIFIC_DATA": 19,
+              "CUSTODY_CONTROL": 7
+            },
+            "bytes": 14124451,
+            "entriesSha256": "1396abe13795691581bd61d05d269e1843184722ecc9cbe72ee1847338ae522d",
+            "sk1EvaluationClosureProtectedFiles": 29,
+            "localSelfVerification": {
+              "ok": true,
+              "problems": [],
+              "canLink": true,
+              "filesInLinkClosure": 154
+            },
+            "entries": [
+              {
+                "path": ".git/custody/GUARD_MANIFEST.sha256",
+                "class": "CUSTODY_CONTROL",
+                "role": "GUARDS_AND_IDENTITY_LIST",
+                "sha256": "356f27d52115f5100bdf15e9d941bb8ff15fe2269f3cb336bc441730cfb4ce31",
+                "size": 441
+              },
+              {
+                "path": ".git/custody/protected-identities.tsv",
+                "class": "CUSTODY_CONTROL",
+                "role": "GUARDS_AND_IDENTITY_LIST",
+                "sha256": "15c80bed6bddf285e4395c60bc30e7984e3e52314f468d02e3bb3b2c6716e4b2",
+                "size": 5653
+              },
+              {
+                "path": ".git/custody/stage-guard.sh",
+                "class": "CUSTODY_CONTROL",
+                "role": "GUARDS_AND_IDENTITY_LIST",
+                "sha256": "c644ad39f3405cb97d921eb6f9c90f620944f553ac39b345b602801dde39fa03",
+                "size": 4440
+              },
+              {
+                "path": ".git/hooks/pre-commit",
+                "class": "CUSTODY_CONTROL",
+                "role": "GUARDS_AND_IDENTITY_LIST",
+                "sha256": "48b0a8fe34ce98ad46760542ab67ffbae3d4ababe1e0e86053fcbad7f4ce6399",
+                "size": 679
+              },
+              {
+                "path": ".git/hooks/pre-merge-commit",
+                "class": "CUSTODY_CONTROL",
+                "role": "GUARDS_AND_IDENTITY_LIST",
+                "sha256": "16addf3f006cc3734ba588d7467a021e559349a87ecd1ca1c3970abb6069afb9",
+                "size": 697
+              },
+              {
+                "path": ".git/hooks/pre-push",
+                "class": "CUSTODY_CONTROL",
+                "role": "GUARDS_AND_IDENTITY_LIST",
+                "sha256": "36e7080265a0520b246596fc346784ccc26cf8d750ffde37926b85fe5d16e363",
+                "size": 721
+              },
+              {
+                "path": ".git/info/exclude",
+                "class": "CUSTODY_CONTROL",
+                "role": "GUARDS_AND_IDENTITY_LIST",
+                "sha256": "ac7b6f8284ee184d7f9a7876c8a6b9747f17e568ada163ed079b5704754b13c6",
+                "size": 2256
+              },
+              {
+                "path": "platform/game-agnostic/ascii-suite/controllers/fighter.mjs",
+                "class": "PROTECTED_SOURCE",
+                "role": "SK1_EVALUATION_CLOSURE",
+                "sha256": "c676a49330eeffb28c8294c9b4246c80b29d159c4e81671a8392e9541448512e",
+                "size": 12775
+              },
+              {
+                "path": "platform/game-agnostic/ascii-suite/controllers/index.mjs",
+                "class": "PROTECTED_SOURCE",
+                "role": "SK1_EVALUATION_CLOSURE",
+                "sha256": "5b7af1517ccaf6a448d593cc85a21e3957f77cb908972b3b69a9e2c939505af9",
+                "size": 6648
+              },
+              {
+                "path": "platform/game-agnostic/ascii-suite/controllers/platformer.mjs",
+                "class": "PROTECTED_SOURCE",
+                "role": "SK1_EVALUATION_CLOSURE",
+                "sha256": "1682bdea63d2dd90d8c209da6c8ddc0e728708416c1a3a08922a0828e433cdbe",
+                "size": 18340
+              },
+              {
+                "path": "platform/game-agnostic/ascii-suite/controllers/pong.mjs",
+                "class": "PROTECTED_SOURCE",
+                "role": "SK1_EVALUATION_CLOSURE",
+                "sha256": "8ec08a2d9b0a4728d0e0e1378c51d66481e5eed0f372894da611ef5883f56256",
+                "size": 9302
+              },
+              {
+                "path": "platform/game-agnostic/ascii-suite/controllers/racing.mjs",
+                "class": "PROTECTED_SOURCE",
+                "role": "SK1_EVALUATION_CLOSURE",
+                "sha256": "b5e691377a060bc93077b9486604a45d7337233e8f6908674e382bd9a4c2c288",
+                "size": 8722
+              },
+              {
+                "path": "platform/game-agnostic/ascii-suite/games.mjs",
+                "class": "PROTECTED_SOURCE",
+                "role": "SK1_EVALUATION_CLOSURE",
+                "sha256": "b952d1f7f1ffe6d3177c2a9459bf5f07e623a957789ebc0580d0b804a78c638d",
+                "size": 7240
+              },
+              {
+                "path": "platform/game-agnostic/ascii-suite/prime.mjs",
+                "class": "PROTECTED_SOURCE",
+                "role": "SK1_EVALUATION_CLOSURE",
+                "sha256": "4876767179fcd5d6f0b7d377e4411a8fe134741dff5bd1b49559bd01627201a9",
+                "size": 4365
+              },
+              {
+                "path": "platform/game-agnostic/ascii-suite/training-dev-v1/candidate-v2/action-codec.mjs",
+                "class": "PROTECTED_SOURCE",
+                "role": "SK1_EVALUATION_CLOSURE",
+                "sha256": "6a96692de6ca5d6db9e3e0ba04726ec33a1cdcba5f9235b751380e0d507869d8",
+                "size": 694
+              },
+              {
+                "path": "platform/game-agnostic/ascii-suite/training-dev-v1/features.mjs",
+                "class": "PROTECTED_SOURCE",
+                "role": "SK1_EVALUATION_CLOSURE",
+                "sha256": "2d1e481f071ecb72420fb852ce3f191d1e4d2f1ae9666020557510942aa9f169",
+                "size": 4837
+              },
+              {
+                "path": "platform/game-agnostic/ascii-suite/training-dev-v1/model.mjs",
+                "class": "PROTECTED_SOURCE",
+                "role": "SK1_EVALUATION_CLOSURE",
+                "sha256": "3f588f2ce3bf8a437985850646f36b39bde245052078934b857b6ee9e3c9fa9c",
+                "size": 752
+              },
+              {
+                "path": "platform/game-agnostic/ascii-suite/v21/freeze.mjs",
+                "class": "PROTECTED_SOURCE",
+                "role": "SK1_EVALUATION_CLOSURE",
+                "sha256": "59b191c3c3c964db46e187f081ae2e8257e12b095475a6d58ec651be4a483ab4",
+                "size": 2626
+              },
+              {
+                "path": "platform/game-agnostic/ascii-suite/v21/results/aborted-heldout-v1/freeze.mjs",
+                "class": "PROTECTED_SOURCE",
+                "role": "CUSTODY_PROTECTED_NOT_IN_THE_SK1_CLOSURE",
+                "sha256": "59b191c3c3c964db46e187f081ae2e8257e12b095475a6d58ec651be4a483ab4",
+                "size": 2626
+              },
+              {
+                "path": "platform/game-agnostic/ascii-suite/v3/common.mjs",
+                "class": "PROTECTED_SOURCE",
+                "role": "SK1_EVALUATION_CLOSURE",
+                "sha256": "78497f78da83932973cd25564d97d32601473a7314c257b4683385975ba7858c",
+                "size": 4880
+              },
+              {
+                "path": "platform/game-agnostic/ascii-suite/v3/controllers.mjs",
+                "class": "PROTECTED_SOURCE",
+                "role": "SK1_EVALUATION_CLOSURE",
+                "sha256": "1b10a927f2647b4a7119753a9eae3d8bbc31b20f22feff76eac7946ec0c19cce",
+                "size": 13302
+              },
+              {
+                "path": "platform/game-agnostic/ascii-suite/v3/factory-model.mjs",
+                "class": "PROTECTED_SOURCE",
+                "role": "SK1_EVALUATION_CLOSURE",
+                "sha256": "7352c2e3ad90a8f6d65f586ca3199e4850dc68d7f739ab208ebb2e84ae54c4a6",
+                "size": 2870
+              },
+              {
+                "path": "platform/game-agnostic/ascii-suite/v31/sentinel.mjs",
+                "class": "PROTECTED_SOURCE",
+                "role": "SK1_EVALUATION_CLOSURE",
+                "sha256": "d6db5c666238f4c4626493a067cbb41e3aa9af71e3e0cc3cbd730b9926c82917",
+                "size": 3703
+              },
+              {
+                "path": "platform/game-agnostic/ascii-suite/v32/codec-v2.mjs",
+                "class": "PROTECTED_SOURCE",
+                "role": "SK1_EVALUATION_CLOSURE",
+                "sha256": "f7da0aba597b8e0ef5c8ca5c10be23b1dc5d8df7e99b08c63744b0683a8e0191",
+                "size": 1802
+              },
+              {
+                "path": "platform/game-agnostic/ascii-suite/v32/policy.mjs",
+                "class": "PROTECTED_SOURCE",
+                "role": "SK1_EVALUATION_CLOSURE",
+                "sha256": "45f0a333db8cbccaa00a69337f4c94ea388ad9c49ef264580eba86e59cc3f60e",
+                "size": 10386
+              },
+              {
+                "path": "platform/game-agnostic/ascii-suite/v32/relational-features.mjs",
+                "class": "PROTECTED_SOURCE",
+                "role": "SK1_EVALUATION_CLOSURE",
+                "sha256": "d9bedde42eac731947a70fd52fb445784a81f5592e715a69dd39d52672886fcf",
+                "size": 1949
+              },
+              {
+                "path": "platform/game-agnostic/ascii-suite/worlds/common.mjs",
+                "class": "PROTECTED_SOURCE",
+                "role": "SK1_EVALUATION_CLOSURE",
+                "sha256": "1b9280830c99fe30397c8e0c3860589e092a79aec5188e4c84f1634c2b437236",
+                "size": 1314
+              },
+              {
+                "path": "platform/game-agnostic/ascii-suite/worlds/fighter.mjs",
+                "class": "PROTECTED_SOURCE",
+                "role": "SK1_EVALUATION_CLOSURE",
+                "sha256": "9367f528ab66add0aaa2389a7e8c86980a8c42d9d601d25857d0ac8d7c5f3af5",
+                "size": 22152
+              },
+              {
+                "path": "platform/game-agnostic/ascii-suite/worlds/platformer.mjs",
+                "class": "PROTECTED_SOURCE",
+                "role": "SK1_EVALUATION_CLOSURE",
+                "sha256": "5c869ab10bf14dcd48bc188d73b747b5b765823c464d782479f42f4d6d5dc909",
+                "size": 14166
+              },
+              {
+                "path": "platform/game-agnostic/ascii-suite/worlds/pong.mjs",
+                "class": "PROTECTED_SOURCE",
+                "role": "SK1_EVALUATION_CLOSURE",
+                "sha256": "35d1c991d5e478101aa4f614f12574d054eeac629d498f33ea947f29b6ad79ec",
+                "size": 9140
+              },
+              {
+                "path": "platform/game-agnostic/ascii-suite/worlds/racing.mjs",
+                "class": "PROTECTED_SOURCE",
+                "role": "SK1_EVALUATION_CLOSURE",
+                "sha256": "b9fa9b45e6e1fa575dcd833b692ec8ed25868a0b4a08e9ab020976f6f1464fd7",
+                "size": 14744
+              },
+              {
+                "path": "platform/game-agnostic/stage3h-canonical-v1/adapters.mjs",
+                "class": "PROTECTED_SOURCE",
+                "role": "SK1_EVALUATION_CLOSURE",
+                "sha256": "28ec69650b65b2365c2382eee6f2fe73e42ee0fb343cda9e96f73c9679c50501",
+                "size": 5213
+              },
+              {
+                "path": "platform/game-agnostic/stage3h-canonical-v1/baseline.mjs",
+                "class": "PROTECTED_SOURCE",
+                "role": "SK1_EVALUATION_CLOSURE",
+                "sha256": "7c6471ca9d7eac93dc5334bb01bb2b1f248ca8adb0ed8c1239e7e2629f98caeb",
+                "size": 1264
+              },
+              {
+                "path": "platform/game-agnostic/stage3h-canonical-v1/evidence.mjs",
+                "class": "PROTECTED_SOURCE",
+                "role": "SK1_EVALUATION_CLOSURE",
+                "sha256": "2dff64e7bdb14bf95f67bd25e563be109b39a9ac78c4a6f5577588a83cf0618a",
+                "size": 4187
+              },
+              {
+                "path": "platform/game-agnostic/stage3h-canonical-v1/guard.mjs",
+                "class": "PROTECTED_SOURCE",
+                "role": "SK1_EVALUATION_CLOSURE",
+                "sha256": "4f86edba7b0814a6b5f3edd54ec4642df0a6037b5b803a767ddd98a0dae72163",
+                "size": 2341
+              },
+              {
+                "path": "platform/game-agnostic/stage3h-canonical-v1/metrics.mjs",
+                "class": "PROTECTED_SOURCE",
+                "role": "SK1_EVALUATION_CLOSURE",
+                "sha256": "a018938eed4f6b11fa383674d41f098304a2bd39441de5516a26345ebf396ecc",
+                "size": 2486
+              },
+              {
+                "path": "platform/game-agnostic/stage3h-canonical-v1/nexus-selector-v1-port.mjs",
+                "class": "PROTECTED_SOURCE",
+                "role": "SK1_EVALUATION_CLOSURE",
+                "sha256": "22d6e83d41d953bac8a9bcc3176580015b055b9b178deb6049a01ac81ac50490",
+                "size": 2087
+              },
+              {
+                "path": "platform/game-agnostic/stage3h-canonical-v1/plan.mjs",
+                "class": "PROTECTED_SOURCE",
+                "role": "CUSTODY_PROTECTED_NOT_IN_THE_SK1_CLOSURE",
+                "sha256": "f0fa63baee5be43f206ee649ff42495edbe65e50f0825e262d231f0fc8f51855",
+                "size": 4268
+              },
+              {
+                "path": "platform/game-agnostic/stage3h-sk1-safety-kernel-v1/work/audit/audit-shard-0-of-8.json",
+                "class": "LOCAL_SCIENTIFIC_DATA",
+                "role": "SK1_CHECK",
+                "sha256": "a0485ed8bbb1612506fef43aac2d8ab1eb26a0db97cb5e42198d971abc2a27a7",
+                "size": 64624
+              },
+              {
+                "path": "platform/game-agnostic/stage3h-sk1-safety-kernel-v1/work/audit/audit-shard-1-of-8.json",
+                "class": "LOCAL_SCIENTIFIC_DATA",
+                "role": "SK1_CHECK",
+                "sha256": "94cc53a1afee83e7e554f34be68a426d764ab34399dcf8154b4e9157d1460eb3",
+                "size": 64629
+              },
+              {
+                "path": "platform/game-agnostic/stage3h-sk1-safety-kernel-v1/work/audit/audit-shard-2-of-8.json",
+                "class": "LOCAL_SCIENTIFIC_DATA",
+                "role": "SK1_CHECK",
+                "sha256": "29cbd666761850c47fd590f7e02bc50a3097e5eb7aa7981a9e49036965a9a50f",
+                "size": 64630
+              },
+              {
+                "path": "platform/game-agnostic/stage3h-sk1-safety-kernel-v1/work/audit/audit-shard-3-of-8.json",
+                "class": "LOCAL_SCIENTIFIC_DATA",
+                "role": "SK1_CHECK",
+                "sha256": "e3ebe736c5bb968e29f0d0e6389be9815be95baf8b7fb98c69256f4690f56607",
+                "size": 64612
+              },
+              {
+                "path": "platform/game-agnostic/stage3h-sk1-safety-kernel-v1/work/audit/audit-shard-4-of-8.json",
+                "class": "LOCAL_SCIENTIFIC_DATA",
+                "role": "SK1_CHECK",
+                "sha256": "b03b36ee79ba1fd9572fead69a8c6066375eb3e29efec4b6edd5d006c1cc05ca",
+                "size": 64628
+              },
+              {
+                "path": "platform/game-agnostic/stage3h-sk1-safety-kernel-v1/work/audit/audit-shard-5-of-8.json",
+                "class": "LOCAL_SCIENTIFIC_DATA",
+                "role": "SK1_CHECK",
+                "sha256": "81b4c293f1960ee87648a0672bb9463ab93f9efba19301c4e04f235b25a6b654",
+                "size": 64618
+              },
+              {
+                "path": "platform/game-agnostic/stage3h-sk1-safety-kernel-v1/work/audit/audit-shard-6-of-8.json",
+                "class": "LOCAL_SCIENTIFIC_DATA",
+                "role": "SK1_CHECK",
+                "sha256": "35d8aa6aaf38f0fad0fa6e12179b5d7838f0330113caae83b3d3f941423d64b2",
+                "size": 64623
+              },
+              {
+                "path": "platform/game-agnostic/stage3h-sk1-safety-kernel-v1/work/audit/audit-shard-7-of-8.json",
+                "class": "LOCAL_SCIENTIFIC_DATA",
+                "role": "SK1_CHECK",
+                "sha256": "ae7cedc30b66a04cbc6a0dba4c98ac3bbf39c9d782d18dfd14b7e3f46f5b5c88",
+                "size": 64629
+              },
+              {
+                "path": "platform/game-agnostic/stage3h-sk1-safety-kernel-v1/work/classes/VALIDATION/range-0-600-shard-0-of-9.json",
+                "class": "LOCAL_SCIENTIFIC_DATA",
+                "role": "SK1_CHECK",
+                "sha256": "93a37687a60d0e91f76cc15a446bd927a201ca5dbf58d27331301e01dc133e06",
+                "size": 1355117
+              },
+              {
+                "path": "platform/game-agnostic/stage3h-sk1-safety-kernel-v1/work/classes/VALIDATION/range-0-600-shard-1-of-9.json",
+                "class": "LOCAL_SCIENTIFIC_DATA",
+                "role": "SK1_CHECK",
+                "sha256": "065bc9f5323b15bd867ec1aa4afe1f5d9d7404c71cc326abd4655157a5405cca",
+                "size": 1438708
+              },
+              {
+                "path": "platform/game-agnostic/stage3h-sk1-safety-kernel-v1/work/classes/VALIDATION/range-0-600-shard-2-of-9.json",
+                "class": "LOCAL_SCIENTIFIC_DATA",
+                "role": "SK1_CHECK",
+                "sha256": "69df0703df711c2088e892d25c69678fd89d35adadf65aaedd8976e297b0b9a0",
+                "size": 1422062
+              },
+              {
+                "path": "platform/game-agnostic/stage3h-sk1-safety-kernel-v1/work/classes/VALIDATION/range-0-600-shard-3-of-9.json",
+                "class": "LOCAL_SCIENTIFIC_DATA",
+                "role": "SK1_CHECK",
+                "sha256": "98e7451cd1e65898ed60df91d5672d85645f250fa8dc488e54080c75f6f12414",
+                "size": 1368055
+              },
+              {
+                "path": "platform/game-agnostic/stage3h-sk1-safety-kernel-v1/work/classes/VALIDATION/range-0-600-shard-4-of-9.json",
+                "class": "LOCAL_SCIENTIFIC_DATA",
+                "role": "SK1_CHECK",
+                "sha256": "fa04e2cdd1e765ee2ba98299a029d555992226b858f85bde3419b06883acf5aa",
+                "size": 1354419
+              },
+              {
+                "path": "platform/game-agnostic/stage3h-sk1-safety-kernel-v1/work/classes/VALIDATION/range-0-600-shard-5-of-9.json",
+                "class": "LOCAL_SCIENTIFIC_DATA",
+                "role": "SK1_CHECK",
+                "sha256": "f30454ac24539e3983a0560b33d5a299bbc0116d36c75d7d9fbaaf5c3e4d9afa",
+                "size": 1352607
+              },
+              {
+                "path": "platform/game-agnostic/stage3h-sk1-safety-kernel-v1/work/classes/VALIDATION/range-0-600-shard-6-of-9.json",
+                "class": "LOCAL_SCIENTIFIC_DATA",
+                "role": "SK1_CHECK",
+                "sha256": "464dd374bd861e00220856fc2dbd9331fd160ba81dbec99a71391d8808d1a603",
+                "size": 1325919
+              },
+              {
+                "path": "platform/game-agnostic/stage3h-sk1-safety-kernel-v1/work/classes/VALIDATION/range-0-600-shard-7-of-9.json",
+                "class": "LOCAL_SCIENTIFIC_DATA",
+                "role": "SK1_CHECK",
+                "sha256": "fcbe6c08fbb7623544e102133dbb131e9dfebaa894144276d92393a97e9142d6",
+                "size": 1434548
+              },
+              {
+                "path": "platform/game-agnostic/stage3h-sk1-safety-kernel-v1/work/classes/VALIDATION/range-0-600-shard-8-of-9.json",
+                "class": "LOCAL_SCIENTIFIC_DATA",
+                "role": "SK1_CHECK",
+                "sha256": "80512e35564388c36a8e9a8baa14aefd69337e9a6759503fb1477d8f636c2f23",
+                "size": 1329893
+              },
+              {
+                "path": "platform/game-agnostic/stage3h-sk1-safety-kernel-v1/work/manifests/SK1_POPULATION_EXPLORATION.json",
+                "class": "LOCAL_SCIENTIFIC_DATA",
+                "role": "SK1_CHECK",
+                "sha256": "8aabc9019dbac1f09389fdd4573235b1ed45d195382b9d0bc542fe91d5071201",
+                "size": 630413
+              },
+              {
+                "path": "platform/game-agnostic/stage3h-sk1-safety-kernel-v1/work/manifests/SK1_POPULATION_VALIDATION.json",
+                "class": "LOCAL_SCIENTIFIC_DATA",
+                "role": "SK1_CHECK",
+                "sha256": "b63205b8c6f53493df2499f1b327bedf8cd5654486b61c2402027043d4ae3fd4",
+                "size": 379649
+              }
+            ]
+          }
+        }
+      },
+      "G4_INDEPENDENTLY_RECOVERABLE_EVIDENCE": {
+        "status": "FAIL",
+        "reasons": [
+          "NO_BACKUP_ACCEPTANCE_RECORD",
+          "BACKUP_ACCEPTANCE_RECORD_NOT_COMMITTED",
+          "BACKUP_ACCEPTANCE_RECORD_NOT_VALID"
+        ],
+        "evidence": {
+          "recordPath": "platform/game-agnostic/stage3h-hdisc0-design-v1/evidence/BACKUP_ACCEPTANCE_RECORD.json",
+          "recordPresent": false,
+          "recordTrackedAndUnmodified": false,
+          "validation": null,
+          "schema": "SENTINEL_BACKUP_ACCEPTANCE_RECORD_V1",
+          "currentFacts": {
+            "volumesMounted": 1,
+            "externalVolumeCandidates": 0,
+            "timeMachine": "tmutil: No destinations configured."
+          }
+        }
+      },
+      "G5_FROZEN_SCIENTIFIC_PROTOCOL": {
+        "status": "FAIL",
+        "reasons": [
+          "NO_CAMPAIGN_DECLARATION",
+          "NO_PREREGISTRATION_FREEZE_RECORD",
+          "FREEZE_RECORD_NOT_COMMITTED",
+          "PROTOCOL_STATUS_IS_NOT_FROZEN:DRAFT",
+          "PROTOCOL_DOCUMENT_DOES_NOT_MATCH_THE_FREEZE_HASH",
+          "PROTOCOL_DOCUMENT_NOT_COMMITTED"
+        ],
+        "evidence": {
+          "declared": false,
+          "campaignId": null,
+          "freezeRecordPresent": false,
+          "freezeRecordTrackedAndUnmodified": false,
+          "status": "DRAFT",
+          "protocolHashMatches": false,
+          "protocolTrackedAndUnmodified": false,
+          "freezeSchema": "SENTINEL_PREREGISTRATION_FREEZE_V1",
+          "draft": {
+            "path": "platform/game-agnostic/stage3h-hdisc0-design-v1/H_DISC_0_PREREGISTRATION_DRAFT.md",
+            "present": true,
+            "note": "a draft is not a frozen protocol"
+          }
+        }
+      },
+      "G6_NO_UNCOMMITTED_SOURCE_DEPENDENCY": {
+        "status": "FAIL",
+        "reasons": [
+          "SOURCE_CLOSURE_NOT_DECLARED",
+          "SOURCE_CLOSURE_EMPTY"
+        ],
+        "evidence": {
+          "declared": false,
+          "closure": null,
+          "informationalSk1EvaluationClosure": {
+            "note": "NOT a campaign declaration; the SK1 evaluation entry points, classified as a future declaration would be",
+            "files": 154,
+            "trackedEqualsHead": 125,
+            "trackedModified": [],
+            "untrackedOther": [],
+            "unresolved": [],
+            "protectedFiles": 29,
+            "protectedBundleVerified": false
+          }
+        }
+      },
+      "G7_NO_PRIVILEGED_INFERENCE_LEAKAGE": {
+        "status": "FAIL",
+        "reasons": [
+          "INFERENCE_CLOSURE_NOT_DECLARED",
+          "NOT_APPLICABLE_YET:no policy implementation exists"
+        ],
+        "evidence": {
+          "declared": false,
+          "implemented": false,
+          "audit": null,
+          "forbiddenPatterns": [
+            "/(^|\\/)hw1-eval\\.mjs$/",
+            "/(^|\\/)evaluate\\.mjs$/",
+            "/counterfactual/",
+            "/(^|\\/)infra\\//",
+            "/(^|\\/)work\\//",
+            "/failure-diagnosis/",
+            "/scripts\\/stage3g\\/evidence/",
+            "/(^|\\/)transforms\\.mjs$/",
+            "/(^|\\/)dataset\\.mjs$/",
+            "/(^|\\/)train\\.mjs$/"
+          ]
+        }
+      }
+    },
+    "statement": "NO_GO: a future campaign may not start. Every failing condition must be met by evidence, not by assertion."
+  },
+  "tests": [
+    {
+      "suite": "H-DISC-1 discriminator, conformance, protocol and inference audit",
+      "tests": 68,
+      "passed": 68,
+      "failed": 0,
+      "logSha256": "9e12f32998a128245c62b67922f45d817bed9f62251f272c92ee44f7cd70c038"
+    },
+    {
+      "suite": "H-DISC-0 custody, exclusions, bundle and entry gate",
+      "tests": 50,
+      "passed": 50,
+      "failed": 0,
+      "logSha256": "27e4f356e6ec33c5be19e41d66057cf50625113a3eb0daee16b1e23ae1f965da"
+    }
+  ],
+  "localSearch": {
+    "acceptedBackupRecordFound": false,
+    "issuedBundleRecordFound": false,
+    "scope": "Accessible repository including ignored metadata, Desktop, Documents, Downloads, Codex attachments, local cloud folders and relevant temporary-file names. Not an assertion about inaccessible or offline storage.",
+    "mountedExternalVolumeFound": false,
+    "documentation": [
+      "stage3h-custody-audit-v1/CUSTODY_STATUS.md",
+      "stage3h-sk1-1-assurance-v1/SK1_REPRODUCIBILITY_GAP.md",
+      "stage3h-sk2f-feasibility-v1/SK2_F_REPRODUCIBILITY_STATUS.md"
+    ],
+    "finding": "Local documentation records independent backup as unverified. Draft and procedure documents are not completed acceptance records."
+  },
+  "remaining": [
+    "Owner-issued evidence bundle and accepted independent-device restore evidence",
+    "Campaign training/tuning, evaluation and analysis infrastructure with audited identities",
+    "Commit and audit the complete source closure; bind the protocol and campaign declaration",
+    "Supply and allocation review, freeze, then one-pass campaign under the unchanged gates",
+    "Evaluate the result and separately reconcile full Stage 3H exit requirements; no qualification is guaranteed"
+  ],
+  "disclosure": "Current readiness observation only. No new scientific population, training, validation, qualification, deployment, commit or publication. Historical records remain unchanged. G7 in the inherited gate is undeclared; the separate working-tree audit above establishes that an implementation does exist."
+}

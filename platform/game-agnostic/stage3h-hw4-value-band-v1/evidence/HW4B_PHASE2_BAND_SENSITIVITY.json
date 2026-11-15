@@ -1,0 +1,1211 @@
+{
+ "schema": "STAGE3H_HW4B_PHASE2_BAND_SENSITIVITY_V1",
+ "authority": "R0",
+ "stage": "H-W4B Phase 2",
+ "generatedAt": "2026-11-11T18:32:07.448Z",
+ "node": "v26.7.0",
+ "model": {
+  "id": "V2_PUBLIC_PLUS_VALUE_BAND/C11_FULL_SAFE_FIRST",
+  "sha256": "77136f461ddcd42f0f2c7dc89b9d3989d04a80602fd645552eb49d26523f03fc",
+  "rule": "SAFE_FIRST",
+  "tau": 0.2
+ },
+ "fixtures": {
+  "F1_HW4_GATES_FIXTURE": "the hand-built hw4-gates.mjs world/projection, verbatim (2-action menu; actor (4,4); POWER_SOURCE, DEPOT[objective], REPAIR_TARGET, HOSTILE)",
+  "F2_FIVE_ACTION_EXTENSION": "same world/projection with the 5-action menu recorded in hw4b-repro-band.mjs (actions target all three structural nodes)"
+ },
+ "lawfulDomain": {
+  "rule": "non-objective structural value in [2, spread+3] (bands V1, V2); objective-attached node = 12+spread (band P); public projection held fixed; V0 unreachable (generator value >= 2; kernel never mutates value)",
+  "spreads": [
+   2,
+   4,
+   6,
+   7,
+   8
+  ],
+  "source": "src/forge/scenarios-v2.js: value = 2 + randomInt(0, valueSpread+2); primaryNode.value = 12 + valueSpread"
+ },
+ "lawful": {
+  "F1_HW4_GATES_FIXTURE": {
+   "spread=2": {
+    "valueConfigs": 16,
+    "distinctBandConfigs": 4,
+    "withinBandVariation": 0,
+    "features": {
+     "sensitive": true,
+     "distinctFeatureRowSets": 2
+    },
+    "riskScores": {
+     "sensitive": true,
+     "distinctCatVectors": 2,
+     "maxCatSwingPerAction": 0.08956128548181175,
+     "minRiskScoreAnyActionAnyConfig": 0.8412603502718656,
+     "tau": 0.2,
+     "thresholdCrossings": false
+    },
+    "rankings": {
+     "sensitive": false,
+     "distinctRankings": 1,
+     "riskHeadOrderSensitive": false,
+     "distinctRiskHeadOrders": 1,
+     "nregHeadOrderSensitive": false,
+     "distinctNregHeadOrders": 1,
+     "note": "\"sensitive\" is the ranking of the FINAL SAFE_FIRST score (the one that determines selection); the two head orders are reported separately"
+    },
+    "selection": {
+     "sensitive": false,
+     "distinctSelections": 1,
+     "byBandConfig": [
+      {
+       "bands": "1P1X",
+       "selected": "MOVE@node0",
+       "index": 0,
+       "catOverTau": "11",
+       "riskScores": [
+        0.8413,
+        1.0079
+       ],
+       "nregScores": [
+        0.8173,
+        0.944
+       ]
+      },
+      {
+       "bands": "1P2X",
+       "selected": "MOVE@node0",
+       "index": 0,
+       "catOverTau": "11",
+       "riskScores": [
+        0.8413,
+        1.0079
+       ],
+       "nregScores": [
+        0.8173,
+        0.944
+       ]
+      },
+      {
+       "bands": "2P1X",
+       "selected": "MOVE@node0",
+       "index": 0,
+       "catOverTau": "11",
+       "riskScores": [
+        0.9308,
+        1.0975
+       ],
+       "nregScores": [
+        0.8157,
+        0.9424
+       ]
+      },
+      {
+       "bands": "2P2X",
+       "selected": "MOVE@node0",
+       "index": 0,
+       "catOverTau": "11",
+       "riskScores": [
+        0.9308,
+        1.0975
+       ],
+       "nregScores": [
+        0.8157,
+        0.9424
+       ]
+      }
+     ]
+    },
+    "v1Control": {
+     "bandInsensitive": true
+    }
+   },
+   "spread=4": {
+    "valueConfigs": 36,
+    "distinctBandConfigs": 4,
+    "withinBandVariation": 0,
+    "features": {
+     "sensitive": true,
+     "distinctFeatureRowSets": 2
+    },
+    "riskScores": {
+     "sensitive": true,
+     "distinctCatVectors": 2,
+     "maxCatSwingPerAction": 0.08956128548181175,
+     "minRiskScoreAnyActionAnyConfig": 0.8412603502718656,
+     "tau": 0.2,
+     "thresholdCrossings": false
+    },
+    "rankings": {
+     "sensitive": false,
+     "distinctRankings": 1,
+     "riskHeadOrderSensitive": false,
+     "distinctRiskHeadOrders": 1,
+     "nregHeadOrderSensitive": false,
+     "distinctNregHeadOrders": 1,
+     "note": "\"sensitive\" is the ranking of the FINAL SAFE_FIRST score (the one that determines selection); the two head orders are reported separately"
+    },
+    "selection": {
+     "sensitive": false,
+     "distinctSelections": 1,
+     "byBandConfig": [
+      {
+       "bands": "1P1X",
+       "selected": "MOVE@node0",
+       "index": 0,
+       "catOverTau": "11",
+       "riskScores": [
+        0.8413,
+        1.0079
+       ],
+       "nregScores": [
+        0.8173,
+        0.944
+       ]
+      },
+      {
+       "bands": "1P2X",
+       "selected": "MOVE@node0",
+       "index": 0,
+       "catOverTau": "11",
+       "riskScores": [
+        0.8413,
+        1.0079
+       ],
+       "nregScores": [
+        0.8173,
+        0.944
+       ]
+      },
+      {
+       "bands": "2P1X",
+       "selected": "MOVE@node0",
+       "index": 0,
+       "catOverTau": "11",
+       "riskScores": [
+        0.9308,
+        1.0975
+       ],
+       "nregScores": [
+        0.8157,
+        0.9424
+       ]
+      },
+      {
+       "bands": "2P2X",
+       "selected": "MOVE@node0",
+       "index": 0,
+       "catOverTau": "11",
+       "riskScores": [
+        0.9308,
+        1.0975
+       ],
+       "nregScores": [
+        0.8157,
+        0.9424
+       ]
+      }
+     ]
+    },
+    "v1Control": {
+     "bandInsensitive": true
+    }
+   },
+   "spread=6": {
+    "valueConfigs": 64,
+    "distinctBandConfigs": 4,
+    "withinBandVariation": 0,
+    "features": {
+     "sensitive": true,
+     "distinctFeatureRowSets": 2
+    },
+    "riskScores": {
+     "sensitive": true,
+     "distinctCatVectors": 2,
+     "maxCatSwingPerAction": 0.08956128548181175,
+     "minRiskScoreAnyActionAnyConfig": 0.8412603502718656,
+     "tau": 0.2,
+     "thresholdCrossings": false
+    },
+    "rankings": {
+     "sensitive": false,
+     "distinctRankings": 1,
+     "riskHeadOrderSensitive": false,
+     "distinctRiskHeadOrders": 1,
+     "nregHeadOrderSensitive": false,
+     "distinctNregHeadOrders": 1,
+     "note": "\"sensitive\" is the ranking of the FINAL SAFE_FIRST score (the one that determines selection); the two head orders are reported separately"
+    },
+    "selection": {
+     "sensitive": false,
+     "distinctSelections": 1,
+     "byBandConfig": [
+      {
+       "bands": "1P1X",
+       "selected": "MOVE@node0",
+       "index": 0,
+       "catOverTau": "11",
+       "riskScores": [
+        0.8413,
+        1.0079
+       ],
+       "nregScores": [
+        0.8173,
+        0.944
+       ]
+      },
+      {
+       "bands": "1P2X",
+       "selected": "MOVE@node0",
+       "index": 0,
+       "catOverTau": "11",
+       "riskScores": [
+        0.8413,
+        1.0079
+       ],
+       "nregScores": [
+        0.8173,
+        0.944
+       ]
+      },
+      {
+       "bands": "2P1X",
+       "selected": "MOVE@node0",
+       "index": 0,
+       "catOverTau": "11",
+       "riskScores": [
+        0.9308,
+        1.0975
+       ],
+       "nregScores": [
+        0.8157,
+        0.9424
+       ]
+      },
+      {
+       "bands": "2P2X",
+       "selected": "MOVE@node0",
+       "index": 0,
+       "catOverTau": "11",
+       "riskScores": [
+        0.9308,
+        1.0975
+       ],
+       "nregScores": [
+        0.8157,
+        0.9424
+       ]
+      }
+     ]
+    },
+    "v1Control": {
+     "bandInsensitive": true
+    }
+   },
+   "spread=7": {
+    "valueConfigs": 81,
+    "distinctBandConfigs": 4,
+    "withinBandVariation": 0,
+    "features": {
+     "sensitive": true,
+     "distinctFeatureRowSets": 2
+    },
+    "riskScores": {
+     "sensitive": true,
+     "distinctCatVectors": 2,
+     "maxCatSwingPerAction": 0.08956128548181175,
+     "minRiskScoreAnyActionAnyConfig": 0.8412603502718656,
+     "tau": 0.2,
+     "thresholdCrossings": false
+    },
+    "rankings": {
+     "sensitive": false,
+     "distinctRankings": 1,
+     "riskHeadOrderSensitive": false,
+     "distinctRiskHeadOrders": 1,
+     "nregHeadOrderSensitive": false,
+     "distinctNregHeadOrders": 1,
+     "note": "\"sensitive\" is the ranking of the FINAL SAFE_FIRST score (the one that determines selection); the two head orders are reported separately"
+    },
+    "selection": {
+     "sensitive": false,
+     "distinctSelections": 1,
+     "byBandConfig": [
+      {
+       "bands": "1P1X",
+       "selected": "MOVE@node0",
+       "index": 0,
+       "catOverTau": "11",
+       "riskScores": [
+        0.8413,
+        1.0079
+       ],
+       "nregScores": [
+        0.8173,
+        0.944
+       ]
+      },
+      {
+       "bands": "1P2X",
+       "selected": "MOVE@node0",
+       "index": 0,
+       "catOverTau": "11",
+       "riskScores": [
+        0.8413,
+        1.0079
+       ],
+       "nregScores": [
+        0.8173,
+        0.944
+       ]
+      },
+      {
+       "bands": "2P1X",
+       "selected": "MOVE@node0",
+       "index": 0,
+       "catOverTau": "11",
+       "riskScores": [
+        0.9308,
+        1.0975
+       ],
+       "nregScores": [
+        0.8157,
+        0.9424
+       ]
+      },
+      {
+       "bands": "2P2X",
+       "selected": "MOVE@node0",
+       "index": 0,
+       "catOverTau": "11",
+       "riskScores": [
+        0.9308,
+        1.0975
+       ],
+       "nregScores": [
+        0.8157,
+        0.9424
+       ]
+      }
+     ]
+    },
+    "v1Control": {
+     "bandInsensitive": true
+    }
+   },
+   "spread=8": {
+    "valueConfigs": 100,
+    "distinctBandConfigs": 4,
+    "withinBandVariation": 0,
+    "features": {
+     "sensitive": true,
+     "distinctFeatureRowSets": 2
+    },
+    "riskScores": {
+     "sensitive": true,
+     "distinctCatVectors": 2,
+     "maxCatSwingPerAction": 0.08956128548181175,
+     "minRiskScoreAnyActionAnyConfig": 0.8412603502718656,
+     "tau": 0.2,
+     "thresholdCrossings": false
+    },
+    "rankings": {
+     "sensitive": false,
+     "distinctRankings": 1,
+     "riskHeadOrderSensitive": false,
+     "distinctRiskHeadOrders": 1,
+     "nregHeadOrderSensitive": false,
+     "distinctNregHeadOrders": 1,
+     "note": "\"sensitive\" is the ranking of the FINAL SAFE_FIRST score (the one that determines selection); the two head orders are reported separately"
+    },
+    "selection": {
+     "sensitive": false,
+     "distinctSelections": 1,
+     "byBandConfig": [
+      {
+       "bands": "1P1X",
+       "selected": "MOVE@node0",
+       "index": 0,
+       "catOverTau": "11",
+       "riskScores": [
+        0.8413,
+        1.0079
+       ],
+       "nregScores": [
+        0.8173,
+        0.944
+       ]
+      },
+      {
+       "bands": "1P2X",
+       "selected": "MOVE@node0",
+       "index": 0,
+       "catOverTau": "11",
+       "riskScores": [
+        0.8413,
+        1.0079
+       ],
+       "nregScores": [
+        0.8173,
+        0.944
+       ]
+      },
+      {
+       "bands": "2P1X",
+       "selected": "MOVE@node0",
+       "index": 0,
+       "catOverTau": "11",
+       "riskScores": [
+        0.9308,
+        1.0975
+       ],
+       "nregScores": [
+        0.8157,
+        0.9424
+       ]
+      },
+      {
+       "bands": "2P2X",
+       "selected": "MOVE@node0",
+       "index": 0,
+       "catOverTau": "11",
+       "riskScores": [
+        0.9308,
+        1.0975
+       ],
+       "nregScores": [
+        0.8157,
+        0.9424
+       ]
+      }
+     ]
+    },
+    "v1Control": {
+     "bandInsensitive": true
+    }
+   }
+  },
+  "F2_FIVE_ACTION_EXTENSION": {
+   "spread=2": {
+    "valueConfigs": 16,
+    "distinctBandConfigs": 4,
+    "withinBandVariation": 0,
+    "features": {
+     "sensitive": true,
+     "distinctFeatureRowSets": 4
+    },
+    "riskScores": {
+     "sensitive": true,
+     "distinctCatVectors": 4,
+     "maxCatSwingPerAction": 0.2093821540812899,
+     "minRiskScoreAnyActionAnyConfig": 0.7231776933176957,
+     "tau": 0.2,
+     "thresholdCrossings": false
+    },
+    "rankings": {
+     "sensitive": false,
+     "distinctRankings": 1,
+     "riskHeadOrderSensitive": true,
+     "distinctRiskHeadOrders": 4,
+     "nregHeadOrderSensitive": false,
+     "distinctNregHeadOrders": 1,
+     "note": "\"sensitive\" is the ranking of the FINAL SAFE_FIRST score (the one that determines selection); the two head orders are reported separately"
+    },
+    "selection": {
+     "sensitive": false,
+     "distinctSelections": 1,
+     "byBandConfig": [
+      {
+       "bands": "1P1X",
+       "selected": "MOVE@node2",
+       "index": 4,
+       "catOverTau": "11111",
+       "riskScores": [
+        0.8413,
+        1.0079,
+        0.8657,
+        0.7578,
+        0.7232
+       ],
+       "nregScores": [
+        0.8173,
+        0.944,
+        1.336,
+        0.856,
+        0.7667
+       ]
+      },
+      {
+       "bands": "1P2X",
+       "selected": "MOVE@node2",
+       "index": 4,
+       "catOverTau": "11111",
+       "riskScores": [
+        0.8413,
+        1.0079,
+        0.8657,
+        0.8474,
+        0.8127
+       ],
+       "nregScores": [
+        0.8173,
+        0.944,
+        1.336,
+        0.8544,
+        0.7651
+       ]
+      },
+      {
+       "bands": "2P1X",
+       "selected": "MOVE@node2",
+       "index": 4,
+       "catOverTau": "11111",
+       "riskScores": [
+        0.9308,
+        1.0975,
+        0.8657,
+        0.8776,
+        0.7232
+       ],
+       "nregScores": [
+        0.8157,
+        0.9424,
+        1.336,
+        0.9203,
+        0.7667
+       ]
+      },
+      {
+       "bands": "2P2X",
+       "selected": "MOVE@node2",
+       "index": 4,
+       "catOverTau": "11111",
+       "riskScores": [
+        0.9308,
+        1.0975,
+        0.8657,
+        0.9672,
+        0.8127
+       ],
+       "nregScores": [
+        0.8157,
+        0.9424,
+        1.336,
+        0.9187,
+        0.7651
+       ]
+      }
+     ]
+    },
+    "v1Control": {
+     "bandInsensitive": true
+    }
+   },
+   "spread=4": {
+    "valueConfigs": 36,
+    "distinctBandConfigs": 4,
+    "withinBandVariation": 0,
+    "features": {
+     "sensitive": true,
+     "distinctFeatureRowSets": 4
+    },
+    "riskScores": {
+     "sensitive": true,
+     "distinctCatVectors": 4,
+     "maxCatSwingPerAction": 0.2093821540812899,
+     "minRiskScoreAnyActionAnyConfig": 0.7231776933176957,
+     "tau": 0.2,
+     "thresholdCrossings": false
+    },
+    "rankings": {
+     "sensitive": false,
+     "distinctRankings": 1,
+     "riskHeadOrderSensitive": true,
+     "distinctRiskHeadOrders": 4,
+     "nregHeadOrderSensitive": false,
+     "distinctNregHeadOrders": 1,
+     "note": "\"sensitive\" is the ranking of the FINAL SAFE_FIRST score (the one that determines selection); the two head orders are reported separately"
+    },
+    "selection": {
+     "sensitive": false,
+     "distinctSelections": 1,
+     "byBandConfig": [
+      {
+       "bands": "1P1X",
+       "selected": "MOVE@node2",
+       "index": 4,
+       "catOverTau": "11111",
+       "riskScores": [
+        0.8413,
+        1.0079,
+        0.8657,
+        0.7578,
+        0.7232
+       ],
+       "nregScores": [
+        0.8173,
+        0.944,
+        1.336,
+        0.856,
+        0.7667
+       ]
+      },
+      {
+       "bands": "1P2X",
+       "selected": "MOVE@node2",
+       "index": 4,
+       "catOverTau": "11111",
+       "riskScores": [
+        0.8413,
+        1.0079,
+        0.8657,
+        0.8474,
+        0.8127
+       ],
+       "nregScores": [
+        0.8173,
+        0.944,
+        1.336,
+        0.8544,
+        0.7651
+       ]
+      },
+      {
+       "bands": "2P1X",
+       "selected": "MOVE@node2",
+       "index": 4,
+       "catOverTau": "11111",
+       "riskScores": [
+        0.9308,
+        1.0975,
+        0.8657,
+        0.8776,
+        0.7232
+       ],
+       "nregScores": [
+        0.8157,
+        0.9424,
+        1.336,
+        0.9203,
+        0.7667
+       ]
+      },
+      {
+       "bands": "2P2X",
+       "selected": "MOVE@node2",
+       "index": 4,
+       "catOverTau": "11111",
+       "riskScores": [
+        0.9308,
+        1.0975,
+        0.8657,
+        0.9672,
+        0.8127
+       ],
+       "nregScores": [
+        0.8157,
+        0.9424,
+        1.336,
+        0.9187,
+        0.7651
+       ]
+      }
+     ]
+    },
+    "v1Control": {
+     "bandInsensitive": true
+    }
+   },
+   "spread=6": {
+    "valueConfigs": 64,
+    "distinctBandConfigs": 4,
+    "withinBandVariation": 0,
+    "features": {
+     "sensitive": true,
+     "distinctFeatureRowSets": 4
+    },
+    "riskScores": {
+     "sensitive": true,
+     "distinctCatVectors": 4,
+     "maxCatSwingPerAction": 0.2093821540812899,
+     "minRiskScoreAnyActionAnyConfig": 0.7231776933176957,
+     "tau": 0.2,
+     "thresholdCrossings": false
+    },
+    "rankings": {
+     "sensitive": false,
+     "distinctRankings": 1,
+     "riskHeadOrderSensitive": true,
+     "distinctRiskHeadOrders": 4,
+     "nregHeadOrderSensitive": false,
+     "distinctNregHeadOrders": 1,
+     "note": "\"sensitive\" is the ranking of the FINAL SAFE_FIRST score (the one that determines selection); the two head orders are reported separately"
+    },
+    "selection": {
+     "sensitive": false,
+     "distinctSelections": 1,
+     "byBandConfig": [
+      {
+       "bands": "1P1X",
+       "selected": "MOVE@node2",
+       "index": 4,
+       "catOverTau": "11111",
+       "riskScores": [
+        0.8413,
+        1.0079,
+        0.8657,
+        0.7578,
+        0.7232
+       ],
+       "nregScores": [
+        0.8173,
+        0.944,
+        1.336,
+        0.856,
+        0.7667
+       ]
+      },
+      {
+       "bands": "1P2X",
+       "selected": "MOVE@node2",
+       "index": 4,
+       "catOverTau": "11111",
+       "riskScores": [
+        0.8413,
+        1.0079,
+        0.8657,
+        0.8474,
+        0.8127
+       ],
+       "nregScores": [
+        0.8173,
+        0.944,
+        1.336,
+        0.8544,
+        0.7651
+       ]
+      },
+      {
+       "bands": "2P1X",
+       "selected": "MOVE@node2",
+       "index": 4,
+       "catOverTau": "11111",
+       "riskScores": [
+        0.9308,
+        1.0975,
+        0.8657,
+        0.8776,
+        0.7232
+       ],
+       "nregScores": [
+        0.8157,
+        0.9424,
+        1.336,
+        0.9203,
+        0.7667
+       ]
+      },
+      {
+       "bands": "2P2X",
+       "selected": "MOVE@node2",
+       "index": 4,
+       "catOverTau": "11111",
+       "riskScores": [
+        0.9308,
+        1.0975,
+        0.8657,
+        0.9672,
+        0.8127
+       ],
+       "nregScores": [
+        0.8157,
+        0.9424,
+        1.336,
+        0.9187,
+        0.7651
+       ]
+      }
+     ]
+    },
+    "v1Control": {
+     "bandInsensitive": true
+    }
+   },
+   "spread=7": {
+    "valueConfigs": 81,
+    "distinctBandConfigs": 4,
+    "withinBandVariation": 0,
+    "features": {
+     "sensitive": true,
+     "distinctFeatureRowSets": 4
+    },
+    "riskScores": {
+     "sensitive": true,
+     "distinctCatVectors": 4,
+     "maxCatSwingPerAction": 0.2093821540812899,
+     "minRiskScoreAnyActionAnyConfig": 0.7231776933176957,
+     "tau": 0.2,
+     "thresholdCrossings": false
+    },
+    "rankings": {
+     "sensitive": false,
+     "distinctRankings": 1,
+     "riskHeadOrderSensitive": true,
+     "distinctRiskHeadOrders": 4,
+     "nregHeadOrderSensitive": false,
+     "distinctNregHeadOrders": 1,
+     "note": "\"sensitive\" is the ranking of the FINAL SAFE_FIRST score (the one that determines selection); the two head orders are reported separately"
+    },
+    "selection": {
+     "sensitive": false,
+     "distinctSelections": 1,
+     "byBandConfig": [
+      {
+       "bands": "1P1X",
+       "selected": "MOVE@node2",
+       "index": 4,
+       "catOverTau": "11111",
+       "riskScores": [
+        0.8413,
+        1.0079,
+        0.8657,
+        0.7578,
+        0.7232
+       ],
+       "nregScores": [
+        0.8173,
+        0.944,
+        1.336,
+        0.856,
+        0.7667
+       ]
+      },
+      {
+       "bands": "1P2X",
+       "selected": "MOVE@node2",
+       "index": 4,
+       "catOverTau": "11111",
+       "riskScores": [
+        0.8413,
+        1.0079,
+        0.8657,
+        0.8474,
+        0.8127
+       ],
+       "nregScores": [
+        0.8173,
+        0.944,
+        1.336,
+        0.8544,
+        0.7651
+       ]
+      },
+      {
+       "bands": "2P1X",
+       "selected": "MOVE@node2",
+       "index": 4,
+       "catOverTau": "11111",
+       "riskScores": [
+        0.9308,
+        1.0975,
+        0.8657,
+        0.8776,
+        0.7232
+       ],
+       "nregScores": [
+        0.8157,
+        0.9424,
+        1.336,
+        0.9203,
+        0.7667
+       ]
+      },
+      {
+       "bands": "2P2X",
+       "selected": "MOVE@node2",
+       "index": 4,
+       "catOverTau": "11111",
+       "riskScores": [
+        0.9308,
+        1.0975,
+        0.8657,
+        0.9672,
+        0.8127
+       ],
+       "nregScores": [
+        0.8157,
+        0.9424,
+        1.336,
+        0.9187,
+        0.7651
+       ]
+      }
+     ]
+    },
+    "v1Control": {
+     "bandInsensitive": true
+    }
+   },
+   "spread=8": {
+    "valueConfigs": 100,
+    "distinctBandConfigs": 4,
+    "withinBandVariation": 0,
+    "features": {
+     "sensitive": true,
+     "distinctFeatureRowSets": 4
+    },
+    "riskScores": {
+     "sensitive": true,
+     "distinctCatVectors": 4,
+     "maxCatSwingPerAction": 0.2093821540812899,
+     "minRiskScoreAnyActionAnyConfig": 0.7231776933176957,
+     "tau": 0.2,
+     "thresholdCrossings": false
+    },
+    "rankings": {
+     "sensitive": false,
+     "distinctRankings": 1,
+     "riskHeadOrderSensitive": true,
+     "distinctRiskHeadOrders": 4,
+     "nregHeadOrderSensitive": false,
+     "distinctNregHeadOrders": 1,
+     "note": "\"sensitive\" is the ranking of the FINAL SAFE_FIRST score (the one that determines selection); the two head orders are reported separately"
+    },
+    "selection": {
+     "sensitive": false,
+     "distinctSelections": 1,
+     "byBandConfig": [
+      {
+       "bands": "1P1X",
+       "selected": "MOVE@node2",
+       "index": 4,
+       "catOverTau": "11111",
+       "riskScores": [
+        0.8413,
+        1.0079,
+        0.8657,
+        0.7578,
+        0.7232
+       ],
+       "nregScores": [
+        0.8173,
+        0.944,
+        1.336,
+        0.856,
+        0.7667
+       ]
+      },
+      {
+       "bands": "1P2X",
+       "selected": "MOVE@node2",
+       "index": 4,
+       "catOverTau": "11111",
+       "riskScores": [
+        0.8413,
+        1.0079,
+        0.8657,
+        0.8474,
+        0.8127
+       ],
+       "nregScores": [
+        0.8173,
+        0.944,
+        1.336,
+        0.8544,
+        0.7651
+       ]
+      },
+      {
+       "bands": "2P1X",
+       "selected": "MOVE@node2",
+       "index": 4,
+       "catOverTau": "11111",
+       "riskScores": [
+        0.9308,
+        1.0975,
+        0.8657,
+        0.8776,
+        0.7232
+       ],
+       "nregScores": [
+        0.8157,
+        0.9424,
+        1.336,
+        0.9203,
+        0.7667
+       ]
+      },
+      {
+       "bands": "2P2X",
+       "selected": "MOVE@node2",
+       "index": 4,
+       "catOverTau": "11111",
+       "riskScores": [
+        0.9308,
+        1.0975,
+        0.8657,
+        0.9672,
+        0.8127
+       ],
+       "nregScores": [
+        0.8157,
+        0.9424,
+        1.336,
+        0.9187,
+        0.7651
+       ]
+      }
+     ]
+    },
+    "v1Control": {
+     "bandInsensitive": true
+    }
+   }
+  }
+ },
+ "extendedInformational": {
+  "warning": "INCLUDES NATIVELY UNREACHABLE STATES (values 0/1 -> band V0; objective removed while public flags are unchanged). Reported for continuity with the earlier session only. NOT used for any gate.",
+  "grid": "values {0,1,2,3,5,8,9,12}^3 x objective {p2, none}, spread 6",
+  "results": {
+   "F1_HW4_GATES_FIXTURE": {
+    "valueConfigs": 1024,
+    "distinctBandConfigs": 36,
+    "withinBandVariation": 0,
+    "features": {
+     "sensitive": true,
+     "distinctFeatureRowSets": 12
+    },
+    "riskScores": {
+     "sensitive": true,
+     "distinctCatVectors": 12,
+     "maxCatSwingPerAction": 0.259971964903679,
+     "minRiskScoreAnyActionAnyConfig": 0.7906705394494762,
+     "tau": 0.2,
+     "thresholdCrossings": false
+    },
+    "rankings": {
+     "sensitive": false,
+     "distinctRankings": 1,
+     "riskHeadOrderSensitive": false,
+     "distinctRiskHeadOrders": 1,
+     "nregHeadOrderSensitive": false,
+     "distinctNregHeadOrders": 1,
+     "note": "\"sensitive\" is the ranking of the FINAL SAFE_FIRST score (the one that determines selection); the two head orders are reported separately"
+    },
+    "selection": {
+     "sensitive": false,
+     "distinctSelections": 1
+    },
+    "v1Control": {
+     "bandInsensitive": true
+    },
+    "selectionChangesByIngredient": {
+     "OBJECTIVE_PRESENT_WITH_V0": {
+      "bandConfigs": 5,
+      "selectionDiffersFromLawful": 0
+     },
+     "OBJECTIVE_REMOVED_WITH_V0": {
+      "bandConfigs": 19,
+      "selectionDiffersFromLawful": 0
+     },
+     "LAWFUL_SHAPE_OBJECTIVE_PRESENT_NO_V0": {
+      "bandConfigs": 4,
+      "selectionDiffersFromLawful": 0
+     },
+     "OBJECTIVE_REMOVED_NO_V0": {
+      "bandConfigs": 8,
+      "selectionDiffersFromLawful": 0
+     }
+    },
+    "lawfulReferenceSelectionIndex": 0
+   },
+   "F2_FIVE_ACTION_EXTENSION": {
+    "valueConfigs": 1024,
+    "distinctBandConfigs": 36,
+    "withinBandVariation": 0,
+    "features": {
+     "sensitive": true,
+     "distinctFeatureRowSets": 36
+    },
+    "riskScores": {
+     "sensitive": true,
+     "distinctCatVectors": 36,
+     "maxCatSwingPerAction": 0.25997196490367935,
+     "minRiskScoreAnyActionAnyConfig": 0.638193643375617,
+     "tau": 0.2,
+     "thresholdCrossings": false
+    },
+    "rankings": {
+     "sensitive": true,
+     "distinctRankings": 2,
+     "riskHeadOrderSensitive": true,
+     "distinctRiskHeadOrders": 13,
+     "nregHeadOrderSensitive": true,
+     "distinctNregHeadOrders": 2,
+     "note": "\"sensitive\" is the ranking of the FINAL SAFE_FIRST score (the one that determines selection); the two head orders are reported separately"
+    },
+    "selection": {
+     "sensitive": true,
+     "distinctSelections": 2
+    },
+    "v1Control": {
+     "bandInsensitive": true
+    },
+    "selectionChangesByIngredient": {
+     "OBJECTIVE_PRESENT_WITH_V0": {
+      "bandConfigs": 5,
+      "selectionDiffersFromLawful": 0
+     },
+     "OBJECTIVE_REMOVED_WITH_V0": {
+      "bandConfigs": 19,
+      "selectionDiffersFromLawful": 5
+     },
+     "LAWFUL_SHAPE_OBJECTIVE_PRESENT_NO_V0": {
+      "bandConfigs": 4,
+      "selectionDiffersFromLawful": 0
+     },
+     "OBJECTIVE_REMOVED_NO_V0": {
+      "bandConfigs": 8,
+      "selectionDiffersFromLawful": 4
+     }
+    },
+    "lawfulReferenceSelectionIndex": 4
+   }
+  }
+ },
+ "lawfulDomainValidation": {
+  "population": "H-W4 EXPLORATION (training), 1,000 base projections; structure only",
+  "structuralNodes": 14270,
+  "bandCounts": {
+   "1": 10397,
+   "2": 2243,
+   "P": 1630
+  },
+  "bandV0Observed": 0,
+  "valueSpreads": {
+   "2": 581,
+   "4": 318,
+   "7": 63,
+   "8": 38
+  },
+  "bandP_withPublicObjectiveFlag": 1630,
+  "bandP_withoutPublicObjectiveFlag": 0,
+  "publicObjectiveFlag_withoutBandP": 0,
+  "bandPIsPublicInformation": true,
+  "v2RiskHeadOverTau": {
+   "allActions": 568,
+   "noAction": 0,
+   "mixed": 432
+  },
+  "reading": "Band P coincides exactly with the PUBLIC objective flag, so P carries no information beyond V1. Band V0 never occurs. The only non-public content of the band is V1 vs V2 (value at the top of its range) on non-objective structural nodes. In the classes where every action exceeds tau the SAFE_FIRST threshold is saturated and selection reduces to the nreg head."
+ },
+ "verdict": {
+  "BAND_FEATURE_SENSITIVE": true,
+  "BAND_SCORE_SENSITIVE": true,
+  "BAND_RISK_HEAD_ORDER_SENSITIVE": true,
+  "BAND_TAU_THRESHOLD_CROSSING": false,
+  "BAND_RANKING_SENSITIVE": false,
+  "BAND_DECISION_SENSITIVE": false,
+  "stopRule": "If no lawful tested band configuration changes the final selection, report the limitation and stop before any class is built or any population is frozen.",
+  "proceed": false
+ },
+ "noFlipQuotaRequired": true
+}

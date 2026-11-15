@@ -1,0 +1,8 @@
+import {resolve} from 'node:path';import {DIR,verifyLocal} from './inheritance.mjs';import {LEVELS} from './catalog.mjs';import {PLAN} from './plan.mjs';import {constructive} from './legacy-witness.mjs';import {save,manifest,digest,checkManifest} from '../training-dev-v1/io.mjs';
+const out=resolve(DIR,'runs','legacy-feasibility-001'),source=manifest(DIR,p=>/\.(mjs|html|js|css)$/.test(p));save(resolve(out,'registration.json'),{source,sourceHash:digest(source),protected:verifyLocal(),variants:[0,1,2,3],purpose:'Independent evaluator-only reachability search, not candidate tuning, policy evidence or new training',selection:'Accept existence of any successful witness. Keep all failed attempts.'});const results=[];
+for(const [gi,l]of LEVELS.entries())if(['pong','platformer','racing'].includes(l.game))for(let i=0;i<2;i++){
+ const spec={game:l.game,tier:l.tier,seed:(PLAN.splits.DEV.seedBase+gi*100003+i*7919)>>>0,family:PLAN.splits.DEV.lineage},attempts=[];
+ for(const variant of l.game==='platformer'?[0]:[0,1,2,3]){const r=constructive(spec,variant);save(resolve(out,'evaluator',l.id+'-'+i+'-variant'+variant+'.json'),r);attempts.push({variant,success:r.success,outcome:r.outcome,ticks:r.ticks,catastrophic:r.metrics.catastrophic});if(r.success)break;}
+ results.push({id:l.id,seedIndex:i,spec,attempts,solvable:attempts.some(a=>a.success)});console.log(JSON.stringify(results.at(-1)));
+}
+save(resolve(out,'results.json'),{results,scope:'Checked seeds only; do not expose witness actions or hidden inputs to inference'});save(resolve(out,'postflight.json'),{source:checkManifest(DIR,source),protected:verifyLocal()});

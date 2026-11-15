@@ -1,0 +1,21 @@
+# Native interface and runner audit — no invocation
+
+Audit target: frozen `stage3h1d-development/confirm-core.mjs#evaluateCombo`, its import closure and existing 3H.1-D identities. Source bytes are in the local 75-file package. No evaluateCombo, generateScenario, runCalibratedWarmup, createWorld, invokeNexus, currentBaseline, simulator or evaluator function was called in this task. Module-definition loading in the disposable package clone does not invoke those functions.
+
+| Requirement | Source finding / synthetic coverage | Remaining activation condition |
+|---|---|---|
+| Independent unit | Old `combinations` reuses a base seed across cells; V2 schedule requires a NEW unique seed per world instead. `evaluateCombo` can accept a single explicit combo; do not reuse old panel runner/combinations for sealed execution. Prototype rejects duplicate fixture IDs. | Custodian allocates disjoint per-world schedules only after separate authorization; duplicate world identities abort. |
+| Admission | Initial semantic validator, terminal check and task-preservation check precede Nexus/S0 calls; rejections carry reasons. | Adapter preserves that ordering, reconciles all scheduled rows, applies per-cell/per-band admission floors and no replacement. |
+| Native selector | `NEXUS_ELSE_S0=sel.NEXUS_V1??sel.S0`; R follows the frozen H0/H2 rule. | Exact frozen source hashes and row-by-row set equality. No H1/H3/H4. |
+| Public information | `observableView` then `decisionPacket`; Nexus uses packet, S0 uses full certified public view. Source metrics never enter those calls. | Immutable per-world common envelope hashes and explicit policy interface ledger; no claim that S0 consumes only the expert packet. |
+| Legal menu | Source validates all selected IDs in the packet and compares the menu to evaluator branches. | No omitted action, new fallback, malformed set or surface mismatch. |
+| Timing | Every decision is selected before `evaluateCounterfactualsSymmetricV1`; hashWorld proves the source world is not mutated. | Reviewed adapter records choice-lock and evaluator-release provenance and aborts on divergence. |
+| Tied sets | Frozen metrics uniformly average all selected actions, not a lexicographic winner. Synthetic score agrees with frozen scorer. | Exact uniform expectations and consistent complete sets in native outputs. |
+| Compute | Shared S0 and Nexus outputs can serve R/B/N; unused calls charged equally. | Record actual calls/time and zero public simulations; proposed 1,000 ms limit invalidates rather than filters a row. |
+| Analysis | V2 pure code implements paired cell bootstrap, shared draws and conditional ratios; equality controls outside superiority families. | Independent review plus canonical runtime fingerprint; resource ceiling never changes resamples or rows. |
+| Catastrophe/harm | Handcrafted utilities verify threshold, uniform ties, worst-support veto, positive-part harm and best-of attribution arithmetic. | No population performance inference from this synthetic suite. |
+| Native nuisance | Complete frozen D4 maps and inverses are tested on coordinate pairs only; action-handle and order bijections tested on fixtures. | Reviewed adapter maps native legal actions/observation/truth faithfully without generating cases before authorization. |
+| Runtime/source | All seven originally missing local canonical files match frozen hashes; transitive imports and public model data included. | Clean package clone passes byte/module/synthetic checks; canonical execution runtime and native replay are NOT certified here. |
+| A/B custody | Metadata-only prototype rejects missing identities, designer/reviewer overlap, unsigned conflicts and unlocked A/B. | Signed independent identities, OS/storage isolation, write-once result hashes and both locks before any designer read. No such custody process is supplied yet. |
+
+The code additions are an audit-backed synthetic implementation and an execution-denying entry point, not a finished native campaign runner. This is sufficient to review the contract before scope approval; it is not sufficient to activate sealed registration or execute performance. `activation-requirements.json` preserves these open prerequisites explicitly.

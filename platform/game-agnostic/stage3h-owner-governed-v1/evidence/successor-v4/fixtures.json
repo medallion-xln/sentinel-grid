@@ -1,0 +1,271 @@
+{
+ "schema": "STAGE3H_SUCCESSOR_MENU_VALIDITY_FIXTURES_V1",
+ "rule": "STAGE3H_NATIVE_MENU_VALIDITY_V1",
+ "inheritanceHead": "af2244718ea74a9909af2d8a0a17752d446ee776",
+ "passed": 11,
+ "total": 11,
+ "requiredCategoriesCovered": true,
+ "categories": [
+  "DISTINCT",
+  "DUPLICATE",
+  "EMPTY",
+  "EXCEPTIONAL",
+  "IDENTITY",
+  "LATER_STEP",
+  "MULTI_DECISION",
+  "ORDER",
+  "PARITY",
+  "TWIN"
+ ],
+ "results": [
+  {
+   "id": "F1_EMPTY_MENU",
+   "category": "EMPTY",
+   "pass": true,
+   "detail": {
+    "e1": {
+     "valid": false,
+     "cause": "EMPTY_MENU",
+     "size": 0,
+     "distinct": 0
+    },
+    "e2": {
+     "valid": false,
+     "reason": "NATIVE_MENU_INVALID",
+     "cause": "EMPTY_MENU",
+     "firstInvalidView": "ORIGINAL",
+     "views": 1,
+     "invalidViews": 1,
+     "causes": [
+      "EMPTY_MENU"
+     ]
+    }
+   }
+  },
+  {
+   "id": "F2_DUPLICATE_ID_SYNTHETIC",
+   "category": "DUPLICATE",
+   "pass": true,
+   "detail": {
+    "valid": false,
+    "cause": "DUPLICATE_ACTION_ID",
+    "size": 3,
+    "distinct": 2
+   }
+  },
+  {
+   "id": "F2_DUPLICATE_ID_NATIVE_WITNESS",
+   "category": "DUPLICATE",
+   "pass": true,
+   "detail": {
+    "v4": {
+     "id": "85fc3c18a1cbf43a710e77d7020c935a62177496b691cbb11738768886df316c",
+     "population": "SPENT_3H1F_OOD_ROLES",
+     "cell": "star/industrial/restore_and_protect/H2/1",
+     "band": "H2",
+     "reason": "NATIVE_MENU_INVALID",
+     "cause": "DUPLICATE_ACTION_ID",
+     "firstInvalidView": "ORIGINAL",
+     "invalidViews": 11,
+     "views": 11,
+     "rule": "STAGE3H_NATIVE_MENU_VALIDITY_V1"
+    },
+    "v3Error": "NATIVE_MENU_MISMATCH"
+   }
+  },
+  {
+   "id": "F3_LEGITIMATELY_DISTINCT",
+   "category": "DISTINCT",
+   "pass": true,
+   "detail": {
+    "synthetic": {
+     "valid": true,
+     "cause": null,
+     "size": 7,
+     "distinct": 7
+    },
+    "native": {
+     "seed": 202610090101,
+     "cell": "star/bare/reach_target/H2/1",
+     "verdict": {
+      "valid": true,
+      "views": 11,
+      "invalidViews": 0
+     }
+    }
+   }
+  },
+  {
+   "id": "F4_IDENTITY_NUISANCE",
+   "category": "IDENTITY",
+   "pass": true,
+   "detail": {
+    "keyOrderInvariant": true,
+    "labelNotIdentity": true,
+    "witness": {
+     "original": {
+      "valid": false,
+      "cause": "DUPLICATE_ACTION_ID",
+      "size": 10,
+      "distinct": 9
+     },
+     "identity": {
+      "valid": false,
+      "cause": "DUPLICATE_ACTION_ID",
+      "size": 10,
+      "distinct": 9
+     }
+    },
+    "validWorldIdentity": {
+     "valid": true,
+     "cause": null,
+     "size": 11,
+     "distinct": 11
+    },
+    "opaqueBijection": true
+   }
+  },
+  {
+   "id": "F5_REORDER_NUISANCE",
+   "category": "ORDER",
+   "pass": true,
+   "detail": {
+    "permutations": 24,
+    "allDuplicate": true,
+    "witnessReversed": {
+     "valid": false,
+     "cause": "DUPLICATE_ACTION_ID",
+     "size": 10,
+     "distinct": 9
+    },
+    "validReversed": {
+     "valid": true,
+     "cause": null,
+     "size": 11,
+     "distinct": 11
+    },
+    "viewOrderInvariant": {
+     "forward": 11,
+     "backward": 11
+    }
+   }
+  },
+  {
+   "id": "F6_EXCEPTIONAL_ACTIONS",
+   "category": "EXCEPTIONAL",
+   "pass": true,
+   "detail": {
+    "retreatMoveWait": {
+     "valid": true,
+     "cause": null,
+     "size": 3,
+     "distinct": 3
+    },
+    "waitOnly": {
+     "valid": true,
+     "cause": null,
+     "size": 1,
+     "distinct": 1
+    },
+    "nativeRetreatWorld": {
+     "seed": 202610090101,
+     "verdict": {
+      "valid": true,
+      "views": 11,
+      "invalidViews": 0
+     }
+    },
+    "malformedEntriesAbort": true
+   }
+  },
+  {
+   "id": "F7_MULTI_DECISION",
+   "category": "MULTI_DECISION",
+   "pass": true,
+   "detail": {
+    "valid": [
+     "a",
+     "c",
+     "e"
+    ],
+    "invalidAtSecond": {
+     "rejected": {
+      "reason": "NATIVE_MENU_INVALID",
+      "cause": "DUPLICATE_ACTION_ID",
+      "atDecision": 1,
+      "armDependent": true
+     }
+    },
+    "decideCallsBeforeRejection": 1,
+    "emptyAtFirst": {
+     "rejected": {
+      "reason": "NATIVE_MENU_INVALID",
+      "cause": "EMPTY_MENU",
+      "atDecision": 0,
+      "armDependent": false
+     }
+    },
+    "decideCallsOnEmpty": 0
+   }
+  },
+  {
+   "id": "F8_MALFORMED_AFTER_VALID_OBSERVATION",
+   "category": "LATER_STEP",
+   "pass": true,
+   "detail": {
+    "actorPosition": {
+     "x": 9,
+     "y": 3
+    },
+    "initialMenu": {
+     "valid": true,
+     "cause": null,
+     "size": 4,
+     "distinct": 4
+    },
+    "multiDecision": {
+     "rejected": {
+      "reason": "NATIVE_MENU_INVALID",
+      "cause": "DUPLICATE_ACTION_ID",
+      "atDecision": 1,
+      "armDependent": true
+     }
+    },
+    "singleDecisionProtocol": {
+     "valid": true,
+     "views": 11,
+     "invalidViews": 0
+    },
+    "note": "In the registered single-decision protocol this later menu is evaluator-internal (not policy-facing) and decision-inert; the world is judged on its policy-facing views, which are valid."
+   }
+  },
+  {
+   "id": "F9_TWIN_ONLY_MALFORMATION",
+   "category": "TWIN",
+   "pass": true,
+   "detail": {
+    "valid": false,
+    "reason": "NATIVE_MENU_INVALID",
+    "cause": "DUPLICATE_ACTION_ID",
+    "firstInvalidView": "D4:R90",
+    "views": 3,
+    "invalidViews": 1,
+    "causes": [
+     "DUPLICATE_ACTION_ID"
+    ]
+   }
+  },
+  {
+   "id": "F10_ACCEPTED_WORLD_PARITY",
+   "category": "PARITY",
+   "pass": true,
+   "detail": {
+    "seed": 202610090101,
+    "worldHash": "d4f5a4847d65967700358409cef387e293c0c7518936c0c4eb8bc7110e0cda28"
+   }
+  }
+ ],
+ "verdict": "ALL_FIXTURES_PASS",
+ "registeredWorldsGenerated": 0,
+ "authority": "R0"
+}

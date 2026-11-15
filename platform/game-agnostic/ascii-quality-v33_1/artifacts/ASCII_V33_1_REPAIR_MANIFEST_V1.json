@@ -1,0 +1,193 @@
+{
+ "schema": "ASCII_V33_1_REPAIR_MANIFEST_V1",
+ "version": "ASCII_WORLDS_V33_1",
+ "basis": "additive remediation over v33 presentation and unchanged v32 mechanics; no world, physics, observation, action, reward, timeout or scoring change; historical v33 artifacts untouched",
+ "repairs": [
+  {
+   "id": "ASCII_V33_1_R1",
+   "defectId": "PLATFORMER_ADVANCED_PLANNER_WINDOW_HYSTERESIS",
+   "classification": "D",
+   "affectedGames": [
+    "platformer"
+   ],
+   "affectedLevels": [
+    "PLATFORMER_ADVANCED_1"
+   ],
+   "firstBadState": {
+    "tick": 105,
+    "x": 107.25,
+    "reason": "safe BACK9+RUN6+JUMP clears GAP@133..139 landing x=117.12 strategy=NOMINAL_MAX_MARGIN"
+   },
+   "sourceFile": "ascii-suite/controllers/platformer.mjs",
+   "sourceLocation": "decide(): `if (!target || target.x0 - obs.body.x > 26 ...)` else-branch executes plan().best even when no candidate clears; score(): non-clearing plans ending before the gap count as safe",
+   "reproduction": "node ascii-quality-v33_1/platformer-forensics.mjs (seeds 271828..271839, STRONG 12/12 TIMEOUT)",
+   "expected": "approach the gap and jump past the elevated platform (witness: MOVE_RIGHT to x≈131.5, JUMP_RIGHT held 8)",
+   "actual": "BACK9+RUN+JUMP chosen at x≈107, then clear-path MOVE_RIGHT, oscillation until TIMEOUT 1500",
+   "causal": "When GAP@x0 enters the 26-cell window no candidate trajectory (RUN k<=16 + JUMP, WAIT, BACK) can clear it within the 45-tick horizon because the takeoff must happen past the elevated platform that ends 4 cells before the gap (head-bump otherwise); the scoring rule treats every non-clearing plan that ends before the gap as \"safe\", so a BACK plan wins, the body moves left, the gap leaves the window, the \"clear path\" branch moves right, and the cycle repeats until TIMEOUT.",
+   "fixClassification": "CONTROLLER_STRATEGY_BUG_IN_SEPARATELY_VERSIONED_CONTROLLER",
+   "candidate": {
+    "file": "ascii-quality-v33_1/platformer-planner-v2.mjs",
+    "sha256": "a2e444ca1ac834abc10084838485418435b4375102380d88a94eaca062c63084",
+    "derivedFrom": {
+     "file": "ascii-suite/controllers/platformer.mjs",
+     "sha256": "1682bdea63d2dd90d8c209da6c8ddc0e728708416c1a3a08922a0828e433cdbe"
+    },
+    "change": "APPROACH_UNTIL_CLEARABLE (one guarded branch); repair=false reproduces v1 bit-for-bit",
+    "regressionTests": [
+     "tests.mjs: planner V2 (repair off) reproduces v1",
+     "tests.mjs: planner V2 (repair on) wins Advanced 271828",
+     "tests.mjs: imports only public physics",
+     "evidence/platformer-acceptance.json"
+    ]
+   },
+   "result": {
+    "V33_TWELVE": {
+     "1": {
+      "STRONG": {
+       "TIMEOUT": 12
+      },
+      "STRONG_V33_1": {
+       "WIN": 12
+      }
+     },
+     "2": {
+      "STRONG": {
+       "WIN": 12
+      },
+      "STRONG_V33_1": {
+       "WIN": 12
+      }
+     },
+     "3": {
+      "STRONG": {
+       "WIN": 12
+      },
+      "STRONG_V33_1": {
+       "WIN": 12
+      }
+     }
+    },
+    "FRESH_TWELVE": {
+     "1": {
+      "STRONG": {
+       "TIMEOUT": 12
+      },
+      "STRONG_V33_1": {
+       "WIN": 12
+      }
+     },
+     "2": {
+      "STRONG": {
+       "WIN": 12
+      },
+      "STRONG_V33_1": {
+       "WIN": 12
+      }
+     },
+     "3": {
+      "STRONG": {
+       "WIN": 12
+      },
+      "STRONG_V33_1": {
+       "WIN": 12
+      }
+     }
+    }
+   },
+   "status": "REPAIRED_CANDIDATE (24/24 Advanced, no Expert/Extreme regression; development evidence)"
+  },
+  {
+   "id": "ASCII_V33_1_R2",
+   "defectId": "RESCUE_STALE_PACKET_UNDEFINED_CIVILIAN",
+   "classification": "B/D",
+   "affectedGames": [
+    "rescue"
+   ],
+   "affectedLevels": [
+    "RESCUE_ADVANCED_1",
+    "RESCUE_ADVANCED_2",
+    "RESCUE_ADVANCED_3"
+   ],
+   "firstBadState": "v32 smoke RESCUE_ADVANCED_3-STALE tick 80: PUBLIC_CONTROLLER_EXCEPTION_ABSTAIN:Cannot read properties of undefined (reading injured)",
+   "sourceFile": "ascii-suite/v3/controllers.mjs",
+   "sourceLocation": "rescueDecision: find(p,'RESCUE_CIVILIAN',v=>{const c=o.civilians.find(c=>c.id===v.id);return !c.injured||c.stabilized;})",
+   "reproduction": "node --test ascii-quality-v33_1/tests.mjs (rescue STALE test) / evidence/audit/RESCUE_ADVANCED_*.json STALE episodes",
+   "expected": "a RESCUE_CIVILIAN offer whose civilian is not in the (stale) observation is skipped",
+   "actual": "undefined dereference → exception → WAIT fallback for the tick",
+   "causal": "offered actions are fresh (kernel packet) while the observation is 10 ticks old under STALE; the controller assumed every offered civilian is observed",
+   "fixClassification": "CONTROLLER_ROBUSTNESS_BUG_IN_SEPARATELY_VERSIONED_CONTROLLER",
+   "candidate": {
+    "file": "ascii-quality-v33_1/controllers-v33_1.mjs",
+    "sha256": "90c874781905a27a6971a307626e7d9cd4e59596649a06d442540fa95e2d9e85",
+    "derivedFrom": {
+     "file": "ascii-suite/v3/controllers.mjs",
+     "sha256": "1b10a927f2647b4a7119753a9eae3d8bbc31b20f22feff76eac7946ec0c19cce"
+    },
+    "change": "one guard `c!==undefined&&(...)`",
+    "regressionTests": [
+     "tests.mjs: controllers-v33_1 differs only in the guarded line",
+     "tests.mjs: rescue STALE zero exceptions"
+    ]
+   },
+   "result": {
+    "STRONG/2080374784": {
+     "result": "FAILURE",
+     "exceptions": 0
+    },
+    "STRONG_RESCUE_V33_1/2080374784": {
+     "result": "FAILURE",
+     "exceptions": 0
+    },
+    "STRONG/2080382691": {
+     "result": "FAILURE",
+     "exceptions": 7
+    },
+    "STRONG_RESCUE_V33_1/2080382691": {
+     "result": "FAILURE",
+     "exceptions": 0
+    },
+    "STRONG/2080390598": {
+     "result": "FAILURE",
+     "exceptions": 0
+    },
+    "STRONG_RESCUE_V33_1/2080390598": {
+     "result": "FAILURE",
+     "exceptions": 0
+    }
+   },
+   "status": "REPAIRED_CANDIDATE (0 exceptions under STALE; outcomes recorded, not claimed improved)"
+  }
+ ],
+ "notRepaired": [
+  {
+   "game": "pong",
+   "reason": "win condition not reached in the privileged upper-bound probe; changing the environment opponent would change the benchmark meaning → proposed as a NEW versioned benchmark pending authorization; no source change made"
+  },
+  {
+   "game": "racing",
+   "reason": "first place not reached by any privileged rule-driver parameterisation; start-grid/rival pace are benchmark design; no runtime defect found; no source change made"
+  },
+  {
+   "game": "cards",
+   "reason": "controller competence under hidden information; world valid and solvable (privileged witness); Cards planner repair was stopped by prior decision (3H.14/15); no change"
+  },
+  {
+   "game": "roguelike",
+   "reason": "controller combat exposure (deaths) on Expert/Extreme; world valid and solvable; no mechanics defect; no change"
+  }
+ ],
+ "prohibitedChangesAttestation": {
+  "worldsUnchanged": true,
+  "v33Unchanged": true,
+  "protectedUnchanged": true,
+  "benchmarkScoringUnchanged": true,
+  "timeoutsUnchanged": true,
+  "privilegedAccess": {
+   "plannerImports": [
+    "../ascii-suite/worlds/platformer.mjs"
+   ],
+   "onlyPublicPhysics": true,
+   "importedSymbols": "PHYS, bodyStep, bodyLegalActions, bodyFallback"
+  }
+ }
+}

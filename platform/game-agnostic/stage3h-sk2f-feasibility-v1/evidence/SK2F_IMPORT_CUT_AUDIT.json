@@ -1,0 +1,721 @@
+{
+ "schema": "SK2F_IMPORT_CUT_AUDIT_V1",
+ "authority": "R0",
+ "stage": "STAGE3H-SK2-F Gate 5",
+ "generatedAt": "2026-11-11T23:43:20.260Z",
+ "node": "v26.7.0",
+ "gitState": {
+  "head": "16ae5c21999a38c888d3e855c5c1597c794b475d",
+  "headBlobSha256": "2d1e70611b26005179cc50e21a9d6ec5eae59704d7db36e722bb28b53eacb9ca",
+  "workingTreeSha256": "c4f9532e0771e025513122052128b0d14185e4abcde3ace9de9de5d77db6c099",
+  "state": "CUT_UNCOMMITTED"
+ },
+ "disclosure": "Identities only: paths, line text of the five changed source lines (public, tracked code), sha256 values and counts. No seed, world hash or evaluator truth. `core` is recomputable before and after the cut is committed and is what `verify` compares.",
+ "nothingWasCommittedByThisAudit": true,
+ "condition5_compatibilityRuns": {
+  "pass": true,
+  "sk1Tests": {
+   "files": 7,
+   "tests": 40,
+   "pass": 40,
+   "fail": 0,
+   "skipped": 0,
+   "exit": 0
+  },
+  "sk1Check": {
+   "result": "SK1_CHECK_PASS",
+   "reproducedSections": "12"
+  },
+  "sk11Tests": {
+   "files": 5,
+   "tests": 65,
+   "pass": 65,
+   "fail": 0,
+   "skipped": 0,
+   "exit": 0
+  },
+  "hw4Gates": {
+   "script": "stage3h-hw4-value-band-v1/hw4-gates.mjs (read-only; run unmodified)",
+   "exit": 1,
+   "failures": [
+    "G8_P2R_BAND_ROUND_TRIP:no reconstructed world with specFlat+bandKey found"
+   ],
+   "staticImportBoundaryG1": true,
+   "note": "G8 depends on a gitignored P2R scratch dataset and fails for want of it, independently of the import cut; nothing was repaired"
+  }
+ },
+ "recommendation": "IMPORT_CUT_QUALIFIES_FOR_SCOPED_COMMIT",
+ "failing": [],
+ "scope": "one path, one local commit, described as a PROSPECTIVE source correction; old sha256 2d1e7061… and new sha256 c4f9532e… recorded in the commit message",
+ "mustNotBeClaimed": [
+  "that the H-W1 STATIC_IMPORT_CONTRACT=FAIL verdict is repaired (it describes the OLD revision, which is unchanged in history)",
+  "that H-W4 or SK1 were evaluated on committed source (they bound the cut while it was uncommitted)",
+  "that evaluation becomes reproducible from a clean checkout (the 29 protected files and the local data are still required)",
+  "that the exclusion loaders become importable from a clean checkout (their dependency on protected source does not pass through this file)"
+ ],
+ "auditorSha256": "6a5ad12fc7ab21553a000a09049a5c6bb15b7bbbf667501223e43059fe969df1",
+ "coreSha256": "ad2fc6bd8a2885c6092d62862eb92cf860257ef5496bda18c9631d94e63f1ac0",
+ "core": {
+  "file": "platform/game-agnostic/stage3h-hw1-dev-v1/public-projection.mjs",
+  "condition1_exactRecordedDiff": {
+   "pass": true,
+   "oldSha256": "2d1e70611b26005179cc50e21a9d6ec5eae59704d7db36e722bb28b53eacb9ca",
+   "cutSha256": "c4f9532e0771e025513122052128b0d14185e4abcde3ace9de9de5d77db6c099",
+   "oldBlob": "88f89808d460c02bb8854e4ae022d930fe30584d",
+   "oldRevisionCommittedIn": "b38b16ee974d6ea88fd6dd3c49b511e25fe42d93",
+   "oldRevisionCommitSubject": "H-W1 I-1: public-only projection, keyV2 and public-input audit",
+   "revisionsInHistoryBeforeTheCut": 1,
+   "exactlyTheRecordedCut": true,
+   "problems": [],
+   "linesRemoved": 2,
+   "linesAdded": 3,
+   "totalChangedLines": 5,
+   "firstChangedLine": 12,
+   "unchangedLinesBefore": 11,
+   "unchangedLinesAfter": 204,
+   "gitNumstat": {
+    "added": 3,
+    "removed": 2
+   },
+   "recordedDiff": {
+    "source": "stage3h-hw4-value-band-v1/evidence/HW4B_RECOVERY_MANIFEST.json importCut (tracked, dated 9175a555)",
+    "recordedSha256": "93c0b22fe8ca59d4c329c5180008cf17880dae2d0fe718e0b3ff3ef44edc3653",
+    "embeddedTextSha256": "93c0b22fe8ca59d4c329c5180008cf17880dae2d0fe718e0b3ff3ef44edc3653",
+    "liveDiffAgainstOldRevisionSha256": "93c0b22fe8ca59d4c329c5180008cf17880dae2d0fe718e0b3ff3ef44edc3653",
+    "liveDiffIsByteIdenticalToTheRecordedDiff": true,
+    "recordedHunkEqualsExpected": true,
+    "recordedHashes": {
+     "committedHead": "2d1e70611b26005179cc50e21a9d6ec5eae59704d7db36e722bb28b53eacb9ca",
+     "workingTree": "c4f9532e0771e025513122052128b0d14185e4abcde3ace9de9de5d77db6c099"
+    }
+   },
+   "sk1ProvenanceAgrees": true,
+   "proposalDraft": {
+    "present": true,
+    "file": "stage3h-hw1-dev-v1/PROPOSAL_PUBLIC_PROJECTION_IMPORT_CUT.md (untracked draft, not modified)",
+    "currentLinesMatch": true,
+    "proposedImportLineMatches": true,
+    "proposedConstStatementMatchesAsCode": true,
+    "proposedConstCommentIdentical": false,
+    "note": "The applied edit equals the draft as code. The trailing comment on the const line was worded differently in the draft; the tracked record of the applied edit is the embedded diff above."
+   }
+  },
+  "condition2_semanticsUnchanged": {
+   "pass": true,
+   "textual": {
+    "everyLineOutsideTheHunkIsIdentical": true,
+    "note": "follows from condition 1: the two revisions share every line except the recorded hunk, so every function body is byte-identical",
+    "d4ElementsReferencedAtLines": [
+     14,
+     65,
+     172,
+     173,
+     198,
+     199
+    ],
+    "referencedOnlyInside": [
+     "D4_LINEAR",
+     "canonicalFrame",
+     "symmetryReport"
+    ],
+    "projectPublicAndTraceReadsDoNotReferenceIt": true,
+    "transformsDefinesItAsTheSameConstant": true
+   },
+   "bindingIdentity": {
+    "transformsD4ElementsIsTheOrientationConstant": true,
+    "value": [
+     "R0",
+     "R90",
+     "R180",
+     "R270",
+     "MX",
+     "MY",
+     "MD",
+     "MA"
+    ],
+    "frozen": true
+   },
+   "exportSurface": {
+    "identical": true,
+    "exports": [
+     "D4_LINEAR:object",
+     "EXCLUDED_FIELDS:object",
+     "KEY_VERSION:string",
+     "PROJECTION_VERSION:string",
+     "READ_PATHS:object",
+     "actionSig:function",
+     "canonicalActionKeys:function",
+     "canonicalFrame:function",
+     "frameProjection:function",
+     "isomorphism:function",
+     "keyV1:function",
+     "keyV2:function",
+     "keysV2:function",
+     "projectPublic:function",
+     "refine:function",
+     "selectEquivariant:function",
+     "structureDigest:function",
+     "symmetryReport:function",
+     "traceReads:function",
+     "unallowedReads:function"
+    ]
+   },
+   "constantsIdentical": true,
+   "d4LinearIdenticalOnSamples": true,
+   "measuredNow": {
+    "projectionsCompared": 1602,
+    "sources": {
+     "demoFixtures": 2,
+     "classRecords": {
+      "EXPLORATION": 1000,
+      "VALIDATION": 600
+     }
+    },
+    "functionsCompared": [
+     "frameProjection x8",
+     "keysV2",
+     "keyV1",
+     "refine",
+     "actionSig",
+     "structureDigest x8",
+     "symmetryReport",
+     "canonicalFrame",
+     "canonicalActionKeys",
+     "selectEquivariant",
+     "isomorphism"
+    ],
+    "projectionsWithAnyDifferingOutput": 0,
+    "outputDigestOld": "8e1fe6b8af46912187c3bf1124d7ad086b27cbd6e5bdd493895b6c694335db7c",
+    "outputDigestCut": "8e1fe6b8af46912187c3bf1124d7ad086b27cbd6e5bdd493895b6c694335db7c",
+    "notMeasuredDynamically": "projectPublic(view) and traceReads(view) need a native observable view, which would require generating a world; they are covered by the textual identity above and do not reference the changed binding"
+   },
+   "sk1Derivation": {
+    "derivedFromOld": "e2a050b2f25dfe6937cd9194ee0fafa4cc3a421bb894cb3e9c3bf94b91069f1d",
+    "derivedFromCut": "e2a050b2f25dfe6937cd9194ee0fafa4cc3a421bb894cb3e9c3bf94b91069f1d",
+    "committedLaneProjection": "e2a050b2f25dfe6937cd9194ee0fafa4cc3a421bb894cb3e9c3bf94b91069f1d",
+    "allThreeEqual": true
+   },
+   "reusedExistingEvidence": [
+    "stage3h-sk1-safety-kernel-v1/tests/projection.test.mjs (binding identity; lane-local projection equals the frozen module)",
+    "stage3h-sk1-safety-kernel-v1/evidence/SK1_PROJECTION_PROVENANCE.json (derivation identical from both revisions)",
+    "stage3h-hw4-value-band-v1/H_W4B_ENGINEERING_RISK_REGISTER.md ER-03 (frozen H-W4 C10 decisions reproduced 600/600 with the cut)"
+   ]
+  },
+  "condition3_protectedInputsUnchanged": {
+   "pass": true,
+   "protectedIdentities": 31,
+   "present": 31,
+   "matchingRecordedIdentity": 31,
+   "trackedAtHead": 0,
+   "guardManifestIntact": true,
+   "sk1FreezeDescribesTheDisk": true,
+   "freezeChecks": [
+    "CODE_FILE_SET_EQUALS_FROZEN_SET:ok",
+    "CODE_HASHES:ok",
+    "EVALUATION_DEPENDENCY_HASHES:ok",
+    "MODEL_FILES:ok",
+    "POPULATION_SUMMARIES_AND_REGISTRIES:ok",
+    "VALIDATION_DATA_FILES (local, gitignored):ok",
+    "ALLOCATION_EXCLUSION_REGISTRY_TRAINING_RECORD_DESIGN_FREEZE:ok",
+    "RESULT_BINDS_FREEZE_AND_MARKER:ok"
+   ],
+   "sk1FreezePinsThisFileAt": "c4f9532e0771e025513122052128b0d14185e4abcde3ace9de9de5d77db6c099"
+  },
+  "condition4_staticReachability": {
+   "pass": true,
+   "method": "transitive static relative imports (SK1.1 repro/lib.mjs traceClosure)",
+   "oldRevision": {
+    "files": 72,
+    "byClass": {
+     "TRACKED_EQUALS_HEAD": 66,
+     "UNTRACKED_CUSTODY_PROTECTED": 5,
+     "ENTRY": 1
+    },
+    "containsTransforms": true,
+    "custodyProtectedFiles": [
+     "stage3h-canonical-v1/adapters.mjs",
+     "stage3h-canonical-v1/baseline.mjs",
+     "stage3h-canonical-v1/evidence.mjs",
+     "stage3h-canonical-v1/metrics.mjs",
+     "stage3h-canonical-v1/nexus-selector-v1-port.mjs"
+    ],
+    "scriptsFiles": 4,
+    "closureSha256": "206e5fe4fb655f92741f2bf5914c60eda10e89925afb3bd713bcd384b334213f"
+   },
+   "cutRevision": {
+    "files": 6,
+    "byClass": {
+     "TRACKED_EQUALS_HEAD": 5,
+     "ENTRY": 1
+    },
+    "containsTransforms": false,
+    "custodyProtectedFiles": [],
+    "closureSha256": "9b0ac3546144933f06bdcf32fd55cedb8845af07dc9d81115f6a88f111480fae",
+    "list": [
+     {
+      "file": "src/core/determinism.js",
+      "sha256": "06bba4bb8c1018097a684961921eea1c8ed0d7e011252d55fb2705eb3f503bc5",
+      "trackedAtBase": "TRACKED_EQUALS_HEAD",
+      "role": "CORE_UTILITY",
+      "nonRelativeImports": [
+       "node:crypto"
+      ]
+     },
+     {
+      "file": "src/core/errors.js",
+      "sha256": "cf512a3659125dc877c721bd295c8f67ef01e9eac5e12cfd59bf234bc09e8c59",
+      "trackedAtBase": "TRACKED_EQUALS_HEAD",
+      "role": "CORE_UTILITY",
+      "nonRelativeImports": []
+     },
+     {
+      "file": "src/forge-symmetric/orientation-symmetric-v1.js",
+      "sha256": "3fd13729bfb0db4e2a09f48ceba39cce30b03b398e6bec7e6570182be028c5b1",
+      "trackedAtBase": "TRACKED_EQUALS_HEAD",
+      "role": "ORIENTATION_TABLES (definition site of ORIENTATIONS)",
+      "nonRelativeImports": []
+     },
+     {
+      "file": "src/forge/contract.js",
+      "sha256": "07b4bc10a6daca7509b39e4cad1cbc39ef2d10031cf08d1b91d31234bae801d6",
+      "trackedAtBase": "TRACKED_EQUALS_HEAD",
+      "role": "NATIVE_ENGINE_CONTRACT (vocabulary constants)",
+      "nonRelativeImports": []
+     },
+     {
+      "file": "src/forge/kernel.js",
+      "sha256": "f9c807ebed80ff1c2e2a47115b62525f9dac94b6c41af9d66e1903c3b7b209b7",
+      "trackedAtBase": "TRACKED_EQUALS_HEAD",
+      "role": "NATIVE_ENGINE (world construction and stepping are defined here; not an evaluator, not a comparator; reached only through orientation-symmetric-v1.js)",
+      "nonRelativeImports": []
+     },
+     {
+      "file": "stage3h-hw1-dev-v1/public-projection.mjs",
+      "sha256": "c4f9532e0771e025513122052128b0d14185e4abcde3ace9de9de5d77db6c099",
+      "trackedAtBase": "tracked; this is the file the commit changes",
+      "role": "ENTRY",
+      "nonRelativeImports": [
+       "node:crypto"
+      ]
+     }
+    ]
+   },
+   "removedByTheCut": 66,
+   "cleanOfTransformEvaluatorAndProtectedFiles": {
+    "ok": true,
+    "offending": []
+   },
+   "residualEdge": {
+    "path": "public-projection.mjs -> src/forge-symmetric/orientation-symmetric-v1.js -> src/forge/kernel.js (and src/forge/contract.js, src/core/determinism.js, src/core/errors.js)",
+    "statement": "The native engine module remains statically reachable, exactly as in the OLD revision. It is tracked, not custody-protected and not an evaluator; nothing in public-projection.mjs calls it. Whether a flat no-engine rule would accept this edge is a separate contract question and is not decided here."
+   },
+   "resolvableFromCommittedSourceAlone": {
+    "beforeTheCommit": "NO — the entry file at HEAD is the OLD revision",
+    "afterTheCommit": "YES — every other closure file is already tracked and equal to HEAD",
+    "evidence": {
+     "method": "the cut closure written to an empty temporary directory from committed blobs (entry at the CUT revision) plus package.json; the module is imported there and exercised on a minimal projection",
+     "filesInExport": 7,
+     "importSucceeded": true,
+     "output": {
+      "exports": 20,
+      "frames": [
+       "R0",
+       "R90",
+       "R180",
+       "R270",
+       "MX",
+       "MY",
+       "MD",
+       "MA"
+      ],
+      "keys": 1,
+      "canonical": 8
+     },
+     "error": null,
+     "oldRevisionFromTrackedFilesOnly": {
+      "importSucceeded": false,
+      "firstUnresolvedModule": "stage3h-canonical-v1/adapters.mjs"
+     }
+    }
+   },
+   "frozenHw4Rule": {
+    "source": "stage3h-hw4-value-band-v1/hw4-validate.mjs FORBIDDEN_SPEC / FORBIDDEN_TOKEN over the four H-W4 policy sources",
+    "oldRevision": {
+     "files": 76,
+     "violations": 40,
+     "filesWithViolations": [
+      "scripts/generate-stage3f6p1e-policy-evidence.mjs",
+      "scripts/stage3f6p1e-analysis-plan.mjs",
+      "src/forge/dataset.js",
+      "src/stage3f/prediction-reliability-v1.js",
+      "src/stage3f/world-state-v1.js",
+      "stage3h-canonical-v1/baseline.mjs",
+      "stage3h-failure-diagnosis-v1/lib.mjs",
+      "stage3h-final-review-handoff/amendments/v3/runner.mjs",
+      "stage3h-hw1-dev-v1/public-projection.mjs",
+      "stage3h-hw1-dev-v1/transforms.mjs"
+     ]
+    },
+    "cutRevision": {
+     "files": 10,
+     "violations": 0,
+     "filesWithViolations": []
+    },
+    "recordedInRiskRegisterER03": {
+     "cut": "10 files, 0 violations",
+     "committedHead": "76 files, 40 violations"
+    },
+    "note": "Restated and re-measured for the record. This is not a re-qualification of H-W4: its recorded verdicts are unchanged."
+   }
+  },
+  "condition6_historicalRecord": {
+   "pass": true,
+   "oldRevision": {
+    "sha256": "2d1e70611b26005179cc50e21a9d6ec5eae59704d7db36e722bb28b53eacb9ca",
+    "blob": "88f89808d460c02bb8854e4ae022d930fe30584d",
+    "commit": "b38b16ee974d6ea88fd6dd3c49b511e25fe42d93",
+    "retrieve": "git show b38b16ee:platform/game-agnostic/stage3h-hw1-dev-v1/public-projection.mjs",
+    "staysInHistory": true
+   },
+   "method": "git grep -F for the first 8 hex digits of either sha256 over every tracked file (this lane excluded)",
+   "files": 20,
+   "unclassified": [],
+   "rows": [
+    {
+     "file": "stage3h-hw1-dev-v1/H_W3_FEASIBILITY.md",
+     "fileSha256": "a786b97f36d5326731da60d08570d162d6310fc9cb952838ca0c82b440370040",
+     "fullOld": 0,
+     "fullCut": 0,
+     "prefixOld": 0,
+     "prefixCut": 1,
+     "lane": "H-W3",
+     "binds": "CUT",
+     "role": "prose: lists the cut as an uncommitted file preserved and not incorporated (dated to that stage)",
+     "rewrittenByTheCommit": false
+    },
+    {
+     "file": "stage3h-hw1-dev-v1/evidence/I1_PUBLIC_INPUT_AUDIT.json",
+     "fileSha256": "2a35c15fbab56d18484bd92ddde50b135ce5945ace5fc63ab330b2aa5616814a",
+     "fullOld": 1,
+     "fullCut": 0,
+     "prefixOld": 1,
+     "prefixCut": 0,
+     "lane": "H-W1",
+     "binds": "OLD",
+     "role": "sourceHashes of the I-1 public-input audit (dated, carries its own head)",
+     "rewrittenByTheCommit": false
+    },
+    {
+     "file": "stage3h-hw1-dev-v1/evidence/I2_PCD_VALIDATION.json",
+     "fileSha256": "c42d01b6e660f45e051e0b636abcfd0ff662b288765fa74dae111b5d00206a6b",
+     "fullOld": 1,
+     "fullCut": 0,
+     "prefixOld": 1,
+     "prefixCut": 0,
+     "lane": "H-W1",
+     "binds": "OLD",
+     "role": "sourceHashes of the I-2 PCD validation (dated)",
+     "rewrittenByTheCommit": false
+    },
+    {
+     "file": "stage3h-hw1-dev-v1/evidence/I4_EXPLORATION_RESULTS.json",
+     "fileSha256": "a892cd9d4622f3d3332686bef8b20f1fa9874c5fa6909ad6f69f0f4ea11dc3af",
+     "fullOld": 1,
+     "fullCut": 0,
+     "prefixOld": 1,
+     "prefixCut": 0,
+     "lane": "H-W1",
+     "binds": "OLD",
+     "role": "code hashes of the I-4 exploration run (dated)",
+     "rewrittenByTheCommit": false
+    },
+    {
+     "file": "stage3h-hw1-dev-v1/evidence/I5_CANDIDATE_FREEZE.json",
+     "fileSha256": "74be95d4a7b184308e4e9bf4e20776531bb156d9b410228e14c1fb8f47ec03b9",
+     "fullOld": 3,
+     "fullCut": 0,
+     "prefixOld": 3,
+     "prefixCut": 0,
+     "lane": "H-W1",
+     "binds": "OLD",
+     "role": "sealed candidate freeze: code hash and policy-source import audit (dated)",
+     "rewrittenByTheCommit": false
+    },
+    {
+     "file": "stage3h-hw1-dev-v1/evidence/LANE_CONTENT_AUDIT_I1.json",
+     "fileSha256": "90709166e5e673019d9ddf2a0895d5e0a5b30173cb9bd7880a95f87f15fab0ac",
+     "fullOld": 1,
+     "fullCut": 0,
+     "prefixOld": 1,
+     "prefixCut": 0,
+     "lane": "H-W1",
+     "binds": "OLD",
+     "role": "lane content audit file listing (dated)",
+     "rewrittenByTheCommit": false
+    },
+    {
+     "file": "stage3h-hw4-value-band-v1/H_W4.md",
+     "fileSha256": "f5da0cbcb4bf881eb4d16def535d9f677c5e8d974c5cbc929bc3d9bc167c6cb9",
+     "fullOld": 0,
+     "fullCut": 0,
+     "prefixOld": 0,
+     "prefixCut": 1,
+     "lane": "H-W4",
+     "binds": "CUT",
+     "role": "prose: static import gate measured on the cut, working-tree hash recorded",
+     "rewrittenByTheCommit": false
+    },
+    {
+     "file": "stage3h-hw4-value-band-v1/H_W4B.md",
+     "fileSha256": "dad68c049897f1bf1847edb6bc55146da26ea4d3cc62c59066bb910a32d41fed",
+     "fullOld": 0,
+     "fullCut": 0,
+     "prefixOld": 1,
+     "prefixCut": 2,
+     "lane": "H-W4B",
+     "binds": "BOTH",
+     "role": "prose: STATIC_IMPORT_BOUNDARY=PASS_WORKING_TREE_ONLY, FAIL at committed HEAD (names the commit)",
+     "rewrittenByTheCommit": false
+    },
+    {
+     "file": "stage3h-hw4-value-band-v1/H_W4B_ENGINEERING_RISK_REGISTER.md",
+     "fileSha256": "3298b248a27f0fd4cfcf13272b5c8d92b61c086801c2d7ce5bb87a046ee83f43",
+     "fullOld": 1,
+     "fullCut": 1,
+     "prefixOld": 1,
+     "prefixCut": 2,
+     "lane": "H-W4B",
+     "binds": "BOTH",
+     "role": "ER-03 table: both hashes against named trees (working tree; committed HEAD 9175a555)",
+     "rewrittenByTheCommit": false
+    },
+    {
+     "file": "stage3h-hw4-value-band-v1/evidence/HW4B_PHASE1_REPRODUCIBILITY.json",
+     "fileSha256": "a241bcc3860b7696f64a58655fc1d987b397759a0fb17f5160509ef9248c75c7",
+     "fullOld": 1,
+     "fullCut": 2,
+     "prefixOld": 1,
+     "prefixCut": 2,
+     "lane": "H-W4B",
+     "binds": "BOTH",
+     "role": "boundary measured on both revisions",
+     "rewrittenByTheCommit": false
+    },
+    {
+     "file": "stage3h-hw4-value-band-v1/evidence/HW4B_PROTOCOL_FREEZE.json",
+     "fileSha256": "93c013eb98c3c3c3a83396ee93b3fb5688726c56e092cf6492c85263d5daff30",
+     "fullOld": 0,
+     "fullCut": 1,
+     "prefixOld": 0,
+     "prefixCut": 1,
+     "lane": "H-W4B",
+     "binds": "CUT",
+     "role": "protocol freeze code hashes",
+     "rewrittenByTheCommit": false
+    },
+    {
+     "file": "stage3h-hw4-value-band-v1/evidence/HW4B_RECOVERY_MANIFEST.json",
+     "fileSha256": "be2489760be9676c2ed7e15db8544c68510a64f455b4e9bb049741a6189823ef",
+     "fullOld": 1,
+     "fullCut": 1,
+     "prefixOld": 1,
+     "prefixCut": 1,
+     "lane": "H-W4B",
+     "binds": "BOTH",
+     "role": "embeds the five-line unified diff and both hashes; names its head",
+     "rewrittenByTheCommit": false
+    },
+    {
+     "file": "stage3h-hw4-value-band-v1/evidence/HW4_CANDIDATE_FREEZE.json",
+     "fileSha256": "d7222f2b2c84406911453b43537b727de3ca369ddbedcfb19a91a8dae8118294",
+     "fullOld": 0,
+     "fullCut": 3,
+     "prefixOld": 0,
+     "prefixCut": 3,
+     "lane": "H-W4",
+     "binds": "CUT",
+     "role": "candidate freeze: hw1CodeHashes and policy-source import audit bound the UNCOMMITTED cut",
+     "rewrittenByTheCommit": false
+    },
+    {
+     "file": "stage3h-hw4-value-band-v1/evidence/HW4_EXPLORATION_V1_PUBLIC_ONLY.json",
+     "fileSha256": "cfb37ca2fb9dce7a196250c8b333fe44a851a2b50a8f782d470d4d46c378647b",
+     "fullOld": 0,
+     "fullCut": 1,
+     "prefixOld": 0,
+     "prefixCut": 1,
+     "lane": "H-W4",
+     "binds": "CUT",
+     "role": "exploration code hashes",
+     "rewrittenByTheCommit": false
+    },
+    {
+     "file": "stage3h-hw4-value-band-v1/evidence/HW4_EXPLORATION_V2_PUBLIC_PLUS_VALUE_BAND.json",
+     "fileSha256": "3d63964e4a9e4a3719a33f6fee543190298b47e21b8248a719d90d0b89c643b8",
+     "fullOld": 0,
+     "fullCut": 1,
+     "prefixOld": 0,
+     "prefixCut": 1,
+     "lane": "H-W4",
+     "binds": "CUT",
+     "role": "exploration code hashes",
+     "rewrittenByTheCommit": false
+    },
+    {
+     "file": "stage3h-sk1-1-assurance-v1/SK1_REPRODUCIBILITY_GAP.md",
+     "fileSha256": "d68d1dbccda80c9d2270a2d136e6c2805463c8d95e1b8fdf0d5ce7ddb4a36296",
+     "fullOld": 0,
+     "fullCut": 0,
+     "prefixOld": 1,
+     "prefixCut": 1,
+     "lane": "SK1.1",
+     "binds": "BOTH",
+     "role": "prose: the cut as an uncommitted supplement (dated to base 179922dd)",
+     "rewrittenByTheCommit": false
+    },
+    {
+     "file": "stage3h-sk1-1-assurance-v1/evidence/SK1_1_REPRO_INVENTORY.json",
+     "fileSha256": "3f171488cddcf2eb19bff6f0a98e6ea75316fb0b8b7573776d55893d0c0aacbb",
+     "fullOld": 2,
+     "fullCut": 3,
+     "prefixOld": 2,
+     "prefixCut": 3,
+     "lane": "SK1.1",
+     "binds": "BOTH",
+     "role": "dated inventory at 179922dd: classifies the file TRACKED_MODIFIED and records the head hash",
+     "rewrittenByTheCommit": false
+    },
+    {
+     "file": "stage3h-sk1-safety-kernel-v1/evidence/SK1_CUSTODY_MANIFEST.json",
+     "fileSha256": "321da973d4114e195e858c819d9da9195c13cefd38509a22a4f5379e88a95dfe",
+     "fullOld": 0,
+     "fullCut": 1,
+     "prefixOld": 0,
+     "prefixCut": 1,
+     "lane": "SK1",
+     "binds": "CUT",
+     "role": "modifiedVsHead listing at Gate 0 (dated)",
+     "rewrittenByTheCommit": false
+    },
+    {
+     "file": "stage3h-sk1-safety-kernel-v1/evidence/SK1_EXPERIMENT_FREEZE.json",
+     "fileSha256": "d22be2c4766324db1794d511b3bbd79917d3771c28cfa1c7087ba4c6c0663794",
+     "fullOld": 0,
+     "fullCut": 1,
+     "prefixOld": 0,
+     "prefixCut": 1,
+     "lane": "SK1",
+     "binds": "CUT",
+     "role": "evaluationDependencies bound the UNCOMMITTED cut; lists it under evaluationDependenciesDifferingFromHead at freeze time",
+     "rewrittenByTheCommit": false
+    },
+    {
+     "file": "stage3h-sk1-safety-kernel-v1/evidence/SK1_PROJECTION_PROVENANCE.json",
+     "fileSha256": "46aa6a917c7a5e40766b614d88dcc43b64a9b04adf7a6a7e5e089067e890838c",
+     "fullOld": 1,
+     "fullCut": 1,
+     "prefixOld": 1,
+     "prefixCut": 1,
+     "lane": "SK1",
+     "binds": "BOTH",
+     "role": "derivation provenance: both hashes, with the head they were read at",
+     "rewrittenByTheCommit": false
+    }
+   ],
+   "boundTheOldRevision": [
+    "stage3h-hw1-dev-v1/evidence/I1_PUBLIC_INPUT_AUDIT.json",
+    "stage3h-hw1-dev-v1/evidence/I2_PCD_VALIDATION.json",
+    "stage3h-hw1-dev-v1/evidence/I4_EXPLORATION_RESULTS.json",
+    "stage3h-hw1-dev-v1/evidence/I5_CANDIDATE_FREEZE.json",
+    "stage3h-hw1-dev-v1/evidence/LANE_CONTENT_AUDIT_I1.json"
+   ],
+   "boundTheUncommittedCut": [
+    "stage3h-hw1-dev-v1/H_W3_FEASIBILITY.md",
+    "stage3h-hw4-value-band-v1/H_W4.md",
+    "stage3h-hw4-value-band-v1/evidence/HW4B_PROTOCOL_FREEZE.json",
+    "stage3h-hw4-value-band-v1/evidence/HW4_CANDIDATE_FREEZE.json",
+    "stage3h-hw4-value-band-v1/evidence/HW4_EXPLORATION_V1_PUBLIC_ONLY.json",
+    "stage3h-hw4-value-band-v1/evidence/HW4_EXPLORATION_V2_PUBLIC_PLUS_VALUE_BAND.json",
+    "stage3h-sk1-safety-kernel-v1/evidence/SK1_CUSTODY_MANIFEST.json",
+    "stage3h-sk1-safety-kernel-v1/evidence/SK1_EXPERIMENT_FREEZE.json"
+   ],
+   "recordBoth": [
+    "stage3h-hw4-value-band-v1/H_W4B.md",
+    "stage3h-hw4-value-band-v1/H_W4B_ENGINEERING_RISK_REGISTER.md",
+    "stage3h-hw4-value-band-v1/evidence/HW4B_PHASE1_REPRODUCIBILITY.json",
+    "stage3h-hw4-value-band-v1/evidence/HW4B_RECOVERY_MANIFEST.json",
+    "stage3h-sk1-1-assurance-v1/SK1_REPRODUCIBILITY_GAP.md",
+    "stage3h-sk1-1-assurance-v1/evidence/SK1_1_REPRO_INVENTORY.json",
+    "stage3h-sk1-safety-kernel-v1/evidence/SK1_PROJECTION_PROVENANCE.json"
+   ],
+   "lanes": {
+    "H-W1 (I-1, I-2, I-4, I-5 freeze, lane audit)": "OLD",
+    "H-W4 (candidate freeze, both exploration records)": "CUT (uncommitted at the time)",
+    "H-W4B (protocol freeze)": "CUT; its records name both",
+    "SK1": "CUT (uncommitted at the time; disclosed in the freeze)",
+    "SK1.1": "records both"
+   },
+   "effectOfCommitting": "No pinned record is edited. Every pin is a dated statement carrying, or made at, a named commit. After the commit a checkout of the new HEAD carries the CUT revision; the OLD revision that the H-W1 records pin remains retrievable from history (see oldRevision)."
+  },
+  "condition7_noHashRewritten": {
+   "pass": true,
+   "pathsTheCommitWouldTouch": [
+    "platform/game-agnostic/stage3h-hw1-dev-v1/public-projection.mjs"
+   ],
+   "exactlyOnePath": true,
+   "noTrackedRecordIsEdited": true,
+   "sk1FreezeHashUnaffected": true,
+   "freezeBindsContentNotCommit": "SK1_EXPERIMENT_FREEZE.json evaluationDependencies holds sha256 of file content; checkFreeze compares content hashes only",
+   "liveToolsWhoseOutputChanges": [
+    {
+     "tool": "stage3h-sk1-safety-kernel-v1/infra/run.mjs check",
+     "readsGitHead": false,
+     "changesAfterCommit": "NO — the freeze binds file CONTENT (sha256 c4f9532e…), which the commit does not change; verified by the compatibility run and by the simulated post-commit run in the tests"
+    },
+    {
+     "tool": "stage3h-sk1-safety-kernel-v1/tests/projection.test.mjs",
+     "readsGitHead": false,
+     "changesAfterCommit": "NO — derives from the working file and compares with the tracked lane projection"
+    },
+    {
+     "tool": "stage3h-sk1-1-assurance-v1/repro/inventory.mjs verify (and the INTEGRATION test in repro.test.mjs)",
+     "readsGitHead": true,
+     "changesAfterCommit": "YES, EXPECTED AND DISCLOSED — the dated inventory at 179922dd classifies this file TRACKED_MODIFIED; after the commit it is TRACKED_EQUALS_HEAD (same sha256), so verify reports drift on that row and on the class counts derived from it. infra-audit/status.mjs labels exactly those rows EXPECTED_AFTER_IMPORT_CUT_COMMIT. The SK1.1 record is not edited."
+    },
+    {
+     "tool": "stage3h-sk1-1-assurance-v1/repro/clean-checkout-probe.mjs and backup-manifest.mjs",
+     "readsGitHead": true,
+     "changesAfterCommit": "YES, EXPECTED — one supplement fewer (the uncommitted file) and one uncommitted modification fewer; neither stores a verdict in a tracked file by itself"
+    },
+    {
+     "tool": "stage3h-sk1-safety-kernel-v1/infra/custody-manifest.mjs and derive-projection.mjs (print modes)",
+     "readsGitHead": true,
+     "changesAfterCommit": "print-mode output only (modifiedVsHead becomes empty; both derivations already identical). Their tracked records are dated and are not rewritten; --write is exclusive or not re-run"
+    },
+    {
+     "tool": "stage3h-hw1-dev-v1 i1/i2/i5 and stage3h-hw4-value-band-v1 hw4-validate (one-shot writers)",
+     "readsGitHead": "only to stamp the head they ran at",
+     "changesAfterCommit": "not re-run; they hash the working file, which is unchanged"
+    },
+    {
+     "tool": "stage3h-hw4-value-band-v1/hw4b-phase12.mjs (untracked)",
+     "readsGitHead": true,
+     "changesAfterCommit": "if re-run it would no longer find an uncommitted diff; its tracked output HW4B_RECOVERY_MANIFEST.json is dated to 9175a555 and is not rewritten"
+    }
+   ]
+  },
+  "blockQuestion": {
+   "blocked": false,
+   "custodyProtectedIdentity": false,
+   "underAGovernanceFrozenPath": false,
+   "governanceFrozenPaths": [
+    "sgrid-lab/results-v1-health-proxy",
+    "sgrid-lab/results-v2"
+   ],
+   "hw1ClosureRecordsStaticImportFail": true,
+   "hw1ClosureSaysEdgeRetainedBecauseOfPins": true,
+   "hw1ClosureRequiresOwnerAuthorizationForACorrectedBoundary": true,
+   "reading": "The file is tracked source, not a custody-protected identity and not under a governance frozen path. It IS a pinned dependency of the sealed H-W1 candidates, and the H-W1 closure left the edge in place for that reason and reserved a corrected boundary for separate owner authorization. That authorization is what the SK2-F mandate conditionally gives. The H-W1 verdict STATIC_IMPORT_CONTRACT=FAIL is a statement about the OLD revision, which stays in history unchanged; committing the cut does not repair it retroactively and must not be described as doing so."
+  }
+ }
+}

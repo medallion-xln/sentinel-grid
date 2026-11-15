@@ -1,0 +1,127 @@
+{
+ "schema": "STAGE3H_OWNER_GOVERNED_O2R_PATH_REVIEW_V1",
+ "reviews": "evidence/o2-gate.json (preserved; its automatic O-2R verdict FAIL came from an allow-list that omitted the semantics field names)",
+ "paths": [
+  {
+   "path": "$.observation.metadata.canonicalState.entities[].id",
+   "leaf": "id",
+   "identityBearing": true,
+   "meaning": "entity id"
+  },
+  {
+   "path": "$.observation.metadata.canonicalState.relationships[].from",
+   "leaf": "from",
+   "identityBearing": true,
+   "meaning": "relationship endpoint entity"
+  },
+  {
+   "path": "$.observation.metadata.canonicalState.relationships[].to",
+   "leaf": "to",
+   "identityBearing": true,
+   "meaning": "relationship endpoint entity"
+  },
+  {
+   "path": "$.observation.metadata.objectives[].entityId",
+   "leaf": "entityId",
+   "identityBearing": true,
+   "meaning": "entity reference"
+  },
+  {
+   "path": "$.observation.metadata.objectives[].id",
+   "leaf": "id",
+   "identityBearing": true,
+   "meaning": "entity id"
+  },
+  {
+   "path": "$.semantics[].SOURCE_ENTITY",
+   "leaf": "SOURCE_ENTITY",
+   "identityBearing": true,
+   "meaning": "semantics: source entity reference"
+  },
+  {
+   "path": "$.semantics[].TARGET_ENTITY",
+   "leaf": "TARGET_ENTITY",
+   "identityBearing": true,
+   "meaning": "semantics: target entity reference"
+  },
+  {
+   "path": "$.semantics[].TARGET_RELATIONSHIPS[].otherEntityId",
+   "leaf": "otherEntityId",
+   "identityBearing": true,
+   "meaning": "related entity reference"
+  },
+  {
+   "path": "$.semantics[].actor",
+   "leaf": "actor",
+   "identityBearing": true,
+   "meaning": "semantics: actor entity reference"
+  },
+  {
+   "path": "$.semantics[].target",
+   "leaf": "target",
+   "identityBearing": true,
+   "meaning": "semantics: target entity reference"
+  },
+  {
+   "path": "$.state.actor.entityId",
+   "leaf": "entityId",
+   "identityBearing": true,
+   "meaning": "entity reference"
+  },
+  {
+   "path": "$.state.entities[].entityId",
+   "leaf": "entityId",
+   "identityBearing": true,
+   "meaning": "entity reference"
+  },
+  {
+   "path": "$.state.entities[].observedRelationships[].otherEntityId",
+   "leaf": "otherEntityId",
+   "identityBearing": true,
+   "meaning": "related entity reference"
+  },
+  {
+   "path": "$.surface[].action.actorId",
+   "leaf": "actorId",
+   "identityBearing": true,
+   "meaning": "actor entity reference"
+  },
+  {
+   "path": "$.surface[].action.target.id",
+   "leaf": "id",
+   "identityBearing": true,
+   "meaning": "entity id"
+  },
+  {
+   "path": "$.surface[].actionId",
+   "leaf": "actionId",
+   "identityBearing": true,
+   "meaning": "opaque action handle (renamed by design)"
+  },
+  {
+   "path": "$.surface[].targetEntityId",
+   "leaf": "targetEntityId",
+   "identityBearing": true,
+   "meaning": "target entity reference"
+  },
+  {
+   "path": "$.visibleMap.entities[].id",
+   "leaf": "id",
+   "identityBearing": true,
+   "meaning": "entity id"
+  }
+ ],
+ "supportingTallies": {
+  "worldUntouched": 288,
+  "twinLocksLegal": 288,
+  "handleBijection": 288,
+  "retreatPreservedExactly": 144,
+  "retreatPresent": 144,
+  "onlyIdentityFieldsChanged": 0,
+  "inverseRestoresOriginal": 288,
+  "v3NuisanceDependenceUnchangedPasses": 288
+ },
+ "note": "rename only replaces strings exactly equal to an entity id; inverse renaming restored the original view exactly in every world, so no non-identity value changed",
+ "o2rValidationAfterReview": "PASS",
+ "authority": "R0"
+}

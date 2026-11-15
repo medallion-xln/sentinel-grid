@@ -1,0 +1,83 @@
+{
+ "schema": "STAGE3H_EXCLUSION_INTEGRITY_V1",
+ "authority": "R0",
+ "format": "STAGE3H_STRUCTURED_EXCLUSION_INDEX_V1",
+ "recordsValidated": {
+  "prior": {
+   "path": "stage3h-owner-governed-v1/evidence/prior-world-exclusions.json",
+   "sha256": "838ab22d2b504b2a7b6b921d63495f3b5030ad18b013cc98b98dbc7a6497ac1b"
+  },
+  "v4Allocation": {
+   "path": "stage3h-owner-governed-v1/registration/NAMESPACE_ALLOCATION_V4.json",
+   "sha256": "38a5354a94e3d646ccb54b9f5e1f442c4a5c9d6ba73adf060522ac87a636154d"
+  },
+  "devIdentities": {
+   "path": "stage3h-failure-diagnosis-v1/evidence/reproducibility/DEV_WORLD_IDENTITIES.json",
+   "sha256": "c1eafba9d0f240727329de8aaf4e4d3ddcbb63d0d2502e213c1b2022f0ab697e"
+  },
+  "diagnostic": {
+   "path": "stage3h-safety-feasibility-v1/evidence/closure/DIAGNOSTIC_WORLD_EXCLUSIONS.json",
+   "sha256": "007a0b2916ff7387fb70b72bb007ee98ea35c078a856d8ca31597e5d84e52047"
+  }
+ },
+ "counts": {
+  "priorWorlds": 9407,
+  "priorSeeds": 116,
+  "v4SealedWorlds": 25377,
+  "devBaseWorlds": 25676,
+  "diagnosticConstructedWorlds": 48910,
+  "devOpenSeeds": 6,
+  "excludedBlocks": [
+   731,
+   732,
+   733,
+   734,
+   951,
+   952
+  ],
+  "distinctExcludedWorlds": 109082,
+  "excludedSeeds": 25499,
+  "multiSourceWorlds": 288
+ },
+ "required": {
+  "diagnosticConstructedWorlds": 48910,
+  "devBaseWorlds": 25676,
+  "devBlocks": [
+   951,
+   952
+  ],
+  "devOpenSeeds": 6
+ },
+ "requiredPresent": true,
+ "duplicatesWithinRecords": 0,
+ "canonicalIdentityViolations": 0,
+ "multiSourceOverlaps": {
+  "PRIOR+DEV_BASE": 288
+ },
+ "overlapPolicy": "identities present in more than one record are kept with every source recorded; none is dropped",
+ "defectFound": {
+  "component": "stage3h-safety-feasibility-v1/closure/exclusions.mjs validateSeedRange",
+  "issue": "checks only the blocks of the first and last seed of a range, so a range spanning more than two blocks can pass while an interior spent block is excluded",
+  "demonstration": {
+   "range": {
+    "base": 950000000000,
+    "count": 3000000001
+   },
+   "closureValidatorOk": true,
+   "strictPreflightOk": false
+  },
+  "disposition": "committed closure code left unchanged; every future allocator must use exclusion/strict-index.mjs preflightNamespace (checks every block in the range)"
+ },
+ "allocatorIntegration": {
+  "module": "stage3h-wider-action-feasibility-v1/exclusion/strict-index.mjs",
+  "calls": [
+   "loadStrictIndex(ga)",
+   "preflightNamespace(strict, {base, count}) for each candidate replication namespace",
+   "preflightWorlds(strict, [worldHash...]) at admission, before any policy call"
+  ],
+  "failureSemantics": "any exception from loadStrictIndex, any failure from either preflight: refuse allocation/admission; never repair, skip or replace",
+  "bindingRequirement": "a future registration must bind the module and all record files (paths + sha256) in its candidate and re-verify them before allocation; the frozen V4 allocator (allocate-namespaces-v4.mjs) does NOT consume this index and must not be reused unchanged",
+  "textScan": "repository text search may be kept as an additional check but is never the exclusion authority"
+ },
+ "tests": "exclusion/tests.mjs: 5/5 pass (counts; spent blocks, boundaries and recorded seeds; interior-block range; every identity source and non-canonical hashes; tampered or missing records throw)"
+}

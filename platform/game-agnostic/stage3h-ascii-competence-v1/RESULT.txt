@@ -1,0 +1,63 @@
+=== SENTINEL GRID STAGE 3H ASCII BENCHMARK V1 ===
+
+STATUS=BENCHMARK_V1_IMPLEMENTED; DEVELOPMENT_HARNESS_VALIDATED; PROSPECTIVE_PROTOCOL_PROPOSED_NOT_REGISTERED
+CLASSIFICATION=READY_FOR_SEPARATE_REGISTRATION_AUTHORIZATION (self-governed; not externally reviewed)
+
+INHERITANCE_VERIFIED=true (HEAD 320a07da; 13 milestone commits are ancestors; frozen rule hash c53826da...; Oracle CLOSED_CONTRACT_NOT_TESTABLE)
+PROTECTED_FILES_UNCHANGED=true (14447 canonical; 5832 ASCII sources; 15 extra imported sources; V3 check.py PASS)
+AUTHORITY=R0
+
+ASCII_GAMES_INVENTORIED=8 games / 24 ADVANCED levels (evidence/inventory.json)
+NATIVE_ENGINES_UNCHANGED=true
+OBSERVATION_CONTRACT_VALID=true (observer audit 72/72 level-seed audits)
+PUBLIC_INFORMATION_LEAKAGE=NONE_DETECTED (forbidden-field scan + privileged-perturbation invariance; see note 1)
+CONTROLLER_BASELINES_FROZEN=true (STRONGEST_NATIVE, INCUMBENT_STRONG_V32, RULE_V32, FIXED_WAIT, UNIFORM_RANDOM; RULE==STRONG by source in pong and factory)
+EXPERT_TASK_APPLICABILITY=1 of 72 expert-game pairings incrementally testable: Nexus/factory. Oracle advisory only; Prime root-PUCT needs privileged simulator; Vanguard/Horizon colony-codec only; Archimedes not implemented; Alexandria/Picasso/Forge task-inapplicable
+
+OBSERVER_FIDELITY=PASS (purity, tick/hash binding, actor identity, frozen packets, DELAYED +2 ticks, MISSING drops observation keeps actions)
+LEGAL_ACTION_VALIDITY=PASS (mask == native legal set; illegal and stale actions rejected; 0 unoffered actions executed in 657 episodes)
+REPLAY_VALIDITY=PASS (657/657 episodes replayed byte-identically)
+DEVELOPMENT_GAMEPLAY_TESTS=234/234 existing ASCII tests pass (8 suites) + 18/18 lane tests
+
+STRATEGIC_METRICS_DEFINED=true (task-specific primary and secondary metrics per game; no cross-game pooling)
+FULL_EPISODE_EVALUATION_FEASIBLE=true (all 24 levels terminate or time out)
+NATIVE_OUTCOME_ATTRIBUTION=true (paired isolated worlds; shadow 72/72 identical; exact ablation identities 72/72 and 39/39)
+HORIZON_ANALYSIS_FEASIBLE=false (no planning-horizon contract in ASCII; public time-remaining bands are descriptive only)
+REGIME_ANALYSIS_FEASIBLE=DESCRIPTIVE_ONLY (labels in 7 games; the only action-bound expert acts only under OBSERVED_DISRUPTION)
+ABLATION_FEASIBLE=true (factory: SENTINEL_V31_AS_IS vs V31_FALLBACK_ABLATION; adapter vs its own fallback)
+CATASTROPHE_METRICS_DEFINED=true (native catastrophic flag; introduced-catastrophe veto with Clopper-Pearson bound)
+NORMALIZED_REGRET=NOT_DEFINED (no native counterfactual evaluator)
+
+STRUCTURAL_TEST_PASS=94 (18 lane tests + 72 observer audits + 4 engineering identity/replay checks)
+STRUCTURAL_TEST_FAIL=0
+
+DEVELOPMENT_OBSERVATIONS (3 dev seeds, not confirmatory):
+  NEXUS_ADAPTER_DECISION_COVERAGE=6/2192 changed decisions; 0 success/throughput/catastrophe outcomes changed
+  SENTINEL_V31_PATH_FACTORY=0/45 success vs STRONGEST_NATIVE 45/45; Nexus fired 0/30654 decisions; ablation fails identically, so the loss is the v3 fallback planner, not Nexus
+  BENCHMARK_DISCRIMINATION=strongest native beats WAIT/RANDOM on win rate in 6 of 8 games; no controller wins pong or cards (cards still discriminates on teamScore, pong only weakly on scoreDifference)
+  BASELINE_CAVEAT=rescue tier 3: RULE_V32 3/3 vs STRONGEST_NATIVE 2/3
+
+PROSPECTIVE_ASCII_BENCHMARK_SPEC=evidence/protocol.json sha256 9737339c0f9c5ff1f30146b2239821e43f9eefb2d2e6e5967a0827d2455a1b6f (hash identical to the pre-result dry run)
+FRESH_SEEDS_ALLOCATED=false
+NEW_CONFIRMATORY_CAMPAIGN_EXECUTED=false
+
+SEVEN_CANONICAL_DIMENSIONS_MAPPED=true (evidence/exit-matrix.json): structurally testable in ASCII = expert marginal value, ablation value, false-selection harm; not testable in ASCII = complementarity, horizon competence, regime competence, Prime synthesis
+BOUNDED_ASCII_QUALIFICATION_STATUS=NOT_EVALUATED (protocol proposed; requires registration and one execution)
+FULL_STAGE3H_CERTIFIED=false
+
+EXTERNAL_INDEPENDENT_REVIEW=NOT_AVAILABLE
+HUMAN_SCIENTIFIC_AUTHORITY=PROJECT_OWNER
+CANONICAL_MOE_GAIN=NOT_ESTABLISHED
+
+NINE_EXPERT_ROSTER_PRESERVED=true
+STAGE3I_STARTED=false
+CAN_DISPATCH=false
+CAN_MUTATE_LIVE_WORLD=false
+
+NEXT_EXACT_EXECUTION_REQUIREMENT=Project owner explicitly (1) authorizes registration of protocol sha256 9737339c... with commit of this lane and allocation of the CALIBRATION/HOLDOUT/OOD A and B namespaces (0xb71..-0xb76..), then (2) separately authorizes one execution of that registered campaign (estimated ~58 single-process hours at development throughput; parallelizable by world)
+
+NOTES:
+1. Three first-draft audit checks were mis-specified and corrected from source before any benchmark outcome: windZones.strength is present but null (withheld); fighter NORMAL age already includes its native equal reaction latency; reviving a dead unseen enemy is a public change. None was a native defect.
+2. Development seeds 0x5e3a0000, 0x5e3a1eef, 0x5e3a3dde and probe seed 0x7c000000 are spent for confirmatory use.
+3. Seven of eight games have no native structural generator variation; their OOD strata would be sensor-channel shifts only. Only factory has MIRROR geometry.
+4. Nothing in this lane is committed. Commit requires the owner's instruction.

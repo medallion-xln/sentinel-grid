@@ -1,0 +1,628 @@
+{
+ "schema": "STAGE3H_HW4B_PHASE1_REPRODUCIBILITY_V1",
+ "authority": "R0",
+ "stage": "H-W4B Phase 1",
+ "generatedAt": "2026-11-11T18:32:07.450Z",
+ "node": "v26.7.0",
+ "protocolFreezeSha256": "93c013eb98c3c3c3a83396ee93b3fb5688726c56e092cf6492c85263d5daff30",
+ "outcomeFree": true,
+ "items": {
+  "1_WEIGHTS_AND_PARAMETERS_EXIST": {
+   "pass": true,
+   "repoHead": "9175a5558eff2de537a610af7c1d4da15e9cc1c4",
+   "models": [
+    {
+     "arm": "V1_PUBLIC_ONLY",
+     "file": "models/V1_PUBLIC_ONLY_C11_FULL_SAFE_FIRST.json",
+     "sha256": "749d1d5f7573bbe1466f6ad5ad909b0ab628f0f561f4cf9d77218984e309c56b",
+     "protocolFreeze": true,
+     "explorationEvidence": true,
+     "committedAtHead": true,
+     "weights": {
+      "nreg": 130,
+      "cat": 130
+     },
+     "finite": true,
+     "validateModel": "PASS"
+    },
+    {
+     "arm": "V2_PUBLIC_PLUS_VALUE_BAND",
+     "file": "models/V2_PUBLIC_PLUS_VALUE_BAND_C11_FULL_SAFE_FIRST.json",
+     "sha256": "77136f461ddcd42f0f2c7dc89b9d3989d04a80602fd645552eb49d26523f03fc",
+     "protocolFreeze": true,
+     "explorationEvidence": true,
+     "committedAtHead": true,
+     "weights": {
+      "nreg": 138,
+      "cat": 138
+     },
+     "finite": true,
+     "validateModel": "PASS"
+    }
+   ]
+  },
+  "2_TRAINING_INPUTS_FROZEN": {
+   "pass": true,
+   "populationManifestSha256": "5af97e58e4840a5fb8ae2c928ff53fb23125ee1ad03730db746c3d70651aef14",
+   "manifestMatchesBothEvidenceRecords": true,
+   "classListDigest": "b09a015b84af74eea8b980b46c02688ab90fc0a2682039bb972e034e3f5fe6ff",
+   "digestMatchesEvidenceAndModels": true,
+   "classes": 1000,
+   "dataFilesMatchManifest": true,
+   "dataFiles": 9,
+   "registrySeal": "902070377d1b05446c429a9131c8331b53a5fa0b31590360aa7fff9053e3f824",
+   "registrySha256Match": true,
+   "validationAccessed": [
+    false,
+    false
+   ],
+   "holdoutAccessed": [
+    false,
+    false
+   ],
+   "privilegedFeaturesUsed": [
+    false,
+    false
+   ],
+   "trainingSources": [
+    {
+     "source": "hw4:hw4-contract-v2.mjs",
+     "recorded": "94fe0b51ef4e86a37e1545f29c2743a25c31208dd491698cc1f8f1bf37a344de",
+     "unchanged": true,
+     "sameInV2Record": true
+    },
+    {
+     "source": "hw4:hw4-features.mjs",
+     "recorded": "43c21ae939d5262ecedb31d74c296f72d826403802ecc6540c5da7e02dbb36c0",
+     "unchanged": true,
+     "sameInV2Record": true
+    },
+    {
+     "source": "hw4:hw4-policy.mjs",
+     "recorded": "f0ba4b815bf12ba919342db8d67595a9cf44cbe86447261dd45566171d4056f0",
+     "unchanged": true,
+     "sameInV2Record": true
+    },
+    {
+     "source": "hw4:hw4-data.mjs",
+     "recorded": "c92cc3fa0d14de0a36374567183319add39ca52defd3786c4ba1568230083152",
+     "unchanged": true,
+     "sameInV2Record": true
+    },
+    {
+     "source": "hw4:hw4-train.mjs",
+     "recorded": "d3970319ae57de3dbdb0c8ab32a8f2233597fbbdd6f91b1dc88554e034ac124e",
+     "unchanged": true,
+     "sameInV2Record": true
+    },
+    {
+     "source": "hw4:hw4-allocator.mjs",
+     "recorded": "628859e93136d93f453dc291e808d146642ee077efbec1cabb7ebc808aae1174",
+     "unchanged": true,
+     "sameInV2Record": true
+    },
+    {
+     "source": "hw1:public-projection.mjs",
+     "recorded": "c4f9532e0771e025513122052128b0d14185e4abcde3ace9de9de5d77db6c099",
+     "unchanged": true,
+     "sameInV2Record": true
+    },
+    {
+     "source": "hw1:i3-features.mjs",
+     "recorded": "4f6da6af69020c9a4b9ef548541d93b473a56d0f3aba8e486a75101b8537cb50",
+     "unchanged": true,
+     "sameInV2Record": true
+    },
+    {
+     "source": "hw1:hw1-eval.mjs",
+     "recorded": "a91947ae45e55d4901c8598522f953ff49a9b83994aba78bb82c94efc09b214e",
+     "unchanged": true,
+     "sameInV2Record": true
+    },
+    {
+     "source": "hw1:i4-ridge.mjs",
+     "recorded": "bccc7dea330de253e264989d938caf5f80542843c5bbc114a3f4dd2367000fcc",
+     "unchanged": true,
+     "sameInV2Record": true
+    },
+    {
+     "source": "hw1:i4-cv.mjs",
+     "recorded": "3da745d8619c3ae676c1c8339d09ad2efef5bd1860b5faa0cf5fd532fa21e62c",
+     "unchanged": true,
+     "sameInV2Record": true
+    },
+    {
+     "source": "hw1:i4-candidates.mjs",
+     "recorded": "ac62ef51fbfcda0714c4431d7e6bad90843d8e4f3c33d1f3cf965d6639ca48c5",
+     "unchanged": true,
+     "sameInV2Record": true
+    }
+   ]
+  },
+  "3_IDENTICAL_ARCHITECTURE_AND_OBJECTIVES": {
+   "pass": true,
+   "policyFamily": true,
+   "policyVersion": true,
+   "heads": true,
+   "scoreRule": [
+    "SAFE_FIRST",
+    "SAFE_FIRST"
+   ],
+   "spec": [
+    "FULL|plain",
+    "FULL|plain"
+   ],
+   "ridge": {
+    "lambdaNreg": [
+     0.01,
+     0.01
+    ],
+    "lambdaCat": [
+     0.1,
+     0.1
+    ]
+   },
+   "protocolIdentical": true,
+   "foldAssignmentPaired": true,
+   "datasetIdentical": true,
+   "v1Columns": true,
+   "v2Columns": true,
+   "sharedStandardisationMaxAbsDiff": {
+    "mean": 0,
+    "std": 0
+   },
+   "DISCLOSED_DIFFERENCES": [
+    "feature builder: V2 = V1 rows + 8 value-band one-hots (the authorized difference)",
+    "SAFE_FIRST threshold tau: V1 = 0.02, V2 = 0.2 — tuned independently per arm by the same frozen grid + criterion (\"lexicographic: fewest class-level introductions vs S0 + Nexus, then lowest mean nreg\"); a V1/V2 difference therefore reflects band features AND the arm-specific tau",
+    "ridge weights: refit per arm on the same rows (shared-column weights differ numerically)"
+   ],
+   "tuning": {
+    "V1": [
+     {
+      "tau": 0.02,
+      "introVsS0": 61,
+      "introVsNexus": 108,
+      "meanNreg": 0.3421831160852862
+     },
+     {
+      "tau": 0.05,
+      "introVsS0": 61,
+      "introVsNexus": 108,
+      "meanNreg": 0.3432437506133136
+     },
+     {
+      "tau": 0.1,
+      "introVsS0": 61,
+      "introVsNexus": 108,
+      "meanNreg": 0.3446050665551453
+     },
+     {
+      "tau": 0.2,
+      "introVsS0": 58,
+      "introVsNexus": 112,
+      "meanNreg": 0.348229626706459
+     },
+     {
+      "tau": 0.3,
+      "introVsS0": 57,
+      "introVsNexus": 115,
+      "meanNreg": 0.3501202777702472
+     },
+     {
+      "tau": 0.5,
+      "introVsS0": 57,
+      "introVsNexus": 115,
+      "meanNreg": 0.3480161164002399
+     },
+     {
+      "tau": 0.75,
+      "introVsS0": 61,
+      "introVsNexus": 108,
+      "meanNreg": 0.34237906203123214
+     }
+    ],
+    "V2": [
+     {
+      "tau": 0.02,
+      "introVsS0": 59,
+      "introVsNexus": 107,
+      "meanNreg": 0.34282864542875674
+     },
+     {
+      "tau": 0.05,
+      "introVsS0": 59,
+      "introVsNexus": 107,
+      "meanNreg": 0.3438892799567841
+     },
+     {
+      "tau": 0.1,
+      "introVsS0": 59,
+      "introVsNexus": 107,
+      "meanNreg": 0.34517024476527164
+     },
+     {
+      "tau": 0.2,
+      "introVsS0": 55,
+      "introVsNexus": 110,
+      "meanNreg": 0.34722323847021097
+     },
+     {
+      "tau": 0.3,
+      "introVsS0": 57,
+      "introVsNexus": 116,
+      "meanNreg": 0.35205324082690387
+     },
+     {
+      "tau": 0.5,
+      "introVsS0": 56,
+      "introVsNexus": 116,
+      "meanNreg": 0.3480950181195014
+     },
+     {
+      "tau": 0.75,
+      "introVsS0": 59,
+      "introVsNexus": 107,
+      "meanNreg": 0.3430038988071351
+     }
+    ]
+   }
+  },
+  "4_MATCHED_PUBLIC_INFORMATION_EXCEPT_BAND": {
+   "pass": true,
+   "classesChecked": 1000,
+   "bandedProjectionMinusBandEqualsV1Projection": true,
+   "v2RowsPrefixEqualsV1Rows": true,
+   "extraColumnsAreEightOneHots": true,
+   "nodeBandValuesObserved": {
+    "1": 10397,
+    "2": 2243,
+    "X": 5050,
+    "P": 1630
+   },
+   "bandNames": [
+    "target.band.V0",
+    "target.band.V1",
+    "target.band.V2",
+    "target.band.P",
+    "dependent.band.V0",
+    "dependent.band.V1",
+    "dependent.band.V2",
+    "dependent.band.P"
+   ]
+  },
+  "5_BAND_FEATURE_CONNECTED": {
+   "pass": true,
+   "nonZeroBandWeights": {
+    "nreg": 6,
+    "cat": 6
+   },
+   "of": 8,
+   "weights": {
+    "nreg": {
+     "target.band.V0": {
+      "weight": 0,
+      "perUnitContribution": 0,
+      "trainMean": 0,
+      "trainStd": 1
+     },
+     "target.band.V1": {
+      "weight": 0.01259974802452045,
+      "perUnitContribution": 0.034985595063177305,
+      "trainMean": 0.15315934065934014,
+      "trainStd": 0.3601410238061611
+     },
+     "target.band.V2": {
+      "weight": 0.00595598364122246,
+      "perUnitContribution": 0.033413542211495825,
+      "trainMean": 0.03285256410256401,
+      "trainStd": 0.17825059083898392
+     },
+     "target.band.P": {
+      "weight": -0.011885749344557637,
+      "perUnitContribution": -0.06270936379101348,
+      "trainMean": 0.037316849816849705,
+      "trainStd": 0.18953707430629227
+     },
+     "dependent.band.V0": {
+      "weight": 0,
+      "perUnitContribution": 0,
+      "trainMean": 0,
+      "trainStd": 1
+     },
+     "dependent.band.V1": {
+      "weight": -0.002351132420871282,
+      "perUnitContribution": -0.03721954923329157,
+      "trainMean": 0.004006410256410257,
+      "trainStd": 0.06316928789584257
+     },
+     "dependent.band.V2": {
+      "weight": 0.0008683772844709653,
+      "perUnitContribution": 0.027068696147423254,
+      "trainMean": 0.0010302197802197802,
+      "trainStd": 0.03208049917667086
+     },
+     "dependent.band.P": {
+      "weight": -0.0028414054593131313,
+      "perUnitContribution": -0.03625259215879666,
+      "trainMean": 0.006181318681318674,
+      "trainStd": 0.07837799423740424
+     }
+    },
+    "cat": {
+     "target.band.V0": {
+      "weight": 0,
+      "perUnitContribution": 0,
+      "trainMean": 0,
+      "trainStd": 1
+     },
+     "target.band.V1": {
+      "weight": 0.018219466263735308,
+      "perUnitContribution": 0.05058981082238935,
+      "trainMean": 0.15315934065934014,
+      "trainStd": 0.3601410238061611
+     },
+     "target.band.V2": {
+      "weight": 0.024982015722955175,
+      "perUnitContribution": 0.14015109630420106,
+      "trainMean": 0.03285256410256401,
+      "trainStd": 0.17825059083898392
+     },
+     "target.band.P": {
+      "weight": -0.008537294583569291,
+      "perUnitContribution": -0.045042874143836405,
+      "trainMean": 0.037316849816849705,
+      "trainStd": 0.18953707430629227
+     },
+     "dependent.band.V0": {
+      "weight": 0,
+      "perUnitContribution": 0,
+      "trainMean": 0,
+      "trainStd": 1
+     },
+     "dependent.band.V1": {
+      "weight": -0.0033224716451898994,
+      "perUnitContribution": -0.05259631311133657,
+      "trainMean": 0.004006410256410257,
+      "trainStd": 0.06316928789584257
+     },
+     "dependent.band.V2": {
+      "weight": 0.002156597296989393,
+      "perUnitContribution": 0.06722455548814166,
+      "trainMean": 0.0010302197802197802,
+      "trainStd": 0.03208049917667086
+     },
+     "dependent.band.P": {
+      "weight": -0.001426642050426135,
+      "perUnitContribution": -0.018202073991647263,
+      "trainMean": 0.006181318681318674,
+      "trainStd": 0.07837799423740424
+     }
+    }
+   },
+   "headSwingWhenTargetBandChanges": {
+    "cat V1->V2": 0.0895612854818117,
+    "cat V1->P": -0.09563268496622576,
+    "nreg V1->V2": -0.0015720528516814797,
+    "nreg V1->P": -0.09769495885419079
+   },
+   "note": "V0 one-hots carry weight exactly 0 (train mean 0): band V0 (value < 2) never occurs natively — the generator draws value >= 2. The effective band information is V1 vs V2 (top of the value range) plus the objective marker P. SAFE_FIRST consumes the band through BOTH heads: cat (the tau threshold) and nreg (the ranking among threshold-passing actions)."
+  },
+  "6_NO_PRIVILEGED_EVALUATOR_INFORMATION_AT_INFERENCE": {
+   "pass": true,
+   "decisionEntryPoint": "decideProjection(P): the public projection is the only argument; no world, truth, seed or hash parameter exists",
+   "staticClosureForbidden": [],
+   "bandAdapterWorldReads": [
+    "entities",
+    "entities.length",
+    "entities[]",
+    "entities[].id",
+    "entities[].position",
+    "entities[].position.x",
+    "entities[].position.y",
+    "entities[].type",
+    "entities[].value",
+    "objectives",
+    "objectives.length",
+    "objectives[]",
+    "objectives[].entityId"
+   ],
+   "bandAdapterUnallowedReads": [],
+   "viewReadTrace": "allow-listed view reads are audited per class on the fresh population (Phase 5 identity audit, before any outcome is unlocked)"
+  },
+  "7_NO_HIDDEN_VALUE_BEYOND_THE_BAND": {
+   "pass": true,
+   "withinBandValueChangesLeaveFeaturesIdentical": [
+    {
+     "spread": 2,
+     "valuesInV1": [
+      2,
+      3,
+      4
+     ],
+     "identicalFeatures": true
+    },
+    {
+     "spread": 4,
+     "valuesInV1": [
+      2,
+      3,
+      4,
+      5,
+      6
+     ],
+     "identicalFeatures": true
+    },
+    {
+     "spread": 6,
+     "valuesInV1": [
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8
+     ],
+     "identicalFeatures": true
+    },
+    {
+     "spread": 7,
+     "valuesInV1": [
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9
+     ],
+     "identicalFeatures": true
+    },
+    {
+     "spread": 8,
+     "valuesInV1": [
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10
+     ],
+     "identicalFeatures": true
+    }
+   ],
+   "onlyEightBinaryColumnsAdded": true,
+   "adapterNeverReadsHealthOrEnergy": true,
+   "bandFunction": "v < 2 -> V0 ; 2 <= v < spread+3 -> V1 ; v >= spread+3 -> V2 ; objective-attached -> P",
+   "documentationNote": "hw4-contract-v2.mjs header and V2_BAND_SCHEMA describe V0 as \"<=2\"; the frozen CODE (and H_W4.md section 2) is v < 2. The code is authoritative and is what was trained; the header comment is imprecise. Not modified (frozen source)."
+  },
+  "8_NO_STATIC_EVALUATOR_CAPABLE_DEPENDENCY": {
+   "pass": true,
+   "workingTree": {
+    "closureFiles": [
+     "src/core/determinism.js",
+     "src/core/errors.js",
+     "src/forge-symmetric/orientation-symmetric-v1.js",
+     "src/forge/contract.js",
+     "src/forge/kernel.js",
+     "stage3h-hw1-dev-v1/i3-features.mjs",
+     "stage3h-hw1-dev-v1/public-projection.mjs",
+     "stage3h-hw4-value-band-v1/hw4-contract-v2.mjs",
+     "stage3h-hw4-value-band-v1/hw4-features.mjs",
+     "stage3h-hw4-value-band-v1/hw4-policy.mjs"
+    ],
+    "forbidden": [],
+    "publicProjectionSha256": "c4f9532e0771e025513122052128b0d14185e4abcde3ace9de9de5d77db6c099"
+   },
+   "committedHead": {
+    "closureFileCount": 76,
+    "forbiddenCount": 40,
+    "forbiddenSample": [
+     {
+      "file": "scripts/generate-stage3f6p1e-policy-evidence.mjs",
+      "kind": "IMPORT",
+      "value": "node:child_process"
+     },
+     {
+      "file": "scripts/generate-stage3f6p1e-policy-evidence.mjs",
+      "kind": "IMPORT",
+      "value": "node:fs"
+     },
+     {
+      "file": "scripts/generate-stage3f6p1e-policy-evidence.mjs",
+      "kind": "IMPORT",
+      "value": "node:zlib"
+     },
+     {
+      "file": "scripts/generate-stage3f6p1e-policy-evidence.mjs",
+      "kind": "IMPORT",
+      "value": "node:fs/promises"
+     },
+     {
+      "file": "scripts/generate-stage3f6p1e-policy-evidence.mjs",
+      "kind": "IMPORT",
+      "value": "node:path"
+     },
+     {
+      "file": "scripts/generate-stage3f6p1e-policy-evidence.mjs",
+      "kind": "IMPORT",
+      "value": "node:url"
+     }
+    ],
+    "publicProjectionSha256": "2d1e70611b26005179cc50e21a9d6ec5eae59704d7db36e722bb28b53eacb9ca"
+   },
+   "note": "PASS holds for the working-tree import cut only. The cut is UNCOMMITTED; at committed HEAD public-projection.mjs still imports ./transforms.mjs and the flat rule FAILS. The frozen C11 models were trained and are evaluated against the cut revision (recorded hash)."
+  },
+  "9_IDENTITY_AND_D4_INVARIANCE": {
+   "pass": true,
+   "population": "H-W4 EXPLORATION (stored projections, every 5th class)",
+   "classes": 200,
+   "frameChecks": 3200,
+   "featureFrameMismatch": 0,
+   "decisionOrbitFrameMismatch": 0,
+   "scoreFrameMismatch": 0,
+   "menuPermutationChecks": 400,
+   "menuPermutationMismatch": 0,
+   "scope": "projection-level gate. The full twin program (relabel / menu / lawful-D4 worlds / public-equivalent hidden twins / poisoned view / read trace / negative controls) is run on every fresh H-W4B class before any outcome is unlocked."
+  },
+  "10_DETERMINISTIC_DECISIONS_IN_SOURCE_ENVIRONMENT": {
+   "pass": true,
+   "node": "v26.7.0",
+   "c11DecisionDigest": {
+    "V1_PUBLIC_ONLY": "c47195e3834f3f9f00adf698e067bd24e08007b55cf8765149e8bec0376c4b9f",
+    "V2_PUBLIC_PLUS_VALUE_BAND": "ae8c731c1d7ec907fe0ee645aa5cf7b7be0d328d3e1c06604e2a0cda33991147"
+   },
+   "inProcessRepeatIdentical": true,
+   "separateProcessIdentical": true,
+   "classes": 1000,
+   "population": "H-W4 EXPLORATION (training population; no C11 decision is computed on the spent H-W4 VALIDATION classes)",
+   "frozenC10PositiveControl": [
+    {
+     "id": "V1_PUBLIC_ONLY/C10_BASE_SAFE_FIRST",
+     "modelShaMatchesFrozenResults": true,
+     "decisionsReproduced": 600,
+     "of": 600
+    },
+    {
+     "id": "V2_PUBLIC_PLUS_VALUE_BAND/C10_BASE_SAFE_FIRST",
+     "modelShaMatchesFrozenResults": true,
+     "decisionsReproduced": 600,
+     "of": 600
+    }
+   ],
+   "compute": {
+    "decisions": 400,
+    "medianMs": 12.538457999995444,
+    "maxMs": 80.74458299999242
+   },
+   "seconds": 202.068
+  }
+ },
+ "frozenGatesRerun": {
+  "gates": {
+   "G1_STATIC_IMPORT_BOUNDARY": "PASS",
+   "G2A_V1_ROWS_FROZEN": "PASS",
+   "G2B_V2_ROWS_V1_PLUS_8": "PASS",
+   "G4A_FAIL_CLOSED": "PASS",
+   "G4B_NO_EXACT_VALUE_IN_FEATURES": "PASS",
+   "G4C_BAND_VALUES": "PASS",
+   "G3A_ID_RENAME_INVARIANT": "PASS",
+   "G3B_BANDKEY_ORDER_FREE": "PASS",
+   "G3C_MENU_PERMUTATION": "PASS",
+   "G5_DETERMINISM": "PASS",
+   "G6_NO_LEXICAL_ID_IN_BANDKEY": "PASS",
+   "G7_P2R_KEY_HELPER": "PASS",
+   "G8_P2R_BAND_ROUND_TRIP": "FAIL:no reconstructed world with specFlat+bandKey found"
+  },
+  "failures": [
+   "G8_P2R_BAND_ROUND_TRIP:no reconstructed world with specFlat+bandKey found"
+  ],
+  "note": "G8 (P2R band round-trip) cannot be re-evaluated: the gitignored p2r-scratch reconcile dataset now stores {kind, bandKey, truth} per world and no longer carries the reconstructed native worlds (specFlat) the gate needs. It is a scratch-data dependency, not a model or adapter change (hw4-contract-v2.mjs is hash-identical to the revision that recorded 1,023/1,023 in H_W4.md). Replaced on the fresh population by an independent native band round-trip in the Phase 5 audit."
+ },
+ "result": "MODEL_REPRODUCIBILITY_PASS",
+ "failedItems": []
+}

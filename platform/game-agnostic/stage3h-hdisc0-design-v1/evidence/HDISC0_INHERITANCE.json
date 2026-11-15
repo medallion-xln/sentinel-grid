@@ -1,0 +1,1309 @@
+{
+ "schema": "HDISC0_INHERITANCE_V1",
+ "authority": "R0",
+ "stage": "STAGE3H H-DISC-0 Gate 0",
+ "generatedAt": "2026-11-12T00:35:34.731Z",
+ "disclosure": "Identities only: paths, commit ids, sha256, counts and verdict strings quoted from tracked records. No seed, world hash or evaluator truth. `core` is recomputable and is what `verify` compares; `volatile` and `runs` are dated observations. Nothing was rerun as a scientific evaluation, rewritten or recommitted.",
+ "verifierSha256": "88a24e848448dd129d318d9c97ee579f1f762a2ca65db489133002d95d090971",
+ "summary": {
+  "items": {
+   "01_GIT_HEAD_AND_ANCESTRY": "VERIFIED",
+   "02_SOURCE_CUSTODY_GUARDS": "VERIFIED",
+   "03_SK1_CLASSIFICATION_AND_IDENTITIES": "VERIFIED",
+   "04_SK1_1_DIAGNOSTICS_IDENTITIES": "VERIFIED",
+   "05_SK2_F_CLASSIFICATION": "VERIFIED",
+   "06_PREDECESSOR_VERDICTS": "VERIFIED",
+   "07_IMPORT_CUT_COMMIT": "VERIFIED",
+   "08_HISTORICAL_EXCLUSIONS_ENFORCED": "VERIFIED",
+   "09_R0_AUTHORITY": "VERIFIED",
+   "10_NINE_EXPERT_ROSTER": "VERIFIED",
+   "11_MANDATORY_READINESS_FINDINGS": "VERIFIED"
+  },
+  "runs": {
+   "sk1Check": true,
+   "sk1Suite": true,
+   "sk11AnalysisCheck": true,
+   "sk11Suite": true,
+   "sk2fFeasibilityCheck": true,
+   "sk2fStatusVerify": true,
+   "sk2fSuite": true,
+   "sk2fImportCutAuditVerify": true
+  },
+  "itemsWeakenedByAFailedRun": [],
+  "allItemsVerified": true,
+  "allRunsAsExpected": true,
+  "gate0": "PASS"
+ },
+ "volatile": {
+  "head": "eb75dff868bf526720cb8d13b70f5643fed49e64",
+  "branch": "main",
+  "headEqualsExpectedBase": true,
+  "aheadOfOrigin": 63,
+  "externalVolumesMounted": 0,
+  "timeMachine": "NO_DESTINATION_CONFIGURED",
+  "node": "v26.7.0",
+  "platform": "darwin-arm64",
+  "sk11InventoryDrift": {
+   "label": "EXPECTED_AFTER_IMPORT_CUT_COMMIT",
+   "rows": 42,
+   "unexpectedRows": 0
+  }
+ },
+ "coreSha256": "7080a767913cc67fc0b448252be5ce619640442f3c12846045c7c5545098b54f",
+ "core": {
+  "items": {
+   "01_GIT_HEAD_AND_ANCESTRY": {
+    "title": "HEAD identity and ordered ancestry of the four stage commits",
+    "status": "VERIFIED",
+    "evidence": {
+     "expectedBaseHead": "eb75dff868bf526720cb8d13b70f5643fed49e64",
+     "baseResolves": true,
+     "baseIsHeadOrAncestorOfHead": true,
+     "pathsChangedSinceBaseAreAllInThisLane": true,
+     "commits": [
+      {
+       "name": "SK1 result",
+       "id": "179922dd",
+       "full": "179922dd5dbc009204010f53e7ce568068a4975f",
+       "subject": "stage3h(sk1): record one-pass validation result (B, not qualified)"
+      },
+      {
+       "name": "SK1.1",
+       "id": "16ae5c21",
+       "full": "16ae5c21999a38c888d3e855c5c1597c794b475d",
+       "subject": "stage3h(sk1.1): add failure attribution, selective-contract design and R0 hardening"
+      },
+      {
+       "name": "import cut",
+       "id": "17318b03",
+       "full": "17318b03af1fee2f2f24b8ca2b292e4ff449f066",
+       "subject": "stage3h(hw1): commit public-projection import cut as prospective source correction"
+      },
+      {
+       "name": "SK2-F",
+       "id": "eb75dff8",
+       "full": "eb75dff868bf526720cb8d13b70f5643fed49e64",
+       "subject": "stage3h(sk2-f): record selective-assurance feasibility result (B, unsupported)"
+      }
+     ],
+     "eachIsAStrictAncestorOfTheNext": true,
+     "lastStageCommitIsTheBase": true,
+     "originMainResolves": true,
+     "stageCommitsContainedInOriginMain": [
+      {
+       "id": "179922dd",
+       "inOriginMain": false
+      },
+      {
+       "id": "16ae5c21",
+       "inOriginMain": false
+      },
+      {
+       "id": "17318b03",
+       "inOriginMain": false
+      },
+      {
+       "id": "eb75dff8",
+       "inOriginMain": false
+      }
+     ],
+     "nothingPushed": true
+    }
+   },
+   "02_SOURCE_CUSTODY_GUARDS": {
+    "title": "hooks present, guard manifest intact, protected identities match, none tracked",
+    "status": "VERIFIED",
+    "evidence": {
+     "hooks": [
+      {
+       "hook": "pre-commit",
+       "present": true,
+       "executable": true
+      },
+      {
+       "hook": "pre-merge-commit",
+       "present": true,
+       "executable": true
+      },
+      {
+       "hook": "pre-push",
+       "present": true,
+       "executable": true
+      }
+     ],
+     "coreHooksPathOverride": null,
+     "guardFiles": [
+      {
+       "file": ".git/custody/stage-guard.sh",
+       "present": true
+      },
+      {
+       "file": ".git/custody/protected-identities.tsv",
+       "present": true
+      },
+      {
+       "file": ".git/custody/GUARD_MANIFEST.sha256",
+       "present": true
+      }
+     ],
+     "guardManifestIntact": true,
+     "protectedIdentities": 31,
+     "present": 31,
+     "matchingRecordedIdentity": 31,
+     "trackedAtHead": 0,
+     "source": "recomputed now through stage3h-sk2f-feasibility-v1/infra-audit/status.mjs build()"
+    }
+   },
+   "03_SK1_CLASSIFICATION_AND_IDENTITIES": {
+    "title": "SK1 classification B, not qualified; frozen identities",
+    "status": "VERIFIED",
+    "evidence": {
+     "results": {
+      "file": "stage3h-sk1-safety-kernel-v1/evidence/SK1_VALIDATION_RESULTS.json",
+      "sha256": "239c16bc210adef28e7cdef40ecd14298625ee26e08c13f45ad146988a3622b1",
+      "tracked": true,
+      "equalsHead": true,
+      "introducedIn": "179922dd",
+      "lastChangedIn": "179922dd"
+     },
+     "freeze": {
+      "file": "stage3h-sk1-safety-kernel-v1/evidence/SK1_EXPERIMENT_FREEZE.json",
+      "sha256": "d22be2c4766324db1794d511b3bbd79917d3771c28cfa1c7087ba4c6c0663794",
+      "tracked": true,
+      "equalsHead": true,
+      "introducedIn": "179922dd",
+      "lastChangedIn": "179922dd"
+     },
+     "model": {
+      "file": "stage3h-sk1-safety-kernel-v1/models/SK1_MODEL.json",
+      "sha256": "683ce6e09c374e7c3a628a53e39f9875d6b8122b6eca8a4b72d58087a0c9efa0",
+      "tracked": true,
+      "equalsHead": true,
+      "introducedIn": "ed6cbc8c",
+      "lastChangedIn": "ed6cbc8c"
+     },
+     "marker": {
+      "file": "stage3h-sk1-safety-kernel-v1/evidence/SK1_VALIDATION_RUN_MARKER.json",
+      "sha256": "d3bfe357cecec9702c3191720707e36b73a23a474343e848efca3210058cf78a",
+      "tracked": true,
+      "equalsHead": true,
+      "introducedIn": "179922dd",
+      "lastChangedIn": "179922dd"
+     },
+     "classification": "B_SAFETY_KERNEL_MATERIAL_IMPROVEMENT_NOT_QUALIFIED",
+     "safetyKernelDevQualified": false,
+     "executionValid": true,
+     "evaluatedOnce": true,
+     "holdoutClasses": 0,
+     "modelHash": "b479972a3445ccb9d3cf42ac9821aee2f69431e4101b6dbdfdcd76e777968c6b",
+     "modelQualification": "NOT_QUALIFIED",
+     "resultBindsFreeze": "d22be2c4766324db1794d511b3bbd79917d3771c28cfa1c7087ba4c6c0663794",
+     "baseline": {
+      "validationClasses": 600,
+      "accepted": 304,
+      "abstained": 296,
+      "introVsS0": 1,
+      "introVsNexus": 2,
+      "forcedChoiceFailingClasses": 39,
+      "failingAmongAbstained": 37,
+      "failingAmongAccepted": 2
+     },
+     "freezeDescribesTheDisk": true,
+     "laneFilesChangedSinceItsResultCommit": 0
+    }
+   },
+   "04_SK1_1_DIAGNOSTICS_IDENTITIES": {
+    "title": "SK1.1 evidence identities and source manifest",
+    "status": "VERIFIED",
+    "evidence": {
+     "evidence": [
+      {
+       "file": "stage3h-sk1-1-assurance-v1/evidence/SK1_1_DECISION_FAILURE_MATRIX.json",
+       "sha256": "f3013d0d5d756c68303d583a9abf8da0136a4ef903f0f69492fff905afa123e6",
+       "tracked": true,
+       "equalsHead": true,
+       "introducedIn": "16ae5c21",
+       "lastChangedIn": "16ae5c21"
+      },
+      {
+       "file": "stage3h-sk1-1-assurance-v1/evidence/SK1_1_RISK_COVERAGE.json",
+       "sha256": "692288fdb7d61525430f7302c7886cf645728db6b48e3ab32d90c7d6e3cc9e26",
+       "tracked": true,
+       "equalsHead": true,
+       "introducedIn": "16ae5c21",
+       "lastChangedIn": "16ae5c21"
+      },
+      {
+       "file": "stage3h-sk1-1-assurance-v1/evidence/SK1_1_FAILURE_ATTRIBUTION.json",
+       "sha256": "a50b14ff07a183213d5e7524f84d30de54894faf7bd702dcd7f54f9841f90333",
+       "tracked": true,
+       "equalsHead": true,
+       "introducedIn": "16ae5c21",
+       "lastChangedIn": "16ae5c21"
+      },
+      {
+       "file": "stage3h-sk1-1-assurance-v1/evidence/SK1_1_ENGINEERING_ASSURANCE.json",
+       "sha256": "c8f5825ccbad1851e2d210094eb5f25f2e3d095b3d5b810c627e7def162950b6",
+       "tracked": true,
+       "equalsHead": true,
+       "introducedIn": "16ae5c21",
+       "lastChangedIn": "16ae5c21"
+      },
+      {
+       "file": "stage3h-sk1-1-assurance-v1/evidence/SK1_1_REPRO_INVENTORY.json",
+       "sha256": "3f171488cddcf2eb19bff6f0a98e6ea75316fb0b8b7573776d55893d0c0aacbb",
+       "tracked": true,
+       "equalsHead": true,
+       "introducedIn": "16ae5c21",
+       "lastChangedIn": "16ae5c21"
+      }
+     ],
+     "sourceManifest": {
+      "present": true,
+      "entries": 28,
+      "mismatching": []
+     },
+     "matrixBoundToSk1Result": "239c16bc210adef28e7cdef40ecd14298625ee26e08c13f45ad146988a3622b1",
+     "matrixBoundToModel": "b479972a3445ccb9d3cf42ac9821aee2f69431e4101b6dbdfdcd76e777968c6b",
+     "matrixReconciliationExact": true,
+     "laneFilesChangedSinceItsCommit": 0
+    }
+   },
+   "05_SK2_F_CLASSIFICATION": {
+    "title": "SK2-F classification B and recommended priority",
+    "status": "VERIFIED",
+    "evidence": {
+     "evidence": [
+      {
+       "file": "stage3h-sk2f-feasibility-v1/evidence/SK2F_FEASIBILITY.json",
+       "sha256": "22194b2a9169a1e10b3f174303792b30b4f2296265caecaf0a4053202e766108",
+       "tracked": true,
+       "equalsHead": true,
+       "introducedIn": "eb75dff8",
+       "lastChangedIn": "eb75dff8"
+      },
+      {
+       "file": "stage3h-sk2f-feasibility-v1/evidence/SK2F_EXPLORATION_MATRIX.json",
+       "sha256": "3c361ac1dc82f1fd85df37728d9aaca549ab5e00b1dd7e7e943d1e20be00b1d6",
+       "tracked": true,
+       "equalsHead": true,
+       "introducedIn": "eb75dff8",
+       "lastChangedIn": "eb75dff8"
+      },
+      {
+       "file": "stage3h-sk2f-feasibility-v1/evidence/SK2F_IMPORT_CUT_AUDIT.json",
+       "sha256": "f3d9977e2c7e22ace87b15a3d739df8391b9e211a58a62932675a9535f69a150",
+       "tracked": true,
+       "equalsHead": true,
+       "introducedIn": "eb75dff8",
+       "lastChangedIn": "eb75dff8"
+      },
+      {
+       "file": "stage3h-sk2f-feasibility-v1/evidence/SK2F_REPRO_STATUS.json",
+       "sha256": "3205ad64c1bfaa8379f0a99d445100dc41e51a795b4db38dc397dc7ce5114dcc",
+       "tracked": true,
+       "equalsHead": true,
+       "introducedIn": "eb75dff8",
+       "lastChangedIn": "eb75dff8"
+      }
+     ],
+     "sourceManifest": {
+      "present": true,
+      "entries": 19,
+      "mismatching": []
+     },
+     "classification": "B_SELECTIVE_ASSURANCE_FEASIBILITY_UNSUPPORTED",
+     "nextScientificPriority": "WITHIN_MENU_ACTION_RISK_DISCRIMINATION",
+     "targets": {
+      "selectiveRisk": 0.01,
+      "confidence": 0.95,
+      "minimumCoverage": 0.4,
+      "status": "RESEARCH_TARGETS_NOT_RATIFIED"
+     },
+     "targetsWeakened": false,
+     "prospectiveQualificationNotEstablished": true,
+     "boundToModel": "b479972a3445ccb9d3cf42ac9821aee2f69431e4101b6dbdfdcd76e777968c6b",
+     "recordedAttribution": {
+      "validationOrderingErrors": 34,
+      "validationRankingContractErrors": 5,
+      "validationFailing": 39,
+      "explorationOutOfBagOrderingErrors": 48,
+      "explorationOutOfBagFailing": 55,
+      "publicSafeActionIdentifiability": "NOT_ESTABLISHED"
+     },
+     "laneFilesChangedSinceItsCommit": 0
+    }
+   },
+   "06_PREDECESSOR_VERDICTS": {
+    "title": "final outcomes of V4, H-W1, H-W4 and H-W4B from tracked records",
+    "status": "VERIFIED",
+    "evidence": {
+     "byStudy": {
+      "V4": {
+       "final": true,
+       "records": 4
+      },
+      "H-W1": {
+       "final": true,
+       "records": 4
+      },
+      "H-W4": {
+       "final": true,
+       "records": 3
+      },
+      "H-W4B": {
+       "final": true,
+       "records": 7
+      }
+     },
+     "rows": [
+      {
+       "study": "V4",
+       "file": "stage3h-owner-governed-v1/evidence/execution-7c41ba89/qualification-summary.json",
+       "where": "field verdictMappingApplied.verdict",
+       "expected": "BOUNDED_SELECTOR_NOT_QUALIFIED",
+       "found": "BOUNDED_SELECTOR_NOT_QUALIFIED",
+       "matches": true,
+       "sha256": "50f1c8aded3b234482a9403e9bab1f13e2554c7fe5a63dcef49d9537c1f17565",
+       "tracked": true,
+       "equalsHead": true,
+       "introducedIn": "e46329cc",
+       "lastChangedIn": "e46329cc"
+      },
+      {
+       "study": "V4",
+       "file": "stage3h-failure-diagnosis-v1/evidence/ADJUDICATION_7c41ba89.json",
+       "where": "field registeredResult",
+       "expected": "BOUNDED_SELECTOR_NOT_QUALIFIED",
+       "found": "BOUNDED_SELECTOR_NOT_QUALIFIED",
+       "matches": true,
+       "sha256": "f81210d69a556beaff4c044b093fd8a256464f273d0d7d4498cbadc3eba627e2",
+       "tracked": true,
+       "equalsHead": true,
+       "introducedIn": "38f7c1d6",
+       "lastChangedIn": "38f7c1d6"
+      },
+      {
+       "study": "V4",
+       "file": "stage3h-failure-diagnosis-v1/evidence/ADJUDICATION_7c41ba89.json",
+       "where": "field registrationStatus",
+       "expected": "COMPLETE_AND_IRREVOCABLY_CONSUMED",
+       "found": "COMPLETE_AND_IRREVOCABLY_CONSUMED",
+       "matches": true,
+       "sha256": "f81210d69a556beaff4c044b093fd8a256464f273d0d7d4498cbadc3eba627e2",
+       "tracked": true,
+       "equalsHead": true,
+       "introducedIn": "38f7c1d6",
+       "lastChangedIn": "38f7c1d6"
+      },
+      {
+       "study": "V4",
+       "file": "stage3h-failure-diagnosis-v1/evidence/ADJUDICATION_7c41ba89.json",
+       "where": "field ownerAdjudication.BOUNDED_SELECTOR_QUALIFICATION",
+       "expected": "NOT_QUALIFIED",
+       "found": "NOT_QUALIFIED",
+       "matches": true,
+       "sha256": "f81210d69a556beaff4c044b093fd8a256464f273d0d7d4498cbadc3eba627e2",
+       "tracked": true,
+       "equalsHead": true,
+       "introducedIn": "38f7c1d6",
+       "lastChangedIn": "38f7c1d6"
+      },
+      {
+       "study": "H-W1",
+       "file": "stage3h-hw1-dev-v1/evidence/I5_VALIDATION_RESULTS.json",
+       "where": "field result",
+       "expected": "H_W1_DEV_VALIDATION_NOT_QUALIFIED",
+       "found": "H_W1_DEV_VALIDATION_NOT_QUALIFIED",
+       "matches": true,
+       "sha256": "09e2bf782cd16ad4b2d4f51d4c9702b3ca778b789a8624ebcde0b40473f09cff",
+       "tracked": true,
+       "equalsHead": true,
+       "introducedIn": "c96e68c6",
+       "lastChangedIn": "c96e68c6"
+      },
+      {
+       "study": "H-W1",
+       "file": "stage3h-hw1-dev-v1/H_W1_CLOSURE.md",
+       "where": "line STATUS=",
+       "expected": "CLOSED",
+       "found": "CLOSED",
+       "matches": true,
+       "sha256": "4b82e2761400a5c7c1acc7f16174339c85cb37f0b3472e81296f0b8ad3c42f86",
+       "tracked": true,
+       "equalsHead": true,
+       "introducedIn": "d706b689",
+       "lastChangedIn": "d706b689"
+      },
+      {
+       "study": "H-W1",
+       "file": "stage3h-hw1-dev-v1/H_W1_CLOSURE.md",
+       "where": "line CLASSIFICATION=",
+       "expected": "H_W1_DEV_VALIDATION_NOT_QUALIFIED",
+       "found": "H_W1_DEV_VALIDATION_NOT_QUALIFIED",
+       "matches": true,
+       "sha256": "4b82e2761400a5c7c1acc7f16174339c85cb37f0b3472e81296f0b8ad3c42f86",
+       "tracked": true,
+       "equalsHead": true,
+       "introducedIn": "d706b689",
+       "lastChangedIn": "d706b689"
+      },
+      {
+       "study": "H-W1",
+       "file": "stage3h-hw1-dev-v1/H_W1_CLOSURE.md",
+       "where": "line STATIC_IMPORT_CONTRACT=",
+       "expected": "FAIL",
+       "found": "FAIL",
+       "matches": true,
+       "sha256": "4b82e2761400a5c7c1acc7f16174339c85cb37f0b3472e81296f0b8ad3c42f86",
+       "tracked": true,
+       "equalsHead": true,
+       "introducedIn": "d706b689",
+       "lastChangedIn": "d706b689"
+      },
+      {
+       "study": "H-W4",
+       "file": "stage3h-hw4-value-band-v1/evidence/HW4_VALIDATION_RESULTS.json",
+       "where": "field result",
+       "expected": "H_W4_V2_NO_MEANINGFUL_POLICY_ADVANTAGE",
+       "found": "H_W4_V2_NO_MEANINGFUL_POLICY_ADVANTAGE",
+       "matches": true,
+       "sha256": "f24878df4c444635f6edcfa8ac8feed7a70fa4bb9e4f377bec7c618bea2df6c0",
+       "tracked": true,
+       "equalsHead": true,
+       "introducedIn": "9175a555",
+       "lastChangedIn": "9175a555"
+      },
+      {
+       "study": "H-W4",
+       "file": "stage3h-hw4-value-band-v1/H_W4.md",
+       "where": "line STATUS=",
+       "expected": "H_W4_COMPLETE",
+       "found": "H_W4_COMPLETE",
+       "matches": true,
+       "sha256": "f5da0cbcb4bf881eb4d16def535d9f677c5e8d974c5cbc929bc3d9bc167c6cb9",
+       "tracked": true,
+       "equalsHead": true,
+       "introducedIn": "9175a555",
+       "lastChangedIn": "9175a555"
+      },
+      {
+       "study": "H-W4",
+       "file": "stage3h-hw4-value-band-v1/H_W4.md",
+       "where": "line CLASSIFICATION=",
+       "expected": "C",
+       "found": "C",
+       "matches": true,
+       "sha256": "f5da0cbcb4bf881eb4d16def535d9f677c5e8d974c5cbc929bc3d9bc167c6cb9",
+       "tracked": true,
+       "equalsHead": true,
+       "introducedIn": "9175a555",
+       "lastChangedIn": "9175a555"
+      },
+      {
+       "study": "H-W4B",
+       "file": "stage3h-hw4-value-band-v1/evidence/HW4B_STOP_RECORD.json",
+       "where": "field status",
+       "expected": "H_W4B_BLOCKED_AT_PHASE_2",
+       "found": "H_W4B_BLOCKED_AT_PHASE_2",
+       "matches": true,
+       "sha256": "9af66b9f54bdcb737ec2dd600286552f3a961ff76d065663b66354973bb17096",
+       "tracked": true,
+       "equalsHead": true,
+       "introducedIn": "966f6eb3",
+       "lastChangedIn": "966f6eb3"
+      },
+      {
+       "study": "H-W4B",
+       "file": "stage3h-hw4-value-band-v1/evidence/HW4B_STOP_RECORD.json",
+       "where": "field classificationLabel",
+       "expected": "H_W4B_INVALID_OR_BLOCKED",
+       "found": "H_W4B_INVALID_OR_BLOCKED",
+       "matches": true,
+       "sha256": "9af66b9f54bdcb737ec2dd600286552f3a961ff76d065663b66354973bb17096",
+       "tracked": true,
+       "equalsHead": true,
+       "introducedIn": "966f6eb3",
+       "lastChangedIn": "966f6eb3"
+      },
+      {
+       "study": "H-W4B",
+       "file": "stage3h-hw4-value-band-v1/evidence/HW4B_CLOSURE_MANIFEST.json",
+       "where": "field status",
+       "expected": "H_W4B_CLOSED",
+       "found": "H_W4B_CLOSED",
+       "matches": true,
+       "sha256": "416444be5f7934b14df27fca17dbc7e34b52c15fdc3669a99513a32b26e01a4d",
+       "tracked": true,
+       "equalsHead": true,
+       "introducedIn": "966f6eb3",
+       "lastChangedIn": "966f6eb3"
+      },
+      {
+       "study": "H-W4B",
+       "file": "stage3h-hw4-value-band-v1/evidence/HW4B_CLOSURE_MANIFEST.json",
+       "where": "field classification",
+       "expected": "D",
+       "found": "D",
+       "matches": true,
+       "sha256": "416444be5f7934b14df27fca17dbc7e34b52c15fdc3669a99513a32b26e01a4d",
+       "tracked": true,
+       "equalsHead": true,
+       "introducedIn": "966f6eb3",
+       "lastChangedIn": "966f6eb3"
+      },
+      {
+       "study": "H-W4B",
+       "file": "stage3h-hw4-value-band-v1/evidence/HW4B_CLOSURE_MANIFEST.json",
+       "where": "field valueBandPolicyLine",
+       "expected": "CLOSED",
+       "found": "CLOSED",
+       "matches": true,
+       "sha256": "416444be5f7934b14df27fca17dbc7e34b52c15fdc3669a99513a32b26e01a4d",
+       "tracked": true,
+       "equalsHead": true,
+       "introducedIn": "966f6eb3",
+       "lastChangedIn": "966f6eb3"
+      },
+      {
+       "study": "H-W4B",
+       "file": "stage3h-hw4-value-band-v1/H_W4B_CLOSURE.md",
+       "where": "line VALUE_BAND_POLICY_LINE=",
+       "expected": "CLOSED",
+       "found": "CLOSED",
+       "matches": true,
+       "sha256": "0903a4610b8b91a5b9725390a217666c45ef805d154922d75853e3fe5a3e1fe1",
+       "tracked": true,
+       "equalsHead": true,
+       "introducedIn": "966f6eb3",
+       "lastChangedIn": "966f6eb3"
+      },
+      {
+       "study": "H-W4B",
+       "file": "stage3h-hw4-value-band-v1/H_W4B_CLOSURE.md",
+       "where": "line H_W4B_CLASSIFICATION=",
+       "expected": "D",
+       "found": "D",
+       "matches": true,
+       "sha256": "0903a4610b8b91a5b9725390a217666c45ef805d154922d75853e3fe5a3e1fe1",
+       "tracked": true,
+       "equalsHead": true,
+       "introducedIn": "966f6eb3",
+       "lastChangedIn": "966f6eb3"
+      }
+     ],
+     "note": "Each verdict is quoted from a tracked record that equals HEAD. Nothing is inferred: a missing or different string is reported as it is found."
+    }
+   },
+   "07_IMPORT_CUT_COMMIT": {
+    "title": "the scoped import-cut commit touches one path and changes no pinned content",
+    "status": "VERIFIED",
+    "evidence": {
+     "commit": "17318b03af1fee2f2f24b8ca2b292e4ff449f066",
+     "subject": "stage3h(hw1): commit public-projection import cut as prospective source correction",
+     "pathsTouched": [
+      "platform/game-agnostic/stage3h-hw1-dev-v1/public-projection.mjs"
+     ],
+     "exactlyOnePath": true,
+     "parentBlobSha256": "2d1e70611b26005179cc50e21a9d6ec5eae59704d7db36e722bb28b53eacb9ca",
+     "commitBlobSha256": "c4f9532e0771e025513122052128b0d14185e4abcde3ace9de9de5d77db6c099",
+     "headBlobSha256": "c4f9532e0771e025513122052128b0d14185e4abcde3ace9de9de5d77db6c099",
+     "workingTreeSha256": "c4f9532e0771e025513122052128b0d14185e4abcde3ace9de9de5d77db6c099",
+     "oldRevisionRetrievableAt": "b38b16ee",
+     "oldRevisionSha256There": "2d1e70611b26005179cc50e21a9d6ec5eae59704d7db36e722bb28b53eacb9ca",
+     "sk1FreezeBinds": "c4f9532e0771e025513122052128b0d14185e4abcde3ace9de9de5d77db6c099",
+     "messageRecordsBothHashes": true
+    }
+   },
+   "08_HISTORICAL_EXCLUSIONS_ENFORCED": {
+    "title": "spent and retired blocks are listed and rejected by the loaders in this working tree",
+    "status": "VERIFIED",
+    "evidence": {
+     "registryFile": "stage3h-sk1-safety-kernel-v1/infra/exclusion-registry.json",
+     "registryFileSha256": "dc801e25bf737f5aa94938f67e536d5d1eccf0717a405f9a7cd986a07f1539ce",
+     "registryDeclaredHashVerifies": true,
+     "failClosed": true,
+     "forbiddenBlocksInRegistry": 77,
+     "forbiddenBlocksInTrackedRecords": 114,
+     "blocks901to914Listed": 14,
+     "blocks801to837Listed": 37,
+     "sealedRegistries": [
+      {
+       "name": "STUDIED_341",
+       "count": 341,
+       "sha256": "7bca10d2002e6d694be9609f2df1378d802df2290d147e82f9f589e01e051525",
+       "matchesRecorded": true
+      },
+      {
+       "name": "DEV_H2_BASE_WORLDS",
+       "count": 12844,
+       "sha256": "7eab80933a7072ae407ae26a8d165dca399a7ac41394e2be0642deff7ff2c727",
+       "matchesRecorded": true
+      },
+      {
+       "name": "HW1_EXPLORATION",
+       "count": 1000,
+       "sha256": "f047bae9fe9bc1d434718d62b3261db95e1ab2fcb804ec8b1694124d18ccf309",
+       "matchesRecorded": true
+      },
+      {
+       "name": "HW1_VALIDATION",
+       "count": 300,
+       "sha256": "89d241c82c292e554f9bc03542bef5b02572f16d7098decc79716b52c2baa4dd",
+       "matchesRecorded": true
+      },
+      {
+       "name": "HW4_EXPLORATION",
+       "count": 1000,
+       "sha256": "327ca410de87cf1183c867ab0e6baa700696d7bcfdc84c97411f352439c205d7",
+       "matchesRecorded": true
+      },
+      {
+       "name": "HW4_VALIDATION",
+       "count": 600,
+       "sha256": "7c030fd42d5fe76c92cec05780408d028c7a18e4b23da1b2914e2c277af83422",
+       "matchesRecorded": true
+      },
+      {
+       "name": "HW4B_SCREENED_DEV",
+       "count": 885,
+       "sha256": "53af6f2e2482bea1b23a46ce25fccbc14376a66ae2998da801362a92b078220c",
+       "matchesRecorded": true
+      }
+     ],
+     "sk1Registries": [
+      {
+       "file": "stage3h-sk1-safety-kernel-v1/evidence/SK1_REGISTRY_EXPLORATION.json",
+       "sha256": "6d876fae1854d01696dda2f00c699b4e9371a333230dbce9696fb2daa661fd33",
+       "matchesRecorded": true
+      },
+      {
+       "file": "stage3h-sk1-safety-kernel-v1/evidence/SK1_REGISTRY_VALIDATION.json",
+       "sha256": "d309557f4a421caef014a4518cc507d520cbc9117927ae7149e3c2edd3398d3c",
+       "matchesRecorded": true
+      },
+      {
+       "file": "stage3h-sk1-safety-kernel-v1/evidence/SK1_REGISTRY_SCREENED_UNUSED.json",
+       "sha256": "8b51aa3a852699ab2ec58f41ac0475b47b051ef8092e4f838dc81985bae4d830",
+       "matchesRecorded": true
+      }
+     ],
+     "loadersInThisWorkingTree": {
+      "loadable": true,
+      "registryHash": "1073b1e5ebee6583fd2c946e4fb663804c25c2202461b388a6934957d95e48dc",
+      "forbiddenBlocks": 77,
+      "blocks901to914Rejected": 14,
+      "of901to914": 14,
+      "successorForbiddenBlocks": 114,
+      "blocks801to837RejectedBySuccessor": 37,
+      "of801to837": 37,
+      "blocks901to914RejectedBySuccessor": 14
+     },
+     "scope": "WORKING TREE ONLY — see item 11 finding 3 for the clean-checkout result"
+    }
+   },
+   "09_R0_AUTHORITY": {
+    "title": "the frozen kernel and the SK1.1 envelope are R0, cannot dispatch or mutate, and are labelled NOT_QUALIFIED",
+    "status": "VERIFIED",
+    "evidence": {
+     "kernel": {
+      "id": "SENTINEL_PUBLIC_ACTION_SAFETY_KERNEL_V1",
+      "version": "1.0.0",
+      "authority": {
+       "state": "R0",
+       "mode": "OBSERVATION_AND_RECOMMENDATION_ONLY",
+       "canDispatch": false,
+       "canMutateLiveWorld": false,
+       "promotedToRuntime": false
+      },
+      "source": {
+       "file": "stage3h-sk1-safety-kernel-v1/kernel/contract.mjs",
+       "sha256": "fbd57bce5d404fbca372531b1124aa753ccb0b400eb380a619e3431610654427",
+       "tracked": true,
+       "equalsHead": true,
+       "introducedIn": "8e409536",
+       "lastChangedIn": "8e409536"
+      }
+     },
+     "envelope": {
+      "apiVersion": "SK1_R0_ASSURED_API_V1_1",
+      "labels": [
+       "R0",
+       "SHADOW_MODE",
+       "RECOMMENDATION_ONLY",
+       "NOT_QUALIFIED"
+      ],
+      "qualification": "NOT_QUALIFIED",
+      "deployment": "SHADOW_MODE_NOT_PRODUCTION",
+      "authority": {
+       "state": "R0",
+       "mode": "OBSERVATION_AND_RECOMMENDATION_ONLY",
+       "canDispatch": false,
+       "canMutateLiveWorld": false,
+       "promotedToRuntime": false
+      },
+      "refuses": [
+       "execute",
+       "dispatch",
+       "mutate",
+       "apply",
+       "commit",
+       "act"
+      ],
+      "scientificStatus": {
+       "sk1Classification": "B_SAFETY_KERNEL_MATERIAL_IMPROVEMENT_NOT_QUALIFIED",
+       "safetyKernelDevQualified": false,
+       "selectiveContractCertified": false
+      },
+      "source": {
+       "file": "stage3h-sk1-1-assurance-v1/r0/assured-api.mjs",
+       "sha256": "f015d8be3a39748c17f555b7ee472faf069119d468564e83b24cd20a5d176e54",
+       "tracked": true,
+       "equalsHead": true,
+       "introducedIn": "16ae5c21",
+       "lastChangedIn": "16ae5c21"
+      }
+     }
+    }
+   },
+   "10_NINE_EXPERT_ROSTER": {
+    "title": "the canonical nine-expert roster is unchanged",
+    "status": "VERIFIED",
+    "evidence": {
+     "rosterId": "SENTINEL_EXPERT_ROSTER_V1",
+     "experts": [
+      "Prime",
+      "Vanguard",
+      "Oracle",
+      "Nexus",
+      "Horizon",
+      "Archimedes",
+      "Alexandria",
+      "Picasso",
+      "Forge"
+     ],
+     "expertCount": 9,
+     "definitions": [
+      {
+       "role": "GOVERNING_DECLARATION (SENTINEL_EXPERT_ROSTER_V1, bound by the Stage 3F freeze)",
+       "file": "artifacts/stage3f-freeze/stage3f-freeze.json",
+       "sha256": "538686bfe3eebbdd092832641ff22f3f419d428dfe293469b3f13cacb74a591a",
+       "tracked": true,
+       "equalsHead": true,
+       "introducedIn": "b68a46f3",
+       "lastChangedIn": "b68a46f3",
+       "names": [
+        "Prime",
+        "Vanguard",
+        "Oracle",
+        "Nexus",
+        "Horizon",
+        "Archimedes",
+        "Alexandria",
+        "Picasso",
+        "Forge"
+       ],
+       "rosterId": "SENTINEL_EXPERT_ROSTER_V1",
+       "EXPERT_COUNT": 9,
+       "expert10Added": false,
+       "routerArbiter": "INFRASTRUCTURE",
+       "infrastructureNotExperts": [
+        "Router/Arbiter",
+        "world models",
+        "Forge World",
+        "evaluation/certification",
+        "memory stores",
+        "authority system"
+       ],
+       "inheritedFromSectionHash": null
+      },
+      {
+       "role": "INHERITED_BY_SECTION_HASH (Stage 3G freeze)",
+       "file": "artifacts/stage3g-freeze/stage3g-freeze.json",
+       "sha256": "284296e71474bb8e340676342fe921628f1945e9daa71101fcf547d2d85b8aa4",
+       "tracked": true,
+       "equalsHead": true,
+       "introducedIn": "8189d7ea",
+       "lastChangedIn": "8189d7ea",
+       "names": [
+        "Prime",
+        "Vanguard",
+        "Oracle",
+        "Nexus",
+        "Horizon",
+        "Archimedes",
+        "Alexandria",
+        "Picasso",
+        "Forge"
+       ],
+       "rosterId": "SENTINEL_EXPERT_ROSTER_V1",
+       "EXPERT_COUNT": 9,
+       "expert10Added": false,
+       "routerArbiter": "INFRASTRUCTURE",
+       "infrastructureNotExperts": [
+        "Router/Arbiter",
+        "world models",
+        "Forge World",
+        "evaluation/certification",
+        "memory stores",
+        "authority system"
+       ],
+       "inheritedFromSectionHash": "078e048cbf71494c28efeb6d073554aa7c7208bf43bb86050b6a43fbf0e21809"
+      },
+      {
+       "role": "MACHINE_INVENTORY (Stage 3H.2-R)",
+       "file": "stage3h2r-development/NINE_EXPERT_INVENTORY_V1.json",
+       "sha256": "d9a266aeb9f5e28e5da56604e62c74353e1db6003b0d749dfddea1c5ff2eb944",
+       "tracked": true,
+       "equalsHead": true,
+       "introducedIn": "07b0c36b",
+       "lastChangedIn": "07b0c36b",
+       "names": [
+        "Prime",
+        "Vanguard",
+        "Oracle",
+        "Nexus",
+        "Horizon",
+        "Archimedes",
+        "Alexandria",
+        "Picasso",
+        "Forge"
+       ]
+      },
+      {
+       "role": "CODE_CONSTANT checked by the Stage 3H baseline guard",
+       "file": "stage3h-ascii-competence-v1/guard.mjs",
+       "sha256": "f802d63a5485a29d6351e0ba83dccdd38022d79a51e7d1d092b3efa14c3f1df5",
+       "tracked": true,
+       "equalsHead": true,
+       "introducedIn": "41ed9a7e",
+       "lastChangedIn": "41ed9a7e",
+       "names": [
+        "Prime",
+        "Vanguard",
+        "Oracle",
+        "Nexus",
+        "Horizon",
+        "Archimedes",
+        "Alexandria",
+        "Picasso",
+        "Forge"
+       ]
+      },
+      {
+       "role": "CODE_CONSTANT (expert responsibility map)",
+       "file": "ncm-hierarchical-research-v1/contracts/expert-responsibility-map-v1.mjs",
+       "sha256": "2b9c9a0b55e1121bb45404683bba8a84900725259cfb55d7be98fd85015167a1",
+       "tracked": true,
+       "equalsHead": true,
+       "introducedIn": "d3838328",
+       "lastChangedIn": "d3838328",
+       "names": [
+        "Prime",
+        "Vanguard",
+        "Oracle",
+        "Nexus",
+        "Horizon",
+        "Archimedes",
+        "Alexandria",
+        "Picasso",
+        "Forge"
+       ]
+      },
+      {
+       "role": "CODE_CONSTANT (experimental qualification)",
+       "file": "stage3h-experimental/qualification.mjs",
+       "sha256": "d63bb2d841e299b532240bd5ac8029edc678eb8ec4b65682c01db31e3ca0a19a",
+       "tracked": true,
+       "equalsHead": true,
+       "introducedIn": "7a25f064",
+       "lastChangedIn": "7a25f064",
+       "names": [
+        "Prime",
+        "Vanguard",
+        "Oracle",
+        "Nexus",
+        "Horizon",
+        "Archimedes",
+        "Alexandria",
+        "Picasso",
+        "Forge"
+       ]
+      }
+     ],
+     "allDefinitionsAgree": true,
+     "disagreeing": [],
+     "expert10Added": false,
+     "routerArbiterClassification": "INFRASTRUCTURE",
+     "infrastructureNotExperts": [
+      "Router/Arbiter",
+      "world models",
+      "Forge World",
+      "evaluation/certification",
+      "memory stores",
+      "authority system"
+     ],
+     "guardedPaths": [
+      "artifacts/stage3f-freeze/stage3f-freeze.json",
+      "artifacts/stage3g-freeze/stage3g-freeze.json",
+      "stage3h2r-development/NINE_EXPERT_INVENTORY_V1.json",
+      "stage3h-ascii-competence-v1/guard.mjs",
+      "ncm-hierarchical-research-v1/contracts/expert-responsibility-map-v1.mjs",
+      "stage3h-experimental/qualification.mjs",
+      "src/experts",
+      "src/prime",
+      "omni-router/omni-router-v1.js"
+     ],
+     "pathsChangedSinceSk1Base": [],
+     "sk1Base": "966f6eb3",
+     "notes": [
+      "The governing declaration is the architectureRoster section of the Stage 3F freeze; the Stage 3G freeze inherits it by section hash. The Arbiter is recorded there as INFRASTRUCTURE (Router/Arbiter), not as an expert.",
+      "stage3h-hw1-dev-v1/i4-candidates.mjs also exports a constant named ROSTER; it is the list of thirteen H-W1 policy candidates (C01..C13), not an expert roster, and is not counted here."
+     ]
+    }
+   },
+   "11_MANDATORY_READINESS_FINDINGS": {
+    "title": "five readiness limitations, each re-measured and none reported as resolved",
+    "status": "VERIFIED",
+    "evidence": {
+     "finding1": {
+      "finding": "Twenty-nine protected source files remain outside Git",
+      "protectedFilesInTheEvaluationClosure": 29,
+      "trackedByGit": 0,
+      "presentInHeadTree": 0,
+      "allMatchRecordedIdentity": true,
+      "byLane": {
+       "ascii-suite": 23,
+       "stage3h-canonical-v1": 6
+      },
+      "listSha256": "be7dc481437c3d49b39c4fdffa4e4355345dd375ef958dbd965cca3c940d0ced",
+      "resolved": false
+     },
+     "finding2": {
+      "finding": "Nineteen gitignored data files are required for historical evaluation reproduction",
+      "filesNeededByCheckMode": 19,
+      "bytes": 13908383,
+      "groups": {
+       "audit": 8,
+       "classes/VALIDATION": 9,
+       "manifests": 2
+      },
+      "confirmedIgnoredByGit": 19,
+      "trackedByGit": 0,
+      "listSha256": "cf176d650d12b802062647efa7853dffdd25cc9be870a3cd71a1ec63be0436f5",
+      "resolved": false
+     },
+     "finding3": {
+      "finding": "Exclusion loaders are not independently importable from clean committed source",
+      "staticClosure": [
+       {
+        "loader": "stage3h-sk1-safety-kernel-v1/infra/exclusions.mjs",
+        "closureFiles": 116,
+        "custodyProtectedFilesReached": 29,
+        "linkableFromCommittedSourceAlone": false,
+        "shortestChainToProtectedSource": [
+         "stage3h-sk1-safety-kernel-v1/infra/exclusions.mjs",
+         "stage3h-wider-action-feasibility-v1/exclusion/strict-index.mjs",
+         "stage3h-safety-feasibility-v1/closure/exclusions.mjs",
+         "stage3h-owner-governed-v1/allocate-namespaces-v4.mjs",
+         "stage3h-owner-governed-v1/connector.mjs",
+         "stage3h-canonical-v1/adapters.mjs"
+        ]
+       },
+       {
+        "loader": "stage3h-sk1-safety-kernel-v1/successor/exclusions-v2.mjs",
+        "closureFiles": 117,
+        "custodyProtectedFilesReached": 29,
+        "linkableFromCommittedSourceAlone": false,
+        "shortestChainToProtectedSource": [
+         "stage3h-sk1-safety-kernel-v1/successor/exclusions-v2.mjs",
+         "stage3h-sk1-safety-kernel-v1/infra/exclusions.mjs",
+         "stage3h-wider-action-feasibility-v1/exclusion/strict-index.mjs",
+         "stage3h-safety-feasibility-v1/closure/exclusions.mjs",
+         "stage3h-owner-governed-v1/allocate-namespaces-v4.mjs",
+         "stage3h-owner-governed-v1/connector.mjs",
+         "stage3h-canonical-v1/adapters.mjs"
+        ]
+       }
+      ],
+      "cleanExportProbe": [
+       {
+        "entry": "stage3h-sk1-safety-kernel-v1/infra/exclusions.mjs",
+        "closureFiles": 116,
+        "exportedFromHead": 87,
+        "closureFilesNotInHead": [
+         "ascii-suite/controllers/fighter.mjs",
+         "ascii-suite/controllers/index.mjs",
+         "ascii-suite/controllers/platformer.mjs",
+         "ascii-suite/controllers/pong.mjs",
+         "ascii-suite/controllers/racing.mjs",
+         "ascii-suite/games.mjs",
+         "ascii-suite/prime.mjs",
+         "ascii-suite/training-dev-v1/candidate-v2/action-codec.mjs",
+         "ascii-suite/training-dev-v1/features.mjs",
+         "ascii-suite/training-dev-v1/model.mjs",
+         "ascii-suite/v21/freeze.mjs",
+         "ascii-suite/v3/common.mjs",
+         "ascii-suite/v3/controllers.mjs",
+         "ascii-suite/v3/factory-model.mjs",
+         "ascii-suite/v31/sentinel.mjs",
+         "ascii-suite/v32/codec-v2.mjs",
+         "ascii-suite/v32/policy.mjs",
+         "ascii-suite/v32/relational-features.mjs",
+         "ascii-suite/worlds/common.mjs",
+         "ascii-suite/worlds/fighter.mjs",
+         "ascii-suite/worlds/platformer.mjs",
+         "ascii-suite/worlds/pong.mjs",
+         "ascii-suite/worlds/racing.mjs",
+         "stage3h-canonical-v1/adapters.mjs",
+         "stage3h-canonical-v1/baseline.mjs",
+         "stage3h-canonical-v1/evidence.mjs",
+         "stage3h-canonical-v1/guard.mjs",
+         "stage3h-canonical-v1/metrics.mjs",
+         "stage3h-canonical-v1/nexus-selector-v1-port.mjs"
+        ],
+        "linksFromCommittedSourceAlone": false,
+        "firstUnresolvedModule": "stage3h-canonical-v1/adapters.mjs",
+        "errorCode": "ERR_MODULE_NOT_FOUND"
+       },
+       {
+        "entry": "stage3h-sk1-safety-kernel-v1/successor/exclusions-v2.mjs",
+        "closureFiles": 117,
+        "exportedFromHead": 88,
+        "closureFilesNotInHead": [
+         "ascii-suite/controllers/fighter.mjs",
+         "ascii-suite/controllers/index.mjs",
+         "ascii-suite/controllers/platformer.mjs",
+         "ascii-suite/controllers/pong.mjs",
+         "ascii-suite/controllers/racing.mjs",
+         "ascii-suite/games.mjs",
+         "ascii-suite/prime.mjs",
+         "ascii-suite/training-dev-v1/candidate-v2/action-codec.mjs",
+         "ascii-suite/training-dev-v1/features.mjs",
+         "ascii-suite/training-dev-v1/model.mjs",
+         "ascii-suite/v21/freeze.mjs",
+         "ascii-suite/v3/common.mjs",
+         "ascii-suite/v3/controllers.mjs",
+         "ascii-suite/v3/factory-model.mjs",
+         "ascii-suite/v31/sentinel.mjs",
+         "ascii-suite/v32/codec-v2.mjs",
+         "ascii-suite/v32/policy.mjs",
+         "ascii-suite/v32/relational-features.mjs",
+         "ascii-suite/worlds/common.mjs",
+         "ascii-suite/worlds/fighter.mjs",
+         "ascii-suite/worlds/platformer.mjs",
+         "ascii-suite/worlds/pong.mjs",
+         "ascii-suite/worlds/racing.mjs",
+         "stage3h-canonical-v1/adapters.mjs",
+         "stage3h-canonical-v1/baseline.mjs",
+         "stage3h-canonical-v1/evidence.mjs",
+         "stage3h-canonical-v1/guard.mjs",
+         "stage3h-canonical-v1/metrics.mjs",
+         "stage3h-canonical-v1/nexus-selector-v1-port.mjs"
+        ],
+        "linksFromCommittedSourceAlone": false,
+        "firstUnresolvedModule": "stage3h-canonical-v1/adapters.mjs",
+        "errorCode": "ERR_MODULE_NOT_FOUND"
+       }
+      ],
+      "importableFromCommittedSourceAlone": false,
+      "resolved": false,
+      "note": "Measured by exporting the tracked part of each loader's static closure from HEAD into an empty directory and importing it there."
+     },
+     "finding4": {
+      "finding": "No independently restored backup exists",
+      "independentBackupVerified": false,
+      "restoreVerificationRecordFound": false,
+      "resolved": false,
+      "note": "A backup counts only after a restore on a different device is hash-verified (SK2-F acceptance procedure). No such record exists in the repository. Mounted volumes and Time Machine state are dated observations and are recorded under `volatile`."
+     },
+     "finding5": {
+      "finding": "The import-cut revision is committed, but historical source identities remain distinct",
+      "committed": true,
+      "committedIn": "17318b03",
+      "oldSha256": "2d1e70611b26005179cc50e21a9d6ec5eae59704d7db36e722bb28b53eacb9ca",
+      "cutSha256": "c4f9532e0771e025513122052128b0d14185e4abcde3ace9de9de5d77db6c099",
+      "headCarries": "CUT",
+      "oldRevisionOnlyInHistoryAt": "b38b16ee",
+      "trackedFilesPinningARevision": 25,
+      "lanes": {
+       "stage3h-hw1-dev-v1": {
+        "OLD": [
+         "stage3h-hw1-dev-v1/evidence/I1_PUBLIC_INPUT_AUDIT.json",
+         "stage3h-hw1-dev-v1/evidence/I2_PCD_VALIDATION.json",
+         "stage3h-hw1-dev-v1/evidence/I4_EXPLORATION_RESULTS.json",
+         "stage3h-hw1-dev-v1/evidence/I5_CANDIDATE_FREEZE.json",
+         "stage3h-hw1-dev-v1/evidence/LANE_CONTENT_AUDIT_I1.json"
+        ],
+        "CUT": [
+         "stage3h-hw1-dev-v1/H_W3_FEASIBILITY.md"
+        ],
+        "BOTH": []
+       },
+       "stage3h-hw4-value-band-v1": {
+        "OLD": [],
+        "CUT": [
+         "stage3h-hw4-value-band-v1/H_W4.md",
+         "stage3h-hw4-value-band-v1/evidence/HW4B_PROTOCOL_FREEZE.json",
+         "stage3h-hw4-value-band-v1/evidence/HW4_CANDIDATE_FREEZE.json",
+         "stage3h-hw4-value-band-v1/evidence/HW4_EXPLORATION_V1_PUBLIC_ONLY.json",
+         "stage3h-hw4-value-band-v1/evidence/HW4_EXPLORATION_V2_PUBLIC_PLUS_VALUE_BAND.json"
+        ],
+        "BOTH": [
+         "stage3h-hw4-value-band-v1/H_W4B.md",
+         "stage3h-hw4-value-band-v1/H_W4B_ENGINEERING_RISK_REGISTER.md",
+         "stage3h-hw4-value-band-v1/evidence/HW4B_PHASE1_REPRODUCIBILITY.json",
+         "stage3h-hw4-value-band-v1/evidence/HW4B_RECOVERY_MANIFEST.json"
+        ]
+       },
+       "stage3h-sk1-1-assurance-v1": {
+        "OLD": [],
+        "CUT": [],
+        "BOTH": [
+         "stage3h-sk1-1-assurance-v1/SK1_REPRODUCIBILITY_GAP.md",
+         "stage3h-sk1-1-assurance-v1/evidence/SK1_1_REPRO_INVENTORY.json"
+        ]
+       },
+       "stage3h-sk1-safety-kernel-v1": {
+        "OLD": [],
+        "CUT": [
+         "stage3h-sk1-safety-kernel-v1/evidence/SK1_CUSTODY_MANIFEST.json",
+         "stage3h-sk1-safety-kernel-v1/evidence/SK1_EXPERIMENT_FREEZE.json"
+        ],
+        "BOTH": [
+         "stage3h-sk1-safety-kernel-v1/evidence/SK1_PROJECTION_PROVENANCE.json"
+        ]
+       },
+       "stage3h-sk2f-feasibility-v1": {
+        "OLD": [],
+        "CUT": [],
+        "BOTH": [
+         "stage3h-sk2f-feasibility-v1/SK2_F_REPRODUCIBILITY_STATUS.md",
+         "stage3h-sk2f-feasibility-v1/evidence/SK2F_IMPORT_CUT_AUDIT.json",
+         "stage3h-sk2f-feasibility-v1/evidence/SK2F_REPRO_STATUS.json",
+         "stage3h-sk2f-feasibility-v1/infra-audit/import-cut-audit.mjs",
+         "stage3h-sk2f-feasibility-v1/infra-audit/status.mjs"
+        ]
+       }
+      },
+      "hw1PinsOnlyTheOldRevision": true,
+      "sk1FreezePinsTheCut": true,
+      "resolved": "PARTLY: one uncommitted dependency is now committed; no historical pin was changed, and HEAD satisfies the H-W4/H-W4B/SK1 pins but not the H-W1 pins"
+     },
+     "readinessVerdictOfSk2F": "NOT_READY"
+    }
+   }
+  }
+ },
+ "runs": {
+  "sk1Check": {
+   "command": "node infra/run.mjs check",
+   "lane": "stage3h-sk1-safety-kernel-v1",
+   "expectedMarker": "SK1_CHECK_PASS",
+   "markerFound": true,
+   "exit": 0,
+   "seconds": 42,
+   "asExpected": true
+  },
+  "sk1Suite": {
+   "command": "node --test tests/*.test.mjs successor/*.test.mjs",
+   "lane": "stage3h-sk1-safety-kernel-v1",
+   "expected": {
+    "tests": 40,
+    "pass": 40,
+    "fail": 0,
+    "failingTestsStartingWith": []
+   },
+   "actual": {
+    "tests": 40,
+    "pass": 40,
+    "fail": 0,
+    "skipped": 0,
+    "failing": []
+   },
+   "exit": 0,
+   "seconds": 23.1,
+   "asExpected": true
+  },
+  "sk11AnalysisCheck": {
+   "command": "node diagnostics/analyze.mjs check",
+   "lane": "stage3h-sk1-1-assurance-v1",
+   "expectedMarker": "SK1_1_ANALYSIS_CHECK_PASS",
+   "markerFound": true,
+   "exit": 0,
+   "seconds": 0.4,
+   "asExpected": true
+  },
+  "sk11Suite": {
+   "command": "node --test diagnostics/*.test.mjs r0/*.test.mjs repro/*.test.mjs",
+   "lane": "stage3h-sk1-1-assurance-v1",
+   "expected": {
+    "tests": 65,
+    "pass": 64,
+    "fail": 1,
+    "failingTestsStartingWith": [
+     "INTEGRATION inventory verify against the working tree"
+    ]
+   },
+   "actual": {
+    "tests": 65,
+    "pass": 64,
+    "fail": 1,
+    "skipped": 0,
+    "failing": [
+     "INTEGRATION inventory verify against the working tree: no drift from the tracked inventory, the SK1 freeze or the custody records"
+    ]
+   },
+   "exit": 1,
+   "seconds": 33.5,
+   "asExpected": true
+  },
+  "sk2fFeasibilityCheck": {
+   "command": "node diagnostics/feasibility.mjs check",
+   "lane": "stage3h-sk2f-feasibility-v1",
+   "expectedMarker": "SK2F_FEASIBILITY_CHECK_PASS",
+   "markerFound": true,
+   "exit": 0,
+   "seconds": 1.4,
+   "asExpected": true
+  },
+  "sk2fStatusVerify": {
+   "command": "node infra-audit/status.mjs verify",
+   "lane": "stage3h-sk2f-feasibility-v1",
+   "expectedMarker": "SK2F_REPRO_STATUS_VERIFY_PASS",
+   "markerFound": true,
+   "exit": 0,
+   "seconds": 4.6,
+   "asExpected": true
+  },
+  "sk2fSuite": {
+   "command": "node --test diagnostics/*.test.mjs infra-audit/*.test.mjs",
+   "lane": "stage3h-sk2f-feasibility-v1",
+   "expected": {
+    "tests": 23,
+    "pass": 23,
+    "fail": 0,
+    "failingTestsStartingWith": []
+   },
+   "actual": {
+    "tests": 23,
+    "pass": 23,
+    "fail": 0,
+    "skipped": 0,
+    "failing": []
+   },
+   "exit": 0,
+   "seconds": 38.4,
+   "asExpected": true
+  },
+  "sk2fImportCutAuditVerify": {
+   "command": "node infra-audit/import-cut-audit.mjs verify",
+   "lane": "stage3h-sk2f-feasibility-v1",
+   "expectedMarker": "SK2F_IMPORT_CUT_AUDIT_VERIFY_PASS",
+   "markerFound": true,
+   "exit": 0,
+   "seconds": 143.4,
+   "asExpected": true
+  }
+ }
+}

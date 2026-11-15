@@ -1,0 +1,199 @@
+{
+ "schema": "STAGE3H_OWNER_GOVERNED_O3_VERIFICATION_V1",
+ "inheritanceHead": "a2c7961767926a86752e940ca9b604040c4f62c0",
+ "ownerChoice": "MIN_ACCEPTED_PER_CELL=2",
+ "candidateOption": "MIN_TWO_PER_CELL",
+ "supportedByBoundProtocol": {
+  "optionListedInCandidate": true,
+  "implementedInBoundCampaign": true,
+  "campaignSha256": "428a83bee68dbc2d1fd96859f585c39b1c9f55b79681e601b5d4fc6ae7de0119",
+  "campaignShaBound": true
+ },
+ "retainedFloors": {
+  "overall": 0.9,
+  "perHorizon": 0.9,
+  "kishEffectiveN": 2100,
+  "replacement": false,
+  "outcomeFiltering": false
+ },
+ "admissionMonteCarlo": {
+  "HOLDOUT_KNOWN_COMPOSITION": {
+   "cells": 48,
+   "repetitionsPerCell": 52,
+   "cellsWithoutPriorMetadata": 0,
+   "sims": 400,
+   "P_pass": 1,
+   "P_overall90": 1,
+   "P_eachBand90": 1,
+   "P_kish2100": 1,
+   "P_everyCellAtLeast2": 1,
+   "minAcceptedObserved": 42,
+   "minKishObserved": 2370.092392236189
+  },
+  "OOD_LEVEL": {
+   "cells": 48,
+   "repetitionsPerCell": 52,
+   "cellsWithoutPriorMetadata": 0,
+   "sims": 400,
+   "P_pass": 1,
+   "P_overall90": 1,
+   "P_eachBand90": 1,
+   "P_kish2100": 1,
+   "P_everyCellAtLeast2": 1,
+   "minAcceptedObserved": 46,
+   "minKishObserved": 2448.2648363404683
+  },
+  "OOD_ROLES": {
+   "cells": 96,
+   "repetitionsPerCell": 26,
+   "cellsWithoutPriorMetadata": 0,
+   "sims": 400,
+   "P_pass": 1,
+   "P_overall90": 1,
+   "P_eachBand90": 1,
+   "P_kish2100": 1,
+   "P_everyCellAtLeast2": 1,
+   "minAcceptedObserved": 20,
+   "minKishObserved": 2407.1577614881603
+  },
+  "OOD_OBJECTIVES": {
+   "cells": 144,
+   "repetitionsPerCell": 18,
+   "cellsWithoutPriorMetadata": 0,
+   "sims": 400,
+   "P_pass": 1,
+   "P_overall90": 1,
+   "P_eachBand90": 1,
+   "P_kish2100": 1,
+   "P_everyCellAtLeast2": 1,
+   "minAcceptedObserved": 6,
+   "minKishObserved": 2417.5676804899626
+  },
+  "OOD_SHAPES": {
+   "cells": 192,
+   "repetitionsPerCell": 14,
+   "cellsWithoutPriorMetadata": 0,
+   "sims": 400,
+   "P_pass": 1,
+   "P_overall90": 1,
+   "P_eachBand90": 1,
+   "P_kish2100": 1,
+   "P_everyCellAtLeast2": 1,
+   "minAcceptedObserved": 2,
+   "minKishObserved": 2420.315129166086
+  }
+ },
+ "exactOriginalCellWeights": {
+  "manualEqualCellMean": -0.03447916666666667,
+  "estimatorMean": -0.03447916666666451,
+  "identical": true,
+  "rule": "w = 1/(C * n_c): every target cell carries weight 1/C regardless of its accepted count"
+ },
+ "pairedBootstrapWithTwoRowCells": {
+  "inference": "PERCENTILE_DESIGN_ONLY",
+  "finite": true,
+  "resampling": "within each original cell, with replacement, common draws across estimands"
+ },
+ "lowCountHandling": {
+  "regimeSubgroupSupport": {
+   "counts": [
+    1,
+    0,
+    18,
+    0,
+    18,
+    0,
+    18,
+    0,
+    18,
+    0,
+    18,
+    0,
+    1,
+    0,
+    18,
+    0,
+    18,
+    0,
+    18,
+    0,
+    18,
+    0,
+    18,
+    0,
+    1,
+    0,
+    18,
+    0,
+    18,
+    0,
+    18,
+    0,
+    18,
+    0,
+    18,
+    0,
+    1,
+    0,
+    18,
+    0,
+    18,
+    0,
+    18,
+    0,
+    18,
+    0,
+    18,
+    0
+   ],
+   "n": 364,
+   "pass": false
+  },
+  "cellWithOneAcceptedFailsAdmission": true,
+  "sparseRule": "subgroups need >= 50 rows and >= 2 rows in every contributing cell, else UNAVAILABLE_SPARSE_SUBGROUP"
+ },
+ "safetyBounds": {
+  "zeroIntroductionUpperAtFamily40": {
+   "HOLDOUT_KNOWN_COMPOSITION": {
+    "allFull": 0.005341940216960106,
+    "sixCellsAtTwo": 0.1300005889836302,
+    "limit": 0.02
+   },
+   "OOD_LEVEL": {
+    "allFull": 0.005341940216960106,
+    "sixCellsAtTwo": 0.1300005889836302,
+    "limit": 0.02
+   },
+   "OOD_ROLES": {
+    "allFull": 0.005341940216960106,
+    "sixCellsAtTwo": 0.06726241041953829,
+    "limit": 0.02
+   },
+   "OOD_OBJECTIVES": {
+    "allFull": 0.005144600399781041,
+    "sixCellsAtTwo": 0.0453599444922026,
+    "limit": 0.02
+   },
+   "OOD_SHAPES": {
+    "allFull": 0.004961321226838233,
+    "sixCellsAtTwo": 0.03421659282194034,
+    "limit": 0.02
+   }
+  },
+  "allWithinLimit": false,
+  "harmAndCatastropheIntervals": "unchanged V3 bootstrap rules"
+ },
+ "noOutcomeBasedExclusion": {
+  "admissionRecordFields": [
+   "id",
+   "cell",
+   "band",
+   "rejected",
+   "reason"
+  ],
+  "rejectionPrecedesPolicyAndTruth": true,
+  "recordsCarryNoMetrics": true
+ },
+ "authority": "R0",
+ "verdict": "O3_NOT_VERIFIED"
+}

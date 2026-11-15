@@ -1,0 +1,3415 @@
+{
+ "schema": "STAGE3H_ASCII_COMPETENCE_V1_INVENTORY",
+ "inheritedInventory": {
+  "file": "ascii-quality-v33_1/artifacts/ASCII_V33_1_INVENTORY_V1.json",
+  "sha256": "ae48906d06d65fef7b7ac4cdb5499cbbe312ec99aae8ada333c17160a4ef4221"
+ },
+ "inheritedResult": {
+  "file": "ascii-quality-v33_1/RESULT.json",
+  "sha256": "b21c367e91fb41aec30ec1815bcf0456888510e4bbbff5c3df7d3aa8f8df04f9",
+  "verdict": "PARTIAL_RECOVERY: runtime integrity (load, actions, termination, replay, rendering) verified on all audited levels; two controller bugs repaired as versioned candidates; Pong/Racing win conditions unreached even with privileged drivers (benchmark design, authorization needed for any change); Cards/Roguelike failures are controller competence, preserved unresolved"
+ },
+ "gameCount": 8,
+ "levelCount": 24,
+ "historicalValidationPreserved": "v33/v33.1 results are cited, never rerun or relabeled; their seeds (271828..271839, 0x7c0000xx, 0x7c1000xx) are development-only",
+ "games": [
+  {
+   "game": "pong",
+   "nativeSimulationOwner": "ascii-suite/worlds/pong.mjs + ascii-suite/v32/legacy-extension.mjs",
+   "ownerSha256": [
+    {
+     "file": "ascii-suite/worlds/pong.mjs",
+     "sha256": "35d1c991d5e47810"
+    },
+    {
+     "file": "ascii-suite/v32/legacy-extension.mjs",
+     "sha256": "09f940b1594afea2"
+    }
+   ],
+   "actor": "P0",
+   "stateSchema": {
+    "innerKeys": [
+     "approach",
+     "audit",
+     "ball",
+     "band",
+     "difficulty",
+     "enemyY",
+     "engine",
+     "events",
+     "ext",
+     "game",
+     "height",
+     "lastAction",
+     "lastContact",
+     "lastCrossing",
+     "lastPaddleRef",
+     "metrics",
+     "obsBuffer",
+     "observed",
+     "opponent",
+     "paddleHalf",
+     "playerVel",
+     "playerY",
+     "rally",
+     "result",
+     "reward",
+     "rng",
+     "score",
+     "seed",
+     "style",
+     "terminal",
+     "tick",
+     "width"
+    ],
+    "extKeys": [
+     "balls",
+     "catastrophes",
+     "completed",
+     "enemyVelocity",
+     "family",
+     "half",
+     "history",
+     "limit",
+     "misses",
+     "opponentHistory",
+     "points",
+     "repeated",
+     "return",
+     "returns",
+     "round",
+     "roundResults",
+     "rounds",
+     "sensorDelay",
+     "sensorRng",
+     "shots",
+     "sideCounts",
+     "tier",
+     "velocity"
+    ]
+   },
+   "observationSchema": {
+    "packet": "V32_PUBLIC_PACKET_V1 {binding, observation, actions, sensor}",
+    "observationKeys": [
+     "authority",
+     "ball",
+     "balls",
+     "band",
+     "bandName",
+     "enemyY",
+     "events",
+     "field",
+     "game",
+     "lastContact",
+     "lastCrossing",
+     "legalActions",
+     "paddleHalf",
+     "playerY",
+     "result",
+     "scenario",
+     "score",
+     "sensor",
+     "terminal",
+     "tick",
+     "tier",
+     "trainingStatus",
+     "version"
+    ]
+   },
+   "publicVersusPrivileged": {
+    "innerFieldsNotInObservation": [
+     "approach",
+     "audit",
+     "difficulty",
+     "engine",
+     "ext",
+     "height",
+     "lastAction",
+     "lastPaddleRef",
+     "metrics",
+     "obsBuffer",
+     "observed",
+     "opponent",
+     "playerVel",
+     "rally",
+     "reward",
+     "rng",
+     "seed",
+     "style",
+     "width"
+    ],
+    "privilegedFieldsCounterfactuallyTested": [
+     "inner.rng",
+     "inner.ext.sensorRng",
+     "inner.seed",
+     "inner.ball.spin"
+    ],
+    "explicitWithholding": "line-of-sight/inspection-gated entities"
+   },
+   "legalActions": {
+    "source": "legalLegacy (typed)",
+    "perTier": [
+     {
+      "tier": 1,
+      "types": [
+       "UP",
+       "DOWN",
+       "HOLD"
+      ],
+      "count": 3
+     },
+     {
+      "tier": 2,
+      "types": [
+       "UP",
+       "DOWN",
+       "HOLD"
+      ],
+      "count": 3
+     },
+     {
+      "tier": 3,
+      "types": [
+       "UP",
+       "DOWN",
+       "HOLD"
+      ],
+      "count": 3
+     }
+    ]
+   },
+   "controllers": {
+    "incumbent": "v32 STRONG (ascii-suite/v32/policy.mjs)",
+    "strongest": "v32 STRONG",
+    "reference": "v32 RULE (controllers/index.mjs PRIMARY_BASELINE)",
+    "floors": [
+     "v32 WAIT",
+     "v32 RANDOM"
+    ],
+    "privilegedDiagnosticOnly": "ROOT-PUCT incumbent (ascii-suite/prime.mjs) on the ASCII 2.0 engine only, simulator access, excluded from parity comparisons"
+   },
+   "rewardAndTerminal": {
+    "nativeMetricKeys": [
+     "catastrophic",
+     "episodeReturn",
+     "misses",
+     "objectiveCompletion",
+     "repeatedFailures",
+     "returns",
+     "roundResults",
+     "scoreDifference",
+     "shotCount",
+     "success"
+    ],
+    "primaryMetric": {
+     "field": "scoreDifference",
+     "orientation": 1,
+     "unit": "points"
+    },
+    "catastropheField": "metrics().catastrophic",
+    "perLevel": [
+     {
+      "level": "PONG_ADVANCED_1",
+      "win": "first to 7 points; WIN if player points > opponent points",
+      "loss": "opponent reaches 7 first",
+      "terminal": {
+       "file": "ascii-suite/v32/legacy-extension.mjs",
+       "line": 81,
+       "sha256": "09f940b1594afea2"
+      },
+      "timeout": {
+       "file": "ascii-suite/v32/legacy-extension.mjs",
+       "line": 103,
+       "sha256": "09f940b1594afea2"
+      }
+     },
+     {
+      "level": "PONG_ADVANCED_2",
+      "win": "first to 7 points; WIN if player points > opponent points",
+      "loss": "opponent reaches 7 first",
+      "terminal": {
+       "file": "ascii-suite/v32/legacy-extension.mjs",
+       "line": 81,
+       "sha256": "09f940b1594afea2"
+      },
+      "timeout": {
+       "file": "ascii-suite/v32/legacy-extension.mjs",
+       "line": 103,
+       "sha256": "09f940b1594afea2"
+      }
+     },
+     {
+      "level": "PONG_ADVANCED_3",
+      "win": "first to 7 points; WIN if player points > opponent points",
+      "loss": "opponent reaches 7 first",
+      "terminal": {
+       "file": "ascii-suite/v32/legacy-extension.mjs",
+       "line": 81,
+       "sha256": "09f940b1594afea2"
+      },
+      "timeout": {
+       "file": "ascii-suite/v32/legacy-extension.mjs",
+       "line": 103,
+       "sha256": "09f940b1594afea2"
+      }
+     }
+    ]
+   },
+   "deterministicSeeds": "uint32 seed; create(game, seed, tier, {family, sensor}) is a pure function of its arguments (observer audit sameSeedSameWorld)",
+   "replay": "ascii-suite/v32/kernel.mjs#replay/verifyReplay (per-step inner-state hashes)",
+   "existingTests": [
+    "ascii-suite/suite.test.mjs",
+    "ascii-suite/v3/tests.mjs",
+    "ascii-suite/v31/tests.mjs",
+    "ascii-suite/v32/tests.mjs",
+    "ascii-quality-v33_1/tests.mjs"
+   ],
+   "advancedFixtures": [
+    "PONG_ADVANCED_1",
+    "PONG_ADVANCED_2",
+    "PONG_ADVANCED_3"
+   ],
+   "hazards": "spin, acceleration, noisy delayed ball channel, two-ball mode, adaptive shot opponent; Advanced 1/3 have no constructive win witness",
+   "observableRegime": "NOT_DEFINED (no source-declared regime field)",
+   "observableTime": "NOT_DEFINED",
+   "nativeCounterfactualEvaluator": {
+    "status": "NOT_DEFINED",
+    "reason": "No native counterfactual evaluator or optimal-value oracle in the v32 ASCII kernels; constructive witnesses are existence proofs only"
+   },
+   "fullEpisodeEvaluation": "FEASIBLE (terminal or tick-limit timeout in every level; v33.1 terminalReached 24/24)",
+   "sentinelObserverIntegration": {
+    "path": "ascii-suite/v31/sentinel.mjs",
+    "graph": "EMPTY (no declared relationship model; Nexus returns NEXUS_EMPTY_GRAPH)",
+    "nexusActionAuthority": "none",
+    "oracle": "TEMPORAL_ADVISORY_ONLY_NOT_ACTION_SELECTOR"
+   },
+   "isolatedRecommendationEvaluation": "POSSIBLE: packets are deep-frozen pure functions of state; worlds are structuredClone-isolated; tested by observer audit and shadow non-interference",
+   "levels": [
+    {
+     "level": "PONG_ADVANCED_1",
+     "tier": 1,
+     "label": "Advanced",
+     "name": "Spin Rebound",
+     "demand": "interception with acceleration and spin",
+     "tickLimit": 5000,
+     "actionTypesT0": [
+      "UP",
+      "DOWN",
+      "HOLD"
+     ],
+     "actionCountT0": 3,
+     "step": {
+      "file": "ascii-suite/v32/legacy-extension.mjs",
+      "line": 69,
+      "sha256": "09f940b1594afea2"
+     },
+     "terminal": {
+      "file": "ascii-suite/v32/legacy-extension.mjs",
+      "line": 81,
+      "sha256": "09f940b1594afea2"
+     },
+     "win": "first to 7 points; WIN if player points > opponent points",
+     "loss": "opponent reaches 7 first",
+     "timeout": {
+      "file": "ascii-suite/v32/legacy-extension.mjs",
+      "line": 103,
+      "sha256": "09f940b1594afea2"
+     },
+     "v331Reachability": [
+      "v32 smoke: STRONG 0/2, no privileged constructive witness; not admitted as a win benchmark"
+     ],
+     "v331Unresolved": [
+      "PONG_ADVANCED_1:no-witness;strong-0"
+     ],
+     "nexusT0": {
+      "graphEntities": 0,
+      "graphRelationships": 0,
+      "rationaleCodes": [
+       "NEXUS_EMPTY_GRAPH"
+      ]
+     }
+    },
+    {
+     "level": "PONG_ADVANCED_2",
+     "tier": 2,
+     "label": "Expert",
+     "name": "Multi-Threat Pong",
+     "demand": "competing independently moving threats",
+     "tickLimit": 5000,
+     "actionTypesT0": [
+      "UP",
+      "DOWN",
+      "HOLD"
+     ],
+     "actionCountT0": 3,
+     "step": {
+      "file": "ascii-suite/v32/legacy-extension.mjs",
+      "line": 69,
+      "sha256": "09f940b1594afea2"
+     },
+     "terminal": {
+      "file": "ascii-suite/v32/legacy-extension.mjs",
+      "line": 81,
+      "sha256": "09f940b1594afea2"
+     },
+     "win": "first to 7 points; WIN if player points > opponent points",
+     "loss": "opponent reaches 7 first",
+     "timeout": {
+      "file": "ascii-suite/v32/legacy-extension.mjs",
+      "line": 103,
+      "sha256": "09f940b1594afea2"
+     },
+     "v331Reachability": [
+      "v32 smoke: STRONG 0/2; no witness"
+     ],
+     "v331Unresolved": [
+      "PONG_ADVANCED_2:strong-0"
+     ],
+     "nexusT0": {
+      "graphEntities": 0,
+      "graphRelationships": 0,
+      "rationaleCodes": [
+       "NEXUS_EMPTY_GRAPH"
+      ]
+     }
+    },
+    {
+     "level": "PONG_ADVANCED_3",
+     "tier": 3,
+     "label": "Extreme",
+     "name": "Adaptive Adversarial Pong",
+     "demand": "public-history opponent adaptation and strategic shots",
+     "tickLimit": 5000,
+     "actionTypesT0": [
+      "UP",
+      "DOWN",
+      "HOLD"
+     ],
+     "actionCountT0": 3,
+     "step": {
+      "file": "ascii-suite/v32/legacy-extension.mjs",
+      "line": 69,
+      "sha256": "09f940b1594afea2"
+     },
+     "terminal": {
+      "file": "ascii-suite/v32/legacy-extension.mjs",
+      "line": 81,
+      "sha256": "09f940b1594afea2"
+     },
+     "win": "first to 7 points; WIN if player points > opponent points",
+     "loss": "opponent reaches 7 first",
+     "timeout": {
+      "file": "ascii-suite/v32/legacy-extension.mjs",
+      "line": 103,
+      "sha256": "09f940b1594afea2"
+     },
+     "v331Reachability": [
+      "v32 smoke: STRONG 0/2; no witness"
+     ],
+     "v331Unresolved": [
+      "PONG_ADVANCED_3:no-witness;strong-0"
+     ],
+     "nexusT0": {
+      "graphEntities": 0,
+      "graphRelationships": 0,
+      "rationaleCodes": [
+       "NEXUS_EMPTY_GRAPH"
+      ]
+     }
+    }
+   ]
+  },
+  {
+   "game": "platformer",
+   "nativeSimulationOwner": "ascii-suite/worlds/platformer.mjs + ascii-suite/v32/legacy-extension.mjs",
+   "ownerSha256": [
+    {
+     "file": "ascii-suite/worlds/platformer.mjs",
+     "sha256": "5c869ab10bf14dcd"
+    },
+    {
+     "file": "ascii-suite/v32/legacy-extension.mjs",
+     "sha256": "09f940b1594afea2"
+    }
+   ],
+   "actor": "P0",
+   "stateSchema": {
+    "innerKeys": [
+     "audit",
+     "ceilings",
+     "checkpoint",
+     "checkpoints",
+     "coins",
+     "difficulty",
+     "drift",
+     "enemies",
+     "engine",
+     "events",
+     "exit",
+     "ext",
+     "floor",
+     "game",
+     "gaps",
+     "grounded",
+     "health",
+     "height",
+     "invulnerable",
+     "jumpHeld",
+     "jumpInFlight",
+     "lastAction",
+     "lastDeath",
+     "life",
+     "lifeMaxX",
+     "lifeStartX",
+     "lives",
+     "metrics",
+     "platforms",
+     "result",
+     "reward",
+     "rng",
+     "sections",
+     "seed",
+     "spikes",
+     "style",
+     "takeoff",
+     "terminal",
+     "tick",
+     "vx",
+     "vy",
+     "walls",
+     "width",
+     "wind",
+     "x",
+     "y"
+    ],
+    "extKeys": [
+     "catastrophes",
+     "completed",
+     "failureKeys",
+     "family",
+     "finalObjective",
+     "gate",
+     "hazardPeriod",
+     "hazardXs",
+     "key",
+     "lastDamage",
+     "limit",
+     "moving",
+     "movingPhase",
+     "platformBases",
+     "repeated",
+     "resources",
+     "return",
+     "round",
+     "roundResults",
+     "rounds",
+     "switch",
+     "tier"
+    ]
+   },
+   "observationSchema": {
+    "packet": "V32_PUBLIC_PACKET_V1 {binding, observation, actions, sensor}",
+    "observationKeys": [
+     "authority",
+     "body",
+     "checkpoint",
+     "dependencies",
+     "enemies",
+     "events",
+     "exit",
+     "finalObjective",
+     "game",
+     "hazardPhase",
+     "health",
+     "invulnerable",
+     "lastDeath",
+     "legalActions",
+     "movingPlatforms",
+     "result",
+     "scenario",
+     "sections",
+     "spikes",
+     "stage",
+     "stages",
+     "terminal",
+     "terrain",
+     "tick",
+     "tier",
+     "trainingStatus",
+     "version",
+     "view",
+     "width",
+     "windZones"
+    ]
+   },
+   "publicVersusPrivileged": {
+    "innerFieldsNotInObservation": [
+     "audit",
+     "ceilings",
+     "checkpoints",
+     "coins",
+     "difficulty",
+     "drift",
+     "engine",
+     "ext",
+     "floor",
+     "gaps",
+     "grounded",
+     "height",
+     "jumpHeld",
+     "jumpInFlight",
+     "lastAction",
+     "life",
+     "lifeMaxX",
+     "lifeStartX",
+     "lives",
+     "metrics",
+     "platforms",
+     "reward",
+     "rng",
+     "seed",
+     "style",
+     "takeoff",
+     "vx",
+     "vy",
+     "walls",
+     "wind",
+     "x",
+     "y"
+    ],
+    "privilegedFieldsCounterfactuallyTested": [
+     "inner.rng",
+     "inner.ext.sensorRng",
+     "inner.seed",
+     "inner.wind[].strength"
+    ],
+    "explicitWithholding": "windZones[].strength=null"
+   },
+   "legalActions": {
+    "source": "legalLegacy (typed)",
+    "perTier": [
+     {
+      "tier": 1,
+      "types": [
+       "MOVE_LEFT",
+       "MOVE_RIGHT",
+       "JUMP",
+       "JUMP_LEFT",
+       "JUMP_RIGHT",
+       "CROUCH",
+       "WAIT"
+      ],
+      "count": 7
+     },
+     {
+      "tier": 2,
+      "types": [
+       "MOVE_LEFT",
+       "MOVE_RIGHT",
+       "JUMP",
+       "JUMP_LEFT",
+       "JUMP_RIGHT",
+       "CROUCH",
+       "WAIT"
+      ],
+      "count": 7
+     },
+     {
+      "tier": 3,
+      "types": [
+       "MOVE_LEFT",
+       "MOVE_RIGHT",
+       "JUMP",
+       "JUMP_LEFT",
+       "JUMP_RIGHT",
+       "CROUCH",
+       "WAIT"
+      ],
+      "count": 7
+     }
+    ]
+   },
+   "controllers": {
+    "incumbent": "v32 STRONG (ascii-suite/v32/policy.mjs)",
+    "strongest": "STRONG_V33_1",
+    "reference": "v32 RULE (controllers/index.mjs PRIMARY_BASELINE)",
+    "floors": [
+     "v32 WAIT",
+     "v32 RANDOM"
+    ],
+    "privilegedDiagnosticOnly": "ROOT-PUCT incumbent (ascii-suite/prime.mjs) on the ASCII 2.0 engine only, simulator access, excluded from parity comparisons"
+   },
+   "rewardAndTerminal": {
+    "nativeMetricKeys": [
+     "backtracking",
+     "catastrophic",
+     "collectibles",
+     "completed",
+     "damage",
+     "deaths",
+     "episodeReturn",
+     "hazardsPassed",
+     "headBumps",
+     "illegalActionRequests",
+     "jumpLandingRate",
+     "jumpTimingError",
+     "objectiveCompletion",
+     "progress",
+     "progressPerLife",
+     "repeatedDeathRate",
+     "repeatedDeaths",
+     "repeatedFailureRate",
+     "repeatedFailures",
+     "roundResults",
+     "success"
+    ],
+    "primaryMetric": {
+     "field": "success",
+     "orientation": 1,
+     "unit": "episode win"
+    },
+    "catastropheField": "metrics().catastrophic",
+    "perLevel": [
+     {
+      "level": "PLATFORMER_ADVANCED_1",
+      "win": "x >= exit (tier>=2 also requires key AND switch: gate.open); tier 3 = three stages",
+      "loss": {
+       "file": "ascii-suite/worlds/platformer.mjs",
+       "line": 155,
+       "sha256": "5c869ab10bf14dcd"
+      },
+      "terminal": {
+       "file": "ascii-suite/worlds/platformer.mjs",
+       "line": 189,
+       "sha256": "5c869ab10bf14dcd"
+      },
+      "timeout": {
+       "file": "ascii-suite/v32/legacy-extension.mjs",
+       "line": 103,
+       "sha256": "09f940b1594afea2"
+      }
+     },
+     {
+      "level": "PLATFORMER_ADVANCED_2",
+      "win": "x >= exit (tier>=2 also requires key AND switch: gate.open); tier 3 = three stages",
+      "loss": {
+       "file": "ascii-suite/worlds/platformer.mjs",
+       "line": 155,
+       "sha256": "5c869ab10bf14dcd"
+      },
+      "terminal": {
+       "file": "ascii-suite/worlds/platformer.mjs",
+       "line": 189,
+       "sha256": "5c869ab10bf14dcd"
+      },
+      "timeout": {
+       "file": "ascii-suite/v32/legacy-extension.mjs",
+       "line": 103,
+       "sha256": "09f940b1594afea2"
+      }
+     },
+     {
+      "level": "PLATFORMER_ADVANCED_3",
+      "win": "x >= exit (tier>=2 also requires key AND switch: gate.open); tier 3 = three stages",
+      "loss": {
+       "file": "ascii-suite/worlds/platformer.mjs",
+       "line": 155,
+       "sha256": "5c869ab10bf14dcd"
+      },
+      "terminal": {
+       "file": "ascii-suite/worlds/platformer.mjs",
+       "line": 189,
+       "sha256": "5c869ab10bf14dcd"
+      },
+      "timeout": {
+       "file": "ascii-suite/v32/legacy-extension.mjs",
+       "line": 103,
+       "sha256": "09f940b1594afea2"
+      }
+     }
+    ]
+   },
+   "deterministicSeeds": "uint32 seed; create(game, seed, tier, {family, sensor}) is a pure function of its arguments (observer audit sameSeedSameWorld)",
+   "replay": "ascii-suite/v32/kernel.mjs#replay/verifyReplay (per-step inner-state hashes)",
+   "existingTests": [
+    "ascii-suite/suite.test.mjs",
+    "ascii-suite/v3/tests.mjs",
+    "ascii-suite/v31/tests.mjs",
+    "ascii-suite/v32/tests.mjs",
+    "ascii-quality-v33_1/tests.mjs"
+   ],
+   "advancedFixtures": [
+    "PLATFORMER_ADVANCED_1",
+    "PLATFORMER_ADVANCED_2",
+    "PLATFORMER_ADVANCED_3"
+   ],
+   "hazards": "gaps, spikes, patrols, moving platforms, timed hazards, key/switch/gate dependencies, tier-3 wind (strength withheld)",
+   "observableRegime": {
+    "field": "enemies"
+   },
+   "observableTime": "NOT_DEFINED",
+   "nativeCounterfactualEvaluator": {
+    "status": "NOT_DEFINED",
+    "reason": "No native counterfactual evaluator or optimal-value oracle in the v32 ASCII kernels; constructive witnesses are existence proofs only"
+   },
+   "fullEpisodeEvaluation": "FEASIBLE (terminal or tick-limit timeout in every level; v33.1 terminalReached 24/24)",
+   "sentinelObserverIntegration": {
+    "path": "ascii-suite/v31/sentinel.mjs",
+    "graph": "EMPTY (no declared relationship model; Nexus returns NEXUS_EMPTY_GRAPH)",
+    "nexusActionAuthority": "none",
+    "oracle": "TEMPORAL_ADVISORY_ONLY_NOT_ACTION_SELECTOR"
+   },
+   "isolatedRecommendationEvaluation": "POSSIBLE: packets are deep-frozen pure functions of state; worlds are structuredClone-isolated; tested by observer audit and shadow non-interference",
+   "levels": [
+    {
+     "level": "PLATFORMER_ADVANCED_1",
+     "tier": 1,
+     "label": "Advanced",
+     "name": "Moving-Hazard Gauntlet",
+     "demand": "phase-dependent moving platforms and hazards",
+     "tickLimit": 1500,
+     "actionTypesT0": [
+      "MOVE_LEFT",
+      "MOVE_RIGHT",
+      "JUMP",
+      "JUMP_LEFT",
+      "JUMP_RIGHT",
+      "CROUCH",
+      "WAIT"
+     ],
+     "actionCountT0": 7,
+     "step": {
+      "file": "ascii-suite/worlds/platformer.mjs",
+      "line": 158,
+      "sha256": "5c869ab10bf14dcd"
+     },
+     "terminal": {
+      "file": "ascii-suite/worlds/platformer.mjs",
+      "line": 189,
+      "sha256": "5c869ab10bf14dcd"
+     },
+     "win": "x >= exit (tier>=2 also requires key AND switch: gate.open); tier 3 = three stages",
+     "loss": {
+      "file": "ascii-suite/worlds/platformer.mjs",
+      "line": 155,
+      "sha256": "5c869ab10bf14dcd"
+     },
+     "timeout": {
+      "file": "ascii-suite/v32/legacy-extension.mjs",
+      "line": 103,
+      "sha256": "09f940b1594afea2"
+     },
+     "v331Reachability": [
+      "STRONG softlock: receding-horizon oscillation around x 104.75-108.75 targeting GAP@133, TIMEOUT 12/12 (ascii-quality-v33 RESULT.json); world solvable (scripted witness WIN t169)"
+     ],
+     "v331Unresolved": [
+      "PLATFORMER_ADVANCED_1:strong-0"
+     ],
+     "nexusT0": {
+      "graphEntities": 0,
+      "graphRelationships": 0,
+      "rationaleCodes": [
+       "NEXUS_EMPTY_GRAPH"
+      ]
+     }
+    },
+    {
+     "level": "PLATFORMER_ADVANCED_2",
+     "tier": 2,
+     "label": "Expert",
+     "name": "Multi-Route Dependency Run",
+     "demand": "key/switch/gate dependencies and backtracking",
+     "tickLimit": 1500,
+     "actionTypesT0": [
+      "MOVE_LEFT",
+      "MOVE_RIGHT",
+      "JUMP",
+      "JUMP_LEFT",
+      "JUMP_RIGHT",
+      "CROUCH",
+      "WAIT"
+     ],
+     "actionCountT0": 7,
+     "step": {
+      "file": "ascii-suite/worlds/platformer.mjs",
+      "line": 158,
+      "sha256": "5c869ab10bf14dcd"
+     },
+     "terminal": {
+      "file": "ascii-suite/worlds/platformer.mjs",
+      "line": 189,
+      "sha256": "5c869ab10bf14dcd"
+     },
+     "win": "x >= exit (tier>=2 also requires key AND switch: gate.open); tier 3 = three stages",
+     "loss": {
+      "file": "ascii-suite/worlds/platformer.mjs",
+      "line": 155,
+      "sha256": "5c869ab10bf14dcd"
+     },
+     "timeout": {
+      "file": "ascii-suite/v32/legacy-extension.mjs",
+      "line": 103,
+      "sha256": "09f940b1594afea2"
+     },
+     "v331Reachability": [
+      "none recorded beyond shallow smoke (reset + planner steps)"
+     ],
+     "v331Unresolved": [],
+     "nexusT0": {
+      "graphEntities": 0,
+      "graphRelationships": 0,
+      "rationaleCodes": [
+       "NEXUS_EMPTY_GRAPH"
+      ]
+     }
+    },
+    {
+     "level": "PLATFORMER_ADVANCED_3",
+     "tier": 3,
+     "label": "Extreme",
+     "name": "Extreme Expedition",
+     "demand": "multi-stage resource conservation and wind",
+     "tickLimit": 4500,
+     "actionTypesT0": [
+      "MOVE_LEFT",
+      "MOVE_RIGHT",
+      "JUMP",
+      "JUMP_LEFT",
+      "JUMP_RIGHT",
+      "CROUCH",
+      "WAIT"
+     ],
+     "actionCountT0": 7,
+     "step": {
+      "file": "ascii-suite/worlds/platformer.mjs",
+      "line": 158,
+      "sha256": "5c869ab10bf14dcd"
+     },
+     "terminal": {
+      "file": "ascii-suite/worlds/platformer.mjs",
+      "line": 189,
+      "sha256": "5c869ab10bf14dcd"
+     },
+     "win": "x >= exit (tier>=2 also requires key AND switch: gate.open); tier 3 = three stages",
+     "loss": {
+      "file": "ascii-suite/worlds/platformer.mjs",
+      "line": 155,
+      "sha256": "5c869ab10bf14dcd"
+     },
+     "timeout": {
+      "file": "ascii-suite/v32/legacy-extension.mjs",
+      "line": 103,
+      "sha256": "09f940b1594afea2"
+     },
+     "v331Reachability": [
+      "none recorded beyond shallow smoke (reset + planner steps)"
+     ],
+     "v331Unresolved": [],
+     "nexusT0": {
+      "graphEntities": 0,
+      "graphRelationships": 0,
+      "rationaleCodes": [
+       "NEXUS_EMPTY_GRAPH"
+      ]
+     }
+    }
+   ]
+  },
+  {
+   "game": "fighter",
+   "nativeSimulationOwner": "ascii-suite/worlds/fighter.mjs + ascii-suite/v32/legacy-extension.mjs",
+   "ownerSha256": [
+    {
+     "file": "ascii-suite/worlds/fighter.mjs",
+     "sha256": "9367f528ab66add0"
+    },
+    {
+     "file": "ascii-suite/v32/legacy-extension.mjs",
+     "sha256": "09f940b1594afea2"
+    }
+   ],
+   "actor": "P0",
+   "stateSchema": {
+    "innerKeys": [
+     "audit",
+     "combatLog",
+     "difficulty",
+     "engine",
+     "events",
+     "ext",
+     "fighters",
+     "game",
+     "habits",
+     "height",
+     "lastAction",
+     "metrics",
+     "opponentMode",
+     "reactionBuffer",
+     "result",
+     "reward",
+     "rng",
+     "roundTicks",
+     "seed",
+     "style",
+     "terminal",
+     "tick",
+     "width"
+    ],
+    "extKeys": [
+     "blocks",
+     "catastrophes",
+     "completed",
+     "externalDelay",
+     "externalMissing",
+     "family",
+     "habits",
+     "history",
+     "hits",
+     "lastOpponent",
+     "limit",
+     "reaction",
+     "repeated",
+     "return",
+     "round",
+     "roundResults",
+     "roundTick",
+     "rounds",
+     "styles",
+     "taken",
+     "tier",
+     "whiffs"
+    ]
+   },
+   "observationSchema": {
+    "packet": "V32_PUBLIC_PACKET_V1 {binding, observation, actions, sensor}",
+    "observationKeys": [
+     "authority",
+     "distance",
+     "events",
+     "game",
+     "legalActions",
+     "me",
+     "opponent",
+     "opponentCapabilities",
+     "result",
+     "round",
+     "rounds",
+     "scenario",
+     "terminal",
+     "tick",
+     "tier",
+     "timeLeft",
+     "trainingStatus",
+     "version"
+    ]
+   },
+   "publicVersusPrivileged": {
+    "innerFieldsNotInObservation": [
+     "audit",
+     "combatLog",
+     "difficulty",
+     "engine",
+     "ext",
+     "fighters",
+     "habits",
+     "height",
+     "lastAction",
+     "metrics",
+     "opponentMode",
+     "reactionBuffer",
+     "reward",
+     "rng",
+     "roundTicks",
+     "seed",
+     "style",
+     "width"
+    ],
+    "privilegedFieldsCounterfactuallyTested": [
+     "inner.rng",
+     "inner.ext.sensorRng",
+     "inner.seed",
+     "inner.opponentMode",
+     "inner.ext.styles"
+    ],
+    "explicitWithholding": "opponentCapabilities.privateStyle=WITHHELD"
+   },
+   "legalActions": {
+    "source": "legalLegacy (typed)",
+    "perTier": [
+     {
+      "tier": 1,
+      "types": [
+       "WAIT",
+       "WALK_FORWARD",
+       "WALK_BACK",
+       "JUMP_UP",
+       "JUMP_FORWARD",
+       "JUMP_BACK",
+       "CROUCH",
+       "BLOCK_HIGH",
+       "BLOCK_LOW",
+       "LIGHT_ATTACK",
+       "HEAVY_ATTACK",
+       "LOW_ATTACK"
+      ],
+      "count": 12
+     },
+     {
+      "tier": 2,
+      "types": [
+       "WAIT",
+       "WALK_FORWARD",
+       "WALK_BACK",
+       "JUMP_UP",
+       "JUMP_FORWARD",
+       "JUMP_BACK",
+       "CROUCH",
+       "BLOCK_HIGH",
+       "BLOCK_LOW",
+       "LIGHT_ATTACK",
+       "HEAVY_ATTACK",
+       "LOW_ATTACK"
+      ],
+      "count": 12
+     },
+     {
+      "tier": 3,
+      "types": [
+       "WAIT",
+       "WALK_FORWARD",
+       "WALK_BACK",
+       "JUMP_UP",
+       "JUMP_FORWARD",
+       "JUMP_BACK",
+       "CROUCH",
+       "BLOCK_HIGH",
+       "BLOCK_LOW",
+       "LIGHT_ATTACK",
+       "HEAVY_ATTACK",
+       "LOW_ATTACK"
+      ],
+      "count": 12
+     }
+    ]
+   },
+   "controllers": {
+    "incumbent": "v32 STRONG (ascii-suite/v32/policy.mjs)",
+    "strongest": "v32 STRONG",
+    "reference": "v32 RULE (controllers/index.mjs PRIMARY_BASELINE)",
+    "floors": [
+     "v32 WAIT",
+     "v32 RANDOM"
+    ],
+    "privilegedDiagnosticOnly": "ROOT-PUCT incumbent (ascii-suite/prime.mjs) on the ASCII 2.0 engine only, simulator access, excluded from parity comparisons"
+   },
+   "rewardAndTerminal": {
+    "nativeMetricKeys": [
+     "blocks",
+     "catastrophic",
+     "damageDealt",
+     "damageTaken",
+     "episodeReturn",
+     "objectiveCompletion",
+     "repeatedFailures",
+     "roundResults",
+     "success",
+     "whiffs"
+    ],
+    "primaryMetric": {
+     "field": "success",
+     "orientation": 1,
+     "unit": "match win"
+    },
+    "catastropheField": "metrics().catastrophic",
+    "perLevel": [
+     {
+      "level": "FIGHTER_ADVANCED_1",
+      "win": "win every round (1/6/12 rounds); round won when opponent KO or higher health at 900 ticks",
+      "loss": "any round lost ends the tournament with LOSS",
+      "terminal": {
+       "file": "ascii-suite/v32/legacy-extension.mjs",
+       "line": 67,
+       "sha256": "09f940b1594afea2"
+      },
+      "timeout": "per-round 900 ticks decides by health; episode limit 900*rounds"
+     },
+     {
+      "level": "FIGHTER_ADVANCED_2",
+      "win": "win every round (1/6/12 rounds); round won when opponent KO or higher health at 900 ticks",
+      "loss": "any round lost ends the tournament with LOSS",
+      "terminal": {
+       "file": "ascii-suite/v32/legacy-extension.mjs",
+       "line": 67,
+       "sha256": "09f940b1594afea2"
+      },
+      "timeout": "per-round 900 ticks decides by health; episode limit 900*rounds"
+     },
+     {
+      "level": "FIGHTER_ADVANCED_3",
+      "win": "win every round (1/6/12 rounds); round won when opponent KO or higher health at 900 ticks",
+      "loss": "any round lost ends the tournament with LOSS",
+      "terminal": {
+       "file": "ascii-suite/v32/legacy-extension.mjs",
+       "line": 67,
+       "sha256": "09f940b1594afea2"
+      },
+      "timeout": "per-round 900 ticks decides by health; episode limit 900*rounds"
+     }
+    ]
+   },
+   "deterministicSeeds": "uint32 seed; create(game, seed, tier, {family, sensor}) is a pure function of its arguments (observer audit sameSeedSameWorld)",
+   "replay": "ascii-suite/v32/kernel.mjs#replay/verifyReplay (per-step inner-state hashes)",
+   "existingTests": [
+    "ascii-suite/suite.test.mjs",
+    "ascii-suite/v3/tests.mjs",
+    "ascii-suite/v31/tests.mjs",
+    "ascii-suite/v32/tests.mjs",
+    "ascii-quality-v33_1/tests.mjs"
+   ],
+   "advancedFixtures": [
+    "FIGHTER_ADVANCED_1",
+    "FIGHTER_ADVANCED_2",
+    "FIGHTER_ADVANCED_3"
+   ],
+   "hazards": "startup/active/recovery frames, cross-ups, hidden opponent style, equal reaction latency",
+   "observableRegime": {
+    "field": "opponent.phase"
+   },
+   "observableTime": {
+    "field": "timeLeft",
+    "note": "public remaining-budget label, not a planning horizon"
+   },
+   "nativeCounterfactualEvaluator": {
+    "status": "NOT_DEFINED",
+    "reason": "No native counterfactual evaluator or optimal-value oracle in the v32 ASCII kernels; constructive witnesses are existence proofs only"
+   },
+   "fullEpisodeEvaluation": "FEASIBLE (terminal or tick-limit timeout in every level; v33.1 terminalReached 24/24)",
+   "sentinelObserverIntegration": {
+    "path": "ascii-suite/v31/sentinel.mjs",
+    "graph": "EMPTY (no declared relationship model; Nexus returns NEXUS_EMPTY_GRAPH)",
+    "nexusActionAuthority": "none",
+    "oracle": "TEMPORAL_ADVISORY_ONLY_NOT_ACTION_SELECTOR"
+   },
+   "isolatedRecommendationEvaluation": "POSSIBLE: packets are deep-frozen pure functions of state; worlds are structuredClone-isolated; tested by observer audit and shadow non-interference",
+   "levels": [
+    {
+     "level": "FIGHTER_ADVANCED_1",
+     "tier": 1,
+     "label": "Advanced",
+     "name": "Defensive Counter Specialist",
+     "demand": "spacing, countering and repeat-move punishment",
+     "tickLimit": 900,
+     "actionTypesT0": [
+      "WAIT",
+      "WALK_FORWARD",
+      "WALK_BACK",
+      "JUMP_UP",
+      "JUMP_FORWARD",
+      "JUMP_BACK",
+      "CROUCH",
+      "BLOCK_HIGH",
+      "BLOCK_LOW",
+      "LIGHT_ATTACK",
+      "HEAVY_ATTACK",
+      "LOW_ATTACK"
+     ],
+     "actionCountT0": 12,
+     "step": {
+      "file": "ascii-suite/v32/legacy-extension.mjs",
+      "line": 63,
+      "sha256": "09f940b1594afea2"
+     },
+     "terminal": {
+      "file": "ascii-suite/v32/legacy-extension.mjs",
+      "line": 67,
+      "sha256": "09f940b1594afea2"
+     },
+     "win": "win every round (1/6/12 rounds); round won when opponent KO or higher health at 900 ticks",
+     "loss": "any round lost ends the tournament with LOSS",
+     "timeout": "per-round 900 ticks decides by health; episode limit 900*rounds",
+     "v331Reachability": [
+      "v32 smoke: STRONG/DELAYED and /STALE lose (sensor sweep, expected degradation)"
+     ],
+     "v331Unresolved": [],
+     "nexusT0": {
+      "graphEntities": 0,
+      "graphRelationships": 0,
+      "rationaleCodes": [
+       "NEXUS_EMPTY_GRAPH"
+      ]
+     }
+    },
+    {
+     "level": "FIGHTER_ADVANCED_2",
+     "tier": 2,
+     "label": "Expert",
+     "name": "Tournament of Styles",
+     "demand": "six public-behavior opponent styles",
+     "tickLimit": 5400,
+     "actionTypesT0": [
+      "WAIT",
+      "WALK_FORWARD",
+      "WALK_BACK",
+      "JUMP_UP",
+      "JUMP_FORWARD",
+      "JUMP_BACK",
+      "CROUCH",
+      "BLOCK_HIGH",
+      "BLOCK_LOW",
+      "LIGHT_ATTACK",
+      "HEAVY_ATTACK",
+      "LOW_ATTACK"
+     ],
+     "actionCountT0": 12,
+     "step": {
+      "file": "ascii-suite/v32/legacy-extension.mjs",
+      "line": 63,
+      "sha256": "09f940b1594afea2"
+     },
+     "terminal": {
+      "file": "ascii-suite/v32/legacy-extension.mjs",
+      "line": 67,
+      "sha256": "09f940b1594afea2"
+     },
+     "win": "win every round (1/6/12 rounds); round won when opponent KO or higher health at 900 ticks",
+     "loss": "any round lost ends the tournament with LOSS",
+     "timeout": "per-round 900 ticks decides by health; episode limit 900*rounds",
+     "v331Reachability": [
+      "none recorded beyond shallow smoke (reset + planner steps)"
+     ],
+     "v331Unresolved": [],
+     "nexusT0": {
+      "graphEntities": 0,
+      "graphRelationships": 0,
+      "rationaleCodes": [
+       "NEXUS_EMPTY_GRAPH"
+      ]
+     }
+    },
+    {
+     "level": "FIGHTER_ADVANCED_3",
+     "tier": 3,
+     "label": "Extreme",
+     "name": "Adaptive Championship",
+     "demand": "multi-round equal-latency adaptation",
+     "tickLimit": 10800,
+     "actionTypesT0": [
+      "WAIT",
+      "WALK_FORWARD",
+      "WALK_BACK",
+      "JUMP_UP",
+      "JUMP_FORWARD",
+      "JUMP_BACK",
+      "CROUCH",
+      "BLOCK_HIGH",
+      "BLOCK_LOW",
+      "LIGHT_ATTACK",
+      "HEAVY_ATTACK",
+      "LOW_ATTACK"
+     ],
+     "actionCountT0": 12,
+     "step": {
+      "file": "ascii-suite/v32/legacy-extension.mjs",
+      "line": 63,
+      "sha256": "09f940b1594afea2"
+     },
+     "terminal": {
+      "file": "ascii-suite/v32/legacy-extension.mjs",
+      "line": 67,
+      "sha256": "09f940b1594afea2"
+     },
+     "win": "win every round (1/6/12 rounds); round won when opponent KO or higher health at 900 ticks",
+     "loss": "any round lost ends the tournament with LOSS",
+     "timeout": "per-round 900 ticks decides by health; episode limit 900*rounds",
+     "v331Reachability": [
+      "none recorded beyond shallow smoke (reset + planner steps)"
+     ],
+     "v331Unresolved": [],
+     "nexusT0": {
+      "graphEntities": 0,
+      "graphRelationships": 0,
+      "rationaleCodes": [
+       "NEXUS_EMPTY_GRAPH"
+      ]
+     }
+    }
+   ]
+  },
+  {
+   "game": "racing",
+   "nativeSimulationOwner": "ascii-suite/worlds/racing.mjs + ascii-suite/v32/legacy-extension.mjs",
+   "ownerSha256": [
+    {
+     "file": "ascii-suite/worlds/racing.mjs",
+     "sha256": "b9fa9b45e6e1fa57"
+    },
+    {
+     "file": "ascii-suite/v32/legacy-extension.mjs",
+     "sha256": "09f940b1594afea2"
+    }
+   ],
+   "actor": "P0",
+   "stateSchema": {
+    "innerKeys": [
+     "audit",
+     "difficulty",
+     "engine",
+     "events",
+     "ext",
+     "game",
+     "height",
+     "lap",
+     "lapStart",
+     "lapTimes",
+     "lastAction",
+     "metrics",
+     "pairCooldown",
+     "player",
+     "result",
+     "reward",
+     "rivals",
+     "rng",
+     "seed",
+     "startPlace",
+     "style",
+     "terminal",
+     "tick",
+     "track",
+     "width"
+    ],
+    "extKeys": [
+     "baseWet",
+     "catastrophes",
+     "completed",
+     "family",
+     "limit",
+     "repeated",
+     "return",
+     "round",
+     "roundResults",
+     "rounds",
+     "startGrid",
+     "tier",
+     "weather",
+     "weatherPeriod"
+    ]
+   },
+   "observationSchema": {
+    "packet": "V32_PUBLIC_PACKET_V1 {binding, observation, actions, sensor}",
+    "observationKeys": [
+     "authority",
+     "cars",
+     "events",
+     "game",
+     "gridSlot",
+     "lapLength",
+     "laps",
+     "legalActions",
+     "me",
+     "preview",
+     "race",
+     "races",
+     "result",
+     "road",
+     "scenario",
+     "standings",
+     "terminal",
+     "tick",
+     "tier",
+     "trainingStatus",
+     "version",
+     "weather"
+    ]
+   },
+   "publicVersusPrivileged": {
+    "innerFieldsNotInObservation": [
+     "audit",
+     "difficulty",
+     "engine",
+     "ext",
+     "height",
+     "lap",
+     "lapStart",
+     "lapTimes",
+     "lastAction",
+     "metrics",
+     "pairCooldown",
+     "player",
+     "reward",
+     "rivals",
+     "rng",
+     "seed",
+     "startPlace",
+     "style",
+     "track",
+     "width"
+    ],
+    "privilegedFieldsCounterfactuallyTested": [
+     "inner.rng",
+     "inner.ext.sensorRng",
+     "inner.seed"
+    ],
+    "explicitWithholding": "line-of-sight/inspection-gated entities"
+   },
+   "legalActions": {
+    "source": "legalLegacy (typed)",
+    "perTier": [
+     {
+      "tier": 1,
+      "types": [
+       "ACCELERATE",
+       "BRAKE",
+       "TURN_LEFT",
+       "TURN_RIGHT",
+       "HOLD"
+      ],
+      "count": 5
+     },
+     {
+      "tier": 2,
+      "types": [
+       "ACCELERATE",
+       "BRAKE",
+       "TURN_LEFT",
+       "TURN_RIGHT",
+       "HOLD"
+      ],
+      "count": 5
+     },
+     {
+      "tier": 3,
+      "types": [
+       "ACCELERATE",
+       "BRAKE",
+       "TURN_LEFT",
+       "TURN_RIGHT",
+       "HOLD"
+      ],
+      "count": 5
+     }
+    ]
+   },
+   "controllers": {
+    "incumbent": "v32 STRONG (ascii-suite/v32/policy.mjs)",
+    "strongest": "v32 STRONG",
+    "reference": "v32 RULE (controllers/index.mjs PRIMARY_BASELINE)",
+    "floors": [
+     "v32 WAIT",
+     "v32 RANDOM"
+    ],
+    "privilegedDiagnosticOnly": "ROOT-PUCT incumbent (ascii-suite/prime.mjs) on the ASCII 2.0 engine only, simulator access, excluded from parity comparisons"
+   },
+   "rewardAndTerminal": {
+    "nativeMetricKeys": [
+     "averageSpeed",
+     "barrierHits",
+     "carContacts",
+     "catastrophic",
+     "collisions",
+     "cornerEfficiency",
+     "episodeReturn",
+     "finishSpreadTicks",
+     "gapBehindCarAheadTicks",
+     "lapTimesTicks",
+     "meanLapTicks",
+     "nearestRivalGap",
+     "objectiveCompletion",
+     "offTrackTicks",
+     "overtakes",
+     "placement",
+     "positionsLost",
+     "repeatedFailureRate",
+     "repeatedFailures",
+     "roundResults",
+     "slides",
+     "startPlace",
+     "steeringReversals",
+     "success",
+     "winnerTicks"
+    ],
+    "primaryMetric": {
+     "field": "placement",
+     "orientation": -1,
+     "unit": "finishing place"
+    },
+    "catastropheField": "metrics().catastrophic",
+    "perLevel": [
+     {
+      "level": "RACING_ADVANCED_1",
+      "win": "success = FINISH_PLACE_1 in every race (tier 3: three races)",
+      "loss": "any placement other than first is not success (no LOSS result; FINISH_PLACE_n)",
+      "terminal": {
+       "file": "ascii-suite/worlds/racing.mjs",
+       "line": 153,
+       "sha256": "b9fa9b45e6e1fa57"
+      },
+      "timeout": {
+       "file": "ascii-suite/v32/legacy-extension.mjs",
+       "line": 103,
+       "sha256": "09f940b1594afea2"
+      }
+     },
+     {
+      "level": "RACING_ADVANCED_2",
+      "win": "success = FINISH_PLACE_1 in every race (tier 3: three races)",
+      "loss": "any placement other than first is not success (no LOSS result; FINISH_PLACE_n)",
+      "terminal": {
+       "file": "ascii-suite/worlds/racing.mjs",
+       "line": 153,
+       "sha256": "b9fa9b45e6e1fa57"
+      },
+      "timeout": {
+       "file": "ascii-suite/v32/legacy-extension.mjs",
+       "line": 103,
+       "sha256": "09f940b1594afea2"
+      }
+     },
+     {
+      "level": "RACING_ADVANCED_3",
+      "win": "success = FINISH_PLACE_1 in every race (tier 3: three races)",
+      "loss": "any placement other than first is not success (no LOSS result; FINISH_PLACE_n)",
+      "terminal": {
+       "file": "ascii-suite/worlds/racing.mjs",
+       "line": 153,
+       "sha256": "b9fa9b45e6e1fa57"
+      },
+      "timeout": {
+       "file": "ascii-suite/v32/legacy-extension.mjs",
+       "line": 103,
+       "sha256": "09f940b1594afea2"
+      }
+     }
+    ]
+   },
+   "deterministicSeeds": "uint32 seed; create(game, seed, tier, {family, sensor}) is a pure function of its arguments (observer audit sameSeedSameWorld)",
+   "replay": "ascii-suite/v32/kernel.mjs#replay/verifyReplay (per-step inner-state hashes)",
+   "existingTests": [
+    "ascii-suite/suite.test.mjs",
+    "ascii-suite/v3/tests.mjs",
+    "ascii-suite/v31/tests.mjs",
+    "ascii-suite/v32/tests.mjs",
+    "ascii-quality-v33_1/tests.mjs"
+   ],
+   "advancedFixtures": [
+    "RACING_ADVANCED_1",
+    "RACING_ADVANCED_2",
+    "RACING_ADVANCED_3"
+   ],
+   "hazards": "grip limit, wet corners, barriers, car contact, rotated starting grid decides first place (v33.1)",
+   "observableRegime": {
+    "field": "weather"
+   },
+   "observableTime": "NOT_DEFINED",
+   "nativeCounterfactualEvaluator": {
+    "status": "NOT_DEFINED",
+    "reason": "No native counterfactual evaluator or optimal-value oracle in the v32 ASCII kernels; constructive witnesses are existence proofs only"
+   },
+   "fullEpisodeEvaluation": "FEASIBLE (terminal or tick-limit timeout in every level; v33.1 terminalReached 24/24)",
+   "sentinelObserverIntegration": {
+    "path": "ascii-suite/v31/sentinel.mjs",
+    "graph": "EMPTY (no declared relationship model; Nexus returns NEXUS_EMPTY_GRAPH)",
+    "nexusActionAuthority": "none",
+    "oracle": "TEMPORAL_ADVISORY_ONLY_NOT_ACTION_SELECTOR"
+   },
+   "isolatedRecommendationEvaluation": "POSSIBLE: packets are deep-frozen pure functions of state; worlds are structuredClone-isolated; tested by observer audit and shadow non-interference",
+   "levels": [
+    {
+     "level": "RACING_ADVANCED_1",
+     "tier": 1,
+     "label": "Advanced",
+     "name": "Technical Circuit",
+     "demand": "hairpin/chicane traffic and rotated starting grids",
+     "tickLimit": 6000,
+     "actionTypesT0": [
+      "ACCELERATE",
+      "BRAKE",
+      "TURN_LEFT",
+      "TURN_RIGHT",
+      "HOLD"
+     ],
+     "actionCountT0": 5,
+     "step": {
+      "file": "ascii-suite/worlds/racing.mjs",
+      "line": 122,
+      "sha256": "b9fa9b45e6e1fa57"
+     },
+     "terminal": {
+      "file": "ascii-suite/worlds/racing.mjs",
+      "line": 153,
+      "sha256": "b9fa9b45e6e1fa57"
+     },
+     "win": "success = FINISH_PLACE_1 in every race (tier 3: three races)",
+     "loss": "any placement other than first is not success (no LOSS result; FINISH_PLACE_n)",
+     "timeout": {
+      "file": "ascii-suite/v32/legacy-extension.mjs",
+      "line": 103,
+      "sha256": "09f940b1594afea2"
+     },
+     "v331Reachability": [
+      "v32 smoke: STRONG never first; no first-place witness"
+     ],
+     "v331Unresolved": [],
+     "nexusT0": {
+      "graphEntities": 0,
+      "graphRelationships": 0,
+      "rationaleCodes": [
+       "NEXUS_EMPTY_GRAPH"
+      ]
+     }
+    },
+    {
+     "level": "RACING_ADVANCED_2",
+     "tier": 2,
+     "label": "Expert",
+     "name": "Variable-Grip Endurance",
+     "demand": "public weather transitions and grip estimation",
+     "tickLimit": 6000,
+     "actionTypesT0": [
+      "ACCELERATE",
+      "BRAKE",
+      "TURN_LEFT",
+      "TURN_RIGHT",
+      "HOLD"
+     ],
+     "actionCountT0": 5,
+     "step": {
+      "file": "ascii-suite/worlds/racing.mjs",
+      "line": 122,
+      "sha256": "b9fa9b45e6e1fa57"
+     },
+     "terminal": {
+      "file": "ascii-suite/worlds/racing.mjs",
+      "line": 153,
+      "sha256": "b9fa9b45e6e1fa57"
+     },
+     "win": "success = FINISH_PLACE_1 in every race (tier 3: three races)",
+     "loss": "any placement other than first is not success (no LOSS result; FINISH_PLACE_n)",
+     "timeout": {
+      "file": "ascii-suite/v32/legacy-extension.mjs",
+      "line": 103,
+      "sha256": "09f940b1594afea2"
+     },
+     "v331Reachability": [
+      "v32 smoke: STRONG never first; no witness"
+     ],
+     "v331Unresolved": [],
+     "nexusT0": {
+      "graphEntities": 0,
+      "graphRelationships": 0,
+      "rationaleCodes": [
+       "NEXUS_EMPTY_GRAPH"
+      ]
+     }
+    },
+    {
+     "level": "RACING_ADVANCED_3",
+     "tier": 3,
+     "label": "Extreme",
+     "name": "Extreme Racing Championship",
+     "demand": "multi-race risk-aware placement",
+     "tickLimit": 18000,
+     "actionTypesT0": [
+      "ACCELERATE",
+      "BRAKE",
+      "TURN_LEFT",
+      "TURN_RIGHT",
+      "HOLD"
+     ],
+     "actionCountT0": 5,
+     "step": {
+      "file": "ascii-suite/worlds/racing.mjs",
+      "line": 122,
+      "sha256": "b9fa9b45e6e1fa57"
+     },
+     "terminal": {
+      "file": "ascii-suite/worlds/racing.mjs",
+      "line": 153,
+      "sha256": "b9fa9b45e6e1fa57"
+     },
+     "win": "success = FINISH_PLACE_1 in every race (tier 3: three races)",
+     "loss": "any placement other than first is not success (no LOSS result; FINISH_PLACE_n)",
+     "timeout": {
+      "file": "ascii-suite/v32/legacy-extension.mjs",
+      "line": 103,
+      "sha256": "09f940b1594afea2"
+     },
+     "v331Reachability": [
+      "v32 smoke: STRONG never first; no witness"
+     ],
+     "v331Unresolved": [
+      "RACING_ADVANCED_3:no-witness;strong-0"
+     ],
+     "nexusT0": {
+      "graphEntities": 0,
+      "graphRelationships": 0,
+      "rationaleCodes": [
+       "NEXUS_EMPTY_GRAPH"
+      ]
+     }
+    }
+   ]
+  },
+  {
+   "game": "rescue",
+   "nativeSimulationOwner": "ascii-suite/v3/kernel.mjs + ascii-suite/v32/strategic-extension.mjs",
+   "ownerSha256": [
+    {
+     "file": "ascii-suite/v3/kernel.mjs",
+     "sha256": "f344a597f0c4cd2f"
+    },
+    {
+     "file": "ascii-suite/v32/strategic-extension.mjs",
+     "sha256": "db36e408c8bbb016"
+    }
+   ],
+   "actor": "selected team unit (SELECT_UNIT)",
+   "stateSchema": {
+    "innerKeys": [
+     "active",
+     "admission",
+     "civilians",
+     "config",
+     "contact",
+     "credential",
+     "difficulty",
+     "enemies",
+     "episodeReturn",
+     "events",
+     "ext",
+     "extracted",
+     "extraction",
+     "floors",
+     "game",
+     "grid",
+     "haveKey",
+     "hazards",
+     "height",
+     "history",
+     "limit",
+     "lockedDoors",
+     "metrics",
+     "required",
+     "result",
+     "scoutUntil",
+     "secured",
+     "seed",
+     "supplies",
+     "terminal",
+     "tick",
+     "units",
+     "version",
+     "width"
+    ],
+    "extKeys": [
+     "artifact",
+     "catastrophes",
+     "closures",
+     "completed",
+     "extractions",
+     "failureKeys",
+     "family",
+     "intel",
+     "relocations",
+     "repeated",
+     "return",
+     "round",
+     "roundResults",
+     "rounds",
+     "tier"
+    ]
+   },
+   "observationSchema": {
+    "packet": "V32_PUBLIC_PACKET_V1 {binding, observation, actions, sensor}",
+    "observationKeys": [
+     "actor",
+     "authority",
+     "civilians",
+     "credential",
+     "difficulty",
+     "doors",
+     "enemies",
+     "events",
+     "extracted",
+     "extraction",
+     "extractions",
+     "game",
+     "haveKey",
+     "hazards",
+     "height",
+     "intel",
+     "publicMetrics",
+     "required",
+     "result",
+     "scenario",
+     "schema",
+     "supplies",
+     "terminal",
+     "tick",
+     "ticksRemaining",
+     "tier",
+     "tiles",
+     "trainingStatus",
+     "units",
+     "version",
+     "width"
+    ]
+   },
+   "publicVersusPrivileged": {
+    "innerFieldsNotInObservation": [
+     "active",
+     "admission",
+     "config",
+     "contact",
+     "episodeReturn",
+     "ext",
+     "floors",
+     "grid",
+     "history",
+     "limit",
+     "lockedDoors",
+     "metrics",
+     "scoutUntil",
+     "secured",
+     "seed"
+    ],
+    "privilegedFieldsCounterfactuallyTested": [
+     "inner.rng",
+     "inner.ext.sensorRng",
+     "inner.seed",
+     "unseen civilians[].deadline",
+     "unseen enemies[].containedUntil"
+    ],
+    "explicitWithholding": "line-of-sight/inspection-gated entities"
+   },
+   "legalActions": {
+    "source": "legalStrategic (parameterized)",
+    "perTier": [
+     {
+      "tier": 1,
+      "types": [
+       "MOVE_NORTH",
+       "MOVE_SOUTH",
+       "MOVE_EAST",
+       "MOVE_WEST",
+       "WAIT",
+       "SCOUT",
+       "SECURE_AREA",
+       "SELECT_UNIT"
+      ],
+      "count": 9
+     },
+     {
+      "tier": 2,
+      "types": [
+       "MOVE_NORTH",
+       "MOVE_SOUTH",
+       "MOVE_EAST",
+       "MOVE_WEST",
+       "WAIT",
+       "SCOUT",
+       "SECURE_AREA",
+       "SELECT_UNIT"
+      ],
+      "count": 9
+     },
+     {
+      "tier": 3,
+      "types": [
+       "MOVE_NORTH",
+       "MOVE_SOUTH",
+       "MOVE_EAST",
+       "MOVE_WEST",
+       "WAIT",
+       "SCOUT",
+       "SECURE_AREA",
+       "SELECT_UNIT"
+      ],
+      "count": 9
+     }
+    ]
+   },
+   "controllers": {
+    "incumbent": "v32 STRONG (ascii-suite/v32/policy.mjs)",
+    "strongest": "STRONG_RESCUE_V33_1",
+    "reference": "v32 RULE (v3 RULE_BASELINE)",
+    "floors": [
+     "v32 WAIT",
+     "v32 RANDOM"
+    ],
+    "privilegedDiagnosticOnly": "none"
+   },
+   "rewardAndTerminal": {
+    "nativeMetricKeys": [
+     "beliefCalibration",
+     "catastrophic",
+     "civilianDeaths",
+     "civilianSurvivalRate",
+     "civiliansExtracted",
+     "closures",
+     "decisionRelevantInformationGain",
+     "episodeReturn",
+     "informationAcquisitionCost",
+     "missionDuration",
+     "objectiveCompletion",
+     "relocations",
+     "repeatedFailures",
+     "riskExposure",
+     "scoutingActions",
+     "success",
+     "teamCasualties",
+     "unnecessaryExploration"
+    ],
+    "primaryMetric": {
+     "field": "success",
+     "orientation": 1,
+     "unit": "mission success"
+    },
+    "catastropheField": "metrics().catastrophic",
+    "perLevel": [
+     {
+      "level": "RESCUE_ADVANCED_1",
+      "win": "extracted >= required civilians",
+      "loss": "all units dead or too few civilians alive → FAILURE",
+      "terminal": {
+       "file": "ascii-suite/v3/worlds/rescue.mjs",
+       "line": 28,
+       "sha256": "221e9454601feef8"
+      },
+      "timeout": "tick >= limit (480+tier*120 via v32) → TIMEOUT"
+     },
+     {
+      "level": "RESCUE_ADVANCED_2",
+      "win": "extracted >= required civilians",
+      "loss": "all units dead or too few civilians alive → FAILURE",
+      "terminal": {
+       "file": "ascii-suite/v3/worlds/rescue.mjs",
+       "line": 28,
+       "sha256": "221e9454601feef8"
+      },
+      "timeout": "tick >= limit (480+tier*120 via v32) → TIMEOUT"
+     },
+     {
+      "level": "RESCUE_ADVANCED_3",
+      "win": "extracted >= required civilians",
+      "loss": "all units dead or too few civilians alive → FAILURE",
+      "terminal": {
+       "file": "ascii-suite/v3/worlds/rescue.mjs",
+       "line": 28,
+       "sha256": "221e9454601feef8"
+      },
+      "timeout": "tick >= limit (480+tier*120 via v32) → TIMEOUT"
+     }
+    ]
+   },
+   "deterministicSeeds": "uint32 seed; create(game, seed, tier, {family, sensor}) is a pure function of its arguments (observer audit sameSeedSameWorld)",
+   "replay": "ascii-suite/v32/kernel.mjs#replay/verifyReplay (per-step inner-state hashes)",
+   "existingTests": [
+    "ascii-suite/suite.test.mjs",
+    "ascii-suite/v3/tests.mjs",
+    "ascii-suite/v31/tests.mjs",
+    "ascii-suite/v32/tests.mjs",
+    "ascii-quality-v33_1/tests.mjs"
+   ],
+   "advancedFixtures": [
+    "RESCUE_ADVANCED_1",
+    "RESCUE_ADVANCED_2",
+    "RESCUE_ADVANCED_3"
+   ],
+   "hazards": "hidden threats/civilians, deadlines, relocations with timestamped intel, closures, multiple extractions",
+   "observableRegime": {
+    "field": "enemies"
+   },
+   "observableTime": {
+    "field": "ticksRemaining",
+    "note": "public remaining-budget label, not a planning horizon"
+   },
+   "nativeCounterfactualEvaluator": {
+    "status": "NOT_DEFINED",
+    "reason": "No native counterfactual evaluator or optimal-value oracle in the v32 ASCII kernels; constructive witnesses are existence proofs only"
+   },
+   "fullEpisodeEvaluation": "FEASIBLE (terminal or tick-limit timeout in every level; v33.1 terminalReached 24/24)",
+   "sentinelObserverIntegration": {
+    "path": "ascii-suite/v31/sentinel.mjs",
+    "graph": "actor/civilians/enemies, civilian->actor depends",
+    "nexusActionAuthority": "none",
+    "oracle": "TEMPORAL_ADVISORY_ONLY_NOT_ACTION_SELECTOR"
+   },
+   "isolatedRecommendationEvaluation": "POSSIBLE: packets are deep-frozen pure functions of state; worlds are structuredClone-isolated; tested by observer audit and shadow non-interference",
+   "levels": [
+    {
+     "level": "RESCUE_ADVANCED_1",
+     "tier": 1,
+     "label": "Advanced",
+     "name": "Unknown Threats",
+     "demand": "scouting, deadlines and extraction",
+     "tickLimit": 600,
+     "actionTypesT0": [
+      "MOVE_NORTH",
+      "MOVE_SOUTH",
+      "MOVE_EAST",
+      "MOVE_WEST",
+      "WAIT",
+      "SCOUT",
+      "SECURE_AREA",
+      "SELECT_UNIT"
+     ],
+     "actionCountT0": 9,
+     "step": {
+      "file": "ascii-suite/v3/worlds/rescue.mjs",
+      "line": 13,
+      "sha256": "221e9454601feef8"
+     },
+     "terminal": {
+      "file": "ascii-suite/v3/worlds/rescue.mjs",
+      "line": 28,
+      "sha256": "221e9454601feef8"
+     },
+     "win": "extracted >= required civilians",
+     "loss": "all units dead or too few civilians alive → FAILURE",
+     "timeout": "tick >= limit (480+tier*120 via v32) → TIMEOUT",
+     "v331Reachability": [
+      "none recorded beyond shallow smoke (reset + planner steps)"
+     ],
+     "v331Unresolved": [],
+     "nexusT0": {
+      "graphEntities": 1,
+      "graphRelationships": 0,
+      "rationaleCodes": [
+       "NEXUS_ISOLATED_ENTITY",
+       "NEXUS_NO_RELATIONSHIPS"
+      ]
+     }
+    },
+    {
+     "level": "RESCUE_ADVANCED_2",
+     "tier": 2,
+     "label": "Expert",
+     "name": "Conflicting Intelligence",
+     "demand": "moving civilians and timestamped uncertain intel",
+     "tickLimit": 720,
+     "actionTypesT0": [
+      "MOVE_NORTH",
+      "MOVE_SOUTH",
+      "MOVE_EAST",
+      "MOVE_WEST",
+      "WAIT",
+      "SCOUT",
+      "SECURE_AREA",
+      "SELECT_UNIT"
+     ],
+     "actionCountT0": 9,
+     "step": {
+      "file": "ascii-suite/v3/worlds/rescue.mjs",
+      "line": 13,
+      "sha256": "221e9454601feef8"
+     },
+     "terminal": {
+      "file": "ascii-suite/v3/worlds/rescue.mjs",
+      "line": 28,
+      "sha256": "221e9454601feef8"
+     },
+     "win": "extracted >= required civilians",
+     "loss": "all units dead or too few civilians alive → FAILURE",
+     "timeout": "tick >= limit (480+tier*120 via v32) → TIMEOUT",
+     "v331Reachability": [
+      "none recorded beyond shallow smoke (reset + planner steps)"
+     ],
+     "v331Unresolved": [],
+     "nexusT0": {
+      "graphEntities": 1,
+      "graphRelationships": 0,
+      "rationaleCodes": [
+       "NEXUS_ISOLATED_ENTITY",
+       "NEXUS_NO_RELATIONSHIPS"
+      ]
+     }
+    },
+    {
+     "level": "RESCUE_ADVANCED_3",
+     "tier": 3,
+     "label": "Extreme",
+     "name": "Multi-Objective Emergency",
+     "demand": "priority triage, multiple extraction sites and closures",
+     "tickLimit": 840,
+     "actionTypesT0": [
+      "MOVE_NORTH",
+      "MOVE_SOUTH",
+      "MOVE_EAST",
+      "MOVE_WEST",
+      "WAIT",
+      "SCOUT",
+      "SECURE_AREA",
+      "SELECT_UNIT"
+     ],
+     "actionCountT0": 9,
+     "step": {
+      "file": "ascii-suite/v3/worlds/rescue.mjs",
+      "line": 13,
+      "sha256": "221e9454601feef8"
+     },
+     "terminal": {
+      "file": "ascii-suite/v3/worlds/rescue.mjs",
+      "line": 28,
+      "sha256": "221e9454601feef8"
+     },
+     "win": "extracted >= required civilians",
+     "loss": "all units dead or too few civilians alive → FAILURE",
+     "timeout": "tick >= limit (480+tier*120 via v32) → TIMEOUT",
+     "v331Reachability": [
+      "v32 smoke: STRONG/STALE threw PUBLIC_CONTROLLER_EXCEPTION_ABSTAIN (reading injured of undefined) 7 times; STRONG/NORMAL 1/2"
+     ],
+     "v331Unresolved": [],
+     "nexusT0": {
+      "graphEntities": 1,
+      "graphRelationships": 0,
+      "rationaleCodes": [
+       "NEXUS_ISOLATED_ENTITY",
+       "NEXUS_NO_RELATIONSHIPS"
+      ]
+     }
+    }
+   ]
+  },
+  {
+   "game": "cards",
+   "nativeSimulationOwner": "ascii-suite/v3/kernel.mjs + ascii-suite/v32/strategic-extension.mjs",
+   "ownerSha256": [
+    {
+     "file": "ascii-suite/v3/kernel.mjs",
+     "sha256": "f344a597f0c4cd2f"
+    },
+    {
+     "file": "ascii-suite/v32/strategic-extension.mjs",
+     "sha256": "db36e408c8bbb016"
+    }
+   ],
+   "actor": "P0 plus native STRONG partners (P1..)",
+   "stateSchema": {
+    "innerKeys": [
+     "admission",
+     "categories",
+     "clueMax",
+     "clues",
+     "config",
+     "deck",
+     "difficulty",
+     "discard",
+     "episodeReturn",
+     "errors",
+     "events",
+     "ext",
+     "finalTurns",
+     "game",
+     "hands",
+     "history",
+     "initialErrors",
+     "knowledge",
+     "limit",
+     "metrics",
+     "multiplicity",
+     "players",
+     "progress",
+     "ranks",
+     "result",
+     "score",
+     "seed",
+     "target",
+     "terminal",
+     "tick",
+     "turn",
+     "version"
+    ],
+    "extKeys": [
+     "artifact",
+     "catastrophes",
+     "completed",
+     "failureKeys",
+     "family",
+     "limit",
+     "partnerStyle",
+     "repeated",
+     "return",
+     "round",
+     "roundResults",
+     "rounds",
+     "tier"
+    ]
+   },
+   "observationSchema": {
+    "packet": "V32_PUBLIC_PACKET_V1 {binding, observation, actions, sensor}",
+    "observationKeys": [
+     "actor",
+     "authority",
+     "categories",
+     "clueMax",
+     "clues",
+     "deckRemaining",
+     "difficulty",
+     "discard",
+     "errors",
+     "events",
+     "finalTurns",
+     "game",
+     "hands",
+     "multiplicity",
+     "partnerStyle",
+     "players",
+     "progress",
+     "publicMetrics",
+     "ranks",
+     "result",
+     "round",
+     "roundScores",
+     "rounds",
+     "scenario",
+     "schema",
+     "score",
+     "target",
+     "terminal",
+     "tick",
+     "tier",
+     "trainingStatus",
+     "turn",
+     "version",
+     "viewer"
+    ]
+   },
+   "publicVersusPrivileged": {
+    "innerFieldsNotInObservation": [
+     "admission",
+     "config",
+     "deck",
+     "episodeReturn",
+     "ext",
+     "history",
+     "initialErrors",
+     "knowledge",
+     "limit",
+     "metrics",
+     "seed"
+    ],
+    "privilegedFieldsCounterfactuallyTested": [
+     "inner.rng",
+     "inner.ext.sensorRng",
+     "inner.seed",
+     "inner.hands[actor] identities",
+     "inner.deck order"
+    ],
+    "explicitWithholding": "own cards {concealed:true}"
+   },
+   "legalActions": {
+    "source": "legalStrategic (parameterized)",
+    "perTier": [
+     {
+      "tier": 1,
+      "types": [
+       "PLAY_CARD",
+       "DISCARD_CARD",
+       "GIVE_CATEGORY_CLUE",
+       "GIVE_RANK_CLUE"
+      ],
+      "count": 13
+     },
+     {
+      "tier": 2,
+      "types": [
+       "PLAY_CARD",
+       "DISCARD_CARD",
+       "GIVE_CATEGORY_CLUE",
+       "GIVE_RANK_CLUE"
+      ],
+      "count": 17
+     },
+     {
+      "tier": 3,
+      "types": [
+       "PLAY_CARD",
+       "DISCARD_CARD",
+       "GIVE_CATEGORY_CLUE",
+       "GIVE_RANK_CLUE"
+      ],
+      "count": 17
+     }
+    ]
+   },
+   "controllers": {
+    "incumbent": "v32 STRONG (ascii-suite/v32/policy.mjs)",
+    "strongest": "v32 STRONG",
+    "reference": "v32 RULE (v3 RULE_BASELINE)",
+    "floors": [
+     "v32 WAIT",
+     "v32 RANDOM"
+    ],
+    "privilegedDiagnosticOnly": "none"
+   },
+   "rewardAndTerminal": {
+    "nativeMetricKeys": [
+     "cardLossRate",
+     "catastrophic",
+     "clueEfficiency",
+     "criticalCardLosses",
+     "episodeReturn",
+     "errorsUsed",
+     "inferenceAccuracy",
+     "informationAcquisitionCost",
+     "informationValue",
+     "miscommunicationRate",
+     "objectiveCompletion",
+     "partnerAdaptation",
+     "repeatedFailures",
+     "roundResults",
+     "success",
+     "teamScore",
+     "uncertaintyCalibration",
+     "validPlayRate"
+    ],
+    "primaryMetric": {
+     "field": "teamScore",
+     "orientation": 1,
+     "unit": "cards played"
+    },
+    "catastropheField": "metrics().catastrophic",
+    "perLevel": [
+     {
+      "level": "CARDS_ADVANCED_1",
+      "win": "team score >= target (ceil(categories*ranks*0.8))",
+      "loss": "errors exhausted (2), final turns over after the deck empties, or no cards → FAILURE",
+      "terminal": {
+       "file": "ascii-suite/v3/worlds/cards.mjs",
+       "line": 9,
+       "sha256": "57f23a49e859853d"
+      },
+      "timeout": "tick >= 160*rounds"
+     },
+     {
+      "level": "CARDS_ADVANCED_2",
+      "win": "team score >= target (ceil(categories*ranks*0.8))",
+      "loss": "errors exhausted (2), final turns over after the deck empties, or no cards → FAILURE",
+      "terminal": {
+       "file": "ascii-suite/v3/worlds/cards.mjs",
+       "line": 9,
+       "sha256": "57f23a49e859853d"
+      },
+      "timeout": "tick >= 160*rounds"
+     },
+     {
+      "level": "CARDS_ADVANCED_3",
+      "win": "team score >= target (ceil(categories*ranks*0.8))",
+      "loss": "errors exhausted (2), final turns over after the deck empties, or no cards → FAILURE",
+      "terminal": {
+       "file": "ascii-suite/v3/worlds/cards.mjs",
+       "line": 9,
+       "sha256": "57f23a49e859853d"
+      },
+      "timeout": "tick >= 160*rounds"
+     }
+    ]
+   },
+   "deterministicSeeds": "uint32 seed; create(game, seed, tier, {family, sensor}) is a pure function of its arguments (observer audit sameSeedSameWorld)",
+   "replay": "ascii-suite/v32/kernel.mjs#replay/verifyReplay (per-step inner-state hashes)",
+   "existingTests": [
+    "ascii-suite/suite.test.mjs",
+    "ascii-suite/v3/tests.mjs",
+    "ascii-suite/v31/tests.mjs",
+    "ascii-suite/v32/tests.mjs",
+    "ascii-quality-v33_1/tests.mjs"
+   ],
+   "advancedFixtures": [
+    "CARDS_ADVANCED_1",
+    "CARDS_ADVANCED_2",
+    "CARDS_ADVANCED_3"
+   ],
+   "hazards": "own hand concealed, scarce clues, deck exhaustion, private partner clue priorities",
+   "observableRegime": {
+    "field": "clues"
+   },
+   "observableTime": {
+    "field": "deckRemaining",
+    "note": "public remaining-budget label, not a planning horizon"
+   },
+   "nativeCounterfactualEvaluator": {
+    "status": "NOT_DEFINED",
+    "reason": "No native counterfactual evaluator or optimal-value oracle in the v32 ASCII kernels; constructive witnesses are existence proofs only"
+   },
+   "fullEpisodeEvaluation": "FEASIBLE (terminal or tick-limit timeout in every level; v33.1 terminalReached 24/24)",
+   "sentinelObserverIntegration": {
+    "path": "ascii-suite/v31/sentinel.mjs",
+    "graph": "EMPTY (no declared relationship model; Nexus returns NEXUS_EMPTY_GRAPH)",
+    "nexusActionAuthority": "none",
+    "oracle": "TEMPORAL_ADVISORY_ONLY_NOT_ACTION_SELECTOR"
+   },
+   "isolatedRecommendationEvaluation": "POSSIBLE: packets are deep-frozen pure functions of state; worlds are structuredClone-isolated; tested by observer audit and shadow non-interference",
+   "levels": [
+    {
+     "level": "CARDS_ADVANCED_1",
+     "tier": 1,
+     "label": "Advanced",
+     "name": "Limited-Communication Cooperation",
+     "demand": "hidden-hand inference and scarce clues",
+     "tickLimit": 160,
+     "actionTypesT0": [
+      "PLAY_CARD",
+      "DISCARD_CARD",
+      "GIVE_CATEGORY_CLUE",
+      "GIVE_RANK_CLUE"
+     ],
+     "actionCountT0": 13,
+     "step": {
+      "file": "ascii-suite/v3/worlds/cards.mjs",
+      "line": 7,
+      "sha256": "57f23a49e859853d"
+     },
+     "terminal": {
+      "file": "ascii-suite/v3/worlds/cards.mjs",
+      "line": 9,
+      "sha256": "57f23a49e859853d"
+     },
+     "win": "team score >= target (ceil(categories*ranks*0.8))",
+     "loss": "errors exhausted (2), final turns over after the deck empties, or no cards → FAILURE",
+     "timeout": "tick >= 160*rounds",
+     "v331Reachability": [
+      "v32 smoke: every public policy FAILURE within 33 ticks; privileged full-information witness SUCCESS"
+     ],
+     "v331Unresolved": [
+      "CARDS_ADVANCED_1:strong-0"
+     ],
+     "nexusT0": {
+      "graphEntities": 0,
+      "graphRelationships": 0,
+      "rationaleCodes": [
+       "NEXUS_EMPTY_GRAPH"
+      ]
+     }
+    },
+    {
+     "level": "CARDS_ADVANCED_2",
+     "tier": 2,
+     "label": "Expert",
+     "name": "Partner-Style Adaptation",
+     "demand": "inference of partner communication priorities",
+     "tickLimit": 160,
+     "actionTypesT0": [
+      "PLAY_CARD",
+      "DISCARD_CARD",
+      "GIVE_CATEGORY_CLUE",
+      "GIVE_RANK_CLUE"
+     ],
+     "actionCountT0": 17,
+     "step": {
+      "file": "ascii-suite/v3/worlds/cards.mjs",
+      "line": 7,
+      "sha256": "57f23a49e859853d"
+     },
+     "terminal": {
+      "file": "ascii-suite/v3/worlds/cards.mjs",
+      "line": 9,
+      "sha256": "57f23a49e859853d"
+     },
+     "win": "team score >= target (ceil(categories*ranks*0.8))",
+     "loss": "errors exhausted (2), final turns over after the deck empties, or no cards → FAILURE",
+     "timeout": "tick >= 160*rounds",
+     "v331Reachability": [
+      "v32 smoke: every public policy FAILURE within 58 ticks"
+     ],
+     "v331Unresolved": [
+      "CARDS_ADVANCED_2:strong-0"
+     ],
+     "nexusT0": {
+      "graphEntities": 0,
+      "graphRelationships": 0,
+      "rationaleCodes": [
+       "NEXUS_EMPTY_GRAPH"
+      ]
+     }
+    },
+    {
+     "level": "CARDS_ADVANCED_3",
+     "tier": 3,
+     "label": "Extreme",
+     "name": "Extreme Cooperative Tournament",
+     "demand": "round-persistent planning with changing private partner styles",
+     "tickLimit": 480,
+     "actionTypesT0": [
+      "PLAY_CARD",
+      "DISCARD_CARD",
+      "GIVE_CATEGORY_CLUE",
+      "GIVE_RANK_CLUE"
+     ],
+     "actionCountT0": 17,
+     "step": {
+      "file": "ascii-suite/v3/worlds/cards.mjs",
+      "line": 7,
+      "sha256": "57f23a49e859853d"
+     },
+     "terminal": {
+      "file": "ascii-suite/v3/worlds/cards.mjs",
+      "line": 9,
+      "sha256": "57f23a49e859853d"
+     },
+     "win": "team score >= target (ceil(categories*ranks*0.8))",
+     "loss": "errors exhausted (2), final turns over after the deck empties, or no cards → FAILURE",
+     "timeout": "tick >= 160*rounds",
+     "v331Reachability": [
+      "v32 smoke: every public policy FAILURE within 57 ticks"
+     ],
+     "v331Unresolved": [
+      "CARDS_ADVANCED_3:strong-0"
+     ],
+     "nexusT0": {
+      "graphEntities": 0,
+      "graphRelationships": 0,
+      "rationaleCodes": [
+       "NEXUS_EMPTY_GRAPH"
+      ]
+     }
+    }
+   ]
+  },
+  {
+   "game": "factory",
+   "nativeSimulationOwner": "ascii-suite/v3/kernel.mjs + ascii-suite/v32/strategic-extension.mjs",
+   "ownerSha256": [
+    {
+     "file": "ascii-suite/v3/kernel.mjs",
+     "sha256": "f344a597f0c4cd2f"
+    },
+    {
+     "file": "ascii-suite/v32/strategic-extension.mjs",
+     "sha256": "db36e408c8bbb016"
+    }
+   ],
+   "actor": "P0",
+   "stateSchema": {
+    "innerKeys": [
+     "actor",
+     "admission",
+     "config",
+     "credits",
+     "delivered",
+     "difficulty",
+     "edges",
+     "episodeReturn",
+     "events",
+     "ext",
+     "extracted",
+     "firstDisruption",
+     "game",
+     "height",
+     "history",
+     "initialOre",
+     "limit",
+     "metrics",
+     "mineRemaining",
+     "nodes",
+     "pending",
+     "productWeight",
+     "required",
+     "result",
+     "seed",
+     "terminal",
+     "tick",
+     "version",
+     "width"
+    ],
+    "extKeys": [
+     "actionCosts",
+     "artifact",
+     "catastrophes",
+     "completed",
+     "failureKeys",
+     "failures",
+     "family",
+     "orders",
+     "relations",
+     "repeated",
+     "return",
+     "round",
+     "roundResults",
+     "rounds",
+     "sharedResources",
+     "tier"
+    ]
+   },
+   "observationSchema": {
+    "packet": "V32_PUBLIC_PACKET_V1 {binding, observation, actions, sensor}",
+    "observationKeys": [
+     "actor",
+     "authority",
+     "credits",
+     "delivered",
+     "difficulty",
+     "edges",
+     "events",
+     "extracted",
+     "flowVersion",
+     "game",
+     "height",
+     "initialOre",
+     "mineRemaining",
+     "nodes",
+     "orders",
+     "pending",
+     "productWeight",
+     "publicMetrics",
+     "relations",
+     "required",
+     "result",
+     "scenario",
+     "schema",
+     "sharedResources",
+     "terminal",
+     "tick",
+     "ticksRemaining",
+     "tier",
+     "trainingStatus",
+     "version",
+     "width"
+    ]
+   },
+   "publicVersusPrivileged": {
+    "innerFieldsNotInObservation": [
+     "admission",
+     "config",
+     "episodeReturn",
+     "ext",
+     "firstDisruption",
+     "history",
+     "limit",
+     "metrics",
+     "seed"
+    ],
+    "privilegedFieldsCounterfactuallyTested": [
+     "inner.rng",
+     "inner.ext.sensorRng",
+     "inner.seed"
+    ],
+    "explicitWithholding": "none: fully public management state"
+   },
+   "legalActions": {
+    "source": "legalStrategic (parameterized)",
+    "perTier": [
+     {
+      "tier": 1,
+      "types": [
+       "MOVE_NORTH",
+       "MOVE_SOUTH",
+       "MOVE_EAST",
+       "MOVE_WEST",
+       "WAIT",
+       "UPGRADE",
+       "ALLOCATE_POWER",
+       "SET_PRODUCTION",
+       "REPAIR",
+       "CONNECT",
+       "BUILD"
+      ],
+      "count": 41
+     },
+     {
+      "tier": 2,
+      "types": [
+       "MOVE_NORTH",
+       "MOVE_SOUTH",
+       "MOVE_EAST",
+       "MOVE_WEST",
+       "WAIT",
+       "UPGRADE",
+       "ALLOCATE_POWER",
+       "SET_PRODUCTION",
+       "REPAIR",
+       "CONNECT",
+       "BUILD"
+      ],
+      "count": 65
+     },
+     {
+      "tier": 3,
+      "types": [
+       "MOVE_NORTH",
+       "MOVE_SOUTH",
+       "MOVE_EAST",
+       "MOVE_WEST",
+       "WAIT",
+       "UPGRADE",
+       "ALLOCATE_POWER",
+       "SET_PRODUCTION",
+       "REPAIR",
+       "CONNECT",
+       "BUILD"
+      ],
+      "count": 133
+     }
+    ]
+   },
+   "controllers": {
+    "incumbent": "v32 STRONG (ascii-suite/v32/policy.mjs)",
+    "strongest": "v32 STRONG",
+    "reference": "v32 RULE (v3 RULE_BASELINE)",
+    "floors": [
+     "v32 WAIT",
+     "v32 RANDOM"
+    ],
+    "privilegedDiagnosticOnly": "none"
+   },
+   "rewardAndTerminal": {
+    "nativeMetricKeys": [
+     "actionCosts",
+     "bottleneckIdentificationAccuracy",
+     "catastrophic",
+     "congestion",
+     "conservationPass",
+     "conservedOreEquivalent",
+     "constraintViolations",
+     "dependencyReasoningValue",
+     "downstreamDecisionValue",
+     "energyEfficiency",
+     "episodeReturn",
+     "finalThroughput",
+     "objectiveCompletion",
+     "orders",
+     "planEfficiency",
+     "recoveryTime",
+     "repeatedFailures",
+     "resourceWaste",
+     "success",
+     "timeToObjective",
+     "transportUtilization"
+    ],
+    "primaryMetric": {
+     "field": "success",
+     "orientation": 1,
+     "unit": "quota met"
+    },
+    "catastropheField": "metrics().catastrophic",
+    "perLevel": [
+     {
+      "level": "FACTORY_ADVANCED_1",
+      "win": "every order delivered >= required",
+      "loss": "any order past its deadline → DEADLINE_FAILURE",
+      "terminal": {
+       "file": "ascii-suite/v32/strategic-extension.mjs",
+       "line": 100,
+       "sha256": "db36e408c8bbb016"
+      },
+      "timeout": "limit 360+tier*120 (orders carry deadlines)"
+     },
+     {
+      "level": "FACTORY_ADVANCED_2",
+      "win": "every order delivered >= required",
+      "loss": "any order past its deadline → DEADLINE_FAILURE",
+      "terminal": {
+       "file": "ascii-suite/v32/strategic-extension.mjs",
+       "line": 100,
+       "sha256": "db36e408c8bbb016"
+      },
+      "timeout": "limit 360+tier*120 (orders carry deadlines)"
+     },
+     {
+      "level": "FACTORY_ADVANCED_3",
+      "win": "every order delivered >= required",
+      "loss": "any order past its deadline → DEADLINE_FAILURE",
+      "terminal": {
+       "file": "ascii-suite/v32/strategic-extension.mjs",
+       "line": 100,
+       "sha256": "db36e408c8bbb016"
+      },
+      "timeout": "limit 360+tier*120 (orders carry deadlines)"
+     }
+    ]
+   },
+   "deterministicSeeds": "uint32 seed; create(game, seed, tier, {family, sensor}) is a pure function of its arguments (observer audit sameSeedSameWorld)",
+   "replay": "ascii-suite/v32/kernel.mjs#replay/verifyReplay (per-step inner-state hashes)",
+   "existingTests": [
+    "ascii-suite/suite.test.mjs",
+    "ascii-suite/v3/tests.mjs",
+    "ascii-suite/v31/tests.mjs",
+    "ascii-suite/v32/tests.mjs",
+    "ascii-quality-v33_1/tests.mjs"
+   ],
+   "advancedFixtures": [
+    "FACTORY_ADVANCED_1",
+    "FACTORY_ADVANCED_2",
+    "FACTORY_ADVANCED_3"
+   ],
+   "hazards": "broken/disconnected chains, shared ore/power/credits, quotas/deadlines, equipment disruptions",
+   "observableRegime": {
+    "field": "nodes[].broken"
+   },
+   "observableTime": {
+    "field": "ticksRemaining",
+    "note": "public remaining-budget label, not a planning horizon"
+   },
+   "nativeCounterfactualEvaluator": {
+    "status": "NOT_DEFINED",
+    "reason": "No native counterfactual evaluator or optimal-value oracle in the v32 ASCII kernels; constructive witnesses are existence proofs only"
+   },
+   "fullEpisodeEvaluation": "FEASIBLE (terminal or tick-limit timeout in every level; v33.1 terminalReached 24/24)",
+   "sentinelObserverIntegration": {
+    "path": "ascii-suite/v31/sentinel.mjs",
+    "graph": "nodes + built edges (o.edges)",
+    "nexusActionAuthority": "offered REPAIR only",
+    "oracle": "TEMPORAL_ADVISORY_ONLY_NOT_ACTION_SELECTOR"
+   },
+   "isolatedRecommendationEvaluation": "POSSIBLE: packets are deep-frozen pure functions of state; worlds are structuredClone-isolated; tested by observer audit and shadow non-interference",
+   "levels": [
+    {
+     "level": "FACTORY_ADVANCED_1",
+     "tier": 1,
+     "label": "Advanced",
+     "name": "Broken Production Chain",
+     "demand": "repair/connect/power under construction budgets",
+     "tickLimit": 480,
+     "actionTypesT0": [
+      "MOVE_NORTH",
+      "MOVE_SOUTH",
+      "MOVE_EAST",
+      "MOVE_WEST",
+      "WAIT",
+      "UPGRADE",
+      "ALLOCATE_POWER",
+      "SET_PRODUCTION",
+      "REPAIR",
+      "CONNECT",
+      "BUILD"
+     ],
+     "actionCountT0": 41,
+     "step": {
+      "file": "ascii-suite/v32/factory-flow.mjs",
+      "line": 5,
+      "sha256": "4a6b5fd265f8906e"
+     },
+     "terminal": {
+      "file": "ascii-suite/v32/strategic-extension.mjs",
+      "line": 100,
+      "sha256": "db36e408c8bbb016"
+     },
+     "win": "every order delivered >= required",
+     "loss": "any order past its deadline → DEADLINE_FAILURE",
+     "timeout": "limit 360+tier*120 (orders carry deadlines)",
+     "v331Reachability": [
+      "none recorded beyond shallow smoke (reset + planner steps)"
+     ],
+     "v331Unresolved": [],
+     "nexusT0": {
+      "graphEntities": 6,
+      "graphRelationships": 0,
+      "rationaleCodes": [
+       "NEXUS_ISOLATED_ENTITY",
+       "NEXUS_NO_RELATIONSHIPS"
+      ]
+     }
+    },
+    {
+     "level": "FACTORY_ADVANCED_2",
+     "tier": 2,
+     "label": "Expert",
+     "name": "Coupled Dependency Network",
+     "demand": "shared ore/power between dependent production lines",
+     "tickLimit": 600,
+     "actionTypesT0": [
+      "MOVE_NORTH",
+      "MOVE_SOUTH",
+      "MOVE_EAST",
+      "MOVE_WEST",
+      "WAIT",
+      "UPGRADE",
+      "ALLOCATE_POWER",
+      "SET_PRODUCTION",
+      "REPAIR",
+      "CONNECT",
+      "BUILD"
+     ],
+     "actionCountT0": 65,
+     "step": {
+      "file": "ascii-suite/v32/factory-flow.mjs",
+      "line": 5,
+      "sha256": "4a6b5fd265f8906e"
+     },
+     "terminal": {
+      "file": "ascii-suite/v32/strategic-extension.mjs",
+      "line": 100,
+      "sha256": "db36e408c8bbb016"
+     },
+     "win": "every order delivered >= required",
+     "loss": "any order past its deadline → DEADLINE_FAILURE",
+     "timeout": "limit 360+tier*120 (orders carry deadlines)",
+     "v331Reachability": [
+      "none recorded beyond shallow smoke (reset + planner steps)"
+     ],
+     "v331Unresolved": [],
+     "nexusT0": {
+      "graphEntities": 12,
+      "graphRelationships": 0,
+      "rationaleCodes": [
+       "NEXUS_ISOLATED_ENTITY",
+       "NEXUS_NO_RELATIONSHIPS"
+      ]
+     }
+    },
+    {
+     "level": "FACTORY_ADVANCED_3",
+     "tier": 3,
+     "label": "Extreme",
+     "name": "Industrial Crisis",
+     "demand": "multiple quotas/deadlines with disruptive equipment failures",
+     "tickLimit": 720,
+     "actionTypesT0": [
+      "MOVE_NORTH",
+      "MOVE_SOUTH",
+      "MOVE_EAST",
+      "MOVE_WEST",
+      "WAIT",
+      "UPGRADE",
+      "ALLOCATE_POWER",
+      "SET_PRODUCTION",
+      "REPAIR",
+      "CONNECT",
+      "BUILD"
+     ],
+     "actionCountT0": 133,
+     "step": {
+      "file": "ascii-suite/v32/factory-flow.mjs",
+      "line": 5,
+      "sha256": "4a6b5fd265f8906e"
+     },
+     "terminal": {
+      "file": "ascii-suite/v32/strategic-extension.mjs",
+      "line": 100,
+      "sha256": "db36e408c8bbb016"
+     },
+     "win": "every order delivered >= required",
+     "loss": "any order past its deadline → DEADLINE_FAILURE",
+     "timeout": "limit 360+tier*120 (orders carry deadlines)",
+     "v331Reachability": [
+      "none recorded beyond shallow smoke (reset + planner steps)"
+     ],
+     "v331Unresolved": [],
+     "nexusT0": {
+      "graphEntities": 24,
+      "graphRelationships": 0,
+      "rationaleCodes": [
+       "NEXUS_ISOLATED_ENTITY",
+       "NEXUS_NO_RELATIONSHIPS"
+      ]
+     }
+    }
+   ]
+  },
+  {
+   "game": "roguelike",
+   "nativeSimulationOwner": "ascii-suite/v3/kernel.mjs + ascii-suite/v32/strategic-extension.mjs",
+   "ownerSha256": [
+    {
+     "file": "ascii-suite/v3/kernel.mjs",
+     "sha256": "f344a597f0c4cd2f"
+    },
+    {
+     "file": "ascii-suite/v32/strategic-extension.mjs",
+     "sha256": "db36e408c8bbb016"
+    }
+   ],
+   "actor": "P0",
+   "stateSchema": {
+    "innerKeys": [
+     "actor",
+     "admission",
+     "config",
+     "contact",
+     "difficulty",
+     "enemies",
+     "episodeReturn",
+     "events",
+     "exit",
+     "ext",
+     "floors",
+     "game",
+     "grid",
+     "height",
+     "history",
+     "inspectUntil",
+     "inventory",
+     "level",
+     "levelsTotal",
+     "limit",
+     "lockedDoors",
+     "metrics",
+     "objects",
+     "result",
+     "seed",
+     "terminal",
+     "tick",
+     "traps",
+     "version",
+     "width"
+    ],
+    "extKeys": [
+     "artifact",
+     "catastrophes",
+     "completed",
+     "cyclicHazards",
+     "failureKeys",
+     "family",
+     "repeated",
+     "return",
+     "round",
+     "roundResults",
+     "rounds",
+     "tier"
+    ]
+   },
+   "observationSchema": {
+    "packet": "V32_PUBLIC_PACKET_V1 {binding, observation, actions, sensor}",
+    "observationKeys": [
+     "actor",
+     "authority",
+     "cyclicHazards",
+     "difficulty",
+     "doors",
+     "enemies",
+     "events",
+     "exit",
+     "finalArtifact",
+     "finalObjective",
+     "game",
+     "height",
+     "inventory",
+     "level",
+     "levelsTotal",
+     "objects",
+     "publicMetrics",
+     "result",
+     "scenario",
+     "schema",
+     "terminal",
+     "tick",
+     "ticksRemaining",
+     "tier",
+     "tiles",
+     "trainingStatus",
+     "traps",
+     "version",
+     "width"
+    ]
+   },
+   "publicVersusPrivileged": {
+    "innerFieldsNotInObservation": [
+     "admission",
+     "config",
+     "contact",
+     "episodeReturn",
+     "ext",
+     "floors",
+     "grid",
+     "history",
+     "inspectUntil",
+     "limit",
+     "lockedDoors",
+     "metrics",
+     "seed"
+    ],
+    "privilegedFieldsCounterfactuallyTested": [
+     "inner.rng",
+     "inner.ext.sensorRng",
+     "inner.seed",
+     "unseen traps[].kind",
+     "unseen enemies[].health"
+    ],
+    "explicitWithholding": "line-of-sight/inspection-gated entities"
+   },
+   "legalActions": {
+    "source": "legalStrategic (parameterized)",
+    "perTier": [
+     {
+      "tier": 1,
+      "types": [
+       "MOVE_NORTH",
+       "MOVE_SOUTH",
+       "MOVE_EAST",
+       "MOVE_WEST",
+       "WAIT",
+       "DEFEND",
+       "INSPECT",
+       "REST"
+      ],
+      "count": 8
+     },
+     {
+      "tier": 2,
+      "types": [
+       "MOVE_NORTH",
+       "MOVE_SOUTH",
+       "MOVE_EAST",
+       "MOVE_WEST",
+       "WAIT",
+       "DEFEND",
+       "INSPECT",
+       "REST"
+      ],
+      "count": 8
+     },
+     {
+      "tier": 3,
+      "types": [
+       "MOVE_NORTH",
+       "MOVE_SOUTH",
+       "MOVE_EAST",
+       "MOVE_WEST",
+       "WAIT",
+       "DEFEND",
+       "INSPECT",
+       "REST"
+      ],
+      "count": 8
+     }
+    ]
+   },
+   "controllers": {
+    "incumbent": "v32 STRONG (ascii-suite/v32/policy.mjs)",
+    "strongest": "v32 STRONG",
+    "reference": "v32 RULE (v3 RULE_BASELINE)",
+    "floors": [
+     "v32 WAIT",
+     "v32 RANDOM"
+    ],
+    "privilegedDiagnosticOnly": "none"
+   },
+   "rewardAndTerminal": {
+    "nativeMetricKeys": [
+     "campaignCompletion",
+     "catastrophic",
+     "damageTaken",
+     "episodeReturn",
+     "finalArtifact",
+     "incorrectMemoryTrust",
+     "inspectionCost",
+     "levelsCompleted",
+     "longHorizonProgress",
+     "memoryRetrievalUtility",
+     "objectiveCompletion",
+     "planRecovery",
+     "repeatedFailures",
+     "repeatedMistakes",
+     "resourceEfficiency",
+     "success",
+     "survival",
+     "trapsHit",
+     "unseenLevelSuccess"
+    ],
+    "primaryMetric": {
+     "field": "success",
+     "orientation": 1,
+     "unit": "campaign success"
+    },
+    "catastropheField": "metrics().catastrophic",
+    "perLevel": [
+     {
+      "level": "ROGUE_ADVANCED_1",
+      "win": "DESCEND on the last floor (2/4/5 floors; tier 3 requires the final artifact first)",
+      "loss": "health 0 → FAILURE",
+      "terminal": {
+       "file": "ascii-suite/v3/worlds/roguelike.mjs",
+       "line": 17,
+       "sha256": "cb14dab6b3401856"
+      },
+      "timeout": "tick >= 600+tier*400 → TIMEOUT"
+     },
+     {
+      "level": "ROGUE_ADVANCED_2",
+      "win": "DESCEND on the last floor (2/4/5 floors; tier 3 requires the final artifact first)",
+      "loss": "health 0 → FAILURE",
+      "terminal": {
+       "file": "ascii-suite/v3/worlds/roguelike.mjs",
+       "line": 17,
+       "sha256": "cb14dab6b3401856"
+      },
+      "timeout": "tick >= 600+tier*400 → TIMEOUT"
+     },
+     {
+      "level": "ROGUE_ADVANCED_3",
+      "win": "DESCEND on the last floor (2/4/5 floors; tier 3 requires the final artifact first)",
+      "loss": "health 0 → FAILURE",
+      "terminal": {
+       "file": "ascii-suite/v3/worlds/roguelike.mjs",
+       "line": 17,
+       "sha256": "cb14dab6b3401856"
+      },
+      "timeout": "tick >= 600+tier*400 → TIMEOUT"
+     }
+    ]
+   },
+   "deterministicSeeds": "uint32 seed; create(game, seed, tier, {family, sensor}) is a pure function of its arguments (observer audit sameSeedSameWorld)",
+   "replay": "ascii-suite/v32/kernel.mjs#replay/verifyReplay (per-step inner-state hashes)",
+   "existingTests": [
+    "ascii-suite/suite.test.mjs",
+    "ascii-suite/v3/tests.mjs",
+    "ascii-suite/v31/tests.mjs",
+    "ascii-suite/v32/tests.mjs",
+    "ascii-quality-v33_1/tests.mjs"
+   ],
+   "advancedFixtures": [
+    "ROGUE_ADVANCED_1",
+    "ROGUE_ADVANCED_2",
+    "ROGUE_ADVANCED_3"
+   ],
+   "hazards": "unknown geometry, hidden traps, adjacent enemies, scarce healing, keys/gates, cyclic hazards, final artifact",
+   "observableRegime": {
+    "field": "enemies,traps"
+   },
+   "observableTime": {
+    "field": "ticksRemaining",
+    "note": "public remaining-budget label, not a planning horizon"
+   },
+   "nativeCounterfactualEvaluator": {
+    "status": "NOT_DEFINED",
+    "reason": "No native counterfactual evaluator or optimal-value oracle in the v32 ASCII kernels; constructive witnesses are existence proofs only"
+   },
+   "fullEpisodeEvaluation": "FEASIBLE (terminal or tick-limit timeout in every level; v33.1 terminalReached 24/24)",
+   "sentinelObserverIntegration": {
+    "path": "ascii-suite/v31/sentinel.mjs",
+    "graph": "actor/civilians/enemies, civilian->actor depends",
+    "nexusActionAuthority": "none",
+    "oracle": "TEMPORAL_ADVISORY_ONLY_NOT_ACTION_SELECTOR"
+   },
+   "isolatedRecommendationEvaluation": "POSSIBLE: packets are deep-frozen pure functions of state; worlds are structuredClone-isolated; tested by observer audit and shadow non-interference",
+   "levels": [
+    {
+     "level": "ROGUE_ADVANCED_1",
+     "tier": 1,
+     "label": "Advanced",
+     "name": "Resource-Constrained Dungeon",
+     "demand": "unknown geometry, traps, retreats and scarce healing",
+     "tickLimit": 1000,
+     "actionTypesT0": [
+      "MOVE_NORTH",
+      "MOVE_SOUTH",
+      "MOVE_EAST",
+      "MOVE_WEST",
+      "WAIT",
+      "DEFEND",
+      "INSPECT",
+      "REST"
+     ],
+     "actionCountT0": 8,
+     "step": {
+      "file": "ascii-suite/v3/worlds/roguelike.mjs",
+      "line": 7,
+      "sha256": "cb14dab6b3401856"
+     },
+     "terminal": {
+      "file": "ascii-suite/v3/worlds/roguelike.mjs",
+      "line": 17,
+      "sha256": "cb14dab6b3401856"
+     },
+     "win": "DESCEND on the last floor (2/4/5 floors; tier 3 requires the final artifact first)",
+     "loss": "health 0 → FAILURE",
+     "timeout": "tick >= 600+tier*400 → TIMEOUT",
+     "v331Reachability": [
+      "none recorded beyond shallow smoke (reset + planner steps)"
+     ],
+     "v331Unresolved": [],
+     "nexusT0": {
+      "graphEntities": 1,
+      "graphRelationships": 0,
+      "rationaleCodes": [
+       "NEXUS_ISOLATED_ENTITY",
+       "NEXUS_NO_RELATIONSHIPS"
+      ]
+     }
+    },
+    {
+     "level": "ROGUE_ADVANCED_2",
+     "tier": 2,
+     "label": "Expert",
+     "name": "Multi-Floor Expedition",
+     "demand": "key/gate navigation across four floors",
+     "tickLimit": 1400,
+     "actionTypesT0": [
+      "MOVE_NORTH",
+      "MOVE_SOUTH",
+      "MOVE_EAST",
+      "MOVE_WEST",
+      "WAIT",
+      "DEFEND",
+      "INSPECT",
+      "REST"
+     ],
+     "actionCountT0": 8,
+     "step": {
+      "file": "ascii-suite/v3/worlds/roguelike.mjs",
+      "line": 7,
+      "sha256": "cb14dab6b3401856"
+     },
+     "terminal": {
+      "file": "ascii-suite/v3/worlds/roguelike.mjs",
+      "line": 17,
+      "sha256": "cb14dab6b3401856"
+     },
+     "win": "DESCEND on the last floor (2/4/5 floors; tier 3 requires the final artifact first)",
+     "loss": "health 0 → FAILURE",
+     "timeout": "tick >= 600+tier*400 → TIMEOUT",
+     "v331Reachability": [
+      "v32 smoke: STRONG FAILURE (death) 2/2"
+     ],
+     "v331Unresolved": [
+      "ROGUE_ADVANCED_2:strong-0"
+     ],
+     "nexusT0": {
+      "graphEntities": 1,
+      "graphRelationships": 0,
+      "rationaleCodes": [
+       "NEXUS_ISOLATED_ENTITY",
+       "NEXUS_NO_RELATIONSHIPS"
+      ]
+     }
+    },
+    {
+     "level": "ROGUE_ADVANCED_3",
+     "tier": 3,
+     "label": "Extreme",
+     "name": "Extreme Survival Campaign",
+     "demand": "five-floor survival with telegraphed cyclic hazards and final artifact",
+     "tickLimit": 1800,
+     "actionTypesT0": [
+      "MOVE_NORTH",
+      "MOVE_SOUTH",
+      "MOVE_EAST",
+      "MOVE_WEST",
+      "WAIT",
+      "DEFEND",
+      "INSPECT",
+      "REST"
+     ],
+     "actionCountT0": 8,
+     "step": {
+      "file": "ascii-suite/v3/worlds/roguelike.mjs",
+      "line": 7,
+      "sha256": "cb14dab6b3401856"
+     },
+     "terminal": {
+      "file": "ascii-suite/v3/worlds/roguelike.mjs",
+      "line": 17,
+      "sha256": "cb14dab6b3401856"
+     },
+     "win": "DESCEND on the last floor (2/4/5 floors; tier 3 requires the final artifact first)",
+     "loss": "health 0 → FAILURE",
+     "timeout": "tick >= 600+tier*400 → TIMEOUT",
+     "v331Reachability": [
+      "v32 smoke: STRONG FAILURE 2/2; one seed without privileged witness"
+     ],
+     "v331Unresolved": [
+      "ROGUE_ADVANCED_3:strong-0"
+     ],
+     "nexusT0": {
+      "graphEntities": 1,
+      "graphRelationships": 0,
+      "rationaleCodes": [
+       "NEXUS_ISOLATED_ENTITY",
+       "NEXUS_NO_RELATIONSHIPS"
+      ]
+     }
+    }
+   ]
+  }
+ ],
+ "authority": "R0"
+}

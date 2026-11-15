@@ -1,0 +1,358 @@
+{
+ "schema": "STAGE3H_HW1_I2_REGISTRY_TESTS_V1",
+ "authority": "R0",
+ "checkedAt": "2026-10-31T06:49:26.586Z",
+ "registries": [
+  {
+   "name": "STUDIED_341",
+   "count": 341,
+   "seal": "449e2850b01106b2fe81564fbe24a5e94fc7371350a3ffe007884e7049d8fef6"
+  },
+  {
+   "name": "DEV_H2_BASE_WORLDS",
+   "count": 12844,
+   "seal": "8b612a00e0d6e2d0bbc15226350e050cf46c8e6a7dac3e78eef819611c109f72"
+  }
+ ],
+ "note": "The seal detects accidental or inconsistent modification. It is not a signature: a writer who recomputes the seal can forge a registry, so the seals are also recorded in committed evidence.",
+ "sourceHashes": {
+  "i2-registry.mjs": "103f1c54f82ae924e8dcdf25d55d97c4c6adb5b5c9f486c0ca27ac75c1b3fd6f",
+  "i2-registry-tests.mjs": "67d9b4d4cc0cda547ec469ca74174c73424d456fd97c33cbe3b25de4b2c2642b",
+  "i2-pcd.mjs": "922b42541c2d1aa999e692bf24db8f1789026a454f82643721b656ab1653a75f"
+ },
+ "tamperOutcomes": {
+  "ENTRY_COARSE_MODIFIED": {
+   "want": "SEAL_MISMATCH",
+   "got": "PCD_REGISTRY_INVALID:SEAL_MISMATCH",
+   "ok": true
+  },
+  "ENTRY_FINE_MODIFIED": {
+   "want": "SEAL_MISMATCH",
+   "got": "PCD_REGISTRY_INVALID:SEAL_MISMATCH",
+   "ok": true
+  },
+  "ENTRY_SOURCE_MODIFIED": {
+   "want": "SEAL_MISMATCH",
+   "got": "PCD_REGISTRY_INVALID:SEAL_MISMATCH",
+   "ok": true
+  },
+  "ENTRY_ID_MODIFIED": {
+   "want": "SEAL_MISMATCH",
+   "got": "PCD_REGISTRY_INVALID:SEAL_MISMATCH",
+   "ok": true
+  },
+  "ENTRY_DROPPED_COUNT_UNCHANGED": {
+   "want": "COUNT",
+   "got": "PCD_REGISTRY_INVALID:COUNT",
+   "ok": true
+  },
+  "ENTRY_DROPPED_COUNT_ADJUSTED": {
+   "want": "SEAL_MISMATCH",
+   "got": "PCD_REGISTRY_INVALID:SEAL_MISMATCH",
+   "ok": true
+  },
+  "ENTRY_ADDED_COUNT_ADJUSTED": {
+   "want": "SEAL_MISMATCH",
+   "got": "PCD_REGISTRY_INVALID:SEAL_MISMATCH",
+   "ok": true
+  },
+  "ENTRIES_REORDERED": {
+   "want": "SEAL_MISMATCH",
+   "got": "PCD_REGISTRY_INVALID:SEAL_MISMATCH",
+   "ok": true
+  },
+  "DUPLICATE_ID": {
+   "want": "ID_DUPLICATE_OR_EMPTY",
+   "got": "PCD_REGISTRY_INVALID:ID_DUPLICATE_OR_EMPTY",
+   "ok": true
+  },
+  "EMPTY_ID": {
+   "want": "ID_DUPLICATE_OR_EMPTY",
+   "got": "PCD_REGISTRY_INVALID:ID_DUPLICATE_OR_EMPTY",
+   "ok": true
+  },
+  "SEAL_CORRUPTED": {
+   "want": "SEAL_MISMATCH",
+   "got": "PCD_REGISTRY_INVALID:SEAL_MISMATCH",
+   "ok": true
+  },
+  "SEAL_NOT_HEX": {
+   "want": "SEAL_MISMATCH",
+   "got": "PCD_REGISTRY_INVALID:SEAL_MISMATCH",
+   "ok": true
+  },
+  "SEAL_REMOVED": {
+   "want": "SEAL_MISMATCH",
+   "got": "PCD_REGISTRY_INVALID:SEAL_MISMATCH",
+   "ok": true
+  },
+  "COARSE_NOT_HEX": {
+   "want": "NON_CANONICAL_DIGEST",
+   "got": "PCD_REGISTRY_INVALID:NON_CANONICAL_DIGEST:DEV288:174",
+   "ok": true
+  },
+  "COARSE_UPPERCASE": {
+   "want": "NON_CANONICAL_DIGEST",
+   "got": "PCD_REGISTRY_INVALID:NON_CANONICAL_DIGEST:DEV288:174",
+   "ok": true
+  },
+  "COARSE_TRUNCATED": {
+   "want": "NON_CANONICAL_DIGEST",
+   "got": "PCD_REGISTRY_INVALID:NON_CANONICAL_DIGEST:DEV288:174",
+   "ok": true
+  },
+  "COARSE_MISSING": {
+   "want": "NON_CANONICAL_DIGEST",
+   "got": "PCD_REGISTRY_INVALID:NON_CANONICAL_DIGEST:DEV288:174",
+   "ok": true
+  },
+  "FINE_NOT_HEX": {
+   "want": "NON_CANONICAL_DIGEST",
+   "got": "PCD_REGISTRY_INVALID:NON_CANONICAL_DIGEST:DEV288:174",
+   "ok": true
+  },
+  "SCHEMA_WRONG": {
+   "want": "SCHEMA",
+   "got": "PCD_REGISTRY_INVALID:SCHEMA",
+   "ok": true
+  },
+  "PCD_VERSION_WRONG": {
+   "want": "PCD_VERSION",
+   "got": "PCD_REGISTRY_INVALID:PCD_VERSION",
+   "ok": true
+  },
+  "ENTRIES_NOT_ARRAY": {
+   "want": "COUNT",
+   "got": "PCD_REGISTRY_INVALID:COUNT",
+   "ok": true
+  }
+ },
+ "fileOutcomes": {
+  "TRUNCATED": "PCD_REGISTRY_INVALID:UNREADABLE",
+  "MISSING": "PCD_REGISTRY_INVALID:UNREADABLE",
+  "NOT_JSON": "PCD_REGISTRY_INVALID:UNREADABLE",
+  "EMPTY": "PCD_REGISTRY_INVALID:UNREADABLE",
+  "ONE_DIGEST_CHAR_EDITED_ON_DISK": "PCD_REGISTRY_INVALID:SEAL_MISMATCH"
+ },
+ "matching": {
+  "classes": 25,
+  "selfFine": 25,
+  "selfCoarse": 25,
+  "relabel": [
+   150,
+   150
+  ],
+  "menu": [
+   150,
+   150
+  ],
+  "d4": [
+   175,
+   175
+  ],
+  "notFoundBase": 0
+ },
+ "gates": [
+  {
+   "name": "EVERY_REGISTRY_TAMPER_IS_REJECTED_WITH_THE_EXPECTED_REASON",
+   "pass": true,
+   "detail": {
+    "ENTRY_COARSE_MODIFIED": {
+     "want": "SEAL_MISMATCH",
+     "got": "PCD_REGISTRY_INVALID:SEAL_MISMATCH",
+     "ok": true
+    },
+    "ENTRY_FINE_MODIFIED": {
+     "want": "SEAL_MISMATCH",
+     "got": "PCD_REGISTRY_INVALID:SEAL_MISMATCH",
+     "ok": true
+    },
+    "ENTRY_SOURCE_MODIFIED": {
+     "want": "SEAL_MISMATCH",
+     "got": "PCD_REGISTRY_INVALID:SEAL_MISMATCH",
+     "ok": true
+    },
+    "ENTRY_ID_MODIFIED": {
+     "want": "SEAL_MISMATCH",
+     "got": "PCD_REGISTRY_INVALID:SEAL_MISMATCH",
+     "ok": true
+    },
+    "ENTRY_DROPPED_COUNT_UNCHANGED": {
+     "want": "COUNT",
+     "got": "PCD_REGISTRY_INVALID:COUNT",
+     "ok": true
+    },
+    "ENTRY_DROPPED_COUNT_ADJUSTED": {
+     "want": "SEAL_MISMATCH",
+     "got": "PCD_REGISTRY_INVALID:SEAL_MISMATCH",
+     "ok": true
+    },
+    "ENTRY_ADDED_COUNT_ADJUSTED": {
+     "want": "SEAL_MISMATCH",
+     "got": "PCD_REGISTRY_INVALID:SEAL_MISMATCH",
+     "ok": true
+    },
+    "ENTRIES_REORDERED": {
+     "want": "SEAL_MISMATCH",
+     "got": "PCD_REGISTRY_INVALID:SEAL_MISMATCH",
+     "ok": true
+    },
+    "DUPLICATE_ID": {
+     "want": "ID_DUPLICATE_OR_EMPTY",
+     "got": "PCD_REGISTRY_INVALID:ID_DUPLICATE_OR_EMPTY",
+     "ok": true
+    },
+    "EMPTY_ID": {
+     "want": "ID_DUPLICATE_OR_EMPTY",
+     "got": "PCD_REGISTRY_INVALID:ID_DUPLICATE_OR_EMPTY",
+     "ok": true
+    },
+    "SEAL_CORRUPTED": {
+     "want": "SEAL_MISMATCH",
+     "got": "PCD_REGISTRY_INVALID:SEAL_MISMATCH",
+     "ok": true
+    },
+    "SEAL_NOT_HEX": {
+     "want": "SEAL_MISMATCH",
+     "got": "PCD_REGISTRY_INVALID:SEAL_MISMATCH",
+     "ok": true
+    },
+    "SEAL_REMOVED": {
+     "want": "SEAL_MISMATCH",
+     "got": "PCD_REGISTRY_INVALID:SEAL_MISMATCH",
+     "ok": true
+    },
+    "COARSE_NOT_HEX": {
+     "want": "NON_CANONICAL_DIGEST",
+     "got": "PCD_REGISTRY_INVALID:NON_CANONICAL_DIGEST:DEV288:174",
+     "ok": true
+    },
+    "COARSE_UPPERCASE": {
+     "want": "NON_CANONICAL_DIGEST",
+     "got": "PCD_REGISTRY_INVALID:NON_CANONICAL_DIGEST:DEV288:174",
+     "ok": true
+    },
+    "COARSE_TRUNCATED": {
+     "want": "NON_CANONICAL_DIGEST",
+     "got": "PCD_REGISTRY_INVALID:NON_CANONICAL_DIGEST:DEV288:174",
+     "ok": true
+    },
+    "COARSE_MISSING": {
+     "want": "NON_CANONICAL_DIGEST",
+     "got": "PCD_REGISTRY_INVALID:NON_CANONICAL_DIGEST:DEV288:174",
+     "ok": true
+    },
+    "FINE_NOT_HEX": {
+     "want": "NON_CANONICAL_DIGEST",
+     "got": "PCD_REGISTRY_INVALID:NON_CANONICAL_DIGEST:DEV288:174",
+     "ok": true
+    },
+    "SCHEMA_WRONG": {
+     "want": "SCHEMA",
+     "got": "PCD_REGISTRY_INVALID:SCHEMA",
+     "ok": true
+    },
+    "PCD_VERSION_WRONG": {
+     "want": "PCD_VERSION",
+     "got": "PCD_REGISTRY_INVALID:PCD_VERSION",
+     "ok": true
+    },
+    "ENTRIES_NOT_ARRAY": {
+     "want": "COUNT",
+     "got": "PCD_REGISTRY_INVALID:COUNT",
+     "ok": true
+    }
+   }
+  },
+  {
+   "name": "UNREADABLE_OR_EDITED_REGISTRY_FILES_FAIL_CLOSED",
+   "pass": true,
+   "detail": {
+    "TRUNCATED": "PCD_REGISTRY_INVALID:UNREADABLE",
+    "MISSING": "PCD_REGISTRY_INVALID:UNREADABLE",
+    "NOT_JSON": "PCD_REGISTRY_INVALID:UNREADABLE",
+    "EMPTY": "PCD_REGISTRY_INVALID:UNREADABLE",
+    "ONE_DIGEST_CHAR_EDITED_ON_DISK": "PCD_REGISTRY_INVALID:SEAL_MISMATCH"
+   }
+  },
+  {
+   "name": "SEAL_IS_INDEPENDENT_OF_GENERATION_ORDER",
+   "pass": true,
+   "detail": {
+    "seal": "449e2850b011"
+   }
+  },
+  {
+   "name": "SEAL_CHANGES_WHEN_ANY_PROBED_ENTRY_CHANGES",
+   "pass": true,
+   "detail": {
+    "probes": 21,
+    "sensitive": 21
+   }
+  },
+  {
+   "name": "SEALING_A_DUPLICATE_ID_IS_REFUSED",
+   "pass": true,
+   "detail": "PCD_REGISTRY_INVALID:ID_DUPLICATE_OR_EMPTY"
+  },
+  {
+   "name": "EVERY_PROBED_BASE_CLASS_MATCHES_ITSELF_ON_FINE_AND_COARSE",
+   "pass": true,
+   "detail": {
+    "classes": 25,
+    "selfFine": 25,
+    "selfCoarse": 25,
+    "relabel": [
+     150,
+     150
+    ],
+    "menu": [
+     150,
+     150
+    ],
+    "d4": [
+     175,
+     175
+    ],
+    "notFoundBase": 0
+   }
+  },
+  {
+   "name": "RELABEL_MENU_AND_D4_TWINS_ARE_EXCLUDED_AS_THE_SAME_CLASS",
+   "pass": true,
+   "detail": {
+    "relabel": [
+     150,
+     150
+    ],
+    "menu": [
+     150,
+     150
+    ],
+    "d4": [
+     175,
+     175
+    ]
+   }
+  },
+  {
+   "name": "UNRELATED_DIGESTS_DO_NOT_MATCH",
+   "pass": true,
+   "detail": null
+  },
+  {
+   "name": "COARSE_ONLY_COLLISION_IS_REPORTED_AS_COARSE",
+   "pass": true,
+   "detail": null
+  },
+  {
+   "name": "REGISTRIES_COVER_EXPECTED_POPULATIONS",
+   "pass": true,
+   "detail": {
+    "studied": 341,
+    "dev": 12844
+   }
+  }
+ ],
+ "allPass": true
+}

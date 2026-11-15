@@ -1,0 +1,16 @@
+import {resolve} from 'node:path';import {DIR,verifyLocal} from './inheritance.mjs';import {LEVELS} from './catalog.mjs';import {PLAN} from './plan.mjs';import {episode} from './runner.mjs';import {structural,witness} from './feasibility.mjs';import {manifest,digest,save,read,checkManifest} from '../training-dev-v1/io.mjs';import {diagnose} from './curriculum.mjs';
+const out=resolve(DIR,'runs','challenge-smoke-001'),source=manifest(DIR,p=>/\.(mjs|html|js|css)$/.test(p));
+const schedule=LEVELS.flatMap((l,gi)=>Array.from({length:2},(_,i)=>['STRONG','WAIT','SPAM','RANDOM'].map(policy=>({id:l.id+'-seed'+i+'-'+policy,game:l.game,tier:l.tier,seed:(PLAN.splits.DEV.seedBase+gi*100003+i*7919)>>>0,family:PLAN.splits.DEV.lineage,sensor:'NORMAL',policy}))).flat());
+for(const[lid,l]of LEVELS.entries())for(const sensor of ['DELAYED','STALE','MISSING','PARTIAL'])if(!(l.game==='fighter'&&sensor==='PARTIAL'))schedule.push({id:l.id+'-'+sensor,game:l.game,tier:l.tier,seed:(PLAN.splits.DEV.seedBase+lid*100003+22271)>>>0,family:PLAN.splits.DEV.lineage,sensor,policy:'STRONG'});
+save(resolve(out,'registration.json'),{plan:PLAN,source,sourceHash:digest(source),protected:verifyLocal(),schedule,qualification:'Descriptive DEV smoke, not fresh scientific validation',conditionsNotExecuted:{RESOURCE_SCARCITY:'New tiers already resource constrained; no independent scarcity sweep yet',ADVERSARIAL_BEHAVIOR:'Native new opponent mechanics, not independent sweep',STRUCTURAL_OOD:'Configured variants not independently proven OOD; no structural qualification claimed'},blindRouteTest:'SPAM is a fixed single-action route only; multi-action prerecorded-route exploitation not exhaustively tested'});
+const feasibility=[],results=[];
+for(const[gi,l]of LEVELS.entries()){
+ const specs=schedule.filter(s=>s.game===l.game&&s.tier===l.tier);
+ for(const s of specs.filter(s=>s.policy==='STRONG'&&s.sensor==='NORMAL')){
+  let st,wi;try{st=structural(s);wi=witness(s);save(resolve(out,'evaluator',s.id+'-witness.json'),wi);feasibility.push({spec:s,structural:st,witnessSuccess:wi.success,witnessTicks:wi.ticks,admitted:st.pass&&wi.success,scope:'Checked instances only, not all possible generated seeds or limited-information guarantee'});}catch(e){feasibility.push({spec:s,admitted:false,error:e.message});}
+ }
+ for(const s of specs){try{const r=episode(s,{out,verify:true});r.failureCategory=diagnose(r);results.push(r);console.log(JSON.stringify({id:s.id,outcome:r.outcome,ticks:r.ticks,catastrophic:r.metrics.catastrophic}));}catch(e){const r={spec:s,status:'REJECTED',error:e.message};results.push(r);save(resolve(out,'rejected',s.id+'.json'),r);console.log(JSON.stringify(r));}}
+}
+save(resolve(out,'feasibility.json'),{instances:feasibility,qualifiedLevels:LEVELS.filter(l=>feasibility.filter(f=>f.spec.game===l.game&&f.spec.tier===l.tier).every(f=>f.admitted)).map(l=>l.id),qualification:'INSTANCE_CONSTRUCTIVE_SUCCESS_ONLY; hidden witness not given to public controllers'});
+save(resolve(out,'results.json'),{scheduled:schedule.length,admitted:results.filter(r=>r.status!=='REJECTED').length,completed:results.filter(r=>r.status==='COMPLETED').length,rejected:results.filter(r=>r.status==='REJECTED').length,results});
+save(resolve(out,'postflight.json'),{source:checkManifest(DIR,source),protected:verifyLocal()});

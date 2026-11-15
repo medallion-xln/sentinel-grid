@@ -1,0 +1,91 @@
+{
+ "schema": "STAGE3H_ASCII_EXIT_MATRIX_V1",
+ "protocolSha256": "9737339c0f9c5ff1f30146b2239821e43f9eefb2d2e6e5967a0827d2455a1b6f",
+ "statusVocabulary": [
+  "PROVEN_IN_EXISTING_FROZEN_DOMAIN",
+  "STRUCTURALLY_TESTABLE_IN_ASCII",
+  "NOT_TESTABLE_IN_ASCII",
+  "REQUIRES_NEW_PROSPECTIVE_EVIDENCE",
+  "QUALIFIED_BY_NEW_EVIDENCE"
+ ],
+ "noAutomaticTransfer": "Forge World findings are not transferred to ASCII; ASCII development fixtures are not qualification evidence.",
+ "decisionCoverageDev": 0.002737226277372263,
+ "rows": [
+  {
+   "dimension": "1. Expert marginal decision value",
+   "forgeWorldDomain": "Nexus at H0 inside the frozen rule: confirmed in registered 3H.1-D/F confirmations (PROVEN_IN_EXISTING_FROZEN_DOMAIN for that bounded rule; sealed V3 qualification not executed)",
+   "asciiTestability": "Nexus/factory only, via P1 (declared adapter over strongest native) and P3 (existing v31 path); every other expert-game pairing is INAPPLICABLE or NOT_IMPLEMENTED (expert-applicability.json)",
+   "statuses": [
+    "STRUCTURALLY_TESTABLE_IN_ASCII",
+    "REQUIRES_NEW_PROSPECTIVE_EVIDENCE"
+   ],
+   "newEvidenceRequired": "HOLDOUT A/B P1 and P3",
+   "developmentObservation": "development fixtures only (3 seeds x 3 tiers + 4 factory stress strata): Nexus adapter changed 6/2192 decisions; v31 Nexus fired 0/30654"
+  },
+  {
+   "dimension": "2. Complementarity",
+   "forgeWorldDomain": "Nexus/S0 by declared horizon confirmed; S0 is a comparator, not an expert",
+   "asciiTestability": "Only one expert (Nexus) has any ASCII action authority, so expert-expert complementarity is NOT_TESTABLE_IN_ASCII. Nexus-plus-native-planner composition is measured by P1 and must not be reported as multi-expert complementarity",
+   "statuses": [
+    "NOT_TESTABLE_IN_ASCII"
+   ],
+   "newEvidenceRequired": "a second action-bound expert would be required (none exists; none created)",
+   "developmentObservation": "development fixtures only (3 seeds x 3 tiers + 4 factory stress strata): Nexus adapter changed 6/2192 decisions; v31 Nexus fired 0/30654"
+  },
+  {
+   "dimension": "3. Horizon-stratified competence",
+   "forgeWorldDomain": "H0/H2 declared bands: confirmed for the fixed rule",
+   "asciiTestability": "ASCII games declare no planning-horizon bands; only public time-remaining labels (fighter timeLeft, rescue/factory/roguelike ticksRemaining, cards deckRemaining) exist. Decision coverage by EARLY/MIDDLE/LATE band is descriptive; it is not horizon competence",
+   "statuses": [
+    "NOT_TESTABLE_IN_ASCII"
+   ],
+   "newEvidenceRequired": "none possible without a source-declared horizon contract",
+   "developmentObservation": "development fixtures only (3 seeds x 3 tiers + 4 factory stress strata): Nexus adapter changed 6/2192 decisions; v31 Nexus fired 0/30654"
+  },
+  {
+   "dimension": "4. Regime-specific competence",
+   "forgeWorldDomain": "OBSERVED_THREAT / NO_OBSERVED_THREAT proposed bounded scope (unapproved)",
+   "asciiTestability": "Observable regime labels exist for 7 games, but the only action-bound expert (Nexus/factory) can act only when a REPAIR is offered, i.e. only under OBSERVED_DISRUPTION; the regime contrast is degenerate by construction. Controller (not expert) competence by regime is descriptive (S3)",
+   "statuses": [
+    "NOT_TESTABLE_IN_ASCII"
+   ],
+   "newEvidenceRequired": "descriptive coverage only",
+   "developmentObservation": "development fixtures only (3 seeds x 3 tiers + 4 factory stress strata): Nexus adapter changed 6/2192 decisions; v31 Nexus fired 0/30654"
+  },
+  {
+   "dimension": "5. Ablation value",
+   "forgeWorldDomain": "Nexus removal lost coverage (development); sealed not executed",
+   "asciiTestability": "Exact ablation SENTINEL_V31_AS_IS vs V31_FALLBACK_ABLATION (P2) and adapter vs its own fallback (P1)",
+   "statuses": [
+    "STRUCTURALLY_TESTABLE_IN_ASCII",
+    "REQUIRES_NEW_PROSPECTIVE_EVIDENCE"
+   ],
+   "newEvidenceRequired": "HOLDOUT A/B P2",
+   "developmentObservation": "development fixtures only (3 seeds x 3 tiers + 4 factory stress strata): Nexus adapter changed 6/2192 decisions; v31 Nexus fired 0/30654"
+  },
+  {
+   "dimension": "6. Prime synthesis value",
+   "forgeWorldDomain": "experimental synthesis identical to Nexus on 218/218 rows; incumbent NOT_TESTABLE",
+   "asciiTestability": "Incumbent ROOT-PUCT needs known-simulator successors (parity violation) and exists only on the ASCII 2.0 engine; no Prime synthesis interface over ASCII packets. Not invented",
+   "statuses": [
+    "NOT_TESTABLE_IN_ASCII"
+   ],
+   "newEvidenceRequired": "none without a lawful public-information Prime interface",
+   "developmentObservation": "development fixtures only (3 seeds x 3 tiers + 4 factory stress strata): Nexus adapter changed 6/2192 decisions; v31 Nexus fired 0/30654"
+  },
+  {
+   "dimension": "7. False-selection harm",
+   "forgeWorldDomain": "zero introduced catastrophes observed in 3H.1-D/F (structural at H2, empirical at H0)",
+   "asciiTestability": "Native catastrophic flag in every game; introduced-catastrophe veto with Clopper-Pearson bound, plus inferiority test, for every Sentinel arm",
+   "statuses": [
+    "STRUCTURALLY_TESTABLE_IN_ASCII",
+    "REQUIRES_NEW_PROSPECTIVE_EVIDENCE"
+   ],
+   "newEvidenceRequired": "HOLDOUT A/B catastrophe veto",
+   "developmentObservation": "development fixtures only (3 seeds x 3 tiers + 4 factory stress strata): Nexus adapter changed 6/2192 decisions; v31 Nexus fired 0/30654"
+  }
+ ],
+ "qualifiedByNewEvidence": [],
+ "fullStage3hCertified": false,
+ "boundedAsciiQualification": "NOT_YET_EVALUATED (protocol proposed, not registered or executed)"
+}

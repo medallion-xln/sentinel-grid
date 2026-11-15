@@ -1,0 +1,72 @@
+=== SENTINEL GRID STAGE 3H SEALED A/B QUALIFICATION ===
+
+STATUS=EXECUTION_INVALID_OR_ABORTED
+CLASSIFICATION=REPLICATION_A_ABORTED_ON_FROZEN_INTEGRITY_CHECK (NATIVE_MENU_MISMATCH: native duplicate action in a registered world)
+
+AUTHORITY=R0
+REGISTRATION_SHA256=0364164cb05e140da6265c89d830388b84dafed7ef5f3abf47ad6afb2833b01f
+REGISTRATION_COMMIT=e009344c2c973a329a4b88582f90b9e58e15abce
+
+PREEXECUTION_INTEGRITY=PASS (identity, 133 sources, runtime, inheritance, authorization, clean clone, OOD dry run 480/480)
+MACHINE_PREFLIGHT=PASS at 09:07 (three idle minutes; registered runner preflight passed)
+SOURCE_IDENTITIES_VERIFIED=true
+PROTECTED_FILES_UNCHANGED=true
+
+REPLICATION_A_STATUS=CONSUMED_ABORTED at 09:42:53 after about 35 minutes; no rows, no LOCK; never to be rerun
+REPLICATION_B_STATUS=NOT_STARTED (registered rule: no continuation after an aborted A)
+REPLICATION_A_LOCK_HASH=NONE
+REPLICATION_B_LOCK_HASH=NONE
+
+SCHEDULED_WORLD_COUNT=25,536 registered (12,768 in A, partially evaluated in memory, none written)
+ADMITTED_WORLD_COUNT=NOT_RECORDED (runner writes only at lock)
+REJECTED_WORLD_COUNT=NOT_RECORDED
+EFFECTIVE_SAMPLE_SIZE=NOT_MEASURED
+INDEPENDENT_WORLD_IDENTITY=VERIFIED_AT_SEED_LEVEL
+HOLDOUT_VALID=NOT_MEASURED
+OOD_VALID=NOT_MEASURED
+
+FULL_POPULATION_REGRET_DELTA=NOT_MEASURED
+H0_SELECTION_BENEFIT=NOT_MEASURED
+H2_HARM_AVOIDANCE=NOT_MEASURED
+REGIME_RESULTS=NOT_MEASURED
+OOD_RESULTS=NOT_MEASURED
+MULTIPLICITY_RESULT=NOT_MEASURED
+NUISANCE_RESULT=NOT_MEASURED
+CATASTROPHE_RESULT=NOT_MEASURED
+FALSE_SELECTION_HARM=NOT_MEASURED
+SAFETY_VETO=NOT_EVALUATED
+
+SEVEN_DIMENSIONS_ADJUDICATED=NO_NEW_EVIDENCE (dispositions unchanged; see below)
+STATISTICAL_QUALIFICATION=NOT_EVALUATED
+
+BOUNDED_SELECTOR_QUALIFICATION=EXECUTION_INVALID_OR_ABORTED
+FULL_CANONICAL_STAGE3H_CERTIFIED=false
+
+OWNER_GOVERNED=true
+INDEPENDENT_REVIEW=false
+EXTERNAL_CUSTODY=false
+
+CANONICAL_MOE_GAIN=NOT_ESTABLISHED_UNLESS_SEPARATELY_PROVEN
+STAGE3I_STARTED=false
+
+CAN_DISPATCH=false
+CAN_MUTATE_LIVE_WORLD=false
+
+ROOT CAUSE (evidence/execution-0364164c/abort-diagnosis.json):
+ decisionPacket copies the surface 1:1, so NATIVE_MENU_MISMATCH means an empty menu or duplicate action ids.
+ On 9,456 already-spent worlds: 0 empty, 1 duplicate (3H.1-F OOD_ROLES star/industrial/restore_and_protect/H2/1, seed
+ 202610203007): the native kernel offers the identical BYPASS(n5, dependent n0) twice. Expected about 1.35 such worlds per
+ 12,768-world replication, so the registered protocol aborts on most replications. 3H.1-D/F never checked menu uniqueness.
+
+SEVEN DIMENSIONS (unchanged; no sealed evidence produced):
+ 1 expert marginal value, 2 complementarity, 3 horizon competence, 5 ablation, 7 false-selection harm:
+   previously confirmed UNSEALED development evidence only (3H.1-D/F); sealed owner-governed evidence NOT obtained.
+ 4 regime competence: not measured beyond development descriptives.
+ 6 Prime synthesis: APPROVED_NOT_TESTABLE (owner); TCA: APPROVED_NOT_TESTABLE (owner); neither is measured competence.
+
+MINIMAL PROSPECTIVE CORRECTION (needs a new versioned registration and owner approval; nothing changed here):
+ add a pre-policy admission rule that rejects a world whose native offered menu is empty or has duplicate action ids
+ (reason DEGENERATE_NATIVE_MENU, never replaced, counted against the admission floors), and use fresh A/B namespaces,
+ because A's namespace is consumed. Registration 0364164c itself cannot produce a verdict: it needs both replications.
+
+NEXT_EXACT_SCIENTIFIC_ACTION=Owner decides whether to authorize a successor registration with the degenerate-menu admission rule and fresh namespaces; until then Stage 3H Track A has no sealed bounded verdict.

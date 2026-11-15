@@ -1,0 +1,169 @@
+{
+ "schema": "HDISC1_INFERENCE_AUDIT_V1",
+ "authority": "R0",
+ "stage": "STAGE3H-H-DISC-1",
+ "labels": [
+  "STATIC_SOURCE_AUDIT",
+  "NO_TRAINING",
+  "NO_EVALUATION",
+  "NOT_A_PERFORMANCE_RESULT"
+ ],
+ "auditorSha256": "c5bed33e6c92abe5d44748ce8014246830107e02f54b3eaa466015d5d52b4da6",
+ "core": {
+  "entryPoint": "stage3h-hdisc1-discriminator-v1/api/discriminator-api.mjs",
+  "declaredClosure": [
+   "stage3h-hdisc1-discriminator-v1/api/discriminator-api.mjs",
+   "stage3h-hdisc1-discriminator-v1/api/host.mjs",
+   "stage3h-hdisc1-discriminator-v1/discriminator/canonical.mjs",
+   "stage3h-hdisc1-discriminator-v1/discriminator/contract.mjs",
+   "stage3h-hdisc1-discriminator-v1/discriminator/encoder.mjs",
+   "stage3h-hdisc1-discriminator-v1/discriminator/forge-encoder.mjs",
+   "stage3h-hdisc1-discriminator-v1/discriminator/index.mjs",
+   "stage3h-hdisc1-discriminator-v1/discriminator/pair-model.mjs",
+   "stage3h-hdisc1-discriminator-v1/discriminator/forge-base/features.mjs",
+   "stage3h-hdisc1-discriminator-v1/discriminator/forge-base/projection-keys.mjs",
+   "stage3h-sk1-safety-kernel-v1/adapters/forge/evidence.mjs",
+   "stage3h-sk1-safety-kernel-v1/kernel/contract.mjs"
+  ],
+  "files": [
+   {
+    "file": "stage3h-hdisc1-discriminator-v1/api/discriminator-api.mjs",
+    "sha256": "e671b3e4016d3be823bee3774aaec24d84430f59ddfb0546a9f4181e9827408f"
+   },
+   {
+    "file": "stage3h-hdisc1-discriminator-v1/api/host.mjs",
+    "sha256": "320a172a2c97c89cab1a74b31e5e6c49c695751e2099bac7a87149f32d545567"
+   },
+   {
+    "file": "stage3h-hdisc1-discriminator-v1/discriminator/canonical.mjs",
+    "sha256": "e1b9b4ea3ccee12b8f570a2e678749dcff9d65907f0d4585b2ae642afe6b841c"
+   },
+   {
+    "file": "stage3h-hdisc1-discriminator-v1/discriminator/contract.mjs",
+    "sha256": "e00d3822dce68be264a99af9d117341c9bee5bd54b85aff8a804bcba3a536d77"
+   },
+   {
+    "file": "stage3h-hdisc1-discriminator-v1/discriminator/encoder.mjs",
+    "sha256": "4c8b44482a93a393d5a8f2e1e9c6f195149f9ae0f69817789922b64c7a1c0f65"
+   },
+   {
+    "file": "stage3h-hdisc1-discriminator-v1/discriminator/forge-base/features.mjs",
+    "sha256": "7c5165ef2a6c1340a30f0df74149d9b062391d75fb87fe6f86b7851615083bf5"
+   },
+   {
+    "file": "stage3h-hdisc1-discriminator-v1/discriminator/forge-base/projection-keys.mjs",
+    "sha256": "75cea29fc8c3a1abea4d9e76e67a3023fa2b8fe28a001c17cb56fd05f70f2055"
+   },
+   {
+    "file": "stage3h-hdisc1-discriminator-v1/discriminator/forge-encoder.mjs",
+    "sha256": "7b6a4b6968372ada3bde858d74f39f4f23e96cfa25be1916292bb2dc95bff5e2"
+   },
+   {
+    "file": "stage3h-hdisc1-discriminator-v1/discriminator/index.mjs",
+    "sha256": "692158ba1a6b8179fc1457041a25ab297008ebf9245bef6f6bc2762ea9e45e57"
+   },
+   {
+    "file": "stage3h-hdisc1-discriminator-v1/discriminator/pair-model.mjs",
+    "sha256": "74195d775680798998c065ef061561623326639c38173e3cb1df9c01cc46ed57"
+   },
+   {
+    "file": "stage3h-sk1-safety-kernel-v1/adapters/forge/evidence.mjs",
+    "sha256": "caa3c2577c9269ed27d19fdca2878011ff337400be0dcb067db5d51396e95cb9"
+   },
+   {
+    "file": "stage3h-sk1-safety-kernel-v1/kernel/contract.mjs",
+    "sha256": "fbd57bce5d404fbca372531b1124aa753ccb0b400eb380a619e3431610654427"
+   }
+  ],
+  "closureSha256": "83dbd6125f13a35cbc98394d8384f77a3dadd306355a657e4c7e073dd4604a93",
+  "H_DISC_1_SOURCE_HASH": "83dbd6125f13a35cbc98394d8384f77a3dadd306355a657e4c7e073dd4604a93",
+  "violations": [],
+  "EVALUATOR_FREE_INFERENCE": true,
+  "rules": {
+   "importsAllowedAnywhere": [
+    "node:crypto"
+   ],
+   "importsAllowedInHostOnly": [
+    "node:fs",
+    "node:path",
+    "node:url"
+   ],
+   "hostFile": "stage3h-hdisc1-discriminator-v1/api/host.mjs",
+   "forbiddenReachPatterns": [
+    "/\\/infra\\//",
+    "/\\/work\\//",
+    "/\\/tests?\\//",
+    "/\\/analysis\\//",
+    "/\\/witness\\//",
+    "/\\/audit\\//",
+    "/\\/demo\\//",
+    "/\\/protocol\\//",
+    "/\\/readiness\\//",
+    "/\\/inheritance\\//",
+    "/\\/successor\\//",
+    "/\\/models\\//",
+    "/\\/evidence\\//",
+    "/\\/scripts\\//",
+    "/\\/src\\//",
+    "/hw1-eval/",
+    "/evaluat/i",
+    "/dataset/",
+    "/\\btrain/",
+    "/gbdt/",
+    "/population/",
+    "/allocator/",
+    "/counterfactual/",
+    "/stage3h-canonical-v1/",
+    "/ascii-suite/",
+    "/stage3h-hw1-dev-v1/",
+    "/stage3h-hw4/",
+    "/stage3h-failure-diagnosis/",
+    "/stage3h-safety-feasibility/",
+    "/stage3h-owner-governed/",
+    "/stage3h-wider-action/"
+   ],
+   "tokenRules": [
+    "NETWORK_ACCESS",
+    "PROCESS_OR_ENVIRONMENT_ACCESS",
+    "DYNAMIC_CODE",
+    "CLOCK_OR_RANDOMNESS",
+    "FILE_WRITE",
+    "NATIVE_EXECUTION_PRIMITIVE",
+    "PRIVILEGED_PROPERTY_READ",
+    "ARBITRARY_IDENTIFIER_READ"
+   ]
+  },
+  "custodyProtectedPathsChecked": 31,
+  "custodyListSource": ".git/custody/protected-identities.tsv"
+ },
+ "coreSha256": "7dbd288bc381bdee8a5ea6c943cdd74d2ed833a5f839dc944f9bdbb75c20a8fd",
+ "WORKING_TREE_AUDIT": "PASS",
+ "COMMITTED_SOURCE_AUDIT": "PASS",
+ "committedSource": {
+  "head": "aa170d67974574f6a2080fe21bc6d70e56258476",
+  "allTrackedAndEqualToHead": true,
+  "notCommitted": []
+ },
+ "cleanExport": {
+  "exportedFiles": 13,
+  "exportedOnlyTheClosureAndOneFixture": true,
+  "audit": {
+   "fileCount": 12,
+   "closureSha256": "83dbd6125f13a35cbc98394d8384f77a3dadd306355a657e4c7e073dd4604a93",
+   "violations": [],
+   "evaluatorFree": true
+  },
+  "sourceHash": "83dbd6125f13a35cbc98394d8384f77a3dadd306355a657e4c7e073dd4604a93",
+  "liveCall": {
+   "status": "NOT_TRAINED",
+   "decision": "ABSTAIN",
+   "reason": "DISCRIMINATOR_NOT_TRAINED",
+   "menu": 7,
+   "complete": true,
+   "sourceHash": "83dbd6125f13a35cbc98394d8384f77a3dadd306355a657e4c7e073dd4604a93",
+   "decisionDigest": "0a83acb6e72c7d8533f45e6a9b3429eaa6da4c5661b85f1da59d4fce1721e79c",
+   "canDispatch": false,
+   "executeRefusedWith": "EXECUTION_OR_MUTATION_REQUESTED"
+  }
+ }
+}

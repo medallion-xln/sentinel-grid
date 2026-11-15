@@ -1,0 +1,29 @@
+{
+ "schema": "STAGE3H_REPLICATION_CONSUMPTION_RECORD_V1",
+ "registration": "0364164cb05e140da6265c89d830388b84dafed7ef5f3abf47ad6afb2833b01f",
+ "registrationCommit": "e009344c2c973a329a4b88582f90b9e58e15abce",
+ "replicationA": {
+  "status": "CONSUMED_ABORTED",
+  "launched": "2026-10-21T09:07:29-07:00 (after 3 consecutive idle minutes, load 2.19/2.23/2.04)",
+  "preflight": "PASSED (directory created only after preflight)",
+  "aborted": "2026-10-21T09:42:53-07:00",
+  "error": "NATIVE_MENU_MISMATCH at connector.mjs nativeLock, original world, before any truth",
+  "outputDirectory": "runs/0364164cb05e140d/A",
+  "directoryExists": true,
+  "directoryEntries": [],
+  "lockFile": false,
+  "rowsWritten": 0,
+  "outcomesObserved": false,
+  "rerunPermitted": false
+ },
+ "replicationB": {
+  "status": "NOT_STARTED_NOT_CONSUMED",
+  "reason": "authorization: B only after A is validly locked; no continuation after an aborted A"
+ },
+ "analysis": {
+  "status": "NOT_RUN",
+  "reason": "requires both A and B locks"
+ },
+ "loadDuringRun": "1-minute load rose to about 14-16 by the abort (other activity on the machine); the failing assertion is deterministic, not timing-based",
+ "authority": "R0"
+}

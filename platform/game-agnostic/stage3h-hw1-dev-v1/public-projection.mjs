@@ -1,0 +1,217 @@
+// H-W1 I-1 public-only action representation (frozen at I-1). projectPublic(view) is an allowlisted, identity-free extractor: it reads
+// only the public fields listed in READ_PATHS, links entities by internal array index (never emitted) and keeps no entity id, action handle,
+// menu position, digest, hidden quantity, evaluator output or seed. Everything downstream (keys, WL colours, symmetry, canonical frame)
+// is a function of the projection alone.
+//   frameProjection(P, t)   apply one D4 element's linear map to every relative quantity (derived from orientDirection, not copied)
+//   keyV1 / keyV2           keyV1 = intersect.mjs semanticKey byte-for-byte; keyV2 = keyV1 + dependent public block + actor-relative toX/toY
+//   refine                  Weisfeiler-Leman colours of the entity graph (attributes + relations; hashes of structure only)
+//   symmetryReport          exact automorphism group (D4 stabiliser x entity automorphisms) by individualisation-refinement, action orbits
+//   canonicalFrame          the D4 frame whose identity-free structure digest is minimal; canonicalActionKey orders actions in that frame
+//   traceReads              Proxy wrapper that records which view paths a function actually read (allowlist enforcement)
+import { createHash } from 'node:crypto';
+import { orientDirection, DIRECTION_DELTAS, ORIENTATIONS } from '../src/forge-symmetric/orientation-symmetric-v1.js';
+
+const D4_ELEMENTS = ORIENTATIONS; // 8 dihedral labels; identity with transforms.mjs D4_ELEMENTS, imported from its definition site
+
+export const PROJECTION_VERSION = 'HW1_PUBLIC_PROJECTION_V1';
+export const KEY_VERSION = 'HW1_ACTION_KEY_V2';
+const H = (s) => createHash('sha256').update(s).digest('hex').slice(0, 16);
+const J = JSON.stringify;
+
+/** Every view path the projection may read. A path is allowed if it equals an entry or is a prefix of one; `.*` entries allow key enumeration. */
+export const READ_PATHS = [
+  'state.observationTimestamp', 'state.grid.width', 'state.grid.height',
+  'state.actor.observedPosition.x', 'state.actor.observedPosition.y', 'state.actor.energy', 'state.actor.actorHealth', 'state.actor.carriedMaterial', 'state.actor.ticksRemaining', 'state.actor.terrain', 'state.actor.borderDistance',
+  'state.entities[].entityId', 'state.entities[].entityKind', 'state.entities[].actorRelativePosition.dx', 'state.entities[].actorRelativePosition.dy',
+  'state.entities[].relativeDistance.manhattan', 'state.entities[].relativeDistance.path', 'state.entities[].relativeDirection.sx', 'state.entities[].relativeDirection.sy',
+  'state.entities[].hostileFlag', 'state.entities[].criticalFlag', 'state.entities[].resourceFlag', 'state.entities[].objectiveFlag', 'state.entities[].inService', 'state.entities[].threatenedFlag', 'state.entities[].hubFlag',
+  'state.entities[].observedRelationships[].kind', 'state.entities[].observedRelationships[].role', 'state.entities[].observedRelationships[].otherEntityId',
+  'observation.metadata.tick', 'observation.metadata.observationHistory[].channels.*', 'observation.metadata.objectives[].entityId', 'observation.metadata.objectives[].requiredValue', 'observation.metadata.objectives[].deliveredValue',
+  'visibleMap.terrain[]',
+  'surface[].actionType', 'surface[].targetEntityId', 'surface[].action.parameters.*',
+  'semantics[].declaredCost', 'semantics[].preconditions[].id', 'semantics[].preconditions[].status', 'semantics[].deterministicImmediateEffects[].effect', 'semantics[].deterministicImmediateEffects[].class', 'semantics[].deterministicImmediateEffects[].energyAfter',
+  'semantics[].observableSpatialEffect.destination.x', 'semantics[].observableSpatialEffect.destination.y', 'semantics[].observableSpatialEffect.destinationTerrain',
+];
+/** Fields deliberately NOT read, with the reason recorded by the I-1 field audit. */
+export const EXCLUDED_FIELDS = {
+  'state.sourceStateHash': 'integrity digest', 'state.entities[].provenance': 'integrity digest + constants', 'semantics[].provenance': 'integrity digest + constants', 'observation.metadata.worldHash': 'integrity digest',
+  'observation.sequence': 'constant counter', 'observation.features': 'opaque positional encoding (D4-variant); same content is carried by the allowlisted fields', 'observation.metadata.canonicalState': 'identity-bearing entity ids',
+  'observation.observerId': 'identity', 'surface[].actionId': 'action handle', 'semantics[].ACTION_ID': 'action handle', 'state.entities[].observedPosition': 'absolute position (D4-variant; relative position carries the information)',
+};
+
+const allowed = (path) => READ_PATHS.some((a) => a === path || a.startsWith(path + '.') || a.startsWith(path + '[]') || (a.endsWith('.*') && path.startsWith(a.slice(0, -1))));
+/** Deep read-recording wrapper. Returns { view, reads } where reads is the Set of normalised paths read (array indices -> []). */
+export function traceReads(view) {
+  // The proxy target is an empty shadow of the same kind: views are deeply frozen, and a frozen target would force every trap to return the raw value.
+  const reads = new Set(), wrap = (real, path) => {
+    if (!real || typeof real !== 'object') return real;
+    const arr = Array.isArray(real), get = (_, p) => {
+      const v = real[p];
+      if (typeof p === 'symbol' || typeof v === 'function' || (arr && p === 'length')) return v;
+      const q = arr ? `${path}[]` : path ? `${path}.${p}` : String(p);
+      if (!arr || /^\d+$/.test(p)) reads.add(q);
+      return wrap(v, q);
+    }, has = (_, p) => p in real;
+    return new Proxy(arr ? [] : {}, arr ? { get, has } : { get, has, ownKeys() { reads.add(`${path}.*`); return Reflect.ownKeys(real); },
+      getOwnPropertyDescriptor(_, p) { const d = Reflect.getOwnPropertyDescriptor(real, p); return d && { value: real[p], enumerable: d.enumerable, configurable: true, writable: true }; } });
+  };
+  return { view: wrap(view, ''), reads };
+}
+export const unallowedReads = (reads) => [...reads].filter((p) => !allowed(p));
+
+// ------------------------------------------------------------------------------------------------------------------ D4 linear maps
+const dv = (name) => DIRECTION_DELTAS[name];
+/** Linear part of each D4 element on a displacement, derived from orientDirection (East and South images give the matrix columns). */
+export const D4_LINEAR = Object.fromEntries(D4_ELEMENTS.map((t) => { const ex = dv(orientDirection(t, 'EAST')), ey = dv(orientDirection(t, 'SOUTH')); return [t, (x, y) => [ex[0] * x + ey[0] * y, ex[1] * x + ey[1] * y]]; }));
+
+// ------------------------------------------------------------------------------------------------------------------ projection
+const FLAG_NAMES = ['hostile', 'critical', 'resource', 'objective', 'inService', 'threatened', 'hub'];
+const FLAG_FIELDS = { hostile: 'hostileFlag', critical: 'criticalFlag', resource: 'resourceFlag', objective: 'objectiveFlag', inService: 'inService', threatened: 'threatenedFlag', hub: 'hubFlag' };
+const LINK_PARAMS = ['dependent', 'toX', 'toY'];
+
+export function projectPublic(view) {
+  const st = view.state, ents = st.entities, ax = st.actor.observedPosition.x, ay = st.actor.observedPosition.y;
+  const ix = new Map(ents.map((e, i) => [e.entityId, i])), link = (id) => { if (!ix.has(id)) throw Error('PUBLIC_LINK_TO_UNOBSERVED_ENTITY'); return ix.get(id); };
+  if (view.observation.metadata.tick !== st.observationTimestamp) throw Error('TICK_CLOCKS_DISAGREE');
+  const nodes = ents.map((e) => ({
+    kind: e.entityKind, rel: { dx: e.actorRelativePosition.dx, dy: e.actorRelativePosition.dy }, dist: { manhattan: e.relativeDistance.manhattan, path: e.relativeDistance.path }, dir: { sx: e.relativeDirection.sx, sy: e.relativeDirection.sy },
+    flags: Object.fromEntries(FLAG_NAMES.map((f) => [f, e[FLAG_FIELDS[f]]])), rels: e.observedRelationships.map((r) => ({ kind: r.kind, role: r.role, to: link(r.otherEntityId) })), obj: [],
+  }));
+  for (const o of view.observation.metadata.objectives) nodes[link(o.entityId)].obj.push([o.requiredValue, o.deliveredValue]);
+  for (const n of nodes) n.obj.sort((a, b) => a[0] - b[0] || a[1] - b[1]);
+  const hist = view.observation.metadata.observationHistory, names = [...new Set(hist.flatMap((h) => Object.keys(h.channels)))].sort();
+  const history = { n: hist.length, channels: names.map((c) => { const xs = hist.map((h) => h.channels[c]).filter((v) => v !== undefined); return [c, xs[xs.length - 1], Math.min(...xs), Math.max(...xs)]; }) };
+  const tc = {}; for (const c of view.visibleMap.terrain) tc[c] = (tc[c] ?? 0) + 1;
+  const menu = view.surface.map((e, i) => {
+    const s = view.semantics[i], prm = e.action.parameters ?? {}, dest = s.observableSpatialEffect?.destination ?? null, eff = s.deterministicImmediateEffects ?? [];
+    return {
+      type: e.actionType, params: Object.fromEntries(Object.entries(prm).filter(([k]) => !LINK_PARAMS.includes(k))), target: e.targetEntityId == null ? null : link(e.targetEntityId), dependent: prm.dependent == null ? null : link(prm.dependent),
+      disp: dest ? { dx: dest.x - ax, dy: dest.y - ay } : null, toRel: prm.toX == null ? null : { dx: prm.toX - ax, dy: prm.toY - ay },
+      cost: s.declaredCost, pre: (s.preconditions ?? []).map((p) => `${p.id}:${p.status}`).sort(), eff: eff.map((x) => `${x.effect}:${x.class}`).sort(),
+      energyAfter: eff.find((x) => x.effect === 'ENERGY_DELTA')?.energyAfter ?? null, destTerrain: s.observableSpatialEffect?.destinationTerrain ?? null,
+    };
+  });
+  const a = st.actor;
+  return { version: PROJECTION_VERSION, tick: st.observationTimestamp, grid: { width: st.grid.width, height: st.grid.height },
+    actor: { energy: a.energy, health: a.actorHealth, carried: a.carriedMaterial, ticksRemaining: a.ticksRemaining, terrain: a.terrain, borderDistance: a.borderDistance }, history, terrainCounts: Object.fromEntries(Object.entries(tc).sort()), nodes, menu, frame: 'R0' };
+}
+
+/** The projection seen through D4 element t: every relative quantity is mapped, distances/flags/relations are invariant. */
+export function frameProjection(P, t) {
+  const M = D4_LINEAR[t], rel = (r) => { if (!r) return r; const [dx, dy] = M(r.dx, r.dy); return { dx: dx + 0, dy: dy + 0 }; };
+  return { ...P, frame: t,
+    nodes: P.nodes.map((n) => { const [sx, sy] = M(n.dir.sx, n.dir.sy); return { ...n, rel: rel(n.rel), dir: { sx: sx + 0, sy: sy + 0 } }; }),
+    menu: P.menu.map((a) => ({ ...a, params: a.params.direction !== undefined ? { ...a.params, direction: orientDirection(t, a.params.direction) } : a.params, disp: rel(a.disp), toRel: rel(a.toRel) })) };
+}
+
+// ------------------------------------------------------------------------------------------------------------------ keys
+const flags6 = (n) => [n.flags.critical, n.flags.objective, n.flags.hostile, n.flags.threatened, n.flags.inService, n.flags.hub];
+const relKinds = (n) => n.rels.map((r) => [r.kind, r.role]).sort();
+/** keyV1: identical bytes to stage3h-wider-action-feasibility-v1/intersect.mjs semanticKey (checked by the I-1 audit). */
+export function keyV1(P, i) {
+  const a = P.menu[i], t = a.target == null ? null : P.nodes[a.target];
+  return J({ type: a.type, displacement: a.disp, target: t ? { kind: t.kind, rel: t.rel, flags: flags6(t), relationships: relKinds(t) } : null, params: Object.keys(a.params).length ? a.params : null });
+}
+const dependentBlock = (n) => ({ kind: n.kind, rel: n.rel, dist: n.dist, dir: n.dir, flags: [...flags6(n), n.flags.resource], relationships: relKinds(n) });
+/** keyV2: keyV1 plus the dependent entity's public attribute block (resourceFlag included) plus the actor-relative RETREAT destination. */
+export function keyV2(P, i) { const a = P.menu[i], d = a.dependent == null ? null : P.nodes[a.dependent]; return J([keyV1(P, i), d ? dependentBlock(d) : null, a.toRel]); }
+export const keysV2 = (P) => P.menu.map((_, i) => keyV2(P, i));
+
+// ------------------------------------------------------------------------------------------------------------------ WL colours
+const nodeAttr = (n) => [n.kind, FLAG_NAMES.map((f) => n.flags[f]), n.rel, n.dist, n.dir, n.obj];
+const cmpJ = (a, b) => { const x = J(a), y = J(b); return x < y ? -1 : x > y ? 1 : 0; };
+/** Weisfeiler-Leman colours (fixed number of rounds so that two graphs are comparable). `tags` individualise nodes for the isomorphism search. */
+export function refine(P, tags = null) {
+  const n = P.nodes.length, out = P.nodes.map(() => []), inc = P.nodes.map(() => []);
+  P.nodes.forEach((x, i) => x.rels.forEach((r) => { out[i].push([r.kind, r.role, r.to]); inc[r.to].push([r.kind, r.role, i]); }));
+  let col = P.nodes.map((x, i) => H(J([nodeAttr(x), tags ? tags[i] : 0])));
+  for (let k = 0; k < Math.max(2, n); k++) col = col.map((c, i) => H(J([c, out[i].map(([a, b, t]) => [a, b, col[t]]).sort(cmpJ), inc[i].map(([a, b, f]) => [a, b, col[f]]).sort(cmpJ)])));
+  return col;
+}
+/** Colour-based action signature (identity-free; frame-dependent through rel/disp/direction). */
+export const actionSig = (P, col, i) => { const a = P.menu[i]; return J([a.type, a.params, a.cost, a.pre, a.eff, a.energyAfter, a.destTerrain, a.disp, a.toRel, a.target == null ? null : col[a.target], a.dependent == null ? null : col[a.dependent]]); };
+const sigRef = (a, phi) => J([a.type, a.params, a.cost, a.pre, a.eff, a.energyAfter, a.destTerrain, a.disp, a.toRel, a.target == null ? null : phi ? phi[a.target] : a.target, a.dependent == null ? null : phi ? phi[a.dependent] : a.dependent]);
+const globals = (P) => [P.tick, P.grid, P.actor, P.history, P.terrainCounts];
+/** Identity-free digest of the framed projection: globals + sorted node colours + sorted action signatures. */
+export function structureDigest(P, t) { const Pt = frameProjection(P, t), col = refine(Pt); return H(J([globals(Pt), [...col].sort(), Pt.menu.map((_, i) => actionSig(Pt, col, i)).sort()])); }
+
+// ------------------------------------------------------------------------------------------------------------------ exact isomorphism / symmetry
+function verifyIso(A, B, phi) {
+  if (new Set(phi).size !== phi.length || phi.some((v) => v === undefined)) return null;
+  for (let u = 0; u < A.nodes.length; u++) {
+    const a = A.nodes[u], b = B.nodes[phi[u]];
+    if (J(nodeAttr(a)) !== J(nodeAttr(b)) || J(a.rels.map((r) => [r.kind, r.role, phi[r.to]]).sort(cmpJ)) !== J(b.rels.map((r) => [r.kind, r.role, r.to]).sort(cmpJ))) return null;
+  }
+  const sigB = new Map(B.menu.map((a, j) => [sigRef(a, null), j])), amap = A.menu.map((a) => sigB.get(sigRef(a, phi)));
+  if (amap.some((j) => j === undefined) || new Set(amap).size !== amap.length || J(globals(A)) !== J(globals(B))) return null;
+  return { phi, actionMap: amap };
+}
+function search(A, B, tA, tB, depth) {
+  const cA = refine(A, tA), cB = refine(B, tB);
+  if (J([...cA].sort()) !== J([...cB].sort())) return null;
+  const classes = new Map(); cA.forEach((c, i) => (classes.get(c) ?? classes.set(c, []).get(c)).push(i));
+  const open = [...classes.entries()].sort((x, y) => (x[0] < y[0] ? -1 : 1)).find(([, m]) => m.length > 1);
+  if (!open) { const at = new Map(cB.map((c, i) => [c, i])); return verifyIso(A, B, cA.map((c) => at.get(c))); }
+  const [col, mem] = open;
+  for (let v = 0; v < cB.length; v++) { if (cB[v] !== col) continue; const a = tA.slice(), b = tB.slice(); a[mem[0]] = 1000 + depth; b[v] = 1000 + depth; const r = search(A, B, a, b, depth + 1); if (r) return r; }
+  return null;
+}
+/** An isomorphism A -> B of the identity-free structures (nodes, relations, menu), with optional forced node pairs; null if none exists. */
+export function isomorphism(A, B, forced = []) {
+  if (A.nodes.length !== B.nodes.length || A.menu.length !== B.menu.length) return null;
+  const tA = Array(A.nodes.length).fill(0), tB = Array(B.nodes.length).fill(0);
+  forced.forEach(([u, v], k) => { tA[u] = k + 1; tB[v] = k + 1; });
+  return search(A, B, tA, tB, 0);
+}
+
+/**
+ * Exact symmetry of the view: D4 stabiliser, node-colour discreteness, action orbits under the full group {(t, phi)}, and the actions fixed by every
+ * group element. An equivariant policy must choose a fixed action (always non-empty when WAIT is legal: WAIT has no target and no parameters).
+ */
+export function symmetryReport(P) {
+  const P0 = frameProjection(P, 'R0'), col0 = refine(P0), digests = Object.fromEntries(D4_ELEMENTS.map((t) => [t, structureDigest(P0, t)]));
+  const stabiliser = D4_ELEMENTS.filter((t) => digests[t] === digests.R0), n = P0.menu.length, parent = [...Array(n).keys()];
+  const find = (x) => (parent[x] === x ? x : (parent[x] = find(parent[x]))), union = (a, b) => { parent[find(a)] = find(b); };
+  const discrete = new Set(col0).size === col0.length;
+  let isoFound = 0, isoFailed = 0;
+  if (!(discrete && stabiliser.length === 1)) {
+    const sig0 = P0.menu.map((_, j) => actionSig(P0, col0, j));
+    for (const t of stabiliser) {
+      const Pt = frameProjection(P, t), colT = refine(Pt);
+      for (let i = 0; i < n; i++) for (let j = 0; j < n; j++) {
+        if ((t === 'R0' && i === j) || actionSig(Pt, colT, i) !== sig0[j]) continue;
+        const a = Pt.menu[i], b = P0.menu[j], forced = [];
+        if (a.target != null) forced.push([a.target, b.target]); if (a.dependent != null) forced.push([a.dependent, b.dependent]);
+        const r = isomorphism(Pt, P0, forced);
+        if (r && r.actionMap[i] === j) { union(i, j); isoFound++; } else isoFailed++;
+      }
+    }
+  }
+  const orbit = P0.menu.map((_, i) => find(i)), size = new Map(); orbit.forEach((o) => size.set(o, (size.get(o) ?? 0) + 1));
+  const fixed = P0.menu.map((_, i) => i).filter((i) => size.get(orbit[i]) === 1);
+  return { digests, stabiliser, nodeColoursDiscrete: discrete, nodeColourClasses: new Set(col0).size, nodes: col0.length, orbitSizes: [...size.values()].sort((a, b) => b - a), nontrivialOrbits: [...size.values()].filter((s) => s > 1).length,
+    fixedActions: fixed, waitFixed: fixed.some((i) => P0.menu[i].type === 'WAIT'), symmetric: stabiliser.length > 1 || !discrete || [...size.values()].some((s) => s > 1), isoFound, isoFailed };
+}
+
+/** Minimal-digest D4 frames. Fixed actions have the same signature in every minimal frame, so any minimal frame orders them identically. */
+export function canonicalFrame(P) {
+  const digests = Object.fromEntries(D4_ELEMENTS.map((t) => [t, structureDigest(P, t)])), min = Object.values(digests).sort()[0];
+  const frames = D4_ELEMENTS.filter((t) => digests[t] === min);
+  return { digest: min, frames, frame: frames[0], stabiliserSize: frames.length };
+}
+/** Identity-free total order key of an action in the canonical frame (equal for actions of one orbit only if they are equivalent). */
+export function canonicalActionKeys(P) { const c = canonicalFrame(P), Pt = frameProjection(P, c.frame), col = refine(Pt); return { canonical: c, keys: Pt.menu.map((_, i) => actionSig(Pt, col, i)) }; }
+
+/**
+ * Equivariant selection from an invariant score: restrict to actions fixed by the view's symmetry group, maximise `score(i)` (which must itself be
+ * an invariant function of the projection), break exact ties by the canonical-frame action signature. Returns { index, tied, fixed }.
+ */
+export function selectEquivariant(P, score, sym = symmetryReport(P)) {
+  const { keys } = canonicalActionKeys(P), cand = sym.fixedActions.length ? sym.fixedActions : P.menu.map((_, i) => i);
+  let best = null, tied = 0;
+  for (const i of cand) {
+    const s = score(i);
+    if (best === null || s > best.s) { best = { i, s }; tied = 1; } else if (s === best.s) { tied++; if (keys[i] < keys[best.i]) best = { i, s }; }
+  }
+  return { index: best.i, tied, fixedCount: cand.length, menu: P.menu.length };
+}

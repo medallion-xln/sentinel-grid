@@ -1,0 +1,2840 @@
+{
+ "schema": "SK2F_FEASIBILITY_V1",
+ "authority": "R0",
+ "stage": "STAGE3H-SK2-F",
+ "labels": [
+  "READ_ONLY_DIAGNOSTIC",
+  "EXISTING_EVIDENCE_ONLY",
+  "NO_TRAINING",
+  "NO_NEW_POPULATION",
+  "POST_HOC_EXPLORATORY_ONLY",
+  "NOT_A_QUALIFICATION"
+ ],
+ "source": {
+  "explorationMatrixSha256": "3c361ac1dc82f1fd85df37728d9aaca549ab5e00b1dd7e7e943d1e20be00b1d6",
+  "validationMatrixSha256": "f3013d0d5d756c68303d583a9abf8da0136a4ef903f0f69492fff905afa123e6",
+  "trainingRecordSha256": "0a20b72ba66967ad64e3dcf5fab50c475c32107c030c1b5fe5cf4d66ec7b471e",
+  "modelHash": "b479972a3445ccb9d3cf42ac9821aee2f69431e4101b6dbdfdcd76e777968c6b",
+  "analyzerSha256": "8b5b22a8c49910196fecc34a4334e652bbb7125ea9c5b4c7c06968d17744ccd0"
+ },
+ "reconciliation": {
+  "exact": true,
+  "issues": []
+ },
+ "target": {
+  "selectiveRisk": 0.01,
+  "confidence": 0.95,
+  "minimumCoverage": 0.4,
+  "status": "RESEARCH_TARGETS_NOT_RATIFIED"
+ },
+ "definitions": {
+  "A_INTRODUCTION_VS_S0": "an accepted recommendation introduces a catastrophe relative to frozen S0",
+  "B_INTRODUCTION_VS_NEXUS": "an accepted recommendation introduces a catastrophe relative to frozen effective Nexus-else-S0",
+  "C_UNION_INTRODUCTION": "an accepted class triggers A or B or both; counted once (primary endpoint)",
+  "SELECTIVE_COVERAGE": "accepted classes / all eligible classes",
+  "SELECTIVE_FAILURE_RATE": "unique accepted introduction classes / accepted classes",
+  "FULL_POPULATION_INTRODUCTION_RATE": "unique accepted introduction classes / all eligible classes",
+  "notTheSameAs": "the risk model's catastrophe label (catastrophic in at least one member world). An introduction additionally requires the comparator not to be catastrophic in that member world.",
+  "abstention": "no recommendation; never a safe native-world outcome; what happens next is outside the kernel"
+ },
+ "baselinePreserved": {
+  "validationClasses": 600,
+  "acceptedClasses": 304,
+  "abstainedClasses": 296,
+  "uniqueAcceptedIntroductionClasses": 2,
+  "comparatorRelativeAcceptedIntroductions": 3,
+  "forcedChoiceFailureClasses": 39,
+  "abstainedForcedFailureClasses": 37,
+  "sk1ModelHash": "b479972a3445ccb9d3cf42ac9821aee2f69431e4101b6dbdfdcd76e777968c6b"
+ },
+ "endpoints": {
+  "explorationOutOfFoldReference": {
+   "reading": "EXPLORATION_OUT_OF_FOLD_REFERENCE",
+   "note": "recorded by the trainer before validation was opened: five family-grouped folds, each scored by a model fit on the other four. The honest development figure for the frozen rule. Aggregate only; cited, not recomputed.",
+   "eligibleClasses": 1000,
+   "acceptedDecisions": 434,
+   "SELECTIVE_COVERAGE": {
+    "value": 0.434,
+    "exact95": [
+     0.403014,
+     0.465375
+    ],
+    "familyClustered95": null,
+    "meetsMinimumCoveragePoint": true,
+    "lowerBoundMeetsMinimumCoverage": true
+   },
+   "endpoints": {
+    "A_INTRODUCTION_VS_S0": "NOT_RECORDED_AT_THIS_THRESHOLD",
+    "B_INTRODUCTION_VS_NEXUS": "NOT_RECORDED_AT_THIS_THRESHOLD",
+    "C_UNION_INTRODUCTION": {
+     "uniqueAcceptedFailingClasses": 3,
+     "SELECTIVE_FAILURE_RATE": 0.006912,
+     "FULL_POPULATION_INTRODUCTION_RATE": 0.003,
+     "exactUpper95": 0.017768,
+     "supportsOnePercentUpperBound": false,
+     "pointEstimateAtMostTarget": true
+    }
+   },
+   "originFamilies": {
+    "status": "NOT_AVAILABLE: per-class out-of-fold decisions were not persisted",
+    "designEffectSensitivity": [
+     {
+      "designEffect": 1,
+      "effectiveDecisions": 434,
+      "conservativeUpper95": 0.017768
+     },
+     {
+      "designEffect": 1.11,
+      "effectiveDecisions": 390,
+      "conservativeUpper95": 0.01976
+     },
+     {
+      "designEffect": 1.5,
+      "effectiveDecisions": 289,
+      "conservativeUpper95": 0.026609
+     },
+     {
+      "designEffect": 2,
+      "effectiveDecisions": 217,
+      "conservativeUpper95": 0.035341
+     },
+     {
+      "designEffect": 3,
+      "effectiveDecisions": 144,
+      "conservativeUpper95": 0.052962
+     }
+    ]
+   },
+   "fullCoverage": {
+    "forcedChoiceFailingClasses": 73,
+    "introVsS0": 42,
+    "introVsNexus": 60
+   },
+   "thresholdGrid": [
+    {
+     "tau": 0.02,
+     "accepted": 0,
+     "coverage": 0,
+     "unionFailing": 0,
+     "rate": null,
+     "exactUpper95": null
+    },
+    {
+     "tau": 0.05,
+     "accepted": 2,
+     "coverage": 0.002,
+     "unionFailing": 0,
+     "rate": 0,
+     "exactUpper95": 0.776393
+    },
+    {
+     "tau": 0.1,
+     "accepted": 78,
+     "coverage": 0.078,
+     "unionFailing": 0,
+     "rate": 0,
+     "exactUpper95": 0.037679
+    },
+    {
+     "tau": 0.15,
+     "accepted": 243,
+     "coverage": 0.243,
+     "unionFailing": 1,
+     "rate": 0.004115,
+     "exactUpper95": 0.019372
+    },
+    {
+     "tau": 0.2,
+     "accepted": 434,
+     "coverage": 0.434,
+     "unionFailing": 3,
+     "rate": 0.006912,
+     "exactUpper95": 0.017768
+    },
+    {
+     "tau": 0.25,
+     "accepted": 563,
+     "coverage": 0.563,
+     "unionFailing": 10,
+     "rate": 0.017762,
+     "exactUpper95": 0.029942
+    },
+    {
+     "tau": 0.3,
+     "accepted": 701,
+     "coverage": 0.701,
+     "unionFailing": 25,
+     "rate": 0.035663,
+     "exactUpper95": 0.049455
+    },
+    {
+     "tau": 0.4,
+     "accepted": 855,
+     "coverage": 0.855,
+     "unionFailing": 49,
+     "rate": 0.05731,
+     "exactUpper95": 0.07215
+    },
+    {
+     "tau": 0.5,
+     "accepted": 970,
+     "coverage": 0.97,
+     "unionFailing": 66,
+     "rate": 0.068041,
+     "exactUpper95": 0.08286
+    },
+    {
+     "tau": 0.75,
+     "accepted": 1000,
+     "coverage": 1,
+     "unionFailing": 73,
+     "rate": 0.073,
+     "exactUpper95": 0.08799
+    },
+    {
+     "tau": 1,
+     "accepted": 1000,
+     "coverage": 1,
+     "unionFailing": 73,
+     "rate": 0.073,
+     "exactUpper95": 0.08799
+    }
+   ],
+   "howTheFrozenThresholdWasChosen": "LOWEST_OUT_OF_FOLD_RATE_AT_COVERAGE>=0.25"
+  },
+  "explorationInSample": {
+   "reading": "EXPLORATION_IN_SAMPLE",
+   "note": "frozen rule on the classes the model was fit on; resubstitution, OPTIMISTIC",
+   "eligibleClasses": 1000,
+   "acceptedDecisions": 489,
+   "SELECTIVE_COVERAGE": {
+    "value": 0.489,
+    "exact95": [
+     0.457589,
+     0.520476
+    ],
+    "familyClustered95": [
+     0.434736,
+     0.540712
+    ],
+    "meetsMinimumCoveragePoint": true,
+    "lowerBoundMeetsMinimumCoverage": true
+   },
+   "endpoints": {
+    "A_INTRODUCTION_VS_S0": {
+     "acceptedIntroductions": 0,
+     "rate": 0,
+     "exposedDecisions": 358,
+     "exposedRate": 0,
+     "exactUpper95": 0.006108,
+     "exactUpper97_5_ifClaimedJointlyWithB": 0.007515,
+     "exposedExactUpper97_5": 0.010251
+    },
+    "B_INTRODUCTION_VS_NEXUS": {
+     "acceptedIntroductions": 3,
+     "rate": 0.006135,
+     "exposedDecisions": 481,
+     "exposedRate": 0.006237,
+     "exactUpper95": 0.015779,
+     "exactUpper97_5_ifClaimedJointlyWithA": 0.017824,
+     "exposedExactUpper97_5": 0.018118
+    },
+    "C_UNION_INTRODUCTION": {
+     "uniqueAcceptedFailingClasses": 3,
+     "comparatorRelativeEvents": 3,
+     "classesFailingBothComparators": 0,
+     "SELECTIVE_FAILURE_RATE": 0.006135,
+     "FULL_POPULATION_INTRODUCTION_RATE": 0.003,
+     "exactUpper95": 0.015779,
+     "supportsOnePercentUpperBound": false,
+     "pointEstimateAtMostTarget": true
+    }
+   },
+   "originFamilies": {
+    "amongAccepted": 54,
+    "withAnAcceptedFailure": 3,
+    "familyLevelRate": 0.055556,
+    "familyLevelExactUpper95": 0.137374,
+    "clusters": 54,
+    "meanClusterSize": 9.0556,
+    "largestCluster": 31,
+    "icc": 0,
+    "designEffect": 1,
+    "note": "Kish design effect with unequal cluster sizes: 1 + (m(1+cv^2) - 1) * icc",
+    "effectiveSampleSize": 489,
+    "familyClusterBootstrapOfUnionRate": {
+     "point": 0.006135,
+     "lower025": 0,
+     "upper975": 0.013084,
+     "upper95": 0.011848,
+     "clusters": 54,
+     "caveat": "percentile cluster bootstrap; with a handful of events it is unstable and tends to be narrower than the exact bound"
+    },
+    "designEffectSensitivity": [
+     {
+      "designEffect": 1,
+      "effectiveDecisions": 489,
+      "conservativeUpper95": 0.015779,
+      "note": "same observed count on n/deff independent decisions"
+     },
+     {
+      "designEffect": 1.11,
+      "effectiveDecisions": 440,
+      "conservativeUpper95": 0.017527,
+      "note": "same observed count on n/deff independent decisions"
+     },
+     {
+      "designEffect": 1.5,
+      "effectiveDecisions": 326,
+      "conservativeUpper95": 0.023611,
+      "note": "same observed count on n/deff independent decisions"
+     },
+     {
+      "designEffect": 2,
+      "effectiveDecisions": 244,
+      "conservativeUpper95": 0.031469,
+      "note": "same observed count on n/deff independent decisions"
+     },
+     {
+      "designEffect": 3,
+      "effectiveDecisions": 163,
+      "conservativeUpper95": 0.046879,
+      "note": "same observed count on n/deff independent decisions"
+     }
+    ]
+   }
+  },
+  "explorationOutOfBag": {
+   "reading": "EXPLORATION_OUT_OF_BAG",
+   "note": "diagnostic estimator from out-of-bag bags only; NOT the frozen rule; fewer and weaker bags per class, so it is PESSIMISTIC about the frozen rule and accepts more classes than it",
+   "eligibleClasses": 875,
+   "acceptedDecisions": 450,
+   "SELECTIVE_COVERAGE": {
+    "value": 0.514286,
+    "exact95": [
+     0.480598,
+     0.547877
+    ],
+    "familyClustered95": [
+     0.471722,
+     0.559194
+    ],
+    "meetsMinimumCoveragePoint": true,
+    "lowerBoundMeetsMinimumCoverage": true
+   },
+   "endpoints": {
+    "A_INTRODUCTION_VS_S0": {
+     "acceptedIntroductions": 2,
+     "rate": 0.004444,
+     "exposedDecisions": 332,
+     "exposedRate": 0.006024,
+     "exactUpper95": 0.013924,
+     "exactUpper97_5_ifClaimedJointlyWithB": 0.015962,
+     "exposedExactUpper97_5": 0.021591
+    },
+    "B_INTRODUCTION_VS_NEXUS": {
+     "acceptedIntroductions": 8,
+     "rate": 0.017778,
+     "exposedDecisions": 438,
+     "exposedRate": 0.018265,
+     "exactUpper95": 0.031848,
+     "exactUpper97_5_ifClaimedJointlyWithA": 0.034728,
+     "exposedExactUpper97_5": 0.035671
+    },
+    "C_UNION_INTRODUCTION": {
+     "uniqueAcceptedFailingClasses": 8,
+     "comparatorRelativeEvents": 10,
+     "classesFailingBothComparators": 2,
+     "SELECTIVE_FAILURE_RATE": 0.017778,
+     "FULL_POPULATION_INTRODUCTION_RATE": 0.009143,
+     "exactUpper95": 0.031848,
+     "supportsOnePercentUpperBound": false,
+     "pointEstimateAtMostTarget": false
+    }
+   },
+   "originFamilies": {
+    "amongAccepted": 49,
+    "withAnAcceptedFailure": 6,
+    "familyLevelRate": 0.122449,
+    "familyLevelExactUpper95": 0.227443,
+    "clusters": 49,
+    "meanClusterSize": 9.1837,
+    "largestCluster": 30,
+    "icc": 0,
+    "designEffect": 1,
+    "note": "Kish design effect with unequal cluster sizes: 1 + (m(1+cv^2) - 1) * icc",
+    "effectiveSampleSize": 450,
+    "familyClusterBootstrapOfUnionRate": {
+     "point": 0.017778,
+     "lower025": 0.005731,
+     "upper975": 0.031513,
+     "upper95": 0.028866,
+     "clusters": 49,
+     "caveat": "percentile cluster bootstrap; with a handful of events it is unstable and tends to be narrower than the exact bound"
+    },
+    "designEffectSensitivity": [
+     {
+      "designEffect": 1,
+      "effectiveDecisions": 450,
+      "conservativeUpper95": 0.031848,
+      "note": "same observed count on n/deff independent decisions"
+     },
+     {
+      "designEffect": 1.11,
+      "effectiveDecisions": 405,
+      "conservativeUpper95": 0.035358,
+      "note": "same observed count on n/deff independent decisions"
+     },
+     {
+      "designEffect": 1.5,
+      "effectiveDecisions": 300,
+      "conservativeUpper95": 0.0476,
+      "note": "same observed count on n/deff independent decisions"
+     },
+     {
+      "designEffect": 2,
+      "effectiveDecisions": 225,
+      "conservativeUpper95": 0.063238,
+      "note": "same observed count on n/deff independent decisions"
+     },
+     {
+      "designEffect": 3,
+      "effectiveDecisions": 150,
+      "conservativeUpper95": 0.094171,
+      "note": "same observed count on n/deff independent decisions"
+     }
+    ]
+   }
+  },
+  "historicalValidation": {
+   "reading": "HISTORICAL_VALIDATION",
+   "note": "spent one-pass validation of the frozen rule; historical arithmetic only; drives no selection",
+   "eligibleClasses": 600,
+   "acceptedDecisions": 304,
+   "SELECTIVE_COVERAGE": {
+    "value": 0.506667,
+    "exact95": [
+     0.465881,
+     0.547386
+    ],
+    "familyClustered95": [
+     0.449091,
+     0.559322
+    ],
+    "meetsMinimumCoveragePoint": true,
+    "lowerBoundMeetsMinimumCoverage": true
+   },
+   "endpoints": {
+    "A_INTRODUCTION_VS_S0": {
+     "acceptedIntroductions": 1,
+     "rate": 0.003289,
+     "exposedDecisions": 226,
+     "exposedRate": 0.004425,
+     "exactUpper95": 0.015509,
+     "exactUpper97_5_ifClaimedJointlyWithB": 0.018191,
+     "exposedExactUpper97_5": 0.024405
+    },
+    "B_INTRODUCTION_VS_NEXUS": {
+     "acceptedIntroductions": 2,
+     "rate": 0.006579,
+     "exposedDecisions": 302,
+     "exposedRate": 0.006623,
+     "exactUpper95": 0.020564,
+     "exactUpper97_5_ifClaimedJointlyWithA": 0.023562,
+     "exposedExactUpper97_5": 0.023717
+    },
+    "C_UNION_INTRODUCTION": {
+     "uniqueAcceptedFailingClasses": 2,
+     "comparatorRelativeEvents": 3,
+     "classesFailingBothComparators": 1,
+     "SELECTIVE_FAILURE_RATE": 0.006579,
+     "FULL_POPULATION_INTRODUCTION_RATE": 0.003333,
+     "exactUpper95": 0.020564,
+     "supportsOnePercentUpperBound": false,
+     "pointEstimateAtMostTarget": true
+    }
+   },
+   "originFamilies": {
+    "amongAccepted": 44,
+    "withAnAcceptedFailure": 2,
+    "familyLevelRate": 0.045455,
+    "familyLevelExactUpper95": 0.136259,
+    "clusters": 44,
+    "meanClusterSize": 6.9091,
+    "largestCluster": 19,
+    "icc": 0,
+    "designEffect": 1,
+    "note": "Kish design effect with unequal cluster sizes: 1 + (m(1+cv^2) - 1) * icc",
+    "effectiveSampleSize": 304,
+    "familyClusterBootstrapOfUnionRate": {
+     "point": 0.006579,
+     "lower025": 0,
+     "upper975": 0.016026,
+     "upper95": 0.014286,
+     "clusters": 44,
+     "caveat": "percentile cluster bootstrap; with a handful of events it is unstable and tends to be narrower than the exact bound"
+    },
+    "designEffectSensitivity": [
+     {
+      "designEffect": 1,
+      "effectiveDecisions": 304,
+      "conservativeUpper95": 0.020564,
+      "note": "same observed count on n/deff independent decisions"
+     },
+     {
+      "designEffect": 1.11,
+      "effectiveDecisions": 273,
+      "conservativeUpper95": 0.022881,
+      "note": "same observed count on n/deff independent decisions"
+     },
+     {
+      "designEffect": 1.5,
+      "effectiveDecisions": 202,
+      "conservativeUpper95": 0.030838,
+      "note": "same observed count on n/deff independent decisions"
+     },
+     {
+      "designEffect": 2,
+      "effectiveDecisions": 152,
+      "conservativeUpper95": 0.040838,
+      "note": "same observed count on n/deff independent decisions"
+     },
+     {
+      "designEffect": 3,
+      "effectiveDecisions": 101,
+      "conservativeUpper95": 0.061022,
+      "note": "same observed count on n/deff independent decisions"
+     }
+    ]
+   }
+  },
+  "pooledDescriptive": {
+   "label": "POST_HOC_EXPLORATORY_ONLY",
+   "note": "out-of-fold development plus historical validation. Different models (fold models vs the frozen model) and a spent population: descriptive only, not a test.",
+   "unionFailing": 5,
+   "acceptedDecisions": 738,
+   "rate": 0.006775,
+   "exactUpper95": 0.014192,
+   "supportsOnePercentUpperBound": false
+  }
+ },
+ "sampleSize": {
+  "target": {
+   "selectiveRisk": 0.01,
+   "confidence": 0.95,
+   "minimumCoverage": 0.4,
+   "status": "RESEARCH_TARGETS_NOT_RATIFIED"
+  },
+  "assumption": "exact one-sided binomial test of H0: rate >= 0.01; independent decisions; multiply by the design effect and divide by coverage to get eligible classes",
+  "primaryClaimUnionAtAlpha05": [
+   {
+    "trueRate": 0.007,
+    "acceptedDecisionsFor80": 6434,
+    "acceptedDecisionsFor90": 8643,
+    "passingCountAtN80": 51,
+    "eligibleValidationClassesFor80": {
+     "coverage_0.4": {
+      "deff_1": 16085,
+      "deff_1.11": 17855,
+      "deff_1.5": 24128,
+      "deff_2": 32170
+     },
+     "coverage_0.434": {
+      "deff_1": 14825,
+      "deff_1.11": 16456,
+      "deff_1.5": 22238,
+      "deff_2": 29650
+     },
+     "coverage_0.507": {
+      "deff_1": 12691,
+      "deff_1.11": 14087,
+      "deff_1.5": 19036,
+      "deff_2": 25381
+     }
+    }
+   },
+   {
+    "trueRate": 0.005,
+    "acceptedDecisionsFor80": 2185,
+    "acceptedDecisionsFor90": 2784,
+    "passingCountAtN80": 14,
+    "eligibleValidationClassesFor80": {
+     "coverage_0.4": {
+      "deff_1": 5463,
+      "deff_1.11": 6064,
+      "deff_1.5": 8194,
+      "deff_2": 10925
+     },
+     "coverage_0.434": {
+      "deff_1": 5035,
+      "deff_1.11": 5589,
+      "deff_1.5": 7552,
+      "deff_2": 10070
+     },
+     "coverage_0.507": {
+      "deff_1": 4310,
+      "deff_1.11": 4784,
+      "deff_1.5": 6465,
+      "deff_2": 8620
+     }
+    }
+   },
+   {
+    "trueRate": 0.0033,
+    "acceptedDecisionsFor80": 1049,
+    "acceptedDecisionsFor90": 1441,
+    "passingCountAtN80": 5,
+    "eligibleValidationClassesFor80": {
+     "coverage_0.4": {
+      "deff_1": 2623,
+      "deff_1.11": 2911,
+      "deff_1.5": 3934,
+      "deff_2": 5245
+     },
+     "coverage_0.434": {
+      "deff_1": 2418,
+      "deff_1.11": 2683,
+      "deff_1.5": 3626,
+      "deff_2": 4835
+     },
+     "coverage_0.507": {
+      "deff_1": 2070,
+      "deff_1.11": 2297,
+      "deff_1.5": 3104,
+      "deff_2": 4139
+     }
+    }
+   },
+   {
+    "trueRate": 0.002,
+    "acceptedDecisionsFor80": 773,
+    "acceptedDecisionsFor90": 913,
+    "passingCountAtN80": 3,
+    "eligibleValidationClassesFor80": {
+     "coverage_0.4": {
+      "deff_1": 1933,
+      "deff_1.11": 2146,
+      "deff_1.5": 2899,
+      "deff_2": 3865
+     },
+     "coverage_0.434": {
+      "deff_1": 1782,
+      "deff_1.11": 1978,
+      "deff_1.5": 2672,
+      "deff_2": 3563
+     },
+     "coverage_0.507": {
+      "deff_1": 1525,
+      "deff_1.11": 1693,
+      "deff_1.5": 2287,
+      "deff_2": 3050
+     }
+    }
+   },
+   {
+    "trueRate": 0.001,
+    "acceptedDecisionsFor80": 473,
+    "acceptedDecisionsFor90": 628,
+    "passingCountAtN80": 1,
+    "eligibleValidationClassesFor80": {
+     "coverage_0.4": {
+      "deff_1": 1183,
+      "deff_1.11": 1313,
+      "deff_1.5": 1774,
+      "deff_2": 2365
+     },
+     "coverage_0.434": {
+      "deff_1": 1090,
+      "deff_1.11": 1210,
+      "deff_1.5": 1635,
+      "deff_2": 2180
+     },
+     "coverage_0.507": {
+      "deff_1": 933,
+      "deff_1.11": 1036,
+      "deff_1.5": 1400,
+      "deff_2": 1866
+     }
+    }
+   }
+  ],
+  "twoComparatorClaimsBonferroniAlpha025": [
+   {
+    "trueRate": 0.007,
+    "acceptedDecisionsFor80": 8052,
+    "acceptedDecisionsFor90": 10501,
+    "passingCountAtN80": 63,
+    "eligibleValidationClassesFor80": {
+     "coverage_0.4": {
+      "deff_1": 20130,
+      "deff_1.11": 22345,
+      "deff_1.5": 30195,
+      "deff_2": 40260
+     },
+     "coverage_0.434": {
+      "deff_1": 18553,
+      "deff_1.11": 20594,
+      "deff_1.5": 27830,
+      "deff_2": 37106
+     },
+     "coverage_0.507": {
+      "deff_1": 15882,
+      "deff_1.11": 17629,
+      "deff_1.5": 23823,
+      "deff_2": 31764
+     }
+    }
+   },
+   {
+    "trueRate": 0.005,
+    "acceptedDecisionsFor80": 2717,
+    "acceptedDecisionsFor90": 3446,
+    "passingCountAtN80": 17,
+    "eligibleValidationClassesFor80": {
+     "coverage_0.4": {
+      "deff_1": 6793,
+      "deff_1.11": 7540,
+      "deff_1.5": 10189,
+      "deff_2": 13585
+     },
+     "coverage_0.434": {
+      "deff_1": 6261,
+      "deff_1.11": 6950,
+      "deff_1.5": 9391,
+      "deff_2": 12521
+     },
+     "coverage_0.507": {
+      "deff_1": 5359,
+      "deff_1.11": 5949,
+      "deff_1.5": 8039,
+      "deff_2": 10718
+     }
+    }
+   },
+   {
+    "trueRate": 0.0033,
+    "acceptedDecisionsFor80": 1439,
+    "acceptedDecisionsFor90": 1705,
+    "passingCountAtN80": 7,
+    "eligibleValidationClassesFor80": {
+     "coverage_0.4": {
+      "deff_1": 3598,
+      "deff_1.11": 3994,
+      "deff_1.5": 5397,
+      "deff_2": 7195
+     },
+     "coverage_0.434": {
+      "deff_1": 3316,
+      "deff_1.11": 3681,
+      "deff_1.5": 4974,
+      "deff_2": 6632
+     },
+     "coverage_0.507": {
+      "deff_1": 2839,
+      "deff_1.11": 3151,
+      "deff_1.5": 4258,
+      "deff_2": 5677
+     }
+    }
+   },
+   {
+    "trueRate": 0.002,
+    "acceptedDecisionsFor80": 874,
+    "acceptedDecisionsFor90": 1022,
+    "passingCountAtN80": 3,
+    "eligibleValidationClassesFor80": {
+     "coverage_0.4": {
+      "deff_1": 2185,
+      "deff_1.11": 2426,
+      "deff_1.5": 3278,
+      "deff_2": 4370
+     },
+     "coverage_0.434": {
+      "deff_1": 2014,
+      "deff_1.11": 2236,
+      "deff_1.5": 3021,
+      "deff_2": 4028
+     },
+     "coverage_0.507": {
+      "deff_1": 1724,
+      "deff_1.11": 1914,
+      "deff_1.5": 2586,
+      "deff_2": 3448
+     }
+    }
+   },
+   {
+    "trueRate": 0.001,
+    "acceptedDecisionsFor80": 555,
+    "acceptedDecisionsFor90": 720,
+    "passingCountAtN80": 1,
+    "eligibleValidationClassesFor80": {
+     "coverage_0.4": {
+      "deff_1": 1388,
+      "deff_1.11": 1541,
+      "deff_1.5": 2082,
+      "deff_2": 2775
+     },
+     "coverage_0.434": {
+      "deff_1": 1279,
+      "deff_1.11": 1420,
+      "deff_1.5": 1919,
+      "deff_2": 2558
+     },
+     "coverage_0.507": {
+      "deff_1": 1095,
+      "deff_1.11": 1216,
+      "deff_1.5": 1643,
+      "deff_2": 2190
+     }
+    }
+   }
+  ],
+  "simultaneousClaims": "One claim on the UNION endpoint at 95% bounds both comparator endpoints, because each comparator event is a subset of the union. Separate comparator claims (for example on exposure-adjusted denominators) need 97.5% each.",
+  "passProbabilityAtFeasibleSizes": {
+   "unionAlpha05": [
+    {
+     "acceptedDecisions": 300,
+     "passingCount": 0,
+     "passProbability": {
+      "0.007": 0.1216,
+      "0.005": 0.2223,
+      "0.0033": 0.371,
+      "0.002": 0.5485,
+      "0.001": 0.7407
+     },
+     "largestTrueRateWith80PercentPower": 0.000744
+    },
+    {
+     "acceptedDecisions": 500,
+     "passingCount": 1,
+     "passProbability": {
+      "0.007": 0.135,
+      "0.005": 0.2865,
+      "0.0033": 0.5086,
+      "0.002": 0.7358,
+      "0.001": 0.9099
+     },
+     "largestTrueRateWith80PercentPower": 0.001649
+    },
+    {
+     "acceptedDecisions": 700,
+     "passingCount": 2,
+     "passProbability": {
+      "0.007": 0.1324,
+      "0.005": 0.3202,
+      "0.0033": 0.5933,
+      "0.002": 0.8336,
+      "0.001": 0.9659
+     },
+     "largestTrueRateWith80PercentPower": 0.002194
+    },
+    {
+     "acceptedDecisions": 1000,
+     "passingCount": 4,
+     "passProbability": {
+      "0.007": 0.172,
+      "0.005": 0.4401,
+      "0.0033": 0.7628,
+      "0.002": 0.9475,
+      "0.001": 0.9964
+     },
+     "largestTrueRateWith80PercentPower": 0.003091
+    },
+    {
+     "acceptedDecisions": 1400,
+     "passingCount": 7,
+     "passProbability": {
+      "0.007": 0.2378,
+      "0.005": 0.5987,
+      "0.0033": 0.9035,
+      "0.002": 0.9919,
+      "0.001": 0.9999
+     },
+     "largestTrueRateWith80PercentPower": 0.003985
+    },
+    {
+     "acceptedDecisions": 2000,
+     "passingCount": 12,
+     "passProbability": {
+      "0.007": 0.3578,
+      "0.005": 0.792,
+      "0.0033": 0.9823,
+      "0.002": 0.9997,
+      "0.001": 1
+     },
+     "largestTrueRateWith80PercentPower": 0.004958
+    },
+    {
+     "acceptedDecisions": 3000,
+     "passingCount": 20,
+     "passProbability": {
+      "0.007": 0.4707,
+      "0.005": 0.9176,
+      "0.0033": 0.9986,
+      "0.002": 1,
+      "0.001": 1
+     },
+     "largestTrueRateWith80PercentPower": 0.005696
+    },
+    {
+     "acceptedDecisions": 6000,
+     "passingCount": 47,
+     "passProbability": {
+      "0.007": 0.8049,
+      "0.005": 0.9986,
+      "0.0033": 1,
+      "0.002": 1,
+      "0.001": 1
+     },
+     "largestTrueRateWith80PercentPower": 0.007018
+    }
+   ],
+   "bonferroniAlpha025": [
+    {
+     "acceptedDecisions": 300,
+     "passingCount": -1,
+     "passProbability": {
+      "0.007": 0,
+      "0.005": 0,
+      "0.0033": 0,
+      "0.002": 0,
+      "0.001": 0
+     },
+     "largestTrueRateWith80PercentPower": 0
+    },
+    {
+     "acceptedDecisions": 500,
+     "passingCount": 0,
+     "passProbability": {
+      "0.007": 0.0298,
+      "0.005": 0.0816,
+      "0.0033": 0.1915,
+      "0.002": 0.3675,
+      "0.001": 0.6064
+     },
+     "largestTrueRateWith80PercentPower": 0.000446
+    },
+    {
+     "acceptedDecisions": 700,
+     "passingCount": 1,
+     "passProbability": {
+      "0.007": 0.0434,
+      "0.005": 0.1352,
+      "0.0033": 0.3281,
+      "0.002": 0.5917,
+      "0.001": 0.8442
+     },
+     "largestTrueRateWith80PercentPower": 0.001178
+    },
+    {
+     "acceptedDecisions": 1000,
+     "passingCount": 3,
+     "passProbability": {
+      "0.007": 0.081,
+      "0.005": 0.2643,
+      "0.0033": 0.5802,
+      "0.002": 0.8573,
+      "0.001": 0.9811
+     },
+     "largestTrueRateWith80PercentPower": 0.002298
+    },
+    {
+     "acceptedDecisions": 1400,
+     "passingCount": 6,
+     "passProbability": {
+      "0.007": 0.1424,
+      "0.005": 0.4493,
+      "0.0033": 0.8157,
+      "0.002": 0.9757,
+      "0.001": 0.9994
+     },
+     "largestTrueRateWith80PercentPower": 0.003383
+    },
+    {
+     "acceptedDecisions": 2000,
+     "passingCount": 11,
+     "passProbability": {
+      "0.007": 0.2592,
+      "0.005": 0.6971,
+      "0.0033": 0.963,
+      "0.002": 0.9991,
+      "0.001": 1
+     },
+     "largestTrueRateWith80PercentPower": 0.004518
+    },
+    {
+     "acceptedDecisions": 3000,
+     "passingCount": 19,
+     "passProbability": {
+      "0.007": 0.3837,
+      "0.005": 0.8758,
+      "0.0033": 0.997,
+      "0.002": 1,
+      "0.001": 1
+     },
+     "largestTrueRateWith80PercentPower": 0.005393
+    },
+    {
+     "acceptedDecisions": 6000,
+     "passingCount": 44,
+     "passProbability": {
+      "0.007": 0.6586,
+      "0.005": 0.9939,
+      "0.0033": 1,
+      "0.002": 1,
+      "0.001": 1
+     },
+     "largestTrueRateWith80PercentPower": 0.006549
+    }
+   ]
+  },
+  "scaleReference": {
+   "admittedClassesPerScreenedBlock": 88.3846,
+   "sk1ValidationClasses": 600,
+   "sk1TotalAdmitted": 2298,
+   "sk1BlocksScreened": 26,
+   "source": "SK1_RESULT.md: 26 blocks screened, 2,298 admitted, 600 validation classes"
+  },
+  "atTheRateSK1Shows": {
+   "trueRate": 0.007,
+   "acceptedDecisionsFor80PercentPower": 6434,
+   "eligibleValidationClasses": 16456,
+   "multipleOfSk1Validation": 27.4267,
+   "screenedBlocksIfAllAdmittedClassesWereValidation": 187,
+   "assumptions": "design effect 1.11, coverage 0.434"
+  },
+  "discriminationHypothesisPairedDesign": {
+   "note": "top-1 unsafe rate = forced-choice union introduction rate at full coverage; baseline is the frozen SK1 figure on historical validation, used as a planning value only",
+   "outOfFoldDevelopmentBaseline": 0.073,
+   "scenarios": [
+    {
+     "baselineTop1UnsafeRate": 0.065,
+     "candidateTop1UnsafeRate": 0.0455,
+     "relativeReduction": 0.3,
+     "classesNeeded": 1699,
+     "classesNeededWithDesignEffect1_11": 1886
+    },
+    {
+     "baselineTop1UnsafeRate": 0.065,
+     "candidateTop1UnsafeRate": 0.0325,
+     "relativeReduction": 0.5,
+     "classesNeeded": 544,
+     "classesNeededWithDesignEffect1_11": 604
+    },
+    {
+     "baselineTop1UnsafeRate": 0.065,
+     "candidateTop1UnsafeRate": 0.0195,
+     "relativeReduction": 0.7,
+     "classesNeeded": 243,
+     "classesNeededWithDesignEffect1_11": 270
+    }
+   ],
+   "assumption": "independent failures between the two policies (conservative: positively associated failures need fewer classes)"
+  }
+ },
+ "selectionBias": {
+  "resubstitution": {
+   "note": "the same frozen threshold, three readings of the same 1,000 exploration classes",
+   "inSample": {
+    "accepted": 489,
+    "unionFailing": 3,
+    "rate": 0.006135
+   },
+   "outOfFold": {
+    "accepted": 434,
+    "unionFailing": 3,
+    "rate": 0.006912
+   },
+   "outOfBag": {
+    "eligible": 875,
+    "accepted": 450,
+    "unionFailing": 8,
+    "rate": 0.017778
+   },
+   "reading": "In-sample acceptance is larger and cleaner than out-of-fold acceptance of the same classes. Any acceptance rule must be judged on classes its model never saw."
+  },
+  "thresholdSelection": {
+   "note": "the frozen threshold was itself picked from a grid by its out-of-fold rate",
+   "rule": "LOWEST_OUT_OF_FOLD_RATE_AT_COVERAGE>=0.25",
+   "gridPointsEligible": 7,
+   "consequence": "the out-of-fold rate at the chosen point is a minimum over eligible grid points and is mildly optimistic; validation (0.66%) did not contradict it"
+  },
+  "failureFreePrefix": {
+   "label": "POST_HOC_EXPLORATORY_ONLY",
+   "note": "a cutoff placed just before the first observed failure is chosen by the outcome and carries no valid zero-event bound",
+   "probabilityOfAFailureFreePrefixOfThisLengthIfTheTrueRateWereConstant": {
+    "validation_170_at_0.7pct": 0.303,
+    "validation_170_at_1pct": 0.1811
+   },
+   "prefixes": {
+    "historicalValidation": {
+     "classes": 170,
+     "coverage": 0.2833,
+     "largestBound": 0.146892
+    },
+    "explorationInSample": {
+     "classes": 120,
+     "coverage": 0.12,
+     "largestBound": 0.099401
+    },
+    "explorationOutOfBag": {
+     "classes": 235,
+     "coverage": 0.2686,
+     "largestBound": 0.137966
+    }
+   }
+  }
+ },
+ "riskCoverage": {
+  "label": "POST_HOC_EXPLORATORY_ONLY",
+  "warning": "No point on any curve is a qualified or proposed operating point. The only acceptance rule ever applied is the frozen bound <= 0.2.",
+  "frozenRule": {
+   "explorationInSample": {
+    "classes": 1000,
+    "accepted": 489,
+    "abstained": 511,
+    "forcedChoiceFailing": 57,
+    "failingWithheld": 54,
+    "failingAccepted": 3,
+    "noObservedIntroductionButWithheld": 457,
+    "failureCapture": 0.9474,
+    "forcedFailureRateAtFullCoverage": 0.057
+   },
+   "explorationOutOfBag": {
+    "classes": 875,
+    "accepted": 450,
+    "abstained": 425,
+    "forcedChoiceFailing": 55,
+    "failingWithheld": 47,
+    "failingAccepted": 8,
+    "noObservedIntroductionButWithheld": 378,
+    "failureCapture": 0.8545,
+    "forcedFailureRateAtFullCoverage": 0.062857
+   },
+   "historicalValidation": {
+    "classes": 600,
+    "accepted": 304,
+    "abstained": 296,
+    "forcedChoiceFailing": 39,
+    "failingWithheld": 37,
+    "failingAccepted": 2,
+    "noObservedIntroductionButWithheld": 259,
+    "failureCapture": 0.9487,
+    "forcedFailureRateAtFullCoverage": 0.065
+   },
+   "explorationOutOfFoldReference": {
+    "classes": 1000,
+    "accepted": 434,
+    "forcedChoiceFailing": 73,
+    "failingAccepted": 3,
+    "failingWithheld": 70,
+    "failureCapture": 0.9589,
+    "forcedFailureRateAtFullCoverage": 0.073
+   }
+  },
+  "curves": {
+   "explorationInSample": {
+    "label": "exploration, in-sample",
+    "reading": "POST_HOC_EXPLORATORY_ONLY",
+    "byCoverage": [
+     {
+      "coverage": 0.1,
+      "classes": 100,
+      "largestBound": 0.095569,
+      "unionFailing": 0,
+      "vsS0": 0,
+      "vsNexus": 0,
+      "catastrophic": 0,
+      "rate": 0,
+      "exactUpper95": 0.029513
+     },
+     {
+      "coverage": 0.2,
+      "classes": 200,
+      "largestBound": 0.120112,
+      "unionFailing": 1,
+      "vsS0": 0,
+      "vsNexus": 1,
+      "catastrophic": 1,
+      "rate": 0.005,
+      "exactUpper95": 0.023498
+     },
+     {
+      "coverage": 0.3,
+      "classes": 300,
+      "largestBound": 0.153042,
+      "unionFailing": 1,
+      "vsS0": 0,
+      "vsNexus": 1,
+      "catastrophic": 1,
+      "rate": 0.003333,
+      "exactUpper95": 0.015715
+     },
+     {
+      "coverage": 0.4,
+      "classes": 400,
+      "largestBound": 0.174197,
+      "unionFailing": 1,
+      "vsS0": 0,
+      "vsNexus": 1,
+      "catastrophic": 1,
+      "rate": 0.0025,
+      "exactUpper95": 0.011804
+     },
+     {
+      "coverage": 0.5,
+      "classes": 500,
+      "largestBound": 0.203633,
+      "unionFailing": 3,
+      "vsS0": 0,
+      "vsNexus": 3,
+      "catastrophic": 5,
+      "rate": 0.006,
+      "exactUpper95": 0.015434
+     },
+     {
+      "coverage": 0.6,
+      "classes": 600,
+      "largestBound": 0.250224,
+      "unionFailing": 7,
+      "vsS0": 2,
+      "vsNexus": 6,
+      "catastrophic": 10,
+      "rate": 0.011667,
+      "exactUpper95": 0.021801
+     },
+     {
+      "coverage": 0.7,
+      "classes": 700,
+      "largestBound": 0.281367,
+      "unionFailing": 12,
+      "vsS0": 6,
+      "vsNexus": 11,
+      "catastrophic": 15,
+      "rate": 0.017143,
+      "exactUpper95": 0.027627
+     },
+     {
+      "coverage": 0.8,
+      "classes": 800,
+      "largestBound": 0.333331,
+      "unionFailing": 23,
+      "vsS0": 14,
+      "vsNexus": 21,
+      "catastrophic": 26,
+      "rate": 0.02875,
+      "exactUpper95": 0.040487
+     },
+     {
+      "coverage": 0.9,
+      "classes": 900,
+      "largestBound": 0.405463,
+      "unionFailing": 35,
+      "vsS0": 22,
+      "vsNexus": 33,
+      "catastrophic": 39,
+      "rate": 0.038889,
+      "exactUpper95": 0.051232
+     },
+     {
+      "coverage": 1,
+      "classes": 1000,
+      "largestBound": 0.695534,
+      "unionFailing": 57,
+      "vsS0": 37,
+      "vsNexus": 50,
+      "catastrophic": 63,
+      "rate": 0.057,
+      "exactUpper95": 0.070565
+     }
+    ],
+    "firstFailureAtRank": 121,
+    "firstFailureBound": 0.099743,
+    "longestFailureFreePrefix": {
+     "classes": 120,
+     "coverage": 0.12,
+     "largestBound": 0.099401
+    },
+    "largestCoverageWithPointRateAtMostTarget": {
+     "classes": 586,
+     "coverage": 0.586,
+     "rate": 0.008532
+    },
+    "largestCoverageWithExactUpper95AtMostTarget": null
+   },
+   "explorationOutOfBag": {
+    "label": "exploration, out-of-bag",
+    "reading": "POST_HOC_EXPLORATORY_ONLY",
+    "byCoverage": [
+     {
+      "coverage": 0.0994,
+      "classes": 87,
+      "largestBound": 0.092249,
+      "unionFailing": 0,
+      "vsS0": 0,
+      "vsNexus": 0,
+      "catastrophic": 0,
+      "rate": 0,
+      "exactUpper95": 0.033848
+     },
+     {
+      "coverage": 0.2,
+      "classes": 175,
+      "largestBound": 0.119767,
+      "unionFailing": 0,
+      "vsS0": 0,
+      "vsNexus": 0,
+      "catastrophic": 1,
+      "rate": 0,
+      "exactUpper95": 0.016973
+     },
+     {
+      "coverage": 0.2994,
+      "classes": 262,
+      "largestBound": 0.144949,
+      "unionFailing": 2,
+      "vsS0": 0,
+      "vsNexus": 2,
+      "catastrophic": 4,
+      "rate": 0.007634,
+      "exactUpper95": 0.023834
+     },
+     {
+      "coverage": 0.4,
+      "classes": 350,
+      "largestBound": 0.16836,
+      "unionFailing": 3,
+      "vsS0": 0,
+      "vsNexus": 3,
+      "catastrophic": 6,
+      "rate": 0.008571,
+      "exactUpper95": 0.022003
+     },
+     {
+      "coverage": 0.4994,
+      "classes": 437,
+      "largestBound": 0.195859,
+      "unionFailing": 8,
+      "vsS0": 2,
+      "vsNexus": 8,
+      "catastrophic": 14,
+      "rate": 0.018307,
+      "exactUpper95": 0.032788
+     },
+     {
+      "coverage": 0.6,
+      "classes": 525,
+      "largestBound": 0.234422,
+      "unionFailing": 13,
+      "vsS0": 3,
+      "vsNexus": 13,
+      "catastrophic": 21,
+      "rate": 0.024762,
+      "exactUpper95": 0.039081
+     },
+     {
+      "coverage": 0.6994,
+      "classes": 612,
+      "largestBound": 0.275381,
+      "unionFailing": 19,
+      "vsS0": 7,
+      "vsNexus": 17,
+      "catastrophic": 27,
+      "rate": 0.031046,
+      "exactUpper95": 0.045223
+     },
+     {
+      "coverage": 0.8,
+      "classes": 700,
+      "largestBound": 0.335073,
+      "unionFailing": 32,
+      "vsS0": 16,
+      "vsNexus": 28,
+      "catastrophic": 40,
+      "rate": 0.045714,
+      "exactUpper95": 0.060919
+     },
+     {
+      "coverage": 0.8994,
+      "classes": 787,
+      "largestBound": 0.394712,
+      "unionFailing": 43,
+      "vsS0": 24,
+      "vsNexus": 37,
+      "catastrophic": 52,
+      "rate": 0.054638,
+      "exactUpper95": 0.069895
+     },
+     {
+      "coverage": 1,
+      "classes": 875,
+      "largestBound": 0.650063,
+      "unionFailing": 55,
+      "vsS0": 34,
+      "vsNexus": 48,
+      "catastrophic": 66,
+      "rate": 0.062857,
+      "exactUpper95": 0.078058
+     }
+    ],
+    "firstFailureAtRank": 236,
+    "firstFailureBound": 0.138123,
+    "longestFailureFreePrefix": {
+     "classes": 235,
+     "coverage": 0.2686,
+     "largestBound": 0.137966
+    },
+    "largestCoverageWithPointRateAtMostTarget": {
+     "classes": 357,
+     "coverage": 0.408,
+     "rate": 0.008403
+    },
+    "largestCoverageWithExactUpper95AtMostTarget": null
+   },
+   "explorationOutOfFoldGrid": [
+    {
+     "tau": 0.02,
+     "accepted": 0,
+     "coverage": 0,
+     "unionFailing": 0,
+     "rate": null,
+     "exactUpper95": null
+    },
+    {
+     "tau": 0.05,
+     "accepted": 2,
+     "coverage": 0.002,
+     "unionFailing": 0,
+     "rate": 0,
+     "exactUpper95": 0.776393
+    },
+    {
+     "tau": 0.1,
+     "accepted": 78,
+     "coverage": 0.078,
+     "unionFailing": 0,
+     "rate": 0,
+     "exactUpper95": 0.037679
+    },
+    {
+     "tau": 0.15,
+     "accepted": 243,
+     "coverage": 0.243,
+     "unionFailing": 1,
+     "rate": 0.004115,
+     "exactUpper95": 0.019372
+    },
+    {
+     "tau": 0.2,
+     "accepted": 434,
+     "coverage": 0.434,
+     "unionFailing": 3,
+     "rate": 0.006912,
+     "exactUpper95": 0.017768
+    },
+    {
+     "tau": 0.25,
+     "accepted": 563,
+     "coverage": 0.563,
+     "unionFailing": 10,
+     "rate": 0.017762,
+     "exactUpper95": 0.029942
+    },
+    {
+     "tau": 0.3,
+     "accepted": 701,
+     "coverage": 0.701,
+     "unionFailing": 25,
+     "rate": 0.035663,
+     "exactUpper95": 0.049455
+    },
+    {
+     "tau": 0.4,
+     "accepted": 855,
+     "coverage": 0.855,
+     "unionFailing": 49,
+     "rate": 0.05731,
+     "exactUpper95": 0.07215
+    },
+    {
+     "tau": 0.5,
+     "accepted": 970,
+     "coverage": 0.97,
+     "unionFailing": 66,
+     "rate": 0.068041,
+     "exactUpper95": 0.08286
+    },
+    {
+     "tau": 0.75,
+     "accepted": 1000,
+     "coverage": 1,
+     "unionFailing": 73,
+     "rate": 0.073,
+     "exactUpper95": 0.08799
+    },
+    {
+     "tau": 1,
+     "accepted": 1000,
+     "coverage": 1,
+     "unionFailing": 73,
+     "rate": 0.073,
+     "exactUpper95": 0.08799
+    }
+   ],
+   "historicalValidation": {
+    "label": "historical validation",
+    "reading": "POST_HOC_EXPLORATORY_ONLY",
+    "byCoverage": [
+     {
+      "coverage": 0.1,
+      "classes": 60,
+      "largestBound": 0.092497,
+      "unionFailing": 0,
+      "vsS0": 0,
+      "vsNexus": 0,
+      "catastrophic": 2,
+      "rate": 0,
+      "exactUpper95": 0.048703
+     },
+     {
+      "coverage": 0.2,
+      "classes": 120,
+      "largestBound": 0.120112,
+      "unionFailing": 0,
+      "vsS0": 0,
+      "vsNexus": 0,
+      "catastrophic": 2,
+      "rate": 0,
+      "exactUpper95": 0.024655
+     },
+     {
+      "coverage": 0.3,
+      "classes": 180,
+      "largestBound": 0.150854,
+      "unionFailing": 1,
+      "vsS0": 0,
+      "vsNexus": 1,
+      "catastrophic": 5,
+      "rate": 0.005556,
+      "exactUpper95": 0.026082
+     },
+     {
+      "coverage": 0.4,
+      "classes": 240,
+      "largestBound": 0.174973,
+      "unionFailing": 2,
+      "vsS0": 1,
+      "vsNexus": 2,
+      "catastrophic": 7,
+      "rate": 0.008333,
+      "exactUpper95": 0.025999
+     },
+     {
+      "coverage": 0.5,
+      "classes": 300,
+      "largestBound": 0.197351,
+      "unionFailing": 2,
+      "vsS0": 1,
+      "vsNexus": 2,
+      "catastrophic": 7,
+      "rate": 0.006667,
+      "exactUpper95": 0.020836
+     },
+     {
+      "coverage": 0.6,
+      "classes": 360,
+      "largestBound": 0.236833,
+      "unionFailing": 4,
+      "vsS0": 2,
+      "vsNexus": 4,
+      "catastrophic": 10,
+      "rate": 0.011111,
+      "exactUpper95": 0.025245
+     },
+     {
+      "coverage": 0.7,
+      "classes": 420,
+      "largestBound": 0.273466,
+      "unionFailing": 8,
+      "vsS0": 5,
+      "vsNexus": 8,
+      "catastrophic": 15,
+      "rate": 0.019048,
+      "exactUpper95": 0.034105
+     },
+     {
+      "coverage": 0.8,
+      "classes": 480,
+      "largestBound": 0.307478,
+      "unionFailing": 14,
+      "vsS0": 10,
+      "vsNexus": 13,
+      "catastrophic": 23,
+      "rate": 0.029167,
+      "exactUpper95": 0.045222
+     },
+     {
+      "coverage": 0.9,
+      "classes": 540,
+      "largestBound": 0.390228,
+      "unionFailing": 26,
+      "vsS0": 21,
+      "vsNexus": 24,
+      "catastrophic": 39,
+      "rate": 0.048148,
+      "exactUpper95": 0.066182
+     },
+     {
+      "coverage": 1,
+      "classes": 600,
+      "largestBound": 0.637938,
+      "unionFailing": 39,
+      "vsS0": 28,
+      "vsNexus": 37,
+      "catastrophic": 52,
+      "rate": 0.065,
+      "exactUpper95": 0.084047
+     }
+    ],
+    "firstFailureAtRank": 171,
+    "firstFailureBound": 0.147479,
+    "longestFailureFreePrefix": {
+     "classes": 170,
+     "coverage": 0.2833,
+     "largestBound": 0.146892
+    },
+    "largestCoverageWithPointRateAtMostTarget": {
+     "classes": 349,
+     "coverage": 0.5817,
+     "rate": 0.008596
+    },
+    "largestCoverageWithExactUpper95AtMostTarget": null
+   }
+  },
+  "scoreDistributions": {
+   "explorationInSample": {
+    "estimate": {
+     "accepted": {
+      "n": 489,
+      "min": 0.0194,
+      "p10": 0.061,
+      "p25": 0.0795,
+      "p50": 0.1061,
+      "p75": 0.1347,
+      "p90": 0.1525,
+      "max": 0.1688,
+      "mean": 0.1061
+     },
+     "abstained": {
+      "n": 511,
+      "min": 0.1311,
+      "p10": 0.1747,
+      "p25": 0.2011,
+      "p50": 0.239,
+      "p75": 0.3119,
+      "p90": 0.383,
+      "max": 0.6047,
+      "mean": 0.2629
+     },
+     "forcedFailing": {
+      "n": 57,
+      "min": 0.0861,
+      "p10": 0.2082,
+      "p25": 0.2396,
+      "p50": 0.2917,
+      "p75": 0.383,
+      "p90": 0.4916,
+      "max": 0.6047,
+      "mean": 0.3212
+     },
+     "acceptedFailing": {
+      "n": 3,
+      "min": 0.0861,
+      "p10": 0.0861,
+      "p25": 0.0861,
+      "p50": 0.1414,
+      "p75": 0.1448,
+      "p90": 0.1448,
+      "max": 0.1448,
+      "mean": 0.1241
+     }
+    },
+    "spread": {
+     "accepted": {
+      "n": 489,
+      "min": 0.0065,
+      "p10": 0.0138,
+      "p25": 0.0193,
+      "p50": 0.0247,
+      "p75": 0.0329,
+      "p90": 0.0408,
+      "max": 0.0627,
+      "mean": 0.0267
+     },
+     "abstained": {
+      "n": 511,
+      "min": 0.0188,
+      "p10": 0.0347,
+      "p25": 0.0442,
+      "p50": 0.0595,
+      "p75": 0.0769,
+      "p90": 0.0976,
+      "max": 0.1394,
+      "mean": 0.0623
+     },
+     "forcedFailing": {
+      "n": 57,
+      "min": 0.0137,
+      "p10": 0.0367,
+      "p25": 0.0455,
+      "p50": 0.0603,
+      "p75": 0.0734,
+      "p90": 0.097,
+      "max": 0.1117,
+      "mean": 0.062
+     },
+     "acceptedFailing": {
+      "n": 3,
+      "min": 0.0137,
+      "p10": 0.0137,
+      "p25": 0.0137,
+      "p50": 0.0379,
+      "p75": 0.0428,
+      "p90": 0.0428,
+      "max": 0.0428,
+      "mean": 0.0314
+     }
+    },
+    "upper": {
+     "accepted": {
+      "n": 489,
+      "min": 0.0296,
+      "p10": 0.0785,
+      "p25": 0.0999,
+      "p50": 0.1354,
+      "p75": 0.1664,
+      "p90": 0.1837,
+      "max": 0.1992,
+      "mean": 0.1328
+     },
+     "abstained": {
+      "n": 511,
+      "min": 0.2006,
+      "p10": 0.2212,
+      "p25": 0.2565,
+      "p50": 0.2982,
+      "p75": 0.3825,
+      "p90": 0.4576,
+      "max": 0.6955,
+      "mean": 0.3252
+     },
+     "forcedFailing": {
+      "n": 57,
+      "min": 0.0997,
+      "p10": 0.2463,
+      "p25": 0.2881,
+      "p50": 0.3648,
+      "p75": 0.4455,
+      "p90": 0.572,
+      "max": 0.6955,
+      "mean": 0.3832
+     },
+     "acceptedFailing": {
+      "n": 3,
+      "min": 0.0997,
+      "p10": 0.0997,
+      "p25": 0.0997,
+      "p50": 0.1793,
+      "p75": 0.1876,
+      "p90": 0.1876,
+      "max": 0.1876,
+      "mean": 0.1555
+     }
+    }
+   },
+   "explorationOutOfBag": {
+    "estimate": {
+     "accepted": {
+      "n": 450,
+      "min": 0.0185,
+      "p10": 0.0635,
+      "p25": 0.0822,
+      "p50": 0.1132,
+      "p75": 0.1397,
+      "p90": 0.1564,
+      "max": 0.1899,
+      "mean": 0.1106
+     },
+     "abstained": {
+      "n": 425,
+      "min": 0.1199,
+      "p10": 0.1819,
+      "p25": 0.2073,
+      "p50": 0.2491,
+      "p75": 0.327,
+      "p90": 0.4004,
+      "max": 0.5992,
+      "mean": 0.2732
+     },
+     "forcedFailing": {
+      "n": 55,
+      "min": 0.0962,
+      "p10": 0.1571,
+      "p25": 0.1918,
+      "p50": 0.2586,
+      "p75": 0.3646,
+      "p90": 0.4341,
+      "max": 0.5992,
+      "mean": 0.2789
+     },
+     "acceptedFailing": {
+      "n": 8,
+      "min": 0.0962,
+      "p10": 0.0962,
+      "p25": 0.117,
+      "p50": 0.1492,
+      "p75": 0.1671,
+      "p90": 0.1785,
+      "max": 0.1785,
+      "mean": 0.1386
+     }
+    },
+    "spread": {
+     "accepted": {
+      "n": 450,
+      "min": 0.0001,
+      "p10": 0.0072,
+      "p25": 0.0121,
+      "p50": 0.0199,
+      "p75": 0.0277,
+      "p90": 0.039,
+      "max": 0.0703,
+      "mean": 0.0214
+     },
+     "abstained": {
+      "n": 425,
+      "min": 0.0012,
+      "p10": 0.0169,
+      "p25": 0.0305,
+      "p50": 0.0465,
+      "p75": 0.0673,
+      "p90": 0.0946,
+      "max": 0.1541,
+      "mean": 0.0516
+     },
+     "forcedFailing": {
+      "n": 55,
+      "min": 0.0014,
+      "p10": 0.0116,
+      "p25": 0.0219,
+      "p50": 0.0446,
+      "p75": 0.0568,
+      "p90": 0.0735,
+      "max": 0.1163,
+      "mean": 0.0435
+     },
+     "acceptedFailing": {
+      "n": 8,
+      "min": 0.0097,
+      "p10": 0.0097,
+      "p25": 0.0219,
+      "p50": 0.0306,
+      "p75": 0.0402,
+      "p90": 0.0469,
+      "max": 0.0469,
+      "mean": 0.0285
+     }
+    },
+    "upper": {
+     "accepted": {
+      "n": 450,
+      "min": 0.0262,
+      "p10": 0.08,
+      "p25": 0.0983,
+      "p50": 0.1353,
+      "p75": 0.1633,
+      "p90": 0.1861,
+      "max": 0.1999,
+      "mean": 0.132
+     },
+     "abstained": {
+      "n": 425,
+      "min": 0.2002,
+      "p10": 0.2182,
+      "p25": 0.2511,
+      "p50": 0.3017,
+      "p75": 0.3834,
+      "p90": 0.4639,
+      "max": 0.6501,
+      "mean": 0.3248
+     },
+     "forcedFailing": {
+      "n": 55,
+      "min": 0.1381,
+      "p10": 0.181,
+      "p25": 0.235,
+      "p50": 0.3019,
+      "p75": 0.3822,
+      "p90": 0.4936,
+      "max": 0.6498,
+      "mean": 0.3225
+     },
+     "acceptedFailing": {
+      "n": 8,
+      "min": 0.1381,
+      "p10": 0.1381,
+      "p25": 0.1513,
+      "p50": 0.176,
+      "p75": 0.1877,
+      "p90": 0.1882,
+      "max": 0.1882,
+      "mean": 0.1671
+     }
+    }
+   }
+  },
+  "marginToCriterion": {
+   "explorationOutOfBagAccepted": {
+    "n": 450,
+    "min": 0.0001,
+    "p10": 0.0141,
+    "p25": 0.0367,
+    "p50": 0.0648,
+    "p75": 0.1017,
+    "p90": 0.1205,
+    "max": 0.1738,
+    "mean": 0.068
+   },
+   "explorationInSampleAccepted": {
+    "n": 489,
+    "min": 0.0008,
+    "p10": 0.0163,
+    "p25": 0.0336,
+    "p50": 0.0646,
+    "p75": 0.1001,
+    "p90": 0.1215,
+    "max": 0.1704,
+    "mean": 0.0672
+   }
+  },
+  "byTopActionType": {
+   "explorationOutOfBag": {
+    "BYPASS": {
+     "classes": 23,
+     "accepted": 20,
+     "forcedFailing": 0,
+     "acceptedFailing": 0
+    },
+    "MOVE": {
+     "classes": 650,
+     "accepted": 338,
+     "forcedFailing": 43,
+     "acceptedFailing": 6
+    },
+    "PROTECT": {
+     "classes": 22,
+     "accepted": 10,
+     "forcedFailing": 2,
+     "acceptedFailing": 0
+    },
+    "REINFORCE": {
+     "classes": 15,
+     "accepted": 10,
+     "forcedFailing": 0,
+     "acceptedFailing": 0
+    },
+    "REPAIR": {
+     "classes": 21,
+     "accepted": 10,
+     "forcedFailing": 0,
+     "acceptedFailing": 0
+    },
+    "RESTORE": {
+     "classes": 70,
+     "accepted": 20,
+     "forcedFailing": 3,
+     "acceptedFailing": 0
+    },
+    "RETREAT": {
+     "classes": 74,
+     "accepted": 42,
+     "forcedFailing": 7,
+     "acceptedFailing": 2
+    }
+   },
+   "explorationInSample": {
+    "BYPASS": {
+     "classes": 22,
+     "accepted": 20,
+     "forcedFailing": 0,
+     "acceptedFailing": 0
+    },
+    "MOVE": {
+     "classes": 754,
+     "accepted": 374,
+     "forcedFailing": 48,
+     "acceptedFailing": 3
+    },
+    "PROTECT": {
+     "classes": 19,
+     "accepted": 8,
+     "forcedFailing": 1,
+     "acceptedFailing": 0
+    },
+    "REINFORCE": {
+     "classes": 19,
+     "accepted": 9,
+     "forcedFailing": 0,
+     "acceptedFailing": 0
+    },
+    "REPAIR": {
+     "classes": 21,
+     "accepted": 10,
+     "forcedFailing": 0,
+     "acceptedFailing": 0
+    },
+    "RESTORE": {
+     "classes": 83,
+     "accepted": 25,
+     "forcedFailing": 3,
+     "acceptedFailing": 0
+    },
+    "RETREAT": {
+     "classes": 82,
+     "accepted": 43,
+     "forcedFailing": 5,
+     "acceptedFailing": 0
+    }
+   },
+   "historicalValidation": {
+    "BYPASS": {
+     "classes": 6,
+     "accepted": 6,
+     "forcedFailing": 0,
+     "acceptedFailing": 0
+    },
+    "MOVE": {
+     "classes": 474,
+     "accepted": 249,
+     "forcedFailing": 33,
+     "acceptedFailing": 1
+    },
+    "PROTECT": {
+     "classes": 9,
+     "accepted": 3,
+     "forcedFailing": 1,
+     "acceptedFailing": 0
+    },
+    "REINFORCE": {
+     "classes": 3,
+     "accepted": 2,
+     "forcedFailing": 0,
+     "acceptedFailing": 0
+    },
+    "REPAIR": {
+     "classes": 12,
+     "accepted": 3,
+     "forcedFailing": 0,
+     "acceptedFailing": 0
+    },
+    "RESTORE": {
+     "classes": 33,
+     "accepted": 8,
+     "forcedFailing": 0,
+     "acceptedFailing": 0
+    },
+    "RETREAT": {
+     "classes": 63,
+     "accepted": 33,
+     "forcedFailing": 5,
+     "acceptedFailing": 1
+    }
+   }
+  },
+  "originFamilies": {
+   "explorationOutOfBag": {
+    "families": 51,
+    "withAnyForcedFailure": 26,
+    "withAnAcceptedFailure": 6,
+    "withNoAcceptedClass": 2,
+    "acceptanceRate": {
+     "n": 51,
+     "min": 0,
+     "p10": 0.2222,
+     "p25": 0.3846,
+     "p50": 0.5,
+     "p75": 0.6364,
+     "p90": 0.8182,
+     "max": 1,
+     "mean": 0.5245
+    },
+    "forcedFailureRate": {
+     "n": 51,
+     "min": 0,
+     "p10": 0,
+     "p25": 0,
+     "p50": 0.0227,
+     "p75": 0.075,
+     "p90": 0.1333,
+     "max": 0.25,
+     "mean": 0.0506
+    }
+   },
+   "explorationInSample": {
+    "families": 57,
+    "withAnyForcedFailure": 29,
+    "withAnAcceptedFailure": 3,
+    "withNoAcceptedClass": 3,
+    "acceptanceRate": {
+     "n": 57,
+     "min": 0,
+     "p10": 0.1667,
+     "p25": 0.3684,
+     "p50": 0.5,
+     "p75": 0.625,
+     "p90": 0.8182,
+     "max": 1,
+     "mean": 0.4944
+    },
+    "forcedFailureRate": {
+     "n": 57,
+     "min": 0,
+     "p10": 0,
+     "p25": 0,
+     "p50": 0.0204,
+     "p75": 0.0833,
+     "p90": 0.1333,
+     "max": 0.2727,
+     "mean": 0.0503
+    }
+   },
+   "historicalValidation": {
+    "families": 46,
+    "withAnyForcedFailure": 26,
+    "withAnAcceptedFailure": 2,
+    "withNoAcceptedClass": 2,
+    "acceptanceRate": {
+     "n": 46,
+     "min": 0,
+     "p10": 0.1667,
+     "p25": 0.3333,
+     "p50": 0.5385,
+     "p75": 0.6,
+     "p90": 0.76,
+     "max": 1,
+     "mean": 0.4772
+    },
+    "forcedFailureRate": {
+     "n": 46,
+     "min": 0,
+     "p10": 0,
+     "p25": 0,
+     "p50": 0.0476,
+     "p75": 0.1,
+     "p90": 0.2,
+     "max": 0.3333,
+     "mean": 0.0696
+    }
+   }
+  },
+  "horizon": {
+   "bandsPresent": [
+    "H2"
+   ],
+   "H0_H2_variation": "NOT_ESTIMABLE: every exploration and validation class is H2 by construction of the SK1 schedule"
+  },
+  "distributionShift": {
+   "familiesExploration": 57,
+   "familiesValidation": 46,
+   "familiesShared": 0,
+   "acceptanceRate": {
+    "explorationInSample": 0.489,
+    "explorationOutOfFold": 0.434,
+    "explorationOutOfBag": 0.514286,
+    "historicalValidation": 0.506667
+   },
+   "forcedFailureRateAtFullCoverage": {
+    "explorationInSample": 0.057,
+    "explorationOutOfFold": 0.073,
+    "explorationOutOfBag": 0.062857,
+    "historicalValidation": 0.065
+   },
+   "topActionBoundQuantiles": {
+    "explorationInSample": {
+     "n": 1000,
+     "min": 0.0296,
+     "p10": 0.0956,
+     "p25": 0.1372,
+     "p50": 0.2039,
+     "p75": 0.3007,
+     "p90": 0.4072,
+     "max": 0.6955,
+     "mean": 0.2311
+    },
+    "explorationOutOfBag": {
+     "n": 875,
+     "min": 0.0262,
+     "p10": 0.0926,
+     "p25": 0.1345,
+     "p50": 0.1959,
+     "p75": 0.2964,
+     "p90": 0.3961,
+     "max": 0.6501,
+     "mean": 0.2256
+    },
+    "historicalValidation": {
+     "n": 600,
+     "min": 0.0457,
+     "p10": 0.0926,
+     "p25": 0.137,
+     "p50": 0.1977,
+     "p75": 0.2889,
+     "p90": 0.391,
+     "max": 0.6379,
+     "mean": 0.2246
+    }
+   },
+   "kolmogorovSmirnovOfBound": {
+    "inSampleVsValidation": 0.044,
+    "outOfBagVsValidation": 0.0465
+   },
+   "menuSize": {
+    "exploration": {
+     "n": 1000,
+     "min": 5,
+     "p10": 7,
+     "p25": 8,
+     "p50": 9,
+     "p75": 10,
+     "p90": 11,
+     "max": 14,
+     "mean": 8.895
+    },
+    "validation": {
+     "n": 600,
+     "min": 5,
+     "p10": 7,
+     "p25": 8,
+     "p50": 9,
+     "p75": 10,
+     "p90": 11,
+     "max": 14,
+     "mean": 8.84
+    }
+   },
+   "validationClassesOutsideNumericEnvelope": 9,
+   "novelCategoriesUnseenInDevelopment": 18,
+   "note": "Validation families are disjoint from exploration families by design, so validation is family-out-of-distribution. Shift indicators are score-level; no per-feature shift test was run."
+  }
+ },
+ "discrimination": {
+  "definitions": {
+   "WITHIN_MENU_RISK_ORDERING_ERROR": "a failing forced choice where no safe alternative has a lower risk bound than the chosen action: the risk order of the menu is itself wrong",
+   "RANKING_CONTRACT_ERROR": "a failing forced choice where some safe alternative has a lower bound (necessarily in the same tier) and lost on the expected-regret order",
+   "RISK_ESTIMATION_ERROR": "systematic miscalibration of the catastrophe estimate across menus",
+   "ABSTENTION_DECISION_ERROR": "accepting a class whose forced choice fails (false accept), or withholding a forced choice with no observed introduction (false abstain)",
+   "safeAlternative": "a selectable action outside the chosen set that introduces against neither comparator in any sampled member world"
+  },
+  "historicalValidation": {
+   "failing": 39,
+   "WITHIN_MENU_RISK_ORDERING_ERROR": 34,
+   "RANKING_CONTRACT_ERROR": 5,
+   "recordedAttributionVerified": true,
+   "acceptedFailures": [
+    {
+     "alias": "SK1V-0615",
+     "mechanism": "WITHIN_MENU_RISK_ORDERING_ERROR",
+     "bagsOf10PreferringTheBestSafeAlternative": 0,
+     "sameTypeSafeAlternativeExists": false
+    },
+    {
+     "alias": "SK1V-0483",
+     "mechanism": "WITHIN_MENU_RISK_ORDERING_ERROR",
+     "bagsOf10PreferringTheBestSafeAlternative": 0,
+     "sameTypeSafeAlternativeExists": true
+    }
+   ],
+   "orderingErrorsBagsOf10PreferringTheBestSafeAlternative": {
+    "0": 17,
+    "1": 5,
+    "2": 2,
+    "3": 2,
+    "4": 2,
+    "5": 4,
+    "6": 1,
+    "7": 1
+   },
+   "orderingErrorsUnanimous": 17,
+   "orderingErrorsWithAtMost2Of10": 24,
+   "safeAlternativeOfTheSameActionType": 32,
+   "abstentionDecisionErrors": {
+    "falseAccepts": 2,
+    "falseAbstains": 259
+   },
+   "featureContrastOfTheTwoAcceptedFailures": [
+    {
+     "alias": "SK1V-0615",
+     "chosen": {
+      "type": "RETREAT"
+     },
+     "bestSafeAlternative": {
+      "type": "MOVE",
+      "estimate": 0.227446,
+      "upper": 0.256239
+     },
+     "sameType": false,
+     "differingFeatures": [
+      {
+       "feature": "type.MOVE",
+       "chosen": 0,
+       "safeAlternative": 1
+      },
+      {
+       "feature": "type.RETREAT",
+       "chosen": 1,
+       "safeAlternative": 0
+      },
+      {
+       "feature": "act.nPre",
+       "chosen": 5,
+       "safeAlternative": 4
+      },
+      {
+       "feature": "act.nPreImplied",
+       "chosen": 0,
+       "safeAlternative": 1
+      },
+      {
+       "feature": "act.retreatManhattan",
+       "chosen": 1,
+       "safeAlternative": 0
+      },
+      {
+       "feature": "act.sameTypeInMenu",
+       "chosen": 1,
+       "safeAlternative": 4
+      },
+      {
+       "feature": "gradient.hostile",
+       "chosen": 1,
+       "safeAlternative": -1
+      },
+      {
+       "feature": "gradient.objective",
+       "chosen": 1,
+       "safeAlternative": -1
+      },
+      {
+       "feature": "gradient.outOfService",
+       "chosen": -1,
+       "safeAlternative": 1
+      },
+      {
+       "feature": "gradient.resource",
+       "chosen": -1,
+       "safeAlternative": 1
+      },
+      {
+       "feature": "gradient.threatened",
+       "chosen": 1,
+       "safeAlternative": -1
+      },
+      {
+       "feature": "after.nearestHostile",
+       "chosen": 7,
+       "safeAlternative": 5
+      },
+      {
+       "feature": "ev.s0.z",
+       "chosen": -0.4342713158997019,
+       "safeAlternative": 1.0933856127034287
+      },
+      {
+       "feature": "ev.s0.rankFrac",
+       "chosen": 0.8571428571428571,
+       "safeAlternative": 0.14285714285714285
+      },
+      {
+       "feature": "ev.s0.gapToTop",
+       "chosen": 3.816993361,
+       "safeAlternative": 0.94059172
+      },
+      {
+       "feature": "ev.s0.typeOfTop",
+       "chosen": 0,
+       "safeAlternative": 1
+      }
+     ],
+     "identicalFeatureVector": false
+    },
+    {
+     "alias": "SK1V-0483",
+     "chosen": {
+      "type": "MOVE"
+     },
+     "bestSafeAlternative": {
+      "type": "MOVE",
+      "estimate": 0.27605,
+      "upper": 0.371175
+     },
+     "sameType": true,
+     "differingFeatures": [
+      {
+       "feature": "gradient.hostile",
+       "chosen": 1,
+       "safeAlternative": -1
+      },
+      {
+       "feature": "gradient.resource",
+       "chosen": -1,
+       "safeAlternative": 1
+      },
+      {
+       "feature": "after.nearestHostile",
+       "chosen": 16,
+       "safeAlternative": 14
+      },
+      {
+       "feature": "ev.s0.z",
+       "chosen": 0.7816821431775638,
+       "safeAlternative": 0.24920151302477028
+      },
+      {
+       "feature": "ev.s0.rankFrac",
+       "chosen": 0.2222222222222222,
+       "safeAlternative": 0.3333333333333333
+      },
+      {
+       "feature": "ev.s0.gapToTop",
+       "chosen": 2.0201216160000004,
+       "safeAlternative": 3.255488864
+      }
+     ],
+     "identicalFeatureVector": false
+    }
+   ]
+  },
+  "exploration": {
+   "outOfBag": {
+    "forcedChoiceFailing": 55,
+    "WITHIN_MENU_RISK_ORDERING_ERROR": 48,
+    "RANKING_CONTRACT_ERROR": 7,
+    "NO_SAFE_ALTERNATIVE": 0,
+    "orderingShare": 0.8727,
+    "amongAccepted": {
+     "failing": 8,
+     "orderingError": 8,
+     "rankingContractError": 0
+    },
+    "orderingErrors": {
+     "unanimousAcrossBagsUsed": 31,
+     "shareOfBagsPreferringTheSafeAlternative": {
+      "n": 48,
+      "min": 0,
+      "p10": 0,
+      "p25": 0,
+      "p50": 0,
+      "p75": 0.25,
+      "p90": 0.5,
+      "max": 0.75,
+      "mean": 0.1285
+     },
+     "boundGapInSpreads": {
+      "n": 48,
+      "min": 0.0689,
+      "p10": 0.6934,
+      "p25": 1.5341,
+      "p50": 2.6046,
+      "p75": 4.6718,
+      "p90": 16.7015,
+      "max": 68.1512,
+      "mean": 6.8059
+     }
+    },
+    "safeAlternativeOfTheSameActionType": 38,
+    "bestSafeAlternativeHasIdenticalFeatureVector": 0,
+    "chosenByType": {
+     "MOVE": 43,
+     "PROTECT": 2,
+     "RESTORE": 3,
+     "RETREAT": 7
+    },
+    "differingFeatureCount": {
+     "n": 55,
+     "min": 4,
+     "p10": 6,
+     "p25": 8,
+     "p50": 17,
+     "p75": 27,
+     "p90": 29,
+     "max": 35,
+     "mean": 17.6364
+    },
+    "mostFrequentDifferingFeatures": [
+     {
+      "feature": "ev.s0.gapToTop",
+      "classes": 55
+     },
+     {
+      "feature": "ev.s0.rankFrac",
+      "classes": 55
+     },
+     {
+      "feature": "ev.s0.z",
+      "classes": 55
+     },
+     {
+      "feature": "gradient.resource",
+      "classes": 46
+     },
+     {
+      "feature": "gradient.objective",
+      "classes": 41
+     },
+     {
+      "feature": "gradient.outOfService",
+      "classes": 41
+     },
+     {
+      "feature": "after.nearestHostile",
+      "classes": 31
+     },
+     {
+      "feature": "gradient.hostile",
+      "classes": 31
+     },
+     {
+      "feature": "gradient.threatened",
+      "classes": 31
+     },
+     {
+      "feature": "type.MOVE",
+      "classes": 31
+     },
+     {
+      "feature": "act.sameTypeInMenu",
+      "classes": 30
+     },
+     {
+      "feature": "ev.s0.inTop",
+      "classes": 29
+     },
+     {
+      "feature": "act.cost",
+      "classes": 26
+     },
+     {
+      "feature": "act.energyAfter",
+      "classes": 26
+     },
+     {
+      "feature": "act.energyDelta",
+      "classes": 26
+     }
+    ],
+    "directionOfTheUnsafeChoiceRelativeToTheBestSafeAlternative": {
+     "chosenMovesAwayFromHostileWhileSafeMovesToward": 9,
+     "chosenMovesTowardHostileWhileSafeMovesAway": 4,
+     "sameHostileGradient": 24,
+     "chosenMovesAwayFromObjectiveWhileSafeMovesToward": 6,
+     "chosenMovesTowardObjectiveWhileSafeMovesAway": 7,
+     "sameObjectiveGradient": 14
+    }
+   },
+   "inSample": {
+    "forcedChoiceFailing": 57,
+    "WITHIN_MENU_RISK_ORDERING_ERROR": 50,
+    "RANKING_CONTRACT_ERROR": 7,
+    "NO_SAFE_ALTERNATIVE": 0,
+    "orderingShare": 0.8772,
+    "amongAccepted": {
+     "failing": 3,
+     "orderingError": 3,
+     "rankingContractError": 0
+    },
+    "orderingErrors": {
+     "unanimousAcrossBagsUsed": 16,
+     "shareOfBagsPreferringTheSafeAlternative": {
+      "n": 50,
+      "min": 0,
+      "p10": 0,
+      "p25": 0,
+      "p50": 0.2,
+      "p75": 0.4,
+      "p90": 0.6,
+      "max": 0.7,
+      "mean": 0.24
+     },
+     "boundGapInSpreads": {
+      "n": 50,
+      "min": 0.215,
+      "p10": 0.3771,
+      "p25": 0.6831,
+      "p50": 1.1911,
+      "p75": 2.5152,
+      "p90": 3.5371,
+      "max": 6.9478,
+      "mean": 1.6863
+     }
+    },
+    "safeAlternativeOfTheSameActionType": 43,
+    "bestSafeAlternativeHasIdenticalFeatureVector": 0,
+    "chosenByType": {
+     "MOVE": 48,
+     "PROTECT": 1,
+     "RESTORE": 3,
+     "RETREAT": 5
+    },
+    "differingFeatureCount": {
+     "n": 57,
+     "min": 4,
+     "p10": 6,
+     "p25": 8,
+     "p50": 11,
+     "p75": 26,
+     "p90": 28,
+     "max": 35,
+     "mean": 15.7544
+    },
+    "mostFrequentDifferingFeatures": [
+     {
+      "feature": "ev.s0.gapToTop",
+      "classes": 57
+     },
+     {
+      "feature": "ev.s0.rankFrac",
+      "classes": 57
+     },
+     {
+      "feature": "ev.s0.z",
+      "classes": 57
+     },
+     {
+      "feature": "gradient.resource",
+      "classes": 48
+     },
+     {
+      "feature": "gradient.outOfService",
+      "classes": 46
+     },
+     {
+      "feature": "gradient.objective",
+      "classes": 44
+     },
+     {
+      "feature": "ev.s0.inTop",
+      "classes": 31
+     },
+     {
+      "feature": "gradient.threatened",
+      "classes": 31
+     },
+     {
+      "feature": "after.nearestHostile",
+      "classes": 29
+     },
+     {
+      "feature": "gradient.hostile",
+      "classes": 29
+     },
+     {
+      "feature": "type.MOVE",
+      "classes": 28
+     },
+     {
+      "feature": "act.sameTypeInMenu",
+      "classes": 26
+     },
+     {
+      "feature": "ev.s0.typeOfTop",
+      "classes": 24
+     },
+     {
+      "feature": "act.nPreImplied",
+      "classes": 22
+     },
+     {
+      "feature": "act.cost",
+      "classes": 21
+     }
+    ],
+    "directionOfTheUnsafeChoiceRelativeToTheBestSafeAlternative": {
+     "chosenMovesAwayFromHostileWhileSafeMovesToward": 10,
+     "chosenMovesTowardHostileWhileSafeMovesAway": 8,
+     "sameHostileGradient": 28,
+     "chosenMovesAwayFromObjectiveWhileSafeMovesToward": 5,
+     "chosenMovesTowardObjectiveWhileSafeMovesAway": 15,
+     "sameObjectiveGradient": 13
+    }
+   },
+   "abstentionDecisionErrorsOutOfBag": {
+    "falseAccepts": 8,
+    "falseAbstains": 378
+   }
+  },
+  "withinMenu": {
+   "note": "Does the estimate order the actions of ONE menu? Label \"catastrophe\" is what the model was fit on; label \"introduction\" is the gated event.",
+   "catastropheLabel": {
+    "explorationInSample": {
+     "menus": 1000,
+     "menusWithBothLabels": 925,
+     "meanWithinMenuAuroc": 0.8884,
+     "menusWhereTheLowestEstimateActionIsUnsafe": 58,
+     "menusWithASafeAction": 1000
+    },
+    "explorationOutOfBag": {
+     "menus": 875,
+     "menusWithBothLabels": 809,
+     "meanWithinMenuAuroc": 0.8715,
+     "menusWhereTheLowestEstimateActionIsUnsafe": 85,
+     "menusWithASafeAction": 875
+    },
+    "historicalValidation": {
+     "menus": 600,
+     "menusWithBothLabels": 529,
+     "meanWithinMenuAuroc": 0.8346,
+     "menusWhereTheLowestEstimateActionIsUnsafe": 61,
+     "menusWithASafeAction": 600
+    }
+   },
+   "introductionLabel": {
+    "explorationInSample": {
+     "menus": 1000,
+     "menusWithBothLabels": 876,
+     "meanWithinMenuAuroc": 0.8636,
+     "menusWhereTheLowestEstimateActionIsUnsafe": 51,
+     "menusWithASafeAction": 1000
+    },
+    "explorationOutOfBag": {
+     "menus": 875,
+     "menusWithBothLabels": 762,
+     "meanWithinMenuAuroc": 0.8517,
+     "menusWhereTheLowestEstimateActionIsUnsafe": 63,
+     "menusWithASafeAction": 875
+    },
+    "historicalValidation": {
+     "menus": 600,
+     "menusWithBothLabels": 493,
+     "meanWithinMenuAuroc": 0.8132,
+     "menusWhereTheLowestEstimateActionIsUnsafe": 45,
+     "menusWithASafeAction": 600
+    }
+   }
+  },
+  "riskEstimationError": {
+   "status": "NOT_SUPPORTED_AS_SYSTEMATIC_MISCALIBRATION",
+   "evidence": "frozen run: expected calibration error 0.026 on 5,304 validation action estimates; conservative for selected actions (SK1.1). That calibration is on catastrophe, not on introduction."
+  },
+  "displacementActionsByDirection_outOfBag": {
+   "note": "MOVE and RETREAT actions on exploration, out-of-bag estimate against observed labels. A subgroup whose observed rate exceeds its mean estimate is under-estimated.",
+   "all": {
+    "movesTowardNearestHostile": {
+     "actions": 1073,
+     "meanEstimate": 0.4499,
+     "observedCatastropheRate": 0.48,
+     "observedIntroductionRate": 0.4315
+    },
+    "noChange": {
+     "actions": 1104,
+     "meanEstimate": 0.511,
+     "observedCatastropheRate": 0.5254,
+     "observedIntroductionRate": 0.4837
+    },
+    "movesAwayFromNearestHostile": {
+     "actions": 1706,
+     "meanEstimate": 0.4518,
+     "observedCatastropheRate": 0.4513,
+     "observedIntroductionRate": 0.408
+    }
+   },
+   "boundAtMostTau": {
+    "movesTowardNearestHostile": {
+     "actions": 131,
+     "meanEstimate": 0.1129,
+     "observedCatastropheRate": 0.0534,
+     "observedIntroductionRate": 0.0458
+    },
+    "noChange": {
+     "actions": 141,
+     "meanEstimate": 0.1286,
+     "observedCatastropheRate": 0.0851,
+     "observedIntroductionRate": 0.0284
+    },
+    "movesAwayFromNearestHostile": {
+     "actions": 286,
+     "meanEstimate": 0.1105,
+     "observedCatastropheRate": 0.028,
+     "observedIntroductionRate": 0.014
+    }
+   }
+  },
+  "featureCollisions": {
+   "note": "actions of one menu with IDENTICAL 144-feature rows. The featurisation cannot separate them, whatever is learned from it.",
+   "withinMenuGroups": 174,
+   "withMixedCatastropheLabel": 7,
+   "withMixedIntroductionLabel": 4,
+   "inTheSameSymmetryOrbit": 0,
+   "menusAffectedByAMixedIntroductionCollision": 4,
+   "crossClass": {
+    "note": "identical 144-feature rows that occur in more than one class",
+    "groups": 0,
+    "withMixedCatastropheLabel": 0,
+    "rowsInMixedGroups": 0,
+    "totalRows": 8895
+   }
+  },
+  "safeActionExists": {
+   "explorationClassesWithASafeAction": 1000,
+   "explorationClasses": 1000,
+   "validationClassesWithASafeAction": 600,
+   "validationClasses": 600
+  },
+  "PUBLIC_SAFE_ACTION_IDENTIFIABILITY": {
+   "verdict": "NOT_ESTABLISHED",
+   "for": [
+    "a safe action exists in every exploration and every validation class",
+    "the frozen estimate orders actions within a menu well above chance on classes it never saw",
+    "in almost every failing class the chosen action and the best safe alternative differ in public features"
+   ],
+   "against": [
+    "existence of a safe action is evaluator knowledge, not public knowledge",
+    "ordering errors are unanimous or near-unanimous across bags, so more resampling of the same learner on the same features would not correct them",
+    "a small number of menus contain actions the featurisation cannot tell apart yet have different outcomes"
+   ],
+   "whatWouldSettleIt": "a prospective test of a learner built for within-menu discrimination, on fresh family-disjoint classes; nothing in existing evidence can"
+  }
+ },
+ "verdicts": {
+  "POINT_ESTIMATE_FEASIBLE": true,
+  "pointEstimateBasis": "out-of-fold development and historical validation both show a point rate below 1% at coverage above 40% for the frozen rule; the pessimistic out-of-bag diagnostic does not",
+  "STATISTICAL_BOUND_FEASIBLE": false,
+  "practicalityRule": {
+   "rule": "feasible only if an existing reading already supports the bound at the coverage target, or the eligible validation classes needed for 80% power at the planning rate do not exceed the practical ceiling",
+   "practicalCeilingEligibleValidationClasses": 3000,
+   "ceilingBasis": "five times the SK1 validation population, more than SK1 admitted in total (2,298); a disclosed planning assumption",
+   "conclusionHoldsForAnyCeilingBelow": 16456
+  },
+  "statisticalBoundBasis": {
+   "anyExistingReadingSupportsTheBoundAtTheCoverageTarget": false,
+   "planningRateForTheFrozenRule": 0.007,
+   "passProbabilityWith700AcceptedDecisions": 0.1324,
+   "passProbabilityWith1400AcceptedDecisions": 0.2378,
+   "acceptedDecisionsNeededFor80PercentPower": 6434,
+   "eligibleValidationClassesNeeded": 16456,
+   "multipleOfSk1Validation": 27.4267,
+   "trueRateNeededFor80PercentPowerAt700AcceptedDecisions": 0.002194,
+   "acceptedDecisionsNeededIfTheTrueRateWere0_2Percent": 773
+  },
+  "PROSPECTIVE_QUALIFICATION_NOT_ESTABLISHED": true,
+  "classification": "B_SELECTIVE_ASSURANCE_FEASIBILITY_UNSUPPORTED",
+  "classificationScope": "for the frozen SK1 policy, against the research targets 1% / 95% / 40%, at practical DEV sample sizes",
+  "nextScientificPriority": "WITHIN_MENU_ACTION_RISK_DISCRIMINATION",
+  "priorityRule": "discrimination is recommended when the bound is not practically feasible and within-menu ordering errors are the majority of failing forced choices on both historical validation and out-of-bag exploration",
+  "orderingShare": {
+   "historicalValidation": 0.8718,
+   "explorationOutOfBag": 0.8727
+  },
+  "targetsWeakened": false
+ }
+}

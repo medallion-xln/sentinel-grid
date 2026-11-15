@@ -1,0 +1,2159 @@
+{
+ "schema": "H_W1_DEV_I0_SOURCE_INTEGRITY_V1",
+ "authority": "R0",
+ "checkedAt": "2026-10-31T04:57:07.513Z",
+ "nodeVersion": "v22.22.2",
+ "baseCommit": "8d15408195b469b1ec5a7162e1bf6b16efb9b1aa",
+ "head": "2937efb720f00e12875cfc0a13a678277b187be4",
+ "armStressRule": {
+  "ruleSource": {
+   "path": "platform/game-agnostic/stage3h-safety-feasibility-v1/search.mjs",
+   "function": "candidates",
+   "startLine": 22,
+   "endLine": 31,
+   "bytes": 603,
+   "ARM_STRESS_RULE_HASH": "13a7ed687d4436585b3821569de7a8d63dcdd8616e75546df86a6c1685f7a57f",
+   "text": "export function candidates() {\n  const out = [];\n  for (const set of ['DEV288', 'FRESH_EXPLORE', 'FRESH_CHECK']) for (const r of loadRows(set)) {\n    if (r.rejected || r.band !== 'H2' || r.nexus.abstain || same(r.sel.B, r.sel.N)) continue;\n    const max = Math.max(...r.u), regB = Math.max(...r.sel.B.map((i) => max - r.u[i])), regN = Math.max(...r.sel.N.map((i) => max - r.u[i]));\n    const near = regB >= 40 && regB <= 160 && regN >= 40 && regN <= 160;\n    if (r.introN || near) out.push({ set, row: r, reason: r.introN ? (near ? 'INTRO_AND_NEAR' : 'INTRO') : 'NEAR_THRESHOLD' });\n  }\n  return out;\n}\n"
+  },
+  "helperHashes": {
+   "same": "5fe8dcaee2e5e1073ad0e09be20fa3a6806f63cface8eb3cef5e3c37828fc6f4",
+   "DRAWS": "f66308454124d23e933cf3377f4eb614fd6dd4b0732f9dc82c7b4c0fb2642b58",
+   "ruleWithHelpersLines19to31": "cbd0c9ef08f8faaf7c27a63a751c8082ac676b5f2b5bb99ce0b2b12984ebb7fd"
+  },
+  "sourceFile": {
+   "sha256": "71ea481a74ffa1051d894e93462e5c226e7e4dab2f99fa9f3ce36917c50877d2",
+   "gitBlob": "493c1ca87a364f7186903279de93e568d7a2e5bb",
+   "tracked": true,
+   "workingTreeMatchesHead": true,
+   "sinceBase": "ADDED_AFTER_BASE",
+   "lastCommit": "7a25f064407508444045668eeb29f183c46fb5e5 2026-10-22 Sentinel Grid 3H"
+  },
+  "governingVersion": {
+   "baseCommit": "8d15408195b469b1ec5a7162e1bf6b16efb9b1aa",
+   "draws": 40,
+   "selection": "H2 band; Nexus applies (no abstention); N != B as sets; S0 introduces vs N, or both arms regret in [40,160]"
+  },
+  "inputRowFiles": {
+   "DEV288": [
+    {
+     "file": "DEV288/shard-0-of-1.jsonl",
+     "bytes": 886354,
+     "rows": 288,
+     "sha256": "c8513c1b4df356c5ba488c3fe5a590be2897005cb85dbd998f72391068121cee"
+    }
+   ],
+   "FRESH_EXPLORE": [
+    {
+     "file": "FRESH_EXPLORE/shard-0-of-5.jsonl",
+     "bytes": 7911131,
+     "rows": 2554,
+     "sha256": "d0abde641b909a97ec0fd96599e537445a7d774025bc5b694f021cbc3b59e29d"
+    },
+    {
+     "file": "FRESH_EXPLORE/shard-1-of-5.jsonl",
+     "bytes": 7911063,
+     "rows": 2554,
+     "sha256": "d7ab3a6a86fff691c9c993b6d868b37dd1ae90fb80b3b32a07fb23a72a73ade2"
+    },
+    {
+     "file": "FRESH_EXPLORE/shard-2-of-5.jsonl",
+     "bytes": 7912218,
+     "rows": 2554,
+     "sha256": "0bceaeec073fb46b6d03e90d3ef242980a46cb2b55553b2b62a482aae5d1fe6f"
+    },
+    {
+     "file": "FRESH_EXPLORE/shard-3-of-5.jsonl",
+     "bytes": 7943121,
+     "rows": 2553,
+     "sha256": "e27ec8cd6b96e0c9634539f57eb2c655878bdeb2d657fecd5995f67830f1d6fc"
+    },
+    {
+     "file": "FRESH_EXPLORE/shard-4-of-5.jsonl",
+     "bytes": 7923071,
+     "rows": 2553,
+     "sha256": "429e998ac9fe965910b7b560f1e7d85a8226126c42a656ec8e06b4f04fa7a6e9"
+    }
+   ],
+   "FRESH_CHECK": [
+    {
+     "file": "FRESH_CHECK/shard-0-of-5.jsonl",
+     "bytes": 7915134,
+     "rows": 2554,
+     "sha256": "bfdb95ee0663c315cc1a1933069dd001ec9456ba91c6297c2951d4695d77fde4"
+    },
+    {
+     "file": "FRESH_CHECK/shard-1-of-5.jsonl",
+     "bytes": 7919455,
+     "rows": 2554,
+     "sha256": "dfba8eca6abff74f3d5a5b02aaab710b4e43460af9beb8768391e39ab2bb82dd"
+    },
+    {
+     "file": "FRESH_CHECK/shard-2-of-5.jsonl",
+     "bytes": 7921519,
+     "rows": 2554,
+     "sha256": "cf2579d17ca636c534bd8b7aef5b014b1a99fcdc2c0577da032ec7418c54d8ff"
+    },
+    {
+     "file": "FRESH_CHECK/shard-3-of-5.jsonl",
+     "bytes": 7910736,
+     "rows": 2553,
+     "sha256": "206e57be3be0c7bc765a0441ad582fbdb58b53b3df8fd3a5a44982a93feb5c7d"
+    },
+    {
+     "file": "FRESH_CHECK/shard-4-of-5.jsonl",
+     "bytes": 7909120,
+     "rows": 2553,
+     "sha256": "6420ed96a5e91911e2f3b295a730b72f388c985c5d7f629abc750de4eedfbb49"
+    }
+   ]
+  },
+  "rowFilesAreTrackedInGit": false,
+  "rowFileNote": "dev-runs row files are untracked and git-ignored; their sha256 is recorded here as the rule inputs",
+  "admitted": {
+   "total": 341,
+   "bySet": {
+    "DEV288": 3,
+    "FRESH_EXPLORE": 153,
+    "FRESH_CHECK": 185
+   },
+   "byReason": {
+    "INTRO_AND_NEAR": 28,
+    "NEAR_THRESHOLD": 301,
+    "INTRO": 12
+   },
+   "loadMs": 615,
+   "identitiesSha256": "a39ab255d94d6a34c424b82c9ce399462edcc7daf74e10de4b6b79093c96766a"
+  },
+  "allAdmittedWorldsInStrictExclusionIndex": true
+ },
+ "v4HistoricalRule": {
+  "id": "V4_FROZEN_BAND_RULE",
+  "rule": {
+   "H0": "NEXUS_ELSE_S0",
+   "H2": "S0"
+  },
+  "ruleHash": "c53826da908510a6eceae626a3c7463195b648c95962f32b9e2774b8324be021",
+  "reproducedBy": "sha256(JSON.stringify(rule, Object.keys(rule).sort())) (stage3h-ascii-competence-v1/guard.mjs line 51)",
+  "recomputed": "c53826da908510a6eceae626a3c7463195b648c95962f32b9e2774b8324be021",
+  "guardConstant": "c53826da908510a6eceae626a3c7463195b648c95962f32b9e2774b8324be021",
+  "contractV3RuleHash": "c53826da908510a6eceae626a3c7463195b648c95962f32b9e2774b8324be021",
+  "contractV3Rule": {
+   "H0": "NEXUS_ELSE_S0",
+   "H2": "S0"
+  },
+  "comparatorModelHash": "30a72416b8a7f0079155cd25908acbe8a2f69750759d106cf71609d77e1e8937",
+  "role": "HISTORICAL V4 selector contract: one band-conditional arm (H0 -> Nexus-else-S0, H2 -> S0). Final negative verdict. Not the arm-stress selection rule and not a comparator of H-W1."
+ },
+ "comparators": {
+  "S0": {
+   "id": "OBJECTIVE_PROGRESS_ONLY",
+   "modelHash": "30a72416b8a7f0079155cd25908acbe8a2f69750759d106cf71609d77e1e8937",
+   "modelFile": {
+    "path": "platform/game-agnostic/artifacts/stage3g8-projection-disclosure/stage3g8-open-phase-report.json",
+    "bytes": 50094,
+    "sha256": "4eb8e6d2b2def3804f1f8199c1fea295bbe37e84c1d07a940f2f1e0a95e92e45",
+    "gitBlob": "51007a480b0efc171f8c08c2a201d4812ab05c09",
+    "tracked": true,
+    "workingTreeMatchesHead": true,
+    "sinceBase": "UNCHANGED_SINCE_BASE"
+   },
+   "entry": "platform/game-agnostic/stage3h-canonical-v1/baseline.mjs#currentBaseline",
+   "output": "full top set of action handles",
+   "closureSha256": "2de8ecbd348896b0be8f159eabe3a7c55c66af5ec5f877f10fbe93fc775d34e9",
+   "assertedAtImport": "baseline.mjs throws FROZEN_S0_MODEL_MISMATCH unless modelHash(model) === S0_HASH"
+  },
+  "NEXUS_ELSE_S0": {
+   "source": {
+    "id": "sentinel-nexus-relational-v1+NEXUS_RELATIONAL_SELECTOR_V1",
+    "owner": "src/lab/stage3c-learned-nexus.js#nexusRelationalSelector",
+    "modelVersion": "engine-v1/selector-v1/adapter-v1"
+   },
+   "entry": "platform/game-agnostic/stage3h-canonical-v1/adapters.mjs#invokeNexus",
+   "output": "one action handle (lexical tie-break among same-type actions) or abstention; S0 top set on abstention",
+   "closureSha256": "f6fead3bfa63ddb7a1e2067176a521e963fa461691fc70c5cd63ee74cbe9dd46"
+  },
+  "scoringContract": {
+   "id": "ARMS_B_N_SET_VALUED_ON_ORIGINAL_VIEW",
+   "B": "S0 top set",
+   "N": "Nexus pick, else B",
+   "selectSets": {
+    "path": "platform/game-agnostic/stage3h-activation-readiness-v2/runner-design.mjs",
+    "name": "selectSets",
+    "startLine": 7,
+    "endLine": 11,
+    "bytes": 208,
+    "sha256": "610a35c8824d7c9ade3f0eeb8c9115c89fc56929beced709bef84059abd5d4ca"
+   },
+   "note": "comparator outputs used for SCORING are the frozen set-valued arms on the original view (as in the feasibility lane)."
+  },
+  "policyInputContract": {
+   "id": "IDENTITY_FREE_PROJECTIONS_RERUN_PER_VIEW",
+   "rule": "S0 and Nexus are re-run on the transformed view. A comparator output enters only as an identity-free projection (membership of an action key in the S0 top set; the key of the Nexus recommendation; rationale codes). A projection that is not stable under relabelling counts against the policy in the invariance test.",
+   "note": "what the policy may SEE of a comparator: key-based projections only, recomputed on every transformed view; an unstable projection is excluded as a feature (decided at I-0 fixture gates)."
+  },
+  "distinction": "The prospective identity-free comparator contract (two independent arms, S0 and Nexus-else-S0, scored on every admitted class, projections re-run per view) is distinct from the historical V4 band rule (H0 -> Nexus-else-S0, H2 -> S0, one arm). No silent substitution: the V4 rule appears only as a recorded historical contract."
+ },
+ "contract": {
+  "path": "platform/game-agnostic/stage3h-wider-action-feasibility-v1/H_W1_CONTRACT.json",
+  "sha256": "d1e903d3655b3f06c0fbe8a6305202e138536d7b9e910d76d68c735fd1b83d2e",
+  "mdSha256": "d2916b8fae8f349cc683c1873559938bfcacc9c1a384e8daf7923878d8d70a08",
+  "crossChecks": 38,
+  "crossChecksFailed": 0,
+  "failures": [],
+  "table": [
+   {
+    "id": "contract.sha256-recorded-in-md",
+    "json": "d1e903d3655b3f06c0fbe8a6305202e138536d7b9e910d76d68c735fd1b83d2e",
+    "md": "d1e903d3655b3f06c0fbe8a6305202e138536d7b9e910d76d68c735fd1b83d2e",
+    "pass": true
+   },
+   {
+    "id": "policyIdentity",
+    "json": "STAGE3H_WIDER_ACTION_POLICY_W1",
+    "md": "STAGE3H_WIDER_ACTION_POLICY_W1 is a research artifact, not a tenth expert",
+    "pass": true
+   },
+   {
+    "id": "introductions.vsS0=0 and vsNexusElseS0=0",
+    "json": [
+     0,
+     0
+    ],
+    "md": "zero observed catastrophe introductions against both frozen comparators",
+    "pass": true
+   },
+   {
+    "id": "meanNregReduction>=0.02 per comparator",
+    "json": 0.02,
+    "md": "reduces mean normalized regret by at least 0.02 relative to each",
+    "pass": true
+   },
+   {
+    "id": "regret rule: point <= -0.02 and one-sided 95% cluster-bootstrap UB < 0",
+    "json": "point estimate of delta <= -0.02 AND one-sided 95% cluster-bootstrap upper bound of delta < 0, for each comparator separately (delta = policy minus comparator, class-paired)",
+    "md": "<= -0.02 and the one-sided 95% cluster-bootstrap upper bound < 0",
+    "pass": true
+   },
+   {
+    "id": "bootstrap resamples 10,000",
+    "json": true,
+    "md": true,
+    "pass": true
+   },
+   {
+    "id": "catastrophe = regret >= 100",
+    "json": "frozen evaluator regret >= 100 (FORGE_COUNTERFACTUAL_SYMMETRIC_V1)",
+    "md": "catastrophe = frozen evaluator regret >= 100",
+    "pass": true
+   },
+   {
+    "id": "policy class: one legal action, no abstention, no randomization",
+    "json": "deterministic map from the public decision view to exactly one legal menu action; no abstention; no randomization",
+    "md": "returns exactly one legal menu action. It never abstains and never randomizes",
+    "pass": true
+   },
+   {
+    "id": "population.exploration",
+    "json": {
+     "minClasses": 1000
+    },
+    "md": "Exploration[^\\n]*\\|\\s*1,000\\s*\\|",
+    "pass": true
+   },
+   {
+    "id": "population.validation",
+    "json": {
+     "minClasses": 300,
+     "targetClasses": 600
+    },
+    "md": "Validation[^\\n]*300 \\(target 600\\)",
+    "pass": true
+   },
+   {
+    "id": "population.holdout",
+    "json": {
+     "minClasses": 300,
+     "targetClasses": 600
+    },
+    "md": "Holdout[^\\n]*300 \\(target 600\\)",
+    "pass": true
+   },
+   {
+    "id": "twin draws 40 (exploration, validation)",
+    "json": [
+     40,
+     40
+    ],
+    "md": "40 draws",
+    "pass": true
+   },
+   {
+    "id": "holdout twin family 40 + 120 salted + corners",
+    "json": "40 standard plus 120 extra from an independently salted stream plus up to 64 corner settings of hiddenSupport; used once",
+    "md": "40 standard + 120 independently salted + up to 64 hidden-support corner settings",
+    "pass": true
+   },
+   {
+    "id": "maxCandidates 20",
+    "json": 20,
+    "md": "at most 20 candidates",
+    "pass": true
+   },
+   {
+    "id": "holdout generated only after freeze",
+    "json": true,
+    "md": "Holdout generation happens after the freeze",
+    "pass": true
+   },
+   {
+    "id": "origin family cap 5%",
+    "json": "no topology x resource x objective family may exceed 5% of the classes of a population",
+    "md": "No topology x resource x objective family exceeds 5%",
+    "pass": true
+   },
+   {
+    "id": "inspected 341 classes (3 / 153 / 185)",
+    "json": "the 341 classes (DEV288 3, block 951 153, block 952 185) may serve only as development fixtures/smoke tests. They are excluded from training, validation and holdout statistics. 'FRESH_*' labels on them are legacy and wrong; they are spent.",
+    "md": "341 inspected classes",
+    "pass": true
+   },
+   {
+    "id": "bound n299 = 1-0.05^(1/n)",
+    "json": {
+     "json": 0.00997,
+     "recomputed": 0.00997
+    },
+    "md": "n=299 gives <= 1\\.0%",
+    "pass": true
+   },
+   {
+    "id": "bound n300 = 1-0.05^(1/n)",
+    "json": {
+     "json": 0.00994,
+     "recomputed": 0.00994
+    },
+    "md": "300: 0\\.99%",
+    "pass": true
+   },
+   {
+    "id": "bound n341 = 1-0.05^(1/n)",
+    "json": {
+     "json": 0.00875,
+     "recomputed": 0.00875
+    },
+    "md": "341: 0\\.87%",
+    "pass": true
+   },
+   {
+    "id": "bound n600 = 1-0.05^(1/n)",
+    "json": {
+     "json": 0.00498,
+     "recomputed": 0.00498
+    },
+    "md": "600: 0\\.50%",
+    "pass": true
+   },
+   {
+    "id": "bound per-class twins 67 / 161",
+    "json": {
+     "json": [
+      0.0437,
+      0.0184
+     ],
+     "recomputed": [
+      0.0437,
+      0.0184
+     ]
+    },
+    "md": "about 4.4% (1.8% at 161 twins)",
+    "pass": true
+   },
+   {
+    "id": "invariance tolerance 0",
+    "json": 0,
+    "md": "tolerance 0",
+    "pass": true
+   },
+   {
+    "id": "invariance relabel: identityViewTwinV2 + 5 random",
+    "json": "O-2R.1 identityViewTwinV2 plus 5 random relabellings per class, comparators recomputed; chosen key must be equal",
+    "md": "identityViewTwinV2 plus 5 random relabellings",
+    "pass": true
+   },
+   {
+    "id": "invariance menu order: 5 random + reverse",
+    "json": "5 random permutations plus reverse; chosen key equal",
+    "md": "5 random permutations plus the reverse",
+    "pass": true
+   },
+   {
+    "id": "invariance D4: 7 non-identity",
+    "json": "7 non-identity transforms; chosen key must be the transformed key; claimed only if evaluator labels are first shown D4-equivariant on a sample (I-0)",
+    "md": "7 non-identity transforms",
+    "pass": true
+   },
+   {
+    "id": "compute budget",
+    "json": {
+     "nativeSimulatorCallsAtDecision": 0,
+     "decisionTimeMedianMs": 100,
+     "decisionTimeMaxMs": 1000,
+     "maxLabelledWorldsTotal": 300000,
+     "maxWorkDiskGiB": 2,
+     "minFreeDiskGiBToStart": 8,
+     "network": "none"
+    },
+    "md": "median <= 100 ms, max <= 1 s, 300,000 labelled worlds, 2 GiB work files, >= 8 GiB free, no network",
+    "pass": true
+   },
+   {
+    "id": "field audit names",
+    "json": [
+     "resourceFlag",
+     "observationTimestamp",
+     "provenance",
+     "sequence"
+    ],
+    "md": "resourceFlag, observationTimestamp, provenance, sequence",
+    "pass": true
+   },
+   {
+    "id": "BYPASS collisions idx 6236 5593 6198",
+    "json": "3 BYPASS groups (idx 6236, 5593, 6198): dependents differ in public kind, relative position, flags and relationships in every group",
+    "md": "indices 6236 and 6198 (FRESH_CHECK) and 5593 (FRESH_EXPLORE)",
+    "pass": true
+   },
+   {
+    "id": "keyV1 omits dependent/toX/toY",
+    "json": "type, displacement, target block {kind, rel, flags[critical, objective, hostile, threatened, inService, hub], relationships[[kind, role]] sorted}, params excluding dependent, toX, toY",
+    "md": "keyV1 (type, displacement, target block, params excluding dependent, toX, toY)",
+    "pass": true
+   },
+   {
+    "id": "keyV2 adds dependent block + actor-relative toX/toY",
+    "json": "keyV1 plus, for any action carrying a dependent entity, that dependent's public attribute block {kind, relative position, relative distance, direction, flags incl. resourceFlag, sorted relationships}; plus toX/toY expressed actor-relative",
+    "md": "keyV2 adds the dependent's public attribute block (and actor-relative toX/toY)",
+    "pass": true
+   },
+   {
+    "id": "residual duplicates = symmetric orbit (worst-case cat, uniform-expectation regret)",
+    "json": "action keys still equal after keyV2 form a symmetric orbit. The policy selects the orbit; evaluator scores catastrophe as worst case over the orbit and regret as uniform expectation (worst case also reported). No lexical order is used to break the tie.",
+    "md": "selects an orbit, not a member; worst case catastrophe; uniform expectation regret; no lexical tie-break",
+    "pass": true
+   },
+   {
+    "id": "inputs.permitted has 5 and inputs.forbidden has 7 categories",
+    "json": [
+     5,
+     7
+    ],
+    "md": "Permitted: 5 items; Forbidden: 7 items",
+    "pass": true
+   },
+   {
+    "id": "forbidden mentions digests, seeds, oracle, simulator, handles",
+    "json": [
+     "hidden node health or value, cost, risk, resourc",
+     "native evaluator regret or catastrophe labels, a",
+     "recovered or inferred generator seeds, generator",
+     "privileged native rollouts or any native simulat",
+     "offline oracle recommendations or any quantity c",
+     "integrity digests (worldHash, sourceStateHash, p",
+     "entity ids, action handles, handle order, menu l"
+    ],
+    "md": "integrity digests; seeds; oracle; simulator; handles",
+    "pass": true
+   },
+   {
+    "id": "comparator-input rule: re-run on transformed view; unstable projection counts against policy",
+    "json": "S0 and Nexus are re-run on the transformed view. A comparator output enters only as an identity-free projection (membership of an action key in the S0 top set; the key of the Nexus recommendation; rationale codes). A projection that is not stable under relabelling counts against the policy in the invariance test.",
+    "md": "both re-run on every transformed view ... counted against the policy",
+    "pass": true
+   },
+   {
+    "id": "claims C1-C4 present; C3 not claimed",
+    "json": [
+     "C1",
+     "C2",
+     "C3",
+     "C4"
+    ],
+    "md": "C1 C2 C3 C4",
+    "pass": true
+   },
+   {
+    "id": "nothing implemented or authorised at definition time",
+    "json": true,
+    "md": "Nothing here implements, trains or evaluates a selector",
+    "pass": true
+   },
+   {
+    "id": "exclusion: layer1 strict-index, layer2 PCD",
+    "json": [
+     "stage3h-wider-action-feasibility-v1/exclusion/strict-index.m",
+     "public-class digest (PCD), built at I-2: relabel-invariant ("
+    ],
+    "md": "Layer 1 strict-index.mjs; Layer 2 public-class digest (PCD)",
+    "pass": true
+   }
+  ],
+  "expectedSupersession": [
+   {
+    "field": "ownerDecisions.CURRENT_MAIN",
+    "contract": "2d26176ae55f59009796c546fd42f2635e7da5bb",
+    "actualMain": "2937efb720f00e12875cfc0a13a678277b187be4",
+    "reason": "the owner authorised committing the custody-audit and wider-action lanes (0fa84a77, 2937efb7) on top of the baseline; both are additions-only"
+   }
+  ],
+  "planNumbering": {
+   "contractMdPlan": {
+    "I-0": "rerun closure audit; locate and hash selection rule; verify comparators, S0 public score, D4 equivariance; build transform tools with negative controls",
+    "I-1": "keyV2, field audit, residual-collision check, static no-hidden-fields extractor",
+    "I-2": "PCD exclusion index, tests, spent-source coverage",
+    "I-3": "allocate three fresh blocks; reserve holdout block; population plan hash",
+    "I-4": "generate and label exploration and validation; exploration statistics",
+    "I-5": "develop <= 20 candidates on exploration; one validation evaluation each; freeze",
+    "I-6": "holdout (separate authorisation)"
+   },
+   "authorisationPlan": {
+    "I-0": "contract and source integrity",
+    "I-1": "public-only action representation",
+    "I-2": "research data and evaluation integrity (exclusion binding, allocation, population assignment)",
+    "I-3": "bounded policy implementation",
+    "I-4": "DEV exploration and training",
+    "I-5": "one-pass DEV validation",
+    "I-6": "NOT AUTHORISED"
+   },
+   "resolution": "The authorisation governs the content and order of steps; H_W1_CONTRACT.json governs thresholds and populations. The md plan table is a numbering difference, not a threshold difference."
+  }
+ },
+ "frozenSources": {
+  "baseCommit": "8d15408195b469b1ec5a7162e1bf6b16efb9b1aa",
+  "categories": {
+   "generatorAndNativeWorld": {
+    "roots": [
+     "platform/game-agnostic/stage3h-safety-feasibility-v1/twins.mjs",
+     "platform/game-agnostic/stage3h-failure-diagnosis-v1/lib.mjs",
+     "platform/game-agnostic/stage3h-canonical-v1/plan.mjs",
+     "platform/game-agnostic/src/forge-symmetric/scenarios-symmetric-v1.js",
+     "platform/game-agnostic/src/forge/warmup.js",
+     "platform/game-agnostic/src/forge/validators-v2.js",
+     "platform/game-agnostic/src/forge/kernel.js",
+     "platform/game-agnostic/src/forge-symmetric/action-surface-symmetric-v1.js"
+    ],
+    "fileCount": 73,
+    "closureSha256": "5d34b5ad80128562a3b1cfecbb37bc8d6f0b4c8c946b8c389bffb5028e08a7f5",
+    "paths": [
+     "platform/game-agnostic/scripts/generate-stage3f6p1e-policy-evidence.mjs",
+     "platform/game-agnostic/scripts/stage3f6p1asym-evidence.mjs",
+     "platform/game-agnostic/scripts/stage3f6p1e-analysis-plan.mjs",
+     "platform/game-agnostic/scripts/stage3g/evidence.mjs",
+     "platform/game-agnostic/src/core/authority.js",
+     "platform/game-agnostic/src/core/constants.js",
+     "platform/game-agnostic/src/core/contracts.js",
+     "platform/game-agnostic/src/core/determinism.js",
+     "platform/game-agnostic/src/core/errors.js",
+     "platform/game-agnostic/src/core/recommendation.js",
+     "platform/game-agnostic/src/experts/expert-action-context.js",
+     "platform/game-agnostic/src/experts/expert-context.js",
+     "platform/game-agnostic/src/experts/expert-contract.js",
+     "platform/game-agnostic/src/experts/nexus.js",
+     "platform/game-agnostic/src/experts/oracle.js",
+     "platform/game-agnostic/src/forge-symmetric/action-surface-symmetric-v1.js",
+     "platform/game-agnostic/src/forge-symmetric/counterfactual-symmetric-v1.js",
+     "platform/game-agnostic/src/forge-symmetric/orientation-symmetric-v1.js",
+     "platform/game-agnostic/src/forge-symmetric/scenarios-symmetric-v1.js",
+     "platform/game-agnostic/src/forge/adapter.js",
+     "platform/game-agnostic/src/forge/contract.js",
+     "platform/game-agnostic/src/forge/counterfactual-v2.js",
+     "platform/game-agnostic/src/forge/counterfactual.js",
+     "platform/game-agnostic/src/forge/dataset-v2.js",
+     "platform/game-agnostic/src/forge/dataset.js",
+     "platform/game-agnostic/src/forge/export.js",
+     "platform/game-agnostic/src/forge/kernel.js",
+     "platform/game-agnostic/src/forge/oracle-surface.js",
+     "platform/game-agnostic/src/forge/render.js",
+     "platform/game-agnostic/src/forge/replay.js",
+     "platform/game-agnostic/src/forge/reward-v2.js",
+     "platform/game-agnostic/src/forge/scenarios-v2.js",
+     "platform/game-agnostic/src/forge/scenarios-v3.js",
+     "platform/game-agnostic/src/forge/scenarios.js",
+     "platform/game-agnostic/src/forge/soup-bridge.js",
+     "platform/game-agnostic/src/forge/supervision.js",
+     "platform/game-agnostic/src/forge/topology.js",
+     "platform/game-agnostic/src/forge/validators-v2.js",
+     "platform/game-agnostic/src/forge/validators.js",
+     "platform/game-agnostic/src/forge/warmup.js",
+     "platform/game-agnostic/src/lab/stage3c-learned-nexus.js",
+     "platform/game-agnostic/src/prime/root-puct.js",
+     "platform/game-agnostic/src/sdk/define-adapter.js",
+     "platform/game-agnostic/src/stage3f/causal-trace-v1.js",
+     "platform/game-agnostic/src/stage3f/counterfactual-veto-ledger-v1.js",
+     "platform/game-agnostic/src/stage3f/deployable-action-proposal-v1.js",
+     "platform/game-agnostic/src/stage3f/environment-calibration-v1.js",
+     "platform/game-agnostic/src/stage3f/free-action-sufficiency-v1.js",
+     "platform/game-agnostic/src/stage3f/nexus-relational-spatial-context-v1.js",
+     "platform/game-agnostic/src/stage3f/nexus-selector-v2-candidate.js",
+     "platform/game-agnostic/src/stage3f/policy-requalification-v1.js",
+     "platform/game-agnostic/src/stage3f/policy-router-v1.js",
+     "platform/game-agnostic/src/stage3f/prediction-reliability-corpus-v1.js",
+     "platform/game-agnostic/src/stage3f/prediction-reliability-v1.js",
+     "platform/game-agnostic/src/stage3f/world-state-v1.js",
+     "platform/game-agnostic/src/stage3g/action-semantics-v1.js",
+     "platform/game-agnostic/src/stage3g/deployable-action-model-v1.js",
+     "platform/game-agnostic/src/stage3g/epistemic-provenance-v1.js",
+     "platform/game-agnostic/src/stage3g/observable-action-surface-v1.js",
+     "platform/game-agnostic/src/stage3g/observable-entity-state-v1.js",
+     "platform/game-agnostic/src/stage3g7/target-eligibility-contract-v1.js",
+     "platform/game-agnostic/stage3g8/objective-progress-v1.mjs",
+     "platform/game-agnostic/stage3h-activation-readiness-v2/runner-design.mjs",
+     "platform/game-agnostic/stage3h-canonical-v1/adapters.mjs",
+     "platform/game-agnostic/stage3h-canonical-v1/baseline.mjs",
+     "platform/game-agnostic/stage3h-canonical-v1/evidence.mjs",
+     "platform/game-agnostic/stage3h-canonical-v1/metrics.mjs",
+     "platform/game-agnostic/stage3h-canonical-v1/nexus-selector-v1-port.mjs",
+     "platform/game-agnostic/stage3h-canonical-v1/plan.mjs",
+     "platform/game-agnostic/stage3h-failure-diagnosis-v1/lib.mjs",
+     "platform/game-agnostic/stage3h-final-review-handoff/amendments/v3/runner.mjs",
+     "platform/game-agnostic/stage3h-safety-feasibility-v1/contract.mjs",
+     "platform/game-agnostic/stage3h-safety-feasibility-v1/twins.mjs"
+    ]
+   },
+   "evaluatorRegretAndCatastrophe": {
+    "roots": [
+     "platform/game-agnostic/src/forge-symmetric/counterfactual-symmetric-v1.js",
+     "platform/game-agnostic/src/forge/counterfactual-v2.js",
+     "platform/game-agnostic/src/forge/reward-v2.js",
+     "platform/game-agnostic/stage3h-activation-readiness-v2/runner-design.mjs",
+     "platform/game-agnostic/stage3h-wider-action-feasibility-v1/contract.mjs"
+    ],
+    "fileCount": 12,
+    "closureSha256": "1dbd78c2699c1b6cd250d562af465132f33e11eae09eccf9874791b9c1723f67",
+    "paths": [
+     "platform/game-agnostic/src/core/determinism.js",
+     "platform/game-agnostic/src/core/errors.js",
+     "platform/game-agnostic/src/forge-symmetric/action-surface-symmetric-v1.js",
+     "platform/game-agnostic/src/forge-symmetric/counterfactual-symmetric-v1.js",
+     "platform/game-agnostic/src/forge-symmetric/orientation-symmetric-v1.js",
+     "platform/game-agnostic/src/forge/contract.js",
+     "platform/game-agnostic/src/forge/counterfactual-v2.js",
+     "platform/game-agnostic/src/forge/kernel.js",
+     "platform/game-agnostic/src/forge/reward-v2.js",
+     "platform/game-agnostic/stage3h-activation-readiness-v2/runner-design.mjs",
+     "platform/game-agnostic/stage3h-safety-feasibility-v1/contract.mjs",
+     "platform/game-agnostic/stage3h-wider-action-feasibility-v1/contract.mjs"
+    ]
+   },
+   "s0Comparator": {
+    "roots": [
+     "platform/game-agnostic/stage3h-canonical-v1/baseline.mjs"
+    ],
+    "fileCount": 23,
+    "closureSha256": "2de8ecbd348896b0be8f159eabe3a7c55c66af5ec5f877f10fbe93fc775d34e9",
+    "paths": [
+     "platform/game-agnostic/src/core/authority.js",
+     "platform/game-agnostic/src/core/constants.js",
+     "platform/game-agnostic/src/core/contracts.js",
+     "platform/game-agnostic/src/core/determinism.js",
+     "platform/game-agnostic/src/core/errors.js",
+     "platform/game-agnostic/src/forge/adapter.js",
+     "platform/game-agnostic/src/forge/contract.js",
+     "platform/game-agnostic/src/forge/kernel.js",
+     "platform/game-agnostic/src/forge/scenarios-v2.js",
+     "platform/game-agnostic/src/forge/topology.js",
+     "platform/game-agnostic/src/sdk/define-adapter.js",
+     "platform/game-agnostic/src/stage3f/deployable-action-proposal-v1.js",
+     "platform/game-agnostic/src/stage3f/free-action-sufficiency-v1.js",
+     "platform/game-agnostic/src/stage3f/nexus-relational-spatial-context-v1.js",
+     "platform/game-agnostic/src/stage3f/world-state-v1.js",
+     "platform/game-agnostic/src/stage3g/action-semantics-v1.js",
+     "platform/game-agnostic/src/stage3g/deployable-action-model-v1.js",
+     "platform/game-agnostic/src/stage3g/epistemic-provenance-v1.js",
+     "platform/game-agnostic/src/stage3g/observable-action-surface-v1.js",
+     "platform/game-agnostic/src/stage3g/observable-entity-state-v1.js",
+     "platform/game-agnostic/src/stage3g7/target-eligibility-contract-v1.js",
+     "platform/game-agnostic/stage3g8/objective-progress-v1.mjs",
+     "platform/game-agnostic/stage3h-canonical-v1/baseline.mjs"
+    ]
+   },
+   "nexusComparator": {
+    "roots": [
+     "platform/game-agnostic/stage3h-canonical-v1/adapters.mjs"
+    ],
+    "fileCount": 10,
+    "closureSha256": "f6fead3bfa63ddb7a1e2067176a521e963fa461691fc70c5cd63ee74cbe9dd46",
+    "paths": [
+     "platform/game-agnostic/src/core/authority.js",
+     "platform/game-agnostic/src/core/constants.js",
+     "platform/game-agnostic/src/core/determinism.js",
+     "platform/game-agnostic/src/core/errors.js",
+     "platform/game-agnostic/src/experts/expert-contract.js",
+     "platform/game-agnostic/src/experts/nexus.js",
+     "platform/game-agnostic/src/experts/oracle.js",
+     "platform/game-agnostic/stage3h-canonical-v1/adapters.mjs",
+     "platform/game-agnostic/stage3h-canonical-v1/evidence.mjs",
+     "platform/game-agnostic/stage3h-canonical-v1/nexus-selector-v1-port.mjs"
+    ]
+   },
+   "transformations": {
+    "roots": [
+     "platform/game-agnostic/src/forge-symmetric/orientation-symmetric-v1.js",
+     "platform/game-agnostic/stage3h-owner-governed-v1/identity-view-v2.mjs",
+     "platform/game-agnostic/stage3h-hw1-dev-v1/transforms.mjs"
+    ],
+    "fileCount": 73,
+    "closureSha256": "f8becfbabd03f0ef99a7ca2fef3d0a9625ccdee07041b8878d2aa392c84804b8",
+    "paths": [
+     "platform/game-agnostic/scripts/generate-stage3f6p1e-policy-evidence.mjs",
+     "platform/game-agnostic/scripts/stage3f6p1asym-evidence.mjs",
+     "platform/game-agnostic/scripts/stage3f6p1e-analysis-plan.mjs",
+     "platform/game-agnostic/scripts/stage3g/evidence.mjs",
+     "platform/game-agnostic/src/core/authority.js",
+     "platform/game-agnostic/src/core/constants.js",
+     "platform/game-agnostic/src/core/contracts.js",
+     "platform/game-agnostic/src/core/determinism.js",
+     "platform/game-agnostic/src/core/errors.js",
+     "platform/game-agnostic/src/core/recommendation.js",
+     "platform/game-agnostic/src/experts/expert-action-context.js",
+     "platform/game-agnostic/src/experts/expert-context.js",
+     "platform/game-agnostic/src/experts/expert-contract.js",
+     "platform/game-agnostic/src/experts/nexus.js",
+     "platform/game-agnostic/src/experts/oracle.js",
+     "platform/game-agnostic/src/forge-symmetric/action-surface-symmetric-v1.js",
+     "platform/game-agnostic/src/forge-symmetric/counterfactual-symmetric-v1.js",
+     "platform/game-agnostic/src/forge-symmetric/orientation-symmetric-v1.js",
+     "platform/game-agnostic/src/forge-symmetric/scenarios-symmetric-v1.js",
+     "platform/game-agnostic/src/forge/adapter.js",
+     "platform/game-agnostic/src/forge/contract.js",
+     "platform/game-agnostic/src/forge/counterfactual-v2.js",
+     "platform/game-agnostic/src/forge/counterfactual.js",
+     "platform/game-agnostic/src/forge/dataset-v2.js",
+     "platform/game-agnostic/src/forge/dataset.js",
+     "platform/game-agnostic/src/forge/export.js",
+     "platform/game-agnostic/src/forge/kernel.js",
+     "platform/game-agnostic/src/forge/oracle-surface.js",
+     "platform/game-agnostic/src/forge/render.js",
+     "platform/game-agnostic/src/forge/replay.js",
+     "platform/game-agnostic/src/forge/reward-v2.js",
+     "platform/game-agnostic/src/forge/scenarios-v2.js",
+     "platform/game-agnostic/src/forge/scenarios-v3.js",
+     "platform/game-agnostic/src/forge/scenarios.js",
+     "platform/game-agnostic/src/forge/soup-bridge.js",
+     "platform/game-agnostic/src/forge/supervision.js",
+     "platform/game-agnostic/src/forge/topology.js",
+     "platform/game-agnostic/src/forge/validators-v2.js",
+     "platform/game-agnostic/src/forge/validators.js",
+     "platform/game-agnostic/src/forge/warmup.js",
+     "platform/game-agnostic/src/lab/stage3c-learned-nexus.js",
+     "platform/game-agnostic/src/prime/root-puct.js",
+     "platform/game-agnostic/src/sdk/define-adapter.js",
+     "platform/game-agnostic/src/stage3f/causal-trace-v1.js",
+     "platform/game-agnostic/src/stage3f/counterfactual-veto-ledger-v1.js",
+     "platform/game-agnostic/src/stage3f/deployable-action-proposal-v1.js",
+     "platform/game-agnostic/src/stage3f/environment-calibration-v1.js",
+     "platform/game-agnostic/src/stage3f/free-action-sufficiency-v1.js",
+     "platform/game-agnostic/src/stage3f/nexus-relational-spatial-context-v1.js",
+     "platform/game-agnostic/src/stage3f/nexus-selector-v2-candidate.js",
+     "platform/game-agnostic/src/stage3f/policy-requalification-v1.js",
+     "platform/game-agnostic/src/stage3f/policy-router-v1.js",
+     "platform/game-agnostic/src/stage3f/prediction-reliability-corpus-v1.js",
+     "platform/game-agnostic/src/stage3f/prediction-reliability-v1.js",
+     "platform/game-agnostic/src/stage3f/world-state-v1.js",
+     "platform/game-agnostic/src/stage3g/action-semantics-v1.js",
+     "platform/game-agnostic/src/stage3g/deployable-action-model-v1.js",
+     "platform/game-agnostic/src/stage3g/epistemic-provenance-v1.js",
+     "platform/game-agnostic/src/stage3g/observable-action-surface-v1.js",
+     "platform/game-agnostic/src/stage3g/observable-entity-state-v1.js",
+     "platform/game-agnostic/src/stage3g7/target-eligibility-contract-v1.js",
+     "platform/game-agnostic/stage3g8/objective-progress-v1.mjs",
+     "platform/game-agnostic/stage3h-activation-readiness-v2/runner-design.mjs",
+     "platform/game-agnostic/stage3h-canonical-v1/adapters.mjs",
+     "platform/game-agnostic/stage3h-canonical-v1/baseline.mjs",
+     "platform/game-agnostic/stage3h-canonical-v1/evidence.mjs",
+     "platform/game-agnostic/stage3h-canonical-v1/metrics.mjs",
+     "platform/game-agnostic/stage3h-canonical-v1/nexus-selector-v1-port.mjs",
+     "platform/game-agnostic/stage3h-failure-diagnosis-v1/lib.mjs",
+     "platform/game-agnostic/stage3h-final-review-handoff/amendments/v3/runner.mjs",
+     "platform/game-agnostic/stage3h-hw1-dev-v1/transforms.mjs",
+     "platform/game-agnostic/stage3h-owner-governed-v1/identity-view-v2.mjs",
+     "platform/game-agnostic/stage3h-owner-governed-v1/identity-view.mjs"
+    ]
+   },
+   "exclusionAuthority": {
+    "roots": [
+     "platform/game-agnostic/stage3h-wider-action-feasibility-v1/exclusion/strict-index.mjs"
+    ],
+    "fileCount": 109,
+    "closureSha256": "69a6ac623ce9cdc7f653e88d409008bb44b663d077a9416c9be9b97305f11c9e",
+    "paths": [
+     "platform/game-agnostic/ascii-quality-v33_1/controllers-v33_1.mjs",
+     "platform/game-agnostic/ascii-quality-v33_1/guard.mjs",
+     "platform/game-agnostic/ascii-quality-v33_1/platformer-planner-v2.mjs",
+     "platform/game-agnostic/ascii-quality-v33_1/policy-v33_1.mjs",
+     "platform/game-agnostic/ascii-suite/controllers/fighter.mjs",
+     "platform/game-agnostic/ascii-suite/controllers/index.mjs",
+     "platform/game-agnostic/ascii-suite/controllers/platformer.mjs",
+     "platform/game-agnostic/ascii-suite/controllers/pong.mjs",
+     "platform/game-agnostic/ascii-suite/controllers/racing.mjs",
+     "platform/game-agnostic/ascii-suite/games.mjs",
+     "platform/game-agnostic/ascii-suite/prime.mjs",
+     "platform/game-agnostic/ascii-suite/training-dev-v1/candidate-v2/action-codec.mjs",
+     "platform/game-agnostic/ascii-suite/training-dev-v1/features.mjs",
+     "platform/game-agnostic/ascii-suite/training-dev-v1/model.mjs",
+     "platform/game-agnostic/ascii-suite/v21/freeze.mjs",
+     "platform/game-agnostic/ascii-suite/v3/common.mjs",
+     "platform/game-agnostic/ascii-suite/v3/controllers.mjs",
+     "platform/game-agnostic/ascii-suite/v3/factory-model.mjs",
+     "platform/game-agnostic/ascii-suite/v31/sentinel.mjs",
+     "platform/game-agnostic/ascii-suite/v32/codec-v2.mjs",
+     "platform/game-agnostic/ascii-suite/v32/policy.mjs",
+     "platform/game-agnostic/ascii-suite/v32/relational-features.mjs",
+     "platform/game-agnostic/ascii-suite/worlds/common.mjs",
+     "platform/game-agnostic/ascii-suite/worlds/fighter.mjs",
+     "platform/game-agnostic/ascii-suite/worlds/platformer.mjs",
+     "platform/game-agnostic/ascii-suite/worlds/pong.mjs",
+     "platform/game-agnostic/ascii-suite/worlds/racing.mjs",
+     "platform/game-agnostic/scripts/generate-stage3f6p1e-policy-evidence.mjs",
+     "platform/game-agnostic/scripts/stage3f6p1asym-evidence.mjs",
+     "platform/game-agnostic/scripts/stage3f6p1e-analysis-plan.mjs",
+     "platform/game-agnostic/scripts/stage3g/evidence.mjs",
+     "platform/game-agnostic/src/core/authority.js",
+     "platform/game-agnostic/src/core/constants.js",
+     "platform/game-agnostic/src/core/contracts.js",
+     "platform/game-agnostic/src/core/determinism.js",
+     "platform/game-agnostic/src/core/errors.js",
+     "platform/game-agnostic/src/core/recommendation.js",
+     "platform/game-agnostic/src/experts/expert-action-context.js",
+     "platform/game-agnostic/src/experts/expert-context.js",
+     "platform/game-agnostic/src/experts/expert-contract.js",
+     "platform/game-agnostic/src/experts/nexus.js",
+     "platform/game-agnostic/src/experts/oracle.js",
+     "platform/game-agnostic/src/forge-symmetric/action-surface-symmetric-v1.js",
+     "platform/game-agnostic/src/forge-symmetric/counterfactual-symmetric-v1.js",
+     "platform/game-agnostic/src/forge-symmetric/orientation-symmetric-v1.js",
+     "platform/game-agnostic/src/forge-symmetric/scenarios-symmetric-v1.js",
+     "platform/game-agnostic/src/forge/adapter.js",
+     "platform/game-agnostic/src/forge/contract.js",
+     "platform/game-agnostic/src/forge/counterfactual-v2.js",
+     "platform/game-agnostic/src/forge/counterfactual.js",
+     "platform/game-agnostic/src/forge/dataset-v2.js",
+     "platform/game-agnostic/src/forge/dataset.js",
+     "platform/game-agnostic/src/forge/export.js",
+     "platform/game-agnostic/src/forge/kernel.js",
+     "platform/game-agnostic/src/forge/oracle-surface.js",
+     "platform/game-agnostic/src/forge/render.js",
+     "platform/game-agnostic/src/forge/replay.js",
+     "platform/game-agnostic/src/forge/reward-v2.js",
+     "platform/game-agnostic/src/forge/scenarios-v2.js",
+     "platform/game-agnostic/src/forge/scenarios-v3.js",
+     "platform/game-agnostic/src/forge/scenarios.js",
+     "platform/game-agnostic/src/forge/soup-bridge.js",
+     "platform/game-agnostic/src/forge/supervision.js",
+     "platform/game-agnostic/src/forge/topology.js",
+     "platform/game-agnostic/src/forge/validators-v2.js",
+     "platform/game-agnostic/src/forge/validators.js",
+     "platform/game-agnostic/src/forge/warmup.js",
+     "platform/game-agnostic/src/lab/stage3c-learned-nexus.js",
+     "platform/game-agnostic/src/prime/root-puct.js",
+     "platform/game-agnostic/src/sdk/define-adapter.js",
+     "platform/game-agnostic/src/stage3f/causal-trace-v1.js",
+     "platform/game-agnostic/src/stage3f/counterfactual-veto-ledger-v1.js",
+     "platform/game-agnostic/src/stage3f/deployable-action-proposal-v1.js",
+     "platform/game-agnostic/src/stage3f/environment-calibration-v1.js",
+     "platform/game-agnostic/src/stage3f/free-action-sufficiency-v1.js",
+     "platform/game-agnostic/src/stage3f/nexus-relational-spatial-context-v1.js",
+     "platform/game-agnostic/src/stage3f/nexus-selector-v2-candidate.js",
+     "platform/game-agnostic/src/stage3f/policy-requalification-v1.js",
+     "platform/game-agnostic/src/stage3f/policy-router-v1.js",
+     "platform/game-agnostic/src/stage3f/prediction-reliability-corpus-v1.js",
+     "platform/game-agnostic/src/stage3f/prediction-reliability-v1.js",
+     "platform/game-agnostic/src/stage3f/world-state-v1.js",
+     "platform/game-agnostic/src/stage3g/action-semantics-v1.js",
+     "platform/game-agnostic/src/stage3g/deployable-action-model-v1.js",
+     "platform/game-agnostic/src/stage3g/epistemic-provenance-v1.js",
+     "platform/game-agnostic/src/stage3g/observable-action-surface-v1.js",
+     "platform/game-agnostic/src/stage3g/observable-entity-state-v1.js",
+     "platform/game-agnostic/src/stage3g7/target-eligibility-contract-v1.js",
+     "platform/game-agnostic/stage3g8/objective-progress-v1.mjs",
+     "platform/game-agnostic/stage3h-activation-readiness-v2/runner-design.mjs",
+     "platform/game-agnostic/stage3h-ascii-competence-v1/arms.mjs",
+     "platform/game-agnostic/stage3h-ascii-competence-v1/guard.mjs",
+     "platform/game-agnostic/stage3h-ascii-competence-v1/metrics.mjs",
+     "platform/game-agnostic/stage3h-ascii-competence-v1/population.mjs",
+     "platform/game-agnostic/stage3h-ascii-competence-v1/protocol.mjs",
+     "platform/game-agnostic/stage3h-canonical-v1/adapters.mjs",
+     "platform/game-agnostic/stage3h-canonical-v1/baseline.mjs",
+     "platform/game-agnostic/stage3h-canonical-v1/evidence.mjs",
+     "platform/game-agnostic/stage3h-canonical-v1/guard.mjs",
+     "platform/game-agnostic/stage3h-canonical-v1/metrics.mjs",
+     "platform/game-agnostic/stage3h-canonical-v1/nexus-selector-v1-port.mjs",
+     "platform/game-agnostic/stage3h-decision-value-closure/inherit.mjs",
+     "platform/game-agnostic/stage3h-final-review-handoff/amendments/v3/runner.mjs",
+     "platform/game-agnostic/stage3h-owner-governed-v1/allocate-namespaces-v4.mjs",
+     "platform/game-agnostic/stage3h-owner-governed-v1/connector.mjs",
+     "platform/game-agnostic/stage3h-owner-governed-v1/inherit.mjs",
+     "platform/game-agnostic/stage3h-owner-governed-v1/nuisance.mjs",
+     "platform/game-agnostic/stage3h-safety-feasibility-v1/closure/exclusions.mjs",
+     "platform/game-agnostic/stage3h-wider-action-feasibility-v1/exclusion/strict-index.mjs"
+    ]
+   },
+   "armStressSelection": {
+    "roots": [
+     "platform/game-agnostic/stage3h-safety-feasibility-v1/search.mjs"
+    ],
+    "fileCount": 74,
+    "closureSha256": "bc0ec0242a9ddc4f46c8ac2bd123dc8ffce0d8579b6983e7a6f135eb725bd306",
+    "paths": [
+     "platform/game-agnostic/scripts/generate-stage3f6p1e-policy-evidence.mjs",
+     "platform/game-agnostic/scripts/stage3f6p1asym-evidence.mjs",
+     "platform/game-agnostic/scripts/stage3f6p1e-analysis-plan.mjs",
+     "platform/game-agnostic/scripts/stage3g/evidence.mjs",
+     "platform/game-agnostic/src/core/authority.js",
+     "platform/game-agnostic/src/core/constants.js",
+     "platform/game-agnostic/src/core/contracts.js",
+     "platform/game-agnostic/src/core/determinism.js",
+     "platform/game-agnostic/src/core/errors.js",
+     "platform/game-agnostic/src/core/recommendation.js",
+     "platform/game-agnostic/src/experts/expert-action-context.js",
+     "platform/game-agnostic/src/experts/expert-context.js",
+     "platform/game-agnostic/src/experts/expert-contract.js",
+     "platform/game-agnostic/src/experts/nexus.js",
+     "platform/game-agnostic/src/experts/oracle.js",
+     "platform/game-agnostic/src/forge-symmetric/action-surface-symmetric-v1.js",
+     "platform/game-agnostic/src/forge-symmetric/counterfactual-symmetric-v1.js",
+     "platform/game-agnostic/src/forge-symmetric/orientation-symmetric-v1.js",
+     "platform/game-agnostic/src/forge-symmetric/scenarios-symmetric-v1.js",
+     "platform/game-agnostic/src/forge/adapter.js",
+     "platform/game-agnostic/src/forge/contract.js",
+     "platform/game-agnostic/src/forge/counterfactual-v2.js",
+     "platform/game-agnostic/src/forge/counterfactual.js",
+     "platform/game-agnostic/src/forge/dataset-v2.js",
+     "platform/game-agnostic/src/forge/dataset.js",
+     "platform/game-agnostic/src/forge/export.js",
+     "platform/game-agnostic/src/forge/kernel.js",
+     "platform/game-agnostic/src/forge/oracle-surface.js",
+     "platform/game-agnostic/src/forge/render.js",
+     "platform/game-agnostic/src/forge/replay.js",
+     "platform/game-agnostic/src/forge/reward-v2.js",
+     "platform/game-agnostic/src/forge/scenarios-v2.js",
+     "platform/game-agnostic/src/forge/scenarios-v3.js",
+     "platform/game-agnostic/src/forge/scenarios.js",
+     "platform/game-agnostic/src/forge/soup-bridge.js",
+     "platform/game-agnostic/src/forge/supervision.js",
+     "platform/game-agnostic/src/forge/topology.js",
+     "platform/game-agnostic/src/forge/validators-v2.js",
+     "platform/game-agnostic/src/forge/validators.js",
+     "platform/game-agnostic/src/forge/warmup.js",
+     "platform/game-agnostic/src/lab/stage3c-learned-nexus.js",
+     "platform/game-agnostic/src/prime/root-puct.js",
+     "platform/game-agnostic/src/sdk/define-adapter.js",
+     "platform/game-agnostic/src/stage3f/causal-trace-v1.js",
+     "platform/game-agnostic/src/stage3f/counterfactual-veto-ledger-v1.js",
+     "platform/game-agnostic/src/stage3f/deployable-action-proposal-v1.js",
+     "platform/game-agnostic/src/stage3f/environment-calibration-v1.js",
+     "platform/game-agnostic/src/stage3f/free-action-sufficiency-v1.js",
+     "platform/game-agnostic/src/stage3f/nexus-relational-spatial-context-v1.js",
+     "platform/game-agnostic/src/stage3f/nexus-selector-v2-candidate.js",
+     "platform/game-agnostic/src/stage3f/policy-requalification-v1.js",
+     "platform/game-agnostic/src/stage3f/policy-router-v1.js",
+     "platform/game-agnostic/src/stage3f/prediction-reliability-corpus-v1.js",
+     "platform/game-agnostic/src/stage3f/prediction-reliability-v1.js",
+     "platform/game-agnostic/src/stage3f/world-state-v1.js",
+     "platform/game-agnostic/src/stage3g/action-semantics-v1.js",
+     "platform/game-agnostic/src/stage3g/deployable-action-model-v1.js",
+     "platform/game-agnostic/src/stage3g/epistemic-provenance-v1.js",
+     "platform/game-agnostic/src/stage3g/observable-action-surface-v1.js",
+     "platform/game-agnostic/src/stage3g/observable-entity-state-v1.js",
+     "platform/game-agnostic/src/stage3g7/target-eligibility-contract-v1.js",
+     "platform/game-agnostic/stage3g8/objective-progress-v1.mjs",
+     "platform/game-agnostic/stage3h-activation-readiness-v2/runner-design.mjs",
+     "platform/game-agnostic/stage3h-canonical-v1/adapters.mjs",
+     "platform/game-agnostic/stage3h-canonical-v1/baseline.mjs",
+     "platform/game-agnostic/stage3h-canonical-v1/evidence.mjs",
+     "platform/game-agnostic/stage3h-canonical-v1/metrics.mjs",
+     "platform/game-agnostic/stage3h-canonical-v1/nexus-selector-v1-port.mjs",
+     "platform/game-agnostic/stage3h-failure-diagnosis-v1/h2-mechanism.mjs",
+     "platform/game-agnostic/stage3h-failure-diagnosis-v1/lib.mjs",
+     "platform/game-agnostic/stage3h-final-review-handoff/amendments/v3/runner.mjs",
+     "platform/game-agnostic/stage3h-safety-feasibility-v1/contract.mjs",
+     "platform/game-agnostic/stage3h-safety-feasibility-v1/search.mjs",
+     "platform/game-agnostic/stage3h-safety-feasibility-v1/twins.mjs"
+    ]
+   },
+   "publicObservation": {
+    "roots": [
+     "platform/game-agnostic/stage3h-safety-feasibility-v1/contract.mjs",
+     "platform/game-agnostic/scripts/stage3g/evidence.mjs"
+    ],
+    "fileCount": 59,
+    "closureSha256": "8d8a6a4158328b82f1f9e72304f8a322d94ade59281d1f0ea15659a0a2e93774",
+    "paths": [
+     "platform/game-agnostic/scripts/generate-stage3f6p1e-policy-evidence.mjs",
+     "platform/game-agnostic/scripts/stage3f6p1asym-evidence.mjs",
+     "platform/game-agnostic/scripts/stage3f6p1e-analysis-plan.mjs",
+     "platform/game-agnostic/scripts/stage3g/evidence.mjs",
+     "platform/game-agnostic/src/core/authority.js",
+     "platform/game-agnostic/src/core/constants.js",
+     "platform/game-agnostic/src/core/contracts.js",
+     "platform/game-agnostic/src/core/determinism.js",
+     "platform/game-agnostic/src/core/errors.js",
+     "platform/game-agnostic/src/core/recommendation.js",
+     "platform/game-agnostic/src/experts/expert-action-context.js",
+     "platform/game-agnostic/src/experts/expert-context.js",
+     "platform/game-agnostic/src/experts/expert-contract.js",
+     "platform/game-agnostic/src/experts/nexus.js",
+     "platform/game-agnostic/src/experts/oracle.js",
+     "platform/game-agnostic/src/forge-symmetric/action-surface-symmetric-v1.js",
+     "platform/game-agnostic/src/forge-symmetric/orientation-symmetric-v1.js",
+     "platform/game-agnostic/src/forge-symmetric/scenarios-symmetric-v1.js",
+     "platform/game-agnostic/src/forge/adapter.js",
+     "platform/game-agnostic/src/forge/contract.js",
+     "platform/game-agnostic/src/forge/counterfactual-v2.js",
+     "platform/game-agnostic/src/forge/counterfactual.js",
+     "platform/game-agnostic/src/forge/dataset-v2.js",
+     "platform/game-agnostic/src/forge/dataset.js",
+     "platform/game-agnostic/src/forge/export.js",
+     "platform/game-agnostic/src/forge/kernel.js",
+     "platform/game-agnostic/src/forge/oracle-surface.js",
+     "platform/game-agnostic/src/forge/render.js",
+     "platform/game-agnostic/src/forge/replay.js",
+     "platform/game-agnostic/src/forge/reward-v2.js",
+     "platform/game-agnostic/src/forge/scenarios-v2.js",
+     "platform/game-agnostic/src/forge/scenarios-v3.js",
+     "platform/game-agnostic/src/forge/scenarios.js",
+     "platform/game-agnostic/src/forge/soup-bridge.js",
+     "platform/game-agnostic/src/forge/supervision.js",
+     "platform/game-agnostic/src/forge/topology.js",
+     "platform/game-agnostic/src/forge/validators-v2.js",
+     "platform/game-agnostic/src/forge/validators.js",
+     "platform/game-agnostic/src/forge/warmup.js",
+     "platform/game-agnostic/src/lab/stage3c-learned-nexus.js",
+     "platform/game-agnostic/src/prime/root-puct.js",
+     "platform/game-agnostic/src/sdk/define-adapter.js",
+     "platform/game-agnostic/src/stage3f/causal-trace-v1.js",
+     "platform/game-agnostic/src/stage3f/counterfactual-veto-ledger-v1.js",
+     "platform/game-agnostic/src/stage3f/deployable-action-proposal-v1.js",
+     "platform/game-agnostic/src/stage3f/environment-calibration-v1.js",
+     "platform/game-agnostic/src/stage3f/free-action-sufficiency-v1.js",
+     "platform/game-agnostic/src/stage3f/nexus-relational-spatial-context-v1.js",
+     "platform/game-agnostic/src/stage3f/nexus-selector-v2-candidate.js",
+     "platform/game-agnostic/src/stage3f/policy-requalification-v1.js",
+     "platform/game-agnostic/src/stage3f/policy-router-v1.js",
+     "platform/game-agnostic/src/stage3f/prediction-reliability-corpus-v1.js",
+     "platform/game-agnostic/src/stage3f/prediction-reliability-v1.js",
+     "platform/game-agnostic/src/stage3f/world-state-v1.js",
+     "platform/game-agnostic/src/stage3g/action-semantics-v1.js",
+     "platform/game-agnostic/src/stage3g/epistemic-provenance-v1.js",
+     "platform/game-agnostic/src/stage3g/observable-entity-state-v1.js",
+     "platform/game-agnostic/stage3h-activation-readiness-v2/runner-design.mjs",
+     "platform/game-agnostic/stage3h-safety-feasibility-v1/contract.mjs"
+    ]
+   }
+  },
+  "nonLaneUniqueFiles": 118,
+  "nonLaneFilesSha256": "4b69abdea347185683baac9fb113885fdd905cb5d2046b04b1e9b7c30de234fc",
+  "nonLaneFiles": [
+   {
+    "path": "platform/game-agnostic/ascii-quality-v33_1/controllers-v33_1.mjs",
+    "bytes": 13959,
+    "sha256": "90c874781905a27a6971a307626e7d9cd4e59596649a06d442540fa95e2d9e85",
+    "gitBlob": "456d05f087ca9cf60df529ade8523c5f6059b1e3",
+    "sinceBase": "UNCHANGED_SINCE_BASE"
+   },
+   {
+    "path": "platform/game-agnostic/ascii-quality-v33_1/guard.mjs",
+    "bytes": 5062,
+    "sha256": "2993e9058dbfe5b18ce1a7c7efb08ebaeb2f4af9bd4715ea0ed69a90cbcf5919",
+    "gitBlob": "20812f6bedf9605afcf25e370a313e7c702b732f",
+    "sinceBase": "UNCHANGED_SINCE_BASE"
+   },
+   {
+    "path": "platform/game-agnostic/ascii-quality-v33_1/platformer-planner-v2.mjs",
+    "bytes": 20643,
+    "sha256": "a2e444ca1ac834abc10084838485418435b4375102380d88a94eaca062c63084",
+    "gitBlob": "508e46519e2530f7d17f24b2d2e3d036e5ca97c7",
+    "sinceBase": "UNCHANGED_SINCE_BASE"
+   },
+   {
+    "path": "platform/game-agnostic/ascii-quality-v33_1/policy-v33_1.mjs",
+    "bytes": 4455,
+    "sha256": "b184201921495c033ec802b819d2b9c4ec362e9e6bb9e2bbf9788798a4e3cc8c",
+    "gitBlob": "cf7a93b71b3c16bdbe6c2b6bdba1ac2ad15d30c5",
+    "sinceBase": "UNCHANGED_SINCE_BASE"
+   },
+   {
+    "path": "platform/game-agnostic/ascii-suite/controllers/fighter.mjs",
+    "bytes": 12775,
+    "sha256": "c676a49330eeffb28c8294c9b4246c80b29d159c4e81671a8392e9541448512e",
+    "protectedOverlay": true,
+    "matchesRecordedProtectedIdentity": true
+   },
+   {
+    "path": "platform/game-agnostic/ascii-suite/controllers/index.mjs",
+    "bytes": 6648,
+    "sha256": "5b7af1517ccaf6a448d593cc85a21e3957f77cb908972b3b69a9e2c939505af9",
+    "protectedOverlay": true,
+    "matchesRecordedProtectedIdentity": true
+   },
+   {
+    "path": "platform/game-agnostic/ascii-suite/controllers/platformer.mjs",
+    "bytes": 18340,
+    "sha256": "1682bdea63d2dd90d8c209da6c8ddc0e728708416c1a3a08922a0828e433cdbe",
+    "protectedOverlay": true,
+    "matchesRecordedProtectedIdentity": true
+   },
+   {
+    "path": "platform/game-agnostic/ascii-suite/controllers/pong.mjs",
+    "bytes": 9302,
+    "sha256": "8ec08a2d9b0a4728d0e0e1378c51d66481e5eed0f372894da611ef5883f56256",
+    "protectedOverlay": true,
+    "matchesRecordedProtectedIdentity": true
+   },
+   {
+    "path": "platform/game-agnostic/ascii-suite/controllers/racing.mjs",
+    "bytes": 8722,
+    "sha256": "b5e691377a060bc93077b9486604a45d7337233e8f6908674e382bd9a4c2c288",
+    "protectedOverlay": true,
+    "matchesRecordedProtectedIdentity": true
+   },
+   {
+    "path": "platform/game-agnostic/ascii-suite/games.mjs",
+    "bytes": 7240,
+    "sha256": "b952d1f7f1ffe6d3177c2a9459bf5f07e623a957789ebc0580d0b804a78c638d",
+    "protectedOverlay": true,
+    "matchesRecordedProtectedIdentity": true
+   },
+   {
+    "path": "platform/game-agnostic/ascii-suite/prime.mjs",
+    "bytes": 4365,
+    "sha256": "4876767179fcd5d6f0b7d377e4411a8fe134741dff5bd1b49559bd01627201a9",
+    "protectedOverlay": true,
+    "matchesRecordedProtectedIdentity": true
+   },
+   {
+    "path": "platform/game-agnostic/ascii-suite/training-dev-v1/candidate-v2/action-codec.mjs",
+    "bytes": 694,
+    "sha256": "6a96692de6ca5d6db9e3e0ba04726ec33a1cdcba5f9235b751380e0d507869d8",
+    "protectedOverlay": true,
+    "matchesRecordedProtectedIdentity": true
+   },
+   {
+    "path": "platform/game-agnostic/ascii-suite/training-dev-v1/features.mjs",
+    "bytes": 4837,
+    "sha256": "2d1e481f071ecb72420fb852ce3f191d1e4d2f1ae9666020557510942aa9f169",
+    "protectedOverlay": true,
+    "matchesRecordedProtectedIdentity": true
+   },
+   {
+    "path": "platform/game-agnostic/ascii-suite/training-dev-v1/model.mjs",
+    "bytes": 752,
+    "sha256": "3f588f2ce3bf8a437985850646f36b39bde245052078934b857b6ee9e3c9fa9c",
+    "protectedOverlay": true,
+    "matchesRecordedProtectedIdentity": true
+   },
+   {
+    "path": "platform/game-agnostic/ascii-suite/v21/freeze.mjs",
+    "bytes": 2626,
+    "sha256": "59b191c3c3c964db46e187f081ae2e8257e12b095475a6d58ec651be4a483ab4",
+    "protectedOverlay": true,
+    "matchesRecordedProtectedIdentity": true
+   },
+   {
+    "path": "platform/game-agnostic/ascii-suite/v3/common.mjs",
+    "bytes": 4880,
+    "sha256": "78497f78da83932973cd25564d97d32601473a7314c257b4683385975ba7858c",
+    "protectedOverlay": true,
+    "matchesRecordedProtectedIdentity": true
+   },
+   {
+    "path": "platform/game-agnostic/ascii-suite/v3/controllers.mjs",
+    "bytes": 13302,
+    "sha256": "1b10a927f2647b4a7119753a9eae3d8bbc31b20f22feff76eac7946ec0c19cce",
+    "protectedOverlay": true,
+    "matchesRecordedProtectedIdentity": true
+   },
+   {
+    "path": "platform/game-agnostic/ascii-suite/v3/factory-model.mjs",
+    "bytes": 2870,
+    "sha256": "7352c2e3ad90a8f6d65f586ca3199e4850dc68d7f739ab208ebb2e84ae54c4a6",
+    "protectedOverlay": true,
+    "matchesRecordedProtectedIdentity": true
+   },
+   {
+    "path": "platform/game-agnostic/ascii-suite/v31/sentinel.mjs",
+    "bytes": 3703,
+    "sha256": "d6db5c666238f4c4626493a067cbb41e3aa9af71e3e0cc3cbd730b9926c82917",
+    "protectedOverlay": true,
+    "matchesRecordedProtectedIdentity": true
+   },
+   {
+    "path": "platform/game-agnostic/ascii-suite/v32/codec-v2.mjs",
+    "bytes": 1802,
+    "sha256": "f7da0aba597b8e0ef5c8ca5c10be23b1dc5d8df7e99b08c63744b0683a8e0191",
+    "protectedOverlay": true,
+    "matchesRecordedProtectedIdentity": true
+   },
+   {
+    "path": "platform/game-agnostic/ascii-suite/v32/policy.mjs",
+    "bytes": 10386,
+    "sha256": "45f0a333db8cbccaa00a69337f4c94ea388ad9c49ef264580eba86e59cc3f60e",
+    "protectedOverlay": true,
+    "matchesRecordedProtectedIdentity": true
+   },
+   {
+    "path": "platform/game-agnostic/ascii-suite/v32/relational-features.mjs",
+    "bytes": 1949,
+    "sha256": "d9bedde42eac731947a70fd52fb445784a81f5592e715a69dd39d52672886fcf",
+    "protectedOverlay": true,
+    "matchesRecordedProtectedIdentity": true
+   },
+   {
+    "path": "platform/game-agnostic/ascii-suite/worlds/common.mjs",
+    "bytes": 1314,
+    "sha256": "1b9280830c99fe30397c8e0c3860589e092a79aec5188e4c84f1634c2b437236",
+    "protectedOverlay": true,
+    "matchesRecordedProtectedIdentity": true
+   },
+   {
+    "path": "platform/game-agnostic/ascii-suite/worlds/fighter.mjs",
+    "bytes": 22152,
+    "sha256": "9367f528ab66add0aaa2389a7e8c86980a8c42d9d601d25857d0ac8d7c5f3af5",
+    "protectedOverlay": true,
+    "matchesRecordedProtectedIdentity": true
+   },
+   {
+    "path": "platform/game-agnostic/ascii-suite/worlds/platformer.mjs",
+    "bytes": 14166,
+    "sha256": "5c869ab10bf14dcd48bc188d73b747b5b765823c464d782479f42f4d6d5dc909",
+    "protectedOverlay": true,
+    "matchesRecordedProtectedIdentity": true
+   },
+   {
+    "path": "platform/game-agnostic/ascii-suite/worlds/pong.mjs",
+    "bytes": 9140,
+    "sha256": "35d1c991d5e478101aa4f614f12574d054eeac629d498f33ea947f29b6ad79ec",
+    "protectedOverlay": true,
+    "matchesRecordedProtectedIdentity": true
+   },
+   {
+    "path": "platform/game-agnostic/ascii-suite/worlds/racing.mjs",
+    "bytes": 14744,
+    "sha256": "b9fa9b45e6e1fa575dcd833b692ec8ed25868a0b4a08e9ab020976f6f1464fd7",
+    "protectedOverlay": true,
+    "matchesRecordedProtectedIdentity": true
+   },
+   {
+    "path": "platform/game-agnostic/scripts/generate-stage3f6p1e-policy-evidence.mjs",
+    "bytes": 13189,
+    "sha256": "2932759e703fa2d9f67ab82b64861daab025b0fddb91a02fce18962b870c365f",
+    "gitBlob": "931da0b9a8328b63d090a8300cdc58f203eacb3c",
+    "sinceBase": "UNCHANGED_SINCE_BASE"
+   },
+   {
+    "path": "platform/game-agnostic/scripts/stage3f6p1asym-evidence.mjs",
+    "bytes": 6291,
+    "sha256": "64008f4ce72492448561eee9eaad42af210c6ad00c8d366f7d6354018fc93bc6",
+    "gitBlob": "0e8b1b78d85e3b04080a52b24cd39be2938b9b16",
+    "sinceBase": "UNCHANGED_SINCE_BASE"
+   },
+   {
+    "path": "platform/game-agnostic/scripts/stage3f6p1e-analysis-plan.mjs",
+    "bytes": 18557,
+    "sha256": "fc79c7ac581bbd045f5b5d0ab9e5b79012f3adb16a5ae2d4693734d4e8f238bd",
+    "gitBlob": "6bfb39dce7940dc58deb42f0841db6dd44934a33",
+    "sinceBase": "UNCHANGED_SINCE_BASE"
+   },
+   {
+    "path": "platform/game-agnostic/scripts/stage3g/evidence.mjs",
+    "bytes": 12339,
+    "sha256": "02513b4973b738760ae0c651284d1f1afdefd64fff57cdd3b27483bc81ae5f4c",
+    "gitBlob": "7124cdaa17b3eaaa528dd974fc40f3f536ecc4e9",
+    "sinceBase": "UNCHANGED_SINCE_BASE"
+   },
+   {
+    "path": "platform/game-agnostic/src/core/authority.js",
+    "bytes": 1688,
+    "sha256": "fa622b39e80fd8808aefa41b4f4525d28bc778f7c3c19db046ee72648e1f2ee8",
+    "gitBlob": "b5a94b4b928af73521023de55f9c25758c69740f",
+    "sinceBase": "UNCHANGED_SINCE_BASE"
+   },
+   {
+    "path": "platform/game-agnostic/src/core/constants.js",
+    "bytes": 644,
+    "sha256": "e0e274626586c4c250249f6c7ea0f7ad743637baf37f44f393ae158ed4da5eb4",
+    "gitBlob": "f538b7367b4b2caef21958cafd4385468efa0bcd",
+    "sinceBase": "UNCHANGED_SINCE_BASE"
+   },
+   {
+    "path": "platform/game-agnostic/src/core/contracts.js",
+    "bytes": 9903,
+    "sha256": "1215a623f553c7c155d60978387a5f9cf42c450733afb9c4dce44b7180df001a",
+    "gitBlob": "c0ddf1070995cda0150160c9c2f04c52b7453429",
+    "sinceBase": "UNCHANGED_SINCE_BASE"
+   },
+   {
+    "path": "platform/game-agnostic/src/core/determinism.js",
+    "bytes": 4882,
+    "sha256": "06bba4bb8c1018097a684961921eea1c8ed0d7e011252d55fb2705eb3f503bc5",
+    "gitBlob": "14929a719b045904db64e59e504565829a43e85c",
+    "sinceBase": "UNCHANGED_SINCE_BASE"
+   },
+   {
+    "path": "platform/game-agnostic/src/core/errors.js",
+    "bytes": 499,
+    "sha256": "cf512a3659125dc877c721bd295c8f67ef01e9eac5e12cfd59bf234bc09e8c59",
+    "gitBlob": "a2085d765d8833d0ee64b194441183f563624286",
+    "sinceBase": "UNCHANGED_SINCE_BASE"
+   },
+   {
+    "path": "platform/game-agnostic/src/core/recommendation.js",
+    "bytes": 2523,
+    "sha256": "20cf8d3033d9dc9a75be947ec20ab51b1f722cc29f998d23a00e7095c4d2b4af",
+    "gitBlob": "87b5b49bc7f37bcb1701435e30bc7da61876c2a4",
+    "sinceBase": "UNCHANGED_SINCE_BASE"
+   },
+   {
+    "path": "platform/game-agnostic/src/experts/expert-action-context.js",
+    "bytes": 22830,
+    "sha256": "ae5f5c2a06551274c3b76d0e07e22d1b77c3a106737ffd1545b7204dfcf616c3",
+    "gitBlob": "528f33b716262937f9b3b452ab64f394dbfda154",
+    "sinceBase": "UNCHANGED_SINCE_BASE"
+   },
+   {
+    "path": "platform/game-agnostic/src/experts/expert-context.js",
+    "bytes": 15160,
+    "sha256": "1a8e0f967533145e0e9e4abde0a90ac539c9f3cd9583c8c16bd9b7a18e9020ff",
+    "gitBlob": "647ec76c2811e795761d9a615aa3cbb1ad50fe5b",
+    "sinceBase": "UNCHANGED_SINCE_BASE"
+   },
+   {
+    "path": "platform/game-agnostic/src/experts/expert-contract.js",
+    "bytes": 15200,
+    "sha256": "2d1c9da6e383744f4a23204bf9f210b3a879765630d170d9b4e25d3375c2ce7a",
+    "gitBlob": "14258fbbbddac7bea78c6aeea8a29fa6c9aec874",
+    "sinceBase": "UNCHANGED_SINCE_BASE"
+   },
+   {
+    "path": "platform/game-agnostic/src/experts/nexus.js",
+    "bytes": 10624,
+    "sha256": "7a6e194b1b97221fc9e2a15cc9f1885c0858ab50d784bdf81e5cbc58de70a144",
+    "gitBlob": "0cb18043cf2c1d4915e6d9eb13d27fc595db5c4b",
+    "sinceBase": "UNCHANGED_SINCE_BASE"
+   },
+   {
+    "path": "platform/game-agnostic/src/experts/oracle.js",
+    "bytes": 8621,
+    "sha256": "ce50bcc3a9d5c56f5c3d9986710609af5bc2c5e4ece9b73fc739a65f87b8373a",
+    "gitBlob": "5818daad1676d3e10257f1d8285c8926a2534d2e",
+    "sinceBase": "UNCHANGED_SINCE_BASE"
+   },
+   {
+    "path": "platform/game-agnostic/src/forge-symmetric/action-surface-symmetric-v1.js",
+    "bytes": 5696,
+    "sha256": "a446d8e690a659674e0da3ec9346f3ec2fb38adddd2aaac529b8fdf77258eb62",
+    "gitBlob": "112f3cb8780629a3514c89734d30b0f53c38dafa",
+    "sinceBase": "UNCHANGED_SINCE_BASE"
+   },
+   {
+    "path": "platform/game-agnostic/src/forge-symmetric/counterfactual-symmetric-v1.js",
+    "bytes": 7673,
+    "sha256": "4f7fe3d8fd011b97021328747345526aa744adf988e2300b5fde122677ce8fa7",
+    "gitBlob": "b6f43d4680e40878ba26dd6d5d6609c4422e611a",
+    "sinceBase": "UNCHANGED_SINCE_BASE"
+   },
+   {
+    "path": "platform/game-agnostic/src/forge-symmetric/orientation-symmetric-v1.js",
+    "bytes": 7594,
+    "sha256": "3fd13729bfb0db4e2a09f48ceba39cce30b03b398e6bec7e6570182be028c5b1",
+    "gitBlob": "106c79914b6fb9d16c3da9bef5db8fd3fec622d0",
+    "sinceBase": "UNCHANGED_SINCE_BASE"
+   },
+   {
+    "path": "platform/game-agnostic/src/forge-symmetric/scenarios-symmetric-v1.js",
+    "bytes": 3768,
+    "sha256": "3274b434ab6ab6f55d04cd964e94e8056322b1ea8b818adffa8348d6a514035e",
+    "gitBlob": "d8fa4acd72737aa7eb3c34f1b61ab22170ad0da8",
+    "sinceBase": "UNCHANGED_SINCE_BASE"
+   },
+   {
+    "path": "platform/game-agnostic/src/forge/adapter.js",
+    "bytes": 7358,
+    "sha256": "9185c56147357435a46d4df77eefe969bc3753a97f73b5490dd9689bf53b3ba0",
+    "gitBlob": "79a109c32e124639d0893054833caabff69796cd",
+    "sinceBase": "UNCHANGED_SINCE_BASE"
+   },
+   {
+    "path": "platform/game-agnostic/src/forge/contract.js",
+    "bytes": 16440,
+    "sha256": "07b4bc10a6daca7509b39e4cad1cbc39ef2d10031cf08d1b91d31234bae801d6",
+    "gitBlob": "a178ecfdc2c8091ba34b4a46395875e77720da31",
+    "sinceBase": "UNCHANGED_SINCE_BASE"
+   },
+   {
+    "path": "platform/game-agnostic/src/forge/counterfactual-v2.js",
+    "bytes": 11652,
+    "sha256": "3eb25964dd1088ce8c67e116176221eae9d438ded20db608ffe6a5121b0a0b1e",
+    "gitBlob": "033ba0868e36455724e88bf70c3f970c98856bce",
+    "sinceBase": "UNCHANGED_SINCE_BASE"
+   },
+   {
+    "path": "platform/game-agnostic/src/forge/counterfactual.js",
+    "bytes": 7408,
+    "sha256": "e90af5e76cf48315aae0f64f337c809991906864034facb229508d1bd92a46d7",
+    "gitBlob": "dfbc4e52659223277f4e0e38c4ed9aece70dfa96",
+    "sinceBase": "UNCHANGED_SINCE_BASE"
+   },
+   {
+    "path": "platform/game-agnostic/src/forge/dataset-v2.js",
+    "bytes": 4263,
+    "sha256": "2017051859bdda719ce33e2f1143cb4c814a2ee8b16aa1617e48a0d87f5b48cf",
+    "gitBlob": "3d437fed1b5b2b07163d2f2290c6ab242fe48395",
+    "sinceBase": "UNCHANGED_SINCE_BASE"
+   },
+   {
+    "path": "platform/game-agnostic/src/forge/dataset.js",
+    "bytes": 19550,
+    "sha256": "0769d596f9a4b3fd44a9ab6af2d172894a2bff4c1c518e8014d9d7a19cc52e49",
+    "gitBlob": "4b8c64b14035f0cee48d745859486b23f3ee3615",
+    "sinceBase": "UNCHANGED_SINCE_BASE"
+   },
+   {
+    "path": "platform/game-agnostic/src/forge/export.js",
+    "bytes": 8109,
+    "sha256": "c4f0d6277f367c5f309a67a68eb277c57ed596c915ccfa5a2950ca80da460180",
+    "gitBlob": "58eab0ee1a108501336e86086130edda0d705220",
+    "sinceBase": "UNCHANGED_SINCE_BASE"
+   },
+   {
+    "path": "platform/game-agnostic/src/forge/kernel.js",
+    "bytes": 27655,
+    "sha256": "f9c807ebed80ff1c2e2a47115b62525f9dac94b6c41af9d66e1903c3b7b209b7",
+    "gitBlob": "195abafe5ab19bff7ed185793f41712a2ffdada5",
+    "sinceBase": "UNCHANGED_SINCE_BASE"
+   },
+   {
+    "path": "platform/game-agnostic/src/forge/oracle-surface.js",
+    "bytes": 3082,
+    "sha256": "6fa79d5eec209895f950e04a25fd9d8e9f370d12033b52a06724138ff0557a35",
+    "gitBlob": "27c1beb6757f9484d73ab85d21d9b143a08a5ebe",
+    "sinceBase": "UNCHANGED_SINCE_BASE"
+   },
+   {
+    "path": "platform/game-agnostic/src/forge/render.js",
+    "bytes": 3818,
+    "sha256": "823318dc6abbfa867a32582805d3f5eac6b28c67660d0fea9e67022c2604df4e",
+    "gitBlob": "deded2d440054d69faa925d5228eb178eb355dc9",
+    "sinceBase": "UNCHANGED_SINCE_BASE"
+   },
+   {
+    "path": "platform/game-agnostic/src/forge/replay.js",
+    "bytes": 6277,
+    "sha256": "7ddd38d0b93c0f91c8f87acdae6408f3f7b611e0c4f624524c72097bb3f91158",
+    "gitBlob": "8f38b49255ef4c0851aceaacf7f5472c682280da",
+    "sinceBase": "UNCHANGED_SINCE_BASE"
+   },
+   {
+    "path": "platform/game-agnostic/src/forge/reward-v2.js",
+    "bytes": 10919,
+    "sha256": "8e31eb360c51837868132827b9c02e512ddd6ac1c892612242b1ed383feb74c0",
+    "gitBlob": "fd69754e8487943827d9bfc48a1df08c54d58e34",
+    "sinceBase": "UNCHANGED_SINCE_BASE"
+   },
+   {
+    "path": "platform/game-agnostic/src/forge/scenarios-v2.js",
+    "bytes": 17124,
+    "sha256": "c50c380eae9c37c0ee8d1a00e5e9736ae2f5dfaab814e1e8ec0d048d4e0c314a",
+    "gitBlob": "bc57af46cfe86d35b4ead5596f11febc783c654a",
+    "sinceBase": "UNCHANGED_SINCE_BASE"
+   },
+   {
+    "path": "platform/game-agnostic/src/forge/scenarios-v3.js",
+    "bytes": 9004,
+    "sha256": "f990f2249c2390305cec7b690b4ea3ae1dd0bb11622d4d1cd37e33fa99c337e8",
+    "gitBlob": "e86c0750893db83ffce277b9b9223123d65e4177",
+    "sinceBase": "UNCHANGED_SINCE_BASE"
+   },
+   {
+    "path": "platform/game-agnostic/src/forge/scenarios.js",
+    "bytes": 23408,
+    "sha256": "e5549cad32da129dcd37bdd8d9fd5226029a9f0b165220227b3307061e481e5f",
+    "gitBlob": "cabcd0feb54fde05a47414f46b1b9c0c66c7766a",
+    "sinceBase": "UNCHANGED_SINCE_BASE"
+   },
+   {
+    "path": "platform/game-agnostic/src/forge/soup-bridge.js",
+    "bytes": 15139,
+    "sha256": "b892f85ac2e8f21cd3c2b4c8e368aab57808e3c60578045099a2cbdb1947b00b",
+    "gitBlob": "8f0b99099b2744a233588100c0f0d7821dfbde8a",
+    "sinceBase": "UNCHANGED_SINCE_BASE"
+   },
+   {
+    "path": "platform/game-agnostic/src/forge/supervision.js",
+    "bytes": 16863,
+    "sha256": "0a21ecf9eb757f26c1c7932c4c38494561b2f6db1f3a3e9c2e58dca55a07025d",
+    "gitBlob": "b5954244561a6e8638decec67ea642263622d949",
+    "sinceBase": "UNCHANGED_SINCE_BASE"
+   },
+   {
+    "path": "platform/game-agnostic/src/forge/topology.js",
+    "bytes": 12954,
+    "sha256": "364c07720d9393abdc530bce5b97a3014f8c27aa5813188268cb4ea1176af311",
+    "gitBlob": "d73d7f5bdc7176711970ddb4c3dc35bfdcb4fb47",
+    "sinceBase": "UNCHANGED_SINCE_BASE"
+   },
+   {
+    "path": "platform/game-agnostic/src/forge/validators-v2.js",
+    "bytes": 12399,
+    "sha256": "8dfb8c507887a3f3b996b8aca23c23248aaba0a2d8467c3bc0097d4639b747d9",
+    "gitBlob": "52567d22a85ecf44ed16e465282234bfdee593de",
+    "sinceBase": "UNCHANGED_SINCE_BASE"
+   },
+   {
+    "path": "platform/game-agnostic/src/forge/validators.js",
+    "bytes": 26122,
+    "sha256": "bb388403ea8e8b873788a15a9e85b3b419237c197e8acd2aa68f47392174a6db",
+    "gitBlob": "3d2eeb30fdabb55337bd67ce36b25378a21c4f4d",
+    "sinceBase": "UNCHANGED_SINCE_BASE"
+   },
+   {
+    "path": "platform/game-agnostic/src/forge/warmup.js",
+    "bytes": 23550,
+    "sha256": "d6fc447a263de423f09ebcf1b5806e71d3af7df642df1dd9e0ade77206b82d97",
+    "gitBlob": "b69d829dbb490de2fcaf99ddb905920ab0fc2ca2",
+    "sinceBase": "UNCHANGED_SINCE_BASE"
+   },
+   {
+    "path": "platform/game-agnostic/src/lab/stage3c-learned-nexus.js",
+    "bytes": 33516,
+    "sha256": "aae20d1d40b1cc5f93b5b46dd700f1ef1f66ea0ec44507efc4c4cfecba198574",
+    "gitBlob": "29bf42fc30fa83f567b15a9f50abc69851075ebb",
+    "sinceBase": "UNCHANGED_SINCE_BASE"
+   },
+   {
+    "path": "platform/game-agnostic/src/prime/root-puct.js",
+    "bytes": 7054,
+    "sha256": "93b62027a77088690027201d3ed05ead8f8f50f77e44a37bca6237070e2148fc",
+    "gitBlob": "c0182c64397fa29dbddf0ee728715b58b53abd1e",
+    "sinceBase": "UNCHANGED_SINCE_BASE"
+   },
+   {
+    "path": "platform/game-agnostic/src/sdk/define-adapter.js",
+    "bytes": 170,
+    "sha256": "f5da872fa40214713b417ff40e8a5df648b52e869d9bd58bf7c0e0744239b9be",
+    "gitBlob": "c8f765c2d6f7349e9c4be1ead75b0741cfd31589",
+    "sinceBase": "UNCHANGED_SINCE_BASE"
+   },
+   {
+    "path": "platform/game-agnostic/src/stage3f/causal-trace-v1.js",
+    "bytes": 39011,
+    "sha256": "78388a00b2bedfc9689a5d9f51d0cbc04be9cf7f09774aedee762c100cd06f87",
+    "gitBlob": "7484fa1f57c023153110d0895843fdc135b4ee80",
+    "sinceBase": "UNCHANGED_SINCE_BASE"
+   },
+   {
+    "path": "platform/game-agnostic/src/stage3f/counterfactual-veto-ledger-v1.js",
+    "bytes": 33552,
+    "sha256": "ce0dd3927cb3a89abeadfd501bc6294e02fdebf40f051f72b0bf9153475cf373",
+    "gitBlob": "caf6c93f4f47b7715397bf310fb06e228f9f4c33",
+    "sinceBase": "UNCHANGED_SINCE_BASE"
+   },
+   {
+    "path": "platform/game-agnostic/src/stage3f/deployable-action-proposal-v1.js",
+    "bytes": 12737,
+    "sha256": "b20b7d04e797f53412a64da4e68da519045d39d0524b96cc900888dc669f58c4",
+    "gitBlob": "594986703a20f1032fe5fbd8b8d55fdaf5a6f993",
+    "sinceBase": "UNCHANGED_SINCE_BASE"
+   },
+   {
+    "path": "platform/game-agnostic/src/stage3f/environment-calibration-v1.js",
+    "bytes": 40709,
+    "sha256": "ff05ced2470c6918a5cd2d5eb7ab9591df46483cbe2d38a504046645a45ea872",
+    "gitBlob": "833bf86825ff6e7d22c66cbb67473f0304148e9c",
+    "sinceBase": "UNCHANGED_SINCE_BASE"
+   },
+   {
+    "path": "platform/game-agnostic/src/stage3f/free-action-sufficiency-v1.js",
+    "bytes": 20586,
+    "sha256": "e4e57840e0f1a9abc0d5c8e0e91bce767761620063b2fc6f6eb14d2de924d5b7",
+    "gitBlob": "a7b19a1d08346b4a99737e18c1de709704ba2d6f",
+    "sinceBase": "UNCHANGED_SINCE_BASE"
+   },
+   {
+    "path": "platform/game-agnostic/src/stage3f/nexus-relational-spatial-context-v1.js",
+    "bytes": 14277,
+    "sha256": "6a66f4d8898fee0be039a815542a9b4487ad017637998ee7785938b0b584c6c6",
+    "gitBlob": "f38f144b889b435f6c5210631c09cd966a6a4346",
+    "sinceBase": "UNCHANGED_SINCE_BASE"
+   },
+   {
+    "path": "platform/game-agnostic/src/stage3f/nexus-selector-v2-candidate.js",
+    "bytes": 9832,
+    "sha256": "965cb36f003045a5f80e0e9860c03b99db0d427bdd1768d5fc33ec72e2581577",
+    "gitBlob": "27bc2d859b6a75e60e2e37c97cddcb3357652751",
+    "sinceBase": "UNCHANGED_SINCE_BASE"
+   },
+   {
+    "path": "platform/game-agnostic/src/stage3f/policy-requalification-v1.js",
+    "bytes": 9885,
+    "sha256": "44d216fe933dd15b31b6611684af776f2318e9ba2b08cadb518bd4fe832ceae0",
+    "gitBlob": "bf306a08da9e331639840570bbd1a2a08b4cdc38",
+    "sinceBase": "UNCHANGED_SINCE_BASE"
+   },
+   {
+    "path": "platform/game-agnostic/src/stage3f/policy-router-v1.js",
+    "bytes": 16650,
+    "sha256": "ab23d2333d11da690a57dccfbc077944a1a68237db952dd158e8d9362a68a7a7",
+    "gitBlob": "d793ffe2619ab6749ae7724b79209f5cb45ca86b",
+    "sinceBase": "UNCHANGED_SINCE_BASE"
+   },
+   {
+    "path": "platform/game-agnostic/src/stage3f/prediction-reliability-corpus-v1.js",
+    "bytes": 3169,
+    "sha256": "eab1654e48f2cbf4140e79601e23715af055ca3bb62e476063206859dbefa57e",
+    "gitBlob": "eb6f3c2034272600baab077ed64fdd19448d5144",
+    "sinceBase": "UNCHANGED_SINCE_BASE"
+   },
+   {
+    "path": "platform/game-agnostic/src/stage3f/prediction-reliability-v1.js",
+    "bytes": 63670,
+    "sha256": "8ed40e8e166e074bd0333142977f35f8fd44886114c78a577ffbbddc64e90848",
+    "gitBlob": "a1534cff8b5b22c08516c34913a31cb55aaae4c5",
+    "sinceBase": "UNCHANGED_SINCE_BASE"
+   },
+   {
+    "path": "platform/game-agnostic/src/stage3f/world-state-v1.js",
+    "bytes": 12574,
+    "sha256": "dbc44bffa01dc58b13d94ef34fbcbd1d35815859fafdfe62b55cf428003d9380",
+    "gitBlob": "313449d915979c424e4db312020de2830d03fadb",
+    "sinceBase": "UNCHANGED_SINCE_BASE"
+   },
+   {
+    "path": "platform/game-agnostic/src/stage3g/action-semantics-v1.js",
+    "bytes": 16735,
+    "sha256": "edfbff80e683a71ef1ba7a6bc87350a2f1c9a378526c311779806f856e4ab03e",
+    "gitBlob": "69cbd49ab737fbc9808c8999042b69b056961291",
+    "sinceBase": "UNCHANGED_SINCE_BASE"
+   },
+   {
+    "path": "platform/game-agnostic/src/stage3g/deployable-action-model-v1.js",
+    "bytes": 6302,
+    "sha256": "755dfad99bdf7fe0dfc11607f91ea22b833f43b1b96a5f0bdd3bd0f089eb7597",
+    "gitBlob": "4d32cb7757cf4cd156c9a580a43a3f3db25415ce",
+    "sinceBase": "UNCHANGED_SINCE_BASE"
+   },
+   {
+    "path": "platform/game-agnostic/src/stage3g/epistemic-provenance-v1.js",
+    "bytes": 32327,
+    "sha256": "a7301b542bb91ee6002936a8914cb3a40c7bf810d788e0f4dc001d3085121395",
+    "gitBlob": "a2100f2bcd2c2da1271a61443875c1b1d604c1ec",
+    "sinceBase": "UNCHANGED_SINCE_BASE"
+   },
+   {
+    "path": "platform/game-agnostic/src/stage3g/observable-action-surface-v1.js",
+    "bytes": 10525,
+    "sha256": "cd24822a6ec6d5e0b6f0322d8b4d511c2a0b31ce57d573d237bad3b3f80f2e43",
+    "gitBlob": "2aff11fff9ccaaf9ad9baf8445dc93b2bca712e8",
+    "sinceBase": "UNCHANGED_SINCE_BASE"
+   },
+   {
+    "path": "platform/game-agnostic/src/stage3g/observable-entity-state-v1.js",
+    "bytes": 18910,
+    "sha256": "6441710879d5b0dcf603c9811fd37cbdf76ee78e4cfbf7ad45bc2e613e868cca",
+    "gitBlob": "4d42747501bc940bb8db55cef0fd6ea031ed98e2",
+    "sinceBase": "UNCHANGED_SINCE_BASE"
+   },
+   {
+    "path": "platform/game-agnostic/src/stage3g7/target-eligibility-contract-v1.js",
+    "bytes": 10514,
+    "sha256": "0bd72759a5ca8024a4302d894f6e825666f6772d9ecd9d42c396093be0e16bdc",
+    "gitBlob": "043f2c21b10c491e0f5dd7e0507fb41cb72dd804",
+    "sinceBase": "UNCHANGED_SINCE_BASE"
+   },
+   {
+    "path": "platform/game-agnostic/stage3g8/objective-progress-v1.mjs",
+    "bytes": 5464,
+    "sha256": "91d651f8406e1a0d3b3d51d922d5b0ddd5799e6c1d4bc4cd089505e837bd50a1",
+    "gitBlob": "5eaaf751290427849f08cd732cb8869cb78a02d7",
+    "sinceBase": "UNCHANGED_SINCE_BASE"
+   },
+   {
+    "path": "platform/game-agnostic/stage3h-activation-readiness-v2/runner-design.mjs",
+    "bytes": 6448,
+    "sha256": "acdfd7e2293b6af8c85656d3c6de1adfd5646c7dc9e3295b3422717b5d3aa13c",
+    "gitBlob": "78aa49c3545248336e7b146e0cda322522d316f7",
+    "sinceBase": "UNCHANGED_SINCE_BASE"
+   },
+   {
+    "path": "platform/game-agnostic/stage3h-ascii-competence-v1/arms.mjs",
+    "bytes": 9997,
+    "sha256": "4999e58a3c854e4945a6862346e800132c545ee36071e1f0b10182bad40227a9",
+    "gitBlob": "b7416201e751d82a16ff67c2f92fab75eb76f116",
+    "sinceBase": "UNCHANGED_SINCE_BASE"
+   },
+   {
+    "path": "platform/game-agnostic/stage3h-ascii-competence-v1/guard.mjs",
+    "bytes": 7014,
+    "sha256": "f802d63a5485a29d6351e0ba83dccdd38022d79a51e7d1d092b3efa14c3f1df5",
+    "gitBlob": "b1515d6f627c5ee47406213642187956c0f6c559",
+    "sinceBase": "UNCHANGED_SINCE_BASE"
+   },
+   {
+    "path": "platform/game-agnostic/stage3h-ascii-competence-v1/metrics.mjs",
+    "bytes": 9200,
+    "sha256": "e03826f3c1828ebabb8a7eebba94917e6fa324a3624d4cf972310837c801eeb6",
+    "gitBlob": "e25c6b7c2ee92605512a2f1bd9c710c6d7e73ed9",
+    "sinceBase": "UNCHANGED_SINCE_BASE"
+   },
+   {
+    "path": "platform/game-agnostic/stage3h-ascii-competence-v1/population.mjs",
+    "bytes": 3489,
+    "sha256": "e9b25efd41e8f25186f012cc2204fe9f96671b1612483ee2fd30e064c5615af8",
+    "gitBlob": "79b92dcdc829b35be7fc8ccb6b4437b9091d48ab",
+    "sinceBase": "UNCHANGED_SINCE_BASE"
+   },
+   {
+    "path": "platform/game-agnostic/stage3h-ascii-competence-v1/protocol.mjs",
+    "bytes": 9602,
+    "sha256": "c3affb9c5806797f3c6ff35be191d1095de210546196ca3dbc07fa4519e1b419",
+    "gitBlob": "f1d3121dcd214bb2daf68df5a7f50c1c30512749",
+    "sinceBase": "UNCHANGED_SINCE_BASE"
+   },
+   {
+    "path": "platform/game-agnostic/stage3h-canonical-v1/adapters.mjs",
+    "bytes": 5213,
+    "sha256": "28ec69650b65b2365c2382eee6f2fe73e42ee0fb343cda9e96f73c9679c50501",
+    "protectedOverlay": true,
+    "matchesRecordedProtectedIdentity": true
+   },
+   {
+    "path": "platform/game-agnostic/stage3h-canonical-v1/baseline.mjs",
+    "bytes": 1264,
+    "sha256": "7c6471ca9d7eac93dc5334bb01bb2b1f248ca8adb0ed8c1239e7e2629f98caeb",
+    "protectedOverlay": true,
+    "matchesRecordedProtectedIdentity": true
+   },
+   {
+    "path": "platform/game-agnostic/stage3h-canonical-v1/evidence.mjs",
+    "bytes": 4187,
+    "sha256": "2dff64e7bdb14bf95f67bd25e563be109b39a9ac78c4a6f5577588a83cf0618a",
+    "protectedOverlay": true,
+    "matchesRecordedProtectedIdentity": true
+   },
+   {
+    "path": "platform/game-agnostic/stage3h-canonical-v1/guard.mjs",
+    "bytes": 2341,
+    "sha256": "4f86edba7b0814a6b5f3edd54ec4642df0a6037b5b803a767ddd98a0dae72163",
+    "protectedOverlay": true,
+    "matchesRecordedProtectedIdentity": true
+   },
+   {
+    "path": "platform/game-agnostic/stage3h-canonical-v1/metrics.mjs",
+    "bytes": 2486,
+    "sha256": "a018938eed4f6b11fa383674d41f098304a2bd39441de5516a26345ebf396ecc",
+    "protectedOverlay": true,
+    "matchesRecordedProtectedIdentity": true
+   },
+   {
+    "path": "platform/game-agnostic/stage3h-canonical-v1/nexus-selector-v1-port.mjs",
+    "bytes": 2087,
+    "sha256": "22d6e83d41d953bac8a9bcc3176580015b055b9b178deb6049a01ac81ac50490",
+    "protectedOverlay": true,
+    "matchesRecordedProtectedIdentity": true
+   },
+   {
+    "path": "platform/game-agnostic/stage3h-canonical-v1/plan.mjs",
+    "bytes": 4268,
+    "sha256": "f0fa63baee5be43f206ee649ff42495edbe65e50f0825e262d231f0fc8f51855",
+    "protectedOverlay": true,
+    "matchesRecordedProtectedIdentity": true
+   },
+   {
+    "path": "platform/game-agnostic/stage3h-decision-value-closure/inherit.mjs",
+    "bytes": 2569,
+    "sha256": "07665a3ae8d27a1faa21fd25ecc0ac25804563e2ba3794c32ca2a63623bb3dab",
+    "gitBlob": "7d13cfcce0e37aede7703f748cc3985ac26e90cb",
+    "sinceBase": "UNCHANGED_SINCE_BASE"
+   },
+   {
+    "path": "platform/game-agnostic/stage3h-failure-diagnosis-v1/h2-mechanism.mjs",
+    "bytes": 9634,
+    "sha256": "5f254809e91c2eb692defe11e5eeb945fd5d0711bbaa18ca2b78c7cc6cdca367",
+    "gitBlob": "fd05bbfa5337a5021098ea7ea2140e04942e3c81",
+    "sinceBase": "UNCHANGED_SINCE_BASE"
+   },
+   {
+    "path": "platform/game-agnostic/stage3h-failure-diagnosis-v1/lib.mjs",
+    "bytes": 13629,
+    "sha256": "ba19b5fae7567106cb5ffbfee20ee723e69ca223a20ef41425ed42d7ce4b117b",
+    "gitBlob": "7206953f52a755df46bd70dddf0aee4a7e967808",
+    "sinceBase": "UNCHANGED_SINCE_BASE"
+   },
+   {
+    "path": "platform/game-agnostic/stage3h-final-review-handoff/amendments/v3/runner.mjs",
+    "bytes": 11943,
+    "sha256": "a3960a332f67bf20ce90922b4843cba29d7e075bb6bb51cad6192f6b2b3139ce",
+    "gitBlob": "7c2d85f662456431ceb7507053a03aa350c5385c",
+    "sinceBase": "UNCHANGED_SINCE_BASE"
+   },
+   {
+    "path": "platform/game-agnostic/stage3h-owner-governed-v1/allocate-namespaces-v4.mjs",
+    "bytes": 6554,
+    "sha256": "ebbc99b5877a03dcaee817abaf61eaf3f16e31f052436fedb35eb4789dc940e3",
+    "gitBlob": "116a1cf0a18af6bae7ee7308e5033d7cead4214d",
+    "sinceBase": "UNCHANGED_SINCE_BASE"
+   },
+   {
+    "path": "platform/game-agnostic/stage3h-owner-governed-v1/connector.mjs",
+    "bytes": 10704,
+    "sha256": "a5f71f2291cb35652424baae3919e55118827d1da51f65a60e9479f1a48041b0",
+    "gitBlob": "ad2a5bd925d5912ef84a8a6f355e894256397ecb",
+    "sinceBase": "UNCHANGED_SINCE_BASE"
+   },
+   {
+    "path": "platform/game-agnostic/stage3h-owner-governed-v1/identity-view-v2.mjs",
+    "bytes": 1090,
+    "sha256": "66a7de6d5997a74579f5a2b2ac18af43cd710c3ee047053d53b392614e1d6004",
+    "gitBlob": "6b2ca45aea7b12cd55c3b82a8e8698c8eb80104e",
+    "sinceBase": "UNCHANGED_SINCE_BASE"
+   },
+   {
+    "path": "platform/game-agnostic/stage3h-owner-governed-v1/identity-view.mjs",
+    "bytes": 1990,
+    "sha256": "21aed5afcc8bbae8a5c7959e46317f7129583ecbf7c6763e2457a8d6dcf27515",
+    "gitBlob": "1a26c71f134f164b7b8b1fdfb7f07373a86ac3b8",
+    "sinceBase": "UNCHANGED_SINCE_BASE"
+   },
+   {
+    "path": "platform/game-agnostic/stage3h-owner-governed-v1/inherit.mjs",
+    "bytes": 2407,
+    "sha256": "59289dfa21b191da1d1c3ab6caf1ad4cc7c32dd70467f0247b00c7c63d07614e",
+    "gitBlob": "47656dfc9e81b9f8e1093359b2457b9e27d2261e",
+    "sinceBase": "UNCHANGED_SINCE_BASE"
+   },
+   {
+    "path": "platform/game-agnostic/stage3h-owner-governed-v1/nuisance.mjs",
+    "bytes": 3706,
+    "sha256": "550ccd519894c3fdade26036cc1368ebcc84c9a5131d164851f518c7ad3a9263",
+    "gitBlob": "83f13609b5d1401e1c1cf30412f79fab109baceb",
+    "sinceBase": "UNCHANGED_SINCE_BASE"
+   },
+   {
+    "path": "platform/game-agnostic/stage3h-safety-feasibility-v1/closure/exclusions.mjs",
+    "bytes": 4696,
+    "sha256": "0637b8ea3920969686c65abe19fca6e6337b7d8caf3ae60d50377333c11c7f4c",
+    "gitBlob": "ba742b811079fcc2dfa4cfab8b42011a59c5c43b",
+    "sinceBase": "ADDED_AFTER_BASE"
+   },
+   {
+    "path": "platform/game-agnostic/stage3h-safety-feasibility-v1/contract.mjs",
+    "bytes": 6527,
+    "sha256": "584216391274ad659e6778ed55ca0524fdc46a69db14ddc05c0e1131a26ab523",
+    "gitBlob": "a0ad3e4c83688defc0db19b38b6d96cca79cb507",
+    "sinceBase": "ADDED_AFTER_BASE"
+   },
+   {
+    "path": "platform/game-agnostic/stage3h-safety-feasibility-v1/search.mjs",
+    "bytes": 5779,
+    "sha256": "71ea481a74ffa1051d894e93462e5c226e7e4dab2f99fa9f3ce36917c50877d2",
+    "gitBlob": "493c1ca87a364f7186903279de93e568d7a2e5bb",
+    "sinceBase": "ADDED_AFTER_BASE"
+   },
+   {
+    "path": "platform/game-agnostic/stage3h-safety-feasibility-v1/twins.mjs",
+    "bytes": 6348,
+    "sha256": "0d1218c130c716735f5e0b454b7ce4d2bf1bad0dd4e983f5e7e3341b4de5d4cb",
+    "gitBlob": "160bdb1abcf9f0aeb76b4c09de04f29f357f4e00",
+    "sinceBase": "ADDED_AFTER_BASE"
+   },
+   {
+    "path": "platform/game-agnostic/stage3h-wider-action-feasibility-v1/contract.mjs",
+    "bytes": 3597,
+    "sha256": "bbdea5a7c245e7ace259def80af0344bad71dc038c4e89f231c94665abed08da",
+    "gitBlob": "4cfa9dcf002374f1fa1d9a013de6fd0a0abb01a0",
+    "sinceBase": "ADDED_AFTER_BASE"
+   },
+   {
+    "path": "platform/game-agnostic/stage3h-wider-action-feasibility-v1/exclusion/strict-index.mjs",
+    "bytes": 7129,
+    "sha256": "1b064fdf7dcb20aa5b1647b19013c83699581e8dd69e71f26299aa0d32345c62",
+    "gitBlob": "7038e18b2158dbf29cc3d4aa9939e0214e07f4e6",
+    "sinceBase": "ADDED_AFTER_BASE"
+   }
+  ],
+  "laneFilesAtI0": [
+   {
+    "path": "platform/game-agnostic/stage3h-hw1-dev-v1/transforms.mjs",
+    "bytes": 3604,
+    "sha256": "556dde4c2af3b3e8e1bcb45857e3419d1279bb21a3d93d96faf7f175d3c0d016"
+   }
+  ],
+  "nonLaneFilesChangedSinceBase": [],
+  "nonLaneFilesAddedAfterBase": [
+   "platform/game-agnostic/stage3h-safety-feasibility-v1/closure/exclusions.mjs",
+   "platform/game-agnostic/stage3h-safety-feasibility-v1/contract.mjs",
+   "platform/game-agnostic/stage3h-safety-feasibility-v1/search.mjs",
+   "platform/game-agnostic/stage3h-safety-feasibility-v1/twins.mjs",
+   "platform/game-agnostic/stage3h-wider-action-feasibility-v1/contract.mjs",
+   "platform/game-agnostic/stage3h-wider-action-feasibility-v1/exclusion/strict-index.mjs"
+  ],
+  "nonLaneUntracked": [],
+  "nonLaneModifiedInWorkingTree": [],
+  "overlayDependency": {
+   "files": 30,
+   "paths": [
+    "platform/game-agnostic/ascii-suite/controllers/fighter.mjs",
+    "platform/game-agnostic/ascii-suite/controllers/index.mjs",
+    "platform/game-agnostic/ascii-suite/controllers/platformer.mjs",
+    "platform/game-agnostic/ascii-suite/controllers/pong.mjs",
+    "platform/game-agnostic/ascii-suite/controllers/racing.mjs",
+    "platform/game-agnostic/ascii-suite/games.mjs",
+    "platform/game-agnostic/ascii-suite/prime.mjs",
+    "platform/game-agnostic/ascii-suite/training-dev-v1/candidate-v2/action-codec.mjs",
+    "platform/game-agnostic/ascii-suite/training-dev-v1/features.mjs",
+    "platform/game-agnostic/ascii-suite/training-dev-v1/model.mjs",
+    "platform/game-agnostic/ascii-suite/v21/freeze.mjs",
+    "platform/game-agnostic/ascii-suite/v3/common.mjs",
+    "platform/game-agnostic/ascii-suite/v3/controllers.mjs",
+    "platform/game-agnostic/ascii-suite/v3/factory-model.mjs",
+    "platform/game-agnostic/ascii-suite/v31/sentinel.mjs",
+    "platform/game-agnostic/ascii-suite/v32/codec-v2.mjs",
+    "platform/game-agnostic/ascii-suite/v32/policy.mjs",
+    "platform/game-agnostic/ascii-suite/v32/relational-features.mjs",
+    "platform/game-agnostic/ascii-suite/worlds/common.mjs",
+    "platform/game-agnostic/ascii-suite/worlds/fighter.mjs",
+    "platform/game-agnostic/ascii-suite/worlds/platformer.mjs",
+    "platform/game-agnostic/ascii-suite/worlds/pong.mjs",
+    "platform/game-agnostic/ascii-suite/worlds/racing.mjs",
+    "platform/game-agnostic/stage3h-canonical-v1/adapters.mjs",
+    "platform/game-agnostic/stage3h-canonical-v1/baseline.mjs",
+    "platform/game-agnostic/stage3h-canonical-v1/evidence.mjs",
+    "platform/game-agnostic/stage3h-canonical-v1/guard.mjs",
+    "platform/game-agnostic/stage3h-canonical-v1/metrics.mjs",
+    "platform/game-agnostic/stage3h-canonical-v1/nexus-selector-v1-port.mjs",
+    "platform/game-agnostic/stage3h-canonical-v1/plan.mjs"
+   ],
+   "allMatchRecordedIdentity": true,
+   "onMain": false,
+   "consequence": "S0, Nexus, the evidence/guard/metrics modules and the world plan (stage3h-canonical-v1, ascii-suite) exist only in the untracked protected overlay (and on retained refs). Reproducing this study needs that overlay present with the recorded sha256 values; a clean clone of main cannot run it."
+  },
+  "unresolvedImports": [],
+  "nativeVersionIdentifiers": {
+   "FORGE_ACTION_SURFACE_SYMMETRIC_V1": 3,
+   "FORGE_COUNTERFACTUAL_SYMMETRIC_V1": 4,
+   "FORGE_CURRICULUM_V1": 1,
+   "FORGE_CURRICULUM_V2": 2,
+   "FORGE_CURRICULUM_V3": 1,
+   "FORGE_DATASET_V1": 2,
+   "FORGE_DATASET_V2": 3,
+   "FORGE_DECLARED_ENERGY_COST_V1": 1,
+   "FORGE_DEFAULT_HORIZON_V2": 1,
+   "FORGE_EXPORT_V1": 1,
+   "FORGE_GREEDY_SAFE_SYMMETRIC_V1": 1,
+   "FORGE_NATIVE_OWNER_GOVERNED_V1": 1,
+   "FORGE_ORACLE_CHANNEL_MAPPING_V1": 1,
+   "FORGE_ORIENTATION_SYMMETRIC_V1": 1,
+   "FORGE_REPLAY_V1": 1,
+   "FORGE_REWARD_V1": 3,
+   "FORGE_REWARD_V2": 5,
+   "FORGE_REWARD_WEIGHTS_V1": 1,
+   "FORGE_SCENARIO_GENERATOR_SYMMETRIC_V1": 1,
+   "FORGE_SOUP_BRIDGE_V1": 1,
+   "FORGE_SPLITS_V2": 1,
+   "FORGE_SUPERVISION_V1": 1,
+   "FORGE_SYMMETRIC_V2": 4,
+   "FORGE_SYMMETRIC_V2_ROUTABILITY_CORPUS_V1": 1,
+   "FORGE_SYMMETRY_TRANSFORM_V1": 1,
+   "FORGE_TEMPORAL_WARMUP_V1": 1,
+   "FORGE_TOPOLOGY_V1": 1,
+   "FORGE_TRAINING_PROVENANCE_V1": 1
+  },
+  "functionBytes": {
+   "regretAndCatastropheEstimator": {
+    "path": "platform/game-agnostic/stage3h-wider-action-feasibility-v1/contract.mjs",
+    "name": "worldLabels",
+    "startLine": 26,
+    "endLine": 31,
+    "bytes": 433,
+    "sha256": "620084898d436843ef7c7df8188c4fbbcecbd5190f7558603ca09307660df814"
+   },
+   "introductionPredicate": {
+    "path": "platform/game-agnostic/stage3h-activation-readiness-v2/runner-design.mjs",
+    "name": "potentialIntroduction",
+    "startLine": 21,
+    "endLine": 26,
+    "bytes": 460,
+    "sha256": "3810e7780a6e88f1188016b0069bf5fdc1a71b26089a9b93020b6220623b0c80"
+   },
+   "evaluatorTruth": {
+    "path": "platform/game-agnostic/stage3h-failure-diagnosis-v1/lib.mjs",
+    "name": "evaluatorTruth",
+    "startLine": 75,
+    "endLine": 80,
+    "bytes": 358,
+    "sha256": "55fcb7c8fb74770ea28f5501eb473b7ca52c8919967edee1542f9f4bdba20559"
+   },
+   "armStressSelection": {
+    "path": "platform/game-agnostic/stage3h-safety-feasibility-v1/search.mjs",
+    "name": "candidates",
+    "startLine": 22,
+    "endLine": 31,
+    "bytes": 603,
+    "sha256": "13a7ed687d4436585b3821569de7a8d63dcdd8616e75546df86a6c1685f7a57f"
+   },
+   "nativeWorldBuilder": {
+    "path": "platform/game-agnostic/stage3h-safety-feasibility-v1/twins.mjs",
+    "name": "nativeWorld",
+    "startLine": 46,
+    "endLine": 56,
+    "bytes": 1034,
+    "sha256": "b6855ab2c89650f6a23b556777a44105b35f20a044135f6e213491a61cdee91f"
+   },
+   "hiddenSupport": {
+    "path": "platform/game-agnostic/stage3h-safety-feasibility-v1/twins.mjs",
+    "name": "hiddenSupport",
+    "startLine": 22,
+    "endLine": 34,
+    "bytes": 1086,
+    "sha256": "3e51978cc06bf5aecdae8b34a47619948402fc2527fb88d3e6503bd975d59e2c"
+   },
+   "twinFamily": {
+    "path": "platform/game-agnostic/stage3h-safety-feasibility-v1/twins.mjs",
+    "name": "twinFamily",
+    "startLine": 72,
+    "endLine": 83,
+    "bytes": 930,
+    "sha256": "f90dc89e95a6b641a40d02f2074e5f88a6a87778109f3bf7ecbe7b4ed0d5222c"
+   },
+   "decisions": {
+    "path": "platform/game-agnostic/stage3h-safety-feasibility-v1/twins.mjs",
+    "name": "decisions",
+    "startLine": 66,
+    "endLine": 69,
+    "bytes": 280,
+    "sha256": "57683bbd94a1c4a252e729e3c6bd7ab69c0c650d3e37995f3e570b840921171b"
+   },
+   "orientAction": {
+    "path": "platform/game-agnostic/src/forge-symmetric/orientation-symmetric-v1.js",
+    "name": "orientAction",
+    "startLine": 89,
+    "endLine": 94,
+    "bytes": 485,
+    "sha256": "0801f2dada6b4b05e9ea429f3ac39f2274477c6e8479c363edbcc16190b09829"
+   },
+   "orientWorld": {
+    "path": "platform/game-agnostic/src/forge-symmetric/orientation-symmetric-v1.js",
+    "name": "orientWorld",
+    "startLine": 76,
+    "endLine": 87,
+    "bytes": 820,
+    "sha256": "f8d7fabff2071c681ce62e3b3f1c70af938c406a2d215ed4e8c8357a6a7951cf"
+   }
+  }
+ },
+ "exclusionAuthority": {
+  "format": "STAGE3H_STRUCTURED_EXCLUSION_INDEX_V1",
+  "counts": {
+   "priorWorlds": 9407,
+   "priorSeeds": 116,
+   "v4SealedWorlds": 25377,
+   "devBaseWorlds": 25676,
+   "diagnosticConstructedWorlds": 48910,
+   "devOpenSeeds": 6,
+   "excludedBlocks": [
+    731,
+    732,
+    733,
+    734,
+    951,
+    952
+   ],
+   "distinctExcludedWorlds": 109082,
+   "excludedSeeds": 25499,
+   "multiSourceWorlds": 288
+  },
+  "sources": {},
+  "blocksPresent": {
+   "731": true,
+   "732": true,
+   "733": true,
+   "734": true,
+   "951": true,
+   "952": true
+  },
+  "sourceClosureSha256": "69a6ac623ce9cdc7f653e88d409008bb44b663d077a9416c9be9b97305f11c9e"
+ },
+ "r0RuntimeIdentity": {
+  "artifacts": {
+   "baseline-manifest.json": "5a2e4f7430f5400e3c92328a0a637155ce7bc2a5bdac0e52ee27f83488c00621",
+   "canonical-runtime-identity.json": "f07b85eab2eae92eee508267b7b4c356103b33eeb2081ca45cecad9306c38ade",
+   "generated-runtime-provenance.json": "41d316a627aab333dab5710068be9bd674b146bfabb67ed24ef06e175e02946e",
+   "r0-certification-result.json": "c33c35e3e9a196c03e56a0ca880481cc058ab617fb48939049bed896a6010ea5",
+   "stage2f-campaign-manifest.json": "4159ee55743e3615eaebeba0a8615712279d03459aed1eb78977b2c6785978a3",
+   "stage2f-certification-result.json": "9393f2d18f735373010f9cea70d4a6c1bcb1a72bc9ecc7357e9b2ef3e904877c",
+   "stage2f-evidence-reconciliation.json": "24905f4fa5d4213d5cc5cf4ef7202bef43bf34237e12312079d7cf08e36ac714"
+  },
+  "manifestInventoryPaths": 43,
+  "manifestDomains": [
+   "zeknovaSourceSha256",
+   "compatibilitySourceSha256",
+   "modelSourceSha256",
+   "canonicalStateSha256",
+   "primeSha256",
+   "routerSha256",
+   "authoritySha256",
+   "providerBridgeSha256",
+   "telemetrySha256",
+   "collectorSchemaSha256",
+   "certificationPolicySha256"
+  ],
+  "r0Certification": {
+   "certificationSchemaVersion": 2,
+   "sentinelRuntimeId": "sha256:bdc88a75795283152f13ea724233a8e80adf6c0b210e4b6050418d767f22c668",
+   "generatedRuntimeProvenanceId": "sha256:8621541069da7bcfa1c77e13605eaa98a0d241a8b831b461a7b343c75823150e",
+   "authority": {
+    "tier": "R0",
+    "canDispatch": false,
+    "canMutateLiveWorld": false,
+    "canIssueAuthorityTokens": false
+   },
+   "runtimeIdentityCertified": true,
+   "sourceGatePass": true,
+   "runtimeBaselineCertified": true,
+   "stage2fCertified": false,
+   "liveActionDispatches": 0,
+   "worldMutations": 0,
+   "authorityEscalations": 0,
+   "authorityTokenIssues": 0,
+   "r1CanaryExecuted": false,
+   "incumbentScriptedExecutorPreserved": true
+  },
+  "studyPathsChecked": 133,
+  "overlapWithStudy": [],
+  "studyPathsNamedZeknova": [],
+  "effectOnThisDevStudy": "NONE: the baseline-manifest inventory (Prime/router/authority/provider-bridge runtime identity) shares no path with this study's import closure, data inputs or exclusion sources",
+  "claim": "No runtime-identity certification is claimed or implied. FULL_STAGE3H_CERTIFIED stays false."
+ },
+ "gates": {
+  "armStressRuleLocatedExactBytes": true,
+  "armStressRuleReproduces341": true,
+  "armStressSourceCommittedOnMainAndUnmodified": true,
+  "armStressRuleTextHashesToRecordedHash": true,
+  "inspectedClassesAllSpent": true,
+  "v4RuleHashReproduced": true,
+  "v4RuleNotSubstitutedForArmStressRule": true,
+  "contractJsonMatchesProse": true,
+  "importClosuresResolved": true,
+  "frozenSourcesPresentAtBaseAreUnchanged": true,
+  "everyNonLaneSourceIsCommittedOrRecordedOverlay": true,
+  "s0IdentityFrozen": true,
+  "nexusIdentityFrozen": true,
+  "exclusionAuthorityIntact": true,
+  "r0DriftDoesNotTouchDevStudy": true
+ },
+ "pass": true,
+ "notes": [
+  "Closure hashing follows static relative imports only. Data files read at runtime are recorded separately (S0 model json, exclusion sources, dev-runs rows, contract).",
+  "Lane files (stage3h-hw1-dev-v1) are new code written for this study; their I-0 hashes are recorded for orientation, and later lane changes are tracked by git, not by this record.",
+  "Overlay files are identified by path and sha256 only (no blob ids and no contents), consistent with committed precedent (ascii-quality-v33_1/inheritance.json)."
+ ]
+}

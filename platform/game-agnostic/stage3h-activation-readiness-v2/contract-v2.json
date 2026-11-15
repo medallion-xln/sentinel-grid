@@ -1,0 +1,296 @@
+{
+  "id": "STAGE3H_SEALED_QUALIFICATION_CONTRACT_V2",
+  "status": "PROPOSED_PENDING_AUTHORITY_NOT_ACTIVE_REGISTRATION",
+  "previousProposalStatus": "REGISTRATION_CONTRACT_INVALID_PENDING_REVISION_SUBGROUP_ADJUDICATION",
+  "fullPopulationPrimaryV1MathematicallyImpossible": false,
+  "v1Issue": "Directional subgroup family includes R-N@H0 and R-B@H2 without complete per-key equality adjudication; full-population primaries were feasible.",
+  "rule": {
+    "H0": "NEXUS_ELSE_S0",
+    "H2": "S0"
+  },
+  "ruleHash": "c53826da908510a6eceae626a3c7463195b648c95962f32b9e2774b8324be021",
+  "comparatorModelHash": "30a72416b8a7f0079155cd25908acbe8a2f69750759d106cf71609d77e1e8937",
+  "primaryEstimands": [
+    {
+      "key": "A_H0_SPECIALIST",
+      "metric": "nregR-nregB",
+      "band": "H0"
+    },
+    {
+      "key": "B_H2_AVOIDANCE",
+      "metric": "nregR-nregN",
+      "band": "H2"
+    },
+    {
+      "key": "C_FULL_VS_B",
+      "metric": "nregR-nregB",
+      "band": null
+    },
+    {
+      "key": "D_FULL_VS_N",
+      "metric": "nregR-nregN",
+      "band": null
+    }
+  ],
+  "primaryDirections": "negative is better; each point<=-0.02 AND adjusted upper<0 plus safety; no identity-equal superiority required",
+  "primaryFamily": 40,
+  "secondaryRegimeFamily": 40,
+  "safetyFamily": 30,
+  "nuisanceFamily": 120,
+  "resamples": 20000,
+  "alphaPerPrimary": 0.00125,
+  "primaryQuantile": 0.99875,
+  "pointMateriality": 0.02,
+  "equalityControls": [
+    {
+      "band": "H0",
+      "require": "R=N exact selections and metrics"
+    },
+    {
+      "band": "H2",
+      "require": "R=B exact selections and metrics"
+    }
+  ],
+  "equalityControlsInDirectionalFamilies": false,
+  "balancedMixtureIdentity": "C=A/2,D=B/2; separate correlated estimands, not independent replications",
+  "populations": {
+    "HOLDOUT_KNOWN_COMPOSITION": {
+      "axes": {
+        "shapes": [
+          "chain",
+          "star",
+          "bridge"
+        ],
+        "roles": [
+          "bare",
+          "defended"
+        ],
+        "objectives": [
+          "reach_target",
+          "restore_and_protect"
+        ],
+        "horizonBands": [
+          "H0",
+          "H2"
+        ],
+        "levels": [
+          1,
+          3
+        ]
+      },
+      "cells": 48,
+      "repetitionsPerCell": 52,
+      "scheduledPerReplication": 2496,
+      "claimScope": "Known composition"
+    },
+    "OOD_LEVEL": {
+      "axes": {
+        "shapes": [
+          "chain",
+          "star",
+          "bridge"
+        ],
+        "roles": [
+          "bare",
+          "defended"
+        ],
+        "objectives": [
+          "reach_target",
+          "restore_and_protect"
+        ],
+        "horizonBands": [
+          "H0",
+          "H2"
+        ],
+        "levels": [
+          6,
+          7
+        ]
+      },
+      "cells": 48,
+      "repetitionsPerCell": 52,
+      "scheduledPerReplication": 2496,
+      "claimScope": "Structural OOD relative to original 48-cell design; family distributions previously evaluated unsealed"
+    },
+    "OOD_ROLES": {
+      "axes": {
+        "shapes": [
+          "chain",
+          "star",
+          "bridge"
+        ],
+        "roles": [
+          "redundant",
+          "scarce",
+          "populated",
+          "industrial"
+        ],
+        "objectives": [
+          "reach_target",
+          "restore_and_protect"
+        ],
+        "horizonBands": [
+          "H0",
+          "H2"
+        ],
+        "levels": [
+          1,
+          3
+        ]
+      },
+      "cells": 96,
+      "repetitionsPerCell": 26,
+      "scheduledPerReplication": 2496,
+      "claimScope": "Structural OOD relative to original 48-cell design; family distributions previously evaluated unsealed"
+    },
+    "OOD_OBJECTIVES": {
+      "axes": {
+        "shapes": [
+          "chain",
+          "star",
+          "bridge"
+        ],
+        "roles": [
+          "bare",
+          "defended"
+        ],
+        "objectives": [
+          "restore_infrastructure",
+          "protect_civilians",
+          "restore_and_conserve",
+          "supply_and_defend",
+          "repair_and_maintain_redundancy",
+          "multi_target_delivery"
+        ],
+        "horizonBands": [
+          "H0",
+          "H2"
+        ],
+        "levels": [
+          1,
+          3
+        ]
+      },
+      "cells": 144,
+      "repetitionsPerCell": 18,
+      "scheduledPerReplication": 2592,
+      "claimScope": "Structural OOD relative to original 48-cell design; family distributions previously evaluated unsealed"
+    },
+    "OOD_SHAPES": {
+      "axes": {
+        "shapes": [
+          "tree",
+          "mesh",
+          "ring",
+          "multi_cycle",
+          "hub_and_spoke",
+          "parallel_dependency",
+          "redundant_network",
+          "nested_dependency",
+          "multi_settlement",
+          "disconnected_islands",
+          "contested_bottleneck",
+          "layered_infrastructure"
+        ],
+        "roles": [
+          "bare",
+          "defended"
+        ],
+        "objectives": [
+          "reach_target",
+          "restore_and_protect"
+        ],
+        "horizonBands": [
+          "H0",
+          "H2"
+        ],
+        "levels": [
+          1,
+          3
+        ]
+      },
+      "cells": 192,
+      "repetitionsPerCell": 14,
+      "scheduledPerReplication": 2688,
+      "claimScope": "Structural OOD relative to original 48-cell design; family distributions previously evaluated unsealed"
+    }
+  },
+  "replications": [
+    "A",
+    "B"
+  ],
+  "proposedWorlds": 25536,
+  "scheduledCaseIdentities": null,
+  "seedNamespaces": null,
+  "samplingUnit": "unique independently seeded world; no shared base seeds across cells; original-world unit preserved for all variants",
+  "samplingWeights": "equal target cell weights; conditional subgroup prevalence ratios",
+  "admissionRules": {
+    "perPopulationAndHorizonFloor": 0.9,
+    "perCellFloor": 0.5,
+    "effectiveNFloor": 2100,
+    "replacement": false,
+    "outcomeFiltering": false
+  },
+  "sourceContract": {
+    "DDV": "selector-specific proposal only",
+    "TCA": "canonical unavailable; bounded NOT_TESTABLE proposal pending",
+    "Prime": "matched incumbent unavailable; bounded NOT_TESTABLE proposal pending",
+    "catastropheThreshold": 100,
+    "expectedCatIncreaseUpperMaxProposed": 0.02,
+    "potentialIntroductionsAllowedProposed": 0,
+    "harmUpperMaxProposed": 0.02,
+    "nuisanceDependenceUpperMaxProposed": 0.02
+  },
+  "publicComputeEnvelopeMsProposed": 1000,
+  "analysisResourceCeilingProposed": {
+    "minutesPerReplication": 30,
+    "maxRssGiB": 1,
+    "onExhaustion": "INCOMPLETE_NO_RESAMPLE_COUNT_CHANGE_OR_RETRY"
+  },
+  "humanScopeApproval": false,
+  "independentMethodReview": "REVIEW_PENDING",
+  "nativeRunnerReviewed": false,
+  "custodyEstablished": false,
+  "sourcePackagePublicationAuthorized": false,
+  "sealedRegistrationActive": false,
+  "seedsAllocated": false,
+  "outcomesAccessed": false,
+  "campaignExecuted": false,
+  "oraclePath": "CLOSED_CONTRACT_NOT_TESTABLE",
+  "stage3hCertified": false,
+  "boundedQualificationImpliesFullCertification": false,
+  "runtimeDesignHost": {
+    "versions": {
+      "node": "22.22.2",
+      "acorn": "8.15.0",
+      "ada": "2.9.2",
+      "amaro": "1.1.5",
+      "ares": "1.34.6",
+      "brotli": "1.1.0",
+      "cjs_module_lexer": "2.2.0",
+      "cldr": "48.0",
+      "icu": "78.2",
+      "llhttp": "9.3.0",
+      "modules": "127",
+      "napi": "10",
+      "nbytes": "0.1.1",
+      "ncrypto": "0.0.1",
+      "nghttp2": "1.64.0",
+      "openssl": "3.5.5",
+      "simdjson": "4.2.4",
+      "simdutf": "6.4.2",
+      "sqlite": "3.51.2",
+      "tz": "2025c",
+      "undici": "6.24.1",
+      "unicode": "17.0",
+      "uv": "1.51.0",
+      "uvwasi": "0.0.23",
+      "v8": "12.4.254.21-node.39",
+      "zlib": "1.3.1-e00f703",
+      "zstd": "1.5.7"
+    },
+    "platform": "darwin/arm64",
+    "execArgvForActualCampaign": null,
+    "canonicalRuntimeCertified": false
+  }
+}

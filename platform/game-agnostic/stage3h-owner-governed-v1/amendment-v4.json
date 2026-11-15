@@ -1,0 +1,53 @@
+{
+ "id": "STAGE3H_OWNER_GOVERNED_QUALIFICATION_V1",
+ "revision": 4,
+ "status": "PROPOSED_PENDING_OWNER_APPROVAL",
+ "supersedes": {
+  "file": "stage3h-owner-governed-v1/amendment-v3.json",
+  "revision": 3,
+  "candidate": "f1ba57b46ceedc3ab22a859d51245ed353b1aaa570ec914ebaa3f8fec4c3e984",
+  "activeRegistration": "0364164cb05e140da6265c89d830388b84dafed7ef5f3abf47ad6afb2833b01f",
+  "reason": "Replication A of registration 0364164c aborted on NATIVE_MENU_MISMATCH: a native menu presented one action id twice. The registration is EXECUTION_INVALID_OR_ABORTED: A consumed and aborted, B not started, no results."
+ },
+ "predecessor": {
+  "registrationHash": "0364164cb05e140da6265c89d830388b84dafed7ef5f3abf47ad6afb2833b01f",
+  "registrationCommit": "e009344c2c973a329a4b88582f90b9e58e15abce",
+  "status": { "A": "CONSUMED_ABORTED", "B": "NOT_STARTED", "results": "NONE", "verdict": "EXECUTION_INVALID_OR_ABORTED" },
+  "continuation": false,
+  "rule": "The successor is a new registration. It does not continue, resume or complete 0364164c; its unused B namespace is not reused; the consumed A run directory stays as it is and is never rerun."
+ },
+ "authority": "R0",
+ "evidenceLabels": { "REVIEW_MODE": "OWNER_GOVERNED", "INDEPENDENT_METHOD_REVIEW": false, "EXTERNAL_INDEPENDENT_CUSTODY": false, "CANONICAL_STAGE3H_CERTIFICATION_AUTHORIZED": false },
+ "O-6": {
+  "id": "STAGE3H_NATIVE_MENU_VALIDITY_V1",
+  "module": "stage3h-owner-governed-v1/menu-validity-v1.mjs",
+  "connector": "stage3h-owner-governed-v1/connector-v4.mjs (STAGE3H_OWNER_GOVERNED_NATIVE_CONNECTOR_V4_MENU_VALIDITY)",
+  "invalidWhen": {
+   "EMPTY_MENU": "a policy-facing menu has no entry",
+   "DUPLICATE_ACTION_ID": "a policy-facing menu presents the same action id more than once"
+  },
+  "invalidReason": "NATIVE_MENU_INVALID",
+  "actionIdentity": "The policy-facing action id: on the original view surface[].actionId = canonicalActionKey('R0', action) = forgeActionKey(action) = sha256(stableStringify([actionType, actorId, target, parameters])); on each twin view, that view's own handle (D4: key of the oriented action; IDENTITY: O-2R.1 opaque handle; ORDER: original handle). The descriptor label (e.g. 'forge/bypass') is not identity. Equal ids = the same action.",
+  "policyFacingViews": "Exactly the 11 views the frozen connector presents to S0 and Nexus for one world: the original public view, the 8 D4 orientation views (observableView(orientWorld(t, world))), the O-2R.1 IDENTITY view and the ORDER view. Every view is checked; there is no short-circuit.",
+  "validationPoint": "Earliest lawful point: after warm-up and after the V3 pre-policy gates (validator, terminal, task, within-run duplicate world, prior-world exclusion, packet horizon), once the post-warm-up world and all of its policy-facing views exist, and before the first policy call and before any evaluator truth exists.",
+  "dynamicContexts": "This protocol has exactly one policy decision per world, and every policy-facing menu is a function of the post-warm-up world alone, so all of them are validated before any policy call and the rule is identical for all arms. Evaluator-internal continuation menus are not policy-facing; they are not inspected (inspection would not be outcome-blind) and a duplicate there is decision-inert because the continuation replaces its incumbent only on a strictly higher rank or strictly smaller key. Should a later protocol have policy-facing menus that materialize only after earlier decisions, each is validated immediately before the policy is called on it; an invalid one rejects the whole world atomically for every arm, discards earlier decisions unscored, and is recorded as arm-dependent (menu-validity-v1.mjs atomicDecisionEpisode).",
+  "atomicRejection": "One rejection record {id, population, cell, band, reason: NATIVE_MENU_INVALID, cause, firstInvalidView, invalidViews, views, rule}; no selection, menu, truth, metric, nuisance or compute field exists for that world; its world hash enters the within-run duplicate set; it counts in admission like any rejection and is never replaced.",
+  "prohibited": ["repairing, deduplicating, reordering or substituting a native action", "scoring a malformed world", "replacing a rejected world", "reading truth, reward, evaluator state or policy output to decide validity"],
+  "otherMenuAnomalies": "Not a rejection: a surface that is not a list (NATIVE_MENU_NOT_A_LIST), an entry without a non-empty string id (NATIVE_MENU_ENTRY_MALFORMED), and any remaining frozen nativeLock assertion (NATIVE_MENU_MISMATCH) throw and abort the replication fail-closed.",
+  "precedence": "V3 outcomes keep precedence: VALIDATOR_INVALID, TERMINAL_AFTER_WARMUP, TASK_NOT_PRESERVED and PRIOR_WORLD_EXCLUDED rejections and the DUPLICATE_WORLD_HASH / PACKET_HORIZON_MISMATCH aborts are decided first, exactly as in connector-v3.",
+  "delegation": "Every world the rule does not reject is passed verbatim to the frozen nativeRowV3, so its row, ledger, rejection or abort is exactly the predecessor's."
+ },
+ "changesFromRevision3": {
+  "O-6": "STAGE3H_NATIVE_MENU_VALIDITY_V1 as above (connector-v4.mjs, campaign-v4.mjs).",
+  "ABORT_SEMANTICS": "Any exception after the replication directory exists writes ABORT.json (error code only; no world identity, no rows) and re-throws; the replication is consumed; nothing is retried, resized or replaced; analysis refuses while any ABORT record exists.",
+  "B_AFTER_A": "Replication B refuses unless replication A of the same registration completed and locked without an ABORT record.",
+  "NAMESPACES": "Not allocated in the candidate. After owner approval, allocate-namespaces-v4.mjs assigns A and B the first two 10^9 blocks from 733 that contain no prior seed and no repository-text occurrence of a seed in their 12,768-seed range; blocks 731 (consumed A namespace, excluded ENTIRELY) and 732 (unused predecessor B, not a continuation) are excluded. The allocation is written once (registration/NAMESPACE_ALLOCATION_V4.json) and bound at activation together with the schedule hashes.",
+  "EXCLUSIONS": "Full prior exclusions unchanged (9,407 world hashes, prior executed seeds, the 6 OPEN development seeds) plus the entire consumed A block. The consumed A worlds were never recorded and may not be regenerated, so they are excluded at seed level (whole block) only; no outcome of any A world was observed."
+ },
+ "unchangedFromRevision3": ["O-1 native analysis copy", "O-2R.1 observation-only IDENTITY with opaque handles everywhere", "O-3 MIN_ACCEPTED_PER_CELL=2 with the 0.9 population and per-horizon floors and Kish effective-N >= 2100", "O-4 owner-governed disposition", "O-5 fail-closed preflight (load <= 25% of cores, no concurrent stage/test node process, 96 development locks p99 <= 250 ms and max <= 500 ms) and the frozen 1,000 ms policy limit", "D4 native orientation twins and ORDER observation-only twins; V3 nuisanceDependence", "R/B/N arms and the frozen selector (H0: R = N, H2: R = B)", "Forge World V2 generation, warm-up and counterfactual evaluator", "every V3 threshold, family, materiality, resample, tail, equivalence, catastrophe and false-selection rule", "population design, cells, repetitions and 12,768 worlds per replication", "fixed cell weights, no replacement, no outcome filtering"],
+ "conditionalInference": "All registered estimands and vetoes are computed on accepted worlds and are therefore conditional on the valid-menu population (as they already were on the V3 validator, terminal, task and prior-world gates).",
+ "generalizationLimitation": "No claim extends to worlds whose native menu presents one action twice. Under the frozen generator this occurs only when a restore objective re-adds an existing dependency edge that carries an offered BYPASS, which needs a substitute-bearing role (OOD_ROLES only): 1 of 1,824 spent OOD_ROLES worlds, 0 of 7,583 others. Duplicated dependency relationships without menu effect (222 of 9,456 spent worlds) are native generator behaviour visible in every earlier stage; they are not a menu defect and are neither rejected nor repaired.",
+ "permittedExecutionEnvironment": { "runtime": "the registration-bound Node binary, versions, platform and launch flags; plain `node campaign-v4.mjs run A|B`", "host": "the owner workstation that produced the bound runtime identity", "load": "1-minute load average <= 25% of logical cores; no concurrent stage writer, test runner or campaign", "power": "AC power; sleep inhibited (caffeinate) for the run", "process": "single process; A then B sequentially; B only after A locked without abort", "memory": "analysis <= 1 GiB RSS and <= 30 min per replication (V3)", "network": "not required", "logging": "full stdout and stderr captured to a file for every run" },
+ "intendedOutcome": "BOUNDED_OWNER_GOVERNED_SELECTOR_QUALIFICATION",
+ "approvalProvenance": "Owner approval is recorded as an explicit conversation instruction, not an independently verifiable cryptographic signature."
+}

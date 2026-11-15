@@ -1,0 +1,84 @@
+{
+ "schema": "STAGE3H_OWNER_GOVERNED_O2_GATE_V1",
+ "inheritanceHead": "a2c7961767926a86752e940ca9b604040c4f62c0",
+ "population": "STAGE3H1_CANONICAL_OPEN_NATIVE_V1 (development only)",
+ "sourceCause": {
+  "actionKey": "src/forge/kernel.js:226",
+  "retreatTieBreak": "src/forge-symmetric/action-surface-symmetric-v1.js:58",
+  "evaluatorOrder": "src/forge-symmetric/counterfactual-symmetric-v1.js:72",
+  "candidateTwin": "stage3h-owner-governed-v1/connector.mjs:69"
+ },
+ "questions": {
+  "1_entityRenamingChangesNativeTruth": "YES: 88/288 development worlds (retreat mapped by type); retreat destination changed in 66/288",
+  "2_candidateNuisanceOperatesOnObservationsOnly": "NO: candidate 18ff522c renames the NATIVE WORLD (renameEntities) and regenerates view, surface and truth from it",
+  "3_publicInputsRemainLegal": "YES for the twin's own menu (288/288); but the twin menu is a different native action set where retreat moved",
+  "4_actionIdentitiesMapBijectively": "NOT SEMANTICALLY: full semantic bijection in 222/288; the candidate forces the map by pairing RETREAT with RETREAT",
+  "5_retreatAndExceptionalActionsMapCorrectly": "NO: 66 worlds pair the original retreat with a retreat to a different cell; all 1755/1755 non-retreat actions map by renamed key",
+  "6_originalTruthUsedConsistently": "PARTLY: O-2 scores against original truth, but the twin decisions were taken in a different native world (different menu and dynamics), so decisions and truth refer to different worlds",
+  "7_statisticMeasuresOnlyTheDeclaredInvariance": "NO: it confounds identity-label sensitivity with a change of native world"
+ },
+ "gateCandidate18ff522c": "NUISANCE_CONTRACT_BLOCKED",
+ "tallies": {
+  "worlds": 288,
+  "v1": {
+   "operatesOn": "NATIVE_WORLD",
+   "nativeTruthChanged": 88,
+   "retreatDestinationChanged": 66,
+   "nonRetreatKeyMapped": 1755,
+   "nonRetreatActions": 1755,
+   "menuSemanticBijection": 222,
+   "twinLocksLegal": 288
+  },
+  "o2r": {
+   "worldUntouched": 288,
+   "twinLocksLegal": 288,
+   "handleBijection": 288,
+   "retreatPreservedExactly": 144,
+   "retreatPresent": 144,
+   "onlyIdentityFieldsChanged": 0,
+   "inverseRestoresOriginal": 288,
+   "v3NuisanceDependenceUnchangedPasses": 288
+  },
+  "byBand": {
+   "H0": {
+    "worlds": 144,
+    "v1NativeTruthChanged": 17,
+    "v1RetreatChanged": 29
+   },
+   "H2": {
+    "worlds": 144,
+    "v1NativeTruthChanged": 71,
+    "v1RetreatChanged": 37
+   }
+  }
+ },
+ "o2rChangedValuePaths": [
+  "$.observation.metadata.canonicalState.entities[].id",
+  "$.observation.metadata.canonicalState.relationships[].from",
+  "$.observation.metadata.canonicalState.relationships[].to",
+  "$.observation.metadata.objectives[].entityId",
+  "$.observation.metadata.objectives[].id",
+  "$.semantics[].SOURCE_ENTITY",
+  "$.semantics[].TARGET_ENTITY",
+  "$.semantics[].TARGET_RELATIONSHIPS[].otherEntityId",
+  "$.semantics[].actor",
+  "$.semantics[].target",
+  "$.state.actor.entityId",
+  "$.state.entities[].entityId",
+  "$.state.entities[].observedRelationships[].otherEntityId",
+  "$.surface[].action.actorId",
+  "$.surface[].action.target.id",
+  "$.surface[].actionId",
+  "$.surface[].targetEntityId",
+  "$.visibleMap.entities[].id"
+ ],
+ "proposedCorrectionO2R": {
+  "id": "STAGE3H_IDENTITY_OBSERVATION_ONLY_O2R_V1",
+  "label": "OBSERVATION_ONLY_IDENTITY_PERTURBATION",
+  "definition": "V3 transformSyntheticFixture IDENTITY applied verbatim to the native public view: entity-id string values renamed, action handles made opaque; native world unchanged; original native truth mapped through the handle bijection; V3 nuisanceDependence used unchanged (O-2 withdrawn)",
+  "validation": "FAIL"
+ },
+ "authority": "R0",
+ "newWorldPopulationsCreated": false,
+ "prospectiveSeedsTouched": false
+}

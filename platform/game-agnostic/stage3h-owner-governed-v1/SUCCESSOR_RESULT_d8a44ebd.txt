@@ -1,0 +1,56 @@
+=== SENTINEL GRID STAGE 3H SUCCESSOR V4 ===
+
+STATUS=SUCCESSOR_CANDIDATE_READY; STOPPED_BEFORE_REGISTRATION
+CLASSIFICATION=SUCCESSOR_REGISTRATION_CANDIDATE_PENDING_OWNER_APPROVAL (preflight 15/15 PASS; not active)
+
+AUTHORITY=R0
+
+PREDECESSOR_A=CONSUMED_ABORTED
+PREDECESSOR_B=NOT_STARTED
+PREDECESSOR_REGISTRATION_SHA256=0364164cb05e140da6265c89d830388b84dafed7ef5f3abf47ad6afb2833b01f (commit e009344c; results NONE; preserved unchanged)
+
+SPENT_WORLDS_VERIFIED=9456 (8 parity artifacts re-derived from per-world records; every record cross-checked against the independent menu scan: 0 failures)
+ACCEPTED_EXACT_PARITY=9406/9406 (identical row and ledger, connector-v3 vs connector-v4; wall-clock elapsedMs excluded as in the registered replay rule)
+UNCHANGED_REJECTIONS=49 (identical V3 VALIDATOR_INVALID rejections)
+INTENDED_CORRECTIONS=1 (OOD_ROLES star/industrial/restore_and_protect/H2/1, seed 202610203007: V3 NATIVE_MENU_MISMATCH abort -> V4 NATIVE_MENU_INVALID/DUPLICATE_ACTION_ID; the sole difference)
+UNINTENDED_DIFFERENCES=0 (also 0 identity failures, 0 retries, 0 timing failures)
+
+NATIVE_MENU_VALIDATOR=STAGE3H_NATIVE_MENU_VALIDITY_V1 (amendment O-6): EMPTY_MENU or DUPLICATE_ACTION_ID in any of the 11 policy-facing views -> atomic pre-policy rejection; never repaired, deduplicated, reordered, substituted, scored or replaced; other menu anomalies abort fail-closed
+OUTCOME_BLIND_VALIDATION=true (verdict reads only surface action ids of public views built from the post-warm-up world before any policy call or truth; identical for R/B/N; proven on deep-frozen inputs; invariant across 11 views and 3 permutations in 9,456 worlds)
+DYNAMIC_MENU_HANDLING=NOT_BLOCKED (one policy decision per world, so no policy-facing later menus; evaluator-internal duplicates occur in 2 spent worlds / 6 one-step menus and are decision-inert under the strict-comparison continuation; never inspected, so no outcome-dependent selection)
+ESTIMAND_IMPACT=conditional on the valid-menu population; exactly 0 in HOLDOUT, OOD_LEVEL, OOD_OBJECTIVES, OOD_SHAPES and the 48 OOD_ROLES reach_target cells (structurally no BYPASS); OOD_ROLES at most 0.0026 on any [0,1] metric and 0.0052 on any arm contrast (95% upper bound of the 48 at-risk cells, 1/912), 26% of the 0.02 materiality; H2 R-B exactly 0; no point rate extrapolated from the single world
+ADMISSION_SAFEGUARDS=UNCHANGED (MIN_ACCEPTED_PER_CELL=2, 0.9 population and per-horizon floors, Kish effective-N >= 2100, fixed cell weights, no replacement); spent-world admission under V4 0.984-1.000 per population; feasibility identical to the reproduced predecessor in every population, including two stress variants
+CATASTROPHE_VETO=UNCHANGED (zeroIntroductionUpper(cells, 40) <= 0.02 and false-selection veto; analysis, runner, contract and admission sources byte-identical to 0364164c)
+
+SOURCE_INTEGRITY=PASS (237 bound sources match; import closure complete; predecessor 133 bound sources byte-identical)
+PROTECTED_FILES_UNCHANGED=true (14,447; V3 check.py PASS; nine-expert roster preserved)
+FROZEN_SELECTOR_UNCHANGED=true (H0 -> NEXUS_ELSE_S0, H2 -> S0; rule hash c53826da...; R/B/N identities verified on all 9,406 accepted rows)
+NATIVE_ENGINE_UNCHANGED=true (all 57 bound src/ sources, i.e. Forge engine, generator, warm-up, evaluator and core, byte-identical; src working tree clean)
+
+ALL_TESTS_PASS=true (tests 11/11, tests-v2 4/4, tests-v3 5/5, tests-v4 17/17 before and 17/17 after the candidate, ASCII lane 18/18, V3 check.py PASS; fixtures 11/11)
+CLEAN_CLONE_PASS=true (clone of 5f54f234 + 30 protected files from local package ecfc7016...: hashes recomputed, 237/237 sources, witness rejected, 190/190 spot replays, 11/11 fixtures)
+REGISTRATION_PREFLIGHT=SUCCESSOR_PREFLIGHT_PASS (15/15; evidence/successor-v4-preflight/preflight.json)
+
+SUCCESSOR_CANDIDATE_SHA256=d8a44ebd19f6dc5b833462435385680dcf2c3541a543a0e18f3fb81067307aad
+SUCCESSOR_COMMIT=5f54f234ce025b8833192fa5bd818657546e512b
+FRESH_NAMESPACE_PLAN=NOT_ALLOCATED. After owner approval only, allocate-namespaces-v4.mjs (sha256 ebbc99b5...) assigns A = first passing 10^9 block from 733, B = next passing block; each 12,768-seed range must be free of prior seeds and repository-text occurrences; blocks 731 (consumed A, entire block) and 732 (unused predecessor B, not a continuation) excluded; written once to registration/NAMESPACE_ALLOCATION_V4.json and bound at activation with the schedule hashes
+PRIOR_EXCLUSION_STATUS=UNCHANGED_AND_EXTENDED (9,407 prior world hashes, file 838ab22d..., enforced at execution as PRIOR_WORLD_EXCLUDED; prior executed seeds + 6 OPEN development seeds; entire 731 block; consumed A worlds excluded at seed level only, since they were never recorded and may not be regenerated)
+
+OWNER_APPROVAL_REQUIRED=true
+REGISTRATION_ACTIVE=false
+NEW_SEEDS_ALLOCATED=false
+NEW_SEALED_WORLDS_GENERATED=false
+NEW_CAMPAIGN_EXECUTED=false
+
+BOUNDED_SELECTOR_QUALIFIED=false
+FULL_STAGE3H_CERTIFIED=false
+STAGE3I_STARTED=false
+
+CAN_DISPATCH=false
+CAN_MUTATE_LIVE_WORLD=false
+
+NEXT_EXACT_OWNER_AUTHORIZATION=Separate owner instruction approving successor candidate d8a44ebd19f6dc5b833462435385680dcf2c3541a543a0e18f3fb81067307aad (commit 5f54f234; amendment-v4 sha256 84fe8a2a...), giving each of the seven decisions in registration/OWNER_SCOPE_APPROVAL_RECORD_V4.json (SCOPE-DDV, SCOPE-TCA, SCOPE-PRIME, SCOPE-REGIME, SCOPE-THRESHOLDS renewed; AMENDMENT-O6-NATIVE-MENU-VALIDITY; SUCCESSOR-EXECUTION-SEMANTICS) with owner identity, date and approval reference, recorded as registration/OWNER_APPROVAL_d8a44ebd.json. Activation requirements after that approval, in order: (1) node allocate-namespaces-v4.mjs d8a44ebd19f6dc5b833462435385680dcf2c3541a543a0e18f3fb81067307aad (writes NAMESPACE_ALLOCATION_V4.json); (2) activation of registration/ACTIVE_REGISTRATION_V4.json binding the approval, the allocation, the schedule hashes and the runtime identity, followed by a clean-clone check and a commit (the V4 activation step is not yet written; it follows the 0364164c activation pattern); (3) a further separate EXECUTION_AUTHORIZATION_V4.json before `node campaign-v4.mjs run A`. No step is authorized by this result.
+
+CORRECTIONS (mine, recorded additively): statistical-validity.json had a Clopper-Pearson lower-bound solver error, an over-strict verdict criterion and an incoherent stress variant (preserved; superseded by statistical-validity-v2.json). The candidate builder bound its own (then empty) stdout log; the output was moved to evidence/successor-v4-preflight/ and the bound empty file restored (BOUND_LOG_NOTE.md). The first OOD_SHAPES parity run was killed by the 2-hour background limit before writing anything and was rerun once on its own.
+
+LIMITATIONS: owner-governed (same person designs, holds custody and executes; blinding procedural; no independent review); claims restricted to valid-menu worlds; 222/9,456 spent worlds show a duplicated dependency relationship without menu effect (native generator behaviour, neither rejected nor repaired); the 1,000 ms lock-time abort risk is unchanged; TCA and incumbent Prime not testable; the result cannot certify Stage 3H canonically or establish MoE gain.

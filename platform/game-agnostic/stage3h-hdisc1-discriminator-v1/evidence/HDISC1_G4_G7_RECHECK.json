@@ -1,0 +1,274 @@
+{
+ "schema": "HDISC1_G4_G7_RECHECK_V1",
+ "authority": "R0",
+ "campaignId": "STAGE3H-H-DISC-1",
+ "recordedAt": "2026-11-15T05:58:32.682Z",
+ "observedAtHead": "7b8c2edd5e8f945e817561f345d360f409a198c8",
+ "branch": "codex/stage3h-entry-conditions",
+ "runtime": {
+  "used": "v26.7.0 darwin-arm64 (/opt/homebrew/bin/node)",
+  "pinned": "v26.7.0 darwin-arm64",
+  "warning": "The default node on this shell PATH is v22.22.2 (nvm). Run with it and G3 reports RUNTIME_DIFFERS_FROM_PIN and bundle verify reports RUNTIME_MISMATCH. Every command here, and every owner step, must use the pinned runtime."
+ },
+ "statement": "A re-verification of entry conditions G4-G7 and their G3 dependency against the current checkout. It changes no gate, issues no bundle, attests no backup, opens no population and trains nothing. Passing provenance checks is not scientific qualification.",
+ "realGate": {
+  "command": "node readiness/campaign-entry-gate.mjs --probe",
+  "decision": "NO_GO",
+  "passed": "4 of 7",
+  "conditions": {
+   "G1_VERIFIED_SOURCE_CUSTODY": "PASS",
+   "G2_VERIFIED_EXCLUDED_POPULATION_ENFORCEMENT": "PASS",
+   "G3_REPRODUCIBLE_EVALUATION_ENVIRONMENT": "FAIL: NO_ISSUED_EVIDENCE_BUNDLE_MANIFEST; BUNDLE_MANIFEST_NOT_BOUND_BY_A_CAMPAIGN_DECLARATION; EVIDENCE_BUNDLE_NOT_VERIFIED; OWNER_ISSUANCE_NOT_VERIFIED",
+   "G4_INDEPENDENTLY_RECOVERABLE_EVIDENCE": "FAIL: NO_BACKUP_ACCEPTANCE_RECORD; BACKUP_ACCEPTANCE_RECORD_NOT_COMMITTED; BACKUP_ACCEPTANCE_RECORD_NOT_VALID; BACKUP_DOES_NOT_BIND_ISSUED_BUNDLE",
+   "G5_FROZEN_SCIENTIFIC_PROTOCOL": "PASS",
+   "G6_NO_UNCOMMITTED_SOURCE_DEPENDENCY": "FAIL: PROTECTED_SOURCE_NOT_BUNDLE_VERIFIED:29 files; PROTECTED_EVALUATION_SOURCE_REQUIRES_VERIFIED_ISSUANCE",
+   "G7_NO_PRIVILEGED_INFERENCE_LEAKAGE": "PASS"
+  },
+  "equalsCommittedRecord": {
+   "file": "platform/game-agnostic/stage3h-hdisc1-discriminator-v1/evidence/HDISC1_ENTRY_CONDITIONS.json",
+   "gateIdenticalApartFromTheProbe": true,
+   "declarationSha256Equal": true
+  },
+  "outputSha256": "dbbaf2400bdc636b58b4fbbd1f39accdce9436e4cf5ae1e7b0fb98c02ad09707"
+ },
+ "softwareTests": {
+  "command": "node --test campaign/*.test.mjs readiness/entry-gate.test.mjs discriminator/*.test.mjs protocol/*.test.mjs audit/*.test.mjs",
+  "tests": 82,
+  "pass": 82,
+  "fail": 0
+ },
+ "G5_frozenProtocol": {
+  "status": "PASS (preserved)",
+  "verifyFreeze": {
+   "ok": true,
+   "problems": []
+  },
+  "freezeCommit": "aa170d67974574f6a2080fe21bc6d70e56258476",
+  "independentChecks": {
+   "freezeRecordHashEqualsHeadBlobOfFrozenPreregistration": true,
+   "declarationProtocolSha256EqualsFreezeRecord": true,
+   "boundSourceHashes": 180,
+   "equalToHeadBlobAndWorkingTree": 151,
+   "protectedOverlayNotInHeadButEqualToWorkingTree": 29,
+   "otherMismatches": 0
+  },
+  "unchanged": [
+   "family split m=19 t=9",
+   "18-configuration grid and joint five-arm selection rule",
+   "executionAuthorized=false",
+   "experimentFreezeRequired=true",
+   "delegationEnabled=false"
+  ],
+  "amendmentNeeded": false,
+  "note": "No frozen source or runtime was changed by this re-check, so no prospective amendment was prepared."
+ },
+ "G7_inferenceIsolation": {
+  "status": "PASS (preserved)",
+  "committedAudit": {
+   "WORKING_TREE_AUDIT": "PASS",
+   "COMMITTED_SOURCE_AUDIT": "PASS",
+   "files": 12,
+   "sourceHash": "83dbd6125f13a35cbc98394d8384f77a3dadd306355a657e4c7e073dd4604a93",
+   "violations": []
+  },
+  "cleanExportLiveCall": {
+   "status": "NOT_TRAINED",
+   "decision": "ABSTAIN",
+   "reason": "DISCRIMINATOR_NOT_TRAINED",
+   "menu": 7,
+   "complete": true,
+   "sourceHash": "83dbd6125f13a35cbc98394d8384f77a3dadd306355a657e4c7e073dd4604a93",
+   "decisionDigest": "0a83acb6e72c7d8533f45e6a9b3429eaa6da4c5661b85f1da59d4fce1721e79c",
+   "canDispatch": false,
+   "executeRefusedWith": "EXECUTION_OR_MUTATION_REQUESTED"
+  },
+  "cleanTransportCloneWithoutAnyOverlay": {
+   "G7": "PASS",
+   "G2": "PASS",
+   "meaning": "With no protected source, no local data and no custody files present, the inference closure still links and passes. Inference therefore cannot be reading evaluator labels, simulator state or evaluator-only modules."
+  },
+  "recommendationOnly": {
+   "canDispatch": false,
+   "executeRefusedWith": "EXECUTION_OR_MUTATION_REQUESTED",
+   "untrainedDecision": "ABSTAIN / DISCRIMINATOR_NOT_TRAINED"
+  },
+  "mixture": {
+   "command": "node scripts/mixture/verify.mjs",
+   "pass": true,
+   "finalDecisionsReproduced": 700,
+   "disjointGroups": 96,
+   "inferenceClosureFiles": 16,
+   "modelHash": "4cf9d965cd55e8c2f0257548bedcd8ae8f183c82a990d9b7c32407f795a39024",
+   "calibrationEnabled": false,
+   "publicDelegationDisabled": true,
+   "status": "experimental; untracked; not committed by this re-check"
+  }
+ },
+ "G6_sourceProvenance": {
+  "status": "FAIL (unchanged): 29 protected files await a verified issued bundle",
+  "closure": {
+   "files": 180,
+   "trackedEqualsHead": 151,
+   "trackedModified": 0,
+   "untrackedOther": 0,
+   "unresolved": 0,
+   "protectedFiles": 29
+  },
+  "runtimeDataDependencyScan": {
+   "method": "every path literal in the 180 bound source files, resolved against the file, its stage, evidence/, work/, models/, the lane root and the repository",
+   "resolvedToExistingFiles": 52,
+   "committedAtHeadOrListedInTheBundleManifest": 51,
+   "other": 1,
+   "otherExplained": "campaign/population.mjs reads manifest.json inside its own future population directory under work/; the literal also matches an unrelated untracked platform/game-agnostic/manifest.json. Not a dependency.",
+   "inheritedModelsTrackedAtHead": [
+    "stage3h-sk1-safety-kernel-v1/models/SK1_MODEL.json",
+    "stage3h-hw4-value-band-v1/models/V1_PUBLIC_ONLY_C10_BASE_SAFE_FIRST.json",
+    "stage3h-final-review-handoff/amendments/v3/contract-v3.json"
+   ]
+  },
+  "dynamicImports": "The only dynamic imports in the closure are the exclusion equivalence/pin tools (historical loaders, working tree only) and the audit clean-export harness. Their targets resolve inside the same 180 files plus the 29 protected files.",
+  "branchHistory": {
+   "protectedBlobsInARealTransportCloneOfThisBranch": "0 of 31",
+   "method": "git clone --no-local --single-branch; git cat-file -e for the blob id of every custody-listed file"
+  }
+ },
+ "sameDeviceRehearsal": {
+  "label": "SAME_DEVICE_REHEARSAL_NOT_AN_INDEPENDENT_RESTORE",
+  "where": "a 0700 scratch directory on the same internal disk; deleted afterwards, including every copied protected file",
+  "what": "git clone --no-local of this branch, then exactly the 57 files of the draft manifest copied over it",
+  "cleanCloneAlone": {
+   "decision": "NO_GO",
+   "passed": "2 of 7",
+   "conditions": {
+    "G1_VERIFIED_SOURCE_CUSTODY": "FAIL: CUSTODY_IDENTITY_LIST_UNREADABLE; NO_PROTECTED_IDENTITIES_LISTED; CUSTODY_GUARD_NOT_INTACT",
+    "G2_VERIFIED_EXCLUDED_POPULATION_ENFORCEMENT": "PASS",
+    "G3_REPRODUCIBLE_EVALUATION_ENVIRONMENT": "FAIL: NO_ISSUED_EVIDENCE_BUNDLE_MANIFEST; BUNDLE_MANIFEST_NOT_BOUND_BY_A_CAMPAIGN_DECLARATION; EVIDENCE_BUNDLE_NOT_VERIFIED; OWNER_ISSUANCE_NOT_VERIFIED",
+    "G4_INDEPENDENTLY_RECOVERABLE_EVIDENCE": "FAIL: NO_BACKUP_ACCEPTANCE_RECORD; BACKUP_ACCEPTANCE_RECORD_NOT_COMMITTED; BACKUP_ACCEPTANCE_RECORD_NOT_VALID; BACKUP_DOES_NOT_BIND_ISSUED_BUNDLE",
+    "G5_FROZEN_SCIENTIFIC_PROTOCOL": "FAIL: HDISC1_PREREGISTRATION_NOT_VERIFIED",
+    "G6_NO_UNCOMMITTED_SOURCE_DEPENDENCY": "FAIL: UNRESOLVED:platform/game-agnostic/ascii-suite/v21/freeze.mjs; UNRESOLVED:platform/game-agnostic/ascii-suite/v3/common.mjs; UNRESOLVED:platform/game-agnostic/ascii-suite/v3/controllers.mjs; UNRESOLVED:platform/game-agnostic/ascii-suite/v3/factory-model.mjs; UNRESOLVED:platform/game-agnostic/ascii-suite/v31/sentinel.mjs",
+    "G7_NO_PRIVILEGED_INFERENCE_LEAKAGE": "PASS"
+   }
+  },
+  "bundleVerify": {
+   "result": "EVIDENCE_BUNDLE_VERIFIED",
+   "entries": 57,
+   "presentAndMatching": 57,
+   "canLink": true,
+   "filesInLinkClosure": 154,
+   "outputSha256": "821448c3fe9621f539f86b9a4139d254ebdc478d8c40f709b9c57d11ae4822fa",
+   "manifest": "the DRAFT manifest (recipient placeholder); not an issued bundle"
+  },
+  "afterOverlay": {
+   "decision": "NO_GO",
+   "passed": "4 of 7",
+   "conditions": {
+    "G1_VERIFIED_SOURCE_CUSTODY": "PASS",
+    "G2_VERIFIED_EXCLUDED_POPULATION_ENFORCEMENT": "PASS",
+    "G3_REPRODUCIBLE_EVALUATION_ENVIRONMENT": "FAIL: NO_ISSUED_EVIDENCE_BUNDLE_MANIFEST; BUNDLE_MANIFEST_NOT_BOUND_BY_A_CAMPAIGN_DECLARATION; EVIDENCE_BUNDLE_NOT_VERIFIED; OWNER_ISSUANCE_NOT_VERIFIED",
+    "G4_INDEPENDENTLY_RECOVERABLE_EVIDENCE": "FAIL: NO_BACKUP_ACCEPTANCE_RECORD; BACKUP_ACCEPTANCE_RECORD_NOT_COMMITTED; BACKUP_ACCEPTANCE_RECORD_NOT_VALID; BACKUP_DOES_NOT_BIND_ISSUED_BUNDLE",
+    "G5_FROZEN_SCIENTIFIC_PROTOCOL": "PASS",
+    "G6_NO_UNCOMMITTED_SOURCE_DEPENDENCY": "FAIL: PROTECTED_SOURCE_NOT_BUNDLE_VERIFIED:29 files; PROTECTED_EVALUATION_SOURCE_REQUIRES_VERIFIED_ISSUANCE",
+    "G7_NO_PRIVILEGED_INFERENCE_LEAKAGE": "PASS"
+   },
+   "softwareTests": "82 of 82",
+   "verifyFreeze": "ok",
+   "committedInferenceAudit": "PASS",
+   "identicalToTheLiveTree": true
+  },
+  "acceptanceConditionsRehearsed": {
+   "3_sk1_check_in_the_restored_copy": "SK1_CHECK_PASS with the 57 bundle files",
+   "2_reproducibility_status_verify_in_the_restored_copy": {
+    "with57BundleFilesOnly": "SK2F_REPRO_STATUS_VERIFY_FAILED (limitation3_localData 305 -> 19 files; 298 unexpected inventory rows)",
+    "withAll305Sk1WorkFiles": "SK2F_REPRO_STATUS_VERIFY_PASS",
+    "finding": "The 57-file evidence bundle alone does not satisfy acceptance condition 2. The backup scope does, because backup.mjs copies all 305 SK1 work files. The independent restore must therefore be of the BACKUP, not of the bundle alone. No tool or record is wrong; the two scopes differ by design."
+   }
+  },
+  "showsOnly": "that committed source plus the listed bundle contents reproduce the live result with no undeclared local dependency. It does not show recoverability after loss of this disk."
+ },
+ "gatePathDryRun": {
+  "label": "SYNTHETIC_RECORDS_IN_A_DELETED_THROWAWAY_CLONE__NOTHING_ISSUED_NOTHING_ATTESTED",
+  "why": "to learn before an owner ceremony whether anything other than the two owner acts stands between the current state and GO",
+  "records": "issuer and attester named \"SYNTHETIC REHEARSAL - NOT AN ISSUANCE / NOT AN ATTESTATION\"; they existed only in the scratch clone and were deleted with it. No such record exists in this repository.",
+  "uncommittedRecords": "gate stayed NO_GO and added CAMPAIGN_DECLARATION_NOT_COMMITTED: uncommitted records do not pass",
+  "withValidCommittedIssuance": {
+   "decision": "NO_GO",
+   "passed": "6 of 7",
+   "conditions": {
+    "G1_VERIFIED_SOURCE_CUSTODY": "PASS",
+    "G2_VERIFIED_EXCLUDED_POPULATION_ENFORCEMENT": "PASS",
+    "G3_REPRODUCIBLE_EVALUATION_ENVIRONMENT": "PASS",
+    "G4_INDEPENDENTLY_RECOVERABLE_EVIDENCE": "FAIL: NO_BACKUP_ACCEPTANCE_RECORD; BACKUP_ACCEPTANCE_RECORD_NOT_COMMITTED; BACKUP_ACCEPTANCE_RECORD_NOT_VALID; BACKUP_DOES_NOT_BIND_ISSUED_BUNDLE",
+    "G5_FROZEN_SCIENTIFIC_PROTOCOL": "PASS",
+    "G6_NO_UNCOMMITTED_SOURCE_DEPENDENCY": "PASS",
+    "G7_NO_PRIVILEGED_INFERENCE_LEAKAGE": "PASS"
+   }
+  },
+  "withValidCommittedAcceptanceAsWell": {
+   "decision": "GO",
+   "passed": "7 of 7"
+  },
+  "afterThoseCommits": {
+   "verifyFreeze": "ok (binding the manifest hash in the declaration does not disturb the freeze)",
+   "reproducibilityStatusVerify": "SK2F_REPRO_STATUS_VERIFY_PASS",
+   "runnerUnderSyntheticGo": "refused with SCIENTIFIC_IMPLEMENTATION_REVIEW_REQUIRED; no work directory created"
+  },
+  "conclusion": "The two owner acts are the only missing inputs to G3, G4 and G6. No hidden sequencing defect was found. GO would still not start a run."
+ },
+ "G3_issuance": {
+  "status": "FAIL (unchanged)",
+  "missing": "an owner-issued manifest, a committed SENTINEL_EVIDENCE_BUNDLE_ISSUANCE_V1 record, and the manifest hash bound in the declaration",
+  "whyNotDoneHere": "The procedure requires a named human owner as issuer, an owner-held encrypted container and OFFLINE_MEDIA_ONLY transport. A model or script may not issue."
+ },
+ "G4_independentRecovery": {
+  "status": "FAIL (unchanged)",
+  "storageFound": {
+   "volumes": [
+    "Macintosh HD"
+   ],
+   "externalDisks": "none (diskutil list external shows only the iOS simulator disk image, which is virtual and on the internal disk)",
+   "timeMachine": "No destinations configured",
+   "localSearchForExistingRecords": "no HDISC1_BUNDLE_ISSUANCE.json, HDISC1_ISSUED_BUNDLE_MANIFEST.json or HDISC1_BACKUP_ACCEPTANCE.json exists"
+  },
+  "backupPlanDryRun": {
+   "result": "DRY_RUN_NOTHING_WRITTEN",
+   "total": "2.24 GiB",
+   "requiredFreeSpace": "3.05 GiB",
+   "gitBundleRefs": 13,
+   "sk1WorkFiles": 305,
+   "protectedOverlayFiles": 31,
+   "custodyControlFiles": 7
+  },
+  "independentRestorePerformed": false
+ },
+ "cloud": {
+  "request": "The owner asked for the cloud to be used.",
+  "finding": "Under the committed custody procedure the cloud cannot satisfy G3, G4 or G6, as storage or as compute.",
+  "reasons": [
+   "backup.mjs refuses cloud-synced and network destinations (DESTINATION_IS_CLOUD_SYNCED, DESTINATION_IS_NETWORK_MOUNT) and states: never cloud storage, never a network share, never a remote git host, never a push",
+   "the acceptance validator requires medium.class OFFLINE_EXTERNAL and a restore labelled RESTORE_ON_DIFFERENT_DEVICE, with an owner attestation that the medium was detached",
+   "the bundle manifest declares transport OFFLINE_MEDIA_ONLY and the rule \"never uploaded, never pushed\"",
+   "a cloud session starts from the remote; this branch has no upstream, origin/main is 64 commits behind local main, and the owner-installed pre-push guard refuses every push (re-verified: pass)",
+   "a cloud compute instance is not an independent restore and has no custody review"
+  ],
+  "notDone": [
+   "nothing was uploaded, pushed, synced or transmitted",
+   "no provider was contacted",
+   "no gate, validator or record schema was changed"
+  ],
+  "whatWouldBeNeeded": "An explicit owner custody amendment, made prospectively and recorded, that defines an encrypted remote medium class and its acceptance conditions. That is a policy decision that relaxes the never-uploaded rule; it is not made here. It would still need a restore on a second physical device and an owner attestation.",
+  "cloudUseThatIsAvailable": "the six-file synthetic smoke package in platform/game-agnostic/cloud-smoke carries no protected content; it is unrelated to G4-G7"
+ },
+ "notDone": {
+  "bundleIssued": false,
+  "backupWritten": false,
+  "independentRestorePerformed": false,
+  "ownerAttestationMade": false,
+  "populationAllocatedOrGenerated": false,
+  "trainingRun": false,
+  "validationLabelsOpened": false,
+  "frozenSourceChanged": false,
+  "pushed": false
+ },
+ "fullStage3HCertified": false,
+ "delegationEnabled": false
+}

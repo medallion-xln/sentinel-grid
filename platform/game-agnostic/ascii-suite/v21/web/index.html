@@ -1,0 +1,18 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Sentinel ASCII Worlds 2.1</title><link rel="stylesheet" href="/style.css"></head>
+<body>
+<header><strong>SENTINEL GRID / ASCII WORLDS 2.1</strong><span>R0 LOCAL SIM ONLY / DIAGNOSTIC / TASK CONTROLLERS, NOT CERTIFIED PRIME / NO ONLINE LEARNING</span></header>
+<nav aria-label="Games"><button data-game="pong">1 PONG</button><button data-game="platformer">2 SIDE SCROLLER</button><button data-game="fighter">3 FIGHTER</button><button data-game="racing">4 RACING</button></nav>
+<section class="controls" aria-label="Simulation controls">
+<label>CONTROL <select id="mode"><option value="sentinel" selected>TEMPORAL TASK PLANNER V3</option><option value="prime">FROZEN TASK PLANNER V2</option><option value="baseline">RULE BASELINE</option><option value="manual">MANUAL</option></select></label>
+<label>OBSERVATIONS <select id="observation-condition"><option value="NORMAL">NORMAL</option><option value="DELAY3">3-TICK DELAY</option><option value="JITTER">JITTER 0-5 TICKS</option><option value="STALE_REPEAT">DELAY + STALE REPEAT</option><option value="MISSING">MISSING 4/11 FRAMES</option><option value="PARTIAL">PARTIAL</option><option value="LATENCY_1">EQUAL FIGHTER LATENCY 1</option><option value="LATENCY_3">EQUAL FIGHTER LATENCY 3</option><option value="LATENCY_5">EQUAL FIGHTER LATENCY 5</option></select></label>
+<label>SEED <input id="seed" type="number" value="1" min="0" max="4294967295"></label>
+<label>DIFFICULTY <select id="difficulty"><option>1</option><option>2</option><option selected>3</option><option>4</option><option>5</option></select></label>
+<label>FIGHTER OPPONENT <select id="style"><option value="ADAPTIVE">V2 ADAPTIVE</option><option>AGGRESSIVE_PRESSURE</option><option>DEFENSIVE_TURTLE</option><option>COUNTER_PUNISHER</option><option>ANTI_AIR_SPECIALIST</option><option>ADAPTIVE_MIXUP</option><option>MIRROR_V2</option></select></label>
+<label>TICKS/S <select id="speed"><option>5</option><option selected>10</option><option>20</option><option>40</option></select></label>
+<button id="play">RUN</button><button id="step">STEP</button><button id="reset">RESET</button><button id="fullscreen">FULL SCREEN</button><button id="export">EXPORT REPLAY</button>
+</section>
+<main><section id="world-section"><h1 id="title">WORLD</h1><pre id="world" aria-label="ASCII game field"></pre></section>
+<aside><section><h2>TEMPORAL PERFORMANCE / DIAGNOSTIC</h2><pre id="temporal"></pre></section><section><h2>DIAGNOSTIC</h2><pre id="diagnostic"></pre></section><section><h2>WORLD TRUTH / UI ONLY, NOT PLANNER INPUT</h2><pre id="state"></pre></section><section><h2>DECISION / ACTIONS</h2><pre id="decision"></pre><div id="actions"></div></section><section><h2>TRACE</h2><pre id="trace"></pre></section><section><h2>METRICS / DIAGNOSTIC</h2><pre id="metrics"></pre></section></aside></main>
+<footer><div id="legend"></div><div id="keys"></div><div id="status" role="status">STARTING / no calibrated confidence available</div></footer>
+<script type="module" src="/app.mjs"></script></body></html>

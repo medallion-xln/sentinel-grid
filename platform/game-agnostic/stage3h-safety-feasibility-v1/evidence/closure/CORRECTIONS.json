@@ -1,0 +1,35 @@
+{
+ "schema": "STAGE3H_SAFETY_CLOSURE_CORRECTIONS_V1",
+ "authority": "R0",
+ "records": [
+  {
+   "id": "C1",
+   "artifact": "evidence/assumption-check.json",
+   "error": "The first version reported classesWithRobustSafeActionOutsideArms = 0 because the aggregate read a misnamed field (robustSafeActionOutsideArms instead of robustSafeActionOutsideArmsExists).",
+   "correction": "assumption-check.mjs fixed; file regenerated; per-class data identical; corrected value 9.",
+   "preservation": "The erroneous file was deleted before any commit and its bytes were NOT preserved. Its only difference from the committed file is that aggregate value (0 instead of 9). This record replaces it.",
+   "impact": "none on conclusions; RESULT.md reports the corrected value"
+  },
+  {
+   "id": "C2",
+   "artifact": "RESULT.md (feasibility study)",
+   "error": "States \"The lane is not committed.\"",
+   "correction": "Superseded: the owner commit 8749fd44 committed the whole lane. RESULT.md is left unedited as the original record.",
+   "impact": "none on conclusions"
+  },
+  {
+   "id": "C3",
+   "artifact": "RESULT.md and earlier summaries",
+   "error": "Reported \"22,022 twin worlds\".",
+   "correction": "22,022 is the number of publicly equivalent twin RECORDS that differ from their base (22,024 equivalent records, 2 reproduce the base). Distinct equivalent non-base worlds: 21,998. All constructed twin records: 25,212 (22,024 equivalent + 3,188 not equivalent), 25,186 distinct non-base worlds; all are in DIAGNOSTIC_WORLD_EXCLUSIONS.json.",
+   "impact": "counts only"
+  },
+  {
+   "id": "C4",
+   "artifact": "evidence/closure/ADMISSIBILITY.json perWitness FRESH_CHECK 1655 labelsReproduce=false",
+   "error": "The audit compares the frozen metrics.mjs score().regret (mean over a selected set) with the search record's max-over-set regret; S0 returned the 2-action set {3,5} there.",
+   "correction": "Introduction flags reproduce exactly in both worlds (w1: choosing N introduces vs B; w2: choosing B introduces vs N); max-over-set regrets 184/146 match the search record, means are 111/73. For the 9 valid witnesses every selection is a single action and both summaries coincide. 1655 remains invalid because member 5 of the S0 set is non-catastrophic in both worlds (regret 38 and 0).",
+   "impact": "none; the invalid witness is excluded either way"
+  }
+ ]
+}

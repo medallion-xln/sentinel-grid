@@ -1,0 +1,5 @@
+import test from 'node:test';import assert from 'node:assert/strict';
+import {trainExploration} from './train.mjs';import {classExamples} from './dataset.mjs';import {verifyAllocation,populationOf} from './native.mjs';import {evaluate} from './evaluate.mjs';
+test('training rejects validation before any encoding or label fitting',()=>{assert.throws(()=>classExamples({population:'VALIDATION'},null,'M3'),/EXPLORATION/);assert.throws(()=>trainExploration([],{}),/BINDING/);});
+test('evaluation rejects undersized and family-concentrated populations',()=>{assert.throws(()=>evaluate({classes:[]}),/POPULATION_INVALID/);const classes=Array.from({length:900},(_,i)=>({id:'synthetic'+i,population:'VALIDATION',family:'one'}));assert.throws(()=>evaluate({classes}),/FAMILY_SUPPLY/);});
+test('allocation integrity and family split cannot silently change',()=>{assert.throws(()=>verifyAllocation({schema:'bad',digest:'bad'}),/ALLOCATION_INVALID/);assert.equal(populationOf('synthetic-family'),populationOf('synthetic-family'));assert.ok(['VALIDATION','EXPLORATION'].includes(populationOf('synthetic-family')));});

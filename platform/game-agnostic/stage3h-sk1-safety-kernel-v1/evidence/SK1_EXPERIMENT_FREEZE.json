@@ -1,0 +1,163 @@
+{
+ "schema": "SK1_EXPERIMENT_FREEZE_V1",
+ "authority": "R0",
+ "stage": "STAGE3H-SK1",
+ "frozenAt": "2026-11-11T21:03:59.776Z",
+ "node": "v26.7.0",
+ "repoHead": "ed6cbc8cd75df489f75db4096259bcd58bd64232",
+ "codeAndModelsEqualCommittedHead": true,
+ "validationOutcomesLockedAtFreeze": true,
+ "validationOutcomesAccessedBeforeFreeze": false,
+ "evaluationDependenciesDifferingFromHead": [
+  "stage3h-hw1-dev-v1/public-projection.mjs"
+ ],
+ "evaluationDependencyNote": "Evaluation-side files only (never in the kernel inference graph). stage3h-hw1-dev-v1/public-projection.mjs carries the pre-existing uncommitted, identity-preserving import cut; the kernel does not import it.",
+ "codeHashes": {
+  "kernel/contract.mjs": "fbd57bce5d404fbca372531b1124aa753ccb0b400eb380a619e3431610654427",
+  "kernel/index.mjs": "a6b96ec1fa288c553d73ab4e03747dd0a6e6e1e6f7afe78ca2104794f58bff2f",
+  "kernel/ranking.mjs": "3f8a7adb6cd18ebb6ef07e2f06a4ebbf021ddbe0d0d39853ec2f6f3195dbf27a",
+  "kernel/record.mjs": "e529ecc09dc647b80997450b98b1d991b559171ab5e649e1d3152fa17ae6761c",
+  "kernel/risk.mjs": "94a8b3ed5b6504c9e8f378ba1ffc8e0016e030684aed24f26743f3f203752996",
+  "kernel/semantics.mjs": "9441a984946443ecbfc1f5d48f8302826ec7aa938f78b2ff20d1bffc46d1db44",
+  "adapters/forge/evidence.mjs": "caa3c2577c9269ed27d19fdca2878011ff337400be0dcb067db5d51396e95cb9",
+  "adapters/forge/features.mjs": "d8077bed1cd55885fdf237db19414ebe0fcf347504dcaca8d9df98e707ff4d84",
+  "adapters/forge/projection.mjs": "e2a050b2f25dfe6937cd9194ee0fafa4cc3a421bb894cb3e9c3bf94b91069f1d",
+  "adapters/rescue/adapter.mjs": "61e10391fa5a48fe3a6f16d5bcdc182295c74b7fbc490bda674ea9c5d365ef8a",
+  "api/host.mjs": "9dfb89914ab66905aa05f5f17562bb32cc7cb91aedf0b47431fa255837128bc2",
+  "api/recommend.mjs": "b7c47a14f367998e2df0ab41160cf324c19fa6bff38899bf9b7b3651769f8d52",
+  "infra/allocator.mjs": "5d229c57ca84036c665db63051247f6bac370a73e8ba092e1863e69cdc2a803f",
+  "infra/audit-class.mjs": "526eb5f60150805a12666c8db0703e91aed438065ac2c80250e407278bfcdf8a",
+  "infra/build-class.mjs": "44cd5b01d6d258aef23961005acae17d17809a5183a95927695d81d387447d8e",
+  "infra/common.mjs": "234c8d0da36e1a353321e4744b66ef976fd908d2fb221ef87d94af6e4ab71f25",
+  "infra/custody-manifest.mjs": "258c04a95a45ad95ee925abbaa34b979f856891a08ce7331721be605efbaac2b",
+  "infra/dataset.mjs": "8ab5cd8a4a793707c4da2571137157ca4fd970b62d487321d7a961c93d5efbfb",
+  "infra/derive-projection.mjs": "6fb5304c727c80cfb3629d06fc8946de869013e5c8dbf4aebf42197d1513332c",
+  "infra/dev-cv.mjs": "b2524080c4e3d3b4a10e9c54aecae2550b0194b055175467a95bcee9493f5eba",
+  "infra/dev-fixture.mjs": "1ae5a726eae187b8301114b1fe4c28a9d1f2e965d0953d1c9103c672c70a1a2f",
+  "infra/evaluate.mjs": "e2097a2af5ba8fda28315deec6f882dafe24fde641671fa4ffefc1c7434f2378",
+  "infra/evidence-source.mjs": "149eaa172e672d364e1cc6160c9ee0580aa536653575d51ef106e5fbb517c011",
+  "infra/exclusion-registry.json": "dc801e25bf737f5aa94938f67e536d5d1eccf0717a405f9a7cd986a07f1539ce",
+  "infra/exclusions.mjs": "fbfa75285fb38af6c604dc5478c03583ea12f21b93ea1355f9519a8151781cb6",
+  "infra/freeze.mjs": "627583bd8db0677ef0c7751893d1ff40bec8806720f8e0b3b7601984414222c5",
+  "infra/gate0-verify.mjs": "c8d7c6108ad7c6456e43647e7bd765310812b18d66e2832efdfb2d57760173d6",
+  "infra/gbdt.mjs": "cb34b457c678d6677ddb5d35bfe4a956668f9fe50721a1c5923125de055294ee",
+  "infra/graph-audit.mjs": "96ff41c033c6dafda84b5b545daaa94c0027e638de8b2f5597ecb5f06d69ef3f",
+  "infra/pool.mjs": "640d5240c72464d32bd5a504f37db09029623e5ef88cb4476b52b12187c196c7",
+  "infra/population.mjs": "4d77d2597b95b116a2eb2ee0b9fcc9a999e14fb5fd654b8072c8073c63010d8d",
+  "infra/run.mjs": "8fdf37efdcff9fec6b504f782e9f5af27e0a81e41571cd8667ce02be4508f90f",
+  "infra/screen.mjs": "7d469c07293f65d48d213e30e48bde50992f40af9fd403e541af1536954ff0bc",
+  "infra/train.mjs": "b740273f2c099bb5e34d240d21dc6605f0ff4eb85b578f333b03a2aae2494148"
+ },
+ "evaluationDependencies": {
+  "stage3h-hw1-dev-v1/hw1-eval.mjs": "a91947ae45e55d4901c8598522f953ff49a9b83994aba78bb82c94efc09b214e",
+  "stage3h-hw1-dev-v1/i2-screen.mjs": "6ae1b11635ac27cd7e6f372c9b7a6016942943f1cb60a0a71f4ec7734591c3f7",
+  "stage3h-hw1-dev-v1/i2-build-class.mjs": "071b1d4f9b908a52e4414a3280cd5b10e086d59f0645187fed5e7d7da6649eb4",
+  "stage3h-hw1-dev-v1/i2-registry.mjs": "103f1c54f82ae924e8dcdf25d55d97c4c6adb5b5c9f486c0ca27ac75c1b3fd6f",
+  "stage3h-hw1-dev-v1/i2-pcd.mjs": "922b42541c2d1aa999e692bf24db8f1789026a454f82643721b656ab1653a75f",
+  "stage3h-hw1-dev-v1/transforms.mjs": "556dde4c2af3b3e8e1bcb45857e3419d1279bb21a3d93d96faf7f175d3c0d016",
+  "stage3h-hw1-dev-v1/i3-audit-class.mjs": "776a2d66bc633c77568ccd28d2cd5e193351669d9f23e2adc15778e955d72d87",
+  "stage3h-hw1-dev-v1/i3-features.mjs": "4f6da6af69020c9a4b9ef548541d93b473a56d0f3aba8e486a75101b8537cb50",
+  "stage3h-hw1-dev-v1/public-projection.mjs": "c4f9532e0771e025513122052128b0d14185e4abcde3ace9de9de5d77db6c099",
+  "stage3h-hw4-value-band-v1/hw4-policy.mjs": "f0ba4b815bf12ba919342db8d67595a9cf44cbe86447261dd45566171d4056f0",
+  "stage3h-hw4-value-band-v1/hw4-features.mjs": "43c21ae939d5262ecedb31d74c296f72d826403802ecc6540c5da7e02dbb36c0",
+  "stage3h-failure-diagnosis-v1/lib.mjs": "ba19b5fae7567106cb5ffbfee20ee723e69ca223a20ef41425ed42d7ce4b117b",
+  "stage3h-safety-feasibility-v1/twins.mjs": "0d1218c130c716735f5e0b454b7ce4d2bf1bad0dd4e983f5e7e3341b4de5d4cb",
+  "stage3h-safety-feasibility-v1/search.mjs": "71ea481a74ffa1051d894e93462e5c226e7e4dab2f99fa9f3ce36917c50877d2",
+  "stage3h-owner-governed-v1/connector.mjs": "a5f71f2291cb35652424baae3919e55118827d1da51f65a60e9479f1a48041b0",
+  "stage3h-wider-action-feasibility-v1/exclusion/strict-index.mjs": "1b064fdf7dcb20aa5b1647b19013c83699581e8dd69e71f26299aa0d32345c62"
+ },
+ "models": {
+  "SK1": {
+   "file": "models/SK1_MODEL.json",
+   "sha256": "683ce6e09c374e7c3a628a53e39f9875d6b8122b6eca8a4b72d58087a0c9efa0",
+   "modelHash": "b479972a3445ccb9d3cf42ac9821aee2f69431e4101b6dbdfdcd76e777968c6b",
+   "ranking": {
+    "contract": "SK1_TIERED_RISK_THEN_REGRET_V1",
+    "z": 1,
+    "tierWidth": 0.1,
+    "tau": 0.2,
+    "oodPenalty": 0.05,
+    "requireEvidence": true
+   }
+  },
+  "SK1_NO_EVIDENCE": {
+   "file": "models/SK1_MODEL_NO_EVIDENCE.json",
+   "sha256": "0cbdfebf432fcbc28e1f20892258015b1bc70210a70b2d31a94278712b3506b3",
+   "modelHash": "234988b5990aced21191ef0f0da88a3581f012372cce174d5d2a8c1731b8d859"
+  },
+  "C10": {
+   "file": "stage3h-hw4-value-band-v1/models/V1_PUBLIC_ONLY_C10_BASE_SAFE_FIRST.json",
+   "sha256": "41ce761cbeeb2c110a1564cc0f28aa7c773f53587045fc5b04fd72d192d5858e"
+  }
+ },
+ "populations": {
+  "EXPLORATION": {
+   "summarySha256": "9450323ecad08e3493ee7d1d1ca013ed372638783e9a9304e1e6058ad79b8189",
+   "classListDigest": "374621943056aba927896850d4aa8b78038bcc3b2acc988b392f179297053de7",
+   "classes": 1000,
+   "registrySha256": "6d876fae1854d01696dda2f00c699b4e9371a333230dbce9696fb2daa661fd33"
+  },
+  "VALIDATION": {
+   "summarySha256": "758ba635b8fde00e2c2e66648261b71e7ec6f31a15b6462143292ad304d65961",
+   "classListDigest": "ed0187ca9c3950e17889b7b6b91c6e598e2b94eb7046dd7f3d65641caa55c724",
+   "classes": 600,
+   "registrySha256": "d309557f4a421caef014a4518cc507d520cbc9117927ae7149e3c2edd3398d3c",
+   "dataFiles": [
+    {
+     "file": "range-0-600-shard-0-of-9.json",
+     "sha256": "93a37687a60d0e91f76cc15a446bd927a201ca5dbf58d27331301e01dc133e06"
+    },
+    {
+     "file": "range-0-600-shard-1-of-9.json",
+     "sha256": "065bc9f5323b15bd867ec1aa4afe1f5d9d7404c71cc326abd4655157a5405cca"
+    },
+    {
+     "file": "range-0-600-shard-2-of-9.json",
+     "sha256": "69df0703df711c2088e892d25c69678fd89d35adadf65aaedd8976e297b0b9a0"
+    },
+    {
+     "file": "range-0-600-shard-3-of-9.json",
+     "sha256": "98e7451cd1e65898ed60df91d5672d85645f250fa8dc488e54080c75f6f12414"
+    },
+    {
+     "file": "range-0-600-shard-4-of-9.json",
+     "sha256": "fa04e2cdd1e765ee2ba98299a029d555992226b858f85bde3419b06883acf5aa"
+    },
+    {
+     "file": "range-0-600-shard-5-of-9.json",
+     "sha256": "f30454ac24539e3983a0560b33d5a299bbc0116d36c75d7d9fbaaf5c3e4d9afa"
+    },
+    {
+     "file": "range-0-600-shard-6-of-9.json",
+     "sha256": "464dd374bd861e00220856fc2dbd9331fd160ba81dbec99a71391d8808d1a603"
+    },
+    {
+     "file": "range-0-600-shard-7-of-9.json",
+     "sha256": "fcbe6c08fbb7623544e102133dbb131e9dfebaa894144276d92393a97e9142d6"
+    },
+    {
+     "file": "range-0-600-shard-8-of-9.json",
+     "sha256": "80512e35564388c36a8e9a8baa14aefd69337e9a6759503fb1477d8f636c2f23"
+    }
+   ]
+  }
+ },
+ "allocationSha256": "458daeeb1a8b60d40aebc320702a6cb3a7e0071a23622493bff2c0eec4b3e16b",
+ "exclusionRegistrySha256": "dc801e25bf737f5aa94938f67e536d5d1eccf0717a405f9a7cd986a07f1539ce",
+ "trainingRecordSha256": "0a20b72ba66967ad64e3dcf5fab50c475c32107c030c1b5fe5cf4d66ec7b471e",
+ "designFreezeSha256": "9ed61c47082de5938368604fd882a384be2d8221a361a018f8b60d292fafb924",
+ "rules": {
+  "introductionsVsS0": 0,
+  "introductionsVsNexus": 0,
+  "illegalActions": 0,
+  "identityViolations": 0,
+  "minMeanNregImprovement": 0.02,
+  "regretUpper95Below": 0,
+  "resamples": 10000,
+  "bootstrapSeed": "HW1_CLUSTER_BOOTSTRAP_V1",
+  "decisionMedianMsMax": 100,
+  "decisionMaxMsMax": 1000,
+  "completeCoverage": true,
+  "catastropheRegret": 100
+ }
+}

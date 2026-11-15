@@ -1,0 +1,694 @@
+{
+  "schema": "STAGE3H1_CANONICAL_ADVANCEMENT_OPEN_V1",
+  "status": "DEVELOPMENT_ONLY_QUALIFIED_NATIVE_BINDINGS_NO_MOE_GAIN",
+  "planHash": "20ffffbb13f6ca35a8e93d7356f992edc91571ec4baab7bd839c52a4d906d456",
+  "sourceClosure": {
+    "files": {
+      "adapters.mjs": "28ec69650b65b2365c2382eee6f2fe73e42ee0fb343cda9e96f73c9679c50501",
+      "audit.mjs": "60718e0bfc5c30d22c00e3fccf998d63b49600d8335b4301580ef63423cda02a",
+      "baseline.mjs": "7c6471ca9d7eac93dc5334bb01bb2b1f248ca8adb0ed8c1239e7e2629f98caeb",
+      "contracts.test.mjs": "5f539a1f709a0771f28f11d47dc82fbf1cee743b855011a09fc13a453288da9c",
+      "evaluate.mjs": "8dd63515b0dfa8d293569f56c949978ff64a769c83d7fd5584b1c980f099b9d3",
+      "evidence.mjs": "2dff64e7bdb14bf95f67bd25e563be109b39a9ac78c4a6f5577588a83cf0618a",
+      "guard.mjs": "4f86edba7b0814a6b5f3edd54ec4642df0a6037b5b803a767ddd98a0dae72163",
+      "inheritance.mjs": "d7e15f58f6e1f166038be320c0f4029ca5d7f0f90b027103177cabe0e205f530",
+      "metrics.mjs": "a018938eed4f6b11fa383674d41f098304a2bd39441de5516a26345ebf396ecc",
+      "nexus-selector-v1-port.mjs": "22d6e83d41d953bac8a9bcc3176580015b055b9b178deb6049a01ac81ac50490",
+      "plan.mjs": "f0fa63baee5be43f206ee649ff42495edbe65e50f0825e262d231f0fc8f51855",
+      "synthesis.mjs": "bb5ec5472e0a84c2a5dc15be4f4ed01f1237134b812aea80aca75bbd9b52488d"
+    },
+    "hash": "5eba9d598950361c11e9514763fb889bf72235e51dfebc6741ce7e1e8ef03013"
+  },
+  "protectedState": {
+    "protectedFilesUnchanged": true,
+    "count": 14447
+  },
+  "inheritance": {
+    "Stage3F": {
+      "status": "PASS_PREVIOUS_READ_ONLY_REPRODUCTION_COMPLETED",
+      "freezeHash": "41748ff68ff16e6a137b53b72eb7203cb62aa0e761bf15c19f7a13b73d4b79a9",
+      "certificateHash": "0fe5d3e24f71015b76f5997771f2474712d2764bc049fc2e90e0144f8d2a08ce",
+      "sourceHashesVerified": true
+    },
+    "Stage3G": {
+      "status": "PASS_FRESH_READ_ONLY_REPRODUCTION",
+      "freezeHash": "686805d655e94e4ecc24a98d965a4e2f33ed8c51c69e746fc11e96022b64f2f5",
+      "certificateHash": "38c5b1b2a89f1da27f367055009879dbc1c7b1e032b757a82f6a032e3abda58a",
+      "freezeBytesVerified": true
+    },
+    "note": "Read-only reproduction results observed during this chat; this function verifies bindings and protected files, not a replacement for those reproduction runs."
+  },
+  "inventory": [
+    {
+      "expertId": "Prime",
+      "status": "EXECUTABLE_BUT_UNBOUND",
+      "SOURCE_ENTRYPOINT": "src/prime/root-puct.js#recommend; legacy public_html/azl/azl-mcts.js",
+      "MODEL_OR_ENGINE_IDENTITY": "inherited ROOT_PUCT_ENGINE_ID; never experimental synthesis",
+      "INPUT_CODEC": "adapter + private simulation state + optional bounded expert context",
+      "OUTPUT_CODEC": "RecommendationPacket visits/means/ranking",
+      "OBSERVATION_REQUIREMENTS": "observation plus clone/step/reward/terminal outcome",
+      "ACTION_RECOMMENDATION_SUPPORT": true,
+      "RANKED_ACTION_SUPPORT": true,
+      "CONFIDENCE_SEMANTICS": "visits/means are search statistics, not probability of correctness",
+      "ABSTENTION_SUPPORT": "terminal inputs rejected; no qualified evidence-only path",
+      "DOMAIN_APPLICABILITY": "game-agnostic known simulator",
+      "PRIVILEGED_DEPENDENCIES": "detached successor/reward REQUIRED",
+      "CERTIFICATION_PROVENANCE": "Stage3F freeze inherited; matched deployable synthesis NOT_TESTABLE"
+    },
+    {
+      "expertId": "Vanguard",
+      "status": "EXECUTABLE_BUT_UNBOUND",
+      "SOURCE_ENTRYPOINT": "public_html/azl/azl-scout.js#AZL.makeScout",
+      "MODEL_OR_ENGINE_IDENTITY": "legacy scout neural net; frozen sgrid-lab/weights/vanguard-v1.f32",
+      "INPUT_CODEC": "AZL.Codec:56 base features + reserved Oracle/relational slots; twelve reference-colony action indices",
+      "OUTPUT_CODEC": "masked policy distribution + current value head",
+      "OBSERVATION_REQUIREMENTS": "food/energy/materials/population/defense/region stats; not Forge entity observation",
+      "ACTION_RECOMMENDATION_SUPPORT": true,
+      "RANKED_ACTION_SUPPORT": "policy probabilities retain inherited index order",
+      "CONFIDENCE_SEMANTICS": "NO confidence head; Net.out default 0.5 is NOT confidence",
+      "ABSTENTION_SUPPORT": "all-masked guard is caller codec responsibility",
+      "DOMAIN_APPLICABILITY": "reference-colony; Forge/ASCII mapping UNBOUND",
+      "PRIVILEGED_DEPENDENCIES": "no future required at inference; inherited distillation used simulator",
+      "CERTIFICATION_PROVENANCE": "legacy lab baseline; NOT Stage3F/G Forge certification"
+    },
+    {
+      "expertId": "Oracle",
+      "status": "EXECUTABLE_NONACTION_CONTRIBUTOR",
+      "SOURCE_ENTRYPOINT": "src/experts/oracle.js#evaluateOracle; src/lab/stage2i4-oracle-v2-assembly.js#assembleOracleV2; stage2l22 assembleOracleV2ConflictRepaired (distinct experimental assembly)",
+      "MODEL_OR_ENGINE_IDENTITY": "Stage2G sentinel-oracle-temporal-v1; later V2 heads NOT silently substituted",
+      "INPUT_CODEC": "observationHistory[tick,channels]; later alpha channel/threshold/polarity semantics",
+      "OUTPUT_CODEC": "bounded temporal micro-unit signals; V2 modular descriptive heads",
+      "OBSERVATION_REQUIREMENTS": ">=3 usable frames for v1; later head-specific 3..24 history/declared semantics",
+      "ACTION_RECOMMENDATION_SUPPORT": "NO Forge action policy",
+      "RANKED_ACTION_SUPPORT": false,
+      "CONFIDENCE_SEMANTICS": "v1 history sufficiency /16 in micro-units, NOT action correctness; V2 mean supported-head confidence NOT comparable",
+      "ABSTENTION_SUPPORT": "v1 sufficientHistory signal; adapter ABSTAIN on insufficiency; V2 head-specific suppression",
+      "DOMAIN_APPLICABILITY": "temporal evidence; no certified Forge action-to-channel mapping",
+      "PRIVILEGED_DEPENDENCIES": "none at inference; later head-certification corpora are evaluation-only",
+      "CERTIFICATION_PROVENANCE": "Stage2G inherited + Stage2I/2L descriptive contracts; no Stage3H DDV certification"
+    },
+    {
+      "expertId": "Nexus",
+      "status": "EXECUTABLE_AND_ACTION_BOUND",
+      "SOURCE_ENTRYPOINT": "src/experts/nexus.js#evaluateNexus + src/lab/stage3c-learned-nexus.js#nexusRelationalSelector",
+      "MODEL_OR_ENGINE_IDENTITY": "sentinel-nexus-relational-v1 + explicitly separate NEXUS_RELATIONAL_SELECTOR_V1",
+      "INPUT_CODEC": "observed coarse entities/relationships + offered type/target/actionId",
+      "OUTPUT_CODEC": "graph-level signals + EXISTING selector action/confidence/top-five ordinal ranking",
+      "OBSERVATION_REQUIREMENTS": "observed entities, coarse depends/supports/threatens graph; legal descriptors",
+      "ACTION_RECOMMENDATION_SUPPORT": true,
+      "RANKED_ACTION_SUPPORT": true,
+      "CONFIDENCE_SEMANTICS": "uncalibrated structural heuristic; often saturates at1; not correctness probability",
+      "ABSTENTION_SUPPORT": "NO_LEGAL_ACTIONS / NO_RELATIONAL_STRUCTURE_TO_READ",
+      "DOMAIN_APPLICABILITY": "native Forge coarse relational tasks; no ASCII action binding",
+      "PRIVILEGED_DEPENDENCIES": "none at invocation; owner lab module also imports evaluators, so faithful source port isolates deployable closure",
+      "CERTIFICATION_PROVENANCE": "Stage3F qualified interface ONLY; old shortcut competence is invalidated; V2 remains candidate"
+    },
+    {
+      "expertId": "Horizon",
+      "status": "EXECUTABLE_BUT_UNBOUND",
+      "SOURCE_ENTRYPOINT": "public_html/azl/azl-strategist.js#AZL.makeStrategist",
+      "MODEL_OR_ENGINE_IDENTITY": "legacy strategist neural net; frozen sgrid-lab/weights/horizon-v1.f32",
+      "INPUT_CODEC": "same legacy 56-feature colony codec and twelve-action indices",
+      "OUTPUT_CODEC": "masked policy + tanh values now/m5/m30/session + sigmoid confidence",
+      "OBSERVATION_REQUIREMENTS": "legacy resource/population/region facts",
+      "ACTION_RECOMMENDATION_SUPPORT": true,
+      "RANKED_ACTION_SUPPORT": "policy distribution on legacy index set",
+      "CONFIDENCE_SEMANTICS": "raw sigmoid, calibration for Forge NOT_ESTABLISHED",
+      "ABSTENTION_SUPPORT": "all-masked input handled by codec, no inherited Forge abstention contract",
+      "DOMAIN_APPLICABILITY": "reference-colony, delayed values on that codec; Forge/ASCII UNBOUND",
+      "PRIVILEGED_DEPENDENCIES": "none at neural inference. zeknova-prime-horizon-delayed-consequences-contract-v1.js is simulator-backed PRIME depth-extension research, NOT Horizon neural evidence",
+      "CERTIFICATION_PROVENANCE": "legacy lab; delayed-consequence contract DEVELOPMENT evaluation-only, no nonprivileged Forge mapping"
+    },
+    {
+      "expertId": "Archimedes",
+      "status": "NO_IMPLEMENTATION_FOUND",
+      "SOURCE_ENTRYPOINT": null,
+      "MODEL_OR_ENGINE_IDENTITY": null,
+      "INPUT_CODEC": null,
+      "OUTPUT_CODEC": null,
+      "OBSERVATION_REQUIREMENTS": "no callable engine located",
+      "ACTION_RECOMMENDATION_SUPPORT": false,
+      "RANKED_ACTION_SUPPORT": false,
+      "CONFIDENCE_SEMANTICS": "unavailable",
+      "ABSTENTION_SUPPORT": "ERROR missing implementation",
+      "DOMAIN_APPLICABILITY": "mechanistic domain only if engine supplied",
+      "PRIVILEGED_DEPENDENCIES": "unavailable",
+      "CERTIFICATION_PROVENANCE": "scenario/validator families named archimedes are fixtures, not an expert"
+    },
+    {
+      "expertId": "Alexandria",
+      "status": "TASK_NOT_APPLICABLE",
+      "SOURCE_ENTRYPOINT": null,
+      "MODEL_OR_ENGINE_IDENTITY": null,
+      "INPUT_CODEC": null,
+      "OUTPUT_CODEC": null,
+      "OBSERVATION_REQUIREMENTS": "no experience store/retrieval task supplied",
+      "ACTION_RECOMMENDATION_SUPPORT": false,
+      "RANKED_ACTION_SUPPORT": false,
+      "CONFIDENCE_SEMANTICS": "unavailable",
+      "ABSTENTION_SUPPORT": "NOT_APPLICABLE in native population",
+      "DOMAIN_APPLICABILITY": "memory/retrieval absent; no executable found in scanned implementation paths",
+      "PRIVILEGED_DEPENDENCIES": "unavailable",
+      "CERTIFICATION_PROVENANCE": "canonical roster retained; missing implementation not zero MEV"
+    },
+    {
+      "expertId": "Picasso",
+      "status": "TASK_NOT_APPLICABLE",
+      "SOURCE_ENTRYPOINT": null,
+      "MODEL_OR_ENGINE_IDENTITY": null,
+      "INPUT_CODEC": null,
+      "OUTPUT_CODEC": null,
+      "OBSERVATION_REQUIREMENTS": "no creative generation task supplied",
+      "ACTION_RECOMMENDATION_SUPPORT": false,
+      "RANKED_ACTION_SUPPORT": false,
+      "CONFIDENCE_SEMANTICS": "unavailable",
+      "ABSTENTION_SUPPORT": "NOT_APPLICABLE in native population",
+      "DOMAIN_APPLICABILITY": "creative domain absent; no executable found in scanned implementation paths",
+      "PRIVILEGED_DEPENDENCIES": "unavailable",
+      "CERTIFICATION_PROVENANCE": "canonical roster retained"
+    },
+    {
+      "expertId": "Forge",
+      "status": "TASK_NOT_APPLICABLE",
+      "SOURCE_ENTRYPOINT": null,
+      "MODEL_OR_ENGINE_IDENTITY": null,
+      "INPUT_CODEC": null,
+      "OUTPUT_CODEC": null,
+      "OBSERVATION_REQUIREMENTS": "no engineering/RSI task supplied",
+      "ACTION_RECOMMENDATION_SUPPORT": false,
+      "RANKED_ACTION_SUPPORT": false,
+      "CONFIDENCE_SEMANTICS": "unavailable",
+      "ABSTENTION_SUPPORT": "NOT_APPLICABLE in native population",
+      "DOMAIN_APPLICABILITY": "engineering absent; Forge WORLD kernel is infrastructure, not Forge EXPERT",
+      "PRIVILEGED_DEPENDENCIES": "unavailable",
+      "CERTIFICATION_PROVENANCE": "canonical roster retained"
+    }
+  ],
+  "legacySmoke": {
+    "modules": {
+      "azl-config.js": "bb6dd3c7c4741c3bb6f0307dbb1c946cbf128c30e66b4211aa7ce8e7d5327adc",
+      "azl-util.js": "44a2dc74ef301dde6b384599b1845a7c6f0c027a09725be6dc43193bb687956d",
+      "azl-state.js": "66a48d1efd64c31086bd2d7ce5eea4330691b7032d9ace505ec0cd96d3c4d790",
+      "azl-nn.js": "37b26f47939698f2a6652954b8f8b22ee6ac470a9237e76f1e6671dc5f763d0e",
+      "azl-scout.js": "ae2771a6aef44da845623e8d43694f53d928d09edd811d70f77ca0ff27d407e7",
+      "azl-strategist.js": "e6305a4cb78b8b55c9e47201b59a4a07afd79561ca7293237a58de878fb882f4",
+      "azl-ref-adapter.js": "9859614cda843e5853c50038eea30d58c5bcdfd8fa922daa777bac226296e667"
+    },
+    "codec": {
+      "base": 56,
+      "enriched": 94,
+      "actions": [
+        "gather_food",
+        "gather_energy",
+        "gather_materials",
+        "trade",
+        "build_defense",
+        "build_housing",
+        "build_infra",
+        "recruit",
+        "defend",
+        "diplomacy_talks",
+        "explore",
+        "stabilize"
+      ]
+    },
+    "status": "EXECUTABLE_LEGACY_ONLY_NOT_FORGE_ACTION_BOUND",
+    "Vanguard": {
+      "weightHash": "280a24e8050a94a77991a9147845af5695b547c513d3f0e29e2929a3d6fecd95",
+      "parameters": 47629,
+      "policy": [
+        0.06168064847588539,
+        0.10910637676715851,
+        0.08012092858552933,
+        0.014144889079034328,
+        0.019519930705428123,
+        0.12994176149368286,
+        0.17377403378486633,
+        0.1075170561671257,
+        0.020687149837613106,
+        0.10972186177968979,
+        0.1283896118402481,
+        0.04539577662944794
+      ],
+      "values": {
+        "now": -0.10209563498901929
+      },
+      "confidence": null,
+      "confidenceMeaning": "NO_CONFIDENCE_HEAD",
+      "delayedConsequenceEvidence": null
+    },
+    "Horizon": {
+      "weightHash": "3634a56cc181199405ba6de7b257e5f6bdc97d14c1840580a2a3a41f9f6709dc",
+      "parameters": 340497,
+      "policy": [
+        0.0004602162807714194,
+        0.0012094308622181416,
+        0.9323058724403381,
+        0.00786549411714077,
+        0.0009565025102347136,
+        0.032568588852882385,
+        0.0001040532806655392,
+        0.00010209820902673528,
+        0.001602708362042904,
+        0.010455144569277763,
+        0.000018291613741894253,
+        0.012351613491773605
+      ],
+      "values": {
+        "now": 0.9998138562034276,
+        "m5": -0.6589309403462996,
+        "m30": 0.04697440599307073,
+        "session": 0.6855299923908572
+      },
+      "confidence": 0.16615891527438534,
+      "confidenceMeaning": "UNCALIBRATED_SIGMOID",
+      "delayedConsequenceEvidence": "inherited m5/m30/session value heads are executable on legacy codec; do not imply delayed competence or Forge support"
+    }
+  },
+  "scheduled": 288,
+  "accepted": 288,
+  "rejected": [],
+  "panels": {
+    "OPEN_A": {
+      "n": 144,
+      "metrics": {
+        "Nexus": {
+          "scheduledAccepted": 144,
+          "n": 109,
+          "coverage": 0.7569444444444444,
+          "optimalSetHit": 0.5045871559633027,
+          "regret": 30.972477064220183,
+          "normalizedRegret": 0.31005332578239975,
+          "catastrophic": 0.11009174311926606,
+          "abstentionUtility": null,
+          "abstentionQuality": "NOT_TESTABLE_NO_REGISTERED_ABSTENTION_COST_OR_FALLBACK"
+        },
+        "CURRENT_OBSERVABLE_S0": {
+          "scheduledAccepted": 144,
+          "n": 144,
+          "coverage": 1,
+          "optimalSetHit": 0.4236111111111111,
+          "regret": 9.73611111111111,
+          "normalizedRegret": 0.35123459722551564,
+          "catastrophic": 0,
+          "abstentionUtility": null,
+          "abstentionQuality": "NOT_TESTABLE_NO_REGISTERED_ABSTENTION_COST_OR_FALLBACK"
+        },
+        "BEST_QUALIFIED_SINGLE_EXPERT": {
+          "scheduledAccepted": 144,
+          "n": 109,
+          "coverage": 0.7569444444444444,
+          "optimalSetHit": 0.5045871559633027,
+          "regret": 30.972477064220183,
+          "normalizedRegret": 0.31005332578239975,
+          "catastrophic": 0.11009174311926606,
+          "abstentionUtility": null,
+          "abstentionQuality": "NOT_TESTABLE_NO_REGISTERED_ABSTENTION_COST_OR_FALLBACK"
+        },
+        "FIXED_QUALIFIED_EXPERT_COMBINATION": {
+          "scheduledAccepted": 144,
+          "n": 109,
+          "coverage": 0.7569444444444444,
+          "optimalSetHit": 0.5045871559633027,
+          "regret": 30.972477064220183,
+          "normalizedRegret": 0.31005332578239975,
+          "catastrophic": 0.11009174311926606,
+          "abstentionUtility": null,
+          "abstentionQuality": "NOT_TESTABLE_NO_REGISTERED_ABSTENTION_COST_OR_FALLBACK"
+        },
+        "EXPERIMENTAL_PRIME_SYNTHESIS_V1": {
+          "scheduledAccepted": 144,
+          "n": 109,
+          "coverage": 0.7569444444444444,
+          "optimalSetHit": 0.5045871559633027,
+          "regret": 30.972477064220183,
+          "normalizedRegret": 0.31005332578239975,
+          "catastrophic": 0.11009174311926606,
+          "abstentionUtility": null,
+          "abstentionQuality": "NOT_TESTABLE_NO_REGISTERED_ABSTENTION_COST_OR_FALLBACK"
+        },
+        "MINUS_Nexus": {
+          "scheduledAccepted": 144,
+          "n": 0,
+          "coverage": 0,
+          "optimalSetHit": null,
+          "regret": null,
+          "normalizedRegret": null,
+          "catastrophic": null,
+          "abstentionUtility": null,
+          "abstentionQuality": "NOT_TESTABLE_NO_REGISTERED_ABSTENTION_COST_OR_FALLBACK"
+        },
+        "MINUS_Oracle": {
+          "scheduledAccepted": 144,
+          "n": 109,
+          "coverage": 0.7569444444444444,
+          "optimalSetHit": 0.5045871559633027,
+          "regret": 30.972477064220183,
+          "normalizedRegret": 0.31005332578239975,
+          "catastrophic": 0.11009174311926606,
+          "abstentionUtility": null,
+          "abstentionQuality": "NOT_TESTABLE_NO_REGISTERED_ABSTENTION_COST_OR_FALLBACK"
+        }
+      },
+      "primeVsSingle": {
+        "n": 109,
+        "status": "OPEN_DESCRIPTIVE",
+        "DELTA_DDV": 0,
+        "DELTA_REGRET": 0,
+        "DELTA_NORMALIZED_REGRET": 0,
+        "DELTA_CATASTROPHIC_ERROR": 0,
+        "BENEFICIAL_ACTION_FLIPS": 0,
+        "HARMFUL_ACTION_FLIPS": 0,
+        "falseSelectionHarm": 0,
+        "unpaired": 35
+      },
+      "nexusVsS0": {
+        "n": 109,
+        "status": "OPEN_DESCRIPTIVE",
+        "DELTA_DDV": 0.05504587155963303,
+        "DELTA_REGRET": 21.853211009174313,
+        "DELTA_NORMALIZED_REGRET": 0.0021826222318547758,
+        "DELTA_CATASTROPHIC_ERROR": 0.11009174311926606,
+        "BENEFICIAL_ACTION_FLIPS": 56,
+        "HARMFUL_ACTION_FLIPS": 40,
+        "falseSelectionHarm": 0.2733178969203282,
+        "unpaired": 35
+      },
+      "ablations": {
+        "Nexus": {
+          "n": 0,
+          "status": "NOT_TESTABLE",
+          "DELTA_DDV": null,
+          "DELTA_REGRET": null,
+          "DELTA_NORMALIZED_REGRET": null,
+          "DELTA_CATASTROPHIC_ERROR": null,
+          "BENEFICIAL_ACTION_FLIPS": 0,
+          "HARMFUL_ACTION_FLIPS": 0,
+          "falseSelectionHarm": null,
+          "unpaired": 144,
+          "coverageRemoved": 0.7569444444444444,
+          "reason": "No action remains: utility of abstention unspecified; do not call missing action zero MEV"
+        },
+        "Oracle": {
+          "protocolEffect": {
+            "n": 109,
+            "status": "OPEN_DESCRIPTIVE",
+            "DELTA_DDV": 0,
+            "DELTA_REGRET": 0,
+            "DELTA_NORMALIZED_REGRET": 0,
+            "DELTA_CATASTROPHIC_ERROR": 0,
+            "BENEFICIAL_ACTION_FLIPS": 0,
+            "HARMFUL_ACTION_FLIPS": 0,
+            "falseSelectionHarm": 0,
+            "unpaired": 35
+          },
+          "reasoningMEV": "NOT_TESTABLE_NO_QUALIFIED_TEMPORAL_ACTION_CONSUMER"
+        }
+      }
+    },
+    "OPEN_B": {
+      "n": 144,
+      "metrics": {
+        "Nexus": {
+          "scheduledAccepted": 144,
+          "n": 109,
+          "coverage": 0.7569444444444444,
+          "optimalSetHit": 0.5045871559633027,
+          "regret": 33.44954128440367,
+          "normalizedRegret": 0.31219077620884217,
+          "catastrophic": 0.14678899082568808,
+          "abstentionUtility": null,
+          "abstentionQuality": "NOT_TESTABLE_NO_REGISTERED_ABSTENTION_COST_OR_FALLBACK"
+        },
+        "CURRENT_OBSERVABLE_S0": {
+          "scheduledAccepted": 144,
+          "n": 144,
+          "coverage": 1,
+          "optimalSetHit": 0.4305555555555556,
+          "regret": 12.277777777777779,
+          "normalizedRegret": 0.36539036787513335,
+          "catastrophic": 0.006944444444444444,
+          "abstentionUtility": null,
+          "abstentionQuality": "NOT_TESTABLE_NO_REGISTERED_ABSTENTION_COST_OR_FALLBACK"
+        },
+        "BEST_QUALIFIED_SINGLE_EXPERT": {
+          "scheduledAccepted": 144,
+          "n": 109,
+          "coverage": 0.7569444444444444,
+          "optimalSetHit": 0.5045871559633027,
+          "regret": 33.44954128440367,
+          "normalizedRegret": 0.31219077620884217,
+          "catastrophic": 0.14678899082568808,
+          "abstentionUtility": null,
+          "abstentionQuality": "NOT_TESTABLE_NO_REGISTERED_ABSTENTION_COST_OR_FALLBACK"
+        },
+        "FIXED_QUALIFIED_EXPERT_COMBINATION": {
+          "scheduledAccepted": 144,
+          "n": 109,
+          "coverage": 0.7569444444444444,
+          "optimalSetHit": 0.5045871559633027,
+          "regret": 33.44954128440367,
+          "normalizedRegret": 0.31219077620884217,
+          "catastrophic": 0.14678899082568808,
+          "abstentionUtility": null,
+          "abstentionQuality": "NOT_TESTABLE_NO_REGISTERED_ABSTENTION_COST_OR_FALLBACK"
+        },
+        "EXPERIMENTAL_PRIME_SYNTHESIS_V1": {
+          "scheduledAccepted": 144,
+          "n": 109,
+          "coverage": 0.7569444444444444,
+          "optimalSetHit": 0.5045871559633027,
+          "regret": 33.44954128440367,
+          "normalizedRegret": 0.31219077620884217,
+          "catastrophic": 0.14678899082568808,
+          "abstentionUtility": null,
+          "abstentionQuality": "NOT_TESTABLE_NO_REGISTERED_ABSTENTION_COST_OR_FALLBACK"
+        },
+        "MINUS_Nexus": {
+          "scheduledAccepted": 144,
+          "n": 0,
+          "coverage": 0,
+          "optimalSetHit": null,
+          "regret": null,
+          "normalizedRegret": null,
+          "catastrophic": null,
+          "abstentionUtility": null,
+          "abstentionQuality": "NOT_TESTABLE_NO_REGISTERED_ABSTENTION_COST_OR_FALLBACK"
+        },
+        "MINUS_Oracle": {
+          "scheduledAccepted": 144,
+          "n": 109,
+          "coverage": 0.7569444444444444,
+          "optimalSetHit": 0.5045871559633027,
+          "regret": 33.44954128440367,
+          "normalizedRegret": 0.31219077620884217,
+          "catastrophic": 0.14678899082568808,
+          "abstentionUtility": null,
+          "abstentionQuality": "NOT_TESTABLE_NO_REGISTERED_ABSTENTION_COST_OR_FALLBACK"
+        }
+      },
+      "primeVsSingle": {
+        "n": 109,
+        "status": "OPEN_DESCRIPTIVE",
+        "DELTA_DDV": 0,
+        "DELTA_REGRET": 0,
+        "DELTA_NORMALIZED_REGRET": 0,
+        "DELTA_CATASTROPHIC_ERROR": 0,
+        "BENEFICIAL_ACTION_FLIPS": 0,
+        "HARMFUL_ACTION_FLIPS": 0,
+        "falseSelectionHarm": 0,
+        "unpaired": 35
+      },
+      "nexusVsS0": {
+        "n": 109,
+        "status": "OPEN_DESCRIPTIVE",
+        "DELTA_DDV": 0.05504587155963303,
+        "DELTA_REGRET": 21.31192660550459,
+        "DELTA_NORMALIZED_REGRET": -0.01938283660771214,
+        "DELTA_CATASTROPHIC_ERROR": 0.13761467889908258,
+        "BENEFICIAL_ACTION_FLIPS": 57,
+        "HARMFUL_ACTION_FLIPS": 41,
+        "falseSelectionHarm": 0.2643889868510725,
+        "unpaired": 35
+      },
+      "ablations": {
+        "Nexus": {
+          "n": 0,
+          "status": "NOT_TESTABLE",
+          "DELTA_DDV": null,
+          "DELTA_REGRET": null,
+          "DELTA_NORMALIZED_REGRET": null,
+          "DELTA_CATASTROPHIC_ERROR": null,
+          "BENEFICIAL_ACTION_FLIPS": 0,
+          "HARMFUL_ACTION_FLIPS": 0,
+          "falseSelectionHarm": null,
+          "unpaired": 144,
+          "coverageRemoved": 0.7569444444444444,
+          "reason": "No action remains: utility of abstention unspecified; do not call missing action zero MEV"
+        },
+        "Oracle": {
+          "protocolEffect": {
+            "n": 109,
+            "status": "OPEN_DESCRIPTIVE",
+            "DELTA_DDV": 0,
+            "DELTA_REGRET": 0,
+            "DELTA_NORMALIZED_REGRET": 0,
+            "DELTA_CATASTROPHIC_ERROR": 0,
+            "BENEFICIAL_ACTION_FLIPS": 0,
+            "HARMFUL_ACTION_FLIPS": 0,
+            "falseSelectionHarm": 0,
+            "unpaired": 35
+          },
+          "reasoningMEV": "NOT_TESTABLE_NO_QUALIFIED_TEMPORAL_ACTION_CONSUMER"
+        }
+      }
+    }
+  },
+  "fidelity": {
+    "nexusOwnerOutputsExact": 288,
+    "sourceWorldUnchanged": 288,
+    "otherAblationEvidenceUnchanged": 576
+  },
+  "stress": {
+    "n": 288,
+    "choiceUnchanged": 288,
+    "rejectionCounts": {
+      "NO_APPLICABLE_OUTPUT": 154,
+      "NONACTION_WITHOUT_QUALIFIED_CONSUMER": 281,
+      "DUPLICATE_EXPERT": 499,
+      "STALE_OR_DIFFERENT_DECISION": 423,
+      "INVALID_EVIDENCE": 151
+    },
+    "scope": "SOFTWARE_FAITHFULNESS_NOT_REASONING_GAIN"
+  },
+  "DRI": {
+    "pairs": 72,
+    "qualified": 72,
+    "stable": 72,
+    "scope": "candidate-order only, OPEN diagnostic, not semantic competence"
+  },
+  "DRS": {
+    "pairs": 72,
+    "menuSame": 72,
+    "truthChanged": 0,
+    "disjointTruth": 0,
+    "correctResponse": 0,
+    "falseStability": 0,
+    "scope": "prespecified health intervention; unqualified/no-op/overlap retained"
+  },
+  "warmup": {
+    "truncated": 143,
+    "oracleTemporalAvailable": 281
+  },
+  "ASCII_TRANSFER_RESULTS": {
+    "pong": {
+      "QUALIFIED_EXPERTS_AVAILABLE": [],
+      "MATCHED_EVIDENCE_VALID": false,
+      "PRIME_VALUE_MEASURED": false,
+      "GAIN_OVER_STRONG_CONTROLLER": "NOT_TESTABLE",
+      "COMPUTE_COST": null,
+      "GENERALIZATION_STATUS": "NOT_TESTABLE_NO_FAITHFUL_CANONICAL_ACTION_BINDING",
+      "worldUnchanged": true
+    },
+    "platformer": {
+      "QUALIFIED_EXPERTS_AVAILABLE": [],
+      "MATCHED_EVIDENCE_VALID": false,
+      "PRIME_VALUE_MEASURED": false,
+      "GAIN_OVER_STRONG_CONTROLLER": "NOT_TESTABLE",
+      "COMPUTE_COST": null,
+      "GENERALIZATION_STATUS": "NOT_TESTABLE_NO_FAITHFUL_CANONICAL_ACTION_BINDING",
+      "worldUnchanged": true
+    },
+    "fighter": {
+      "QUALIFIED_EXPERTS_AVAILABLE": [],
+      "MATCHED_EVIDENCE_VALID": false,
+      "PRIME_VALUE_MEASURED": false,
+      "GAIN_OVER_STRONG_CONTROLLER": "NOT_TESTABLE",
+      "COMPUTE_COST": null,
+      "GENERALIZATION_STATUS": "NOT_TESTABLE_NO_FAITHFUL_CANONICAL_ACTION_BINDING",
+      "worldUnchanged": true
+    },
+    "racer": {
+      "QUALIFIED_EXPERTS_AVAILABLE": [],
+      "MATCHED_EVIDENCE_VALID": false,
+      "PRIME_VALUE_MEASURED": false,
+      "GAIN_OVER_STRONG_CONTROLLER": "NOT_TESTABLE",
+      "COMPUTE_COST": null,
+      "GENERALIZATION_STATUS": "NOT_TESTABLE_NO_FAITHFUL_CANONICAL_ACTION_BINDING",
+      "worldUnchanged": true
+    }
+  },
+  "gates": {
+    "STAGE3F_FREEZE_REPRODUCED": true,
+    "STAGE3G_FREEZE_REPRODUCED": true,
+    "QUALIFIED_EXPERT_SET_BOUND": true,
+    "MATCHED_EVIDENCE_BASELINE_VALID": true,
+    "EXPERT_INPUTS_LEAKAGE_SAFE": true,
+    "STRONG_COMPARISON_BASELINES_BOUND": true,
+    "PREREGISTRATION_COMPLETE": false,
+    "UNUSED_SEALED_LINEAGE_CONFIRMED": false
+  },
+  "caveats": [
+    "Matched evidence is valid but degenerate: one qualified action binding plus nonaction Oracle without consumer. No nine-expert or complementarity claim.",
+    "Missing/unbound experts have NOT_TESTABLE marginal value, never zero.",
+    "Nexus selector is an inherited policy on top of Nexus, not the relational engine itself.",
+    "S0 is a frozen certified comparator; best universal single-policy champion remains unresolved.",
+    "Truth and regret are conditional on a fixed greedy continuation, not global strategic optimality.",
+    "No abstention utility, belief consumer, information-acquisition consumer, or structural OOD test.",
+    "No new reasoning candidate or routing fitted. No sealed evaluation or certification performed."
+  ],
+  "latency": {
+    "Nexus": {
+      "n": 288,
+      "meanMs": 0.22643635416665753,
+      "status": "LOCAL_OPEN_DIAGNOSTIC_NOT_COMPUTE_NORMALIZED"
+    },
+    "Oracle": {
+      "n": 288,
+      "meanMs": 0.07587617013887717,
+      "status": "LOCAL_OPEN_DIAGNOSTIC_NOT_COMPUTE_NORMALIZED"
+    },
+    "BEST_QUALIFIED_SINGLE_EXPERT": {
+      "n": 288,
+      "meanMs": 0.09966969097225034,
+      "status": "LOCAL_OPEN_DIAGNOSTIC_NOT_COMPUTE_NORMALIZED"
+    },
+    "FIXED_QUALIFIED_EXPERT_COMBINATION": {
+      "n": 288,
+      "meanMs": 0.0920011562499907,
+      "status": "LOCAL_OPEN_DIAGNOSTIC_NOT_COMPUTE_NORMALIZED"
+    },
+    "EXPERIMENTAL_PRIME_SYNTHESIS_V1": {
+      "n": 288,
+      "meanMs": 0.08541288541664471,
+      "status": "LOCAL_OPEN_DIAGNOSTIC_NOT_COMPUTE_NORMALIZED"
+    },
+    "CURRENT_OBSERVABLE_S0": {
+      "n": 288,
+      "meanMs": 17.6893291284722,
+      "status": "LOCAL_OPEN_DIAGNOSTIC_NOT_COMPUTE_NORMALIZED"
+    }
+  },
+  "compute": {
+    "primaryExpertCalls": 576,
+    "expertCallsIncludingFidelityAndPerturbations": 960,
+    "legacyNeuralSmokeCalls": 2,
+    "primarySynthesisCalls": 864,
+    "ablationsAndStressSynthesisCalls": 864,
+    "perturbationSynthesisCalls": 144,
+    "simulationsInExpertsOrPrime": 0,
+    "s0PrimaryCandidateScores": 1899,
+    "evaluatorPrimaryTruthBranches": 1899,
+    "evaluatorTruthCalls": 336,
+    "baselineModelHash": "30a72416b8a7f0079155cd25908acbe8a2f69750759d106cf71609d77e1e8937",
+    "valuePerCompute": "NO_SYNTHESIS_DDV_GAIN; added Oracle+synthesis calls vs single Nexus; timings local diagnostic only"
+  },
+  "totalWallMs": 16986.428874999998,
+  "canonicalMoeImprovement": "NOT_ESTABLISHED",
+  "complementarity": "NOT_TESTABLE_ONLY_ONE_ACTION_BINDING",
+  "beliefCompetence": "NOT_TESTABLE",
+  "VOICompetence": "NOT_TESTABLE",
+  "authority": "R0",
+  "certification": "NOT_CERTIFIED_DEVELOPMENT_ONLY",
+  "semanticHash": "0b64bca458d8ca8fe453e2e050187fe8db01f7868204f96a06cf85aac8660205"
+}

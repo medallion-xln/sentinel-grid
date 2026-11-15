@@ -1,0 +1,4 @@
+import {decide,controllerState} from './controllers.mjs';
+export const EXPERT_BINDINGS=Object.freeze(Object.fromEntries(['Prime','Vanguard','Oracle','Nexus','Horizon','Archimedes','Alexandria','Picasso','Forge'].map(name=>[name,{status:['Picasso','Forge'].includes(name)?'NOT_APPLICABLE':'NOT_TESTABLE',qualified:false,reason:'NO_QUALIFIED_NATIVE_OBSERVATION_TO_ACTION_BINDING_ACTIVATED'}])));
+// Interface only. This build does not register, call, train, or impersonate canonical experts.
+export function diagnosticAdvisory(packet,{expertName='Prime',abstain=true}={}){const binding=EXPERT_BINDINGS[expertName];if(!binding)throw Error('UNKNOWN_EXPERT');const fallback=decide(packet,controllerState('RULE_BASELINE'));return{expertName,status:binding.status,expertOutput:null,abstention:abstain,fallback:{source:'EXPLICIT_RULE_BASELINE_NOT_EXPERT_OUTPUT',action:fallback.action,work:fallback.work,binding:packet.binding},canExecuteCanonical:false};}

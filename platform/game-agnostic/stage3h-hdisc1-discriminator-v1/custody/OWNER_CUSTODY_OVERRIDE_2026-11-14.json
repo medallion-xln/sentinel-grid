@@ -1,0 +1,41 @@
+{
+ "schema": "SENTINEL_OWNER_CUSTODY_OVERRIDE_V1",
+ "recordedAt": "2026-11-15T06:35:58.099Z",
+ "authority": "R0",
+ "instruction": {
+  "source": "owner, in chat with Claude Code",
+  "verbatim": "override my custody rules an run in the cloud",
+  "precededBy": [
+   "why can't you run this on the cloud?",
+   "Draft cloud amendment"
+  ]
+ },
+ "recordedBy": "Claude (model), at the owner's instruction. This records an instruction; it is not an owner issuance or attestation.",
+ "overrides": [
+  "the evidence-bundle access rule \"never uploaded, never pushed\" and transport OFFLINE_MEDIA_ONLY, for this transfer only",
+  "the backup procedure's refusal of cloud and network destinations, for this transfer only",
+  "the owner-installed pre-push guard, bypassed with --no-verify for one branch push to the private origin"
+ ],
+ "transfer": {
+  "what": "one AES-256-GCM archive (cloud-run/overlay.sgco): 31 protected sources, 305 SK1 work files, 7 custody control files",
+  "archiveSha256": "35244b40e08d1930fdc20bb9ff8c195c626b0b61f246dc4673f2350bffb95fc9",
+  "where": [
+   "GitHub medallion-xln/sentinel-grid (PRIVATE), branch claude/stage3h-cloud-run",
+   "Claude Code cloud environment \"Default\""
+  ],
+  "key": "random 256-bit key generated on the source Mac, stored at ~/.sentinel-grid/cloud-run.key (0600), never committed or printed; the owner places it in the cloud environment as SENTINEL_CLOUD_KEY"
+ },
+ "notOverridden": [
+  "no plaintext protected file is committed or pushed",
+  "the custody refs and the Codex checkpoint ref holding old protected blobs are not pushed",
+  "no gate, validator, test, freeze, declaration or historical record is changed",
+  "no owner issuance or backup attestation is inferred",
+  "training, population generation and validation remain unauthorized"
+ ],
+ "consequences": [
+  "the key and the ciphertext will both sit with third parties (GitHub and the cloud environment), so anyone who controls both can decrypt",
+  "a cloud run is not G4 evidence under the current rules: the frozen validator requires an offline external medium and a restore on a different physical device; the cloud runtime (likely linux) also differs from the darwin-arm64 pin, so G3 is expected to fail there",
+  "ciphertext pushed to GitHub may persist in caches or forks even if the branch is later deleted"
+ ],
+ "recordSha256": "cf50c8ffca1c140173126d124ec6b3d76145fd5d09a6c8e12ce14355a5a560c4"
+}

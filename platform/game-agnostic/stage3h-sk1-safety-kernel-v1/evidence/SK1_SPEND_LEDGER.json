@@ -1,0 +1,145 @@
+{
+ "schema": "SK1_SPEND_LEDGER_V1",
+ "authority": "R0",
+ "stage": "STAGE3H-SK1",
+ "labels": [
+  "NO_SEED_IDENTITIES",
+  "OPAQUE_ALIASES"
+ ],
+ "generatedAt": "2026-11-11T21:09:06.394Z",
+ "allocationHash": "a6841683d505f59527a315b16d9fd73eb68dbf805d894b504fb3291b317167ad",
+ "blocks": {
+  "screenedAndSpent": [
+   801,
+   802,
+   803,
+   804,
+   805,
+   806,
+   807,
+   808,
+   809,
+   810,
+   811,
+   812,
+   814,
+   815,
+   816,
+   817,
+   818,
+   819,
+   820,
+   821,
+   822,
+   823,
+   824,
+   825,
+   826,
+   827
+  ],
+  "reserveNeverGenerated": [
+   828,
+   829,
+   830,
+   831,
+   832,
+   833,
+   834,
+   835,
+   836,
+   837
+  ],
+  "rejectedAtPreflight": [
+   813
+  ]
+ },
+ "statuses": {
+  "801": "SPENT_SK1_SCREENED",
+  "802": "SPENT_SK1_SCREENED",
+  "803": "SPENT_SK1_SCREENED",
+  "804": "SPENT_SK1_SCREENED",
+  "805": "SPENT_SK1_SCREENED",
+  "806": "SPENT_SK1_SCREENED",
+  "807": "SPENT_SK1_SCREENED",
+  "808": "SPENT_SK1_SCREENED",
+  "809": "SPENT_SK1_SCREENED",
+  "810": "SPENT_SK1_SCREENED",
+  "811": "SPENT_SK1_SCREENED",
+  "812": "SPENT_SK1_SCREENED",
+  "813": "REPOSITORY_TEXT_HIT",
+  "814": "SPENT_SK1_SCREENED",
+  "815": "SPENT_SK1_SCREENED",
+  "816": "SPENT_SK1_SCREENED",
+  "817": "SPENT_SK1_SCREENED",
+  "818": "SPENT_SK1_SCREENED",
+  "819": "SPENT_SK1_SCREENED",
+  "820": "SPENT_SK1_SCREENED",
+  "821": "SPENT_SK1_SCREENED",
+  "822": "SPENT_SK1_SCREENED",
+  "823": "SPENT_SK1_SCREENED",
+  "824": "SPENT_SK1_SCREENED",
+  "825": "SPENT_SK1_SCREENED",
+  "826": "SPENT_SK1_SCREENED",
+  "827": "SPENT_SK1_SCREENED",
+  "828": "RETIRED_SK1_RESERVE_NEVER_GENERATED",
+  "829": "RETIRED_SK1_RESERVE_NEVER_GENERATED",
+  "830": "RETIRED_SK1_RESERVE_NEVER_GENERATED",
+  "831": "RETIRED_SK1_RESERVE_NEVER_GENERATED",
+  "832": "RETIRED_SK1_RESERVE_NEVER_GENERATED",
+  "833": "RETIRED_SK1_RESERVE_NEVER_GENERATED",
+  "834": "RETIRED_SK1_RESERVE_NEVER_GENERATED",
+  "835": "RETIRED_SK1_RESERVE_NEVER_GENERATED",
+  "836": "RETIRED_SK1_RESERVE_NEVER_GENERATED",
+  "837": "RETIRED_SK1_RESERVE_NEVER_GENERATED"
+ },
+ "screening": {
+  "worldsScreened": 165984,
+  "admittedIdentities": 2298,
+  "selectedForPopulations": 1600,
+  "admittedButUnselected": 698,
+  "funnelCounts": {
+   "EXCLUDED_PCD_COARSE_MATCH": 108158,
+   "NEXUS_ABSTAIN": 11705,
+   "NOT_STRESS": 41987,
+   "ADMITTED": 2298,
+   "B_EQUALS_N": 794,
+   "REJECTED_VALIDATOR_INVALID": 1020,
+   "REJECTED_NATIVE_MENU_INVALID": 22
+  },
+  "dropped": {
+   "COARSE_DUPLICATE_ACROSS_BOTH_POPULATIONS": 43
+  }
+ },
+ "populations": {
+  "EXPLORATION": {
+   "classes": 1000,
+   "use": "SPENT_FOR_DEVELOPMENT",
+   "registry": "evidence/SK1_REGISTRY_EXPLORATION.json",
+   "registrySha256": "6d876fae1854d01696dda2f00c699b4e9371a333230dbce9696fb2daa661fd33"
+  },
+  "VALIDATION": {
+   "classes": 600,
+   "use": "SPENT_ONE_PASS_VALIDATION",
+   "evaluatedOnce": true,
+   "resultSha256": "239c16bc210adef28e7cdef40ecd14298625ee26e08c13f45ad146988a3622b1",
+   "registry": "evidence/SK1_REGISTRY_VALIDATION.json",
+   "registrySha256": "d309557f4a421caef014a4518cc507d520cbc9117927ae7149e3c2edd3398d3c"
+  }
+ },
+ "unusedRegistry": {
+  "file": "evidence/SK1_REGISTRY_SCREENED_UNUSED.json",
+  "seal": "daac1884783c4471dbab506b721a4a0f20fad89a8690d1c02aa0301ed4804871",
+  "count": 698,
+  "sha256": "8b51aa3a852699ab2ec58f41ac0475b47b051ef8092e4f838dc81985bae4d830"
+ },
+ "rules": [
+  "Every world screened by SK1 is spent observational evidence: its comparator outcomes were read by the screening rule. None is fresh, whether or not it was selected or evaluated.",
+  "The VALIDATION population has been evaluated once and may not be used for selection, tuning or a second evaluation of any candidate.",
+  "Screened-but-not-admitted worlds are protected at block level only; the listed blocks must stay forbidden.",
+  "The unscreened reserve is retired with this lane to avoid a later allocated-but-unused ambiguity."
+ ],
+ "enforcement": {
+  "loader": "successor/exclusions-v2.mjs loadSuccessorExclusions()",
+  "note": "The SK1 exclusion registry (infra/exclusion-registry.json) is hash-bound by the experiment freeze and is not edited. A later allocator must obtain its context from the successor loader, which adds these blocks and the three SK1 registries and fails closed."
+ }
+}

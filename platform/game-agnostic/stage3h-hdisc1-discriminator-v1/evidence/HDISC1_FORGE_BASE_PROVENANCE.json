@@ -1,0 +1,66 @@
+{
+ "schema": "HDISC1_FORGE_BASE_PROVENANCE_V1",
+ "authority": "R0",
+ "stage": "STAGE3H-H-DISC-1",
+ "deriverSha256": "20bd1098a7312124f89cbe1a9544efb8cf0417ec84336483bd4cbe693b6b03da",
+ "sources": {
+  "stage3h-sk1-safety-kernel-v1/adapters/forge/projection.mjs": {
+   "sha256": "e2a050b2f25dfe6937cd9194ee0fafa4cc3a421bb894cb3e9c3bf94b91069f1d",
+   "equalsTheSk1Freeze": true
+  },
+  "stage3h-sk1-safety-kernel-v1/adapters/forge/features.mjs": {
+   "sha256": "d8077bed1cd55885fdf237db19414ebe0fcf347504dcaca8d9df98e707ff4d84",
+   "equalsTheSk1Freeze": true
+  }
+ },
+ "sourcesModified": false,
+ "derived": {
+  "discriminator/forge-base/projection-keys.mjs": {
+   "sha256": "75cea29fc8c3a1abea4d9e76e67a3023fa2b8fe28a001c17cb56fd05f70f2055",
+   "bytes": 12491
+  },
+  "discriminator/forge-base/features.mjs": {
+   "sha256": "7c5165ef2a6c1340a30f0df74149d9b062391d75fb87fe6f86b7851615083bf5",
+   "bytes": 13444
+  }
+ },
+ "projection": {
+  "removed": [
+   {
+    "what": "SK1 header comment",
+    "lines": 14
+   },
+   {
+    "what": "READ_PATHS, EXCLUDED_FIELDS, allowed, traceReads, unallowedReads (native-view read tracing)",
+    "lines": 40,
+    "firstLine": "/** Every view path the projection may read. A path is allow",
+    "lastLine": "export const unallowedReads = (reads) => [...reads].filter(("
+   },
+   {
+    "what": "FLAG_FIELDS, LINK_PARAMS, projectPublic (native-view extractor)",
+    "lines": 29,
+    "firstLine": "const FLAG_FIELDS = { hostile: 'hostileFlag', critical: 'cri",
+    "lastLine": "}"
+   }
+  ],
+  "retainedLinesAreByteIdenticalToTheSource": true
+ },
+ "features": {
+  "importRewrites": [
+   {
+    "from": "from './projection.mjs';",
+    "to": "from './projection-keys.mjs';"
+   },
+   {
+    "from": "from './evidence.mjs';",
+    "to": "from '../../../stage3h-sk1-safety-kernel-v1/adapters/forge/evidence.mjs';"
+   },
+   {
+    "from": "from '../../kernel/contract.mjs';",
+    "to": "from '../../../stage3h-sk1-safety-kernel-v1/kernel/contract.mjs';"
+   }
+  ],
+  "otherwiseByteIdentical": true
+ },
+ "reason": "the inference closure must not contain code that reads a native observable view; the frozen SK1 file mixes projection-level functions with the view extractor"
+}

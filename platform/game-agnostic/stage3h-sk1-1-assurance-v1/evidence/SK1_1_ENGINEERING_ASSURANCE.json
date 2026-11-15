@@ -1,0 +1,423 @@
+{
+ "schema": "SK1_1_ENGINEERING_ASSURANCE_V1",
+ "authority": "R0",
+ "stage": "STAGE3H-SK1.1 Phase 6",
+ "labels": [
+  "R0",
+  "SHADOW_MODE",
+  "RECOMMENDATION_ONLY",
+  "NOT_QUALIFIED"
+ ],
+ "qualification": "NOT_QUALIFIED",
+ "statement": "Engineering hardening only. The frozen SK1 kernel, adapters, API, model, thresholds and results are unchanged. The assured envelope is a pure wrapper: it serves the frozen decision unchanged or refuses the request. Nothing here is evidence of decision competence and nothing supports a qualification claim.",
+ "recordedAt": "2026-11-11T22:41:47.270Z",
+ "node": "v26.7.0",
+ "repoHead": "179922dd5dbc009204010f53e7ce568068a4975f",
+ "envelope": {
+  "apiVersion": "SK1_R0_ASSURED_API_V1_1",
+  "contract": "SENTINEL_ASSURED_RECOMMENDATION_ENVELOPE_V1_1",
+  "file": "r0/assured-api.mjs",
+  "wraps": "stage3h-sk1-safety-kernel-v1/api/recommend.mjs (SK1_R0_API_V1)",
+  "containsEstimator": false,
+  "changesDecisions": false
+ },
+ "sources": {
+  "r0/assured-api.mjs": "f015d8be3a39748c17f555b7ee472faf069119d468564e83b24cd20a5d176e54",
+  "r0/envelope.test.mjs": "7eae0b4136824a9ee4962ffaea43788dc4d0f3627d9ea9e208d408fa2dac35f7",
+  "r0/equivalence.mjs": "43723d23be71718b312506159732100e13c30b237c5405249204ba6ed4a80732",
+  "r0/equivalence.test.mjs": "9c922ccef4ba00ad8934d783ee03127d89fcf7e5b186ff5ef69cf13ee51aeb74",
+  "r0/pins.test.mjs": "540cddc03e3b5823dcad4af81aa9105530b535ec8f5fa86370773e922e56bec9",
+  "r0/record-assurance.mjs": "b53a5d7a6086b47f6744e3b2bc8c66eddff82bfda0b93b838051fa5eb30978c4",
+  "r0/test-helpers.mjs": "c01c407bd4bacc43dbeb216612a9b84992f422ce431b0ca8ff2cb35738951e6a"
+ },
+ "pins": {
+  "freezeRecord": "evidence/SK1_EXPERIMENT_FREEZE.json",
+  "freezeSha256": "d22be2c4766324db1794d511b3bbd79917d3771c28cfa1c7087ba4c6c0663794",
+  "kernelSourceHash": "5588744316bf27efaabdc72b86b886f6e31d868c13f3a783bc75ca19a3bc7cb5",
+  "adapterSourceHash": {
+   "forge": "948352b6497dfa4aea28144bc889cdd6c561a821bef5dba43a4e324b3661582d",
+   "rescue": "3fb64b1fd0a2653b3df641983caf352ee3f145b115ba1f64ce7ddb2b1423600e"
+  },
+  "model": {
+   "file": "models/SK1_MODEL.json",
+   "sha256": "683ce6e09c374e7c3a628a53e39f9875d6b8122b6eca8a4b72d58087a0c9efa0",
+   "modelHash": "b479972a3445ccb9d3cf42ac9821aee2f69431e4101b6dbdfdcd76e777968c6b",
+   "qualification": "NOT_QUALIFIED",
+   "ranking": {
+    "contract": "SK1_TIERED_RISK_THEN_REGRET_V1",
+    "z": 1,
+    "tierWidth": 0.1,
+    "tau": 0.2,
+    "oodPenalty": 0.05,
+    "requireEvidence": true
+   }
+  },
+  "inferenceFiles": {
+   "kernel/contract.mjs": "fbd57bce5d404fbca372531b1124aa753ccb0b400eb380a619e3431610654427",
+   "kernel/index.mjs": "a6b96ec1fa288c553d73ab4e03747dd0a6e6e1e6f7afe78ca2104794f58bff2f",
+   "kernel/ranking.mjs": "3f8a7adb6cd18ebb6ef07e2f06a4ebbf021ddbe0d0d39853ec2f6f3195dbf27a",
+   "kernel/record.mjs": "e529ecc09dc647b80997450b98b1d991b559171ab5e649e1d3152fa17ae6761c",
+   "kernel/risk.mjs": "94a8b3ed5b6504c9e8f378ba1ffc8e0016e030684aed24f26743f3f203752996",
+   "kernel/semantics.mjs": "9441a984946443ecbfc1f5d48f8302826ec7aa938f78b2ff20d1bffc46d1db44",
+   "adapters/forge/evidence.mjs": "caa3c2577c9269ed27d19fdca2878011ff337400be0dcb067db5d51396e95cb9",
+   "adapters/forge/features.mjs": "d8077bed1cd55885fdf237db19414ebe0fcf347504dcaca8d9df98e707ff4d84",
+   "adapters/forge/projection.mjs": "e2a050b2f25dfe6937cd9194ee0fafa4cc3a421bb894cb3e9c3bf94b91069f1d",
+   "adapters/rescue/adapter.mjs": "61e10391fa5a48fe3a6f16d5bcdc182295c74b7fbc490bda674ea9c5d365ef8a",
+   "api/host.mjs": "9dfb89914ab66905aa05f5f17562bb32cc7cb91aedf0b47431fa255837128bc2",
+   "api/recommend.mjs": "b7c47a14f367998e2df0ab41160cf324c19fa6bff38899bf9b7b3651769f8d52"
+  }
+ },
+ "frozenSk1Lane": {
+  "path": "platform/game-agnostic/stage3h-sk1-safety-kernel-v1",
+  "uncommittedChanges": [],
+  "unchanged": true,
+  "validationResultsSha256": "239c16bc210adef28e7cdef40ecd14298625ee26e08c13f45ad146988a3622b1",
+  "experimentFreezeSha256": "d22be2c4766324db1794d511b3bbd79917d3771c28cfa1c7087ba4c6c0663794"
+ },
+ "tests": {
+  "command": "node --test r0/*.test.mjs",
+  "tests": 41,
+  "pass": 41,
+  "fail": 0,
+  "skipped": 0,
+  "exit": 0,
+  "files": [
+   "r0/envelope.test.mjs",
+   "r0/equivalence.test.mjs",
+   "r0/pins.test.mjs"
+  ],
+  "cleanCheckout": "In an export of the committed SK1 lane plus r0/, 40 tests pass and the 600-class replay is skipped with an explicit message (the class records are privileged local data)."
+ },
+ "items": [
+  {
+   "id": "P6-01",
+   "item": "Complete legal-action-menu integrity",
+   "status": "VERIFIED_IN_FROZEN_KERNEL",
+   "findings": [],
+   "note": "The frozen kernel ranks every lawful action exactly once and never selects outside the menu (600/600 replayed records pass an independent output check). The envelope re-checks every response and refuses a malformed one.",
+   "tests": [
+    "[P6-01 menu-integrity] every lawful action is inspected and ranked exactly once; the decision refers only to the menu",
+    "[P6-01 menu-integrity] negative controls: a dropped, duplicated, retyped or out-of-menu action is refused",
+    "[P6-01 menu-integrity] inputs are never mutated: deep-frozen requests are served"
+   ],
+   "testsPassed": 3,
+   "testsTotal": 3
+  },
+  {
+   "id": "P6-02",
+   "item": "Explicit evidence-source provenance",
+   "status": "VERIFIED_ONLY_WITH_V1_1_ENVELOPE",
+   "findings": [],
+   "note": "The frozen record carries the evidence contract and validation status but no statement of who produced the evidence. The envelope requires a declared source per expert and records an evidence digest. Provenance is DECLARED_BY_CALLER_NOT_AUTHENTICATED: the envelope cannot prove the producer.",
+   "tests": [
+    "[P6-02 evidence-provenance] the envelope records declared sources, contract, validation status and an evidence digest",
+    "[P6-02 evidence-provenance] evidence without a matching source declaration is refused",
+    "[P6-02 evidence-provenance] absent evidence passes through to the frozen abstention; nothing is invented"
+   ],
+   "testsPassed": 3,
+   "testsTotal": 3
+  },
+  {
+   "id": "P6-03",
+   "item": "Risk versus deterministic safety separation",
+   "status": "VERIFIED_IN_FROZEN_KERNEL",
+   "findings": [],
+   "note": "Constraint outcomes and risk estimates are separate fields; every estimate is labelled EMPIRICAL_ESTIMATE and the record status is EMPIRICAL_ESTIMATE_NOT_A_GUARANTEE. The envelope adds three disjoint sections and never words an estimate as an established property.",
+   "tests": [
+    "[P6-03 separation] deterministic constraint outcomes, empirical estimates and unknown items are disjoint sections",
+    "[P6-03 separation] a hard public constraint excludes an action deterministically; its estimate stays an estimate and it is never selected"
+   ],
+   "testsPassed": 2,
+   "testsTotal": 2
+  },
+  {
+   "id": "P6-04",
+   "item": "Unknown-state handling",
+   "status": "DEFECT_FOUND_NOT_PATCHED",
+   "findings": [
+    "F3",
+    "F4"
+   ],
+   "note": "Missing fields the frozen kernel reads as features are reported and lead to abstention. But an out-of-vocabulary action type or entity kind receives a SUPPORTED estimate, and several absent fields are silently imputed. The envelope refuses those requests.",
+   "tests": [
+    "[P6-04 unknown-state] a missing public field the frozen kernel reports: no estimate is invented, the abstention passes through",
+    "[P6-04 unknown-state] uncertain effects and unestablished preconditions are listed as unknown, not as established",
+    "[P6-04 unknown-state] FINDING F3: the frozen kernel gives an out-of-vocabulary action type or entity kind a SUPPORTED estimate; the envelope refuses",
+    "[P6-04 unknown-state] FINDING F4: fields the frozen featurizer silently imputes are refused by the envelope"
+   ],
+   "testsPassed": 4,
+   "testsTotal": 4
+  },
+  {
+   "id": "P6-05",
+   "item": "Malformed expert evidence rejection",
+   "status": "DEFECT_FOUND_NOT_PATCHED",
+   "findings": [
+    "F5"
+   ],
+   "note": "Malformed or contradictory evidence is rated INVALID and the frozen kernel abstains. But the expert `kind` label and unknown extra fields are not validated. The envelope refuses every evidence object that is not structurally exact and VALID; absent evidence passes through to the frozen abstention.",
+   "tests": [
+    "[P6-05 malformed-evidence] structurally malformed evidence is refused at the envelope",
+    "[P6-05 malformed-evidence] contradictory evidence the frozen validator rates INVALID is refused, not served as an abstention",
+    "[P6-05 malformed-evidence] FINDING F5: the frozen validator accepts a wrong expert `kind` and unknown extra fields; the envelope refuses"
+   ],
+   "testsPassed": 3,
+   "testsTotal": 3
+  },
+  {
+   "id": "P6-06",
+   "item": "Stable action semantics",
+   "status": "VERIFIED_IN_FROZEN_KERNEL",
+   "findings": [],
+   "note": "Per-action constraints, tier and estimates are exactly equal under menu reordering, entity relabelling and all eight D4 frames on both fixtures (and 0 violations in 13,200 transformed views in the committed SK1 audit).",
+   "tests": [
+    "[P6-06 stable-semantics] the same action keeps its constraints, tier and estimates under menu order, relabelling and all D4 frames"
+   ],
+   "testsPassed": 1,
+   "testsTotal": 1
+  },
+  {
+   "id": "P6-07",
+   "item": "Deterministic tie handling",
+   "status": "VERIFIED_IN_FROZEN_KERNEL",
+   "findings": [
+    "F7"
+   ],
+   "note": "Exactly tied actions are returned together and the set is equivariant under menu order. Finding F7 concerns only the `representative` field when the set holds distinct actions; the SK1 evaluation scored the whole set, so no result is affected.",
+   "tests": [
+    "[P6-07 ties] equivalent actions are returned together and the result does not depend on menu position",
+    "[P6-07 ties] FINDING F7: exactly tied DISTINCT actions — the frozen `representative` is a listing artefact; the envelope names no single action",
+    "[P6-07 ties] repeated calls give byte-identical envelopes"
+   ],
+   "testsPassed": 3,
+   "testsTotal": 3
+  },
+  {
+   "id": "P6-08",
+   "item": "Confidence and uncertainty serialization",
+   "status": "VERIFIED_IN_FROZEN_KERNEL",
+   "findings": [],
+   "note": "All numbers are finite, probabilities lie in [0,1], bounds are ordered and records are JSON-stable on 600/600 replayed records. The envelope asserts this on every response and labels the bound a heuristic, not a calibrated interval.",
+   "tests": [
+    "[P6-08 serialization] an envelope survives a JSON round trip unchanged and still verifies; every number is finite",
+    "[P6-08 serialization] probabilities are in [0,1], spreads non-negative, bounds ordered; the bound is labelled a heuristic, not a calibrated interval",
+    "[P6-08 serialization] negative controls: out-of-range, non-finite or mislabelled values are refused"
+   ],
+   "testsPassed": 3,
+   "testsTotal": 3
+  },
+  {
+   "id": "P6-09",
+   "item": "Decision-hash reproduction",
+   "status": "VERIFIED_IN_FROZEN_KERNEL",
+   "findings": [],
+   "note": "Replay reproduces the committed decision hash for both demo fixtures and all 600 validation classes. The envelope passes the hash through unchanged and adds an envelope hash and an offline verifier.",
+   "tests": [
+    "[P6-09 decision-hash] the envelope passes the frozen decision hash through unchanged and reproduces it on replay",
+    "[P6-09 decision-hash] negative controls: a tampered record or a tampered assurance block is detected offline"
+   ],
+   "testsPassed": 2,
+   "testsTotal": 2
+  },
+  {
+   "id": "P6-10",
+   "item": "Refusal of execute/mutate requests",
+   "status": "DEFECT_FOUND_NOT_PATCHED",
+   "findings": [
+    "F1",
+    "F2"
+   ],
+   "note": "The frozen kernel has no code path that executes, so nothing can be executed. But its refusal of REQUESTS is incomplete: the key scans are exact and case-sensitive, and unknown options are silently ignored. The envelope refuses the variants.",
+   "tests": [
+    "[P6-10 refusal] every request for an effect is refused with a stable code; the API has no path that acts",
+    "[P6-10 refusal] FINDING F1/F2: the frozen key scan is exact and case-sensitive; variants pass it and are caught only by the envelope"
+   ],
+   "testsPassed": 2,
+   "testsTotal": 2
+  },
+  {
+   "id": "P6-11",
+   "item": "Fail-closed contract-version mismatch",
+   "status": "VERIFIED_ONLY_WITH_V1_1_ENVELOPE",
+   "findings": [
+    "F4"
+   ],
+   "note": "The frozen kernel fails closed on an observation-contract mismatch (it abstains: no model applies) and on an evidence-contract mismatch (INVALID). A request carries no API or request-contract version, and projection.version is not compared. The envelope requires an explicit declaration and refuses any mismatch before the kernel is called.",
+   "tests": [
+    "[P6-11 contract-version] a missing or mismatching contract declaration fails closed before the kernel is called",
+    "[P6-11 contract-version] adapters are not interchangeable: a request for one game is refused by the other"
+   ],
+   "testsPassed": 2,
+   "testsTotal": 2
+  },
+  {
+   "id": "P6-12",
+   "item": "Output labels accurately reflecting NOT_QUALIFIED status",
+   "status": "DEFECT_FOUND_NOT_PATCHED",
+   "findings": [
+    "F6",
+    "F8"
+   ],
+   "note": "With the committed model every frozen response is labelled NOT_QUALIFIED, R0, canDispatch=false. But the label and the abstention criterion are read from whatever model file is loaded, and the loader accepts any self-consistent file. The envelope serves the pinned bytes or nothing and asserts the labels on every response.",
+   "tests": [
+    "[P6-12 labels] every response says R0, shadow mode, recommendation only, NOT_QUALIFIED — recommendation or abstention",
+    "[P6-12 labels] negative controls: a record that claims qualification, authority or certainty is refused",
+    "[P6-12 labels] second game: no model, so NO_MODEL and an abstention — never a recommendation, never a qualification claim"
+   ],
+   "testsPassed": 3,
+   "testsTotal": 3
+  }
+ ],
+ "supportingTests": {
+  "pinning": [],
+  "negativeControls": [],
+  "equivalence": []
+ },
+ "statusCounts": {
+  "VERIFIED_IN_FROZEN_KERNEL": 6,
+  "VERIFIED_ONLY_WITH_V1_1_ENVELOPE": 2,
+  "DEFECT_FOUND_NOT_PATCHED": 4
+ },
+ "findings": [
+  {
+   "severity": "ENGINEERING",
+   "patchedInFrozenKernel": false,
+   "id": "F1",
+   "title": "Execution-request key scan is exact and case-sensitive; unknown options are silently ignored",
+   "component": "kernel/contract.mjs EXECUTION_KEY, validateRequest",
+   "reproducer": "api.recommend(state, legalActions, evidence, { Execute: true })  — also executeAction, doDispatch, autoApply, mutation, commitAction, perform, run, enact, { tau: 0.9 }, { intent: 'EXECUTE' }",
+   "frozenBehaviour": "Accepted; the normal record is returned with the same decision hash. Nothing is executed (no such code path exists).",
+   "envelopeBehaviour": "EXECUTION_OR_MUTATION_REQUESTED, or UNKNOWN_DECLARATION_KEY for a non-effect key",
+   "fixWouldChangeSk1PolicyBehaviour": false
+  },
+  {
+   "severity": "ENGINEERING",
+   "patchedInFrozenKernel": false,
+   "id": "F2",
+   "title": "Privileged-field key scan is exact and case-sensitive",
+   "component": "kernel/contract.mjs FORBIDDEN_KEY",
+   "reproducer": "state.projection.actor.world_hash = 1  — also Truth, WorldHash, hidden_health, Seed, groundTruth, trueUtility, evaluatorTruth, rngSeed, privileged",
+   "frozenBehaviour": "Accepted. The decision set is unchanged because the featurizer never reads the field (the SK1 audit traces reads against an allow-list), but the request is not refused and its hash changes.",
+   "envelopeBehaviour": "PRIVILEGED_FIELD_IN_REQUEST",
+   "fixWouldChangeSk1PolicyBehaviour": false
+  },
+  {
+   "severity": "ENGINEERING",
+   "patchedInFrozenKernel": false,
+   "id": "F3",
+   "title": "Out-of-vocabulary action type or entity kind receives a SUPPORTED risk estimate",
+   "component": "adapters/forge/features.mjs one-hot encoding; kernel/risk.mjs novelty check",
+   "reproducer": "legalActions[0].type = 'TELEPORT'   or   projection.nodes[t].kind = 'WORMHOLE'",
+   "frozenBehaviour": "riskStatus ESTIMATED for that action: all one-hot columns are zero, and the novelty check fires only on a non-zero never-seen column.",
+   "envelopeBehaviour": "INPUT_OUTSIDE_ADAPTER_VOCABULARY",
+   "fixWouldChangeSk1PolicyBehaviour": true,
+   "prospectiveIdentity": "SENTINEL_PUBLIC_ACTION_SAFETY_KERNEL_V1_1_CANDIDATE",
+   "proposedCorrection": "Report UNSUPPORTED_NOVEL_CATEGORY for an action whose type or target kind is outside the adapter vocabulary. Not implemented."
+  },
+  {
+   "severity": "ENGINEERING",
+   "patchedInFrozenKernel": false,
+   "id": "F4",
+   "title": "Absent public fields are silently imputed; projection.version is not compared with the contract version",
+   "component": "adapters/forge/features.mjs",
+   "reproducer": "delete projection.terrainCounts | delete projection.history.channels | delete action.destTerrain | delete flags.threatened on an entity no action targets | projection.version = \"HW1_PUBLIC_PROJECTION_V2\"",
+   "frozenBehaviour": "Estimates stay ESTIMATED: zero hazard cells, no history, non-hazard destination, flag counted as false; the version is not checked.",
+   "envelopeBehaviour": "REQUIRED_PUBLIC_FIELD_MISSING / OBSERVATION_CONTRACT_MISMATCH",
+   "fixWouldChangeSk1PolicyBehaviour": true,
+   "prospectiveIdentity": "SENTINEL_PUBLIC_ACTION_SAFETY_KERNEL_V1_1_CANDIDATE",
+   "proposedCorrection": "Treat these absences as UNSUPPORTED_MISSING_INFORMATION, as the kernel already does for the other fields. Not implemented."
+  },
+  {
+   "severity": "ENGINEERING",
+   "patchedInFrozenKernel": false,
+   "id": "F5",
+   "title": "Evidence validator ignores the expert `kind` label and unknown extra fields",
+   "component": "adapters/forge/evidence.mjs validateEvidence",
+   "reproducer": "evidence.experts.S0.kind = 'ORACLE_ROLLOUT'   or   evidence.experts.S0.handles = ['E7']   or   delete evidence.experts.NEXUS.kind",
+   "frozenBehaviour": "evidence.status VALID; the evidence is used.",
+   "envelopeBehaviour": "MALFORMED_EVIDENCE",
+   "fixWouldChangeSk1PolicyBehaviour": true,
+   "prospectiveIdentity": "SENTINEL_PUBLIC_ACTION_SAFETY_KERNEL_V1_1_CANDIDATE",
+   "proposedCorrection": "Validate kinds and reject unknown fields in the evidence contract. Not implemented."
+  },
+  {
+   "severity": "ENGINEERING",
+   "patchedInFrozenKernel": false,
+   "id": "F6",
+   "title": "Model loader accepts any self-consistent model file; the qualification label and risk criterion come from that file",
+   "component": "api/host.mjs loadModel, api/recommend.mjs modelPath",
+   "reproducer": "copy models/SK1_MODEL.json, set qualification.status = \"QUALIFIED\" and ranking.tau = 1, recompute modelHash, createRecommendationApi({ game: \"forge\", modelPath })",
+   "frozenBehaviour": "Served. The response is labelled QUALIFIED and the committed abstain fixture becomes a recommendation.",
+   "envelopeBehaviour": "MODEL_PIN_MISMATCH at construction",
+   "fixWouldChangeSk1PolicyBehaviour": false
+  },
+  {
+   "severity": "ENGINEERING",
+   "patchedInFrozenKernel": false,
+   "id": "F7",
+   "title": "`representative` is a listing artefact when a decision set holds distinct actions",
+   "component": "kernel/ranking.mjs selectedIndex, kernel/record.mjs representative",
+   "reproducer": "a model that scores all actions equally (tests/helpers.mjs toyModel with empty trees) on the synthetic projection",
+   "frozenBehaviour": "decisionSet holds all tied actions and indistinguishableDistinctActions is true, but `representative` still names the first in canonical-signature order. 4 of 600 validation classes have such a set; the evaluation scored the whole set.",
+   "envelopeBehaviour": "assurance.tie.assuredRepresentative = null, singleActionIdentified = false",
+   "fixWouldChangeSk1PolicyBehaviour": false
+  },
+  {
+   "severity": "ENGINEERING",
+   "patchedInFrozenKernel": false,
+   "id": "F8",
+   "title": "The API host files are outside the source identity carried in a decision record",
+   "component": "api/host.mjs sourceIdentity",
+   "reproducer": "read api/host.mjs: kernelSourceHash covers kernel/*.mjs and adapterSourceHash covers adapters/<game>/*.mjs; api/host.mjs and api/recommend.mjs are in neither",
+   "frozenBehaviour": "A change to the host layer does not change sourceIdentity or decisionHash. (The SK1 experiment freeze does hash both files.)",
+   "envelopeBehaviour": "all twelve inference files are compared with the frozen hashes at construction",
+   "fixWouldChangeSk1PolicyBehaviour": false
+  },
+  {
+   "severity": "INFORMATIONAL",
+   "patchedInFrozenKernel": false,
+   "id": "F9",
+   "title": "legalActionMenu.identity is invariant to menu order and relabelling but not to the D4 frame",
+   "component": "kernel/record.mjs menuIdentity (digest of frame-relative action keys)",
+   "reproducer": "frameProjection(P, \"R90\") on either demo fixture",
+   "frozenBehaviour": "Decision, tiers and estimates are identical; the menu identity differs. It identifies the menu as presented, not its D4 orbit.",
+   "envelopeBehaviour": "unchanged (passed through)",
+   "fixWouldChangeSk1PolicyBehaviour": false
+  }
+ ],
+ "prospectiveIdentity": {
+  "name": "SENTINEL_PUBLIC_ACTION_SAFETY_KERNEL_V1_1_CANDIDATE",
+  "implemented": false,
+  "qualificationClaim": "NONE",
+  "covers": [
+   "F3",
+   "F4",
+   "F5"
+  ],
+  "statement": "Correcting F3, F4 or F5 inside the kernel would change what the policy returns for the affected inputs, so it cannot be done under the SK1 identity. None of the three is triggered by any of the 600 validation requests (the envelope refuses none of them), so no SK1 result depends on them. A corrected kernel would be a new source and model identity and would need its own fresh, pre-registered evaluation before any claim."
+ },
+ "equivalence": {
+  "scope": "all frozen SK1 VALIDATION classes, public requests replayed through the envelope; no outcome read, no metric computed",
+  "resultFileSha256": "239c16bc210adef28e7cdef40ecd14298625ee26e08c13f45ad146988a3622b1",
+  "classes": 600,
+  "served": 600,
+  "refusedByEnvelope": {},
+  "decisionHashEqual": 600,
+  "kindEqual": 600,
+  "forcedSetEqual": 600,
+  "envelopeVerified": 600,
+  "recommend": 304,
+  "abstain": 296,
+  "equivalent": true
+ },
+ "notDone": [
+  "no change to any frozen SK1 file",
+  "no new or substituted risk estimator",
+  "no retraining, no threshold change",
+  "no new validation, no world generation, no evaluator label read",
+  "no authentication of evidence producers (provenance is declared, not proven)",
+  "no protection against a file changing between construction-time verification and module load",
+  "no connection to the Prime / Arbiter path, no dispatch, no deployment"
+ ],
+ "phase6": "COMPLETE"
+}

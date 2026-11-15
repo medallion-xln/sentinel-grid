@@ -1,0 +1,40 @@
+TAP version 13
+# Subtest: files bound by rejected candidates 18ff522c and e70625d1 are byte-identical
+ok 1 - files bound by rejected candidates 18ff522c and e70625d1 are byte-identical
+  ---
+  duration_ms: 13.010625
+  type: 'test'
+  ...
+# Subtest: negative control: the e70625d1 transform leaks original handles; the O-2R.1 transform leaks none and keeps semantics consistent
+ok 2 - negative control: the e70625d1 transform leaks original handles; the O-2R.1 transform leaks none and keeps semantics consistent
+  ---
+  duration_ms: 75.022583
+  type: 'test'
+  ...
+# Subtest: V3 rows equal V2 rows in every decision, truth, metric, D4 and ORDER value; only the IDENTITY twin view differs
+ok 3 - V3 rows equal V2 rows in every decision, truth, metric, D4 and ORDER value; only the IDENTITY twin view differs
+  ---
+  duration_ms: 4747.319083
+  type: 'test'
+  ...
+# Subtest: O-5 preflight is fail-closed and runs before the replication directory is created
+ok 4 - O-5 preflight is fail-closed and runs before the replication directory is created
+  ---
+  duration_ms: 1.049166
+  type: 'test'
+  ...
+# Subtest: V3 runner refuses without an active V3 registration and refuses registrations for other connectors
+ok 5 - V3 runner refuses without an active V3 registration and refuses registrations for other connectors
+  ---
+  duration_ms: 18823.931208
+  type: 'test'
+  ...
+1..5
+# tests 5
+# suites 0
+# pass 5
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 23800.762791

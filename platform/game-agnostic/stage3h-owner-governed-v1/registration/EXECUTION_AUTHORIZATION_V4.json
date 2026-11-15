@@ -1,0 +1,71 @@
+{
+ "type": "EXECUTE_ONCE",
+ "registrationHash": "7c41ba89c5c63489b4b4b6351716889460996b688e8ab897197a64a6fb7014cc",
+ "registrationCommit": "01d4cc34cdee7f498f413396708f14acf13e2d33",
+ "approvedCandidate": "d8a44ebd19f6dc5b833462435385680dcf2c3541a543a0e18f3fb81067307aad",
+ "replications": [
+  "A",
+  "B"
+ ],
+ "ownerIdentity": "PROJECT_OWNER (project scientific authority, self-identified in the session instruction; not independently verified)",
+ "date": "2026-10-21",
+ "signatureOrTrustedApprovalReference": "SESSION_OWNER_AUTHORIZATION: owner instruction \"SENTINEL GRID - STAGE 3H V4 SCIENTIFIC CAMPAIGN / Once-Only Owner-Governed Execution Authorization\", Claude Code session, 2026-10-21; session-based owner authorization, NOT an independently verifiable cryptographic signature",
+ "scope": "replication A, then replication B only after A is locked without an abort record, then the exact registered analysis (node campaign-v4.mjs analyse); subject to every scientific and machine-integrity preflight gate",
+ "conditions": [
+  "no change to the registration, frozen methods, source identities, thresholds or policy definitions",
+  "the 1,000 ms decision limit and the O-5 preflight are unchanged",
+  "a refused start consumes nothing; a started replication is never retried",
+  "no inspection of A outcomes before B is locked",
+  "no external independent review is claimed",
+  "full canonical Stage 3H certification remains unauthorized"
+ ],
+ "preexecutionGates": {
+  "file": "stage3h-owner-governed-v1/evidence/execution-7c41ba89/preexecution-gates.json",
+  "sha256": "2e4f278a5706cfdb2a9256d57cc7cca64b3ceef539729eceb263d52c5c5be721",
+  "verdict": "PREEXECUTION_GATES_PASS"
+ },
+ "supplementalRecount": {
+  "role": "supplemental admission audit and exclusion-rate reporting; never replaces the registered runner admission counts or the registered analysis; a material reconciliation failure prevents a positive verdict",
+  "file": "stage3h-owner-governed-v1/exclusion-recount-v4.mjs",
+  "sha256": "bcf5df126aa57ba8567e7a0f8d4fd0ae3ecf485d478d20515af0d3e732f63a13",
+  "invocation": "node exclusion-recount-v4.mjs reconcile, only after A and B are locked with no ABORT record",
+  "reads": [
+   "LOCK.json",
+   "<population>.admission.json",
+   "<population>.ledger.json"
+  ],
+  "neverReads": [
+   "<population>.rows.json (hashed as bytes for the lock check only, never parsed)",
+   "ANALYSIS.json"
+  ],
+  "validation": {
+   "file": "stage3h-owner-governed-v1/evidence/execution-7c41ba89/recount-validation.json",
+   "sha256": "88b17cb41fb32471c2162f1885419a1fd4a97366a27f48e13b19c1ec24ddd5b7",
+   "verdict": "RECOUNT_REPRODUCES_REGISTERED_ADMISSION",
+   "spentWorldsReproduced": 9456
+  }
+ },
+ "verdictMapping": {
+  "BOUNDED_OWNER_GOVERNED_SELECTOR_QUALIFIED_POSITIVE": "BOUNDED_SELECTOR_QUALIFIED (only if the recount reconciles exactly; otherwise BOUNDED_SELECTOR_INCONCLUSIVE)",
+  "BOUNDED_OWNER_GOVERNED_QUALIFIED_NEGATIVE_HARM": "BOUNDED_SELECTOR_NOT_QUALIFIED",
+  "BOUNDED_OWNER_GOVERNED_QUALIFIED_NEGATIVE_NO_MATERIAL_VALUE": "BOUNDED_SELECTOR_NOT_QUALIFIED",
+  "BOUNDED_OWNER_GOVERNED_INCONCLUSIVE": "BOUNDED_SELECTOR_INCONCLUSIVE",
+  "UNMEASURED": "BOUNDED_SELECTOR_INCONCLUSIVE (registered admission floors not met)",
+  "CONTRACT_BLOCKED": "EXECUTION_INVALID_OR_ABORTED",
+  "any replication aborted or not locked": "EXECUTION_INVALID_OR_ABORTED"
+ },
+ "launch": {
+  "launcher": {
+   "file": "stage3h-owner-governed-v1/execution/launch-replication-v4.sh",
+   "sha256": "30e890ce4d37748f5c95e8c35e93b38144b2ffabaeb3cc1c1abb6aaac0a32a1d"
+  },
+  "chain": {
+   "file": "stage3h-owner-governed-v1/execution/run-campaign-v4.sh",
+   "sha256": "1273053d591d979681a6460432058b300bc1fc8145850e40ee856edf2c185928"
+  }
+ },
+ "independentMethodReview": false,
+ "externalIndependentCustody": false,
+ "fullCanonicalStage3hCertificationAuthorized": false,
+ "newRegistrationAuthorized": false
+}

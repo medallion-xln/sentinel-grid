@@ -1,0 +1,18 @@
+{
+ "id": "STAGE3H_OWNER_GOVERNED_QUALIFICATION_V1",
+ "revision": 3,
+ "status": "PROPOSED_PENDING_OWNER_APPROVAL",
+ "supersedes": { "file": "stage3h-owner-governed-v1/amendment-v2.json", "revision": 2, "candidate": "e70625d137a93c5321dd96b53b59ec99b960811cbe67d2f699a01e7a5ed1f720", "reason": "Renewed-authorization Phase 1 gate point 5 failed: original action handles survive in semantics[].ACTION_ID of the O-2R identity twin (evidence/o2r-gate.json, evidence/o2r-gate-diagnosis.json)" },
+ "authority": "R0",
+ "evidenceLabels": { "REVIEW_MODE": "OWNER_GOVERNED", "INDEPENDENT_METHOD_REVIEW": false, "EXTERNAL_INDEPENDENT_CUSTODY": false, "CANONICAL_STAGE3H_CERTIFICATION_AUTHORIZED": false },
+ "changesFromRevision2": {
+  "O-2R.1": "IDENTITY twin = V3 transformSyntheticFixture IDENTITY applied to the native public view, then every occurrence of an original action handle anywhere in the view (semantics[].ACTION_ID) replaced by its opaque handle. Public view only; native world, native truth and the V3 nuisanceDependence statistic unchanged. Gate: evidence/o2r1-gate.json, 10/10 points on 288/288 development worlds. Decision impact versus revision 2: none observed (evidence/o2r-gate-diagnosis.json, 288/288 identical selections).",
+  "O-5_PREFLIGHT": "Operational and fail-closed: before the replication directory is created, the runner refuses unless the 1-minute load average is at most 25% of logical cores, no other stage/test node process runs, and 96 development-world S0+Nexus locks show p99 <= 250 ms and max <= 500 ms. A refused start consumes nothing. The 1,000 ms policy limit is unchanged."
+ },
+ "unchangedFromRevision2": ["O-1 native analysis copy", "O-3 MIN_ACCEPTED_PER_CELL=2 with all other floors retained", "O-4 owner-governed disposition", "D4 native orientation twins and ORDER observation-only twins", "every V3 threshold, family, materiality, resample, tail, equivalence, catastrophe and false-selection rule", "population design, A/B namespaces and the 9,407-world prior exclusion record"],
+ "O-3": { "choice": "MIN_TWO_PER_CELL", "ownerWording": "MIN_ACCEPTED_PER_CELL=2", "status": "OWNER_APPROVED_FOR_e70625d1_CONDITIONALLY; RENEWAL_REQUIRED_FOR_THIS_REVISION", "sparseCellBehaviour": "evidence/o3-acceptance.json: one sparse cell lifts the zero-introduction bound above 0.02 and blocks a positive result; the veto is unchanged", "feasibility": "evidence/o3-catastrophe-feasibility.json" },
+ "intermittentTest": { "record": "evidence/flake-audit.json (preserved)", "review": "evidence/flake-audit-review.json", "rootCause": "IDENTIFIED_BY_ELIMINATION_NOT_REPRODUCED: the frozen 1,000 ms lock-time assertion", "verdict": "NOT_INTEGRITY_BLOCKED_BY_ELIMINATION; residual availability risk mitigated by O-5" },
+ "permittedExecutionEnvironment": { "runtime": "the registration-bound Node binary, versions, platform and launch flags; plain `node campaign-v3.mjs run A|B`", "host": "the owner workstation that produced the bound runtime identity", "load": "1-minute load average <= 25% of logical cores; no concurrent stage writer, test runner or campaign", "power": "AC power; sleep inhibited (caffeinate) for the run", "process": "single process; A then B sequentially", "memory": "analysis <= 1 GiB RSS and <= 30 min per replication (V3)", "network": "not required", "logging": "full stdout and stderr captured to a file for every run" },
+ "intendedOutcome": "BOUNDED_OWNER_GOVERNED_SELECTOR_QUALIFICATION",
+ "approvalProvenance": "Owner approval is recorded as an explicit conversation instruction, not an independently verifiable cryptographic signature."
+}

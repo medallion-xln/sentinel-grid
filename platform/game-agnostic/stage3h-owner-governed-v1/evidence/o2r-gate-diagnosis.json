@@ -1,0 +1,53 @@
+{
+ "schema": "STAGE3H_OWNER_GOVERNED_O2R_GATE_DIAGNOSIS_V1",
+ "diagnoses": "evidence/o2r-gate.json (preserved; verdict O2R_GATE_FAIL)",
+ "candidate": "e70625d137a93c5321dd96b53b59ec99b960811cbe67d2f699a01e7a5ed1f720",
+ "inheritanceHead": "a2c7961767926a86752e940ca9b604040c4f62c0",
+ "tallies": {
+  "worlds": 288,
+  "handleLeakWorlds": 288,
+  "handleLeakPaths": {
+   "$.semantics[].ACTION_ID": 1899
+  },
+  "nativeEntityIdsUnmapped": 0,
+  "nativeEntityIdSurvivors": 0,
+  "check4UncoveredValuesAreEntityIds": 0,
+  "check4UncoveredSample": [
+   "DESTINATION_ADJACENT",
+   "DESTINATION_IN_BOUNDS",
+   "DESTINATION_TRAVERSABLE",
+   "DESTINATION_UNBLOCKED",
+   "ENERGY_AT_LEAST_COST",
+   "LIVE_HOSTILE_PRESENT",
+   "NOT_TERMINAL",
+   "STEP_AWAY_FROM_NEAREST_HOSTILE",
+   "TARGET_DAMAGED",
+   "TARGET_HOSTILE_IN_SERVICE",
+   "TARGET_IN_RANGE_1",
+   "TARGET_NOT_HOSTILE",
+   "TARGET_NOT_HOSTILE_KIND",
+   "TARGET_NOT_PROTECTED",
+   "TARGET_OUT_OF_SERVICE"
+  ],
+  "decisionsIdenticalWhenLeakedHandlesMadeConsistent": 288,
+  "decisionsIdenticalWhenFingerprintsScrambled": 288
+ },
+ "point4": "CHECK_SPECIFICATION_ERROR: the flagged values are precondition codes in fields named id, not entity ids; every native entity id is renamed and none survives",
+ "point5": "REAL_DEFECT: original action handles survive in semantics[].ACTION_ID, so twin handles are not opaque and semantics disagree with the surface",
+ "decisionImpactOfPoint5": "NONE_OBSERVED: making ACTION_ID consistent changes no R/B/N selection in any development world (frozen contract: ACTION_ID is never a scoring input)",
+ "unchangedFingerprints": {
+  "fields": [
+   "observation.metadata.worldHash",
+   "state.sourceStateHash",
+   "state.provenance.sourceStateHash",
+   "state.entities[].provenance.sourceStateHash",
+   "semantics[].provenance.sourceStateHash",
+   "schema hashes (identity-independent constants)"
+  ],
+  "status": "pre-existing public provenance, not identifiers or handles",
+  "decisionInertness": "288/288 selections unchanged when scrambled"
+ },
+ "candidateE70625d1": "NUISANCE_CONTRACT_BLOCKED (point 5: handle opacity)",
+ "minimalCorrection": "O-2R.1: apply the opaque handle map to every occurrence of an original action handle in the view (semantics[].ACTION_ID), exactly as entity ids are renamed everywhere; native world, truth and the V3 statistic unchanged",
+ "authority": "R0"
+}

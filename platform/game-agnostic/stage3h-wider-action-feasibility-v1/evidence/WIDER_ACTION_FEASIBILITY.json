@@ -1,0 +1,163 @@
+{
+ "schema": "STAGE3H_WIDER_ACTION_FEASIBILITY_V1",
+ "authority": "R0",
+ "question": "Can a public-only policy choose an action from the complete native legal-action menu that never introduces a catastrophe against either frozen comparator (S0, Nexus-else-S0) while retaining material decision value?",
+ "definitions": {
+  "publicInformation": "STAGE3H_PUBLIC_DECISION_INFORMATION_V1 (complete public view incl. full public history; integrity digests excluded); no hidden node health/value, no seed recovery, no simulator/evaluator at decision time",
+  "actionIdentity": "an action is identified by its identity-free semantic key: type, actor displacement/destination relative to the actor, the target entity's public attributes (kind, relative position, critical/objective/hostile/threatened/in-service/hub flags, observed relationships) and remaining non-identifier parameters; handles and entity ids are not part of it",
+  "relabelEquivalence": "two actions are the same under entity relabelling iff their semantic keys are equal; verified per class by applying the O-2R.1 opaque relabelling to the public view",
+  "comparators": {
+   "S0": "frozen S0 top set (B)",
+   "NEXUS": "frozen Nexus recommendation, S0 on abstention (N); lexical tie-break unchanged"
+  },
+  "menu": "the complete native legal-action menu = FORGE_ACTION_SURFACE_SYMMETRIC_V1 (policySurface), identical across a public-equivalence class",
+  "policyClass": "pi: public decision information -> one menu action (deterministic) or a distribution over menu actions",
+  "catastrophe": "frozen evaluator regret >= 100 (FORGE_COUNTERFACTUAL_SYMMETRIC_V1, metrics.mjs score)",
+  "introduction": "runner-design potentialIntroduction({a}, comparator): a catastrophic while the comparator contains a non-catastrophic action",
+  "introductionFree": "action a is introduction-free in world w iff it introduces against neither B nor N in w; a class admits a zero-introduction public policy (on its tested worlds) iff the intersection of introduction-free sets over the class is non-empty",
+  "regret": "nreg = regret / menu utility spread; best-of gap = nreg(chosen) - min(nreg(B), nreg(N))",
+  "hiddenRisk": "risk that varies across a public-equivalence class (because hidden node health/value vary) is hidden risk; risk constant across the class is publicly determined on the tested family"
+ },
+ "population": {
+  "classes": 341,
+  "source": "the 341 admissible-state equivalence classes of the safety-feasibility search (H2, Nexus applicable, N != B, S0 introducing vs N or both regrets in [40,160]); twin families rebuilt identically; spent DEV seeds only",
+  "worldsLabelled": 22365,
+  "bias": "near-threshold and introduction classes only, i.e. where the two frozen arms are most likely to fail; classes far from the threshold were not analysed"
+ },
+ "all": {
+  "classes": 341,
+  "emptyIntroFree": 0,
+  "emptySafeAll": 0,
+  "oracleInArms": 28,
+  "oracleOutsideArms": 313,
+  "meanOracleNreg": 0.03368404357308686,
+  "meanS0Nreg": 0.49362660553537635,
+  "meanNexusNreg": 0.5537889060406012,
+  "meanDeltaVsS0": -0.45994256196228966,
+  "meanDeltaVsNexus": -0.5201048624675142,
+  "meanBestOfGap": -0.38197225453606026,
+  "oracleMaxNregQuantiles": {
+   "p50": 0,
+   "p90": 0.29411764705882354,
+   "max": 0.8367346938775511
+  },
+  "safetyCostClasses": 0,
+  "meanSafetyCostMaxNreg": null
+ },
+ "armFailingClasses": {
+  "classes": 145,
+  "emptyIntroFree": 0,
+  "emptySafeAll": 0,
+  "oracleInArms": 14,
+  "oracleOutsideArms": 131,
+  "meanOracleNreg": 0.03338952208002696,
+  "meanS0Nreg": 0.5401389355093665,
+  "meanNexusNreg": 0.6525687911777145,
+  "meanDeltaVsS0": -0.5067494134293398,
+  "meanDeltaVsNexus": -0.6191792690976874,
+  "meanBestOfGap": -0.3677864911569167,
+  "oracleMaxNregQuantiles": {
+   "p50": 0,
+   "p90": 0.29518072289156627,
+   "max": 0.5321100917431193
+  },
+  "safetyCostClasses": 0,
+  "meanSafetyCostMaxNreg": null
+ },
+ "twoArmConflictClasses": {
+  "classes": 10,
+  "emptyIntroFree": 0,
+  "emptySafeAll": 0,
+  "oracleInArms": 1,
+  "oracleOutsideArms": 9,
+  "meanOracleNreg": 0.04058994056488208,
+  "meanS0Nreg": 0.7544290892533922,
+  "meanNexusNreg": 0.5927477462097583,
+  "meanDeltaVsS0": -0.7138391486885103,
+  "meanDeltaVsNexus": -0.5521578056448762,
+  "meanBestOfGap": -0.5083547460771966,
+  "oracleMaxNregQuantiles": {
+   "p50": 0,
+   "p90": 0.23863636363636365,
+   "max": 0.23863636363636365
+  },
+  "safetyCostClasses": 0,
+  "meanSafetyCostMaxNreg": null
+ },
+ "identity": {
+  "semanticKeysUniqueAllClasses": false,
+  "relabelStableAllClasses": true
+ },
+ "hiddenRisk": {
+  "classesWithAnyVaryingCatastropheStatus": 224,
+  "meanActionsWithVaryingCatastropheStatus": 2.378299120234604,
+  "classesWithMoreThanOneOptimalSet": 110,
+  "classesWhereIntroFreeStatusVaries": 222
+ },
+ "oracleActionTypes": {
+  "MOVE": 265,
+  "RETREAT": 28,
+  "RESTORE": 28,
+  "PROTECT": 15,
+  "REPAIR": 4,
+  "BYPASS": 1
+ },
+ "oracleTypeEqualsS0Type": 200,
+ "publicFeatures": {
+  "armFailingByRegime": {
+   "OBSERVED_THREAT": {
+    "classes": 257,
+    "armFailing": 105
+   },
+   "NO_OBSERVED_THREAT": {
+    "classes": 84,
+    "armFailing": 40
+   }
+  },
+  "armFailingByNexusType": {
+   "PROTECT": {
+    "classes": 275,
+    "armFailing": 115
+   },
+   "REINFORCE": {
+    "classes": 51,
+    "armFailing": 19
+   },
+   "REPAIR": {
+    "classes": 15,
+    "armFailing": 11
+   }
+  },
+  "armFailingByS0Type": {
+   "MOVE": {
+    "classes": 284,
+    "armFailing": 134
+   },
+   "REPAIR": {
+    "classes": 29,
+    "armFailing": 3
+   },
+   "RESTORE": {
+    "classes": 18,
+    "armFailing": 7
+   },
+   "PROTECT": {
+    "classes": 10,
+    "armFailing": 1
+   }
+  },
+  "regimeAll": {
+   "OBSERVED_THREAT": 257,
+   "NO_OBSERVED_THREAT": 84
+  }
+ },
+ "emptyIntersectionClasses": [],
+ "verdict": "A. WIDER_ACTION_PUBLIC_ONLY_RESEARCH_FEASIBLE",
+ "verdictRule": "B if any empty introduction-free intersection; else A if, over arm-failing classes, the offline minimax choice is >= 0.02 nreg below both frozen arms; else D",
+ "caveats": [
+  "finite twin families sample the admissible hidden-state support; a non-empty intersection on tested worlds is not universal safety",
+  "the minimax choice is an offline, privileged in-class oracle; it is not a policy and not deployable",
+  "the analysed classes are a biased sample of hard cases",
+  "C (observability limit) remains open: whether lawful public features predict the introduction-free set can only be tested prospectively"
+ ]
+}

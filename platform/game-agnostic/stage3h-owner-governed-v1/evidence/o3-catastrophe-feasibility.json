@@ -1,0 +1,82 @@
+{
+ "schema": "STAGE3H_OWNER_GOVERNED_O3_CATASTROPHE_FEASIBILITY_V1",
+ "reviews": "evidence/o3-verification.json (preserved)",
+ "inheritanceHead": "a2c7961767926a86752e940ca9b604040c4f62c0",
+ "boundFormula": "stage3h-activation-readiness-v2/analysis.mjs zeroIntroductionUpper: 1-(0.05/40)^(1/(C*min n_c)); unchanged",
+ "direction": "smaller cells enlarge the bound: can only veto, never admit a false positive",
+ "feasibility": {
+  "sims": 2000,
+  "rngSeed": "0x0c47",
+  "source": "3H.1-F rejection metadata, Jeffreys plug-in per cell",
+  "populations": {
+   "HOLDOUT_KNOWN_COMPOSITION": {
+    "repetitionsPerCell": 52,
+    "minAcceptedPerCellForBoundBand": 14,
+    "minAcceptedPerCellForBoundFull": 7,
+    "MIN_TWO_PER_CELL": {
+     "P_admit": 1,
+     "P_admitAndBoundAttainable": 1
+    },
+    "KEEP_V3_HALF_PER_CELL": {
+     "P_admit": 1,
+     "P_admitAndBoundAttainable": 1
+    }
+   },
+   "OOD_LEVEL": {
+    "repetitionsPerCell": 52,
+    "minAcceptedPerCellForBoundBand": 14,
+    "minAcceptedPerCellForBoundFull": 7,
+    "MIN_TWO_PER_CELL": {
+     "P_admit": 1,
+     "P_admitAndBoundAttainable": 1
+    },
+    "KEEP_V3_HALF_PER_CELL": {
+     "P_admit": 1,
+     "P_admitAndBoundAttainable": 1
+    }
+   },
+   "OOD_ROLES": {
+    "repetitionsPerCell": 26,
+    "minAcceptedPerCellForBoundBand": 7,
+    "minAcceptedPerCellForBoundFull": 4,
+    "MIN_TWO_PER_CELL": {
+     "P_admit": 1,
+     "P_admitAndBoundAttainable": 1
+    },
+    "KEEP_V3_HALF_PER_CELL": {
+     "P_admit": 1,
+     "P_admitAndBoundAttainable": 1
+    }
+   },
+   "OOD_OBJECTIVES": {
+    "repetitionsPerCell": 18,
+    "minAcceptedPerCellForBoundBand": 5,
+    "minAcceptedPerCellForBoundFull": 3,
+    "MIN_TWO_PER_CELL": {
+     "P_admit": 1,
+     "P_admitAndBoundAttainable": 0.9995
+    },
+    "KEEP_V3_HALF_PER_CELL": {
+     "P_admit": 0.9265,
+     "P_admitAndBoundAttainable": 0.9265
+    }
+   },
+   "OOD_SHAPES": {
+    "repetitionsPerCell": 14,
+    "minAcceptedPerCellForBoundBand": 4,
+    "minAcceptedPerCellForBoundFull": 2,
+    "MIN_TWO_PER_CELL": {
+     "P_admit": 0.9995,
+     "P_admitAndBoundAttainable": 0.9855
+    },
+    "KEEP_V3_HALF_PER_CELL": {
+     "P_admit": 0.585,
+     "P_admitAndBoundAttainable": 0.585
+    }
+   }
+  }
+ },
+ "verdict": "O3_SAFETY_BOUND_UNCHANGED_AND_FEASIBILITY_NOT_REDUCED",
+ "residualRisk": "under MIN_TWO_PER_CELL a replication may pass admission yet make the catastrophe bound unattainable; the panel is then non-positive (INCONCLUSIVE at best), never positive",
+ "authority": "R0"
+}

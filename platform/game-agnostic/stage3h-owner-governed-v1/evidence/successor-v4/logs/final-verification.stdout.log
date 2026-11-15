@@ -1,0 +1,103 @@
+{
+ "verdict": "FINAL_VERIFICATION_PASS",
+ "totals": {
+  "worlds": 9456,
+  "acceptedExact": 9406,
+  "unchangedRejections": 49,
+  "intendedChanges": 1,
+  "unintendedDifferences": 0,
+  "identityFailures": 0,
+  "retries": 0,
+  "timingFailures": 0
+ },
+ "crossFailures": 0,
+ "intended": [
+  {
+   "part": "OOD_ROLES",
+   "seed": 202610203007,
+   "cell": "star/industrial/restore_and_protect/H2/1",
+   "v3": "NATIVE_MENU_MISMATCH (abort)",
+   "v4": "REJECTED:NATIVE_MENU_INVALID/DUPLICATE_ACTION_ID"
+  }
+ ],
+ "partsPass": {
+  "OPEN": true,
+  "CONFIRM_A": true,
+  "CONFIRM_B": true,
+  "IN_DISTRIBUTION_CONTROL": true,
+  "OOD_LEVEL": true,
+  "OOD_ROLES": true,
+  "OOD_OBJECTIVES": true,
+  "OOD_SHAPES": true
+ },
+ "producers": [
+  "successor-defect-reproduction.mjs:true",
+  "successor-menu-scan.mjs:true",
+  "successor-fixtures.mjs:true",
+  "menu-validity-fixtures.mjs:true",
+  "successor-statistics-v2.mjs:true",
+  "successor-parity.mjs:true",
+  "connector-v4.mjs:true",
+  "menu-validity-v1.mjs:true"
+ ],
+ "preservation": {
+  "predecessorRegistrationHashRecomputed": true,
+  "predecessorBoundSourcesUnchanged": true,
+  "predecessorBoundSources": 133,
+  "predecessorRecordsCommittedAndUnchanged": true,
+  "predecessorRecords": 18,
+  "consumedRunDirectory": {
+   "A": "EXISTS_EMPTY",
+   "B": "ABSENT"
+  },
+  "witnessEvidence": {
+   "abortStack": true,
+   "abortDiagnosis": true,
+   "reproduction": true,
+   "spentRecordUnchanged": true
+  }
+ },
+ "scientific": "SCIENTIFIC_CONTRACT_SATISFIED",
+ "sciDetail": {
+  "mech": {
+   "boundNativeSources": 57,
+   "unchanged": true,
+   "srcWorkingTreeClean": true
+  },
+  "dedup": {
+   "ruleNeverMutatesASurface": true,
+   "frozenInputRuns": [
+    {
+     "seed": 202610203007,
+     "valid": false,
+     "threw": false,
+     "viewsUnchanged": true
+    },
+    {
+     "seed": 202610090101,
+     "valid": true,
+     "threw": false,
+     "viewsUnchanged": true
+    }
+   ],
+   "viewsBuiltAsV3": true,
+   "acceptedRowsCarryOriginalMenu": true,
+   "malformedNeverScored": true
+  },
+  "prepolicy": {
+   "a": true,
+   "b": true
+  },
+  "repl": {
+   "scheduleFixedByHash": true,
+   "singlePassOverPlan": true,
+   "rejectionsRecorded": true
+  },
+  "vetoes": true
+ },
+ "estimand": {
+  "piBar": 0.0025954707155536804,
+  "maxShiftContrast": 0.005190941431107361,
+  "interp": "Valid-menu conditioning changes the estimand by exactly zero in four of five populations and by at most 0.0052 on any OOD_ROLES arm contrast (95% bound), about 26% of the 0.02 materiality margin; the claim is explicitly restricted to valid-menu worlds."
+ }
+}

@@ -1,0 +1,114 @@
+{
+  "plan": {
+    "id": "SENTINEL_ASCII_EXTREME_CURRICULUM_V1",
+    "version": "3.2.0",
+    "authority": "R0",
+    "canDispatch": false,
+    "canMutateLiveWorld": false,
+    "onlineLearning": false,
+    "promotion": false,
+    "games": [
+      "pong",
+      "platformer",
+      "fighter",
+      "racing",
+      "rescue",
+      "cards",
+      "factory",
+      "roguelike"
+    ],
+    "tiers": [
+      1,
+      2,
+      3
+    ],
+    "labels": [
+      "Advanced",
+      "Expert",
+      "Extreme"
+    ],
+    "baseline": "Original D1–D5 unchanged; new ADVANCED_1–3 IDs are separately versioned extension configurations, not certified D6–8.",
+    "firstExperiment": "Fresh V2 codec action-ranking pilot; no reuse of old training/validation/reserved outcomes as fresh confirmation.",
+    "secondExperiment": "Separate Factory relational consumer; no inherited Nexus/Prime credit.",
+    "splits": {
+      "TRAIN": {
+        "lineage": "V32_TRAIN_RECTILINEAR",
+        "seedBase": 2703228928
+      },
+      "DEV": {
+        "lineage": "V32_DEV_OFFSET",
+        "seedBase": 2721054720
+      },
+      "OPEN_VALIDATION_A": {
+        "lineage": "V32_OPEN_MIRRORED",
+        "seedBase": 2738880512
+      },
+      "OPEN_VALIDATION_B": {
+        "lineage": "V32_OPEN_DOGLEG",
+        "seedBase": 2756706304
+      },
+      "STRUCTURAL_OOD": {
+        "lineage": "V32_OOD_MULTI_BRANCH",
+        "seedBase": 2774532096
+      },
+      "RESERVED_TEST": {
+        "status": "UNMATERIALIZED_UNACCESSED"
+      }
+    },
+    "smoke": {
+      "seeds": 2,
+      "policies": [
+        "STRONG",
+        "WAIT",
+        "SPAM",
+        "RANDOM"
+      ],
+      "sensors": [
+        "NORMAL",
+        "DELAYED",
+        "STALE",
+        "MISSING",
+        "PARTIAL"
+      ],
+      "budget": "Finite per-world; every scheduled episode, rejection, timeout and failure retained."
+    },
+    "training": {
+      "epochs": 80,
+      "lr": 0.12,
+      "l2": 0.0001,
+      "margin": 0.1,
+      "selection": "Fixed last epoch; no OPEN-based weight update",
+      "codec": "EXPERIMENTAL_PUBLIC_ACTION_CODEC_V2_NOT_TRAINED"
+    },
+    "gates": {
+      "minimumSuccessDelta": 0.1,
+      "newCatastrophes": 0,
+      "lower95PairedDeltaAbove": 0,
+      "replicationRequired": true,
+      "newRepeatedOfftrackFailures": 0,
+      "qualifiedReachabilityRequired": true
+    },
+    "power": {
+      "pilotPairsPerCell": 4,
+      "qualificationPairsPerCell": 200,
+      "reason": "Pilot cells are descriptive only. Conservative worst-case paired Bernoulli SE ≤1/sqrt(n); detecting 0.2 at 80% two-sided 5% power requires ~196 pairs. Do not certify small pilots.",
+      "fullScheduleAuthorizedButNotImplicitlyCompleted": true
+    },
+    "curriculum": [
+      "FOUNDATIONAL",
+      "ADVANCED",
+      "EXPERT",
+      "EXTREME",
+      "STRUCTURAL_OOD"
+    ],
+    "advance": "TRAIN+DEV gate only; frozen candidate before OPEN; no reserved materialization",
+    "unqualified": "No canonical expert action binding or Prime complementarity unless independently demonstrated. Teacher agreement is not regret; missing metrics null, not invented.",
+    "safety": "Rogue new deaths veto; racing repeated off-track veto; Rescue new casualties veto; fighter equal latency/style-separated; Cards own-hand hidden; Factory WAIT must fail; Pong strategic shot candidates need outcome gain."
+  },
+  "planHash": "4dcf55b7ee6c2e80e8e69dc2ef5aa0e950ab2fc76b962c2045467b9d147d0d51",
+  "catalogHash": "12a9eca15f38fdcb4367d353963e74c8010f62ecc0322b751396908b0f507d41",
+  "baselineAuditHash": "3dee65286b75d7e3a7cb855eac630638300654ebde1b69cd2490a7c41fff8fd7",
+  "beforeTraining": true,
+  "beforeNewLevelOutcomes": true,
+  "sealedDataAccessed": false
+}

@@ -1,0 +1,156 @@
+{
+ "schema": "STAGE3H_HW4B_PROTOCOL_FREEZE_V1",
+ "authority": "R0",
+ "stage": "H-W4B",
+ "title": "Final Prospective Value-Band Policy Test — frozen C11 V1/V2 comparison on fresh DEV classes",
+ "frozenAt": "2026-11-04T08:31:44.269Z",
+ "frozenBeforeAnyWorldGenerated": true,
+ "disclosure": "The C11_FULL candidate pair was selected for this test AFTER the exploratory H-W4 evidence (H_W4.md §7 identified the cat-head/FULL hint; OOF intros vs S0: V2 C11 55 vs V1 C11 61). H-W4B is a PROSPECTIVE DEV FOLLOW-UP, NOT an independent confirmation of a previously registered hypothesis. No selection, tuning or threshold change is permitted after this freeze.",
+ "frozenCandidates": [
+  {
+   "id": "V1_PUBLIC_ONLY/C11_FULL_SAFE_FIRST",
+   "arm": "V1_PUBLIC_ONLY",
+   "file": "models/V1_PUBLIC_ONLY_C11_FULL_SAFE_FIRST.json",
+   "sha256": "749d1d5f7573bbe1466f6ad5ad909b0ab628f0f561f4cf9d77218984e309c56b",
+   "trainedOn": "H-W4 EXPLORATION population only (manifest 5af97e58e4840a5fb8ae2c928ff53fb23125ee1ad03730db746c3d70651aef14)",
+   "provenanceRecord": "evidence/HW4_EXPLORATION_V1_PUBLIC_ONLY.json candidates[C11]",
+   "score": "SAFE_FIRST tau=0.02 (tuned per arm by the frozen prespecified grid+ criterion on OOF exploration decisions)"
+  },
+  {
+   "id": "V2_PUBLIC_PLUS_VALUE_BAND/C11_FULL_SAFE_FIRST",
+   "arm": "V2_PUBLIC_PLUS_VALUE_BAND",
+   "file": "models/V2_PUBLIC_PLUS_VALUE_BAND_C11_FULL_SAFE_FIRST.json",
+   "sha256": "77136f461ddcd42f0f2c7dc89b9d3989d04a80602fd645552eb49d26523f03fc",
+   "trainedOn": "H-W4 EXPLORATION population only (same manifest; paired folds)",
+   "provenanceRecord": "evidence/HW4_EXPLORATION_V2_PUBLIC_PLUS_VALUE_BAND.json candidates[C11]",
+   "score": "SAFE_FIRST tau=0.2 (tuned per arm by the frozen prespecified grid+ criterion on OOF exploration decisions)"
+  }
+ ],
+ "candidateRule": "Both frozen C11 models are evaluated exactly once each on the same fresh DEV population. No new model, no other candidate, no modification of C11, no reselection.",
+ "comparators": {
+  "S0": "the class record's frozen B orbit (frozen S0 policy)",
+  "Nexus": "the class record's frozen N orbit (frozen Nexus-else-S0; abstention falls back to S0)",
+  "identity": "produced by the frozen i2-build-class join; recorded per class"
+ },
+ "nativeEvaluator": {
+  "module": "stage3h-hw1-dev-v1/hw1-eval.mjs",
+  "catastrophe": "member regret >= 100 (CATASTROPHE=100)",
+  "regretEstimator": "nreg = mean regret / menu utility spread; class nreg = equal-weight member mean; worst-case recorded",
+  "introduction": "potentialIntroduction(candidate orbit, comparator orbit, truth) — identical sets never introduce"
+ },
+ "identityAndGeometry": {
+  "audit": "auditClassHw4 (hw4-audit-class.mjs): relabel, menu-permutation, lawful D4, public-equivalent hidden twins; legality; repeat; poisoned-view; read-trace; three negative controls",
+  "transforms": "stage3h-hw1-dev-v1/transforms.mjs D4_ELEMENTS",
+  "invarianceTolerance": "zero violations"
+ },
+ "computeBudget": {
+  "decisionMedianMsMax": 100,
+  "decisionMaxMsMax": 1000
+ },
+ "statisticalEstimands": {
+  "primary": [
+   "paired difference in catastrophe-introduction rate vs S0 (V2 - V1, class-paired)",
+   "paired difference in catastrophe-introduction rate vs Nexus-else-S0 (V2 - V1, class-paired)"
+  ],
+  "secondary": [
+   "V1/V2 action disagreements",
+   "paired nreg differences vs both comparators",
+   "worst-case regret",
+   "action-family effects",
+   "base/twin sensitivity",
+   "V2 band-ablation decision flips (diagnostic)"
+  ],
+  "uncertainty": "origin-family-clustered bootstrap (clusters = origin families, class-paired deltas, 10000 resamples, seed HW1_CLUSTER_BOOTSTRAP_V1); one-sided 95% bounds; zero-event class- and cluster-level upper bounds"
+ },
+ "failureRules": {
+  "zeroIntroductionsVsS0": true,
+  "zeroIntroductionsVsNexus": true,
+  "zeroIllegalActions": true,
+  "identityZeroTolerance": true,
+  "meanNregImprovementMin": 0.02,
+  "regretUpper95BelowZero": true,
+  "note": "A statistically supported regret reduction with ANY remaining introduction is NOT_QUALIFIED."
+ },
+ "classificationRule": {
+  "A": "V2_C11_DEV_QUALIFIED — V2 passes ALL gates (zero introductions vs both comparators, zero illegal, identity zero-tolerance, regret gates, compute, execution valid)",
+  "B": "V2_C11_SAFETY_IMPROVED_NOT_QUALIFIED — V2 introduces strictly fewer classes in total than V1 but fails any zero-introduction or other gate",
+  "C": "V2_C11_NO_SUPPORTED_ADVANTAGE — V2 does not introduce fewer classes in total than V1, or fails equally",
+  "D": "H_W4B_INVALID_OR_BLOCKED — execution invalid or the experiment cannot be completed as frozen"
+ },
+ "exclusionLoader": {
+  "module": "hw4b-allocator.mjs loadExclusions",
+  "registries": [
+   "I2_REGISTRY_STUDIED_341",
+   "I2_REGISTRY_DEV_H2",
+   "I2_REGISTRY_EXPLORATION (H-W1)",
+   "I2_REGISTRY_VALIDATION (H-W1)",
+   "HW4_REGISTRY_EXPLORATION",
+   "HW4_REGISTRY_VALIDATION"
+  ],
+  "strictIndex": "stage3h-wider-action-feasibility-v1/exclusion/strict-index.mjs",
+  "tamperCheck": "hw4b-exclusion-check.mjs PASS required before any worker"
+ },
+ "seedBlockAllocation": {
+  "population": "DEV",
+  "blocks": [
+   901,
+   902,
+   903,
+   904,
+   905,
+   906,
+   907,
+   908,
+   909,
+   910,
+   911,
+   912,
+   913,
+   914
+  ],
+  "allocationRecord": "evidence/HW4B_NAMESPACE_ALLOCATION.json",
+  "allocationHash": "23a0a16feba4d1f555ec655de9044c4b8cb2054e4b27a4c03f096ff320808a8b",
+  "note": "Fresh blocks only; every H-W1..H-W4 spent block forbidden; strict-index + repository text scan preflight fail-closed. Block spent only when its worlds are generated."
+ },
+ "populationPlan": {
+  "targetClasses": 600,
+  "minimumClasses": 300,
+  "holdoutWorlds": 0,
+  "sealedWorlds": 0,
+  "replacementOfUnfavorableClasses": "FORBIDDEN",
+  "familyCapFraction": 0.05
+ },
+ "reportingSchema": "H_W4B REQUIRED RESULT block (owner directive 2026-11-04); report at H_W4B.md; NOT committed without separate authorization",
+ "prohibitions": [
+  "no new training",
+  "no candidate change",
+  "no C11 modification",
+  "no modification of H-W4 validation results or the introduction audit",
+  "no optimization against the audited H-W4 failure classes",
+  "no sealed or holdout worlds",
+  "no threshold change",
+  "no push/deploy/promotion",
+  "no committing report or artifacts without separate authorization"
+ ],
+ "computeBudget_note": "Workers may run in parallel; per-decision budget is per policy decision.",
+ "allocationHash": "23a0a16feba4d1f555ec655de9044c4b8cb2054e4b27a4c03f096ff320808a8b",
+ "frozenSources": {
+  "hw4b-allocator.mjs": "ca091dde4803864469e65754e2ce2625235a3df43478a1715c47a7ae7b9c86f6",
+  "hw4b-screen.mjs": "521c9d05d48204e0f27879d3c5757ca6ef508aa6a2c68cc5ea41c28079a03ba4",
+  "hw4b-aggregate.mjs": "f7bcea16450772a0ce9cb88f18d05125b6620d3c6ba62df65a27304b0e8697d9",
+  "hw4b-build-class.mjs": "c95160ec6c1785f0e11a280794b3579f54f33477e9a5bd9add2481297d5fedab",
+  "hw4b-freeze.mjs": "87b3706cc2e008c8497514146cace8760155594136483015397edb4d9777d2da",
+  "hw4b-population.mjs": "98999867f6515af9c2f334907e9c5158e404a6fe86e4933cb17b3135348d38db",
+  "hw4-policy.mjs": "f0ba4b815bf12ba919342db8d67595a9cf44cbe86447261dd45566171d4056f0",
+  "hw4-features.mjs": "43c21ae939d5262ecedb31d74c296f72d826403802ecc6540c5da7e02dbb36c0",
+  "hw4-contract-v2.mjs": "94fe0b51ef4e86a37e1545f29c2743a25c31208dd491698cc1f8f1bf37a344de",
+  "hw4-audit-class.mjs": "12aa69fa5a3b8fb4842fdee879a0a4550c54528721763b72cbeda95dedb725d6",
+  "public-projection.mjs": "c4f9532e0771e025513122052128b0d14185e4abcde3ace9de9de5d77db6c099",
+  "hw1-eval.mjs": "a91947ae45e55d4901c8598522f953ff49a9b83994aba78bb82c94efc09b214e",
+  "i2-screen.mjs": "6ae1b11635ac27cd7e6f372c9b7a6016942943f1cb60a0a71f4ec7734591c3f7",
+  "i2-build-class.mjs": "071b1d4f9b908a52e4414a3280cd5b10e086d59f0645187fed5e7d7da6649eb4",
+  "i2-registry.mjs": "103f1c54f82ae924e8dcdf25d55d97c4c6adb5b5c9f486c0ca27ac75c1b3fd6f",
+  "transforms.mjs": "556dde4c2af3b3e8e1bcb45857e3419d1279bb21a3d93d96faf7f175d3c0d016",
+  "i3-features.mjs": "4f6da6af69020c9a4b9ef548541d93b473a56d0f3aba8e486a75101b8537cb50"
+ }
+}

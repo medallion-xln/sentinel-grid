@@ -1,0 +1,601 @@
+{
+ "id": "STAGE3H_OWNER_GOVERNED_REGISTRATION_V1",
+ "revision": 4,
+ "kind": "SUCCESSOR_REGISTRATION_CANDIDATE",
+ "status": "REGISTRATION_PENDING_OWNER_APPROVAL",
+ "reviewMode": "OWNER_GOVERNED",
+ "independentMethodReview": false,
+ "externalIndependentCustody": false,
+ "authority": "R0",
+ "predecessor": {
+  "registrationHash": "0364164cb05e140da6265c89d830388b84dafed7ef5f3abf47ad6afb2833b01f",
+  "registrationCommit": "e009344c2c973a329a4b88582f90b9e58e15abce",
+  "activatedCandidate": "f1ba57b46ceedc3ab22a859d51245ed353b1aaa570ec914ebaa3f8fec4c3e984",
+  "status": {
+   "A": "CONSUMED_ABORTED",
+   "B": "NOT_STARTED",
+   "results": "NONE",
+   "verdict": "EXECUTION_INVALID_OR_ABORTED"
+  },
+  "abortCause": "NATIVE_MENU_MISMATCH in nativeLock (native duplicate action id; defect class reproduced on spent worlds; the sealed A world is not identified)",
+  "consumedRunDirectory": "stage3h-owner-governed-v1/runs/0364164cb05e140d/A (empty; retained; never rerun)",
+  "consumptionRecord": {
+   "file": "stage3h-owner-governed-v1/evidence/execution-0364164c/replication-consumption.json",
+   "sha256": "4eab87cc5d1199cc4a223e125b8c5f59888bf1f4c336072e08b2f7f5d86b66c1",
+   "replicationA": "CONSUMED_ABORTED",
+   "replicationB": "NOT_STARTED_NOT_CONSUMED"
+  },
+  "continuation": false,
+  "predecessorBReused": false
+ },
+ "supersedesCandidates": [
+  {
+   "hash": "18ff522c238cd1e6ebec559229584fce28c31759883794a4a4e715811bcd2793",
+   "reason": "NUISANCE_CONTRACT_BLOCKED (evidence/o2-gate.json)"
+  },
+  {
+   "hash": "e70625d137a93c5321dd96b53b59ec99b960811cbe67d2f699a01e7a5ed1f720",
+   "reason": "O-2R gate point 5 failed: handles not opaque (evidence/o2r-gate.json, o2r-gate-diagnosis.json)"
+  },
+  {
+   "hash": "f1ba57b46ceedc3ab22a859d51245ed353b1aaa570ec914ebaa3f8fec4c3e984",
+   "reason": "activated as 0364164cb05e140da6265c89d830388b84dafed7ef5f3abf47ad6afb2833b01f; replication A aborted on NATIVE_MENU_MISMATCH (EXECUTION_INVALID_OR_ABORTED)"
+  }
+ ],
+ "governanceAmendment": {
+  "file": "stage3h-owner-governed-v1/amendment-v4.json",
+  "revision": 4,
+  "sha256": "84fe8a2a13890f1e5a308710e04c38c70e5e1764b14ad75d8eb060b34c55b54e"
+ },
+ "v3": {
+  "commit": "320a07da6de6385dceb054e9c1d6b1048916bfa6",
+  "amendmentHash": "525a00476892ca62414ae55ddea6401a6ee9da86db1f8f4537de3c3e9cd14a5c",
+  "contractSha256": "ede7e62e1796887ac67e2f5c8d5a3054f867c0adc745e10a296b7d17f4286771",
+  "role": "PRESERVED_INACTIVE_EXTERNAL_STANDARD"
+ },
+ "frozenSelector": {
+  "rule": {
+   "H0": "NEXUS_ELSE_S0",
+   "H2": "S0"
+  },
+  "ruleHash": "c53826da908510a6eceae626a3c7463195b648c95962f32b9e2774b8324be021",
+  "arms": {
+   "R": "frozen horizon rule",
+   "B": "frozen S0 30a72416b8a7f0079155cd25908acbe8a2f69750759d106cf71609d77e1e8937",
+   "N": "frozen NEXUS_ELSE_S0 at both horizons"
+  },
+  "exactControls": [
+   {
+    "band": "H0",
+    "require": "R=N exact selections and metrics"
+   },
+   {
+    "band": "H2",
+    "require": "R=B exact selections and metrics"
+   }
+  ]
+ },
+ "environment": {
+  "generator": "FORGE_SCENARIO_GENERATOR_SYMMETRIC_V1 over frozen V3/V2",
+  "counterfactual": "FORGE_COUNTERFACTUAL_SYMMETRIC_V1 / GREEDY_CONTINUATION_V1",
+  "worldIdentity": "hashWorld semantic projection (seed excluded)"
+ },
+ "connector": "STAGE3H_OWNER_GOVERNED_NATIVE_CONNECTOR_V4_MENU_VALIDITY",
+ "runner": "stage3h-owner-governed-v1/campaign-v4.mjs",
+ "activeRegistrationPath": "stage3h-owner-governed-v1/registration/ACTIVE_REGISTRATION_V4.json",
+ "executionAuthorizationPath": "stage3h-owner-governed-v1/registration/EXECUTION_AUTHORIZATION_V4.json",
+ "analysis": "STAGE3H_OWNER_GOVERNED_NATIVE_ANALYSIS_O1_V1",
+ "analysisLabel": "STAGE3H_OWNER_GOVERNED_V1",
+ "nuisance": {
+  "D4": "NATIVE_WORLD_ORIENTATION",
+  "IDENTITY": "STAGE3H_IDENTITY_OBSERVATION_ONLY_O2R1_V1",
+  "ORDER": "OBSERVATION_ONLY",
+  "function": "V3 runner.nuisanceDependence (unchanged)"
+ },
+ "preflight": {
+  "maxLoadFractionOfCores": 0.25,
+  "devLocks": 96,
+  "lockP99MaxMs": 250,
+  "lockMaxMs": 500
+ },
+ "executionEnvironment": {
+  "runtime": "the registration-bound Node binary, versions, platform and launch flags; plain `node campaign-v4.mjs run A|B`",
+  "host": "the owner workstation that produced the bound runtime identity",
+  "load": "1-minute load average <= 25% of logical cores; no concurrent stage writer, test runner or campaign",
+  "power": "AC power; sleep inhibited (caffeinate) for the run",
+  "process": "single process; A then B sequentially; B only after A locked without abort",
+  "memory": "analysis <= 1 GiB RSS and <= 30 min per replication (V3)",
+  "network": "not required",
+  "logging": "full stdout and stderr captured to a file for every run"
+ },
+ "menuValidity": {
+  "id": "STAGE3H_NATIVE_MENU_VALIDITY_V1",
+  "module": "stage3h-owner-governed-v1/menu-validity-v1.mjs",
+  "invalidReason": "NATIVE_MENU_INVALID",
+  "causes": [
+   "EMPTY_MENU",
+   "DUPLICATE_ACTION_ID"
+  ],
+  "policyFacingViewsPerWorld": 11,
+  "validationPoint": "Earliest lawful point: after warm-up and after the V3 pre-policy gates (validator, terminal, task, within-run duplicate world, prior-world exclusion, packet horizon), once the post-warm-up world and all of its policy-facing views exist, and before the first policy call and before any evaluator truth exists.",
+  "ownerDecision": "AMENDMENT-O6-NATIVE-MENU-VALIDITY"
+ },
+ "bindings": {
+  "sources": {
+   "artifacts/stage3g8-projection-disclosure/stage3g8-open-phase-report.json": "4eb8e6d2b2def3804f1f8199c1fea295bbe37e84c1d07a940f2f1e0a95e92e45",
+   "ascii-quality-v33_1/controllers-v33_1.mjs": "90c874781905a27a6971a307626e7d9cd4e59596649a06d442540fa95e2d9e85",
+   "ascii-quality-v33_1/guard.mjs": "2993e9058dbfe5b18ce1a7c7efb08ebaeb2f4af9bd4715ea0ed69a90cbcf5919",
+   "ascii-quality-v33_1/platformer-planner-v2.mjs": "a2e444ca1ac834abc10084838485418435b4375102380d88a94eaca062c63084",
+   "ascii-quality-v33_1/policy-v33_1.mjs": "b184201921495c033ec802b819d2b9c4ec362e9e6bb9e2bbf9788798a4e3cc8c",
+   "ascii-suite/controllers/fighter.mjs": "c676a49330eeffb28c8294c9b4246c80b29d159c4e81671a8392e9541448512e",
+   "ascii-suite/controllers/index.mjs": "5b7af1517ccaf6a448d593cc85a21e3957f77cb908972b3b69a9e2c939505af9",
+   "ascii-suite/controllers/platformer.mjs": "1682bdea63d2dd90d8c209da6c8ddc0e728708416c1a3a08922a0828e433cdbe",
+   "ascii-suite/controllers/pong.mjs": "8ec08a2d9b0a4728d0e0e1378c51d66481e5eed0f372894da611ef5883f56256",
+   "ascii-suite/controllers/racing.mjs": "b5e691377a060bc93077b9486604a45d7337233e8f6908674e382bd9a4c2c288",
+   "ascii-suite/games.mjs": "b952d1f7f1ffe6d3177c2a9459bf5f07e623a957789ebc0580d0b804a78c638d",
+   "ascii-suite/prime.mjs": "4876767179fcd5d6f0b7d377e4411a8fe134741dff5bd1b49559bd01627201a9",
+   "ascii-suite/training-dev-v1/candidate-v2/action-codec.mjs": "6a96692de6ca5d6db9e3e0ba04726ec33a1cdcba5f9235b751380e0d507869d8",
+   "ascii-suite/training-dev-v1/features.mjs": "2d1e481f071ecb72420fb852ce3f191d1e4d2f1ae9666020557510942aa9f169",
+   "ascii-suite/training-dev-v1/model.mjs": "3f588f2ce3bf8a437985850646f36b39bde245052078934b857b6ee9e3c9fa9c",
+   "ascii-suite/v21/freeze.mjs": "59b191c3c3c964db46e187f081ae2e8257e12b095475a6d58ec651be4a483ab4",
+   "ascii-suite/v3/common.mjs": "78497f78da83932973cd25564d97d32601473a7314c257b4683385975ba7858c",
+   "ascii-suite/v3/controllers.mjs": "1b10a927f2647b4a7119753a9eae3d8bbc31b20f22feff76eac7946ec0c19cce",
+   "ascii-suite/v3/factory-model.mjs": "7352c2e3ad90a8f6d65f586ca3199e4850dc68d7f739ab208ebb2e84ae54c4a6",
+   "ascii-suite/v31/sentinel.mjs": "d6db5c666238f4c4626493a067cbb41e3aa9af71e3e0cc3cbd730b9926c82917",
+   "ascii-suite/v32/codec-v2.mjs": "f7da0aba597b8e0ef5c8ca5c10be23b1dc5d8df7e99b08c63744b0683a8e0191",
+   "ascii-suite/v32/policy.mjs": "45f0a333db8cbccaa00a69337f4c94ea388ad9c49ef264580eba86e59cc3f60e",
+   "ascii-suite/v32/relational-features.mjs": "d9bedde42eac731947a70fd52fb445784a81f5592e715a69dd39d52672886fcf",
+   "ascii-suite/worlds/common.mjs": "1b9280830c99fe30397c8e0c3860589e092a79aec5188e4c84f1634c2b437236",
+   "ascii-suite/worlds/fighter.mjs": "9367f528ab66add0aaa2389a7e8c86980a8c42d9d601d25857d0ac8d7c5f3af5",
+   "ascii-suite/worlds/platformer.mjs": "5c869ab10bf14dcd48bc188d73b747b5b765823c464d782479f42f4d6d5dc909",
+   "ascii-suite/worlds/pong.mjs": "35d1c991d5e478101aa4f614f12574d054eeac629d498f33ea947f29b6ad79ec",
+   "ascii-suite/worlds/racing.mjs": "b9fa9b45e6e1fa575dcd833b692ec8ed25868a0b4a08e9ab020976f6f1464fd7",
+   "scripts/generate-stage3f6p1e-policy-evidence.mjs": "2932759e703fa2d9f67ab82b64861daab025b0fddb91a02fce18962b870c365f",
+   "scripts/stage3f6p1asym-evidence.mjs": "64008f4ce72492448561eee9eaad42af210c6ad00c8d366f7d6354018fc93bc6",
+   "scripts/stage3f6p1e-analysis-plan.mjs": "fc79c7ac581bbd045f5b5d0ab9e5b79012f3adb16a5ae2d4693734d4e8f238bd",
+   "scripts/stage3g/evidence.mjs": "02513b4973b738760ae0c651284d1f1afdefd64fff57cdd3b27483bc81ae5f4c",
+   "src/core/authority.js": "fa622b39e80fd8808aefa41b4f4525d28bc778f7c3c19db046ee72648e1f2ee8",
+   "src/core/constants.js": "e0e274626586c4c250249f6c7ea0f7ad743637baf37f44f393ae158ed4da5eb4",
+   "src/core/contracts.js": "1215a623f553c7c155d60978387a5f9cf42c450733afb9c4dce44b7180df001a",
+   "src/core/determinism.js": "06bba4bb8c1018097a684961921eea1c8ed0d7e011252d55fb2705eb3f503bc5",
+   "src/core/errors.js": "cf512a3659125dc877c721bd295c8f67ef01e9eac5e12cfd59bf234bc09e8c59",
+   "src/core/recommendation.js": "20cf8d3033d9dc9a75be947ec20ab51b1f722cc29f998d23a00e7095c4d2b4af",
+   "src/experts/expert-action-context.js": "ae5f5c2a06551274c3b76d0e07e22d1b77c3a106737ffd1545b7204dfcf616c3",
+   "src/experts/expert-context.js": "1a8e0f967533145e0e9e4abde0a90ac539c9f3cd9583c8c16bd9b7a18e9020ff",
+   "src/experts/expert-contract.js": "2d1c9da6e383744f4a23204bf9f210b3a879765630d170d9b4e25d3375c2ce7a",
+   "src/experts/nexus.js": "7a6e194b1b97221fc9e2a15cc9f1885c0858ab50d784bdf81e5cbc58de70a144",
+   "src/experts/oracle.js": "ce50bcc3a9d5c56f5c3d9986710609af5bc2c5e4ece9b73fc739a65f87b8373a",
+   "src/forge-symmetric/action-surface-symmetric-v1.js": "a446d8e690a659674e0da3ec9346f3ec2fb38adddd2aaac529b8fdf77258eb62",
+   "src/forge-symmetric/counterfactual-symmetric-v1.js": "4f7fe3d8fd011b97021328747345526aa744adf988e2300b5fde122677ce8fa7",
+   "src/forge-symmetric/orientation-symmetric-v1.js": "3fd13729bfb0db4e2a09f48ceba39cce30b03b398e6bec7e6570182be028c5b1",
+   "src/forge-symmetric/scenarios-symmetric-v1.js": "3274b434ab6ab6f55d04cd964e94e8056322b1ea8b818adffa8348d6a514035e",
+   "src/forge/adapter.js": "9185c56147357435a46d4df77eefe969bc3753a97f73b5490dd9689bf53b3ba0",
+   "src/forge/contract.js": "07b4bc10a6daca7509b39e4cad1cbc39ef2d10031cf08d1b91d31234bae801d6",
+   "src/forge/counterfactual-v2.js": "3eb25964dd1088ce8c67e116176221eae9d438ded20db608ffe6a5121b0a0b1e",
+   "src/forge/counterfactual.js": "e90af5e76cf48315aae0f64f337c809991906864034facb229508d1bd92a46d7",
+   "src/forge/dataset-v2.js": "2017051859bdda719ce33e2f1143cb4c814a2ee8b16aa1617e48a0d87f5b48cf",
+   "src/forge/dataset.js": "0769d596f9a4b3fd44a9ab6af2d172894a2bff4c1c518e8014d9d7a19cc52e49",
+   "src/forge/export.js": "c4f0d6277f367c5f309a67a68eb277c57ed596c915ccfa5a2950ca80da460180",
+   "src/forge/kernel.js": "f9c807ebed80ff1c2e2a47115b62525f9dac94b6c41af9d66e1903c3b7b209b7",
+   "src/forge/oracle-surface.js": "6fa79d5eec209895f950e04a25fd9d8e9f370d12033b52a06724138ff0557a35",
+   "src/forge/render.js": "823318dc6abbfa867a32582805d3f5eac6b28c67660d0fea9e67022c2604df4e",
+   "src/forge/replay.js": "7ddd38d0b93c0f91c8f87acdae6408f3f7b611e0c4f624524c72097bb3f91158",
+   "src/forge/reward-v2.js": "8e31eb360c51837868132827b9c02e512ddd6ac1c892612242b1ed383feb74c0",
+   "src/forge/scenarios-v2.js": "c50c380eae9c37c0ee8d1a00e5e9736ae2f5dfaab814e1e8ec0d048d4e0c314a",
+   "src/forge/scenarios-v3.js": "f990f2249c2390305cec7b690b4ea3ae1dd0bb11622d4d1cd37e33fa99c337e8",
+   "src/forge/scenarios.js": "e5549cad32da129dcd37bdd8d9fd5226029a9f0b165220227b3307061e481e5f",
+   "src/forge/soup-bridge.js": "b892f85ac2e8f21cd3c2b4c8e368aab57808e3c60578045099a2cbdb1947b00b",
+   "src/forge/supervision.js": "0a21ecf9eb757f26c1c7932c4c38494561b2f6db1f3a3e9c2e58dca55a07025d",
+   "src/forge/topology.js": "364c07720d9393abdc530bce5b97a3014f8c27aa5813188268cb4ea1176af311",
+   "src/forge/validators-v2.js": "8dfb8c507887a3f3b996b8aca23c23248aaba0a2d8467c3bc0097d4639b747d9",
+   "src/forge/validators.js": "bb388403ea8e8b873788a15a9e85b3b419237c197e8acd2aa68f47392174a6db",
+   "src/forge/warmup.js": "d6fc447a263de423f09ebcf1b5806e71d3af7df642df1dd9e0ade77206b82d97",
+   "src/lab/stage3c-learned-nexus.js": "aae20d1d40b1cc5f93b5b46dd700f1ef1f66ea0ec44507efc4c4cfecba198574",
+   "src/prime/root-puct.js": "93b62027a77088690027201d3ed05ead8f8f50f77e44a37bca6237070e2148fc",
+   "src/sdk/define-adapter.js": "f5da872fa40214713b417ff40e8a5df648b52e869d9bd58bf7c0e0744239b9be",
+   "src/stage3f/causal-trace-v1.js": "78388a00b2bedfc9689a5d9f51d0cbc04be9cf7f09774aedee762c100cd06f87",
+   "src/stage3f/counterfactual-veto-ledger-v1.js": "ce0dd3927cb3a89abeadfd501bc6294e02fdebf40f051f72b0bf9153475cf373",
+   "src/stage3f/deployable-action-proposal-v1.js": "b20b7d04e797f53412a64da4e68da519045d39d0524b96cc900888dc669f58c4",
+   "src/stage3f/environment-calibration-v1.js": "ff05ced2470c6918a5cd2d5eb7ab9591df46483cbe2d38a504046645a45ea872",
+   "src/stage3f/free-action-sufficiency-v1.js": "e4e57840e0f1a9abc0d5c8e0e91bce767761620063b2fc6f6eb14d2de924d5b7",
+   "src/stage3f/nexus-relational-spatial-context-v1.js": "6a66f4d8898fee0be039a815542a9b4487ad017637998ee7785938b0b584c6c6",
+   "src/stage3f/nexus-selector-v2-candidate.js": "965cb36f003045a5f80e0e9860c03b99db0d427bdd1768d5fc33ec72e2581577",
+   "src/stage3f/policy-requalification-v1.js": "44d216fe933dd15b31b6611684af776f2318e9ba2b08cadb518bd4fe832ceae0",
+   "src/stage3f/policy-router-v1.js": "ab23d2333d11da690a57dccfbc077944a1a68237db952dd158e8d9362a68a7a7",
+   "src/stage3f/prediction-reliability-corpus-v1.js": "eab1654e48f2cbf4140e79601e23715af055ca3bb62e476063206859dbefa57e",
+   "src/stage3f/prediction-reliability-v1.js": "8ed40e8e166e074bd0333142977f35f8fd44886114c78a577ffbbddc64e90848",
+   "src/stage3f/world-state-v1.js": "dbc44bffa01dc58b13d94ef34fbcbd1d35815859fafdfe62b55cf428003d9380",
+   "src/stage3g/action-semantics-v1.js": "edfbff80e683a71ef1ba7a6bc87350a2f1c9a378526c311779806f856e4ab03e",
+   "src/stage3g/deployable-action-model-v1.js": "755dfad99bdf7fe0dfc11607f91ea22b833f43b1b96a5f0bdd3bd0f089eb7597",
+   "src/stage3g/epistemic-provenance-v1.js": "a7301b542bb91ee6002936a8914cb3a40c7bf810d788e0f4dc001d3085121395",
+   "src/stage3g/observable-action-surface-v1.js": "cd24822a6ec6d5e0b6f0322d8b4d511c2a0b31ce57d573d237bad3b3f80f2e43",
+   "src/stage3g/observable-entity-state-v1.js": "6441710879d5b0dcf603c9811fd37cbdf76ee78e4cfbf7ad45bc2e613e868cca",
+   "src/stage3g7/target-eligibility-contract-v1.js": "0bd72759a5ca8024a4302d894f6e825666f6772d9ecd9d42c396093be0e16bdc",
+   "stage3g8/objective-progress-v1.mjs": "91d651f8406e1a0d3b3d51d922d5b0ddd5799e6c1d4bc4cd089505e837bd50a1",
+   "stage3h-activation-readiness-v2/analysis.mjs": "b3f5e0afbb5d07e71c570a8a560ca639b12df5cacf4f165d659f881fb0f04892",
+   "stage3h-activation-readiness-v2/runner-design.mjs": "acdfd7e2293b6af8c85656d3c6de1adfd5646c7dc9e3295b3422717b5d3aa13c",
+   "stage3h-ascii-competence-v1/arms.mjs": "4999e58a3c854e4945a6862346e800132c545ee36071e1f0b10182bad40227a9",
+   "stage3h-ascii-competence-v1/guard.mjs": "f802d63a5485a29d6351e0ba83dccdd38022d79a51e7d1d092b3efa14c3f1df5",
+   "stage3h-ascii-competence-v1/metrics.mjs": "e03826f3c1828ebabb8a7eebba94917e6fa324a3624d4cf972310837c801eeb6",
+   "stage3h-ascii-competence-v1/population.mjs": "e9b25efd41e8f25186f012cc2204fe9f96671b1612483ee2fd30e064c5615af8",
+   "stage3h-ascii-competence-v1/protocol.mjs": "c3affb9c5806797f3c6ff35be191d1095de210546196ca3dbc07fa4519e1b419",
+   "stage3h-canonical-v1/adapters.mjs": "28ec69650b65b2365c2382eee6f2fe73e42ee0fb343cda9e96f73c9679c50501",
+   "stage3h-canonical-v1/baseline.mjs": "7c6471ca9d7eac93dc5334bb01bb2b1f248ca8adb0ed8c1239e7e2629f98caeb",
+   "stage3h-canonical-v1/evidence.mjs": "2dff64e7bdb14bf95f67bd25e563be109b39a9ac78c4a6f5577588a83cf0618a",
+   "stage3h-canonical-v1/guard.mjs": "4f86edba7b0814a6b5f3edd54ec4642df0a6037b5b803a767ddd98a0dae72163",
+   "stage3h-canonical-v1/metrics.mjs": "a018938eed4f6b11fa383674d41f098304a2bd39441de5516a26345ebf396ecc",
+   "stage3h-canonical-v1/nexus-selector-v1-port.mjs": "22d6e83d41d953bac8a9bcc3176580015b055b9b178deb6049a01ac81ac50490",
+   "stage3h-canonical-v1/plan.mjs": "f0fa63baee5be43f206ee649ff42495edbe65e50f0825e262d231f0fc8f51855",
+   "stage3h-decision-value-closure/inherit.mjs": "07665a3ae8d27a1faa21fd25ecc0ac25804563e2ba3794c32ca2a63623bb3dab",
+   "stage3h-final-review-handoff/amendments/v3/analysis.mjs": "91e0281a97ba0a51c18082e42aa1ab51c20e3f46f763a4e31a40a062a6abfd5d",
+   "stage3h-final-review-handoff/amendments/v3/contract-v3.json": "ede7e62e1796887ac67e2f5c8d5a3054f867c0adc745e10a296b7d17f4286771",
+   "stage3h-final-review-handoff/amendments/v3/runner.mjs": "a3960a332f67bf20ce90922b4843cba29d7e075bb6bb51cad6192f6b2b3139ce",
+   "stage3h-owner-governed-v1/EXECUTION_RESULT_0364164c.txt": "9b5ec730857588e0f00472fa7e87f97b0fd0c12f4d6a4aaef9ad0e96b33ea00c",
+   "stage3h-owner-governed-v1/allocate-namespaces-v4.mjs": "ebbc99b5877a03dcaee817abaf61eaf3f16e31f052436fedb35eb4789dc940e3",
+   "stage3h-owner-governed-v1/amendment-v2.json": "4c5d0b7bc8c234326886186f4507ec2289d2193cef1e0ebcce61b1d14327176b",
+   "stage3h-owner-governed-v1/amendment-v3.json": "a8e2500b7e77c3c5d23655bcb4ae6f5b40b7d5c40d95034a36f257090ceffc81",
+   "stage3h-owner-governed-v1/amendment-v4.json": "84fe8a2a13890f1e5a308710e04c38c70e5e1764b14ad75d8eb060b34c55b54e",
+   "stage3h-owner-governed-v1/amendment.json": "6167d893b9bf97eb018e64b2c080a57e17fa2c6da90b2c4696e8f68fe7cb7d40",
+   "stage3h-owner-governed-v1/analysis-native.mjs": "c622acf50327bfaf72d85ab4e65fd8a368bc58d3089d3581e6708df345917c2d",
+   "stage3h-owner-governed-v1/campaign-v3.mjs": "20d1a310f92621c7760d77fb93de701b769181d69b9265c9e453cc3f8ca990ec",
+   "stage3h-owner-governed-v1/campaign-v4.mjs": "dd43d7b2eec50a7d44bcbb96e712846046b2266f15a7eea91f9de23e4c5227eb",
+   "stage3h-owner-governed-v1/campaign.mjs": "428a83bee68dbc2d1fd96859f585c39b1c9f55b79681e601b5d4fc6ae7de0119",
+   "stage3h-owner-governed-v1/clone-verify-v4.mjs": "b973c61852f1a103b987aae40288d3994be26e7e6aaf2ba3cc9aff01e0e55739",
+   "stage3h-owner-governed-v1/connector-v3.mjs": "348cfbe09b7a74810fd617f772ec5d7b3e8e0569799ce795ad845879b1020341",
+   "stage3h-owner-governed-v1/connector-v4.mjs": "82b197d7c438b5f05c54bf74cb15c17e0023d179f0ddf651b34a18da501a0f56",
+   "stage3h-owner-governed-v1/connector.mjs": "a5f71f2291cb35652424baae3919e55118827d1da51f65a60e9479f1a48041b0",
+   "stage3h-owner-governed-v1/evidence/connector-validation.json": "410e0604dc021055c8422eda7dc8684679c543bcc91d3b1a448f7940f15da48c",
+   "stage3h-owner-governed-v1/evidence/execution-0364164c/A-launch.stderr.log": "158d7eb55476eb55959c0de4cc4d70a36ac5a30d75084838899f78fe9167ba00",
+   "stage3h-owner-governed-v1/evidence/execution-0364164c/A-launch.stdout.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+   "stage3h-owner-governed-v1/evidence/execution-0364164c/A-run.stderr.log": "5a71aaae8661300a86e40a0ac36baf1275cf64ed5d07f3d18e17bd8cf16f74ca",
+   "stage3h-owner-governed-v1/evidence/execution-0364164c/A-run.stdout.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+   "stage3h-owner-governed-v1/evidence/execution-0364164c/abort-diagnosis.json": "b2985310fcbae5eff4c2071f1321f654b31ee35fc009e10ffca8f79660d53504",
+   "stage3h-owner-governed-v1/evidence/execution-0364164c/launch-watch.log": "170c7bfd108784b83272795d63264c9ee8015d96d6400baa5c0f334cb82355ba",
+   "stage3h-owner-governed-v1/evidence/execution-0364164c/ood-connector-dryrun.json": "b34904aaea14bad70c03df85ca3c7970f213858265a04e8c4f1e1c6a1a177785",
+   "stage3h-owner-governed-v1/evidence/execution-0364164c/preexecution-clean-clone.json": "c5d9e549f7886976aa2743f44ec985c6676c87b4a1c67be9cbdcd98855a4e07a",
+   "stage3h-owner-governed-v1/evidence/execution-0364164c/preflight-refusal.json": "866fc65ac8820eb4dd18a095c57f6b5359f06eed346714849415ab30a67b24b6",
+   "stage3h-owner-governed-v1/evidence/execution-0364164c/replication-consumption.json": "4eab87cc5d1199cc4a223e125b8c5f59888bf1f4c336072e08b2f7f5d86b66c1",
+   "stage3h-owner-governed-v1/evidence/execution-0364164c/standalone-launch-check.json": "c0e56712242cc43816cf2014d2c966bd839e40a42ba2b92146c18b10e4a2c60b",
+   "stage3h-owner-governed-v1/evidence/feasibility.json": "2d3e39007861e53cebe91c95f55bc5c6dad4bb73a1b2b65e43a8a8834240880f",
+   "stage3h-owner-governed-v1/evidence/flake-audit-review.json": "d3185acf36212a3283fd3be6bf56bd68ebae9cc865cbd0adb2fecf4679986fac",
+   "stage3h-owner-governed-v1/evidence/flake-audit.json": "791f39ae8829763ed4bad0004409bd8c1fdbfd12983a9cc355e8d1fdcd5467ba",
+   "stage3h-owner-governed-v1/evidence/o2-gate.json": "3315fb18d157874acb3f0fdc7f428367b27be118ab314e517d000d33e91634d2",
+   "stage3h-owner-governed-v1/evidence/o2r-gate-diagnosis.json": "5de1d67c25fcbb142a1773407ff220519fd96ccafad145cddd39438e37abd9d2",
+   "stage3h-owner-governed-v1/evidence/o2r-path-review.json": "5381f2b835d3f658874344b0b1f422ba3f76be005e6c48aab7442a78ae691f10",
+   "stage3h-owner-governed-v1/evidence/o2r1-gate.json": "f17c7b8c133f8e11d834a5d4884c833c430ab8088f7566390f5b56e37b440bdd",
+   "stage3h-owner-governed-v1/evidence/o3-acceptance.json": "cea0cef2fbb43b735ff2e6b3c2186d655c47bbea10381a290d5aa635a86f4911",
+   "stage3h-owner-governed-v1/evidence/o3-catastrophe-feasibility.json": "6274c978aa64863c353555dcd4f658375427eeee85d06559c9dc20e49aac7c64",
+   "stage3h-owner-governed-v1/evidence/o3-verification.json": "35486baeaa38012ef1d17e183028a8121e7aecdab234b28af6d024e148807d23",
+   "stage3h-owner-governed-v1/evidence/prior-world-exclusions.json": "838ab22d2b504b2a7b6b921d63495f3b5030ad18b013cc98b98dbc7a6497ac1b",
+   "stage3h-owner-governed-v1/evidence/sampling-validity.json": "dca651cde897fdd603dd4b24335e4867e0b5e5d15ba3403ea7f79a3811c7eff3",
+   "stage3h-owner-governed-v1/evidence/successor-v4/defect-reproduction.json": "ecdccc1151f2a191f72a12050355672ca9e5a5dc7812e2299f8e4fdf9eee619f",
+   "stage3h-owner-governed-v1/evidence/successor-v4/final-verification.json": "d6404963596143a1a858ae49a45768b1e905b647bbb45a4396a8e9dc7ac2cdc3",
+   "stage3h-owner-governed-v1/evidence/successor-v4/fixtures.json": "c0a812044294a4efd453e0da4e439ea8996173ad700627d391590fac404c6c9f",
+   "stage3h-owner-governed-v1/evidence/successor-v4/logs/final-verification.stderr.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+   "stage3h-owner-governed-v1/evidence/successor-v4/logs/final-verification.stdout.log": "49d159007649ad0539914ad8f0dcf99331cf1040eeba3356a6eeba9a23f68ea7",
+   "stage3h-owner-governed-v1/evidence/successor-v4/logs/fixtures.stderr.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+   "stage3h-owner-governed-v1/evidence/successor-v4/logs/fixtures.stdout.log": "fc7fa295990c79ac1fe9da66652ee304b53e4116c32d42f42b1b7f00b3ae17e0",
+   "stage3h-owner-governed-v1/evidence/successor-v4/logs/menu-scan-primary.stderr.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+   "stage3h-owner-governed-v1/evidence/successor-v4/logs/menu-scan-primary.stdout.log": "5e1ac6b405c5709967d376bbfd339a98d78ed22214a803c916b8881c8cea3468",
+   "stage3h-owner-governed-v1/evidence/successor-v4/logs/menu-scan-replay.stderr.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+   "stage3h-owner-governed-v1/evidence/successor-v4/logs/menu-scan-replay.stdout.log": "117abc2a04e24ff5753f475b390c2a4edd12e7126bb5011c877805429e173343",
+   "stage3h-owner-governed-v1/evidence/successor-v4/logs/parity-CONFIRM_A.stderr.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+   "stage3h-owner-governed-v1/evidence/successor-v4/logs/parity-CONFIRM_A.stdout.log": "001b2c09d31fdce05712b0a331aeed0858896f553aa46b1f3c50fb1e13808c0c",
+   "stage3h-owner-governed-v1/evidence/successor-v4/logs/parity-CONFIRM_B.stderr.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+   "stage3h-owner-governed-v1/evidence/successor-v4/logs/parity-CONFIRM_B.stdout.log": "d28a39dac35493eab62eb2fc60ea76cf8db45a72c603270dc1410a3ec305ace0",
+   "stage3h-owner-governed-v1/evidence/successor-v4/logs/parity-IN_DISTRIBUTION_CONTROL.stderr.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+   "stage3h-owner-governed-v1/evidence/successor-v4/logs/parity-IN_DISTRIBUTION_CONTROL.stdout.log": "9df1e245032d8245c394b76afe26b13fa39265db692868df7fc8cf3ea6764aa8",
+   "stage3h-owner-governed-v1/evidence/successor-v4/logs/parity-OOD_LEVEL.stderr.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+   "stage3h-owner-governed-v1/evidence/successor-v4/logs/parity-OOD_LEVEL.stdout.log": "e8e9ca1553c4e771099d8a87588ef10f1b9ac43e1d28439698ffffb987678a59",
+   "stage3h-owner-governed-v1/evidence/successor-v4/logs/parity-OOD_OBJECTIVES.stderr.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+   "stage3h-owner-governed-v1/evidence/successor-v4/logs/parity-OOD_OBJECTIVES.stdout.log": "66624c88bd629300d757f51746aa567bfe32e41c7542cb59f1b10aadf8ad1c65",
+   "stage3h-owner-governed-v1/evidence/successor-v4/logs/parity-OOD_ROLES.stderr.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+   "stage3h-owner-governed-v1/evidence/successor-v4/logs/parity-OOD_ROLES.stdout.log": "c7416bd4e81855afe58bc158acf16a36b37df5e0926d901b41c321627d7eaf57",
+   "stage3h-owner-governed-v1/evidence/successor-v4/logs/parity-OOD_SHAPES.stderr.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+   "stage3h-owner-governed-v1/evidence/successor-v4/logs/parity-OOD_SHAPES.stdout.log": "0dfe4aac5c561c8ac45d868f14791c335e66b0d6b862044359e204eceb36194b",
+   "stage3h-owner-governed-v1/evidence/successor-v4/logs/parity-OPEN.stderr.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+   "stage3h-owner-governed-v1/evidence/successor-v4/logs/parity-OPEN.stdout.log": "d65d08584bdc0d6a554837c34417d0d083864d25f6915aff01637d9fe88ffab9",
+   "stage3h-owner-governed-v1/evidence/successor-v4/logs/register-candidate.stderr.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+   "stage3h-owner-governed-v1/evidence/successor-v4/logs/register-candidate.stdout.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+   "stage3h-owner-governed-v1/evidence/successor-v4/logs/statistics-v2.stderr.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+   "stage3h-owner-governed-v1/evidence/successor-v4/logs/statistics-v2.stdout.log": "4e588f33e9928b67d1c928ba77fb66f40e59e78eed5188a0c5db28f0b12ff850",
+   "stage3h-owner-governed-v1/evidence/successor-v4/logs/statistics.stderr.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+   "stage3h-owner-governed-v1/evidence/successor-v4/logs/statistics.stdout.log": "f28f7caedf097cb0ba54081853d39a0f62090f1e374dc3d64884b98a2f26cd1e",
+   "stage3h-owner-governed-v1/evidence/successor-v4/menu-scan-records.json": "d21f6b21bb0d8865b4113f6a25dc8bcb7b2dd2eb250063709b686a5dd54b62f7",
+   "stage3h-owner-governed-v1/evidence/successor-v4/menu-scan-replay.json": "05fa90fb8a6b804c3a8b98e10ba753ce72447e8957e1430522585912c52e3e95",
+   "stage3h-owner-governed-v1/evidence/successor-v4/menu-scan.json": "be0247863c11ea01e3c33d24caf91e6614f354b33c0ecf3008df6b01aa2f72a1",
+   "stage3h-owner-governed-v1/evidence/successor-v4/parity/CONFIRM_A.json": "5c86f5acca09d8a7771421743b7262c1ca0a96d9fcf33771eed4455af8baa973",
+   "stage3h-owner-governed-v1/evidence/successor-v4/parity/CONFIRM_B.json": "a38951ff73e4bc2ae3572a5f2ed149c83075bb554689ea9fa5884a759346979d",
+   "stage3h-owner-governed-v1/evidence/successor-v4/parity/IN_DISTRIBUTION_CONTROL.json": "8fbbf264ab8730dec1e009fb39ededbd9def80426b94008b5237ee77b2622721",
+   "stage3h-owner-governed-v1/evidence/successor-v4/parity/OOD_LEVEL.json": "43cfd437ae7c798df17a8f6e63cb64d5bb4870d65d375426845d72cb791f8f54",
+   "stage3h-owner-governed-v1/evidence/successor-v4/parity/OOD_OBJECTIVES.json": "21283b43f5407ecf6ac5279a85942551480df91e3b20d3c0e42c2916768ddb32",
+   "stage3h-owner-governed-v1/evidence/successor-v4/parity/OOD_ROLES.json": "ae2977c197168193ed3000fd853aeecfa6094d930853c91a77af90032e6ec81b",
+   "stage3h-owner-governed-v1/evidence/successor-v4/parity/OOD_SHAPES.json": "ca312cc0c89518591a6a1f6239e6cede64e9fdc3c0c9e84e568f74b8c3df9887",
+   "stage3h-owner-governed-v1/evidence/successor-v4/parity/OPEN.json": "dea1f088d5a1f69cc4856a42e0d68182f32dd27ec91e1dfbbf3b0e499b4aeb9d",
+   "stage3h-owner-governed-v1/evidence/successor-v4/statistical-validity-v2.json": "15f7131d1d75c9fe17f8a78ac04926385aeae9ebce5c5178d4c487c5f8142969",
+   "stage3h-owner-governed-v1/evidence/successor-v4/statistical-validity.json": "787aebf591cae65a4df804ee6a9591a5d333f6c472a83118f4133616f42b86a0",
+   "stage3h-owner-governed-v1/evidence/successor-v4/tests/ascii-v1-lane-tests.tap": "51ffe4d0ac6b3976f3365100a9d7ee6e33333c65f608f20827a75067d0c9f172",
+   "stage3h-owner-governed-v1/evidence/successor-v4/tests/machine-after.txt": "3d65751c4e64c1005fd16503698455730ae51e9cb273495edd95bf789a87b053",
+   "stage3h-owner-governed-v1/evidence/successor-v4/tests/machine-before.txt": "bcb0d7cd6dc613c65e5c4d4528d085c862a5963b6e3b8e78f314e4f80f1a2f10",
+   "stage3h-owner-governed-v1/evidence/successor-v4/tests/tests-v2.tap": "6e7be1fbb46997c35199e354d8d6752e22dde7e848be31f8f198b5c881771360",
+   "stage3h-owner-governed-v1/evidence/successor-v4/tests/tests-v3.tap": "3fe381da1f97a64d5c781370aa378863ee384487c693c62a8454c26640c48d6b",
+   "stage3h-owner-governed-v1/evidence/successor-v4/tests/tests-v4.tap": "f9d7e7fcaeb6a1f3e6b7e9045dad2506d309af9f37f879d1395bd0c2e1e58f89",
+   "stage3h-owner-governed-v1/evidence/successor-v4/tests/tests.tap": "1b35e4018166beee617018136ca5664f83392bc047fbaaf2f0b610551f941d2a",
+   "stage3h-owner-governed-v1/evidence/successor-v4/tests/v3-check.json": "6afa740d15c77471aaa67d3ecb1283b29644f572ae87557908770738536a9f1e",
+   "stage3h-owner-governed-v1/identity-view-v2.mjs": "66a7de6d5997a74579f5a2b2ac18af43cd710c3ee047053d53b392614e1d6004",
+   "stage3h-owner-governed-v1/identity-view.mjs": "21aed5afcc8bbae8a5c7959e46317f7129583ecbf7c6763e2457a8d6dcf27515",
+   "stage3h-owner-governed-v1/inherit.mjs": "59289dfa21b191da1d1c3ab6caf1ad4cc7c32dd70467f0247b00c7c63d07614e",
+   "stage3h-owner-governed-v1/menu-validity-fixtures.mjs": "62dfa58a35225a112fc043a781f53794c36ada05fae94f0f773c2a180be4737c",
+   "stage3h-owner-governed-v1/menu-validity-v1.mjs": "fbf03a6055417cff3834d04f6ae7704f3b5ca4a5c4b4f559e6e50aef792046a3",
+   "stage3h-owner-governed-v1/nuisance.mjs": "550ccd519894c3fdade26036cc1368ebcc84c9a5131d164851f518c7ad3a9263",
+   "stage3h-owner-governed-v1/o3-catastrophe.mjs": "7956835b8722206dde344d4e06f0aa58462a130b2323d405a2d91ddb84a7e358",
+   "stage3h-owner-governed-v1/register-candidate-v3.mjs": "cc2472c8bb58fb6562488dcd986aa75fd0c81d134ad15432dbf0653ea0fd5f7c",
+   "stage3h-owner-governed-v1/register-candidate-v4.mjs": "a5bc04f6666c8ff45b94f0f03eb6d7f53f084d61a334947217ad8b2f72ea9b0d",
+   "stage3h-owner-governed-v1/registration/ACTIVE_REGISTRATION_V3.json": "f9477e632b45d70abd894138d1235eb0d8763c21d4b418141e2d13d47025738b",
+   "stage3h-owner-governed-v1/registration/EXECUTION_AUTHORIZATION_V3.json": "f60603780916a64622de0531885b8e96b39565fd4edb4d010a4af81be64d3760",
+   "stage3h-owner-governed-v1/registration/OWNER_APPROVAL_f1ba57b4.json": "b8aca7136acf3000ae87ba4f8e7a5ce6d8c75b921196a9e46be4c4d4cb732a28",
+   "stage3h-owner-governed-v1/registration/REGISTRATION_CANDIDATE_V3.json": "f75367e72f1d2e91ae3a9c60b2a98e3860c9a52458a74ced73b999b1bb99ec74",
+   "stage3h-owner-governed-v1/successor-clean-clone-v4.mjs": "80e60b45051d671ad46d4b32d35c0f1706e68e96b874bcd2d904a5f1c8bbf9cb",
+   "stage3h-owner-governed-v1/successor-defect-reproduction.mjs": "34373f3e7bc16c3faaf3aa261e6925020577fe85ba1f4551ce375ec9abac411f",
+   "stage3h-owner-governed-v1/successor-final-verify-v4.mjs": "f58c637fd14f5dcb1300df7d2909292529de3e852ab92310152c7ea3e9364eda",
+   "stage3h-owner-governed-v1/successor-fixtures.mjs": "ca728b9b1c882a8ae8c06b7ac53f66880828a03ce5fa58c3e349e4993b2c78d2",
+   "stage3h-owner-governed-v1/successor-menu-scan.mjs": "1372c337602cbd6bf53301ee2649a739b3a95cd5dfc981fb13b81a2eaebdc799",
+   "stage3h-owner-governed-v1/successor-parity.mjs": "00f2d678bf1090685482aa1d0f2cf7ae8beba4d5f673da11f60bab2904accd9f",
+   "stage3h-owner-governed-v1/successor-preflight-v4.mjs": "a37318810d06f73ea016d31e89d9d7d1b16f4099f99df6e486f195335d328657",
+   "stage3h-owner-governed-v1/successor-statistics-v2.mjs": "10ebd88a406defe06775ef8939f64ba8a17660ac69efe77fea89177cc5b39c03",
+   "stage3h-owner-governed-v1/successor-statistics.mjs": "5c60f954885d0f9b2a72878fb7cf61e93b12dfa76a6b6eaab962be2a6ff4c2f7",
+   "stage3h-owner-governed-v1/tests-v4.mjs": "49181c2ac89e9ed191682d64142e931849ace66eee4b5f4f4f7c9bb3e506e170",
+   "stage3h1d-development/results/CONFIRM_A/rows.json": "7d0717dbf77fb65c13021670335e8f51a3937176224edb2f036a65bb3bb9666b",
+   "stage3h1d-development/results/CONFIRM_A/summary.json": "7d00c27795ad5ebe8cdc14e79762a266c2cab2c9f821b0222424fc37ff77bf45",
+   "stage3h1d-development/results/CONFIRM_B/rows.json": "7ed31851863ab01c667b1242750062a6fe56fb3b99ba697d6e544a98557e41df",
+   "stage3h1d-development/results/CONFIRM_B/summary.json": "d18a69bccfcd02c0d5008546418ad2a2a06d4593cd34b58525f80955a5b9f760",
+   "stage3h1f-development/results/IN_DISTRIBUTION_CONTROL/rows.json": "22d5c15d5eb0d493c3a4772bdbfd4bacbdef387361ff99d308438cd0574a5ad8",
+   "stage3h1f-development/results/IN_DISTRIBUTION_CONTROL/summary.json": "de4cfb0c0ecaa31ef85414663be6859e269422c954b9daa039e278a83384b275",
+   "stage3h1f-development/results/OOD_LEVEL/rows.json": "dc8d126e0b40493b36365a5aa806fc7287c28a334531ee979b3c36c99a9b4d0d",
+   "stage3h1f-development/results/OOD_LEVEL/summary.json": "4a779ebb3268ca8802b01c5d0e8359860f266a0d67821764048f904d4b29d021",
+   "stage3h1f-development/results/OOD_OBJECTIVES/rows.json": "8d30e1423d66472b733e4b9924cb4dc5be54da7d3c5fc83cf6e60dda39862d96",
+   "stage3h1f-development/results/OOD_OBJECTIVES/summary.json": "c5a8035c7586d7c3db19f62372efff5719d64908f8a0ed4ba148060abbf5c1f6",
+   "stage3h1f-development/results/OOD_ROLES/rows.json": "9dc865decc8c322ab00644b81c6237ba64f96a20a0931ffe072bc92461221dba",
+   "stage3h1f-development/results/OOD_ROLES/summary.json": "8bc6c784d01ee202d53533c4716d98648616ebb5e98f7b330c2e42a40d5eea12",
+   "stage3h1f-development/results/OOD_SHAPES/rows.json": "effc92945969a5d48974fb0beb62b19ddcf025365badeda5852067fad1d9b801",
+   "stage3h1f-development/results/OOD_SHAPES/summary.json": "4b6affe3639fcd3528c2f71033b4ad0c7d6533170d0c9c225b8dbb2e5204ee24"
+  },
+  "runtime": {
+   "versions": {
+    "node": "22.22.2",
+    "acorn": "8.15.0",
+    "ada": "2.9.2",
+    "amaro": "1.1.5",
+    "ares": "1.34.6",
+    "brotli": "1.1.0",
+    "cjs_module_lexer": "2.2.0",
+    "cldr": "48.0",
+    "icu": "78.2",
+    "llhttp": "9.3.0",
+    "modules": "127",
+    "napi": "10",
+    "nbytes": "0.1.1",
+    "ncrypto": "0.0.1",
+    "nghttp2": "1.64.0",
+    "openssl": "3.5.5",
+    "simdjson": "4.2.4",
+    "simdutf": "6.4.2",
+    "sqlite": "3.51.2",
+    "tz": "2025c",
+    "undici": "6.24.1",
+    "unicode": "17.0",
+    "uv": "1.51.0",
+    "uvwasi": "0.0.23",
+    "v8": "12.4.254.21-node.39",
+    "zlib": "1.3.1-e00f703",
+    "zstd": "1.5.7"
+   },
+   "platform": "darwin/arm64",
+   "execArgv": [],
+   "nodeBinarySha256": "5c899797c4eb8f1db5563eea56538342ddb3e9276ee1b04a5a1f0f1023d2b011"
+  },
+  "priorExclusions": {
+   "file": "stage3h-owner-governed-v1/evidence/prior-world-exclusions.json",
+   "sha256": "838ab22d2b504b2a7b6b921d63495f3b5030ad18b013cc98b98dbc7a6497ac1b",
+   "worlds": 9407
+  }
+ },
+ "population": {
+  "design": "V3 contract populations, unchanged",
+  "populations": {
+   "HOLDOUT_KNOWN_COMPOSITION": {
+    "cells": 48,
+    "repetitionsPerCell": 52,
+    "scheduledPerReplication": 2496
+   },
+   "OOD_LEVEL": {
+    "cells": 48,
+    "repetitionsPerCell": 52,
+    "scheduledPerReplication": 2496
+   },
+   "OOD_ROLES": {
+    "cells": 96,
+    "repetitionsPerCell": 26,
+    "scheduledPerReplication": 2496
+   },
+   "OOD_OBJECTIVES": {
+    "cells": 144,
+    "repetitionsPerCell": 18,
+    "scheduledPerReplication": 2592
+   },
+   "OOD_SHAPES": {
+    "cells": 192,
+    "repetitionsPerCell": 14,
+    "scheduledPerReplication": 2688
+   }
+  },
+  "proposedWorlds": 25536
+ },
+ "scheduledPerReplication": 12768,
+ "seedRule": "seed = namespace base + k, k = 0..12767 in populations x cells x repetition order; one unique integer per world; no seed shared across cells",
+ "namespaces": null,
+ "scheduleHashes": null,
+ "namespaceAllocation": {
+  "status": "NOT_ALLOCATED",
+  "allocatedBy": "owner-approved procedure, after approval of this exact candidate",
+  "procedure": {
+   "file": "stage3h-owner-governed-v1/allocate-namespaces-v4.mjs",
+   "sha256": "ebbc99b5877a03dcaee817abaf61eaf3f16e31f052436fedb35eb4789dc940e3",
+   "command": "node allocate-namespaces-v4.mjs <this registrationHash>",
+   "output": "stage3h-owner-governed-v1/registration/NAMESPACE_ALLOCATION_V4.json (written once; bound at activation with the schedule hashes)"
+  },
+  "rule": {
+   "BLOCK": 1000000000,
+   "FIRST_BLOCK": 733,
+   "LAST_BLOCK": 799,
+   "PER_REPLICATION": 12768,
+   "order": "A = first passing block from FIRST_BLOCK, B = next passing block",
+   "checks": [
+    "no prior executed or development seed in [base, base + 12768)",
+    "no 12-digit integer of that range in repository .mjs/.js/.json text",
+    "block not excluded",
+    "A and B disjoint"
+   ]
+  },
+  "excludedBlocks": {
+   "731": "consumed replication-A namespace of registration 0364164c (entire block)",
+   "732": "unused predecessor B namespace (not a continuation; never reused)"
+  },
+  "excludedPredecessorNamespaces": {
+   "A": {
+    "base": 731000000000,
+    "status": "CONSUMED_ABORTED",
+    "excluded": "ENTIRE_10^9_BLOCK"
+   },
+   "B": {
+    "base": 732000000000,
+    "status": "NOT_STARTED",
+    "excluded": "ENTIRE_10^9_BLOCK; not a continuation"
+   }
+  },
+  "additionalPriorSeeds": [
+   202610090101,
+   202610090102,
+   202610090103,
+   202610090201,
+   202610090202,
+   202610090203
+  ],
+  "worldLevel": "At execution every world whose semantic hash is among the 9,407 prior world hashes is rejected PRIOR_WORLD_EXCLUDED and never replaced. Consumed A worlds were never recorded and may not be regenerated, so they are excluded at seed level (the whole 731 block) only; no outcome of any A world was observed."
+ },
+ "samplingValidity": {
+  "verdict": "VALID",
+  "sha256": "dca651cde897fdd603dd4b24335e4867e0b5e5d15ba3403ea7f79a3811c7eff3"
+ },
+ "estimandImpact": {
+  "evidence": "stage3h-owner-governed-v1/evidence/successor-v4/final-verification.json",
+  "structuralZeroPopulations": [
+   "HOLDOUT_KNOWN_COMPOSITION",
+   "OOD_LEVEL",
+   "OOD_OBJECTIVES",
+   "OOD_SHAPES"
+  ],
+  "OOD_ROLES": {
+   "maxShiftMetric95": 0.0025954707155536804,
+   "maxShiftContrast95": 0.005190941431107361,
+   "fractionOfMateriality": 0.25954707155536805
+  },
+  "statement": "Valid-menu conditioning changes the estimand by exactly zero in four of five populations and by at most 0.0052 on any OOD_ROLES arm contrast (95% bound), about 26% of the 0.02 materiality margin; the claim is explicitly restricted to valid-menu worlds."
+ },
+ "successorEvidence": {
+  "defectReproduction": "ecdccc1151f2a191f72a12050355672ca9e5a5dc7812e2299f8e4fdf9eee619f",
+  "spentWorldScan": {
+   "summary": "be0247863c11ea01e3c33d24caf91e6614f354b33c0ecf3008df6b01aa2f72a1",
+   "records": "d21f6b21bb0d8865b4113f6a25dc8bcb7b2dd2eb250063709b686a5dd54b62f7",
+   "recordsSha256": "42b4d4123478083ffbf37366465a0a514a91822d7de212ce00a492d6403bd831",
+   "replay": "05fa90fb8a6b804c3a8b98e10ba753ce72447e8957e1430522585912c52e3e95"
+  },
+  "fixtures": "c0a812044294a4efd453e0da4e439ea8996173ad700627d391590fac404c6c9f",
+  "finalVerification": "d6404963596143a1a858ae49a45768b1e905b647bbb45a4396a8e9dc7ac2cdc3",
+  "statisticalValidity": {
+   "v2": "15f7131d1d75c9fe17f8a78ac04926385aeae9ebce5c5178d4c487c5f8142969",
+   "v1Preserved": "787aebf591cae65a4df804ee6a9591a5d333f6c472a83118f4133616f42b86a0",
+   "verdict": "STATISTICALLY_VALID_CONDITIONAL_ON_VALID_MENU_POPULATION"
+  },
+  "connectorParity": {
+   "OPEN": "dea1f088d5a1f69cc4856a42e0d68182f32dd27ec91e1dfbbf3b0e499b4aeb9d",
+   "CONFIRM_A": "5c86f5acca09d8a7771421743b7262c1ca0a96d9fcf33771eed4455af8baa973",
+   "CONFIRM_B": "a38951ff73e4bc2ae3572a5f2ed149c83075bb554689ea9fa5884a759346979d",
+   "IN_DISTRIBUTION_CONTROL": "8fbbf264ab8730dec1e009fb39ededbd9def80426b94008b5237ee77b2622721",
+   "OOD_LEVEL": "43cfd437ae7c798df17a8f6e63cb64d5bb4870d65d375426845d72cb791f8f54",
+   "OOD_ROLES": "ae2977c197168193ed3000fd853aeecfa6094d930853c91a77af90032e6ec81b",
+   "OOD_OBJECTIVES": "21283b43f5407ecf6ac5279a85942551480df91e3b20d3c0e42c2916768ddb32",
+   "OOD_SHAPES": "ca312cc0c89518591a6a1f6239e6cede64e9fdc3c0c9e84e568f74b8c3df9887"
+  },
+  "summary": {
+   "spentWorlds": 9456,
+   "reachedRule": 9407,
+   "invalid": 1,
+   "emptyMenu": 0,
+   "duplicateActionId": 1,
+   "parityWorlds": 9456,
+   "parityAcceptedEqual": 9406,
+   "parityAccepted": 9406
+  }
+ },
+ "amendments": {
+  "O1": "CARRIED_UNCHANGED_RENEWAL_REQUIRED",
+  "O2": "WITHDRAWN",
+  "O2R": "WITHDRAWN_HANDLE_LEAK",
+  "O2R1": "CARRIED_UNCHANGED_RENEWAL_REQUIRED",
+  "O3": {
+   "choice": "MIN_TWO_PER_CELL",
+   "ownerWording": "MIN_ACCEPTED_PER_CELL=2",
+   "status": "CARRIED_UNCHANGED_RENEWAL_REQUIRED",
+   "options": [
+    "KEEP_V3_HALF_PER_CELL",
+    "MIN_TWO_PER_CELL"
+   ]
+  },
+  "O4": "CARRIED_UNCHANGED_RENEWAL_REQUIRED",
+  "O5": "CARRIED_UNCHANGED_RENEWAL_REQUIRED",
+  "O6": "PROPOSED_PENDING_OWNER_APPROVAL"
+ },
+ "ownerApproval": null,
+ "ownerApprovalRequired": true,
+ "stopConditions": [
+  "execute replication A then B exactly once each; no interim analysis; no early stopping",
+  "a NATIVE_MENU_INVALID world is a pre-policy rejection: never scored, never replaced, counted in admission",
+  "abort as CAMPAIGN_INVALID on any integrity failure (duplicate world hash, malformed or mismatched menu, mutated input, nonfinite truth, runtime or source mismatch, lock-time limit); ABORT.json is written; the replication is consumed",
+  "replication B never starts unless A locked without an abort record",
+  "rejections are recorded and never replaced",
+  "analysis only after both LOCK files exist and verify and no ABORT record exists",
+  "no rerun, retry, resize, threshold change or new arm after any outcome; a further successor needs new owner approval"
+ ],
+ "abortSemantics": "Any exception after the replication directory exists writes ABORT.json (error code only; no world identity; no rows) and re-throws. The replication is consumed and never rerun; B never starts after an A abort; analysis refuses while any ABORT record exists; the registration is then EXECUTION_INVALID_OR_ABORTED and only a new owner-approved successor may follow. A NATIVE_MENU_INVALID world is a rejection, not an abort.",
+ "disjointness": "A and B occupy different 10^9 blocks allocated after approval; each 12,768-seed range is disjoint from every prior executed and development seed, from blocks 731 and 732 and from repository text; at execution the 9,407 prior world hashes are excluded (PRIOR_WORLD_EXCLUDED, never replaced) and a within-run duplicate world aborts the replication.",
+ "admissionAndCatastrophe": {
+  "O3": "MIN_ACCEPTED_PER_CELL=2 with 0.9 population and per-horizon floors and Kish effective-N >= 2100 (ownerAdmission, unchanged)",
+  "catastropheVeto": "zeroIntroductionUpper(cells, 40) <= 0.02 and the false-selection veto, unchanged",
+  "menuRejections": "counted as rejections in their own cell; fixed cell weights; no replacement",
+  "feasibility": "evidence/successor-v4/statistical-validity-v2.json: admission and bound-attainability probabilities equal to the reproduced predecessor in every population, including two stress variants"
+ },
+ "onceOnly": "An existing replication directory refuses a rerun; a refused preflight consumes nothing; a started replication is consumed whether it locks or aborts.",
+ "outcomeLocking": "Each replication writes rows, ledger and admission once (read-only) plus LOCK.json; runner output is counts and hashes only; analysis refuses until both A and B LOCK files exist and verify.",
+ "executionRisks": [
+  "V3 1,000 ms lock-time assertion aborts on exceedance (dev max 342 ms; 321 ms under induced load); O-5 preflight refuses a marginal start before consuming a replication",
+  "native duplicate-action worlds are now pre-policy rejections, not aborts; they are structurally impossible in four of five populations and in the 48 OOD_ROLES reach_target cells; in the 48 at-risk OOD_ROLES cells the one-sided 95% upper bound is 0.52% per world (1/912 spent at-risk worlds); no point rate is extrapolated from that single world"
+ ],
+ "blinding": [
+  "runner stdout: counts and hashes only",
+  "outputs written once and chmod 0444",
+  "owner attests not to open row files before both locks (procedural)"
+ ],
+ "limitations": [
+  "REVIEW_MODE=OWNER_GOVERNED; INDEPENDENT_METHOD_REVIEW=false; EXTERNAL_INDEPENDENT_CUSTODY=false",
+  "same-person design, custody and execution",
+  "canonical runtime numerics accepted by owner, not certified independently",
+  "TCA and incumbent Prime not testable; no surrogate",
+  "result cannot establish canonical Stage 3H certification or MoE gain",
+  "inference is conditional on the valid-menu population; no claim for worlds whose native menu repeats an action",
+  "duplicated dependency relationships without menu effect (222/9,456 spent worlds) are native generator behaviour, neither rejected nor repaired",
+  "consumed A worlds are excluded at seed level only (never recorded; regeneration prohibited)",
+  "the 1,000 ms lock-time abort risk is unchanged (O-5 preflight mitigates a marginal start only)"
+ ],
+ "registrationHash": "d8a44ebd19f6dc5b833462435385680dcf2c3541a543a0e18f3fb81067307aad"
+}
