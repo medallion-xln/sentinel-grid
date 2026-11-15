@@ -1,0 +1,682 @@
+{
+  "schema": "SENTINEL_CLOUD_RUN_RESULT_V1",
+  "mode": "NO_KEY",
+  "snapshotBranch": "claude/stage3h-cloud-snapshot",
+  "snapshotCommit": "7512aab28d596c68170cdc5627dc3575471adca5",
+  "nodeVersion": "v26.7.0",
+  "unameSm": "Linux x86_64",
+  "nodeSource": "https://nodejs.org/dist/v26.7.0/node-v26.7.0-linux-x64.tar.xz (sha256 verified against SHASUMS256.txt)",
+  "generatedAtUtc": "2026-11-15T06:55:54.398Z",
+  "notes": [
+    "Verification only. Run without the overlay decryption key; overlay.sgco was neither decrypted nor modified. Cannot and does not satisfy G3, G4 or G6. Not owner evidence."
+  ],
+  "commands": {
+    "node-check": {
+      "command": "$N --version; uname -sm",
+      "exitCode": 0,
+      "stdout": "v26.7.0\nLinux x86_64\n"
+    },
+    "hdisc1-tests": {
+      "command": "cd $L1 && $N --test campaign/*.test.mjs readiness/entry-gate.test.mjs discriminator/*.test.mjs protocol/*.test.mjs audit/*.test.mjs custody/*.test.mjs",
+      "exitCode": 1,
+      "summary": {
+        "tests": 87,
+        "pass": 83,
+        "fail": 2,
+        "skipped": 2,
+        "cancelled": 0,
+        "todo": 0,
+        "failing": [
+          {
+            "location": "campaign/analysis.test.mjs:1:1",
+            "name": "campaign/analysis.test.mjs"
+          },
+          {
+            "location": "campaign/boundaries.test.mjs:1:1",
+            "name": "campaign/boundaries.test.mjs"
+          }
+        ],
+        "skippedTests": [
+          {
+            "name": "INTEGRATION the committed source-machine record validates and this machine yields an identity",
+            "note": "SKIP"
+          },
+          {
+            "name": "on local public projections: identical featurisation, every action supported, encoder invariant under D4, shared context really shared",
+            "note": "local SK1 class records (work/) are not present in this checkout"
+          }
+        ]
+      }
+    },
+    "freeze": {
+      "command": "cd $L1 && $N readiness/preregistration-freeze.mjs",
+      "exitCode": 2
+    },
+    "inference-audit": {
+      "command": "cd $L1 && $N audit/inference-graph-audit.mjs committed",
+      "exitCode": 0
+    },
+    "gate": {
+      "command": "cd $L1 && $N readiness/campaign-entry-gate.mjs",
+      "exitCode": 2,
+      "stderr": "/bin/ls: cannot access '/Volumes': No such file or directory\n"
+    },
+    "hdisc0-tests": {
+      "command": "cd $GA && $N --test stage3h-hdisc0-design-v1/readiness/campaign-entry-gate.test.mjs stage3h-hdisc0-design-v1/readiness/bundle/evidence-bundle.test.mjs",
+      "exitCode": 1,
+      "summary": {
+        "tests": 29,
+        "pass": 26,
+        "fail": 1,
+        "skipped": 2,
+        "cancelled": 0,
+        "todo": 0,
+        "failing": [
+          {
+            "location": "stage3h-hdisc0-design-v1/readiness/campaign-entry-gate.test.mjs:96:1",
+            "name": "REAL REPOSITORY, read-only: the gate is NO_GO; custody and exclusion enforcement pass; the other five do not"
+          }
+        ],
+        "skippedTests": [
+          {
+            "name": "REAL WORKING TREE, read-only: the bundle scope is 31 protected, 19 data and 7 control identities and verifies in place",
+            "note": "the custody-protected overlay is not present in this checkout"
+          },
+          {
+            "name": "the command line refuses to write a manifest inside the repository",
+            "note": "the custody-protected overlay is not present in this checkout"
+          }
+        ]
+      }
+    },
+    "sk11-tests": {
+      "command": "cd $GA && $N --test stage3h-sk1-1-assurance-v1/repro/repro.test.mjs",
+      "exitCode": 0,
+      "summary": {
+        "tests": 15,
+        "pass": 14,
+        "fail": 0,
+        "skipped": 1,
+        "cancelled": 0,
+        "todo": 0,
+        "failing": [],
+        "skippedTests": [
+          {
+            "name": "INTEGRATION inventory verify against the working tree: no drift from the tracked inventory, the SK1 freeze or the custody records",
+            "note": "needs the tracked inventory and the gitignored SK1 working data"
+          }
+        ]
+      }
+    },
+    "sk2f-tests": {
+      "command": "cd $GA && $N --test stage3h-sk2f-feasibility-v1/infra-audit/infra-audit.test.mjs",
+      "exitCode": 1,
+      "summary": {
+        "tests": 12,
+        "pass": 7,
+        "fail": 2,
+        "skipped": 3,
+        "cancelled": 0,
+        "todo": 0,
+        "failing": [
+          {
+            "location": "stage3h-sk2f-feasibility-v1/infra-audit/infra-audit.test.mjs:24:1",
+            "name": "[C1] the change between the committed revision and the cut is exactly the recorded five lines"
+          },
+          {
+            "location": "stage3h-sk2f-feasibility-v1/infra-audit/infra-audit.test.mjs:31:1",
+            "name": "[C1] NEGATIVE CONTROL: one extra changed line anywhere is detected"
+          }
+        ],
+        "skippedTests": [
+          {
+            "name": "[C4] the frozen H-W4 rule is restated verbatim and reproduces the recorded 10 / 0 and 76 / 40",
+            "note": "needs the protected overlay and SK1 local data of the working tree"
+          },
+          {
+            "name": "[INTEGRATION] status is correct now AND in the simulated post-commit state; the simulation leaves the real repository untouched",
+            "note": "needs the protected overlay and SK1 local data of the working tree"
+          },
+          {
+            "name": "[INTEGRATION] the stored records are consistent with their verifiers",
+            "note": "needs the protected overlay and SK1 local data of the working tree"
+          }
+        ]
+      }
+    },
+    "mixture-free-check": {
+      "command": "cd $L1 && $N custody/machine-identity.mjs self",
+      "exitCode": 1,
+      "stdout": "{\"identitySha256\":null,\"established\":false}\n"
+    }
+  },
+  "outputs": {
+    "freeze": {
+      "ok": false,
+      "problems": [
+        "SOURCE_DEPENDENCY_UNRESOLVED:platform/game-agnostic/ascii-suite/v21/freeze.mjs,platform/game-agnostic/ascii-suite/v3/common.mjs,platform/game-agnostic/ascii-suite/v3/controllers.mjs,platform/game-agnostic/ascii-suite/v3/factory-model.mjs,platform/game-agnostic/ascii-suite/v31/sentinel.mjs,platform/game-agnostic/ascii-suite/v32/policy.mjs,platform/game-agnostic/ascii-suite/worlds/platformer.mjs,platform/game-agnostic/stage3h-canonical-v1/adapters.mjs,platform/game-agnostic/stage3h-canonical-v1/baseline.mjs,platform/game-agnostic/stage3h-canonical-v1/guard.mjs,platform/game-agnostic/stage3h-canonical-v1/metrics.mjs,platform/game-agnostic/stage3h-canonical-v1/nexus-selector-v1-port.mjs"
+      ]
+    },
+    "inference-audit": {
+      "mode": "committed",
+      "files": 12,
+      "sourceHash": "83dbd6125f13a35cbc98394d8384f77a3dadd306355a657e4c7e073dd4604a93",
+      "violations": [],
+      "WORKING_TREE_AUDIT": "PASS",
+      "COMMITTED_SOURCE_AUDIT": "PASS",
+      "notCommitted": [],
+      "cleanExport": {
+        "files": 13,
+        "evaluatorFree": true,
+        "liveCall": {
+          "status": "NOT_TRAINED",
+          "decision": "ABSTAIN",
+          "reason": "DISCRIMINATOR_NOT_TRAINED",
+          "menu": 7,
+          "complete": true,
+          "sourceHash": "83dbd6125f13a35cbc98394d8384f77a3dadd306355a657e4c7e073dd4604a93",
+          "decisionDigest": "0a83acb6e72c7d8533f45e6a9b3429eaa6da4c5661b85f1da59d4fce1721e79c",
+          "canDispatch": false,
+          "executeRefusedWith": "EXECUTION_OR_MUTATION_REQUESTED"
+        }
+      }
+    },
+    "gate": {
+      "schema": "HDISC1_CAMPAIGN_ENTRY_GATE_V1",
+      "authority": "R0",
+      "gate": {
+        "decision": "NO_GO",
+        "passed": 2,
+        "of": 7,
+        "failing": [
+          "G1_VERIFIED_SOURCE_CUSTODY",
+          "G3_REPRODUCIBLE_EVALUATION_ENVIRONMENT",
+          "G4_INDEPENDENTLY_RECOVERABLE_EVIDENCE",
+          "G5_FROZEN_SCIENTIFIC_PROTOCOL",
+          "G6_NO_UNCOMMITTED_SOURCE_DEPENDENCY"
+        ],
+        "conditions": {
+          "G1_VERIFIED_SOURCE_CUSTODY": {
+            "status": "FAIL",
+            "reasons": [
+              "CUSTODY_IDENTITY_LIST_UNREADABLE",
+              "NO_PROTECTED_IDENTITIES_LISTED",
+              "CUSTODY_GUARD_NOT_INTACT"
+            ],
+            "evidence": {
+              "listReadable": false,
+              "identities": 0,
+              "present": 0,
+              "matching": 0,
+              "tracked": 0,
+              "guardManifestIntact": false,
+              "error": "ENOENT: no such file or directory, open '/home/user/sentinel-grid/.git/custody/protected-identities.tsv'"
+            }
+          },
+          "G2_VERIFIED_EXCLUDED_POPULATION_ENFORCEMENT": {
+            "status": "PASS",
+            "reasons": [],
+            "evidence": {
+              "loader": "HDISC_PORTABLE_EXCLUSIONS_V1",
+              "loaded": true,
+              "pinsPresent": true,
+              "pinProblems": [],
+              "contextIdentitySha256": "fd768113677b44b30bdbdf7c2a8e335df031e6be3569a133bddf08e6d19053ce",
+              "forbiddenBlocks": 114,
+              "registries": [
+                {
+                  "name": "STUDIED_341",
+                  "count": 341,
+                  "seal": "449e2850b01106b2fe81564fbe24a5e94fc7371350a3ffe007884e7049d8fef6"
+                },
+                {
+                  "name": "DEV_H2_BASE_WORLDS",
+                  "count": 12844,
+                  "seal": "8b612a00e0d6e2d0bbc15226350e050cf46c8e6a7dac3e78eef819611c109f72"
+                },
+                {
+                  "name": "HW1_EXPLORATION",
+                  "count": 1000,
+                  "seal": "232b902903abf1898fe9d63055235a028ccffa09b215c7e0e517823bd215b4ea"
+                },
+                {
+                  "name": "HW1_VALIDATION",
+                  "count": 300,
+                  "seal": "34b3b121e7a183db46bd7d338dc0200ee9d86795d33d2f4071e4a57941703b56"
+                },
+                {
+                  "name": "HW4_EXPLORATION",
+                  "count": 1000,
+                  "seal": "902070377d1b05446c429a9131c8331b53a5fa0b31590360aa7fff9053e3f824"
+                },
+                {
+                  "name": "HW4_VALIDATION",
+                  "count": 600,
+                  "seal": "388921b4ee0b0ef3cfc86cb949d1221a87ac37c520fd86d971bc8e510c124e65"
+                },
+                {
+                  "name": "HW4B_SCREENED_DEV",
+                  "count": 885,
+                  "seal": "a9ccaf762145bd177e33e3996128bdd6ddc26a57892230e758c1849e5dbda121"
+                },
+                {
+                  "name": "SK1_EXPLORATION",
+                  "count": 1000,
+                  "seal": "c4df98bc060962bc976977ad0f5fcae731f77e61a2786fb3796c554f216d25fe"
+                },
+                {
+                  "name": "SK1_VALIDATION",
+                  "count": 600,
+                  "seal": "5361b8b036eb901431c13366479072926328b9df4327ca865bbce7b8668353a0"
+                },
+                {
+                  "name": "SK1_SCREENED_UNUSED",
+                  "count": 698,
+                  "seal": "daac1884783c4471dbab506b721a4a0f20fad89a8690d1c02aa0301ed4804871"
+                }
+              ],
+              "strictCounts": {
+                "priorWorlds": 9407,
+                "priorSeeds": 116,
+                "v4SealedWorlds": 25377,
+                "devBaseWorlds": 25676,
+                "diagnosticConstructedWorlds": 48910,
+                "devOpenSeeds": 6,
+                "excludedBlocks": [
+                  731,
+                  732,
+                  733,
+                  734,
+                  951,
+                  952
+                ],
+                "distinctExcludedWorlds": 109082,
+                "excludedSeeds": 25499,
+                "multiSourceWorlds": 288
+              },
+              "inputs": 26,
+              "blocksNotRejectedByTheContext": {
+                "count": 786,
+                "ranges": [
+                  [
+                    100,
+                    730
+                  ],
+                  [
+                    735,
+                    800
+                  ],
+                  [
+                    838,
+                    900
+                  ],
+                  [
+                    915,
+                    940
+                  ]
+                ],
+                "of": 900,
+                "note": "Blocks 100-999 that this exclusion context does not reject. NOT an allocation and NOT a statement that they are unused: only a future, authorized allocator may reserve a namespace, after its own preflight."
+              },
+              "selfcheck": {
+                "ok": true,
+                "positiveOk": true,
+                "positive": {
+                  "candidateClasses": 12,
+                  "synthetic": true
+                },
+                "negativeTotal": 163,
+                "negativePassed": 163,
+                "byGroup": {
+                  "BLOCK": {
+                    "controls": 40,
+                    "rejectedAsExpected": 40
+                  },
+                  "WORLD": {
+                    "controls": 13,
+                    "rejectedAsExpected": 13
+                  },
+                  "IDENTITY": {
+                    "controls": 70,
+                    "rejectedAsExpected": 70
+                  },
+                  "RECORD": {
+                    "controls": 40,
+                    "rejectedAsExpected": 40
+                  }
+                },
+                "failed": []
+              },
+              "equivalence": {
+                "available": false,
+                "reason": "the historical loaders cannot be imported here: Cannot find module '/home/user/sentinel-grid/platform/game-agnostic/stage3h-canonical-v1/adapters.mjs' imported from /ho",
+                "note": "not re-measured here; the pins bind the loader source, inputs and context identity that were shown identical when the pins were written"
+              }
+            }
+          },
+          "G3_REPRODUCIBLE_EVALUATION_ENVIRONMENT": {
+            "status": "FAIL",
+            "reasons": [
+              "NO_ISSUED_EVIDENCE_BUNDLE_MANIFEST",
+              "BUNDLE_MANIFEST_NOT_BOUND_BY_A_CAMPAIGN_DECLARATION",
+              "EVIDENCE_BUNDLE_NOT_VERIFIED",
+              "RUNTIME_DIFFERS_FROM_PIN",
+              "OWNER_ISSUANCE_NOT_VERIFIED"
+            ],
+            "evidence": {
+              "inherited": {
+                "issuedManifest": false,
+                "manifestBoundByDeclaration": false,
+                "runtimePinned": true,
+                "runtimeMatches": false,
+                "pinnedRuntime": {
+                  "node": "v26.7.0",
+                  "platform": "darwin-arm64"
+                },
+                "currentRuntime": {
+                  "node": "v26.7.0",
+                  "platform": "linux-x64"
+                },
+                "verify": null
+              },
+              "additional": {
+                "validation": {
+                  "ok": false,
+                  "problems": [
+                    "ISSUANCE_RECORD_MISSING_OR_UNKNOWN_SCHEMA"
+                  ]
+                },
+                "committed": {
+                  "file": "platform/game-agnostic/stage3h-hdisc1-discriminator-v1/evidence/HDISC1_BUNDLE_ISSUANCE.json",
+                  "tracked": false,
+                  "equalsHead": false,
+                  "sha256": null
+                },
+                "loadProblem": "ENOENT: no such file or directory, open '/home/user/sentinel-grid/platform/game-agnostic/stage3h-hdisc1-discriminator-v1/evidence/HDISC1_ISSUED_BUNDLE_MANIFEST.json'"
+              }
+            }
+          },
+          "G4_INDEPENDENTLY_RECOVERABLE_EVIDENCE": {
+            "status": "FAIL",
+            "reasons": [
+              "NO_BACKUP_ACCEPTANCE_RECORD",
+              "BACKUP_ACCEPTANCE_RECORD_NOT_COMMITTED",
+              "BACKUP_ACCEPTANCE_RECORD_NOT_VALID",
+              "BACKUP_DOES_NOT_BIND_ISSUED_BUNDLE"
+            ],
+            "evidence": {
+              "inherited": {
+                "recordPath": "platform/game-agnostic/stage3h-hdisc1-discriminator-v1/evidence/HDISC1_BACKUP_ACCEPTANCE.json",
+                "recordPresent": false,
+                "recordTrackedAndUnmodified": false,
+                "validation": null,
+                "schema": "SENTINEL_BACKUP_ACCEPTANCE_RECORD_V1",
+                "currentFacts": {
+                  "volumesMounted": 0,
+                  "externalVolumeCandidates": 0,
+                  "timeMachine": "spawnSync /usr/bin/tmutil ENOENT"
+                }
+              },
+              "additional": {
+                "bundleBound": false
+              }
+            }
+          },
+          "G5_FROZEN_SCIENTIFIC_PROTOCOL": {
+            "status": "FAIL",
+            "reasons": [
+              "HDISC1_PREREGISTRATION_NOT_VERIFIED"
+            ],
+            "evidence": {
+              "inherited": {
+                "inherited": {
+                  "declared": true,
+                  "campaignId": "STAGE3H-H-DISC-1",
+                  "freezeRecordPresent": true,
+                  "freezeRecordTrackedAndUnmodified": true,
+                  "status": "FROZEN",
+                  "protocolHashMatches": true,
+                  "protocolTrackedAndUnmodified": true,
+                  "freezeSchema": "SENTINEL_PREREGISTRATION_FREEZE_V1",
+                  "draft": {
+                    "path": "platform/game-agnostic/stage3h-hdisc0-design-v1/H_DISC_0_PREREGISTRATION_DRAFT.md",
+                    "present": true,
+                    "note": "a draft is not a frozen protocol"
+                  },
+                  "freezeCommit": "7512aab28d596c68170cdc5627dc3575471adca5"
+                },
+                "additional": null
+              },
+              "additional": {
+                "ok": false,
+                "problems": [
+                  "SOURCE_DEPENDENCY_UNRESOLVED:platform/game-agnostic/ascii-suite/v21/freeze.mjs,platform/game-agnostic/ascii-suite/v3/common.mjs,platform/game-agnostic/ascii-suite/v3/controllers.mjs,platform/game-agnostic/ascii-suite/v3/factory-model.mjs,platform/game-agnostic/ascii-suite/v31/sentinel.mjs,platform/game-agnostic/ascii-suite/v32/policy.mjs,platform/game-agnostic/ascii-suite/worlds/platformer.mjs,platform/game-agnostic/stage3h-canonical-v1/adapters.mjs,platform/game-agnostic/stage3h-canonical-v1/baseline.mjs,platform/game-agnostic/stage3h-canonical-v1/guard.mjs,platform/game-agnostic/stage3h-canonical-v1/metrics.mjs,platform/game-agnostic/stage3h-canonical-v1/nexus-selector-v1-port.mjs"
+                ]
+              }
+            }
+          },
+          "G6_NO_UNCOMMITTED_SOURCE_DEPENDENCY": {
+            "status": "FAIL",
+            "reasons": [
+              "UNRESOLVED:platform/game-agnostic/ascii-suite/v21/freeze.mjs",
+              "UNRESOLVED:platform/game-agnostic/ascii-suite/v3/common.mjs",
+              "UNRESOLVED:platform/game-agnostic/ascii-suite/v3/controllers.mjs",
+              "UNRESOLVED:platform/game-agnostic/ascii-suite/v3/factory-model.mjs",
+              "UNRESOLVED:platform/game-agnostic/ascii-suite/v31/sentinel.mjs"
+            ],
+            "evidence": {
+              "inherited": {
+                "declared": true,
+                "closure": {
+                  "files": 151,
+                  "trackedEqualsHead": 151,
+                  "trackedModified": [],
+                  "untrackedOther": [],
+                  "unresolved": [
+                    "platform/game-agnostic/ascii-suite/v21/freeze.mjs",
+                    "platform/game-agnostic/ascii-suite/v3/common.mjs",
+                    "platform/game-agnostic/ascii-suite/v3/controllers.mjs",
+                    "platform/game-agnostic/ascii-suite/v3/factory-model.mjs",
+                    "platform/game-agnostic/ascii-suite/v31/sentinel.mjs",
+                    "platform/game-agnostic/ascii-suite/v32/policy.mjs",
+                    "platform/game-agnostic/ascii-suite/worlds/platformer.mjs",
+                    "platform/game-agnostic/stage3h-canonical-v1/adapters.mjs",
+                    "platform/game-agnostic/stage3h-canonical-v1/baseline.mjs",
+                    "platform/game-agnostic/stage3h-canonical-v1/guard.mjs",
+                    "platform/game-agnostic/stage3h-canonical-v1/metrics.mjs",
+                    "platform/game-agnostic/stage3h-canonical-v1/nexus-selector-v1-port.mjs"
+                  ],
+                  "protectedFiles": 0,
+                  "protectedNotBundleVerified": []
+                },
+                "informationalSk1EvaluationClosure": {
+                  "note": "NOT a campaign declaration; the SK1 evaluation entry points, classified as a future declaration would be",
+                  "files": 125,
+                  "trackedEqualsHead": 125,
+                  "trackedModified": [],
+                  "untrackedOther": [],
+                  "unresolved": [
+                    "platform/game-agnostic/ascii-suite/v21/freeze.mjs",
+                    "platform/game-agnostic/ascii-suite/v3/common.mjs",
+                    "platform/game-agnostic/ascii-suite/v3/controllers.mjs",
+                    "platform/game-agnostic/ascii-suite/v3/factory-model.mjs",
+                    "platform/game-agnostic/ascii-suite/v31/sentinel.mjs",
+                    "platform/game-agnostic/ascii-suite/v32/policy.mjs",
+                    "platform/game-agnostic/ascii-suite/worlds/platformer.mjs",
+                    "platform/game-agnostic/stage3h-canonical-v1/adapters.mjs",
+                    "platform/game-agnostic/stage3h-canonical-v1/baseline.mjs",
+                    "platform/game-agnostic/stage3h-canonical-v1/guard.mjs",
+                    "platform/game-agnostic/stage3h-canonical-v1/metrics.mjs",
+                    "platform/game-agnostic/stage3h-canonical-v1/nexus-selector-v1-port.mjs"
+                  ],
+                  "protectedFiles": 0,
+                  "protectedBundleVerified": false
+                }
+              },
+              "additional": {
+                "missing": []
+              }
+            }
+          },
+          "G7_NO_PRIVILEGED_INFERENCE_LEAKAGE": {
+            "status": "PASS",
+            "reasons": [],
+            "evidence": {
+              "inherited": {
+                "declared": true,
+                "implemented": true,
+                "audit": {
+                  "files": 13,
+                  "evaluatorFree": true,
+                  "violations": []
+                },
+                "forbiddenPatterns": [
+                  "/(^|\\/)hw1-eval\\.mjs$/",
+                  "/(^|\\/)evaluate\\.mjs$/",
+                  "/counterfactual/",
+                  "/(^|\\/)infra\\//",
+                  "/(^|\\/)work\\//",
+                  "/failure-diagnosis/",
+                  "/scripts\\/stage3g\\/evidence/",
+                  "/(^|\\/)transforms\\.mjs$/",
+                  "/(^|\\/)dataset\\.mjs$/",
+                  "/(^|\\/)train\\.mjs$/"
+                ]
+              },
+              "additional": {
+                "status": "PASS",
+                "sourceHash": "83dbd6125f13a35cbc98394d8384f77a3dadd306355a657e4c7e073dd4604a93",
+                "violations": []
+              }
+            }
+          }
+        },
+        "statement": "NO_GO: scientific execution remains blocked by the listed conditions."
+      },
+      "declarationSha256": "d79b28065219d0a8a0a39d89f9ddb84a576759e442f09179fc2a9fbeadc22056",
+      "fullStage3HCertified": false,
+      "delegationEnabled": false
+    }
+  },
+  "comparison": {
+    "gate": {
+      "result": "MATCHES",
+      "expected": "NO_GO, 2 of 7; G2 PASS and G7 PASS; G1, G3, G4, G5, G6 FAIL",
+      "actual": {
+        "decision": "NO_GO",
+        "passed": 2,
+        "of": 7,
+        "pass": [
+          "G2",
+          "G7"
+        ],
+        "fail": [
+          "G1",
+          "G3",
+          "G4",
+          "G5",
+          "G6"
+        ]
+      }
+    },
+    "G1 reasons": {
+      "result": "DIFFERS",
+      "expected": [
+        "CUSTODY_IDENTITY_LIST_UNREADABLE"
+      ],
+      "actual": {
+        "reasons": [
+          "CUSTODY_IDENTITY_LIST_UNREADABLE",
+          "NO_PROTECTED_IDENTITIES_LISTED",
+          "CUSTODY_GUARD_NOT_INTACT"
+        ],
+        "expectedReasonPresent": true,
+        "additionalReasons": [
+          "NO_PROTECTED_IDENTITIES_LISTED",
+          "CUSTODY_GUARD_NOT_INTACT"
+        ]
+      }
+    },
+    "G5 reasons": {
+      "result": "MATCHES",
+      "expected": [
+        "HDISC1_PREREGISTRATION_NOT_VERIFIED"
+      ],
+      "actual": {
+        "reasons": [
+          "HDISC1_PREREGISTRATION_NOT_VERIFIED"
+        ]
+      }
+    },
+    "inference-audit": {
+      "result": "MATCHES",
+      "expected": "COMMITTED_SOURCE_AUDIT PASS, violations [], live call decision ABSTAIN, canDispatch false, executeRefusedWith EXECUTION_OR_MUTATION_REQUESTED",
+      "actual": {
+        "COMMITTED_SOURCE_AUDIT": "PASS",
+        "violations": [],
+        "liveCallDecision": "ABSTAIN",
+        "canDispatch": false,
+        "executeRefusedWith": "EXECUTION_OR_MUTATION_REQUESTED"
+      }
+    },
+    "freeze": {
+      "result": "MATCHES",
+      "expected": "ok false: SOURCE_DEPENDENCY_UNRESOLVED (12 protected paths)",
+      "actual": {
+        "ok": false,
+        "problemCodes": [
+          "SOURCE_DEPENDENCY_UNRESOLVED"
+        ],
+        "unresolvedPaths": 12
+      }
+    },
+    "hdisc1-tests": {
+      "result": "DIFFERS",
+      "expected": "84 of 87 pass; failing files campaign/analysis.test.mjs and campaign/boundaries.test.mjs",
+      "actual": {
+        "pass": 83,
+        "of": 87,
+        "fail": 2,
+        "skipped": 2,
+        "failingFiles": [
+          "campaign/analysis.test.mjs",
+          "campaign/boundaries.test.mjs"
+        ]
+      }
+    },
+    "hdisc0-tests": {
+      "result": "MATCHES",
+      "expected": "26 of 29 pass",
+      "actual": {
+        "pass": 26,
+        "of": 29,
+        "fail": 1,
+        "skipped": 2
+      }
+    },
+    "sk11-tests": {
+      "result": "MATCHES",
+      "expected": "14 of 15 pass",
+      "actual": {
+        "pass": 14,
+        "of": 15,
+        "fail": 0,
+        "skipped": 1
+      }
+    },
+    "sk2f-tests": {
+      "result": "MATCHES",
+      "expected": "7 of 12 pass",
+      "actual": {
+        "pass": 7,
+        "of": 12,
+        "fail": 2,
+        "skipped": 3
+      }
+    }
+  },
+  "differs": [
+    "G1 reasons",
+    "hdisc1-tests"
+  ]
+}
